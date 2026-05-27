@@ -1,0 +1,24 @@
+# Auth and secrets
+.env
+
+# Data pulls and derived files
+*.colmap.json
+*.csv
+giignl_extracted/
+giignl_pages/
+
+# Batch outputs - large, transient, regenerable
+batches/*
+!batches/.gitkeep
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+.python-version
+
+# OS
+.DS_Store
+Thumbs.db
