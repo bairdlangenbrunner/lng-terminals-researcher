@@ -157,16 +157,18 @@ Any URLs included in the staging xlsx (e.g. for GIIGNL-only findings where the a
 
 ### §3.10 Build the staging package
 
-`python build_review_package.py --mode reconciliation --report giignl --year <YEAR> --batch-id <YYYYMMDD>`
+`python build_review_package.py --mode reconciliation --report giignl --year <YEAR> --output ../batches/lng_terminals_batch_<YYYYMMDD>_<HHMM>_ET.xlsx`
 
-Produces `../batches/lng_terminals_batch_<YYYYMMDD>.xlsx` with the standard sheets plus two reconciliation-specific sheets:
+Get the Eastern-time stamp via `TZ=America/New_York date "+%Y%m%d_%H%M_ET"`. The HHMM_ET suffix disambiguates multiple batches in one day.
+
+Produces an xlsx with the standard sheets plus two reconciliation-specific sheets:
 
 - `giignl_diff` — full diff output, color-coded per cell (green = match, yellow = ambiguous, red = disagreement, blue = GEM-only-expected, no fill = GIIGNL-only-needs-discovery)
 - `giignl_to_action` — actionable findings with proposed routing (Update vs Discovery vs Review)
 
 Empty sheets are omitted per CLAUDE.md convention.
 
-`python recalc.py ../batches/lng_terminals_batch_<YYYYMMDD>.xlsx` → zero formula errors.
+`python recalc.py ../batches/lng_terminals_batch_<YYYYMMDD>_<HHMM>_ET.xlsx` → zero formula errors.
 
 `present_files`.
 

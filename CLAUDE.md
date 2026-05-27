@@ -1,6 +1,6 @@
 ---
 name: lng-terminals
-description: Operating scaffolding for the GEM LNG Terminals research project — four workflows that produce a single staging xlsx per batch for the user to apply to the live GEM database manually. The workflows are (1) update existing terminals, (2) discover new terminals, (3) reconcile against the annual GIIGNL report, and (4) triage (decide what to work on this batch). Use this skill whenever the user asks for a terminals batch, a GIIGNL diff, a stale-sweep, a discovery run, an FSRU sync check, or any work that produces or modifies the staging xlsx (lng_terminals_batch_YYYYMMDD.xlsx). Also use this skill when the user mentions "the GEM database", "the terminals tracker", "GGIT", "GIIGNL", "the methodology doc", a country-level sweep, an FSRU vessel-to-terminal sync, the status timeline, the entity tree, or any of the standard GEM tools (entity link, ownership tree, wiki, test database). The skill is the executable scaffolding — the project's research rules live in GEM's published methodology doc (the "LNG Terminals Manual"), which is authoritative for what counts as a terminal, what the lifecycle states mean, and how units are named. The SOPs in this project are operational — they describe how to do the work, citing the methodology rather than restating it.
+description: Operating scaffolding for the GEM LNG Terminals research project — four workflows that produce a single staging xlsx per batch for the user to apply to the live GEM database manually. The workflows are (1) update existing terminals, (2) discover new terminals, (3) reconcile against the annual GIIGNL report, and (4) triage (decide what to work on this batch). Use this skill whenever the user asks for a terminals batch, a GIIGNL diff, a stale-sweep, a discovery run, an FSRU sync check, or any work that produces or modifies the staging xlsx (lng_terminals_batch_YYYYMMDD_HHMM_ET.xlsx). Also use this skill when the user mentions "the GEM database", "the terminals tracker", "GGIT", "GIIGNL", "the methodology doc", a country-level sweep, an FSRU vessel-to-terminal sync, the status timeline, the entity tree, or any of the standard GEM tools (entity link, ownership tree, wiki, test database). The skill is the executable scaffolding — the project's research rules live in GEM's published methodology doc (the "LNG Terminals Manual"), which is authoritative for what counts as a terminal, what the lifecycle states mean, and how units are named. The SOPs in this project are operational — they describe how to do the work, citing the methodology rather than restating it.
 ---
 
 # LNG Terminals — Backend Scaffolding
@@ -83,8 +83,8 @@ Workflow (assuming scripts have been copied to a working directory per the secti
 6. `python capacity_normalize.py` on any capacity changes — mtpa/bcm/y/m³ conversions, range handling per methodology ("record max in spreadsheet, range in wiki Background").
 7. `python entity_lookup.py "<owner name>" "<country>"` before staging any new owner/operator — the methodology is emphatic about not creating duplicate entities.
 8. **If any FSRU terminal is touched**: `python fsru_sync_check.py` — see "FSRU sync rule" below.
-9. `python build_review_package.py --mode update --batch-id <YYYYMMDD>` → `../batches/lng_terminals_batch_<YYYYMMDD>.xlsx`.
-10. `python recalc.py ../batches/lng_terminals_batch_<YYYYMMDD>.xlsx` → confirm zero formula errors.
+9. `python build_review_package.py --mode update --output ../batches/lng_terminals_batch_<YYYYMMDD>_<HHMM>_ET.xlsx` → staging xlsx. Stamp via `TZ=America/New_York date "+%Y%m%d_%H%M_ET"`.
+10. `python recalc.py ../batches/lng_terminals_batch_<YYYYMMDD>_<HHMM>_ET.xlsx` → confirm zero formula errors.
 11. `present_files`.
 
 ### Discover new terminals
@@ -101,7 +101,7 @@ Workflow:
 6. For each candidate: apply the "sufficient information to add" threshold from the methodology FAQ (sponsor identified + approximate location + concrete step taken). Candidates that don't meet the threshold go in a `monitor_list` sheet, not `new_terminals`.
 7. `python url_verifier.py` on all URLs; `python entity_lookup.py` on every new owner/operator/parent.
 8. **If any candidate is an FSRU**: `python fsru_sync_check.py` against both the GEM terminals and (if available) the LNG carrier project's backend.
-9. `python build_review_package.py --mode discovery --batch-id <YYYYMMDD>` → staging xlsx.
+9. `python build_review_package.py --mode discovery --output ../batches/lng_terminals_batch_<YYYYMMDD>_<HHMM>_ET.xlsx` → staging xlsx (Eastern timestamp via `TZ=America/New_York date "+%Y%m%d_%H%M_ET"`).
 10. `python recalc.py`, then `present_files`.
 
 ### Triage (decide what to work on this batch)
@@ -171,7 +171,9 @@ Trust the scripts by default. They're versioned scaffolding, not throwaway code.
 
 ## Output workbook structure
 
-Single combined xlsx per batch: `../batches/lng_terminals_batch_<YYYYMMDD>.xlsx`.
+Single combined xlsx per batch: `../batches/lng_terminals_batch_<YYYYMMDD>_<HHMM>_ET.xlsx`. The Eastern-time HHMM disambiguates multiple batches in one day. Generate via:
+
+    TZ=America/New_York date "+%Y%m%d_%H%M_ET"
 
 Sheets (empty sheets are omitted from the final workbook):
 

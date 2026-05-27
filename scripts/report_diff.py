@@ -56,17 +56,23 @@ def _load_colmap(csv_path):
 
 def _build_gem_project_table(gem_csv):
     """Collapse the unit-level GEM CSV into project-level entries.
-    
-    Returns dict: (country_norm, name_norm) -> project_dict
-    
-    project_dict contains:
+
+    Returns dict: (country_norm, name_norm, section_type) -> project_dict
+
+    Key includes section_type so a single GEM terminal with BOTH liquefaction
+    and regasification facilities (e.g. Sabine Pass, which has 6 export trains
+    and 1 import terminal under the same TerminalName) becomes TWO project
+    entries — one per section_type. Otherwise their capacities would sum
+    incorrectly when matched against GIIGNL's section-specific tables.
+
+    project_dict fields:
       - terminal_id, terminal_name, country
-      - section_type ('liquefaction' or 'regasification') derived from FacilityType
-      - status_set: set of statuses across all units
-      - total_capacity_mtpa: sum of CapacityinMtpa across operating units
-      - operating_unit_count, total_unit_count
-      - owners_set: union of normalized owner tags across units
-      - fsru: True if any unit is a Floating regasification
+      - section_type ('liquefaction' or 'regasification')
+      - status_set: set of statuses across units of this section_type
+      - total_capacity_mtpa: sum of CapacityinMtpa across operating units of this section
+      - operating_units, total_units (within this section_type)
+      - owners_set: union of normalized owner tags across units in this section
+      - fsru: True if any unit in this section is a Floating regasification
     """
     colmap = _load_colmap(gem_csv)
     ci = {k: colmap.get(k) for k in [
@@ -92,18 +98,26 @@ def _build_gem_project_table(gem_csv):
             ftype = row[ci["facility_type"]] if ci["facility_type"] is not None else ""
             country_norm = normalize_country(country)
             tname_norm = normalize_terminal_name(tname)
-            key = (country_norm, tname_norm)
             if not country_norm or not tname_norm:
                 continue
 
-            # Derive section type from FacilityType
+            # Per-UNIT section type. A terminal with mixed facility types
+            # (e.g. Sabine Pass: 6 export units + 1 import unit under one
+            # TerminalName) splits into two entries by this key.
             ie_only = row[ci["import_export_only"]] if ci["import_export_only"] is not None else ""
-            if "export" in (ftype + " " + ie_only).lower() or "liquefaction" in ftype.lower():
+            combined = (ftype + " " + ie_only).lower()
+            if "export" in combined or "liquefaction" in ftype.lower():
                 section_type = "liquefaction"
-            elif "import" in (ftype + " " + ie_only).lower() or "regasification" in ftype.lower():
+            elif "import" in combined or "regasification" in ftype.lower():
                 section_type = "regasification"
             else:
                 section_type = "unknown"
+            if section_type == "unknown":
+                # Skip rows we can't classify — they can't match GIIGNL's
+                # section-specific tables anyway.
+                continue
+
+            key = (country_norm, tname_norm, section_type)
 
             status = row[ci["status"]] if ci["status"] is not None else ""
             owner = row[ci["owner"]] if ci["owner"] is not None else ""
@@ -156,16 +170,20 @@ def _classify(report_rows, gem_projects):
     
     Returns dict with: matches, giignl_only, gem_only, ambiguous, agreement_stats
     """
-    # Group report rows by (country, name) — collapse subtotal rows
+    # Group report rows by (country, name, section_type) — collapse subtotal rows.
+    # section_type is part of the key so a site with both liquefaction and
+    # regasification rows in GIIGNL maps to two separate report-side projects,
+    # mirroring the GEM-side keying.
     report_projects = {}
     for r in report_rows:
         if (r.get("notes") or "").lower().startswith("country subtotal"):
-            continue  # skip subtotal rows
+            continue
         country_norm = normalize_country(r.get("country", ""))
         name_norm = normalize_terminal_name(r.get("site_name", ""))
-        if not country_norm or not name_norm:
+        section_type = r.get("section_type", "")
+        if not country_norm or not name_norm or not section_type:
             continue
-        key = (country_norm, name_norm)
+        key = (country_norm, name_norm, section_type)
 
         try:
             cap = float(r.get("capacity_mtpa", "")) if r.get("capacity_mtpa") else 0.0
@@ -176,8 +194,6 @@ def _classify(report_rows, gem_projects):
         for ent in parse_entity_list(r.get("owner", "")):
             if ent["entity"]:
                 owner_tags.add(ent["entity"])
-
-        section_type = r.get("section_type", "")
 
         if key not in report_projects:
             report_projects[key] = {
@@ -256,10 +272,12 @@ def _classify(report_rows, gem_projects):
         rp = report_projects[key]
         country_norm = key[0]
         name_norm = key[1]
-        # Candidates in same country
+        section_type = key[2]
+        # Candidates in same country AND same section_type (a GIIGNL
+        # liquefaction row shouldn't fuzzy-match a GEM regasification entry).
         candidates = [
             (gk, gp) for gk, gp in gem_projects.items()
-            if gk[0] == country_norm and gk in gem_only_keys
+            if gk[0] == country_norm and gk[2] == section_type and gk in gem_only_keys
         ]
         # Fuzzy criteria: substring match OR shared 4+ char token AND owner overlap
         fuzzy_hits = []

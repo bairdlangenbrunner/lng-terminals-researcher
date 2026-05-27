@@ -230,7 +230,7 @@ For JV-style entities (e.g. "TotalEnergies-Petronas JV"):
 9. **If batch includes any FSRU candidates:** `python fsru_sync_check.py` against carrier project backend (CLAUDE.md FSRU sync rule)
 10. Merge the `monitor_list` with the prior batch's monitor_list (§5)
 11. **Contribute country findings** to `country_notes_contributions` sheet — new regulator URLs, search patterns that worked, country-specific gotchas
-12. `python build_review_package.py --mode discovery --batch-id <YYYYMMDD>` → staging xlsx
+12. `python build_review_package.py --mode discovery --output ../batches/lng_terminals_batch_<YYYYMMDD>_<HHMM>_ET.xlsx` → staging xlsx (Eastern timestamp via `TZ=America/New_York date "+%Y%m%d_%H%M_ET"`)
 13. `python recalc.py` → confirm zero formula errors
 14. `present_files`
 
