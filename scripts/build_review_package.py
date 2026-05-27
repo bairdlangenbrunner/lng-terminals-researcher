@@ -8,8 +8,10 @@ Modes:
   - discovery: produces new_terminals, new_units, status_timeline_additions,
                entity_additions, monitor_list, country_notes_contributions,
                qa_review, fsru_sync (if any), and README
-  - reconciliation: produces giignl_diff, giignl_to_action, qa_review, README
-                    (other sheets present but empty)
+  - reconciliation: produces giignl_diff, giignl_to_action, candidate_edits
+                    (GEM-CSV-shaped, only rows flagged by the diff),
+                    giignl_full_extract (raw GIIGNL parsing for reference),
+                    qa_review, README
 
 Input JSON files (collected from prior script outputs OR built in-session):
   - ./staged_updates.json
@@ -40,6 +42,7 @@ Usage:
     python build_review_package.py --mode update --output ../batches/batch_<date>.xlsx
 """
 import argparse
+import csv
 import json
 import sys
 from datetime import date
@@ -496,6 +499,117 @@ def build_country_notes_sheet(wb, notes):
     _autosize(ws)
 
 
+def build_candidate_edits_sheet(wb, diff, gem_csv_path):
+    """DB-shaped sheet: one row per GEM unit-row whose project was flagged
+    by the diff. Mirrors gem_export.csv's 115-column schema so researchers
+    can read it as if it were the DB and edit in place.
+
+    Flagged projects = matches with disagreements + ambiguous + fuzzy matches.
+    GIIGNL value gets added as an Excel comment on the disagreeing cells.
+    """
+    ws = wb.create_sheet("candidate_edits")
+
+    # Build a quick lookup of flagged GEM terminal_ids → diff record(s).
+    flagged: dict[str, list[dict]] = {}
+    for m in diff.get("matches", []):
+        if m.get("disagreements"):
+            flagged.setdefault(m["gem_terminal_id"], []).append({
+                "kind": "matched_with_disagreement",
+                "report_capacity_mtpa": m.get("report_capacity_mtpa"),
+                "report_site": m.get("site_name"),
+                "disagreements": m.get("disagreements", []),
+            })
+    for m in diff.get("fuzzy_matches", []):
+        flagged.setdefault(m["gem_terminal_id"], []).append({
+            "kind": "fuzzy_match_needs_review",
+            "report_capacity_mtpa": m.get("report_capacity_mtpa"),
+            "report_site": m.get("site_name"),
+            "disagreements": [],
+        })
+    for r in diff.get("ambiguous", []):
+        for cand in r.get("candidates", []):
+            flagged.setdefault(cand["gem_terminal_id"], []).append({
+                "kind": "ambiguous_match",
+                "report_capacity_mtpa": r.get("report_capacity_mtpa"),
+                "report_site": r.get("site_name"),
+                "disagreements": [f"ambiguous: {r.get('candidate_count')} candidates"],
+            })
+
+    # Read GEM CSV header + only the rows whose TerminalID is flagged.
+    with open(gem_csv_path, encoding="utf-8") as f:
+        reader = csv.reader(f)
+        header = next(reader)
+        if header and header[0].startswith("﻿"):
+            header[0] = header[0][1:]
+        # Insert a leading "diff_kind" column for researcher visibility
+        out_header = ["_diff_kind", "_report_value_summary"] + header
+        _write_header(ws, out_header)
+
+        row_idx = 2
+        try:
+            tid_idx = header.index("TerminalID")
+        except ValueError:
+            ws["A1"] = "ERROR: TerminalID column missing from gem_export.csv"
+            return
+        try:
+            cap_idx = header.index("CapacityinMtpa")
+        except ValueError:
+            cap_idx = None
+
+        for row in reader:
+            if not row or len(row) <= tid_idx:
+                continue
+            tid = row[tid_idx]
+            if tid not in flagged:
+                continue
+            findings = flagged[tid]
+            # Use the strongest finding for the cell-summary
+            kind = findings[0]["kind"]
+            report_summary = "; ".join(
+                f"{f['kind']}: GIIGNL={f.get('report_capacity_mtpa')} MTPA "
+                + ("(" + "; ".join(f.get("disagreements", []))[:80] + ")"
+                   if f.get("disagreements") else "")
+                for f in findings
+            )
+            for col_idx, value in enumerate([kind, report_summary] + row, start=1):
+                cell = ws.cell(row=row_idx, column=col_idx, value=value)
+                cell.alignment = Alignment(wrap_text=True, vertical="top")
+                cell.border = CELL_BORDER
+                col_name = out_header[col_idx - 1]
+                if col_name in READ_ONLY_COLUMNS:
+                    cell.font = Font(italic=True, color="666666")
+                # Yellow fill on capacity cell if any finding has a capacity disagreement
+                if cap_idx is not None and col_idx == cap_idx + 3:  # +3: 2 leading cols, 1-indexed
+                    if any("capacity differs" in dg for f in findings for dg in f.get("disagreements", [])):
+                        cell.fill = YELLOW
+                # Red fill on the _diff_kind column for ambiguous; yellow otherwise
+                if col_name == "_diff_kind":
+                    cell.fill = RED if kind == "ambiguous_match" else YELLOW
+            row_idx += 1
+    _autosize(ws, max_width=40)
+    # Freeze the header row + the first 4 cols (kind, summary, TerminalID, UnitID)
+    ws.freeze_panes = "E2"
+
+
+def build_giignl_full_extract_sheet(wb, extracted_csv_path):
+    """Raw GIIGNL extraction CSV dumped into a sheet for researcher reference."""
+    ws = wb.create_sheet("giignl_full_extract")
+    if not Path(extracted_csv_path).exists():
+        ws["A1"] = f"giignl_extracted.csv not found at {extracted_csv_path}"
+        return
+    with open(extracted_csv_path, encoding="utf-8") as f:
+        reader = csv.reader(f)
+        header = next(reader)
+        _write_header(ws, header)
+        for i, row in enumerate(reader, start=2):
+            for j, val in enumerate(row, start=1):
+                cell = ws.cell(row=i, column=j, value=val)
+                cell.alignment = Alignment(wrap_text=True, vertical="top")
+                cell.border = CELL_BORDER
+    _autosize(ws, max_width=50)
+    ws.freeze_panes = "A2"
+
+
 def build_qa_review_sheet(wb, qa_items):
     ws = wb.create_sheet("qa_review")
     headers = [
@@ -514,6 +628,14 @@ def main():
     p.add_argument("--mode", choices=["update", "discovery", "reconciliation"], required=True)
     p.add_argument("--output", required=True)
     p.add_argument("--inputs-dir", default=".")
+    p.add_argument("--report", default=None,
+                   help="Report type label (e.g. 'giignl', 'igu') for reconciliation mode")
+    p.add_argument("--year", default=None,
+                   help="Report edition year for reconciliation mode")
+    p.add_argument("--gem-csv", default="./gem_export.csv",
+                   help="Path to gem_export.csv for candidate_edits sheet (reconciliation mode)")
+    p.add_argument("--extracted-csv", default="./giignl_extracted.csv",
+                   help="Path to extracted report CSV for full_extract sheet (reconciliation mode)")
     args = p.parse_args()
 
     inputs_dir = Path(args.inputs_dir)
@@ -597,19 +719,40 @@ def main():
             build_qa_review_sheet(wb, qa)
 
     elif args.mode == "reconciliation":
-        diff = _safe_load(inputs_dir / "report_diff.json", default={})
+        diff_path = inputs_dir / "report_diff.json"
+        # Fall back to giignl_diff.json (the actual default output of report_diff.py)
+        if not diff_path.exists() and (inputs_dir / "giignl_diff.json").exists():
+            diff_path = inputs_dir / "giignl_diff.json"
+        diff = _safe_load(diff_path, default={})
         qa = _safe_load(inputs_dir / "staged_qa_review.json", default=[])
 
         inputs_summary = {
-            "report_type": diff.get("report_type", "?"),
+            "report_type": diff.get("report_type", args.report or "?"),
+            "report_year": args.year or "?",
             **diff.get("stats", {}),
             "qa_review_items": len(qa),
         }
+        # SOP §6 gate triggers — surface to README
+        stats = diff.get("stats", {})
+        matches = stats.get("exact_matches", 0) + stats.get("fuzzy_matches", 0)
+        disagree = stats.get("matches_with_disagreement", 0)
+        if matches:
+            inputs_summary["disagreement_pct_of_matches"] = round(100 * disagree / matches, 1)
+        inputs_summary["sop_section6_gate_disagreement_10pct"] = (
+            "TRIPPED" if matches and 100 * disagree / matches > 10 else "OK"
+        )
+        inputs_summary["sop_section6_gate_report_only_30"] = (
+            "TRIPPED" if stats.get("report_only_unmatched", 0) > 30 else "OK"
+        )
 
         build_readme(wb, "reconciliation", inputs_summary)
         if diff:
             build_giignl_diff_sheet(wb, diff)
             build_giignl_to_action_sheet(wb, diff)
+            if args.gem_csv and Path(args.gem_csv).exists():
+                build_candidate_edits_sheet(wb, diff, args.gem_csv)
+            if args.extracted_csv and Path(args.extracted_csv).exists():
+                build_giignl_full_extract_sheet(wb, args.extracted_csv)
         if qa:
             build_qa_review_sheet(wb, qa)
 

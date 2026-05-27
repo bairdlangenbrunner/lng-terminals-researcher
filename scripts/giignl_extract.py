@@ -329,94 +329,231 @@ def _parse_int(s: str) -> int | None:
 
 
 # ---------------------------------------------------------------------------
+# Two-pass page extraction
+# ---------------------------------------------------------------------------
+#
+# Why two-pass: GIIGNL data rows span multiple physical lines (site name
+# above the data line, vessel name and owner cell continuations below).
+# A simple "capacity numeric = new row" detector starts the row on the
+# wrong line and pulls in fragments from the next row's pre-data lines.
+#
+# Pass 1: classify each non-blank line as data, country_label, country_subtotal,
+#         super_region, or generic_continuation.
+# Pass 2: for each data line, gather the lines around it (split at midpoints
+#         between consecutive data lines) and merge all their cell-fragments
+#         into one logical row.
+# Pass 3: backfill country from labels by line-proximity.
+
+
+def _classify_lines(
+    lines: list[str], columns: list[ColumnSpec], cap_col_name: str,
+) -> tuple[list[int], list[tuple[int, str]], set[int]]:
+    """Returns (data_line_indices, country_label_records, skip_indices).
+
+    Multi-line country labels (e.g. "Mauritania/" + "Senegal" on consecutive
+    lines, "Equatorial" + "Guinea") are merged: only the first line's index
+    is kept, with the combined text.
+    """
+    data_idxs: list[int] = []
+    raw_labels: list[tuple[int, str]] = []
+    skip: set[int] = set()
+    for i, ln in enumerate(lines):
+        if not ln.strip():
+            continue
+        if _SUPER_REGION_RE.match(ln):
+            skip.add(i)
+            continue
+        is_sub, _ = _is_country_subtotal_line(ln, columns)
+        if is_sub:
+            skip.add(i)
+            continue
+        is_label, country = _is_country_label_line(ln, columns)
+        if is_label:
+            raw_labels.append((i, country))
+            skip.add(i)
+            continue
+        if _is_data_row_start(ln, columns, cap_col_name):
+            data_idxs.append(i)
+
+    # Merge consecutive country labels (multi-line wrap like "Mauritania/"
+    # then "Senegal"). Two labels merge iff no data line lies between them
+    # AND they're within ~3 lines of each other.
+    merged_labels: list[tuple[int, str]] = []
+    for i, (line_idx, txt) in enumerate(raw_labels):
+        if merged_labels:
+            prev_idx, prev_txt = merged_labels[-1]
+            gap = line_idx - prev_idx
+            intervening_data = any(prev_idx < d < line_idx for d in data_idxs)
+            if gap <= 3 and not intervening_data:
+                # Merge: trim trailing "/" or "-" before joining
+                stitched = prev_txt.rstrip("/-").rstrip() + (
+                    "/" if prev_txt.rstrip().endswith("/") else " "
+                ) + txt
+                merged_labels[-1] = (prev_idx, stitched.strip())
+                continue
+        merged_labels.append((line_idx, txt))
+    return data_idxs, merged_labels, skip
+
+
+def _partition_lines_by_data(
+    lines: list[str], data_idxs: list[int], skip: set[int],
+) -> dict[int, list[int]]:
+    """Assign each non-blank, non-skipped line to its owning data-line row.
+
+    Boundaries: midpoint between consecutive data lines.
+    """
+    if not data_idxs:
+        return {}
+    boundaries = []
+    for i in range(len(data_idxs) - 1):
+        mid = (data_idxs[i] + data_idxs[i + 1]) // 2
+        boundaries.append(mid)
+    assignments: dict[int, list[int]] = {i: [] for i in range(len(data_idxs))}
+    cur_row = 0
+    for i, ln in enumerate(lines):
+        if not ln.strip():
+            continue
+        if i in skip:
+            continue
+        while cur_row < len(boundaries) and i > boundaries[cur_row]:
+            cur_row += 1
+        assignments[cur_row].append(i)
+    return assignments
+
+
+def _merge_lines_into_cells(
+    lines: list[str], line_idxs: list[int], columns: list[ColumnSpec],
+) -> tuple[dict[str, str], dict[str, list[str]]]:
+    """Combine fragments from each line in line_idxs into one cell dict.
+
+    Returns (merged_str_per_col, fragments_per_col). The fragment list is
+    needed downstream when the regas vessel-name parser needs to distinguish
+    the site-name fragment (first one) from the vessel-name fragment (later
+    one that contains "(FSRU)" etc.) — joining them loses that structure.
+    """
+    cells: dict[str, list[str]] = {col.name: [] for col in columns}
+    for idx in line_idxs:
+        ln = lines[idx]
+        for col in columns:
+            frag = col.slice(ln)
+            if frag:
+                if cells[col.name] and cells[col.name][-1] == frag:
+                    continue
+                cells[col.name].append(frag)
+    merged = {name: " ".join(parts) for name, parts in cells.items()}
+    return merged, cells
+
+
+def _assign_countries_sequential(
+    rows_with_meta: list[tuple[int, str, dict]],
+    labels: list[tuple[int, str]],
+) -> None:
+    """Mutate each row dict's 'country' field via a sequential walk.
+
+    rows_with_meta = list of (data_line_idx, explicit_country_from_cell, row_dict)
+                     in row order.
+    labels         = list of (label_line_idx, country) in line order.
+
+    Algorithm: walk events (rows + labels) in line order. Maintain a running
+    `current_country`. When a row has an explicit country, that updates
+    current_country and the row gets it. When a row has no explicit country,
+    it inherits current_country (i.e., the most recent country-anchor event).
+    Rows seen before any country event are buffered and back-filled when the
+    first event arrives.
+
+    Replaces the earlier "nearest-label" heuristic which misassigned rows
+    when continuation lines stretched the line-index gap between labels
+    (e.g., Sabine Pass T2-T6 inherit USA from T1's explicit cell, not from
+    whichever label happened to be closer by raw line distance).
+    """
+    events = []
+    for data_idx, explicit, row in rows_with_meta:
+        events.append((data_idx, 1, explicit, row))  # 1 sorts after labels at tie
+    for line_idx, country in labels:
+        events.append((line_idx, 0, country, None))
+    events.sort(key=lambda e: (e[0], e[1]))
+
+    current_country = ""
+    pending: list[dict] = []
+    for _, kind, payload, row in events:
+        if kind == 0:  # label
+            for r in pending:
+                r["country"] = payload
+            pending = []
+            current_country = payload
+        else:  # row
+            if payload:  # explicit country in cell
+                for r in pending:
+                    r["country"] = payload
+                pending = []
+                current_country = payload
+                row["country"] = payload
+            elif current_country:
+                row["country"] = current_country
+            else:
+                pending.append(row)
+                row["country"] = ""
+    # Rows still pending at end-of-page have no country.
+
+
+# ---------------------------------------------------------------------------
 # Page-level extraction
 # ---------------------------------------------------------------------------
 
 def _extract_liquefaction_page(
     page_text: str, page_num: int,
 ) -> tuple[list[dict], float]:
-    """Returns (rows, page_capacity_sum_mtpa)."""
     columns, hdr_idx = _find_columns_by_header(page_text, LIQ_HEADER_KEYWORDS)
     if hdr_idx < 0:
         return [], 0.0
     lines = page_text.splitlines()
-    data_lines = lines[hdr_idx + 1:]
+    body_lines = lines[hdr_idx + 1:]
+    cap_col = "(MTPA)"
+
+    data_idxs, labels, skip = _classify_lines(body_lines, columns, cap_col)
+    assignments = _partition_lines_by_data(body_lines, data_idxs, skip)
 
     rows: list[dict] = []
-    current_country = ""
-    current_row: LogicalRow | None = None
+    rows_with_meta: list[tuple[int, str, dict]] = []
     page_cap_sum = 0.0
-
-    def flush():
-        nonlocal current_row, page_cap_sum
-        if current_row is None:
-            return
-        c = current_row.cells
-        project_raw = c.get("Project", "").strip()
+    for row_idx, data_idx in enumerate(data_idxs):
+        merged, _frags = _merge_lines_into_cells(body_lines, assignments[row_idx], columns)
+        project_raw = merged.get("Project", "").strip()
+        if not project_raw:
+            continue
         site_name, trains, status_hint = _strip_train_suffix(project_raw)
-        cap_mtpa = _parse_float(c.get("(MTPA)", "").split()[0] if c.get("(MTPA)", "") else "")
-        if cap_mtpa is None:
-            cap_mtpa = 0.0
+        explicit_country = ""
+        for idx in assignments[row_idx]:
+            ln = body_lines[idx]
+            cell = columns[0].slice(ln).strip()
+            if cell and not _SUPER_REGION_RE.match(ln) and ":" not in cell \
+               and not _COUNTRY_SUBTOTAL_RE.match(cell) and not _NUM_RE.match(cell):
+                explicit_country = cell
+                break
+        cap_text = merged.get(cap_col, "").split()[0] if merged.get(cap_col, "") else ""
+        cap_mtpa = _parse_float(cap_text) or 0.0
         page_cap_sum += cap_mtpa
-        start_year = _parse_int(c.get("date", ""))
+        start_year = _parse_int(merged.get("date", ""))
         notes_parts = [f"row name: {project_raw}"]
         if status_hint:
             notes_parts.append(f"status hint: {status_hint}")
-        rows.append({
+        row = {
             "section_type": "liquefaction",
             "report_page": page_num,
-            "country": current_row.country,
+            "country": "",  # assigned below
             "site_name": site_name,
             "type": "",
-            "owner": c.get("Owner(s)", "").strip(),
+            "owner": merged.get("Owner(s)", "").strip(),
             "capacity_mtpa": f"{cap_mtpa:g}",
             "capacity_bcm": "",
             "start_year": str(start_year) if start_year else "",
             "trains": trains,
             "vessel_name": "",
             "notes": "; ".join(notes_parts),
-        })
-        current_row = None
-
-    cap_col_name = "(MTPA)"
-    for ln in data_lines:
-        if not ln.strip():
-            continue
-
-        # Check country subtotal first (it appears below the country header).
-        is_sub, _ = _is_country_subtotal_line(ln, columns)
-        if is_sub:
-            # subtotal: doesn't introduce a row; just metadata
-            continue
-
-        is_label, country = _is_country_label_line(ln, columns)
-        if is_label:
-            flush()
-            current_country = country
-            continue
-
-        if _is_data_row_start(ln, columns, cap_col_name):
-            flush()
-            current_row = LogicalRow(
-                section_type="liquefaction", country=current_country,
-            )
-            for col in columns:
-                current_row.cells[col.name] = col.slice(ln)
-            continue
-
-        # Continuation line — append text from each non-empty cell
-        # to the corresponding cell of the in-progress row.
-        if current_row is not None:
-            for col in columns:
-                frag = col.slice(ln)
-                if frag:
-                    # Country column on continuation lines often holds a
-                    # leftover country name — skip if it matches the existing
-                    # country to avoid duplicating.
-                    if col.name == "Country" and frag == current_row.country:
-                        continue
-                    current_row.append(col.name, frag)
-    flush()
+        }
+        rows.append(row)
+        rows_with_meta.append((data_idx, explicit_country, row))
+    _assign_countries_sequential(rows_with_meta, labels)
     return rows, page_cap_sum
 
 
@@ -427,92 +564,76 @@ def _extract_regasification_page(
     if hdr_idx < 0:
         return [], 0.0
     lines = page_text.splitlines()
-    data_lines = lines[hdr_idx + 1:]
+    body_lines = lines[hdr_idx + 1:]
+    cap_col = "(MTPA)"
+
+    data_idxs, labels, skip = _classify_lines(body_lines, columns, cap_col)
+    assignments = _partition_lines_by_data(body_lines, data_idxs, skip)
 
     rows: list[dict] = []
-    current_country = ""
-    current_row: LogicalRow | None = None
+    rows_with_meta: list[tuple[int, str, dict]] = []
     page_cap_sum = 0.0
-
-    def flush():
-        nonlocal current_row, page_cap_sum
-        if current_row is None:
-            return
-        c = current_row.cells
-        site_raw = c.get("Site", "").strip()
-        # Regas tables sometimes include FSRU vessel name in site, e.g.
-        # "Ain Sokhna 3 (Energos Eskimo)" or "Escobar / Excelerate Expedient (FSRU)"
-        site_name = site_raw
+    for row_idx, data_idx in enumerate(data_idxs):
+        merged, frags = _merge_lines_into_cells(body_lines, assignments[row_idx], columns)
+        site_fragments = frags.get("Site", [])
+        site_raw = " ".join(site_fragments).strip()
+        if not site_raw:
+            continue
+        # Use the fragment list to separate site name from vessel name.
+        # The site name is typically the first fragment(s); the vessel name
+        # appears in a later fragment containing "(FSRU)" / "(FLNG)" etc.
         vessel_name = ""
-        # Pull out (Vessel Name) parenthetical if present
-        m = re.search(r"\(([^)]+)\)\s*$", site_raw)
-        if m:
-            inner = m.group(1).strip()
-            # FSRU vessel names typically contain a word, not "FSRU" alone.
-            if inner.lower() not in ("fsru", "flng", "fsu", "fru") and not inner.isdigit():
-                vessel_name = inner
-            site_name = site_raw[: m.start()].strip()
+        site_parts: list[str] = []
+        for frag in site_fragments:
+            m_tag = re.search(r"\(\s*(FSRU|FLNG|FSU|FRU)\s*\)", frag, re.IGNORECASE)
+            if m_tag:
+                # This fragment is the vessel name. Strip the (FSRU) tag.
+                vessel_clean = re.sub(
+                    r"\s*\(\s*(?:FSRU|FLNG|FSU|FRU)\s*\)\s*", " ",
+                    frag, flags=re.IGNORECASE,
+                ).strip()
+                vessel_name = vessel_clean
+            else:
+                site_parts.append(frag)
+        site_name = " ".join(site_parts).strip() or site_raw
 
-        cap_mtpa = _parse_float(c.get("(MTPA)", "").split()[0] if c.get("(MTPA)", "") else "")
-        if cap_mtpa is None:
-            cap_mtpa = 0.0
+        explicit_country = ""
+        for idx in assignments[row_idx]:
+            ln = body_lines[idx]
+            cell = columns[0].slice(ln).strip()
+            if cell and not _SUPER_REGION_RE.match(ln) and ":" not in cell \
+               and not _COUNTRY_SUBTOTAL_RE.match(cell) and not _NUM_RE.match(cell):
+                explicit_country = cell
+                break
+
+        cap_text = merged.get(cap_col, "").split()[0] if merged.get(cap_col, "") else ""
+        cap_mtpa = _parse_float(cap_text) or 0.0
         page_cap_sum += cap_mtpa
-        start_year = _parse_int(c.get("date", ""))
-        concept = c.get("Concept", "").strip().lower()
+        start_year = _parse_int(merged.get("date", ""))
+        concept = merged.get("Concept", "").strip().lower()
         type_val = ""
         if "offshore" in concept or vessel_name:
             type_val = "FSRU" if vessel_name else "offshore"
         elif "onshore" in concept:
             type_val = "onshore"
         notes_parts = [f"row name: {site_raw}"]
-        rows.append({
+        row = {
             "section_type": "regasification",
             "report_page": page_num,
-            "country": current_row.country,
+            "country": "",  # assigned below
             "site_name": site_name,
             "type": type_val,
-            "owner": c.get("Owner", "").strip(),
+            "owner": merged.get("Owner", "").strip(),
             "capacity_mtpa": f"{cap_mtpa:g}",
             "capacity_bcm": "",
             "start_year": str(start_year) if start_year else "",
             "trains": "",
             "vessel_name": vessel_name,
             "notes": "; ".join(notes_parts),
-        })
-        current_row = None
-
-    cap_col_name = "(MTPA)"
-    for ln in data_lines:
-        if not ln.strip():
-            continue
-
-        is_sub, _ = _is_country_subtotal_line(ln, columns)
-        if is_sub:
-            continue
-
-        is_label, country = _is_country_label_line(ln, columns)
-        if is_label:
-            flush()
-            current_country = country
-            continue
-
-        if _is_data_row_start(ln, columns, cap_col_name):
-            flush()
-            current_row = LogicalRow(
-                section_type="regasification", country=current_country,
-            )
-            for col in columns:
-                current_row.cells[col.name] = col.slice(ln)
-            continue
-
-        if current_row is not None:
-            for col in columns:
-                frag = col.slice(ln)
-                if frag:
-                    if col.name == "Market" and frag == current_row.country:
-                        continue
-                    current_row.append(col.name, frag)
-    flush()
+        }
+        rows.append(row)
+        rows_with_meta.append((data_idx, explicit_country, row))
+    _assign_countries_sequential(rows_with_meta, labels)
     return rows, page_cap_sum
 
 
