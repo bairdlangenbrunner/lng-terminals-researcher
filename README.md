@@ -1,6 +1,6 @@
-# LNG Terminals Tracker — agent scaffolding
+# LNG terminals tracker
 
-Operational scaffolding for an LLM research assistant that helps maintain
+Operational repository for an LLM research assistant that helps maintain
 [GEM's Global Gas Infrastructure Tracker (GGIT) LNG terminals database](https://globalenergymonitor.org/projects/global-gas-infrastructure-tracker/).
 
 This repo is designed to be used with [Claude Code](https://docs.claude.com/en/docs/claude-code).
