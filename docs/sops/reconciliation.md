@@ -34,20 +34,25 @@ These parameters get written into the staging xlsx README sheet.
 ### §3.1 Setup
 
 1. Verify the GIIGNL report file is in project files at `<path-to-giignl-report>` (or wherever the user placed it).
-2. `file <path>` to confirm format. The 2026 GIIGNL came as a zip of per-page JPEG + OCR text files + manifest.json, NOT as a parseable PDF. If the format differs, the extractor may need adjustment.
-3. Materialize scripts to working directory per the CLAUDE.md instructions:
-   - `pull_gem_db.py`, `normalize.py`, `dedup_index.py`
+2. `file <path>` to confirm format. Two formats observed across editions:
+   - **Real PDF (current pipeline)** — file reports "PDF document, version 1.7". The 2026 edition received 2026-05 is this format. `giignl_extract.py` parses via `pdftotext -layout` against page text.
+   - **Zip-disguised-as-PDF (legacy)** — file reports a zip archive, contains per-page JPEG + OCR text files + manifest.json. The pre-2026 pipeline staged JPEGs and did vision-LLM extraction. That code path is in git history and would need restoration if a future edition reverts.
+3. The scripts are committed to `scripts/` (no separate "materialize" step needed):
+   - `gem_query.py` / `gem_all_fields.py` for the GEM pull (no auth cookies needed)
    - `giignl_extract.py`, `report_diff.py`, `url_verifier.py`
    - `build_review_package.py`, `recalc.py`
-4. `python pull_gem_db.py` → fresh GEM CSV at `gem_export.csv`. **Mandatory** per the [ref]-fill SOP discipline — the database changes between batches.
+4. `python scripts/gem_query.py --all-fields lng -o gem_export.csv` → fresh GEM CSV. **Mandatory** per the [ref]-fill SOP discipline — the database changes between batches.
+5. `python scripts/pull_gem_db.py --map-only --out gem_export.csv` → derives the column-index map `gem_export.colmap.json` (consumed by `report_diff.py` and `build_review_package.py`).
 
 ### §3.2 Extract GIIGNL into structured form
 
-`python giignl_extract.py <path-to-giignl-report> --output giignl_extracted.csv`
+`python scripts/giignl_extract.py <path-to-giignl-report.pdf> --output giignl_extracted.csv`
 
 The extractor produces a flat CSV with GEM-aligned column names so the diff is column-comparable. See Appendix A for the per-table extraction rules.
 
-**The extractor is vision-assisted, not pure regex.** GIIGNL tables have column structure that's lost in text-only OCR (the per-page `.txt` files have rows wrapped unpredictably). The extractor uses the per-page JPEG images plus the OCR text as a confirmation channel. Output rows include a `_source_page` column for traceability.
+**Pipeline (2026 edition, real PDF):** `pdftotext -layout` is invoked per page; the column positions are derived from the table header row's keyword positions; each page is partitioned into rows by data-line midpoint heuristics with multi-line cell merging. Country labels are assigned via a SEQUENTIAL walk (`_assign_countries_sequential` in `giignl_extract.py`) with **per-country capacity budgets sourced from the subtotal lines** (e.g. "Bangladesh 7.5 MTPA") — once cumulative capacity for the current country exceeds its subtotal (2% tolerance), subsequent rows go into a pending buffer that gets back-filled when the next country's label arrives. This is what prevents China's rows from getting tagged Bangladesh when China's label appears mid-block. Train suffixes ("T1", "T1-6", "T1 - T6") get stripped into a separate `trains` column so multiple GIIGNL train-rows roll up to one project-level entry on report_diff's side.
+
+Output rows include a `report_page` column for traceability back to the PDF.
 
 Verify the extraction before proceeding:
 - Total liquefaction MTPA in the extracted CSV should match the GIIGNL Key Figures page (524 MTPA in 2026 edition)
@@ -86,11 +91,20 @@ The script also produces a fifth category for human resolution:
 
 ### §3.5 Matching algorithm
 
-Two-pass match:
+Three-pass match:
 
-**Pass 1: exact match on (normalized country, normalized terminal name).** Highest confidence. Direct hit.
+**Pass 1a: exact match on (normalized country, normalized TerminalName, section_type).** Highest confidence. Direct hit on GEM's primary name.
 
-**Pass 2: fuzzy match within country** for unmatched GIIGNL rows. For each unmatched GIIGNL row, score every GEM row in the same country by:
+**Pass 1b: alias match on (normalized country, normalized alias, section_type).** Same confidence as 1a. Aliases come from BOTH the `OtherNames` column AND the `LocalNames` column — and for non-Latin LocalNames (Chinese today, hooks for Japanese / Korean / Arabic / Russian later), `normalize.transliterate_to_english` produces additional English-script variants. Chinese path: jieba word segmentation + pypinyin per-word → e.g. `中石油唐山曹妃甸LNG接收站` emits `zhong shiyou tangshan caofeidian lng jieshouzhan`, giving distinctive 4+ char tokens (`tangshan`, `caofeidian`) that the fuzzy pass can match. Example matches added by this pass: GIIGNL's `Kribi` → GEM's `Cameroon FLNG Terminal` (via OtherNames `Kribi FLNG Terminal`), GIIGNL's `Aqaba` → GEM's `Sheikh Sabah LNG Terminal`, GIIGNL's `Świnoujście` → GEM's `Świnoujście Polskie LNG Terminal`. Diff records these as `match_type=exact_via_alias` with the `matched_alias` column showing which alias hit.
+
+**Pass 2: fuzzy match within country and section_type** for unmatched GIIGNL rows. For each unmatched GIIGNL row, a GEM project is a fuzzy candidate iff (any of):
+- (a) **substring match** — the normalized GIIGNL site name is contained in any GEM name (canonical or alias) OR vice versa; strong signal
+- (b) **token + owner overlap** — at least one shared 4+ char token AND at least one shared owner-entity tag; the owner confirms the token
+- (c) **multi-token overlap** — 2+ distinctive shared 4+ char tokens (catches cases where the owner cell was truncated/mis-parsed; 2 distinctive tokens are strong enough to surface as a candidate even without owner overlap)
+
+Token extraction strips leading/trailing punctuation so `"(tangshan),"` tokenizes as `"tangshan"`. Candidates include all aliases (OtherNames + LocalNames + transliterations) so a single distinctive city name like `Caofeidian` from a Chinese LocalName can serve as a matching token.
+
+Score every GEM row in the same country+section by:
 - Token-set similarity of terminal name (e.g. "Arzew GL3Z" vs "Arzew LNG Terminal" → high overlap on "Arzew")
 - Owner-entity overlap (any common entity → bonus)
 - Capacity proximity (within 30% of nominal MTPA → bonus)
@@ -160,6 +174,8 @@ Any URLs included in the staging xlsx (e.g. for GIIGNL-only findings where the a
 `python build_review_package.py --mode reconciliation --report giignl --year <YEAR> --output ../batches/lng_terminals_batch_<YYYYMMDD>_<HHMM>_ET.xlsx`
 
 Get the Eastern-time stamp via `TZ=America/New_York date "+%Y%m%d_%H%M_ET"`. The HHMM_ET suffix disambiguates multiple batches in one day.
+
+**README sheet definitions are MANDATORY.** Every staging xlsx must include a "Sheet definitions" block in the README listing every other tab and what it contains, so a researcher opening the file without prior context knows what each tab is for. This is handled automatically by `build_review_package.py` via the `SHEET_DESCRIPTIONS` constant + `_populate_readme_sheet_defs(wb)` helper, which is invoked at the end of `main()`. If you add a new sheet builder to the script, you MUST add a corresponding entry to `SHEET_DESCRIPTIONS` — otherwise the README will fall back to a "no description registered" placeholder that prompts the next agent to fix it.
 
 Produces an xlsx with the standard sheets plus two reconciliation-specific sheets:
 

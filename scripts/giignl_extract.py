@@ -281,20 +281,27 @@ def _is_country_label_line(
 def _is_country_subtotal_line(
     line: str, columns: list[ColumnSpec],
 ) -> tuple[bool, float]:
-    """A country-subtotal line has text like '24.9 MTPA' in the leftmost column
-    and nothing in the data columns. Returns (is_subtotal, mtpa_value).
+    """A country-subtotal line has text like '24.9 MTPA' in the leftmost
+    column. The right side of the line MAY contain owner/operator wrap-text
+    from an adjacent row — GIIGNL typesets the subtotal as a centered band
+    that physically overlaps with owner-cell text from a neighboring row when
+    pdftotext linearizes the page. We require the CAPACITY column to be
+    empty to distinguish a subtotal from a real data row (data rows always
+    have a capacity value; subtotals don't).
     """
     if not columns:
         return False, 0.0
     left = columns[0].slice(line)
-    right_text = line[columns[0].end:].strip()
     m = _COUNTRY_SUBTOTAL_RE.match(left)
-    if m and not right_text:
-        try:
-            return True, float(m.group(1).replace(",", ""))
-        except ValueError:
-            return False, 0.0
-    return False, 0.0
+    if not m:
+        return False, 0.0
+    cap_col = next((c for c in columns if c.name == "(MTPA)"), None)
+    if cap_col and cap_col.slice(line).strip():
+        return False, 0.0
+    try:
+        return True, float(m.group(1).replace(",", ""))
+    except ValueError:
+        return False, 0.0
 
 
 def _is_data_row_start(
@@ -347,25 +354,35 @@ def _parse_int(s: str) -> int | None:
 
 def _classify_lines(
     lines: list[str], columns: list[ColumnSpec], cap_col_name: str,
-) -> tuple[list[int], list[tuple[int, str]], set[int]]:
-    """Returns (data_line_indices, country_label_records, skip_indices).
+) -> tuple[list[int], list[tuple[int, str]], set[int], list[tuple[int, float]]]:
+    """Returns (data_line_indices, country_label_records, skip_indices, subtotals).
 
     Multi-line country labels (e.g. "Mauritania/" + "Senegal" on consecutive
     lines, "Equatorial" + "Guinea") are merged: only the first line's index
     is kept, with the combined text.
+
+    Subtotals are captured (not just skipped) so _assign_countries_sequential
+    can use them as per-country capacity budgets — once cumulative capacity
+    for current_country exceeds its subtotal, subsequent rows go into pending
+    (awaiting the next country label) rather than inheriting current_country.
+    This handles the case where Country X ends and Country Y's rows start
+    before Y's label appears (e.g. Bangladesh's 2 rows end on page 55, then
+    China's many rows start before China's label appears mid-block).
     """
     data_idxs: list[int] = []
     raw_labels: list[tuple[int, str]] = []
     skip: set[int] = set()
+    subtotals: list[tuple[int, float]] = []
     for i, ln in enumerate(lines):
         if not ln.strip():
             continue
         if _SUPER_REGION_RE.match(ln):
             skip.add(i)
             continue
-        is_sub, _ = _is_country_subtotal_line(ln, columns)
+        is_sub, mtpa = _is_country_subtotal_line(ln, columns)
         if is_sub:
             skip.add(i)
+            subtotals.append((i, mtpa))
             continue
         is_label, country = _is_country_label_line(ln, columns)
         if is_label:
@@ -385,14 +402,13 @@ def _classify_lines(
             gap = line_idx - prev_idx
             intervening_data = any(prev_idx < d < line_idx for d in data_idxs)
             if gap <= 3 and not intervening_data:
-                # Merge: trim trailing "/" or "-" before joining
                 stitched = prev_txt.rstrip("/-").rstrip() + (
                     "/" if prev_txt.rstrip().endswith("/") else " "
                 ) + txt
                 merged_labels[-1] = (prev_idx, stitched.strip())
                 continue
         merged_labels.append((line_idx, txt))
-    return data_idxs, merged_labels, skip
+    return data_idxs, merged_labels, skip, subtotals
 
 
 def _partition_lines_by_data(
@@ -445,51 +461,92 @@ def _merge_lines_into_cells(
 
 
 def _assign_countries_sequential(
-    rows_with_meta: list[tuple[int, str, dict]],
+    rows_with_meta: list[tuple[int, str, dict, float]],
     labels: list[tuple[int, str]],
+    subtotals: list[tuple[int, float]],
 ) -> None:
     """Mutate each row dict's 'country' field via a sequential walk.
 
-    rows_with_meta = list of (data_line_idx, explicit_country_from_cell, row_dict)
-                     in row order.
+    rows_with_meta = list of (data_line_idx, explicit_country_from_cell,
+                              row_dict, capacity_mtpa) in row order.
     labels         = list of (label_line_idx, country) in line order.
+    subtotals      = list of (subtotal_line_idx, mtpa_value) in line order.
+                     Each subtotal applies to the country that's CURRENT at
+                     the moment the subtotal line is encountered (GIIGNL
+                     typesets the subtotal right under its country label).
 
-    Algorithm: walk events (rows + labels) in line order. Maintain a running
-    `current_country`. When a row has an explicit country, that updates
-    current_country and the row gets it. When a row has no explicit country,
-    it inherits current_country (i.e., the most recent country-anchor event).
-    Rows seen before any country event are buffered and back-filled when the
-    first event arrives.
+    Algorithm: walk events (rows + labels + subtotals) in line order.
+    Maintain `current_country`, an expected-capacity budget for that
+    country (from its subtotal, if encountered), and a cumulative capacity
+    counter. A row without explicit country inherits current_country UNLESS
+    doing so would push cumulative beyond the budget — then it goes into
+    pending, waiting for the next country label to backfill it.
 
-    Replaces the earlier "nearest-label" heuristic which misassigned rows
-    when continuation lines stretched the line-index gap between labels
-    (e.g., Sabine Pass T2-T6 inherit USA from T1's explicit cell, not from
-    whichever label happened to be closer by raw line distance).
+    This handles three layout variants found in GIIGNL 2026:
+    1. Block starts with explicit-country cell on first row (e.g. Sabine
+       Pass T1 has USA in cell; T2-T6 inherit).
+    2. Block starts with no explicit-country, label appears mid-block
+       (label backfills any pending rows from the previous block's "tail").
+    3. Country X's block ends and Country Y's rows start BEFORE Y's label
+       (the capacity budget detects the boundary: once X's subtotal is
+       exceeded, subsequent rows go pending and get backfilled to Y).
     """
+    # Tolerance: cumulative may exceed subtotal slightly due to GIIGNL rounding
+    # (subtotals are 1-decimal; per-row capacities are 1-decimal too). Tight
+    # tolerance is important: with 10% slop the USA block of ~128 MTPA can
+    # absorb the first ~13 MTPA of the next country's rows before triggering
+    # pending. 2% allows true rounding but catches block boundaries.
+    BUDGET_TOLERANCE = 1.02
+
     events = []
-    for data_idx, explicit, row in rows_with_meta:
-        events.append((data_idx, 1, explicit, row))  # 1 sorts after labels at tie
+    for data_idx, explicit, row, cap in rows_with_meta:
+        events.append((data_idx, 2, ("row", explicit, row, cap)))
     for line_idx, country in labels:
-        events.append((line_idx, 0, country, None))
+        events.append((line_idx, 0, ("label", country)))
+    for line_idx, mtpa in subtotals:
+        events.append((line_idx, 1, ("subtotal", mtpa)))
     events.sort(key=lambda e: (e[0], e[1]))
 
     current_country = ""
+    current_budget: float | None = None
+    cumulative = 0.0
     pending: list[dict] = []
-    for _, kind, payload, row in events:
-        if kind == 0:  # label
+
+    for _, _, payload in events:
+        kind = payload[0]
+        if kind == "label":
+            country = payload[1]
             for r in pending:
-                r["country"] = payload
+                r["country"] = country
             pending = []
-            current_country = payload
-        else:  # row
-            if payload:  # explicit country in cell
+            current_country = country
+            current_budget = None  # reset; next subtotal sets it
+            cumulative = 0.0
+        elif kind == "subtotal":
+            mtpa = payload[1]
+            # Subtotal applies to current_country (visually it's right below
+            # the label). If we haven't seen a current_country yet, ignore.
+            if current_country:
+                current_budget = mtpa
+        elif kind == "row":
+            explicit, row, cap = payload[1], payload[2], payload[3]
+            if explicit:
                 for r in pending:
-                    r["country"] = payload
+                    r["country"] = explicit
                 pending = []
-                current_country = payload
-                row["country"] = payload
+                current_country = explicit
+                current_budget = None  # caller-supplied subtotal unknown for this country yet
+                cumulative = cap
+                row["country"] = explicit
+            elif current_country and current_budget is not None and \
+                    cumulative + cap > current_budget * BUDGET_TOLERANCE:
+                # This row would push past the current country's subtotal budget,
+                # so it probably belongs to the next country. Park it.
+                pending.append(row)
+                row["country"] = ""
             elif current_country:
                 row["country"] = current_country
+                cumulative += cap
             else:
                 pending.append(row)
                 row["country"] = ""
@@ -510,11 +567,11 @@ def _extract_liquefaction_page(
     body_lines = lines[hdr_idx + 1:]
     cap_col = "(MTPA)"
 
-    data_idxs, labels, skip = _classify_lines(body_lines, columns, cap_col)
+    data_idxs, labels, skip, subtotals = _classify_lines(body_lines, columns, cap_col)
     assignments = _partition_lines_by_data(body_lines, data_idxs, skip)
 
     rows: list[dict] = []
-    rows_with_meta: list[tuple[int, str, dict]] = []
+    rows_with_meta: list[tuple[int, str, dict, float]] = []
     page_cap_sum = 0.0
     for row_idx, data_idx in enumerate(data_idxs):
         merged, _frags = _merge_lines_into_cells(body_lines, assignments[row_idx], columns)
@@ -552,8 +609,8 @@ def _extract_liquefaction_page(
             "notes": "; ".join(notes_parts),
         }
         rows.append(row)
-        rows_with_meta.append((data_idx, explicit_country, row))
-    _assign_countries_sequential(rows_with_meta, labels)
+        rows_with_meta.append((data_idx, explicit_country, row, cap_mtpa))
+    _assign_countries_sequential(rows_with_meta, labels, subtotals)
     return rows, page_cap_sum
 
 
@@ -567,11 +624,11 @@ def _extract_regasification_page(
     body_lines = lines[hdr_idx + 1:]
     cap_col = "(MTPA)"
 
-    data_idxs, labels, skip = _classify_lines(body_lines, columns, cap_col)
+    data_idxs, labels, skip, subtotals = _classify_lines(body_lines, columns, cap_col)
     assignments = _partition_lines_by_data(body_lines, data_idxs, skip)
 
     rows: list[dict] = []
-    rows_with_meta: list[tuple[int, str, dict]] = []
+    rows_with_meta: list[tuple[int, str, dict, float]] = []
     page_cap_sum = 0.0
     for row_idx, data_idx in enumerate(data_idxs):
         merged, frags = _merge_lines_into_cells(body_lines, assignments[row_idx], columns)
@@ -632,8 +689,8 @@ def _extract_regasification_page(
             "notes": "; ".join(notes_parts),
         }
         rows.append(row)
-        rows_with_meta.append((data_idx, explicit_country, row))
-    _assign_countries_sequential(rows_with_meta, labels)
+        rows_with_meta.append((data_idx, explicit_country, row, cap_mtpa))
+    _assign_countries_sequential(rows_with_meta, labels, subtotals)
     return rows, page_cap_sum
 
 

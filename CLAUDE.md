@@ -161,7 +161,8 @@ If the user isn't running the carrier project, `fsru_sync_check.py` short-circui
 | `entity_lookup.py` | Queries the GEM entity system to avoid duplicate entity creation | Entity search UI changed; known entity not being found |
 | `url_verifier.py` | HTTP 200 + content check + soft-error detection (paywall stubs, Cloudflare, members-only) | Verifier flags false positives/negatives; new source pattern needs handling |
 | `imo_tracker.py` | IMO → marinetraffic.org per-vessel URL (FSRU vessel lookup) | marinetraffic.org URL pattern changed; Cloudflare gating |
-| `giignl_extract.py` | Parses GIIGNL report (zip of JPEG + per-page OCR text) into a flat CSV with GEM-aligned columns | New GIIGNL edition layout changed; OCR text quality degrades |
+| `giignl_extract.py` | Parses GIIGNL report into a flat CSV with GEM-aligned columns. 2026 edition is a real PDF v1.7 with a clean text layer — uses `pdftotext -layout` + column-position-based row partitioning; per-country capacity subtotals are used as block-boundary budgets so rows route to the right country even when labels appear mid-block. Earlier editions shipped as zip-of-JPEGs + OCR; that pipeline lives in git history if a future edition reverts | New GIIGNL edition layout changes column positions; new country added to super-region marker list; subtotal detection misfires |
+| `report_diff.py` (alias matching) | Project key includes `section_type` so a single GEM terminal with both liquefaction and regasification (e.g. Sabine Pass: 6 export trains + 1 import terminal) splits into two distinct projects, not one summed entry. Alias map includes GEM `OtherNames` + `LocalNames`, with CJK transliteration via jieba + pypinyin (e.g. `中石油唐山曹妃甸LNG接收站` → `zhong shiyou tangshan caofeidian lng jieshouzhan` so distinctive city tokens can match) | New non-Latin language appears in LocalNames; matching needs additional script support |
 | `report_diff.py` | Three-way diff (matches / report-only / GEM-only / value-disagreements). Parameterized on report type so the same script serves GIIGNL and (future) IGU | Adding a new reconcilable source; match algorithm over/under-merging |
 | `fsru_sync_check.py` | Cross-check FSRU records between GEM terminals and LNG carrier project backends | Sync conventions change; reassignment detection misfires |
 | `build_review_package.py` | xlsx scaffolding — sheets, color fills, frozen panes, headers | Adding a new sheet section; changing color convention |
@@ -179,19 +180,23 @@ Sheets (empty sheets are omitted from the final workbook):
 
 | Sheet | Populated when | Contents |
 |---|---|---|
-| `README` | Always | Batch parameters, methodology rev cited, what was done, what sheets are present |
+| `README` | Always | Batch params, color conventions, **per-sheet definitions for every other tab in this workbook**, and input-summary stats (incl. any SOP §6 gate trips). The definitions are sourced from `SHEET_DESCRIPTIONS` in `scripts/build_review_package.py` — required so a researcher can open the file without prior context and know what each tab is for. |
 | `updates` | Update workflow | Rows for existing units being updated, with old → new diffs and citations |
 | `new_terminals` | Discovery workflow | Newly discovered projects (project-level fields) |
 | `new_units` | Discovery or update | Unit-level data for new terminals AND new units within existing terminals (expansions, new trains) |
 | `status_timeline_additions` | Any workflow touching status | Append-only timeline entries to add to the live DB per methodology |
 | `entity_additions` | Any workflow adding owners | New immediate owners/operators/vessel-owners to create, with duplicate-check flags |
-| `giignl_diff` | Reconciliation workflow | Row-level diff against GIIGNL |
-| `giignl_to_action` | Reconciliation workflow | Findings routed to Update or Discovery (with target sheet noted) |
+| `giignl_diff` | Reconciliation workflow | Match-level audit: one row per matched project (exact or fuzzy), with side-by-side capacity, owner-set deltas, and disagreements column |
+| `giignl_to_action` | Reconciliation workflow | Workflow routing: findings categorized for Update / Discovery / Review |
+| `candidate_edits` | Reconciliation workflow | GEM-CSV-shaped sheet (115 cols + 2 meta cols) of GEM unit-rows flagged by the diff — for editing in DB shape |
+| `giignl_full_extract` | Reconciliation workflow | Raw GIIGNL extraction (every row parsed from the PDF) for reference |
 | `fsru_sync` | Any batch touching FSRUs | Cross-check matches / mismatches / reassignments |
 | `monitor_list` | Discovery workflow | Candidates that don't meet "sufficient information to add" threshold |
 | `stale_sweep` | Triage or update | Stale-flag output from `stale_sweep.py` |
 | `country_notes_contributions` | Any batch developing new country knowledge | Drafted additions to GEM's country-resource Google doc, for user to copy over manually |
 | `qa_review` | Always | Per-cell citation log, conflicts, defects, verification log, negative-result log |
+
+**When adding a new sheet builder to `build_review_package.py`, also add a corresponding entry to `SHEET_DESCRIPTIONS`** in that same file — otherwise the README will fall back to a "no description registered" placeholder that prompts the next agent to backfill it.
 
 ## Color conventions (cells in `updates`, `new_units`, `giignl_diff`)
 
