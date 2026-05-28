@@ -38,18 +38,9 @@ in the live DB edit UI. Need to:
 
 ---
 
-## OPEN: Batch output directory naming convention
+## RESOLVED: Batch output directory naming convention
 
-Triage SOP §3.3 assumes prior batch xlsx is findable for reconciliation
-backlog scanning. The repo has `batches/` but no enforced naming convention.
-
-**Options:**
-- (A) Free-form filenames; triage prompts user "where's the last reconciliation batch?"
-- (B) Convention: `batches/<YYYY-MM-DD>_<workflow>_<scope>.xlsx`
-  e.g. `batches/2026-07-15_reconciliation_giignl-2026.xlsx`
-- (C) Convention with subdirs by workflow: `batches/reconciliation/2026-07-15_giignl.xlsx`
-
-**Recommendation:** (B). Simple, sortable, greppable.
+Decided 2026-05-27: `batches/lng_terminals_batch_<YYYYMMDD>_<HHMM>_ET.xlsx`. Eastern-time HHMM disambiguates multiple batches the same day (e.g. AM dry-run + PM full run). Generate via `TZ=America/New_York date "+%Y%m%d_%H%M_ET"`. Documented in CLAUDE.md and Reconciliation SOP §3.10.
 
 ---
 

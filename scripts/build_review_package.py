@@ -8,8 +8,10 @@ Modes:
   - discovery: produces new_terminals, new_units, status_timeline_additions,
                entity_additions, monitor_list, country_notes_contributions,
                qa_review, fsru_sync (if any), and README
-  - reconciliation: produces giignl_diff, giignl_to_action, qa_review, README
-                    (other sheets present but empty)
+  - reconciliation: produces giignl_diff, giignl_to_action, candidate_edits
+                    (GEM-CSV-shaped, only rows flagged by the diff),
+                    giignl_full_extract (raw GIIGNL parsing for reference),
+                    qa_review, README
 
 Input JSON files (collected from prior script outputs OR built in-session):
   - ./staged_updates.json
@@ -40,6 +42,7 @@ Usage:
     python build_review_package.py --mode update --output ../batches/batch_<date>.xlsx
 """
 import argparse
+import csv
 import json
 import sys
 from datetime import date
@@ -72,6 +75,112 @@ CONFIDENCE_TO_FILL = {
     "blue": BLUE,
     "": NONE_FILL,
     None: NONE_FILL,
+}
+
+
+# Per-sheet descriptions written into the README sheet at build time, so a
+# researcher opening the xlsx without prior context knows what each tab is for.
+# When you add a new sheet builder above, add its description here — the README
+# will pick it up automatically based on which sheets exist in the workbook.
+# Per reconciliation SOP §3.10: every reconciliation xlsx README must include
+# these definitions for all sheets present in the workbook.
+SHEET_DESCRIPTIONS = {
+    "README": (
+        "Batch metadata: mode, edition (for reconciliation), color conventions, "
+        "sheet definitions (this section), and input summary stats including any "
+        "SOP §6 sanity-gate trips. Always read this first."
+    ),
+    "updates": (
+        "Update workflow: one row per (terminal_id, unit_id, field) being changed. "
+        "Columns: field_name, old_value, new_value, ref_url, confidence, source_tier, "
+        "source_notes, scope_note, researcher_initials. new_value cell is color-coded "
+        "by confidence (green=primary/regulatory, yellow=single non-primary, red=weak)."
+    ),
+    "new_terminals": (
+        "Discovery workflow: one row per newly discovered terminal, in GEM CSV "
+        "shape (project-level fields + [ref] partners). researcher_initials and "
+        "confidence_overall at the right. Cells optionally color-coded per field."
+    ),
+    "new_units": (
+        "Discovery or update workflow: one row per new unit (within new OR existing "
+        "terminal). Unit-level fields + status, capacity, vessel info, [ref] partners."
+    ),
+    "status_timeline_additions": (
+        "Append-only timeline events to insert into the live DB. Columns: operation, "
+        "status, sub_status, year, part_of_year, source_url, legal_transition_check. "
+        "Must reflect a timeline pulled via fetch_timeline.py FIRST per CLAUDE.md."
+    ),
+    "entity_additions": (
+        "New owner/operator/parent entities the researcher will create. Each row "
+        "includes lookup_was_run + lookup_result_summary as evidence that "
+        "entity_lookup.py was run first (no duplicate entities allowed per methodology)."
+    ),
+    "giignl_diff": (
+        "Match-level audit: one row per project where BOTH GIIGNL and GEM have an "
+        "entry. match_type is 'exact' (same country+site+section_type via "
+        "TerminalName), 'exact_via_alias' (matched via GEM's OtherNames column — "
+        "the `matched_alias` column shows which alias hit), or 'fuzzy' "
+        "(substring/token + owner overlap; medium confidence). Columns compare "
+        "capacity (report vs gem, delta and %), owner sets (overlap, report-only, "
+        "gem-only), and train/unit counts. `disagreements` column lists plain-text "
+        "divergences (capacity >10%, owner deltas) — yellow fill when populated. "
+        "Use this sheet to AUDIT the match; use giignl_to_action for the workflow."
+    ),
+    "giignl_to_action": (
+        "Workflow routing: per-finding action recommendations. Categories: "
+        "report_only_potential_discovery (GIIGNL has it, GEM doesn't → Discovery), "
+        "gem_only_operating (GEM operating not in GIIGNL → Update verify), "
+        "ambiguous_disambiguate (multiple GEM candidates), and "
+        "matched_with_disagreement (GIIGNL ≠ GEM on a field → Update via normal "
+        "source search; do NOT auto-apply GIIGNL values per SOP §3.8)."
+    ),
+    "candidate_edits": (
+        "Reconciliation deliverable in GEM-CSV shape: one row per GEM unit-row "
+        "whose project was flagged (matched-with-disagreement, fuzzy, or "
+        "ambiguous). Mirrors the 115-column GEM export schema so researchers "
+        "can edit in DB shape. Two leading meta cols: _diff_kind (yellow for "
+        "fuzzy/disagreement, red for ambiguous) and _report_value_summary. "
+        "Capacity cell yellow when GIIGNL disagrees. Frozen panes keep "
+        "TerminalID/UnitID visible while scrolling. Read-only columns are "
+        "italicized — never edit those."
+    ),
+    "giignl_full_extract": (
+        "Raw output of giignl_extract.py: every GIIGNL row parsed from the PDF, "
+        "for reference. Columns: section_type, report_page, country, site_name, "
+        "type (onshore/offshore/FSRU), owner, capacity_mtpa, start_year, trains, "
+        "vessel_name, notes (includes original row name and any status hint). "
+        "Use this to verify what GIIGNL actually said before judging a "
+        "disagreement; report_page lets you cross-check against the PDF."
+    ),
+    "fsru_sync": (
+        "Cross-check of FSRU records between GEM terminals and the LNG carrier "
+        "tracker project. Each row: gem_terminal_id, gem_unit_id, vessel_name, "
+        "in_sync (bool), disagreements (JSON). Yellow fill on disagreements when "
+        "the two backends differ on vessel↔terminal pairing."
+    ),
+    "monitor_list": (
+        "Cross-batch candidate watchlist (Discovery SOP §5). Candidates that "
+        "didn't meet the 'sufficient information to add' threshold this batch; "
+        "rolls forward by (country, candidate_name). Columns: "
+        "first_observed_batch, last_observed_batch, current_state, "
+        "missing_threshold_elements, watch_for, best_lead_url."
+    ),
+    "stale_sweep": (
+        "Output of stale_sweep.py: units flagged for refresh per "
+        "docs/reference/lifecycle_rules.md thresholds (operating >18mo, "
+        "construction >12mo, proposed/shelved year-based inferences). "
+        "Yellow fill on flag column for medium/high severity."
+    ),
+    "country_notes_contributions": (
+        "Drafted additions to GEM's country-resource Google doc — research "
+        "patterns, regulator URLs, country-specific gotchas worth preserving. "
+        "User manually copies these into the GEM doc."
+    ),
+    "qa_review": (
+        "Per-cell quality-assurance items: defects, conflicts, citations needing "
+        "verification, negative-result log entries. severity column color-coded "
+        "(red=high, yellow=medium)."
+    ),
 }
 
 # Columns NEVER written by this script (per gem_db_schema.md)
@@ -119,7 +228,7 @@ def _write_header(ws, headers, start_row=1):
         cell = ws.cell(row=start_row, column=col_idx, value=h)
         cell.font = HEADER_FONT
         cell.fill = GRAY
-        cell.alignment = Alignment(wrap_text=True, vertical="top")
+        cell.alignment = Alignment(wrap_text=False, vertical="top")
         cell.border = CELL_BORDER
         if h in READ_ONLY_COLUMNS:
             cell.font = Font(bold=True, italic=True, color="888888")
@@ -133,13 +242,21 @@ def _write_row(ws, row_dict, headers, row_idx, confidence_map=None):
             continue  # never write read-only columns
         value = row_dict.get(h)
         cell = ws.cell(row=row_idx, column=col_idx, value=value)
-        cell.alignment = Alignment(wrap_text=True, vertical="top")
+        cell.alignment = Alignment(wrap_text=False, vertical="top")
         cell.border = CELL_BORDER
         if h in confidence_map:
             cell.fill = CONFIDENCE_TO_FILL.get(confidence_map[h], NONE_FILL)
 
 
 def build_readme(wb, mode, inputs_summary):
+    """Build the README sheet.
+
+    NOTE: build_readme is called BEFORE the other sheets exist, but we need
+    to write sheet definitions for all sheets that WILL exist. Solution:
+    the caller is responsible for invoking _populate_readme_sheet_defs(wb)
+    after all other sheets have been built. build_readme writes everything
+    EXCEPT the sheet-definitions block, leaving a placeholder anchor row.
+    """
     ws = wb.create_sheet("README")
     today = date.today().isoformat()
     ws["A1"] = f"LNG Terminals batch review package — {mode} mode"
@@ -148,7 +265,6 @@ def build_readme(wb, mode, inputs_summary):
     ws["A3"] = ""
     rows = [
         ("Mode", mode),
-        ("Sheets included", ", ".join(s for s in wb.sheetnames if s != "README")),
         ("", ""),
         ("Color conventions", ""),
         ("  Green", "Primary/regulatory-grade source — apply with confidence"),
@@ -168,6 +284,45 @@ def build_readme(wb, mode, inputs_summary):
         ws.cell(row=i, column=2, value=v)
     ws.column_dimensions["A"].width = 30
     ws.column_dimensions["B"].width = 80
+
+
+def _populate_readme_sheet_defs(wb):
+    """Append a 'Sheet definitions' block to the README listing every sheet
+    in the workbook (except README itself) with its description from
+    SHEET_DESCRIPTIONS. Call AFTER all other sheets have been built.
+
+    Per reconciliation SOP §3.10: every batch xlsx README must include these
+    definitions so a researcher opening the file without prior context knows
+    what each tab is for.
+    """
+    if "README" not in wb.sheetnames:
+        return
+    ws = wb["README"]
+    # Find first empty row at the bottom.
+    start_row = ws.max_row + 2
+    hdr = ws.cell(row=start_row, column=1, value="Sheet definitions")
+    hdr.font = Font(bold=True, size=12)
+    start_row += 1
+    intro = ws.cell(
+        row=start_row, column=1,
+        value="What each tab in this workbook contains. Listed in workbook order.",
+    )
+    intro.font = Font(italic=True, color="666666")
+    start_row += 2
+    for sheet_name in wb.sheetnames:
+        if sheet_name == "README":
+            continue
+        desc = SHEET_DESCRIPTIONS.get(
+            sheet_name,
+            "(no description registered for this sheet — add one to "
+            "SHEET_DESCRIPTIONS in build_review_package.py)",
+        )
+        name_cell = ws.cell(row=start_row, column=1, value=sheet_name)
+        name_cell.font = Font(bold=True)
+        name_cell.alignment = Alignment(vertical="top")
+        desc_cell = ws.cell(row=start_row, column=2, value=desc)
+        desc_cell.alignment = Alignment(wrap_text=False, vertical="top")
+        start_row += 1
 
 
 def build_updates_sheet(wb, updates):
@@ -289,7 +444,7 @@ def build_giignl_diff_sheet(wb, diff):
     ws = wb.create_sheet("giignl_diff")
     headers = [
         "match_type", "confidence", "country", "site_name",
-        "gem_terminal_id", "gem_terminal_name",
+        "gem_terminal_id", "gem_terminal_name", "matched_alias",
         "section_type_report", "section_type_gem",
         "report_capacity_mtpa", "gem_capacity_mtpa",
         "capacity_delta_mtpa", "capacity_delta_pct",
@@ -496,6 +651,117 @@ def build_country_notes_sheet(wb, notes):
     _autosize(ws)
 
 
+def build_candidate_edits_sheet(wb, diff, gem_csv_path):
+    """DB-shaped sheet: one row per GEM unit-row whose project was flagged
+    by the diff. Mirrors gem_export.csv's 115-column schema so researchers
+    can read it as if it were the DB and edit in place.
+
+    Flagged projects = matches with disagreements + ambiguous + fuzzy matches.
+    GIIGNL value gets added as an Excel comment on the disagreeing cells.
+    """
+    ws = wb.create_sheet("candidate_edits")
+
+    # Build a quick lookup of flagged GEM terminal_ids → diff record(s).
+    flagged: dict[str, list[dict]] = {}
+    for m in diff.get("matches", []):
+        if m.get("disagreements"):
+            flagged.setdefault(m["gem_terminal_id"], []).append({
+                "kind": "matched_with_disagreement",
+                "report_capacity_mtpa": m.get("report_capacity_mtpa"),
+                "report_site": m.get("site_name"),
+                "disagreements": m.get("disagreements", []),
+            })
+    for m in diff.get("fuzzy_matches", []):
+        flagged.setdefault(m["gem_terminal_id"], []).append({
+            "kind": "fuzzy_match_needs_review",
+            "report_capacity_mtpa": m.get("report_capacity_mtpa"),
+            "report_site": m.get("site_name"),
+            "disagreements": [],
+        })
+    for r in diff.get("ambiguous", []):
+        for cand in r.get("candidates", []):
+            flagged.setdefault(cand["gem_terminal_id"], []).append({
+                "kind": "ambiguous_match",
+                "report_capacity_mtpa": r.get("report_capacity_mtpa"),
+                "report_site": r.get("site_name"),
+                "disagreements": [f"ambiguous: {r.get('candidate_count')} candidates"],
+            })
+
+    # Read GEM CSV header + only the rows whose TerminalID is flagged.
+    with open(gem_csv_path, encoding="utf-8") as f:
+        reader = csv.reader(f)
+        header = next(reader)
+        if header and header[0].startswith("﻿"):
+            header[0] = header[0][1:]
+        # Insert a leading "diff_kind" column for researcher visibility
+        out_header = ["_diff_kind", "_report_value_summary"] + header
+        _write_header(ws, out_header)
+
+        row_idx = 2
+        try:
+            tid_idx = header.index("TerminalID")
+        except ValueError:
+            ws["A1"] = "ERROR: TerminalID column missing from gem_export.csv"
+            return
+        try:
+            cap_idx = header.index("CapacityinMtpa")
+        except ValueError:
+            cap_idx = None
+
+        for row in reader:
+            if not row or len(row) <= tid_idx:
+                continue
+            tid = row[tid_idx]
+            if tid not in flagged:
+                continue
+            findings = flagged[tid]
+            # Use the strongest finding for the cell-summary
+            kind = findings[0]["kind"]
+            report_summary = "; ".join(
+                f"{f['kind']}: GIIGNL={f.get('report_capacity_mtpa')} MTPA "
+                + ("(" + "; ".join(f.get("disagreements", []))[:80] + ")"
+                   if f.get("disagreements") else "")
+                for f in findings
+            )
+            for col_idx, value in enumerate([kind, report_summary] + row, start=1):
+                cell = ws.cell(row=row_idx, column=col_idx, value=value)
+                cell.alignment = Alignment(wrap_text=False, vertical="top")
+                cell.border = CELL_BORDER
+                col_name = out_header[col_idx - 1]
+                if col_name in READ_ONLY_COLUMNS:
+                    cell.font = Font(italic=True, color="666666")
+                # Yellow fill on capacity cell if any finding has a capacity disagreement
+                if cap_idx is not None and col_idx == cap_idx + 3:  # +3: 2 leading cols, 1-indexed
+                    if any("capacity differs" in dg for f in findings for dg in f.get("disagreements", [])):
+                        cell.fill = YELLOW
+                # Red fill on the _diff_kind column for ambiguous; yellow otherwise
+                if col_name == "_diff_kind":
+                    cell.fill = RED if kind == "ambiguous_match" else YELLOW
+            row_idx += 1
+    _autosize(ws, max_width=40)
+    # Freeze the header row + the first 4 cols (kind, summary, TerminalID, UnitID)
+    ws.freeze_panes = "E2"
+
+
+def build_giignl_full_extract_sheet(wb, extracted_csv_path):
+    """Raw GIIGNL extraction CSV dumped into a sheet for researcher reference."""
+    ws = wb.create_sheet("giignl_full_extract")
+    if not Path(extracted_csv_path).exists():
+        ws["A1"] = f"giignl_extracted.csv not found at {extracted_csv_path}"
+        return
+    with open(extracted_csv_path, encoding="utf-8") as f:
+        reader = csv.reader(f)
+        header = next(reader)
+        _write_header(ws, header)
+        for i, row in enumerate(reader, start=2):
+            for j, val in enumerate(row, start=1):
+                cell = ws.cell(row=i, column=j, value=val)
+                cell.alignment = Alignment(wrap_text=False, vertical="top")
+                cell.border = CELL_BORDER
+    _autosize(ws, max_width=50)
+    ws.freeze_panes = "A2"
+
+
 def build_qa_review_sheet(wb, qa_items):
     ws = wb.create_sheet("qa_review")
     headers = [
@@ -514,6 +780,14 @@ def main():
     p.add_argument("--mode", choices=["update", "discovery", "reconciliation"], required=True)
     p.add_argument("--output", required=True)
     p.add_argument("--inputs-dir", default=".")
+    p.add_argument("--report", default=None,
+                   help="Report type label (e.g. 'giignl', 'igu') for reconciliation mode")
+    p.add_argument("--year", default=None,
+                   help="Report edition year for reconciliation mode")
+    p.add_argument("--gem-csv", default="./gem_export.csv",
+                   help="Path to gem_export.csv for candidate_edits sheet (reconciliation mode)")
+    p.add_argument("--extracted-csv", default="./giignl_extracted.csv",
+                   help="Path to extracted report CSV for full_extract sheet (reconciliation mode)")
     args = p.parse_args()
 
     inputs_dir = Path(args.inputs_dir)
@@ -597,21 +871,45 @@ def main():
             build_qa_review_sheet(wb, qa)
 
     elif args.mode == "reconciliation":
-        diff = _safe_load(inputs_dir / "report_diff.json", default={})
+        diff_path = inputs_dir / "report_diff.json"
+        # Fall back to giignl_diff.json (the actual default output of report_diff.py)
+        if not diff_path.exists() and (inputs_dir / "giignl_diff.json").exists():
+            diff_path = inputs_dir / "giignl_diff.json"
+        diff = _safe_load(diff_path, default={})
         qa = _safe_load(inputs_dir / "staged_qa_review.json", default=[])
 
         inputs_summary = {
-            "report_type": diff.get("report_type", "?"),
+            "report_type": diff.get("report_type", args.report or "?"),
+            "report_year": args.year or "?",
             **diff.get("stats", {}),
             "qa_review_items": len(qa),
         }
+        # SOP §6 gate triggers — surface to README
+        stats = diff.get("stats", {})
+        matches = stats.get("exact_matches", 0) + stats.get("fuzzy_matches", 0)
+        disagree = stats.get("matches_with_disagreement", 0)
+        if matches:
+            inputs_summary["disagreement_pct_of_matches"] = round(100 * disagree / matches, 1)
+        inputs_summary["sop_section6_gate_disagreement_10pct"] = (
+            "TRIPPED" if matches and 100 * disagree / matches > 10 else "OK"
+        )
+        inputs_summary["sop_section6_gate_report_only_30"] = (
+            "TRIPPED" if stats.get("report_only_unmatched", 0) > 30 else "OK"
+        )
 
         build_readme(wb, "reconciliation", inputs_summary)
         if diff:
             build_giignl_diff_sheet(wb, diff)
             build_giignl_to_action_sheet(wb, diff)
+            if args.gem_csv and Path(args.gem_csv).exists():
+                build_candidate_edits_sheet(wb, diff, args.gem_csv)
+            if args.extracted_csv and Path(args.extracted_csv).exists():
+                build_giignl_full_extract_sheet(wb, args.extracted_csv)
         if qa:
             build_qa_review_sheet(wb, qa)
+
+    # Append sheet definitions to the README now that all sheets exist.
+    _populate_readme_sheet_defs(wb)
 
     Path(args.output).parent.mkdir(parents=True, exist_ok=True)
     wb.save(args.output)

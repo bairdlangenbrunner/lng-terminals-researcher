@@ -27,7 +27,7 @@ A single markdown memo with five sections:
 4. **GIIGNL/IGU report status** — whether a fresh annual report has dropped since the last reconciliation
 5. **Recommended batch composition** — 3-5 specific options the user can pick from, each scoped concretely
 
-The memo gets saved to `../batches/triage_<YYYYMMDD>.md` and presented to the user. No xlsx is produced by triage itself.
+The memo gets saved to `../batches/triage_<YYYYMMDD>_<HHMM>_ET.md` and presented to the user. No xlsx is produced by triage itself.
 
 ## §3 Triage inputs
 
@@ -147,7 +147,7 @@ The user picks one or more options (or proposes something else). Triage doesn't 
 4. Reconciliation backlog check (§3.3) — look for prior batch outputs with unprocessed items
 5. Fresh report check (§3.4) — search project files + check report publishers' sites
 6. Draft the triage memo with sections per §2
-7. Save to `../batches/triage_<YYYYMMDD>.md`
+7. Save to `../batches/triage_<YYYYMMDD>_<HHMM>_ET.md`
 8. `present_files` the memo
 9. **Stop and ask the user** which option(s) to pursue
 
@@ -190,5 +190,5 @@ Triage is itself a pause-and-ask, so escalation triggers are narrower. But:
 
 | Triage output | Where |
 |---|---|
-| Markdown memo with recommendations | `../batches/triage_<YYYYMMDD>.md` |
+| Markdown memo with recommendations | `../batches/triage_<YYYYMMDD>_<HHMM>_ET.md` |
 | (No xlsx) | Triage never produces a workbook |
