@@ -123,7 +123,9 @@ SHEET_DESCRIPTIONS = {
         "(substring/token + owner overlap; medium confidence). Columns compare "
         "capacity (report vs gem, delta and %), owner sets (overlap, report-only, "
         "gem-only), and train/unit counts. `disagreements` column lists plain-text "
-        "divergences (capacity >10%, owner deltas) — yellow fill when populated. "
+        "divergences (capacity >10%, owner deltas); the disagreements cell AND the "
+        "specific conflicting cells (capacity columns when delta >10%, owners_report_only "
+        "/ owners_gem_only when populated) get a light-red fill. "
         "Use this sheet to AUDIT the match; use giignl_to_action for the workflow."
     ),
     "giignl_to_action": (
@@ -444,7 +446,7 @@ def build_giignl_diff_sheet(wb, diff):
     ws = wb.create_sheet("giignl_diff")
     headers = [
         "match_type", "confidence", "country", "site_name",
-        "gem_terminal_id", "gem_terminal_name", "matched_alias",
+        "gem_terminal_id", "gem_terminal_name", "gem_unit_name", "matched_alias",
         "section_type_report", "section_type_gem",
         "report_capacity_mtpa", "gem_capacity_mtpa",
         "capacity_delta_mtpa", "capacity_delta_pct",
@@ -459,9 +461,20 @@ def build_giignl_diff_sheet(wb, diff):
         row = {k: (", ".join(map(str, v)) if isinstance(v, list) else v) for k, v in m.items()}
         cm = {}
         if m.get("disagreements"):
-            cm = {"disagreements": "yellow"}
+            # Light-red the specific cells in conflict, mirroring report_diff's
+            # own disagreement triggers (capacity delta >10%; owner-set deltas).
+            cm["disagreements"] = "red"
+            cap_pct = m.get("capacity_delta_pct")
+            if cap_pct is not None and cap_pct > 10:
+                for col in ("report_capacity_mtpa", "gem_capacity_mtpa",
+                            "capacity_delta_mtpa", "capacity_delta_pct"):
+                    cm[col] = "red"
+            if m.get("owners_report_only"):
+                cm["owners_report_only"] = "red"
+            if m.get("owners_gem_only"):
+                cm["owners_gem_only"] = "red"
         if m.get("confidence") == "medium":
-            cm["confidence"] = "yellow"
+            cm.setdefault("confidence", "yellow")
         _write_row(ws, row, headers, row_idx, confidence_map=cm)
         row_idx += 1
     _autosize(ws)
