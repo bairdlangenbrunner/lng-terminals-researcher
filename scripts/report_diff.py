@@ -145,6 +145,19 @@ def _tokens_4plus(s):
     return {t for t in _simple_tokens(s) if len(t) >= 4}
 
 
+def _split_trailing_paren(name_norm):
+    """Split a trailing '(...)' group off a normalized name.
+
+    GEM disambiguates same-base-name terminals with a trailing first-owner
+    parenthetical: 'tianjin lng terminal (sinopec)' → ('tianjin lng terminal',
+    'sinopec'). Returns (base, paren_text); paren_text is '' when there is none.
+    """
+    m = re.match(r"^(.*)\(([^()]*)\)\s*$", name_norm)
+    if m and m.group(1).strip():
+        return m.group(1).strip(), m.group(2).strip()
+    return name_norm, ""
+
+
 def _align_units(rp, gp):
     """Align report member rows to GEM units within an already-matched project.
 
@@ -163,6 +176,7 @@ def _align_units(rp, gp):
             rcap = float(r.get("capacity_mtpa", "")) if r.get("capacity_mtpa") else 0.0
         except ValueError:
             rcap = 0.0
+        proj_total = gp.get("total_capacity_mtpa", 0.0)
         chosen = None
         for u in gp.get("units", []):
             un = u["unit_name_norm"]
@@ -174,7 +188,17 @@ def _align_units(rp, gp):
             has_digit = any(c.isdigit() for c in un)
             gcap = u["capacity_mtpa"]
             cap_close = bool(gcap and rcap and abs(rcap - gcap) / gcap <= 0.25)
-            if has_digit or cap_close:
+            # Guard against pinning a whole-project report row onto a single unit
+            # via a coincidental code token: GIIGNL "Portovaya LNG T1 (+ FSU)" is
+            # 1.5 MTPA (the whole terminal) and tokenizes to GEM unit "T1" (0.75),
+            # which would emit a spurious unit-level 100% conflict beside the
+            # correct project-level 1.5-vs-1.5 match. Only accept the unit when the
+            # report capacity is at least as close to this unit as to the project
+            # total (otherwise the row clearly spans multiple units → leave it to
+            # the project-level comparison).
+            closer_to_unit = (not proj_total) or (
+                bool(gcap) and abs(rcap - gcap) <= abs(rcap - proj_total))
+            if (has_digit or cap_close) and closer_to_unit:
                 chosen = u
                 break
         if chosen:
@@ -193,6 +217,90 @@ def _align_units(rp, gp):
                 "agree": bool(round(rcap - gcap, 2) == 0),
             })
     return unit_matches, {um["gem_unit_name"] for um in unit_matches}
+
+
+# Tokens to drop when matching a GIIGNL vessel name against a GEM unit name —
+# GEM unit names are the bare vessel ("Energos Power"); GIIGNL/site labels may
+# carry facility tags.
+_FSRU_VESSEL_STOPWORDS = {"fsru", "fsu", "fru", "flng", "lng", "terminal", "vessel"}
+
+
+def _vessel_tokens(name):
+    return {t for t in _simple_tokens(name) if t not in _FSRU_VESSEL_STOPWORDS}
+
+
+def _fsru_operating_report_capacity(rp, gp):
+    """Recompute an FSRU terminal's report-side capacity as OPERATING-only.
+
+    GIIGNL's regas table lists every recently-deployed FSRU as a separate
+    'operating' row, so a berth that cycled through several vessels shows several
+    rows (Ain-Sokhna: Energos Power + Höegh Galleon + Energos Eskimo, 3×5.7=17.1).
+    GEM models the same berth as sequential — one operating unit, the superseded
+    vessels kept as `retired`/`idled` units. Summing all GIIGNL rows therefore
+    compares GIIGNL's lifetime-of-vessels against GEM's currently-operating vessel
+    (5.51), a spurious ~3× "disagreement".
+
+    GEM's `unit_name` is the vessel identity, so we align each GIIGNL FSRU row to a
+    GEM unit by vessel name and sum only the rows that map to a GEM OPERATING unit.
+    Rows mapping to a retired/idled GEM unit, or to no GEM unit, are surfaced as
+    per-vessel notes (a status/discovery signal, not a capacity delta).
+
+    Returns (report_operating_capacity, notes, applied). `applied` is False when
+    this isn't a resolvable multi-vessel FSRU case (GEM not flagged FSRU, fewer
+    than two vessel-bearing GIIGNL rows, or no GIIGNL vessel tied to a GEM
+    operating unit) — the caller then keeps the normal project-total comparison.
+    """
+    if not gp.get("fsru"):
+        return 0.0, [], False
+    vrows = [r for r in rp["rows"] if (r.get("vessel_name") or "").strip()]
+    if len(vrows) < 2:
+        # 0 or 1 vessel row → nothing to disaggregate; the plain sum is correct.
+        return 0.0, [], False
+
+    gem_operating = []   # (tokens, unit_name)
+    gem_nonop = []       # (tokens, unit_name, status)
+    for u in gp.get("units", []):
+        toks = _vessel_tokens(u.get("unit_name", ""))
+        if not toks:
+            continue
+        if u.get("status") == "operating":
+            gem_operating.append((toks, u["unit_name"]))
+        else:
+            gem_nonop.append((toks, u["unit_name"], u.get("status", "")))
+
+    def _rcap(r):
+        try:
+            return float(r.get("capacity_mtpa", "")) if r.get("capacity_mtpa") else 0.0
+        except ValueError:
+            return 0.0
+
+    op_cap = 0.0
+    op_matched = 0
+    excluded_cap = 0.0
+    notes = []
+    for r in vrows:
+        vtoks = _vessel_tokens(r.get("vessel_name", ""))
+        rcap = _rcap(r)
+        if any(toks == vtoks for toks, _ in gem_operating):
+            op_cap += rcap
+            op_matched += 1
+            continue
+        excluded_cap += rcap
+        nonop = next((st for toks, _, st in gem_nonop if toks == vtoks), None)
+        if nonop:
+            notes.append(f"GIIGNL FSRU '{r.get('vessel_name')}' ({rcap:.1f}) listed operating; GEM marks it {nonop}")
+        else:
+            notes.append(f"GIIGNL FSRU '{r.get('vessel_name')}' ({rcap:.1f}) listed operating; not in GEM")
+
+    if op_matched == 0:
+        notes.append("FSRU vessels could not be aligned to a GEM operating unit; verify vessel identities (compared at project total)")
+        return 0.0, notes, False
+
+    # Any report rows without a vessel name aren't sequential FSRUs — keep them.
+    op_cap += sum(_rcap(r) for r in rp["rows"] if not (r.get("vessel_name") or "").strip())
+    if excluded_cap > 0:
+        notes.insert(0, f"FSRU operating-only: compared {op_cap:.1f} MTPA from {op_matched} operating vessel(s); excluded {excluded_cap:.1f} MTPA of GIIGNL FSRU rows not operating in GEM")
+    return op_cap, notes, True
 
 
 def _load_colmap(csv_path):
@@ -377,6 +485,41 @@ def _build_gem_project_table(gem_csv):
                 for variant in transliterate_to_english(local_name, language):
                     _register_alias(variant)
 
+    # Parenthetical-owner disambiguation. GEM distinguishes multiple terminals
+    # that share a base name by appending the first owner in parentheses —
+    # "Tianjin LNG Terminal (PipeChina)" / "(Sinopec)" / "(Beijing Gas Group)"
+    # (common for Chinese terminals; may occur elsewhere). When ≥2 terminals in
+    # the same country+section share a base name (paren stripped) with distinct
+    # parentheticals, treat each parenthetical as an OWNER tag rather than a name
+    # token: (a) add it to owners_set so a GIIGNL row's first owner can pick the
+    # right sibling, and (b) build the fuzzy name-match tokens from the base name
+    # only — otherwise the owner word ("sinopec") matches as a name token and
+    # drags in other same-owner terminals (Liuheng/Longkou (Sinopec)).
+    families = defaultdict(list)
+    for k, p in projects.items():
+        base, paren = _split_trailing_paren(p["name_norm"])
+        p["_base_norm"] = base
+        p["_paren_text"] = paren
+        families[(k[0], base, k[2])].append(k)
+    for fam_key, members in families.items():
+        distinct_parens = {projects[m]["_paren_text"] for m in members if projects[m]["_paren_text"]}
+        is_family = len(members) >= 2 and len(distinct_parens) >= 2
+        for m in members:
+            p = projects[m]
+            if is_family and p["_paren_text"]:
+                po = normalize_entity(p["_paren_text"])
+                p["paren_owner"] = po
+                if po:
+                    p["owners_set"].add(po)
+                name_for_tokens = p["_base_norm"]
+            else:
+                p["paren_owner"] = ""
+                name_for_tokens = p["name_norm"]
+            toks = _tokens_4plus(name_for_tokens)
+            for a in p["aliases_norm"]:
+                toks |= _tokens_4plus(a)
+            p["match_tokens"] = toks
+
     return projects, alias_map
 
 
@@ -552,8 +695,14 @@ def _classify(report_rows, gem_projects, alias_map=None):
             via_alias = False
         key = rp_key  # variable name kept for code below that uses `key`
 
-        # Compare capacity
-        cap_delta = rp["total_capacity_mtpa"] - gp["total_capacity_mtpa"]
+        # Compare capacity. For FSRU terminals, compare OPERATING-vessel capacity
+        # only (GIIGNL lists every deployed FSRU as an operating row; GEM keeps
+        # superseded vessels as retired units — see _fsru_operating_report_capacity).
+        report_cap = rp["total_capacity_mtpa"]
+        fsru_op_cap, fsru_notes, fsru_applied = _fsru_operating_report_capacity(rp, gp)
+        if fsru_applied:
+            report_cap = fsru_op_cap
+        cap_delta = report_cap - gp["total_capacity_mtpa"]
         cap_pct = abs(cap_delta) / gp["total_capacity_mtpa"] * 100 if gp["total_capacity_mtpa"] else None
 
         # Compare owners
@@ -570,11 +719,12 @@ def _classify(report_rows, gem_projects, alias_map=None):
         # conflict, not authoritative — every disagreement routes to Update.
         if round(cap_delta, 2) != 0:
             pct_str = f"{cap_pct:.1f}%" if cap_pct is not None else "n/a"
-            disagreements.append(f"capacity differs by {pct_str} (report={rp['total_capacity_mtpa']:.2f}, gem={gp['total_capacity_mtpa']:.2f})")
+            disagreements.append(f"capacity differs by {pct_str} (report={report_cap:.2f}, gem={gp['total_capacity_mtpa']:.2f})")
         if owner_only_report:
             disagreements.append(f"owners in report not in GEM: {sorted(owner_only_report)}")
         if owner_only_gem:
             disagreements.append(f"owners in GEM not in report: {sorted(owner_only_gem)}")
+        disagreements.extend(fsru_notes)
 
         unit_matches, aligned_names = _align_units(rp, gp)
         matched_gp_keys.append(gp_key)
@@ -592,7 +742,7 @@ def _classify(report_rows, gem_projects, alias_map=None):
             "matched_alias": matched_alias_norm if via_alias else "",
             "section_type_report": rp["section_type"],
             "section_type_gem": gp["section_type"],
-            "report_capacity_mtpa": round(rp["total_capacity_mtpa"], 2),
+            "report_capacity_mtpa": round(report_cap, 2),
             "gem_capacity_mtpa": round(gp["total_capacity_mtpa"], 2),
             "capacity_delta_mtpa": round(cap_delta, 2),
             "capacity_delta_pct": round(cap_pct, 1) if cap_pct is not None else None,
@@ -638,16 +788,31 @@ def _classify(report_rows, gem_projects, alias_map=None):
         # previous row's partition); 2 distinctive shared tokens make a strong
         # enough match to surface as a candidate (even if just for ambiguous).
         fuzzy_hits = []
-        rp_tokens = _tokens_4plus(name_norm)
+        # Strip a trailing owner/tag parenthetical from the report name before
+        # tokenizing (mirrors the GEM-side family handling) so the owner word
+        # ("sinopec") isn't treated as a name token. Substring still uses the FULL
+        # names — a short base like "tianjin" would substring-match every sibling.
+        rp_base, rp_paren = _split_trailing_paren(name_norm)
+        rp_tokens = _tokens_4plus(rp_base)
+        rp_owners = set(rp["owners_set"])
+        if rp_paren:
+            rp_owners.add(normalize_entity(rp_paren))
+        rp_first_owner = ""
+        if rp["rows"]:
+            ents = parse_entity_list(rp["rows"][0].get("owner", ""))
+            if ents and ents[0].get("entity"):
+                rp_first_owner = ents[0]["entity"]
         for gk, gp in candidates:
             all_names = {gk[1]} | gp.get("aliases_norm", set())
             substring = any((name_norm in n) or (n in name_norm) for n in all_names)
-            gp_tokens: set[str] = set()
-            for n in all_names:
-                gp_tokens |= _tokens_4plus(n)
+            gp_tokens = gp.get("match_tokens")
+            if gp_tokens is None:
+                gp_tokens = set()
+                for n in all_names:
+                    gp_tokens |= _tokens_4plus(n)
             shared_tokens = rp_tokens & gp_tokens
             token_overlap = bool(shared_tokens)
-            owner_overlap = bool(rp["owners_set"] & gp["owners_set"])
+            owner_overlap = bool(rp_owners & gp["owners_set"])
             if substring or (token_overlap and owner_overlap) or len(shared_tokens) >= 2:
                 fuzzy_hits.append((gk, gp, {
                     "substring": substring,
@@ -658,12 +823,25 @@ def _classify(report_rows, gem_projects, alias_map=None):
                     "matched_against_names": sorted(all_names),
                 }))
 
+        # Same-base-name family disambiguation: if several candidates remain,
+        # prefer the one whose GEM parenthetical owner equals the GIIGNL row's
+        # first owner (Tianjin (PipeChina) vs (Sinopec) vs (Beijing Gas Group)).
+        if len(fuzzy_hits) > 1 and rp_first_owner:
+            owner_hits = [h for h in fuzzy_hits if h[1].get("paren_owner") == rp_first_owner]
+            if len(owner_hits) == 1:
+                fuzzy_hits = owner_hits
+
         if len(fuzzy_hits) == 1:
             gk, gp, criteria = fuzzy_hits[0]
             unit_matches, aligned_names = _align_units(rp, gp)
             matched_gp_keys.append(gk)
             aligned_unit_names_by_gp[gk] |= aligned_names
-            cap_delta = rp["total_capacity_mtpa"] - gp["total_capacity_mtpa"]
+            # FSRU operating-only capacity (see Pass 1 / _fsru_operating_report_capacity).
+            report_cap = rp["total_capacity_mtpa"]
+            fsru_op_cap, fsru_notes, fsru_applied = _fsru_operating_report_capacity(rp, gp)
+            if fsru_applied:
+                report_cap = fsru_op_cap
+            cap_delta = report_cap - gp["total_capacity_mtpa"]
             cap_pct = abs(cap_delta) / gp["total_capacity_mtpa"] * 100 if gp["total_capacity_mtpa"] else None
             owner_only_report = rp["owners_set"] - gp["owners_set"]
             owner_only_gem = gp["owners_set"] - rp["owners_set"]
@@ -671,11 +849,12 @@ def _classify(report_rows, gem_projects, alias_map=None):
             # Any non-zero capacity difference is a conflict (see Pass 1).
             if round(cap_delta, 2) != 0:
                 pct_str = f"{cap_pct:.1f}%" if cap_pct is not None else "n/a"
-                disagreements.append(f"capacity differs by {pct_str} (report={rp['total_capacity_mtpa']:.2f}, gem={gp['total_capacity_mtpa']:.2f})")
+                disagreements.append(f"capacity differs by {pct_str} (report={report_cap:.2f}, gem={gp['total_capacity_mtpa']:.2f})")
             if owner_only_report:
                 disagreements.append(f"owners in report not in GEM: {sorted(owner_only_report)}")
             if owner_only_gem:
                 disagreements.append(f"owners in GEM not in report: {sorted(owner_only_gem)}")
+            disagreements.extend(fsru_notes)
             fuzzy_matches.append({
                 "match_type": "fuzzy",
                 "confidence": "medium",
@@ -688,7 +867,7 @@ def _classify(report_rows, gem_projects, alias_map=None):
                 "matched_alias": "",
                 "section_type_report": rp["section_type"],
                 "section_type_gem": gp["section_type"],
-                "report_capacity_mtpa": round(rp["total_capacity_mtpa"], 2),
+                "report_capacity_mtpa": round(report_cap, 2),
                 "gem_capacity_mtpa": round(gp["total_capacity_mtpa"], 2),
                 "capacity_delta_mtpa": round(cap_delta, 2),
                 "capacity_delta_pct": round(cap_pct, 1) if cap_pct is not None else None,

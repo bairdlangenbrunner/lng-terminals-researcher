@@ -562,7 +562,8 @@ def _assign_countries_sequential(
 def _truecup_country_subtotals(
     rows_with_meta: list[tuple[int, str, dict, float]],
     subtotal_by_country: dict[str, float],
-    tol: float = 1.02,
+    reach_low: float = 0.94,
+    reach_high: float = 1.02,
 ) -> None:
     """Reassign leading misattributed rows using GIIGNL per-country subtotals.
 
@@ -577,14 +578,21 @@ def _truecup_country_subtotals(
     block began on page 35, leaving page 36's Australia cumulative far below budget.
 
     This post-pass repairs it: a country whose assigned rows fall short of its
-    published subtotal pulls the contiguous rows directly above it (currently
-    tagged to the previous country) until the running sum reaches the subtotal,
-    stopping before it would overshoot.
+    published subtotal *tentatively* pulls the contiguous rows directly above it
+    (currently tagged to the previous country), then COMMITS the reassignment only
+    if doing so brings the run's capacity to within [reach_low, reach_high] of the
+    subtotal — i.e. the block is now fully accounted for on this page.
 
-    Guarded to fire only on a fully-contained block — one preceded AND followed by
-    a different country on the same page — so a country that legitimately spills
-    across a page boundary (its run touches the top or bottom of the page) is never
-    robbed. `tol` (2%) absorbs GIIGNL's independent 1-decimal subtotal rounding.
+    The commit gate is essential: a country whose own block spans pages (e.g.
+    China regasification, 264 MTPA across pages 55–57) has only part of its rows on
+    any one page, so its run is "short" of the global subtotal and would otherwise
+    greedily pull the *previous* country's rows (US regas terminals) into it. Since
+    those pulls never reach the subtotal, the commit gate rejects them and the rows
+    stay put. Brunei's pulled rows reach 7.0 ≈ 7.2 → committed. The
+    reach band absorbs GIIGNL's independent 1-decimal subtotal rounding.
+
+    Also guarded to fire only on a fully-contained block — preceded AND followed by
+    a different country on the same page.
     """
     n = len(rows_with_meta)
     if n == 0:
@@ -604,16 +612,29 @@ def _truecup_country_subtotals(
         S = subtotal_by_country.get(c) if c else None
         contained = i > 0 and j < n and countries[i - 1] != c and countries[j] != c
         if S is not None and contained:
+            # Only reclaim rows from the SINGLE immediately-preceding country
+            # (the centered label makes a block's leading rows inherit exactly the
+            # one country above it). Never pull THROUGH that country into an
+            # earlier one — that's what turned "China is short of its 173 MTPA
+            # subtotal" into swallowing the whole USA + Bangladesh blocks above it.
+            prev_country = countries[i - 1]
             cur = sum(caps[i:j])
+            pulled = []
             k = i - 1
-            while k >= 0 and cur < S / tol and countries[k] != c:
-                if cur + caps[k] <= S * tol:
-                    rows_with_meta[k][2]["country"] = c
-                    countries[k] = c
+            while k >= 0 and cur < S * reach_low and countries[k] == prev_country:
+                if cur + caps[k] <= S * reach_high:
+                    pulled.append(k)
                     cur += caps[k]
                     k -= 1
                 else:
                     break
+            # Commit only if the block is now complete (rows reach the subtotal).
+            # If consuming the preceding country's tail still falls short, the
+            # current country spans pages and the rows aren't ours — leave them.
+            if pulled and S * reach_low <= cur <= S * reach_high:
+                for idx in pulled:
+                    rows_with_meta[idx][2]["country"] = c
+                    countries[idx] = c
         i = j
 
 
