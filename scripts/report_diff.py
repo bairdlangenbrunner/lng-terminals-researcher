@@ -81,7 +81,7 @@ def _build_gem_project_table(gem_csv):
     """
     colmap = _load_colmap(gem_csv)
     ci = {k: colmap.get(k) for k in [
-        "terminal_id", "terminal_name", "country", "facility_type",
+        "terminal_id", "terminal_name", "unit_name", "country", "facility_type",
         "status", "fuel", "owner", "capacity_mtpa", "floating",
         "import_export_only", "other_names", "local_names", "language",
     ]}
@@ -101,6 +101,7 @@ def _build_gem_project_table(gem_csv):
                 continue
             country = row[ci["country"]]
             tname = row[ci["terminal_name"]]
+            uname = row[ci["unit_name"]] if ci["unit_name"] is not None else ""
             ftype = row[ci["facility_type"]] if ci["facility_type"] is not None else ""
             country_norm = normalize_country(country)
             tname_norm = normalize_terminal_name(tname)
@@ -147,6 +148,7 @@ def _build_gem_project_table(gem_csv):
                     "country_norm": country_norm,
                     "name_norm": tname_norm,
                     "section_type": section_type,
+                    "unit_names": [],
                     "aliases_norm": set(),
                     "aliases_raw": set(),
                     "status_set": set(),
@@ -158,6 +160,8 @@ def _build_gem_project_table(gem_csv):
                 }
             p = projects[key]
             p["status_set"].add(status)
+            if uname and uname != "--" and uname not in p["unit_names"]:
+                p["unit_names"].append(uname)
             p["total_units"] += 1
             if status == "operating":
                 p["operating_units"] += 1
@@ -316,6 +320,7 @@ def _classify(report_rows, gem_projects, alias_map=None):
             "site_name": rp["site_name"],
             "gem_terminal_id": gp["terminal_id"],
             "gem_terminal_name": gp["terminal_name"],
+            "gem_unit_name": gp["unit_names"],
             "matched_alias": matched_alias_norm if via_alias else "",
             "section_type_report": rp["section_type"],
             "section_type_gem": gp["section_type"],
@@ -397,6 +402,7 @@ def _classify(report_rows, gem_projects, alias_map=None):
                 "site_name": rp["site_name"],
                 "gem_terminal_id": gp["terminal_id"],
                 "gem_terminal_name": gp["terminal_name"],
+                "gem_unit_name": gp["unit_names"],
                 "section_type_report": rp["section_type"],
                 "section_type_gem": gp["section_type"],
                 "report_capacity_mtpa": round(rp["total_capacity_mtpa"], 2),
