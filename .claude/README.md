@@ -23,11 +23,28 @@ the **shared team baseline** for tool permissions.
   tool name with no parentheses (e.g. `"Bash"`) matches **every** use of that tool,
   so `"Bash"` means *any* shell command runs unprompted. Entries like
   `"Bash(python3 *)"` would instead allow only matching commands.
+- **`deny` list** — hard blocks that override `allow` (deny always wins). Because
+  this baseline allows bare `Bash`, the deny list is the *only* guard carving
+  dangerous operations back out. The current rules block reading secret files
+  (`.env*`) and a few destructive shell commands (`rm -rf`, `git push --force`,
+  `git reset --hard`). Note Bash deny matching is **prefix-based and best-effort** —
+  the same command phrased differently (e.g. `git push origin main --force`) can
+  slip past a `git push --force` rule. Treat it as a safety net, not a guarantee.
 
 In short: with this config Claude will edit files and run shell commands during a
 batch without stopping to ask. That speed is the point — the whole workflow is
 "produce a staging xlsx," and the hard rule that Claude **never writes to the live
 GEM database** lives in `CLAUDE.md`, not in this permission layer.
+
+> ⚠️ **`deny` rules do NOT apply under `bypassPermissions` mode.** If a user's
+> `settings.local.json` sets `"defaultMode": "bypassPermissions"`, that session
+> skips *all* permission evaluation — both `allow` and `deny`. The only blocks that
+> still fire in bypass mode are two hard-coded circuit breakers (`rm -rf /` and
+> `rm -rf ~`). So the deny rules above protect sessions running the `acceptEdits`
+> baseline (i.e. anyone who hasn't opted into local bypass), **not** a bypass
+> session. The only way to enforce hard blocks against bypass is to disable bypass
+> mode entirely via enterprise `managed-settings.json`
+> (`"disableBypassPermissionsMode": "disable"`).
 
 ## How settings layer (precedence, highest wins)
 
