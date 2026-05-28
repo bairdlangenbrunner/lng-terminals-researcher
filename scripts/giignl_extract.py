@@ -196,6 +196,17 @@ _SUPER_REGION_RE = re.compile(
     re.IGNORECASE,
 )
 
+# Page footer, a standalone line "<page#> - GIIGNL Annual Report <year> Edition".
+# It sits at the bottom of every table page; if not skipped, the line-merge pass
+# folds it into the last data row of the page and the column slicer splits the
+# footer text across cells (e.g. "Annual" → country cell "… GIIGNL An" + site cell
+# "nual Report 2026 Edition"), corrupting that row (QatarEnergy LNG S(2) T4, Yamal
+# T1, Ruwais, etc.). Matched leniently so an edition-year or spacing change still
+# trips it.
+_PAGE_FOOTER_RE = re.compile(
+    r"GIIGNL\s+Annual\s+Report\s+\d{4}\s+Edition", re.IGNORECASE
+)
+
 # A status-hint parenthetical, e.g. "(Mothballed)", "(Idle)".
 _STATUS_HINT_RE = re.compile(r"\(([^)]+)\)\s*$")
 
@@ -375,6 +386,9 @@ def _classify_lines(
     subtotals: list[tuple[int, float]] = []
     for i, ln in enumerate(lines):
         if not ln.strip():
+            continue
+        if _PAGE_FOOTER_RE.search(ln):
+            skip.add(i)
             continue
         if _SUPER_REGION_RE.match(ln):
             skip.add(i)

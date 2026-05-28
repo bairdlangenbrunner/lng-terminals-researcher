@@ -32,6 +32,9 @@ Color conventions per SKILL.md:
   - yellow: hex FFF8E1 — single non-primary source OR value implied
   - red:    hex FFE5E5 — single weak source (prefer leaving blank)
   - blue:   hex E5F0FF — re-verified, unchanged (terminals-specific)
+  Reconciliation giignl_diff_* override: a capacity disagreement is graded by
+  size — light red FFE5E5 for a <5% delta, darker red FFB0B0 for >=5% (or an
+  undefined delta when GEM capacity is 0). Owner-only deltas stay light red.
 
 Read-only columns (per gem_db_schema.md): NEVER written by this script.
   - Computed: CapacityinMtpa, CapacityinBcm/y, TotImport*, TotExport*, CostUSD, CostEuro, etc.
@@ -60,6 +63,9 @@ except ImportError:
 GREEN = PatternFill("solid", fgColor="EEF7EE")
 YELLOW = PatternFill("solid", fgColor="FFF8E1")
 RED = PatternFill("solid", fgColor="FFE5E5")
+# Darker red for larger (>=5%) reconciliation capacity disagreements; the
+# light RED above marks a <5% capacity delta. See _cap_conflict_fill.
+RED_DARK = PatternFill("solid", fgColor="FFB0B0")
 BLUE = PatternFill("solid", fgColor="E5F0FF")
 GRAY = PatternFill("solid", fgColor="EEEEEE")  # header
 NONE_FILL = PatternFill("none")
@@ -72,10 +78,25 @@ CONFIDENCE_TO_FILL = {
     "green": GREEN,
     "yellow": YELLOW,
     "red": RED,
+    "red_dark": RED_DARK,
     "blue": BLUE,
     "": NONE_FILL,
     None: NONE_FILL,
 }
+
+# Reconciliation capacity-disagreement threshold: a percent capacity delta
+# below this stays light red; at/above it (or an undefined pct, e.g. GEM
+# capacity is 0) escalates to the darker red.
+CAP_CONFLICT_PCT_THRESHOLD = 5.0
+
+
+def _cap_conflict_fill(pct):
+    """Pick the red shade for a capacity disagreement by its percent delta.
+    Light red for <5%; darker red for >=5% or an undefined delta (pct is None
+    when GEM capacity is 0 — treated as a large/material disagreement)."""
+    if pct is None or abs(pct) >= CAP_CONFLICT_PCT_THRESHOLD:
+        return "red_dark"
+    return "red"
 
 
 # Per-sheet descriptions written into the README sheet at build time, so a
@@ -130,8 +151,15 @@ SHEET_DESCRIPTIONS = {
         "and per-complex unit-code rows like 'Arzew GL1Z/2Z/3Z'). Capacity (report "
         "vs gem, delta, %), owner sets, counts. `disagreements` + the specific "
         "conflicting cells (capacity when it differs at all, owner deltas, per-unit "
-        "capacity mismatch) get a light-red fill; fuzzy confidence cell is yellow. "
-        "AUDIT here; act via giignl_to_action."
+        "capacity mismatch) get a red fill, GRADED BY SIZE for capacity: light red "
+        "(FFE5E5) for a <5% capacity delta, darker red (FFB0B0) for >=5% (or an "
+        "undefined delta when GEM capacity is 0); owner-only deltas stay light red. "
+        "Fuzzy confidence cell is yellow. `analyst_note` (optional) carries a "
+        "human resolution of a flagged delta — e.g. a metric mismatch where "
+        "GIIGNL's number is receiving/design throughput, not regas sendout — so a "
+        "surfaced red is contextualized rather than silently dropped. AUDIT here; "
+        "act via giignl_to_action (a fuzzy match flagged `route_to_action` in the "
+        "diff JSON is forwarded there even though fuzzy matches aren't auto-routed)."
     ),
     "giignl_diff_nonoperating": (
         "NON-OPERATING units of matched projects (proposed/construction/shelved/"
@@ -291,6 +319,16 @@ def build_readme(wb, mode, inputs_summary):
         ("  Red", "Single weak source — consider leaving blank instead"),
         ("  Blue", "Re-verified unchanged — value reconfirmed against current source(s)"),
         ("  None", "Searched but no confirming source found"),
+    ]
+    if mode == "reconciliation":
+        rows += [
+            ("", ""),
+            ("giignl_diff_* color override", ""),
+            ("  Light red", "Capacity disagreement <5%, or an owner-only delta"),
+            ("  Darker red", "Capacity disagreement >=5% (or undefined when GEM capacity is 0)"),
+            ("  Yellow", "Fuzzy (medium-confidence) match — see confidence cell"),
+        ]
+    rows += [
         ("", ""),
         ("Read-only columns", "Italicized headers — never edit; these are GEM-computed or out-of-scope"),
         ("", ""),
@@ -468,7 +506,7 @@ GIIGNL_OPERATING_HEADERS = [
     "capacity_delta_mtpa", "capacity_delta_pct",
     "owners_overlap", "owners_report_only", "owners_gem_only",
     "report_train_count", "gem_operating_units", "gem_total_units",
-    "disagreements",
+    "disagreements", "analyst_note",
 ]
 
 
@@ -489,9 +527,10 @@ def build_giignl_diff_operating_sheet(wb, diff):
             cm["disagreements"] = "red"
             cap_delta = m.get("capacity_delta_mtpa")
             if cap_delta is not None and round(cap_delta, 2) != 0:
+                cap_fill = _cap_conflict_fill(m.get("capacity_delta_pct"))
                 for col in ("report_capacity_mtpa", "gem_capacity_mtpa",
                             "capacity_delta_mtpa", "capacity_delta_pct"):
-                    cm[col] = "red"
+                    cm[col] = cap_fill
             if m.get("owners_report_only"):
                 cm["owners_report_only"] = "red"
             if m.get("owners_gem_only"):
@@ -525,9 +564,10 @@ def build_giignl_diff_operating_sheet(wb, diff):
             }
             ucm = {}
             if not um.get("agree"):
+                cap_fill = _cap_conflict_fill(um.get("capacity_delta_pct"))
                 for col in ("report_capacity_mtpa", "gem_capacity_mtpa",
                             "capacity_delta_mtpa", "capacity_delta_pct", "disagreements"):
-                    ucm[col] = "red"
+                    ucm[col] = cap_fill
             _write_row(ws, urow, headers, row_idx, confidence_map=ucm)
             row_idx += 1
     _autosize(ws)
@@ -636,12 +676,18 @@ def build_giignl_to_action_sheet(wb, diff):
         }
         _write_row(ws, row, headers, row_idx, confidence_map={"action_category": "red"})
         row_idx += 1
-    # Matches with disagreement → potential updates
-    for m in diff.get("matches", []):
+    # Matches with disagreement → potential updates. Exact matches auto-route;
+    # fuzzy matches don't (they need match-verification first) UNLESS an analyst
+    # has flagged the entry `route_to_action` in the diff JSON after confirming it
+    # (e.g. Yangshan, verified 2026-05-28 — a receiving-vs-regas metric mismatch).
+    routed_fuzzy = [m for m in diff.get("fuzzy_matches", []) if m.get("route_to_action")]
+    for m in diff.get("matches", []) + routed_fuzzy:
         if not m.get("disagreements"):
             continue
+        is_fuzzy = m.get("match_type") == "fuzzy"
         row = {
-            "action_category": "matched_with_disagreement",
+            "action_category": "matched_with_disagreement"
+                + (" (fuzzy, analyst-verified)" if is_fuzzy else ""),
             "country": m["country"],
             "site_name": m["site_name"],
             "gem_terminal_id": m["gem_terminal_id"],
@@ -651,7 +697,7 @@ def build_giignl_to_action_sheet(wb, diff):
             "section_type": m.get("section_type_gem"),
             "owners": ", ".join(m.get("owners_overlap", [])),
             "recommended_workflow": "Update (investigate disagreement; do NOT auto-apply report values)",
-            "notes": "; ".join(m.get("disagreements", [])),
+            "notes": m.get("analyst_note") or "; ".join(m.get("disagreements", [])),
         }
         _write_row(ws, row, headers, row_idx, confidence_map={"action_category": "yellow"})
         row_idx += 1

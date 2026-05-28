@@ -168,9 +168,13 @@ GIIGNL-only ("report_only", ~100) list with rows that aren't real discoveries:
   "Guantang" (Taiwan / CPC) tagged Korea; "Zeebrugge Expansion Krk" merges
   Belgium + Croatia on one row. The §3.2 sequential country-walk / subtotal-budget
   logic mis-routes some rows.
-- **Page footer leaked as a data row:** country `"4 - GIIGNL Annual Report 2026
-  Edition"`, site `"Dabhol Expansion nual Report 2026 Edition"` — running
-  header/footer not stripped before row partitioning.
+- **Page footer leaked as a data row** [RESOLVED 2026-05-28]: country `"4 - GIIGNL
+  Annual Report 2026 Edition"`, site `"Dabhol Expansion nual Report 2026 Edition"`.
+  Fixed: `giignl_extract.py` `_PAGE_FOOTER_RE` now skips the standalone
+  "GIIGNL Annual Report <year> Edition" footer line during `_classify_lines`, so
+  the line-merge pass no longer folds it into the last data row. Recovered 8 rows
+  (incl. QatarEnergy LNG S(2) T4 — S(2) now sums to 14.1 not 9.4) and fixed the
+  knock-on country mis-tags (Ruwais→UAE, San Juan→Puerto Rico, Yamal T1→Russia, etc.).
 - **Orphaned site names:** a China row whose site is literally `"expansion"`
   (the real name landed on a prior physical line and got split off).
 - **Owner-token doubling:** "PipeChina PipeChina 60%", "Fluxys LNG LNG Hrvatska".
@@ -201,6 +205,33 @@ post-fold Yangshan (12 vs GEM 6) and South Hook (19.5 vs GEM 15.6) now surface a
 real fuzzy-match capacity gaps — investigate whether GEM is missing the expansion
 units or GIIGNL double-counts. The extractor artifacts under root cause A above
 are deliberately NOT folded (the fold requires a resolvable base partner), so
-"Zeebrugge Expansion Krk", the bare "expansion" China row, and the "Dabhol
-Expansion nual Report 2026 Edition" footer-leak still need the extractor fixes
-in (1).
+"Zeebrugge Expansion Krk" and the bare "expansion" China row still need the
+country-boundary extractor fixes in (1). (The "Dabhol Expansion nual Report 2026
+Edition" footer-leak is now fixed — see root cause A above.)
+
+---
+
+## OPEN: Qatar Ras Laffan complex matches at project level (found 2026-05-28)
+
+GIIGNL splits the Ras Laffan liquefaction complex into per-sub-complex rows —
+"QatarEnergy LNG N(1)", "N(2)", "N(4)", "S(1)", "S(2)", "S(3)" — while GEM models
+it as TWO terminals, "QatarEnergy LNG (N)" and "(S)", each with multi-train units
+(GEM (S) has units "S(1) T1-2", "S(2) T3-5", "S(3) T6-7"). After the footer fix,
+GIIGNL S(2) correctly sums to 14.1 (T3+T4+T5), which **equals GEM's S(2) T3-5 unit
+(14.1)** — but the diff compares it against the whole GEM (S) project total (36.3),
+so it shows a spurious 61% project-level disagreement instead of a clean
+unit-level agreement. Also the fuzzy pass scatters the sub-rows (S(1)→GEM (N);
+N(1)/N(2) land in report_only, partly because the country walk mis-tags them
+"Oman" — a separate centered-label issue), and the bare "QatarEnergy LNG" rows
+(N(3) T6 / S(3) T6) have no sub-complex code.
+
+**What's needed:** a code-token unit-alignment mode in `report_diff.py` that (a)
+consolidates GIIGNL "QatarEnergy LNG N(*)" → GEM "(N)" and "S(*)" → GEM "(S)", and
+(b) groups GIIGNL rows by their distinctive code token (n(1), s(2), …), sums each
+group, and aligns it to the GEM unit bearing the same code ("S(2) T3-5"), with
+capacity corroboration. This is a real feature with over-fit risk (the current
+`_align_units` is per-row + subset-only), so it was NOT done in the rev-5 batch —
+flagged for user decision. Until then, treat Qatar (N)/(S) project-level deltas as
+"complex split differently," not real capacity conflicts (see Reconciliation SOP
+§5.3). The N(1)/N(2)→Oman country mis-tag is a separate `giignl_extract.py`
+centered-label fix (root cause A family).
