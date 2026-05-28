@@ -40,7 +40,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 from normalize import (
     normalize_country, normalize_entity, normalize_terminal_name,
-    parse_entity_list,
+    parse_entity_list, transliterate_to_english,
 )
 
 
@@ -56,28 +56,40 @@ def _load_colmap(csv_path):
 
 def _build_gem_project_table(gem_csv):
     """Collapse the unit-level GEM CSV into project-level entries.
-    
-    Returns dict: (country_norm, name_norm) -> project_dict
-    
-    project_dict contains:
-      - terminal_id, terminal_name, country
-      - section_type ('liquefaction' or 'regasification') derived from FacilityType
-      - status_set: set of statuses across all units
-      - total_capacity_mtpa: sum of CapacityinMtpa across operating units
-      - operating_unit_count, total_unit_count
-      - owners_set: union of normalized owner tags across units
-      - fsru: True if any unit is a Floating regasification
+
+    Returns (projects, alias_map):
+      projects = {(country_norm, terminal_name_norm, section_type): project_dict}
+      alias_map = {(country_norm, alias_norm, section_type): canonical_key}
+
+    Key includes section_type so a single GEM terminal with BOTH liquefaction
+    and regasification facilities (e.g. Sabine Pass, which has 6 export trains
+    and 1 import terminal under the same TerminalName) becomes TWO project
+    entries — one per section_type. Otherwise their capacities would sum
+    incorrectly when matched against GIIGNL's section-specific tables.
+
+    alias_map lets the matcher find a GEM project when GIIGNL uses a name
+    that lives in GEM's OtherNames column rather than TerminalName. Example:
+    Kribi FLNG is in GEM under TerminalName "Cameroon FLNG Terminal" with
+    "Kribi FLNG Terminal" listed under OtherNames; the alias map makes the
+    GIIGNL "Kribi" row match.
+
+    project_dict fields:
+      - terminal_id, terminal_name, country, section_type
+      - aliases_norm: set of normalized OtherNames (used by fuzzy match too)
+      - status_set, total_capacity_mtpa, operating_units, total_units
+      - owners_set, fsru
     """
     colmap = _load_colmap(gem_csv)
     ci = {k: colmap.get(k) for k in [
         "terminal_id", "terminal_name", "country", "facility_type",
         "status", "fuel", "owner", "capacity_mtpa", "floating",
-        "import_export_only",
+        "import_export_only", "other_names", "local_names", "language",
     ]}
     if None in (ci["terminal_id"], ci["terminal_name"], ci["country"]):
         sys.exit("ERROR: GEM CSV missing required columns")
 
     projects = {}
+    alias_map: dict[tuple, tuple] = {}
     with open(gem_csv, encoding="utf-8") as f:
         reader = csv.reader(f)
         next(reader)
@@ -92,23 +104,27 @@ def _build_gem_project_table(gem_csv):
             ftype = row[ci["facility_type"]] if ci["facility_type"] is not None else ""
             country_norm = normalize_country(country)
             tname_norm = normalize_terminal_name(tname)
-            key = (country_norm, tname_norm)
             if not country_norm or not tname_norm:
                 continue
 
-            # Derive section type from FacilityType
             ie_only = row[ci["import_export_only"]] if ci["import_export_only"] is not None else ""
-            if "export" in (ftype + " " + ie_only).lower() or "liquefaction" in ftype.lower():
+            combined = (ftype + " " + ie_only).lower()
+            if "export" in combined or "liquefaction" in ftype.lower():
                 section_type = "liquefaction"
-            elif "import" in (ftype + " " + ie_only).lower() or "regasification" in ftype.lower():
+            elif "import" in combined or "regasification" in ftype.lower():
                 section_type = "regasification"
             else:
                 section_type = "unknown"
+            if section_type == "unknown":
+                continue
+
+            key = (country_norm, tname_norm, section_type)
 
             status = row[ci["status"]] if ci["status"] is not None else ""
             owner = row[ci["owner"]] if ci["owner"] is not None else ""
             cap_mtpa = row[ci["capacity_mtpa"]] if ci["capacity_mtpa"] is not None else ""
             floating = row[ci["floating"]] if ci["floating"] is not None else ""
+            other_names_raw = row[ci["other_names"]] if ci["other_names"] is not None else ""
 
             try:
                 cap = float(cap_mtpa) if cap_mtpa else 0.0
@@ -131,6 +147,8 @@ def _build_gem_project_table(gem_csv):
                     "country_norm": country_norm,
                     "name_norm": tname_norm,
                     "section_type": section_type,
+                    "aliases_norm": set(),
+                    "aliases_raw": set(),
                     "status_set": set(),
                     "total_capacity_mtpa": 0.0,
                     "operating_units": 0,
@@ -148,24 +166,66 @@ def _build_gem_project_table(gem_csv):
             if floating and floating.lower() in ("true", "yes", "1"):
                 p["fsru"] = True
 
-    return projects
+            local_names_raw = row[ci["local_names"]] if ci["local_names"] is not None else ""
+            languages_raw = row[ci["language"]] if ci["language"] is not None else ""
+
+            def _register_alias(alias_raw_input: str) -> None:
+                """Normalize + register an alias on this project."""
+                if not alias_raw_input or not alias_raw_input.strip():
+                    return
+                alias_norm = normalize_terminal_name(alias_raw_input)
+                if not alias_norm or alias_norm == tname_norm:
+                    return
+                if alias_norm in p["aliases_norm"]:
+                    return
+                p["aliases_norm"].add(alias_norm)
+                p["aliases_raw"].add(alias_raw_input.strip())
+                alias_key = (country_norm, alias_norm, section_type)
+                # Don't let an alias overwrite a canonical entry: if alias_key
+                # is already a canonical key, leave alias_map alone (canonical wins).
+                if alias_key not in projects and alias_key not in alias_map:
+                    alias_map[alias_key] = key
+
+            # OtherNames: simple comma-split, register each as alias.
+            for alias_raw in (other_names_raw or "").split(","):
+                _register_alias(alias_raw)
+
+            # LocalNames: comma-split paired with Language column (1:1). Each
+            # local name gets registered raw AND with English transliterations
+            # (e.g. "中石油唐山曹妃甸LNG接收站" → also adds the pinyin form so
+            # GIIGNL's "Caofeidian (Tangshan)" can match via shared tokens).
+            # See normalize.transliterate_to_english for supported scripts.
+            local_list = [n.strip() for n in (local_names_raw or "").split(",") if n.strip()]
+            lang_list = [l.strip() for l in (languages_raw or "").split(",") if l.strip()]
+            for i, local_name in enumerate(local_list):
+                language = lang_list[i] if i < len(lang_list) else ""
+                for variant in transliterate_to_english(local_name, language):
+                    _register_alias(variant)
+
+    return projects, alias_map
 
 
-def _classify(report_rows, gem_projects):
-    """Apply two-pass matching, classify each row.
-    
-    Returns dict with: matches, giignl_only, gem_only, ambiguous, agreement_stats
+def _classify(report_rows, gem_projects, alias_map=None):
+    """Apply matching with canonical + alias + fuzzy passes, then classify.
+
+    Returns dict with: matches, fuzzy_matches, report_only, gem_only_operating,
+                       ambiguous, stats
     """
-    # Group report rows by (country, name) — collapse subtotal rows
+    alias_map = alias_map or {}
+    # Group report rows by (country, name, section_type) — collapse subtotal rows.
+    # section_type is part of the key so a site with both liquefaction and
+    # regasification rows in GIIGNL maps to two separate report-side projects,
+    # mirroring the GEM-side keying.
     report_projects = {}
     for r in report_rows:
         if (r.get("notes") or "").lower().startswith("country subtotal"):
-            continue  # skip subtotal rows
+            continue
         country_norm = normalize_country(r.get("country", ""))
         name_norm = normalize_terminal_name(r.get("site_name", ""))
-        if not country_norm or not name_norm:
+        section_type = r.get("section_type", "")
+        if not country_norm or not name_norm or not section_type:
             continue
-        key = (country_norm, name_norm)
+        key = (country_norm, name_norm, section_type)
 
         try:
             cap = float(r.get("capacity_mtpa", "")) if r.get("capacity_mtpa") else 0.0
@@ -176,8 +236,6 @@ def _classify(report_rows, gem_projects):
         for ent in parse_entity_list(r.get("owner", "")):
             if ent["entity"]:
                 owner_tags.add(ent["entity"])
-
-        section_type = r.get("section_type", "")
 
         if key not in report_projects:
             report_projects[key] = {
@@ -197,15 +255,39 @@ def _classify(report_rows, gem_projects):
         rp["trains_count"] += 1
         rp["rows"].append(r)
 
-    # Pass 1: exact match
+    # Pass 1: exact match — first try canonical TerminalName, then OtherNames alias.
     matches = []
-    giignl_only_keys = set(report_projects.keys()) - set(gem_projects.keys())
-    gem_only_keys = set(gem_projects.keys()) - set(report_projects.keys())
-    matched_keys = set(report_projects.keys()) & set(gem_projects.keys())
+    matched_report_keys: set[tuple] = set()
+    matched_gem_keys: set[tuple] = set()
+    # Map each report key to the GEM canonical key it matched (if any) and
+    # which side of the GEM record matched it.
+    canonical_via_alias: dict[tuple, tuple] = {}  # report_key -> (canonical_key, alias_norm)
 
-    for key in matched_keys:
-        rp = report_projects[key]
-        gp = gem_projects[key]
+    for rp_key in list(report_projects.keys()):
+        if rp_key in gem_projects:
+            matched_report_keys.add(rp_key)
+            matched_gem_keys.add(rp_key)
+        elif rp_key in alias_map:
+            canonical_key = alias_map[rp_key]
+            matched_report_keys.add(rp_key)
+            matched_gem_keys.add(canonical_key)
+            canonical_via_alias[rp_key] = (canonical_key, rp_key[1])
+
+    giignl_only_keys = set(report_projects.keys()) - matched_report_keys
+    gem_only_keys = set(gem_projects.keys()) - matched_gem_keys
+
+    for rp_key in matched_report_keys:
+        rp = report_projects[rp_key]
+        if rp_key in canonical_via_alias:
+            gp_key, matched_alias_norm = canonical_via_alias[rp_key]
+            gp = gem_projects[gp_key]
+            via_alias = True
+        else:
+            gp_key = rp_key
+            gp = gem_projects[gp_key]
+            matched_alias_norm = ""
+            via_alias = False
+        key = rp_key  # variable name kept for code below that uses `key`
 
         # Compare capacity
         cap_delta = rp["total_capacity_mtpa"] - gp["total_capacity_mtpa"]
@@ -216,8 +298,9 @@ def _classify(report_rows, gem_projects):
         owner_only_report = rp["owners_set"] - gp["owners_set"]
         owner_only_gem = gp["owners_set"] - rp["owners_set"]
 
-        # Confidence on the match
-        confidence = "high"  # exact name match
+        # Confidence on the match — "high" for canonical name hit, "high"
+        # also for alias hit (still deterministic, just via OtherNames).
+        confidence = "high"
         disagreements = []
         if cap_pct is not None and cap_pct > 10:
             disagreements.append(f"capacity differs by {cap_pct:.1f}% (report={rp['total_capacity_mtpa']:.2f}, gem={gp['total_capacity_mtpa']:.2f})")
@@ -227,12 +310,13 @@ def _classify(report_rows, gem_projects):
             disagreements.append(f"owners in GEM not in report: {sorted(owner_only_gem)}")
 
         matches.append({
-            "match_type": "exact",
+            "match_type": "exact_via_alias" if via_alias else "exact",
             "confidence": confidence,
             "country": rp["country"],
             "site_name": rp["site_name"],
             "gem_terminal_id": gp["terminal_id"],
             "gem_terminal_name": gp["terminal_name"],
+            "matched_alias": matched_alias_norm if via_alias else "",
             "section_type_report": rp["section_type"],
             "section_type_gem": gp["section_type"],
             "report_capacity_mtpa": round(rp["total_capacity_mtpa"], 2),
@@ -256,24 +340,52 @@ def _classify(report_rows, gem_projects):
         rp = report_projects[key]
         country_norm = key[0]
         name_norm = key[1]
-        # Candidates in same country
+        section_type = key[2]
+        # Candidates in same country AND same section_type (a GIIGNL
+        # liquefaction row shouldn't fuzzy-match a GEM regasification entry).
         candidates = [
             (gk, gp) for gk, gp in gem_projects.items()
-            if gk[0] == country_norm and gk in gem_only_keys
+            if gk[0] == country_norm and gk[2] == section_type and gk in gem_only_keys
         ]
-        # Fuzzy criteria: substring match OR shared 4+ char token AND owner overlap
+        # Fuzzy criteria (any of):
+        #   (a) substring match — name is contained in the other (strong signal)
+        #   (b) any 4+ char token shared AND owner overlap — distinct word + confirmation
+        #   (c) 2+ distinctive 4+ char tokens shared — owner-free strong signal
+        # Compare across BOTH canonical TerminalName AND all OtherNames + LocalNames
+        # aliases (the latter includes transliterations of CJK names per normalize.py).
+        # (c) catches cases where the GIIGNL owner cell is truncated or mis-parsed
+        # (e.g. Caofeidian/Tangshan PetroChina where the owner line wraps onto the
+        # previous row's partition); 2 distinctive shared tokens make a strong
+        # enough match to surface as a candidate (even if just for ambiguous).
         fuzzy_hits = []
-        rp_tokens = {t for t in name_norm.split() if len(t) >= 4}
+        # Token extraction: strip leading/trailing non-word chars (parens,
+        # commas, periods) so "(tangshan)," tokenizes as "tangshan".
+        import string as _string
+        def _tokens_4plus(s: str) -> set[str]:
+            out = set()
+            for raw in s.split():
+                clean = raw.strip(_string.punctuation + "()[]{}")
+                if len(clean) >= 4:
+                    out.add(clean)
+            return out
+        rp_tokens = _tokens_4plus(name_norm)
         for gk, gp in candidates:
-            gname = gk[1]
-            substring = (name_norm in gname) or (gname in name_norm)
-            token_overlap = bool(rp_tokens & {t for t in gname.split() if len(t) >= 4})
+            all_names = {gk[1]} | gp.get("aliases_norm", set())
+            substring = any((name_norm in n) or (n in name_norm) for n in all_names)
+            gp_tokens: set[str] = set()
+            for n in all_names:
+                gp_tokens |= _tokens_4plus(n)
+            shared_tokens = rp_tokens & gp_tokens
+            token_overlap = bool(shared_tokens)
             owner_overlap = bool(rp["owners_set"] & gp["owners_set"])
-            if substring or (token_overlap and owner_overlap):
+            if substring or (token_overlap and owner_overlap) or len(shared_tokens) >= 2:
                 fuzzy_hits.append((gk, gp, {
                     "substring": substring,
                     "token_overlap": token_overlap,
                     "owner_overlap": owner_overlap,
+                    "shared_token_count": len(shared_tokens),
+                    "shared_tokens": sorted(shared_tokens),
+                    "matched_against_names": sorted(all_names),
                 }))
 
         if len(fuzzy_hits) == 1:
@@ -376,8 +488,8 @@ def main():
     with open(args.extracted, encoding="utf-8") as f:
         report_rows = list(csv.DictReader(f))
 
-    gem_projects = _build_gem_project_table(args.gem_csv)
-    diff = _classify(report_rows, gem_projects)
+    gem_projects, alias_map = _build_gem_project_table(args.gem_csv)
+    diff = _classify(report_rows, gem_projects, alias_map=alias_map)
     diff["report_type"] = args.report
     diff["extracted_csv"] = args.extracted
     diff["gem_csv"] = args.gem_csv

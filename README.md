@@ -1,6 +1,6 @@
-# LNG Terminals Tracker — agent scaffolding
+# LNG terminals researcher
 
-Operational scaffolding for an LLM research assistant that helps maintain
+Operational repository for an LLM research assistant that helps maintain
 [GEM's Global Gas Infrastructure Tracker (GGIT) LNG terminals database](https://globalenergymonitor.org/projects/global-gas-infrastructure-tracker/).
 
 This repo is designed to be used with [Claude Code](https://docs.claude.com/en/docs/claude-code).
@@ -10,10 +10,9 @@ database directly.
 ## Quick start
 
 1. Install dependencies: `pip install -r requirements.txt`
-2. Copy `.env.example` to `.env` and fill in GEM auth cookies
-3. Drop your `gem_export_via_web.py` auth wrapper into `scripts/` (gitignored)
-4. Open the repo in Claude Code: `claude .`
-5. Claude reads `CLAUDE.md` automatically and routes from there
+2. Copy `.env.example` to `.env` and fill in GEM auth cookies (only needed for the cookie-based web export; `gem_all_fields.py` needs no cookies)
+3. Open the repo in Claude Code: `claude .`
+4. Claude reads `CLAUDE.md` automatically and routes from there
 
 ## Four workflows
 
@@ -32,7 +31,7 @@ See `CLAUDE.md` for the routing logic and `docs/sops/` for the full procedures.
 CLAUDE.md                  Entry point for Claude Code — workflow router + hard rules
 README.md                  This file
 TODO.md                    Open design questions still to decide
-requirements.txt           Minimal Python deps (openpyxl)
+requirements.txt           Python deps (openpyxl, pdfplumber, jieba, pypinyin)
 .env.example               Template for auth cookies
 
 docs/
@@ -52,8 +51,11 @@ docs/
   design-history/          Original scaffolding conversation transcript
 
 scripts/                   Python tools called by the workflows
-  normalize.py             Country/entity/capacity canonicalization
-  pull_gem_db.py           Pull fresh GEM CSV export
+  gem_query.py             Query the GEM read-only Postgres DB → CSV
+  gem_all_fields.py        Reproduce the website's all-fields LNG CSV (no cookies)
+  gem_export_via_web.py    Download all-fields CSV from the live website (cookies)
+  pull_gem_db.py           Wrap a data-pull + derive the column-index map
+  normalize.py             Country/entity/capacity canonicalization + CJK transliteration
   dedup_index.py           Build matching indexes for candidate dedup
   url_verifier.py          HTTP 200 + content + soft-error check
   capacity_normalize.py    mtpa/bcm/y conversions and range handling
@@ -62,13 +64,13 @@ scripts/                   Python tools called by the workflows
   fetch_timeline.py        Pull full timeline for a UnitID from web UI
   entity_lookup.py         Check GEM entity system before adding new entities
   imo_tracker.py           Look up vessel IMO via marinetraffic.org
-  giignl_extract.py        Two-phase GIIGNL table extraction
+  giignl_extract.py        Parse the GIIGNL annual-report PDF → flat CSV (pdftotext -layout)
   report_diff.py           Reconciliation diff (GIIGNL or IGU vs GEM)
   fsru_sync_check.py       Cross-check FSRUs against carrier project
   build_review_package.py  Assemble the batch xlsx deliverable
   recalc.py                Formula-error check before presenting xlsx
 
-batches/                   Batch outputs (gitignored; create as needed)
+batches/                   Batch outputs (gitignored; .gitkeep retained)
 monitor_list/              Cross-batch monitor list (Discovery SOP §5)
 ```
 

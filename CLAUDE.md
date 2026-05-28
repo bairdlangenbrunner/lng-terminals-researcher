@@ -1,6 +1,6 @@
 ---
 name: lng-terminals
-description: Operating scaffolding for the GEM LNG Terminals research project — four workflows that produce a single staging xlsx per batch for the user to apply to the live GEM database manually. The workflows are (1) update existing terminals, (2) discover new terminals, (3) reconcile against the annual GIIGNL report, and (4) triage (decide what to work on this batch). Use this skill whenever the user asks for a terminals batch, a GIIGNL diff, a stale-sweep, a discovery run, an FSRU sync check, or any work that produces or modifies the staging xlsx (lng_terminals_batch_YYYYMMDD.xlsx). Also use this skill when the user mentions "the GEM database", "the terminals tracker", "GGIT", "GIIGNL", "the methodology doc", a country-level sweep, an FSRU vessel-to-terminal sync, the status timeline, the entity tree, or any of the standard GEM tools (entity link, ownership tree, wiki, test database). The skill is the executable scaffolding — the project's research rules live in GEM's published methodology doc (the "LNG Terminals Manual"), which is authoritative for what counts as a terminal, what the lifecycle states mean, and how units are named. The SOPs in this project are operational — they describe how to do the work, citing the methodology rather than restating it.
+description: Operating scaffolding for the GEM LNG Terminals research project — four workflows that produce a single staging xlsx per batch for the user to apply to the live GEM database manually. The workflows are (1) update existing terminals, (2) discover new terminals, (3) reconcile against the annual GIIGNL report, and (4) triage (decide what to work on this batch). Use this skill whenever the user asks for a terminals batch, a GIIGNL diff, a stale-sweep, a discovery run, an FSRU sync check, or any work that produces or modifies the staging xlsx (lng_terminals_batch_YYYYMMDD_HHMM_ET.xlsx). Also use this skill when the user mentions "the GEM database", "the terminals tracker", "GGIT", "GIIGNL", "the methodology doc", a country-level sweep, an FSRU vessel-to-terminal sync, the status timeline, the entity tree, or any of the standard GEM tools (entity link, ownership tree, wiki, test database). The skill is the executable scaffolding — the project's research rules live in GEM's published methodology doc (the "LNG Terminals Manual"), which is authoritative for what counts as a terminal, what the lifecycle states mean, and how units are named. The SOPs in this project are operational — they describe how to do the work, citing the methodology rather than restating it.
 ---
 
 # LNG Terminals — Backend Scaffolding
@@ -30,7 +30,7 @@ All reference markdown, SOPs, and scripts are normal files on disk. Read them wi
 Two inputs are too large or too volatile to live in the repo:
 
 1. **The fresh GEM database export** — pulled via `scripts/pull_gem_db.py` at the start of every batch. Auth cookies live in `.env` (see `.env.example`). The script writes the CSV and a derived column-index map (`.colmap.json`) into the working directory.
-2. **The GIIGNL annual report** — when reconciling, download from giignl.org. The 2026 edition arrived as a zip of per-page JPEG images + per-page OCR text + a manifest, NOT a parseable PDF. `scripts/giignl_extract.py` handles this format. Run `file <path>` to confirm the format before assuming `.pdf` means PDF.
+2. **The GIIGNL annual report** — when reconciling, download from giignl.org. The 2026 edition received 2026-05 is a real PDF v1.7 with a clean text layer; `scripts/giignl_extract.py` parses it via `pdftotext -layout`. (Earlier editions shipped as a zip-of-JPEGs+OCR-text+manifest — the file would report "Zip archive" not "PDF document". The vision-LLM pipeline for that format lives in git history.) Always `file <path>` before assuming the format.
 
 ## Read the methodology + relevant SOPs first
 
@@ -49,7 +49,7 @@ Trigger phrases: "reconcile against GIIGNL", "GIIGNL diff", "compare GEM to the 
 
 Workflow:
 
-1. Confirm the GIIGNL report is in project files. `file <path>` to confirm format (the 2026 report came as a zip of JPEG + OCR text per page, NOT a parseable PDF). Note the edition year.
+1. Confirm the GIIGNL report is in project files. `file <path>` to confirm format. Two formats observed across editions: real PDF v1.7 (2026 edition received 2026-05; current pipeline) or zip-disguised-as-PDF (pre-2026; vision pipeline lives in git history). Note the edition year.
 2. Confirm scope per Reconciliation SOP §2 (which GIIGNL tables — terminal-list, capacity-by-country, country-summary; which lifecycle states to include).
 3. `python pull_gem_db.py` → fresh CSV.
 4. `python giignl_extract.py <path-to-giignl-report> --output giignl_extracted.csv` → flat CSV with GEM-aligned column names per Reconciliation SOP §3 (Appendix A for GIIGNL-specific table parsing).
@@ -83,8 +83,8 @@ Workflow (assuming scripts have been copied to a working directory per the secti
 6. `python capacity_normalize.py` on any capacity changes — mtpa/bcm/y/m³ conversions, range handling per methodology ("record max in spreadsheet, range in wiki Background").
 7. `python entity_lookup.py "<owner name>" "<country>"` before staging any new owner/operator — the methodology is emphatic about not creating duplicate entities.
 8. **If any FSRU terminal is touched**: `python fsru_sync_check.py` — see "FSRU sync rule" below.
-9. `python build_review_package.py --mode update --batch-id <YYYYMMDD>` → `../batches/lng_terminals_batch_<YYYYMMDD>.xlsx`.
-10. `python recalc.py ../batches/lng_terminals_batch_<YYYYMMDD>.xlsx` → confirm zero formula errors.
+9. `python build_review_package.py --mode update --output ../batches/lng_terminals_batch_<YYYYMMDD>_<HHMM>_ET.xlsx` → staging xlsx. Stamp via `TZ=America/New_York date "+%Y%m%d_%H%M_ET"`.
+10. `python recalc.py ../batches/lng_terminals_batch_<YYYYMMDD>_<HHMM>_ET.xlsx` → confirm zero formula errors.
 11. `present_files`.
 
 ### Discover new terminals
@@ -101,7 +101,7 @@ Workflow:
 6. For each candidate: apply the "sufficient information to add" threshold from the methodology FAQ (sponsor identified + approximate location + concrete step taken). Candidates that don't meet the threshold go in a `monitor_list` sheet, not `new_terminals`.
 7. `python url_verifier.py` on all URLs; `python entity_lookup.py` on every new owner/operator/parent.
 8. **If any candidate is an FSRU**: `python fsru_sync_check.py` against both the GEM terminals and (if available) the LNG carrier project's backend.
-9. `python build_review_package.py --mode discovery --batch-id <YYYYMMDD>` → staging xlsx.
+9. `python build_review_package.py --mode discovery --output ../batches/lng_terminals_batch_<YYYYMMDD>_<HHMM>_ET.xlsx` → staging xlsx (Eastern timestamp via `TZ=America/New_York date "+%Y%m%d_%H%M_ET"`).
 10. `python recalc.py`, then `present_files`.
 
 ### Triage (decide what to work on this batch)
@@ -161,7 +161,8 @@ If the user isn't running the carrier project, `fsru_sync_check.py` short-circui
 | `entity_lookup.py` | Queries the GEM entity system to avoid duplicate entity creation | Entity search UI changed; known entity not being found |
 | `url_verifier.py` | HTTP 200 + content check + soft-error detection (paywall stubs, Cloudflare, members-only) | Verifier flags false positives/negatives; new source pattern needs handling |
 | `imo_tracker.py` | IMO → marinetraffic.org per-vessel URL (FSRU vessel lookup) | marinetraffic.org URL pattern changed; Cloudflare gating |
-| `giignl_extract.py` | Parses GIIGNL report (zip of JPEG + per-page OCR text) into a flat CSV with GEM-aligned columns | New GIIGNL edition layout changed; OCR text quality degrades |
+| `giignl_extract.py` | Parses GIIGNL report into a flat CSV with GEM-aligned columns. 2026 edition is a real PDF v1.7 with a clean text layer — uses `pdftotext -layout` + column-position-based row partitioning; per-country capacity subtotals are used as block-boundary budgets so rows route to the right country even when labels appear mid-block. Earlier editions shipped as zip-of-JPEGs + OCR; that pipeline lives in git history if a future edition reverts | New GIIGNL edition layout changes column positions; new country added to super-region marker list; subtotal detection misfires |
+| `report_diff.py` (alias matching) | Project key includes `section_type` so a single GEM terminal with both liquefaction and regasification (e.g. Sabine Pass: 6 export trains + 1 import terminal) splits into two distinct projects, not one summed entry. Alias map includes GEM `OtherNames` + `LocalNames`, with CJK transliteration via jieba + pypinyin (e.g. `中石油唐山曹妃甸LNG接收站` → `zhong shiyou tangshan caofeidian lng jieshouzhan` so distinctive city tokens can match) | New non-Latin language appears in LocalNames; matching needs additional script support |
 | `report_diff.py` | Three-way diff (matches / report-only / GEM-only / value-disagreements). Parameterized on report type so the same script serves GIIGNL and (future) IGU | Adding a new reconcilable source; match algorithm over/under-merging |
 | `fsru_sync_check.py` | Cross-check FSRU records between GEM terminals and LNG carrier project backends | Sync conventions change; reassignment detection misfires |
 | `build_review_package.py` | xlsx scaffolding — sheets, color fills, frozen panes, headers | Adding a new sheet section; changing color convention |
@@ -171,25 +172,31 @@ Trust the scripts by default. They're versioned scaffolding, not throwaway code.
 
 ## Output workbook structure
 
-Single combined xlsx per batch: `../batches/lng_terminals_batch_<YYYYMMDD>.xlsx`.
+Single combined xlsx per batch: `../batches/lng_terminals_batch_<YYYYMMDD>_<HHMM>_ET.xlsx`. The Eastern-time HHMM disambiguates multiple batches in one day. Generate via:
+
+    TZ=America/New_York date "+%Y%m%d_%H%M_ET"
 
 Sheets (empty sheets are omitted from the final workbook):
 
 | Sheet | Populated when | Contents |
 |---|---|---|
-| `README` | Always | Batch parameters, methodology rev cited, what was done, what sheets are present |
+| `README` | Always | Batch params, color conventions, **per-sheet definitions for every other tab in this workbook**, and input-summary stats (incl. any SOP §6 gate trips). The definitions are sourced from `SHEET_DESCRIPTIONS` in `scripts/build_review_package.py` — required so a researcher can open the file without prior context and know what each tab is for. |
 | `updates` | Update workflow | Rows for existing units being updated, with old → new diffs and citations |
 | `new_terminals` | Discovery workflow | Newly discovered projects (project-level fields) |
 | `new_units` | Discovery or update | Unit-level data for new terminals AND new units within existing terminals (expansions, new trains) |
 | `status_timeline_additions` | Any workflow touching status | Append-only timeline entries to add to the live DB per methodology |
 | `entity_additions` | Any workflow adding owners | New immediate owners/operators/vessel-owners to create, with duplicate-check flags |
-| `giignl_diff` | Reconciliation workflow | Row-level diff against GIIGNL |
-| `giignl_to_action` | Reconciliation workflow | Findings routed to Update or Discovery (with target sheet noted) |
+| `giignl_diff` | Reconciliation workflow | Match-level audit: one row per matched project (exact or fuzzy), with side-by-side capacity, owner-set deltas, and disagreements column |
+| `giignl_to_action` | Reconciliation workflow | Workflow routing: findings categorized for Update / Discovery / Review |
+| `candidate_edits` | Reconciliation workflow | GEM-CSV-shaped sheet (115 cols + 2 meta cols) of GEM unit-rows flagged by the diff — for editing in DB shape |
+| `giignl_full_extract` | Reconciliation workflow | Raw GIIGNL extraction (every row parsed from the PDF) for reference |
 | `fsru_sync` | Any batch touching FSRUs | Cross-check matches / mismatches / reassignments |
 | `monitor_list` | Discovery workflow | Candidates that don't meet "sufficient information to add" threshold |
 | `stale_sweep` | Triage or update | Stale-flag output from `stale_sweep.py` |
 | `country_notes_contributions` | Any batch developing new country knowledge | Drafted additions to GEM's country-resource Google doc, for user to copy over manually |
 | `qa_review` | Always | Per-cell citation log, conflicts, defects, verification log, negative-result log |
+
+**When adding a new sheet builder to `build_review_package.py`, also add a corresponding entry to `SHEET_DESCRIPTIONS`** in that same file — otherwise the README will fall back to a "no description registered" placeholder that prompts the next agent to backfill it.
 
 ## Color conventions (cells in `updates`, `new_units`, `giignl_diff`)
 
@@ -225,5 +232,5 @@ Pause and ask before proceeding when:
 - The "sufficient information to add" threshold is genuinely ambiguous on a candidate (sponsor named but extremely vague location, or vice versa)
 - A reconciliation batch finds disagreement on more than ~10% of matched rows (suggests either a GIIGNL methodology change or a systematic GEM issue)
 - An entity that should exist in the GEM entity system isn't found — could be a search issue, or could be a real gap
-- The GIIGNL report file isn't in the expected format (zip of JPEG + OCR text) — layout change requires confirming `giignl_extract.py` still works
+- The GIIGNL report file isn't in either expected format (real PDF v1.7 with text layer, or legacy zip-of-JPEGs+OCR) — layout change requires confirming `giignl_extract.py` still works
 - FSRU sync surfaces a reassignment that can't be cleanly resolved (vessel moved to a terminal that doesn't exist in GEM yet)

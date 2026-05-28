@@ -391,6 +391,84 @@ def to_bcm_per_y(value, unit):
     return mtpa * 1.36
 
 
+# --- Transliteration of non-Latin LocalNames into English-matchable variants ---
+#
+# GEM's LocalNames column holds the locally-used name (e.g. "中石油唐山曹妃甸
+# LNG接收站" for Tangshan/PetroChina). To match against industry reports like
+# GIIGNL — which use English / Latin-script transliterations like "Caofeidian
+# (Tangshan)" — we need to convert the local-script name into something the
+# match algorithm can tokenize against the report side.
+#
+# Supported today: Chinese (via jieba word segmentation + pypinyin per word).
+# Future: Japanese (pykakasi), Korean (hangul-romanize), Arabic, etc.
+#
+# Returns a LIST of candidate transliterations (zero or more), each suitable
+# to feed through normalize_terminal_name and use as an alias key.
+
+_HAS_CHINESE_RE = re.compile(r"[一-鿿]")  # CJK Unified Ideographs
+
+# Lazy-imported so the module loads even when jieba/pypinyin are absent.
+_jieba = None
+_pypinyin = None
+
+
+def _load_chinese_tools():
+    global _jieba, _pypinyin
+    if _jieba is None:
+        try:
+            import jieba as _j
+            from pypinyin import lazy_pinyin as _lp
+            _jieba = _j
+            _pypinyin = _lp
+        except ImportError:
+            _jieba = False  # sentinel meaning "tried and failed"
+    return _jieba and _pypinyin
+
+
+def _transliterate_chinese(text):
+    """Segment Chinese text with jieba, return pinyin per word joined by spaces.
+
+    Per-WORD pinyin (not per-character) so that "曹妃甸" emits "caofeidian"
+    as a single 10-char token rather than three 3-char tokens ("cao", "fei",
+    "dian") that would fall below the fuzzy-matcher's 4-char token threshold.
+    """
+    if not _load_chinese_tools():
+        return ""
+    words = list(_jieba.cut(text))
+    parts = []
+    for w in words:
+        w = w.strip()
+        if not w:
+            continue
+        if _HAS_CHINESE_RE.search(w):
+            parts.append("".join(_pypinyin(w)))
+        else:
+            parts.append(w)
+    return " ".join(parts).lower()
+
+
+def transliterate_to_english(text, language=None):
+    """Return a list of English-script candidate forms of `text`.
+
+    Always includes the original (lowercased+stripped). When non-Latin script
+    is detected, also includes a transliterated variant suitable for token-
+    overlap matching against industry-report extractions.
+
+    `language` is GEM's per-name language label (e.g. "Chinese"), used as a
+    hint but the script detection on `text` itself is the authoritative path.
+    """
+    if not text:
+        return []
+    out = [text.lower().strip()]
+    if _HAS_CHINESE_RE.search(text) or (language or "").lower().startswith("chinese"):
+        tx = _transliterate_chinese(text)
+        if tx and tx not in out:
+            out.append(tx)
+    # Hooks for future scripts (Japanese, Korean, Arabic, Russian, etc.)
+    # would add their detect-and-transliterate branches here.
+    return out
+
+
 def normalize_terminal_name(s):
     """Strip common GEM-style suffixes and prefixes for matching.
     

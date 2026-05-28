@@ -264,7 +264,7 @@ Putting it together, a standard update batch looks like:
 9. `python entity_lookup.py` for every new entity reference (§8)
 10. `python capacity_normalize.py` for any capacity edits with unit conversion
 11. **If batch touches any FSRU terminal:** `python fsru_sync_check.py` (CLAUDE.md FSRU sync rule)
-12. `python build_review_package.py --mode update --batch-id <YYYYMMDD>` → staging xlsx
+12. `python build_review_package.py --mode update --output ../batches/lng_terminals_batch_<YYYYMMDD>_<HHMM>_ET.xlsx` → staging xlsx (Eastern timestamp via `TZ=America/New_York date "+%Y%m%d_%H%M_ET"`)
 13. `python recalc.py` → confirm zero formula errors
 14. `present_files`
 

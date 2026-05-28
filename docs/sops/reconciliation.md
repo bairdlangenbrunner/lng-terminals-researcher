@@ -1,6 +1,10 @@
 # LNG Terminals Reconciliation SOP
 
-Last revised: 2026-05 (rev 1, initial draft)
+Last revised: 2026-05-27 (rev 2)
+
+Revision notes:
+- rev 2 (2026-05-27): pipeline rewritten for real-PDF input (`pdftotext -layout` instead of zip-of-JPEGs+vision). §3.5 matching algorithm extended to three passes (canonical / alias-incl-LocalNames-with-transliteration / 3-criteria fuzzy). Project key now includes `section_type` (Sabine-Pass-style mixed-facility-type terminals split into two project entries). §3.10 batch filename convention pinned to `lng_terminals_batch_<YYYYMMDD>_<HHMM>_ET.xlsx`; README sheet-definitions block now mandatory.
+- rev 1 (2026-05): initial draft (zip-of-JPEGs + vision pipeline).
 
 Operational rules for reconciling the GEM LNG terminals database against an authoritative annual report — primarily GIIGNL, with the same workflow body intended to serve a future IGU reconciliation SOP. This SOP describes how to do the diff cleanly; the *fixes* go through the Update or Discovery workflows. Reconciliation surfaces work; it does not perform it.
 
@@ -34,20 +38,25 @@ These parameters get written into the staging xlsx README sheet.
 ### §3.1 Setup
 
 1. Verify the GIIGNL report file is in project files at `<path-to-giignl-report>` (or wherever the user placed it).
-2. `file <path>` to confirm format. The 2026 GIIGNL came as a zip of per-page JPEG + OCR text files + manifest.json, NOT as a parseable PDF. If the format differs, the extractor may need adjustment.
-3. Materialize scripts to working directory per the CLAUDE.md instructions:
-   - `pull_gem_db.py`, `normalize.py`, `dedup_index.py`
+2. `file <path>` to confirm format. Two formats observed across editions:
+   - **Real PDF (current pipeline)** — file reports "PDF document, version 1.7". The 2026 edition received 2026-05 is this format. `giignl_extract.py` parses via `pdftotext -layout` against page text.
+   - **Zip-disguised-as-PDF (legacy)** — file reports a zip archive, contains per-page JPEG + OCR text files + manifest.json. The pre-2026 pipeline staged JPEGs and did vision-LLM extraction. That code path is in git history and would need restoration if a future edition reverts.
+3. The scripts are committed to `scripts/` (no separate "materialize" step needed):
+   - `gem_query.py` / `gem_all_fields.py` for the GEM pull (no auth cookies needed)
    - `giignl_extract.py`, `report_diff.py`, `url_verifier.py`
    - `build_review_package.py`, `recalc.py`
-4. `python pull_gem_db.py` → fresh GEM CSV at `gem_export.csv`. **Mandatory** per the [ref]-fill SOP discipline — the database changes between batches.
+4. `python scripts/gem_query.py --all-fields lng -o gem_export.csv` → fresh GEM CSV. **Mandatory** per the [ref]-fill SOP discipline — the database changes between batches.
+5. `python scripts/pull_gem_db.py --map-only --out gem_export.csv` → derives the column-index map `gem_export.colmap.json` (consumed by `report_diff.py` and `build_review_package.py`).
 
 ### §3.2 Extract GIIGNL into structured form
 
-`python giignl_extract.py <path-to-giignl-report> --output giignl_extracted.csv`
+`python scripts/giignl_extract.py <path-to-giignl-report.pdf> --output giignl_extracted.csv`
 
 The extractor produces a flat CSV with GEM-aligned column names so the diff is column-comparable. See Appendix A for the per-table extraction rules.
 
-**The extractor is vision-assisted, not pure regex.** GIIGNL tables have column structure that's lost in text-only OCR (the per-page `.txt` files have rows wrapped unpredictably). The extractor uses the per-page JPEG images plus the OCR text as a confirmation channel. Output rows include a `_source_page` column for traceability.
+**Pipeline (2026 edition, real PDF):** `pdftotext -layout` is invoked per page; the column positions are derived from the table header row's keyword positions; each page is partitioned into rows by data-line midpoint heuristics with multi-line cell merging. Country labels are assigned via a SEQUENTIAL walk (`_assign_countries_sequential` in `giignl_extract.py`) with **per-country capacity budgets sourced from the subtotal lines** (e.g. "Bangladesh 7.5 MTPA") — once cumulative capacity for the current country exceeds its subtotal (2% tolerance), subsequent rows go into a pending buffer that gets back-filled when the next country's label arrives. This is what prevents China's rows from getting tagged Bangladesh when China's label appears mid-block. Train suffixes ("T1", "T1-6", "T1 - T6") get stripped into a separate `trains` column so multiple GIIGNL train-rows roll up to one project-level entry on report_diff's side.
+
+Output rows include a `report_page` column for traceability back to the PDF.
 
 Verify the extraction before proceeding:
 - Total liquefaction MTPA in the extracted CSV should match the GIIGNL Key Figures page (524 MTPA in 2026 edition)
@@ -57,11 +66,12 @@ Verify the extraction before proceeding:
 
 ### §3.3 Normalize both sides
 
-`python normalize.py` is imported as a module by `report_diff.py`. Both the GEM CSV and the GIIGNL CSV go through:
-- Country name normalization (ISO names, common variants)
-- Owner/operator entity normalization (per `docs/reference/entity_canonical_map.md`)
-- Capacity unit normalization (everything → mtpa)
-- Terminal name normalization (strip "LNG Terminal", "FSRU", "FLNG" suffixes; handle "T1"/"Train 1" variants)
+`normalize.py` is imported as a module by `report_diff.py`. Both the GEM CSV and the GIIGNL CSV go through:
+- Country name normalization (ISO names, common variants — `_COUNTRY_MAP`)
+- Owner/operator entity normalization (per `docs/reference/entity_canonical_map.md` — `_ENTITY_MAP`)
+- Capacity unit normalization (everything → mtpa — `to_mtpa()` / `_CAPACITY_TO_MTPA`)
+- Terminal name normalization (strip "LNG Terminal", "FSRU", "FLNG" suffixes; handle "T1"/"Train 1" variants — `normalize_terminal_name()`)
+- **LocalNames transliteration** (`transliterate_to_english()`): GEM's `LocalNames` column may contain names in non-Latin scripts (Chinese, Korean, etc.). For Chinese, the helper segments with **jieba** and runs **pypinyin** per-word so each Chinese word becomes a distinctive 4+ char Latin token (e.g. `中石油唐山曹妃甸LNG接收站` → `zhong shiyou tangshan caofeidian lng jieshouzhan`). The transliterated variants are registered as aliases alongside `OtherNames`. Hooks present for Japanese / Korean / Arabic / Russian; only Chinese implemented today.
 
 The normalized values are used for matching ONLY; the unnormalized values are preserved in the diff output for human readability.
 
@@ -86,11 +96,20 @@ The script also produces a fifth category for human resolution:
 
 ### §3.5 Matching algorithm
 
-Two-pass match:
+Three-pass match:
 
-**Pass 1: exact match on (normalized country, normalized terminal name).** Highest confidence. Direct hit.
+**Pass 1a: exact match on (normalized country, normalized TerminalName, section_type).** Highest confidence. Direct hit on GEM's primary name.
 
-**Pass 2: fuzzy match within country** for unmatched GIIGNL rows. For each unmatched GIIGNL row, score every GEM row in the same country by:
+**Pass 1b: alias match on (normalized country, normalized alias, section_type).** Same confidence as 1a. Aliases come from BOTH the `OtherNames` column AND the `LocalNames` column — and for non-Latin LocalNames (Chinese today, hooks for Japanese / Korean / Arabic / Russian later), `normalize.transliterate_to_english` produces additional English-script variants. Chinese path: jieba word segmentation + pypinyin per-word → e.g. `中石油唐山曹妃甸LNG接收站` emits `zhong shiyou tangshan caofeidian lng jieshouzhan`, giving distinctive 4+ char tokens (`tangshan`, `caofeidian`) that the fuzzy pass can match. Example matches added by this pass: GIIGNL's `Kribi` → GEM's `Cameroon FLNG Terminal` (via OtherNames `Kribi FLNG Terminal`), GIIGNL's `Aqaba` → GEM's `Sheikh Sabah LNG Terminal`, GIIGNL's `Świnoujście` → GEM's `Świnoujście Polskie LNG Terminal`. Diff records these as `match_type=exact_via_alias` with the `matched_alias` column showing which alias hit.
+
+**Pass 2: fuzzy match within country and section_type** for unmatched GIIGNL rows. For each unmatched GIIGNL row, a GEM project is a fuzzy candidate iff (any of):
+- (a) **substring match** — the normalized GIIGNL site name is contained in any GEM name (canonical or alias) OR vice versa; strong signal
+- (b) **token + owner overlap** — at least one shared 4+ char token AND at least one shared owner-entity tag; the owner confirms the token
+- (c) **multi-token overlap** — 2+ distinctive shared 4+ char tokens (catches cases where the owner cell was truncated/mis-parsed; 2 distinctive tokens are strong enough to surface as a candidate even without owner overlap)
+
+Token extraction strips leading/trailing punctuation so `"(tangshan),"` tokenizes as `"tangshan"`. Candidates include all aliases (OtherNames + LocalNames + transliterations) so a single distinctive city name like `Caofeidian` from a Chinese LocalName can serve as a matching token.
+
+Score every GEM row in the same country+section by:
 - Token-set similarity of terminal name (e.g. "Arzew GL3Z" vs "Arzew LNG Terminal" → high overlap on "Arzew")
 - Owner-entity overlap (any common entity → bonus)
 - Capacity proximity (within 30% of nominal MTPA → bonus)
@@ -100,6 +119,8 @@ Two-pass match:
 Scores above a threshold get a "probable match" classification; below threshold = no match. Ambiguous when two GEM rows score within 10% of each other against the same GIIGNL row.
 
 **Matching is at the project level, not the unit level**, because GIIGNL aggregates per-site and GEM splits into units. A GIIGNL row like "Arzew GL3Z, 4.7 MTPA, 1 train" matches a GEM project that may have one or more units; the diff records the GIIGNL-side numbers against the *project total* from GEM's per-unit rollup. If the GEM project's per-unit breakdown doesn't sum to the GIIGNL number, that itself is a `value-disagreement`.
+
+**The project key is `(country_norm, name_norm, section_type)`, not just `(country_norm, name_norm)`** — a single GEM `TerminalName` may host BOTH liquefaction (export) AND regasification (import) units (Sabine Pass is the canonical example: 6 export trains plus 1 import terminal under one TerminalName). Without `section_type` in the key, their capacities sum incorrectly and the GIIGNL liquefaction-table row gets compared against the inflated total. The implementation lives in `_build_gem_project_table` in `report_diff.py` and applies symmetrically to the report side in `_classify`.
 
 ### §3.6 Disagreement classification rules
 
@@ -157,16 +178,20 @@ Any URLs included in the staging xlsx (e.g. for GIIGNL-only findings where the a
 
 ### §3.10 Build the staging package
 
-`python build_review_package.py --mode reconciliation --report giignl --year <YEAR> --batch-id <YYYYMMDD>`
+`python build_review_package.py --mode reconciliation --report giignl --year <YEAR> --output ../batches/lng_terminals_batch_<YYYYMMDD>_<HHMM>_ET.xlsx`
 
-Produces `../batches/lng_terminals_batch_<YYYYMMDD>.xlsx` with the standard sheets plus two reconciliation-specific sheets:
+Get the Eastern-time stamp via `TZ=America/New_York date "+%Y%m%d_%H%M_ET"`. The HHMM_ET suffix disambiguates multiple batches in one day.
+
+**README sheet definitions are MANDATORY.** Every staging xlsx must include a "Sheet definitions" block in the README listing every other tab and what it contains, so a researcher opening the file without prior context knows what each tab is for. This is handled automatically by `build_review_package.py` via the `SHEET_DESCRIPTIONS` constant + `_populate_readme_sheet_defs(wb)` helper, which is invoked at the end of `main()`. If you add a new sheet builder to the script, you MUST add a corresponding entry to `SHEET_DESCRIPTIONS` — otherwise the README will fall back to a "no description registered" placeholder that prompts the next agent to fix it.
+
+Produces an xlsx with the standard sheets plus two reconciliation-specific sheets:
 
 - `giignl_diff` — full diff output, color-coded per cell (green = match, yellow = ambiguous, red = disagreement, blue = GEM-only-expected, no fill = GIIGNL-only-needs-discovery)
 - `giignl_to_action` — actionable findings with proposed routing (Update vs Discovery vs Review)
 
 Empty sheets are omitted per CLAUDE.md convention.
 
-`python recalc.py ../batches/lng_terminals_batch_<YYYYMMDD>.xlsx` → zero formula errors.
+`python recalc.py ../batches/lng_terminals_batch_<YYYYMMDD>_<HHMM>_ET.xlsx` → zero formula errors.
 
 `present_files`.
 
@@ -220,7 +245,7 @@ Stop and consult the user before proceeding when:
 - More than ~10% of matched rows have value disagreements → systematic issue (GIIGNL methodology change, GEM schema misunderstanding, or extractor bug). Don't auto-route 100+ Update batches; review the pattern first.
 - The extractor produces totals that diverge from GIIGNL's Key Figures by more than 2% → likely missing rows. Don't proceed with an incomplete diff.
 - GIIGNL-only findings exceed ~30 candidates → may indicate a GEM coverage gap for a whole region, worth scoping a Discovery batch around it rather than treating as 30 individual discoveries.
-- The GIIGNL report file is in an unexpected format (not the zip-of-images structure) → extractor needs adjustment before proceeding.
+- The GIIGNL report file is in an unexpected format (not the real-PDF-v1.7 path that the current `giignl_extract.py` expects, and not the legacy zip-of-JPEGs structure either) → extractor needs adjustment before proceeding.
 - A country shows GIIGNL country-summary totals that diverge dramatically from the sum of GEM operating capacity for that country → could be a country definition mismatch (e.g. one source includes a disputed territory) or a real coverage gap.
 
 ---
@@ -229,16 +254,11 @@ Stop and consult the user before proceeding when:
 
 These are the rules that `giignl_extract.py` implements. They're documented here because they evolve with each GIIGNL edition.
 
-### A.1 Source format (2026 edition)
+### A.1 Source format (2026 edition, real PDF)
 
-The 2026 GIIGNL Annual Report file is named `.pdf` but is actually a zip archive containing:
-- 80 JPEG page images (`1.jpeg` through `80.jpeg`)
-- 80 OCR text files (`1.txt` through `80.txt`)
-- `manifest.json` with per-page metadata
+The 2026 GIIGNL Annual Report received 2026-05 is a real PDF v1.7 (80 pages, A4, Adobe InDesign-produced) with a clean text layer. The extractor uses `pdftotext -layout` per page; the layout-preserving mode keeps column structure intact enough to parse with character-position windows.
 
-OCR text quality is decent for prose, structurally messy for tables (column boundaries lost, rows wrap). The extractor uses both:
-- OCR text as primary source for narrative pages
-- JPEG images via vision processing for tabular pages, with OCR text as a confirmation channel
+(Earlier editions shipped as zip-of-JPEGs+OCR-text+manifest.json — file would report a zip archive instead of "PDF document". That pipeline staged page JPEGs and did vision-LLM extraction; it's preserved in git history if a future edition reverts.)
 
 ### A.2 Page sections (2026 edition)
 
@@ -331,19 +351,18 @@ GIIGNL inserts subtotal labels for some countries (e.g. "Algeria 25.3 MTPA"). Th
 - Uses subtotals as a sanity check (sum of per-project rows in that country should match)
 - Does NOT produce an output row for subtotals (they're metadata)
 
-### A.6 OCR artifact handling
+### A.6 PDF text-layer artifact handling (2026 edition, real PDF)
 
-The 2026 OCR shows these consistent artifacts:
-- `\u0002` characters appearing as soft-hyphen breaks within words (e.g. `Mids\u0002cale` for "Midscale")
-- Line breaks (`\r\n`) inserted mid-cell, especially in long owner descriptions
-- Numbers occasionally split across lines (`125,\n000` for "125,000")
-- Capacity unit suffixes ("MTPA") rendered inconsistently
+`pdftotext -layout` output is clean for body text but has layout artifacts the extractor handles:
 
-The extractor's text-cleanup pass:
-1. Strip `\u0002` characters
-2. Re-join wrapped numeric values
-3. Normalize whitespace
-4. Re-attach orphaned units to preceding numbers
+- **Country labels vertically centered** against their block — a label is linearized AFTER some of its rows and BEFORE others. Handled by `_assign_countries_sequential`'s pending buffer (back-filled at the next label).
+- **Country block boundaries invisible from text alone** when Country X's last row is immediately followed by Country Y's first row (no label or separator between). Handled via **per-country capacity budgets** sourced from subtotal lines: once cumulative > subtotal × 1.02, the next row goes pending instead of inheriting current_country. This is what stops China's Beihai/Caofeidian/etc. from getting tagged Bangladesh on page 55.
+- **Multi-line cells** (owner descriptions wrapping 3-5 physical lines) merged via data-line-anchored partitioning (each data line owns lines around it up to the midpoint with the adjacent data line).
+- **Multi-line country labels** like "Mauritania/" + "Senegal" or "Equatorial" + "Guinea" stitched based on line proximity + no intervening data line.
+- **Super-region markers** like "ATLANTIC BASIN: 236.5 MTPA" / "ASIA: 707.9 MTPA" / "MIDDLE EAST: …" — detected via `_SUPER_REGION_RE` and skipped (they look superficially like country labels).
+- **Subtotal-line overlap** — sometimes "7.5 MTPA" sits on the same physical line as an adjacent row's owner-cell continuation. Detection requires col 0 matches the subtotal pattern AND the capacity column is empty (data rows always have capacity; subtotals don't). The owner continuation that happened to share this line is lost — acceptable trade-off vs missing the country budget signal.
+
+(The pre-2026 vision pipeline handled different artifacts — soft-hyphen breaks, OCR-wrapped numbers, etc. See git history if a future edition reverts to the zip-of-JPEGs format.)
 
 ### A.7 What to add for IGU (future)
 
