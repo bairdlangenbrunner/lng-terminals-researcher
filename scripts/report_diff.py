@@ -229,16 +229,38 @@ def _vessel_tokens(name):
     return {t for t in _simple_tokens(name) if t not in _FSRU_VESSEL_STOPWORDS}
 
 
+def _vessel_key_tokens(name):
+    """Lowercased vessel-identity tokens (drops facility tags). Used to match a
+    GIIGNL vessel name against a GEM FloatingVesselName robustly across case and
+    operator prefixes (GIIGNL 'Excelerate Excelsior' ⊇ GEM 'Excelsior')."""
+    return frozenset(t.lower() for t in _simple_tokens(name)) - _FSRU_VESSEL_STOPWORDS
+
+
+def _parse_vessel_name_sets(raw):
+    """Parse a GEM FloatingVesselName cell into a list of vessel token-sets.
+    The cell holds one vessel, or several comma-separated (sequential-berth)."""
+    sets = []
+    for part in (raw or "").split(","):
+        toks = _vessel_key_tokens(part)
+        if toks and toks not in sets:
+            sets.append(toks)
+    return sets
+
+
 def _fsru_operating_report_capacity(rp, gp):
     """Recompute an FSRU terminal's report-side capacity as OPERATING-only.
 
     GIIGNL's regas table lists every recently-deployed FSRU as a separate
-    'operating' row, so a berth that cycled through several vessels shows several
-    rows (Ain-Sokhna: Energos Power + Höegh Galleon + Energos Eskimo, 3×5.7=17.1).
-    GEM models the same berth as sequential — one operating unit, the superseded
-    vessels kept as `retired`/`idled` units. Summing all GIIGNL rows therefore
-    compares GIIGNL's lifetime-of-vessels against GEM's currently-operating vessel
-    (5.51), a spurious ~3× "disagreement".
+    'operating' row, so a single berth that cycled through several vessels shows
+    several rows. GEM models such a berth as sequential — one operating unit, the
+    superseded vessels kept as `retired`/`idled` units. Summing all GIIGNL rows
+    would then compare GIIGNL's lifetime-of-vessels against GEM's currently-
+    operating vessel, a spurious "disagreement".
+
+    (NB: when the GIIGNL rows actually belong to DIFFERENT GEM terminals — same
+    port, distinct terminals each with its own FloatingVesselName — they are split
+    upstream by `_split_multiterminal_fsru_sites` before reaching here, so this
+    function only sees genuinely single-terminal berths.)
 
     GEM's `unit_name` is the vessel identity, so we align each GIIGNL FSRU row to a
     GEM unit by vessel name and sum only the rows that map to a GEM OPERATING unit.
@@ -303,6 +325,108 @@ def _fsru_operating_report_capacity(rp, gp):
     return op_cap, notes, True
 
 
+def _split_multiterminal_fsru_sites(report_projects, gem_projects):
+    """Split a GIIGNL FSRU site that GEM models as MULTIPLE distinct terminals.
+
+    GIIGNL labels several physically distinct FSRU terminals at one port with the
+    same site name, disambiguating only by vessel — e.g. Germany 'Wilhelmshaven'
+    appears twice, once for 'Höegh Esperanza' and once for 'Excelerate Excelsior',
+    which GEM tracks as two separate terminals ('Wilhelmshaven FSRU' and
+    'Wilhelmshaven TES FSRU'). Grouped by site name alone, the two rows collapse
+    into one summed project (9.8 MTPA, 2 "trains"), producing a bogus project total.
+
+    This routes each GIIGNL vessel row to the GEM terminal whose FloatingVesselName
+    carries that vessel, then emits one report sub-project per GEM terminal
+    (force-matched via `_forced_gem_key`). Each sub-project's site name carries the
+    vessel so the diff shows them separately.
+
+    Distinguished from the SEQUENTIAL-berth case (Ain-Sokhna: ONE GEM terminal that
+    cycled through several FSRUs, kept as units) by requiring the site's distinct
+    vessels to resolve to >=2 DISTINCT GEM project keys. Ain-Sokhna's vessels all
+    map to its single GEM terminal, so it is left grouped for
+    `_fsru_operating_report_capacity` to handle.
+
+    Conservative: only splits when EVERY row in the project is a vessel row that
+    maps to a GEM terminal, and >=2 distinct GEM terminals are hit. Any partial /
+    mixed case is left untouched.
+    """
+    # GEM FSRU terminals with at least one vessel name, indexed by (country, section).
+    gem_fsru_by_cs = defaultdict(list)  # (country_norm, section) -> [(gem_key, [vessel_sets])]
+    for gk, gp in gem_projects.items():
+        if gp.get("fsru") and gp.get("vessel_name_sets"):
+            gem_fsru_by_cs[(gk[0], gk[2])].append((gk, gp["vessel_name_sets"]))
+
+    result = {}
+    for rp_key, rp in report_projects.items():
+        rows = rp["rows"]
+        candidates = gem_fsru_by_cs.get((rp_key[0], rp_key[2]), [])
+        # Every row must carry a vessel for this to be a clean multi-FSRU site.
+        if len(rows) < 2 or not candidates \
+                or not all((r.get("vessel_name") or "").strip() for r in rows):
+            result[rp_key] = rp
+            continue
+
+        # Route each row to the GEM terminal whose FloatingVesselName it carries.
+        row_gem_key = []
+        for r in rows:
+            rt = _vessel_key_tokens(r.get("vessel_name", ""))
+            gk = next((gk for gk, vsets in candidates
+                       if rt and any(vs <= rt for vs in vsets)), None)
+            row_gem_key.append(gk)
+
+        distinct_keys = {gk for gk in row_gem_key if gk is not None}
+        if len(distinct_keys) < 2 or any(gk is None for gk in row_gem_key):
+            # Single GEM terminal (sequential berth) or unresolved vessels → leave grouped.
+            result[rp_key] = rp
+            continue
+
+        # Emit one sub-project per GEM terminal.
+        rows_by_key = defaultdict(list)
+        for r, gk in zip(rows, row_gem_key):
+            rows_by_key[gk].append(r)
+        for gk, sub_rows in rows_by_key.items():
+            sub = _make_fsru_subproject(rp, sub_rows, gk)
+            sub_key = (rp_key[0], f"{rp_key[1]} ## {gk[1]}", rp_key[2])
+            result[sub_key] = sub
+    return result
+
+
+def _make_fsru_subproject(rp, sub_rows, forced_gem_key):
+    """Build a report sub-project (same shape as a grouped report project) holding
+    only `sub_rows`, force-matched to `forced_gem_key`. Display name carries the
+    vessel so the reviewer sees the two terminals separately."""
+    cap = 0.0
+    owners = set()
+    for r in sub_rows:
+        try:
+            cap += float(r.get("capacity_mtpa", "")) if r.get("capacity_mtpa") else 0.0
+        except ValueError:
+            pass
+        for ent in parse_entity_list(r.get("owner", "")):
+            if ent["entity"]:
+                owners.add(ent["entity"])
+    vessels = []
+    for r in sub_rows:
+        v = (r.get("vessel_name") or "").strip()
+        if v and v not in vessels:
+            vessels.append(v)
+    vessel = ", ".join(vessels)
+    base_site = rp["site_name"]
+    return {
+        "country": rp["country"],
+        "country_norm": rp["country_norm"],
+        "site_name": f"{base_site} ({vessel})" if vessel else base_site,
+        "name_norm": rp["name_norm"],
+        "section_type": rp["section_type"],
+        "total_capacity_mtpa": cap,
+        "owners_set": owners,
+        "trains_count": len(sub_rows),
+        "rows": sub_rows,
+        "site_names": {r.get("site_name", "") for r in sub_rows},
+        "_forced_gem_key": forced_gem_key,
+    }
+
+
 def _load_colmap(csv_path):
     map_path = Path(csv_path).with_suffix(".colmap.json")
     if not map_path.exists():
@@ -338,7 +462,7 @@ def _build_gem_project_table(gem_csv):
     colmap = _load_colmap(gem_csv)
     ci = {k: colmap.get(k) for k in [
         "terminal_id", "terminal_name", "unit_name", "country", "facility_type",
-        "status", "fuel", "owner", "capacity_mtpa", "floating",
+        "status", "fuel", "owner", "capacity_mtpa", "floating", "floating_vessel_name",
         "import_export_only", "other_names", "local_names", "language",
         "proposal_year", "construction_year", "shelved_year", "cancelled_year",
         "stop_year", "actual_start_year",
@@ -417,9 +541,20 @@ def _build_gem_project_table(gem_csv):
                     "total_units": 0,
                     "owners_set": set(),
                     "fsru": False,
+                    "vessel_name_sets": [],
                 }
             p = projects[key]
             p["status_set"].add(status)
+            # Terminal-level FSRU vessel name(s). One single-berth terminal carries
+            # one vessel ("Höegh Esperanza"); a sequential-berth terminal lists all
+            # deployed vessels comma-separated ("Energos Power FSRU, BW Singapore
+            # FSRU, ..."). Captured as token-sets so the multi-terminal FSRU site
+            # split (_split_multiterminal_fsru_sites) can route a GIIGNL vessel row
+            # to the GEM terminal that actually carries that vessel.
+            if ci["floating_vessel_name"] is not None:
+                for vs in _parse_vessel_name_sets(row[ci["floating_vessel_name"]]):
+                    if vs not in p["vessel_name_sets"]:
+                        p["vessel_name_sets"].append(vs)
             if uname and uname != "--" and uname not in p["unit_names"]:
                 p["unit_names"].append(uname)
             if status == "operating" and uname and uname != "--" \
@@ -659,6 +794,11 @@ def _classify(report_rows, gem_projects, alias_map=None):
         rp["trains_count"] += 1
         rp["rows"].append(r)
 
+    # Split GIIGNL FSRU sites that GEM models as multiple distinct terminals
+    # (e.g. Wilhelmshaven → 'Wilhelmshaven FSRU' + 'Wilhelmshaven TES FSRU'),
+    # routing each vessel row to its GEM terminal. See the function docstring.
+    report_projects = _split_multiterminal_fsru_sites(report_projects, gem_projects)
+
     # Pass 1: exact match — first try canonical TerminalName, then OtherNames alias.
     matches = []
     matched_gp_keys: list[tuple] = []  # every GEM project key that got matched
@@ -668,9 +808,18 @@ def _classify(report_rows, gem_projects, alias_map=None):
     # Map each report key to the GEM canonical key it matched (if any) and
     # which side of the GEM record matched it.
     canonical_via_alias: dict[tuple, tuple] = {}  # report_key -> (canonical_key, alias_norm)
+    # Report sub-projects force-matched to a specific GEM terminal by the
+    # multi-terminal FSRU split (report_key -> gem_key).
+    forced_gem: dict[tuple, tuple] = {
+        rk: rp["_forced_gem_key"] for rk, rp in report_projects.items()
+        if rp.get("_forced_gem_key") and rp["_forced_gem_key"] in gem_projects
+    }
 
     for rp_key in list(report_projects.keys()):
-        if rp_key in gem_projects:
+        if rp_key in forced_gem:
+            matched_report_keys.add(rp_key)
+            matched_gem_keys.add(forced_gem[rp_key])
+        elif rp_key in gem_projects:
             matched_report_keys.add(rp_key)
             matched_gem_keys.add(rp_key)
         elif rp_key in alias_map:
@@ -684,7 +833,12 @@ def _classify(report_rows, gem_projects, alias_map=None):
 
     for rp_key in sorted(matched_report_keys):
         rp = report_projects[rp_key]
-        if rp_key in canonical_via_alias:
+        if rp_key in forced_gem:
+            gp_key = forced_gem[rp_key]
+            gp = gem_projects[gp_key]
+            matched_alias_norm = ""
+            via_alias = False
+        elif rp_key in canonical_via_alias:
             gp_key, matched_alias_norm = canonical_via_alias[rp_key]
             gp = gem_projects[gp_key]
             via_alias = True
