@@ -1,4 +1,4 @@
-# LNG terminals tracker
+# LNG terminals researcher
 
 Operational repository for an LLM research assistant that helps maintain
 [GEM's Global Gas Infrastructure Tracker (GGIT) LNG terminals database](https://globalenergymonitor.org/projects/global-gas-infrastructure-tracker/).
