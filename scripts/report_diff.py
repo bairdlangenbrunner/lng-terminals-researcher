@@ -33,6 +33,7 @@ Usage:
 import argparse
 import csv
 import json
+import re
 import sys
 from collections import defaultdict
 from pathlib import Path
@@ -45,6 +46,153 @@ from normalize import (
 
 
 DEFAULT_GEM_CSV = "./gem_export.csv"
+
+# Matches a trailing " Expansion" / " Extension" qualifier on a report site name.
+# GIIGNL splits a phased terminal across "<Site>" and "<Site> Expansion" rows;
+# this captures the "<Site>" base so the rows can be folded together (see
+# _classify). Requires a non-empty base before the qualifier, so a bare
+# "expansion" extraction artifact does NOT match.
+_EXPANSION_RE = re.compile(r"^(.*\S)\s+(?:expansion|extension)\s*$", re.IGNORECASE)
+
+
+def _strip_expansion_suffix(raw):
+    """Return the base site name if `raw` ends in 'Expansion'/'Extension', else None."""
+    if not raw:
+        return None
+    m = _EXPANSION_RE.match(str(raw).strip())
+    return m.group(1).strip() if m else None
+
+
+# Matches a trailing unit/complex code on a report site name, e.g. the Algerian
+# Sonatrach complexes "Arzew GL1Z" / "Arzew GL2Z" / "Skikda GL1K". The code must
+# contain BOTH letters and digits (regex: 1-4 letters, digits, optional trailing
+# letter) so plain named stages WITHOUT a digit are never stripped — protects
+# "Senboku II", "Bontang Train E", "Corpus Christi Stage III". Used to fold the
+# per-complex rows to a shared base site so they (a) match one GEM project and
+# (b) align 1:1 to GEM unit names (the code "GL1Z" == GEM unit "GL1Z").
+_UNIT_CODE_RE = re.compile(r"^(.*\S)\s+([A-Za-z]{1,4}\d+[A-Za-z]?)$")
+
+
+def _strip_unit_code_suffix(raw):
+    """Return the base site name if `raw` ends in a unit/complex code, else None.
+
+    "Arzew GL1Z" -> "Arzew"   "Skikda GL1K" -> "Skikda"   "Senboku II" -> None
+    """
+    if not raw:
+        return None
+    m = _UNIT_CODE_RE.match(str(raw).strip())
+    if not m:
+        return None
+    code = m.group(2)
+    # Regex guarantees a digit; require a letter too (a code, not a bare number).
+    if not any(c.isalpha() for c in code):
+        return None
+    return m.group(1).strip()
+
+
+# Per-status anchor-year column to surface on the non-operating sheet. Pre-operating
+# and dormancy statuses each have their own anchor; post-operating statuses fall back
+# to the stop year then the actual start.
+_STATUS_ANCHOR_COL = {
+    "proposed": ["proposal_year"],
+    "construction": ["construction_year", "proposal_year"],
+    "shelved": ["shelved_year"],
+    "cancelled": ["cancelled_year", "shelved_year"],
+    "idled": ["stop_year", "actual_start_year"],
+    "mothballed": ["stop_year", "actual_start_year"],
+    "retired": ["stop_year", "actual_start_year"],
+}
+
+
+def _unit_anchor_year(row, ci, status):
+    """Return a representative year string for a unit given its current status."""
+    for col in _STATUS_ANCHOR_COL.get(status, []):
+        idx = ci.get(col)
+        if idx is not None and idx < len(row):
+            val = (row[idx] or "").strip()
+            if val:
+                return val
+    return ""
+
+
+import string as _string
+
+# GEM-side statuses that are NOT currently operating. GIIGNL's liq/regas tables
+# are operating-only, so these never appear there — they populate the
+# non-operating sheet (defaulting to "GEM has, GIIGNL doesn't").
+_NONOP_STATUSES = {
+    "proposed", "construction", "shelved", "cancelled",
+    "idled", "mothballed", "retired",
+}
+
+
+def _simple_tokens(s):
+    """Lowercased tokens split on whitespace / hyphen / slash, punctuation-stripped.
+
+    Splitting on '-' and '/' lets 'arzew-bethioua' yield {'arzew','bethioua'} so a
+    GIIGNL 'Arzew ...' row shares the 'arzew' token with GEM's hyphenated name.
+    """
+    out = set()
+    for raw in re.split(r"[\s\-/]+", s or ""):
+        clean = raw.strip(_string.punctuation + "()[]{}")
+        if clean:
+            out.add(clean)
+    return out
+
+
+def _tokens_4plus(s):
+    """Distinctive (4+ char) tokens, for fuzzy name overlap."""
+    return {t for t in _simple_tokens(s) if len(t) >= 4}
+
+
+def _align_units(rp, gp):
+    """Align report member rows to GEM units within an already-matched project.
+
+    The bridge is that a GEM unit name often appears as a token inside the GIIGNL
+    site name (GIIGNL 'Arzew GL1Z' ⊃ GEM unit 'GL1Z'). A GEM unit is accepted for a
+    report row when its normalized name is a token-subset of the report site name
+    AND (the unit name is code-like [contains a digit] OR capacities are within 25%).
+
+    Returns (unit_matches, matched_gem_unit_names).
+    """
+    unit_matches = []
+    used = set()
+    for r in rp["rows"]:
+        site_tokens = _simple_tokens(normalize_terminal_name(r.get("site_name", "")))
+        try:
+            rcap = float(r.get("capacity_mtpa", "")) if r.get("capacity_mtpa") else 0.0
+        except ValueError:
+            rcap = 0.0
+        chosen = None
+        for u in gp.get("units", []):
+            un = u["unit_name_norm"]
+            if not un or u["unit_name"] in used:
+                continue
+            un_tokens = _simple_tokens(un)
+            if not un_tokens or not un_tokens <= site_tokens:
+                continue
+            has_digit = any(c.isdigit() for c in un)
+            gcap = u["capacity_mtpa"]
+            cap_close = bool(gcap and rcap and abs(rcap - gcap) / gcap <= 0.25)
+            if has_digit or cap_close:
+                chosen = u
+                break
+        if chosen:
+            used.add(chosen["unit_name"])
+            gcap = chosen["capacity_mtpa"]
+            dpct = (abs(rcap - gcap) / gcap * 100) if gcap else None
+            unit_matches.append({
+                "report_site": r.get("site_name", ""),
+                "report_capacity_mtpa": round(rcap, 2),
+                "gem_unit_name": chosen["unit_name"],
+                "gem_unit_status": chosen["status"],
+                "gem_unit_capacity_mtpa": round(gcap, 2),
+                "capacity_delta_pct": round(dpct, 1) if dpct is not None else None,
+                # Agree only when capacities are identical at 2-decimal precision;
+                # any non-zero difference is a conflict (red).
+                "agree": bool(round(rcap - gcap, 2) == 0),
+            })
+    return unit_matches, {um["gem_unit_name"] for um in unit_matches}
 
 
 def _load_colmap(csv_path):
@@ -84,6 +232,8 @@ def _build_gem_project_table(gem_csv):
         "terminal_id", "terminal_name", "unit_name", "country", "facility_type",
         "status", "fuel", "owner", "capacity_mtpa", "floating",
         "import_export_only", "other_names", "local_names", "language",
+        "proposal_year", "construction_year", "shelved_year", "cancelled_year",
+        "stop_year", "actual_start_year",
     ]}
     if None in (ci["terminal_id"], ci["terminal_name"], ci["country"]):
         sys.exit("ERROR: GEM CSV missing required columns")
@@ -149,6 +299,8 @@ def _build_gem_project_table(gem_csv):
                     "name_norm": tname_norm,
                     "section_type": section_type,
                     "unit_names": [],
+                    "operating_unit_names": [],
+                    "units": [],
                     "aliases_norm": set(),
                     "aliases_raw": set(),
                     "status_set": set(),
@@ -162,6 +314,9 @@ def _build_gem_project_table(gem_csv):
             p["status_set"].add(status)
             if uname and uname != "--" and uname not in p["unit_names"]:
                 p["unit_names"].append(uname)
+            if status == "operating" and uname and uname != "--" \
+                    and uname not in p["operating_unit_names"]:
+                p["operating_unit_names"].append(uname)
             p["total_units"] += 1
             if status == "operating":
                 p["operating_units"] += 1
@@ -169,6 +324,22 @@ def _build_gem_project_table(gem_csv):
             p["owners_set"].update(owner_tags)
             if floating and floating.lower() in ("true", "yes", "1"):
                 p["fsru"] = True
+
+            # Per-unit detail (used by the unit-level alignment pass in _classify
+            # and by the non-operating sheet). unit_name_norm is a plain lowercased
+            # token form — NOT normalize_terminal_name (which strips suffixes that
+            # are meaningful in unit names like "GL1Z").
+            uname_norm = (uname or "").lower().strip()
+            if uname_norm == "--":
+                uname_norm = ""
+            p["units"].append({
+                "unit_name": uname if (uname and uname != "--") else "",
+                "unit_name_norm": uname_norm,
+                "status": status,
+                "capacity_mtpa": cap,
+                "start_year": _unit_anchor_year(row, ci, status),
+                "owners_set": owner_tags,
+            })
 
             local_names_raw = row[ci["local_names"]] if ci["local_names"] is not None else ""
             languages_raw = row[ci["language"]] if ci["language"] is not None else ""
@@ -216,19 +387,95 @@ def _classify(report_rows, gem_projects, alias_map=None):
                        ambiguous, stats
     """
     alias_map = alias_map or {}
+
+    def _row_keyparts(r):
+        """(country_norm, full_name_norm, section_type) for a report row, or None
+        if the row is a subtotal or missing a required field."""
+        if (r.get("notes") or "").lower().startswith("country subtotal"):
+            return None
+        country_norm = normalize_country(r.get("country", ""))
+        name_norm = normalize_terminal_name(r.get("site_name", ""))
+        section_type = r.get("section_type", "")
+        if not country_norm or not name_norm or not section_type:
+            return None
+        return country_norm, name_norm, section_type
+
+    # First scan: the set of (country, full-name, section) keys present in the
+    # report. Used below to decide whether an "<X> Expansion" row has a base
+    # "<X>" partner to fold into.
+    rep_name_keys = set()
+    for r in report_rows:
+        kp = _row_keyparts(r)
+        if kp:
+            rep_name_keys.add(kp)
+
+    # Second scan: count how many report rows share each unit-code-stripped base
+    # (country, base_norm, section). ≥2 distinct rows sharing a base (e.g. Algeria
+    # 'Arzew GL1Z'/'GL2Z'/'GL3Z' → 'arzew') is itself evidence the base is a real
+    # multi-complex site, so the unit-code fold can fire even when GEM names the
+    # project differently ('Arzew-Bethioua LNG Terminal').
+    unit_code_base_counts = defaultdict(int)
+    for r in report_rows:
+        kp = _row_keyparts(r)
+        if not kp:
+            continue
+        country_norm, _full, section_type = kp
+        base_raw = _strip_unit_code_suffix(r.get("site_name", ""))
+        if not base_raw:
+            continue
+        base_norm = normalize_terminal_name(base_raw)
+        if base_norm:
+            unit_code_base_counts[(country_norm, base_norm, section_type)] += 1
+
+    def _grouping_name(country_norm, raw_site, section_type, full_norm):
+        """Resolve the grouping name for a report row, returning
+        (group_name_norm, folded, base_display_raw).
+
+        Two conservative folds, each firing only when the stripped base resolves:
+
+        1. Expansion/extension fold. GIIGNL splits a phased terminal across
+           '<Site>' + '<Site> Expansion' rows (e.g. Taiwan 'Taichung' 6.1 +
+           'Taichung Expansion' 1.9 = one 8.0 MTPA CPC terminal). Fold when the
+           base resolves to another report row, a GEM canonical key, or alias.
+
+        2. Unit-code fold. GIIGNL splits a multi-complex site across per-complex
+           rows carrying a code suffix ('Arzew GL1Z'/'GL2Z'/'GL3Z'). Fold when the
+           base resolves to a GEM key/alias OR ≥2 report rows share the base.
+
+        Both avoid merging extraction artifacts and genuinely distinct named
+        stages that lack a suffix/code ('Senboku II', 'Bontang Train E')."""
+        base_raw = _strip_expansion_suffix(raw_site)
+        if base_raw:
+            base_norm = normalize_terminal_name(base_raw)
+            if base_norm:
+                base_key = (country_norm, base_norm, section_type)
+                if base_key in rep_name_keys or base_key in gem_projects or base_key in alias_map:
+                    return base_norm, True, base_raw
+
+        code_base_raw = _strip_unit_code_suffix(raw_site)
+        if code_base_raw:
+            cb_norm = normalize_terminal_name(code_base_raw)
+            if cb_norm and cb_norm != full_norm:
+                cb_key = (country_norm, cb_norm, section_type)
+                if (cb_key in gem_projects or cb_key in alias_map
+                        or cb_key in rep_name_keys
+                        or unit_code_base_counts.get(cb_key, 0) >= 2):
+                    return cb_norm, True, code_base_raw
+
+        return full_norm, False, None
+
     # Group report rows by (country, name, section_type) — collapse subtotal rows.
     # section_type is part of the key so a site with both liquefaction and
     # regasification rows in GIIGNL maps to two separate report-side projects,
     # mirroring the GEM-side keying.
     report_projects = {}
     for r in report_rows:
-        if (r.get("notes") or "").lower().startswith("country subtotal"):
+        kp = _row_keyparts(r)
+        if kp is None:
             continue
-        country_norm = normalize_country(r.get("country", ""))
-        name_norm = normalize_terminal_name(r.get("site_name", ""))
-        section_type = r.get("section_type", "")
-        if not country_norm or not name_norm or not section_type:
-            continue
+        country_norm, full_norm, section_type = kp
+        name_norm, folded, base_display = _grouping_name(
+            country_norm, r.get("site_name", ""), section_type, full_norm)
         key = (country_norm, name_norm, section_type)
 
         try:
@@ -252,8 +499,18 @@ def _classify(report_rows, gem_projects, alias_map=None):
                 "owners_set": set(),
                 "trains_count": 0,
                 "rows": [],
+                "site_names": set(),
             }
         rp = report_projects[key]
+        # Prefer the base name as the display name (so a folded group shows
+        # "Taichung" / "Arzew", not "Taichung Expansion" / "Arzew GL1Z").
+        if folded and base_display:
+            rp["site_name"] = base_display
+        elif full_norm == name_norm and not rp.get("_display_locked"):
+            rp["site_name"] = r.get("site_name", "")
+        if folded and base_display:
+            rp["_display_locked"] = True
+        rp["site_names"].add(r.get("site_name", ""))
         rp["total_capacity_mtpa"] += cap
         rp["owners_set"].update(owner_tags)
         rp["trains_count"] += 1
@@ -261,6 +518,8 @@ def _classify(report_rows, gem_projects, alias_map=None):
 
     # Pass 1: exact match — first try canonical TerminalName, then OtherNames alias.
     matches = []
+    matched_gp_keys: list[tuple] = []  # every GEM project key that got matched
+    aligned_unit_names_by_gp: dict[tuple, set] = defaultdict(set)
     matched_report_keys: set[tuple] = set()
     matched_gem_keys: set[tuple] = set()
     # Map each report key to the GEM canonical key it matched (if any) and
@@ -280,7 +539,7 @@ def _classify(report_rows, gem_projects, alias_map=None):
     giignl_only_keys = set(report_projects.keys()) - matched_report_keys
     gem_only_keys = set(gem_projects.keys()) - matched_gem_keys
 
-    for rp_key in matched_report_keys:
+    for rp_key in sorted(matched_report_keys):
         rp = report_projects[rp_key]
         if rp_key in canonical_via_alias:
             gp_key, matched_alias_norm = canonical_via_alias[rp_key]
@@ -306,21 +565,30 @@ def _classify(report_rows, gem_projects, alias_map=None):
         # also for alias hit (still deterministic, just via OtherNames).
         confidence = "high"
         disagreements = []
-        if cap_pct is not None and cap_pct > 10:
-            disagreements.append(f"capacity differs by {cap_pct:.1f}% (report={rp['total_capacity_mtpa']:.2f}, gem={gp['total_capacity_mtpa']:.2f})")
+        # Any non-zero capacity difference is a conflict (compared at the
+        # 2-decimal precision the diff reports). GIIGNL is one source in a
+        # conflict, not authoritative — every disagreement routes to Update.
+        if round(cap_delta, 2) != 0:
+            pct_str = f"{cap_pct:.1f}%" if cap_pct is not None else "n/a"
+            disagreements.append(f"capacity differs by {pct_str} (report={rp['total_capacity_mtpa']:.2f}, gem={gp['total_capacity_mtpa']:.2f})")
         if owner_only_report:
             disagreements.append(f"owners in report not in GEM: {sorted(owner_only_report)}")
         if owner_only_gem:
             disagreements.append(f"owners in GEM not in report: {sorted(owner_only_gem)}")
 
+        unit_matches, aligned_names = _align_units(rp, gp)
+        matched_gp_keys.append(gp_key)
+        aligned_unit_names_by_gp[gp_key] |= aligned_names
+
         matches.append({
             "match_type": "exact_via_alias" if via_alias else "exact",
             "confidence": confidence,
+            "match_granularity": "unit" if unit_matches else "project",
             "country": rp["country"],
             "site_name": rp["site_name"],
             "gem_terminal_id": gp["terminal_id"],
             "gem_terminal_name": gp["terminal_name"],
-            "gem_unit_name": gp["unit_names"],
+            "gem_unit_name": gp["operating_unit_names"],
             "matched_alias": matched_alias_norm if via_alias else "",
             "section_type_report": rp["section_type"],
             "section_type_gem": gp["section_type"],
@@ -332,8 +600,10 @@ def _classify(report_rows, gem_projects, alias_map=None):
             "owners_report_only": sorted(owner_only_report),
             "owners_gem_only": sorted(owner_only_gem),
             "report_train_count": rp["trains_count"],
+            "report_sites_merged": sorted(rp["site_names"]) if len(rp["site_names"]) > 1 else [],
             "gem_operating_units": gp["operating_units"],
             "gem_total_units": gp["total_units"],
+            "unit_matches": unit_matches,
             "disagreements": disagreements,
         })
 
@@ -341,7 +611,12 @@ def _classify(report_rows, gem_projects, alias_map=None):
     ambiguous = []
     fuzzy_matches = []
     still_only = []
-    for key in giignl_only_keys:
+    # Sort for determinism: this loop discards from gem_only_keys as it assigns
+    # fuzzy matches, so when several report rows contend for the same GEM
+    # candidate (e.g. Qatar's QatarEnergy LNG train rows vs the (N)/(S) GEM
+    # records) the outcome depends on iteration order. Iterating a set is not
+    # stable run-to-run, which made the diff non-reproducible.
+    for key in sorted(giignl_only_keys):
         rp = report_projects[key]
         country_norm = key[0]
         name_norm = key[1]
@@ -363,16 +638,6 @@ def _classify(report_rows, gem_projects, alias_map=None):
         # previous row's partition); 2 distinctive shared tokens make a strong
         # enough match to surface as a candidate (even if just for ambiguous).
         fuzzy_hits = []
-        # Token extraction: strip leading/trailing non-word chars (parens,
-        # commas, periods) so "(tangshan)," tokenizes as "tangshan".
-        import string as _string
-        def _tokens_4plus(s: str) -> set[str]:
-            out = set()
-            for raw in s.split():
-                clean = raw.strip(_string.punctuation + "()[]{}")
-                if len(clean) >= 4:
-                    out.add(clean)
-            return out
         rp_tokens = _tokens_4plus(name_norm)
         for gk, gp in candidates:
             all_names = {gk[1]} | gp.get("aliases_norm", set())
@@ -395,20 +660,48 @@ def _classify(report_rows, gem_projects, alias_map=None):
 
         if len(fuzzy_hits) == 1:
             gk, gp, criteria = fuzzy_hits[0]
+            unit_matches, aligned_names = _align_units(rp, gp)
+            matched_gp_keys.append(gk)
+            aligned_unit_names_by_gp[gk] |= aligned_names
+            cap_delta = rp["total_capacity_mtpa"] - gp["total_capacity_mtpa"]
+            cap_pct = abs(cap_delta) / gp["total_capacity_mtpa"] * 100 if gp["total_capacity_mtpa"] else None
+            owner_only_report = rp["owners_set"] - gp["owners_set"]
+            owner_only_gem = gp["owners_set"] - rp["owners_set"]
+            disagreements = []
+            # Any non-zero capacity difference is a conflict (see Pass 1).
+            if round(cap_delta, 2) != 0:
+                pct_str = f"{cap_pct:.1f}%" if cap_pct is not None else "n/a"
+                disagreements.append(f"capacity differs by {pct_str} (report={rp['total_capacity_mtpa']:.2f}, gem={gp['total_capacity_mtpa']:.2f})")
+            if owner_only_report:
+                disagreements.append(f"owners in report not in GEM: {sorted(owner_only_report)}")
+            if owner_only_gem:
+                disagreements.append(f"owners in GEM not in report: {sorted(owner_only_gem)}")
             fuzzy_matches.append({
                 "match_type": "fuzzy",
                 "confidence": "medium",
+                "match_granularity": "unit" if unit_matches else "project",
                 "country": rp["country"],
                 "site_name": rp["site_name"],
                 "gem_terminal_id": gp["terminal_id"],
                 "gem_terminal_name": gp["terminal_name"],
-                "gem_unit_name": gp["unit_names"],
+                "gem_unit_name": gp["operating_unit_names"],
+                "matched_alias": "",
                 "section_type_report": rp["section_type"],
                 "section_type_gem": gp["section_type"],
                 "report_capacity_mtpa": round(rp["total_capacity_mtpa"], 2),
                 "gem_capacity_mtpa": round(gp["total_capacity_mtpa"], 2),
+                "capacity_delta_mtpa": round(cap_delta, 2),
+                "capacity_delta_pct": round(cap_pct, 1) if cap_pct is not None else None,
                 "owners_overlap": sorted(rp["owners_set"] & gp["owners_set"]),
+                "owners_report_only": sorted(owner_only_report),
+                "owners_gem_only": sorted(owner_only_gem),
+                "report_train_count": rp["trains_count"],
+                "report_sites_merged": sorted(rp["site_names"]) if len(rp["site_names"]) > 1 else [],
+                "gem_operating_units": gp["operating_units"],
+                "gem_total_units": gp["total_units"],
+                "unit_matches": unit_matches,
                 "match_criteria": criteria,
+                "disagreements": disagreements,
                 "needs_review": True,
             })
             gem_only_keys.discard(gk)
@@ -437,10 +730,11 @@ def _classify(report_rows, gem_projects, alias_map=None):
                 "report_capacity_mtpa": round(rp["total_capacity_mtpa"], 2),
                 "owners_in_report": sorted(rp["owners_set"]),
                 "trains_count": rp["trains_count"],
+                "report_sites_merged": sorted(rp["site_names"]) if len(rp["site_names"]) > 1 else [],
             })
 
     gem_only = []
-    for key in gem_only_keys:
+    for key in sorted(gem_only_keys):
         gp = gem_projects[key]
         # Only flag if operating — if shelved/cancelled/proposed, "GEM-only" is
         # expected (GEM tracks pre-operating, GIIGNL doesn't)
@@ -462,19 +756,50 @@ def _classify(report_rows, gem_projects, alias_map=None):
                     "report missed it (small/non-member/sanctioned) OR GEM has it wrong",
         })
 
+    # Non-operating units of MATCHED projects. GIIGNL's tables are operating-only,
+    # so each defaults to is_gem_only=True ("GEM has, GIIGNL doesn't") UNLESS the
+    # unit was aligned to a report row, OR the §3.2.1 narrative-prose pass annotates
+    # giignl_narrative_mention downstream (a confirmed forward phase, no conflict —
+    # Reconciliation SOP §5.7). Scoped to matched projects only (gem-only projects
+    # live wholly in giignl_to_action).
+    nonoperating_units = []
+    for gk in sorted(set(matched_gp_keys)):
+        gp = gem_projects[gk]
+        aligned = aligned_unit_names_by_gp.get(gk, set())
+        for u in gp["units"]:
+            if u["status"] not in _NONOP_STATUSES:
+                continue
+            nonoperating_units.append({
+                "country": gp["country"],
+                "gem_terminal_id": gp["terminal_id"],
+                "gem_terminal_name": gp["terminal_name"],
+                "gem_unit_name": u["unit_name"],
+                "status": u["status"],
+                "capacity_mtpa": round(u["capacity_mtpa"], 2),
+                "start_year": u["start_year"],
+                "section_type": gp["section_type"],
+                "owners": sorted(u["owners_set"]),
+                "giignl_narrative_mention": "",
+                "is_gem_only": u["unit_name"] not in aligned,
+            })
+
     return {
         "matches": matches,
         "fuzzy_matches": fuzzy_matches,
         "report_only": still_only,
         "gem_only_operating": gem_only,
+        "nonoperating_units": nonoperating_units,
         "ambiguous": ambiguous,
         "stats": {
             "report_project_count": len(report_projects),
             "gem_project_count": len(gem_projects),
             "exact_matches": len(matches),
             "fuzzy_matches": len(fuzzy_matches),
+            "unit_level_matches": sum(1 for m in matches + fuzzy_matches
+                                      if m.get("match_granularity") == "unit"),
             "report_only_unmatched": len(still_only),
             "gem_only_operating": len(gem_only),
+            "nonoperating_units": len(nonoperating_units),
             "ambiguous": len(ambiguous),
             "matches_with_disagreement": sum(1 for m in matches if m["disagreements"]),
         },

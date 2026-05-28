@@ -62,7 +62,7 @@ python recalc.py ../batches/...
 | Script | Purpose |
 |---|---|
 | `stale_sweep.py` | Flags units exceeding lifecycle dormancy thresholds. Used by triage and stale-driven update batches. |
-| `report_diff.py` | Reconciliation diff between an industry report (GIIGNL or IGU) and current GEM data. Parameterized on report type. Three-pass matching (canonical name → alias via `OtherNames`/`LocalNames` + transliterations → fuzzy); project key includes `section_type` so a mixed liquefaction+regasification terminal splits into two projects rather than summing. |
+| `report_diff.py` | Reconciliation diff between an industry report (GIIGNL or IGU) and current GEM data. Parameterized on report type. Three-pass matching (canonical name → alias via `OtherNames`/`LocalNames` + transliterations → fuzzy); project key includes `section_type` so a mixed liquefaction+regasification terminal splits into two projects rather than summing. Report rows ending in "Expansion"/"Extension" fold into their base `<Site>` row (when a base partner resolves) so phased terminals sum correctly; the `report_sites_merged` field records each fold. Set iterations are sorted, so the diff is reproducible run-to-run. |
 | `fsru_sync_check.py` | Cross-checks FSRU records between the LNG Terminals project and the LNG Carrier Tracker project. Graceful degradation if carrier backend unavailable. |
 
 ### Output
