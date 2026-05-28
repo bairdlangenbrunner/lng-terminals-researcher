@@ -3,6 +3,8 @@
 Last revised: 2026-05-27 (rev 2)
 
 Revision notes:
+- rev 4 (2026-05-28): `giignl_diff` split into TWO sheets — `giignl_diff_operating` (GEM operating capacity vs GIIGNL's operating-only tables) and `giignl_diff_nonoperating` (matched projects' non-op units, each defaulting to a "GEM has, GIIGNL doesn't" highlight unless the §3.2.1 narrative pass confirms the forward phase). `report_diff.py` gained **unit-level alignment** (§3.5): GIIGNL rows whose site name contains a GEM unit name (GIIGNL "Arzew GL1Z" ⊃ GEM unit "GL1Z") align 1:1 to GEM units, with a project-total fallback (Taichung) when they don't; a conservative unit-code fold groups per-complex rows ("Arzew GL1Z/2Z/3Z" → one "Arzew" project) so they match and align. `gem_unit_name` on a match now lists OPERATING units only.
+- rev 3 (2026-05-28): narrative prose extraction promoted from an informal "secondary source" note to an actual workflow step (new §3.2.1) — the operating-only tables miss proposed/construction/expansion activity that the country narratives disclose. `report_diff.py` gained report-side expansion-row folding (§3.5) and deterministic (sorted) set iteration (§3.4). New §5.7 distinguishes forward-looking narrative phases from table disagreements.
 - rev 2 (2026-05-27): pipeline rewritten for real-PDF input (`pdftotext -layout` instead of zip-of-JPEGs+vision). §3.5 matching algorithm extended to three passes (canonical / alias-incl-LocalNames-with-transliteration / 3-criteria fuzzy). Project key now includes `section_type` (Sabine-Pass-style mixed-facility-type terminals split into two project entries). §3.10 batch filename convention pinned to `lng_terminals_batch_<YYYYMMDD>_<HHMM>_ET.xlsx`; README sheet-definitions block now mandatory.
 - rev 1 (2026-05): initial draft (zip-of-JPEGs + vision pipeline).
 
@@ -27,7 +29,9 @@ Do NOT run reconciliation:
 Before any tool runs, confirm with the user:
 
 1. **Which report edition** — typically the year on the cover (e.g. "GIIGNL 2026 Annual Report" covers calendar year 2025 trade data)
-2. **Which GIIGNL sections** are in scope. Default: both the liquefaction table (operating + recently-commissioned export terminals) and the regasification table (operating + recently-commissioned import terminals). Country narratives are also in scope as a secondary source for proposed/construction projects that may inform Discovery routing.
+2. **Which GIIGNL sections** are in scope. Default:
+   - The liquefaction table (operating + recently-commissioned export terminals) and the regasification table (operating + recently-commissioned import terminals) — the **primary structured diff input** (§3.4).
+   - The country-**narrative** prose sections (liquefaction + regasification narratives — Appendix A.2 page ranges) — a **secondary but actual extraction step** (§3.2.1), not a manual skim. The tables are operating-only; the narratives are where GIIGNL discloses proposed, under-construction, and expansion activity, which routes to Discovery and Update + `status_timeline_additions`. Confirm whether to run the prose pass this batch (default: yes).
 3. **Which GEM lifecycle states to compare against** — default: GIIGNL is operating-only, so the reconciliation primarily matches against GEM `operating`, `idled`, `mothballed`, `retired` rows (GIIGNL keeps recently-retired entries for one report cycle). GEM `construction` rows may match GIIGNL narrative mentions, but the value-level diff only meaningfully applies to operating capacity.
 4. **Whether to include the country-summary tables** (per-country totals) as a sanity check on GEM's project-level rollups. Default: yes.
 
@@ -64,6 +68,32 @@ Verify the extraction before proceeding:
 - Per-country subtotals (where GIIGNL displays them) should match the sum of country rows
 - If totals don't match within 2%, suspect missing rows from OCR/parsing — investigate before continuing
 
+### §3.2.1 Narrative prose extraction (secondary pass)
+
+The liquefaction/regasification *tables* are operating-only and feed the structured diff (§3.4). The country-*narrative* sections (Appendix A.2 page ranges) are where GIIGNL discloses **proposed / under-construction / expansion** activity, and that signal is valuable enough to be a real step, not an informal read.
+
+Read the narrative pages and extract, for each terminal mentioned with a concrete development, a structured candidate carrying:
+- project + sponsor/operator (normalize via `docs/reference/entity_canonical_map.md`)
+- lifecycle signal (proposed / FID / construction-start / commissioning / expansion)
+- anchor date(s) — construction-start month/year, target completion year
+- capacity figure, and whether it's a **new unit** or an **expansion** of existing capacity
+- source page (for traceability)
+
+Canonical example — the bar for "extract, don't skim":
+
+> "PipeChina commenced construction of three 240,000 cbm LNG tanks at its Yuedong terminal in December 2025, adding to three existing 160,000 cbm tanks. The expansion will boost the terminal's regasification capacity to 6 MTPA, with completion targeted for December 2028."
+
+That single paragraph clears the methodology's "sufficient information to update" bar: it identifies the project (Yuedong / PipeChina), flips lifecycle proposed→construction with a Dec-2025 anchor, logs an **expansion** (not a new unit), sets regas capacity to 6 MTPA, and gives a Dec-2028 target. It should land as an Update + a `status_timeline_additions` entry — not get lost in prose.
+
+Routing:
+- **Project not in GEM** → Discovery candidate. Apply the "sufficient information to add" threshold; below-threshold mentions go to `monitor_list`.
+- **Project in GEM, lifecycle/capacity change** → Update + `status_timeline_additions` (pull the existing timeline first per the Update SOP — the export has only current status + anchor years).
+- Every prose-derived finding carries a `GIIGNL <year> narrative, p.<n>` citation. Like the tables, GIIGNL prose is **not authoritative and never auto-applied** (§3.8) — it's a routing candidate that goes through the normal source-search and confidence labeling.
+
+Prose findings do **not** enter `giignl_diff` (that sheet is the table-level match audit). They land in `giignl_to_action` with their target route.
+
+**Implementation status:** this pass is **agent-driven today** — the agent reads the narrative pages (the 2026 text layer is clean per Appendix A.1) and produces the structured candidates directly. `giignl_extract.py` parses the **tables only**; do not expect it to surface prose findings. A future helper (`giignl_prose_extract.py`, or an extension of `giignl_extract.py`) could pre-filter narrative paragraphs containing capacity/date/lifecycle keywords to focus the read — see the TODO item. Per Appendix A.2, the in-scope narrative pages for the 2026 edition are the liquefaction narrative (pp. 28–31) and the regasification narrative (pp. 48–52); always re-derive page ranges per edition.
+
 ### §3.3 Normalize both sides
 
 `normalize.py` is imported as a module by `report_diff.py`. Both the GEM CSV and the GIIGNL CSV go through:
@@ -77,13 +107,17 @@ The normalized values are used for matching ONLY; the unnormalized values are pr
 
 ### §3.4 Run the diff
 
-`python report_diff.py --gem gem_export.csv --report giignl_extracted.csv --output giignl_diff.json`
+`python scripts/report_diff.py --report giignl --extracted giignl_extracted.csv --gem-csv gem_export.csv --output giignl_diff.json`
+
+(Note the flags: `--report {giignl,igu}` selects the report type, `--extracted` is the GIIGNL CSV from §3.2, `--gem-csv` is the GEM export. Earlier drafts of this SOP showed `--gem`/`--report <csv>`, which the script rejects.)
+
+**Run-to-run determinism:** the diff is now reproducible — the set iterations in the classifier (`matched_report_keys`, `giignl_only_keys`, `gem_only_keys`) are sorted before iterating, so two runs on identical inputs produce byte-identical `giignl_diff.json` (fixed 2026-05-28; previously the fuzzy/gem-only boundary jittered ±1–2 rows because the fuzzy pass `discard()`s from `gem_only_keys` as it assigns matches and set order was hash-randomized). You can safely re-run `report_diff.py` without the counts drifting.
 
 The script produces a four-way classification per (country, normalized-terminal-name) pair:
 
 | Classification | Meaning | Default route |
 |---|---|---|
-| **Match — values agree** | Both have the entity, values align within tolerance | Confidence bump only; no edit needed |
+| **Match — values agree** | Both have the entity, capacity is identical (to 2 decimals) and owner sets match | Confidence bump only; no edit needed |
 | **Match — values disagree** | Both have the entity, one or more fields differ | → Update workflow |
 | **GIIGNL-only** | GIIGNL has it, GEM doesn't | → Discovery workflow |
 | **GEM-only** | GEM has it, GIIGNL doesn't | → log only (usually expected, see §3.7) |
@@ -118,15 +152,25 @@ Score every GEM row in the same country+section by:
 
 Scores above a threshold get a "probable match" classification; below threshold = no match. Ambiguous when two GEM rows score within 10% of each other against the same GIIGNL row.
 
-**Matching is at the project level, not the unit level**, because GIIGNL aggregates per-site and GEM splits into units. A GIIGNL row like "Arzew GL3Z, 4.7 MTPA, 1 train" matches a GEM project that may have one or more units; the diff records the GIIGNL-side numbers against the *project total* from GEM's per-unit rollup. If the GEM project's per-unit breakdown doesn't sum to the GIIGNL number, that itself is a `value-disagreement`.
+**Pass 3: unit-level alignment within a matched project.** Project matching (passes 1–2) finds the right GEM project; this pass then tries to align each GIIGNL row to a *specific GEM unit*. The bridge is that a GEM unit name often appears as a token inside the GIIGNL site name — GIIGNL `Arzew GL1Z` ⊃ GEM unit `GL1Z`. A GEM unit is accepted for a report row when its normalized name is a token-subset of the report site name AND (the unit name is code-like, i.e. contains a digit, OR the capacities are within 25%). When ≥1 unit aligns, the match is `match_granularity = "unit"` and the diff carries a `unit_matches` list (per-unit GIIGNL-vs-GEM capacity comparison); the `giignl_diff_operating` sheet renders one row per aligned unit beneath the project-total row. When nothing aligns (GIIGNL's rows don't map to GEM's unit names — e.g. Taichung's `Taichung`/`Taichung Expansion` rows vs GEM's `Phase N` units), it stays `match_granularity = "project"` and only the project total is compared. Implemented as `_align_units` in `report_diff.py`. Arzew is the canonical 1:1 case (GIIGNL GL1Z/GL2Z/GL3Z ↔ GEM units, all agree; the retired `GL4Z` GEM has but GIIGNL doesn't lands in `giignl_diff_nonoperating`).
+
+**Project-level fallback.** GIIGNL aggregates per-site and GEM splits into units, so when unit alignment fails the diff records the GIIGNL-side numbers against the GEM *project total* (operating-unit rollup). If that total doesn't match the GIIGNL number, it's a `value-disagreement`. Either way, only **operating** GEM capacity enters the comparison (GIIGNL's tables are operating-only) — non-operating units are split out to `giignl_diff_nonoperating` (§3.10).
 
 **The project key is `(country_norm, name_norm, section_type)`, not just `(country_norm, name_norm)`** — a single GEM `TerminalName` may host BOTH liquefaction (export) AND regasification (import) units (Sabine Pass is the canonical example: 6 export trains plus 1 import terminal under one TerminalName). Without `section_type` in the key, their capacities sum incorrectly and the GIIGNL liquefaction-table row gets compared against the inflated total. The implementation lives in `_build_gem_project_table` in `report_diff.py` and applies symmetrically to the report side in `_classify`.
+
+**Expansion-row folding (report side).** GIIGNL splits a phased terminal across separate rows — e.g. Taiwan lists `Taichung` (6.1 MTPA, 2009) and `Taichung Expansion` (1.9 MTPA, 2025) as two rows for the single CPC terminal that GEM models as one project (8.0 MTPA across Phase 1/2/2-expansion units). GEM collapses its units to a project total of 8.0, so comparing the un-summed `Taichung` row (6.1) against it produces a spurious ~24% capacity disagreement while `Taichung Expansion` orphans into `report_only`. To fix this, `_classify` folds a report row whose name ends in **"Expansion"** or **"Extension"** into the base `<Site>` group (summing capacity, unioning owners). The fold is deliberately conservative — it only triggers when the stripped base name resolves to a real partner (another report row, a GEM canonical key, or a GEM alias). This avoids merging two failure modes that look superficially similar:
+- **Extraction artifacts** — a bare `expansion` (China row whose real site name split onto a prior line), `(Gravity-Based Structure) expansion`, `Zeebrugge Expansion Krk` (Belgium+Croatia merged), `Dabhol Expansion nual Report 2026 Edition` (page-footer leak). These have no resolvable base, so they stay as `report_only` and remain flagged for the extractor fixes (see TODO).
+- **Genuinely distinct named stages/trains** that lack an "Expansion" suffix — `Senboku II`, `Corpus Christi Stage III`, `Bontang Train E` — are never touched by the fold.
+
+**Unit-code folding (report side).** A second conservative fold handles per-complex rows that carry a unit/complex *code* suffix — Algeria's Sonatrach complexes `Arzew GL1Z` / `Arzew GL2Z` / `Arzew GL3Z` (and `Skikda GL1K`), which GEM models as units inside one project (`Arzew-Bethioua LNG Terminal`). `_strip_unit_code_suffix` peels a trailing token of the form *1-4 letters + digits + optional letter* (`GL1Z`, `GL2Z`, `GL1K`) — the digit requirement is what protects genuinely distinct named stages with no digit (`Senboku II`, `Bontang Train E`, `Corpus Christi Stage III`). The fold fires when the stripped base resolves to a GEM key/alias **or** ≥2 report rows share the base (`Arzew` is confirmed by its three peers). Once folded to one `Arzew` project, the substring-fuzzy pass matches it to `Arzew-Bethioua` and Pass 3 aligns the three rows 1:1 to GEM units `GL1Z/GL2Z/GL3Z`.
+
+When either fold happens, the diff entry carries a `report_sites_merged` list (e.g. `["Taichung", "Taichung Expansion"]` or `["Arzew GL1Z", "Arzew GL2Z", "Arzew GL3Z"]`) so the merge is auditable. **Watch for post-fold capacity gaps:** Yangshan Shanghai (report 12.0 vs GEM 6.0) surfaces the *expansion* capacity as a real fuzzy-match disagreement — investigate whether GEM is missing the expansion units or GIIGNL double-counts, per §3.6.
 
 ### §3.6 Disagreement classification rules
 
 Value disagreements get classified by field type, since each field has its own default cause-of-disagreement:
 
-**Capacity disagreements** — most common. Usual causes:
+**Capacity disagreements** — most common. **Any non-zero capacity difference is a conflict** (compared at the 2-decimal precision the diff reports), not just a delta above some percentage band. A 1.0 MTPA gap on a mid-size terminal (e.g. Zeebrugge: GEM 12.3 vs GIIGNL 11.3, ~8%) and a 0.04 MTPA rounding gap (e.g. Sergipe: GEM 5.64 vs GIIGNL 5.6) both get flagged red — the researcher decides materiality during the Update pass; the diff's job is to surface every difference, not to pre-filter. (There is intentionally no tolerance band: a prior >10% threshold silently hid real sub-10% discrepancies.) Usual causes:
 - Unit conversion error in either source (GIIGNL is always MTPA for these tables)
 - Per-train vs total reconciliation issue (GEM has 6 units of 3.3 MTPA = 19.8 MTPA project total; GIIGNL shows 22.2 MTPA — investigate the difference)
 - Expansion or debottlenecking captured by one source but not the other
@@ -184,9 +228,10 @@ Get the Eastern-time stamp via `TZ=America/New_York date "+%Y%m%d_%H%M_ET"`. The
 
 **README sheet definitions are MANDATORY.** Every staging xlsx must include a "Sheet definitions" block in the README listing every other tab and what it contains, so a researcher opening the file without prior context knows what each tab is for. This is handled automatically by `build_review_package.py` via the `SHEET_DESCRIPTIONS` constant + `_populate_readme_sheet_defs(wb)` helper, which is invoked at the end of `main()`. If you add a new sheet builder to the script, you MUST add a corresponding entry to `SHEET_DESCRIPTIONS` — otherwise the README will fall back to a "no description registered" placeholder that prompts the next agent to fix it.
 
-Produces an xlsx with the standard sheets plus two reconciliation-specific sheets:
+Produces an xlsx with the standard sheets plus three reconciliation-specific sheets:
 
-- `giignl_diff` — full diff output, color-coded per cell (green = match, yellow = ambiguous, red = disagreement, blue = GEM-only-expected, no fill = GIIGNL-only-needs-discovery)
+- `giignl_diff_operating` — OPERATING match audit: GEM operating capacity vs GIIGNL's operating-only tables. One project-total row per match (exact + fuzzy); for `match_granularity = "unit"` matches (§3.5), one per-unit row is emitted beneath it (the `level` column distinguishes `project` from `unit` rows). `gem_unit_name` lists **operating units only** (so the unit list reconciles with the operating capacity). `report_sites_merged` lists folded rows (expansion or unit-code, §3.5). **Light-red fill** marks conflicting cells: the `disagreements` cell, the four capacity columns when capacity differs at all (any non-zero delta), `owners_report_only`/`owners_gem_only` when non-empty, and a per-unit row's capacity cells when that unit disagrees. Fuzzy matches get a yellow `confidence` cell. (Triggers mirror `report_diff.py`'s disagreement logic; keep in sync.)
+- `giignl_diff_nonoperating` — non-operating units (proposed/construction/shelved/cancelled/idled/mothballed/retired) of **matched** projects. GIIGNL's tables are operating-only, so each row defaults to a light-red `gem_only_flag` = "GEM has, GIIGNL doesn't" UNLESS the §3.2.1 narrative pass populated `giignl_narrative_mention` (a confirmed forward phase → no conflict per §5.7; left unfilled). Worked example: Taichung Phase 3 (in the p.52 narrative → no highlight) vs Phase 4 (absent everywhere → highlighted); Arzew `GL4Z` retired → highlighted (GIIGNL drops retired).
 - `giignl_to_action` — actionable findings with proposed routing (Update vs Discovery vs Review)
 
 Empty sheets are omitted per CLAUDE.md convention.
@@ -199,16 +244,22 @@ Empty sheets are omitted per CLAUDE.md convention.
 
 When reconciliation finds GIIGNL clearly wrong (e.g. capacity figure that contradicts the operator's own filings), record in `country_notes_contributions` sheet under "GIIGNL errata observed". Over multiple years this builds a useful record of GIIGNL's failure modes (which countries it covers poorly, which kinds of fields it gets wrong) that informs future reconciliations.
 
-## §4 Confidence labels (reconciliation-specific)
+## §4 Cell colors in the reconciliation sheets (reconciliation-specific)
 
-Standard color scheme from CLAUDE.md applies, with reconciliation-specific cell semantics:
+This is what `build_review_package.py` actually applies — it overrides the generic CLAUDE.md color scheme for these sheets.
 
-- **Green** — Match with values agreeing within tolerance. Confidence bump on the GEM record; no edit needed.
-- **Yellow** — Match but values disagree, OR ambiguous match. Requires Update workflow follow-up.
-- **Red** — Disagreement where GIIGNL contradicts GEM on a primary field (status, capacity) and the disagreement looks substantive. Requires Update workflow follow-up and probably new source research.
-- **Blue** — GEM-only finding that's expected (GIIGNL gap, not a GEM error). No action needed; re-verified by absence.
+**`giignl_diff_operating`:**
+- **Light red (FFE5E5)** — a value in conflict between GIIGNL and GEM: any non-zero capacity delta (compared at 2-decimal precision — no tolerance band), or an owner present in one source but not the other. Applied per-cell to the conflicting field(s) — the four capacity columns and/or `owners_report_only` / `owners_gem_only` — plus the row's `disagreements` summary cell. On a per-unit row, the unit's capacity cells get the fill when that unit disagrees. Every such finding routes to the Update workflow (§3.8: do NOT auto-apply GIIGNL values).
+- **Yellow (FFF8E1)** — the `confidence` cell of a fuzzy (medium-confidence) match. Flags that the *match itself* is uncertain and should be verified before the diff is trusted.
+- **No fill** — capacity is identical (to 2 decimals) and owner sets match, or the cell is not part of a disagreement.
 
-GIIGNL-only findings get no color fill — they're not GEM cells, they're new candidates.
+This sheet contains only matched projects (operating side); GEM-only and GIIGNL-only *projects* live in `giignl_to_action`.
+
+**`giignl_diff_nonoperating`:**
+- **Light red (FFE5E5)** — the `gem_only_flag` and `gem_unit_name` cells of a non-op unit that GIIGNL does NOT cover (no operating-table row and no narrative mention) → "GEM has, GIIGNL doesn't". This is the default for non-op units.
+- **No fill** — `giignl_narrative_mention` is populated (the §3.2.1 prose pass found GIIGNL discussing this forward phase): a confirmed phase on the same trajectory, NOT a conflict (§5.7).
+
+Note: owner-set deltas (operating sheet) are the most common disagreement and usually benign — GIIGNL lists the full JV while GEM stores the immediate owner(s) (see §3.6). They still get the light-red fill, but most route to "log only / confidence note". Real research signal concentrates in the capacity-delta reds and in the non-op highlights.
 
 ## §5 Edge cases and gotchas
 
@@ -238,15 +289,22 @@ FSU and FRU vessels are non-standard. GIIGNL handling varies. Check the terminal
 
 GIIGNL's country narratives sometimes cite a different capacity number than the GIIGNL tabular row for the same terminal. When this happens, prefer the tabular value for the diff (it's the structured source) and log the narrative discrepancy as a GIIGNL errata.
 
+### §5.7 The narrative describes *future* phases the operating table doesn't (not a disagreement)
+
+The liquefaction/regasification tables are operating-only, but the country narrative routinely forward-references phases that aren't operating yet. **Don't mistake a forward-looking phase mention for a table-vs-table capacity disagreement.** Worked example (Taiwan, CPC Taichung, 2026 edition): the table rows sum to 8.0 MTPA (`Taichung` 6.1 + `Taichung Expansion` 1.9), the p.48 narrative says the terminal "reached a total nominal capacity of 8 MTPA in 2026 following the commencement of operations of Phase 2," and then mentions Phase 3. GEM correctly shows the terminal at 8.0 MTPA operating with Phase 3 (construction, →10) and Phase 4 (proposed, →13) as non-operating units. All three sources agree; there is no conflict — the table, the narrative's "8 MTPA," and GEM's operating total are the same number, and the Phase 3/4 figures are simply later points on the same trajectory.
+
+So when GEM's operating total matches the table but the narrative names higher future-phase capacities: confirm GEM already carries those phases as `construction`/`proposed` units (confidence bump), rather than logging a capacity disagreement. If GEM is *missing* a narrated under-construction/proposed phase, that routes to Discovery/Update as a new-unit finding — this is exactly what the §3.2.1 narrative prose pass is for. Narrative phase mentions are a routing input to Discovery/Update, never a `giignl_diff` table-disagreement row.
+
 ## §6 Pause-and-ask triggers
 
 Stop and consult the user before proceeding when:
 
-- More than ~10% of matched rows have value disagreements → systematic issue (GIIGNL methodology change, GEM schema misunderstanding, or extractor bug). Don't auto-route 100+ Update batches; review the pattern first.
+- More than ~10% of matched rows have value disagreements → systematic issue (GIIGNL methodology change, GEM schema misunderstanding, or extractor bug). Don't auto-route 100+ Update batches; review the pattern first. **Apply this to *material* disagreements, not the raw count.** Since any non-zero capacity delta now flags (§3.6) and owner-set deltas are usually benign (full JV vs immediate owner, §4), the raw `matches_with_disagreement` count is dominated by rounding-level capacity gaps and owner-list differences. Judge this trigger by the share of rows with a *substantive* capacity or owner conflict, not by the headline `disagreement_pct_of_matches` the README prints.
 - The extractor produces totals that diverge from GIIGNL's Key Figures by more than 2% → likely missing rows. Don't proceed with an incomplete diff.
 - GIIGNL-only findings exceed ~30 candidates → may indicate a GEM coverage gap for a whole region, worth scoping a Discovery batch around it rather than treating as 30 individual discoveries.
 - The GIIGNL report file is in an unexpected format (not the real-PDF-v1.7 path that the current `giignl_extract.py` expects, and not the legacy zip-of-JPEGs structure either) → extractor needs adjustment before proceeding.
 - A country shows GIIGNL country-summary totals that diverge dramatically from the sum of GEM operating capacity for that country → could be a country definition mismatch (e.g. one source includes a disputed territory) or a real coverage gap.
+- The §3.2.1 prose pass surfaces more than ~5 proposed/construction candidates in one country that GEM lacks → same signal as the GIIGNL-only >30 trigger at a smaller scale: likely a regional coverage gap worth scoping as a Discovery batch rather than routing individually.
 
 ---
 
@@ -267,9 +325,9 @@ The 2026 GIIGNL Annual Report received 2026-05 is a real PDF v1.7 (80 pages, A4,
 | 1-3 | Cover, profile, editorial | Skip |
 | 4-7 | Key figures, narrative overview | Use Key Figures totals as extraction sanity check |
 | 8-27 | Trade dynamics narrative | Skip for diff; informational |
-| 28-31 | Liquefaction narrative | Use country sections as secondary signal for Discovery routing |
+| 28-31 | Liquefaction narrative | **Prose-extraction pass (§3.2.1)** — extract proposed/construction/expansion mentions for Discovery/Update routing |
 | 32-37 | **Liquefaction tables** | Primary extraction source for export terminal diff |
-| 48-52 | Regasification narrative | Use country sections as secondary signal |
+| 48-52 | Regasification narrative | **Prose-extraction pass (§3.2.1)** — extract proposed/construction/expansion mentions for Discovery/Update routing |
 | 53-62 | **Regasification tables** | Primary extraction source for import terminal diff |
 | 64-77 | Contracts, shipping, member info | Skip for diff |
 
@@ -380,7 +438,7 @@ IGU's World LNG Report has different table layouts but the same conceptual conte
 | Pull GEM | `python pull_gem_db.py` |
 | Extract GIIGNL | `python giignl_extract.py <path-to-giignl-report> --output giignl_extracted.csv` |
 | Verify extraction totals | Compare against GIIGNL Key Figures (524 MTPA liq / 1,247 MTPA regas for 2026 edition) |
-| Run diff | `python report_diff.py --gem ... --report ... --output giignl_diff.json` |
+| Run diff | `python report_diff.py --report giignl --extracted giignl_extracted.csv --gem-csv gem_export.csv --output giignl_diff.json` |
 | Verify URLs (for any pre-searched corroborating sources) | `python url_verifier.py <url> <expected...>` |
 | Build staging xlsx | `python build_review_package.py --mode reconciliation --report giignl --year <YEAR>` |
 | Sanity check | `python recalc.py <xlsx>` |

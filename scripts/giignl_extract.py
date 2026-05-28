@@ -511,6 +511,7 @@ def _assign_countries_sequential(
     current_budget: float | None = None
     cumulative = 0.0
     pending: list[dict] = []
+    subtotal_by_country: dict[str, float] = {}
 
     for _, _, payload in events:
         kind = payload[0]
@@ -528,6 +529,7 @@ def _assign_countries_sequential(
             # the label). If we haven't seen a current_country yet, ignore.
             if current_country:
                 current_budget = mtpa
+                subtotal_by_country[current_country] = mtpa
         elif kind == "row":
             explicit, row, cap = payload[1], payload[2], payload[3]
             if explicit:
@@ -551,6 +553,68 @@ def _assign_countries_sequential(
                 pending.append(row)
                 row["country"] = ""
     # Rows still pending at end-of-page have no country.
+
+    # Post-pass: reclaim leading rows misattributed to the previous country
+    # using the published per-country subtotals (see _truecup_country_subtotals).
+    _truecup_country_subtotals(rows_with_meta, subtotal_by_country)
+
+
+def _truecup_country_subtotals(
+    rows_with_meta: list[tuple[int, str, dict, float]],
+    subtotal_by_country: dict[str, float],
+    tol: float = 1.02,
+) -> None:
+    """Reassign leading misattributed rows using GIIGNL per-country subtotals.
+
+    GIIGNL vertically centers each country label + subtotal within its block, so
+    the rows ABOVE the label inherit the *previous* country during the sequential
+    walk. The budget guard in _assign_countries_sequential only catches this when
+    the previous country's page-local cumulative reaches its subtotal — which
+    fails when the previous country's block spilled over from an earlier page (its
+    cumulative restarts at 0 on each page, so it never approaches its full-country
+    subtotal). Concrete failure: page 36's Brunei block (T1–T5, 7.2 MTPA subtotal)
+    has "Brunei" typeset next to T3, so T1/T2 inherited Australia — whose 85.8 MTPA
+    block began on page 35, leaving page 36's Australia cumulative far below budget.
+
+    This post-pass repairs it: a country whose assigned rows fall short of its
+    published subtotal pulls the contiguous rows directly above it (currently
+    tagged to the previous country) until the running sum reaches the subtotal,
+    stopping before it would overshoot.
+
+    Guarded to fire only on a fully-contained block — one preceded AND followed by
+    a different country on the same page — so a country that legitimately spills
+    across a page boundary (its run touches the top or bottom of the page) is never
+    robbed. `tol` (2%) absorbs GIIGNL's independent 1-decimal subtotal rounding.
+    """
+    n = len(rows_with_meta)
+    if n == 0:
+        return
+    caps = [cap for _, _, _, cap in rows_with_meta]
+    countries = [row["country"] for _, _, row, _ in rows_with_meta]
+
+    i = 0
+    while i < n:
+        c = countries[i]
+        j = i
+        while j < n and countries[j] == c:
+            j += 1
+        # Run [i, j) is one country. Fire only on a fully-contained block: it
+        # must have a known subtotal and be bracketed by other countries on this
+        # page (guards against page-straddling blocks that only look "short").
+        S = subtotal_by_country.get(c) if c else None
+        contained = i > 0 and j < n and countries[i - 1] != c and countries[j] != c
+        if S is not None and contained:
+            cur = sum(caps[i:j])
+            k = i - 1
+            while k >= 0 and cur < S / tol and countries[k] != c:
+                if cur + caps[k] <= S * tol:
+                    rows_with_meta[k][2]["country"] = c
+                    countries[k] = c
+                    cur += caps[k]
+                    k -= 1
+                else:
+                    break
+        i = j
 
 
 # ---------------------------------------------------------------------------

@@ -115,18 +115,35 @@ SHEET_DESCRIPTIONS = {
         "includes lookup_was_run + lookup_result_summary as evidence that "
         "entity_lookup.py was run first (no duplicate entities allowed per methodology)."
     ),
-    "giignl_diff": (
-        "Match-level audit: one row per project where BOTH GIIGNL and GEM have an "
-        "entry. match_type is 'exact' (same country+site+section_type via "
-        "TerminalName), 'exact_via_alias' (matched via GEM's OtherNames column — "
-        "the `matched_alias` column shows which alias hit), or 'fuzzy' "
-        "(substring/token + owner overlap; medium confidence). Columns compare "
-        "capacity (report vs gem, delta and %), owner sets (overlap, report-only, "
-        "gem-only), and train/unit counts. `disagreements` column lists plain-text "
-        "divergences (capacity >10%, owner deltas); the disagreements cell AND the "
-        "specific conflicting cells (capacity columns when delta >10%, owners_report_only "
-        "/ owners_gem_only when populated) get a light-red fill. "
-        "Use this sheet to AUDIT the match; use giignl_to_action for the workflow."
+    "giignl_diff_operating": (
+        "OPERATING match audit: GEM operating capacity vs GIIGNL's (operating-only) "
+        "liq/regas tables. match_type is 'exact', 'exact_via_alias' (via GEM "
+        "OtherNames — `matched_alias` shows which), or 'fuzzy' (medium confidence). "
+        "match_granularity is 'unit' when GIIGNL rows aligned 1:1 to GEM unit names "
+        "(GIIGNL 'Arzew GL1Z' ⊃ GEM unit 'GL1Z') or 'project' when only the project "
+        "total is comparable (e.g. Taichung, whose GIIGNL phase rows don't map to "
+        "GEM's 'Phase N' names). The `level` column distinguishes the project-total "
+        "row from the per-unit rows beneath it (emitted for unit-granularity matches). "
+        "`gem_unit_name` lists OPERATING units only (so it reconciles with the "
+        "operating capacity — non-op phases live in giignl_diff_nonoperating). "
+        "`report_sites_merged` lists rows folded into this site ('<Site> Expansion' "
+        "and per-complex unit-code rows like 'Arzew GL1Z/2Z/3Z'). Capacity (report "
+        "vs gem, delta, %), owner sets, counts. `disagreements` + the specific "
+        "conflicting cells (capacity when it differs at all, owner deltas, per-unit "
+        "capacity mismatch) get a light-red fill; fuzzy confidence cell is yellow. "
+        "AUDIT here; act via giignl_to_action."
+    ),
+    "giignl_diff_nonoperating": (
+        "NON-OPERATING units of matched projects (proposed/construction/shelved/"
+        "cancelled/idled/mothballed/retired). GIIGNL's tables are operating-only, so "
+        "each row defaults to a light-red `gem_only_flag` = 'GEM has, GIIGNL doesn't' "
+        "UNLESS the §3.2.1 narrative-prose pass annotated `giignl_narrative_mention` "
+        "(a GIIGNL narrative confirming the forward phase → no conflict per SOP §5.7; "
+        "left unfilled). Worked example: Taichung Phase 3 (construction →10) IS in the "
+        "p.52 narrative (mention filled, no highlight); Phase 4 (proposed →13) is "
+        "absent everywhere (highlighted). Columns: country, gem_terminal_name, "
+        "gem_unit_name, status, capacity_mtpa, start_year (status-appropriate anchor), "
+        "section_type, owners, giignl_narrative_mention, gem_only_flag."
     ),
     "giignl_to_action": (
         "Workflow routing: per-finding action recommendations. Categories: "
@@ -442,30 +459,36 @@ def build_entity_additions_sheet(wb, entity_additions):
     _autosize(ws)
 
 
-def build_giignl_diff_sheet(wb, diff):
-    ws = wb.create_sheet("giignl_diff")
-    headers = [
-        "match_type", "confidence", "country", "site_name",
-        "gem_terminal_id", "gem_terminal_name", "gem_unit_name", "matched_alias",
-        "section_type_report", "section_type_gem",
-        "report_capacity_mtpa", "gem_capacity_mtpa",
-        "capacity_delta_mtpa", "capacity_delta_pct",
-        "owners_overlap", "owners_report_only", "owners_gem_only",
-        "report_train_count", "gem_operating_units", "gem_total_units",
-        "disagreements",
-    ]
+GIIGNL_OPERATING_HEADERS = [
+    "match_type", "confidence", "match_granularity", "level",
+    "country", "site_name", "report_sites_merged",
+    "gem_terminal_id", "gem_terminal_name", "gem_unit_name", "matched_alias",
+    "section_type_report", "section_type_gem",
+    "report_capacity_mtpa", "gem_capacity_mtpa",
+    "capacity_delta_mtpa", "capacity_delta_pct",
+    "owners_overlap", "owners_report_only", "owners_gem_only",
+    "report_train_count", "gem_operating_units", "gem_total_units",
+    "disagreements",
+]
+
+
+def build_giignl_diff_operating_sheet(wb, diff):
+    """Operating-side match audit. One project-total row per match; for
+    unit-granularity matches, per-unit rows are emitted directly beneath it."""
+    ws = wb.create_sheet("giignl_diff_operating")
+    headers = GIIGNL_OPERATING_HEADERS
     _write_header(ws, headers)
     row_idx = 2
     for m in diff.get("matches", []) + diff.get("fuzzy_matches", []):
-        # Stringify list-valued fields for cell display
-        row = {k: (", ".join(map(str, v)) if isinstance(v, list) else v) for k, v in m.items()}
+        # Project-total row.
+        proj = {k: (", ".join(map(str, v)) if isinstance(v, list) else v)
+                for k, v in m.items() if k in headers}
+        proj["level"] = "project"
         cm = {}
         if m.get("disagreements"):
-            # Light-red the specific cells in conflict, mirroring report_diff's
-            # own disagreement triggers (capacity delta >10%; owner-set deltas).
             cm["disagreements"] = "red"
-            cap_pct = m.get("capacity_delta_pct")
-            if cap_pct is not None and cap_pct > 10:
+            cap_delta = m.get("capacity_delta_mtpa")
+            if cap_delta is not None and round(cap_delta, 2) != 0:
                 for col in ("report_capacity_mtpa", "gem_capacity_mtpa",
                             "capacity_delta_mtpa", "capacity_delta_pct"):
                     cm[col] = "red"
@@ -475,9 +498,80 @@ def build_giignl_diff_sheet(wb, diff):
                 cm["owners_gem_only"] = "red"
         if m.get("confidence") == "medium":
             cm.setdefault("confidence", "yellow")
-        _write_row(ws, row, headers, row_idx, confidence_map=cm)
+        _write_row(ws, proj, headers, row_idx, confidence_map=cm)
         row_idx += 1
+
+        # Per-unit rows for unit-granularity matches.
+        for um in m.get("unit_matches", []):
+            delta = round(um["report_capacity_mtpa"] - um["gem_unit_capacity_mtpa"], 2)
+            urow = {
+                "match_type": m.get("match_type"),
+                "confidence": m.get("confidence"),
+                "match_granularity": "unit",
+                "level": "  unit",
+                "country": m.get("country"),
+                "site_name": um.get("report_site"),
+                "gem_terminal_name": m.get("gem_terminal_name"),
+                "gem_unit_name": um.get("gem_unit_name"),
+                "section_type_report": m.get("section_type_report"),
+                "section_type_gem": m.get("section_type_gem"),
+                "report_capacity_mtpa": um.get("report_capacity_mtpa"),
+                "gem_capacity_mtpa": um.get("gem_unit_capacity_mtpa"),
+                "capacity_delta_mtpa": delta,
+                "capacity_delta_pct": um.get("capacity_delta_pct"),
+                "disagreements": "" if um.get("agree") else
+                    f"unit capacity differs ({um.get('capacity_delta_pct')}%); "
+                    f"GEM unit status={um.get('gem_unit_status')}",
+            }
+            ucm = {}
+            if not um.get("agree"):
+                for col in ("report_capacity_mtpa", "gem_capacity_mtpa",
+                            "capacity_delta_mtpa", "capacity_delta_pct", "disagreements"):
+                    ucm[col] = "red"
+            _write_row(ws, urow, headers, row_idx, confidence_map=ucm)
+            row_idx += 1
     _autosize(ws)
+    ws.freeze_panes = "A2"
+
+
+def build_giignl_diff_nonoperating_sheet(wb, diff):
+    """Non-operating units of matched projects. Each defaults to a light-red
+    'GEM has, GIIGNL doesn't' flag unless the narrative-prose pass confirmed it."""
+    ws = wb.create_sheet("giignl_diff_nonoperating")
+    headers = [
+        "country", "gem_terminal_id", "gem_terminal_name", "gem_unit_name",
+        "status", "capacity_mtpa", "start_year", "section_type",
+        "owners", "giignl_narrative_mention", "gem_only_flag",
+    ]
+    _write_header(ws, headers)
+    rows = sorted(
+        diff.get("nonoperating_units", []),
+        key=lambda n: (n.get("country", ""), n.get("gem_terminal_name", ""),
+                       n.get("status", ""), n.get("gem_unit_name", "")),
+    )
+    for i, n in enumerate(rows, start=2):
+        mention = n.get("giignl_narrative_mention", "")
+        gem_only = n.get("is_gem_only", True) and not mention
+        row = {
+            "country": n.get("country"),
+            "gem_terminal_id": n.get("gem_terminal_id"),
+            "gem_terminal_name": n.get("gem_terminal_name"),
+            "gem_unit_name": n.get("gem_unit_name"),
+            "status": n.get("status"),
+            "capacity_mtpa": n.get("capacity_mtpa"),
+            "start_year": n.get("start_year"),
+            "section_type": n.get("section_type"),
+            "owners": ", ".join(n.get("owners", [])),
+            "giignl_narrative_mention": mention,
+            "gem_only_flag": "GEM has, GIIGNL doesn't" if gem_only else "",
+        }
+        cm = {}
+        if gem_only:
+            cm["gem_only_flag"] = "red"
+            cm["gem_unit_name"] = "red"
+        _write_row(ws, row, headers, i, confidence_map=cm)
+    _autosize(ws)
+    ws.freeze_panes = "A2"
 
 
 def build_giignl_to_action_sheet(wb, diff):
@@ -912,7 +1006,10 @@ def main():
 
         build_readme(wb, "reconciliation", inputs_summary)
         if diff:
-            build_giignl_diff_sheet(wb, diff)
+            if diff.get("matches") or diff.get("fuzzy_matches"):
+                build_giignl_diff_operating_sheet(wb, diff)
+            if diff.get("nonoperating_units"):
+                build_giignl_diff_nonoperating_sheet(wb, diff)
             build_giignl_to_action_sheet(wb, diff)
             if args.gem_csv and Path(args.gem_csv).exists():
                 build_candidate_edits_sheet(wb, diff, args.gem_csv)

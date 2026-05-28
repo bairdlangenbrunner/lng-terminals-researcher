@@ -60,7 +60,7 @@ Workflow:
    - Value-disagreement → Update workflow (GIIGNL is one source in a conflict, NOT automatically authoritative — the methodology FAQ says a more specific or current source takes priority)
    - Match → confidence bump on the GEM record
 7. **DO NOT auto-apply GIIGNL values to the GEM record.** Every value-disagreement requires resolution through the Update workflow's normal source-search and confidence-labeling process.
-8. `python build_review_package.py --mode reconciliation --report giignl --year <YEAR>` → staging xlsx with `giignl_diff` and `giignl_to_action` sheets in addition to the standard sheets.
+8. `python build_review_package.py --mode reconciliation --report giignl --year <YEAR>` → staging xlsx with `giignl_diff_operating`, `giignl_diff_nonoperating`, and `giignl_to_action` sheets in addition to the standard sheets.
 9. `python recalc.py`, then `present_files`.
 
 (A future IGU reconciliation SOP will reuse this workflow body with `igu_extract.py` and `--report igu`.)
@@ -161,9 +161,10 @@ If the user isn't running the carrier project, `fsru_sync_check.py` short-circui
 | `entity_lookup.py` | Queries the GEM entity system to avoid duplicate entity creation | Entity search UI changed; known entity not being found |
 | `url_verifier.py` | HTTP 200 + content check + soft-error detection (paywall stubs, Cloudflare, members-only) | Verifier flags false positives/negatives; new source pattern needs handling |
 | `imo_tracker.py` | IMO → marinetraffic.org per-vessel URL (FSRU vessel lookup) | marinetraffic.org URL pattern changed; Cloudflare gating |
-| `giignl_extract.py` | Parses GIIGNL report into a flat CSV with GEM-aligned columns. 2026 edition is a real PDF v1.7 with a clean text layer — uses `pdftotext -layout` + column-position-based row partitioning; per-country capacity subtotals are used as block-boundary budgets so rows route to the right country even when labels appear mid-block. Earlier editions shipped as zip-of-JPEGs + OCR; that pipeline lives in git history if a future edition reverts | New GIIGNL edition layout changes column positions; new country added to super-region marker list; subtotal detection misfires |
-| `report_diff.py` (alias matching) | Project key includes `section_type` so a single GEM terminal with both liquefaction and regasification (e.g. Sabine Pass: 6 export trains + 1 import terminal) splits into two distinct projects, not one summed entry. Alias map includes GEM `OtherNames` + `LocalNames`, with CJK transliteration via jieba + pypinyin (e.g. `中石油唐山曹妃甸LNG接收站` → `zhong shiyou tangshan caofeidian lng jieshouzhan` so distinctive city tokens can match) | New non-Latin language appears in LocalNames; matching needs additional script support |
-| `report_diff.py` | Three-way diff (matches / report-only / GEM-only / value-disagreements). Parameterized on report type so the same script serves GIIGNL and (future) IGU | Adding a new reconcilable source; match algorithm over/under-merging |
+| `giignl_extract.py` | Parses GIIGNL report into a flat CSV with GEM-aligned columns. 2026 edition is a real PDF v1.7 with a clean text layer — uses `pdftotext -layout` + column-position-based row partitioning; per-country capacity subtotals are used as block-boundary budgets so rows route to the right country even when labels appear mid-block. GIIGNL vertically *centers* each country label+subtotal within its block, so rows above the label inherit the previous country; a post-pass (`_truecup_country_subtotals`) reclaims them by pulling rows up to the published subtotal — this catches the case the running budget misses, where the previous country's block spilled over from an earlier page so its page-local cumulative never reaches its subtotal (e.g. Brunei T1/T2 had inherited Australia, whose 85.8 MTPA block began on the prior page). Earlier editions shipped as zip-of-JPEGs + OCR; that pipeline lives in git history if a future edition reverts | New GIIGNL edition layout changes column positions; new country added to super-region marker list; subtotal detection misfires; true-up over/under-pulls (check per-country row sums vs subtotals) |
+| `report_diff.py` (alias matching) | Project key includes `section_type` so a single GEM terminal with both liquefaction and regasification (e.g. Sabine Pass: 6 export trains + 1 import terminal) splits into two distinct projects, not one summed entry. Alias map includes GEM `OtherNames` + `LocalNames`, with CJK transliteration via jieba + pypinyin (e.g. `中石油唐山曹妃甸LNG接收站` → `zhong shiyou tangshan caofeidian lng jieshouzhan` so distinctive city tokens can match). **Row-folding (report side):** rows ending in "Expansion"/"Extension" fold into the base "<Site>" row, AND per-complex unit-code rows ("Arzew GL1Z/2Z/3Z") fold into "Arzew" (`_strip_unit_code_suffix`: trailing letters+digits token) — both conservative, firing only when the base resolves (a GEM key/alias, another report row, or ≥2 report peers sharing the base), so "Senboku II"/"Bontang Train E" (no digit) and bare "expansion" artifacts are left alone | New non-Latin language in LocalNames; matching needs more script support; fold over/under-merges (check `report_sites_merged`) |
+| `report_diff.py` (unit-level alignment) | `_align_units`: within a matched project, aligns each GIIGNL row to a specific GEM unit when the GEM unit name is a token of the GIIGNL site name (GIIGNL "Arzew GL1Z" ⊃ GEM unit "GL1Z") + capacity corroboration → `match_granularity="unit"` with a `unit_matches` list; falls back to project-total (operating-only) when GIIGNL rows don't map to GEM unit names (Taichung). Also emits `nonoperating_units` (non-op units of matched projects) for the `giignl_diff_nonoperating` sheet | Unit names don't tokenize cleanly against report site names; alignment over/under-matches (check `match_granularity` + `unit_matches`) |
+| `report_diff.py` | Diff buckets (matches / fuzzy / report-only / gem-only / nonoperating_units / ambiguous). Parameterized on report type so the same script serves GIIGNL and (future) IGU | Adding a new reconcilable source; match algorithm over/under-merging |
 | `fsru_sync_check.py` | Cross-check FSRU records between GEM terminals and LNG carrier project backends | Sync conventions change; reassignment detection misfires |
 | `build_review_package.py` | xlsx scaffolding — sheets, color fills, frozen panes, headers | Adding a new sheet section; changing color convention |
 | `recalc.py` | Open the xlsx, force recalc, return any formula errors | Always run before present_files |
@@ -172,9 +173,13 @@ Trust the scripts by default. They're versioned scaffolding, not throwaway code.
 
 ## Output workbook structure
 
-Single combined xlsx per batch: `../batches/lng_terminals_batch_<YYYYMMDD>_<HHMM>_ET.xlsx`. The Eastern-time HHMM disambiguates multiple batches in one day. Generate via:
+Single combined xlsx per batch, written to the **in-repo** `batches/` directory at the repo root: `<repo-root>/batches/lng_terminals_batch_<YYYYMMDD>_<HHMM>_ET.xlsx`. The Eastern-time HHMM disambiguates multiple batches in one day. Generate via:
 
     TZ=America/New_York date "+%Y%m%d_%H%M_ET"
+
+**Path caveat — the `../batches/` shorthand in the workflow commands assumes the working directory is `scripts/`.** The canonical target is the tracked `batches/` dir *inside* this repo (it has a `.gitkeep`). If you invoke the build from the repo root (e.g. `python scripts/build_review_package.py …`), use `--output batches/…`, NOT `--output ../batches/…` — the latter resolves to a sibling of the repo and `mkdir(parents=True)` will silently create a stray external dir. **Always confirm the written file is under `<repo-root>/batches/` after building.**
+
+**Never overwrite an existing batch file — every (re)build gets a NEW file with a freshly-generated timestamp.** Regenerate the stamp at build time (don't reuse one captured earlier in the session) and pass it as `--output`. This applies even to small iterative rebuilds within one session (e.g. tweak a color, then add a column → two distinct files). Multiple files per day is the intended behavior; the user prunes old ones.
 
 Sheets (empty sheets are omitted from the final workbook):
 
@@ -186,7 +191,8 @@ Sheets (empty sheets are omitted from the final workbook):
 | `new_units` | Discovery or update | Unit-level data for new terminals AND new units within existing terminals (expansions, new trains) |
 | `status_timeline_additions` | Any workflow touching status | Append-only timeline entries to add to the live DB per methodology |
 | `entity_additions` | Any workflow adding owners | New immediate owners/operators/vessel-owners to create, with duplicate-check flags |
-| `giignl_diff` | Reconciliation workflow | Match-level audit: one row per matched project (exact or fuzzy), with side-by-side capacity, owner-set deltas, and disagreements column |
+| `giignl_diff_operating` | Reconciliation workflow | OPERATING match audit: GEM operating capacity vs GIIGNL's operating-only tables. One project-total row per match; per-unit rows beneath it for unit-granularity matches (GIIGNL row ⊃ GEM unit name, e.g. Arzew GL1Z↔GL1Z) — see `level` column. `gem_unit_name` = operating units only. Conflicting cells light-red; fuzzy `confidence` yellow (see Color conventions). |
+| `giignl_diff_nonoperating` | Reconciliation workflow | Non-operating units (proposed/construction/shelved/cancelled/idled/mothballed/retired) of matched projects. Each defaults to a light-red `gem_only_flag` = "GEM has, GIIGNL doesn't" unless the §3.2.1 narrative pass filled `giignl_narrative_mention` (confirmed forward phase, no conflict). |
 | `giignl_to_action` | Reconciliation workflow | Workflow routing: findings categorized for Update / Discovery / Review |
 | `candidate_edits` | Reconciliation workflow | GEM-CSV-shaped sheet (115 cols + 2 meta cols) of GEM unit-rows flagged by the diff — for editing in DB shape |
 | `giignl_full_extract` | Reconciliation workflow | Raw GIIGNL extraction (every row parsed from the PDF) for reference |
@@ -198,7 +204,7 @@ Sheets (empty sheets are omitted from the final workbook):
 
 **When adding a new sheet builder to `build_review_package.py`, also add a corresponding entry to `SHEET_DESCRIPTIONS`** in that same file — otherwise the README will fall back to a "no description registered" placeholder that prompts the next agent to backfill it.
 
-## Color conventions (cells in `updates`, `new_units`, `giignl_diff`)
+## Color conventions (cells in `updates`, `new_units`, `giignl_diff_operating`)
 
 Ported from the carrier project, with one addition:
 
@@ -208,6 +214,8 @@ Ported from the carrier project, with one addition:
 - **Blue** (terminals-specific) — value unchanged from existing DB value but re-verified this batch (the methodology's "no changes" outcome, applied at cell granularity)
 
 Confidence applies per cell, not per row.
+
+**Reconciliation override for the `giignl_diff_*` sheets:** their cell semantics differ. In `giignl_diff_operating`, **light red marks a GIIGNL-vs-GEM value conflict** (any non-zero capacity delta — compared at 2-decimal precision, no tolerance band — or an owner present in one source but not the other; on a per-unit row, the unit's capacity cells when that unit disagrees), applied to the conflicting field cell(s) plus the row's `disagreements` summary cell; **yellow** flags the `confidence` cell of a fuzzy (medium-confidence) match. In `giignl_diff_nonoperating`, **light red marks "GEM has, GIIGNL doesn't"** (`gem_only_flag` + `gem_unit_name`) — the default for a non-op unit, suppressed only when the §3.2.1 narrative pass confirms the forward phase. Agreeing/confirmed cells are left unfilled. See Reconciliation SOP §4. (The single-weak-source meaning of red above governs `updates` / `new_units`, not the `giignl_diff_*` sheets.)
 
 ## Hard requirements (these override anything below)
 
@@ -230,7 +238,7 @@ Pause and ask before proceeding when:
 - A methodology rule and an SOP rule conflict
 - A discovery batch surfaces more than ~5 candidate clusters in the same country (suggests systematic gap — could be a research priority signal, but worth a conversation before generating 5+ new project records)
 - The "sufficient information to add" threshold is genuinely ambiguous on a candidate (sponsor named but extremely vague location, or vice versa)
-- A reconciliation batch finds disagreement on more than ~10% of matched rows (suggests either a GIIGNL methodology change or a systematic GEM issue)
+- A reconciliation batch finds disagreement on more than ~10% of matched rows (suggests either a GIIGNL methodology change or a systematic GEM issue) — judge this by *material* capacity/owner conflicts, not the raw `matches_with_disagreement` count, which now inflates because any non-zero capacity delta flags and owner-set deltas are usually benign (see Reconciliation SOP §6)
 - An entity that should exist in the GEM entity system isn't found — could be a search issue, or could be a real gap
 - The GIIGNL report file isn't in either expected format (real PDF v1.7 with text layer, or legacy zip-of-JPEGs+OCR) — layout change requires confirming `giignl_extract.py` still works
 - FSRU sync surfaces a reassignment that can't be cleanly resolved (vessel moved to a terminal that doesn't exist in GEM yet)
