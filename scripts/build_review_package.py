@@ -77,6 +77,112 @@ CONFIDENCE_TO_FILL = {
     None: NONE_FILL,
 }
 
+
+# Per-sheet descriptions written into the README sheet at build time, so a
+# researcher opening the xlsx without prior context knows what each tab is for.
+# When you add a new sheet builder above, add its description here — the README
+# will pick it up automatically based on which sheets exist in the workbook.
+# Per reconciliation SOP §3.10: every reconciliation xlsx README must include
+# these definitions for all sheets present in the workbook.
+SHEET_DESCRIPTIONS = {
+    "README": (
+        "Batch metadata: mode, edition (for reconciliation), color conventions, "
+        "sheet definitions (this section), and input summary stats including any "
+        "SOP §6 sanity-gate trips. Always read this first."
+    ),
+    "updates": (
+        "Update workflow: one row per (terminal_id, unit_id, field) being changed. "
+        "Columns: field_name, old_value, new_value, ref_url, confidence, source_tier, "
+        "source_notes, scope_note, researcher_initials. new_value cell is color-coded "
+        "by confidence (green=primary/regulatory, yellow=single non-primary, red=weak)."
+    ),
+    "new_terminals": (
+        "Discovery workflow: one row per newly discovered terminal, in GEM CSV "
+        "shape (project-level fields + [ref] partners). researcher_initials and "
+        "confidence_overall at the right. Cells optionally color-coded per field."
+    ),
+    "new_units": (
+        "Discovery or update workflow: one row per new unit (within new OR existing "
+        "terminal). Unit-level fields + status, capacity, vessel info, [ref] partners."
+    ),
+    "status_timeline_additions": (
+        "Append-only timeline events to insert into the live DB. Columns: operation, "
+        "status, sub_status, year, part_of_year, source_url, legal_transition_check. "
+        "Must reflect a timeline pulled via fetch_timeline.py FIRST per CLAUDE.md."
+    ),
+    "entity_additions": (
+        "New owner/operator/parent entities the researcher will create. Each row "
+        "includes lookup_was_run + lookup_result_summary as evidence that "
+        "entity_lookup.py was run first (no duplicate entities allowed per methodology)."
+    ),
+    "giignl_diff": (
+        "Match-level audit: one row per project where BOTH GIIGNL and GEM have an "
+        "entry. match_type is 'exact' (same country+site+section_type via "
+        "TerminalName), 'exact_via_alias' (matched via GEM's OtherNames column — "
+        "the `matched_alias` column shows which alias hit), or 'fuzzy' "
+        "(substring/token + owner overlap; medium confidence). Columns compare "
+        "capacity (report vs gem, delta and %), owner sets (overlap, report-only, "
+        "gem-only), and train/unit counts. `disagreements` column lists plain-text "
+        "divergences (capacity >10%, owner deltas) — yellow fill when populated. "
+        "Use this sheet to AUDIT the match; use giignl_to_action for the workflow."
+    ),
+    "giignl_to_action": (
+        "Workflow routing: per-finding action recommendations. Categories: "
+        "report_only_potential_discovery (GIIGNL has it, GEM doesn't → Discovery), "
+        "gem_only_operating (GEM operating not in GIIGNL → Update verify), "
+        "ambiguous_disambiguate (multiple GEM candidates), and "
+        "matched_with_disagreement (GIIGNL ≠ GEM on a field → Update via normal "
+        "source search; do NOT auto-apply GIIGNL values per SOP §3.8)."
+    ),
+    "candidate_edits": (
+        "Reconciliation deliverable in GEM-CSV shape: one row per GEM unit-row "
+        "whose project was flagged (matched-with-disagreement, fuzzy, or "
+        "ambiguous). Mirrors the 115-column GEM export schema so researchers "
+        "can edit in DB shape. Two leading meta cols: _diff_kind (yellow for "
+        "fuzzy/disagreement, red for ambiguous) and _report_value_summary. "
+        "Capacity cell yellow when GIIGNL disagrees. Frozen panes keep "
+        "TerminalID/UnitID visible while scrolling. Read-only columns are "
+        "italicized — never edit those."
+    ),
+    "giignl_full_extract": (
+        "Raw output of giignl_extract.py: every GIIGNL row parsed from the PDF, "
+        "for reference. Columns: section_type, report_page, country, site_name, "
+        "type (onshore/offshore/FSRU), owner, capacity_mtpa, start_year, trains, "
+        "vessel_name, notes (includes original row name and any status hint). "
+        "Use this to verify what GIIGNL actually said before judging a "
+        "disagreement; report_page lets you cross-check against the PDF."
+    ),
+    "fsru_sync": (
+        "Cross-check of FSRU records between GEM terminals and the LNG carrier "
+        "tracker project. Each row: gem_terminal_id, gem_unit_id, vessel_name, "
+        "in_sync (bool), disagreements (JSON). Yellow fill on disagreements when "
+        "the two backends differ on vessel↔terminal pairing."
+    ),
+    "monitor_list": (
+        "Cross-batch candidate watchlist (Discovery SOP §5). Candidates that "
+        "didn't meet the 'sufficient information to add' threshold this batch; "
+        "rolls forward by (country, candidate_name). Columns: "
+        "first_observed_batch, last_observed_batch, current_state, "
+        "missing_threshold_elements, watch_for, best_lead_url."
+    ),
+    "stale_sweep": (
+        "Output of stale_sweep.py: units flagged for refresh per "
+        "docs/reference/lifecycle_rules.md thresholds (operating >18mo, "
+        "construction >12mo, proposed/shelved year-based inferences). "
+        "Yellow fill on flag column for medium/high severity."
+    ),
+    "country_notes_contributions": (
+        "Drafted additions to GEM's country-resource Google doc — research "
+        "patterns, regulator URLs, country-specific gotchas worth preserving. "
+        "User manually copies these into the GEM doc."
+    ),
+    "qa_review": (
+        "Per-cell quality-assurance items: defects, conflicts, citations needing "
+        "verification, negative-result log entries. severity column color-coded "
+        "(red=high, yellow=medium)."
+    ),
+}
+
 # Columns NEVER written by this script (per gem_db_schema.md)
 READ_ONLY_COLUMNS = {
     # Computed
@@ -122,7 +228,7 @@ def _write_header(ws, headers, start_row=1):
         cell = ws.cell(row=start_row, column=col_idx, value=h)
         cell.font = HEADER_FONT
         cell.fill = GRAY
-        cell.alignment = Alignment(wrap_text=True, vertical="top")
+        cell.alignment = Alignment(wrap_text=False, vertical="top")
         cell.border = CELL_BORDER
         if h in READ_ONLY_COLUMNS:
             cell.font = Font(bold=True, italic=True, color="888888")
@@ -136,13 +242,21 @@ def _write_row(ws, row_dict, headers, row_idx, confidence_map=None):
             continue  # never write read-only columns
         value = row_dict.get(h)
         cell = ws.cell(row=row_idx, column=col_idx, value=value)
-        cell.alignment = Alignment(wrap_text=True, vertical="top")
+        cell.alignment = Alignment(wrap_text=False, vertical="top")
         cell.border = CELL_BORDER
         if h in confidence_map:
             cell.fill = CONFIDENCE_TO_FILL.get(confidence_map[h], NONE_FILL)
 
 
 def build_readme(wb, mode, inputs_summary):
+    """Build the README sheet.
+
+    NOTE: build_readme is called BEFORE the other sheets exist, but we need
+    to write sheet definitions for all sheets that WILL exist. Solution:
+    the caller is responsible for invoking _populate_readme_sheet_defs(wb)
+    after all other sheets have been built. build_readme writes everything
+    EXCEPT the sheet-definitions block, leaving a placeholder anchor row.
+    """
     ws = wb.create_sheet("README")
     today = date.today().isoformat()
     ws["A1"] = f"LNG Terminals batch review package — {mode} mode"
@@ -151,7 +265,6 @@ def build_readme(wb, mode, inputs_summary):
     ws["A3"] = ""
     rows = [
         ("Mode", mode),
-        ("Sheets included", ", ".join(s for s in wb.sheetnames if s != "README")),
         ("", ""),
         ("Color conventions", ""),
         ("  Green", "Primary/regulatory-grade source — apply with confidence"),
@@ -171,6 +284,45 @@ def build_readme(wb, mode, inputs_summary):
         ws.cell(row=i, column=2, value=v)
     ws.column_dimensions["A"].width = 30
     ws.column_dimensions["B"].width = 80
+
+
+def _populate_readme_sheet_defs(wb):
+    """Append a 'Sheet definitions' block to the README listing every sheet
+    in the workbook (except README itself) with its description from
+    SHEET_DESCRIPTIONS. Call AFTER all other sheets have been built.
+
+    Per reconciliation SOP §3.10: every batch xlsx README must include these
+    definitions so a researcher opening the file without prior context knows
+    what each tab is for.
+    """
+    if "README" not in wb.sheetnames:
+        return
+    ws = wb["README"]
+    # Find first empty row at the bottom.
+    start_row = ws.max_row + 2
+    hdr = ws.cell(row=start_row, column=1, value="Sheet definitions")
+    hdr.font = Font(bold=True, size=12)
+    start_row += 1
+    intro = ws.cell(
+        row=start_row, column=1,
+        value="What each tab in this workbook contains. Listed in workbook order.",
+    )
+    intro.font = Font(italic=True, color="666666")
+    start_row += 2
+    for sheet_name in wb.sheetnames:
+        if sheet_name == "README":
+            continue
+        desc = SHEET_DESCRIPTIONS.get(
+            sheet_name,
+            "(no description registered for this sheet — add one to "
+            "SHEET_DESCRIPTIONS in build_review_package.py)",
+        )
+        name_cell = ws.cell(row=start_row, column=1, value=sheet_name)
+        name_cell.font = Font(bold=True)
+        name_cell.alignment = Alignment(vertical="top")
+        desc_cell = ws.cell(row=start_row, column=2, value=desc)
+        desc_cell.alignment = Alignment(wrap_text=False, vertical="top")
+        start_row += 1
 
 
 def build_updates_sheet(wb, updates):
@@ -292,7 +444,7 @@ def build_giignl_diff_sheet(wb, diff):
     ws = wb.create_sheet("giignl_diff")
     headers = [
         "match_type", "confidence", "country", "site_name",
-        "gem_terminal_id", "gem_terminal_name",
+        "gem_terminal_id", "gem_terminal_name", "matched_alias",
         "section_type_report", "section_type_gem",
         "report_capacity_mtpa", "gem_capacity_mtpa",
         "capacity_delta_mtpa", "capacity_delta_pct",
@@ -573,7 +725,7 @@ def build_candidate_edits_sheet(wb, diff, gem_csv_path):
             )
             for col_idx, value in enumerate([kind, report_summary] + row, start=1):
                 cell = ws.cell(row=row_idx, column=col_idx, value=value)
-                cell.alignment = Alignment(wrap_text=True, vertical="top")
+                cell.alignment = Alignment(wrap_text=False, vertical="top")
                 cell.border = CELL_BORDER
                 col_name = out_header[col_idx - 1]
                 if col_name in READ_ONLY_COLUMNS:
@@ -604,7 +756,7 @@ def build_giignl_full_extract_sheet(wb, extracted_csv_path):
         for i, row in enumerate(reader, start=2):
             for j, val in enumerate(row, start=1):
                 cell = ws.cell(row=i, column=j, value=val)
-                cell.alignment = Alignment(wrap_text=True, vertical="top")
+                cell.alignment = Alignment(wrap_text=False, vertical="top")
                 cell.border = CELL_BORDER
     _autosize(ws, max_width=50)
     ws.freeze_panes = "A2"
@@ -755,6 +907,9 @@ def main():
                 build_giignl_full_extract_sheet(wb, args.extracted_csv)
         if qa:
             build_qa_review_sheet(wb, qa)
+
+    # Append sheet definitions to the README now that all sheets exist.
+    _populate_readme_sheet_defs(wb)
 
     Path(args.output).parent.mkdir(parents=True, exist_ok=True)
     wb.save(args.output)
