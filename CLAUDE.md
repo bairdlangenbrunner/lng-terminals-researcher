@@ -30,7 +30,7 @@ All reference markdown, SOPs, and scripts are normal files on disk. Read them wi
 Two inputs are too large or too volatile to live in the repo:
 
 1. **The fresh GEM database export** — pulled via `scripts/pull_gem_db.py` at the start of every batch. Auth cookies live in `.env` (see `.env.example`). The script writes the CSV and a derived column-index map (`.colmap.json`) into the working directory.
-2. **The GIIGNL annual report** — when reconciling, download from giignl.org. The 2026 edition arrived as a zip of per-page JPEG images + per-page OCR text + a manifest, NOT a parseable PDF. `scripts/giignl_extract.py` handles this format. Run `file <path>` to confirm the format before assuming `.pdf` means PDF.
+2. **The GIIGNL annual report** — when reconciling, download from giignl.org. The 2026 edition received 2026-05 is a real PDF v1.7 with a clean text layer; `scripts/giignl_extract.py` parses it via `pdftotext -layout`. (Earlier editions shipped as a zip-of-JPEGs+OCR-text+manifest — the file would report "Zip archive" not "PDF document". The vision-LLM pipeline for that format lives in git history.) Always `file <path>` before assuming the format.
 
 ## Read the methodology + relevant SOPs first
 
@@ -49,7 +49,7 @@ Trigger phrases: "reconcile against GIIGNL", "GIIGNL diff", "compare GEM to the 
 
 Workflow:
 
-1. Confirm the GIIGNL report is in project files. `file <path>` to confirm format (the 2026 report came as a zip of JPEG + OCR text per page, NOT a parseable PDF). Note the edition year.
+1. Confirm the GIIGNL report is in project files. `file <path>` to confirm format. Two formats observed across editions: real PDF v1.7 (2026 edition received 2026-05; current pipeline) or zip-disguised-as-PDF (pre-2026; vision pipeline lives in git history). Note the edition year.
 2. Confirm scope per Reconciliation SOP §2 (which GIIGNL tables — terminal-list, capacity-by-country, country-summary; which lifecycle states to include).
 3. `python pull_gem_db.py` → fresh CSV.
 4. `python giignl_extract.py <path-to-giignl-report> --output giignl_extracted.csv` → flat CSV with GEM-aligned column names per Reconciliation SOP §3 (Appendix A for GIIGNL-specific table parsing).
@@ -232,5 +232,5 @@ Pause and ask before proceeding when:
 - The "sufficient information to add" threshold is genuinely ambiguous on a candidate (sponsor named but extremely vague location, or vice versa)
 - A reconciliation batch finds disagreement on more than ~10% of matched rows (suggests either a GIIGNL methodology change or a systematic GEM issue)
 - An entity that should exist in the GEM entity system isn't found — could be a search issue, or could be a real gap
-- The GIIGNL report file isn't in the expected format (zip of JPEG + OCR text) — layout change requires confirming `giignl_extract.py` still works
+- The GIIGNL report file isn't in either expected format (real PDF v1.7 with text layer, or legacy zip-of-JPEGs+OCR) — layout change requires confirming `giignl_extract.py` still works
 - FSRU sync surfaces a reassignment that can't be cleanly resolved (vessel moved to a terminal that doesn't exist in GEM yet)
