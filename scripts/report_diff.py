@@ -90,6 +90,27 @@ def _strip_unit_code_suffix(raw):
     return m.group(1).strip()
 
 
+# Matches a trailing explicit "Train <code>" designator — GIIGNL writes some
+# complexes' per-train rows with the literal word "Train"/"Trains" plus a short
+# code (Indonesia "Bontang Train E/F/G/H") instead of the compact "T<n>" form
+# (which giignl_extract already peels into the `trains` column). The unit-code
+# fold above deliberately ignores single-letter codes to protect named stages
+# ("Senboku II", "Corpus Christi Stage III"); the literal word "Train" marks a
+# genuine per-train row, so those fold to the shared base. Code is a 1-2 letter
+# token, a 1-2 digit number, or a roman numeral.
+_TRAIN_WORD_RE = re.compile(
+    r"^(.*\S)\s+trains?\s+(?:[a-z]{1,2}|\d{1,2}|[ivxlc]{1,4})\s*$", re.IGNORECASE)
+
+
+def _strip_train_word_suffix(raw):
+    """Return the base site name if `raw` ends in an explicit 'Train <code>'
+    designator, else None.  'Bontang Train E' -> 'Bontang'."""
+    if not raw:
+        return None
+    m = _TRAIN_WORD_RE.match(str(raw).strip())
+    return m.group(1).strip() if m else None
+
+
 # Per-status anchor-year column to surface on the non-operating sheet. Pre-operating
 # and dormancy statuses each have their own anchor; post-operating statuses fall back
 # to the stop year then the actual start.
@@ -243,10 +264,177 @@ def _align_units(rp, gp):
     return unit_matches, {um["gem_unit_name"] for um in unit_matches}
 
 
+def _corroborate_nonop(nonop_report_rows, gp):
+    """Map a GEM non-operating unit_name -> a corroboration note, for each GIIGNL
+    non-op report row that aligns to it.
+
+    GIIGNL's tables are operating-only, so a GEM non-op unit normally defaults to
+    "GEM has, GIIGNL doesn't". But when GIIGNL annotates a row "(Mothballed)" /
+    "(stopped)" (Bontang Train E, Balhaf T1/T2), GIIGNL DOES list that unit — just
+    as not-operating. We align such a row to the GEM non-op unit whose name is a
+    token of the row's site_name + trains (so "Bontang Train E" -> unit "E", and
+    "Balhaf" + trains "T1" -> unit "T1"), and return a note so the non-operating
+    sheet shows the corroboration instead of a spurious gem-only flag. Scoped to a
+    single matched terminal's units and conservative (first unique hit, marked
+    used) — tiny blast radius (only fires when a report row carries a status)."""
+    notes = {}
+    used = set()
+    nonop_units = [u for u in gp.get("units", []) if u["status"] in _NONOP_STATUSES]
+    for r in nonop_report_rows:
+        # Lowercase: _simple_tokens doesn't case-fold, and the `trains` field
+        # ("T1") isn't normalized like site_name is, so compare case-insensitively
+        # against GEM's already-lowercased unit_name_norm.
+        toks = {t.lower() for t in
+                (_simple_tokens(normalize_terminal_name(r.get("site_name", "")))
+                 | _simple_tokens(r.get("trains", "")))}
+        rstatus = (r.get("status") or "").strip().lower()
+        for u in nonop_units:
+            if u["unit_name"] in used:
+                continue
+            un_tokens = {t.lower() for t in _simple_tokens(u["unit_name_norm"])}
+            if not un_tokens or not un_tokens <= toks:
+                continue
+            used.add(u["unit_name"])
+            label = (r.get("site_name", "")
+                     + (" " + r.get("trains", "") if r.get("trains") else "")).strip()
+            if r.get("_prose_source"):
+                notes[u["unit_name"]] = (
+                    f"GIIGNL narrative: '{label}' not operating "
+                    f"({r['_prose_source']})")
+            else:
+                notes[u["unit_name"]] = (
+                    f"GIIGNL table lists '{label}' as {rstatus or 'non-operating'}")
+            break
+    return notes
+
+
+def _fmt_nonop_report_rows(rp):
+    """Human-readable list of the NON-operating GIIGNL rows excluded from a report
+    project's operating total (surfaced as `report_nonoperating` on a match).
+    A row excluded by the §3.2.1 narrative pass (not by a table tag) is marked
+    so the reviewer sees the prose justification + citation."""
+    out = []
+    for r in rp.get("nonop_rows", []):
+        label = (r.get("site_name", "")
+                 + (" " + r.get("trains", "") if r.get("trains") else "")).strip()
+        cap = r.get("capacity_mtpa", "")
+        entry = f"{label} ({r.get('status', 'non-operating')}, {cap})"
+        if r.get("_prose_source"):
+            entry += f" [GIIGNL narrative: {r['_prose_source']}]"
+        out.append(entry)
+    return out
+
+
+def _load_prose_corrections(path):
+    """Load agent-authored §3.2.1 narrative findings. Returns
+        {"op": op_map, "nonop": nonop_map}
+    where:
+      op_map[(country_norm, site_norm, section)]  = [{unit, status, source}]
+        — operating-status corrections: the prose says a row listed (untagged) in
+          GIIGNL's operating-only TABLE isn't actually operating (Bontang: "only
+          Trains G and H currently in operation" ⇒ Train F idled). report_diff
+          moves the named report row out of the operating total into nonop_rows.
+          `site_norm` is matched against the REPORT project key.
+      nonop_map[(country_norm, gem_terminal_norm, section)] = [{unit, source}]
+        — narrative corroborations of a GEM NON-operating unit that has NO GIIGNL
+          table row (NWS Train 2: ceased, so absent from the operating table, but
+          the prose names it). Clears that unit's "GEM has, GIIGNL doesn't" flag.
+          `gem_terminal_norm` is matched against the GEM project key.
+    {} maps if the file is absent/empty. Capacity NUMBERS are never touched here
+    (§5.6 prefers the tabular value); nothing is auto-applied to GEM (§3.8) — this
+    only makes the GIIGNL side of the diff consistent with GIIGNL's own narrative."""
+    empty = {"op": {}, "nonop": {}}
+    if not path or not Path(path).exists():
+        return empty
+    data = json.loads(Path(path).read_text())
+    op = defaultdict(list)
+    for c in data.get("operating_status_corrections", []):
+        key = (normalize_country(c.get("country", "")),
+               normalize_terminal_name(c.get("site", "")),
+               c.get("section_type", ""))
+        src = c.get("source", "")
+        for nu in c.get("nonoperating_units", []):
+            op[key].append({
+                "unit": str(nu.get("unit", "")),
+                "status": (nu.get("status", "") or "idled").strip().lower(),
+                "source": src,
+            })
+    nonop = defaultdict(list)
+    for c in data.get("nonop_corroborations", []):
+        key = (normalize_country(c.get("country", "")),
+               normalize_terminal_name(c.get("gem_terminal", c.get("site", ""))),
+               c.get("section_type", ""))
+        src = c.get("source", "")
+        for u in c.get("units", []):
+            nonop[key].append({"unit": str(u).strip().lower(), "source": src})
+    return {"op": dict(op), "nonop": dict(nonop)}
+
+
+def _apply_prose_corrections(report_projects, corr_map):
+    """Reclassify report rows the narrative pass marks non-operating. For each
+    correction, find the report row whose site_name+trains carries the named unit
+    token, move it from `rows` to `nonop_rows` with the prose status + source, and
+    recompute the operating total/train count. Conservative: matches one row per
+    named unit (first unused token hit), no-op if the unit isn't found."""
+    if not corr_map:
+        return
+    for key, corrections in corr_map.items():
+        rp = report_projects.get(key)
+        if not rp:
+            continue
+        used = set()
+        for corr in corrections:
+            unit_tok = corr["unit"].strip().lower()
+            if not unit_tok:
+                continue
+            moved = None
+            for r in rp["rows"]:
+                if id(r) in used:
+                    continue
+                toks = {t.lower() for t in
+                        (_simple_tokens(normalize_terminal_name(r.get("site_name", "")))
+                         | _simple_tokens(r.get("trains", "")))}
+                if unit_tok in toks:
+                    moved = r
+                    break
+            if moved is None:
+                continue
+            used.add(id(moved))
+            moved["status"] = corr["status"]
+            moved["_prose_source"] = corr["source"]
+            rp["rows"].remove(moved)
+            rp["nonop_rows"].append(moved)
+        # Recompute operating aggregates from the surviving rows.
+        total = 0.0
+        for r in rp["rows"]:
+            try:
+                total += float(r.get("capacity_mtpa", "")) if r.get("capacity_mtpa") else 0.0
+            except ValueError:
+                pass
+        rp["total_capacity_mtpa"] = total
+        rp["trains_count"] = len(rp["rows"])
+
+
 # Tokens to drop when matching a GIIGNL vessel name against a GEM unit name —
 # GEM unit names are the bare vessel ("Energos Power"); GIIGNL/site labels may
 # carry facility tags.
 _FSRU_VESSEL_STOPWORDS = {"fsru", "fsu", "fru", "flng", "lng", "terminal", "vessel"}
+
+
+def _report_vessels(rp):
+    """Comma-joined distinct vessel names across a report project's rows
+    (operating + non-operating). GIIGNL identifies FSRU/FLNG terminals by their
+    deployed vessel (e.g. Damietta / "Energos Winter (FSRU)"); the vessel is kept
+    out of the matching key (it would break name normalization) but preserved here
+    so the diff/workbook can show it in the displayed name. Important for the FSRU
+    sync rule (vessel reassignments)."""
+    seen, out = set(), []
+    for r in list(rp.get("rows", [])) + list(rp.get("nonop_rows", [])):
+        v = (r.get("vessel_name") or "").strip()
+        if v and v.lower() not in seen:
+            seen.add(v.lower())
+            out.append(v)
+    return ", ".join(out)
 
 
 def _vessel_tokens(name):
@@ -446,6 +634,7 @@ def _make_fsru_subproject(rp, sub_rows, forced_gem_key):
         "owners_set": owners,
         "trains_count": len(sub_rows),
         "rows": sub_rows,
+        "nonop_rows": [],
         "site_names": {r.get("site_name", "") for r in sub_rows},
         "_forced_gem_key": forced_gem_key,
     }
@@ -744,7 +933,8 @@ def _build_gem_project_table(gem_csv):
     return projects, alias_map, collision_regas
 
 
-def _classify(report_rows, gem_projects, alias_map=None, collision_regas=None):
+def _classify(report_rows, gem_projects, alias_map=None, collision_regas=None,
+              prose_corrections=None):
     """Apply matching with canonical + alias + fuzzy passes, then classify.
 
     Returns dict with: matches, fuzzy_matches, report_only, gem_only_operating,
@@ -752,6 +942,9 @@ def _classify(report_rows, gem_projects, alias_map=None, collision_regas=None):
     """
     alias_map = alias_map or {}
     collision_regas = collision_regas or set()
+    prose_corrections = prose_corrections or {}
+    prose_op = prose_corrections.get("op", {})
+    prose_nonop = prose_corrections.get("nonop", {})
 
     def _row_keyparts(r):
         """(country_norm, full_name_norm, section_type) for a report row, or None
@@ -789,17 +982,22 @@ def _classify(report_rows, gem_projects, alias_map=None, collision_regas=None):
     # multi-complex site, so the unit-code fold can fire even when GEM names the
     # project differently ('Arzew-Bethioua LNG Terminal').
     unit_code_base_counts = defaultdict(int)
+    train_word_base_counts = defaultdict(int)
     for r in report_rows:
         kp = _row_keyparts(r)
         if not kp:
             continue
         country_norm, _full, section_type = kp
         base_raw = _strip_unit_code_suffix(r.get("site_name", ""))
-        if not base_raw:
-            continue
-        base_norm = normalize_terminal_name(base_raw)
-        if base_norm:
-            unit_code_base_counts[(country_norm, base_norm, section_type)] += 1
+        if base_raw:
+            base_norm = normalize_terminal_name(base_raw)
+            if base_norm:
+                unit_code_base_counts[(country_norm, base_norm, section_type)] += 1
+        tw_raw = _strip_train_word_suffix(r.get("site_name", ""))
+        if tw_raw:
+            tw_norm = normalize_terminal_name(tw_raw)
+            if tw_norm:
+                train_word_base_counts[(country_norm, tw_norm, section_type)] += 1
 
     def _grouping_name(country_norm, raw_site, section_type, full_norm):
         """Resolve the grouping name for a report row, returning
@@ -816,8 +1014,15 @@ def _classify(report_rows, gem_projects, alias_map=None, collision_regas=None):
            rows carrying a code suffix ('Arzew GL1Z'/'GL2Z'/'GL3Z'). Fold when the
            base resolves to a GEM key/alias OR ≥2 report rows share the base.
 
-        Both avoid merging extraction artifacts and genuinely distinct named
-        stages that lack a suffix/code ('Senboku II', 'Bontang Train E')."""
+        3. Train-word fold. GIIGNL splits a complex into explicit per-train rows
+           ('Bontang Train E'/'F'/'G'/'H'). Fold when the base resolves the same
+           way as the unit-code fold. The literal word 'Train' is what makes the
+           single-letter code safe to strip here (unit-code fold can't, lest it
+           eat 'Senboku II').
+
+        All three avoid merging extraction artifacts and genuinely distinct named
+        stages that lack a suffix/code/train-word ('Senboku II', 'Corpus Christi
+        Stage III')."""
         base_raw = _strip_expansion_suffix(raw_site)
         if base_raw:
             base_norm = normalize_terminal_name(base_raw)
@@ -835,6 +1040,16 @@ def _classify(report_rows, gem_projects, alias_map=None, collision_regas=None):
                         or cb_key in rep_name_keys
                         or unit_code_base_counts.get(cb_key, 0) >= 2):
                     return cb_norm, True, code_base_raw
+
+        tw_base_raw = _strip_train_word_suffix(raw_site)
+        if tw_base_raw:
+            tw_norm = normalize_terminal_name(tw_base_raw)
+            if tw_norm and tw_norm != full_norm:
+                tw_key = (country_norm, tw_norm, section_type)
+                if (tw_key in gem_projects or tw_key in alias_map
+                        or tw_key in rep_name_keys
+                        or train_word_base_counts.get(tw_key, 0) >= 2):
+                    return tw_norm, True, tw_base_raw
 
         return full_norm, False, None
 
@@ -873,6 +1088,7 @@ def _classify(report_rows, gem_projects, alias_map=None, collision_regas=None):
                 "owners_set": set(),
                 "trains_count": 0,
                 "rows": [],
+                "nonop_rows": [],
                 "site_names": set(),
             }
         rp = report_projects[key]
@@ -885,20 +1101,38 @@ def _classify(report_rows, gem_projects, alias_map=None, collision_regas=None):
         if folded and base_display:
             rp["_display_locked"] = True
         rp["site_names"].add(r.get("site_name", ""))
-        rp["total_capacity_mtpa"] += cap
         rp["owners_set"].update(owner_tags)
-        rp["trains_count"] += 1
-        rp["rows"].append(r)
+        # A GIIGNL row annotated non-operating ("(Mothballed)"/"(stopped)") is
+        # excluded from the OPERATING total and capacity comparison — GIIGNL's
+        # tables are operating-only, so such a row is a status note, not operating
+        # capacity (e.g. Bontang Train E mothballed; Balhaf T1/T2 stopped). It is
+        # kept in `nonop_rows` to surface on the match and to corroborate the GEM
+        # non-op unit it lines up with (see _corroborate_nonop).
+        if (r.get("status") or "").strip().lower() in _NONOP_STATUSES:
+            rp["nonop_rows"].append(r)
+        else:
+            rp["total_capacity_mtpa"] += cap
+            rp["trains_count"] += 1
+            rp["rows"].append(r)
 
     # Split GIIGNL FSRU sites that GEM models as multiple distinct terminals
     # (e.g. Wilhelmshaven → 'Wilhelmshaven FSRU' + 'Wilhelmshaven TES FSRU'),
     # routing each vessel row to its GEM terminal. See the function docstring.
     report_projects = _split_multiterminal_fsru_sites(report_projects, gem_projects)
 
+    # Apply §3.2.1 narrative-prose corrections to operating status: GIIGNL's prose
+    # can mark a train listed in its operating-only TABLE as not actually operating
+    # (Bontang: "only Trains G and H currently in operation" → Train F is idled,
+    # though the table lists it untagged). Move such rows out of the operating total.
+    _apply_prose_corrections(report_projects, prose_op)
+
     # Pass 1: exact match — first try canonical TerminalName, then OtherNames alias.
     matches = []
     matched_gp_keys: list[tuple] = []  # every GEM project key that got matched
     aligned_unit_names_by_gp: dict[tuple, set] = defaultdict(set)
+    # Report projects matched to each GEM key — used after matching to corroborate
+    # GEM non-op units against the GIIGNL non-op rows that mapped to that terminal.
+    matched_rps_by_gp: dict[tuple, list] = defaultdict(list)
     matched_report_keys: set[tuple] = set()
     matched_gem_keys: set[tuple] = set()
     # Map each report key to the GEM canonical key it matched (if any) and
@@ -979,6 +1213,7 @@ def _classify(report_rows, gem_projects, alias_map=None, collision_regas=None):
         unit_matches, aligned_names = _align_units(rp, gp)
         matched_gp_keys.append(gp_key)
         aligned_unit_names_by_gp[gp_key] |= aligned_names
+        matched_rps_by_gp[gp_key].append(rp)
 
         matches.append({
             "match_type": "exact_via_alias" if via_alias else "exact",
@@ -986,6 +1221,7 @@ def _classify(report_rows, gem_projects, alias_map=None, collision_regas=None):
             "match_granularity": "unit" if unit_matches else "project",
             "country": rp["country"],
             "site_name": rp["site_name"],
+            "report_vessel": _report_vessels(rp),
             "gem_terminal_id": gp["terminal_id"],
             "gem_terminal_name": gp["terminal_name"],
             "gem_unit_name": gp["operating_unit_names"],
@@ -1004,6 +1240,7 @@ def _classify(report_rows, gem_projects, alias_map=None, collision_regas=None):
             "gem_operating_units": gp["operating_units"],
             "gem_total_units": gp["total_units"],
             "unit_matches": unit_matches,
+            "report_nonoperating": _fmt_nonop_report_rows(rp),
             "disagreements": disagreements,
         })
 
@@ -1089,6 +1326,7 @@ def _classify(report_rows, gem_projects, alias_map=None, collision_regas=None):
             "match_granularity": "unit",
             "country": rp["country"],
             "site_name": rp["site_name"],
+            "report_vessel": _report_vessels(rp),
             "gem_terminal_id": gp["terminal_id"],
             "gem_terminal_name": gp["terminal_name"],
             "gem_unit_name": [unit["unit_name"]],
@@ -1108,11 +1346,13 @@ def _classify(report_rows, gem_projects, alias_map=None, collision_regas=None):
             "gem_total_units": gp["total_units"],
             "unit_matches": [unit_match],
             "match_criteria": {"designator": sorted(codes), "matched_unit": unit["unit_name"]},
+            "report_nonoperating": _fmt_nonop_report_rows(rp),
             "disagreements": disagreements,
         })
         matched_gem_keys.add(gk)
         matched_gp_keys.append(gk)
         aligned_unit_names_by_gp[gk].add(unit["unit_name"])
+        matched_rps_by_gp[gk].append(rp)
         giignl_only_keys.discard(rp_key)
         gem_only_keys.discard(gk)
 
@@ -1195,6 +1435,7 @@ def _classify(report_rows, gem_projects, alias_map=None, collision_regas=None):
             unit_matches, aligned_names = _align_units(rp, gp)
             matched_gp_keys.append(gk)
             aligned_unit_names_by_gp[gk] |= aligned_names
+            matched_rps_by_gp[gk].append(rp)
             # FSRU operating-only capacity (see Pass 1 / _fsru_operating_report_capacity).
             report_cap = rp["total_capacity_mtpa"]
             fsru_op_cap, fsru_notes, fsru_applied = _fsru_operating_report_capacity(rp, gp)
@@ -1220,6 +1461,7 @@ def _classify(report_rows, gem_projects, alias_map=None, collision_regas=None):
                 "match_granularity": "unit" if unit_matches else "project",
                 "country": rp["country"],
                 "site_name": rp["site_name"],
+                "report_vessel": _report_vessels(rp),
                 "gem_terminal_id": gp["terminal_id"],
                 "gem_terminal_name": gp["terminal_name"],
                 "gem_unit_name": gp["operating_unit_names"],
@@ -1239,6 +1481,7 @@ def _classify(report_rows, gem_projects, alias_map=None, collision_regas=None):
                 "gem_total_units": gp["total_units"],
                 "unit_matches": unit_matches,
                 "match_criteria": criteria,
+                "report_nonoperating": _fmt_nonop_report_rows(rp),
                 "disagreements": disagreements,
                 "needs_review": True,
             })
@@ -1264,11 +1507,13 @@ def _classify(report_rows, gem_projects, alias_map=None, collision_regas=None):
                 "type": "report_only",
                 "country": rp["country"],
                 "site_name": rp["site_name"],
+                "report_vessel": _report_vessels(rp),
                 "section_type": rp["section_type"],
                 "report_capacity_mtpa": round(rp["total_capacity_mtpa"], 2),
                 "owners_in_report": sorted(rp["owners_set"]),
                 "trains_count": rp["trains_count"],
                 "report_sites_merged": sorted(rp["site_names"]) if len(rp["site_names"]) > 1 else [],
+                "report_nonoperating": _fmt_nonop_report_rows(rp),
             })
 
     gem_only = []
@@ -1304,9 +1549,23 @@ def _classify(report_rows, gem_projects, alias_map=None, collision_regas=None):
     for gk in sorted(set(matched_gp_keys)):
         gp = gem_projects[gk]
         aligned = aligned_unit_names_by_gp.get(gk, set())
+        # Corroborate GEM non-op units against any GIIGNL non-op rows ("(Mothballed)"
+        # / "(stopped)") that mapped to this terminal — those units are NOT
+        # "GEM has, GIIGNL doesn't"; GIIGNL lists them too, just as not-operating.
+        nonop_report_rows = [
+            r for sub in matched_rps_by_gp.get(gk, []) for r in sub.get("nonop_rows", [])]
+        corro = _corroborate_nonop(nonop_report_rows, gp) if nonop_report_rows else {}
+        # Merge in §3.2.1 narrative corroborations of GEM non-op units that have NO
+        # GIIGNL table row (NWS Train 2: ceased → absent from the operating table,
+        # but the prose names it). Keyed by GEM unit name (case-insensitive).
+        for pc in prose_nonop.get(gk, []):
+            for u in gp["units"]:
+                if u["unit_name"].strip().lower() == pc["unit"] and not corro.get(u["unit_name"]):
+                    corro[u["unit_name"]] = f"GIIGNL narrative: {pc['source']}"
         for u in gp["units"]:
             if u["status"] not in _NONOP_STATUSES:
                 continue
+            mention = corro.get(u["unit_name"], "")
             nonoperating_units.append({
                 "country": gp["country"],
                 "gem_terminal_id": gp["terminal_id"],
@@ -1317,8 +1576,8 @@ def _classify(report_rows, gem_projects, alias_map=None, collision_regas=None):
                 "start_year": u["start_year"],
                 "section_type": gp["section_type"],
                 "owners": sorted(u["owners_set"]),
-                "giignl_narrative_mention": "",
-                "is_gem_only": u["unit_name"] not in aligned,
+                "giignl_narrative_mention": mention,
+                "is_gem_only": (u["unit_name"] not in aligned) and not mention,
             })
 
     return {
@@ -1351,18 +1610,36 @@ def main():
     p.add_argument("--extracted", required=True,
                    help="Path to extracted report CSV (from giignl_extract.py)")
     p.add_argument("--gem-csv", default=DEFAULT_GEM_CSV)
+    p.add_argument("--prose-corrections", default=None,
+                   help="Path to agent-authored §3.2.1 narrative operating-status "
+                        "corrections JSON. Defaults to giignl_prose_corrections.json "
+                        "next to the extracted CSV, if present.")
     p.add_argument("--output", default="./report_diff.json")
     args = p.parse_args()
 
     with open(args.extracted, encoding="utf-8") as f:
         report_rows = list(csv.DictReader(f))
 
+    # Default the prose-corrections path to a file beside the extracted CSV.
+    prose_path = args.prose_corrections
+    if prose_path is None:
+        guess = Path(args.extracted).with_name("giignl_prose_corrections.json")
+        prose_path = str(guess) if guess.exists() else None
+    prose_corrections = _load_prose_corrections(prose_path)
+    n_op = sum(len(v) for v in prose_corrections["op"].values())
+    n_nonop = sum(len(v) for v in prose_corrections["nonop"].values())
+    if n_op or n_nonop:
+        print(f"  Loaded {n_op} operating-status correction(s) + {n_nonop} non-op "
+              f"corroboration(s) from narrative pass ({prose_path})")
+
     gem_projects, alias_map, collision_regas = _build_gem_project_table(args.gem_csv)
     diff = _classify(report_rows, gem_projects, alias_map=alias_map,
-                     collision_regas=collision_regas)
+                     collision_regas=collision_regas,
+                     prose_corrections=prose_corrections)
     diff["report_type"] = args.report
     diff["extracted_csv"] = args.extracted
     diff["gem_csv"] = args.gem_csv
+    diff["prose_corrections_path"] = prose_path or ""
 
     Path(args.output).write_text(json.dumps(diff, indent=2, default=str))
 
