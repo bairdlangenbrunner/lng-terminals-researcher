@@ -84,21 +84,24 @@
       "capacity_delta_mtpa": 0.0,
       "capacity_delta_pct": 0.0,
       "owners_overlap": [
+        "kogas",
+        "santos",
         "totalenergies"
       ],
       "owners_report_only": [
-        "kogas",
-        "petronas",
-        "santos"
+        "petronas"
       ],
-      "owners_gem_only": [],
+      "owners_gem_only": [
+        "petroliam nasional bhd"
+      ],
       "report_train_count": 2,
       "report_sites_merged": [],
       "gem_operating_units": 2,
       "gem_total_units": 2,
       "unit_matches": [],
       "disagreements": [
-        "owners in report not in GEM: ['kogas', 'petronas', 'santos']"
+        "owners in report not in GEM: ['petronas']",
+        "owners in GEM not in report: ['petroliam nasional bhd']"
       ]
     },
     {
@@ -122,23 +125,26 @@
       "capacity_delta_mtpa": 0.0,
       "capacity_delta_pct": 0.0,
       "owners_overlap": [
-        "exxonmobil"
-      ],
-      "owners_report_only": [
         "chevron",
+        "exxonmobil",
         "jera",
         "osaka-gas",
-        "shell",
+        "shell"
+      ],
+      "owners_report_only": [
         "tokyo-gas"
       ],
-      "owners_gem_only": [],
+      "owners_gem_only": [
+        "midocean energy llc"
+      ],
       "report_train_count": 3,
       "report_sites_merged": [],
       "gem_operating_units": 3,
       "gem_total_units": 4,
       "unit_matches": [],
       "disagreements": [
-        "owners in report not in GEM: ['chevron', 'jera', 'osaka-gas', 'shell', 'tokyo-gas']"
+        "owners in report not in GEM: ['tokyo-gas']",
+        "owners in GEM not in report: ['midocean energy llc']"
       ]
     },
     {
@@ -193,7 +199,7 @@
       "confidence": "high",
       "match_granularity": "project",
       "country": "Australia",
-      "site_name": "Prelude",
+      "site_name": "Prelude (FLNG)",
       "gem_terminal_id": "T100000130339",
       "gem_terminal_name": "Prelude FLNG Terminal",
       "gem_unit_name": [],
@@ -205,21 +211,24 @@
       "capacity_delta_mtpa": 0.0,
       "capacity_delta_pct": 0.0,
       "owners_overlap": [
-        "cpc-taiwan"
-      ],
-      "owners_report_only": [
+        "cpc-taiwan",
         "inpex",
-        "kogas",
         "shell"
       ],
-      "owners_gem_only": [],
+      "owners_report_only": [
+        "kogas"
+      ],
+      "owners_gem_only": [
+        "korea gas corp"
+      ],
       "report_train_count": 1,
       "report_sites_merged": [],
       "gem_operating_units": 1,
       "gem_total_units": 1,
       "unit_matches": [],
       "disagreements": [
-        "owners in report not in GEM: ['inpex', 'kogas', 'shell']"
+        "owners in report not in GEM: ['kogas']",
+        "owners in GEM not in report: ['korea gas corp']"
       ]
     },
     {
@@ -242,19 +251,24 @@
       "capacity_delta_mtpa": 0.1,
       "capacity_delta_pct": 1.1,
       "owners_overlap": [
-        "chevron"
+        "chevron",
+        "jera",
+        "jogmec",
+        "nyk"
       ],
       "owners_report_only": [
         "1",
-        "jera",
-        "jogmec",
         "kufpec",
         "kyushu electric",
         "mitsubishi",
-        "nyk",
         "woodside"
       ],
-      "owners_gem_only": [],
+      "owners_gem_only": [
+        "kuwait foreign petroleum exploration company ksc",
+        "kyushu electric power co inc",
+        "mitsubishi corp",
+        "woodside energy group ltd"
+      ],
       "report_train_count": 2,
       "report_sites_merged": [],
       "gem_operating_units": 2,
@@ -262,7 +276,8 @@
       "unit_matches": [],
       "disagreements": [
         "capacity differs by 1.1% (report=9.00, gem=8.90)",
-        "owners in report not in GEM: ['1', 'jera', 'jogmec', 'kufpec', 'kyushu electric', 'mitsubishi', 'nyk', 'woodside']"
+        "owners in report not in GEM: ['1', 'kufpec', 'kyushu electric', 'mitsubishi', 'woodside']",
+        "owners in GEM not in report: ['kuwait foreign petroleum exploration company ksc', 'kyushu electric power co inc', 'mitsubishi corp', 'woodside energy group ltd']"
       ]
     },
     {
@@ -316,23 +331,24 @@
       "matched_alias": "",
       "section_type_report": "regasification",
       "section_type_gem": "regasification",
-      "report_capacity_mtpa": 11.3,
+      "report_capacity_mtpa": 12.3,
       "gem_capacity_mtpa": 12.3,
-      "capacity_delta_mtpa": -1.0,
-      "capacity_delta_pct": 8.1,
+      "capacity_delta_mtpa": 0.0,
+      "capacity_delta_pct": 0.0,
       "owners_overlap": [
         "fluxys"
       ],
       "owners_report_only": [],
       "owners_gem_only": [],
-      "report_train_count": 1,
-      "report_sites_merged": [],
+      "report_train_count": 2,
+      "report_sites_merged": [
+        "Zeebrugge",
+        "Zeebrugge Expansion"
+      ],
       "gem_operating_units": 4,
       "gem_total_units": 4,
       "unit_matches": [],
-      "disagreements": [
-        "capacity differs by 8.1% (report=11.30, gem=12.30)"
-      ]
+      "disagreements": []
     },
     {
       "match_type": "exact",
@@ -463,7 +479,10 @@
         "mitsubishi",
         "petronas"
       ],
-      "owners_gem_only": [],
+      "owners_gem_only": [
+        "government of brunei",
+        "mitsubishi corp"
+      ],
       "report_train_count": 5,
       "report_sites_merged": [],
       "gem_operating_units": 1,
@@ -471,7 +490,8 @@
       "unit_matches": [],
       "disagreements": [
         "capacity differs by 2.8% (report=7.00, gem=7.20)",
-        "owners in report not in GEM: ['brunei government', 'cnpc', 'jera', 'mitsubishi', 'petronas']"
+        "owners in report not in GEM: ['brunei government', 'cnpc', 'jera', 'mitsubishi', 'petronas']",
+        "owners in GEM not in report: ['government of brunei', 'mitsubishi corp']"
       ]
     },
     {
@@ -479,7 +499,7 @@
       "confidence": "high",
       "match_granularity": "project",
       "country": "Cameroon",
-      "site_name": "Kribi",
+      "site_name": "Kribi (FLNG)",
       "gem_terminal_id": "T100000130247",
       "gem_terminal_name": "Cameroon FLNG Terminal",
       "gem_unit_name": [
@@ -496,14 +516,16 @@
       "capacity_delta_mtpa": 0.0,
       "capacity_delta_pct": 0.0,
       "owners_overlap": [
-        "golar"
-      ],
-      "owners_report_only": [
-        "black & veatch",
+        "golar",
         "keppel corporation ltd"
       ],
+      "owners_report_only": [
+        "black & veatch"
+      ],
       "owners_gem_only": [
-        "engie"
+        "black & veatch holding co",
+        "engie",
+        "soci\u00e9t\u00e9 nationale des hydrocarbures"
       ],
       "report_train_count": 1,
       "report_sites_merged": [],
@@ -511,8 +533,8 @@
       "gem_total_units": 5,
       "unit_matches": [],
       "disagreements": [
-        "owners in report not in GEM: ['black & veatch', 'keppel corporation ltd']",
-        "owners in GEM not in report: ['engie']"
+        "owners in report not in GEM: ['black & veatch']",
+        "owners in GEM not in report: ['black & veatch holding co', 'engie', 'soci\u00e9t\u00e9 nationale des hydrocarbures']"
       ]
     },
     {
@@ -534,6 +556,7 @@
       "owners_overlap": [],
       "owners_report_only": [],
       "owners_gem_only": [
+        "ameris capital",
         "engie"
       ],
       "report_train_count": 1,
@@ -542,7 +565,7 @@
       "gem_total_units": 1,
       "unit_matches": [],
       "disagreements": [
-        "owners in GEM not in report: ['engie']"
+        "owners in GEM not in report: ['ameris capital', 'engie']"
       ]
     },
     {
@@ -567,7 +590,10 @@
       "owners_report_only": [
         "enap"
       ],
-      "owners_gem_only": [],
+      "owners_gem_only": [
+        "eig global energy partners [to be deleted]",
+        "enap [to be deleted]"
+      ],
       "report_train_count": 1,
       "report_sites_merged": [],
       "gem_operating_units": 1,
@@ -575,7 +601,8 @@
       "unit_matches": [],
       "disagreements": [
         "capacity differs by 5.0% (report=3.80, gem=4.00)",
-        "owners in report not in GEM: ['enap']"
+        "owners in report not in GEM: ['enap']",
+        "owners in GEM not in report: ['eig global energy partners [to be deleted]', 'enap [to be deleted]']"
       ]
     },
     {
@@ -647,6 +674,51 @@
       "disagreements": [
         "owners in report not in GEM: ['guangdong energy group', 'pacific energy']",
         "owners in GEM not in report: ['guangdong yangjiang hailingwan lng co ltd']"
+      ]
+    },
+    {
+      "match_type": "exact",
+      "confidence": "high",
+      "match_granularity": "project",
+      "country": "Croatia",
+      "site_name": "Krk",
+      "gem_terminal_id": "T100000130430",
+      "gem_terminal_name": "Krk FSRU",
+      "gem_unit_name": [
+        "2022 Capacity Expansion"
+      ],
+      "matched_alias": "",
+      "section_type_report": "regasification",
+      "section_type_gem": "regasification",
+      "report_capacity_mtpa": 4.4,
+      "gem_capacity_mtpa": 2.13,
+      "capacity_delta_mtpa": 2.27,
+      "capacity_delta_pct": 106.6,
+      "owners_overlap": [],
+      "owners_report_only": [
+        "lng hrvatska (hep",
+        "plinacro"
+      ],
+      "owners_gem_only": [
+        "hep grupa",
+        "lng croatia llc",
+        "plinacro doo"
+      ],
+      "report_train_count": 2,
+      "report_sites_merged": [
+        "Krk",
+        "Krk expansion"
+      ],
+      "gem_operating_units": 2,
+      "gem_total_units": 4,
+      "unit_matches": [],
+      "disagreements": [
+        "capacity differs by 106.6% (report=4.40, gem=2.13)",
+        "owners in report not in GEM: ['lng hrvatska (hep', 'plinacro']",
+        "owners in GEM not in report: ['hep grupa', 'lng croatia llc', 'plinacro doo']",
+        "GIIGNL FSRU 'LNG Croatia' (2.8) listed operating; not in GEM",
+        "GIIGNL FSRU 'LNG Croatia' (1.6) listed operating; not in GEM",
+        "FSRU vessels could not be aligned to a GEM operating unit; verify vessel identities (compared at project total)"
       ]
     },
     {
@@ -810,14 +882,16 @@
       "gem_capacity_mtpa": 0.0,
       "capacity_delta_mtpa": 0.2,
       "capacity_delta_pct": null,
-      "owners_overlap": [],
+      "owners_overlap": [
+        "hamina energy"
+      ],
       "owners_report_only": [
         "alexela",
-        "hamina energy",
         "wartsila"
       ],
       "owners_gem_only": [
-        "alexela as; hamina energy; w\u00e4rtsil\u00e4 oyj"
+        "alexela as",
+        "w\u00e4rtsil\u00e4 oyj"
       ],
       "report_train_count": 1,
       "report_sites_merged": [],
@@ -826,8 +900,8 @@
       "unit_matches": [],
       "disagreements": [
         "capacity differs by n/a (report=0.20, gem=0.00)",
-        "owners in report not in GEM: ['alexela', 'hamina energy', 'wartsila']",
-        "owners in GEM not in report: ['alexela as; hamina energy; w\u00e4rtsil\u00e4 oyj']"
+        "owners in report not in GEM: ['alexela', 'wartsila']",
+        "owners in GEM not in report: ['alexela as', 'w\u00e4rtsil\u00e4 oyj']"
       ]
     },
     {
@@ -1077,18 +1151,17 @@
         "hoegh-evi"
       ],
       "owners_gem_only": [
-        "german lng terminal",
-        "oiltanking gmbh; vopak lng; gasunie deutschland gmbh & co kg"
+        "german lng terminal"
       ],
       "report_train_count": 1,
       "report_sites_merged": [],
       "gem_operating_units": 1,
-      "gem_total_units": 2,
+      "gem_total_units": 1,
       "unit_matches": [],
       "disagreements": [
         "capacity differs by 3.3% (report=3.80, gem=3.68)",
         "owners in report not in GEM: ['hoegh-evi']",
-        "owners in GEM not in report: ['german lng terminal', 'oiltanking gmbh; vopak lng; gasunie deutschland gmbh & co kg']"
+        "owners in GEM not in report: ['german lng terminal']"
       ]
     },
     {
@@ -1146,18 +1219,19 @@
         "owner: exelerate energy charterer: the federal republic of germany"
       ],
       "owners_gem_only": [
+        "e.on se",
         "engie",
         "tree energy solutions"
       ],
       "report_train_count": 1,
       "report_sites_merged": [],
       "gem_operating_units": 1,
-      "gem_total_units": 2,
+      "gem_total_units": 1,
       "unit_matches": [],
       "disagreements": [
         "capacity differs by 36.0% (report=4.50, gem=3.31)",
         "owners in report not in GEM: ['owner: exelerate energy charterer: the federal republic of germany']",
-        "owners in GEM not in report: ['engie', 'tree energy solutions']"
+        "owners in GEM not in report: ['e.on se', 'engie', 'tree energy solutions']"
       ]
     },
     {
@@ -1183,14 +1257,17 @@
         "depa",
         "government of gibraltar gastrade (gaslog"
       ],
-      "owners_gem_only": [],
+      "owners_gem_only": [
+        "government of gibraltar"
+      ],
       "report_train_count": 1,
       "report_sites_merged": [],
       "gem_operating_units": 1,
       "gem_total_units": 1,
       "unit_matches": [],
       "disagreements": [
-        "owners in report not in GEM: ['depa', 'government of gibraltar gastrade (gaslog']"
+        "owners in report not in GEM: ['depa', 'government of gibraltar gastrade (gaslog']",
+        "owners in GEM not in report: ['government of gibraltar']"
       ]
     },
     {
@@ -1382,7 +1459,8 @@
         "tamil nadu industrial development corporation"
       ],
       "owners_gem_only": [
-        "indian oil corporation ltd [90%]; tamil nadu industrial development corp",
+        "indian oil corporation ltd",
+        "tamil nadu industrial development corp",
         "unknown"
       ],
       "report_train_count": 1,
@@ -1392,7 +1470,7 @@
       "unit_matches": [],
       "disagreements": [
         "owners in report not in GEM: ['tamil nadu industrial development corporation']",
-        "owners in GEM not in report: ['indian oil corporation ltd [90%]; tamil nadu industrial development corp', 'unknown']"
+        "owners in GEM not in report: ['indian oil corporation ltd', 'tamil nadu industrial development corp', 'unknown']"
       ]
     },
     {
@@ -1401,8 +1479,8 @@
       "match_granularity": "project",
       "country": "India",
       "site_name": "Hazira",
-      "gem_terminal_id": "T100000130441",
-      "gem_terminal_name": "Hazira FSRU",
+      "gem_terminal_id": "T100000130439",
+      "gem_terminal_name": "Hazira LNG Terminal",
       "gem_unit_name": [],
       "matched_alias": "",
       "section_type_report": "regasification",
@@ -1415,17 +1493,13 @@
         "shell"
       ],
       "owners_report_only": [],
-      "owners_gem_only": [
-        "essar global holdings ltd"
-      ],
+      "owners_gem_only": [],
       "report_train_count": 1,
       "report_sites_merged": [],
       "gem_operating_units": 1,
-      "gem_total_units": 4,
+      "gem_total_units": 3,
       "unit_matches": [],
-      "disagreements": [
-        "owners in GEM not in report: ['essar global holdings ltd']"
-      ]
+      "disagreements": []
     },
     {
       "match_type": "exact",
@@ -1477,7 +1551,8 @@
         "its entities including gspc holding"
       ],
       "owners_gem_only": [
-        "petronet"
+        "petronet",
+        "s.b. adani family trust"
       ],
       "report_train_count": 1,
       "report_sites_merged": [],
@@ -1486,7 +1561,7 @@
       "unit_matches": [],
       "disagreements": [
         "owners in report not in GEM: ['adani group', 'its entities including gspc holding']",
-        "owners in GEM not in report: ['petronet']"
+        "owners in GEM not in report: ['petronet', 's.b. adani family trust']"
       ]
     },
     {
@@ -1548,27 +1623,127 @@
       "capacity_delta_mtpa": 0.0,
       "capacity_delta_pct": 0.0,
       "owners_overlap": [
-        "cnooc"
+        "bp",
+        "cnooc",
+        "indonesia natural gas resources muturi",
+        "kg berau petroleum",
+        "kg wiriagar petroleum"
       ],
       "owners_report_only": [
         "berau",
-        "bp",
         "eneos explora berau",
-        "indonesia natural gas resources muturi",
         "inpex) berau",
-        "kg berau petroleum",
-        "kg wiriagar petroleum",
         "mi (mitsubishi"
       ],
-      "owners_gem_only": [],
+      "owners_gem_only": [
+        "mi berau",
+        "nippon oil exploration"
+      ],
       "report_train_count": 3,
       "report_sites_merged": [],
       "gem_operating_units": 3,
       "gem_total_units": 3,
       "unit_matches": [],
       "disagreements": [
-        "owners in report not in GEM: ['berau', 'bp', 'eneos explora berau', 'indonesia natural gas resources muturi', 'inpex) berau', 'kg berau petroleum', 'kg wiriagar petroleum', 'mi (mitsubishi']"
+        "owners in report not in GEM: ['berau', 'eneos explora berau', 'inpex) berau', 'mi (mitsubishi']",
+        "owners in GEM not in report: ['mi berau', 'nippon oil exploration']"
       ]
+    },
+    {
+      "match_type": "exact",
+      "confidence": "high",
+      "match_granularity": "project",
+      "country": "Italy",
+      "site_name": "Panigaglia",
+      "gem_terminal_id": "T100000130476",
+      "gem_terminal_name": "Panigaglia LNG Terminal",
+      "gem_unit_name": [],
+      "matched_alias": "",
+      "section_type_report": "regasification",
+      "section_type_gem": "regasification",
+      "report_capacity_mtpa": 2.6,
+      "gem_capacity_mtpa": 2.5,
+      "capacity_delta_mtpa": 0.1,
+      "capacity_delta_pct": 4.0,
+      "owners_overlap": [],
+      "owners_report_only": [
+        "set"
+      ],
+      "owners_gem_only": [
+        "gnl italia spa"
+      ],
+      "report_train_count": 1,
+      "report_sites_merged": [],
+      "gem_operating_units": 1,
+      "gem_total_units": 2,
+      "unit_matches": [],
+      "disagreements": [
+        "capacity differs by 4.0% (report=2.60, gem=2.50)",
+        "owners in report not in GEM: ['set']",
+        "owners in GEM not in report: ['gnl italia spa']"
+      ]
+    },
+    {
+      "match_type": "exact",
+      "confidence": "high",
+      "match_granularity": "project",
+      "country": "Italy",
+      "site_name": "Piombino",
+      "gem_terminal_id": "T100000131096",
+      "gem_terminal_name": "Piombino FSRU",
+      "gem_unit_name": [],
+      "matched_alias": "",
+      "section_type_report": "regasification",
+      "section_type_gem": "regasification",
+      "report_capacity_mtpa": 3.7,
+      "gem_capacity_mtpa": 3.68,
+      "capacity_delta_mtpa": 0.02,
+      "capacity_delta_pct": 0.5,
+      "owners_overlap": [],
+      "owners_report_only": [
+        "set"
+      ],
+      "owners_gem_only": [
+        "fsru italia"
+      ],
+      "report_train_count": 1,
+      "report_sites_merged": [],
+      "gem_operating_units": 1,
+      "gem_total_units": 1,
+      "unit_matches": [],
+      "disagreements": [
+        "capacity differs by 0.5% (report=3.70, gem=3.68)",
+        "owners in report not in GEM: ['set']",
+        "owners in GEM not in report: ['fsru italia']"
+      ]
+    },
+    {
+      "match_type": "exact",
+      "confidence": "high",
+      "match_granularity": "project",
+      "country": "Italy",
+      "site_name": "Ravenna",
+      "gem_terminal_id": "T100000130683",
+      "gem_terminal_name": "Ravenna LNG Terminal",
+      "gem_unit_name": [],
+      "matched_alias": "",
+      "section_type_report": "regasification",
+      "section_type_gem": "regasification",
+      "report_capacity_mtpa": 0.7,
+      "gem_capacity_mtpa": 0.7,
+      "capacity_delta_mtpa": 0.0,
+      "capacity_delta_pct": 0.0,
+      "owners_overlap": [
+        "depositi italiani gnl"
+      ],
+      "owners_report_only": [],
+      "owners_gem_only": [],
+      "report_train_count": 1,
+      "report_sites_merged": [],
+      "gem_operating_units": 1,
+      "gem_total_units": 1,
+      "unit_matches": [],
+      "disagreements": []
     },
     {
       "match_type": "exact",
@@ -1582,23 +1757,25 @@
       "matched_alias": "",
       "section_type_report": "regasification",
       "section_type_gem": "regasification",
-      "report_capacity_mtpa": 0.7,
-      "gem_capacity_mtpa": 0.7,
-      "capacity_delta_mtpa": 0.0,
-      "capacity_delta_pct": 0.0,
-      "owners_overlap": [
-        "depositi italiani gnl"
+      "report_capacity_mtpa": 3.7,
+      "gem_capacity_mtpa": 0.0,
+      "capacity_delta_mtpa": 3.7,
+      "capacity_delta_pct": null,
+      "owners_overlap": [],
+      "owners_report_only": [
+        "set"
       ],
-      "owners_report_only": [],
       "owners_gem_only": [
         "snam"
       ],
       "report_train_count": 1,
       "report_sites_merged": [],
-      "gem_operating_units": 1,
-      "gem_total_units": 2,
+      "gem_operating_units": 0,
+      "gem_total_units": 1,
       "unit_matches": [],
       "disagreements": [
+        "capacity differs by n/a (report=3.70, gem=0.00)",
+        "owners in report not in GEM: ['set']",
         "owners in GEM not in report: ['snam']"
       ]
     },
@@ -1672,6 +1849,36 @@
       "match_type": "exact",
       "confidence": "high",
       "match_granularity": "project",
+      "country": "Jamaica",
+      "site_name": "Old Harbour",
+      "gem_terminal_id": "T100000130684",
+      "gem_terminal_name": "Old Harbour FSRU",
+      "gem_unit_name": [],
+      "matched_alias": "",
+      "section_type_report": "regasification",
+      "section_type_gem": "regasification",
+      "report_capacity_mtpa": 2.8,
+      "gem_capacity_mtpa": 3.6,
+      "capacity_delta_mtpa": -0.8,
+      "capacity_delta_pct": 22.2,
+      "owners_overlap": [
+        "excelerate"
+      ],
+      "owners_report_only": [],
+      "owners_gem_only": [],
+      "report_train_count": 1,
+      "report_sites_merged": [],
+      "gem_operating_units": 1,
+      "gem_total_units": 1,
+      "unit_matches": [],
+      "disagreements": [
+        "capacity differs by 22.2% (report=2.80, gem=3.60)"
+      ]
+    },
+    {
+      "match_type": "exact",
+      "confidence": "high",
+      "match_granularity": "project",
       "country": "Japan",
       "site_name": "Chita",
       "gem_terminal_id": "T100000130461",
@@ -1721,13 +1928,17 @@
         "jera"
       ],
       "owners_report_only": [],
-      "owners_gem_only": [],
+      "owners_gem_only": [
+        "toho gas co ltd"
+      ],
       "report_train_count": 1,
       "report_sites_merged": [],
       "gem_operating_units": 1,
       "gem_total_units": 1,
       "unit_matches": [],
-      "disagreements": []
+      "disagreements": [
+        "owners in GEM not in report: ['toho gas co ltd']"
+      ]
     },
     {
       "match_type": "exact",
@@ -2058,14 +2269,17 @@
         "tokyo-gas"
       ],
       "owners_report_only": [],
-      "owners_gem_only": [],
+      "owners_gem_only": [
+        "jera"
+      ],
       "report_train_count": 1,
       "report_sites_merged": [],
       "gem_operating_units": 1,
       "gem_total_units": 1,
       "unit_matches": [],
       "disagreements": [
-        "capacity differs by 1.9% (report=11.00, gem=10.80)"
+        "capacity differs by 1.9% (report=11.00, gem=10.80)",
+        "owners in GEM not in report: ['jera']"
       ]
     },
     {
@@ -2314,14 +2528,17 @@
         "tokyo-gas"
       ],
       "owners_report_only": [],
-      "owners_gem_only": [],
+      "owners_gem_only": [
+        "jera"
+      ],
       "report_train_count": 1,
       "report_sites_merged": [],
       "gem_operating_units": 1,
       "gem_total_units": 1,
       "unit_matches": [],
       "disagreements": [
-        "capacity differs by 6.7% (report=29.30, gem=31.40)"
+        "capacity differs by 6.7% (report=29.30, gem=31.40)",
+        "owners in GEM not in report: ['jera']"
       ]
     },
     {
@@ -2383,7 +2600,9 @@
         "nippon"
       ],
       "owners_gem_only": [
-        "kitakyushu lng; nippon steel corp; kyushu electric power co inc"
+        "kitakyushu lng",
+        "kyushu electric power co inc",
+        "nippon steel corp"
       ],
       "report_train_count": 1,
       "report_sites_merged": [],
@@ -2392,7 +2611,7 @@
       "unit_matches": [],
       "disagreements": [
         "owners in report not in GEM: ['kita kyushu lng (kyushu electric power', 'nippon']",
-        "owners in GEM not in report: ['kitakyushu lng; nippon steel corp; kyushu electric power co inc']"
+        "owners in GEM not in report: ['kitakyushu lng', 'kyushu electric power co inc', 'nippon steel corp']"
       ]
     },
     {
@@ -2482,6 +2701,7 @@
         "jera"
       ],
       "owners_gem_only": [
+        "chubu",
         "tepco"
       ],
       "report_train_count": 1,
@@ -2491,7 +2711,7 @@
       "unit_matches": [],
       "disagreements": [
         "owners in report not in GEM: ['jera']",
-        "owners in GEM not in report: ['tepco']"
+        "owners in GEM not in report: ['chubu', 'tepco']"
       ]
     },
     {
@@ -2563,6 +2783,42 @@
       "match_type": "exact",
       "confidence": "high",
       "match_granularity": "project",
+      "country": "Kuwait",
+      "site_name": "Al Zour",
+      "gem_terminal_id": "T100000130671",
+      "gem_terminal_name": "Al Zour LNG Terminal",
+      "gem_unit_name": [
+        "Import Terminal"
+      ],
+      "matched_alias": "",
+      "section_type_report": "regasification",
+      "section_type_gem": "regasification",
+      "report_capacity_mtpa": 24.0,
+      "gem_capacity_mtpa": 22.0,
+      "capacity_delta_mtpa": 2.0,
+      "capacity_delta_pct": 9.1,
+      "owners_overlap": [],
+      "owners_report_only": [
+        "mineral resources) kuwait petroleum"
+      ],
+      "owners_gem_only": [
+        "kuwait national petroleum co"
+      ],
+      "report_train_count": 1,
+      "report_sites_merged": [],
+      "gem_operating_units": 1,
+      "gem_total_units": 1,
+      "unit_matches": [],
+      "disagreements": [
+        "capacity differs by 9.1% (report=24.00, gem=22.00)",
+        "owners in report not in GEM: ['mineral resources) kuwait petroleum']",
+        "owners in GEM not in report: ['kuwait national petroleum co']"
+      ]
+    },
+    {
+      "match_type": "exact",
+      "confidence": "high",
+      "match_granularity": "project",
       "country": "Lithuania",
       "site_name": "Klaipeda LNG terminal",
       "gem_terminal_id": "T100000130488",
@@ -2597,7 +2853,7 @@
       "confidence": "high",
       "match_granularity": "project",
       "country": "Malaysia",
-      "site_name": "PFLNG Dua",
+      "site_name": "PFLNG Dua (FLNG)",
       "gem_terminal_id": "T100000130289",
       "gem_terminal_name": "Dua FLNG Terminal",
       "gem_unit_name": [],
@@ -2630,7 +2886,7 @@
       "confidence": "high",
       "match_granularity": "project",
       "country": "Malaysia",
-      "site_name": "PFLNG Satu",
+      "site_name": "PFLNG Satu (FLNG)",
       "gem_terminal_id": "T100000130288",
       "gem_terminal_name": "Satu FLNG Terminal",
       "gem_unit_name": [],
@@ -2680,14 +2936,17 @@
       "owners_report_only": [
         "terminal de lng de altamira (vopak"
       ],
-      "owners_gem_only": [],
+      "owners_gem_only": [
+        "vopak"
+      ],
       "report_train_count": 1,
       "report_sites_merged": [],
       "gem_operating_units": 1,
       "gem_total_units": 1,
       "unit_matches": [],
       "disagreements": [
-        "owners in report not in GEM: ['terminal de lng de altamira (vopak']"
+        "owners in report not in GEM: ['terminal de lng de altamira (vopak']",
+        "owners in GEM not in report: ['vopak']"
       ]
     },
     {
@@ -2963,7 +3222,9 @@
         "aes"
       ],
       "owners_gem_only": [
-        "aes corp [65%]; grupo linda [20%]; grupo estrella holdings sa"
+        "aes corp",
+        "grupo estrella holdings sa",
+        "grupo linda"
       ],
       "report_train_count": 1,
       "report_sites_merged": [],
@@ -2972,7 +3233,7 @@
       "unit_matches": [],
       "disagreements": [
         "owners in report not in GEM: ['aes']",
-        "owners in GEM not in report: ['aes corp [65%]; grupo linda [20%]; grupo estrella holdings sa']"
+        "owners in GEM not in report: ['aes corp', 'grupo estrella holdings sa', 'grupo linda']"
       ]
     },
     {
@@ -2991,11 +3252,10 @@
       "gem_capacity_mtpa": 5.3,
       "capacity_delta_mtpa": 0.0,
       "capacity_delta_pct": 0.0,
-      "owners_overlap": [
-        "tokyo-gas"
-      ],
+      "owners_overlap": [],
       "owners_report_only": [
-        "bw-lng"
+        "bw-lng",
+        "tokyo-gas"
       ],
       "owners_gem_only": [
         "fgen lng"
@@ -3003,10 +3263,10 @@
       "report_train_count": 1,
       "report_sites_merged": [],
       "gem_operating_units": 1,
-      "gem_total_units": 2,
+      "gem_total_units": 1,
       "unit_matches": [],
       "disagreements": [
-        "owners in report not in GEM: ['bw-lng']",
+        "owners in report not in GEM: ['bw-lng', 'tokyo-gas']",
         "owners in GEM not in report: ['fgen lng']"
       ]
     },
@@ -3166,7 +3426,9 @@
       "owners_report_only": [
         "reganosa"
       ],
-      "owners_gem_only": [],
+      "owners_gem_only": [
+        "reganosa servicios slu"
+      ],
       "report_train_count": 1,
       "report_sites_merged": [],
       "gem_operating_units": 1,
@@ -3174,7 +3436,8 @@
       "unit_matches": [],
       "disagreements": [
         "capacity differs by 13.3% (report=5.10, gem=5.88)",
-        "owners in report not in GEM: ['reganosa']"
+        "owners in report not in GEM: ['reganosa']",
+        "owners in GEM not in report: ['reganosa servicios slu']"
       ]
     },
     {
@@ -3232,7 +3495,13 @@
         "xunta galicia (28"
       ],
       "owners_gem_only": [
-        "reganosa servicios slu"
+        "endesa sa",
+        "naturgy",
+        "novacaixagalicia",
+        "reganosa servicios slu",
+        "region of galicia",
+        "santander bank",
+        "tojeiro group"
       ],
       "report_train_count": 1,
       "report_sites_merged": [],
@@ -3241,7 +3510,7 @@
       "unit_matches": [],
       "disagreements": [
         "owners in report not in GEM: ['5', '6', '76%) infraestructuras de gas', 'tojeiro group (59', 'xunta galicia (28']",
-        "owners in GEM not in report: ['reganosa servicios slu']"
+        "owners in GEM not in report: ['endesa sa', 'naturgy', 'novacaixagalicia', 'reganosa servicios slu', 'region of galicia', 'santander bank', 'tojeiro group']"
       ]
     },
     {
@@ -3266,7 +3535,8 @@
         "iniciativas de gas [enag\u00e1s"
       ],
       "owners_gem_only": [
-        "infraestructuras de gas [50%]; iniciativas de gas"
+        "infraestructuras de gas",
+        "iniciativas de gas"
       ],
       "report_train_count": 1,
       "report_sites_merged": [],
@@ -3275,7 +3545,7 @@
       "unit_matches": [],
       "disagreements": [
         "owners in report not in GEM: ['[enagas and oman oil company s.a.o.c.]', 'iniciativas de gas [enag\u00e1s']",
-        "owners in GEM not in report: ['infraestructuras de gas [50%]; iniciativas de gas']"
+        "owners in GEM not in report: ['infraestructuras de gas', 'iniciativas de gas']"
       ]
     },
     {
@@ -3502,15 +3772,18 @@
       "capacity_delta_mtpa": -0.2,
       "capacity_delta_pct": 3.3,
       "owners_overlap": [
+        "bp",
         "totalenergies"
       ],
       "owners_report_only": [
         "(adnoc",
         "adnoc",
-        "bp",
         "mitsui"
       ],
-      "owners_gem_only": [],
+      "owners_gem_only": [
+        "abu dhabi gas liquefaction company ltd",
+        "mitsui & co ltd"
+      ],
       "report_train_count": 3,
       "report_sites_merged": [],
       "gem_operating_units": 3,
@@ -3518,7 +3791,8 @@
       "unit_matches": [],
       "disagreements": [
         "capacity differs by 3.3% (report=5.80, gem=6.00)",
-        "owners in report not in GEM: ['(adnoc', 'adnoc', 'bp', 'mitsui']"
+        "owners in report not in GEM: ['(adnoc', 'adnoc', 'mitsui']",
+        "owners in GEM not in report: ['abu dhabi gas liquefaction company ltd', 'mitsui & co ltd']"
       ]
     },
     {
@@ -3545,14 +3819,17 @@
       "owners_report_only": [
         "vtti"
       ],
-      "owners_gem_only": [],
+      "owners_gem_only": [
+        "ancala partners"
+      ],
       "report_train_count": 1,
       "report_sites_merged": [],
       "gem_operating_units": 2,
       "gem_total_units": 2,
       "unit_matches": [],
       "disagreements": [
-        "owners in report not in GEM: ['vtti']"
+        "owners in report not in GEM: ['vtti']",
+        "owners in GEM not in report: ['ancala partners']"
       ]
     },
     {
@@ -3577,7 +3854,8 @@
         "energy capital partners"
       ],
       "owners_gem_only": [
-        "centrica plc [50%]; energy capital partners management lp"
+        "centrica plc",
+        "energy capital partners management lp"
       ],
       "report_train_count": 1,
       "report_sites_merged": [],
@@ -3586,7 +3864,7 @@
       "unit_matches": [],
       "disagreements": [
         "owners in report not in GEM: ['centrica', 'energy capital partners']",
-        "owners in GEM not in report: ['centrica plc [50%]; energy capital partners management lp']"
+        "owners in GEM not in report: ['centrica plc', 'energy capital partners management lp']"
       ]
     },
     {
@@ -3874,7 +4152,7 @@
       "capacity_delta_pct": 13.3,
       "owners_overlap": [],
       "owners_report_only": [
-        "exxonmobil"
+        "qatarenergy"
       ],
       "owners_gem_only": [
         "golden pass lng terminal llc"
@@ -3886,7 +4164,7 @@
       "unit_matches": [],
       "disagreements": [
         "capacity differs by 13.3% (report=5.20, gem=6.00)",
-        "owners in report not in GEM: ['exxonmobil']",
+        "owners in report not in GEM: ['qatarenergy']",
         "owners in GEM not in report: ['golden pass lng terminal llc']"
       ]
     },
@@ -3907,11 +4185,11 @@
       "capacity_delta_mtpa": 15.7,
       "capacity_delta_pct": null,
       "owners_overlap": [
-        "exxonmobil"
+        "exxonmobil",
+        "qatarenergy"
       ],
       "owners_report_only": [
-        "ge",
-        "qatarenergy"
+        "ge"
       ],
       "owners_gem_only": [],
       "report_train_count": 1,
@@ -3921,7 +4199,7 @@
       "unit_matches": [],
       "disagreements": [
         "capacity differs by n/a (report=15.70, gem=0.00)",
-        "owners in report not in GEM: ['ge', 'qatarenergy']"
+        "owners in report not in GEM: ['ge']"
       ]
     },
     {
@@ -4106,6 +4384,352 @@
         "owners in report not in GEM: ['(totalenergies', 'gassp', 'hunt oil co', 'hyundai', 'kogas', 'sk innovation', 'yemen gas']",
         "owners in GEM not in report: ['yemen lng company ltd']"
       ]
+    },
+    {
+      "match_type": "unit_designator",
+      "confidence": "high",
+      "match_granularity": "unit",
+      "country": "Qatar",
+      "site_name": "QatarEnergy LNG N(1)",
+      "gem_terminal_id": "T100000130594",
+      "gem_terminal_name": "QatarEnergy LNG (N)",
+      "gem_unit_name": [
+        "N(1) T1-3"
+      ],
+      "matched_alias": "",
+      "section_type_report": "liquefaction",
+      "section_type_gem": "liquefaction",
+      "report_capacity_mtpa": 9.6,
+      "gem_capacity_mtpa": 9.6,
+      "capacity_delta_mtpa": 0.0,
+      "capacity_delta_pct": 0.0,
+      "owners_overlap": [
+        "qatarenergy"
+      ],
+      "owners_report_only": [],
+      "owners_gem_only": [],
+      "report_train_count": 3,
+      "report_sites_merged": [],
+      "gem_operating_units": 4,
+      "gem_total_units": 4,
+      "unit_matches": [
+        {
+          "report_site": "QatarEnergy LNG N(1)",
+          "report_capacity_mtpa": 9.6,
+          "gem_unit_name": "N(1) T1-3",
+          "gem_unit_status": "operating",
+          "gem_unit_capacity_mtpa": 9.6,
+          "capacity_delta_pct": 0.0,
+          "agree": true
+        }
+      ],
+      "match_criteria": {
+        "designator": [
+          "n1"
+        ],
+        "matched_unit": "N(1) T1-3"
+      },
+      "disagreements": []
+    },
+    {
+      "match_type": "unit_designator",
+      "confidence": "high",
+      "match_granularity": "unit",
+      "country": "Qatar",
+      "site_name": "QatarEnergy LNG N(2)",
+      "gem_terminal_id": "T100000130594",
+      "gem_terminal_name": "QatarEnergy LNG (N)",
+      "gem_unit_name": [
+        "N(2) T4-5"
+      ],
+      "matched_alias": "",
+      "section_type_report": "liquefaction",
+      "section_type_gem": "liquefaction",
+      "report_capacity_mtpa": 15.6,
+      "gem_capacity_mtpa": 15.6,
+      "capacity_delta_mtpa": 0.0,
+      "capacity_delta_pct": 0.0,
+      "owners_overlap": [
+        "exxonmobil",
+        "qatarenergy",
+        "totalenergies"
+      ],
+      "owners_report_only": [],
+      "owners_gem_only": [],
+      "report_train_count": 2,
+      "report_sites_merged": [],
+      "gem_operating_units": 4,
+      "gem_total_units": 4,
+      "unit_matches": [
+        {
+          "report_site": "QatarEnergy LNG N(2)",
+          "report_capacity_mtpa": 15.6,
+          "gem_unit_name": "N(2) T4-5",
+          "gem_unit_status": "operating",
+          "gem_unit_capacity_mtpa": 15.6,
+          "capacity_delta_pct": 0.0,
+          "agree": true
+        }
+      ],
+      "match_criteria": {
+        "designator": [
+          "n2"
+        ],
+        "matched_unit": "N(2) T4-5"
+      },
+      "disagreements": []
+    },
+    {
+      "match_type": "unit_designator",
+      "confidence": "high",
+      "match_granularity": "unit",
+      "country": "Qatar",
+      "site_name": "QatarEnergy LNG N(3)",
+      "gem_terminal_id": "T100000130594",
+      "gem_terminal_name": "QatarEnergy LNG (N)",
+      "gem_unit_name": [
+        "N(3) T6"
+      ],
+      "matched_alias": "",
+      "section_type_report": "liquefaction",
+      "section_type_gem": "liquefaction",
+      "report_capacity_mtpa": 7.8,
+      "gem_capacity_mtpa": 7.8,
+      "capacity_delta_mtpa": 0.0,
+      "capacity_delta_pct": 0.0,
+      "owners_overlap": [
+        "conocophillips",
+        "qatarenergy"
+      ],
+      "owners_report_only": [
+        "mitsui"
+      ],
+      "owners_gem_only": [
+        "mitsui group"
+      ],
+      "report_train_count": 1,
+      "report_sites_merged": [],
+      "gem_operating_units": 4,
+      "gem_total_units": 4,
+      "unit_matches": [
+        {
+          "report_site": "QatarEnergy LNG N(3)",
+          "report_capacity_mtpa": 7.8,
+          "gem_unit_name": "N(3) T6",
+          "gem_unit_status": "operating",
+          "gem_unit_capacity_mtpa": 7.8,
+          "capacity_delta_pct": 0.0,
+          "agree": true
+        }
+      ],
+      "match_criteria": {
+        "designator": [
+          "n3"
+        ],
+        "matched_unit": "N(3) T6"
+      },
+      "disagreements": [
+        "owners in report not in GEM: ['mitsui']",
+        "owners in GEM not in report: ['mitsui group']"
+      ]
+    },
+    {
+      "match_type": "unit_designator",
+      "confidence": "high",
+      "match_granularity": "unit",
+      "country": "Qatar",
+      "site_name": "QatarEnergy LNG N(4)",
+      "gem_terminal_id": "T100000130594",
+      "gem_terminal_name": "QatarEnergy LNG (N)",
+      "gem_unit_name": [
+        "N(4) T7"
+      ],
+      "matched_alias": "",
+      "section_type_report": "liquefaction",
+      "section_type_gem": "liquefaction",
+      "report_capacity_mtpa": 7.8,
+      "gem_capacity_mtpa": 7.8,
+      "capacity_delta_mtpa": 0.0,
+      "capacity_delta_pct": 0.0,
+      "owners_overlap": [
+        "qatarenergy",
+        "shell"
+      ],
+      "owners_report_only": [],
+      "owners_gem_only": [],
+      "report_train_count": 1,
+      "report_sites_merged": [],
+      "gem_operating_units": 4,
+      "gem_total_units": 4,
+      "unit_matches": [
+        {
+          "report_site": "QatarEnergy LNG N(4)",
+          "report_capacity_mtpa": 7.8,
+          "gem_unit_name": "N(4) T7",
+          "gem_unit_status": "operating",
+          "gem_unit_capacity_mtpa": 7.8,
+          "capacity_delta_pct": 0.0,
+          "agree": true
+        }
+      ],
+      "match_criteria": {
+        "designator": [
+          "n4"
+        ],
+        "matched_unit": "N(4) T7"
+      },
+      "disagreements": []
+    },
+    {
+      "match_type": "unit_designator",
+      "confidence": "high",
+      "match_granularity": "unit",
+      "country": "Qatar",
+      "site_name": "QatarEnergy LNG S(1)",
+      "gem_terminal_id": "T100000130598",
+      "gem_terminal_name": "QatarEnergy LNG (S)",
+      "gem_unit_name": [
+        "S(1) T1-2"
+      ],
+      "matched_alias": "",
+      "section_type_report": "liquefaction",
+      "section_type_gem": "liquefaction",
+      "report_capacity_mtpa": 6.6,
+      "gem_capacity_mtpa": 6.6,
+      "capacity_delta_mtpa": 0.0,
+      "capacity_delta_pct": 0.0,
+      "owners_overlap": [
+        "qatarenergy"
+      ],
+      "owners_report_only": [],
+      "owners_gem_only": [
+        "exxonmobil",
+        "hanwha energy corp",
+        "hyundai corp",
+        "itochu corp",
+        "korea gas corp",
+        "samsung",
+        "sojitz corp",
+        "sumitomo corp"
+      ],
+      "report_train_count": 2,
+      "report_sites_merged": [],
+      "gem_operating_units": 3,
+      "gem_total_units": 3,
+      "unit_matches": [
+        {
+          "report_site": "QatarEnergy LNG S(1)",
+          "report_capacity_mtpa": 6.6,
+          "gem_unit_name": "S(1) T1-2",
+          "gem_unit_status": "operating",
+          "gem_unit_capacity_mtpa": 6.6,
+          "capacity_delta_pct": 0.0,
+          "agree": true
+        }
+      ],
+      "match_criteria": {
+        "designator": [
+          "s1"
+        ],
+        "matched_unit": "S(1) T1-2"
+      },
+      "disagreements": [
+        "owners in GEM not in report: ['exxonmobil', 'hanwha energy corp', 'hyundai corp', 'itochu corp', 'korea gas corp', 'samsung', 'sojitz corp', 'sumitomo corp']"
+      ]
+    },
+    {
+      "match_type": "unit_designator",
+      "confidence": "high",
+      "match_granularity": "unit",
+      "country": "Qatar",
+      "site_name": "QatarEnergy LNG S(2)",
+      "gem_terminal_id": "T100000130598",
+      "gem_terminal_name": "QatarEnergy LNG (S)",
+      "gem_unit_name": [
+        "S(2) T3-5"
+      ],
+      "matched_alias": "",
+      "section_type_report": "liquefaction",
+      "section_type_gem": "liquefaction",
+      "report_capacity_mtpa": 14.1,
+      "gem_capacity_mtpa": 14.1,
+      "capacity_delta_mtpa": 0.0,
+      "capacity_delta_pct": 0.0,
+      "owners_overlap": [
+        "exxonmobil",
+        "qatarenergy"
+      ],
+      "owners_report_only": [],
+      "owners_gem_only": [],
+      "report_train_count": 3,
+      "report_sites_merged": [],
+      "gem_operating_units": 3,
+      "gem_total_units": 3,
+      "unit_matches": [
+        {
+          "report_site": "QatarEnergy LNG S(2)",
+          "report_capacity_mtpa": 14.1,
+          "gem_unit_name": "S(2) T3-5",
+          "gem_unit_status": "operating",
+          "gem_unit_capacity_mtpa": 14.1,
+          "capacity_delta_pct": 0.0,
+          "agree": true
+        }
+      ],
+      "match_criteria": {
+        "designator": [
+          "s2"
+        ],
+        "matched_unit": "S(2) T3-5"
+      },
+      "disagreements": []
+    },
+    {
+      "match_type": "unit_designator",
+      "confidence": "high",
+      "match_granularity": "unit",
+      "country": "Qatar",
+      "site_name": "QatarEnergy LNG S(3)",
+      "gem_terminal_id": "T100000130598",
+      "gem_terminal_name": "QatarEnergy LNG (S)",
+      "gem_unit_name": [
+        "S(3) T6-7"
+      ],
+      "matched_alias": "",
+      "section_type_report": "liquefaction",
+      "section_type_gem": "liquefaction",
+      "report_capacity_mtpa": 15.6,
+      "gem_capacity_mtpa": 15.6,
+      "capacity_delta_mtpa": 0.0,
+      "capacity_delta_pct": 0.0,
+      "owners_overlap": [
+        "exxonmobil",
+        "qatarenergy"
+      ],
+      "owners_report_only": [],
+      "owners_gem_only": [],
+      "report_train_count": 2,
+      "report_sites_merged": [],
+      "gem_operating_units": 3,
+      "gem_total_units": 3,
+      "unit_matches": [
+        {
+          "report_site": "QatarEnergy LNG S(3)",
+          "report_capacity_mtpa": 15.6,
+          "gem_unit_name": "S(3) T6-7",
+          "gem_unit_status": "operating",
+          "gem_unit_capacity_mtpa": 15.6,
+          "capacity_delta_pct": 0.0,
+          "agree": true
+        }
+      ],
+      "match_criteria": {
+        "designator": [
+          "s3"
+        ],
+        "matched_unit": "S(3) T6-7"
+      },
+      "disagreements": []
     }
   ],
   "fuzzy_matches": [
@@ -4251,10 +4875,10 @@
       "matched_alias": "",
       "section_type_report": "liquefaction",
       "section_type_gem": "liquefaction",
-      "report_capacity_mtpa": 4.5,
+      "report_capacity_mtpa": 9.0,
       "gem_capacity_mtpa": 9.0,
-      "capacity_delta_mtpa": -4.5,
-      "capacity_delta_pct": 50.0,
+      "capacity_delta_mtpa": 0.0,
+      "capacity_delta_pct": 0.0,
       "owners_overlap": [
         "conocophillips"
       ],
@@ -4262,8 +4886,11 @@
         "origin energy",
         "sinopec"
       ],
-      "owners_gem_only": [],
-      "report_train_count": 1,
+      "owners_gem_only": [
+        "china petrochemical corp",
+        "origin energy ltd"
+      ],
+      "report_train_count": 2,
       "report_sites_merged": [],
       "gem_operating_units": 2,
       "gem_total_units": 2,
@@ -4282,51 +4909,45 @@
         ]
       },
       "disagreements": [
-        "capacity differs by 50.0% (report=4.50, gem=9.00)",
-        "owners in report not in GEM: ['origin energy', 'sinopec']"
+        "owners in report not in GEM: ['origin energy', 'sinopec']",
+        "owners in GEM not in report: ['china petrochemical corp', 'origin energy ltd']"
       ],
       "needs_review": true
     },
     {
       "match_type": "fuzzy",
       "confidence": "medium",
-      "match_granularity": "unit",
+      "match_granularity": "project",
       "country": "Australia",
-      "site_name": "APLNG T2 Darwin LNG (new",
+      "site_name": "Darwin LNG (new supply source Barossa project)",
       "gem_terminal_id": "T100000130331",
       "gem_terminal_name": "Darwin LNG Terminal",
       "gem_unit_name": [],
       "matched_alias": "",
       "section_type_report": "liquefaction",
       "section_type_gem": "liquefaction",
-      "report_capacity_mtpa": 4.5,
+      "report_capacity_mtpa": 3.7,
       "gem_capacity_mtpa": 0.0,
-      "capacity_delta_mtpa": 4.5,
+      "capacity_delta_mtpa": 3.7,
       "capacity_delta_pct": null,
       "owners_overlap": [],
       "owners_report_only": [
-        "conocophillips",
-        "origin energy",
-        "sinopec"
+        "barossa jv : santos",
+        "sk e&s"
       ],
       "owners_gem_only": [
+        "eni",
+        "inpex",
+        "jera",
+        "santos ltd",
+        "sk e&s co ltd",
         "tokyo-gas"
       ],
       "report_train_count": 1,
       "report_sites_merged": [],
       "gem_operating_units": 0,
       "gem_total_units": 2,
-      "unit_matches": [
-        {
-          "report_site": "APLNG T2 Darwin LNG (new",
-          "report_capacity_mtpa": 4.5,
-          "gem_unit_name": "T2",
-          "gem_unit_status": "proposed",
-          "gem_unit_capacity_mtpa": 6.0,
-          "capacity_delta_pct": 25.0,
-          "agree": false
-        }
-      ],
+      "unit_matches": [],
       "match_criteria": {
         "substring": true,
         "token_overlap": true,
@@ -4341,9 +4962,9 @@
         ]
       },
       "disagreements": [
-        "capacity differs by n/a (report=4.50, gem=0.00)",
-        "owners in report not in GEM: ['conocophillips', 'origin energy', 'sinopec']",
-        "owners in GEM not in report: ['tokyo-gas']"
+        "capacity differs by n/a (report=3.70, gem=0.00)",
+        "owners in report not in GEM: ['barossa jv : santos', 'sk e&s']",
+        "owners in GEM not in report: ['eni', 'inpex', 'jera', 'santos ltd', 'sk e&s co ltd', 'tokyo-gas']"
       ],
       "needs_review": true
     },
@@ -4369,17 +4990,21 @@
       "capacity_delta_mtpa": 0.0,
       "capacity_delta_pct": 0.0,
       "owners_overlap": [
-        "chevron"
+        "bp",
+        "chevron",
+        "shell"
       ],
       "owners_report_only": [
-        "bp",
         "japan australia lng",
         "jv between mitsubishi",
         "jv between mitsubishi and mitsui)",
-        "shell",
         "woodside"
       ],
-      "owners_gem_only": [],
+      "owners_gem_only": [
+        "bhp group ltd",
+        "japan australia lng pty ltd",
+        "woodside energy group ltd"
+      ],
       "report_train_count": 4,
       "report_sites_merged": [],
       "gem_operating_units": 4,
@@ -4398,7 +5023,8 @@
         ]
       },
       "disagreements": [
-        "owners in report not in GEM: ['bp', 'japan australia lng', 'jv between mitsubishi', 'jv between mitsubishi and mitsui)', 'shell', 'woodside']"
+        "owners in report not in GEM: ['japan australia lng', 'jv between mitsubishi', 'jv between mitsubishi and mitsui)', 'woodside']",
+        "owners in GEM not in report: ['bhp group ltd', 'japan australia lng pty ltd', 'woodside energy group ltd']"
       ],
       "needs_review": true
     },
@@ -4427,8 +5053,11 @@
         "tokyo-gas"
       ],
       "owners_gem_only": [
-        "woodside burrup train 2 a pty ltd [51%]; global infrastructure partners lp",
-        "woodside energy group ltd [90%]; kansai electric power [5%]; midocean energy llc"
+        "global infrastructure partners lp",
+        "kansai electric power",
+        "midocean energy llc",
+        "woodside burrup train 2 a pty ltd",
+        "woodside energy group ltd"
       ],
       "report_train_count": 1,
       "report_sites_merged": [],
@@ -4449,7 +5078,7 @@
       },
       "disagreements": [
         "owners in report not in GEM: ['and mitsui) woodside', 'kansai electric', 'tokyo-gas']",
-        "owners in GEM not in report: ['woodside burrup train 2 a pty ltd [51%]; global infrastructure partners lp', 'woodside energy group ltd [90%]; kansai electric power [5%]; midocean energy llc']"
+        "owners in GEM not in report: ['global infrastructure partners lp', 'kansai electric power', 'midocean energy llc', 'woodside burrup train 2 a pty ltd', 'woodside energy group ltd']"
       ],
       "needs_review": true
     },
@@ -4481,7 +5110,9 @@
         "tokyo-gas",
         "woodside"
       ],
-      "owners_gem_only": [],
+      "owners_gem_only": [
+        "midocean energy llc"
+      ],
       "report_train_count": 2,
       "report_sites_merged": [],
       "gem_operating_units": 2,
@@ -4502,7 +5133,8 @@
       },
       "disagreements": [
         "capacity differs by 1.2% (report=8.60, gem=8.50)",
-        "owners in report not in GEM: ['kufpec', 'tokyo-gas', 'woodside']"
+        "owners in report not in GEM: ['kufpec', 'tokyo-gas', 'woodside']",
+        "owners in GEM not in report: ['midocean energy llc']"
       ],
       "needs_review": true
     },
@@ -4996,7 +5628,7 @@
         "guangzhou development group"
       ],
       "owners_gem_only": [
-        "guangdong"
+        "guangdong petrochemical storage & transportation ltd"
       ],
       "report_train_count": 1,
       "report_sites_merged": [],
@@ -5023,7 +5655,7 @@
       "disagreements": [
         "capacity differs by 10.0% (report=1.10, gem=1.00)",
         "owners in report not in GEM: ['guangzhou development group']",
-        "owners in GEM not in report: ['guangdong']"
+        "owners in GEM not in report: ['guangdong petrochemical storage & transportation ltd']"
       ],
       "needs_review": true
     },
@@ -5535,43 +6167,7 @@
         "owners in report not in GEM: ['shanghai lng (cnooc', 'shenergy group ltd']",
         "owners in GEM not in report: ['shanghai lng co ltd', 'shenergy yangshan lng co ltd']"
       ],
-      "needs_review": true,
-      "route_to_action": true,
-      "analyst_note": "GIIGNL operating regas table (p.56) lists two Yangshan rows \u2014 'Yangshan, Shanghai' 6.0 MTPA (2009) + 'Yangshan, Shanghai Expansion' 6.0 MTPA (2025) \u2014 folded here to 12.0. The 6.0 on the 2025 'Expansion' row is the new Stage-1 jetty's DESIGN THROUGHPUT (\u8bbe\u8ba1\u5e74\u541e\u5410\u91cf 600\u4e07\u5428/yr \u2248 6 Mt receiving), NOT regasification sendout. Only the expansion's first phase is operating: the 150,000-t berth + 4\u00d7220,000 cbm tanks were commissioned 11 Dec 2025, adding +3 MTPA regas (GEM 'Phase II stage 1', operating, 3.0). The remaining regas (Phase II Stage 2 \u21922027; Stage 3 \u21922030, +3) is still proposed. So GEM operating regas = 6.0 is correct (Phase 1 3.0 + Phase II stage 1 3.0; Phase I Expansion is storage/gasification, no separate mtpa), and GEM project total import capacity = 9.0 (TotImportLNGTerminalCapacityinMtpa). The 12-vs-6 delta is a metric/phasing mismatch (GIIGNL = jetty receiving/design throughput + full-program nameplate; GEM = operating regas sendout), NOT a sendout conflict. Owners reconcile (Shanghai LNG = CNOOC 45% / Shenergy Group 55% JV; Shenergy Yangshan LNG = the Phase II JV). Route to Update; do NOT auto-apply 12 (SOP \u00a73.8, \u00a75.6). Verified 2026-05-28.",
-      "capacity_metric": "report_capacity_mtpa = GIIGNL receiving/design throughput (new jetty 600\u4e07\u5428/yr) + full-program nameplate; gem_capacity_mtpa = operating regasification sendout. Different metrics \u2014 not directly comparable; the surfaced 100% delta is expected, not a real conflict.",
-      "verified_date": "2026-05-28",
-      "verified_sources": [
-        {
-          "url": "https://www.enerdata.net/publications/daily-energy-news/china-launches-expansion-project-yangshan-lng-terminal.html",
-          "note": "6\u219212 MTPA doubling; CNY17bn / US$2.4bn expansion",
-          "url_verifier": "PASS 2026-05-28"
-        },
-        {
-          "url": "https://www.sh.msa.gov.cn/mtbd/105974.jhtml",
-          "note": "\u65b0\u6c11\u665a\u62a5/\u4e0a\u6d77\u6d77\u4e8b\u5c40: 11 Dec 2025 first 150,000-t berth commissioned; new jetty \u8bbe\u8ba1\u5e74\u541e\u5410\u91cf 600\u4e07\u5428",
-          "url_verifier": "PASS 2026-05-28"
-        },
-        {
-          "url": "https://gas.in-en.com/html/gas-3009431.shtml",
-          "note": "\u56fd\u9645\u71c3\u6c14\u7f51: existing ~40\u4ebf m\u00b3/y; expansion 600\u4e07\u5428 jetty, 13.2\u4ebf m\u00b3 storage, 210\u4e07 m\u00b3/h supply",
-          "url_verifier": "PASS 2026-05-28"
-        },
-        {
-          "url": "https://finance.sina.com.cn/jjxw/2025-12-12/doc-inhapfik7155988.shtml",
-          "note": "Stage 1 berth put into production 11 Dec 2025 (\u7533\u6d77\u8f6e)",
-          "url_verifier": "PASS 2026-05-28"
-        },
-        {
-          "url": "https://www.sse.net.cn/cninfo/HotInfo/202501/t20250106_1399132.jsp",
-          "note": "2024 actual imports 385.3\u4e07\u5428 across 83 cargoes",
-          "url_verifier": "PASS 2026-05-28"
-        },
-        {
-          "url": "https://finance.sina.cn/futuremarket/qszx/2020-05-24/detail-iirczymk3327394.d.html",
-          "note": "Phase 1 design 300\u4e07\u5428/yr \u2248 3 Mt (user-supplied)",
-          "url_verifier": "PASS 2026-05-28"
-        }
-      ]
+      "needs_review": true
     },
     {
       "match_type": "fuzzy",
@@ -5589,19 +6185,22 @@
       "matched_alias": "",
       "section_type_report": "regasification",
       "section_type_gem": "regasification",
-      "report_capacity_mtpa": 5.0,
+      "report_capacity_mtpa": 8.5,
       "gem_capacity_mtpa": 8.5,
-      "capacity_delta_mtpa": -3.5,
-      "capacity_delta_pct": 41.2,
+      "capacity_delta_mtpa": 0.0,
+      "capacity_delta_pct": 0.0,
       "owners_overlap": [],
       "owners_report_only": [
         "enn group"
       ],
       "owners_gem_only": [
-        "enn"
+        "enn lng co ltd"
       ],
-      "report_train_count": 1,
-      "report_sites_merged": [],
+      "report_train_count": 2,
+      "report_sites_merged": [
+        "Zhoushan, Zhejiang",
+        "Zhoushan, Zhejiang expansion"
+      ],
       "gem_operating_units": 3,
       "gem_total_units": 3,
       "unit_matches": [],
@@ -5620,9 +6219,8 @@
         ]
       },
       "disagreements": [
-        "capacity differs by 41.2% (report=5.00, gem=8.50)",
         "owners in report not in GEM: ['enn group']",
-        "owners in GEM not in report: ['enn']"
+        "owners in GEM not in report: ['enn lng co ltd']"
       ],
       "needs_review": true
     },
@@ -5742,61 +6340,6 @@
         "owners in GEM not in report: ['sociedad portuaria el cayao']",
         "GIIGNL FSRU 'H\u00f6egh Grace' (2.9) listed operating; not in GEM",
         "GIIGNL FSRU 'H\u00f6egh Grace' (0.7) listed operating; not in GEM",
-        "FSRU vessels could not be aligned to a GEM operating unit; verify vessel identities (compared at project total)"
-      ],
-      "needs_review": true
-    },
-    {
-      "match_type": "fuzzy",
-      "confidence": "medium",
-      "match_granularity": "project",
-      "country": "Croatia",
-      "site_name": "LNG Croatia (FSRU)",
-      "gem_terminal_id": "T100000130430",
-      "gem_terminal_name": "Krk FSRU",
-      "gem_unit_name": [
-        "2022 Capacity Expansion"
-      ],
-      "matched_alias": "",
-      "section_type_report": "regasification",
-      "section_type_gem": "regasification",
-      "report_capacity_mtpa": 4.4,
-      "gem_capacity_mtpa": 2.13,
-      "capacity_delta_mtpa": 2.27,
-      "capacity_delta_pct": 106.6,
-      "owners_overlap": [],
-      "owners_report_only": [
-        "plinacro"
-      ],
-      "owners_gem_only": [
-        "hep grupa [85%]; plinacro doo",
-        "lng croatia llc"
-      ],
-      "report_train_count": 2,
-      "report_sites_merged": [],
-      "gem_operating_units": 2,
-      "gem_total_units": 4,
-      "unit_matches": [],
-      "match_criteria": {
-        "substring": true,
-        "token_overlap": true,
-        "owner_overlap": false,
-        "shared_token_count": 1,
-        "shared_tokens": [
-          "croatia"
-        ],
-        "matched_against_names": [
-          "croatia",
-          "hrvatska",
-          "krk"
-        ]
-      },
-      "disagreements": [
-        "capacity differs by 106.6% (report=4.40, gem=2.13)",
-        "owners in report not in GEM: ['plinacro']",
-        "owners in GEM not in report: ['hep grupa [85%]; plinacro doo', 'lng croatia llc']",
-        "GIIGNL FSRU 'LNG Croatia' (2.8) listed operating; not in GEM",
-        "GIIGNL FSRU 'LNG Croatia' (1.6) listed operating; not in GEM",
         "FSRU vessels could not be aligned to a GEM operating unit; verify vessel identities (compared at project total)"
       ],
       "needs_review": true
@@ -6021,6 +6564,52 @@
       "match_type": "fuzzy",
       "confidence": "medium",
       "match_granularity": "project",
+      "country": "India",
+      "site_name": "Chhara LNG",
+      "gem_terminal_id": "T100000130800",
+      "gem_terminal_name": "Chhara LNG Terminal",
+      "gem_unit_name": [],
+      "matched_alias": "",
+      "section_type_report": "regasification",
+      "section_type_gem": "regasification",
+      "report_capacity_mtpa": 5.0,
+      "gem_capacity_mtpa": 5.0,
+      "capacity_delta_mtpa": 0.0,
+      "capacity_delta_pct": 0.0,
+      "owners_overlap": [],
+      "owners_report_only": [
+        "electric 30%) hpcl lng limited"
+      ],
+      "owners_gem_only": [
+        "hpcl shapoorji energy pvt ltd"
+      ],
+      "report_train_count": 1,
+      "report_sites_merged": [],
+      "gem_operating_units": 1,
+      "gem_total_units": 1,
+      "unit_matches": [],
+      "match_criteria": {
+        "substring": true,
+        "token_overlap": true,
+        "owner_overlap": false,
+        "shared_token_count": 1,
+        "shared_tokens": [
+          "chhara"
+        ],
+        "matched_against_names": [
+          "chhara"
+        ]
+      },
+      "disagreements": [
+        "owners in report not in GEM: ['electric 30%) hpcl lng limited']",
+        "owners in GEM not in report: ['hpcl shapoorji energy pvt ltd']"
+      ],
+      "needs_review": true
+    },
+    {
+      "match_type": "fuzzy",
+      "confidence": "medium",
+      "match_granularity": "project",
       "country": "Indonesia",
       "site_name": "Arun Regas",
       "gem_terminal_id": "T100000130275",
@@ -6071,7 +6660,7 @@
       "confidence": "medium",
       "match_granularity": "unit",
       "country": "Indonesia",
-      "site_name": "Bontang Train H",
+      "site_name": "Bontang Train E",
       "gem_terminal_id": "T100000130278",
       "gem_terminal_name": "Bontang LNG Terminal",
       "gem_unit_name": [
@@ -6096,12 +6685,12 @@
       "gem_total_units": 9,
       "unit_matches": [
         {
-          "report_site": "Bontang Train H",
+          "report_site": "Bontang Train E",
           "report_capacity_mtpa": 2.9,
-          "gem_unit_name": "H",
-          "gem_unit_status": "operating",
-          "gem_unit_capacity_mtpa": 2.95,
-          "capacity_delta_pct": 1.7,
+          "gem_unit_name": "E",
+          "gem_unit_status": "idled",
+          "gem_unit_capacity_mtpa": 2.8,
+          "capacity_delta_pct": 3.6,
           "agree": false
         }
       ],
@@ -6326,17 +6915,17 @@
       "confidence": "medium",
       "match_granularity": "project",
       "country": "Italy",
-      "site_name": "Rovigo (Gravity-Based Structure) Rovigo",
+      "site_name": "Rovigo (Gravity-Based Structure)",
       "gem_terminal_id": "T100000130466",
       "gem_terminal_name": "Adriatic LNG Terminal",
       "gem_unit_name": [],
       "matched_alias": "",
       "section_type_report": "regasification",
       "section_type_gem": "regasification",
-      "report_capacity_mtpa": 7.0,
+      "report_capacity_mtpa": 7.7,
       "gem_capacity_mtpa": 7.06,
-      "capacity_delta_mtpa": -0.06,
-      "capacity_delta_pct": 0.8,
+      "capacity_delta_mtpa": 0.64,
+      "capacity_delta_pct": 9.1,
       "owners_overlap": [],
       "owners_report_only": [
         "adriatic lng (vtti",
@@ -6345,8 +6934,11 @@
       "owners_gem_only": [
         "adriatic lng srl"
       ],
-      "report_train_count": 1,
-      "report_sites_merged": [],
+      "report_train_count": 2,
+      "report_sites_merged": [
+        "Rovigo (Gravity-Based Structure)",
+        "Rovigo (Gravity-Based Structure) expansion"
+      ],
       "gem_operating_units": 1,
       "gem_total_units": 2,
       "unit_matches": [],
@@ -6366,7 +6958,7 @@
         ]
       },
       "disagreements": [
-        "capacity differs by 0.8% (report=7.00, gem=7.06)",
+        "capacity differs by 9.1% (report=7.70, gem=7.06)",
         "owners in report not in GEM: ['adriatic lng (vtti', 'snam']",
         "owners in GEM not in report: ['adriatic lng srl']"
       ],
@@ -6538,7 +7130,8 @@
         "eneos corporation 35%) japex/fukushima gas"
       ],
       "owners_gem_only": [
-        "shizuoka gas co ltd [65%]; eneos corp"
+        "eneos corp",
+        "shizuoka gas co ltd"
       ],
       "report_train_count": 1,
       "report_sites_merged": [],
@@ -6559,7 +7152,7 @@
       },
       "disagreements": [
         "owners in report not in GEM: ['6', 'eneos corporation 35%) japex/fukushima gas']",
-        "owners in GEM not in report: ['shizuoka gas co ltd [65%]; eneos corp']"
+        "owners in GEM not in report: ['eneos corp', 'shizuoka gas co ltd']"
       ],
       "needs_review": true
     },
@@ -6613,56 +7206,6 @@
       "match_type": "fuzzy",
       "confidence": "medium",
       "match_granularity": "project",
-      "country": "Kuwait",
-      "site_name": "Al Zour Dakar",
-      "gem_terminal_id": "T100000130671",
-      "gem_terminal_name": "Al Zour LNG Terminal",
-      "gem_unit_name": [
-        "Import Terminal"
-      ],
-      "matched_alias": "",
-      "section_type_report": "regasification",
-      "section_type_gem": "regasification",
-      "report_capacity_mtpa": 24.0,
-      "gem_capacity_mtpa": 22.0,
-      "capacity_delta_mtpa": 2.0,
-      "capacity_delta_pct": 9.1,
-      "owners_overlap": [],
-      "owners_report_only": [
-        "karadeniz",
-        "mol"
-      ],
-      "owners_gem_only": [
-        "kuwait national petroleum co"
-      ],
-      "report_train_count": 1,
-      "report_sites_merged": [],
-      "gem_operating_units": 1,
-      "gem_total_units": 1,
-      "unit_matches": [],
-      "match_criteria": {
-        "substring": true,
-        "token_overlap": true,
-        "owner_overlap": false,
-        "shared_token_count": 1,
-        "shared_tokens": [
-          "zour"
-        ],
-        "matched_against_names": [
-          "al zour"
-        ]
-      },
-      "disagreements": [
-        "capacity differs by 9.1% (report=24.00, gem=22.00)",
-        "owners in report not in GEM: ['karadeniz', 'mol']",
-        "owners in GEM not in report: ['kuwait national petroleum co']"
-      ],
-      "needs_review": true
-    },
-    {
-      "match_type": "fuzzy",
-      "confidence": "medium",
-      "match_granularity": "project",
       "country": "Malaysia",
       "site_name": "Pengerang",
       "gem_terminal_id": "T100000130291",
@@ -6680,7 +7223,9 @@
         "group and johor state"
       ],
       "owners_gem_only": [
-        "petroliam nasional bhd [65%]; dialog group bhd [25%]; government of johor"
+        "dialog group bhd",
+        "government of johor",
+        "petroliam nasional bhd"
       ],
       "report_train_count": 1,
       "report_sites_merged": [],
@@ -6701,7 +7246,7 @@
       },
       "disagreements": [
         "owners in report not in GEM: ['group and johor state']",
-        "owners in GEM not in report: ['petroliam nasional bhd [65%]; dialog group bhd [25%]; government of johor']"
+        "owners in GEM not in report: ['dialog group bhd', 'government of johor', 'petroliam nasional bhd']"
       ],
       "needs_review": true
     },
@@ -6873,7 +7418,10 @@
         "kogas"
       ],
       "owners_report_only": [],
-      "owners_gem_only": [],
+      "owners_gem_only": [
+        "mitsui group",
+        "samsung"
+      ],
       "report_train_count": 1,
       "report_sites_merged": [],
       "gem_operating_units": 1,
@@ -6893,7 +7441,9 @@
           "terminal de gnl de manzanillo (mexico)"
         ]
       },
-      "disagreements": [],
+      "disagreements": [
+        "owners in GEM not in report: ['mitsui group', 'samsung']"
+      ],
       "needs_review": true
     },
     {
@@ -7007,24 +7557,32 @@
       "matched_alias": "",
       "section_type_report": "liquefaction",
       "section_type_gem": "liquefaction",
-      "report_capacity_mtpa": 3.9,
+      "report_capacity_mtpa": 7.8,
       "gem_capacity_mtpa": 11.4,
-      "capacity_delta_mtpa": -7.5,
-      "capacity_delta_pct": 65.8,
-      "owners_overlap": [],
-      "owners_report_only": [
+      "capacity_delta_mtpa": -3.6,
+      "capacity_delta_pct": 31.6,
+      "owners_overlap": [
         "government of oman",
-        "mitsubishi",
-        "mitsui",
+        "korea lng",
         "pttep",
-        "shell"
+        "shell",
+        "totalenergies"
+      ],
+      "owners_report_only": [
+        "itochu",
+        "mitsubishi",
+        "mitsui"
       ],
       "owners_gem_only": [
+        "itochu corp",
+        "mitsubishi corp",
+        "mitsui group",
+        "naturgy",
+        "oman lng llc",
         "osaka-gas",
-        "totalenergies",
         "unknown"
       ],
-      "report_train_count": 1,
+      "report_train_count": 2,
       "report_sites_merged": [],
       "gem_operating_units": 4,
       "gem_total_units": 5,
@@ -7032,7 +7590,7 @@
       "match_criteria": {
         "substring": true,
         "token_overlap": true,
-        "owner_overlap": false,
+        "owner_overlap": true,
         "shared_token_count": 1,
         "shared_tokens": [
           "oman"
@@ -7044,9 +7602,9 @@
         ]
       },
       "disagreements": [
-        "capacity differs by 65.8% (report=3.90, gem=11.40)",
-        "owners in report not in GEM: ['government of oman', 'mitsubishi', 'mitsui', 'pttep', 'shell']",
-        "owners in GEM not in report: ['osaka-gas', 'totalenergies', 'unknown']"
+        "capacity differs by 31.6% (report=7.80, gem=11.40)",
+        "owners in report not in GEM: ['itochu', 'mitsubishi', 'mitsui']",
+        "owners in GEM not in report: ['itochu corp', 'mitsubishi corp', 'mitsui group', 'naturgy', 'oman lng llc', 'osaka-gas', 'unknown']"
       ],
       "needs_review": true
     },
@@ -7075,7 +7633,11 @@
         "midocean",
         "sk innovation"
       ],
-      "owners_gem_only": [],
+      "owners_gem_only": [
+        "hunt oil company",
+        "marubeni corp",
+        "midocean energy llc"
+      ],
       "report_train_count": 1,
       "report_sites_merged": [],
       "gem_operating_units": 1,
@@ -7097,7 +7659,8 @@
       },
       "disagreements": [
         "capacity differs by 1.1% (report=4.50, gem=4.45)",
-        "owners in report not in GEM: ['hunt oil', 'marubeni', 'midocean', 'sk innovation']"
+        "owners in report not in GEM: ['hunt oil', 'marubeni', 'midocean', 'sk innovation']",
+        "owners in GEM not in report: ['hunt oil company', 'marubeni corp', 'midocean energy llc']"
       ],
       "needs_review": true
     },
@@ -7151,114 +7714,6 @@
         "capacity differs by 40.0% (report=3.00, gem=5.00)",
         "owners in report not in GEM: ['charterer: ag&p (atlantic', 'gulf & pacific)']",
         "owners in GEM not in report: ['ag&p terminals & logistics pte ltd']"
-      ],
-      "needs_review": true
-    },
-    {
-      "match_type": "fuzzy",
-      "confidence": "medium",
-      "match_granularity": "project",
-      "country": "Qatar",
-      "site_name": "QatarEnergy LNG S(1)",
-      "gem_terminal_id": "T100000130594",
-      "gem_terminal_name": "QatarEnergy LNG (N)",
-      "gem_unit_name": [
-        "N(1) T1-3",
-        "N(2) T4-5",
-        "N(3) T6",
-        "N(4) T7"
-      ],
-      "matched_alias": "",
-      "section_type_report": "liquefaction",
-      "section_type_gem": "liquefaction",
-      "report_capacity_mtpa": 6.6,
-      "gem_capacity_mtpa": 40.8,
-      "capacity_delta_mtpa": -34.2,
-      "capacity_delta_pct": 83.8,
-      "owners_overlap": [
-        "qatarenergy"
-      ],
-      "owners_report_only": [],
-      "owners_gem_only": [
-        "conocophillips",
-        "n",
-        "totalenergies"
-      ],
-      "report_train_count": 2,
-      "report_sites_merged": [],
-      "gem_operating_units": 4,
-      "gem_total_units": 4,
-      "unit_matches": [],
-      "match_criteria": {
-        "substring": false,
-        "token_overlap": true,
-        "owner_overlap": true,
-        "shared_token_count": 1,
-        "shared_tokens": [
-          "qatarenergy"
-        ],
-        "matched_against_names": [
-          "qatarenergy lng (n)",
-          "qatargas"
-        ]
-      },
-      "disagreements": [
-        "capacity differs by 83.8% (report=6.60, gem=40.80)",
-        "owners in GEM not in report: ['conocophillips', 'n', 'totalenergies']"
-      ],
-      "needs_review": true
-    },
-    {
-      "match_type": "fuzzy",
-      "confidence": "medium",
-      "match_granularity": "project",
-      "country": "Qatar",
-      "site_name": "QatarEnergy LNG S(2\u200b)",
-      "gem_terminal_id": "T100000130598",
-      "gem_terminal_name": "QatarEnergy LNG (S)",
-      "gem_unit_name": [
-        "S(1) T1-2",
-        "S(2) T3-5",
-        "S(3) T6-7"
-      ],
-      "matched_alias": "",
-      "section_type_report": "liquefaction",
-      "section_type_gem": "liquefaction",
-      "report_capacity_mtpa": 14.1,
-      "gem_capacity_mtpa": 36.3,
-      "capacity_delta_mtpa": -22.2,
-      "capacity_delta_pct": 61.2,
-      "owners_overlap": [
-        "exxonmobil"
-      ],
-      "owners_report_only": [
-        "qatar energy"
-      ],
-      "owners_gem_only": [
-        "s"
-      ],
-      "report_train_count": 3,
-      "report_sites_merged": [],
-      "gem_operating_units": 3,
-      "gem_total_units": 3,
-      "unit_matches": [],
-      "match_criteria": {
-        "substring": false,
-        "token_overlap": true,
-        "owner_overlap": true,
-        "shared_token_count": 1,
-        "shared_tokens": [
-          "qatarenergy"
-        ],
-        "matched_against_names": [
-          "qatarenergy lng (s)",
-          "rasgas"
-        ]
-      },
-      "disagreements": [
-        "capacity differs by 61.2% (report=14.10, gem=36.30)",
-        "owners in report not in GEM: ['qatar energy']",
-        "owners in GEM not in report: ['s']"
       ],
       "needs_review": true
     },
@@ -7338,7 +7793,9 @@
       "owners_report_only": [
         "gazprombank"
       ],
-      "owners_gem_only": [],
+      "owners_gem_only": [
+        "gazprombank jsc"
+      ],
       "report_train_count": 1,
       "report_sites_merged": [],
       "gem_operating_units": 2,
@@ -7360,7 +7817,8 @@
       },
       "disagreements": [
         "capacity differs by 40.0% (report=0.90, gem=1.50)",
-        "owners in report not in GEM: ['gazprombank']"
+        "owners in report not in GEM: ['gazprombank']",
+        "owners in GEM not in report: ['gazprombank jsc']"
       ],
       "needs_review": true
     },
@@ -7418,6 +7876,55 @@
       "disagreements": [
         "owners in report not in GEM: ['(novatek', 'cnpc', 'silk road fund', 'silk road fund 9.9%) yamal lng', 'totalenergies', 'yamal lng (novatek']",
         "owners in GEM not in report: ['yamal lng']"
+      ],
+      "needs_review": true
+    },
+    {
+      "match_type": "fuzzy",
+      "confidence": "medium",
+      "match_granularity": "project",
+      "country": "Senegal",
+      "site_name": "Dakar",
+      "gem_terminal_id": "T100000131049",
+      "gem_terminal_name": "Karmol Dakar FSRU",
+      "gem_unit_name": [],
+      "matched_alias": "",
+      "section_type_report": "regasification",
+      "section_type_gem": "regasification",
+      "report_capacity_mtpa": 0.5,
+      "gem_capacity_mtpa": 0.0,
+      "capacity_delta_mtpa": 0.5,
+      "capacity_delta_pct": null,
+      "owners_overlap": [],
+      "owners_report_only": [
+        "excelerate",
+        "mol"
+      ],
+      "owners_gem_only": [
+        "karmol"
+      ],
+      "report_train_count": 1,
+      "report_sites_merged": [],
+      "gem_operating_units": 0,
+      "gem_total_units": 1,
+      "unit_matches": [],
+      "match_criteria": {
+        "substring": true,
+        "token_overlap": true,
+        "owner_overlap": false,
+        "shared_token_count": 1,
+        "shared_tokens": [
+          "dakar"
+        ],
+        "matched_against_names": [
+          "karmol dakar",
+          "senegal"
+        ]
+      },
+      "disagreements": [
+        "capacity differs by n/a (report=0.50, gem=0.00)",
+        "owners in report not in GEM: ['excelerate', 'mol']",
+        "owners in GEM not in report: ['karmol']"
       ],
       "needs_review": true
     },
@@ -7633,12 +8140,11 @@
       "capacity_delta_mtpa": 3.9,
       "capacity_delta_pct": 25.0,
       "owners_overlap": [
+        "exxonmobil",
+        "qatarenergy",
         "totalenergies"
       ],
-      "owners_report_only": [
-        "exxonmobil",
-        "qatarenergy"
-      ],
+      "owners_report_only": [],
       "owners_gem_only": [],
       "report_train_count": 2,
       "report_sites_merged": [
@@ -7672,8 +8178,7 @@
         ]
       },
       "disagreements": [
-        "capacity differs by 25.0% (report=19.50, gem=15.60)",
-        "owners in report not in GEM: ['exxonmobil', 'qatarenergy']"
+        "capacity differs by 25.0% (report=19.50, gem=15.60)"
       ],
       "needs_review": true
     },
@@ -7849,7 +8354,9 @@
         "aes"
       ],
       "owners_gem_only": [
-        "kinder morgan inc [50%]; general electric co [40%]; aes corp"
+        "aes corp",
+        "general electric co",
+        "kinder morgan inc"
       ],
       "report_train_count": 1,
       "report_sites_merged": [],
@@ -7870,7 +8377,7 @@
       },
       "disagreements": [
         "owners in report not in GEM: ['aes']",
-        "owners in GEM not in report: ['kinder morgan inc [50%]; general electric co [40%]; aes corp']"
+        "owners in GEM not in report: ['aes corp', 'general electric co', 'kinder morgan inc']"
       ],
       "needs_review": true
     },
@@ -7969,37 +8476,12 @@
   "report_only": [
     {
       "type": "report_only",
-      "country": "Australia",
-      "site_name": "supply source Barossa project)",
-      "section_type": "liquefaction",
-      "report_capacity_mtpa": 3.7,
-      "owners_in_report": [
-        "barossa jv : santos",
-        "sk e&s"
-      ],
-      "trains_count": 1,
-      "report_sites_merged": []
-    },
-    {
-      "type": "report_only",
       "country": "Bangladesh",
       "site_name": "Dongguan, Guangdong",
       "section_type": "regasification",
       "report_capacity_mtpa": 1.5,
       "owners_in_report": [
         "jovo group pipechina"
-      ],
-      "trains_count": 1,
-      "report_sites_merged": []
-    },
-    {
-      "type": "report_only",
-      "country": "Belgium",
-      "site_name": "Zeebrugge Expansion Krk",
-      "section_type": "regasification",
-      "report_capacity_mtpa": 1.0,
-      "owners_in_report": [
-        "fluxys"
       ],
       "trains_count": 1,
       "report_sites_merged": []
@@ -8058,42 +8540,6 @@
     {
       "type": "report_only",
       "country": "Canada",
-      "site_name": "Bontang Train E",
-      "section_type": "liquefaction",
-      "report_capacity_mtpa": 2.9,
-      "owners_in_report": [
-        "government of indonesia"
-      ],
-      "trains_count": 1,
-      "report_sites_merged": []
-    },
-    {
-      "type": "report_only",
-      "country": "Canada",
-      "site_name": "Bontang Train F",
-      "section_type": "liquefaction",
-      "report_capacity_mtpa": 2.9,
-      "owners_in_report": [
-        "government of indonesia"
-      ],
-      "trains_count": 1,
-      "report_sites_merged": []
-    },
-    {
-      "type": "report_only",
-      "country": "Canada",
-      "site_name": "Bontang Train G",
-      "section_type": "liquefaction",
-      "report_capacity_mtpa": 2.9,
-      "owners_in_report": [
-        "government of indonesia"
-      ],
-      "trains_count": 1,
-      "report_sites_merged": []
-    },
-    {
-      "type": "report_only",
-      "country": "Canada",
       "site_name": "LNG Canada T2, BC",
       "section_type": "liquefaction",
       "report_capacity_mtpa": 7.0,
@@ -8130,18 +8576,6 @@
         "dalian",
         "huaying 50% pipechina",
         "sinopec"
-      ],
-      "trains_count": 1,
-      "report_sites_merged": []
-    },
-    {
-      "type": "report_only",
-      "country": "China",
-      "site_name": "expansion",
-      "section_type": "regasification",
-      "report_capacity_mtpa": 3.5,
-      "owners_in_report": [
-        "enn group"
       ],
       "trains_count": 1,
       "report_sites_merged": []
@@ -8233,7 +8667,7 @@
     {
       "type": "report_only",
       "country": "Congo",
-      "site_name": "Congo FLNG Tango",
+      "site_name": "Congo FLNG Tango (FLNG)",
       "section_type": "liquefaction",
       "report_capacity_mtpa": 0.6,
       "owners_in_report": [
@@ -8315,12 +8749,36 @@
     },
     {
       "type": "report_only",
-      "country": "Hong Kong",
-      "site_name": "Chhara LNG",
-      "section_type": "regasification",
-      "report_capacity_mtpa": 5.0,
+      "country": "Indonesia",
+      "site_name": "Bontang Train F",
+      "section_type": "liquefaction",
+      "report_capacity_mtpa": 2.9,
       "owners_in_report": [
-        "electric 30%) hpcl lng limited"
+        "government of indonesia"
+      ],
+      "trains_count": 1,
+      "report_sites_merged": []
+    },
+    {
+      "type": "report_only",
+      "country": "Indonesia",
+      "site_name": "Bontang Train G",
+      "section_type": "liquefaction",
+      "report_capacity_mtpa": 2.9,
+      "owners_in_report": [
+        "government of indonesia"
+      ],
+      "trains_count": 1,
+      "report_sites_merged": []
+    },
+    {
+      "type": "report_only",
+      "country": "Indonesia",
+      "site_name": "Bontang Train H",
+      "section_type": "liquefaction",
+      "report_capacity_mtpa": 2.9,
+      "owners_in_report": [
+        "government of indonesia"
       ],
       "trains_count": 1,
       "report_sites_merged": []
@@ -8364,73 +8822,12 @@
     },
     {
       "type": "report_only",
-      "country": "Italy",
-      "site_name": "(Gravity-Based Structure) expansion",
-      "section_type": "regasification",
-      "report_capacity_mtpa": 0.7,
-      "owners_in_report": [
-        "adriatic lng (vtti",
-        "snam"
-      ],
-      "trains_count": 1,
-      "report_sites_merged": []
-    },
-    {
-      "type": "report_only",
-      "country": "Italy",
-      "site_name": "Italis LNG (FSRU)",
-      "section_type": "regasification",
-      "report_capacity_mtpa": 3.7,
-      "owners_in_report": [
-        "set"
-      ],
-      "trains_count": 1,
-      "report_sites_merged": []
-    },
-    {
-      "type": "report_only",
-      "country": "Italy",
-      "site_name": "Ravenna (FSRU)",
-      "section_type": "regasification",
-      "report_capacity_mtpa": 3.7,
-      "owners_in_report": [
-        "set"
-      ],
-      "trains_count": 1,
-      "report_sites_merged": []
-    },
-    {
-      "type": "report_only",
-      "country": "Jamaica",
-      "site_name": "H\u00f6egh Gallant (FSRU)",
-      "section_type": "regasification",
-      "report_capacity_mtpa": 2.8,
-      "owners_in_report": [
-        "excelerate"
-      ],
-      "trains_count": 1,
-      "report_sites_merged": []
-    },
-    {
-      "type": "report_only",
       "country": "Japan",
       "site_name": "Himeji LNG",
       "section_type": "regasification",
       "report_capacity_mtpa": 8.1,
       "owners_in_report": [
         "kansai electric"
-      ],
-      "trains_count": 1,
-      "report_sites_merged": []
-    },
-    {
-      "type": "report_only",
-      "country": "Japan",
-      "site_name": "Tenaga Empat (FSU) and Tenaga Satu (FSU)",
-      "section_type": "regasification",
-      "report_capacity_mtpa": 3.8,
-      "owners_in_report": [
-        "petronas"
       ],
       "trains_count": 1,
       "report_sites_merged": []
@@ -8498,6 +8895,18 @@
     },
     {
       "type": "report_only",
+      "country": "Malaysia",
+      "site_name": "Tenaga Empat",
+      "section_type": "regasification",
+      "report_capacity_mtpa": 3.8,
+      "owners_in_report": [
+        "petronas"
+      ],
+      "trains_count": 1,
+      "report_sites_merged": []
+    },
+    {
+      "type": "report_only",
       "country": "Myanmar",
       "site_name": "Thanlyin, Yangoon",
       "section_type": "regasification",
@@ -8552,32 +8961,6 @@
     },
     {
       "type": "report_only",
-      "country": "Oman",
-      "site_name": "QatarEnergy LNG N(1)",
-      "section_type": "liquefaction",
-      "report_capacity_mtpa": 9.6,
-      "owners_in_report": [
-        "qatar energy"
-      ],
-      "trains_count": 3,
-      "report_sites_merged": []
-    },
-    {
-      "type": "report_only",
-      "country": "Oman",
-      "site_name": "QatarEnergy LNG N(2)",
-      "section_type": "liquefaction",
-      "report_capacity_mtpa": 15.6,
-      "owners_in_report": [
-        "exxonmobil",
-        "qatar energy",
-        "totalenergies"
-      ],
-      "trains_count": 2,
-      "report_sites_merged": []
-    },
-    {
-      "type": "report_only",
       "country": "Puerto Rico",
       "site_name": "Pe\u00f1uelas",
       "section_type": "regasification",
@@ -8587,32 +8970,6 @@
         "mitsui",
         "naturgy",
         "oco partners"
-      ],
-      "trains_count": 1,
-      "report_sites_merged": []
-    },
-    {
-      "type": "report_only",
-      "country": "Qatar",
-      "site_name": "QatarEnergy LNG N(4)",
-      "section_type": "liquefaction",
-      "report_capacity_mtpa": 7.8,
-      "owners_in_report": [
-        "qatar energy",
-        "shell"
-      ],
-      "trains_count": 1,
-      "report_sites_merged": []
-    },
-    {
-      "type": "report_only",
-      "country": "Qatar",
-      "site_name": "QatarEnergy LNG S(3)",
-      "section_type": "liquefaction",
-      "report_capacity_mtpa": 7.8,
-      "owners_in_report": [
-        "exxonmobil",
-        "qatar energy"
       ],
       "trains_count": 1,
       "report_sites_merged": []
@@ -8692,18 +9049,6 @@
         "sakhalin energy llc (gazprom"
       ],
       "trains_count": 2,
-      "report_sites_merged": []
-    },
-    {
-      "type": "report_only",
-      "country": "Senegal",
-      "site_name": "LNGt Powership Africa (FSRU)",
-      "section_type": "regasification",
-      "report_capacity_mtpa": 0.5,
-      "owners_in_report": [
-        "excelerate"
-      ],
-      "trains_count": 1,
       "report_sites_merged": []
     },
     {
@@ -8810,7 +9155,7 @@
     {
       "type": "report_only",
       "country": "T\u00fcrkiye",
-      "site_name": "Saros (FSRU)",
+      "site_name": "Saros LNG",
       "section_type": "regasification",
       "report_capacity_mtpa": 5.7,
       "owners_in_report": [
@@ -8829,25 +9174,6 @@
         "corpus christi liquefaction (cheniere"
       ],
       "trains_count": 4,
-      "report_sites_merged": []
-    },
-    {
-      "type": "report_only",
-      "country": "USA",
-      "site_name": "Oman",
-      "section_type": "liquefaction",
-      "report_capacity_mtpa": 3.9,
-      "owners_in_report": [
-        "government of oman",
-        "itochu",
-        "korea lng",
-        "mitsubishi",
-        "mitsui",
-        "pttep",
-        "shell",
-        "totalenergies"
-      ],
-      "trains_count": 1,
       "report_sites_merged": []
     }
   ],
@@ -8884,7 +9210,9 @@
       "total_units": 1,
       "fsru": true,
       "owners": [
-        "bp"
+        "bp",
+        "prumo logistica sa",
+        "siemens"
       ],
       "note": "GEM has this as operating but the report doesn't list it; investigate whether report missed it (small/non-member/sanctioned) OR GEM has it wrong"
     },
@@ -9237,7 +9565,10 @@
       "total_units": 1,
       "fsru": false,
       "owners": [
-        "aes corp [80%]; administradora de fondos de inversi\u00f3n popular sa [10%]; grupo estrella holdings sa [5%]; grupo linda"
+        "administradora de fondos de inversi\u00f3n popular sa",
+        "aes corp",
+        "grupo estrella holdings sa",
+        "grupo linda"
       ],
       "note": "GEM has this as operating but the report doesn't list it; investigate whether report missed it (small/non-member/sanctioned) OR GEM has it wrong"
     },
@@ -9299,24 +9630,6 @@
     },
     {
       "type": "gem_only",
-      "country": "India",
-      "terminal_id": "T100000130800",
-      "terminal_name": "Chhara LNG Terminal",
-      "section_type": "regasification",
-      "gem_capacity_mtpa": 5.0,
-      "status_set": [
-        "operating"
-      ],
-      "operating_units": 1,
-      "total_units": 1,
-      "fsru": false,
-      "owners": [
-        "hpcl shapoorji energy pvt ltd"
-      ],
-      "note": "GEM has this as operating but the report doesn't list it; investigate whether report missed it (small/non-member/sanctioned) OR GEM has it wrong"
-    },
-    {
-      "type": "gem_only",
       "country": "Indonesia",
       "terminal_id": "T100000130280",
       "terminal_name": "Jawa Satu FSRU",
@@ -9348,61 +9661,6 @@
       "fsru": false,
       "owners": [
         "higas"
-      ],
-      "note": "GEM has this as operating but the report doesn't list it; investigate whether report missed it (small/non-member/sanctioned) OR GEM has it wrong"
-    },
-    {
-      "type": "gem_only",
-      "country": "Italy",
-      "terminal_id": "T100000130476",
-      "terminal_name": "Panigaglia LNG Terminal",
-      "section_type": "regasification",
-      "gem_capacity_mtpa": 2.5,
-      "status_set": [
-        "cancelled",
-        "operating"
-      ],
-      "operating_units": 1,
-      "total_units": 2,
-      "fsru": false,
-      "owners": [
-        "gnl italia spa"
-      ],
-      "note": "GEM has this as operating but the report doesn't list it; investigate whether report missed it (small/non-member/sanctioned) OR GEM has it wrong"
-    },
-    {
-      "type": "gem_only",
-      "country": "Italy",
-      "terminal_id": "T100000131096",
-      "terminal_name": "Piombino FSRU",
-      "section_type": "regasification",
-      "gem_capacity_mtpa": 3.68,
-      "status_set": [
-        "operating"
-      ],
-      "operating_units": 1,
-      "total_units": 1,
-      "fsru": true,
-      "owners": [
-        "fsru italia"
-      ],
-      "note": "GEM has this as operating but the report doesn't list it; investigate whether report missed it (small/non-member/sanctioned) OR GEM has it wrong"
-    },
-    {
-      "type": "gem_only",
-      "country": "Jamaica",
-      "terminal_id": "T100000130684",
-      "terminal_name": "Old Harbour FSRU",
-      "section_type": "regasification",
-      "gem_capacity_mtpa": 3.6,
-      "status_set": [
-        "operating"
-      ],
-      "operating_units": 1,
-      "total_units": 1,
-      "fsru": true,
-      "owners": [
-        "excelerate"
       ],
       "note": "GEM has this as operating but the report doesn't list it; investigate whether report missed it (small/non-member/sanctioned) OR GEM has it wrong"
     },
@@ -9637,7 +9895,9 @@
       "total_units": 3,
       "fsru": false,
       "owners": [
-        "petroliam nasional bhd [80%]; state of sarawak [10%]; mitsubishi corp"
+        "mitsubishi corp",
+        "petroliam nasional bhd",
+        "state of sarawak"
       ],
       "note": "GEM has this as operating but the report doesn't list it; investigate whether report missed it (small/non-member/sanctioned) OR GEM has it wrong"
     },
@@ -9655,7 +9915,10 @@
       "total_units": 1,
       "fsru": false,
       "owners": [
-        "ptt"
+        "eneos corp",
+        "petroliam nasional bhd",
+        "ptt",
+        "state of sarawak"
       ],
       "note": "GEM has this as operating but the report doesn't list it; investigate whether report missed it (small/non-member/sanctioned) OR GEM has it wrong"
     },
@@ -9691,7 +9954,9 @@
       "total_units": 1,
       "fsru": false,
       "owners": [
-        "petroliam nasional bhd [90%]; state of sarawak [5%]; mitsubishi corp"
+        "mitsubishi corp",
+        "petroliam nasional bhd",
+        "state of sarawak"
       ],
       "note": "GEM has this as operating but the report doesn't list it; investigate whether report missed it (small/non-member/sanctioned) OR GEM has it wrong"
     },
@@ -9709,7 +9974,10 @@
       "total_units": 1,
       "fsru": false,
       "owners": [
-        "ptt"
+        "diamond gas",
+        "petroliam nasional bhd",
+        "ptt",
+        "state of sarawak"
       ],
       "note": "GEM has this as operating but the report doesn't list it; investigate whether report missed it (small/non-member/sanctioned) OR GEM has it wrong"
     },
@@ -9728,7 +9996,10 @@
       "total_units": 2,
       "fsru": true,
       "owners": [
-        "kosmos"
+        "bp",
+        "kosmos",
+        "petrosen",
+        "smh"
       ],
       "note": "GEM has this as operating but the report doesn't list it; investigate whether report missed it (small/non-member/sanctioned) OR GEM has it wrong"
     },
@@ -9746,7 +10017,11 @@
       "total_units": 1,
       "fsru": false,
       "owners": [
-        "totalenergies"
+        "eni",
+        "equinor",
+        "petoro as",
+        "totalenergies",
+        "wintershall dea gmbh"
       ],
       "note": "GEM has this as operating but the report doesn't list it; investigate whether report missed it (small/non-member/sanctioned) OR GEM has it wrong"
     },
@@ -9764,6 +10039,8 @@
       "total_units": 2,
       "fsru": false,
       "owners": [
+        "equinor",
+        "molgas",
         "totalenergies"
       ],
       "note": "GEM has this as operating but the report doesn't list it; investigate whether report missed it (small/non-member/sanctioned) OR GEM has it wrong"
@@ -9800,6 +10077,8 @@
       "total_units": 1,
       "fsru": false,
       "owners": [
+        "equinor",
+        "molgas",
         "totalenergies"
       ],
       "note": "GEM has this as operating but the report doesn't list it; investigate whether report missed it (small/non-member/sanctioned) OR GEM has it wrong"
@@ -9837,6 +10116,9 @@
       "total_units": 1,
       "fsru": false,
       "owners": [
+        "ecoelectrica lp",
+        "engie",
+        "mitsui group",
         "naturgy"
       ],
       "note": "GEM has this as operating but the report doesn't list it; investigate whether report missed it (small/non-member/sanctioned) OR GEM has it wrong"
@@ -9855,7 +10137,8 @@
       "total_units": 1,
       "fsru": true,
       "owners": [
-        "eni"
+        "eni",
+        "vitol sa"
       ],
       "note": "GEM has this as operating but the report doesn't list it; investigate whether report missed it (small/non-member/sanctioned) OR GEM has it wrong"
     },
@@ -9892,7 +10175,9 @@
       "total_units": 1,
       "fsru": false,
       "owners": [
-        "imm investment corp [35.9%]; gs energy corp [50.1%]; kb asset management co ltd"
+        "gs energy corp",
+        "imm investment corp",
+        "kb asset management co ltd"
       ],
       "note": "GEM has this as operating but the report doesn't list it; investigate whether report missed it (small/non-member/sanctioned) OR GEM has it wrong"
     },
@@ -10055,7 +10340,8 @@
       "total_units": 1,
       "fsru": false,
       "owners": [
-        "basque energy board"
+        "basque energy board",
+        "enagas"
       ],
       "note": "GEM has this as operating but the report doesn't list it; investigate whether report missed it (small/non-member/sanctioned) OR GEM has it wrong"
     },
@@ -10166,7 +10452,11 @@
       "total_units": 5,
       "fsru": false,
       "owners": [
-        "ngc-trinidad"
+        "bg group ltd",
+        "bp",
+        "ngc-trinidad",
+        "repsol",
+        "shell"
       ],
       "note": "GEM has this as operating but the report doesn't list it; investigate whether report missed it (small/non-member/sanctioned) OR GEM has it wrong"
     },
@@ -10377,6 +10667,11 @@
       "start_year": "2006",
       "section_type": "liquefaction",
       "owners": [
+        "eni",
+        "inpex",
+        "jera",
+        "santos ltd",
+        "sk e&s co ltd",
         "tokyo-gas"
       ],
       "giignl_narrative_mention": "",
@@ -10392,10 +10687,15 @@
       "start_year": "2017",
       "section_type": "liquefaction",
       "owners": [
+        "eni",
+        "inpex",
+        "jera",
+        "santos ltd",
+        "sk e&s co ltd",
         "tokyo-gas"
       ],
       "giignl_narrative_mention": "",
-      "is_gem_only": false
+      "is_gem_only": true
     },
     {
       "country": "Australia",
@@ -10407,7 +10707,12 @@
       "start_year": "2019",
       "section_type": "liquefaction",
       "owners": [
-        "exxonmobil"
+        "chevron",
+        "exxonmobil",
+        "jera",
+        "midocean energy llc",
+        "osaka-gas",
+        "shell"
       ],
       "giignl_narrative_mention": "",
       "is_gem_only": true
@@ -10437,7 +10742,12 @@
       "start_year": "2025",
       "section_type": "liquefaction",
       "owners": [
-        "chevron"
+        "bhp group ltd",
+        "bp",
+        "chevron",
+        "japan australia lng pty ltd",
+        "shell",
+        "woodside energy group ltd"
       ],
       "giignl_narrative_mention": "",
       "is_gem_only": true
@@ -10452,7 +10762,8 @@
       "start_year": "2022",
       "section_type": "liquefaction",
       "owners": [
-        "woodside burrup train 2 a pty ltd [51%]; global infrastructure partners lp"
+        "global infrastructure partners lp",
+        "woodside burrup train 2 a pty ltd"
       ],
       "giignl_narrative_mention": "",
       "is_gem_only": true
@@ -10467,7 +10778,9 @@
       "start_year": "2013",
       "section_type": "liquefaction",
       "owners": [
-        "woodside energy group ltd [90%]; kansai electric power [5%]; midocean energy llc"
+        "kansai electric power",
+        "midocean energy llc",
+        "woodside energy group ltd"
       ],
       "giignl_narrative_mention": "",
       "is_gem_only": true
@@ -10482,7 +10795,8 @@
       "start_year": "2020",
       "section_type": "liquefaction",
       "owners": [
-        "engie"
+        "engie",
+        "soci\u00e9t\u00e9 nationale des hydrocarbures"
       ],
       "giignl_narrative_mention": "",
       "is_gem_only": true
@@ -10512,6 +10826,8 @@
       "start_year": "2017",
       "section_type": "regasification",
       "owners": [
+        "eig global energy partners [to be deleted]",
+        "enap [to be deleted]",
         "fluxys"
       ],
       "giignl_narrative_mention": "",
@@ -10557,7 +10873,7 @@
       "start_year": "2022",
       "section_type": "regasification",
       "owners": [
-        "guangdong"
+        "guangdong petrochemical storage & transportation ltd"
       ],
       "giignl_narrative_mention": "",
       "is_gem_only": true
@@ -10619,7 +10935,7 @@
       "owners": [
         "shenergy yangshan lng co ltd"
       ],
-      "giignl_narrative_mention": "GIIGNL 2026 China regas narrative describes the Shenergy Yangshan expansion program: first phase (4\u00d7220,000 cbm tanks + dedicated jetty + 70 km pipeline) completed Dec 2025, combined complex targeted to exceed 12 MTPA receiving capacity. Forward-references the expansion program this proposed stage belongs to, but does not separately date this 2027 sub-stage. Confirmed forward phase, no conflict (SOP \u00a75.7). Verified 2026-05-28.",
+      "giignl_narrative_mention": "",
       "is_gem_only": true
     },
     {
@@ -10634,7 +10950,7 @@
       "owners": [
         "shenergy yangshan lng co ltd"
       ],
-      "giignl_narrative_mention": "GIIGNL 2026 China regas narrative describes the Shenergy Yangshan expansion program: first phase (4\u00d7220,000 cbm tanks + dedicated jetty + 70 km pipeline) completed Dec 2025, combined complex targeted to exceed 12 MTPA receiving capacity. Forward-references the expansion program this proposed stage belongs to, but does not separately date this 2030 (+3 MTPA regas) sub-stage. Confirmed forward phase, no conflict (SOP \u00a75.7). Verified 2026-05-28.",
+      "giignl_narrative_mention": "",
       "is_gem_only": true
     },
     {
@@ -10863,36 +11179,6 @@
       "is_gem_only": true
     },
     {
-      "country": "Germany",
-      "gem_terminal_id": "T100000130460",
-      "gem_terminal_name": "Brunsb\u00fcttel FSRU",
-      "gem_unit_name": "",
-      "status": "construction",
-      "capacity_mtpa": 7.35,
-      "start_year": "2022",
-      "section_type": "regasification",
-      "owners": [
-        "oiltanking gmbh; vopak lng; gasunie deutschland gmbh & co kg"
-      ],
-      "giignl_narrative_mention": "",
-      "is_gem_only": true
-    },
-    {
-      "country": "Germany",
-      "gem_terminal_id": "T100000131097",
-      "gem_terminal_name": "Wilhelmshaven TES FSRU",
-      "gem_unit_name": "",
-      "status": "proposed",
-      "capacity_mtpa": 11.03,
-      "start_year": "2019",
-      "section_type": "regasification",
-      "owners": [
-        "tree energy solutions"
-      ],
-      "giignl_narrative_mention": "",
-      "is_gem_only": true
-    },
-    {
       "country": "India",
       "gem_terminal_id": "T100000130429",
       "gem_terminal_name": "Dabhol LNG Terminal",
@@ -10939,23 +11225,8 @@
     },
     {
       "country": "India",
-      "gem_terminal_id": "T100000130441",
-      "gem_terminal_name": "Hazira FSRU",
-      "gem_unit_name": "",
-      "status": "cancelled",
-      "capacity_mtpa": 5.0,
-      "start_year": "2022",
-      "section_type": "regasification",
-      "owners": [
-        "essar global holdings ltd"
-      ],
-      "giignl_narrative_mention": "",
-      "is_gem_only": true
-    },
-    {
-      "country": "India",
-      "gem_terminal_id": "T100000130441",
-      "gem_terminal_name": "Hazira FSRU",
+      "gem_terminal_id": "T100000130439",
+      "gem_terminal_name": "Hazira LNG Terminal",
       "gem_unit_name": "Expansion (Original Proposal)",
       "status": "cancelled",
       "capacity_mtpa": 5.0,
@@ -10969,8 +11240,8 @@
     },
     {
       "country": "India",
-      "gem_terminal_id": "T100000130441",
-      "gem_terminal_name": "Hazira FSRU",
+      "gem_terminal_id": "T100000130439",
+      "gem_terminal_name": "Hazira LNG Terminal",
       "gem_unit_name": "Expansion (Updated Proposal)",
       "status": "proposed",
       "capacity_mtpa": 19.92,
@@ -11055,7 +11326,7 @@
         "government of indonesia"
       ],
       "giignl_narrative_mention": "",
-      "is_gem_only": true
+      "is_gem_only": false
     },
     {
       "country": "Indonesia",
@@ -11098,6 +11369,21 @@
       "section_type": "regasification",
       "owners": [
         "adriatic lng srl"
+      ],
+      "giignl_narrative_mention": "",
+      "is_gem_only": true
+    },
+    {
+      "country": "Italy",
+      "gem_terminal_id": "T100000130476",
+      "gem_terminal_name": "Panigaglia LNG Terminal",
+      "gem_unit_name": "Expansion",
+      "status": "cancelled",
+      "capacity_mtpa": 3.5,
+      "start_year": "2015",
+      "section_type": "regasification",
+      "owners": [
+        "gnl italia spa"
       ],
       "giignl_narrative_mention": "",
       "is_gem_only": true
@@ -11371,21 +11657,6 @@
       "is_gem_only": true
     },
     {
-      "country": "Philippines",
-      "gem_terminal_id": "T100000131012",
-      "gem_terminal_name": "FGEN Batangas FSRU",
-      "gem_unit_name": "",
-      "status": "proposed",
-      "capacity_mtpa": 5.0,
-      "start_year": "",
-      "section_type": "regasification",
-      "owners": [
-        "tokyo-gas"
-      ],
-      "giignl_narrative_mention": "",
-      "is_gem_only": true
-    },
-    {
       "country": "Russia",
       "gem_terminal_id": "T100000130520",
       "gem_terminal_name": "Arctic LNG 2 Terminal",
@@ -11431,6 +11702,21 @@
       "is_gem_only": true
     },
     {
+      "country": "Senegal",
+      "gem_terminal_id": "T100000131049",
+      "gem_terminal_name": "Karmol Dakar FSRU",
+      "gem_unit_name": "",
+      "status": "construction",
+      "capacity_mtpa": 2.5,
+      "start_year": "2021",
+      "section_type": "regasification",
+      "owners": [
+        "karmol"
+      ],
+      "giignl_narrative_mention": "",
+      "is_gem_only": true
+    },
+    {
       "country": "Spain",
       "gem_terminal_id": "T100000130534",
       "gem_terminal_name": "Mugardos LNG Terminal",
@@ -11440,7 +11726,13 @@
       "start_year": "2024",
       "section_type": "regasification",
       "owners": [
-        "sonatrach"
+        "endesa sa",
+        "naturgy",
+        "novacaixagalicia",
+        "region of galicia",
+        "santander bank",
+        "sonatrach",
+        "tojeiro group"
       ],
       "giignl_narrative_mention": "",
       "is_gem_only": true
@@ -11500,6 +11792,9 @@
       "start_year": "2024",
       "section_type": "liquefaction",
       "owners": [
+        "abu dhabi gas liquefaction company ltd",
+        "bp",
+        "mitsui & co ltd",
         "totalenergies"
       ],
       "giignl_narrative_mention": "",
@@ -11515,7 +11810,8 @@
       "start_year": "2022",
       "section_type": "regasification",
       "owners": [
-        "centrica plc [50%]; energy capital partners management lp"
+        "centrica plc",
+        "energy capital partners management lp"
       ],
       "giignl_narrative_mention": "",
       "is_gem_only": true
@@ -11530,6 +11826,8 @@
       "start_year": "2022",
       "section_type": "regasification",
       "owners": [
+        "exxonmobil",
+        "qatarenergy",
         "totalenergies"
       ],
       "giignl_narrative_mention": "",
@@ -11710,7 +12008,8 @@
       "start_year": "2010",
       "section_type": "regasification",
       "owners": [
-        "exxonmobil"
+        "exxonmobil",
+        "qatarenergy"
       ],
       "giignl_narrative_mention": "",
       "is_gem_only": true
@@ -12318,49 +12617,6 @@
       ]
     },
     {
-      "country": "Italy",
-      "site_name": "Panigaglia Piombino",
-      "report_capacity_mtpa": 2.6,
-      "candidate_count": 2,
-      "candidates": [
-        {
-          "gem_terminal_id": "T100000130476",
-          "gem_terminal_name": "Panigaglia LNG Terminal",
-          "gem_capacity_mtpa": 2.5,
-          "criteria": {
-            "substring": true,
-            "token_overlap": true,
-            "owner_overlap": false,
-            "shared_token_count": 1,
-            "shared_tokens": [
-              "panigaglia"
-            ],
-            "matched_against_names": [
-              "panigaglia"
-            ]
-          }
-        },
-        {
-          "gem_terminal_id": "T100000131096",
-          "gem_terminal_name": "Piombino FSRU",
-          "gem_capacity_mtpa": 3.68,
-          "criteria": {
-            "substring": true,
-            "token_overlap": true,
-            "owner_overlap": false,
-            "shared_token_count": 1,
-            "shared_tokens": [
-              "piombino"
-            ],
-            "matched_against_names": [
-              "fsru 1 - snam",
-              "piombino"
-            ]
-          }
-        }
-      ]
-    },
-    {
       "country": "Japan",
       "site_name": "Senboku I",
       "report_capacity_mtpa": 1.9,
@@ -12524,50 +12780,6 @@
               "mlng tiga",
               "petronas bintulu lng complex",
               "tiga malaysia"
-            ]
-          }
-        }
-      ]
-    },
-    {
-      "country": "Qatar",
-      "site_name": "QatarEnergy LNG",
-      "report_capacity_mtpa": 15.6,
-      "candidate_count": 2,
-      "candidates": [
-        {
-          "gem_terminal_id": "T100000130594",
-          "gem_terminal_name": "QatarEnergy LNG (N)",
-          "gem_capacity_mtpa": 40.8,
-          "criteria": {
-            "substring": true,
-            "token_overlap": true,
-            "owner_overlap": true,
-            "shared_token_count": 1,
-            "shared_tokens": [
-              "qatarenergy"
-            ],
-            "matched_against_names": [
-              "qatarenergy lng (n)",
-              "qatargas"
-            ]
-          }
-        },
-        {
-          "gem_terminal_id": "T100000130598",
-          "gem_terminal_name": "QatarEnergy LNG (S)",
-          "gem_capacity_mtpa": 36.3,
-          "criteria": {
-            "substring": true,
-            "token_overlap": true,
-            "owner_overlap": true,
-            "shared_token_count": 1,
-            "shared_tokens": [
-              "qatarenergy"
-            ],
-            "matched_against_names": [
-              "qatarenergy lng (s)",
-              "rasgas"
             ]
           }
         }
@@ -12758,16 +12970,16 @@
     }
   ],
   "stats": {
-    "report_project_count": 278,
-    "gem_project_count": 824,
-    "exact_matches": 120,
-    "fuzzy_matches": 73,
-    "unit_level_matches": 4,
-    "report_only_unmatched": 68,
-    "gem_only_operating": 77,
-    "nonoperating_units": 106,
-    "ambiguous": 17,
-    "matches_with_disagreement": 102
+    "report_project_count": 273,
+    "gem_project_count": 836,
+    "exact_matches": 133,
+    "fuzzy_matches": 71,
+    "unit_level_matches": 10,
+    "report_only_unmatched": 54,
+    "gem_only_operating": 73,
+    "nonoperating_units": 104,
+    "ambiguous": 15,
+    "matches_with_disagreement": 108
   },
   "report_type": "giignl",
   "extracted_csv": "giignl_extracted.csv",
