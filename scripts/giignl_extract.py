@@ -207,6 +207,15 @@ _PAGE_FOOTER_RE = re.compile(
     r"GIIGNL\s+Annual\s+Report\s+\d{4}\s+Edition", re.IGNORECASE
 )
 
+# Zero-width characters GIIGNL embeds mid-token (e.g. "S(2 )" -> "S(2<U+200B>)").
+# Stripped from names so the designator token "S(2)" survives intact for matching.
+_ZERO_WIDTH_RE = re.compile("[​‌‍﻿]")
+
+
+def _clean_text(s: str) -> str:
+    return _ZERO_WIDTH_RE.sub("", s) if s else s
+
+
 # A status-hint parenthetical, e.g. "(Mothballed)", "(Idle)".
 _STATUS_HINT_RE = re.compile(r"\(([^)]+)\)\s*$")
 
@@ -233,8 +242,11 @@ def _strip_train_suffix(project: str) -> tuple[str, str, str]:
     if m_status:
         candidate = m_status.group(1).strip()
         # Only treat as status hint if it's a short word like "Mothballed",
-        # "Idle", etc. (avoid eating "100%" or year parentheticals)
-        if candidate.isalpha() and len(candidate) <= 20:
+        # "Idle", etc. (avoid eating "100%" or year parentheticals). A facility-type
+        # tag — "(FLNG)", "(FSRU)", "(FSU)", "(FRU)" — is part of the terminal NAME,
+        # not a status, so keep it (e.g. "Prelude (FLNG)" must stay intact).
+        if candidate.isalpha() and len(candidate) <= 20 \
+                and candidate.upper() not in ("FLNG", "FSRU", "FSU", "FRU", "FPSO"):
             status_hint = candidate
             s = s[: m_status.start()].rstrip()
 
@@ -395,8 +407,17 @@ def _classify_lines(
             continue
         is_sub, mtpa = _is_country_subtotal_line(ln, columns)
         if is_sub:
-            skip.add(i)
             subtotals.append((i, mtpa))
+            # GIIGNL vertically centers the country label + subtotal within a
+            # block, so the subtotal sometimes lands ON a data row's physical
+            # lines — carrying that row's name-column fragment (e.g. "N(3) T6"
+            # beside "77.0 MTPA"). Skipping the whole line then drops the train
+            # code and the row degrades to a bare "QatarEnergy LNG". Only skip a
+            # PURE subtotal line; if the name column (col 1) has text, leave the
+            # line for the merge pass so the fragment reaches its data row.
+            name_frag = columns[1].slice(ln) if len(columns) > 1 else ""
+            if not name_frag:
+                skip.add(i)
             continue
         is_label, country = _is_country_label_line(ln, columns)
         if is_label:
@@ -427,27 +448,57 @@ def _classify_lines(
 
 def _partition_lines_by_data(
     lines: list[str], data_idxs: list[int], skip: set[int],
+    columns: list[ColumnSpec] | None = None, cap_col_name: str = "(MTPA)",
 ) -> dict[int, list[int]]:
     """Assign each non-blank, non-skipped line to its owning data-line row.
 
-    Boundaries: midpoint between consecutive data lines.
+    Each line goes to the NEAREST data line by row distance — equivalent to the
+    old midpoint split for the common case. The fix is the TIE: when a line sits
+    exactly between two data rows, a GIIGNL multi-line site name whose leading
+    line lands on the midpoint was being swallowed by the row above. A tie line
+    that carries a NAME-column fragment which begins a new name (starts
+    uppercase, no capacity) belongs to the row BELOW (its leading name); a
+    lowercase fragment ("...project)") or owner-wrap text is a continuation of
+    the row ABOVE. This recovers e.g. APLNG T2 (no longer fused with "Darwin LNG
+    (new") and Darwin's full name "Darwin LNG (new supply source Barossa
+    project)", and Croatia "Krk".
     """
     if not data_idxs:
         return {}
-    boundaries = []
-    for i in range(len(data_idxs) - 1):
-        mid = (data_idxs[i] + data_idxs[i + 1]) // 2
-        boundaries.append(mid)
+    name_col = columns[1] if (columns and len(columns) > 1) else None
+    cap_col = next((c for c in columns if c.name == cap_col_name), None) if columns else None
     assignments: dict[int, list[int]] = {i: [] for i in range(len(data_idxs))}
-    cur_row = 0
     for i, ln in enumerate(lines):
-        if not ln.strip():
+        if not ln.strip() or i in skip:
             continue
-        if i in skip:
-            continue
-        while cur_row < len(boundaries) and i > boundaries[cur_row]:
-            cur_row += 1
-        assignments[cur_row].append(i)
+        best_dist = min(abs(i - d) for d in data_idxs)
+        tied = [r for r, d in enumerate(data_idxs) if abs(i - d) == best_dist]
+        if len(tied) == 1:
+            row = tied[0]
+        else:
+            row = min(tied)  # default: continuation/owner-wrap → row above
+            if name_col is not None:
+                name_frag = name_col.slice(ln)
+                cap_frag = cap_col.slice(ln) if cap_col else ""
+                # A tie line is the LEADING name of the row BELOW only if it
+                # *starts* a new name: capitalized first char, not a continuation.
+                # Continuations stay with the row ABOVE — they start lowercase, are
+                # a bare "Expansion"/"Extension", or dangle a closing paren (more
+                # ")" than "(", e.g. "...Ahmeyim Phase 1)" tailing the prior row).
+                if name_frag and not cap_frag and name_frag[:1].isupper():
+                    bal = name_frag.count("(") - name_frag.count(")")
+                    has_facility_tag = bool(
+                        re.search(r"\(\s*(?:FSRU|FLNG|FSU|FRU)\s*\)", name_frag, re.IGNORECASE))
+                    is_continuation = (
+                        bal < 0
+                        or name_frag.strip().lower() in ("expansion", "extension")
+                        # a facility-tagged fragment is a VESSEL trailing its terminal
+                        # (e.g. "Italis LNG (FSRU)" under Piombino), not a new name
+                        or has_facility_tag
+                    )
+                    if not is_continuation:
+                        row = max(tied)  # leading name-start → row below
+        assignments[row].append(i)
     return assignments
 
 
@@ -652,6 +703,108 @@ def _truecup_country_subtotals(
         i = j
 
 
+def _robust_subtotal_map(
+    data_idxs: list[int],
+    rows: list[dict],
+    subtotals: list[tuple[int, float]],
+) -> dict[str, float]:
+    """Attribute each subtotal to the country of its NEAREST data row (by line).
+
+    The sequential walk attributes a subtotal to whatever country is "current"
+    when the subtotal line is reached — which is wrong when GIIGNL centers the
+    label+subtotal mid-block (the subtotal for "Oman" lands while the walk still
+    has the previous country current, so Oman's 11.4 MTPA gets misfiled under
+    USA). Anchoring instead to the nearest data row, whose country is already
+    resolved (often via an embedded explicit label), is robust to the centering.
+    Used to feed _reclaim_cross_page; the per-page true-up keeps its own map.
+    """
+    out: dict[str, float] = {}
+    if not data_idxs:
+        return out
+    for sub_line, mtpa in subtotals:
+        nearest = min(range(len(data_idxs)), key=lambda r: abs(data_idxs[r] - sub_line))
+        country = rows[nearest]["country"]
+        if country:
+            out[country] = mtpa
+    return out
+
+
+def _reclaim_cross_page(
+    rows: list[dict],
+    subtotal_by_country: dict[str, float],
+    reach_low: float = 0.94,
+    reach_high: float = 1.02,
+    max_iter: int = 8,
+) -> None:
+    """Cross-page sibling of _truecup_country_subtotals (operates on a whole section).
+
+    The per-page true-up cannot repair a country whose block spans pages — its
+    page-local cumulative never reaches the full-country subtotal. Run on the
+    section's rows concatenated in report order, a page-spanning country (Qatar
+    liquefaction, pages 34-35, 77.0 MTPA) reaches its subtotal and reclaims the
+    leading rows the sequential walk stranded on the previous country (N(1)/N(2)
+    inherited "Oman" because the "Qatar" label is centered next to N(3) T6).
+
+    For each contained, short country run, reclaim contiguous rows from the SINGLE
+    immediately-preceding country (nearest first), choosing the pull count whose
+    running total lands CLOSEST to the published subtotal, then commit only if that
+    best total is within [reach_low, reach_high] of the subtotal. Iterated to a
+    fixpoint because reclaims chain: Qatar must vacate N(1)/N(2) from Oman's run
+    before Oman's run is short enough to reclaim Oman T1 from USA. Convergence holds
+    — a run that has reached its subtotal is no longer short, so no row is pulled
+    twice.
+
+    Closest-to-subtotal (not merely "within band") matters: a naive greedy that
+    stops anywhere under reach_high tacks an extra small row onto the block — e.g.
+    Indonesia (24.9 MTPA) needs Bontang E/F/G (→25.0) but a greedy pull would also
+    swallow Canada's Tilbury LNG (0.3, →25.3, still under the 2% ceiling).
+
+    Same two guards as the per-page pass: never pull THROUGH more than one
+    preceding country, and commit only on reaching the published subtotal — so a
+    genuinely page-straddling country like China regas (whose global run already
+    sums to its subtotal) is never short and never over-pulls the block above it.
+    """
+    n = len(rows)
+    if n == 0:
+        return
+    caps = [_parse_float(r["capacity_mtpa"]) or 0.0 for r in rows]
+    for _ in range(max_iter):
+        countries = [r["country"] for r in rows]
+        changed = False
+        i = 0
+        while i < n:
+            c = countries[i]
+            j = i
+            while j < n and countries[j] == c:
+                j += 1
+            S = subtotal_by_country.get(c) if c else None
+            contained = i > 0 and j < n and countries[i - 1] != c and countries[j] != c
+            if S is not None and contained:
+                base = sum(caps[i:j])
+                if base < S * reach_low:  # short → try to reclaim leading rows
+                    prev_country = countries[i - 1]
+                    cur = base
+                    best_m, best_dist, best_cur = 0, abs(base - S), base
+                    m, k = 0, i - 1
+                    while k >= 0 and countries[k] == prev_country:
+                        cur += caps[k]
+                        m += 1
+                        if abs(cur - S) < best_dist:
+                            best_m, best_dist, best_cur = m, abs(cur - S), cur
+                        if cur >= S:  # past the subtotal — distance only grows
+                            break
+                        k -= 1
+                    if best_m >= 1 and S * reach_low <= best_cur <= S * reach_high:
+                        for off in range(best_m):
+                            idx = i - 1 - off
+                            rows[idx]["country"] = c
+                            countries[idx] = c
+                        changed = True
+            i = j
+        if not changed:
+            break
+
+
 # ---------------------------------------------------------------------------
 # Page-level extraction
 # ---------------------------------------------------------------------------
@@ -661,20 +814,20 @@ def _extract_liquefaction_page(
 ) -> tuple[list[dict], float]:
     columns, hdr_idx = _find_columns_by_header(page_text, LIQ_HEADER_KEYWORDS)
     if hdr_idx < 0:
-        return [], 0.0
+        return [], 0.0, {}
     lines = page_text.splitlines()
     body_lines = lines[hdr_idx + 1:]
     cap_col = "(MTPA)"
 
     data_idxs, labels, skip, subtotals = _classify_lines(body_lines, columns, cap_col)
-    assignments = _partition_lines_by_data(body_lines, data_idxs, skip)
+    assignments = _partition_lines_by_data(body_lines, data_idxs, skip, columns, cap_col)
 
     rows: list[dict] = []
     rows_with_meta: list[tuple[int, str, dict, float]] = []
     page_cap_sum = 0.0
     for row_idx, data_idx in enumerate(data_idxs):
         merged, _frags = _merge_lines_into_cells(body_lines, assignments[row_idx], columns)
-        project_raw = merged.get("Project", "").strip()
+        project_raw = _clean_text(merged.get("Project", "").strip())
         if not project_raw:
             continue
         site_name, trains, status_hint = _strip_train_suffix(project_raw)
@@ -710,7 +863,7 @@ def _extract_liquefaction_page(
         rows.append(row)
         rows_with_meta.append((data_idx, explicit_country, row, cap_mtpa))
     _assign_countries_sequential(rows_with_meta, labels, subtotals)
-    return rows, page_cap_sum
+    return rows, page_cap_sum, _robust_subtotal_map(data_idxs, rows, subtotals)
 
 
 def _extract_regasification_page(
@@ -718,20 +871,20 @@ def _extract_regasification_page(
 ) -> tuple[list[dict], float]:
     columns, hdr_idx = _find_columns_by_header(page_text, REGAS_HEADER_KEYWORDS)
     if hdr_idx < 0:
-        return [], 0.0
+        return [], 0.0, {}
     lines = page_text.splitlines()
     body_lines = lines[hdr_idx + 1:]
     cap_col = "(MTPA)"
 
     data_idxs, labels, skip, subtotals = _classify_lines(body_lines, columns, cap_col)
-    assignments = _partition_lines_by_data(body_lines, data_idxs, skip)
+    assignments = _partition_lines_by_data(body_lines, data_idxs, skip, columns, cap_col)
 
     rows: list[dict] = []
     rows_with_meta: list[tuple[int, str, dict, float]] = []
     page_cap_sum = 0.0
     for row_idx, data_idx in enumerate(data_idxs):
         merged, frags = _merge_lines_into_cells(body_lines, assignments[row_idx], columns)
-        site_fragments = frags.get("Site", [])
+        site_fragments = [_clean_text(s) for s in frags.get("Site", [])]
         site_raw = " ".join(site_fragments).strip()
         if not site_raw:
             continue
@@ -740,17 +893,30 @@ def _extract_regasification_page(
         # appears in a later fragment containing "(FSRU)" / "(FLNG)" etc.
         vessel_name = ""
         site_parts: list[str] = []
+        tagged: list[str] = []  # facility-tagged fragments, tag stripped
         for frag in site_fragments:
             m_tag = re.search(r"\(\s*(FSRU|FLNG|FSU|FRU)\s*\)", frag, re.IGNORECASE)
             if m_tag:
-                # This fragment is the vessel name. Strip the (FSRU) tag.
+                # Facility-tagged fragment — usually the vessel name. Strip the tag.
                 vessel_clean = re.sub(
                     r"\s*\(\s*(?:FSRU|FLNG|FSU|FRU)\s*\)\s*", " ",
                     frag, flags=re.IGNORECASE,
                 ).strip()
+                tagged.append(vessel_clean)
                 vessel_name = vessel_clean
             else:
                 site_parts.append(frag)
+        # When GIIGNL tags the SITE itself too (e.g. "Ravenna (FSRU)" as the site
+        # label plus "BW Singapore (FSRU)" as the vessel), every fragment is tagged
+        # and site_parts is empty. Treat the first tagged fragment as the site and
+        # the last as the vessel rather than falling back to the joined raw string
+        # ("Ravenna (FSRU) BW Singapore (FSRU)"). Only fires for 2+ tagged frags, so
+        # the common single-vessel-fragment case is untouched.
+        if not site_parts and len(tagged) >= 2:
+            # Drop a dangling conjunction left by a dual-vessel row
+            # ("Tenaga Empat (FSU) and Tenaga Satu (FSU)" -> site "Tenaga Empat").
+            site_parts = [re.sub(r"\s+(?:and|&)\s*$", "", tagged[0], flags=re.IGNORECASE).strip()]
+            vessel_name = tagged[-1]
         site_name = " ".join(site_parts).strip() or site_raw
 
         explicit_country = ""
@@ -790,7 +956,7 @@ def _extract_regasification_page(
         rows.append(row)
         rows_with_meta.append((data_idx, explicit_country, row, cap_mtpa))
     _assign_countries_sequential(rows_with_meta, labels, subtotals)
-    return rows, page_cap_sum
+    return rows, page_cap_sum, _robust_subtotal_map(data_idxs, rows, subtotals)
 
 
 # ---------------------------------------------------------------------------
@@ -811,28 +977,39 @@ def extract(pdf_path: str, output_csv: str, year: int = 2026) -> dict:
     if liq_pages:
         full_text = _pdftotext(pdf_path, liq_pages[0], liq_pages[-1])
         page_texts = full_text.split("\x0c")
+        liq_rows: list[dict] = []
+        liq_subtotals: dict[str, float] = {}
         for offset, page_num in enumerate(range(liq_pages[0], liq_pages[-1] + 1)):
             if page_num not in liq_pages:
                 continue
             if offset >= len(page_texts):
                 continue
-            page_rows, cap_sum = _extract_liquefaction_page(page_texts[offset], page_num)
-            all_rows.extend(page_rows)
+            page_rows, cap_sum, page_subs = _extract_liquefaction_page(page_texts[offset], page_num)
+            liq_rows.extend(page_rows)
+            liq_subtotals.update(page_subs)
             liq_total += cap_sum
             print(f"    page {page_num}: {len(page_rows)} liq rows, {cap_sum:.1f} MTPA")
+        # Cross-page country repair (Qatar 77.0 MTPA spans pages 34-35, etc.).
+        _reclaim_cross_page(liq_rows, liq_subtotals)
+        all_rows.extend(liq_rows)
 
     if regas_pages:
         full_text = _pdftotext(pdf_path, regas_pages[0], regas_pages[-1])
         page_texts = full_text.split("\x0c")
+        regas_rows: list[dict] = []
+        regas_subtotals: dict[str, float] = {}
         for offset, page_num in enumerate(range(regas_pages[0], regas_pages[-1] + 1)):
             if page_num not in regas_pages:
                 continue
             if offset >= len(page_texts):
                 continue
-            page_rows, cap_sum = _extract_regasification_page(page_texts[offset], page_num)
-            all_rows.extend(page_rows)
+            page_rows, cap_sum, page_subs = _extract_regasification_page(page_texts[offset], page_num)
+            regas_rows.extend(page_rows)
+            regas_subtotals.update(page_subs)
             regas_total += cap_sum
             print(f"    page {page_num}: {len(page_rows)} regas rows, {cap_sum:.1f} MTPA")
+        _reclaim_cross_page(regas_rows, regas_subtotals)
+        all_rows.extend(regas_rows)
 
     # Write CSV.
     Path(output_csv).parent.mkdir(parents=True, exist_ok=True)

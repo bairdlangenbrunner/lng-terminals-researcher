@@ -158,6 +158,30 @@ def _split_trailing_paren(name_norm):
     return name_norm, ""
 
 
+# A sub-terminal designator like "S(2)" / "N(1)": a short letter group + a
+# parenthesized digit. GIIGNL names a Qatar sub-terminal "QatarEnergy LNG S(2)";
+# GEM names the corresponding unit "S(2) T3-5". The designator ("s2") is the stable
+# bridge between them — it survives BOTH GIIGNL's per-train rows folding into one
+# sub-terminal row AND GEM's train-range unit naming, where a plain token-subset
+# check fails (GEM unit tokens {s(2, t3, 5} are not a subset of the report site
+# {qatarenergy, lng, s(2}). It also disambiguates GEM's same-base-name siblings on
+# its own: an "n*" designator can only belong to "QatarEnergy LNG (N)", an "s*" to
+# "(S)" — no reliance on the parenthetical-owner heuristic.
+_DESIGNATOR_RE = re.compile(r"([A-Za-z]{1,4})\s*\(\s*(\d+)\s*\)")
+
+
+def _unit_designators(name):
+    """Return the sub-terminal designator codes in a name.
+
+    "QatarEnergy LNG S(2)" -> {"s2"}   "N(3) T6" -> {"n3"}   "Sabine Pass" -> set()
+    Empty for the common case of a name without a parenthesized-digit code.
+    """
+    if not name:
+        return set()
+    return {(m.group(1) + m.group(2)).lower()
+            for m in _DESIGNATOR_RE.finditer(str(name))}
+
+
 def _align_units(rp, gp):
     """Align report member rows to GEM units within an already-matched project.
 
@@ -427,6 +451,27 @@ def _make_fsru_subproject(rp, sub_rows, forced_gem_key):
     }
 
 
+# Key-name suffix that separates the FLOATING (FSRU) member of a same-named
+# regas port from its onshore sibling. GEM tracks them as two terminals but
+# `normalize_terminal_name` strips both " FSRU" and " LNG Terminal" to the same
+# token, so they'd collide on one key (and one merged project) — Ravenna FSRU vs
+# Ravenna LNG Terminal, Stade FSRU vs Stade LNG Terminal, etc. (~12 ports). The
+# floating member's key/name gets this suffix on BOTH the GEM side and the report
+# side (a vessel-bearing GIIGNL row at a collision port), so onshore↔onshore and
+# FSRU↔FSRU match instead of merging. Not a trailing parenthetical, so it doesn't
+# trip the same-name-by-owner family logic.
+_FLOAT_VARIANT_SUFFIX = " fsru"
+
+
+def _report_row_is_floating(r):
+    """Whether a report (regas) row describes a floating terminal — it carries a
+    vessel name, or its type is an FSRU/FSU/FRU (a bare 'offshore'/deepwater port
+    is NOT floating). Used only to pick the floating variant at a collision port."""
+    if (r.get("vessel_name") or "").strip():
+        return True
+    return (r.get("type") or "").strip().lower() in ("fsru", "fsu", "fru")
+
+
 def _load_colmap(csv_path):
     map_path = Path(csv_path).with_suffix(".colmap.json")
     if not map_path.exists():
@@ -470,6 +515,45 @@ def _build_gem_project_table(gem_csv):
     if None in (ci["terminal_id"], ci["terminal_name"], ci["country"]):
         sys.exit("ERROR: GEM CSV missing required columns")
 
+    def _row_section(ftype, ie_only):
+        combined = (ftype + " " + ie_only).lower()
+        if "export" in combined or "liquefaction" in ftype.lower():
+            return "liquefaction"
+        if "import" in combined or "regasification" in ftype.lower():
+            return "regasification"
+        return "unknown"
+
+    def _row_is_floating(row):
+        v = (row[ci["floating"]] if ci["floating"] is not None else "")
+        return str(v).strip().lower() in ("true", "yes", "1")
+
+    # Pre-scan: find regasification ports where GEM has BOTH a floating (FSRU) and
+    # a non-floating (onshore) terminal under the same normalized name. They'd
+    # otherwise collide on one key and silently MERGE into a single project,
+    # because normalize_terminal_name strips both " FSRU" and " LNG Terminal" (e.g.
+    # Ravenna FSRU + Ravenna LNG Terminal → "ravenna"; ~12 such ports). The
+    # floating member is keyed under the `_FLOAT_VARIANT_SUFFIX` variant to stay
+    # distinct. Restricted to regasification — a report row's floating-ness is
+    # determinable there (vessel/type), but GIIGNL liquefaction rows carry no such
+    # signal, so liq FLNG/onshore pairs (Cameroon, Rovuma) are left as-is.
+    site_floats: dict[tuple, dict] = defaultdict(lambda: {True: set(), False: set()})
+    with open(gem_csv, encoding="utf-8") as f:
+        reader = csv.reader(f)
+        next(reader)
+        for row in reader:
+            if len(row) < colmap["_total_columns"]:
+                continue
+            if (row[ci["fuel"]] if ci["fuel"] is not None else "LNG") != "LNG":
+                continue
+            cn = normalize_country(row[ci["country"]])
+            tn = normalize_terminal_name(row[ci["terminal_name"]])
+            ft = row[ci["facility_type"]] if ci["facility_type"] is not None else ""
+            ie = row[ci["import_export_only"]] if ci["import_export_only"] is not None else ""
+            if not cn or not tn or _row_section(ft, ie) != "regasification":
+                continue
+            site_floats[(cn, tn, "regasification")][_row_is_floating(row)].add(row[ci["terminal_id"]])
+    collision_regas = {k for k, fm in site_floats.items() if fm[True] and fm[False]}
+
     projects = {}
     alias_map: dict[tuple, tuple] = {}
     with open(gem_csv, encoding="utf-8") as f:
@@ -491,17 +575,17 @@ def _build_gem_project_table(gem_csv):
                 continue
 
             ie_only = row[ci["import_export_only"]] if ci["import_export_only"] is not None else ""
-            combined = (ftype + " " + ie_only).lower()
-            if "export" in combined or "liquefaction" in ftype.lower():
-                section_type = "liquefaction"
-            elif "import" in combined or "regasification" in ftype.lower():
-                section_type = "regasification"
-            else:
-                section_type = "unknown"
+            section_type = _row_section(ftype, ie_only)
             if section_type == "unknown":
                 continue
 
-            key = (country_norm, tname_norm, section_type)
+            # At a collision port, the floating (FSRU) terminal keys under the
+            # variant so it stays separate from its onshore sibling; the report
+            # side mirrors this for a vessel-bearing row.
+            keyed_name = tname_norm
+            if (country_norm, tname_norm, section_type) in collision_regas and _row_is_floating(row):
+                keyed_name = tname_norm + _FLOAT_VARIANT_SUFFIX
+            key = (country_norm, keyed_name, section_type)
 
             status = row[ci["status"]] if ci["status"] is not None else ""
             owner = row[ci["owner"]] if ci["owner"] is not None else ""
@@ -514,13 +598,15 @@ def _build_gem_project_table(gem_csv):
             except ValueError:
                 cap = 0.0
 
+            # Parse the GEM owner cell with the same parser the report side uses.
+            # GEM cells are ";"-separated with "[NN%]" brackets ("QatarEnergy
+            # [70%]; Exxon Mobil Corp [30%]"); the previous comma-only split
+            # collapsed a multi-owner cell to a single (often wrong) tag, which
+            # manufactured false owner conflicts on nearly every multi-owner match.
             owner_tags = set()
-            for part in owner.split(","):
-                part = part.strip()
-                if "%" in part:
-                    part = part.rsplit("(", 1)[0].rsplit(" ", 1)[0].strip()
-                if part:
-                    owner_tags.add(normalize_entity(part))
+            for ent in parse_entity_list(owner):
+                if ent["entity"]:
+                    owner_tags.add(ent["entity"])
 
             if key not in projects:
                 projects[key] = {
@@ -528,7 +614,7 @@ def _build_gem_project_table(gem_csv):
                     "terminal_name": tname,
                     "country": country,
                     "country_norm": country_norm,
-                    "name_norm": tname_norm,
+                    "name_norm": keyed_name,
                     "section_type": section_type,
                     "unit_names": [],
                     "operating_unit_names": [],
@@ -655,20 +741,27 @@ def _build_gem_project_table(gem_csv):
                 toks |= _tokens_4plus(a)
             p["match_tokens"] = toks
 
-    return projects, alias_map
+    return projects, alias_map, collision_regas
 
 
-def _classify(report_rows, gem_projects, alias_map=None):
+def _classify(report_rows, gem_projects, alias_map=None, collision_regas=None):
     """Apply matching with canonical + alias + fuzzy passes, then classify.
 
     Returns dict with: matches, fuzzy_matches, report_only, gem_only_operating,
                        ambiguous, stats
     """
     alias_map = alias_map or {}
+    collision_regas = collision_regas or set()
 
     def _row_keyparts(r):
         """(country_norm, full_name_norm, section_type) for a report row, or None
-        if the row is a subtotal or missing a required field."""
+        if the row is a subtotal or missing a required field.
+
+        At a collision port (GEM has both an FSRU and an onshore terminal of this
+        name), a floating row's name gets the `_FLOAT_VARIANT_SUFFIX` so it keys to
+        the FSRU GEM project and an onshore row keys to the onshore one — instead of
+        both collapsing onto one project (which had wrongly merged GIIGNL's onshore
+        Ravenna + Ravenna FSRU into a single 4.4 MTPA entry)."""
         if (r.get("notes") or "").lower().startswith("country subtotal"):
             return None
         country_norm = normalize_country(r.get("country", ""))
@@ -676,6 +769,9 @@ def _classify(report_rows, gem_projects, alias_map=None):
         section_type = r.get("section_type", "")
         if not country_norm or not name_norm or not section_type:
             return None
+        if (country_norm, name_norm, section_type) in collision_regas \
+                and _report_row_is_floating(r):
+            name_norm = name_norm + _FLOAT_VARIANT_SUFFIX
         return country_norm, name_norm, section_type
 
     # First scan: the set of (country, full-name, section) keys present in the
@@ -910,6 +1006,115 @@ def _classify(report_rows, gem_projects, alias_map=None):
             "unit_matches": unit_matches,
             "disagreements": disagreements,
         })
+
+    # Pass 1.5: sub-terminal designator → GEM unit match.
+    #
+    # GIIGNL splits a complex into sub-terminals (Qatar "QatarEnergy LNG S(1)" /
+    # "S(2)" / "S(3)"), each its own report project; GEM splits the SAME complex
+    # into a terminal-with-units ("QatarEnergy LNG (S)" → units "S(1) T1-2",
+    # "S(2) T3-5", "S(3) T6-7"). So several report projects map to ONE GEM terminal,
+    # each to a DIFFERENT unit — a shape neither the project-level matcher (it would
+    # compare each sub-terminal's capacity against the whole terminal's, e.g. the
+    # bogus S(2)=14.1 vs (S)=36.3 "61% conflict") nor _align_units (GEM unit tokens
+    # {s(2,t3,5} ⊄ report site {qatarenergy,lng,s(2}) handles. The designator code
+    # (S(2)→"s2") bridges them: a report project carrying a designator that
+    # identifies exactly one GEM unit (within a single GEM terminal in the same
+    # country+section) is matched to that UNIT, comparing capacities at unit level.
+    #
+    # Build a GEM designator index: (country, section) -> code -> [(gem_key, unit)].
+    gem_desig_index = defaultdict(lambda: defaultdict(list))
+    for gk, gp in gem_projects.items():
+        for u in gp["units"]:
+            for code in _unit_designators(u["unit_name"]):
+                gem_desig_index[(gk[0], gk[2])][code].append((gk, u))
+
+    for rp_key in sorted(giignl_only_keys):
+        rp = report_projects[rp_key]
+        codes = _unit_designators(rp["name_norm"])
+        if not codes:
+            continue
+        idx = gem_desig_index.get((rp_key[0], rp_key[2]), {})
+        cand = [(gk, u) for code in codes for gk, u in idx.get(code, [])]
+        gks = {gk for gk, _ in cand}
+        if len(gks) != 1:
+            continue  # designator unknown, or spans 2 GEM terminals → leave to fuzzy
+        gk = next(iter(gks))
+        gp = gem_projects[gk]
+        # One distinct GEM unit only — be conservative (a report sub-terminal maps
+        # to a single GEM unit; bail to fuzzy if the codes hit several units).
+        uniq_units, seen_u = [], set()
+        for _gk, u in cand:
+            if u["unit_name"] and u["unit_name"] not in seen_u:
+                seen_u.add(u["unit_name"])
+                uniq_units.append(u)
+        if len(uniq_units) != 1:
+            continue
+        unit = uniq_units[0]
+        # Corroboration (mirrors fuzzy): a 4+ char name token shared with the GEM
+        # terminal, OR an owner overlap. Guards against a coincidental designator.
+        name_ok = bool(_tokens_4plus(rp["name_norm"]) & gp.get("match_tokens", set()))
+        owner_ok = bool(rp["owners_set"] & gp["owners_set"])
+        if not (name_ok or owner_ok):
+            continue
+
+        report_cap = rp["total_capacity_mtpa"]
+        unit_cap = unit["capacity_mtpa"]
+        cap_delta = report_cap - unit_cap
+        cap_pct = abs(cap_delta) / unit_cap * 100 if unit_cap else None
+        unit_owners = unit.get("owners_set", set())
+        owner_only_report = rp["owners_set"] - unit_owners
+        owner_only_gem = unit_owners - rp["owners_set"]
+        disagreements = []
+        if round(cap_delta, 2) != 0:
+            pct_str = f"{cap_pct:.1f}%" if cap_pct is not None else "n/a"
+            disagreements.append(
+                f"capacity differs by {pct_str} (report={report_cap:.2f}, gem_unit={unit_cap:.2f})")
+        if owner_only_report:
+            disagreements.append(f"owners in report not in GEM: {sorted(owner_only_report)}")
+        if owner_only_gem:
+            disagreements.append(f"owners in GEM not in report: {sorted(owner_only_gem)}")
+
+        unit_match = {
+            "report_site": rp["site_name"],
+            "report_capacity_mtpa": round(report_cap, 2),
+            "gem_unit_name": unit["unit_name"],
+            "gem_unit_status": unit["status"],
+            "gem_unit_capacity_mtpa": round(unit_cap, 2),
+            "capacity_delta_pct": round(cap_pct, 1) if cap_pct is not None else None,
+            "agree": bool(round(cap_delta, 2) == 0),
+        }
+        matches.append({
+            "match_type": "unit_designator",
+            "confidence": "high",
+            "match_granularity": "unit",
+            "country": rp["country"],
+            "site_name": rp["site_name"],
+            "gem_terminal_id": gp["terminal_id"],
+            "gem_terminal_name": gp["terminal_name"],
+            "gem_unit_name": [unit["unit_name"]],
+            "matched_alias": "",
+            "section_type_report": rp["section_type"],
+            "section_type_gem": gp["section_type"],
+            "report_capacity_mtpa": round(report_cap, 2),
+            "gem_capacity_mtpa": round(unit_cap, 2),
+            "capacity_delta_mtpa": round(cap_delta, 2),
+            "capacity_delta_pct": round(cap_pct, 1) if cap_pct is not None else None,
+            "owners_overlap": sorted(rp["owners_set"] & unit_owners),
+            "owners_report_only": sorted(owner_only_report),
+            "owners_gem_only": sorted(owner_only_gem),
+            "report_train_count": rp["trains_count"],
+            "report_sites_merged": sorted(rp["site_names"]) if len(rp["site_names"]) > 1 else [],
+            "gem_operating_units": gp["operating_units"],
+            "gem_total_units": gp["total_units"],
+            "unit_matches": [unit_match],
+            "match_criteria": {"designator": sorted(codes), "matched_unit": unit["unit_name"]},
+            "disagreements": disagreements,
+        })
+        matched_gem_keys.add(gk)
+        matched_gp_keys.append(gk)
+        aligned_unit_names_by_gp[gk].add(unit["unit_name"])
+        giignl_only_keys.discard(rp_key)
+        gem_only_keys.discard(gk)
 
     # Pass 2: fuzzy on remaining report-only rows
     ambiguous = []
@@ -1152,8 +1357,9 @@ def main():
     with open(args.extracted, encoding="utf-8") as f:
         report_rows = list(csv.DictReader(f))
 
-    gem_projects, alias_map = _build_gem_project_table(args.gem_csv)
-    diff = _classify(report_rows, gem_projects, alias_map=alias_map)
+    gem_projects, alias_map, collision_regas = _build_gem_project_table(args.gem_csv)
+    diff = _classify(report_rows, gem_projects, alias_map=alias_map,
+                     collision_regas=collision_regas)
     diff["report_type"] = args.report
     diff["extracted_csv"] = args.extracted
     diff["gem_csv"] = args.gem_csv

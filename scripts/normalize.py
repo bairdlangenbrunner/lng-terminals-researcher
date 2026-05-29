@@ -141,6 +141,7 @@ _ENTITY_MAP = {
 
     # State-linked / NOCs
     "qatarenergy": "qatarenergy",
+    "qatar energy": "qatarenergy",
     "qatar petroleum": "qatarenergy",
     "qp": "qatarenergy",
     "adnoc": "adnoc",
@@ -348,10 +349,13 @@ def parse_entity_list(s):
         part = part.strip()
         if not part:
             continue
-        # Try to extract percentage
-        m = re.search(r"(.+?)\s*\(?(\d+(?:\.\d+)?)\s*%\)?\s*$", part)
+        # Try to extract a trailing percentage in (...) OR [...] brackets, or bare.
+        # GEM owner cells use square brackets ("Exxon Mobil Corp [24.15%]"); GIIGNL
+        # uses round parens or none ("ExxonMobil 30%") — accept all so the entity
+        # name is recovered cleanly either way.
+        m = re.search(r"(.+?)\s*[\(\[]?(\d+(?:\.\d+)?)\s*%[\)\]]?\s*$", part)
         if m:
-            entity = m.group(1).strip().rstrip("(").strip()
+            entity = m.group(1).strip().rstrip("([").strip()
             pct = float(m.group(2))
         else:
             entity = part
@@ -482,6 +486,16 @@ def normalize_terminal_name(s):
     if s is None:
         return ""
     s = str(s).lower().strip()
+    # Drop zero-width characters that some PDFs embed mid-token (GIIGNL typesets
+    # "S(2 )" with a U+200B between the digit and the paren, which would otherwise
+    # leave the designator token unmatchable against GEM's "s(2"). Covers ZWSP,
+    # ZWNJ, ZWJ, and BOM/ZWNBSP.
+    s = re.sub("[​‌‍﻿]", "", s)
+    # Strip a trailing facility-type tag in parentheses — "Prelude (FLNG)",
+    # "Ravenna (FSRU)" — so the parenthesized form matches GEM's suffix form
+    # ("Prelude FLNG Terminal" -> "prelude"). The tag is kept in the displayed
+    # site_name (it's only dropped here, for matching).
+    s = re.sub(r"\s*\((?:fsru|flng|fsu|fru|fpso)\)\s*$", "", s)
     # Strip common suffixes (order matters — longer first)
     suffixes = [
         " deepwater port lng terminal",
