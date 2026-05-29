@@ -8,7 +8,15 @@ that pipeline is in git history if a future edition needs it back.)
 
 Output is a flat CSV consumed by `report_diff.py` — column shape:
   section_type, report_page, country, site_name, type,
-  owner, capacity_mtpa, capacity_bcm, start_year, trains, vessel_name, notes
+  owner, capacity_mtpa, capacity_bcm, start_year, trains, vessel_name, notes,
+  status
+
+`status` is the canonical non-operating lifecycle status when GIIGNL annotates a
+row with a status parenthetical ("Bontang Train E (Mothballed)", "Balhaf T1
+(stopped)") — empty for the normal operating row. GIIGNL's liq/regas tables are
+operating-only, so report_diff treats a non-empty status as a cue to EXCLUDE the
+row from the operating-capacity comparison and corroborate the matching GEM
+non-operating unit instead.
 
 `site_name` is stripped of train suffixes (T1, T2, T1-6, etc.) so multiple
 GIIGNL train-rows roll up to one project-level entry, matching GEM's
@@ -49,7 +57,7 @@ REGAS_PAGE_MARKER = "Regasification terminals"
 OUTPUT_COLUMNS = [
     "section_type", "report_page", "country", "site_name", "type",
     "owner", "capacity_mtpa", "capacity_bcm", "start_year",
-    "trains", "vessel_name", "notes",
+    "trains", "vessel_name", "notes", "status",
 ]
 
 
@@ -218,6 +226,33 @@ def _clean_text(s: str) -> str:
 
 # A status-hint parenthetical, e.g. "(Mothballed)", "(Idle)".
 _STATUS_HINT_RE = re.compile(r"\(([^)]+)\)\s*$")
+
+# Maps a GIIGNL status-hint word (the parenthetical peeled off a name) to a
+# canonical NON-operating GEM lifecycle status. GIIGNL's liq/regas tables are
+# operating-only, but a few rows are annotated as not-currently-operating —
+# "Bontang Train E (Mothballed)", "Balhaf T1 (stopped)", "Atlantic LNG T1
+# (Mothballed)". report_diff uses the status to drop the row from the operating
+# total (so it isn't a spurious capacity conflict) and to corroborate the GEM
+# non-op unit it lines up with. An UNRECOGNIZED hint maps to "" — the row stays
+# operating and the raw hint survives only as a note (we don't guess on words we
+# don't know, e.g. a stray "100%" that slipped the numeric guard).
+_NONOP_STATUS_HINTS = {
+    "mothballed": "mothballed", "mothball": "mothballed", "mothballing": "mothballed",
+    "idle": "idled", "idled": "idled", "idling": "idled",
+    "stopped": "idled", "stop": "idled", "suspended": "idled",
+    "shut": "idled", "shutdown": "idled", "halted": "idled", "paused": "idled",
+    "retired": "retired", "decommissioned": "retired", "closed": "retired",
+    "cancelled": "cancelled", "canceled": "cancelled",
+    "shelved": "shelved",
+}
+
+
+def _status_from_hint(hint: str) -> str:
+    """Canonical non-operating status for a parenthetical hint, or '' if the hint
+    isn't a recognized non-op word.  'Mothballed' -> 'mothballed'."""
+    if not hint:
+        return ""
+    return _NONOP_STATUS_HINTS.get(re.sub(r"[^a-z]", "", hint.lower()), "")
 
 # A pure numeric capacity (e.g. "5.5", "0.9", "10").
 _NUM_RE = re.compile(r"^-?\d+(?:\.\d+)?$")
@@ -419,6 +454,24 @@ def _classify_lines(
             if not name_frag:
                 skip.add(i)
             continue
+        # Embedded subtotal on a *data* row: GIIGNL centers the country
+        # label+subtotal band onto a data row, so col 0 reads "156.4 MTPA" while
+        # the row ALSO carries a real capacity (South Korea's subtotal sits on
+        # the Pyeong-Taek row, Spain's 49.3 on El Musel, Japan's 221.2 on Himeji).
+        # _is_country_subtotal_line rejects these because the capacity column is
+        # filled, so the per-country budget is lost and the centered block's
+        # leading rows never get reclaimed. Record the budget here (so the
+        # cross-page reclaim can use it) but do NOT skip — the line is still a
+        # data row, and the explicit-country extractor already ignores a
+        # "X MTPA" col-0 cell, so the row keeps its real country.
+        if columns:
+            _left0 = columns[0].slice(ln)
+            _m_emb = _COUNTRY_SUBTOTAL_RE.match(_left0)
+            if _m_emb and _is_data_row_start(ln, columns, cap_col_name):
+                try:
+                    subtotals.append((i, float(_m_emb.group(1).replace(",", ""))))
+                except ValueError:
+                    pass
         is_label, country = _is_country_label_line(ln, columns)
         if is_label:
             raw_labels.append((i, country))
@@ -805,6 +858,131 @@ def _reclaim_cross_page(
             break
 
 
+# Multi-word country names GIIGNL typesets across stacked lines, where a leading
+# fragment can land ON a data row (becoming that row's "explicit country") while
+# the remainder is a clean label — so the merged_labels stitch in _classify_lines
+# misses it and the block fragments into two ADJACENT country runs (e.g. "South"
+# on the Jeju row + "Korea" as a label on the rows below). Keyed by the
+# (lowercased) raw fragment pair → the canonical full name.
+_SPLIT_COUNTRY_JOINS = {
+    ("south", "korea"): "South Korea",
+    ("equatorial", "guinea"): "Equatorial Guinea",
+    ("papua", "new guinea"): "Papua New Guinea",
+    ("papua new", "guinea"): "Papua New Guinea",
+    ("trinidad &", "tobago"): "Trinidad and Tobago",
+    ("trinidad and", "tobago"): "Trinidad and Tobago",
+    ("trinidad", "tobago"): "Trinidad and Tobago",
+    ("mauritania", "senegal"): "Mauritania",  # GEM files GTA under Mauritania
+    ("mauritania/", "senegal"): "Mauritania",
+}
+
+
+def _norm_frag(s: str) -> str:
+    return re.sub(r"\s+", " ", (s or "").strip().rstrip("/").strip().lower())
+
+
+def _country_runs(rows: list[dict]) -> list[tuple[int, int, str]]:
+    """Contiguous (start, end, country) runs over rows in report order."""
+    runs: list[tuple[int, int, str]] = []
+    i, n = 0, len(rows)
+    while i < n:
+        c = rows[i]["country"]
+        j = i
+        while j < n and rows[j]["country"] == c:
+            j += 1
+        runs.append((i, j, c))
+        i = j
+    return runs
+
+
+def _merge_split_country_runs(rows: list[dict]) -> dict[str, str]:
+    """Re-stitch two adjacent country runs that are fragments of one multi-word
+    country (e.g. 'South' + 'Korea' → 'South Korea').
+
+    Returns {old_raw_country: canonical_full_name} so the caller can re-key the
+    per-country subtotal map (the subtotal was attributed to one of the
+    fragments). Mutates each affected row's 'country'. Conservative: fires only
+    on the explicit whitelist of known split country names, so two genuinely
+    distinct adjacent countries are never merged.
+    """
+    renames: dict[str, str] = {}
+    runs = _country_runs(rows)
+    for r in range(len(runs) - 1):
+        a_s, a_e, a_c = runs[r]
+        b_s, b_e, b_c = runs[r + 1]
+        if not a_c or not b_c:
+            continue
+        full = _SPLIT_COUNTRY_JOINS.get((_norm_frag(a_c), _norm_frag(b_c)))
+        if not full:
+            continue
+        for k in range(a_s, b_e):
+            rows[k]["country"] = full
+        if a_c != full:
+            renames[a_c] = full
+        if b_c != full:
+            renames[b_c] = full
+    return renames
+
+
+# Narrow, edition-specific site→country fallbacks for the few LIQUEFACTION blocks
+# whose country label is so badly interleaved with the multi-line data row that
+# the structural walk can't resolve it: GIIGNL stacks "Equatorial"/"Guinea"
+# ABOVE and BELOW the single EG LNG row, and "Mauritania/"/"Senegal" around the
+# multi-line Tortue/Gimi FLNG row, so neither the label stitcher nor the
+# subtotal reclaim can recover them. Each maps a distinctive site-name substring
+# to the country GEM files the terminal under (GEM keeps GTA under "Mauritania").
+# Auditable, exact, and guarded by distinctive substrings — re-verify per edition.
+_SITE_COUNTRY_OVERRIDES = [
+    ("eg lng", "Equatorial Guinea"),
+    ("png lng", "Papua New Guinea"),
+    ("tortue", "Mauritania"),
+]
+
+
+def _apply_site_country_overrides(rows: list[dict]) -> None:
+    for r in rows:
+        site = (r.get("site_name") or "").lower()
+        for sub, country in _SITE_COUNTRY_OVERRIDES:
+            if sub in site:
+                r["country"] = country
+                break
+
+
+def _reassign_country_islands(
+    rows: list[dict], subtotal_by_country: dict[str, float],
+    reach_low: float = 0.94, reach_high: float = 1.02,
+) -> None:
+    """Reassign a country-A run sandwiched between two country-B runs (B…A…B)
+    back to B when A's published subtotal is ALREADY satisfied by A's OTHER rows
+    — i.e. the island is extra capacity the sequential walk's leftover-budget
+    greedily absorbed from B.
+
+    Concrete case: Japan's small Hachinohe/Hatsukaichi/Hibiki rows (3.9 MTPA) get
+    tagged Indonesia between two Japan runs because Indonesia's centered label
+    splits its block, leaving ~7.9 MTPA of unused Indonesia budget that the next
+    small rows "fit" into. Indonesia's real 11.5 MTPA subtotal is already met by
+    its six genuine rows, so the island is reassigned back to Japan. The
+    subtotal-satisfied guard keeps a legitimate island from being moved.
+    """
+    n = len(rows)
+    caps = [_parse_float(r["capacity_mtpa"]) or 0.0 for r in rows]
+    tot: dict[str, float] = {}
+    for idx in range(n):
+        tot[rows[idx]["country"]] = tot.get(rows[idx]["country"], 0.0) + caps[idx]
+    for i, j, c in _country_runs(rows):
+        if not c or i == 0 or j == n:
+            continue
+        b_prev, b_next = rows[i - 1]["country"], rows[j]["country"]
+        S = subtotal_by_country.get(c)
+        if not (b_prev and b_prev == b_next and b_prev != c and S):
+            continue
+        island = sum(caps[i:j])
+        others = tot[c] - island
+        if others >= S * reach_low and (others + island) > S * reach_high:
+            for k in range(i, j):
+                rows[k]["country"] = b_prev
+
+
 # ---------------------------------------------------------------------------
 # Page-level extraction
 # ---------------------------------------------------------------------------
@@ -859,6 +1037,7 @@ def _extract_liquefaction_page(
             "trains": trains,
             "vessel_name": "",
             "notes": "; ".join(notes_parts),
+            "status": _status_from_hint(status_hint),
         }
         rows.append(row)
         rows_with_meta.append((data_idx, explicit_country, row, cap_mtpa))
@@ -919,6 +1098,17 @@ def _extract_regasification_page(
             vessel_name = tagged[-1]
         site_name = " ".join(site_parts).strip() or site_raw
 
+        # A status parenthetical on a regas site ("... (Mothballed)") isn't a
+        # facility tag (those were peeled above), so it survives in site_name —
+        # peel it the same way the liq path does so the row carries a status.
+        regas_status = ""
+        m_st = _STATUS_HINT_RE.search(site_name)
+        if m_st:
+            st = _status_from_hint(m_st.group(1))
+            if st:
+                regas_status = st
+                site_name = site_name[: m_st.start()].rstrip()
+
         explicit_country = ""
         for idx in assignments[row_idx]:
             ln = body_lines[idx]
@@ -952,6 +1142,7 @@ def _extract_regasification_page(
             "trains": "",
             "vessel_name": vessel_name,
             "notes": "; ".join(notes_parts),
+            "status": regas_status,
         }
         rows.append(row)
         rows_with_meta.append((data_idx, explicit_country, row, cap_mtpa))
@@ -989,7 +1180,13 @@ def extract(pdf_path: str, output_csv: str, year: int = 2026) -> dict:
             liq_subtotals.update(page_subs)
             liq_total += cap_sum
             print(f"    page {page_num}: {len(page_rows)} liq rows, {cap_sum:.1f} MTPA")
-        # Cross-page country repair (Qatar 77.0 MTPA spans pages 34-35, etc.).
+        # Re-stitch split multi-word country labels (re-key their subtotals),
+        # reassign greedily-absorbed country islands, then run the cross-page
+        # leading-row reclaim (Qatar 77.0 MTPA spans pages 34-35, etc.).
+        for _old, _new in _merge_split_country_runs(liq_rows).items():
+            if _old in liq_subtotals:
+                liq_subtotals[_new] = liq_subtotals.pop(_old)
+        _reassign_country_islands(liq_rows, liq_subtotals)
         _reclaim_cross_page(liq_rows, liq_subtotals)
         all_rows.extend(liq_rows)
 
@@ -1008,8 +1205,16 @@ def extract(pdf_path: str, output_csv: str, year: int = 2026) -> dict:
             regas_subtotals.update(page_subs)
             regas_total += cap_sum
             print(f"    page {page_num}: {len(page_rows)} regas rows, {cap_sum:.1f} MTPA")
+        for _old, _new in _merge_split_country_runs(regas_rows).items():
+            if _old in regas_subtotals:
+                regas_subtotals[_new] = regas_subtotals.pop(_old)
+        _reassign_country_islands(regas_rows, regas_subtotals)
         _reclaim_cross_page(regas_rows, regas_subtotals)
         all_rows.extend(regas_rows)
+
+    # Final narrow site→country fallbacks for blocks the structural walk can't
+    # resolve (EG LNG, PNG LNG, Tortue — see _SITE_COUNTRY_OVERRIDES).
+    _apply_site_country_overrides(all_rows)
 
     # Write CSV.
     Path(output_csv).parent.mkdir(parents=True, exist_ok=True)

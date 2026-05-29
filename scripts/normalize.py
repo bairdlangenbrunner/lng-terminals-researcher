@@ -37,6 +37,7 @@ _COUNTRY_MAP = {
     "south korea": "south korea",
     "korea, south": "south korea",
     "republic of korea": "south korea",
+    "korea": "south korea",  # GIIGNL labels South Korea simply "Korea"
     "north korea": "north korea",
     "democratic people's republic of korea": "north korea",
     "dprk": "north korea",

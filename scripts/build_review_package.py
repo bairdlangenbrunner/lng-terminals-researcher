@@ -147,8 +147,13 @@ SHEET_DESCRIPTIONS = {
         "row from the per-unit rows beneath it (emitted for unit-granularity matches). "
         "`gem_unit_name` lists OPERATING units only (so it reconciles with the "
         "operating capacity — non-op phases live in giignl_diff_nonoperating). "
-        "`report_sites_merged` lists rows folded into this site ('<Site> Expansion' "
-        "and per-complex unit-code rows like 'Arzew GL1Z/2Z/3Z'). Capacity (report "
+        "`report_sites_merged` lists rows folded into this site ('<Site> Expansion', "
+        "per-complex unit-code rows like 'Arzew GL1Z/2Z/3Z', and explicit per-train "
+        "rows like 'Bontang Train E/F/G/H'). `report_nonoperating` lists any GIIGNL "
+        "rows annotated non-operating ('Bontang Train E (Mothballed)', 'Balhaf T1 "
+        "(stopped)') that were EXCLUDED from the operating total (so they aren't a "
+        "spurious capacity conflict) — they corroborate the matching GEM non-op unit "
+        "in giignl_diff_nonoperating instead. Capacity (report "
         "vs gem, delta, %), owner sets, counts. `disagreements` + the specific "
         "conflicting cells (capacity when it differs at all, owner deltas, per-unit "
         "capacity mismatch) get a red fill, GRADED BY SIZE for capacity: light red "
@@ -165,9 +170,13 @@ SHEET_DESCRIPTIONS = {
         "NON-OPERATING units of matched projects (proposed/construction/shelved/"
         "cancelled/idled/mothballed/retired). GIIGNL's tables are operating-only, so "
         "each row defaults to a light-red `gem_only_flag` = 'GEM has, GIIGNL doesn't' "
-        "UNLESS the §3.2.1 narrative-prose pass annotated `giignl_narrative_mention` "
+        "UNLESS (a) the §3.2.1 narrative-prose pass annotated `giignl_narrative_mention` "
         "(a GIIGNL narrative confirming the forward phase → no conflict per SOP §5.7; "
-        "left unfilled). Worked example: Taichung Phase 3 (construction →10) IS in the "
+        "left unfilled), OR (b) a GIIGNL TABLE row annotated non-operating lines up "
+        "with this unit — 'Bontang Train E (Mothballed)' ↔ GEM unit E (idled), 'Balhaf "
+        "T1/T2 (stopped)' ↔ GEM T1/T2 (mothballed) — which fills the mention and clears "
+        "the gem-only flag (GIIGNL does list it, just as not-operating). Worked example: "
+        "Taichung Phase 3 (construction →10) IS in the "
         "p.52 narrative (mention filled, no highlight); Phase 4 (proposed →13) is "
         "absent everywhere (highlighted). Columns: country, gem_terminal_name, "
         "gem_unit_name, status, capacity_mtpa, start_year (status-appropriate anchor), "
@@ -179,7 +188,15 @@ SHEET_DESCRIPTIONS = {
         "gem_only_operating (GEM operating not in GIIGNL → Update verify), "
         "ambiguous_disambiguate (multiple GEM candidates), and "
         "matched_with_disagreement (GIIGNL ≠ GEM on a field → Update via normal "
-        "source search; do NOT auto-apply GIIGNL values per SOP §3.8)."
+        "source search; do NOT auto-apply GIIGNL values per SOP §3.8). Also carries "
+        "the §3.2.1 NARRATIVE-prose findings (from giignl_narrative_findings.json): "
+        "narrative_update (existing GEM record, prose-confirmed lifecycle/capacity "
+        "change — yellow, or red if recent/contested e.g. Ras Laffan strike), "
+        "narrative_discovery (genuinely new terminal — Khor Al Zubair, Buenaventura, "
+        "Argentina SESA FLNG), narrative_monitor (below add-threshold — Tomakomai), "
+        "and narrative_confirm_already_tracked (blue — prose mentions GEM already "
+        "tracks; confidence bump only). The notes column carries the verified "
+        "non-GIIGNL CITES: citation for each (prose is never auto-applied, §3.8)."
     ),
     "candidate_edits": (
         "Reconciliation deliverable in GEM-CSV shape: one row per GEM unit-row "
@@ -506,7 +523,7 @@ GIIGNL_OPERATING_HEADERS = [
     "capacity_delta_mtpa", "capacity_delta_pct",
     "owners_overlap", "owners_report_only", "owners_gem_only",
     "report_train_count", "gem_operating_units", "gem_total_units",
-    "disagreements", "analyst_note",
+    "report_nonoperating", "disagreements", "analyst_note",
 ]
 
 
@@ -522,6 +539,13 @@ def build_giignl_diff_operating_sheet(wb, diff):
         proj = {k: (", ".join(map(str, v)) if isinstance(v, list) else v)
                 for k, v in m.items() if k in headers}
         proj["level"] = "project"
+        # Keep GIIGNL's FSRU/FLNG vessel in the displayed name (e.g. Damietta →
+        # "Damietta (Energos Winter)"), matching the multi-FSRU split convention.
+        # Guarded: skip if the name already carries a parenthetical (the split
+        # already appended the vessel) so we don't double it.
+        rv = m.get("report_vessel")
+        if rv and "(" not in str(proj.get("site_name", "")):
+            proj["site_name"] = f'{proj.get("site_name", "")} ({rv})'
         cm = {}
         if m.get("disagreements"):
             cm["disagreements"] = "red"
@@ -614,7 +638,7 @@ def build_giignl_diff_nonoperating_sheet(wb, diff):
     ws.freeze_panes = "A2"
 
 
-def build_giignl_to_action_sheet(wb, diff):
+def build_giignl_to_action_sheet(wb, diff, narrative_findings=None):
     ws = wb.create_sheet("giignl_to_action")
     headers = [
         "action_category", "country", "site_name",
@@ -700,6 +724,44 @@ def build_giignl_to_action_sheet(wb, diff):
             "notes": m.get("analyst_note") or "; ".join(m.get("disagreements", [])),
         }
         _write_row(ws, row, headers, row_idx, confidence_map={"action_category": "yellow"})
+        row_idx += 1
+
+    # §3.2.1 narrative-prose pass findings (agent-authored, web-verified). These
+    # route the country-narrative mentions (proposed/construction/expansion/status
+    # changes) that the operating-only tables don't carry. GIIGNL prose is a
+    # routing candidate, never auto-applied (SOP §3.8) — each carries a verified
+    # non-GIIGNL citation.
+    for f in (narrative_findings or []):
+        cat = f.get("action_category", "narrative")
+        # red for the recent/contested (medium-confidence) ones, yellow otherwise,
+        # blue for the "already tracked, no action" confirmation row.
+        if cat == "narrative_confirm_already_tracked":
+            fill = "blue"
+        elif f.get("confidence") == "medium":
+            fill = "red"
+        else:
+            fill = "yellow"
+        cite = f.get("citation", "")
+        note = f.get("prose_finding", "")
+        chg = f.get("recommended_status_change")
+        if chg:
+            note = f"[{chg}] {note}"
+        if cite:
+            note = f"{note}  ||  CITES: {cite}"
+        row = {
+            "action_category": cat,
+            "country": f.get("country", ""),
+            "site_name": f.get("site_name", ""),
+            "gem_terminal_id": "",
+            "gem_terminal_name": f.get("gem_terminal_name", ""),
+            "report_capacity_mtpa": "",
+            "gem_capacity_mtpa": "",
+            "section_type": f.get("section_type", ""),
+            "owners": "",
+            "recommended_workflow": f.get("recommended_workflow", ""),
+            "notes": note,
+        }
+        _write_row(ws, row, headers, row_idx, confidence_map={"action_category": fill})
         row_idx += 1
     _autosize(ws)
 
@@ -1030,12 +1092,15 @@ def main():
             diff_path = inputs_dir / "giignl_diff.json"
         diff = _safe_load(diff_path, default={})
         qa = _safe_load(inputs_dir / "staged_qa_review.json", default=[])
+        narrative = _safe_load(inputs_dir / "giignl_narrative_findings.json", default={})
+        narrative_findings = narrative.get("findings", []) if isinstance(narrative, dict) else []
 
         inputs_summary = {
             "report_type": diff.get("report_type", args.report or "?"),
             "report_year": args.year or "?",
             **diff.get("stats", {}),
             "qa_review_items": len(qa),
+            "narrative_findings": len(narrative_findings),
         }
         # SOP §6 gate triggers — surface to README
         stats = diff.get("stats", {})
@@ -1056,7 +1121,7 @@ def main():
                 build_giignl_diff_operating_sheet(wb, diff)
             if diff.get("nonoperating_units"):
                 build_giignl_diff_nonoperating_sheet(wb, diff)
-            build_giignl_to_action_sheet(wb, diff)
+            build_giignl_to_action_sheet(wb, diff, narrative_findings=narrative_findings)
             if args.gem_csv and Path(args.gem_csv).exists():
                 build_candidate_edits_sheet(wb, diff, args.gem_csv)
             if args.extracted_csv and Path(args.extracted_csv).exists():
