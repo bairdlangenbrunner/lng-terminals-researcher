@@ -437,6 +437,85 @@ def _report_vessels(rp):
     return ", ".join(out)
 
 
+def _merge_subname_report_projects(report_projects, gem_projects, alias_map):
+    """Merge GIIGNL report projects whose names are each a distinct token-subset
+    of ONE GEM multi-train terminal's name into a single project, force-matched to
+    that terminal.
+
+    GIIGNL splits some complexes that GEM models as a single terminal under names
+    with NO shared base token — Oman's "Oman LNG" (T1/T2 = 7.8) + "Qalhat"
+    (T3 = 3.7) vs GEM "Oman Qalhat LNG Terminal" (T1/T2/T3 = 11.4). The
+    expansion / unit-code / train-word folds all key off a shared base, so they
+    can't group two differently-named rows; but the GEM terminal name literally
+    contains both ("oman" + "qalhat"). Grouping them compares the SUM against the
+    GEM total (11.5 vs 11.4) instead of matching one row and orphaning the other
+    (the §5.3 "complex split differently" case, generalized).
+
+    Conservative guards:
+      - GEM terminal must be multi-unit and its normalized name must have >=2
+        distinctive (>=4-char) tokens;
+      - each report name must be a >=4-char token-SUBSET of that GEM name and not
+        already have its own exact/alias home;
+      - >=2 report projects must map to the SAME terminal; and
+      - merging must IMPROVE the capacity fit (summed capacity closer to the GEM
+        total than any single member) — so two genuinely separate terminals that
+        merely share a token are left alone.
+    """
+    def toks(name):
+        return {t for t in _simple_tokens(normalize_terminal_name(name)) if len(t) >= 4}
+
+    gem_multi = []  # (gem_key, gp, name_tokens)
+    for gk, gp in gem_projects.items():
+        if gp.get("total_units", 0) < 2 and gp.get("operating_units", 0) < 2:
+            continue
+        gtoks = toks(gp.get("terminal_name", ""))
+        if len(gtoks) >= 2:
+            gem_multi.append((gk, gp, gtoks))
+    if not gem_multi:
+        return report_projects
+
+    groups = defaultdict(list)  # gem_key -> [report_key, ...]
+    for rk, rp in report_projects.items():
+        if rp.get("_forced_gem_key") or rk in gem_projects or rk in alias_map:
+            continue  # already routed / has its own exact/alias home
+        rtoks = toks(rp.get("site_name", ""))
+        if not rtoks:
+            continue
+        for gk, gp, gtoks in gem_multi:
+            if gk[0] != rk[0] or gp.get("section_type") != rp.get("section_type"):
+                continue
+            if rtoks <= gtoks:
+                groups[gk].append(rk)
+                break
+
+    for gk, rks in groups.items():
+        if len(rks) < 2:
+            continue
+        gp = gem_projects[gk]
+        gem_total = gp.get("total_capacity_mtpa", 0.0)
+        members = [report_projects[rk] for rk in rks]
+        total = round(sum(m["total_capacity_mtpa"] for m in members), 2)
+        best_single = min(abs(m["total_capacity_mtpa"] - gem_total) for m in members)
+        if abs(total - gem_total) >= best_single:
+            continue  # merging doesn't improve the fit → leave them separate
+        # Survivor = largest-capacity member (deterministic; ties broken by key).
+        rks_sorted = sorted(
+            rks, key=lambda rk: (-report_projects[rk]["total_capacity_mtpa"], rk))
+        keep = report_projects[rks_sorted[0]]
+        for rk in rks_sorted[1:]:
+            mp = report_projects[rk]
+            keep["total_capacity_mtpa"] = round(
+                keep["total_capacity_mtpa"] + mp["total_capacity_mtpa"], 2)
+            keep["trains_count"] += mp["trains_count"]
+            keep["rows"].extend(mp["rows"])
+            keep["nonop_rows"].extend(mp.get("nonop_rows", []))
+            keep["owners_set"] |= mp["owners_set"]
+            keep["site_names"] |= mp["site_names"]
+            del report_projects[rk]
+        keep["_forced_gem_key"] = gk
+    return report_projects
+
+
 def _vessel_tokens(name):
     return {t for t in _simple_tokens(name) if t not in _FSRU_VESSEL_STOPWORDS}
 
@@ -1119,6 +1198,12 @@ def _classify(report_rows, gem_projects, alias_map=None, collision_regas=None,
     # (e.g. Wilhelmshaven → 'Wilhelmshaven FSRU' + 'Wilhelmshaven TES FSRU'),
     # routing each vessel row to its GEM terminal. See the function docstring.
     report_projects = _split_multiterminal_fsru_sites(report_projects, gem_projects)
+
+    # Merge GIIGNL rows that GEM models as ONE multi-train terminal under a name
+    # with no shared base token (Oman "Oman LNG" + "Qalhat" → GEM "Oman Qalhat
+    # LNG Terminal"); compare the summed capacity vs the GEM total instead of
+    # matching one row and orphaning the other. See _merge_subname_report_projects.
+    report_projects = _merge_subname_report_projects(report_projects, gem_projects, alias_map)
 
     # Apply §3.2.1 narrative-prose corrections to operating status: GIIGNL's prose
     # can mark a train listed in its operating-only TABLE as not actually operating
