@@ -1,0 +1,38 @@
+[
+  {
+    "entity_name": "Regasificadora del Pacifico SAS",
+    "entity_type": "owner / developer",
+    "country_of_hq": "Colombia",
+    "parent_entity": "PIO SAS (Puerto Inversiones y Obras)",
+    "rationale_for_new_entity": "Owner/developer of the Buenaventura/Buga FSU LNG import terminal (new). Not found in the GEM entity data.",
+    "lookup_was_run": "yes (local entity_lookup.py against fresh export)",
+    "lookup_result_summary": "not_found_in_local_data — CONFIRM against the live GEM entity system (entity_lookup --remote) before creating; do not duplicate.",
+    "referenced_by_terminals": "Buenaventura LNG Terminal",
+    "referenced_by_units": "",
+    "researcher_initials": "AI-draft (verify)"
+  },
+  {
+    "entity_name": "PIO SAS (Puerto Inversiones y Obras)",
+    "entity_type": "parent",
+    "country_of_hq": "Colombia",
+    "parent_entity": "",
+    "rationale_for_new_entity": "Parent of Regasificadora del Pacifico (Buenaventura/Buga FSU terminal). Not found in the GEM entity data.",
+    "lookup_was_run": "yes (local entity_lookup.py against fresh export)",
+    "lookup_result_summary": "not_found_in_local_data — CONFIRM against the live GEM entity system before creating.",
+    "referenced_by_terminals": "Buenaventura LNG Terminal",
+    "referenced_by_units": "",
+    "researcher_initials": "AI-draft (verify)"
+  },
+  {
+    "entity_name": "Excelerate Energy Inc — ALREADY EXISTS (no action)",
+    "entity_type": "owner / operator",
+    "country_of_hq": "United States",
+    "parent_entity": "",
+    "rationale_for_new_entity": "Khor Al Zubair (Iraq) operator. Listed here ONLY to record the dedup check — already in GEM (11 owner / 13 parent / 4 operator matches). DO NOT create.",
+    "lookup_was_run": "yes (local entity_lookup.py)",
+    "lookup_result_summary": "found — 'Excelerate Energy LP' / 'Excelerate Energy Inc' already in GEM. No new entity needed.",
+    "referenced_by_terminals": "Khor Al Zubair LNG Terminal",
+    "referenced_by_units": "",
+    "researcher_initials": "AI-draft (verify)"
+  }
+]

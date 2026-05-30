@@ -1,0 +1,25 @@
+{
+  "_comment": "Agent-authored GIIGNL §3.2.1 narrative-prose findings that correct the operating STATUS of rows in GIIGNL's operating-only liq/regas TABLES. The narrative sometimes states a train listed (untagged) in the operating table is not actually operating; report_diff moves the named unit(s) out of the operating total into nonop_rows, carrying the citation. Capacity NUMBERS are never changed here (Reconciliation SOP §5.6 prefers the tabular value), and nothing is auto-applied to GEM (§3.8) — this only makes the GIIGNL side of the diff internally consistent with GIIGNL's own prose. Authored per-edition; re-read the narrative pages (2026: liquefaction pp.28-31, regasification pp.48-52) each batch. `unit` is matched as a token of the report row's site_name+trains (e.g. 'F' matches 'Bontang Train F').",
+  "edition_year": 2026,
+  "operating_status_corrections": [
+    {
+      "country": "Indonesia",
+      "site": "Bontang",
+      "section_type": "liquefaction",
+      "nonoperating_units": [
+        { "unit": "F", "status": "idled" }
+      ],
+      "source": "GIIGNL 2026 Annual Report, liquefaction narrative p.31: \"At Bontang LNG, Train E remains on standby, with only Trains G and H currently in operation due to limited feedgas availability.\" Train E is already tagged (Mothballed) in the table; Train F is listed untagged but the prose confirms only G and H operate."
+    }
+  ],
+  "_nonop_comment": "Narrative corroborations of a GEM NON-operating unit that has NO GIIGNL operating-table row (the unit ceased/retired, so GIIGNL drops it from the operating table, but the prose names it). report_diff fills the unit's giignl_narrative_mention and clears its 'GEM has, GIIGNL doesn't' flag. Keyed by GEM terminal name (matched against the GEM project key) + GEM unit name.",
+  "nonop_corroborations": [
+    {
+      "country": "Australia",
+      "gem_terminal": "North West Shelf LNG Terminal",
+      "section_type": "liquefaction",
+      "units": ["T2"],
+      "source": "GIIGNL 2026 Annual Report narrative p.28: \"the NWS Train 2 terminal in Australia, with a capacity of 3.4 MTPA, has permanently ceased operations\" (also p.31: \"Woodside has definitively ceased operations at Train 2\"). GIIGNL drops Train 2 from the operating table accordingly; GEM has it retired — they agree."
+    }
+  ]
+}
