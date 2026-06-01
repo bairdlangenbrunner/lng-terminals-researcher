@@ -10,6 +10,7 @@ database directly.
 ## Quick start
 
 1. Install dependencies: `pip install -r requirements.txt`
+   - Plus the **`pdftotext` CLI from poppler** (a system dependency the GIIGNL extractor shells out to — not pip-installable): `brew install poppler` (macOS) / `apt-get install poppler-utils` (Debian/Ubuntu)
 2. Copy `.env.example` to `.env` and fill in GEM auth cookies (only needed for the cookie-based web export; `gem_all_fields.py` needs no cookies)
 3. Open the repo in Claude Code: `claude .`
 4. Claude reads `CLAUDE.md` automatically and routes from there
@@ -31,7 +32,7 @@ See `CLAUDE.md` for the routing logic and `docs/sops/` for the full procedures.
 CLAUDE.md                  Entry point for Claude Code — workflow router + hard rules
 README.md                  This file
 TODO.md                    Open design questions still to decide
-requirements.txt           Python deps (openpyxl, pdfplumber, jieba, pypinyin)
+requirements.txt           Python deps (openpyxl, jieba, pypinyin) + the poppler `pdftotext` system dep
 .env.example               Template for auth cookies
 
 docs/

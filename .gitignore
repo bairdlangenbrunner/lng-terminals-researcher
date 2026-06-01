@@ -7,6 +7,18 @@
 giignl_extracted/
 giignl_pages/
 
+# Reconciliation diff output (regenerable by report_diff.py)
+giignl_diff.json
+report_diff.json
+
+# Per-batch staged inputs / agent-authored findings — live on the batch branch's
+# working tree, not committed to main (see the cleanup plan + Reconciliation SOP).
+# The files stay on disk; they're just untracked so main doesn't accumulate one
+# batch's scratch. Cross-batch state (monitor_list/current.json) is committed.
+staged_*.json
+giignl_narrative_findings.json
+giignl_prose_corrections.json
+
 # Batch outputs - large, transient, regenerable
 batches/*
 !batches/.gitkeep
