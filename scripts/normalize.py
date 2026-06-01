@@ -108,6 +108,18 @@ _COUNTRY_MAP = {
     "eswatini": "eswatini",
     "trinidad": "trinidad and tobago",
     "trinidad and tobago": "trinidad and tobago",
+    # GIIGNL abbreviates a few full country names GEM keeps in long form.
+    # "Congo" in GIIGNL = the Republic of the Congo (Eni's Tango/Nguya FLNG sit at
+    # Pointe-Noire, RoC) — kept distinct from the DRC, which has no LNG terminal.
+    "congo": "republic of the congo",
+    "republic of the congo": "republic of the congo",
+    "congo-brazzaville": "republic of the congo",
+    "dr congo": "democratic republic of the congo",
+    "drc": "democratic republic of the congo",
+    "democratic republic of the congo": "democratic republic of the congo",
+    # GIIGNL labels the Dominican Republic simply "Dominican".
+    "dominican": "dominican republic",
+    "dominican republic": "dominican republic",
     "papua new guinea": "papua new guinea",
     "png": "papua new guinea",
     "north macedonia": "north macedonia",
@@ -303,6 +315,8 @@ _ENTITY_MAP = {
     "tepco": "tepco",
     "tokyo electric power": "tepco",
     "chubu electric power": "chubu",
+    "kansai electric": "kansai-electric",
+    "kansai electric power": "kansai-electric",
     "osaka gas": "osaka-gas",
     "daigas": "osaka-gas",
     "tokyo gas": "tokyo-gas",
@@ -314,6 +328,11 @@ _ENTITY_MAP = {
     "gail": "gail-india",
     "petronet lng": "petronet",
     "petronet": "petronet",
+
+    # North American import/export sponsors
+    "fortisbc": "fortisbc",
+    "fortisbc energy": "fortisbc",
+    "fortisbc energy inc": "fortisbc",
 
     # African
     "kosmos energy": "kosmos",
@@ -557,6 +576,43 @@ _TRAILING_REGION_RE = re.compile(
 )
 
 
+# Roman → Arabic for standalone trailing numeral tokens, so GIIGNL's Arabic
+# spelling matches GEM's Roman spelling: GIIGNL "Sakhalin-2" vs GEM "Sakhalin II
+# LNG Terminal". Conversion is whole-TOKEN only (a token must BE a pure roman
+# numeral), and only canonicalizes the spelling of a number — it never merges two
+# DIFFERENT numbers (so "Map Ta Phut 1"/"2", "Senboku 1"/"2" stay distinct: 1≠2).
+# Scanned against the GEM universe, only Coatzacoalcos II, Eni Congo FLNG II, and
+# Sakhalin II carry a standalone roman numeral, none of which collide with an
+# Arabic-numbered sibling once folded.
+_ROMAN_TO_ARABIC = {
+    "i": "1", "ii": "2", "iii": "3", "iv": "4", "v": "5",
+    "vi": "6", "vii": "7", "viii": "8", "ix": "9", "x": "10",
+}
+
+
+def _canon_numerals(s):
+    """Canonicalize trailing/standalone roman-numeral tokens to Arabic.
+
+    'sakhalin ii'   -> 'sakhalin 2'
+    'sakhalin-2'    -> 'sakhalin 2'  (hyphen-joined numeral split to a token)
+    'corpus christi stage iii' -> 'corpus christi stage 3'
+    'senboku 1'     -> unchanged (already Arabic; never collides with 'ii'=2)
+
+    Only a token that is ENTIRELY a roman numeral is converted — a name like
+    "Ixtoc" or "Diablo" (containing roman-letter sequences) is never touched
+    because the whole token isn't a numeral. Single "i"/"v"/"x" are converted
+    too, but those are vanishingly rare as standalone name tokens and the
+    GEM-universe scan above found none.
+    """
+    # Split a hyphen that joins a name stem to a pure-digit or roman tail so the
+    # numeral becomes its own token ("sakhalin-2" -> "sakhalin 2"). Only when the
+    # tail is a numeral, so hyphenated names like "arzew-bethioua" are untouched.
+    s = re.sub(r"-(?=(?:\d+|i{1,3}|iv|v|vi{0,3}|ix|x)\b)", " ", s)
+    toks = s.split()
+    out = [_ROMAN_TO_ARABIC.get(t, t) for t in toks]
+    return " ".join(out)
+
+
 def _strip_trailing_region(s):
     """Drop a single trailing ', <subnational region>' segment from an already
     lower-cased name, only if the comma is not inside an unbalanced parenthetical.
@@ -599,6 +655,12 @@ def normalize_terminal_name(s):
     # leave the designator token unmatchable against GEM's "s(2"). Covers ZWSP,
     # ZWNJ, ZWJ, and BOM/ZWNBSP.
     s = re.sub("[​‌‍﻿]", "", s)
+    # Drop apostrophes (straight ' and curly ’) so a name spelled with one folds to
+    # the apostrophe-free / pinyin form: GIIGNL "Hua'an" → "huaan" matches GEM's
+    # transliterated alias "shenzhen huaan lng project"; "Nan'ao" → "nanao". This
+    # joins the token (removes, not space-splits) — pinyin romanizations drop the
+    # syllable-boundary apostrophe entirely. Display names keep their apostrophes.
+    s = s.replace("'", "").replace("’", "")
     # Strip a trailing facility-type tag in parentheses — "Prelude (FLNG)",
     # "Ravenna (FSRU)" — so the parenthesized form matches GEM's suffix form
     # ("Prelude FLNG Terminal" -> "prelude"). The tag is kept in the displayed
@@ -639,6 +701,8 @@ def normalize_terminal_name(s):
     # Strip "LNG " prefix for projects named "LNG Canada", "LNG Quebec", etc.
     if s.startswith("lng "):
         s = s[4:]
+    # Canonicalize roman→Arabic numerals so "Sakhalin II" matches "Sakhalin-2".
+    s = _canon_numerals(s)
     return s.strip()
 
 
