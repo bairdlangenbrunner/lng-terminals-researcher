@@ -66,8 +66,9 @@ def _strip_expansion_suffix(raw):
 # Matches a trailing unit/complex code on a report site name, e.g. the Algerian
 # Sonatrach complexes "Arzew GL1Z" / "Arzew GL2Z" / "Skikda GL1K". The code must
 # contain BOTH letters and digits (regex: 1-4 letters, digits, optional trailing
-# letter) so plain named stages WITHOUT a digit are never stripped — protects
-# "Senboku II", "Bontang Train E", "Corpus Christi Stage III". Used to fold the
+# letter) so plain named stages WITHOUT a digit are never stripped here — leaves
+# "Senboku II", "Bontang Train E", "Corpus Christi Stage III" to the dedicated
+# train-word / stage-word folds (or, for Senboku, to nothing). Used to fold the
 # per-complex rows to a shared base site so they (a) match one GEM project and
 # (b) align 1:1 to GEM unit names (the code "GL1Z" == GEM unit "GL1Z").
 _UNIT_CODE_RE = re.compile(r"^(.*\S)\s+([A-Za-z]{1,4}\d+[A-Za-z]?)$")
@@ -95,9 +96,10 @@ def _strip_unit_code_suffix(raw):
 # code (Indonesia "Bontang Train E/F/G/H") instead of the compact "T<n>" form
 # (which giignl_extract already peels into the `trains` column). The unit-code
 # fold above deliberately ignores single-letter codes to protect named stages
-# ("Senboku II", "Corpus Christi Stage III"); the literal word "Train" marks a
-# genuine per-train row, so those fold to the shared base. Code is a 1-2 letter
-# token, a 1-2 digit number, or a roman numeral.
+# ("Senboku II"); the literal word "Train" marks a genuine per-train row, so those
+# fold to the shared base. ("Corpus Christi Stage III" folds via the separate
+# Stage/Phase-word fold below, not here.) Code is a 1-2 letter token, a 1-2 digit
+# number, or a roman numeral.
 _TRAIN_WORD_RE = re.compile(
     r"^(.*\S)\s+trains?\s+(?:[a-z]{1,2}|\d{1,2}|[ivxlc]{1,4})\s*$", re.IGNORECASE)
 
@@ -108,6 +110,28 @@ def _strip_train_word_suffix(raw):
     if not raw:
         return None
     m = _TRAIN_WORD_RE.match(str(raw).strip())
+    return m.group(1).strip() if m else None
+
+
+# Matches a trailing explicit "Stage <numeral>" / "Phase <numeral>" designator —
+# GIIGNL splits a phased terminal whose LATER stage GEM still models as UNITS of
+# the SAME terminal: "Corpus Christi" (Stage 1/2 trains) + "Corpus Christi Stage
+# III" (the Phase-3 trains that came online) both belong to GEM's one "Corpus
+# Christi LNG Terminal". The literal word "Stage"/"Phase" plus a numeral marks a
+# phase row of an existing site (NOT a distinct terminal), so — like the explicit
+# "Train" word — it's safe to fold even though the numeral alone would not be
+# (the bare unit-code fold ignores numeral-only suffixes to protect "Senboku II",
+# which carries no "Stage"/"Phase" word and is therefore untouched here).
+_STAGE_WORD_RE = re.compile(
+    r"^(.*\S)\s+(?:stage|phase)\s+(?:\d{1,2}|[ivxlc]{1,4})\s*$", re.IGNORECASE)
+
+
+def _strip_stage_suffix(raw):
+    """Return the base site name if `raw` ends in an explicit 'Stage/Phase <num>'
+    designator, else None.  'Corpus Christi Stage III' -> 'Corpus Christi'."""
+    if not raw:
+        return None
+    m = _STAGE_WORD_RE.match(str(raw).strip())
     return m.group(1).strip() if m else None
 
 
@@ -164,6 +188,21 @@ def _simple_tokens(s):
 def _tokens_4plus(s):
     """Distinctive (4+ char) tokens, for fuzzy name overlap."""
     return {t for t in _simple_tokens(s) if len(t) >= 4}
+
+
+def _trailing_numeral(s):
+    """The trailing standalone numeral token of a normalized name, or '' .
+
+    'map ta phut terminal 1' -> '1'; 'map ta phut' -> ''. Numerals are
+    canonicalized to Arabic by normalize_terminal_name (roman II -> 2), so this
+    compares like with like. Used to disambiguate numbered siblings (Map Ta Phut
+    1/2/3) whose only distinguishing token is the trailing number — too short for
+    `_tokens_4plus`, so the generic ≥2-shared-token rule otherwise pulls in every
+    sibling and the row falls to `ambiguous`."""
+    toks = _ordered_tokens(s)
+    if toks and re.fullmatch(r"\d{1,2}", toks[-1]):
+        return toks[-1]
+    return ""
 
 
 def _ordered_tokens(s):
@@ -1258,9 +1297,18 @@ def _classify(report_rows, gem_projects, alias_map=None, collision_regas=None,
            single-letter code safe to strip here (unit-code fold can't, lest it
            eat 'Senboku II').
 
-        All three avoid merging extraction artifacts and genuinely distinct named
-        stages that lack a suffix/code/train-word ('Senboku II', 'Corpus Christi
-        Stage III')."""
+        4. Stage/Phase fold. GIIGNL splits a later phase that GEM keeps as UNITS of
+           the existing terminal ('Corpus Christi' + 'Corpus Christi Stage III' →
+           one GEM 'Corpus Christi LNG Terminal'); the 6.0 MTPA Stage-III rows then
+           surface as a capacity/status conflict on the matched terminal (GIIGNL
+           counts the Phase-3 trains as operating; GEM still has them as
+           construction) instead of a misleading report_only "GIIGNL has, GEM
+           doesn't". The literal word 'Stage'/'Phase' makes the numeral safe to
+           fold (the numeral-only unit-code fold can't, lest it eat 'Senboku II').
+
+        All four avoid merging extraction artifacts and genuinely distinct named
+        terminals that lack a recognized suffix/code/train-/stage-word
+        ('Senboku II' has no Stage/Phase word, so it is never folded)."""
         base_raw = _strip_expansion_suffix(raw_site)
         if base_raw:
             base_norm = normalize_terminal_name(base_raw)
@@ -1288,6 +1336,20 @@ def _classify(report_rows, gem_projects, alias_map=None, collision_regas=None,
                         or tw_key in rep_name_keys
                         or train_word_base_counts.get(tw_key, 0) >= 2):
                     return tw_norm, True, tw_base_raw
+
+        # 4. Stage/Phase fold. GIIGNL splits a later phase that GEM models as units
+        #    of the same terminal ('Corpus Christi' + 'Corpus Christi Stage III' →
+        #    one GEM 'Corpus Christi LNG Terminal'). Requires the base to resolve to
+        #    a GEM key/alias OR another report row carrying the base name — so a
+        #    stand-alone 'X Stage N' with no base partner is left as its own row.
+        sg_base_raw = _strip_stage_suffix(raw_site)
+        if sg_base_raw:
+            sg_norm = normalize_terminal_name(sg_base_raw)
+            if sg_norm and sg_norm != full_norm:
+                sg_key = (country_norm, sg_norm, section_type)
+                if (sg_key in gem_projects or sg_key in alias_map
+                        or sg_key in rep_name_keys):
+                    return sg_norm, True, sg_base_raw
 
         return full_norm, False, None
 
@@ -1616,9 +1678,20 @@ def _classify(report_rows, gem_projects, alias_map=None, collision_regas=None,
         section_type = key[2]
         # Candidates in same country AND same section_type (a GIIGNL
         # liquefaction row shouldn't fuzzy-match a GEM regasification entry).
+        # Also exclude a GEM project whose every unit is CANCELLED: a GIIGNL
+        # liq/regas row is operating-only, so a fully-cancelled terminal can never
+        # be its match. Without this, GIIGNL "Caofeidian (Tangshan)" (operating,
+        # PetroChina, 10.0) substring-matched the cancelled "Caofeidian FSRU"
+        # (0 operating MTPA) — a confident-but-wrong fuzzy match — because the
+        # other (operating) Tangshan/PetroChina candidate lost its corroboration
+        # to a bled owner cell. Dropping the cancelled shell lets that row fall to
+        # report_only (a GIIGNL coverage note) instead of a false positive. Scoped
+        # to status_set ⊆ {cancelled} so a terminal with any non-cancelled phase
+        # (e.g. Saint John's operating import facility) is untouched.
         candidates = [
             (gk, gp) for gk, gp in gem_projects.items()
             if gk[0] == country_norm and gk[2] == section_type and gk in gem_only_keys
+            and not (gp["status_set"] and gp["status_set"] <= {"cancelled"})
         ]
         # Fuzzy criteria (any of):
         #   (a) substring match — name is contained in the other (strong signal)
@@ -1685,10 +1758,39 @@ def _classify(report_rows, gem_projects, alias_map=None, collision_regas=None,
         # Vessel-match preference: an exact FSRU vessel-name match is far stronger
         # than a coincidental token/owner overlap, so if exactly one candidate
         # carries the GIIGNL row's vessel, it wins outright over non-vessel hits.
+        # EXCEPTION — a vessel that RELOCATED: GEM keeps a superseded vessel on its
+        # OLD (now non-operating) terminal, so a vessel match can point at the wrong
+        # site. Deutsche Ostsee/Mukran: the "Neptune" FSRU moved from Lubmin (now
+        # proposed/retired, 0 operating MTPA, still lists "Neptune") to Mukran (now
+        # operating as "Energos Power", 9.92 MTPA, OtherNames "Mukran/Deutsche
+        # Ostsee"). The GIIGNL row is OPERATING, so when the lone vessel hit has ZERO
+        # operating capacity but another candidate operates, the vessel preference is
+        # suppressed and the operating-capacity tie-break below picks the live site.
         if len(fuzzy_hits) > 1:
             vessel_hits = [h for h in fuzzy_hits if h[2].get("vessel_match")]
             if len(vessel_hits) == 1:
-                fuzzy_hits = vessel_hits
+                v_op = vessel_hits[0][1].get("total_capacity_mtpa", 0.0) > 0
+                others_op = any(
+                    h[1].get("total_capacity_mtpa", 0.0) > 0
+                    for h in fuzzy_hits if h is not vessel_hits[0]
+                )
+                if not (rp["total_capacity_mtpa"] > 0 and not v_op and others_op):
+                    fuzzy_hits = vessel_hits
+
+        # Numbered-sibling disambiguation: when the GIIGNL name ends in a numeral
+        # (Map Ta Phut "Terminal 1"/"2") and the candidates are numbered siblings,
+        # restrict to the candidate whose canonical name carries the SAME trailing
+        # numeral. The number is the only distinguishing token but is too short for
+        # _tokens_4plus, so substring (via a short OtherName like "Map Ta Phut")
+        # and the ≥2-shared-token rule both fire for every sibling — this isolates
+        # the right one. Fires only when exactly one candidate's name matches the
+        # report numeral, so a non-numbered candidate set is untouched.
+        if len(fuzzy_hits) > 1:
+            rp_num = _trailing_numeral(name_norm)
+            if rp_num:
+                num_hits = [h for h in fuzzy_hits if _trailing_numeral(h[0][1]) == rp_num]
+                if len(num_hits) == 1:
+                    fuzzy_hits = num_hits
 
         # Same-base-name family disambiguation: if several candidates remain,
         # prefer the one whose GEM parenthetical owner identifies the GIIGNL row.
@@ -1913,7 +2015,9 @@ def main():
                    help="Path to agent-authored §3.2.1 narrative operating-status "
                         "corrections JSON. Defaults to giignl_prose_corrections.json "
                         "next to the extracted CSV, if present.")
-    p.add_argument("--output", default="./report_diff.json")
+    # Default matches the filename every SOP/CLAUDE.md command passes and that
+    # build_review_package.py looks for (it keeps a report_diff.json fallback too).
+    p.add_argument("--output", default="./giignl_diff.json")
     args = p.parse_args()
 
     with open(args.extracted, encoding="utf-8") as f:
