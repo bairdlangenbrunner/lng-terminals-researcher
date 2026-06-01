@@ -166,6 +166,35 @@ def _tokens_4plus(s):
     return {t for t in _simple_tokens(s) if len(t) >= 4}
 
 
+def _ordered_tokens(s):
+    """Ordered list of lowercased tokens (whitespace/hyphen/slash split,
+    punctuation-stripped). Like _simple_tokens but preserves order & duplicates
+    so a whole-token-subsequence containment test is possible."""
+    out = []
+    for raw in re.split(r"[\s\-/]+", s or ""):
+        clean = raw.strip(_string.punctuation + "()[]{}")
+        if clean:
+            out.append(clean)
+    return out
+
+
+def _word_boundary_substring(a, b):
+    """True if one name's token sequence is a contiguous run of the other's —
+    i.e. a whole-WORD substring, not a raw character substring. 'nansha' matches
+    'guangzhou nansha' but NOT 'longkou nanshan' ('nansha' is a char-substring of
+    'nanshan' but not a whole token). Hyphen/slash count as boundaries, so 'arzew'
+    still matches 'arzew-bethioua' (the old char-substring behaviour for that
+    case, but without the cross-word false positives a bare substring invites)."""
+    ta, tb = _ordered_tokens(a), _ordered_tokens(b)
+    if not ta or not tb:
+        return False
+    short, long = (ta, tb) if len(ta) <= len(tb) else (tb, ta)
+    for i in range(len(long) - len(short) + 1):
+        if long[i:i + len(short)] == short:
+            return True
+    return False
+
+
 def _split_trailing_paren(name_norm):
     """Split a trailing '(...)' group off a normalized name.
 
@@ -203,6 +232,47 @@ def _unit_designators(name):
             for m in _DESIGNATOR_RE.finditer(str(name))}
 
 
+# Train tokens inside a name / `trains` string. GEM frequently models a SPAN of
+# trains as one unit whose name encodes the range it covers ("Phase 1 (T1-T2)",
+# "(T1-T6)"); GIIGNL splits the same span across per-train rows ("LNG Canada T1",
+# "LNG Canada T2"). _train_numbers expands a name's "T<n>" / "T<a>-T<b>" tokens to
+# the set of train numbers, so several GIIGNL per-train rows can be SUMMED against
+# the single GEM unit that covers them (see _align_units) — instead of one row
+# matching the unit at half-capacity and the rest orphaning into report_only.
+_TRAIN_RANGE_RE = re.compile(r"t(\d+)\s*[-–]\s*t?(\d+)", re.IGNORECASE)
+_TRAIN_NUM_RE = re.compile(r"t(\d+)", re.IGNORECASE)
+
+
+def _train_numbers(text):
+    """Set of train numbers a name / `trains` string encodes via 'T<n>' tokens.
+
+    'Phase 1 (T1-T2)' -> {1, 2}   'T1-6' -> {1,2,3,4,5,6}   'T2' -> {2}
+    'Phase 2' -> set()   'GL1Z' -> set()  (no 'T' immediately before the digit)
+    """
+    if not text:
+        return set()
+    s = str(text)
+    nums, consumed = set(), []
+    for m in _TRAIN_RANGE_RE.finditer(s):
+        a, b = int(m.group(1)), int(m.group(2))
+        if a <= b and b - a < 50:  # sane bound; ignore "T1-T9999" garbage
+            nums.update(range(a, b + 1))
+            consumed.append((m.start(), m.end()))
+    for m in _TRAIN_NUM_RE.finditer(s):
+        if any(lo <= m.start() < hi for lo, hi in consumed):
+            continue  # already counted inside a range
+        nums.add(int(m.group(1)))
+    return nums
+
+
+def _row_capacity_mtpa(r):
+    """Float operating capacity of a report row, 0.0 if blank/unparseable."""
+    try:
+        return float(r.get("capacity_mtpa", "")) if r.get("capacity_mtpa") else 0.0
+    except (ValueError, TypeError):
+        return 0.0
+
+
 def _align_units(rp, gp):
     """Align report member rows to GEM units within an already-matched project.
 
@@ -215,12 +285,64 @@ def _align_units(rp, gp):
     """
     unit_matches = []
     used = set()
-    for r in rp["rows"]:
+    rows = list(rp["rows"])
+    consumed = set()  # indices into `rows` claimed by the train-range pre-pass
+
+    # --- Train-range pre-pass --------------------------------------------------
+    # A GEM unit whose name encodes a multi-train range ("Phase 1 (T1-T2)") absorbs
+    # the GIIGNL per-train rows whose train number falls inside that range; their
+    # capacities are SUMMED before comparison, so the unit isn't pitted against a
+    # single train's half-capacity (which produced the bogus LNG Canada "T1: 7 vs
+    # 14, 50% conflict" + "T2 orphaned to report_only" before this pass existed).
+    # Restricted to OPERATING units — GIIGNL's tables are operating-only, matching
+    # the operating-only project total this aligns within. Fires only for units
+    # naming >=2 trains, so single-train units fall through to the token pass below.
+    range_units = []
+    for u in gp.get("units", []):
+        if u.get("status") != "operating" or not u.get("unit_name"):
+            continue
+        tnums = _train_numbers(u.get("unit_name", ""))
+        if len(tnums) >= 2:
+            range_units.append((u, tnums))
+    # Widest range first, so a broad unit claims its rows before a narrower overlap.
+    range_units.sort(key=lambda ut: -len(ut[1]))
+    for u, tnums in range_units:
+        if u["unit_name"] in used:
+            continue
+        members = []
+        for idx, r in enumerate(rows):
+            if idx in consumed:
+                continue
+            row_trains = (_train_numbers(r.get("trains", ""))
+                          | _train_numbers(r.get("site_name", "")))
+            if row_trains and row_trains <= tnums:
+                members.append((idx, r))
+        if not members:
+            continue
+        rsum = round(sum(_row_capacity_mtpa(r) for _i, r in members), 2)
+        gcap = u["capacity_mtpa"]
+        dpct = (abs(rsum - gcap) / gcap * 100) if gcap else None
+        used.add(u["unit_name"])
+        consumed.update(idx for idx, _r in members)
+        label = "; ".join(
+            (r.get("site_name", "") + (" " + r.get("trains", "") if r.get("trains") else "")).strip()
+            for _i, r in members)
+        unit_matches.append({
+            "report_site": label,
+            "report_capacity_mtpa": rsum,
+            "gem_unit_name": u["unit_name"],
+            "gem_unit_status": u["status"],
+            "gem_unit_capacity_mtpa": round(gcap, 2),
+            "capacity_delta_pct": round(dpct, 1) if dpct is not None else None,
+            "agree": bool(round(rsum - gcap, 2) == 0),
+        })
+
+    # --- Token-subset pass (rows not claimed above) ----------------------------
+    for idx, r in enumerate(rows):
+        if idx in consumed:
+            continue
         site_tokens = _simple_tokens(normalize_terminal_name(r.get("site_name", "")))
-        try:
-            rcap = float(r.get("capacity_mtpa", "")) if r.get("capacity_mtpa") else 0.0
-        except ValueError:
-            rcap = 0.0
+        rcap = _row_capacity_mtpa(r)
         proj_total = gp.get("total_capacity_mtpa", 0.0)
         chosen = None
         for u in gp.get("units", []):
@@ -536,6 +658,43 @@ def _parse_vessel_name_sets(raw):
         if toks and toks not in sets:
             sets.append(toks)
     return sets
+
+
+def _report_vessel_token_sets(rp):
+    """Vessel-identity token-sets carried by a report project's rows (operating +
+    non-operating). One set per distinct GIIGNL vessel — e.g. Sepetiba's single
+    row 'LNGt Powership Asia' → [{'lngt','powership','asia'}]."""
+    sets = []
+    for r in rp.get("rows", []) + rp.get("nonop_rows", []):
+        toks = _vessel_key_tokens(r.get("vessel_name", "") or "")
+        if toks and toks not in sets:
+            sets.append(toks)
+    return sets
+
+
+def _fsru_vessel_match(rp, gp):
+    """True if a GIIGNL FSRU/FSU row's vessel name matches this GEM terminal's
+    FloatingVesselName. The vessel identity is a strong, near-unique corroborator:
+    GIIGNL identifies a floating terminal by its deployed vessel, and GEM tracks
+    the same vessel in FloatingVesselName, so an exact/containment vessel match
+    binds the two records even when the SITE names diverge (GIIGNL 'Sepetiba LNG'
+    vs GEM 'Sepetiba Bay FSRU') and owners/capacity disagree (Sepetiba: GIIGNL's
+    Karpowership/MOL JV partners vs GEM's 'KARMOL' tag; 0.5 vs 2.7 MTPA). Match is
+    by token containment in either direction so an operator-prefixed GIIGNL name
+    ('Excelerate Excelsior') still matches a bare GEM vessel ('Excelsior').
+
+    Only fires for FSRU GEM terminals that carry a vessel name — onshore terminals
+    have none, so this never manufactures a floating-vs-onshore false match."""
+    if not gp.get("fsru"):
+        return False
+    gem_sets = gp.get("vessel_name_sets") or []
+    if not gem_sets:
+        return False
+    for rt in _report_vessel_token_sets(rp):
+        for gt in gem_sets:
+            if rt and gt and (rt <= gt or gt <= rt):
+                return True
+    return False
 
 
 def _fsru_operating_report_capacity(rp, gp):
@@ -1488,7 +1647,12 @@ def _classify(report_rows, gem_projects, alias_map=None, collision_regas=None,
                 rp_first_owner = ents[0]["entity"]
         for gk, gp in candidates:
             all_names = {gk[1]} | gp.get("aliases_norm", set())
-            substring = any((name_norm in n) or (n in name_norm) for n in all_names)
+            # Word-boundary (whole-token) containment, NOT raw character substring:
+            # 'nansha' matches 'guangzhou nansha' but not the unrelated 'longkou
+            # nanshan'. A short stripped GIIGNL name like 'nansha' (region tag
+            # removed) would otherwise char-substring every longer name sharing
+            # those letters and force a spurious ambiguous/match.
+            substring = any(_word_boundary_substring(name_norm, n) for n in all_names)
             gp_tokens = gp.get("match_tokens")
             if gp_tokens is None:
                 gp_tokens = set()
@@ -1497,23 +1661,73 @@ def _classify(report_rows, gem_projects, alias_map=None, collision_regas=None,
             shared_tokens = rp_tokens & gp_tokens
             token_overlap = bool(shared_tokens)
             owner_overlap = bool(rp_owners & gp["owners_set"])
-            if substring or (token_overlap and owner_overlap) or len(shared_tokens) >= 2:
+            # An exact FSRU vessel-name match is a strong, near-unique corroborator
+            # (GIIGNL identifies a floating terminal by its deployed vessel; GEM
+            # tracks the same vessel in FloatingVesselName). It generates a
+            # candidate ON ITS OWN — even when the site names don't substring and
+            # owners/capacity diverge — so e.g. Sepetiba LNG ('LNGt Powership
+            # Asia') binds to GEM 'Sepetiba Bay FSRU' (same vessel) and the
+            # 0.5-vs-2.7 capacity gap surfaces as a real value-disagreement instead
+            # of splitting into report_only + gem_only.
+            vessel_match = _fsru_vessel_match(rp, gp)
+            if (substring or (token_overlap and owner_overlap)
+                    or len(shared_tokens) >= 2 or vessel_match):
                 fuzzy_hits.append((gk, gp, {
                     "substring": substring,
                     "token_overlap": token_overlap,
                     "owner_overlap": owner_overlap,
+                    "vessel_match": vessel_match,
                     "shared_token_count": len(shared_tokens),
                     "shared_tokens": sorted(shared_tokens),
                     "matched_against_names": sorted(all_names),
                 }))
 
+        # Vessel-match preference: an exact FSRU vessel-name match is far stronger
+        # than a coincidental token/owner overlap, so if exactly one candidate
+        # carries the GIIGNL row's vessel, it wins outright over non-vessel hits.
+        if len(fuzzy_hits) > 1:
+            vessel_hits = [h for h in fuzzy_hits if h[2].get("vessel_match")]
+            if len(vessel_hits) == 1:
+                fuzzy_hits = vessel_hits
+
         # Same-base-name family disambiguation: if several candidates remain,
-        # prefer the one whose GEM parenthetical owner equals the GIIGNL row's
-        # first owner (Tianjin (PipeChina) vs (Sinopec) vs (Beijing Gas Group)).
+        # prefer the one whose GEM parenthetical owner identifies the GIIGNL row.
+        # Two signals, in order: (1) the GEM paren-owner equals the GIIGNL row's
+        # FIRST owner (Tianjin (PipeChina) vs (Sinopec) vs (Beijing Gas Group));
+        # (2) failing that, the GEM paren-owner token APPEARS in the GIIGNL owner
+        # text (any position). GIIGNL's owner cell is often noisy — Chaozhou's
+        # "Sinopec 50%, Huaying 50% PipeChina (75%), Dalian" parses with Sinopec
+        # first and fuses "Huaying" into "huaying 50% pipechina" — so exact
+        # first-owner equality misses, but the operator token "huaying" still
+        # uniquely picks GEM's "(Huaying)" sibling over "(Huafeng)".
         if len(fuzzy_hits) > 1 and rp_first_owner:
             owner_hits = [h for h in fuzzy_hits if h[1].get("paren_owner") == rp_first_owner]
             if len(owner_hits) == 1:
                 fuzzy_hits = owner_hits
+        if len(fuzzy_hits) > 1:
+            # Tokens of every GIIGNL owner entity string ("huaying 50% pipechina"
+            # → {huaying, pipechina}), used to spot a paren-owner anywhere in the
+            # cell. Only fires when it isolates exactly one candidate.
+            rp_owner_tokens = set()
+            for ent in rp_owners:
+                rp_owner_tokens |= _simple_tokens(ent)
+            paren_hits = [
+                h for h in fuzzy_hits
+                if h[1].get("paren_owner") and h[1]["paren_owner"] in rp_owner_tokens]
+            if len(paren_hits) == 1:
+                fuzzy_hits = paren_hits
+
+        # Operating-capacity disambiguation: a GIIGNL row is operating-only, so
+        # among tied same-name candidates prefer the ONE that actually has
+        # operating capacity. Rudong has four same-base siblings — three are
+        # construction/proposed (0 operating MTPA) and only (PetroChina) operates
+        # (10.0, matching GIIGNL's 10.0). Fires only when the GIIGNL row carries
+        # capacity AND exactly one candidate has any operating capacity — the
+        # other zero-operating siblings can't be what GIIGNL lists as operating.
+        if len(fuzzy_hits) > 1 and rp["total_capacity_mtpa"] > 0:
+            op_hits = [h for h in fuzzy_hits if h[1].get("total_capacity_mtpa", 0.0) > 0]
+            if len(op_hits) == 1:
+                fuzzy_hits = op_hits
 
         if len(fuzzy_hits) == 1:
             gk, gp, criteria = fuzzy_hits[0]

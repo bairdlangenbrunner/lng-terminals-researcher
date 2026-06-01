@@ -190,8 +190,20 @@ REGAS_HEADER_KEYWORDS = [
 # A train suffix on a GIIGNL project name. Handles all of:
 #   " T2", " T1-6", " T7-12", " T1 - T6", " T1 – T6" (en-dash, with spaces)
 # Strip this off site_name and record in `trains`.
+#
+# An OPTIONAL trailing ", <Region>" geographic tag after the train token is also
+# consumed, so GIIGNL's province-tagged Canadian rows fold correctly: "LNG Canada
+# T1, BC" / "LNG Canada T2, BC" -> site "LNG Canada", trains "T1"/"T2". Without
+# this, the trailing ", BC" defeats the end-anchor: the train suffix never strips,
+# the two rows keep distinct names, and they fail to roll up to one project — T1
+# fuzzy-matched GEM at HALF capacity (7 vs 14, a bogus 50% conflict) while T2
+# orphaned into report_only ("GIIGNL has, GEM doesn't") even though GEM models both
+# as one unit "Phase 1 (T1-T2)". The region tag is alpha-only (letters/space/dot)
+# and comma-gated, so a parenthetical qualifier ("Portovaya LNG T1 (+ FSU)",
+# "Plaquemines LNG T1-18 (Phase 1)") is NOT consumed — those still need the end
+# anchor right after the train token and are left untouched.
 _TRAIN_SUFFIX_RE = re.compile(
-    r"\s+(T\d+(?:\s*[-–]\s*T?\d+)?)\s*$"
+    r"\s+(T\d+(?:\s*[-–]\s*T?\d+)?)(?:\s*,\s*[A-Za-z][A-Za-z .]*?)?\s*$"
 )
 
 # Super-region markers in GIIGNL liquefaction tables, e.g.
