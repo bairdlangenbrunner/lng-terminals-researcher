@@ -15,6 +15,53 @@ If the input doesn't match any known variant, returns the input lowercased
 and stripped — so unknown entities still cluster against themselves.
 """
 import re
+import unicodedata
+
+
+# --- Diacritic folding (Latin-script matching only) ---
+#
+# GIIGNL writes terminal/country names WITHOUT diacritics ("Pecem", "Swinoujscie",
+# "Turkiye"), while GEM stores them WITH ("Pecém", "Świnoujście", "Türkiye"). The
+# matcher compares normalized token forms, so accent-variant names must fold to the
+# same ASCII spelling or the same terminal lands in two buckets (a false
+# "GIIGNL has, GEM doesn't" discovery candidate).
+#
+# NFKD decomposes most accented Latin letters into base + combining mark, which we
+# then drop. A handful of letters carry the diacritic in the codepoint itself and
+# do NOT decompose under NFKD (ø, đ, ł, ı, ß, ...) — those need an explicit map.
+# Applied ONLY in the Latin-script normalization paths; non-Latin scripts go
+# through transliterate_to_english instead (pinyin output is already ASCII, so
+# folding it is a harmless no-op and never corrupts CJK segmentation).
+_DIACRITIC_FALLBACKS = {
+    "ø": "o", "Ø": "O",
+    "đ": "d", "Đ": "D",
+    "ð": "d", "Ð": "D",
+    "ł": "l", "Ł": "L",
+    "ı": "i", "İ": "I",
+    "ß": "ss",
+    "æ": "ae", "Æ": "AE",
+    "œ": "oe", "Œ": "OE",
+    "þ": "th", "Þ": "TH",
+}
+
+
+def _strip_diacritics(s):
+    """Fold Latin diacritics to their ASCII base letters.
+
+    NFKD-decompose, drop combining marks (Unicode category 'Mn'), and apply an
+    explicit fallback map for letters NFKD leaves intact (ø→o, đ→d, ł→l, ı→i,
+    ß→ss, ...). CJK and other non-Latin codepoints are untouched: NFKD does not
+    introduce combining marks for them and they aren't in the fallback map, so
+    they pass through unchanged.
+    """
+    if s is None:
+        return ""
+    s = str(s)
+    # Explicit fallbacks first (these don't decompose under NFKD).
+    if any(c in _DIACRITIC_FALLBACKS for c in s):
+        s = "".join(_DIACRITIC_FALLBACKS.get(c, c) for c in s)
+    decomposed = unicodedata.normalize("NFKD", s)
+    return "".join(c for c in decomposed if unicodedata.category(c) != "Mn")
 
 
 # --- Country normalization ---
@@ -213,7 +260,17 @@ _ENTITY_MAP = {
     "bw group": "bw-lng",
     "energos infrastructure": "energos",
     "energos": "energos",
+    # KARMOL is the Karpowership (Karadeniz) + Mitsui O.S.K. Lines (MOL) FSRU joint
+    # venture. GEM tags KARMOL terminals with the brand "KARMOL"; GIIGNL often
+    # lists the two JV parents instead ("MOL ..., Karadeniz Holding ..." at
+    # Sepetiba). These canonicalize to DISTINCT tokens on purpose — Karpowership
+    # and MOL each operate non-KARMOL assets, so collapsing them into "karmol"
+    # would over-merge. The owner delta (GEM "karmol" vs report "karpowership"/"mol")
+    # is therefore a real, reviewer-visible naming note; the terminal match itself
+    # is carried by the FSRU vessel-name corroboration (see report_diff
+    # _fsru_vessel_match), not owner overlap.
     "karmol": "karmol",
+    "karmol ltd": "karmol",
     "karpowership": "karpowership",
     "karadeniz holding": "karpowership",
     "golar lng": "golar",
@@ -294,10 +351,12 @@ _CAPACITY_TO_MTPA = {
 
 
 def _normalize_input(s):
-    """Lowercase, strip, collapse whitespace, remove parenthetical content."""
+    """Lowercase, fold diacritics, strip, collapse whitespace, remove parens."""
     if s is None:
         return ""
-    s = str(s).lower().strip()
+    # Fold diacritics so accent-variant inputs ("Türkiye"/"Turkiye",
+    # "Enagás"/"Enagas") collapse to one form before map lookup / clustering.
+    s = _strip_diacritics(str(s)).lower().strip()
     # Remove parenthetical content
     s = re.sub(r"\([^)]*\)", "", s).strip()
     # Strip trailing periods
@@ -307,13 +366,22 @@ def _normalize_input(s):
     return s
 
 
+# _normalize_input folds diacritics, so a map key carrying one (e.g. "türkiye",
+# "côte d'ivoire", "enagás") would never be hit by a lookup. Pre-fold the keys so
+# both the accented and unaccented spellings resolve. Canonical VALUES keep their
+# preferred display form (with diacritics) — they're only compared for equality,
+# and both accent-variants now route to the same value.
+_COUNTRY_MAP_FOLDED = {_strip_diacritics(k): v for k, v in _COUNTRY_MAP.items()}
+_ENTITY_MAP_FOLDED = {_strip_diacritics(k): v for k, v in _ENTITY_MAP.items()}
+
+
 def normalize_country(s):
     """Return canonical country name. Unknown inputs returned lowercased/stripped."""
     norm = _normalize_input(s)
     if not norm:
         return ""
-    if norm in _COUNTRY_MAP:
-        return _COUNTRY_MAP[norm]
+    if norm in _COUNTRY_MAP_FOLDED:
+        return _COUNTRY_MAP_FOLDED[norm]
     return norm
 
 
@@ -322,13 +390,13 @@ def normalize_entity(s):
     norm = _normalize_input(s)
     if not norm:
         return ""
-    # Exact match first
-    if norm in _ENTITY_MAP:
-        return _ENTITY_MAP[norm]
+    # Exact match first (keys pre-folded so "höegh"/"hoegh" both resolve).
+    if norm in _ENTITY_MAP_FOLDED:
+        return _ENTITY_MAP_FOLDED[norm]
     # Substring match (longer keys first to avoid false positives)
-    for key in sorted(_ENTITY_MAP.keys(), key=len, reverse=True):
+    for key in sorted(_ENTITY_MAP_FOLDED.keys(), key=len, reverse=True):
         if norm.startswith(key + " ") or norm == key or " " + key + " " in " " + norm + " ":
-            return _ENTITY_MAP[key]
+            return _ENTITY_MAP_FOLDED[key]
     return norm
 
 
@@ -464,7 +532,12 @@ def transliterate_to_english(text, language=None):
     """
     if not text:
         return []
-    out = [text.lower().strip()]
+    # Fold diacritics on the Latin candidate so an accented OtherNames/LocalNames
+    # alias matches GIIGNL's accent-stripped spelling. Script detection and the
+    # CJK transliteration both run on the ORIGINAL `text` — folding never touches
+    # CJK codepoints (no combining marks, not in the fallback map), and pinyin
+    # output is already ASCII, so segmentation is unaffected.
+    out = [_strip_diacritics(text).lower().strip()]
     if _HAS_CHINESE_RE.search(text) or (language or "").lower().startswith("chinese"):
         tx = _transliterate_chinese(text)
         if tx and tx not in out:
@@ -472,6 +545,36 @@ def transliterate_to_english(text, language=None):
     # Hooks for future scripts (Japanese, Korean, Arabic, Russian, etc.)
     # would add their detect-and-transliterate branches here.
     return out
+
+
+# Trailing ", <Region>" tag on a GIIGNL site name (province/state/emirate).
+# Alpha-only segment (letters, space, dot, apostrophe), comma-gated, end-anchored,
+# and NOT consuming a final "expansion"/"extension" word (left for the fold).
+_TRAILING_REGION_RE = re.compile(
+    r",\s*(?!(?:[A-Za-z .']+\s+)?(?:expansion|extension)\s*$)"
+    r"[A-Za-z][A-Za-z .']*$",
+    re.IGNORECASE,
+)
+
+
+def _strip_trailing_region(s):
+    """Drop a single trailing ', <subnational region>' segment from an already
+    lower-cased name, only if the comma is not inside an unbalanced parenthetical.
+
+    'chaozhou, guangdong'        -> 'chaozhou'
+    'caofeidian (tangshan), hebei' -> 'caofeidian (tangshan)'
+    'tortue flng (gimi flng, greater tortue ahmeyim phase 1)' -> unchanged
+    'yangshan, shanghai expansion' -> unchanged (expansion-fold handles it)
+    """
+    m = _TRAILING_REGION_RE.search(s)
+    if not m:
+        return s
+    head = s[: m.start()]
+    # The comma must close at the top paren level: if `head` has more '(' than ')'
+    # the comma is inside a still-open parenthetical — leave it.
+    if head.count("(") > head.count(")"):
+        return s
+    return head.strip()
 
 
 def normalize_terminal_name(s):
@@ -486,7 +589,11 @@ def normalize_terminal_name(s):
     """
     if s is None:
         return ""
-    s = str(s).lower().strip()
+    # Fold diacritics so GIIGNL's accent-stripped spelling matches GEM's accented
+    # one: "Pecem" and "Pecém FSRU" both reduce to "pecem"; "Świnoujście" →
+    # "swinoujscie". Display names keep their accents — only this matching form is
+    # folded. Done before lowercasing/suffix-stripping (both operate on ASCII).
+    s = _strip_diacritics(str(s)).lower().strip()
     # Drop zero-width characters that some PDFs embed mid-token (GIIGNL typesets
     # "S(2 )" with a U+200B between the digit and the paren, which would otherwise
     # leave the designator token unmatchable against GEM's "s(2"). Covers ZWSP,
@@ -497,6 +604,19 @@ def normalize_terminal_name(s):
     # ("Prelude FLNG Terminal" -> "prelude"). The tag is kept in the displayed
     # site_name (it's only dropped here, for matching).
     s = re.sub(r"\s*\((?:fsru|flng|fsu|fru|fpso)\)\s*$", "", s)
+    # Strip a trailing ", <subnational region>" tag (matching only — display keeps
+    # it). GIIGNL frequently appends a province/state to Chinese, Indonesian,
+    # Canadian, UAE, etc. regas sites — "Chaozhou, Guangdong", "Saint John, New
+    # Brunswick", "Ruwais, Abu Dhabi" — that GEM never carries in the TerminalName,
+    # so the comma defeats the otherwise-clean substring/token match against GEM's
+    # "Chaozhou LNG Terminal". Conservative gates: comma-anchored; the trailing
+    # segment is alpha words only (letters/space/dot/apostrophe — no digits, no
+    # second comma), so it never eats a code or a multi-comma name; the comma must
+    # NOT sit inside an unclosed parenthetical (protects "Tortue FLNG (Gimi FLNG,
+    # Greater Tortue Ahmeyim Phase 1)"); and a trailing "Expansion"/"Extension"
+    # word is preserved (the report-side expansion-fold keys off it on the RAW
+    # name). GEM TerminalNames carry no commas, so this is a no-op on the GEM side.
+    s = _strip_trailing_region(s)
     # Strip common suffixes (order matters — longer first)
     suffixes = [
         " deepwater port lng terminal",
