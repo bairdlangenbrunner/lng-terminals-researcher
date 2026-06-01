@@ -1,4 +1,8 @@
 openpyxl>=3.1.0
-pdfplumber>=0.11
 jieba>=0.42
 pypinyin>=0.55
+
+# SYSTEM dependency (NOT pip-installable): giignl_extract.py shells out to the
+# `pdftotext` CLI from poppler — there is no Python PDF library in this repo.
+#   macOS:          brew install poppler
+#   Debian/Ubuntu:  apt-get install poppler-utils

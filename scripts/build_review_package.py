@@ -134,7 +134,22 @@ SHEET_DESCRIPTIONS = {
     "entity_additions": (
         "New owner/operator/parent entities the researcher will create. Each row "
         "includes lookup_was_run + lookup_result_summary as evidence that "
-        "entity_lookup.py was run first (no duplicate entities allowed per methodology)."
+        "entity_lookup.py was run first (no duplicate entities allowed per methodology). "
+        "In reconciliation mode this sheet also carries entities derived from the "
+        "§3.2.1 narrative findings' `owner_changes` arrays (e.g. a stake acquirer like "
+        "Stonepeak): lookup_was_run='RUN entity_lookup' flags one still needing the "
+        "dup-check (entity_lookup=='pending'); the source finding is named in "
+        "rationale_for_new_entity. Never auto-create — route through the dup-check first."
+    ),
+    "name_reconciliation": (
+        "Terminal rename reconciliation (reconciliation mode): one row per "
+        "`name_changes` entry from a §3.2.1 narrative finding — a former→current "
+        "terminal name the prose discloses (e.g. Driftwood → Woodside Louisiana LNG). "
+        "Columns: gem_terminal_name, old_name, new_name, gem_field (target GEM column, "
+        "typically OtherNames), anchor (rename year), citation, action_category. The "
+        "rename is a routing candidate for the Update workflow — fold the former name "
+        "into the GEM record's OtherNames; NEVER auto-applied (GIIGNL prose is not "
+        "authoritative, §3.8). Empty-sheet-omitted: only present when ≥1 name_change exists."
     ),
     "giignl_diff_operating": (
         "OPERATING match audit: GEM operating capacity vs GIIGNL's (operating-only) "
@@ -510,8 +525,94 @@ def build_entity_additions_sheet(wb, entity_additions):
     ]
     _write_header(ws, headers)
     for i, e in enumerate(entity_additions, start=2):
-        _write_row(ws, e, headers, i)
+        # Narrative-derived owner rows still needing a dup-check get a yellow
+        # flag on lookup_was_run so the researcher runs entity_lookup before
+        # creating the entity (no duplicate entities, per methodology).
+        cm = {}
+        if str(e.get("lookup_was_run", "")).upper().startswith("RUN"):
+            cm["lookup_was_run"] = "yellow"
+        _write_row(ws, e, headers, i, confidence_map=cm)
     _autosize(ws)
+
+
+def narrative_owner_entities(narrative_findings):
+    """Flatten §3.2.1 narrative findings' `owner_changes` arrays into
+    entity_additions-shaped rows. A new owner (e.g. Stonepeak acquiring a
+    stake) must go through the dup-check path before creation — so when
+    entity_lookup=='pending' we set lookup_was_run='RUN entity_lookup' as the
+    flag for the researcher. Nothing is auto-created (§3.8)."""
+    rows = []
+    for f in (narrative_findings or []):
+        for oc in f.get("owner_changes", []) or []:
+            entity = oc.get("entity", "")
+            if not entity:
+                continue
+            pending = oc.get("entity_lookup") == "pending"
+            pct = oc.get("pct")
+            pct_str = f"{pct}% " if pct is not None else ""
+            action = oc.get("action", "change")
+            stake_of = oc.get("stake_of", "")
+            counterparty = oc.get("counterparty", "")
+            terminal = f.get("gem_terminal_name") or f.get("site_name", "")
+            rationale = (
+                f"§3.2.1 narrative {action}: {entity} {action} "
+                f"{pct_str}stake of {stake_of}"
+                + (f" (counterparty {counterparty})" if counterparty else "")
+                + (f"; anchor {oc.get('anchor')}" if oc.get("anchor") else "")
+                + (f". CITES: {f.get('citation')}" if f.get("citation") else "")
+            )
+            rows.append({
+                "entity_name": entity,
+                "entity_type": "owner",
+                "country_of_hq": "",
+                "parent_entity": "",
+                "rationale_for_new_entity": rationale,
+                "lookup_was_run": "RUN entity_lookup" if pending else "done",
+                "lookup_result_summary": (
+                    "PENDING — run entity_lookup.py before creating (avoid dup)"
+                    if pending else ""
+                ),
+                "referenced_by_terminals": terminal,
+                "referenced_by_units": "",
+                "researcher_initials": "",
+            })
+    return rows
+
+
+NAME_RECONCILIATION_HEADERS = [
+    "gem_terminal_name", "old_name", "new_name", "gem_field",
+    "anchor", "citation", "action_category",
+]
+
+
+def build_name_reconciliation_sheet(wb, narrative_findings):
+    """Terminal renames from §3.2.1 narrative findings' `name_changes` arrays.
+    One row per name_change. Empty-sheet-omitted: caller only invokes this when
+    there is at least one name_change. The rename is a routing candidate for the
+    Update workflow (fold former name into OtherNames); never auto-applied (§3.8)."""
+    ws = wb.create_sheet("name_reconciliation")
+    headers = NAME_RECONCILIATION_HEADERS
+    _write_header(ws, headers)
+    row_idx = 2
+    for f in (narrative_findings or []):
+        for nc in f.get("name_changes", []) or []:
+            row = {
+                "gem_terminal_name": f.get("gem_terminal_name") or f.get("site_name", ""),
+                "old_name": nc.get("old", ""),
+                "new_name": nc.get("new", ""),
+                "gem_field": nc.get("gem_field", "OtherNames"),
+                "anchor": nc.get("anchor", ""),
+                "citation": f.get("citation", ""),
+                "action_category": "narrative_name_delta",
+            }
+            _write_row(ws, row, headers, row_idx,
+                       confidence_map={"action_category": "yellow"})
+            row_idx += 1
+    _autosize(ws)
+
+
+def _count_narrative_name_changes(narrative_findings):
+    return sum(len(f.get("name_changes", []) or []) for f in (narrative_findings or []))
 
 
 GIIGNL_OPERATING_HEADERS = [
@@ -763,6 +864,69 @@ def build_giignl_to_action_sheet(wb, diff, narrative_findings=None):
         }
         _write_row(ws, row, headers, row_idx, confidence_map={"action_category": fill})
         row_idx += 1
+
+        # Structured owner-change deltas (also routed to entity_additions). One
+        # narrative_owner_delta row per owner_changes entry, summarizing the stake
+        # change with the finding's citation. Routing candidate only (§3.8).
+        for oc in f.get("owner_changes", []) or []:
+            pct = oc.get("pct")
+            pct_str = f"{pct}% " if pct is not None else ""
+            summary = (
+                f"{oc.get('action', 'change')} {pct_str}stake of "
+                f"{oc.get('stake_of', '')}"
+                + (f" (counterparty {oc.get('counterparty')})"
+                   if oc.get("counterparty") else "")
+                + (f"; anchor {oc.get('anchor')}" if oc.get("anchor") else "")
+            )
+            oc_note = summary
+            if cite:
+                oc_note = f"{oc_note}  ||  CITES: {cite}"
+            oc_note = f"{oc_note}  ||  see entity_additions ({oc.get('entity', '')})"
+            owner_row = {
+                "action_category": "narrative_owner_delta",
+                "country": f.get("country", ""),
+                "site_name": f.get("site_name", ""),
+                "gem_terminal_id": "",
+                "gem_terminal_name": f.get("gem_terminal_name", ""),
+                "report_capacity_mtpa": "",
+                "gem_capacity_mtpa": "",
+                "section_type": f.get("section_type", ""),
+                "owners": oc.get("entity", ""),
+                "recommended_workflow": "Update (verify stake; run entity_lookup; do NOT auto-apply)",
+                "notes": oc_note,
+            }
+            _write_row(ws, owner_row, headers, row_idx,
+                       confidence_map={"action_category": "yellow"})
+            row_idx += 1
+
+        # Structured rename deltas (also routed to name_reconciliation). One
+        # narrative_name_delta row per name_changes entry. Routing candidate (§3.8).
+        for nc in f.get("name_changes", []) or []:
+            nm_note = (
+                f"rename: '{nc.get('old', '')}' -> '{nc.get('new', '')}' "
+                f"(GEM field {nc.get('gem_field', 'OtherNames')}"
+                + (f", anchor {nc.get('anchor')}" if nc.get("anchor") else "")
+                + ")"
+            )
+            if cite:
+                nm_note = f"{nm_note}  ||  CITES: {cite}"
+            nm_note = f"{nm_note}  ||  see name_reconciliation"
+            name_row = {
+                "action_category": "narrative_name_delta",
+                "country": f.get("country", ""),
+                "site_name": f.get("site_name", ""),
+                "gem_terminal_id": "",
+                "gem_terminal_name": f.get("gem_terminal_name", ""),
+                "report_capacity_mtpa": "",
+                "gem_capacity_mtpa": "",
+                "section_type": f.get("section_type", ""),
+                "owners": "",
+                "recommended_workflow": "Update (fold former name into OtherNames; do NOT auto-apply)",
+                "notes": nm_note,
+            }
+            _write_row(ws, name_row, headers, row_idx,
+                       confidence_map={"action_category": "yellow"})
+            row_idx += 1
     _autosize(ws)
 
 
@@ -1094,6 +1258,19 @@ def main():
         qa = _safe_load(inputs_dir / "staged_qa_review.json", default=[])
         narrative = _safe_load(inputs_dir / "giignl_narrative_findings.json", default={})
         narrative_findings = narrative.get("findings", []) if isinstance(narrative, dict) else []
+        # entity_additions in reconciliation mode = any staged entities plus the
+        # ones derived from §3.2.1 narrative findings' owner_changes (so a stake
+        # acquirer like Stonepeak goes through the dup-check path). name_changes
+        # feed a separate name_reconciliation sheet.
+        staged_entity_adds = _safe_load(inputs_dir / "staged_entity_additions.json", default=[])
+        narrative_entities = narrative_owner_entities(narrative_findings)
+        entity_adds = staged_entity_adds + narrative_entities
+        name_change_count = _count_narrative_name_changes(narrative_findings)
+        # Reconciliation can also surface country_notes_contributions — e.g. GEM
+        # OtherNames alias additions drafted from orphan rows that are the same
+        # terminal under a name shape GEM doesn't carry yet (Suntien=Xintian,
+        # GDLNG=Guangdong Dapeng), for the user to apply manually.
+        country_notes = _safe_load(inputs_dir / "staged_country_notes.json", default=[])
 
         inputs_summary = {
             "report_type": diff.get("report_type", args.report or "?"),
@@ -1101,6 +1278,9 @@ def main():
             **diff.get("stats", {}),
             "qa_review_items": len(qa),
             "narrative_findings": len(narrative_findings),
+            "narrative_owner_entities": len(narrative_entities),
+            "narrative_name_changes": name_change_count,
+            "country_notes": len(country_notes),
         }
         # SOP §6 gate triggers — surface to README
         stats = diff.get("stats", {})
@@ -1126,6 +1306,13 @@ def main():
                 build_candidate_edits_sheet(wb, diff, args.gem_csv)
             if args.extracted_csv and Path(args.extracted_csv).exists():
                 build_giignl_full_extract_sheet(wb, args.extracted_csv)
+        # Narrative-derived structured deltas (empty-sheet-omitted convention).
+        if entity_adds:
+            build_entity_additions_sheet(wb, entity_adds)
+        if name_change_count:
+            build_name_reconciliation_sheet(wb, narrative_findings)
+        if country_notes:
+            build_country_notes_sheet(wb, country_notes)
         if qa:
             build_qa_review_sheet(wb, qa)
 

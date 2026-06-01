@@ -936,18 +936,117 @@ def _merge_split_country_runs(rows: list[dict]) -> dict[str, str]:
     return renames
 
 
-# Narrow, edition-specific site→country fallbacks for the few LIQUEFACTION blocks
-# whose country label is so badly interleaved with the multi-line data row that
-# the structural walk can't resolve it: GIIGNL stacks "Equatorial"/"Guinea"
-# ABOVE and BELOW the single EG LNG row, and "Mauritania/"/"Senegal" around the
-# multi-line Tortue/Gimi FLNG row, so neither the label stitcher nor the
-# subtotal reclaim can recover them. Each maps a distinctive site-name substring
-# to the country GEM files the terminal under (GEM keeps GTA under "Mauritania").
-# Auditable, exact, and guarded by distinctive substrings — re-verify per edition.
+def _merge_split_site_runs(
+    rows: list[dict],
+    subtotal_by_country: dict[str, float],
+    reach_high: float = 1.06,
+    max_iter: int = 8,
+) -> None:
+    """Unify a same-site row group that the country walk split across a boundary.
+
+    GIIGNL vertically centers a country label+subtotal within its block, so a
+    block's LEADING per-train rows inherit the *previous* country. When the
+    leading row is the first train of a multi-train site and the rest of that
+    same site sits in the (correct) next block, the site ends up split across a
+    country boundary — e.g. liquefaction page 33 stacks "Atlantic LNG T1
+    (Mothballed)" above the centered "Trinidad &" label, so T1 inherits Russia
+    while T2/T3/T4 are Trinidad; the first "Calcasieu Pass LNG T1-6" row inherits
+    Trinidad (its centered label) while T7-12/T13-18 are USA; "Oman T1" inherits
+    USA while T2 is Oman; "Brunei T1/T2" inherit Australia while T3-T5 are Brunei.
+    The subtotal-budget passes can't repair the two-sided cases: the donor run is
+    over its subtotal because of the wrongly-appended trailing row at the SAME
+    time it's missing the leading row that went to the previous country, so the
+    "short run" reclaim never fires, and Russia's non-contiguous segments collapse
+    its subtotal in `_robust_subtotal_map` anyway.
+
+    A run of consecutive rows sharing an IDENTICAL site_name that spans >1 country
+    is an unambiguous misattribution signal — GIIGNL never lists one terminal
+    under two countries (the lone cross-border case, GTA Tortue, is handled by
+    `_SITE_COUNTRY_OVERRIDES`). This pass unifies each such group to the country
+    among its rows that, on receiving the WHOLE group, lands CLOSEST to (and
+    within `reach_high` of) its published subtotal — the published subtotals are
+    two independent anchors, so the closest-fit target is the side that genuinely
+    owns the site (Oman's 11.4 subtotal completes to 11.5 with both Oman trains;
+    USA's 115.4 would balloon to 119.4). Iterated to a fixpoint because groups
+    chain through a shared donor: Calcasieu must vacate Trinidad before Trinidad
+    is at-budget enough to receive Atlantic. Subtotal guard (within `reach_high`)
+    rejects any unification that would blow the target's budget; a group whose
+    target can't be fit is left split (the safe outcome) rather than forced.
+    """
+    n = len(rows)
+    if n == 0:
+        return
+    caps = [_parse_float(r["capacity_mtpa"]) or 0.0 for r in rows]
+
+    def _site_key(r: dict) -> str:
+        return _norm_frag(r.get("site_name") or "")
+
+    def _group_spans() -> list[tuple[int, int]]:
+        spans = []
+        i = 0
+        while i < n:
+            key = _site_key(rows[i])
+            j = i
+            while j < n and _site_key(rows[j]) == key and key:
+                j += 1
+            if key and j - i >= 2:
+                gc = {rows[k]["country"] for k in range(i, j) if rows[k]["country"]}
+                if len(gc) >= 2:
+                    spans.append((i, j))
+            i = j
+        return spans
+
+    for _ in range(max_iter):
+        changed = False
+        for (s, e) in _group_spans():
+            group_cap = sum(caps[k] for k in range(s, e))
+            group_countries = sorted({rows[k]["country"] for k in range(s, e) if rows[k]["country"]})
+            # Current per-country totals (whole section) — used to compute each
+            # candidate's resulting total if it absorbed the entire group.
+            totals: dict[str, float] = {}
+            for idx in range(n):
+                c = rows[idx]["country"]
+                if c:
+                    totals[c] = totals.get(c, 0.0) + caps[idx]
+            best_c, best_dist = None, None
+            for c in group_countries:
+                S = subtotal_by_country.get(c)
+                if S is None:
+                    continue
+                resulting = totals.get(c, 0.0) - sum(
+                    caps[k] for k in range(s, e) if rows[k]["country"] == c
+                ) + group_cap
+                if resulting > S * reach_high:
+                    continue
+                dist = abs(resulting - S)
+                if best_dist is None or dist < best_dist:
+                    best_c, best_dist = c, dist
+            if best_c is not None and any(rows[k]["country"] != best_c for k in range(s, e)):
+                for k in range(s, e):
+                    rows[k]["country"] = best_c
+                changed = True
+        if not changed:
+            break
+
+
+# Narrow, edition-specific site→country fallbacks for the few blocks whose country
+# label is so badly interleaved that neither the label stitcher nor the subtotal
+# reclaim can resolve it. LIQUEFACTION: GIIGNL stacks "Equatorial"/"Guinea" ABOVE
+# and BELOW the single EG LNG row, and "Mauritania/"/"Senegal" around the
+# multi-line Tortue/Gimi FLNG row. REGASIFICATION: "Oristano, Sardinia" (the
+# HIGAS / Santa Giusta truck-loading micro-terminal, 0.2 MTPA) is Italy's LEADING
+# row but sits just above the centered "Italy" label, so it inherits the previous
+# country (Greece); the per-page true-up can't reclaim it because Italy's other
+# rows already land within 1% of its 22.3 MTPA subtotal (22.1), so Italy never
+# reads as "short" and the 0.2 row is left stranded in Greece. "Oristano"/Sardinia
+# is unambiguously Italy, so a site override is the auditable fix. Each maps a
+# distinctive site-name substring to the country GEM files the terminal under (GEM
+# keeps GTA under "Mauritania"). Exact, distinctive substrings — re-verify per edition.
 _SITE_COUNTRY_OVERRIDES = [
     ("eg lng", "Equatorial Guinea"),
     ("png lng", "Papua New Guinea"),
     ("tortue", "Mauritania"),
+    ("oristano", "Italy"),
 ]
 
 
@@ -1198,6 +1297,7 @@ def extract(pdf_path: str, output_csv: str, year: int = 2026) -> dict:
         for _old, _new in _merge_split_country_runs(liq_rows).items():
             if _old in liq_subtotals:
                 liq_subtotals[_new] = liq_subtotals.pop(_old)
+        _merge_split_site_runs(liq_rows, liq_subtotals)
         _reassign_country_islands(liq_rows, liq_subtotals)
         _reclaim_cross_page(liq_rows, liq_subtotals)
         all_rows.extend(liq_rows)
@@ -1220,6 +1320,7 @@ def extract(pdf_path: str, output_csv: str, year: int = 2026) -> dict:
         for _old, _new in _merge_split_country_runs(regas_rows).items():
             if _old in regas_subtotals:
                 regas_subtotals[_new] = regas_subtotals.pop(_old)
+        _merge_split_site_runs(regas_rows, regas_subtotals)
         _reassign_country_islands(regas_rows, regas_subtotals)
         _reclaim_cross_page(regas_rows, regas_subtotals)
         all_rows.extend(regas_rows)
