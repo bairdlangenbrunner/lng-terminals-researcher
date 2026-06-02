@@ -49,6 +49,7 @@ import csv
 import json
 import re
 import sys
+import unicodedata
 from datetime import date
 from pathlib import Path
 
@@ -213,9 +214,15 @@ SHEET_DESCRIPTIONS = {
         "the gem-only flag (GIIGNL does list it, just as not-operating). Worked example: "
         "Taichung Phase 3 (construction →10) IS in the "
         "p.52 narrative (mention filled, no highlight); Phase 4 (proposed →13) is "
-        "absent everywhere (highlighted). Columns: country, gem_terminal_name, "
-        "gem_unit_name, status, capacity_mtpa, start_year (status-appropriate anchor), "
-        "section_type, owners, giignl_narrative_mention, gem_only_flag."
+        "absent everywhere (highlighted). A THIRD, terminal-level cross-check also fills "
+        "`giignl_narrative_mention`: a §3.2.1 narrative finding whose terminal+section "
+        "matches this unit (Darwin Barossa restart, NLNG Train 7) annotates the cell with "
+        "the prose + recommended action so the reviewer cross-checks it — but, being "
+        "terminal-level (it doesn't pin THIS unit's phase), it does NOT clear the gem-only "
+        "flag (unlike the two unit-level confirmations above). Columns: country, "
+        "gem_terminal_name, gem_unit_name, status, capacity_mtpa, start_year "
+        "(status-appropriate anchor), section_type, owners, giignl_narrative_mention, "
+        "gem_only_flag."
     ),
     "giignl_to_action": (
         "Workflow routing: per-finding action recommendations. Categories: "
@@ -250,6 +257,27 @@ SHEET_DESCRIPTIONS = {
         "vessel_name, notes (includes original row name and any status hint). "
         "Use this to verify what GIIGNL actually said before judging a "
         "disagreement; report_page lets you cross-check against the PDF."
+    ),
+    "giignl_fsru_fleet": (
+        "Cross-check of the GIIGNL 'FSRU FLEET AT THE END OF <year>' table "
+        "(parsed by giignl_fsru_fleet.py from PDF p.43) against GEM's floating-"
+        "vessel records — one row per deployed/spot/orderbook fleet vessel. This "
+        "table catches FSRUs the country regas tables OMIT (e.g. Tema LNG, vessel "
+        "'Torman'), which the terminal diff structurally can't surface. Each fleet "
+        "vessel is matched to a GEM FSRU terminal by vessel name (incl. ex-names) "
+        "then deployment location (site+country); `match_basis` records how (or "
+        "'unmatched'/'ambiguous_*', highlighted, for the reviewer to resolve). "
+        "Three checks: (a) `fsru_name_convention` — RED when the matched GEM "
+        "terminal name lacks 'FSRU'/'FSU' (GEM convention is to include it); "
+        "(b) `vessel_name_delta` — GIIGNL vs GEM FloatingVesselName (blank→add, "
+        "no-overlap→possible reassignment/OtherName, minor→naming note); "
+        "(c) `vessel_owner_delta` — GIIGNL owner vs GEM VesselOwner. "
+        "`suggested_action` synthesizes the recommended Update edits. Never "
+        "auto-applied. Columns: giignl_vessel_name, giignl_ex_names, giignl_owner, "
+        "giignl_storage_m3, giignl_sendout_mtpa, giignl_location, deployment_status, "
+        "match_basis, gem_terminal_id/name/unit/status, gem_floating_vessel_name, "
+        "gem_vessel_owner, gem_vessel_operator, fsru_name_convention, "
+        "vessel_name_delta, vessel_owner_delta, suggested_action."
     ),
     "fsru_sync": (
         "Cross-check of FSRU records between GEM terminals and the LNG carrier "
@@ -635,6 +663,301 @@ def _count_narrative_name_changes(narrative_findings):
     return sum(len(f.get("name_changes", []) or []) for f in (narrative_findings or []))
 
 
+def _norm_term_name(s):
+    """Loose terminal-name key for cross-referencing a §3.2.1 narrative finding to
+    a GEM unit-row: lowercase, drop the generic facility words, keep alphanumerics."""
+    s = (s or "").lower()
+    for kill in ("lng terminal", "terminal", "flng", "fsru", "fsu", "lng"):
+        s = s.replace(kill, " ")
+    s = re.sub(r"[^a-z0-9 ]", " ", s)
+    return re.sub(r"\s+", " ", s).strip()
+
+
+def _narrative_finding_for_unit(unit, narrative_findings):
+    """Return the §3.2.1 narrative finding (from giignl_narrative_findings.json)
+    whose terminal + section matches this non-operating GEM unit, else None. Used
+    to cross-check giignl_diff_nonoperating against the GIIGNL prose pages — a
+    forward/idled phase GEM tracks that GIIGNL's operating TABLE omits is often
+    discussed in GIIGNL's narrative (Darwin Barossa restart, NLNG Train 7, etc.)."""
+    tn = _norm_term_name(unit.get("gem_terminal_name"))
+    sect = (unit.get("section_type") or "").strip().lower()
+    if not tn:
+        return None
+    for f in (narrative_findings or []):
+        fname = _norm_term_name(f.get("gem_terminal_name") or f.get("site_name") or "")
+        fsect = (f.get("section_type") or "").strip().lower()
+        if fsect and sect and fsect != sect:
+            continue
+        if fname and (fname == tn or (len(fname) > 3 and (fname in tn or tn in fname))):
+            return f
+    return None
+
+
+def _narrative_terminal_note(f):
+    """Human-readable terminal-level narrative cross-reference for the
+    giignl_narrative_mention cell — annotates the unit so the reviewer cross-checks
+    it against the prose, WITHOUT auto-suppressing the 'GEM has, GIIGNL doesn't'
+    flag (a terminal-level prose mention doesn't confirm this specific unit's phase)."""
+    prose = (f.get("prose_finding") or f.get("summary") or "").strip()
+    rec = (f.get("recommended_status_change")
+           or f.get("recommended_workflow") or "").strip()
+    cite = (f.get("citation") or "").strip()
+    bits = [f"GIIGNL 2026 narrative discusses this terminal (confirm it applies to "
+            f"this unit): {prose}"]
+    if rec:
+        bits.append(f"[recommended: {rec}]")
+    if cite:
+        bits.append(f"({cite})")
+    return " ".join(b for b in bits if b)
+
+
+# ---------------------------------------------------------------------------
+# FSRU fleet (GIIGNL fleet table) ↔ GEM cross-check
+# ---------------------------------------------------------------------------
+#
+# The GIIGNL FSRU fleet table (parsed by giignl_fsru_fleet.py) lists every
+# deployed FSRU vessel + its deployment terminal. It catches FSRUs the country
+# tables omit (Tema LNG / "Torman"), and carries vessel name + owner GEM tracks
+# in FloatingVesselName / VesselOwner. This cross-check matches each fleet vessel
+# to a GEM FSRU terminal and surfaces: (a) GEM terminals missing the "FSRU"
+# naming convention, (b) vessel-name deltas (incl. reassignments), (c) vessel-
+# owner deltas. Never auto-applied — suggestions for the Update workflow.
+
+# Generic owner/type words that aren't distinctive enough to match vessels on.
+_VESSEL_STOPWORDS = {
+    "excelerate", "hoegh", "bw", "energos", "karmol", "lng", "lngt", "fsru",
+    "fsu", "fru", "flng", "powership", "gaslog", "mol", "snam", "spa", "inc",
+    "ltd", "co", "corp", "group", "infrastructure", "inf", "energy", "pgn",
+    "the", "of", "and", "new", "ex",
+}
+
+
+def _norm_ascii(s):
+    return unicodedata.normalize("NFKD", s or "").encode("ascii", "ignore").decode().lower()
+
+
+def _vessel_tokens(name):
+    """Distinctive (non-stopword, len>=3) tokens of a vessel name — so 'Excellence'
+    matches GEM 'Excelerate Excellence' without 'excelerate' false-matching every
+    Excelerate vessel."""
+    return {t for t in re.findall(r"[a-z0-9]+", _norm_ascii(name))
+            if len(t) >= 3 and t not in _VESSEL_STOPWORDS}
+
+
+def _name_tokens(name):
+    return {t for t in re.findall(r"[a-z0-9]+", _norm_ascii(name)) if len(t) >= 3}
+
+
+def _load_gem_fsru_rows(gem_csv_path):
+    """GEM rows that are floating (FSRU/FSU/FRU by facility_type, the Floating
+    flag, or a non-empty FloatingVesselName), with precomputed match tokens."""
+    colmap_path = re.sub(r"\.csv$", ".colmap.json", gem_csv_path)
+    cm = json.loads(Path(colmap_path).read_text()) if Path(colmap_path).exists() else {}
+    rows = []
+    with open(gem_csv_path, encoding="utf-8") as f:
+        rdr = csv.reader(f)
+        header = next(rdr)
+        if header and header[0].startswith("﻿"):
+            header[0] = header[0][1:]
+
+        def col(snake, *csv_names):
+            if snake in cm:
+                return cm[snake]
+            for nm in csv_names:
+                if nm in header:
+                    return header.index(nm)
+            return None
+
+        I = {
+            "terminal_id": col("terminal_id", "TerminalID"),
+            "terminal_name": col("terminal_name", "TerminalName"),
+            "unit_name": col("unit_name", "UnitName"),
+            "country": col("country", "Country"),
+            "status": col("status", "Status"),
+            "facility_type": col("facility_type", "FacilityType"),
+            "floating": col("floating", "Floating"),
+            "fvn": col("floating_vessel_name", "FloatingVesselName"),
+            "vowner": col("vessel_owner", "VesselOwner"),
+            "voper": col("vessel_operator", "VesselOperator"),
+        }
+        for r in rdr:
+            def gv(k):
+                i = I.get(k)
+                return (r[i] if i is not None and i < len(r) else "") or ""
+            ft, fl, fvn = gv("facility_type"), gv("floating"), gv("fvn")
+            is_fsru = ("fsru" in ft.lower() or "fsu" in ft.lower() or "fru" in ft.lower()
+                       or fl.strip().lower() in ("true", "yes", "1") or bool(fvn.strip()))
+            if not is_fsru:
+                continue
+            tname = gv("terminal_name")
+            vtok = set()
+            for part in re.split(r"[;,/]| and ", fvn):
+                vtok |= _vessel_tokens(part)
+            rows.append({
+                "terminal_id": gv("terminal_id"),
+                "terminal_name": tname,
+                "unit_name": gv("unit_name"),
+                "country": gv("country"),
+                "country_norm": _norm_ascii(gv("country")),
+                "status": gv("status"),
+                "floating_vessel_name": fvn,
+                "vessel_owner": gv("vowner"),
+                "vessel_operator": gv("voper"),
+                "vessel_tokens": vtok,
+                "name_tokens": _name_tokens(tname),
+            })
+    return rows
+
+
+def _uniq_terminals(rows):
+    """Collapse GEM unit-rows to one row per terminal_id (the export carries many
+    unit-rows per terminal). Prefer an operating row so a vessel matches the live
+    terminal, not a cancelled/proposed sibling that reused the same vessel name."""
+    by_tid = {}
+    for g in rows:
+        tid = g["terminal_id"]
+        cur = by_tid.get(tid)
+        if cur is None or (g["status"] == "operating" and cur["status"] != "operating"):
+            by_tid[tid] = g
+    return list(by_tid.values())
+
+
+def _match_fleet_vessel(v, gem_rows):
+    """Match a GIIGNL fleet vessel to a GEM FSRU TERMINAL. Returns (gem_row|None,
+    basis). Vessel-name token overlap is primary; deployment location (site token
+    in the GEM terminal name, same country) disambiguates / is the fallback. Match
+    sets are deduped to one row per terminal_id before counting uniqueness."""
+    gtok = set()
+    for n in [v.get("vessel_name", "")] + (v.get("ex_names") or []):
+        gtok |= _vessel_tokens(n)
+    country = _norm_ascii(v.get("location_country", ""))
+    site_toks = {t for t in re.findall(r"[a-z0-9]+", _norm_ascii(v.get("location_site", "")))
+                 if len(t) >= 3}
+
+    vmatch = _uniq_terminals([g for g in gem_rows if gtok & g["vessel_tokens"]])
+    lmatch = _uniq_terminals([
+        g for g in gem_rows
+        if (not country or not g["country_norm"]
+            or country in g["country_norm"] or g["country_norm"] in country)
+        and (site_toks & g["name_tokens"])
+    ])
+    ltids = {g["terminal_id"] for g in lmatch}
+
+    if len(vmatch) == 1:
+        return vmatch[0], "vessel_name"
+    if len(vmatch) > 1:
+        # Narrow a vessel-name tie by deployment country, then by site token.
+        same_country = [g for g in vmatch if country and g["country_norm"]
+                        and (country in g["country_norm"] or g["country_norm"] in country)]
+        if len(same_country) == 1:
+            return same_country[0], "vessel_name+country"
+        inter = [g for g in (same_country or vmatch) if g["terminal_id"] in ltids]
+        if len(inter) == 1:
+            return inter[0], "vessel_name+location"
+        return None, "ambiguous_vessel_name"
+    if len(lmatch) == 1:
+        return lmatch[0], "location"
+    if len(lmatch) > 1:
+        return None, "ambiguous_location"
+    return None, "unmatched"
+
+
+def _has_fsru_in_name(name):
+    return bool(re.search(r"\b(fsru|fsu|fru)\b", _norm_ascii(name)))
+
+
+def build_fsru_fleet_sheet(wb, fleet, gem_csv_path):
+    """Cross-check the GIIGNL FSRU fleet table against GEM's floating-vessel
+    records. One row per fleet vessel. See the section comment above."""
+    gem_rows = _load_gem_fsru_rows(gem_csv_path)
+    ws = wb.create_sheet("giignl_fsru_fleet")
+    headers = [
+        "giignl_vessel_name", "giignl_ex_names", "giignl_owner",
+        "giignl_storage_m3", "giignl_sendout_mtpa", "giignl_location",
+        "deployment_status", "match_basis",
+        "gem_terminal_id", "gem_terminal_name", "gem_unit_name", "gem_status",
+        "gem_floating_vessel_name", "gem_vessel_owner", "gem_vessel_operator",
+        "fsru_name_convention", "vessel_name_delta", "vessel_owner_delta",
+        "suggested_action",
+    ]
+    _write_header(ws, headers)
+    for i, v in enumerate(fleet.get("vessels", []), start=2):
+        gem, basis = _match_fleet_vessel(v, gem_rows)
+        loc = ", ".join(p for p in [v.get("location_site"), v.get("location_country")] if p) \
+            or v.get("location_raw", "")
+        cm = {}
+        fsru_flag = vname_delta = vowner_delta = ""
+        actions = []
+        gem_tname = gem.get("terminal_name", "") if gem else ""
+
+        if gem is None:
+            cm["match_basis"] = "red" if v.get("location_status") == "deployed" else "yellow"
+            if v.get("location_status") == "deployed":
+                actions.append("No GEM FSRU terminal found for this deployed vessel — "
+                                "verify GEM coverage (may be missing, or named very differently).")
+            else:
+                actions.append(f"Vessel is {v.get('location_status')} (no deployment) and "
+                               "not found in GEM by name — informational.")
+        else:
+            # (a) FSRU naming convention.
+            if _has_fsru_in_name(gem_tname):
+                fsru_flag = "OK ('FSRU'/'FSU' present)"
+            else:
+                fsru_flag = "MISSING — GEM terminal name has no 'FSRU'/'FSU' (convention)"
+                cm["fsru_name_convention"] = "red"
+                actions.append(f"Add 'FSRU' to the GEM terminal name (now '{gem_tname}').")
+            # (b) vessel-name delta.
+            gvn = gem.get("floating_vessel_name", "")
+            gvtok, fvtok = gem.get("vessel_tokens", set()), _vessel_tokens(v.get("vessel_name", ""))
+            if not gvn.strip():
+                vname_delta = f"GEM vessel blank; GIIGNL='{v.get('vessel_name')}'"
+                cm["vessel_name_delta"] = "yellow"
+                actions.append(f"Set GEM FloatingVesselName to '{v.get('vessel_name')}'.")
+            elif fvtok and gvtok and not (fvtok & gvtok):
+                vname_delta = f"GIIGNL='{v.get('vessel_name')}' vs GEM='{gvn}' (no overlap)"
+                cm["vessel_name_delta"] = "red"
+                actions.append("Vessel mismatch — verify reassignment, or add GIIGNL name to "
+                               "OtherNames / correct FloatingVesselName.")
+            elif _norm_ascii(v.get("vessel_name", "")) != _norm_ascii(gvn) and (fvtok & gvtok):
+                vname_delta = f"naming differs: GIIGNL='{v.get('vessel_name')}' vs GEM='{gvn}'"
+                cm["vessel_name_delta"] = "yellow"
+            # (c) vessel-owner delta.
+            gvo, gio = gem.get("vessel_owner", ""), v.get("vessel_owner", "")
+            if gio.strip() and not gvo.strip():
+                vowner_delta = f"GEM vessel_owner blank; GIIGNL='{gio}'"
+                cm["vessel_owner_delta"] = "yellow"
+                actions.append(f"Set GEM VesselOwner to '{gio}'.")
+            elif gio.strip() and gvo.strip() and not (_name_tokens(gio) & _name_tokens(gvo)):
+                vowner_delta = f"GIIGNL='{gio}' vs GEM='{gvo}'"
+                cm["vessel_owner_delta"] = "yellow"
+                actions.append("Verify vessel owner (GIIGNL vs GEM differ).")
+
+        row = {
+            "giignl_vessel_name": v.get("vessel_name"),
+            "giignl_ex_names": ", ".join(v.get("ex_names") or []),
+            "giignl_owner": v.get("vessel_owner"),
+            "giignl_storage_m3": v.get("storage_m3"),
+            "giignl_sendout_mtpa": v.get("sendout_mtpa"),
+            "giignl_location": loc,
+            "deployment_status": v.get("location_status"),
+            "match_basis": basis,
+            "gem_terminal_id": gem.get("terminal_id", "") if gem else "",
+            "gem_terminal_name": gem_tname,
+            "gem_unit_name": gem.get("unit_name", "") if gem else "",
+            "gem_status": gem.get("status", "") if gem else "",
+            "gem_floating_vessel_name": gem.get("floating_vessel_name", "") if gem else "",
+            "gem_vessel_owner": gem.get("vessel_owner", "") if gem else "",
+            "gem_vessel_operator": gem.get("vessel_operator", "") if gem else "",
+            "fsru_name_convention": fsru_flag,
+            "vessel_name_delta": vname_delta,
+            "vessel_owner_delta": vowner_delta,
+            "suggested_action": " ".join(actions),
+        }
+        _write_row(ws, row, headers, i, confidence_map=cm)
+    _autosize(ws)
+    ws.freeze_panes = "A2"
+
+
 GIIGNL_OPERATING_HEADERS = [
     "disagreements", "insight", "suggested_resolution",
     "match_type", "confidence", "match_granularity", "level",
@@ -688,10 +1011,11 @@ _OWNER_LEGAL_SUFFIX = {
 # / JV company (a project vehicle), not a beneficial shareholder. The "one source
 # lists the vehicle, the other lists the shareholders" delta is representational.
 _VEHICLE_MARKERS = ("lng", "terminal", "regas", "gnl", "ute", "development",
-                    "project", "liquefaction", "natural gas")
+                    "project", "liquefaction", "natural gas", "infrastructure",
+                    "authority", "regasification")
 # GIIGNL owner-cell extraction shards / aggregate phrasings that aren't real owners.
 _OWNER_NOISE_RE = re.compile(
-    r"[%\[\]]|jv between|charterer:|govnt|its entities|including|^\(|\)$")
+    r"[%\[\]]|jv between|charterer:|govnt|its entities|including|^\(|\)$|\bunknown\b")
 # Short-form/acronym aliases GIIGNL uses for GEM's full legal names (the recurring
 # ones; the fuller canonical map is docs/reference/entity_canonical_map.md). Matched
 # bidirectionally on core tokens.
@@ -760,10 +1084,14 @@ def _owner_delta_is_benign(m):
           Petroliam Nasional Bhd, KOGAS = Korea Gas Corp); or
       (b) shareholder-granularity: one source lists ONLY the project/JV vehicle(s)
           while the other lists >=2 beneficial shareholders (GEM 'LNG Canada
-          Development Inc' vs GIIGNL's five shareholders).
-    Conservative: a single unexplained real entity on one side (a plausible new
-    owner — Bahia's Excelerate, Dhamra's TotalEnergies) stays NON-benign so it
-    routes to research."""
+          Development Inc' vs GIIGNL's five shareholders); or
+      (c) superset/granularity: one side's unexplained owners are empty (the GEM
+          owner is in the overlap) and the OTHER side merely adds a >=2-name
+          shareholder breakdown or only project vehicles (Angola: GEM 'Angola LNG'
+          + GIIGNL's five PSC partners; Altamira: + the operating-company vehicle).
+    Conservative: a SINGLE unexplained real entity on one side (a plausible new
+    owner, or a stray contamination fragment like a lone 'Shell') stays NON-benign
+    so it routes to research (Bahia's Excelerate, Dhamra's TotalEnergies)."""
     rep_only = m.get("owners_report_only") or []
     gem_only = m.get("owners_gem_only") or []
     if not rep_only and not gem_only:
@@ -785,6 +1113,14 @@ def _owner_delta_is_benign(m):
     if gem_real and all(_owner_is_vehicle(o) for o in gem_real) and len(rep_real) >= 2:
         return True
     if rep_real and all(_owner_is_vehicle(o) for o in rep_real) and len(gem_real) >= 2:
+        return True
+
+    # (c) one side is a strict superset (the shared owner is in the overlap, so its
+    # unexplained set is empty); the other side just adds a >=2-name shareholder
+    # breakdown or only vehicles → representation, not a real change.
+    if not go_un and (len(ro_un) >= 2 or (ro_un and all(_owner_is_vehicle(o) for o in ro_un))):
+        return True
+    if not ro_un and (len(go_un) >= 2 or (go_un and all(_owner_is_vehicle(o) for o in go_un))):
         return True
     return False
 
@@ -840,9 +1176,11 @@ def _classify_disagreement(m):
             needs_research = True
         elif pct is not None and abs(pct) < CAP_CONFLICT_PCT_THRESHOLD:
             insight.append(
-                f"Minor capacity delta {pct}% (GIIGNL={rep}, GEM={gem}) — within rounding / "
-                "unit-conversion range (GIIGNL rounds to 0.1 mtpa).")
-            resolution.append("Low priority; GEM's specific source retained unless material.")
+                f"Small capacity difference of {pct}% (GIIGNL={rep}, GEM={gem}). GIIGNL rounds to "
+                "0.1 mtpa, so a gap this size is almost certainly rounding or a unit conversion, "
+                "not a real disagreement.")
+            resolution.append(
+                "Keep GEM's value as-is. The difference is too small to act on — no change needed.")
         else:
             srcdesc = ("a non-GIIGNL source" if not years
                        else f"GIIGNL {max(years)} plus a non-GIIGNL source")
@@ -857,9 +1195,11 @@ def _classify_disagreement(m):
     if has_owner:
         if _owner_delta_is_benign(m):
             insight.append(
-                "Owner-set delta is representational (GEM lists the operating/JV company, "
-                "GIIGNL the shareholders) or a naming-convention difference.")
-            resolution.append("No action on owners; not a real ownership change.")
+                "The owner lists differ only in how each source names the same parties — e.g. GEM "
+                "lists the operating/JV company while GIIGNL lists its shareholders, or the names "
+                "differ by spelling/legal suffix. This is not an actual change in who owns the terminal.")
+            resolution.append(
+                "Keep GEM's owners as-is — no real ownership change here, just a difference in naming.")
         else:
             ro, go = m.get("owners_report_only") or [], m.get("owners_gem_only") or []
             bits = []
@@ -890,8 +1230,9 @@ def _classify_unit_disagreement(um):
                 f"Replace unit capacity with the GIIGNL 2026 value ({rep} mtpa) — newer edition.",
                 False)
     if pct is not None and abs(pct) < CAP_CONFLICT_PCT_THRESHOLD:
-        return (f"Minor unit capacity delta {pct}% (GIIGNL={rep}, GEM={gem}) — rounding range.",
-                "Low priority.", False)
+        return (f"Small unit capacity difference of {pct}% (GIIGNL={rep}, GEM={gem}) — within "
+                "GIIGNL's 0.1-mtpa rounding, almost certainly not a real disagreement.",
+                "Keep GEM's value as-is — the difference is too small to act on.", False)
     srcdesc = "a non-GIIGNL source" if not years else f"GIIGNL {max(years)} plus a non-GIIGNL source"
     return (f"Unit capacity conflict ({pct}%): GIIGNL={rep}, GEM={gem} from {srcdesc}.",
             f"{_NEEDS_RESEARCH}: verify which source is current for this unit.", True)
@@ -1040,9 +1381,19 @@ def build_giignl_diff_operating_sheet(wb, diff, recon_verdicts=None):
     ws.freeze_panes = "A2"
 
 
-def build_giignl_diff_nonoperating_sheet(wb, diff):
+def build_giignl_diff_nonoperating_sheet(wb, diff, narrative_findings=None):
     """Non-operating units of matched projects. Each defaults to a light-red
-    'GEM has, GIIGNL doesn't' flag unless the narrative-prose pass confirmed it."""
+    'GEM has, GIIGNL doesn't' flag unless the narrative-prose pass confirmed it.
+
+    Two narrative cross-checks feed the giignl_narrative_mention column:
+      * UNIT-level (from the diff: prose-corrections / table non-op tags) — names a
+        specific unit (NWS Train 2, Bontang Train F); this SUPPRESSES the red flag.
+      * TERMINAL-level (here: §3.2.1 narrative findings matched by terminal+section)
+        — the GIIGNL prose discusses the terminal's forward/idled activity (Darwin
+        Barossa restart, NLNG Train 7) but doesn't pin this exact unit; this
+        ANNOTATES the cell for cross-check but leaves the flag so the reviewer
+        still verifies. Closes the gap where prose-confirmed forward phases were
+        only routed to giignl_to_action and never surfaced on this sheet."""
     ws = wb.create_sheet("giignl_diff_nonoperating")
     headers = [
         "country", "gem_terminal_id", "gem_terminal_name", "gem_unit_name",
@@ -1056,8 +1407,15 @@ def build_giignl_diff_nonoperating_sheet(wb, diff):
                        n.get("status", ""), n.get("gem_unit_name", "")),
     )
     for i, n in enumerate(rows, start=2):
-        mention = n.get("giignl_narrative_mention", "")
-        gem_only = n.get("is_gem_only", True) and not mention
+        # Unit-level mention (drives suppression — it confirms THIS unit).
+        unit_mention = n.get("giignl_narrative_mention", "")
+        gem_only = n.get("is_gem_only", True) and not unit_mention
+        # Terminal-level narrative cross-reference (annotate-only; never suppresses).
+        mention = unit_mention
+        if not unit_mention:
+            f = _narrative_finding_for_unit(n, narrative_findings)
+            if f:
+                mention = _narrative_terminal_note(f)
         row = {
             "country": n.get("country"),
             "gem_terminal_id": n.get("gem_terminal_id"),
@@ -1080,7 +1438,38 @@ def build_giignl_diff_nonoperating_sheet(wb, diff):
     ws.freeze_panes = "A2"
 
 
-def build_giignl_to_action_sheet(wb, diff, narrative_findings=None):
+def _resolutions_to_country_notes(resolutions, existing_notes):
+    """Auto-draft OtherNames-addition country notes from report_only name-mismatch
+    resolutions, skipping any GEM terminal already covered by a hand-written note
+    (matched on the '[T…]' id token) so the two don't duplicate."""
+    existing_tids = set()
+    for n in (existing_notes or []):
+        m = re.search(r"\[(T\d+)\]", n.get("contribution", "") or "")
+        if m:
+            existing_tids.add(m.group(1))
+    out = []
+    for res in (resolutions or []):
+        if res.get("resolution") != "name_mismatch":
+            continue
+        tid = res.get("gem_terminal_id", "")
+        if not tid or tid in existing_tids:
+            continue
+        others = "; ".join(res.get("suggested_othernames") or [])
+        out.append({
+            "country": res.get("country", ""),
+            "topic": "GEM OtherNames alias addition (improves GIIGNL reconciliation matching)",
+            "contribution": (
+                f"Add OtherNames alias(es) [{others}] to GEM "
+                f"'{res.get('gem_terminal_name')}' [{tid}]. GIIGNL 2026 lists it as "
+                f"'{res.get('report_site_name')}'. {res.get('basis', '')}"),
+            "source_url": "GIIGNL 2026 Annual Report",
+            "researcher_initials": "",
+        })
+    return out
+
+
+def build_giignl_to_action_sheet(wb, diff, narrative_findings=None,
+                                 report_only_resolutions=None):
     ws = wb.create_sheet("giignl_to_action")
     headers = [
         "action_category", "country", "site_name",
@@ -1090,9 +1479,49 @@ def build_giignl_to_action_sheet(wb, diff, narrative_findings=None):
         "recommended_workflow", "notes",
     ]
     _write_header(ws, headers)
+    # Agent-researched resolutions for report_only ("GIIGNL has, GEM seemingly
+    # doesn't") rows — most are NOT missing terminals but the SAME GEM terminal
+    # under a different name (TRSP=Cosan FSRU, GDLNG=Guangdong Dapeng, Caofeidian=
+    # Tangshan PetroChina, …). Re-route those to an "add to OtherNames" action and
+    # tag the mirror gem_only_operating row, so the sheet stops calling them
+    # missing. See staged_report_only_resolutions.json + Reconciliation SOP.
+    res_by_site = {}
+    res_by_tid = {}
+    for res in (report_only_resolutions or []):
+        res_by_site[_norm_term_name(res.get("report_site_name", ""))] = res
+        if res.get("gem_terminal_id"):
+            res_by_tid[res["gem_terminal_id"]] = res
     row_idx = 2
-    # GIIGNL-only → potential discovery candidates
+    # GIIGNL-only → resolved name-mismatch (already in GEM) or genuine discovery
     for r in diff.get("report_only", []):
+        res = res_by_site.get(_norm_term_name(r.get("site_name", "")))
+        if res and res.get("resolution") == "name_mismatch":
+            others = res.get("suggested_othernames") or []
+            row = {
+                "action_category": "report_only_name_mismatch_add_othernames",
+                "country": r["country"],
+                "site_name": r["site_name"],
+                "gem_terminal_id": res.get("gem_terminal_id", ""),
+                "gem_terminal_name": res.get("gem_terminal_name", ""),
+                "report_capacity_mtpa": r.get("report_capacity_mtpa"),
+                "gem_capacity_mtpa": "",
+                "section_type": r["section_type"],
+                "owners": ", ".join(r.get("owners_in_report", [])),
+                "recommended_workflow": (
+                    "Update — ALREADY IN GEM under the name above; NOT a new terminal. "
+                    f"Add to OtherNames: {'; '.join(others)}."),
+                "notes": f"[{res.get('confidence', '')} confidence] {res.get('basis', '')}",
+            }
+            # green = resolved (no longer an open discovery question)
+            _write_row(ws, row, headers, row_idx, confidence_map={"action_category": "green"})
+            row_idx += 1
+            continue
+        # discovery (verified-not-in-GEM, or unresolved)
+        note = ""
+        wf = "Discovery (investigate; may already exist under different name)"
+        if res and res.get("resolution") == "discovery":
+            note = f"[{res.get('confidence', '')} confidence] {res.get('basis', '')}"
+            wf = "Discovery — checked GEM by capacity/owner/location/web; not found under another name."
         row = {
             "action_category": "report_only_potential_discovery",
             "country": r["country"],
@@ -1103,13 +1532,34 @@ def build_giignl_to_action_sheet(wb, diff, narrative_findings=None):
             "gem_capacity_mtpa": "",
             "section_type": r["section_type"],
             "owners": ", ".join(r.get("owners_in_report", [])),
-            "recommended_workflow": "Discovery (investigate; may already exist under different name)",
-            "notes": "",
+            "recommended_workflow": wf,
+            "notes": note,
         }
         _write_row(ws, row, headers, row_idx, confidence_map={"action_category": "yellow"})
         row_idx += 1
-    # GEM-only operating → investigate why report missed
+    # GEM-only operating → investigate why report missed (unless it's the mirror of
+    # a resolved report_only name-mismatch — then GIIGNL DOES list it, just renamed)
     for r in diff.get("gem_only_operating", []):
+        res = res_by_tid.get(r.get("terminal_id"))
+        if res:
+            row = {
+                "action_category": "gem_only_name_mismatch_resolved",
+                "country": r["country"],
+                "site_name": r["terminal_name"],
+                "gem_terminal_id": r["terminal_id"],
+                "gem_terminal_name": r["terminal_name"],
+                "report_capacity_mtpa": "",
+                "gem_capacity_mtpa": r.get("gem_capacity_mtpa"),
+                "section_type": r["section_type"],
+                "owners": ", ".join(r.get("owners", [])),
+                "recommended_workflow": (
+                    f"No discovery needed — GIIGNL DOES list this, as "
+                    f"'{res.get('report_site_name', '')}' (name mismatch; add to OtherNames)."),
+                "notes": f"[{res.get('confidence', '')} confidence] {res.get('basis', '')}",
+            }
+            _write_row(ws, row, headers, row_idx, confidence_map={"action_category": "green"})
+            row_idx += 1
+            continue
         row = {
             "action_category": "gem_only_operating",
             "country": r["country"],
@@ -1615,6 +2065,16 @@ def main():
         # terminal under a name shape GEM doesn't carry yet (Suntien=Xintian,
         # GDLNG=Guangdong Dapeng), for the user to apply manually.
         country_notes = _safe_load(inputs_dir / "staged_country_notes.json", default=[])
+        # Agent-researched resolutions for report_only rows that are really the same
+        # GEM terminal under a different name (TRSP=Cosan, GDLNG=Guangdong Dapeng, …):
+        # re-routes giignl_to_action AND auto-drafts any missing OtherNames notes.
+        report_only_resolutions = _safe_load(
+            inputs_dir / "staged_report_only_resolutions.json", default=[])
+        country_notes = country_notes + _resolutions_to_country_notes(
+            report_only_resolutions, country_notes)
+        # GIIGNL FSRU fleet table (giignl_fsru_fleet.py output) → giignl_fsru_fleet
+        # cross-check sheet. Auto-discovered beside the diff; absent → sheet omitted.
+        fsru_fleet = _safe_load(inputs_dir / "giignl_fsru_fleet.json", default={})
 
         inputs_summary = {
             "report_type": diff.get("report_type", args.report or "?"),
@@ -1625,6 +2085,10 @@ def main():
             "narrative_owner_entities": len(narrative_entities),
             "narrative_name_changes": name_change_count,
             "country_notes": len(country_notes),
+            "report_only_resolutions": len(report_only_resolutions),
+            "report_only_name_mismatches_resolved": sum(
+                1 for r in report_only_resolutions if r.get("resolution") == "name_mismatch"),
+            "fsru_fleet_vessels": len(fsru_fleet.get("vessels", [])),
         }
         # SOP §6 gate triggers — surface to README
         stats = diff.get("stats", {})
@@ -1644,12 +2108,19 @@ def main():
             if diff.get("matches") or diff.get("fuzzy_matches"):
                 build_giignl_diff_operating_sheet(wb, diff, recon_verdicts=recon_verdicts)
             if diff.get("nonoperating_units"):
-                build_giignl_diff_nonoperating_sheet(wb, diff)
-            build_giignl_to_action_sheet(wb, diff, narrative_findings=narrative_findings)
+                build_giignl_diff_nonoperating_sheet(
+                    wb, diff, narrative_findings=narrative_findings)
+            build_giignl_to_action_sheet(
+                wb, diff, narrative_findings=narrative_findings,
+                report_only_resolutions=report_only_resolutions)
             if args.gem_csv and Path(args.gem_csv).exists():
                 build_candidate_edits_sheet(wb, diff, args.gem_csv)
             if args.extracted_csv and Path(args.extracted_csv).exists():
                 build_giignl_full_extract_sheet(wb, args.extracted_csv)
+        # GIIGNL FSRU fleet ↔ GEM cross-check (independent of the terminal diff —
+        # catches fleet-table-only FSRUs like Tema). Needs the GEM CSV to match.
+        if fsru_fleet.get("vessels") and args.gem_csv and Path(args.gem_csv).exists():
+            build_fsru_fleet_sheet(wb, fsru_fleet, args.gem_csv)
         # Narrative-derived structured deltas (empty-sheet-omitted convention).
         if entity_adds:
             build_entity_additions_sheet(wb, entity_adds)

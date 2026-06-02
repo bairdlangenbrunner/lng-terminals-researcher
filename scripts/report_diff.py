@@ -47,6 +47,194 @@ from normalize import (
 
 DEFAULT_GEM_CSV = "./gem_export.csv"
 
+
+# ---------------------------------------------------------------------------
+# GIIGNL Owner-column parser
+# ---------------------------------------------------------------------------
+#
+# GIIGNL's Owner column is NOT a flat comma-separated entity list — it has a
+# small grammar that the generic `parse_entity_list` (built for GEM's
+# ";"-separated "Entity [NN%]" cells) mis-handles, producing garbage tokens
+# like "50% YPF)" and polluting the owner set with vessel owners. Observed
+# grammar (GIIGNL 2026 Annual Report, Owner column):
+#
+#   * Role labels, "<Role>:" — these map onto GEM's separate fields:
+#       - "Owner:" / "FSRU:"  -> the VESSEL owner of a floating terminal
+#         (GEM tracks this in `vessel_owner`, NOT the terminal `owner`).
+#       - "Charterer:" / "Sub-charterer:" / "Terminal:" / "GNLQ:" / bare text
+#         -> the TERMINAL owner/operator (GEM's `owner`).
+#     e.g. Bahia: "Owner: Excelerate Energy  Charterer: Petrobras" — GEM models
+#     Excelerate as vessel_owner and Petrobras as owner. Comparing GIIGNL's
+#     terminal owners against GEM's owner set is the like-for-like comparison;
+#     including the vessel owner would manufacture a false delta on every FSRU.
+#
+#   * A percentage may LEAD ("50% YPF") or TRAIL ("ENGIE (63%)", "ENGIE 63%").
+#
+#   * A parenthetical containing entity NAMES (not just a "%") lists the
+#     preceding entity's SHAREHOLDERS:
+#       "Charterer: UTE Escobar (50% Enarsa, 50% YPF)"
+#         -> terminal owner: UTE Escobar; shareholders: Enarsa, YPF
+#     A purely-numeric parenthetical ("ENGIE (63%)") is just the head's stake.
+#     Nested parens ("Electrogas Malta (GEM Holdings (33%), Siemens (33%))")
+#     are handled by balanced-paren matching.
+#
+# The owner SET used for the diff is (terminal_owners + shareholders) — the
+# GEM-comparable entities — with vessel owners kept separate. Shareholders are
+# folded in so the set matches whichever representation GEM uses (the JV vehicle
+# OR its shareholders); the build-side benign-owner detector then classifies the
+# JV-vs-shareholders granularity difference.
+
+_OWNER_VESSEL_LABELS = ("owner", "fsru")
+_OWNER_LABEL_RE = re.compile(
+    r"\b(owner|sub-?charterer|charterer|fsru|terminal|gnlq)\s*:", re.IGNORECASE)
+_PCT_ONLY_RE = re.compile(r"^\s*\d+(?:\.\d+)?\s*%?\s*$")
+_PCT_PREFIX_RE = re.compile(r"^\s*\d+(?:\.\d+)?\s*%\s+(.*\S)\s*$")
+_PCT_SUFFIX_RE = re.compile(r"^(.*?\S)\s*[\(\[]?\s*\d+(?:\.\d+)?\s*%\s*[\)\]]?\s*$")
+
+
+def _find_matching_paren(s, open_idx):
+    """Index of the ')' matching the '(' at `open_idx`, or -1 if unbalanced."""
+    depth = 0
+    for i in range(open_idx, len(s)):
+        if s[i] == "(":
+            depth += 1
+        elif s[i] == ")":
+            depth -= 1
+            if depth == 0:
+                return i
+    return -1
+
+
+def _split_top_level(s, seps=",;"):
+    """Split on `seps` that are NOT inside (...) — so a shareholder list like
+    '(50% Enarsa, 50% YPF)' stays one segment instead of breaking at its comma
+    (the bug that produced the stray '50% YPF)' token)."""
+    out, buf, depth = [], [], 0
+    for ch in s:
+        if ch == "(":
+            depth += 1
+            buf.append(ch)
+        elif ch == ")":
+            depth = max(0, depth - 1)
+            buf.append(ch)
+        elif ch in seps and depth == 0:
+            out.append("".join(buf))
+            buf = []
+        else:
+            buf.append(ch)
+    if buf:
+        out.append("".join(buf))
+    return [x.strip() for x in out if x.strip()]
+
+
+def _clean_owner_token(seg):
+    """Strip a leading/trailing percentage and stray brackets from one entity
+    segment (already paren-group-free). Returns '' if it's pct-only/empty."""
+    seg = (seg or "").strip().strip(",;").strip()
+    if not seg or _PCT_ONLY_RE.match(seg):
+        return ""
+    m = _PCT_PREFIX_RE.match(seg)        # "50% YPF" -> "YPF"
+    if m:
+        seg = m.group(1).strip()
+    m = _PCT_SUFFIX_RE.match(seg)        # "ENGIE (63%)" / "ENGIE 63%" -> "ENGIE"
+    if m:
+        seg = m.group(1).strip()
+    return seg.strip(" ,;()[]").strip()
+
+
+def _parse_owner_inner(seg):
+    """Parse a shareholder sub-segment that may carry its own '(NN%)'
+    ('Siemens (33.33%)' -> 'Siemens'). Returns the bare entity or ''."""
+    seg = (seg or "").strip()
+    op = seg.find("(")
+    if op != -1:
+        cl = _find_matching_paren(seg, op)
+        inside = seg[op + 1:cl] if cl != -1 else seg[op + 1:]
+        if _PCT_ONLY_RE.match(inside.strip()):
+            tail = seg[cl + 1:] if cl != -1 else ""
+            seg = (seg[:op] + " " + tail).strip()
+        else:
+            seg = seg[:op].strip()  # rare nested non-pct paren: keep the head
+    return _clean_owner_token(seg)
+
+
+def _parse_owner_segment(seg, named, shareholders):
+    """Parse one top-level segment (label already stripped). Appends the head
+    entity to `named` and any parenthetical shareholder NAMES to `shareholders`.
+    A purely-numeric paren is the head's stake, not a shareholder list."""
+    seg = (seg or "").strip()
+    if not seg:
+        return
+    op = seg.find("(")
+    if op == -1:
+        ent = _clean_owner_token(seg)
+        if ent:
+            named.append(ent)
+        return
+    cl = _find_matching_paren(seg, op)
+    if cl == -1:                          # unbalanced (wrapping artifact)
+        inside, head = seg[op + 1:], seg[:op]
+    else:
+        inside, head = seg[op + 1:cl], (seg[:op] + " " + seg[cl + 1:])
+    head_ent = _clean_owner_token(head)
+    if _PCT_ONLY_RE.match(inside.strip()):   # "(63%)" — just the head's stake
+        if head_ent:
+            named.append(head_ent)
+        return
+    if head_ent:                              # holding co / charterer is a named owner
+        named.append(head_ent)
+    for sub in _split_top_level(inside):      # the inner names are shareholders
+        sub_ent = _parse_owner_inner(sub)
+        if sub_ent:
+            shareholders.append(sub_ent)
+
+
+def parse_report_owner(s):
+    """Parse a GIIGNL Owner-column cell into
+    (terminal_owners, vessel_owners, shareholders) — each an ordered,
+    de-duplicated list of CANONICAL entity names. See the section comment above
+    for the grammar. Empty cell -> ([], [], [])."""
+    if not s or not str(s).strip():
+        return [], [], []
+    s = str(s).strip()
+    clauses, last, cur_role = [], 0, "terminal"  # pre-label text is bare/terminal
+    for m in _OWNER_LABEL_RE.finditer(s):
+        if m.start() > last:
+            clauses.append((cur_role, s[last:m.start()]))
+        lab = m.group(1).lower()
+        cur_role = "vessel" if lab in _OWNER_VESSEL_LABELS else "terminal"
+        last = m.end()
+    clauses.append((cur_role, s[last:]))
+
+    term_named, term_share, vess_named = [], [], []
+    for role, text in clauses:
+        if role == "vessel":
+            for seg in _split_top_level(text):
+                _parse_owner_segment(seg, vess_named, vess_named)
+        else:
+            for seg in _split_top_level(text):
+                _parse_owner_segment(seg, term_named, term_share)
+
+    def _canon_dedup(names):
+        out = []
+        for n in names:
+            c = normalize_entity(n)
+            if c and c not in out:
+                out.append(c)
+        return out
+
+    return _canon_dedup(term_named), _canon_dedup(vess_named), _canon_dedup(term_share)
+
+
+def _report_owner_sets(owner_cell):
+    """Convenience wrapper: returns (owners_set, vessel_owners_set) for a GIIGNL
+    owner cell, where owners_set = terminal owners + their shareholders (the
+    GEM-`owner`-comparable entities) and vessel owners are kept separate so they
+    don't manufacture false owner deltas against GEM (GEM tracks vessel owners in
+    its own `vessel_owner` field)."""
+    term, vess, share = parse_report_owner(owner_cell)
+    return set(term) | set(share), set(vess)
+
 # Matches a trailing " Expansion" / " Extension" qualifier on a report site name.
 # GIIGNL splits a phased terminal across "<Site>" and "<Site> Expansion" rows;
 # this captures the "<Site>" base so the rows can be folded together (see
@@ -927,14 +1115,15 @@ def _make_fsru_subproject(rp, sub_rows, forced_gem_key):
     vessel so the reviewer sees the two terminals separately."""
     cap = 0.0
     owners = set()
+    vessel_owners = set()
     for r in sub_rows:
         try:
             cap += float(r.get("capacity_mtpa", "")) if r.get("capacity_mtpa") else 0.0
         except ValueError:
             pass
-        for ent in parse_entity_list(r.get("owner", "")):
-            if ent["entity"]:
-                owners.add(ent["entity"])
+        o_set, v_set = _report_owner_sets(r.get("owner", ""))
+        owners |= o_set
+        vessel_owners |= v_set
     vessels = []
     for r in sub_rows:
         v = (r.get("vessel_name") or "").strip()
@@ -950,6 +1139,7 @@ def _make_fsru_subproject(rp, sub_rows, forced_gem_key):
         "section_type": rp["section_type"],
         "total_capacity_mtpa": cap,
         "owners_set": owners,
+        "vessel_owners_set": vessel_owners,
         "trains_count": len(sub_rows),
         "rows": sub_rows,
         "nonop_rows": [],
@@ -1416,10 +1606,7 @@ def _classify(report_rows, gem_projects, alias_map=None, collision_regas=None,
         except ValueError:
             cap = 0.0
 
-        owner_tags = set()
-        for ent in parse_entity_list(r.get("owner", "")):
-            if ent["entity"]:
-                owner_tags.add(ent["entity"])
+        owner_tags, vessel_owner_tags = _report_owner_sets(r.get("owner", ""))
 
         if key not in report_projects:
             report_projects[key] = {
@@ -1430,6 +1617,7 @@ def _classify(report_rows, gem_projects, alias_map=None, collision_regas=None,
                 "section_type": section_type,
                 "total_capacity_mtpa": 0.0,
                 "owners_set": set(),
+                "vessel_owners_set": set(),
                 "trains_count": 0,
                 "rows": [],
                 "nonop_rows": [],
@@ -1446,6 +1634,7 @@ def _classify(report_rows, gem_projects, alias_map=None, collision_regas=None,
             rp["_display_locked"] = True
         rp["site_names"].add(r.get("site_name", ""))
         rp["owners_set"].update(owner_tags)
+        rp.setdefault("vessel_owners_set", set()).update(vessel_owner_tags)
         # A GIIGNL row annotated non-operating ("(Mothballed)"/"(stopped)") is
         # excluded from the OPERATING total and capacity comparison — GIIGNL's
         # tables are operating-only, so such a row is a status note, not operating
@@ -1759,9 +1948,9 @@ def _classify(report_rows, gem_projects, alias_map=None, collision_regas=None,
             rp_owners.add(normalize_entity(rp_paren))
         rp_first_owner = ""
         if rp["rows"]:
-            ents = parse_entity_list(rp["rows"][0].get("owner", ""))
-            if ents and ents[0].get("entity"):
-                rp_first_owner = ents[0]["entity"]
+            term_owners, _, _ = parse_report_owner(rp["rows"][0].get("owner", ""))
+            if term_owners:
+                rp_first_owner = term_owners[0]
         for gk, gp in candidates:
             all_names = {gk[1]} | gp.get("aliases_norm", set())
             # Word-boundary (whole-token) containment, NOT raw character substring:
