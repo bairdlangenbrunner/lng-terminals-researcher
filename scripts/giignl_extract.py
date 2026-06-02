@@ -590,6 +590,108 @@ def _merge_lines_into_cells(
     return merged, cells
 
 
+def _attribute_owner_fragments(
+    body_lines: list[str], data_idxs: list[int], skip: set[int],
+    columns: list[ColumnSpec], owner_col_name: str,
+) -> dict[int, str]:
+    """Per-row OWNER-cell text, attributing each owner fragment to the data row
+    whose owner BLOCK it belongs to — fixing the cross-row owner bleed that the
+    generic nearest-data-line partition causes.
+
+    GIIGNL vertically *centers* the (often multi-line) owner cell on its row, so
+    it straddles the data line: a 2-line owner sits ABOVE and BELOW the data line
+    (whose own owner slice is then blank — e.g. Mejillones "ENGIE (63%), Ameris
+    Capital" / "(37%)"), and a long owner overflows toward the NEXT row (Acajutla
+    "…VC Energy de" / "Centroamerica)" spilling onto Montego Bay). The generic
+    partition assigns those lines to the nearest data line / the row above on a
+    tie, corrupting both rows.
+
+    Owner-only repair (name/number/vessel keep the generic partition). The owner
+    cell is CENTERED on its data line, so it straddles symmetrically. Each owner
+    line is attributed LOCALLY (no cross-row propagation, so no drift) by its two
+    bracketing data lines:
+
+      * Strictly nearer one data line → that row.
+      * Distance TIE → the neighbour with a matching owner line at the SAME
+        distance on its FAR side (centring symmetry): Escobar's "(50% …)" tail is
+        dist-2 below its data line AND has "Owner: Excelerate" dist-2 above, so it
+        stays with Escobar; Mejillones's straddle is dist-1 above a blank-owner
+        data line that has "(37%)" dist-1 below, so it goes down to Mejillones.
+        Ambiguous (both/neither far side present) → the lower row.
+      * A continuation fragment — a dangling close-paren ("Centroamerica)", "and
+        Mitsui)") or a bare stake "(20%)"/"20%" (a shareholder's percentage that
+        wrapped off the entity above it) — snaps to the nearest data line at/above
+        it (handles a long owner overflowing toward the next row).
+      * A data line's own (non-blank) owner is the cell's centre → its own row.
+
+    This is the distance-tie the naive nearest-line partition gets backwards.
+    Returns {row_idx: owner_string}.
+    """
+    owner_col = next((c for c in columns if c.name == owner_col_name), None)
+    if owner_col is None or not data_idxs:
+        return {}
+    row_of_data = {d: r for r, d in enumerate(data_idxs)}
+    n = len(body_lines)
+
+    def owner_frag(i: int) -> str:
+        return owner_col.slice(body_lines[i]).strip() if 0 <= i < n else ""
+
+    owner_line: dict[int, str] = {}
+    for i in range(n):
+        if i in skip or not body_lines[i].strip():
+            continue
+        f = owner_frag(i)
+        if f:
+            owner_line[i] = f
+
+    D = sorted(data_idxs)
+    data_set = set(D)
+    assign: dict[int, int] = {}  # owner-line idx -> data-line idx
+    for b, frag in owner_line.items():
+        if b in data_set:
+            assign[b] = b  # data line's own owner = cell centre
+            continue
+        above = [d for d in D if d < b]
+        below = [d for d in D if d > b]
+        if not above:
+            assign[b] = below[0]
+            continue
+        if not below:
+            assign[b] = above[-1]
+            continue
+        da, db = above[-1], below[0]
+        # A continuation fragment (dangling ")" or a bare wrapped stake "(20%)")
+        # belongs to the owner opened ABOVE it.
+        if (frag.count("(") - frag.count(")") < 0
+                or re.match(r"^\(?\s*[\d.]+\s*%\s*\)?[,;]?$", frag.strip())):
+            assign[b] = da
+            continue
+        du, dd = b - da, db - b
+        if du < dd:
+            assign[b] = da
+        elif dd < du:
+            assign[b] = db
+        else:  # tie → far-side centring symmetry, else lower row
+            fa = (da - du) in owner_line
+            fb = (db + dd) in owner_line
+            assign[b] = da if (fa and not fb) else db
+
+    result: dict[int, list[tuple[int, str]]] = {r: [] for r in range(len(data_idxs))}
+    for b, d in assign.items():
+        result[row_of_data[d]].append((b, owner_line[b]))
+
+    out: dict[int, str] = {}
+    for r, parts in result.items():
+        parts.sort()
+        dedup: list[str] = []
+        for _, p in parts:
+            if dedup and dedup[-1] == p:
+                continue
+            dedup.append(p)
+        out[r] = " ".join(dedup)
+    return out
+
+
 def _assign_countries_sequential(
     rows_with_meta: list[tuple[int, str, dict, float]],
     labels: list[tuple[int, str]],
@@ -1110,6 +1212,9 @@ def _extract_liquefaction_page(
 
     data_idxs, labels, skip, subtotals = _classify_lines(body_lines, columns, cap_col)
     assignments = _partition_lines_by_data(body_lines, data_idxs, skip, columns, cap_col)
+    # Owner-column gets a dedicated block-attribution pass (fixes cross-row owner
+    # bleed the generic nearest-line partition causes); see _attribute_owner_fragments.
+    owner_by_row = _attribute_owner_fragments(body_lines, data_idxs, skip, columns, "Owner(s)")
 
     rows: list[dict] = []
     rows_with_meta: list[tuple[int, str, dict, float]] = []
@@ -1141,7 +1246,7 @@ def _extract_liquefaction_page(
             "country": "",  # assigned below
             "site_name": site_name,
             "type": "",
-            "owner": merged.get("Owner(s)", "").strip(),
+            "owner": (owner_by_row.get(row_idx) or merged.get("Owner(s)", "")).strip(),
             "capacity_mtpa": f"{cap_mtpa:g}",
             "capacity_bcm": "",
             "start_year": str(start_year) if start_year else "",
@@ -1168,6 +1273,9 @@ def _extract_regasification_page(
 
     data_idxs, labels, skip, subtotals = _classify_lines(body_lines, columns, cap_col)
     assignments = _partition_lines_by_data(body_lines, data_idxs, skip, columns, cap_col)
+    # Owner-column gets a dedicated block-attribution pass (see liq page / the
+    # _attribute_owner_fragments docstring) — fixes cross-row owner bleed.
+    owner_by_row = _attribute_owner_fragments(body_lines, data_idxs, skip, columns, "Owner")
 
     rows: list[dict] = []
     rows_with_meta: list[tuple[int, str, dict, float]] = []
@@ -1246,7 +1354,7 @@ def _extract_regasification_page(
             "country": "",  # assigned below
             "site_name": site_name,
             "type": type_val,
-            "owner": merged.get("Owner", "").strip(),
+            "owner": (owner_by_row.get(row_idx) or merged.get("Owner", "")).strip(),
             "capacity_mtpa": f"{cap_mtpa:g}",
             "capacity_bcm": "",
             "start_year": str(start_year) if start_year else "",
