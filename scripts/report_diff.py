@@ -235,6 +235,32 @@ def _report_owner_sets(owner_cell):
     term, vess, share = parse_report_owner(owner_cell)
     return set(term) | set(share), set(vess)
 
+
+def _owner_alignment(rp_owners, gem_owners, gem_parents):
+    """Align a report row's owners against GEM's `owner` ∪ `parent` sets.
+
+    GEM records the lower-level (JV / operating-company) owners in `owner` and
+    the ULTIMATE PARENT companies in `parent`; GIIGNL may name an entity at
+    EITHER level (Escobar: GEM owner "UTE Escobar", parent "ENARSA; YPF"; GIIGNL
+    lists Enarsa + YPF). Checking only `owner` flags the parent-level GIIGNL
+    entities as false report-only deltas — so the alignment uses owner ∪ parent.
+
+    Returns (overlap, report_only, gem_only, via_parent):
+      overlap     — report owners aligned with a GEM owner OR parent
+      report_only — report owners in NEITHER GEM owner nor parent (a real delta)
+      gem_only    — GEM OWNERS absent from the report (parents are supplementary,
+                    not expected to appear in GIIGNL, so they're not gem-only)
+      via_parent  — report owners matched only at the GEM PARENT level (surfaced
+                    so a reviewer sees the alignment is parent-, not owner-level)
+    """
+    rp_owners, gem_owners, gem_parents = set(rp_owners), set(gem_owners), set(gem_parents)
+    gem_all = gem_owners | gem_parents
+    return (rp_owners & gem_all,
+            rp_owners - gem_all,
+            gem_owners - rp_owners,
+            (rp_owners & gem_parents) - gem_owners)
+
+
 # Matches a trailing " Expansion" / " Extension" qualifier on a report site name.
 # GIIGNL splits a phased terminal across "<Site>" and "<Site> Expansion" rows;
 # this captures the "<Site>" base so the rows can be folded together (see
@@ -1204,7 +1230,7 @@ def _build_gem_project_table(gem_csv):
     colmap = _load_colmap(gem_csv)
     ci = {k: colmap.get(k) for k in [
         "terminal_id", "terminal_name", "unit_name", "country", "facility_type",
-        "status", "fuel", "owner", "capacity_mtpa", "capacity_ref",
+        "status", "fuel", "owner", "parent", "capacity_mtpa", "capacity_ref",
         "floating", "floating_vessel_name",
         "import_export_only", "other_names", "local_names", "language",
         "proposal_year", "construction_year", "shelved_year", "cancelled_year",
@@ -1287,6 +1313,7 @@ def _build_gem_project_table(gem_csv):
 
             status = row[ci["status"]] if ci["status"] is not None else ""
             owner = row[ci["owner"]] if ci["owner"] is not None else ""
+            parent = row[ci["parent"]] if ci["parent"] is not None else ""
             cap_mtpa = row[ci["capacity_mtpa"]] if ci["capacity_mtpa"] is not None else ""
             cap_ref = row[ci["capacity_ref"]] if ci["capacity_ref"] is not None else ""
             floating = row[ci["floating"]] if ci["floating"] is not None else ""
@@ -1306,6 +1333,16 @@ def _build_gem_project_table(gem_csv):
             for ent in parse_entity_list(owner):
                 if ent["entity"]:
                     owner_tags.add(ent["entity"])
+            # GEM also records the ULTIMATE PARENT companies in a separate `parent`
+            # field, while `owner` holds the lower-level (often JV/operating-co)
+            # owners. GIIGNL may name an entity at EITHER level — e.g. Escobar:
+            # GEM owner "UTE Escobar", parent "ENARSA; YPF"; GIIGNL lists Enarsa +
+            # YPF. So an owner-alignment check must consider owner ∪ parent, else
+            # the parent-level GIIGNL entities show as false "report-only" deltas.
+            parent_tags = set()
+            for ent in parse_entity_list(parent):
+                if ent["entity"]:
+                    parent_tags.add(ent["entity"])
 
             if key not in projects:
                 projects[key] = {
@@ -1325,6 +1362,7 @@ def _build_gem_project_table(gem_csv):
                     "operating_units": 0,
                     "total_units": 0,
                     "owners_set": set(),
+                    "parents_set": set(),
                     "fsru": False,
                     "vessel_name_sets": [],
                 }
@@ -1350,6 +1388,7 @@ def _build_gem_project_table(gem_csv):
                 p["operating_units"] += 1
                 p["total_capacity_mtpa"] += cap
             p["owners_set"].update(owner_tags)
+            p["parents_set"].update(parent_tags)
             if floating and floating.lower() in ("true", "yes", "1"):
                 p["fsru"] = True
 
@@ -1368,6 +1407,7 @@ def _build_gem_project_table(gem_csv):
                 "capacity_ref": (cap_ref or "").strip(),
                 "start_year": _unit_anchor_year(row, ci, status),
                 "owners_set": owner_tags,
+                "parents_set": parent_tags,
             })
 
             local_names_raw = row[ci["local_names"]] if ci["local_names"] is not None else ""
@@ -1728,10 +1768,9 @@ def _classify(report_rows, gem_projects, alias_map=None, collision_regas=None,
         cap_delta = report_cap - gp["total_capacity_mtpa"]
         cap_pct = abs(cap_delta) / gp["total_capacity_mtpa"] * 100 if gp["total_capacity_mtpa"] else None
 
-        # Compare owners
-        owner_overlap = rp["owners_set"] & gp["owners_set"]
-        owner_only_report = rp["owners_set"] - gp["owners_set"]
-        owner_only_gem = gp["owners_set"] - rp["owners_set"]
+        # Compare owners against GEM owner ∪ parent (see _owner_alignment).
+        owner_overlap, owner_only_report, owner_only_gem, owner_via_parent = _owner_alignment(
+            rp["owners_set"], gp["owners_set"], gp["parents_set"])
 
         # Confidence on the match — "high" for canonical name hit, "high"
         # also for alias hit (still deterministic, just via OtherNames).
@@ -1774,6 +1813,7 @@ def _classify(report_rows, gem_projects, alias_map=None, collision_regas=None,
             "owners_overlap": sorted(owner_overlap),
             "owners_report_only": sorted(owner_only_report),
             "owners_gem_only": sorted(owner_only_gem),
+            "owners_matched_via_gem_parent": sorted(owner_via_parent),
             "report_train_count": rp["trains_count"],
             "report_sites_merged": sorted(rp["site_names"]) if len(rp["site_names"]) > 1 else [],
             "gem_operating_units": gp["operating_units"],
@@ -1829,7 +1869,7 @@ def _classify(report_rows, gem_projects, alias_map=None, collision_regas=None,
         # Corroboration (mirrors fuzzy): a 4+ char name token shared with the GEM
         # terminal, OR an owner overlap. Guards against a coincidental designator.
         name_ok = bool(_tokens_4plus(rp["name_norm"]) & gp.get("match_tokens", set()))
-        owner_ok = bool(rp["owners_set"] & gp["owners_set"])
+        owner_ok = bool(rp["owners_set"] & gp["owners_set"])  # gate owner-level (see fuzzy gate)
         if not (name_ok or owner_ok):
             continue
 
@@ -1838,8 +1878,8 @@ def _classify(report_rows, gem_projects, alias_map=None, collision_regas=None,
         cap_delta = report_cap - unit_cap
         cap_pct = abs(cap_delta) / unit_cap * 100 if unit_cap else None
         unit_owners = unit.get("owners_set", set())
-        owner_only_report = rp["owners_set"] - unit_owners
-        owner_only_gem = unit_owners - rp["owners_set"]
+        owner_overlap_u, owner_only_report, owner_only_gem, _ = _owner_alignment(
+            rp["owners_set"], unit_owners, unit.get("parents_set", set()))
         disagreements = []
         if round(cap_delta, 2) != 0:
             pct_str = f"{cap_pct:.1f}%" if cap_pct is not None else "n/a"
@@ -1876,7 +1916,7 @@ def _classify(report_rows, gem_projects, alias_map=None, collision_regas=None,
             "gem_capacity_mtpa": round(unit_cap, 2),
             "capacity_delta_mtpa": round(cap_delta, 2),
             "capacity_delta_pct": round(cap_pct, 1) if cap_pct is not None else None,
-            "owners_overlap": sorted(rp["owners_set"] & unit_owners),
+            "owners_overlap": sorted(owner_overlap_u),
             "owners_report_only": sorted(owner_only_report),
             "owners_gem_only": sorted(owner_only_gem),
             "report_train_count": rp["trains_count"],
@@ -1966,6 +2006,10 @@ def _classify(report_rows, gem_projects, alias_map=None, collision_regas=None,
                     gp_tokens |= _tokens_4plus(n)
             shared_tokens = rp_tokens & gp_tokens
             token_overlap = bool(shared_tokens)
+            # Match GATING uses owner-level only — a shared ULTIMATE PARENT (a
+            # national oil co, etc.) is too broad to IDENTIFY a terminal and would
+            # spawn spurious candidates / ambiguity. Parents are folded in only for
+            # the owner-DELTA reporting on a confirmed match (see _owner_alignment).
             owner_overlap = bool(rp_owners & gp["owners_set"])
             # An exact FSRU vessel-name match is a strong, near-unique corroborator
             # (GIIGNL identifies a floating terminal by its deployed vessel; GEM
@@ -2077,8 +2121,8 @@ def _classify(report_rows, gem_projects, alias_map=None, collision_regas=None,
                 report_cap = fsru_op_cap
             cap_delta = report_cap - gp["total_capacity_mtpa"]
             cap_pct = abs(cap_delta) / gp["total_capacity_mtpa"] * 100 if gp["total_capacity_mtpa"] else None
-            owner_only_report = rp["owners_set"] - gp["owners_set"]
-            owner_only_gem = gp["owners_set"] - rp["owners_set"]
+            owner_overlap_f, owner_only_report, owner_only_gem, owner_via_parent = _owner_alignment(
+                rp["owners_set"], gp["owners_set"], gp["parents_set"])
             disagreements = []
             # Any non-zero capacity difference is a conflict (see Pass 1).
             if round(cap_delta, 2) != 0:
@@ -2106,9 +2150,10 @@ def _classify(report_rows, gem_projects, alias_map=None, collision_regas=None,
                 "gem_capacity_mtpa": round(gp["total_capacity_mtpa"], 2),
                 "capacity_delta_mtpa": round(cap_delta, 2),
                 "capacity_delta_pct": round(cap_pct, 1) if cap_pct is not None else None,
-                "owners_overlap": sorted(rp["owners_set"] & gp["owners_set"]),
+                "owners_overlap": sorted(owner_overlap_f),
                 "owners_report_only": sorted(owner_only_report),
                 "owners_gem_only": sorted(owner_only_gem),
+                "owners_matched_via_gem_parent": sorted(owner_via_parent),
                 "report_train_count": rp["trains_count"],
                 "report_sites_merged": sorted(rp["site_names"]) if len(rp["site_names"]) > 1 else [],
                 "gem_operating_units": gp["operating_units"],
