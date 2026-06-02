@@ -47,6 +47,7 @@ Usage:
 import argparse
 import csv
 import json
+import re
 import sys
 from datetime import date
 from pathlib import Path
@@ -177,7 +178,26 @@ SHEET_DESCRIPTIONS = {
         "Fuzzy confidence cell is yellow. `analyst_note` (optional) carries a "
         "human resolution of a flagged delta — e.g. a metric mismatch where "
         "GIIGNL's number is receiving/design throughput, not regas sendout — so a "
-        "surfaced red is contextualized rather than silently dropped. AUDIT here; "
+        "surfaced red is contextualized rather than silently dropped. It is also "
+        "AUTO-FILLED when GEM's operating capacity is 0 because every GEM unit is "
+        "non-operating (gem_operating_units=0, gem_total_units>0): the note gives "
+        "the non-op breakdown by status (e.g. Pecém: '1 proposed (5.64 mtpa); 1 "
+        "retired (3.8 mtpa)') so a 0 vs a positive GIIGNL number reads as a "
+        "status disagreement, not missing GEM data. `insight` + `suggested_resolution` "
+        "(cols B, C) translate each flagged row for a human: `insight` says in plain "
+        "language what the disagreement IS; `suggested_resolution` says whether GEM or "
+        "GIIGNL 2026 is likely more accurate and the action. Deterministic verdicts — "
+        "(a) GEM capacity is itself sourced from an older GIIGNL edition (parsed from "
+        "the capacity_ref URL, carried as `gem_capacity_source` in the diff) and GIIGNL "
+        "is its SOLE source → 'replace with GIIGNL 2026'; (b) status-lag (op=0) → 'GEM "
+        "status likely current, verify restart'; (c) FSRU nameplate-vs-sendout → metric "
+        "mismatch; (d) <5% delta → 'minor, rounding'; (e) benign owner delta (GEM = "
+        "operating/JV co, GIIGNL = shareholders, or naming noise) → 'no action'. Material "
+        "non-GIIGNL capacity conflicts and non-benign owner deltas get a `NEEDS RESEARCH` "
+        "placeholder with a LIGHT-YELLOW fill — these are resolved by the agentic research "
+        "pass, which writes a verdict into staged_recon_verdicts.json (keyed terminal_id + "
+        "section_type + unit_name) that OVERRIDES the placeholder at build time. The verdict "
+        "is a recommendation routed to Update — GIIGNL is never auto-applied. AUDIT here; "
         "act via giignl_to_action (a fuzzy match flagged `route_to_action` in the "
         "diff JSON is forwarded there even though fuzzy matches aren't auto-routed)."
     ),
@@ -616,6 +636,7 @@ def _count_narrative_name_changes(narrative_findings):
 
 
 GIIGNL_OPERATING_HEADERS = [
+    "disagreements", "insight", "suggested_resolution",
     "match_type", "confidence", "match_granularity", "level",
     "country", "site_name", "report_sites_merged",
     "gem_terminal_id", "gem_terminal_name", "gem_unit_name", "matched_alias",
@@ -624,16 +645,295 @@ GIIGNL_OPERATING_HEADERS = [
     "capacity_delta_mtpa", "capacity_delta_pct",
     "owners_overlap", "owners_report_only", "owners_gem_only",
     "report_train_count", "gem_operating_units", "gem_total_units",
-    "report_nonoperating", "disagreements", "analyst_note",
+    "report_nonoperating", "analyst_note",
 ]
 
 
-def build_giignl_diff_operating_sheet(wb, diff):
+def _operating_zero_note(nonop_units, total_units):
+    """Annotation for a matched project whose GEM operating capacity is 0 because
+    every GEM unit is non-operating (one retired + one proposed, etc.). Surfaced
+    in `analyst_note` so the 0 in gem_capacity_mtpa reads as 'no operating phase
+    yet/anymore', NOT 'GEM is missing this terminal' — the case that prompted the
+    confusion on Pecém FSRU (retired Petrobras unit + proposed Eneva unit, both
+    non-op, so operating total = 0 vs GIIGNL still listing it operating). The
+    breakdown groups the non-op units by status; full per-unit detail is in
+    giignl_diff_nonoperating."""
+    if nonop_units:
+        by_status = {}
+        for u in nonop_units:
+            by_status.setdefault(u.get("status", "?"), []).append(u.get("capacity_mtpa"))
+        parts = []
+        for st, caps in by_status.items():
+            caps_str = ", ".join(f"{c:g}" for c in caps if c is not None)
+            parts.append(f"{len(caps)} {st} ({caps_str} mtpa)" if caps_str
+                         else f"{len(caps)} {st}")
+        return ("GEM has 0 operating capacity — all GEM units are non-operating: "
+                f"{'; '.join(parts)}. See giignl_diff_nonoperating.")
+    return (f"GEM has 0 operating capacity — all {total_units} GEM unit(s) are "
+            "non-operating. See giignl_diff_nonoperating.")
+
+
+# Sentinel that opens a `suggested_resolution` the deterministic pass can't settle —
+# a material non-GIIGNL capacity conflict or a non-benign owner delta. These get a
+# light-yellow fill and are the rows the agentic research pass resolves via
+# staged_recon_verdicts.json (which overrides the placeholder at build time).
+_NEEDS_RESEARCH = "NEEDS RESEARCH"
+
+# Legal-form suffix tokens stripped before comparing owner names by core tokens.
+_OWNER_LEGAL_SUFFIX = {
+    "co", "ltd", "corp", "inc", "sa", "ab", "llc", "group", "bhd", "oy", "pvt",
+    "sas", "plc", "gmbh", "as", "spa", "nv", "kk", "ag", "holding", "holdings",
+    "company", "limited", "corporation", "lp", "slu", "pte", "the", "of"}
+# NARROW project-vehicle markers: an owner string carrying one names the operating
+# / JV company (a project vehicle), not a beneficial shareholder. The "one source
+# lists the vehicle, the other lists the shareholders" delta is representational.
+_VEHICLE_MARKERS = ("lng", "terminal", "regas", "gnl", "ute", "development",
+                    "project", "liquefaction", "natural gas")
+# GIIGNL owner-cell extraction shards / aggregate phrasings that aren't real owners.
+_OWNER_NOISE_RE = re.compile(
+    r"[%\[\]]|jv between|charterer:|govnt|its entities|including|^\(|\)$")
+# Short-form/acronym aliases GIIGNL uses for GEM's full legal names (the recurring
+# ones; the fuller canonical map is docs/reference/entity_canonical_map.md). Matched
+# bidirectionally on core tokens.
+_OWNER_ALIAS_PAIRS = [
+    ({"petronas"}, {"petroliam", "nasional"}),
+    ({"kogas"}, {"korea", "gas"}),
+    ({"sinopec"}, {"china", "petrochemical"}),
+    ({"cnpc"}, {"china", "national", "petroleum"}),
+    ({"cnooc"}, {"china", "national", "offshore", "oil"}),
+    ({"adnoc"}, {"abu", "dhabi", "national", "oil"}),
+    ({"eve"}, {"basque", "energy"}),
+]
+
+
+def _owner_core(name):
+    """Core identifying tokens of an owner string (lowercased, legal-form suffixes
+    and stray punctuation removed)."""
+    name = re.sub(r"[()%\[\].,/]", " ", name.lower())
+    return {t for t in re.findall(r"[a-z]{2,}", name) if t not in _OWNER_LEGAL_SUFFIX}
+
+
+def _owner_is_noise(name):
+    """A GIIGNL extraction shard / aggregate phrasing, not a real owner entity."""
+    return bool(_OWNER_NOISE_RE.search(name)) or not _owner_core(name)
+
+
+def _owner_is_vehicle(name):
+    """Whether an owner string names a project/JV vehicle rather than a shareholder."""
+    n = name.lower()
+    return any(mk in n for mk in _VEHICLE_MARKERS)
+
+
+def _same_owner_entity(a, b):
+    """Same entity in a different name form — core-token overlap or a known alias."""
+    ca, cb = _owner_core(a), _owner_core(b)
+    if ca & cb:
+        return True
+    for s1, s2 in _OWNER_ALIAS_PAIRS:
+        if (ca & s1 and cb & s2) or (ca & s2 and cb & s1):
+            return True
+    return False
+
+
+def _parse_capacity_refs(refs):
+    """(sorted GIIGNL edition years, has_non_giignl) parsed from a capacity_ref cell.
+    Mirrors report_diff._parse_capacity_source for the unit-row refs the diff carries
+    raw (the project-level parse arrives precomputed as match['gem_capacity_source'])."""
+    years, has_non = set(), False
+    for url in re.split(r"[\s,]+", (refs or "").strip()):
+        if not url:
+            continue
+        if "giignl.org" in url.lower():
+            yrs = [int(y) for y in re.findall(r"(?:19|20)\d{2}", url)]
+            if yrs:
+                years.add(max(yrs))
+        else:
+            has_non = True
+    return (sorted(years), has_non)
+
+
+def _owner_delta_is_benign(m):
+    """True when an owner-set delta is explainable as representation/naming rather
+    than a real ownership change, so it needs no research:
+      (a) every unmatched owner is parse-noise or the SAME entity in a different
+          name form (core-token overlap or a known acronym alias — Petronas =
+          Petroliam Nasional Bhd, KOGAS = Korea Gas Corp); or
+      (b) shareholder-granularity: one source lists ONLY the project/JV vehicle(s)
+          while the other lists >=2 beneficial shareholders (GEM 'LNG Canada
+          Development Inc' vs GIIGNL's five shareholders).
+    Conservative: a single unexplained real entity on one side (a plausible new
+    owner — Bahia's Excelerate, Dhamra's TotalEnergies) stays NON-benign so it
+    routes to research."""
+    rep_only = m.get("owners_report_only") or []
+    gem_only = m.get("owners_gem_only") or []
+    if not rep_only and not gem_only:
+        return True
+    overlap = m.get("owners_overlap") or []
+
+    def _explained(o, others):
+        return _owner_is_noise(o) or any(
+            _same_owner_entity(o, x) for x in list(others) + list(overlap))
+
+    ro_un = [o for o in rep_only if not _explained(o, gem_only)]
+    go_un = [o for o in gem_only if not _explained(o, rep_only)]
+    if not ro_un and not go_un:
+        return True  # (a) all name-variants / aliases / noise
+
+    # (b) shareholder-granularity — one side is solely the project vehicle(s).
+    gem_real = [o for o in gem_only if not _owner_is_noise(o)]
+    rep_real = [o for o in rep_only if not _owner_is_noise(o)]
+    if gem_real and all(_owner_is_vehicle(o) for o in gem_real) and len(rep_real) >= 2:
+        return True
+    if rep_real and all(_owner_is_vehicle(o) for o in rep_real) and len(gem_real) >= 2:
+        return True
+    return False
+
+
+def _classify_disagreement(m):
+    """Plain-language (insight, suggested_resolution, needs_research) for a flagged
+    operating project-row. Deterministic rules settle the GIIGNL-edition-supersede,
+    status-lag, FSRU-metric, minor-delta, and benign-owner cases; material non-GIIGNL
+    capacity conflicts and non-benign owner deltas return needs_research=True with a
+    _NEEDS_RESEARCH placeholder the research pass / staged_recon_verdicts.json overrides.
+    Rule spec lives in the giignl_diff_operating SHEET_DESCRIPTIONS entry."""
+    dis = m.get("disagreements") or []
+    if not dis:
+        return ("", "", False)
+    insight, resolution, needs_research = [], [], False
+    rep, gem = m.get("report_capacity_mtpa"), m.get("gem_capacity_mtpa")
+    pct = m.get("capacity_delta_pct")
+    src = m.get("gem_capacity_source") or {}
+    years, has_non = (src.get("giignl_years") or []), bool(src.get("has_non_giignl"))
+    has_cap = any("capacity differs" in d for d in dis)
+    has_fsru = any(("FSRU" in d) or ("vessel" in d.lower()) for d in dis)
+    has_owner = bool(m.get("owners_report_only") or m.get("owners_gem_only"))
+
+    # 1. Status-lag: no operating units → a status disagreement, not a capacity error.
+    if m.get("gem_operating_units") == 0 and m.get("gem_total_units"):
+        insight.append(
+            f"Status disagreement, not a capacity error: GEM has no operating units here "
+            f"(all {m.get('gem_total_units')} non-operating — see analyst_note / "
+            f"giignl_diff_nonoperating), while GIIGNL 2026 still lists it operating at {rep} mtpa.")
+        resolution.append(
+            "GEM's status is likely the more current (GIIGNL lags retired/idled terminals); "
+            "verify the terminal hasn't (re)started operation. No capacity replacement.")
+        return (" ".join(insight), " ".join(resolution), False)
+
+    # 2. Capacity facet.
+    if has_fsru:
+        insight.append(
+            "FSRU metric mismatch: GIIGNL reports vessel nameplate regas capacity while GEM "
+            "records terminal sendout — different bases, not necessarily a real conflict.")
+        resolution.append("Confirm metric basis (nameplate vs sendout); usually no capacity change.")
+    elif has_cap:
+        if years and not has_non and max(years) < 2026:
+            y = max(years)
+            insight.append(
+                f"GEM capacity ({gem} mtpa) is itself sourced from GIIGNL {y}; "
+                f"GIIGNL 2026 now reports {rep} mtpa.")
+            resolution.append(
+                f"Replace GEM capacity with the GIIGNL 2026 value ({rep} mtpa) — same source, "
+                f"newer edition (delta {pct}%).")
+        elif years and not has_non:
+            insight.append(f"Capacity delta {pct}% (GIIGNL={rep}, GEM={gem}); GEM already cites GIIGNL {max(years)}.")
+            resolution.append(f"{_NEEDS_RESEARCH}: GEM and GIIGNL cite the same/newer edition yet differ — reconcile.")
+            needs_research = True
+        elif pct is not None and abs(pct) < CAP_CONFLICT_PCT_THRESHOLD:
+            insight.append(
+                f"Minor capacity delta {pct}% (GIIGNL={rep}, GEM={gem}) — within rounding / "
+                "unit-conversion range (GIIGNL rounds to 0.1 mtpa).")
+            resolution.append("Low priority; GEM's specific source retained unless material.")
+        else:
+            srcdesc = ("a non-GIIGNL source" if not years
+                       else f"GIIGNL {max(years)} plus a non-GIIGNL source")
+            dpct = f"{pct}%" if pct is not None else "undefined (GEM=0)"
+            insight.append(
+                f"Material capacity conflict ({dpct}): GIIGNL 2026={rep}, GEM={gem} from {srcdesc}.")
+            resolution.append(
+                f"{_NEEDS_RESEARCH}: verify GIIGNL 2026 against GEM's source and decide which is current.")
+            needs_research = True
+
+    # 3. Owner facet.
+    if has_owner:
+        if _owner_delta_is_benign(m):
+            insight.append(
+                "Owner-set delta is representational (GEM lists the operating/JV company, "
+                "GIIGNL the shareholders) or a naming-convention difference.")
+            resolution.append("No action on owners; not a real ownership change.")
+        else:
+            ro, go = m.get("owners_report_only") or [], m.get("owners_gem_only") or []
+            bits = []
+            if ro:
+                bits.append(f"GIIGNL names {ro} not in GEM")
+            if go:
+                bits.append(f"GEM has {go} not in GIIGNL")
+            insight.append("Owner-set delta that isn't obviously naming: " + "; ".join(bits) + ".")
+            resolution.append(
+                f"{_NEEDS_RESEARCH}: check for a real ownership change (stake sale / new operator); "
+                "run entity_lookup before staging.")
+            needs_research = True
+
+    return (" ".join(insight), " ".join(resolution), needs_research)
+
+
+def _classify_unit_disagreement(um):
+    """(insight, suggested_resolution, needs_research) for a per-unit sub-row. Uses the
+    unit's own capacity_ref for the GIIGNL-edition rule."""
+    if um.get("agree"):
+        return ("", "", False)
+    rep, gem = um.get("report_capacity_mtpa"), um.get("gem_unit_capacity_mtpa")
+    pct = um.get("capacity_delta_pct")
+    years, has_non = _parse_capacity_refs(um.get("gem_unit_capacity_ref", ""))
+    if years and not has_non and max(years) < 2026:
+        y = max(years)
+        return (f"GEM unit capacity ({gem}) is sourced from GIIGNL {y}; GIIGNL 2026 reports {rep}.",
+                f"Replace unit capacity with the GIIGNL 2026 value ({rep} mtpa) — newer edition.",
+                False)
+    if pct is not None and abs(pct) < CAP_CONFLICT_PCT_THRESHOLD:
+        return (f"Minor unit capacity delta {pct}% (GIIGNL={rep}, GEM={gem}) — rounding range.",
+                "Low priority.", False)
+    srcdesc = "a non-GIIGNL source" if not years else f"GIIGNL {max(years)} plus a non-GIIGNL source"
+    return (f"Unit capacity conflict ({pct}%): GIIGNL={rep}, GEM={gem} from {srcdesc}.",
+            f"{_NEEDS_RESEARCH}: verify which source is current for this unit.", True)
+
+
+def _recon_verdicts_lookup(recon_verdicts):
+    """Index agent-authored staged_recon_verdicts.json by (terminal_id, section_type,
+    unit_name or '') so the build can override a needs-research placeholder with a
+    researched verdict."""
+    out = {}
+    for v in (recon_verdicts or []):
+        key = (v.get("terminal_id"), v.get("section_type"), v.get("unit_name") or "")
+        out[key] = v
+    return out
+
+
+def _recon_verdict_text(v):
+    """Render a staged verdict entry into the suggested_resolution cell."""
+    txt = (v.get("verdict") or "").strip()
+    srcs = v.get("sources") or []
+    if srcs:
+        txt += f"  [sources: {', '.join(srcs)}]"
+    return txt
+
+
+def build_giignl_diff_operating_sheet(wb, diff, recon_verdicts=None):
     """Operating-side match audit. One project-total row per match; for
     unit-granularity matches, per-unit rows are emitted directly beneath it."""
     ws = wb.create_sheet("giignl_diff_operating")
     headers = GIIGNL_OPERATING_HEADERS
     _write_header(ws, headers)
+    # Lookup of non-operating units, used to annotate matches whose operating
+    # capacity is 0 (all units non-op) — see _operating_zero_note. Keyed
+    # (terminal_id, section_type) so a section-split terminal (Cameron =
+    # liquefaction + regasification, modeled as two projects sharing one
+    # terminal_id) annotates its operating=0 section with ONLY that section's
+    # non-op units, not the other section's (whose units may be operating).
+    nonop_by_terminal = {}
+    for n in diff.get("nonoperating_units", []):
+        key = (n.get("gem_terminal_id"), n.get("section_type"))
+        nonop_by_terminal.setdefault(key, []).append(n)
+    verdicts = _recon_verdicts_lookup(recon_verdicts)
     row_idx = 2
     for m in diff.get("matches", []) + diff.get("fuzzy_matches", []):
         # Project-total row.
@@ -662,6 +962,28 @@ def build_giignl_diff_operating_sheet(wb, diff):
                 cm["owners_gem_only"] = "red"
         if m.get("confidence") == "medium":
             cm.setdefault("confidence", "yellow")
+        # Annotate the "GEM operating=0 because every unit is non-operating" case
+        # so the 0 isn't misread as missing data. Only when there are no operating
+        # units but the terminal exists; don't clobber a human-authored note.
+        if (m.get("gem_operating_units") == 0 and m.get("gem_total_units")
+                and not proj.get("analyst_note")):
+            proj["analyst_note"] = _operating_zero_note(
+                nonop_by_terminal.get(
+                    (m.get("gem_terminal_id"), m.get("section_type_gem")), []),
+                m.get("gem_total_units"))
+        # Insight + GEM-vs-GIIGNL verdict. A researched verdict in
+        # staged_recon_verdicts.json overrides the deterministic needs-research placeholder.
+        insight, resolution, needs_research = _classify_disagreement(m)
+        v = verdicts.get((m.get("gem_terminal_id"), m.get("section_type_gem"), ""))
+        if v:
+            resolution = _recon_verdict_text(v)
+            needs_research = False
+            if v.get("insight"):
+                insight = v["insight"]
+        proj["insight"] = insight
+        proj["suggested_resolution"] = resolution
+        if needs_research:
+            cm["suggested_resolution"] = "yellow"
         _write_row(ws, proj, headers, row_idx, confidence_map=cm)
         row_idx += 1
 
@@ -693,6 +1015,25 @@ def build_giignl_diff_operating_sheet(wb, diff):
                 for col in ("report_capacity_mtpa", "gem_capacity_mtpa",
                             "capacity_delta_mtpa", "capacity_delta_pct", "disagreements"):
                     ucm[col] = cap_fill
+            u_insight, u_res, u_needs = _classify_unit_disagreement(um)
+            uv = verdicts.get((m.get("gem_terminal_id"), m.get("section_type_gem"),
+                               um.get("gem_unit_name") or ""))
+            if uv:
+                u_res = _recon_verdict_text(uv)
+                u_needs = False
+                if uv.get("insight"):
+                    u_insight = uv["insight"]
+            elif u_needs and verdicts.get(
+                    (m.get("gem_terminal_id"), m.get("section_type_gem"), "")):
+                # Parent project was researched at project level; the unit-capacity
+                # delta is a sub-component of that same question — point there rather
+                # than dangle a NEEDS RESEARCH.
+                u_res = "See project-row resolution above (researched at project level)."
+                u_needs = False
+            urow["insight"] = u_insight
+            urow["suggested_resolution"] = u_res
+            if u_needs:
+                ucm["suggested_resolution"] = "yellow"
             _write_row(ws, urow, headers, row_idx, confidence_map=ucm)
             row_idx += 1
     _autosize(ws)
@@ -1255,6 +1596,9 @@ def main():
         if not diff_path.exists() and (inputs_dir / "giignl_diff.json").exists():
             diff_path = inputs_dir / "giignl_diff.json"
         diff = _safe_load(diff_path, default={})
+        # Agent-authored GEM-vs-GIIGNL verdicts for the rows the deterministic pass
+        # marks NEEDS RESEARCH; merged into giignl_diff_operating's suggested_resolution.
+        recon_verdicts = _safe_load(inputs_dir / "staged_recon_verdicts.json", default=[])
         qa = _safe_load(inputs_dir / "staged_qa_review.json", default=[])
         narrative = _safe_load(inputs_dir / "giignl_narrative_findings.json", default={})
         narrative_findings = narrative.get("findings", []) if isinstance(narrative, dict) else []
@@ -1298,7 +1642,7 @@ def main():
         build_readme(wb, "reconciliation", inputs_summary)
         if diff:
             if diff.get("matches") or diff.get("fuzzy_matches"):
-                build_giignl_diff_operating_sheet(wb, diff)
+                build_giignl_diff_operating_sheet(wb, diff, recon_verdicts=recon_verdicts)
             if diff.get("nonoperating_units"):
                 build_giignl_diff_nonoperating_sheet(wb, diff)
             build_giignl_to_action_sheet(wb, diff, narrative_findings=narrative_findings)
