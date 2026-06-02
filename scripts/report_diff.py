@@ -312,6 +312,45 @@ def _row_capacity_mtpa(r):
         return 0.0
 
 
+def _parse_capacity_source(refs):
+    """Classify a GEM `capacity_ref` cell (one or more comma/space-separated URLs)
+    into the provenance the verdict logic needs: which GIIGNL edition year(s) it
+    cites (parsed from giignl.org URLs like `GIIGNL2022_Annual_Report` or
+    `giignl_-_2020_annual_report`) and whether it ALSO cites any non-GIIGNL source.
+
+    The 'GIIGNL 2026 supersedes' verdict fires only when GIIGNL is the SOLE capacity
+    source (giignl_years non-empty AND not has_non_giignl); a mixed cell routes to
+    research because the non-GIIGNL source may be the authoritative one.
+
+    Returns {"giignl_years": sorted[int], "has_non_giignl": bool, "refs": str}.
+    """
+    refs = (refs or "").strip()
+    if not refs:
+        return {"giignl_years": [], "has_non_giignl": False, "refs": ""}
+    years, has_non = set(), False
+    for url in re.split(r"[\s,]+", refs):
+        if not url:
+            continue
+        if "giignl.org" in url.lower():
+            yrs = [int(y) for y in re.findall(r"(?:19|20)\d{2}", url)]
+            if yrs:
+                years.add(max(yrs))  # path + filename usually agree; max = edition
+        else:
+            has_non = True
+    return {"giignl_years": sorted(years), "has_non_giignl": has_non, "refs": refs}
+
+
+def _gem_capacity_source_for_project(gp):
+    """Provenance of the capacity that fed `gem_capacity_mtpa` — i.e. the union of
+    the OPERATING units' capacity_ref cells (the operating-only total GIIGNL is
+    compared against). Returns the _parse_capacity_source shape."""
+    if not gp:
+        return {"giignl_years": [], "has_non_giignl": False, "refs": ""}
+    op_refs = [u.get("capacity_ref", "") for u in gp.get("units", [])
+               if u.get("status") == "operating" and u.get("capacity_ref")]
+    return _parse_capacity_source(", ".join(op_refs))
+
+
 def _align_units(rp, gp):
     """Align report member rows to GEM units within an already-matched project.
 
@@ -372,6 +411,7 @@ def _align_units(rp, gp):
             "gem_unit_name": u["unit_name"],
             "gem_unit_status": u["status"],
             "gem_unit_capacity_mtpa": round(gcap, 2),
+            "gem_unit_capacity_ref": u.get("capacity_ref", ""),
             "capacity_delta_pct": round(dpct, 1) if dpct is not None else None,
             "agree": bool(round(rsum - gcap, 2) == 0),
         })
@@ -417,6 +457,7 @@ def _align_units(rp, gp):
                 "gem_unit_name": chosen["unit_name"],
                 "gem_unit_status": chosen["status"],
                 "gem_unit_capacity_mtpa": round(gcap, 2),
+                "gem_unit_capacity_ref": chosen.get("capacity_ref", ""),
                 "capacity_delta_pct": round(dpct, 1) if dpct is not None else None,
                 # Agree only when capacities are identical at 2-decimal precision;
                 # any non-zero difference is a conflict (red).
@@ -973,7 +1014,8 @@ def _build_gem_project_table(gem_csv):
     colmap = _load_colmap(gem_csv)
     ci = {k: colmap.get(k) for k in [
         "terminal_id", "terminal_name", "unit_name", "country", "facility_type",
-        "status", "fuel", "owner", "capacity_mtpa", "floating", "floating_vessel_name",
+        "status", "fuel", "owner", "capacity_mtpa", "capacity_ref",
+        "floating", "floating_vessel_name",
         "import_export_only", "other_names", "local_names", "language",
         "proposal_year", "construction_year", "shelved_year", "cancelled_year",
         "stop_year", "actual_start_year",
@@ -1056,6 +1098,7 @@ def _build_gem_project_table(gem_csv):
             status = row[ci["status"]] if ci["status"] is not None else ""
             owner = row[ci["owner"]] if ci["owner"] is not None else ""
             cap_mtpa = row[ci["capacity_mtpa"]] if ci["capacity_mtpa"] is not None else ""
+            cap_ref = row[ci["capacity_ref"]] if ci["capacity_ref"] is not None else ""
             floating = row[ci["floating"]] if ci["floating"] is not None else ""
             other_names_raw = row[ci["other_names"]] if ci["other_names"] is not None else ""
 
@@ -1132,6 +1175,7 @@ def _build_gem_project_table(gem_csv):
                 "unit_name_norm": uname_norm,
                 "status": status,
                 "capacity_mtpa": cap,
+                "capacity_ref": (cap_ref or "").strip(),
                 "start_year": _unit_anchor_year(row, ci, status),
                 "owners_set": owner_tags,
             })
@@ -1939,6 +1983,16 @@ def _classify(report_rows, gem_projects, alias_map=None, collision_regas=None,
             "note": "GEM has this as operating but the report doesn't list it; investigate whether "
                     "report missed it (small/non-member/sanctioned) OR GEM has it wrong",
         })
+
+    # Attach the GEM capacity provenance to every match, so the build-script verdict
+    # logic can fire the "GIIGNL <year> edition superseded by 2026" rule (and route
+    # non-GIIGNL-sourced conflicts to research). Keyed (terminal_id, section_type),
+    # unique per GEM project (a liq+regas terminal is two projects sharing one id).
+    gp_by_tid_section = {
+        (gp["terminal_id"], gp["section_type"]): gp for gp in gem_projects.values()}
+    for m in matches + fuzzy_matches:
+        gp = gp_by_tid_section.get((m["gem_terminal_id"], m["section_type_gem"]))
+        m["gem_capacity_source"] = _gem_capacity_source_for_project(gp)
 
     # Non-operating units of MATCHED projects. GIIGNL's tables are operating-only,
     # so each defaults to is_gem_only=True ("GEM has, GIIGNL doesn't") UNLESS the
