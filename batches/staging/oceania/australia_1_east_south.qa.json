@@ -1,0 +1,112 @@
+[
+  {
+    "category": "ownership_precision",
+    "terminal_id": "T100000130340",
+    "unit_id": "G100002034002",
+    "terminal_name": "Queensland Curtis LNG Terminal",
+    "issue": "Train 2 Owner cell reads 'Shell PLC [97%]; MidOcean Energy LLC [2%]' (sums to 99%). Verified structure: Shell operator/majority, with MidOcean Energy holding 2.5% in Train 2 (acquired from Tokyo Gas in 2022). The likely-intended split is Shell 97.5% / MidOcean 2.5%. Minor rounding/precision issue on an otherwise correctly-attributed cell, updated 2026-06-01 by HF.",
+    "severity": "low",
+    "suggested_action": "Reviewer to confirm whether T2 should read Shell 97.5% / MidOcean Energy 2.5% (CNOOC's 50% sits in Train 1 only). Source: https://lngprime.com/lng-terminals/shells-qgc-business-to-drill-more-wells/102818/ ('Shell ... together with CNOOC (50% equity in Train 1) and Tokyo Gas (2.5% equity in Train 2)'). No field edit staged given the cell is current and the difference is sub-1%.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "capacity_note",
+    "terminal_id": "T100000130333",
+    "unit_id": "G100002033301",
+    "terminal_name": "Gladstone LNG Terminal",
+    "issue": "Santos's own glng.com site cites ~8.6 mtpa combined for the two GLNG trains, vs GEM nameplate 7.8 mtpa (3.9 x 2). The 8.6 figure is an optimized/actual run-rate, not nameplate; TotalEnergies (JV partner) and other sources confirm 7.8 mtpa nameplate. Recording so a future researcher doesn't mistake the 8.6 optimized figure for a nameplate uplift.",
+    "severity": "low",
+    "suggested_action": "Do NOT bump GEM nameplate to 8.6. Leave Capacity at 3.9/train (7.8 total). If desired, the optimized ~8.6 mtpa run-rate can be noted in the wiki Background, not the Capacity field. Sources: https://www.glng.com/glngplant (8.6 optimized) vs https://totalenergies.com/newsroom/australia-totalenergies-enters-infrastructure-agreement-gip-gladstone-lng/?lang=eng (7.8 nameplate).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "fsru_sync_touchpoint",
+    "terminal_id": "T100000130606",
+    "unit_id": "G100002060600",
+    "terminal_name": "Port Kembla FSRU",
+    "issue": "FSRU sync touchpoint: GEM FloatingVesselName='Hoegh Galleon', VesselOwner/VesselOperator='Hoegh Evi'. Vessel is currently completing a sub-charter to Egypt's EGAS (extended to end-2026) and is not yet on site at Port Kembla; terminal commercial start delayed to 2027. IMO not recorded in GEM (Hoegh Galleon IMO 9866479, per Hoegh Evi / public vessel registries — VERIFY before adding). Hoegh Evi is the rebranded Hoegh LNG (vessel owner/operator).",
+    "severity": "medium",
+    "suggested_action": "Cross-check the Hoegh Galleon vessel record against the LNG carrier project backend (vessel name + IMO) per the FSRU sync rule; the vessel is mid-redeployment (Egypt -> Port Kembla expected 2026/27). Confirm IMO 9866479 from a primary registry before populating FloatingVesselName [ref]/VesselOwner. No field edit staged (terminal-side fields already current).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "researcher_note_typo",
+    "terminal_id": "T100000130981",
+    "unit_id": "G100002098100",
+    "terminal_name": "Port Phillip Bay FSRU",
+    "issue": "ResearcherNotesUnit reads 'Vessel to be provided by Seapak'. The FSRU provider Vopak secured (Sep 2025) is 'Seapeak' (the former Teekay LNG, now Seapeak LLC), not 'Seapak'. Cosmetic typo in a free-text note; not a structured field.",
+    "severity": "low",
+    "suggested_action": "Reviewer may correct the note spelling to 'Seapeak'. Not staged as a field edit (it's a researcher note, not a GEM column). Source: https://engage.vic.gov.au/vopak-vet-ees-draft-scoping-requirements and Vopak/Seapeak Sep-2025 FSRU charter announcements.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ownership_attribution",
+    "terminal_id": "T100000130330",
+    "unit_id": "G100002033000",
+    "terminal_name": "Crib Point FSRU Terminal",
+    "issue": "Owner='Leif Hoegh & Co Ltd [100%]', Parent='Leif Hoegh & Co Ltd [100.0%]'. For this cancelled (2021) project, AGL Energy was the terminal developer/sponsor; Leif Hoegh & Co (Hoegh LNG) was only the FSRU vessel owner (vessel: Hoegh Esperanza). The terminal owner field appears to conflate the vessel owner with the terminal sponsor.",
+    "severity": "low",
+    "suggested_action": "Reviewer to consider whether the terminal Owner should be AGL Energy (project sponsor) with Hoegh as VesselOwner. Low priority (project cancelled 2021, last touched 2025-09 by R. Rozansky). No edit staged on a dead project absent a clear GEM convention call. Source: https://lngprime.com/australia-and-oceania/agls-crib-point-fsru-project-rejected/16127/",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "revival_watch",
+    "terminal_id": "T100000130332",
+    "unit_id": "G100002033201",
+    "terminal_name": "Fishermans Landing LNG Terminal",
+    "issue": "In November 2024, Liquefied Natural Gas Ltd signed a NON-binding memorandum of intent with Tri-Star Petroleum for gas supply to the Fishermans Landing LNG project near Gladstone. A preliminary revival signal on a project GEM holds as cancelled (2017). Non-binding MoI does not meet a status-change/revival bar; no concrete construction step.",
+    "severity": "low",
+    "suggested_action": "Keep Status=cancelled. Watch for a binding gas supply agreement, new env approval, or FID. Re-check next batch. No field edit staged.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change",
+    "terminal_id": "T100000130336",
+    "unit_id": "G100002033600",
+    "terminal_name": "Newcastle FSRU",
+    "issue": "Quick-verify: confirmed still cancelled. EPIK shelved the Newcastle GasDock FSRU in Feb 2023 (declared economically unfeasible); no revival in 2024-2026. GEM Status=cancelled (confirmed), CancelledYear=2023 accurate.",
+    "severity": "low",
+    "suggested_action": "No action. Status current. Source: https://www.miningweekly.com/article/plug-pulled-on-lng-import-terminal-in-nsw-2023-02-03",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change",
+    "terminal_id": "T100000130695",
+    "unit_id": "G100002069500",
+    "terminal_name": "Longford LNG Terminal",
+    "issue": "Quick-verify: confirmed still cancelled (2019). The Longford site is now an existing domestic gas PROCESSING plant (ExxonMobil/Esso Gippsland), not an LNG import terminal; AEMO 2025 VGPR references it only as a gas-production source. No LNG-terminal revival. GEM Status=cancelled accurate.",
+    "severity": "low",
+    "suggested_action": "No action. Status current.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change",
+    "terminal_id": "T100000130692",
+    "unit_id": "G100002069201",
+    "terminal_name": "Abbot Point LNG Terminal",
+    "issue": "Quick-verify: confirmed still cancelled (shelved 2020, cancelled 2022). Energy World Corp export proposal; no revival 2024-2026. GEM Status=cancelled (confirmed) accurate.",
+    "severity": "low",
+    "suggested_action": "No action. Status current.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change",
+    "terminal_id": "T100000130326",
+    "unit_id": "G100002032601",
+    "terminal_name": "Arrow Energy LNG Terminal",
+    "issue": "Quick-verify: confirmed still cancelled. Shell/PetroChina called off the standalone Arrow LNG export terminal in 2015; Arrow CSG gas is fed to existing Curtis Island trains instead. No revival of the standalone terminal. GEM Status=cancelled (confirmed), CancelledYear=2015 accurate.",
+    "severity": "low",
+    "suggested_action": "No action. Status current.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change",
+    "terminal_id": "T100000130694",
+    "unit_id": "G100002069401",
+    "terminal_name": "Poseidon FLNG Terminal",
+    "issue": "Quick-verify: confirmed still cancelled (inferred 4y; shelved 2020, cancelled 2022). The offshore Greater Poseidon gas field (Browse Basin) has seen permit activity (Origin acquired Karoon's permits), but the ConocoPhillips FLNG terminal concept is dead — no FLNG development. GEM Status=cancelled accurate.",
+    "severity": "low",
+    "suggested_action": "No action. Status current. Note the offshore field permits are separate from the cancelled FLNG terminal.",
+    "researcher_initials": "AI-draft"
+  }
+]

@@ -52,6 +52,12 @@ Candidates that fall short go in `monitor_list` (see §5) with a note on which t
 
 Borrowed from the carrier project's discovery structure, adapted for terminals. The rings are searched in order; later rings catch what earlier rings miss.
 
+### §4.0 Country coverage — sweep the gaps, not just the covered
+
+Before the rings, settle **which countries** to search. Every dedup/index tool keys off countries already in the GEM export, so a country with ZERO GEM LNG terminals is invisible to them — a first-time importer signing an FSRU charter would never surface. Run `python completeness_sweep.py` and read its `coverage_gap` block: `uncovered_coastal` lists coastal countries (the marine-access universe in `scripts/country_universe.py`) that have **no** GEM LNG terminal. Add the in-scope uncovered countries to the search so discovery covers **covered ∪ uncovered**, not only countries already tracked.
+
+The list is deliberately broad (it includes micro/island states that will realistically never build LNG) — triage it, don't treat every entry as a lead. For a global or regional run the uncovered set IS part of scope; for a single-country run it's a no-op. If `coverage_gap.gem_countries_outside_reference` is non-empty, a GEM-covered country is missing from the reference list — add it to `country_universe.py` (or fix a name) so it never reads as a false gap. This precedes the rings below, which then research each in-scope country (covered or newly added).
+
 ### §4.1 Ring A — country-level regulatory sweep
 
 The most authoritative ring. National regulators publish concrete project information (filings, permits, environmental assessments) that establishes both existence and several key data fields at once.

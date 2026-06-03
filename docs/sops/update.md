@@ -15,6 +15,8 @@ Trigger conditions:
 - Stale-sweep flagged units passing dormancy thresholds (inferred shelved at 2y, inferred cancelled at 4y)
 - A specific news event triggers a known-needed update (a recent FID announcement, a confirmed shelving, a vessel reassignment)
 
+**Scaled execution (regional / full-tracker sweep):** when scope is a whole region or the entire tracker, this SOP runs at scale by fanning out one research subagent per country into the `batches/staging/` tree, then merging per region via `batches/staging/_assemble.py` + `build_review_package.py --inputs-dir`. The per-country research still follows every rule below. See the **"Regional sweep"** section in `CLAUDE.md` and `batches/staging/README.md` for the mechanics and the resume ledger (`SWEEP_PROGRESS.md`).
+
 ## §2 Confirm parameters at batch start
 
 Before any tool runs, confirm:

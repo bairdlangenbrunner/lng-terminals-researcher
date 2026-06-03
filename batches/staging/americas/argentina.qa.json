@@ -1,0 +1,152 @@
+[
+  {
+    "category": "capacity",
+    "terminal_id": "T100000130832",
+    "unit_id": "G100002083201",
+    "terminal_name": "Argentina LNG Terminal",
+    "issue": "Phase 2 (YPF/Shell) capacity in GEM is 10.0 mtpa. Multiple sources (Dec 2025) report this phase was downsized to ~6 mtpa from a 12 mtpa target, which is what triggered Shell's exit. The downsizing is reported but tied to an in-flux restructuring (YPF still seeking a replacement partner), so the final nameplate is not yet firm.",
+    "suggested_action": "Do NOT bump capacity yet. Re-verify once a replacement partner / firm phase scope is announced; if 6 mtpa is confirmed at FEED/FID, update Capacity 10.0 -> ~6.0 mtpa then. Note GEM's '10 mtpa' already differed from the 12 mtpa figure the press cites as the pre-downsizing target.",
+    "severity": "medium",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "capacity",
+    "terminal_id": "T100000130832",
+    "unit_id": "G100002083202",
+    "terminal_name": "Argentina LNG Terminal",
+    "issue": "Phase 3 (now YPF/Eni/XRG) is consistently described as 12 mtpa delivered via TWO floating LNG units of 6 mtpa each (Eni technical framework Oct 2025; JDA Feb 2026). GEM models Phase 3 as a single 12.0 mtpa unit. Capacity total matches, but GEM does not split the two 6-mtpa FLNGs into separate units (unlike Phase 1, which is split into 1.1/1.2).",
+    "suggested_action": "Capacity figure (12.0 mtpa) is correct; no change. Consider whether to split Phase 3 into two 6-mtpa FLNG sub-units at/after FID (mid-2026) to mirror the Phase 1.1/1.2 modeling, once vessels are designated. Monitor.",
+    "severity": "low",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130832",
+    "unit_id": "G100002083202",
+    "terminal_name": "Argentina LNG Terminal",
+    "issue": "Phase 3 FIDStatus in GEM is 'Pre-FID' (FIDYear 2025). As of the binding JDA (12 Feb 2026), partners (YPF/Eni/XRG) target FID in H2 2026; first exports 2030-2031. Status remains 'proposed' / Pre-FID — no FID yet, so no status field change. FIDYear in GEM shows 2025 (the year the partnership track formed) but FID itself is now targeted 2026.",
+    "suggested_action": "Leave Status 'proposed' and FIDStatus 'Pre-FID' for now. Watch for the H2-2026 FID announcement; at that point move to FID / construction and set FIDYear=2026. Per sweep rules, no Status field edit or timeline file is staged here.",
+    "severity": "low",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "location",
+    "terminal_id": "T100000130832",
+    "unit_id": "G100002083203",
+    "terminal_name": "Argentina LNG Terminal",
+    "issue": "GEM Location field = 'Las Grutas' (Rio Negro). Recent sources locate the Argentina LNG / Southern Energy FLNG site at Sierra Grande / Punta Colorada on the Gulf of San Matias, Rio Negro (the Hilli/MKII deployment area). GEM's own Sep-2025 researcher note says location 'moved to Sierra Grande in Rio Negro.' Las Grutas and Sierra Grande are both in the San Matias gulf area (~tens of km apart) so the lat/long may be approximately right, but the place-name label may be stale.",
+    "suggested_action": "Verify the precise deployment coordinates/site name (Sierra Grande / Punta Colorada vs Las Grutas) against the project's Environmental Impact Statement; refine the Location label if warranted. Low priority — coordinates already in the correct gulf.",
+    "severity": "low",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ownership",
+    "terminal_id": "T100000130832",
+    "unit_id": "G100002083203",
+    "terminal_name": "Argentina LNG Terminal",
+    "issue": "Phase 1 (Southern Energy SA) shareholding VERIFIED current and CORRECT in GEM. Sources confirm SESA = Pan American Energy 30% / YPF 25% / Pampa Energia 20% / Harbour Energy 15% / Golar LNG 10%. GEM's Parent decomposes PAE's 30% into its ultimate parents (BP 15% + Bridas 7.5% + CNOOC 7.5% = 30%), which is internally consistent and matches exactly. Owner 'Southern Energy SA [100%]' correct. No change.",
+    "suggested_action": "No action. Blue re-verify only. (Documenting that the BP/Bridas/CNOOC split in GEM = Pan American Energy 30%, so it should NOT be 'corrected' to a literal PAE line by a future reviewer.)",
+    "severity": "low",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "verification",
+    "terminal_id": "T100000131182",
+    "unit_id": "G100002118201",
+    "terminal_name": "Bahía Blanca FLNG Terminal",
+    "issue": "Re-verify (no change): Bahia Blanca FLNG (ex-Tango/Exmar) remains mothballed; the Tango FLNG vessel long since left for Eni in Republic of Congo. No revival; the export pivot is via the new Argentina LNG / TGS projects, not Bahia Blanca FLNG. GEM mothballed status, ActualStart 2019, Stop 2020 all current.",
+    "suggested_action": "No action. Representative blue re-verify for this terminal.",
+    "severity": "low",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "verification",
+    "terminal_id": "T100000130538",
+    "unit_id": "G100002053800",
+    "terminal_name": "Bahia Blanca GasPort FSRU",
+    "issue": "Re-verify (no change): Bahia Blanca GasPort remains IDLED. An Excelerate exec (2025) confirmed Argentina would stick with a SINGLE import terminal (Escobar) for the winter season; no FSRU has returned to Bahia Blanca GasPort. GEM idled status (Stop 2024) current.",
+    "suggested_action": "No action. Representative blue re-verify for this terminal.",
+    "severity": "low",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "verification",
+    "terminal_id": "T100000130542",
+    "unit_id": "G100002054200",
+    "terminal_name": "Escobar FSRU",
+    "issue": "Re-verify (no change): Escobar remains OPERATING and is Argentina's sole active LNG import terminal. Enarsa/YPF 50/50 JV (UTE Escobar) extended; Excelerate 'Expedient' FSRU still the deployed vessel; 27 cargoes imported in 2025, active tenders (Naturgy spot cargo) in 2026. GEM operating status, Owner/Parent (ENARSA 50% / YPF 50%), and FSRU vessel all current. Capacity 6.10 mtpa retained per GEM's documented GIIGNL-vs-fleet note (no firm change).",
+    "suggested_action": "No action. Representative blue re-verify for this terminal. (GEM note already documents the 3.8 vs 5.2 vs 6.1 mtpa capacity-source ambiguity; nothing new to resolve it this sweep.)",
+    "severity": "low",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "verification",
+    "terminal_id": "T100000131177",
+    "unit_id": "G100002117700",
+    "terminal_name": "TGS Puerto Galván LNG Terminal",
+    "issue": "Re-verify (no change): TGS Puerto Galvan export project (TGS 100%) found no material new development beyond GEM's existing notes (last substantive news Jul 2024). No FID, no partner change, no firm capacity update. Remains a speculative proposed project distinct from the YPF-led Argentina LNG. GEM 'proposed' status current.",
+    "suggested_action": "No action. Representative blue re-verify for the TGS terminal. Monitor for any 2026 movement.",
+    "severity": "low",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "verification",
+    "terminal_id": "T100000130540",
+    "unit_id": "G100002054000",
+    "terminal_name": "Dock Sud LNG Terminal",
+    "issue": "Re-verify (no change): Dock Sud LNG import terminal remains cancelled (inferred 4y). No revival found; Argentina's import needs are served by Escobar. GEM cancelled status current.",
+    "suggested_action": "No action. Representative blue re-verify.",
+    "severity": "low",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "source",
+    "terminal_id": "T100000130832",
+    "unit_id": "G100002083203",
+    "terminal_name": "Argentina LNG Terminal",
+    "issue": "url_verifier FAILED (HTTP 403) for https://www.offshore-technology.com/news/southern-energy-flng-project-fid/ (a candidate Southern Energy FID source). NOT used in any record. The same FID fact is corroborated by PASS sources (ogj.com 'doubles capacity' MKII FID, lngindustry SESA FID).",
+    "suggested_action": "Do not cite the offshore-technology.com URL (403). Use the verified ogj.com / lngindustry.com FID sources instead.",
+    "severity": "low",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "discovery-dedup",
+    "terminal_id": "T100000130832",
+    "unit_id": "",
+    "terminal_name": "Argentina LNG Terminal",
+    "issue": "The entire YPF/Southern Energy Vaca Muerta export build-out maps to this ONE GEM terminal (Sierra Grande / Punta Colorada / Golfo San Matias, Las Grutas). Phase 1 = Southern Energy (PAE 30%/YPF 25%/Pampa 20%/Harbour 15%/Golar 10%) = Hilli Episeyo 2.45 mtpa + MK II 3.5 mtpa; later phases add FLNG units (Phase 2 10 mtpa, Phase 3 12 mtpa with Eni + ADNOC's XRG). GEM already has 4 units (Phase 1.1, 1.2, 2, 3). Per Discovery SOP §6, additional phases are UNITS, not new terminals. No new terminal here.",
+    "severity": "low",
+    "suggested_action": "No discovery action. NOTE for Update workflow (out of scope here): GEM Owner/Parent does not yet reflect Phase 3 partners Eni SpA and XRG (ADNOC); Phase 3 is now reported as two 6-mtpa FLNG units (GEM stores it as one 12-mtpa unit); YPF abandoned the earlier onshore-terminal plan (Apr 2025). Route to an Argentina Update batch.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "discovery-dedup",
+    "terminal_id": "T100000131177",
+    "unit_id": "",
+    "terminal_name": "TGS Puerto Galvan LNG Terminal",
+    "issue": "Checked TGS/Pampa Bahia Blanca liquefaction proposal as a possible gap. It is this existing GEM terminal (TGS, Puerto Galvan, Bahia Blanca; GEM has 2 stages = 2.5 + 2.9 mtpa). 2024-2026 reporting (4 trains, 4-5.3 mtpa, back off standby) is an Update detail, not a new terminal. Pampa reportedly archived a separate Excelerate-gasifier variant; no distinct record warranted.",
+    "severity": "low",
+    "suggested_action": "No discovery action; route any capacity/train-count refresh to Update.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "discovery-dedup",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Argentina import FSRUs (Escobar / Bahia Blanca GasPort)",
+    "issue": "Hunted for a new import FSRU. Argentina is operating a SINGLE FSRU (Escobar, GEM T100000130542, operating); Bahia Blanca GasPort (T100000130538) is idled; Dock Sud (T100000130540) cancelled. No new/third import FSRU terminal proposed for 2025-2026 (country deliberately scaled back to one FSRU). All import terminals already in GEM.",
+    "severity": "low",
+    "suggested_action": "No discovery action.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "name-collision-warning",
+    "terminal_id": "T100000130580",
+    "unit_id": "",
+    "terminal_name": "GNL Del Plata FSRU",
+    "issue": "GEM's 'GNL Del Plata FSRU' is a URUGUAYAN import FSRU (Gas Sayago SA, Punta Sayago) and is UNRELATED to the new Argentine 'LNG del Plata' export FLNG (Camuzzi/Vitol, La Plata/Ensenada) staged as a new_terminal this sweep. Same-name coincidence only; different country, sponsor, and facility type (import vs export).",
+    "severity": "medium",
+    "suggested_action": "When adding the Argentine LNG del Plata terminal, do NOT merge or alias it onto the Uruguay GNL Del Plata FSRU record.",
+    "researcher_initials": "AI-draft"
+  }
+]

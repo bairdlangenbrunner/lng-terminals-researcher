@@ -6,7 +6,9 @@ and edit the doc rather than leaving as a TODO indefinitely.
 
 ---
 
-## OPEN: Wiki page editing as part of the agent workflow
+## RESOLVED: Wiki page editing as part of the agent workflow
+
+**Resolved 2026-06:** option (A) implemented — a `wiki_updates` sheet in `build_review_package.py` collects narrative/Background content that doesn't map to a structured column, kept separate from `updates`. The user pastes it into the wiki manually. (Original deferral below.)
 
 Currently omitted from the Update SOP. The methodology specifies that
 researchers manually edit the Background section of each terminal's wiki page,
@@ -120,7 +122,9 @@ should be entered into `Source [ref]` or a different column in the live DB.
 
 ---
 
-## OPEN: Project-level matching for GIIGNL diff
+## RESOLVED: Project-level matching for GIIGNL diff
+
+**Resolved 2026-06:** option (C) implemented — `report_diff.py` now does unit-level alignment (`_align_units`, the train-range pre-pass, `_unit_designators`) pinning GIIGNL rows to specific GEM units where names/codes align, with project-total fallback. See the "report_diff.py — unit-level alignment" deep-dive in `scripts/README.md`. (Original deferral below.)
 
 `report_diff.py` does project-level matching (collapses GEM unit-rows to
 projects before diffing). This means unit-level capacity disagreements get
@@ -156,7 +160,9 @@ Exact + alias matches were always stable; only the fuzzy/gem-only boundary moved
 
 ---
 
-## OPEN: GIIGNL 2026 extraction + matcher defects (found 2026-05-28, not yet fixed)
+## RESOLVED (mostly): GIIGNL 2026 extraction + matcher defects (found 2026-05-28)
+
+**Resolved 2026-06:** the country-boundary leaks, page-footer-as-row, and orphaned-site-name extractor bugs, plus the romanization/hyphenation matcher misses, are fixed — diacritic folding, trailing-region strip, word-boundary substring, cross-page reclaim, `_merge_split_site_runs`, expansion/stage folding, and more (see the `giignl_extract.py` and `report_diff.py` deep-dives in `scripts/README.md`). **RESIDUAL:** dense-block OWNER-cell bleed surfaces as occasional lone-token owner deltas — tracked in the `_attribute_owner_fragments` deep-dive, not here. (Original investigation below.)
 
 Investigation of the 2026 reconciliation diff (before building the package) found
 the §6 gates tripped largely by **noise, not real findings**. Two root causes,
@@ -211,7 +217,9 @@ Edition" footer-leak is now fixed — see root cause A above.)
 
 ---
 
-## OPEN: Qatar Ras Laffan complex matches at project level (found 2026-05-28)
+## RESOLVED: Qatar Ras Laffan complex matches at project level (found 2026-05-28)
+
+**Resolved 2026-06:** `_unit_designators` (Pass 1.5) maps GIIGNL `N(*)`/`S(*)` sub-terminal codes to the GEM unit bearing the same code, and the train-range pre-pass sums per-train rows into GEM range-units — so Qatar (N)/(S) align at unit level instead of showing a spurious project-total conflict. See the report_diff.py unit-level-alignment deep-dive. (Original analysis below.)
 
 GIIGNL splits the Ras Laffan liquefaction complex into per-sub-complex rows —
 "QatarEnergy LNG N(1)", "N(2)", "N(4)", "S(1)", "S(2)", "S(3)" — while GEM models

@@ -1,0 +1,32 @@
+[
+  {
+    "category": "ownership",
+    "terminal_id": "T100000130418",
+    "unit_id": "G100002041800",
+    "terminal_name": "Yingkou LNG Terminal",
+    "issue": "GEM Parent field for Yingkou is self-referential: Parent = 'Zhongjiao Yingkou Liquefied Natural Gas Co Ltd [100.0%]', i.e. the project SPV listed as its own parent. Public sources say the SPV (China Communications Yingkou LNG Co Ltd, 中交营口LNG) is a JV: China Communications Urban and Rural Energy (CURE, 中交城乡能源, a wholly-owned subsidiary of state-owned China Communications Construction Co / CCCC) holding the majority, with Hebei Shenneng Gas Co Ltd (河北燊能燃气) holding 25%. The true ultimate parent (CCCC, via CURE) plus Hebei Shenneng are not reflected. entity_lookup for 'China Communications Urban and Rural Energy' returned no existing GEM entity (inconclusive/generic-only).",
+    "severity": "medium",
+    "suggested_action": "Researcher to verify the equity split and set Parent to CURE/CCCC (majority) + Hebei Shenneng Gas (25%), creating the CURE entity if confirmed absent from the GEM entity system. Source: S&P Global (paywalled, 403 on verifier) + Mysteel/offshore-technology corroborate CCCC/CURE + Hebei Shenneng. Note 'Zhongjiao' = pinyin for 中交 = China Communications, so the owner romanization is correct; only the parent chain needs refinement.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ownership",
+    "terminal_id": "T100000130812",
+    "unit_id": "G100002081200",
+    "terminal_name": "Yangjiang LNG Terminal",
+    "issue": "GEM Parent for Yangjiang is 'Guangdong Yangjiang Hailingwan LNG Co Ltd [100.0%]' (the project SPV as its own parent). Trade press (LNG Prime, 15 Nov 2025 first-cargo report) describes the project as a 50/50 JV between Guangdong Energy (state-owned power utility) and Sukanto Tanoto's Pacific Energy. The ultimate JV parents (Guangdong Energy Group + Pacific Energy) are not reflected in the parent chain.",
+    "severity": "low",
+    "suggested_action": "Researcher to verify and, if confirmed, set Parent to Guangdong Energy Group [50%] + Pacific Energy [50%] (entity names per GEM canonical map). This mirrors the same SPV-as-its-own-parent pattern seen on several recent China entries; may be a deliberate GEM modeling choice (immediate owner = SPV) rather than an error.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_consistency",
+    "terminal_id": "T100000131106",
+    "unit_id": "G100002110600",
+    "terminal_name": "Dandong LNG Terminal",
+    "issue": "Possible gem.wiki <-> DB-export status mismatch. The GEM export (this audit's source of truth) shows Dandong as Status=proposed, LastUpdated 2026-04-06, owner Liaoning Qianyuan Energy. A web search surfaced the public gem.wiki page describing Dandong as 'cancelled'. The export status is well-supported and current: Dandong's 2026 municipal government work report (Jan 2026) states the city is 'pushing forward LNG reception-station preliminary work' (推进LNG接收站前期工作), confirming the project is still alive/proposed, not cancelled. So the export is correct; the public wiki revision appears stale.",
+    "severity": "low",
+    "suggested_action": "No change to the export. Researcher may want to re-sync the public gem.wiki Dandong page (and confirm the developer: GEM lists Liaoning Qianyuan Energy / Jilin Qianyuan, while earlier project history involved Liaoning Energy Investment Group and Donggang Port — worth a light check). Flagged only as a wiki-vs-DB sync item, not a defect in the audited export.",
+    "researcher_initials": "AI-draft"
+  }
+]

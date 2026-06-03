@@ -1,0 +1,42 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000131148",
+    "unit_id": "G100002114801",
+    "terminal_name": "West Papua FLNG Terminal",
+    "issue": "GEM lists Status=proposed, but the project has taken FID (2024, already in GEM) and is now physically under construction: EPCIC contract awarded to Wison New Energies (Oct 2024), first steel cut 7 June 2024, hull being built at Zhoushan shipyard, target sail-away Q2 2026 and first LNG Q3 2026, then tow to Teluk Bintuni for final commissioning. With a FID and a fabricating hull, the unit reads as construction, not proposed.",
+    "severity": "medium",
+    "suggested_action": "Review unit status proposed -> construction and add a Construction-start timeline entry (~2024, first steel) once the live timeline is pulled (fetch_timeline endpoint is down, so no Status field edit / timeline file is staged here). Sources: offshore-energy.biz/1-billion-deal-for-worlds-ninth..., reandabernardi.com 2025-06-24, lngprime/Wison EPCIC.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000131070",
+    "unit_id": "G100002107000",
+    "terminal_name": "Palu LNG Terminal",
+    "issue": "GEM lists Status=cancelled (Substatus 'inferred 4 y', CancelledYear=2026, LastUpdated 2026-05-29). However a US$1.75bn MoU between Aslan Energy Capital and PT Bangun Palu Sulawesi Tengah for a battery (BESS) gigafactory + LNG hub at the Palu SEZ was signed 13 May 2026 (i.e. essentially concurrent with the GEM cancellation entry, which is an algorithmic 'inferred' tag rather than a manual re-evaluation). This is a revival signal that conflicts with the cancelled status.",
+    "severity": "medium",
+    "suggested_action": "Re-evaluate whether Palu should remain cancelled vs reverting toward proposed in light of the May-2026 MoU. Note the MoU is a broad SEZ/BESS+LNG framework (LNG component not yet concrete), so it may not on its own clear the cancellation. Sources: indonesiabusinesspost.com/6658 (VERIFIED), en.antaranews.com/news/415624 (VERIFIED).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_quality",
+    "terminal_id": "T100000131164",
+    "unit_id": "G100002116400",
+    "terminal_name": "Gresik LNG Terminal",
+    "issue": "GEM lists Status=shelved (Substatus 'inferred 2 y') with ShelvedYear=2027 -- a FUTURE shelve year that coincides exactly with the OriginalPlannedStartYear/LatestPlannedStartYear (2027), suggesting the planned-start year was mis-entered into ShelvedYear. Web research shows the BP Gas & Power / AKR Corporindo JIIPE regas project still presented as active (JDA Dec 2023, ~2027 onstream), with no confirmed shelving found.",
+    "severity": "medium",
+    "suggested_action": "Verify ShelvedYear=2027 (likely should be blank; 2027 appears to be the planned start, not a shelve date) and re-confirm whether the project is genuinely shelved or still proposed. No field edit staged (the discrepancy is between an internal anomaly and an unconfirmed shelving). Lead: gem.wiki/Gresik_LNG_Terminal, akr.co.id JDA release.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ownership",
+    "terminal_id": "T100000130284",
+    "unit_id": "G100002028400",
+    "terminal_name": "Nusantara Regas Satu Terminal",
+    "issue": "GEM VesselOwner = 'New Fortress Energy' for the Nusantara Regas Satu FSRU (ex-Khannur, Golar conversion). Sourcing is conflicting/imprecise: the vessel sits in the Energos Infrastructure fleet (majority Apollo-managed funds, with New Fortress Energy as a MINORITY shareholder); NFE reduced/divested its Energos stake in 2024. Historic owner was Golar LNG Partners. Naming NFE alone as VesselOwner is at best imprecise.",
+    "severity": "low",
+    "suggested_action": "Cross-check the FSRU vessel-owner against the LNG carrier project backend (this is a cross-project FSRU field) and consider 'Energos Infrastructure' as the current registered owner with NFE as minority. Ambiguous/conflicting sources -> no edit staged. Sources: energosinfra.com, lngprime Energos charter news.",
+    "researcher_initials": "AI-draft"
+  }
+]

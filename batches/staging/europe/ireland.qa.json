@@ -1,0 +1,42 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130464",
+    "unit_id": "G100002046401",
+    "terminal_name": "Shannon FSRU",
+    "issue": "Major planning progress not yet reflected. GEM shows Status=proposed with OriginalPlannedStartYear=LatestPlannedStartYear=2022 (stale by ~4 yrs). Sept 2024 the High Court QUASHED An Bord Pleanala's Oct-2023 refusal; Mar 2025 ABP withdrew its appeal-leave application; Mar 2025 a 600 MW power plant + 120 MW BESS at the Shannon Technology & Energy Park was GRANTED permission (now under judicial review by Friends of the Irish Environment). 30 May 2025 Shannon LNG Ltd (subsidiary of New Fortress Energy) REACTIVATED its EUR 650m application (incl. FSRU, jetty, onshore receiving facilities) to ABP; a decision was expected later in 2025 and Shannon LNG was to resubmit updated info. Net: the LNG terminal itself still has NO final approval, so Status=proposed remains correct, but the planned-start years (2022) are clearly obsolete and the planning history needs a timeline refresh.",
+    "severity": "high",
+    "suggested_action": "Do NOT change Status (terminal still unconsented). Refresh OriginalPlannedStartYear/LatestPlannedStartYear once a firm new in-service date is published (none found yet — do not guess). Add timeline entries for: 2023 refusal, Sept-2024 High Court quashing, Mar-2025 ABP appeal withdrawal, Mar-2025 power-plant permission, May-2025 reactivated terminal application. Watch for the ABP decision on the reactivated application.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130855",
+    "unit_id": "G100002085500",
+    "terminal_name": "Predator FSRU",
+    "issue": "Internal inconsistency + likely shelved/abandoned. GEM has Status=proposed but ShelvedYear=2024 already filled (proposed status contradicts a populated ShelvedYear). The Mag Mell FSRU (Predator Oil & Gas, ~50 km off Co. Cork via the disused Kinsale Head pipeline) has had no substantive Irish project progress in 2+ years; Predator's operational focus has shifted to Morocco and Trinidad, and the company has signalled it may repurpose the Mag Mell FSRU template for a Moroccan gas-infrastructure tender (EoI targeted by 23 Jul 2025). Per lifecycle rules, a proposed unit with >2 yr of no updates is an inferred-shelved candidate.",
+    "severity": "medium",
+    "suggested_action": "Reconcile Status with the populated ShelvedYear=2024: set Status to shelved (substatus 'inferred' per the >2yr no-update rule), or confirm/clear ShelvedYear if the project is deemed still live. Status change goes via timeline review, not a direct Status field edit. Note the Morocco pivot in the wiki.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "naming",
+    "terminal_id": "T100001048053",
+    "unit_id": "G100001054972",
+    "terminal_name": "Gas Networks Ireland LNG Terminal",
+    "issue": "Researcher note (RR 7/25) asked to rename the terminal once an official name/location is provided. Both now exist: the project's official name is the 'Strategic Gas Emergency Reserve' (SGER), a State-led, emergency-only FSRU owned/operated by Gas Networks Ireland; selected site = Cahiracon, Co. Clare (Shannon Estuary), announced 26 Nov 2025. FSRU ~300 m LOA, ~170,000 m3 LNG storage. (Location/State filled via updates; rename + capacity left for editor discretion.)",
+    "severity": "low",
+    "suggested_action": "Consider renaming the terminal to reference the Strategic Gas Emergency Reserve / Cahiracon (e.g. 'Shannon Estuary Strategic Gas Emergency Reserve FSRU'). Storage ~170,000 m3 is a vessel storage figure (m3 LNG), not an mtpa baseload sendout — do NOT enter it as Capacity (mtpa). No public mtpa sendout figure found; leave Capacity blank.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_review",
+    "terminal_id": "T100000131135",
+    "unit_id": "G100002113500",
+    "terminal_name": "Pilot Cork FSRU",
+    "issue": "GEM has Status=shelved (ShelvedYear 2025; note 'presume shelve next cycle if no updates, last ref 10/22'). A foreshore-licence application (Maritime Area Regulatory Authority ref MUL240042) for the Port of Cork at Whitegate was published Nov 2025, but the applicant on that document is the Port of Cork Company / harbour authority, not clearly Pilot LNG, so it does not confirm Pilot's commercial FSRU is reactivated. No clear 2025-2026 evidence Pilot's project is dead or revived. Insufficient to change status either way.",
+    "severity": "low",
+    "suggested_action": "Hold Status=shelved. Monitor the Port of Cork / Whitegate foreshore process (MUL240042) and any Pilot LNG announcement to see whether Pilot's FSRU is being revived vs. superseded by the State SGER. Do not edit on current evidence.",
+    "researcher_initials": "AI-draft"
+  }
+]

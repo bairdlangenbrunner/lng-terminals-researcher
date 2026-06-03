@@ -24,10 +24,11 @@ The countries below have starter content from the original scaffolding.
 Countries not listed should be created from `_template.md` when first researched.
 
 - algeria, australia, bangladesh, brazil, canada
-- china, croatia, egypt, germany, hong-kong
-- india, indonesia, japan, mexico, new-zealand
-- nigeria, pakistan, papua-new-guinea, philippines
-- qatar, russia, south-korea, taiwan, united-states, vietnam
+- china, colombia, croatia, egypt, germany
+- hong-kong, india, indonesia, japan, libya
+- mexico, morocco, new-zealand, nigeria, pakistan
+- papua-new-guinea, philippines, qatar, russia, south-korea
+- taiwan, united-states, vietnam
 
 ## Coverage status (GEM Q2 2026 export)
 
