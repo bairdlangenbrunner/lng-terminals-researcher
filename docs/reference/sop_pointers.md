@@ -4,9 +4,10 @@ Quick lookup for "which SOP section governs X" without re-reading the whole SOP 
 
 Last reconciled against:
 - Reconciliation SOP rev 1 (2026-05)
-- Update SOP rev 1 (2026-05)
+- Update SOP rev 2 (2026-06 — standard/exhaustive tiers)
 - Discovery SOP rev 1 (2026-05)
-- Triage SOP rev 1 (2026-05)
+- Triage SOP rev 2 (2026-06 — QC signals, tier-named options)
+- QC SOP rev 1 (2026-06)
 - CLAUDE.md (2026-06 — slimmed to a router; workflow recipes moved to `docs/workflows.md`, sheet/color detail to `docs/reference/workbook_conventions.md`, script table to `scripts/README.md`)
 
 Abbreviations:
@@ -14,6 +15,7 @@ Abbreviations:
 - **UPD** = `docs/sops/update.md`
 - **DSC** = `docs/sops/discovery.md`
 - **TRG** = `docs/sops/triage.md`
+- **QCS** = `docs/sops/qc.md`
 - **SKL** = `CLAUDE.md`
 - **WFL** = `docs/workflows.md`
 - **WBC** = `docs/reference/workbook_conventions.md`
@@ -39,7 +41,9 @@ Abbreviations:
 | Project-level field edits apply to all unit-rows | UPD §9, SCH "Field classification" | Mixed-class fields trigger read-before-write |
 | Cluster coherence on URLs (Rule E) | UPD §5 | URL must verifiably reference project AND contain value |
 | GIIGNL/IGU never auto-applied | REC §3.8, UPD §6.1 | Tier 1 but not authoritative per methodology |
-| FSRU edits trigger sync check | SKL "FSRU sync rule", WFL §6, UPD §11.11 | Cross-check against carrier project backend |
+| FSRU edits trigger sync check | SKL "FSRU sync rule", WFL §7, UPD §11.11 | Cross-check against carrier project backend |
+| QC stages no edits and builds no xlsx | QCS §5, §7 | Memo only; fixes route to a follow-on Update ("QC detects, Update fixes") |
+| Standard tier is the Update default | UPD §2, SKL "Workflow router" | Exhaustive only when the user / triage / QC escalation says so |
 | Multi-train projects → one terminal + N units | DSC §7, UNT "When to create new unit vs new terminal" | Not N terminals |
 | Sufficient information threshold for new candidates | DSC §3 | Sponsor + approximate location + concrete step |
 
@@ -50,6 +54,12 @@ Abbreviations:
 | Pull GEM CSV | UPD §11.3, DSC §10.3, REC §3.1, TRG §5 | Always first step every batch |
 | Build dedup indexes | UPD §11.4, DSC §10.4 | `dedup_index.py` for project + sponsor-country indexes |
 | Stale-sweep | TRG §3.1, UPD §3.4 | `stale_sweep.py` per LFC dormancy thresholds |
+| Update tier (standard / exhaustive) | UPD §2.1 / §2.2, WFL §2 | Standard = worklist-driven (default); exhaustive = every row, every field + [ref] re-verified |
+| Development-pipeline worklist | UPD §2.1, `stale_sweep.py` `dev_pipeline` block | EVERY proposed/construction/shelved unit, `recently_updated`-annotated (≤N months, default 3) |
+| QC mechanical pass | QCS §3.1 | `completeness_sweep.py` + `stale_sweep.py` + `dedup_index.py` |
+| QC citation link-rot sweep | QCS §3.2 | `citation_qc.py` — dead / blocked / name-miss verdicts on existing [ref] URLs |
+| QC accuracy spot-check | QCS §3.3 | Stratified ~20–30 unit sample; supported / unsupported / stale per cell |
+| QC post-apply check | QCS §3.4 | `apply_check.py` — applied / not_applied / diverged vs fresh export |
 | Fetch timeline (per unit) | UPD §3.2, LFC "Anchor years vs timeline" | Mandatory before any status timeline edit |
 | Source search by ring | DSC §4 | A: regulators, B: trade press, C: sponsor IR, D: broader |
 | Source search by field | UPD §4 | Field-by-field tier guidance |
@@ -130,6 +140,8 @@ Abbreviations:
 | country_notes_contributions | Any batch developing country knowledge | CNT "How to use this file" |
 | qa_review | Always | All SOPs |
 
+(Triage and QC are memo-only — no workbook. Memos land at `batches/triage_<stamp>_ET.md` / `batches/qc_<stamp>_ET.md`; TRG §2, QCS §2.)
+
 ## Pause-and-ask triggers
 
 | Trigger | Primary location |
@@ -146,6 +158,9 @@ Abbreviations:
 | FSRU candidate not in carrier backend either | DSC §12 |
 | Triage: schema drift detected | TRG §8 |
 | Country regulator filings show pre-public projects | DSC §12 |
+| QC: >10% sampled spot-check cells unsupported | QCS §6 (systemic flag) |
+| QC: >25% dead link-rot in one country | QCS §6 (→ recommend exhaustive Update) |
+| QC: multiple diverged edits in one applied batch | QCS §6 (apply-process error?) |
 
 ## Source roster pointers
 

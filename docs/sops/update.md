@@ -1,8 +1,8 @@
 # LNG Terminals Update SOP
 
-Last revised: 2026-05 (rev 1, initial draft)
+Last revised: 2026-06 (rev 2, standard/exhaustive tiers + QC integration)
 
-Operational rules for updating existing terminals in the GEM LNG terminals database. This is the bread-and-butter workflow of the annual cycle: refreshing data on terminals already in the database, adding new timeline entries, filling blank `[ref]` citations, and processing stale-sweep flags.
+Operational rules for updating existing terminals in the GEM LNG terminals database. This is the bread-and-butter workflow of the annual cycle: refreshing data on terminals already in the database, adding new timeline entries, filling blank `[ref]` citations, and processing stale-sweep flags. It runs at one of two tiers — **standard** (worklist-driven, the default) or **exhaustive** (every row, every field, every ref) — defined in §2.1/§2.2.
 
 The methodology doc (LNG Terminals Manual) is authoritative for the underlying research rules. This SOP is operational — describes how to execute the work, citing the methodology rather than restating it.
 
@@ -13,6 +13,7 @@ Trigger conditions:
 - A reconciliation batch produced `giignl_to_action` findings routed to Update
 - The user explicitly requests an update batch ("refresh the Japan terminals", "fill blank Capacity refs for the EU rows")
 - Stale-sweep flagged units passing dormancy thresholds (inferred shelved at 2y, inferred cancelled at 4y)
+- A QC memo (`docs/sops/qc.md`) routed fixes here — dead citations to replace, unsupported values to re-research, not-applied/diverged edits to re-stage ("QC detects, Update fixes")
 - A specific news event triggers a known-needed update (a recent FID announcement, a confirmed shelving, a vessel reassignment)
 
 **Scaled execution (regional / full-tracker sweep):** when scope is a whole region or the entire tracker, this SOP runs at scale by fanning out one research subagent per country into the `batches/staging/` tree, then merging per region via `batches/staging/_assemble.py` + `build_review_package.py --inputs-dir`. The per-country research still follows every rule below. See `docs/workflows.md` §5 and `batches/staging/README.md` for the mechanics and the resume ledger (`SWEEP_PROGRESS.md`).
@@ -27,11 +28,32 @@ Before any tool runs, confirm:
    - A list of specific UnitIDs (from reconciliation routing or user-supplied)
    - A field focus (e.g. "all blank `Capacity [ref]` paired with populated Capacity")
 2. **Sub-type focus** — which of the four update sub-types is primary for this batch (see §3). Many batches mix them, but understanding the primary type guides time allocation.
-3. **Depth** — light refresh (verify current data, fill blank refs) vs deep refresh (re-research from sources, propose value changes). Light is faster, lower-risk, appropriate for `operating` units in stable markets. Deep is needed when triage signals a country has been neglected or when a major development is suspected.
+3. **Tier** — `standard` (default) or `exhaustive`, defined in §2.1/§2.2. Standard works a *worklist* (stale flags + every development-pipeline unit + in-scope blank-ref fills) and leaves unlisted rows alone; exhaustive re-verifies every populated field and every existing `[ref]` on every row in scope. **Standard is the default** unless the user (or the triage/QC memo that scoped the batch) says exhaustive.
 4. **Whether timeline pulls are anticipated** — any status change requires `fetch_timeline.py` per unit. If many status changes are expected (e.g. processing a backlog of confirmed shelvings), allocate batch time accordingly — this is the slowest part of the workflow.
 5. **FSRU handling** — if scope includes FSRU terminals, the FSRU sync rule applies (CLAUDE.md). Cross-check against the carrier project backend at batch end.
 
 These parameters get written into the staging xlsx README sheet.
+
+### §2.1 Standard update (default tier)
+
+A standard update works a **worklist derived at batch start**, not every row in scope. The worklist is the union of:
+
+1. **Stale-sweep flags** — every unit `stale_sweep.py` flags for the scope (inferred shelved/cancelled candidates, routine-refresh-due operating units, slipped planned starts), processed per §3.4.
+2. **Development-pipeline check** — **every unit with Status ∈ {`proposed`, `construction`, `shelved`} in scope, regardless of staleness** (the `dev_pipeline` block of `stale_sweep.py`). These are the statuses that move — proposed/construction toward FID, milestones, and startup; shelved toward revival or cancellation — so each gets a quick status/news search every standard pass (same mechanics as §3.4: verified change → a normal §3.2/§3.3 edit; no change found → one blue re-verify on the Status cell per §6.2). Units annotated `recently_updated` (LastUpdated within ~3 months; `--pipeline-recent-months`) get a fast confirm rather than a full search. Idled/mothballed units ride on the dormancy flags in item 1 rather than this every-pass check. Note the stale flags also annotate which pipeline rows carry an inferred-status candidate action on top of the routine check.
+3. **Blank-ref fill targets** — `completeness_sweep.py`'s `blank_ref` rows for the scope, processed per §3.1 ([ref]-fill, Rule F).
+
+Rows in scope that appear on none of these lists are **left untouched** — no blue marks, no re-verification, no `LastUpdated` bump. Standard is the bread-and-butter tier: high-throughput, keeps the active pipeline current, appropriate as the recurring default.
+
+### §2.2 Exhaustive update
+
+An exhaustive update treats **every unit-row in scope** as the worklist:
+
+- Every populated field is re-verified against current sources (per the §4 field table).
+- **Every existing `[ref]` URL on the row is re-verified** — §7.2 applies to every row in scope, not only touched rows.
+- Blank `[ref]` cells and missing required fields are filled wherever findable (§3.1).
+- Cells confirmed unchanged are blue-marked per §6.2, so the reviewer can scan for non-blue (where something actually changed).
+
+Exhaustive is for: a country triage flags as neglected, a suspected systemic problem, a QC escalation (>25% dead link-rot in a country — QC SOP §6), or a pre-publication accuracy pass. At regional / full-tracker scope it is multi-batch work — shard by country or status band so each staging xlsx stays reviewable; the regional sweep (`docs/workflows.md` §5) runs this tier when the dispatch prompt says so.
 
 ## §3 The four update sub-types
 
@@ -101,6 +123,8 @@ For each flagged unit:
 3. If active development is found, the result is a regular value/status update (§3.2 or §3.3), and the stale flag is incidentally cleared by virtue of `LastUpdated` becoming current
 
 Batches that are dominated by stale-sweep tend to be high-throughput, low-research-depth.
+
+The standard tier's development-pipeline check (§2.1) uses these same mechanics — quick search, then escalate to §3.2/§3.3 on a verified change or blue-confirm the Status cell on no change — applied to **every** proposed/construction/shelved unit in scope, not only the dormancy-flagged ones.
 
 ## §4 Source-search strategy by field
 
@@ -247,26 +271,28 @@ If a batch would otherwise want to write one of these (e.g. a source confirms a 
 
 ## §11 Workflow (linear)
 
-Putting it together, a standard update batch looks like:
+Putting it together, an update batch looks like:
 
-1. **Confirm parameters** (§2)
+1. **Confirm parameters** (§2) — including the tier (§2.1/§2.2)
 2. **Materialize scripts** per CLAUDE.md
 3. `python pull_gem_db.py` → fresh CSV, column-index map. **Mandatory every batch.**
 4. `python dedup_index.py` → project + unit indexes
-5. `python stale_sweep.py` if the batch includes stale-driven work
-6. **For each unit in scope:**
+5. **Derive the worklist for the tier:** `python stale_sweep.py` (dormancy flags + the `dev_pipeline` block) and `python completeness_sweep.py` (in-scope `blank_ref` targets). Standard tier: the worklist = flags ∪ dev_pipeline ∪ blank_ref (§2.1). Exhaustive tier: the worklist is every unit-row in scope — still run both sweeps; they seed the [ref]-fill and stale work (§2.2).
+6. **For each unit in the worklist (standard) or in scope (exhaustive):**
    a. Pull existing timeline with `fetch_timeline.py` if any status changes anticipated
    b. Source-search per §4 using `docs/reference/source_roster.md` and `docs/country_notes/`
    c. Apply lifecycle rules from `docs/reference/lifecycle_rules.md`
    d. Identify [ref]-fill targets per §3.1
    e. Identify value updates per §3.3
    f. Resolve any cluster-coherence questions per §5
+   g. **Standard tier:** a development-pipeline unit with no verified change gets one blue re-verify on the Status cell (§6.2) — don't touch unrelated cells
+   h. **Exhaustive tier:** re-verify every populated field and every existing `[ref]` on the row (§7.2 applies to every row), blue-marking confirmed-unchanged cells (§6.2)
 7. `python url_verifier.py` on every staged URL (§7)
-8. `python url_verifier.py` re-check on pre-existing URLs in touched rows (§7.2)
+8. `python url_verifier.py` re-check on pre-existing URLs — touched rows for a standard update; **every row in scope for an exhaustive update** (§7.2)
 9. `python entity_lookup.py` for every new entity reference (§8)
 10. `python capacity_normalize.py` for any capacity edits with unit conversion
 11. **If batch touches any FSRU terminal:** `python fsru_sync_check.py` (CLAUDE.md FSRU sync rule)
-12. `python build_review_package.py --mode update --output ../batches/lng_terminals_batch_<YYYYMMDD>_<HHMM>_ET.xlsx` → staging xlsx (Eastern timestamp via `TZ=America/New_York date "+%Y%m%d_%H%M_ET"`)
+12. `python build_review_package.py --mode update --inputs-dir ../batches/staging/<scope-slug> --output ../batches/lng_terminals_batch_<YYYYMMDD>_<HHMM>_ET_<scope>_update.xlsx` → staging xlsx (Eastern timestamp via `TZ=America/New_York date "+%Y%m%d_%H%M_ET"`; staged `staged_*.json` inputs live in `../batches/staging/<scope-slug>/`, and the filename carries the scope slug + mode per `docs/workflows.md`)
 13. `python recalc.py` → confirm zero formula errors
 14. `present_files`
 
@@ -308,6 +334,11 @@ Stop and consult the user when:
 | Status / timeline | Add timeline entry, change Status | `fetch_timeline.py`, `status_timeline.py`, `build_review_package.py` |
 | Value update | Add/change data values | `url_verifier.py`, `entity_lookup.py`, `capacity_normalize.py` (if applicable), `build_review_package.py` |
 | Stale sweep | Process inferred shelved/cancelled | `stale_sweep.py`, `fetch_timeline.py`, `build_review_package.py` |
+
+| Tier | Scope worked | When |
+|---|---|---|
+| Standard (default) | Worklist = stale flags ∪ dev pipeline (every proposed/construction/shelved unit) ∪ in-scope blank-refs (§2.1) | Routine refresh; keeps the active pipeline current |
+| Exhaustive | Every row in scope; every field + every existing [ref] re-verified, blue-marked (§2.2) | Neglected country, systemic suspicion, QC link-rot escalation, pre-publication pass |
 
 | Color | Meaning | When to use |
 |---|---|---|

@@ -20,17 +20,29 @@ giignl_fsru_fleet.json
 # is run with an explicit cwd-relative --output (e.g. Triage SOP's stale_sweep).
 work/*
 !work/.gitkeep
+scripts/work/
 dedup_index.json
 stale_sweep.json
 completeness_sweep.json
 
-# Per-batch staged inputs / agent-authored findings — live on the batch branch's
-# working tree, not committed to main (see the cleanup plan + Reconciliation SOP).
-# The files stay on disk; they're just untracked so main doesn't accumulate one
-# batch's scratch. Cross-batch state (monitor_list/current.json) is committed.
+# Per-batch staged inputs / agent-authored findings. Loose copies in the repo
+# root or scripts/ are scratch and stay ignored — the organized home is the
+# staging tree (see batches/staging/README.md):
+#   batches/staging/recon/<report><year>/   reconciliation batches (e.g. recon/giignl2026/)
+#   batches/staging/<scope-slug>/           ad-hoc single-scope update/discovery batches
+# Agent-authored inputs there ARE tracked (diffable audit trail — the recon xlsx
+# silently drops sheets when they go missing). Derived artifacts (extracted CSV,
+# diff, FSRU fleet) stay ignored everywhere via the patterns above; assembled
+# sweep outputs (_build/, _build_disc/) and parked prior batches (_prior/<batch>/)
+# sit one level deeper than the re-includes below, so they stay ignored.
+# Cross-batch state (monitor_list/current.json) is committed.
 staged_*.json
 giignl_narrative_findings.json
 giignl_prose_corrections.json
+!batches/staging/recon/**/staged_*.json
+!batches/staging/recon/**/giignl_narrative_findings.json
+!batches/staging/recon/**/giignl_prose_corrections.json
+!batches/staging/*/staged_*.json
 
 # Batch deliverable workbooks are large regenerable binaries — keep them untracked.
 # But TRACK the staging tree (batches/staging/**: per-country research JSON, the sweep

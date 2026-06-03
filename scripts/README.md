@@ -14,14 +14,24 @@ python pull_gem_db.py --map-only --out gem_export.csv   # derive the .colmap.jso
 python dedup_index.py
 
 # 3. Run any triage/discovery/update/reconciliation-specific scripts:
-python stale_sweep.py                                       # for triage or update
-python giignl_extract.py data/GIIGNL-2026-Annual-Report-0526b.pdf --output giignl_extracted.csv --year 2026   # recon phase 1 (archive: data/, see data/README.md)
-python report_diff.py --report giignl --extracted giignl_extracted.csv \
-    --gem-csv gem_export.csv --output report_diff.json      # recon phase 2
+python stale_sweep.py                                       # triage/update: dormancy flags + dev_pipeline worklist
+python completeness_sweep.py                                # update (standard tier): blank-ref fill targets
+python giignl_extract.py ../data/GIIGNL-2026-Annual-Report-0526b.pdf \
+    --output ../batches/staging/recon/giignl2026/giignl_extracted.csv --year 2026   # recon phase 1 (archive: data/, see data/README.md)
+python report_diff.py --report giignl --extracted ../batches/staging/recon/giignl2026/giignl_extracted.csv \
+    --gem-csv gem_export.csv --output ../batches/staging/recon/giignl2026/giignl_diff.json   # recon phase 2
 python fsru_sync_check.py                                    # if batch touches FSRUs
 
-# 4. Build the xlsx
-python build_review_package.py --mode update --output ../batches/...
+# 3b. QC pass (backward-looking; produces a memo, no xlsx — see docs/sops/qc.md)
+python completeness_sweep.py                                 # mechanical: blank/orphan refs, missing fields
+python stale_sweep.py                                        # mechanical: dormancy + dev_pipeline counts
+python dedup_index.py                                        # mechanical: project-key collisions (dup terminals)
+python citation_qc.py --country "<C>"                        # link-rot on existing [ref] URLs
+python apply_check.py --batch ../batches/<applied>.xlsx      # did the last applied batch land?
+
+# 4. Build the xlsx (staged inputs from batches/staging/ — recon/<edition>/, <scope-slug>/, or <region>/_build)
+python build_review_package.py --mode update --inputs-dir ../batches/staging/<scope-slug> \
+    --output ../batches/lng_terminals_batch_<stamp>_ET_<scope>_<mode>.xlsx
 
 # 5. Verify no formula errors
 python recalc.py ../batches/...
@@ -61,7 +71,9 @@ python recalc.py ../batches/...
 
 | Script | Purpose |
 |---|---|
-| `stale_sweep.py` | Flags units exceeding lifecycle dormancy thresholds. Used by triage and stale-driven update batches. |
+| `stale_sweep.py` | Flags units exceeding lifecycle dormancy thresholds, AND always emits the `dev_pipeline` block — every proposed/construction/shelved unit, annotated `recently_updated` (`--pipeline-recent-months`, default 3) — which is the standard-tier Update worklist (Update SOP §2.1). Used by triage, QC, and update batches. |
+| `citation_qc.py` | QC link-rot sweep (QC SOP §3.2): batch re-verifies existing `[ref]`-column URLs from the export via `url_verifier.py`'s library mode. Verdicts: `dead` (hard rot — counts toward the >25% per-country escalation) / `blocked` (bot-wall/paywall, verify manually) / advisory `name_found`. Scope `--country`/`--status`, cap `--max-urls` (truncation recorded, never silent), politeness `--delay` (url_verifier itself never sleeps). Writes `work/citation_qc.json`. |
+| `apply_check.py` | QC post-apply check (QC SOP §3.4): reads an applied batch xlsx's `updates` sheet **by header name** and compares each staged edit against a fresh export — `applied` / `not_applied` / `diverged` (transcription-error catcher) / `not_found` / `reverify_only`. Equal-float values auto-normalize ("8" vs "8.0"); other format-only divergences are reviewer judgment. Writes `work/apply_check.json`. |
 | `report_diff.py` | Reconciliation diff between an industry report (GIIGNL or IGU) and current GEM data. Parameterized on report type. Three-pass matching (canonical name → alias via `OtherNames`/`LocalNames` + transliterations → fuzzy); project key includes `section_type` so a mixed liquefaction+regasification terminal splits into two projects rather than summing. Report rows ending in "Expansion"/"Extension" fold into their base `<Site>` row (when a base partner resolves) so phased terminals sum correctly; the `report_sites_merged` field records each fold. Set iterations are sorted, so the diff is reproducible run-to-run. |
 | `giignl_fsru_fleet.py` | Parses the GIIGNL "FSRU FLEET AT THE END OF \<year\>" table (2026: PDF p.43, 54 deployed + 4 orderbook) → `giignl_fsru_fleet.json`. Fixed-column slicing (Built/Converted, Vessel Name + "(ex …)", Storage m³, CCS, Send-out MTPA, Owner, Builder, Location), with location-wrap merging for vertically-centered "Site, Country" deployments. **Separate from `giignl_extract.py` (clean table, NOT the hardened country-table machinery).** The build matches each vessel to a GEM FSRU terminal (vessel name → location) for the `giignl_fsru_fleet` sheet — this catches FSRUs the country tables omit (Tema LNG / "Torman"). Older editions move the page (p.20/p.11/p.23/p.33/p.29/p.43 for 2020–2025; pass `--page`). |
 | `fsru_sync_check.py` | Cross-checks FSRU records between the LNG Terminals project and the LNG Carrier Tracker project. Graceful degradation if carrier backend unavailable. |
@@ -94,6 +106,8 @@ capacity_normalize.py  ← imported by build_review_package
 status_timeline.py     ← imported by build_review_package
 dedup_index.py         ← reads pull_gem_db output (.colmap.json)
 stale_sweep.py         ← reads pull_gem_db output
+citation_qc.py         ← reads pull_gem_db output; imports url_verifier
+apply_check.py         ← reads an applied batch xlsx + fresh pull_gem_db output
 report_diff.py         ← reads pull_gem_db output + giignl_extract output
 fsru_sync_check.py     ← reads pull_gem_db output + optional carrier CSV
 build_review_package.py ← reads all *.json staged outputs
@@ -117,8 +131,10 @@ Trust the scripts by default — they're versioned scaffolding, not throwaway co
 | `dedup_index.py` | New batch type that needs a different index shape |
 | `capacity_normalize.py` | New capacity unit appears in source; conversion factor disputed |
 | `status_timeline.py` | Methodology updates state machine; anomalous transition observed |
-| `stale_sweep.py` | Methodology revises the year thresholds (inferred shelved at 2yr, inferred cancelled at 4yr, etc. — `docs/reference/lifecycle_rules.md`) |
+| `stale_sweep.py` | Methodology revises the year thresholds (inferred shelved at 2yr, inferred cancelled at 4yr, etc. — `docs/reference/lifecycle_rules.md`); the dev_pipeline status set or recency annotation needs tuning |
 | `completeness_sweep.py` | Required-field policy needs tuning; a `[ref]` pair mis-classifies; the coverage reference list needs a country added/fixed (see the `gem_countries_outside_reference` self-check against `country_universe.py`) |
+| `citation_qc.py` | Rot rates look implausible; a `[ref]` column isn't being scanned (the column list derives from colmap `*_ref` keys); a bot-walled domain mis-grades as dead (extend the blocked-title hints); delay needs tuning |
+| `apply_check.py` | A staged edit reads `diverged` purely from formatting; the `updates` sheet layout changed in `build_review_package.py` (apply_check reads by header name, so renames matter, reorders don't) |
 | `entity_lookup.py` | Entity search UI changed; known entity not being found |
 | `url_verifier.py` | Verifier flags false positives/negatives; new source pattern needs handling |
 | `imo_tracker.py` | marinetraffic.org URL pattern changed; Cloudflare gating |

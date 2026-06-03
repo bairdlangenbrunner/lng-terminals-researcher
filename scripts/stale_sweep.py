@@ -11,7 +11,15 @@ Flags:
   - proposed with LatestPlannedStartYear < current_year - 1
     → planned start has slipped past; worth checking status
 
-Used by Triage SOP §3.1 and Update SOP §3.4.
+Also emits (always) a `dev_pipeline` block — the standard-tier Update worklist
+(Update SOP §2.1): EVERY proposed/construction/shelved unit in scope, regardless
+of staleness (these statuses move: toward FID/startup, revival, or cancellation),
+annotated with months_since_update and a recently_updated boolean (≤ the
+--pipeline-recent-months threshold, default 3 — an annotation for fast-skip,
+never a filter). Idled/mothballed units ride on the Rule 1 dormancy flags,
+not this block.
+
+Used by Triage SOP §3.1, Update SOP §2.1/§3.4, and QC SOP §3.1.
 
 Usage:
     python stale_sweep.py
@@ -177,6 +185,68 @@ def compute_flags(csv_path, today=None, country_filter=None):
     return flags
 
 
+def compute_dev_pipeline(csv_path, today=None, country_filter=None, recent_months=3):
+    """List EVERY proposed/construction/shelved LNG unit in scope — the
+    standard-tier Update worklist (Update SOP §2.1). No recency filtering:
+    recently_updated is an annotation (fast-skip hint), not a filter.
+    Separate from compute_flags' dormancy rules, which stay pinned for
+    Triage SOP §3.1 / Update SOP §3.4."""
+    if today is None:
+        today = date.today()
+
+    colmap = _load_colmap(csv_path)
+    ci_tid = colmap.get("terminal_id")
+    ci_uid = colmap.get("unit_id")
+    ci_tname = colmap.get("terminal_name")
+    ci_uname = colmap.get("unit_name")
+    ci_country = colmap.get("country")
+    ci_status = colmap.get("status")
+    ci_substatus = colmap.get("substatus")
+    ci_last_updated = colmap.get("last_updated")
+    ci_fuel = colmap.get("fuel")
+
+    units = []
+    with open(csv_path, encoding="utf-8") as f:
+        reader = csv.reader(f)
+        next(reader)  # header
+        for row in reader:
+            if len(row) < colmap["_total_columns"]:
+                continue
+
+            fuel = row[ci_fuel] if ci_fuel is not None else "LNG"
+            if fuel != "LNG":
+                continue  # out of scope per methodology
+
+            country = row[ci_country]
+            if country_filter and country != country_filter:
+                continue
+
+            status = row[ci_status] if ci_status is not None else ""
+            if status not in ("proposed", "construction", "shelved"):
+                continue
+
+            substatus = row[ci_substatus] if ci_substatus is not None else ""
+            last_updated = _parse_date(row[ci_last_updated]) if ci_last_updated is not None else None
+            years_stale = _years_since(last_updated, today)
+            months_since = round(years_stale * 12, 1) if years_stale is not None else None
+            # Blank/unparseable LastUpdated counts as NOT recently updated (due a check)
+            recently_updated = months_since is not None and months_since <= recent_months
+
+            units.append({
+                "terminal_id": row[ci_tid],
+                "unit_id": row[ci_uid],
+                "terminal_name": row[ci_tname],
+                "unit_name": row[ci_uname],
+                "country": country,
+                "status": status,
+                "substatus": substatus,
+                "last_updated": str(last_updated) if last_updated else "",
+                "months_since_update": months_since,
+                "recently_updated": recently_updated,
+            })
+    return units
+
+
 def summarize(flags):
     """Print and return a summary."""
     by_flag = Counter()
@@ -206,6 +276,10 @@ def main():
     p.add_argument("--out", default="work/stale_sweep.json")
     p.add_argument("--country", help="Filter to a specific country")
     p.add_argument("--today", help="Override today's date (YYYY-MM-DD); useful for testing")
+    p.add_argument("--pipeline-recent-months", type=int, default=3,
+                   help="dev_pipeline annotation threshold: units with LastUpdated within N "
+                        "months are marked recently_updated (fast-skip hint, never a filter; "
+                        "Update SOP §2.1)")
     args = p.parse_args()
 
     today = date.today()
@@ -215,11 +289,27 @@ def main():
     flags = compute_flags(args.csv, today=today, country_filter=args.country)
     summary = summarize(flags)
 
+    pipeline = compute_dev_pipeline(args.csv, today=today, country_filter=args.country,
+                                    recent_months=args.pipeline_recent_months)
+    pipe_by_status = Counter(u["status"] for u in pipeline)
+    pipe_recent = sum(1 for u in pipeline if u["recently_updated"])
+    print(f"\n  Dev pipeline (proposed/construction/shelved, standard-tier worklist): "
+          f"{len(pipeline)} units "
+          f"({', '.join(f'{k}={v}' for k, v in pipe_by_status.most_common())}); "
+          f"{pipe_recent} recently updated (≤{args.pipeline_recent_months}m)")
+
     out = {
         "today": str(today),
         "country_filter": args.country,
         "summary": summary,
         "flagged_units": flags,
+        "dev_pipeline": {
+            "recent_months": args.pipeline_recent_months,
+            "count": len(pipeline),
+            "by_status": dict(pipe_by_status),
+            "recently_updated_count": pipe_recent,
+            "units": pipeline,
+        },
     }
     out_path = Path(args.out)
     out_path.parent.mkdir(parents=True, exist_ok=True)

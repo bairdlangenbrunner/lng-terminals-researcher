@@ -3,6 +3,7 @@
 Last revised: 2026-06-02 (rev 6)
 
 Revision notes:
+- rev 7 (2026-06-03): per-edition staging home — all working artifacts (extracted CSV, diff JSON, FSRU fleet JSON, `giignl_prose_corrections.json`, `giignl_narrative_findings.json`, `staged_*.json`) now live together in `batches/staging/recon/giignl<YEAR>/`, never loose in the repo root (§3.2; agent-authored files committed as audit trail, derived ones gitignored). Batch filename convention extended with the workflow mode + scope: `lng_terminals_batch_<stamp>_ET_giignl<YEAR>_reconciliation.xlsx` (§3.10).
 - rev 6 (2026-06-02): new §5.8 edge case (issue #6) — GIIGNL counts trains as operating that GEM deliberately holds as `construction` (GIIGNL operating total > GEM's), a status / train-organization difference, NOT a stale GEM capacity figure; a GEM `researcher_notes` cell documenting the hold-as-construction decision must NOT be overridden by a GIIGNL-edition capacity bump (worked example: Corpus Christi). `report_diff.py` now propagates each GEM unit's `researcher_notes` and attaches a `gem_nonop_explanation` to every operating match; `build_review_package.py` gained classifier rule (f) (`_nonop_explains_shortfall`) that pre-empts the edition-supersede recommendation, quotes the researcher note in `suggested_resolution`/`analyst_note`, and a `researcher_notes` column on `giignl_diff_nonoperating`. Capacity delta is still flagged red (no-tolerance-band unchanged) — only the recommendation changes. Also noted as a capacity-disagreement cause in §3.6.
 - rev 5 (2026-05-28): three fixes. (1) `giignl_extract.py` now skips the standalone page footer ("GIIGNL Annual Report <year> Edition") during line classification — it had been merged into the last data row of each page, corrupting 8 rows and poisoning the country walk (dropped QatarEnergy LNG S(2) T4 → S(2) read 9.4 not 14.1; mis-countried Ruwais/San Juan/Yamal T1/etc.) — §3.2. (2) `report_diff.py` gained `_split_multiterminal_fsru_sites` (§3.5/§5.3): a GIIGNL FSRU port that GEM models as several distinct terminals (Wilhelmshaven, Ain-Sokhna) is split per vessel and each routed to its GEM terminal via `FloatingVesselName`, instead of summing into one bogus project. (3) `giignl_diff_operating` capacity-conflict fill is now graded by size — light red <5%, darker red >=5% (§4). Known follow-up: non-FSRU multi-terminal complexes (Qatar Ras Laffan) still compare at project total (§5.3, TODO).
 - rev 4 (2026-05-28): `giignl_diff` split into TWO sheets — `giignl_diff_operating` (GEM operating capacity vs GIIGNL's operating-only tables) and `giignl_diff_nonoperating` (matched projects' non-op units, each defaulting to a "GEM has, GIIGNL doesn't" highlight unless the §3.2.1 narrative pass confirms the forward phase). `report_diff.py` gained **unit-level alignment** (§3.5): GIIGNL rows whose site name contains a GEM unit name (GIIGNL "Arzew GL1Z" ⊃ GEM unit "GL1Z") align 1:1 to GEM units, with a project-total fallback (Taichung) when they don't; a conservative unit-code fold groups per-complex rows ("Arzew GL1Z/2Z/3Z" → one "Arzew" project) so they match and align. `gem_unit_name` on a match now lists OPERATING units only.
@@ -54,9 +55,11 @@ These parameters get written into the staging xlsx README sheet.
 
 ### §3.2 Extract GIIGNL into structured form
 
-`python scripts/giignl_extract.py <path-to-giignl-report.pdf> --output giignl_extracted.csv`
+`python scripts/giignl_extract.py <path-to-giignl-report.pdf> --output batches/staging/recon/giignl<YEAR>/giignl_extracted.csv`
 
 The extractor produces a flat CSV with GEM-aligned column names so the diff is column-comparable. See Appendix A for the per-table extraction rules.
+
+**The edition's staging home is `batches/staging/recon/giignl<YEAR>/`** — the extracted CSV, the diff JSON, the FSRU fleet JSON, and every agent-authored file of this SOP (`giignl_prose_corrections.json`, `giignl_narrative_findings.json`, `staged_*.json`) live together there, never loose in the repo root or `scripts/`. Co-location is load-bearing: `report_diff.py` auto-discovers the prose corrections beside the extracted CSV, and `build_review_package.py --inputs-dir` reads all staged inputs from this one directory. Agent-authored JSON there is committed (the diffable audit trail — a rebuild without these inputs silently drops the `entity_additions`/`name_reconciliation`/`qa_review` sheets); the derived extract/diff/fleet files are gitignored and re-derivable from `data/`.
 
 **Pipeline (2026 edition, real PDF):** `pdftotext -layout` is invoked per page; the column positions are derived from the table header row's keyword positions; each page is partitioned into rows by data-line midpoint heuristics with multi-line cell merging. Country labels are assigned via a SEQUENTIAL walk (`_assign_countries_sequential` in `giignl_extract.py`) with **per-country capacity budgets sourced from the subtotal lines** (e.g. "Bangladesh 7.5 MTPA") — once cumulative capacity for the current country exceeds its subtotal (2% tolerance), subsequent rows go into a pending buffer that gets back-filled when the next country's label arrives. This is what prevents China's rows from getting tagged Bangladesh when China's label appears mid-block. Train suffixes ("T1", "T1-6", "T1 - T6") get stripped into a separate `trains` column so multiple GIIGNL train-rows roll up to one project-level entry on report_diff's side.
 
@@ -116,7 +119,7 @@ The normalized values are used for matching ONLY; the unnormalized values are pr
 
 ### §3.4 Run the diff
 
-`python scripts/report_diff.py --report giignl --extracted giignl_extracted.csv --gem-csv gem_export.csv --output giignl_diff.json`
+`python scripts/report_diff.py --report giignl --extracted batches/staging/recon/giignl<YEAR>/giignl_extracted.csv --gem-csv scripts/gem_export.csv --output batches/staging/recon/giignl<YEAR>/giignl_diff.json`
 
 (Note the flags: `--report {giignl,igu}` selects the report type, `--extracted` is the GIIGNL CSV from §3.2, `--gem-csv` is the GEM export. Earlier drafts of this SOP showed `--gem`/`--report <csv>`, which the script rejects.)
 
@@ -240,9 +243,9 @@ Any URLs included in the staging xlsx (e.g. for GIIGNL-only findings where the a
 
 ### §3.10 Build the staging package
 
-`python build_review_package.py --mode reconciliation --report giignl --year <YEAR> --output ../batches/lng_terminals_batch_<YYYYMMDD>_<HHMM>_ET.xlsx`
+`python scripts/build_review_package.py --mode reconciliation --report giignl --year <YEAR> --inputs-dir batches/staging/recon/giignl<YEAR> --gem-csv scripts/gem_export.csv --extracted-csv batches/staging/recon/giignl<YEAR>/giignl_extracted.csv --output batches/lng_terminals_batch_<YYYYMMDD>_<HHMM>_ET_giignl<YEAR>_reconciliation.xlsx`
 
-Get the Eastern-time stamp via `TZ=America/New_York date "+%Y%m%d_%H%M_ET"`. The HHMM_ET suffix disambiguates multiple batches in one day.
+Get the Eastern-time stamp via `TZ=America/New_York date "+%Y%m%d_%H%M_ET"`. The HHMM_ET suffix disambiguates multiple batches in one day; the `_giignl<YEAR>_reconciliation` suffix carries the scope + mode per the repo-wide naming convention (`docs/reference/workbook_conventions.md`). `--inputs-dir` points at the edition's staging home (§3.2) so the build finds the diff and every staged JSON.
 
 **README sheet definitions are MANDATORY.** Every staging xlsx must include a "Sheet definitions" block in the README listing every other tab and what it contains, so a researcher opening the file without prior context knows what each tab is for. This is handled automatically by `build_review_package.py` via the `SHEET_DESCRIPTIONS` constant + `_populate_readme_sheet_defs(wb)` helper, which is invoked at the end of `main()`. If you add a new sheet builder to the script, you MUST add a corresponding entry to `SHEET_DESCRIPTIONS` — otherwise the README will fall back to a "no description registered" placeholder that prompts the next agent to fix it.
 
@@ -254,7 +257,7 @@ Produces an xlsx with the standard sheets plus three reconciliation-specific she
 
 Empty sheets are omitted per `docs/reference/workbook_conventions.md`.
 
-`python recalc.py ../batches/lng_terminals_batch_<YYYYMMDD>_<HHMM>_ET.xlsx` → zero formula errors.
+`python scripts/recalc.py batches/lng_terminals_batch_<YYYYMMDD>_<HHMM>_ET_giignl<YEAR>_reconciliation.xlsx` → zero formula errors.
 
 `present_files`.
 
@@ -485,13 +488,13 @@ Every GIIGNL Annual Report **2020–2026** is committed in `data/` (commit `e4c3
 
 ## Quick-reference card
 
-| Step | Command |
+| Step | Command (repo-root CWD) |
 |---|---|
-| Pull GEM | `python pull_gem_db.py` |
-| Extract GIIGNL | `python giignl_extract.py data/GIIGNL-2026-Annual-Report-0526b.pdf --output giignl_extracted.csv` (archive in `data/`, see `data/README.md`) |
+| Pull GEM | `python scripts/pull_gem_db.py` |
+| Extract GIIGNL | `python scripts/giignl_extract.py data/GIIGNL-2026-Annual-Report-0526b.pdf --output batches/staging/recon/giignl2026/giignl_extracted.csv` (archive in `data/`, see `data/README.md`) |
 | Verify extraction totals | Compare against GIIGNL Key Figures (524 MTPA liq / 1,247 MTPA regas for 2026 edition) |
-| Run diff | `python report_diff.py --report giignl --extracted giignl_extracted.csv --gem-csv gem_export.csv --output giignl_diff.json` |
-| Verify URLs (for any pre-searched corroborating sources) | `python url_verifier.py <url> <expected...>` |
-| Build staging xlsx | `python build_review_package.py --mode reconciliation --report giignl --year <YEAR>` |
-| Sanity check | `python recalc.py <xlsx>` |
+| Run diff | `python scripts/report_diff.py --report giignl --extracted batches/staging/recon/giignl2026/giignl_extracted.csv --gem-csv scripts/gem_export.csv --output batches/staging/recon/giignl2026/giignl_diff.json` |
+| Verify URLs (for any pre-searched corroborating sources) | `python scripts/url_verifier.py <url> <expected...>` |
+| Build staging xlsx | `python scripts/build_review_package.py --mode reconciliation --report giignl --year <YEAR> --inputs-dir batches/staging/recon/giignl<YEAR> --gem-csv scripts/gem_export.csv --extracted-csv batches/staging/recon/giignl<YEAR>/giignl_extracted.csv --output batches/lng_terminals_batch_<stamp>_ET_giignl<YEAR>_reconciliation.xlsx` |
+| Sanity check | `python scripts/recalc.py <xlsx>` |
 | Present | `present_files` |

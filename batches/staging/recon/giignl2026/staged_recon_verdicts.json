@@ -1,0 +1,1326 @@
+[
+ {
+  "terminal_id": "T100000130334",
+  "section_type": "liquefaction",
+  "unit_name": null,
+  "verdict": "no action on capacity (match, 15.6 mtpa). OWNER is a real change: keep GEM (MidOcean Energy). MidOcean (EIG) completed acquisition of Tokyo Gas's Australian LNG interests, incl. 1% of Gorgon, on 2024-03-28; GIIGNL still lists stale Tokyo Gas. Stage as Update + entity_lookup for MidOcean Energy LLC; GIIGNL is the stale source here.",
+  "basis": "MidOcean/EIG completed purchase of Tokyo Gas's Gorgon (1%) interest 2024-03-28; GEM already reflects MidOcean, GIIGNL stale.",
+  "sources": [],
+  "facet": "owner",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130340",
+  "section_type": "liquefaction",
+  "unit_name": null,
+  "verdict": "CAPACITY: keep GEM (8.5 mtpa); 8.6 vs 8.5 is a 1.2% rounding difference, immaterial, GEM source retained. OWNER is a real change: keep GEM (MidOcean Energy). MidOcean completed acquisition of Tokyo Gas's 2.5% of QCLNG Train 2 on 2024-03-28; GIIGNL still lists Tokyo Gas (and Woodside/KUFPEC, who are QCLNG-upstream JV partners not the liquefaction-co — benign). Stage as Update + entity_lookup for MidOcean Energy LLC.",
+  "basis": "1.2% capacity delta immaterial. MidOcean completed Tokyo Gas QCLNG stake acquisition 2024-03-28; GEM reflects MidOcean, GIIGNL stale.",
+  "sources": [],
+  "facet": "both",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130344",
+  "section_type": "liquefaction",
+  "unit_name": null,
+  "verdict": "CAPACITY: keep GEM (8.9 mtpa). The foundation two-train project is 8.9 mtpa per Chevron/operator sources; GIIGNL's 9.0 is a 1.1% rounding difference and the operator-level figure corroborates GEM. Immaterial. OWNER: no action — benign. GEM (Chevron, KUFPEC Australia, PE Wheatstone, Kyushu Electric Wheatstone, Woodside) and GIIGNL list the same JV partners under formal-entity vs short names; the '1' token is parse-noise. NOTE for triage: a Dec-2024 Chevron-Woodside asset swap (Woodside to exit Wheatstone) was announced but is forward-looking — monitor, do not apply now.",
+  "basis": "Operator (Chevron) cites 8.9 mtpa foundation capacity; 9.0 vs 8.9 immaterial. Owner sets match (formal vs short names); '1' is parse-noise. Wheatstone not part of the MidOcean/Tokyo Gas deal.",
+  "sources": [],
+  "facet": "both",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130247",
+  "section_type": "liquefaction",
+  "unit_name": null,
+  "verdict": "no action — benign owner delta. GIIGNL lists 'black & veatch' (EPC contractor) only; GEM carries the full owner set (Golar, Keppel, Engie, SNH, Black & Veatch). Difference is GIIGNL listing a subset / EPC contractor vs GEM's full shareholder list, not a stake change. Capacity matches (2.4 mtpa).",
+  "basis": "GIIGNL lists a contractor/subset; GEM has full shareholders. Not an ownership change.",
+  "sources": [],
+  "facet": "owner",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130259",
+  "section_type": "liquefaction",
+  "unit_name": null,
+  "verdict": "no action — benign owner delta / parse-noise. GIIGNL lists the NLNG shareholders (NNPC, Shell, TotalEnergies, Eni; plus Equinor/Petoro parse-fragments and a stray '(nnpc' token); GEM models the operating company 'NLNG'. Shareholders-vs-operating-co distinction, not a real change. Capacity matches (22.2 mtpa).",
+  "basis": "GIIGNL = NLNG JV shareholders, GEM = NLNG operating company. '(nnpc' is parse-noise. No stake change.",
+  "sources": [],
+  "facet": "owner",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130512",
+  "section_type": "liquefaction",
+  "unit_name": null,
+  "verdict": "CAPACITY: keep GEM (9.6 mtpa) — metric mismatch. 9.6 mtpa is the plant nameplate (2 trains x 4.8); GIIGNL's 10.8 is an over-nameplate/effective figure (2025 actual production ran 10.3 mt, above nameplate). GEM's nameplate basis is correct; do not adopt GIIGNL's 10.8. OWNER: no action — benign. GIIGNL lists shareholders (Gazprom via 'Sakhalin Energy LLC (Gazprom', Mitsui, Mitsubishi); GEM models the 'Sakhalin Energy LLC' operating co. Parse-noise / operating-co vs shareholders.",
+  "basis": "Nameplate is 9.6 mtpa (2x4.8 trains); 2025 production 10.3 mt exceeded nameplate. GIIGNL 10.8 reflects effective/over-nameplate, not the design figure GEM tracks. Owners = operating-co vs shareholders.",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Sakhalin-II",
+   "https://interfax.com/newsroom/top-stories/116553/"
+  ],
+  "facet": "both",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130337",
+  "section_type": "liquefaction",
+  "unit_name": null,
+  "verdict": "no action on capacity (match, 14.4 mtpa). OWNER is a real change: drop BHP from GEM, keep Woodside. BHP's petroleum business merged into Woodside on 2022-06-01, transferring BHP's NWS interest to Woodside; GEM still lists 'bhp group ltd' as an owner — stale. GIIGNL correctly reflects Woodside (+ Japan Australia LNG / MIMI = the Mitsubishi-Mitsui JV, which GEM also has). Stage as Update: remove BHP Group Ltd as NWS owner; entity_lookup to confirm Woodside Energy Group Ltd holds the merged interest.",
+  "basis": "BHP Petroleum merged into Woodside 2022-06-01, moving BHP's NWS stake to Woodside. GEM still lists BHP Group Ltd (stale); GIIGNL reflects Woodside.",
+  "sources": [
+   "https://en.wikipedia.org/wiki/North_West_Shelf_Project"
+  ],
+  "facet": "owner",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130338",
+  "section_type": "liquefaction",
+  "unit_name": null,
+  "verdict": "no action on capacity (match, 4.9 mtpa). OWNER is a real change: keep GEM (MidOcean Energy). MidOcean completed acquisition of Tokyo Gas's 5% Pluto LNG interest on 2024-03-28; GIIGNL still lists stale Tokyo Gas (the 'and mitsui) woodside' token is parse-noise from the MIMI/Woodside listing). GEM already reflects MidOcean. Stage as Update + entity_lookup for MidOcean Energy LLC.",
+  "basis": "MidOcean completed Tokyo Gas's 5% Pluto stake acquisition 2024-03-28; GEM reflects MidOcean, GIIGNL stale. 'and mitsui) woodside' is parse-noise.",
+  "sources": [],
+  "facet": "owner",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130661",
+  "section_type": "liquefaction",
+  "unit_name": null,
+  "verdict": "no action — benign owner delta / parse-noise. Capacity matches (2.4 mtpa). GIIGNL adds nothing (owners_giignl_only empty); GEM-only 'smh' is a parse-fragment of SMH/SMHPM (Mauritania's national co) — a real partner alongside the overlapping BP/Kosmos/PETROSEN, not a change. No stake delta surfaced.",
+  "basis": "Capacity match; owner overlap covers BP/Kosmos/PETROSEN; 'smh' (Mauritania national co) is an existing partner, no change.",
+  "sources": [],
+  "facet": "owner",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130707",
+  "section_type": "liquefaction",
+  "unit_name": null,
+  "verdict": "no action — benign owner delta / parse-noise. Capacity matches (1.5 mtpa). GIIGNL fragments ('jv portovaya (invest rgk', 'status llc') describe the Portovaya project SPV/JV structure; GEM models the parent Gazprom. SPV-vs-parent distinction with heavy parse-noise, not a stake change.",
+  "basis": "GIIGNL tokens are SPV/JV parse-fragments; GEM has parent Gazprom. Capacity matches. No real change.",
+  "sources": [],
+  "facet": "owner",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130708",
+  "section_type": "liquefaction",
+  "unit_name": null,
+  "verdict": "CAPACITY: keep GEM (1.5 mtpa) — GEM is current. Vysotsk reached 1.5 mtpa total operating capacity (2 trains x 0.75) by Nov 2023; GIIGNL's 0.9 is the older single-/partial-train figure. GEM's non-GIIGNL TASS source corroborates 1.5. Do not adopt GIIGNL 0.9. OWNER: no action — 'gazprombank' vs 'gazprombank jsc' is a name variant; Novatek overlaps. Benign.",
+  "basis": "Vysotsk hit 1.5 mtpa (2x0.75) by Nov 2023; GIIGNL 0.9 stale. Owner delta is gazprombank name variant.",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Vysotsk_LNG"
+  ],
+  "facet": "both",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130710",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "No action. Capacity agrees (1.0=1.0); owner delta is benign representation (GEM lists the JV project-co 'Zhejiang Hangjiaxin', GIIGNL lists its shareholders Hangzhou Gas + Jiaxing Gas).",
+  "basis": "Same entity, different name form: GEM's project company vs GIIGNL's listed shareholders. No real ownership change and no capacity conflict.",
+  "sources": [],
+  "facet": "owner",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130423",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "Keep GEM (3.5 mtpa operating). GIIGNL's 7.0 credits Zhuhai Phase 2 (3.5) as operating, but GEM has a more specific determination that Phase 2 is still under construction with no 2025 evidence of operation. Owner delta benign (Golden Bay JV co vs shareholders).",
+  "basis": "GEM documents Phase 1 (3.5, operating, CNOOC) and Phase 2 (3.5, construction, ~81.6% complete) and explicitly notes GIIGNL classifies Phase 2 operating without supporting evidence. Phase 2 commissioning is a Discovery/status signal to watch, not a capacity replacement.",
+  "sources": [
+   "https://www.gem.wiki/Zhuhai_LNG_Terminal",
+   "https://lngprime.com/asia/cnooc-progresses-work-on-giant-zhuhai-lng-tanks/85377/"
+  ],
+  "facet": "both",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130385",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "No action. Capacity agrees (6.0=6.0); owner delta benign (GEM lists project-co + PipeChina Beihai LNG, GIIGNL lists Guangxi Beibu Gulf International; PipeChina overlaps).",
+  "basis": "Different name forms of the same JV ownership (Guangxi Gas Group / Beibu Gulf / PipeChina). No real ownership change; no capacity conflict.",
+  "sources": [],
+  "facet": "owner",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130416",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "No action. Capacity agrees (6.0=6.0); owner delta is benign/parse-noise (GIIGNL 'beijing','cnpc' fragments vs GEM/CNOOC operator; CNOOC overlaps).",
+  "basis": "GIIGNL owner tokens are extraction fragments ('beijing','cnpc') rather than a named new corporate owner. No capacity conflict.",
+  "sources": [],
+  "facet": "owner",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130943",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "No action. Capacity agrees (6.0=6.0); owner delta benign (GEM 'Huaying Natural Gas', GIIGNL 'Huaying 50% PipeChina / Sinopec' — same Huaying JV, with PipeChina/Sinopec stakes; 'dalian' is parse-noise).",
+  "basis": "Same Huaying JV expressed differently; the parenthetical share/parent tags are GIIGNL representation, not a new owner. No capacity conflict.",
+  "sources": [],
+  "facet": "owner",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130407",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "No action on capacity (4.0=4.0). Owner delta (GEM 'CNOOC' vs GIIGNL 'PipeChina + Shenzhen Energy Group') is most likely benign operator/representation difference for the Diefu/Shenzhen terminal; flag for Update entity check, no capacity change.",
+  "basis": "Diefu (Shenzhen) is associated with PipeChina/Shenzhen Energy in GIIGNL while GEM tags CNOOC; capacity agrees. Likely a representation/operator difference rather than a confirmed corporate-owner change, but worth an entity_lookup at Update time.",
+  "sources": [],
+  "facet": "owner",
+  "confidence": "medium"
+ },
+ {
+  "terminal_id": "T100000130389",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "No action. Capacity agrees (1.5=1.5); owner delta benign (GEM 'Jovo LNG ... Dongguan' split across rows, GIIGNL 'Jovo Group / PipeChina' — same Jovo ownership).",
+  "basis": "GEM owner string is a split/garbled 'Jovo ... Dongguan'; GIIGNL says Jovo Group + PipeChina. Same entity family, no new owner, no capacity conflict.",
+  "sources": [],
+  "facet": "owner",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130715",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "No action on capacity (0.8=0.8). Owner delta (GEM 'Shenzhen Sino-Benny LPG' vs GIIGNL 'Dongguan Energy Investment Group / Shenzhen Gas') — flag for Update entity check; likely representation/operator difference on a small terminal, no capacity change.",
+  "basis": "Capacity agrees. Owner names differ but neither is a clearly confirmed new corporate owner vs the other; small Hua'an terminal. Defer to entity_lookup at Update; no research-worthy ownership change established.",
+  "sources": [],
+  "facet": "owner",
+  "confidence": "medium"
+ },
+ {
+  "terminal_id": "T100000130793",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "Keep GEM (1.0 mtpa). GIIGNL 1.1 is a trivial rounding difference on a 1 mtpa Phase 1; S&P confirms operator built '1 million mt/year' Phase 1. Owner delta benign (Guangzhou Gas Group operator vs storage/transport co).",
+  "basis": "Operator (Guangzhou Gas) and S&P report Phase 1 = 1.0 mtpa; GIIGNL's 1.1 (10% but ~0.1 mtpa) is rounding/basis noise. No expansion online yet (Phase 2 still in storage-tank build).",
+  "sources": [],
+  "facet": "both",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130420",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "No action. Capacity agrees (6.0=6.0); owner delta benign (GEM/CNOOC operator, GIIGNL lists Ningbo Development & Investment Group + Zhejiang Energy shareholders; CNOOC overlaps).",
+  "basis": "Same JV expressed as operator (CNOOC) vs shareholder list. No real ownership change; no capacity conflict.",
+  "sources": [],
+  "facet": "owner",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130404",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "No action. Capacity agrees (11.0=11.0); owner delta is benign/parse-noise (GIIGNL 'cnpc','pacific' fragments vs GEM 'Sinopec'). Qingdao is a Sinopec terminal — GIIGNL tokens look like extraction noise.",
+  "basis": "Capacity agrees; GIIGNL owner tokens ('cnpc','pacific') are parse fragments, not a coherent new owner for the Sinopec Qingdao terminal. No action beyond noting for entity sanity check.",
+  "sources": [],
+  "facet": "owner",
+  "confidence": "medium"
+ },
+ {
+  "terminal_id": "T100000130392",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "No action. Capacity agrees (10.0=10.0); owner delta benign (GEM 'CNPC' operator; GIIGNL 'Jiangsu Guoxin Investment Group / oil & gas' — minority stakeholder + parse fragment).",
+  "basis": "Rudong is a CNPC/PetroChina terminal; GIIGNL adds a minority local investor and a fragment. Same ownership family, no new corporate owner, no capacity conflict.",
+  "sources": [],
+  "facet": "owner",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130753",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "Lean keep GEM (0.27 mtpa) but flag for Update review. GIIGNL 0.6 lacks corroboration: GEM documents only Phase 1 (2x20,000 cbm, ~0.27 mtpa) operating with no Phase 2/3 construction observed. Small facility; GIIGNL's higher figure may be a different basis.",
+  "basis": "Hainan Shennan is a small LNG storage/satellite facility; GEM has a specific Phase-1 basis (~0.27 mtpa) and no evidence of an expansion that would justify 0.6. Owner delta benign (Hainan Shennan Energy co vs CNPC/Beijing Gas Bluesky tags). Low absolute capacity.",
+  "sources": [
+   "https://www.gem.wiki/Hainan_Shennan_LNG_Storage_Facility"
+  ],
+  "facet": "both",
+  "confidence": "low"
+ },
+ {
+  "terminal_id": "T100000130410",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "Keep GEM (12.0 mtpa). GEM is more current: PipeChina's Tianjin Phase 2 raised regas capacity to ~41 Mcm/d (~12 mtpa) after the original 2.2 mtpa FSRU retired in 2023. GIIGNL's 6.0 is the pre-expansion figure. Owner delta benign (PipeChina operator vs Tianjin Gas/govt shareholders).",
+  "basis": "GEM wiki documents the Phase 2 expansion to 12 mtpa (LNG Prime/PipeChina: 41 million cbm/day). GIIGNL 6.0 is stale; the more specific/current source supports GEM.",
+  "sources": [
+   "https://www.gem.wiki/Tianjin_LNG_Terminal_(PipeChina)"
+  ],
+  "facet": "both",
+  "confidence": "medium"
+ },
+ {
+  "terminal_id": "T100000130411",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "No action. Capacity agrees (10.8=10.8); owner delta benign/parse-noise (GIIGNL 'Tianjin Nangang Industrial Zone Development Co','ltd' fragments; Sinopec overlaps).",
+  "basis": "Sinopec Tianjin terminal; GIIGNL tokens are a local zone-development co fragment and 'ltd'. No new corporate owner, no capacity conflict.",
+  "sources": [],
+  "facet": "owner",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130859",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "Route to Update: GEM export capacity is 0.0 (data gap) but the terminal is operating (Beijing Gas Tianjin Nangang Phases 1-3 all commissioned 2023-Nov 2024). Fill GEM operating capacity; GIIGNL 12.0 corroborates but GEM's own evidence is contested (wiki notes GIIGNL 12 vs GEM 'evidence for 5'). Owner delta benign (Beijing Gas Group / Beijing Gas LNG co name forms).",
+  "basis": "Phases 1 (5 mtpa, Sep 2023), 2 (2024), 3 (Nov 2024) are all commissioned per Beijing Gas/LNG Prime, yet GEM export shows 0.0. The capacity must be filled; reconcile GIIGNL's 12.0 against GEM wiki phase data (which sums to 15 but flags only 5 as evidenced) during Update.",
+  "sources": [
+   "https://www.gem.wiki/Tianjin_LNG_Terminal_(Beijing_Gas_Group)",
+   "https://lngprime.com/asia/beijing-gas-launches-third-phase-of-tianjin-nangang-lng-terminal/133896/"
+  ],
+  "facet": "both",
+  "confidence": "medium"
+ },
+ {
+  "terminal_id": "T100000130386",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "No action. Capacity agrees (3.0=3.0); owner delta benign (GEM/CNOOC operator vs GIIGNL 'CHN Energy Haikong New Energy / PipeChina').",
+  "basis": "Yangpu (Hainan) capacity agrees; GIIGNL lists operator/stakeholder forms (CHN Energy / PipeChina) vs GEM CNOOC. Representation difference, not a confirmed new owner. Flag for entity sanity at Update.",
+  "sources": [],
+  "facet": "owner",
+  "confidence": "medium"
+ },
+ {
+  "terminal_id": "T100000130405",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "Route to Discovery/new-unit: GIIGNL 12.0 vs GEM 6.0 reflects Yangshan Phase II Stage 1 (+3 mtpa, 'officially commissioned' Dec 17 2025) plus further stages — not a simple capacity replacement. GEM models the Phase II expansion as a separate unit; move/add it to operating rather than overwriting the 6.0 project total. Owner delta benign (Shanghai LNG/Shenergy JV name forms).",
+  "basis": "GEM wiki: Phase 1 (3) + Phase I Expansion = 6 mtpa operating; Phase II Stage 1 (+3) commissioned late Dec 2025; later stages proposed. GIIGNL's 12.0 anticipates/credits the expansion. Treat as an expansion-online signal for the existing Phase II unit, per China expansion-counting rule.",
+  "sources": [
+   "https://www.gem.wiki/Shanghai_Yangshan_LNG_Terminal",
+   "https://www.enerdata.net/publications/daily-energy-news/china-launches-expansion-project-yangshan-lng-terminal.html"
+  ],
+  "facet": "both",
+  "confidence": "medium"
+ },
+ {
+  "terminal_id": "T100000130395",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "Route to Update: replace GEM export 3.0 with ~5.0 mtpa. Yuedong Phase 1 expanded from 2 to ~5.04 mtpa (operating) — GEM's own wiki says 5.04 and GIIGNL says 5.0, so the export's 3.0 is stale. Owner delta benign (PipeChina parent vs 'PipeChina Yuedong LNG' project-co).",
+  "basis": "Both GEM wiki (5.04 mtpa, Phase 1 operating) and GIIGNL (5.0) agree the current operating capacity is ~5 mtpa; the export's 3.0 lags the expansion. Phase 2 (5 mtpa) is proposed (construction started Dec 2025), not operating.",
+  "sources": [
+   "https://www.gem.wiki/Jieyang_LNG_Terminal_(PipeChina)",
+   "https://www.offshore-energy.biz/pipechina-connects-yuedong-lng-terminal-to-three-cities/"
+  ],
+  "facet": "both",
+  "confidence": "medium"
+ },
+ {
+  "terminal_id": "T100000130388",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "Keep GEM (6.1 mtpa). GEM matches the FSRU Bauhinia Spirit operator nameplate of 800 MMscf/d (~6 mtpa); GIIGNL's 4.4 is a lower (likely throughput/utilization or different-basis) figure. Owner delta benign (Hong Kong LNG Terminal Co JV of CLP/HK Electric; GIIGNL 'MOL','hk' are FSRU operator/parse tags).",
+  "basis": "HK Electric/CLP fact sheet: FSRU regas capacity 800 MMscf/d (~8.3 bcm/y ≈ ~6 mtpa), consistent with GEM 6.1. GIIGNL's 4.4 appears to use a more conservative basis; GEM's nameplate from the operator is more specific.",
+  "sources": [
+   "https://www.gem.wiki/Hong_Kong_FSRU"
+  ],
+  "facet": "both",
+  "confidence": "medium"
+ },
+ {
+  "terminal_id": "T100000130459",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "no action - owner delta benign. Capacity agrees (7.5 mtpa, 0% delta). GEM lists JV partner Toho Gas alongside JERA; GIIGNL lists JERA (operator). Project-co vs shareholder name-form difference, not a real ownership change.",
+  "basis": "Chita Kyodo capacity matches exactly; owner_gem_only 'Toho Gas Co Ltd' vs overlap 'JERA' is a JV-partner listing variant, benign per Japan owner-delta rule.",
+  "sources": [],
+  "facet": "owner",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130475",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "Update workflow: reconcile GEM unit-row capacity. GIIGNL 2.0 mtpa vs GEM DB 1.0; GEM's own wiki and trade press (Saibu Gas 90% / Kyushu Electric 10%) state 2.4 mtpa total terminal capacity (2 x 180,000 m3 tanks). GEM's 1.0 DB value appears to be a stale/per-tank figure low vs both GIIGNL (2.0) and GEM's own 2.4 total. Recommend updating the unit-row toward the well-established ~2.4 mtpa total (sponsor/wiki sourced), NOT auto-applying GIIGNL's 2.0. Owner delta benign (Hibiki LNG Co = the Saibu Gas/Kyushu Electric JV).",
+  "basis": "GEM wiki and LNG Prime confirm 2.4 mtpa total send-out; GIIGNL reports 2.0; GEM DB row shows 1.0 (JOGMEC ref). Real internal inconsistency plus GIIGNL conflict - route to Update, use a current operator/IR source to set the unit-row.",
+  "sources": [
+   "https://www.gem.wiki/Hibiki_LNG_Terminal",
+   "https://lngprime.com/asia/japans-saibu-gas-decides-to-build-third-hibiki-lng-tank/134177/"
+  ],
+  "facet": "both",
+  "confidence": "medium"
+ },
+ {
+  "terminal_id": "T100000130503",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "keep-GEM (10.8 mtpa). GIIGNL 11.0 vs GEM 10.8 is a 1.9% rounding/basis difference; offshore-technology corroborates ~533 bcf/y send-out (~10.8 mtpa). Immaterial. Owner delta benign - GEM adds JV partner JERA alongside operator Tokyo Gas (TEPCO/Tokyo Gas JV).",
+  "basis": "1.9% delta within send-out vs nameplate rounding; GEM's specific figure retained per low-priority rule. Owners are the same JV listed at different granularity.",
+  "sources": [],
+  "facet": "both",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130523",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "keep-GEM (31.4 mtpa) - metric/basis difference. GIIGNL 29.3 vs GEM 31.4 (6.7%). GEM tracks granular history: ~27.8 base + 7.7 mtpa 2019 expansion, less partial decommissionings (-2.8 in 2022, -1.3 in 2024). Third-party (offshore-technology) cites ~29 mtpa nameplate, consistent with GIIGNL's send-out basis. GEM's unit-level buildup is more specific; retain. Owner delta benign (JERA = TEPCO/Tokyo Gas JV partner alongside operator Tokyo Gas).",
+  "basis": "Delta reflects send-out (GIIGNL ~29.3) vs GEM's summed unit nameplate (31.4) after documented expansions/decommissionings; GEM's granular source is more specific. Owners benign.",
+  "sources": [],
+  "facet": "both",
+  "confidence": "medium"
+ },
+ {
+  "terminal_id": "T100000130527",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "no action - owner delta benign, capacity agrees (1.5 mtpa, 0%). Soma (Shinchi) is the JAPEX-operated terminal; GIIGNL lists the offtaker/shareholder group (Hokkaido Electric, Mitsubishi Gas Chemical, Mitsui, Osaka Gas, JAPEX). GEM lists operator JAPEX. Shareholder-vs-operator listing difference, not a real ownership change.",
+  "basis": "Capacity exact match; owners_giignl_only are the customer/shareholder consortium while GEM records the operator JAPEX - benign per Japan owner-delta rule.",
+  "sources": [],
+  "facet": "owner",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130804",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "no action - owner delta benign, capacity agrees (6.4 mtpa, 0%). Yokkaichi LNG Center: GEM lists historical owners Chubu Electric + TEPCO; GIIGNL lists JERA, which is the Chubu/TEPCO 50:50 JV that now operates the terminal. Same entity at different granularity - not a real ownership change.",
+  "basis": "Capacity exact match; JERA = Chubu Electric + TEPCO JV, so giignl-only 'JERA' vs gem 'Chubu/TEPCO' is a JV-rollup name-form difference, benign.",
+  "sources": [],
+  "facet": "owner",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000131131",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "keep-GEM (2.4 mtpa) for current operating capacity; flag for Update review. GEM 2.4 reflects the operating phase (terminal began commissioning 2024, commercial ops Q2 2024). GIIGNL 3.5 likely reflects fuller nameplate as more of the 6-tank build (Korea Energy Terminal, KNOC/SK Gas JV) comes online (final tank due 2026). Treat GIIGNL 3.5 as a near-future nameplate, not a correction to current operating capacity - verify against KOGAS/operator before any change; do NOT auto-apply. Owner delta benign (Korea Energy Terminal Co = the KNOC/SK Gas JV).",
+  "basis": "GEM 2.4 mtpa is current operating; GIIGNL 3.5 spans the still-completing 6-tank build (final tank 2026). 45.8% delta is build-out timing, not error. Owners are the same JV (KNOC + SK Gas = Korea Energy Terminal Co).",
+  "sources": [
+   "https://lngprime.com/asia/sk-gas-knoc-launch-korean-lng-and-oil-terminal/132789/"
+  ],
+  "facet": "both",
+  "confidence": "medium"
+ },
+ {
+  "terminal_id": "T100000130320",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "keep-GEM (10.5 mtpa) - metric/basis difference. GIIGNL 12.0 vs GEM 10.5 (14.3%). GEM 10.5 is well-sourced operating capacity; the 1.8-mtpa Yung-An expansion remains stalled/not in construction as of June 2025, so it is NOT operating capacity. GIIGNL's 12.0 reflects a higher (peak send-out / planned-nameplate) basis, not a real expansion that came online. Retain GEM operating figure; do not add a new expansion unit (project not yet in construction). Owners agree (CPC).",
+  "basis": "Yung-An 1.8-mtpa expansion stalled, no construction-start news through June 2025, so 12.0 is not realized operating capacity; GIIGNL value is a basis/peak-sendout difference. GEM 10.5 operating retained.",
+  "sources": [
+   "https://www.gem.wiki/Yung-An_LNG_Terminal",
+   "https://lngprime.com/lng-terminals/taiwan-boosts-lng-imports-in-2025/173997/"
+  ],
+  "facet": "capacity",
+  "confidence": "medium"
+ },
+ {
+  "terminal_id": "T100000130479",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "no action - owner delta benign, capacity agrees (13.2 mtpa, 0%). Higashi-Ohgishima: GEM lists JV partner TEPCO alongside JERA; GIIGNL lists JERA (operator, the Chubu/TEPCO 50:50 JV). Same JV at different granularity - not a real ownership change.",
+  "basis": "Capacity exact match (GEM ref is GIIGNL 2025 itself); owner_gem_only 'TEPCO' vs overlap 'JERA' is a JV-partner listing variant, benign.",
+  "sources": [],
+  "facet": "owner",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130438",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "keep-GEM 0.17 mtpa; GIIGNL 0.2 is rounding. Small-scale Hamina FSRU; ~3 mcm/d. Delta immaterial (0.03 mtpa). Re-verify GEM source in Update. | no action - owner variants: GIIGNL 'alexela'/'wartsila' = GEM 'alexela as'/'wartsila oyj'; 'hamina energy' overlaps. Parse-suffix noise only.",
+  "basis": "Hamina is a small-scale terminal (Hamina Energy/Alexela/Wartsila JV); 0.17 vs 0.2 mtpa is a 0.03 mtpa rounding gap, not a real capacity conflict. | GIIGNL drops legal suffixes (AS/Oyj); same entities. No ownership change.",
+  "sources": [],
+  "facet": "both",
+  "confidence": "medium"
+ },
+ {
+  "terminal_id": "T100000131064",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "metric-mismatch: GIIGNL 2.7 mtpa (~3.7 bcm, 2025 sendout/allocated slots) vs GEM 3.67 mtpa (~5 bcm, FSRU Exemplar nameplate >5 bcm/y). Keep-GEM nameplate; GIIGNL is throughput. Re-verify in Update. | no action - FSRU operator vs terminal owner: GIIGNL 'excelerate' = FSRU Exemplar charterer/operator; GEM 'gasum oy' = terminal/Gasgrid side. Benign representation, not a stake sale.",
+  "basis": "FSRU Exemplar regas nameplate is >5 bcm/y (5.2); GEM's 3.67 mtpa tracks nameplate, GIIGNL's 2.7 mtpa tracks reduced 2025 slot allocation/sendout. | Excelerate owns/operates the FSRU vessel; GEM tracks the terminal owner. Classic FSRU-operator-vs-terminal-owner difference per CLAUDE.md.",
+  "sources": [
+   "https://lngprime.com/lng-terminals/gasgrid-inkoo-fsru-capacity-50-percent-booked-in-2025/123609/"
+  ],
+  "facet": "both",
+  "confidence": "medium"
+ },
+ {
+  "terminal_id": "T100000131008",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "keep-GEM 3.67 mtpa; GIIGNL 3.7 essentially identical (0.8% delta). Le Havre FSRU. No action. | no action - FSRU operator vs terminal owner: GIIGNL 'hoegh-evi'/'mol' = FSRU vessel owner/operator; GEM 'totalenergies' = terminal sponsor (overlap present). Benign.",
+  "basis": "0.8% delta is within rounding for the same FSRU nameplate; nothing to resolve. | Hoegh-EVI/MOL own/operate the FSRU; TotalEnergies is the terminal sponsor. No real ownership change.",
+  "sources": [],
+  "facet": "both",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130460",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "keep-GEM 3.67 mtpa; GIIGNL 3.8 within rounding (3.5% delta). Hoegh Gannet grid feed-in ~3.7 bcm/y; both near nameplate. No action. | no action - FSRU operator vs terminal owner: GIIGNL 'hoegh-evi' = FSRU owner; GEM 'german lng terminal' = terminal company. Benign.",
+  "basis": "Brunsbuttel FSRU Hoegh Gannet; 3.5% delta is benign nameplate rounding (GEM ~5 bcm, GIIGNL ~5.17 bcm). | Hoegh-EVI owns the FSRU Hoegh Gannet; German LNG Terminal is the terminal entity. No stake change.",
+  "sources": [],
+  "facet": "both",
+  "confidence": "medium"
+ },
+ {
+  "terminal_id": "T100000130458",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "keep-GEM 5.7 mtpa; GIIGNL 5.3 within FSRU nameplate range (7% delta). Wilhelmshaven 1 Hoegh Esperanza, terminal 6 bcm / up to 7.5 bcm. Both near nameplate; re-verify in Update. | no action - FSRU operator vs terminal owner: GIIGNL 'hoegh-evi' = FSRU owner; GEM 'uniper' = terminal operator/sponsor. Benign.",
+  "basis": "Esperanza terminal nameplate 6-7.5 bcm/y; GEM 5.7 mtpa (~7.75 bcm) vs GIIGNL 5.3 (~7.2 bcm) both in nameplate band. Benign metric/rounding spread. | Hoegh-EVI owns FSRU Hoegh Esperanza; Uniper (LTeW) operates the terminal. No ownership change.",
+  "sources": [
+   "https://www.gem.wiki/Wilhelmshaven_FSRU"
+  ],
+  "facet": "both",
+  "confidence": "medium"
+ },
+ {
+  "terminal_id": "T100000131097",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "metric-mismatch/keep-GEM: GIIGNL 4.5 mtpa (~6.1 bcm, FSRU Excelsior peak regas) vs GEM 3.31 mtpa (~4.5 bcm, DET-stated 'up to 4.6 bcm' terminal grid feed-in). GEM matches operator. Re-verify in Update. | no action - FSRU operator/charterer vs terminal sponsors: GIIGNL 'Excelerate (owner)/Federal Republic of Germany (charterer)'; GEM 'e.on se'/'engie'/'tree energy solutions' = TES/E.ON/Engie developers. Benign.",
+  "basis": "DET states Wilhelmshaven 2 commissioned Aug 2025 at up to 4.6 bcm/y grid feed-in; GEM 3.31 mtpa (~4.5 bcm) matches the operator figure. GIIGNL 4.5 mtpa reflects higher Excelsior vessel regas nameplate. | Excelerate owns the FSRU and the German state charters it; GEM tracks the TES/E.ON/Engie development consortium. Representation difference, not a stake sale.",
+  "sources": [
+   "https://www.enerdata.net/publications/daily-energy-news/det-commissions-its-46-bcmyear-wilhelmshaven-2-lng-terminal-germany.html"
+  ],
+  "facet": "both",
+  "confidence": "medium"
+ },
+ {
+  "terminal_id": "T100000130492",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "new-unit/expansion-timing: GEM 11.76 mtpa (~16 bcm, includes 4 bcm 4th-tank expansion) vs GIIGNL 9.9 mtpa (~13.5 bcm, pre-expansion base). Expansion in-service 2H2026; GIIGNL 2025 report predates it. Keep-GEM but confirm expansion online-date in Update. | no action - project-co vs JV shareholders: GIIGNL 'gasunie'/'vopak' = 50/50 JV partners; GEM 'gate terminal bv' = the JV company itself. Benign.",
+  "basis": "Gate base capacity ~12 bcm; FID Aug 2023 for 4th tank +4 bcm to reach 16 bcm, ready 2H2026. GEM already records 16 bcm; GIIGNL 2026 (2025 ops) reports pre-expansion. Real timing difference, not metric mismatch. | Gate Terminal BV is the Gasunie/Vopak 50/50 JV; GIIGNL names the shareholders. No ownership change.",
+  "sources": [
+   "https://www.vopak.com/newsroom/news/news-lng-gate-terminal-expand-its-capabilities"
+  ],
+  "facet": "both",
+  "confidence": "medium"
+ },
+ {
+  "terminal_id": "T100000130496",
+  "section_type": "liquefaction",
+  "unit_name": null,
+  "verdict": "keep-GEM 0.33 mtpa; GIIGNL 0.3 = operator-stated 300,000 t/y rounded. Risavika/Stavanger small-scale liq. 0.03 mtpa delta immaterial. Optionally align to 0.3 in Update. | no action - GIIGNL owners wrong/parse-noise: GIIGNL 'novatek'/'totalenergies' do NOT own Risavika. GEM 'North Sea Midstream Partners' is correct (owner since Nov 2021, px Group operator). Keep GEM.",
+  "basis": "NSMP states Risavika production capacity 300,000 t/y (0.3 mtpa); GIIGNL matches it, GEM's 0.33 is a minor over-statement. Low priority. | NSMP acquired Risavika from Gasum/Skangas in Nov 2021 and remains owner; Novatek/TotalEnergies are unrelated to this asset. GIIGNL owner field is erroneous; no GEM change.",
+  "sources": [
+   "https://nsmp-limited.com/our-assets/risavika-liquefaction-plant/",
+   "https://www.gem.wiki/Risavika_LNG_Terminal"
+  ],
+  "facet": "both",
+  "confidence": "medium"
+ },
+ {
+  "terminal_id": "T100000130446",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "keep-GEM 9.55 mtpa; GIIGNL 9.6 identical (0.5% delta). Dunkerque LNG ~13 bcm. No action. | no action - project-co vs investor consortium: GIIGNL lists the AXA/Credit Agricole/IPM/Samsung shareholder consortium; GEM 'dunkerque lng' = the terminal company. Benign.",
+  "basis": "0.5% delta is rounding on the same nameplate; nothing to resolve. | GIIGNL spells out the equity owners (IPM-led consortium); GEM names the operating company Dunkerque LNG. No real change.",
+  "sources": [],
+  "facet": "both",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000131141",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "metric/operating-status: GEM 9.92 mtpa (~13.5 bcm, full 2-FSRU design sum) vs GIIGNL 3.7 mtpa (~5 bcm, one FSRU operating in 2025). Energos Power charter terminated Feb 2025, leaving Neptune (~5 bcm) running. GIIGNL reflects 2025 single-FSRU ops. Re-verify operating vs design capacity in Update; consider splitting non-operating vessel. | no action - FSRU operator/charterer vs terminal owner: GIIGNL 'mol'/'totalenergies' = FSRU owner (MOL/Neptune) / offtaker; GEM 'deutsche regas' = terminal owner. Benign.",
+  "basis": "Mukran design 13.5 bcm = Energos Power 7.5 + Neptune 5; Deutsche ReGas terminated Energos Power charter Feb 2025, so only one FSRU operated in 2025. GEM sums both vessels; GIIGNL reports the single operating FSRU. Matches CLAUDE.md multi-FSRU note. | MOL owns the FSRU Neptune; Deutsche ReGas owns/operates the terminal. No stake change.",
+  "sources": [
+   "https://www.argusmedia.com/en/news-and-insights/latest-market-news/2656313-germany-s-deutsche-regas-terminates-lng-fsru-charter"
+  ],
+  "facet": "both",
+  "confidence": "medium"
+ },
+ {
+  "terminal_id": "T100000130494",
+  "section_type": "liquefaction",
+  "unit_name": null,
+  "verdict": "keep-GEM 4.2 mtpa; GIIGNL 4.2 exact match. Snohvit/Hammerfest LNG. No capacity action. | UPDATE owners (real change): GEM list stale. Snohvit partnership now Equinor 36.79%, Petoro 30%, TotalEnergies 18.4%, Var Energi 12%, Harbour Energy 2.81%. GEM has 'eni' and 'wintershall dea' which are superseded by Var Energi (ex-Eni Norway) and Harbour Energy (acquired Wintershall Dea, 2024). Route to Update; run entity_lookup for Var Energi/Harbour Energy.",
+  "basis": "Exact capacity agreement; nothing to resolve. | Harbour Energy completed acquisition of Wintershall Dea (2024) and Var Energi holds the 12% (ex-Eni Norway) stake; GIIGNL 2026 reflects current partners while GEM still lists Eni and Wintershall Dea. Genuine ownership-record update, not representation noise.",
+  "sources": [
+   "https://www.equinor.com/news/20251222-status-update-snohvit-future-project"
+  ],
+  "facet": "both",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130682",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "no action",
+  "basis": "Capacity matches (0.1 mtpa both). Owner GIIGNL-only string 'government of gibraltar gastrade (gaslog' is mangled parse-noise blending operator/charterer names; GEM already has Government of Gibraltar + Shell. No genuine ownership change.",
+  "sources": [],
+  "facet": "both",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130681",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "metric-mismatch / keep-GEM",
+  "basis": "Alexandroupolis FSRU. GEM 4.04 mtpa = nameplate 5.5 bcm/y (Gastrade/Enagas); GIIGNL 4.0 is rounded. 1% delta is rounding + FSRU nameplate-vs-sendout metric. Owners benign: GIIGNL-only 'desfa','elmina copelouzou','bulgartransgaz)' are shareholders/parse-noise; GEM lists project co Gastrade AE. No real ownership change.",
+  "sources": [
+   "https://www.gem.wiki/Alexandroupolis_FSRU"
+  ],
+  "facet": "both",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130462",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "no action",
+  "basis": "Capacity matches (5.1 mtpa both). Owner GIIGNL-only 'desfa s.a (snam','enagas','fluxys','govnt)' are DESFA shareholders + parse-noise; GEM lists operator DESFA. Benign, no ownership change.",
+  "sources": [],
+  "facet": "both",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130476",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "keep-GEM (metric/rounding)",
+  "basis": "Panigaglia onshore. Snam/GNL Italia state regas ~3.5 bcm/y = ~2.5-2.57 mtpa; GEM 2.5 and GIIGNL 2.6 both round to that. 4% delta is rounding, not a real change. Owner 'set' is the Snam/SET operating co (benign per region note); GEM has operator GNL Italia SpA. No ownership change.",
+  "sources": [
+   "https://www.snam.it/en/we-snam/about-us/our-infrastructure/onshore-regasification-terminal/the-Panigaglia-terminal.html"
+  ],
+  "facet": "both",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000131096",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "metric-mismatch / keep-GEM",
+  "basis": "Piombino FSRU (Golar Tundra). GEM 3.67 vs GIIGNL 3.7 = 0.8% rounding delta. FSRU nameplate ~5 bcm. Owner 'set' = Snam/SET operating co (benign); GEM lists FSRU Italia (Snam FSRU vehicle). FSRU operator-vs-owner variant, no real change.",
+  "sources": [],
+  "facet": "both",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130528",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "route to Update — GIIGNL likely more current, verify vs Enagas",
+  "basis": "El Musel. Material 13.3% delta. GEM 5.88 mtpa traces to a 2022 Upstream proposal value (~8 bcm/y aspiration); terminal is now repositioned as a transshipment/logistics hub under Spain's Feb-2024 special regime, not a standard grid regas. GIIGNL 2026 5.1 mtpa (~7 bcm) likely reflects the current regime more accurately. Do NOT auto-apply — verify against Enagas regas-plant capacity page in Update workflow, then decide. Owners benign (Reganosa/Enagas name variants).",
+  "sources": [
+   "https://www.gem.wiki/El_Musel_LNG_Terminal",
+   "https://www.enagas.es/en/energy-transition/gas-network/gas-infrastructure/regasification-plants/"
+  ],
+  "facet": "capacity",
+  "confidence": "medium"
+ },
+ {
+  "terminal_id": "T100000130534",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "no action",
+  "basis": "Mugardos (Reganosa). Capacity matches (2.6 mtpa both). GIIGNL owner cells ('76%) infraestructuras de gas','tojeiro group (59','xunta galicia (28','5','6') are badly mangled shareholder-percentage parse-noise per region note; GEM already carries Tojeiro Group, Region of Galicia, Reganosa, Sonatrach etc. Benign, no real ownership change.",
+  "sources": [],
+  "facet": "both",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130466",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "keep-GEM (timing) — flag expansion for future Update",
+  "basis": "Rovigo (Adriatic LNG). GEM 7.06 mtpa = 9.6 bcm/y, the current authorized capacity confirmed on operator's own terminal page (covers 2025 ops). GIIGNL 7.7 mtpa = ~10.4 bcm, the +8% expansion approved Apr-2025 with added capacity only available Q1-2026. For 2025-ops GEM is correct; the 10.4 bcm step-up is a future capacity change to add via Update once live, not a current disagreement. Owner 'adriatic lng (vtti','snam' = shareholders behind project co Adriatic LNG Srl; benign.",
+  "sources": [
+   "https://www.adriaticlng.it/en/the-terminal"
+  ],
+  "facet": "both",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130490",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "no action",
+  "basis": "Delimara (Armada LNG Mediterrana FSU, Malta). Capacity matches (0.5 mtpa both). GIIGNL owner string 'owner: bumiarmada charterer: electrogas malta (gem holdings limited' explicitly distinguishes vessel owner (Bumi Armada) from charterer/terminal operator (ElectroGas Malta, which GEM lists). Classic FSRU/FSU owner-vs-operator split; benign, no change.",
+  "sources": [],
+  "facet": "both",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130807",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "metric-mismatch / route to Update to reconcile sendout",
+  "basis": "Gulf of Saros FSRU (BOTAS). Material 14% delta. Published figures vary widely (4.9-5.6 mtpa; 6.7-7.62 bcm/y) depending on source/year. GEM 5.0 and GIIGNL 5.7 both fall in that band; difference is FSRU nameplate-vs-sendout metric and inconsistent source reporting, not a clear newer authoritative value. No reliable single source to replace GEM's; surface for Update to pick a definitive BOTAS figure. Owner overlap (BOTAS) only; no owner action.",
+  "sources": [
+   "https://www.gem.wiki/Gulf_of_Saros_FSRU"
+  ],
+  "facet": "capacity",
+  "confidence": "medium"
+ },
+ {
+  "terminal_id": "T100000130542",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "no action - FSRU-operator + shareholder names vs GEM JV-entity; not a real ownership change",
+  "basis": "Escobar is owned by UTE GNL Escobar (YPF + Enarsa JV; contract extended to Jan 2029). Excelerate supplies the FSRU Expedient as operator/charterer. GIIGNL's '50% ypf)'/'excelerate' = JV shareholder + FSRU operator (parse-noise); GEM's 'ute escobar' is the JV entity. Capacity matches (6.1=6.1).",
+  "sources": [],
+  "facet": "owner",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130925",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "GIIGNL correct - Excelerate took over Bahia terminal operations from Petrobras (Dec 28 2024); route to Update + entity_lookup",
+  "basis": "Real change: Petrobras transferred Bahia LNG terminal operations to Excelerate under a lease/operations agreement effective 28 Dec 2024. GIIGNL's 'excelerate' reflects the current operator; GEM still shows Petrobras. Capacity unchanged (5.6=5.6). Confirm whether GEM should record Excelerate as operator vs Petrobras as asset owner.",
+  "sources": [
+   "https://lngprime.com/americas/petrobras-transfers-bahia-lng-ops-to-excelerate-energy/35955/"
+  ],
+  "facet": "owner",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130546",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "both - capacity: fill blank GEM (0.0) via Update (metric-mismatch, do not auto-apply GIIGNL); owner: no action (Excelerate = FSRU operator, Petrobras still owns)",
+  "basis": "Guanabara Bay (FSRU Experience) is owned/operated by Petrobras; Excelerate provides the FSRU under a 15-yr time charter, so GIIGNL's 'excelerate' = FSRU operator, not a terminal-owner change. Capacity: GEM export sendout is blank (0.0) though GEM wiki carries 10.95 mtpa / 30 Mm3-day; GIIGNL's 6.0 is operating-only. Route to Update to fill the blank with a sourced sendout value; basis mismatch, not auto-apply.",
+  "sources": [
+   "https://excelerateenergy.com/projects/guanabara-bay-lng-import-terminal/",
+   "https://www.gem.wiki/Guanabara_Bay_FSRU"
+  ],
+  "facet": "both",
+  "confidence": "medium"
+ },
+ {
+  "terminal_id": "T100000130556",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "no action - GEM already correct (Engie 63% / Ameris Capital 37%); GIIGNL lists no owner",
+  "basis": "Codelco sold its 37% to Ameris Capital in 2019; Engie holds 63%. GEM already records both Ameris Capital and Engie. owners_giignl_only is empty - no GIIGNL-side change to reconcile. Capacity matches (1.5=1.5).",
+  "sources": [],
+  "facet": "owner",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130560",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "keep-GEM (4.0 mtpa matches operator's own figure); owner no action ('[to be deleted]' is GEM housekeeping, not a GIIGNL change)",
+  "basis": "GNL Quintero states 4 mtpa regas capacity on its own site; GEM 4.0 matches, GIIGNL 3.8 is operating/throughput basis (5% delta). Owner: EIG+Fluxys 80% / Enap 20%; GEM lists EIG/Enap (flagged '[to be deleted]' = internal entity cleanup) + Fluxys overlap; GIIGNL just Enap+Fluxys (less complete). Not a real ownership change.",
+  "sources": [
+   "https://www.gnlquintero.com/en/terminal/"
+  ],
+  "facet": "both",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130566",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "metric-mismatch - route capacity to Update (GIIGNL 2.7 nameplate vs GEM 1.9 vs source 1.7); owner no action (GEM more complete post-AES-sale)",
+  "basis": "Andres capacity figures vary by basis (operator/EIA cite 1.7 mtpa; GEM 1.9; GIIGNL 2.7) - 42% delta is a basis/range conflict, not a clear newer value; resolve in Update, do not auto-apply GIIGNL. Owner: AES sold 20% of AES Andres to Grupo Linda/Grupo Estrella/AFI Popular (closed Dec 2023), retaining 65%; GEM already lists AES + all three buyers, GIIGNL only 'AES Energia del Pacifico'. GEM is more complete - no action.",
+  "sources": [
+   "https://lngprime.com/americas/aes-wraps-up-stake-sale-in-two-lng-terminals/100801/",
+   "https://www.gem.wiki/Andr%C3%A9s_LNG_Terminal"
+  ],
+  "facet": "both",
+  "confidence": "medium"
+ },
+ {
+  "terminal_id": "T100000130680",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "metric-mismatch / keep-GEM (FSRU nameplate vs sendout, 7% delta, low priority); owner no action (JV-entity vs shareholders)",
+  "basis": "Acajutla uses BW Tatiana FSRU (280 MMSCFD ~ 2.0-2.15 mtpa); GEM 2.15 vs GIIGNL 2.0 is nameplate-vs-sendout rounding. Owner: Energia del Pacifico is the JV entity GEM records; GIIGNL lists its shareholders (Invenergy, Grupo Calleja, VC Energy de Centroamerica, Quantum Energy). Benign JV-entity-vs-shareholders, not a real change.",
+  "sources": [
+   "https://www.gem.wiki/Acajutla_FSRU"
+  ],
+  "facet": "both",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130684",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "metric-mismatch - route capacity to Update (FSRU Golar Freeze ~2.1 mtpa nameplate vs GEM sendout); GIIGNL 2.8 vs GEM 3.6, do not auto-apply",
+  "basis": "Old Harbour FSRU (Golar Freeze, ~4.9 bcm/y ~ 2.1 mtpa) - GEM 3.6 vs GIIGNL 2.8 (22% delta) is a sendout-vs-nameplate basis conflict; resolve in Update. Owner already agrees (Excelerate in overlap) following NFE's May 2025 sale of Jamaica assets to Excelerate - no owner action.",
+  "sources": [
+   "https://www.gem.wiki/Old_Harbour_FSRU"
+  ],
+  "facet": "capacity",
+  "confidence": "medium"
+ },
+ {
+  "terminal_id": "T100000130575",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "no action - GEM already records full post-sale shareholder set; GIIGNL 'aes' is the operator/majority only",
+  "basis": "Costa Norte = AES Colon (Panama). AES sold 35% (Grupo Linda 20%, Grupo Estrella 15%) Dec 2023, retaining 65%. GEM lists AES Corp + Grupo Estrella + Grupo Linda; GIIGNL lists only 'aes'. GEM is more complete - no real change to apply. Capacity matches (1.5=1.5).",
+  "sources": [
+   "https://lngprime.com/americas/aes-wraps-up-stake-sale-in-two-lng-terminals/100801/"
+  ],
+  "facet": "owner",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130578",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "no action - name variants / parse-noise (EcoElectrica = Engie + Naturgy + Mitsui); not a real change",
+  "basis": "Penuelas (EcoElectrica LP) owned by Engie + Naturgy (both in overlap) with Mitsui. GIIGNL's 'oco partners' is parse-noise from 'EcoElectrica'; 'mitsui' matches GEM 'mitsui group'. Capacity matches (2.0=2.0). Benign.",
+  "sources": [],
+  "facet": "owner",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130926",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "no action - GIIGNL 'energos' = FSRU vessel owner; NFE remains terminal owner/operator (benign FSRU-owner-vs-terminal-owner)",
+  "basis": "Barcarena terminal owned/operated by New Fortress Energy; the FSRU Energos Celsius is owned by Energos Infrastructure (Apollo/NFE) on long-term charter to NFE. GIIGNL's 'energos' is the vessel owner, GEM's 'new-fortress' the terminal owner - both correct per project conventions. Capacity matches (6.0=6.0). FSRU sync touchpoint (vessel owner Energos) if FSRU sheet built.",
+  "sources": [],
+  "facet": "owner",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130688",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "metric-mismatch / range - route capacity to Update (GIIGNL 5.6 = nameplate 21 Mm3/d; GEM 7.5 = upper range 28 Mm3/d); owner no action",
+  "basis": "Port of Acu (GNA) FSRU rated 21 Mm3/d (5.6 mtpa) nameplate, with reported range to 28 Mm3/d (~7.5 mtpa). GEM 7.5 vs GIIGNL 5.6 (25% delta) is a range/basis difference - per methodology record max in sheet, range in Background; do not auto-apply GIIGNL. Owner: GNA JV = Prumo Logistica + BP + Siemens; GEM has all three, GIIGNL adds 'charterer: Gas Natural Acu' label. Benign owner.",
+  "sources": [
+   "https://www.gem.wiki/Porto_do_A%C3%A7u_FSRU",
+   "https://www.gna.com.br/en/our-business/lng-regasification-terminal"
+  ],
+  "facet": "both",
+  "confidence": "medium"
+ },
+ {
+  "terminal_id": "T100000131119",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "no action - Karmol IS the Karpowership+MOL JV; GIIGNL lists the two parents, GEM the JV brand (same entity)",
+  "basis": "Sepetiba FSRU (Karmol LNGT Powership Asia) owned by KARMOL, the 50/50 JV of Karpowership and Mitsui O.S.K. Lines (MOL) established 2019. GIIGNL's 'karpowership'/'mol' = the JV parents; GEM's 'karmol' = the JV. Not a real change. Capacity matches (0.5=0.5).",
+  "sources": [
+   "https://www.gem.wiki/Sepetiba_Bay_FSRU"
+  ],
+  "facet": "owner",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130562",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "no action - capacity ~1% rounding (keep GEM); owner is FSRU-operator vs terminal-owner (benign)",
+  "basis": "Cartagena SPEC capacity 3.64 (GEM) vs 3.6 (GIIGNL) = 1.1% rounding, keep GEM. Owner: GEM 'Sociedad Portuaria El Cayao' (SPEC, terminal owner); GIIGNL adds 'Hoegh-evi' = FSRU operator/charterer. Benign metric + FSRU-operator-vs-owner.",
+  "sources": [],
+  "facet": "both",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130576",
+  "section_type": "liquefaction",
+  "unit_name": null,
+  "verdict": "no action - capacity ~1% rounding (keep GEM); owners are name variants/shareholders (benign)",
+  "basis": "Peru LNG capacity 4.45 (GEM) vs 4.5 (GIIGNL) = 1.1% rounding, keep GEM's specific source. Owners are name variants (Hunt Oil/Hunt Oil Company, Marubeni/Marubeni Corp, MidOcean/MidOcean Energy LLC) plus Shell overlap; GIIGNL also lists SK (a known historical shareholder) - benign shareholder-list difference, not a real change. Low priority.",
+  "sources": [],
+  "facet": "both",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130685",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "keep-GEM (per-vessel nameplate). Capacity delta is small (GIIGNL 5.7 vs GEM 5.51, 3.4%) and reflects basis, not a real change: GIIGNL assigns a uniform 5.7 mtpa placeholder to every Ain-Sokhna FSRU row, whereas GEM 5.51 is the Energos Power's own sendout (~7.5 bcm/y nameplate per Enerdata). No update needed; optionally re-verify the 5.51 figure during the Egypt batch. Owner facet: no action - benign FSRU vessel-owner (Energos Infrastructure) vs charterer (EGAS) representation.",
+  "basis": "GEM wiki lists Energos Power at 5.51 mtpa; Enerdata gives the vessel a 7.5 bcm/y import capacity. GIIGNL's flat 5.7/vessel across all three Ain-Sokhna FSRUs (incl. the smaller Hoegh Galleon at 384 mmcf/d) shows the 5.7 is a placeholder, not a measured per-vessel figure. Owner delta is vessel-owner vs charterer, benign.",
+  "sources": [
+   "https://www.gem.wiki/Ain_Sokhna_FSRU"
+  ],
+  "facet": "both",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130686",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "metric-mismatch (keep-GEM). The 42.5% gap (GIIGNL 11.4 vs GEM 8.0) is entirely a basis difference, not a real disagreement. GIIGNL lists Hoegh Galleon and Energos Eskimo as two separate Ain-Sokhna rows at a uniform 5.7 mtpa each (= 11.4 combined); GEM (Sumed FSRU) uses true per-vessel nameplates: Hoegh Galleon 4.2 + Energos Eskimo 3.8 = 8.0. Hoegh Galleon's actual regas capacity is only ~384 mmcf/d (~2.9 mtpa), well below GIIGNL's 5.7 placeholder, confirming GIIGNL is not vessel-specific here. Keep GEM's per-vessel figures. Owner facet: no action - 'hoegh-evi' is the vessel owner, EGAS the charterer (overlap), benign.",
+  "basis": "GIIGNL extract shows three Ain-Sokhna FSRU rows each at exactly 5.7 mtpa regardless of vessel size; GEM models Hoegh Galleon (4.2) + Energos Eskimo (3.8) = 8.0 per-vessel. Hoegh Galleon = 384 mmcf/d per LNG Prime, far below 5.7. Uniform-placeholder vs measured-nameplate mismatch.",
+  "sources": [
+   "https://www.gem.wiki/Ain_Sokhna_FSRU",
+   "https://lngprime.com/lng-terminals/hoegh-lngs-fsru-heads-to-egypt/114329/"
+  ],
+  "facet": "both",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100001083032",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "Update workflow: re-verify GEM unit-row capacity; GIIGNL's lower figure looks better-grounded. GIIGNL 3.4 vs GEM (Damietta FSRU) 4.99, a real 31.9% conflict. The deployed vessel is the Energos Winter, a 138,250 m3 FSRU whose prior NFE deployment (Terminal Gas Sul, Brazil) ran a ~500 mmcf/d sendout (~3.8 mtpa) - close to GIIGNL's 3.4 and notably below GEM's 4.99, which appears to be a high terminal-nameplate or stale estimate. Recommend reconciling the GEM unit-row downward using a current NFE/EGAS sendout source; do NOT auto-apply GIIGNL's 3.4. Owner facet: no action - ENI (Damietta terminal partner) + New Fortress (vessel owner) vs EGAS overlap, benign representation.",
+  "basis": "Energos Winter is a 138,250 m3 FSRU; at Brazil's TGS it had ~500 mmcf/d max sendout (~3.8 mtpa). GIIGNL 3.4 mtpa is consistent with that vessel class; GEM 4.99 is materially higher and unsourced in the worklist. Genuine capacity disagreement -> route to Update with a current operator source.",
+  "sources": [
+   "https://lngprime.com/contracts-and-tenders/nfe-inks-second-fsru-charter-deal-with-egypts-egas/157090/"
+  ],
+  "facet": "capacity",
+  "confidence": "medium"
+ },
+ {
+  "terminal_id": "T100000130671",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "keep-GEM. GIIGNL 24 vs GEM 22 (9.1%). GEM's 22 mtpa is the well-corroborated full nameplate: KIPIC's Al Zour reached 22 mtpa across two phases (4+4 tanks of 225,000 m3, 11 mtpa each). GIIGNL's 24 is a slightly inflated/rounded variant not supported by KIPIC's own documentation. Keep GEM 22; no update needed. Owner facet: no action - GIIGNL 'Mineral Resources) Kuwait Petroleum' is parse-noise for the Kuwait Petroleum / KPC-KIPIC family; GEM 'Kuwait National Petroleum Co' is the same state-oil family, benign.",
+  "basis": "KIPIC and multiple trade sources put Al Zour at 22 mtpa full capacity (two 11 mtpa phases, eight 225,000 m3 tanks). GIIGNL's 24 lacks corroboration. Owner delta is KPC-family parse noise.",
+  "sources": [
+   "https://www.gem.wiki/Al_Zour_LNG_Terminal"
+  ],
+  "facet": "both",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130593",
+  "section_type": "liquefaction",
+  "unit_name": null,
+  "verdict": "keep-GEM. GIIGNL 11.5 vs GEM 11.4 is a negligible 0.9% rounding delta. GEM's 11.4 mtpa is the established post-debottleneck total for Oman LNG's three-train Qalhat complex (10.4 nameplate + debottleneck). No update needed. Owner facet: no action - both sources list the same JV (Government of Oman 51%, Shell, TotalEnergies, Korea LNG, Mitsubishi, Mitsui, PTTEP, Itochu); GEM additionally carries the Oman LNG LLC operating company and a couple of legacy/parse entries (Naturgy, Osaka-Gas, 'unknown'). Shareholders-vs-operating-co representation, benign.",
+  "basis": "Oman LNG = 11.4 mtpa after debottlenecking three Qalhat trains (LNG Prime / MEED). GIIGNL 11.5 within rounding. Owner sets overlap on the core JV; GEM extras are operating-co name + legacy parse noise, not a real change.",
+  "sources": [
+   "https://lngprime.com/middle-east/oman-lng-to-boost-capacity-with-new-train/118488/"
+  ],
+  "facet": "both",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130604",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "no action - capacity agrees exactly (3.8 mtpa, 0% delta) and owner delta is benign. GIIGNL 'excelerate' is the FSRU vessel owner/operator (Excelerate Energy, vessel Excelerate Express); GEM 'Abu Dhabi National Oil Co' (ADNOC) is the charterer/terminal sponsor at Ruwais. Vessel-operator vs charterer representation, not a real ownership change. No research-backed update.",
+  "basis": "GIIGNL extract: Ruwais 'Owner: Excelerate Energy Charterer: ADNOC', vessel Excelerate Express, 3.8 mtpa - matches GEM 3.8 exactly. The lone owner delta is the standard FSRU vessel-owner vs charterer split.",
+  "sources": [],
+  "facet": "owner",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130598",
+  "section_type": "liquefaction",
+  "unit_name": null,
+  "verdict": "Update workflow: GEM owner list is stale - real ownership change. Capacity agrees exactly (6.6 mtpa, 0% delta). GIIGNL lists QatarEnergy LNG S(1) as QatarEnergy 100%; GEM still carries ExxonMobil, Hanwha, Hyundai, Itochu, KOGAS, Samsung, Sojitz, Sumitomo. S(1) is the former Qatargas 1 JV, which QatarEnergy took to 100% ownership on 1 Jan 2022 when the QG1 partners (ExxonMobil, Total, Mitsui, Marubeni) exited at agreement expiry. GEM's non-QatarEnergy shareholders are obsolete legacy/buyer entries. Recommend updating the GEM owner set to QatarEnergy 100% (run entity_lookup first); do NOT auto-apply but this is a genuine, well-documented change. Capacity facet: no action.",
+  "basis": "QatarEnergy became 100% owner of all QG1 (now S(1)) assets on 1 Jan 2022 after the JV (ExxonMobil/Total/Mitsui/Marubeni) was not renewed (Wikipedia QatarEnergy LNG; LNG Industry; MEES). GIIGNL's QatarEnergy 100% is current; GEM's multi-shareholder list is stale.",
+  "sources": [
+   "https://en.wikipedia.org/wiki/QatarEnergy_LNG"
+  ],
+  "facet": "owner",
+  "confidence": "medium"
+ },
+ {
+  "terminal_id": "T100000130249",
+  "section_type": "liquefaction",
+  "unit_name": null,
+  "verdict": "no action - capacity agrees exactly (5.0 mtpa, 0% delta) and owner delta is benign. GIIGNL lists the Damietta liquefaction JV as 'Damietta LNG (ENI 50%, EGAS 40%, EGPC 10%)'; GEM lists 'Spanish Egyptian Gas Company SAE' (SEGAS), which is the project/JV company name for the same entity. Same ownership, different name-form (current shareholders vs JV-company name), not a real change. No update.",
+  "basis": "SEGAS = the Damietta liquefaction JV; GIIGNL gives its current shareholder split (ENI/EGAS/EGPC), GEM gives the JV company name. Capacity 5.0 = 5.0 (Train 1). JV-name vs shareholder-list representation, benign.",
+  "sources": [],
+  "facet": "owner",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130349",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "no action — capacity delta is rounding noise (7.4 vs 7.5 mtpa, 1.3%); owner delta benign. Repsol became 100% sole owner of Saint John (formerly Canaport) LNG in 2021; GEM correctly lists Repsol. 'ameris capital' is not a real co-owner of the terminal — parse/representation artifact in GIIGNL, no stake sale found. Keep GEM.",
+  "basis": "GEM and GIIGNL agree within rounding on capacity. Repsol acquired Irving Oil's remaining stake in 2021 to become sole owner; no 2025 ownership change. Ameris Capital not corroborated as a terminal owner.",
+  "sources": [
+   "https://lngprime.com/americas/repsol-becomes-sole-owner-of-canadas-canaport-lng-terminal/26109/"
+  ],
+  "facet": "both",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130221",
+  "section_type": "liquefaction",
+  "unit_name": null,
+  "verdict": "no action — capacity identical (2.5 mtpa). Owner delta benign: GEM lists project operator 'southern lng company llc' (Kinder Morgan subsidiary), GIIGNL lists sponsor 'kinder morgan'. Same entity / representation difference, no real ownership change. Keep GEM.",
+  "basis": "Southern LNG Company LLC is the Kinder Morgan operating subsidiary for Elba Island; sponsor-vs-LLC representation difference.",
+  "sources": [],
+  "facet": "owner",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130221",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "no action — capacity delta is rounding (12.4 GIIGNL vs 12.0 GEM, 3.3%); GEM cites IGU source. Not material. Owner delta benign (Southern LNG Company LLC = Kinder Morgan subsidiary). Keep GEM.",
+  "basis": "Sub-5% capacity delta within source-rounding range; owner is sponsor-vs-LLC representation difference for the same Kinder Morgan asset.",
+  "sources": [],
+  "facet": "both",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130227",
+  "section_type": "liquefaction",
+  "unit_name": null,
+  "verdict": "keep GEM — metric difference, not a real conflict. GIIGNL's 5.2 mtpa is the NOMINAL per-train capacity; GEM's 6.0 is the PEAK per-train nameplate (~6.03 mtpa after the 2022 DOE authorization to +0.35 Bcf/d). Both rows describe one train. GEM records peak nameplate per methodology; GIIGNL records nominal. No change. Owner delta benign (GEM 'golden pass lng terminal llc' = QatarEnergy/ExxonMobil JV vehicle; GIIGNL lists sponsor QatarEnergy). Note: Golden Pass is ramping — Train 1 first cargo April 2026, Trains 2/3 expected through Nov 2026; revisit total once all trains operating.",
+  "basis": "GEM wiki: 3 trains, nominal 5.2 mtpa/train, peak ~6.03 mtpa/train after 2022 authorization (15.6 nominal / 18.1 peak total). GIIGNL 5.2 = nominal per-train; GEM 6.0 ≈ peak per-train. Nominal-vs-peak metric distinction.",
+  "sources": [
+   "https://www.gem.wiki/Golden_Pass_LNG_Terminal",
+   "https://www.eia.gov/todayinenergy/detail.php?id=67564"
+  ],
+  "facet": "both",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130240",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "no action — capacity identical (30.4 mtpa). Owner delta benign: GEM 'cheniere' vs GIIGNL 'sabine pass lng' (the Cheniere project LLC). Same entity. Keep GEM.",
+  "basis": "Sabine Pass LNG LLC is the Cheniere project entity; sponsor-vs-LLC representation difference, no ownership change.",
+  "sources": [],
+  "facet": "owner",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000131044",
+  "section_type": "liquefaction",
+  "unit_name": null,
+  "verdict": "keep GEM — rounding/metric. Tilbury is a small-scale operating plant (Phase 1A, ~0.25-0.28 mtpa, online 2018). GIIGNL's 0.3 vs GEM's 0.28 is rounding at one-decimal precision (7.1% of a tiny base). No material difference; future Phase 1B/2 expansions are non-operating and out of this operating-capacity comparison. Keep GEM.",
+  "basis": "GEM wiki and FortisBC: existing Tilbury liquefaction is small-scale (~0.25 mtpa Phase 1A). 0.3 vs 0.28 is one-decimal rounding, not a real capacity change.",
+  "sources": [
+   "https://www.gem.wiki/Tilbury_Island_LNG_Terminal"
+  ],
+  "facet": "capacity",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130810",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "no action — capacity identical (7.6 mtpa). Owner delta benign: GEM 'sempra' vs GIIGNL 'ienova'. IEnova (Infraestructura Energetica Nova) is Sempra's Mexican subsidiary that developed/operates ECA. Same corporate group, no real ownership change. Keep GEM.",
+  "basis": "IEnova is the Sempra Mexico subsidiary operating Energia Costa Azul; parent-vs-subsidiary representation difference.",
+  "sources": [],
+  "facet": "owner",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130573",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "no action — capacity identical (3.8 mtpa). Owner delta benign: Manzanillo (Terminal KMS de GNL) was developed by a KOGAS-led consortium with Mitsui and Samsung (C&T) as the EPC/consortium partners; GEM carries the fuller consortium list, GIIGNL lists only the lead. Consortium-list representation difference, no transaction found. Keep GEM. Could run entity_lookup if Mitsui/Samsung entries are flagged stale, but no live ownership change to act on.",
+  "basis": "Manzanillo regas was built/operated by a KOGAS-Mitsui-Samsung consortium; GEM's broader owner list vs GIIGNL's single lead is a representation difference.",
+  "sources": [],
+  "facet": "owner",
+  "confidence": "medium"
+ },
+ {
+  "terminal_id": "T100000130212",
+  "section_type": "liquefaction",
+  "unit_name": null,
+  "verdict": "keep GEM — metric difference. GEM 10.0 = baseload/nominal nameplate; GIIGNL 10.2 is a 2025 operating/utilization figure (peak nameplate is 12.4 mtpa). The 2% delta is within nominal-vs-actual-operating noise. Calcasieu Pass reached full commercial operations April 2025. Keep GEM's 10.0 baseload nameplate. Owner delta benign: GEM 'venture-global' (overlap) plus GIIGNL adds 'totalenergies' — TotalEnergies is a long-term offtaker/equity partner, not a controlling owner; Venture Global Calcasieu Pass LLC is 100% owner. No action on owner.",
+  "basis": "GEM wiki: Calcasieu Pass nameplate 10 mtpa, peak 12.4 mtpa, owned 100% by Venture Global Calcasieu Pass LLC. GIIGNL 10.2 is between nominal and peak (2025 operating). TotalEnergies is offtaker/partner not controlling owner.",
+  "sources": [
+   "https://www.gem.wiki/Calcasieu_Pass_LNG_Terminal",
+   "https://ventureglobal.com/2025/04/15/venture-global-commences-commercial-operations-at-calcasieu-pass/"
+  ],
+  "facet": "both",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130228",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "no action — capacity identical (8.8 mtpa). Owner delta is benign legacy-list noise: GIIGNL lists 'aes'; GEM carries a fuller historical list ('aes corp', 'general electric co', 'kinder morgan inc'). No 2025 stake sale found; the existing Gulf LNG import terminal traces to AES/GE-era development with Kinder Morgan involvement. Overlap on AES. GEM's owner list may be stale but there is no live transaction to apply. Keep GEM; could verify the current operating-owner entry separately, but no GIIGNL-driven change.",
+  "basis": "No 2025 ownership transaction found for the Gulf LNG import terminal. GIIGNL single 'aes' vs GEM's broader historical AES/GE/Kinder Morgan list; representation/legacy difference, not a new stake sale.",
+  "sources": [
+   "https://www.gem.wiki/Gulf_LNG_Terminal"
+  ],
+  "facet": "owner",
+  "confidence": "medium"
+ },
+ {
+  "terminal_id": "T100000130242",
+  "section_type": "liquefaction",
+  "unit_name": null,
+  "verdict": "keep GEM — metric/ramp difference, GEM authoritative. GEM 13.33 mtpa is the confirmed Phase 1 nameplate (18 trains × 0.626 mtpa = ~11.3 baseload across 9 blocks; full nameplate ~13.3 mtpa), backed by the DOE expansion application. GIIGNL's 11.3 is the lower nominal/2025 ramp figure (Phase 1 not fully online until Q4 2026; Venture Global demonstrated ~40% over-nameplate). GEM's 13.33 (DOE-sourced) is the better current nameplate — keep GEM. No owner delta (Venture Global overlap).",
+  "basis": "Plaquemines Phase 1 = 13.3 mtpa nameplate (18 mid-scale trains), per GEM wiki/DOE application; GIIGNL 11.3 is nominal/baseload or 2025 partial-year. DOE-sourced GEM figure beats GIIGNL for a ramping VG terminal.",
+  "sources": [
+   "https://www.gem.wiki/Plaquemines_LNG_Terminal",
+   "https://www.energy.gov/sites/default/files/2025-11/Plaquemines%20Expansion%20DOE%20Application%20%28111725%29.pdf"
+  ],
+  "facet": "capacity",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130551",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "Update owners: replace GEM's stale 'Ancala Partners' with VTTI. Current ownership is VTTI 50% (acquired Ancala's stake, completed 2024-08-09) + Shell 50%. GIIGNL 'vtti' is correct; GEM is stale. Run entity_lookup on VTTI before staging.",
+  "basis": "VTTI completed its acquisition of Ancala's 50% interest in Dragon LNG Group on 2024-08-09; remaining 50% held by Shell. Ancala fully exited. GIIGNL 2026 reflects this; GEM still lists Ancala. Real ownership change -> Update workflow.",
+  "sources": [
+   "https://www.vtti.com/vtti-completes-acquisition-of-50-of-dragon-lng/"
+  ],
+  "facet": "owner",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130579",
+  "section_type": "liquefaction",
+  "unit_name": null,
+  "verdict": "Owners: Update — GEM's 'BG Group Ltd' and 'Repsol' are stale and should be removed. Post-2024 unitisation, shareholders are Shell 47.15% + BP 47.15% + NGC 5.7% (shifting to 45/45/10 from 2027-05-02); CIC also exited. Overlap set (BP, NGC, Shell) is correct. Run entity_lookup before staging. Capacity (11.8 GIIGNL vs 12.0 GEM, 1.7% delta): keep GEM — immaterial delta within metric/rounding noise; difference likely reflects which trains GIIGNL counts as operating (Train 1 mothballed). Defer any capacity change to Update with train-level status review; do not replace with GIIGNL.",
+  "basis": "Atlantic LNG was restructured into a single unitised facility effective Oct 2024 with Shell 47.15% / BP 47.15% / NGC 5.7% (45/45/10 from May 2027); CIC exited; BG Group (absorbed into Shell in 2016) and Repsol no longer shareholders -> GEM owner set is stale. Capacity figures across sources range ~11.8-15 mtpa depending on operating-train basis; 1.7% delta is immaterial and not a basis to auto-apply GIIGNL.",
+  "sources": [
+   "https://lngprime.com/contracts-and-tenders/trinidad-seals-atlantic-lng-restructuring-deal-with-shell-and-bp/99416/"
+  ],
+  "facet": "both",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130270",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "keep-GEM (4.5 mtpa). GIIGNL 3.8 is FSRU baseload/sendout; GEM 4.5 matches Excelerate Energy's stated FSRU nameplate at Moheshkhali (operating since Aug 2018). Owner: no action - GIIGNL lists FSRU operator Excelerate; GEM lists terminal owner Petrobangla (Bangladesh Oil, Gas and Mineral Corp). Benign operator-vs-owner representation.",
+  "basis": "Excelerate's Moheshkhali FSRU is a 4.5-mtpa unit per sponsor/Excelerate project materials; GIIGNL's 3.8 reflects a lower baseload/sendout figure (FSRU nameplate vs operating regas metric difference), not a true conflict. GIIGNL owner = FSRU operator, GEM owner = terminal owner.",
+  "sources": [
+   "https://excelerateenergy.com/projects/moheshkhali-floating-lng/"
+  ],
+  "facet": "both",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130273",
+  "section_type": "liquefaction",
+  "unit_name": null,
+  "verdict": "keep-GEM (7.7 mtpa). GEM 7.7 matches the official Brunei LNG plant page ('up to 7.7 million tonnes of LNG annually', 5 trains), which is the GEM-cited source and more specific than GIIGNL's 7.0 (conservative operating figure). Owner: no action - GIIGNL adds CNPC/JERA/Petronas alongside Govt-of-Brunei/Shell/Mitsubishi; GEM records Govt of Brunei, Shell, Mitsubishi Corp (the canonical 50/25/25 BLNG shareholding). Extra GIIGNL names are downstream/offtake-party noise, not the equity owners; not a real ownership change.",
+  "basis": "bruneilng.com/the-plant (sponsor IR, GEM-cited) states up to 7.7 mtpa across 5 trains; GIIGNL 7.0 is the lower operating-capacity figure. Equity is Govt of Brunei 50% / Shell 25% / Mitsubishi 25% - GIIGNL's CNPC/JERA/Petronas are not equity holders of the liquefaction JV.",
+  "sources": [
+   "https://bruneilng.com/the-plant/"
+  ],
+  "facet": "both",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130431",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "no action - benign owner representation. GIIGNL lists shareholder TotalEnergies (50% JV partner in Dhamra); GEM lists the project company Dhamra LNG Terminal Pvt Ltd. Project-co vs shareholder representation, not an ownership change. Capacity agrees (5.0 = 5.0).",
+  "basis": "Dhamra LNG is the Adani Total Private Ltd / TotalEnergies JV operating company; GIIGNL naming the shareholder vs GEM naming the project company is benign.",
+  "sources": [],
+  "facet": "owner",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130455",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "no action - benign owner representation. GIIGNL: Adani Group / GSPC Holding; GEM: S.B. Adani Family Trust (+ a 'petronet' token that is parse-noise - Petronet does not own Mundra; it operates Dahej/Kochi). All are shareholder-representation variants of the Adani-GSPC structure (GSPC LNG). No genuinely new owner introduced. Capacity agrees (5.0 = 5.0).",
+  "basis": "Mundra LNG is the Adani / GSPC (GSPC LNG Ltd) JV; both source lists are shareholder variants of the same structure. The GEM 'petronet' token appears to be a misattribution/parse-noise, not a research-worthy owner; benign per owner rule.",
+  "sources": [],
+  "facet": "owner",
+  "confidence": "medium"
+ },
+ {
+  "terminal_id": "T100000130283",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "no action - FSRU operator vs terminal owner. GIIGNL lists FSRU operator Hoegh-EVI; GEM lists terminal owner Pertamina (Lampung FSRU is Pertamina's, with a Hoegh FSRU). Benign per FSRU-operator-vs-owner rule. Capacity agrees (2.7 = 2.7).",
+  "basis": "Lampung FSRU is operated for Pertamina using a Hoegh-EVI vessel; GIIGNL naming the FSRU operator vs GEM naming the terminal owner is benign representation.",
+  "sources": [],
+  "facet": "owner",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130276",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "no action - name variant. GIIGNL: JSK Group / PT Pelindo III; GEM: PT Pelindo. Pelindo III merged into the consolidated PT Pelindo (2021 Indonesian ports merger), so 'Pelindo III' and 'Pelindo' are the same entity; JSK Group is a co-developer. Benign. Capacity agrees (0.4 = 0.4).",
+  "basis": "Pelindo III was absorbed into PT Pelindo in the Oct-2021 Indonesian port-operator merger; GIIGNL's pre-merger label vs GEM's current name is a benign name variant.",
+  "sources": [],
+  "facet": "owner",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130298",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "no action - same entity / charterer. GIIGNL: 'charterer: ETPL (Engro / Vopak)'; GEM: ETPL. ETPL = Engro Elengy Terminal Pvt Ltd, the same entity GEM records; Vopak is a partner/charterer. Parse-noise around the same operator. Capacity agrees (4.8 = 4.8).",
+  "basis": "Engro Elengy Terminal (ETPL) operates the Port Qasim/EETL FSRU; GIIGNL's parenthetical charterer/partner detail is benign and resolves to the same GEM entity.",
+  "sources": [],
+  "facet": "owner",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130968",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "keep-GEM (5.0 mtpa). GEM 5.0 matches AG&P's own materials for the combined offshore/onshore PHLNG terminal ('initial capacity of 5 mtpa', scalable onshore regas 504 mmscfd ~ 5 mtpa). GIIGNL 3.0 reflects an early-phase/contracted figure - scope/phase difference, GEM is the fuller and current nameplate. Owner: no action - GIIGNL 'charterer: AG&P (Atlantic Gulf & Pacific)' resolves to GEM's AG&P Terminals & Logistics Pte Ltd; same entity. NOTE: GEM record has no [ref] for capacity - Update should attach the AG&P/504-mmscfd citation.",
+  "basis": "AG&P press/PHLNG materials describe a combined offshore/onshore terminal at 5 mtpa with 504 mmscfd scalable onshore regas; GIIGNL's 3.0 is the initial-phase number. Owner tokens are the same AG&P entity (charterer vs owner). GEM 5.0 is correct but currently unsourced.",
+  "sources": [
+   "https://www.gem.wiki/Philippines_LNG_Terminal"
+  ],
+  "facet": "both",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130323",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "keep-GEM (1.0 mtpa) - metric difference. GEM 1.0 = design/nameplate; GIIGNL 1.1 is an operating-throughput rounding (PV Gas Apr-2026 ran the regas system at 288 t/hr vs 171 t/hr design, above nameplate). No formal nameplate change above 1 mtpa yet; the 3-mtpa Phase 2 expansion is still future. MONITOR: the throughput de-bottlenecking and planned 3-mtpa expansion are a candidate for a future Update/Discovery unit. Owner: no action - GIIGNL Bitexco/Tokyo-Gas (+ stray '5' token = parse-noise) vs GEM PV Gas; benign, not a real ownership change.",
+  "basis": "Thi Vai is a 1-mtpa nameplate terminal (PV Gas); the Apr-2026 de-bottlenecking pushed operating throughput above design, which is why GIIGNL rounds to 1.1 - an operating-vs-nameplate metric difference, not a true conflict. Planned expansion to ~3 mtpa is future.",
+  "sources": [
+   "https://lngprime.com/asia/petrovietnam-gas-boosts-thi-vai-regas-capacity/182732/"
+  ],
+  "facet": "both",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130275",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "no action - operator + qualifier. GIIGNL: Government of Aceh / PT Perta Arun Gas (Pertamina); GEM: PT Perta Arun Gas. Same operator with GIIGNL adding the Pertamina parent and the Aceh-government stakeholder qualifier. Benign. Capacity agrees (3.0 = 3.0).",
+  "basis": "PT Perta Arun Gas (a Pertamina subsidiary) operates the Arun regas terminal; GIIGNL's parent/stakeholder qualifiers resolve to the same GEM entity.",
+  "sources": [],
+  "facet": "owner",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130284",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "no action - GIIGNL misattribution. GIIGNL: New Fortress; GEM: PT Nusantara Regas. Nusantara Regas Satu is a Pertamina (60%) / PGN (40%) JV with a Golar-chartered FSRU - New Fortress Energy has no ownership stake in this terminal, so the GIIGNL token is a data/parse error, not a real ownership change. GEM is correct. Capacity agrees (3.0 = 3.0).",
+  "basis": "PT Nusantara Regas (the West Java FSRU operator) is 60% Pertamina / 40% PGN; NFE is not an owner of this terminal. GIIGNL's 'new-fortress' is a misattribution; keep GEM, no action.",
+  "sources": [
+   "https://www.gem.wiki/Nusantara_Regas_Satu_Terminal"
+  ],
+  "facet": "owner",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130291",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "no action - parse-noise / same shareholders. GIIGNL fragment 'group and johor state' resolves to the GEM owner set Dialog Group Bhd / Government of Johor / Petroliam Nasional Bhd (Petronas). GIIGNL token is a truncated fragment of the same Dialog-Petronas-Johor structure (Pengerang Deepwater Terminal). Benign. Capacity agrees (3.5 = 3.5).",
+  "basis": "Pengerang LNG (Petronas / Dialog / Johor State JV); GIIGNL's truncated 'group and johor state' fragment matches the GEM shareholder set. Petronas = Petroliam Nasional Bhd (same entity). Parse-noise, not an ownership change.",
+  "sources": [],
+  "facet": "owner",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130309",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "keep-GEM (11.0 mtpa) - average vs peak metric difference. SLNG states the existing Jurong Island terminal has 9 mtpa annualised-average supply capacity and ~11 mtpa peak capacity. GIIGNL 9.0 = average; GEM 11.0 = peak/max (per methodology 'record max in spreadsheet'). Not a true conflict. Owner: no action - GIIGNL 'SLNG' = GEM 'Singapore LNG Corp', same entity (name variant).",
+  "basis": "SLNG terminal overview: 9 mtpa annualised-average vs ~11 mtpa peak; GEM records the peak/max consistent with methodology, GIIGNL records the average. Owner tokens are the same SLNG entity.",
+  "sources": [
+   "https://www.slng.com.sg/slng-terminal-overview"
+  ],
+  "facet": "both",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130447",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "No action. GEM is correct (Petronet LNG operates Kochi). GIIGNL's lone 'Shell' owner here is a GIIGNL-table extraction artifact (the owner cell bled from an adjacent row — Kochi is a Petronet LNG terminal, not Shell-owned). Capacity agrees. Not a real ownership difference.",
+  "basis": "Kochi = Petronet LNG; 'Shell' is a cross-row owner-cell extraction shard in the GIIGNL table, not a real Kochi owner.",
+  "sources": [],
+  "facet": "owner",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130507",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "No action. Capacity delta 1.0% is within rounding (keep GEM 10.3). GIIGNL's lone 'Kyushu Electric' owner is a GIIGNL-table extraction artifact (Ohgishima is Tokyo Gas / JERA; 'Kyushu Electric' bled in from the nearby Kita-Kyushu/Tobata rows). Not a real ownership difference.",
+  "basis": "Ohgishima = Tokyo Gas/JERA; 'Kyushu Electric' is a cross-row owner-cell extraction shard; 1.0% capacity is rounding.",
+  "sources": [],
+  "facet": "both",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130536",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "No action on owners. Naming-convention difference only: Saggas (Sagunto) is operated by Enagás; GEM lists the operating vehicles 'Infraestructuras de Gas' / 'Iniciativas de Gas' while GIIGNL lists 'Enagás' (and a bracketed 'Iniciativas de Gas [Enagás' extraction shard). Same Enagás group — not a real ownership change.",
+  "basis": "Saggas/Sagunto is Enagás-operated; GEM's 'Infraestructuras/Iniciativas de Gas' vs GIIGNL 'Enagás' are the same group; bracket fragment is an extraction shard.",
+  "sources": [],
+  "facet": "owner",
+  "confidence": "medium"
+ },
+ {
+  "terminal_id": "T100000130664",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "No action. GEM is correct: charterer CELSE, sponsor Centrais Elétricas de Sergipe. Capacity delta 0.7% is rounding (keep GEM 5.64). GIIGNL lists CELSE too, but in the GIIGNL table its owner cell wrapped so 'Charterer: CELSE' landed on an adjacent row — an extraction artifact, not a real ownership difference.",
+  "basis": "Sergipe = Energos Infrastructure (vessel) / CELSE (charterer); GEM correct; 0.7% capacity is rounding.",
+  "sources": [],
+  "facet": "both",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130497",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "No action on owners. GEM lists the JV operating company 'Mizushima LNG'; GIIGNL lists its shareholder ENEOS. Same ownership at different granularity (JV company vs shareholder), not a real change.",
+  "basis": "Mizushima LNG is the JERA/ENEOS-area JV company; GIIGNL's 'ENEOS Corporation' is a shareholder — representational difference.",
+  "sources": [],
+  "facet": "owner",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130509",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "No action on owners. GEM lists the JV company 'Oita LNG'; GIIGNL lists its shareholders (Kyushu Electric Power, Oita Gas). Same ownership at different granularity, not a real change.",
+  "basis": "Oita LNG is the Kyushu Electric / Oita Gas JV; GIIGNL lists the shareholders — representational difference.",
+  "sources": [],
+  "facet": "owner",
+  "confidence": "high"
+ },
+ {
+  "terminal_id": "T100000130286",
+  "section_type": "liquefaction",
+  "unit_name": null,
+  "verdict": "No action on owners — partner-list granularity/vintage. GIIGNL lists the upstream PSC working-interest partners (Berau, ENEOS Explora Berau, KG Wiriagar, Mitsubishi); INPEX aligns via GEM's parent field, and GEM's 'Nippon Oil Exploration' is INPEX's legacy name. Not a real ownership change; verify the full partner list in a dedicated Tangguh update if desired.",
+  "basis": "Tangguh PSC partner-list vintage difference; INPEX matched via GEM parent.",
+  "sources": [],
+  "facet": "owner",
+  "confidence": "medium"
+ },
+ {
+  "terminal_id": "T100000131012",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "No action on owners. GEM models the terminal as the FGEN LNG JV; Tokyo Gas (20%) aligns via GEM's parent field. GIIGNL's 'First Gen' is the 80% sponsor of that JV — confirm GEM's parent field carries First Gen, but this is representation (JV company vs sponsor), not a real change.",
+  "basis": "FGEN LNG JV = First Gen 80% / Tokyo Gas 20%; Tokyo Gas matched via parent; First Gen is the JV sponsor.",
+  "sources": [],
+  "facet": "owner",
+  "confidence": "medium"
+ },
+ {
+  "terminal_id": "T100000130520",
+  "section_type": "liquefaction",
+  "unit_name": null,
+  "verdict": "No action on owners. GEM lists the JV 'Arctic LNG 2 LLC'; its shareholders (Novatek, TotalEnergies, CNPC, CNOOC) align via GEM's parent field. GIIGNL's 'Mitsui-JOGMEC' is the Japan Arctic LNG consortium's ~10% stake — a minor shareholder, representational granularity, not a real change. (Sanctioned project; GIIGNL/GEM coverage caveats apply.)",
+  "basis": "Arctic LNG 2 LLC JV; major shareholders matched via parent; Mitsui-JOGMEC is the minor Japan stake.",
+  "sources": [],
+  "facet": "owner",
+  "confidence": "medium"
+ },
+ {
+  "terminal_id": "T100000130997",
+  "section_type": "regasification",
+  "unit_name": null,
+  "verdict": "No action. Capacity delta 0.3% is rounding (keep GEM). GEM models the terminal as the JV 'EemsEnergyTerminal BV'; Vopak aligns via GEM's parent field. GIIGNL's 'Gasunie' is the JV co-owner — confirm GEM's parent carries Gasunie, but this is representation (JV company vs co-owner), not a real change.",
+  "basis": "EemsEnergyTerminal BV = Gasunie/Vopak JV; Vopak matched via parent; Gasunie is the co-owner; 0.3% is rounding.",
+  "sources": [],
+  "facet": "both",
+  "confidence": "medium"
+ }
+]
