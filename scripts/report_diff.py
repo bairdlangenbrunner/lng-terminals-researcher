@@ -565,6 +565,64 @@ def _gem_capacity_source_for_project(gp):
     return _parse_capacity_source(", ".join(op_refs))
 
 
+# GEM statuses that are PRE-operating capacity GIIGNL might already be counting as
+# operating (it counts a train as operating once it is producing LNG, before GEM
+# moves it off construction). A retired/mothballed unit's capacity is NOT a forward
+# phase that would inflate a current GIIGNL operating total, so it's excluded here.
+_PREOP_STATUSES = {"construction", "proposed", "pre-construction"}
+
+
+def _gem_nonop_capacity_explanation(gp):
+    """Summarize the GEM NON-OPERATING units whose capacity could plausibly explain a
+    GIIGNL-operating-capacity-EXCEEDS-GEM gap — the Corpus Christi shape: GIIGNL counts
+    mid-scale "Stage III" trains as operating that GEM deliberately holds as
+    construction. GIIGNL's operating total can then sit ABOVE GEM's operating total
+    not because GEM's capacity figure is stale, but because the two sources disagree
+    on which trains are operating (a STATUS divergence) and how the stage is split
+    into trains (a train-ORGANIZATION divergence).
+
+    Returns a dict the verdict layer (build_review_package._classify_disagreement)
+    uses to STOP the GIIGNL-edition-supersede rule from blindly bumping GEM's
+    capacity, plus the researcher notes the human reviewer needs to see:
+      {
+        "preop_capacity_mtpa": float,   # sum of construction/proposed unit capacities
+        "preop_units": [{name,status,capacity_mtpa,researcher_notes}, ...],
+        "researcher_notes": [{unit,status,note}, ...],   # ALL non-op units w/ a note
+        "has_researcher_note": bool,
+      }
+    `preop_*` is scoped to forward (construction/proposed) phases — the gap-explainers;
+    `researcher_notes` spans every non-op unit carrying a note (the explanatory note
+    often lives on the construction unit, but capture all so none is lost).
+    """
+    if not gp:
+        return {"preop_capacity_mtpa": 0.0, "preop_units": [],
+                "researcher_notes": [], "has_researcher_note": False}
+    preop_units, preop_cap = [], 0.0
+    notes = []
+    for u in gp.get("units", []):
+        st = (u.get("status") or "").strip().lower()
+        if st == "operating":
+            continue
+        note = (u.get("researcher_notes") or "").strip()
+        if note:
+            notes.append({"unit": u.get("unit_name", ""), "status": st, "note": note})
+        if st in _PREOP_STATUSES:
+            cap = u.get("capacity_mtpa") or 0.0
+            preop_cap += cap
+            preop_units.append({
+                "unit_name": u.get("unit_name", ""),
+                "status": st,
+                "capacity_mtpa": round(cap, 2),
+                "researcher_notes": note,
+            })
+    return {
+        "preop_capacity_mtpa": round(preop_cap, 2),
+        "preop_units": preop_units,
+        "researcher_notes": notes,
+        "has_researcher_note": bool(notes),
+    }
+
+
 def _align_units(rp, gp):
     """Align report member rows to GEM units within an already-matched project.
 
@@ -1234,7 +1292,7 @@ def _build_gem_project_table(gem_csv):
         "floating", "floating_vessel_name",
         "import_export_only", "other_names", "local_names", "language",
         "proposal_year", "construction_year", "shelved_year", "cancelled_year",
-        "stop_year", "actual_start_year",
+        "stop_year", "actual_start_year", "researcher_notes_unit",
     ]}
     if None in (ci["terminal_id"], ci["terminal_name"], ci["country"]):
         sys.exit("ERROR: GEM CSV missing required columns")
@@ -1318,6 +1376,9 @@ def _build_gem_project_table(gem_csv):
             cap_ref = row[ci["capacity_ref"]] if ci["capacity_ref"] is not None else ""
             floating = row[ci["floating"]] if ci["floating"] is not None else ""
             other_names_raw = row[ci["other_names"]] if ci["other_names"] is not None else ""
+            researcher_notes_unit = (
+                row[ci["researcher_notes_unit"]]
+                if ci["researcher_notes_unit"] is not None else "")
 
             try:
                 cap = float(cap_mtpa) if cap_mtpa else 0.0
@@ -1408,6 +1469,13 @@ def _build_gem_project_table(gem_csv):
                 "start_year": _unit_anchor_year(row, ci, status),
                 "owners_set": owner_tags,
                 "parents_set": parent_tags,
+                # A GEM researcher note on this unit can encode a DELIBERATE position
+                # the reconciliation must defer to — e.g. Corpus Christi Stage 3
+                # (T04-T10): "trains producing LNG but commercial operations not
+                # declared, so I'm holding it as construction." Surfaced on the match
+                # so the verdict logic won't blindly bump GEM's operating capacity to a
+                # GIIGNL total that counts those not-yet-commercial trains.
+                "researcher_notes": (researcher_notes_unit or "").strip(),
             })
 
             local_names_raw = row[ci["local_names"]] if ci["local_names"] is not None else ""
@@ -2227,6 +2295,14 @@ def _classify(report_rows, gem_projects, alias_map=None, collision_regas=None,
     for m in matches + fuzzy_matches:
         gp = gp_by_tid_section.get((m["gem_terminal_id"], m["section_type_gem"]))
         m["gem_capacity_source"] = _gem_capacity_source_for_project(gp)
+        # Non-operating phases + researcher notes of the SAME GEM project, so the
+        # verdict layer can recognize the "GIIGNL counts capacity GEM deliberately
+        # holds as non-operating" pattern (Corpus Christi) and not blind-bump GEM's
+        # operating capacity, AND can quote the researcher's deliberate-divergence
+        # note inline. Attached to project-level matches only (gp is the whole
+        # project); a unit_designator match has no whole-project non-op context to
+        # mislead it, but attaching the explanation is harmless there too.
+        m["gem_nonop_explanation"] = _gem_nonop_capacity_explanation(gp)
 
     # Non-operating units of MATCHED projects. GIIGNL's tables are operating-only,
     # so each defaults to is_gem_only=True ("GEM has, GIIGNL doesn't") UNLESS the
@@ -2265,6 +2341,7 @@ def _classify(report_rows, gem_projects, alias_map=None, collision_regas=None,
                 "start_year": u["start_year"],
                 "section_type": gp["section_type"],
                 "owners": sorted(u["owners_set"]),
+                "researcher_notes": u.get("researcher_notes", ""),
                 "giignl_narrative_mention": mention,
                 "is_gem_only": (u["unit_name"] not in aligned) and not mention,
             })

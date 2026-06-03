@@ -1,0 +1,32 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130408",
+    "unit_id": "G100002040800",
+    "terminal_name": "Shenzhen LNG Terminal",
+    "issue": "Shenzhen LNG Terminal (PipeChina), Phase 1 is currently 'construction' in GEM (note: completed inspection 13 May 2025, not yet commissioned). The PipeChina/CNPC receiving station passed mid-acceptance (中交验收) on 29 Apr 2025 and was slated for the 2025-26 heating season (year supply 3.8 bcm). As of June 2026 it has very likely entered operation, but no public 'first cargo / 投产 / commercial operation' confirmation was found to pin the actual start. NOTE: this is the PipeChina terminal at Kuipeng Rd/Dapeng (T100000130408), distinct from 'Shenzhen LNG Terminal (Shenzhen Gas)' T100000130715 and 'Shenzhen Diefu CNOOC' T100000130407 — do not conflate.",
+    "severity": "medium",
+    "suggested_action": "Re-verify commissioning before next publication; if a first-cargo/commercial-operation source confirms start (likely late 2025 / winter 2025-26), add a status_timeline 'operating' entry with ActualStartYear. Verified leads: https://m.chinagas.org.cn/4628/202505/59144.html (mid-acceptance, PASS); https://m.sohu.com/a/894408828_121010226/ (planned 2025 heating season, PASS).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "verification_log",
+    "terminal_id": "T100000130421",
+    "unit_id": "G100002042102",
+    "terminal_name": "Zhoushan LNG Terminal",
+    "issue": "Zhoushan LNG Terminal Phase 3 is 'operating' with ActualStartYear=2025 in GEM (LastUpdated 2025-05-26, which predates commissioning). Confirmed: Phase 3 (4x220,000 m3 tanks) officially commissioned 2025-08-06, lifting site annual throughput to ~10 Mt/yr. GEM status/year already correct — no field change; logging confirmed commissioning date for the record.",
+    "severity": "low",
+    "suggested_action": "No edit needed. Optionally note exact commissioning date (2025-08-06) in researcher notes at next touch. Source verified PASS: https://www.jiemian.com/article/13141757.html ; https://finance.sina.com.cn/jjxw/2025-08-06/doc-infkacvu0735287.shtml",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "naming_alias",
+    "terminal_id": "T100000130608",
+    "unit_id": "G100002060800",
+    "terminal_name": "Yantai LNG Terminal (PetroChina)",
+    "issue": "CJK-alias disambiguation (no error found): three co-located Yantai/Dajijia (烟台西港区) records exist in GEM and are correctly kept distinct — (1) 'Yantai LNG Terminal' T100000130417 = 烟台港西港区LNG接收站, GCL-Poly/中交能源, 5.9 mtpa, under construction (5 tanks topped out, dock acceptance Dec 2025); (2) this record T100000130608 = 中石油烟台西港LNG, Kunlun/PetroChina+Yantai Port, 3.0 mtpa, cancelled (4y); (3) 'Yantai FSRU' T100000130959, CNOOC floating, cancelled. The actively-progressing 'Yantai West Port' news refers to T100000130417, NOT this cancelled PetroChina proposal. Confirmed no revival of the PetroChina/Kunlun proposal.",
+    "severity": "low",
+    "suggested_action": "No edit. Flag for reviewer awareness that the three Yantai records are intentionally separate so the active T100000130417 is not mistaken for this cancelled one.",
+    "researcher_initials": "AI-draft"
+  }
+]

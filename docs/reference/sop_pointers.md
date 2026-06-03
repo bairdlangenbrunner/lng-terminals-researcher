@@ -7,7 +7,7 @@ Last reconciled against:
 - Update SOP rev 1 (2026-05)
 - Discovery SOP rev 1 (2026-05)
 - Triage SOP rev 1 (2026-05)
-- CLAUDE.md (2026-05)
+- CLAUDE.md (2026-06 — regional-sweep workflow, completeness_sweep + coverage_gap, no-cookie pull path, issue-#6 researcher-notes rule)
 
 Abbreviations:
 - **REC** = `docs/sops/reconciliation.md`
@@ -113,9 +113,14 @@ Abbreviations:
 | updates | Update workflow | UPD §3 |
 | new_terminals | Discovery workflow | DSC §7 |
 | new_units | Discovery or update | DSC §7, UNT |
+| wiki_updates | Update or discovery | UPD §3 (narrative content → wiki Background) |
 | status_timeline_additions | Any workflow touching status | UPD §3.2, LFC |
 | entity_additions | Any workflow adding entities | UPD §8, DSC §9 |
-| giignl_diff | Reconciliation workflow | REC §3.10 |
+| giignl_diff_operating | Reconciliation workflow | REC §3.10 |
+| giignl_diff_nonoperating | Reconciliation workflow | REC §3.10 |
+| giignl_fsru_fleet | Reconciliation workflow | REC §3.10 |
+| candidate_edits | Reconciliation workflow | REC §3.10 |
+| giignl_full_extract | Reconciliation workflow | REC §3.10 |
 | giignl_to_action | Reconciliation workflow | REC §3.10 |
 | fsru_sync | Any batch touching FSRUs | SKL FSRU sync rule |
 | monitor_list | Discovery workflow | DSC §5 |

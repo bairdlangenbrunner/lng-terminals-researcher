@@ -1,0 +1,22 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130253",
+    "unit_id": "G100002025300",
+    "terminal_name": "Tema FSRU",
+    "issue": "GEM records Tema FSRU as Status=operating / ActualStartYear=2023, but multiple sources indicate it has NEVER entered sustained commercial gas supply. Shell (the LNG supplier) signed a DEFERRAL amendment with GNPC/TLTC pushing LNG shipments out ~2 years; reporting states the terminal 'has failed to supply gas for use in Ghana, though the consortium continues to insist that the terminal is operational.' The GEM wiki's own background and the IGU 2025 report state the project had NOT come online as of June 2025 (IGU listed start year as 2025). The FSU 'Vasant 1' is moored at Tema and the operator (Reganosa) is in place, so commissioning/cold-status may apply, but a 2023 commercial start appears unsupported. No 2026 first-commercial-cargo confirmation was found.",
+    "severity": "high",
+    "suggested_action": "Treat as a status conflict: verify with a primary GNPC/regulator or Reganosa source whether sustained commercial regasification/sendout has actually begun. If not, the operating/2023 record likely overstates status (candidate for construction/'commissioning' or idled with no commercial start). Per sweep rules this is a status_timeline note only — do NOT stage a Status field edit here. ActualStartYear 2023 and StartDate [ref] (GIIGNL 2023) are the specific cells in question.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_quality",
+    "terminal_id": "T100000130253",
+    "unit_id": "G100002025300",
+    "terminal_name": "Tema FSRU",
+    "issue": "FloatingVesselName='Vasant FSU, Torman LNG FRU'. The storage unit's proper vessel name appears to be 'Vasant 1' (180,000 m3 FSU sub-chartered from India's Swan Energy). 'Vasant FSU' is a close descriptor but not the registered name. The regas unit ('Torman'/'Torman LNG' FRU) aligns with the GIIGNL fleet table's separate listing. Minor naming-convention discrepancy.",
+    "severity": "low",
+    "suggested_action": "Verify the FSU's canonical name ('Vasant 1' vs 'Vasant') against an authoritative vessel registry/IMO before refining FloatingVesselName. Low priority; not staged as an edit pending a single canonical source.",
+    "researcher_initials": "AI-draft"
+  }
+]

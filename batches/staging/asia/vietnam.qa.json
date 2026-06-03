@@ -1,0 +1,72 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000131060",
+    "unit_id": "G100002106000",
+    "terminal_name": "Vung Ang LNG Terminal",
+    "issue": "GEM records Status=proposed but with CancelledYear=2023 filled, and Owner/Parent=unknown. Evidence (last 12-18 mo) indicates the project is ACTIVE/revived, not cancelled: the Revised PDP8 (Decision 768, Apr 2025) lists a new 'LNG Vung Ang III' LNG-to-power project (1,500 MW to 2030, 3,000 MW from 2030, Ha Tinh) [confirmed in the Frasers Apr-2025 PDP8 legal-update PDF, p.list of new LNG projects], and The Investor (3 Jan 2025) reports PV Power as power-plant investor and PV Gas as the Vung Ang LNG terminal investor (1-3 mtpa), 'ready to deploy upon PM approval.' The CancelledYear=2023 appears stale/contradictory.",
+    "severity": "medium",
+    "suggested_action": "Reviewer to confirm via fetch_timeline (endpoint currently DOWN) whether Vung Ang should be reactivated from any cancelled timeline entry to proposed/active, and clear/relabel the stray CancelledYear=2023. Do NOT auto-edit Status here. Pair with the staged Owner/Parent update (unknown -> PetroVietnam Gas / Vietnam Oil and Gas Group Co).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130901",
+    "unit_id": "G100002090100",
+    "terminal_name": "Ca Na LNG Terminal",
+    "issue": "GEM records Status=proposed with ShelvedYear=2023. The Revised PDP8 (Apr 2025) reportedly keeps the Ca Na LNG project active and (per multiple legal-update summaries) requires Ca Na, Quynh Lap, Nghi Son, Long Son, Bac Lieu and Son My I&II to have solutions ensuring on-plan progress; a Ninh Thuan decision (No. 215/QD-UBND, 14 Apr 2025) reportedly restarts the Ca Na investor process. Could indicate a shelved->revived direction. NOTE: I could NOT confirm the Ca Na-specific revival via a directly-citable URL this sweep (the Frasers PDP8 PDF I verified does not name Ca Na; the WFW/legal-update pages are secondary summaries).",
+    "severity": "low",
+    "suggested_action": "Reviewer to source-verify the Ninh Thuan Decision 215/QD-UBND (Apr 2025) and revised-PDP8 appendix directly before any status reactivation. No field edit staged (status change + fetch_timeline DOWN).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000131059",
+    "unit_id": "G100002105900",
+    "terminal_name": "Hai Lang LNG Terminal",
+    "issue": "GEM records Status=proposed with ConstructionYear=2025. As of Mar 2026 the project (T&T 40% / KOGAS 20% / Hanwha 20% / KOSPO 20% consortium) has only completed regulatory steps (PDP8 inclusion, revised investment-policy approval, 1/500 master plan, FS appraisal); per The Investor (Mar 2026) financial close + land clearance are expected Q4/2026, construction Q1/2027, COD Q4/2029. Some 2025 trade headlines (Enerdata, Quang Tri provincial site) say work 'starts'/'enters construction', but that reflects a ceremonial/technical-component start, not substantive construction. The ConstructionYear=2025 in GEM may be premature relative to the substantive Q1/2027 construction start.",
+    "severity": "low",
+    "suggested_action": "Reviewer to confirm whether GEM's ConstructionYear=2025 reflects a real construction start or a groundbreaking ceremony; consider whether status should remain proposed (it currently does, which matches the substantive pre-FC state). No Status field edit staged.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "verification",
+    "terminal_id": "T100000130324",
+    "unit_id": "G100002032400",
+    "terminal_name": "Cai Mep LNG Terminal",
+    "issue": "Re-verify (no change): GEM has Cai Mep as operating, Substatus=actual, ActualStartYear=2025, capacity 3.0 mtpa, operator Cai Mep LNG (AG&P LNG + Hai Linh JV). Confirmed: commissioning cargo received May 2025 (Sakhalin-2 origin via 'Blue Dragon'); Vietnam's 2nd operating LNG import terminal; nameplate 3 mtpa (expandable to 6). GEM matches current reality.",
+    "severity": "low",
+    "suggested_action": "No action. Representative blue re-verify recorded for the Vietnam operating set.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "capacity_unit",
+    "terminal_id": "T100000130323",
+    "unit_id": "G100002032300",
+    "terminal_name": "Thi Vai LNG Terminal",
+    "issue": "PV Gas reported (Apr 2026) a successful trial-run boosting Thi Vai regasification THROUGHPUT to ~288 t/h (~9.5 million Sm3/day) vs the 171 t/h design — a peak/optimization gain, NOT a nameplate change. Separately, the Phase 2 nameplate buildout to 3 mtpa total (Phase 1 operating 1.0 + Phase 2 proposed 2.0) is already correctly modeled in GEM; PV Gas said it was ready to sign the Phase 2 EPC in late 2025. Do NOT bump GEM nameplate capacity off the throughput figure.",
+    "severity": "low",
+    "suggested_action": "No nameplate edit. Capture the throughput boost and Phase 2 EPC timing in wiki/Background. Watch for a verified Phase 2 construction start to update the Phase 2 unit's ConstructionYear/status.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_structure",
+    "terminal_id": "T100000130826",
+    "unit_id": "G100002082600",
+    "terminal_name": "Bac Lieu LNG Terminal",
+    "issue": "GEM records Bac Lieu as a land/onshore import terminal (Floating/Offshore not set), 2.0 mtpa, proposed. Developer Delta Offshore Energy consistently describes a FLOATING receiving solution: a Jettyless Floating Terminal (JFT) + Self-installing Regas Platform (SRP) + Floating Storage Unit (FSU) (MARIN scale-model testing completed, per VesselFinder Mar 2026). This is a floating/FSU-type configuration that GEM's Floating/Offshore flags do not currently reflect.",
+    "severity": "low",
+    "suggested_action": "Reviewer to confirm the receiving-facility type and, if appropriate, set Floating/Offshore flags and FSU/FSRU naming convention. Capacity 2.0 mtpa matches GEM. No field edit staged (configuration ambiguity).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ownership",
+    "terminal_id": "T100000131073",
+    "unit_id": "G100002107300",
+    "terminal_name": "Thai Binh FSRU",
+    "issue": "GEM CSV (export 2025-08-18) lists Owner/Parent only as the project company 'Thai Binh LNG Power JSC [100%]'. The actual sponsor consortium (per the project; GEM wiki LastUpdated 2025-10-16 documents it in prose) is Tokyo Gas 40% / Kyuden 30% / Truong Thanh Vietnam 30%. The GEM wiki is newer than this CSV export and already narrates the consortium but keeps the SPV as the owner/parent line. Minor: parent breakdown not in structured fields.",
+    "severity": "low",
+    "suggested_action": "Optional: add Tokyo Gas / Kyuden / Truong Thanh Vietnam as parents with stakes (40/30/30). No edit staged here because GEM's SPV-as-owner convention is intentional and the wiki already captures the consortium; reviewer to decide on structured-parent backfill.",
+    "researcher_initials": "AI-draft"
+  }
+]

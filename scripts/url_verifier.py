@@ -10,6 +10,14 @@ Ported from the carrier project's url_verifier.py with terminals-specific
 soft-error patterns added (GIIGNL members-only redirects, EU PCI portal SSO,
 etc.).
 
+PDF sources (FERC orders, regulator filings, sponsor IR decks — a large share of
+Tier 1 citations) are detected by content-type / `.pdf` path / `%PDF` magic and
+run through `pdftotext -layout` before the content check, so a cited PDF is
+verified for its expected strings just like an HTML page. This requires the
+poppler `pdftotext` CLI (already a project dependency for the GIIGNL extractor).
+A scanned/image PDF with no text layer (or a missing pdftotext) fails with a
+clear reason rather than a misleading "missing expected content".
+
 Two modes:
   - strict=True: raises CitationError on failure (use in build scripts where
     a broken URL is a hard error)
@@ -62,27 +70,56 @@ _SOFT_ERROR_TITLES = (
 )
 
 
+def _run_pdftotext(path):
+    """Extract text from a saved PDF via poppler's pdftotext. '' on any failure
+    (missing binary, encrypted/scanned PDF with no text layer)."""
+    try:
+        r = subprocess.run(
+            ["pdftotext", "-layout", path, "-"],
+            capture_output=True, text=True, timeout=60,
+        )
+        if r.returncode == 0:
+            return r.stdout
+    except (FileNotFoundError, subprocess.SubprocessError):
+        pass
+    return ""
+
+
 def _fetch(url, timeout=30, ua=_DEFAULT_UA):
-    """Fetch URL, return (status_code, body_text). Cached per URL per process."""
+    """Fetch URL, return (status_code, body_text, is_pdf). Cached per URL per
+    process. PDF bodies are run through pdftotext so the content check sees text,
+    not raw binary; is_pdf lets verify_url skip the HTML-only title check."""
     if url in _CACHE:
         return _CACHE[url]
 
-    tmp = "/tmp/verify_page.html"
+    tmp = "/tmp/verify_page.bin"
     result = subprocess.run(
         ["curl", "-sL", "-A", ua, "-o", tmp,
-         "-w", "%{http_code}", "--max-time", str(timeout), url],
+         "-w", "%{http_code} %{content_type}", "--max-time", str(timeout), url],
         capture_output=True, text=True, timeout=timeout + 5,
     )
-    status = result.stdout.strip() or "000"
+    parts = result.stdout.strip().split()
+    status = parts[0] if parts else "000"
+    content_type = " ".join(parts[1:]).lower()
+
     try:
         with open(tmp, "rb") as f:
-            body = f.read()
-        text = body.decode("utf-8", errors="replace")
+            raw = f.read()
     except Exception:
-        text = ""
+        raw = b""
 
-    _CACHE[url] = (status, text)
-    return status, text
+    is_pdf = (
+        "pdf" in content_type
+        or url.split("?")[0].lower().endswith(".pdf")
+        or raw[:5] == b"%PDF-"
+    )
+    if is_pdf:
+        text = _run_pdftotext(tmp)
+    else:
+        text = raw.decode("utf-8", errors="replace")
+
+    _CACHE[url] = (status, text, is_pdf)
+    return status, text, is_pdf
 
 
 def verify_url(url, expected, strict=False, require_all=True):
@@ -100,7 +137,7 @@ def verify_url(url, expected, strict=False, require_all=True):
     
     Returns: (ok: bool, reason: str)
     """
-    status, text = _fetch(url)
+    status, text, is_pdf = _fetch(url)
 
     if status != "200":
         reason = f"HTTP {status}"
@@ -108,16 +145,25 @@ def verify_url(url, expected, strict=False, require_all=True):
             raise CitationError(f"URL failed verification ({reason}): {url}")
         return False, reason
 
-    # Soft-error detection via title
-    title_match = re.search(r"<title[^>]*>([^<]+)</title>", text, re.IGNORECASE)
-    if title_match:
-        title = title_match.group(1).lower()
-        for bad in _SOFT_ERROR_TITLES:
-            if bad in title:
-                reason = f"soft-error page (title: {title_match.group(1).strip()!r})"
-                if strict:
-                    raise CitationError(f"URL failed verification ({reason}): {url}")
-                return False, reason
+    if is_pdf:
+        # No HTML <title> to soft-error-check; require a usable text layer instead.
+        if not text.strip():
+            reason = ("PDF has no extractable text (scanned/image PDF, or the "
+                      "poppler pdftotext CLI is unavailable)")
+            if strict:
+                raise CitationError(f"URL failed verification ({reason}): {url}")
+            return False, reason
+    else:
+        # Soft-error detection via title (HTML only)
+        title_match = re.search(r"<title[^>]*>([^<]+)</title>", text, re.IGNORECASE)
+        if title_match:
+            title = title_match.group(1).lower()
+            for bad in _SOFT_ERROR_TITLES:
+                if bad in title:
+                    reason = f"soft-error page (title: {title_match.group(1).strip()!r})"
+                    if strict:
+                        raise CitationError(f"URL failed verification ({reason}): {url}")
+                    return False, reason
 
     # Content check
     text_lower = text.lower()

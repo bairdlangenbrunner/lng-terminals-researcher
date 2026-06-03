@@ -16,7 +16,7 @@ Used by Triage SOP §3.1 and Update SOP §3.4.
 Usage:
     python stale_sweep.py
     # Reads ./gem_export.csv + .colmap.json
-    # Writes ./stale_sweep.json
+    # Writes work/stale_sweep.json
 
     python stale_sweep.py --country "United States"
     # Filter to a specific country
@@ -203,7 +203,7 @@ def summarize(flags):
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--csv", default="./gem_export.csv")
-    p.add_argument("--out", default="./stale_sweep.json")
+    p.add_argument("--out", default="work/stale_sweep.json")
     p.add_argument("--country", help="Filter to a specific country")
     p.add_argument("--today", help="Override today's date (YYYY-MM-DD); useful for testing")
     args = p.parse_args()
@@ -221,7 +221,9 @@ def main():
         "summary": summary,
         "flagged_units": flags,
     }
-    Path(args.out).write_text(json.dumps(out, indent=2, default=str))
+    out_path = Path(args.out)
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    out_path.write_text(json.dumps(out, indent=2, default=str))
     print(f"\n  Saved to {args.out}")
 
 

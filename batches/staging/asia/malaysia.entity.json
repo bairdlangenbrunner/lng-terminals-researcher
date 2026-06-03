@@ -1,0 +1,26 @@
+[
+  {
+    "entity_name": "SMJ Energy Sdn Bhd",
+    "entity_type": "owner",
+    "country_of_hq": "Malaysia",
+    "parent_entity": "Government of Sabah",
+    "rationale_for_new_entity": "Referenced by the staged PFLNG Tiga (Tiga FLNG Terminal) ownership correction: Sabah's 25% stake in Petronas PFLNG 3 is held through SMJ Energy Sdn Bhd, the Sabah state energy vehicle, not the federal 'Government of Malaysia' currently in GEM. SMJ Energy also holds stakes in Petronas LNG 9, SAMUR and the Samarang PSC.",
+    "lookup_was_run": "RUN: entity_lookup.py 'SMJ Energy Sdn Bhd' --country Malaysia --remote returned not_found_in_local_data and a generic 'New Entity' remote candidate only (inconclusive) - likely not yet in GEM entity system.",
+    "lookup_result_summary": "Local: not_found_in_local_data. Remote: generic 'New Entity' create-link only (no existing match surfaced). Inconclusive - user should confirm in the GEM entity UI before creating.",
+    "referenced_by_terminals": "T100000131063",
+    "referenced_by_units": "G100002106301",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "entity_name": "Petronas Gas Berhad",
+    "entity_type": "owner",
+    "country_of_hq": "Malaysia",
+    "parent_entity": "Petroliam Nasional Bhd",
+    "rationale_for_new_entity": "Named developer/owner of the Lumut RGT-3 terminal and the 65% holder (via Pengerang LNG (Two) Sdn Bhd) of Pengerang Johor. GEM currently uses the generic parent 'Petroliam Nasional Bhd'. PGB is the Bursa-listed subsidiary actually developing/holding these regas assets; a distinct entity may be warranted for owner-level precision.",
+    "lookup_was_run": "RUN: entity_lookup.py 'Petronas Gas Berhad' --country Malaysia --remote returned not_found_in_local_data and a generic 'New Entity' remote candidate only (inconclusive).",
+    "lookup_result_summary": "Local: not_found_in_local_data. Remote: generic 'New Entity' create-link only. Inconclusive - confirm whether PGB already exists under an alias (e.g. 'PETRONAS Gas Bhd') before creating. Not staged as an owner edit this batch (kept generic Petronas); recorded as a forward candidate.",
+    "referenced_by_terminals": "T100001057502; T100000130291",
+    "referenced_by_units": "G100001065733; G100002029100",
+    "researcher_initials": "AI-draft"
+  }
+]

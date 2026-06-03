@@ -1,0 +1,32 @@
+[
+  {
+    "category": "data_quality",
+    "terminal_id": "T100000130578",
+    "unit_id": "G100002057800",
+    "terminal_name": "Penuelas LNG Terminal",
+    "issue": "GEM Owner cell contains an entity-cleanup flag: 'Naturgy [TO BE DELETED] [47%]' and a Parent cell mixing 'Naturgy [TO BE DELETED] [47.5%]' with 'Naturgy Energy Group SA [1.2%]' plus 'unknown [0.1%]'. The verified current ownership of EcoElectrica/Penuelas is Naturgy ~47.5% / ENGIE 35% / Mitsui 15% / others ~2.5%, which the GEM percentages approximate. This is a GEM entity-team data-hygiene issue (a placeholder Naturgy entity tagged for deletion / duplicate Naturgy entities), not a research discrepancy. Out of scope for a field edit by this sweep.",
+    "severity": "medium",
+    "suggested_action": "Refer to GEM Ownership Team: resolve the 'Naturgy [TO BE DELETED]' placeholder entity and consolidate duplicate Naturgy entities on Penuelas; re-map percentages to Naturgy 47.5 / ENGIE 35 / Mitsui 15 / others 2.5. No field edit by this sweep.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "capacity",
+    "terminal_id": "T100000130784",
+    "unit_id": "G100002078400",
+    "terminal_name": "San Juan LNG Terminal",
+    "issue": "GEM CapacityinMtpa = 1.1 for San Juan (NFE FSRU). One secondary description cites '0.5 mtpa'. The figures likely reflect different conventions (a smaller baseload vs nameplate/expanded throughput); GEM record is recent (LastUpdated 2025-09). NFE secured a 7-yr PR gas-supply agreement (2025). Not changing on a single secondary source — flag for confirmation only.",
+    "severity": "low",
+    "suggested_action": "Confirm San Juan regas nameplate (0.5 vs 1.1 mtpa) against an NFE/FERC primary source before any change. No edit this batch.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_quality",
+    "terminal_id": "T100000130578",
+    "unit_id": "G100002057800",
+    "terminal_name": "Penuelas LNG Terminal",
+    "issue": "GEM OtherNames includes a likely typo 'Panuelas LNG Terminal' (alongside the correct Penuelas/Penuelas). Minor; flagging for cleanup, not editing OtherNames in this sweep.",
+    "severity": "low",
+    "suggested_action": "Consider correcting 'Panuelas' typo in OtherNames to 'Penuelas'/'Penuelas'. Low priority.",
+    "researcher_initials": "AI-draft"
+  }
+]

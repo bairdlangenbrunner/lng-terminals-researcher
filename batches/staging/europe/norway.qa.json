@@ -1,0 +1,12 @@
+[
+  {
+    "category": "data_consistency",
+    "terminal_id": "T100000130494",
+    "unit_id": "G100002049401",
+    "terminal_name": "Hammerfest LNG Snohvit Terminal",
+    "issue": "Status = operating but StopYear = 2020 is populated. The Melkoya plant suffered a major fire on 28 Sep 2020 and was shut down, but it resumed production 2 June 2022 and is operating as of 2025-26 (full ops resumed Aug 2025 after a summer turnaround). StopYear normally denotes permanent closure; here it appears to record the fire-related outage. Internally inconsistent with status=operating — reviewer should confirm whether StopYear should be cleared (outage, not retirement) or remain for the historical record.",
+    "severity": "low",
+    "suggested_action": "Confirm GEM's intent for StopYear on a terminal that resumed operating; if it is meant to flag a permanent stop, clear it (plant is operating); if it is an outage marker, document that in researcher notes to avoid future confusion. Not stage a field edit without GEM guidance.",
+    "researcher_initials": "AI-draft"
+  }
+]

@@ -12,7 +12,7 @@ Three indexes per Discovery SOP §6 and Update SOP §11.4:
 Usage:
     python dedup_index.py
     # Reads ./gem_export.csv + .colmap.json
-    # Writes ./dedup_index.json
+    # Writes work/dedup_index.json
 
 Library:
     from dedup_index import build_indexes
@@ -162,8 +162,9 @@ def main():
             "multi_unit_projects": len(multi_unit),
         },
     }
-    out_path = "./dedup_index.json"
-    Path(out_path).write_text(json.dumps(out, indent=2, default=str))
+    out_path = Path("work/dedup_index.json")
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    out_path.write_text(json.dumps(out, indent=2, default=str))
     print(f"\n  Saved to {out_path}")
 
 

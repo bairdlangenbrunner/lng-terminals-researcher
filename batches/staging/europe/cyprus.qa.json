@@ -1,0 +1,32 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130432",
+    "unit_id": "G100002043200",
+    "terminal_name": "Cyprus FSRU",
+    "issue": "Verified STALLED but not cancelled. Status 'construction' remains appropriate. The FSRU 'Etyfa Prometheas' (ex Galea) was delivered 9 Dec 2024 (Lloyd's Register LNGC certificate flagged 12 outstanding works completable only once the Vasilikos pier is built and LNG is available). As of Jan 2026 the project is at a standstill: onshore facilities/pier incomplete; new project manager Technip is investigating; the EU Public Prosecutor's Office (EPPO) is investigating the project for suspected fraud/corruption; ETYFA and contractor CMC (CPP-Metron Consortium) are in London arbitration. PROBLEM: GEM LatestPlannedStartYear = 2026 is no longer credible — sources frame the goal as gas 'available before end of 2027' with no firm commissioning date. Recommend pushing latest planned start to 2027 (or blank) pending resolution. Per sweep rules, not staging a Status field edit; flagging as status_timeline.",
+    "severity": "high",
+    "suggested_action": "Update LatestPlannedStartYear 2026 -> 2027 (or leave blank) pending dispute resolution; keep status 'construction'; add the EPPO/CMC-arbitration context to the wiki Background. Re-check each batch.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change",
+    "terminal_id": "T100001048370",
+    "unit_id": "G100001055528",
+    "terminal_name": "Cyprus LNG Terminal",
+    "issue": "Cancelled export terminal (Vasilikos, DEFA; shelved 2017, cancelled 2019) — no revival signal found. GEM 'cancelled / inferred 4y' remains correct. No field edit.",
+    "severity": "low",
+    "suggested_action": "No change.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change",
+    "terminal_id": "T100000130828",
+    "unit_id": "G100002082800",
+    "terminal_name": "Hoegh Cyprus FSRU",
+    "issue": "Cancelled (Höegh Evi proposal, cancelled 2021) — no revival signal. GEM 'cancelled / confirmed' correct. No field edit.",
+    "severity": "low",
+    "suggested_action": "No change.",
+    "researcher_initials": "AI-draft"
+  }
+]

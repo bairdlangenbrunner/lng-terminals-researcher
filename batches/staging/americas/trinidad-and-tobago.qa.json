@@ -1,0 +1,22 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130579",
+    "unit_id": "G100002057901",
+    "terminal_name": "Atlantic LNG Terminal",
+    "issue": "Train 1 (currently GEM Status=mothballed, StopYear 2020) is now slated for permanent DECOMMISSIONING beginning Q4 2026. bp confirmed (Mar 2025) Train 1 is being decoupled from the unitised facility with a view to decommissioning; reporting (Jan 2026) puts the start of decommissioning in Q4 2026 as the least-efficient train amid feed-gas shortage. Manatee gas FID (Jul 2024) had been seen as possible restart upside, but Manatee start slipped to ~2028 and the partners chose decommissioning. GEM ResearcherNotesUnit already documents the decommissioning intent. No timeline file written (fetch_timeline endpoint down) and Status not edited per sweep rule; flag so a human can decide on a future retired/decommissioned timeline entry once Q4 2026 work begins.",
+    "severity": "medium",
+    "suggested_action": "Monitor for Q4 2026 decommissioning start; at that point consider adding a 'retired'/decommissioned timeline entry for Train 1 (UnitID G100002057901). No Status edit this batch.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ownership",
+    "terminal_id": "T100000130579",
+    "unit_id": "G100002057902",
+    "terminal_name": "Atlantic LNG Terminal",
+    "issue": "VERIFIED MATCH (no change): the Oct-2024 'Atlantic LNG 2.0' single-unitised-entity restructuring gives Shell 47.15% / BP 47.15% / NGC 5.7% for the consolidated facility (Trains 2-3 effective 1 Oct 2024), shifting to Shell 45% / BP 45% / NGC 10% from 2 May 2027. GEM Train 2 and Train 3 Parent fields (Shell 47.2 / BP 47.2 / NGC 5.7) match the current structure within rounding. Train 4 retains a distinct legacy structure (Shell 51.1 / BP 37.8 / NGC 11.1) until its 2027 contract rollover, consistent with GEM ResearcherNotesProject. Recording one representative re-verify; no field edits.",
+    "severity": "low",
+    "suggested_action": "No change. Re-verify ownership again after 2 May 2027 when all remaining trains move to 45/45/10. Source: LNG Prime, bp T&T HOA.",
+    "researcher_initials": "AI-draft"
+  }
+]

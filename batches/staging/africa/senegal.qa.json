@@ -1,0 +1,22 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000131049",
+    "unit_id": "G100002104900",
+    "terminal_name": "Karmol Dakar FSRU",
+    "issue": "GEM Status=construction (LatestPlannedStartYear=2025). The project is now operational: LNG-to-power generation began 29 Apr 2025 (gas from the Karmol FSRU to Karpowership KPS 10), with first LNG cargo into the FSRU in May 2025 — described as 'up and running'. Indicates a construction->operating transition in 2025.",
+    "severity": "high",
+    "suggested_action": "Add an 'operating' timeline entry dated 2025 (first power/commissioning ~Apr-May 2025) after pulling the existing unit timeline; set current status to operating. (fetch_timeline endpoint is down — flag for manual timeline pull.)",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "stale_field",
+    "terminal_id": "T100000131092",
+    "unit_id": "G100002109201",
+    "terminal_name": "Yakaar-Teranga LNG Hub",
+    "issue": "Beyond the ownership change (staged): GEM has FIDStatus=Pre-FID, FIDYear=2025. No FID was taken in 2025; after Kosmos's exit (22 Apr 2026) the project has no upstream partner, no financing and no agreed development concept (Kosmos cited inability to agree a commercially attractive concept with the government). PETROSEN now targets FID by ~Dec 2026 at earliest, first gas ~2029. FIDYear=2025 is stale and project viability of the LNG-export hub is materially in doubt.",
+    "severity": "medium",
+    "suggested_action": "Clear/revise FIDYear=2025; keep status=proposed but add a researcher note that the export hub lost its operator (Kosmos exit Apr 2026) and is now state-led with uncertain commercialisation.",
+    "researcher_initials": "AI-draft"
+  }
+]
