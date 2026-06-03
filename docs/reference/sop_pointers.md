@@ -7,7 +7,7 @@ Last reconciled against:
 - Update SOP rev 1 (2026-05)
 - Discovery SOP rev 1 (2026-05)
 - Triage SOP rev 1 (2026-05)
-- CLAUDE.md (2026-06 — regional-sweep workflow, completeness_sweep + coverage_gap, no-cookie pull path, issue-#6 researcher-notes rule)
+- CLAUDE.md (2026-06 — slimmed to a router; workflow recipes moved to `docs/workflows.md`, sheet/color detail to `docs/reference/workbook_conventions.md`, script table to `scripts/README.md`)
 
 Abbreviations:
 - **REC** = `docs/sops/reconciliation.md`
@@ -15,6 +15,8 @@ Abbreviations:
 - **DSC** = `docs/sops/discovery.md`
 - **TRG** = `docs/sops/triage.md`
 - **SKL** = `CLAUDE.md`
+- **WFL** = `docs/workflows.md`
+- **WBC** = `docs/reference/workbook_conventions.md`
 - **SCH** = `docs/reference/gem_db_schema.md`
 - **LFC** = `docs/reference/lifecycle_rules.md`
 - **SRC** = `docs/reference/source_roster.md`
@@ -37,7 +39,7 @@ Abbreviations:
 | Project-level field edits apply to all unit-rows | UPD §9, SCH "Field classification" | Mixed-class fields trigger read-before-write |
 | Cluster coherence on URLs (Rule E) | UPD §5 | URL must verifiably reference project AND contain value |
 | GIIGNL/IGU never auto-applied | REC §3.8, UPD §6.1 | Tier 1 but not authoritative per methodology |
-| FSRU edits trigger sync check | SKL "FSRU sync rule", UPD §11.11 | Cross-check against carrier project backend |
+| FSRU edits trigger sync check | SKL "FSRU sync rule", WFL §6, UPD §11.11 | Cross-check against carrier project backend |
 | Multi-train projects → one terminal + N units | DSC §7, UNT "When to create new unit vs new terminal" | Not N terminals |
 | Sufficient information threshold for new candidates | DSC §3 | Sponsor + approximate location + concrete step |
 
@@ -109,7 +111,7 @@ Abbreviations:
 
 | Sheet | When populated | Source SOP |
 |---|---|---|
-| README | Always | SKL "Output workbook structure" |
+| README | Always | WBC "Sheets" |
 | updates | Update workflow | UPD §3 |
 | new_terminals | Discovery workflow | DSC §7 |
 | new_units | Discovery or update | DSC §7, UNT |
