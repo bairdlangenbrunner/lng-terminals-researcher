@@ -1,6 +1,6 @@
 ---
 name: lng-terminals
-description: Operating scaffolding for the GEM LNG Terminals research project — four workflows that produce a single staging xlsx per batch for the user to apply to the live GEM database manually. The workflows are (1) update existing terminals, (2) discover new terminals, (3) reconcile against the annual GIIGNL report, and (4) triage (decide what to work on this batch). Use this skill whenever the user asks for a terminals batch, a GIIGNL diff, a stale-sweep, a discovery run, an FSRU sync check, or any work that produces or modifies the staging xlsx (lng_terminals_batch_YYYYMMDD_HHMM_ET.xlsx). Also use this skill when the user mentions "the GEM database", "the terminals tracker", "GGIT", "GIIGNL", "the methodology doc", a country-level sweep, an FSRU vessel-to-terminal sync, the status timeline, the entity tree, or any of the standard GEM tools (entity link, ownership tree, wiki, test database). The skill is the executable scaffolding — the project's research rules live in GEM's published methodology doc (the "LNG Terminals Manual"), which is authoritative for what counts as a terminal, what the lifecycle states mean, and how units are named. The SOPs in this project are operational — they describe how to do the work, citing the methodology rather than restating it.
+description: Operating scaffolding for the GEM LNG Terminals research project — five workflows; the three doers produce a single staging xlsx per batch for the user to apply to the live GEM database manually. The workflows are (1) update existing terminals (standard or exhaustive tier), (2) discover new terminals, (3) reconcile against the annual GIIGNL report, (4) triage (decide what to work on this batch — memo only), and (5) QC (audit data health and applied edits — memo only). Use this skill whenever the user asks for a terminals batch, a GIIGNL diff, a stale-sweep, a discovery run, a qc pass or link-rot sweep, an FSRU sync check, or any work that produces or modifies the staging xlsx (lng_terminals_batch_YYYYMMDD_HHMM_ET[_scope]_mode.xlsx). Also use this skill when the user mentions "the GEM database", "the terminals tracker", "GGIT", "GIIGNL", "the methodology doc", a country-level sweep, an FSRU vessel-to-terminal sync, the status timeline, the entity tree, or any of the standard GEM tools (entity link, ownership tree, wiki, test database). The skill is the executable scaffolding — the project's research rules live in GEM's published methodology doc (the "LNG Terminals Manual"), which is authoritative for what counts as a terminal, what the lifecycle states mean, and how units are named. The SOPs in this project are operational — they describe how to do the work, citing the methodology rather than restating it.
 ---
 
 # LNG Terminals — Backend Scaffolding
@@ -12,7 +12,7 @@ Scaffolding for an agentic research workflow that helps a GEM contractor update 
 Where things live — **read on demand as the workflow dictates, not at session start**:
 
 - **The GEM LNG Terminals Manual** (Google Doc) — the authoritative methodology ("the methodology doc"). Not in the repo; reference URL in `docs/reference/sop_pointers.md`.
-- **SOPs** — `docs/sops/`: `reconciliation.md` (three-way diff vs GIIGNL; generic body + GIIGNL appendix, future IGU SOP reuses the body), `update.md` (annual bread-and-butter; folds in [ref]-fill), `discovery.md`, `triage.md`.
+- **SOPs** — `docs/sops/`: `reconciliation.md` (three-way diff vs GIIGNL; generic body + GIIGNL appendix, future IGU SOP reuses the body), `update.md` (annual bread-and-butter; standard/exhaustive tiers; folds in [ref]-fill), `discovery.md`, `triage.md`, `qc.md` (data-health audit; memo only).
 - **Workflow recipes** — `docs/workflows.md`: the step-by-step command sequences for every workflow below, plus the FSRU sync rule detail.
 - **Reference docs** — `docs/reference/` (`gem_db_schema.md`, `lifecycle_rules.md`, `source_roster.md`, `entity_canonical_map.md`, `unit_conventions.md`, `sop_pointers.md`, `workbook_conventions.md`) and `docs/country_notes/`.
 - **Scripts** — `scripts/`; index, invocation order, when-to-read-source, and the GIIGNL deep-dives all in `scripts/README.md`.
@@ -38,20 +38,23 @@ Full command-by-command recipes live in `docs/workflows.md` — **read the relev
 | Workflow | Trigger phrases | Recipe + rules |
 |---|---|---|
 | **Reconcile against GIIGNL** (annual, on report release) | "reconcile against GIIGNL", "GIIGNL diff", "compare GEM to the new GIIGNL", "process the [year] GIIGNL report" | `docs/workflows.md` §1 + Reconciliation SOP |
-| **Update existing terminals** (most common) | "update terminals in [country/region]", "refresh the [country] entries", "fill blank refs", "annual update for [country]", "check what's stale in [country]" | `docs/workflows.md` §2 + Update SOP |
+| **Update existing terminals** (most common; tiers: **standard** default / **exhaustive**) | "update terminals in [country/region]", "standard update for [country]", "exhaustive update of [country]", "re-verify everything in [country]", "refresh the [country] entries", "fill blank refs", "annual update for [country]", "check what's stale in [country]" | `docs/workflows.md` §2 + Update SOP (tiers: §2.1 standard / §2.2 exhaustive) |
 | **Discover new terminals** | "find new terminals in [region]", "discovery run", "what's missing from GEM in [region]", "catch-up sweep", "any new proposals in [region]" | `docs/workflows.md` §3 + Discovery SOP |
 | **Triage** (plan the batch) | "what should we work on this quarter", "what's stale", "plan the [Q] batch", "where are the gaps" | `docs/workflows.md` §4 + Triage SOP; output is a markdown memo, not an xlsx |
-| **Regional sweep** (scaled multi-country update/discovery, one subagent per country) | "sweep [region]", "update every country in [region]", "audit the whole tracker", "overnight sweep" | `docs/workflows.md` §5; **read `batches/staging/README.md` + `SWEEP_PROGRESS.md` first** to resume a sweep in progress |
+| **Quality control** (backward-looking checker) | "qc pass", "check accuracy", "link-rot sweep", "did my edits land", "audit the data quality" | `docs/workflows.md` §6 + QC SOP; output is a markdown memo, not an xlsx; fixes route to a follow-on Update batch |
+| **Regional sweep** (scaled multi-country update/discovery, one subagent per country) | "sweep [region]", "update every country in [region]", "audit the whole tracker", "overnight sweep" | `docs/workflows.md` §5; **read `batches/staging/README.md` + `SWEEP_PROGRESS.md` first** to resume a sweep in progress; the dispatch prompt states the tier |
 
 Routing notes that prevent the most common mistakes:
 
 - A GIIGNL-only (`report_only`) row is almost never a missing terminal — **try to match it to an existing GEM terminal under a different name first** (recipe §1 step 6); only genuine misses go to Discovery.
 - GIIGNL is one source in a conflict, not automatically authoritative — value-disagreements route to the Update workflow's normal source-search.
 - Discovery scope = `covered ∪ uncovered` countries: `completeness_sweep.py`'s `coverage_gap` block adds coastal countries with zero GEM terminals (Discovery SOP §4.0).
+- An Update batch runs at the **standard tier by default** — worklist = stale flags ∪ every proposed/construction/shelved unit (the `dev_pipeline` block) ∪ in-scope blank-ref fills; rows off the worklist stay untouched. "Exhaustive" / "re-verify everything" means every field and every existing `[ref]` on every in-scope row (Update SOP §2.1/§2.2).
+- QC never edits: it audits data already in GEM (and edits already applied), emits a memo, and routes fixes to an Update batch — "QC detects, Update fixes".
 
 ## FSRU sync rule (cross-project)
 
-FSRUs are tracked in both this tracker and (if the user runs it) the LNG carrier project. Carriers own vessel identity/specs; terminals own terminal identity/operations; **vessel name + IMO are the linking fields and must agree in both backends**. Any batch touching an FSRU runs `python fsru_sync_check.py`; mismatches go in the `fsru_sync` sheet. Vessel reassignment (FSRU moves terminals; FSU/FRU; Deepwater Port exclusion) is modeled — field-ownership table and mechanics in `docs/workflows.md` §6. Without a carrier backend the script short-circuits gracefully.
+FSRUs are tracked in both this tracker and (if the user runs it) the LNG carrier project. Carriers own vessel identity/specs; terminals own terminal identity/operations; **vessel name + IMO are the linking fields and must agree in both backends**. Any batch touching an FSRU runs `python fsru_sync_check.py`; mismatches go in the `fsru_sync` sheet. Vessel reassignment (FSRU moves terminals; FSU/FRU; Deepwater Port exclusion) is modeled — field-ownership table and mechanics in `docs/workflows.md` §7. Without a carrier backend the script short-circuits gracefully.
 
 ## Scripts
 
@@ -61,10 +64,12 @@ Known issue: `fetch_timeline.py`'s default Heroku host is stale (404) — set `G
 
 ## Output workbook
 
-One combined xlsx per batch at `<repo-root>/batches/lng_terminals_batch_<YYYYMMDD>_<HHMM>_ET.xlsx` (stamp via `TZ=America/New_York date "+%Y%m%d_%H%M_ET"`).
+One combined xlsx per batch at `<repo-root>/batches/lng_terminals_batch_<YYYYMMDD>_<HHMM>_ET[_<scope>]_<mode>.xlsx` (stamp via `TZ=America/New_York date "+%Y%m%d_%H%M_ET"`).
 
+- **The name says what it is:** the `<mode>` token (`update` / `discovery` / `reconciliation`) is ALWAYS present; the `<scope>` slug (lowercase, hyphenated — a country, region, or report edition like `giignl2026`) is present whenever the batch is scoped. Omit `_<scope>` only for a genuinely global batch. (Triage and QC produce memos, not workbooks: `batches/triage_<stamp>_ET.md` / `batches/qc_<stamp>_ET.md`.)
 - **Path caveat:** the `../batches/` shorthand in recipes assumes CWD is `scripts/`. From the repo root use `--output batches/…` — `../batches/` would silently create a stray dir outside the repo. Confirm the written file is under `<repo-root>/batches/` after building.
 - **Never overwrite an existing batch file** — every (re)build gets a NEW file with a freshly-generated timestamp, even small iterative rebuilds in one session. The user prunes old ones.
+- **Staged inputs live under `batches/staging/`, never loose in the repo root or `scripts/`** — `recon/<report><year>/` for reconciliation batches, `<scope-slug>/` for ad-hoc batches, `<region>/` for sweeps (layout in `batches/staging/README.md`). Agent-authored staging JSON is committed (audit trail); derived artifacts are gitignored.
 - Sheet-by-sheet definitions and the full color semantics: `docs/reference/workbook_conventions.md`. When adding a sheet builder to `build_review_package.py`, also add its `SHEET_DESCRIPTIONS` entry.
 
 Color conventions (per cell, not per row — in `updates`, `new_units`, `giignl_diff_operating`): **green** = primary/regulatory source or two independent corroborations; **yellow** = entity confirmed but value implied/contested/single non-primary source; **red** = single weak source (prefer blank + `qa_review` entry); **blue** = unchanged but re-verified this batch. **The `giignl_diff_*` sheets override these semantics** (red = GIIGNL-vs-GEM conflict, graded light/dark by <5%/≥5% capacity delta; light red in nonoperating = "GEM has, GIIGNL doesn't") — full rules in `docs/reference/workbook_conventions.md`.
@@ -92,6 +97,7 @@ Pause and ask before proceeding when:
 - A discovery batch surfaces more than ~5 candidate clusters in one country (systematic gap — worth a conversation before generating 5+ new records)
 - The "sufficient information to add" threshold is genuinely ambiguous on a candidate
 - A reconciliation batch finds disagreement on more than ~10% of matched rows — judged by *material* capacity/owner conflicts, not the raw `matches_with_disagreement` count, which inflates because any non-zero delta flags (see Reconciliation SOP §6)
+- A QC pass trips a systemic threshold — >10% of sampled spot-check cells unsupported, or a batch's apply_check shows multiple diverged edits (QC SOP §6)
 - An entity that should exist in the GEM entity system isn't found
 - The GIIGNL report file isn't in either expected format (real PDF with text layer, or legacy zip-of-JPEGs)
 - FSRU sync surfaces a reassignment that can't be cleanly resolved (vessel moved to a terminal not yet in GEM)

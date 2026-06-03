@@ -189,7 +189,13 @@ def _load_colmap(csv_path):
         raise RuntimeError(
             f"colmap.json not found at {map_path}. Run pull_gem_db.py first."
         )
-    return json.loads(map_path.read_text())
+    colmap = json.loads(map_path.read_text())
+    if "_header_columns" not in colmap:
+        # pull_gem_db.py strips _header_columns before serializing the colmap
+        # to disk, so re-derive the header list from the CSV itself (BOM-safe).
+        with open(csv_path, encoding="utf-8-sig") as f:
+            colmap["_header_columns"] = next(csv.reader(f))
+    return colmap
 
 
 def _blank(v):

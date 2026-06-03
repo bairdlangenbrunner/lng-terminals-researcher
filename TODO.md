@@ -42,7 +42,7 @@ in the live DB edit UI. Need to:
 
 ## RESOLVED: Batch output directory naming convention
 
-Decided 2026-05-27: `batches/lng_terminals_batch_<YYYYMMDD>_<HHMM>_ET.xlsx`. Eastern-time HHMM disambiguates multiple batches the same day (e.g. AM dry-run + PM full run). Generate via `TZ=America/New_York date "+%Y%m%d_%H%M_ET"`. Documented in CLAUDE.md and Reconciliation SOP §3.10.
+Decided 2026-05-27: `batches/lng_terminals_batch_<YYYYMMDD>_<HHMM>_ET.xlsx`. Eastern-time HHMM disambiguates multiple batches the same day (e.g. AM dry-run + PM full run). Generate via `TZ=America/New_York date "+%Y%m%d_%H%M_ET"`. Documented in CLAUDE.md and Reconciliation SOP §3.10. Extended 2026-06-03: the name now also carries `[_<scope>]_<mode>` (mode always — update/discovery/reconciliation; scope slug when the batch is scoped) — see `docs/reference/workbook_conventions.md`.
 
 ---
 

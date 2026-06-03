@@ -1,6 +1,6 @@
 # LNG Terminals Triage SOP
 
-Last revised: 2026-05 (rev 1, initial draft)
+Last revised: 2026-06 (rev 2, QC signals + tier-named options)
 
 Operational rules for deciding what to work on in a given batch. Triage runs first in any quarterly cycle and feeds scope decisions into Update, Discovery, and Reconciliation batches.
 
@@ -19,28 +19,31 @@ Triage is NOT a precondition for every batch. Routine user requests like "fill b
 
 ## §2 What triage produces
 
-A single markdown memo with five sections:
+A single markdown memo with six sections:
 
-1. **Stale-sweep summary** — counts and notable patterns from `stale_sweep.py`
+1. **Stale-sweep summary** — counts and notable patterns from `stale_sweep.py`, including the `dev_pipeline` worklist size
 2. **Recent activity scan** — countries with notable news in the last quarter that may need attention
 3. **Reconciliation backlog** — any unprocessed findings from prior reconciliation batches
 4. **GIIGNL/IGU report status** — whether a fresh annual report has dropped since the last reconciliation
-5. **Recommended batch composition** — 3-5 specific options the user can pick from, each scoped concretely
+5. **QC status** — date of the last QC memo, size of the open `qa_review` backlog, any known link-rot debt (§3.6)
+6. **Recommended batch composition** — 3-5 specific options the user can pick from, each scoped concretely and (for Update options) naming the tier
 
 The memo gets saved to `../batches/triage_<YYYYMMDD>_<HHMM>_ET.md` and presented to the user. No xlsx is produced by triage itself.
 
 ## §3 Triage inputs
 
-Triage pulls signals from five sources, in order:
+Triage pulls signals from six sources, in order:
 
 ### §3.1 Stale-sweep results
 
-`python stale_sweep.py --output stale_sweep.json` produces a flagged-units list per `docs/reference/lifecycle_rules.md`:
+`python stale_sweep.py` (writes `work/stale_sweep.json`) produces a flagged-units list per `docs/reference/lifecycle_rules.md`:
 
 - `proposed` / `construction` / `idled` / `mothballed` units with no project updates for 2 years → candidates for `inferred shelved`
 - `shelved` units (confirmed or inferred 2y) with no updates for 2 more years → candidates for `inferred cancelled`
 - `operating` units with `LastUpdated > 18 months` → due for routine refresh (lower priority)
 - `proposed` units with `LatestPlannedStartYear < current_year - 1` → planned start date has slipped past, worth checking status
+
+The output also carries the `dev_pipeline` block — EVERY proposed/construction/shelved unit, annotated `recently_updated` (≤3 months) — which is exactly the standard-tier Update worklist (Update SOP §2.1). Its per-country counts size standard-update options directly ("Brazil: 17 pipeline units, 11 due a check").
 
 The triage memo summarizes counts by category and country, and flags concentrations (e.g. "Italy has 8 stale `proposed` units — concentrated enough to scope a single-country update batch").
 
@@ -81,11 +84,21 @@ The five most important inputs are still the user's own — what GEM team commit
 
 The triage memo always closes by asking the user to flag any priorities the agent doesn't know about. The recommended batch composition is provisional until the user confirms.
 
+### §3.6 QC signals
+
+If a QC pass (`docs/sops/qc.md`) has run before, fold its outputs into triage:
+
+- **Last QC memo date** — look for the most recent `../batches/qc_*.md`. If it's been a while (a quarter+) or a large batch was applied since, a QC pass is itself a recommendable option in §4.
+- **Open `qa_review` backlog** — `qa_review` items from prior batch xlsx files that never got resolved into a follow-up batch (analogous to the reconciliation backlog, §3.3). A large backlog argues for a clean-up standard Update.
+- **Link-rot debt** — per-country dead-citation rates from the last `citation_qc.py` run (`work/citation_qc.json`, or the counts quoted in the last QC memo). A country past the QC SOP's >25% dead threshold should surface here as an **exhaustive** Update recommendation.
+
+QC signals are optional inputs — when no QC pass has run recently, the memo's QC-status section just says so.
+
 ## §4 The recommended batch composition
 
 For each cycle, propose 3-5 batch options. Each option specifies:
 
-- **Workflow** — Update, Discovery, Reconciliation, or a mix
+- **Workflow** — Update (name the tier: `standard` or `exhaustive`, Update SOP §2.1/§2.2), Discovery, Reconciliation, QC, or a mix
 - **Scope** — specific countries / regions / sponsor / unit list
 - **Estimated effort** — light (a few hours), medium (a day), large (multi-day or multi-batch)
 - **Why this option** — what triage signals justify it
@@ -103,7 +116,7 @@ Option 1 (recommended first): Reconciliation against GIIGNL 2026
   - Dependencies: none
 
 Option 2: Update — Japan terminals (FSRU activity)
-  - Workflow: Update
+  - Workflow: Update (standard tier)
   - Scope: all Japan operating + idled units (51 terminals, ~73 units)
   - Effort: medium (1 day)
   - Why: METI announced 3 FSRU project changes in Q1; activity scan shows
@@ -111,7 +124,7 @@ Option 2: Update — Japan terminals (FSRU activity)
   - Dependencies: ideally after Option 1 (reconciliation may surface Japan findings)
 
 Option 3: Stale-sweep processing — Italy
-  - Workflow: Update (stale-driven)
+  - Workflow: Update (standard tier, stale-driven)
   - Scope: 8 Italy proposed units flagged stale by sweep (>2 years no updates)
   - Effort: light (half day)
   - Why: concentrated stale cluster; processing as a batch is more efficient
@@ -129,12 +142,23 @@ Option 4: Discovery — Southeast Asia (catch-up)
     will consume the cycle's bandwidth
 
 Option 5: Capacity [ref]-fill — global blank-fill batch
-  - Workflow: Update ([ref]-fill sub-type)
+  - Workflow: Update (standard tier, [ref]-fill sub-type)
   - Scope: all rows with blank Capacity [ref] AND populated Capacity (1,083 rows)
   - Effort: large (multi-batch)
   - Why: Capacity [ref] is 86% blank globally — highest-yield [ref]-fill target
     from schema analysis; batchable by region
   - Dependencies: none; can be split across multiple cycles
+
+Option 6: QC pass — post-sweep data health
+  - Workflow: QC
+  - Scope: link-rot sweep (citation_qc.py) over the regions the last applied
+    sweep touched + apply_check.py on that batch + ~25-unit accuracy sample
+  - Effort: light (half day)
+  - Why: a large multi-region sweep was applied since the last QC memo; confirm
+    the edits landed and the citation base is still live before the next
+    research cycle. Fixes route to a follow-on standard Update.
+  - Dependencies: the applied batch xlsx must still be in ../batches/ for
+    apply_check.py
 ```
 
 The user picks one or more options (or proposes something else). Triage doesn't pick for them.
@@ -142,10 +166,11 @@ The user picks one or more options (or proposes something else). Triage doesn't 
 ## §5 Workflow (linear)
 
 1. `python pull_gem_db.py` → fresh CSV. Triage needs current data to compute stale flags accurately.
-2. `python stale_sweep.py --output stale_sweep.json` (§3.1)
+2. `python stale_sweep.py` → `work/stale_sweep.json` (§3.1; includes the `dev_pipeline` block)
 3. Activity scan (§3.2) — typically 30-60 minutes of broad search + summarization
 4. Reconciliation backlog check (§3.3) — look for prior batch outputs with unprocessed items
 5. Fresh report check (§3.4) — search project files + check report publishers' sites
+   5a. QC signals check (§3.6) — last QC memo date, qa_review backlog, link-rot debt
 6. Draft the triage memo with sections per §2
 7. Save to `../batches/triage_<YYYYMMDD>_<HHMM>_ET.md`
 8. `present_files` the memo
@@ -182,10 +207,11 @@ Triage is itself a pause-and-ask, so escalation triggers are narrower. But:
 
 | Input | Source | Triage uses to... |
 |---|---|---|
-| Stale-sweep | `stale_sweep.py` | Identify concentrated dormancy candidates and routine-refresh queue |
+| Stale-sweep | `stale_sweep.py` (incl. `dev_pipeline` block) | Identify concentrated dormancy candidates, routine-refresh queue, and standard-tier worklist sizes |
 | Activity scan | LNG Prime, Reuters, sponsor IR (last 90 days) | Identify countries/sponsors needing Discovery or Update |
 | Reconciliation backlog | Prior batch xlsx `giignl_to_action` sheets | Surface partly-done research that should land in next batch |
 | Fresh annual report | Project files + giignl.org/igu.org | Trigger reconciliation recommendation |
+| QC signals | Last `qc_*.md` memo + `work/citation_qc.json` | Weigh a QC pass; route link-rot debt to an exhaustive Update |
 | User priorities | Direct ask | Validate or override agent's recommendations |
 
 | Triage output | Where |

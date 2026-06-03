@@ -7,14 +7,15 @@ This repo is designed to be used with [Claude Code](https://docs.claude.com/en/d
 The assistant produces staged xlsx files for review; it never edits the live
 database directly.
 
-## Four workflows
+## Five workflows
 
 | Workflow | When to use | Output |
 |---|---|---|
 | **Triage** | "What should we work on this quarter?" | Markdown memo with recommendations |
 | **Reconciliation** | A new GIIGNL/IGU annual report is out | xlsx with diff vs current GEM data |
-| **Update** | Refresh known terminals (fill blanks, advance status, [ref] backfill) | xlsx with staged updates |
+| **Update** | Refresh known terminals — **standard** tier (worklist: stale + pipeline + blank refs) or **exhaustive** tier (every field, every ref) | xlsx with staged updates |
 | **Discovery** | Find terminals that aren't yet in GEM | xlsx with new terminal/unit candidates |
+| **QC** | Audit data health — link-rot, accuracy spot-check, did-my-edits-land | Markdown memo; fixes route to an Update batch |
 
 See `CLAUDE.md` for the routing logic and `docs/sops/` for the full procedures.
 
@@ -39,11 +40,12 @@ data/                        GIIGNL annual report PDFs 2020–2026 — the recon
 
 docs/
   workflows.md               Step-by-step command recipes for every workflow
-  sops/                      The four procedures
+  sops/                      The five procedures
     reconciliation.md        Compare GEM to a new GIIGNL report
-    update.md                Refresh existing terminals (fill blanks, advance status, [ref] backfill)
+    update.md                Refresh existing terminals (standard or exhaustive tier; fill blanks, advance status, [ref] backfill)
     discovery.md             Find terminals missing from GEM
     triage.md                Decide what to work on
+    qc.md                    Audit data health (link-rot, accuracy, post-apply checks); fixes route to Update
   reference/                 Lookup tables and rules (read on demand)
     gem_db_schema.md         What every GEM database column means
     lifecycle_rules.md       Status rules — when a project counts as proposed/shelved/cancelled etc.
@@ -66,8 +68,11 @@ scripts/                     Python tools called by the workflows
   giignl_fsru_fleet.py       Extract the report's FSRU fleet table (which floating vessel is where)
   report_diff.py             Compare extracted GIIGNL data against GEM — list every disagreement
   fsru_sync_check.py         Check FSRU vessel names/IMOs agree with the LNG carrier project
-  stale_sweep.py             Flag entries that haven't moved in too long
+  stale_sweep.py             Flag entries that haven't moved in too long; also lists the development
+                             pipeline (every proposed/construction/shelved unit) for standard updates
   completeness_sweep.py      Find blank fields, missing [ref]s, and countries with no coverage
+  citation_qc.py             Re-verify every existing [ref] URL in scope (QC link-rot sweep)
+  apply_check.py             Confirm an applied batch's edits actually landed in the live DB (QC)
   dedup_index.py             Name-matching indexes so "new" candidates can be checked against existing entries
   entity_lookup.py           Check whether a company already exists in GEM's shared entity system
   url_verifier.py            Verify a URL works and shows the claimed content — required for every ref
@@ -79,15 +84,19 @@ scripts/                     Python tools called by the workflows
   build_review_package.py    Assemble everything into the final review xlsx
   recalc.py                  Sanity-check the xlsx for formula errors before it's presented
 
-batches/                     Finished review workbooks (*.xlsx, gitignored — regenerable)
-  staging/                   TRACKED: per-country sweep research (the audit trail), the sweep ledger
-                             (SWEEP_PROGRESS.md), subagent briefs, and _assemble.py which merges it all
+batches/                     Finished review workbooks (*.xlsx, gitignored — regenerable); named
+                             lng_terminals_batch_<stamp>_ET[_<scope>]_<mode>.xlsx so the file says what it is
+  staging/                   TRACKED: ALL per-batch staging inputs (the audit trail) — per-country sweep
+                             research in <region>/, per-edition reconciliation staging in recon/<edition>/,
+                             ad-hoc batches in <scope>/, plus the sweep ledger (SWEEP_PROGRESS.md),
+                             subagent briefs, and _assemble.py which merges sweep output. Derived files
+                             there (extracted CSV, diff, _build assemblies) are gitignored; see its README
 
-work/                        Scratch — derived sweep/index outputs, regenerable (gitignored)
+work/                        Scratch — derived sweep/index/QC outputs, regenerable (gitignored)
 monitor_list/                current.json: discovery candidates not yet solid enough to add, re-checked each batch
 ```
 
-A batch in progress also drops untracked working files at the repo root — `gem_export.csv` + `.colmap.json` (the fresh data pull), `giignl_extracted.csv` / `giignl_diff.json` / `giignl_fsru_fleet.json` (report extraction and diff), and `staged_*.json` plus the prose/narrative findings JSONs (the agent's staged research). All regenerable or batch-scoped, so they stay out of git.
+A batch in progress also drops the untracked fresh data pull (`gem_export.csv` + `.colmap.json`) wherever it was pulled (repo root or `scripts/`). Everything else batch-scoped — extracted report CSVs, diffs, `staged_*.json`, prose/narrative findings — lives under `batches/staging/` per its README, never loose in the repo root.
 
 ## Hard rules
 

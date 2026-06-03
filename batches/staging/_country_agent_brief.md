@@ -11,19 +11,29 @@ pre-trusted. Be conservative; verify everything.
 - Match by reading the country's rows; capture TerminalID, UnitID, and current field values.
 
 ## Task — for each terminal/unit in your country
+
+**Tier for this sweep: {{TIER}}** (stated in your task prompt; default `standard`). Per Update SOP §2.1/§2.2:
+- `standard` — work the WORKLIST, not every row: every `proposed`/`construction`/`shelved` unit gets a
+  status/news check (skim-confirm ones updated <3 months ago); stale-flagged and blank-ref rows get their
+  targeted fix; other rows stay untouched.
+- `exhaustive` — every row: re-verify every populated field and every existing [ref] URL, blue-marking
+  confirmed-unchanged cells; fill blanks where findable.
+
 1. Read current GEM values (status, capacity, owner/parent/operator, FID, start years, vessel, location, LastUpdated).
 2. Web-research anything stale/wrong/missing, prioritizing the **last 12–24 months**: sponsor IR, the
    national/relevant regulator, trade press (LNG Prime, Reuters, S&P Global, Argus, Upstream, local-language outlets).
    Use WebSearch/WebFetch (load via ToolSearch if not already available).
-3. Stage a FIELD update ONLY when a VERIFIED value DIFFERS from GEM. If GEM already matches, record ONE
-   representative blue re-verify for the terminal (not every field) or a brief qa "no-change". Don't spam.
+3. Stage a FIELD update ONLY when a VERIFIED value DIFFERS from GEM. If GEM already matches: standard tier →
+   record ONE representative blue re-verify for the terminal (not every field) or a brief qa "no-change";
+   exhaustive tier → blue-mark each field actually re-verified. Don't spam.
 4. Discovery dedup: a real terminal NOT in GEM, that meets the add-bar (sponsor + approx location + concrete
    step) AND has a verified source → new_terminal; otherwise → monitor_list.
 
 ## VERIFY EVERY URL before using it
 `python /Users/baird/Dropbox/_git_ALL/_github-repos-gem/lng-terminals-researcher/scripts/url_verifier.py "<url>" "<token>"`
-— only PASS urls go in records; drop failures, note in qa. For a PDF that returns HTTP 200 but "missing content",
-confirm via `curl -sL "<url>" -o /tmp/v.pdf && pdftotext -layout /tmp/v.pdf - | grep -i "<token>"` (verifier has no PDF path).
+— only PASS urls go in records; drop failures, note in qa. The verifier handles PDFs itself (detects by
+content-type/extension/magic, extracts via `pdftotext -layout`, then content-checks) — a PDF failing with
+"no extractable text" is a scanned/image PDF, treat as a failed citation.
 
 ## HARD RULES
 - NEVER write read-only/out-of-scope cols: LH2, NH3, SyntheticLNG, RetrofitProposed, AltFuel*, PCI*, CCS,

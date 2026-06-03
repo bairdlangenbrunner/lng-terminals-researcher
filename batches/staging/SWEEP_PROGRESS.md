@@ -120,7 +120,7 @@ DELETED]" placeholder → Ownership Team.
 Per sub-region: dispatch parallel subagents (each reads _country_agent_brief.md, REGION=<region>, writes
 batches/staging/<region>/<slug>.<type>.json, returns terse) → `python batches/staging/_assemble.py <region>` →
 `build_review_package.py --mode update --inputs-dir batches/staging/<region>/_build --gem-csv scripts/gem_export.csv
---output batches/lng_terminals_batch_<stamp>_<region>.xlsx` → recalc → (discovery build from _build_disc if
+--output batches/lng_terminals_batch_<stamp>_<region>_update.xlsx` → recalc → (discovery build from _build_disc if
 monitor/new present) → checkpoint ledger → ScheduleWakeup again. fetch_timeline is DOWN (status→qa only).
 
 ## SA findings (carry forward)

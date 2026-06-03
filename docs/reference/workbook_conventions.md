@@ -4,9 +4,11 @@ Full sheet definitions and color semantics for the staging xlsx. The naming/path
 
 ## File naming and location
 
-Single combined xlsx per batch, written to the **in-repo** `batches/` directory at the repo root: `<repo-root>/batches/lng_terminals_batch_<YYYYMMDD>_<HHMM>_ET.xlsx`. The Eastern-time HHMM disambiguates multiple batches in one day. Generate via:
+Single combined xlsx per batch, written to the **in-repo** `batches/` directory at the repo root: `<repo-root>/batches/lng_terminals_batch_<YYYYMMDD>_<HHMM>_ET[_<scope>]_<mode>.xlsx`. The Eastern-time HHMM disambiguates multiple batches in one day. Generate via:
 
     TZ=America/New_York date "+%Y%m%d_%H%M_ET"
+
+**The name says what it is** (convention since 2026-06): the `<mode>` token (`update` / `discovery` / `reconciliation`) is ALWAYS present, and the `<scope>` slug — lowercase, hyphenated; a country (`japan`), a region (`africa`, `southeast-asia`), or a report edition (`giignl2026`) — is present whenever the batch is scoped. Omit `_<scope>` only for a genuinely global batch. Examples: `…_ET_japan_update.xlsx`, `…_ET_asia_discovery.xlsx`, `…_ET_giignl2026_reconciliation.xlsx`. (Pre-convention files used `[_<region>]` without a mode token for update builds; they are not renamed. Triage and QC are memo-only — `batches/triage_<stamp>_ET.md` / `batches/qc_<stamp>_ET.md` — and never produce a workbook.)
 
 **Path caveat — the `../batches/` shorthand in the workflow commands assumes the working directory is `scripts/`.** The canonical target is the tracked `batches/` dir *inside* this repo (it has a `.gitkeep`). If you invoke the build from the repo root (e.g. `python scripts/build_review_package.py …`), use `--output batches/…`, NOT `--output ../batches/…` — the latter resolves to a sibling of the repo and `mkdir(parents=True)` will silently create a stray external dir. **Always confirm the written file is under `<repo-root>/batches/` after building.**
 
