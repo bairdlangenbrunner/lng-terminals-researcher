@@ -252,7 +252,7 @@ Produces an xlsx with the standard sheets plus three reconciliation-specific she
 - `giignl_diff_nonoperating` — non-operating units (proposed/construction/shelved/cancelled/idled/mothballed/retired) of **matched** projects. GIIGNL's tables are operating-only, so each row defaults to a light-red `gem_only_flag` = "GEM has, GIIGNL doesn't" UNLESS the §3.2.1 narrative pass populated `giignl_narrative_mention` (a confirmed forward phase → no conflict per §5.7; left unfilled). Worked example: Taichung Phase 3 (in the p.52 narrative → no highlight) vs Phase 4 (absent everywhere → highlighted); Arzew `GL4Z` retired → highlighted (GIIGNL drops retired).
 - `giignl_to_action` — actionable findings with proposed routing (Update vs Discovery vs Review)
 
-Empty sheets are omitted per CLAUDE.md convention.
+Empty sheets are omitted per `docs/reference/workbook_conventions.md`.
 
 `python recalc.py ../batches/lng_terminals_batch_<YYYYMMDD>_<HHMM>_ET.xlsx` → zero formula errors.
 
