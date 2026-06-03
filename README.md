@@ -26,57 +26,111 @@ database directly.
 
 See `CLAUDE.md` for the routing logic and `docs/sops/` for the full procedures.
 
-## Repository layout
+## Repository layout — what each file and folder does
 
-```
-CLAUDE.md                  Entry point for Claude Code — workflow router + hard rules
-README.md                  This file
-TODO.md                    Open design questions still to decide
-requirements.txt           Python deps (openpyxl, jieba, pypinyin) + the poppler `pdftotext` system dep
-.env.example               Template for auth cookies
+In plain terms: **docs tell the assistant *how* to work, scripts do the mechanical work, data holds the input reports, and batches holds the output.**
 
-docs/
-  sops/                    The four workflow procedures
-    reconciliation.md
-    update.md
-    discovery.md
-    triage.md
-  reference/               Lookup tables and rules (read on demand)
-    gem_db_schema.md
-    lifecycle_rules.md
-    unit_conventions.md
-    source_roster.md
-    entity_canonical_map.md
-    sop_pointers.md        Cross-SOP rule index
-  country_notes/           One file per country (research notes, regulator URLs)
-  design-history/          Original scaffolding conversation transcript
+### Top-level files
 
-scripts/                   Python tools called by the workflows
-  gem_query.py             Query the GEM read-only Postgres DB → CSV
-  gem_all_fields.py        Reproduce the website's all-fields LNG CSV (no cookies)
-  gem_export_via_web.py    Download all-fields CSV from the live website (cookies)
-  pull_gem_db.py           Wrap a data-pull + derive the column-index map
-  normalize.py             Country/entity/capacity canonicalization + CJK transliteration
-  dedup_index.py           Build matching indexes for candidate dedup
-  url_verifier.py          HTTP 200 + content + soft-error check
-  capacity_normalize.py    mtpa/bcm/y conversions and range handling
-  stale_sweep.py           Flag dormant units per lifecycle thresholds
-  completeness_sweep.py    Field/[ref] completeness audit + country coverage-gap
-  country_universe.py      Reference coastal-country list (coverage-gap input)
-  status_timeline.py       Validate timeline transitions + anchor years
-  fetch_timeline.py        Pull full timeline for a UnitID from web UI
-  entity_lookup.py         Check GEM entity system before adding new entities
-  imo_tracker.py           Look up vessel IMO via marinetraffic.org
-  giignl_extract.py        Parse the GIIGNL annual-report PDF → flat CSV (pdftotext -layout)
-  report_diff.py           Reconciliation diff (GIIGNL or IGU vs GEM)
-  fsru_sync_check.py       Cross-check FSRUs against carrier project
-  build_review_package.py  Assemble the batch xlsx deliverable
-  recalc.py                Formula-error check before presenting xlsx
+| File | What it does |
+|---|---|
+| `CLAUDE.md` | The first thing Claude Code reads in every session. Says what this project is, which workflow to run for a given request, and the hard rules it must never break. |
+| `README.md` | This file. |
+| `TODO.md` | A running list of open design questions and ideas not yet decided. |
+| `requirements.txt` | The Python packages to install. (The PDF reader also needs poppler's `pdftotext`, installed separately — see Quick start.) |
+| `.env.example` | A template for `.env`, which holds GEM login cookies. Only needed for the cookie-based export fallback. |
+| `.gitignore` | Tells git which files *not* to track: data pulls, scratch outputs, the xlsx workbooks. |
+| `giignl_2026_triage_memo.md` | A planning memo from triaging the 2026 GIIGNL report — what looked worth working on. |
 
-batches/                   Batch deliverables (*.xlsx gitignored); batches/staging/ research tree is tracked
-work/                      Derived sweep/index outputs (gitignored scratch)
-monitor_list/              Cross-batch monitor list (Discovery SOP §5)
-```
+### `.claude/` — Claude Code settings
+
+Project-level settings for the assistant, mainly which tools it may use without prompting. Its own `README.md` explains the choices.
+
+### `data/` — the GIIGNL report archive
+
+Every GIIGNL annual report PDF from 2020 to 2026 — the input for the reconciliation workflow. `data/README.md` describes each edition (page counts, where the tables live, which calendar year an edition covers).
+
+### `docs/` — instructions the assistant reads on demand
+
+| Path | What it does |
+|---|---|
+| `docs/workflows.md` | Step-by-step command recipes for every workflow — which script to run when, in what order. |
+| `docs/sops/` | The four procedure documents: `reconciliation.md` (compare GEM to a new GIIGNL report), `update.md` (refresh existing terminals), `discovery.md` (find terminals missing from GEM), `triage.md` (decide what to work on). |
+| `docs/reference/gem_db_schema.md` | What every column in the GEM database means. |
+| `docs/reference/lifecycle_rules.md` | Status rules — when a project counts as proposed, shelved, cancelled, etc. |
+| `docs/reference/unit_conventions.md` | How units/trains/phases are named and how capacity numbers are written. |
+| `docs/reference/source_roster.md` | Where to look for information, by country and source type. |
+| `docs/reference/entity_canonical_map.md` | The correct spellings of company names GEM already uses. |
+| `docs/reference/workbook_conventions.md` | What each sheet and cell color in the output xlsx means. |
+| `docs/reference/sop_pointers.md` | A quick index of which rule lives in which document. |
+| `docs/country_notes/` | One research-notes file per country (regulators, quirks, key sources). |
+| `docs/design-history/` | The transcript of the original design conversation — why things are the way they are. |
+
+### `scripts/` — the Python tools
+
+`scripts/README.md` is the index: what each script does, the usual run order, and deep-dives on the tricky ones. In one line each:
+
+**Getting GEM data:**
+
+| Script | What it does |
+|---|---|
+| `gem_all_fields.py` | Downloads the full LNG terminals dataset from GEM (no login needed). The usual way. |
+| `gem_export_via_web.py` | Same download via the website with login cookies. The fallback. |
+| `gem_query.py` | Asks the GEM read-only database direct questions. |
+| `pull_gem_db.py` | Wraps a download and writes the column-index map (`.colmap.json`) so scripts know which column is which. |
+| `fetch_timeline.py` | Pulls a unit's full status history (the CSV export only has the current status). |
+
+**Reading the GIIGNL report:**
+
+| Script | What it does |
+|---|---|
+| `giignl_extract.py` | Turns the GIIGNL PDF's terminal tables into a flat CSV. |
+| `giignl_fsru_fleet.py` | Extracts the report's FSRU fleet table (which floating vessel is where). |
+
+**Comparing and checking:**
+
+| Script | What it does |
+|---|---|
+| `report_diff.py` | Compares the extracted GIIGNL data against GEM and lists every disagreement. |
+| `fsru_sync_check.py` | Checks FSRU vessel names/IMOs agree with the LNG carrier project. |
+| `stale_sweep.py` | Flags entries that haven't moved in too long. |
+| `completeness_sweep.py` | Finds blank fields, missing `[ref]`s, and countries with no coverage. |
+| `dedup_index.py` | Builds name-matching indexes so a "new" candidate can be checked against existing entries. |
+| `entity_lookup.py` | Checks whether a company already exists in GEM's shared entity system. |
+| `url_verifier.py` | Verifies a URL actually works and shows the claimed content — required before any URL goes in the xlsx. |
+| `imo_tracker.py` | Looks up a vessel's IMO number. |
+| `status_timeline.py` | Validates that a proposed status change follows the allowed transitions. |
+
+**Cleaning data:**
+
+| Script | What it does |
+|---|---|
+| `normalize.py` | Standardizes country, company, and terminal names (including Chinese transliteration). |
+| `capacity_normalize.py` | Converts capacity units (mtpa, bcm/y, …) to one standard. |
+| `country_universe.py` | The reference list of coastal countries (used to spot coverage gaps). |
+
+**Building the deliverable:**
+
+| Script | What it does |
+|---|---|
+| `build_review_package.py` | Assembles everything into the final review xlsx. |
+| `recalc.py` | Sanity-checks the xlsx for formula errors before it's presented. |
+
+### `batches/` — the output
+
+Finished review workbooks (`.xlsx`) land here; they're regenerable so git ignores them. `batches/staging/` *is* tracked: the per-country research files from regional sweeps (the audit trail), plus the sweep ledger (`SWEEP_PROGRESS.md`), the briefs given to per-country subagents, and `_assemble.py` which merges it all for the workbook build.
+
+### `work/` — scratch
+
+Derived sweep/index outputs scripts regenerate on demand. Git ignores everything but the folder itself.
+
+### `monitor_list/` — the watch list
+
+`current.json`: discovery candidates that aren't solid enough to add yet, carried between batches so they get re-checked.
+
+### Files that appear during a batch (untracked)
+
+A batch in progress drops working files at the repo root — `gem_export.csv` and its `.colmap.json` (the fresh data pull), `giignl_extracted.csv` / `giignl_diff.json` / `giignl_fsru_fleet.json` (report extraction and diff), and `staged_*.json` plus the prose/narrative findings JSONs (the agent's staged research). All are regenerable or batch-scoped scratch, so they stay out of git.
 
 ## Hard rules
 
