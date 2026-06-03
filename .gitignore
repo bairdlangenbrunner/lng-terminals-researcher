@@ -14,6 +14,16 @@ report_diff.json
 # FSRU fleet extraction (regenerable by giignl_fsru_fleet.py)
 giignl_fsru_fleet.json
 
+# Derived sweep / index outputs (regenerable by dedup_index.py / stale_sweep.py /
+# completeness_sweep.py). Scripts default to writing under work/ (ignored except
+# its .gitkeep). The bare filenames are also ignored for the case where a script
+# is run with an explicit cwd-relative --output (e.g. Triage SOP's stale_sweep).
+work/*
+!work/.gitkeep
+dedup_index.json
+stale_sweep.json
+completeness_sweep.json
+
 # Per-batch staged inputs / agent-authored findings — live on the batch branch's
 # working tree, not committed to main (see the cleanup plan + Reconciliation SOP).
 # The files stay on disk; they're just untracked so main doesn't accumulate one
@@ -22,9 +32,11 @@ staged_*.json
 giignl_narrative_findings.json
 giignl_prose_corrections.json
 
-# Batch outputs - large, transient, regenerable
-batches/*
-!batches/.gitkeep
+# Batch deliverable workbooks are large regenerable binaries — keep them untracked.
+# But TRACK the staging tree (batches/staging/**: per-country research JSON, the sweep
+# ledger, briefs, README) — it's the diffable audit trail and lives on the batch branch.
+# (The derived _build/ and _prior/ staged_*.json stay ignored via the staged_*.json rule above.)
+batches/*.xlsx
 
 # Python
 __pycache__/

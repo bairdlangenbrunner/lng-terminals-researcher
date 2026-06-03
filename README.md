@@ -61,6 +61,8 @@ scripts/                   Python tools called by the workflows
   url_verifier.py          HTTP 200 + content + soft-error check
   capacity_normalize.py    mtpa/bcm/y conversions and range handling
   stale_sweep.py           Flag dormant units per lifecycle thresholds
+  completeness_sweep.py    Field/[ref] completeness audit + country coverage-gap
+  country_universe.py      Reference coastal-country list (coverage-gap input)
   status_timeline.py       Validate timeline transitions + anchor years
   fetch_timeline.py        Pull full timeline for a UnitID from web UI
   entity_lookup.py         Check GEM entity system before adding new entities
@@ -71,7 +73,8 @@ scripts/                   Python tools called by the workflows
   build_review_package.py  Assemble the batch xlsx deliverable
   recalc.py                Formula-error check before presenting xlsx
 
-batches/                   Batch outputs (gitignored; .gitkeep retained)
+batches/                   Batch deliverables (*.xlsx gitignored); batches/staging/ research tree is tracked
+work/                      Derived sweep/index outputs (gitignored scratch)
 monitor_list/              Cross-batch monitor list (Discovery SOP §5)
 ```
 
@@ -89,10 +92,9 @@ A non-exhaustive list of things the agent should never do (full list in `CLAUDE.
 
 ## Branching and batches
 
-- One branch per batch: `batch/2026-q3-italy-stale-sweep`
-- Merge after the batch is applied to the live DB
-- Tag each applied batch: `batch-2026-q3-italy-stale-sweep-applied`
-- SOPs and reference docs: direct-to-main
+- **Targeted batch** (one country, a stale-sweep, a reconciliation): one branch per batch, e.g. `batch/2026-q3-italy-stale-sweep`; merge after the batch is applied to the live DB; optionally tag `batch-...-applied`.
+- **Regional / full-tracker sweep**: a single long-lived branch carries the whole multi-region pass, with the `batches/staging/` tree committed as the diffable audit trail (see the "Regional sweep" section in `CLAUDE.md`).
+- SOPs and reference docs: direct-to-main.
 
 ## Methodology
 

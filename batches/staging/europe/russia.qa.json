@@ -1,0 +1,142 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130520",
+    "unit_id": "G100002052001",
+    "terminal_name": "Arctic LNG 2 Terminal",
+    "issue": "Train 1 / Train 2 operating-vs-idled labels are fluid and possibly swapped vs current reality. GEM has T1=idled, T2=operating. Most recent reporting (High North News, 2 Jun 2026) describes T1 as 'completed largely as originally planned' / operational, while 'LNG production from Train 2 has remained effectively stalled for months despite delivery of replacement equipment' (electrical-integration issues from the loss of 3 of 7 Baker Hughes LM9000 turbines). Earlier (Oct 2025, Maritime Executive) both trains were producing and the plant hit record ~18 MMcm/d output in Sep 2025. The plant cycles production on/off seasonally (Arctic ice) and idles trains when reservoirs fill for lack of ice-class tankers (S&P/Reuters reported T1 shut May 2025 'because reservoirs were full'). Net: which of T1/T2 is 'operating' vs 'idled' at any given moment is genuinely ambiguous and sanctions/logistics-driven, not a stale GEM error. Plant IS exporting via shadow fleet (cargoes to Beihai, China via Saam FSU transshipment).",
+    "severity": "medium",
+    "suggested_action": "Do NOT edit Status fields blind. On next deep update, pull the unit timeline and reconcile T1/T2 operating-vs-idled against latest satellite/shipping OSINT; consider whether GEM should treat both T1+T2 as 'operating' with curtailment noted, given both have produced. Capacity (6.6 mtpa/train) is correct and unchanged.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130520",
+    "unit_id": "G100002052003",
+    "terminal_name": "Arctic LNG 2 Terminal",
+    "issue": "Train 3 (GEM=construction) confirmed still under construction but stalled, with a possible 2026 inflection. First Train-3 pipe-rack modules (3-TMR-001, 3-TMR-002) departed China Apr 2026 after construction 'largely stalled in 2024' (High North News, 2 Jun 2026); Novatek expects to tow the final GBS line from the Belokamenka/Murmansk yard to the Gydan peninsula in Jul 2026 (S&P). Startup previously postponed to 2028 (from 2026). Some reporting suggests the GBS3 structure/equipment could instead be redirected to the Murmansk LNG project rather than completing ALNG2 T3. GEM construction status is appropriate; OriginalPlannedStartYear=2025/LatestPlannedStartYear=2025 are now stale (2028 is the current target).",
+    "severity": "medium",
+    "suggested_action": "Consider updating LatestPlannedStartYear for T3 from 2025 to 2028 on next update (single-to-few non-primary sources; verify against Novatek IR). Watch whether GBS3 is diverted to Murmansk LNG. Left unedited here pending stronger sourcing.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ownership",
+    "terminal_id": "T100000130506",
+    "unit_id": "G100002050601",
+    "terminal_name": "Far East LNG Terminal",
+    "issue": "Owner watch (GEM ProjNotes already flags this): ExxonMobil's seized ~30% Sakhalin-1 stake — carried in GEM as Owner 'unknown [30%]' — had its divestment deadline extended to 1 Jan 2026, which has now passed. In Sep 2025 ExxonMobil and Rosneft struck a NON-BINDING agreement toward Exxon recouping losses / potential return, contingent on a Russia-Ukraine peace deal and sanctions easing (neither realized as of Jun 2026). Operator remains Rosneft subsidiary Sakhalinmorneftegaz-Shelf. No confirmed new equity holder for the 30% as of now.",
+    "severity": "medium",
+    "suggested_action": "Keep Owner '30% unknown' for now (no realized transfer). Re-check after the deadline lapse for a named successor or a formalized Exxon return; update Owner/Parent only on a confirmed transaction. Project remains proposed/Pre-FID.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "capacity",
+    "terminal_id": "T100000131112",
+    "unit_id": "G100002111203",
+    "terminal_name": "Murmansk LNG Terminal",
+    "issue": "Train count / total capacity unresolved (GEM UnitNotes already flag the 20.4-mtpa 'TBC'). GEM models 3 trains x 6.8 mtpa = 20.4 mtpa. In Jan 2025 Novatek reportedly REDUCED the Murmansk LNG project to 13.6 Mt/year (Enerdata) i.e. effectively 2 trains x 6.8, with a loading ramp 3.4 Mt (2028) -> 6.8 Mt (2029) -> 13.6 Mt (2030+). Russia's 2050 Energy Strategy (Apr 2025) lists Murmansk total capacity 20.4 mtpa. Sources conflict (13.6 vs 20.4). Project was suspended Sep 2024 due to sanctions, then green-lit again / schedule pulled forward to 2030 (from 2033) in early 2025; status remains proposed. Equipment (GBS3) potentially shared with Arctic LNG 2 T3.",
+    "severity": "medium",
+    "suggested_action": "Do NOT change capacity or train count on conflicting sources. On next update, reconcile the 13.6 vs 20.4 mtpa figures (Novatek IR / Minenergo 2050 Strategy primary docs) and decide whether to keep T3. Status stays proposed.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100001047484",
+    "unit_id": "G100001054062",
+    "terminal_name": "Khabarovskiy LNG Terminal",
+    "issue": "Schedule slip: GEM has OriginalPlannedStartYear=2025 / LatestPlannedStartYear=2026. Interfax (2025) reports the Xinxing Far East (Zhongyu Xinxing) Khabarovsk LNG plant first-phase commissioning now estimated 2028-2029 and the developer is still searching for a site. Still proposed; 0.08 mtpa first phase. GEM's start years are stale but the project's plans are themselves shifting.",
+    "severity": "low",
+    "suggested_action": "Consider updating LatestPlannedStartYear 2026 -> 2028/2029 on next update (single non-primary source; verify). Status stays proposed. Not staged as an edit here given the soft sourcing.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130707",
+    "unit_id": "G100002070701",
+    "terminal_name": "Portovaya LNG Terminal",
+    "issue": "Operating-but-export-suspended nuance. GEM T1+T2=operating (0.75 mtpa each = 1.5 mtpa total), confirmed correct. However US sanctions in full effect since 27 Feb 2025 have led Portovaya to suspend international LNG shipments (facility + associated carriers sanctioned); as of mid-2025 export activity is sharply curtailed. T3 (2 mtpa expansion, shelved in GEM) confirmed: no updates since the Sep 2022 announcement -> shelved is correct. Status itself need not change (plant operable), but the export suspension is material context.",
+    "severity": "low",
+    "suggested_action": "Keep operating status. Add the sanctions export-suspension context to the wiki Background (see wiki record). Verify any production halt before any status change.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change",
+    "terminal_id": "T100000130518",
+    "unit_id": "G100002051801",
+    "terminal_name": "Yamal LNG Terminal",
+    "issue": "Verified current, no change. 4 trains operating (T1-T3 @ 5.5 mtpa, T4 @ 0.9 mtpa); ownership confirmed exactly: Novatek 50.1%, CNPC 20%, TotalEnergies 20%, Silk Road Fund 9.9%. Still exporting heavily (EU imported record Yamal LNG volumes Jan-Apr 2026). Operator JSC Yamal LNG. One representative blue re-verify logged for the terminal.",
+    "severity": "low",
+    "suggested_action": "No action. Confidence bump only.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change",
+    "terminal_id": "T100000130512",
+    "unit_id": "G100002051201",
+    "terminal_name": "Sakhalin II LNG Terminal",
+    "issue": "Verified current, no change. T1+T2 operating (4.8 mtpa each); ~10.2 Mt LNG shipped from Prigorodnoye in 2024. Ownership confirmed: post-2022 the operating entity is the Russian-domiciled Sakhalin Energy LLC; parent Gazprom 77.5% (50% original + Shell's former 27.5% absorbed by a Gazprom-owned entity in Mar 2024), Mitsui 12.5%, Mitsubishi 10% — matches GEM exactly. US OFAC byproduct exemption extended to 18 Jun 2026 (Japan-only). T3 expansion (5.4 mtpa) remains proposed/Pre-FID, not in the 2050 Energy Strategy. One representative blue re-verify logged.",
+    "severity": "low",
+    "suggested_action": "No action. Confidence bump only.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change",
+    "terminal_id": "T100000130504",
+    "unit_id": "G100002050401",
+    "terminal_name": "Ust Luga LNG Terminal",
+    "issue": "Verified current, no change. T1+T2=construction confirmed (complex ~32% complete mid-2024; VTB financing 'in full swing' Oct 2025; LNG line 1 targeted 2027, gas-processing line 1 2026, full 13.1 mtpa by ~2029). RusKhimAlyans (Gazprom/RusGazDobycha 50/50) directly US-sanctioned Feb 2024; Linde and other Western partners departed, EPC redone (Linde/Renaissance Heavy deal references predate exit; legal battles ongoing). T3 (proposed) not in the 2050 Strategy (which gives total 13.2 mtpa = T1+T2). Construction status appropriate.",
+    "severity": "low",
+    "suggested_action": "No action. Confidence bump only. T3 is a future shelved candidate per GEM's own note (last mentioned Sep 2023).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change",
+    "terminal_id": "T100000130831",
+    "unit_id": "G100002083100",
+    "terminal_name": "Marshal Vasilevskiy FSRU",
+    "issue": "Verified current, no change. GEM=idled is correct: the FSRU's regasification function has not resumed operationally; since ~2024-2025 the vessel has been used as an LNG-shipment tanker (it ran test deliveries from Portovaya to Kaliningrad in Jan 2024 but did not resume regas service). Vessel name 'Marshal Vasilevskiy' (IMO 9778313, Hyundai-built, 3.7 bcm/y regas) correct. NOTE distinct from Novatek's Saam/Koryak FSUs (Murmansk/Kamchatka transshipment storage) — those are NSR transshipment units, not this terminal.",
+    "severity": "low",
+    "suggested_action": "No action. Idled status correct. FSRU sync: vessel identity unchanged.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dormancy",
+    "terminal_id": "T100000131067",
+    "unit_id": "G100002106701",
+    "terminal_name": "Kara LNG Terminal",
+    "issue": "Dormancy candidate confirmed (GEM UnitNotes already flag 'move to shelved if no news'). Rosneft's Kara LNG (Novaya Zemlya, up to ~22.5-30 mtpa) last mentioned Oct 2023; NOT included in Russia's 2050 Energy Strategy (Apr 2025); Rosneft Arctic LNG plans only at design stage. No 2024-2026 development found. Currently proposed in GEM.",
+    "severity": "low",
+    "suggested_action": "Strong candidate to move proposed -> shelved (inferred 2y) on next update per methodology dormancy rule. Flagged, not edited (status change = QA per brief).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dormancy",
+    "terminal_id": "T100000131155",
+    "unit_id": "G100002115501",
+    "terminal_name": "Taimyr LNG Terminal",
+    "issue": "Dormancy candidate confirmed (GEM UnitNotes already flag this). Rosneft's Taimyr/Sever Bay LNG (up to 50 mtpa, tied to Vostok Oil) only at design stage; no updates since Oct 2023; NOT in the 2050 Energy Strategy. Note GEM State/Province='Krasnodar' looks like a likely typo for 'Krasnoyarsk' (Taimyr/Sever Bay is in Krasnoyarsk Krai, not Krasnodar in southern Russia) — worth checking.",
+    "severity": "low",
+    "suggested_action": "Candidate to move proposed -> shelved next update. Separately, verify/likely-correct State/Province 'Krasnodar' -> 'Krasnoyarsk'. Both flagged, not edited.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dormancy",
+    "terminal_id": "T100000131154",
+    "unit_id": "G100002115401",
+    "terminal_name": "Tambey LNG Terminal",
+    "issue": "Dormancy candidate confirmed (GEM UnitNotes already flag this). Gazprom's Tambey LNG (Yamal, ~20 mtpa) categorized only as a 'possible' project; no updates since Jul 2023; NOT in the 2050 Energy Strategy. A port for LPG/gas-condensate is under construction at Tambey but nothing on the liquefaction plant. Currently proposed.",
+    "severity": "low",
+    "suggested_action": "Candidate to move proposed -> shelved next update. Flagged, not edited.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dormancy",
+    "terminal_id": "T100000130918",
+    "unit_id": "G100002091801",
+    "terminal_name": "Arctic LNG 1 Terminal",
+    "issue": "Status check: GEM=proposed (19.8 mtpa, Novatek). Confirmed appropriate — no development updates since 2021, but the project IS retained in Russia's 2050 Energy Strategy (Apr 2025) as 'planned' for commissioning by 2030, and was added to US sanctions as a future project. So unlike the never-in-the-Strategy dormant ones, Arctic LNG 1 still has nominal government backing. Proposed is correct.",
+    "severity": "low",
+    "suggested_action": "No status change; keep proposed. Lower dormancy priority than Kara/Taimyr/Tambey because it remains in the 2050 Strategy.",
+    "researcher_initials": "AI-draft"
+  }
+]

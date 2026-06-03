@@ -1,0 +1,60 @@
+[
+  {
+    "terminal_id": "T100000131008",
+    "unit_id": "G100002100800",
+    "terminal_name": "Le Havre FSRU",
+    "unit_name": "--",
+    "country": "France",
+    "field_name": "FloatingVesselName",
+    "old_value": "",
+    "new_value": "Cape Ann",
+    "confidence": "green",
+    "source_tier": "sponsor (TotalEnergies project site + corporate press) + trade press (multiple independent)",
+    "ref_field": "FloatingVesselName [ref]",
+    "ref_urls": [
+      "https://telsf.totalenergies.com/en/our-project/description-fsru",
+      "https://www.nsenergybusiness.com/company-news/totalenergies-commissions-cape-ann-fsru-in-port-of-le-havre-france/"
+    ],
+    "source_notes": "FloatingVesselName is BLANK in GEM for this FSRU; the deployed vessel was the FSRU 'Cape Ann' (built 2010, ~145,130 cbm), owned/operated by Hoegh LNG (now Hoegh Evi). TotalEnergies' own project page (telsf.totalenergies.com, url_verifier PASS on tokens 'Cape Ann'/'Hoegh') names the vessel and states 'The owner of the FSRU Cape Ann is HOEGH LNG'. This is a pure data fill (blank -> value), not a value change. IMPORTANT CONTEXT (see qa status_timeline): the Cape Ann was DEMOBILIZED — TotalEnergies announced demobilization 2025-11-25 and the vessel departed Le Havre by ~2026-01-22 after the Rouen Administrative Court (2025-10-16) ordered the installation decree revoked. The vessel name remains correct for the 2023-2025/26 deployment; a researcher applying the demob status change may also choose to record the departure on the unit timeline. GEM's existing VesselOperator='Hoegh Evi' is consistent (current Hoegh LNG rebrand). VesselOwner='TotalEnergies' in GEM reflects terminal/charter ownership, not vessel hull ownership — left unchanged (consistent with GEM's FSRU convention of recording the terminal sponsor as VesselOwner here).",
+    "scope_note": "Unit-level data fill on the single FSRU unit (G100002100800). Does NOT change Status (the demobilization status change is logged in qa as status_timeline per the rules).",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130446",
+    "unit_id": "G100002044600",
+    "terminal_name": "Dunkirk LNG Terminal",
+    "unit_name": "--",
+    "country": "France",
+    "field_name": "Owner",
+    "old_value": "Dunkerque LNG",
+    "new_value": "Dunkerque LNG",
+    "confidence": "blue",
+    "source_tier": "operator/co-owner site (Fluxys) + sponsor infrastructure page",
+    "ref_field": "Owner",
+    "ref_urls": [
+      "https://www.fluxys.com/en/about-us/dunkerque-lng/infrastructure"
+    ],
+    "source_notes": "RE-VERIFY ONLY, NO CHANGE (representative blue for the Dunkirk terminal). Owner=Dunkerque LNG, Operator=Gaz-Opale (the Fluxys/Dunkerque LNG operating JV), capacity 13 bcm/y (~9.55 mtpa) all consistent with GEM and with Fluxys' Dunkerque LNG infrastructure page. No 2025-2026 ownership or capacity change found. The Ammonia Import Terminal unit (proposed) and Debottlenecking unit (operating, 2023) are unchanged. Out-of-scope: the ammonia/NH3 proposal is read-only per rules — not edited.",
+    "scope_note": "Project-level Owner field; representative blue applies to the whole 3-unit terminal. Project-level fields duplicate across all unit-rows.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130448",
+    "unit_id": "G100002044800",
+    "terminal_name": "Fos Cavaou LNG Terminal",
+    "unit_name": "--",
+    "country": "France",
+    "field_name": "Capacity",
+    "old_value": "8.00",
+    "new_value": "8.00",
+    "confidence": "blue",
+    "source_tier": "operator site (Elengy) + GIIGNL 2025",
+    "ref_field": "Capacity",
+    "ref_urls": [
+      "https://www.elengy.com/en/our-locations/fos-cavaou-lng-terminal"
+    ],
+    "source_notes": "RE-VERIFY ONLY, NO CHANGE (representative blue for Fos Cavaou). Owner=Fosmax LNG SAS [100%], Parent/Operator=Elengy, base capacity 8.0 mtpa (10.88 bcm/y) consistent with GEM. NOTE: Elengy currently markets the terminal as '8.5 Bcm/year' (~100 TWh/y) total regas — this is below GEM's combined 8.0 mtpa (10.88 bcm/y) base + 2.0 mtpa under-construction Expansion 2, so it does NOT contradict GEM's nameplate (the Elengy figure is the current marketed/optimized total, not nameplate, and is logged in qa). Expansion 2 (G100002044802) remains construction/2 mtpa, matching GEM's researcher note (sourced to IGU construction table, flagged uncertain); no firmer commissioning date found, so no edit.",
+    "scope_note": "Project-level Capacity for the base unit; representative blue. Expansion 1 (operating) and Expansion 2 (construction) units unchanged.",
+    "researcher_initials": "AI-draft (sweep)"
+  }
+]

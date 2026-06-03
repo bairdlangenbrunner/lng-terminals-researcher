@@ -1,0 +1,32 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100001048176",
+    "unit_id": "G100001055238",
+    "terminal_name": "Sheikh Sabah LNG Terminal",
+    "issue": "GEM Status = proposed (ProposalYear 2024), but the terminal is now under construction. Aqaba Development Corp awarded the EPCIC contract to the GAS Entec / AG&P consortium in Aug 2024; the energy minister inspected on-site construction progress in Oct 2025; commissioning is targeted for Q2 2026 (operations ~Sep 2026). Status should move proposed -> construction with a construction-phase timeline entry (anchor ~Aug 2024 contract award). Capacity (0.72 bcf/d = 720 MMcfd) already matches GEM.",
+    "severity": "high",
+    "suggested_action": "Update Status to construction and add a construction timeline entry (~2024) after pulling the existing timeline. Paired ConstructionYear 2024 and Owner=Aqaba Development Corporation are staged in jordan.updates.json. Note: this terminal is the onshore-regas + FSU replacement for the Aqaba Jordan FSRU (Energos-class vessel); the two records are AssociatedTerminals and the Aqaba FSRU note already references the 2025 handover.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "researcher_note_outdated",
+    "terminal_id": "T100000130591",
+    "unit_id": "G100002059100",
+    "terminal_name": "Aqaba Jordan FSRU",
+    "issue": "ResearcherNotesUnit reads 'FSRU charter ends 2025, being replaced by FSU and onshore LNG terminal.' That replacement has now begun playing out: the Energos Eskimo left Aqaba in June 2025 (to Egypt/EGAS); the Energos Force arrived ~Aug 2025 as an interim FSRU (EGAS sub-charter via DET), reportedly ending ~Dec 2025; the long-term BW LNG FSU under a 10-yr NEPCO charter is due Q3-Q4 2026 at the new Sheikh Sabah onshore terminal. The terminal remains operating, but the on-site vessel changed and the live mid-2026 occupant is uncertain.",
+    "severity": "medium",
+    "suggested_action": "Refresh ResearcherNotesUnit to reflect the 2025 vessel sequence and Q3-Q4 2026 BW LNG FSU plan. Confirm the live on-site vessel as of mid-2026 directly (AIS/ICIS or operator) before applying the staged FloatingVesselName change to 'Energos Force' (staged yellow in jordan.updates.json). FSRU sync touchpoint: flag the vessel-name change to the carrier project.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change",
+    "terminal_id": "T100000130591",
+    "unit_id": "G100002059100",
+    "terminal_name": "Aqaba Jordan FSRU",
+    "issue": "Terminal-level fields re-verified current: Status operating (actual), terminal Owner = Jordan Ministry of Energy and Mineral Resources, Operator = Energos, Capacity 3.8 mtpa, location Aqaba Port. Only the FloatingVesselName is stale (handled separately).",
+    "severity": "low",
+    "suggested_action": "Representative blue re-verify for the terminal; no field change beyond the vessel name.",
+    "researcher_initials": "AI-draft"
+  }
+]

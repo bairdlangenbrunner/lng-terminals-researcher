@@ -1,0 +1,42 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130304",
+    "unit_id": "G100002030403",
+    "terminal_name": "Papua New Guinea LNG Terminal",
+    "issue": "GEM holds PNG LNG Train 3 (2.6 mtpa, P'nyang-fed) as 'cancelled' (note: 'reportedly cancelled... no new updates since 2020'). NEWER signals indicate revival/active development: ExxonMobil (operator) accelerated the P'nyang concept-select phase, bringing pre-engineering works forward to Apr-Jun 2025 'years sooner than previously envisaged' (Argus, 10 Dec 2024); PNG govt signed a P'nyang fiscal stability agreement in Mar 2025; partners still describe a ~2.7 mtpa third train fed by P'nyang, with FID targeted ~2029 (synchronised after Papua LNG startup). This postdates GEM's basis and suggests the unit may no longer be cancelled (proposed/concept-select).",
+    "severity": "medium",
+    "suggested_action": "Pull the GEM unit timeline (fetch_timeline endpoint currently down) and re-evaluate whether Train 3 should move cancelled -> proposed (P'nyang concept-select). Note GEM's T3 capacity is 2.6 mtpa vs the 2.7 mtpa now cited. Confirm via ExxonMobil/Santos IR before any status change. Source: https://www.argusmedia.com/en/news-and-insights/latest-market-news/2636886-exxonmobil-to-accelerate-png-s-p-nyang-gas-development",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_modeling",
+    "terminal_id": "T100000130303",
+    "unit_id": "G100002030305",
+    "terminal_name": "Papua LNG Terminal",
+    "issue": "GEM models 'Papua LNG Terminal' Train 5 as a Kumul Petroleum unit (1.0 mtpa, Caution Bay onshore, source 'Elk and Antelope', note 'Will replace cancelled Train 3'). Sponsor/trade-press research shows Kumul Petroleum Holdings is pursuing a SEPARATE STANDALONE first-PNG FLNG project — offshore Gulf Province, fed by the Pandora & Uramu fields (PRLs 47 & 50), Wison New Energies pre-FEED awarded 18 Oct 2024 (completion ~Jun 2025), capacity ~1.5 mtpa, FID 2026/2027 (LNG Prime). It is explicitly NOT part of Papua LNG. GEM appears to have (a) conflated Kumul's offshore FLNG with the onshore Papua LNG complex and (b) understated capacity (1.0 vs 1.5 mtpa) and misattributed the feed fields/location.",
+    "severity": "medium",
+    "suggested_action": "Decide whether Kumul's FLNG should be split out as its own terminal (offshore Gulf Province; Pandora/Uramu feed; FSRU/FLNG; ~1.5 mtpa; Wison pre-FEED) rather than Papua LNG 'T5'. If kept as-is, at minimum correct capacity 1.0->1.5 mtpa, location/feed fields, and Floating/Offshore flags. Ambiguous modeling call left to human reviewer; no field edit staged. Sources: https://lngprime.com/lng-terminals/pngs-kumul-eyes-flng-fid-in-2026-or-2027/129843/ ; https://lngprime.com/contracts-and-tenders/kumul-awards-pre-feed-contract-to-wison-for-papua-new-guineas-first-flng/129741/",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_quality",
+    "terminal_id": "T100000130303",
+    "unit_id": "G100002030305",
+    "terminal_name": "Papua LNG Terminal",
+    "issue": "Owner/Parent on Papua LNG T5 reads 'Kumal Petroleum Holdings Ltd' — spelling error. Correct legal name is 'Kumul Petroleum Holdings Limited' (KPHL), PNG's national oil & gas company.",
+    "severity": "low",
+    "suggested_action": "Correct 'Kumal' -> 'Kumul' in the Owner and Parent fields for this unit. Verify against existing GEM 'Kumul Petroleum' entity (PNG LNG parent already uses 'Kumul Petroleum Trustee'/'Kumul Petroleum Holdings') to avoid a duplicate entity. Source: https://kumulpetroleum.com/",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change",
+    "terminal_id": "T100000131072",
+    "unit_id": "G100002107200",
+    "terminal_name": "PAWA PNG FSRU Project",
+    "issue": "PAWA PNG FSRU (12 FSRU/power-island units, Twenty20 Energy / Dirio Gas & Power / PNG govt) verified: no fresh developments found beyond the original 2022 'power island' announcements; no 2024-2025 progress. GEM 'shelved, no updates since July 2022' remains accurate. Cancelled terminals Liquid Niugini FLNG, Pandora FLNG, and Western LNG (Daru, Repsol/Horizon) also re-checked — no revival signals.",
+    "severity": "low",
+    "suggested_action": "No action; documenting re-verification of the shelved PAWA units and the three cancelled PNG export terminals.",
+    "researcher_initials": "AI-draft"
+  }
+]

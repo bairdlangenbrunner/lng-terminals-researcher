@@ -1,0 +1,142 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130423",
+    "unit_id": "G100002042301",
+    "terminal_name": "Zhuhai LNG Terminal",
+    "issue": "Zhuhai Golden Bay '绿能港' Phase 2 (5x 270,000 m3 tanks) went FULLY OPERATIONAL on 2026-04-21, raising the terminal's total LNG processing capacity to 7 mtpa (Phase1 3.5 + Phase2 3.5). GEM currently lists Phase 2 as Status=construction (LastUpdated 2026-03-26), and the GEM unit note even disputes GIIGNL-2025's earlier operating classification ('as of June 2025 no evidence of operation'). That dispute is now resolved IN FAVOR OF operating as of April 2026. Sources: Securities Times (stcn.com, pub. 2026-04-22), Sina Finance (2026-04-24), CNOOC/Zhuhai outlets.",
+    "severity": "high",
+    "suggested_action": "Change Status construction -> operating with ActualStartYear 2026 (ActualStartMonth 4). Per sweep rules, status transitions are NOT staged as a Status field edit and no timeline file is written (fetch_timeline endpoint down) — human to add the timeline entry. Verified URL: https://www.stcn.com/article/detail/3781664.html (PASS for 绿能港/投产).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "capacity_reconciliation",
+    "terminal_id": "T100000130392",
+    "unit_id": "G100002039203",
+    "terminal_name": "Rudong LNG Terminal (PetroChina)",
+    "issue": "Companion to the staged Capacity update on Phase 4 (6.5->3.25 mtpa). Base-total tension: official English Nantong gov release says the Phase 4 expansion brings the TERMINAL total to 10 mtpa, while GEM's existing operating Phases 1+2+3 already sum to 10.0 mtpa (3.5+3.0+3.5). If the 3.25 mtpa increment and the '10 mtpa total' are both correct, GEM's base (Phases 1-3) may be overstated by ~3.25 mtpa, OR the gov 'total' counts nameplate differently than GEM's per-phase sums (throughput vs design). Did NOT touch Phases 1-3 (operating, separate anchor-year sourcing). Flagging for the human to reconcile the whole-terminal capacity stack.",
+    "severity": "medium",
+    "suggested_action": "Reconcile Phase 4 increment (3.25 mtpa, well-sourced) against the post-expansion total (10 mtpa) and GEM's Phase 1-3 sum (10.0). Decide whether the Phase 4 figure alone should change (recommended, minimal) or whether the base needs a separate sourced review. Sources: en.nantong.gov.cn/2025-06/25/c_1103909.htm (total=10 mtpa), Chinese gov releases (increment=3.25 mtpa).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change_verified",
+    "terminal_id": "T100000130382",
+    "unit_id": "G100002038200",
+    "terminal_name": "Fuqing LNG Terminal",
+    "issue": "Capacity verification (potential 3.0 vs 6.5 mtpa trap). 2026 Fujian gov + CNPC sources headline '650万吨LNG接卸能力' (6.5 mtpa), but the receiving-station document explicitly states '本期规模为300万吨/年，并具备650万吨/年的接收能力' — i.e. the CURRENT construction phase = 3.0 mtpa nameplate, 6.5 mtpa is the ultimate berth/build-out design capacity. GEM's Phase 1 = 3.0 mtpa is CORRECT; do NOT bump to 6.5. Construction ongoing (tank dome gas-lift completed Jan 2026), op. expected early 2027 — matches GEM (construction, OriginalPlannedStart 2027).",
+    "severity": "low",
+    "suggested_action": "No edit. Keep Phase 1 = 3.0 mtpa. Optionally record the 6.5 mtpa ultimate design capacity in the wiki Background (see wiki file). Source: https://www.fujian.gov.cn/xwdt/tpxx/202601/t20260108_7072662.htm",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change_verified",
+    "terminal_id": "T100000130711",
+    "unit_id": "G100002071100",
+    "terminal_name": "Longkou Nanshan LNG Terminal",
+    "issue": "Phase 1 (PipeChina, 5 mtpa) re-verified: as of early 2026 main works complete, in testing/commissioning ('一期工程主体建设完工', Jan 2025; testing stage Jan 2026) — NOT yet declared commercial operation. GEM Status=construction is correct; LatestPlannedStart 2025 already slipped but no verified commercial-op date. Watch for commissioning in 2026.",
+    "severity": "low",
+    "suggested_action": "No edit now. Re-check for a commercial-operation announcement in H2 2026 (would be a future status_timeline -> operating). Source: https://finance.sina.com.cn/roll/2025-01-04/doc-inecuytx0588372.shtml",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change_verified",
+    "terminal_id": "T100000130796",
+    "unit_id": "G100002079600",
+    "terminal_name": "Sinopec Longkou LNG Terminal",
+    "issue": "Phase 1 (6.5 mtpa) re-verified: completed ~March 2025, in test stage as of Jan 2026; Sinopec's Aug 2025 semi-annual report says still under construction. GEM Status=construction correct. Capacity 6.5 mtpa matches.",
+    "severity": "low",
+    "suggested_action": "No edit. Watch for commissioning. Source: GEM note's cited Sinopec semi-annual report (money.finance.sina.com.cn id=11326983).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change_verified",
+    "terminal_id": "T100000130385",
+    "unit_id": "G100002038501",
+    "terminal_name": "Beihai LNG Terminal (PipeChina)",
+    "issue": "Phase II (operating) re-verified: '二期项目全容量投产' (full-capacity operation) reported 2025-12-30 (Sina Finance) and TK-05 tank online Jan 2025; storage rose 640,000->840,000 m3. GEM Phase II Status=operating, ActualStartYear=2025 — confirmed correct. Phase III (construction, Guangxi Gas Group, 6 mtpa, 8 tanks) construction ongoing, no commissioning — GEM construction correct.",
+    "severity": "low",
+    "suggested_action": "No edit (blue re-verify). Source: https://finance.sina.com.cn/enterprise/central/2025-12-30/doc-inhepszw4325438.shtml",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change_verified",
+    "terminal_id": "T100000130386",
+    "unit_id": "G100002038601",
+    "terminal_name": "Hainan LNG Terminal",
+    "issue": "Phase II Expansion (construction, 3 mtpa, 3x 220,000 m3 tanks) re-verified: broke ground 2024-12, in pile-foundation stage as of May 2025, target end-2027. GEM (construction, OriginalPlannedStart 2027) correct. Phase I operating, unchanged.",
+    "severity": "low",
+    "suggested_action": "No edit (blue re-verify). Source: https://yangpu.hainan.gov.cn/yangpu/ztdt/202412/a2bf6dd682294380be411875eef776dd.shtml",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change_verified",
+    "terminal_id": "T100000130420",
+    "unit_id": "G100002042002",
+    "terminal_name": "Zhejiang Ningbo LNG Terminal",
+    "issue": "Phase 3 (construction, CNOOC, 6 mtpa, 6x 270,000 m3 tanks) re-verified: earlier targeted late-2025 but GEM's own Nov 2025 source and broader reporting confirm still under construction at year-end 2025; no 2026 commissioning found. GEM construction correct. Phases 1 & 2 operating, unchanged.",
+    "severity": "low",
+    "suggested_action": "No edit (blue re-verify). Watch for 2026 commissioning. Source: http://zj.people.com.cn/BIG5/n2/2025/1116/c186327-41412908.html (GEM-cited).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change_verified",
+    "terminal_id": "T100000130392",
+    "unit_id": "G100002039200",
+    "terminal_name": "Rudong LNG Terminal (PetroChina)",
+    "issue": "Phases 1-3 (operating, 3.5/3.0/3.5 mtpa) re-verified current; no status/capacity change found (Phase 4 capacity handled separately as a staged update). Ownership (PetroChina Jiangsu LNG Co / Kunlun 55% + Pacific Energy 35% + Jiangsu Guoxin 10%) unchanged.",
+    "severity": "low",
+    "suggested_action": "No edit (blue re-verify) on Phases 1-3.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change_verified",
+    "terminal_id": "T100000130391",
+    "unit_id": "G100002039100",
+    "terminal_name": "Jiangmen Guanghai Bay LNG Terminal",
+    "issue": "Proposed (Phase 1 3 mtpa / Phase 2 9 mtpa) re-verified: still in pre-approval / preliminary stage; on Jiangmen 2025 key-projects list; Phase 1 = 300万吨/年 matches GEM. Matches GEM's detailed Q1 2026 note (status corrected shelved->proposed). Location still unconfirmed per GEM note.",
+    "severity": "low",
+    "suggested_action": "No edit. Source: http://www.jiangmen.gov.cn/attachment/0/332/332024/3285122.pdf (2025 key projects).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change_verified",
+    "terminal_id": "T100000131057",
+    "unit_id": "G100002105700",
+    "terminal_name": "Jieyang LNG Terminal (PetroChina)",
+    "issue": "Shelved (inferred 2y) re-verified: only the 2021-2022 14th-FYP listings; no concrete advancement found in 2024-2026. GEM shelved-inferred-2y consistent with its own note ('no news for two years').",
+    "severity": "low",
+    "suggested_action": "No edit. Continue monitoring for the 15th FYP (2026-2030) window.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change_verified",
+    "terminal_id": "T100000131110",
+    "unit_id": "G100002111000",
+    "terminal_name": "Shanwei LNG Terminal",
+    "issue": "Shelved (inferred 2y) re-verified: appears only in Shanwei planning docs (2023 carbon-peak plan, Jan 2024 14th FYP 'advance preliminary work'); no FID/construction. Owner still unknown. GEM consistent.",
+    "severity": "low",
+    "suggested_action": "No edit.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change_verified",
+    "terminal_id": "T100000131056",
+    "unit_id": "G100002105600",
+    "terminal_name": "Chuanbi Island LNG Terminal",
+    "issue": "Cancelled (inferred 4y, New Fortress Energy) re-verified: no revival; project absent from all 2025-2026 Zhejiang LNG project lists; NFE in global retrenchment. GEM cancelled correct.",
+    "severity": "low",
+    "suggested_action": "No edit.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change_verified",
+    "terminal_id": "T100000130798",
+    "unit_id": "G100002079800",
+    "terminal_name": "Weihai LNG Terminal",
+    "issue": "Cancelled (inferred 4y, SK Inc + CNPC) re-verified: no revival; not mentioned in PetroChina 2025 annual report. GEM cancelled correct.",
+    "severity": "low",
+    "suggested_action": "No edit.",
+    "researcher_initials": "AI-draft"
+  }
+]

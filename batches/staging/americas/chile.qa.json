@@ -1,0 +1,92 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130558",
+    "unit_id": "G100002055800",
+    "terminal_name": "Penco Lirquén FSRU",
+    "issue": "New permitting milestone after GEM's 2025-08-04 update: on 2026-02-23 Chile's Comité de Ministros RATIFIED the favorable Environmental Qualification Resolution (RCA) for Terminal GNL Penco-Lirquén, rejecting invalidation requests filed against the 2024 resolution (which had itself rejected complaints against the Oct-2023 approval). The project's environmental approval therefore stands as of Feb 2026. This does NOT warrant a lifecycle change: GEM correctly holds 'proposed' — the operator stated Sept 2024 its focus is renewable-energy projects, there is no FID, and the original Höegh FSRU 20-year charter (2015) long lapsed. Add a 2026-02 timeline note ('RCA ratified by Comité de Ministros') on next live-DB touch and refresh LastUpdated; do not change Status.",
+    "severity": "low",
+    "suggested_action": "Append a timeline entry (Feb 2026 RCA ratification) and bump LastUpdated; keep Status='proposed'. Cite https://www.diarioconcepcion.cl/politica/2026/02/23/comite-de-ministros-ratifica-rca-favorable-para-terminal-gnl-penco-lirquen.html (verified PASS).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ownership",
+    "terminal_id": "T100000130558",
+    "unit_id": "G100002055800",
+    "terminal_name": "Penco Lirquén FSRU",
+    "issue": "Name/entity cross-reference (NOT an equity change): 2023-2026 Chilean regulatory sources name the project titular/SPV as 'GM Energy SpA' (and BNamericas titles the project 'ex GNL Octopus'). GEM's Owner field is Cheniere Energy Inc [50%] / Biobiogenera [50%]. These appear consistent rather than conflicting: Biobiogenera is the local Cheniere-linked developer vehicle (Chilean Norton/Salinas families), and 'GM Energy SpA' is the project-company name holding the RCA — equity remains Cheniere 50% + Chilean families 50%. No verified equity change found, so no Owner edit is staged. Flag so the reviewer can decide whether 'GM Energy SpA' belongs in OtherNames/operator for traceability against Chilean filings.",
+    "severity": "low",
+    "suggested_action": "Consider adding 'GM Energy SpA' (project titular) and 'GNL Octopus' as OtherNames/alias for searchability; verify the GM Energy <-> Biobiogenera/Cheniere relationship before any owner-field change. Do NOT replace the existing 50/50 owner split on the strength of the titular name alone.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_consistency",
+    "terminal_id": "T100000130558",
+    "unit_id": "G100002055800",
+    "terminal_name": "Penco Lirquén FSRU",
+    "issue": "Internal field tension: Status='proposed' but ShelvedYear=2022 is populated, and VesselOwner/VesselOperator='Höegh Evi' while the Owner field carries no vessel owner. The 2022 shelve event and the subsequent Oct-2023 / Feb-2026 RCA developments are both real, so the record reads as a project that was shelved then revived on paper but not actually advanced. Reviewer should confirm whether ShelvedYear should remain set given Status='proposed', and whether the Höegh charter is still notionally in place (the original 2015 20-year charter appears lapsed/at risk of reassignment per 2017 reporting).",
+    "severity": "low",
+    "suggested_action": "Reconcile ShelvedYear vs Status='proposed' per lifecycle rules; re-verify the FSRU vessel/charter status (Höegh Evi) before relying on the VesselOwner/VesselOperator cells.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "entity",
+    "terminal_id": "T100000130560",
+    "unit_id": "G100002056000",
+    "terminal_name": "Quintero LNG Terminal",
+    "issue": "GEM internal entity-cleanup markers, surfaced for the Ownership Team (NOT a research finding): the Owner and Parent fields carry '[TO BE DELETED]' tags on 'ENAP', 'EIG Global Energy Partners', and 'EIG Global Energy Partners [40.0%]'. The underlying ownership itself is correct and current (EIG + Fluxys 80% consortium + ENAP 20%, per the operator's official shareholders page, verified PASS). These pending-deletion entity duplicates predate this sweep and should be resolved in the GEM entity system, not via a terminal-record value edit.",
+    "severity": "low",
+    "suggested_action": "Route to Ownership Team to resolve the '[TO BE DELETED]' duplicate entities (ENAP, EIG Global Energy Partners); no change to the displayed 40/40/20 ownership split, which is verified accurate.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no-change",
+    "terminal_id": "T100000130552",
+    "unit_id": "G100002055200",
+    "terminal_name": "Colbun FLNG Terminal",
+    "issue": "Cancelled FLNG import project (Colbún SA / AES Andes; cancelled 2018, shelved 2016, 1.5 mtpa). No post-cancellation developments found; historical record is accurate. Also reviewed sibling cancelled records Gas Atacama FLNG Terminal (T100000130554, cancelled 2018) and Quintero Expansion unit (G100002056001, cancelled 2017) — both stable, no changes.",
+    "severity": "low",
+    "suggested_action": "No action. Verified current as of Jun 2026 sweep.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "discovery-dedup",
+    "terminal_id": "T100000130558",
+    "unit_id": "",
+    "terminal_name": "Penco Lirquen FSRU",
+    "issue": "The Biobio/Concepcion regas lead in the brief is this existing GEM terminal (a.k.a. Octopus LNG, GNL Penco-Lirquen; Cheniere 50% / Biobiogenera 50%; FSRU, ~2.7 mtpa, Concepcion Bay). Recurrently described as 'Chile's second import terminal'. 2023-2026 developments (Committee of Ministers environmental approval upheld Oct-2023 and again early-2026; Duro Felguera EPC award; ongoing court/indigenous-consultation challenges; target ops ~2027) are Update material, not a new terminal.",
+    "severity": "low",
+    "suggested_action": "No discovery action; route status/EPC/approval refresh to a Chile Update batch.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "discovery-dedup",
+    "terminal_id": "T100000130716",
+    "unit_id": "",
+    "terminal_name": "Talcahuano FSRU",
+    "issue": "Second Biobio/Concepcion-area regas lead. Already in GEM as Talcahuano FSRU (Inversiones GNL Talcahuano SpA; near-shore FSRU, ~2.3 mtpa; status shelved/confirmed). No distinct or revived separate record found.",
+    "severity": "low",
+    "suggested_action": "No discovery action.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "discovery-no-gap",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Chile new-FSRU / new-import-terminal hunt",
+    "issue": "No new marine LNG import terminal or newly chartered FSRU for Chile beyond GEM's 6 terminals (Quintero + Mejillones operating; Penco Lirquen proposed; Talcahuano shelved; Colbun FLNG & Gas Atacama FLNG cancelled). Magallanes/Punta Arenas activity is GREEN HYDROGEN / e-fuels (H2 Magallanes by TotalEnergies/Total Eren, HIF Haru Oni e-methanol, Fluxys-ENAP H2) — LH2/NH3/synthetic-fuel, explicitly OUT OF SCOPE per methodology, not LNG terminals.",
+    "severity": "low",
+    "suggested_action": "No discovery action; GEM coverage of Chilean marine LNG terminals is comprehensive.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "coverage-gap-subthreshold",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Gas Stream satellite regasification plants (Chile)",
+    "issue": "Engie Energia Chile owns Gas Stream, which operates ~9 small-scale SATELLITE regasification plants (truck-fed / 'virtual pipeline'), reported acquired 2019. These are sub-threshold small-scale/distribution regas (not ship-served marine import terminals) and are a known general GEM small-scale coverage gap rather than a missing tracker-scope terminal.",
+    "severity": "low",
+    "suggested_action": "No new_terminal. Flag only if GEM decides to expand small-scale/satellite-LNG coverage; otherwise informational.",
+    "researcher_initials": "AI-draft"
+  }
+]

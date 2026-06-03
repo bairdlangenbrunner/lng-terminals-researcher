@@ -101,6 +101,36 @@ def _cap_conflict_fill(pct):
     return "red"
 
 
+_PRIMARY_TIER_MARKERS = ("1a", "1b", "1c")
+
+
+def assign_confidence(source_tier, n_corroborating_verified):
+    """Map (source tier, # of url_verifier-passed corroborating sources) to a
+    confidence color for the update sheets, per Update SOP §6 + the batch rule
+    "2-3 corroborating sources = high; a single source downgrades high->medium":
+
+      green  (high)   -> >=2 independent corroborating sources, OR a single
+                         primary/regulatory/sponsor-IR source (Tier 1a/1b/1c).
+      yellow (medium) -> exactly one working NON-primary source (the
+                         single-source high->medium downgrade), or a value that
+                         is entity-confirmed but implied/contested.
+      red    (low)    -> only a weak/unverifiable source, or none -> per SOP §6
+                         prefer leaving the cell BLANK with a qa_review note.
+
+    Tunable: a lone primary source returns green here (Update SOP §6). To make
+    ANY single source yellow regardless of tier, drop the is_primary branch.
+    """
+    n = int(n_corroborating_verified or 0)
+    tier = (source_tier or "").strip().lower().replace("tier", "").strip()
+    is_primary = any(m in tier for m in _PRIMARY_TIER_MARKERS) or any(
+        w in tier for w in ("primary", "regulator", "sponsor", "filing"))
+    if n >= 2:
+        return "green"
+    if n == 1:
+        return "green" if is_primary else "yellow"
+    return "red"
+
+
 # Per-sheet descriptions written into the README sheet at build time, so a
 # researcher opening the xlsx without prior context knows what each tab is for.
 # When you add a new sheet builder above, add its description here — the README
@@ -118,6 +148,17 @@ SHEET_DESCRIPTIONS = {
         "Columns: field_name, old_value, new_value, ref_url, confidence, source_tier, "
         "source_notes, scope_note, researcher_initials. new_value cell is color-coded "
         "by confidence (green=primary/regulatory, yellow=single non-primary, red=weak)."
+    ),
+    "updates_all_fields": (
+        "PRIMARY update deliverable: the full all_fields GEM-CSV laid out in its EXACT "
+        "column order (one row per in-scope unit-row), so it reads/edits like the DB. "
+        "Cells we researched are highlighted by confidence — green (high: >=2 corroborating "
+        "or a primary source), yellow (medium: single non-primary source), red (low: weak — "
+        "prefer leaving blank). A researched [ref] cell holds the 2-3 verified URLs (comma-"
+        "separated) and takes its data cell's color. Un-researched cells are shown verbatim, "
+        "uncolored. Read-only columns are italicized and never written. Two meta columns "
+        "(_changed_fields, _confidence_summary) are appended at the far right; everything left "
+        "of them mirrors the all_fields CSV exactly."
     ),
     "new_terminals": (
         "Discovery workflow: one row per newly discovered terminal, in GEM CSV "
@@ -184,7 +225,10 @@ SHEET_DESCRIPTIONS = {
         "non-operating (gem_operating_units=0, gem_total_units>0): the note gives "
         "the non-op breakdown by status (e.g. Pecém: '1 proposed (5.64 mtpa); 1 "
         "retired (3.8 mtpa)') so a 0 vs a positive GIIGNL number reads as a "
-        "status disagreement, not missing GEM data. `insight` + `suggested_resolution` "
+        "status disagreement, not missing GEM data. analyst_note is ALSO auto-filled "
+        "under rule (f) above with the GEM researcher note that documents a deliberate "
+        "hold-as-non-operating decision (Corpus Christi), so the reviewer sees that "
+        "reasoning inline without opening the unit. `insight` + `suggested_resolution` "
         "(cols B, C) translate each flagged row for a human: `insight` says in plain "
         "language what the disagreement IS; `suggested_resolution` says whether GEM or "
         "GIIGNL 2026 is likely more accurate and the action. Deterministic verdicts — "
@@ -193,7 +237,17 @@ SHEET_DESCRIPTIONS = {
         "is its SOLE source → 'replace with GIIGNL 2026'; (b) status-lag (op=0) → 'GEM "
         "status likely current, verify restart'; (c) FSRU nameplate-vs-sendout → metric "
         "mismatch; (d) <5% delta → 'minor, rounding'; (e) benign owner delta (GEM = "
-        "operating/JV co, GIIGNL = shareholders, or naming noise) → 'no action'. Material "
+        "operating/JV co, GIIGNL = shareholders, or naming noise) → 'no action'; "
+        "(f) NON-OP-EXPLAINS-SHORTFALL — GIIGNL's operating total EXCEEDS GEM's and the "
+        "excess is covered by GEM construction/proposed units (carried as "
+        "`gem_nonop_explanation` in the diff): GIIGNL counts trains as operating that "
+        "GEM deliberately holds as non-operating (producing LNG but commercial ops not "
+        "declared), often with a GEM researcher note saying so. This PRE-EMPTS rule (a) "
+        "→ 'do NOT bump GEM capacity; verify only whether commercial operations were "
+        "declared, then route a STATUS update'. The researcher note is QUOTED in "
+        "suggested_resolution and echoed into analyst_note. Worked example: Corpus "
+        "Christi (GIIGNL 21 mtpa / 7 'Stage III' trains as operating vs GEM 15 mtpa "
+        "operating + Stage 3 T04-T10 held as construction). Material "
         "non-GIIGNL capacity conflicts and non-benign owner deltas get a `NEEDS RESEARCH` "
         "placeholder with a LIGHT-YELLOW fill — these are resolved by the agentic research "
         "pass, which writes a verdict into staged_recon_verdicts.json (keyed terminal_id + "
@@ -221,8 +275,13 @@ SHEET_DESCRIPTIONS = {
         "terminal-level (it doesn't pin THIS unit's phase), it does NOT clear the gem-only "
         "flag (unlike the two unit-level confirmations above). Columns: country, "
         "gem_terminal_name, gem_unit_name, status, capacity_mtpa, start_year "
-        "(status-appropriate anchor), section_type, owners, giignl_narrative_mention, "
-        "gem_only_flag."
+        "(status-appropriate anchor), section_type, owners, researcher_notes, "
+        "giignl_narrative_mention, gem_only_flag. `researcher_notes` is the GEM unit's "
+        "own note: it frequently explains WHY a unit is held non-operating (Corpus "
+        "Christi Stage 3 T04-T10: 'trains producing LNG but commercial operations not "
+        "declared, so holding as construction') — so a 'GEM has, GIIGNL doesn't' row "
+        "reads as a deliberate, documented status decision, not a GEM omission. Such a "
+        "note ALSO drives the operating sheet's non-op-shortfall verdict (rule f)."
     ),
     "giignl_to_action": (
         "Workflow routing: per-finding action recommendations. Categories: "
@@ -308,6 +367,15 @@ SHEET_DESCRIPTIONS = {
         "verification, negative-result log entries. severity column color-coded "
         "(red=high, yellow=medium)."
     ),
+    "wiki_updates": (
+        "Narrative / Background content that does NOT map to a structured DB "
+        "column — suspensions/force majeure, sanctions, disputes, JV & strategic "
+        "ownership context, linked pipelines/power plants, port status, notable "
+        "historical events. Destined for the GEM.wiki Background; kept separate "
+        "from the field-level `updates` sheet so non-column findings aren't lost. "
+        "verification_status color-coded (green=CONFIRMED, yellow=single-source, "
+        "red=CONFLICTING DATA)."
+    ),
 }
 
 # Columns NEVER written by this script (per gem_db_schema.md)
@@ -368,6 +436,10 @@ def _write_row(ws, row_dict, headers, row_idx, confidence_map=None):
         if h in READ_ONLY_COLUMNS:
             continue  # never write read-only columns
         value = row_dict.get(h)
+        if isinstance(value, (list, tuple)):
+            value = ", ".join(str(x) for x in value)
+        elif isinstance(value, dict):
+            value = "; ".join(f"{k}={v}" for k, v in value.items())
         cell = ws.cell(row=row_idx, column=col_idx, value=value)
         cell.alignment = Alignment(wrap_text=False, vertical="top")
         cell.border = CELL_BORDER
@@ -462,6 +534,98 @@ def _populate_readme_sheet_defs(wb):
         start_row += 1
 
 
+def _tid_country_map(gem_csv_path):
+    """TerminalID -> Country/Area from the GEM export (authoritative country names)."""
+    import csv as _csv
+    m = {}
+    try:
+        with open(gem_csv_path, encoding="utf-8-sig", newline="") as f:
+            for row in _csv.DictReader(f):
+                tid = (row.get("TerminalID") or "").strip()
+                if tid:
+                    m[tid] = (row.get("Country/Area") or "").strip()
+    except (FileNotFoundError, OSError):
+        pass
+    return m
+
+
+def _record_country(rec, tidmap):
+    """Resolve a staged record's country: prefer the GEM export (via terminal_id,
+    so even country-less qa rows resolve), else the record's own country field."""
+    if not isinstance(rec, dict):
+        return None
+    tid = (rec.get("terminal_id") or "").strip()
+    if tid and tidmap.get(tid):
+        return tidmap[tid]
+    for k in ("country", "Country/Area"):
+        v = (rec.get(k) or "").strip()
+        if v:
+            return v
+    return None
+
+
+def _country_breakdown(gem_csv_path, updates=(), qa=(), wiki=(),
+                       monitor=(), new_terms=(), new_units=()):
+    """Partition the countries this batch touched into 'changes found' vs
+    'verified, no changes' for the README. Changes found = a country with >=1
+    proposed field change (non-blue update), a new terminal/unit, or a
+    status-timeline action (routed to qa because the timeline endpoint is down).
+    Everything else checked (blue re-verifies, informational qa/wiki) is
+    verified-no-change."""
+    tidmap = _tid_country_map(gem_csv_path)
+    checked, changed = set(), set()
+
+    def see(rec, is_change=False):
+        c = _record_country(rec, tidmap)
+        if c:
+            checked.add(c)
+            if is_change:
+                changed.add(c)
+
+    for u in updates:
+        see(u, (u.get("confidence") or "").strip().lower() not in ("blue", ""))
+    for q in qa:
+        see(q, (q.get("category") or "").strip().lower() == "status_timeline")
+    for w in wiki:
+        see(w)
+    for mrec in monitor:
+        see(mrec)
+    for t in new_terms:
+        see(t, True)
+    for nu in new_units:
+        see(nu, True)
+    return sorted(checked), sorted(changed), sorted(checked - changed)
+
+
+def _append_country_breakdown(wb, checked, changed, not_found):
+    """Append the 'Countries checked' block to the README (lands between the
+    input summary and the sheet-definitions block)."""
+    if "README" not in wb.sheetnames:
+        return
+    ws = wb["README"]
+    r = ws.max_row + 2
+    hdr = ws.cell(row=r, column=1, value=f"Countries checked in this region ({len(checked)})")
+    hdr.font = Font(bold=True, size=12)
+    r += 1
+    note = ws.cell(row=r, column=1, value=(
+        '"Changes found" = >=1 proposed field change (non-blue), new terminal/unit, '
+        'or status-timeline action. "Verified, no changes" = checked but only '
+        're-verifications / informational notes.'))
+    note.font = Font(italic=True, color="666666")
+    r += 2
+    c1 = ws.cell(row=r, column=1, value=f"Changes found ({len(changed)})")
+    c1.font = Font(bold=True)
+    c1.alignment = Alignment(vertical="top")
+    cv = ws.cell(row=r, column=2, value=(", ".join(changed) if changed else "(none)"))
+    cv.alignment = Alignment(wrap_text=True, vertical="top")
+    r += 1
+    c2 = ws.cell(row=r, column=1, value=f"Verified, no changes ({len(not_found)})")
+    c2.font = Font(bold=True)
+    c2.alignment = Alignment(vertical="top")
+    cv2 = ws.cell(row=r, column=2, value=(", ".join(not_found) if not_found else "(none)"))
+    cv2.alignment = Alignment(wrap_text=True, vertical="top")
+
+
 def build_updates_sheet(wb, updates):
     ws = wb.create_sheet("updates")
     # Common update fields plus the cluster of [ref] partners
@@ -476,6 +640,120 @@ def build_updates_sheet(wb, updates):
         confidence_map = {"new_value": u.get("confidence")}
         _write_row(ws, u, headers, i, confidence_map=confidence_map)
     _autosize(ws)
+
+
+def build_update_csv_shaped_sheet(wb, updates, gem_csv_path, scope_terminal_ids=None):
+    """The all_fields-CSV-shaped update deliverable.
+
+    One row per in-scope GEM unit-row, columns in the EXACT gem_export.csv order
+    (read from its header — never hard-coded, survives schema drift), so a
+    reviewer can read/edit it as if it were the DB. Researched cells get a
+    per-cell R/Y/G confidence fill; a researched field's paired "<field> [ref]"
+    cell is filled with the comma-joined verified URLs and takes the same color.
+    Un-researched cells are emitted verbatim and uncolored. Read-only columns are
+    italicized and never written. Two meta columns (_changed_fields,
+    _confidence_summary) are appended at the END so columns A.. mirror the CSV
+    exactly. Models build_candidate_edits_sheet.
+
+    `updates` are the same per-(terminal_id, unit_id, field_name) records as the
+    `updates` sheet; they are inverted here into a per-unit field map. Each record
+    may carry: new_value, confidence (green/yellow/red), ref_urls (list of verified
+    URLs for the paired [ref] cell). A record with no new_value still colors the
+    cell (a re-verification at its current value).
+
+    scope_terminal_ids: emit every GEM unit-row whose TerminalID is in this set
+    (so units with no changes still appear — e.g. the full-country pass). If None,
+    falls back to the terminal_ids present in `updates`.
+    """
+    ws = wb.create_sheet("updates_all_fields")
+    if not Path(gem_csv_path).exists():
+        ws["A1"] = f"ERROR: gem_export.csv not found at {gem_csv_path}"
+        return
+
+    # Invert per-field records -> by_unit[(terminal_id, unit_id)][field_name] = record
+    by_unit: dict[tuple, dict] = {}
+    for u in updates:
+        key = (u.get("terminal_id"), u.get("unit_id"))
+        by_unit.setdefault(key, {})[u.get("field_name")] = u
+    scope_tids = set(scope_terminal_ids) if scope_terminal_ids else {k[0] for k in by_unit}
+
+    with open(gem_csv_path, encoding="utf-8") as f:
+        reader = csv.reader(f)
+        header = next(reader)
+        if header and header[0].startswith("﻿"):
+            header[0] = header[0][1:]
+        out_header = header + ["_changed_fields", "_confidence_summary"]
+        _write_header(ws, out_header)
+        try:
+            tid_idx = header.index("TerminalID")
+            uid_idx = header.index("UnitID")
+        except ValueError:
+            ws["A1"] = "ERROR: TerminalID/UnitID column missing from gem_export.csv"
+            return
+        col_of = {name: i for i, name in enumerate(header)}
+
+        row_idx = 2
+        for row in reader:
+            if not row or len(row) <= max(tid_idx, uid_idx):
+                continue
+            tid, uid = row[tid_idx], row[uid_idx]
+            if tid not in scope_tids:
+                continue
+            field_updates = by_unit.get((tid, uid), {})
+
+            work = list(row)
+            if len(work) < len(header):
+                work += [""] * (len(header) - len(work))
+
+            fills: dict[int, str] = {}  # 0-based col idx -> confidence
+            changed = []        # fields whose value actually differs from the DB
+            researched = []     # (field, confidence) for every cell we colored
+            for fname, rec in field_updates.items():
+                if not fname or fname in READ_ONLY_COLUMNS:
+                    continue  # never write read-only columns
+                ci = col_of.get(fname)
+                if ci is None:
+                    continue
+                conf = rec.get("confidence", "")
+                new_val = rec.get("new_value")
+                if new_val is not None and str(new_val) != "":
+                    if str(new_val) != str(work[ci]):  # compare before overwriting
+                        changed.append(fname)
+                    work[ci] = new_val
+                fills[ci] = conf
+                researched.append((fname, conf))
+                # Paired [ref] column gets the comma-joined verified URLs. The
+                # name is usually "<field> [ref]", but some data columns pair with a
+                # differently-named ref (ConstructionYear -> "ConstructionDate [ref]",
+                # ProposalYear -> "ProposalDate [ref]", ActualStartYear -> "StartDate
+                # [ref]"); a record may name it explicitly via "ref_field".
+                ref_urls = rec.get("ref_urls") or []
+                ref_name = rec.get("ref_field") or (
+                    fname if fname.endswith("[ref]") else f"{fname} [ref]")
+                rci = col_of.get(ref_name)
+                if rci is not None and ref_urls and ref_name not in READ_ONLY_COLUMNS:
+                    work[rci] = ", ".join(ref_urls)
+                    fills[rci] = conf
+
+            changed_str = ", ".join(sorted(set(changed)))
+            conf_summary = "; ".join(f"{f}={c}" for f, c in researched if c)
+            full = work + [changed_str, conf_summary]
+            for col_idx, value in enumerate(full, start=1):
+                col_name = out_header[col_idx - 1]
+                cell = ws.cell(row=row_idx, column=col_idx, value=value)
+                cell.alignment = Alignment(wrap_text=False, vertical="top")
+                cell.border = CELL_BORDER
+                if col_name in READ_ONLY_COLUMNS:
+                    cell.font = Font(italic=True, color="666666")
+                ci0 = col_idx - 1
+                if ci0 in fills:
+                    cell.fill = CONFIDENCE_TO_FILL.get(fills[ci0], NONE_FILL)
+            row_idx += 1
+
+    _autosize(ws, max_width=40)
+    # Freeze the header row + identity columns through UnitName (or UnitID).
+    anchor_idx = col_of.get("UnitName", col_of.get("UnitID", 1))
+    ws.freeze_panes = f"{get_column_letter(anchor_idx + 2)}2"
 
 
 def build_new_terminals_sheet(wb, new_terminals):
@@ -1125,12 +1403,77 @@ def _owner_delta_is_benign(m):
     return False
 
 
-def _classify_disagreement(m):
+# Tolerance (mtpa) when testing whether GEM's non-operating capacity covers the
+# amount GIIGNL counts above GEM's operating total — absorbs GIIGNL's 0.1-mtpa
+# rounding and small per-train estimate drift so the test isn't brittle.
+_SHORTFALL_COVER_TOL_MTPA = 0.6
+
+
+def _nonop_explains_shortfall(m):
+    """Detect the "GIIGNL counts capacity GEM deliberately holds as non-operating"
+    pattern (the Corpus Christi case in issue #6): GIIGNL's OPERATING total sits ABOVE
+    GEM's operating total because GIIGNL treats trains as operating that GEM models as
+    CONSTRUCTION/proposed — and (often) a GEM researcher note records that as a
+    deliberate position (trains producing LNG but commercial operations not declared).
+
+    This is a STATUS + train-ORGANIZATION divergence, not a stale GEM capacity figure,
+    so the GIIGNL-edition-supersede rule must NOT blind-bump GEM's operating capacity.
+
+    Fires only when ALL hold (conservative, to avoid swallowing a genuine stale-edition
+    bump where GIIGNL simply re-measured the SAME operating trains):
+      * GIIGNL capacity > GEM capacity by a non-trivial margin (the gap is GIIGNL
+        counting MORE, not a rounding wobble); and
+      * the GEM project has >=1 forward (construction/proposed) non-operating unit; and
+      * those forward units' combined capacity COVERS the gap (within tolerance) — i.e.
+        the excess GIIGNL counts is plausibly the not-yet-operating phase, not extra
+        nameplate on the operating trains.
+
+    Returns (fires: bool, gap_mtpa: float, expl: dict) where expl is the diff's
+    gem_nonop_explanation (carries preop_units + researcher_notes)."""
+    expl = m.get("gem_nonop_explanation") or {}
+    rep, gem = m.get("report_capacity_mtpa"), m.get("gem_capacity_mtpa")
+    if rep is None or gem is None:
+        return (False, 0.0, expl)
+    gap = round(rep - gem, 2)
+    if gap <= _SHORTFALL_COVER_TOL_MTPA:        # GIIGNL must count MORE, materially
+        return (False, gap, expl)
+    preop_units = expl.get("preop_units") or []
+    preop_cap = expl.get("preop_capacity_mtpa") or 0.0
+    if not preop_units:
+        return (False, gap, expl)
+    covers = preop_cap + _SHORTFALL_COVER_TOL_MTPA >= gap
+    return (bool(covers), gap, expl)
+
+
+def _quote_researcher_notes(expl, limit=2):
+    """Render the GEM researcher notes from a gem_nonop_explanation into a compact
+    quoted string for the insight/resolution/analyst_note cells. Quotes up to `limit`
+    notes (the explanatory note usually lives on the construction unit; a project
+    rarely has more than one or two distinct notes)."""
+    notes = (expl or {}).get("researcher_notes") or []
+    bits = []
+    for n in notes[:limit]:
+        unit = n.get("unit") or "unit"
+        txt = (n.get("note") or "").strip()
+        if txt:
+            bits.append(f'GEM researcher note on "{unit}": "{txt}"')
+    return "  ".join(bits)
+
+
+def _classify_disagreement(m, suppress_nonop_insight=False):
     """Plain-language (insight, suggested_resolution, needs_research) for a flagged
     operating project-row. Deterministic rules settle the GIIGNL-edition-supersede,
-    status-lag, FSRU-metric, minor-delta, and benign-owner cases; material non-GIIGNL
-    capacity conflicts and non-benign owner deltas return needs_research=True with a
-    _NEEDS_RESEARCH placeholder the research pass / staged_recon_verdicts.json overrides.
+    non-op-shortfall, status-lag, FSRU-metric, minor-delta, and benign-owner cases;
+    material non-GIIGNL capacity conflicts and non-benign owner deltas return
+    needs_research=True with a _NEEDS_RESEARCH placeholder the research pass /
+    staged_recon_verdicts.json overrides.
+
+    `suppress_nonop_insight`: when a researched staged verdict (without its own insight)
+    will supply the resolution, the non-op-shortfall branch still SETTLES the capacity
+    facet (so it doesn't fall through to a NEEDS RESEARCH placeholder) but emits a
+    neutral cross-reference instead of asserting the structural narrative, which a human
+    may have overruled (see the caller's Yuedong note).
+
     Rule spec lives in the giignl_diff_operating SHEET_DESCRIPTIONS entry."""
     dis = m.get("disagreements") or []
     if not dis:
@@ -1162,7 +1505,52 @@ def _classify_disagreement(m):
             "records terminal sendout — different bases, not necessarily a real conflict.")
         resolution.append("Confirm metric basis (nameplate vs sendout); usually no capacity change.")
     elif has_cap:
-        if years and not has_non and max(years) < 2026:
+        nonop_fires, gap, expl = _nonop_explains_shortfall(m)
+        if nonop_fires and suppress_nonop_insight:
+            # A researched verdict will replace the resolution; don't assert the
+            # structural narrative (the human may have found a different cause). Just
+            # settle the capacity facet with a neutral pointer so it doesn't dangle as
+            # NEEDS RESEARCH, and let the staged verdict speak.
+            insight.append(
+                f"Capacity delta {pct}% (GIIGNL={rep}, GEM={gem}); GEM also has "
+                f"construction/proposed phases at this terminal — see suggested_resolution "
+                f"for the researched determination.")
+        elif nonop_fires:
+            # GIIGNL counts forward-phase capacity GEM holds as non-operating. This
+            # PRE-EMPTS the edition-supersede rule below: GIIGNL's higher number is
+            # NOT a newer measurement of the same operating trains, so bumping GEM's
+            # operating capacity to it would wrongly fold in not-yet-operating trains.
+            preop = expl.get("preop_units") or []
+            preop_desc = "; ".join(
+                f"'{u['unit_name']}' ({u['status']}, {u['capacity_mtpa']} mtpa)"
+                for u in preop)
+            insight.append(
+                f"GIIGNL counts ~{gap:g} mtpa more than GEM's operating total here, but that "
+                f"gap is capacity GEM models as NON-operating (construction/proposed): "
+                f"{preop_desc}. GIIGNL treats trains as operating once producing LNG; GEM holds "
+                f"them off 'operating' until commercial operations are declared, and the two "
+                f"sources also split this stage into different train counts "
+                f"(report_train_count={m.get('report_train_count')} GIIGNL trains vs GEM's "
+                f"separate non-op units). This is a status / train-organization difference, "
+                f"not a stale GEM capacity figure.")
+            note_quote = _quote_researcher_notes(expl)
+            if note_quote:
+                resolution.append(
+                    "Do NOT bump GEM's operating capacity to the GIIGNL value — GEM "
+                    "deliberately holds this stage as non-operating. " + note_quote +
+                    "  Verify only whether commercial operations have since been declared "
+                    "for those trains; if so, route a STATUS update (construction → "
+                    "operating) — not a capacity overwrite.")
+            else:
+                resolution.append(
+                    "Do NOT bump GEM's operating capacity to the GIIGNL value — the excess "
+                    "GIIGNL counts matches GEM's construction/proposed phase(s), so this is "
+                    "a status difference (GIIGNL counts a phase GEM hasn't moved to "
+                    "operating). Verify whether those trains have reached commercial "
+                    "operation; if so, route a STATUS update, not a capacity overwrite.")
+            # Settled deterministically (no research placeholder for the capacity facet);
+            # fall through so the owner facet still classifies.
+        elif years and not has_non and max(years) < 2026:
             y = max(years)
             insight.append(
                 f"GEM capacity ({gem} mtpa) is itself sourced from GIIGNL {y}; "
@@ -1312,10 +1700,33 @@ def build_giignl_diff_operating_sheet(wb, diff, recon_verdicts=None):
                 nonop_by_terminal.get(
                     (m.get("gem_terminal_id"), m.get("section_type_gem")), []),
                 m.get("gem_total_units"))
-        # Insight + GEM-vs-GIIGNL verdict. A researched verdict in
-        # staged_recon_verdicts.json overrides the deterministic needs-research placeholder.
-        insight, resolution, needs_research = _classify_disagreement(m)
+        # A researched verdict in staged_recon_verdicts.json (if present for this row)
+        # overrides the deterministic suggested_resolution — and, when it doesn't carry
+        # its own insight, also SUPPRESSES the deterministic non-op-shortfall narrative
+        # below. A human who researched the row may have reached a different cause than
+        # the structural heuristic (e.g. Yuedong: the gap turned out to be a genuinely
+        # stale OPERATING capacity, not the construction Phase 2 the heuristic points
+        # at), so the deterministic insight must not contradict the researched verdict.
         v = verdicts.get((m.get("gem_terminal_id"), m.get("section_type_gem"), ""))
+        verdict_overrides_insight = bool(v) and not v.get("insight")
+        # Surface a GEM researcher note that documents a DELIBERATE divergence inline
+        # in analyst_note (its own column) so the reviewer sees RR's reasoning even at
+        # a glance, not only inside the long insight cell. Fires for the Corpus Christi
+        # shape — GIIGNL counts forward-phase capacity GEM holds as non-operating and a
+        # researcher note explains why. Doesn't clobber the operating=0 note above, and
+        # is skipped when a researched verdict supplies the resolution (it speaks for
+        # itself there).
+        nonop_fires_m, _gap_m, expl_m = _nonop_explains_shortfall(m)
+        if nonop_fires_m and not proj.get("analyst_note") and not v:
+            note_quote = _quote_researcher_notes(expl_m)
+            if note_quote:
+                proj["analyst_note"] = (
+                    "GEM deliberately holds part of this terminal as non-operating "
+                    "(see suggested_resolution); do not overwrite GEM capacity. "
+                    + note_quote)
+        # Insight + GEM-vs-GIIGNL verdict.
+        insight, resolution, needs_research = _classify_disagreement(
+            m, suppress_nonop_insight=verdict_overrides_insight)
         if v:
             resolution = _recon_verdict_text(v)
             needs_research = False
@@ -1398,7 +1809,7 @@ def build_giignl_diff_nonoperating_sheet(wb, diff, narrative_findings=None):
     headers = [
         "country", "gem_terminal_id", "gem_terminal_name", "gem_unit_name",
         "status", "capacity_mtpa", "start_year", "section_type",
-        "owners", "giignl_narrative_mention", "gem_only_flag",
+        "owners", "researcher_notes", "giignl_narrative_mention", "gem_only_flag",
     ]
     _write_header(ws, headers)
     rows = sorted(
@@ -1426,6 +1837,11 @@ def build_giignl_diff_nonoperating_sheet(wb, diff, narrative_findings=None):
             "start_year": n.get("start_year"),
             "section_type": n.get("section_type"),
             "owners": ", ".join(n.get("owners", [])),
+            # A GEM researcher note on this non-op unit often explains WHY it's held
+            # non-operating (Corpus Christi Stage 3: producing LNG but commercial ops
+            # not declared) — surface it so a "GEM has, GIIGNL doesn't" row isn't read
+            # as a GEM omission when it's a deliberate, documented status decision.
+            "researcher_notes": n.get("researcher_notes", ""),
             "giignl_narrative_mention": mention,
             "gem_only_flag": "GEM has, GIIGNL doesn't" if gem_only else "",
         }
@@ -1945,6 +2361,40 @@ def build_qa_review_sheet(wb, qa_items):
     _autosize(ws)
 
 
+def build_wiki_updates_sheet(wb, wiki_items):
+    """Narrative / Background content that does NOT map to a structured DB column.
+
+    Suspensions/force majeure, sanctions, disputes, JV & strategic ownership
+    context, linked pipelines/power plants, port status, notable historical
+    events — destined for the GEM.wiki Background, kept OUT of the field-level
+    `updates` sheet so non-column research findings aren't dropped. The
+    verification_status cell is color-coded the same way confidence is
+    elsewhere (green=CONFIRMED, yellow=single-source, red=CONFLICTING DATA).
+    """
+    ws = wb.create_sheet("wiki_updates")
+    headers = [
+        "country", "terminal_id", "terminal_name", "unit_id",
+        "topic", "wiki_text", "verification_status", "source_urls",
+        "researcher_initials",
+    ]
+    _write_header(ws, headers)
+    for i, w in enumerate(wiki_items, start=2):
+        rec = dict(w)
+        if isinstance(rec.get("source_urls"), list):
+            rec["source_urls"] = ", ".join(rec["source_urls"])
+        vs = str(rec.get("verification_status", "")).upper()
+        if "CONFIRMED" in vs:
+            color = "green"
+        elif "CONFLICT" in vs:
+            color = "red"
+        elif "UNVERIFIED" in vs or "SINGLE" in vs:
+            color = "yellow"
+        else:
+            color = ""
+        _write_row(ws, rec, headers, i, confidence_map={"verification_status": color})
+    _autosize(ws)
+
+
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--mode", choices=["update", "discovery", "reconciliation"], required=True)
@@ -1973,21 +2423,34 @@ def main():
         stale = _safe_load(inputs_dir / "stale_sweep.json", default={"flagged_units": []})
         country_notes = _safe_load(inputs_dir / "staged_country_notes.json", default=[])
         qa = _safe_load(inputs_dir / "staged_qa_review.json", default=[])
+        wiki = _safe_load(inputs_dir / "staged_wiki_updates.json", default=[])
         fsru = _safe_load(inputs_dir / "fsru_sync.json", default={"mode": "skipped", "_skip_reason": "not run"})
+        # Optional scope for the all_fields-CSV-shaped sheet: a list of terminal_ids
+        # (or {"terminal_ids": [...]}) whose unit-rows should ALL appear even if a
+        # given unit had no change this batch (e.g. a full-country pass).
+        scope = _safe_load(inputs_dir / "staged_scope.json", default={})
+        scope_tids = scope.get("terminal_ids") if isinstance(scope, dict) else (
+            scope if isinstance(scope, list) else None)
 
         inputs_summary = {
             "updates": len(updates),
+            "csv_shaped_scope_terminals": len(scope_tids or []),
             "status_timeline_additions": len(timeline),
             "entity_additions": len(entity_adds),
             "stale_flagged_units": len(stale.get("flagged_units", [])),
             "country_notes": len(country_notes),
             "qa_review_items": len(qa),
+            "wiki_updates": len(wiki),
             "fsru_sync_mode": fsru.get("mode"),
         }
 
         build_readme(wb, "update", inputs_summary)
+        _chk, _chg, _no = _country_breakdown(args.gem_csv, updates=updates, qa=qa, wiki=wiki)
+        _append_country_breakdown(wb, _chk, _chg, _no)
         if updates:
             build_updates_sheet(wb, updates)
+            build_update_csv_shaped_sheet(wb, updates, args.gem_csv,
+                                          scope_terminal_ids=scope_tids)
         if timeline:
             build_status_timeline_sheet(wb, timeline)
         if entity_adds:
@@ -2000,6 +2463,8 @@ def main():
             build_country_notes_sheet(wb, country_notes)
         if qa:
             build_qa_review_sheet(wb, qa)
+        if wiki:
+            build_wiki_updates_sheet(wb, wiki)
 
     elif args.mode == "discovery":
         new_terms = _safe_load(inputs_dir / "staged_new_terminals.json", default=[])
@@ -2010,6 +2475,7 @@ def main():
         prior_monitor = _safe_load(inputs_dir / "prior_monitor_list.json", default=[])
         country_notes = _safe_load(inputs_dir / "staged_country_notes.json", default=[])
         qa = _safe_load(inputs_dir / "staged_qa_review.json", default=[])
+        wiki = _safe_load(inputs_dir / "staged_wiki_updates.json", default=[])
         fsru = _safe_load(inputs_dir / "fsru_sync.json", default={"mode": "skipped"})
 
         inputs_summary = {
@@ -2021,9 +2487,14 @@ def main():
             "monitor_list_prior": len(prior_monitor or []),
             "country_notes": len(country_notes),
             "qa_review_items": len(qa),
+            "wiki_updates": len(wiki),
         }
 
         build_readme(wb, "discovery", inputs_summary)
+        _chk, _chg, _no = _country_breakdown(
+            args.gem_csv, qa=qa, wiki=wiki, monitor=monitor,
+            new_terms=new_terms, new_units=new_units)
+        _append_country_breakdown(wb, _chk, _chg, _no)
         if new_terms:
             build_new_terminals_sheet(wb, new_terms)
         if new_units:
@@ -2039,6 +2510,8 @@ def main():
             build_country_notes_sheet(wb, country_notes)
         if qa:
             build_qa_review_sheet(wb, qa)
+        if wiki:
+            build_wiki_updates_sheet(wb, wiki)
 
     elif args.mode == "reconciliation":
         diff_path = inputs_dir / "report_diff.json"

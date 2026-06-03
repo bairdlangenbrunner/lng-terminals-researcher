@@ -1,0 +1,172 @@
+[
+  {
+    "category": "missing_value",
+    "terminal_id": "T100000130859",
+    "unit_id": "G100002085900",
+    "terminal_name": "Tianjin LNG Terminal (Beijing Gas Group)",
+    "issue": "All three units (Phase 1/2/3) have BLANK Capacity / CapacityinMtpa / CapacityinBcm/y, yet the ResearcherNotesProject establishes a confirmed terminal total of 5 mtpa (GIIGNL's 12 mtpa is a known over-count, corrected against the 2025 IGU report). The Beijing municipal government (Nov 26 2024) confirms all three phases operating, design unloading capacity 5 Mt/yr (max 6.18 Mt/yr per SY/T 7434-2018), 10x 200,000 m3 tanks (Ph1: 4 tanks, Ph2: 4 tanks, Ph3: 2x 220,000 m3 membrane tanks). The 5 mtpa total is well-sourced but no per-unit Capacity figure is recorded.",
+    "severity": "medium",
+    "suggested_action": "Populate per-unit Capacity totalling 5 mtpa (design). Source gives tank split 4/4/2 but not an mtpa-per-phase breakdown, so the per-phase allocation needs a researcher decision (no defensible per-unit split is directly sourced - do NOT auto-allocate). Source: https://www.beijing.gov.cn/ywdt/gzdt/202411/t20241126_3949730.html (verified PASS).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "value_conflict",
+    "terminal_id": "T100000130383",
+    "unit_id": "G100002038300",
+    "terminal_name": "Ganyu LNG Terminal",
+    "issue": "Capacity ambiguity: GEM records a single construction unit at 3 mtpa. The Lianyungang government project page and S&P/Enerdata describe the receiving station as 'design scale 3 Mt/yr, 3x 220,000 m3 tanks' (Phase 1) while a June 2022 Enerdata headline and other press cite '6 Mt/year' as the (ultimate) terminal capacity. Classic Phase-1 (3 mtpa) vs ultimate (6 mtpa) split. Separately, ownership naming: press describes 'four countries five parties' incl. South Korea's SK, BP, and Japan's JERA; GEM's detailed equity list instead carries Prism Energy International Pte Ltd (SK E&S trading affiliate) and Chubu Electric + Tokyo Electric (= the two JERA parents) - consistent in substance but named at a different corporate level. Planned start: GEM 2027 matches press (delayed from 2026 to Nov 2027).",
+    "severity": "low",
+    "suggested_action": "Confirm whether 3 mtpa is intended as the current Phase-1 figure (defensible; GEM was reviewed 2026-04-01) and whether a 6 mtpa ultimate should be noted in wiki Background. No nameplate change recommended now. Optionally reconcile Prism Energy/SK and Chubu+TEPCO/JERA labels with the Ownership team. Sources: https://www.spglobal.com/energy/en/news-research/latest-news/lng/021423-chinas-jiangsu-huadian-ganyu-lng-terminal-begins-construction ; https://www.enerdata.net/publications/daily-energy-news/china-huadian-expects-start-6-mtyear-ganyu-lng-terminal-2026.html",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_update",
+    "terminal_id": "T100000130395",
+    "unit_id": "G100001053177",
+    "terminal_name": "Jieyang LNG Terminal (PipeChina)",
+    "issue": "PipeChina confirms the Yuedong (Jieyang) storage-expansion project began construction 30 Dec 2025 and is planned for completion Dec 2028, adding 3x 240,000 m3 membrane tanks (storage to 7.8 billion m3) and raising total annual processing capacity to 6 Mt/yr. GEM models 'Phase 2' as a 3 mtpa construction unit (ConstructionYear=2025) with no LatestPlannedStartYear. Note the source explicitly calls this a STORAGE expansion, not a regasification phase - so tagging it as a regas 'Phase 2' and/or adding a regas start year may misrepresent its nature.",
+    "severity": "low",
+    "suggested_action": "Verify whether GEM 'Phase 2' is meant to capture this Dec-2025 storage expansion (completion Dec 2028); if so, consider LatestPlannedStartYear=2028, but first confirm the regas-vs-storage characterization. Did NOT stage a field edit (ambiguous unit nature; terminal reviewed by researcher 2026-03-23). Source: https://www.pipechina.com.cn/front/news/3004124.html (verified PASS).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ownership",
+    "terminal_id": "T100000130953",
+    "unit_id": "G100002095300",
+    "terminal_name": "Quanzhou LNG Terminal",
+    "issue": "Owner uncertainty (GEM note already flags 'Owners need to be double-checked'). GEM lists owner = Quanzhou Honghai Petrochemical Storage Co Ltd, parents = Guangzhou Yuanheng Transportation etc. But the Dec-2021 signing was widely reported as the 'Quangang Sinopec (Zhonghua Petrochemical) LNG receiving station' project, suggesting Sinopec involvement. Capacity (Ph1 3 mtpa, ultimate 6 mtpa) and shelved status are consistent with sources (project signed 2021, no construction since). Could be a Sinopec offtake/EPC role vs Honghai as site/equity owner - not resolved.",
+    "severity": "low",
+    "suggested_action": "Clarify Sinopec vs Quanzhou Honghai roles (equity owner vs developer/offtaker) before next ownership edit. Status (shelved, inferred 2y) appears correct. Source: http://www.mnw.cn/quanzhou/qg/2568011.html (verified PASS).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ownership",
+    "terminal_id": "T100000130815",
+    "unit_id": "G100002081500",
+    "terminal_name": "Zhiwan Island LNG Terminal",
+    "issue": "GEM owner/parent = Macau Natural Gas Co Ltd [100%]. A 2019 framework agreement reportedly added Beijing Jingneng Clean Energy (Beijing Energy Group subsidiary) as a co-developer for the linked Zhuhai Yuhai gas power station + Zhiwan Island LNG terminal. GEM does not reflect this partner. Project is shelved (inferred 2y, ShelvedYear 2025); the 5 mtpa Ph1 (3+2 staged) figure matches sources.",
+    "severity": "low",
+    "suggested_action": "If/when the project revives, verify whether Beijing Jingneng/Beijing Energy Group holds equity (vs a lapsed 2019 MOU) before adding to Owner/Parent. No edit now given shelved status and MOU-stage source.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change",
+    "terminal_id": "T100000130377",
+    "unit_id": "G100002037700",
+    "terminal_name": "Chaozhou LNG Terminal (Huafeng)",
+    "issue": "Verified, current. Phase 1 (1 mtpa, construction since end-2016) and Phase 2 (5 mtpa, proposed) consistent with sources; JV of Chaozhou Huafeng Group + Zhongxing Tianheng/Zhongtian Energy confirmed. GEM reviewed 2026-03-18.",
+    "severity": "low",
+    "suggested_action": "No action.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change",
+    "terminal_id": "T100000130948",
+    "unit_id": "G100002094800",
+    "terminal_name": "Jiangyin LNG Terminal (Garson Gas)",
+    "issue": "Verified, current. Construction, 2 mtpa total, Yangzijiang Shipbuilding parent confirmed; mechanical completion Dec 2026 / dock ready June 2027 matches GEM LatestPlannedStartYear=2027. Tank roof-lifting completed mid-2024. GEM note already flags a possible future merge with Jiangyin LNG (Zhongtian Energy) - left for researcher.",
+    "severity": "low",
+    "suggested_action": "No action (note existing merge-candidate flag in GEM ResearcherNotesProject).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change",
+    "terminal_id": "T100000131109",
+    "unit_id": "G100002110900",
+    "terminal_name": "Rudong LNG Terminal (China Resources)",
+    "issue": "Verified, current. China Resources Gas Rudong/Yangkou (6.5 mtpa, broke ground June 2023, Phase 1 four 200,000 m3 tanks, ~8bn yuan) confirmed; reportedly on hold due to concurrent Yangkou builds, consistent with GEM construction status + researcher note. GEM reviewed 2026-04-04.",
+    "severity": "low",
+    "suggested_action": "No action.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change",
+    "terminal_id": "T100000131150",
+    "unit_id": "G100002115000",
+    "terminal_name": "Zhangjiagang LNG Terminal",
+    "issue": "Verified, current. 3 mtpa, 3x 220,000 m3 tanks, owner Jiangsu Huaxin Yongnan Energy Technology confirmed; construction. GEM reviewed 2026-04-05 with a 2026-03 tender source.",
+    "severity": "low",
+    "suggested_action": "No action.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change",
+    "terminal_id": "T100000130792",
+    "unit_id": "G100001053901",
+    "terminal_name": "Dongying LNG Terminal",
+    "issue": "Verified, current. Proposed (Ph1 2 + Ph2 3 = 5 mtpa), owner Shandong Hainuo Port. English summaries call it 'shelved since 2021', but GEM holds 'proposed' on the strength of Feb-2024/Feb-2025 Dongying government conference items pushing the project - GEM's local-language sourcing is more recent. Ownership history fully documented in GEM notes. Reviewed 2026-03-26.",
+    "severity": "low",
+    "suggested_action": "No action; keep watching for a construction trigger or ownership change (GEM note flags ownership volatility).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change",
+    "terminal_id": "T100000130797",
+    "unit_id": "G100002079700",
+    "terminal_name": "Suizhong LNG Terminal",
+    "issue": "Verified, current. GEM holds 'proposed' (changed from cancelled in Q1 2026) on continuous 2017-2025 advancement news incl. a 2 March 2025 Suizhong County government work report (passed CRCC Kunlun investment review, new investor). A 2023 NEA reply citing sufficient Liaoning gas supply was the prior cancellation basis; the human researcher's 2025-sourced proposed reading is well-documented. Capacity Ph1 2.6 + Ph2 2.4 = 5 mtpa matches the 2.6->5 mtpa staged design.",
+    "severity": "low",
+    "suggested_action": "No action (defer to MZ's 2026 review). Note Phase 2 has blank Status in GEM - minor, left as-is.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change",
+    "terminal_id": "T100000130376",
+    "unit_id": "G100002037600",
+    "terminal_name": "Binzhou Changlian LNG Terminal",
+    "issue": "Verified, current. Cancelled (inferred 4y); no development since 2016, presumed cancelled per sources. Ph1 2 + Ph2 4 = 6 mtpa matches the original 2/6 mtpa plan. No resurrection signal. Reviewed 2026-03-26.",
+    "severity": "low",
+    "suggested_action": "No action.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change",
+    "terminal_id": "T100000130407",
+    "unit_id": "G100002040700",
+    "terminal_name": "Shenzhen Diefu CNOOC LNG Terminal",
+    "issue": "Stable operating (4 mtpa, ActualStartYear 2018, CNOOC Shenzhen Gas / now under PipeChina group naming in LocalNames). No change signal found. Reviewed 2025-05-08. Light re-verify only.",
+    "severity": "low",
+    "suggested_action": "No action.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change",
+    "terminal_id": "T100000130753",
+    "unit_id": "G100002075300",
+    "terminal_name": "Hainan Shennan LNG Storage Facility",
+    "issue": "Stable small operating storage facility (0.27 mtpa, ActualStartYear 2014, Kunlun Energy 90% / Hainan Fushan 10%). No change signal. Reviewed 2025-06-11. Light re-verify only.",
+    "severity": "low",
+    "suggested_action": "No action.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change",
+    "terminal_id": "T100000130710",
+    "unit_id": "G100002071000",
+    "terminal_name": "Pinghu LNG Terminal",
+    "issue": "Stable operating (1 mtpa, ActualStartYear 2022, Zhejiang Hangjiaxin Clean Energy; aka Jiaxing LNG). No change signal. Reviewed 2025-05-21. Light re-verify only.",
+    "severity": "low",
+    "suggested_action": "No action.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change",
+    "terminal_id": "T100000130396",
+    "unit_id": "G100002039600",
+    "terminal_name": "Lianyungang LNG Terminal",
+    "issue": "Cancelled (inferred 4y, CancelledYear 2017). GEM note clarifies it is independent from Ganyu LNG. No resurrection signal. Reviewed 2026-04-03.",
+    "severity": "low",
+    "suggested_action": "No action.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change",
+    "terminal_id": "T100001082817",
+    "unit_id": "G100001093327",
+    "terminal_name": "Nan'ao LNG Terminal",
+    "issue": "Cancelled (inferred 4y, CancelledYear 2015). No resurrection signal. Reviewed 2026-03-24.",
+    "severity": "low",
+    "suggested_action": "No action.",
+    "researcher_initials": "AI-draft"
+  }
+]

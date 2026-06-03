@@ -1,0 +1,41 @@
+[
+  {
+    "terminal_id": "T100000130492",
+    "unit_id": "G100002049201",
+    "terminal_name": "Gate LNG Terminal",
+    "unit_name": "Expansion",
+    "country": "Netherlands",
+    "field_name": "LatestPlannedStartYear",
+    "old_value": "2026",
+    "new_value": "2026",
+    "confidence": "blue",
+    "source_tier": "primary (Port of Rotterdam) + sponsor (Gasunie/Vopak) press",
+    "ref_field": "StartDate [ref]",
+    "ref_urls": [
+      "https://www.portofrotterdam.com/en/news-and-press-releases/gate-terminal-starts-construction-of-4th-lng-tank-at-the-port-of-rotterdam"
+    ],
+    "source_notes": "RE-VERIFY ONLY, NO CHANGE (representative blue for Gate). The 4th-tank expansion (new 180,000 m3 tank + ~4 bcm/y added regas) is under construction, FID Aug 2023, with capacity already fully contracted long-term and 'expected to be ready for operation by the second half of 2026' (Port of Rotterdam / Vopak / Gasunie). This matches GEM's Expansion unit: status=construction, ConstructionYear=2023, FIDYear=2023, OriginalPlanned/LatestPlanned=2026, capacity 4 bcm/y (~2.94 mtpa). Owner=Gate Terminal BV, Parent=Gasunie; Vopak, Operator=Gate Terminal all consistent. Base unit 16 bcm/y unchanged. No edit needed; GEM is current.",
+    "scope_note": "Unit-level re-verify on the Expansion unit; representative blue for the 2-unit Gate terminal.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130997",
+    "unit_id": "G100002099700",
+    "terminal_name": "Eemshaven FSRU",
+    "unit_name": "--",
+    "country": "Netherlands",
+    "field_name": "Capacity",
+    "old_value": "8.00",
+    "new_value": "8.00",
+    "confidence": "blue",
+    "source_tier": "sponsor (Gasunie) + trade press (LNG Prime, multiple)",
+    "ref_field": "Capacity",
+    "ref_urls": [
+      "https://www.gasunie.nl/en/projects/eemsenergyterminal",
+      "https://lngprime.com/europe/dutch-eemshaven-lng-terminal-hits-new-record/162349/"
+    ],
+    "source_notes": "RE-VERIFY ONLY, NO CHANGE (representative blue for the Eemshaven FSRU). Nameplate capacity 8 bcm/y (~5.88 mtpa) confirmed; the two chartered units — the ~170,000 m3 FSRU Energos Igloo (owner Energos Infrastructure) and the ~26,000 m3 barge FSRU Eemshaven LNG (owner Exmar) — match GEM's FloatingVesselName='Eemshaven LNG, Energos Igloo' and VesselOwner='Exmar; Energos Infrastructure'. Owner=EemsEnergyTerminal BV, Parent=Gasunie; Vopak, Operator=EemsEnergyTerminal consistent. NOTE (see wiki): in Sep/Oct 2025 Gasunie+Vopak took a conditional investment decision to EXTEND operations beyond 2027 (intended to run to 2036), and there is ambition to reach 9-10 bcm via debottlenecking — these are forward developments, not a current-nameplate change, so no field edit (logged in wiki/qa). Hydrogen Import Terminal unit stays proposed (out-of-scope NH3/H2 fields not touched).",
+    "scope_note": "Project-level Capacity for the base FSRU unit; representative blue for the 2-unit terminal.",
+    "researcher_initials": "AI-draft (sweep)"
+  }
+]
