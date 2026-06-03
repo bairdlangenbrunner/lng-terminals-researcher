@@ -1,0 +1,22 @@
+[
+  {
+    "category": "verification_log",
+    "terminal_id": "T100000130255",
+    "unit_id": "G100002025501",
+    "terminal_name": "Marsa El Brega LNG Terminal",
+    "issue": "Re-verified (2026-06 sweep): GEM has all four units (T1-T4) as status=mothballed, Substatus=actual, Owner='Sirte Oil Co [100%]', Parent='National Oil Corp [100.0%]', each 0.80 mtpa (3.2 mtpa total), ActualStartYear 1970, StopYear 2011. CONFIRMED correct: the plant remains mothballed (no LNG-export restart); recent Brega activity is LPG / gas-distribution / pipeline logistics, not LNG. Ownership confirmed via NOC subsidiaries page (Sirte Oil and Gas Production and Manufacturing Co., an owned NOC subsidiary doing natural gas liquefaction). Mothballed (NOT retired) is the correct status — no evidence of formal permanent retirement. No field edit.",
+    "severity": "low",
+    "suggested_action": "No change. Representative blue re-verify for the Marsa El Brega terminal. Sources (PASS url_verifier): https://noc.ly/companies-subsidiaries/ ; https://en.wikipedia.org/wiki/Sirte_Oil_Company ; https://www.energyintel.com/0000017b-a7a7-de4c-a17b-e7e79e5a0000",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_quality",
+    "terminal_id": "T100000130255",
+    "unit_id": "G100002025501",
+    "terminal_name": "Marsa El Brega LNG Terminal",
+    "issue": "Capacity has CONFLICTING source data (see wiki file). GEM records 4 x 0.80 mtpa = 3.2 mtpa total. Oil & Gas Journal describes four 750,000-tpy trains = 3.0 mtpa total; Energy Intelligence describes a Shell/NOC revamp TARGET of 3.2 mtpa (4.4 bcm/y) and an original per-train nameplate of 700,000 tpy (~2.8 mtpa total) with recent actual output far lower (~490,000 tpy total before mothballing). GEM's 3.2 mtpa aligns with the EI revamp target, not the historical nameplate.",
+    "severity": "low",
+    "suggested_action": "Do NOT bump or change the nameplate on conflicting/revamp-target figures. Leave 4 x 0.80 mtpa and add the conflict to the wiki/Background (drafted in libya.wiki.json). If the researcher wants the historical nameplate instead, OGJ's 3.0 mtpa or EI's 2.8 mtpa (700k/train) are the candidates — but treat as a deliberate research decision, not an automated edit. Sources: https://www.energyintel.com/0000017b-a7a7-de4c-a17b-e7e79e5a0000",
+    "researcher_initials": "AI-draft"
+  }
+]

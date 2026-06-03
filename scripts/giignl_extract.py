@@ -1,10 +1,14 @@
 """
 Extract liquefaction and regasification tables from the GIIGNL Annual Report.
 
-The 2026 edition shipped as a real PDF (v1.7) with a clean text layer, so we
-parse it directly via `pdftotext -layout` rather than rendering pages to JPEG
-and using a vision model. (Earlier editions shipped as a zip-of-JPEGs+OCR;
-that pipeline is in git history if a future edition needs it back.)
+The 2026 edition is a real PDF (v1.7) with a clean text layer, so we parse it
+directly via `pdftotext -layout` rather than rendering pages to JPEG and using a
+vision model. Every edition committed in `data/` (2020-2026) is likewise a genuine
+PDF with a usable text layer, so this pipeline applies to all of them — but the
+page numbers and column offsets below are tuned to the 2026 layout, so an older
+edition needs per-edition re-derivation (see `data/README.md`). The legacy
+zip-of-JPEGs+OCR vision pipeline is in git history only as a fallback if a future
+*download* arrives in that form; the editions on disk do not need it.
 
 Output is a flat CSV consumed by `report_diff.py` — column shape:
   section_type, report_page, country, site_name, type,

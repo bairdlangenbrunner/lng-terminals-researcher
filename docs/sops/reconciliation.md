@@ -1,8 +1,9 @@
 # LNG Terminals Reconciliation SOP
 
-Last revised: 2026-05-28 (rev 5)
+Last revised: 2026-06-02 (rev 6)
 
 Revision notes:
+- rev 6 (2026-06-02): new §5.8 edge case (issue #6) — GIIGNL counts trains as operating that GEM deliberately holds as `construction` (GIIGNL operating total > GEM's), a status / train-organization difference, NOT a stale GEM capacity figure; a GEM `researcher_notes` cell documenting the hold-as-construction decision must NOT be overridden by a GIIGNL-edition capacity bump (worked example: Corpus Christi). `report_diff.py` now propagates each GEM unit's `researcher_notes` and attaches a `gem_nonop_explanation` to every operating match; `build_review_package.py` gained classifier rule (f) (`_nonop_explains_shortfall`) that pre-empts the edition-supersede recommendation, quotes the researcher note in `suggested_resolution`/`analyst_note`, and a `researcher_notes` column on `giignl_diff_nonoperating`. Capacity delta is still flagged red (no-tolerance-band unchanged) — only the recommendation changes. Also noted as a capacity-disagreement cause in §3.6.
 - rev 5 (2026-05-28): three fixes. (1) `giignl_extract.py` now skips the standalone page footer ("GIIGNL Annual Report <year> Edition") during line classification — it had been merged into the last data row of each page, corrupting 8 rows and poisoning the country walk (dropped QatarEnergy LNG S(2) T4 → S(2) read 9.4 not 14.1; mis-countried Ruwais/San Juan/Yamal T1/etc.) — §3.2. (2) `report_diff.py` gained `_split_multiterminal_fsru_sites` (§3.5/§5.3): a GIIGNL FSRU port that GEM models as several distinct terminals (Wilhelmshaven, Ain-Sokhna) is split per vessel and each routed to its GEM terminal via `FloatingVesselName`, instead of summing into one bogus project. (3) `giignl_diff_operating` capacity-conflict fill is now graded by size — light red <5%, darker red >=5% (§4). Known follow-up: non-FSRU multi-terminal complexes (Qatar Ras Laffan) still compare at project total (§5.3, TODO).
 - rev 4 (2026-05-28): `giignl_diff` split into TWO sheets — `giignl_diff_operating` (GEM operating capacity vs GIIGNL's operating-only tables) and `giignl_diff_nonoperating` (matched projects' non-op units, each defaulting to a "GEM has, GIIGNL doesn't" highlight unless the §3.2.1 narrative pass confirms the forward phase). `report_diff.py` gained **unit-level alignment** (§3.5): GIIGNL rows whose site name contains a GEM unit name (GIIGNL "Arzew GL1Z" ⊃ GEM unit "GL1Z") align 1:1 to GEM units, with a project-total fallback (Taichung) when they don't; a conservative unit-code fold groups per-complex rows ("Arzew GL1Z/2Z/3Z" → one "Arzew" project) so they match and align. `gem_unit_name` on a match now lists OPERATING units only.
 - rev 3 (2026-05-28): narrative prose extraction promoted from an informal "secondary source" note to an actual workflow step (new §3.2.1) — the operating-only tables miss proposed/construction/expansion activity that the country narratives disclose. `report_diff.py` gained report-side expansion-row folding (§3.5) and deterministic (sorted) set iteration (§3.4). New §5.7 distinguishes forward-looking narrative phases from table disagreements.
@@ -42,10 +43,8 @@ These parameters get written into the staging xlsx README sheet.
 
 ### §3.1 Setup
 
-1. Verify the GIIGNL report file is in project files at `<path-to-giignl-report>` (or wherever the user placed it).
-2. `file <path>` to confirm format. Two formats observed across editions:
-   - **Real PDF (current pipeline)** — file reports "PDF document, version 1.7". The 2026 edition received 2026-05 is this format. `giignl_extract.py` parses via `pdftotext -layout` against page text.
-   - **Zip-disguised-as-PDF (legacy)** — file reports a zip archive, contains per-page JPEG + OCR text files + manifest.json. The pre-2026 pipeline staged JPEGs and did vision-LLM extraction. That code path is in git history and would need restoration if a future edition reverts.
+1. Select the edition from the committed archive in `data/` — every edition **2020–2026** is checked into the repo (see `data/README.md` for the manifest: filenames, page counts, table/fleet page locations, edition→calendar-year map). The current target is `data/GIIGNL-2026-Annual-Report-0526b.pdf`. (If the user supplies a newer edition, drop it in `data/` and add a manifest row.)
+2. `file <path>` to confirm format. **All seven archived editions (2020–2026) are genuine PDFs** (`PDF document, version 1.4`–`1.7`) with clean `pdftotext -layout` text layers — `giignl_extract.py`'s `pdftotext` pipeline applies to all of them. A `(zip deflate encoded)` tag is just normal PDF stream compression, NOT the legacy distribution form. The `file` check still matters because a **future** download could arrive as the legacy **zip-disguised-as-PDF** (file reports a zip archive: per-page JPEG + OCR text + manifest.json) — that pre-2026 vision-LLM code path lives in git history and would need restoration. **Caveat:** the extractor's page/column offsets are tuned to the 2026 edition, so back-extracting an older archived edition needs per-edition page selection + offset re-derivation (`data/README.md`, Appendix A.8).
 3. The scripts are committed to `scripts/` (no separate "materialize" step needed):
    - `gem_query.py` / `gem_all_fields.py` for the GEM pull (no auth cookies needed)
    - `giignl_extract.py`, `report_diff.py`, `url_verifier.py`
@@ -193,6 +192,7 @@ Value disagreements get classified by field type, since each field has its own d
 - Per-train vs total reconciliation issue (GEM has 6 units of 3.3 MTPA = 19.8 MTPA project total; GIIGNL shows 22.2 MTPA — investigate the difference)
 - Expansion or debottlenecking captured by one source but not the other
 - One source quoting nameplate, the other quoting actual achieved capacity (methodology says use nameplate)
+- **GIIGNL counting trains as operating that GEM deliberately holds as `construction`** (GIIGNL's operating total > GEM's because GIIGNL credits not-yet-commercial trains) — a status / train-organization difference, NOT a stale GEM figure. Do NOT bump GEM's capacity; verify status only. See §5.8 (worked example: Corpus Christi). A GEM `researcher_notes` cell documenting the hold-as-construction decision is authoritative over a GIIGNL-edition capacity bump.
 
 **Start-year disagreements** — usual causes:
 - Planned vs actual confusion
@@ -317,6 +317,16 @@ The liquefaction/regasification tables are operating-only, but the country narra
 
 So when GEM's operating total matches the table but the narrative names higher future-phase capacities: confirm GEM already carries those phases as `construction`/`proposed` units (confidence bump), rather than logging a capacity disagreement. If GEM is *missing* a narrated under-construction/proposed phase, that routes to Discovery/Update as a new-unit finding — this is exactly what the §3.2.1 narrative prose pass is for. Narrative phase mentions are a routing input to Discovery/Update, never a `giignl_diff` table-disagreement row.
 
+### §5.8 GIIGNL counts trains as operating that GEM deliberately holds as construction (do NOT bump GEM capacity)
+
+This is the §5.7 case turned into a *table-vs-table* capacity disagreement, and it is the one most likely to produce a wrong recommendation. GIIGNL credits a train as operating once it is producing LNG; GEM (per the methodology's "commercial operations" definition — see the Calcasieu Pass FAQ) often holds a train in `construction` until commercial operations are *declared*, even while it ships commissioning cargoes. When that happens, **GIIGNL's operating-table capacity sits ABOVE GEM's operating total** — not because GEM's capacity figure is stale, but because the two sources disagree on *which trains are operating* (a status divergence) and frequently *how the stage is split into trains* (a train-organization divergence). The GIIGNL number is not a newer measurement of the same operating trains, so **replacing GEM's operating capacity with it would wrongly fold in not-yet-commercial trains.**
+
+**Worked example — Corpus Christi (GIIGNL 2026, issue #6).** GIIGNL lists Corpus Christi as T1, T2, T3 plus a "Stage III (T1, T2, T3)" of three mid-scale trains, all operating, summing to **21 MTPA / 7 trains**. GEM organizes the complex differently — Stage 1 = T1–T2, Stage 2 = T3 (these three operating, **15 MTPA**), Stage 3 = T4–T10 (seven mid-scale trains, **construction, 10.4 MTPA**), plus Stage 3 T11–T12 (construction) and Stage 4 T13–T16 (proposed). So GIIGNL's three "Stage III" trains correspond to part of GEM's **Stage 3 (T04-T10)** — which GEM deliberately holds as `construction`. The GEM researcher left a unit note saying exactly this: *"All trains but 2 have reached substantial completion and at least a few have been producing LNG … I am not dividing the project into multiple trains and marking some as operating since commercial operations have not started."* The GIIGNL count (3 trains) and the GEM unit (7 trains, T4–T10) are also not the same set, so a blind 15→21 bump would be wrong on both status and train arithmetic.
+
+**Rule.** When GIIGNL's operating capacity exceeds GEM's operating total, and the excess is plausibly covered by GEM `construction`/`proposed` units at the **same** project, treat it as a status / train-organization difference — **do NOT recommend overwriting GEM's operating capacity.** This holds *especially* when a GEM `researcher_notes` cell on a non-operating unit documents a deliberate hold-as-construction decision: **a researcher note is more-advanced research and must not be overridden by a capacity bump.** The only actionable verification is *status*, not capacity: check whether commercial operations have since been declared for those trains; if so, route a **status update** (construction → operating) through the Update workflow — never a capacity overwrite, and never auto-applied (§3.8).
+
+**How the tooling enforces this.** `report_diff.py` propagates each GEM unit's `researcher_notes` into the diff and attaches a `gem_nonop_explanation` (the project's construction/proposed units + their notes) to every operating match. `build_review_package.py`'s disagreement classifier (`_nonop_explains_shortfall` → `_classify_disagreement` rule (f)) detects this shape and emits a "do NOT bump GEM capacity; verify status only" `suggested_resolution` — **quoting the researcher note verbatim** — instead of the GIIGNL-edition-supersede recommendation it would otherwise fire. The note is also echoed into the `analyst_note` column of `giignl_diff_operating` and into a new `researcher_notes` column on `giignl_diff_nonoperating`. **The capacity delta is still flagged red** (the no-tolerance-band rule, §3.6/§4, is unchanged — nothing is suppressed); only the *recommendation* changes. When a researched verdict for the row already exists in `staged_recon_verdicts.json`, that verdict supplies the resolution and the deterministic narrative steps aside (so a human determination — e.g. "this gap really is a stale operating capacity" — is never contradicted).
+
 ## §6 Pause-and-ask triggers
 
 Stop and consult the user before proceeding when:
@@ -338,7 +348,7 @@ These are the rules that `giignl_extract.py` implements. They're documented here
 
 The 2026 GIIGNL Annual Report received 2026-05 is a real PDF v1.7 (80 pages, A4, Adobe InDesign-produced) with a clean text layer. The extractor uses `pdftotext -layout` per page; the layout-preserving mode keeps column structure intact enough to parse with character-position windows.
 
-(Earlier editions shipped as zip-of-JPEGs+OCR-text+manifest.json — file would report a zip archive instead of "PDF document". That pipeline staged page JPEGs and did vision-LLM extraction; it's preserved in git history if a future edition reverts.)
+**All editions in the `data/` archive (2020–2026) are real PDFs** (v1.4–v1.7) with usable `pdftotext` text layers — see `data/README.md` and Appendix A.8. The "zip-of-JPEGs+OCR-text+manifest.json" form (file reports a zip archive instead of "PDF document") was a one-off distribution encountered early in the project, not a property of pre-2026 editions; that vision-LLM pipeline is preserved in git history if a future download reverts to it. Always `file <path>` before assuming the format.
 
 ### A.2 Page sections (2026 edition)
 
@@ -451,6 +461,26 @@ IGU's World LNG Report has different table layouts but the same conceptual conte
 - IGU often uses bcm/y as primary unit (convert via `capacity_normalize.py`)
 - IGU's "operating capacity" definitions may differ from GIIGNL — document in the IGU SOP appendix
 
+### A.8 Historical edition archive (`data/`)
+
+Every GIIGNL Annual Report **2020–2026** is committed in `data/` (commit `e4c34a9`). `data/README.md` is the authoritative manifest — per-edition filename, page count, PDF version, liquefaction/regas section spans, FSRU-fleet-table page, and the edition→calendar-year map (edition **N** covers CY **N−1**).
+
+| Edition | Covers CY | File | Pages | FSRU fleet pg |
+|---|---|---|---|---|
+| 2020 | 2019 | `GIIGNL-2020-Annual-Report.pdf` | 64 | 20 |
+| 2021 † | 2020 | `GIIGNL-2021-Annual-Report.pdf` | 35 | 11 |
+| 2022 | 2021 | `GIIGNL-2022-Annual-Report.pdf` | 76 | 23 |
+| 2023 | 2022 | `GIIGNL-2023-Annual-Report.pdf` | 76 | 33 |
+| 2024 | 2023 | `GIIGNL Annual Report 2024.pdf` | 64 | 29 |
+| 2025 | 2024 | `GIIGNL - Livre 2025-20250610-Simple.pdf` | 76 | 43 |
+| 2026 | 2025 | `GIIGNL-2026-Annual-Report-0526b.pdf` | 80 | 43 |
+
+† 2021 is a condensed COVID-era edition (35pp, abbreviated/fragmented tables).
+
+**Uses:** (1) back-check a GEM `capacity_ref` against the *specific* GIIGNL edition it cites (many rows cite e.g. `GIIGNL2022_Annual_Report`) instead of only the current year; (2) year-over-year trend checks when a 2026 value looks off; (3) back-testing/hardening the extractors against layouts they weren't tuned on.
+
+**Caveat:** `giignl_extract.py` and `giignl_fsru_fleet.py` derive page numbers and column offsets from the **2026** layout. Older editions move the tables and shift columns (the 2020 vessel fleet even carries a `Manager` column 2026 lacks), so a pre-2026 back-extraction needs `--page` selection + per-edition offset re-derivation from that edition's header row. Treat the manifest page ranges as starting hints, not guarantees.
+
 ---
 
 ## Quick-reference card
@@ -458,7 +488,7 @@ IGU's World LNG Report has different table layouts but the same conceptual conte
 | Step | Command |
 |---|---|
 | Pull GEM | `python pull_gem_db.py` |
-| Extract GIIGNL | `python giignl_extract.py <path-to-giignl-report> --output giignl_extracted.csv` |
+| Extract GIIGNL | `python giignl_extract.py data/GIIGNL-2026-Annual-Report-0526b.pdf --output giignl_extracted.csv` (archive in `data/`, see `data/README.md`) |
 | Verify extraction totals | Compare against GIIGNL Key Figures (524 MTPA liq / 1,247 MTPA regas for 2026 edition) |
 | Run diff | `python report_diff.py --report giignl --extracted giignl_extracted.csv --gem-csv gem_export.csv --output giignl_diff.json` |
 | Verify URLs (for any pre-searched corroborating sources) | `python url_verifier.py <url> <expected...>` |

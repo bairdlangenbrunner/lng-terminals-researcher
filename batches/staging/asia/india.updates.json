@@ -1,0 +1,104 @@
+[
+  {
+    "terminal_id": "T100000130427",
+    "unit_id": "G100002042702",
+    "terminal_name": "Dahej LNG Terminal",
+    "unit_name": "Phase 2 Expansion",
+    "country": "India",
+    "field_name": "ActualStartYear",
+    "old_value": "",
+    "new_value": "2026",
+    "confidence": "green",
+    "source_tier": "trade press + GIIGNL (multiple independent)",
+    "ref_field": "StartDate [ref]",
+    "ref_urls": [
+      "https://www.constructionworld.in/energy-infrastructure/oil-and-gas/petronet-lng-commissions-dahej-terminal-expansion-to-22.5-mmtpa/89574",
+      "https://www.giignl.org/news/indias-petronet-launches-dahej-lng-expansion",
+      "https://lngprime.com/lng-terminals/petronet-now-expects-to-launch-dahej-lng-expansion-by-march-2026/168417/"
+    ],
+    "source_notes": "Petronet commissioned the Dahej Phase-2 (+5 mtpa, 17.5->22.5 mtpa total) regas expansion at 23:30 on 31 March 2026. This unit (G100002042702) carries Status=construction with LatestPlannedStartYear=2026 in GEM; commissioning is now confirmed, so ActualStartYear=2026. Status flip construction->operating logged separately as a qa status_timeline note (fetch_timeline endpoint down).",
+    "scope_note": "Unit-level field; does not change project-level fields. Status change handled in qa, not staged as a Status edit.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131145",
+    "unit_id": "G100002114500",
+    "terminal_name": "Gopalpur LNG Terminal",
+    "unit_name": "--",
+    "country": "India",
+    "field_name": "Offshore",
+    "old_value": "True",
+    "new_value": "False",
+    "confidence": "green",
+    "source_tier": "trade press + GIIGNL; GEM wiki narrative already concurs",
+    "ref_field": "",
+    "ref_urls": [
+      "https://indianmasterminds.com/news/petronet-lng-gets-green-light-for-rs6354-80-cr-r-lng-terminal-in-odisha-shifting-from-fsru-plan-132436/",
+      "https://www.giignl.org/news/petronet-approves-onshore-gopalpur-lng-terminal",
+      "https://www.offshore-energy.biz/petronet-lng-to-set-up-lng-terminal-on-east-coast-of-india/"
+    ],
+    "source_notes": "At its 25 July 2025 board meeting Petronet took a positive FID for a 5 mtpa LAND-BASED (onshore) R-LNG terminal at Gopalpur port, REPLACING the earlier two-phase plan whose first phase was an FSRU. GIIGNL headline reads 'Petronet approves onshore Gopalpur LNG terminal'. The GEM export still flags Offshore=True/Floating=True (stale FSRU-era values), but the GEM wiki body already describes a land-based terminal. Re-aligning the export Offshore/Floating flags to the land-based configuration.",
+    "scope_note": "Single-unit terminal. Offshore flag should be False for an onshore port-based regas terminal.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131145",
+    "unit_id": "G100002114500",
+    "terminal_name": "Gopalpur LNG Terminal",
+    "unit_name": "--",
+    "country": "India",
+    "field_name": "Floating",
+    "old_value": "True",
+    "new_value": "False",
+    "confidence": "green",
+    "source_tier": "trade press + GIIGNL; GEM wiki narrative already concurs",
+    "ref_field": "",
+    "ref_urls": [
+      "https://indianmasterminds.com/news/petronet-lng-gets-green-light-for-rs6354-80-cr-r-lng-terminal-in-odisha-shifting-from-fsru-plan-132436/",
+      "https://www.giignl.org/news/petronet-approves-onshore-gopalpur-lng-terminal"
+    ],
+    "source_notes": "Same July-2025 FID: the project is now a land-based R-LNG terminal, not an FSRU. Floating=True is stale from the superseded FSRU phase. Pairs with the Offshore=True->False change above.",
+    "scope_note": "Single-unit terminal.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131053",
+    "unit_id": "G100002105300",
+    "terminal_name": "Crown Kakinada LNG Terminal",
+    "unit_name": "--",
+    "country": "India",
+    "field_name": "FIDYear",
+    "old_value": "2025",
+    "new_value": "2026",
+    "confidence": "yellow",
+    "source_tier": "company guidance via trade press (2 outlets, forward target)",
+    "ref_field": "FIDYear [ref]",
+    "ref_urls": [
+      "https://www.offshore-energy.biz/crown-lng-expanding-gas-market-horizons-across-india-thanks-to-deal-with-local-trading-player/",
+      "https://lngprime.com/contracts-and-tenders/crown-lng-inks-kakinada-pipeline-deal/156990/"
+    ],
+    "source_notes": "Offshore Energy (18 Feb 2025) quotes Crown: 'Crown expects to achieve the final investment decision for the project in 2026 and to deliver the first gas in 2029.' LNG Prime (15 Jul 2025) adds Crown plans to begin construction in 2026, completion within four years. GEM's FIDYear=2025 (FIDStatus=Pre-FID) is now stale — no FID was taken in 2025; the company's own expected-FID year is 2026. Yellow because this is repeatedly-slipped forward guidance, not an executed FID.",
+    "scope_note": "FIDStatus stays Pre-FID (FID not yet taken). Only the expected FID year changes.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131053",
+    "unit_id": "G100002105300",
+    "terminal_name": "Crown Kakinada LNG Terminal",
+    "unit_name": "--",
+    "country": "India",
+    "field_name": "LatestPlannedStartYear",
+    "old_value": "2028",
+    "new_value": "2029",
+    "confidence": "yellow",
+    "source_tier": "company guidance via trade press (2 outlets, forward target)",
+    "ref_field": "StartDate [ref]",
+    "ref_urls": [
+      "https://www.offshore-energy.biz/crown-lng-expanding-gas-market-horizons-across-india-thanks-to-deal-with-local-trading-player/",
+      "https://lngprime.com/contracts-and-tenders/crown-lng-inks-kakinada-pipeline-deal/156990/"
+    ],
+    "source_notes": "Crown now targets first gas in 2029 (Offshore Energy, 18 Feb 2025), consistent with construction beginning 2026 + ~4 yr build (LNG Prime, 15 Jul 2025). GEM Latest/OriginalPlannedStartYear=2028 predates this slip. Updating LatestPlannedStartYear to 2029; OriginalPlannedStartYear (2028) left untouched as the original plan.",
+    "scope_note": "Forward target only; no status/FID change.",
+    "researcher_initials": "AI-draft (sweep)"
+  }
+]

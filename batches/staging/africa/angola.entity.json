@@ -1,0 +1,14 @@
+[
+  {
+    "entity_name": "Azule Energy",
+    "entity_type": "parent/owner (joint venture)",
+    "country_of_hq": "Angola",
+    "parent_entity": "BP PLC [50%]; Eni SpA [50%]",
+    "rationale_for_new_entity": "BP and Eni merged their Angolan oil/gas/LNG interests into the 50:50 JV Azule Energy (operational since 2022); Azule now holds the combined ~27.2% participation in the Angola LNG JV (formerly BP 13.6% + Eni 13.6%). Angola LNG's own shareholder page lists Azule Energy as a current shareholder. Needed to replace the separate BP/Eni rows in the Angola LNG Parent field.",
+    "lookup_was_run": "RUN: entity_lookup.py 'Azule Energy' --country Angola --remote -> not_found_in_local_data; remote returned only a generic 'New Entity' link (inconclusive, no clear existing match).",
+    "lookup_result_summary": "No existing GEM entity matched 'Azule Energy' in local export data; remote lookup inconclusive. Likely a genuine new entity, but a human should confirm against the GEM entity system before creating (Azule may already exist under a variant).",
+    "referenced_by_terminals": "T100000130245 (Angola LNG Terminal)",
+    "referenced_by_units": "G100002024501",
+    "researcher_initials": "AI-draft"
+  }
+]

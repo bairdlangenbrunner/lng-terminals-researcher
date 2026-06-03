@@ -21,6 +21,15 @@ unit per batch** before trusting it for many units.
 If the parser fails or returns empty, the fallback is to manually view the unit
 page in the browser and copy the timeline into the staging xlsx.
 
+KNOWN ISSUE (observed through the 2026-06 sweep): the default Heroku host below is
+stale and returns 404 — the GEM project DB appears to have moved off Heroku (free
+dynos were retired). The sweep ran with this endpoint DOWN and routed every status
+change to a qa_review note instead of staging a timeline edit. Set the live host
+via the GEM_PROJECT_DB_BASE_URL env var (or --base-url) once confirmed. Until the
+endpoint is reachable, follow that same fallback: record status changes as qa
+notes — do NOT stage a timeline edit blind (the export lacks the ordered timeline,
+so a blind edit risks duplicates / reordering).
+
 Usage:
     python fetch_timeline.py G100002027401
     # Prints the parsed timeline for that UnitID
@@ -37,7 +46,12 @@ import urllib.parse
 from pathlib import Path
 
 
-DEFAULT_BASE_URL = "https://internal-project-db-host"
+# The legacy Heroku host is known-stale (404 through the 2026-06 sweep — see the
+# module docstring's KNOWN ISSUE). Override with GEM_PROJECT_DB_BASE_URL once the
+# live host is confirmed; until then the endpoint is unreachable and status
+# changes go to qa notes, not staged timeline edits.
+DEFAULT_BASE_URL = os.environ.get(
+    "GEM_PROJECT_DB_BASE_URL", "https://internal-project-db-host")
 TEST_BASE_URL = "https://internal-test-db-host"
 
 _DEFAULT_UA = (
@@ -88,7 +102,14 @@ def _fetch_unit_page(unit_id, base_url=DEFAULT_BASE_URL, timeout=30):
             f"Session cookie likely expired — re-export GEM_PROJECT_DB_SESSIONID."
         )
     if status != "200":
-        sys.exit(f"ERROR: HTTP {status} fetching {url}")
+        sys.exit(
+            f"ERROR: HTTP {status} fetching {url}\n"
+            f"  The GEM project-DB host may have moved (the legacy Heroku host is\n"
+            f"  retired). Set GEM_PROJECT_DB_BASE_URL to the current host, or pass\n"
+            f"  --base-url. FALLBACK if the endpoint is unreachable: do NOT block the\n"
+            f"  batch — record the status change as a qa_review note and copy the\n"
+            f"  timeline from the live UI by hand (see the module docstring)."
+        )
 
     with open(tmp, encoding="utf-8", errors="replace") as f:
         return f.read()

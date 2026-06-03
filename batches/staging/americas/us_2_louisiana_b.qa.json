@@ -1,0 +1,52 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130242",
+    "unit_id": "G100002024202",
+    "terminal_name": "Plaquemines LNG Terminal",
+    "issue": "GEM has Phase 2 (T25-36) as construction/actual. Venture Global began producing LNG from Phase 2 trains in mid-2025 ahead of the 2026 commercial-contract start, running trains early for spot sales (East Daley, 22 Jul 2025: facility pulling >2.6 Bcf/d; VG guided to ~92 cargoes in 4Q25 implying all Phase 1+2 trains online by YE2025). VG also demonstrated ~40% over-nameplate at Plaquemines. By 2026 Phase 2 is effectively producing LNG, so a construction->operating timeline entry may be warranted for some/all Phase 2 trains. Pull unit timeline and confirm which Phase 2 trains are in service before any status edit.",
+    "severity": "medium",
+    "suggested_action": "Verify Phase 2 train-by-train commissioning status via VG IR / FERC docket and add a status_timeline entry (construction -> operating) if confirmed. Do NOT bump nameplate capacity for over-nameplate/peak run-rate (40% over-nameplate is peak, not nameplate). fetch_timeline endpoint is down; resolve via DB UI.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130987",
+    "unit_id": "G100002098701",
+    "terminal_name": "West Delta LNG Deepwater Port Terminal",
+    "issue": "GEM has status shelved/confirmed (ShelvedYear 2025). MARAD terminated/denied the West Delta deepwater-port license application in late 2025 after LNG21 failed to submit a complete amended application by the 24 Sep 2025 deadline (8 extensions since 2019). A formal regulatory termination is stronger than 'shelved' and is a candidate for cancelled.",
+    "severity": "low",
+    "suggested_action": "Consider a shelved -> cancelled status_timeline entry (CancelledYear 2025) given the MARAD application termination. Confirm whether LNG21 retains any path to refile before changing status.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130240",
+    "unit_id": "G100002024007",
+    "terminal_name": "Sabine Pass LNG Terminal",
+    "issue": "GEM has Stage 5 Expansion Phase 1 (T7) as proposed (ConstructionYear 2026, FID 2027). In May 2026 Cheniere Partners (SPLV) signed a lump-sum turnkey EPC contract with Bechtel for Phase 1 (Train 7 + BOG re-liquefaction + Sabine Crossing Pipeline) and issued a Limited Notice to Proceed (LNTP) for early engineering/procurement. FERC/DOE approvals still pending; full FID still targeted early 2027. LNTP is pre-FID early works, not full construction, so status likely remains proposed for now, but worth a watch note.",
+    "severity": "low",
+    "suggested_action": "Keep status proposed (LNTP != FID). Note the Bechtel EPC + LNTP milestone; flip to construction only on full FID / FERC authorization. ConstructionYear 2026 in GEM already anticipates early works.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_quality",
+    "terminal_id": "T100000130232",
+    "unit_id": "G100002023201",
+    "terminal_name": "Lake Charles LNG Terminal",
+    "issue": "GEM Export unit capacity is 17.8 mtpa (3 trains; the FERC/DOE-authorized export figure). Energy Transfer and recent trade press consistently describe the project as ~16.45-16.5 mtpa nameplate across 3 trains. The two figures coexist in the record (authorized vs marketed nameplate). GEM is shelved/confirmed (ShelvedYear 2025) and already reflects the 18 Dec 2025 Energy Transfer suspension announcement (LastUpdated 2026-05-27) -- no status change needed. Left capacity unchanged given the project is shelved; flagging the dual figure only.",
+    "severity": "low",
+    "suggested_action": "No edit. If the project ever revives, reconcile 17.8 (authorized) vs 16.45/16.5 (marketed nameplate) at that time. Capacity bump not warranted for a shelved project.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_quality",
+    "terminal_id": "T100000130242",
+    "unit_id": "G100001064081",
+    "terminal_name": "Plaquemines LNG Terminal",
+    "issue": "GEM Expansion unit 'Expansion (T37-60)' is 17.78 mtpa nameplate, proposed (ProposalYear 2025). Venture Global filed the Plaquemines brownfield expansion at FERC (Docket CP26-27-000, accepted into Certificate Proceeding 26 Nov 2025). Scope has grown: originally 24 trains '>= 18.6 mtpa', then +4 blocks (July 2025) to 32 modular trains / 'over 30.0 mtpa peak production'. GEM unit name '(T37-60)' = 24 trains; the larger 32-train scope and the peak-vs-nameplate framing are unresolved.",
+    "severity": "medium",
+    "suggested_action": "Researcher to reconcile the expansion's train count (24 vs 32) and capacity (nameplate vs ~30 mtpa peak) against the FERC CP26-27 / DOE filings. Did not edit capacity here: peak run-rate is not a nameplate figure, and the unit's train range may need restructuring rather than a single-cell bump.",
+    "researcher_initials": "AI-draft"
+  }
+]

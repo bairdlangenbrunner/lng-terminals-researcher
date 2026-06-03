@@ -1,0 +1,162 @@
+[
+  {
+    "category": "ownership",
+    "terminal_id": "T100001083401",
+    "unit_id": "G100001094271",
+    "terminal_name": "Barbers Point FSRU",
+    "issue": "GEM Owner='Longboard LNG', Parent='Chubu Electric Power Co Inc; Tokyo Electric Power Co'. The 15 May 2026 FERC pre-filing names the developer as 'Longboard TerminalCo' (wholly-owned subsidiary of JERA Americas); JERA itself is a 50-50 JV of TEPCO Fuel&Power (Tokyo Electric subsidiary) and Chubu Electric. So GEM's ultimate parents (Chubu, TEPCO) are correct, but the immediate parent layer JERA Americas / JERA Co Inc is missing, and the owner-entity name is 'Longboard TerminalCo' (vs GEM 'Longboard LNG'). JERA already exists in GEM as 'JERA Co Inc' (E-id present; canonical 'jera') so no new entity is needed.",
+    "severity": "low",
+    "suggested_action": "Researcher decision: insert JERA Americas/JERA Co Inc as immediate parent above Chubu+TEPCO, and consider aligning owner name to 'Longboard TerminalCo'. Reuse existing JERA entity; do NOT create new. Ref: https://lngprime.com/americas/jera-seeks-ok-to-start-pre-filing-process-for-hawaii-lng-project/186938/ . Ties to RR's existing open note about renaming the project.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no-change",
+    "terminal_id": "T100001083401",
+    "unit_id": "G100001094271",
+    "terminal_name": "Barbers Point FSRU",
+    "issue": "Capacity/timing verified current: FERC pre-filing (filed 15 May 2026 by Longboard TerminalCo) targets ~1 mtpa (0.6 power/distribution + 0.4 bunkering) via disconnectable FSRU, online Q1 2030. Matches GEM 1.0 mtpa, OriginalPlannedStartYear/LatestPlannedStartYear 2030, proposed, ProposalYear 2026. Note: the 1 mtpa is anticipated peak demand, not a strict liquefaction nameplate, but GEM already records it.",
+    "severity": "low",
+    "suggested_action": "No edit; re-verified current.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no-change",
+    "terminal_id": "T100001083399",
+    "unit_id": "G100001094269",
+    "terminal_name": "Cook Inlet FSRU",
+    "issue": "Verified current: Cook Inlet LNG (unit of Gardes Holdings, partnered with Glacier Oil & Gas) plans an FSRU moored at the Osprey platform, ~22 Bcf/yr initial supply, first gas mid-2029, FERC pre-filing initiated. Matches GEM: Owner 'Cook Inlet LNG LLC', Parent 'Gardes Holdings Inc', 0.06 bcf/d (=22 Bcf/yr ~0.46 mtpa), OriginalPlannedStartYear 2029, proposed, Offshore/Floating True. Glacier Oil & Gas is a development partner (not necessarily equity) — left out of owner per offtake/partner-vs-equity rule.",
+    "severity": "low",
+    "suggested_action": "No edit; re-verified current. Optionally add Glacier Oil & Gas as a partner note in wiki only.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no-change",
+    "terminal_id": "T100000130206",
+    "unit_id": "G100002020601",
+    "terminal_name": "Alaska LNG Terminal",
+    "issue": "Verified current. Glenfarne is lead developer (75% of JV '8 Star Alaska LLC'; State of Alaska/AGDC 25%) per Jan 2026 Glenfarne release; 20 mtpa export terminal at Nikiski; 739-mi 42-in mainline; target first gas 2029, year-end-2026 / 2027 FID push. Matches GEM owner split (AGDC 25% / Glenfarne Alaska LNG LLC 75%), 3x6.67=20 mtpa, proposed, FIDYear 2027, Location Nikiski. Glenfarne entity already in GEM (E100002023140). Minor: GEM owner-entity is 'Glenfarne Alaska LNG LLC' while the named 75% JV vehicle in the 2026 release is '8 Star Alaska LLC' — likely the same special-purpose structure; not changing without a clean entity confirmation.",
+    "severity": "low",
+    "suggested_action": "No field edit. Optionally reconcile the JV-vehicle name ('8 Star Alaska LLC') against GEM's 'Glenfarne Alaska LNG LLC' in a future entity check.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no-change",
+    "terminal_id": "T100000130231",
+    "unit_id": "G100002023101",
+    "terminal_name": "Kenai LNG Terminal",
+    "issue": "Verified current. Harvest (Harvest Midstream/Harvest Alaska, Hilcorp-affiliated owner Jeff Hildebrand) closed acquisition of Kenai LNG from Marathon in Nov 2025; repurposing to LNG IMPORT/regas; targeting FID Q2 2026, first imports H1 2028. Matches GEM: export unit mothballed (StopYear 2017), import unit proposed (Owner Harvest Alaska LLC, Parent Hilcorp Energy Co, FIDYear 2026, Pre-FID, LatestPlannedStartYear 2028). RR's existing note already flags the Harvest Alaska vs Harvest Midstream parent nuance.",
+    "severity": "low",
+    "suggested_action": "No edit; re-verified current.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no-change",
+    "terminal_id": "T100000130922",
+    "unit_id": "G100002092201",
+    "terminal_name": "Qilak LNG Terminal",
+    "issue": "Verified current. Qilak LNG (led by former Lt. Gov. Mead Treadwell) pursues a ~4 mtpa North Slope gravity-base-structure export project tapping Point Thomson gas; signed MOU with ExxonMobil Alaska for Phase-1 gas supply; cost ~$4-5B; planned start 2033 (per Mar 2026 ADN/Reuters). Matches GEM: 4.0 mtpa, proposed, Pre-FID, FIDYear 2025, LatestPlannedStartYear 2033, North Slope, Offshore True.",
+    "severity": "low",
+    "suggested_action": "No edit; re-verified current.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no-change",
+    "terminal_id": "T100001061234",
+    "unit_id": "G100001070149",
+    "terminal_name": "AGP LNG Terminal",
+    "issue": "Verified status quo. AGP (American Gas Partners) $7B FLNG export plan; LOIs ~1 mtpa, FID targeted 2025, FLNGs ready ~4 yrs after. No material public progress beyond a Feb 2025 letter of intent; AGP website out of date. Matches GEM (7.2 mtpa, proposed, Pre-FID, FIDYear 2025). RR's note already flags shelve-in-'27-cycle if no further updates.",
+    "severity": "low",
+    "suggested_action": "No edit. Honor RR's existing shelve-watch note; no new public development found this sweep.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130230",
+    "unit_id": "G100002023001",
+    "terminal_name": "Jordan Cove LNG Terminal",
+    "issue": "Confirmed still cancelled. Pembina cancelled the terminal+Pacific Connector pipeline (Dec 2021); FERC upheld Oregon's permit denial (Jan 2024). A Feb 2025 filing by startup 'OA Partners LLC' (D.C. Circuit appeal to reverse the rejection) is characterized by opponents as a meritless filing and does NOT constitute a credible revival. No status change warranted.",
+    "severity": "low",
+    "suggested_action": "Keep cancelled/confirmed (CancelledYear 2021). Monitor only if OA Partners gains a substantive regulatory foothold.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no-change",
+    "terminal_id": "T100000130689",
+    "unit_id": "G100002068901",
+    "terminal_name": "Alaska Japan LNG Terminal",
+    "issue": "Confirmed cancelled. Resources Energy Inc (REI) cancelled its small Port MacKenzie/upper Cook Inlet LNG project in April 2017 citing global oversupply. Matches GEM cancelled/confirmed, CancelledYear 2017. (Minor: GEM lat/lon points to Anchorage; the proposed site was Port MacKenzie — cosmetic only, not staging.)",
+    "severity": "low",
+    "suggested_action": "No edit; confirmed dead.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no-change",
+    "terminal_id": "T100000130678",
+    "unit_id": "G100002067801",
+    "terminal_name": "American Coast LNG Terminal",
+    "issue": "Confirmed cancelled. General American LNG (GALNG) export project, no development updates since ~2014, presumed cancelled. Matches GEM cancelled/inferred-4y, CancelledYear 2018, 8 mtpa across two phases.",
+    "severity": "low",
+    "suggested_action": "No edit; confirmed dead.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no-change",
+    "terminal_id": "T100000130648",
+    "unit_id": "G100002064800",
+    "terminal_name": "Long Beach LNG Terminal",
+    "issue": "Confirmed cancelled. Sound Energy Solutions (ConocoPhillips/Mitsubishi) Long Beach import terminal dropped 2007 amid opposition/regulatory denial. Matches GEM cancelled/confirmed, CancelledYear 2007.",
+    "severity": "low",
+    "suggested_action": "No edit; confirmed dead.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no-change",
+    "terminal_id": "T100000130655",
+    "unit_id": "G100002065500",
+    "terminal_name": "OceanWay LNG Terminal",
+    "issue": "Confirmed cancelled. Woodside's OceanWay offshore buoy/pipeline import project off Los Angeles withdrawn (shelved 2009/2011, MARAD app withdrawn). Matches GEM cancelled/confirmed, CancelledYear 2013.",
+    "severity": "low",
+    "suggested_action": "No edit; confirmed dead.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no-change",
+    "terminal_id": "T100000130847",
+    "unit_id": "G100002084700",
+    "terminal_name": "Oxnard LNG Terminal",
+    "issue": "Confirmed cancelled. Clearwater Port (Oxnard) offshore import terminal terminated by California State Lands Commission in 2010 after a year dormant. Matches GEM cancelled/confirmed, CancelledYear 2010.",
+    "severity": "low",
+    "suggested_action": "No edit; confirmed dead.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no-change",
+    "terminal_id": "T100000130848",
+    "unit_id": "G100002084800",
+    "terminal_name": "Port Esperanza FSRU",
+    "issue": "Confirmed cancelled (Esperanza Energy LLC offshore FSRU import, Long Beach CA). No revival found. Matches GEM cancelled/inferred-4y, ShelvedYear 2009, CancelledYear 2011.",
+    "severity": "low",
+    "suggested_action": "No edit; confirmed dead.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no-change",
+    "terminal_id": "T100000130635",
+    "unit_id": "G100002063500",
+    "terminal_name": "Bradwood Landing LNG Terminal",
+    "issue": "Confirmed cancelled (Northern Star Natural Gas import terminal, Bradwood OR). No revival found. Matches GEM cancelled/confirmed, CancelledYear 2010.",
+    "severity": "low",
+    "suggested_action": "No edit; confirmed dead.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no-change",
+    "terminal_id": "T100000130652",
+    "unit_id": "G100002065201",
+    "terminal_name": "Oregon LNG Terminal",
+    "issue": "Confirmed cancelled (Warrenton/Oregon LNG export+import, Jefferies-linked). No revival found. Matches GEM cancelled/confirmed, CancelledYear 2016.",
+    "severity": "low",
+    "suggested_action": "No edit; confirmed dead.",
+    "researcher_initials": "AI-draft"
+  }
+]
