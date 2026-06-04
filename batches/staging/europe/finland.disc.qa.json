@@ -1,0 +1,32 @@
+[
+  {
+    "category": "alias_confirmation",
+    "terminal_id": "T100000130442",
+    "unit_id": "G100002044200",
+    "terminal_name": "Southern Finland LNG Terminal",
+    "issue": "Discovery dedup confirms this GEM row is the project publicly known as 'Finngulf LNG' (also reported as the Inkoo/Joddbole/Porvoo large-scale import terminal), Gasum's regional Southern Finland terminal abandoned in October 2015 for lack of commercial viability. GEM location Inga (Ingaa), Uusimaa, coords 60.01371/23.95714, Status=cancelled (confirmed) 2015 all match. This guards against double-counting: 'Finngulf LNG' headlines are NOT a missing terminal. NOTE this is a DISTINCT project from the contemporaneous Gasum Turku/Pansio import-terminal proposal (Varsinais-Suomi), which is NOT in GEM and is staged separately in finland.disc.monitor.json.",
+    "severity": "low",
+    "suggested_action": "No data change required. Optionally add 'Finngulf LNG' (and 'Inkoo/Joddbole import terminal', 1990s-2015 conception) to OtherNames on T100000130442 so future GIIGNL/press 'Finngulf' references match this row instead of reading as a discovery. Verified non-circular sources (url_verifier PASS): https://www.offshore-energy.biz/gasum-dumps-balticconnector-plan/ (6 Oct 2015, 'Finngulf...not commercially viable'); https://www.lngindustry.com/liquid-natural-gas/13012014/finland_lng_site_selected_30/ (Finngulf, Inkoo site).",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "out_of_scope_examined",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Nivalan Biokaasu bio-LNG plant (Nivala) - Copenhagen Infrastructure Partners",
+    "issue": "Surfaced in the trade-press sweep (LNG Prime, Sep 2025): Copenhagen Infrastructure Partners (CI Advanced Bioenergy Fund I) took FID on Nivalan Biokaasu, billed as Finland's largest industrial biogas plant, in Nivala (inland, Northern Ostrobothnia). It will process >600,000 t/y of biomass and produce ~200 GWh/y of liquefied biomethane (bio-LNG); construction late 2025, ops H2 2027; ~EUR 26m Finnish MEAE grant. Examined for completeness; judged OUT OF SCOPE - it is a biomethane digestion/liquefaction PRODUCTION plant, not an LNG import/export/regasification terminal handling natural gas, so it is not a GEM Gas Infrastructure Tracker LNG terminal. Logged so it is not re-examined as a candidate each sweep.",
+    "severity": "low",
+    "suggested_action": "Do NOT stage as a GEM LNG terminal. If GEM ever decides to track bio-LNG liquefaction plants, revisit. Lead source (url_verifier PASS): https://lngprime.com/europe/copenhagen-infrastructure-partners-takes-fid-on-finnish-bio-lng-plant/163738/.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "out_of_scope_examined",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Port of Turku LNG bunkering (Oct 2024)",
+    "issue": "The most recent Turku-area LNG news (Port of Turku, Oct 2024) is the start of LNG BUNKERING service, not a new import/regasification terminal. Bunkering is explicitly excluded from this project's scope. Recorded so it is not mistaken for activity reviving the dormant Gasum Turku/Pansio import-terminal proposal (see finland.disc.monitor.json).",
+    "severity": "low",
+    "suggested_action": "No action. Out of scope (bunkering). Distinct from the monitored Pansio import-terminal proposal.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  }
+]

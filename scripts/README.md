@@ -7,7 +7,7 @@ top-of-file docstring.
 
 ```
 # 1. Always start with a fresh pull (no cookies needed for the all-fields path)
-python gem_all_fields.py -o gem_export.csv
+python gem_query.py --all-fields lng -o gem_export.csv   # gem_all_fields.py is the library; running it directly is a no-op
 python pull_gem_db.py --map-only --out gem_export.csv   # derive the .colmap.json
 
 # 2. Build the matching indexes

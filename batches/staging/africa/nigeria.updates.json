@@ -1,82 +1,251 @@
 [
   {
+    "terminal_id": "T100000130259",
+    "unit_id": "G100002025907",
+    "terminal_name": "Nigeria LNG Terminal",
+    "unit_name": "T07",
+    "country": "Nigeria",
+    "field_name": "Status [ref]",
+    "old_value": "https://pumps-africa.com/construction-begins-on-nigeria-train-7-lng-project/",
+    "new_value": "https://www.nlng.com/operations/train-7, https://www.thisdaylive.com/2026/05/21/5bn-nlng-train-7-hits-92-completion-nears-pre-commissioning-as-local-capacity-grows/",
+    "confidence": "green",
+    "source_tier": "primary (project operator NLNG) + trade press corroboration",
+    "ref_field": "Status [ref]",
+    "ref_urls": [
+      "https://www.nlng.com/operations/train-7",
+      "https://www.thisdaylive.com/2026/05/21/5bn-nlng-train-7-hits-92-completion-nears-pre-commissioning-as-local-capacity-grows/"
+    ],
+    "source_notes": "Existing Status [ref] was a stale 2021 'construction begins' trade item. Train 7 is ~92% complete and entering pre-commissioning as of May 2026 per NLNG operator page and ThisDay (May 2026); status remains 'construction' (not yet operating), so only the citation is upgraded, not the Status value. See companion status_timeline QA note re: eventual operating flip.",
+    "scope_note": "Project-level Status [ref] is unit-specific here (T07 only); other NLNG units unchanged.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130260",
+    "unit_id": "G100002026001",
+    "terminal_name": "Brass LNG Terminal",
+    "unit_name": "T1",
+    "country": "Nigeria",
+    "field_name": "Status [ref]",
+    "old_value": "",
+    "new_value": "https://constructionreviewonline.com/news/nigeria/nigeria-to-review-us-18bn-brass-lng-project/",
+    "confidence": "yellow",
+    "source_tier": "single non-primary (trade press)",
+    "ref_field": "Status [ref]",
+    "ref_urls": [
+      "https://constructionreviewonline.com/news/nigeria/nigeria-to-review-us-18bn-brass-lng-project/"
+    ],
+    "source_notes": "Blank-ref fill. Article (updated Dec 2022) confirms Brass LNG abandoned after early site works and being reviewed for revival; supports the existing 'shelved' Status. Same URL already cited as Owner [ref] on this row. Note: NNPC Sept-2024 Gastech revival talks remain early investor-seeking, not enough to flip status.",
+    "scope_note": "Brass LNG is a multi-unit project (T1, T2); same Status [ref] fill applied to both unit-rows.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130260",
+    "unit_id": "G100002026002",
+    "terminal_name": "Brass LNG Terminal",
+    "unit_name": "T2",
+    "country": "Nigeria",
+    "field_name": "Status [ref]",
+    "old_value": "",
+    "new_value": "https://constructionreviewonline.com/news/nigeria/nigeria-to-review-us-18bn-brass-lng-project/",
+    "confidence": "yellow",
+    "source_tier": "single non-primary (trade press)",
+    "ref_field": "Status [ref]",
+    "ref_urls": [
+      "https://constructionreviewonline.com/news/nigeria/nigeria-to-review-us-18bn-brass-lng-project/"
+    ],
+    "source_notes": "Blank-ref fill, project-level (mirrors T1). Confirms abandoned/shelved status of Brass LNG.",
+    "scope_note": "Project-level field duplicated across both Brass unit-rows (T1, T2).",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130967",
+    "unit_id": "G100002096700",
+    "terminal_name": "Golar Lagos FSRU",
+    "unit_name": "--",
+    "country": "Nigeria",
+    "field_name": "Status [ref]",
+    "old_value": "",
+    "new_value": "https://www.gem.wiki/Golar_Lagos_FSRU",
+    "confidence": "yellow",
+    "source_tier": "GEM wiki profile (tertiary/in-house)",
+    "ref_field": "Status [ref]",
+    "ref_urls": [
+      "https://www.gem.wiki/Golar_Lagos_FSRU"
+    ],
+    "source_notes": "Blank-ref fill. GEM wiki profile states the Lagos FSRU (Embedded Power Supply Programme) saw no development for 4+ years and is presumed cancelled as of 2022; Golar instead pivoted to an offshore FLNG HoA with NNPC (Apr 2023). Supports existing 'cancelled' Status. Existing Owner/Capacity [ref] (africanreview.com) now FAILS verification — see QA link-rot note.",
+    "scope_note": "Single-unit FSRU terminal.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130967",
+    "unit_id": "G100002096700",
+    "terminal_name": "Golar Lagos FSRU",
+    "unit_name": "--",
+    "country": "Nigeria",
+    "field_name": "CancelledYear [ref]",
+    "old_value": "",
+    "new_value": "https://www.gem.wiki/Golar_Lagos_FSRU",
+    "confidence": "yellow",
+    "source_tier": "GEM wiki profile (tertiary/in-house)",
+    "ref_field": "CancelledYear [ref]",
+    "ref_urls": [
+      "https://www.gem.wiki/Golar_Lagos_FSRU"
+    ],
+    "source_notes": "Blank-ref fill for CancelledYear=2022. GEM wiki: 'no development updates in over four years and the project is presumed to be cancelled as of 2022.' Inferred (4 y) cancellation, consistent with existing Substatus 'inferred 4 y'.",
+    "scope_note": "Single-unit FSRU terminal.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130967",
+    "unit_id": "G100002096700",
+    "terminal_name": "Golar Lagos FSRU",
+    "unit_name": "--",
+    "country": "Nigeria",
+    "field_name": "StopYear [ref]",
+    "old_value": "",
+    "new_value": "https://www.gem.wiki/Golar_Lagos_FSRU",
+    "confidence": "yellow",
+    "source_tier": "GEM wiki profile (tertiary/in-house)",
+    "ref_field": "StopYear [ref]",
+    "ref_urls": [
+      "https://www.gem.wiki/Golar_Lagos_FSRU"
+    ],
+    "source_notes": "Blank-ref fill for StopYear=2022, same basis as CancelledYear (presumed cancelled as of 2022).",
+    "scope_note": "Single-unit FSRU terminal.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131170",
+    "unit_id": "G100002117001",
+    "terminal_name": "Riverside LNG Terminal",
+    "unit_name": "--",
+    "country": "Nigeria",
+    "field_name": "Status [ref]",
+    "old_value": "",
+    "new_value": "https://www.gem.wiki/Riverside_LNG_Terminal",
+    "confidence": "yellow",
+    "source_tier": "GEM wiki profile (tertiary/in-house)",
+    "ref_field": "Status [ref]",
+    "ref_urls": [
+      "https://www.gem.wiki/Riverside_LNG_Terminal"
+    ],
+    "source_notes": "Blank-ref fill. The project's own site (dev.riversidelng.com) is dead (HTTP 000, corroborating the existing ResearcherNote) and only 2023 supply MOUs exist publicly, supporting the 'shelved (inferred 2 y)' Status. CAVEAT: an Aug-2025 paywalled headline ('Riverside LNG Agrees Gas Supply To Germany From 2026') may signal reactivation — routed to status_timeline QA; not enough to flip status now.",
+    "scope_note": "Single-unit terminal.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130259",
+    "unit_id": "G100002025907",
+    "terminal_name": "Nigeria LNG Terminal",
+    "unit_name": "T07",
+    "country": "Nigeria",
+    "field_name": "Capacity",
+    "old_value": "4.20",
+    "new_value": "4.20",
+    "confidence": "blue",
+    "source_tier": "primary operator + trade press",
+    "ref_field": "Capacity [ref]",
+    "ref_urls": [
+      "https://www.nlng.com/operations/train-7",
+      "https://www.thisdaylive.com/2026/05/21/5bn-nlng-train-7-hits-92-completion-nears-pre-commissioning-as-local-capacity-grows/"
+    ],
+    "source_notes": "Re-verified unchanged: Train 7 = 4.2 mtpa standalone; debottlenecking adds 3.4 mtpa (G..913); total NLNG 22->30 mtpa (+35%). Matches GEM. ~92% complete May 2026.",
+    "scope_note": "Representative blue re-verify for the NLNG Train 7 unit (capacity); other NLNG fields not individually blue-marked (standard tier).",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131052",
+    "unit_id": "G100002105201",
+    "terminal_name": "UTM Offshore FLNG Terminal",
+    "unit_name": "--",
+    "country": "Nigeria",
+    "field_name": "Capacity",
+    "old_value": "2.10",
+    "new_value": "2.10",
+    "confidence": "blue",
+    "source_tier": "trade press (LNG Prime / Riviera / Offshore Energy)",
+    "ref_field": "Capacity [ref]",
+    "ref_urls": [
+      "https://lngprime.com/lng-terminals/utm-one-step-closer-to-deciding-on-nigerias-first-flng-ceo-says/124357/"
+    ],
+    "source_notes": "Re-verified unchanged: LNG nameplate 2.1 mtpa (within a 2.8 mtpa total incl. 0.5 Mt/yr LPG + 0.2 Mt/yr condensate). Still Pre-FID (FID slipped into 2025; first LNG targeted 2029). Yoho field, Seplat feedgas. Matches GEM (Pre-FID, FIDYear 2025, LatestPlannedStartYear 2029, cap 2.1).",
+    "scope_note": "Representative blue re-verify for UTM FLNG (capacity).",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131125",
+    "unit_id": "G100002112501",
+    "terminal_name": "Golar Nigeria FLNG Terminal",
+    "unit_name": "--",
+    "country": "Nigeria",
+    "field_name": "FIDStatus",
+    "old_value": "Pre-FID",
+    "new_value": "Pre-FID",
+    "confidence": "blue",
+    "source_tier": "trade press (LNG Prime) + sponsor (Golar 6-K)",
+    "ref_field": "Status [ref]",
+    "ref_urls": [
+      "https://lngprime.com/lng-terminals/golar-ceo-says-nigerian-flng-fid-unlikely-before-2025/132219/"
+    ],
+    "source_notes": "Re-verified unchanged: NNPC-Golar PDA for offshore Niger Delta FLNG (400-500 MMscf/d); Golar CEO said FID unlikely before 2025, no suitable FLNG vessel currently allocated. Still proposed/Pre-FID. Matches GEM.",
+    "scope_note": "Representative blue re-verify for Golar Nigeria FLNG (FID status).",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131168",
+    "unit_id": "G100002116801",
+    "terminal_name": "Ace Gas Nigeria FLNG Terminal",
+    "unit_name": "--",
+    "country": "Nigeria",
+    "field_name": "Status",
+    "old_value": "proposed",
+    "new_value": "proposed",
+    "confidence": "blue",
+    "source_tier": "trade press (Offshore Energy / OE Digital / LNG Prime)",
+    "ref_field": "Status [ref]",
+    "ref_urls": [
+      "https://www.offshore-energy.biz/wison-new-energies-starts-pre-feed-work-for-two-flng-projects-in-nigeria/"
+    ],
+    "source_notes": "Re-verified unchanged: Wison New Energies signed FEED (Dec 2024) for Ace Gas FLNG (3 mtpa, offshore Escravos) + power barge; still proposed/early-stage. Companion Transoceanic FLNG (3 mtpa, offshore Pennington) likewise still proposed under the same Wison pre-FEED/FEED scope. Matches GEM.",
+    "scope_note": "Representative blue re-verify for Ace Gas FLNG (status); Transoceanic (sibling Wison project) also re-confirmed proposed.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131169",
+    "unit_id": "G100002116901",
+    "terminal_name": "Transoceanic Nigeria FLNG Terminal",
+    "unit_name": "--",
+    "country": "Nigeria",
+    "field_name": "Status",
+    "old_value": "proposed",
+    "new_value": "proposed",
+    "confidence": "blue",
+    "source_tier": "trade press (Offshore Energy / Energy Voice / LNG Prime)",
+    "ref_field": "Status [ref]",
+    "ref_urls": [
+      "https://www.offshore-energy.biz/wison-new-energies-starts-pre-feed-work-for-two-flng-projects-in-nigeria/"
+    ],
+    "source_notes": "Re-verified unchanged: Transoceanic Gas & Power FLNG (3 mtpa, offshore Pennington, OML 289) under Wison pre-FEED/FEED (Dec 2024); still proposed. Matches GEM.",
+    "scope_note": "Representative blue re-verify for Transoceanic FLNG (status).",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
     "terminal_id": "T100000130262",
     "unit_id": "G100002026201",
     "terminal_name": "Olokola LNG Terminal",
     "unit_name": "T1",
     "country": "Nigeria",
-    "field_name": "State/Province",
-    "old_value": "Cross River",
-    "new_value": "Ogun",
-    "confidence": "green",
-    "source_tier": "2 independent (trade/govt-cited + GEM wiki OKFTZ description)",
-    "ref_field": "Location [ref]",
+    "field_name": "Status",
+    "old_value": "proposed",
+    "new_value": "proposed",
+    "confidence": "blue",
+    "source_tier": "trade press (FinancialEnergyReview / OGJ / ThisDay)",
+    "ref_field": "Status [ref]",
     "ref_urls": [
-      "https://www.thisdaylive.com/2024/09/21/nnpc-in-talks-with-investors-for-revival-of-30bn-brass-olokola-lng-projects-2/",
-      "https://www.gem.wiki/Olokola_LNG_Terminal"
+      "https://financialenergyreview.com/nnpc-ltd-sets-to-resuscitate-brass-and-olokola-lng-projects-returns-to-negotiation-table-with-offshore-investors/"
     ],
-    "source_notes": "Olokola/OK LNG sits in the Olokola Free Trade Zone, Ogun Waterside LGA, Ogun State (straddling the Ogun/Ondo border on the Gulf of Guinea), ~100 km east of Lagos. THISDAY (2024-09-21) states verbatim 'The Olokola gas project sited in Ogun State.' GEM's current State/Province='Cross River' is incorrect (Cross River is in the far SE near Cameroon; OKFTZ is in the SW). Ondo is the bordering second state. Project-level field correction applied to all four Olokola unit-rows.",
-    "scope_note": "Project-level field; apply to all 4 Olokola unit-rows (G100002026201-04).",
-    "researcher_initials": "AI-draft (sweep)"
-  },
-  {
-    "terminal_id": "T100000130262",
-    "unit_id": "G100002026202",
-    "terminal_name": "Olokola LNG Terminal",
-    "unit_name": "T2",
-    "country": "Nigeria",
-    "field_name": "State/Province",
-    "old_value": "Cross River",
-    "new_value": "Ogun",
-    "confidence": "green",
-    "source_tier": "2 independent (trade/govt-cited + GEM wiki OKFTZ description)",
-    "ref_field": "Location [ref]",
-    "ref_urls": [
-      "https://www.thisdaylive.com/2024/09/21/nnpc-in-talks-with-investors-for-revival-of-30bn-brass-olokola-lng-projects-2/",
-      "https://www.gem.wiki/Olokola_LNG_Terminal"
-    ],
-    "source_notes": "See T1 row. Olokola/OK LNG is in the Olokola Free Trade Zone, Ogun State (Ogun/Ondo border), not Cross River.",
-    "scope_note": "Project-level field; apply to all 4 Olokola unit-rows.",
-    "researcher_initials": "AI-draft (sweep)"
-  },
-  {
-    "terminal_id": "T100000130262",
-    "unit_id": "G100002026203",
-    "terminal_name": "Olokola LNG Terminal",
-    "unit_name": "T3",
-    "country": "Nigeria",
-    "field_name": "State/Province",
-    "old_value": "Cross River",
-    "new_value": "Ogun",
-    "confidence": "green",
-    "source_tier": "2 independent (trade/govt-cited + GEM wiki OKFTZ description)",
-    "ref_field": "Location [ref]",
-    "ref_urls": [
-      "https://www.thisdaylive.com/2024/09/21/nnpc-in-talks-with-investors-for-revival-of-30bn-brass-olokola-lng-projects-2/",
-      "https://www.gem.wiki/Olokola_LNG_Terminal"
-    ],
-    "source_notes": "See T1 row. Olokola/OK LNG is in the Olokola Free Trade Zone, Ogun State (Ogun/Ondo border), not Cross River.",
-    "scope_note": "Project-level field; apply to all 4 Olokola unit-rows.",
-    "researcher_initials": "AI-draft (sweep)"
-  },
-  {
-    "terminal_id": "T100000130262",
-    "unit_id": "G100002026204",
-    "terminal_name": "Olokola LNG Terminal",
-    "unit_name": "T4",
-    "country": "Nigeria",
-    "field_name": "State/Province",
-    "old_value": "Cross River",
-    "new_value": "Ogun",
-    "confidence": "green",
-    "source_tier": "2 independent (trade/govt-cited + GEM wiki OKFTZ description)",
-    "ref_field": "Location [ref]",
-    "ref_urls": [
-      "https://www.thisdaylive.com/2024/09/21/nnpc-in-talks-with-investors-for-revival-of-30bn-brass-olokola-lng-projects-2/",
-      "https://www.gem.wiki/Olokola_LNG_Terminal"
-    ],
-    "source_notes": "See T1 row. Olokola/OK LNG is in the Olokola Free Trade Zone, Ogun State (Ogun/Ondo border), not Cross River.",
-    "scope_note": "Project-level field; apply to all 4 Olokola unit-rows.",
+    "source_notes": "Re-verified unchanged: NNPC reviving Olokola (and Brass) — Sept 2024 Gastech investor talks; OK LNG ~$9.8bn. Supports keeping 'proposed'. Note: stale ShelvedYear/CancelledYear/StopYear fields on this 'proposed' row flagged in QA.",
+    "scope_note": "Representative blue re-verify for Olokola (status); applies project-wide (T1, T2 identical).",
     "researcher_initials": "AI-draft (sweep)"
   }
 ]

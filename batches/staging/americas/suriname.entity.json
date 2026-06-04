@@ -1,13 +1,13 @@
 [
   {
     "entity_name": "Paradise Oil Company",
-    "entity_type": "owner",
+    "entity_type": "company",
     "country_of_hq": "Suriname",
     "parent_entity": "Staatsolie Maatschappij Suriname N.V.",
-    "rationale_for_new_entity": "Holds 20% participating interest in Block 52 / Sloanea field per the Petronas-Staatsolie Declaration of Commerciality (14 Nov 2025). Proposed as a co-owner on the Petronas FLNG Terminal. POC (acronym POC) is the upstream subsidiary of Suriname's state oil company Staatsolie; should be created as its own entity with Staatsolie as parent, not conflated with Staatsolie directly.",
-    "lookup_was_run": "RUN: entity_lookup.py 'Paradise Oil Company' --country Suriname --remote returned not_found_in_local_data and remote returned only a generic 'New Entity' placeholder (inconclusive). Reviewer should confirm in the live GEM entity system before creating; also check for an existing Staatsolie/Paradise Oil entity to attach as parent.",
-    "lookup_result_summary": "Local: not_found_in_local_data. Remote: generic 'New Entity' only (no concrete match) — inconclusive.",
-    "referenced_by_terminals": "Petronas FLNG Terminal (T100001048294)",
+    "rationale_for_new_entity": "20% participating-interest partner in Block 52 / Sloanea FLNG (Petronas FLNG Terminal), per the 14 Nov 2025 Declaration of Commerciality. Paradise Oil Company (POC) is a subsidiary of Staatsolie, Suriname's national oil company. Needed to stage the Owner 80/20 split. Both POC and its parent Staatsolie appear to be absent from the GEM entity system (lookup returned only a generic New Entity result).",
+    "lookup_was_run": "RUN — entity_lookup.py 'Paradise Oil Company' --country Suriname --remote returned not_found_in_local_data and a remote result of only a generic 'New Entity' link (inconclusive / no existing match); same for parent 'Staatsolie'.",
+    "lookup_result_summary": "Paradise Oil Company: not_found_in_local_data; remote inconclusive (generic New Entity only). Staatsolie: not_found_in_local_data; remote inconclusive (generic New Entity only). Both likely need creation; reviewer to confirm Staatsolie's canonical GEM name/ID before linking POC's parent.",
+    "referenced_by_terminals": "T100001048294",
     "referenced_by_units": "G100001055425",
     "researcher_initials": "AI-draft"
   }

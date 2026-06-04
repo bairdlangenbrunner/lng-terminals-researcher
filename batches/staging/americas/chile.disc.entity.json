@@ -1,0 +1,26 @@
+[
+  {
+    "entity_name": "Andes S.A.",
+    "entity_type": "company (project SPV / operator)",
+    "country_of_hq": "Chile",
+    "parent_entity": "Shell PLC; Mitsui O.S.K. Lines Ltd; Wärtsilä Corp",
+    "rationale_for_new_entity": "Titular/operator SPV of the proposed (now-cancelled) Andes LNG FSRU + power project in Atacama, Chile. Holder of RCA N°65/2019. Only needed if the Andes LNG new_terminal row is added to GEM.",
+    "lookup_was_run": "RUN: entity_lookup.py 'Andes S.A.' --country Chile --remote -> not_found_in_local_data; remote returned only a 'New Entity' create link (no existing match). Distinct from GEM's Colombian 'Andes Energy Terminal SAS' (E100002004105).",
+    "lookup_result_summary": "No existing GEM entity matches 'Andes S.A.' for a Chilean LNG project. Would be a new SPV entity if the terminal is added.",
+    "referenced_by_terminals": "Andes LNG Terminal (proposed new_terminal, this batch)",
+    "referenced_by_units": "",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "entity_name": "Wärtsilä Corp",
+    "entity_type": "company (engine/power-equipment supplier; project consortium member)",
+    "country_of_hq": "Finland",
+    "parent_entity": "",
+    "rationale_for_new_entity": "Consortium member of Andes LNG (provider/operator of the ~540 MW power-generation engines). Only relevant if the Andes LNG row is added and the consortium is modeled as Owner/Operator. Note: as an equipment supplier its role may be closer to power-plant EPC than terminal owner -- reviewer should decide whether to list it as an Owner at all (methodology may prefer naming only Shell + Mitsui as terminal owners).",
+    "lookup_was_run": "RUN: entity_lookup.py 'Wärtsilä' --country Chile --remote and 'Wartsila' (no filter) -> not_found_in_local_data in the export. Did not confirm remote global presence.",
+    "lookup_result_summary": "Not found in local GEM export as an LNG-terminal entity. May exist globally; confirm via remote entity system before adding.",
+    "referenced_by_terminals": "Andes LNG Terminal (proposed new_terminal, this batch)",
+    "referenced_by_units": "",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  }
+]

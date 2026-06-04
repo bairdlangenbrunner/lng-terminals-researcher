@@ -1,0 +1,22 @@
+[
+  {
+    "category": "fsru_sync",
+    "terminal_id": "T100000130807",
+    "unit_id": "G100002080700",
+    "terminal_name": "Gulf of Saros FSRU",
+    "issue": "FSRU vessel ownership change to verify, not a new terminal. The Vasant 1 FSRU (the unit GEM records as vessel 'Vasant' at Gulf of Saros, ~180,000 m3) is being acquired by BOTAŞ Trading from India's Swan Energy / its unit Triumph Offshore (TOPL) for ~USD 399 million; Swan expected the transaction to complete in ~6 months. GEM's row already has Owner/Parent = BOTAŞ AŞ but VesselOwner/VesselParent should reflect the change from Swan/Triumph Offshore to BOTAŞ once closed, and GEM lists the vessel name as 'Vasant' (commonly reported as 'Vasant 1'). Coverage of the terminal itself is fine — this is a vessel-identity/ownership update + carrier-project FSRU sync item, routed to Update.",
+    "severity": "low",
+    "suggested_action": "In an Update batch: confirm closing of the Vasant 1 / Triumph Offshore acquisition by BOTAŞ Trading (lngprime.com/asia/botas-to-buy-swan-energys-fsru-for-399-million/121455/) and update VesselOwner/VesselParent on Gulf of Saros FSRU accordingly; reconcile vessel name ('Vasant' vs 'Vasant 1'); run fsru_sync_check.py so vessel name + IMO agree with the carrier backend. NOT a discovery add.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130618",
+    "unit_id": "G100002061800",
+    "terminal_name": "Dörtyol FSRU",
+    "issue": "Context note for the staged Dörtyol 'FSRU 2' new-unit candidate: the existing in-service Dörtyol unit (vessel Ertuğrul Gazi) was loaned/deployed to Egypt's EGAS for summer 2025 under a BOTAŞ–EGAS agreement (first overseas FSRU operation), then returned. No GEM status change implied (terminal remains operating); recorded only so a reviewer is aware of the temporary 2025 redeployment when assessing Dörtyol capacity.",
+    "severity": "low",
+    "suggested_action": "No edit required to current status. If GEM tracks temporary vessel redeployments, note the summer-2025 Ertuğrul Gazi loan to Egypt. fetch_timeline is down — defer any timeline edit.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  }
+]

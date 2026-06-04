@@ -1,32 +1,12 @@
 [
   {
-    "category": "status_verification",
-    "terminal_id": "T100000130681",
-    "unit_id": "G100002068100",
-    "terminal_name": "Alexandroupolis FSRU",
-    "issue": "Verified OPERATING and current. Commercial ops began 1 Oct 2024. Regas was suspended late Jan 2025 (booster-pump damage on the FSRU) and restarted Aug 2025; capacity ramped back to full (136.2 GWh/d) by 21 Oct 2025, taking cargoes through early 2026. GEM status 'operating', capacity 5.5 bcm/y, ActualStartYear 2024 all match. No field edit; recorded as blue re-verify.",
-    "severity": "low",
-    "suggested_action": "No change. Optionally note the Jan-Aug 2025 outage in the wiki Background.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "no_change",
-    "terminal_id": "T100000130462",
-    "unit_id": "G100002046200",
-    "terminal_name": "Revithoussa LNG Terminal",
-    "issue": "Verified operating and current. DESFA operates 3 in-ground tanks (225,000 m3) + GasLog Athens FSU (since Nov 2022, total storage ~370,000 m3). Capacity 5.1 mtpa consistent with DESFA. No newer expansion that changes nameplate. No field edit.",
-    "severity": "low",
-    "suggested_action": "No change. FSU storage augmentation could be a wiki note but is not a nameplate change.",
-    "researcher_initials": "AI-draft"
-  },
-  {
     "category": "status_timeline",
     "terminal_id": "T100000131007",
     "unit_id": "G100002100700",
     "terminal_name": "Argo FSRU",
-    "issue": "Status pressure: Greece's energy minister publicly described the Volos/Argo FSRU as 'unfeasible' (2025), while sponsor Mediterranean Gas pushed the start to July 2027. Project remains 'proposed' in GEM but is at elevated risk of stalling. Staged a planned-start refresh (yellow); do NOT change Status field — flag for status review and watch for shelved signal (>2y no progress).",
+    "issue": "GEM ResearcherNotesUnit reads 'RR (7/25): Infer shelved next cycle with no update', but the project is demonstrably still active: DESFA accepted a capacity-reservation/technical form dated 10-04-2025 with a desired transmission start of 01-07-2027, and Mediterranean Gas reported (May 2025) it now targets July 2027 commercial operation. Status remains proposed (no transition to construction or shelved is verified).",
     "severity": "medium",
-    "suggested_action": "Monitor for shelved/cancelled signal; keep status 'proposed' pending a concrete next step.",
+    "suggested_action": "Do NOT shelve. Keep Status=proposed; update the slipped planned-start to 2027 (see updates). Revise/clear the 'infer shelved' note. Watch for FID and a vessel charter (FSRU to be leased via BW LNG; Klaipedos Nafta expected operator; Transgaz 15% stake reported 2023).",
     "researcher_initials": "AI-draft"
   },
   {
@@ -34,19 +14,59 @@
     "terminal_id": "T100000130992",
     "unit_id": "G100002099200",
     "terminal_name": "Dioriga FSRU",
-    "issue": "DESFA excluded the Dioriga Gas FSRU connection works from its 2026-2035 ten-year development plan, citing unmet contractual obligations — a negative signal despite the Jan 2025 operating approval. Staged planned-start refresh (yellow); flag for status review, do not change Status field.",
+    "issue": "Stale-flag (planned_start_slipped): LatestPlannedStartYear=2023 is 3 years past. Project is active and described as 'the most advanced and mature FSRU project in Greece' (LNG Prime, 2026-05-25): Mercuria and Motor Oil Hellas signed an MoU (May 2026) on capacity reservation + long-term LNG supply, and an earlier DESFA standoff (DESFA had moved to exclude Dioriga from its 2026-2035 development plan over unmet contractual obligations) was resolved, returning the project to the necessary-infrastructure list. FID still pending; as of May 2026 the team was obtaining a sea license and RAAEY third-party-access exemption.",
     "severity": "medium",
-    "suggested_action": "Monitor; the dropped grid-connection works are a stall risk. Keep 'proposed'.",
+    "suggested_action": "Keep Status=proposed. No clean revised LatestPlannedStartYear is published by a citable source (sources give development steps, not a firm year), so no start-year value edit is staged - flag for the next batch to pin a revised year from DESFA's final 2026-2035 plan or sponsor IR. Update the LastUpdated/ResearcherNotes to reflect the resolved DESFA standoff and the Mercuria MoU.",
     "researcher_initials": "AI-draft"
   },
   {
-    "category": "discovery_milestone",
+    "category": "status_timeline",
     "terminal_id": "T100000131006",
     "unit_id": "G100002100600",
     "terminal_name": "Thrace FSRU",
-    "issue": "Concrete milestone: Greece signed the environmental permit for the Thrace FSRU (second Gastrade FSRU, same Aegean sea area as Alexandroupolis) on 27 Jan 2026; capacity revised to 6 bcm/y (4.4 mtpa) — matches GEM. Potential ops 2028, but FID pending financing (no EIB subsidy; est. cost >=EUR650m). GEM has no planned-start year; did not stage one (still soft). Status 'proposed' remains correct.",
+    "issue": "Milestone: Greece signed the environmental permitting decision (EIA approval) for the second Thrace/Alexandroupolis-area FSRU on 2026-01-27 (Gastrade). Gastrade targets commercial operation in 2028 with a final investment decision potentially in Q1 2027, contingent on new 15-year LNG supply agreements. Estimated cost 'at least EUR 650 million' (higher than the first FSRU) with no EIB subsidy. Status remains proposed.",
     "severity": "low",
-    "suggested_action": "Add env-approval milestone + 6 bcm confirmation to wiki; consider OriginalPlannedStartYear=2028 only once FID firms up.",
+    "suggested_action": "Keep Status=proposed; record the 2026-01-27 environmental approval and the 2028 target / Q1-2027 FID in the timeline/notes. Capacity (6 bcm/y) unchanged. Cost figure (EUR 650m) is a sponsor estimate -> see wiki; not staged as a Cost edit (GEM Cost field is currently blank for Thrace, but the figure is a single press estimate). Keep this terminal distinct from the operating Alexandroupolis FSRU (same sponsor Gastrade).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000131010",
+    "unit_id": "G100002101000",
+    "terminal_name": "Thessaloniki FSRU",
+    "issue": "Project scope expansion: Greece's regulator RAAEY approved Elpedison's plan to enhance the Thessaloniki terminal by adding a second floating unit - the design now comprises an FSRU plus a Floating Storage Unit (FSU), connected via a 4.5 km subsea + 7 km onshore section. GEM currently models a single floating vessel; the FSU addition is not yet captured. Status remains proposed.",
+    "severity": "low",
+    "suggested_action": "Confirm against Elpedison/HELLENiQ IR and RAAEY decision text whether GEM should record the added FSU (possibly a vessel/Floating note or an associated-unit), and whether capacity changes. No field staged this batch (FSU details not pinned to a citable primary doc). Watch alongside the 2029 start-year update.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "entity",
+    "terminal_id": "T100000131010",
+    "unit_id": "G100002101000",
+    "terminal_name": "Thessaloniki FSRU",
+    "issue": "The staged Parent change (-> HELLENiQ ENERGY Holdings SA [100%]) has an ambiguous GEM Entity ID. GEM already references this group under TWO existing entity IDs: 'Hellenic Petroleum' = E100000189037 (currently in this Thessaloniki Parent cell) and 'HELLENiQ ENERGY Holdings SA' = E100000000473 (used in the Thrace FSRU Parent cell). Hellenic Petroleum rebranded to HELLENiQ ENERGY in 2022, so these likely denote the same ultimate parent. entity_lookup.py --remote was RUN for both names and returned inconclusive (generic 'New Entity' only) - no new entity is needed; this is a disambiguation between two existing IDs.",
+    "severity": "medium",
+    "suggested_action": "Reviewer to pick the correct existing Entity ID for the new 100% parent (recommend E100000000473 'HELLENiQ ENERGY Holdings SA' for consistency with the Thrace row, or confirm GEM's canonical mapping) when applying the Parent edit. Do NOT create a new entity. Consider normalizing the Thessaloniki parent label/ID to match Thrace.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "source_quality",
+    "terminal_id": "T100000131010",
+    "unit_id": "G100002101000",
+    "terminal_name": "Thessaloniki FSRU",
+    "issue": "Two existing GEM refs on this row returned HTTP 403 to url_verifier this batch: the Owner [ref] (https://www.elpedison.gr/en/the-group/timeline/) and the Location [ref] (https://www.elpedison.gr/en/the-group/thessaloniki-fsru/the-project/). The elpedison.gr domain appears to be bot-blocking (likely transient access denial rather than confirmed link rot - the pages may still resolve in a browser).",
+    "severity": "low",
+    "suggested_action": "Spot-check the two elpedison.gr URLs manually; if genuinely dead, repoint to a HELLENiQ/Enerwave equivalent (Elpedison rebranded to 'Enerwave' on 2025-11-12 after the HELLENiQ takeover, so elpedison.gr URLs may migrate). The staged Parent update already supplies fresh HELLENiQ regulatory refs.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "out_of_scope",
+    "terminal_id": "T100000130992",
+    "unit_id": "G100002099200",
+    "terminal_name": "Dioriga FSRU",
+    "issue": "Dioriga row has out-of-scope read-only fields set: LH2=True and RetrofitProposed=True ('no longer updated as of 2026' per methodology). No edits were made or are proposed to these; noting for awareness only. No alt-fuel research was conducted.",
+    "severity": "low",
+    "suggested_action": "No action. These columns are intentionally not maintained; ignore in this update workflow.",
     "researcher_initials": "AI-draft"
   }
 ]

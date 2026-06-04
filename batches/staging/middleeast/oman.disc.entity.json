@@ -1,0 +1,26 @@
+[
+  {
+    "entity_name": "Marsa LNG LLC",
+    "entity_type": "operator (project JV / SPV)",
+    "country_of_hq": "Oman",
+    "parent_entity": "TotalEnergies SE [80%]; OQ Exploration & Production SAOG [20%]",
+    "rationale_for_new_entity": "Operating JV/SPV for the Marsa LNG liquefaction plant at Port of Sohar (new terminal candidate). Owner stake split modeled as separate owners (TotalEnergies, OQEP) per methodology; Marsa LNG LLC named only as Operator. Not found in GEM local data.",
+    "lookup_was_run": "RUN entity_lookup (remote lookup inconclusive — only a 'New Entity' link returned)",
+    "lookup_result_summary": "entity_lookup.py 'Marsa LNG LLC' --country Oman --remote: not_found_in_local_data; remote returned only generic New Entity candidate.",
+    "referenced_by_terminals": "Marsa LNG Terminal",
+    "referenced_by_units": "Marsa LNG Terminal / T1",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "entity_name": "OQ Exploration & Production SAOG",
+    "entity_type": "owner (upstream NOC subsidiary)",
+    "country_of_hq": "Oman",
+    "parent_entity": "OQ SAOC (Oman Investment Authority)",
+    "rationale_for_new_entity": "20% owner of the Marsa LNG Terminal candidate. OQEP is the listed upstream arm of Oman's state energy group OQ. Not found in GEM local data; GEM tracks 'Oman LNG LLC' and 'Government of Oman' for Qalhat but not OQEP specifically. Verify against existing OQ-group entities before creating.",
+    "lookup_was_run": "RUN entity_lookup (remote lookup inconclusive — only a 'New Entity' link returned)",
+    "lookup_result_summary": "entity_lookup.py 'OQ Exploration & Production' --country Oman --remote: not_found_in_local_data; remote returned only generic New Entity candidate.",
+    "referenced_by_terminals": "Marsa LNG Terminal",
+    "referenced_by_units": "Marsa LNG Terminal / T1",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  }
+]

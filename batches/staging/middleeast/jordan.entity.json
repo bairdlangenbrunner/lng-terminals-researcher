@@ -1,13 +1,13 @@
 [
   {
     "entity_name": "Aqaba Development Corporation",
-    "entity_type": "owner",
+    "entity_type": "company",
     "country_of_hq": "Jordan",
-    "parent_entity": "Government of Jordan / Aqaba Special Economic Zone Authority",
-    "rationale_for_new_entity": "Identified as the state-owned customer/owner/developer of the Sheikh Sabah LNG Terminal (Aqaba onshore regas), which currently has a blank Owner field in GEM. Awarded the EPCIC contract to the GAS Entec/AG&P consortium in Aug 2024.",
-    "lookup_was_run": "RUN — entity_lookup.py 'Aqaba Development Corporation' --country Jordan --remote: local result 'not_found_in_local_data' (0 terminals, 0 parent IDs); remote returned only a generic 'New Entity' candidate (no existing match). Inconclusive-to-absent; treat as a likely new entity but confirm against the live entity system before creating, and check for an existing 'Aqaba Development Corp'/'ADC' variant.",
-    "lookup_result_summary": "No existing GEM entity match found (local none; remote generic-only).",
-    "referenced_by_terminals": "Sheikh Sabah LNG Terminal (T100001048176)",
+    "parent_entity": "Aqaba Special Economic Zone Authority (ASEZA) / Government of Jordan",
+    "rationale_for_new_entity": "State-owned developer/owner of the Sheikh Sabah (Aqaba) onshore LNG terminal; signed the $125M EPCIC contract with the AG&P/GAS Entec JV (Aug 2024). Owner field on the GEM Sheikh Sabah row is currently blank. Proposed as candidate owner pending confirmation it isn't already in the GEM entity system under a variant name.",
+    "lookup_was_run": "RUN: entity_lookup.py 'Aqaba Development Corporation' --country Jordan --remote returned not_found_in_local_data; remote returned only a generic 'New Entity' candidate (inconclusive).",
+    "lookup_result_summary": "not_found_in_local_data; remote inconclusive (generic 'New Entity' only). Reviewer should confirm before creating, in case it exists under an Arabic/abbreviated variant (ADC).",
+    "referenced_by_terminals": "T100001048176 (Sheikh Sabah LNG Terminal)",
     "referenced_by_units": "G100001055238",
     "researcher_initials": "AI-draft"
   }

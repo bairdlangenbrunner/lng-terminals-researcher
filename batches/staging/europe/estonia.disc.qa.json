@@ -1,0 +1,32 @@
+[
+  {
+    "category": "discovery_confirmation",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Estonia (country-wide discovery sweep)",
+    "issue": "DISCOVERY SWEEP — NO NEW TERMINAL FOUND. Hunted beyond GEM's 3 Estonia rows (Paldiski FSRU T100000131004; Paldiski LNG Terminal T100000130434; Tallinn LNG Terminal/Muuga T100000130436) across regulator/TSO (Elering, EU PCI, NECP-2030), trade press (LNG Prime, Reuters, ERR, Postimees, Offshore Energy), sponsor IR (Alexela, Infortar/Elenger/Eesti Gaas, Port of Tallinn, JetGas, Excelerate, Gasgrid Finland) and Estonian-language queries (Eesti LNG terminal; Paldiski/Muuga/Sillamäe/Parnu/Kunda/Saaremaa). No proposed/announced Estonian LNG import or export terminal exists outside the 3 GEM rows. Eesti Gaas/Elenger imports via the Inkoo (Finland) and Klaipeda (Lithuania) FSRUs and runs an LNG BUNKERING vessel (out of project scope); it is not building its own Estonian reception terminal. Alexela's bioLNG liquefaction (Rohe Solutions) is at Hamina, FINLAND, not Estonia. Outcome: GEM coverage of Estonia is complete for this round.",
+    "severity": "low",
+    "suggested_action": "No action. Recorded as the resume/no-gap marker for the 2026-06 Estonia discovery sweep.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "ownership_change",
+    "terminal_id": "T100000130434",
+    "unit_id": "G100002043400",
+    "terminal_name": "Paldiski LNG Terminal",
+    "issue": "OWNERSHIP CHANGE on existing GEM Paldiski rows — route to UPDATE (not a new terminal). On 27 March 2026 Infortar AS sold its stake in Pakri Peninsula Port OUe (the Pakrineeme port company hosting the Paldiski LNG infrastructure) to Nordic Stream Group OUe (mgmt board incl. Angela Rannu). Alexela's announcement frames a 'new development stage' for the Pakri Peninsula port and the Paldiski LNG terminal, with the state-owned ESPA mooring quay used to 'import LNG from the global market to Estonia', alongside a SEPARATE peak-load power plant and a green-ammonia plant (both OUT of LNG-terminal scope) whose output would be exported through the port. GEM currently lists Paldiski LNG Terminal Owner='Alexela AS [100%]; Infortar AS' and Paldiski FSRU AssociatedTerminals='Inkoo FSRU, Paldiski LNG Terminal'. The Infortar->Nordic Stream Group change is at the PORT-company (Pakri Peninsula Port OUe) level; whether it flows to the terminal Owner/Parent fields needs the Update agent's source-search. No new LNG terminal and no liquefaction/export terminal is created by this transaction (Alexela: detailed next steps to be disclosed later -> no concrete LNG-terminal step yet).",
+    "severity": "medium",
+    "suggested_action": "UPDATE agent: re-verify Paldiski LNG Terminal / Paldiski FSRU Owner+Parent against the 27 Mar 2026 Pakri Peninsula Port OUe stake sale (Infortar->Nordic Stream Group OUe); run entity_lookup on 'Nordic Stream Group OUe' and 'Pakri Peninsula Port OUe' before any Owner/Parent edit. Also note Paldiski LNG Terminal is in GEM as shelved/inferred-2y with a 'infer cancelled in 2026 cycle if no updates' note; the 2026 Pakri/Nordic Stream activity is a fresh signal bearing on that cancel-vs-hold decision. Source: https://www.alexela.ee/en/uudis/news-gaseous-fuels-and-gas-vehicles/new-stage-begins-development-pakri-peninsula-port-and",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "verification",
+    "terminal_id": "T100000130436",
+    "unit_id": "G100002043600",
+    "terminal_name": "Tallinn LNG Terminal",
+    "issue": "Re-verified during discovery: Muuga/Tallinn (Port of Tallinn + JetGas OUe, 18 Nov 2024 superficies-right deal) remains a PROPOSED liquefied-methane/bioLNG terminal, up to 5 tanks, first tank targeted end-2027 and full build-out 2030; project is in field-investigation / first-phase design / permitting with FID terms still under negotiation (no FID date announced). Consistent with GEM (proposed; OriginalPlannedStartYear=LatestPlannedStartYear=2030). Not a discovery gap — already in GEM.",
+    "severity": "low",
+    "suggested_action": "No new-terminal action. UPDATE agent may note the end-2027 first-tank milestone and the still-pending FID; GEM ResearcherNotes already flags the GIE 'Liwathon E.O.S.' operator as uncorroborated by the 2024 Port of Tallinn/JetGas agreement.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  }
+]

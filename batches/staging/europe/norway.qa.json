@@ -1,12 +1,22 @@
 [
   {
-    "category": "data_consistency",
-    "terminal_id": "T100000130494",
-    "unit_id": "G100002049401",
-    "terminal_name": "Hammerfest LNG Snohvit Terminal",
-    "issue": "Status = operating but StopYear = 2020 is populated. The Melkoya plant suffered a major fire on 28 Sep 2020 and was shut down, but it resumed production 2 June 2022 and is operating as of 2025-26 (full ops resumed Aug 2025 after a summer turnaround). StopYear normally denotes permanent closure; here it appears to record the fire-related outage. Internally inconsistent with status=operating — reviewer should confirm whether StopYear should be cleared (outage, not retirement) or remain for the historical record.",
+    "category": "sourcing",
+    "terminal_id": "T100000130726",
+    "unit_id": "G100002072601",
+    "terminal_name": "Tjelbergodden LNG Terminal",
+    "issue": "StopYear=2023 could not be sourced and is contradicted by the best available source. GEM's StopYear (2023) traces to the GEM wiki, which presumes retirement 'as of 2023' purely from the terminal's absence from the GIE LNG database since 2019 (no external event footnote). The only substantive trade-press source located (Riviera, 30 Apr 2020) instead states the Tjeldbergodden small-scale LNG liquefaction plant was being decommissioned in 2020 by Linde (excluded from the Gasum/Linde acquisition for that reason). No operator/regulator source confirms either a 2020 or 2023 LNG-unit retirement; documented 2020-21 Tjeldbergodden events were a fire + methanol-plant modifications, not a clean LNG-unit retirement. StopYear [ref] left blank (no source supports 2023; pairing a 2020 source would mis-cite the value).",
+    "severity": "medium",
+    "suggested_action": "Human to reconcile StopYear: either change StopYear to 2020 with the Riviera citation (Linde decommissioning) and re-grade, or retain 2023 as the GIE-absence presumption and document that basis in researcher_notes. Did NOT stage a StopYear edit (2020-vs-2023 ambiguity = needs human judgment, not a guessed edit).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_quality",
+    "terminal_id": "T100000130726",
+    "unit_id": "G100002072601",
+    "terminal_name": "Tjelbergodden LNG Terminal",
+    "issue": "Minor capacity figure mismatch noted incidentally: the GEM wiki lists terminal capacity as 0.01 mtpa, while the worklist context recorded 12000 tpa (= 0.012 mtpa). Difference is immaterial (rounding of a tiny small-scale unit) and capacity is OFF the standard-tier worklist for this row, so no capacity edit staged.",
     "severity": "low",
-    "suggested_action": "Confirm GEM's intent for StopYear on a terminal that resumed operating; if it is meant to flag a permanent stop, clear it (plant is operating); if it is an outage marker, document that in researcher notes to avoid future confusion. Not stage a field edit without GEM guidance.",
+    "suggested_action": "No action required; flagged for awareness only. If touched in a future exhaustive pass, reconcile to a single sourced figure.",
     "researcher_initials": "AI-draft"
   }
 ]

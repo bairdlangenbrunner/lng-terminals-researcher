@@ -1,0 +1,38 @@
+[
+  {
+    "entity_name": "JX LNG Canada Ltd",
+    "entity_type": "company",
+    "country_of_hq": "Canada",
+    "parent_entity": "Changchun Jixing New Energy Ltd",
+    "rationale_for_new_entity": "Proponent/owner of the proposed Summit Lake PG LNG Terminal (export, BC). Alberta-registered subsidiary of a Chinese LNG/CNG company; not present in GEM under any spelling.",
+    "lookup_was_run": "RUN (local lookup not_found; --remote not run, requires auth env vars unavailable to discovery subagent)",
+    "lookup_result_summary": "entity_lookup.py local query for 'JX LNG Canada' (country Canada) returned not_found_in_local_data; no GEM terminals reference it. Remote GEM entity-system query still required before final add.",
+    "referenced_by_terminals": "Summit Lake PG LNG Terminal",
+    "referenced_by_units": "",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "entity_name": "Changchun Jixing New Energy Ltd",
+    "entity_type": "company",
+    "country_of_hq": "China",
+    "parent_entity": "",
+    "rationale_for_new_entity": "Stated ultimate parent of JX LNG Canada Ltd (the Summit Lake PG LNG proponent); LNG/CNG operator in northeastern China. Not present in GEM. English-name spelling per trade-press transliteration; verify against the company's own filings before adding.",
+    "lookup_was_run": "RUN (local lookup not_found; --remote not run, requires auth env vars unavailable to discovery subagent)",
+    "lookup_result_summary": "entity_lookup.py local query for 'Changchun Jixing New Energy' (country China) returned not_found_in_local_data. Remote GEM entity-system query and canonical-spelling check still required before final add.",
+    "referenced_by_terminals": "Summit Lake PG LNG Terminal (as Parent)",
+    "referenced_by_units": "",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "entity_name": "Marinvest Energy AS",
+    "entity_type": "company",
+    "country_of_hq": "Norway",
+    "parent_entity": "",
+    "rationale_for_new_entity": "Proposer of the Baie-Comeau LNG export project, Quebec (currently monitor_list, below add-threshold). Norwegian developer; operates a Canadian arm (Marinvest Energy Canada). Not present in GEM. Recorded here so the entity is ready if/when Baie-Comeau is promoted to new_terminal.",
+    "lookup_was_run": "RUN (local lookup not_found; --remote not run, requires auth env vars unavailable to discovery subagent)",
+    "lookup_result_summary": "entity_lookup.py local query for 'Marinvest Energy' (country Norway) returned not_found_in_local_data; no GEM terminals reference it.",
+    "referenced_by_terminals": "Baie-Comeau LNG Terminal (monitor_list candidate)",
+    "referenced_by_units": "",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  }
+]

@@ -1,0 +1,72 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130218",
+    "unit_id": "G100002021801",
+    "terminal_name": "Delfin FLNG Terminal",
+    "issue": "Delfin FLNG 1 (T1) reached FID on 2026-06-03 with EPC contracts (Samsung Heavy Industries, Black & Veatch) executed and ~$5B financing — status has moved from proposed toward construction/sanctioned. GEM T1 Status=proposed (LastUpdated 2026-05-20, pre-dates the FID).",
+    "severity": "high",
+    "suggested_action": "Verify and advance T1 Status proposed->construction (timeline edit; fetch_timeline endpoint down so not staged here). FIDStatus->FID and Capacity 4.4 mtpa staged separately as field updates. T2/T3 remain proposed/Pre-FID.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_consistency",
+    "terminal_id": "T100000130973",
+    "unit_id": "G100002097302",
+    "terminal_name": "CP2 LNG Terminal",
+    "issue": "CP2 Phase 2 (T27-36) GEM LatestPlannedStartYear=2030, but Venture Global publicly targets Phase 2 commercial operations (COD) in mid-2027 / first LNG 2H-2027 for the project (per Q1-FY2026 earnings; Worley scope). Phasing/COD-vs-first-train mapping is ambiguous, so flagging rather than overwriting.",
+    "severity": "medium",
+    "suggested_action": "Update team: reconcile Phase 2 latest-planned-start against VG's mid-2027 Phase 2 COD guidance; decide whether GEM's per-train 2030 slot is intentionally conservative or stale.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ref_fill_gap",
+    "terminal_id": "T100000130214",
+    "unit_id": "G100002021406",
+    "terminal_name": "Cameron LNG Terminal",
+    "issue": "Cameron 'Debottlenecking (T1-T3)' unit (0.68 mtpa) is GEM status=cancelled (Substatus 'inferred 4 y', CancelledYear 2026) with blank Status/CancelledYear/StopYear [ref]. No clean primary source found that pins a debottlenecking cancellation or a specific year — TotalEnergies/Sempra material instead describes debottlenecking as part of the active Phase 2 expansion. Could not fill the [ref]s without a citable source.",
+    "severity": "low",
+    "suggested_action": "Update team: confirm whether the standalone debottlenecking unit is genuinely cancelled or folded into Phase 2 (T4); source the cancelled year before filling [ref]s. Left blank to avoid an unsupported/orphan ref.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ref_fill_gap",
+    "terminal_id": "T100000130675",
+    "unit_id": "G100002067501",
+    "terminal_name": "Avocet FLNG Terminal",
+    "issue": "Avocet FLNG (cancelled, Substatus 'inferred 4 y') has blank Status/ShelvedYear/CancelledYear/StopYear [ref]. Cancellation is inferred (no developer activity since 2016); no primary source pins the specific Shelved 2018 / Cancelled 2020 years. MARAD withdrawn/cancelled-applications page exists but blocked the verifier (HTTP 403).",
+    "severity": "low",
+    "suggested_action": "Update team: if a citable source for the inferred years is wanted, try the MARAD withdrawn/cancelled deepwater-port applications listing (could not verify via url_verifier). Left [ref]s blank to avoid orphan/unsupported refs.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ref_fill_gap",
+    "terminal_id": "T100000130645",
+    "unit_id": "G100002064500",
+    "terminal_name": "Creole Trail LNG Terminal",
+    "issue": "Creole Trail (cancelled import terminal, Substatus 'inferred 4 y') has blank Status/ShelvedYear/CancelledYear/StopYear [ref]. FERC EIS pages and gem.wiki confirm the terminal was abandoned (pipeline survives), but no source pins the inferred Shelved 2017 / Cancelled 2019 years; gem.wiki excluded (anti-circularity).",
+    "severity": "low",
+    "suggested_action": "Update team: source the inferred year(s) before filling [ref]s (FERC docket for terminal withdrawal). Left blank to avoid unsupported refs.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ref_fill_gap",
+    "terminal_id": "T100000130205",
+    "unit_id": "G100002020501",
+    "terminal_name": "Fourchon LNG Terminal",
+    "issue": "Fourchon LNG Phase 1/Phase 2 (cancelled, CancelledYear 2024, ShelvedYear 2022) have blank ShelvedYear [ref]. The Energy Intelligence article already cited as Status/Cancelled [ref] confirms cancellation (FERC removed it from pre-filing Dec 2023 for inactivity; Argent took over the site June 2024) but does not pin ShelvedYear=2022.",
+    "severity": "low",
+    "suggested_action": "Update team: source ShelvedYear 2022 (DOE Dk. 17-105-LNG record) before filling the ShelvedYear [ref], or reconsider the shelved year. Left blank to avoid an unsupported ref.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ref_fill_gap",
+    "terminal_id": "T100000130232",
+    "unit_id": "G100002023200",
+    "terminal_name": "Lake Charles LNG Terminal",
+    "issue": "Lake Charles Import Terminal (mothballed) has blank Status [ref] and Owner [ref]. Filled FacilityType [ref] from DOE EIS-0491. Owner [ref] not filled: DOE/FERC dockets reference 'Lake Charles LNG Export Company' / 'Lake Charles Exports', while GEM Owner for the import unit is 'Lake Charles LNG Company LLC' — name mismatch, did not want to attach a possibly-wrong owner citation.",
+    "severity": "low",
+    "suggested_action": "Update team: confirm the import unit's owner entity and a citable source for the 'mothballed' status before filling those [ref]s.",
+    "researcher_initials": "AI-draft"
+  }
+]

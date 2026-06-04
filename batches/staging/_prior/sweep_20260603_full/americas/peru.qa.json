@@ -1,0 +1,32 @@
+[
+  {
+    "category": "no_change",
+    "terminal_id": "T100000130576",
+    "unit_id": "G100002057601",
+    "terminal_name": "Peru LNG Terminal",
+    "issue": "Verified current. Status=operating, Capacity=4.45 mtpa, Operator=Hunt Oil, Owner=MidOcean 35%/Hunt 35%/Shell 20%/Marubeni 10%, Parent chain (Shell; Saudi Arabian Oil Co 17.2%; Marubeni; EIG Global Energy Partners; Hunt Consolidated; Mitsubishi; unknown) — all match GEM and the GEM wiki page (last edited 2025-10-16). The parent list correctly reflects MidOcean's backers (EIG manages MidOcean; Saudi Aramco and Mitsubishi are LPs), so the multi-entity parent is intentional, not a defect. Repsol's truck-loading/domestic-distribution expansion is downstream of the export plant and does NOT raise the 4.45 mtpa liquefaction nameplate.",
+    "severity": "low",
+    "suggested_action": "No edit. Confidence bump only. Disregard the stale 'SK' owner hint in the batch prompt (SK exited 2024).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change",
+    "terminal_id": "T100000130990",
+    "unit_id": "G100002099000",
+    "terminal_name": "Ilo LNG Terminal",
+    "issue": "Verified still shelved. Proposed YPFB (Bolivia) gas-liquefaction/export terminal at Ilo, tied to a never-built Rio Grande (Bolivia)->Ilo pipeline; no project news in >2 years (last substantive activity 2021-2022 bilateral feasibility talks). Owner/Parent = Yacimientos Petroliferos Fiscales Bolivianos Corp [100%] matches GEM. No revival found in 2024-2026; the separate Peru 'Southern Gas Pipeline' (Humay-Ilo-Arequipa) is a domestic gas line, not this export terminal.",
+    "severity": "low",
+    "suggested_action": "No edit; status remains shelved. Per lifecycle rules, a proposed/shelved unit dormant >4yr is a candidate for inferred cancelled at a future triage — flag for monitoring, but not this batch.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "discovery_no_gap",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Peru — discovery sweep result",
+    "issue": "PROPER discovery sweep (hunt for MISSING terminals) for Peru. GEM already has 2 Peru terminals: Peru LNG Terminal (T100000130576, export, operating, Pampa Melchorita/Ica) and Ilo LNG Terminal (T100000130990, export, shelved). Rings A-D run (MINEM, ProInversión/InvestInPeru project portfolio, BNamericas, El Comercio/Gestión/La República, OIES, LNG Prime/Reuters). The ONLY genuinely-new in-scope import-terminal signal is the government's March 2026 announcement of intent to tender a national LNG regasification plant (Camisea-crisis driven) — staged to monitor (peru.monitor.json), below threshold (no site, no executed step). The repeatedly-surfaced 'regasification' references in masificación coverage (Cálidda adendas; Arequipa/Moquegua/Tacna; Puno satellite stations) are inland gas-by-truck satellite-regas distribution, NOT maritime LNG import terminals — out of scope, no new_terminal. No FSRU charter or named private sponsor for a coastal import terminal was found.",
+    "severity": "low",
+    "suggested_action": "No new_terminal staged for Peru. Watch the ProInversión LNG regasification tender (monitor entry) — a launched convocatoria + designated coastal site would make it a stageable import/proposed terminal. ANTI-CIRCULARITY noted: GEM.wiki and the asap.nl/Wikipedia LNG terminal lists were treated as leads only, not independent evidence.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  }
+]

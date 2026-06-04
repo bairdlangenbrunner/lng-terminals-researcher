@@ -1,0 +1,132 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000131151",
+    "unit_id": "G100002115101",
+    "terminal_name": "LNG Yakutia Terminal",
+    "issue": "GEM status=proposed (both phases). YATEK (Yakutsk Fuel & Energy Co, ultimate controller of head company Proekt Polius LLC) announced on 29 Oct 2025 that it is SUSPENDING the 'Yakutsk LNG' project and pivoting its gas to energy-intensive digital infrastructure (data centres, crypto mining, cloud) rather than building LNG export capacity itself. Strong proposed->shelved candidate. (Note: GEM's parent field lists Proekt Polius LLC; YATEK is the controlling group — the earlier 'owner in liquidation' framing is imprecise: it is a strategy pivot/suspension, not a liquidation of Proekt Polius.)",
+    "severity": "high",
+    "suggested_action": "Route to Update: change Status proposed->shelved for both Phase I and Phase II (project-level), ShelvedYear 2025, citing the YATEK suspension announcement (https://yakutia.info/article/214280, verified PASS). Do NOT auto-apply (fetch_timeline DOWN). Verify the YATEK<->Proekt Polius ownership chain when staging.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000131067",
+    "unit_id": "G100002106701",
+    "terminal_name": "Kara LNG Terminal",
+    "issue": "GEM status=proposed (Rosneft, Novaya Zemlya, 22.5 mtpa, LatestPlannedStartYear=2030). No project-specific news located for 2024-2026; most recent substantive coverage is 2021-2023 and sources class it as a 'possible project'. Rosneft's Arctic focus is on Vostok Oil, not Kara LNG. Dormancy / proposed->shelved candidate.",
+    "severity": "medium",
+    "suggested_action": "Route to Update: consider Status proposed->shelved on dormancy grounds (no movement ~3y). Soft sourcing (absence of news); confirm against Rosneft IR / 2050 Energy Strategy inclusion before staging. No edit this batch.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000131152",
+    "unit_id": "G100002115201",
+    "terminal_name": "Arkhangelsk LNG Terminal",
+    "issue": "GEM status=proposed (Phase I & II; GEM ResearcherNotes already flag 'move to shelved next update, last news Nov 2023, absent from 2050 Strategy'). Re-checked: latest substantive coverage remains the Nov 2023 Vedomosti article (Phase I target 2026, Phase II not before 2028); investor still undisclosed, only design/feasibility stage; no 2024-2026 progress located. Confirms the standing proposed->shelved candidate.",
+    "severity": "medium",
+    "suggested_action": "Route to Update: Status proposed->shelved for both phases (project-level), consistent with GEM's own note. Soft (absence of news). No edit this batch.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130520",
+    "unit_id": "G100002052001",
+    "terminal_name": "Arctic LNG 2 Terminal",
+    "issue": "Arctic LNG 2 operating status is genuinely fluid/sanctions-driven. GEM currently: T1=idled, T2=operating, T3=construction. Verified May-Jun 2025 reporting: T2 began production ~May 2025 while T1 could not sell cargoes (lack of sanctions-compliant tankers); a Jun 2025 LNG vessel call pointed to a possible export restart. T3 construction stalled but the first Train-3 modules left China in Apr 2026 (signs of life). Status nuance only — no field edit (fetch_timeline DOWN).",
+    "severity": "medium",
+    "suggested_action": "Monitor the idled/operating oscillation for T1/T2 each batch; route any durable status change to Update with a fresh primary/2-source citation. Verified narrative sources: maritime-executive.com/article/despite-sanctions-russia-s-arctic-lng-2-plant-is-up-and-running; en.highnorthnews.com/.../1112670 (T3 modules Apr 2026); gcaptain.com/putin-clears-totalenergies-exit-from-arctic-lng-2-... (all PASS).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130520",
+    "unit_id": "G100002052003",
+    "terminal_name": "Arctic LNG 2 Terminal",
+    "issue": "T3 LatestPlannedStartYear=2025 is stale. Novatek postponed Train 3 to 2028 (Pipeline & Gas Journal, Aug 2024); Russia's 2050 Energy Strategy (Apr 2025) lists the whole project for commissioning by 2030. T3 remains 'construction' but the 2025 planned-start year is clearly past/superseded.",
+    "severity": "medium",
+    "suggested_action": "Route to Update: move T3 LatestPlannedStartYear 2025->2028 (PGJ single-source) — corroborate with a 2nd source or the Novatek IR/2050 Strategy before staging the numeric edit. Status stays construction. No field edit this batch (single soft source).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100001047484",
+    "unit_id": "G100001054062",
+    "terminal_name": "Khabarovskiy LNG Terminal",
+    "issue": "GEM LatestPlannedStartYear=2026. Neftegaz/Eastern Oil&Gas Forum coverage (2025) states construction timelines now 'planned for 2026-2028' (construction start ~2026, commissioning ~2028), with the project still at feasibility/general-contractor-selection stage. Suggests the 2026 start year is optimistic and slipping toward 2028.",
+    "severity": "low",
+    "suggested_action": "Route to Update: consider LatestPlannedStartYear 2026->2028 once a clear commissioning-year source is confirmed (current sourcing is a single Russian-language trade item and frames 2026-2028 as a construction window, not an explicit commissioning year). No edit this batch.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ownership",
+    "terminal_id": "T100000130506",
+    "unit_id": "G100002050601",
+    "terminal_name": "Far East LNG Terminal",
+    "issue": "Far East LNG (De Kastri) carries an unresolved ~30% 'unknown' equity slice in GEM Owner (ex-ExxonMobil/Exxon Neftegas stake). Exxon withdrew from Sakhalin-1 in 2022; the asset was transferred to a Russian-government 'Sakhalin-1 LLC' operator and Exxon's 30% has not been reassigned to a confirmed successor. GEM's ProjNotes already flag this. No confirmed transfer surfaced in 2025-2026 reporting.",
+    "severity": "low",
+    "suggested_action": "Keep Owner as-is (retain 'unknown [30%]'). No edit — there is no VERIFIED successor to the Exxon stake. Re-check each batch. Applies to both T1 and T2 (project-level owner). See accompanying wiki entry for context.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_health",
+    "terminal_id": "T100001047484",
+    "unit_id": "G100001054062",
+    "terminal_name": "Khabarovskiy LNG Terminal",
+    "issue": "CapacityUnits is BLANK while Capacity=0.08 and CapacityinMtpa is also blank. Sources describe the plant as 80,000 t/y (=0.08 mtpa), so Capacity=0.08 is in mtpa but the units cell and CapacityinMtpa are not populated, unlike sibling rows.",
+    "severity": "low",
+    "suggested_action": "Route to Update/QC: set CapacityUnits='mtpa' and CapacityinMtpa=0.08 to match the 80 kt/y sources and other small-scale Russian rows. Not a worklist field; flagged for a follow-on fix.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_health",
+    "terminal_id": "T100000130520",
+    "unit_id": "G100002052001",
+    "terminal_name": "Arctic LNG 2 Terminal",
+    "issue": "Existing GEM refs cite the Novatek IR pages https://www.novatek.ru/en/business/arctic-lng/ (FacilityType/Owner/Operator/Capacity refs) — this URL now returns HTTP 404 (re-verified FAIL). Link rot on a Tier-1 sponsor citation used across all three Arctic LNG 2 trains.",
+    "severity": "medium",
+    "suggested_action": "Route to QC/Update: replace the dead novatek.ru/en/business/arctic-lng/ refs with a live Novatek project page (e.g. novatek.ru/en/about/lng-projects/arctic-lng/) or equivalent, after url_verifier confirms. Not staged here (would require re-sourcing several fields off-worklist).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_health",
+    "terminal_id": "T100000130520",
+    "unit_id": "G100002052002",
+    "terminal_name": "Arctic LNG 2 Terminal",
+    "issue": "Worklist asked to fill Cost [ref] for T2 and T3 (Cost=8.33B USD/train, CostYear 2023). Could not source the exact $8.33bn-per-train figure: the existing T1 Cost ref (upstreamonline.com/.../2-1-1109454) passes the verifier but is paywalled (SSO redirect) so its body cannot confirm the figure; widely-reported FID-era capex was ~$21.3bn TOTAL for all three trains (=~$7.1bn/train), not $8.33bn/train. Left both Cost [ref] cells BLANK rather than attach an unconfirming source (no orphan ref).",
+    "severity": "low",
+    "suggested_action": "Route to Update: re-derive the per-train cost basis. If GEM's $8.33bn/train (=$25bn total) is intended, source it explicitly; if the $21.3bn-total FID figure is preferred, reconcile Cost across T1/T2/T3. Verify any cost citation's body (not just url_verifier PASS) given paywalls.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_health",
+    "terminal_id": "T100000130520",
+    "unit_id": "G100002052001",
+    "terminal_name": "Arctic LNG 2 Terminal",
+    "issue": "ConstructionDate [ref] filled for T1 from a Jun-2020 Offshore Energy article (19% complete) as a yellow source. The article shows plant construction already active in 2020, which is slightly earlier than GEM's ConstructionYear=2021 for T1 — the year value may warrant review (site/plant works span 2019-2021).",
+    "severity": "low",
+    "suggested_action": "Route to QC: sanity-check Arctic LNG 2 T1 ConstructionYear (2021) against the 2019-2020 plant-construction ramp; the GBS modules were under construction at Belokamenka from ~2019. Low priority — value is within a defensible range.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_health",
+    "terminal_id": "T100000130617",
+    "unit_id": "G100002061701",
+    "terminal_name": "Gorskaya FLNG Terminal",
+    "issue": "Worklist asked to fill Status [ref] for Gorskaya T1/T2/T3 (Status=cancelled, Substatus 'inferred 4 y'). The cancelled status is INFERRED from prolonged inactivity (no project news since ~2017-2020), not from an explicit cancellation announcement — no source states 'cancelled'. Left Status [ref] BLANK (acceptable for an inferred status; no orphan ref).",
+    "severity": "low",
+    "suggested_action": "No action required; documents why the inferred-cancelled Status [ref] remains blank. FacilityType [ref]=export was fillable (Riviera) and is staged in updates.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_health",
+    "terminal_id": "T100001047640",
+    "unit_id": "G100001054266",
+    "terminal_name": "Aurora Spassk-Dalny LNG Terminal",
+    "issue": "GEM Capacity=0.02 mtpa per train (Train 1 & Train 2 = 0.04 mtpa / 40 kt/y total). May-2025 Russian coverage (mashnews/neftegaz) describes the Spassk-Dalny complex as ~32 kt/y total across two production lines (~16 kt/y each) and ~RUB 3.3bn investment. Small single-source discrepancy on a tiny project; status confirmed still proposed/in build-prep.",
+    "severity": "low",
+    "suggested_action": "Route to Update: reconcile per-train Capacity (0.02 mtpa vs ~0.016 mtpa) against the 32 kt/y figure if a second source confirms. Not staged — single non-primary source, sub-threshold materiality. Status stays proposed.",
+    "researcher_initials": "AI-draft"
+  }
+]

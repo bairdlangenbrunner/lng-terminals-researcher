@@ -1,0 +1,120 @@
+[
+  {
+    "terminal_id": "T100000130218",
+    "unit_id": "G100002021801",
+    "terminal_name": "Delfin FLNG Terminal",
+    "unit_name": "T1",
+    "country": "United States",
+    "field_name": "FIDStatus",
+    "old_value": "Pre-FID",
+    "new_value": "FID",
+    "confidence": "green",
+    "source_tier": "primary (company announcement) + trade press",
+    "ref_field": "FIDYear [ref]",
+    "ref_urls": [
+      "https://www.globenewswire.com/news-release/2026/06/03/3306350/0/en/delfin-midstream-announces-5-billion-final-investment-decision-for-first-flng-vessel.html",
+      "https://www.argusmedia.com/en/news-and-insights/latest-market-news/2835049-delfin-greenlights-first-us-floating-lng-terminal"
+    ],
+    "source_notes": "Delfin Midstream announced FID for Delfin FLNG 1 on 2026-06-03 ($5B; EPC Samsung Heavy + Black & Veatch; equity led by GIP/BlackRock, with MOL, Vitol, Diameter). GEM had FIDStatus=Pre-FID, FIDYear=2026; the FID is now actual. FIDYear=2026 already correct; only FIDStatus changes. Applies to T1 (FLNG 1) only — T2/T3 remain Pre-FID.",
+    "scope_note": "Unit-level: FID is for the first vessel (T1) only; do NOT propagate FID to T2/T3.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130218",
+    "unit_id": "G100002021801",
+    "terminal_name": "Delfin FLNG Terminal",
+    "unit_name": "T1",
+    "country": "United States",
+    "field_name": "Capacity",
+    "old_value": "",
+    "new_value": "4.40",
+    "confidence": "green",
+    "source_tier": "primary (company announcement)",
+    "ref_field": "Capacity [ref]",
+    "ref_urls": [
+      "https://www.globenewswire.com/news-release/2026/06/03/3306350/0/en/delfin-midstream-announces-5-billion-final-investment-decision-for-first-flng-vessel.html",
+      "https://gcaptain.com/delfin-approves-5-billion-floating-lng-export-project-off-louisiana-coast/"
+    ],
+    "source_notes": "Delfin FLNG 1 nameplate export capacity = 4.4 mtpa per the 2026-06-03 FID release (total project authorization up to 13.2 mtpa across vessels). GEM Capacity/CapacityinMtpa for T1 were blank. Baseload/nameplate per vessel. CapacityUnits should be set to mtpa.",
+    "scope_note": "Per-vessel (T1). 4.4 mtpa is the FLNG 1 nameplate, not the 13.2 mtpa multi-vessel total.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130218",
+    "unit_id": "G100002021801",
+    "terminal_name": "Delfin FLNG Terminal",
+    "unit_name": "T1",
+    "country": "United States",
+    "field_name": "LatestPlannedStartYear",
+    "old_value": "2031",
+    "new_value": "2030",
+    "confidence": "yellow",
+    "source_tier": "primary (company announcement)",
+    "ref_field": "StartDate [ref]",
+    "ref_urls": [
+      "https://www.globenewswire.com/news-release/2026/06/03/3306350/0/en/delfin-midstream-announces-5-billion-final-investment-decision-for-first-flng-vessel.html",
+      "https://gcaptain.com/delfin-approves-5-billion-floating-lng-export-project-off-louisiana-coast/"
+    ],
+    "source_notes": "FID release states FLNG 1 'scheduled to begin LNG production in 2030'. GEM T1 LatestPlannedStartYear=2031. Yellow: 'production in 2030' is a target, not a confirmed commissioning date.",
+    "scope_note": "Unit-level (T1).",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131128",
+    "unit_id": "G100002112801",
+    "terminal_name": "Gulfstream LNG Terminal",
+    "unit_name": "--",
+    "country": "United States",
+    "field_name": "Location",
+    "old_value": "",
+    "new_value": "Plaquemines Parish",
+    "confidence": "green",
+    "source_tier": "regulatory (FERC docket) + trade press",
+    "ref_field": "Location [ref]",
+    "ref_urls": [
+      "https://www.ferc.gov/gulfstream-lng-terminal-project",
+      "https://lngprime.com/americas/gulfstream-lng-secures-fta-export-license-from-doe/85228/"
+    ],
+    "source_notes": "GEM Location value was blank (only Location [ref] populated). FERC docket CP25-519 and sponsor materials place the Gulfstream LNG terminal in Plaquemines Parish, Louisiana. Fills the blank Location value; existing Location [ref] retained.",
+    "scope_note": "Project-level single unit.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130232",
+    "unit_id": "G100002023201",
+    "terminal_name": "Lake Charles LNG Terminal",
+    "unit_name": "Export Terminal (T1-T3)",
+    "country": "United States",
+    "field_name": "Location [ref]",
+    "old_value": "",
+    "new_value": "https://www.energy.gov/nepa/eis-0491-lake-charles-liquefaction-project-calcasieu-parish-louisiana",
+    "confidence": "green",
+    "source_tier": "regulatory (DOE/FERC EIS)",
+    "ref_field": "Location [ref]",
+    "ref_urls": [
+      "https://www.energy.gov/nepa/eis-0491-lake-charles-liquefaction-project-calcasieu-parish-louisiana"
+    ],
+    "source_notes": "Blank-ref fill. DOE EIS-0491 (Lake Charles Liquefaction Project) confirms the terminal site is in Calcasieu Parish, Louisiana, on the existing LNG import terminal site (GEM Location value='Lake Charles'). No orphan ref — pairs existing Location value.",
+    "scope_note": "Pairs existing Location value; do not change the value.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130232",
+    "unit_id": "G100002023200",
+    "terminal_name": "Lake Charles LNG Terminal",
+    "unit_name": "Import Terminal",
+    "country": "United States",
+    "field_name": "FacilityType [ref]",
+    "old_value": "",
+    "new_value": "https://www.energy.gov/nepa/eis-0491-lake-charles-liquefaction-project-calcasieu-parish-louisiana",
+    "confidence": "green",
+    "source_tier": "regulatory (DOE/FERC EIS)",
+    "ref_field": "FacilityType [ref]",
+    "ref_urls": [
+      "https://www.energy.gov/nepa/eis-0491-lake-charles-liquefaction-project-calcasieu-parish-louisiana"
+    ],
+    "source_notes": "Blank-ref fill. DOE EIS-0491 describes the project as expanding 'an existing liquefied natural gas (LNG) import terminal in Calcasieu Parish' — confirms GEM FacilityType='import' for this unit. Pairs the existing FacilityType value.",
+    "scope_note": "Pairs existing FacilityType value.",
+    "researcher_initials": "AI-draft (sweep)"
+  }
+]

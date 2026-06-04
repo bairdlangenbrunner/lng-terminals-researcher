@@ -1,0 +1,12 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130997",
+    "unit_id": "G100002099700",
+    "terminal_name": "Eemshaven FSRU",
+    "issue": "Discovery sweep surfaced a material expansion/extension on the EXISTING Eemshaven FSRU terminal (not a new terminal). Exmar launched conversion of a SECOND FSRU (a dual-fuel diesel-electric membrane LNG carrier, with a 750 MMSCFD regas plant ordered from Gas Solutions) to be deployed alongside the on-site EEMSHAVEN LNG unit, taking total terminal capacity to ~190,000 cu m LNG storage and ~1,350 MMSCFD (~1.35 bcf/d) regasification. This is paired with a conditional charter extending the existing FSRU; Gasunie/Vopak took a conditional investment decision to keep the terminal operating until ~2036, with a conditional FID targeted for H1 2026. Existing GEM operating row carries cap=8.00 MTPA and no second-FSRU/extension detail. Verify exact post-expansion capacity, FSRU count/vessel identity, and the operating-end-year before staging an Update edit.",
+    "severity": "medium",
+    "suggested_action": "Route to an Update batch for the Eemshaven FSRU terminal: (1) capture the extension to ~2036 and the H1-2026 conditional FID in the status timeline (fetch_timeline.py is DOWN this round, so this is a qa note rather than a staged timeline edit); (2) re-verify/refresh terminal capacity for the two-FSRU configuration; (3) run fsru_sync_check.py and confirm the second (Exmar) FSRU vessel name + IMO, since adding a chartered FSRU touches the cross-project FSRU sync rule. Sources: LNG Prime (verified PASS), Exmar IR, Offshore Energy, LNG Industry.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  }
+]

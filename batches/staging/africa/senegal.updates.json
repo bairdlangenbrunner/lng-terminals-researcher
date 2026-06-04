@@ -5,18 +5,18 @@
     "terminal_name": "Yakaar-Teranga LNG Hub",
     "unit_name": "--",
     "country": "Senegal",
-    "field_name": "Owner",
-    "old_value": "Petrosen [10%]; Kosmos Energy [90%]",
-    "new_value": "Petrosen [100%]",
-    "confidence": "green",
-    "source_tier": "primary/regulatory+trade-press",
-    "ref_field": "Owner [ref]",
+    "field_name": "FIDYear",
+    "old_value": "2025",
+    "new_value": "2026",
+    "confidence": "yellow",
+    "source_tier": "trade press + official statements (multiple, corroborated)",
+    "ref_field": "FIDYear [ref]",
     "ref_urls": [
-      "https://www.africa-energy.com/news-centre/article/senegal-kosmos-formally-withdraws-yakaar-teranga-offshore-field",
+      "https://msgbcoilgasandpower.com/news/senegal-advances-yakaar-teranga-toward-next-phase-offshore-gas-development",
       "https://www.financialafrik.com/en/2026/04/24/senegal-petrosen-to-exclusively-recover-the-license-of-the-yakaar-teranga-gas-block/"
     ],
-    "source_notes": "Kosmos Energy formally withdrew from the Yakaar-Teranga (Cayar) block on 22 Apr 2026 via a joint withdrawal agreement with Petrosen; Senegal/PETROSEN exclusively recovers the licence with no compensation to Kosmos. Pre-exit equity was Kosmos 90% / Petrosen 10%. Now state/Petrosen-controlled. (This is equity, not offtake/feedgas.)",
-    "scope_note": "Project-level owner change; applies to the single hub unit-row.",
+    "source_notes": "GEM FIDYear=2025 reflected a Nov-2024 Reuters report that Petrosen expected FID in 2025. Following Kosmos Energy's withdrawal (joint withdrawal agreement announced 23 Apr 2026, no compensation; license to be reassigned exclusively to Petrosen subject to ministerial decree), Petrosen now targets FID for 2026 (MSGBC, 4 May 2026: 'Final Investment Decision targeted for 2026'). Widely reported as a December 2026 deadline. FIDStatus remains Pre-FID. Yellow: target/deadline via reported official statements, not a regulatory FID filing; date could slip.",
+    "scope_note": "Single-unit project; field is project-level.",
     "researcher_initials": "AI-draft (sweep)"
   },
   {
@@ -25,18 +25,17 @@
     "terminal_name": "Yakaar-Teranga LNG Hub",
     "unit_name": "--",
     "country": "Senegal",
-    "field_name": "Parent",
-    "old_value": "Kosmos Energy [90.0%]; Government of Senegal [9.9%]; unknown [0.1%]",
-    "new_value": "Government of Senegal [100%]",
-    "confidence": "green",
-    "source_tier": "primary/regulatory+trade-press",
-    "ref_field": "Owner [ref]",
+    "field_name": "LatestPlannedStartYear",
+    "old_value": "2026",
+    "new_value": "2029",
+    "confidence": "yellow",
+    "source_tier": "trade press + official statements (multiple, corroborated)",
+    "ref_field": "StartDate [ref]",
     "ref_urls": [
-      "https://www.africa-energy.com/news-centre/article/senegal-kosmos-formally-withdraws-yakaar-teranga-offshore-field",
-      "https://www.financialafrik.com/en/2026/04/24/senegal-petrosen-to-exclusively-recover-the-license-of-the-yakaar-teranga-gas-block/"
+      "https://msgbcoilgasandpower.com/news/senegal-advances-yakaar-teranga-toward-next-phase-offshore-gas-development"
     ],
-    "source_notes": "Following Kosmos's 22 Apr 2026 withdrawal, the State of Senegal (via PETROSEN) assumes complete control of the project. Parent rolls up to Government of Senegal at 100%.",
-    "scope_note": "Mirrors the Owner change.",
+    "source_notes": "GEM LatestPlannedStartYear=2026 is no longer attainable: FID is not expected until 2026, so a 2026 start is impossible. Post-Kosmos-exit, first gas is targeted for 2028-2029 (MSGBC, 4 May 2026: 'First gas expected between 2028 and 2029'); the recurring specific figure across reporting is 'first gas January 2029'. Set latest planned start to 2029. OriginalPlannedStartYear (2026) left unchanged as the original plan. Yellow: target via reported officials for a pre-FID deepwater project; likely to move further.",
+    "scope_note": "Single-unit project; field is project-level. Existing StartDate [ref] (IISD) retained; appending MSGBC source for the revised year.",
     "researcher_initials": "AI-draft (sweep)"
   },
   {
@@ -45,17 +44,17 @@
     "terminal_name": "Karmol Dakar FSRU",
     "unit_name": "--",
     "country": "Senegal",
-    "field_name": "ActualStartYear",
-    "old_value": "",
-    "new_value": "2025",
-    "confidence": "green",
-    "source_tier": "trade-press(2 sources)",
-    "ref_field": "StartDate [ref]",
+    "field_name": "Owner",
+    "old_value": "KARMOL [100%]",
+    "new_value": "KARMOL [100%]",
+    "confidence": "blue",
+    "source_tier": "trade press (specialist maritime/energy)",
+    "ref_field": "Owner [ref]",
     "ref_urls": [
       "https://www.offshore-energy.biz/four-years-in-the-making-africas-first-lng-to-power-project-up-and-running-off-senegal/"
     ],
-    "source_notes": "Africa's first LNG-to-power project is up and running off Senegal: gas was transferred from the Karmol FSRU (Karmol LNGT Powership) to Karpowership's KPS 10 and power generation from LNG was achieved on 29 Apr 2025; first LNG cargo into the FSRU in May 2025. Sets ActualStartYear=2025. NOTE: status itself (construction->operating) is raised as a separate status_timeline qa item per the hard rules — do NOT take this update as authorization to flip the Status field.",
-    "scope_note": "FSRU import unit; sync-touchpoint to carrier project (vessel Karmol LNGT Powership).",
+    "source_notes": "Representative blue re-verify for this terminal (standard tier records one, not every field). KARMOL ownership/operation of the Dakar FSRU-to-power project confirmed unchanged in coverage of the project's start-up (Offshore Energy, 16 Jul 2025). No owner change found. (Capacity 2.5 mtpa, operator KARMOL, parents Karadeniz Holding / MOL also reviewed, no change.)",
+    "scope_note": "Single-unit FSRU project; field is project-level.",
     "researcher_initials": "AI-draft (sweep)"
   }
 ]

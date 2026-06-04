@@ -1,0 +1,32 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130924",
+    "unit_id": "G100002092400",
+    "terminal_name": "Port of Vlora FSRU",
+    "issue": "Vlora LNG-to-power project revived under a NEW sponsor consortium. On 28 Apr 2026 Aktor LNG USA (subsidiary of Greek group Aktor) and ALBGAZ (Albanian state gas company) signed a 20-year, ~EUR 6bn / ~USD 7bn agreement to supply 1 bcm/yr of U.S. LNG (sourced from Venture Global) to Albania from 2030. In parallel, Aktor Energy USA signed an MoU with Albania's Ministry of Infrastructure & Energy for feasibility/engineering studies on an integrated Vlora energy hub: an FSRU + LNG import terminal at the Port of Vlora, conversion of the idled oil-fired Vlora thermal power plant to a ~380 MW gas-fired unit, and a Fier-Vlora connecting pipeline (~EUR 300m) tying into TAP. This is the SAME site as this shelved GEM row (Port of Vlora; converting the same idled Vlora TPP) but a DIFFERENT sponsor set than the lapsed 2021 Excelerate/ExxonMobil MoU recorded in Owner/Parent/Operator. ALBGAZ's own release is titled 'Memorandum signed for the construction of the LNG terminal in Vlora'. Dead-and-revived under a new sponsor at the same site -> route to Update, not a new terminal. Status remains pre-FID/study stage (MoU only; no FEED/FID reported), so a move off 'shelved' to 'proposed' is plausible but the only concrete 2026 step is the MoU + 20-yr SPA; verify before re-statusing. Owner/Parent/Operator likely need updating to the Aktor/ALBGAZ consortium (Excelerate/ExxonMobil appear to have exited). fetch_timeline endpoint is DOWN, so no blind timeline edit staged here.",
+    "severity": "high",
+    "suggested_action": "Update workflow: re-verify Vlora status given the 28 Apr 2026 Aktor LNG USA / ALBGAZ 20-yr SPA + Aktor Energy USA-Ministry MoU. Likely update Status shelved->proposed (confirm; MoU-only, no FEED/FID), refresh Owner/Parent/Operator to Aktor LNG USA + Aktor Energy (USA) + ALBGAZ + Ministry of Infrastructure & Energy (Albania) and drop/demote Excelerate+ExxonMobil if confirmed exited, note Venture Global as U.S. LNG supplier, set ProposalYear/anchor to 2026 for the revival, and add the ~380 MW gas conversion + Fier-Vlora pipeline + TAP linkage to ResearcherNotes/Pipelines. Add timeline entries via fetch_timeline once the endpoint is reachable. Sources (all url_verifier PASS): https://albgaz.al/nenshkruhet-memorandumi-per-ndertimin-e-terminalit-te-lng-ne-vlore/ (ALBGAZ primary); https://lngprime.com/americas/greeces-aktor-to-supply-us-lng-to-albania/184990/ ; https://balkangreenenergynews.com/aktor-lng-usa-signs-20-year-supply-deal-with-albanias-albgaz/",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "discovery_dedup",
+    "terminal_id": "T100000130924",
+    "unit_id": "G100002092400",
+    "terminal_name": "Port of Vlora FSRU",
+    "issue": "Discovery dedup: the 2026 'Vlora hub' / Aktor-ALBGAZ US-LNG announcements (also styled 'Vlora Terminal', 'Vlore FSRU', Albanian 'terminali i LNG ne Vlore') resolve to this EXISTING GEM row, not a new terminal. Same Port of Vlora site, same idled Vlora TPP conversion; only the sponsor consortium changed. Routed as a status_timeline finding (above) to Update, not staged as a new_terminal per Discovery SOP s6 dead-and-revived rule.",
+    "severity": "low",
+    "suggested_action": "No new record. Handle via the status_timeline note above (Update workflow). Recorded so the next batch does not re-discover the Vlora revival as a fresh candidate.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "no_discovery",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "",
+    "issue": "Albania discovery sweep (Rings A-D: ERE/Ministry/Energy Community NECP & Annual Implementation Report; trade press LNG Prime/Balkan Green Energy News/Reuters-class + Albanian-language Shqiptarja/ATSH/Report-tv; sponsor IR Excelerate/ExxonMobil/Aktor; FSRU charters & Balkan 'Vertical Corridor' coverage). Outcome: NO LNG terminal missing from GEM. The only material 2026 activity is the Vlora revival (existing row, handled above). Other coastal sites checked and ruled out: Porto Romano (Durres) and Petrolifera (Vlora) are oil/petroleum-product & container terminals, not LNG; Saranda/Shengjin/Durres show no LNG import or liquefaction proposal; no Albanian LNG export/liquefaction project exists. The port of Bar in adjacent LNG coverage is in Montenegro (out of scope this country-pass). Both existing GEM rows (Eagle FSRU cancelled; Port of Vlora FSRU shelved) remain the complete Albanian set.",
+    "severity": "low",
+    "suggested_action": "No action; Albania LNG coverage is complete (2 terminals). Monitor the Vlora revival via the status_timeline note. Coverage-gap expansion not in scope this round (tracker-countries-only).",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  }
+]

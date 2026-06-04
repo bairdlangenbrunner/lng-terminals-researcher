@@ -1,0 +1,40 @@
+[
+  {
+    "terminal_id": "T100000131004",
+    "unit_id": "G100002100400",
+    "terminal_name": "Paldiski FSRU",
+    "unit_name": "--",
+    "country": "Estonia",
+    "field_name": "Status",
+    "old_value": "construction",
+    "new_value": "construction",
+    "confidence": "blue",
+    "source_tier": "trade press (ERR national broadcaster)",
+    "ref_field": "Status [ref]",
+    "ref_urls": [
+      "https://news.err.ee/1608596440/infortar-completing-lng-terminal-by-fall-needs-cooperation-of-all-parties"
+    ],
+    "source_notes": "Re-verified construction status (worklist dev_pipeline; ~11 mo stale). 2025-26 search found no vessel berthed at Paldiski: the shared Excelerate FSRU 'Exemplar' remains stationed at Inkoo, Finland; the Paldiski mooring/jetty was completed in 2022 and ESPA bought the quay (Mar 2023). No new milestones since GEM LastUpdated 2025-06-25. Existing Status [ref] (err.ee) re-verified PASS. Representative blue re-verify for this terminal; no field divergence found.",
+    "scope_note": "standard tier — one representative blue re-verify per terminal (no field change).",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130434",
+    "unit_id": "G100002043400",
+    "terminal_name": "Paldiski LNG Terminal",
+    "unit_name": "--",
+    "country": "Estonia",
+    "field_name": "Status [ref]",
+    "old_value": "",
+    "new_value": "https://lngprime.com/europe/infortar-joins-alexelas-paldiski-lng-import-project-in-estonia/48815/",
+    "confidence": "yellow",
+    "source_tier": "trade press (LNG Prime)",
+    "ref_field": "Status [ref]",
+    "ref_urls": [
+      "https://lngprime.com/europe/infortar-joins-alexelas-paldiski-lng-import-project-in-estonia/48815/"
+    ],
+    "source_notes": "Blank-ref fill (worklist blank_ref, severity medium). Status is shelved/inferred (ShelvedCancelledStatusType=inferred) — no discrete shelving event exists to cite. Per lifecycle 'inferred entry', the datasource may reuse the source documenting the project's last active state, which the shelved inference rests on. LNG Prime 'Infortar joins Alexela's Paldiski LNG import project' documents that last-active state and the FSRU-route framing; verified PASS. Yellow (single non-primary). Pairs the existing populated Status value (no orphan ref).",
+    "scope_note": "Rule-F blank-ref fill — reuses the last-active-state source for an inferred-shelved status; does not assert a new active status.",
+    "researcher_initials": "AI-draft (sweep)"
+  }
+]

@@ -5,76 +5,18 @@
     "terminal_name": "SLNG 2 LNG Terminal",
     "unit_name": "--",
     "country": "Singapore",
-    "field_name": "ShelvedYear",
-    "old_value": "2023",
-    "new_value": "",
-    "confidence": "green",
-    "source_tier": "sponsor IR (SLNG) + trade press",
-    "ref_field": "ShelvedYear [ref]",
-    "ref_urls": [
-      "https://www.slng.com.sg/construction-of-the-FSRU-for-Singapores-second-LNG-terminal-begins",
-      "https://lngprime.com/asia/hanwha-ocean-lays-keel-for-singapores-first-fsru/187493/"
-    ],
-    "source_notes": "GEM records ShelvedYear 2023, but the project is active and advancing, not shelved. SLNG signed FSRU charter with a MOL (Mitsui O.S.K. Lines) subsidiary; FSRU steel-cutting (construction start) at Hanwha Ocean Oct 2025, keel laid May 2026, onshore works started Mar 2026, in-service targeted 2030 at Jurong Port. The ShelvedYear value should be cleared.",
-    "scope_note": "Project-level; single unit on this terminal. Status change handled in qa (status_timeline), not a Status field edit.",
-    "researcher_initials": "AI-draft (sweep)"
-  },
-  {
-    "terminal_id": "T100000130890",
-    "unit_id": "G100002089000",
-    "terminal_name": "SLNG 2 LNG Terminal",
-    "unit_name": "--",
-    "country": "Singapore",
-    "field_name": "VesselOwner",
-    "old_value": "",
-    "new_value": "Mitsui O.S.K. Lines",
-    "confidence": "green",
-    "source_tier": "sponsor IR (SLNG/MOL) + trade press",
-    "ref_field": "VesselOwner [ref]",
-    "ref_urls": [
-      "https://www.slng.com.sg/construction-of-the-FSRU-for-Singapores-second-LNG-terminal-begins",
-      "https://www.mol.co.jp/en/info/article/2025/1223.html"
-    ],
-    "source_notes": "The 204,000 m3 / 5 mtpa FSRU for SLNG's second terminal is owned by a subsidiary of Japan's Mitsui O.S.K. Lines (MOL) and chartered to SLNG; built by Hanwha Ocean. GEM VesselOwner is blank. Vessel owner (MOL) is distinct from terminal owner (Singapore LNG Corp).",
-    "scope_note": "Vessel-owner field, distinct from terminal owner Singapore LNG Corp.",
-    "researcher_initials": "AI-draft (sweep)"
-  },
-  {
-    "terminal_id": "T100000130890",
-    "unit_id": "G100002089000",
-    "terminal_name": "SLNG 2 LNG Terminal",
-    "unit_name": "--",
-    "country": "Singapore",
-    "field_name": "VesselOperator",
-    "old_value": "",
-    "new_value": "Mitsui O.S.K. Lines",
-    "confidence": "yellow",
-    "source_tier": "sponsor IR (SLNG/MOL)",
-    "ref_field": "VesselOperator [ref]",
-    "ref_urls": [
-      "https://www.mol.co.jp/en/info/article/2025/1223.html"
-    ],
-    "source_notes": "MOL owns and is financing the FSRU (project-finance agreement Dec 2025) and charters it to SLNG, implying MOL as vessel operator. GEM VesselOperator is blank. Yellow: operator role implied via the owner/charter structure, not explicitly stated.",
-    "scope_note": "Vessel-operator field.",
-    "researcher_initials": "AI-draft (sweep)"
-  },
-  {
-    "terminal_id": "T100000130309",
-    "unit_id": "G100002030902",
-    "terminal_name": "Singapore LNG Terminal",
-    "unit_name": "Phase 3",
-    "country": "Singapore",
-    "field_name": "Capacity",
-    "old_value": "5.00",
-    "new_value": "5.00",
+    "field_name": "Status",
+    "old_value": "proposed",
+    "new_value": "proposed",
     "confidence": "blue",
-    "source_tier": "sponsor IR (SLNG)",
-    "ref_field": "Capacity [ref]",
+    "source_tier": "primary",
+    "ref_field": "Status [ref]",
     "ref_urls": [
-      "https://www.slng.com.sg/press-releases/slng-to-develop-own-and-operate-second-lng-terminal-in-singapore-as-it-marks-10-years-of-commercial-operations"
+      "https://www.slng.com.sg/node/317",
+      "https://www.slng.com.sg/press-releases/slng-inks-agreements-with-mol-jurong-port-and-wood-for-development-of-second-lng-terminal-in-singapore"
     ],
-    "source_notes": "Existing SLNG Terminal on Jurong Island (Phase 1/2/3 = 3.5+2.5+5.0 = 11 mtpa, operating, Singapore LNG Corp 100%) re-verified current; SLNG noted ~11 mtpa existing capacity rising toward ~15 mtpa combined with the second terminal. Phase 3 value unchanged from GEM.",
-    "scope_note": "Representative blue re-verify for the existing operating Singapore LNG (Jurong Island) terminal phases.",
+    "source_notes": "Re-verified this batch: SLNG 2 is an active proposed terminal (government approval Oct 2023; FSRU charter + FEED award Oct 2024). Status field value 'proposed' left unchanged here — a likely proposed->construction progression is logged as a status_timeline qa note (fetch_timeline endpoint DOWN). Existing Status [ref] (node/317) confirmed PASS. NOTE: do NOT fill this row's ShelvedYear [ref] / StopYear [ref] — the underlying 2023 values appear to be a data error (see qa data_quality note).",
+    "scope_note": "Dev-pipeline (proposed) row from worklist; blue re-verify only, no field value changed.",
     "researcher_initials": "AI-draft (sweep)"
   }
 ]

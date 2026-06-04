@@ -2,41 +2,41 @@
   {
     "category": "status_timeline",
     "terminal_id": "T100000130583",
-    "unit_id": "G100002058301",
-    "terminal_name": "Iran NIOC LNG Terminal",
-    "issue": "GEM holds Iran NIOC LNG (Iran LNG, Tombak Port) at 'construction / actual' (LastUpdated 2025-09-03). That remains defensible on a physical basis (project revived 2021-2023, reported ~50-53% complete per Argus Jan 2024 / OGJ, Train 3 1.5 mtpa targeted for 2026). HOWEVER two material events POST-DATE the GEM update and meaningfully worsen near-term viability: (1) UN 'snapback' sanctions were reimposed on Iran 28 Sep 2025 (E3-initiated 28 Aug 2025), restoring the pre-JCPOA UN sanctions regime and further cutting Iran off from liquefaction technology and finance; (2) the 2026 Iran war (US/Israeli strikes from late Feb 2026) and the Strait of Hormuz closure (4 Mar 2026) stranded regional gas/LNG exports and damaged Gulf LNG infrastructure (Qatar Ras Laffan). No source explicitly documents a construction halt at the Tombak site itself, so I am NOT recommending a status field edit. But the project's stated 2026 commissioning is now almost certainly unachievable, and the record may warrant re-assessment toward stalled/mothballed at the next review.",
-    "severity": "medium",
-    "suggested_action": "Reviewer to re-assess Iran NIOC LNG status at next update cycle in light of the 28 Sep 2025 UN snapback and the 2026 Iran war / Hormuz closure. Seek a primary Iranian-source (Shana / oil ministry) or trade-press statement on whether Tombak construction is continuing, suspended, or abandoned post-war before changing Status. Do NOT change Status on the current evidence (no documented halt); treat as a status_timeline watch item. Note: per brief, status changes are qa notes, not Status field edits or timeline files.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "no_change",
-    "terminal_id": "T100000130583",
     "unit_id": "G100002058303",
     "terminal_name": "Iran NIOC LNG Terminal",
-    "issue": "Capacity sanity check (no edit). GEM records the 3 trains as T1 5.4 + T2 5.4 + T3 1.5 = 12.3 mtpa. Trade press / GEM wiki cite the project as originally 10.8 mtpa (two 5.4 mtpa Linde trains) and, per a Jan 2024 deputy-minister statement, ultimately 20 mtpa including the 1.5 mtpa 'Train 3' medium-sized plant. The existing GEM ResearcherNotesUnit already flags the 20 mtpa figure as a wiki note. Per-train nameplate figures in GEM are consistent with sources; flagging only so the reviewer is aware GEM's 12.3 mtpa total is an intermediate figure between the 10.8 and 20 mtpa public numbers. No field change recommended.",
+    "issue": "GEM holds all three trains as 'construction'. Public reporting (S&P Global deputy-minister interview, Jan 2024; reiterated through 2025) is consistent with this: Iran targets first LNG (~1.5 mtpa medium-scale train, = GEM's T3) by 2026, but commissioning has not been declared and the target is explicitly conditional ('depends on many things'). No verified evidence of a status change (construction->operating) as of June 2026. No Status edit staged; flagging only so the user can confirm the 2026 commissioning milestone for T3 at next refresh. fetch_timeline endpoint is down.",
     "severity": "low",
-    "suggested_action": "None required; informational. Existing researcher note already documents the 20 mtpa total. Leave per-train capacities as-is.",
+    "suggested_action": "At next batch, check whether the 1.5 mtpa medium-scale train (T3) was commissioned in 2026; if so, T3 status -> operating. Capacity/owner/location values currently match public sources; leave as-is.",
     "researcher_initials": "AI-draft"
   },
   {
-    "category": "no_change",
-    "terminal_id": null,
-    "unit_id": null,
-    "terminal_name": "Iran cancelled-LNG cohort (6 terminals)",
-    "issue": "Verified the 6 cancelled Iranian export-LNG records remain correctly cancelled with no sanctions-relief-driven revival: Iran FLNG Terminal (Exmar, cancelled 2019, confirmed), Kangan LNG / Persian AMG (cancelled 2022, inferred), North Pars LNG (QatarEnergy, cancelled 2022, inferred — partially built then abandoned), Persian NIOC LNG (cancelled 2016, confirmed), Qeshm LNG (cancelled 2021, inferred), South Pars LNG (cancelled 2022, inferred — partially built then abandoned). No 2024-2026 source shows any of these being revived; the opposite is true — the Sep 2025 UN snapback and the 2026 Iran war make revival less likely, not more. GEM values (status, cancelled/shelved years, capacity, owners) match available sources. No field changes.",
+    "category": "data_quality",
+    "terminal_id": "T100000130587",
+    "unit_id": "G100002058701",
+    "terminal_name": "Iran FLNG Terminal",
+    "issue": "GEM Capacity = 0.50 mtpa, but the cited iranobserver article states the FLNG site was 'projected to produce 500 metric tons of LNG and 200 tons of LPG per year' (i.e. 0.0005 mtpa) — implausibly small and inconsistent with the 0.50 mtpa GEM figure. The article cannot support Capacity [ref], so that blank ref was left UNFILLED. Likely the article figure is a typo/units error in the source rather than a GEM error, but the 0.50 mtpa value has no surviving verifiable citation. Separately, the article dates the cancellation to Feb 2018, whereas GEM has ShelvedYear=2017 / CancelledYear=2019 / StopYear=2019 — minor year discrepancy left unresolved (no override of GEM dates from a single secondary source).",
     "severity": "low",
-    "suggested_action": "No action. Cohort confirmed cancelled / no revival. Single consolidated no-change note in lieu of 6 separate blue re-verify rows (per brief: avoid spamming).",
+    "suggested_action": "Treat 0.50 mtpa as the best available GEM estimate but note Capacity [ref] remains blank (no clean source). Optionally reconcile the 2017/2018/2019 cancellation-year spread against a stronger primary source if one surfaces; cancelled long-dead project, low priority.",
     "researcher_initials": "AI-draft"
   },
   {
-    "category": "source_access",
-    "terminal_id": "T100000130583",
-    "unit_id": null,
-    "terminal_name": "Iran NIOC LNG Terminal",
-    "issue": "Source-access blockers encountered. (1) S&P Global Commodity Insights interview ('Iran aims for 1.5 mil mt/year LNG output in 2026', 012524) returns HTTP 403 to url_verifier and was dropped from citations; content is mirrored on Hellenic Shipping News / World Ports Org if a corroborating link is needed. (2) Iranian primary sources (Shana / oil ministry / MEHR / Tehran Times) were not directly reachable/searchable in this environment, so the most recent (2026) construction status at Tombak could not be confirmed from a primary Iranian source. No data was fabricated; recent-status assessment rests on trade press (Argus), GEM wiki, and English-language coverage of the snapback and 2026 war.",
+    "category": "ref_fill",
+    "terminal_id": "T100000130584",
+    "unit_id": "G100002058401",
+    "terminal_name": "North Pars LNG Terminal",
+    "issue": "Blank-ref-fill targets (Status/Capacity/ProposalDate/ShelvedYear/CancelledYear/StopYear/Location [ref]) on this cancelled QatarEnergy-sponsored project could not be filled: the only surviving on-point source (offshore-energy.biz, already cited for Owner/FacilityType) covers the North Field train concept, not the specific status/capacity/cancellation-year facts. No new verified source found for the cancelled-project details; refs left blank rather than paired to a weak/off-point citation.",
     "severity": "low",
-    "suggested_action": "If a definitive 2026 status is needed, reviewer should pull a primary Iranian-language source (Shana) directly. Verified usable citations this batch: Argus 2488305 (50% progress), Argus 2427593 (revival/mid-2025), Enerdata relaunch note, Wikipedia 'Iran LNG' and 'Economic impact of the 2026 Iran war' (all PASS url_verifier).",
+    "suggested_action": "Leave blank-refs blank for this cancelled terminal unless a primary source surfaces. Do not pair year/capacity refs to the existing owner-source (off point).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ref_fill",
+    "terminal_id": "T100000130585",
+    "unit_id": "G100002058501",
+    "terminal_name": "Kangan / North Pars / Persian / Qeshm / South Pars LNG Terminals",
+    "issue": "Across the five remaining cancelled Iranian export terminals (Kangan, North Pars, Persian NIOC, Qeshm, South Pars), the worklist flags ~40 blank [ref] cells for Status/Capacity/year/location/cost fields. These are long-dead, sanctions-era projects (cancelled 2016-2022) whose original GEM citations were ~2016-2019 bit.ly shortlinks and an IGU WGC2009 PDF. No new verified, on-point sources were found in a standard-tier search to support the specific blanked fields, and per SOP a blank ref is preferred over pairing to a weak/generic source. Only the Iran FLNG row received verified fills (see updates). Owner [ref] cells that point to surviving owner pages (mah-taab.com etc.) were left as-is.",
+    "severity": "low",
+    "suggested_action": "Route to an exhaustive-tier pass or leave blank. For cancelled terminals, blank refs are acceptable; do not manufacture citations from weak/off-point sources.",
     "researcher_initials": "AI-draft"
   }
 ]

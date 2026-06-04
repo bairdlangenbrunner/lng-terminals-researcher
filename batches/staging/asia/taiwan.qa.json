@@ -1,42 +1,22 @@
 [
   {
     "category": "status_timeline",
-    "terminal_id": "T100000131111",
-    "unit_id": "G100002111100",
-    "terminal_name": "Zhouji LNG Terminal",
-    "issue": "Possible proposed->construction transition. Zhouji (No.7 / Kaohsiung Intercontinental LNG Receiving Terminal, CPC) is currently Status=proposed in GEM, but GEM already records ConstructionYear=2025. Trade press (CTCI press release Aug 28 2025; Rigzone Sep 2 2025) states 'the construction of LNG storage tanks at the terminal is currently at full speed'. Environmental approval was granted Dec 2024 (LNG Prime); the storage-tank EPC was awarded to CTCI in late 2024 and the regasification-facility EPC (NT$29.6bn) in Sep 2025, completion ~2030. This points to active physical construction.",
-    "severity": "medium",
-    "suggested_action": "Verify construction commencement and, if confirmed, move Status proposed->construction (substatus actual) with a timeline entry. GEM's ConstructionYear=2025 already encodes the start; only the Status string lags. No Status field edit staged per sweep rules (status changes go to qa, not a Status edit). Note inconsistency: sister proposed-stage CPC tank-construction projects are treated differently across the dataset (cf. Mailiao below, marked construction). PASS-verified source: https://www.prnewswire.com/news-releases/another-lng-terminal-tender-success-for-ctci-to-build-regasification-facility-at-kaohsiung-intercontinental-lng-receiving-terminal-302540815.html",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "status_timeline",
-    "terminal_id": "T100000131108",
-    "unit_id": "G100002110800",
-    "terminal_name": "Mailiao LNG Terminal",
-    "issue": "Construction-start basis worth re-confirming. Mailiao (No.6, Mai-Liao Power Corp / Formosa group) is Status=construction (substatus actual), ConstructionYear=2025 in GEM. Public English sources found only confirm EPC/fabrication awards in mid-2025 (CTCI storage-tank EPC NT$12.45bn, Jul 2025; Kawasaki Heavy Industries LNG-tank order, Aug 2025), completion mid-2029 -- not an explicit groundbreaking/site-construction milestone. One source noted 'as of June 2025, not yet entering construction'. GEM researcher (MZ, 2026-03) may have used a local-language source confirming start.",
-    "severity": "low",
-    "suggested_action": "Re-confirm the 2025 construction-start anchor for Mailiao Phase 1 against a local-language source before next publication (no change staged -- GEM researcher set this 2026-03 and contract activity broadly supports a construction phase). The GEM ResearcherNotesProject flags the original Phase-1 capacity ref as a dead link; that link should also be refreshed.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "data_consistency",
-    "terminal_id": "T100000130892",
-    "unit_id": "G100002089200",
-    "terminal_name": "Taichung (TaiPower) LNG Terminal",
-    "issue": "Capacity unverified (GEM-internal note). GEM ResearcherNotesUnit (MZ, Q1 2026) already flags that the 3.0 mtpa capacity is unconfirmed ('Capacity details are not specified... Double-check in the next update'). EIA final draft was submitted end-Aug 2025 after multiple extensions (per GEM note); project remains proposed. No public source found this sweep that pins a precise nameplate capacity for No.5.",
-    "severity": "low",
-    "suggested_action": "Carry forward the existing GEM capacity-uncertainty flag for No.5; no change. Watch for the EIA final decision (submitted Aug 2025) which may publish a confirmed jetty/tank capacity.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "verification",
     "terminal_id": "T100000130318",
-    "unit_id": "G100002031800",
+    "unit_id": "G100002031801",
     "terminal_name": "Taoyuan LNG Terminal",
-    "issue": "Re-verify: Taoyuan Phase 1 (No.3 / Guantang, CPC) operating start. GEM has ActualStartYear=2025, Status=operating. Confirmed: first LNG ship arrived 1 Apr 2025; target regas output (900 t/h) reached 6 Jun 2025; began supplying Datan power plant 6 May 2025 (Energy Intelligence). GEM matches. Separately, Taipei Times (4 Dec 2025) reported Taiwanese prosecutors are investigating CPC over alleged budget inflation on the third terminal -- an opposition/governance item, not a status change.",
+    "issue": "GEM lists Taoyuan LNG Terminal Phase 2 (location 'Guantang (Kwun Tong) Industrial Zone', CPC's Third LNG Receiving Terminal supplying Datan power station) as status='proposed' (LastUpdated 2026-03-12). Multiple sources confirm the 3 mtpa Guantang terminal received its first LNG cargo (63,780 t aboard Methane Rita Andrea) on 7 April 2025, with commissioning completed ~May 2025; it 'came on stream in 2025'. Status appears to lag reality by ~1 year (should be operating, or at minimum construction/commissioning). Note Dec 2025 prosecutorial investigation into alleged budget inflation at this terminal, which may bear on commercial-operation declaration timing.",
+    "severity": "high",
+    "suggested_action": "Verify exact commercial-operation declaration date and pull existing status timeline (fetch_timeline endpoint currently DOWN), then advance Status from 'proposed' toward operating in a follow-on Update batch once the timeline can be staged. Sources: Energy Intelligence (https://www.energyintel.com/00000196-b59a-d583-a5b6-bfde33cb0000), TPCB Taiwan LNG guide (https://www.tpcb.com.tw/the-ultimate-taiwan-lng-guide/), LNG Prime (https://lngprime.com/asia/japans-jfe-engineering-bags-contract-for-cpcs-third-lng-terminal-in-taiwan/77365/). All verified PASS except Argus (paywalled, FAIL).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Taiwan dev-pipeline (7 units)",
+    "issue": "Skim-confirmed the 7 remaining dev-pipeline units (all LastUpdated 2026-03, <3 months): Taichung Phase 3 (construction, ~2026 commissioning, Bechtel 2x180,000m3 tanks); Taichung Phase 4 (proposed, FEED awarded Daigas/Osaka Gas, target 2029); Mailiao Phase 1 / No.6 terminal (construction, CTCI+Kawasaki EPC, mid-2029); Taichung (TaiPower)/No.5 terminal (proposed, stalled on EIA over white-dolphin habitat); Zhouji/Kaohsiung 4th terminal (proposed, 6 mtpa, target 2029); Hsieh-Ho Phase 1 FSRU / No.4 terminal (proposed, EIA upheld Jan 2026, environmental lawsuits ongoing, completion slipped to ~2037); Yung-An Phase 5 expansion (proposed, 1.8 mtpa, stalled since 2021). All consistent with current public reporting; no verified field-value divergence found.",
     "severity": "low",
-    "suggested_action": "No change (blue re-verify -- GEM ActualStartYear=2025 and operating status confirmed). Optionally note the Dec 2025 prosecutorial budget probe in the Opposition/ESJNotes wiki narrative, not a structured field.",
+    "suggested_action": "No edit needed; entries verified current as of 2026-06.",
     "researcher_initials": "AI-draft"
   }
 ]

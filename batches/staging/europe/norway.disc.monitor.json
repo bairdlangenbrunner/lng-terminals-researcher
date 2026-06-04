@@ -1,0 +1,26 @@
+[
+  {
+    "country": "Norway",
+    "candidate_name": "Ålesund (Bingsa) LNG Terminal",
+    "sponsor_or_proposer": "Gasum Oy (operator; ex-Skangas/AGA; originally established by Naturgass Møre)",
+    "first_observed_batch": "2026-06 discovery",
+    "last_observed_batch": "2026-06 discovery",
+    "current_state": "Operating since June 2010. Small-scale LNG receiving/storage + regasification terminal at the Bingsa industrial area, Ålesund (Møre og Romsdal). Two storage tanks, ~1,300 m3 net (one source: ~1,200 m3). Supplies natural gas via low-pressure pipeline to Veidekke's asphalt plant and distributes LNG by truck (2-3 semitrailers/day) to industrial consumers in Central Norway. Functionally a direct peer of GEM's existing Mosjoen and Fredrikstad/Ora small-scale import terminals, but NOT in the GEM export.",
+    "missing_threshold_elements": "none on the methodology threshold itself (operator + location + operating status all known); BLOCKED on the citation gate only — every verifiable operator/primary source (Gasum naboinformasjon-Bingsa pages; 2017 'ny eier' neighbor PDF mirror) currently returns HTTP 403 or is unreachable, and Wikipedia 'List of LNG terminals' (the one URL that passes url_verifier for 'Ålesund'+'Gasum') is lead-only per source_roster, not a citable primary. Needs one verified non-Wikipedia source before it can be staged as new_terminal.",
+    "watch_for": "A reachable Gasum/Molgas primary page or trade-press article (LNG Prime / Riviera) that names the Bingsa/Ålesund terminal and confirms operator + storage capacity, so the citation gate clears and it can be promoted to a new_terminal in a follow-up Update/Discovery batch.",
+    "best_lead_url": "https://en.wikipedia.org/wiki/List_of_LNG_terminals",
+    "notes": "Best-documented of the Norwegian small-scale receiving-terminal gap. Owner entity = existing GEM 'Gasum Oy' (E-id used on T100000130730 Fredrikstad/Ora; parents Elering AS / Gasgrid Finland Oy) — no new entity needed. Held in monitor (not new_terminal) per the citation gate + the >5-candidate systematic-gap rule (see escalation qa note)."
+  },
+  {
+    "country": "Norway",
+    "candidate_name": "Norwegian small-scale LNG receiving-terminal cluster (Gasnor/Molgas network)",
+    "sponsor_or_proposer": "Gasnor AS (Molgas Energy Holding); also Gasum Oy",
+    "first_observed_batch": "2026-06 discovery",
+    "last_observed_batch": "2026-06 discovery",
+    "current_state": "Trade-press reporting (Riviera 'Northern lights push for LNG', verified) states Gasnor operates ~30 LNG receiving terminals along the Norwegian coast (Bodø in the north to Lista in the south) and names operating small-scale storage/distribution stations including Sunndalsøra (Gasnor-Shell), Høyanger, Ågotnes Coast Centre Base (CCB), Halhjem terminal, and Florø (Saga Fjordbase) — in addition to Naturgass Møre / Ålesund. GEM currently tracks only a handful of Norwegian small-scale terminals (Mosjoen, Fredrikstad/Ora, Risavika, Kollsnes, Snurrevarden, Tjeldbergodden). This cluster appears to be a systematic GEM coverage gap, but the individual stations are below the bar to add blind: most lack a verifiable per-site primary source and several may fall below GEM's terminal threshold or be bunkering-only (out of scope).",
+    "missing_threshold_elements": "per-site verification (location/operator/scale/function) and verified primary citations are missing for the individual stations; ambiguity over which qualify as GEM terminals vs sub-threshold satellite distribution/bunkering points. Needs a coverage-policy decision before any are staged.",
+    "watch_for": "User decision on whether GEM should systematically cover the Norwegian Gasnor/Molgas small-scale receiving network; then a per-site verification pass (which stations have storage + regas/pipeline supply or truck distribution to industry, i.e. peers of Mosjoen/Ora, vs bunkering-only).",
+    "best_lead_url": "https://www.rivieramm.com/news-content-hub/news-content-hub/northern-lights-push-for-lng-40484",
+    "notes": "Drives the escalation=true flag. Do NOT mass-generate new_terminal records for these (>5 candidates in one country = CLAUDE.md / Discovery SOP §12 pause-and-ask trigger). Named candidate sites this batch: Sunndalsøra, Høyanger, Ågotnes/CCB, Halhjem, Florø, plus Ålesund (listed separately above)."
+  }
+]

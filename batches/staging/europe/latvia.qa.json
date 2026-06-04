@@ -1,12 +1,32 @@
 [
   {
-    "category": "verification",
+    "category": "ref_fill_unsourced",
+    "terminal_id": "T100000130486",
+    "unit_id": "G100002048600",
+    "terminal_name": "Riga FSRU",
+    "issue": "Five worklist blank-ref targets on the base Riga FSRU unit (cancelled) could NOT be filled with a value-bearing source: Status [ref] (Status=cancelled), Capacity [ref] (3.60 mtpa), ShelvedYear [ref] (2013), CancelledYear [ref] (2015), StopYear [ref] (2015). The cancelled/shelved/stopped status is INFERRED by GEM ('no development updates since the 2011 study -> presumed cancelled'); ShelvedCancelledStatusType=inferred. No press source states a 2013 shelving, 2015 cancellation, or the 3.60 mtpa capacity. The only source carrying 3.60 mtpa is GEM's own wiki (circular). The existing on-row Baltic Times article (articles/29052, 2011-07-13) documents the 2011 proposal but mentions neither a capacity figure nor any later shelving/cancellation, so it cannot fill these refs. Per plan + Rule F, left blank rather than staging a weak/red or misattributed ref.",
+    "severity": "low",
+    "suggested_action": "Leave the five [ref] cells blank. The values are GEM-inferred for a long-dead (2011-origin) project and have no contemporaneous value-bearing citation; do not force a ref. Optionally cite the GEM wiki (https://www.gem.wiki/Riga_FSRU) for provenance only if GEM accepts self-citation for inferred legacy cells.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ref_fill_unsourced",
+    "terminal_id": "T100000130486",
+    "unit_id": "G100002048601",
+    "terminal_name": "Riga FSRU",
+    "issue": "Three worklist blank-ref targets on the Riga FSRU 'Revived Project' unit (shelved) could NOT be filled with a value-bearing source: Status [ref] (Status=shelved), ShelvedYear [ref] (2024), StopYear [ref] (2024). The shelved-2024 status is INFERRED by GEM ('as of July 2024, no project updates in over two years -> presumed shelved'); ShelvedCancelledStatusType=inferred. The existing on-row BNN article (ruling-coalition..., 2022-04-12, verified PASS) documents the April-2022 revival/proposal and names Latvenergo + Riga, but says nothing about a 2024 shelving, so it supports Owner/ProposalYear (re-verified blue) but cannot fill Status=shelved or the 2024 year refs. No other source states a 2024 shelving date. Per plan + Rule F, left blank rather than misattributing the 2022 proposal article to the inferred shelved state.",
+    "severity": "low",
+    "suggested_action": "Leave the three [ref] cells blank (inferred status with no verbatim source). The April-2022 revival is already documented via the Owner/ProposalDate [ref] (BNN). No further action unless a future source explicitly dates the shelving.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
     "terminal_id": "T100000130725",
     "unit_id": "G100002072500",
     "terminal_name": "Skulte LNG Terminal",
-    "issue": "Skulte re-verified and CONSISTENT with GEM (Status=shelved). The Latvian government withdrew support on 11 April 2023, and parliament repealed the September 2022 national-interest/fast-track law on 19 October 2023, citing sufficient regional LNG capacity (Latvia can use Estonia's Paldiski/Inkoo FSRU) and commercial unviability. Sponsor (AS Skulte LNG Terminal 80% + AS Virši 20%) nominally kept it alive on a commercial basis through 2024. GEM's shelved (inferred 2y) with ShelvedYear=2025 is reasonable under the inactivity-based lifecycle, though the formal government/parliament abandonment dates to 2023.",
+    "issue": "Dev-pipeline status check (standard tier) for both Latvia projects confirms NO status change and NO revival in 2025-2026. Skulte: govt withdrew support 11 Apr 2023, Parliament repealed the national-priority law 19 Oct 2023; remains shelved. Riga FSRU (base + Revived Project): no updates since the dormant 2022 revival; remains cancelled/shelved. Latvia's gas-supply security is now met via reserved capacity at Klaipeda LNG (Lithuania, 10-yr reservation) and the Inko/Paldiski FSRU (Finland/Estonia) per Latvenergo, not a domestic terminal. Recording as confirmation only; no Status field edit staged (fetch_timeline endpoint is DOWN and statuses are already current/correct).",
     "severity": "low",
-    "suggested_action": "No change. Optionally note the 2023 formal government withdrawal in the wiki/timeline. Continues to trend toward cancelled if no commercial revival.",
+    "suggested_action": "No change. GEM statuses (Riga base=cancelled, Riga Revived=shelved, Skulte=shelved) are current and accurate as of the 2026-06 sweep. Useful corroborating reads: https://www.argusmedia.com/en/news-and-insights/latest-market-news/2483972-latvian-government-abandons-skulte-lng-project ; https://lngprime.com/contracts-and-tenders/latvenergo-to-receive-lng-via-finlands-fsru/166452/",
     "researcher_initials": "AI-draft"
   }
 ]

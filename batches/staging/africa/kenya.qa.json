@@ -1,22 +1,22 @@
 [
   {
-    "category": "verification_log",
-    "terminal_id": "T100000130254",
-    "unit_id": "G100001054956",
-    "terminal_name": "Mombasa LNG Terminal",
-    "issue": "Re-verified (2026-06 sweep): GEM's 'Second Proposal' unit (AMACO, 6.20 mtpa, proposed, ProposalYear 2024, planned start 2027, Operator=AMACO, Owner/Parent='Unnamed special purpose vehicle') remains accurate. AMACO (Greek infrastructure developer) created a 2024 project page for 'Mombasa, LNG to Power & NG Transmission System Development' proposing an LNG delivery point, storage, and ~6.2 mtpa regasification at Mombasa Port plus conversion of ~10 HFO/kerosene power plants to gas. No confirmed development progress beyond the feasibility/planning phase has been reported since early 2025; recent 'Mombasa LNG' news is about LNG-powered ships calling at the port (green-shipping), NOT the import terminal. No field edit.",
-    "severity": "low",
-    "suggested_action": "No change. Representative blue re-verify for Mombasa LNG (Second Proposal). The 'Unnamed special purpose vehicle' owner/parent remains apt (AMACO is the proposer/feasibility lead, not confirmed equity owner). Sources: https://amaco.gr/from-amaco-greece-to-kenya-mombasa-lng-to-power/",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "verification_log",
+    "category": "data_gap",
     "terminal_id": "T100000130254",
     "unit_id": "G100002025400",
     "terminal_name": "Mombasa LNG Terminal",
-    "issue": "Re-verified (2026-06 sweep): GEM's 'Original Proposal' unit (Kenya Ministry of Energy and Petroleum, 0.26 mtpa, status=shelved, Substatus='inferred 2 y', ProposalYear 2011, ShelvedYear 2024) remains accurate. No revival of the original Ministry-led proposal found; Kenya had pivoted toward a floating LPG facility. The existing GEM researcher note (IM) correctly explains keeping this shelved rather than cancelled given the ambiguous relationship to the new AMACO proposal. No field edit.",
+    "issue": "Blank-ref targets Status [ref], ShelvedYear [ref], StopYear [ref] on the Original Proposal (status=shelved, ShelvedYear=StopYear=2024) cannot be filled with a primary source: the shelving is a GEM editorial INFERENCE (Substatus='inferred 2 y', ShelvedCancelledStatusType='inferred', '~no updates in over two years'), not a sourced event. No press release, regulator notice, or news article states the project was shelved/stopped in 2024. The only artifact documenting the inference is the GEM wiki page itself (https://www.gem.wiki/Mombasa_LNG_Terminal), which is circular as a [ref]. Did NOT fabricate or stage a weak/circular ref-fill.",
     "severity": "low",
-    "suggested_action": "No change. Re-verify only; the shelved/inferred-2y status and the IM researcher note remain appropriate. Confirm whether the 2-year inferred-shelved (ShelvedYear 2024) should progress toward inferred-cancelled per the lifecycle thresholds at a future batch.",
+    "suggested_action": "Leave the three [ref] cells blank by convention for inferred shelved/stop statuses, OR (per GEM house style) cite the GEM wiki page that carries the inference rationale. No staged ref-fill provided pending reviewer preference on inferred-status refs.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130254",
+    "unit_id": "G100001054956",
+    "terminal_name": "Mombasa LNG Terminal",
+    "issue": "Second Proposal (AMACO) LatestPlannedStartYear=2027 is increasingly unlikely: as of 2026-06 the project is still at feasibility/business-assignment stage with no FID, tender, or construction. No verified differing planned-start year to stage (sponsor has not published a revised date), so no field edit made; flagging the slippage risk only.",
+    "severity": "low",
+    "suggested_action": "Monitor for a revised planned-start date from AMACO/sponsor; if 2027 passes with no progression, the unit trends toward stale/shelved at the next batch. fetch_timeline endpoint is down, so no timeline edit attempted.",
     "researcher_initials": "AI-draft"
   }
 ]

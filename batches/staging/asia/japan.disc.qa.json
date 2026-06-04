@@ -1,0 +1,22 @@
+[
+  {
+    "category": "coverage_export_discrepancy",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Hakodate LNG Terminal",
+    "issue": "Hakodate LNG Terminal (Hokkaido Gas Co Ltd, 100%; operating since 2006; ~0.2 mtpa; Hakodate, Oshima, Hokkaido) is documented on GEM.wiki as 'Part of the Global Gas Infrastructure Tracker', but it does NOT appear in the 2026-06-03 gem_export.csv (43 unique Japan terminals). The Japan country note says '51 Japan terminals in GEM'. This is a discovery NON-FINDING: the terminal already exists in GEM; it is simply absent from this CSV export. Flagging so the human (who has live-DB access) can confirm the export filter/scope rather than treating Hakodate as a new gap. Per anti-circularity, GEM.wiki is not independent evidence — the terminal's existence is corroborated by Hokkaido Gas operating it (fed by coastal shuttle vessel North Pioneer from Tokyo Gas).",
+    "severity": "low",
+    "suggested_action": "Confirm Hakodate is in the live GEM DB and identify why it (and other small coastal satellites) is missing from the --all-fields lng export; reconcile export scope vs. the 51-terminal count in the country note. No new_terminal record staged.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130475",
+    "unit_id": "",
+    "terminal_name": "Hibiki LNG Terminal",
+    "issue": "Saibu Gas took FID on a Hibiki LNG terminal capacity expansion (additional 230,000 cbm LNG storage tank) in Nov 2024; groundbreaking ceremony held July 2025; commercial operation targeted Q2-Q3 2029 (project cost ~US$330M). In April 2025 Saibu Gas and JERA agreed to give JERA access to the new tank. This is an UPDATE/new-unit signal on an existing GEM terminal, not a discovery — routing here because fetch_timeline is DOWN. The expansion tank may warrant a new unit row and a construction-status timeline entry on the existing Hibiki terminal.",
+    "severity": "medium",
+    "suggested_action": "Route to an Update batch for Hibiki: add/verify a construction-stage storage-expansion unit (230,000 cbm tank, FID Nov 2024, target COD 2029) and JERA co-access; sources: Saibu Gas HD news release nr038 (2024-11-28) + LNG Prime coverage.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  }
+]

@@ -5,17 +5,18 @@
     "terminal_name": "Coral North FLNG Terminal",
     "unit_name": "--",
     "country": "Mozambique",
-    "field_name": "Capacity",
-    "old_value": "3.40",
-    "new_value": "3.60",
+    "field_name": "Owner",
+    "old_value": "Eni SpA [25%]; Exxon Mobil Corp [25%]; China National Petroleum Corp [20%]; Abu Dhabi National Oil Co [10%]; Empresa Nacional de Hidrocarbonetos EP [10%]; KOGAS Canada Ltd [10%]",
+    "new_value": "Eni SpA [50%]; China National Petroleum Corp [20%]; Abu Dhabi National Oil Co [10%]; Empresa Nacional de Hidrocarbonetos EP [10%]; KOGAS Canada Ltd [10%]",
     "confidence": "green",
-    "source_tier": "primary (sponsor IR)",
-    "ref_field": "Capacity [ref]",
+    "source_tier": "primary (sponsor PR) + trade press corroboration",
+    "ref_field": "Owner [ref]",
     "ref_urls": [
-      "https://www.eni.com/en-IT/media/press-release/2025/10/pr-eni-announces-final-investment-decision-mozambique-coral-north-project.html"
+      "https://www.eni.com/en-IT/media/press-release/2025/10/pr-eni-announces-final-investment-decision-mozambique-coral-north-project.html",
+      "https://jpt.spe.org/eni-inks-fid-on-coral-norte-flng-for-mozambique-area-4"
     ],
-    "source_notes": "Eni FID press release (2 Oct 2025) states Coral North liquefaction capacity of 3.6 MTPA. GEM has 3.4.",
-    "scope_note": "Single-unit terminal; CapacityUnits already mtpa. Computed CapacityinMtpa/Bcm are formula-derived, not written here.",
+    "source_notes": "Eni FID press release (2 Oct 2025) states the Coral North JV equity as Eni 50% (operator), CNPC 20%, Kogas 10%, ENH 10%, XRG (ADNOC subsidiary) 10%. ExxonMobil is NOT a partner in Coral North (Exxon's Area 4 role is the separate onshore Rovuma LNG). This is a material change from GEM's current split (Eni 25 / Exxon 25): Exxon removed, Eni raised to 50%. XRG is ADNOC's investment arm — GEM already represents this stake as 'Abu Dhabi National Oil Co', so no new entity is introduced. JPT corroborates the same partner list.",
+    "scope_note": "Single-unit terminal. Owner is a project-level field; this is the only unit-row.",
     "researcher_initials": "AI-draft (sweep)"
   },
   {
@@ -25,55 +26,55 @@
     "unit_name": "--",
     "country": "Mozambique",
     "field_name": "Parent",
-    "old_value": "Eni SpA [25.0%]; Exxon Mobil Corp [25.0%]; China National Petroleum Corp [20.0%]; Abu Dhabi National Oil Co [10.0%]; Empresa Nacional de Hidrocarbonetos EP [10.0%]; Korea Gas Corp [10.0%]",
-    "new_value": "Eni SpA [50.0%]; China National Petroleum Corp [20.0%]; Korea Gas Corp [10.0%]; Empresa Nacional de Hidrocarbonetos EP [10.0%]; Abu Dhabi National Oil Co [10.0%]",
+    "old_value": "Eni SpA [25.0%]; Exxon Mobil Corp [25.0%]; China National Petroleum Corp [20.0%]; Abu Dhabi National Oil Co [10.0%]; Empresa Nacional de Hidrocarbonetos EP [10.0%]; Korea Gas Corp [100.0%]",
+    "new_value": "Eni SpA [50.0%]; China National Petroleum Corp [20.0%]; Abu Dhabi National Oil Co [10.0%]; Empresa Nacional de Hidrocarbonetos EP [10.0%]; Korea Gas Corp [100.0%]",
     "confidence": "green",
-    "source_tier": "primary (sponsor IR)",
+    "source_tier": "primary (sponsor PR) + trade press corroboration",
     "ref_field": "Owner [ref]",
     "ref_urls": [
-      "https://www.eni.com/en-IT/media/press-release/2025/10/pr-eni-announces-final-investment-decision-mozambique-coral-north-project.html"
+      "https://www.eni.com/en-IT/media/press-release/2025/10/pr-eni-announces-final-investment-decision-mozambique-coral-north-project.html",
+      "https://jpt.spe.org/eni-inks-fid-on-coral-norte-flng-for-mozambique-area-4"
     ],
-    "source_notes": "Eni FID release names the JV: Eni 50%, CNPC 20%, Kogas 10%, ENH 10%, ADNOC subsidiary XRG 10%. ExxonMobil is NOT a partner in the Coral North FLNG JV (it is in Area 4 upstream / Rovuma onshore, not the Coral FLNG vehicle). GEM's prior split (Eni 25 / Exxon 25) is incorrect. XRG modeled here under existing GEM parent 'Abu Dhabi National Oil Co' (XRG is ADNOC's int'l investment subsidiary) — see entity note.",
-    "scope_note": "Project-level; single unit. Operator (Eni) unchanged. Owner cell should be re-derived to match (currently lists Exxon Mobil Corp [25%] / Eni SpA [25%]).",
+    "source_notes": "Parallel to the Owner change: removes Exxon Mobil Corp (no Coral North equity) and raises Eni to 50%. Parent retains Korea Gas Corp [100.0%] as the ultimate parent of the KOGAS Canada Ltd owner-stake (matching GEM's existing parent-mapping convention); ADNOC stays mapped as 'Abu Dhabi National Oil Co'. Reviewer: confirm the parent-side percentage convention (GEM lists KOGAS parent at 100.0% per existing pattern, not the 10% equity).",
+    "scope_note": "Single-unit terminal; project-level field.",
     "researcher_initials": "AI-draft (sweep)"
   },
   {
-    "terminal_id": "T100000131124",
-    "unit_id": "G100002112401",
-    "terminal_name": "Coral North FLNG Terminal",
+    "terminal_id": "T100000130788",
+    "unit_id": "G100002078800",
+    "terminal_name": "Nacala FSRU",
     "unit_name": "--",
     "country": "Mozambique",
-    "field_name": "Owner",
-    "old_value": "Empresa Nacional de Hidrocarbonetos EP [10%]; KOGAS Canada Ltd [10%]; China National Petroleum Corp [20%]; Abu Dhabi National Oil Co [10%]; Exxon Mobil Corp [25%]; Eni SpA [25%]",
-    "new_value": "Eni SpA [50%]; China National Petroleum Corp [20%]; KOGAS Canada Ltd [10%]; Empresa Nacional de Hidrocarbonetos EP [10%]; Abu Dhabi National Oil Co [10%]",
-    "confidence": "green",
-    "source_tier": "primary (sponsor IR)",
-    "ref_field": "Owner [ref]",
+    "field_name": "Status [ref]",
+    "old_value": "",
+    "new_value": "https://www.tradewindsnews.com/gas/karpowership-puts-french-built-lng-carrier-back-into-action/2-1-1399432",
+    "confidence": "yellow",
+    "source_tier": "single trade-press (TradeWinds)",
+    "ref_field": "Status [ref]",
     "ref_urls": [
-      "https://www.eni.com/en-IT/media/press-release/2025/10/pr-eni-announces-final-investment-decision-mozambique-coral-north-project.html"
+      "https://www.tradewindsnews.com/gas/karpowership-puts-french-built-lng-carrier-back-into-action/2-1-1399432"
     ],
-    "source_notes": "Same correction as Parent: Eni 50 / CNPC 20 / Kogas 10 / ENH 10 / XRG(ADNOC) 10. Removes ExxonMobil (not in Coral North FLNG JV) and corrects Eni 25->50.",
-    "scope_note": "Keep KOGAS Canada Ltd label as GEM's existing entity for Kogas. XRG mapped to existing 'Abu Dhabi National Oil Co'.",
+    "source_notes": "Blank-ref fill pairing the existing Status=shelved value (not an orphan ref). Supports the shelving: the KARMOL LNGT Powership Asia earmarked for Nacala was redeployed to Sepetiba Bay, Brazil instead and never reached Mozambique; no project updates in 2+ years (project presumed shelved as of 2024). Confidence yellow: single non-primary source, and it documents the basis for shelving rather than a formal cancellation statement. ShelvedYear/StopYear [ref] deliberately left blank (see qa data_gap note — 2024 is GEM's inference, no dated 2024 source).",
+    "scope_note": "Single-unit terminal; ref-fill only, no data-value change.",
     "researcher_initials": "AI-draft (sweep)"
   },
   {
-    "terminal_id": "T100000130789",
-    "unit_id": "G100002078901",
-    "terminal_name": "Rovuma LNG Terminal",
-    "unit_name": "T1-T12",
+    "terminal_id": "T100000131090",
+    "unit_id": "G100002109001",
+    "terminal_name": "Rovuma FLNG Terminal",
+    "unit_name": "--",
     "country": "Mozambique",
-    "field_name": "LatestPlannedStartYear",
-    "old_value": "2027",
-    "new_value": "2030",
-    "confidence": "green",
-    "source_tier": "two independent (trade press)",
-    "ref_field": "StartDate [ref]",
+    "field_name": "Status [ref]",
+    "old_value": "",
+    "new_value": "https://jpt.spe.org/eni-aims-to-reboot-mozambiques-rovuma-lng-with-flng",
+    "confidence": "yellow",
+    "source_tier": "single trade-press (JPT/SPE)",
+    "ref_field": "Status [ref]",
     "ref_urls": [
-      "https://jpt.spe.org/exxonmobil-lifts-force-majeure-on-mozambique-megaproject",
-      "https://www.worldoil.com/news/2025/11/20/exxon-lifts-force-majeure-on-rovuma-lng-clearing-path-for-major-mozambique-gas-development/"
+      "https://jpt.spe.org/eni-aims-to-reboot-mozambiques-rovuma-lng-with-flng"
     ],
-    "source_notes": "After ExxonMobil lifted force majeure (Nov 2025), first LNG is now targeted for 2030 (JPT, World Oil, Enerdata all concur). GEM's 2027 latest-planned-start is stale.",
-    "scope_note": "Project-level; single unit-row (T1-T12). FIDYear 2026 / Pre-FID already correct in GEM.",
+    "source_notes": "Blank-ref fill pairing the existing Status=shelved value (not an orphan ref). The standalone 'Rovuma FLNG' (Eni's earlier second-FLNG study for Area 4) did not proceed as a separate named project; it was effectively superseded by the Coral North FLNG that reached FID Oct 2025. This JPT article (already cited in Capacity [ref]) documents the dormant/reboot framing. Confidence yellow: single non-primary source. ShelvedYear/StopYear [ref] left blank (2024 is GEM's inference). See qa note re: whether the shelved model should persist now that Coral North is under construction.",
+    "scope_note": "Single-unit terminal; ref-fill only, no data-value change.",
     "researcher_initials": "AI-draft (sweep)"
   }
 ]

@@ -1,12 +1,22 @@
 [
   {
-    "category": "no_change",
+    "category": "blank_ref_unfilled",
     "terminal_id": "T100000130502",
     "unit_id": "G100002050200",
     "terminal_name": "Constanta LNG Terminal",
-    "issue": "Verified still cancelled. No LNG-terminal revival at Constanta. The Black Sea Neptun Deep development (OMV Petrom/Romgaz, first gas ~2027) is UPSTREAM gas production piped onshore to Tuzla, NOT an LNG import/export terminal; and LNG tanker access to the Black Sea is constrained by Bosphorus passage rules. GEM 'cancelled / inferred 4y' (AGRI LNG; shelved 2021, cancelled 2023) remains correct. No field edit.",
+    "issue": "Capacity [ref] left blank: no source found that states GEM's stored value of 6.00 mtpa (= 8.16 bcm/y) for the AGRI/Constanta LNG terminal. Public sources consistently describe AGRI in bcm and only as a three-option interconnector capacity - 2 bcm / 5 bcm / 8 bcm/y (eurasian-research.org, roec.biz, en.wikipedia, gem.wiki AGRI page), with ~2 bcm/y the share consumed in Romania. None states 6 mtpa or 8.16 bcm. The closest (8 bcm/y) is ~5.88 mtpa, not 6.00. GEM's own wiki page lists '6 mtpa' with NO capacity-specific citation. Per worklist/SOP I did not fill the ref with a non-matching figure and did NOT alter the 6.00 mtpa value (capacity change is out of standard-tier scope).",
+    "severity": "medium",
+    "suggested_action": "Confirm provenance of the 6.00 mtpa figure with the original researcher (Robert Rozansky); it may be an internal conversion/rounding (e.g. from 8 bcm) rather than a sourced terminal nameplate. Either (a) supply the source that yields 6.00 mtpa so Capacity [ref] can be filled, or (b) reconcile to a sourced figure (the documented options are 2/5/8 bcm interconnector capacity, ~2 bcm Romanian draw). Decide via an Update batch, not this [ref]-fill pass.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130502",
+    "unit_id": "G100002050200",
+    "terminal_name": "Constanta LNG Terminal",
+    "issue": "No status change found - record remains cancelled (inferred). Confirmed dormancy trajectory: AGRI frozen 10 Mar 2021 (Trend, Azerbaijan Energy Ministry); described as foundered/failed by Jan 2023 (CEPA); no AGRI revival located in the last 12-24 months. NOTE for awareness (not actionable on this row): the separate RomGaz-SOCAR 'Black Sea LNG' successor proposal (MoU Oct 2022) is an active distinct project and already has its own GEM record (Black Sea LNG Terminal) - it is NOT a revival of AGRI/Constanta and is NOT a Romania discovery gap. fetch_timeline endpoint is DOWN, so this is logged as a qa note rather than any Status/timeline edit.",
     "severity": "low",
-    "suggested_action": "No change. Do not conflate Neptun Deep (upstream) with an LNG terminal.",
+    "suggested_action": "No action on the Constanta/AGRI row; status correctly cancelled (inferred). Black Sea LNG developments route to that terminal's own record, not here.",
     "researcher_initials": "AI-draft"
   }
 ]

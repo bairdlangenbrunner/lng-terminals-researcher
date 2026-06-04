@@ -1,0 +1,32 @@
+[
+  {
+    "category": "discovery_no_gap",
+    "terminal_id": "T100000130426",
+    "unit_id": "",
+    "terminal_name": "Zeebrugge LNG Terminal",
+    "issue": "Discovery sweep (2026-06 europe, tracker-countries-only re-sweep) hunted for any Belgian LNG import/export terminal beyond the single GEM site (Zeebrugge LNG Terminal, Fluxys LNG, 5 unit-rows). Belgium is a mature single-terminal import market; LNG imports actually FELL ~29% in 2024 as German/Dutch FSRUs came online, so there is no demand-driven push for a second site. Every 2024-2026 signal resolves to existing GEM coverage or out-of-scope activity: (a) the 2024/2025 Zeebrugge regas expansions (+1.8 bcm/y in 2025; ~1.3 mtpa more sendout by early 2026; long-term nameplate rising 110->134 slots from Apr 2027) map to GEM's existing operating '2024 Expansion'/'2025 Expansion' units and Fluxys's Indicative Investment Plan 2024-2033, all at Zeebrugge; (b) the 'Zeebrugge Multi-molecule Hub' is GEM's existing proposed unit (G100002042603) and concerns low-carbon HYDROGEN/derivatives import + CO2 export, not LNG (none of the H2-derivative components have reached construction or FID per fluxys.com); (c) Port-of-Antwerp LNG activity (Fluxys/Titan LNG bunker pontoon, Cryostar/KC LNG fuelling facility, bio-LNG) is LNG BUNKERING/refuelling - excluded from tracker scope; (d) Belgian shipowner Exmar's FSRU-conversion charter is for the Eemshaven terminal in the NETHERLANDS (EemsEnergy Terminal / Gasunie-Vopak), not a Belgian terminal. No distinct second site, no FSRU chartered/deployed to Belgium, no FLNG/liquefaction export facility, and no in-scope (non-bunkering) new regas surfaced. IEEFA's European LNG Tracker and GEM.wiki are GEM-derived and were not treated as independent evidence (anti-circularity).",
+    "severity": "low",
+    "suggested_action": "No action - no net-new Belgian LNG terminal or unit found beyond existing GEM coverage (Zeebrugge LNG Terminal: base + 2008/2024/2025 Expansions operating + proposed Multi-molecule Hub). Zeebrugge expansion specifics (capacity, slot counts, plan 2024-2033) belong to the Update workflow, not Discovery.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "coverage_observation",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Antwerp LNG Terminal (GEM.wiki) - LNG bunkering, Lillo/Antwerp",
+    "issue": "A 'Antwerp LNG Terminal' record exists on GEM.wiki (Fluxys, proposed permanent LNG BUNKERING facility at Lillo/Antwerp, ~51.3014/4.3339, last wiki update 2021) but does NOT appear in the current production GEM export (no Antwerp/Belgium row outside Zeebrugge). This is consistent with it being a bunkering facility - outside the tracker's stated scope (all scales EXCEPT bunkering) - and therefore correctly absent from the import/export tracker. Flagging only so a future sweep does not re-chase it as a 'missing' terminal: it is a documented out-of-scope item, not a coverage gap.",
+    "severity": "low",
+    "suggested_action": "No action - LNG bunkering is out of tracker scope. Treat the GEM.wiki 'Antwerp LNG Terminal' page as bunkering-only and do not import it into the import/export tracker. See companion monitor entry.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "data_quality",
+    "terminal_id": "T100000130426",
+    "unit_id": "G100002042603",
+    "terminal_name": "Zeebrugge LNG Terminal - Zeebrugge Multi-molecule Hub",
+    "issue": "Transparency note from the discovery sweep (not a discovery finding): the proposed 'Zeebrugge Multi-molecule Hub' unit-row carries Fuel='LH2' in the GEM export, reflecting that the project as scoped by Fluxys is about maritime import of low-carbon HYDROGEN/derivatives plus CO2 export rather than LNG. This is consistent with the methodology's out-of-scope fuels (LH2/NH3/CO2 'no longer updated as of 2026'). No status change to record: per fluxys.com none of the hydrogen-derivative components have entered construction or taken FID, so the unit remains correctly 'proposed'. Surfaced for QC awareness only - whether a non-LNG-fuel unit should sit under an LNG terminal record is a methodology/coverage question for the user, not a discovery edit.",
+    "severity": "low",
+    "suggested_action": "No action from discovery. Optional QC review: confirm with the user/methodology whether an LH2-fuel proposed unit belongs on the Zeebrugge LNG terminal record or should be carried elsewhere. fetch_timeline is DOWN; any future status change routes through a status_timeline note, not a staged timeline edit.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  }
+]

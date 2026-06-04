@@ -8,16 +8,33 @@
     "field_name": "FloatingVesselName",
     "old_value": "",
     "new_value": "Bilbao Knutsen",
-    "confidence": "yellow",
-    "source_tier": "trade press + law-firm release (3 corroborating)",
+    "confidence": "green",
+    "source_tier": "trade press, multiple independent + GEM wiki",
     "ref_field": "FloatingVesselName [ref]",
     "ref_urls": [
-      "https://www.wfw.com/press/wfw-advises-genesis-on-chartering-of-bilbao-knutsen-for-its-lng-to-power-project-in-honduras/",
-      "https://lngprime.com/asia/knutsens-lng-fsu-ready-for-honduras-job/147787/",
-      "https://www.rivieramm.com/news-content-hub/honduras-turns-to-lng-to-meet-energy-needs-83307"
+      "https://lngprime.com/americas/knutsens-lng-fsu-arrives-in-honduras/164083/"
     ],
-    "source_notes": "Génesis Energías chartered the 2004-built, 138,000 m3 LNG carrier 'Bilbao Knutsen' (owned by Norway's Knutsen Group) to serve as the floating storage unit (FSU) for the Puerto Cortés LNG-to-power project. HD Hyundai Marine Solution converted the vessel to an FSU; the FSU arrived at Puerto Cortés in Sept 2025. Vessel owner = 'Knutsen Group' (specific subsidiary not disclosed in sources — see qa). GEM unit had no FloatingVesselName; this fills a verified blank, no value conflict.",
-    "scope_note": "FSRU sync touchpoint: vessel-name fill (FSU). Vessel identity/specs are owned by the carrier project per the FSRU sync rule; flag for cross-check. RR note (10/25) had deferred vessel fields pending clarity on the Knutsen-Group owner — now FSU vessel name is confirmed.",
+    "source_notes": "FSU 'Bilbao Knutsen' (2004-built LNG carrier, 138,000 m3, converted to floating storage unit by HD Hyundai Marine Solution) arrived at Puerto Cortés in September 2025 to serve as the storage backbone for this terminal. Corroborated by LNG Prime (24 Sep 2025), WFW press release, Riviera, Splash247, and the GEM wiki page itself. ResearcherNotesProject (RR 10/25) flagged the vessel name/owner as undetermined — now resolved for the vessel name. Note this is an FSU (storage only), not a regas-equipped FSRU.",
+    "scope_note": "Single-unit project; field is unit-level.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100001061417",
+    "unit_id": "G100001070365",
+    "terminal_name": "Puerto Cortés LNG Terminal",
+    "unit_name": "--",
+    "country": "Honduras",
+    "field_name": "LatestPlannedStartYear",
+    "old_value": "",
+    "new_value": "2026",
+    "confidence": "yellow",
+    "source_tier": "trade press / supplier statement (implied)",
+    "ref_field": "StartDate [ref]",
+    "ref_urls": [
+      "https://lngprime.com/americas/centrica-seals-honduras-lng-supply-deal/170237/"
+    ],
+    "source_notes": "Centrica's 15-year SPA with Exodus (announced Nov 2025) is expected to commence in 2026, with ~6 LNG cargoes/year delivered ship-to-ship into the FSU at Puerto Cortés. Start year is implied from the supply-contract commencement, not a regulator-confirmed COD — hence yellow. No firm month available.",
+    "scope_note": "Single-unit project; field is unit-level.",
     "researcher_initials": "AI-draft (sweep)"
   }
 ]

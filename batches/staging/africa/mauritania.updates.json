@@ -1,22 +1,59 @@
 [
   {
-    "terminal_id": "T100000130661",
-    "unit_id": "G100002066101",
-    "terminal_name": "Greater Tortue Ahmeyim FLNG Terminal",
-    "unit_name": "Phase 1",
+    "terminal_id": "T100000131048",
+    "unit_id": "G100002104801",
+    "terminal_name": "New Fortress Banda LNG Terminal",
+    "unit_name": "--",
     "country": "Mauritania",
-    "field_name": "FloatingVesselName",
+    "field_name": "Status [ref]",
     "old_value": "",
-    "new_value": "FLNG Gimi",
-    "confidence": "green",
-    "source_tier": "primary/trade-press",
-    "ref_field": "FloatingVesselName [ref]",
+    "new_value": "https://www.newfortressenergy.com/stories/nfe-signs-mou-mauritania-fast-lng-and-gas-power-project",
+    "confidence": "yellow",
+    "source_tier": "sponsor primary (NFE corporate)",
+    "ref_field": "Status [ref]",
     "ref_urls": [
-      "https://www.worldoil.com/news/2025/7/10/golar-lng-reaches-commercial-operations-date-cod-at-greater-tortue-ahmeyim-gta-project/",
-      "https://www.bp.com/en/global/corporate/news-and-insights/press-releases/bp-completes-loading-first-cargo-from-greater-tortue-ahmeyim-lng-project.html"
+      "https://www.newfortressenergy.com/stories/nfe-signs-mou-mauritania-fast-lng-and-gas-power-project"
     ],
-    "source_notes": "GEM already lists VesselOwner=Golar LNG but FloatingVesselName is blank. The Phase 1 FLNG vessel is Golar's 'FLNG Gimi', which reached Commercial Operations Date on 24 Jun 2025 (first LNG Feb 2025, first cargo loaded 17 Apr 2025). Adding the vessel name; sync-touchpoint to carrier project.",
-    "scope_note": "Phase 1 operating unit only.",
+    "source_notes": "Blank-ref fill for Status=cancelled. NFE's own page (dated 2021-12-21) documents the Mauritania Fast LNG + gas-to-power MOU (Atlantic coastal basin offshore Mauritania; supply to existing 180MW Somolec plant + new 120MW CCGT) — the project's only concrete step and the anchor underpinning GEM's inferred-cancelled determination. No subsequent NFE activity on the project surfaced (the 2025 'NFE signs MOU' hits resolve to this same Dec-2021 MOU; NFE warned of possible bankruptcy Nov 2025). The cancellation itself is GEM editorial inference (no-progress-since rule; the GEM wiki notes 'presumed cancelled as of 2025'), so confidence is yellow: the source supports the project's existence/last activity, not an explicit cancellation. URL PASSED url_verifier (token 'Mauritania').",
+    "scope_note": "blank_ref fill (worklist column 'Status [ref]', severity medium)",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131091",
+    "unit_id": "G100002109101",
+    "terminal_name": "BirAllah LNG Hub",
+    "unit_name": "--",
+    "country": "Mauritania",
+    "field_name": "Status",
+    "old_value": "proposed",
+    "new_value": "proposed",
+    "confidence": "blue",
+    "source_tier": "trade press (2 independent, 2024)",
+    "ref_field": "Status [ref]",
+    "ref_urls": [
+      "https://worldoil.com/news/2024/5/7/mauritania-seeks-developer-for-birallah-offshore-natural-gas-discovery-following-bp-license-expiration/"
+    ],
+    "source_notes": "Dev-pipeline status check (re-verify, no change). Status 'proposed' confirmed: no FID has been taken; BP's BirAllah E&P contract expired 2024-04-29 and Mauritania is seeking a new operator (worldoil 2024-05-07, corroborated by African Business 2024-11). FID remains only EXPECTED H2-2025, contingent on securing a developer. GEM's existing Status [ref] (African Business 2024-11) and Owner=SMHPM (state company SMH, reasonable after BP exit) both remain valid; no field value differs. Representative blue re-verify for the terminal. Re-verify URL PASSED url_verifier.",
+    "scope_note": "dev_pipeline status/news check; status unchanged (representative blue re-verify)",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130661",
+    "unit_id": "G100002066105",
+    "terminal_name": "Greater Tortue Ahmeyim FLNG Terminal",
+    "unit_name": "Phase 2",
+    "country": "Mauritania",
+    "field_name": "Status",
+    "old_value": "proposed",
+    "new_value": "proposed",
+    "confidence": "blue",
+    "source_tier": "trade press / sponsor (multiple, through 2025)",
+    "ref_field": "Status [ref]",
+    "ref_urls": [
+      "https://www.bp.com/en/global/corporate/news-and-insights/press-releases/bp-and-partners-progress-concept-for-greater-tortue-ahmeyim-phase-2-to-next-phase-of-evaluation.html"
+    ],
+    "source_notes": "Dev-pipeline status check (re-verify, no change). Status 'proposed' confirmed: Phase 2 has NOT been sanctioned; as of May-2025 Mauritania/Senegal were still negotiating Phase 2 terms with BP/Kosmos, and the concept is only progressing toward pre-FEED (BP press release dated 2023-02-27, GEM's existing Status [ref], which PASSED url_verifier). Note: a separate qa flags GEM's FIDYear=2024 on this unit as unsupported. Representative blue re-verify for the terminal.",
+    "scope_note": "dev_pipeline status/news check; status unchanged (representative blue re-verify)",
     "researcher_initials": "AI-draft (sweep)"
   }
 ]

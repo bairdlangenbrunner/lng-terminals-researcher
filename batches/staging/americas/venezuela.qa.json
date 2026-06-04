@@ -1,82 +1,52 @@
 [
   {
-    "category": "no_change",
+    "category": "unsupported_value",
     "terminal_id": "T100000130626",
     "unit_id": "G100002062601",
     "terminal_name": "Delta Caribe Oriental Terminal",
-    "issue": "Re-verified, no change. Units T1 (G100002062601) and T2 (G100002062602) of the CIGMA / Mariscal Sucre LNG complex (Sucre state). No development since ~2011; no revival found in 2025-2026 reporting, including after the Jan 2026 post-Maduro sanctions shift. GEM Status=cancelled (inferred 4y) remains accurate. 4.7 mtpa capacity and PDVSA 100% ownership unchanged.",
+    "issue": "ShelvedYear=2013, CancelledYear=2015, StopYear=2015 are populated on both unit-rows (T1/T2) but their [ref] cells are blank, and no located source documents these specific years. The GEM wiki and the abarrelfull/OGJ sources only support 'no development updates since 2011, project presumed cancelled' (substatus 'inferred'). The 2013 and 2015 dates appear to be GEM-internal inferences without citable provenance.",
     "severity": "low",
-    "suggested_action": "No edit. Confirm cancelled (inferred) holds for both unit rows T1 and T2 (project-level fields apply to all unit rows).",
+    "suggested_action": "Do NOT fill these year [ref] cells from research (would be an orphan/manufactured ref). Either (a) document the inference basis in researcher_notes and leave the year refs blank, or (b) reconsider whether discrete ShelvedYear 2013 / CancelledYear 2015 values are warranted vs a single inferred-cancellation anchor at 2011. Status [ref] itself has been filled this batch (see updates).",
     "researcher_initials": "AI-draft"
   },
   {
-    "category": "no_change",
+    "category": "unsupported_value",
     "terminal_id": "T100000130624",
     "unit_id": "G100002062401",
     "terminal_name": "Project Venezuela LNG Terminal",
-    "issue": "Re-verified, no change. Historic Cristobal Colon LNG project (Exxon/Mitsubishi/PDVSA/Shell), abandoned in the early 2000s. No revival in current reporting. GEM Status=cancelled (inferred 4y), 4.0 mtpa, remains accurate. Owner [ref] cell contains duplicated URLs (the same OGJ archive/print links repeated ~4x) — a cosmetic data-hygiene issue, not a content error.",
+    "issue": "ShelvedYear=2002, CancelledYear=2004, StopYear=2004 are populated but their [ref] cells are blank. The cited OGJ article (year 2000, 'back on track') predates these dates and does not document the 2002 shelving or 2004 cancellation specifically. No source located that pins these exact years for this 2000s Exxon/Mitsubishi/PDVSA/Shell proposal.",
     "severity": "low",
-    "suggested_action": "No content edit. Optional cleanup: de-duplicate the repeated OGJ URLs in the Owner [ref] cell at next touch.",
+    "suggested_action": "Leave the year [ref] cells blank rather than attach a non-supporting ref. Optionally record the inference rationale in researcher_notes. Status [ref] has been filled this batch.",
     "researcher_initials": "AI-draft"
   },
   {
-    "category": "no_change",
-    "terminal_id": "T100000131115",
-    "unit_id": "G100002111500",
-    "terminal_name": "Sycar Venezuela FLNG Terminal",
-    "issue": "Re-verified, no change. Sycar LLC / PDVSA FLNG (Nov 2022 MOU, CJAA complex, Barcelona, Anzoategui). The April 2024 reinstatement of US sanctions on Venezuela's oil/gas sector effectively stalled the project (per existing researcher note and GEM Status=shelved, inferred 2y). No advance found in 2025-2026; the Jan 2026 sanctions changes center on the Trinidad-piped Dragon field and IOC operations, not Sycar. GEM record remains accurate.",
-    "severity": "low",
-    "suggested_action": "No edit. Shelved (inferred) holds. Watch for any Sycar OFAC license grant under the post-Maduro framework before considering a status revisit.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "no_change",
+    "category": "unsupported_value",
     "terminal_id": "T100000130625",
     "unit_id": "G100002062501",
     "terminal_name": "Venezuela Offshore LNG Terminal",
-    "issue": "Re-verified, no change. PDVSA/Rosneft 50-50 offshore LNG concept (Patao/Mejillones/Rio Caribe fields). Rosneft exited Venezuela in March 2020 (assets transferred to a Russian state entity). GEM Status=cancelled (confirmed) remains accurate. No revival; Rosneft retains some upstream JV stakes per Jan 2026 reporting but nothing tied to this LNG export terminal.",
+    "issue": "ShelvedYear=2018 is populated but ShelvedYear [ref] is blank. Located sources (Bloomberg 2019; Argus/WorldOil/Forbes/NYT March-April 2020 on Rosneft's exit) and the GEM wiki support a 2016 proposal -> 2020 cancellation timeline but none documents a discrete 2018 shelving event. The other refs (Status/Cancelled/Stop) are already populated and point to the 2020 Rosneft pullout.",
     "severity": "low",
-    "suggested_action": "No edit. Cancelled (confirmed) holds.",
+    "suggested_action": "Do not back-fill ShelvedYear [ref] from the 2020-cancellation sources (they support 2020, not 2018). Verify whether the 2018 ShelvedYear is intentional (e.g., a known mid-2018 pause) and add its own citation, or drop it in favor of the documented 2016->2020 timeline.",
     "researcher_initials": "AI-draft"
   },
   {
-    "category": "discovery_dedup_already_in_gem",
-    "terminal_id": "T100000130626",
-    "unit_id": "",
-    "terminal_name": "Delta Caribe Oriental Terminal",
-    "issue": "Searches for a 'revived CIGMA / Gran Mariscal Sucre / Deltana' VE LNG export plant resolve to this existing GEM record (aka Mariscal Sucre LNG, Venezuela LNG, Terminal de GNL Delta Caribe Oriental). Status cancelled (inferred 4 y). No 2025-2026 revival found. NOT a discovery.",
+    "category": "link_rot",
+    "terminal_id": "T100000130625",
+    "unit_id": "G100002062501",
+    "terminal_name": "Venezuela Offshore LNG Terminal",
+    "issue": "Existing Status [ref] / CancelledYear [ref] / StopYear [ref] include https://www.worldoil.com/news/2020/3/27/russia-nationalizes-venezuelan-assets-to-skirt-us-sanctions which now FAILS url_verifier (HTTP 404). The remaining cited sources in those fields (Argus, Forbes, NYT) still resolve.",
     "severity": "low",
-    "suggested_action": "No action. OtherNames already capture CIGMA-adjacent aliases (Mariscal Sucre LNG, Venezuela LNG). Note 'Deltana Caribe / CIGMA' as additional aliases if ever refreshed.",
+    "suggested_action": "Replace the dead WorldOil URL with a working archive snapshot or drop it; the Argus / NYT / Forbes citations already cover the 2020 Rosneft-exit cancellation.",
     "researcher_initials": "AI-draft"
   },
   {
-    "category": "discovery_dedup_already_in_gem",
+    "category": "link_rot",
     "terminal_id": "T100000131115",
-    "unit_id": "",
+    "unit_id": "G100002111500",
     "terminal_name": "Sycar Venezuela FLNG Terminal",
-    "issue": "PDVSA 'small-scale LNG exports starting 2027' chatter (EAI brief, Aug 2025) and the Sycar FLNG (José/Barcelona, Anzoátegui; MOU with PDVSA Nov 2022) both map to this existing GEM record (status shelved, inferred 2 y). The PDVSA-small-scale narrative is vague/verbal intent — no concrete new terminal. NOT a discovery.",
+    "issue": "Existing Status [ref] / ShelvedYear [ref] cite https://www.reuters.com/markets/commodities/us-signals-venezuela-oil-sanctions-relief-risk-deadline-looms-2024-04-17/ which now FAILS url_verifier (HTTP 401, Reuters paywall/bot-block). The companion swedishclub.com circular was not re-tested this batch.",
     "severity": "low",
-    "suggested_action": "No action (already in GEM as shelved). The PDVSA small-scale-LNG narrative is below the add threshold; if a specific new small-scale unit is named with a site, revisit.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "discovery_out_of_scope_pipeline_not_terminal",
-    "terminal_id": "",
-    "unit_id": "",
-    "terminal_name": "Dragon field gas export (to Trinidad Atlantic LNG)",
-    "issue": "The Dragon field (Shell + Trinidad NGC, ~4.2 tcf) export concept is a ~16 km cross-border PIPELINE feeding Trinidad's Atlantic LNG, NOT a Venezuela-sited LNG terminal. US license granted 2023, revoked 2025; 2025-2026 renegotiation ongoing. Already tracked as 'Dragon Gas Pipeline' on GEM (pipeline tracker), and Atlantic LNG is a GEM Trinidad terminal. NOT an LNG-terminal discovery for Venezuela.",
-    "severity": "low",
-    "suggested_action": "No action in the LNG-terminals tracker. Belongs to the gas-pipeline tracker (Dragon Gas Pipeline) + Trinidad Atlantic LNG Terminal.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "discovery_dedup_already_in_gem",
-    "terminal_id": "T100000130624",
-    "unit_id": "",
-    "terminal_name": "Project Venezuela LNG Terminal",
-    "issue": "Cristobal Colon / PVLNG export project (Exxon, Mitsubishi, PDVSA, Shell) already in GEM, cancelled. No revival. NOT a discovery. Listed here only to document it was checked and deduped.",
-    "severity": "low",
-    "suggested_action": "No action.",
+    "suggested_action": "Swap the paywalled Reuters URL for an accessible equivalent on the April 2024 sanctions-relief deadline, or rely on the swedishclub circular. The Sycar lngprime + gnlglobal sources (PASS) anchor the shelved status verified this batch.",
     "researcher_initials": "AI-draft"
   }
 ]

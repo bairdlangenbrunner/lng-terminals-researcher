@@ -1,12 +1,42 @@
 [
   {
-    "category": "capacity_conflict",
-    "terminal_id": "T100000130562",
-    "unit_id": "G100002056201",
-    "terminal_name": "Cartagena FSRU (Colombia)",
-    "issue": "Capacity-baseline / per-phase-increment conflict flagged in the ChatGPT audit (Calamarí '450 MPCD' vs a 400->475->533 build-up). Two self-consistent framings of the SAME terminal reach the SAME milestones (475 MMcf/d, then 533 MMcf/d): (A) GEM models base = 400 MMcf/d, Phase 1 Expansion = +75, Phase 2 Expansion = +58 (400+75+58 = 533); this matches LNG Prime's FID coverage ('from a current limit of 400 MMscfd ... up to 533 MMscfd', 2025-11-11, PASS). (B) The operator's own sources model base = 450 MMcf/d, first phase = +25 to 475, second phase = +58 to 533: Calamarí facilities page states '450 MPCD' as current capacity, and Valora Analitik (2025-09-04, PASS) says the plant went 'de 450 a 475' on 2025-09-01. So GEM's Phase 1 Expansion increment (+75) is overstated relative to the operator's +25, because GEM uses a 400 baseline while SPEC/Calamarí use 450. GEM's project TOTAL (533) is correct and the modeling is internally coherent; this is a source disagreement on how the increments are apportioned, not a stale total. Note also a units gloss to ignore: Calamarí 'MPCD' = millones de pies cúbicos por día (MMcf/d), not 'million pounds per day'.",
+    "category": "stale_flag",
+    "terminal_id": "T100000130960",
+    "unit_id": "G100002096000",
+    "terminal_name": "Andes Energy LNG Terminal",
+    "issue": "planned_start_slipped: proposed with LatestPlannedStartYear=2024, now 2 years past. Web check (Black & Veatch feasibility study completed Apr 2024; no developer or trade-press updates found since) confirms no progress. GEM's own ResearcherNotesUnit already states 'if no further updates are found, move to shelved in 2027.' No field edit warranted this batch; flagging that the stale condition persists and the noted shelve-in-2027 trigger is still active.",
+    "severity": "low",
+    "suggested_action": "No edit now. Re-check in 2027; if still no developments, move Status proposed -> shelved per the existing researcher note. LatestPlannedStartYear=2024 is stale but leaving as-is pending the shelve decision.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100001049463",
+    "unit_id": "G100001057076",
+    "terminal_name": "Ballena FSRU",
+    "issue": "NEW post-GEM-update milestone: ANLA (national environmental authority) on 1 Jun 2026 approved a 'cambio menor' for the Chuchupa-Ballena (TGI) regasification project, incorporating new regas activities into the existing licensed project (one of five Caribbean regas projects ANLA cleared that day). Separately, El Tiempo (a 'Primicia') reports the project will NOT be ready in Jan 2027 as the developer states, citing ~1-year delay (Hocol connection authorization finalized only late Jan 2026; demand-aggregation and shipping/client contracting slipped); new target 'end of 2027'. Grupo Energia Bogota's 27 Jan 2026 release still states Jan 2027 / up to 250 MMcf/d. GEM LatestPlannedStartYear=2027 still holds under both readings.",
     "severity": "medium",
-    "suggested_action": "Do NOT auto-change GEM capacity figures. Record the conflict and decide apportionment in a normal Update pass: either keep GEM's 400+75+58 build-up (matches LNG Prime FID) or realign to the operator's 450+25+58 (matches Calamarí + Valora). Either way the 533 total and the 475 interim milestone are confirmed. See wiki entry 'Cartagena/SPEC capacity build-up'.",
+    "suggested_action": "Treat as status/timeline context, not a Status field edit (fetch_timeline endpoint down). Year 2027 in GEM remains defensible; no LatestPlannedStartYear change. Consider noting the El Tiempo delay-to-end-2027 in ResearcherNotes at next manual touch. Sources verified PASS: grupoenergiabogota.com release (27 Jan 2026), eltiempo.com delay article, valoraanalitik.com ANLA article.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100001049499",
+    "unit_id": "G100001057111",
+    "terminal_name": "Coveñas FSRU",
+    "issue": "NEW post-GEM-update milestone: ANLA on 1 Jun 2026 granted a NEW environmental license to the Coveñas (Ecopetrol) regasification project, Sucre (one of five Caribbean projects approved that day). This is a concrete regulatory step beyond GEM's current proposed status (LastUpdated 2026-05-13). Earlier reporting: Ecopetrol's Cenit adapting existing offshore crude infrastructure at the Coveñas maritime terminal, targeting Aug 2026 first ops for Phase 1.",
+    "severity": "medium",
+    "suggested_action": "Status/timeline context only; no Status field edit (endpoint down). Phase 1 remains 'proposed' in GEM but now holds a fresh environmental license; worth a ResearcherNotes line and a status re-check next batch. Sources verified PASS: valoraanalitik.com / elheraldo.co / eluniversal.com.co ANLA articles (1-2 Jun 2026).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ownership",
+    "terminal_id": "T100001049368",
+    "unit_id": "G100001056975",
+    "terminal_name": "Ciénaga FSRU",
+    "issue": "Possible ownership/sponsor discrepancy. GEM Owner/Parent = Sociedad Portuaria Cienaga LNG SAS (100%). The 1 Jun 2026 ANLA-approval coverage (valoraanalitik, El Colombiano) attributes the Cienaga LNG project to 'Drummond Energy' (Magdalena). It is unclear whether Drummond Energy has acquired/joined Sociedad Portuaria Cienaga LNG SAS, is a new sponsor, or whether the press is conflating projects. Also: that coverage and the ANLA DAA notice state the developer targets end-2027 first ops, whereas GEM LatestPlannedStartYear=2028.",
+    "severity": "medium",
+    "suggested_action": "Do NOT guess-edit Owner/Parent. Verify Drummond Energy's role (equity owner vs developer/sponsor vs unrelated) before any ownership change; run entity_lookup on 'Drummond Energy' if a change is later confirmed. Re-check LatestPlannedStartYear (2028 vs sponsor's stated end-2027) at next manual touch.",
     "researcher_initials": "AI-draft"
   },
   {
@@ -14,89 +44,39 @@
     "terminal_id": "T100001083296",
     "unit_id": "G100001094059",
     "terminal_name": "Puerto Bahía LNG Terminal",
-    "issue": "May 2026 Colombian press (El Heraldo, Mundo Maritimo, Naturgas, 2026-05-25) frames the Puerto Bahía regasification project as a joint 'Ecopetrol y Puerto Bahía' execution, with Ecopetrol as the gas offtaker/commercial counterparty underwriting the FSRU. GEM currently lists Owner = Sociedad Portuaria Puerto Bahía SA [100%], Parent = Frontera Energy Corp [100%]; sponsor IR corroborates Frontera owns ~99.97% of Puerto Bahía. Ecopetrol's role appears to be OFFTAKE/commercial, not equity in the terminal company. Per the ownership rule, do not promote Ecopetrol to Owner/Parent without an equity source.",
-    "severity": "low",
-    "suggested_action": "Verify Ecopetrol's role is offtake/commercial vs equity before any ownership edit. If offtake-only, no Owner/Parent change; optionally note Ecopetrol as offtaker in the wiki Background. Frontera ~99.97% stake (vs GEM's '100% Frontera; small shareholder(s) 0.0%') is consistent — no change needed.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "discovery-dedup",
-    "terminal_id": "",
-    "unit_id": "",
-    "terminal_name": "Colombia LNG discovery sweep — coverage summary",
-    "issue": "Enumerated GEM's 12 existing Colombia terminals (Amazónica/Palermo, Andes Energy/Aguadulce, Ballena/Chuchupa FSRU, Caribe LNG, Cartagena/SPEC FSRU, Ciénaga FSRU, Colombia FLNG [Exmar, cancelled], Coveñas FSRU, El Viajano Altenesol [cancelled], Puerto Bahía, Puerto Brisa, Regasificadora del Pacífico/Buenaventura). Ran 3-ring + DFI/FSRU-orderbook hunt for terminals NOT in that list. GEM coverage of Colombia is comprehensive: all ChatGPT-audit country-note leads (SPEC/Cartagena, Buenaventura/RDP, Caribe, Coveñas, Puerto Bahía, Puerto Brisa, Ballena, Palermo/Amazónica, Andes Energy) and the BNamericas 'five projects for 2026' set are already in GEM. Result: 1 genuine gap (Puerto Drummond LNG), 1 monitor (Río Córdoba), all other candidates already in GEM.",
-    "severity": "low",
-    "suggested_action": "Use the staged new_terminal (Puerto Drummond LNG) + monitor (Río Córdoba) for the next discovery batch. No other action.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "already-in-gem",
-    "terminal_id": "T100000130562",
-    "unit_id": "",
-    "terminal_name": "Cartagena FSRU (Colombia) / SPEC LNG",
-    "issue": "ANLA June-2026 approval of 'Puerto El Cayao' regas/import (+potential export) expansion and the Höegh Grace charter extension to 2031 both map to this EXISTING GEM terminal (SPEC, Promigas 51% / Vopak 49%). GEM already carries a Phase 1 Expansion (operating) and Phase 2 Expansion (proposed) unit. Not a discovery.",
-    "severity": "low",
-    "suggested_action": "Route the +50/+80 MMcf/d expansion and 'potential export' authorization to the Update workflow; not a new terminal.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "already-in-gem",
-    "terminal_id": "T100001049499",
-    "unit_id": "",
-    "terminal_name": "Coveñas FSRU",
-    "issue": "ANLA June-2026 approval for Ecopetrol/Cenit regas at the Terminal Marítimo y Petrolero de Coveñas (Sucre) maps to this EXISTING GEM terminal. Already in GEM with Phase 1 + Phase 2 proposed units. Not a discovery.",
-    "severity": "low",
-    "suggested_action": "Route the ANLA approval + 130 MMcf/d-by-2027 detail to Update; not a new terminal.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "already-in-gem",
-    "terminal_id": "T100001049463",
-    "unit_id": "",
-    "terminal_name": "Ballena FSRU (Chuchupa-Ballena, La Guajira)",
-    "issue": "ANLA June-2026 'cambio menor' approval for TGI's Chuchupa-Ballena-Riohacha regas (La Guajira) maps to this EXISTING GEM terminal (TGI / Grupo Energía Bogotá). El Tiempo: ready late 2027, ~250 MMcf/d FSRU. Not a discovery.",
-    "severity": "low",
-    "suggested_action": "Route ANLA approval + start-2027 + capacity detail to Update.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "already-in-gem",
-    "terminal_id": "T100001083296",
-    "unit_id": "",
-    "terminal_name": "Puerto Bahía LNG Terminal",
-    "issue": "ANLA June-2026 approval for the Terminal Servicio Público Multipropósito (Sociedad Portuaria Puerto Bahía / Frontera-Ecopetrol, Barú/Cartagena, Bolívar) and the Frontera FSRU charter (Excelerate Energy reported) both map to this EXISTING GEM terminal. Phase 1 126 MMcf/d (Dec 2026) -> 300/370 MMcf/d. Not a discovery.",
-    "severity": "low",
-    "suggested_action": "Route ANLA approval + Excelerate FSRU charter (FSRU sync) to Update.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "already-in-gem",
-    "terminal_id": "T100000130679",
-    "unit_id": "",
-    "terminal_name": "Regasificadora del Pacífico LNG Terminal (Buenaventura FSU)",
-    "issue": "Exmar 5-yr FSU charter (signed for the Buenaventura inner-bay fast-track, ops Q2-Q3 2026, 60 MMcf/d under Feb-2025 Ecopetrol contract) maps to this EXISTING GEM terminal. GEM has vessel Tura/El Viche. Not a discovery.",
-    "severity": "low",
-    "suggested_action": "Route the Exmar FSU charter + start-2026 detail to Update / FSRU sync.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "already-in-gem",
-    "terminal_id": "T100001049368",
-    "unit_id": "",
-    "terminal_name": "Ciénaga FSRU (Sociedad Portuaria Ciénaga LNG SAS)",
-    "issue": "The 'Terminal de Importación de GNL — Ciénaga LNG' (Sociedad Portuaria Ciénaga LNG SAS) reported under ANLA review June-2026 is this EXISTING GEM terminal. IMPORTANT: this is DISTINCT from the newly-staged Puerto Drummond (Ensenada de Alcatraz) and from the Río Córdoba project — three separate port projects in the Ciénaga, Magdalena area. Do not merge.",
+    "issue": "Possible parent/sponsor gap. GEM Owner/Parent = Sociedad Portuaria Puerto Bahia SA only. Apr-2026 trade press (valoraanalitik via Yahoo mirror; El Tiempo) describes Ecopetrol and Frontera Energy as the joint partners developing the Puerto Bahia regasification terminal, and the 1 Jun 2026 ANLA approval coverage lists the Puerto Bahia project under 'Frontera Energy'. Frontera Energy is in fact the corporate parent of Sociedad Portuaria Puerto Bahia; Ecopetrol's involvement appears to be a regasification-service/offtake agreement (firmado acuerdo para el servicio de regasificacion, 2026) rather than equity. GEM currently captures neither the Frontera parent nor the Ecopetrol relationship.",
     "severity": "medium",
-    "suggested_action": "Keep the three Ciénaga-area projects separate. The Drummond and Río Córdoba items are NOT this terminal.",
+    "suggested_action": "Do NOT auto-edit. Verify whether Frontera Energy should populate Parent (likely) and confirm Ecopetrol is offtaker/service-contract (not equity) before recording. Run entity_lookup on 'Frontera Energy' before staging any new entity. Separate equity vs offtake carefully. First ops now reported Dec 2026 (FSRU arrival), initial 126 MMcf/d for two years then 300-400 MMcf/d -- consistent with GEM Phase1 126 / Phase2 174 split.",
     "researcher_initials": "AI-draft"
   },
   {
-    "category": "discovery-gap-staged",
+    "category": "blank_ref",
+    "terminal_id": "T100000130564",
+    "unit_id": "G100002056400",
+    "terminal_name": "El Viajano Altenesol LNG Terminal",
+    "issue": "Blank-ref fill target ShelvedYear [ref] (ShelvedYear=2017, inferred) could not be safely filled. The only located candidate source is the abarrelfull.wikidot.com project page (weak wiki-style source; PASSes url_verifier but its http<->https redirect blocked content confirmation that it specifically documents the 2017 shelving). The existing CancelledYear/StopYear refs (Datacredito 'en liquidacion') support the 2019 cancellation/stop, not the 2017 shelving. Per the no-weak-ref / no-orphan-ref guidance, left blank rather than stage a weak/unconfirmed citation.",
+    "severity": "low",
+    "suggested_action": "Leave ShelvedYear [ref] blank for now. The 2017 ShelvedYear is inferred (ShelvedCancelledStatusType=inferred); a documentary source for the specific 2017 shelving was not found. Optionally cite the abarrelfull project page if a reviewer confirms it states the 2017 shelving, but a primary source is preferred.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "discovery_awareness",
     "terminal_id": "",
     "unit_id": "",
-    "terminal_name": "Puerto Drummond LNG Terminal (Ensenada de Alcatraz)",
-    "issue": "GENUINE GAP — not in GEM (full-export grep for drummond/río córdoba/alcatraz/carbonífero returned 0 LNG-terminal hits; dedup_index no match). Drummond Energy LNG regasification project at its Ensenada de Alcatraz/Puerto Carbonífero coal port (Ciénaga, Magdalena); ANLA environmental license approved ~1-2 June 2026 (1 of 5 Caribbean regas projects). Threshold met -> staged as new_terminal. Capacity/facility-type undisclosed. Note GEM already has a 'Puerto Drummond coal port' record (non-LNG) at the same site — check for AssociatedTerminals link / co-location.",
-    "severity": "high",
-    "suggested_action": "Review staged new_terminal (colombia.newterminals.json) + new_unit; verify FSRU-vs-onshore and capacity when Drummond discloses; create Drummond Energy Inc entity (verify vs Drummond Ltd); consider AssociatedTerminals to the existing Puerto Drummond coal port.",
+    "terminal_name": "Río Córdoba regasification project (Córdoba dept)",
+    "issue": "The 1 Jun 2026 ANLA approval of five Caribbean regas projects includes a 'Rio Cordoba' regasification project (Cordoba department) that does not match any current GEM Colombia LNG row. Possible new terminal. Flagging for awareness only -- a concurrent DISCOVERY agent for Colombia owns new-terminal evaluation; not creating a new record from an Update-tier sweep.",
+    "severity": "low",
+    "suggested_action": "Route to the Colombia discovery agent / next discovery batch. Verify sponsor, location, and concrete step before any add-bar decision. Source verified PASS: valoraanalitik.com / elheraldo.co ANLA articles.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Caribe LNG; Regasificadora del Pacifico; Cartagena FSRU Phase 1/Phase 2 Expansions; Puerto Brisa Ph1/Ph2; Amazonica LNG",
+    "issue": "Dev-pipeline skim-confirm (all updated ~3 weeks ago, LastUpdated 2026-05-13..15): web-verified status/capacity/timeline still match GEM. Caribe LNG (construction/actual, 60 MMcf/d, 2026 start) -- Aug-2025 ArtCap financing partnership, ops 2026: confirmed. Regasificadora del Pacifico (construction/actual, FID 2026, Exmar FSU Tura/El Viche) -- Feb-2026 financing close, ~80% progress, ops Q3/Oct 2026: confirmed. Cartagena Phase 1 Expansion (operating, ActualStart 2026, +75 MMcf/d) and Phase 2 Expansion (proposed, +58 MMcf/d, 2027) -- Promigas/SPEC 450->475 MMcf/d phase begun Feb 2026, full 533 by Dec 2026 / remainder 2027: confirmed. Puerto Brisa Ph1 (FSRU) / Ph2 (onshore) -- end-2026 first stage, 180-240 -> up to 400 MPCD: confirmed via Energy Developments. Amazonica LNG (proposed, 2027) -- no new public developments beyond GEM's existing sourcing.",
+    "severity": "low",
+    "suggested_action": "No edits; recorded as a verified no-change so the verification is on the audit trail without manufacturing blue cells. No representative blue re-verify staged to avoid spam given the recent (2026-05) researcher pass.",
     "researcher_initials": "AI-draft"
   }
 ]

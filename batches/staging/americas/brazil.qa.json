@@ -1,112 +1,32 @@
 [
   {
-    "category": "data_quality",
-    "terminal_id": "T100000130546",
-    "unit_id": "G100002054600",
-    "terminal_name": "Guanabara Bay FSRU",
-    "issue": "Capacity field holds the raw value '22500000' with CapacityUnits BLANK and CapacityinMtpa BLANK (every other operating Brazil FSRU has CapacityinMtpa populated). The number looks like a stray m3/day-style figure rather than a normalized capacity. GEM's own wiki lists 10.95 mtpa and a 30 Mm3/day licensed capacity (raised from 20 Mm3/day in June 2021); EIA (Oct 2025) lists ~0.80 Bcf/d (~6.1 mtpa). The stored 22500000 matches none of these cleanly and carries no units.",
-    "severity": "medium",
-    "suggested_action": "Re-normalize: confirm intended capacity (wiki says 10.95 mtpa / 30 Mm3/day) and populate Capacity + CapacityUnits + CapacityinMtpa consistently. Not staged as an edit because the correct nameplate is ambiguous across sources (10.95 mtpa wiki vs ~6.1 mtpa EIA vs 30 Mm3/day~=7.66 mtpa); needs a researcher decision, not a guessed bump.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "fsru_sync",
-    "terminal_id": "T100000130548",
-    "unit_id": "G100001062110",
-    "terminal_name": "Pecém FSRU",
-    "issue": "Proposed 'Eneva/Ceiba Terminal' unit lists FloatingVesselName='Energos Winter'. That vessel is no longer available to Brazil: NFE signed a 5-year EGAS charter (July 2025) and the Energos Winter took its first cargo at Damietta, Egypt ~Oct 2025. Separately, Eneva's Pecém project (Jandaia plant + 'Pier Zero', won in the March 2026 capacity-reserve auction) now targets FSRU operations in 2030 with the specific vessel undetermined. So GEM's Energos Winter on this proposed unit is stale/speculative.",
-    "severity": "medium",
-    "suggested_action": "Clear/replace FloatingVesselName on the proposed Pecem (Eneva/Ceiba) unit (vessel TBD) and review the proposal timeline (now ~2030, construction H1-2026 per Pecem auction). FSRU sync touchpoint: Energos Winter reassigned Brazil->Egypt.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "fsru_sync",
-    "terminal_id": "T100000130938",
-    "unit_id": "G100002093800",
-    "terminal_name": "Terminal Gás Sul FSRU",
-    "issue": "Terminal correctly shows status=idled, StopYear=2025. Its FloatingVesselName='Energos Winter' has physically departed: NFE halted TGS operations in July 2025 and sent Energos Winter to Egypt (5-yr EGAS charter). NFE filed two ANP restart options (berth July 2026 OR July 2027), contingent on the March 2026 capacity-reserve auction outcome. Vessel field documents the last-deployed FSRU but the vessel is no longer on site.",
-    "severity": "low",
-    "suggested_action": "Decide GEM convention for an idled terminal whose FSRU left: keep Energos Winter as last-deployed (annotate ResearcherNotes that vessel relocated to Egypt) or blank it. FSRU sync touchpoint: Energos Winter Brazil->Egypt. Watch for a TGS restart with a NEW/returning vessel in 2026-2027.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "fsru_sync",
-    "terminal_id": "T100000130548",
-    "unit_id": "G100002054800",
-    "terminal_name": "Pecém FSRU",
-    "issue": "Retired 'Petrobras Terminal' unit (ActualStart 2008, StopYear 2023) lists FloatingVesselName='Energos Winter'. This is an anachronism: the unit retired in 2023 and the Petrobras Pecem regas history used Golar/other vessels; the 'Energos' brand post-dates that and Energos Winter is now in Egypt. Energos Winter appears on THREE GEM Brazil rows (this retired unit, the proposed Pecem Eneva unit, and idled Terminal Gas Sul).",
-    "severity": "low",
-    "suggested_action": "Verify the FSRU actually deployed at the retired Petrobras Pecem unit; 'Energos Winter' on a 2008-2023 record is almost certainly wrong (likely copied across rows). Correct or blank with a ResearcherNotes note.",
-    "researcher_initials": "AI-draft"
-  },
-  {
     "category": "status_timeline",
-    "terminal_id": "T100000130937",
-    "unit_id": "G100002093700",
-    "terminal_name": "Tepor Macaé FSRU",
-    "issue": "GEM status=proposed with ConstructionYear=2025 populated, but as of the July 2025 Macaé Energy conference the FSRU terminal was still described as a future component contingent on Eneva winning gas-power contracts in upcoming national auctions; no evidence physical construction has begun. The ConstructionYear=2025 may be premature for an as-yet pre-construction project.",
-    "severity": "low",
-    "suggested_action": "Verify whether any TEPOR FSRU construction milestone occurred in 2025; if not, reconsider the ConstructionYear=2025 anchor (the project still reads as proposed/pre-construction). Status field unchanged pending confirmation; flagged as status_timeline only.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "status_timeline",
-    "terminal_id": "T100000130548",
-    "unit_id": "G100001062110",
-    "terminal_name": "Pecém FSRU",
-    "issue": "Eneva concluded acquisition of Ceiba's Jandaia plant + associated Pecem terminal (Sept 2025; Cade-approved May 2025) and, with Diamante, won a March 2026 capacity-reserve auction for a new Pecem gas plant (R$6.5B + R$430M 'Pier Zero' pier). FSRU operations now targeted for 2030, construction H1-2026. GEM's proposed Eneva/Ceiba unit (ProposalYear 2024) has no planned-start years; the project has materially advanced and acquired a 2030 timeline since the 2025-09 LastUpdated.",
-    "severity": "medium",
-    "suggested_action": "Route to Update: refresh the proposed Pecem (Eneva/Ceiba) unit with the post-acquisition status, the March-2026 auction win, and a planned-start ~2030; confirm owner now Eneva (post-Ceiba). See wiki entry.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "discovery_coverage_summary",
-    "terminal_id": "",
-    "unit_id": "",
-    "terminal_name": "Brazil — full discovery sweep",
-    "issue": "Ran Rings A-D for Brazil (25 GEM terminals already covered, mostly FSRUs). Regulator (EPE 'Plano Indicativo de Terminais de GNL' + 'Informe Técnico', ANP authorizations), trade press (LNG Prime, Reuters, EIA Today-in-Energy, BNamericas, World Oil, Offshore-Technology + BR outlets epbr/eixos/Click Petróleo/CNN Brasil/Cenário Energia), and sponsor IR (GNA, New Fortress Energy SEC 8-K/10-Q FY2026, Eneva fato relevante) all CONVERGE on terminals already in GEM. EPE's four 'priority' projects (Itacoatiara AM, São Luís MA, Presidente Kennedy ES, Pontal do Paraná = Paraná FSRU) are ALL already GEM terminals. No genuinely-missing terminal surfaced that meets the add threshold.",
-    "severity": "low",
-    "suggested_action": "No new_terminals staged. One sub-threshold candidate (GNA+NTS Açu onshore terminal) → monitor_list. GEM Brazil coverage confirmed comprehensive. Several existing terminals show STATUS drift worth an Update batch (see separate qa rows) but those are Update-workflow items, not discoveries.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "near_miss_already_in_gem",
-    "terminal_id": "T100000130938",
-    "unit_id": "G100002093800",
-    "terminal_name": "Terminal Gás Sul FSRU (TGS), São Francisco do Sul, Santa Catarina",
-    "issue": "Heavily-reported 2026 news (NFE long-term lease/capacity deal, commercial start Aug 2026, LRCAP March 2026 auction participation; LNG Prime / World Oil / Offshore-Technology) is the SAME terminal as GEM's Terminal Gás Sul FSRU. GEM currently has it status=idled/actual; reporting says it is being RE-ACTIVATED under a long-term lease for Aug-2026 commercial operation. NOT a discovery.",
-    "severity": "medium",
-    "suggested_action": "Route to UPDATE workflow: status likely moving idled -> operating (or construction) for 2026; verify FSRU vessel (GEM lists Energos Winter, which is also shared with Pecém — check current vessel assignment) and confirm via NFE filing + ANP berthing window (July 2026/July 2027 options cited).",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "near_miss_already_in_gem",
     "terminal_id": "T100000130936",
     "unit_id": "G100002093600",
-    "terminal_name": "Suape FSRU, Pernambuco",
-    "issue": "Frequently-surfaced 2025-2026 lead (OnCorp FSRU charter signed May 2025; Shell to supply LNG; completion early 2026; Novo PAC approval) maps to GEM's Suape FSRU (owner Aruanã Energia / parent Oncorp). Already in GEM at status=construction/actual. NOT a discovery.",
+    "terminal_name": "Suape FSRU",
+    "issue": "Commercial-operations start date has slipped. Jan 2026 trade press (movimentoeconomico.com.br, 2026-01-14) quotes Oncorp president Joao Mattos that the Suape regas terminal will begin operating in October 2027 ('podendo ser antecipado'); FSRU charter signed May 2025; Antaq opened a fiscalizacao process over the delays. GEM Status remains correctly 'construction'. Suggests StartYear1 should reflect ~2027, not an earlier year, if currently earlier.",
     "severity": "low",
-    "suggested_action": "Confirm in next Update batch whether construction -> operating has occurred and capture the named FSRU vessel once OnCorp discloses it (GEM vessel field currently blank).",
+    "suggested_action": "Review/refresh the start-year field to 2027 in a follow-on Update batch (fetch_timeline endpoint is down, so not staging a timeline edit here). Status stays 'construction'.",
     "researcher_initials": "AI-draft"
   },
   {
-    "category": "entity_context_no_new_entity_staged",
-    "terminal_id": "T100000130688",
-    "unit_id": "",
-    "terminal_name": "Porto do Açu (GNA) — sponsor structure for the monitor-list candidate",
-    "issue": "The monitored Açu onshore-terminal lead involves GNA (Gás Natural Açu — JV of Prumo Logística, BP PLC, Siemens Energy) and NTS (Nova Transportadora do Sudeste). entity_lookup.py was NOT run (no new_terminals staged → no new owner/operator to create this batch). All of these entities already appear in GEM's Brazil ownership data (Porto do Açu FSRU lists BP/Prumo/Siemens; NTS is a major Petrobras-divested pipeline operator). No new entity addition required unless/until the candidate is promoted from monitor to new_terminal.",
+    "category": "blank_ref",
+    "terminal_id": "T100000131122",
+    "unit_id": "G100002112200",
+    "terminal_name": "Dislub Maranhao FSRU",
+    "issue": "Worklist flags Status/ShelvedYear/StopYear [ref] as blank-ref fill targets, but the 'shelved (inferred 2 y)' substatus means the shelving is GEM's own no-news inference (no external announcement), not a citable event. Web search (Aug 2024+ silence on a Dislub Equador LNG terminal) found no source announcing shelving. Filling these [ref] cells with a source would be fabricating a citation for an inference.",
     "severity": "low",
-    "suggested_action": "If the Açu onshore terminal is later promoted to new_terminals, run entity_lookup.py --remote for 'Gás Natural Açu', 'Nova Transportadora do Sudeste (NTS)', and the eventual onshore-terminal SPV before staging owners.",
+    "suggested_action": "Leave the inferred-shelved [ref] cells blank, or document the inference basis in researcher_notes rather than a [ref] URL. Applies equally to the other 'inferred 2 y' shelved rows: Geramar, Itaqui, Presidente Kennedy, Sao Marcos Bay FSRUs.",
     "researcher_initials": "AI-draft"
   },
   {
-    "category": "no_export_terminal_gap",
-    "terminal_id": "",
-    "unit_id": "",
-    "terminal_name": "Brazil FLNG / pre-salt gas monetization (export)",
-    "issue": "Checked for any NEW export/FLNG proposal (Brazil pre-salt gas monetization). Only EPE option-studies and the long-dead BG/Petrobras Santos Basin FLNG concept exist; the Santos Basin FLNG is already in GEM (T100000130550, cancelled/confirmed). No concrete new liquefaction/export project found — pipeline reinjection is the favored route. No discovery, no monitor entry warranted.",
+    "category": "blank_ref",
+    "terminal_id": "T100000130929",
+    "unit_id": "G100002092900",
+    "terminal_name": "Hidrovias do Brasil FSRU / Imetame / Itacoatiara / Parana FSRUs (cancelled rows)",
+    "issue": "Worklist flags Status/CancelledYear/ShelvedYear/StopYear [ref] blanks on the four 'cancelled' Brazil rows (Hidrovias do Brasil, Imetame, Itacoatiara, Parana). No external source announcing a formal cancellation was found; these appear to be GEM editorial determinations rather than citable events, so no sourced [ref] fill is possible without fabricating one.",
     "severity": "low",
-    "suggested_action": "None. Re-scan if Petrobras revives an FLNG tender.",
+    "suggested_action": "Treat cancellation [ref] blanks on inferred/editorial cancellations as non-fillable; capture the determination basis in researcher_notes if needed. Do not auto-fill [ref].",
     "researcher_initials": "AI-draft"
   }
 ]

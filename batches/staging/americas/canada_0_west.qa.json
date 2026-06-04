@@ -1,0 +1,62 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130350",
+    "unit_id": "G100002035001",
+    "terminal_name": "Cedar FLNG Terminal",
+    "issue": "Status remains construction (no change). News check: as of 2026 the project is ~50% spent / ~80% committed, on time/on budget; FLNG hull in South Korea moves dry-dock to wet-dock mid-2026, arrives Kitimat first half 2028; anticipated in-service late 2028. GEM LatestPlannedStartYear=2028 already matches; OriginalPlannedStartYear=2029. No field edit needed beyond confirming start-year alignment (in-service late 2028 vs GEM latest-planned 2028 is consistent).",
+    "severity": "low",
+    "suggested_action": "No edit. Re-verified construction status and 2028 start year against cedarlng.com construction updates and Norton Rose 2026 Canadian LNG outlook.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130374",
+    "unit_id": "G100002037401",
+    "terminal_name": "Woodfibre LNG Terminal",
+    "issue": "Status remains construction (no change). As of late May 2026 the project is >65% complete (liquefaction + powerhouse modules delivered); sponsor/Reuters guidance is operational 2028, while 2026 sponsor statements describe construction 'completion' in 2027. GEM LatestPlannedStartYear=2028 reflects the operational-2028 guidance and remains defensible; the 2027 figure is construction completion, not first LNG. Flagging the 2027-vs-2028 nuance only.",
+    "severity": "low",
+    "suggested_action": "No field edit. Keep LatestPlannedStartYear=2028 (first-LNG/operational basis); optionally note 2027 mechanical-completion target in wiki narrative.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000131044",
+    "unit_id": "G100002104403",
+    "terminal_name": "Tilbury Island LNG Terminal",
+    "issue": "Phase 1b Expansion: GEM ConstructionYear=2026 with Status=proposed. 2026 reporting on the related Tilbury LNG Storage Expansion (BCUC-approved Oct 2025) states construction 'expected to start as early as 2027', and the Phase 2 EA only reached effects-assessment stage in March 2026. The 2026 construction-start assumption baked into Phase 1b may be optimistic; status remains proposed (no FID evident). Verify whether ConstructionYear should slip.",
+    "severity": "medium",
+    "suggested_action": "Route to Update: confirm FortisBC's current Phase 1b construction-start year (sponsor IR / BCUC filings); if start has slipped past 2026, adjust ConstructionYear. No status change.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130358",
+    "unit_id": "G100002035803",
+    "terminal_name": "LNG Canada Terminal",
+    "issue": "Phase 2 (T3-T4): Status remains proposed / Pre-FID (no change). GEM FIDYear=2026 matches current guidance: May 1 2026 JV approved incremental funding and May 14 2026 Canada/BC/LNG Canada agreement to 'progress closure of final items to support a potential 2026 FID'. Phase 2 would double the Kitimat plant to 28 mtpa. GEM values consistent.",
+    "severity": "low",
+    "suggested_action": "No edit. Re-verified Pre-FID/2026 FIDYear against lngcanada.ca and Canada.ca Major Projects Office (May 2026).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_accuracy",
+    "terminal_id": "T100000130351",
+    "unit_id": "G100002035101",
+    "terminal_name": "Discovery LNG Terminal",
+    "issue": "GEM lists Status=cancelled (CancelledYear 2019). However Rockyview Resources (current backer after Quicksilver's 2015 bankruptcy) reportedly still markets the project with operations pushed to ~2030, and discoverylng.com was recently reachable (project-details page returned a connection error at check time, but the domain resolves). The 'cancelled' classification may be an inferred-from-silence call that is contestable. Not enough verified recent activity to propose a status change, but worth confirming.",
+    "severity": "low",
+    "suggested_action": "Route to Update/QC: confirm whether Discovery LNG is genuinely cancelled vs dormant-proposed; check discoverylng.com liveness and any post-2019 Rockyview activity. Do not edit Status on inference alone.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_ref",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Multiple cancelled BC terminals (Atlantic Coast omitted - other shard; Discovery, Douglas Channel, Kitsault, Kwispaa, NewTimes T1-T3, Nisga'a, Orca, Stewart Energy, Texada, Triton, Watson Island)",
+    "issue": "The bulk of this shard's 78 blank-ref targets are Status/CancelledYear/ShelvedYear/StopYear [ref] gaps on long-cancelled BC projects whose cancelled status is GEM-inferred-from-silence (no project news for many years; e.g. Watson Island no updates since 2014, NewTimes/Orca/Stewart/Kitsault/Texada/Triton/Douglas Channel all dormant). No citable external source directly states these cancellations, so filling the [ref] cells would create orphan/circular refs (anti-circularity). Only Skeena LNG had a genuine external cancellation source (The Narwhal 2021) — filled in updates. Capacity [ref] blanks (Kitsault 20 mtpa, Triton 2.3 mtpa, Stolt) similarly lack a clean primary source for these dead projects.",
+    "severity": "low",
+    "suggested_action": "Leave these [ref] cells blank; the inferred-status basis is the methodology's, not an external citation. Do not manufacture marginal/circular refs for dead projects in a standard sweep. Revisit only if a primary archival source (regulator decision, sponsor announcement) surfaces.",
+    "researcher_initials": "AI-draft"
+  }
+]

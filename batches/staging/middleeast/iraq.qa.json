@@ -4,29 +4,39 @@
     "terminal_id": "T100001048168",
     "unit_id": "G100001055225",
     "terminal_name": "Khor Al-Zubair FSRU",
-    "issue": "Recorded as Status=proposed (ProposalYear 2025). On 28 Oct 2025 Excelerate Energy signed a DEFINITIVE commercial agreement (~$450M) with a subsidiary of Iraq's Ministry of Electricity to build and operate this FSRU import terminal - billed as Iraq's first. The FSRU (Excelerate Hull 3407) is under construction at HD Hyundai HI for 2026 delivery, with berth modifications and topsides in Excelerate's scope and commissioning targeted ~June 2026. A signed definitive agreement + vessel under construction + berth works typically corresponds to the construction phase.",
+    "issue": "GEM Status = 'proposed' (LastUpdated 2025-07-09) likely understates progress. Definitive commercial agreement signed ~27-28 Oct 2025 (Excelerate Energy + subsidiary of Iraq Ministry of Electricity); FSRU 'Excelerate Acadia' (Hull 3407) named and on track for June 2026 delivery; in May 2026 Iraq approved a ~$48M minimum contractual payment to enable Excelerate to begin berth modifications. These are concrete construction/pre-commissioning steps -> candidate for status advance from proposed toward construction.",
     "severity": "medium",
-    "suggested_action": "Pull the unit timeline; consider advancing proposed->construction with a ConstructionYear (2025/2026) and a status-timeline entry once berth/topside construction is confirmed underway. Status change deliberately NOT staged as a field edit per workflow. Source: Excelerate press release (28 Oct 2025).",
+    "suggested_action": "Reviewer to evaluate status advance (proposed -> construction) and update status timeline. NOT staged as a Status field edit per sweep rule (fetch_timeline endpoint down). Sources: https://excelerateenergy.com/news/excelerate-energy-signs-definitive-agreement-for-fully-integrated-floating-lng-import-terminal-in-iraq/ ; https://www.mees.com/2026/5/1/news-in-brief/iraq-approves-payment-for-lng-fsru/ea2126e0-4560-11f1-8420-4f521cbbd620",
     "researcher_initials": "AI-draft"
   },
   {
-    "category": "ownership",
+    "category": "start_year",
     "terminal_id": "T100001048168",
     "unit_id": "G100001055225",
     "terminal_name": "Khor Al-Zubair FSRU",
-    "issue": "Terminal Owner/Parent are blank. The asset host/offtaker counterparty is 'a subsidiary of Iraq's Ministry of Electricity' (exact subsidiary not named in the Excelerate announcement). Excelerate Energy is the developer/operator/LNG supplier/FSRU owner (staged as Operator + VesselOwner). The precise terminal-owner entity is ambiguous, so no Owner field edit is staged.",
+    "issue": "Planned start: commercial operations expected 2026 per Excelerate (Oct 2025). However, May 2026 reporting (MEES; Iraqi News) indicates first LNG imports pushed beyond summer 2026 due to regional hostilities (Strait of Hormuz closure) and payment delays. GEM has no StartYear populated.",
     "severity": "low",
-    "suggested_action": "Identify the exact Ministry of Electricity subsidiary (and whether Iraq or Excelerate is the asset owner) before populating Owner/Parent. Consider creating the Iraqi state entity (see iraq.entity.json). Source: Excelerate press release.",
+    "suggested_action": "Reviewer to set LatestPlannedStartYear = 2026 (possibly slipping to 2026 H2 / 2027). Not staged as a firm value due to active schedule slippage; treat as monitor.",
     "researcher_initials": "AI-draft"
   },
   {
-    "category": "ownership",
+    "category": "capacity",
+    "terminal_id": "T100001048168",
+    "unit_id": "G100001055225",
+    "terminal_name": "Khor Al-Zubair FSRU",
+    "issue": "Capacity has three published figures: design 1,000 MMscf/d (~7.66 mtpa), guaranteed 500 MMscf/d (~3.85 mtpa), minimum contracted offtake 250 MMscf/d (~1.9 mtpa). Choice of nameplate convention (design vs contracted) materially changes the GEM mtpa value.",
+    "severity": "medium",
+    "suggested_action": "Reviewer to apply GEM nameplate convention (baseload/nameplate). Staged update uses design 7.66 mtpa (yellow) but flag for explicit decision. Source: Excelerate IR release.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_gap",
     "terminal_id": "T100000131158",
     "unit_id": "G100002115800",
     "terminal_name": "Al-Faw FSRU Terminal",
-    "issue": "Owner and Parent are 'unknown'. In Dec 2024 the Iraqi government appointed South Gas Company to oversee installation of a FIXED regasification platform (consistent with GEM's Offshore=True, Floating=blank - this is a fixed platform, NOT a vessel) at Grand Al-Faw port; a tender for the fixed regas platform was launched March 2025 (~$133M financing), with Grand Faw port operations targeted for 2026. Distinct project from Khor Al-Zubair. Status=proposed and Original/Latest planned start=2026 appear still correct. South Gas Company is not in the GEM entity system (lookup RUN - no match), so Owner/Operator is NOT staged as an edit pending confirmation.",
+    "issue": "Owner/Parent = 'unknown'; no capacity, no vessel, no start year. Iraq launched a tender (March 2025) for a FIXED regasification platform in the Grand Al-Faw port (worldoil.com 2025-03-24) -- distinct from the Khor Al-Zubair Excelerate FSRU. Sponsor/operator and capacity for the Al-Faw platform are not yet publicly named; no awarded contract found as of June 2026. Note GEM lists this as an FSRU but reporting describes a fixed platform.",
     "severity": "low",
-    "suggested_action": "Confirm South Gas Company's role (owner vs operator vs developer) and create the entity (see iraq.entity.json) before populating Owner/Operator. Keep proposed; monitor for a platform EPC award. Sources: agbi.com Faw port nears completion (Mar 2025); gem.wiki Al-Faw FSRU.",
+    "suggested_action": "Keep as proposed; no field edits staged (insufficient sourced detail; do NOT attribute Excelerate to Al-Faw -- that deal is Khor Al-Zubair). Monitor for tender award. Reviewer may reconcile FSRU-vs-fixed-platform terminal type. Source: https://www.worldoil.com/news/2025/3/24/iraq-exploring-floating-gas-terminals-to-meet-power-demand/",
     "researcher_initials": "AI-draft"
   }
 ]

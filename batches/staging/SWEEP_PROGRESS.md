@@ -1,5 +1,71 @@
 # LNG country sweep — progress ledger
 
+## ✅ RE-SWEEP 2026-06-03/04 — standard update + tracker-only discovery — COMPLETE (all 6 regions, 12 workbooks)
+
+Supersedes the completed morning sweep below (its 1241/1258 workbooks + per-country JSONs; JSONs
+archived to `_prior/sweep_20260603_full/<region>/`). User decisions: **supersede** (re-research,
+not top-up); discovery = **tracker countries only** (no coverage_gap); update tier = **standard**
+(first sweep under the formalized tier split, commit 0ce5472); **resumable per-country**.
+Run record: `batches/run_records/2026-06-03_full-tracker-sweep_standard-update-and-discovery.md`.
+
+### Conventions THIS sweep (deltas from the morning run)
+- Fresh export 2026-06-03 16:46 ET (1,272 rows / 1,221 LNG-fuel / 113 countries), colmap re-derived.
+  NB: the correct pull is `python gem_query.py --all-fields lng -o gem_export.csv` (CLAUDE.md's old
+  `gem_all_fields.py` direct call was a silent no-op — docs fixed this run).
+- Region + slug per country: `batches/staging/_region_map.json` (NEW, committed) — middleeast
+  carve-out incl. Egypt; Türkiye→europe (slug `turkiye`); Timor-Leste→oceania; Turkmenistan→asia.
+- Standard-tier worklists pre-split per country: `scripts/work/sweep/<region>/<slug>.worklist.json`
+  (via NEW `scripts/sweep_worklist_split.py`; Fuel==LNG only). 96/113 countries have non-empty
+  worklists (1,651 items: 474 dev_pipeline ∪ 19 stale ∪ 1,158 blank-ref). Zero-worklist countries
+  get NO update agent (standard tier = worklist-driven), discovery agent only.
+- **Done markers** (NEW): update agent writes `<slug>.done.json` LAST; discovery agent writes all
+  files as `<slug>.disc.<type>.json` + `<slug>.disc.done.json` LAST (no filename collision when both
+  modes run concurrently). Marker present = country done for that mode; marker absent = re-dispatch.
+- Update + discovery agents for a region run in ONE parallel pool (Workflow tool, ~8 concurrent).
+- Shards (worklist-heavy): US×6 (prior slug scheme), China×4, India×3, Canada/Japan/PNG/Vietnam/
+  Russia/Indonesia/Australia×2. Discovery is always one agent per country, never sharded.
+- fetch_timeline still DOWN (env unset) → status changes stay qa-routed (`category: status_timeline`).
+
+### Run log (for resumers)
+- 17:00 ET: europe research wave ran while the session was still flagged plan-mode → 52 agents researched read-only and wrote PLANS to `~/.claude-gem/plans/do-a-standard-update-transient-micali-agent-*.md` instead of staging files. Salvaged via EXECUTOR agents (read plan → finish deferred research → re-verify staged URLs → write files). If europe-quality questions arise, the research provenance is in those plan files.
+- 18:30 ET: session usage limit hit mid-run → clipped 45 europe executors + 37 africa agents (limit-message returns, no done markers). Markers are authoritative: partial finding files for marker-less slugs were deleted; remainders relaunched 18:42 ET after reset.
+- 19:05 ET: europe r2 (45 exec) + africa r2 (37 research) completed → **all UPDATE markers landed (europe 24/24, africa 21/21)**. But the tails hit a NEW limit (resets **23:30 ET**): 17 europe + 9 africa DISCOVERY agents returned limit-messages, so disc markers are partial (europe 12/28, africa 17/25). Workflow `missing:[]` is unreliable here (limit-messages count as "returned") — disk markers are authoritative.
+- 19:25 ET: built both UPDATE workbooks from the complete update data (disc files relocated during build so they don't contaminate update-mode, then restored). Update workbooks are FINAL (all update agents done; none will be re-dispatched). Remaining work = discovery remainder (europe 16, africa 8) + the 4 untouched regions.
+- 19:31 ET: africa disc-8 probe (wf_eb1c3bf1-b22) **succeeded** — usage limit had cleared; all 8 did real research (mozambique +2 FSRUs, congo +1 Banga Kayo, senegal +1 Elton Dakar, tanzania +1; nigeria ESCALATED on the Ajaokuta mini-LNG cluster). Africa disc now 25/25.
+- 19:35 ET: built **africa DISCOVERY** workbook (update files relocated this time, symmetric to the update build). Africa = COMPLETE (both workbooks).
+- 19:40 ET: fired europe-disc-16 + americas(54) **as two simultaneous workflows → 16 concurrent agents tripped a SERVER-SIDE rate limit** ("not your usage limit · Rate limited"). Nearly all returned 0-token no-ops (only americas/guyana disc got through). LESSON: dispatch **ONE workflow at a time** (8 concurrent) — the 45/37 waves worked solo; 16 concurrent did not. Re-dispatch is safe (idempotent; rate-limited agents wrote nothing).
+- 19:48 ET: europe-disc-16 re-dispatched SOLO → succeeded (greece +1 Atlantic SEE FSRU; norway ESCALATED — Ålesund + ~30-terminal Gasnor small-scale cluster). Europe disc 28/28. Built europe DISCOVERY workbook. Europe = COMPLETE.
+- 19:52 ET: **fixed a latent `_assemble.py` bug** — it never cleared stale `staged_*.json`, so an update-only assemble's wiki leaked into the following discovery-only assemble (africa disc showed wiki=5, europe disc wiki=18, all actually UPDATE wikis). Patched `_assemble.py` to purge `staged_*.json` on each run; **rebuilt both discovery workbooks** (wiki now correctly 0) and deleted the two contaminated files (1935 africa-disc, 1950 europe-disc). Forward rule: isolation builds are safe now (assemble self-clears).
+- 19:50 ET: americas re-dispatched SOLO (wf_b530f243-517, 29 upd + 24 disc). NB hand-trimming guyana from disc also dropped **canada** disc — catch it in the post-wave marker check (self-heals: re-dispatch any slug without a marker).
+- ~00:00 ET (06-04): that americas wave hit ANOTHER usage limit (reset 12:20am) — only 7 upd + 1 disc (guyana) landed; rest were limit no-ops.
+- 07:16 ET (06-04): session resumed (limit long cleared). Cleaned 7 partial finding files (argentina/canada_1_east/dominican-republic mid-write fragments), re-dispatched americas remainder SOLO (wf_7cdb6d72-fea, 22 upd + 24 disc, canada disc now included).
+
+### Region status (flip DONE only after build + recalc; workbook names recorded here)
+| Region | Status | Countries (upd-agents/disc-agents) | Workbooks |
+|---|---|---|---|
+| europe | **DONE** (upd 24/24, disc 28/28) | 23+1 shard / 28 | `…_1925_ET_europe_update.xlsx` + `…_1952_ET_europe_discovery.xlsx` (both recalc OK) |
+| africa | **DONE** (upd 21/21, disc 25/25) | 21 / 25 | `…_1925_ET_africa_update.xlsx` + `…_1952_ET_africa_discovery.xlsx` (both recalc OK) |
+| americas | **DONE** (upd 29/29, disc 25/25) | 23+7 shards / 25 | `…_0746_ET_americas_update.xlsx` + `…_0748_ET_americas_discovery.xlsx` (both recalc OK) |
+| asia | **DONE** (upd 24/24, disc 19/19) | 16+9 shards / 19 | `…_0807_ET_asia_update.xlsx` + `…_0807_ET_asia_discovery.xlsx` (both recalc OK) |
+| middleeast | **DONE** (upd 9/9, disc 12/12) | 9 / 12 | `…_0814_ET_middleeast_update.xlsx` + `…_0814_ET_middleeast_discovery.xlsx` (both recalc OK) |
+| oceania | **DONE** (upd 6/6, disc 4/4) | 4+2 shards / 4 | `…_0820_ET_oceania_update.xlsx` + `…_0820_ET_oceania_discovery.xlsx` (both recalc OK) |
+
+**Sweep totals:** 424 update edits · 55 wiki · 484 update-QA · 23 new terminals/units · 46 entity additions · 68 monitor · 205 discovery-QA. **Escalations (4, all small-scale/modular-LNG scope questions, handled as monitor+escalate per protocol, NOT auto-added):** Norway (Ålesund + ~30 Gasnor receiving terminals), Nigeria (5-plant Ajaokuta mini-LNG cluster), Indonesia (6 monitor), Japan (3 monitor). FSRU sync short-circuited every build (no carrier backend — expected). Repo fix this sweep: `_assemble.py` now purges stale `staged_*.json` (was leaking update wiki into discovery builds).
+
+### Resume recipe (fresh session, tokens ran out)
+1. Read THIS section + the run record. 2. Reuse `scripts/gem_export.csv` (2026-06-03) + `scripts/work/`
+if present — else re-run pre-flight (pull → stale/completeness sweeps → `sweep_worklist_split.py`);
+archive step already done iff `_prior/sweep_20260603_full/` exists. 3. First non-DONE region: dispatch
+ONLY countries/shards missing their done marker in `batches/staging/<region>/` (update brief =
+`_country_agent_brief.md` TIER=standard + worklist path; discovery brief = `_discovery_brief.md`,
+slug `<slug>.disc`, tracker-only). 4. All markers present → `_assemble.py <region>` → build update
+xlsx (+ discovery xlsx iff discovery_mode_needed) → `recalc.py` → FSRU grep gate → flip DONE here.
+5. Next region. Workbook naming: `batches/lng_terminals_batch_<stamp>_ET_<region>_<mode>.xlsx`.
+
+---
+
+# (HISTORY) Morning sweep 2026-06-03 — COMPLETE, superseded by the re-sweep above
+
 Autonomous overnight sweep (user directive, 2026-06-03, "go to bed" run): update existing GEM
 LNG terminals country-by-country — start South America (after Colombia), then another continent
 (my choice). Findings are STAGED review batches (human applies; never touch the live DB). Branch:

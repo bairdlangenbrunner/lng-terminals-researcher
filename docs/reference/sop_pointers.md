@@ -2,6 +2,9 @@
 
 Quick lookup for "which SOP section governs X" without re-reading the whole SOP set. The SOPs themselves are authoritative; this file just indexes them.
 
+**The GEM LNG Terminals Manual** (the methodology doc, authoritative over everything below):
+<https://docs.google.com/document/d/18BvRBWLhXVgj92y5XOv98Co1QtMFj3ny20pmN9XbDko> — "Last updated: Baird and Rob, May 2026" as of this writing. Confirm it is in context before any batch (CLAUDE.md "Read the methodology + relevant SOPs first").
+
 Last reconciled against:
 - Reconciliation SOP rev 1 (2026-05)
 - Update SOP rev 2 (2026-06 — standard/exhaustive tiers)
