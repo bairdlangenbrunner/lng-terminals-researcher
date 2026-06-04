@@ -1,0 +1,43 @@
+[
+  {
+    "category": "coverage_scope",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Kamchatka & Murmansk/Ura Bay LNG Transshipment Complexes",
+    "issue": "Two large (~20 MTPA each) Novatek/Arctic Transshipment ship-to-ship LNG transshipment hubs -- Kamchatka (Bechevinskaya Bay, Koryak FSU, IMO 9915105) and Murmansk (Ura Bay, Saam FSU) -- are NOT in GEM and do not map to GEM's import/export FacilityType vocabulary (transshipment is neither regasification nor liquefaction). These are key pieces of Russian Arctic LNG export logistics. Staged to monitor_list pending a user scope ruling rather than fabricated as new_terminal rows under an ill-fitting facility type.",
+    "issue_detail": "Both verified operational/active (FSUs delivered 2023; commercial transshipment resumed late 2025). Both involve named floating units that are likely carrier-project / FSRU-sync concerns (Koryak, Saam).",
+    "severity": "medium",
+    "suggested_action": "User decides whether transshipment hubs are in scope for the Global Gas Infrastructure Tracker (and whether a transshipment FacilityType is warranted). If in scope, add as two terminals with the FSU vessels coordinated against the carrier backend via fsru_sync_check.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "coverage_scope",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Vladivostok LNG Terminal",
+    "issue": "Vladivostok LNG (Gazprom, Primorye, feed from Sakhalin via the Sakhalin-Khabarovsk-Vladivostok pipeline) has a GEM.wiki page but is NOT present in the current GEM CSV Russia rows. Per multiple sources the project was scaled from 10 MTPA to ~1.5 MTPA and revised into an LNG/LPG debunkering/bunkering/transshipment terminal -- bunkering is explicitly OUT of GEM's LNG terminals scope. Appears to be a deliberate non-coverage (excluded/removed because it became a bunkering/transshipment terminal), not a discovery gap.",
+    "severity": "low",
+    "suggested_action": "Confirm Vladivostok LNG's exclusion is deliberate (bunkering/transshipment = out of scope) rather than an accidental drop. No new_terminal staged. Per anti-circularity, GEM.wiki is not evidence; flagged only to confirm intent.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "below_threshold",
+    "terminal_id": "T100000131152",
+    "unit_id": "",
+    "terminal_name": "Arkhangelsk small-scale LNG plant (Nov 2024 discussion)",
+    "issue": "A Nov-2024 meeting discussed building a small-scale LNG plant in Arkhangelsk (transport/heating use). No sponsor, capacity, or specific site disclosed; not included in Russia's Energy Strategy to 2050 (Apr 2025); no further updates as of mid-2025. Fails all three add-threshold elements (sponsor / location precision / concrete step). Likely the same Arkhangelsk locality already represented by GEM's existing Arkhangelsk LNG Terminal (T100000131152) rather than a distinct project.",
+    "severity": "low",
+    "suggested_action": "No new_terminal or monitor entry warranted -- too vague and possibly redundant with the existing Arkhangelsk LNG Terminal. Re-check in a future Russia sweep if a sponsor/concrete step emerges.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "below_threshold",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Russian inland small-scale / low-tonnage LNG plants (Cryogas-Kuzbass/Kemerovo and ~22 regional units)",
+    "issue": "Trade press notes ~22 low-tonnage LNG plants operating in Russia for regional gas distribution, plus Novatek's Cryogas-Kuzbass (Kemerovo Region, ~80,000 tpa, first train end-2025). These are inland regional gas-distribution / fueling units, not coastal import/export terminals, and most sit below GEM's terminal-tracking threshold. Noted so they are not re-surfaced as discoveries every sweep.",
+    "severity": "low",
+    "suggested_action": "Treat inland regional-distribution low-tonnage plants as below GEM terminal scope unless one is specifically an import/export terminal. No staging.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  }
+]

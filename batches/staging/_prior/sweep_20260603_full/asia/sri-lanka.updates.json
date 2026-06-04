@@ -1,0 +1,43 @@
+[
+  {
+    "terminal_id": "T100000130316",
+    "unit_id": "G100002031600",
+    "terminal_name": "Kerawalapitiya LNG Terminal",
+    "unit_name": "--",
+    "country": "Sri Lanka",
+    "field_name": "Floating",
+    "old_value": "",
+    "new_value": "True",
+    "confidence": "green",
+    "source_tier": "primary/regulatory + trade press",
+    "ref_field": "",
+    "ref_urls": [
+      "https://www.slcgmel.org/request-for-proposals-for-the-deployment-of-floating-storage/",
+      "https://www.upstreamonline.com/lng/tender-launched-for-sri-lanka-lng-floater/2-1-971433",
+      "https://www.gem.wiki/Kerewalapitiya_LNG_Terminal"
+    ],
+    "source_notes": "The Aug 2025 CHEC award is explicitly for a FLOATING storage & regasification unit (FSRU) at offshore Kerawalapitiya under a BOO (vessel) / BOOT (mooring) model. The Ceylon Electricity Board RFP (primary) is titled 'deployment of floating storage and regasification unit (FSRU) at offshore Kerawalapitiya'; Upstream headline = 'Tender launched for Sri Lanka LNG floater'. GEM currently has Floating blank for this terminal. Floating field has no paired [ref] column in the 115-col schema (ref_field intentionally empty). Note: FloatingVesselName is NOT set — vessel not yet chartered/built, consistent with leaving it blank (same pattern as Hsieh-Ho).",
+    "scope_note": "Single-unit terminal (G100002031600); no other unit-rows to propagate to.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130316",
+    "unit_id": "G100002031600",
+    "terminal_name": "Kerawalapitiya LNG Terminal",
+    "unit_name": "--",
+    "country": "Sri Lanka",
+    "field_name": "Offshore",
+    "old_value": "",
+    "new_value": "True",
+    "confidence": "green",
+    "source_tier": "primary/regulatory + trade press",
+    "ref_field": "",
+    "ref_urls": [
+      "https://www.slcgmel.org/request-for-proposals-for-the-deployment-of-floating-storage/",
+      "https://www.upstreamonline.com/lng/tender-launched-for-sri-lanka-lng-floater/2-1-971433"
+    ],
+    "source_notes": "CEB RFP and trade press describe the FSRU as deployed 'offshore Kerawalapitiya' (moored offshore, ~156,000 m3 storage, 380 MMcf/d regas). GEM has Offshore blank. Offshore field has no paired [ref] column (ref_field intentionally empty). Lower-priority companion to the Floating=True change; reviewer should confirm GEM's offshore/onshore convention for a moored-FSRU import terminal before applying.",
+    "scope_note": "Single-unit terminal; no propagation needed.",
+    "researcher_initials": "AI-draft (sweep)"
+  }
+]

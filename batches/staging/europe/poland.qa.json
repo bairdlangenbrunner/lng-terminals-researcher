@@ -1,22 +1,42 @@
 [
   {
-    "category": "data_consistency",
-    "terminal_id": "T100000130731",
-    "unit_id": "G100002073101",
-    "terminal_name": "Polish Baltic Sea Coast FSRU",
-    "issue": "The 'Expansion (FSRU 2)' unit is Status=proposed but carries a stale ShelvedYear=2023 and ShelvedCancelledStatusType=confirmed. FSRU 2 was first proposed in 2024 and is actively advancing (Gaz-System launched a binding FSRU 2 open season in March 2026; ~4.5 bcm/y additional capacity), so a 2023 shelved year is contradictory and looks like a copy artifact from another unit. Recommend clearing ShelvedYear/ShelvedCancelledStatusType on the proposed FSRU 2 unit.",
-    "severity": "medium",
-    "suggested_action": "Clear ShelvedYear (2023) and ShelvedCancelledStatusType (confirmed) on G100002073101; the unit is proposed/active, not shelved.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "verification",
+    "category": "status_timeline",
     "terminal_id": "T100000130731",
     "unit_id": "G100002073100",
     "terminal_name": "Polish Baltic Sea Coast FSRU",
-    "issue": "Gdańsk FSRU 1 timeline and capacity re-verified and CONSISTENT with GEM: construction underway (jetty dredging began H2-2025), 6.1 bcm/y, FID 2023, commissioning Q1 2028 (LatestPlannedStartYear=2028), FSRU vessel under construction at HD Hyundai (Hull 3515, 170,000 cbm), launched/floated May 2026, still UNNAMED (GEM FloatingVesselName correctly blank). VesselOperator=Mitsui O.S.K. Lines confirmed (chartered via a 100%-owned MOL subsidiary; secondary sources name it 'White Eagle Energy' but the MOL primary release does not name the subsidiary, so VesselOwner left unfilled).",
+    "issue": "FSRU 1 (construction) commissioning timeline firmed up since GEM's 2025-07-23 update: the 170,000-m3 FSRU was launched at HD Hyundai Heavy Industries (South Korea) in May 2026; it is expected to arrive in the Gulf of Gdansk by end-2027, with regasification services scheduled to begin Q1 2028. Onshore-works completion planned 2026. GEM has no OriginalPlannedStartYear/LatestPlannedStartYear populated. Status remains construction (vessel launch is a build milestone, not start of operations).",
+    "severity": "medium",
+    "suggested_action": "Reviewer may populate OriginalPlannedStartYear/LatestPlannedStartYear = 2028 (regas) and note end-2027 vessel delivery, citing worldoil 2026-05-19 / LNG Prime 'HD Hyundai Heavy launches Gdansk FSRU' (186923) / GAZ-SYSTEM FSRU-terminal page. No Status field edit and no timeline file staged (fetch_timeline endpoint DOWN per CLAUDE.md).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "fsru_sync",
+    "terminal_id": "T100000130731",
+    "unit_id": "G100002073100",
+    "terminal_name": "Polish Baltic Sea Coast FSRU",
+    "issue": "FSRU 1 vessel chartered from White Eagle Energy (100% Mitsui O.S.K. Lines subsidiary) under a ~15-yr time-charter; built by HD Hyundai Heavy Industries (Hull No. 3515). Vessel launched May 2026 but NOT yet named publicly and no IMO disclosed, so the carrier-link key (vessel name + IMO) is incomplete. VesselOwner/VesselParent staged as field updates; FloatingVesselName/FSRUVesselIMO left blank.",
+    "severity": "medium",
+    "suggested_action": "At batch assembly, run fsru_sync_check.py for this terminal (short-circuits gracefully without a carrier backend). Watch for vessel name/IMO disclosure (christening/delivery, expected 2027) to complete the linking fields and FSRU-sync cross-check.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_quality",
+    "terminal_id": "T100000130731",
+    "unit_id": "G100002073100",
+    "terminal_name": "Polish Baltic Sea Coast FSRU",
+    "issue": "Vessel-operator/manager attribution is ambiguous across sources: MOL's PR states 'the MOL group will manage the vessel', while LNG Prime's project infobox lists the operator as Gaz-System. GEM's terminal-level Operator (GAZ-SYSTEM) is correct for the terminal. VesselOperator field intentionally left blank rather than guessing vessel manager vs terminal operator.",
     "severity": "low",
-    "suggested_action": "No change. Optionally add VesselOwner once the MOL subsidiary name (reported as White Eagle Energy) is confirmed by a primary source and the vessel is delivered (carrier-project owned per FSRU sync rule).",
+    "suggested_action": "If a definitive vessel manager/operator is later disclosed (likely an MOL technical-management entity), populate VesselOperator then. Do not conflate the terminal operator (GAZ-SYSTEM) with the vessel manager.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130731",
+    "unit_id": "G100002073101",
+    "terminal_name": "Polish Baltic Sea Coast FSRU",
+    "issue": "FSRU 2 (Expansion, proposed): GAZ-SYSTEM launched a BINDING open season on 2026-03-20 (following a Dec-2025 market consultation) to confirm long-term capacity bookings as the basis for a future investment decision on a second FSRU (~4.5 bcm/y). Reported 2031-2032 demand exceeded the planned capacity by ~4x; ~half of regasified LNG would be re-exported to Ukraine, Slovakia, Czechia, Lithuania. Status remains proposed (no FID/construction). GEM capacity (4.50 bcm) matches.",
+    "severity": "low",
+    "suggested_action": "Monitor open-season results for a possible move proposed->construction/FID. Capacity already correct in GEM; no field edit needed now. Cite GAZ-SYSTEM PR 2026-03-20 / LNG Prime 'launches binding open season for second Gdansk FSRU' (180978).",
     "researcher_initials": "AI-draft"
   }
 ]

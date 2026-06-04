@@ -19,7 +19,7 @@ Where things live — **read on demand as the workflow dictates, not at session 
 
 ## Two batch inputs
 
-1. **Fresh GEM export** (gitignored; pulled at the start of every batch): `python gem_all_fields.py -o gem_export.csv && python pull_gem_db.py --map-only` → CSV + column-index map (`.colmap.json`). No cookies; the cookie-based `gem_export_via_web.py` (wrapped by a bare `python pull_gem_db.py`, auth from `.env`) is the fallback.
+1. **Fresh GEM export** (gitignored; pulled at the start of every batch): `python gem_query.py --all-fields lng -o gem_export.csv && python pull_gem_db.py --map-only` → CSV + column-index map (`.colmap.json`). (`gem_all_fields.py` is the library behind `--all-fields`; invoking it directly is a silent no-op — verify the CSV mtime actually changed.) No cookies; the cookie-based `gem_export_via_web.py` (wrapped by a bare `python pull_gem_db.py`, auth from `.env`) is the fallback.
 2. **GIIGNL annual reports** — a committed archive of every edition 2020–2026 in `data/` (manifest in `data/README.md`: filenames, page counts, table/fleet page locations, edition→calendar-year map; edition N covers calendar year N−1). All seven are genuine PDFs (v1.4–v1.7) with usable text layers — the `pdftotext` pipeline applies (offsets are 2026-tuned; older editions need re-derivation per `data/README.md`). Current target: `data/GIIGNL-2026-Annual-Report-0526b.pdf`. **`file <path>` before assuming the format** — a future download could arrive as the legacy zip-of-JPEGs (vision pipeline in git history); a `(zip deflate encoded)` tag from `file` is just normal PDF stream compression, not the zip form.
 
 ## Read the methodology + relevant SOPs first

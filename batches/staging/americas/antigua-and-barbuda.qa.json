@@ -4,19 +4,19 @@
     "terminal_id": "T100000131083",
     "unit_id": "G100002108300",
     "terminal_name": "Antigua Power LNG Terminal",
-    "issue": "VERIFIED CURRENT (no Status change): GEM Status=construction (LastUpdated 2025-06-03). As of Mar 2026, the terminal is still in construction — dredging of the Crabbs channel / St John's Harbour nearing completion, with LNG vessels expected to begin using the channel by ~June 2026 to bring the ~46 MW LNG-to-power facility online. This confirms construction (not yet operating) and the GEM ResearcherNotesUnit account of dredging as the gating issue. Approaching operating mid-2026; flag for a status check then. No Status edit / timeline file this batch.",
+    "issue": "Imminent construction->operating transition to watch. As of 23 Mar 2026, the Crabbs Peninsula access-channel dredging that has blocked LNG vessel access is ~98% complete (only turning-basin work, ~5 weeks, remaining). Utilities Minister Melford Nicholas projects LNG vessels transiting the channel and the US$50M plant coming online 'by June' 2026. No confirmed first-cargo / commissioning event found yet as of this sweep (2026-06-03), so Status correctly remains construction. fetch_timeline endpoint is DOWN, so this is logged as a qa note rather than a Status/timeline edit: re-check shortly after June 2026 for a first-cargo or 'now running on gas' report and, if confirmed, flip Status to operating with a LatestPlannedStartYear=2026 timeline entry.",
     "severity": "medium",
-    "suggested_action": "Re-check around mid-2026: if LNG vessels begin discharging and the plant comes online, move construction->operating via the normal timeline process. No edit this batch.",
+    "suggested_action": "Re-verify in the next batch (post-June 2026) for a confirmed first LNG cargo / commissioning on gas; if confirmed, route a Status construction->operating change and a 2026 start-year update to an Update batch.",
     "researcher_initials": "AI-draft"
   },
   {
-    "category": "capacity",
+    "category": "data_completeness",
     "terminal_id": "T100000131083",
     "unit_id": "G100002108300",
     "terminal_name": "Antigua Power LNG Terminal",
-    "issue": "GEM Capacity='100.00' with CapacityUnits='tpa' and CapacityinMtpa=0.00 / CapacityinBcm/y=0.00. '100 tpa' is implausibly small for an LNG import terminal and the derived mtpa/bcm are zero — looks like a placeholder/unit-entry artifact rather than a real nameplate. The facility feeds a ~46 MW power plant (small terminal); a real send-out figure was not located in sources. Flagging the suspect capacity value for verification; not staging a capacity edit without a sourced nameplate.",
+    "issue": "CapacityinMtpa / Capacity / Capacity [ref] are blank in GEM. This is a small modular INOXCVA mini-LNG receiving terminal feeding a 40 MW (5x Wartsila 34DF) dual-fuel power plant; public sources describe the downstream power rating (40 MW) and four storage tanks but no verified LNG terminal regas/throughput nameplate in mtpa was found in the last-24-month sweep. Not staging a capacity fill (no reliable mtpa figure; 40 MW is a power rating, not terminal nameplate). Note: this row was NOT a blank-ref target in the standard worklist (blank_refs=0).",
     "severity": "low",
-    "suggested_action": "Verify the Antigua terminal's true send-out/storage capacity from Eagle LNG / Caribbean LNG / APUA; the current '100 tpa' (0.00 mtpa) appears to be a data-entry artifact. No edit without a sourced value.",
+    "suggested_action": "If a throughput figure is needed, attempt an mtpa derivation from the 40 MW dual-fuel plant's gas burn or from INOXCVA tank specs in a later exhaustive pass; leave blank until a primary source gives terminal nameplate.",
     "researcher_initials": "AI-draft"
   }
 ]

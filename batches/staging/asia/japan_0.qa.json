@@ -1,52 +1,62 @@
 [
   {
-    "category": "data_quality",
-    "terminal_id": "T100000130701",
-    "unit_id": "G100002070100",
-    "terminal_name": "Niihama LNG Terminal",
-    "issue": "OtherNames cell on Niihama LNG Terminal = \"Sakaide LNG Terminal\", but Sakaide LNG Terminal is a SEPARATE live GEM terminal (T100000130513): different owner (Sakaide LNG vs Niihama LNG Co Ltd), different prefecture (Kagawa vs Ehime), different ActualStartYear (2010 vs 2022). Niihama is a 2022 Tokyo-Gas/Shikoku-Electric-led terminal, not an alias of Sakaide. The alias appears to be an erroneous carryover and could cause a false dedup merge.",
-    "severity": "medium",
-    "suggested_action": "Verify and most likely remove \"Sakaide LNG Terminal\" from Niihama's OtherNames (the two are distinct terminals). If a deliberate relationship exists (e.g. relocation/successor), document it in ResearcherNotes instead of an alias.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "citation_hygiene",
-    "terminal_id": "T100000130527",
-    "unit_id": "G100002052700",
-    "terminal_name": "Soma Port LNG Terminal",
-    "issue": "Status [ref] = https://www.japex.co.jp/en/news/detail/20220320_01/?utm_source=chatgpt.com carries a '?utm_source=chatgpt.com' tracking suffix (artifact of a prior ChatGPT-assisted edit). The clean URL (suffix removed) verifies PASS for 'Soma'. Cosmetic only; no data change.",
+    "category": "blank_ref_unfilled",
+    "terminal_id": "T100000130479",
+    "unit_id": "G100002047901",
+    "terminal_name": "Higashi Ohgishima LNG Terminal",
+    "issue": "Cancelled Expansion unit has blank Status/ShelvedYear/CancelledYear/StopYear [ref] cells. Existing GEM dates (Shelved 2015, Cancelled 2017, Stop 2017) are flagged ShelvedCancelledStatusType=inferred. No current source explicitly states these cancellation years; the only legacy refs are a dead-ish bit.ly shortener (http://bit.ly/2wm5ttQ) and GIIGNL 2021. Filling a [ref] with a source that does not state the inferred years would be an unsupported/orphan ref.",
     "severity": "low",
-    "suggested_action": "Strip the '?utm_source=chatgpt.com' query string from the Status [ref] URL.",
+    "suggested_action": "Leave [ref]s blank rather than orphan-fill; if a primary source confirming the 2015/2017 cancellation timeline is found in a future batch, add it. Optionally re-resolve the bit.ly target and re-cite if it confirms the FacilityType/capacity.",
     "researcher_initials": "AI-draft"
   },
   {
-    "category": "no_change",
+    "category": "blank_ref_unfilled",
+    "terminal_id": "T100000130875",
+    "unit_id": "G100002087500",
+    "terminal_name": "Sendai LNG Terminal",
+    "issue": "Status/Capacity/StartDate [ref] left blank. City of Sendai Gas Bureau operator page documents a single 'Minato Factory' (港工場) LNG site but GEM splits the City of Sendai Gas Bureau's Sendai-area LNG into TWO terminals (Sendai LNG 0.8 mtpa/2013 and Shin Minato LNG 0.3 mtpa/1997). The page does not state mtpa capacity or start years and is ambiguous as to which GEM record the 80,000 kL tank maps to, so capacity/start/status refs were not filled to avoid a mis-mapped citation. FacilityType [ref] was filled.",
+    "severity": "medium",
+    "suggested_action": "Reconcile whether GEM's 'Sendai LNG Terminal' and 'Shin Minato LNG Terminal' are the same physical Minato Factory site (possible duplicate/split). Source mtpa + start-year from JOGMEC datahub per-terminal page or GIIGNL before filling the remaining refs.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_ref_unfilled",
+    "terminal_id": "T100000130519",
+    "unit_id": "G100002051900",
+    "terminal_name": "Shin Minato LNG Terminal",
+    "issue": "FacilityType/Status/Owner/Capacity/StartDate/Location [ref] all blank. Owner = City of Sendai Gas Bureau (same operator as Sendai LNG Terminal). Operator equipment page describes one 'Minato Factory' LNG site; cannot confidently attach capacity (0.3 mtpa)/1997-start refs to this specific record vs the sibling Sendai LNG Terminal record without resolving the split. No standalone source naming 'Shin Minato' as a distinct terminal was found.",
+    "severity": "medium",
+    "suggested_action": "Same reconciliation as Sendai LNG Terminal: confirm Shin Minato vs Sendai are distinct sites (or a duplicate) before ref-filling. Owner ref can be filled from the City of Sendai Gas Bureau page once the record identity is confirmed.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_ref_unfilled",
+    "terminal_id": "T100000130521",
+    "unit_id": "G100002052100",
+    "terminal_name": "Shin-Sendai LNG Terminal",
+    "issue": "Capacity (1.7 mtpa) and Location [ref] left blank. Tohoku Electric gas-business page confirms the facility and owner but gives no mtpa figure or precise coordinates; GEM's existing Status/StartDate refs cite GIIGNL 2023. FacilityType and Owner refs filled from the operator page.",
+    "severity": "low",
+    "suggested_action": "Source the 1.7 mtpa capacity from JOGMEC datahub or GIIGNL latest edition; Location ref from operator facility map.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dev_pipeline_confirmed",
     "terminal_id": "T100000130475",
     "unit_id": "G100002047501",
     "terminal_name": "Hibiki LNG Terminal",
-    "issue": "Hibiki Expansion (3rd tank) re-verified: GEM's Status=construction, FIDYear=2024, OriginalPlannedStartYear=2029, LatestPlannedStartYear=2029 all match current sources. FID Nov 2024; groundbreaking 18 Jul 2025; completion targeted H1 FY2029 (LNG Prime, verified PASS). JERA's Apr-2025 arrangement is capacity-sharing on the new tank, NOT an equity stake, so owner/parent (Hibiki LNG Co / Saibu Gas 90% + Kyushu Electric 10%) correctly excludes JERA. New tank is 230,000 cbm STORAGE (not a defined mtpa sendout add) so the blank CapacityinMtpa on the Expansion unit is defensible; left blank.",
+    "issue": "Construction-status Expansion (third 230,000 m3 LNG tank, Saibu Gas; FID Nov 2024, groundbreaking Jul 2025, EPC Chiyoda, completion H1 FY2029) confirmed on-track and consistent with GEM. No status change.",
     "severity": "low",
-    "suggested_action": "No edit. Confidence bump only (verified current 2026-06).",
+    "suggested_action": "No action; status_timeline confirmed unchanged.",
     "researcher_initials": "AI-draft"
   },
   {
-    "category": "no_change",
-    "terminal_id": "T100000130465",
-    "unit_id": "G100002046500",
-    "terminal_name": "Fukuoka LNG Terminal",
-    "issue": "Fukuoka re-verified: GEM Status=retired is correct. Terminal decommissioned June 2015 after LNG receiving was consolidated at Hibiki (operational Nov 2014). Owner Saibu Gas Holdings Co Ltd is the correct current holding entity (formed 2021). No reactivation found.",
-    "severity": "low",
-    "suggested_action": "No edit. Confidence bump only (verified current 2026-06).",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "no_change",
-    "terminal_id": null,
-    "unit_id": null,
-    "terminal_name": "Japan shard-0 (22 even-indexed terminals)",
-    "issue": "Bulk re-verify: the remaining shard terminals are stable OPERATING import terminals owned by Japanese power/gas utilities, consistent with current sources and recent GEM LastUpdated (mostly 2026-05, rest 2025-09). No status, capacity, owner, parent, or operator changes found vs GEM. Spot-checked anchor sources (JOGMEC datahub, GIIGNL/IGU 2025) verify PASS. Discovery sweep for new Japanese import terminals surfaced none meeting the add-bar (JERA's new-build activity is offshore - Hawaii FSRU - not Japan).",
-    "severity": "low",
-    "suggested_action": "No edits. Country is verified current; apply confidence bumps where review workflow supports it.",
+    "category": "dev_pipeline_confirmed",
+    "terminal_id": "T100000130513",
+    "unit_id": "G100001094395",
+    "terminal_name": "Sakaide LNG Terminal",
+    "issue": "Proposed Expansion (Sakaide LNG, Shikoku Electric subsidiary; +1 LNG tank 180,000 kL + 1 vaporizer per 25 Aug 2025 release; vaporizer FY2029, tank FY2031, tied to Sakaide power station Unit 5). Still pre-construction. NOTE: GEM Capacity field = 50.00 with no CapacityUnits (per ResearcherNotes this is the 50 t/h vaporization rate, NOT mtpa nameplate) — flag for review, not a nameplate value.",
+    "severity": "medium",
+    "suggested_action": "Confirm status still proposed (no construction start yet). Review the Capacity=50.00 cell on the Expansion unit: it appears to hold a 50 t/h vaporization rate rather than an mtpa capacity, which may misrepresent in capacity rollups.",
     "researcher_initials": "AI-draft"
   }
 ]

@@ -1,42 +1,22 @@
 [
   {
-    "category": "no_change",
+    "category": "link_rot",
     "terminal_id": "T100001061364",
     "unit_id": "G100001070296",
     "terminal_name": "Guyana LNG Terminal",
-    "issue": "Re-verified, no field changes warranted. GEM (LastUpdated 2025-10-09) lists Status=proposed, Owner=Fulcrum LNG Inc [100%], an approximate Stabroek-vicinity location, and a project still lacking an official name. As of early-2026 reporting this remains accurate: Fulcrum LNG (a US startup led by a former ExxonMobil executive) was selected as the No.1 bidder among 17 to design/finance/build/operate offshore gas-gathering + LNG infrastructure, but NO agreement has been signed. VP Jagdeo (June 2025) said no Fulcrum agreement would be signed before the 1 Sept 2025 general elections; no post-election signing has been reported. ExxonMobil (Stabroek operator) has NOT committed to participation and is still appraising gas potential (deeper zones / SE Stabroek). Project remains pre-everything (no FID, no construction, no firm start year).",
+    "issue": "Four GEM [ref] cells (FacilityType, Status, Owner, ProposalDate, and part of Location) all cite the same Reuters article (reuters.com/business/energy/exxon-plans-large-scale-gas-project-oil-dominated-guyana-2025-02-19/), which now FAILS url_verifier with HTTP 401 (Reuters paywall/bot-block). Verified substitute confirming sponsor + proposed status: https://oilnow.gy/featured/guyana-taps-fulcrum-lng-to-partner-with-exxon-government-on-gas-development/ (PASS).",
     "severity": "low",
-    "suggested_action": "No staged edit. Note: all candidate source URLs (Reuters 2025-02-19, fulcrumlng.com selection release, dpi.gov.gy Jagdeo statement) FAILED url_verifier (401 paywall / 403 / connection failure), so no green re-verify ref could be attached this sweep — flagged in monitor for a fresh-source check. Keep watching for: a signed Fulcrum agreement, an official project name, a confirmed ExxonMobil equity decision, capacity, and a firmed location.",
+    "suggested_action": "Swap the dead Reuters URL on the affected [ref] cells for the verified OilNOW URL (or another archived copy of the Feb 2025 Reuters piece) at next edit. Underlying facts (Exxon Wales Gas Vision, Fulcrum as builder, Feb 2025 proposal) are unchanged.",
     "researcher_initials": "AI-draft"
   },
   {
-    "category": "discovery_dedup_already_in_gem",
+    "category": "status_timeline",
     "terminal_id": "T100001061364",
     "unit_id": "G100001070296",
     "terminal_name": "Guyana LNG Terminal",
-    "issue": "The Stabroek gas-to-LNG export concept is ALREADY this GEM record. GEM's own page describes it as the 'Wales Gas Vision', owner Fulcrum LNG Inc [100%], sponsor ExxonMobil, announced Feb 2025, proposed/offshore. So the 'separate ExxonMobil-Hess-CNOOC Wales LNG facility' surfaced in Feb-2025 trade press (PGJ, World Oil) is NOT a distinct terminal — it is the same project GEM already tracks under Fulcrum. Creating an Exxon-led duplicate would double-count.",
+    "issue": "No status change to stage (still proposed), but development is stalling, not advancing. As of mid/late 2025 there is still no signed government agreement with Fulcrum LNG, no EPC contract, no FID, and no announced financing close; VP Jagdeo called the selection tentative and said no deal before Sept 1, 2025, with officials hinting at reallocating development rights if milestones are missed. Fulcrum (US startup, ex-Exxon principals) continues to face questions over technical capacity and ability to raise ~$10-30B. ExxonMobil equity participation undecided. Capacity, official project name, start year all still undisclosed (consistent with GEM and with RR's 10/25 researcher note).",
     "severity": "medium",
-    "suggested_action": "No new terminal. Optionally enrich the existing record: Stabroek co-venturers ExxonMobil [45%] / Hess [30%] / CNOOC [25%] supply profit gas to Fulcrum's facility (Fulcrum selected June 2024, govt calls selection 'tentative', no financing as of 2025). Target ~24 mtpa, phase-1 construction 2026, ops 2030 per reporting (verify before staging as an Update).",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "discovery_out_of_scope_not_lng_terminal",
-    "terminal_id": "",
-    "unit_id": "",
-    "terminal_name": "Guyana Gas-to-Energy — Wales NGL plant + 300 MW power plant",
-    "issue": "The flagship Wales project (West Bank Demerara) fed by Exxon's Liza/Stabroek gas pipeline is (a) a 300 MW combined-cycle POWER plant and (b) a Natural Gas LIQUIDS (NGL) fractionation plant producing propane/butane/pentane (~4,000 b/d phase 1, ~5,800 b/d phase 2). Neither is an LNG (liquefied natural gas) import/export terminal. Explicitly out of scope for the LNG-terminals tracker. ~68% complete, target mid-2026; CH4/Lindsayca EPC.",
-    "severity": "low",
-    "suggested_action": "No action in this tracker (power plant belongs to GEM power tracker; the pipeline to the gas tracker). Recorded to prevent re-surfacing the NGL plant as an LNG candidate next sweep.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "discovery_below_threshold_overlaps_existing",
-    "terminal_id": "T100001061364",
-    "unit_id": "",
-    "terminal_name": "ExxonMobil own-LNG option (Longtail / Stabroek)",
-    "issue": "Exxon's statements about possibly building 'some LNG facilities once we fully understand the resource' are conditional/exploratory ('a possibility being investigated'). Exxon's concrete near-term gas plan is Longtail (~1.2 bcf/d, FID targeted ~2026, first gas ~2029) aimed at ONSHORE use (fertilizer, alumina, data centers), not LNG export. No FEED, no LNG site, no separate sponsor structure — and it sits inside the same Exxon/Fulcrum/government deliberation already captured by the existing GEM record.",
-    "severity": "low",
-    "suggested_action": "No new terminal (below threshold + overlaps the existing Fulcrum/Wales record). See guyana.monitor.json for the watch entry.",
+    "suggested_action": "No field edit. Keep proposed and keep monitoring: watch for (a) a signed Fulcrum-Guyana gas agreement and any Exxon equity terms, (b) an official project name, (c) any disclosed liquefaction capacity (mtpa) and FID/start-year, (d) any government move to reallocate the project to another developer. Revisit each annual sweep.",
     "researcher_initials": "AI-draft"
   }
 ]

@@ -1,0 +1,26 @@
+[
+  {
+    "country": "Russia",
+    "candidate_name": "Kamchatka LNG Transshipment Complex (Bechevinskaya Bay)",
+    "sponsor_or_proposer": "Arctic Transshipment LLC (Novatek subsidiary)",
+    "first_observed_batch": "2026-06 discovery",
+    "last_observed_batch": "2026-06 discovery",
+    "current_state": "Operational ship-to-ship transshipment hub. Koryak FSU (IMO 9915105, 360,000 cbm, Daewoo-built) delivered to Bechevinskaya Bay, Kamchatka, July 2023; ~20 MTPA design throughput; transships Arctic LNG (Yamal/Arctic LNG 2) from Arc7 ice-class carriers to conventional tankers for Asia-Pacific delivery. Intermittent commercial transshipment resumed Q3 2025 after ~2 years idle under sanctions pressure.",
+    "missing_threshold_elements": "SCOPE QUESTION, not a data gap: a pure ship-to-ship LNG transshipment hub is neither an import (regasification) nor an export (liquefaction) terminal, and GEM's FacilityType vocabulary offers only 'import'/'export'. Not staging a new_terminal until the user decides whether transshipment hubs are in scope for the Global Gas Infrastructure Tracker. NOTE the named FSU (Koryak) is a carrier-project / FSRU-sync concern.",
+    "watch_for": "User ruling on transshipment-hub scope; whether GEM adds a transshipment FacilityType; Koryak FSU appearing in the carrier backend (run fsru_sync_check if it does); any conversion to a regas/import role.",
+    "best_lead_url": "https://lngprime.com/asia/russia-backs-novateks-lng-transshipment-terminal-in-kamchatka/22132/",
+    "notes": "Sources verified via url_verifier (PASS): LNG Prime (Kamchatka/transshipment), PortNews en.portnews.ru/news/350378 (Bechevinskaya/Kamchatka FSU delivery), Maritime Executive (transshipment/Kamchatka). Operator Arctic Transshipment LLC. NOT in current GEM Russia export (grep + dedup_index negative for kamchatka/bechevinka/koryak/transship). Distinct from GEM's existing 'Far East'/'Sakhalin' export terminals."
+  },
+  {
+    "country": "Russia",
+    "candidate_name": "Murmansk / Ura Bay LNG Transshipment Complex (Saam FSU)",
+    "sponsor_or_proposer": "Arctic Transshipment LLC (Novatek subsidiary)",
+    "first_observed_batch": "2026-06 discovery",
+    "last_observed_batch": "2026-06 discovery",
+    "current_state": "Operational ship-to-ship transshipment hub. Saam FSU (~361,600 cbm) deployed in Ura Bay near Murmansk (Kola Peninsula) June 2023; ~20 MTPA design throughput; western counterpart to the Kamchatka hub for Arctic LNG reloading. Largely idle 2023-2025 under US (Sep 2023) and EU (Jun 2024) sanctions; carrier shuttling (Christophe de Margerie) between Gulf of Ob and Ura Bay resumed late Dec 2025.",
+    "missing_threshold_elements": "Same SCOPE QUESTION as the Kamchatka hub: ship-to-ship transshipment, neither import nor export per GEM's FacilityType vocabulary. Distinct from GEM's existing 'Murmansk LNG Terminal' (Novatek's onshore liquefaction/export project) -- this is the offshore Saam FSU reloading complex, not the same facility. Held for user scope ruling.",
+    "watch_for": "User ruling on transshipment-hub scope; Saam FSU in the carrier backend (fsru_sync_check); do NOT conflate with GEM's existing Murmansk LNG Terminal export row.",
+    "best_lead_url": "https://lngprime.com/asia/novatek-set-to-launch-murmansk-lng-transshipment-ops-as-giant-fsu-arrives/84927/",
+    "notes": "Source verified via url_verifier (PASS): LNG Prime (Saam/Ura). NOT in current GEM Russia rows (grep + dedup_index negative for saam/ura/transship). Same operator/sponsor as the Kamchatka hub (Arctic Transshipment LLC / Novatek)."
+  }
+]

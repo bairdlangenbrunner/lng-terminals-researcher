@@ -1,82 +1,22 @@
 [
   {
-    "terminal_id": "T100000130591",
-    "unit_id": "G100002059100",
-    "terminal_name": "Aqaba Jordan FSRU",
-    "unit_name": "--",
-    "country": "Jordan",
-    "field_name": "FloatingVesselName",
-    "old_value": "Energos Eskimo FSRU (previously Golar Eskimo FSRU)",
-    "new_value": "Energos Force FSRU (previously Golar Eskimo FSRU / Energos Eskimo FSRU at this site)",
-    "confidence": "yellow",
-    "source_tier": "trade press (multiple)",
-    "ref_field": "FloatingVesselName [ref]",
-    "ref_urls": [
-      "https://egyptoil-gas.com/news/energos-force-arrives-in-aqaba-to-secure-gas-supply-for-jordan-and-egypt/",
-      "https://en.portnews.ru/news/385257/",
-      "https://lngprime.com/middle-east/jordan-egypt-seal-fsru-deal/134577/"
-    ],
-    "source_notes": "GEM's listed on-site vessel (Energos Eskimo, ex-Golar Eskimo) is stale. The Energos Eskimo departed Aqaba in June 2025 at the end of its NEPCO charter and sailed to Egypt (10-yr EGAS/NFE charter, deployed at Ain Sokhna). The Energos Force FSRU arrived at Aqaba ~1 Aug 2025 (operations from ~5 Aug 2025) as an interim unit on an EGAS sub-charter (originally on charter from Germany's DET). IMPORTANT/TRANSITIONAL: Energos Force was reported to end its ~6-month Aqaba charter in Dec 2025 (handled ~4 cargoes / ~14 Bcf), and the long-term replacement is a BW LNG FSU under a 10-yr NEPCO charter at the new Sheikh Sabah onshore terminal (start Q3-Q4 2026, NEPCO to own vessel at charter end). As of this sweep (2026-06) the live on-site vessel should be re-confirmed directly before applying. Both Energos Eskimo and Energos Force are Energos vessels (NFE/Apollo JV), so VesselOwner 'New Fortress Energy' and Operator 'Energos' remain valid and were left unchanged.",
-    "scope_note": "Linking/sync field per FSRU sync rule (vessel name shared with carrier project). Vessel reassignment is real but the current Energos Force deployment is interim; staged yellow and accompanied by a qa note so the reviewer can confirm the mid-2026 occupant before applying.",
-    "researcher_initials": "AI-draft (sweep)"
-  },
-  {
-    "terminal_id": "T100000130591",
-    "unit_id": "G100002059100",
-    "terminal_name": "Aqaba Jordan FSRU",
-    "unit_name": "--",
-    "country": "Jordan",
-    "field_name": "FloatingVesselName [ref]",
-    "old_value": "https://lngjournal.com/index.php/latest-news-mainmenu-47/item/108703-jordan-and-egypt-sign-energy-cooperation-agreement-including-egyptians-making-use-of-lng-fsru-at-aqaba",
-    "new_value": "https://egyptoil-gas.com/news/energos-force-arrives-in-aqaba-to-secure-gas-supply-for-jordan-and-egypt/",
-    "confidence": "yellow",
-    "source_tier": "trade press",
-    "ref_field": "FloatingVesselName [ref]",
-    "ref_urls": [
-      "https://egyptoil-gas.com/news/energos-force-arrives-in-aqaba-to-secure-gas-supply-for-jordan-and-egypt/"
-    ],
-    "source_notes": "Citation paired with the FloatingVesselName change to Energos Force (Egypt Oil & Gas, arrival at Aqaba Aug 2025). Only stage if the FloatingVesselName change is accepted (no orphan ref).",
-    "scope_note": "Paired ref for the vessel-name update above.",
-    "researcher_initials": "AI-draft (sweep)"
-  },
-  {
     "terminal_id": "T100001048176",
     "unit_id": "G100001055238",
     "terminal_name": "Sheikh Sabah LNG Terminal",
     "unit_name": "--",
     "country": "Jordan",
-    "field_name": "ConstructionYear",
-    "old_value": "",
-    "new_value": "2024",
-    "confidence": "green",
-    "source_tier": "trade press (multiple) + developer release",
-    "ref_field": "ConstructionDate [ref]",
-    "ref_urls": [
-      "https://www.prnewswire.com/ae/news-releases/gas-entec-and-agp-to-build-a-strategic-lng-terminal-in-the-kingdom-of-jordan-302226181.html",
-      "https://www.ogj.com/pipelines-transportation/lng/article/55134517/aqaba-development-lets-contract-to-build-lng-terminal-in-the-kingdom-of-jordan"
-    ],
-    "source_notes": "Aqaba Development Corp (ADC) awarded the EPCIC contract for the 720 MMcfd onshore regasification terminal to the GAS Entec / AG&P International consortium (with local partner Issa Haddadin) in Aug 2024; the project is described as a 22-month build with commissioning in Q2 2026 (operations ~Sep 2026). Jordan's energy minister inspected on-site construction progress in Oct 2025. This puts the project firmly in construction, so ConstructionYear 2024 should be added (currently blank). See accompanying qa note for the proposed->construction status change (no Status field edit per rules).",
-    "scope_note": "Project-level date field; single unit so no multi-row propagation needed.",
-    "researcher_initials": "AI-draft (sweep)"
-  },
-  {
-    "terminal_id": "T100001048176",
-    "unit_id": "G100001055238",
-    "terminal_name": "Sheikh Sabah LNG Terminal",
-    "unit_name": "--",
-    "country": "Jordan",
-    "field_name": "Owner",
-    "old_value": "",
-    "new_value": "Aqaba Development Corporation",
-    "confidence": "yellow",
-    "source_tier": "trade press (multiple)",
-    "ref_field": "Owner [ref]",
+    "field_name": "Cost",
+    "old_value": "125000000.00",
+    "new_value": "125000000.00",
+    "confidence": "blue",
+    "source_tier": "trade press (2 independent)",
+    "ref_field": "Cost [ref]",
     "ref_urls": [
       "https://www.ogj.com/pipelines-transportation/lng/article/55134517/aqaba-development-lets-contract-to-build-lng-terminal-in-the-kingdom-of-jordan",
-      "https://www.prnewswire.com/ae/news-releases/gas-entec-and-agp-to-build-a-strategic-lng-terminal-in-the-kingdom-of-jordan-302226181.html"
+      "https://lngprime.com/middle-east/agp-gas-entec-score-jordan-lng-terminal-gig/121897/"
     ],
-    "source_notes": "Owner currently blank in GEM. Aqaba Development Corp (ADC) is the state-owned infrastructure company identified as the customer/owner/developer of the terminal. GAS Entec + AG&P International are the EPCIC contractor (NOT owner), and BW LNG provides the FSU under a 10-yr NEPCO charter (NEPCO takes ownership of the FSU at charter end) — kept separate from terminal equity. ADC was not found in the GEM entity system (see entity record); verify ownership share/structure (NEPCO vs ADC) before applying, hence yellow.",
-    "scope_note": "Project-level owner; do NOT conflate the EPC contractor (GAS Entec/AG&P) or FSU provider (BW LNG/NEPCO) with terminal equity.",
+    "source_notes": "Representative re-verify for this dev-pipeline row. $125M project cost (2024) confirmed unchanged against OGJ and LNG Prime coverage of the ADC/AG&P-GAS Entec contract award; capacity (~720 mmscfd onshore regas), location (Aqaba Port), and ~Sep 2026 target also re-confirmed current. No value change.",
+    "scope_note": "Standard tier: single representative blue mark for the terminal, not every field.",
     "researcher_initials": "AI-draft (sweep)"
   }
 ]

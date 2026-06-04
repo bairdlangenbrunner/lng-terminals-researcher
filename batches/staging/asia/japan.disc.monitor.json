@@ -1,0 +1,38 @@
+[
+  {
+    "country": "Japan",
+    "candidate_name": "Yufutsu LNG Receiving Terminal",
+    "sponsor_or_proposer": "Japan Petroleum Exploration Co Ltd (JAPEX)",
+    "first_observed_batch": "2026-06 discovery",
+    "last_observed_batch": "2026-06 discovery",
+    "current_state": "Operating since Nov 2011. Tomakomai City, Hokkaido. Single 2,700-kiloliter storage tank. Receives LNG by small coastal shuttle vessel (Akebono Maru) from the Soma LNG Terminal (Fukushima), then vaporizes via the adjacent Yufutsu LNG Plant into Hokkaido's pipeline network. NOT in the 2026-06-03 gem_export.csv.",
+    "missing_threshold_elements": "None for the threshold itself (sponsor + location + operating); the open question is GEM INCLUSION SCALE — a 2,700 kL coastal satellite fed by a ~2,500 m3 shuttle barge is far below GEM's typical onshore import terminals (100,000+ m3). Coverage status in the live DB unconfirmed (export shows 43 Japan terminals vs. 51 cited in the country note).",
+    "watch_for": "Human to confirm whether GEM tracks sub-10,000 kL domestic coastal satellite terminals; if yes and it is genuinely absent, this becomes a new_terminal. Do not auto-generate given scale ambiguity.",
+    "best_lead_url": "https://www.japex.co.jp/en/business/gassupply/yufutsulng/",
+    "notes": "URL verified (PASS: Yufutsu, LNG). Primary operator source. In-scope as a marine-receiving terminal but at the small-scale margin of GEM coverage."
+  },
+  {
+    "country": "Japan",
+    "candidate_name": "Takamatsu LNG Terminal",
+    "sponsor_or_proposer": "Shikoku Gas Co Ltd",
+    "first_observed_batch": "2026-06 discovery",
+    "last_observed_batch": "2026-06 discovery",
+    "current_state": "Operating (since ~2003 per Japanese Wikipedia LNG-base list). Takamatsu, Kagawa Prefecture, Shikoku. ~10,000 kiloliter storage. Receives LNG by coastal tanker (e.g. Daiichi Shinju Maru, 2,500 m3) from Osaka Gas / Kitakyushu LNG. NOT in the 2026-06-03 gem_export.csv.",
+    "missing_threshold_elements": "Same as Yufutsu — meets sponsor/location/operating, but GEM INCLUSION SCALE is the open question (10,000 kL coastal satellite). Live-DB coverage unconfirmed.",
+    "watch_for": "Human to confirm GEM coverage policy for ~10,000 kL coastal satellite terminals; convert to new_terminal only if confirmed in-scope and genuinely absent.",
+    "best_lead_url": "https://ja.wikipedia.org/wiki/%E6%97%A5%E6%9C%AC%E3%81%AELNG%E5%9F%BA%E5%9C%B0%E4%B8%80%E8%A6%A7",
+    "notes": "Lead source is Japanese Wikipedia (Tier 3, lead only, not citable for an add). Needs a Shikoku Gas primary-source confirmation before any staging. Capacity from trade-press/encyclopedic sources, not verified primary."
+  },
+  {
+    "country": "Japan",
+    "candidate_name": "Matsuyama LNG Terminal",
+    "sponsor_or_proposer": "Shikoku Gas Co Ltd",
+    "first_observed_batch": "2026-06 discovery",
+    "last_observed_batch": "2026-06 discovery",
+    "current_state": "Operating (since ~2008 per Japanese Wikipedia LNG-base list). Matsuyama, Ehime Prefecture, Shikoku. ~10,000 kiloliter storage. Receives LNG by coastal tanker from Osaka Gas / Kitakyushu LNG. NOT in the 2026-06-03 gem_export.csv.",
+    "missing_threshold_elements": "Same scale-ambiguity as Takamatsu; GEM live-DB coverage unconfirmed.",
+    "watch_for": "Same as Takamatsu — confirm coverage policy + live-DB presence before any add.",
+    "best_lead_url": "https://ja.wikipedia.org/wiki/%E6%97%A5%E6%9C%AC%E3%81%AELNG%E5%9F%BA%E5%9C%B0%E4%B8%80%E8%A6%A7",
+    "notes": "Lead source is Japanese Wikipedia (Tier 3, lead only). Needs Shikoku Gas primary confirmation. Likely below GEM's onshore-terminal inclusion scale."
+  }
+]

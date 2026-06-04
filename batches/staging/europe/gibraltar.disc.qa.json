@@ -1,0 +1,32 @@
+[
+  {
+    "category": "discovery_result",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "(Gibraltar — country-wide discovery sweep)",
+    "issue": "Discovery sweep of Gibraltar (rings A regulator/govt, B trade press, C sponsor IR, D DFI/FSRU-orderbook/local-press) surfaced NO LNG import/export/regasification terminal missing from GEM. Gibraltar is a ~7 km2 territory whose entire realistic LNG demand is met by its single existing facility (GEM T100000130682 'Gibraltar LNG Terminal', operating import, Shell 51% / HMG Gibraltar 49%, small-scale ~0.10 mtpa, opened 2019, feeds the North Mole / Gibraltar Electricity Authority power station). Every 'new Gibraltar LNG terminal' hit traces back to the 2019 opening of that same facility (Safety4Sea/TradeWinds/Chronicle/Gas-to-Power Journal); no second unit, no FSRU proposal, and no Gibraltar-side cross-border (Bay of Gibraltar / Campo de Gibraltar) regas project found. Endesa's Los Barrios LNG storage project sits on the Spanish side of the bay (a Spain row, not Gibraltar). No genuine gap; 0 new_terminal staged.",
+    "severity": "low",
+    "suggested_action": "No discovery action. Record that Gibraltar coverage is complete at one terminal as of 2026-06 discovery sweep.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130682",
+    "unit_id": "G100002068200",
+    "terminal_name": "Gibraltar LNG Terminal",
+    "issue": "OPERATOR CHANGE on the existing GEM row (not a discovery; flagged for the Update agent since fetch_timeline is DOWN). GEM currently lists Operator 'Gasnor'. Per Shell LNG Gibraltar Ltd (SLGL), operatorship transferred to px (Gibraltar) Ltd (part of UK-headquartered px Group, a portfolio company of Ara Partners) effective 1 November 2025, taking over from Molgas Energy. Lineage: Gasnor (commissioned 2019) was acquired by Molgas/ME Group in 2021, which renamed it and ran the terminal until ME Group withdrew from O&M services; px (Gibraltar) Ltd selected after SLGL market review. Ownership UNCHANGED: Shell 51% / HM Government of Gibraltar 49% (holding entity 'Shell LNG Gibraltar Ltd / SLGL'). So GEM's Operator='Gasnor' is stale; current operator = px (Gibraltar) Ltd. Verified non-GEM-derived sources (official + trade-press corroboration), all PASS url_verifier: https://www.pxlimited.com/news/px-group-takes-over-operation-of-gibraltar-lng-terminal/ ; https://lngprime.com/europe/px-selected-to-operate-gibraltar-lng-terminal/166193/",
+    "severity": "medium",
+    "suggested_action": "Update agent: set Operator = 'px (Gibraltar) Ltd' (effective 2025-11-01), with Operator [ref] = the two verified URLs above. Run entity_lookup.py for 'px (Gibraltar) Ltd' / 'px Group' before staging the operator entity (parent px Group, HQ United Kingdom; ultimate owner Ara Partners). Owner/Parent (Shell 51% / HMG Gibraltar 49%) unchanged.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "out_of_scope",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Peninsula 'Levante LNG' (Gibraltar LNG bunkering)",
+    "issue": "Surfaced during the sweep and deliberately EXCLUDED as out-of-scope for this tracker. Peninsula holds a Gibraltar LNG bunkering licence served by the bunker supply vessel 'Levante LNG' (12,500 m3, built Hyundai Mipo, delivered Aug 2023; loads LNG at Enagas terminals in Spain). It is ship-to-ship marine refuelling with NO onshore Gibraltar storage/regasification terminal infrastructure, so it is not an import/export/regas terminal and does not warrant a new_terminal. Shell also conducts LNG bunkering at Gibraltar (also bunkering-only). Noted so a future sweep does not re-investigate it as a missing terminal. Verified source (PASS url_verifier): https://www.maritime-executive.com/article/gibraltar-expands-lng-bunkering-by-licensing-peninsula-s-new-vessel",
+    "severity": "low",
+    "suggested_action": "No action; bunkering-only facilities are not in scope. Leave un-staged.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  }
+]

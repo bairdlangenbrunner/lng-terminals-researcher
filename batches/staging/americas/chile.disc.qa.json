@@ -1,0 +1,22 @@
+[
+  {
+    "category": "missing_unit",
+    "terminal_id": "T100000130556",
+    "unit_id": "",
+    "terminal_name": "Mejillones LNG Terminal",
+    "issue": "GNL Mejillones is developing a FOURTH regasification train (plus revamp of the three existing trains), raising regasification capacity ~50% to 8.25 million Nm3/day. This is a new unit/expansion at the existing operating terminal, not currently reflected as a separate unit/capacity in GEM. Stage is post-environmental-approval; ~2-year build from FID per the operator. Routes to the UPDATE workflow (new_unit or capacity update), not a new terminal.",
+    "severity": "medium",
+    "suggested_action": "UPDATE agent: confirm current train-4 status (proposed/construction; FID taken?) and add as a new unit OR update Mejillones capacity. Operator source: https://www.gnlm.cl/proyectos/ ; BNamericas project profile: https://www.bnamericas.com/en/project-profile/expansion-of-mejillones-lng-terminal-regasification-capacity",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ownership_resolution",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Andes LNG Terminal (proposed new_terminal this batch)",
+    "issue": "Sponsor/owner modeling for the staged Andes LNG row needs reviewer judgement. Reporting names three consortium members with distinct roles: Shell (gas supply), Mitsui O.S.K. Lines (FSRU provider/operator), Wärtsilä (power-generation engines), under titular entity 'Andes S.A.' Wärtsilä's role is on the power-plant side, so it may not belong as a terminal Owner; methodology may prefer Shell + Mitsui as Owners with Andes S.A. as Operator. Capacity (~10 Mm3/day -> ~1.5 mtpa) and lat/long are approximate placeholders.",
+    "severity": "low",
+    "suggested_action": "Before adding, resolve owner list (Shell PLC + Mitsui O.S.K. Lines Ltd both already in GEM; decide on Wärtsilä), confirm exact regasification capacity and site coordinates from SEIA EIA (expediente 2131585709), and confirm CancelledYear 2022 (Comité de Ministros rejection).",
+    "researcher_initials": "AI-draft"
+  }
+]

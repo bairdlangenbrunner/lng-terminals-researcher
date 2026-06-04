@@ -1,0 +1,32 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000131124",
+    "unit_id": "G100002112401",
+    "terminal_name": "Coral North FLNG Terminal",
+    "issue": "GEM has Coral North FLNG as Status=proposed. Eni announced Final Investment Decision (FID) for the Coral North project on 28 Oct 2025 (partners Eni, CNPC, ENH, Kogas, XRG; capacity ~3.5 mtpa; first gas targeted 2028). Surfaced during discovery sweep; status likely should advance to construction with FIDStatus/FIDYear set. fetch_timeline is DOWN, so routing as a qa note rather than staging a blind timeline edit.",
+    "severity": "high",
+    "suggested_action": "Update agent: pull the existing status timeline, then advance Coral North to construction (FID 2025); set FIDStatus/FIDYear=2025 and LatestPlannedStartYear=2028. Source: https://www.eni.com/en-IT/media/press-release/2025/10/pr-eni-announces-final-investment-decision-mozambique-coral-north-project.html (url_verifier PASS).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130257",
+    "unit_id": "",
+    "terminal_name": "Mozambique LNG Terminal",
+    "issue": "GEM has all four trains (T1-T4) as Status=shelved/confirmed. Project partners (TotalEnergies-led) lifted force majeure in Nov 2025 and construction officially resumed Jan 2026, with first LNG re-targeted to 2029; US EXIM approved a ~$4.7bn loan in Mar 2025. Surfaced during discovery sweep; shelved status is now stale. fetch_timeline is DOWN, so routing as a qa note.",
+    "severity": "high",
+    "suggested_action": "Update agent: pull the existing timeline, then move Mozambique LNG off shelved (to construction) for the restarted trains and refresh LatestPlannedStartYear=2029. Verify which trains are in the resumed scope. Sources: https://totalenergies.com/news/press-releases/mozambique-lng-announces-full-restart-all-its-activities-onshore-and-offshore (re-verify URL before use).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130789",
+    "unit_id": "G100002078901",
+    "terminal_name": "Rovuma LNG Terminal",
+    "issue": "GEM has Rovuma LNG (Area 4 onshore, T1-T12) as Status=proposed. ExxonMobil lifted force majeure on the Rovuma LNG development in Nov 2025, positioning the project for FID in 2026 and first exports in the early 2030s (18 mtpa). Surfaced during discovery sweep; status/timeline fields may need refresh. fetch_timeline is DOWN, so routing as a qa note.",
+    "severity": "medium",
+    "suggested_action": "Update agent: confirm whether force-majeure lift / FID-2026 positioning warrants a substatus/timeline note; refresh LatestPlannedStartYear if a primary source gives a firm date. Verify a primary (Exxon/INP) source before editing.",
+    "researcher_initials": "AI-draft"
+  }
+]

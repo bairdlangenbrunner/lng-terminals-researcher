@@ -4,29 +4,19 @@
     "terminal_id": "T100000131094",
     "unit_id": "G100002109401",
     "terminal_name": "Manzanillo (Dominican Republic) LNG Terminal",
-    "issue": "GEM Status=construction (LastUpdated 2025-10-15). The FSRU Energos Freeze arrived/docked at Manzanillo Bay 31 Aug-1 Sep 2025; first LNG cargo for commissioning arrived early Jan 2026; the associated 414 MW Manzanillo Power Land combined-cycle plant (fed by the FSRU) was inaugurated/commissioned ~27 Mar 2026 (Energia 2000; GEM power-station wiki). This points to the regas terminal transitioning construction->operating in H1 2026. EIA (Caribbean LNG, 2025) already lists Manzanillo among operating DR terminals 'under a three-year charter.' Per sweep rule this is a status_timeline qa note only — no Status field edit, no timeline file (fetch_timeline down).",
-    "severity": "medium",
-    "suggested_action": "Verify exact commercial-operations/first-regas date for the terminal (distinct from the power plant inauguration) and, when confirmed, move Status construction->operating with an ActualStartYear (likely 2026) via the normal timeline process. No edit this batch.",
+    "issue": "GEM lists Status=construction (LastUpdated 2025-10-15). Since then the LNG import terminal has begun importing and regasifying LNG: the FSRU Energos Freeze (berthed at the Manzanillo/Pepillo Salcedo marine terminal since 1 Sep 2025) received its first LNG cargo on 8 Jan 2026 (carrier LNGShips Empress, ~50,000 m3, ship-to-ship transfer, for operational tests) and a second cargo on ~10 Apr 2026 (BW Pavillon Aranthera, ~75,000 m3, from Trinidad & Tobago). The fed Manzanillo Power Land combined-cycle gas plant entered operation ~20 Feb 2026 and was inaugurated by President Abinader on 27 Mar 2026; gas is regasified by the Energos Freeze and piped to the plant, which is now in commercial operation dispatching to SENI. This indicates the import terminal has transitioned from construction to operating (ActualStartYear ~2026). Per sweep rule, status/timeline edits are deferred (fetch_timeline endpoint down) — flagging for human to verify and apply the status transition + set ActualStartYear, and confirm whether GEM should treat first-cargo (Jan 2026), plant commercial op (Feb 2026), or inauguration (Mar 2026) as the operating-start anchor.",
+    "severity": "high",
+    "suggested_action": "Verify and apply Status construction->operating and set ActualStartYear=2026 (and clear/keep planned-start fields per methodology). Confirm operating-start anchor: first LNG cargo 2026-01-08 vs plant commercial operation ~2026-02-20 vs inauguration 2026-03-27. Sources: https://www.diariolibre.com/economia/energia/2026/01/08/energia-2000-recibe-cargamento-de-gas-natural-para-su-central/3398529 (first cargo); https://hoy.com.do/economia/energia-2000-recibe-segundo-buque-gnl-manzanillo-asegura-suministro-electrico-nacional_1082852.html (second cargo, continuous operation); https://www.diariolibre.com/politica/gobierno/2026/03/27/abinader-inaugura-planta-termoelectrica-manzanillo-en-montecristi/3484284 (plant inauguration 2026-03-27).",
     "researcher_initials": "AI-draft"
   },
   {
-    "category": "capacity",
-    "terminal_id": "T100000130566",
-    "unit_id": "G100002056600",
-    "terminal_name": "Andrés LNG Terminal",
-    "issue": "GEM CapacityinMtpa = 1.9 for AES Andres. Some 2025 trade sources describe it as a '1.7 mtpa' terminal (e.g. JPT/SPE). Difference is small and likely reflects differing regas-nameplate conventions; GEM record is recent (LastUpdated 2025-07) with detailed ownership notes. Not changing capacity on a single secondary source — flag for confirmation against a primary/AES source only.",
+    "category": "ownership_risk",
+    "terminal_id": "T100000131094",
+    "unit_id": "G100002109401",
+    "terminal_name": "Manzanillo (Dominican Republic) LNG Terminal",
+    "issue": "FSRU charter counterparty risk noted in existing ResearcherNotes (Sep 2025: New Fortress Energy 'close to bankruptcy') has partly resolved: NFE entered a debt-restructuring / Chapter 11 process (announced ~Mar 2026) but the Energos Freeze remains deployed at Manzanillo and is actively regasifying cargoes as of Apr 2026, so the FSRU charter (to Energia 2000, NFE-relet, term to ~2034) has continued operating through the restructuring. No GEM field change indicated; flagging so the human can decide whether to update ResearcherNotes to reflect that the bankruptcy did not interrupt FSRU service. NFE primary/IR and IEEFA sources failed url_verifier (403/000) and were not cited; charter facts corroborated by offshore-mag (already in GEM FloatingVesselName [ref]).",
     "severity": "low",
-    "suggested_action": "Confirm AES Andres nameplate regas capacity (1.7 vs 1.9 mtpa) against an AES/ENADOM primary source before any change. No edit this batch.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "ownership",
-    "terminal_id": "T100000130566",
-    "unit_id": "G100002056600",
-    "terminal_name": "Andrés LNG Terminal",
-    "issue": "VERIFIED CURRENT (no change): GEM Owner = AES Corp 80% / AFI Popular 10% / Grupo Estrella 5% / Grupo Linda 5%, matching the late-2023 ownership change (AES sold 20% across the three Dominican groups; LNG Prime). AES remains majority owner and operator (AES Andres DR / ENADOM JV). Recording a re-verify; no field edits.",
-    "severity": "low",
-    "suggested_action": "No change. Ownership current as of late-2023 restructuring; re-verify periodically.",
+    "suggested_action": "Optionally refresh ResearcherNotes: NFE in Chapter 11 (~Mar 2026) but Energos Freeze still serving Manzanillo as of Apr 2026; no equity/identity change to terminal owner (Manzanillo Gas & Power) or vessel.",
     "researcher_initials": "AI-draft"
   }
 ]

@@ -1,26 +1,34 @@
 [
   {
     "entity_name": "Ukwanda LNG",
-    "entity_type": "operator",
+    "entity_type": "joint venture / project company",
     "country_of_hq": "South Africa",
-    "parent_entity": "Tamasa Energy Group; Strategic Fuel Fund (JV)",
-    "rationale_for_new_entity": "Named counterparty of the 25-year Terminal Operator Agreement signed with TNPA (28-29 May 2026) to develop/operate the Ngqura LNG import terminal. A JV between Tamasa Energy Group and the Strategic Fuel Fund. GEM currently lists the operator as 'Strategic Fuel Fund Association'; Ukwanda LNG is the new operating-company name and is not in GEM.",
-    "lookup_was_run": "RUN — entity_lookup.py 'Ukwanda LNG' --country 'South Africa' --remote returned not_found_in_local_data; remote returned only a 'New Entity' placeholder (no existing match). Inconclusive => treat as new.",
-    "lookup_result_summary": "No existing GEM entity matched 'Ukwanda LNG'. Remote search produced only the generic 'New Entity' option.",
-    "referenced_by_terminals": "T100001048121 (Ngqura LNG Terminal)",
-    "referenced_by_units": "G100001055097",
+    "parent_entity": "Tamasa Energy Group; Strategic Fuel Fund (SFF)",
+    "rationale_for_new_entity": "Named 2026-05-28 as the 25-year terminal operator for the Ngqura LNG Terminal (Port of Ngqura) under a TNPA operator agreement. Staged as the new Operator value for T100001048121. JV between Tamasa Energy Group and the Strategic Fuel Fund.",
+    "lookup_was_run": "RUN: entity_lookup.py 'Ukwanda LNG' --country 'South Africa' --remote -> local not_found; remote returned only generic 'New Entity' placeholder (no existing match). Inconclusive/none -> treat as new.",
+    "lookup_result_summary": "not_found_in_local_data; remote found only generic '/entities/edit' New Entity placeholder.",
+    "referenced_by_terminals": [
+      "T100001048121"
+    ],
+    "referenced_by_units": [
+      "G100001055097"
+    ],
     "researcher_initials": "AI-draft"
   },
   {
     "entity_name": "Tamasa Energy Group",
-    "entity_type": "parent",
+    "entity_type": "company",
     "country_of_hq": "South Africa",
     "parent_entity": "",
-    "rationale_for_new_entity": "JV partner (with the Strategic Fuel Fund) in Ukwanda LNG, the Ngqura LNG terminal operator named in the May 2026 TOA. Would be the private-sector parent behind Ukwanda LNG. Not in GEM.",
-    "lookup_was_run": "RUN — entity_lookup.py 'Tamasa Energy Group' --country 'South Africa' --remote returned not_found_in_local_data; remote returned only a 'New Entity' placeholder (no existing match). Inconclusive => treat as new.",
-    "lookup_result_summary": "No existing GEM entity matched 'Tamasa Energy Group'. Remote search produced only the generic 'New Entity' option.",
-    "referenced_by_terminals": "T100001048121 (Ngqura LNG Terminal)",
-    "referenced_by_units": "G100001055097",
+    "rationale_for_new_entity": "JV partner in Ukwanda LNG (with the Strategic Fuel Fund), the new operator of the Ngqura LNG Terminal per the 2026-05-28 TNPA operator agreement. Chaired by Prof. Anna Mokgokong (per Green Building Africa). Would be a Parent/owner of the Ukwanda LNG operating entity.",
+    "lookup_was_run": "RUN: entity_lookup.py 'Tamasa Energy' --country 'South Africa' --remote -> local not_found; remote returned only generic 'New Entity' placeholder.",
+    "lookup_result_summary": "not_found_in_local_data; remote found only generic '/entities/edit' New Entity placeholder.",
+    "referenced_by_terminals": [
+      "T100001048121"
+    ],
+    "referenced_by_units": [
+      "G100001055097"
+    ],
     "researcher_initials": "AI-draft"
   }
 ]

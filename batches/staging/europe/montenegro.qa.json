@@ -4,9 +4,19 @@
     "terminal_id": "T100000131102",
     "unit_id": "G100002110200",
     "terminal_name": "Bar LNG Terminal",
-    "issue": "The LNG Alliance/EPCG Bar project appears stalled: Sep 2025 reporting notes the terminal was excluded from Montenegro's Spatial Plan through 2040 (per GEM researcher note), and the government signed a SEPARATE MOU with Japan's JERA (Gastech, 11 Sep 2025) to feasibility-study an LNG terminal + gas power plant at undecided location(s). Original OriginalPlannedStartYear/LatestPlannedStartYear=2025 has lapsed; FIDStatus still Pre-FID (2023). This trends toward inferred-shelved territory for the LNG Alliance proposal.",
+    "issue": "Bar LNG Terminal (proposed since Dec 2021, LNG Alliance Pte Ltd + EPCG, Port of Bar) shows multiple convergent negative signals and may warrant a proposed->shelved/cancelled status change. (1) The terminal was EXCLUDED from Montenegro's adopted Spatial Plan through 2040 (Sep 2025; already noted in ResearcherNotesUnit, vijesti.me article 774053). (2) LatestPlannedStartYear=2025 has lapsed (now Jun 2026) with no sourced revised start year. (3) Trade press (PortsEurope) characterizes the Bar/Vlora projects as stalled with no progress; the LNG Alliance/EPCG project appears effectively withdrawn from official planning. (4) Government has pivoted to a new, separate JERA feasibility-study MoU (Sep 2025) that studies multiple potential locations and does not confirm the Port of Bar site. NOTE: This is a status determination, not a field edit -- fetch_timeline endpoint is down, so no timeline file is staged and no Status cell edit is proposed.",
     "severity": "medium",
-    "suggested_action": "Consider shelved/inferred-shelved for the LNG Alliance Bar proposal (Spatial Plan exclusion + lapsed 2025 start + no progress). Do NOT stage a Status field edit (fetch_timeline down) — flag for reviewer. Treat JERA pathway as separate (see monitor).",
+    "suggested_action": "Verify the LNG Alliance/EPCG Bar LNG Terminal status with the researcher; strong candidate for proposed->shelved (or cancelled) given Spatial Plan 2040 exclusion + lapsed 2025 start + no sponsor progress. If reclassified, fold the JERA MoU context into ResearcherNotesUnit. Sources verified PASS: https://www.portseurope.com/no-progress-in-lng-terminal-projects-in-ports-of-bar-and-vlora/ and (existing GEM note) en.vijesti.me/774053.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_quality",
+    "terminal_id": "T100000131102",
+    "unit_id": "G100002110200",
+    "terminal_name": "Bar LNG Terminal",
+    "issue": "NH3 = True is set on this row, but the terminal is an LNG-fuel ('Fuel'=LNG) import terminal with no sourced ammonia component. NH3 is a read-only / out-of-scope column ('no longer updated as of 2026' per methodology), so it appears to be stray contamination rather than a research finding. No NH3 edit is staged (writing out-of-scope columns is prohibited).",
+    "severity": "low",
+    "suggested_action": "Researcher to review/clear the stray NH3=True flag directly in GEM if confirmed to be contamination; agent cannot write the NH3 column.",
     "researcher_initials": "AI-draft"
   }
 ]

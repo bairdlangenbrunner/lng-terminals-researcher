@@ -1,0 +1,12 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130591",
+    "unit_id": "G100002059100",
+    "terminal_name": "Aqaba Jordan FSRU",
+    "issue": "Discovery sweep surfaced vessel/charter activity at the existing Aqaba terminal that may not match GEM's current FloatingVesselName (GEM shows 'Energos Eskimo FSRU'). Reported in 2025-2026: (1) Excelerate Energy signed a 9-month time charter with NEPCO to deploy FSRU 'Excelerate Acadia' to Aqaba, operations expected mid-2026; (2) an Egyptian FSRU 'Energos Force' (chartered by EGAS) has been moored at Aqaba transporting gas; (3) NEPCO signed a ~10-year lease-to-own contract with BW LNG for a floating STORAGE unit (FSU) at the Sheikh Sabah terminal, ops Q3/Q4 2026. The current Aqaba FSRU vessel and its end-of-life/replacement timeline appear in flux. Not a new terminal — flagging the vessel-identity/status change for the Update workflow and FSRU sync check (fetch_timeline is DOWN, so logging as a note).",
+    "severity": "low",
+    "suggested_action": "Update agent: verify current vessel at Aqaba FSRU (Energos Eskimo vs Excelerate Acadia vs Energos Force) and update FloatingVesselName / status timeline; run fsru_sync_check.py when timeline service is back. Confirm whether Sheikh Sabah's new FSU (BW LNG) belongs as a unit/vessel on the Sheikh Sabah proposed row.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  }
+]

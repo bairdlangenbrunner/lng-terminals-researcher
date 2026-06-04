@@ -1,0 +1,22 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130856",
+    "unit_id": "G100002085600",
+    "terminal_name": "Puerto de la Luz LNG Terminal",
+    "issue": "GEM lists this Totisa Holdings project at the Port of Las Palmas (Puerto de la Luz / Gran Canaria) as 'proposed', but it appears to have been definitively cancelled in 2024-2025. The Canary Islands Government's Ecological Transition department issued a negative Environmental Impact Declaration (DIA), and the promoter (Totisa Holdings) filed a formal withdrawal to discontinue the procedure. In Nov 2024 the Las Palmas City Hall and Gran Canaria Island Council also rejected it on safety/health/sustainability grounds. Reporting describes the project as definitively shelved after ~6 years of processing. fetch_timeline is DOWN, so routing as a qa status note rather than a staged timeline edit. Recommended GEM status: cancelled (CancelledYear ~2025), substatus confirmed.",
+    "severity": "high",
+    "suggested_action": "Route to an Update batch: change Status proposed -> cancelled, set CancelledYear 2025 (verify exact date), substatus 'confirmed'; cite the withdrawal/negative-DIA reporting. Verified sources: https://www.atlanticohoy.com/economia/totisa-renuncia-planta-gas-informe-negativo-gobierno-canarias_1552957_102.html (url_verifier PASS for 'Totisa','Las Palmas') and https://www.cope.es/emisoras/canarias/las-palmas/gran-canaria/noticias/puerto-luz-busca-nuevo-rumbo-energetico-carpetazo-planta-gas-20251031_3243155.html (url_verifier PASS for 'planta de gas','Totisa').",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "scope_question",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Santa Cruz de Tenerife LNG Terminal (Totisa Energía, Cueva Bermeja)",
+    "issue": "Discovery surfaced a not-in-GEM Totisa Energia LNG project at the Cueva Bermeja dock, Port of Santa Cruz de Tenerife (distinct from the cancelled GEM Tenerife/Granadilla/Enagas terminal). It meets the add threshold (sponsor + location + concession/environmental step) but is predominantly an LNG BUNKERING supply hub (~50,000 m3 fixed storage for ship supply) plus 70 MW captive power and a small green-H2 unit - bunkering is project-wide excluded scope per the methodology. Staged to monitor rather than new_terminals pending a human scope call. See spain.disc.monitor.json and spain.disc.entity.json (Totisa Energia SLU).",
+    "severity": "medium",
+    "suggested_action": "Human decision: does GEM track a fixed-storage LNG bunkering + captive-power hub of this type? If yes, promote the monitor entry to a new_terminal (FacilityType import, status proposed, Owner Totisa Energia SLU / Parent Totisa Holdings SA, Location Cueva Bermeja Port of Santa Cruz de Tenerife). If bunkering-only is out of scope, keep on monitor list.",
+    "researcher_initials": "AI-draft"
+  }
+]

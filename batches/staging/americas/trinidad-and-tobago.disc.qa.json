@@ -1,0 +1,12 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130579",
+    "unit_id": "G100002057901",
+    "terminal_name": "Atlantic LNG Terminal",
+    "issue": "Atlantic LNG Train 1 (UnitName T1) is GEM status 'mothballed' (offline since 2020). In March 2025 BP and the Atlantic shareholders (BP, Shell, NGC) confirmed Train 1 will be PERMANENTLY decommissioned and decoupled from the rest of the facility; as of January 2026 reporting, physical decommissioning/removal is planned to begin in Q4 2026. This is a lifecycle progression from mothballed toward retired/decommissioned that GEM has not yet captured. Reason cited: chronic feedgas shortage plus Train 1 being the least efficient of the four trains.",
+    "severity": "medium",
+    "suggested_action": "Route to an Update batch: re-evaluate Train 1 status (mothballed -> shut down/retired per GEM lifecycle rules once decommissioning is underway) and add a status-timeline entry for the March 2025 decommissioning decision and Q4 2026 planned removal. fetch_timeline.py is DOWN this batch, so the timeline edit must be staged via the Update workflow once the project DB is reachable. Sources: https://trinidadexpress.com/business/local/bp-confirms-plans-to-decommission-train-1/article_c75ca9d6-fee8-11ef-a61b-f398b8e86619.html ; https://pgjonline.com/news/2026/january/trinidad-s-atlantic-lng-plans-q4-decommissioning-of-train-1",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  }
+]

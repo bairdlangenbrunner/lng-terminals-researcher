@@ -1,12 +1,12 @@
 [
   {
-    "category": "data_quality",
+    "category": "blank_ref",
     "terminal_id": "T100000130593",
-    "unit_id": "G100002059303",
+    "unit_id": "G100002059306",
     "terminal_name": "Oman Qalhat LNG Terminal",
-    "issue": "T3's Owner and Parent fields contain a placeholder entity 'Naturgy [TO BE DELETED]' (Owner: 'Naturgy [TO BE DELETED] [7%]'; Parent: 'Naturgy [TO BE DELETED] [7.4%]'). This is a leftover data-cleanup marker (Naturgy/Union Fenosa historically held a stake in the Qalhat LNG marketing company). It should be resolved by the Ownership Team - either delete the stake or replace it with the correct current holder. Current verified Oman LNG / Qalhat structure (2024-25, unchanged through shareholder-agreement renewals to 2034): Oman Investment Authority (Govt of Oman) 51%, Shell 30%, TotalEnergies ~5.54%, Korea LNG 5%, Mitsubishi 2.77%, Mitsui 2.77%, PTTEP 2%, Itochu 0.92%.",
-    "severity": "medium",
-    "suggested_action": "Route to Ownership Team to clear the 'Naturgy [TO BE DELETED]' placeholder on T3 (and confirm whether the 7% stake is reallocated or removed). Not a research edit. Source: en.wikipedia.org/wiki/Oman_LNG; lngindustry.com Shell/Oman LNG shareholder agreement.",
+    "issue": "T4 (proposed fourth train, Sur LNG) has Owner='unknown' and a blank 'Owner [ref]'. The blank-ref worklist flagged this as a [ref]-fill target, but Owner has no verified value: public reporting (LNG Prime, OGJ, MEED, Energy Intelligence) covers the FEED/EPC process and prospective feedgas (Block 11 Jaleel) but does NOT disclose a Train-4-specific equity/shareholder split. Existing Oman LNG / Qalhat LNG ownership (Govt of Oman 51%, Shell, TotalEnergies, etc.) cannot be assumed to apply to the new train. Filling 'Owner [ref]' would create an orphan ref (no paired data value), so it is left blank.",
+    "severity": "low",
+    "suggested_action": "Leave Owner='unknown' and 'Owner [ref]' blank until a Train-4 equity allocation is published (likely at/after FID). Do not copy the existing-train ownership onto T4 as a guess.",
     "researcher_initials": "AI-draft"
   },
   {
@@ -14,9 +14,9 @@
     "terminal_id": "T100000130593",
     "unit_id": "G100002059306",
     "terminal_name": "Oman Qalhat LNG Terminal",
-    "issue": "T4 (proposed, 2024) remains pre-FID as of this batch: FEED awarded to KBR (Nov 2024/2025), main EPC tender issued and bidders shortlisted, FID expected early 2026 (3.8 mtpa, ~2029 commissioning). Proposed status appears still correct. However, Energy Intelligence reporting flags that T4 development may have been PAUSED over feedgas availability (balancing domestic gas demand against exports; the planned feedgas from Shell-led Block 11 'Jaleel' discovery itself awaits a 2026 FID). Monitor for either an FID (would move proposed->construction) or a confirmed pause/cancellation.",
+    "issue": "T4 GEM status='proposed' is verified current as of June 2026: KBR FEED contract awarded Nov 2024 (kbr.com cite returns HTTP 406 to verifier; corroborated by OGJ and offshore-technology.com), EPC tender issued and bidders shortlisted (MEED), and FID reported as expected 'early 2026' (Energy Intelligence) tied to Block 11 Jaleel feedgas FID. No public confirmation that FID has been taken or EPC awarded, so 'proposed' remains correct and no status edit is staged. Watch for a 2026 FID announcement that would move T4 proposed -> construction.",
     "severity": "low",
-    "suggested_action": "Monitor Oman LNG / OQ / MEM announcements for a T4 FID or formal pause. If FID is confirmed, advance proposed->construction with a status-timeline entry and ConstructionYear. Status not staged as a field edit. Sources: energyintel.com 'Oman Pushes Ahead With Fourth LNG Train Plans' / 'Can Oman Feed Its Fourth LNG Train?'; meed.com EPC tender.",
+    "suggested_action": "Monitor for an early-2026 FID / EPC-award announcement; on confirmation move T4 to construction (timeline edit via fetch_timeline once endpoint is restored). Capacity 3.8 mtpa and 2029 target start are corroborated (OGJ FEED article, already the GEM Capacity [ref]).",
     "researcher_initials": "AI-draft"
   }
 ]

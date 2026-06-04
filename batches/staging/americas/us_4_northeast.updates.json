@@ -1,98 +1,268 @@
 [
   {
-    "terminal_id": "T100000130631",
-    "unit_id": "G100002063100",
-    "terminal_name": "Everett Marine Terminal",
+    "terminal_id": "T100000130651",
+    "unit_id": "G100002065100",
+    "terminal_name": "Sparrows Point LNG Terminal",
     "unit_name": "--",
     "country": "United States",
-    "field_name": "Status",
-    "old_value": "operating",
-    "new_value": "operating",
-    "confidence": "blue",
-    "source_tier": "primary (EIA) + trade press",
-    "ref_field": "Status [ref]",
+    "field_name": "Status [ref]",
+    "old_value": "",
+    "new_value": "https://www.offshore-energy.biz/usa-ferc-vacates-order-authorizing-aes-sparrows-point-lng-project/",
+    "confidence": "green",
+    "source_tier": "trade press (FERC order)",
+    "ref_field": "Status",
     "ref_urls": [
-      "https://www.eia.gov/todayinenergy/detail.php?id=62404"
+      "https://www.offshore-energy.biz/usa-ferc-vacates-order-authorizing-aes-sparrows-point-lng-project/"
     ],
-    "source_notes": "Re-verified operating. Mystic Generating Station (sole captive offtaker) retired May 2024, but Constellation kept Everett open; National Grid/utilities secured ~6-yr peak-demand supply contracts keeping it open through ~winter 2029-30. All 13.3 Bcf of New England LNG imports went to Everett in the prior year. EIA URL content confirmed via curl/grep (url_verifier content-check was a fetch artifact). GEM owner Constellation LNG LLC / parent Constellation Energy Corp current.",
-    "scope_note": "No value change; representative blue re-verify for the terminal.",
+    "source_notes": "supports Status='cancelled': Sept 2013 AES told FERC it would no longer pursue; FERC vacated 2009 authorization.",
+    "scope_note": "blank-ref fill (standard tier)",
     "researcher_initials": "AI-draft (sweep)"
   },
   {
-    "terminal_id": "T100000131080",
-    "unit_id": "G100002108001",
-    "terminal_name": "Penn LNG Terminal",
+    "terminal_id": "T100000130651",
+    "unit_id": "G100002065100",
+    "terminal_name": "Sparrows Point LNG Terminal",
     "unit_name": "--",
     "country": "United States",
-    "field_name": "Status",
-    "old_value": "shelved",
-    "new_value": "shelved",
-    "confidence": "blue",
-    "source_tier": "trade press (NGI)",
-    "ref_field": "Status [ref]",
+    "field_name": "CancelledYear [ref]",
+    "old_value": "",
+    "new_value": "https://www.offshore-energy.biz/usa-ferc-vacates-order-authorizing-aes-sparrows-point-lng-project/",
+    "confidence": "green",
+    "source_tier": "trade press (FERC order)",
+    "ref_field": "CancelledYear",
     "ref_urls": [
-      "https://naturalgasintel.com/news/east-coast-lng-export-ambitions-fade-further-as-another-project-stalls/"
+      "https://www.offshore-energy.biz/usa-ferc-vacates-order-authorizing-aes-sparrows-point-lng-project/"
     ],
-    "source_notes": "Re-verified shelved (GEM already shelved 2026, LastUpdated 2026-05-21). Penn America Energy Holdings LLC dissolved; never lined up EPC/feedgas/permits/financing/buyers. NOTE: sponsor (Franc James) reportedly pivoted to a new site in Eddystone, Delaware Co. PA under 'Eddystone Energy LLC' — tracked in monitor_list, not a Penn LNG field change.",
-    "scope_note": "No value change; representative blue re-verify.",
+    "source_notes": "supports CancelledYear=2013: FERC vacated authority 2013 after AES withdrawal (Sept 2013).",
+    "scope_note": "blank-ref fill (standard tier)",
     "researcher_initials": "AI-draft (sweep)"
   },
   {
-    "terminal_id": "T100000130853",
-    "unit_id": "G100002085301",
-    "terminal_name": "Gibbstown Deepwater Port LNG Terminal",
+    "terminal_id": "T100000130651",
+    "unit_id": "G100002065100",
+    "terminal_name": "Sparrows Point LNG Terminal",
     "unit_name": "--",
     "country": "United States",
-    "field_name": "Status",
-    "old_value": "proposed",
-    "new_value": "proposed",
-    "confidence": "blue",
-    "source_tier": "regional press / regulator (DRBC)",
-    "ref_field": "Status [ref]",
+    "field_name": "StopYear [ref]",
+    "old_value": "",
+    "new_value": "https://www.offshore-energy.biz/usa-ferc-vacates-order-authorizing-aes-sparrows-point-lng-project/",
+    "confidence": "green",
+    "source_tier": "trade press (FERC order)",
+    "ref_field": "StopYear",
     "ref_urls": [
-      "https://delawarecurrents.org/2025/04/21/gibbstown-lng-port/",
-      "https://delawarecurrents.org/2025/11/04/gibbstown-lng-port-2/"
+      "https://www.offshore-energy.biz/usa-ferc-vacates-order-authorizing-aes-sparrows-point-lng-project/"
     ],
-    "source_notes": "Re-verified proposed (GEM LastUpdated 2026-05-20). New Fortress/Delaware River Partners sought DRBC construction-permit extension in 2025; DRBC granted a second 5-yr extension Sept 2025; Delaware Riverkeeper Network sued DRBC in US Dist Ct NJ (Nov 2025). Wyalusing-by-rail feedgas leg is dead (Wyalusing now a data-center power plant) but sponsors told FERC the export proposal remains active via LNG-by-truck. No FID; still proposed.",
-    "scope_note": "No value change; representative blue re-verify.",
+    "source_notes": "supports StopYear=2013: project terminated 2013.",
+    "scope_note": "blank-ref fill (standard tier)",
     "researcher_initials": "AI-draft (sweep)"
   },
   {
-    "terminal_id": "T100000130660",
-    "unit_id": "G100002066001",
-    "terminal_name": "New Fortress Wyalusing LNG Terminal",
-    "unit_name": "T1-T2",
+    "terminal_id": "T100000130651",
+    "unit_id": "G100002065100",
+    "terminal_name": "Sparrows Point LNG Terminal",
+    "unit_name": "--",
     "country": "United States",
-    "field_name": "Status",
-    "old_value": "cancelled",
-    "new_value": "cancelled",
-    "confidence": "blue",
-    "source_tier": "trade press + state regulator (PA DEP)",
-    "ref_field": "Status [ref]",
+    "field_name": "FacilityType [ref]",
+    "old_value": "",
+    "new_value": "https://www.federalregister.gov/documents/2008/05/02/E8-9774/aes-sparrows-point-lng-llc-mid-atlantic-express-llc-coe-application-no-cenab-op-rmn-2007-01644-m16",
+    "confidence": "green",
+    "source_tier": "primary regulatory (Federal Register DEIS)",
+    "ref_field": "FacilityType",
     "ref_urls": [
-      "https://marcellusdrilling.com/2025/07/wyalusing-lng-plant-is-dead-gas-fired-power-for-data-ctr-replaces/"
+      "https://www.federalregister.gov/documents/2008/05/02/E8-9774/aes-sparrows-point-lng-llc-mid-atlantic-express-llc-coe-application-no-cenab-op-rmn-2007-01644-m16"
     ],
-    "source_notes": "Re-verified cancelled (GEM cancelled 2025, LastUpdated 2025-09-26). LNG plan dead July 2025; New Fortress repurposing the Bradford Co. site as the ~218-248 MW Wyalusing Energy Center gas-fired power plant feeding a data center (PA DEP issued air permit Oct 2025). No revival of LNG export.",
-    "scope_note": "No value change; representative blue re-verify.",
+    "source_notes": "supports FacilityType='import': DEIS describes AES Sparrows Point as an LNG marine import terminal.",
+    "scope_note": "blank-ref fill (standard tier)",
     "researcher_initials": "AI-draft (sweep)"
   },
   {
-    "terminal_id": "T100000130633",
-    "unit_id": "G100002063300",
-    "terminal_name": "Neptune LNG Terminal",
+    "terminal_id": "T100000130651",
+    "unit_id": "G100002065100",
+    "terminal_name": "Sparrows Point LNG Terminal",
     "unit_name": "--",
     "country": "United States",
-    "field_name": "Status",
-    "old_value": "mothballed",
-    "new_value": "mothballed",
-    "confidence": "blue",
-    "source_tier": "primary (Federal Register / MARAD)",
-    "ref_field": "Status [ref]",
+    "field_name": "Owner [ref]",
+    "old_value": "",
+    "new_value": "https://www.federalregister.gov/documents/2008/05/02/E8-9774/aes-sparrows-point-lng-llc-mid-atlantic-express-llc-coe-application-no-cenab-op-rmn-2007-01644-m16",
+    "confidence": "green",
+    "source_tier": "primary regulatory (Federal Register DEIS)",
+    "ref_field": "Owner",
     "ref_urls": [
-      "https://www.federalregister.gov/documents/2025/08/19/2025-15808/deepwater-port-license-amendment-of-the-neptune-lng-llc-deepwater-port-license-and-temporary"
+      "https://www.federalregister.gov/documents/2008/05/02/E8-9774/aes-sparrows-point-lng-llc-mid-atlantic-express-llc-coe-application-no-cenab-op-rmn-2007-01644-m16"
     ],
-    "source_notes": "Re-verified mothballed (GEM LastUpdated 2025-09-26; fed-register URL already in Status [ref]). MARAD amended the deepwater-port license Aug 2025 extending the operations suspension to Dec 31, 2027 while Neptune (Hoegh Evi / MOL) evaluates decommissioning. Still suspended, not decommissioned.",
-    "scope_note": "No value change; representative blue re-verify.",
+    "source_notes": "supports Owner='AES Corp [100%]': applicant AES Sparrows Point LNG, LLC (AES Corp).",
+    "scope_note": "blank-ref fill (standard tier)",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130651",
+    "unit_id": "G100002065100",
+    "terminal_name": "Sparrows Point LNG Terminal",
+    "unit_name": "--",
+    "country": "United States",
+    "field_name": "Capacity [ref]",
+    "old_value": "",
+    "new_value": "https://www.federalregister.gov/documents/2008/05/02/E8-9774/aes-sparrows-point-lng-llc-mid-atlantic-express-llc-coe-application-no-cenab-op-rmn-2007-01644-m16",
+    "confidence": "yellow",
+    "source_tier": "primary regulatory (Federal Register DEIS)",
+    "ref_field": "Capacity",
+    "ref_urls": [
+      "https://www.federalregister.gov/documents/2008/05/02/E8-9774/aes-sparrows-point-lng-llc-mid-atlantic-express-llc-coe-application-no-cenab-op-rmn-2007-01644-m16"
+    ],
+    "source_notes": "supports Capacity=11.50 mtpa (~1.5 Bcf/d send-out); value implied by DEIS, flagged for verification.",
+    "scope_note": "blank-ref fill (standard tier)",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130651",
+    "unit_id": "G100002065100",
+    "terminal_name": "Sparrows Point LNG Terminal",
+    "unit_name": "--",
+    "country": "United States",
+    "field_name": "Location [ref]",
+    "old_value": "",
+    "new_value": "https://www.federalregister.gov/documents/2008/05/02/E8-9774/aes-sparrows-point-lng-llc-mid-atlantic-express-llc-coe-application-no-cenab-op-rmn-2007-01644-m16",
+    "confidence": "green",
+    "source_tier": "primary regulatory (Federal Register DEIS)",
+    "ref_field": "Location",
+    "ref_urls": [
+      "https://www.federalregister.gov/documents/2008/05/02/E8-9774/aes-sparrows-point-lng-llc-mid-atlantic-express-llc-coe-application-no-cenab-op-rmn-2007-01644-m16"
+    ],
+    "source_notes": "supports Location='Baltimore': former Bethlehem Steel/Sparrows Point shipyard, Baltimore County MD.",
+    "scope_note": "blank-ref fill (standard tier)",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130643",
+    "unit_id": "G100002064300",
+    "terminal_name": "Weaver's Cove LNG Terminal",
+    "unit_name": "--",
+    "country": "United States",
+    "field_name": "Status [ref]",
+    "old_value": "",
+    "new_value": "https://www.cbsnews.com/boston/news/hess-scraps-plan-for-lng-terminal-in-fall-river/",
+    "confidence": "green",
+    "source_tier": "trade press (Hess withdrawal)",
+    "ref_field": "Status",
+    "ref_urls": [
+      "https://www.cbsnews.com/boston/news/hess-scraps-plan-for-lng-terminal-in-fall-river/"
+    ],
+    "source_notes": "supports Status='cancelled': June 2011 Hess scrapped Fall River import terminal; withdrew federal/state applications.",
+    "scope_note": "blank-ref fill (standard tier)",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130643",
+    "unit_id": "G100002064300",
+    "terminal_name": "Weaver's Cove LNG Terminal",
+    "unit_name": "--",
+    "country": "United States",
+    "field_name": "CancelledYear [ref]",
+    "old_value": "",
+    "new_value": "https://www.cbsnews.com/boston/news/hess-scraps-plan-for-lng-terminal-in-fall-river/",
+    "confidence": "green",
+    "source_tier": "trade press",
+    "ref_field": "CancelledYear",
+    "ref_urls": [
+      "https://www.cbsnews.com/boston/news/hess-scraps-plan-for-lng-terminal-in-fall-river/"
+    ],
+    "source_notes": "supports CancelledYear=2011: Hess abandoned project June 2011.",
+    "scope_note": "blank-ref fill (standard tier)",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130643",
+    "unit_id": "G100002064300",
+    "terminal_name": "Weaver's Cove LNG Terminal",
+    "unit_name": "--",
+    "country": "United States",
+    "field_name": "StopYear [ref]",
+    "old_value": "",
+    "new_value": "https://www.cbsnews.com/boston/news/hess-scraps-plan-for-lng-terminal-in-fall-river/",
+    "confidence": "green",
+    "source_tier": "trade press",
+    "ref_field": "StopYear",
+    "ref_urls": [
+      "https://www.cbsnews.com/boston/news/hess-scraps-plan-for-lng-terminal-in-fall-river/"
+    ],
+    "source_notes": "supports StopYear=2011.",
+    "scope_note": "blank-ref fill (standard tier)",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130643",
+    "unit_id": "G100002064300",
+    "terminal_name": "Weaver's Cove LNG Terminal",
+    "unit_name": "--",
+    "country": "United States",
+    "field_name": "FacilityType [ref]",
+    "old_value": "",
+    "new_value": "https://www.cbsnews.com/boston/news/hess-scraps-plan-for-lng-terminal-in-fall-river/",
+    "confidence": "yellow",
+    "source_tier": "trade press",
+    "ref_field": "FacilityType",
+    "ref_urls": [
+      "https://www.cbsnews.com/boston/news/hess-scraps-plan-for-lng-terminal-in-fall-river/"
+    ],
+    "source_notes": "supports FacilityType='import': proposed LNG regasification terminal on Taunton River, Fall River MA.",
+    "scope_note": "blank-ref fill (standard tier)",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130643",
+    "unit_id": "G100002064300",
+    "terminal_name": "Weaver's Cove LNG Terminal",
+    "unit_name": "--",
+    "country": "United States",
+    "field_name": "Owner [ref]",
+    "old_value": "",
+    "new_value": "https://www.cbsnews.com/boston/news/hess-scraps-plan-for-lng-terminal-in-fall-river/",
+    "confidence": "yellow",
+    "source_tier": "trade press",
+    "ref_field": "Owner",
+    "ref_urls": [
+      "https://www.cbsnews.com/boston/news/hess-scraps-plan-for-lng-terminal-in-fall-river/"
+    ],
+    "source_notes": "supports Owner='Weaver's Cover Energy LLC [100%]': developed by Weaver's Cove Energy, Hess LNG subsidiary. (GEM spelling 'Cover' likely typo, see qa.)",
+    "scope_note": "blank-ref fill (standard tier)",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130643",
+    "unit_id": "G100002064300",
+    "terminal_name": "Weaver's Cove LNG Terminal",
+    "unit_name": "--",
+    "country": "United States",
+    "field_name": "Capacity [ref]",
+    "old_value": "",
+    "new_value": "https://www.cbsnews.com/boston/news/hess-scraps-plan-for-lng-terminal-in-fall-river/",
+    "confidence": "yellow",
+    "source_tier": "trade press",
+    "ref_field": "Capacity",
+    "ref_urls": [
+      "https://www.cbsnews.com/boston/news/hess-scraps-plan-for-lng-terminal-in-fall-river/"
+    ],
+    "source_notes": "supports Capacity=6.00 mtpa (~0.8 Bcf/d import); value implied, flagged for verification.",
+    "scope_note": "blank-ref fill (standard tier)",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130643",
+    "unit_id": "G100002064300",
+    "terminal_name": "Weaver's Cove LNG Terminal",
+    "unit_name": "--",
+    "country": "United States",
+    "field_name": "Location [ref]",
+    "old_value": "",
+    "new_value": "https://www.cbsnews.com/boston/news/hess-scraps-plan-for-lng-terminal-in-fall-river/",
+    "confidence": "green",
+    "source_tier": "trade press",
+    "ref_field": "Location",
+    "ref_urls": [
+      "https://www.cbsnews.com/boston/news/hess-scraps-plan-for-lng-terminal-in-fall-river/"
+    ],
+    "source_notes": "supports Location='Fall River': Fall River MA, east side of Taunton River.",
+    "scope_note": "blank-ref fill (standard tier)",
     "researcher_initials": "AI-draft (sweep)"
   },
   {
@@ -101,17 +271,322 @@
     "terminal_name": "Northeast Gateway FSRU",
     "unit_name": "--",
     "country": "United States",
-    "field_name": "Status",
-    "old_value": "idled",
-    "new_value": "idled",
-    "confidence": "blue",
-    "source_tier": "sponsor + trade press",
-    "ref_field": "Status [ref]",
+    "field_name": "FacilityType [ref]",
+    "old_value": "",
+    "new_value": "https://excelerateenergy.com/projects/northeast-gateway-deepwater-port/",
+    "confidence": "green",
+    "source_tier": "operator primary (Excelerate)",
+    "ref_field": "FacilityType",
     "ref_urls": [
       "https://excelerateenergy.com/projects/northeast-gateway-deepwater-port/"
     ],
-    "source_notes": "Re-verified idled (GEM StopYear 2022, LastUpdated 2025-09-26). Excelerate deepwater port off MA; last received LNG winter 2021-22, no FSRU chartered since; remains idle/no charter. No decommissioning announcement found. GEM current.",
-    "scope_note": "No value change; representative blue re-verify.",
+    "source_notes": "supports FacilityType='import': Excelerate describes NEG as an LNG import (regasification) deepwater port, Massachusetts Bay.",
+    "scope_note": "blank-ref fill (standard tier)",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130632",
+    "unit_id": "G100002063200",
+    "terminal_name": "Northeast Gateway FSRU",
+    "unit_name": "--",
+    "country": "United States",
+    "field_name": "Capacity [ref]",
+    "old_value": "",
+    "new_value": "https://excelerateenergy.com/projects/northeast-gateway-deepwater-port/",
+    "confidence": "yellow",
+    "source_tier": "operator primary (Excelerate)",
+    "ref_field": "Capacity",
+    "ref_urls": [
+      "https://excelerateenergy.com/projects/northeast-gateway-deepwater-port/"
+    ],
+    "source_notes": "supports Capacity=3.00 mtpa (~0.4 Bcf/d baseload); value implied by operator page, flagged for verification.",
+    "scope_note": "blank-ref fill (standard tier)",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130632",
+    "unit_id": "G100002063200",
+    "terminal_name": "Northeast Gateway FSRU",
+    "unit_name": "--",
+    "country": "United States",
+    "field_name": "StartDate [ref]",
+    "old_value": "",
+    "new_value": "https://excelerateenergy.com/projects/northeast-gateway-deepwater-port/",
+    "confidence": "green",
+    "source_tier": "operator primary (Excelerate)",
+    "ref_field": "StartDate",
+    "ref_urls": [
+      "https://excelerateenergy.com/projects/northeast-gateway-deepwater-port/"
+    ],
+    "source_notes": "supports start: commissioned 2008 per Excelerate.",
+    "scope_note": "blank-ref fill (standard tier)",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130632",
+    "unit_id": "G100002063200",
+    "terminal_name": "Northeast Gateway FSRU",
+    "unit_name": "--",
+    "country": "United States",
+    "field_name": "Location [ref]",
+    "old_value": "",
+    "new_value": "https://excelerateenergy.com/projects/northeast-gateway-deepwater-port/",
+    "confidence": "green",
+    "source_tier": "operator primary (Excelerate)",
+    "ref_field": "Location",
+    "ref_urls": [
+      "https://excelerateenergy.com/projects/northeast-gateway-deepwater-port/"
+    ],
+    "source_notes": "supports Location='Boston': ~13 mi offshore Massachusetts Bay, serving Boston area via HubLine.",
+    "scope_note": "blank-ref fill (standard tier)",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130653",
+    "unit_id": "G100002065300",
+    "terminal_name": "Safe Harbor Energy LNG Terminal",
+    "unit_name": "--",
+    "country": "United States",
+    "field_name": "Status [ref]",
+    "old_value": "",
+    "new_value": "https://www.federalregister.gov/documents/2009/01/16/E9-1077/atlantic-sea-island-group-llc-safe-harbor-energy-liquefied-natural-gas-deepwater-port-license",
+    "confidence": "green",
+    "source_tier": "primary regulatory (Federal Register/MARAD)",
+    "ref_field": "Status",
+    "ref_urls": [
+      "https://www.federalregister.gov/documents/2009/01/16/E9-1077/atlantic-sea-island-group-llc-safe-harbor-energy-liquefied-natural-gas-deepwater-port-license"
+    ],
+    "source_notes": "supports Status='cancelled': ASIG withdrew June 2010; MARAD terminated processing July 2010. (Year cells differ from GEM, see qa.)",
+    "scope_note": "blank-ref fill (standard tier)",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130653",
+    "unit_id": "G100002065300",
+    "terminal_name": "Safe Harbor Energy LNG Terminal",
+    "unit_name": "--",
+    "country": "United States",
+    "field_name": "FacilityType [ref]",
+    "old_value": "",
+    "new_value": "https://www.federalregister.gov/documents/2009/01/16/E9-1077/atlantic-sea-island-group-llc-safe-harbor-energy-liquefied-natural-gas-deepwater-port-license",
+    "confidence": "green",
+    "source_tier": "primary regulatory (Federal Register/MARAD)",
+    "ref_field": "FacilityType",
+    "ref_urls": [
+      "https://www.federalregister.gov/documents/2009/01/16/E9-1077/atlantic-sea-island-group-llc-safe-harbor-energy-liquefied-natural-gas-deepwater-port-license"
+    ],
+    "source_notes": "supports FacilityType='import': LNG receiving/storage/regasification deepwater port.",
+    "scope_note": "blank-ref fill (standard tier)",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130653",
+    "unit_id": "G100002065300",
+    "terminal_name": "Safe Harbor Energy LNG Terminal",
+    "unit_name": "--",
+    "country": "United States",
+    "field_name": "Owner [ref]",
+    "old_value": "",
+    "new_value": "https://www.federalregister.gov/documents/2009/01/16/E9-1077/atlantic-sea-island-group-llc-safe-harbor-energy-liquefied-natural-gas-deepwater-port-license",
+    "confidence": "green",
+    "source_tier": "primary regulatory (Federal Register/MARAD)",
+    "ref_field": "Owner",
+    "ref_urls": [
+      "https://www.federalregister.gov/documents/2009/01/16/E9-1077/atlantic-sea-island-group-llc-safe-harbor-energy-liquefied-natural-gas-deepwater-port-license"
+    ],
+    "source_notes": "supports Owner='Atlantic Sea Island Group LLC [100%]': named applicant.",
+    "scope_note": "blank-ref fill (standard tier)",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130653",
+    "unit_id": "G100002065300",
+    "terminal_name": "Safe Harbor Energy LNG Terminal",
+    "unit_name": "--",
+    "country": "United States",
+    "field_name": "Location [ref]",
+    "old_value": "",
+    "new_value": "https://www.federalregister.gov/documents/2009/01/16/E9-1077/atlantic-sea-island-group-llc-safe-harbor-energy-liquefied-natural-gas-deepwater-port-license",
+    "confidence": "green",
+    "source_tier": "primary regulatory (Federal Register/MARAD)",
+    "ref_field": "Location",
+    "ref_urls": [
+      "https://www.federalregister.gov/documents/2009/01/16/E9-1077/atlantic-sea-island-group-llc-safe-harbor-energy-liquefied-natural-gas-deepwater-port-license"
+    ],
+    "source_notes": "supports Location='Long Beach': federal waters ~13.5 mi south of Long Beach NY.",
+    "scope_note": "blank-ref fill (standard tier)",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130649",
+    "unit_id": "G100002064900",
+    "terminal_name": "Quoddy Bay LNG Terminal",
+    "unit_name": "--",
+    "country": "United States",
+    "field_name": "Status [ref]",
+    "old_value": "",
+    "new_value": "https://www.cbc.ca/news/canada/new-brunswick/lng-terminal-passamaquoddy-maine-1.3727050",
+    "confidence": "green",
+    "source_tier": "trade press / regulatory record",
+    "ref_field": "Status",
+    "ref_urls": [
+      "https://www.cbc.ca/news/canada/new-brunswick/lng-terminal-passamaquoddy-maine-1.3727050",
+      "https://savepassamaquoddybay.org/history_failure.html"
+    ],
+    "source_notes": "supports Status='cancelled': final Passamaquoddy Bay LNG proposal dismissed; FERC dismissed Quoddy Bay 2008, lease invalidated 2012.",
+    "scope_note": "blank-ref fill (standard tier)",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130649",
+    "unit_id": "G100002064900",
+    "terminal_name": "Quoddy Bay LNG Terminal",
+    "unit_name": "--",
+    "country": "United States",
+    "field_name": "FacilityType [ref]",
+    "old_value": "",
+    "new_value": "https://savepassamaquoddybay.org/history_failure.html",
+    "confidence": "green",
+    "source_tier": "regulatory record (Save Passamaquoddy Bay history)",
+    "ref_field": "FacilityType",
+    "ref_urls": [
+      "https://savepassamaquoddybay.org/history_failure.html"
+    ],
+    "source_notes": "supports FacilityType='import': Quoddy Bay LNG Import & Regasification Terminal, Pleasant Point ME.",
+    "scope_note": "blank-ref fill (standard tier)",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130649",
+    "unit_id": "G100002064900",
+    "terminal_name": "Quoddy Bay LNG Terminal",
+    "unit_name": "--",
+    "country": "United States",
+    "field_name": "Owner [ref]",
+    "old_value": "",
+    "new_value": "https://savepassamaquoddybay.org/history_failure.html",
+    "confidence": "yellow",
+    "source_tier": "regulatory record",
+    "ref_field": "Owner",
+    "ref_urls": [
+      "https://savepassamaquoddybay.org/history_failure.html"
+    ],
+    "source_notes": "supports Owner='Quoddy Bay LNG LLC [100%]': applicant Quoddy Bay LNG, L.L.C.",
+    "scope_note": "blank-ref fill (standard tier)",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130649",
+    "unit_id": "G100002064900",
+    "terminal_name": "Quoddy Bay LNG Terminal",
+    "unit_name": "--",
+    "country": "United States",
+    "field_name": "Location [ref]",
+    "old_value": "",
+    "new_value": "https://savepassamaquoddybay.org/history_failure.html",
+    "confidence": "green",
+    "source_tier": "regulatory record",
+    "ref_field": "Location",
+    "ref_urls": [
+      "https://savepassamaquoddybay.org/history_failure.html"
+    ],
+    "source_notes": "supports Location='Pleasent Point': Pleasant Point Reservation, Washington County ME. (GEM spelling typo, see qa.)",
+    "scope_note": "blank-ref fill (standard tier)",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130644",
+    "unit_id": "G100002064400",
+    "terminal_name": "Crown Landing LNG Terminal",
+    "unit_name": "--",
+    "country": "United States",
+    "field_name": "Status [ref]",
+    "old_value": "",
+    "new_value": "https://www.ogj.com/pipelines-transportation/lng/article/17276271/hess-lng-affiliate-takes-over-crown-landing-from-bp",
+    "confidence": "yellow",
+    "source_tier": "trade press (OGJ)",
+    "ref_field": "Status",
+    "ref_urls": [
+      "https://www.ogj.com/pipelines-transportation/lng/article/17276271/hess-lng-affiliate-takes-over-crown-landing-from-bp"
+    ],
+    "source_notes": "supports Status='cancelled': Hess LNG affiliate took over Crown Landing from BP; project later abandoned (Hess surrendered FERC authorization Jan 2012). NOTE GEM ShelvedYear 2014/CancelledYear 2016 conflict with sourced 2008/2012 — year [ref] cells left blank, routed to qa.",
+    "scope_note": "blank-ref fill (standard tier)",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130660",
+    "unit_id": "G100002066001",
+    "terminal_name": "New Fortress Wyalusing LNG Terminal",
+    "unit_name": "T1-T2",
+    "country": "United States",
+    "field_name": "FacilityType [ref]",
+    "old_value": "",
+    "new_value": "https://marcellusdrilling.com/2025/07/wyalusing-lng-plant-is-dead-gas-fired-power-for-data-ctr-replaces/",
+    "confidence": "yellow",
+    "source_tier": "trade press (Marcellus Drilling)",
+    "ref_field": "FacilityType",
+    "ref_urls": [
+      "https://marcellusdrilling.com/2025/07/wyalusing-lng-plant-is-dead-gas-fired-power-for-data-ctr-replaces/"
+    ],
+    "source_notes": "supports FacilityType='export': planned small-scale LNG liquefaction (export-feed) plant; cancelled July 2025, replaced by gas-fired power for a data center.",
+    "scope_note": "blank-ref fill (standard tier)",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130660",
+    "unit_id": "G100002066001",
+    "terminal_name": "New Fortress Wyalusing LNG Terminal",
+    "unit_name": "T1-T2",
+    "country": "United States",
+    "field_name": "Owner [ref]",
+    "old_value": "",
+    "new_value": "https://marcellusdrilling.com/2025/07/wyalusing-lng-plant-is-dead-gas-fired-power-for-data-ctr-replaces/",
+    "confidence": "yellow",
+    "source_tier": "trade press (Marcellus Drilling)",
+    "ref_field": "Owner",
+    "ref_urls": [
+      "https://marcellusdrilling.com/2025/07/wyalusing-lng-plant-is-dead-gas-fired-power-for-data-ctr-replaces/"
+    ],
+    "source_notes": "supports Owner='Bradford County Real Estate Partners LLC [100%]': New Fortress Energy subsidiary site, Bradford County PA.",
+    "scope_note": "blank-ref fill (standard tier)",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130660",
+    "unit_id": "G100002066001",
+    "terminal_name": "New Fortress Wyalusing LNG Terminal",
+    "unit_name": "T1-T2",
+    "country": "United States",
+    "field_name": "ShelvedYear [ref]",
+    "old_value": "",
+    "new_value": "https://marcellusdrilling.com/2025/07/wyalusing-lng-plant-is-dead-gas-fired-power-for-data-ctr-replaces/",
+    "confidence": "yellow",
+    "source_tier": "trade press (Marcellus Drilling)",
+    "ref_field": "ShelvedYear",
+    "ref_urls": [
+      "https://marcellusdrilling.com/2025/07/wyalusing-lng-plant-is-dead-gas-fired-power-for-data-ctr-replaces/"
+    ],
+    "source_notes": "supports ShelvedYear=2022 (project stalled / permits lapsed before formal 2025 cancellation); year implied, flagged for verification.",
+    "scope_note": "blank-ref fill (standard tier)",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130660",
+    "unit_id": "G100002066001",
+    "terminal_name": "New Fortress Wyalusing LNG Terminal",
+    "unit_name": "T1-T2",
+    "country": "United States",
+    "field_name": "Location [ref]",
+    "old_value": "",
+    "new_value": "https://marcellusdrilling.com/2025/07/wyalusing-lng-plant-is-dead-gas-fired-power-for-data-ctr-replaces/",
+    "confidence": "yellow",
+    "source_tier": "trade press (Marcellus Drilling)",
+    "ref_field": "Location",
+    "ref_urls": [
+      "https://marcellusdrilling.com/2025/07/wyalusing-lng-plant-is-dead-gas-fired-power-for-data-ctr-replaces/"
+    ],
+    "source_notes": "supports Location='Wyalusing Township': Wyalusing Township, Bradford County PA.",
+    "scope_note": "blank-ref fill (standard tier)",
     "researcher_initials": "AI-draft (sweep)"
   }
 ]

@@ -5,38 +5,18 @@
     "terminal_name": "Oman Qalhat LNG Terminal",
     "unit_name": "T4",
     "country": "Oman",
-    "field_name": "LatestPlannedStartYear",
-    "old_value": "",
-    "new_value": "2029",
-    "confidence": "yellow",
-    "source_tier": "trade press (multiple) + Oman MEM statement",
-    "ref_field": "StartDate [ref]",
+    "field_name": "Status",
+    "old_value": "proposed",
+    "new_value": "proposed",
+    "confidence": "blue",
+    "source_tier": "trade press (corroborated)",
+    "ref_field": "Status",
     "ref_urls": [
       "https://www.ogj.com/pipelines-transportation/lng/article/55241225/qalhat-lng-advances-sur-lng-train-4-project-with-feed-contract",
-      "https://lngprime.com/middle-east/oman-lng-to-boost-capacity-with-new-train/118488/"
+      "https://www.meed.com/oman-lng-shortlists-bidders-for-fourth-liquefaction-train"
     ],
-    "source_notes": "GEM T4 (proposed, ProposalYear 2024, capacity 3.8 mtpa) has no planned-start year. Oman LNG's fourth Qalhat/Sur train is consistently reported with a 2029 commissioning target (raising total to 15.2 mtpa); KBR holds the FEED, the main EPC tender is out, and FID was expected early 2026. Filling the blank LatestPlannedStartYear=2029. Confidence held to yellow because reporting also notes the T4 development may be paused over feedgas availability (domestic demand vs exports; Block 11 Jaleel gas FID still pending), so the 2029 date is a stated target, not firm.",
-    "scope_note": "Unit-level blank fill (T4 only). Capacity 3.8 and proposed status confirmed current, not changed.",
-    "researcher_initials": "AI-draft (sweep)"
-  },
-  {
-    "terminal_id": "T100000130593",
-    "unit_id": "G100002059306",
-    "terminal_name": "Oman Qalhat LNG Terminal",
-    "unit_name": "T4",
-    "country": "Oman",
-    "field_name": "OriginalPlannedStartYear",
-    "old_value": "",
-    "new_value": "2029",
-    "confidence": "yellow",
-    "source_tier": "trade press (multiple) + Oman MEM statement",
-    "ref_field": "StartDate [ref]",
-    "ref_urls": [
-      "https://www.ogj.com/pipelines-transportation/lng/article/55241225/qalhat-lng-advances-sur-lng-train-4-project-with-feed-contract",
-      "https://lngprime.com/middle-east/oman-lng-to-boost-capacity-with-new-train/118488/"
-    ],
-    "source_notes": "T4 was announced in 2024 with a 2029 commissioning target from the outset, so OriginalPlannedStartYear=2029 matches the first-announced planned start. Same sourcing/caveat as LatestPlannedStartYear. Fills a blank field.",
-    "scope_note": "Unit-level blank fill (T4 only).",
+    "source_notes": "Re-verify only (no value change). Dev-pipeline row: Sur LNG Train 4 still pre-FID as of June 2026 — KBR FEED awarded Nov 2024, EPC tender issued with shortlisted bidders (MEED), FID reported expected early 2026 (Energy Intelligence) but not confirmed taken. Status 'proposed' confirmed correct; capacity 3.8 mtpa and 2029 target corroborated by the existing OGJ Capacity [ref].",
+    "scope_note": "Representative blue re-verify for the T4 unit (standard tier). Other Oman Qalhat units (T1-T3, Debottlenecking) are off-worklist and left untouched.",
     "researcher_initials": "AI-draft (sweep)"
   }
 ]

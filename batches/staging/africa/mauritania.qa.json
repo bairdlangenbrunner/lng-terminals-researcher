@@ -1,22 +1,22 @@
 [
   {
-    "category": "stale_field",
-    "terminal_id": "T100000131091",
-    "unit_id": "G100002109101",
-    "terminal_name": "BirAllah LNG Hub",
-    "issue": "GEM has FIDStatus=Pre-FID, FIDYear=2025. BP's exploration contract on the BirAllah field expired 29 Apr 2024 and was not extended; Mauritania (SMHPM) is seeking a new developer and the project is still at the feasibility/concept stage (first gas targeted 2030). The 'FID expected 2025' has not occurred — FIDYear=2025 looks aspirational/stale. Status (proposed) remains correct. Owner=SMHPM is consistent with the state holding the field post-BP.",
-    "severity": "medium",
-    "suggested_action": "Reconsider/clear FIDYear=2025 (no FID taken); confirm Pre-FID still holds with no near-term FID. Verify operator/partner once a new developer is named.",
+    "category": "data_accuracy",
+    "terminal_id": "T100000130661",
+    "unit_id": "G100002066105",
+    "terminal_name": "Greater Tortue Ahmeyim FLNG Terminal — Phase 2",
+    "issue": "GEM records FIDYear=2024 for GTA Phase 2, but no final investment decision has been taken on Phase 2 as of June 2026. The GEM-cited Status [ref] (BP press release dated 2023-02-27) announces only that partners confirmed the development concept and are progressing it 'towards the pre-FEED stage' (GBS design, 2.5-3.0 mtpa) — it is explicitly NOT an FID. Multiple independent sources corroborate that Phase 2 remains unsanctioned: S&P Global ('being reevaluated'), reporting that as of May 2025 Mauritania/Senegal were still negotiating Phase 2 with BP/Kosmos, and the existing GEM Status [ref] for Phase 2 (Upstream, 'hits the buffers'). FIDYear=2024 thus asserts an event that did not occur.",
+    "severity": "high",
+    "suggested_action": "In a follow-on Update batch, clear or correct FIDYear=2024 for GTA Phase 2 (G100002066105). If GEM uses FIDYear to encode a *targeted/expected* FID year rather than a taken FID, document that convention; otherwise the field should be blank until Phase 2 is actually sanctioned. Verified PASS sources: BP Phase 2 concept release (2023-02-27) and the existing Upstream Status [ref]. Not staged as a field edit here because the correct replacement (blank vs expected-year) depends on GEM's FIDYear convention for never-sanctioned units.",
     "researcher_initials": "AI-draft"
   },
   {
-    "category": "capacity_note",
-    "terminal_id": "T100000130661",
-    "unit_id": "G100002066101",
-    "terminal_name": "Greater Tortue Ahmeyim FLNG Terminal",
-    "issue": "GEM CapacityinMtpa=2.4 for Phase 1. Sources give FLNG Gimi nameplate ~2.7 mtpa, with production ramped to ~2.4 mtpa (~90%) at COD (24 Jun 2025). 2.4 is the current operating/ramped figure and is GIIGNL-aligned; 2.7 is nameplate. Flagging the discrepancy per the nameplate-vs-operating capacity rule — no automated bump made.",
+    "category": "data_provenance",
+    "terminal_id": "T100000131048",
+    "unit_id": "G100002104801",
+    "terminal_name": "New Fortress Banda LNG Terminal",
+    "issue": "ShelvedYear (2023), CancelledYear (2025), and StopYear (2025) are populated but their [ref] cells are blank (worklist [ref]-fill targets, severity low). These specific years are GEM editorial inferences from the no-progress-since rule (the GEM wiki page describes the project as 'cancelled (inferred 4 y)' / 'presumed cancelled as of 2025'); no external source asserts a 2023 shelving or a 2025 cancellation/stop. The only sourceable anchor is the founding MOU (NFE, 2021-12-21), which was used to fill Status [ref] but does not support the 2023/2025 inferred-year values.",
     "severity": "low",
-    "suggested_action": "Decide whether to record nameplate (2.7 mtpa) per GEM convention with the 2.4 ramp noted in Background, or retain 2.4. Verify against next GIIGNL edition.",
+    "suggested_action": "Treat the three inferred-year [ref] blanks as inference-basis cells rather than externally citable: either leave blank with a researcher_notes line stating the dates are derived from the no-activity-since-2021 inference rule, or, if GEM convention requires a [ref], cite the founding MOU as the inference anchor. Do NOT attach a date-specific external citation to these years — none exists. No orphan/misleading ref filled here by design.",
     "researcher_initials": "AI-draft"
   }
 ]

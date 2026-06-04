@@ -1,0 +1,34 @@
+[
+  {
+    "entity_name": "White Eagle Energy",
+    "entity_type": "company",
+    "country_of_hq": "Japan",
+    "parent_entity": "Mitsui O.S.K. Lines",
+    "rationale_for_new_entity": "Owner of the FSRU chartered to GAZ-SYSTEM for the Polish Baltic Sea Coast FSRU (Gulf of Gdansk). A 100% subsidiary of Mitsui O.S.K. Lines (MOL) established as the vessel-owning entity for this 15-yr time charter. Referenced by the staged VesselOwner update on FSRU 1.",
+    "lookup_was_run": "RUN: entity_lookup.py 'White Eagle Energy' --country Poland --remote => not_found_in_local_data; remote returned only generic 'New Entity' (inconclusive, no existing match).",
+    "lookup_result_summary": "Not found locally; remote lookup generic-only (inconclusive). Treat as new entity for GEM.",
+    "referenced_by_terminals": [
+      "T100000130731"
+    ],
+    "referenced_by_units": [
+      "G100002073100"
+    ],
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "entity_name": "Mitsui O.S.K. Lines",
+    "entity_type": "company",
+    "country_of_hq": "Japan",
+    "parent_entity": "",
+    "rationale_for_new_entity": "Ultimate parent of White Eagle Energy (the FSRU owner) and of the group managing the Gdansk FSRU. Major Japanese shipping company (MOL). Referenced by the staged VesselParent update on FSRU 1. NOTE: a global shipper like MOL may well already exist in the GEM entity system under a variant spelling (e.g. 'MOL', 'Mitsui OSK Lines') - remote lookup was inconclusive, so assembler/reviewer should confirm before creating a duplicate.",
+    "lookup_was_run": "RUN: entity_lookup.py 'Mitsui O.S.K. Lines' --country Japan --remote => not_found_in_local_data (canonical 'mol'); remote returned only generic 'New Entity' (inconclusive).",
+    "lookup_result_summary": "Not found locally; remote generic-only (inconclusive). Likely-existing major entity under a name variant - verify before adding to avoid a duplicate.",
+    "referenced_by_terminals": [
+      "T100000130731"
+    ],
+    "referenced_by_units": [
+      "G100002073100"
+    ],
+    "researcher_initials": "AI-draft"
+  }
+]

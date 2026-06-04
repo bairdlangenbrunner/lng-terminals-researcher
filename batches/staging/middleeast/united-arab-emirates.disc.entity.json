@@ -1,0 +1,26 @@
+[
+  {
+    "entity_name": "Nimex Terminals",
+    "entity_type": "company",
+    "country_of_hq": "United Arab Emirates",
+    "parent_entity": "",
+    "rationale_for_new_entity": "Terminal developer/operator for the proposed Khalifa Port LNG Terminal (UAE's first private-sector LNG terminal); signed long-term agreements with AD Ports Group on 2025-11-04 committing up to AED 2.6bn for terminal construction. Not present in GEM local data; remote lookup returned only the 'New Entity' template (no existing match).",
+    "lookup_was_run": "RUN: entity_lookup.py 'Nimex Terminals' --country 'United Arab Emirates' --remote -> not_found_in_local_data; remote candidates = [New Entity] only (no existing GEM entity).",
+    "lookup_result_summary": "No existing GEM entity; new entity needed.",
+    "referenced_by_terminals": "Khalifa Port LNG Terminal",
+    "referenced_by_units": "",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "entity_name": "AD Ports Group",
+    "entity_type": "company",
+    "country_of_hq": "United Arab Emirates",
+    "parent_entity": "ADQ",
+    "rationale_for_new_entity": "Infrastructure landlord / JV partner on the proposed Khalifa Port LNG Terminal; committed up to AED 1.3bn for marine and port infrastructure under the 2025-11-04 agreements with Nimex Terminals. Listed UAE ports operator (formerly Abu Dhabi Ports), majority held by Abu Dhabi sovereign holding company ADQ. Not present in GEM local data; remote lookup returned only the 'New Entity' template. Stage only if reviewer wants AD Ports listed as a co-owner/parent; otherwise Nimex Terminals alone is the operating owner.",
+    "lookup_was_run": "RUN: entity_lookup.py 'AD Ports Group' --country 'United Arab Emirates' --remote -> not_found_in_local_data; remote candidates = [New Entity] only (no existing GEM entity).",
+    "lookup_result_summary": "No existing GEM entity; new entity (optional, as partner/parent).",
+    "referenced_by_terminals": "Khalifa Port LNG Terminal",
+    "referenced_by_units": "",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  }
+]

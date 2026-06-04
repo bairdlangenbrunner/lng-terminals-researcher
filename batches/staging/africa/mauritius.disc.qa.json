@@ -1,0 +1,22 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000131079",
+    "unit_id": "G100002107900",
+    "terminal_name": "Mauritius FSRU",
+    "issue": "Discovery sweep found no LNG activity in Mauritius beyond this single shelved record (status=shelved, substatus='inferred 2 y', proposed 2022). The 2022 basis is CEB's May 2022 RFI for an 80-100 MW LNG power barge + FSRU at the Fort George substation/Port Louis (LNG Prime, https://lngprime.com/lng-terminals/mauritius-plans-lng-to-power-project/53915/). No newer LNG step surfaced in 2023-2026 (no FID, no tender award, no FSRU charter/deployment, no new sponsor or site). Coverage reporting (US trade.gov country guide; ScienceDirect 2025 decarbonisation paper) shows the LNG-to-power line stalled and national strategy pivoted to the Renewable Energy Roadmap 2030; LNG framed only as a bridge. The 'inferred 2 y' substatus (set off 2022 news) is now ~4 years stale and likely warrants advancing to a 'confirmed' shelved substatus on a status_timeline review. fetch_timeline is DOWN this batch, so flagging as a qa status_timeline note rather than staging a blind timeline edit.",
+    "severity": "low",
+    "suggested_action": "Route to an Update batch: pull the existing status timeline (fetch_timeline) when reachable and review whether 'shelved / inferred 2 y' should advance to 'shelved / confirmed' given ~4 years with no concrete LNG progress. Owner remains 'unknown' (no developer was ever selected from the 2022 RFI) - leave blank rather than guess.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "discovery_no_gap",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Mauritius floating power plant / powership (2025 tender)",
+    "issue": "EXCLUDED, NOT an LNG terminal. In 2025 the CEB/Government of Mauritius launched an international tender for a ~90-110 MW floating power plant (powership) to be anchored off Port Louis, target commissioning early Jan 2026. Multiple independent sources confirm the fuel is HEAVY FUEL OIL, not LNG, and the unit has no regasification/FSRU component (Reuters via TradingView 2025; News24 2025-06-24; Ecofin Agency 'Mauritius Turns to Fossil Fuels'; newsmoris 2025-06-26 minister statement). Out of project scope (no LNG/regas). Recorded so a future sweep does not re-examine it as an LNG lead.",
+    "severity": "low",
+    "suggested_action": "No action. Do not stage as an LNG terminal. Re-check only if a future powership tender for Mauritius specifies LNG/FSRU rather than HFO.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  }
+]

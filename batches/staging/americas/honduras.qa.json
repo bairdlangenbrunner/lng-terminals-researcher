@@ -1,22 +1,22 @@
 [
   {
-    "category": "data_quality",
+    "category": "status_timeline",
     "terminal_id": "T100001061417",
     "unit_id": "G100001070365",
     "terminal_name": "Puerto Cortés LNG Terminal",
-    "issue": "Offshore/Floating fields are blank (GEM models the terminal as onshore per RR note 10/25), but the project uses the 'Bilbao Knutsen' as a moored floating storage unit (FSU) that arrived Sept 2025. An FSU implies floating storage. Sources do not clearly state whether the receiving/regas infrastructure is offshore or onshore-with-FSU, so the onshore call is defensible, but the Floating field arguably should reflect the FSU. Leaving GEM's Offshore/Floating as-is pending clearer documentation.",
-    "severity": "low",
-    "suggested_action": "Verify whether Puerto Cortés should carry Floating=True given the moored Bilbao Knutsen FSU, vs. modeling it as onshore-import-with-offsite-FSU. RR (10/25) deliberately called it onshore — defer to researcher judgment; no automated Offshore/Floating edit staged.",
+    "issue": "Project advancing toward operation: the FSU 'Bilbao Knutsen' arrived at Puerto Cortés in September 2025 and Centrica's 15-year LNG supply contract (with Exodus) is expected to commence in 2026 (~6 cargoes/year). GEM still shows Status=construction (LastUpdated 2025-10-10). The terminal is not yet confirmed in commercial operation, so construction may remain correct for now, but a construction->operating transition is likely in 2026 once first cargo is delivered.",
+    "severity": "medium",
+    "suggested_action": "Monitor for first-cargo/commercial-operation announcement in 2026; transition Status construction->operating only on a verified commissioning/first-import report. fetch_timeline endpoint is down, so no timeline edit staged this batch. Sources: LNG Prime (FSU arrival 24 Sep 2025) https://lngprime.com/americas/knutsens-lng-fsu-arrives-in-honduras/164083/ ; LNG Prime (Centrica supply deal) https://lngprime.com/americas/centrica-seals-honduras-lng-supply-deal/170237/",
     "researcher_initials": "AI-draft"
   },
   {
-    "category": "entity",
+    "category": "ownership",
     "terminal_id": "T100001061417",
     "unit_id": "G100001070365",
     "terminal_name": "Puerto Cortés LNG Terminal",
-    "issue": "Vessel owner of the Bilbao Knutsen FSU is described only as 'Norway's Knutsen Group' across sources; no specific subsidiary/SPV name disclosed (matches RR's 10/25 note that the owner within the Knutsen Group could not be determined). entity_lookup for 'Knutsen' returned inconclusive (generic 'New Entity' candidate only). Did NOT stage a VesselOwner field edit to avoid creating an imprecise entity.",
+    "issue": "Vessel ownership unresolved. Sources name only 'Norway's Knutsen Group' as owner of the FSU Bilbao Knutsen; no precise legal entity (e.g. Knutsen OAS Shipping AS) is stated, and RR's note (10/25) flagged the same uncertainty ('which may not be a company in itself'). entity_lookup for 'Knutsen Group' and 'Knutsen OAS Shipping' (--remote) returned only a generic New Entity result (inconclusive). VesselOwner left blank rather than staging a guessed entity. Also: GEM Owner/Parent = 'Génesis Energías SA', but WFW gives the full legal name as 'Genesis Energias, S.A.' and the offtaker/buyer is 'Exodus' (relationship to Génesis not stated in sources) — verify whether Exodus is a Génesis affiliate or a separate buyer.",
     "severity": "low",
-    "suggested_action": "If a VesselOwner is to be recorded, confirm the precise Knutsen owning entity (e.g. Knutsen OAS Shipping / a named SPV) before creating it; otherwise leave VesselOwner blank and note 'Knutsen Group' in researcher notes.",
+    "suggested_action": "Human to confirm the exact Knutsen legal entity for VesselOwner before adding (see entity candidate file), and clarify the Génesis Energías <-> Exodus relationship. Centrica is the LNG supplier (not equity); no GEM offtaker column exists.",
     "researcher_initials": "AI-draft"
   }
 ]

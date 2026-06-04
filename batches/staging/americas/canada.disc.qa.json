@@ -1,0 +1,22 @@
+[
+  {
+    "category": "coverage_scope_check",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Small-scale / peak-shaving liquefaction facilities not in GEM (Canada)",
+    "issue": "Natural Resources Canada's official LNG-projects list names several small operating domestic liquefaction / peak-shaving facilities absent from GEM: Tamaska LNG (Cryopeak, Fort Nelson BC, ~0.016 MTPA, op. 2021), Mt. Hayes LNG (FortisBC, Ladysmith BC, ~0.06 MTPA), Gaz Metro/Energir (Montreal QC, ~0.21 MTPA, op. 1976), and Port of Hamilton (REV LNG, Hamilton ON, op. 2020). These are well below the scale of GEM's tracked import/export terminals and appear to be deliberately out of scope (peak-shaving / satellite / truck-loading rather than marine import/export terminals).",
+    "severity": "low",
+    "suggested_action": "Confirm against the methodology's scale/scope threshold that these peak-shaving/satellite facilities are intentionally excluded; if any handle marine cargo at terminal scale, route to a future Discovery add. No action expected — flagged so a later sweep does not re-investigate them as gaps.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "coverage_scope_check",
+    "terminal_id": "T100000131044",
+    "unit_id": "",
+    "terminal_name": "Tilbury Island LNG Terminal",
+    "issue": "NRCan's project list shows a separate 'Tilbury Marine Jetty' (Delta BC) as a distinct proposed export-enabling item. GEM models Tilbury Island as one terminal with multiple expansion units (Original, Phase 1a/1b, Phase 2). The Tilbury Marine Jetty is the associated marine export jetty (WesPac/FortisBC) and is most likely a sub-component of the existing GEM Tilbury Island terminal rather than a new terminal.",
+    "severity": "low",
+    "suggested_action": "Verify whether the Tilbury Marine Jetty is already captured within GEM's Tilbury Island terminal (likely yes, as the export jetty for the Phase 2 expansion). No new terminal warranted; route any data refresh to an Update batch on T100000131044.",
+    "researcher_initials": "AI-draft"
+  }
+]

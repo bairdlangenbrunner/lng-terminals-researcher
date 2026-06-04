@@ -1,0 +1,42 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000131148",
+    "unit_id": "G100002114801",
+    "terminal_name": "West Papua FLNG Terminal",
+    "issue": "GEM Status = 'proposed' (FIDYear already 2024), but the project is now well into construction. Genting subsidiary PT Layar Nusantara Gas awarded Wison New Energies the EPCIC contract (USD 962.8M, >USD 1bn incl. reimbursables) on 2024-06-20; hull steel-cutting 2024-06-07; hull-launching ceremony held 2025-12-29 at Wison's Nantong yard with the hull phase complete and topsides integration underway; first LNG targeted Q3 2026 / vessel completion Q1 2027. This is a proposed->construction transition. Per sweep rule (fetch_timeline endpoint down) this is flagged for the human to update Status + status timeline, NOT staged as a Status field edit.",
+    "severity": "high",
+    "suggested_action": "Update Status from 'proposed' to 'construction' (anchor ~2024 EPCIC award / steel cut) after pulling the existing timeline. Sources: LNG Industry 2026-01-06 (hull launching), Offshore Energy / Rigzone 2024-06 (EPCIC award). https://www.lngindustry.com/floating-lng/06012026/wison-new-energies-holds-hull-launching-ceremony/",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000131070",
+    "unit_id": "G100002107000",
+    "terminal_name": "Palu LNG Terminal",
+    "issue": "GEM Status = 'cancelled' (CancelledYear 2026), but a possible revival signal: ANTARA News (2026-05-13) reports Aslan Energy Capital (the same Palu sponsor) and PT Bangun Palu Sulawesi Tengah signed an MOU in Jakarta for a USD 1.75bn Palu SEZ development that explicitly includes a ~40 ha 'international-scale LNG hub' (article also references a prior USD 20M LNG investment secured 2026-04). Stage is MOU only, no FID/construction step, so it does not by itself clear the add/revive bar, but it conflicts with a hard 'cancelled' status set in the same year.",
+    "severity": "medium",
+    "suggested_action": "Review whether the 2026-05 Palu SEZ MOU LNG hub is a continuation of this terminal warranting reactivation from 'cancelled' to 'proposed', or a distinct new candidate. Verify before any status change. Source: https://en.antaranews.com/news/415624/palu-sez-secures-us175-billion-for-battery-gigafactory-and-lng-hub",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_completeness",
+    "terminal_id": "T100000131147",
+    "unit_id": "G100002114700",
+    "terminal_name": "Madura FLNG Terminal",
+    "issue": "ShelvedYear=2025 / StopYear=2025 are GEM editorial inferences ('no updates in >2 years -> shelved'), with no single source stating those years. Status [ref] fill is staged separately (last-activity citation); the year [ref]s have no clean citable source and are left unfilled by design rather than paired with a mismatched ref.",
+    "severity": "low",
+    "suggested_action": "Leave ShelvedYear [ref] / StopYear [ref] blank (inferred-year convention) or attach the standard gem.wiki inference citation; do not pair with a news URL that does not state 2025.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change_confirmation",
+    "terminal_id": "T100000131165",
+    "unit_id": "G100002116500",
+    "terminal_name": "Sulawesi-Maluku LNG Cluster",
+    "issue": "Dev-pipeline (proposed), updated 2026-05-30. Skim-confirm: AG&P LNG / PLN EPI JV formed 2025-03; consortium expects commissioning H1 2026. GEM 'proposed' status consistent; no change.",
+    "severity": "low",
+    "suggested_action": "No edit. Representative blue re-verify staged in updates.",
+    "researcher_initials": "AI-draft"
+  }
+]

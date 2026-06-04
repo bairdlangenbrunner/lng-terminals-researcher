@@ -1,12 +1,22 @@
 [
   {
-    "category": "data_quality",
+    "category": "status_timeline",
     "terminal_id": "T100000131116",
     "unit_id": "G100002111600",
     "terminal_name": "Aruba LNG Terminal",
-    "issue": "VERIFIED CURRENT (no change): GEM Status=proposed (LastUpdated 2025-06-12). Independent search found NO material progress in 2025-2026 on the WEB Aruba + Eagle LNG San Nicolas terminal; latest substantive developments remain the Dec-2021 WEB/Eagle agreement and a since-lapsed 2024 commissioning target. Matches GEM ResearcherNotesUnit ('not much progress; couldn't find recent news'; FID removed for lack of evidence). Project appears stalled but not formally cancelled — keep proposed and monitor. Also added to monitor_list.",
-    "severity": "low",
-    "suggested_action": "Keep Status=proposed; monitor for any revival/cancellation signal from WEB Aruba or Eagle LNG. No edit this batch.",
+    "issue": "Site-viability risk: on 2025-11-08 Aruba and the Netherlands announced the former Lago / Refineria di Aruba refinery in San Nicolas — the exact proposed site of this Eagle LNG terminal — will be FULLY DISMANTLED and repurposed as a 'hub for clean energy, maritime innovation, circular industries, housing, culture, and green infrastructure' (NL contributing EUR 50M energy-transition funding). The announcements (gobierno.aw, arubanews.ca, islandinnovation.co) do NOT name the Eagle LNG / WEB LNG terminal, so this is not a confirmed cancellation, but a full refinery teardown materially threatens the proposal. Combined with planned-start slip (LatestPlannedStartYear=2024, now 2yr past) and absence of any forward news since 2023.",
+    "severity": "high",
+    "suggested_action": "Manually verify with WEB Aruba / Aruba govt whether the Eagle LNG regas terminal survives the San Nicolas redevelopment plan. If confirmed dropped, candidate for Status -> cancelled/shelved in a follow-on Update batch. fetch_timeline endpoint is DOWN so no timeline edit staged here.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "link_rot",
+    "terminal_id": "T100000131116",
+    "unit_id": "G100002111600",
+    "terminal_name": "Aruba LNG Terminal",
+    "issue": "Dead citations: 'https://www.eaglelng.com/aruba' (cited in Status [ref] and FacilityType [ref] / ProposalDate [ref]) now returns HTTP 404, as does the Eagle LNG Aruba news index 'https://www.eaglelng.com/aruba/news'. Eagle LNG appears to have removed its Aruba project pages, consistent with stalled activity.",
+    "severity": "medium",
+    "suggested_action": "Replace the dead eaglelng.com/aruba references with surviving sources (Reuters 2021, gascompressionmagazine, riviera) or archive.org snapshots in a follow-on Update batch. Do not auto-strip; flag for reviewer.",
     "researcher_initials": "AI-draft"
   }
 ]

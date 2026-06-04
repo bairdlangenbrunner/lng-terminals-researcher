@@ -1,42 +1,60 @@
 [
   {
-    "terminal_id": "T100000130313",
-    "unit_id": "G100002031300",
-    "terminal_name": "Pyeongtaek LNG Terminal",
+    "terminal_id": "T100000131132",
+    "unit_id": "G100002113200",
+    "terminal_name": "POSCO Dangjin LNG Terminal",
     "unit_name": "--",
     "country": "South Korea",
-    "field_name": "Capacity",
-    "old_value": "41.00",
-    "new_value": "43.40",
+    "field_name": "Status [ref]",
+    "old_value": "",
+    "new_value": "https://www.gem.wiki/POSCO_Dangjin_LNG_Terminal, https://ieefa.org/sites/default/files/2024-09/IEEFA%20fact%20sheet_South%20Korea%20energy%20transition.pdf",
     "confidence": "yellow",
-    "source_tier": "primary (KOGAS company data, republished by JOGMEC 2025)",
-    "ref_field": "Capacity [ref]",
+    "source_tier": "secondary",
+    "ref_field": "Status [ref]",
     "ref_urls": [
-      "https://oilgas-info.jogmec.go.jp/_res/projects/default_project/_page_/001/010/410/4_36_en_2025_kogas.pdf"
+      "https://www.gem.wiki/POSCO_Dangjin_LNG_Terminal",
+      "https://ieefa.org/sites/default/files/2024-09/IEEFA%20fact%20sheet_South%20Korea%20energy%20transition.pdf"
     ],
-    "source_notes": "JOGMEC 2025 KOGAS company profile (data as of end-June 2024) gives KOGAS receiving terminal capacities in MTPA: Pyeongtaek 43.4, Incheon 54.4, Tongyeong 26.5, Samcheok 11.6, Jeju 1.1, Dangjin Phase 1 13.7. Four of the five operating figures match GEM almost exactly (Incheon 54.4 vs GEM 54.5; Tongyeong 26.5 vs 26.6; Samcheok 11.6 = 11.6; Jeju 1.1 = 1.1). Pyeongtaek is the outlier: JOGMEC 43.4 vs GEM 41.0 (~2.4 mtpa higher). Single (primary) source and the capacity BASIS may differ from GEM's nameplate convention (KOGAS labels the column 'Receiving capacity (MTPA)', which may bundle send-out/peak), so staged YELLOW for reviewer adjudication, not auto-applied. Verified via curl+pdftotext (verifier has no PDF path; the journal.jogmec.go.jp redirect copy parses identically).",
-    "scope_note": "Single-unit terminal (project-level Capacity); no multi-unit propagation needed.",
+    "source_notes": "Blank-ref fill. Status=shelved is an INFERRED status (Substatus 'inferred 2 y'): no positive cancellation/shelving announcement exists; the project has had no updates for 2+ years and the Aug-2024 IEEFA fact sheet documents the groundbreaking delay. GEM wiki records the inference reasoning. No source declares the project formally shelved, so confidence is yellow.",
+    "scope_note": "Ref-fill for an existing populated Status value; no Status field change staged.",
     "researcher_initials": "AI-draft (sweep)"
   },
   {
-    "terminal_id": "T100000130310",
-    "unit_id": "G100002031000",
-    "terminal_name": "Boryeong LNG Terminal",
+    "terminal_id": "T100000131132",
+    "unit_id": "G100002113200",
+    "terminal_name": "POSCO Dangjin LNG Terminal",
     "unit_name": "--",
     "country": "South Korea",
-    "field_name": "Owner",
-    "old_value": "IMM Investment Corp [35%]; KB Asset Management Co Ltd [14%]; GS Energy Corp [50%]",
-    "new_value": "IMM Investment Corp [35%]; KB Asset Management Co Ltd [14%]; GS Energy Corp [50%]",
-    "confidence": "blue",
-    "source_tier": "primary/secondary (deal close coverage)",
-    "ref_field": "Owner [ref]",
+    "field_name": "ShelvedYear [ref]",
+    "old_value": "",
+    "new_value": "https://www.gem.wiki/POSCO_Dangjin_LNG_Terminal",
+    "confidence": "yellow",
+    "source_tier": "secondary",
+    "ref_field": "ShelvedYear [ref]",
     "ref_urls": [
-      "https://lngprime.com/asia/sk-innovation-wraps-up-boryeong-lng-stake-sale/172995/",
-      "https://www.kedglobal.com/energy/newsView/ked202508080004",
-      "https://www.kedglobal.com/private-equity/newsView/ked202510100007"
+      "https://www.gem.wiki/POSCO_Dangjin_LNG_Terminal"
     ],
-    "source_notes": "Re-verify, NO CHANGE. The Boryeong (GS) ownership audit theme is resolved and GEM is current: SK Innovation E&S (post-merger successor to SK E&S) sold its 49.9% stake for ~560 bn KRW; an IMM Investment (35.9%) + KB Asset Management/Balhae Infra (14.0%) consortium signed the SPA Nov 2025 and CLOSED the deal Dec 2025, with GS Energy taking a nominal 0.1% to reach 50.1% control. GEM's Owner (IMM 35% / KB 14% / GS 50%) and Parent (GS Holdings 50.1% / IMM 35.9% / KB 14.0%) already reflect the post-sale structure; SK E&S is no longer an equity holder (it had been the 50% co-founder). No edit needed; flagged blue as the representative re-verify for this terminal.",
-    "scope_note": "Single-unit terminal; representative blue re-verify (one per terminal per brief).",
+    "source_notes": "Blank-ref fill for ShelvedYear=2025. The year is GEM's inference point (2 years after the 2023 proposal with no progress); no external source dates a shelving event. GEM wiki documents the 'as of September 2025, no updates in over two years' inference. Yellow: inferred, not announced.",
+    "scope_note": "Ref-fill for an existing populated ShelvedYear value; no year change staged.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131132",
+    "unit_id": "G100002113200",
+    "terminal_name": "POSCO Dangjin LNG Terminal",
+    "unit_name": "--",
+    "country": "South Korea",
+    "field_name": "StopYear [ref]",
+    "old_value": "",
+    "new_value": "https://www.gem.wiki/POSCO_Dangjin_LNG_Terminal",
+    "confidence": "yellow",
+    "source_tier": "secondary",
+    "ref_field": "StopYear [ref]",
+    "ref_urls": [
+      "https://www.gem.wiki/POSCO_Dangjin_LNG_Terminal"
+    ],
+    "source_notes": "Blank-ref fill for StopYear=2025, mirroring the inferred ShelvedYear. Same inference basis (no project activity for 2+ years as of Sep 2025); no source records a formal stop/cancellation event. Yellow: inferred.",
+    "scope_note": "Ref-fill for an existing populated StopYear value; no year change staged.",
     "researcher_initials": "AI-draft (sweep)"
   }
 ]

@@ -4,19 +4,29 @@
     "terminal_id": "T100000131166",
     "unit_id": "G100002116600",
     "terminal_name": "Botum Sakor LNG Terminal",
-    "issue": "Possible proposed->construction signal. Royal Group's USD1.34bn Botum Sakor (Koh Kong) gas-to-power project held a groundbreaking 16 Oct 2024 and a 2025 LNG Prime article ('Construction progresses on Cambodia's first LNG power plant') reports the project — described as including a jetty, an LNG storage tank, and regasification facilities — advancing, with power-plant phase-1 COD targeted ~end-2026/2027. As RR already noted (8/25), sources do not cleanly separate the LNG import terminal from the power plant, so a status change to 'construction' cannot be confirmed for the terminal itself. Flagging as a status_timeline watch, NOT a Status edit.",
+    "issue": "GEM Status = 'proposed' but the accompanying 900 MW Royal Group gas-fired power plant at Botum Sakor (Koh Kong) broke ground in October 2024 and is reported under construction, targeting Phase 1 (450 MW) operation by end-2026 / 2027. The Cambodia Ministry of Mines and Energy (MME) describes the 900 MW LNG power project as 'on track for operation by 2026-2027'. The LNG import terminal (jetty for 185,000 cu m vessels, ~200,000 cu m storage tank, regas station) is the feedgas infrastructure for that plant, so terminal status may warrant proposed->construction. NOT staging a Status edit (fetch_timeline endpoint down); flag for human timeline verification of whether terminal-side works (jetty/tank) have physically commenced vs the power-plant scope only.",
     "severity": "medium",
-    "suggested_action": "Human to assess whether the construction reporting covers the LNG terminal/jetty/regas (not just the power plant) before moving Botum Sakor LNG Terminal proposed->construction. Best lead: LNG Prime article (URL verified via curl; url_verifier soft-blocked by Cloudflare).",
+    "suggested_action": "Verify on the timeline whether Botum Sakor LNG Terminal (jetty/storage/regas) should move proposed->construction; corroborate with MME (https://mme.gov.kh/newsroom/all-news/cambodias-historic-900mw-lng-power-project-on-track-for-operation-by-2026-2027). Royal Group is project developer/financing-seeker; Government of Cambodia is current GEM owner — confirm equity structure if status advances.",
     "researcher_initials": "AI-draft"
   },
   {
-    "category": "no_change",
-    "terminal_id": "T100000130709",
-    "unit_id": "G100002070902",
-    "terminal_name": "Cambodia LNG Project (Phase 2 / Phase 3)",
-    "issue": "Cambodia LNG Project (Cambodia Natural Gas Corp; Phase 2 FSRU 0.6 mtpa, Phase 3 onshore 3.0 mtpa) — both cancelled (inferred 4y, CancelledYear 2025) in GEM. No post-2021 sources show revival; project long delayed with no associated power plant built. Consistent with GEM. No change.",
+    "category": "link_rot",
+    "terminal_id": "T100000131166",
+    "unit_id": "G100002116600",
+    "terminal_name": "Botum Sakor LNG Terminal",
+    "issue": "Existing GEM Status [ref] (https://www.khmertimeskh.com/501399350/cambodia-to-build-its-first-lng-gas-fired-power-plant/) now returns HTTP 403 to url_verifier (Khmer Times anti-bot/paywall). May still be live in a browser but fails programmatic verification. A replacement primary source is available: MME official newsroom (PASS) and POWER Magazine 'Cambodia Cancels Coal Plant in Favor of Gas-Fired Facility' (PASS, https://www.powermag.com/cambodia-cancels-coal-plant-in-favor-of-gas-fired-facility/).",
     "severity": "low",
-    "suggested_action": "None — verified current.",
+    "suggested_action": "Replace/supplement the Khmer Times Status [ref] with the MME official source and/or POWER Magazine article (both verifier-PASS).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_field",
+    "terminal_id": "T100000131166",
+    "unit_id": "G100002116600",
+    "terminal_name": "Botum Sakor LNG Terminal",
+    "issue": "GEM export shows CapacityInMtpa blank for Botum Sakor LNG Terminal, but the GEM wiki page states import capacity of 1.1 mtpa, and trade press describes a 200,000 cu m storage tank + 160,000 cu m/hour regas station. Capacity-fill is outside this row's standard-tier worklist (worklist scope = dev-pipeline status/news only) so not staged as an update, but flagged as a gap for a future fill batch.",
+    "severity": "low",
+    "suggested_action": "Consider filling CapacityInMtpa = 1.1 (per GEM wiki) in a follow-on update batch, with a verifiable primary/regulatory source for the nameplate figure.",
     "researcher_initials": "AI-draft"
   }
 ]

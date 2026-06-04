@@ -1,0 +1,72 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130995",
+    "unit_id": "G100002099501;G100002099502",
+    "terminal_name": "Yakutia LNG Project",
+    "issue": "GEM holds T1/T2 as 'proposed'. In late Oct 2025 the sponsor YATEC (Yakut Fuel & Energy Company) announced it is abandoning/suspending the Yakutsk (Yakutia) LNG export project under US sanctions and redirecting the gas to domestic power generation for data centres / AI / mining (initial 200 MW). Separately, GEM-listed owner Globaltec LLC reportedly entered liquidation in March 2025, expected to cease operations by Feb 2026. Sources: Energy Intelligence (29 Oct 2025) and EADaily (30 Oct 2025), both url_verifier PASS.",
+    "severity": "high",
+    "suggested_action": "Route to Update batch to change status from 'proposed' toward shelved/cancelled with timeline event (suspension/abandonment, 2025) once fetch_timeline is reachable. Also re-verify the Owner=Globaltec LLC field given the reported 2025 liquidation. Verified leads: https://www.energyintel.com/0000019a-310c-ddaf-ab9f-bf5fc3830000 ; https://eadaily.com/en/news/2025/10/30/russia-abandons-the-lng-sanctions-project-gas-will-be-used-for-electricity-and-ai",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000131112",
+    "unit_id": "G100002111201;G100002111202;G100002111203",
+    "terminal_name": "Murmansk LNG Terminal",
+    "issue": "GEM holds T1/T2/T3 as 'proposed'. Novatek suspended work on the Murmansk (and Ob/Obsky) LNG projects in Sept 2024 due to Western sanctions (Kommersant, via Gas Processing & LNG, url_verifier PASS). The project is still listed for commissioning by 2030 in Russia's April 2025 Energy Strategy to 2050, so it is not formally cancelled; 'proposed' is defensible but the multi-year suspension is a material timeline event the row does not yet capture.",
+    "severity": "medium",
+    "suggested_action": "Route to Update batch to record a 'work suspended (2024)' timeline event; re-confirm whether status should remain 'proposed' or move to shelved at the next review. Verified lead: http://gasprocessingnews.com/news/2024/09/russias-novatek-suspends-work-on-two-lng-projects-due-to-sanctions/",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130921",
+    "unit_id": "G100002092101",
+    "terminal_name": "Obsky LNG Terminal",
+    "issue": "GEM holds T1 as 'proposed'. Same Sept 2024 Kommersant report has Novatek suspending work on Ob/Obsky LNG alongside Murmansk LNG (blue-hydrogen/ammonia variant also scrapped). Project remains in the April 2025 Energy Strategy to 2050 at 4.8 mtpa, so 'proposed' is defensible, but the suspension is an uncaptured timeline event.",
+    "severity": "medium",
+    "suggested_action": "Route to Update batch to record a 'work suspended (2024)' timeline event; reassess proposed-vs-shelved at next review. Verified lead: http://gasprocessingnews.com/news/2024/09/russias-novatek-suspends-work-on-two-lng-projects-due-to-sanctions/",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_quality",
+    "terminal_id": "T100000130512",
+    "unit_id": "G100002051201;G100002051202",
+    "terminal_name": "Sakhalin II LNG Terminal",
+    "issue": "Blank-ref-fill target ConstructionDate [ref] could not be filled because the existing value ConstructionYear=1998 (T1 and T2) appears to be the year the phase-1 feasibility study was approved by GlavGosExpertiza/State Environmental Review (Apr-Jun 1998), not the construction start. A dedicated Sakhalin-2 timeline (offshore-technology.com) states 'Construction of the LNG plant started in August 2003'; Trains 1 and 2 were commissioned Feb 2009 and May 2009. (That timeline URL returned HTTP 403 to url_verifier, so it is not citable, but the discrepancy is consistent across sources.)",
+    "severity": "medium",
+    "suggested_action": "Reviewer to verify the intended construction-start year for Sakhalin II (likely 2003, not 1998) before sourcing ConstructionDate [ref]; left blank rather than fill a ref that contradicts the stored value. No data-value edit staged.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_quality",
+    "terminal_id": "T100000130512",
+    "unit_id": "G100002051203",
+    "terminal_name": "Sakhalin II LNG Terminal",
+    "issue": "Blank-ref-fill target FIDYear [ref] (T3) could not be filled: the stored FIDYear=2008 for the proposed third train is not corroborated. The third train has never reached FID (GEM FIDStatus='Pre-FID', status 'proposed'); 2008 coincides with the Shtokman/Sakhalin-era project finance and the formation of expansion roadmaps, not a T3 FID. Plans for the third line were put on hold in 2019 (lack of gas resources + sanctions) and remain unrealized.",
+    "severity": "low",
+    "suggested_action": "Reviewer to confirm what FIDYear=2008 represents for the proposed third train (possibly an artifact / planning milestone) before sourcing; left blank rather than fabricate a ref. No data-value edit staged.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130707",
+    "unit_id": "G100002070703",
+    "terminal_name": "Portovaya LNG Terminal",
+    "issue": "Blank-ref-fill targets Status [ref] / ShelvedYear [ref] / StopYear [ref] for the proposed T3 expansion (shelved, inferred 2y, ShelvedYear/StopYear=2025) were left blank: the shelving is GEM's own inference and no single external source states 'Portovaya T3 shelved in 2025'. Research corroborates the inference, however -- as of May 2025 there were no updates on the third-train expansion and it was NOT included in Russia's April 2025 Energy Strategy to 2050 (the operating T1/T2 facility was also placed under full US sanctions effective 27 Feb 2025). The existing ProposalDate [ref] (LNG Prime + Vedomosti) already documents the Sept 2022 expansion proposal.",
+    "severity": "low",
+    "suggested_action": "Accept the inferred 'shelved (2025)' status as well-founded; no external ref exists to fill the inferred-status [ref] cells (standard for inferred shelving). No edit staged.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_quality",
+    "terminal_id": "T100000130510",
+    "unit_id": "G100002051001",
+    "terminal_name": "Pechora LNG Terminal",
+    "issue": "Blank-ref-fill target ShelvedYear [ref] (ShelvedYear=2020) left blank. The row is 'cancelled' (CancelledYear=2022, StopYear=2022, both sourced to Kommersant) and Rosneft abandoned Pechora LNG in Sept 2018 (existing Owner [ref], Kallanish Energy). A source dating a specifically 2020 shelving was not found; the historical ShelvedYear=2020 anchor sits between the 2018 abandonment and 2022 cancellation.",
+    "severity": "low",
+    "suggested_action": "Low priority; reviewer may drop or re-date ShelvedYear if no 2020-specific source exists. No ref fabricated; no edit staged.",
+    "researcher_initials": "AI-draft"
+  }
+]

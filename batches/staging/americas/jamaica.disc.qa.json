@@ -1,0 +1,22 @@
+[
+  {
+    "category": "ownership",
+    "terminal_id": "T100000130670",
+    "unit_id": "G100002067000",
+    "terminal_name": "Montego Bay LNG Terminal",
+    "issue": "GEM Owner/Parent = 'Excelerate Energy Inc [100%]' is now correct in DIRECTION but reflects a 2025 ownership change that an Update batch should confirm and timestamp. New Fortress Energy (NFE) was the original developer/owner of the Montego Bay terminal; NFE sold its entire Jamaica downstream LNG + power platform (Montego Bay, Old Harbour FSRU, Clarendon CHP) to Excelerate Energy for US$1.055B - definitive agreement Mar 2025, deal closed 14 May 2025. Verify Owner/Operator/Parent fields and add a status/ownership timeline note for the May 2025 transfer.",
+    "severity": "low",
+    "suggested_action": "Update agent: confirm Owner/Operator/Parent = Excelerate Energy with the May 2025 acquisition close as the anchor; add ownership-change provenance. Sources: Excelerate PR (excelerateenergy.com/news/excelerate-energy-advances-growth-strategy-with-acquisition-of-jamaica-downstream-lng-and-power-infrastructure-business-from-new-fortress-energy/) and NFE close PR (businesswire.com 20250514022616).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ownership",
+    "terminal_id": "T100000130684",
+    "unit_id": "G100002068400",
+    "terminal_name": "Old Harbour FSRU",
+    "issue": "Same NFE->Excelerate transfer as Montego Bay: NFE sold the Old Harbour FSRU (and the rest of its Jamaica platform) to Excelerate Energy, deal closed 14 May 2025. GEM already shows Excelerate as Owner/Parent (direction correct); flag is to confirm and timestamp the change. FSRU vessel = Hoegh Gallant (replaced Golar Freeze Mar 2022); confirm vessel/IMO still align with the carrier project per the FSRU sync rule when an Update batch touches this row.",
+    "severity": "low",
+    "suggested_action": "Update agent: confirm Owner/Operator/Parent = Excelerate Energy (May 2025 close anchor); add ownership-transfer note; run fsru_sync_check on the Hoegh Gallant vessel/IMO fields. Sources: Excelerate close PR (businesswire.com 20250514564222), NFE close PR (businesswire.com 20250514022616).",
+    "researcher_initials": "AI-draft"
+  }
+]
