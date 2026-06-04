@@ -1,0 +1,52 @@
+[
+  {
+    "category": "data_quality",
+    "terminal_id": "T100000130701",
+    "unit_id": "G100002070100",
+    "terminal_name": "Niihama LNG Terminal",
+    "issue": "OtherNames cell on Niihama LNG Terminal = \"Sakaide LNG Terminal\", but Sakaide LNG Terminal is a SEPARATE live GEM terminal (T100000130513): different owner (Sakaide LNG vs Niihama LNG Co Ltd), different prefecture (Kagawa vs Ehime), different ActualStartYear (2010 vs 2022). Niihama is a 2022 Tokyo-Gas/Shikoku-Electric-led terminal, not an alias of Sakaide. The alias appears to be an erroneous carryover and could cause a false dedup merge.",
+    "severity": "medium",
+    "suggested_action": "Verify and most likely remove \"Sakaide LNG Terminal\" from Niihama's OtherNames (the two are distinct terminals). If a deliberate relationship exists (e.g. relocation/successor), document it in ResearcherNotes instead of an alias.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "citation_hygiene",
+    "terminal_id": "T100000130527",
+    "unit_id": "G100002052700",
+    "terminal_name": "Soma Port LNG Terminal",
+    "issue": "Status [ref] = https://www.japex.co.jp/en/news/detail/20220320_01/?utm_source=chatgpt.com carries a '?utm_source=chatgpt.com' tracking suffix (artifact of a prior ChatGPT-assisted edit). The clean URL (suffix removed) verifies PASS for 'Soma'. Cosmetic only; no data change.",
+    "severity": "low",
+    "suggested_action": "Strip the '?utm_source=chatgpt.com' query string from the Status [ref] URL.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change",
+    "terminal_id": "T100000130475",
+    "unit_id": "G100002047501",
+    "terminal_name": "Hibiki LNG Terminal",
+    "issue": "Hibiki Expansion (3rd tank) re-verified: GEM's Status=construction, FIDYear=2024, OriginalPlannedStartYear=2029, LatestPlannedStartYear=2029 all match current sources. FID Nov 2024; groundbreaking 18 Jul 2025; completion targeted H1 FY2029 (LNG Prime, verified PASS). JERA's Apr-2025 arrangement is capacity-sharing on the new tank, NOT an equity stake, so owner/parent (Hibiki LNG Co / Saibu Gas 90% + Kyushu Electric 10%) correctly excludes JERA. New tank is 230,000 cbm STORAGE (not a defined mtpa sendout add) so the blank CapacityinMtpa on the Expansion unit is defensible; left blank.",
+    "severity": "low",
+    "suggested_action": "No edit. Confidence bump only (verified current 2026-06).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change",
+    "terminal_id": "T100000130465",
+    "unit_id": "G100002046500",
+    "terminal_name": "Fukuoka LNG Terminal",
+    "issue": "Fukuoka re-verified: GEM Status=retired is correct. Terminal decommissioned June 2015 after LNG receiving was consolidated at Hibiki (operational Nov 2014). Owner Saibu Gas Holdings Co Ltd is the correct current holding entity (formed 2021). No reactivation found.",
+    "severity": "low",
+    "suggested_action": "No edit. Confidence bump only (verified current 2026-06).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change",
+    "terminal_id": null,
+    "unit_id": null,
+    "terminal_name": "Japan shard-0 (22 even-indexed terminals)",
+    "issue": "Bulk re-verify: the remaining shard terminals are stable OPERATING import terminals owned by Japanese power/gas utilities, consistent with current sources and recent GEM LastUpdated (mostly 2026-05, rest 2025-09). No status, capacity, owner, parent, or operator changes found vs GEM. Spot-checked anchor sources (JOGMEC datahub, GIIGNL/IGU 2025) verify PASS. Discovery sweep for new Japanese import terminals surfaced none meeting the add-bar (JERA's new-build activity is offshore - Hawaii FSRU - not Japan).",
+    "severity": "low",
+    "suggested_action": "No edits. Country is verified current; apply confidence bumps where review workflow supports it.",
+    "researcher_initials": "AI-draft"
+  }
+]

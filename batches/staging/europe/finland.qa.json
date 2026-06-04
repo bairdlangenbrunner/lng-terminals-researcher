@@ -1,62 +1,32 @@
 [
   {
-    "category": "ownership",
-    "terminal_id": "T100000131064",
-    "unit_id": "G100002106400",
-    "terminal_name": "Inkoo FSRU",
-    "issue": "GEM lists Owner = 'Gasum Oy [100%]' and Operator = 'Elering; Gasgrid Finland'. Sources indicate the Inkoo FSRU-based terminal is owned and operated by Floating LNG Terminal Finland Oy, a 100% subsidiary of Gasgrid Finland Oy, which holds the 10-year (~EUR 460m) charter of the FSRU Exemplar from Excelerate Energy. Gasum is a primary terminal CAPACITY HOLDER / LNG-cargo supplier, not the terminal owner. Elering (Estonian TSO, co-owner of Gasum) does not operate Inkoo. Possible conflation of capacity-offtake with equity/operatorship. NOTE: GEM uses 'Gasum Oy [100%]' / parent 'Elering AS; Gasgrid Finland Oy' as a consistent convention across all Nordic small-scale Gasum terminals (Fredrikstad, Lysekil, Pori, Southern Finland, Gavle), so this may be an intentional modeling choice rather than an error — flagging for human resolution rather than overwriting.",
-    "severity": "medium",
-    "suggested_action": "Reviewer to decide: set Operator = 'Gasgrid Finland Oy' (or create entity 'Floating LNG Terminal Finland Oy', a Gasgrid subsidiary) and reclassify Gasum as capacity holder/offtaker; drop Elering from Operator. Do NOT unilaterally overwrite the Gasum owner convention without confirming GEM's intended modeling. Sources: gasgrid.fi/en/fsru-en/floating-lng-terminal-finland/, en.wikipedia.org/wiki/Inkoo_LNG_terminal.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "no_change",
-    "terminal_id": "T100000130438",
-    "unit_id": "G100002043800",
-    "terminal_name": "Hamina LNG Terminal",
-    "issue": "Verified current: operating; 6,000 MWh/d injection capacity (~1.7 TWh/yr); JV of Hamina Energy, Alexela (Estonia) and Wartsila; started commercial ops Oct 2022; 30,000-cbm tank; capacity offered for gas year 2026. Matches GEM (operating, 6000 MWh/d). No field change.",
-    "severity": "low",
-    "suggested_action": "None — confirmed current. Source: haminalng.fi, lngprime.com.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "no_change",
-    "terminal_id": "T100000130444",
-    "unit_id": "G100002044400",
-    "terminal_name": "Tornio Manga LNG Terminal",
-    "issue": "Verified current: operating; 0.4 mtpa regas, 50,000 m3 storage (largest Nordic import terminal); operated by Manga Terminal Oy (sub of Manga LNG Oy); JV Outokumpu 45% / SSAB 25% / Skangas-now-Gasum 25% / EPV 5%. Matches GEM. No field change.",
-    "severity": "low",
-    "suggested_action": "None — confirmed current. Source: manga-lng.com, gasum.com.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "no_change",
-    "terminal_id": "T100000130440",
-    "unit_id": "G100002044000",
-    "terminal_name": "Pori LNG Terminal",
-    "issue": "Small-scale Gasum import terminal (0.1 mtpa, operating since 2016, Port of Tahkoluoto). No 2024-26 news indicating status/capacity/ownership change. Matches GEM.",
-    "severity": "low",
-    "suggested_action": "None — stable.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "no_change",
+    "category": "data_discrepancy",
     "terminal_id": "T100000130720",
     "unit_id": "G100002072000",
     "terminal_name": "Rauma LNG Terminal",
-    "issue": "Cancelled (Linde; inferred 4y, CancelledYear 2023). No 2024-26 revival signal. Matches GEM.",
-    "severity": "low",
-    "suggested_action": "None — stable.",
+    "issue": "GEM records ShelvedYear=2021 (ShelvedCancelledStatusType=inferred), but the only citable real-world shelving event is 2015: YLE (Finnish public broadcaster), 'SK: AGA hyllytti Rauman LNG-terminaalin', 21 Aug 2015 (https://yle.fi/a/3-8243455 — url_verifier PASS), reports sponsor AGA (now Linde) froze/shelved the Rauma LNG investment due to low oil prices and changed energy price ratios. No source found supporting a 2021 shelving. The 2021 value appears to be a GEM-internal inference; the documented sponsor action is 2015.",
+    "severity": "medium",
+    "suggested_action": "In an exhaustive Update pass, reconcile ShelvedYear: either correct it to 2015 with the YLE source as ShelvedYear [ref], or confirm a separate 2021 basis. As a standard-tier blank-ref fill I did NOT cite the 2015 YLE article against the 2021 cell (would pair a source to the wrong year). Candidate verified source for a 2015 value: https://yle.fi/a/3-8243455.",
     "researcher_initials": "AI-draft"
   },
   {
-    "category": "no_change",
-    "terminal_id": "T100000130442",
-    "unit_id": "G100002044200",
-    "terminal_name": "Southern Finland LNG Terminal",
-    "issue": "Cancelled (Gasum Finngulf; confirmed, CancelledYear 2015). Long-dead proposal, abandoned Oct 2015 per Wikipedia. Matches GEM.",
+    "category": "blank_ref",
+    "terminal_id": "T100000130720",
+    "unit_id": "G100002072000",
+    "terminal_name": "Rauma LNG Terminal",
+    "issue": "Status [ref] blank for Status=cancelled, but cancellation is GEM-inferred (ShelvedCancelledStatusType=inferred, Substatus='inferred 4 y'). No external source states 'cancelled' verbatim; the only page asserting the 2023 cancellation is GEM's own wiki (https://www.gem.wiki/Rauma_LNG_Terminal, already in the Wiki column — citing it as Status [ref] would be circular). Verified non-circular sources document the project's existence/grant (offshore-energy.biz, url_verifier PASS) and its 2015 sponsor shelving (YLE, PASS) but not a 'cancelled' status.",
+    "severity": "medium",
+    "suggested_action": "Leave Status [ref] blank rather than stage a circular (gem.wiki) or value-mismatched citation. If GEM policy permits the inferred-substatus source-reuse rule (SOP §3.2), the YLE 2015 shelving article (https://yle.fi/a/3-8243455) is the strongest underlying basis for the dead/cancelled status and could anchor Status [ref] in a future exhaustive pass — flagged for human judgment.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_ref",
+    "terminal_id": "T100000130720",
+    "unit_id": "G100002072000",
+    "terminal_name": "Rauma LNG Terminal",
+    "issue": "CancelledYear [ref] and StopYear [ref] both blank for CancelledYear=2023 and StopYear=2023. Both 2023 values are GEM inferences from ~4 years of project dormancy (no formal sponsor cancellation announcement). No source literally states a 2023 cancellation/stop; the documented sponsor action (shelving) is 2015 per YLE.",
     "severity": "low",
-    "suggested_action": "None — stable.",
+    "suggested_action": "Leave CancelledYear [ref] and StopYear [ref] blank — inferred values with no citable source supporting 2023. No weak/red citation staged (SOP §6: prefer blank + qa over red). Revisit only if a source explicitly dating the cancellation surfaces.",
     "researcher_initials": "AI-draft"
   }
 ]

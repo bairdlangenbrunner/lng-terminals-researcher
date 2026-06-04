@@ -1,12 +1,62 @@
 [
   {
-    "category": "verification",
+    "category": "status_timeline",
+    "terminal_id": "T100000130434",
+    "unit_id": "G100002043400",
+    "terminal_name": "Paldiski LNG Terminal",
+    "issue": "Permanent onshore Paldiski LNG Terminal (Baltic Gaas) is shelved-by-inference with no activity since ~2022; the FSRU/floating route superseded it and ESPA bought the quay (Mar 2023). GEM ResearcherNote: 'Infer cancelled in 2026 cycle if no updates.' 2025-26 search found no revival and no further development — meeting the shelved->cancelled escalation condition.",
+    "severity": "medium",
+    "suggested_action": "Escalate Status shelved -> cancelled in the next apply cycle (per ResearcherNote and lifecycle shelved->cancelled rule). fetch_timeline endpoint is DOWN, so do NOT stage a Status field edit or timeline file this batch; route as a status_timeline change for manual timeline entry once the endpoint is back.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
     "terminal_id": "T100000131004",
     "unit_id": "G100002100400",
     "terminal_name": "Paldiski FSRU",
-    "issue": "Paldiski FSRU arrangement re-verified and CONSISTENT with GEM. The Estonia-Finland shared FSRU is the Excelerate-owned 'Exemplar' (150,900 cbm), moored at Inkoo (Finland), NOT Paldiski; Estonia dropped its planned stake in the Finnish terminal (2022) and instead bought the Paldiski mooring quay (state agency ESPA, ~EUR 31.5m). Paldiski functions as a reception-ready backup point connected via the Balticconnector pipeline. GEM correctly omits capacity (note cites 1.8 mtpa per 2025 IGU), tags it 'interim facility', and sets Owner=Estonian Stockpiling Agency [100%]. Minor: LatestPlannedStartYear=2025 is now in the past with no FSRU stationed at Paldiski; status 'construction' is defensible (quay built, reception-ready) but reviewer may reconsider given no vessel is berthed there.",
+    "issue": "LatestPlannedStartYear=2025 has now passed with no FSRU stationed at Paldiski (shared Exemplar remains at Inkoo, Finland; Paldiski is a reception-ready backup quay). Status remains 'construction'/'actual'. The 2025 planned start is unmet; lifecycle defensibility of an open 'construction' status with a past planned-start should be reviewed.",
     "severity": "low",
-    "suggested_action": "No field edit. Optionally revisit Paldiski FSRU lifecycle status/planned-start (reception-ready quay vs no stationed FSRU) at next cycle.",
+    "suggested_action": "Verify status defensibility on next cycle: confirm whether Paldiski stays 'construction' as a reception-ready backup or should reflect a revised planned-start year. No Status field edit staged (fetch_timeline DOWN; status-change routing). Capacity intentionally OMITTED (shared with Inkoo) stands — do not bump.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ownership",
+    "terminal_id": "T100000130436",
+    "unit_id": "G100002043600",
+    "terminal_name": "Tallinn LNG Terminal",
+    "issue": "Operator discrepancy. GEM Operator='Liwathon E.O.S.' sourced solely from the GIE LNG database (RR ResearcherNote already flags it as uncorroborated). The Nov-2024 Port of Tallinn<->JetGas agreement and the Port of Tallinn official development page name JetGas OU as the terminal developer and never mention Liwathon E.O.S. Liwathon is the renamed Vopak E.O.S. oil-products terminal operator (2019 acquisition), tied to the older defunct Vopak/Muuga proposal, not the current JetGas bioLNG project.",
+    "severity": "medium",
+    "suggested_action": "Likely-stale Operator. No verified current operator is named (Port of Tallinn page identifies JetGas as developer, not explicitly as operator), so this is ambiguous -> do NOT stage a guessed Operator edit. Reviewer to decide whether to blank/replace Operator pending a primary source naming the current operator of the JetGas terminal.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "lifecycle",
+    "terminal_id": "T100000130436",
+    "unit_id": "G100002043600",
+    "terminal_name": "Tallinn LNG Terminal",
+    "issue": "Anchor-year invariant relaxed: Status='proposed' while ShelvedYear=2019, CancelledYear=2021, StopYear=2021 are populated (lifecycle expects these blank for a proposed unit). This is the legitimate dead-and-revived shape (older Vopak/Muuga proposal died 2019/2021; revived by the Nov-2024 Port of Tallinn/JetGas agreement). Flagging so the reviewer knows the retained history is intentional, not an error.",
+    "severity": "low",
+    "suggested_action": "No change needed if dead-and-revived history is intentionally retained. Note that the three historical anchor-year [ref] cells are blank and were NOT fillable (see blank_ref qa below).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_ref",
+    "terminal_id": "T100000130434",
+    "unit_id": "G100002043400",
+    "terminal_name": "Paldiski LNG Terminal",
+    "issue": "Blank-ref targets ShelvedYear [ref] (=2024) and StopYear [ref] (=2024) left UNFILLED. The shelved/stop is inferred from inactivity (ShelvedCancelledStatusType=inferred); no source documents a discrete 2024 shelving/stop event (GEM's own wiki: 'presumed shelved, no updates in over two years' as of Jul-2024). Filling a specific-year ref would manufacture an orphan/over-attributed citation (Rule F).",
+    "severity": "low",
+    "suggested_action": "Leave ShelvedYear [ref] and StopYear [ref] blank. If the shelved->cancelled escalation is applied, the 2024 inferred years will be revisited then. Do not manufacture a year-specific source.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_ref",
+    "terminal_id": "T100000130436",
+    "unit_id": "G100002043600",
+    "terminal_name": "Tallinn LNG Terminal",
+    "issue": "Blank-ref targets ShelvedYear [ref] (=2019), CancelledYear [ref] (=2021), StopYear [ref] (=2021) left UNFILLED. These belong to the prior dead cycle of the older Vopak/Muuga proposal and are inferred (ShelvedCancelledStatusType=inferred). Searches (baltic-course, postimees, ERR, investinestonia) surfaced the 2019 Vopak->Liwathon ownership sale but NO source documenting a project shelving in 2019 or cancellation in 2021 with those exact years.",
+    "severity": "low",
+    "suggested_action": "Leave the three historical anchor-year [ref] cells blank — no value-bearing source verifies the specific years. Do not manufacture refs.",
     "researcher_initials": "AI-draft"
   }
 ]

@@ -1,0 +1,22 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130609",
+    "unit_id": "G100002060900",
+    "terminal_name": "Yueyang LNG Terminal",
+    "issue": "Conflicting status narratives for Yueyang Phase 1 (GEM = construction). Third-party/GEM-wiki summary holds the main receiving-station (storage/库区) has been SHELVED since Jan 2021 for failure to obtain land-use permits, with only 'will continue to promote' assurances (People's Congress replies Sep 2024 & Oct 2025). BUT the Yueyang Development & Reform Commission reply dated 2024-07-30 frames the project as actively progressing: LNG unloading equipment installed and safety-certified as of 2024-01-24, detailed designs approved for 2024-2027, central-budget funding allocated. The divergence appears to be jetty/berth subproject (加注码头, passed acceptance Jan 2024) advancing while the storage area stalls on land acquisition. GEM's 'construction' is defensible against the official source; not staging a Status edit (fetch_timeline DOWN + genuinely ambiguous). Flagging for reviewer to confirm whether Phase 1 belongs in construction vs shelved.",
+    "severity": "medium",
+    "suggested_action": "Reviewer: reconcile the two narratives. If retaining 'construction', refresh Status [ref] with the verified 2024-07-30 FDRC reply (https://fgw.yueyang.gov.cn/8739/22354/content_2249569.html). If the storage-area stall is decisive, consider 'shelved' with a status_timeline entry once fetch_timeline is reachable.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "link_rot",
+    "terminal_id": "T100000130609",
+    "unit_id": "G100002060900",
+    "terminal_name": "Yueyang LNG Terminal",
+    "issue": "Both Status [ref] URLs on Yueyang Phase 1 fail url_verifier: https://www.yueyang.gov.cn/zwdt/content_1493770.html (FAIL, content gone) and http://gxt.hunan.gov.cn/xxgk_71033/gzdt/dfgz/202010/t20201026_13937764.html (FAIL, content gone). These same two URLs also appear in the Owner [ref] for Phase 1/2/3. Dead citations.",
+    "severity": "medium",
+    "suggested_action": "Replace the dead Status [ref] (and the dead Owner [ref] copies on all three Yueyang units) with verified live sources, e.g. the 2024-07-30 Yueyang FDRC reply (https://fgw.yueyang.gov.cn/8739/22354/content_2249569.html, PASS) and the companion reply content_2249541.html (PASS).",
+    "researcher_initials": "AI-draft"
+  }
+]

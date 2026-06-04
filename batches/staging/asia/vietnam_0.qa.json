@@ -1,0 +1,72 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100001057498",
+    "unit_id": "G100001065727",
+    "terminal_name": "Nam Dinh LNG Terminal",
+    "issue": "JAPEX (Japan Petroleum Exploration) announced 2026-03-02 it is withdrawing entirely from the Nam Dinh Vu IP (Hai Phong) LNG terminal project, transferring its ITECO JSC shares to partners, citing project economics. With its lead foreign sponsor gone, the project's viability is in question; GEM still has it 'proposed'. No formal cancellation yet.",
+    "severity": "medium",
+    "suggested_action": "Verify whether ITECO/remaining partners intend to continue; consider shelved/cancelled status if no replacement sponsor emerges. Ownership edit staged separately (remove JAPEX).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130826",
+    "unit_id": "G100002082600",
+    "terminal_name": "Bac Lieu LNG Terminal",
+    "issue": "Bac Lieu 3,200 MW LNG-to-power (Delta Offshore Energy) signed a principle grid-connection agreement with EVNNPT on 2026-03-20 for a 500 kV line to Thot Not substation; phased COD targeted across 2030. Project remains pre-FID/proposed but is actively progressing. GEM LatestPlannedStartYear=2027 likely outdated vs 2030 phased COD.",
+    "severity": "low",
+    "suggested_action": "Consider updating LatestPlannedStartYear to 2030 (phased) in a follow-on; status stays proposed. ref: lngindustry 2026-03-20 (verified PASS).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_quality",
+    "terminal_id": "T100001057487",
+    "unit_id": "G100001065717",
+    "terminal_name": "Ca Mau LNG Terminal",
+    "issue": "GEM LatestPlannedStartYear=2026 for Ca Mau LNG terminal. The associated Ca Mau 3 CCGT targets ~2026 COD, but no source confirms the standalone Ca Mau LNG import terminal itself starting 2026; Vietnam's 2026 imports are landing at Thi Vai, not Ca Mau. Start year likely optimistic.",
+    "severity": "low",
+    "suggested_action": "Re-verify Ca Mau terminal start year in a follow-on; no confident replacement value found this sweep.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100001057474",
+    "unit_id": "G100001065701",
+    "terminal_name": "Long An LNG Terminal",
+    "issue": "GS Energy/VinaCapital Long An LNG-to-power: per 2025 reporting, PPA targeted 2025, construction kickoff 2026, COD from 2029. Still pre-FID/proposed. GEM LatestPlannedStartYear=2030 broadly consistent (2029-2030 range).",
+    "severity": "low",
+    "suggested_action": "No edit; monitor for FID/construction start in 2026.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000131059",
+    "unit_id": "G100002105900",
+    "terminal_name": "Hai Lang LNG Terminal",
+    "issue": "Hai Lang (Quang Tri) LNG power centre (T&T/KOGAS/Hanwha/KOSPO) behind schedule; revised plan: PPA Q3 2025, financing Q4 2025, construction Q4 2025, COD Q4 2029. Remains proposed. GEM LatestPlannedStartYear=2029 consistent.",
+    "severity": "low",
+    "suggested_action": "No edit; monitor for construction start.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_quality",
+    "terminal_id": "T100000130980",
+    "unit_id": "G100002098000",
+    "terminal_name": "Cat Hai FSRU",
+    "issue": "Cat Hai (ExxonMobil/JERA/Hai Phong, 6 mtpa MOU 2020) excluded from PDP8; >4 years with no project updates. GEM status 'cancelled' (inferred). ShelvedYear/StopYear=2023 are inferred with no primary source pinning those exact years, hence blank [ref] cells — these cannot be cleanly [ref]-filled.",
+    "severity": "low",
+    "suggested_action": "Filling Status [ref] with energytracker JERA-PDP8 analysis (staged). Leave ShelvedYear/StopYear [ref] blank — inferred years, no source confirms 2023 specifically.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_quality",
+    "terminal_id": null,
+    "unit_id": null,
+    "terminal_name": "Ben Tre FSRU / Ca Na / Chan May / Khanh Hoa / Mui Ke Ga (blank-ref fills)",
+    "issue": "Remaining shard blank-ref targets (Ben Tre ShelvedYear ref; Ca Na ShelvedYear+StopYear ref; Chan May Status+ShelvedYear+CancelledYear+StopYear ref; Khanh Hoa Status+ShelvedYear+StopYear ref; Mui Ke Ga Status+ShelvedYear+StopYear ref) are all on records GEM marks ShelvedCancelledStatusType='inferred'. These statuses/years were inferred from ABSENCE of updates, so no primary source exists to fill the [ref] — filling would be an orphan/manufactured citation. Decision 768 PDF (the existing Ben Tre ref source) failed url_verifier (scanned/image, no extractable text).",
+    "severity": "low",
+    "suggested_action": "Leave these [ref] cells blank; inferred status by design has no citation. Note Decision 768 PDF at vepg.vn is image-only and fails verification — consider replacing with theinvestor.vn Decision-768 article (verified PASS) where a status citation is genuinely wanted.",
+    "researcher_initials": "AI-draft"
+  }
+]

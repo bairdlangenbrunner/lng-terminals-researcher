@@ -1,0 +1,62 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130427",
+    "unit_id": "G100002042702",
+    "terminal_name": "Dahej LNG Terminal",
+    "issue": "Dahej Phase 2 Expansion (+5 mtpa, GEM status=construction) was COMMISSIONED 31 March 2026, raising the Dahej terminal from 17.5 to 22.5 mtpa nameplate (Petronet LNG). Implies a status change construction->operating and a StartYear of 2026.",
+    "severity": "high",
+    "suggested_action": "Verify and update unit status to operating with StartYear 2026 once timeline endpoint is back (fetch_timeline currently DOWN). Sources: Petronet/Reuters via Construction World https://www.constructionworld.in/energy-infrastructure/oil-and-gas/petronet-lng-commissions-dahej-terminal-expansion-to-22.5-mmtpa/89574 ; GIIGNL https://www.giignl.org/news/indias-petronet-launches-dahej-lng-expansion",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ownership",
+    "terminal_id": "T100000130443",
+    "unit_id": "G100002044300",
+    "terminal_name": "Jaigarh LNG Terminal",
+    "issue": "GEM lists Owner=AGP City Gas Pvt Ltd / Parent=I Squared Capital. As of latest reporting the AG&P (Nebula/AG&P) acquisition of H-Energy's Jaigarh terminal is still in NEGOTIATION, not closed; and Hoegh LNG TERMINATED the Hoegh Giant FSRU charter (effective April) citing charterer default, with H-Energy accepting the FSRU contract is at an end. The terminal therefore currently has no committed FSRU.",
+    "severity": "medium",
+    "suggested_action": "Do NOT change owner (deal not closed). Re-verify owner/operator and FSRU-vessel status next batch; current GEM owner may predate or conflate the unfinished AG&P deal. Source: LNG Prime https://lngprime.com/contracts-and-tenders/hoegh-lng-terminates-fsru-charter-with-indias-h-energy/52649/",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ownership",
+    "terminal_id": "T100000130457",
+    "unit_id": "G100002045700",
+    "terminal_name": "Jafrabad FSRU",
+    "issue": "Jafrabad (Swan LNG) Phase 1 remains in construction: 92.3% physical progress as of 31 Dec 2025 per Gujarat Legislative Assembly, deadline Sept 2026. In Dec 2024 Swan Energy + AG&P signed a HOA for a JV to provide the FSRU and an FSU (AG&P 51% / SEL 49% of the vessel). GEM owner/parent (Swan/IFFCO/GMB/GSPL/Mitsui) describes the terminal SPV equity, which is distinct from the AG&P vessel-provision JV.",
+    "severity": "low",
+    "suggested_action": "Status=construction confirmed (no edit). When fetch_timeline is up, confirm ConstructionYear and any revised start (Sept 2026 target). Keep vessel-provider AG&P JV out of terminal equity fields. Source: DeshGujarat https://deshgujarat.com/2026/02/25/jafrabad-lng-fsru-project-92-3-complete-deadline-sept-2026-gujarat-govt/",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "verification",
+    "terminal_id": "T100000130439",
+    "unit_id": "G100001064511",
+    "terminal_name": "Hazira LNG Terminal",
+    "issue": "Hazira Expansion (Updated Proposal, GEM Cap=19.92 mtpa incremental, status=proposed) received environmental clearance from MoEF's EAC on 2 Sep 2025 for expansion of the terminal to 26.2 mtpa (from 6.28). 26.2-6.28 = ~19.92, consistent with GEM's incremental unit capacity. No FID yet; status stays proposed. GEM LastUpdated=2025-10-06 already postdates the EC.",
+    "severity": "low",
+    "suggested_action": "Confirmed current; EC granted but no FID, status proposed unchanged. Optionally ref-fill the existing capacity/proposal with the EC source. Source: DeshGujarat https://deshgujarat.com/2025/09/13/shell-energy-india-gets-green-nod-for-%E2%82%B921600-cr-hazira-lng-terminal-expansion/",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "verification",
+    "terminal_id": "T100001050400",
+    "unit_id": "G100001058140",
+    "terminal_name": "AMNS Suvali LNG Terminal",
+    "issue": "AMNS Suvali (proposed, 5 mtpa captive LNG import for ArcelorMittal Nippon Steel Hazira steel plant) remains in proposed/planning stage: received environmental clearance in 2023; no construction timeline or FID announced as of mid-2026. Status=proposed confirmed; no change.",
+    "severity": "low",
+    "suggested_action": "No edit. Re-verify next batch for FID/timeline.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "verification",
+    "terminal_id": "T100000130429",
+    "unit_id": "G100002042901",
+    "terminal_name": "Dabhol LNG Terminal",
+    "issue": "Dabhol Expansion (proposed, +7.5 mtpa to 12.5 mtpa total). As of May 2025 GAIL still plans to expand Dabhol to 6.3 mtpa by mid-2027 and to 12.5 mtpa by 2031-2032; GEM Cap=7.50 incremental consistent with the 12.5 total. Separately, the Dabhol Breakwater (operating unit, not on worklist) was completed and the terminal became all-weather with first monsoon cargo (GAIL Bhuwan) 2 June 2025. Status=proposed confirmed for the expansion unit.",
+    "severity": "low",
+    "suggested_action": "No edit to expansion unit (proposed confirmed). Note Breakwater all-weather completion for the operating unit's record. Sources: Gas Processing News https://gasprocessingnews.com/news/2025/05/indias-gail-to-run-dabhol-lng-terminal-during-monsoons-plans-expansion/ ; LNG Prime https://lngprime.com/lng-terminals/gail-dabhol-lng-terminal-gets-first-cargo-during-monsoon-season/153563/",
+    "researcher_initials": "AI-draft"
+  }
+]

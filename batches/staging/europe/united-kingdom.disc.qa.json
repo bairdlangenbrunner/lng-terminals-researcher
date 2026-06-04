@@ -1,0 +1,22 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000131134",
+    "unit_id": "G100002113400",
+    "terminal_name": "Grangemouth FSRU",
+    "issue": "Discovery sweep surfaced timeline detail for the existing GEM 'proposed' row (no new terminal). Crown LNG Holdings Ltd selected IKM Engineering & Environmental Consultants for design/engineering of the 100%-owned Grangemouth (Firth of Forth) FSRU import project; Crown LNG originally targeted FID late-2024, since slipped to 2025 (FSRU charter search ~18 months, targeted online ~2027, capacity ~2 Mtpa). UPDATE agent should verify current FID/status and refresh status timeline (fetch_timeline.py is DOWN, so flagging as a qa note rather than staging a timeline edit). Sources: energyconnects.com (Aug 2024), ikmconsulting.co.uk (IKM selection), offshore-technology.com.",
+    "severity": "low",
+    "suggested_action": "Route to UPDATE workflow: re-verify Crown LNG Grangemouth FSRU FID date and lifecycle status against sponsor/IKM sources; refresh status timeline once fetch_timeline.py host is reachable.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "coverage_confirmation",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "United Kingdom (country-level)",
+    "issue": "Discovery sweep of the United Kingdom (rings A regulator NSIP/Ofgem, B trade press, C sponsor IR) found NO LNG terminals missing from GEM. All candidates surfaced map to existing GEM rows: WaveCrest Teesside regas -> Teesside WaveCrest LNG Terminal (T100000131171, proposed); Crown LNG Grangemouth FSRU -> Grangemouth FSRU (T100000131134, proposed); InfraStrata/Meridian Barrow-in-Furness FSRU -> Port Meridian FSRU (T100000130555, cancelled); Trafigura Teesside reopening -> Teesside GasPort FSRU recommissioned (T100000130559, proposed); plus operating Grain, South Hook, Dragon, Mowi. No new UK liquefaction/export, small-scale, or bio-LNG import projects found. UK coverage is comprehensive.",
+    "severity": "low",
+    "suggested_action": "No discovery action. Mature, fully-tracked market; no new_terminal staged.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  }
+]

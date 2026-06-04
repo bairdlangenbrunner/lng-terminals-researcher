@@ -1,0 +1,22 @@
+[
+  {
+    "category": "naming",
+    "terminal_id": "T100000130342",
+    "unit_id": "G100002034201",
+    "terminal_name": "Sunrise FLNG Terminal",
+    "issue": "GEM's Sunrise FLNG Terminal record carries the alias 'Beaco LNG Terminal' (per gem.wiki). 'Beaco' (Beaco/Beaco, Tasi Mane South Coast Project) actually denotes the ONSHORE liquefaction-plant DEVELOPMENT OPTION for the same Greater Sunrise gas, whereas the record is named/modeled as an FLNG (floating) facility. The onshore-Beaco vs FLNG choice is two competing development concepts for one export project, but conflating them under one alias can mislead. Confirm this single record is intended to cover both concepts (FLNG and onshore Beaco) rather than implying only the floating option.",
+    "severity": "low",
+    "suggested_action": "Confirm in researcher_notes that Sunrise FLNG Terminal represents the Greater Sunrise export project under either development concept (offshore FLNG or onshore Beaco LNG plant), and that 'Beaco LNG Terminal' is retained as an alias deliberately. No data change proposed; dedup confirmation only.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "discovery_dedup",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Beaco / Tasi Mane onshore LNG plant",
+    "issue": "Discovery checked whether the Beaco onshore LNG plant (Tasi Mane South Coast Project; ~5 MTPA pre-FEED train, 230 ha site sized for up to 4 trains / 20 MTPA; pre-FEED to Amec Foster Wheeler 2015; Beaco Gas Pipeline ~150 km from Greater Sunrise) is a missing GEM terminal. CONCLUSION: not a gap — it is the onshore development option of the same Greater Sunrise EXPORT project already in GEM as 'Sunrise FLNG Terminal' (alias 'Beaco LNG Terminal'). Routed to dedup/Update confirmation, NOT staged as a new terminal.",
+    "severity": "low",
+    "suggested_action": "No new terminal. Treat any Beaco onshore-plant updates as edits to the existing Sunrise FLNG Terminal record (T100000130342) per the Update workflow.",
+    "researcher_initials": "AI-draft"
+  }
+]

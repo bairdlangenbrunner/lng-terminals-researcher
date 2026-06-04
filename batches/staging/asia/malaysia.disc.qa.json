@@ -1,0 +1,32 @@
+[
+  {
+    "category": "owner_change",
+    "terminal_id": "T100001050288",
+    "unit_id": "G100001057999",
+    "terminal_name": "RGT Yan LNG Terminal",
+    "issue": "GEM lists Owner as 'MMC Corporation Bhd; SKS Corp Sdn Bhd' (the 2022 Pulau Bunting consortium). As of 2026 the project sponsor has been restructured: Gas Malaysia Bhd is now project lead/sponsor holding 70%, with Tokyo Gas Co Ltd (15%) and VTTI B.V. (15%). Gas Malaysia received a Letter to Proceed from the Energy Commission in March 2026 and signed a joint development agreement with Tokyo Gas and VTTI in May 2026 for the ~6 Mtpa FSRU off Pulau Bunting, Yan, Kedah. Owner/Parent fields on the GEM row appear stale.",
+    "severity": "medium",
+    "suggested_action": "Route to an Update batch: re-verify and update Owner to Gas Malaysia Bhd [70%]; Tokyo Gas Co Ltd [15%]; VTTI B.V. [15%]; run entity_lookup for Gas Malaysia Bhd / Tokyo Gas / VTTI B.V. before staging; confirm whether MMC/SKS retain any role. Sources: enerdata (green-light), NST (JDA 2026-05).",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100001057502",
+    "unit_id": "G100001065733",
+    "terminal_name": "Lumut LNG Terminal",
+    "issue": "Lumut (PETRONAS Gas RGT-3, Malaysia's first FSRU import terminal) advanced materially in 2026: PETRONAS Gas received a notification-to-proceed letter from the Ministry of Economy on 2026-04-30; MISC entered a 20-year FSRU charter and a shipbuilding agreement with Samsung Heavy Industries; reported jetty agreement secured; reported FSRU storage 170,000 m3, send-out 500 MMscfd (~3.5 Mtpa), target commercial ops Q2 2029. TNB reported as co-developer in some reporting. GEM row is 'proposed' with blank capacity and Owner = Petroliam Nasional Bhd only.",
+    "severity": "medium",
+    "suggested_action": "Route to Update: re-verify status (still proposed/pre-FID vs construction once FSRU keel laid), populate CapacityInMtpa (~3.5, derived from 500 MMscfd), set Floating/FloatingVesselName once vessel named, add FSRU sync once vessel identity known, check TNB co-ownership. fetch_timeline DOWN this batch. Source: theedgemalaysia node/802192 (verified).",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100001057503",
+    "unit_id": "G100001065734",
+    "terminal_name": "Kemaman LNG Terminal",
+    "issue": "E&H Energy's Kemaman (RGT Kemaman) import terminal, Terengganu: secured a 6 Mtpa long-term LNG supply (incl. 20-yr deal with Amigo LNG, Mexico) starting 2028; FID targeted end-2025 pending approvals/TPA interest; permit-approval engineering under way (Energy Commission + Terengganu state); 30-month construction, target ops 2028; capacity 6 Mtpa. GEM row is 'proposed' with blank capacity.",
+    "severity": "low",
+    "suggested_action": "Route to Update: re-verify FID status (was targeted end-2025), populate CapacityInMtpa (6), confirm OriginalPlannedStartYear 2028. Source: thesun.my E&H Kemaman, giignl.org Amigo LNG supply deal.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  }
+]

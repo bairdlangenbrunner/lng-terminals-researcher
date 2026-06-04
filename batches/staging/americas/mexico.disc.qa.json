@@ -1,0 +1,22 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130984",
+    "unit_id": "",
+    "terminal_name": "Vista Pacifico LNG Terminal",
+    "issue": "GEM lists Vista Pacifico (Topolobampo, Sinaloa; CFEnergia/Sempra/TotalEnergies) as 'proposed'. Sempra has cancelled the project: per its annual 10-K filed with the SEC 2026-02-26, 'Due to a change in the priorities of SI Partners and CFE, in December 2025 we agreed to rescind the existing development agreement.' Mexico's CNE also denied the liquefaction-plant construction permit at Topolobampo. Multiple outlets (LNG Prime, NRDC, Natural Gas Intelligence, Gas Outlook) report the project cancelled as of Feb/Mar 2026. Status should move proposed -> cancelled (CancelledYear 2025/2026). fetch_timeline is DOWN, so routing as a qa note rather than a staged timeline edit.",
+    "severity": "high",
+    "suggested_action": "Route to an Update batch: set Status=cancelled, CancelledYear=2025 (agreement rescinded Dec 2025; publicly disclosed Feb 2026), cite Sempra 10-K (sec.gov) + LNG Prime (https://lngprime.com/lng-terminals/sempra-says-vista-pacifico-lng-partnership-terminated/179300/). Verify against the existing GEM timeline once fetch_timeline is restored.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "coverage_note",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Karpowership Yucatán FSRU (new candidate)",
+    "issue": "Discovery sweep found one genuine gap not in GEM: Karpowership's Yucatan LNG-to-power FSRU (250 MW powership + ~600 mmscf/d FSRU, 3-yr CENACE contract). Staged as new_terminal (mexico.disc.newterminals.json). All other Mexico LNG projects surfaced (Saguaro/Puerto Libertad, Costa Azul, New Fortress Altamira & La Paz=Pichilingue, Amigo FLNG Guaymas, Gato Negro Manzanillo, Salina Cruz Pilot/GFI, Coatzacoalcos II = Ursus-Aqualita, Coatzacoalcos CFE, Lakach FLNG, Vista Pacifico) are already in GEM. Note: New Fortress 'La Paz, Mexico' facility = existing GEM Pichilingue terminal (port of Pichilingue serves La Paz); not a separate site. Salina Cruz Pilot/GFI is described as LNG bunkering/transshipment (bunkering is out of project scope) but is already tracked in GEM.",
+    "severity": "low",
+    "suggested_action": "No action beyond reviewing the staged new_terminal. GEM's Mexico coverage is otherwise comprehensive.",
+    "researcher_initials": "AI-draft"
+  }
+]

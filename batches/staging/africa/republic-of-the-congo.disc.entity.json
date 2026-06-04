@@ -1,0 +1,26 @@
+[
+  {
+    "entity_name": "Wing Wah Exploration and Production Petroliere",
+    "entity_type": "company",
+    "country_of_hq": "China",
+    "parent_entity": "Southernpec (Wing Wah / Southern Petroleum group)",
+    "rationale_for_new_entity": "Operator and co-owner of the Banga Kayo LNG/gas-valorisation plant (new_terminal staged this batch). Chinese E&P company (subsidiary of the Southernpec group) holding the Banga Kayo, Holmoni and Cayo onshore permits in Republic of the Congo; signed a $23bn integrated hydrocarbon deal with Congo in 2025. Not present in the GEM LNG export CSV nor returned by entity_lookup.",
+    "lookup_was_run": "RUN -- entity_lookup.py --remote returned not_found_in_local_data and only a 'New Entity' create link remotely (inconclusive); confirm no existing GEM entity for this name/parent before creating.",
+    "lookup_result_summary": "No local match; remote lookup inconclusive (only 'New Entity' link). Parent group is variously called Southernpec / Wing Wah Holdings -- Ownership Team should confirm canonical parent.",
+    "referenced_by_terminals": ["Banga Kayo LNG Terminal"],
+    "referenced_by_units": [],
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "entity_name": "Societe Nationale des Petroles du Congo (SNPC)",
+    "entity_type": "company",
+    "country_of_hq": "Republic of the Congo",
+    "parent_entity": "Government of the Republic of the Congo",
+    "rationale_for_new_entity": "Congolese national oil company; co-owner/partner with Wing Wah on the Banga Kayo LNG/gas plant (new_terminal staged this batch). Referenced as Owner on the staged terminal.",
+    "lookup_was_run": "RUN -- entity_lookup.py --remote returned not_found_in_local_data and only a 'New Entity' create link (inconclusive). SNPC is Congo's national oil company and very likely ALREADY exists in the shared GEM entity system under another spelling (e.g. 'SNPC' or 'National Petroleum Company of Congo') -- do NOT create a duplicate; resolve to the existing entity ID first.",
+    "lookup_result_summary": "No local match in the LNG CSV; remote lookup inconclusive. High prior probability of an existing GEM entity -- treat as a lookup-needed, not a confirmed new entity.",
+    "referenced_by_terminals": ["Banga Kayo LNG Terminal"],
+    "referenced_by_units": [],
+    "researcher_initials": "AI-draft (discovery sweep)"
+  }
+]

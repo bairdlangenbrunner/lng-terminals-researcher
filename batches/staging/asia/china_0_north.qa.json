@@ -1,0 +1,182 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130796",
+    "unit_id": "G100002079600",
+    "terminal_name": "Sinopec Longkou LNG Terminal",
+    "issue": "GEM has Phase 1 as construction (LastUpdated 2026-03-27). Multiple reports (LNG Prime / naturalgasworld and Chinese trade press) indicate Phase 1 completed construction by ~March 2025 and entered the testing/commissioning stage by Jan 2026, approaching commercial operation. Likely a construction->commissioning/operating transition pending first cargo confirmation.",
+    "severity": "medium",
+    "suggested_action": "Verify whether Phase 1 has reached commissioning/operating; if first cargo confirmed, update Status + StartDate via timeline workflow once fetch_timeline endpoint is restored.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130711",
+    "unit_id": "G100002071100",
+    "terminal_name": "Longkou Nanshan LNG Terminal",
+    "issue": "GEM has Phase 1 as construction (LastUpdated 2026-03-27). Reports (gasworld, Belt&Road portal, Argus) indicate Phase 1 completed construction ~March 2025, began offering presale/import slots from July 2025, and entered testing stage by Jan 2026 preparing for official operation. Likely construction->commissioning transition.",
+    "severity": "medium",
+    "suggested_action": "Verify commissioning/first-cargo status; route Status/StartDate change to timeline workflow once endpoint restored.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130402",
+    "unit_id": "G100002040200",
+    "terminal_name": "Rizhao Lanshan LNG Terminal",
+    "issue": "GEM has Phase 1 as proposed (LatestPlannedStartYear=2020, stale_flag planned_start_slipped). Research (GEM.wiki Rizhao page, Shandong project lists) indicates the Lanshan/Rizhao LNG proposals are largely cancelled/shelved as of 2024-2025 (two proposals cancelled by 2023, third shelved; Beijing Energy Rizhao terminal cancelled Feb 2024). The proposed status may be stale and warrant reclassification to shelved/cancelled.",
+    "severity": "medium",
+    "suggested_action": "Re-verify whether this specific Pacific Energy / Shandong Pacific Natural Gas proposal is still live; if abandoned, reclassify Status to shelved/cancelled via timeline workflow.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130797",
+    "unit_id": "G100002079700",
+    "terminal_name": "Suizhong LNG Terminal",
+    "issue": "GEM has all phases proposed (LatestPlannedStartYear=2020, stale_flag planned_start_slipped). A July 2023 National Energy Administration response to a Liaoning provincial congress delegate stated the province has sufficient gas supply through the 14th Five-Year Plan and no need for further LNG terminals - an effective rejection of Suizhong. Project may be cancelled/shelved rather than proposed.",
+    "severity": "medium",
+    "suggested_action": "Re-verify against the NEA 2023 response; if no live development, reclassify to shelved/cancelled via timeline workflow.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ref_fill",
+    "terminal_id": "T100000130376",
+    "unit_id": "G100002037600",
+    "terminal_name": "Binzhou Changlian LNG Terminal",
+    "issue": "Worklist flags blank Status/ShelvedYear/CancelledYear/StopYear [ref] cells on a cancelled terminal. The only readily available documentation is GEM's own wiki page, which is circular for a GEM [ref]. No independent primary/regulatory source found for the cancellation timeline.",
+    "severity": "low",
+    "suggested_action": "Manual [ref]-fill needed: locate the original proposal-era and abandonment-era Chinese-language sources for this cancelled project, or leave blank per no-orphan-ref rule.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ref_fill",
+    "terminal_id": "T100000130942",
+    "unit_id": "G100002094200",
+    "terminal_name": "Caofeidian FSRU",
+    "issue": "Blank Status/ShelvedYear/CancelledYear/StopYear [ref] on a cancelled FSRU project. No independent external source surfaced beyond GEM's own wiki (circular).",
+    "severity": "low",
+    "suggested_action": "Manual [ref]-fill with original proposal/abandonment sources if locatable.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ref_fill",
+    "terminal_id": "T100000130941",
+    "unit_id": "G100002094100",
+    "terminal_name": "Caofeidian LNG Terminal (Beijing Energy)",
+    "issue": "Blank Status/ShelvedYear/CancelledYear/StopYear [ref] on a cancelled terminal; no independent source beyond GEM wiki.",
+    "severity": "low",
+    "suggested_action": "Manual [ref]-fill if Chinese-language sources locatable.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ref_fill",
+    "terminal_id": "T100000130947",
+    "unit_id": "G100002094700",
+    "terminal_name": "Dongying FSRU",
+    "issue": "Blank Status/ShelvedYear/StopYear [ref] on a cancelled FSRU project; no independent source beyond GEM wiki.",
+    "severity": "low",
+    "suggested_action": "Manual [ref]-fill if locatable.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ref_fill",
+    "terminal_id": "T100000130857",
+    "unit_id": "G100002085700",
+    "terminal_name": "Jinzhou LNG Terminal",
+    "issue": "Blank Status/CancelledYear/StopYear [ref] on a cancelled terminal (Jinzhou FLNG/port project). Cancellation (no development since 2019 signing; cancelled by 2024) is documented but primarily via GEM wiki; original 2019 signing-ceremony coverage may serve as an independent ref.",
+    "severity": "low",
+    "suggested_action": "Manual [ref]-fill: cite the April 2019 signing-ceremony press coverage and any abandonment notice; verify before staging.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ref_fill",
+    "terminal_id": "T100000130950",
+    "unit_id": "G100002095000",
+    "terminal_name": "Panjin LNG Terminal",
+    "issue": "Blank Status/ShelvedYear/CancelledYear/StopYear [ref]. Project stalled after May 2020 framework agreement (no development since); documented mainly via GEM wiki.",
+    "severity": "low",
+    "suggested_action": "Manual [ref]-fill: cite the May 2020 framework-agreement coverage; verify before staging.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ref_fill",
+    "terminal_id": "T100000130398",
+    "unit_id": "G100002039800",
+    "terminal_name": "Penglai LNG Terminal (Baota)",
+    "issue": "Blank Status/ShelvedYear/CancelledYear/StopYear [ref] on a cancelled terminal; no independent source surfaced beyond GEM wiki.",
+    "severity": "low",
+    "suggested_action": "Manual [ref]-fill if Chinese-language sources locatable.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ref_fill",
+    "terminal_id": "T100000130955",
+    "unit_id": "G100002095500",
+    "terminal_name": "Rongcheng LNG Terminal",
+    "issue": "Blank Status/CancelledYear/StopYear [ref] on a cancelled terminal; no independent source beyond GEM wiki.",
+    "severity": "low",
+    "suggested_action": "Manual [ref]-fill if locatable.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ref_fill",
+    "terminal_id": "T100000130798",
+    "unit_id": "G100002079800",
+    "terminal_name": "Weihai LNG Terminal",
+    "issue": "Blank Status/CancelledYear/StopYear [ref] on a cancelled terminal. Independent sources exist: Seatrade-Maritime (March 2020 CNPC-SK cooperation announcement) and IEEFA coverage of stalled projects; cancellation (no development since 2022, cancelled by Jan 2024) otherwise via GEM wiki.",
+    "severity": "medium",
+    "suggested_action": "Manual [ref]-fill: cite Seatrade-Maritime March-2020 announcement (https://www.seatrade-maritime.com/ports-logistics/weihai-cnpc-and-sk-cooperates-on-lng-project-in-china) for proposal; cancellation year needs a confirming source before staging.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ref_fill",
+    "terminal_id": "T100000130959",
+    "unit_id": "G100002095900",
+    "terminal_name": "Yantai FSRU",
+    "issue": "Blank Status/ShelvedYear/CancelledYear/StopYear [ref] on a long-cancelled CNOOC FSRU project (2011 proposal, cancelled 2016); documented via GEM wiki only.",
+    "severity": "low",
+    "suggested_action": "Manual [ref]-fill with original 2011-2016 sources if locatable.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ref_fill",
+    "terminal_id": "T100000130608",
+    "unit_id": "G100002060800",
+    "terminal_name": "Yantai LNG Terminal (PetroChina)",
+    "issue": "Blank Status/ShelvedYear/CancelledYear/StopYear [ref] on a cancelled terminal (Kunlun Energy/Yantai Port; cancelled 2025); documented via GEM wiki only.",
+    "severity": "low",
+    "suggested_action": "Manual [ref]-fill if independent sources locatable.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ownership",
+    "terminal_id": "T100000130417",
+    "unit_id": "G100002041700",
+    "terminal_name": "Yantai LNG Terminal",
+    "issue": "A secondary project-intelligence source describes Yantai LNG ownership as Zhongchengxiang (Yantai) Energy Investment 60% / GCL-Poly (Yantai) Holdings 21% / Shandong Huanya 19%, which differs from GEM's GCL-Poly 52.3% / Huanya 46.5% / Shandong Port Yantai Port 1.2%. Single non-primary source - not stageable, but a possible ownership/equity restructuring worth confirming.",
+    "severity": "low",
+    "suggested_action": "Confirm current equity split via a primary source (sponsor IR / SAMR registration) before any owner/parent edit.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ownership",
+    "terminal_id": "T100000131106",
+    "unit_id": "G100002110600",
+    "terminal_name": "Dandong LNG Terminal",
+    "issue": "GEM owner = Liaoning Qianyuan Energy Development Co Ltd (parent Jilin Qianyuan Energy Development). Recent project news (2023 JunHe legal opinion; 2024-2026 Dandong govt work reports) associates the project with 'Liaoning Energy Coal & Power Industry Co Ltd'. Possible sponsor/owner naming discrepancy or co-developer; ambiguous, not stageable.",
+    "severity": "low",
+    "suggested_action": "Verify the current project company/owner via the Nov-2025 sea-use review filing or Dandong govt sources before any owner edit.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_quality",
+    "terminal_id": "T100000131106",
+    "unit_id": "G100002110600",
+    "terminal_name": "Dandong LNG Terminal",
+    "issue": "Positive progress confirmed for this proposed terminal: 24 Nov 2025 sea-use preliminary review application accepted/announced; 20 Jan 2026 Dandong Municipal Government Work Report cites continued advancement of preliminary work. Supports keeping Status=proposed (actively advancing, not stalled).",
+    "severity": "low",
+    "suggested_action": "No change needed; status proposed remains correct. Note recent advancement in researcher_notes if desired.",
+    "researcher_initials": "AI-draft"
+  }
+]

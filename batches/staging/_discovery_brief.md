@@ -64,5 +64,13 @@ mostly produce: `newterminals`, `newunits`, `monitor`, `entity`, `qa`, `wiki`. S
 - wiki: {country, terminal_id, terminal_name, unit_id, topic, wiki_text, verification_status, source_urls:[..], researcher_initials:"AI-draft"}
 - entity: {entity_name, entity_type, country_of_hq, parent_entity, rationale_for_new_entity, lookup_was_run, lookup_result_summary, referenced_by_terminals, referenced_by_units, researcher_initials:"AI-draft"}
 researcher_initials = "AI-draft (discovery sweep)". Each file is a JSON list; `json.dump(..., ensure_ascii=False, indent=2)`.
+
+SWEEP-MODE SLUG: when an update agent may run concurrently for the same country (combined sweeps),
+your file slug is `<slug>.disc` — write `<slug>.disc.<type>.json` (e.g. `germany.disc.monitor.json`)
+so the two agents never collide on shared types (qa/wiki/entity). `_assemble.py`'s `*.<type>.json`
+globs still match the infix. AFTER all finding files, ALWAYS write `<slug>.disc.done.json` LAST —
+even when empty-handed: `{"slug": ..., "country": ..., "mode": "discovery", "summary":
+{"candidates_examined": N, "new_terminals": N, "monitor": N, "escalation": false}}`. Its presence is
+the orchestrator's resume marker.
 RETURN ONLY a terse summary (≤12 lines): country; #existing GEM terminals; #candidates examined; #already-in-GEM;
 #new_terminals staged; #monitor; escalation (true/false); 1-line headline; blockers.

@@ -1,82 +1,62 @@
 [
   {
     "category": "status_timeline",
-    "terminal_id": "T100000131141",
-    "unit_id": "G100002114000",
-    "terminal_name": "Mukran FSRU",
-    "issue": "Vessel reassignment + stale vessel assignments. GEM CSV has Vessel 1='Energos Power' (operating, 13.50 bcm/y combined) and Vessel 2='Energos Power' (mothballed). Two problems: (1) Vessel 2's name is a data error -- GEM's own wiki lists Vessel 2 as the 'Neptune' (which RELOCATED from Lubmin FSRU to Mukran in July 2024). (2) Live status (LNG Prime, June 2026): Deutsche ReGas terminated the Energos Power charter with the German government (announced Feb 2025; mutual termination reached June 2025, vessel left ~mid-2025). The terminal NOW operates on the Neptune alone (~5 bcm/y). So the operating/mothballed roles are effectively reversed vs the CSV: the Energos Power is GONE, the Neptune is the operating vessel. Deutsche ReGas plans to reinstall a second FSRU to restore the original sendout (~13.5 bcm/y) by 2027. As of late 2025/early 2026, ~80% of 2026 capacity is booked (BASF, Equinor long-term).",
-    "severity": "high",
-    "suggested_action": "Researcher to update unit/vessel rows: set Vessel 2 FloatingVesselName to 'Neptune' (currently mislabeled 'Energos Power'); reflect that the Energos Power departed mid-2025 (status_timeline: operating->retired/idled for the Energos Power unit) and the Neptune is now the operating FSRU (~5 bcm/y); the second/replacement FSRU is proposed for 2027. Combined-capacity researcher note (RR 7/25) already flags this -- align the figure to current single-vessel ~5 bcm/y or note the gap. FSRU SYNC TOUCHPOINT: carrier project must reflect Energos Power deployment ended at Mukran and Neptune deployed at Mukran (moved from Lubmin). Status field NOT edited here per sweep rules; timeline endpoint is down -- log only.",
+    "terminal_id": "T100000131086",
+    "unit_id": "G100002108600",
+    "terminal_name": "Stade FSRU",
+    "issue": "Construction stalled but progressing toward a delayed start, not shelved. DET (federal operator) now says the FSRU terminal will NOT go into operation before Q2 2026. DET terminated its contract with onshore developer Hanseatic Energy Hub in March 2025; per a Nov 14 agreement DET took over the superstructure to complete it. The vessel (Energos Force) was sub-chartered to Jordan in the interim to avoid losses (arrived Egypt/Damietta en route). GEM Status=construction (actual) with ResearcherNotesUnit RR 7/25 explicitly choosing to leave it in construction this cycle.",
+    "severity": "medium",
+    "suggested_action": "Keep Status=construction per RR's documented hold (deliberate divergence honored). On the NEXT cycle, if Q2-2026 start is met → construction->operating; if the DET/HEH completion talks collapse → consider shelved. fetch_timeline endpoint is DOWN so no Status edit / timeline file is staged here. PlannedStopYear in GEM is 2027 (charter end) — verify still valid given the delay.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ownership",
+    "terminal_id": "T100000131086",
+    "unit_id": "G100002108600",
+    "terminal_name": "Stade FSRU",
+    "issue": "GEM VesselOwner is blank for the Stade FSRU. The vessel (renamed Energos Force, staged separately as a FloatingVesselName update) is owned by Energos Infrastructure (US JV, Apollo-managed funds majority, New Fortress Energy minority), acquired from Dynagas in Jan 2024. entity_lookup.py --remote for 'Energos Infrastructure' was RUN and returned no existing GEM entity (only a 'New Entity' stub) — inconclusive/not-found.",
+    "severity": "low",
+    "suggested_action": "Vessel ownership is carrier-project domain (FSRU-sync: carriers own vessel identity/specs). Did NOT stage a VesselOwner field edit + new GEM entity inside this standard terminals update (scope-creep / new-entity bar). Reviewer: if desired, add 'Energos Infrastructure' as a vessel-owner entity (HQ US; relates to Stade FSRU and the Mukran/Deutsche Ostsee Energos Power vessel) and populate VesselOwner. Sources: https://lngprime.com/americas/energos-buys-two-fsrus-from-dynagas/101763/",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_ref",
+    "terminal_id": "T100000131098",
+    "unit_id": "G100002109800",
+    "terminal_name": "Lubmin RWE FSRU",
+    "issue": "Worklist flagged ShelvedYear [ref] and StopYear [ref] as blank-ref-fill targets (both years = 2025). These years are GEM's 'inferred 2 y' rollover (ShelvedCancelledStatusType=inferred: no project updates in 2+ years), NOT a sourced shelving/stop event. No external source declares a 2025 shelved/stop year for the RWE/Stena Lubmin FSRU. Status [ref] WAS filled (see updates) with a source substantiating non-advancement.",
+    "severity": "low",
+    "suggested_action": "Leave ShelvedYear [ref] / StopYear [ref] blank rather than attach a source that does not state 2025 (would be a misleading citation / pseudo-orphan ref). These are inference-derived years; the inference itself is documented via the Status [ref] fill. No action needed unless the project is positively cancelled with a dated source.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_ref",
+    "terminal_id": "T100000131000",
+    "unit_id": "G100002100000",
+    "terminal_name": "Wilhelmshaven NWO FSRU",
+    "issue": "Worklist flagged Status [ref] as a blank-ref-fill target (Status=shelved, 'inferred 2 y'). Could NOT honestly fill it: the NWO (Nord West Ölleitung) FSRU proposal never advanced and no current (2024-2026) source positively declares it shelved/cancelled — the only 'shelved' assertion is GEM's own wiki (circular). The terminals that DID materialize at Wilhelmshaven are different projects (Uniper Wilhelmshaven 1, Dec 2022; DET Wilhelmshaven 2 / Excelsior FSRU, Aug 2025) — do not conflate with the NWO row. Separately, an existing GEM ref on this row (energate-messenger.com/news/221179 'pipelines...become more concrete') now returns HTTP 403 (paywall/link-rot).",
+    "severity": "medium",
+    "suggested_action": "Do NOT fill Status [ref] with the circular gem.wiki self-citation or a non-confirming source. Treat as an inferred-shelved row whose inference can't be externally cited; consider on a future cycle whether the absence of any NWO news since 2022 warrants cancelled. Reviewer may want to replace/annotate the rotted energate ref (used on ProposalDate/StartDate/Capacity/Operator).",
     "researcher_initials": "AI-draft"
   },
   {
     "category": "status_timeline",
-    "terminal_id": "T100000131086",
-    "unit_id": "G100002108600",
-    "terminal_name": "Stade FSRU",
-    "issue": "Construction stalled / vessel sub-chartered away. Confirms and extends the existing researcher note (RR 7/25): the FSRU project at Stade has stalled over contractual disputes between DET and Hanseatic Energy Hub (HEH). DET terminated its O&M agreement (March 2025) citing HEH non-fulfilment; HEH/DET reached an agreement Nov 14 2025 for DET to take over completion of the superstructure. The assigned FSRU (now 'Energos Force', see updates) has been sub-chartered to Aqaba, Jordan since July 2025. DET says the FSRU terminal will NOT go into operation before Q2 2026, with timing still uncertain. GEM correctly holds status=construction.",
-    "severity": "medium",
-    "suggested_action": "Keep status=construction this cycle (matches researcher note). Update LatestPlannedStartYear consideration: currently blank/2025-era; earliest operation now Q2 2026 per DET, but still indefinite -- researcher may add a planned-start note rather than a firm year. Confirm VesselOperator (GEM 'KN Energies') is still accurate given the DET<->HEH dispute and DET's March 2025 contract termination. No Status field edit; log as status_timeline.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "data_quality",
-    "terminal_id": "T100000130460",
-    "unit_id": "G100002046000",
-    "terminal_name": "Brunsbüttel FSRU",
-    "issue": "Operator structure and capacity nuance. (1) GEM Operator='KN Energies'. Per DET/the terminal page the operating company is Deutsche Energy Terminal (DET); Reganosa Deutschland does O&M; KN Energies handles commercial management only; Höegh Evi runs regasification on the Höegh Gannet. So 'KN Energies' captures only the commercial-management role. (2) GEM Capacity=5.00 bcm/y; current nominal regas capacity is ~3.7 bcm/y (~3.7 mtpa) at the temporary berth, expandable to up to 7.5 bcm/y after the transmission-pipeline expansion (Phase 2 / Jetty West, due ~2025-2026). The 5.00 bcm/y figure sits between these and may be a contracted/intermediate value.",
-    "severity": "medium",
-    "suggested_action": "Researcher to decide whether Operator should be DET (operating company) with KN Energies noted as commercial manager, or left as-is per GEM's operator convention. Verify the 5.00 bcm/y baseload capacity against the ~3.7 bcm/y current nominal vs 7.5 bcm/y post-expansion -- if 5.0 is not a documented baseload, consider aligning to nominal 3.7 (current) and tracking 7.5 as the expansion target. Not staged as an edit pending the researcher's baseload-definition call.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "stale_planned_year",
     "terminal_id": "T100000131001",
-    "unit_id": "G100002100000",
+    "unit_id": "G100002100100",
     "terminal_name": "Wilhelmshaven TES LNG Terminal",
-    "issue": "Planned start years look stale. GEM has OriginalPlannedStartYear=2025 and LatestPlannedStartYear=2025 for this onshore TES 'Green Energy Hub' terminal (proposed, pre-FID). TES's current public timeline targets commercial operations in 2030 (initial 15 bcm/y, expandable >20 bcm), with the regas terminal increasingly reserved for fossil-free green gas from 2027/8. FID was targeted for 2024 (per Dec 2023 reporting) but no confirmed FID found in 2025-2026 search; BNetzA has granted a 20-year tariff/third-party-access exemption.",
+    "issue": "TES Wilhelmshaven Green Energy Hub start has slipped repeatedly: originally targeted 2025/2026 (GEM OriginalPlannedStartYear/LatestPlannedStartYear both 2025), TES's own project page now says commercial operations in 2030. Still 'proposed' with no FID reported (matches GEM). Project remains a German government 'Priority Project' under the LNG Acceleration Law. LatestPlannedStartYear update (2025->2030) staged separately; Status stays proposed.",
     "severity": "low",
-    "suggested_action": "Researcher to refresh planned start: 2025 is clearly past and superseded by a ~2030 target per the sponsor. Because the figure is a planned (pre-FID) date and the latest firm FID date wasn't confirmed, flag for a planned-start update rather than auto-bumping. Confirm whether FID has been taken (would move FIDStatus). Capacity 15 bcm/y still matches sponsor's stated initial figure.",
+    "suggested_action": "No Status edit (still proposed; fetch_timeline DOWN). The 5-year slip with no FID is worth watching — if 2030 slips again or TES pivots fully to hydrogen/ammonia (out of LNG scope), reassess proposed vs shelved next cycle. Start-year value fix is in the updates file.",
     "researcher_initials": "AI-draft"
   },
   {
-    "category": "no_change_verified",
-    "terminal_id": "T100000131097",
-    "unit_id": "G100002109700",
-    "terminal_name": "Wilhelmshaven TES FSRU",
-    "issue": "Re-verified, current. GEM has status=operating, ActualStartYear=2025, FloatingVesselName='Excelsior' (Excelerate Energy), 4.50 bcm/y. Confirmed: FSRU Excelsior reached its pier 28 Apr 2025, received commissioning cargo May 2025, connected to grid/put into operation 26 May 2025, and commenced COMMERCIAL operations 29 Aug 2025 (DET). Five-year charter with the German state; project by TES/E.ON/Engie. All GEM fields consistent.",
+    "category": "no_change",
+    "terminal_id": "T100000130722",
+    "unit_id": "G100002072200",
+    "terminal_name": "Rostock LNG Terminal",
+    "issue": "Re-verified per worklist (dev_pipeline, shelved/inferred). No concrete advancement found: BarMalGas's revived land-based proposal (~0.8 mtpa, bunkering/trucks) appears only on the ENTSOG TYNDP with no other evidence of progress; lingering speculation about a Rostock FSRU has no concrete details. ResearcherNotesUnit RR 9/24 explicitly directs: keep this row as-is, create a NEW row if the project is genuinely revived.",
     "severity": "low",
-    "suggested_action": "No change. One representative blue re-verify for the terminal (start year 2025 confirmed).",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "no_change_verified",
-    "terminal_id": "T100000130721",
-    "unit_id": "G100002072100",
-    "terminal_name": "Stade LNG Terminal",
-    "issue": "Re-verified, current. GEM has the onshore terminal at status=construction, FIDStatus=FID (2024), Capacity=13.30 bcm/y, LatestPlannedStartYear=2027. Confirmed: HEH took positive FID March 2024, construction began June 2024, ~EUR1bn investment, EPC consortium led by Tecnicas Reunidas, commissioning targeted 2027, 13.3 bcm/y. LastUpdated already 2025-12-15. All consistent.",
-    "severity": "low",
-    "suggested_action": "No change. Blue re-verify only.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "no_change_verified",
-    "terminal_id": "T100000131084",
-    "unit_id": "G100002108400",
-    "terminal_name": "Brunsbüttel LNG Terminal",
-    "issue": "Re-verified, current. GEM has the onshore terminal at status=construction, FIDStatus=FID (2024), 10.00 bcm/y, LatestPlannedStartYear=2027, owner German LNG Terminal (KfW 50% / Gasunie 40% / RWE 10%). Confirmed: construction advancing (foundation piles for the two LNG tanks installed at turn of 2024/25; >150 workers on site), Gasunie/RWE targeting operations in 2027, ~10 bcm/y, Gasunie to operate. All consistent.",
-    "severity": "low",
-    "suggested_action": "No change. Blue re-verify only.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "no_change_verified",
-    "terminal_id": "T100000131098",
-    "unit_id": "G100002109800",
-    "terminal_name": "Lubmin RWE FSRU",
-    "issue": "Re-verified, current. GEM has status=shelved (inferred 2y), sponsors RWE + Stena, operator DET. Confirmed: RWE announced in May 2023 it was no longer involved; the planned state-backed FSRU at Lubmin was never installed and focus shifted to Deutsche ReGas's Mukran project. No project updates in 2+ years -> inferred shelved is appropriate.",
-    "severity": "low",
-    "suggested_action": "No change. Inferred-shelved status remains correct; could later move toward inferred-cancelled per lifecycle thresholds if still dormant.",
+    "suggested_action": "No change. Honor RR's hold — leave Status=shelved and do not edit. No blank-ref targets on this row. If a concrete revived proposal surfaces with a sponsor + dated step, route to Discovery as a new row (not an edit to this one).",
     "researcher_initials": "AI-draft"
   }
 ]

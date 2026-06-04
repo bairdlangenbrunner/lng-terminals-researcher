@@ -4,9 +4,9 @@
     "terminal_id": "T100000130817",
     "unit_id": "G100002081707",
     "terminal_name": "Qatar North Field LNG Terminal",
-    "issue": "North Field West (T7-8) is recorded as Status=proposed, but on 25 Feb 2026 QatarEnergy awarded the onshore-LNG EPCC (engineering, procurement, construction & commissioning) contract for the 16 Mtpa NFW expansion (two 8 Mtpa trains) to a Technip Energies / CCC / GAC JV (~EUR 1bn+ to Technip; offshore EPC ~US$1bn awarded separately per Riviera). An EPCC award for the liquefaction trains typically corresponds to the construction phase. FIDYear=2024 in GEM matches the Feb-2024 project greenlight. Researcher to confirm whether NFW should advance proposed->construction and add a ConstructionYear (2026) + a status-timeline entry.",
+    "issue": "North Field West (T7-8) is 'proposed' in GEM (LastUpdated 2025-07-15), but on 2026-02-25 QatarEnergy awarded the onshore EPC contract for the two 16 mtpa NFW mega-trains to a Technip Energies / CCC / Gulf Asia Contractor (GAC) JV. EPC award is a concrete advance beyond 'proposed'; first LNG cargo targeted end-2031. Status field edit not staged per sweep rule (fetch_timeline DOWN).",
     "severity": "medium",
-    "suggested_action": "Pull the unit timeline; if a construction milestone is warranted, append a 'construction 2026' status-timeline entry and set ConstructionYear=2026. Sources: ten.com NFW EPCC press release (25 Feb 2026); naturalgasintel.com NFW-slips-to-2031.",
+    "suggested_action": "Reviewer to evaluate status transition proposed -> construction (substatus) given Feb-2026 EPC award; refresh LastUpdated and Status [ref]. Sources: https://www.gulf-times.com/article/721301/business/qatarenergy-awards-epc-contract-for-the-north-field-west-16-mtpa-lng-project/amp ; https://www.ten.com/en/media/press-releases/technip-energies-awarded-major-lng-contract-north-field-west-project",
     "researcher_initials": "AI-draft"
   },
   {
@@ -14,19 +14,19 @@
     "terminal_id": "T100000130817",
     "unit_id": "G100002081701",
     "terminal_name": "Qatar North Field LNG Terminal",
-    "issue": "North Field East (T1-4) is recorded with OriginalPlannedStartYear=2026 and LatestPlannedStartYear=2026. As of Oct 2025 NFE was in pre-commissioning with Al-Kaabi reaffirming a mid-2026 first-train start (correct for GEM's last update). HOWEVER, the Feb-Mar 2026 Iranian strikes on Ras Laffan caused QatarEnergy to suspend North Field Expansion work and declare force majeure; anonymous-sourced reporting (Bloomberg via EnergyNow, 9 Mar 2026) says first export may slip to early 2027, and MEES (Oct 2025) reported full 4-train completion already pushed to mid-2028. QatarEnergy has NOT officially confirmed a 2027 first-train date. NOT staged as an edit (unconfirmed); flag for monitoring.",
-    "severity": "medium",
-    "suggested_action": "Monitor QatarEnergy / Al-Kaabi statements; if an official revised first-train date is announced, update LatestPlannedStartYear (likely 2027). Do NOT change yet on anonymous sourcing.",
+    "issue": "North Field East (T1-4) remains 'construction' (correct). Progress update: Train 1 reached pre-commissioning / first LNG in late 2025 and is ramping; QatarEnergy targets first-train commercial start mid-2026 (Q3 2026 per Dec-2025 reporting). Four-train NFE completion deferred from 2027 to 2028. No field edit needed; status correct.",
+    "severity": "low",
+    "suggested_action": "No edit. When fetch_timeline is restored, consider adding a 2025/2026 commissioning milestone. Source: https://lngprime.com/lng-terminals/qatarenergy-progresses-pre-commissioning-of-first-nfe-lng-train/167510/",
     "researcher_initials": "AI-draft"
   },
   {
-    "category": "data_conflict",
-    "terminal_id": "T100000130594",
-    "unit_id": "G100002059401",
-    "terminal_name": "QatarEnergy LNG (N)",
-    "issue": "The 18 Mar 2026 Iranian strike on Ras Laffan was reported by Energy Minister al-Kaabi to have disrupted ~17% of Qatar's LNG export capacity with damage requiring 3-5 years to repair, and QatarEnergy declared force majeure (ceasing liquefaction for weeks from early March). This is an operational disruption to the legacy operating trains (QatarEnergy LNG (N) and (S)), NOT a nameplate-capacity change. No Status field edit and no Capacity edit staged. Documented for awareness in case the researcher wants the wiki Background to reflect the 2026 outage; current Status=operating retained.",
+    "category": "blank_ref",
+    "terminal_id": "T100000130817",
+    "unit_id": "G100002081707",
+    "terminal_name": "Qatar North Field LNG Terminal",
+    "issue": "Worklist blank-ref target: NFW (T7-8) Owner [ref] is blank, but Owner value itself is 'unknown' (equity partners not yet announced as of 2026-06). No orphan-ref rule: cannot fill Owner [ref] without a real Owner value. No public source assigns NFW equity stakes yet — operator confirmed as QatarEnergy LNG; QatarEnergy is the known sponsor/100% pending partner selection.",
     "severity": "low",
-    "suggested_action": "No DB field change. Optionally add the 2026 outage/force-majeure context to the wiki Background (see qatar.wiki.json). Re-verify operating status once repair scope is public.",
+    "suggested_action": "Leave Owner [ref] blank until equity partners are announced. Optionally set Owner='QatarEnergy' (sponsor) if methodology permits sole-sponsor entry pre-partner-selection; otherwise hold.",
     "researcher_initials": "AI-draft"
   }
 ]

@@ -4,19 +4,29 @@
     "terminal_id": "T100000131117",
     "unit_id": "G100002111700",
     "terminal_name": "Clifton Pier LNG Terminal",
-    "issue": "GEM Status=proposed (LastUpdated 2025-06-16). During 2025 the revived FOCOL+Shell project advanced materially toward construction: $200m Terminal Development & Use Agreement finalised (Mar 2025, FOCOL subsidiary New Providence Gas + Shell supply deal); Parliament passed government-guarantee resolutions; site clearance underway with year-end-2025 target; dredging at Clifton Pier started Aug 2025; Nikkiso selected to supply the regasification system (Aug 2025). These are concrete construction-stage steps. Per sweep rule, flagging as status_timeline qa (proposed->construction candidate) rather than editing Status. Ownership (FOCOL/Shell) already matches GEM; note that an LNG-supply SPV (government-owned) and New Providence Gas are also in the structure.",
-    "severity": "medium",
-    "suggested_action": "Review for Status proposed->construction given Aug-2025 dredging + regas-tech contract + government guarantees. Confirm whether the regas facility stays at Clifton Pier (vs offshore) and the New Providence Gas / SPV roles before refining owner/operator. No edit this batch.",
+    "issue": "GEM Status='proposed' (LastUpdated 2025-06-16) appears stale. As of Aug 2025 the FOCOL-Shell (New Providence Gas) Clifton Pier LNG terminal had moved into active construction: government-approved dredging began before end of Aug 2025, excavation and site preparation underway, and EPC/equipment contracts awarded (Nikkiso regasification package; Turner Industries terminal construction). BPL targeted first LNG engines online Q1 2026 'once the LNG terminal is completed' (Sep 2025 BPL announcement). This is a proposed->construction transition. Also note GEM still carries a populated 'ShelvedYear [ref]' and ShelvedCancelledStatusType='confirmed' on this row reflecting the earlier 2024 shelving (Blue Hills pivot) that has since reversed; reviewer should clear/reconcile the stale shelved markers when advancing status.",
+    "severity": "high",
+    "suggested_action": "Advance Status proposed->construction via the timeline tool (fetch_timeline endpoint is DOWN, so no Status field staged here). Verify ConstructionYear=2025. Reconcile/clear stale ShelvedYear and ShelvedCancelledStatusType='confirmed' fields that predate the project's revival. Refs: https://www.tribune242.com/news/2025/aug/22/dredging-for-clifton-lng-terminal-starts-this-month/ ; https://www.bplco.com/corporate-news/bpl-sets-q1-2026-launch-for-lng-engines-in-push-toward-cleaner-energy/ ; https://www.thenassauguardian.com/business/focol-ceo-dredging-civil-works-underway-to-support-lng-terminal/article_437d61b7-b7c5-41e9-8b70-bc7820f9484f.html",
     "researcher_initials": "AI-draft"
   },
   {
-    "category": "data_quality",
+    "category": "capacity",
+    "terminal_id": "T100000131117",
+    "unit_id": "G100002111700",
+    "terminal_name": "Clifton Pier LNG Terminal",
+    "issue": "GEM Capacity is blank. Nikkiso's Aug 2025 announcement states the supplied regasification system has a capacity of 55 million standard cubic feet per day (MMscf/d). Approx conversion (1 MMcf/d ~ 0.0077 mtpa) => ~0.42 mtpa for the Phase 1 regas package. NOT staged as a nameplate value because: (a) it is a single technical/EPC source requiring unit-conversion (flagged for verification), and (b) the project is explicitly phased (60MW -> 130MW power buildout; '8 to 16 LNG storage tanks' in Phase 1 plus a Floating Storage Unit at an offshore jetty), so the 55 MMscf/d Phase-1 regas throughput may not equal the eventual terminal nameplate.",
+    "severity": "medium",
+    "suggested_action": "Reviewer to confirm whether 55 MMscf/d (~0.42 mtpa) is the intended import nameplate for Phase 1 and whether to populate Capacity now or await a clearer mtpa/baseload figure. Refs: https://www.chemanalyst.com/NewsAndDeals/NewsDetails/shell-focol-joint-venture-selects-nikkiso-for-lng-to-power-project-in-the-bahamas-38686 ; https://www.lngindustry.com/liquid-natural-gas/20082025/nikkiso-selected-for-lng-to-power-project-in-bahamas/",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change",
     "terminal_id": "T100001047792",
     "unit_id": "G100001054688",
     "terminal_name": "Island Power Producers LNG Terminal",
-    "issue": "VERIFIED CURRENT (no change): IPP mini-LNG terminal (Nassau Cruise Port, supplying a 60 MW plant for cruise shore power) — INOXCVA turnkey contract awarded Nov 2024; remains in design/engineering. GEM Status=proposed is appropriate; ownership of IPP genuinely unclear per GEM note (Verdant / EA Energy / Nassau Cruise Port links). No new entity created given the ambiguity. No 'Snake Cay' Bahamas LNG project found in current reporting (the live Bahamas projects are Clifton Pier and IPP/Nassau) — likely a stale reference.",
+    "issue": "Re-verified 2026-06: terminal remains correctly 'proposed'. Project is advancing but not yet in construction as of the latest source (Nov 4 2025): IPP launched a $100m bond offering (Nov 6 2025) toward ~$179m total project financing; INOXCVA holds the turnkey EPC for the mini LNG terminal (10 x 1,500 m3 = 15,000 m3 storage + regasification) feeding IPP's 60MW combined-cycle plant; Phase 1 completion targeted end-Q3 2026 with shore power operational by end-2026, steam turbine (Phase 2) by Q2 2027. Operator (Island Power Producers) and core specs in GEM remain accurate. Newer sources also name a broader consortium/supplier set: Crowley (LNG transport/shipping) and Siemens (generation equipment & plant operations O&M), alongside Nassau Cruise Port and Arawak Port Development Company.",
     "severity": "low",
-    "suggested_action": "Keep IPP as proposed; monitor for construction start and clearer ownership of IPP. No 'Snake Cay' terminal confirmed.",
+    "suggested_action": "No Status field edit (endpoint down) and no field overwrite needed - GEM values verified current. Reviewer may add LatestPlannedStartYear=2026/2027 and the Crowley/Siemens supplier roles if desired (captured in wiki). Treat as a blue re-verify for the terminal. Refs: https://www.tribune242.com/news/2025/nov/04/cruise-power-provider-targets-10m-profit-within-four-years/",
     "researcher_initials": "AI-draft"
   }
 ]

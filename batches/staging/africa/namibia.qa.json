@@ -1,22 +1,32 @@
 [
   {
-    "category": "no_change_verified",
+    "category": "blank_ref",
     "terminal_id": "T100000130622",
-    "unit_id": "G100002062200",
+    "unit_id": "G100002062201",
     "terminal_name": "Walvis Bay LNG Terminal",
-    "issue": "Re-verify (blue): both units of the Walvis Bay LNG Terminal remain correctly cancelled. Import Terminal (G100002062200) cancelled 2024 (confirmed); Export Terminal (G100002062201) cancelled 2019 (inferred 4 y). The original Excelerate-led Walvis GasPort / Namibia FSRU import + export plan did not proceed. The only post-2024 development is Namibia's discussions (Reuters, Nov 2024) about folding the large offshore-gas finds into a single common-infrastructure / upscaled gas-to-power plan, which the existing GEM researcher notes already capture as 'not yet formulated enough for an entry'. No revived Walvis Bay LNG import/export terminal found for 2025-2026; current infrastructure focus is shifting to Luderitz as an offshore O&G supply base. No field changes.",
+    "issue": "Export Terminal unit's Status [ref], CancelledYear [ref], and StopYear [ref] are blank, but the underlying values are INFERRED, not announced: Substatus='inferred 4 y', ShelvedCancelledStatusType='inferred', CancelledYear=StopYear=2019. GEM's own page (gem.wiki/Walvis_Bay_LNG_Terminal) documents the basis — the export concept was planned operational by mid-2019 with no development updates after 2015, so cancellation was inferred ~4 years past planned start. No external source announces a 2019 cancellation of the export concept (an inferred status has no public announcement by construction). Web research (88kprime, powerinvest, Interfax 2018 'reimagined' piece, the 2024 Reuters article) turned up nothing that dates a 2019 export-terminal cancellation; the only datable items support the 2015 proposal / 2019 planned start, not a 2019 stop. The blank [ref] cells therefore appear correct/expected for an inferred status rather than a fillable gap.",
     "severity": "low",
-    "suggested_action": "Record one blue re-verify for the terminal; no field edits. Existing cancelled status + researcher notes hold. See monitor file for the watch item.",
+    "suggested_action": "Leave the three [ref] cells blank (inferred values carry no external announcement citation). Do NOT borrow the Import unit's 2024 Reuters citation — it supports the 2024 cancellation of the import concept, not this unit's 2019 inferred year. If a citation policy for inferred years is desired, document the inference basis in ResearcherNotes (already partly captured) rather than placing a URL that does not state 'cancelled in 2019'.",
     "researcher_initials": "AI-draft"
   },
   {
-    "category": "source_health",
+    "category": "link_rot",
     "terminal_id": "T100000130622",
-    "unit_id": "G100002062200",
+    "unit_id": "G100002062201",
     "terminal_name": "Walvis Bay LNG Terminal",
-    "issue": "GEM's existing Status [ref] for the Import Terminal unit (https://www.reuters.com/business/energy/gas-may-dash-big-oils-namibian-dreams-2024-11-07/) returns HTTP 401 via url_verifier (Reuters bot/paywall block). Likely a soft-block rather than a dead link, but it could not be machine-verified this batch.",
+    "issue": "Existing citations on the Export Terminal unit fail url_verifier: envirod permit PDF (Owner [ref], ProposalDate [ref]) returns HTTP 404 (gone); the IOL 'Walvis Bay aims to become hub for SADC import/export' article (FacilityType [ref], StartDate [ref], Location [ref]) returns HTTP 403. The 403 may be bot-blocking rather than a dead page, but the 404 PDF is gone. Both also cited on the Import Terminal unit (G100002062200).",
+    "severity": "medium",
+    "suggested_action": "Re-source the proposal/ownership and facility/location citations from a currently reachable source (e.g. an archived copy of the IOL article, or a fresh sponsor/regulator document). The 404 envirod PDF should be replaced; consider a web.archive.org snapshot if one exists. Out of scope for this standard-tier blank-ref pass (these cells already have a value+ref pair), flagged for a future exhaustive pass.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130622",
+    "unit_id": "G100002062201",
+    "terminal_name": "Walvis Bay LNG Terminal",
+    "issue": "Context note (no status change proposed). The Export Terminal stays 'cancelled (inferred)'. Web research confirms no revival of the original Excelerate export concept; instead, post-2024 activity (Reuters 2024-11) points to a single common-infrastructure gas plan around Namibia's offshore discoveries, captured in GEM as ResearcherNotes ('original plan being redone, new plan not yet formulated enough for its own unit entry'). No new unit/terminal meets the add-bar yet — it remains a watch item.",
     "severity": "low",
-    "suggested_action": "Spot-check the Reuters link manually; if persistently inaccessible, consider adding a corroborating open-access source for the 2024 cancellation. No data change implied.",
+    "suggested_action": "No status edit (fetch_timeline endpoint is down regardless). Keep watching for the reformulated common-infrastructure gas plan to firm up; revisit unit structure when a concrete sponsor + location + step emerges.",
     "researcher_initials": "AI-draft"
   }
 ]

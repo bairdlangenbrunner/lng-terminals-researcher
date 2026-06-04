@@ -1,0 +1,12 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000131102",
+    "unit_id": "G100002110200",
+    "terminal_name": "Bar LNG Terminal",
+    "issue": "Discovery confirmed Bar LNG Terminal is Montenegro's only LNG project (no separate second site, export, small-scale/bunkering, or untracked FSRU charter found). Two material developments since the current GEM snapshot, both Sept 2025: (1) Montenegro and JERA Co., Inc. signed an MOU at Gastech 2025 (signed 2025-09-11) to conduct a comprehensive technical/commercial/financial feasibility study for an LNG terminal + associated gas-fired power plant; the study explicitly evaluates 'multiple potential locations' so it is NOT a distinct new terminal but a new sponsor/study development on this same Montenegro LNG concept (per JERA press release https://www.jera.co.jp/en/news/information/20250911_2261 — url_verifier PASS on Montenegro/LNG/feasibility). (2) As of Sept 2025 the terminal was excluded from Montenegro's Spatial Plan through 2040, a negative planning signal. fetch_timeline is DOWN, so flagging as a qa note rather than staging a timeline edit. GEM Owner/Parent currently 'EPCG; LNG Alliance Pte Ltd' (with earlier Enerflex/Wethington 2023 partners); JERA is a newer potential sponsor not yet reflected.",
+    "severity": "medium",
+    "suggested_action": "Route to an Update batch: verify whether JERA should be added as a prospective sponsor/operator (run entity_lookup on JERA — remote lookup was inconclusive, returned no confirmed existing GEM entity), and review status/lifecycle in light of the Spatial Plan exclusion through 2040 vs. the active JERA feasibility MOU (project remains 'proposed' but planning support has weakened). Pull existing status timeline before staging any timeline change once fetch_timeline is back up.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  }
+]

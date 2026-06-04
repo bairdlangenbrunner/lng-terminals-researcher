@@ -1,12 +1,22 @@
 [
   {
-    "category": "status_timeline",
-    "terminal_id": "T100000130601",
-    "unit_id": "G100001054113",
-    "terminal_name": "Das Island LNG Terminal",
-    "issue": "The 'Debottlenecking project' unit is recorded as Status=cancelled (confirmed), CancelledYear=2024, yet ALSO carries FIDStatus=FID / FIDYear=2025 - an internal inconsistency (a cancelled unit with a 2025 FID). History: ADNOC announced the 0.9 mtpa Das Island debottleneck ('LNG 2.0') in Nov 2023, then dropped it Oct 2024 (correctly captured as cancelled 2024). BUT on 10 June 2025 ADNOC Gas took FID on Phase 1 of its Rich Gas Development (RGD) project and awarded US$5bn in contracts, including US$1.2bn for Das Island liquefaction debottlenecking (to Petrofac and Kent) - effectively reviving the Das Island debottleneck. The GEM unit's LastUpdated (2025-06-03) coincides with the RGD FID news, so the FIDYear=2025 was likely added without resetting the cancelled status.",
-    "severity": "high",
-    "suggested_action": "Researcher to reconcile: either (a) revive this unit (cancelled -> construction, add ConstructionYear 2025, clear/annotate CancelledYear, add a status-timeline entry) if the RGD Das Island scope == the prior 0.9 mtpa debottleneck, or (b) keep it cancelled and create a NEW unit/record for the RGD Das Island debottleneck. Confirm scope/capacity equivalence first. Sources: ADNOC Gas RGD FID press release (adnocgas.ae/.../rgd, 10 Jun 2025); gem.wiki Das Island background. Status change deliberately NOT staged as a field edit per workflow.",
+    "category": "data_quality",
+    "terminal_id": "T100000131105",
+    "unit_id": "G100002110501",
+    "terminal_name": "Ruwais LNG Terminal",
+    "issue": "GEM Pipelines='Dolphin Qatar-UAE Natural Gas Pipeline' appears incorrect for Ruwais LNG. Multiple 2024-2025 sources (ADNOC Gas press release on $2.1bn enabling contracts; Jan-2025 trade press) state Ruwais LNG feed gas is supplied from the Habshan gas-processing complex (Habshan 5 LPP + compression + new transmission/export pipelines), not the Dolphin import line. The Pipelines [ref] is blank, so this could not be a verified fill; flagging the value itself rather than fabricating a Dolphin source.",
+    "severity": "medium",
+    "suggested_action": "Review/replace Pipelines with the Habshan-to-Ruwais feed-gas pipeline and cite the ADNOC Gas $2.1bn contract release (https://www.adnocgas.ae/en/news-and-media/press-releases/2025/2-1-billion-contract-award). If GEM intentionally records Dolphin as a system-level feed, document rationale; otherwise correct in a follow-on Update.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_quality",
+    "terminal_id": "T100000130972",
+    "unit_id": "G100002097200",
+    "terminal_name": "Sharjah FSRU",
+    "issue": "CancelledYear [ref] and StopYear [ref] (both 2024) cannot be filled from an independent source. The only statement that the project is 'cancelled as of 2024' is on GEM.wiki itself (circular); contemporary press (S&P/Zawya Mar-2020, Riviera, TradeWinds) only documents the 2020 hold to pursue the Mahani gas field, never a discrete 2024 cancellation event. The 2024 year appears to be a GEM editorial inference from a prolonged shelving.",
+    "severity": "low",
+    "suggested_action": "Leave CancelledYear/StopYear [ref] blank or annotate as editorial inference; do not cite GEM.wiki per anti-circularity. Status [ref] filled with the 2020 hold source via the updates sheet.",
     "researcher_initials": "AI-draft"
   }
 ]

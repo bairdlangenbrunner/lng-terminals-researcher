@@ -1,45 +1,5 @@
 [
   {
-    "terminal_id": "T100000131126",
-    "unit_id": "G100002112600",
-    "terminal_name": "Richards Bay Transnet FSRU",
-    "unit_name": "Phase 1",
-    "country": "South Africa",
-    "field_name": "FIDYear",
-    "old_value": "2026",
-    "new_value": "2028",
-    "confidence": "green",
-    "source_tier": "primary-ish (Vopak SA president via Reuters, corroborated by multiple trade outlets)",
-    "ref_field": "FIDYear [ref]",
-    "ref_urls": [
-      "https://gasprocessingnews.com/news/2026/03/vopak-delays-investment-on-south-african-lng-project-to-2028/",
-      "https://www.cnbcafrica.com/2026/vopak-delays-investment-on-south-african-lng-project-to-2028"
-    ],
-    "source_notes": "Vopak (president of its SA unit, Oliver Naidu) told Reuters at the African Energy Indaba (early March 2026) that FID on the Zululand Energy Terminal at Richards Bay is pushed to Q1 2028, after a September 2025 court order halted Eskom's planned 3,000 MW gas-to-power plant at Richards Bay and Vopak extended its pre-FEED. Previously planned for early 2026 (GEM had FIDYear=2026).",
-    "scope_note": "FIDYear is a project-level field; should apply to ALL unit-rows of T100000131126 (Phase 1 and Phase 2). Phase 2 (G100002112601) currently has a blank FIDYear; recommend setting it to 2028 to match. FIDStatus remains Pre-FID.",
-    "researcher_initials": "AI-draft (sweep)"
-  },
-  {
-    "terminal_id": "T100000131126",
-    "unit_id": "G100002112601",
-    "terminal_name": "Richards Bay Transnet FSRU",
-    "unit_name": "Phase 2",
-    "country": "South Africa",
-    "field_name": "FIDYear",
-    "old_value": "",
-    "new_value": "2028",
-    "confidence": "green",
-    "source_tier": "primary-ish (Vopak SA president via Reuters, corroborated by multiple trade outlets)",
-    "ref_field": "FIDYear [ref]",
-    "ref_urls": [
-      "https://gasprocessingnews.com/news/2026/03/vopak-delays-investment-on-south-african-lng-project-to-2028/",
-      "https://www.cnbcafrica.com/2026/vopak-delays-investment-on-south-african-lng-project-to-2028"
-    ],
-    "source_notes": "Mirror of the project-level FIDYear (see Phase 1). Vopak delayed FID on the Zululand Energy Terminal to Q1 2028. Stage only to keep the two unit-rows of this project consistent per the project-level-field rule; if GEM intentionally leaves Phase 2 FIDYear blank, defer to that.",
-    "scope_note": "Project-level field consistency only. Optional — apply if GEM convention is to populate FIDYear on all unit-rows.",
-    "researcher_initials": "AI-draft (sweep)"
-  },
-  {
     "terminal_id": "T100001048121",
     "unit_id": "G100001055097",
     "terminal_name": "Ngqura LNG Terminal",
@@ -48,15 +8,16 @@
     "field_name": "Operator",
     "old_value": "Strategic Fuel Fund Association",
     "new_value": "Ukwanda LNG",
-    "confidence": "yellow",
-    "source_tier": "single-tier trade press, corroborated across CNBC Africa / Zawya / LNG Prime",
+    "confidence": "green",
+    "source_tier": "primary trade + multiple independent",
     "ref_field": "Operator [ref]",
     "ref_urls": [
       "https://lngprime.com/contracts-and-tenders/south-africas-tnpa-inks-ngqura-lng-terminal-operator-deal/187868/",
-      "https://www.cnbcafrica.com/2026/south-africas-transnet-signs-operator-agreement-for-lng-import-terminal-at-ngqura-port"
+      "https://www.cnbcafrica.com/2026/south-africas-transnet-signs-operator-agreement-for-lng-import-terminal-at-ngqura-port",
+      "https://www.greenbuildingafrica.co.za/transnet-national-ports-authority-and-ukwanda-lng-sign-r22-billion-port-of-ngqura-gas-terminal-agreement/"
     ],
-    "source_notes": "On 28-29 May 2026 Transnet National Ports Authority (TNPA) signed a 25-year terminal operator agreement with Ukwanda LNG to develop the Ngqura LNG import (regasification) terminal. Ukwanda LNG is a JV between Tamasa Energy Group and the Strategic Fuel Fund. GEM currently lists the operator as 'Strategic Fuel Fund Association' alone; the named TOA counterparty is now Ukwanda LNG. ~R22bn ($1.34bn) project incl. a TNPA-built dedicated LNG berth; full operations targeted for 2035.",
-    "scope_note": "Operator entity change at project level (single unit). Ukwanda LNG is a new entity (see entity file). SFF remains a JV partner (now via Ukwanda LNG), so Owner/Parent (Transnet SOC Ltd) are unaffected. Confirm preferred entity name (Ukwanda LNG vs Ukwanda LNG (Pty) Ltd) before creating.",
+    "source_notes": "On 2026-05-28 TNPA signed a 25-year terminal operator agreement for the Port of Ngqura LNG terminal with Ukwanda LNG, a JV between Tamasa Energy Group and the Strategic Fuel Fund (SFF). The operator is now the Ukwanda LNG JV vehicle, not the SFF alone (GEM previously listed 'Strategic Fuel Fund Association' as operator). SFF remains a JV partner inside Ukwanda LNG. ~R22bn (USD1.34bn) project; TNPA invests ~R2bn in a dedicated LNG berth. New entities Ukwanda LNG + Tamasa Energy Group recorded in entity findings.",
+    "scope_note": "Single-unit terminal (G100001055097). Operator is a project-level field.",
     "researcher_initials": "AI-draft (sweep)"
   },
   {
@@ -68,15 +29,37 @@
     "field_name": "LatestPlannedStartYear",
     "old_value": "2029",
     "new_value": "2035",
-    "confidence": "yellow",
-    "source_tier": "single-tier trade press, corroborated across CNBC Africa / Zawya / LNG Prime",
+    "confidence": "green",
+    "source_tier": "primary trade + multiple independent",
     "ref_field": "StartDate [ref]",
     "ref_urls": [
       "https://lngprime.com/contracts-and-tenders/south-africas-tnpa-inks-ngqura-lng-terminal-operator-deal/187868/",
-      "https://www.cnbcafrica.com/2026/south-africas-transnet-signs-operator-agreement-for-lng-import-terminal-at-ngqura-port"
+      "https://www.cnbcafrica.com/2026/south-africas-transnet-signs-operator-agreement-for-lng-import-terminal-at-ngqura-port",
+      "https://www.theherald.co.za/news/2026-05-29-major-gas-infrastructure-project-launched-at-port-of-ngqura/"
     ],
-    "source_notes": "The May 2026 TOA announcement states the Ngqura project targets 'full operations by 2035' (construction ~36 months). GEM currently has OriginalPlannedStartYear=2029 and LatestPlannedStartYear=2029. The latest-planned start has slipped to 2035 per the operator-agreement coverage. OriginalPlannedStartYear (2029) left unchanged.",
-    "scope_note": "Slipped start date; updates LatestPlannedStartYear only. '2035' is full-operations; if GEM records first-LNG vs full-ops differently, treat with care. Single primary-equivalent source (consistent across outlets).",
+    "source_notes": "Operator agreement (2026-05-28) targets full operationalization by 2035 (was 2029 in GEM). Phasing: a temporary floating (FSRU) unit in early phases, then permanent onshore regasification — consistent with GEM's existing ResearcherNotesUnit. Construction of the dedicated berth est. ~36 months. OriginalPlannedStartYear (2029) left unchanged; only the LATEST planned start is pushed to the 2035 full-ops target. Note FSRU first-gas could precede 2035 full-ops; reviewer may wish to model phases separately.",
+    "scope_note": "Single-unit terminal. Project-level field.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131126",
+    "unit_id": "G100002112600",
+    "terminal_name": "Richards Bay Transnet FSRU",
+    "unit_name": "Phase 1",
+    "country": "South Africa",
+    "field_name": "FIDYear",
+    "old_value": "2026",
+    "new_value": "2028",
+    "confidence": "green",
+    "source_tier": "multiple independent (Reuters-sourced)",
+    "ref_field": "FIDYear [ref]",
+    "ref_urls": [
+      "https://www.cnbcafrica.com/2026/vopak-delays-investment-on-south-african-lng-project-to-2028",
+      "https://gasprocessingnews.com/news/2026/03/vopak-delays-investment-on-south-african-lng-project-to-2028/",
+      "https://www.globalbankingandfinance.com/vopak-delays-investment-south-african-lng-project-2028/"
+    ],
+    "source_notes": "March 2026: Vopak (via local unit president Oliver Naidu, to Reuters) said the Zululand Energy Terminal FID is now expected in Q1 2028, pushed back from the prior ~2026 plan, after a September 2025 court order halted Eskom's planned 3,000 MW Richards Bay gas-to-power plant (the terminal's key demand driver); pre-FEED extended. FIDStatus stays Pre-FID. Two-phase project ~USD1bn. Preliminary LNG offtake/distribution agreements with Eskom and potentially ExxonMobil expected in coming months.",
+    "scope_note": "FIDYear is project-level; in the GEM export it is populated only on Phase 1 (G100002112600). Reviewer to apply project-wide across both unit-rows of T100000131126 per multi-unit field rule.",
     "researcher_initials": "AI-draft (sweep)"
   }
 ]

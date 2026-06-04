@@ -9,13 +9,14 @@
     "old_value": "",
     "new_value": "Excelerate Energy",
     "confidence": "green",
-    "source_tier": "developer/operator press release (primary)",
+    "source_tier": "primary (sponsor IR) + trade press corroboration",
     "ref_field": "Operator [ref]",
     "ref_urls": [
-      "https://excelerateenergy.com/news/excelerate-energy-signs-definitive-agreement-for-fully-integrated-floating-lng-import-terminal-in-iraq/"
+      "https://excelerateenergy.com/news/excelerate-energy-signs-definitive-agreement-for-fully-integrated-floating-lng-import-terminal-in-iraq/",
+      "https://www.enerdata.net/publications/daily-energy-news/excelerate-energy-signs-deal-iraqs-first-fsru-terminal-26-bcmyear.html"
     ],
-    "source_notes": "On 28 Oct 2025 Excelerate Energy signed a definitive commercial agreement (~$450M, 5-yr regas + LNG supply with extension options) with a subsidiary of Iraq's Ministry of Electricity to develop, OPERATE and supply Iraq's first FSRU import terminal at Port of Khor Al-Zubair. Excelerate's role is explicitly the fully integrated operator (construct terminal, deploy vessel, supply LNG, provide regas). GEM Operator was blank. Excelerate Energy is an existing GEM entity (E100002007946/E100002007947).",
-    "scope_note": "Terminal-asset OWNER left to qa (counterparty is an unnamed Ministry of Electricity subsidiary - ambiguous precise entity).",
+    "source_notes": "Excelerate Energy signed a definitive commercial agreement (announced 27-28 Oct 2025) with a subsidiary of Iraq's Ministry of Electricity to develop and operate Iraq's first LNG import terminal at the Port of Khor Al Zubair; fully integrated FSRU + regas + LNG supply. Excelerate is developer/operator and LNG supplier.",
+    "scope_note": "Single-unit terminal; project-level field.",
     "researcher_initials": "AI-draft (sweep)"
   },
   {
@@ -24,17 +25,17 @@
     "terminal_name": "Khor Al-Zubair FSRU",
     "unit_name": "--",
     "country": "Iraq",
-    "field_name": "VesselOwner",
+    "field_name": "Owner",
     "old_value": "",
-    "new_value": "Excelerate Energy",
-    "confidence": "green",
-    "source_tier": "developer/owner press release (primary)",
-    "ref_field": "VesselOwner [ref]",
+    "new_value": "Iraq Ministry of Electricity",
+    "confidence": "yellow",
+    "source_tier": "primary (sponsor IR), entity attribution implied",
+    "ref_field": "Owner [ref]",
     "ref_urls": [
       "https://excelerateenergy.com/news/excelerate-energy-signs-definitive-agreement-for-fully-integrated-floating-lng-import-terminal-in-iraq/"
     ],
-    "source_notes": "Excelerate will deploy its own newest FSRU (Hull 3407, built by HD Hyundai Heavy Industries, delivery 2026, 170,000 m3, up to 1,000 MMscf/d regas) at Khor Al-Zubair; Excelerate owns the vessel. GEM VesselOwner was blank. FSRU sync touchpoint with the carrier project.",
-    "scope_note": "Blank fill.",
+    "source_notes": "Excelerate release states the agreement is with 'a subsidiary of Iraq's Ministry of Electricity' as the terminal owner/counterparty. The specific subsidiary name is not given in sources; yellow because the precise owning entity is implied (parent ministry named, subsidiary not). Reviewer to confirm exact subsidiary before staging to live DB.",
+    "scope_note": "Single-unit terminal; project-level field. Owner is terminal counterparty; Excelerate is operator/supplier (do not conflate).",
     "researcher_initials": "AI-draft (sweep)"
   },
   {
@@ -45,15 +46,16 @@
     "country": "Iraq",
     "field_name": "FloatingVesselName",
     "old_value": "",
-    "new_value": "Excelerate Hull 3407",
-    "confidence": "yellow",
-    "source_tier": "developer press release (primary)",
+    "new_value": "Excelerate Acadia",
+    "confidence": "green",
+    "source_tier": "primary (sponsor IR) + trade press (LNG Prime, Cyprus Shipping News)",
     "ref_field": "FloatingVesselName [ref]",
     "ref_urls": [
-      "https://excelerateenergy.com/news/excelerate-energy-signs-definitive-agreement-for-fully-integrated-floating-lng-import-terminal-in-iraq/"
+      "https://cyprusshippingnews.com/2026/04/07/excelerate-energy-names-new-fsru-excelerate-acadia-at-hd-hyundai-heavy-industries/",
+      "https://lngprime.com/asia/hd-hyundai-heavy-lays-keel-for-excelerates-fsru/143868/"
     ],
-    "source_notes": "The deployed FSRU is Excelerate's newbuild Hull 3407 (HD Hyundai HI, delivery 2026), not yet given a final vessel name in the announcement. Recorded as 'Excelerate Hull 3407' as a placeholder; update to the final christened name once delivered. Yellow because the permanent vessel name is not yet published.",
-    "scope_note": "Blank fill; placeholder pending final vessel name. FSRU sync touchpoint.",
+    "source_notes": "Excelerate is deploying its newbuild FSRU (Hull 3407, named 'Excelerate Acadia' at HD Hyundai Heavy Industries naming ceremony, ~31 Mar/Apr 2026) to Khor Al Zubair. 170,000 cbm storage; delivery expected by June 2026. IMO not yet confirmed in public sources (newbuild) — reviewer may add when available.",
+    "scope_note": "Single-unit terminal; project-level field. FSRU sync: vessel name set, IMO pending — flag for fsru_sync_check vs carrier backend.",
     "researcher_initials": "AI-draft (sweep)"
   },
   {
@@ -62,18 +64,18 @@
     "terminal_name": "Khor Al-Zubair FSRU",
     "unit_name": "--",
     "country": "Iraq",
-    "field_name": "LatestPlannedStartYear",
-    "old_value": "2025",
-    "new_value": "2026",
-    "confidence": "green",
-    "source_tier": "developer press release + trade press",
-    "ref_field": "StartDate [ref]",
+    "field_name": "CapacityinMtpa",
+    "old_value": "",
+    "new_value": "7.66",
+    "confidence": "yellow",
+    "source_tier": "primary (sponsor IR) — unit conversion, VERIFY",
+    "ref_field": "Capacity [ref]",
     "ref_urls": [
       "https://excelerateenergy.com/news/excelerate-energy-signs-definitive-agreement-for-fully-integrated-floating-lng-import-terminal-in-iraq/",
-      "https://www.enerdata.net/publications/daily-energy-news/excelerate-energy-signs-deal-iraqs-first-fsru-terminal-26-bcmyear.html"
+      "https://cyprusshippingnews.com/2026/04/07/excelerate-energy-names-new-fsru-excelerate-acadia-at-hd-hyundai-heavy-industries/"
     ],
-    "source_notes": "GEM had Original/Latest planned start = 2025. The Oct-2025 definitive agreement sets commercial operations in 2026 (FSRU commissioning ~June 2026 per trade press, subject to permitting). Update LatestPlannedStartYear 2025->2026; OriginalPlannedStartYear=2025 retained as the original target. Capacity 0.5 bcf/d (=500 MMscf/d guaranteed) confirmed, not changed.",
-    "scope_note": "Latest-planned-start only.",
+    "source_notes": "CONVERSION FLAG — reviewer to confirm. Excelerate Acadia design regas capacity = up to 1,000 MMscf/d (1 Bcf/d) -> ~7.66 mtpa nameplate. Contracted/guaranteed throughput is lower: 500 MMscf/d guaranteed (~3.85 mtpa), 250 MMscf/d minimum offtake (~1.9 mtpa). Staged value uses the vessel's full design nameplate per GEM nameplate convention; reviewer to decide between design (7.66) vs guaranteed (3.85) per methodology. 1 MMcf/d approx 0.0077 mtpa.",
+    "scope_note": "Single-unit terminal; project-level field. Also populate Capacity/CapacityUnits consistently if nameplate confirmed.",
     "researcher_initials": "AI-draft (sweep)"
   }
 ]

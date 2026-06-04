@@ -4,79 +4,19 @@
     "terminal_id": "T100000131095",
     "unit_id": "G100002109500",
     "terminal_name": "Ravenna FSRU",
-    "issue": "GEM has Ravenna FSRU (BW Singapore, 5 bcm/y) as Status=construction (substatus actual). It completed commissioning end-April 2025 and began commercial regasification operations in May 2025 (first US LNG cargo received; capacity assigned by auction). Snam press release dated 2025; LNG Prime 'Snam wraps up Ravenna FSRU commissioning'. ActualStartYear in GEM is blank.",
+    "issue": "GEM has Ravenna FSRU as 'construction' (substatus actual, ConstructionYear 2024, LastUpdated 2025-07-17). Verified: the FSRU (BW Singapore, 170,000 cbm, 5 bcm/y) completed commissioning on schedule (LNG Prime, 28 Apr 2025) and commenced commercial regasification in May 2025; it has been fully operational since May 2025, and Snam was still offering regasification capacity at Ravenna in 2026. Status should advance construction -> operating with ActualStartYear 2025 (likely ActualStartMonth May). Per sweep rules this is flagged as a status_timeline note rather than a staged Status edit (fetch_timeline endpoint down).",
     "severity": "high",
-    "suggested_action": "Status change construction -> operating with ActualStartYear=2025 (commercial ops May 2025). Per sweep rules: surface as status_timeline qa, do NOT stage a Status field edit or write a timeline file. Sources: https://lngprime.com/europe/snam-wraps-up-ravenna-fsru-commissioning/149340/ ; https://www.snam.it/en/media/news-and-press-releases/comunicati-stampa/2025/BW-Singapore-FSRU-completes-commissioning-Commercial-operations-in-May.html",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "ownership",
-    "terminal_id": "T100000130724",
-    "unit_id": "G100002072400",
-    "terminal_name": "HIGAS LNG Terminal",
-    "issue": "GEM Parent = 'Avenir LNG [100.0%]'. Avenir LNG spun off / divested the Higas (Oristano) small-scale terminal in Oct 2024 to its existing shareholders (incl. Stolt-Nielsen and Golar LNG); as of Mar 2025 Stolt-Nielsen Gas held ~50%. In Oct 2025 Snam signed an exclusivity agreement to acquire Higas and convert it to a Sardinia FSRU (NOT yet closed). GEM's 'Avenir LNG [100%]' parent is stale; post-spinoff split not cleanly itemized in public sources.",
-    "severity": "medium",
-    "suggested_action": "Update Parent away from 'Avenir LNG [100%]' once the post-Oct-2024 shareholder split is confirmed (Stolt-Nielsen ~50% + others). Do NOT pre-empt the pending Snam acquisition. Operator = Reganosa (matches GEM? GEM Operator=HIGAS — verify). Sources: https://www.rivieramm.com/news-content-hub/news-content-hub/avenir-becomes-sole-owner-of-higas-terminal-70496 ; https://pgjonline.com/news/2025/october/snam-eyes-acquisition-of-higas-lng-terminal-plans-conversion-to-sardinia-fsru",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "ownership",
-    "terminal_id": "T100000130683",
-    "unit_id": "G100002068300",
-    "terminal_name": "Ravenna LNG Terminal",
-    "issue": "GEM Parent = 'Petrolifera Italo Rumena [51.0%]; Electricite de France SA [29.8%]; Enagas SA [19.0%]; unknown [0.2%]'. Operator Depositi Italiani GNL is owned PIR Group (Petrolifera Italo Rumena) 51% / Edison 30% / Enagas (via Scale Gas) 19%. GEM lists EDF 29.8% where the direct shareholder is Edison at 30% (Edison is EDF-owned, so EDF-as-ultimate-parent is defensible, but the % and the immediate holder differ slightly).",
-    "severity": "low",
-    "suggested_action": "Consider replacing 'Electricite de France SA [29.8%]' with 'Edison SpA [30.0%]' (immediate shareholder) or keep EDF as ultimate parent per GEM convention; reconcile the 0.2% 'unknown'. Source: https://www.edison.it/en/small-scale-lng-enagas (PIR 51 / Edison 30 / Enagas 19).",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "capacity",
-    "terminal_id": "T100000130466",
-    "unit_id": "G100001055461",
-    "terminal_name": "Adriatic LNG Terminal",
-    "issue": "GEM 'Capacity Expansion' unit = proposed, 0.8 bcm/y, OriginalPlannedStartYear=LatestPlannedStartYear=2026. Italy approved an 8% expansion 9.6 -> 10.4 bcm/y in April 2025; modification works done during summer-2025 maintenance, extra capacity to be available Q1 2026. The 0.8 bcm/y delta (10.4-9.6) matches GEM's expansion unit.",
-    "severity": "medium",
-    "suggested_action": "At Q1 2026 the expansion is due online — likely move from proposed to operating with ActualStartYear=2026 (verify in-service before changing status; surfaced here as status/timeline candidate, not a staged Status edit). Confirms GEM's 0.8 bcm/y figure. Sources: https://montelnews.com/news/34e266b0-9192-4dbf-be55-744e6e89556e/italy-approves-expansion-of-adriatic-lng-terminal-to-10-4bcm ; https://www.adriaticlng.it/en/the-terminal",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "ownership",
-    "terminal_id": "T100000130466",
-    "unit_id": "G100002046600",
-    "terminal_name": "Adriatic LNG Terminal",
-    "issue": "GEM Operator = 'Adriatic LNG'. Post-Dec-2024 trade press describes the terminal as 'operated by VTTI (70%) and Snam (30%)'. 'Adriatic LNG' is the terminal-company brand (Terminale GNL Adriatico Srl) and is a reasonable operator label, but worth a human check on whether GEM wants the operator entity refreshed alongside the Parent change.",
-    "severity": "low",
-    "suggested_action": "Confirm whether Operator should remain 'Adriatic LNG' (terminal company) or be aligned to the VTTI/Snam JV framing. Likely no change needed. Source: https://www.adriaticlng.it/en/the-terminal",
+    "suggested_action": "In a follow-on Update batch, advance Status to 'operating', set ActualStartYear=2025 (ActualStartMonth=May), and add a Status [ref]. Verified candidate refs (all PASS url_verifier): https://lngprime.com/europe/snam-wraps-up-ravenna-fsru-commissioning/149340/ (commissioning complete, 28 Apr 2025); https://lngprime.com/europe/snam-to-launch-ravenna-fsru-commercial-ops-in-may/147574/ (commercial ops in May); https://lngprime.com/lng-terminals/italys-snam-offers-regasification-capacity-at-ravenna-fsru/187523/ (still operating, 2026).",
     "researcher_initials": "AI-draft"
   },
   {
     "category": "status_timeline",
-    "terminal_id": "T100000131061",
-    "unit_id": "G100002106100",
-    "terminal_name": "Porto Torres FSRU",
-    "issue": "GEM = shelved (inferred 2y). 2025-2026 Italian government decrees on Sardinia 'methanisation' name Porto Torres as a SECOND FSRU site, contingent on conversion of the Fiume Santo coal plant to gas. Not a firm/funded project; the more concrete Sardinia FSRU is at Oristano (Snam, via Higas conversion).",
-    "severity": "low",
-    "suggested_action": "Keep shelved for now (conditional revival only). Track via monitor_list; refresh LastUpdated. Source: https://www.unionesarda.it/en/sardinia/gasification-of-sardinia-here-is-the-draft-of-the-dpcm-ugjaavtu",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "no_change",
-    "terminal_id": "T100000130476",
-    "unit_id": "G100002047600",
-    "terminal_name": "Panigaglia LNG Terminal",
-    "issue": "Verified current: operating, 2.5 mtpa, owner/operator GNL Italia Spa (Snam). Snam is modernizing the terminal and adding small-scale truck-loading (authorized; ~EUR19M revamp contract), and the La Spezia integrated environmental authorization permits operation through 2037 — all consistent with GEM. No baseload nameplate change.",
-    "severity": "low",
-    "suggested_action": "No field change. Small-scale truck-loading upgrade is wiki/background detail, not a nameplate capacity bump. Representative blue re-verify recorded for the terminal.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "no_change",
-    "terminal_id": "T100000131096",
-    "unit_id": "G100002109600",
-    "terminal_name": "Piombino FSRU",
-    "issue": "Verified current: operating since July 2023, 5 bcm/y, owner/operator FSRU Italia (Snam 100%), vessel Italis LNG (ex Golar Tundra). Only delta is VesselOwner (see updates). 29+ cargoes received.",
-    "severity": "low",
-    "suggested_action": "No change beyond the VesselOwner update. Blue re-verify for the terminal.",
+    "terminal_id": "T100000130466",
+    "unit_id": "G100001055461",
+    "terminal_name": "Adriatic LNG Terminal",
+    "issue": "GEM has the 'Capacity Expansion' unit as 'proposed' (ProposalYear 2023, Capacity 0.80 bcm, LastUpdated 2025-07-16). The 9.6->10.4 bcm/y (+0.8 bcm, 8%) expansion was APPROVED by Italian govt decree on 16 Apr 2025 (existing Montel Capacity [ref], PASS) and has since progressed beyond 'proposed': Adriatic shut the terminal on 1 Aug 2025 to perform the plant modifications; the first 0.5 bcm phase (constant capacity 9->9.5 bcm/y) was completed ~31 Dec 2025, with the full incremental capacity (allocated via open season, 0.5 bcm/y from Jan 2026) available in Q1 2026. So as of 2026-06 the expansion is in construction/commissioning and partly online, not merely proposed.",
+    "severity": "medium",
+    "suggested_action": "In a follow-on Update batch, advance the Capacity Expansion unit's Status from 'proposed' toward construction/operating and set the appropriate start year (phase-1 capacity live end-2025; full capacity Q1 2026). Do NOT bump the operating main-unit nameplate here — the 10.4 bcm total is the project rollup; confirm how GEM wants the +0.8 bcm increment reflected (expansion-unit capacity vs main-unit capacity). Verified refs: https://montelnews.com/news/34e266b0-9192-4dbf-be55-744e6e89556e/italy-approves-expansion-of-adriatic-lng-terminal-to-10-4bcm (approval 16 Apr 2025, PASS); https://www.rivieramm.com/news-content-hub/adriatic-lng-terminal-ramp-up-to-full-operations-underway-86020 (ramp-up underway, PASS).",
     "researcher_initials": "AI-draft"
   },
   {
@@ -84,9 +24,109 @@
     "terminal_id": "T100000130472",
     "unit_id": "G100002047200",
     "terminal_name": "Gioia Tauro LNG Terminal",
-    "issue": "Still proposed (LNG Medgas JV of Iren Group/IRIDE + Sorgenia, 12 bcm/y). Revived 2022; a Nov-2023 Italian law deems Gioia Tauro & Porto Empedocle 'strategic/non-deferrable'. No FID; LatestPlannedStartYear=2026 in GEM looks optimistic given no construction start.",
+    "issue": "dev_pipeline 'proposed' unit re-checked: status unchanged. Project (LNG MedGas Terminal SRL; parents Iren/Sorgenia) was revived 2022 amid the Russia gas crisis and remains a proposed 12 bcm/y project that completed permitting years ago but has not taken FID or started construction. No verified status change since GEM LastUpdated 2025-07-16. Owner/parent (Iren Group; Sorgenia) confirmed current.",
     "severity": "low",
-    "suggested_action": "Keep proposed. Consider noting the LatestPlannedStartYear is likely slipped past 2026 (no FID/construction) but leave unless a firmer date is found. Refresh LastUpdated.",
+    "suggested_action": "No edit (standard-tier no-change recorded as this qa note in lieu of a blue re-verify row). Status confirmed 'proposed'. Corroborating ref (PASS): https://www.enerdata.net/publications/daily-energy-news/enel-and-sorgenia-revive-two-lng-import-projects-20-bcmyear-italy.html",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change",
+    "terminal_id": "T100000130478",
+    "unit_id": "G100002047800",
+    "terminal_name": "Porto Empedocle LNG Terminal",
+    "issue": "dev_pipeline 'proposed' unit re-checked: status unchanged. Enel/Nuove Energie's long-dormant 8 bcm/y Sicily project was revived in Sep 2023; the Sicily region and Italy's infrastructure ministry granted deadline extensions (to ~2028). It remains authorized and proposed; no FID/construction. No verified status change since GEM LastUpdated 2025-07-16.",
+    "severity": "low",
+    "suggested_action": "No edit (standard-tier no-change recorded as this qa note in lieu of a blue re-verify row). Status confirmed 'proposed'. Corroborating ref (PASS): https://www.portseurope.com/enel-to-resume-porto-empedocle-lng-plant-project-again/",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change",
+    "terminal_id": "T100000131061",
+    "unit_id": "G100002106100",
+    "terminal_name": "Porto Torres FSRU",
+    "issue": "dev_pipeline 'shelved (inferred 2y)' FSRU re-checked: still consistent with shelved. The Golar Tundra vessel once linked to a Snam Sardinia FSRU was deployed to Piombino instead; no project progress in over two years. GEM's shelved status is an internal inference (see ref-fill qa below). Owner/operator (Snam) confirmed.",
+    "severity": "low",
+    "suggested_action": "No status edit (standard-tier no-change recorded as this qa note in lieu of a blue re-verify row). Note vessel-identity context for fsru_sync: Porto Torres' candidate vessel (Golar Tundra) actually serves Piombino (where GEM correctly records the renamed 'Italis LNG'); no live FSRU assigned to Porto Torres. Corroborating ref (PASS): https://lngprime.com/contracts-and-tenders/golars-fsru-conversion-deal-with-italys-snam-falls-through/88647/",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change",
+    "terminal_id": "T100000131058",
+    "unit_id": "G100002105800",
+    "terminal_name": "Portovesme FSRU",
+    "issue": "dev_pipeline 'shelved (inferred 2y)' FSRU re-checked: still consistent with shelved. Golar LNG's May-2022 deal to convert 'Golar Arctic' into an FSRU for Snam lapsed in July 2023 (Snam never issued notice to proceed); no further progress reported. GEM's shelved status is an internal inference. Owner/operator (Snam) confirmed.",
+    "severity": "low",
+    "suggested_action": "No status edit (standard-tier no-change recorded as this qa note in lieu of a blue re-verify row). Corroborating ref (PASS): https://lngprime.com/contracts-and-tenders/golars-fsru-conversion-deal-with-italys-snam-falls-through/88647/",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_ref",
+    "terminal_id": "T100000131061",
+    "unit_id": "G100002106100",
+    "terminal_name": "Porto Torres FSRU",
+    "issue": "Blank-ref targets Status [ref], ShelvedYear [ref] (2025), StopYear [ref] (2025) cannot be cleanly filled: the 'shelved 2025' status/years are GEM's own inference ('inferred 2 y', no project updates in 2+ years + vessel reassigned), not an external declaration. The only source asserting 'shelved 2025' is the GEM.wiki page itself (circular). No third party states Porto Torres was shelved/stopped in 2025.",
+    "severity": "low",
+    "suggested_action": "Leave the three [ref] cells blank (do not stage a circular GEM.wiki citation or a red single-weak ref). The inference is reasonable and supportable in prose (Golar Tundra redeployed to Piombino; conversion deal context) but not by a year-specific external citation. Optionally document the inference basis in researcher_notes rather than a [ref].",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_ref",
+    "terminal_id": "T100000131058",
+    "unit_id": "G100002105800",
+    "terminal_name": "Portovesme FSRU",
+    "issue": "Blank-ref target Status [ref] cannot be cleanly filled: GEM's 'shelved (inferred 2y)' status is an internal inference. There IS a verifiable external fact (the Golar Arctic conversion deal lapsed July 2023), but that documents a lapsed contract, not a declaration that the Portovesme terminal project is 'shelved'. No ShelvedYear is populated in GEM, so there is no year value to pair a ref with.",
+    "severity": "low",
+    "suggested_action": "Leave Status [ref] blank rather than stage a ref that supports a different proposition (contract lapse) than the cited cell (project shelved). If a Status [ref] is desired, the lapsed-deal source could support a researcher_notes explanation: https://lngprime.com/contracts-and-tenders/golars-fsru-conversion-deal-with-italys-snam-falls-through/88647/ (PASS).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_ref",
+    "terminal_id": "T100000130470",
+    "unit_id": "G100002047000",
+    "terminal_name": "Falconara Marittima LNG Terminal",
+    "issue": "Blank-ref targets Status [ref], ShelvedYear [ref] (2013), CancelledYear [ref] (2015), StopYear [ref] (2015) cannot be cleanly filled. GEM.wiki itself labels the cancellation an inference ('inferred to be cancelled in 2015', 'no news since 2011'); its only working external citation is a July 2011 LNG Industry approval article (not a cancellation). Contemporaneous Italian press/registry actually show the environmental authorization being extended past 2015 (an M5S TAR appeal against an EIA extension to 2019 was filed Feb 2016), which contradicts a hard 2013/2015 shelved/cancelled/stop date.",
+    "severity": "medium",
+    "suggested_action": "Do not [ref]-fill the 2013/2015 years; they are not externally documented and may be too early (authorization activity continued into 2016+). Recommend a follow-on Update re-examine Falconara's ShelvedYear/CancelledYear/StopYear against the MASE/MIMIT rigassificatori registry (https://www.mase.gov.it/energia/gas-naturale-e-petrolio/gas-naturale/rigassificatori/terminale-off-shore-di-rigassificazione-gnl-di-falconara-marittima) before citing any year.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_ref",
+    "terminal_id": "T100000130480",
+    "unit_id": "G100002048000",
+    "terminal_name": "Priolo Augusta LNG Terminal",
+    "issue": "Blank-ref targets Status [ref], CancelledYear [ref] (2016), StopYear [ref] (2016). Status='cancelled' is well documented (Shell+ERG project, announced 2005; ERG withdrew Jul 2012, Shell withdrew Dec 2012, leaving no developer) — verifiable. BUT the GEM CancelledYear/StopYear of 2016 is NOT supported: every independent source (and GEM.wiki's own narrative) places the developers' withdrawal in 2012, four years earlier. GEM.wiki lists 2016 as the inactive year while its body text says 2012.",
+    "severity": "medium",
+    "suggested_action": "Status [ref] could be supported by a contemporaneous source (https://www.ogj.com/pipelines-transportation/article/17244618/shell-erg-to-build-sicily-lng-terminal PASS, documents the Shell/ERG Priolo-Augusta project) — but verify it also supports 'cancelled' before filling. Do NOT [ref]-fill CancelledYear/StopYear=2016: the documented abandonment is 2012 (ERG Jul 2012, Shell Dec 2012). Recommend a follow-on Update reconcile the 2012-vs-2016 year discrepancy.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_ref",
+    "terminal_id": "T100000130482",
+    "unit_id": "G100002048200",
+    "terminal_name": "Trieste Monfalcone LNG Terminal",
+    "issue": "Blank-ref targets Status [ref], ShelvedYear [ref] (2009), CancelledYear [ref] (2011), StopYear [ref] (2011) cannot be cleanly filled. This GEM record is the E.ON (ex-Endesa) Monfalcone/'Terminal Alpi Adriatico' project; GEM.wiki says 'no development updates since 2007 and the project is presumed to be cancelled', with only a 2004 source cited — i.e. the 2009/2011 years are GEM presumption, not externally documented. CAUTION: do not conflate with the separate Gas Natural Fenosa 'Zaule' Trieste terminal (a different sponsor/site) which was definitively renounced in 2018 — that 2018 source does NOT apply to this E.ON Monfalcone record.",
+    "severity": "medium",
+    "suggested_action": "Leave the four [ref] cells blank; the 2009/2011 years are an unsourced presumption for the E.ON Monfalcone project. Recommend a follow-on Update verify the E.ON/Endesa Monfalcone project's actual abandonment year from a sponsor- or regulator-specific source (and explicitly keep it distinct from the Gas Natural Zaule project).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_ref",
+    "terminal_id": "T100000130476",
+    "unit_id": "G100002047601",
+    "terminal_name": "Panigaglia LNG Terminal",
+    "issue": "Blank-ref target ShelvedYear [ref] (2013) for the cancelled 'Expansion' unit (Snam/GNL Italia 3.5 bcm enlargement) cannot be cleanly filled. The enlargement to the open sea/larger-vessel pier was dropped in favour of an in-situ modernization programme, but no independent source pins the shelving to the specific year 2013; the year appears to be a GEM internal date.",
+    "severity": "low",
+    "suggested_action": "Leave ShelvedYear [ref] blank absent a source naming the Panigaglia expansion + 2013. (The operating main Panigaglia unit is current and not on the worklist; only the cancelled Expansion unit's ref was targeted.)",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dead_ref",
+    "terminal_id": "T100000130466",
+    "unit_id": "G100002046600",
+    "terminal_name": "Adriatic LNG Terminal",
+    "issue": "While verifying the Adriatic rows, the operating MAIN unit's existing Status [ref] and StartDate [ref] include 'https://giignl.org/wp-content/uploads/2022/05/GIIGNL2022_Annual_Report_May24.pdf' which now returns HTTP 404 (dead). The companion 2020 GIIGNL URL in the same cell was not separately checked. The operating main unit is NOT on this country's worklist, so no edit is staged here.",
+    "severity": "low",
+    "suggested_action": "In a future Update/QC pass, replace the dead GIIGNL-2022 URL on the Adriatic main unit's Status [ref]/StartDate [ref] with a live GIIGNL archive URL (the editions are committed under data/) or another primary source. Not actioned now (out of worklist scope).",
     "researcher_initials": "AI-draft"
   }
 ]

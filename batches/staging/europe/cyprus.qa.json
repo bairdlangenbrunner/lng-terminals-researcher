@@ -4,29 +4,19 @@
     "terminal_id": "T100000130432",
     "unit_id": "G100002043200",
     "terminal_name": "Cyprus FSRU",
-    "issue": "Verified STALLED but not cancelled. Status 'construction' remains appropriate. The FSRU 'Etyfa Prometheas' (ex Galea) was delivered 9 Dec 2024 (Lloyd's Register LNGC certificate flagged 12 outstanding works completable only once the Vasilikos pier is built and LNG is available). As of Jan 2026 the project is at a standstill: onshore facilities/pier incomplete; new project manager Technip is investigating; the EU Public Prosecutor's Office (EPPO) is investigating the project for suspected fraud/corruption; ETYFA and contractor CMC (CPP-Metron Consortium) are in London arbitration. PROBLEM: GEM LatestPlannedStartYear = 2026 is no longer credible — sources frame the goal as gas 'available before end of 2027' with no firm commissioning date. Recommend pushing latest planned start to 2027 (or blank) pending resolution. Per sweep rules, not staging a Status field edit; flagging as status_timeline.",
-    "severity": "high",
-    "suggested_action": "Update LatestPlannedStartYear 2026 -> 2027 (or leave blank) pending dispute resolution; keep status 'construction'; add the EPPO/CMC-arbitration context to the wiki Background. Re-check each batch.",
+    "issue": "Project is at a standstill and the planned start has slipped past GEM's LatestPlannedStartYear=2026, but no firm replacement year is verifiable. As of Jan-Feb 2026 (Cyprus Mail): FSRU 'Etyfa Prometheas' is still moored in Malaysia (delivered 2024-12-09, uncertified for the one-way voyage to Cyprus and not yet FSRU-certified; ~EUR470k/month idle cost), the Vasilikos jetty/land facilities are ~50% complete, the China-led CPP-Metron EPC contract was terminated (July 2024), Technip Energies is assessing remaining works, and EPPO is investigating for suspected fraud/corruption. The energy minister stated he 'was not in a position to give a timetable' for completion. A separate 'before end of 2027' figure appears in coverage but largely concerns Cronos upstream gas exports via Egypt (Damietta), NOT the FSRU import start, so it was not adopted as a new LatestPlannedStartYear. Status correctly remains 'construction' (re-verified blue this batch).",
+    "severity": "medium",
+    "suggested_action": "Human review of timeline: GEM LatestPlannedStartYear=2026 is now optimistic given the standstill, but no clean revised year exists to stage. Consider whether to revise LatestPlannedStartYear or add a status-timeline note once a firm restart date is published (fetch_timeline endpoint is DOWN, so no timeline file staged). Also refresh the stale ResearcherNotesUnit, which still reads 'ready by the end of 2024 with operations starting in 2025' — superseded by the 2026 standstill/EPPO situation.",
     "researcher_initials": "AI-draft"
   },
   {
-    "category": "no_change",
+    "category": "data_quality",
     "terminal_id": "T100001048370",
     "unit_id": "G100001055528",
     "terminal_name": "Cyprus LNG Terminal",
-    "issue": "Cancelled export terminal (Vasilikos, DEFA; shelved 2017, cancelled 2019) — no revival signal found. GEM 'cancelled / inferred 4y' remains correct. No field edit.",
+    "issue": "Blank-ref worklist flagged four blank [ref] cells (Status, ShelvedYear, CancelledYear, StopYear). Only 'Status [ref]' was filled this batch (Cyprus Ministry of Energy hydrocarbons page documents the onshore LNG export/liquefaction plant as 'on hold'). The specific years ShelvedYear=2017, CancelledYear=2019, StopYear=2019 are the researcher's INFERRED values (Substatus 'inferred 4 y'; ShelvedCancelledStatusType 'inferred'; RR's 7/25 notes state proposed/start years were deleted for lack of evidence and that the export project may even be a mistaken duplicate of the import project). No source cleanly documents those discrete years, so their [ref] columns were deliberately LEFT BLANK rather than paired with a topical-but-non-supporting citation (no orphan/weak [ref]).",
     "severity": "low",
-    "suggested_action": "No change.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "no_change",
-    "terminal_id": "T100000130828",
-    "unit_id": "G100002082800",
-    "terminal_name": "Hoegh Cyprus FSRU",
-    "issue": "Cancelled (Höegh Evi proposal, cancelled 2021) — no revival signal. GEM 'cancelled / confirmed' correct. No field edit.",
-    "severity": "low",
-    "suggested_action": "No change.",
+    "suggested_action": "Leave ShelvedYear/CancelledYear/StopYear [ref] blank unless a source is found that explicitly dates the shelving (2017) and cancellation (2019) of the EXPORT project; the years remain inferred. Optionally reconsider whether the inferred 2017/2019 years should stand at all given they are unsourced.",
     "researcher_initials": "AI-draft"
   }
 ]

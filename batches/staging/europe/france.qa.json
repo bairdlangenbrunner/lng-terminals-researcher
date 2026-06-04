@@ -1,32 +1,52 @@
 [
   {
     "category": "status_timeline",
-    "terminal_id": "T100000131008",
-    "unit_id": "G100002100800",
-    "terminal_name": "Le Havre FSRU",
-    "issue": "GEM has Le Havre FSRU as 'operating' (LastUpdated 2025-07-21), but the FSRU Cape Ann has been DEMOBILIZED. TotalEnergies announced demobilization on 2025-11-25 ('now that gas supply conditions in France and Europe have stabilized ... the floating LNG terminal in Le Havre is no longer necessary'); the Rouen Administrative Court ruled 2025-10-16 ordering the State to revoke the installation decree within two months following challenges by environmental groups; the Cape Ann departed Le Havre by ~2026-01-22. The terminal is therefore no longer operating. This is a status change (operating -> idled/retired/cancelled) and per the sweep rules is logged here, NOT staged as a Status field edit and NOT written to a timeline file. Suggested current status for researcher review: idled or retired (the FSRU was chartered, deployed Oct 2023, and removed; the underlying authorization was revoked, which may argue for cancelled/retired). A status-timeline entry recording the ~Jan 2026 demobilization/departure is warranted.",
-    "severity": "high",
-    "suggested_action": "Researcher: pull the unit timeline and update Le Havre FSRU status off 'operating' to reflect the Nov-2025 demobilization decision + ~Jan-2026 departure of the Cape Ann (idled/retired/cancelled — judge per lifecycle rules given the revoked authorization). Sources: TotalEnergies press release (france-totalenergies-demobilizes-its-floating-lng-terminal-le-havre, PASS), Maritime Executive (le-havre-floating-lng-terminal-demobilized..., PASS), LNG Industry (27112025, PASS). Verify exact departure date if a precise StopYear/Substatus is desired (2026).",
+    "terminal_id": "T100000130456",
+    "unit_id": "G100002045601",
+    "terminal_name": "Montoir LNG Terminal",
+    "issue": "Montoir Expansion (proposed, 1.84 mtpa / 2.5 bcm/y) carries LatestPlannedStartYear=2023, now 3 years past with no movement. The 2.75 bcm/y-by-2022 proposal was presumed shelved as of June 2022, reappeared in the Oct-2022 ENTSOG TYNDP, and is still listed in the 2024 TYNDP (published June 2025) but with NO FID, NO concrete commissioning year. Elengy's own terminal page lists only maintenance (10 bcm/y current capacity) and the active Montoir investment is the 'Ulysse' renovation/life-extension to 2035 plus a CO2-export study, not this regas expansion. No verified replacement start year exists, so no LatestPlannedStartYear edit is staged (do not guess).",
+    "severity": "medium",
+    "suggested_action": "Clear the stale LatestPlannedStartYear=2023 (set blank or 'TBD') and treat the expansion as a dormant/perennially-deferred proposal pending a CRE/Elengy open-season or FID. Status likely remains 'proposed'; consider whether the unit should be flagged shelved if it drops out of the next TYNDP. Re-check the 2025/2026 TYNDP and any Elengy open-season notice next batch.",
     "researcher_initials": "AI-draft"
   },
   {
-    "category": "capacity_conflict",
+    "category": "status_timeline",
     "terminal_id": "T100000130448",
-    "unit_id": "G100002044800",
+    "unit_id": "G100002044802",
     "terminal_name": "Fos Cavaou LNG Terminal",
-    "issue": "Elengy's site currently markets Fos Cavaou total regas capacity as '8.5 Bcm/year (~100 TWh/y)'. GEM records the base unit at 8.0 mtpa (10.88 bcm/y) plus a 2.0 mtpa Expansion 2 (construction). The Elengy 8.5 bcm figure is a current marketed/optimized total in bcm and is LOWER than GEM's 10.88 bcm base alone, so it does not support a nameplate bump and is likely an optimized/contracted figure rather than nameplate. Logged for awareness; no nameplate edit (per rules, peak/optimized != nameplate).",
+    "issue": "Fos Cavaou Expansion 2 is held as Status=construction (Substatus=actual), Capacity=2.00 mtpa, sourced to the IGU World LNG Report 2025 construction table. ResearcherNotesUnit (RR 7/25) already flags this entry as 'sometimes unreliable'. Elengy's public framing is materially softer: the 'second additional capacity of 2.0 Bcm/year MAY be developed as of 2030' via debottlenecking/marginal investment, and Elengy's current 'projects in the making' page lists NO conventional regas expansion (only CO2/biogas/ammonia). No primary Elengy/CRE source affirmatively confirms physical construction is underway, but none cleanly refutes it either - the evidence is ambiguous, so no status downgrade is staged.",
     "severity": "low",
-    "suggested_action": "No edit. If a researcher wants to reconcile units, note the Elengy 8.5 bcm/y is below GEM's 10.88 bcm/y base-unit nameplate and is not a nameplate source. Keep monitoring Expansion 2 for a firm commissioning date.",
+    "suggested_action": "Re-verify the 'construction' status against a primary source (Elengy/Fosmax IR, CRE, or ENTSOG project tables) before relying on it. If the next IGU/ENTSOG cycle no longer lists it in construction, consider reverting to 'proposed'. Deliberate IGU-sourced value retained for now per RR's note.",
     "researcher_initials": "AI-draft"
   },
   {
-    "category": "capacity_conflict",
-    "terminal_id": "T100000130452",
-    "unit_id": "G100002045200",
-    "terminal_name": "Fos Tonkin LNG Terminal",
-    "issue": "Already documented in GEM researcher note (RR 7/25): the 2025 GIIGNL report lists Fos Tonkin capacity at ~5.6 mtpa, far above GEM's 1.2 mtpa and above prior GIIGNL editions (~1.2 mtpa). RR deliberately kept 1.2 mtpa. Confirmed this is a deliberate documented divergence — no override. Independent corroboration this sweep: Elengy describes Fos Tonkin as a small/legacy terminal (oldest French LNG terminal, 1972), consistent with the ~1.2 mtpa figure, not 5.6 mtpa; the GIIGNL 5.6 figure looks like a likely data error or a units/scope artifact in that edition.",
+    "category": "capacity_units",
+    "terminal_id": "T100000130448",
+    "unit_id": "G100002044802",
+    "terminal_name": "Fos Cavaou LNG Terminal",
+    "issue": "Possible capacity-unit mismatch on Fos Cavaou Expansion 2. GEM stores Capacity=2.00 with CapacityUnits=mtpa (=> CapacityinBcm/y=2.72). Elengy and ENTSOG describe the second-stage addition as '2.0 Bcm/year' (which is ~1.47 mtpa, not 2.0 mtpa). The IGU 2025 construction table apparently lists '2 mtpa'. Sources disagree on whether the 2.0 figure is mtpa or bcm/y; not staging a nameplate change without a single authoritative value.",
     "severity": "low",
-    "suggested_action": "No change — defer to the existing GEM researcher note (1.2 mtpa). The GIIGNL 2025 5.6 mtpa figure is almost certainly erroneous; do not adopt it. Re-flag only if a second independent primary source supports a materially higher capacity.",
+    "suggested_action": "Confirm whether the 2.0 figure is mtpa (IGU) or bcm/y (Elengy/ENTSOG). If Elengy/ENTSOG's 2.0 bcm/y is correct, Capacity should be ~1.47 mtpa rather than 2.00 mtpa. Resolve against a primary Elengy/CRE source.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change",
+    "terminal_id": "T100000130448",
+    "unit_id": "G100002044802",
+    "terminal_name": "Fos Cavaou LNG Terminal",
+    "issue": "Fos Cavaou Expansion 2 re-verified against current Elengy sources (terminal page + 'projects in the making') this batch. Owner/Parent/Operator (Fosmax LNG SAS [100%] / Elengy / Elengy) confirmed unchanged and current; no new FID or start-year disclosure found. Representative blue re-verify for the unit (standard tier).",
+    "severity": "low",
+    "suggested_action": "No edit. Blue re-verify only; see status_timeline and capacity_units qa for open items.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change",
+    "terminal_id": "T100000130456",
+    "unit_id": "G100002045601",
+    "terminal_name": "Montoir LNG Terminal",
+    "issue": "Montoir Expansion re-verified against Elengy's terminal page this batch: Owner/Parent/Operator (Elengy) and 'proposed' framing remain consistent with current public info (terminal fully booked 2023-2035; only maintenance/renovation underway). No verified field value differs from GEM except the stale start year (handled in status_timeline qa).",
+    "severity": "low",
+    "suggested_action": "No field edit. Blue re-verify; stale start-year resolution tracked in the status_timeline qa + monitor.",
     "researcher_initials": "AI-draft"
   }
 ]

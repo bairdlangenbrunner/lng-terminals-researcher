@@ -1,0 +1,52 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130218",
+    "unit_id": "G100002021801",
+    "terminal_name": "Delfin FLNG Terminal",
+    "issue": "Delfin Midstream announced FID + $5B financing/financial close on its first FLNG vessel ('Delfin FLNG 1', up to 4.4 mtpa, startup 2030) on 2026-06-03 (investors: Global Infrastructure Partners/BlackRock, Mitsui O.S.K., Vitol, Diameter Capital; offtake Vitol/Expand Energy/Centrica/Gunvor). GEM T1 is still status='proposed' (FIDStatus 'Pre-FID', FIDYear 2026). This is a proposed->construction transition for T1; FIDStatus should move Pre-FID->FID. T2/T3 remain pre-FID (company targeting their FIDs 'over the coming year'). Not staging a Status edit per sweep rule (fetch_timeline endpoint down).",
+    "severity": "high",
+    "suggested_action": "In a follow-on Update batch, pull the T1 status timeline and move T1 to construction (actual) + FIDStatus=FID/FIDYear=2026, paired with the GlobeNewswire FID PR (verified PASS). Leave T2/T3 proposed. Source: https://www.globenewswire.com/news-release/2026/06/03/3306350/0/en/delfin-midstream-announces-5-billion-final-investment-decision-for-first-flng-vessel.html",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "stale_value",
+    "terminal_id": "T100000130214",
+    "unit_id": "G100002021404",
+    "terminal_name": "Cameron LNG Terminal",
+    "issue": "Cameron LNG Export Terminal T4 (proposed) GEM LatestPlannedStartYear=2027 is stale. FERC granted a multi-year extension of the Amended Expansion Project in-service deadline to 2028->2033 (filed 2025-10-21), and Cameron asked DOE to push the non-FTA export commencement deadline from 2026-05-05 to 2033-03-16, driven by a customer-requested Train 4 redesign. T4 capacity (6.75 mtpa), status (proposed) and Pre-FID/FIDYear 2025 otherwise consistent.",
+    "severity": "low",
+    "suggested_action": "Update LatestPlannedStartYear toward 2031-2033 with a FERC/DOE extension citation (S&P 'FERC grants Cameron LNG 4-year extension' was paywalled in this sweep; use the DOE extension order / Federal Register notice as the primary ref). Verify before applying.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "stale_value",
+    "terminal_id": "T100000130234",
+    "unit_id": "G100002023401",
+    "terminal_name": "Magnolia LNG Terminal",
+    "issue": "Magnolia LNG (proposed, Glenfarne, 4x2.2=8.8 mtpa) GEM LatestPlannedStartYear=2027 is stale. As of Jan 2026 Magnolia sought a further FERC extension to place the plant in service as late as 2031-04-15 (prior extension ran to Nov 2029); construction has not started and non-FTA export authorization remains pending. Capacity/owner/status otherwise consistent.",
+    "severity": "low",
+    "suggested_action": "Update LatestPlannedStartYear toward 2029-2031 citing the FERC extension filing/grant (offshore-energy.biz / LNG Prime 174642). Verify the as-granted date before applying.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_ref",
+    "terminal_id": "T100000130678",
+    "unit_id": "",
+    "terminal_name": "(multiple cancelled US terminals in shard)",
+    "issue": "104 blank-ref [ref]-fill targets across 22 units in this shard sit overwhelmingly on long-cancelled/shelved terminals (American Coast, Avocet, Creole Trail, Long Beach, Louisiana, Main Pass, OceanWay, Oregon, Oxnard, Pointe, Port Esperanza, New Fortress Grand Isle, etc.), on date fields ShelvedYear/CancelledYear/StopYear whose values are GEM-inferred (Substatus 'inferred 4 y') or legacy import-era estimates with no clean single citation. Filling these would create weak/orphan refs against the no-weak-source rule.",
+    "severity": "low",
+    "suggested_action": "Do NOT auto-fill these date [ref]s. Where a row already carries an authoritative cancellation/shelving source (e.g. West Delta earthworks/MARAD doc; CE FLNG cefcp-h2m about page; Energy Transfer IR for Lake Charles; Energy Intel for Fourchon), an exhaustive-tier pass can reuse that single source for the adjacent year refs; otherwise leave blank. Not a research gap — a sourcing-quality limitation on historic cancellations.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "(shard-wide verification summary)",
+    "issue": "Standard-tier worklist for this shard (34 dev-pipeline rows + 104 blank-refs across the listed terminals) re-checked against last-12-month sources (sponsor IR/PR, FERC/DOE, LNG Prime/Reuters/S&P/NGI/Offshore-Energy). GEM is current (LastUpdated mostly 2026-05-18..27). Verified-current with NO field change: CP2 (Ph2 FID Mar 2026 already=construction/FID; Ph3 proposed), Commonwealth (FID May 2026 already=construction), Woodside Louisiana (construction ~24%, first LNG 2029 - matches), Plaquemines Ph2 construction + Expansion proposed (DOE app Nov 2025 - matches), Sabine Pass Stage 5 Ph1/Ph2 (FID 2027 / early Bechtel work - matches), Argent Ph1/Ph2 (25 mtpa buildout, FERC RRs May 2026 - matches), Alaska LNG T1-T3 (Phase 2 FID late 2026 / GEM 2027 - acceptable), Barbers Point FSRU + Cook Inlet FSRU (FERC pre-filing 2026 - matches), Qilak, ST LNG Ph1-4, Kenai Import, Gulfstream, AGP, Monkey Island Ph1/Ph2 (first LNG ~2033 - matches).",
+    "severity": "low",
+    "suggested_action": "No edits required for these rows; treat as blue re-verified for this batch. Only Delfin (FID), and stale planned-start years on Cameron T4 / Magnolia, carry findings (above).",
+    "researcher_initials": "AI-draft"
+  }
+]

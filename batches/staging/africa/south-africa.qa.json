@@ -4,59 +4,59 @@
     "terminal_id": "T100001048121",
     "unit_id": "G100001055097",
     "terminal_name": "Ngqura LNG Terminal",
-    "issue": "Concrete advance for this 'proposed' import terminal: on 28-29 May 2026 TNPA signed a 25-year Terminal Operator Agreement with Ukwanda LNG (JV: Tamasa Energy Group + Strategic Fuel Fund). ~R22bn ($1.34bn) incl. a dedicated LNG berth; designated a national strategic integrated project; full operations targeted 2035. This is a project milestone since GEM's 2025-07-07 update but does not by itself move the lifecycle out of 'proposed' (no FID/construction start). Per brief, not staging a Status field edit; flagging for status-timeline review and a 'proposed' confidence bump.",
+    "issue": "Material advancement not yet a tier change: on 2026-05-28 TNPA signed a 25-year terminal operator agreement with Ukwanda LNG (Tamasa Energy Group + Strategic Fuel Fund) for an LNG terminal at the Port of Ngqura, ~R22bn, TNPA to build a ~R2bn dedicated LNG berth, full ops targeted 2035, phased via a temporary FSRU then onshore regas. Project remains pre-FID / pre-construction (berth build ~36 months, not yet started), so Status stays 'proposed' for now, but this is a concrete operator-agreement milestone worth a timeline entry. (fetch_timeline endpoint is DOWN — not staging a Status edit or timeline file.)",
     "severity": "medium",
-    "suggested_action": "Add a timeline note (TOA signed, May 2026) to the unit; keep status 'proposed' pending FID/construction. Refresh LastUpdated. See updates file (Operator -> Ukwanda LNG; LatestPlannedStartYear -> 2035).",
+    "suggested_action": "Add a 2026-05-28 'operator agreement signed (Ukwanda LNG)' timeline event when the timeline endpoint is back; re-evaluate proposed->construction at berth-construction start. Operator + LatestPlannedStartYear field edits staged separately in updates.",
     "researcher_initials": "AI-draft"
   },
   {
-    "category": "status_timeline",
-    "terminal_id": "T100000131126",
-    "unit_id": "G100002112600",
-    "terminal_name": "Richards Bay Transnet FSRU",
-    "issue": "Zululand Energy Terminal FID slipped from early 2026 to Q1 2028 (Vopak, via Reuters at African Energy Indaba, March 2026) after a Sept 2025 court order halted Eskom's 3,000 MW Richards Bay gas-to-power plant and Vopak extended pre-FEED. Status stays 'proposed' / Pre-FID; this is a schedule slip, not a lifecycle move. Captured as a FIDYear field update (2026 -> 2028) in the updates file.",
-    "severity": "medium",
-    "suggested_action": "No status change. Apply FIDYear 2026 -> 2028 (project-level, both phases). Note the Eskom GtP dependency in the wiki/Background.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "capacity_review",
-    "terminal_id": "T100000131126",
-    "unit_id": "G100002112600",
-    "terminal_name": "Richards Bay Transnet FSRU",
-    "issue": "Capacity discrepancy, NOT staging a bump. Gas Processing News (Mar 2026) describes the project ramping 'initial 2 MMtpy by 2027 to 5 MMtpy'; the Zululand Energy Terminal site/older coverage describes Phase 1 ~400 mmscfd (FSU) and Phase 2 ~600 mmscfd (onshore tank). GEM has Phase 1 = 0.40 bcf/d (CapacityinMtpa 3.07) and Phase 2 = 0.20 bcf/d (CapacityinMtpa 1.53), total ~4.6 mtpa. The '2->5 MMtpy' figures are a rounded ramp narrative and the mmscfd figures are send-out (~400 then ~600 mmscfd total), so they are not a clean nameplate conflict. Conversions should be re-checked.",
-    "severity": "low",
-    "suggested_action": "Verify whether GEM's per-phase bcf/d -> mtpa split still matches the latest Zululand Energy Terminal design (Phase 1 ~400 mmscfd FSU, Phase 2 to ~600 mmscfd total with onshore tank). Do not auto-apply the '2/5 MMtpy' narrative figures.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "field_review",
-    "terminal_id": "T100000131126",
-    "unit_id": "G100002112600",
-    "terminal_name": "Richards Bay Transnet FSRU",
-    "issue": "Facility-type / floating nuance: latest coverage describes Phase 1 as a Floating STORAGE Unit (FSU, ~135,000-174,000 m3) plus onshore regasification, and Phase 2 replacing the FSU with an onshore storage tank (so the long-term terminal is onshore, not floating). GEM models the project as 'Richards Bay Transnet FSRU' with Floating=True/Offshore=True on both phases. The 'FSRU' label may be imprecise (it is regas-onshore + floating-storage); Phase 2 in particular is onshore. Out of caution not restaging Floating/Offshore.",
-    "severity": "low",
-    "suggested_action": "Consider whether terminal naming/Floating flags should reflect FSU+onshore-regas (Phase 1) and fully onshore (Phase 2). Possible OtherNames already covers 'Zululand Energy Terminal'. Review against methodology FSRU/FSU/onshore conventions.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "field_review",
+    "category": "ownership",
     "terminal_id": "T100001048121",
     "unit_id": "G100001055097",
     "terminal_name": "Ngqura LNG Terminal",
-    "issue": "FacilityType/floating nuance: May 2026 coverage is mixed — most outlets call Ngqura an 'onshore regasification facility' (with a temporary floating unit during ramp-up) plus permanent onshore infrastructure; one outlet says 'not FSRU'. GEM's researcher note already flags a possible 2-phase plan including an FSRU and keeps it as one project. No facility-type field edit staged; capacity unchanged (new sources quote MW/gas-to-power, not LNG mtpa).",
+    "issue": "Owner/developer structure may need restructuring alongside the staged Operator change. GEM lists Owner='Transnet SOC Ltd' and Parent='Transnet SOC Ltd'. Under the 2026-05-28 deal, TNPA (Transnet) owns/builds the LNG berth while Ukwanda LNG (Tamasa Energy Group + Strategic Fuel Fund) is the 25-year terminal operator/developer of the regas facility. Whether GEM's Owner should shift toward the Ukwanda LNG JV (with Transnet as berth/landlord) is genuinely ambiguous from current sourcing — not staging a guessed Owner/Parent edit.",
     "severity": "low",
-    "suggested_action": "Keep as one project for now (matches existing GEM note). Watch for confirmation of temporary FSRU vs permanent onshore regas; capture in wiki Background.",
+    "suggested_action": "Reviewer to decide Owner/Parent treatment (terminal operator-developer Ukwanda LNG vs port-authority landlord Transnet) once an equity/ownership breakdown for the regas facility is published. Only the Operator field was changed this batch.",
     "researcher_initials": "AI-draft"
   },
   {
-    "category": "no_change_verified",
+    "category": "blank_ref",
     "terminal_id": "T100000130265",
     "unit_id": "G100002026500",
-    "terminal_name": "Coega FSRU / Mossel Bay / Richards Bay (Karpowership) / Saldanha Bay FSRU",
-    "issue": "Re-verify (blue): the three Karpowership FSRUs (Coega T100000130265, Richards Bay T100000130266, Saldanha Bay T100000130267) remain correctly cancelled (2024). The Karpowership SA gas-to-power deal across the three ports is confirmed no longer proceeding as of late 2024 (Eskom withdrew reserved transmission capacity after the Dec-2023 financing deadline lapse; environmental/court hurdles); no 2025-2026 revival found. Mossel Bay FSRU (T100000130264) remains cancelled (2014). No changes.",
+    "terminal_name": "Coega FSRU",
+    "issue": "ShelvedYear=2021 has a blank ShelvedYear [ref]. The 2021 shelving is well-documented (DFFE refused environmental authorization for all three Karpowership floating gas-to-power projects — Coega/Ngqura, Richards Bay, Saldanha — on/around 24 June 2021), BUT the cleanest primary sources for that event (NS Energy Business, Energy Voice, News24) are all bot-blocked and FAIL url_verifier (HTTP 403), so no verifier-passing citation could be staged. Did not fill the [ref] to avoid pairing it with an unverifiable URL.",
     "severity": "low",
-    "suggested_action": "Record one blue re-verify per cancelled terminal; no field edits. Existing cancelled status + refs hold.",
+    "suggested_action": "Reviewer to manually cite the June 2021 DFFE environmental-authorization refusal for ShelvedYear [ref], e.g. nsenergybusiness.com/news/south-africa-rejects-environmental-permits-karpowership-projects/ (article 2021-06-25, names all three ports) once confirmed in-browser. Value (2021) appears correct.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_quality",
+    "terminal_id": "T100000130266",
+    "unit_id": "G100002026600",
+    "terminal_name": "Richards Bay FSRU",
+    "issue": "ShelvedYear=2019 is both unsourced (blank ShelvedYear [ref]) AND inconsistent with the documented record. The Karpowership Richards Bay floating gas-to-power project was an active RMIPPPP preferred bidder (named March 2021) up until the DFFE refused environmental authorization for all three projects in June 2021 — i.e. its first real shelving event was 2021, the same as Coega. No source supports a 2019 shelving (2019 may reflect a lapse of the original 2016 LNG-to-Power IPPPP, but no citation found). Did not fill a [ref] for a value that looks wrong.",
+    "severity": "medium",
+    "suggested_action": "Reviewer to re-examine ShelvedYear: likely should be 2021 (DFFE June 2021 EA refusal, matching Coega) rather than 2019, then cite accordingly. CancelledYear=2024 unaffected.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_quality",
+    "terminal_id": "T100000130267",
+    "unit_id": "G100002026700",
+    "terminal_name": "Saldanha Bay FSRU",
+    "issue": "ShelvedYear=2019 is unsourced (blank ShelvedYear [ref]) AND inconsistent with the record. Saldanha Bay was explicitly EXCLUDED from the first phase of the original 2016 LNG-to-Power IPPPP, then named a Karpowership RMIPPPP preferred bidder in March 2021; the first documented shelving was the June 2021 DFFE environmental-authorization refusal (all three projects). No source supports a 2019 shelving for Saldanha. Did not fill a [ref] for a value that looks wrong.",
+    "severity": "medium",
+    "suggested_action": "Reviewer to re-examine ShelvedYear: likely 2021 (DFFE June 2021 EA refusal) rather than 2019, then cite. CancelledYear=2024 unaffected.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_quality",
+    "terminal_id": "T100000131126",
+    "unit_id": "G100002112600",
+    "terminal_name": "Richards Bay Transnet FSRU",
+    "issue": "Planned start years (Phase 1 Original 2026 / Latest 2028; Phase 2 2030) are now likely optimistic given FID is pushed to Q1 2028 (staged FIDYear edit). Some 2026 coverage referred to a 'target commercial operation date of 2028' for the Richards Bay terminal, which is inconsistent with a Q1 2028 FID. No explicit, citable post-delay COD figure was found, so no start-year edit was staged (ambiguous -> not guessed).",
+    "severity": "low",
+    "suggested_action": "Revisit LatestPlannedStartYear once a post-2028-FID commissioning date is published by Vopak/ZET; for now only FIDYear (2026->2028) is staged.",
     "researcher_initials": "AI-draft"
   }
 ]

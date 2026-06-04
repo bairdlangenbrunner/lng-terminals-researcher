@@ -4,29 +4,9 @@
     "terminal_id": "T100000131082",
     "unit_id": "G100002108200",
     "terminal_name": "Sinolam LNG Terminal",
-    "issue": "GEM holds status=shelved/confirmed (AL2025 / GC Sep 2024 noted 'most likely cancelled', license revoked Apr 2024). New 2025-2026 evidence strengthens the cancelled case: Sinolam filed an ICSID arbitration against Panama (under the Panama-Singapore FTA, ~$140M claimed) AND a US civil suit (Arlington County, VA) against AES and InterEnergy Holdings, both predicated on the project's cancellation. A sponsor litigating over a cancelled license is not pursuing the project. The IGU 2025 report's claim that it 'began operations in 2025' is contradicted (AL2025 already rejected it; no operating evidence found).",
+    "issue": "GEM has Sinolam at Status='shelved' / Substatus='confirmed' (LastUpdated 2025-07-15). New 2026 evidence reinforces a cancelled outcome: Sinolam International Pte Ltd filed an ICSID arbitration request against the Republic of Panama on 2026-03-19 over Panama's 2024 cancellation of the Gas-to-Power Panama project license (claiming >$140M in losses for invested capital and destroyed project value under the Panama-Singapore FTA), and in Jan 2026 filed a related civil suit against AES/InterEnergy in Virginia alleging exclusion from the LNG-to-power market. A sponsor now litigating over an expropriated/cancelled concession (rather than developing) supports treating the terminal as cancelled rather than shelved. GEM ResearcherNotesProject already notes IGU 2025 listed it as 'begun operations in 2025' but the prior researcher found no evidence and held it shelved; the new arbitration filings corroborate the no-build outcome. Status field NOT edited (fetch_timeline endpoint down; status changes are qa-only per sweep rules).",
     "severity": "medium",
-    "suggested_action": "Consider moving Sinolam LNG Terminal shelved -> cancelled (confirmed), with CancelledYear 2024 (license revoked Apr 2024). Per brief, status change recorded as qa note, NOT a staged Status field edit. Do NOT treat IGU's 'operating 2025' as authoritative — corroborated cancellation is more specific/current.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "no_change",
-    "terminal_id": "T100000130854",
-    "unit_id": "G100002085401",
-    "terminal_name": "Telfers FSRU",
-    "issue": "Re-verified: cancelled/inferred-4y status holds. No revival of the Telfers FSRU in 2024-2026; the only active development at the site is the separate Gatun Project gas power plant (ex-Telfers thermal). Owner LNG Group Panama / Panama NG Power failed financial close; license cancelled by authorities (2017) and no FSRU news since.",
-    "severity": "low",
-    "suggested_action": "No edit. Blue re-verify only (status current).",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "no_change",
-    "terminal_id": "T100000130575",
-    "unit_id": "G100002057500",
-    "terminal_name": "Costa Norte LNG Terminal",
-    "issue": "Re-verified: operating, 1.5 mtpa (matches GEM), AES-operated terminal at Colón with adjacent AES Colón CCGT power station. No expansion or capacity change found for 2024-2026. Ownership (AES 65% / Grupo Linda 20% / Grupo Estrella 15%) consistent with GC Aug 2024 note on the late-2023 ownership change; no further change found.",
-    "severity": "low",
-    "suggested_action": "No edit. Blue re-verify only (capacity, owner, status all current).",
+    "suggested_action": "Consider moving Status from 'shelved' to 'cancelled' (or confirm 'shelved' is intended) in a follow-on Update batch once the timeline endpoint is back. Sources: ICSID arbitration release https://www.prnewswire.com/news-releases/sinolam-commences-icsid-arbitration-against-panama-over-cancellation-of-strategic-power-project-302718979.html (url_verifier PASS); LNG Prime on the AES/InterEnergy suit https://lngprime.com/americas/sinolam-sues-aes-interenergy-over-panamas-lng-to-power-market/173767/ (PASS); ASEP license cancellation already cited in GEM https://asep.gob.pa/an-no-19123-elec-de-2024-04-26/ (PASS).",
     "researcher_initials": "AI-draft"
   }
 ]

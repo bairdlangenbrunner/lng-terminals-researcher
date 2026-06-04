@@ -1,52 +1,32 @@
 [
   {
     "category": "status_timeline",
-    "terminal_id": "T100000131139",
-    "unit_id": "G100002113900",
-    "terminal_name": "Firebird LNG Terminal",
-    "issue": "Firebird LNG (Port of Nickerie) shows continued stall through 2025-2026. No significant developments reported since 2023; Port of Rotterdam Authority and Van Oord (key stakeholders) withdrew. 2025 Surinamese/Dutch press ('Port of Nickerie struggling to get off the ground') doubts realization. GEM still lists Status=proposed with FIDYear=2024 (FID date now ~2 years overdue) and OriginalPlannedStartYear/LatestPlannedStartYear=2026 (unachievable given 28-month post-FID build and no FID). The existing researcher note (AL2025) already documents this and deliberately keeps it 'proposed' on the strength of a 2025 director statement that the project is moving ahead.",
+    "terminal_id": "T100001048294",
+    "unit_id": "G100001055425",
+    "terminal_name": "Petronas FLNG Terminal",
+    "issue": "Sloanea field (Block 52) received a Declaration of Commerciality (DoC) on 14 Nov 2025, approved by Staatsolie 11 Nov 2025 — Suriname's first gas development milestone. Selected concept is gas wells + subsea infrastructure + a floating LNG facility. FID still planned 2H 2026 (matches GEM FIDYear 2026); project remains pre-FID / proposed. Per the sweep rule (fetch_timeline endpoint down) this advancement is flagged here, NOT staged as a Status edit. Reviewer may wish to capture the DoC as a status-timeline milestone once timeline editing is restored.",
     "severity": "medium",
-    "suggested_action": "Reviewer to decide whether the stall now meets the inferred-shelved threshold (proposed, no concrete progress >2y), or whether the NV Havenbeheer director's 2025 'still moving ahead' claim keeps it proposed. NOT staging a Status field edit (per sweep rules, status changes are qa-only and fetch_timeline is down). If kept proposed, consider whether stale FIDYear=2024 / LatestPlannedStartYear=2026 should be revisited at next update. No verified new value found to overwrite these.",
+    "suggested_action": "Record the 14 Nov 2025 Declaration of Commerciality as a development milestone in the status timeline; status stays 'proposed' (pre-FID). Sources: PETRONAS press release + Staatsolie news + OGJ (all verified PASS).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "value_discrepancy",
+    "terminal_id": "T100001048294",
+    "unit_id": "G100001055425",
+    "terminal_name": "Petronas FLNG Terminal",
+    "issue": "GEM LatestPlannedStartYear/OriginalPlannedStartYear = 2031, but multiple Nov-2025 sources (PETRONAS press release, Staatsolie, OGJ, Offshore Energy) consistently state 'first gas to flow in 2030'. Not staged as an edit because the relationship between 'first gas' (upstream) and FLNG terminal commercial start can differ, and GEM's 2031 may intentionally lag first gas; flagging for reviewer judgment.",
+    "severity": "low",
+    "suggested_action": "Confirm whether GEM's 2031 planned start should be revised to 2030 in light of the consistent Nov-2025 'first gas 2030' guidance, or whether 2031 reflects a deliberate FLNG-commissioning lag vs. first gas.",
     "researcher_initials": "AI-draft"
   },
   {
     "category": "status_timeline",
-    "terminal_id": "T100001048294",
-    "unit_id": "G100001055425",
-    "terminal_name": "Petronas FLNG Terminal",
-    "issue": "Material forward progress: Petronas & Staatsolie declared commerciality (DoC) for the Sloanea field, Block 52, on 14 Nov 2025 — 'Suriname's first gas development milestone'. Selected concept = gas wells + subsea + a newbuild FLNG (Wison New Energies holds the detailed feasibility study). FID targeted H2 2026, first gas 2030. The project remains pre-FID, so Status correctly stays 'proposed' — but the DoC is a documented advance worth noting on the record.",
-    "severity": "low",
-    "suggested_action": "No Status field edit (still pre-FID / proposed). Note DoC (14 Nov 2025) and FLNG concept selection in the researcher note. Ownership and LatestPlannedStartYear edits staged separately in suriname.updates.json. If/when FID is taken in H2 2026, revisit for a construction-status timeline entry.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "data_discrepancy",
-    "terminal_id": "T100001048294",
-    "unit_id": "G100001055425",
-    "terminal_name": "Petronas FLNG Terminal",
-    "issue": "Task brief framed this terminal as the 'GranMorgu / Block 58 (TotalEnergies/Petronas)' development. That is INCORRECT: GranMorgu is the TotalEnergies-operated OIL development in Block 58. GEM's record correctly ties this FLNG to Block 52 / Sloanea, operated solely by Petronas (80%) with Paradise Oil Company (Staatsolie, 20%) — ExxonMobil exited Block 52 in late 2024. No edit needed; flagging so the Block 58/GranMorgu framing is not carried into the record.",
-    "severity": "low",
-    "suggested_action": "Confirm GEM's Block 52 / Sloanea attribution is retained; do not associate this FLNG with Block 58 / GranMorgu / TotalEnergies.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "discovery_dedup_already_in_gem_due_update",
-    "terminal_id": "T100001048294",
-    "unit_id": "G100001055425",
-    "terminal_name": "Petronas FLNG Terminal",
-    "issue": "The Block 52 Sloanea-1 FLNG (operator Petronas ~80%, with Staatsolie) is ALREADY this GEM record (proposed, floating, offshore export). NOT a discovery. However, there is fresh material: Staatsolie declared Sloanea-1 a commercial gas discovery and Petronas is filing a development plan that includes a floating LNG facility ('a first in the region'); FID targeted 2H-2026, first gas ~2030.",
-    "severity": "medium",
-    "suggested_action": "Route to UPDATE, not Discovery. Refresh the existing Petronas FLNG record with the Block 52 Sloanea concept-select, FID-2H2026 and first-gas-2030 milestones (verify URLs + capacity before staging). Consider naming 'Sloanea' / 'Block 52' as OtherNames/LocalNames.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "discovery_dedup_already_in_gem",
     "terminal_id": "T100000131139",
     "unit_id": "G100002113900",
     "terminal_name": "Firebird LNG Terminal",
-    "issue": "Firebird LNG (Port of Nickerie / Nieuw Nickerie, ~2.7 mtpa, proposed export) already in GEM. Checked and deduped; no new info surfaced this sweep. NOT a discovery.",
+    "issue": "No new verifiable progress found for Firebird LNG (Port of Nickerie) in the last 12 months beyond what the existing GEM researcher note already captures (Port of Rotterdam Authority and Van Oord withdrawals; Surinamese/Dutch press doubting realization; NV Havenbeheer director still claiming it proceeds). 2024-target FID appears not met; project may warrant 'shelved' but GEM deliberately holds 'proposed' on the strength of continued 2025 mentions. Re-verified current; no field change.",
     "severity": "low",
-    "suggested_action": "No action.",
+    "suggested_action": "Leave Status 'proposed' as the researcher chose; revisit for possible 'shelved' if no concrete FID/permitting progress surfaces by the next batch. No edit staged.",
     "researcher_initials": "AI-draft"
   }
 ]

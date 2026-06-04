@@ -1,12 +1,72 @@
 [
   {
-    "category": "no_change",
-    "terminal_id": "T100000130882",
-    "unit_id": "G100002088200",
-    "terminal_name": "Myanmar LNG projects (MCV/Thaketa, Kanbauk, Mee Laung Gyaing, Rakhine, Sittwe, Ahlone, Thilawa)",
-    "issue": "Reviewed all 7 Myanmar terminals (MCV/Thaketa mothballed-actual; Kanbauk FSRU, Rakhine, Sittwe, Ahlone/Yangon, Thilawa cancelled; Mee Laung Gyaing shelved). Post-coup trade press (Frontier Myanmar, Irrawaddy, OGJ, Offshore Energy) confirms the LNG-to-power FSU left Yangon March 2023 and Thaketa/Thilawa power stations idle since 2021; TotalEnergies exited (Kanbauk); no project revivals. All current GEM statuses, owners/parents and stop/cancel years consistent with available evidence. No field changes.",
+    "category": "ref_fill_gap",
+    "terminal_id": "T100000130878",
+    "unit_id": "G100002087800",
+    "terminal_name": "Ahlone LNG Terminal",
+    "issue": "Status [ref], ShelvedYear [ref], CancelledYear [ref], StopYear [ref] all blank. Status='cancelled' with Substatus='inferred 4 y' is a GEM EDITORIAL INFERENCE from project inactivity (Italian-Thai/TTCL Ahlone PPA signed Jan 2021, no movement since; presumed cancelled). No external source explicitly declares cancellation or a specific shelved/cancelled/stop year, so the year cells (Shelved 2022 / Cancelled 2024 / Stop 2024) cannot be honestly cited. The two reusable contextual sources (frontiermyanmar.net 'LNG projects delayed not dead', mmtimes Ahlone) now FAIL url_verifier (HTTP 403). Did not fabricate a citation.",
     "severity": "low",
-    "suggested_action": "None — verified current. Sources scarce; continue passive monitoring for any post-coup project revival.",
+    "suggested_action": "Leave [ref] cells blank or have a reviewer add an editorial-inference note; these are inferred-status determinations, not externally documented dates. Consider a researcher_notes line explaining the inference basis instead of a [ref].",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ref_fill_gap",
+    "terminal_id": "T100000130907",
+    "unit_id": "G100002090700",
+    "terminal_name": "Kanbauk FSRU",
+    "issue": "Status [ref], ShelvedYear [ref], CancelledYear [ref], StopYear [ref] blank. Status='cancelled' / Substatus='inferred 4 y' is a GEM inference (TotalEnergies/Siemens left Myanmar; ResearcherNotes='Total left Myanmar'). TotalEnergies announced full Myanmar withdrawal effective ~July 2022, which supports project demise but the existing Owner/Location refs (mmtimes negotiations article, totalenergies corporate page) are the only leads and the inferred shelved/cancel/stop years (2021/2023/2023) are not pinned by a dated external cancellation notice. No honest [ref] available.",
+    "severity": "low",
+    "suggested_action": "Treat as inferred-status; reviewer may cite TotalEnergies' 2022 Myanmar-exit announcement for the project's effective end if a verified primary URL is located. Do not auto-fill the year cells.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ref_fill_gap",
+    "terminal_id": "T100000130880",
+    "unit_id": "G100002088000",
+    "terminal_name": "Mee Laung Gyaing FSRU",
+    "issue": "Status [ref], ProposalDate [ref], ShelvedYear [ref], StopYear [ref] blank. Status='shelved' / Substatus='inferred 2 y'. ProposalYear=2020 is supported by the existing Owner/Location refs (elevenmyanmar 2020 China-Myanmar Economic Corridor inclusion). Shelved/Stop year (2022) is a GEM inference. dmsprojects.net aggregator (url_verifier PASS) lists generic status 'On Going' but requires login for the 21 status updates, so it cannot confirm a year. No external dated shelving notice located.",
+    "severity": "low",
+    "suggested_action": "ProposalDate [ref] could be filled with the existing elevenmyanmar.com China-Myanmar Economic Corridor URL if a reviewer confirms it states a 2020 proposal; year-of-shelving cells should stay as inference. Not auto-filling to avoid an unverified citation.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ref_fill_gap",
+    "terminal_id": "T100000130702",
+    "unit_id": "G100002070200",
+    "terminal_name": "Sittwe LNG Terminal",
+    "issue": "Status [ref], ShelvedYear [ref], CancelledYear [ref], StopYear [ref] blank. Status='cancelled' / 'inferred 4 y'. Petronet LNG's proposed Sittwe terminal (2018 India MoU) stalled; ResearcherNotes mention 2023 pipeline-revival talk. Existing Owner/Proposal ref (hydrocarbons-technology) covers the 2018 proposal only; no external source documents the inferred cancellation or the 2021/2023 shelved/stop years.",
+    "severity": "low",
+    "suggested_action": "Keep as inferred-status. No verified [ref] for the year cells.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ref_fill_gap",
+    "terminal_id": "T100000131065",
+    "unit_id": "G100002106500",
+    "terminal_name": "Thilawa LNG Terminal",
+    "issue": "Status [ref], ShelvedYear [ref], CancelledYear [ref], StopYear [ref] blank. Status='cancelled' / 'inferred 4 y'. Japanese trio (Eden/Marubeni/Mitsui/Sumitomo) project; 'no updates in over four years, presumed cancelled as of Jul 2024.' Existing Owner ref (offshore-energy.biz) covers the original 2019 proposal; the inferred shelved/cancel/stop years (2022/2024/2024) have no dated external cancellation source.",
+    "severity": "low",
+    "suggested_action": "Keep as inferred-status; no honest [ref] for the year cells.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130880",
+    "unit_id": "G100002088000",
+    "terminal_name": "Mee Laung Gyaing FSRU",
+    "issue": "Dev-pipeline status check (shelved). No concrete construction or revival step verified in the last 12-24 months. A market-data aggregator projection ('construction likely 2026, COD 2027') and Supreme Group's own project page (url_verifier FAIL HTTP 000) are not corroborated by any dated primary news event; dmsprojects.net shows only generic 'On Going' behind a login wall. GEM 'shelved' / 'inferred 2 y' remains appropriate. No status change.",
+    "severity": "low",
+    "suggested_action": "No edit. Re-check next sweep if a verified construction-start announcement appears (watch Supreme Group / Zhefu / Yunnan Energy Investment). fetch_timeline endpoint is down, so logging as qa note rather than a timeline/Status edit.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change",
+    "terminal_id": "T100000130905",
+    "unit_id": "G100002090500",
+    "terminal_name": "Rakhine LNG Terminal",
+    "issue": "Not on worklist (all year/status refs already populated with narinjara.com source). Reviewed in passing: Status='cancelled' (confirmed) with full ref set; no action needed.",
+    "severity": "low",
+    "suggested_action": "None. Row stays untouched per standard-tier scope.",
     "researcher_initials": "AI-draft"
   }
 ]

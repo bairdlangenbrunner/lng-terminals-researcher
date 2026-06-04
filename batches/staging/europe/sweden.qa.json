@@ -1,42 +1,22 @@
 [
   {
-    "category": "no_change",
-    "terminal_id": "T100000130687",
-    "unit_id": "G100002068700",
-    "terminal_name": "Lysekil LNG Terminal",
-    "issue": "Small-scale Gasum import terminal (0.2 mtpa, operating since 2014). No 2024-26 news indicating status/capacity/ownership change. Matches GEM (operating, Gasum). Verified current.",
-    "severity": "low",
-    "suggested_action": "None — stable.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "no_change",
-    "terminal_id": "T100000130539",
-    "unit_id": "G100002053900",
-    "terminal_name": "Brunnsviksholme LNG Terminal",
-    "issue": "Small-scale Linde Gas (AGA) import terminal at Nynashamn (0.4 mtpa, operating since 2011). No 2024-26 change signal. Matches GEM (operating, Linde Gas AB).",
-    "severity": "low",
-    "suggested_action": "None — stable.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "no_change",
-    "terminal_id": "T100000130663",
-    "unit_id": "G100002066300",
-    "terminal_name": "Gothenburg LNG Terminal",
-    "issue": "Cancelled (Swedegas/Vopak; confirmed, CancelledYear 2019). No 2024-26 revival signal. Matches GEM.",
-    "severity": "low",
-    "suggested_action": "None — stable.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "no_change",
+    "category": "citation",
     "terminal_id": "T100000130732",
     "unit_id": "G100002073200",
     "terminal_name": "Gävle LNG Terminal",
-    "issue": "Cancelled (Gasum; inferred 4y, CancelledYear 2018). No 2024-26 revival signal. Matches GEM.",
+    "issue": "Four worklist [ref]-fill targets (Status, ShelvedYear=2016, CancelledYear=2018, StopYear=2018) cannot be responsibly filled. The status/years are INFERRED from dormancy (Substatus='inferred 4 y', ShelvedCancelledStatusType='inferred'), not source-declared: no announcement of a 2016 shelving or 2018 cancellation exists. Per methodology, an inferred shelved/cancelled entry may re-use the latest active-entry source, but that on-row source — the GIE LNG database (https://gie.eu/index.php/gie-publications/databases/lng-database) — now returns HTTP 404 (FAIL on url_verifier). The original gem.wiki proposal-era citation (investingavleborg.se 2014 '600 million SEK' article) has link-rotted: it 302-redirects to a generic regiongavleborg.se/invest landing page and FAILS url_verifier on every article-specific token (LNG, Skangass, '600 million'). No live source verbatim-names Gävle + the cancellation. Per red->blank convention, all four [ref]s left blank rather than forcing a weak/dead citation.",
     "severity": "low",
-    "suggested_action": "None — stable.",
+    "suggested_action": "Leave all four [ref]s blank — inferred-from-dormancy status with no source-declared cancellation event; do not fabricate a cancellation citation. If a live re-usable source for the active-era proposal is found (e.g. an archived Skangass/Gasum 2014 announcement that PASSES url_verifier), it may be re-used for the inferred status per the methodology FAQ.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_health",
+    "terminal_id": "T100000130732",
+    "unit_id": "G100002073200",
+    "terminal_name": "Gävle LNG Terminal",
+    "issue": "Link rot on the existing on-row datasource: 'https://gie.eu/index.php/gie-publications/databases/lng-database' is cited on FacilityType [ref], Owner [ref], and ProposalDate [ref] but now returns HTTP 404 (FAIL on url_verifier, token 'LNG'). These three [ref] columns are off the standard-tier worklist so were NOT edited this pass, but the dead URL is flagged for a follow-on Update/QC batch.",
+    "severity": "low",
+    "suggested_action": "In a follow-on batch, replace the dead GIE LNG database URL on FacilityType/Owner/ProposalDate [ref] with a current GIE/ALSI LNG database deep link or an archived snapshot that PASSES url_verifier; or substitute a live 2014 proposal source for owner/proposal-year support.",
     "researcher_initials": "AI-draft"
   }
 ]

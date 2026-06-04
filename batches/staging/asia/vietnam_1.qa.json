@@ -1,0 +1,122 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100001057484",
+    "unit_id": "G100001065714",
+    "terminal_name": "Quynh Lap LNG Terminal",
+    "issue": "GEM Status=proposed, but the SK Innovation / PV Power / NASU consortium held a groundbreaking ceremony for the $2.3bn Quynh Lap LNG project (1.5 GW CCGT + LNG terminal) on 18 May 2026 in Nghe An; COD targeted Dec 2030. This is a proposed -> construction transition.",
+    "severity": "high",
+    "suggested_action": "Verify groundbreaking and stage a Status change to 'construction' (ConstructionYear 2026) once the timeline endpoint is reachable. Sources: lngindustry.com 20052026, offshore-energy.biz '$2.3 billion LNG project breaks ground in Southeast Asia', vir.com.vn d152884. NOT staged as a Status field edit per sweep rule (fetch_timeline down).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000131073",
+    "unit_id": "G100002107300",
+    "terminal_name": "Thai Binh FSRU",
+    "issue": "GEM Status=proposed. The associated 1.5 GW Thai Binh LNG power plant (Tokyo Gas / Kyuden / Truong Thanh Vietnam, SPV Thai Binh LNG Power JSC) held a groundbreaking ceremony in October 2025 (held under Hung Yen province following provincial merger). The FSRU is the regas component of that LNG-to-power project; power-plant construction start may warrant a status review of the FSRU entry.",
+    "severity": "medium",
+    "suggested_action": "Confirm whether the FSRU/regas terminal scope itself has reached construction or remains a separate proposed component; if construction, route a Status change via the timeline workflow when the endpoint is up. Source: theinvestor.vn d16005 (late-2025 groundbreaking) and Nhan Dan / vietnam.vn Oct-2025 ceremony reports.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "capacity",
+    "terminal_id": "T100000130323",
+    "unit_id": "G100002032300",
+    "terminal_name": "Thi Vai LNG Terminal",
+    "issue": "PV Gas completed a regasification-capacity upgrade of the operating Thi Vai terminal in April 2026, raising throughput from a designed ~171 tph to ~288 tph (~9.5 million m3/day), and is investing to raise nameplate from 1 mtpa to 3 mtpa by 2029 (Phase 2). The 288 figure is an optimized/peak throughput, not a nameplate change to GEM's CapacityinMtpa.",
+    "severity": "low",
+    "suggested_action": "Do NOT bump CapacityinMtpa on the upgrade figure (peak/optimized, not nameplate). Note the April-2026 throughput upgrade in the wiki. Confirm Phase 2 nameplate trajectory (1 -> 3 mtpa by 2029) at next exhaustive pass. Source: lngindustry.com regasification 09042026; theinvestor.vn d18819.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ref_fill_gap",
+    "terminal_id": "T100000131041",
+    "unit_id": "G100002104100",
+    "terminal_name": "South East LNG Terminal",
+    "issue": "Blank Status/CancelledYear/StopYear [ref] cells (worklist [ref]-fill targets). The 'cancelled (inferred 4 y)' status rests on GEM's editorial inference that the project was excluded from Power Development Plan 8 as of mid-2023 (gem.wiki notes 'not included in PDP8 ... presumed cancelled'); there is no clean per-terminal cancellation source. The PDP8 full-text URL on chinhphu.vn did not pass url_verifier (gated/uncrawlable).",
+    "severity": "low",
+    "suggested_action": "Leave refs blank rather than backfill a weak/non-specific citation. If a ref is desired, cite the PDP8-exclusion inference explicitly in researcher_notes rather than attaching an unsupportive URL. No orphan/weak ref staged.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ref_fill_gap",
+    "terminal_id": "T100000130991",
+    "unit_id": "G100002099100",
+    "terminal_name": "South West FSRU",
+    "issue": "Blank Status/CancelledYear/StopYear [ref] cells. Same basis as South East: 'cancelled (inferred 4 y)' is a PDP8-exclusion inference (jccp.or.jp 2018 MOIT master plan is the only nearby citation and does not support a 2023 cancellation). No clean per-terminal source found.",
+    "severity": "low",
+    "suggested_action": "Leave refs blank; document the cancellation inference in researcher_notes. No weak ref staged.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ref_fill_gap",
+    "terminal_id": "T100000131074",
+    "unit_id": "G100002107400",
+    "terminal_name": "Tien Giang LNG Terminal",
+    "issue": "Blank Status/CancelledYear/StopYear [ref] cells. 'cancelled (inferred 4 y)' rests on exclusion from PDP8 as of July 2023 (gem.wiki); cited basis is the chinhphu.vn PDP8 full text, which did not pass url_verifier. No clean per-terminal cancellation source.",
+    "severity": "low",
+    "suggested_action": "Leave refs blank; document PDP8-exclusion inference in researcher_notes. No weak ref staged.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ref_fill_gap",
+    "terminal_id": "T100000131076",
+    "unit_id": "G100002107600",
+    "terminal_name": "Tien Lang FSRU",
+    "issue": "Blank Status/ShelvedYear/StopYear [ref] cells. ExxonMobil/Chubu/TEPCO Tien Lang FSRU is 'cancelled (inferred 4 y)'; no current per-terminal cancellation source located (project long dormant; not in revised PDP8). ExxonMobil reportedly disengaged from Vietnam LNG plans years ago.",
+    "severity": "low",
+    "suggested_action": "Leave refs blank; document dormancy/PDP8-exclusion inference in researcher_notes. No weak ref staged.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ref_fill_gap",
+    "terminal_id": "T100000131060",
+    "unit_id": "G100002106000",
+    "terminal_name": "Vung Ang LNG Terminal",
+    "issue": "GEM Status=proposed (Substatus 'actual') with CancelledYear=2023 and StopYear=2023 populated but blank [ref] cells — internally inconsistent (proposed yet carrying cancelled/stop years). gem.wiki states the project is 'presumed to be cancelled' (LNG power station listed among PDP8 projects 'behind schedule or cannot be implemented'); recent 2024-2025 PV Power proposals to revive a Vung Ang III LNG center exist but remain provincial proposals.",
+    "severity": "medium",
+    "suggested_action": "Resolve the Status vs CancelledYear/StopYear inconsistency: either clear the 2023 cancelled/stop years (if treating as still-proposed/revived) or move Status to cancelled. No clean ref for the 2023 cancellation years was found; leave [ref] blank pending an editorial decision. theinvestor.vn d9081 (revival proposal) is the freshest lead.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ref_fill_gap",
+    "terminal_id": "T100000130903",
+    "unit_id": "G100002090300",
+    "terminal_name": "Quang Nam LNG Terminal",
+    "issue": "Blank ShelvedYear [ref] (ShelvedYear=2023). CancelledYear/Stop refs already cite Decision 768 PDF (vepg.vn, verified accessible). The 2023 ShelvedYear pre-dates the 2025 Decision 768 cancellation, so 768 does not directly support the shelve year.",
+    "severity": "low",
+    "suggested_action": "Leave ShelvedYear [ref] blank unless a 2023-dated source for the shelving is found; the 2025 Decision 768 PDF supports CancelledYear=2025 only. No weak ref staged.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "verification",
+    "terminal_id": "T100001057476",
+    "unit_id": "G100001065704",
+    "terminal_name": "Quang Ninh LNG Terminal",
+    "issue": "Re-verified during sweep: Status=proposed remains correct. Marubeni/Tokyo Gas/PetroVietnam JV (Quang Ninh LNG Power JSC). As of early-mid 2025 site clearance was targeted for completion May 2025 and construction is expected to start ~2027 (COD 2027-2029); no groundbreaking yet. No field change.",
+    "severity": "low",
+    "suggested_action": "No edit. Blue re-verify mark for the terminal is sufficient. Watch for a 2026-2027 construction start.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "verification",
+    "terminal_id": "T100000131175",
+    "unit_id": "G100002117500",
+    "terminal_name": "Nghi Son LNG Terminal",
+    "issue": "Re-verified: Status=proposed correct. Thanh Hoa restarted the investor-selection process for the $2.24bn Nghi Son LNG power plant (1.5 GW + 1.2 mtpa terminal) in 2026 after a ~6-month suspension; shortlisted bidders include SOVICO-JERA, PV Power, T&T Group; COD targeted before 2030. No award/owner confirmed, so Owner remains blank. No field change.",
+    "severity": "low",
+    "suggested_action": "No edit. Watch for an investor award (would populate Owner/Parent). Source: vietnamnews.vn '1651194'.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "verification",
+    "terminal_id": "T100001049935",
+    "unit_id": "G100001057589",
+    "terminal_name": "Stavian Chan May LNG Terminal",
+    "issue": "Re-verified: Status=proposed correct. Stavian Group + Wealth Power (VN-LNG) MOU of Sept 2024 remains the latest concrete step; no FID/construction. Distinct from the dormant legacy Chan May LNG Terminal (existing researcher note confirms the distinction). No field change.",
+    "severity": "low",
+    "suggested_action": "No edit. Monitor for definitive agreements / capacity disclosure.",
+    "researcher_initials": "AI-draft"
+  }
+]

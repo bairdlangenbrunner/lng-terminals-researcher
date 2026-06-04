@@ -1,0 +1,22 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000131123",
+    "unit_id": "G100002112301",
+    "terminal_name": "Eni Congo FLNG II Terminal",
+    "issue": "GEM lists this (Eni Congo LNG Phase 2 / Nguya FLNG, 2.4 mtpa) as 'construction'. Eni announced start-up of Congo LNG Phase 2 in December 2025 -- about six months ahead of schedule -- with the Nguya FLNG receiving gas and the goal of first LNG cargo in early 2026, bringing total Congo LNG project output to 3.0 mtpa. Status likely now 'operating' (or at minimum commissioning/start-up). Routed to QA note rather than a staged timeline edit because fetch_timeline is DOWN this batch. Sources: Eni press release 03-Dec-2025; LNG Industry; worldoil 04-Dec-2025.",
+    "severity": "medium",
+    "suggested_action": "In a follow-on Update batch, pull the existing status timeline (fetch_timeline) and update Status construction->operating with ActualStartYear 2025/2026 per first-cargo timing; cite https://www.eni.com/en-IT/media/press-release/2025/12/pr-eni-launches-phase-2-congo-lng.html and https://www.worldoil.com/news/2025/12/4/congo-accelerates-upstream-expansion-as-lng-phase-2-comes-online/. Confirm whether first cargo (early 2026) vs gas-in (Dec 2025) is GEM's 'operating' trigger.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "coverage_gap",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Banga Kayo LNG Terminal (Wing Wah / SNPC)",
+    "issue": "Onshore associated-gas valorisation plant on the Banga-Kayo field (Tchamba Nzassi, near Pointe-Noire), operated by Wing Wah E&P with SNPC, inaugurated 20-Nov-2025, producing LNG (plus LPG/propane/butane/dry gas) for domestic and international markets. NOT present in the GEM LNG terminals tracker (the only Congo rows are the two Eni FLNG terminals). GEM has an upstream 'Banga Kayo (Phase 1) Oil and Gas Field' wiki page but that is the field, not the LNG plant. Staged this batch as a new_terminal (export, operating).",
+    "severity": "medium",
+    "suggested_action": "Review the staged republic-of-the-congo.disc.newterminals.json record; confirm the LNG-specific liquefaction/export share (vs. a primarily LPG plant) before fixing a firm Capacity; link to the existing upstream field page via Source/AssociatedTerminals.",
+    "researcher_initials": "AI-draft"
+  }
+]

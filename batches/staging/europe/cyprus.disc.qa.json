@@ -1,0 +1,32 @@
+[
+  {
+    "category": "no_change",
+    "terminal_id": "T100000130432",
+    "unit_id": "G100002043200",
+    "terminal_name": "Cyprus FSRU",
+    "issue": "DEDUP (not a discovery): the 'Cynergy LNG Import Terminal' at Vasiliko Port that surfaces in trade/project databases (e.g. NS Energy) is NOT a separate terminal — it is an earlier brand name for THIS project. The EBRD board report for the 'Cyprus FSRU' (ebrd.com project 50634, primary DFI source) names the project 'CYnergy' and ties it to ETYFA, the FSRU, and Vasilikos (verified by curl+pdftotext: 'CYnergy' x2, 'ETYFA' x26, 'FSRU' x45, 'Vasilikos' x30). All aliases — Cynergy / CyprusGas2EU / ETYFA / Vasilikos / Vassiliko / Prometheas (prev. Galea) — resolve to TerminalID T100000130432. No new terminal.",
+    "severity": "low",
+    "suggested_action": "No action. Coverage confirmed comprehensive; 'Cynergy' / 'CyprusGas2EU' are aliases of the existing Cyprus FSRU. Consider adding 'Cynergy LNG Import Terminal' and 'CyprusGas2EU' to the OtherNames field of T100000130432 on a future Update batch to improve alias dedup. EBRD board report PDF (https://www.ebrd.com/content/dam/ebrd_dxp/documents/project/50634/cyprus-fsru-board-report.pdf) verified for these tokens via curl+pdftotext.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130432",
+    "unit_id": "G100002043200",
+    "terminal_name": "Cyprus FSRU",
+    "issue": "POSSIBLE STALE STATUS/TIMELINE (flag only — no edit staged; fetch_timeline endpoint is DOWN). GEM has this as 'construction'. As of early-2026 reporting the project is stalled and may warrant a substatus/timeline review: FSRU Prometheas (prev. Galea) was delivered 2024-12-09 but remains moored offshore Malaysia (costing ~EUR 470k/month) and HAS NOT received FSRU certification (Lloyd's Register issued only an LNGC certificate, 12 outstanding works pending pier completion); the Vasilikos jetty/land terminal is only ~45-50% complete; the project is under EPPO (European Public Prosecutor's Office) investigation for suspected fraud/corruption; Cyprus is returning ~EUR 67m of EU funding; the end-2025 commissioning deadline has slipped, with a new completion timetable due March 2026. Type ('import', 'construction') still appears correct — this is a timeline/substatus detail review, not a lifecycle reclassification.",
+    "severity": "medium",
+    "suggested_action": "Route to an Update batch: pull the existing status timeline (fetch_timeline — currently DOWN, so defer the actual timeline edit) and re-verify the construction-phase substatus and anchor years against 2025-2026 reporting. Do NOT stage a blind timeline edit. Anchor: https://cyprus-mail.com/2026/03/10/taxpayers-charged-e350-million-a-year-over-stalled-lng-project (verified via url_verifier.py, tokens Vasiliko/LNG → PASS).",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "no_change",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Aphrodite / Cronos East-Med gas export (Block 12 / Block 6)",
+    "issue": "OUT-OF-SCOPE for a Cyprus LNG terminal (documented so the gap is not re-chased): Cyprus's prominent East-Med gas export developments — Aphrodite (Chevron 35% / Shell 35% / NewMed 30%, Block 12; updated Development & Production Plan approved 2025-02-14) and Cronos (Eni/TotalEnergies, Block 6) — do NOT involve any LNG liquefaction terminal physically in Cyprus or Cypriot waters. Aphrodite uses a floating PRODUCTION unit (FPU, ~800 MMcf/d) above the reservoir feeding raw gas to Egypt via subsea pipeline; Cronos routes gas to the Zohr-area facilities and then to the DAMIETTA LNG plant in Egypt for liquefaction/export. The liquefaction terminal is in Egypt, not Cyprus. (A loose 'FLNG' phrasing appears in some secondary coverage, but the authoritative DPP describes an FPU + pipeline-to-Egypt, not in-Cyprus liquefaction.)",
+    "severity": "low",
+    "suggested_action": "No Cyprus terminal to add. Any LNG-terminal capture of this gas belongs to EGYPT's records (Damietta), not Cyprus. Anchor: https://www.offshore-mag.com/field-development/news/55268510/chevron-agreements-signed-for-two-deepwater-gas-projects-offshore-cyprus-both-exporting-to-egypt (verified via url_verifier.py, tokens Cyprus/Egypt/Damietta → PASS).",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  }
+]

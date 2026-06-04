@@ -1,0 +1,22 @@
+[
+  {
+    "category": "discovery_dedup",
+    "terminal_id": "T100001061417",
+    "unit_id": "G100001070365",
+    "terminal_name": "Puerto Cortés LNG Terminal",
+    "issue": "Discovery sweep of Honduras (tracker-countries-only round) confirms GEM's single Honduras LNG terminal already captures all real LNG terminal activity in the country. The Brassavola LNG-to-power initiative (Genesis Energias, Puerto Cortes Caribbean coast, FSU Bilbao Knutsen on an 18-year charter, ~6 Centrica cargoes/yr from 2026, supplying the 240 MW Brassavola CCGT) maps 1:1 to this row. No second/distinct import or export terminal was found; the Pacific-coast / Amapala / Gulf of Fonseca searches returned no Honduras LNG terminal. Two adjacent IDB Invest 'LNG terminal' hits in search results are out of scope (Costa Norte = Panama; Energia del Pacifico/Acajutla = El Salvador).",
+    "severity": "low",
+    "suggested_action": "No discovery action. Confirm via UPDATE workflow that GEM reflects the latest Puerto Cortes status: FSU Bilbao Knutsen reported ARRIVED at Puerto Cortes (~Sep 2025) and terminal/regas reported targeting completion by end of Q1 2026 — i.e. the 'construction' status and start year may warrant a status-timeline refresh (status_timeline category; fetch_timeline is DOWN this round). Also verify FSU vessel name + IMO are recorded for the FSRU sync rule (Bilbao Knutsen, Knutsen Group; converted by HD Hyundai Marine Solution; ~138,000 m3).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100001061417",
+    "unit_id": "G100001070365",
+    "terminal_name": "Puerto Cortés LNG Terminal",
+    "issue": "Trade press (LNG Prime 'Knutsen's LNG FSU arrives in Honduras'; Riviera; gnlglobal.com) reports the FSU Bilbao Knutsen has physically arrived at Puerto Cortes and that the FSRU/onshore regas terminal targets completion by end of Q1 2026, with a 15-year Centrica supply contract commencing 2026. GEM currently lists Status=construction with no FSRU vessel fields populated in the export I reviewed.",
+    "severity": "medium",
+    "suggested_action": "Route to UPDATE batch: re-verify construction->near-operating status and start year; populate FSRU/FSU vessel identity (FloatingVesselName=Bilbao Knutsen, IMO to be confirmed) and run fsru_sync_check.py per the FSRU sync rule. fetch_timeline is DOWN this round so no timeline edit is staged here.",
+    "researcher_initials": "AI-draft"
+  }
+]

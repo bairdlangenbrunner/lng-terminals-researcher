@@ -1,52 +1,82 @@
 [
   {
-    "category": "researcher_note_stale",
-    "terminal_id": "T100000130272",
-    "unit_id": "G100002027200",
-    "terminal_name": "Summit FSRU",
-    "issue": "GEM ResearcherNotesUnit says 'HF temporarily idle due to damage, check back at end of update' (Cyclone Remal, May 2024). This is now resolved: the FSRU Summit LNG returned from Seatrium (Singapore) repairs and resumed gas sendout to the national grid by Sept 2024; The Business Standard (1 Dec 2025) reports the terminal completed its 250th ship-to-ship operation and supplied ~13% of national gas demand in FY2024-25. Status correctly remains 'operating'. No field change needed; the idle-damage note is stale and can be cleared on next review.",
-    "severity": "low",
-    "suggested_action": "Clear/update the 'temporarily idle due to damage' researcher note; terminal is operating normally as of Dec 2025. https://lngprime.com/asia/summits-bangladesh-fsru-terminal-in-250th-sts-lng-op/170460/",
-    "researcher_initials": "AI-draft"
-  },
-  {
     "category": "status_timeline",
     "terminal_id": "T100000130862",
     "unit_id": "G100002086200",
     "terminal_name": "Payra FSRU",
-    "issue": "GEM lists Payra FSRU as 'proposed' (sponsor Excelerate Energy, LatestPlannedStartYear 2028). The underlying Excelerate term-sheet/agreement to build a 4.5 mtpa FSRU near Payra (with a ~60-70km subsea RLNG pipeline to Khulna), signed Nov 2023, was TERMINATED by Petrobangla in October 2024 (one week after the Summit third-FSRU cancellation) as the interim government scrapped LNG deals signed under the prior government's special law. With the sponsoring agreement scrapped and no replacement developer, the active 'proposed' status looks stale — likely shelved/dormant. Per sweep rules a status change is flagged here, NOT staged as a Status field edit.",
-    "severity": "medium",
-    "suggested_action": "Review Payra FSRU status (proposed -> likely shelved). Excelerate term-sheet scrapped by Petrobangla Oct 2024. https://www.thedailystar.net/business/news/deal-2nd-excelerate-fsru-scrapped-3729446 ; https://thefinancialexpress.com.bd/economy/excelerate-bid-for-fsru-near-payra-seaport-fails",
+    "issue": "GEM Status = proposed (LastUpdated 2025-08-19), but the 2023-revived Payra FSRU term-sheet (Excelerate Energy, ~4.5 mtpa FSRU + 60-70km subsea pipeline to Khulna) was scrapped by Petrobangla / the interim govt in October 2024 — the non-binding term-sheet was directed cancelled and was set to auto-expire 2024-11-07. The interim govt declined to ink fresh deals under the Quick Enhancement of Electricity & Energy Supply (Special Provisions) Act. Strong case the unit should move proposed -> cancelled (or shelved).",
+    "severity": "high",
+    "suggested_action": "Verify status and route a Status timeline edit to a follow-on Update batch once fetch_timeline endpoint is back. Suggested CancelledYear=2024. Sources (PASS): https://gasoutlook.com/analysis/bangladeshi-state-run-petrobangla-scraps-lng-deals-sources/ . NOTE GEM already carries ShelvedYear=2022/StopYear=2022 from the earlier 2017-era proposal — timeline may need full re-walk to capture 2023 revival then 2024 cancellation.",
     "researcher_initials": "AI-draft"
   },
   {
     "category": "status_timeline",
-    "terminal_id": "T100000131051",
-    "unit_id": "G100002105100",
-    "terminal_name": "Summit Matarbari FSRU",
-    "issue": "GEM has this Summit offshore-Moheshkhali FSRU as 'cancelled (confirmed)' 2024. Corroborated: the Bangladesh govt cancelled the Terminal Use / Implementation Agreements with Summit (SLNG II) for the third FSRU on 7 Oct 2024; Petrobangla's 14 Jan 2025 notice cited a non-compliant/late performance bond. HOWEVER litigation is ongoing: the Supreme Court Appellate Division stayed the re-tender process pending Summit's appeal, and Summit is pursuing reinstatement (claims ~$20M sunk). Cancelled status still stands, but flag the live legal dispute so a future revival isn't missed.",
-    "severity": "low",
-    "suggested_action": "No status change now (cancellation stands); monitor the Supreme Court appeal / re-tender stay for possible revival. https://www.tbsnews.net/bangladesh/court/sc-stays-re-tender-process-3rd-fsru-following-summits-appeal-1097061 ; https://summitpowerinternational.com/summit-group-urges-government-bangladesh-reverse-decision-terminate-fsru-project",
+    "terminal_id": "T100001082545",
+    "unit_id": "G100001092917",
+    "terminal_name": "Summit Matarbari LNG Terminal",
+    "issue": "GEM Status = proposed (LastUpdated 2026-02-04). Summit's Matarbari land-based / second-FSRU ambitions tied to the Special-Provisions-Act process were cancelled by Petrobangla in Oct 2024; Summit is contesting via judicial review. As of 2025-2026 the Matarbari land-based terminal is being re-scoped by Petrobangla (Tokyo Gas feasibility study; no open tender or G2G deal issued yet), so Summit's specific proposed project is effectively shelved/cancelled rather than active.",
+    "severity": "medium",
+    "suggested_action": "Verify whether GEM's 'Summit Matarbari LNG Terminal' record tracks Summit's specific (now-cancelled) proposal vs the generic Petrobangla land-based terminal. If the former, route proposed -> shelved/cancelled to a follow-on Update batch. Sources (PASS): https://gasoutlook.com/analysis/bangladeshi-state-run-petrobangla-scraps-lng-deals-sources/ , https://energynews.oedigital.com/oil-gas/2024/10/09/bangladeshs-rpgcl-cancels-shortlist-for-matarbari-lng-terminal-strategy , https://www.offshore-mag.com/vessels/news/55234613/summit-challenges-cancellation-of-third-bangladesh-fsru",
     "researcher_initials": "AI-draft"
   },
   {
-    "category": "no_change_verified",
-    "terminal_id": "T100000130270",
-    "unit_id": "G100002027000",
-    "terminal_name": "Moheshkhali Floating LNG Terminal",
-    "issue": "Re-verified operating FSRU (vessel Excelerate Excellence, owner Excelerate Energy, 4.5 mtpa). The Jan 2024 expansion raised sendout to 600 mmcfd (=4.5 mtpa = 0.6 bcf/d) after a ~2.5-month overhaul; GEM's 4.5 mtpa already reflects this, so no capacity change. Both Moheshkhali FSRUs underwent alternating scheduled maintenance in winter 2023-24 (temporary, not a status change) and are operating normally as of late 2025.",
-    "severity": "low",
-    "suggested_action": "No change; capacity (4.5 mtpa) and operating status confirmed current. https://www.tbsnews.net/bangladesh/energy/excelerate-plans-increase-maheshkhali-lng-facility-26-284953 ; https://excelerateenergy.com/projects/moheshkhali-floating-lng/",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "context_update",
+    "category": "data_consistency",
     "terminal_id": "T100000130614",
     "unit_id": "G100002061400",
     "terminal_name": "RPGC Matarbari LNG Terminal",
-    "issue": "Context for the Matarbari land-based 7.5 mtpa terminal lineage (RPGC original proposal, cancelled 2025; re-proposal split into 'Summit Matarbari LNG Terminal'). New in 2025/2026: Tokyo Gas completed a full feasibility study for Bangladesh's first land-based LNG terminal at Matarbari (7.5 mtpa, BOOT model, 20-yr), preparing bid packages/RfPs, but Petrobangla has not yet issued an open tender or started G2G talks and land-acquisition (CPGCBL 'ash land') payment issues remain unresolved. GEM records here are very fresh (Summit Matarbari LNG Terminal LastUpdated 2026-02-04); no field edit, captured as wiki context.",
+    "issue": "GEM CancelledYear/StopYear = 2025, but the RPGCL bidder short-listing for the 7.5 mtpa land-based Matarbari terminal was cancelled in October 2024 (OE Digital, 2024-10-09). The 2025 year may reflect a later formal closure/separate event, or may be off by a year.",
     "severity": "low",
-    "suggested_action": "No edit; note Tokyo Gas feasibility-study completion as background for the Matarbari land-based proposal cluster. https://thefinancialexpress.com.bd/home/tokyo-gas-completes-feasibility-study-for-bangladeshs-first-land-based-lng-terminal",
+    "suggested_action": "Reconcile CancelledYear (2025 vs 2024). Filled Status [ref] this batch with the OE Digital Oct-2024 source; left CancelledYear/ShelvedYear/StopYear [ref] blank pending year confirmation. Source (PASS): https://energynews.oedigital.com/oil-gas/2024/10/09/bangladeshs-rpgcl-cancels-shortlist-for-matarbari-lng-terminal-strategy",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_ref",
+    "terminal_id": "T100000131142",
+    "unit_id": "G100002114200",
+    "terminal_name": "ACWA LNG Terminal",
+    "issue": "Status/ShelvedYear(2021)/CancelledYear(2023)/StopYear(2023) [ref] cells blank for this cancelled project. No PASSing source located this batch that confirms the specific 2021 shelving / 2023 cancellation timeline (existing ACWA Power MoU press only covers the 2019 proposal). Not manufacturing a ref.",
+    "severity": "low",
+    "suggested_action": "Leave blank; revisit in an exhaustive-tier pass or if a dated cancellation source surfaces.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_ref",
+    "terminal_id": "T100000131143",
+    "unit_id": "G100002114300",
+    "terminal_name": "Pertamina Bangladesh FSRU",
+    "issue": "Status/ShelvedYear(2020)/CancelledYear(2022)/StopYear(2022) [ref] cells blank for this cancelled project. No PASSing source located this batch confirming the specific cancellation-timeline values. Not manufacturing a ref.",
+    "severity": "low",
+    "suggested_action": "Leave blank; revisit in an exhaustive-tier pass.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_ref",
+    "terminal_id": "T100000131144",
+    "unit_id": "G100002114400",
+    "terminal_name": "Matarbari GE LNG Terminal",
+    "issue": "Status/ShelvedYear(2020)/CancelledYear(2022)/StopYear(2022) [ref] cells blank for this cancelled project. No PASSing source located this batch confirming the cancellation-timeline values. Not manufacturing a ref.",
+    "severity": "low",
+    "suggested_action": "Leave blank; revisit in an exhaustive-tier pass.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_ref",
+    "terminal_id": "T100000131051",
+    "unit_id": "G100002105100",
+    "terminal_name": "Summit Matarbari FSRU",
+    "issue": "ProposalDate(2021) [ref] and Cost(500M) [ref] still blank after this batch. Capacity [ref] filled. CancelledYear/StopYear (2024) already cited (Dhaka Tribune, though that URL currently returns HTTP 403 to the verifier); the Oct-7-2024 cancellation is independently corroborated by offshore-mag and gasoutlook (both PASS) if a verifiable Status/Cancelled ref-swap is desired.",
+    "severity": "low",
+    "suggested_action": "Optionally swap the existing 403 Dhaka Tribune Status/Cancelled refs for https://www.offshore-mag.com/vessels/news/55234613/summit-challenges-cancellation-of-third-bangladesh-fsru (PASS). ProposalDate/Cost left blank pending a dated source.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_ref",
+    "terminal_id": "T100000130272",
+    "unit_id": "G100002027200",
+    "terminal_name": "Summit FSRU",
+    "issue": "Operating terminal; ConstructionDate [ref] blank (ConstructionYear=2017, ConstructionMonth=Q4). No verified dedicated construction-date source located this batch. Operating status/capacity already well-cited.",
+    "severity": "low",
+    "suggested_action": "Leave blank; targeted construction-date source needed (e.g. Summit IR / commissioning press).",
     "researcher_initials": "AI-draft"
   }
 ]

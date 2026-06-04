@@ -1,0 +1,102 @@
+[
+  {
+    "category": "status_review",
+    "terminal_id": "T100000131164",
+    "unit_id": "G100002116400",
+    "terminal_name": "Gresik LNG Terminal",
+    "issue": "GEM has Status=shelved (inferred 2y) with ShelvedYear=2027 and StopYear=2027. All located sources show the BP Gas & Power / AKR Corporindo JIIPE regas project still active and targeting onstream ~2027; JIIPE's own site (Oct 2025) treats it as proceeding. No source confirms shelving. The '2027' looks like the planned onstream/start date mis-mapped into ShelvedYear/StopYear rather than a genuine shelving year (a future ShelvedYear is implausible).",
+    "severity": "high",
+    "suggested_action": "Re-verify status in a follow-on Update batch: project may belong in proposed/construction (or pre-construction) rather than shelved. Confirm whether '2027' is an onstream target vs a shelved year and correct the year-field mapping. Sources: https://www.jiipe.com/en/home/blogDetail/id/398 ; https://lngprime.com/asia/bp-to-develop-indonesian-regas-terminal/99550/",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000131164",
+    "unit_id": "G100002116400",
+    "terminal_name": "Gresik LNG Terminal",
+    "issue": "Possible status change implied: GEM shelved vs sources showing an active JDA (signed Dec 2023) and a ~2027 onstream target with no shelving evidence. fetch_timeline endpoint is down, so flagging as a status_timeline note rather than staging a Status edit.",
+    "severity": "medium",
+    "suggested_action": "On Update: pull existing timeline (when endpoint restored) and reconcile shelved-vs-active; do not stage a Status flip from the sweep alone.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_consistency",
+    "terminal_id": "T100000130699",
+    "unit_id": "G100002069900",
+    "terminal_name": "Gorontalo FSRU",
+    "issue": "Status=operating but ShelvedYear=2020 and StopYear=2020 are populated. Sources confirm the FSRU (relocated from Amurang) began operating Feb 2022 and is contracted to 2035 (supplying PLTG Maleo/Paguat). The 2020 ShelvedYear/StopYear appear to be stale legacy values from the pre-relocation period and conflict with an operating asset.",
+    "severity": "medium",
+    "suggested_action": "Review whether ShelvedYear/StopYear=2020 should be cleared for an operating FSRU; these are the blank-ref [ref]-fill targets in the worklist but the underlying year values themselves look questionable, so no [ref] was staged. Sources: https://ekonomi.bisnis.com/read/20220203/44/1496231/gts-internasional-gtsi-pindahkan-fsru-untuk-bantu-ketersediaan-listrik-di-gorontalo",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ownership_review",
+    "terminal_id": "T100000130699",
+    "unit_id": "G100002069900",
+    "terminal_name": "Gorontalo FSRU",
+    "issue": "GEM Owner=PT Sulawesi Satu [100%], Parent=Humpuss [50%]; PLN GG [50%], Operator=PT GTS Internasional. Trade press (Jul 2023) reports Energi Mega Persada (EMP, Bakrie Group) acquired Sulawesi Regas Satu, the FSRU asset owner. Ownership/parent chain may have changed; relationships among PT Sulawesi Satu / Sulawesi Regas Satu / GTSI / EMP / PLN GG are unclear from available sources.",
+    "severity": "medium",
+    "suggested_action": "On Update: verify current owner/parent (EMP/Bakrie vs Humpuss/PLN GG) via primary filings before staging any owner/parent edit; ambiguous, so no edit staged. Sources: http://www.ogindonesia.com/2023/07/rambah-bisnis-fsru-emp-akuisisi.html ; https://www.jakartadaily.id/resources/1629404251/bakrie-group-subsidiary-energi-mega-persada-acquires-sulawesi-fsru",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130274",
+    "unit_id": "G100002027401",
+    "terminal_name": "Abadi LNG Terminal",
+    "issue": "Status=proposed re-verified as current (no change). INPEX/Pertamina/Petronas advancing: all four FEED packages awarded (FEED commenced Aug 2025), environmental approval granted Feb 2026, preliminary LNG/gas offtake agreements (bp, PGN, PLN EPI, Shell Eastern) reached May 2026; FID targeted 2026-2027, onstream ~2030. No status flip warranted yet (pre-FID).",
+    "severity": "low",
+    "suggested_action": "Keep proposed; revisit at FID. No edit. Primary: https://www.inpex.com/english/business/project/abadi.html ; https://pgjonline.com/news/2026/may/inpex-moves-closer-to-fid-with-abadi-lng-offtake-deals",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_ref_unfilled",
+    "terminal_id": "T100000130865",
+    "unit_id": "G100002086500",
+    "terminal_name": "Batam LNG Terminal",
+    "issue": "Worklist flags blank Status/ShelvedYear/CancelledYear/StopYear [ref] (Status=cancelled, ShelvedYear 2020, CancelledYear/StopYear 2022). No dated trade-press cancellation source found; status is GEM-inferred ('no updates in 4 years'). Only confirmable source is JFE/Medco JV announcement (project existence), which does not support the cancelled status or the year values.",
+    "severity": "low",
+    "suggested_action": "Leave [ref] cells blank rather than cite a weak/circular source. If a dated cancellation source surfaces, fill on a later Update.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_ref_unfilled",
+    "terminal_id": "T100000130278",
+    "unit_id": "G100002027809",
+    "terminal_name": "Bontang LNG Terminal",
+    "issue": "Unit I: blank Status/ShelvedYear/CancelledYear/StopYear [ref] (cancelled; ShelvedYear 2007, CancelledYear/StopYear 2009). No public dated source found confirming the cancellation of the proposed ninth train (Train I) in 2009; available coverage discusses Bontang production decline generally, not Train I cancellation specifics.",
+    "severity": "low",
+    "suggested_action": "Leave [ref] blank; flag for archival/historical source search (e.g., 2005-2009 Pertamina/Chiyoda trade press) on a later Update.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_ref_unfilled",
+    "terminal_id": "T100000130279",
+    "unit_id": "G100002027900",
+    "terminal_name": "Central Java FSRU",
+    "issue": "Blank Status/ShelvedYear/CancelledYear/StopYear [ref] (cancelled; ShelvedYear 2022, CancelledYear/StopYear 2024). The dated source found (S&P Global) documents the ORIGINAL 2012 ministry-ordered cancellation, which does not match GEM's 2022/2024 year values (those reflect a later re-proposal then presumed-cancelled, GEM-inferred). Mismatch means the 2012 source can't cleanly back the 2024 CancelledYear.",
+    "severity": "low",
+    "suggested_action": "Leave year [ref] blank. Optionally Status [ref] could cite the S&P 2012 cancellation, but given the value's year drift, defer to an Update with proper timeline reconstruction. Source: https://www.spglobal.com/commodityinsights/en/market-insights/latest-news/natural-gas/042012-indonesian-ministry-orders-pertamina-to-cancel-central-java-fsru-project",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_ref_unfilled",
+    "terminal_id": "T100000130904",
+    "unit_id": "G100002090400",
+    "terminal_name": "Karimun Island LNG Terminal",
+    "issue": "Blank Status/ShelvedYear/StopYear [ref] (cancelled; ShelvedYear/StopYear 2023). Sources (NS Energy, Upstream) document the Panbil/Nusatama feasibility-study phase only; NS Energy returned HTTP 403 to the verifier and no dated cancellation/2023 source was located. Status is GEM-inferred.",
+    "severity": "low",
+    "suggested_action": "Leave [ref] blank; no strong dated source for cancellation or the 2023 year. Revisit if a primary source emerges.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_ref_unfilled",
+    "terminal_id": "T100000130870",
+    "unit_id": "G100002087000",
+    "terminal_name": "Australasia Probolinggo FSRU",
+    "issue": "Status [ref] staged (Upstream 'cancelled' article, yellow). CancelledYear [ref] and StopYear [ref] (both 2021) left blank: the Upstream article body is paywalled (NHST/Zephr SSO) so the specific 2021 year could not be confirmed; the public preview supports only the cancelled status, not the year.",
+    "severity": "low",
+    "suggested_action": "Leave the two year [ref] cells blank pending a source that explicitly states the 2021 cancellation/stop year.",
+    "researcher_initials": "AI-draft"
+  }
+]

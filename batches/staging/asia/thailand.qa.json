@@ -1,42 +1,32 @@
 [
   {
-    "category": "no_change",
-    "terminal_id": "T100000130321",
-    "unit_id": "",
-    "terminal_name": "Map Ta Phut LNG Terminal 1 / 2 (operating)",
-    "issue": "Map Ta Phut LNG Terminal 1 (10.0 mtpa + 1.5 mtpa expansion) and Terminal 2 / Nong Fab (7.5 mtpa) reviewed against PTT/PTT LNG operations and trade press: all operating, capacities, owners (PTT LNG Co Ltd / PE LNG Co Ltd; parents PTT, EGAT) and start years (2011 / 2019 / 2023) consistent with current GEM values. No change.",
-    "severity": "low",
-    "suggested_action": "None — verified current.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "no_change",
-    "terminal_id": "T100000130896",
-    "unit_id": "",
-    "terminal_name": "Gulf of Thailand FSRU / Songkhla FSRU / Chana LNG Terminal (cancelled/shelved)",
-    "issue": "Gulf of Thailand FSRU (cancelled 2021), Songkhla FSRU (cancelled 2018), Chana LNG Terminal (shelved 2023, inferred 4y cancelled) — no post-2023 sources reviving any. Status/years consistent with GEM. No change.",
-    "severity": "low",
-    "suggested_action": "None — verified current.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "no_change",
-    "terminal_id": "T100000131071",
-    "unit_id": "G100002107100",
-    "terminal_name": "Surat Thani FSRU",
-    "issue": "Surat Thani FSRU (PTT/EGAT, 5.0 mtpa) — no sources dated after 2023 found; GEM already records shelved (inferred 2y, ShelvedYear 2025). Consistent with RR's 8/25 note. No change.",
-    "severity": "low",
-    "suggested_action": "None — verified current; continue inferred-shelved monitoring.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "value_conflict",
+    "category": "status_timeline",
     "terminal_id": "T100000130894",
     "unit_id": "G100002089400",
     "terminal_name": "Map Ta Phut LNG Terminal 3",
-    "issue": "Conflicting first-phase capacity figures in 2025 press: a POSCO E&C EPCC-superstructure announcement framed MTP3 'first phase' as 8 mtpa (expandable to 10.8), whereas the Aug-2025 LNG Prime/sponsor statement says 'at least 5 mtpa first phase, expandable to 10.8.' GEM models Phase I 5.0 + Phase II 5.8 (= 10.8 total), aligning with the latter. Did not edit; flagging the phase-split ambiguity (8 vs 5 mtpa 'phase 1') for human confirmation since GEM's two-unit split may not map cleanly to the sponsor's phase definitions.",
+    "issue": "GEM has Phase I as 'proposed'. The project reached FID and a binding construction commitment in 2025: on 24 June 2025 the EGM of Gulf MTP LNG Terminal Co Ltd (GMTP) approved proceeding with total investment not exceeding THB 60,000m, and on 1 July 2025 GMTP signed an EPCC contract with the PEC-CAZ Consortium (POSCO Eco & Challenge + CAZ Thailand) for the LNG terminal superstructure. Superstructure construction scheduled to begin Q4 2025; commercial operations targeted Q1 2029. This supports a status advance proposed -> construction (Phase I, the 8 mtpa first phase). fetch_timeline endpoint is DOWN so flagging as qa, not a Status edit.",
+    "severity": "high",
+    "suggested_action": "Advance Map Ta Phut 3 Phase I status proposed -> construction; pull the existing timeline via fetch_timeline before applying. Refs: gulf.co.th press release 2025-07-01; offshore-energy.biz; enerdata.net.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130894",
+    "unit_id": "G100002089401",
+    "terminal_name": "Map Ta Phut LNG Terminal 3",
+    "issue": "Phase II (5.8 mtpa, the expansion beyond the 8 mtpa first phase to up to 10.8 mtpa) is 'proposed' in GEM. The EPCC scope and June 2025 EGM resolution cover the full terminal program; sources frame the 10.8 mtpa as the expandable ceiling rather than a separately-FID'd second build. Recommend keeping Phase II as proposed pending a distinct second-phase construction commitment, but re-verify whether GMTP's approved scope already commits the full 10.8 mtpa build (which would advance Phase II too).",
+    "severity": "medium",
+    "suggested_action": "Verify whether the GMTP-approved EPCC scope commits the full 10.8 mtpa (Phase II) build or only the 8 mtpa first phase; advance Phase II status only if the second phase is committed. Refs: offshore-energy.biz; gulf.co.th.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ownership",
+    "terminal_id": "T100000130894",
+    "unit_id": "G100002089400",
+    "terminal_name": "Map Ta Phut LNG Terminal 3",
+    "issue": "GEM lists Parent as 'Gulf Energy Development PCL [70.0%]; PTT PCL [30.0%]'. 2025 sources consistently name the 30% partner as 'PTT Tank' (PTT Tank Terminal Co Ltd / PTT Tank), described as an affiliate of state-owned PTT PCL, not PTT PCL directly. Owner 'Gulf MTP LNG Terminal Co Ltd' matches. Did not stage an edit because 'affiliate of PTT' leaves the exact registered shareholder entity ambiguous (PTT Tank Terminal vs PTT PCL holding). Flag for reviewer to confirm the precise 30% parent entity.",
     "severity": "low",
-    "suggested_action": "Confirm GEM's Phase I/Phase II split against the sponsor's actual phasing before any future capacity edit; total 10.8 mtpa is not in dispute.",
+    "suggested_action": "Confirm whether the 30% parent should be recorded as PTT Tank Terminal Co Ltd (an affiliate) rather than PTT PCL; run entity_lookup before changing. Refs: gulf.co.th press release; offshore-energy.biz.",
     "researcher_initials": "AI-draft"
   }
 ]

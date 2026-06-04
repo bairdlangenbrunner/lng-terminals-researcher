@@ -1,22 +1,32 @@
 [
   {
-    "category": "ownership",
+    "category": "scope_concept_change",
     "terminal_id": "T100000130342",
     "unit_id": "G100002034201",
     "terminal_name": "Sunrise FLNG Terminal",
-    "issue": "GEM lists the 56.56% Greater Sunrise JV stake under 'Government of Timor-Leste' (Owner and Parent). The actual named JV partner is TIMOR GAP E.P., Timor-Leste's state-owned oil company (56.56%); Woodside Energy operates with 33.44%; Osaka Gas holds 10% via 'Osaka Gas Australia'. GEM's government rollup is defensible (TIMOR GAP is wholly state-owned) but the immediate Owner entity is technically TIMOR GAP, and Osaka Gas's vehicle is Osaka Gas Australia.",
-    "severity": "low",
-    "suggested_action": "Consider recording the immediate Owner as 'TIMOR GAP' (parent: Government of Timor-Leste) and Osaka Gas as 'Osaka Gas Australia' (parent: Osaka Gas Co Ltd). Verify against GEM entity system before adding; no edit staged (ambiguous owner-vs-parent rollup). Source: https://timor-leste.gov.tl/?p=46200&amp=&lang=en",
+    "issue": "On 25 Nov 2025 (AFTER GEM LastUpdated 2025-08-28) Timor-Leste's MPRM and Woodside signed a cooperation agreement to mature a greenfield ~5 mtpa ONSHORE/Timor-based LNG concept ('TLNG'), with a domestic-gas facility and helium extraction, first LNG possibly 2032-2035 subject to concept selection and FID. GEM currently models this terminal as FLNG: TerminalName='Sunrise FLNG Terminal', FacilityType='export', Offshore=True, Floating=True. The agreed concept under active study is an onshore plant on Timor-Leste's south coast (Beaco), which conflicts with the offshore/floating modeling. The earlier FLNG concept appears superseded as the favored path, but concept selection is still pending (no FID), so this is not yet a committed final design.",
+    "severity": "medium",
+    "suggested_action": "On next Update batch, consider whether to (a) re-model Offshore/Floating/FacilityType toward an onshore Timor-based plant and/or rename (note OtherNames already includes 'Beaco LNG Terminal'), or (b) hold as-is until concept selection. Do NOT auto-flip offshore/floating fields now — concept not yet selected. Sources: Government of Timor-Leste/MPRM release 25 Nov 2025 (https://timor-leste.gov.tl/?p=46200&lang=en); LNG Industry 26 Nov 2025 (https://www.lngindustry.com/liquid-natural-gas/26112025/mprm-and-woodside-sign-agreement-for-greater-sunrise/).",
     "researcher_initials": "AI-draft"
   },
   {
-    "category": "no_change",
+    "category": "status_timeline",
     "terminal_id": "T100000130342",
     "unit_id": "G100002034201",
     "terminal_name": "Sunrise FLNG Terminal",
-    "issue": "Status verified as 'proposed' (no change). GEM's researcher note (Aug 2025) — project stalled per Woodside CEO May 2025 — is now superseded by a new MPRM-Woodside Cooperation Agreement (Sep 2025) to mature a Timor-based ~5 mtpa LNG (TLNG) concept, targeting concept/site selection by mid-2026 and first LNG ~2032-2035. Still pre-concept-select, so 'proposed' remains correct; the 'GEM has no capacity figure' gap is now informed by the ~5 mtpa concept (not yet selected, so left to wiki).",
+    "issue": "Status remains 'proposed' and is correct as of 25 Nov 2025: the new MPRM-Woodside cooperation agreement is a study/maturation step, explicitly pre-concept-selection and pre-FID, so no proposed->construction advance. ResearcherNotesUnit (8/25: 'stalled per Woodside CEO May 25') is now partially superseded — the Nov 2025 agreement represents renewed forward motion (study scope + indicative 2032-2035 first-LNG window) without a status change.",
     "severity": "low",
-    "suggested_action": "No status edit. Optionally refresh the project researcher note to reflect the Sep 2025 Cooperation Agreement and mid-2026 concept-selection target. The ~5 mtpa is a concept figure, not a sanctioned nameplate — do NOT stage a Capacity value yet.",
+    "suggested_action": "No Status field edit (status unchanged + fetch_timeline endpoint down). Optionally refresh ResearcherNotesUnit to note the 25 Nov 2025 cooperation agreement superseding the 'stalled' framing.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_ref_unfillable",
+    "terminal_id": "T100000130342",
+    "unit_id": "G100002034201",
+    "terminal_name": "Sunrise FLNG Terminal",
+    "issue": "Worklist flagged ProposalDate [ref] (ProposalYear=2023) and FIDYear [ref] (FIDYear=2021) as blank-ref fills. No source found in this sweep substantiates a 2023 proposal year specifically, and the FIDYear=2021 value conflicts with FIDStatus='Pre-FID' (a Pre-FID project should not carry a past FID year). Recent sourcing confirms the project is still Pre-FID with FID expected only after concept selection (first LNG 2032-2035). Did not fill these [ref] cells to avoid an orphan/unsupported ref.",
+    "severity": "medium",
+    "suggested_action": "Review FIDYear=2021 vs FIDStatus='Pre-FID' — likely stale or mis-entered; consider clearing FIDYear or reconciling. Verify the ProposalYear=2023 basis before back-filling ProposalDate [ref]. Neither was [ref]-filled this batch.",
     "researcher_initials": "AI-draft"
   }
 ]

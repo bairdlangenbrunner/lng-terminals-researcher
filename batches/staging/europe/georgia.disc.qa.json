@@ -1,0 +1,12 @@
+[
+  {
+    "category": "data_gap",
+    "terminal_id": "T100000131101",
+    "unit_id": "",
+    "terminal_name": "Black Sea LNG Terminal",
+    "issue": "Owner-completeness gap. GEM Owner = 'RomGaz; State Oil Company of Azerbaijan Republic' (2 sponsors). This record is the AGRI / Black Sea LNG project, whose SC AGRI LNG Project Company SRL has FOUR equal national-company shareholders per primary sources: Romgaz (Romania), SOCAR (Azerbaijan), Georgian Oil & Gas Corporation / GOGC (Georgia) and MVM (Hungary). GOGC and MVM appear to be missing from the Owner/Parent fields. (Status is not in question here: the concurrent Georgia UPDATE pass already adjudicated Status and concluded proposed/dormant-pre-FID is correct; this finding is purely about the incomplete sponsor list.)",
+    "severity": "low",
+    "suggested_action": "UPDATE batch: verify and refresh Owner/Parent to include Georgian Oil & Gas Corporation and MVM as co-sponsors (run entity_lookup.py for each before staging; equal-share structure widely reported as 25% each, but confirm shares before writing a percentage). Owner/Parent [ref] candidates (both verified PASS): https://www.gogc.ge/en/project/azerbaijan-georgia-romania-interconnector/31 ; https://www.aa.com.tr/en/energyterminal/natural-gas/feasibility-work-complete-for-black-seas-lng-terminal/12410",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  }
+]

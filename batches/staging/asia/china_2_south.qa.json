@@ -1,0 +1,122 @@
+[
+  {
+    "category": "no_change_verified",
+    "terminal_id": "T100000130423",
+    "unit_id": "G100002042300",
+    "terminal_name": "Zhuhai LNG Terminal",
+    "issue": "Stale flag (routine_refresh_due, LastUpdated 2024-02-14). Re-verified: Zhuhai Golden Bay LNG Phase 1 operating since Nov 2013, nameplate 3.5 mtpa, owner Guangdong Zhuhai Golden Bay LNG Ltd (CNOOC-led JV) — all match current GEM. No value change; blue re-verify. Phase 2 expansion still under construction (see separate note).",
+    "severity": "low",
+    "suggested_action": "Bump LastUpdated to reflect routine re-verification; no field edits.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change_verified",
+    "terminal_id": "T100000130385",
+    "unit_id": "G100002038502",
+    "terminal_name": "Beihai LNG Terminal (PipeChina)",
+    "issue": "Dev-pipeline (Phase III, construction, planned start 2024). Skim-confirm: Guangxi LNG Phase III (6 mtpa, Guangxi Gas Group) still under construction; supporting wharf began 2023, receiving station 2022, completion targeted 2025; TK-05 tank commissioned Jan 2025 expanding storage. Status/owner/capacity consistent with GEM. No edit.",
+    "severity": "low",
+    "suggested_action": "Blue re-verify; watch for 2025/2026 commissioning to flip to operating in a later batch.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change_verified",
+    "terminal_id": "T100000130382",
+    "unit_id": "G100002038200",
+    "terminal_name": "Fuqing LNG Terminal",
+    "issue": "Dev-pipeline (Phase 1, construction). Skim-confirm: PetroChina/Kunlun Fuqing terminal still under construction; storage-tank dome gas-lift completed Jan 2026; operations expected early 2027; 6.5 mtpa total capacity. Matches GEM (construction, planned 2027). No edit.",
+    "severity": "low",
+    "suggested_action": "Blue re-verify; no field changes.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change_verified",
+    "terminal_id": "T100000130943",
+    "unit_id": "G100002094300",
+    "terminal_name": "Chaozhou LNG Terminal (Huaying)",
+    "issue": "Representative blue re-verify for terminal. Phase 1 operating since Sep 2024 (NEA), Phase 2 proposed — both updated Q1 2026 with detailed researcher notes; values consistent. No change found.",
+    "severity": "low",
+    "suggested_action": "Blue re-verify; no field changes.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change_verified",
+    "terminal_id": "T100000130395",
+    "unit_id": "G100001053177",
+    "terminal_name": "Jieyang LNG Terminal (PipeChina)",
+    "issue": "Dev-pipeline (Phase 2, construction since Dec 2025). Researcher Q1-2026 note already documents construction start and a 3 vs 5 mtpa capacity ambiguity (kept 3 mtpa per drc.gd.gov.cn). Recently updated; no new public milestone found. No edit.",
+    "severity": "low",
+    "suggested_action": "Blue re-verify; capacity ambiguity (3 vs 5 mtpa) already flagged in GEM notes — leave for next exhaustive pass.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_health",
+    "terminal_id": "T100000130423",
+    "unit_id": "G100002042301",
+    "terminal_name": "Zhuhai LNG Terminal",
+    "issue": "GEM holds Phase 2 (3.5 mtpa) as construction with a researcher note that the 2025 GIIGNL Annual Report classifies the expansion as operating but no commissioning evidence existed as of June 2025. Deliberate GEM divergence documented in ResearcherNotesUnit — do NOT auto-flip to operating.",
+    "severity": "low",
+    "suggested_action": "Honor the documented divergence; re-check commissioning status in a later batch when fetch_timeline is back.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_ref",
+    "terminal_id": "T100000130378",
+    "unit_id": "G100002037800",
+    "terminal_name": "Chengmai LNG Terminal",
+    "issue": "Status [ref] (and ShelvedYear/CancelledYear/StopYear [ref]) blank for a cancelled project (Huadian Fuxin, 12 mtpa, shelved 2016 / cancelled 2018). The cancellation rests on absence-from-plan reasoning rather than an explicit citable 'cancelled' source; no clean primary URL located this pass.",
+    "severity": "low",
+    "suggested_action": "Defer to exhaustive pass; if no explicit source surfaces, leave refs blank rather than stage a weak/orphan ref.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_ref",
+    "terminal_id": "T100000131057",
+    "unit_id": "G100002105700",
+    "terminal_name": "Jieyang LNG Terminal (PetroChina)",
+    "issue": "Status [ref] blank for shelved-inferred unit (Kunlun, 6.5 mtpa). Status rests on five-year-plan inclusion (2021/2022) with no activity since — documented in researcher notes but no single 'shelved' source to cite. Capacity note already flags 3 vs 6.5 mtpa ambiguity.",
+    "severity": "low",
+    "suggested_action": "Leave Status [ref] blank (inference-based status); revisit in exhaustive pass.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_ref",
+    "terminal_id": "T100000130953",
+    "unit_id": "G100002095300",
+    "terminal_name": "Quanzhou LNG Terminal",
+    "issue": "Phase 1 Status [ref] / ShelvedYear [ref] / StopYear [ref] blank (shelved-inferred 2023). Phase 2 has the sohu source on its year refs but Phase 1 does not. Owner also flagged 'needs double-check' in GEM notes.",
+    "severity": "low",
+    "suggested_action": "Could copy Phase 2's sohu.com/a/512512997 ref to Phase 1 if confirmed same source covers Phase 1 status; defer to reviewer to avoid mis-pairing.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_ref",
+    "terminal_id": "T100000131110",
+    "unit_id": "G100002111000",
+    "terminal_name": "Shanwei LNG Terminal",
+    "issue": "Owner [ref] blank because Owner='unknown'. Per no-orphan-ref rule, do not fill a ref without a paired owner value; owner remains unidentified in public sources this pass.",
+    "severity": "low",
+    "suggested_action": "No action — blank ref is correct while owner is unknown.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_ref",
+    "terminal_id": "T100000130944",
+    "unit_id": "G100002094400",
+    "terminal_name": "Zhangzhou LNG Terminal (China Energy Reserve)",
+    "issue": "Status [ref] / CancelledYear [ref] / StopYear [ref] blank for a cancelled project (cancelled 2024). Researcher note flags possible duplication with the operating Zhangzhou LNG Terminal (T100000130419) — needs disambiguation before sourcing.",
+    "severity": "medium",
+    "suggested_action": "Confirm whether this is a distinct project or a duplicate of the PipeChina Zhangzhou terminal before filling status refs.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_ref",
+    "terminal_id": "T100000130419",
+    "unit_id": "G100002041900",
+    "terminal_name": "Zhangzhou LNG Terminal",
+    "issue": "ConstructionDate [ref] blank (ConstructionYear=2018). The May-2024 commissioning sources fill Status/StartDate refs (staged as updates) but do not document the 2018 construction-start year; no construction-start source located this pass.",
+    "severity": "low",
+    "suggested_action": "Defer ConstructionDate [ref] to exhaustive pass; Status/StartDate refs filled via updates.",
+    "researcher_initials": "AI-draft"
+  }
+]

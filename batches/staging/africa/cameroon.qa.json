@@ -1,32 +1,22 @@
 [
   {
     "category": "status_timeline",
-    "terminal_id": "T100000130247",
-    "unit_id": "G100002024701",
-    "terminal_name": "Cameroon FLNG Terminal",
-    "issue": "FLNG Hilli Episeyo is operating now (Golar Q1 2026: 100% economic uptime, 150th cargo offloaded), but the existing Cameroon charter with Perenco/SNH ENDS Q3 2026. Per Golar's Q1 2026 report, a contractor was appointed in Q2 2026 to disconnect Hilli from its Kribi mooring in JULY 2026 and tow it to Seatrium (Singapore) for upgrades, after which it redeploys on a 20-year charter offshore Argentina (Pan American Energy / SESA; recommissioning 2027+). Cameroon FLNG production is expected to CEASE in 2026 unless a replacement vessel is contracted (Golar declined to extend due to a capacity cap). Imminent operating->idled/retired transition for all 4 units.",
-    "severity": "high",
-    "suggested_action": "Monitor for the July 2026 disconnection; when confirmed, add an 'idled'/'retired' (or 'mothballed') status-timeline entry for FLNG units T1-T4 with StopYear 2026. The terminal infrastructure (mooring) may persist for a replacement FLNG; verify whether SNH/Perenco line up a new vessel before choosing the unit status. Do NOT pre-emptively change Status now (still operating).",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "stale_field",
     "terminal_id": "T100000130913",
     "unit_id": "G100002091301",
     "terminal_name": "Etinde FLNG Terminal",
-    "issue": "FIDYear=2024 / FIDStatus=Pre-FID is stale. Perenco's June-2022 agreement to acquire New Age's operating stake in the Etinde permit was TERMINATED in Jan 2024; the co-venturers (New Age 37.5%, Lukoil 37.5%, Bowleven 25%) reverted to reworking the development plan and FID was not reached in 2024. Status 'proposed' remains correct, but no concrete FLNG step has advanced. Lukoil's 37.5% stake also sits under Russia-sanctions overhang.",
+    "issue": "GEM records FIDYear=2024, but no final investment decision has ever been taken on Etinde. The 2024 date was an ASPIRATIONAL target from Bowleven's 2023 AGM, CONDITIONAL on Perenco taking over operatorship. Perenco withdrew/terminated the New Age interest+operatorship acquisition in January 2024 (Offshore Magazine, 2024-01-26), and the partners (LUKOIL 37.5%, New Age 37.5%, Bowleven 25%) reverted to reassessing the development plan to 'secure FID'. GEM's own wiki narrative correctly describes 2024 as aspirational and does NOT claim FID was achieved, so the structured FIDYear=2024 field contradicts the wiki and all sources. Status=proposed is correct and was re-verified.",
     "severity": "medium",
-    "suggested_action": "Clear or push back the FIDYear (2024 has passed with no FID). Keep status proposed. Consider a stale-sweep flag toward 'inferred shelved' if no activity surfaces by the 2-year threshold (last concrete activity ~Jan 2024). Owner field lists New Age 37%/Bowleven 25%/Lukoil 37% vs Parent 37.5/37.5/25 — reconcile the 37/37.5 rounding.",
+    "suggested_action": "Clear FIDYear (no FID taken) or, if GEM intends FIDYear to hold an expected/target year, re-label/verify. Confirm Status remains 'proposed' (no FID, no construction as of 2026-06). Sources: https://www.offshore-mag.com/regional-reports/africa/article/14304127/perenco-withdraws-from-planned-etinde-acquisition-offshore-cameroon (verified PASS); GEM wiki https://www.gem.wiki/Etinde_FLNG_Terminal.",
     "researcher_initials": "AI-draft"
   },
   {
-    "category": "no_change",
+    "category": "data_quality",
     "terminal_id": "T100000130248",
     "unit_id": "G100002024801",
     "terminal_name": "Cameroon LNG Terminal",
-    "issue": "Engie/SNH liquefaction proposal: confirmed still cancelled (Engie put it on hold 2016, inferred cancelled 2020). No revival activity found 2024-2026.",
+    "issue": "CancelledYear=2020 and StopYear=2020 are not supported by any locatable source. The only documented event is ENGIE putting the project on hold in July 2016 (matches GEM ShelvedYear=2016). GEM's own wiki flags the 2020 cancelled date as INFERRED ('No updates released since 2016; presumed cancelled'). The two CancelledYear/StopYear [ref] cells were left blank on the worklist; I did not fill them because no source states 2020, and citing the 2016 'on hold' article against a 2020 value would be a mismatched/orphan reference.",
     "severity": "low",
-    "suggested_action": "No change. Cancelled status stands.",
+    "suggested_action": "Either (a) accept 2020 as an editorial inference and add an internal/researcher note in lieu of an external [ref], or (b) revisit the cancellation year against an authoritative source. Do NOT pair the 2016 offshore-energy 'on hold' URL with the 2020 values. If GEM prefers to anchor the documented event, consider 2016 with the offshore-energy citation.",
     "researcher_initials": "AI-draft"
   }
 ]

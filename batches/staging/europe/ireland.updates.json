@@ -7,17 +7,17 @@
     "country": "Ireland",
     "field_name": "Location",
     "old_value": "",
-    "new_value": "Cahiracon, Shannon Estuary",
+    "new_value": "Cahiracon",
     "confidence": "green",
-    "source_tier": "primary/regulatory + 2 independent",
+    "source_tier": "primary + corroboration",
     "ref_field": "Location [ref]",
     "ref_urls": [
       "https://www.gasnetworks.ie/about/projects/strategic-gas-emergency-reserve",
       "https://www.rte.ie/news/business/2025/1126/1546007-gas-networks-ireland-new-strategic-gas-emergency-reserve/",
-      "https://www.offshore-energy.biz/ireland-handpicks-spot-for-fsru-gas-reserve-to-stave-off-supply-shortfalls/"
+      "https://maritime-executive.com/article/ireland-selects-location-for-first-fsru-project-to-secure-gas-supply"
     ],
-    "source_notes": "This terminal is Ireland's State-led Strategic Gas Emergency Reserve (SGER), owned/operated by Gas Networks Ireland on behalf of the State (govt approval Mar 2025). On 26 Nov 2025 GNI announced the selected site after screening 14 coastal locations: Cahiracon, Co. Clare, on the Shannon Estuary. GEM Location was blank; researcher note (RR 7/25) explicitly asked to fill location once provided. Site = deep-water jetty + onshore facility + new connection to national gas network.",
-    "scope_note": "Project-level field; single base unit so no other unit-rows to mirror.",
+    "source_notes": "GNI confirmed the site for its state-led Strategic Gas Emergency Reserve (SGER) FSRU as Cahiracon, Co. Clare, on the Shannon Estuary; announced 26 Nov / 10 Dec 2025. Sponsor's own project page (gasnetworks.ie) and RTE both state 'Cahiracon, Co. Clare, along the Shannon Estuary'; maritime-executive corroborates. This resolves the existing RR note 'consider renaming terminal once an official name or location is provided'. 14 sites screened; Cahiracon selected after multi-criteria/cost-benefit analysis (Cork Harbour and Shannon Estuary shortlisted). All three URLs PASS url_verifier.",
+    "scope_note": "Project-level field; single-unit terminal so applies to the one unit row.",
     "researcher_initials": "AI-draft (sweep)"
   },
   {
@@ -30,14 +30,34 @@
     "old_value": "",
     "new_value": "Munster",
     "confidence": "green",
-    "source_tier": "primary/regulatory + independent press",
+    "source_tier": "primary + corroboration",
     "ref_field": "Location [ref]",
     "ref_urls": [
-      "https://www.rte.ie/news/business/2025/1126/1546007-gas-networks-ireland-new-strategic-gas-emergency-reserve/",
-      "https://www.gasnetworks.ie/about/projects/strategic-gas-emergency-reserve"
+      "https://www.gasnetworks.ie/about/projects/strategic-gas-emergency-reserve",
+      "https://www.rte.ie/news/business/2025/1126/1546007-gas-networks-ireland-new-strategic-gas-emergency-reserve/"
     ],
-    "source_notes": "Selected site Cahiracon is in County Clare, which is in the province of Munster. GEM uses the province (e.g. NextDecade Cork / Pilot Cork = 'Munster') for the Irish State/Province field, so Munster is the convention-consistent value. County = Clare (note in wiki/qa). Field was blank.",
-    "scope_note": "Project-level field; aligns to GEM's province-style State/Province for other Irish rows.",
+    "source_notes": "Cahiracon is in Co. Clare, which is in the province of Munster; consistent with the State/Province value GEM already uses on the other Irish rows (NextDecade Cork, Pilot Cork, Shannon all = 'Munster'). Paired with the same verified Cahiracon location sources. Review note: confirm whether GEM prefers province ('Munster') or county ('Clare') in this field for Ireland.",
+    "scope_note": "Project-level field; single-unit terminal so applies to the one unit row.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130464",
+    "unit_id": "G100002046401",
+    "terminal_name": "Shannon FSRU",
+    "unit_name": "--",
+    "country": "Ireland",
+    "field_name": "Status [ref]",
+    "old_value": "https://www.rte.ie/news/regional/2025/0530/1515893-shannon-lng/?utm_source=substack&utm_medium=email",
+    "new_value": "https://www.rte.ie/news/regional/2025/0530/1515893-shannon-lng/?utm_source=substack&utm_medium=email",
+    "confidence": "blue",
+    "source_tier": "secondary (trade/national press, 2+ independent)",
+    "ref_field": "Status [ref]",
+    "ref_urls": [
+      "https://www.rte.ie/news/regional/2025/0530/1515893-shannon-lng/",
+      "https://www.irishexaminer.com/news/munster/arid-41642272.html"
+    ],
+    "source_notes": "Re-verify only, no value change. Status 'proposed' still holds and is current: Shannon LNG (NFE subsidiary) reactivated and resubmitted its planning application in May 2025; An Coimisiun Pleanala (formerly An Bord Pleanala) is now due to decide by 13 Jan 2026. Existing GEM Status [ref] (RTE 2025-05-30) PASSes url_verifier; Irish Examiner corroborates. Owner New Fortress Energy unchanged (no divestment found). Blue marks the cell re-verified this batch.",
+    "scope_note": "Single representative re-verify for this terminal (standard tier); not spamming every field.",
     "researcher_initials": "AI-draft (sweep)"
   }
 ]

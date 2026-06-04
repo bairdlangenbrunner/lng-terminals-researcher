@@ -1,62 +1,52 @@
 [
   {
-    "category": "capacity_conflict",
-    "terminal_id": "T100000130313",
-    "unit_id": "G100002031300",
-    "terminal_name": "Pyeongtaek LNG Terminal",
-    "issue": "JOGMEC 2025 KOGAS profile (KOGAS company data, end-June 2024) lists Pyeongtaek receiving capacity as 43.4 MTPA vs GEM 41.0. The other four operating KOGAS figures in the same table match GEM (Incheon 54.4~54.5, Tongyeong 26.5~26.6, Samcheok 11.6, Jeju 1.1), so this is an isolated ~2.4 mtpa gap. Uncertainty is whether KOGAS's 'Receiving capacity (MTPA)' column is nameplate (GEM basis) or send-out/peak. Staged as a YELLOW update for reviewer decision.",
+    "category": "data_freshness",
+    "terminal_id": "T100001055027",
+    "unit_id": "G100001062921",
+    "terminal_name": "Gwangyang 2 LNG Terminal",
+    "issue": "Dev-pipeline skim-confirm (construction/actual, LastUpdated 2026-05-07): status, owner (POSCO International 100%), and 2.1 mtpa capacity all match current sources. Offshore Energy / Korea Herald give a more specific commercial-start month — July 2026 — vs GEM's LatestPlannedStartYear=2026 (no month). GEM has no ActualStartMonth field populated and year-level is correct; flagging in case a planned-start month is desired. No field edit staged.",
+    "severity": "low",
+    "suggested_action": "Optional: if GEM tracks planned-start month, note July 2026 target for Gwangyang 2. Otherwise no action — GEM value is current and correct at year granularity.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_freshness",
+    "terminal_id": "T100000130612",
+    "unit_id": "G100002061200",
+    "terminal_name": "KOGAS Dangjin LNG Terminal",
+    "issue": "Dev-pipeline skim-confirm. Phase 1 (construction/actual) and Phase 2 (proposed): Phase 2 construction reported beginning Sep 2025 with Doosan KRW560bn award; completion ~Dec 2029. GEM Phase 2 has ConstructionYear=2025 and LatestPlannedStartYear=2029 already, but Status=proposed. The Sep-2025 construction-start reports suggest Phase 2 may now be construction rather than proposed.",
     "severity": "medium",
-    "suggested_action": "Reviewer: confirm KOGAS's capacity basis before applying. If 43.4 is the current nameplate, bump Capacity 41.0->43.4 with the JOGMEC ref; if it is a send-out/peak figure, leave GEM 41.0 and log 43.4 to wiki Background. KOGAS annual report or kogas.or.kr terminal page would resolve the basis.",
+    "suggested_action": "Status timeline: consider moving KOGAS Dangjin Phase 2 from proposed to construction (Doosan contract / Sep-2025 ground-start per turbomachinerymag / walkintokorea). Verify groundbreaking actually occurred before reclassifying; routed as note since fetch_timeline is down.",
     "researcher_initials": "AI-draft"
   },
   {
-    "category": "data_provenance",
-    "terminal_id": "T100000130314",
-    "unit_id": "G100001063875",
-    "terminal_name": "Samcheok LNG Terminal",
-    "issue": "Misdating risk for future sweeps: a web search summary surfaced 'Kogas started commercial operation of three 270,000 kL tanks at Samcheok' and mis-attributed it to June 2025. Primary/contemporaneous coverage (Korea Herald, Offshore Energy) confirms this was JUNE 2017, not 2025. GEM's Samcheok Expansion unit (5.0 mtpa, ActualStartYear 2016) already captures this build-out; total 6.6+5.0=11.6 mtpa matches JOGMEC's 11.6. No new 2025 phase exists.",
+    "category": "no_change",
+    "terminal_id": "T100000130891",
+    "unit_id": "G100002089100",
+    "terminal_name": "Northeast Asia LNG Hub Terminal",
+    "issue": "Dev-pipeline skim-confirm (construction/actual). Hanyang + GS Energy JV, construction underway, USD815m project finance secured Apr 2025, 3.0 mtpa, target online 2028-2029. All match GEM (LatestPlannedStartYear=2028, parent Hanyang 60% / GS Holdings 40%). No change.",
     "severity": "low",
-    "suggested_action": "No action. GEM is correct. Note recorded so a later batch does not chase a phantom 2025 Samcheok expansion.",
+    "suggested_action": "No action — verified current.",
     "researcher_initials": "AI-draft"
   },
   {
-    "category": "ownership",
-    "terminal_id": "T100000130311",
-    "unit_id": "G100002031100",
-    "terminal_name": "Gwangyang LNG Terminal",
-    "issue": "Audit-brief hint named 'SK E&S Gwangyang' as if SK E&S owns Gwangyang. Verified NOT an equity relationship: Gwangyang LNG Terminal is 100% POSCO International (parent POSCO Holdings) per POSCO newsroom and KED Global; SK E&S (and S-Oil) are TENANTS leasing storage tank capacity, not owners. GEM's Owner/Parent (POSCO International Corp 100%) is correct.",
+    "category": "no_change",
+    "terminal_id": "T100000131131",
+    "unit_id": "G100002113101",
+    "terminal_name": "Ulsan LNG Terminal",
+    "issue": "Dev-pipeline skim-confirm. Phase 2 (Tanks 3-4) and Phase 3 (Tanks 5-6), both construction/actual. KET (SK Gas + KNOC JV) terminal operational; tank 3 targeted for 2026 completion, additional tanks 4-6 within Clean Energy Complex. Matches GEM (Phase 2 LatestPlannedStartYear=2026, Phase 3 2029; operator/owner KET, parent SK Gas/KNOC). No discrepancy found.",
     "severity": "low",
-    "suggested_action": "No action; confirms GEM. Keep SK E&S out of Gwangyang owner/parent (lessee, not equity).",
+    "suggested_action": "No action — verified current.",
     "researcher_initials": "AI-draft"
   },
   {
-    "category": "lifecycle",
-    "terminal_id": "T100001083270",
-    "unit_id": "G100001093999",
-    "terminal_name": "KOMIPO Boryeong LNG Terminal",
-    "issue": "Audit theme verified: Korea Midland Power (KOMIPO) board approved withdrawal of the Boryeong LNG terminal project on 28 June 2024 (732 bn KRW project, was targeting 2027/2028 start), citing ~22% cost inflation and a 67% projected drop in its LNG demand under Korea's 10th electricity plan. GEM correctly has status=cancelled, CancelledYear=2024, Substatus=confirmed, owner Korea Midland Power / parent KEPCO, Capacity 0.",
-    "severity": "low",
-    "suggested_action": "No action; GEM current. Representative confirmation of the cancellation audit theme (sources: marinelink, gasprocessingnews, energyintel).",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "lifecycle",
-    "terminal_id": "T100001083277",
-    "unit_id": "G100001094010",
-    "terminal_name": "KOSPO Hadong LNG Terminal",
-    "issue": "Verified: Korea Southern Power (KOSPO) cancelled its Hadong 180,000 mt LNG storage-tank terminal (was due 2028) in April 2024 for lack of economic benefit, part of the same 2024 wave (~11 mtpa / ~29% of proposed Korean import capacity scrapped or delayed). GEM correctly has status=cancelled, CancelledYear=2024, Substatus=confirmed, owner Korea Southern Power / parent KEPCO, Capacity 0. NB: audit brief said 'Hyundai/Hadong' but the terminal sponsor is KOSPO, not Hyundai (GEM is right).",
-    "severity": "low",
-    "suggested_action": "No action; GEM current. The 'Hyundai/Hadong' brief hint appears to be a sponsor mix-up; do not add Hyundai to ownership.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "lifecycle",
+    "category": "no_change",
     "terminal_id": "T100000131132",
     "unit_id": "G100002113200",
     "terminal_name": "POSCO Dangjin LNG Terminal",
-    "issue": "GEM has this as shelved (inferred 2y), 3.5 mtpa, owners LX International + POSCO International. Promotional coverage still frames POSCO's 'third terminal' at Dangjin (two 270,000 kL tanks, ops aim 2027) as a live ambition, but no concrete construction milestone since the May 2023 LX/POSCO MOU. Inferred-shelved remains the defensible call; not a separate/new terminal (specs match the LX-POSCO Dangjin entry, so no discovery dedup gap).",
+    "issue": "Dev-pipeline skim-confirm (shelved/inferred 2 y) plus blank-ref fills (see updates). Confirmed no positive shelving/cancellation announcement; project has had no updates since the 2023 proposal, Aug-2024 IEEFA documents groundbreaking delay. Inferred-shelved classification remains appropriate.",
     "severity": "low",
-    "suggested_action": "No action now; keep watch for an FID or groundbreaking that would move it back to proposed/construction. If nothing concrete by ~2027, the inferred-cancelled clock (4y) starts approaching.",
+    "suggested_action": "No action beyond the staged blank-ref fills — inferred status holds.",
     "researcher_initials": "AI-draft"
   }
 ]

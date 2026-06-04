@@ -1,0 +1,22 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130594",
+    "unit_id": "",
+    "terminal_name": "QatarEnergy LNG (N) / QatarEnergy LNG (S) (all operating Ras Laffan trains)",
+    "issue": "Discovery sweep surfaced (not a new terminal) a major operational status event: in early March 2026 Iranian missile strikes hit Ras Laffan Industrial City (and Mesaieed/Pearl GTL), and QatarEnergy declared force majeure on its entire LNG output. Analysts estimate ~12.8 mtpa (~17% of Qatar capacity) offline for an extended period (3-5 years cited). As of April 2026 QatarEnergy was working to restart, with full Ras Laffan operations not expected back for months. This affects the operating status of the existing QatarEnergy LNG (N) and (S) train rows and possibly construction timelines on the North Field expansion units. Verify and route any operating->idle/partial status or timeline change through an Update batch; fetch_timeline is DOWN so do not stage blind timeline edits.",
+    "severity": "medium",
+    "suggested_action": "Update agent: confirm current operating status of QatarEnergy LNG (N)/(S) trains and any North Field expansion schedule slip post-attack; add a status-timeline entry (force majeure Mar 2026, restart in progress) once timeline service is reachable. No new terminal warranted; this is an existing-row status event.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "coverage_confirmation",
+    "terminal_id": "T100000130817",
+    "unit_id": "",
+    "terminal_name": "Qatar North Field LNG Terminal",
+    "issue": "Discovery dedup result: Qatar's entire announced LNG buildout is already captured in GEM. The widely reported 142 mtpa-by-2030 roadmap = existing 77 mtpa base (QatarEnergy LNG (N)+(S)) plus North Field East 32 mtpa (T1-4, GEM construction), North Field South 16 mtpa (T5-6, GEM construction), and North Field West 16 mtpa (T7-8, GEM proposed). The often-cited 160 mtpa figure adds Golden Pass (US, separate terminal), not a Qatar project. No phase beyond North Field West has been announced; NFW is in FEED (Chiyoda) heading toward construction ~2027. No import, bunkering, or independent/floating LNG project exists in Qatar. No new terminal or unit candidates found.",
+    "severity": "low",
+    "suggested_action": "No discovery action. Note: NFW (T7-8) Owner is 'unknown' in GEM but partner stakes may now be reportable; possible NFE completion slip to ~mid-2028 (MEES) and first-train startup 3Q 2026 are Update-agent timeline items, not discoveries.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  }
+]

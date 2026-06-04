@@ -9,34 +9,15 @@
     "old_value": "Petronas International Co Ltd",
     "new_value": "Petronas International Co Ltd [80%]; Paradise Oil Company [20%]",
     "confidence": "green",
-    "source_tier": "primary (sponsor IR) + trade press",
+    "source_tier": "primary/regulatory (sponsor press release + national oil company) + multiple independent corroborations",
     "ref_field": "Owner [ref]",
     "ref_urls": [
       "https://www.petronas.com/media/media-releases/petronas-and-staatsolie-declare-commerciality-sloanea-field-marking-surinames",
-      "https://www.offshore-energy.biz/petronas-clears-key-milestone-for-surinames-first-offshore-gas-development/"
+      "https://www.staatsolie.com/en/news/staatsolie-approves-commercial-field-for-sloanea-1-gas-discovery-in-block-52/",
+      "https://www.ogj.com/exploration-development/news/55330700/petronas-declares-suriname-sloanea-field-commercial-advances-toward-development"
     ],
-    "source_notes": "Petronas/Staatsolie Declaration of Commerciality for the Sloanea field, Block 52 (14 Nov 2025) states PETRONAS holds 80% participating interest (and is operator) with Paradise Oil Company (POC), a Staatsolie subsidiary, holding the remaining 20%. GEM currently lists only Petronas as owner; this completes the ownership to reflect the 80/20 Block 52 / Sloanea participating-interest split that underpins the integrated upstream+FLNG export project. Percentages are upstream field participating interests (the development basis for this integrated FLNG export project), NOT separate terminal-equity figures — flag for reviewer confirmation that GEM wants the field PI split mirrored on the terminal owner cell.",
-    "scope_note": "Single-unit terminal (UnitName '--'); applies to the sole unit row.",
-    "researcher_initials": "AI-draft (sweep)"
-  },
-  {
-    "terminal_id": "T100001048294",
-    "unit_id": "G100001055425",
-    "terminal_name": "Petronas FLNG Terminal",
-    "unit_name": "--",
-    "country": "Suriname",
-    "field_name": "LatestPlannedStartYear",
-    "old_value": "2031",
-    "new_value": "2030",
-    "confidence": "green",
-    "source_tier": "trade press (2+ independent) + sponsor milestone",
-    "ref_field": "StartDate [ref]",
-    "ref_urls": [
-      "https://www.offshore-energy.biz/petronas-clears-key-milestone-for-surinames-first-offshore-gas-development/",
-      "https://www.petronas.com/media/media-releases/petronas-and-staatsolie-declare-commerciality-sloanea-field-marking-surinames"
-    ],
-    "source_notes": "Following the 14 Nov 2025 Declaration of Commerciality, current reporting (Offshore Energy, Energy Intelligence, Global Flow Control) consistently puts first gas in 2030, with FID in H2 2026. GEM has both OriginalPlannedStartYear and LatestPlannedStartYear at 2031. Updating LatestPlannedStartYear only to 2030 (leaving OriginalPlannedStartYear=2031 as the historical original plan). FIDYear already correct at 2026.",
-    "scope_note": "Single-unit terminal (UnitName '--'); applies to the sole unit row.",
+    "source_notes": "On the 14 Nov 2025 Declaration of Commerciality for the Sloanea field (Block 52), PETRONAS (operator) holds 80% participating interest and Paradise Oil Company (POC), a Staatsolie subsidiary, holds the remaining 20%. This supersedes the GEM row's current 'Petronas sole owner since ExxonMobil exited late 2024' framing (sourced to an April 2025 article). GEM owner name 'Petronas International Co Ltd' retained for the 80% stake to preserve the existing entity link; 20% Paradise Oil partner added. NOTE: equity here is the upstream Block 52 PSC interest, which GEM already uses as the Owner basis for this proposed FLNG; reviewer to confirm this is the intended owner basis for the terminal facility vs. a future facility-level SPV.",
+    "scope_note": "Project-level field; single unit so no multi-row propagation needed.",
     "researcher_initials": "AI-draft (sweep)"
   }
 ]

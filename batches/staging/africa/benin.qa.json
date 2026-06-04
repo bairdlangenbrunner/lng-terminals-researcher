@@ -1,22 +1,32 @@
 [
   {
-    "category": "no_change",
+    "category": "data_quality",
     "terminal_id": "T100000130668",
     "unit_id": "G100002066800",
     "terminal_name": "Benin FSRU",
-    "issue": "TotalEnergies/Republic of Benin import proposal (0.5 mtpa FSRU feeding Maria Gleta power): confirmed dead. Proposed 2019, target 2021 missed, shelved 2021, inferred cancelled 2024. No activity since ~2020.",
+    "issue": "gem.wiki/Benin_FSRU has broken citations: reference #1 (TotalEnergies press release) renders with a missing title, and reference #3 throws 'Invalid <ref> tag; no text was provided'. Underlying source URL is live and correct; the wiki markup is malformed. Does not affect the GEM DB record, only the public wiki rendering.",
     "severity": "low",
-    "suggested_action": "No change. Cancelled status stands.",
+    "suggested_action": "Fix the malformed <ref> tags on the Benin_FSRU wiki page (re-add the press-release title and the empty named-ref body).",
     "researcher_initials": "AI-draft"
   },
   {
-    "category": "no_change",
+    "category": "status_timeline",
+    "terminal_id": "T100000130668",
+    "unit_id": "G100002066800",
+    "terminal_name": "Benin FSRU",
+    "issue": "Standard-tier dev-pipeline/dormancy confirm: Benin FSRU (Total) remains cancelled — no revival or new milestone found in 2024-2026 search; GEM's inferred cancelled/2024 is corroborated by continued silence. No status change to stage (no source for a different status; fetch_timeline endpoint is down regardless).",
+    "severity": "low",
+    "suggested_action": "No action — confirms current 'cancelled' status; blank-ref fills staged separately.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
     "terminal_id": "T100000130246",
     "unit_id": "G100002024600",
     "terminal_name": "Cotonou FSRU",
-    "issue": "Gasol/SOCAR Cotonou FSRU: confirmed dead (proposed 2012, shelved 2017, inferred cancelled 2019). No revival found.",
+    "issue": "Standard-tier dev-pipeline/dormancy confirm: Cotonou FSRU (Gasol/SOCAR) remains cancelled — Gasol-SOCAR project never advanced past the 2012 alliance; no revival found. GEM's inferred cancelled/2019 corroborated.",
     "severity": "low",
-    "suggested_action": "No change. Cancelled status stands.",
+    "suggested_action": "No action — confirms current 'cancelled' status; blank-ref fills staged separately.",
     "researcher_initials": "AI-draft"
   }
 ]

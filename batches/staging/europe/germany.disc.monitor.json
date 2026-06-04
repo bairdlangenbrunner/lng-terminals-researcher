@@ -1,0 +1,26 @@
+[
+  {
+    "country": "Germany",
+    "candidate_name": "Hamburg / Moorburg FSRU (dropped LNG site)",
+    "sponsor_or_proposer": "Free and Hanseatic City of Hamburg (Mayor Tschentscher / Environment Senator Kerstan) — government-floated; no commercial terminal sponsor named",
+    "first_observed_batch": "2026-06 discovery",
+    "last_observed_batch": "2026-06 discovery",
+    "current_state": "Floating LNG terminal in Hamburg's Moorburg harbour district was floated as one of the LNG-Acceleration-Act (LNGG) candidate locations in 2022, then stopped in October 2022. Reported reason: the floating platform would have required dredging enormous amounts of silt. Removed from the LNGG annex (alongside Rostock/Port) in the 2022/2023 site-list revision; superseded by the operating Brunsbüttel FSRU and onshore terminal. No commercial sponsor, no FEED/permit/FID — never reached a concrete project step.",
+    "missing_threshold_elements": "Sponsor (no specific commercial terminal developer — only the city government); Concrete step (dropped at site-analysis stage; no FEED/permit/FID/charter). Location is the only element present (Hamburg, Moorburg harbour district).",
+    "watch_for": "Any revival under a named commercial sponsor with a concrete step (charter, FEED, permit, EU PCI listing). Effectively dead since Oct 2022 — re-check ~12 months; very unlikely to revive given Brunsbüttel covers the Hamburg-proximate market.",
+    "best_lead_url": "https://www.hamburger-energietisch.de/gas/lng-terminals/lng-terminal-in-hamburg/",
+    "notes": "Genuinely absent from GEM (no hamburg/moorburg key in dedup_index; grep of gem_export.csv finds no Hamburg/Moorburg terminal). Logged to monitor so it is not re-discovered every sweep. Corroborating cancellation source: https://www.cleanenergywire.org/factsheets/liquefied-gas-does-lng-have-place-germanys-energy-future (\"Another floating terminal with government support in Hamburg was cancelled\"). Both URLs PASS url_verifier. Hamburger Energietisch is an NGO/citizen-energy page used as a LEAD only (not GEM-derived; anti-circularity OK). researcher_initials: AI-draft (discovery sweep)."
+  },
+  {
+    "country": "Germany",
+    "candidate_name": "Darchau compact bio-LNG production plant",
+    "sponsor_or_proposer": "JV of Agrarvereinigung eG Darchau, Ruhe Biogas (Germany), and Ecospray (Italy)",
+    "first_observed_batch": "2026-06 discovery",
+    "last_observed_batch": "2026-06 discovery",
+    "current_state": "Operational farm-scale bio-LNG liquefaction plant at Darchau, Lower Saxony. 500 kW, initial capacity ~3 tonnes/day of liquefied biomethane, pitched as a model to replace ~1.3 million litres/yr of fossil diesel on farms. This is distributed micro-scale biomethane liquefaction (on-farm fuel production), not an LNG import/export terminal.",
+    "missing_threshold_elements": "Scope/scale: a 3 t/day farm liquefaction skid is well below the LNG-terminal threshold and reads as distributed fuel production / bunkering-adjacent rather than a tracked terminal. Flagged for human scope call rather than auto-staged.",
+    "watch_for": "Whether the methodology counts a standalone small-scale biomethane LIQUEFACTION node as an in-scope export/liquefaction terminal (project scope is 'all scales except bunkering'). If a larger merchant bio-LNG liquefaction plant with grid/market send-out is announced, re-evaluate as a possible new_terminal.",
+    "best_lead_url": "https://lngprime.com/lng-terminals/germany-gets-small-bio-lng-production-plant/",
+    "notes": "Genuinely absent from GEM (no darchau key in dedup_index; grep finds nothing). Held at monitor as a borderline-scope item — conservative per Discovery SOP §3 / brief. URL PASSES url_verifier (tokens 'Darchau', 'bio-LNG'). researcher_initials: AI-draft (discovery sweep)."
+  }
+]
