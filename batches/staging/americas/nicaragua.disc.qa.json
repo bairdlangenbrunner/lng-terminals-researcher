@@ -1,0 +1,12 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130966",
+    "unit_id": "G100002096600",
+    "terminal_name": "Puerto Sandino FSRU",
+    "issue": "Status-progression signal on existing GEM row (not a discovery). As of NFE Q1 2025 earnings (reported May 2025), the 300 MW Puerto Sandino power plant is 100% complete and the jetty + floating storage unit are ~95% complete, with NFE chief Wes Edens stating it is 'the last of the terminals that we expect to go operational' and expecting completion 'within the next month or two' (i.e. mid-2025). GEM currently has Status=construction/Substatus=actual. Worth verifying whether the terminal reached operating status in 2025. Separately note: recent reporting describes the unit serving Puerto Sandino as a floating STORAGE unit (FSU, Energos Princess, 138,000 cbm) at the jetty with regas onshore, while the Energos Freeze (originally floated for this site) was reassigned to NFE's Pepillo Salcedo / Manzanillo terminal in the Dominican Republic (operational target Sep 2025). GEM's FloatingVesselName=Energos Princess is consistent with current reporting; the FSRU-vs-FSU framing may warrant a methodology check but is not a name error.",
+    "severity": "medium",
+    "suggested_action": "Route to an Update batch: pull the existing status timeline (fetch_timeline currently down) and verify whether Puerto Sandino reached operating in 2025 vs. remaining in construction; confirm the floating-unit classification (FSU vs FSRU) against the methodology. Source leads: https://lngprime.com/americas/nfe-says-nicaragua-lng-to-power-project-almost-complete/131802/",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  }
+]

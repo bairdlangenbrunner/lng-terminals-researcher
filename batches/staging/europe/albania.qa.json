@@ -1,22 +1,52 @@
 [
   {
-    "category": "no_change",
+    "category": "citation",
+    "terminal_id": "T100000130424",
+    "unit_id": "G100002042400",
+    "terminal_name": "Eagle FSRU",
+    "issue": "Both citation domains backing the Eagle FSRU row are dead. eagle-lng.com/energia_falcione_lng_regasification_plant.html returns HTTP 000 (host no longer resolves) and the EU PCI list https://ec.europa.eu/energy/sites/ener/files/documents/pci_list_gas.pdf fails url_verifier (PDF returns no extractable text — scanned/image or rotted deep-link after the EU portal redesign). Between them these two URLs are the ONLY sources cited for FacilityType, Owner, Capacity (8.10 mtpa), ProposalDate (Dec 2008), Pipelines, and Cost (EUR 1bn). The whole row currently rests on dead links.",
+    "severity": "high",
+    "suggested_action": "Replace or blank the dead [ref]s per Update SOP §7.2. No live replacement carrying these values was found this pass (sourcewatch Eagle FLNG Terminal page returns 403; the gem.wiki article narrates the same facts but is GEM's own wiki, not an independent source). Candidate live leads to vet next batch: a TradeWinds 'Levan LNG' article and a SlideShare 'Eagle LNG Terminal and Pipeline' deck surfaced in search but were not verified (likely paywalled/non-primary). The terminal is cancelled (pre-2010 proposal), so this is low-urgency archival sourcing, not a data-currency problem.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_ref",
+    "terminal_id": "T100000130424",
+    "unit_id": "G100002042400",
+    "terminal_name": "Eagle FSRU",
+    "issue": "Worklist blank-ref targets Status [ref], ShelvedYear [ref], CancelledYear [ref], StopYear [ref] are all blank. The underlying values (cancelled; Shelved 2010; Cancelled 2012; Stop 2012) are GEM-internal inferences (ShelvedCancelledStatusType = 'inferred') with no locatable live, value-bearing source — the only sources that ever discussed the project are the two dead URLs above, and there has been no news of the project since 2008.",
+    "severity": "low",
+    "suggested_action": "Leave these four [ref]s blank per Rule F (no orphan [ref] — never cite a URL that does not contain the cited value). Filling them would require a live source stating the 2010/2012 inferred years, which does not exist. No action this batch.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
     "terminal_id": "T100000130924",
     "unit_id": "G100002092400",
     "terminal_name": "Port of Vlora FSRU",
-    "issue": "Verified still shelved/dead. Excelerate's planned Excelsior FSRU for Vlora was instead deployed to Germany's Wilhelmshaven 2 (operating 2025); no recent Vlora progress. GEM 'shelved / inferred 2y' (ShelvedYear 2024) remains appropriate. No field edit.",
+    "issue": "Dev-pipeline check (shelved / inferred 2 y). The 2021 Excelerate + ExxonMobil Vlora FSRU framework has shown no progress since 2022: Excelerate's FSRU Excelsior — explicitly slated to move from Israel to Vlora for a Q2-2023 start — was instead chartered to the German government in Oct 2022 and deployed at Wilhelmshaven, and portseurope (verified) reports 'no progress' on the Vlora and Bar terminals. The April 2026 Vlora deal is a DIFFERENT project under different principals (Venture Global / Aktor LNG / Albgaz), not a revival of this Excelerate FSRU unit (see monitor record + Tirana Examiner). ResearcherNotesUnit already states 'RR (7/25): infer cancelled in the 26 cycle with no updates'.",
+    "severity": "medium",
+    "suggested_action": "Escalate Status shelved (inferred 2 y) -> cancelled (inferred) next cycle, consistent with RR's existing note and the no-progress evidence. NOT staged as a Status field edit this batch because the fetch_timeline endpoint is DOWN and status changes require pulling the existing timeline first; record this finding only. When fetch_timeline is reachable, pull G100002092400's timeline and apply the cancellation in a follow-on Update batch.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_ref",
+    "terminal_id": "T100000130924",
+    "unit_id": "G100002092400",
+    "terminal_name": "Port of Vlora FSRU",
+    "issue": "Worklist blank-ref targets Status [ref], ShelvedYear [ref], StopYear [ref] are blank. The values (shelved; Shelved 2024; Stop 2024) are GEM-internal inferences (ShelvedCancelledStatusType = 'inferred'); no primary source states a 2024 shelving/stop year. The live prnewswire and LNG Prime sources on the row document the 2021 proposal and the 2022 Israel-to-Albania FSRU plan, not a 2024 shelving.",
     "severity": "low",
-    "suggested_action": "No change. As inferred-shelved ages toward the 4y inferred-cancelled threshold, re-check for any revival.",
+    "suggested_action": "Leave Status [ref], ShelvedYear [ref], StopYear [ref] blank per Rule F. No live value-bearing source exists for the inferred 2024 years. If the status is escalated to cancelled next cycle (see status_timeline note), the corresponding year [ref]s remain inference-only and should stay blank unless a dated source emerges.",
     "researcher_initials": "AI-draft"
   },
   {
     "category": "no_change",
-    "terminal_id": "T100000130424",
-    "unit_id": "G100002042400",
-    "terminal_name": "Eagle FSRU",
-    "issue": "Cancelled (Gruppo Falcione, Levan/Fier; shelved 2010, cancelled 2012) — no revival signal. GEM 'cancelled / inferred 4y' correct. No field edit.",
+    "terminal_id": "T100000130924",
+    "unit_id": "G100002092400",
+    "terminal_name": "Port of Vlora FSRU",
+    "issue": "Dev-pipeline unit re-verified this batch (last GEM update 2025-07-09, ~11 months). Existing citations re-checked live: prnewswire Excelerate/ExxonMobil/Albania study release PASS; LNG Prime 'move FSRU from Israel to Albania' PASS. No populated field (FacilityType, Owner, Operator, Parent, Proposal 2021, planned start 2023, location) is verified-different from a current source.",
     "severity": "low",
-    "suggested_action": "No change.",
+    "suggested_action": "No field change. Logged as a dev-pipeline re-verify (no-change) rather than a blue updates cell to avoid writing to the all-fields sheet. Only the inferred status warrants a future move (see status_timeline note).",
     "researcher_initials": "AI-draft"
   }
 ]

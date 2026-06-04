@@ -1,0 +1,12 @@
+[
+  {
+    "category": "fsru_sync",
+    "terminal_id": "T100000130890",
+    "unit_id": "G100002089000",
+    "terminal_name": "SLNG 2 LNG Terminal",
+    "issue": "Discovery sweep confirmed SLNG 2 (Singapore's second LNG terminal, the proposed 5 mtpa FSRU at Jurong Port) is already in GEM, but the GEM row carries no FSRU vessel identity. Sources establish: newbuild FSRU chartered from a subsidiary of Mitsui O.S.K. Lines (MOL); 200,000 m3 storage; ~5 MTPA regas; built by Hanwha Ocean, delivery by Oct 2027, grid connection 2030; moored at Jurong Port (298.8m LOA x 51.0m beam). No public vessel name yet. GEM row should record VesselOwner=MOL subsidiary, Floating=True (already set), and the FSRU should be cross-checked against the carrier project once a vessel name/IMO is published (FSRU sync rule).",
+    "severity": "low",
+    "suggested_action": "UPDATE agent: enrich SLNG 2 row with FSRU charter details (MOL owner, Hanwha Ocean builder, 200,000 m3, Oct-2027 delivery, Jurong Port mooring) and run fsru_sync_check once a vessel name/IMO exists. Source: https://lngprime.com/vessels/hanwha-ocean-kicks-off-work-on-singapores-first-fsru/167044/",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  }
+]

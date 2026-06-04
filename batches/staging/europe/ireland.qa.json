@@ -1,42 +1,82 @@
 [
   {
+    "category": "data_consistency",
+    "terminal_id": "T100000130855",
+    "unit_id": "G100002085500",
+    "terminal_name": "Predator FSRU",
+    "issue": "Status=proposed but ShelvedYear=2024 and StopYear=2024 are populated (ShelvedCancelledStatusType=inferred). The shelved/stop years are an inference, not sourced. Re-verification contradicts them: Predator Oil & Gas's May 2025 operational update presents the Mag Mell FSRU as the company's 'preferred option' for Irish energy security and weighed registering a Morocco gas-infrastructure Expression of Interest (deadline 23 Jul 2025) using the Mag Mell template — i.e. the sponsor still treated the project as live in 2025, well after the inferred 2024 shelving. The row is internally inconsistent (active-proposed vs shelved-2024).",
+    "severity": "medium",
+    "suggested_action": "Decide a single coherent state. Either (a) keep Status=proposed and CLEAR ShelvedYear/StopYear (they are unsourced and contradicted by May 2025 sponsor activity), or (b) if GEM intends 'dormant/stalled', set status accordingly via the timeline workflow. Do NOT leave proposed + ShelvedYear 2024 standing. This is a status_timeline-adjacent decision — route the status change (if any) through the timeline workflow, not a direct Status field edit.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_ref",
+    "terminal_id": "T100000130855",
+    "unit_id": "G100002085500",
+    "terminal_name": "Predator FSRU",
+    "issue": "Worklist blank-ref targets ShelvedYear [ref] and StopYear [ref] (both blank; ShelvedYear=2024, StopYear=2024 populated). NO ref-fill was staged: no source states a 2024 shelving/stop for Predator/Mag Mell. The values are GEM's own inference (ShelvedCancelledStatusType=inferred), and the most recent sponsor signal (May 2025 operational update, GEM.wiki PASS) shows the project still being actively promoted. Filling these [ref]s would manufacture a citation for a non-event (Rule F: no orphan ref, and here no honest ref exists).",
+    "severity": "low",
+    "suggested_action": "Resolve via the data_consistency note above (clear the unsourced ShelvedYear/StopYear, which also removes the blank-ref gap), rather than sourcing a 2024 shelving that did not occur.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "link_rot",
+    "terminal_id": "T100000130855",
+    "unit_id": "G100002085500",
+    "terminal_name": "Predator FSRU",
+    "issue": "Status [ref] https://www.advfn.com/stock-market/london/PRD/stock-news/95987132/predator-oil-gas-holdings-plc-operational-update returns HTTP 403 (FAIL on url_verifier). The underlying Predator operational-update RNS content still exists but is access-blocked on ADVFN and on lse.co.uk (also 403). LNG Prime (Predator/Hoegh FSRU) and the GEM.wiki Predator page both PASS as accessible alternatives.",
+    "severity": "low",
+    "suggested_action": "Replace the ADVFN Status [ref] with an accessible source for Predator's ongoing 'proposed' status (e.g. https://lngprime.com/lng-terminals/predator-working-with-hoegh-lng-and-jumbo-on-irish-fsru-project/23439/), ideally a 2024-2025 RNS once an open mirror is found.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_health",
+    "terminal_id": "T100000130855",
+    "unit_id": "G100002085500",
+    "terminal_name": "Predator FSRU",
+    "issue": "planned_start_slipped: OriginalPlannedStartYear=LatestPlannedStartYear=2024, now ~2 years past with no construction. No revised start date found; the project remains a desktop/pre-permitting concept.",
+    "severity": "low",
+    "suggested_action": "Once the status question above is resolved, update LatestPlannedStartYear if a sourced revised target appears; otherwise leave and revisit next cycle.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "link_rot",
+    "terminal_id": "T100000131135",
+    "unit_id": "G100002113500",
+    "terminal_name": "Pilot Cork FSRU",
+    "issue": "Every Pilot LNG ref on this record is dead. Status [ref], ShelvedYear [ref], StopYear [ref] = https://www.pilotlng.com/projects -> HTTP 404. Owner [ref], Capacity [ref], Location [ref] = https://www.pilotlng.com/cork -> HTTP 404. Pilot LNG's site no longer carries the Cork FSRU pages, consistent with the existing RR note (last reference found 10/22) and the shelved/confirmed status.",
+    "severity": "medium",
+    "suggested_action": "The shelved status itself still holds (no revival found in 2025-2026), so no status change. Replace the dead pilotlng.com refs with durable sources: an archived (Wayback) snapshot of the pilotlng.com/cork page for owner/capacity, and trade press (e.g. S&P 'New blow for Irish LNG as plans shelved for floating terminal at Cork') or Port of Cork coverage for the shelving. Until replaced, these citations are unsupported.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "link_rot",
+    "terminal_id": "T100001048053",
+    "unit_id": "G100001054972",
+    "terminal_name": "Gas Networks Ireland LNG Terminal",
+    "issue": "Status [ref] and Owner [ref] both = the Bloomberg article https://www.bloomberg.com/news/articles/2025-03-04/ireland-approves-lng-facility-amid-energy-security-concerns -> HTTP 403 (paywall/bot-block) on url_verifier. Content (March 2025 government approval) is unchanged but not machine-verifiable. Note: the freshly staged Location/State-Province update uses three PASSing sources (gasnetworks.ie, RTE, maritime-executive), so the location citation is solid.",
+    "severity": "low",
+    "suggested_action": "Optionally swap the Bloomberg Status/Owner [ref] for an accessible equivalent confirming GNI as state owner/operator and the March 2025 approval, e.g. https://www.lngindustry.com/floating-lng/06032025/irish-government-approves-development-of-state-led-strategic-gas-emergency-reserve/ (PASS) or the gasnetworks.ie SGER project page (PASS).",
+    "researcher_initials": "AI-draft"
+  },
+  {
     "category": "status_timeline",
     "terminal_id": "T100000130464",
     "unit_id": "G100002046401",
     "terminal_name": "Shannon FSRU",
-    "issue": "Major planning progress not yet reflected. GEM shows Status=proposed with OriginalPlannedStartYear=LatestPlannedStartYear=2022 (stale by ~4 yrs). Sept 2024 the High Court QUASHED An Bord Pleanala's Oct-2023 refusal; Mar 2025 ABP withdrew its appeal-leave application; Mar 2025 a 600 MW power plant + 120 MW BESS at the Shannon Technology & Energy Park was GRANTED permission (now under judicial review by Friends of the Irish Environment). 30 May 2025 Shannon LNG Ltd (subsidiary of New Fortress Energy) REACTIVATED its EUR 650m application (incl. FSRU, jetty, onshore receiving facilities) to ABP; a decision was expected later in 2025 and Shannon LNG was to resubmit updated info. Net: the LNG terminal itself still has NO final approval, so Status=proposed remains correct, but the planned-start years (2022) are clearly obsolete and the planning history needs a timeline refresh.",
-    "severity": "high",
-    "suggested_action": "Do NOT change Status (terminal still unconsented). Refresh OriginalPlannedStartYear/LatestPlannedStartYear once a firm new in-service date is published (none found yet — do not guess). Add timeline entries for: 2023 refusal, Sept-2024 High Court quashing, Mar-2025 ABP appeal withdrawal, Mar-2025 power-plant permission, May-2025 reactivated terminal application. Watch for the ABP decision on the reactivated application.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "status_timeline",
-    "terminal_id": "T100000130855",
-    "unit_id": "G100002085500",
-    "terminal_name": "Predator FSRU",
-    "issue": "Internal inconsistency + likely shelved/abandoned. GEM has Status=proposed but ShelvedYear=2024 already filled (proposed status contradicts a populated ShelvedYear). The Mag Mell FSRU (Predator Oil & Gas, ~50 km off Co. Cork via the disused Kinsale Head pipeline) has had no substantive Irish project progress in 2+ years; Predator's operational focus has shifted to Morocco and Trinidad, and the company has signalled it may repurpose the Mag Mell FSRU template for a Moroccan gas-infrastructure tender (EoI targeted by 23 Jul 2025). Per lifecycle rules, a proposed unit with >2 yr of no updates is an inferred-shelved candidate.",
+    "issue": "Procedural milestone (no status change): Shannon LNG (NFE subsidiary) reactivated and resubmitted its planning application in May 2025; An Coimisiun Pleanala (formerly An Bord Pleanala) is now scheduled to decide the reactivated Shannon Technology and Energy Park application (incl. FSRU/jetty/onshore facilities) by 13 Jan 2026. NFE was also reported exploring a data-centre angle to revive the ~EUR650m plan. Status remains 'proposed'; the LNG-terminal element has NOT received permission (the March 2025 ABP grant was for the power plant + battery storage, not the regas/FSRU).",
     "severity": "medium",
-    "suggested_action": "Reconcile Status with the populated ShelvedYear=2024: set Status to shelved (substatus 'inferred' per the >2yr no-update rule), or confirm/clear ShelvedYear if the project is deemed still live. Status change goes via timeline review, not a direct Status field edit. Note the Morocco pivot in the wiki.",
+    "suggested_action": "Watch the An Coimisiun Pleanala decision due ~13 Jan 2026; if the FSRU/regas element is granted or refused, update status via the timeline workflow (fetch_timeline endpoint is DOWN, so route through QA/timeline, not a direct Status edit). Existing Status [ref] (RTE 2025-05-30) is current and PASSes.",
     "researcher_initials": "AI-draft"
   },
   {
-    "category": "naming",
-    "terminal_id": "T100001048053",
-    "unit_id": "G100001054972",
-    "terminal_name": "Gas Networks Ireland LNG Terminal",
-    "issue": "Researcher note (RR 7/25) asked to rename the terminal once an official name/location is provided. Both now exist: the project's official name is the 'Strategic Gas Emergency Reserve' (SGER), a State-led, emergency-only FSRU owned/operated by Gas Networks Ireland; selected site = Cahiracon, Co. Clare (Shannon Estuary), announced 26 Nov 2025. FSRU ~300 m LOA, ~170,000 m3 LNG storage. (Location/State filled via updates; rename + capacity left for editor discretion.)",
+    "category": "data_health",
+    "terminal_id": "T100000130464",
+    "unit_id": "G100002046401",
+    "terminal_name": "Shannon FSRU",
+    "issue": "planned_start_slipped: OriginalPlannedStartYear=LatestPlannedStartYear=2022, now ~4 years past. Realistic earliest in-service is well beyond 2022 given the application is still pending a Jan 2026 decision. StartDate [ref] is a 2019 ENTSOG TYNDP spreadsheet (stale).",
     "severity": "low",
-    "suggested_action": "Consider renaming the terminal to reference the Strategic Gas Emergency Reserve / Cahiracon (e.g. 'Shannon Estuary Strategic Gas Emergency Reserve FSRU'). Storage ~170,000 m3 is a vessel storage figure (m3 LNG), not an mtpa baseload sendout — do NOT enter it as Capacity (mtpa). No public mtpa sendout figure found; leave Capacity blank.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "status_review",
-    "terminal_id": "T100000131135",
-    "unit_id": "G100002113500",
-    "terminal_name": "Pilot Cork FSRU",
-    "issue": "GEM has Status=shelved (ShelvedYear 2025; note 'presume shelve next cycle if no updates, last ref 10/22'). A foreshore-licence application (Maritime Area Regulatory Authority ref MUL240042) for the Port of Cork at Whitegate was published Nov 2025, but the applicant on that document is the Port of Cork Company / harbour authority, not clearly Pilot LNG, so it does not confirm Pilot's commercial FSRU is reactivated. No clear 2025-2026 evidence Pilot's project is dead or revived. Insufficient to change status either way.",
-    "severity": "low",
-    "suggested_action": "Hold Status=shelved. Monitor the Port of Cork / Whitegate foreshore process (MUL240042) and any Pilot LNG announcement to see whether Pilot's FSRU is being revived vs. superseded by the State SGER. Do not edit on current evidence.",
+    "suggested_action": "After the Jan 2026 planning decision, set LatestPlannedStartYear to the sponsor's revised target if one is published; refresh StartDate [ref] off the stale 2019 ENTSOG file. No change staged now (no sourced revised date).",
     "researcher_initials": "AI-draft"
   }
 ]

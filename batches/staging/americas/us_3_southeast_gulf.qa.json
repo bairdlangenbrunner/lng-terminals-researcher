@@ -1,22 +1,72 @@
 [
   {
-    "category": "ownership",
+    "category": "status_timeline",
     "terminal_id": "T100000130221",
-    "unit_id": "G100002022100",
-    "terminal_name": "Elba Island LNG Terminal",
-    "issue": "GEM Parent field reads 'Blackstone Inc [49.0%]; Kinder Morgan Inc [25.5%]; unknown [25.5%]' for all Elba units. Primary sources (Blackstone press release; LNG Prime; Latham & Watkins/EIG advisory) confirm the May 2022 transaction was Blackstone Credit buying EIG's 49% interest in Elba Liquefaction Company (ELC), with Kinder Morgan RETAINING 51% ownership and remaining operator. So the export-liquefaction (ELC) split is Blackstone 49% / Kinder Morgan 51% - the 'unknown 25.5%' is most likely Kinder Morgan (i.e. KM should be ~51%, not 25.5% + a separate unknown 25.5%). The 25.5%+25.5% split appears to be a stale artifact misreading a separate KM '25.5% stake sold for $565M' headline. Also note ownership differs between the import terminal (Southern LNG Company) and the export liquefaction units (ELC) - GEM applies the same Parent string to both. Not staged as an edit because the precise current cap-table allocation and whether import vs export ownership should diverge needs a careful human check.",
+    "unit_id": "G100002022111",
+    "terminal_name": "Elba Island LNG Terminal (Optimization Project)",
+    "issue": "GEM Status=construction. Kinder Morgan's Elba Island optimization project (+0.4 mtpa, raising liquefaction to 2.9 mtpa) is largely complete: per FERC filings the new condensate plant was placed into service 19 Feb 2026, with modifications to MMLS 7 and MMLS 10 still ongoing as of ~Apr 2026. Project may have transitioned (or be transitioning) from construction to operating.",
     "severity": "medium",
-    "suggested_action": "Reconcile Elba Parent to the confirmed ELC structure (Blackstone Inc 49% / Kinder Morgan 51%, KM operator) and consider whether the import-terminal unit should carry a distinct owner from the export-liquefaction units. Refs: https://www.blackstone.com/news/press/blackstone-credit-acquires-49-interest-in-u-s-east-coast-lng-infrastructure-asset/ ; https://lngprime.com/americas/blackstone-takes-49-percent-stake-in-elba-island-lng-export-plant/52193/",
+    "suggested_action": "Verify in-service completion via FERC filings; if the optimization works are fully in service, route a construction->operating Status change to a follow-on Update batch. fetch_timeline endpoint is DOWN, so no Status edit / timeline file staged here. Source: https://lngprime.com/americas/kinder-morgan-gets-doe-ok-to-boost-elba-island-lng-exports/182253/",
     "researcher_initials": "AI-draft"
   },
   {
-    "category": "no-change",
-    "terminal_id": "",
-    "unit_id": "",
-    "terminal_name": "Bienville FSRU; Calypso LNG; Casotte Landing LNG; Compass Port LNG; Floridian LNG; Nopetro LNG; Port Dolphin LNG; Sparrows Point LNG; Strom LNG; American LNG Titusville",
-    "issue": "Quick-verify of the 10 cancelled/dead terminals in this shard: all confirmed still dead with no revival activity in the last 12-24 months. Cancellation years in GEM (Compass Port 2006, Calypso/Casotte 2009, Bienville 2010, Sparrows Point 2013, Port Dolphin 2015, Floridian 2019, Strom/Titusville 2021, Nopetro 2023) are consistent with sources. WATCH-OUT: a 'Sparrows Point mega terminal' is breaking ground at the same Baltimore site (Apr 2026) but it is a CONTAINER terminal, NOT an LNG revival - do not re-open the cancelled Sparrows Point LNG record on that news. No status_timeline changes warranted.",
+    "category": "data_consistency",
+    "terminal_id": "T100000130228",
+    "unit_id": "G100002022801",
+    "terminal_name": "Gulf LNG Terminal (Export Terminal T1-T2)",
+    "issue": "GEM Status=proposed but the same unit carries ShelvedYear=2022 and StopYear=2022 — internally inconsistent (a proposed unit should not have shelved/stop years populated). FERC approved the Gulf LNG (Pascagoula) liquefaction/export conversion in 2019; no public commercial progress (no FID) found in 2024-2026 and the project appears dormant/stalled.",
+    "severity": "medium",
+    "suggested_action": "Reviewer to reconcile Status vs ShelvedYear/StopYear=2022: either Status should be shelved (consistent with the year fields) or the shelved/stop years are stale. Route resolution to a follow-on Update batch. No Status edit staged (status_timeline rule + endpoint down).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dev_pipeline_check",
+    "terminal_id": "T100000130220",
+    "unit_id": "G100002022001",
+    "terminal_name": "Eagle LNG Terminal (Export Terminal T1-T3)",
+    "issue": "Dev-pipeline skim-confirm (GEM Status=shelved, updated 2026-05-20). Confirmed still effectively shelved/stalled: FERC construction deadline extended to 19 Sep 2029; the $542M project is 'sidetracked' and ~67.6 acres of the site were sold to Merus (purchase/sale agreement 26 Nov 2025) for an industrial park. No FID. Status=shelved remains correct.",
     "severity": "low",
-    "suggested_action": "No action; cancelled records remain accurate. Leave as documented cancelled. Refs incl. https://www.offshore-energy.biz/port-dolphin-energy-abandons-lng-project/ ; https://insideclimatenews.org/news/21072023/port-st-joe-florida-lng/ (Nopetro); https://wwals.net/2021/07/21/ghost-company-strom-lng/ (Strom).",
+    "suggested_action": "No change. Verified-current. Sources: https://www.jaxdailyrecord.com/news/2025/nov/03/eagle-lngs-planned-542-jacksonville-facility-sidetracked-land-is-for-sale/ ; https://www.offshore-energy.biz/headwinds-push-florida-lng-project-completion-back-five-years-to-decades-end/",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_consistency",
+    "terminal_id": "T100000130638",
+    "unit_id": "G100002063800",
+    "terminal_name": "Bienville FSRU",
+    "issue": "GEM CancelledYear=StopYear=2010, but TORP Terminal LP's deepwater-port application withdrawal was acknowledged and the MARAD Record of Decision rescinded on 18 Jun 2012 (application withdrawal notice early 2012); the MARAD Record of Decision itself was issued 29 Oct 2010. The cancellation year may be better recorded as 2012 than 2010.",
+    "severity": "low",
+    "suggested_action": "Reviewer to verify CancelledYear 2010 vs 2012 against the Federal Register withdrawal notice (FR 2012-15623, 26 Jun 2012) before any change. (One search summary hinted at a TORP-affiliate Alabama offshore LNG re-filing ~Aug 2025, but no usable corroborating source was found, so it is NOT staged as a finding.)",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_ref_unfilled",
+    "terminal_id": "T100000130223",
+    "unit_id": "G100002022301",
+    "terminal_name": "Floridian LNG Terminal",
+    "issue": "Blank-ref targets ShelvedYear (2017), CancelledYear (2019), StopYear (2019) left UNFILLED: verified sources indicate Floridian (Targa) decided to stop pursuing the LNG project in 2020 (DOE letter dated 1 Oct 2020), and earlier reporting puts the stall at 2015. None of the located sources pin GEM's specific 2017/2019 year values, so filling those [ref]s would create year-mismatched citations.",
+    "severity": "low",
+    "suggested_action": "Reviewer to verify the exact Shelved/Cancelled years against a primary DOE/FERC docket; consider updating CancelledYear toward 2020. Status [ref] filled separately. Source: https://www.naturalgasintel.com/floridas-first-lng-storage-project-on-hold/",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_ref_unfilled",
+    "terminal_id": "T100000130241",
+    "unit_id": "G100002024101",
+    "terminal_name": "Strom LNG Terminal",
+    "issue": "Blank-ref targets FacilityType, Owner, Capacity, CancelledYear (2021), StopYear (2021), Location left UNFILLED beyond Status: located sources (FERC dismissal 2014, WWALS/Tampa Bay Times coverage) document the portable/modular Crystal River export concept and that Strom did not own its site, but do NOT independently confirm GEM's CancelledYear=2021 or the 0.02 bcf/d capacity figure.",
+    "severity": "low",
+    "suggested_action": "Reviewer to source CancelledYear and capacity from the DOE/FERC docket if a [ref] is required; Status [ref] filled. Sources: https://www.lngindustry.com/liquefaction/01092014/ferc-dismisses-strom-lng-export-petition-1314/",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_ref_unfilled",
+    "terminal_id": "T100000130220",
+    "unit_id": "G100002022000",
+    "terminal_name": "Eagle LNG Terminal (Import Terminal)",
+    "issue": "Blank-ref targets CancelledYear (2022) and StopYear (2022) left UNFILLED: the import concept lapsed in favor of the small-scale EXPORT facility, but no independent primary source pins an exact 2022 cancellation year for the import unit (the '2022 / four years' framing traces to GEM's own wiki). Status [ref] filled.",
+    "severity": "low",
+    "suggested_action": "Reviewer to confirm the import-unit CancelledYear from a primary FERC/DOE docket before filling those year [ref]s. Source: https://lngprime.com/americas/eagle-lng-seeks-more-time-to-build-small-scale-facility-in-jacksonville/118595/",
     "researcher_initials": "AI-draft"
   }
 ]

@@ -1,0 +1,22 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000131071",
+    "unit_id": "G100002107100",
+    "terminal_name": "Surat Thani FSRU",
+    "issue": "GEM currently has Surat Thani FSRU as 'shelved', but 2025 reporting describes the EGAT/PTT 5 MTPA southern Thailand FSRU as an active plan supplying the planned EGAT 1,400 MW gas-fired plant in Surat Thani's Phunphin district (target commissioning 2027-2029). This is the FSRU that replaced the cancelled Gulf of Thailand FSRU. Status may warrant revisiting (shelved -> proposed/announced) by the Update agent. fetch_timeline is DOWN, so logging as a note rather than staging a timeline edit.",
+    "severity": "medium",
+    "suggested_action": "Update agent: verify current lifecycle status of Surat Thani FSRU against latest EGAT/PTT and ERC sources; consider status change from shelved if the project is firmly progressing. Source: https://www.enerdata.net/publications/daily-energy-news/egat-and-ptt-plan-5-mtyear-lng-import-terminal-thailand.html",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "coverage_confirmation",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Thailand import terminal universe",
+    "issue": "Discovery sweep found no LNG terminal missing from GEM. All candidates examined map to existing GEM rows: 'third LNG terminal' / Gulf MTP / Map Ta Phut Phase 3 (POSCO E&C EPCC, COD Q1 2029, 5->10.8 MTPA) = Map Ta Phut LNG Terminal 3 (proposed); 'Nong Fab' = Map Ta Phut LNG Terminal 2 (operating, 7.5 MTPA); Surat Thani / southern FSRU = Surat Thani FSRU (shelved). The 7 ERC LNG shipper-license holders (PTT Global LNG, Gulf, EGAT, EGCO, B.Grimm Power, Hin Kong Power, SCG) are importers using third-party access into the consolidated Map Ta Phut complex, not developers of new physical terminals. Hin Kong / Gulf PD / Gulf SRC / Burapa are gas-fired power plants supplied by the new terminal, not import terminals themselves. No export/liquefaction activity in Thailand. Thailand import infrastructure is fully concentrated at the Map Ta Phut/Rayong complex and is comprehensively covered.",
+    "severity": "low",
+    "suggested_action": "No action; coverage confirmed complete for this round.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  }
+]

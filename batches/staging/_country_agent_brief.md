@@ -60,6 +60,11 @@ where `<REGION>` is given in your task prompt (e.g. `europe`) and slug = lowerca
 first. Types: `updates`, `qa`, `wiki`, `entity`, `monitor`, `newterminals`, `newunits`. Each file is
 a JSON list. Use `json.dump(..., ensure_ascii=False, indent=2)`.
 
+AFTER all finding files are written, ALWAYS write `<slug>.done.json` LAST — even when you found
+nothing: `{"slug": ..., "country": ..., "mode": "update", "summary": {"updates": N, "qa": N,
+"wiki": N, "entity": N, "monitor": N, "new": N, "escalation": false}}`. Sweep orchestrators use its
+presence as the resume marker — a country without it is treated as never-run and re-dispatched.
+
 Record schemas (keys EXACT):
 - updates: {terminal_id,unit_id,terminal_name,unit_name,country,field_name(exact GEM header),old_value,new_value,confidence,source_tier,ref_field,ref_urls:[..],source_notes,scope_note,researcher_initials:"AI-draft (sweep)"}
 - qa: {category,terminal_id,unit_id,terminal_name,issue,severity:"high|medium|low",suggested_action,researcher_initials:"AI-draft"}

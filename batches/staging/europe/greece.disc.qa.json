@@ -1,0 +1,22 @@
+[
+  {
+    "category": "discovery_location_ambiguity",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Atlantic SEE FSRU",
+    "issue": "Staged new_terminal 'Atlantic SEE FSRU' (AKTOR 60% / DEPA 40% JV) has a not-yet-finalized site. Sponsor is focusing on Alexandroupolis (where Gastrade's operating Alexandroupolis FSRU and proposed Thrace FSRU already sit), with a second site under consideration (per S&P Global Apr 2026 interview; ProtoThema). It is a distinct project (separate sponsor, separate 20-yr Venture Global SPA, separate FSRU order) - not a Gastrade unit. Location, AssociatedTerminals link, and exact capacity (4.5-5 bcm/y stated; entered as 5.0) should be confirmed before adding; if the FSRU ends up co-sited and capacity-sharing with Alexandroupolis, reviewer should decide terminal-vs-unit modeling.",
+    "severity": "medium",
+    "suggested_action": "On review/addition: confirm final site (Alexandroupolis vs second site) and lat/lng; confirm capacity (4.5-5 bcm/y); set/clear AssociatedTerminals to Alexandroupolis FSRU accordingly; verify FSRU vessel name once an order is placed (autumn 2026 planned) and run fsru_sync_check.py at that point. Re-check in 6-12 months for FID / FSRU order / market test.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130681",
+    "unit_id": "G100002068100",
+    "terminal_name": "Alexandroupolis FSRU",
+    "issue": "Operating Alexandroupolis FSRU (GEM status=operating/actual) had a multi-month outage: suspended late Jan 2025 (booster-pump damage onboard FSRU Alexandroupolis), resumed regasification ~Aug 2025 at reduced capacity, then ramped capacity (Sep and 21 Oct 2025) and took first cargo since the shutdown. Status itself stays 'operating'; flagged for the timeline/notes record since fetch_timeline.py is down. Venture Global also reported holding ~25% of the terminal's regas capacity.",
+    "severity": "low",
+    "suggested_action": "Route to an Update batch: add the 2025 outage->restart->capacity-ramp to the status timeline/researcher_notes once fetch_timeline is reachable; verify current operating capacity. No status change needed.",
+    "researcher_initials": "AI-draft"
+  }
+]

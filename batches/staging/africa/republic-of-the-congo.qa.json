@@ -4,9 +4,9 @@
     "terminal_id": "T100000131123",
     "unit_id": "G100002112301",
     "terminal_name": "Eni Congo FLNG II Terminal",
-    "issue": "GEM Status=construction (Nguya FLNG, 2.4 mtpa, LatestPlannedStartYear=2026). Eni launched Congo LNG Phase 2 ahead of schedule (announced 3 Dec 2025) and exported the first LNG cargo from the Nguya FLNG on/around 9 Feb 2026, entering commercial production and lifting Congo's total liquefaction capacity to 3 mtpa (0.6 Tango + 2.4 Nguya). This is a construction->operating transition (first cargo Feb 2026). Capacity (2.4 mtpa) and ownership (Eni Congo SAU 100% / Eni SpA) match GEM.",
+    "issue": "STATUS CHANGE: GEM has construction/actual (LastUpdated 2025-06-27). The Nguya FLNG (Eni Congo FLNG II / Congo LNG Phase 2) is now OPERATING. Eni launched Phase 2 start-up on 2025-12-02 and the first LNG cargo loaded on 2026-02-07 at Pointe-Noire (Eni + LNG Industry, primary). Construction ran ~35 months from Jan-2023 start. Suggest Status -> operating with StartYear 2026 (actual). GEM LatestPlannedStartYear=2026 already matches the actual start year.",
     "severity": "high",
-    "suggested_action": "Add an 'operating' timeline entry dated 2026 (first cargo ~Feb 2026) after pulling the existing unit timeline; set current status to operating. ActualStartYear=2026 once status flips. (fetch_timeline endpoint down — flag for manual pull.)",
+    "suggested_action": "Route to Update batch: set Status=operating (StartYear 2026; commercial start 2026-02-07). Per workflow, fetch_timeline endpoint is down so the operating timeline node must be added by hand by the user. Also refresh the now-stale Status [ref] (currently the pre-startup 'Wison starts work' lngprime piece) to the Eni first-cargo release https://www.eni.com/en-IT/media/press-release/2026/02/president-congo-and-eni-celebrate-first-lng-cargo.html and StartDate [ref] likewise.",
     "researcher_initials": "AI-draft"
   }
 ]

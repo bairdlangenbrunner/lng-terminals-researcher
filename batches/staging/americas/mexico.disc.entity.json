@@ -1,0 +1,14 @@
+[
+  {
+    "entity_name": "Karpowership",
+    "entity_type": "company",
+    "country_of_hq": "Türkiye",
+    "parent_entity": "Karadeniz Holding AŞ",
+    "rationale_for_new_entity": "Owner/Operator of the proposed Karpowership Yucatán FSRU (LNG-to-power) in Mexico. Karpowership already appears as an Owner/Operator on existing GEM FSRU rows in other countries (Indonesia Amurang, South Africa Coega/Richards Bay/Saldanha Bay, Senegal Karmol Dakar via parent Karadeniz Holding, Brazil Sepetiba Bay), so the entity almost certainly already exists in the shared GEM entity system. Flagging the Mexico reference so the reviewer links the existing entity rather than creating a duplicate.",
+    "lookup_was_run": "RUN: entity_lookup.py 'Karpowership' --country Mexico --remote returned not_found_in_local_data (the local lookup keys off Mexico-specific GEM rows, of which there are none yet) and the remote check returned only a 'New Entity' candidate -- inconclusive, NOT a confirmation the entity is absent. Karpowership is present on GEM FSRU rows in other countries per a direct grep of gem_export.csv.",
+    "lookup_result_summary": "No Mexico GEM row yet references Karpowership; entity exists on non-Mexico GEM FSRU rows. Reviewer should reuse the existing Karpowership / Karadeniz Holding entity IDs.",
+    "referenced_by_terminals": "Karpowership Yucatán FSRU",
+    "referenced_by_units": "",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  }
+]

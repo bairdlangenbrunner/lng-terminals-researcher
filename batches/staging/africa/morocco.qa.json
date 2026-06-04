@@ -1,52 +1,42 @@
 [
   {
-    "category": "verification_log",
+    "category": "no_change",
     "terminal_id": "T100000131161",
     "unit_id": "G100002116100",
     "terminal_name": "Nador FSRU",
-    "issue": "Re-verified (2026-06 sweep): GEM has Nador FSRU as status=shelved, Substatus=confirmed, ShelvedYear=2026, capacity 500 MMcf/d. All confirmed against current reporting. Morocco's energy minister (Leila Benali) suspended the ~$1bn Nador West Med FSRU tender on 2 Feb 2026 citing 'new parameters and assumptions'; tenders (FSRU + national pipeline) had been launched 5 Dec 2025. The shelved/2026 framing in GEM is correct and well-documented in the existing researcher notes. No field edit. Verified sources (all PASS url_verifier): Enerdata, Morocco World News, AGBI. NOTE: the Reuters URL cited in the existing GEM researcher notes / country note (reuters.com/.../moroccos-energy-ministry-puts-gas-pipeline-project-hold-2026-02-02) FAILS verification (HTTP 401, paywall/bot-block) — see separate qa item.",
+    "issue": "Standard-tier dev-pipeline skim-confirm (status=shelved/confirmed, LastUpdated 2026-05-05, 1 month ago). Verified no developments since the May 2026 update: the Dec 2025 ~MAD9.5bn (~US$950m) FSRU + pipeline tenders for Nador West Med remain suspended after the 30 Jan/2 Feb 2026 halt ('new parameters and assumptions'); a top official said new tenders will come 'in due course' but as of June 2026 none have been re-issued. GEM Status, ShelvedCancelledStatusType=confirmed, refs and ResearcherNotesUnit ('plans remain suspended, fresh tenders to be announced in the future') all still accurate. No field change.",
     "severity": "low",
-    "suggested_action": "No change. Representative blue re-verify for the Nador FSRU terminal. Cite Enerdata (https://www.enerdata.net/publications/daily-energy-news/morocco-suspends-tender-lng-import-project-and-pipelines.html) and AGBI (https://www.agbi.com/opinion/oil-and-gas/2026/03/morocco-blinks-on-nador-but-its-gas-strategy-stays-intact/) instead of the failing Reuters URL.",
+    "suggested_action": "No edit. Leave as shelved/confirmed; re-check on any re-tender announcement (would be a status_timeline note, not auto-applied, since fetch_timeline endpoint is down).",
     "researcher_initials": "AI-draft"
   },
   {
-    "category": "data_quality",
-    "terminal_id": "T100000131161",
-    "unit_id": "G100002116100",
-    "terminal_name": "Nador FSRU",
-    "issue": "Planned start year: GEM has OriginalPlannedStartYear=2026 and LatestPlannedStartYear=2026, but the Dec 2025 tender and subsequent reporting (AGBI: 'first gas expected in 2027') give a planned start of 2027, not 2026. This is a verified difference. Because the project is already shelved (ShelvedYear=2026), a planned-start-year edit is low-value, and per the deferred-audit guidance this should be flagged for review rather than auto-edited.",
-    "severity": "low",
-    "suggested_action": "Optional: correct LatestPlannedStartYear (and possibly OriginalPlannedStartYear) from 2026 to 2027 to match the Dec 2025 tender / AGBI framing, OR leave as-is since the project is shelved. Researcher's call. Source: https://www.agbi.com/opinion/oil-and-gas/2026/03/morocco-blinks-on-nador-but-its-gas-strategy-stays-intact/ ; https://www.moroccoworldnews.com/2025/12/271035/morocco-launches-1-billion-gas-pipeline-and-fsru-terminal-tenders/",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "url_decay",
-    "terminal_id": "T100000131161",
-    "unit_id": "G100002116100",
-    "terminal_name": "Nador FSRU",
-    "issue": "The Reuters URL labeled [CONFIRMED] in the prior ChatGPT audit and embedded in Morocco's country note (https://www.reuters.com/sustainability/climate-energy/moroccos-energy-ministry-puts-gas-pipeline-project-hold-2026-02-02/) FAILS url_verifier (HTTP 401 — Reuters paywall/bot-block). It must NOT be used as a [ref] in the xlsx.",
-    "severity": "medium",
-    "suggested_action": "Replace the Reuters citation everywhere with a verified equivalent: Enerdata (https://www.enerdata.net/publications/daily-energy-news/morocco-suspends-tender-lng-import-project-and-pipelines.html), Morocco World News (https://www.moroccoworldnews.com/2026/02/277284/morocco-suspends-1-billion-nador-west-med-lng-terminal-project/), or AGBI (https://www.agbi.com/opinion/oil-and-gas/2026/03/morocco-blinks-on-nador-but-its-gas-strategy-stays-intact/) — all PASS verification.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "data_quality",
+    "category": "no_change",
     "terminal_id": "T100000130824",
     "unit_id": "G100002082400",
     "terminal_name": "Morocco FSRU",
-    "issue": "Over-specified ownership/location vs the official roadmap. GEM has Owner=Parent='Morocco Ministry of Energy, Mining and Sustainable Development [100%]' and Location='Mohammedia Port'. The 2021 AMI did not fix the site (candidates included Nador West Med, Kenitra, Jorf Lasfar, Mohammedia) and the charterer is to be a TSO-created company, not the Ministry. AGBI (Mar 2026) frames a distinct 'Mohammedia FSRU (1.7 bcm/yr)' as one of the projects that can proceed if Nador is delayed — so a Mohammedia FSRU is plausible, but the hard Ministry-100%-owner and fixed-Mohammedia attribution are not firmly sourced.",
-    "severity": "medium",
-    "suggested_action": "Flag the Owner/Parent and Location cells for review; consider softening to 'unknown'/'TBD per TSO' or adding a researcher note that the site/charterer are not yet fixed. Do NOT auto-edit (ambiguous). Sources: https://www.agbi.com/opinion/oil-and-gas/2026/03/morocco-blinks-on-nador-but-its-gas-strategy-stays-intact/ (Mohammedia FSRU 1.7 bcm/yr); MEM 2021 AMI (mem.gov.ma). LastUpdated already 2026-05-05 with a researcher note flagging the uncertainty.",
+    "issue": "Standard-tier dev-pipeline skim-confirm (status=proposed, Floating=True, Location=Mohammedia Port, LastUpdated 2026-05-05). Verified current: Mohammedia (vs Jorf Lasfar) remains the undecided Atlantic-coast second-entry-point site per mid-2025/early-2026 trade press; no FID, no vessel named, no site decision since the May update. GEM owner (Morocco Ministry of Energy, Mining and Sustainable Development), location and refs still accurate. No field change.",
+    "severity": "low",
+    "suggested_action": "No edit. Watch for an Atlantic-coast site decision (Mohammedia vs Jorf Lasfar) and any FSRU vessel/operator selection.",
     "researcher_initials": "AI-draft"
   },
   {
-    "category": "data_quality",
+    "category": "no_change",
     "terminal_id": "T100000130256",
     "unit_id": "G100002025600",
     "terminal_name": "Jorf Lasfar LNG Terminal",
-    "issue": "GEM has status=proposed (ProposalYear 2014, OriginalPlannedStartYear 2025, LatestPlannedStartYear 2030, capacity 7.00 bcm/y). The 2024-2030 gas roadmap identifies Nador West Med as Phase 1 (2024-2027) and treats the Atlantic coast (Jorf Lasfar OR Mohammedia) as a pre-feasibility study, with delivery of the Atlantic-coast terminal in Phase 2 (post-2030). The roadmap does NOT confirm Jorf Lasfar as an active/committed Phase 1 project; the choice between Jorf Lasfar and Mohammedia is unresolved. Existing GEM researcher note (AL2026) already flags that Jorf Lasfar 'doesn't appear to be off the table' but Morocco's primary Atlantic LNG entry point 'remains unclear' and the 7 bcm/y capacity 'might be outdated.' A local source notes a Jorf Lasfar port-extension project (medias24, Apr 2026).",
+    "issue": "Standard-tier dev-pipeline skim-confirm (status=proposed, Capacity 7.00 bcm/y => 5.15 mtpa, LastUpdated 2026-05-05). Verified current: Jorf Lasfar remains a candidate Atlantic-coast site (alternative to Mohammedia) and is not off the table despite the Nador suspension, consistent with the existing ResearcherNotesUnit (Apr 2026 medias24 Jorf Lasfar port-extension article) and ResearcherNotesProject 2024-2030 roadmap framing. No new sponsor/FID/capacity confirmation since the May update; owner (ONEE / parent SIGER-ERGIS) unchanged. No field change.",
     "severity": "low",
-    "suggested_action": "No edit (already current, LastUpdated 2026-05-05, with an apt researcher note). Confirm the 'proposed' status and 7.00 bcm/y capacity remain the researcher's intent given the roadmap's pre-feasibility framing. Source: https://www.agbi.com/opinion/oil-and-gas/2026/03/morocco-blinks-on-nador-but-its-gas-strategy-stays-intact/ ; existing note cites https://medias24.com/2026/04/06/port-de-jorf-lasfar-decryptage-du-nouveau-projet-dextension-1654925/",
+    "suggested_action": "No edit. The researcher's own note already flags that capacity (7 bcm/y nominal) may be outdated; leave as-is absent a sourced revised figure.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "discovery_signal",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Morocco (project-level context)",
+    "issue": "While skim-confirming the dev pipeline, surfaced an energy-minister statement (reported via Morocco-press/North Africa Post, undated-2025/26) describing an ambition of up to SEVEN LNG receiving terminals: Nador, Tanger, Mohammedia, Jorf Lasfar and Dakhla. Tanger is a site NOT currently represented in GEM's Morocco rows. This is a discovery-adjacent lead, not an update-row finding.",
+    "severity": "low",
+    "suggested_action": "Defer to the concurrent Morocco discovery agent. If unconfirmed there, treat Tanger as a monitor candidate (ministerial aspiration only; no sponsor/site/concrete step yet) rather than a new GEM record.",
     "researcher_initials": "AI-draft"
   }
 ]

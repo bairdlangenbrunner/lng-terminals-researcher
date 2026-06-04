@@ -1,0 +1,81 @@
+[
+  {
+    "terminal_id": "T100000131115",
+    "unit_id": "G100002111500",
+    "terminal_name": "Sycar Venezuela FLNG Terminal",
+    "unit_name": "--",
+    "country": "Venezuela",
+    "field_name": "Status",
+    "old_value": "shelved",
+    "new_value": "shelved",
+    "confidence": "blue",
+    "source_tier": "trade press / single-source dev-pipeline news check",
+    "ref_field": "Status [ref]",
+    "ref_urls": [
+      "https://lngprime.com/americas/sycar-plans-flng-project-in-venezuela/66330/",
+      "https://gnlglobal.com/sycar-firma-mou-con-pdvsa-para-desarrollar-proyecto-de-gnl-en-venezuela/"
+    ],
+    "source_notes": "Dev-pipeline status/news check (last updated 2025-07-25, >3mo). No advance: project remains shelved on the 2022 PDVSA MoU, never reached FID/construction. US OFAC sanctions on Venezuelan oil/gas remain the blocking factor; the 2024 export target was missed. No new milestone found in 2025-2026 trade press attributable to the Sycar FLNG specifically (a separate PDVSA small-scale LNG-by-2027 aspiration exists but is not Sycar advancement). Status unchanged -> blue re-verify, no field edit, no LastUpdated bump beyond this row.",
+    "scope_note": "Single representative blue re-verify for the dev-pipeline terminal (standard tier).",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130626",
+    "unit_id": "G100002062601",
+    "terminal_name": "Delta Caribe Oriental Terminal",
+    "unit_name": "T1",
+    "country": "Venezuela",
+    "field_name": "Status [ref]",
+    "old_value": "",
+    "new_value": "http://abarrelfull.wikidot.com/deltana-caribe-lng-terminal, https://www.ogj.com/pipelines-transportation/article/17275405/pdvsa-iocs-to-build-two-lng-liquefaction-plants",
+    "confidence": "yellow",
+    "source_tier": "secondary aggregator + trade press (status is GEM inference)",
+    "ref_field": "Status [ref]",
+    "ref_urls": [
+      "http://abarrelfull.wikidot.com/deltana-caribe-lng-terminal",
+      "https://www.ogj.com/pipelines-transportation/article/17275405/pdvsa-iocs-to-build-two-lng-liquefaction-plants"
+    ],
+    "source_notes": "Blank Status [ref] fill for the existing 'cancelled' value. Both URLs PASS url_verifier. They document the Delta Caribe / CIGMA three-train liquefaction project; the GEM wiki records no development updates since 2011 and presumes cancellation. The 'cancelled' status is a GEM inference (substatus 'inferred'), not a primary cancellation announcement -> yellow.",
+    "scope_note": "Project-level [ref] fill applies to both unit-rows T1 and T2 (multi-unit project).",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130626",
+    "unit_id": "G100002062602",
+    "terminal_name": "Delta Caribe Oriental Terminal",
+    "unit_name": "T2",
+    "country": "Venezuela",
+    "field_name": "Status [ref]",
+    "old_value": "",
+    "new_value": "http://abarrelfull.wikidot.com/deltana-caribe-lng-terminal, https://www.ogj.com/pipelines-transportation/article/17275405/pdvsa-iocs-to-build-two-lng-liquefaction-plants",
+    "confidence": "yellow",
+    "source_tier": "secondary aggregator + trade press (status is GEM inference)",
+    "ref_field": "Status [ref]",
+    "ref_urls": [
+      "http://abarrelfull.wikidot.com/deltana-caribe-lng-terminal",
+      "https://www.ogj.com/pipelines-transportation/article/17275405/pdvsa-iocs-to-build-two-lng-liquefaction-plants"
+    ],
+    "source_notes": "Blank Status [ref] fill for the existing 'cancelled' value (T2 row of the same multi-unit project as T1). Both URLs PASS url_verifier. Cancelled status is a GEM inference (no updates since 2011) -> yellow.",
+    "scope_note": "Project-level [ref] fill; mirrors T1.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130624",
+    "unit_id": "G100002062401",
+    "terminal_name": "Project Venezuela LNG Terminal",
+    "unit_name": "--",
+    "country": "Venezuela",
+    "field_name": "Status [ref]",
+    "old_value": "",
+    "new_value": "https://www.ogj.com/general-interest/companies/article/17215982/venezuelan-lng-export-project-back-on-track",
+    "confidence": "yellow",
+    "source_tier": "trade press (status is GEM inference)",
+    "ref_field": "Status [ref]",
+    "ref_urls": [
+      "https://www.ogj.com/general-interest/companies/article/17215982/venezuelan-lng-export-project-back-on-track"
+    ],
+    "source_notes": "Blank Status [ref] fill for the existing 'cancelled' value. URL PASSes url_verifier (same Oil & Gas Journal article already cited in this terminal's Owner [ref], used as the live non-wayback form). Documents the Exxon/Mitsubishi/PDVSA/Shell LNG export project; the project was shelved (2002) then cancelled (2004) per GEM. Cancelled status is a GEM inference of a long-dead 2000s proposal -> yellow.",
+    "scope_note": "Single-unit terminal.",
+    "researcher_initials": "AI-draft (sweep)"
+  }
+]

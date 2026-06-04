@@ -1,0 +1,42 @@
+[
+  {
+    "category": "ownership",
+    "terminal_id": "T100001061415",
+    "unit_id": "G100001070362",
+    "terminal_name": "Haldia FSRU",
+    "issue": "GEM records Owner = 'Invenire Petrodyne Ltd' (parent Invenire Energy Pvt Ltd) for the Haldia FSRU. SMP Kolkata/Haldia Dock Complex awarded the 30-year FSRU licence on 2025-09-07 to a CONSORTIUM of Invenire Petrodyne Ltd AND Excelerate Global Operations LLC (Excelerate Energy). Phase 1 capacity 1.5 mtpa, expandable to 3 mtpa, ~$300m phase-1 investment, commissioning targeted H2 2027. Excelerate (a major US LNG/FSRU operator) is the regas/FSU technical partner. Equity split between the two consortium members not disclosed in sources, so no guessed Owner string staged.",
+    "severity": "medium",
+    "suggested_action": "Update Owner (and likely Operator/VesselOwner) to reflect the Invenire Petrodyne + Excelerate consortium once the equity split is confirmed from the concession agreement or sponsor IR. Sources for Status/Capacity/award [ref]: https://indiaseatradenews.com/?p=126939 ; https://indiashippingnews.com/haldia-dock-unveils-new-floating-lng-terminal-project/ . Run entity_lookup for Excelerate before adding (see entity finding).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130801",
+    "unit_id": "G100002080100",
+    "terminal_name": "H-Energy Kakinada LNG Terminal",
+    "issue": "GEM records status = shelved (substatus 'inferred 2 y', ShelvedYear 2024, LastUpdated 2025-09-02). The 2024 IGU report (June 2024) listed this terminal as 'under construction' with completion expected 2026, and H-Energy's own project page still presents Kakinada as an active LNG terminal development (FSU + onshore regas, ~Rs 1,600 crore). No external evidence of post-2024 progress (no construction milestones, financing, or commissioning news in 2025) was found to contradict the GEM shelving, but the IGU 'under construction' classification conflicts with the shelved status.",
+    "severity": "low",
+    "suggested_action": "Confirm whether the shelving stands or whether the IGU 'construction' classification (and any 2025 sponsor activity) warrants reverting toward proposed/construction. fetch_timeline endpoint is down, so this is a note only, not a Status edit. Lead: https://www.henergy.com/lng-kakinada",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "capacity_cost",
+    "terminal_id": "T100000131145",
+    "unit_id": "G100002114500",
+    "terminal_name": "Gopalpur LNG Terminal",
+    "issue": "Cost figures conflict. GEM records Cost = INR 63.54 billion (CostYear 2025). Trade press on the July-2025 positive FID (LNG Prime / Petronet) reports the land-based 5-mtpa terminal at ~INR 23.06 billion (~US$285.5m). Status/FID (FID 2025), capacity (5 mtpa), and the FSRU-to-land-based switch already match GEM. Possible the GEM figure is a different (total/multi-phase or older two-phase) cost basis.",
+    "severity": "low",
+    "suggested_action": "Reconcile the Cost value: verify whether GEM's INR 63.54bn is a total program cost vs the ~INR 23.06bn phase-1 land-based figure, and align CostYear/units. Lead: https://lngprime.com/lng-terminals/indias-petronet-plans-to-build-more-lng-tanks/185680/",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_ref",
+    "terminal_id": "T100000130437",
+    "unit_id": "G100002043700",
+    "terminal_name": "Digha FSRU",
+    "issue": "Worklist flags numerous blank [ref] cells on this and other cancelled/shelved historical FSRUs in this shard (Digha, GAIL Kakinada, Karwar FSRU, Krishna Godavari FSRU, Krishnapatnam FSRU, Kukrahati LNG, Haldia LNG, BPCL Mangalore). No external primary source confirming the specific GEM-recorded values (status/capacity/proposal-shelved-cancelled years) could be verified within this sweep; the projects are long-dormant (cancelled/shelved 2019-2023) with little remaining web footprint. Filling [ref] cells here would require manufacturing citations, which is avoided.",
+    "severity": "low",
+    "suggested_action": "Defer these historical [ref]-fills to a dedicated exhaustive-tier pass with archive/Wayback access; do not fill without a verifiable contemporaneous source. Lower priority than active-pipeline rows.",
+    "researcher_initials": "AI-draft"
+  }
+]

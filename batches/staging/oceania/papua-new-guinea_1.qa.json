@@ -1,0 +1,22 @@
+[
+  {
+    "category": "blank_ref",
+    "terminal_id": "T100000130705",
+    "unit_id": "G100002070501",
+    "terminal_name": "Western LNG Terminal",
+    "issue": "CancelledYear [ref] and StopYear [ref] are blank for CancelledYear=2024 / StopYear=2024. These years are GEM's INFERRED values (ResearcherNotesUnit: 'updated from Shelved to Cancelled since no updates for more than 4 years'); no published source states a 2024 cancellation/stop. Found sources (Horizon's 2020 PNG exit to Arran Energy; Repsol PDL-10 license cancellation) support the project's demise but not the specific 2024 year. Filling these [ref] cells with those sources would be an orphan/non-supporting citation.",
+    "severity": "low",
+    "suggested_action": "Leave CancelledYear/StopYear [ref] blank as inferred-status fields (per ShelvedCancelledStatusType=inferred), OR add a researcher_note documenting that 2024 is the inference date rather than a sourced event. Do not fabricate a year-specific citation.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_quality",
+    "terminal_id": "T100000130304",
+    "unit_id": "G100002030403",
+    "terminal_name": "Papua New Guinea LNG Terminal",
+    "issue": "T3 (cancelled) has FIDYear=2023 with FIDStatus=Pre-FID, but ResearcherNotesUnit says the train was 'reportedly cancelled by companies and no new updates since 2020'. FIDYear=2023 appears to be the original 3-train integrated-plan FID TARGET (FEED 2022 / FID 2023), not an actual FID — consistent with cancelled/Pre-FID but worth confirming the field reflects 'planned' not 'actual' FID.",
+    "severity": "low",
+    "suggested_action": "Confirm FIDYear=2023 is intended as the planned/targeted FID year for the never-sanctioned T3. The supplied [ref] (GEM.wiki page) documents this target.",
+    "researcher_initials": "AI-draft"
+  }
+]

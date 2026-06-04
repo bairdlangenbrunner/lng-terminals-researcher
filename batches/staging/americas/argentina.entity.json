@@ -1,30 +1,19 @@
 [
   {
     "entity_name": "XRG",
-    "entity_type": "parent/owner (corporate)",
+    "entity_type": "company (parent/investor)",
     "country_of_hq": "United Arab Emirates",
     "parent_entity": "Abu Dhabi National Oil Company (ADNOC)",
-    "rationale_for_new_entity": "XRG is ADNOC's international energy / lower-carbon investment company (Abu Dhabi, UAE), spun up in 2024-2025. It became a binding partner in the Eni-led Phase 3 of the Argentina LNG export project via the 12 Feb 2026 Joint Development Agreement (YPF/Eni/XRG, 12 mtpa, two 6-mtpa FLNGs). It must be added as an Owner/Parent on Argentina LNG Phase 3 but is not currently in the GEM entity system.",
-    "lookup_was_run": "RUN: entity_lookup.py 'XRG' --country 'United Arab Emirates' --remote => local not_found; remote returned only a generic 'New Entity' candidate (no named match) => inconclusive, treat as not yet in GEM.",
-    "lookup_result_summary": "not_found_in_local_data; remote found_remote but only the generic 'New Entity' link (no existing XRG record). Reviewer should confirm no existing ADNOC-subsidiary entity already covers it before creating, and set ParentHQCountry=United Arab Emirates, parent=ADNOC.",
+    "rationale_for_new_entity": "XRG is ADNOC's international energy-investment arm and signed the binding YPF/Eni/XRG Joint Development Agreement for Argentina LNG on 2026-02-12 as a ~1/3 equity partner. If the reviewer updates Argentina LNG Phase 2/Phase 3 ownership to reflect the post-Shell-exit YPF/Eni/XRG structure, XRG must exist as a GEM entity. NOT staged as an owner edit (ownership change routed to QA for a human structural decision); filed here so the entity is ready.",
+    "lookup_was_run": "RUN: entity_lookup.py 'XRG' --remote and --country 'United Arab Emirates', plus 'ADNOC' --remote. Local = not_found_in_local_data; remote returned only the generic 'New Entity' edit-form placeholder (no real candidate) for all three -> inconclusive, treat as not found.",
+    "lookup_result_summary": "Inconclusive/not found: no existing GEM entity matched XRG or ADNOC; remote search returned only the New-Entity scaffold. Likely a genuinely new entity, but confirm ADNOC isn't already in GEM under another spelling before creating.",
     "referenced_by_terminals": [
-      "Argentina LNG Terminal"
+      "Argentina LNG Terminal (T100000130832)"
     ],
     "referenced_by_units": [
+      "Phase 2 (G100002083201)",
       "Phase 3 (G100002083202)"
     ],
     "researcher_initials": "AI-draft"
-  },
-  {
-    "entity_name": "Camuzzi Gas Inversora SA",
-    "entity_type": "owner; operator",
-    "country_of_hq": "Argentina",
-    "parent_entity": "Camuzzi (Sodigas / Grupo Camuzzi)",
-    "rationale_for_new_entity": "Named sponsor/proposer of the LNG del Plata FLNG export terminal (new_terminal candidate, La Plata/Ensenada, Buenos Aires). Not present in GEM's local entity data.",
-    "lookup_was_run": "RUN — entity_lookup.py 'Camuzzi Gas Inversora' --country Argentina --remote returned not_found_in_local_data; remote lookup inconclusive (only 'New Entity' candidate). Reviewer must confirm against GEM entity system and reconcile with any existing 'Camuzzi' distribution entities before creating.",
-    "lookup_result_summary": "not_found_in_local_data; remote inconclusive. Camuzzi operates Argentine gas-distribution utilities (e.g. Camuzzi Gas Pampeana, Camuzzi Gas del Sur); 'Camuzzi Gas Inversora' is the investment vehicle leading LNG del Plata — verify whether GEM already has a related Camuzzi entity to avoid a duplicate.",
-    "referenced_by_terminals": "LNG del Plata FLNG Terminal",
-    "referenced_by_units": "",
-    "researcher_initials": "AI-draft (discovery sweep)"
   }
 ]

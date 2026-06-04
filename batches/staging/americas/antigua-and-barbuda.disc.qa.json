@@ -1,0 +1,12 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000131083",
+    "unit_id": "G100002108300",
+    "terminal_name": "Antigua Power LNG Terminal",
+    "issue": "GEM holds this terminal at Status=construction (Substatus=actual, LastUpdated 2025-06-03), the holdup being incomplete dredging of the Crabbs Peninsula access channel. As of 23 Mar 2026 the Crabbs channel dredging is ~98% complete (final work on the turning basin) and Antigua's Minister of Utilities and Energy Melford Nicholas expects LNG vessels to begin transiting the channel 'by June,' bringing the US$50M plant/terminal into full operation. This is a forward status-progression signal (construction -> operating expected ~2026), not a value change. fetch_timeline.py is DOWN, so no timeline edit is staged here; routing to a status check in the next Update batch.",
+    "severity": "medium",
+    "suggested_action": "In the next Update batch, re-check whether the Crabbs terminal has reached first cargo / commercial operation after the ~June 2026 dredging-completion milestone. If first LNG cargo received and the terminal is in service, update Status construction->operating (with timeline entry once fetch_timeline is reachable) and set the start year. Until confirmed, hold at construction per the existing researcher_notes commissioning caution. Sources: https://antigua.news/2026/03/23/lng-plant-moves-closer-to-full-operations-as-dredging-nears-completion/ ; https://antiguanherald.com/articles/2026/03/23/crabbs-channel-dredging-near-complete-lng-plant-to-come-online-by-june.html",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  }
+]

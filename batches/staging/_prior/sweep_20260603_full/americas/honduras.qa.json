@@ -1,0 +1,22 @@
+[
+  {
+    "category": "data_quality",
+    "terminal_id": "T100001061417",
+    "unit_id": "G100001070365",
+    "terminal_name": "Puerto Cortés LNG Terminal",
+    "issue": "Offshore/Floating fields are blank (GEM models the terminal as onshore per RR note 10/25), but the project uses the 'Bilbao Knutsen' as a moored floating storage unit (FSU) that arrived Sept 2025. An FSU implies floating storage. Sources do not clearly state whether the receiving/regas infrastructure is offshore or onshore-with-FSU, so the onshore call is defensible, but the Floating field arguably should reflect the FSU. Leaving GEM's Offshore/Floating as-is pending clearer documentation.",
+    "severity": "low",
+    "suggested_action": "Verify whether Puerto Cortés should carry Floating=True given the moored Bilbao Knutsen FSU, vs. modeling it as onshore-import-with-offsite-FSU. RR (10/25) deliberately called it onshore — defer to researcher judgment; no automated Offshore/Floating edit staged.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "entity",
+    "terminal_id": "T100001061417",
+    "unit_id": "G100001070365",
+    "terminal_name": "Puerto Cortés LNG Terminal",
+    "issue": "Vessel owner of the Bilbao Knutsen FSU is described only as 'Norway's Knutsen Group' across sources; no specific subsidiary/SPV name disclosed (matches RR's 10/25 note that the owner within the Knutsen Group could not be determined). entity_lookup for 'Knutsen' returned inconclusive (generic 'New Entity' candidate only). Did NOT stage a VesselOwner field edit to avoid creating an imprecise entity.",
+    "severity": "low",
+    "suggested_action": "If a VesselOwner is to be recorded, confirm the precise Knutsen owning entity (e.g. Knutsen OAS Shipping / a named SPV) before creating it; otherwise leave VesselOwner blank and note 'Knutsen Group' in researcher notes.",
+    "researcher_initials": "AI-draft"
+  }
+]

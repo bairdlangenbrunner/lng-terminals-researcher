@@ -1,0 +1,92 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100001057502",
+    "unit_id": "G100001065733",
+    "terminal_name": "Lumut LNG Terminal",
+    "issue": "GEM status is 'proposed' (ProposalYear 2025). Project has materially advanced: Petronas Gas Bhd (PGB) received a notification letter from Malaysia's Ministry of Economy on 30 Apr 2026 to proceed with RGT-3 at Lumut; Suruhanjaya Tenaga (Energy Commission) regulatory approval; MISC awarded the FSRU charter 5 May 2026 (Samsung Heavy Industries newbuild); jetty usage agreement signed. Planned in-service Q2 2029. This is approaching/at construction commitment but not an explicit FID announcement yet.",
+    "severity": "medium",
+    "suggested_action": "Review status for a possible 'proposed' to 'construction' (or pre-construction) advance and FID status; fetch_timeline endpoint is down so confirm via the live DB UI before applying. Do not auto-flip Status. Capacity update may follow once nameplate is firm (see capacity qa note).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "capacity",
+    "terminal_id": "T100001057502",
+    "unit_id": "G100001065733",
+    "terminal_name": "Lumut LNG Terminal",
+    "issue": "Lumut RGT-3 send-out announced as 500 MMscfd (sources: MCI/MISC, BusinessToday). 500 MMscfd converts to roughly 3.8 mtpa (500 x 0.0077). GEM Capacity is blank; the existing researcher note (RR 10/25) says capacity will be 'at least as big as the other Malaysian import terminals (3.5 and 3.8 mtpa)'. The 500 MMscfd figure corroborates ~3.5-3.8 mtpa.",
+    "severity": "low",
+    "suggested_action": "Consider populating Capacity ~3.8 mtpa once the developer states a baseload nameplate explicitly; the 500 MMscfd send-out is a flow figure requiring conversion (flagged for verification), so left as qa rather than a nameplate bump. Storage 170,000 m3 (FSRU) is a vessel spec, not terminal nameplate.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100001050288",
+    "unit_id": "G100001057999",
+    "terminal_name": "RGT Yan LNG Terminal",
+    "issue": "GEM status 'proposed' (ProposalYear 2022). Gas Malaysia Bhd received a letter to proceed from the Energy Commission (Suruhanjaya Tenaga) in Mar 2026 for the Yan, Kedah RGT (RM2-3b), planned as an offshore FSRU of up to ~6 mtpa, targeting operations by 2029. Company explicitly states the approval is NOT a final investment decision.",
+    "severity": "medium",
+    "suggested_action": "Review status (still pre-FID; regulator letter-to-proceed is an advance but not construction/FID). Verify via live DB UI (fetch_timeline down). Also reconcile ownership: GEM lists owner SKS Corp/MMC Corporation; the current applicant named in 2026 coverage is 'Gas Malaysia Bhd' (the Yan project sits within the wider Pulau Bunting integrated development by MMC/SKS) - confirm the current equity holder before any owner edit.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ownership",
+    "terminal_id": "T100001050288",
+    "unit_id": "G100001057999",
+    "terminal_name": "RGT Yan LNG Terminal",
+    "issue": "Possible owner/developer drift: GEM Owner = 'SKS Corp Sdn Bhd; MMC Corporation Bhd'; 2026 trade press attributes the RGT licence-to-proceed to 'Gas Malaysia Bhd'. Relationship between Gas Malaysia and the SKS/MMC (Syed Mokhtar Albukhary) Pulau Bunting development is not fully clear from available sources.",
+    "severity": "low",
+    "suggested_action": "Do not edit owner this batch - ambiguous. Verify whether Gas Malaysia is the RGT equity owner/operator or a downstream offtaker before any change.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ownership",
+    "terminal_id": "T100000130291",
+    "unit_id": "G100002029100",
+    "terminal_name": "Pengerang Johor LNG Terminal",
+    "issue": "GEM Owner = 'Dialog Group Bhd [25%]; Government of Johor [10%]; Petroliam Nasional Bhd [65%]'. The JV vehicle is Pengerang LNG (Two) Sdn Bhd, held by Petronas Gas Bhd 65% / Dialog LNG (Dialog Group subsidiary) 25% / Permodalan Darul Takzim 10% (the Johor state investment arm). GEM's '65% Petroliam Nasional Bhd' is held via the PGB subsidiary, and the 10% Johor stake is held via Permodalan Darul Takzim.",
+    "severity": "low",
+    "suggested_action": "Optional refinement: the named immediate holders are Petronas Gas Bhd (65%) and Permodalan Darul Takzim (10%); GEM's generic Petronas / Government of Johor are functionally correct parents. Not staging an edit; flag for the user's naming-precision call.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "researcher_note",
+    "terminal_id": "T100000130290",
+    "unit_id": "G100002029000",
+    "terminal_name": "Melaka FSRU",
+    "issue": "FSRU sync check: GEM lists FloatingVesselName 'Tenaga Empat (FSU), Tenaga Satu (FSU)', VesselOwner MISC, 3.8 mtpa, start 2013. All confirmed correct vs MISC/sources (two Tenaga-class FSU conversions deployed 2012-13, combined 260,000 m3). Vessel owner MISC is correctly distinct from terminal owner Petronas. No change.",
+    "severity": "low",
+    "suggested_action": "No action. Record retained as re-verified (FSRU vessels and owner current).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "researcher_note",
+    "terminal_id": "T100000130289",
+    "unit_id": "G100002028901",
+    "terminal_name": "Dua FLNG Terminal",
+    "issue": "GEM ResearcherNotesUnit says 'Mothballed due to gas pipeline leak until 2024'. Confirmed: Petronas lifted the force majeure on gas supply to the Bintulu LNG complex (incl. PFLNG Dua / MLNG Dua) effective 1 Nov 2024 after commissioning the Jerun and Kasawari feed-gas fields. Status operating is current; the note now reads as resolved.",
+    "severity": "low",
+    "suggested_action": "Status operating verified current. Researcher note is now historical (resolved 2024) - optional cleanup. No field edit.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "researcher_note",
+    "terminal_id": "T100000130292",
+    "unit_id": "G100002029201",
+    "terminal_name": "Dua Malaysia LNG Terminal",
+    "issue": "GEM ResearcherNotesUnit (T4/T5/T6) says 'Idle, to resume operations in 2024'. Confirmed resumed: Petronas lifted force majeure on MLNG Dua feed gas effective 1 Nov 2024; the Bintulu complex resumed full operations. Capacity 3.2 mtpa/train and 1995 start match. Status operating current.",
+    "severity": "low",
+    "suggested_action": "Status operating verified current for the three Dua trains (G100002029201/02/03). Researcher note now historical - optional cleanup. No field edit.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change",
+    "terminal_id": "T100001057503",
+    "unit_id": "G100001065734",
+    "terminal_name": "Kemaman LNG Terminal",
+    "issue": "GEM: proposed, Pre-FID, FIDYear 2025, E&H Energy Sdn Bhd 100%, planned start 2028. Verified current: E&H Energy multi-user RGT Kemaman in Terengganu, FID expected end-2025, ~30-month build, target operational 2028. GEM values match; no divergence found.",
+    "severity": "low",
+    "suggested_action": "No change. Re-verified current (see blue re-verify entry). Watch for an FID confirmation that would advance status.",
+    "researcher_initials": "AI-draft"
+  }
+]

@@ -1,12 +1,12 @@
 [
   {
-    "category": "discovery_no_gap_found",
+    "category": "blank_ref_unfillable",
     "terminal_id": "T100000130580",
     "unit_id": "G100002058000",
     "terminal_name": "GNL Del Plata FSRU",
-    "issue": "Uruguay's only LNG terminal is GNL del Plata (Punta Sayago/Montevideo, Gas Sayago = ANCAP+UTE JV, ~0.10 mtpa FSRU import), already in GEM as cancelled (inferred 4 y). Searches (EN + ES, regulator/trade-press/DFI angles, 2024-2026) surfaced NO revived or new Uruguay LNG import/export terminal. Uruguay's incremental gas need is met by pipeline imports from Argentina (Gasoducto del Sur / Cruz del Sur), not LNG. No FSRU charter, tender, or sponsor announcement for a Uruguay LNG terminal found.",
+    "issue": "Worklist blank-ref target: ShelvedYear is populated (2017) but ShelvedYear [ref] is blank. Could not locate a verifiable source that specifically supports a 2017 shelving. Trade-press timeline shows the GDF Suez/Engie-Marubeni (GNLS) contract was cancelled in 2015, the project was renewed with the MOL/Mitsui FSRU targeting a mid-2017 arrival at Punta Sayago, then the startup slipped into 2018 and the venture stalled with no development updates after ~2017; Gas Sayago entered liquidation and GEM records CancelledYear/StopYear=2019. The 2017 ShelvedYear thus appears to be an editorial inference from the lapsed mid-2017 startup target rather than an explicitly dated event. The Riviera 'Uruguay extends FSRU envelope' article (rivieramm 37596) PASSED url_verifier and documents the timeline extension/slip but its publication date could not be reliably confirmed (WebFetch returned contradictory 2014/2015 dates) and it does not state a 2017 shelving; the EMIS liquidation page (already cited for CancelledYear/StopYear) is a dynamic company-profile shell with no 2017 content. Per the no-orphan-[ref] / ambiguous-match rules, no guessed ShelvedYear [ref] was staged.",
     "severity": "low",
-    "suggested_action": "No action. GEM coverage is complete for Uruguay (1 terminal, correctly cancelled). Re-check if ANCAP/UTE or a sponsor announces a new regas tender or FSRU charter.",
+    "suggested_action": "Either (a) confirm via the methodology/lifecycle rules whether ShelvedYear=2017 is a documented inference (and if so, leave [ref] blank or annotate ResearcherNotes that it is inferred from the lapsed mid-2017 MOL FSRU startup target), or (b) reconcile the 2017 ShelvedYear against the 2019 CancelledYear/StopYear since both the EMIS liquidation source and GEM narrative ('no development updates since 2015', 'inferred 4 y') point at a single inferred cancellation event rather than a distinct 2017 shelving milestone. Candidate non-primary 2017-era trade-press support exists (Riviera 37596) if a verifiable publication date can be established.",
     "researcher_initials": "AI-draft"
   }
 ]

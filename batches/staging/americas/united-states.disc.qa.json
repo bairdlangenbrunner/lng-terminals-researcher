@@ -1,0 +1,42 @@
+[
+  {
+    "category": "expansion_existing_terminal",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Rio Grande LNG Terminal",
+    "issue": "Discovery sweep confirms Rio Grande LNG Train 6 entered FERC pre-filing (Nov 2025) with full application filed 2026-05-26 (~6.03 MTPA, one new liquefaction train + one marine jetty). This is a new UNIT on an existing GEM terminal, not a new terminal; GEM already carries Rio Grande LNG (construction, 8 units). Route to Update workflow as a new-unit / status add, not Discovery.",
+    "severity": "medium",
+    "suggested_action": "Update agent: confirm T6 unit presence/status against the 8 existing GEM units; primary source investors.next-decade.com / ferc.gov Rio Grande LNG project page.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "expansion_existing_terminal",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Plaquemines LNG Terminal",
+    "issue": "Plaquemines LNG Expansion Project (FERC pre-filing 2025-03-06; up to ~18.6 MTPA additional liquefaction in Plaquemines Parish, LA, Venture Global) is an expansion of the existing GEM Plaquemines LNG terminal, not a new terminal. Country note already flags the 16-block brownfield expansion. Route to Update as proposed expansion units on the existing terminal.",
+    "severity": "medium",
+    "suggested_action": "Update agent: stage expansion as proposed units on existing Plaquemines terminal; do not create a separate terminal record.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "out_of_scope",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Galveston LNG Bunker Port (GLBP)",
+    "issue": "Galveston LNG Bunker Port secured full federal/state construction permits (May 2025), Phase 1 startup targeted late-2027 at ~1,363 m3/day. This is a dedicated LNG BUNKERING facility, which is explicitly out of project scope (CLAUDE.md: 'both import and export, all scales except bunkering'). Recording here so it is not re-surfaced as a candidate in future sweeps.",
+    "severity": "low",
+    "suggested_action": "No action — out of scope (bunkering). Drop from candidate consideration.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "scope_boundary",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "San Juan Micro-Fuel Handling Facility (Puerto Rico)",
+    "issue": "FERC San Juan micro-fuel/LNG project surfaced during the US sweep but is located in Puerto Rico, which is a SEPARATE Country/Area in GEM (existing PR terminals: San Juan LNG, Penuelas LNG, cancelled Aguirre GasPort FSRU). Out of 'United States only' scope for this agent.",
+    "severity": "low",
+    "suggested_action": "Hand to a Puerto Rico-scoped agent if PR is swept; not in scope for United States.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  }
+]

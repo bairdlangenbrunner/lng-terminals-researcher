@@ -1,0 +1,62 @@
+[
+  {
+    "category": "capacity_scope_change",
+    "terminal_id": "T100000130242",
+    "unit_id": "G100001064081",
+    "terminal_name": "Plaquemines LNG Terminal",
+    "issue": "GEM models the brownfield expansion as one proposed unit 'Expansion (T37-60)' = 24 trains, INFERRED baseload 17.78 mtpa (per ResearcherNotesUnit RR 5/26, derived from 0.55 mtpa/train; DOE filing only gives peak ~31 mtpa). Latest sponsor/press (Nov 2025 FERC filing; multiple outlets May 2026) say Venture Global UPSIZED the expansion ~40% to 32 modular trains adding >30.0 mtpa PEAK, built incrementally in 3 phases, taking the whole Plaquemines complex to >58 mtpa peak. VG requests FERC authorize the increased capacity by no later than 2026-06-25. This is a material scope change vs the GEM 24-train/17.78-mtpa unit; the unit name (T37-60) and capacity may now understate scope.",
+    "severity": "medium",
+    "suggested_action": "Route to Update: reviewer to decide whether to re-model the expansion (32 trains / 3 phases) and how to set baseload mtpa once a nameplate (not peak) figure is published. Do NOT bump the baseload capacity off the 30 mtpa PEAK figure (peak != nameplate). Status stays 'proposed' until FERC acts (requested by 2026-06-25). Primary refs: investors.ventureglobal.com FERC-filing release (2025-11), businesswire 20251117457273.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130242",
+    "unit_id": "G100002024202",
+    "terminal_name": "Plaquemines LNG Terminal",
+    "issue": "Phase 2 (T25-36) is GEM status=construction/actual. Latest reporting (East Daley; NGI May 2026) confirms the final block of Phase 2 trains began the final commissioning process and VG is running trains early to sell spot LNG; formal in-service expected mid-2027 with full commercial service by 2027-12-31. No status change yet (still construction), but commissioning is advanced — watch for operating transition mid-2027.",
+    "severity": "low",
+    "suggested_action": "No edit this batch (fetch_timeline endpoint down; status changes are qa-only). Re-check Phase 2 status next batch for construction->operating once trains formally placed in service.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "fid_timeline",
+    "terminal_id": "T100000130240",
+    "unit_id": "G100001094208",
+    "terminal_name": "Sabine Pass LNG Terminal",
+    "issue": "Stage 5 Phase 2 (T8-T9) has FIDYear=2026 in GEM. Current Cheniere guidance (FERC draft EIS issued 2026-04-06; Bechtel construction agreement; multiple outlets) is FERC permit late-2026 enabling FID in 2027, with limited/early works in late 2026. Stage 5 Phase 1 (T7) already carries FIDYear=2027 in GEM, so Phase 2's 2026 is internally inconsistent and likely stale by ~1 year.",
+    "severity": "low",
+    "suggested_action": "Route to Update: consider aligning Stage 5 Phase 2 FIDYear to 2027 to match Phase 1 and current guidance. Refs: lngprime FERC draft EIS (182358); naturalgasintel Bechtel/Train 7 ahead of 2027 FID.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_ref_unfillable",
+    "terminal_id": "T100000131002",
+    "unit_id": "G100002100201",
+    "terminal_name": "New Fortress Grand Isle FLNG Terminal",
+    "issue": "Blank-ref targets (Status [ref], Capacity [ref], ProposalDate [ref], CancelledYear [ref], StopYear [ref], Cost [ref]) could not be filled with a verified, non-circular source. Status=cancelled is GEM-inferred (Substatus 'inferred 4 y') from inactivity after NFE withdrew its application; capacity 2.8 mtpa traces to a now-404 NASDAQ article; cost $1.4B traces to an Argus paywalled item. The federal-register PDF GEM cites for ShelvedYear did not content-verify for 'New Fortress' (FERC docket may name the docket number, not the company).",
+    "severity": "low",
+    "suggested_action": "Leave blank-refs empty rather than cite weak/circular sources. If a [ref] is required, reviewer can re-host the capacity claim against NFE's DOE docket 22-39-LNG order (energy.gov ord4839.pdf) after manual content check. Inferred-status [refs] may be intentionally blank per the 4-year-rule methodology.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_ref_unfillable",
+    "terminal_id": "T100000130233",
+    "unit_id": "G100002023301",
+    "terminal_name": "Louisiana LNG Terminal",
+    "issue": "Cancelled (Parallax Energy) project. Blank-ref targets (Status, Capacity, ShelvedYear, CancelledYear, StopYear, Location, AssociatedTerminals refs) lack a verified contemporaneous source for the cancellation/capacity. The only PASSing GEM source (lnglawblog 2015 Parallax acquisition) supports Owner only, not Status=cancelled (2019)/5 mtpa. NOTE: distinct from the active Woodside 'Louisiana LNG Terminal' (different TerminalID T100000130219) — this is the defunct Parallax-era Plaquemines Parish project.",
+    "severity": "low",
+    "suggested_action": "Leave blank-refs empty rather than back-fill with the 2015 owner article (would be an orphan/mismatched ref). Reviewer to source the 2017 shelving / 2019 cancellation from a contemporaneous trade-press item if a ref is needed.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_ref_unfillable",
+    "terminal_id": "T100000130235",
+    "unit_id": "G100002023501",
+    "terminal_name": "Monkey Island LNG Terminal",
+    "issue": "Phase 1/Phase 2 carry blank ShelvedYear/CancelledYear/StopYear [refs] AND populated ShelvedYear 2016 / CancelledYear 2018 / StopYear 2018 — but the unit is currently status=proposed (relaunched Sept 2025 with ConocoPhillips tech + McDermott FEED + offtake MoUs). The 2016/2018 shelved/cancelled years are stale residue from the project's first (defunct) incarnation and conflict with the live 'proposed' status.",
+    "severity": "medium",
+    "suggested_action": "Route to Update: reviewer to decide whether to clear the legacy ShelvedYear 2016 / CancelledYear 2018 / StopYear 2018 on the now-revived proposed unit (they describe the prior dead proposal, not the current one). Do not fill the year-[refs] for values that should likely be removed.",
+    "researcher_initials": "AI-draft"
+  }
+]

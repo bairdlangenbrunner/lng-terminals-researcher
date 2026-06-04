@@ -1,0 +1,79 @@
+[
+  {
+    "terminal_id": "T100000130502",
+    "unit_id": "G100002050200",
+    "terminal_name": "Constanta LNG Terminal",
+    "unit_name": "--",
+    "country": "Romania",
+    "field_name": "Status [ref]",
+    "old_value": "",
+    "new_value": "https://www.trend.az/business/energy/3392754.html",
+    "confidence": "yellow",
+    "source_tier": "primary (national wire reporting Azerbaijan Energy Ministry statement)",
+    "ref_field": "Status",
+    "ref_urls": [
+      "https://www.trend.az/business/energy/3392754.html",
+      "https://cepa.org/article/black-sea-cables-to-slake-europes-thirst-for-energy/"
+    ],
+    "source_notes": "Status is GEM-inferred ('cancelled (inferred 4 y)', ShelvedCancelledStatusType=inferred), so no sponsor cancellation announcement exists by design. The paired value is supported by the dormancy trajectory: Trend (10 Mar 2021, citing Azerbaijan's Energy Ministry) headline 'Azerbaijan-Georgia-Romania Interconnector project is frozen - ministry' / 'AGRI project is currently frozen, Azerbaijan's Energy Ministry told Trend'; CEPA (31 Jan 2023) describes the 'Azerbaijan-Georgia-Romania liquefied natural gas (LNG) interconnector project' among past Black Sea projects that 'have foundered'. Frozen (2021) -> failed/foundered (2023) corroborates the inferred-cancelled status. Yellow because neither source uses the word 'cancelled' (the cancellation is GEM's 4-year-dormancy inference). Both URLs PASS url_verifier. gem.wiki/sourcewatch deliberately not cited (circular/GEM-affiliated).",
+    "scope_note": "Standard-tier blank-[ref] fill (europe sweep worklist, severity medium). Project-level field; sole unit. No data value changed; only the empty Status [ref] cell is populated. No orphan ref (pairs existing Status=cancelled).",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130502",
+    "unit_id": "G100002050200",
+    "terminal_name": "Constanta LNG Terminal",
+    "unit_name": "--",
+    "country": "Romania",
+    "field_name": "ShelvedYear [ref]",
+    "old_value": "",
+    "new_value": "https://www.trend.az/business/energy/3392754.html",
+    "confidence": "green",
+    "source_tier": "primary (national wire reporting Azerbaijan Energy Ministry statement)",
+    "ref_field": "ShelvedYear",
+    "ref_urls": [
+      "https://www.trend.az/business/energy/3392754.html"
+    ],
+    "source_notes": "Trend News Agency, 10 March 2021: 'Azerbaijan-Georgia-Romania Interconnector project is frozen - ministry'; body: 'AGRI project is currently frozen, Azerbaijan's Energy Ministry told Trend.' Directly supports ShelvedYear=2021 (the freeze that began the dormancy GEM dates shelving to). Green: primary ministry statement, dated exactly to the shelving year, project identity (AGRI/Romania/LNG) confirmed in text. URL PASSes url_verifier (tokens AGRI / frozen / Romania).",
+    "scope_note": "Standard-tier blank-[ref] fill (worklist, severity low). Pairs existing ShelvedYear=2021. No data value changed.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130502",
+    "unit_id": "G100002050200",
+    "terminal_name": "Constanta LNG Terminal",
+    "unit_name": "--",
+    "country": "Romania",
+    "field_name": "CancelledYear [ref]",
+    "old_value": "",
+    "new_value": "https://cepa.org/article/black-sea-cables-to-slake-europes-thirst-for-energy/",
+    "confidence": "yellow",
+    "source_tier": "secondary (think-tank analysis, Center for European Policy Analysis)",
+    "ref_field": "CancelledYear",
+    "ref_urls": [
+      "https://cepa.org/article/black-sea-cables-to-slake-europes-thirst-for-energy/"
+    ],
+    "source_notes": "CEPA, 31 January 2023: references the 'Azerbaijan-Georgia-Romania liquefied natural gas (LNG) interconnector project' among past Black Sea energy projects that 'have foundered because of an array of political, economic, and technical problems.' A 2023 source documenting the project as a failed/past effort supports the inferred CancelledYear=2023 (the 4-years-dormant inference date). Yellow: single non-primary source, and it describes the project as foundered rather than formally 'cancelled' (consistent with GEM's inferred-cancel basis - no cancellation announcement exists). URL PASSes url_verifier (tokens Azerbaijan-Georgia-Romania / LNG).",
+    "scope_note": "Standard-tier blank-[ref] fill (worklist, severity low). Pairs existing CancelledYear=2023. No data value changed.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130502",
+    "unit_id": "G100002050200",
+    "terminal_name": "Constanta LNG Terminal",
+    "unit_name": "--",
+    "country": "Romania",
+    "field_name": "StopYear [ref]",
+    "old_value": "",
+    "new_value": "https://cepa.org/article/black-sea-cables-to-slake-europes-thirst-for-energy/",
+    "confidence": "yellow",
+    "source_tier": "secondary (think-tank analysis, Center for European Policy Analysis)",
+    "ref_field": "StopYear",
+    "ref_urls": [
+      "https://cepa.org/article/black-sea-cables-to-slake-europes-thirst-for-energy/"
+    ],
+    "source_notes": "Same CEPA article (31 Jan 2023) treating the Azerbaijan-Georgia-Romania LNG interconnector as a foundered past project. StopYear (inactive year) = 2023 shares the inferred-cancel basis with CancelledYear, so it reuses the same 2023 dormancy/failure source (cluster-coherent: same project, same inactivity observation). Yellow: single non-primary source, interpretive rather than an explicit shutdown notice. URL PASSes url_verifier.",
+    "scope_note": "Standard-tier blank-[ref] fill (worklist, severity low). Pairs existing StopYear=2023. No data value changed.",
+    "researcher_initials": "AI-draft (sweep)"
+  }
+]

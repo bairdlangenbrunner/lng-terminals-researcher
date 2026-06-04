@@ -1,21 +1,59 @@
 [
   {
-    "terminal_id": "T100000130562",
-    "unit_id": "G100002056201",
-    "terminal_name": "Cartagena FSRU (Colombia)",
-    "unit_name": "Phase 1 Expansion",
+    "terminal_id": "T100000130563",
+    "unit_id": "G100002056301",
+    "terminal_name": "Colombia FLNG Terminal",
+    "unit_name": "--",
     "country": "Colombia",
-    "field_name": "ActualStartYear",
-    "old_value": "2026",
-    "new_value": "2025",
-    "confidence": "yellow",
-    "source_tier": "trade press (local, Colombian financial outlet) + corroborating GEM-wiki/LNG Prime build-up narrative",
-    "ref_field": "StartDate [ref]",
+    "field_name": "Status [ref]",
+    "old_value": "",
+    "new_value": "https://www.offshore-energy.biz/exmar-pep-cancel-caribbean-flng-deal/",
+    "confidence": "green",
+    "source_tier": "trade press (corroborated by GEM.wiki profile and contemporaneous reporting)",
+    "ref_field": "Status [ref]",
     "ref_urls": [
-      "https://www.valoraanalitik.com/planta-de-regasificacion-spec-expande-su-capacidad-para-garantizar-mas-gas-en-colombia/"
+      "https://www.offshore-energy.biz/exmar-pep-cancel-caribbean-flng-deal/"
     ],
-    "source_notes": "Valora Analitik (2025-09-04, url_verifier PASS on tokens '475'/'SPEC'): 'desde el pasado 1 de septiembre la infraestructura pasó de 450 a 475 millones de pies cúbicos por día' — the first expansion phase (GEM's Phase 1 Expansion unit, +75 MMcf/d to the 475 MMcf/d milestone) reached operation on 2025-09-01, not 2026. GEM already carries LatestPlannedStartYear=2025 for this unit, so only ActualStartYear (currently 2026) lags. Note the per-phase increment disagreement (GEM models 400+75; SPEC/Calamarí model 450+25) is logged separately in qa/wiki — that does NOT affect the start-year correction. Yellow because the exact Sep-2025 in-service date rests on a single (well-corroborated) local outlet; a GEM researcher may have set 2026 deliberately, so flag for confirmation rather than treating as authoritative.",
-    "scope_note": "Unit-level (Phase 1 Expansion unit only). Does not change Capacity. The base unit and Phase 2 Expansion unit are unaffected.",
+    "source_notes": "Blank-ref fill. Status is 'cancelled' (inferred 4y). Offshore Energy (9 Mar 2016) reports Exmar and Pacific Exploration & Production (PEP) terminated the Mar-2012 Caribbean FLNG / Colombia FLNG tolling agreement because liquefaction in Colombia was no longer economically viable; settlement installments ran Mar 2016 through Jun 2017. Corroborated by GEM.wiki Colombia FLNG profile. URL verified PASS.",
+    "scope_note": "Blank-ref fill for a long-cancelled export project; documents the cancellation that the Status cell records.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130563",
+    "unit_id": "G100002056301",
+    "terminal_name": "Colombia FLNG Terminal",
+    "unit_name": "--",
+    "country": "Colombia",
+    "field_name": "CancelledYear [ref]",
+    "old_value": "",
+    "new_value": "https://www.offshore-energy.biz/exmar-pep-cancel-caribbean-flng-deal/",
+    "confidence": "yellow",
+    "source_tier": "trade press (cancellation announced Mar 2016; GEM CancelledYear=2017 is inferred from settlement window)",
+    "ref_field": "CancelledYear [ref]",
+    "ref_urls": [
+      "https://www.offshore-energy.biz/exmar-pep-cancel-caribbean-flng-deal/"
+    ],
+    "source_notes": "Blank-ref fill. GEM CancelledYear=2017 (ShelvedCancelledStatusType=inferred). Offshore Energy reports the termination agreement with PEP paying Exmar in monthly installments through June 2017, consistent with a 2017 effective-cancellation inference. Yellow because the source dates the termination announcement to 2016; the 2017 value is GEM's inferred close-out year, supported but not explicitly stated as 'cancelled in 2017'.",
+    "scope_note": "Blank-ref fill paired with the existing CancelledYear=2017 value.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130563",
+    "unit_id": "G100002056301",
+    "terminal_name": "Colombia FLNG Terminal",
+    "unit_name": "--",
+    "country": "Colombia",
+    "field_name": "StopYear [ref]",
+    "old_value": "",
+    "new_value": "https://www.offshore-energy.biz/exmar-pep-cancel-caribbean-flng-deal/",
+    "confidence": "yellow",
+    "source_tier": "trade press (settlement payments run through Jun 2017)",
+    "ref_field": "StopYear [ref]",
+    "ref_urls": [
+      "https://www.offshore-energy.biz/exmar-pep-cancel-caribbean-flng-deal/"
+    ],
+    "source_notes": "Blank-ref fill. GEM StopYear=2017. Offshore Energy reports PEP's termination-fee installments to Exmar ran from March 2016 through June 2017, supporting 2017 as the effective stop year for the project. Yellow: single trade-press source; 2017 is an inference from the settlement window rather than an explicit 'stopped 2017' statement.",
+    "scope_note": "Blank-ref fill paired with the existing StopYear=2017 value.",
     "researcher_initials": "AI-draft (sweep)"
   }
 ]

@@ -13,6 +13,13 @@ BASE = Path(__file__).parent / REGION
 OUT = BASE / "_build"
 OUT.mkdir(parents=True, exist_ok=True)
 
+# Clear stale staged_*.json from any prior assemble of this region. _assemble only
+# WRITES a type's file when that type is non-empty (see `if items:` below), so without
+# this purge a type that is empty THIS run would silently inherit the previous run's file
+# (e.g. an update-only assemble leaking its wiki into a following discovery-only assemble).
+for _old in OUT.glob("staged_*.json"):
+    _old.unlink()
+
 # type-suffix -> build_review_package input filename
 TYPES = {
     "updates": "staged_updates.json",

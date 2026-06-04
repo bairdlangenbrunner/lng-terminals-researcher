@@ -4,9 +4,49 @@
     "terminal_id": "T100000130316",
     "unit_id": "G100002031600",
     "terminal_name": "Kerawalapitiya LNG Terminal",
-    "issue": "Project was reactivated from shelved. GEM has ShelvedYear=2021 with current Status=proposed; an Aug 2025 government award to China Harbour Engineering Co (CHEC) under a BOOT/BOO model (start year now ~2028, GEM LatestPlannedStartYear already 2028) re-activated the tender after Petronet (India) was dropped. Current 'proposed' status is correct, but the shelved->proposed reactivation (Dec 2024 cabinet approval to proceed; Aug 2025 award) is a timeline event worth recording. Owner/parent (CHEC 100%) and 2028 start already match GEM.",
+    "issue": "GEM export carries ShelvedYear=2021 and StopYear=2021 for Kerawalapitiya, but the project has since been REACTIVATED: as of August 2025 the Ceylon Electricity Board / Government awarded the FSRU + LNG pipeline contract to China Harbour Engineering Company (CHEC) under a BOOT model, with target operation ~2028 (Petronet LNG dropped, Engro withdrew as CHEC's partner). GEM's own gem.wiki page already reflects 'project remains active' and removed the shelved year, so the stale ShelvedYear/StopYear=2021 in the export is inconsistent with current status. Status field stays 'proposed' (correct direction), but the 2021 shelved/stop anchors should be cleared. fetch_timeline endpoint is DOWN, so flagging rather than staging a Status/timeline edit.",
+    "severity": "high",
+    "suggested_action": "Verify reactivation via the CHEC award reporting; clear/correct ShelvedYear=2021 and StopYear=2021 (project no longer shelved per gem.wiki); confirm status timeline (proposed, active, est. 2028 operation). Candidate refs: https://themorning.lk/articles/kRAe8TVSmAtN1Wu7on3b (PASS, confirms CHEC FSRU/pipeline award) plus srilankamirror/lankanewsweb cited on gem.wiki.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_quality",
+    "terminal_id": "T100000131055",
+    "unit_id": "G100002105500",
+    "terminal_name": "New Fortress Colombo LNG Terminal",
+    "issue": "Capacity field holds '1200000.00', which is not a plausible mtpa nameplate. The likely origin is the trade-press figure '1.2 million gallons per day of LNG' (offshore-energy.biz) — i.e. a gallons/day throughput figure stored raw in a field GEM expects in mtpa. 1.2 MGD of LNG is roughly 0.3 mtpa, not 1,200,000 mtpa. Capacity [ref] is blank, so the value is also uncited. Did NOT fill Capacity [ref] (would lock in a wrong-units value) and did NOT stage a nameplate bump (conversion needs verification per brief).",
+    "severity": "medium",
+    "suggested_action": "Re-derive a baseload mtpa capacity (or blank it) from a sourced figure; if no public nameplate exists for this cancelled project, set Capacity blank with a qa note rather than carry 1,200,000. Conversion 1.2 MGD LNG -> ~0.3 mtpa needs verification before use.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ref_fill_deferred",
+    "terminal_id": "T100000130970",
+    "unit_id": "G100002097000",
+    "terminal_name": "Hambantota LNG Terminal",
+    "issue": "Blank [ref] cells (Status, Capacity, ProposalDate, ShelvedYear, CancelledYear, StopYear, Cost) on this cancelled SOCAR/Pearl Energy project could not be filled with a verified primary citation this pass: seanews.co.uk PASSed url_verifier but its body did not substantiate the specific capacity/cost/date figures, and the natural Daily Mirror / report.az / EconomyNext sources were not confirmable here. Project facts (1 mtpa, US$100M, Port of Hambantota, announced Sept 2020, SOCAR+Pearl Mar 2021, no updates 4+ yrs -> inferred cancelled) are consistent with secondary reporting and gem.wiki, but no single PASS source carries them.",
     "severity": "low",
-    "suggested_action": "Confirm timeline: shelved 2021 -> reactivated/re-proposed 2024-2025 (CHEC award). No Status field edit staged (status already 'proposed', which is correct). LNG supplier still not finalized as of Aug 2025; agreement awaiting Attorney General clearance before signing.",
+    "suggested_action": "On a focused Update batch, locate a primary/regulatory source (Sri Lanka BOI approval, SOCAR Trading release) carrying the 1 mtpa / US$100M / 2020 figures and fill the [ref] cells; otherwise leave blank.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ref_fill_deferred",
+    "terminal_id": "T100000130971",
+    "unit_id": "G100002097100",
+    "terminal_name": "SK Group Sri Lanka LNG Terminal",
+    "issue": "Blank [ref] cells (Status, ProposalDate, ShelvedYear, StopYear, Cost) not filled. GEM record is the July 2020 SK Group US$600M / 930MW BOOT proposal (ProposalYear=2020, Cost=US$600M). The verified-PASS source found (offshore-energy.biz 'SK E&S to build LNG import terminal') actually describes an EARLIER, distinct SK E&S 2018 Swiss-Challenge proposal at ~1 mtpa with a 2020 start — figures that do not match the 2020/US$600M GEM record, so citing it for ProposalDate/Cost would be a mis-citation. The proper 2020 source (Daily News archive) returned HTTP 403.",
+    "severity": "low",
+    "suggested_action": "Confirm whether GEM's record is the 2020 SK Group US$600M proposal vs the 2018 SK E&S proposal (possible two distinct proposals) and fill [ref] cells with a source matching the staged values; do not cite the 2018 SK E&S offshore-energy article for the 2020 figures.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ref_fill_deferred",
+    "terminal_id": "T100000130316",
+    "unit_id": "G100002031600",
+    "terminal_name": "Kerawalapitiya LNG Terminal",
+    "issue": "Capacity [ref] (2.7 mtpa), Cost [ref] (US$250M), Location [ref], FacilityType [ref] left blank: the verified-PASS source themorning.lk confirms the CHEC FSRU/pipeline award and status but does NOT carry the 2.7 mtpa capacity or US$250M cost figures, and ceylontoday.lk (the gem.wiki citation for the award) returned HTTP 403. No PASS source substantiating the specific 2.7 mtpa / US$250M values was found this pass.",
+    "severity": "low",
+    "suggested_action": "On a focused Update batch, source the 2.7 mtpa and US$250M figures from the CHEC tender/CEB documentation and fill the [ref] cells; FacilityType=import and Location are well-established and can be ref-filled from the same CEB/award source.",
     "researcher_initials": "AI-draft"
   }
 ]

@@ -1,0 +1,22 @@
+[
+  {
+    "category": "scope_question",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Tendrara micro-LNG plant (Phase 1) — Morocco (NOT in GEM)",
+    "issue": "Discovery found a verified, real small-scale liquefaction facility absent from GEM: the Tendrara micro-LNG plant (Mana Energy 55%/operator, ONHYM 25%, Sound Energy 20%; EPC Italfluid Geoenergy; offtaker Afriquia Gaz). Capacity ~100 million scm/y LNG (~0.07 MTPA equiv), trucked to domestic industrial customers (virtual pipeline, no marine berth). First commissioning gas Dec 2025; first LNG targeted Q3 2026. It clears the §3 add threshold (sponsor + location + concrete step), but its tracker eligibility is ambiguous because it is a truck-fed micro-LNG unit far below typical terminal scale and has no jetty. Staged to monitor_list, not new_terminals, pending a methodology call.",
+    "severity": "low",
+    "suggested_action": "Methodology ruling: are truck-delivered micro-LNG / virtual-pipeline liquefaction plants in scope for the Global Gas Infrastructure Tracker? If yes, route Tendrara to an Update/Discovery batch to stage as a new export terminal (run entity_lookup.py on Mana Energy/Managem/Italfluid Geoenergy/ONHYM/Afriquia Gaz first). If no, drop from monitor. See morocco.disc.monitor.json.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "coverage_note",
+    "terminal_id": "T100000131162",
+    "unit_id": "",
+    "terminal_name": "Dakhla LNG Terminal",
+    "issue": "The Morocco country note (docs/country_notes/morocco.md) states 'Dakhla Atlantic LNG regas ... NOT in GEM.' That is stale: GEM DOES track it as 'Dakhla LNG Terminal' (TerminalID T100000131162), but under Country/Area = 'Western Sahara' (Dakhla Atlantique port is in the disputed territory), which is why it does not surface in a Morocco-scoped row enumeration. No discovery gap. Flagging so the note isn't relied on as a lead in future Morocco batches; the row is outside Morocco scope and untouched here.",
+    "severity": "low",
+    "suggested_action": "Correct docs/country_notes/morocco.md to record that Dakhla LNG Terminal is already in GEM under Country/Area='Western Sahara' (T100000131162), not a missing terminal. Any Dakhla data work belongs to a Western Sahara-scoped batch, not Morocco.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  }
+]

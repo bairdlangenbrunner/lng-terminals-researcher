@@ -1,0 +1,32 @@
+[
+  {
+    "category": "ownership",
+    "terminal_id": "T100000130354",
+    "unit_id": "G100002035401",
+    "terminal_name": "Goldboro LNG Terminal",
+    "issue": "GEM lists Owner/Parent = 'Cavvy Energy Ltd [100%]'. Cavvy Energy is confirmed to be the renamed Pieridae Energy (name change effective 9 May 2025, TSX:CVVY). HOWEVER, Pieridae/Cavvy SOLD the Goldboro assets (land + construction permit) in Jul 2024 for CAN$12M to a Nova Scotia numbered company associated with Sam Roch-Perks (co-founder/director of Irish-based Simply Blue Group). So 'Cavvy Energy' is no longer the asset owner/sponsor — ownership attribution is stale/ambiguous post-sale. The buyer is a numbered company; exact current owner entity unconfirmed.",
+    "severity": "medium",
+    "suggested_action": "Review Owner/Parent for Goldboro. Consider updating to the numbered-company buyer tied to Simply Blue Group (or noting 'no active sponsor; permits sold 2024'). Did not stage a guessed Owner edit (numbered-company identity unconfirmed). Sources: https://www.cbc.ca/news/canada/nova-scotia/natural-gas-company-sells-land-construction-permit-1.7278897 ; https://www.globenewswire.com/news-release/2025/03/27/3051035/0/en/Pieridae-Proposes-Name-Change-to-Cavvy-Energy.html",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_ref",
+    "terminal_id": "T100000130368",
+    "unit_id": "G100002036801",
+    "terminal_name": "Stolt LNGaz Terminal",
+    "issue": "Capacity [ref] blank-ref-fill target could not be filled: GEM Capacity=0.50 mtpa (500,000 t) is plausible (matches '500,000 tonnes' figures in trade coverage), but the only located capacity-bearing sources (hydrocarbons-technology.com and offshore-technology.com Stolt project pages) FAIL url_verifier (HTTP 403). No PASS-verified primary/secondary URL found for the 0.5 mtpa figure.",
+    "severity": "low",
+    "suggested_action": "Leave Capacity [ref] blank for now, or source from BAPE filing (voute.bape.gouv.qc.ca/dl/?id=00000062808) if a reviewer can confirm it states 500,000 t/yr. Value itself looks correct; only the citation is missing.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_consistency",
+    "terminal_id": "T100000130630",
+    "unit_id": "G100002063001",
+    "terminal_name": "Energie Saguenay LNG Terminal",
+    "issue": "GEM ShelvedYear=2023 but the decisive events were earlier: Quebec provincial rejection Jul 2021 and federal cabinet rejection Feb 2022. The 2023 shelved / 2025 cancelled years appear to be GEM lifecycle-inferred (years-since-last-update) rather than tied to the actual rejection dates. Not necessarily wrong under GEM's inference convention, but the shelved year arguably predates 2023.",
+    "severity": "low",
+    "suggested_action": "Reviewer may reconsider whether ShelvedYear should reflect the 2021/2022 rejections rather than an inferred 2023. Left year values unchanged (standard-tier; values are defensible under GEM inference). Source: https://www.cbc.ca/news/canada/montreal/ottawa-rejects-saguenay-energy-project-1.6320373",
+    "researcher_initials": "AI-draft"
+  }
+]

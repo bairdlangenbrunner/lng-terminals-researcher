@@ -1,0 +1,42 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000131072",
+    "unit_id": "",
+    "terminal_name": "PAWA PNG FSRU Project",
+    "issue": "GEM has all 12 PAWA units as 'shelved (inferred 2 y)' (ShelvedYear 2024). Sponsor Twenty20 Energy's current projects page describes PAWA PNG as 'In Development' with PNG Cabinet approval for nationwide rollout across 12 locations (283 MW), but gives no dated milestone or FID/contract. Signal may indicate the project is not dormant. Could not establish a concrete recent reactivation date.",
+    "severity": "medium",
+    "suggested_action": "Human review of PAWA status: check for a 2025-26 dated milestone (financing close, EPC/charter award, construction start) before changing status off 'shelved'. fetch_timeline endpoint down — verify status, do not auto-edit.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_ref",
+    "terminal_id": "T100000130302",
+    "unit_id": "G100002030201",
+    "terminal_name": "Liquid Niugini FLNG Terminal",
+    "issue": "Status/CancelledYear/StopYear [ref] blank (cancelled, 2024). Could not source a clean non-circular citation: the prior offshore-technology.com Source [ref] now returns HTTP 403 (link rot) and the only 'cancelled as of May 2024' assertion traces to GEM.wiki itself (circular). No external trade-press cancellation notice found.",
+    "severity": "medium",
+    "suggested_action": "Leave blank or have human locate a primary/trade source confirming abandonment; also note the existing FacilityType/Capacity/Source [ref] all point to the dead offshore-technology.com URL (403) and need replacement.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_ref",
+    "terminal_id": "T100000130704",
+    "unit_id": "G100002070401",
+    "terminal_name": "Pandora FLNG Terminal",
+    "issue": "Status/ShelvedYear/CancelledYear/StopYear [ref] blank (cancelled; ShelvedYear 2017, CancelledYear 2019). Only located source (oedigital Wison concepts) is from 2014 and does not establish shelving/cancellation; using it would be an unsupported orphan ref. Cott sold its 40% stake to Twinza Oil (Repsol now operator via Talisman acquisition) — historical churn on a dead project.",
+    "severity": "low",
+    "suggested_action": "Leave blank pending a primary/trade source documenting the 2017 shelving / 2019 cancellation; no clean citation found this sweep.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_ref",
+    "terminal_id": "T100000131072",
+    "unit_id": "",
+    "terminal_name": "PAWA PNG FSRU Project",
+    "issue": "All 12 units have Status/ShelvedYear/StopYear [ref] blank (shelved 2024). The 'shelved' status is an inferred-inactivity call, not a sourced event; sponsor page conversely says 'In Development' (see status_timeline note). No source cleanly supports a 2024 shelving date.",
+    "severity": "medium",
+    "suggested_action": "Resolve status question first (status_timeline note); ref-fill depends on the status outcome. Do not stage a [ref] without a value-supporting source.",
+    "researcher_initials": "AI-draft"
+  }
+]

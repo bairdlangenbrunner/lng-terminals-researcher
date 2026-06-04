@@ -1,41 +1,78 @@
 [
   {
-    "terminal_id": "T100000130603",
-    "unit_id": "G100002060300",
-    "terminal_name": "Jebel Ali FLNG Terminal",
-    "unit_name": "--",
+    "terminal_id": "T100000131105",
+    "unit_id": "G100002110501",
+    "terminal_name": "Ruwais LNG Terminal",
+    "unit_name": "T1",
     "country": "United Arab Emirates",
-    "field_name": "VesselOwner",
-    "old_value": "",
-    "new_value": "Excelerate Energy",
-    "confidence": "green",
-    "source_tier": "vessel owner's own project page + trade press (charter news)",
-    "ref_field": "VesselOwner [ref]",
+    "field_name": "Status",
+    "old_value": "construction",
+    "new_value": "construction",
+    "confidence": "blue",
+    "source_tier": "primary/trade-press",
+    "ref_field": "Status [ref]",
     "ref_urls": [
-      "https://excelerateenergy.com/projects/jebel-ali-lng-import-terminal/",
-      "https://www.rivieramm.com/news-content-hub/news-content-hub/dubai-supply-authority-extends-time-charter-on-explorer-fsru-till-2030-75217"
+      "https://www.naturalgasintel.com/news/adnoc-signs-first-long-term-spa-for-ruwais-lng-as-project-advances-to-2028-startup/"
     ],
-    "source_notes": "GEM has FloatingVesselName='FSRU Explorer' and Operator='DUSUP' but VesselOwner is blank. The Explorer is owned by Excelerate Energy and time-chartered to Dubai Supply Authority (DUSUP) since 2010 (upgraded 2015); DUSUP extended the charter through 2030 (Riviera, 2024). Excelerate Energy is an existing GEM entity (E100002007946/E100002007947). Filling the blank VesselOwner; terminal Operator=DUSUP retained.",
-    "scope_note": "Fills a blank field (no value change to an existing value). FSRU sync touchpoint: vessel-owner field also tracked by the carrier project.",
+    "source_notes": "Re-verify only (no change). ADNOC Gas Ruwais LNG (2x4.8 = 9.6 mtpa) still under construction after Jun-2024 FID; commercial operations targeted H2 2028 (train 1 2028, train 2 2029). Representative blue re-verify for the dev-pipeline unit; status edits not staged (timeline endpoint down).",
+    "scope_note": "Project-level status applies to both Ruwais units T1 and T2.",
     "researcher_initials": "AI-draft (sweep)"
   },
   {
-    "terminal_id": "T100000130604",
-    "unit_id": "G100002060400",
-    "terminal_name": "Ruwais FSRU",
+    "terminal_id": "T100000130601",
+    "unit_id": "G100002060102",
+    "terminal_name": "Das Island LNG Terminal",
+    "unit_name": "T2",
+    "country": "United Arab Emirates",
+    "field_name": "FacilityType [ref]",
+    "old_value": "",
+    "new_value": "https://adnocgas.ae/en/our-operations/lng",
+    "confidence": "green",
+    "source_tier": "primary (operator)",
+    "ref_field": "FacilityType [ref]",
+    "ref_urls": [
+      "https://adnocgas.ae/en/our-operations/lng"
+    ],
+    "source_notes": "Blank-[ref] fill. ADNOC Gas operator page confirms Das Island is a three-train LNG export (liquefaction) plant, ~6 mtpa. FacilityType='export' supported.",
+    "scope_note": "FacilityType is project-level; the same ref applies to Das Island T1/T3 if also blank.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130602",
+    "unit_id": "G100002060200",
+    "terminal_name": "Fujairah LNG Terminal",
+    "unit_name": "Original Project",
+    "country": "United Arab Emirates",
+    "field_name": "ShelvedYear [ref]",
+    "old_value": "",
+    "new_value": "https://www.meed.com/uae-shelves-gas-import-terminal-project/",
+    "confidence": "yellow",
+    "source_tier": "trade press (single non-primary)",
+    "ref_field": "ShelvedYear [ref]",
+    "ref_urls": [
+      "https://www.meed.com/uae-shelves-gas-import-terminal-project/"
+    ],
+    "source_notes": "Blank-[ref] fill. Same MEED article already cited on this row's CancelledYear/StopYear/Status [ref] and reports the UAE shelving of the gas-import terminal; supports ShelvedYear=2016. Yellow (single non-primary source).",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130972",
+    "unit_id": "G100002097200",
+    "terminal_name": "Sharjah FSRU",
     "unit_name": "--",
     "country": "United Arab Emirates",
-    "field_name": "VesselOwner",
+    "field_name": "Status [ref]",
     "old_value": "",
-    "new_value": "Excelerate Energy",
-    "confidence": "green",
-    "source_tier": "vessel owner's own project page + trade press",
-    "ref_field": "VesselOwner [ref]",
+    "new_value": "https://www.zawya.com/en/business/sharjahs-snoc-puts-lng-storage-terminal-project-on-hold-u85ngb8k",
+    "confidence": "yellow",
+    "source_tier": "trade press (single non-primary)",
+    "ref_field": "Status [ref]",
     "ref_urls": [
-      "https://excelerateenergy.com/projects/ruwais-lng-terminal/"
+      "https://www.zawya.com/en/business/sharjahs-snoc-puts-lng-storage-terminal-project-on-hold-u85ngb8k"
     ],
-    "source_notes": "GEM has FloatingVesselName='FSRU Express' and Operator='Excelerate Energy' but VesselOwner is blank. The Express FSRU (deployed at Ruwais since 2019, replacing the earlier Excelerate unit) is an Excelerate Energy vessel; the Ruwais import terminal is owned by ADNOC Gas (ADNOC Gas Processing). Excelerate Energy is an existing GEM entity. Filling the blank VesselOwner.",
-    "scope_note": "Fills a blank field. FSRU sync touchpoint: vessel-owner also tracked by the carrier project.",
+    "source_notes": "Blank-[ref] fill. Zawya/S&P (Mar-2020) reports SNOC put the Sharjah LNG project on hold to focus on the Mahani gas discovery; supports the non-active (shelved->cancelled) status. No independent press pins a discrete 2024 cancellation event (see qa). Yellow.",
+    "scope_note": "",
     "researcher_initials": "AI-draft (sweep)"
   }
 ]

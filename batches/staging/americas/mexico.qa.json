@@ -4,49 +4,99 @@
     "terminal_id": "T100000130984",
     "unit_id": "G100002098401",
     "terminal_name": "Vista Pacifico LNG Terminal",
-    "issue": "Vista Pacifico (Topolobampo, Sinaloa) appears CANCELLED. Sempra disclosed in its 2025 annual 10-K (filed 2026-02-26) that 'in December 2025, we agreed to terminate the existing development agreement' with CFE. Mexico's CNE had previously denied Sempra Infrastructure the permit to construct the liquefaction plant. The project never reached FID; Sempra provided no plan to reposition it under different ownership. GEM currently lists this terminal as 'proposed' (LastUpdated 2025-09-05). This is a proposed -> cancelled (or shelved) status change. Per sweep rules, status changes are flagged for the researcher to set in the live DB + timeline, not staged as a Status field edit (fetch_timeline endpoint is down). Two independent verified sources (LNG Prime, NaturalGasIntel) plus GEM wiki confirm.",
+    "issue": "GEM status = proposed, but the project has been CANCELLED. Sempra and CFE agreed in December 2025 to rescind the existing development agreement; Sempra disclosed the cancellation in its annual 10-K filed with the SEC on 2026-02-26 (\"Due to a change in the priorities of SI Partners and CFE, in December 2025 we agreed to rescind the existing development agreement\"). Shortly before the filing, Mexico's CNE denied Sempra Infrastructure the permit to construct the liquefaction plant at Topolobampo. Multiple independent confirmations (NGI, Mexico Business News, LNG Prime). Suggest status proposed -> cancelled (CancelledYear 2025), once a researcher confirms via the SEC 10-K. fetch_timeline endpoint is DOWN so no Status edit / timeline file staged.",
     "severity": "high",
-    "suggested_action": "Set Vista Pacifico status to cancelled (CancelledYear 2025/2026; development agreement terminated Dec 2025, disclosed Feb 2026). Add timeline entry. Note that the prior owner-set (Sempra, TotalEnergies, CFEnergia/CFE) all exited: Sempra-CFE development agreement terminated; TotalEnergies' MOU/16.6% stake lapses with the project. Sources: https://lngprime.com/lng-terminals/sempra-says-vista-pacifico-lng-partnership-terminated/179300/ ; https://naturalgasintel.com/news/sempra-axes-vista-pacifico-lng-plan-cutting-mexicos-proposed-export-capacity/",
+    "suggested_action": "Verify against Sempra 2025 10-K (SEC, filed 2026-02-26) and set Status=cancelled, CancelledYear=2025, StopYear=2025; cite https://naturalgasintel.com/news/sempra-axes-vista-pacifico-lng-plan-cutting-mexicos-proposed-export-capacity/ , https://lngprime.com/lng-terminals/sempra-says-vista-pacifico-lng-partnership-terminated/179300/ , https://mexicobusiness.news/energy/news/sempra-infrastructure-cancels-vista-pacifico-lng-project . Verified-PASS URLs.",
     "researcher_initials": "AI-draft"
   },
   {
-    "category": "data_quality",
-    "terminal_id": "T100001054469",
-    "unit_id": "G100001062346",
-    "terminal_name": "Coatzacoalcos II LNG Terminal",
-    "issue": "GEM lists Capacity 0.05 with CapacityUnits 'MMcf/d' and CapacityinMtpa 0.00 for the Ursus-Aqualita LNG project at Coatzacoalcos II (PODEBI), Veracruz. The 0.05 MMcf/d figure looks like a data-entry error: trade press (Energy Magazine, MundoMaritimo, Feb 2025) describes 4 processing trains totaling ~47,000 mcf/d (~47 MMcf/d), a USD 1.8bn investment, with operational testing targeted late-2025/early-2026. 47 MMcf/d ~ 0.36 mtpa (at 1 MMcf/d ~ 0.0077 mtpa). Flagging rather than staging an edit because the published capacity figure/units are ambiguous (mcf/d vs MMcf/d) and need a primary CRE/CNE permit number to nail down baseload nameplate mtpa.",
+    "category": "data_consistency",
+    "terminal_id": "T100000131178",
+    "unit_id": "G100002117800",
+    "terminal_name": "Gato Negro Manzanillo LNG Terminal",
+    "issue": "FID timing may have slipped. GEM FIDYear=2026 (Pre-FID), citing LNG Prime 'Gato Negro eyes FID ... in late 2026'. Search summaries of an April 2026 BNamericas / LNG Prime report indicate the developers' April 2026 DOE semiannual report pushed FID back one year to late 2027 (COD unchanged at 2030). I could not render the BNamericas article body (paywalled) or a second clean source confirming the exact new figure, so this is NOT staged as an edit.",
     "severity": "medium",
-    "suggested_action": "Confirm Coatzacoalcos II nameplate capacity against a primary CRE/CNE/ASEA permit or the Ursus-Aqualita filing. If the project is genuinely ~47 MMcf/d (~0.36 mtpa) the GEM CapacityinMtpa of 0.00 / Capacity 0.05 MMcf/d should be corrected. Source lead: https://energymagazine.mx/2025/02/ursus-aqualita-lng-anuncia-planta-de-gnl-en-coatzacoalcos/",
+    "suggested_action": "Confirm new FID year from the April 2026 DOE semiannual report / BNamericas (https://www.bnamericas.com/en/news/mexico-lng-project-in-manzanillo-faces-one-year-fid-delay , title verifies); if confirmed, update FIDYear 2026 -> 2027. Also note: GEM Capacity [ref] and developer URL https://www.gatonegro-lng.com/ now 301-redirects to https://www.gatonegrolng.com/ (domain change) — refresh the cited URL.",
     "researcher_initials": "AI-draft"
   },
   {
-    "category": "no_change",
-    "terminal_id": "T100000130810",
-    "unit_id": "G100002081001",
-    "terminal_name": "Costa Azul LNG Terminal",
-    "issue": "Re-verified (blue) Costa Azul ECA Phase 1 export unit: GEM holds status=construction, LatestPlannedStartYear=2026, FID 2020, 3.25 mtpa, owners Sempra 83% / TotalEnergies 16.6%. As of May 2026 Sempra still targets first LNG ~June 2026 with substantial completion this summer and SPA deliveries shortly after — all consistent with GEM. No field change. (Phase 2 also unchanged: still proposed, FID no earlier than mid-2028, GEM FIDYear 2028 matches.)",
-    "severity": "low",
-    "suggested_action": "No edit. Confidence re-verified current. Source: https://lngprime.com/americas/sempras-eca-lng-to-kick-off-lng-production-in-june/185925/",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "no_change",
-    "terminal_id": "T100000131069",
-    "unit_id": "G100002106902",
-    "terminal_name": "New Fortress Altamira LNG Terminal",
-    "issue": "Re-verified (blue) NFE Altamira FLNG: Unit 1 operating since 2024 (matches GEM ActualStartYear 2024); Unit 2 in construction, started Q3 2025, mechanical completion Q4 2026, commercial operation H1 2027 (matches GEM ConstructionYear 2025 / LatestPlannedStartYear 2027). Terminal owner/operator = New Fortress Energy (correct). FLNG/FSRU sync touchpoint: Fast LNG units are NFE-built modular barges; no third-party vessel-owner or vessel name/IMO change observed this sweep (GEM has no FloatingVesselName populated for these units, which is acceptable for NFE's owned Fast LNG assets). No field change.",
-    "severity": "low",
-    "suggested_action": "No edit. FLNG vessel identity unchanged (NFE-owned Fast LNG). Source: https://www.nasdaq.com/articles/new-fortress-nfe-advances-construction-second-flng-unit",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "no_change",
+    "category": "data_consistency",
     "terminal_id": "T100000130809",
     "unit_id": "G100002080901",
     "terminal_name": "Saguaro Energía LNG Terminal",
-    "issue": "Re-verified (blue) Saguaro Energia / Mexico Pacific (Puerto Libertad, Sonora): still pre-FID, proposed, 15 mtpa Phase 1 (Trains 1-3) + 15 mtpa Phase 2, owner Mexico Pacific Holdings. FID described as 'relatively imminent' with Trains 1-2 SPAs (ConocoPhillips) closed, but no FID announced as of this sweep. GEM FIDStatus Pre-FID / FIDYear 2025 / status proposed all consistent (no confirmed FID to trigger a change). Gato Negro Manzanillo (T100000131178, proposed, FIDYear 2026, COD 2030) and Salina Cruz Pilot/GFI (T100000131173, proposed, pre-FID) also re-checked and match GEM.",
+    "issue": "GEM FIDYear=2025 (Pre-FID) is stale. Mexico Pacific did NOT take FID in 2025. The original DOE export deadline expired 2025-12-14; on 2025-06-18 MPL petitioned DOE for a 7-year extension (new deadline 2032-12-14), citing inability to commence operations by Dec 2025. As of late 2025 no FID had been announced; trade press characterizes FID as still pending / 'imminent' across multiple 2025 reports. No firm replacement FID year published, so not staged as an edit (would be a guess).",
+    "severity": "medium",
+    "suggested_action": "Clear/refresh FIDYear=2025 (FID not achieved in 2025). The 2032 figure is a requested COD/export-start deadline, NOT an FID year — do not paste it into FIDYear. Sources: https://www.energy.gov/sites/default/files/2025-06/MXP%20Extension%20Request%20-%20FINAL%20for%20filing.pdf (DOE extension request, PASS), https://www.argusmedia.com/en/news-and-insights/latest-market-news/2712017-delay-clouds-mexico-s-top-lng-project (PASS). Applies to both Phase 1 (G100002080901) and Phase 2 (G100002080902) rows.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000131069",
+    "unit_id": "G100002106902",
+    "terminal_name": "New Fortress Altamira LNG Terminal",
+    "issue": "Project-wide developer distress not yet reflected in GEM. Owner New Fortress Energy (parent of all 5 Altamira units) is in severe financial distress: as of early 2026 NFE was near bankruptcy with ~$5.7bn debt, pursuing a UK 'scheme of arrangement' (announced ~2026-03-17) to convert debt to equity (handing majority ownership to creditors) or otherwise face Chapter 11. Separately, Mexico's CNE denied NFE subsidiary Mexico FLNG Onshore a pipeline transport permit in December 2025 (technical deficiencies). Trade press indicates Train 2 (G100002106902, GEM=construction) construction was put on hold in Dec 2025 on cash constraints, and NFE's most recent disclosures reportedly no longer list the partially completed Train 2 among portfolio assets (only as loan collateral). Train 3 (proposed) and Trains 4/5 (shelved) likewise affected.",
+    "severity": "high",
+    "suggested_action": "Re-verify Altamira Train 2 status — possible construction -> shelved if the construction hold is confirmed durable (needs an explicit NFE/SEC source, not yet staged). Document the NFE restructuring + CNE pipeline-permit denial in the terminal wiki. Sources: https://mexicobusiness.news/oilandgas/news/cne-denies-pipeline-permit-lng-plan-altamira (PASS), IEEFA bankruptcy coverage. Route any status change through Update once confirmed (fetch_timeline DOWN).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_health",
+    "terminal_id": "T100001054469",
+    "unit_id": "G100001062346",
+    "terminal_name": "Coatzacoalcos II LNG Terminal",
+    "issue": "Capacity field looks malformed. GEM records Capacity='0.05', CapacityUnits='MMcf/d', CapacityinMtpa='0.0'. The developer (Ursus-Aqualita LNG) describes a ~$1.8bn, 4-train facility with ~47,000 Mcf/d (i.e. 47 MMcf/d ~= 0.36 mtpa) capacity. '0.05 MMcf/d' is implausibly tiny and the mtpa rounds to 0.0 — likely a unit/decimal data-entry error (e.g. 47 MMcf/d or 0.5 Bcf/d intended).",
+    "severity": "medium",
+    "suggested_action": "Re-derive capacity from the developer site (https://ualng.com/) and trade press (NGI, Energy Analytics Institute). Candidate ~47 MMcf/d ~= 0.36 mtpa; verify and convert carefully before correcting. Out of standard-tier scope to guess; flag for an Update field check. June 2025 land concession granted in the Coatzacoalcos II PODEBI special economic zone — project remains active/proposed (no status change).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_ref",
+    "terminal_id": "T100000130572",
+    "unit_id": "G100002057200",
+    "terminal_name": "Lazaro Cardenas LNG Terminal",
+    "issue": "Blank [ref] targets: Status [ref], ShelvedYear [ref] (2007), CancelledYear [ref] (2009), StopYear [ref] (2009). These are historical inferred dates for a long-cancelled Repsol import terminal (status=cancelled, inferred 4y). No clean primary source could be located in this sweep to cite the specific inferred 2007/2009 years; the only owner ref on file is a 2004 Cinco Días article on the original proposal.",
     "severity": "low",
-    "suggested_action": "No edit. Watch for Saguaro and Amigo FID announcements in 2026. Sources: https://www.hartenergy.com/exclusives/mexico-pacific-fid-imminent-saguaro-lng-trains-1-and-2-208708/ ; https://lngprime.com/americas/gato-negro-eyes-fid-on-mexico-lng-plant-in-late-2026/165906/",
+    "suggested_action": "Leave blank rather than fill with a weak/mismatched source (no orphan or speculative refs). Optional: cite the existing 2004 Cinco Días proposal article on Status [ref] only as context; the shelved/cancelled-year inferences appear to be GEM editorial judgement without a published source.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_ref",
+    "terminal_id": "T100000130674",
+    "unit_id": "G100002067401",
+    "terminal_name": "PEMEX LNG Terminal",
+    "issue": "Blank [ref] targets: Status [ref], ShelvedYear [ref] (2016), CancelledYear [ref] (2018), StopYear [ref] (2018). Historical inferred dates for a cancelled Pemex Salina Cruz export proposal (status=cancelled, inferred 4y). The only ref on file is a 2014 UT-Austin LACP blog (web.archive). No published source found in this sweep dating the 2016/2018 shelved/cancelled inferences.",
+    "severity": "low",
+    "suggested_action": "Leave blank rather than fabricate a ref. The 2016/2018 years appear to be GEM editorial inference; if a researcher has a Pemex annual report or news item documenting the wind-down it could be cited, otherwise no orphan refs.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_ref",
+    "terminal_id": "T100000130717",
+    "unit_id": "G100002071701",
+    "terminal_name": "Salina Cruz LNG Terminal (CFE)",
+    "issue": "Blank Status [ref]. Status=shelved (inferred 2y), set by the prior researcher (GC, Sep 2025) on the rationale of no developments >2 years for this CFE export proposal. No external news source confirms a formal shelving (it is an inference), so no clean [ref] is available; existing Owner/Capacity refs are 2021 CFE convocatoria docs.",
+    "severity": "medium",
+    "suggested_action": "Status is an editorial inference (\"no movement >2y\"), not a sourced event — leave Status [ref] blank or, at most, cite the 2021 CFE convocatoria already on file as the last documented activity. No status change found in this sweep (project remains dormant).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change_verify",
+    "terminal_id": "T100000130810",
+    "unit_id": "G100002081001",
+    "terminal_name": "Costa Azul LNG Terminal",
+    "issue": "Re-verify (no change): Costa Azul Export Phase 1 remains construction/actual. As of late 2025/early 2026 the project is >95% complete; Sempra expects first LNG production in spring 2026 (reported as June 2026), with commercial operations targeted for summer 2026. DOE granted a six-month extension to begin non-FTA exports. No field change yet — startup milestone not reached as of 2026-06. GEM ResearcherNotes (Sep 2025: 94% complete, ops 2026) remain accurate.",
+    "severity": "low",
+    "suggested_action": "No edit. Watch for first-LNG / commercial-ops announcement (expected mid-2026) to move Phase 1 construction -> operating and set ActualStartYear=2026. Source: https://lngprime.com/americas/sempras-eca-lng-to-kick-off-lng-production-in-june/185925/ (PASS). Note Phase 2 (G100002081002) FIDYear=2028 still consistent with Sempra 2024 annual report.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change_verify",
+    "terminal_id": "T100000131173",
+    "unit_id": "G100002117300",
+    "terminal_name": "Salina Cruz LNG Terminal (Pilot/GFI)",
+    "issue": "Re-verify (no change): Pilot LNG / GFI small-scale (0.34 mtpa) Salina Cruz bunkering project. No public developments since the original Aug 2024 announcement; owners' website unchanged. GEM ResearcherNotes (Sep 2025) already note the absence of new info. FIDYear=2025 (Pre-FID) was the announced target (H2 2025) but no FID confirmed; remains speculative.",
+    "severity": "low",
+    "suggested_action": "No edit. If still no news by next sweep consider shelved-inferred. The FIDYear=2025 target is now likely lapsed (no confirmation); low-priority candidate for clearing.",
     "researcher_initials": "AI-draft"
   }
 ]

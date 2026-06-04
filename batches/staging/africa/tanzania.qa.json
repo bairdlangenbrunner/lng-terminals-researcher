@@ -4,19 +4,19 @@
     "terminal_id": "T100000130263",
     "unit_id": "G100002026301",
     "terminal_name": "Tanzania LNG Terminal",
-    "issue": "Status/FID movement since GEM's LastUpdated (2025-06-30). The Equinor/Shell/ExxonMobil consortium (with Pavilion Energy, Medco Energi, TPDC) and the Tanzanian government have agreed the main elements of a Host Government Agreement (HGA) plus a Production Sharing Agreement; commercial negotiations are reported complete with legal issues being finalized, and Tanzania targets SIGNING the legal framework before June 2026. Crucially, signing the HGA does NOT equal FID: FEED runs ~2-3 years, so a realistic FID window is ~2028-2029 with first LNG in the early 2030s. GEM's status=proposed, FIDStatus=Pre-FID, FIDYear=2028, OriginalPlannedStartYear=2029, LatestPlannedStartYear=2032 all remain ACCURATE. No Status field edit and no timeline file (per HARD RULES; fetch_timeline endpoint is down).",
+    "issue": "Major 2026 milestone in motion but not yet completed (GEM LastUpdated 2025-06-30 predates it). Tanzanian govt (Min. Mkumbo; PM Mwigulu in Apr-2026 Parliament) says commercial negotiations are complete and the Host Government Agreement / legal framework is targeted to be SIGNED before June 2026; once signed, FEED (~2-3 yrs) precedes an FID window of ~2028-2029. As of the latest reporting checked (Jan-Apr 2026) the HGA is NOT yet signed, so Status correctly remains 'proposed' / FIDStatus 'Pre-FID'. No Status field edit staged (per sweep rule, status changes are qa-only; fetch_timeline endpoint is down). Recommend the human watch for an HGA-signed announcement around mid-2026, which would warrant a timeline/substatus update (e.g. proposed -> construction is NOT yet warranted; HGA is a legal milestone, not start of construction).",
     "severity": "medium",
-    "suggested_action": "When the HGA is actually signed (watch for confirmation, targeted before June 2026), consider a status_timeline addition and refresh of the researcher note. For now: re-verify only (values current), and refresh LastUpdated. The 2028 FIDYear is well-supported by the 2028-2029 FID-window reporting. Sources: https://lngprime.com/contracts-and-tenders/shell-and-equinor-moving-forward-with-giant-tanzania-lng-project/82089/ ; https://www.enerdata.net/publications/daily-energy-news/tanzania-expects-secure-us42bn-lng-project-june-2026.html ; https://energycapitalpower.com/tanzanias-42b-lng-project-enters-decisive-year-as-partners-eye-host-agreement/",
+    "suggested_action": "Monitor for a confirmed HGA/legal-framework signing (targeted before June 2026). If/when signed, log a status_timeline event; FID itself is still ~2028-2029 so Status stays proposed/Pre-FID until FID. Sources: Ecofin (2026), The Citizen (2026-01-09), Enerdata (2026-01-30).",
     "researcher_initials": "AI-draft"
   },
   {
-    "category": "verification_log",
+    "category": "value_staleness_candidate",
     "terminal_id": "T100000130263",
     "unit_id": "G100002026301",
     "terminal_name": "Tanzania LNG Terminal",
-    "issue": "Re-verified (2026-06 sweep): owner/parent consortium (Equinor, ExxonMobil, Pavilion Energy, Medco Energi, Shell, TPDC; parent set adds Temasek as Pavilion's ultimate parent), operator (Shell; Equinor), capacity 2 x 5.00 mtpa = 10 mtpa total, location Lindi (Likong'o), and proposed/Pre-FID status are all consistent with current reporting. The ~10 mtpa two-train onshore export terminal at Likong'o, Lindi is corroborated. No field changes; LastUpdated (2025-06-30) is ~1 year old but values hold.",
+    "issue": "LatestPlannedStartYear in GEM = 2032 (both units). Multiple 2026 sources now describe first gas as 'early 2030s' or 'about eight years from the HGA signing' (i.e. ~2034 if signed in 2026). This is a soft/derived journalistic estimate, not a firm sponsor-declared planned start year, so NO field edit was staged. Flagging for the human to consider whether LatestPlannedStartYear should be pushed (2032 -> ~2034) once a sponsor-stated schedule is published (e.g. post-HGA). OriginalPlannedStartYear (2029) and FIDYear (2028) remain consistent with reporting (FID window 2028-2029) and were left unchanged.",
     "severity": "low",
-    "suggested_action": "No change. Representative blue re-verify for the Tanzania LNG terminal; refresh LastUpdated. Sources as above plus https://www.ecofinagency.com/news-industry/2701-52319-tanzania-targets-june-deal-to-restart-42-billion-lng-project",
+    "suggested_action": "If a sponsor (Equinor/Shell/TPDC) publishes a firm first-gas year post-HGA, update LatestPlannedStartYear accordingly; do not bump on journalistic '~2034' alone. Sources: Enerdata (2026-01-30, '~8 years from signing'), Ecofin (2026, 'early 2030s'/first production by 2034).",
     "researcher_initials": "AI-draft"
   }
 ]

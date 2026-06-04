@@ -1,0 +1,12 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000131116",
+    "unit_id": "G100002111600",
+    "terminal_name": "Aruba LNG Terminal",
+    "issue": "Discovery sweep found no LNG terminal missing from GEM for Aruba; the single existing record is the only project. However, two nuances on the existing row warrant an Update look: (1) LOCATION/CONFIG SHIFT - WEB's FEED (conducted by K&M Advisors, kicked off ~2020) describes a LAND-BASED storage+regasification facility at BARCADERA port (new reclaimed area, ~19,000 m3 full-containment tank, ambient-air vaporizers, ~2 km pipeline to the Balashi/RECIP power plant), selected from a pre-FEED screen of 15 location/configuration options. GEM's row gives Location='San Nicolas' (the idled RdA refinery site, the originally announced Eagle LNG location). Barcadera appears to be WEB's preferred relocated site for the SAME WEB/RECIP-Balashi LNG-supply project, not a separate terminal, so this is a location/configuration correction, not a new terminal. (2) STALENESS - latest public project news traces to ~May 2023 (Eagle LNG site) and a Mar-2023 PR confirming the Utilities Aruba NV supply contract still in effect; the once-stated 2024 commissioning target has lapsed with no FID, construction start, or cancellation reported through 2024-2026. fetch_timeline is DOWN, so no timeline edit attempted here.",
+    "severity": "low",
+    "suggested_action": "Route to an Update batch: (a) re-verify Location - decide whether to record San Nicolas vs Barcadera (or note both as candidate sites with Accuracy=approximate) per WEB's FEED; (b) consider Substatus 'inferred 2 y' / re-anchor ProposalYear evidence given the ~3-year news gap and lapsed 2024 target; (c) confirm Owner/Operator split still reflects Eagle LNG (supply/JAX export) + WEB/Utilities Aruba NV (terminal). Sources: https://www.km-advisorsllc.com/projectkm/aruba-lng-terminal-feed-study/ (Barcadera land-based FEED, client WEB); https://gasoutlook.com/analysis/caribbeans-aruba-pivots-to-lng-as-wind-back-up/ (WEB LNG-as-wind-backup context).",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  }
+]

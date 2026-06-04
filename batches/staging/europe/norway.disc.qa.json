@@ -1,0 +1,12 @@
+[
+  {
+    "category": "coverage_gap",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Norway small-scale LNG receiving terminals (Gasnor/Molgas + Gasum network)",
+    "issue": "Discovery surfaced a systematic GEM coverage gap in Norway's small-scale LNG receiving/distribution terminals. GEM tracks ~8 Norwegian rows (Hammerfest, Risavika, Kollsnes, Snurrevarden, Tjeldbergodden, Mosjoen, Fredrikstad/Ora) but does NOT include the operating Ålesund/Bingsa terminal (Gasum; operating since June 2010; storage + regas pipeline to Veidekke + truck distribution — a direct functional peer of the in-GEM Mosjoen and Ora terminals). Verified trade press (Riviera) further reports Gasnor operates ~30 receiving terminals coast-wide (Bodø to Lista), naming additional operating sites: Sunndalsøra (Gasnor-Shell), Høyanger, Ågotnes/CCB, Halhjem, Florø (Saga Fjordbase). This is >5 candidate sites in one country, so per CLAUDE.md and Discovery SOP §12 it is escalated rather than mass-staged. Two blockers prevent staging even the best-documented site (Ålesund): (1) the citation gate — every verifiable Gasum/operator primary page returns HTTP 403 and the only url_verifier-PASS source is Wikipedia, which source_roster forbids citing directly; (2) a coverage-policy question over which small stations meet GEM's terminal threshold vs are sub-threshold satellite distribution / bunkering-only (out of scope).",
+    "severity": "medium",
+    "suggested_action": "User decision on whether GEM should systematically cover the Norwegian small-scale LNG receiving network (Gasnor/Molgas + Gasum). If yes, route to a follow-on Update/Discovery batch that (a) finds a verified non-Wikipedia primary/trade-press source per site and (b) screens each for the terminal threshold (storage + regas/pipeline supply or industrial truck distribution = peer of Mosjoen/Ora; bunkering-only = out of scope). Ålesund/Bingsa is the strongest single add (owner = existing GEM entity Gasum Oy, T100000130730) and should be promoted to new_terminal first once one verified citable source is found.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  }
+]

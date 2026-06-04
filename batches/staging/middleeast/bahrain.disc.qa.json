@@ -1,0 +1,22 @@
+[
+  {
+    "category": "discovery_dedup",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "EPC GDN - LNG Terminal Expansion (Bapco Upstream tender)",
+    "issue": "Active Bahrain tender 'EPC GDN - LNG Terminal Expansion' (Bahrain Tender ID 123519556, buyer BAPCO UPSTREAM W.L.L, deadline 30 Dec 2026). 'GDN' indicates gas-distribution-network / downstream EPC work tied to the existing Bahrain LNG (Hidd FLNG) import terminal already in GEM, not a new standalone terminal. Capacity, scope, and exact location are behind the platform login wall and could not be verified. No evidence this is a second terminal.",
+    "severity": "low",
+    "suggested_action": "Treat as a possible scope/expansion signal on the existing Bahrain Hidd FLNG Terminal rather than a new terminal. If a future batch can access the tender detail and it represents a genuine regas-capacity expansion, route to an Update batch on the existing row; do not stage a new_terminal on this lead alone.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "discovery_dedup",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Bahrain Hidd FLNG Terminal (existing GEM row)",
+    "issue": "Only one LNG terminal exists in Bahrain and it is already in GEM (Bahrain Hidd FLNG Terminal, operating, import, FSU 'Bahrain Spirit', ~800 mmscfd, Khalifa bin Salman Port / Hidd, Muharraq Island). 2025 trade press notes the terminal was restarted and received its first import cargoes Apr/Jun 2025 (originating from the US) via ship-to-ship transfer; a Noatum Maritime marine-services agreement was signed Nov 2025. These are operational updates on the existing row, not new terminals.",
+    "severity": "low",
+    "suggested_action": "Route the restart / first-import-cargo activity and the Noatum marine-services agreement to a standard Update batch on the existing Hidd row (status/operational notes) if not already captured; nothing to discover.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  }
+]

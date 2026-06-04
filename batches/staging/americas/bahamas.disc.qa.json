@@ -1,0 +1,22 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000131117",
+    "unit_id": "G100002111700",
+    "terminal_name": "Clifton Pier LNG Terminal",
+    "issue": "GEM status is 'proposed' but the Shell/FOCOL 'New Providence Gas' (NPG) regasification terminal at Clifton Pier has materially advanced toward construction: GoB signed the Terminal Development and Use Agreement + LNG SPA (March-May 2025); Parliament approved government guarantees (incl. $30M performance LC for the TDUA and a $99.9M revolving credit line); Nikkiso awarded the regasification/cryogenic equipment contract (Aug 2025, ~55 MMscf/d package); dredging and civil works/site preparation reported underway Aug 2025 with first LNG targeted for late 2025/2026. Indicates a proposed -> construction status change.",
+    "severity": "medium",
+    "suggested_action": "Route to Update batch: pull existing timeline (fetch_timeline is DOWN this round, so flagging via QA), verify and advance Status to 'construction' with anchor year 2025. Capture Operator = New Providence Gas (Shell/FOCOL JV) and regas equipment vendor Nikkiso. Sources (url_verifier PASS): https://lngprime.com/americas/shell-focol-award-contract-for-lng-to-power-project-in-bahamas/160470/ ; https://www.tribune242.com/news/2025/aug/22/dredging-for-clifton-lng-terminal-starts-this-month/ (dredging/civil works underway); plus Eye Witness News on the Parliamentary guarantees.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100001047792",
+    "unit_id": "G100001054688",
+    "terminal_name": "Island Power Producers LNG Terminal",
+    "issue": "GEM status is 'proposed' but the Nassau Mini LNG regasification terminal (developer Island Power Producers with India's INOXCVA) is reported under construction, supplying a ~60 MW combined-cycle plant providing shore power to the Nassau Cruise Port, with completion targeted December 2026. Indicates a proposed -> construction status change.",
+    "severity": "medium",
+    "suggested_action": "Route to Update batch: verify and advance Status to 'construction' (anchor year 2025) and confirm/add EPC-equipment partner INOXCVA and the Nassau Cruise Port shore-power end use. fetch_timeline DOWN this round - do not stage a blind timeline edit; flag for Update.",
+    "researcher_initials": "AI-draft"
+  }
+]

@@ -1,41 +1,62 @@
 [
   {
+    "terminal_id": "T100000131099",
+    "unit_id": "G100002109900",
+    "terminal_name": "Zeeland Energy FSRU",
+    "unit_name": "--",
+    "country": "Netherlands",
+    "field_name": "LatestPlannedStartYear",
+    "old_value": "2028",
+    "new_value": "2029",
+    "confidence": "green",
+    "source_tier": "sponsor IR / official project site",
+    "ref_field": "StartDate [ref]",
+    "ref_urls": [
+      "https://hoeghevi.com/open-season-launch-for-zeeland-energy-terminal/",
+      "https://zeelandenergyterminal.com/open-season/"
+    ],
+    "source_notes": "Co-sponsor Höegh Evi (open-season launch release) states the terminal is 'targeted to be operational from late 2029'; the official ZET project site (open-season page and about page) states commercial operations commence 'Q4 2029' / '2029 onwards'. OriginalPlannedStartYear 2024 long passed; the current sponsor-stated target has slipped from GEM's 2028 to 2029. FID itself is now only expected Q3 2027, consistent with a 2029 start.",
+    "scope_note": "dev_pipeline (proposed FSRU) worklist row; start-year only — capacity (~7.5 bcm/y) and proposed status re-confirmed unchanged.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131099",
+    "unit_id": "G100002109900",
+    "terminal_name": "Zeeland Energy FSRU",
+    "unit_name": "--",
+    "country": "Netherlands",
+    "field_name": "OtherNames",
+    "old_value": "VTTI FSRU",
+    "new_value": "VTTI FSRU; Zeeland Energy Terminal; ZET",
+    "confidence": "green",
+    "source_tier": "sponsor IR / official project site",
+    "ref_field": "OtherNames",
+    "ref_urls": [
+      "https://zeelandenergyterminal.com/about-zeeland-energy-terminal/",
+      "https://hoeghevi.com/vtti-and-hoegh-evi-launch-permitting-process-for-zeeland-energy-terminal/"
+    ],
+    "source_notes": "Project is now consistently branded 'Zeeland Energy Terminal (ZET)' by both sponsors (VTTI and Höegh Evi) and on its dedicated site zeelandenergyterminal.com. Appended the official name and 'ZET' acronym to the existing 'VTTI FSRU' alias; existing GEM TerminalName ('Zeeland Energy FSRU') left unchanged (TerminalName is not staged here).",
+    "scope_note": "dev_pipeline worklist row; alias append only, no identity change.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
     "terminal_id": "T100000130492",
     "unit_id": "G100002049201",
     "terminal_name": "Gate LNG Terminal",
     "unit_name": "Expansion",
     "country": "Netherlands",
-    "field_name": "LatestPlannedStartYear",
-    "old_value": "2026",
-    "new_value": "2026",
+    "field_name": "Status",
+    "old_value": "construction",
+    "new_value": "construction",
     "confidence": "blue",
-    "source_tier": "primary (Port of Rotterdam) + sponsor (Gasunie/Vopak) press",
-    "ref_field": "StartDate [ref]",
+    "source_tier": "sponsor / operator project page",
+    "ref_field": "Status [ref]",
     "ref_urls": [
-      "https://www.portofrotterdam.com/en/news-and-press-releases/gate-terminal-starts-construction-of-4th-lng-tank-at-the-port-of-rotterdam"
+      "https://www.gateterminal.com/en/expention-project-tank-4/",
+      "https://www.gasunie.nl/en/news/gate-terminal-starts-construction-of-4th-lng-tank-at-the-port-of-rotterdam"
     ],
-    "source_notes": "RE-VERIFY ONLY, NO CHANGE (representative blue for Gate). The 4th-tank expansion (new 180,000 m3 tank + ~4 bcm/y added regas) is under construction, FID Aug 2023, with capacity already fully contracted long-term and 'expected to be ready for operation by the second half of 2026' (Port of Rotterdam / Vopak / Gasunie). This matches GEM's Expansion unit: status=construction, ConstructionYear=2023, FIDYear=2023, OriginalPlanned/LatestPlanned=2026, capacity 4 bcm/y (~2.94 mtpa). Owner=Gate Terminal BV, Parent=Gasunie; Vopak, Operator=Gate Terminal all consistent. Base unit 16 bcm/y unchanged. No edit needed; GEM is current.",
-    "scope_note": "Unit-level re-verify on the Expansion unit; representative blue for the 2-unit Gate terminal.",
-    "researcher_initials": "AI-draft (sweep)"
-  },
-  {
-    "terminal_id": "T100000130997",
-    "unit_id": "G100002099700",
-    "terminal_name": "Eemshaven FSRU",
-    "unit_name": "--",
-    "country": "Netherlands",
-    "field_name": "Capacity",
-    "old_value": "8.00",
-    "new_value": "8.00",
-    "confidence": "blue",
-    "source_tier": "sponsor (Gasunie) + trade press (LNG Prime, multiple)",
-    "ref_field": "Capacity",
-    "ref_urls": [
-      "https://www.gasunie.nl/en/projects/eemsenergyterminal",
-      "https://lngprime.com/europe/dutch-eemshaven-lng-terminal-hits-new-record/162349/"
-    ],
-    "source_notes": "RE-VERIFY ONLY, NO CHANGE (representative blue for the Eemshaven FSRU). Nameplate capacity 8 bcm/y (~5.88 mtpa) confirmed; the two chartered units — the ~170,000 m3 FSRU Energos Igloo (owner Energos Infrastructure) and the ~26,000 m3 barge FSRU Eemshaven LNG (owner Exmar) — match GEM's FloatingVesselName='Eemshaven LNG, Energos Igloo' and VesselOwner='Exmar; Energos Infrastructure'. Owner=EemsEnergyTerminal BV, Parent=Gasunie; Vopak, Operator=EemsEnergyTerminal consistent. NOTE (see wiki): in Sep/Oct 2025 Gasunie+Vopak took a conditional investment decision to EXTEND operations beyond 2027 (intended to run to 2036), and there is ambition to reach 9-10 bcm via debottlenecking — these are forward developments, not a current-nameplate change, so no field edit (logged in wiki/qa). Hydrogen Import Terminal unit stays proposed (out-of-scope NH3/H2 fields not touched).",
-    "scope_note": "Project-level Capacity for the base FSRU unit; representative blue for the 2-unit terminal.",
+    "source_notes": "Re-verified, UNCHANGED. Gate Terminal's official Tank 4 project page (June 2026) states 'The tank 4 project has started. Contractors are currently working on the engineering and procurement' and that the facility is 'scheduled to become operational' in 'HY2 2026' (second half 2026). 4th tank is NOT yet operating, so status remains 'construction' and LatestPlannedStartYear remains 2026 — no status_timeline note warranted. Added 4 bcm/y regas / 180,000 cbm tank, FID 23 Aug 2023, capacity booked 20yr by bp + PetroChina (2 bcm/y each) all re-confirmed. Owner Gate Terminal BV / Parent Gasunie 50% + Vopak 50% unchanged.",
+    "scope_note": "dev_pipeline (construction) worklist row; representative single blue re-verify for the unit per standard tier (not every field marked).",
     "researcher_initials": "AI-draft (sweep)"
   }
 ]

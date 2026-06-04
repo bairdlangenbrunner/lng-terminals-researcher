@@ -1,22 +1,32 @@
 [
   {
-    "category": "no_change",
+    "category": "status_timeline",
     "terminal_id": "T100000131101",
-    "unit_id": "G100002110100",
+    "unit_id": "G100002110101",
     "terminal_name": "Black Sea LNG Terminal",
-    "issue": "Re-verified: Romgaz+SOCAR completed a positive feasibility study (reported July 2025) for the Black Sea LNG project; project-company structure/financing to be set by end-2025. Regas sited at Constanta (Romania), export end in Georgia/Caspian sourcing. GEM owner (SOCAR; RomGaz), proposed status, and locations (Kulevi export / Constanta import) match. Existing GEM researcher note already flags the eventual split into two facilities.",
+    "issue": "Status/news check (both units proposed, ~10 months stale): NO change to report. Most recent public development is the April 2024 completed feasibility study (positive results; project-company structure said to be finalized 'by end of 2024'). No FID, no capacity/cost disclosure, and no construction or start-year announcement found in 2025-2026. GEM wiki was refreshed 2025-10-16 and likewise keeps the project proposed. Project is dormant/pre-FID, not cancelled.",
     "severity": "low",
-    "suggested_action": "No change. Watch for project-company formation / split into distinct Georgia-export vs Romania-import records once announced.",
+    "suggested_action": "Keep Status=proposed for both units; no timeline file (fetch_timeline endpoint is down). Re-check next annual cycle for an FID or project-company finalization announcement.",
     "researcher_initials": "AI-draft"
   },
   {
-    "category": "no_change",
-    "terminal_id": "T100000130910",
-    "unit_id": "G100002091000",
-    "terminal_name": "Kulevi LNG Terminal",
-    "issue": "Separate older SOCAR Kulevi LNG record; confirmed cancelled (2016). No new activity; GEM 'cancelled (confirmed)' correct.",
+    "category": "data_model",
+    "terminal_id": "T100000131101",
+    "unit_id": "G100002110100",
+    "terminal_name": "Black Sea LNG Terminal",
+    "issue": "Cross-border structural split persists. The project's regasification (Import Facility) is sited at Constanta, Romania, while the liquefaction (Export Facility) is sited at Kulevi, Georgia (project lives in GEM under Country/Area=Georgia). RR's existing ResearcherNotesUnit (7/24) already flags that this 'should likely be split into two separate facilities.' 2025 sources (GEM wiki refreshed 2025-10-16; trade press) still describe both legs but the export-leg siting remains stated as 'Kulevi, Romania or potentially Georgia' on the wiki even though Kulevi is in Georgia — the bifurcation is unresolved and the wiki has a minor Kulevi-country inconsistency. Confirms RR's note; no firm details have emerged to action the split.",
     "severity": "low",
-    "suggested_action": "None.",
+    "suggested_action": "Defer to RR's existing note; do not unilaterally split the terminal or move the Import Facility to a Romania record this batch (no firm new details). Revisit if/when the project company forms and confirms separate sites. Suggest tidying the gem.wiki 'Kulevi, Romania' wording to 'Kulevi, Georgia'.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "link_health",
+    "terminal_id": "T100000131101",
+    "unit_id": "G100002110100",
+    "terminal_name": "Black Sea LNG Terminal",
+    "issue": "Existing Import Facility 'Location [ref]' (https://report.az/en/energy/romgaz-socar-keen-on-investing-in-lng-terminal-in-romania/) returns HTTP 403 to both url_verifier.py and a direct fetch (consistent bot-wall / access restriction, not a transient 429). The cited Constanta location value itself is unchanged and remains correct, so no value edit is staged; only the citation is unhealthy.",
+    "severity": "medium",
+    "suggested_action": "Replace the Import Facility Location [ref] with a reachable source for the Constanta siting (e.g. the lngprime article, romania-insider, or gem.wiki). Do not change the Location value (Constanta) or coordinates.",
     "researcher_initials": "AI-draft"
   }
 ]

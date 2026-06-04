@@ -1,0 +1,22 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130622",
+    "unit_id": "G100002062200",
+    "terminal_name": "Walvis Bay LNG Terminal",
+    "issue": "GEM holds both Walvis Bay units as 'cancelled' (import 'confirmed' 2024; export 'inferred 4 y'). Discovery sweep finds the Walvis Bay LNG import/FSRU concept may be reviving, not dead: Nov-2024 reporting (Reuters, via Interfax 'Walvis Bay LNG import project reimagined') says after the high associated-gas Orange Basin finds, Namibia is in talks with operators to 'agree on a single plan with common infrastructure' and to revamp/upscale the Walvis Bay gas-to-power + LNG-import concept. Namibian Gas Master Plan + African Energy Chamber writeups (2026) still position Walvis Bay north-port LNG import infrastructure as part of forward gas strategy. This is a candidate status change (cancelled -> proposed/shelved) on an existing GEM row, not a new terminal.",
+    "severity": "medium",
+    "suggested_action": "Route to an Update batch to re-verify lifecycle status of T100000130622. fetch_timeline.py is DOWN this sweep, so do NOT stage a blind timeline edit. On the next Update pass, pull the existing timeline, confirm whether the 2024 'cancelled' still holds or whether the common-infrastructure revival has produced a concrete step (new FSRU charter, PPA, jetty/north-port FID), and update Status/Substatus + add a timeline entry accordingly. Lead: https://energychamber.org/namibia-aligns-infrastructure-with-offshore-oil-projects/ (url_verifier PASS 2026-06-03); see also Interfax 'Walvis Bay LNG import project reimagined'.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "ownership",
+    "terminal_id": "T100000130622",
+    "unit_id": "G100002062200",
+    "terminal_name": "Walvis Bay LNG Terminal",
+    "issue": "GEM lists Owner = Excelerate Energy LP [100%] (Parent = Excelerate Energy Inc / Holdings). But the Walvis Bay LNG-import infrastructure (aka 'Walvis GasPort' / 'Walvis Gasport', already a GEM OtherName) is consistently attributed elsewhere to a project-SPV led by Power Invest (PID) and developed with Xaris Energy Namibia and NamPower (NamPower 70% / Xaris 30% on the linked Nathaniel Maxuilili 600MW power plant). Power Invest states it 'has the exclusive rights to develop, build and own the associated LNG infrastructure in Walvis Bay port'. The Excelerate-as-100%-owner record may be stale or conflate the FSRU charterer with the terminal owner/SPV.",
+    "severity": "low",
+    "suggested_action": "On the next Walvis Bay Update pass, re-verify the Owner/Operator/Parent chain for T100000130622 against primary sources (Power Invest SPV, Xaris Energy Namibia, NamPower) before trusting the Excelerate [100%] value. If a new SPV owner is confirmed, run entity_lookup.py before staging any new owner/operator/parent entity. Lead: https://powerinvest.net/portfolio/walvis-gasport/ (url_verifier PASS 2026-06-03). Discovery did not stage an entity addition because this is an existing-row owner question, not a new terminal.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  }
+]

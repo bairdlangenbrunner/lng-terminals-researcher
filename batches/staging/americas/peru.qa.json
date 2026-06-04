@@ -1,32 +1,32 @@
 [
   {
-    "category": "no_change",
-    "terminal_id": "T100000130576",
-    "unit_id": "G100002057601",
-    "terminal_name": "Peru LNG Terminal",
-    "issue": "Verified current. Status=operating, Capacity=4.45 mtpa, Operator=Hunt Oil, Owner=MidOcean 35%/Hunt 35%/Shell 20%/Marubeni 10%, Parent chain (Shell; Saudi Arabian Oil Co 17.2%; Marubeni; EIG Global Energy Partners; Hunt Consolidated; Mitsubishi; unknown) — all match GEM and the GEM wiki page (last edited 2025-10-16). The parent list correctly reflects MidOcean's backers (EIG manages MidOcean; Saudi Aramco and Mitsubishi are LPs), so the multi-entity parent is intentional, not a defect. Repsol's truck-loading/domestic-distribution expansion is downstream of the export plant and does NOT raise the 4.45 mtpa liquefaction nameplate.",
-    "severity": "low",
-    "suggested_action": "No edit. Confidence bump only. Disregard the stale 'SK' owner hint in the batch prompt (SK exited 2024).",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "no_change",
+    "category": "blank_ref",
     "terminal_id": "T100000130990",
     "unit_id": "G100002099000",
     "terminal_name": "Ilo LNG Terminal",
-    "issue": "Verified still shelved. Proposed YPFB (Bolivia) gas-liquefaction/export terminal at Ilo, tied to a never-built Rio Grande (Bolivia)->Ilo pipeline; no project news in >2 years (last substantive activity 2021-2022 bilateral feasibility talks). Owner/Parent = Yacimientos Petroliferos Fiscales Bolivianos Corp [100%] matches GEM. No revival found in 2024-2026; the separate Peru 'Southern Gas Pipeline' (Humay-Ilo-Arequipa) is a domestic gas line, not this export terminal.",
+    "issue": "Status [ref] is blank. The status 'shelved' is GEM-inferred (Substatus 'inferred 2 y', ShelvedCancelledStatusType 'inferred') from absence of news, not from any formal cancellation/shelving announcement. No single Ilo-terminal-specific source documents a 2024 shelving event, so a precise [ref] cannot be supplied without misrepresenting an inference as a sourced event.",
     "severity": "low",
-    "suggested_action": "No edit; status remains shelved. Per lifecycle rules, a proposed/shelved unit dormant >4yr is a candidate for inferred cancelled at a future triage — flag for monitoring, but not this batch.",
+    "suggested_action": "Either leave Status [ref] intentionally blank (consistent with an inferred status), or cite the corroborating dormancy/context sources I verified for the blue re-verify (worldpipelines/Reuters 2024-09-27 on Bolivia's gas exports to Argentina ending; gasoutlook on Bolivia gas production/export collapse). Reviewer's call on whether GEM convention wants a positive [ref] on an inferred-shelved status.",
     "researcher_initials": "AI-draft"
   },
   {
-    "category": "discovery_no_gap",
-    "terminal_id": "",
-    "unit_id": "",
-    "terminal_name": "Peru — discovery sweep result",
-    "issue": "PROPER discovery sweep (hunt for MISSING terminals) for Peru. GEM already has 2 Peru terminals: Peru LNG Terminal (T100000130576, export, operating, Pampa Melchorita/Ica) and Ilo LNG Terminal (T100000130990, export, shelved). Rings A-D run (MINEM, ProInversión/InvestInPeru project portfolio, BNamericas, El Comercio/Gestión/La República, OIES, LNG Prime/Reuters). The ONLY genuinely-new in-scope import-terminal signal is the government's March 2026 announcement of intent to tender a national LNG regasification plant (Camisea-crisis driven) — staged to monitor (peru.monitor.json), below threshold (no site, no executed step). The repeatedly-surfaced 'regasification' references in masificación coverage (Cálidda adendas; Arequipa/Moquegua/Tacna; Puno satellite stations) are inland gas-by-truck satellite-regas distribution, NOT maritime LNG import terminals — out of scope, no new_terminal. No FSRU charter or named private sponsor for a coastal import terminal was found.",
+    "category": "blank_ref",
+    "terminal_id": "T100000130990",
+    "unit_id": "G100002099000",
+    "terminal_name": "Ilo LNG Terminal",
+    "issue": "ShelvedYear [ref] and StopYear [ref] are both blank for ShelvedYear=2024 / StopYear=2024. Those years are GEM-inferred (no project news in 2+ years as of Sep 2024 per ResearcherNotesUnit), not anchored to a dated cancellation event. There is no clean source that pins the shelving to calendar year 2024, so filling these [ref] cells with any dated article would create a misleading citation (orphan-style: ref implying a sourced year that was actually inferred).",
     "severity": "low",
-    "suggested_action": "No new_terminal staged for Peru. Watch the ProInversión LNG regasification tender (monitor entry) — a launched convocatoria + designated coastal site would make it a stageable import/proposed terminal. ANTI-CIRCULARITY noted: GEM.wiki and the asap.nl/Wikipedia LNG terminal lists were treated as leads only, not independent evidence.",
-    "researcher_initials": "AI-draft (discovery sweep)"
+    "suggested_action": "Leave ShelvedYear [ref] and StopYear [ref] blank — these are inferred values with no event source. Do not back-fill with a news URL. If GEM wants provenance, the ResearcherNotesUnit already documents the inference basis ('presumed shelved; no news in more than two years').",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dev_pipeline",
+    "terminal_id": "T100000130990",
+    "unit_id": "G100002099000",
+    "terminal_name": "Ilo LNG Terminal",
+    "issue": "Dev-pipeline status check (shelved unit): confirmed no advancement or revival in 2024-2026. No status change warranted. Broader context strengthens the shelved call — Bolivia's gas exports to Argentina ended 18 Sep 2024 and Bolivian production is in steep decline, undermining the upstream supply the Ilo export/liquefaction project relied on via the dormant Bolivia-Peru Gas Pipeline.",
+    "severity": "low",
+    "suggested_action": "No action; status remains shelved (re-verified, blue mark staged on Status). Continue to monitor for any YPFB/Peru bilateral revival signal tied to Bolivia's claimed new gas finds.",
+    "researcher_initials": "AI-draft"
   }
 ]

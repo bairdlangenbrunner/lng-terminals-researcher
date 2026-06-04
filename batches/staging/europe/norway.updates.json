@@ -1,21 +1,22 @@
 [
   {
-    "terminal_id": "T100000130494",
-    "unit_id": "G100002049401",
-    "terminal_name": "Hammerfest LNG Snohvit Terminal",
+    "terminal_id": "T100000130726",
+    "unit_id": "G100002072601",
+    "terminal_name": "Tjelbergodden LNG Terminal",
     "unit_name": "--",
     "country": "Norway",
     "field_name": "Status",
-    "old_value": "operating",
-    "new_value": "operating",
-    "confidence": "blue",
-    "source_tier": "primary (Equinor) + trade press",
+    "old_value": "retired",
+    "new_value": "retired",
+    "confidence": "yellow",
+    "source_tier": "trade press (single non-primary) + GEM wiki",
     "ref_field": "Status [ref]",
     "ref_urls": [
-      "https://www.equinor.com/news/20251222-status-update-snohvit-future-project"
+      "https://www.rivieramm.com/news-content-hub/news-content-hub/gasum-expands-nordic-footprint-with-lng-terminal-and-bunkering-acquisitionnbsp-59195",
+      "https://www.gem.wiki/Tjelbergodden_LNG_Terminal"
     ],
-    "source_notes": "Re-verified operating as of 2025-26: Hammerfest LNG (Melkoya/Snohvit, 4.2 mtpa) resumed full operations Aug 2025 after a summer turnaround; brief outages only (Jan 2025 compressor, Apr 2024 leak). No change to status (operating) or nameplate capacity (4.2 mtpa). Representative blue re-verify for the Norway export/import set, which is otherwise unchanged.",
-    "scope_note": "Project-level status/capacity unchanged; this is a single representative re-verify, not a field edit.",
+    "source_notes": "Blank-ref fill at the existing value (status unchanged = retired). Riviera (30 Apr 2020) states the small-scale LNG liquefaction plant at Tjeldbergodden was excluded from the Gasum/Linde acquisition and 'is instead being decommissioned in 2020 by Linde' (token 'decommissioned'/'Tjeldbergodden' verified). GEM wiki corroborates 'retired' status but rests on its own presumption from GIE-LNG-database absence since 2019 (citation [5] = GIE LNG Database, accessed Dec 2019); no operator/regulator primary source located. Yellow, not green: single substantive non-primary source (Riviera, trade press); GEM wiki is self-referential corroboration, not independent. Note: Riviera dates the decommissioning to 2020, which CONFLICTS with GEM StopYear=2023 — see qa note; StopYear [ref] deliberately left blank rather than paired with a source that contradicts the value.",
+    "scope_note": "blank-ref fill, standard tier (worklist row); off-worklist sibling fields untouched",
     "researcher_initials": "AI-draft (sweep)"
   }
 ]

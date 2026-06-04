@@ -1,0 +1,32 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "West Papua FLNG Terminal",
+    "issue": "GEM status is 'proposed', but the Genting/Wison Kasuri Block FLNG (Teluk Bintuni, West Papua; Asap/Merah/Kido fields; 1.2 mtpa; FLNG built by Wison New Energies, US$963m EPCIC) has firmed substantially: hull float-out at Nantong yard Dec 2025, sail-away targeted Q2 2026, completion ~Q3 2026, then offshore commissioning at site. This is well past 'proposed' and likely warrants 'construction' (or imminent). Genting also sold stakes to Indonesia's Rukun Raharja.",
+    "severity": "medium",
+    "suggested_action": "Route to UPDATE: advance status proposed->construction (verify exact GEM status semantics for an FLNG vessel under build), update owner structure (Rukun Raharja stake), add timeline. Sources: lngprime.com/asia/chinas-wison-wins-indonesian-flng-gig-from-genting/115155/ ; maritime-executive Genting/Wison FLNG. fetch_timeline is DOWN — defer timeline edits to UPDATE per CLAUDE.md.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Bontang LNG Terminal",
+    "issue": "GEM status is 'retired'. Eni's Kutei Basin dual FID (Mar 2026: Geng North/Gehem North Hub + Gendalo/Gandang South Hub, ~2 Bcfd online 2028) plans to REACTIVATE idle Bontang liquefaction train(s) — Train F named, with studies for up to two more idle trains. A retired export terminal slated for reactivation is a candidate dead-and-revived / status-reversal case.",
+    "severity": "medium",
+    "suggested_action": "Route to UPDATE: assess reactivation of specific Bontang trains (unit-level status change retired->proposed/construction for the reactivated train(s)) once a firm reactivation decision/FID for the train itself is reported. Sources: eni.com 2026 press releases (Mar 2026 dual FIDs; Apr/May 2026 Geliga discovery); lngprime.com/asia/enis-new-indonesian-gas-find-to-help-reactivate-additional-bontang-lng-trains/185855/. Verify against researcher_notes before any capacity bump.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "scope_ambiguity",
+    "terminal_id": "T100000131165",
+    "unit_id": "G100002116500",
+    "terminal_name": "Sulawesi-Maluku LNG Cluster",
+    "issue": "GEM tracks the AG&P / PLN EPI 7-location mini-LNG program as a single rolled-up terminal row, but press (petromindo, Jun 2025; Bappenas roadmap) names six distinct sites (Ternate, Kendari, Bau-Bau, Pomalaa, Gorontalo, Ambon). One of those, Gorontalo, ALSO exists as a separate operating GEM row ('Gorontalo FSRU'), so the cluster-vs-standalone boundary is internally inconsistent.",
+    "severity": "medium",
+    "suggested_action": "Methodology decision needed: keep the cluster as one row, or split into per-site terminals (and reconcile the standalone Gorontalo FSRU against the cluster). See monitor list (6 entries). Do NOT mass-generate new_terminals until adjudicated (CLAUDE.md >5-cluster trigger).",
+    "researcher_initials": "AI-draft"
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100001048294",
+    "unit_id": "G100001055425",
+    "terminal_name": "Petronas FLNG Terminal",
+    "issue": "Discovery sweep surfaced this existing GEM row as the Petronas Block 52 / Sloanea FLNG export project. Material status progress since the row was last updated: Staatsolie's subsidiary Paradise Oil Company approved the Commercial Field (declaration of commerciality) for the Sloanea-1 gas discovery on 11 November 2025; Petronas Suriname (80%, operator) is to file a field development plan and targets FID in H2 2026, with first gas in 2030. Selected concept is a standalone floating LNG (FLNG) facility positioned ~120 km offshore in ~450 m water depth (described as the region's first FLNG). Wison New Energies won the FLNG feasibility study in 2025. Staatsolie/Paradise Oil Co holds 20%. GEM row currently has no capacity value and an outdated profile (Owner 'Petronas International Co Ltd', no operator, status 'proposed'). fetch_timeline is DOWN this batch, so flagging for an Update agent rather than staging a timeline edit. No capacity has been publicly disclosed (do not fill).",
+    "severity": "medium",
+    "suggested_action": "Route to Update: refresh status profile to reflect Sloanea commerciality (11 Nov 2025) and H2-2026 FID target / 2030 first gas; confirm owner/operator entities (Petronas Suriname E&P 80% operator; Paradise Oil Company / Staatsolie 20%); add ~120 km offshore / 450 m depth location context; note Wison feasibility study. Leave Capacity blank (undisclosed). Verified sources: https://www.staatsolie.com/en/news/staatsolie-approves-commercial-field-for-sloanea-1-gas-discovery-in-block-52/ and https://lngprime.com/lng-terminals/petronas-plans-flng-project-in-suriname/120770/",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000131139",
+    "unit_id": "G100002113900",
+    "terminal_name": "Firebird LNG Terminal",
+    "issue": "Discovery sweep dedup confirms this onshore export terminal at Nieuw Nickerie (Firebird LNG, owners Phoenix Development Holding Co / MAD Energy) is already in GEM; not a new discovery. Status signal: 2025 Surinamese/Dutch reporting raised concerns that the Port of Nickerie LNG project has seen no significant progress since 2023, with key stakeholders (Port of Rotterdam Authority and Van Oord) having withdrawn, though NV Havenbeheer maintains the development continues. Suggests the row's 'proposed' status may warrant a stalled/shelved review. fetch_timeline is DOWN this batch.",
+    "severity": "low",
+    "suggested_action": "Route to Update: verify whether 'proposed' should move to 'shelved' (inferred) given no concrete progress since 2023 and partner withdrawals; corroborate against Port of Nickerie official site (https://portofnickerie.com/en/lng-facility-en/) and primary Surinamese reporting before any status change. No new terminal or unit to add.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "GranMorgu (Block 58) — not an LNG terminal",
+    "issue": "Examined during the sweep because Block 58 is Suriname's flagship offshore development and was hypothesized as a possible FLNG export candidate. Confirmed NOT an LNG project: GranMorgu (TotalEnergies operator, APA, Staatsolie 20%) reached FID Oct 2024 as a $10.5bn OIL development (220 kb/d FPSO, first oil 2028) with FULL associated-gas REINJECTION and zero routine flaring. No liquefaction/LNG concept proposed; gas monetization explicitly deferred. Recording so a future sweep does not re-investigate it as an LNG lead. No GEM LNG row should be created.",
+    "severity": "low",
+    "suggested_action": "No action — documented as a non-LNG project so it is not re-chased. Re-check only if TotalEnergies/APA later announce a gas-export (LNG) concept for Block 58. Source: https://totalenergies.com/company/projects/oil/granmorgu-suriname-oil-project-line-totalenergies-transition-strategy",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  }
+]

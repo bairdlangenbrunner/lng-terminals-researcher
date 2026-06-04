@@ -24,6 +24,7 @@ scripts/work/
 dedup_index.json
 stale_sweep.json
 completeness_sweep.json
+fsru_sync.json
 
 # Per-batch staged inputs / agent-authored findings. Loose copies in the repo
 # root or scripts/ are scratch and stay ignored — the organized home is the
@@ -49,6 +50,8 @@ giignl_prose_corrections.json
 # ledger, briefs, README) — it's the diffable audit trail and lives on the batch branch.
 # (The derived _build/ and _prior/ staged_*.json stay ignored via the staged_*.json rule above.)
 batches/*.xlsx
+# Superseded workbooks parked for pruning (derived artifacts, never committed).
+batches/old/
 
 # Python
 __pycache__/

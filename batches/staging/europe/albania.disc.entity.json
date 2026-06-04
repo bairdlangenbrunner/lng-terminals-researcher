@@ -1,0 +1,38 @@
+[
+  {
+    "entity_name": "Aktor LNG USA",
+    "entity_type": "Owner",
+    "country_of_hq": "United States",
+    "parent_entity": "Aktor (Greece)",
+    "rationale_for_new_entity": "U.S. subsidiary of Greek infrastructure/energy group Aktor; signed the 28 Apr 2026 20-yr LNG SPA with ALBGAZ to supply ~1 bcm/yr U.S. LNG to Albania (Vlora hub). Named as a sponsor in the Vlora revival status_timeline note; not in GEM local data and remote lookup inconclusive.",
+    "lookup_was_run": "RUN (inconclusive: not_found_in_local_data; remote search returned only a generic 'New Entity' result, no existing GEM entity surfaced)",
+    "lookup_result_summary": "entity_lookup.py 'Aktor LNG USA' --country Albania --remote -> local not_found_in_local_data; remote found_remote but only generic New-Entity candidate. Likely needs creation by Ownership Team; confirm relation to parent Aktor SA.",
+    "referenced_by_terminals": ["T100000130924"],
+    "referenced_by_units": ["G100002092400"],
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "entity_name": "Aktor Energy",
+    "entity_type": "Operator",
+    "country_of_hq": "Greece",
+    "parent_entity": "Aktor (Greece)",
+    "rationale_for_new_entity": "Wholly owned Aktor subsidiary (reported as 'Aktor Energy USA') that signed the MoU with Albania's Ministry of Infrastructure & Energy for the integrated Vlora energy hub (FSRU + LNG terminal + ~380 MW gas-fired conversion of the Vlora TPP). Named as a sponsor/developer in the Vlora revival status_timeline note; not in GEM local data and remote lookup inconclusive.",
+    "lookup_was_run": "RUN (inconclusive: not_found_in_local_data; remote search returned only a generic 'New Entity' result)",
+    "lookup_result_summary": "entity_lookup.py 'Aktor Energy' --country Albania --remote -> local not_found; remote only generic candidate. Disambiguate from any existing Aktor-group entity before creating.",
+    "referenced_by_terminals": ["T100000130924"],
+    "referenced_by_units": ["G100002092400"],
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "entity_name": "ALBGAZ",
+    "entity_type": "Owner",
+    "country_of_hq": "Albania",
+    "parent_entity": "Government of Albania",
+    "rationale_for_new_entity": "Albanian state-owned natural gas company (gas transmission/distribution operator); counterparty to the 28 Apr 2026 20-yr U.S.-LNG SPA with Aktor LNG USA and named in the Vlora hub MoU. Named as a sponsor in the Vlora revival status_timeline note; not in GEM local data and remote lookup inconclusive.",
+    "lookup_was_run": "RUN (inconclusive: not_found_in_local_data; remote search returned only a generic 'New Entity' result)",
+    "lookup_result_summary": "entity_lookup.py 'Albgaz' --country Albania --remote -> local not_found; remote only generic candidate. State gas TSO; confirm vs any existing GEM Albanian state entity (e.g. Ministry of Infrastructure and Energy already on this row) before creating.",
+    "referenced_by_terminals": ["T100000130924"],
+    "referenced_by_units": ["G100002092400"],
+    "researcher_initials": "AI-draft (discovery sweep)"
+  }
+]

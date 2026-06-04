@@ -1,0 +1,32 @@
+[
+  {
+    "category": "duplicate_split",
+    "terminal_id": "T100000131094",
+    "unit_id": "G100002109401",
+    "terminal_name": "Manzanillo (Dominican Republic) LNG Terminal",
+    "issue": "Two distinct gas-to-power consortia operate in Manzanillo Bay (Pepillo Salcedo) and appear to be conflated on this single GEM row. (1) 'Manzanillo Gas & Power' = Haina Investment Co. + Shell + ENERLA (per manzanillogp.com, also ITABO, Grupo Popular, Coastal Petroleum Dominicana); 840 MW (2x420 MW); offshore marine LNG storage + regasification terminal with NO vessel named; ~USD1.7bn, completion 2028 (under construction). (2) 'Manzanillo Power Land' = Energía 2000; ~414 MW combined-cycle plant already commissioned (~2026); supplied by the Energos Freeze FSRU chartered from New Fortress Energy (3-yr term, docked since 1 Sep 2025). GEM's row lists Owner = 'Manzanillo Gas & Power' (the Haina/Shell project) but FloatingVesselName = 'Energos Freeze FSRU' (which belongs to the SEPARATE Energía 2000 terminal). The Energos Freeze import terminal has no standalone GEM terminal record.",
+    "severity": "high",
+    "suggested_action": "Decide add-vs-split: either (a) ADD the staged new_terminal 'Manzanillo Power Land FSRU (Energos Freeze)' (Owner/Operator Energía 2000, operating, AssociatedTerminals = T100000131094) and REMOVE FloatingVesselName/VesselOwner='Energos Freeze' from the Haina/Shell row; or (b) keep one row but correct ownership so the FSRU is not attributed to Manzanillo Gas & Power. Verify the Haina/Shell terminal's own configuration (offshore-fixed vs floating) and start year (2028 onshore, not 2025) against manzanillogp.com.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000131094",
+    "unit_id": "G100002109401",
+    "terminal_name": "Manzanillo (Dominican Republic) LNG Terminal",
+    "issue": "If GEM's Manzanillo row is intended to represent the Energos Freeze FSRU operation (Energía 2000 / Manzanillo Power Land), that FSRU has been docked at the Pepillo Salcedo offshore marine terminal since 1 Sep 2025 and received its first LNG cargo in Jan 2026, with the ~414 MW plant commissioned ~2026 — i.e. the import terminal is OPERATING, not 'construction'. If instead the row represents the Haina/Shell onshore Manzanillo Gas & Power terminal, its onshore regas unit is targeted for ~2027 first injection / 2028 completion. Disambiguate per the duplicate_split note before changing status. fetch_timeline is DOWN, so this is a note only — do not stage a blind timeline edit.",
+    "severity": "medium",
+    "suggested_action": "Route to an Update batch: pull the existing status timeline (when fetch_timeline is back up) and set the correct status per the resolved row identity (Energos Freeze FSRU = operating 2025; Haina/Shell onshore = construction, 2027/2028 target).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_refresh",
+    "terminal_id": "T100000130566",
+    "unit_id": "G100002056600",
+    "terminal_name": "Andrés LNG Terminal",
+    "issue": "Andrés storage expansion appears not reflected: DR press (gnlglobal.com) reports a new 120,000 m3 LNG tank inaugurated, raising total storage to 280,000 m3 ('largest LNG storage in Central America and the Caribbean'). Separately, TotalEnergies signed a 15-yr / 400,000 t/yr LNG supply deal (Apr 2025) with ENADOM (AES Dominicana + Energas JV; the Andrés operator/expansion vehicle, see MEM operating license R-MEM-LOTA-004-2025) to feed a new ~470 MW combined-cycle plant under construction. Not a new terminal — supply/capacity refresh on the existing Andrés row.",
+    "severity": "low",
+    "suggested_action": "Route to an Update batch for Andrés: verify and (if confirmed) update storage capacity, the ENADOM operator/owner relationship, and any capacity change tied to the new 470 MW plant + TotalEnergies supply agreement. Primary sources: MEM operating license PDF (mem.gob.do R-MEM-LOTA-004-2025), TotalEnergies/BusinessWire press release.",
+    "researcher_initials": "AI-draft"
+  }
+]

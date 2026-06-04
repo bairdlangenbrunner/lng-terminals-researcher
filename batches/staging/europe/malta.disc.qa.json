@@ -1,0 +1,32 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130490",
+    "unit_id": "G100002049000",
+    "terminal_name": "Delimara FSRU",
+    "issue": "Supply-arrangement change on the existing operating terminal (not a new terminal). The ~10-year Enemalta–Electrogas LNG supply agreement expired 13 August 2025; responsibility for sourcing LNG shifted from Electrogas Malta Ltd to Enemalta/the Maltese government. The Energy Minister stated in March 2025 that negotiations for a new supply deal were underway. The Delimara FSRU (Armada LNG Mediterrana) itself remains operating; this is a commercial/supply-contract concern, not an operational shutdown. Flagged here because fetch_timeline.py is DOWN, so any timeline/status-related edit must route to a qa note rather than a staged timeline change. No change to GEM lifecycle Status warranted from this evidence (still operating); a researcher should confirm whether ownership/operator/supplier fields need refreshing once a successor supply deal is announced.",
+    "severity": "low",
+    "suggested_action": "In a follow-on Update batch, pull the Delimara FSRU status timeline (when fetch_timeline is restored) and re-verify Owner/Operator/Parent and the LNG-supply arrangement against a successor-deal announcement. Do not change lifecycle Status from operating on this evidence. Citable context: https://www.electrogas.com.mt/about-the-enemalta-contract/ (url_verifier PASS). Primary news source (MaltaToday, 2025) confirming the 13 Aug 2025 expiry returned HTTP 403 under url_verifier and is uncited here for that reason.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "out_of_scope_confirmation",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Malta-Italy Gas Pipeline / Melita TransGas + Delimara Onshore Natural Gas Terminal",
+    "issue": "Discovery dedup note (no action). The most prominent Malta gas-infrastructure leads are NOT LNG terminals: (1) the Malta-Italy / Melita TransGas Pipeline (159 km subsea gas interconnector, Delimara–Gela Sicily; promoter Melita TransGas Company Limited; Planning Authority full development permit Oct 2021; EU PCI; EIB support reported) is a pipeline, out of scope for the LNG terminals tracker; (2) the 'Delimara Onshore Natural Gas Terminal' (already a GEM record outside the LNG terminals dataset) is a pipeline-fed onshore gas receiving station, NOT an LNG regasification facility — it would receive piped gas from Sicily and is designed to eventually replace the Delimara FSRU. Both are gas/pipeline assets, not new LNG import/export terminals, so neither is a discovery candidate for this tracker.",
+    "severity": "low",
+    "suggested_action": "No LNG-tracker action. Recorded so future discovery sweeps do not re-surface the Malta-Italy pipeline or its onshore receiving station as candidate LNG terminals.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "out_of_scope_confirmation",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Malta LNG bunkering / 'Mediterranean Maritime Fuel Hub' (Hurd's Bank, Marsaxlokk, Valletta)",
+    "issue": "Discovery note (no action). Malta has ongoing LNG-as-marine-fuel / bunkering studies (Transport Malta / EU TRIMIS cost-benefit study covering Marsaxlokk and Valletta) and a 2026 election campaign proposal by the Nationalist Party for an offshore 'Mediterranean Maritime Fuel Hub' / bunkering facility near Hurd's Bank (which would also relocate the Delimara FSRU). Bunkering is explicitly excluded from the LNG terminals tracker scope, and the Hurd's Bank hub is a campaign promise (verbal intent only, no sponsor/site/concrete step) — below the discovery threshold and out of scope on two counts.",
+    "severity": "low",
+    "suggested_action": "No action. Not an LNG import/export terminal; bunkering is out of scope and the proposal is below threshold. Recorded to prevent re-discovery.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  }
+]

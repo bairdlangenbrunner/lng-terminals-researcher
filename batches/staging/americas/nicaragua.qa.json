@@ -4,9 +4,39 @@
     "terminal_id": "T100000130966",
     "unit_id": "G100002096600",
     "terminal_name": "Puerto Sandino FSRU",
-    "issue": "GEM holds status=construction with LatestPlannedStartYear=2025. As of 2026 the project has NOT started: 2025 came and went without commissioning. New Fortress Energy (100% owner) entered a near-bankruptcy debt restructuring (announced Mar 2026, ~$5.7bn UK-led scheme; assets incl. Nicaragua to move to a new 'New NFE' entity) and now targets an October 2026 launch for the Puerto Sandino plant/terminal — ~5 years after the original 2021 target. Status (construction) and owner (NFE) remain correct; only the planned-start year is stale (2025 -> 2026).",
+    "issue": "GEM Status=construction (LastUpdated 2025-06-27); LatestPlannedStartYear=2025 is now stale. New Fortress Energy's Q1-2026 investor update (March 2026) targets commissioning of the Nicaragua (Puerto Sandino) terminal in October 2026 (power plant reported 100% complete; jetty/FSU and pipeline being finished; maritime works remaining). Some 2026 filing language also references full terminal+plant completion in 1H2027. Start has slipped repeatedly: 2H2021 -> Q4 2024 -> Q1 2025 -> Oct 2026. The strongest/most-recent sources stating Oct 2026 (La Prensa 2026-03; NFE SEC 10-Q/8-K FY2026) all FAIL url_verifier (HTTP 403 bot-block / EDGAR blocks the verifier), so no clean citation could be staged for a field edit; recording as qa instead of a Status or LatestPlannedStartYear change.",
+    "severity": "high",
+    "suggested_action": "Manually verify NFE's Oct-2026 COD guidance against the SEC 10-Q (period 2026-03-31, accession 000174972326000062) and March-2026 investor presentation, then update LatestPlannedStartYear 2025 -> 2026 and keep Status=construction until COD is confirmed. fetch_timeline endpoint is down, so no timeline file staged.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "vessel_identity",
+    "terminal_id": "T100000130966",
+    "unit_id": "G100002096600",
+    "terminal_name": "Puerto Sandino FSRU",
+    "issue": "FSRU vessel conflict. GEM FloatingVesselName=Energos Princess. LNG Prime (2024-11-08), quoting NFE CEO Wes Edens, names the FSRU at Puerto Sandino as the 125,856-cbm 'Energos Freeze' (then in dry dock at Navantia, El Ferrol, Spain, due to deploy after exiting dry dock). Some coverage describes a two-vessel setup (138,000-cbm 'Energos Princess' as the FSU at the jetty + 'Energos Freeze' as the FSRU), so this may be an FSU+FSRU configuration rather than a simple error. Ambiguous -> not overwriting GEM.",
     "severity": "medium",
-    "suggested_action": "Refresh LatestPlannedStartYear 2025 -> 2026 (Oct 2026 target) and note the NFE restructuring / Nicaragua-asset reassignment to 'New NFE'. NOTE: the Oct-2026 launch date and bankruptcy detail are carried by La Prensa NI (laprensani.com), which 403'd the URL verifier (bot-block, not a dead link) — could NOT verifier-confirm, so no field edit staged here. Verifier-PASS corroboration of the construction/delay narrative: Upstream (early-2025 fire-up) and LNG Prime ('almost complete', power plant 100% / FSU 95%). Confirm the Oct-2026 date against an NFE filing/IR or a verifier-passing outlet before editing the year.",
+    "suggested_action": "Confirm the deployed regas vessel name + IMO from NFE IR / vessel-tracking before changing FloatingVesselName. If a two-vessel FSU(Energos Princess)+FSRU(Energos Freeze) arrangement is confirmed, record the FSRU vessel in FloatingVesselName and the FSU in researcher notes. Run fsru_sync_check.py at build (vessel name+IMO are the carrier-project linking fields).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "capacity_conflict",
+    "terminal_id": "T100000130966",
+    "unit_id": "G100002096600",
+    "terminal_name": "Puerto Sandino FSRU",
+    "issue": "Capacity framings diverge. GEM Capacity=5.0 mtpa (FSRU regas nameplate; cited to IGU 2025 World LNG Report). NFE describes a '0.4 MTPA LNG-to-power project' in FY2026 SEC materials (this 0.4 mtpa = contracted gas throughput to the 300 MW plant, ~57,000 MMBtu/day; the FSRU is described as capable of up to ~750,000 MMBtu/day, which is ~5+ mtpa LNG-equivalent and roughly consistent with GEM's 5.0). La Prensa (2026-03) reports '3 million tons annually'. The 0.4 mtpa is a throughput figure, not the regas nameplate, so this is NOT a nameplate-bump candidate; the '3 mtpa' journalist figure is unverified.",
+    "severity": "low",
+    "suggested_action": "Keep GEM nameplate 5.0 mtpa unless a primary regas-nameplate figure says otherwise. Do not adopt the 0.4 mtpa (throughput) or 3 mtpa (press) numbers as nameplate. Optionally note throughput in researcher notes.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "project_viability",
+    "terminal_id": "T100000130966",
+    "unit_id": "G100002096600",
+    "terminal_name": "Puerto Sandino FSRU",
+    "issue": "Sponsor financial distress. New Fortress Energy is restructuring ~US$5.7bn of debt (creditor-led, UK framework; reportedly seeking ~90% corporate-debt reduction) and splitting into a publicly-traded 'New NFE' that would own the Nicaragua, Puerto Rico and Mexico assets, including Puerto Sandino. Project reported as preserved through the restructuring with an Oct-2026 launch target, but viability/ownership-entity carry elevated risk worth tracking. (Primary La Prensa/IEEFA/SEC sources are verifier-blocked; gasoutlook source verified.)",
+    "severity": "medium",
+    "suggested_action": "Monitor the NFE restructuring outcome; if/when 'New NFE' becomes the legal owner, the Owner/Parent entity may need updating. Re-verify Owner=New Fortress Energy Inc at next batch.",
     "researcher_initials": "AI-draft"
   }
 ]

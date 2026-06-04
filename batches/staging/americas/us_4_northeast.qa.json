@@ -1,32 +1,82 @@
 [
   {
-    "category": "no-change",
-    "terminal_id": "BATCH-USNE-DEAD",
-    "unit_id": "--",
-    "terminal_name": "Battery Rock; Broadwater; Calais; Crown Landing; Downeast (Import+Export); Keyspan; Liberty FSRU/Port Ambrose; Quoddy Bay; Safe Harbor; Weaver's Cove",
-    "issue": "10 long-cancelled NE US import-era LNG projects (cancellations 2007-2016) quick-verified: all confirmed still dead, no revival in last 12-24 months. Maine trio (Downeast/Calais/Quoddy Bay) FERC-dismissed 2016/2012/2008. Port Ambrose (Liberty FSRU) vetoed by NY Gov Cuomo Nov 2015; an apparent 'April 2025 EIS' in a search summary traced to the 2014 DEIS / Oct 2015 FEIS — NOT a 2025 revival (GEM wiki last-updated Oct 2025 shows no new activity). Crown Landing surrendered to FERC 2012 (Hess), no Chevron revival. Battery Rock/Broadwater/Keyspan/Weaver's Cove/Safe Harbor all defunct.",
-    "severity": "low",
-    "suggested_action": "No edits. GEM status (cancelled/confirmed; Crown Landing inferred) is accurate and current. Per brief, dead projects not over-researched.",
+    "category": "data_conflict",
+    "terminal_id": "T100000130644",
+    "unit_id": "G100002064400",
+    "terminal_name": "Crown Landing LNG Terminal",
+    "issue": "GEM has ShelvedYear=2014 and CancelledYear=2016 / StopYear=2016, but multiple independent sources (Wikipedia, OGJ, NaturalGasIntel) date the milestones earlier: project shelved 2008 after the March 2008 U.S. Supreme Court decision, and Hess surrendered its FERC authorization on 2012-01-06 (formal cancellation). No source found supporting 2014/2016.",
+    "severity": "medium",
+    "suggested_action": "Review and likely correct ShelvedYear->2008 and CancelledYear/StopYear->2012 in a follow-on Update batch; the 2014/2016 values appear unsupported. Year [ref] cells left blank this batch pending this resolution.",
     "researcher_initials": "AI-draft"
   },
   {
-    "category": "data-quality",
-    "terminal_id": "T100000130633",
-    "unit_id": "G100002063300",
-    "terminal_name": "Neptune LNG Terminal",
-    "issue": "GEM StopYear=2013 but ActualStartYear=2010. MARAD record / GEM mothballed status reflect a long suspension; 2013 likely marks effective cessation of regular operations (facility never ran continuously). Not an error per se, but StopYear vs the 2025 ongoing-suspension framing could be reviewed. Mothballed status itself is correct.",
-    "severity": "low",
-    "suggested_action": "Optional: confirm StopYear semantics (effective-cessation vs license-suspension). No change staged.",
+    "category": "data_conflict",
+    "terminal_id": "T100000130653",
+    "unit_id": "G100002065300",
+    "terminal_name": "Safe Harbor Energy LNG Terminal",
+    "issue": "GEM has ShelvedYear=2012 / CancelledYear=2014 / StopYear=2014, but the Federal Register/MARAD record shows Atlantic Sea Island Group withdrew the deepwater-port license application June 2010 and MARAD terminated all federal processing 2010-07-23. The 2012/2014 years are not supported by the regulatory record.",
+    "severity": "medium",
+    "suggested_action": "Verify and likely correct the year fields toward 2010 in a follow-on Update; year [ref] cells left blank this batch.",
     "researcher_initials": "AI-draft"
   },
   {
-    "category": "source-verification",
-    "terminal_id": "T100000130631",
-    "unit_id": "G100002063100",
-    "terminal_name": "Everett Marine Terminal",
-    "issue": "url_verifier.py returned FAIL (missing 'Everett') for EIA Today-in-Energy id=62404, but curl+grep confirms the page DOES contain 'Everett'/'Mystic' (65 KB HTML). Verifier fetch path appears to mis-handle this eia.gov page. URL is genuinely good.",
+    "category": "data_conflict",
+    "terminal_id": "T100000130649",
+    "unit_id": "G100002064900",
+    "terminal_name": "Quoddy Bay LNG Terminal",
+    "issue": "GEM has ShelvedYear=2010 / CancelledYear=2012. Sourced milestones: FERC dismissed Quoddy Bay's application 2008-10-17 (first LNG applicant ever dismissed); the IBIA invalidated the tribal lease 2012-10-04; final regional proposal dismissed by FERC 2016. CancelledYear=2012 is defensible (lease ruling); ShelvedYear=2010 is weakly supported.",
     "severity": "low",
-    "suggested_action": "Treat EIA URL as verified (curl-confirmed). FYI on a possible url_verifier edge case for eia.gov.",
+    "suggested_action": "Optional: reconcile ShelvedYear (2008 FERC dismissal vs 2010) in a follow-on Update. Status/FacilityType/Owner/Location refs filled this batch.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_quality",
+    "terminal_id": "T100000130643",
+    "unit_id": "G100002064300",
+    "terminal_name": "Weaver's Cove LNG Terminal",
+    "issue": "Owner field reads 'Weaver's Cover Energy LLC' — almost certainly a typo for 'Weaver's Cove Energy LLC' (the Hess LNG subsidiary). Terminal name correctly spelled 'Weaver's Cove'.",
+    "severity": "low",
+    "suggested_action": "Correct Owner spelling 'Cover'->'Cove' in a follow-on Update.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_quality",
+    "terminal_id": "T100000130649",
+    "unit_id": "G100002064900",
+    "terminal_name": "Quoddy Bay LNG Terminal",
+    "issue": "Location reads 'Pleasent Point' — typo for 'Pleasant Point' (Passamaquoddy Tribe reservation, Washington County, Maine).",
+    "severity": "low",
+    "suggested_action": "Correct Location spelling in a follow-on Update.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_conflict",
+    "terminal_id": "T100000130658",
+    "unit_id": "G100002065800",
+    "terminal_name": "Liberty FSRU",
+    "issue": "GEM lists Owner=Sonde Resources Corp [100%] / Parent=Sonde Resources Corp for Liberty FSRU (Asbury Park NJ, cancelled 2012). Contemporary coverage of a 'Liberty' offshore LNG import project off NJ attributes it to Liberty Natural Gas LLC (NJ Gov Christie vetoed 2011; applications withdrawn 2012; later revamped as Port Ambrose). Could not confirm a Sonde Resources link to this terminal; the GEM owner attribution may be incorrect or refer to a different proposal. Blank Owner/Capacity/Status/year/Location/FacilityType refs NOT filled to avoid endorsing a possibly-wrong owner.",
+    "severity": "medium",
+    "suggested_action": "Human review: confirm whether Liberty FSRU's owner is Sonde Resources Corp or Liberty Natural Gas LLC before any ref-fill or owner edit. All Liberty blank refs deferred this batch.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130853",
+    "unit_id": "G100002085301",
+    "terminal_name": "Gibbstown Deepwater Port LNG Terminal",
+    "issue": "Dev-pipeline check (proposed, LastUpdated 2026-05-20). Still proposed/pre-construction: DRBC granted a second 5-year construction-permit extension Sept 2025 (Delaware Riverkeeper sued in federal court Nov 2025 to block it); construction not started. Headwinds: parent New Fortress Energy in financial restructuring (avoided Chapter 11 Mar 2026); the associated New Fortress Wyalusing feedgas plant was cancelled July 2025 and the LNG-by-rail permit lapsed, leaving Gibbstown without a confirmed LNG supply. No status change warranted.",
+    "severity": "low",
+    "suggested_action": "No edit — status remains 'proposed'. Context captured in wiki note; monitor for any FID/withdrawal.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000131080",
+    "unit_id": "G100002108001",
+    "terminal_name": "Penn LNG Terminal",
+    "issue": "Dev-pipeline check (shelved/confirmed, LastUpdated 2026-05-21). Confirmed shelved: Feb 2026 reporting (Marcellus Drilling, NaturalGasIntel) says the Chester PA project 'appears to be dead' — sponsor Penn America Energy dissolved, no contractors/feedgas/permits/financing/buyers. A successor effort is reportedly targeting nearby Eddystone PA under a new entity 'Eddystone Energy LLC' (no permits filed as of early 2026). GEM status current.",
+    "severity": "low",
+    "suggested_action": "No edit — Penn LNG remains shelved. Eddystone successor captured in monitor_list for discovery follow-up.",
     "researcher_initials": "AI-draft"
   }
 ]

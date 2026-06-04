@@ -1,0 +1,40 @@
+[
+  {
+    "terminal_id": "T100000130218",
+    "unit_id": "G100002021801",
+    "terminal_name": "Delfin FLNG Terminal",
+    "unit_name": "T1",
+    "country": "United States",
+    "field_name": "Capacity",
+    "old_value": "",
+    "new_value": "4.40",
+    "confidence": "yellow",
+    "source_tier": "primary (sponsor PR)",
+    "ref_field": "Capacity [ref]",
+    "ref_urls": [
+      "https://www.globenewswire.com/news-release/2026/06/03/3306350/0/en/delfin-midstream-announces-5-billion-final-investment-decision-for-first-flng-vessel.html"
+    ],
+    "source_notes": "Delfin Midstream took FID 2026-06-03 on its first FLNG vessel ('Delfin FLNG 1'), stated capacity 'up to 4.4 million tonnes of LNG per year', startup 2030. GEM T1 (soonest dates, FIDYear 2026) is the sanctioned first vessel; its Capacity/CapacityinMtpa cells are currently blank. Filling baseload/nameplate 4.4 mtpa. Yellow: single primary source, 'up to' phrasing — verify exact nameplate vs peak before applying.",
+    "scope_note": "Unit-level (T1 only). Paired cells CapacityUnits='mtpa' and CapacityinMtpa='4.4' must be set alongside Capacity. Do NOT propagate to T2/T3 (not yet FID'd, capacity still blank in GEM).",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130218",
+    "unit_id": "G100002021801",
+    "terminal_name": "Delfin FLNG Terminal",
+    "unit_name": "T1",
+    "country": "United States",
+    "field_name": "FloatingVesselName",
+    "old_value": "",
+    "new_value": "Delfin FLNG 1",
+    "confidence": "yellow",
+    "source_tier": "primary (sponsor PR)",
+    "ref_field": "FloatingVesselName [ref]",
+    "ref_urls": [
+      "https://www.globenewswire.com/news-release/2026/06/03/3306350/0/en/delfin-midstream-announces-5-billion-final-investment-decision-for-first-flng-vessel.html"
+    ],
+    "source_notes": "FID announcement names the sanctioned vessel 'Delfin FLNG 1' (described as the largest FLNG by liquefaction capacity). GEM T1 FloatingVesselName is blank. Yellow: vessel naming/IMO not yet confirmed against a registry; FSRU/FLNG vessel identity is the carrier-project linking field — run fsru_sync_check before applying.",
+    "scope_note": "Unit-level (T1). FSRU/FLNG sync: vessel name+IMO must agree with the LNG carrier backend if tracked.",
+    "researcher_initials": "AI-draft (sweep)"
+  }
+]

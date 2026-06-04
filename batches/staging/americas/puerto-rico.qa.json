@@ -4,19 +4,9 @@
     "terminal_id": "T100000130578",
     "unit_id": "G100002057800",
     "terminal_name": "Penuelas LNG Terminal",
-    "issue": "GEM Owner cell contains an entity-cleanup flag: 'Naturgy [TO BE DELETED] [47%]' and a Parent cell mixing 'Naturgy [TO BE DELETED] [47.5%]' with 'Naturgy Energy Group SA [1.2%]' plus 'unknown [0.1%]'. The verified current ownership of EcoElectrica/Penuelas is Naturgy ~47.5% / ENGIE 35% / Mitsui 15% / others ~2.5%, which the GEM percentages approximate. This is a GEM entity-team data-hygiene issue (a placeholder Naturgy entity tagged for deletion / duplicate Naturgy entities), not a research discrepancy. Out of scope for a field edit by this sweep.",
+    "issue": "Owner field contains an editorial placeholder artifact: 'Naturgy [TO BE DELETED] [47.5%]; ENGIE SA [35%]; Mitsui Group [15%]; EcoElectrica LP [2.5%]'. The '[TO BE DELETED]' tag is not a real ownership value and should be cleaned up — the intended owner is presumably 'Naturgy [47.5%]' (Naturgy = rebrand of Gas Natural Fenosa, the 47.5% main shareholder confirmed by Enerdata/Wikipedia).",
     "severity": "medium",
-    "suggested_action": "Refer to GEM Ownership Team: resolve the 'Naturgy [TO BE DELETED]' placeholder entity and consolidate duplicate Naturgy entities on Penuelas; re-map percentages to Naturgy 47.5 / ENGIE 35 / Mitsui 15 / others 2.5. No field edit by this sweep.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "capacity",
-    "terminal_id": "T100000130784",
-    "unit_id": "G100002078400",
-    "terminal_name": "San Juan LNG Terminal",
-    "issue": "GEM CapacityinMtpa = 1.1 for San Juan (NFE FSRU). One secondary description cites '0.5 mtpa'. The figures likely reflect different conventions (a smaller baseload vs nameplate/expanded throughput); GEM record is recent (LastUpdated 2025-09). NFE secured a 7-yr PR gas-supply agreement (2025). Not changing on a single secondary source — flag for confirmation only.",
-    "severity": "low",
-    "suggested_action": "Confirm San Juan regas nameplate (0.5 vs 1.1 mtpa) against an NFE/FERC primary source before any change. No edit this batch.",
+    "suggested_action": "Clean the Owner string: remove '[TO BE DELETED]' so the 47.5% Naturgy stake reads cleanly. Confirm the remaining splits (ENGIE 35% / Mitsui 15% / EcoElectrica 2.5%) against a primary source before relying on them — only the Naturgy 47.5% is independently corroborated in this sweep.",
     "researcher_initials": "AI-draft"
   },
   {
@@ -24,9 +14,29 @@
     "terminal_id": "T100000130578",
     "unit_id": "G100002057800",
     "terminal_name": "Penuelas LNG Terminal",
-    "issue": "GEM OtherNames includes a likely typo 'Panuelas LNG Terminal' (alongside the correct Penuelas/Penuelas). Minor; flagging for cleanup, not editing OtherNames in this sweep.",
+    "issue": "Parent field appears duplicated/inconsistent: 'Naturgy [TO BE DELETED] [47.5%]; ENGIE SA [35.0%]; Mitsui Group [15.0%]; Naturgy Energy Group SA [47.5%]; ENGIE SA [35.0%]; Mitsui & Co Ltd [15.0%]; unknown [2.5%]'. The same parties (and percentages) are listed twice under both short and long entity names, plus the same 'TO BE DELETED' placeholder.",
     "severity": "low",
-    "suggested_action": "Consider correcting 'Panuelas' typo in OtherNames to 'Penuelas'/'Penuelas'. Low priority.",
+    "suggested_action": "De-duplicate the Parent field to one canonical set (e.g. Naturgy Energy Group SA 47.5% / ENGIE SA 35% / Mitsui & Co Ltd 15% / unknown 2.5%) and drop the 'TO BE DELETED' artifact.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "value_conflict",
+    "terminal_id": "T100000130784",
+    "unit_id": "G100002078400",
+    "terminal_name": "San Juan LNG Terminal",
+    "issue": "Capacity [ref] left BLANK (worklist target) because the existing GEM Capacity=1.10 mtpa conflicts with the best available sources, which give regasification capacity of 120 MMcf/d for the San Juan facility (120 x 0.0077 ~= 0.92 mtpa). No verified source supports 1.10 mtpa, so a ref was NOT staged (no orphan/mismatched ref). The 1.10 may reflect a different basis (peak/optimized, or include truck-loading throughput ~87.52 MMcf/d) — unresolved.",
+    "severity": "medium",
+    "suggested_action": "Resolve the Capacity basis before ref-filling: if GEM uses baseload regas 120 MMcf/d, value should be ~0.92 mtpa (route to Update). If 1.10 is intentional (e.g. combined regas + truck-loading send-out), document the basis in researcher_notes and then a ref can be attached. Candidate sources: FERC Docket CP20-466-000 PDF; NFE 10-K (SEC).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130784",
+    "unit_id": "G100002078400",
+    "terminal_name": "San Juan LNG Terminal",
+    "issue": "San Juan terminal remains operating: in Dec 2025 New Fortress Energy reached a deal to continue supplying natural gas to Puerto Rico's power system for seven more years (Rigzone/trade press), and 2025 reporting (Offshore Energy) describes ongoing imports. No status change vs GEM 'operating' — confirmation only. (fetch_timeline endpoint down, so logged as qa note not a Status/timeline edit.)",
+    "severity": "low",
+    "suggested_action": "No action needed — status 'operating' is current. Note for the record that NFE's PREPA supply arrangement was extended ~7 years (late 2025).",
     "researcher_initials": "AI-draft"
   }
 ]
