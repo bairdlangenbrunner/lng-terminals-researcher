@@ -49,6 +49,19 @@ contains `session limit` / `resets <time>`, do NOT stop and wait. Instead:
 | africa | ✅ DONE 22/22 | `…_2109_ET_africa_update.xlsx` · `…_2109_ET_africa_discovery.xlsx` (recalc OK; 0 gem.wiki URLs; README lists all 25 checked) |
 | americas | ✅ DONE 30/30 | `…_2108_ET_americas_update.xlsx` · `…_2108_ET_americas_discovery.xlsx` (recalc OK; 0 gem.wiki URLs; README lists all 25 checked incl. US; canada_1_east purged 15 gem.wiki cites, 13 lifecycle-year refs blanked) |
 
+**URL-in-data-column fix (2026-06-04 ~21:40) — ALL 12 workbooks rebuilt at `_2140_ET`:** user spotted a
+URL in the `Status` column of asia_update's `updates_all_fields` (should read the enum `cancelled`; the URL
+belongs only in `Status [ref]`). Root cause: a blank-ref-fill record (`field_name="Status [ref]"`,
+`new_value`=URL) also set `ref_field="Status"`, and `build_update_csv_shaped_sheet` wrote the ref URL into
+whatever column `ref_field` named — i.e. the base enum column — clobbering GEM's value. 116 records across
+15 files used that pattern, so URLs could land in ANY base column (Status/Capacity/Owner/...). Fixed
+permanently: the builder now (a) only writes ref URLs into columns whose name ends `[ref]`, (b) refuses a
+URL aimed at a non-`[ref]` data column, printing a `GUARD:` line. Rule added to CLAUDE.md hard requirements
++ the update brief. Verified tree-wide: 0 URLs in any enum/data column across all 6 update workbooks (only
+free-text `ResearcherNotesUnit`, from the GEM export, legitimately carries links); 0 staged records aim a
+URL at a data column. **All 12 workbooks re-stamped `_2140_ET`** (superseding the `_2108/2109/2114/2124/2129`
+set, parked in `batches/old/`); the region-table stamps above are pre-fix.
+
 **README roster fix (2026-06-04 ~21:08):** the "Countries checked" README list was built only from staged records that carry a `country` field, so a country whose only output was a country-less discovery `qa` note (e.g. **United States** — Rio Grande T6/Plaquemines/Galveston/San Juan routing notes) or a clean no-findings run was silently omitted (americas disc showed 21, should be 25). Fixed permanently: `build_review_package.py` now takes `--checked-roster` (a JSON list unioned into `checked`), and `_build_region.py` generates it from the per-country done-markers (`*.disc.done.json` for discovery, non-disc `*.done.json` for update). europe/africa/americas rebuilt with the fix; asia/middleeast/oceania get it natively.
 | asia | ✅ DONE 28/28 | `…_2114_ET_asia_update.xlsx` · `…_2114_ET_asia_discovery.xlsx` (recalc OK; 0 gem.wiki URLs; README roster fix) |
 | middleeast | ✅ DONE 11/11 (limit cleared early again; resumed live, cron `3d23c633` deleted) | `…_2124_ET_middleeast_update.xlsx` · `…_2124_ET_middleeast_discovery.xlsx` (recalc OK; 0 gem.wiki URLs; README lists all 12 checked) |

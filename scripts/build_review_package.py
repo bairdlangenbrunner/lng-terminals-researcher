@@ -652,6 +652,16 @@ def build_updates_sheet(wb, updates):
     _autosize(ws)
 
 
+def _looks_like_url(v):
+    return str(v).strip().lower().startswith(("http://", "https://"))
+
+
+# Populated during build_update_csv_shaped_sheet; surfaced as a build-time warning so a URL
+# can never silently land in a data/enum column (e.g. Status) and ship in a deliverable.
+_BAD_VALUE_WRITES = []   # (tid, uid, field_name, url) — a URL aimed at a non-[ref] column (rejected)
+_BAD_REF_TARGETS = []    # (tid, uid, field_name, ref_name) — ref_field named a non-[ref] column (skipped)
+
+
 def build_update_csv_shaped_sheet(wb, updates, gem_csv_path, scope_terminal_ids=None):
     """The all_fields-CSV-shaped update deliverable.
 
@@ -676,6 +686,8 @@ def build_update_csv_shaped_sheet(wb, updates, gem_csv_path, scope_terminal_ids=
     falls back to the terminal_ids present in `updates`.
     """
     ws = wb.create_sheet("updates_all_fields")
+    _BAD_VALUE_WRITES.clear()
+    _BAD_REF_TARGETS.clear()
     if not Path(gem_csv_path).exists():
         ws["A1"] = f"ERROR: gem_export.csv not found at {gem_csv_path}"
         return
@@ -726,24 +738,38 @@ def build_update_csv_shaped_sheet(wb, updates, gem_csv_path, scope_terminal_ids=
                     continue
                 conf = rec.get("confidence", "")
                 new_val = rec.get("new_value")
+                is_ref_col = fname.endswith("[ref]")
                 if new_val is not None and str(new_val) != "":
-                    if str(new_val) != str(work[ci]):  # compare before overwriting
-                        changed.append(fname)
-                    work[ci] = new_val
+                    # A data/enum column (Status, Capacity, Owner, ...) holds a VALUE, never a
+                    # URL — URLs belong only in the paired "<field> [ref]" column. Reject a
+                    # URL aimed at a non-[ref] column instead of corrupting it (e.g. a Status
+                    # cell must read 'proposed'/'operating'/'cancelled', not an http link).
+                    if (not is_ref_col) and _looks_like_url(new_val):
+                        _BAD_VALUE_WRITES.append((tid, uid, fname, str(new_val)))
+                    else:
+                        if str(new_val) != str(work[ci]):  # compare before overwriting
+                            changed.append(fname)
+                        work[ci] = new_val
                 fills[ci] = conf
                 researched.append((fname, conf))
-                # Paired [ref] column gets the comma-joined verified URLs. The
-                # name is usually "<field> [ref]", but some data columns pair with a
-                # differently-named ref (ConstructionYear -> "ConstructionDate [ref]",
-                # ProposalYear -> "ProposalDate [ref]", ActualStartYear -> "StartDate
-                # [ref]"); a record may name it explicitly via "ref_field".
+                # Paired [ref] column gets the comma-joined verified URLs. The name is usually
+                # "<field> [ref]", but some data columns pair with a differently-named ref
+                # (ConstructionYear -> "ConstructionDate [ref]", ProposalYear -> "ProposalDate
+                # [ref]", ActualStartYear -> "StartDate [ref]"); a record may name it via
+                # "ref_field". GUARD: the ref target must itself be a "[ref]" column — never
+                # write URLs into a base column even if a record's ref_field names one (a
+                # blank-ref fill has field_name="X [ref]" + ref_field="X", which would otherwise
+                # dump the URL into the Status/Capacity/... enum column).
                 ref_urls = rec.get("ref_urls") or []
                 ref_name = rec.get("ref_field") or (
-                    fname if fname.endswith("[ref]") else f"{fname} [ref]")
+                    fname if is_ref_col else f"{fname} [ref]")
                 rci = col_of.get(ref_name)
-                if rci is not None and ref_urls and ref_name not in READ_ONLY_COLUMNS:
+                if (rci is not None and ref_urls and ref_name.endswith("[ref]")
+                        and ref_name not in READ_ONLY_COLUMNS):
                     work[rci] = ", ".join(ref_urls)
                     fills[rci] = conf
+                elif ref_urls and ref_name and not ref_name.endswith("[ref]"):
+                    _BAD_REF_TARGETS.append((tid, uid, fname, ref_name))
 
             changed_str = ", ".join(sorted(set(changed)))
             conf_summary = "; ".join(f"{f}={c}" for f, c in researched if c)
@@ -764,6 +790,22 @@ def build_update_csv_shaped_sheet(wb, updates, gem_csv_path, scope_terminal_ids=
     # Freeze the header row + identity columns through UnitName (or UnitID).
     anchor_idx = col_of.get("UnitName", col_of.get("UnitID", 1))
     ws.freeze_panes = f"{get_column_letter(anchor_idx + 2)}2"
+
+    # Guardrail report: URLs must never reach a data/enum column. Both lists should be empty;
+    # non-empty means a staged record was malformed and the build script correctly refused it.
+    if _BAD_VALUE_WRITES:
+        print(f"  GUARD: rejected {len(_BAD_VALUE_WRITES)} URL value(s) aimed at non-[ref] columns "
+              "(a data column must hold a value, not a link):")
+        for tid, uid, fname, url in _BAD_VALUE_WRITES[:20]:
+            print(f"    {tid}/{uid} {fname} <- {url[:70]}")
+    if _BAD_REF_TARGETS:
+        print(f"  GUARD: skipped {len(_BAD_REF_TARGETS)} ref-URL write(s) whose ref_field named a "
+              "non-[ref] column (URLs routed to the [ref] column only):")
+        seen = set()
+        for tid, uid, fname, ref_name in _BAD_REF_TARGETS:
+            if ref_name not in seen:
+                seen.add(ref_name)
+                print(f"    field_name={fname!r} ref_field={ref_name!r} (e.g. {tid}/{uid})")
 
 
 def build_new_terminals_sheet(wb, new_terminals):
