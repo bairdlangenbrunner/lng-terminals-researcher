@@ -8,13 +8,16 @@
     "field_name": "Capacity",
     "old_value": "",
     "new_value": "4.40",
-    "confidence": "yellow",
-    "source_tier": "primary (sponsor PR)",
+    "confidence": "green",
+    "source_tier": "primary (sponsor PR) + trade press",
     "ref_field": "Capacity [ref]",
     "ref_urls": [
-      "https://www.globenewswire.com/news-release/2026/06/03/3306350/0/en/delfin-midstream-announces-5-billion-final-investment-decision-for-first-flng-vessel.html"
+      "https://www.globenewswire.com/news-release/2026/06/03/3306350/0/en/delfin-midstream-announces-5-billion-final-investment-decision-for-first-flng-vessel.html",
+      "https://lngprime.com/americas/delfin-takes-fid-on-first-flng/188456/",
+      "https://www.lngindustry.com/floating-lng/04062026/delfin-midstream-announces-fid-for-first-flng-vessel/",
+      "https://oilprice.com/Company-News/Delfin-Approves-5-Billion-FID-for-First-US-Floating-LNG-Export-Vessel.html"
     ],
-    "source_notes": "Delfin Midstream took FID 2026-06-03 on its first FLNG vessel ('Delfin FLNG 1'), stated capacity 'up to 4.4 million tonnes of LNG per year', startup 2030. GEM T1 (soonest dates, FIDYear 2026) is the sanctioned first vessel; its Capacity/CapacityinMtpa cells are currently blank. Filling baseload/nameplate 4.4 mtpa. Yellow: single primary source, 'up to' phrasing — verify exact nameplate vs peak before applying.",
+    "source_notes": "Delfin Midstream took FID 2026-06-03 on its first FLNG vessel ('Delfin FLNG 1'), stated capacity 'up to 4.4 million tonnes of LNG per year', startup 2030. GEM T1 (soonest dates, FIDYear 2026) is the sanctioned first vessel; its Capacity/CapacityinMtpa cells are currently blank. Filling baseload/nameplate 4.4 mtpa. Reverify (2026-06-04): value '4.4' corroborated by 3 independent non-GEM trade-press sources (LNG Prime, LNG Industry, OilPrice) plus the sponsor FID release; all 4 PASS url_verifier on '4.4'. Upgraded yellow->green. Note: all sources phrase as 'up to 4.4 mtpa' (peak) — confirm exact nameplate vs peak before applying.",
     "scope_note": "Unit-level (T1 only). Paired cells CapacityUnits='mtpa' and CapacityinMtpa='4.4' must be set alongside Capacity. Do NOT propagate to T2/T3 (not yet FID'd, capacity still blank in GEM).",
     "researcher_initials": "AI-draft (sweep)"
   },
@@ -27,13 +30,16 @@
     "field_name": "FloatingVesselName",
     "old_value": "",
     "new_value": "Delfin FLNG 1",
-    "confidence": "yellow",
-    "source_tier": "primary (sponsor PR)",
+    "confidence": "green",
+    "source_tier": "primary (sponsor PR) + trade press",
     "ref_field": "FloatingVesselName [ref]",
     "ref_urls": [
-      "https://www.globenewswire.com/news-release/2026/06/03/3306350/0/en/delfin-midstream-announces-5-billion-final-investment-decision-for-first-flng-vessel.html"
+      "https://www.globenewswire.com/news-release/2026/06/03/3306350/0/en/delfin-midstream-announces-5-billion-final-investment-decision-for-first-flng-vessel.html",
+      "https://www.lngindustry.com/floating-lng/04062026/delfin-midstream-announces-fid-for-first-flng-vessel/",
+      "https://oilprice.com/Company-News/Delfin-Approves-5-Billion-FID-for-First-US-Floating-LNG-Export-Vessel.html",
+      "https://www.indexbox.io/blog/delfin-midstream-reaches-final-investment-decision-for-delfin-flng-1-the-first-us-floating-lng-facility/"
     ],
-    "source_notes": "FID announcement names the sanctioned vessel 'Delfin FLNG 1' (described as the largest FLNG by liquefaction capacity). GEM T1 FloatingVesselName is blank. Yellow: vessel naming/IMO not yet confirmed against a registry; FSRU/FLNG vessel identity is the carrier-project linking field — run fsru_sync_check before applying.",
+    "source_notes": "FID announcement names the sanctioned vessel 'Delfin FLNG 1' (described as the largest FLNG by liquefaction capacity). GEM T1 FloatingVesselName is blank. Reverify (2026-06-04): vessel name 'Delfin FLNG 1' corroborated by 3 independent non-GEM sources (LNG Industry, OilPrice, IndexBox) plus the sponsor FID release; all 4 PASS url_verifier on 'Delfin FLNG 1' (LNG Prime uses different phrasing and was dropped). Upgraded yellow->green. Note: vessel naming/IMO not yet confirmed against a ship registry; FSRU/FLNG vessel identity is the carrier-project linking field — run fsru_sync_check before applying.",
     "scope_note": "Unit-level (T1). FSRU/FLNG sync: vessel name+IMO must agree with the LNG carrier backend if tracked.",
     "researcher_initials": "AI-draft (sweep)"
   }

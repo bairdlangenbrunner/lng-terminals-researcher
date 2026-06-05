@@ -8,13 +8,15 @@
     "field_name": "Location [ref]",
     "old_value": "",
     "new_value": "https://www.offshore-energy.biz/new-lng-terminal-at-port-of-newcastle-declared-critical/",
-    "confidence": "yellow",
-    "source_tier": "trade press (single secondary source corroborating existing GEM Location value)",
+    "confidence": "green",
+    "source_tier": "trade press (>=3 independent secondary sources corroborating existing GEM Location value)",
     "ref_field": "Location [ref]",
     "ref_urls": [
-      "https://www.offshore-energy.biz/new-lng-terminal-at-port-of-newcastle-declared-critical/"
+      "https://www.offshore-energy.biz/new-lng-terminal-at-port-of-newcastle-declared-critical/",
+      "https://www.ogj.com/pipelines-transportation/lng/article/14038384/epik-lng-terminal-receives-critical-project-status",
+      "https://petroleumaustralia.com.au/projects/epiks-newcastle-gasdock-terminal-declared-critical-state-significant-infrastructure/"
     ],
-    "source_notes": "Blank-ref fill. GEM Location='Newcastle' (lat -32.9167, lon 151.75) had no [ref]. Offshore Energy reports the EPIK Newcastle GasDock AUD589m import terminal sited at Kooragang Island in the Port of Newcastle, NSW — corroborates the existing Location value. URL passes url_verifier (token 'Newcastle'). Cancelled terminal, so this is documentation/audit-trail enrichment only.",
+    "source_notes": "Blank-ref fill. GEM Location='Newcastle' (lat -32.9167, lon 151.75) had no [ref]. EPIK Newcastle GasDock AUD-class FSRU import terminal sited at Kooragang Island in the Port of Newcastle, NSW. Corroborated by >=3 independent non-GEM sources, each PASSing url_verifier on token 'Newcastle': Offshore Energy, Oil & Gas Journal, Petroleum Australia. No gem.wiki/GEM-derivative cited. Cancelled terminal, so this is documentation/audit-trail enrichment only.",
     "scope_note": "blank_ref fill (standard tier worklist)",
     "researcher_initials": "AI-draft (sweep)"
   }

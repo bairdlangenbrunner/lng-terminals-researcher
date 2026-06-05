@@ -9,12 +9,14 @@
     "old_value": "shelved",
     "new_value": "shelved",
     "confidence": "blue",
-    "source_tier": "trade press / NGO (independent of GEM)",
+    "source_tier": "trade press / independent analysis (independent of GEM)",
     "ref_field": "Status [ref]",
     "ref_urls": [
-      "https://bankwatch.org/press_release/latvia-abandons-plans-for-controversial-lng-terminal-but-still-needs-to-ditch-fossil-gas"
+      "https://www.argusmedia.com/en/news-and-insights/latest-market-news/2483972-latvian-government-abandons-skulte-lng-project",
+      "https://emerging-europe.com/analysis/as-latvia-cancels-skulte-lng-project-the-baltic-reliance-on-gas-persists/",
+      "https://ies.lublin.pl/en/comments/uncertain-future-of-skulte-lng-terminal-project/"
     ],
-    "source_notes": "Dev-pipeline re-verify (standard tier). Project remains shelved/dead: Latvian govt withdrew support 11 Apr 2023; Parliament repealed the national-priority law 19 Oct 2023; no 2024-2026 revival. Latvia now sources LNG via Klaipeda (LT) and Inko/Paldiski FSRU capacity (FI/EE) rather than building Skulte. Status unchanged since last batch; one representative blue re-verify for this terminal. URL passes url_verifier (Skulte+abandon+Latvia).",
+    "source_notes": "Dev-pipeline re-verify (standard tier). Shelved/abandoned status corroborated by >=2 independent non-GEM sources: Argus reports the Latvian government abandoned the Skulte LNG project (govt withdrew support 11 Apr 2023); emerging-europe reports Latvia cancelled the project; Institute of Central Europe (ies.lublin) documents the uncertain/abandoned future after Parliament repealed the national-priority law 19 Oct 2023. No 2024-2026 revival. Status unchanged since last batch; representative blue re-verify for this terminal. All three URLs PASS url_verifier ('Skulte'/'abandons'/'cancels'). Removed prior single bankwatch citation (FAILed on the status token); replaced with multi-source corroboration.",
     "scope_note": "Representative blue re-verify for Skulte LNG Terminal; no other cells touched (off-worklist).",
     "researcher_initials": "AI-draft (sweep)"
   },
@@ -27,14 +29,14 @@
     "field_name": "Owner",
     "old_value": "Latvenergo [100%]",
     "new_value": "Latvenergo [100%]",
-    "confidence": "blue",
+    "confidence": "yellow",
     "source_tier": "trade press (independent of GEM)",
     "ref_field": "Owner [ref]",
     "ref_urls": [
       "https://bnn-news.com/ruling-coalition-conceptually-agree-to-build-a-liquefied-gas-terminal-in-latvia-233879"
     ],
-    "source_notes": "Dev-pipeline re-verify (standard tier). The 2022 'revived' coalition proposal (Riga among candidate sites, Latvenergo the state utility evaluating LNG supply) is confirmed by the existing Owner [ref] (BNN, 12 Apr 2022). No project progress since 2022; shelved state (inferred by GEM) stands. Representative blue re-verify for the Riga FSRU terminal, anchored on the Owner field the source verbatim supports (Latvenergo). URL passes url_verifier (Latvenergo+Riga+Latvia).",
-    "scope_note": "Representative blue re-verify for Riga FSRU (Revived Project unit); inferred Status/year cells NOT blue-marked (no verbatim source) and routed to qa instead.",
+    "source_notes": "Dev-pipeline re-verify (standard tier). SINGLE-SOURCE off-GEM: only the Baltic News Network article (12 Apr 2022, PASSes url_verifier on both 'Latvenergo' and 'Riga') ties state utility Latvenergo to the 2022 'conceptually agreed' coalition proposal with Riga among candidate sites. Searched for a second independent source naming Latvenergo as the proposed Riga-terminal owner: ies.lublin and CEENERGYNEWS mention Latvenergo only re: its Klaipeda (LT) capacity reservation, not as the Riga terminal owner; LSM and rop.lv pages return 403/404. Because only one independent source corroborates the Owner value, confidence downgraded blue->yellow per re-verify rule (single non-GEM source). Value retained, not blanked. No project progress since 2022; inferred shelved state stands.",
+    "scope_note": "Representative re-verify for Riga FSRU (Revived Project unit); inferred Status/year cells NOT marked (no verbatim source) and routed to qa instead. Downgraded to yellow: single independent source.",
     "researcher_initials": "AI-draft (sweep)"
   }
 ]

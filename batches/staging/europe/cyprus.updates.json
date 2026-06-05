@@ -12,10 +12,11 @@
     "source_tier": "trade press + national press",
     "ref_field": "Status [ref]",
     "ref_urls": [
-      "https://cyprus-mail.com/2026/01/11/lng-import-back-in-the-limelight",
-      "https://cyprus-mail.com/2026/02/10/cyprus-returning-european-money-for-lng-terminal"
+      "https://www.portseurope.com/cyprus-vasilikos-lng-terminal-project-doomed/",
+      "https://www.rivieramm.com/news-content-hub/news-content-hub/cyprus-lng-terminal-under-investigation---construction-terminated-81766",
+      "https://cyprus-mail.com/2026/01/11/lng-import-back-in-the-limelight"
     ],
-    "source_notes": "Representative blue re-verify (dev_pipeline check; GEM LastUpdated 2025-07-17 was 10.5 mo stale). Status remains 'construction' and is CORRECT: as of Jan-Feb 2026 the project is at a standstill, NOT operating. FSRU 'Etyfa Prometheas' is still moored in Malaysia (uncertified for the one-way voyage and not yet FSRU-certified, ~EUR470k/month idle cost); the Vasilikos jetty/land facilities are roughly 50% complete; the China-led CPP-Metron EPC contract was terminated (July 2024); Technip Energies is assessing remaining works; EPPO is investigating for suspected fraud/corruption. No status change to stage (still construction). NOT changing LatestPlannedStartYear (GEM=2026) here — slip is real but no firm verified replacement year exists; see qa note 'status_timeline'.",
+    "source_notes": "Representative blue re-verify (dev_pipeline check; GEM LastUpdated 2025-07-17 was 10.5 mo stale). Re-sourced off-GEM with 3 independent publishers (PortSEurope, Riviera Maritime Media, Cyprus Mail) — all url_verifier PASS on token 'construction'; no GEM self-publication cited. Status remains 'construction' and is CORRECT: as of Jan-Feb 2026 the project is at a standstill, NOT operating. FSRU 'Etyfa Prometheas' is still moored in Malaysia (uncertified for the one-way voyage and not yet FSRU-certified, ~EUR470k/month idle cost); the Vasilikos jetty/land facilities are roughly 50% complete; the China-led CPP-Metron EPC contract was terminated (July 2024); Technip Energies is assessing remaining works; EPPO is investigating for suspected fraud/corruption. No status change to stage (still construction). NOT changing LatestPlannedStartYear (GEM=2026) here — slip is real but no firm verified replacement year exists; see qa note 'status_timeline'.",
     "scope_note": "Single-unit terminal; project-level fields apply to the one unit-row.",
     "researcher_initials": "AI-draft (sweep)"
   },
@@ -32,9 +33,10 @@
     "source_tier": "primary/regulatory (Cyprus Ministry of Energy)",
     "ref_field": "Status [ref]",
     "ref_urls": [
-      "https://hydrocarbons.gov.cy/en/energy-infrastructures/lng-terminal"
+      "https://hydrocarbons.gov.cy/en/energy-infrastructures/lng-terminal",
+      "https://2b1stconsulting.com/total-and-noble-energy-to-join-cnhc-in-cyprus-lng-project/"
     ],
-    "source_notes": "Blank-ref fill for 'Status [ref]' (was blank). This is the cancelled onshore LNG EXPORT/liquefaction plant at Vasilikos (Noble Energy operator, Block 12) — distinct from the Cyprus FSRU import terminal. The Cyprus Ministry of Energy hydrocarbons page documents the onshore LNG Plant as 'currently on hold', citing unsuccessful Block 9 exploration wells and lower Aphrodite reserve estimates after the 2013 appraisal as having undermined viability. This is a primary/regulatory source supporting a not-proceeding/cancelled status (page wording is 'on hold', so confidence yellow rather than green for the hard 'cancelled' label). Ref pairs the existing Status value (no value change). Note: the govt page gives NO specific shelving/cancellation years — the ShelvedYear(2017)/CancelledYear(2019)/StopYear(2019) values are RR's INFERRED values (Substatus 'inferred 4 y'; ShelvedCancelledStatusType 'inferred') and have no clean documenting source, so their [ref] columns are left BLANK rather than orphan-cited; see qa note.",
+    "source_notes": "Blank-ref fill for 'Status [ref]' (was blank). This is the cancelled onshore LNG EXPORT/liquefaction plant at Vasilikos (Noble Energy operator, Block 12) — distinct from the Cyprus FSRU import terminal. Re-sourced off-GEM with 2 independent non-GEM sources (no GEM self-publication cited): (1) the Cyprus Ministry of Energy hydrocarbons page (primary/regulatory) documents the onshore LNG Plant as 'currently on hold', citing unsuccessful Block 9 exploration wells and lower Aphrodite reserve estimates after the 2013 appraisal as having undermined viability (url_verifier PASS on 'on hold'); (2) 2B1st Consulting independently documents the same onshore liquefaction-export project — Noble Energy/Total, 5 mtpa per train, ~$6B Train 1 capex, FID once targeted for 2015/commercial ops 2019 — which never reached FID (url_verifier PASS on 'Noble Energy'; corroborates GEM's 5.0 mtpa and $6B capex). Page wording is 'on hold', so confidence stays yellow rather than green for the hard 'cancelled' label. Ref pairs the existing Status value (no value change). Note: the govt page gives NO specific shelving/cancellation years — the ShelvedYear(2017)/CancelledYear(2019)/StopYear(2019) values are RR's INFERRED values (Substatus 'inferred 4 y'; ShelvedCancelledStatusType 'inferred') and have no clean documenting source, so their [ref] columns are left BLANK rather than orphan-cited; see qa note.",
     "scope_note": "Single-unit terminal (UnitName 'T1 through T3/T8'); ref-fill pairs the existing Status value, no data change.",
     "researcher_initials": "AI-draft (sweep)"
   }

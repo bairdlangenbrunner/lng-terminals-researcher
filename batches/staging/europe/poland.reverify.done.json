@@ -1,0 +1,8 @@
+{
+  "slug": "poland",
+  "files_fixed": 2,
+  "gemwiki_removed": 0,
+  "values_corroborated": 4,
+  "values_blanked": 0,
+  "notes": "Staged JSON had no gem.wiki/globalenergymonitor.org citations to begin with (gem.wiki appears only in the GEM export, not these files). Several originally-staged URLs failed url_verifier (MOL PR HTTP 000; lngindustry & gaz-system PR missing the value token; biznes.pap.pl missing tokens) and were replaced with independent passing non-GEM trade-press sources. Re-verify confirmation pass: all 11 staged URLs re-run through url_verifier.py with the asserted value as token -> all PASS; old_value cross-checked against fresh export (VesselOwner/VesselParent blank, FSRU2 proposed) -> all match. All 3 updates values (VesselOwner=White Eagle Energy, VesselParent=Mitsui O.S.K. Lines [2 independent: ceenergynews+polandatsea, lngprime third], FSRU 2 Status=proposed) each have >=2 independent PASSing non-GEM URLs (green/blue retained). Monitor: best_lead_url offshore-energy.biz (PASS) + orlen.pl sponsor page (PASS)."
+}

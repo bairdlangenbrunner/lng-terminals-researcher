@@ -28,5 +28,45 @@
     "severity": "low",
     "suggested_action": "Reviewer may reconsider whether ShelvedYear should reflect the 2021/2022 rejections rather than an inferred 2023. Left year values unchanged (standard-tier; values are defensible under GEM inference). Source: https://www.cbc.ca/news/canada/montreal/ottawa-rejects-saguenay-energy-project-1.6320373",
     "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130345",
+    "unit_id": "G100002034501",
+    "terminal_name": "Atlantic Coast LNG Terminal",
+    "issue": "Re-verify pass dropped all four staged blank-ref fills (Status [ref], ShelvedYear [ref], CancelledYear [ref], StopYear [ref]). Every one had cited only gem.wiki, which is circular and forbidden. The Status=cancelled and the ShelvedYear/CancelledYear/StopYear (2018/2020/2020) are GEM lifecycle inferences (presumed-cancelled after years of dormancy), not tied to any external event; independent coverage (NGI, CBC, Globe & Mail) documents the A.C. LNG Inc / Hiranandani proposal and its 2.3/2.0 Bcf/d NEB licenses but does NOT report a cancellation or any of the inferred years. No off-GEM source corroborates the asserted values.",
+    "severity": "low",
+    "suggested_action": "Leave these [ref] cells blank. The status/year values themselves are defensible GEM inferences and need not change; they simply cannot carry a non-circular citation. If a [ref] is required, the strongest non-GEM anchors are the original proposal write-ups (e.g. https://www.naturalgasintel.com/news/atlantic-lng-project-advances-to-carry-us-canada-supply-overseas/ , https://www.cbc.ca/news/canada/nova-scotia/indian-company-outlines-3b-lng-terminal-in-guysborough-1.1389864 ), but these predate and do not establish the cancellation.",
+    "researcher_initials": "AI-draft (re-sourced)"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130630",
+    "unit_id": "G100002063001",
+    "terminal_name": "Energie Saguenay LNG Terminal",
+    "issue": "Re-verify pass dropped the three year [ref] fills (ShelvedYear 2023, CancelledYear 2025, StopYear 2025) that had cited only gem.wiki. These are GEM lifecycle-inferred years (years-since-last-update), not tied to a datable external event, so no independent source states them. (The Status [ref] fill was retained and re-sourced to CBC + NGI + CTV, which document the 2021 provincial and 2022 federal rejections.)",
+    "severity": "low",
+    "suggested_action": "Leave the three year [ref] cells blank. Year values are defensible GEM inferences; the decisive datable events are the Jul 2021 provincial and Feb 2022 federal rejections (already noted in the separate data_consistency qa entry). Source for the rejection timeline: https://www.cbc.ca/news/canada/montreal/ottawa-rejects-saguenay-energy-project-1.6320373",
+    "researcher_initials": "AI-draft (re-sourced)"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130365",
+    "unit_id": "G100002036500",
+    "terminal_name": "Rabaska LNG Terminal",
+    "issue": "Re-verify pass dropped the two year [ref] fills (CancelledYear 2013, StopYear 2013) that had cited only gem.wiki. These are GEM lifecycle-inferred (post the 2011 'on hold for good'); no distinct 2013 external event exists, so no independent source states the year. (The Status [ref] fill was retained, re-sourced to the CBC 'on hold for good' article, and downgraded to yellow — single independent non-GEM source.)",
+    "severity": "low",
+    "suggested_action": "Leave the two year [ref] cells blank. The decisive datable event is the 2011 indefinite hold (Gazprom withdrew 2009). Source: https://www.cbc.ca/news/canada/montreal/rabaska-gas-project-on-hold-for-good-que-minister-1.1053755",
+    "researcher_initials": "AI-draft (re-sourced)"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130368",
+    "unit_id": "G100002036801",
+    "terminal_name": "Stolt LNGaz Terminal",
+    "issue": "Re-verify pass dropped all four staged blank-ref fills (Status [ref], ShelvedYear [ref], CancelledYear [ref], StopYear [ref]). Every one had cited only gem.wiki (circular/forbidden). Status=cancelled and the years (shelved 2016 / cancelled 2018 / stop 2018) are GEM lifecycle inferences (no updates since 2014). Independent coverage (PRNewswire/Newswire.ca Quebec-approval release, gasworld, Offshore/Hydrocarbons-Technology) documents the Bécancour liquefaction project and the 500,000 t/yr scale but reports the 2014 Quebec construction approval, NOT a cancellation or the inferred years — so the asserted cancelled-status/year values have no off-GEM corroboration.",
+    "severity": "low",
+    "suggested_action": "Leave these [ref] cells blank. Status/year values are defensible GEM inferences and need not change; they cannot carry a non-circular citation because the project simply went dormant. (Separate blank_ref qa already notes the Capacity [ref] gap for the 0.5 mtpa figure.) Strongest non-GEM project anchor (approval, not cancellation): https://www.prnewswire.com/news-releases/quebec-government-approves-the-stolt-lngaz-natural-gas-liquefaction-plant-development-in-becancour-522712751.html",
+    "researcher_initials": "AI-draft (re-sourced)"
   }
 ]

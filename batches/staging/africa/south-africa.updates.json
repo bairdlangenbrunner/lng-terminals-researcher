@@ -50,15 +50,15 @@
     "field_name": "FIDYear",
     "old_value": "2026",
     "new_value": "2028",
-    "confidence": "green",
-    "source_tier": "multiple independent (Reuters-sourced)",
+    "confidence": "yellow",
+    "source_tier": "single-origin (Reuters wire), multiply republished",
     "ref_field": "FIDYear [ref]",
     "ref_urls": [
-      "https://www.cnbcafrica.com/2026/vopak-delays-investment-on-south-african-lng-project-to-2028",
+      "https://cbn.co.za/industry-news/power-energy-efficiency-news/vopak-pushes-r18bn-south-african-lng-terminal-decision-to-2028-amid-energy-uncertainty/",
       "https://gasprocessingnews.com/news/2026/03/vopak-delays-investment-on-south-african-lng-project-to-2028/",
       "https://www.globalbankingandfinance.com/vopak-delays-investment-south-african-lng-project-2028/"
     ],
-    "source_notes": "March 2026: Vopak (via local unit president Oliver Naidu, to Reuters) said the Zululand Energy Terminal FID is now expected in Q1 2028, pushed back from the prior ~2026 plan, after a September 2025 court order halted Eskom's planned 3,000 MW Richards Bay gas-to-power plant (the terminal's key demand driver); pre-FEED extended. FIDStatus stays Pre-FID. Two-phase project ~USD1bn. Preliminary LNG offtake/distribution agreements with Eskom and potentially ExxonMobil expected in coming months.",
+    "source_notes": "March 2026: Vopak (via local unit president Oliver Naidu, to Reuters) said the Zululand Energy Terminal FID is now expected in Q1 2028, pushed back from the prior ~2026 plan, after a September 2025 court order halted Eskom's planned 3,000 MW Richards Bay gas-to-power plant (the terminal's key demand driver); pre-FEED extended. FIDStatus stays Pre-FID. Two-phase project ~USD1bn. Preliminary LNG offtake/distribution agreements with Eskom and potentially ExxonMobil expected in coming months. RE-VERIFY NOTE: the Q1-2028 FID datum originates from a single Reuters wire story quoting Vopak; the cited URLs (CBN, Gas Processing News, Global Banking & Finance) are different publishers but all republish that one wire, so this is single-origin corroboration -> confidence downgraded to yellow. All three URLs PASS url_verifier on token '2028'.",
     "scope_note": "FIDYear is project-level; in the GEM export it is populated only on Phase 1 (G100002112600). Reviewer to apply project-wide across both unit-rows of T100000131126 per multi-unit field rule.",
     "researcher_initials": "AI-draft (sweep)"
   }

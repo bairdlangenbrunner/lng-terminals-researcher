@@ -9,13 +9,15 @@
     "old_value": "proposed",
     "new_value": "proposed",
     "confidence": "blue",
-    "source_tier": "sponsor PR (non-primary)",
+    "source_tier": "sponsor PR + regulator + trade press (independent corroboration)",
     "ref_field": "Status [ref]",
     "ref_urls": [
-      "https://www.prnewswire.co.uk/news-releases/west-africa-lng-group-highlights-strategic-progress-on-guinea-lng-project-at-powering-africa-summit-302734402.html"
+      "https://www.prnewswire.com/news-releases/west-africa-lng-group-highlights-strategic-progress-on-guinea-lng-project-at-powering-africa-summit-302734402.html",
+      "https://www.offshore-energy.biz/walng-secures-funding-for-lng-import-terminal-in-guinea/",
+      "https://www.ustda.gov/ustda-supports-lng-importation-and-distribution-in-guinea/"
     ],
-    "source_notes": "Representative blue re-verify for the terminal (standard tier, one cell). WALNG press release dated 2026-04-07 (post-dates GEM LastUpdated 2025-06-25) states the Guinea LNG / Kamsar project is 'advancing through key development milestones' and that WALNG 'continues to engage with U.S. government agencies, development finance institutions, and private investors as it progresses toward final development and financing stages.' No FID, no construction start, no financial close reported. Status correctly remains 'proposed' for both units; no field value changes.",
+    "source_notes": "Status 'proposed' is a GEM lifecycle enum and does not appear verbatim in external sources; corroborated instead by independent off-GEM evidence that the project remains pre-FID / in development with no construction start. Three independent non-GEM publishers agree: (1) WALNG press release via PRNewswire (2026-04-07, post-dates GEM LastUpdated 2025-06-25) reports the Guinea LNG / Kamsar project is 'advancing through key development milestones' and WALNG 'continues to engage with U.S. government agencies, development finance institutions, and private investors as it progresses toward final development and financing stages' — no FID, financial close, or construction start. (2) Offshore Energy (2022-08-23) describes WALNG as 'in active discussions with several strategic and financial investors as well as potential offtake customers' and finalizing offtake agreements — pre-financial-close. (3) USTDA (2019-09-04) describes a grant for a feasibility study to assess viability of the LNG receiving terminal — early-stage. No gem.wiki/globalenergymonitor.org sources used. All three URLs PASS url_verifier.py on project-identifying tokens (Kamsar / Guinea / Guinea LNG); the literal enum 'proposed' is not token-matchable on any independent page by nature of the field. Status correctly remains 'proposed' for both units; no field value changes.",
     "scope_note": "Project-level status confirmed unchanged for the whole project; recording one representative blue cell (Export unit) rather than every field per standard-tier guidance.",
-    "researcher_initials": "AI-draft (sweep)"
+    "researcher_initials": "AI-draft (sweep; reverified)"
   }
 ]
