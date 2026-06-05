@@ -4,9 +4,19 @@
     "terminal_id": "T100000130887",
     "unit_id": "G100002088701",
     "terminal_name": "Tabeer LNG Terminal",
-    "issue": "Discovery checked the LNGFlex / Bison Energy 'V-LNG (Pluto)' and 'R-LNG (Ambush)' virtual-LNG-pipeline projects ($500M Master EPCF with China's CNCEC, Dec 2023; LNG receiving terminal + onshore storage + ISO trucks at Karachi Port / Port Qasim, 750 mmcfd peak) and confirmed these are NOT a new terminal: they are the SAME project already captured in GEM as Tabeer LNG Terminal (Bison Energy FZCO acquired Tabeer Energy Sept 2023; the gem.wiki Tabeer page already names CNCEC, LNGFlex, the VLNG pivot, and the two phases = V-LNG/R-LNG). No discovery action needed.",
+    "issue": "Discovery checked the LNGFlex / Bison Energy 'V-LNG (Pluto)' and 'R-LNG (Ambush)' virtual-LNG-pipeline projects ($500M Master EPCF with China's CNCEC, Dec 2023; LNG receiving terminal + onshore storage + ISO trucks at Karachi Port / Port Qasim, 750 mmcfd peak) and confirmed these are NOT a new terminal: they are the SAME project already captured in GEM as Tabeer LNG Terminal. Bison Energy FZCO acquired Tabeer Energy Sept 2023, the CNCEC/LNGFlex EPCF and the two phases (V-LNG/R-LNG) are documented in primary trade press (Profit/Pakistan Today Dec-2023; Express Tribune). No discovery action needed.",
     "severity": "low",
-    "suggested_action": "No new record. For the concurrent UPDATE agent: the GEM Tabeer CSV row is thinner than the gem.wiki page (CSV has blank Capacity vs 5.7 Mtpa/phase on the wiki; FacilityType=import OK). If the update agent refreshes Tabeer, source the VLNG pivot and capacity from https://profit.pakistantoday.com.pk/2023/12/06/let-there-be-lng-china-chemical-and-lng-flex-get-ball-rolling-with-private-lng-terminals/ and tribune.com.pk/story/2449070.",
-    "researcher_initials": "AI-draft (discovery sweep)"
+    "suggested_action": "No new record. For the concurrent UPDATE agent: the GEM Tabeer CSV row is thinner than the public reporting (CSV has blank Capacity; trade press reports ~5.7 Mtpa total across phases; FacilityType=import OK). If the update agent refreshes Tabeer, source the VLNG pivot and capacity from https://profit.pakistantoday.com.pk/2023/12/06/let-there-be-lng-china-chemical-and-lng-flex-get-ball-rolling-with-private-lng-terminals/ and https://tribune.com.pk/story/2449070/500m-secured-for-lng-projects (both non-GEM, verified).",
+    "researcher_initials": "AI-draft (discovery sweep, reverified)"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130298",
+    "unit_id": "G100002029801",
+    "terminal_name": "Engro Elengy FSRU",
+    "issue": "On reverify, the staged Status [ref] (value 'shelved', GEM-inferred 2023) and Capacity [ref] (value '5.90 mtpa') for the Engro Elengy 'Expansion (Replacement)' unit could not be corroborated by any independent off-GEM source. Vopak and Excelerate (the co-owner and FSRU provider) describe only the existing operating unit, not a separately sourced replacement-FSRU expansion with its own status or 5.90 mtpa capacity. The original sweep cited only the Vopak operator page, which does not state these values.",
+    "severity": "medium",
+    "suggested_action": "Both [ref] fills were BLANKED (rows dropped from updates). The underlying GEM data values ('shelved'/'5.90 mtpa') are GEM editorial inferences; leave the GEM cells as-is but treat as unsourced. If the expansion is to be retained, an Update batch should locate a primary/regulatory source (e.g. an OGRA filing or Engro IR statement) for the replacement unit's status and capacity, or downgrade the unit.",
+    "researcher_initials": "AI-draft (sweep, reverified)"
   }
 ]

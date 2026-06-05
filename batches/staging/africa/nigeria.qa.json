@@ -26,7 +26,7 @@
     "terminal_name": "Riverside LNG Terminal",
     "issue": "Owner [ref] and Capacity [ref] both point to https://dev.riversidelng.com/projects/ which now FAILS url_verifier (HTTP 000 — site down). Owner='Riverside LNG [100%]', Parent='AA Holdings; GasInvest; Oilserve Ltd', Capacity=1.4 mtpa all depend on this dead citation.",
     "severity": "medium",
-    "suggested_action": "Replace dead dev.riversidelng.com citation with a live source for owner/parent/capacity (e.g. Africa Oil+Gas Report 2023, GEM wiki). Capacity 1.4 mtpa (6 small modular trains) is corroborated by GEM wiki; owner/parent breakdown needs a fresh primary source.",
+    "suggested_action": "Replace dead dev.riversidelng.com citation with a live off-GEM source for owner/parent/capacity (e.g. Africa Oil+Gas Report 2023, ENR Advisory Nigeria-Germany partnership page). Owner/parent/capacity breakdown needs a fresh primary or independent trade source (do not cite gem.wiki — circular).",
     "researcher_initials": "AI-draft"
   },
   {
@@ -36,7 +36,7 @@
     "terminal_name": "Golar Lagos FSRU",
     "issue": "Owner [ref] and Capacity [ref] both point to https://www.africanreview.com/energy-a-power/oil-a-gas/lagos-in-talks-to-acquire-fsru-to-boost-energy-security which now FAILS url_verifier (expected content not found — paywall/JS gate). Owner='Golar LNG [100%]' and Capacity=5.70 mtpa rely on it.",
     "severity": "low",
-    "suggested_action": "Replace with a live citation for Golar ownership and the 750 MMscf/d (~5.7 mtpa) regas capacity. GEM wiki/Golar_Lagos_FSRU profile corroborates ownership and the Embedded Power Supply Programme scope.",
+    "suggested_action": "Replace with a live off-GEM citation for Golar ownership and the 750 MMscf/d (~5.7 mtpa) regas capacity. Punch Newspapers ('Golar to establish LNG-fired power plant in Nigeria') confirms the Golar Embedded Power Supply Programme scope; do not cite gem.wiki (circular).",
     "researcher_initials": "AI-draft"
   },
   {
@@ -58,5 +58,25 @@
     "severity": "low",
     "suggested_action": "Locate a source dating the Brass shelving to 2019 (or correct the year) before filling ShelvedYear/StopYear [ref]. Applies to both T1 and T2.",
     "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130967",
+    "unit_id": "G100002096700",
+    "terminal_name": "Golar Lagos FSRU",
+    "issue": "Re-verification: the prior sweep filled Status [ref], CancelledYear [ref] and StopYear [ref] (all =2022, presumed cancelled) using only the gem.wiki Golar_Lagos_FSRU profile, which is circular (GEM citing GEM). No independent off-GEM source explicitly corroborates a 'cancelled' status or a 2022 cancellation/stop year — the cancellation is an absence-of-news inference ('no development updates in 4+ years'). Punch Newspapers confirms the 2018 Embedded Power Supply Programme existed but says nothing about cancellation. These three blank-ref fills were therefore DROPPED from nigeria.updates.json rather than cite gem.wiki.",
+    "severity": "low",
+    "suggested_action": "Leave Status [ref]/CancelledYear [ref]/StopYear [ref] blank until an independent source dates or confirms the cancellation. The 'cancelled (inferred 4 y)' status may stand as a GEM editorial inference, but it should not be propped up with a gem.wiki self-citation.",
+    "researcher_initials": "AI-draft (reverify)"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000131170",
+    "unit_id": "G100002117001",
+    "terminal_name": "Riverside LNG Terminal",
+    "issue": "Re-verification: the prior sweep filled Status [ref] (supporting 'shelved, inferred 2 y') using only the gem.wiki Riverside_LNG_Terminal profile, which is circular. Independent off-GEM sources (ENR Advisory, oilfieldafricareview, fastbull Aug-2025 headline) describe ACTIVE Germany/South Africa supply MOUs from 2023-2025, not a shelving — so they do not corroborate the 'shelved' value and in fact cut the other way. No off-GEM source confirms 'shelved'. The Status [ref] fill was DROPPED from nigeria.updates.json rather than cite gem.wiki.",
+    "severity": "medium",
+    "suggested_action": "Do not fill Status [ref] from gem.wiki. Reconcile the 'shelved' status against the live supply-MOU news (see the existing status_timeline note) — either confirm shelving with an independent source or route a status revival to a follow-on Update.",
+    "researcher_initials": "AI-draft (reverify)"
   }
 ]

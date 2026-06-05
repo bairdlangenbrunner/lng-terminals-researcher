@@ -10,7 +10,7 @@
     "Operator": "Cong Thanh Thermal Power JSC",
     "Parent": "",
     "Location": "Nghi Son Economic Zone, Thanh Hoa province (LNG regasification terminal serving the 1,500 MW Phase 1 / 4,500 MW total Cong Thanh CCGT power plant, a coal-to-LNG conversion)",
-    "Capacity": "1.20",
+    "Capacity": "",
     "CapacityUnits": "mtpa",
     "ProposalYear": "2025",
     "FIDStatus": "",
@@ -18,15 +18,27 @@
     "Floating": "",
     "Source [ref]": "https://lngprime.com/asia/deal-signed-for-vietnams-cong-thanh-lng-power-plant/160534/",
     "Status [ref]": "https://www.lngindustry.com/liquid-natural-gas/21082025/pecc2-signs-aip-for-cong-thanh-lng-project/",
+    "corroborating_urls": [
+      "https://lngprime.com/asia/deal-signed-for-vietnams-cong-thanh-lng-power-plant/160534/",
+      "https://www.lngindustry.com/liquid-natural-gas/21082025/pecc2-signs-aip-for-cong-thanh-lng-project/",
+      "https://vir.com.vn/cong-thanh-back-in-play-to-boost-energy-security-135308.html",
+      "https://theinvestor.vn/principle-agreement-signed-for-4500-mw-lng-power-project-in-central-vietnam-d16748.html"
+    ],
     "confidence_per_field": {
       "TerminalName": "yellow",
       "Owner": "green",
-      "Capacity": "yellow",
       "Status": "green",
       "Location": "green",
-      "ProposalYear": "yellow"
+      "ProposalYear": "green"
     },
-    "_discovery_notes": "Distinct from GEM's Nghi Son LNG Terminal (T100000131175, JERA-led, also in Nghi Son Economic Zone): different sponsor (Cong Thanh Thermal Power JSC), a coal-to-LNG conversion of the long-idle Cong Thanh coal project. Includes its own dedicated LNG regasification terminal (~1.2 Mt/yr) + import terminal + port, per restart reporting. Concrete step: agreement-in-principle / framework agreement signed with Doosan Enerbility (KR) and PECC2 late Aug 2025; foreign partners BP, Actis (UK), GE (US) reported. researcher_initials: AI-draft (discovery sweep). Consider AssociatedTerminals/AssociatedPowerPlant link to Cong Thanh power station (gem.wiki/Cong_Thanh_power_station). Capacity (1.2 Mt/yr) is single-source (trade press), marked yellow.",
-    "researcher_initials": "AI-draft (discovery sweep)"
+    "_discovery_notes": "Distinct from GEM's Nghi Son LNG Terminal (JERA-led, also in Nghi Son Economic Zone): different sponsor (Cong Thanh Thermal Power JSC), a coal-to-LNG conversion of the long-idle Cong Thanh coal project. Includes its own dedicated LNG regasification terminal + import terminal + port, per restart reporting. Concrete step: agreement-in-principle / framework agreement signed with Doosan Enerbility (KR) and PECC2 late Aug 2025; foreign partners BP, Actis (UK), GE (US) reported. Re-verified off-GEM: name/owner/status/location/2025 proposal year each corroborated by >=2 independent non-GEM sources (LNG Prime, LNG Industry, VIR, The Investor; tokens 'Cong Thanh' and 'Thanh Hoa' PASS). researcher_initials: AI-draft (discovery sweep).",
+    "researcher_initials": "AI-draft (discovery sweep)",
+    "qa": [
+      {
+        "category": "unsourced_after_reverify",
+        "field": "Capacity",
+        "note": "Prior staged Capacity (1.2 mtpa, already flagged single-source/yellow) could not be corroborated by any independent non-GEM source. Trade-press coverage of the Cong Thanh restart (LNG Prime, LNG Industry, VIR, The Investor) confirms the 1,500 MW Phase 1 / 4,500 MW total power plant and a dedicated LNG terminal+port but does not state a regas terminal capacity in mtpa; the only '1.2 million tons/year' echo traced to GEM-derivative material. Capacity blanked per re-verify rule 4; terminal row retained on independently-sourced fields."
+      }
+    ]
   }
 ]

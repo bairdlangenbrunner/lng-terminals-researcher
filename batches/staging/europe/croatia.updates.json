@@ -8,14 +8,14 @@
     "field_name": "Status",
     "old_value": "proposed",
     "new_value": "proposed",
-    "confidence": "blue",
-    "source_tier": "regulator/network-plan (ENTSOG TYNDP)",
+    "confidence": "yellow",
+    "source_tier": "regulator/network-plan (ENTSOG TYNDP 2024)",
     "ref_field": "Status [ref]",
     "ref_urls": [
-      "https://www.entsog.eu/tyndp"
+      "https://tyndp2024.entsog.eu/infrastructure-report-introduction/project-maturity-status-and-infrastructure-levels/"
     ],
-    "source_notes": "Standard-tier dev_pipeline re-verify (no change). The onshore permanent Krk terminal remains a PROPOSED ENTSOG TYNDP project at 4.1 bcm/y (3.01 mtpa), unchanged from GEM. ENTSOG TYNDP (as of the June-2024 edition) still lists it at 4.1 bcm/y, proposal year 2022 — all current GEM values (status proposed, capacity 4.10 bcm/y, ProposalYear 2022, planned start 2030, owner LNG Croatia LLC) confirmed and matching. NOTE: 2025 real-world activity (FSRU upgraded to ~6.1 bcm/y send-out, operational Nov 2025) is the FLOATING module upgrade on the existing FSRU vessel (GEM's operating units, off-worklist), NOT this onshore unit; do not conflate. No FID/construction decision found for the onshore terminal.",
-    "scope_note": "dev_pipeline status/news check (standard tier). Representative blue re-verify on Status only, not every field.",
-    "researcher_initials": "AI-draft (sweep)"
+    "source_notes": "Standard-tier dev_pipeline re-verify (no change). The onshore permanent Krk terminal remains a PROPOSED ENTSOG TYNDP 2024 project at 4.1 bcm/y (~3.01 mtpa), unchanged from GEM. SINGLE-SOURCE after re-verify: ENTSOG TYNDP is the only INDEPENDENT non-GEM publisher that asserts a standalone proposed onshore terminal at 4.1 bcm/y; the TYNDP 2024 project-maturity page PASSes url_verifier for both 'Krk' and '4.1'. No second independent corroboration found — other 'onshore' references in trade press (offshore-energy.biz) and nsenergybusiness describe the EXISTING FSRU terminal's onshore auxiliary section (jetty/dolphins/control building), NOT this proposed onshore expansion unit, so they do not corroborate the staged value; IEEFA's tracker is GEM-derivative (not independent). Confidence downgraded blue->yellow per single-source rule. NOTE: 2025 real-world activity (FSRU upgraded to ~6.1 bcm/y send-out) is the FLOATING module upgrade on the existing FSRU vessel (GEM's operating units, off-worklist), NOT this onshore unit; do not conflate. No FID/construction decision found for the onshore terminal.",
+    "scope_note": "dev_pipeline status/news check (standard tier). Representative re-verify on Status only, not every field. Replaced the prior bare https://www.entsog.eu/tyndp landing URL (inconsistent/JS-rendered, unreliable under url_verifier) with the specific TYNDP 2024 project-maturity page that stably PASSes for 'Krk' and '4.1'.",
+    "researcher_initials": "AI-draft (sweep, reverified)"
   }
 ]

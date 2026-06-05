@@ -28,5 +28,25 @@
     "severity": "low",
     "suggested_action": "Consider filling CapacityInMtpa = 1.1 (per GEM wiki) in a follow-on update batch, with a verifiable primary/regulatory source for the nameplate figure.",
     "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130709",
+    "unit_id": "G100002070902",
+    "terminal_name": "Cambodia LNG Project",
+    "issue": "Re-verification dropped 4 staged blank_ref fills for Phase 2 (Status [ref], ShelvedYear [ref], CancelledYear [ref], StopYear [ref]). Each was staged with new_value = the gem.wiki page itself, citing GEM's own INFERRED-status determination ('no updates in 4+ years -> inferred shelved 2023 / inferred cancelled 2025'). That conclusion is GEM's analytical inference, not a published fact, so no independent off-GEM source can corroborate the cancelled status or the inferred Shelved/Cancelled/Stop years. Off-GEM research found only (a) S&P Global's 2020 COVID-delay analysis (paywalled, url_verifier HTTP 403) and (b) 2019-2021 Khmer Times / Rim Intelligence coverage of CNGC's original plan and CNOOC's interest — all of which corroborate the early stall but none of which state the project is cancelled or supply the inferred years. Per the re-verify brief (rule 4), a [ref] whose only support is gem.wiki with no independent corroboration must be blanked, not re-cited; the rows were removed from cambodia.updates.json.",
+    "severity": "low",
+    "suggested_action": "Do NOT fill these [ref] cells from gem.wiki. If GEM wants to record the inferred-cancellation timeline, it is an internal editorial determination, not an externally-sourced datum; leave the [ref] cells blank or document the inference in researcher_notes rather than as a sourced [ref]. Contextual (non-cancellation) facts that ARE off-GEM sourced: 2020 LNG imports via ISO containers and COVID delay (S&P Global, paywalled); CNGC 3-phase plan and CNOOC interest 2019-2021 (Khmer Times).",
+    "researcher_initials": "AI-draft (reverify)"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130709",
+    "unit_id": "G100002070903",
+    "terminal_name": "Cambodia LNG Project",
+    "issue": "Re-verification dropped 4 staged blank_ref fills for Phase 3 (Status [ref], ShelvedYear [ref], CancelledYear [ref], StopYear [ref]) on the same basis as Phase 2: new_value was the gem.wiki page and the cited status is GEM's own inferred-cancellation determination, which no independent off-GEM source can corroborate. Same off-GEM evidence found (2020 S&P COVID-delay, paywalled; 2019-2021 Khmer Times/Rim Intelligence on the original plan) corroborates the early stall but not the cancelled status or inferred years. Rows removed from cambodia.updates.json per re-verify brief rule 4.",
+    "severity": "low",
+    "suggested_action": "Same as Phase 2: do not fill these [ref] cells from gem.wiki; treat the inferred-cancellation timeline as an internal editorial determination (researcher_notes) rather than a sourced [ref].",
+    "researcher_initials": "AI-draft (reverify)"
   }
 ]

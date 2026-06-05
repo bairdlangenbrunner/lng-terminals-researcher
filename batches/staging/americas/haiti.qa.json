@@ -4,9 +4,19 @@
     "terminal_id": "T100000130665",
     "unit_id": "G100002066500",
     "terminal_name": "Maurice Bonnefil LNG Terminal",
-    "issue": "Status [ref], CancelledYear [ref], and StopYear [ref] were blank. The cancelled/2018 values are INFERRED (ShelvedCancelledStatusType=inferred, Substatus='inferred 4 y'; ResearcherNotesUnit 'Planned for 2016 but no news') — there is no public cancellation or construction-cessation announcement. The proposed [ref]-fill cites Oxford Energy NG-124 (Dec 2017) + the 2013 construction-start article, which document the project's lifecycle and lack of advancement (the same sources the gem.wiki page uses for the 2018 cancellation), rather than an explicit 'cancelled' declaration that does not exist. Reviewer should confirm citing inference-supporting sources in these [ref] cells is acceptable per methodology, vs. leaving them blank for a deliberately inferred status.",
+    "issue": "Status [ref], CancelledYear [ref], and StopYear [ref] are blank. The cancelled/2018 values are INFERRED (ShelvedCancelledStatusType=inferred, Substatus='inferred 4 y'; ResearcherNotesUnit 'Planned for 2016 but no news') — there is no public cancellation or construction-cessation announcement. A prior sweep proposed filling these [ref] cells with the Oxford Energy NG-124 (Dec 2017) PDF + the 2013 construction-start article. On re-verification the Oxford PDF FAILS url_verifier (scanned/no extractable text), and the only PASSing source (offshore-energy.biz) documents the Aug-2013 construction START, not a cancellation, and contains neither 'cancelled' nor '2018'. No independent off-GEM source states a cancellation or stop year. Reviewer should decide whether a deliberately inferred status warrants any [ref] at all; this re-verification leaves them blank rather than cite a source that does not contain the value.",
     "severity": "low",
-    "suggested_action": "Accept the [ref]-fills (yellow) as inference support, or leave blank if methodology prefers no [ref] for inferred status. No status/value change proposed; project remains cancelled. 2026 web sweep found no post-2014 progress and no new sources.",
+    "suggested_action": "Leave the Status/CancelledYear/StopYear [ref] cells blank — the values are an inferred status with no off-GEM source declaring them. No status/value change proposed; project remains cancelled (inferred). 2026 web sweep found no post-2014 progress and no new sources.",
     "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130665",
+    "unit_id": "G100002066500",
+    "terminal_name": "Maurice Bonnefil LNG Terminal",
+    "issue": "Re-verification of the prior sweep's three [ref]-fill rows (Status/CancelledYear/StopYear) could not corroborate the asserted values off-GEM at the required >=2-independent-URL bar. The values themselves (Status=cancelled, CancelledYear=2018, StopYear=2018) are GEM's inference, not a published fact: no source declares a cancellation. Source disposition: (1) Oxford Energy NG-124 PDF (oxfordenergy.org) — FAIL, scanned PDF with no extractable text, cannot serve as a citation; (2) offshore-energy.biz construction-start article — PASS for 'Haiti' but FAILS for both 'cancelled' and '2018' (it reports the Aug-2013 construction start, the opposite of cancellation); (3) BU IGS 'Assessment of Haiti's Electricity Sector, March 2018' PDF (bu.edu) — FAIL, scanned, no extractable text. The prior rows' only lifecycle/cancellation support traced back to the gem.wiki page's own citation chain (circular). The three updates rows were therefore dropped.",
+    "severity": "low",
+    "suggested_action": "Keep the row as cancelled (inferred); do not fill the lifecycle [ref] cells. If a [ref] is later required, the only PASSing non-GEM source is offshore-energy.biz/construction-starts-on-haiti-lng-import-terminal (documents 2013 construction start only, not cancellation). A literal 2018 cancellation year remains unsupported by any off-GEM source.",
+    "researcher_initials": "AI-draft (reverify)"
   }
 ]

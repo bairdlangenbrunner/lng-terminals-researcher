@@ -9,14 +9,16 @@
     "old_value": "",
     "new_value": "https://www.offshore-energy.biz/new-fortress-to-develop-lng-to-power-infrastructure-in-angola/",
     "confidence": "yellow",
-    "source_tier": "trade press (single, non-primary)",
+    "source_tier": "trade press (multiple independent, non-primary)",
     "ref_field": "Status",
     "ref_urls": [
-      "https://www.offshore-energy.biz/new-fortress-to-develop-lng-to-power-infrastructure-in-angola/"
+      "https://www.offshore-energy.biz/new-fortress-to-develop-lng-to-power-infrastructure-in-angola/",
+      "https://www.hydrocarbonengineering.com/gas-processing/06062019/new-fortress-energy-signs-mou-with-angolan-ministries-for-lng-terminal/",
+      "https://www.naturalgasworld.com/new-fortress-agrees-to-build-angolan-lng-terminal-70484"
     ],
-    "source_notes": "Blank Status [ref] fill for cancelled record. Status='cancelled' is GEM's inferred-4y lifecycle determination from inactivity since the June 2019 MOU (no official cancellation announcement exists in any source). Per lifecycle_rules.md L186 the inferred-cancelled datasource carries forward from the latest active-status source (the 2019 proposal). The originally-cited proposal source (constructionreviewonline.com, currently in Owner [ref]) now 404s, so this is the live equivalent: Offshore Energy / LNG World News, 2019-06-06, documenting the same NFE-Angola LNG import/regas MOU. Independent confirming searches (S&P Global, naturalgasworld) agree no formal cancellation was ever announced. Value unchanged; ref-fill only.",
+    "source_notes": "Blank Status [ref] fill for cancelled record. Status='cancelled' is GEM's inferred-4y lifecycle determination from inactivity since the June 2019 MOU (no official cancellation announcement exists in any source). Per lifecycle_rules.md L186 the inferred-cancelled datasource carries forward from the latest active-status source (the June 2019 NFE-Angola LNG-to-power MOU). That MOU is corroborated by three independent non-GEM outlets, all url_verifier PASS: Offshore Energy (2019-06-06), Hydrocarbon Engineering (2019-06-06), and Natural Gas World. The originally-cited constructionreviewonline.com source now 404s (see qa link_rot). Confidence yellow because the cancelled STATUS/year itself is a GEM inference, not stated in any of these sources. Value unchanged; ref-fill only.",
     "scope_note": "Project-level field on single-unit cancelled terminal; only unit-row affected.",
-    "researcher_initials": "AI-draft (sweep)"
+    "researcher_initials": "AI-draft (sweep; reverified sourcing 2026-06)"
   },
   {
     "terminal_id": "T100000130823",
@@ -28,14 +30,16 @@
     "old_value": "",
     "new_value": "https://www.offshore-energy.biz/new-fortress-to-develop-lng-to-power-infrastructure-in-angola/",
     "confidence": "yellow",
-    "source_tier": "trade press (single, non-primary)",
+    "source_tier": "trade press (multiple independent, non-primary)",
     "ref_field": "CancelledYear",
     "ref_urls": [
-      "https://www.offshore-energy.biz/new-fortress-to-develop-lng-to-power-infrastructure-in-angola/"
+      "https://www.offshore-energy.biz/new-fortress-to-develop-lng-to-power-infrastructure-in-angola/",
+      "https://www.hydrocarbonengineering.com/gas-processing/06062019/new-fortress-energy-signs-mou-with-angolan-ministries-for-lng-terminal/",
+      "https://www.naturalgasworld.com/new-fortress-agrees-to-build-angolan-lng-terminal-70484"
     ],
-    "source_notes": "Blank CancelledYear [ref] fill. CancelledYear=2023 is the inferred-4y year (4+ years of inactivity measured from the June 2019 MOU). No published source states a 2023 cancellation explicitly; per lifecycle_rules.md L186 the datasource carries forward from the active-status (2019 proposal) source. Live equivalent of the rotted original = this Offshore Energy / LNG World News 2019-06-06 article on the same MOU. Value (2023) unchanged; ref-fill only. The inferred basis (not an announcement) is why confidence is yellow not green.",
+    "source_notes": "Blank CancelledYear [ref] fill. CancelledYear=2023 is the inferred-4y year (4+ years of inactivity measured from the June 2019 MOU). No published source states a 2023 cancellation explicitly; per lifecycle_rules.md L186 the datasource carries forward from the active-status (June 2019 MOU) source, corroborated here by three independent non-GEM outlets (Offshore Energy, Hydrocarbon Engineering, Natural Gas World), all url_verifier PASS. Value (2023) unchanged; ref-fill only. The inferred basis (not an announcement) is why confidence is yellow not green.",
     "scope_note": "Project-level field on single-unit cancelled terminal; only unit-row affected.",
-    "researcher_initials": "AI-draft (sweep)"
+    "researcher_initials": "AI-draft (sweep; reverified sourcing 2026-06)"
   },
   {
     "terminal_id": "T100000130823",
@@ -47,13 +51,15 @@
     "old_value": "",
     "new_value": "https://www.offshore-energy.biz/new-fortress-to-develop-lng-to-power-infrastructure-in-angola/",
     "confidence": "yellow",
-    "source_tier": "trade press (single, non-primary)",
+    "source_tier": "trade press (multiple independent, non-primary)",
     "ref_field": "StopYear",
     "ref_urls": [
-      "https://www.offshore-energy.biz/new-fortress-to-develop-lng-to-power-infrastructure-in-angola/"
+      "https://www.offshore-energy.biz/new-fortress-to-develop-lng-to-power-infrastructure-in-angola/",
+      "https://www.hydrocarbonengineering.com/gas-processing/06062019/new-fortress-energy-signs-mou-with-angolan-ministries-for-lng-terminal/",
+      "https://www.naturalgasworld.com/new-fortress-agrees-to-build-angolan-lng-terminal-70484"
     ],
-    "source_notes": "Blank StopYear [ref] fill. StopYear=2023 mirrors CancelledYear for this never-built proposal (project never operated; StopYear here tracks the cancellation year). Same inferred-4y basis and same carried-forward datasource as Status/CancelledYear; live equivalent of the rotted original source = this Offshore Energy / LNG World News 2019-06-06 article. Value (2023) unchanged; ref-fill only.",
-    "scope_note": "Project-level field on single-unit cancelled terminal; only unit-row affected. NB: a never-operating cancelled proposal arguably should not carry a StopYear at all (per lifecycle_rules.md StopYear pairs with ActualStartYear for idled/mothballed/retired) — see qa note; not changing the value in a blank-ref-fill task.",
-    "researcher_initials": "AI-draft (sweep)"
+    "source_notes": "Blank StopYear [ref] fill. StopYear=2023 mirrors CancelledYear for this never-built proposal (project never operated; StopYear here tracks the cancellation year). Same inferred-4y basis and same carried-forward datasource as Status/CancelledYear: the June 2019 NFE-Angola MOU, corroborated by three independent non-GEM outlets (Offshore Energy, Hydrocarbon Engineering, Natural Gas World), all url_verifier PASS. Value (2023) unchanged; ref-fill only.",
+    "scope_note": "Project-level field on single-unit cancelled terminal; only unit-row affected. NB: a never-operating cancelled proposal arguably should not carry a StopYear at all (per lifecycle_rules.md StopYear pairs with ActualStartYear for idled/mothballed/retired) -- see qa note; not changing the value in a blank-ref-fill task.",
+    "researcher_initials": "AI-draft (sweep; reverified sourcing 2026-06)"
   }
 ]

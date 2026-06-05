@@ -28,5 +28,75 @@
     "severity": "low",
     "suggested_action": "No action; documented to prevent a future agent from 'correcting' owner based on conflated secondary sources.",
     "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130527",
+    "unit_id": "G100002052700",
+    "terminal_name": "Soma Port LNG Terminal",
+    "issue": "Capacity [ref] dropped on re-verification: GEM records 1.50 mtpa regas but no independent off-GEM source states 1.50. The only prior citation was GEM's own publication. Trade press (Offshore Energy, NS Energy) gives an initial commercial regas capacity of 1.3 mtpa (Mar 2018) and storage of 2x230,000 kl; nothing corroborates 1.50 mtpa off-GEM.",
+    "severity": "medium",
+    "suggested_action": "Find an off-GEM mtpa source and recheck 1.50 vs 1.3 mtpa in a follow-on Update before re-staging the Capacity [ref].",
+    "researcher_initials": "AI-draft (reverify)"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130529",
+    "unit_id": "G100002052900",
+    "terminal_name": "Tobata LNG Terminal",
+    "issue": "Capacity [ref] dropped on re-verification: GEM records 7.60 mtpa nameplate, but only GEM's own publication/GEM carries that mtpa figure. Independent sources (Wikipedia, A Barrel Full) give storage as ~480,000 m3 across 8 tanks, not a corroborating 7.60 mtpa.",
+    "severity": "medium",
+    "suggested_action": "Find an off-GEM mtpa source for Tobata before re-staging the Capacity [ref].",
+    "researcher_initials": "AI-draft (reverify)"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130850",
+    "unit_id": "G100002085000",
+    "terminal_name": "Wakayama LNG Terminal",
+    "issue": "FacilityType [ref] dropped on re-verification: GEM models Wakayama as a (cancelled) LNG import terminal, but the independent off-GEM sources (LNG Prime, Nikkei, Enerdata) describe the cancelled Kansai Electric Wakayama project as a 3.7 GW LNG-FIRED POWER PLANT, not an LNG receiving/import terminal. Prior citation was GEM's own publication only.",
+    "severity": "medium",
+    "suggested_action": "Determine whether GEM should track Wakayama as an LNG import terminal at all, given off-GEM sources only describe a cancelled gas-fired power plant; resolve before re-staging FacilityType.",
+    "researcher_initials": "AI-draft (reverify)"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130850",
+    "unit_id": "G100002085000",
+    "terminal_name": "Wakayama LNG Terminal",
+    "issue": "Capacity [ref] dropped on re-verification: GEM records Capacity 3.50 (CapacityUnits=bcm/y, already flagged anomalous). Off-GEM sources describe a 3.7 GW power-plant capacity, not a 3.50 bcm/y import-terminal regas capacity; no independent source corroborates 3.50. Prior citation was GEM's own publication only.",
+    "severity": "medium",
+    "suggested_action": "Clarify what the 3.50 figure represents (import regas vs the 3.7 GW power plant) before re-staging the Capacity [ref].",
+    "researcher_initials": "AI-draft (reverify)"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130876",
+    "unit_id": "G100002087600",
+    "terminal_name": "Toyama Shinko LNG Terminal",
+    "issue": "Capacity 1.80 mtpa retained but downgraded to yellow on re-verification: corroborated only by LNG Prime (two of its own articles state '1.8 mtpa Toyama Shinko LNG import terminal') — single publisher; no second independent publisher carries the mtpa figure and the sponsor page gives no mtpa. (GEM's own publication citation removed.)",
+    "severity": "medium",
+    "suggested_action": "Seek a second independent publisher for the 1.8 mtpa figure to upgrade to green.",
+    "researcher_initials": "AI-draft (reverify)"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130804",
+    "unit_id": "G100002080400",
+    "terminal_name": "Yokkaichi LNG Center",
+    "issue": "Capacity [ref] dropped on re-verification: GEM records 6.40 mtpa nameplate, but only GEM carries that mtpa figure; JERA's own page gives 320,000 kl storage (4x80,000 kl) and no mtpa. Prior citation was GEM's own publication only.",
+    "severity": "medium",
+    "suggested_action": "Find an off-GEM mtpa source for Yokkaichi LNG Center before re-staging the Capacity [ref].",
+    "researcher_initials": "AI-draft (reverify)"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130531",
+    "unit_id": "G100002053100",
+    "terminal_name": "Yanai LNG Terminal",
+    "issue": "Capacity [ref] dropped on re-verification: GEM records 2.30 mtpa nameplate, but only GEM carries that mtpa figure; the Chugoku Electric page gives storage/throughput, not mtpa. Prior citation was GEM's own publication only.",
+    "severity": "medium",
+    "suggested_action": "Find an off-GEM mtpa source for Yanai before re-staging the Capacity [ref].",
+    "researcher_initials": "AI-draft (reverify)"
   }
 ]

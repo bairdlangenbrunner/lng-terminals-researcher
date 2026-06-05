@@ -9,13 +9,14 @@
     "old_value": "shelved",
     "new_value": "shelved",
     "confidence": "blue",
-    "source_tier": "trade press / single-source dev-pipeline news check",
+    "source_tier": "trade press, two+ independent non-GEM corroborations",
     "ref_field": "Status [ref]",
     "ref_urls": [
       "https://lngprime.com/americas/sycar-plans-flng-project-in-venezuela/66330/",
-      "https://gnlglobal.com/sycar-firma-mou-con-pdvsa-para-desarrollar-proyecto-de-gnl-en-venezuela/"
+      "https://www.rivieramm.com/news-content-hub/news-content-hub/sycar-to-develop-flng-as-market-eyes-exports-from-venezuela-73817",
+      "https://rbac.com/beyond-oil-could-venezuela-be-a-natural-gas-powerhouse/"
     ],
-    "source_notes": "Dev-pipeline status/news check (last updated 2025-07-25, >3mo). No advance: project remains shelved on the 2022 PDVSA MoU, never reached FID/construction. US OFAC sanctions on Venezuelan oil/gas remain the blocking factor; the 2024 export target was missed. No new milestone found in 2025-2026 trade press attributable to the Sycar FLNG specifically (a separate PDVSA small-scale LNG-by-2027 aspiration exists but is not Sycar advancement). Status unchanged -> blue re-verify, no field edit, no LastUpdated bump beyond this row.",
+    "source_notes": "Dev-pipeline status/news check (last updated 2025-07-25, >3mo). No advance: project remains shelved on the 2022 PDVSA MoU, never reached FID/construction. Re-sourcing fix: dropped the gnlglobal.com URL (now FAILs url_verifier, HTTP 000). Three independent non-GEM sources now corroborate the Sycar/PDVSA FLNG and its current standing: LNG Prime and Riviera (RivieraMM) document the November 2022 PDVSA MoU and FLNG plan; RBAC's Venezuela gas analysis states the Sycar FLNG 'has been shelved for the foreseeable future due to concerns regarding sanctions by the United States' (the literal token 'shelved' PASSes url_verifier on the RBAC page). US OFAC sanctions reinstated April 2024 remain the blocking factor. Status unchanged -> blue re-verify, no field edit.",
     "scope_note": "Single representative blue re-verify for the dev-pipeline terminal (standard tier).",
     "researcher_initials": "AI-draft (sweep)"
   },
@@ -27,15 +28,16 @@
     "country": "Venezuela",
     "field_name": "Status [ref]",
     "old_value": "",
-    "new_value": "http://abarrelfull.wikidot.com/deltana-caribe-lng-terminal, https://www.ogj.com/pipelines-transportation/article/17275405/pdvsa-iocs-to-build-two-lng-liquefaction-plants",
+    "new_value": "https://www.euro-petrole.com/pdvsa-project-oriental-delta-caribe-spearhead-of-gas-revolution-n-i-5643, https://www.ogj.com/pipelines-transportation/article/17275405/pdvsa-iocs-to-build-two-lng-liquefaction-plants",
     "confidence": "yellow",
-    "source_tier": "secondary aggregator + trade press (status is GEM inference)",
+    "source_tier": "trade press + industry profile (status is GEM inference)",
     "ref_field": "Status [ref]",
     "ref_urls": [
-      "http://abarrelfull.wikidot.com/deltana-caribe-lng-terminal",
-      "https://www.ogj.com/pipelines-transportation/article/17275405/pdvsa-iocs-to-build-two-lng-liquefaction-plants"
+      "https://www.euro-petrole.com/pdvsa-project-oriental-delta-caribe-spearhead-of-gas-revolution-n-i-5643",
+      "https://www.ogj.com/pipelines-transportation/article/17275405/pdvsa-iocs-to-build-two-lng-liquefaction-plants",
+      "http://abarrelfull.wikidot.com/deltana-caribe-lng-terminal"
     ],
-    "source_notes": "Blank Status [ref] fill for the existing 'cancelled' value. Both URLs PASS url_verifier. They document the Delta Caribe / CIGMA three-train liquefaction project; the GEM wiki records no development updates since 2011 and presumes cancellation. The 'cancelled' status is a GEM inference (substatus 'inferred'), not a primary cancellation announcement -> yellow.",
+    "source_notes": "Blank Status [ref] fill for the existing 'cancelled' value. Re-sourcing fix: promoted Euro-Petrole (independent industry profile of the PDVSA Delta Caribe Oriental project) to lead the [ref] value alongside Oil & Gas Journal (PDVSA/IOCs two 4.7-mtpa liquefaction plants); the A Barrel Full aggregator entry is retained as a third corroboration (independent third-party wiki, NOT gem.wiki). All three PASS url_verifier on 'Delta Caribe'/'liquefaction'. The 'cancelled' status is a GEM inference (substatus 'inferred', no development updates since 2011), not a primary cancellation announcement -> yellow.",
     "scope_note": "Project-level [ref] fill applies to both unit-rows T1 and T2 (multi-unit project).",
     "researcher_initials": "AI-draft (sweep)"
   },
@@ -47,15 +49,16 @@
     "country": "Venezuela",
     "field_name": "Status [ref]",
     "old_value": "",
-    "new_value": "http://abarrelfull.wikidot.com/deltana-caribe-lng-terminal, https://www.ogj.com/pipelines-transportation/article/17275405/pdvsa-iocs-to-build-two-lng-liquefaction-plants",
+    "new_value": "https://www.euro-petrole.com/pdvsa-project-oriental-delta-caribe-spearhead-of-gas-revolution-n-i-5643, https://www.ogj.com/pipelines-transportation/article/17275405/pdvsa-iocs-to-build-two-lng-liquefaction-plants",
     "confidence": "yellow",
-    "source_tier": "secondary aggregator + trade press (status is GEM inference)",
+    "source_tier": "trade press + industry profile (status is GEM inference)",
     "ref_field": "Status [ref]",
     "ref_urls": [
-      "http://abarrelfull.wikidot.com/deltana-caribe-lng-terminal",
-      "https://www.ogj.com/pipelines-transportation/article/17275405/pdvsa-iocs-to-build-two-lng-liquefaction-plants"
+      "https://www.euro-petrole.com/pdvsa-project-oriental-delta-caribe-spearhead-of-gas-revolution-n-i-5643",
+      "https://www.ogj.com/pipelines-transportation/article/17275405/pdvsa-iocs-to-build-two-lng-liquefaction-plants",
+      "http://abarrelfull.wikidot.com/deltana-caribe-lng-terminal"
     ],
-    "source_notes": "Blank Status [ref] fill for the existing 'cancelled' value (T2 row of the same multi-unit project as T1). Both URLs PASS url_verifier. Cancelled status is a GEM inference (no updates since 2011) -> yellow.",
+    "source_notes": "Blank Status [ref] fill for the existing 'cancelled' value (T2 row of the same multi-unit project as T1). Re-sourcing fix mirrors T1: Euro-Petrole + Oil & Gas Journal as the two independent non-GEM citations, A Barrel Full aggregator retained as a third. All PASS url_verifier. Cancelled status is a GEM inference (no updates since 2011) -> yellow.",
     "scope_note": "Project-level [ref] fill; mirrors T1.",
     "researcher_initials": "AI-draft (sweep)"
   },
@@ -67,14 +70,15 @@
     "country": "Venezuela",
     "field_name": "Status [ref]",
     "old_value": "",
-    "new_value": "https://www.ogj.com/general-interest/companies/article/17215982/venezuelan-lng-export-project-back-on-track",
+    "new_value": "https://www.ogj.com/general-interest/companies/article/17215982/venezuelan-lng-export-project-back-on-track, https://rbac.com/beyond-oil-could-venezuela-be-a-natural-gas-powerhouse/",
     "confidence": "yellow",
-    "source_tier": "trade press (status is GEM inference)",
+    "source_tier": "trade press + industry analysis (status is GEM inference)",
     "ref_field": "Status [ref]",
     "ref_urls": [
-      "https://www.ogj.com/general-interest/companies/article/17215982/venezuelan-lng-export-project-back-on-track"
+      "https://www.ogj.com/general-interest/companies/article/17215982/venezuelan-lng-export-project-back-on-track",
+      "https://rbac.com/beyond-oil-could-venezuela-be-a-natural-gas-powerhouse/"
     ],
-    "source_notes": "Blank Status [ref] fill for the existing 'cancelled' value. URL PASSes url_verifier (same Oil & Gas Journal article already cited in this terminal's Owner [ref], used as the live non-wayback form). Documents the Exxon/Mitsubishi/PDVSA/Shell LNG export project; the project was shelved (2002) then cancelled (2004) per GEM. Cancelled status is a GEM inference of a long-dead 2000s proposal -> yellow.",
+    "source_notes": "Blank Status [ref] fill for the existing 'cancelled' value. Re-sourcing fix: added an independent second source so the value is no longer single-source. Oil & Gas Journal documents the Exxon/Mitsubishi/PDVSA/Shell PVLNG (Cristobal Colon) export project; RBAC's Venezuela gas analysis independently identifies the 'Cristobal Colon Project that was proposed in 2000 and its capacity would have been 4.0 mtpa' (PASSes url_verifier on 'Cristobal Colon'). The project was shelved (2002) then cancelled (2004) per GEM; the 'cancelled' status is a GEM inference of a long-dead 2000s proposal (no updates since 2000) -> yellow.",
     "scope_note": "Single-unit terminal.",
     "researcher_initials": "AI-draft (sweep)"
   }

@@ -1,22 +1,15 @@
 [
   {
+    "category": "unsourced_after_reverify",
     "terminal_id": "T100000130990",
     "unit_id": "G100002099000",
     "terminal_name": "Ilo LNG Terminal",
-    "unit_name": "--",
     "country": "Peru",
     "field_name": "Status",
-    "old_value": "shelved",
-    "new_value": "shelved",
-    "confidence": "blue",
-    "source_tier": "secondary corroboration",
-    "ref_field": "Status [ref]",
-    "ref_urls": [
-      "https://www.worldpipelines.com/project-news/27092024/reuters-bolivias-gas-exports-to-argentina-ended-in-september-state-run-firm-confirms/",
-      "https://gasoutlook.com/analysis/bolivia-natural-gas-production-exports-collapse-dramatically/"
-    ],
-    "source_notes": "Re-verified 2026-06: Ilo export terminal remains shelved. No project advancement found in 2024-2026 web research; last documented bilateral activity was March 2022. The terminal depended on Bolivian gas via the (also-dormant) Bolivia-Peru Gas Pipeline, and Bolivia's gas-export base collapsed in 2024 (exports to Argentina ended 18 Sep 2024; production declining sharply per Wood Mackenzie/Gas Outlook), making a new export liquefaction project at Ilo highly unlikely to revive. Status determination is GEM-inferred (Substatus 'inferred 2 y'); these URLs corroborate continued dormancy, they are not a formal cancellation announcement.",
-    "scope_note": "standard-tier dev-pipeline re-verify; representative single blue mark for the terminal (no field value changed)",
-    "researcher_initials": "AI-draft (sweep)"
+    "dropped_value": "shelved",
+    "issue": "The blue re-verify row asserting Status='shelved' for Ilo LNG Terminal was dropped on re-source. 'shelved' is a GEM-inferred status (export-row Substatus 'inferred 2 y', ShelvedCancelledStatusType 'inferred'; ResearcherNotesUnit 'Presumed shelved; no news in more than two years') — it is NOT anchored to any formal shelving/cancellation announcement. The two ref_urls previously staged (worldpipelines.com/Reuters 2024-09-27 on Bolivia's gas exports to Argentina ending; gasoutlook.com on Bolivia gas production/export collapse) FAIL url_verifier for both the value 'shelved' AND the terminal name 'Ilo' — they are background context on the upstream Bolivian gas supply, not citations of the Ilo project's status. Independent off-GEM searching (gestion.pe, argusmedia.com, BNamericas) surfaces only descriptions of the binational Bolivia-Ilo pipeline + liquefaction proposal as an unfinalized 'still in study' / never-advanced concept; no independent publisher explicitly states the Ilo LNG terminal is shelved/cancelled. With no off-GEM source explicitly containing the value, the row cannot satisfy the >=2-independent-URLs-containing-the-value rule, so the asserted value is not staged.",
+    "severity": "low",
+    "suggested_action": "No DB change. The existing GEM record already holds Status='shelved' as an inferred value with the inference basis documented in ResearcherNotesUnit; leave it as-is. Do not add a positive Status [ref] (would misrepresent an inference as a sourced event). Off-GEM dormancy context that does mention Ilo and verifies: https://gestion.pe/economia/bolivia-descarta-abastecer-gas-natural-sur-peru-gasoducto-ilo-268611-noticia/ and https://www.argusmedia.com/en/news-and-insights/latest-market-news/1684747-peru-bolivia-to-meet-on-gas-pipeline-lng-proposal (both PASS for 'Ilo'), but neither uses the word shelved. Monitor for a YPFB/Peru bilateral revival tied to Bolivia's claimed new gas finds.",
+    "researcher_initials": "AI-draft (reverify)"
   }
 ]

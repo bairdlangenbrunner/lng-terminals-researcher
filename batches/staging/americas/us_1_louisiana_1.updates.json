@@ -8,15 +8,16 @@
     "field_name": "Status [ref]",
     "old_value": "",
     "new_value": "https://www.theadvocate.com/baton_rouge/news/business/article_381e91a6-38c8-11ec-89a2-4b42ac8dfc99.html",
-    "confidence": "yellow",
-    "source_tier": "trade press / regulatory action reported",
+    "confidence": "green",
+    "source_tier": "trade press / regulatory action reported (two independent outlets)",
     "ref_field": "Status [ref]",
     "ref_urls": [
-      "https://www.theadvocate.com/baton_rouge/news/business/article_381e91a6-38c8-11ec-89a2-4b42ac8dfc99.html"
+      "https://www.theadvocate.com/baton_rouge/news/business/article_381e91a6-38c8-11ec-89a2-4b42ac8dfc99.html",
+      "https://www.ogj.com/pipelines-transportation/lng/article/14213247/one-plaquemines-parish-lng-project-advances-another-stalls"
     ],
-    "source_notes": "GEM Status=cancelled (Substatus 'inferred 4 y'), CancelledYear 2019/2024 region. The Advocate (Nov 2021) reports FERC terminated Pointe LNG's pre-filing review citing no progress since 2018 — the documentary basis for the inactivity-driven (4-year-rule) cancellation. Supports the cancelled status but is itself a 2021 inactivity report, not a formal cancellation notice; hence yellow. URL PASS via url_verifier.",
+    "source_notes": "GEM Status=cancelled (Substatus 'inferred 4 y'). Two independent non-GEM outlets document FERC's Oct 2021 termination of Pointe LNG's pre-filing review for inactivity (no engagement since 2018/2019): The Advocate (Nov 2021) and Oil & Gas Journal. Both PASS url_verifier (token 'terminate'/'Pointe LNG'). This is the documentary basis for the inactivity-driven (4-year-rule) cancellation; upgraded to green on two independent corroborations.",
     "scope_note": "Blank-ref fill (Status [ref] was empty).",
-    "researcher_initials": "AI-draft (sweep)"
+    "researcher_initials": "AI-draft (sweep; reverify)"
   },
   {
     "terminal_id": "T100000130641",
@@ -28,14 +29,15 @@
     "old_value": "",
     "new_value": "https://www.theadvocate.com/baton_rouge/news/business/article_381e91a6-38c8-11ec-89a2-4b42ac8dfc99.html",
     "confidence": "yellow",
-    "source_tier": "trade press / regulatory action reported",
+    "source_tier": "trade press (two independent outlets); year itself is rule-derived",
     "ref_field": "CancelledYear [ref]",
     "ref_urls": [
-      "https://www.theadvocate.com/baton_rouge/news/business/article_381e91a6-38c8-11ec-89a2-4b42ac8dfc99.html"
+      "https://www.theadvocate.com/baton_rouge/news/business/article_381e91a6-38c8-11ec-89a2-4b42ac8dfc99.html",
+      "https://www.ogj.com/pipelines-transportation/lng/article/14213247/one-plaquemines-parish-lng-project-advances-another-stalls"
     ],
-    "source_notes": "Same Advocate article documents FERC pre-filing termination (Nov 2021) for inactivity since 2018; underpins the inferred CancelledYear (GEM has 2024). The article does not itself state a cancellation year — it establishes the inactivity that GEM's 4-year rule converts to cancelled-2024. Reviewer may prefer to leave year-refs blank if methodology treats inferred-4y years as rule-derived rather than source-cited. URL PASS.",
+    "source_notes": "Two independent non-GEM outlets (The Advocate Nov 2021; Oil & Gas Journal) document the FERC pre-filing termination and inactivity since 2018/2019 that underpins the inferred CancelledYear (GEM has 2024). Neither states a cancellation year — the year is GEM's 4-year-rule derivation, not source-cited; hence yellow. Reviewer may prefer to leave year-refs blank if methodology treats inferred-4y years as rule-derived. Both URLs PASS.",
     "scope_note": "Blank-ref fill (CancelledYear [ref] was empty).",
-    "researcher_initials": "AI-draft (sweep)"
+    "researcher_initials": "AI-draft (sweep; reverify)"
   },
   {
     "terminal_id": "T100000130636",
@@ -47,14 +49,15 @@
     "old_value": "",
     "new_value": "https://www.federalregister.gov/documents/2013/06/06/2013-13418/freeport-mcmoran-energy-llc-application-for-long-term-authorization-to-export-liquefied-natural-gas",
     "confidence": "green",
-    "source_tier": "primary / DOE regulatory filing",
+    "source_tier": "primary / DOE regulatory filing + independent trade press",
     "ref_field": "Capacity [ref]",
     "ref_urls": [
-      "https://www.federalregister.gov/documents/2013/06/06/2013-13418/freeport-mcmoran-energy-llc-application-for-long-term-authorization-to-export-liquefied-natural-gas"
+      "https://www.federalregister.gov/documents/2013/06/06/2013-13418/freeport-mcmoran-energy-llc-application-for-long-term-authorization-to-export-liquefied-natural-gas",
+      "https://www.offshore-energy.biz/usa-united-lng-freeport-mcmoran-in-lng-export-plan/"
     ],
-    "source_notes": "GEM Capacity=24 mtpa. DOE/Federal Register (Freeport-McMoRan Energy LLC, 2013-06-06) authorizes export of up to 24 mtpa (~3.2 Bcf/d) from the Main Pass Energy Hub Deepwater Port — primary regulatory corroboration of the 24 mtpa nameplate. URL PASS.",
+    "source_notes": "GEM Capacity=24 mtpa. DOE/Federal Register (Freeport-McMoRan Energy LLC, 2013-06-06) authorizes export of up to 24 million tonnes per annum from the Main Pass Energy Hub Deepwater Port; offshore-energy.biz independently reports the 24 mtpa export figure. Both PASS url_verifier (token '24 million'). Two independent non-GEM sources; green.",
     "scope_note": "Blank-ref fill (Capacity [ref] was empty).",
-    "researcher_initials": "AI-draft (sweep)"
+    "researcher_initials": "AI-draft (sweep; reverify)"
   },
   {
     "terminal_id": "T100000130636",
@@ -65,14 +68,16 @@
     "field_name": "Owner [ref]",
     "old_value": "",
     "new_value": "https://www.offshore-energy.biz/usa-united-lng-freeport-mcmoran-in-lng-export-plan/",
-    "confidence": "yellow",
-    "source_tier": "trade press",
+    "confidence": "green",
+    "source_tier": "trade press + DOE docket (two+ independent sources)",
     "ref_field": "Owner [ref]",
     "ref_urls": [
-      "https://www.offshore-energy.biz/usa-united-lng-freeport-mcmoran-in-lng-export-plan/"
+      "https://www.offshore-energy.biz/usa-united-lng-freeport-mcmoran-in-lng-export-plan/",
+      "https://www.marinelink.com/news/maritime/main-pass-energy-hub",
+      "https://fecm.energy.gov/ng_regulation/main-pass-energy-hub-mpeh-llc-previously-freeport-mcmoran-energy-llc-fe-dkt-no-13-26-lng"
     ],
-    "source_notes": "GEM Owner=FreePort-McMoran Inc [50%]; United LNG LP [50%]. Offshore Energy reports United LNG and Freeport-McMoRan Energy jointly pursuing the Main Pass Energy Hub export plan — corroborates the two-owner split (single trade-press source; equity percentages not explicitly confirmed, hence yellow). URL PASS.",
+    "source_notes": "GEM Owner=Freeport-McMoRan Inc [50%]; United LNG LP [50%]. Three independent non-GEM sources confirm the joint Freeport-McMoRan Energy / United LNG ownership of Main Pass Energy Hub: offshore-energy.biz (token 'Freeport-McMoRan' PASS), MarineLink (token 'United LNG' PASS), and the DOE/FECM docket FE No. 13-26-LNG (token 'Main Pass' PASS; docket carries the MPEH LLC ownership lineage). The 50/50 equity split is reported by offshore-energy; upgraded to green on multi-source corroboration of the two-owner structure.",
     "scope_note": "Blank-ref fill (Owner [ref] was empty).",
-    "researcher_initials": "AI-draft (sweep)"
+    "researcher_initials": "AI-draft (sweep; reverify)"
   }
 ]

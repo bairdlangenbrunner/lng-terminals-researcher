@@ -9,15 +9,16 @@
     "old_value": "",
     "new_value": "Excelerate Energy",
     "confidence": "green",
-    "source_tier": "primary (sponsor IR) + trade press corroboration",
+    "source_tier": "primary (sponsor IR) + independent trade press corroboration",
     "ref_field": "Operator [ref]",
     "ref_urls": [
       "https://excelerateenergy.com/news/excelerate-energy-signs-definitive-agreement-for-fully-integrated-floating-lng-import-terminal-in-iraq/",
-      "https://www.enerdata.net/publications/daily-energy-news/excelerate-energy-signs-deal-iraqs-first-fsru-terminal-26-bcmyear.html"
+      "https://www.enerdata.net/publications/daily-energy-news/excelerate-energy-signs-deal-iraqs-first-fsru-terminal-26-bcmyear.html",
+      "https://www.lngindustry.com/floating-lng/29102025/excelerate-energy-signs-definitive-agreement-for-iraq-flng-import-terminal/amp/"
     ],
-    "source_notes": "Excelerate Energy signed a definitive commercial agreement (announced 27-28 Oct 2025) with a subsidiary of Iraq's Ministry of Electricity to develop and operate Iraq's first LNG import terminal at the Port of Khor Al Zubair; fully integrated FSRU + regas + LNG supply. Excelerate is developer/operator and LNG supplier.",
+    "source_notes": "Excelerate Energy signed a definitive commercial agreement (announced 27-28 Oct 2025) with a subsidiary of Iraq's Ministry of Electricity to develop and operate Iraq's first LNG import terminal at the Port of Khor Al Zubair; fully integrated FSRU + regas + LNG supply. Excelerate is developer/operator and LNG supplier. Three independent sources verified (Excelerate IR + Enerdata + LNG Industry), each explicitly naming Excelerate Energy as operator.",
     "scope_note": "Single-unit terminal; project-level field.",
-    "researcher_initials": "AI-draft (sweep)"
+    "researcher_initials": "AI-draft (sweep); re-verified sourcing 2026-06"
   },
   {
     "terminal_id": "T100001048168",
@@ -29,14 +30,16 @@
     "old_value": "",
     "new_value": "Iraq Ministry of Electricity",
     "confidence": "yellow",
-    "source_tier": "primary (sponsor IR), entity attribution implied",
+    "source_tier": "primary (sponsor IR) + independent corroboration; exact subsidiary entity implied",
     "ref_field": "Owner [ref]",
     "ref_urls": [
-      "https://excelerateenergy.com/news/excelerate-energy-signs-definitive-agreement-for-fully-integrated-floating-lng-import-terminal-in-iraq/"
+      "https://excelerateenergy.com/news/excelerate-energy-signs-definitive-agreement-for-fully-integrated-floating-lng-import-terminal-in-iraq/",
+      "https://www.lngindustry.com/floating-lng/29102025/excelerate-energy-signs-definitive-agreement-for-iraq-flng-import-terminal/amp/",
+      "https://www.mayerbrown.com/en/news/2025/11/mayer-brown-advises-excelerate-energy-in-relation-to-fully-integrated-floating-lng-import-terminal-in-iraq"
     ],
-    "source_notes": "Excelerate release states the agreement is with 'a subsidiary of Iraq's Ministry of Electricity' as the terminal owner/counterparty. The specific subsidiary name is not given in sources; yellow because the precise owning entity is implied (parent ministry named, subsidiary not). Reviewer to confirm exact subsidiary before staging to live DB.",
+    "source_notes": "Excelerate release and independent corroboration (LNG Industry, Mayer Brown deal counsel) state the agreement is with 'a subsidiary of Iraq's Ministry of Electricity' as the terminal owner/counterparty. The parent ministry is well-corroborated across 3 independent sources; confidence remains yellow only because the specific owning SUBSIDIARY name is not given in public sources (entity attribution implied at parent level). Reviewer to confirm exact subsidiary before staging to live DB.",
     "scope_note": "Single-unit terminal; project-level field. Owner is terminal counterparty; Excelerate is operator/supplier (do not conflate).",
-    "researcher_initials": "AI-draft (sweep)"
+    "researcher_initials": "AI-draft (sweep); re-verified sourcing 2026-06"
   },
   {
     "terminal_id": "T100001048168",
@@ -48,15 +51,15 @@
     "old_value": "",
     "new_value": "Excelerate Acadia",
     "confidence": "green",
-    "source_tier": "primary (sponsor IR) + trade press (LNG Prime, Cyprus Shipping News)",
+    "source_tier": "primary (sponsor IR naming release) + independent trade press (TradeWinds)",
     "ref_field": "FloatingVesselName [ref]",
     "ref_urls": [
-      "https://cyprusshippingnews.com/2026/04/07/excelerate-energy-names-new-fsru-excelerate-acadia-at-hd-hyundai-heavy-industries/",
-      "https://lngprime.com/asia/hd-hyundai-heavy-lays-keel-for-excelerates-fsru/143868/"
+      "https://excelerateenergy.com/news/excelerate-energy-names-new-fsru-excelerate-acadia-at-hd-hyundai-heavy-industries/",
+      "https://www.tradewindsnews.com/gas/excelerate-energy-allocates-its-lone-fsru-newbuilding-to-iraq/2-1-1892466"
     ],
-    "source_notes": "Excelerate is deploying its newbuild FSRU (Hull 3407, named 'Excelerate Acadia' at HD Hyundai Heavy Industries naming ceremony, ~31 Mar/Apr 2026) to Khor Al Zubair. 170,000 cbm storage; delivery expected by June 2026. IMO not yet confirmed in public sources (newbuild) — reviewer may add when available.",
+    "source_notes": "Excelerate is deploying its newbuild FSRU (Hull 3407, named 'Excelerate Acadia' at HD Hyundai Heavy Industries naming ceremony, ~31 Mar 2026) to Khor Al Zubair. 170,000 cbm storage; delivery expected June 2026. Two independent sources verified for the vessel name (Excelerate naming IR + TradeWinds). Prior staged URLs (Cyprus Shipping News, LNG Prime) no longer surface the vessel name on fetch and were replaced. IMO not yet confirmed in public sources (newbuild) — reviewer may add when available.",
     "scope_note": "Single-unit terminal; project-level field. FSRU sync: vessel name set, IMO pending — flag for fsru_sync_check vs carrier backend.",
-    "researcher_initials": "AI-draft (sweep)"
+    "researcher_initials": "AI-draft (sweep); re-verified sourcing 2026-06"
   },
   {
     "terminal_id": "T100001048168",
@@ -68,14 +71,15 @@
     "old_value": "",
     "new_value": "7.66",
     "confidence": "yellow",
-    "source_tier": "primary (sponsor IR) — unit conversion, VERIFY",
+    "source_tier": "primary (sponsor IR) design nameplate — single-origin; independent sources report contracted figures only",
     "ref_field": "Capacity [ref]",
     "ref_urls": [
       "https://excelerateenergy.com/news/excelerate-energy-signs-definitive-agreement-for-fully-integrated-floating-lng-import-terminal-in-iraq/",
-      "https://cyprusshippingnews.com/2026/04/07/excelerate-energy-names-new-fsru-excelerate-acadia-at-hd-hyundai-heavy-industries/"
+      "https://www.lngindustry.com/floating-lng/29102025/excelerate-energy-signs-definitive-agreement-for-iraq-flng-import-terminal/amp/",
+      "https://www.enerdata.net/publications/daily-energy-news/excelerate-energy-signs-deal-iraqs-first-fsru-terminal-26-bcmyear.html"
     ],
-    "source_notes": "CONVERSION FLAG — reviewer to confirm. Excelerate Acadia design regas capacity = up to 1,000 MMscf/d (1 Bcf/d) -> ~7.66 mtpa nameplate. Contracted/guaranteed throughput is lower: 500 MMscf/d guaranteed (~3.85 mtpa), 250 MMscf/d minimum offtake (~1.9 mtpa). Staged value uses the vessel's full design nameplate per GEM nameplate convention; reviewer to decide between design (7.66) vs guaranteed (3.85) per methodology. 1 MMcf/d approx 0.0077 mtpa.",
+    "source_notes": "CONVERSION FLAG + SINGLE-ORIGIN FLAG — reviewer to confirm. The full design regas nameplate 'up to 1 billion standard cubic feet per day' (~7.66 mtpa) is stated ONLY in Excelerate's own IR (single origin), so the staged 7.66 design value is sponsor-sourced and not independently corroborated -> yellow. INDEPENDENT sources corroborate the CONTRACTED figures, not the design nameplate: LNG Industry and Enerdata report 500 MMscf/d guaranteed (~3.85 mtpa) and 250 MMscf/d minimum offtake (~1.9 mtpa); Enerdata frames the deal as ~2.6 bcm/year. Reviewer to decide between design (7.66, sponsor-only) vs guaranteed (3.85, independently corroborated) per methodology. 1 MMscf/d approx 0.0077 mtpa.",
     "scope_note": "Single-unit terminal; project-level field. Also populate Capacity/CapacityUnits consistently if nameplate confirmed.",
-    "researcher_initials": "AI-draft (sweep)"
+    "researcher_initials": "AI-draft (sweep); re-verified sourcing 2026-06"
   }
 ]

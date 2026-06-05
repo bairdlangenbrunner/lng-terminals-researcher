@@ -8,8 +8,13 @@
     "current_state": "Operating since Nov 2011. Tomakomai City, Hokkaido. Single 2,700-kiloliter storage tank. Receives LNG by small coastal shuttle vessel (Akebono Maru) from the Soma LNG Terminal (Fukushima), then vaporizes via the adjacent Yufutsu LNG Plant into Hokkaido's pipeline network. NOT in the 2026-06-03 gem_export.csv.",
     "missing_threshold_elements": "None for the threshold itself (sponsor + location + operating); the open question is GEM INCLUSION SCALE — a 2,700 kL coastal satellite fed by a ~2,500 m3 shuttle barge is far below GEM's typical onshore import terminals (100,000+ m3). Coverage status in the live DB unconfirmed (export shows 43 Japan terminals vs. 51 cited in the country note).",
     "watch_for": "Human to confirm whether GEM tracks sub-10,000 kL domestic coastal satellite terminals; if yes and it is genuinely absent, this becomes a new_terminal. Do not auto-generate given scale ambiguity.",
-    "best_lead_url": "https://www.japex.co.jp/en/business/gassupply/yufutsulng/",
-    "notes": "URL verified (PASS: Yufutsu, LNG). Primary operator source. In-scope as a marine-receiving terminal but at the small-scale margin of GEM coverage."
+    "best_lead_url": "https://www.rivieramm.com/news-content-hub/news-content-hub/akebono-maru-in-japan-lng-first-42816",
+    "corroboration_urls": [
+      "https://www.rivieramm.com/news-content-hub/news-content-hub/akebono-maru-in-japan-lng-first-42816",
+      "https://www.ogj.com/home/article/17220902/japex-plans-to-develop-japans-first-lng-plant"
+    ],
+    "confidence": "green",
+    "notes": "Re-sourced 2026-06 reverify. Original JAPEX primary lead (japex.co.jp/en/business/gassupply/yufutsulng) is unreachable to url_verifier (HTTP 000), so dropped as lead. Two INDEPENDENT non-GEM URLs both PASS on token 'Yufutsu': Riviera Maritime Media (Akebono Maru coastal-LNG first) and Oil & Gas Journal (JAPEX LNG plant). No gem.wiki used. In-scope as a marine-receiving terminal but at the small-scale margin of GEM coverage."
   },
   {
     "country": "Japan",
@@ -17,11 +22,17 @@
     "sponsor_or_proposer": "Shikoku Gas Co Ltd",
     "first_observed_batch": "2026-06 discovery",
     "last_observed_batch": "2026-06 discovery",
-    "current_state": "Operating (since ~2003 per Japanese Wikipedia LNG-base list). Takamatsu, Kagawa Prefecture, Shikoku. ~10,000 kiloliter storage. Receives LNG by coastal tanker (e.g. Daiichi Shinju Maru, 2,500 m3) from Osaka Gas / Kitakyushu LNG. NOT in the 2026-06-03 gem_export.csv.",
+    "current_state": "Operating (since ~2003; Shikoku's first LNG receiving base per Shikoku Gas Takamatsu plant material). Takamatsu, Kagawa Prefecture, Shikoku. ~10,000 kiloliter storage, 28 m LNG storage tank. Receives LNG by coastal tanker (e.g. Daiichi Shinju Maru, 2,500 m3) from Osaka Gas / Kitakyushu LNG. NOT in the 2026-06-03 gem_export.csv.",
     "missing_threshold_elements": "Same as Yufutsu — meets sponsor/location/operating, but GEM INCLUSION SCALE is the open question (10,000 kL coastal satellite). Live-DB coverage unconfirmed.",
     "watch_for": "Human to confirm GEM coverage policy for ~10,000 kL coastal satellite terminals; convert to new_terminal only if confirmed in-scope and genuinely absent.",
-    "best_lead_url": "https://ja.wikipedia.org/wiki/%E6%97%A5%E6%9C%AC%E3%81%AELNG%E5%9F%BA%E5%9C%B0%E4%B8%80%E8%A6%A7",
-    "notes": "Lead source is Japanese Wikipedia (Tier 3, lead only, not citable for an add). Needs a Shikoku Gas primary-source confirmation before any staging. Capacity from trade-press/encyclopedic sources, not verified primary."
+    "best_lead_url": "https://www.rivieramm.com/news-content-hub/news-content-hub/rethinking-coastal-lng-in-japan-41557",
+    "corroboration_urls": [
+      "https://www.rivieramm.com/news-content-hub/news-content-hub/rethinking-coastal-lng-in-japan-41557",
+      "https://eneken.ieej.or.jp/data/7604.pdf",
+      "https://www.kengaku-jp.net/gas/2021/05/26/1147"
+    ],
+    "confidence": "green",
+    "notes": "Re-sourced 2026-06 reverify. Replaced the Japanese-Wikipedia lead (non-independent). Three INDEPENDENT non-GEM publishers PASS url_verifier: Riviera Maritime Media (token 'Takamatsu', coastal-LNG feature), IEEJ third-party-use report PDF (token 'Takamatsu'), and kengaku-jp.net (token '高松', describes Shikoku Gas Takamatsu plant as Shikoku's only LNG receiving base, completed FY2003, 28 m tank). Japan Maritime Daily (jmd.co.jp/article.php?no=266109) also PASSes on '高松' as a fourth corroboration. No gem.wiki used. Capacity (~10,000 kL) is approximate; still below typical GEM onshore inclusion scale."
   },
   {
     "country": "Japan",
@@ -29,10 +40,14 @@
     "sponsor_or_proposer": "Shikoku Gas Co Ltd",
     "first_observed_batch": "2026-06 discovery",
     "last_observed_batch": "2026-06 discovery",
-    "current_state": "Operating (since ~2008 per Japanese Wikipedia LNG-base list). Matsuyama, Ehime Prefecture, Shikoku. ~10,000 kiloliter storage. Receives LNG by coastal tanker from Osaka Gas / Kitakyushu LNG. NOT in the 2026-06-03 gem_export.csv.",
+    "current_state": "Operating (since ~2008; Shikoku Gas's second LNG receiving base). Matsuyama, Ehime Prefecture, Shikoku. ~10,000 kiloliter storage, 28 m LNG tank. Receives LNG by coastal tanker from Osaka Gas / Kitakyushu LNG, then truck-distributes to satellite bases (Imabari, Uwajima). NOT in the 2026-06-03 gem_export.csv.",
     "missing_threshold_elements": "Same scale-ambiguity as Takamatsu; GEM live-DB coverage unconfirmed.",
     "watch_for": "Same as Takamatsu — confirm coverage policy + live-DB presence before any add.",
-    "best_lead_url": "https://ja.wikipedia.org/wiki/%E6%97%A5%E6%9C%AC%E3%81%AELNG%E5%9F%BA%E5%9C%B0%E4%B8%80%E8%A6%A7",
-    "notes": "Lead source is Japanese Wikipedia (Tier 3, lead only). Needs Shikoku Gas primary confirmation. Likely below GEM's onshore-terminal inclusion scale."
+    "best_lead_url": "https://www.jmd.co.jp/article.php?no=266109",
+    "corroboration_urls": [
+      "https://www.jmd.co.jp/article.php?no=266109"
+    ],
+    "confidence": "yellow",
+    "notes": "Re-sourced 2026-06 reverify. Replaced the Japanese-Wikipedia lead. SINGLE independent non-GEM corroboration: Japan Maritime Daily (jmd.co.jp/article.php?no=266109) PASSes url_verifier on token '松山', naming Shikoku Gas's Matsuyama (plus Takamatsu/Tokushima) plants as coastal-LNG receiving points. Shikoku Gas primary plant pages, the KEYS Bunkering report, and Riviera/IEEJ/gas.or.jp PDFs were each either unreachable to url_verifier (HTTP 000) or did not contain the token 'Matsuyama'/'松山', so could not be used as PASSing citations. Confidence downgraded to yellow pending a second independent source. No gem.wiki used."
   }
 ]

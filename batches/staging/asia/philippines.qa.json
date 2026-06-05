@@ -36,7 +36,27 @@
     "terminal_name": "Bataan-Manila LNG Terminal",
     "issue": "ShelvedYear [ref] blank-ref fill NOT staged: GEM has ShelvedYear=2018 but the GEM wiki page documents proposal 2016 and cancelled/inactive 2020, without explicitly confirming a 2018 shelved year. Did not want to fill a [ref] that doesn't actually support the 2018 value.",
     "severity": "low",
-    "suggested_action": "Reviewer to confirm the 2018 ShelvedYear basis from internal GEM notes and fill its [ref] manually, or correct the year. Status/CancelledYear/StopYear [ref] fills (2020) are staged in updates.",
+    "suggested_action": "Reviewer to confirm the 2018 ShelvedYear basis from internal GEM notes and fill its [ref] manually, or correct the year. Status/CancelledYear/StopYear [ref] fills (2020) were previously staged in updates but have been REVOKED on re-verification (see unsourced_after_reverify entry below).",
     "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130305",
+    "unit_id": "G100002030500",
+    "terminal_name": "Bataan-Manila LNG Terminal",
+    "issue": "Re-verification: the previously-staged Status / CancelledYear / StopYear [ref]-fills (3 updates rows) cited ONLY gem.wiki (circular) and were dropped. The asserted values (Status=cancelled, CancelledYear=2020, StopYear=2020) are GEM's own retroactive editorial inference ('inferred 4 y' in the export); no independent non-GEM publisher explicitly states this project is cancelled or gives 2020 as its cancellation/stop year. Off-GEM coverage (Upstream, Interfax, business.inquirer.net) documents only the original 2016 PNOC/Osaka Gas/Mitsui 'Energy City' proposal and government rejection of Gregorio Araneta Inc.'s plan; none confirm a discrete cancelled-2020 determination. Could not corroborate the value off-GEM.",
+    "severity": "low",
+    "suggested_action": "Leave Status/CancelledYear/StopYear [ref] cells blank; the cancelled-2020 status is a GEM inference, not an externally-citable fact. Reviewer to fill from internal GEM notes if the inference basis is documented, or leave unsourced.",
+    "researcher_initials": "AI-draft (re-verify)"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130308",
+    "unit_id": "G100002030800",
+    "terminal_name": "Pagbilao Grande Island LNG Terminal",
+    "issue": "Re-verification: the previously-staged Status / ShelvedYear / StopYear [ref]-fills (3 updates rows) cited ONLY gem.wiki (circular) and were dropped. The asserted values (Status=shelved, ShelvedYear=2023, StopYear=2023) are GEM's own retroactive inference ('inferred 2 y' in the export; RR note explicitly says 'inferred shelved due to no project updates'); no independent non-GEM source states the project is shelved or gives 2023 as a shelved/stop year. Independent coverage actually points the other way: offshore-energy.biz and ASEAN Centre for Energy report the terminal ~92% complete and EWC reviving lender talks as of Nov 2023, and the 2025 IGU report still lists it under construction (start 2028). url_verifier confirms non-GEM sources do not contain 'shelved'. Could not corroborate the value off-GEM.",
+    "severity": "low",
+    "suggested_action": "Leave Status/ShelvedYear/StopYear [ref] cells blank; the shelved-2023 status is a GEM editorial inference contradicted by external sources (92% complete Nov 2023; IGU 2025 under construction). Reviewer to reconcile the inferred-shelved status against IGU/EWC coverage or document the inference basis internally.",
+    "researcher_initials": "AI-draft (re-verify)"
   }
 ]
