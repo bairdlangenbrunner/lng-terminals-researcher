@@ -12,10 +12,11 @@
     "source_tier": "primary",
     "ref_field": "Status [ref]",
     "ref_urls": [
-      "https://www.slng.com.sg/node/317",
-      "https://www.slng.com.sg/press-releases/slng-inks-agreements-with-mol-jurong-port-and-wood-for-development-of-second-lng-terminal-in-singapore"
+      "https://lngprime.com/asia/singapore-lng-wins-approval-for-second-terminal/95651/",
+      "https://gasprocessingnews.com/news/2024/10/slng-mol-jurong-port-and-wood-to-develop-second-lng-terminal-in-singapore/",
+      "https://tankterminals.com/news/singapore-lng-wins-approval-for-second-terminal/"
     ],
-    "source_notes": "Re-verified this batch: SLNG 2 is an active proposed terminal (government approval Oct 2023; FSRU charter + FEED award Oct 2024). Status field value 'proposed' left unchanged here — a likely proposed->construction progression is logged as a status_timeline qa note (fetch_timeline endpoint DOWN). Existing Status [ref] (node/317) confirmed PASS. NOTE: do NOT fill this row's ShelvedYear [ref] / StopYear [ref] — the underlying 2023 values appear to be a data error (see qa data_quality note).",
+    "source_notes": "Re-verified this batch off non-GEM sources: SLNG 2 is an active proposed terminal (government approval Oct 2023; FSRU charter + FEED award Oct 2024). Status field value 'proposed' left unchanged here — a likely proposed->construction progression is logged as a status_timeline qa note (fetch_timeline endpoint DOWN). NOTE: do NOT fill this row's ShelvedYear [ref] / StopYear [ref] — the underlying 2023 values appear to be a data error (see qa data_quality note). Re-verify (2026-06): replaced SLNG-own slng.com.sg refs with three independent off-GEM publishers each carrying the proposed/5-mtpa/Oct-2023-approval value (LNG Prime + tankterminals PASS on '5 mtpa'; Gas Processing News PASS on 'Hanwha Ocean'/Oct-2024 agreements).",
     "scope_note": "Dev-pipeline (proposed) row from worklist; blue re-verify only, no field value changed.",
     "researcher_initials": "AI-draft (sweep)"
   }

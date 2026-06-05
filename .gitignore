@@ -45,6 +45,11 @@ giignl_prose_corrections.json
 !batches/staging/recon/**/giignl_prose_corrections.json
 !batches/staging/*/staged_*.json
 
+# Derived per-region build scratch (assembled staged_*.json + the _roster_*.json the build
+# regenerates each run). Fully reproducible from the tracked per-country JSON; never commit.
+batches/staging/*/_build/
+batches/staging/*/_build_disc/
+
 # Batch deliverable workbooks are large regenerable binaries — keep them untracked.
 # But TRACK the staging tree (batches/staging/**: per-country research JSON, the sweep
 # ledger, briefs, README) — it's the diffable audit trail and lives on the batch branch.
@@ -60,6 +65,10 @@ __pycache__/
 .venv/
 venv/
 .python-version
+
+# Transient scheduler artifacts (session-local cron lock/state from CronCreate)
+.claude/scheduled_tasks.lock
+.claude/scheduled_tasks.json
 
 # OS
 .DS_Store

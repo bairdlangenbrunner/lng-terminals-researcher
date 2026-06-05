@@ -31,15 +31,21 @@ human reviews; never touch the live DB. Leads are not pre-trusted; verify.
         chartered/deployed to your country: a built/chartered floating unit implies a terminal — check it has a GEM terminal; if not, it's a lead.
       - Local-language press (search in the country's own language, not just English).
    Prioritize the last 24 months, but include any not-yet-in-GEM project regardless of age.
-   ANTI-CIRCULARITY: a source that derives from or cites GEM (GEM.wiki; IEEFA/Wikipedia/news footnoting GEM) does
-   NOT count as independent evidence for adding/verifying a terminal — find the primary source it points to.
+   ANTI-CIRCULARITY (ABSOLUTE — CLAUDE.md hard requirement): NEVER cite gem.wiki or globalenergymonitor.org as a
+   source/URL anywhere (best_lead_url, source_urls, qa prose) — it is GEM's own publication, so it is circular and
+   forbidden. A source that derives from or republishes GEM (IEEFA/Wikipedia/news footnoting GEM) is likewise NOT
+   independent evidence — chase the primary source it points to and cite THAT. If a candidate's only trace is on
+   gem.wiki, it is already a GEM record — not a discovery.
 3. DEDUP every candidate against GEM (grep + dedup_index + alias/local/diacritic check). GEM coverage is
    comprehensive, so MOST candidates are already in GEM → those are NOT discoveries; note briefly in qa, move on.
 4. For a GENUINE gap:
    - Meets the bar (sponsor identified + approximate location + a concrete step taken) AND you have a VERIFIED
      source → stage a `new_terminal` (+ `new_units`).
    - Below the bar (vague/rumored/pre-sponsor) → `monitor_list`.
-5. VERIFY every URL (`url_verifier.py "<url>" "<token>"`; PDF → `curl -sL <url> -o /tmp/x.pdf && pdftotext -layout /tmp/x.pdf - | grep -i <token>`). Cite only verified URLs.
+5. VERIFY every URL (`url_verifier.py "<url>" "<token>"`; PDF → `curl -sL <url> -o /tmp/x.pdf && pdftotext -layout /tmp/x.pdf - | grep -i <token>`).
+   Pass the actual claimed datum as the token (sponsor/location/capacity/status), not a generic word — the value must be
+   explicitly on the page. Cite only verified URLs, and give ≥2 INDEPENDENT corroborating URLs per staged candidate (3
+   when findable) — a single source is the disfavored exception (→ monitor_list, not a confident new_terminal).
 
 ## HARD RULES
 - >5 genuine new candidates in ONE country → stage as `monitor_list` + set escalation=true in your summary;

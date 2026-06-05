@@ -8,14 +8,15 @@
     "field_name": "FIDYear",
     "old_value": "2025",
     "new_value": "2026",
-    "confidence": "yellow",
-    "source_tier": "trade press (multiple independent)",
+    "confidence": "green",
+    "source_tier": "trade press (multiple independent publishers)",
     "ref_field": "FIDYear [ref]",
     "ref_urls": [
-      "https://naturalgasintel.com/news/ksi-lisims-lng-in-advanced-discussions-for-more-offtakers-as-it-targets-fid-by-years-end/",
-      "https://www.energyintel.com/0000019b-a341-df56-ad9b-a3e9ac570000"
+      "https://www.naturalgasintel.com/news/ksi-lisims-lng-not-far-off-from-fid-as-canadian-governments-support-eases-path-forward/",
+      "https://www.energyintel.com/0000019b-a341-df56-ad9b-a3e9ac570000",
+      "https://naturalgasintel.com/news/ksi-lisims-lng-in-advanced-discussions-for-more-offtakers-as-it-targets-fid-by-years-end/"
     ],
-    "source_notes": "Pre-FID project; anticipated FID has slipped from 2025 to 2026. As of 2026 the consortium (Nisga'a Nation, Rockies LNG, Western LNG; TotalEnergies 5% equity) is targeting FID in 2026 (variously reported as 'summer 2026' / 'by year's end'); a Western LNG spokesperson confirmed they expect to sanction before the end of the year. Project still needs 3-4 mtpa additional offtake to cross the FID threshold (a non-binding 1 mtpa SEFE/Germany deal announced May 2026). FIDStatus remains Pre-FID. Yellow because the precise 2026 month is contested and FID is still contingent on offtake.",
+    "source_notes": "Pre-FID project; anticipated FID has slipped from 2025 to 2026. As of 2026 the consortium (Nisga'a Nation, Rockies LNG, Western LNG; TotalEnergies/Shell binding offtake ~4 mtpa) is targeting FID in 2026 (variously reported as 'summer 2026' / 'by year's end' / 'not far off'); a non-binding 1 mtpa SEFE/Germany deal was announced May 2026. FIDStatus remains Pre-FID. Corroborated off-GEM by Natural Gas Intelligence (two distinct articles) and Energy Intelligence, all naming a 2026 FID target. Upgraded yellow->green: >=2 independent publishers each carry the 2026 FID target (verified via url_verifier on token '2026'). The precise month remains contested but the FID year is consistently 2026.",
     "scope_note": "dev_pipeline row (proposed); FIDYear refinement from news check. Not a status edit.",
     "researcher_initials": "AI-draft (sweep)"
   },
@@ -28,13 +29,14 @@
     "field_name": "Status [ref]",
     "old_value": "",
     "new_value": "https://thenarwhal.ca/top-speed-energy-skeena-lng-bc/",
-    "confidence": "yellow",
-    "source_tier": "trade/independent press (single)",
+    "confidence": "green",
+    "source_tier": "independent press (multiple independent publishers)",
     "ref_field": "Status [ref]",
     "ref_urls": [
-      "https://thenarwhal.ca/top-speed-energy-skeena-lng-bc/"
+      "https://thenarwhal.ca/top-speed-energy-skeena-lng-bc/",
+      "https://www.theskeena.com/2021/09/11/another-lng-proposal-in-the-skeena-is-being-put-on-hold/"
     ],
-    "source_notes": "Blank-ref fill for an existing cancelled status. The Narwhal (Sept 2021) reports Top Speed Energy divesting from Skeena LNG following the death of the company's founder; no project activity in the four-plus years since, consistent with GEM's shelved-2021/inferred-cancelled-2025 basis. Single independent source -> yellow.",
+    "source_notes": "Blank-ref fill for an existing cancelled status. The Narwhal (Sept 2021) reports Top Speed Energy divesting from Skeena LNG following the death of the company's founder; The Skeena (Sept 11, 2021) independently reports the proposal being put on hold. No project activity in the four-plus years since, consistent with GEM's shelved-2021/inferred-cancelled-2025 basis. Upgraded yellow->green: two independent local outlets corroborate the 2021 shutdown (both verified via url_verifier).",
     "scope_note": "blank_ref fill (Status [ref]); supports existing cancelled Status, no status change.",
     "researcher_initials": "AI-draft (sweep)"
   },
@@ -47,13 +49,14 @@
     "field_name": "ShelvedYear [ref]",
     "old_value": "",
     "new_value": "https://thenarwhal.ca/top-speed-energy-skeena-lng-bc/",
-    "confidence": "yellow",
-    "source_tier": "trade/independent press (single)",
+    "confidence": "green",
+    "source_tier": "independent press (multiple independent publishers)",
     "ref_field": "ShelvedYear [ref]",
     "ref_urls": [
-      "https://thenarwhal.ca/top-speed-energy-skeena-lng-bc/"
+      "https://thenarwhal.ca/top-speed-energy-skeena-lng-bc/",
+      "https://www.theskeena.com/2021/09/11/another-lng-proposal-in-the-skeena-is-being-put-on-hold/"
     ],
-    "source_notes": "Blank-ref fill pairing the existing ShelvedYear=2021. The Narwhal (Sept 2021) documents the divestment/effective shelving of Skeena LNG in 2021. Single independent source -> yellow.",
+    "source_notes": "Blank-ref fill pairing the existing ShelvedYear=2021. The Narwhal (Sept 2021) documents the divestment/effective shelving of Skeena LNG in 2021; The Skeena (Sept 11, 2021) independently reports the proposal put on hold that month. Upgraded yellow->green: two independent local outlets each carry the 2021 shelving (both verified via url_verifier on tokens 'Skeena'/'2021').",
     "scope_note": "blank_ref fill (ShelvedYear [ref]); supports existing ShelvedYear=2021.",
     "researcher_initials": "AI-draft (sweep)"
   }

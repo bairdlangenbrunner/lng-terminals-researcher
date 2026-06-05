@@ -7,14 +7,15 @@
     "country": "Myanmar",
     "field_name": "Capacity [ref]",
     "old_value": "",
-    "new_value": "http://www.mpa.gov.mm/my/ports/mcv-lng-terminal-2/",
+    "new_value": "https://www.domain-b.com/economy/economy-general/myanmar-restarts-lng-imports-after-4-year-hiatus-first-cargo-powers-150-mw-grid-injection",
     "confidence": "yellow",
-    "source_tier": "operator/port-authority (Myanma Port Authority listing)",
+    "source_tier": "trade/business press (domain-b; Baird Maritime) citing Kpler analyst forecast",
     "ref_field": "Capacity",
     "ref_urls": [
-      "http://www.mpa.gov.mm/my/ports/mcv-lng-terminal-2/"
+      "https://www.domain-b.com/economy/economy-general/myanmar-restarts-lng-imports-after-4-year-hiatus-first-cargo-powers-150-mw-grid-injection",
+      "https://www.bairdmaritime.com/shipping/tankers/gas/myanmar-ends-four-year-lng-hiatus-with-trial-cargo-from-malaysia"
     ],
-    "source_notes": "Capacity value 0.40 mtpa already in GEM. Blank Capacity [ref] filled with the Myanma Port Authority MCV terminal listing already cited for Owner/Operator on this row (url_verifier PASS). Single non-primary source implying terminal scale; throughput corroborated indirectly by OGJ FSU-delivery article (FSU offload up to 350 cu m/hr; ~21-26 cargoes/yr). No independent primary nameplate figure located, hence yellow.",
+    "source_notes": "Capacity value 0.40 mtpa already in GEM. Prior [ref] fill cited the Myanma Port Authority listing (http://www.mpa.gov.mm/my/ports/mcv-lng-terminal-2/), which is now unreachable (url_verifier FAIL HTTP 000; the live MPA path /ports/mcv-lng-terminal/ no longer carries any capacity figure). Replaced with two INDEPENDENT non-GEM sources that each explicitly contain '0.4 million tonnes' (url_verifier PASS): domain-b and Baird Maritime. CAVEAT: both report a Kpler analyst forecast that Myanmar will IMPORT ~0.4 million tonnes of LNG in 2026 to feed the ~500 MW Thanlyin+Thaketa plants - an annual throughput estimate that numerically matches GEM's 0.40 mtpa nameplate but is not an independently declared nameplate capacity. Throughput cross-checked vs OGJ FSU-delivery article (FSU offload up to 350 cu m/hr; ~21-26 cargoes/yr). No independent declared nameplate figure located; kept yellow. No gem.wiki citation present.",
     "scope_note": "Single-unit project; field is unit-level. No paired data value changed (value already present, [ref] fill only).",
     "researcher_initials": "AI-draft (sweep)"
   }

@@ -48,5 +48,15 @@
     "severity": "low",
     "suggested_action": "No action beyond the staged blank-ref fills — inferred status holds.",
     "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000131132",
+    "unit_id": "G100002113200",
+    "terminal_name": "POSCO Dangjin LNG Terminal",
+    "issue": "Re-verify pass: the ShelvedYear=2025 and StopYear=2025 blank-ref fills previously staged in south-korea.updates.json were sourced ONLY to gem.wiki. The year 2025 is GEM's arithmetic inference point (2023 proposal + 'inferred 2 y' substatus), not a dated event. No independent off-GEM source dates a shelving/stop of the POSCO Dangjin terminal to 2025 (LNG Prime, Korea Times, Enerdata, and the IEEFA Aug-2024 fact sheet document the project's 2023 proposal and groundbreaking delay, but none declares it shelved or assigns a 2025 stop/shelve year). The two ref-fill rows were therefore DROPPED from updates.json rather than carry a gem.wiki-only / uncorroborated citation.",
+    "severity": "low",
+    "suggested_action": "Leave ShelvedYear/StopYear [ref] blank in GEM unless a dated, off-GEM shelving event surfaces. The inferred year values themselves remain GEM internal inferences; do not stage [ref] support for them off circular sources.",
+    "researcher_initials": "AI-draft (re-verified)"
   }
 ]

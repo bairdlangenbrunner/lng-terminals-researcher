@@ -12,11 +12,13 @@
     "source_tier": "primary/trade-press",
     "ref_field": "Status [ref]",
     "ref_urls": [
-      "https://www.naturalgasintel.com/news/adnoc-signs-first-long-term-spa-for-ruwais-lng-as-project-advances-to-2028-startup/"
+      "https://www.naturalgasintel.com/news/adnoc-signs-first-long-term-spa-for-ruwais-lng-as-project-advances-to-2028-startup/",
+      "https://www.gulfconstructiononline.com/Article/1628945/Work_on_Ruwais_LNG_terminal_makes_headway",
+      "https://www.ogj.com/pipelines-transportation/lng/article/14310277/adnoc-advances-ruwais-lng-project-with-early-epc-activities"
     ],
-    "source_notes": "Re-verify only (no change). ADNOC Gas Ruwais LNG (2x4.8 = 9.6 mtpa) still under construction after Jun-2024 FID; commercial operations targeted H2 2028 (train 1 2028, train 2 2029). Representative blue re-verify for the dev-pipeline unit; status edits not staged (timeline endpoint down).",
+    "source_notes": "Re-verify only (no change). ADNOC Gas Ruwais LNG (2x4.8 = 9.6 mtpa) still under construction after Jun-2024 FID; commercial operations targeted H2 2028 (train 1 2028, train 2 2029). Re-sourced off-GEM: three independent outlets (Natural Gas Intelligence, Gulf Construction, Oil & Gas Journal) each explicitly state construction is under way. Representative blue re-verify for the dev-pipeline unit; status edits not staged (timeline endpoint down).",
     "scope_note": "Project-level status applies to both Ruwais units T1 and T2.",
-    "researcher_initials": "AI-draft (sweep)"
+    "researcher_initials": "AI-draft (sweep; reverify)"
   },
   {
     "terminal_id": "T100000130601",
@@ -28,14 +30,16 @@
     "old_value": "",
     "new_value": "https://adnocgas.ae/en/our-operations/lng",
     "confidence": "green",
-    "source_tier": "primary (operator)",
+    "source_tier": "primary (operator) + trade press",
     "ref_field": "FacilityType [ref]",
     "ref_urls": [
-      "https://adnocgas.ae/en/our-operations/lng"
+      "https://adnocgas.ae/en/our-operations/lng",
+      "https://lngprime.com/middle-east/adnoc-gas-drops-plan-to-upgrade-das-island-lng-export-terminal/129150/",
+      "https://www.agbi.com/oil-and-gas/2024/10/adnoc-drops-plan-to-upgrade-uaes-only-lng-facility/"
     ],
-    "source_notes": "Blank-[ref] fill. ADNOC Gas operator page confirms Das Island is a three-train LNG export (liquefaction) plant, ~6 mtpa. FacilityType='export' supported.",
+    "source_notes": "Blank-[ref] fill. ADNOC Gas operator page confirms Das Island is a three-train LNG export (liquefaction) plant, ~6 mtpa. FacilityType='export' supported. Re-sourced off-GEM: operator primary (adnocgas.ae) corroborated by two independent trade-press outlets (LNG Prime, AGBI) that describe Das Island as an LNG export terminal. Green.",
     "scope_note": "FacilityType is project-level; the same ref applies to Das Island T1/T3 if also blank.",
-    "researcher_initials": "AI-draft (sweep)"
+    "researcher_initials": "AI-draft (sweep; reverify)"
   },
   {
     "terminal_id": "T100000130602",
@@ -45,16 +49,17 @@
     "country": "United Arab Emirates",
     "field_name": "ShelvedYear [ref]",
     "old_value": "",
-    "new_value": "https://www.meed.com/uae-shelves-gas-import-terminal-project/",
-    "confidence": "yellow",
-    "source_tier": "trade press (single non-primary)",
+    "new_value": "https://www.constructionboxscore.com/project-news/abu-dhabi-said-to-delay-building-fujairah-lng-import-plant.aspx",
+    "confidence": "green",
+    "source_tier": "trade press (two independent)",
     "ref_field": "ShelvedYear [ref]",
     "ref_urls": [
-      "https://www.meed.com/uae-shelves-gas-import-terminal-project/"
+      "https://www.constructionboxscore.com/project-news/abu-dhabi-said-to-delay-building-fujairah-lng-import-plant.aspx",
+      "https://www.maritimeprofessional.com/news/dhabi-puts-fujairah-terminal-hold-289175"
     ],
-    "source_notes": "Blank-[ref] fill. Same MEED article already cited on this row's CancelledYear/StopYear/Status [ref] and reports the UAE shelving of the gas-import terminal; supports ShelvedYear=2016. Yellow (single non-primary source).",
+    "source_notes": "Blank-[ref] fill. Supports ShelvedYear=2016 for the Emirates LNG Fujairah import terminal (Abu Dhabi delayed/shelved it in 2016 in favour of an FSRU). Re-sourced off-GEM: the prior MEED URL is paywalled and the verifier could not confirm '2016' on it, so it was replaced by two independent outlets (Construction Boxscore and Maritime Professional) that each explicitly carry the 2016 delay/hold. Green (two independent corroborations).",
     "scope_note": "",
-    "researcher_initials": "AI-draft (sweep)"
+    "researcher_initials": "AI-draft (sweep; reverify)"
   },
   {
     "terminal_id": "T100000130972",
@@ -66,13 +71,14 @@
     "old_value": "",
     "new_value": "https://www.zawya.com/en/business/sharjahs-snoc-puts-lng-storage-terminal-project-on-hold-u85ngb8k",
     "confidence": "yellow",
-    "source_tier": "trade press (single non-primary)",
+    "source_tier": "trade press + project intelligence",
     "ref_field": "Status [ref]",
     "ref_urls": [
-      "https://www.zawya.com/en/business/sharjahs-snoc-puts-lng-storage-terminal-project-on-hold-u85ngb8k"
+      "https://www.zawya.com/en/business/sharjahs-snoc-puts-lng-storage-terminal-project-on-hold-u85ngb8k",
+      "https://www.dmsprojects.net/uae/projects/snoc-sharjah-lng-import-terminal/PRJ00025679"
     ],
-    "source_notes": "Blank-[ref] fill. Zawya/S&P (Mar-2020) reports SNOC put the Sharjah LNG project on hold to focus on the Mahani gas discovery; supports the non-active (shelved->cancelled) status. No independent press pins a discrete 2024 cancellation event (see qa). Yellow.",
+    "source_notes": "Blank-[ref] fill. Zawya/S&P (Mar-2020) reports SNOC put the Sharjah LNG project on hold to focus on the Mahani gas discovery; supports the non-active (shelved->cancelled) status. Re-sourced off-GEM: S&P Global's own page returns HTTP 403 to the verifier, so a project-intelligence aggregator (DMS Projects, independent of GEM) is added as the second corroboration of the on-hold status. No independent press pins a discrete 2024 cancellation event (see qa). Yellow (second source is a weak aggregator).",
     "scope_note": "",
-    "researcher_initials": "AI-draft (sweep)"
+    "researcher_initials": "AI-draft (sweep; reverify)"
   }
 ]

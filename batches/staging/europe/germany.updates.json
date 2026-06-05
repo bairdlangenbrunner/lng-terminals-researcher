@@ -9,13 +9,14 @@
     "old_value": "Transgas Force",
     "new_value": "Energos Force",
     "confidence": "green",
-    "source_tier": "trade press (2 independent: vessel-sale announcement + DET project update)",
+    "source_tier": "trade press (3 independent publishers: Offshore Energy + Riviera + LNG Prime, all stating the Transgas Force -> Energos Force rename)",
     "ref_field": "FloatingVesselName [ref]",
     "ref_urls": [
-      "https://lngprime.com/americas/energos-buys-two-fsrus-from-dynagas/101763/",
-      "https://lngprime.com/europe/det-says-stade-fsru-terminal-will-not-go-into-operation-before-q2-2026/169002/"
+      "https://www.offshore-energy.biz/energos-infrastructure-acquires-dynagas-fsru-duo-on-charter-in-germany/",
+      "https://www.rivieramm.com/news-content-hub/news-content-hub/energos-infrastructure-buys-two-dynagas-fsrus-79169",
+      "https://lngprime.com/americas/energos-buys-two-fsrus-from-dynagas/101763/"
     ],
-    "source_notes": "Vessel renamed when Energos Infrastructure (Apollo-managed, NFE minority) acquired the two Dynagas FSRUs in Jan 2024: 'Transgas Force' and 'Transgas Power' became 'Energos Force' and 'Energos Power'. The Stade unit's FSRU is now consistently referred to as 'Energos Force' in 2025-2026 DET/trade-press coverage (Q2-2026 operation date article; Jordan sub-charter). GEM still shows the pre-2024 name 'Transgas Force'. Vessel name is the FSRU-sync linking field, so the current name matters for carrier-project agreement.",
+    "source_notes": "Vessel renamed when Energos Infrastructure (Apollo-managed, NFE minority) acquired the two Dynagas FSRUs in Jan 2024: 'Transgas Force' and 'Transgas Power' became 'Energos Force' and 'Energos Power'. The Stade unit's FSRU is now consistently referred to as 'Energos Force' in 2025-2026 DET/trade-press coverage. GEM still shows the pre-2024 name 'Transgas Force'. Vessel name is the FSRU-sync linking field, so the current name matters for carrier-project agreement. RE-VERIFY (2026-06): replaced the two same-publisher (LNG Prime) citations with three INDEPENDENT publishers (Offshore Energy, Riviera Maritime Media, LNG Prime), each url_verifier-PASS on the token 'Energos Force'.",
     "scope_note": "dev_pipeline row (construction); FloatingVesselName is in-scope and not a status field. Status itself unchanged (construction) — honoring ResearcherNotesUnit hold; see qa for the Q2-2026/Jordan status_timeline note.",
     "researcher_initials": "AI-draft (sweep)"
   },
@@ -28,13 +29,14 @@
     "field_name": "LatestPlannedStartYear",
     "old_value": "2025",
     "new_value": "2030",
-    "confidence": "green",
-    "source_tier": "sponsor (Tree Energy Solutions project page)",
+    "confidence": "yellow",
+    "source_tier": "sponsor primary (TES project page: 'commercial operations in 2030') + one independent corroboration (Lower Saxony state hydrogen agency, frames 2030 as the ramp-up year)",
     "ref_field": "StartDate [ref]",
     "ref_urls": [
-      "https://tes-h2.com/projects/projects-greenenergyhubwilhelmshaven"
+      "https://tes-h2.com/projects/projects-greenenergyhubwilhelmshaven",
+      "https://www.wasserstoff-niedersachsen.de/en/wilhelmshaven-green-energy-hub/"
     ],
-    "source_notes": "TES's own Wilhelmshaven Green Energy Hub project page now states commercial operations begin in 2030 (initial 15 bcm/y, expandable to >20 bcm). GEM's LatestPlannedStartYear of 2025 has lapsed (the 2025 target had already slipped). Capacity 15 bcm/y still matches GEM (CapacityinBcm/y 15.01 / CapacityinMtpa 11.03) — no capacity change. Still proposed, no FID reported (matches GEM FIDStatus blank). Note: ref_field is the StartDate [ref] alias for the start-year columns per the schema.",
+    "source_notes": "TES's own Wilhelmshaven Green Energy Hub project page states commercial operations begin in 2030 (initial 15 bcm/y, expandable to >20 bcm). GEM's LatestPlannedStartYear of 2025 has lapsed. Capacity 15 bcm/y still matches GEM — no capacity change. Still proposed, no FID reported (matches GEM FIDStatus blank). RE-VERIFY (2026-06): the explicit 'commercial operations 2030' phrasing appears on the TES sponsor page (primary); the Lower Saxony state hydrogen agency (wasserstoff-niedersachsen.de, independent of TES) corroborates 2030 but frames it as the ramp-up year (operations from 2026, ramp-up from 2030). Because the second source's 2030 framing differs from the sponsor's, confidence DOWNGRADED green->yellow (sponsor is effectively the single source for 'latest planned START = 2030'). Both url_verifier-PASS on token '2030'.",
     "scope_note": "dev_pipeline row (proposed). Start-year slip is a value change, not a status change; Status stays proposed. OriginalPlannedStartYear (2025) left as the original target; only the latest planned start is updated.",
     "researcher_initials": "AI-draft (sweep)"
   },
@@ -48,12 +50,12 @@
     "old_value": "shelved",
     "new_value": "shelved",
     "confidence": "yellow",
-    "source_tier": "trade press (single non-primary; substantiates the inferred-shelved basis)",
+    "source_tier": "trade press (single independent non-primary; substantiates the inferred-shelved basis)",
     "ref_field": "Status [ref]",
     "ref_urls": [
       "https://lngprime.com/lng-terminals/germanys-rwe-says-it-is-not-involved-in-mukran-lng-plans/82172/"
     ],
-    "source_notes": "Blank-ref fill (Rule F: pairs the existing Status=shelved value; no value change). GEM had Status populated but Status [ref] blank. The RWE/Stena chartered FSRU planned off Lubmin never proceeded: this source documents that RWE (with Stena Power) had been named to develop the Lubmin FSRU but withdrew, and Deutsche ReGas took over the Lubmin site independently with its own vessel (Neptune, later moved to Mukran). That non-advancement under RWE/Stena is the basis for GEM's 'shelved (inferred)' status. NOTE: this is distinct from the operating Deutsche Ostsee/Mukran terminal (Deutsche ReGas, Energos Power) — do NOT conflate; the 2025 Energos Power charter termination is a Mukran event, not this RWE/Stena Lubmin row. ShelvedYear/StopYear [ref] (2025) left blank — the 2025 is GEM's inference-rollover year with no citable event source (see qa).",
+    "source_notes": "Blank-ref fill (Rule F: pairs the existing Status=shelved value; no value change). GEM had Status populated but Status [ref] blank. The RWE/Stena chartered FSRU planned off Lubmin never proceeded: this source documents that RWE (with Stena Power) had been named to develop the Lubmin FSRU but withdrew, and Deutsche ReGas took over the Lubmin site independently. That non-advancement under RWE/Stena is the basis for GEM's 'shelved (inferred)' status. NOTE: distinct from the operating Deutsche Ostsee/Mukran terminal — do NOT conflate. RE-VERIFY (2026-06): no gem.wiki citation present; the supporting URL is a single independent publisher (LNG Prime) and a second independent source explicitly stating RWE's Lubmin/Stena non-advancement was NOT found, so confidence stays yellow (single-source) — honest per the re-verify rule. ShelvedYear/StopYear [ref] (2025) left blank (see qa).",
     "scope_note": "blank_ref fill target (worklist). Status unchanged; only the empty Status [ref] is filled.",
     "researcher_initials": "AI-draft (sweep)"
   },
@@ -67,12 +69,13 @@
     "old_value": "construction",
     "new_value": "construction",
     "confidence": "blue",
-    "source_tier": "trade press (re-verify, unchanged)",
+    "source_tier": "trade press (re-verify, unchanged; 2 independent: OSW + Offshore Energy)",
     "ref_field": "Status [ref]",
     "ref_urls": [
-      "https://lngprime.com/europe/construction-moving-forward-on-german-lng-terminal/156064/"
+      "https://www.osw.waw.pl/en/publikacje/analyses/2024-11-04/germany-milestones-construction-a-gas-port-brunsbuttel",
+      "https://www.offshore-energy.biz/gasunie-to-start-german-lng-terminal-construction/"
     ],
-    "source_notes": "Re-verify (no change). Construction confirmed ongoing as of latest coverage; terminal expected operational 2026 (jetty completion end-2026), tank foundation piles installed turn of 2024/25. Status correctly remains construction (actual). Capacity (10 bcm/y / 7.35 mtpa), owners (Oiltanking/Vopak/Gasunie) and FID 2024 unchanged. One representative blue re-verify for the terminal per standard tier.",
+    "source_notes": "Re-verify (no change). Construction confirmed ongoing; onshore terminal expected operational 2026-2027. Status correctly remains construction (actual). Capacity (10 bcm/y / 7.35 mtpa), owners (Gasunie/KfW/RWE on the onshore JV) and FID unchanged. RE-VERIFY (2026-06): replaced the single LNG Prime citation with two INDEPENDENT publishers — OSW (Centre for Eastern Studies, milestones-in-construction analysis) and Offshore Energy (Gasunie-to-start-construction) — both url_verifier-PASS on the construction tokens.",
     "scope_note": "dev_pipeline row (construction). Representative blue re-verify only; not spamming blue across fields.",
     "researcher_initials": "AI-draft (sweep)"
   },
@@ -86,12 +89,13 @@
     "old_value": "construction",
     "new_value": "construction",
     "confidence": "blue",
-    "source_tier": "sponsor (Hanseatic Energy Hub, re-verify, unchanged)",
+    "source_tier": "re-verify, unchanged (2 independent: Enagás co-owner press release + LNG Industry trade press)",
     "ref_field": "Status [ref]",
     "ref_urls": [
-      "https://www.hanseatic-energy-hub.de/en/news/detail/baustart-in-stade-starkes-zeichen-fuer-europaeische-versorgungssicherheit/"
+      "https://www.enagas.es/en/press-room/news-room/press-releases/heh-first-construction-stade/",
+      "https://www.lngindustry.com/liquid-natural-gas/01072024/construction-starts-on-germanys-first-land-based-lng-terminal/"
     ],
-    "source_notes": "Re-verify (no change). Onshore Stade LNG terminal construction (started June 2024 after March-2024 FID) confirmed ongoing; operational target 2027. Capacity (13.3 bcm/y / 9.78 mtpa), owners (HEH: Enagás 15% / Buss / Partners Group / Dow) and FID 2024 unchanged. Freshest GEM row (LastUpdated 2025-12-15); one representative blue re-verify.",
+    "source_notes": "Re-verify (no change). Onshore Stade LNG terminal construction (started June 2024 after March-2024 FID) confirmed ongoing; operational target 2027. Capacity (13.3 bcm/y / 9.78 mtpa), owners (HEH: Enagás 15% / Buss / Partners Group / Dow) and FID 2024 unchanged. RE-VERIFY (2026-06): replaced the single Hanseatic-Energy-Hub (sponsor) citation with two INDEPENDENT publishers — Enagás (co-owner press release, separate origin from HEH) and LNG Industry (trade press) — both url_verifier-PASS on token 'Stade'.",
     "scope_note": "dev_pipeline row (construction). Representative blue re-verify only.",
     "researcher_initials": "AI-draft (sweep)"
   }

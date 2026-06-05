@@ -15,7 +15,7 @@
       "https://www.globenewswire.com/news-release/2026/06/03/3306350/0/en/delfin-midstream-announces-5-billion-final-investment-decision-for-first-flng-vessel.html",
       "https://www.argusmedia.com/en/news-and-insights/latest-market-news/2835049-delfin-greenlights-first-us-floating-lng-terminal"
     ],
-    "source_notes": "Delfin Midstream announced FID for Delfin FLNG 1 on 2026-06-03 ($5B; EPC Samsung Heavy + Black & Veatch; equity led by GIP/BlackRock, with MOL, Vitol, Diameter). GEM had FIDStatus=Pre-FID, FIDYear=2026; the FID is now actual. FIDYear=2026 already correct; only FIDStatus changes. Applies to T1 (FLNG 1) only — T2/T3 remain Pre-FID.",
+    "source_notes": "Delfin Midstream announced FID for Delfin FLNG 1 on 2026-06-03 ($5B; EPC Samsung Heavy + Black & Veatch; equity led by GIP/BlackRock, with MOL, Vitol, Diameter). GEM had FIDStatus=Pre-FID, FIDYear=2026; the FID is now actual. FIDYear=2026 already correct; only FIDStatus changes. Applies to T1 (FLNG 1) only — T2/T3 remain Pre-FID. Corroborated by two independent non-GEM sources (Delfin/GlobeNewswire release + Argus); both contain the FID announcement.",
     "scope_note": "Unit-level: FID is for the first vessel (T1) only; do NOT propagate FID to T2/T3.",
     "researcher_initials": "AI-draft (sweep)"
   },
@@ -29,13 +29,13 @@
     "old_value": "",
     "new_value": "4.40",
     "confidence": "green",
-    "source_tier": "primary (company announcement)",
+    "source_tier": "primary (company announcement) + trade press",
     "ref_field": "Capacity [ref]",
     "ref_urls": [
       "https://www.globenewswire.com/news-release/2026/06/03/3306350/0/en/delfin-midstream-announces-5-billion-final-investment-decision-for-first-flng-vessel.html",
       "https://gcaptain.com/delfin-approves-5-billion-floating-lng-export-project-off-louisiana-coast/"
     ],
-    "source_notes": "Delfin FLNG 1 nameplate export capacity = 4.4 mtpa per the 2026-06-03 FID release (total project authorization up to 13.2 mtpa across vessels). GEM Capacity/CapacityinMtpa for T1 were blank. Baseload/nameplate per vessel. CapacityUnits should be set to mtpa.",
+    "source_notes": "Delfin FLNG 1 nameplate export capacity = 4.4 mtpa per the 2026-06-03 FID release (total project authorization up to 13.2 mtpa across vessels). GEM Capacity/CapacityinMtpa for T1 were blank. Baseload/nameplate per vessel. CapacityUnits should be set to mtpa. The 4.4 value verified on two independent non-GEM pages (GlobeNewswire release + gCaptain).",
     "scope_note": "Per-vessel (T1). 4.4 mtpa is the FLNG 1 nameplate, not the 13.2 mtpa multi-vessel total.",
     "researcher_initials": "AI-draft (sweep)"
   },
@@ -49,13 +49,13 @@
     "old_value": "2031",
     "new_value": "2030",
     "confidence": "yellow",
-    "source_tier": "primary (company announcement)",
+    "source_tier": "primary (company announcement) + trade press",
     "ref_field": "StartDate [ref]",
     "ref_urls": [
       "https://www.globenewswire.com/news-release/2026/06/03/3306350/0/en/delfin-midstream-announces-5-billion-final-investment-decision-for-first-flng-vessel.html",
       "https://gcaptain.com/delfin-approves-5-billion-floating-lng-export-project-off-louisiana-coast/"
     ],
-    "source_notes": "FID release states FLNG 1 'scheduled to begin LNG production in 2030'. GEM T1 LatestPlannedStartYear=2031. Yellow: 'production in 2030' is a target, not a confirmed commissioning date.",
+    "source_notes": "FID release states FLNG 1 'scheduled to begin LNG production in 2030'. GEM T1 LatestPlannedStartYear=2031. Yellow: 'production in 2030' is a target, not a confirmed commissioning date — value retained but flagged as a guidance target. The 2030 production target appears on two independent non-GEM pages (GlobeNewswire release + gCaptain).",
     "scope_note": "Unit-level (T1).",
     "researcher_initials": "AI-draft (sweep)"
   },
@@ -69,13 +69,14 @@
     "old_value": "",
     "new_value": "Plaquemines Parish",
     "confidence": "green",
-    "source_tier": "regulatory (FERC docket) + trade press",
+    "source_tier": "regulatory (DOE semi-annual report) + trade press",
     "ref_field": "Location [ref]",
     "ref_urls": [
-      "https://www.ferc.gov/gulfstream-lng-terminal-project",
-      "https://lngprime.com/americas/gulfstream-lng-secures-fta-export-license-from-doe/85228/"
+      "https://www.energy.gov/sites/default/files/2025-10/GulfstreamLNGDevelopmentLLC%20-%20Semi-Annual%20Report%20(10-1-25).pdf",
+      "https://lngprime.com/americas/gulfstream-lng-secures-fta-export-license-from-doe/85228/",
+      "https://www.hartenergy.com/exclusives/gulfstream-lng-clears-ferc-hurdle-louisiana-export-project-213636/"
     ],
-    "source_notes": "GEM Location value was blank (only Location [ref] populated). FERC docket CP25-519 and sponsor materials place the Gulfstream LNG terminal in Plaquemines Parish, Louisiana. Fills the blank Location value; existing Location [ref] retained.",
+    "source_notes": "GEM Location value was blank (only Location [ref] populated). Gulfstream LNG terminal sits in Plaquemines Parish, Louisiana (FERC Docket CP25-519, Belle Chasse / west bank Mississippi River). The prior FERC project page (ferc.gov) returned HTTP 403 to the verifier and was dropped; replaced with the DOE semi-annual report PDF (primary regulatory filing), LNG Prime, and Hart Energy — three independent non-GEM sources, each verified to contain 'Plaquemines'. Fills the blank Location value.",
     "scope_note": "Project-level single unit.",
     "researcher_initials": "AI-draft (sweep)"
   },
@@ -89,12 +90,13 @@
     "old_value": "",
     "new_value": "https://www.energy.gov/nepa/eis-0491-lake-charles-liquefaction-project-calcasieu-parish-louisiana",
     "confidence": "green",
-    "source_tier": "regulatory (DOE/FERC EIS)",
+    "source_tier": "regulatory (DOE/FERC EIS) + trade press",
     "ref_field": "Location [ref]",
     "ref_urls": [
-      "https://www.energy.gov/nepa/eis-0491-lake-charles-liquefaction-project-calcasieu-parish-louisiana"
+      "https://www.energy.gov/nepa/eis-0491-lake-charles-liquefaction-project-calcasieu-parish-louisiana",
+      "https://www.ogj.com/general-interest/government/news/55312101/energy-transfer-granted-additional-time-to-begin-exports-from-lake-charles-lng"
     ],
-    "source_notes": "Blank-ref fill. DOE EIS-0491 (Lake Charles Liquefaction Project) confirms the terminal site is in Calcasieu Parish, Louisiana, on the existing LNG import terminal site (GEM Location value='Lake Charles'). No orphan ref — pairs existing Location value.",
+    "source_notes": "Blank-ref fill. DOE EIS-0491 (Lake Charles Liquefaction Project) confirms the terminal site is in Calcasieu Parish, Louisiana, on the existing LNG terminal site (GEM Location value='Lake Charles'). Corroborated independently by Oil & Gas Journal; both pages verified to contain 'Calcasieu'. No orphan ref — pairs existing Location value.",
     "scope_note": "Pairs existing Location value; do not change the value.",
     "researcher_initials": "AI-draft (sweep)"
   },
@@ -108,12 +110,13 @@
     "old_value": "",
     "new_value": "https://www.energy.gov/nepa/eis-0491-lake-charles-liquefaction-project-calcasieu-parish-louisiana",
     "confidence": "green",
-    "source_tier": "regulatory (DOE/FERC EIS)",
+    "source_tier": "regulatory (DOE/FERC EIS) + trade press",
     "ref_field": "FacilityType [ref]",
     "ref_urls": [
-      "https://www.energy.gov/nepa/eis-0491-lake-charles-liquefaction-project-calcasieu-parish-louisiana"
+      "https://www.energy.gov/nepa/eis-0491-lake-charles-liquefaction-project-calcasieu-parish-louisiana",
+      "https://www.ogj.com/general-interest/government/news/55312101/energy-transfer-granted-additional-time-to-begin-exports-from-lake-charles-lng"
     ],
-    "source_notes": "Blank-ref fill. DOE EIS-0491 describes the project as expanding 'an existing liquefied natural gas (LNG) import terminal in Calcasieu Parish' — confirms GEM FacilityType='import' for this unit. Pairs the existing FacilityType value.",
+    "source_notes": "Blank-ref fill. DOE EIS-0491 describes the project as expanding 'an existing liquefied natural gas (LNG) import terminal in Calcasieu Parish' — confirms GEM FacilityType='import' for this unit. Oil & Gas Journal independently describes the site as 'originally configured as an LNG import terminal'; both pages verified to contain 'import'. Pairs the existing FacilityType value.",
     "scope_note": "Pairs existing FacilityType value.",
     "researcher_initials": "AI-draft (sweep)"
   }
