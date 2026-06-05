@@ -72,6 +72,7 @@ python recalc.py ../batches/...
 | Script | Purpose |
 |---|---|
 | `stale_sweep.py` | Flags units exceeding lifecycle dormancy thresholds, AND always emits the `dev_pipeline` block — every proposed/construction/shelved unit, annotated `recently_updated` (`--pipeline-recent-months`, default 3) — which is the standard-tier Update worklist (Update SOP §2.1). Used by triage, QC, and update batches. |
+| `sweep_worklist_split.py` | Regional-sweep dispatch helper (Update SOP §2.1): merges the standard-tier worklist (`stale_sweep` flagged_units ∪ dev_pipeline ∪ `completeness_sweep` blank-ref gaps), restricts to `Fuel == LNG`, and splits it per country using `batches/staging/_region_map.json`. Writes one `work/sweep/<region>/<slug>.worklist.json` per country with a non-empty worklist plus `work/sweep/_index.json` (counts for dispatch planning — zero-worklist countries get no update agent; `by_state` breakdown for countries over `--shard-state-threshold`, default 40). Run after the fresh pull + `stale_sweep.py` + `completeness_sweep.py`. |
 | `citation_qc.py` | QC link-rot sweep (QC SOP §3.2): batch re-verifies existing `[ref]`-column URLs from the export via `url_verifier.py`'s library mode. Verdicts: `dead` (hard rot — counts toward the >25% per-country escalation) / `blocked` (bot-wall/paywall, verify manually) / advisory `name_found`. Scope `--country`/`--status`, cap `--max-urls` (truncation recorded, never silent), politeness `--delay` (url_verifier itself never sleeps). Writes `work/citation_qc.json`. |
 | `apply_check.py` | QC post-apply check (QC SOP §3.4): reads an applied batch xlsx's `updates` sheet **by header name** and compares each staged edit against a fresh export — `applied` / `not_applied` / `diverged` (transcription-error catcher) / `not_found` / `reverify_only`. Equal-float values auto-normalize ("8" vs "8.0"); other format-only divergences are reviewer judgment. Writes `work/apply_check.json`. |
 | `report_diff.py` | Reconciliation diff between an industry report (GIIGNL or IGU) and current GEM data. Parameterized on report type. Three-pass matching (canonical name → alias via `OtherNames`/`LocalNames` + transliterations → fuzzy); project key includes `section_type` so a mixed liquefaction+regasification terminal splits into two projects rather than summing. Report rows ending in "Expansion"/"Extension" fold into their base `<Site>` row (when a base partner resolves) so phased terminals sum correctly; the `report_sites_merged` field records each fold. Set iterations are sorted, so the diff is reproducible run-to-run. |
@@ -106,6 +107,7 @@ capacity_normalize.py  ← imported by build_review_package
 status_timeline.py     ← imported by build_review_package
 dedup_index.py         ← reads pull_gem_db output (.colmap.json)
 stale_sweep.py         ← reads pull_gem_db output
+sweep_worklist_split.py ← reads gem_export.csv + stale_sweep/completeness_sweep output + _region_map.json
 citation_qc.py         ← reads pull_gem_db output; imports url_verifier
 apply_check.py         ← reads an applied batch xlsx + fresh pull_gem_db output
 report_diff.py         ← reads pull_gem_db output + giignl_extract output
