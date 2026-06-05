@@ -63,6 +63,11 @@ content-checks) — a PDF failing with "no extractable text" is a scanned/image 
   (a generic-only result = inconclusive → set lookup_was_run starting with "RUN").
 - >5 GENUINE new candidates in one country → monitor_list + escalation=true in your summary; do NOT mass-generate.
 - Ambiguous match → qa, never a guessed edit. No orphan [ref] (every ref pairs a data value).
+- URLs go ONLY in `[ref]` columns; a data/enum column holds a VALUE, never a link. `Status` must be an
+  enum (`proposed`/`construction`/`operating`/`idle`/`mothballed`/`shelved`/`cancelled`/`retired`) — its URL
+  goes in `Status [ref]`; `Capacity` is a number, `Owner`/`Operator` are names. To fill a blank ref, set
+  `field_name` = `"<Field> [ref]"`, `new_value` = the URL, `ref_urls` = [that URL]; do NOT also set
+  `ref_field` to the base data column (`ref_field`, when used at all, names another `[ref]` column only).
 - Confidence: green = primary/regulatory or 2+ independent; yellow = single non-primary/implied; red = single weak;
   blue = unchanged-but-re-verified.
 - CONTEXT: GEM is already very current (LastUpdated ~2026-05). Expect FEW genuine changes. Do NOT manufacture
