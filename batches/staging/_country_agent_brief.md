@@ -29,11 +29,27 @@ pre-trusted. Be conservative; verify everything.
 4. Discovery dedup: a real terminal NOT in GEM, that meets the add-bar (sponsor + approx location + concrete
    step) AND has a verified source → new_terminal; otherwise → monitor_list.
 
-## VERIFY EVERY URL before using it
+## VERIFY EVERY URL before using it — and verify the VALUE is on the page
 `python /Users/baird/Dropbox/_git_ALL/_github-repos-gem/lng-terminals-researcher/scripts/url_verifier.py "<url>" "<token>"`
-— only PASS urls go in records; drop failures, note in qa. The verifier handles PDFs itself (detects by
-content-type/extension/magic, extracts via `pdftotext -layout`, then content-checks) — a PDF failing with
-"no extractable text" is a scanned/image PDF, treat as a failed citation.
+— only PASS urls go in records; drop failures, note in qa. Pass the ACTUAL claimed value as the token
+(the capacity number, owner name, status word, year, vessel name), NOT a generic word — "the page loads"
+is not verification; the specific datum your cell asserts MUST appear explicitly on that page. The verifier
+handles PDFs itself (detects by content-type/extension/magic, extracts via `pdftotext -layout`, then
+content-checks) — a PDF failing with "no extractable text" is a scanned/image PDF, treat as a failed citation.
+
+## SOURCING — these are ABSOLUTE (CLAUDE.md hard requirements)
+- **NEVER cite gem.wiki or globalenergymonitor.org — anywhere, in any field, any sheet.** It is GEM's own
+  publication; citing it as evidence for the GEM database is circular and is forbidden. Do not put a
+  `gem.wiki`/`globalenergymonitor.org` URL in `ref_urls`, `source_urls`, `best_lead_url`, or in any qa/issue
+  prose as a citation. A source that merely republishes or footnotes GEM (Wikipedia, IEEFA, news citing GEM)
+  is NOT independent — chase the primary source it points to and cite THAT. If a value exists ONLY on
+  gem.wiki, it is unsourced: leave the cell blank and write a qa note, never cite GEM.
+- **Corroborate every staged value with ≥2 INDEPENDENT working URLs that each explicitly contain it (3 when
+  findable).** Independent = different publishers/origins — not two pages of one outlet, not a primary plus
+  its own press release echo. A single source is the disfavored exception. Confidence then follows:
+  green = a primary/regulatory source OR ≥2 independent corroborations; yellow = a single non-primary source;
+  red = a single weak source — and a red single-weak value should usually be left BLANK + a qa note rather
+  than staged. Put all corroborating URLs in `ref_urls` (the list), not just one.
 
 ## HARD RULES
 - NEVER write read-only/out-of-scope cols: LH2, NH3, SyntheticLNG, RetrofitProposed, AltFuel*, PCI*, CCS,

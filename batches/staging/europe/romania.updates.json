@@ -15,7 +15,7 @@
       "https://www.trend.az/business/energy/3392754.html",
       "https://cepa.org/article/black-sea-cables-to-slake-europes-thirst-for-energy/"
     ],
-    "source_notes": "Status is GEM-inferred ('cancelled (inferred 4 y)', ShelvedCancelledStatusType=inferred), so no sponsor cancellation announcement exists by design. The paired value is supported by the dormancy trajectory: Trend (10 Mar 2021, citing Azerbaijan's Energy Ministry) headline 'Azerbaijan-Georgia-Romania Interconnector project is frozen - ministry' / 'AGRI project is currently frozen, Azerbaijan's Energy Ministry told Trend'; CEPA (31 Jan 2023) describes the 'Azerbaijan-Georgia-Romania liquefied natural gas (LNG) interconnector project' among past Black Sea projects that 'have foundered'. Frozen (2021) -> failed/foundered (2023) corroborates the inferred-cancelled status. Yellow because neither source uses the word 'cancelled' (the cancellation is GEM's 4-year-dormancy inference). Both URLs PASS url_verifier. gem.wiki/sourcewatch deliberately not cited (circular/GEM-affiliated).",
+    "source_notes": "Status is GEM-inferred ('cancelled (inferred 4 y)', ShelvedCancelledStatusType=inferred), so no sponsor cancellation announcement exists by design. The paired value is supported by the dormancy trajectory: Trend (10 Mar 2021, citing Azerbaijan's Energy Ministry) headline 'Azerbaijan-Georgia-Romania Interconnector project is frozen - ministry' / 'AGRI project is currently frozen, Azerbaijan's Energy Ministry told Trend'; CEPA (31 Jan 2023) describes the 'Azerbaijan-Georgia-Romania liquefied natural gas (LNG) interconnector project' among past Black Sea projects that 'have foundered'. Frozen (2021) -> failed/foundered (2023) corroborates the inferred-cancelled status. Yellow because neither source uses the word 'cancelled' (the cancellation is GEM's 4-year-dormancy inference). Both URLs PASS url_verifier (Trend token 'frozen'; CEPA token 'Azerbaijan-Georgia-Romania'). gem.wiki/sourcewatch deliberately not cited (circular/GEM-affiliated). Re-verify: the two URLs are independent publishers (Trend wire 2021 freeze + CEPA think-tank 2023 foundered) and jointly corroborate the cancelled/dormancy trajectory; no gem.wiki present; stays yellow because the GEM status is an inference (no source uses 'cancelled').",
     "scope_note": "Standard-tier blank-[ref] fill (europe sweep worklist, severity medium). Project-level field; sole unit. No data value changed; only the empty Status [ref] cell is populated. No orphan ref (pairs existing Status=cancelled).",
     "researcher_initials": "AI-draft (sweep)"
   },
@@ -28,13 +28,13 @@
     "field_name": "ShelvedYear [ref]",
     "old_value": "",
     "new_value": "https://www.trend.az/business/energy/3392754.html",
-    "confidence": "green",
+    "confidence": "yellow",
     "source_tier": "primary (national wire reporting Azerbaijan Energy Ministry statement)",
     "ref_field": "ShelvedYear",
     "ref_urls": [
       "https://www.trend.az/business/energy/3392754.html"
     ],
-    "source_notes": "Trend News Agency, 10 March 2021: 'Azerbaijan-Georgia-Romania Interconnector project is frozen - ministry'; body: 'AGRI project is currently frozen, Azerbaijan's Energy Ministry told Trend.' Directly supports ShelvedYear=2021 (the freeze that began the dormancy GEM dates shelving to). Green: primary ministry statement, dated exactly to the shelving year, project identity (AGRI/Romania/LNG) confirmed in text. URL PASSes url_verifier (tokens AGRI / frozen / Romania).",
+    "source_notes": "Trend News Agency, 10 March 2021: 'Azerbaijan-Georgia-Romania Interconnector project is frozen - ministry'; body: 'AGRI project is currently frozen, Azerbaijan's Energy Ministry told Trend.' Directly supports ShelvedYear=2021 (the freeze that began the dormancy GEM dates shelving to). URL PASSes url_verifier (token 'frozen'). DOWNGRADED green->yellow on re-verify: SINGLE independent source. The 2021-freeze statement appears verbatim in Wikipedia (footnote [13] cites this same Trend article) and in Romania-Insider (republishes the identical sentence), so neither is an independent corroboration; ERI (2015) and CACI (2015) predate the freeze. No gem.wiki cited (was never cited). No second independent non-GEM source for the 2021 freeze could be located.",
     "scope_note": "Standard-tier blank-[ref] fill (worklist, severity low). Pairs existing ShelvedYear=2021. No data value changed.",
     "researcher_initials": "AI-draft (sweep)"
   },
@@ -53,7 +53,7 @@
     "ref_urls": [
       "https://cepa.org/article/black-sea-cables-to-slake-europes-thirst-for-energy/"
     ],
-    "source_notes": "CEPA, 31 January 2023: references the 'Azerbaijan-Georgia-Romania liquefied natural gas (LNG) interconnector project' among past Black Sea energy projects that 'have foundered because of an array of political, economic, and technical problems.' A 2023 source documenting the project as a failed/past effort supports the inferred CancelledYear=2023 (the 4-years-dormant inference date). Yellow: single non-primary source, and it describes the project as foundered rather than formally 'cancelled' (consistent with GEM's inferred-cancel basis - no cancellation announcement exists). URL PASSes url_verifier (tokens Azerbaijan-Georgia-Romania / LNG).",
+    "source_notes": "CEPA, 31 January 2023: references the 'Azerbaijan-Georgia-Romania liquefied natural gas (LNG) interconnector project' among past Black Sea energy projects that 'have foundered because of an array of political, economic, and technical problems.' A 2023 source documenting the project as a failed/past effort supports the inferred CancelledYear=2023 (the 4-years-dormant inference date). Yellow: single non-primary source, and it describes the project as foundered rather than formally 'cancelled' (consistent with GEM's inferred-cancel basis - no cancellation announcement exists). URL PASSes url_verifier (token Azerbaijan-Georgia-Romania). Re-verify: confirmed single independent source; no gem.wiki cited; no second independent non-GEM source describing the project as cancelled/foundered in 2023 located (Wikipedia/Romania-Insider only republish the 2021 Trend freeze; ERI/CACI are 2015 and predate it).",
     "scope_note": "Standard-tier blank-[ref] fill (worklist, severity low). Pairs existing CancelledYear=2023. No data value changed.",
     "researcher_initials": "AI-draft (sweep)"
   },
@@ -72,7 +72,7 @@
     "ref_urls": [
       "https://cepa.org/article/black-sea-cables-to-slake-europes-thirst-for-energy/"
     ],
-    "source_notes": "Same CEPA article (31 Jan 2023) treating the Azerbaijan-Georgia-Romania LNG interconnector as a foundered past project. StopYear (inactive year) = 2023 shares the inferred-cancel basis with CancelledYear, so it reuses the same 2023 dormancy/failure source (cluster-coherent: same project, same inactivity observation). Yellow: single non-primary source, interpretive rather than an explicit shutdown notice. URL PASSes url_verifier.",
+    "source_notes": "Same CEPA article (31 Jan 2023) treating the Azerbaijan-Georgia-Romania LNG interconnector as a foundered past project. StopYear (inactive year) = 2023 shares the inferred-cancel basis with CancelledYear, so it reuses the same 2023 dormancy/failure source (cluster-coherent: same project, same inactivity observation). Yellow: single non-primary source, interpretive rather than an explicit shutdown notice. URL PASSes url_verifier. Re-verify: confirmed single independent source; no gem.wiki cited; no second independent non-GEM source describing a 2023 stop/cancellation located (Wikipedia/Romania-Insider only echo the 2021 Trend freeze; ERI/CACI are 2015).",
     "scope_note": "Standard-tier blank-[ref] fill (worklist, severity low). Pairs existing StopYear=2023. No data value changed.",
     "researcher_initials": "AI-draft (sweep)"
   }

@@ -565,13 +565,20 @@ def _record_country(rec, tidmap):
 
 
 def _country_breakdown(gem_csv_path, updates=(), qa=(), wiki=(),
-                       monitor=(), new_terms=(), new_units=()):
+                       monitor=(), new_terms=(), new_units=(), roster=()):
     """Partition the countries this batch touched into 'changes found' vs
     'verified, no changes' for the README. Changes found = a country with >=1
     proposed field change (non-blue update), a new terminal/unit, or a
     status-timeline action (routed to qa because the timeline endpoint is down).
     Everything else checked (blue re-verifies, informational qa/wiki) is
-    verified-no-change."""
+    verified-no-change.
+
+    `roster` is the authoritative list of countries actually swept (from the
+    per-country done-markers). It is unioned into `checked` so a country shows up
+    even when its only output is a record with no country field (discovery `qa`
+    rows carry no country) or no findings at all (clean "searched, nothing" run).
+    Without it the README silently omits checked countries — e.g. the US, whose
+    discovery output was qa-only — which misrepresents coverage."""
     tidmap = _tid_country_map(gem_csv_path)
     checked, changed = set(), set()
 
@@ -594,6 +601,9 @@ def _country_breakdown(gem_csv_path, updates=(), qa=(), wiki=(),
         see(t, True)
     for nu in new_units:
         see(nu, True)
+    for c in roster:
+        if c and c.strip():
+            checked.add(c.strip())
     return sorted(checked), sorted(changed), sorted(checked - changed)
 
 
@@ -2408,9 +2418,19 @@ def main():
                    help="Path to gem_export.csv for candidate_edits sheet (reconciliation mode)")
     p.add_argument("--extracted-csv", default="./giignl_extracted.csv",
                    help="Path to extracted report CSV for full_extract sheet (reconciliation mode)")
+    p.add_argument("--checked-roster", default=None,
+                   help="JSON list of country names actually swept (from per-country done-markers). "
+                        "Unioned into the README 'Countries checked' list so a country appears even "
+                        "when its only output was a country-less qa note or a clean no-findings run.")
     args = p.parse_args()
 
     inputs_dir = Path(args.inputs_dir)
+    checked_roster = []
+    if args.checked_roster and Path(args.checked_roster).exists():
+        try:
+            checked_roster = json.loads(Path(args.checked_roster).read_text(encoding="utf-8"))
+        except Exception as e:
+            print(f"  WARN: could not read --checked-roster {args.checked_roster}: {e}")
     wb = openpyxl.Workbook()
     wb.remove(wb.active)  # remove default empty sheet
 
@@ -2445,7 +2465,8 @@ def main():
         }
 
         build_readme(wb, "update", inputs_summary)
-        _chk, _chg, _no = _country_breakdown(args.gem_csv, updates=updates, qa=qa, wiki=wiki)
+        _chk, _chg, _no = _country_breakdown(args.gem_csv, updates=updates, qa=qa, wiki=wiki,
+                                             roster=checked_roster)
         _append_country_breakdown(wb, _chk, _chg, _no)
         if updates:
             build_updates_sheet(wb, updates)
@@ -2493,7 +2514,7 @@ def main():
         build_readme(wb, "discovery", inputs_summary)
         _chk, _chg, _no = _country_breakdown(
             args.gem_csv, qa=qa, wiki=wiki, monitor=monitor,
-            new_terms=new_terms, new_units=new_units)
+            new_terms=new_terms, new_units=new_units, roster=checked_roster)
         _append_country_breakdown(wb, _chk, _chg, _no)
         if new_terms:
             build_new_terminals_sheet(wb, new_terms)

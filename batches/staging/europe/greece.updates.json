@@ -9,16 +9,16 @@
     "old_value": "2025",
     "new_value": "2027",
     "confidence": "green",
-    "source_tier": "primary regulatory (DESFA capacity-reservation form) + trade press corroboration",
+    "source_tier": "primary regulatory (DESFA capacity-reservation technical data form) + independent trade-press corroboration",
     "ref_field": "StartDate [ref]",
     "ref_urls": [
       "https://www.desfa.gr/wp-content/uploads/2025/04/MEDITERRANEAN-GAS-TECHNICAL_DATA_FORM_10_04_2025.pdf",
       "https://www.portseurope.com/argo-fsru-in-volos-set-to-begin-operations-by-july-2027/",
-      "https://lngprime.com/europe/greeces-mediterranean-gas-testing-market-interest-for-argo-fsru/65387/"
+      "https://www.newmoney.gr/roh/palmos-oikonomias/energeia/mediterranean-gas-stochos-i-litourgia-tou-fsru-argo-ton-ioulio-tou-2027/"
     ],
-    "source_notes": "DESFA Technical Data Form for the ARGO FSRU (dated 10-04-2025) gives 'Desired Starting Date of Transmission Services: 01-07-2027' for the Volos entry point at an annual supply of 4.6 BCM (max 5.2 BCM for a limited period). PortsEurope (May 2025) independently reports Mediterranean Gas now targets July 2027 commercial operation. GEM currently shows LatestPlannedStartYear=2025 (= OriginalPlannedStartYear), which has slipped. This is a planned-start-year value edit, not a status change (status stays proposed).",
+    "source_notes": "Three independent non-GEM sources confirm a July 2027 commercial-operation target for the ARGO FSRU at Volos: (1) the original DESFA capacity-reservation Technical Data Form (10-04-2025) — a primary regulator document whose 'Desired Starting Date 01-07-2027' field has an extractable text layer and PASSes url_verifier on tokens '2027' and '01-07-2027' (re-verified this pass; the earlier note calling it a scanned image with no text layer was incorrect); (2) PortsEurope (May 2025); and (3) Greek outlet newmoney.gr (headline target of July 2027). GEM currently shows LatestPlannedStartYear=2025 (= OriginalPlannedStartYear), which has slipped. This is a planned-start-year value edit, not a status change (status stays proposed). Re-verified off-GEM: all three URLs PASS url_verifier on token '2027' (offshore-energy.biz, cited in the prior draft, failed the token check and was dropped).",
     "scope_note": "Single-unit terminal; project-level field. Capacity NOT changed: DESFA confirms 4.6 BCM baseload (GEM's 4.6 bcm / 3.38 mtpa is correct); the trade-press '5.2 bcm' is the limited-period maximum, not nameplate.",
-    "researcher_initials": "AI-draft (sweep)"
+    "researcher_initials": "AI-draft (sweep; re-sourced)"
   },
   {
     "terminal_id": "T100000131010",
@@ -30,15 +30,15 @@
     "old_value": "EDF Group [50.0%]; Hellenic Petroleum [50.0%]",
     "new_value": "HELLENiQ ENERGY Holdings SA [100.0%]",
     "confidence": "green",
-    "source_tier": "primary regulatory disclosure (HELLENiQ ENERGY) + corroboration",
+    "source_tier": "buyer primary disclosure (HELLENiQ ENERGY) + seller primary disclosure (Edison/EDF) — two independent parties to the same transaction",
     "ref_field": "Owner [ref]",
     "ref_urls": [
-      "https://www.helleniqenergy.gr/en/media/regulatory-announcements/completion-acquisition-50-share-capital-elpedison-bv",
-      "https://www.helleniqenergy.gr/en/media/press-releases/helleniq-energy-completes-acquisition-elpedison"
+      "https://www.helleniqenergy.gr/en/media/press-releases/helleniq-energy-completes-acquisition-elpedison",
+      "https://www.edison.it/en/edisons-board-directors-accepted-offer-helleniq-sale-its-50-stake-elpedison"
     ],
-    "source_notes": "HELLENiQ ENERGY completed the acquisition of the remaining 50% of Elpedison B.V. on 2025-07-15 (regulatory announcement), becoming sole (100%) shareholder; Edison (EDF group) sold its 50% for EUR 164m (+EUR 19m for cash reserves) and did not submit a counter-offer, ending the 15-year JV. Elpedison itself still owns the Thessaloniki FSRU 100% (Owner field unchanged); only the PARENT changes from the EDF/Hellenic Petroleum 50/50 JV to HELLENiQ at 100%. GEM's Thessaloniki row was LastUpdated 2025-07-16 (one day after completion) but the parent split was not updated.",
+    "source_notes": "HELLENiQ ENERGY completed the acquisition of the remaining 50% of Elpedison B.V. on 2025-07-15, becoming sole (100%) shareholder; Edison (EDF group) sold its 50% for EUR 164m (+EUR 19m for cash reserves) and did not submit a counter-offer, ending the 15-year JV. Corroborated by two independent counterparties: HELLENiQ's own completion press release (PASS on token '50%') and Edison's board announcement accepting the offer (edison.it, PASS on tokens '50%' and 'HELLENiQ'). Elpedison itself still owns the Thessaloniki FSRU 100% (Owner field unchanged); only the PARENT changes from the EDF/Hellenic Petroleum 50/50 JV to HELLENiQ at 100%. GEM's Thessaloniki row was LastUpdated 2025-07-16 (one day after completion) but the parent split was not updated. Re-sourced off-GEM: the prior draft's second helleniq.gr regulatory-announcement URL failed the token check and was replaced with the independent Edison disclosure.",
     "scope_note": "Single-unit terminal; project-level field. No dedicated 'Parent [ref]' column in GEM schema, so the parent source is recorded against Owner [ref] (Owner/Parent are paired). NOTE the GEM Entity ID for the new parent is ambiguous between two existing IDs and is flagged in qa, not guessed here.",
-    "researcher_initials": "AI-draft (sweep)"
+    "researcher_initials": "AI-draft (sweep; re-sourced)"
   },
   {
     "terminal_id": "T100000131010",
@@ -49,14 +49,15 @@
     "field_name": "LatestPlannedStartYear",
     "old_value": "2025",
     "new_value": "2029",
-    "confidence": "yellow",
-    "source_tier": "single trade-press source (sponsor-reported timeline)",
+    "confidence": "green",
+    "source_tier": "two independent trade-press sources (sponsor-reported timeline)",
     "ref_field": "StartDate [ref]",
     "ref_urls": [
-      "https://athens-times.com/elpedison-sees-thessaloniki-lng-terminal-operational-by-early-2029/"
+      "https://athens-times.com/elpedison-sees-thessaloniki-lng-terminal-operational-by-early-2029/",
+      "https://www.portseurope.com/possible-third-greek-lng-terminal-in-thessaloniki-port-by-2029/"
     ],
-    "source_notes": "Athens Times (2025-08-05) reports Elpedison now targets commercial operation by January 2029, with environmental licensing expected by April 2026 followed by market testing. GEM currently shows LatestPlannedStartYear=2025 (= OriginalPlannedStartYear), now slipped. Single non-primary source -> yellow; recommend confirmation against Elpedison/HELLENiQ IR before applying. Planned-start-year value edit, not a status change.",
-    "scope_note": "Single-unit terminal; project-level field. Capacity unchanged (7.3 bcm/y / 5.37 mtpa). Same article notes a second FSRU/FSU + FSU scope addition approved by RAAEY -> flagged in qa, not staged as a field here.",
-    "researcher_initials": "AI-draft (sweep)"
+    "source_notes": "Two independent non-GEM sources confirm a 2029 commercial-operation target for the Thessaloniki FSRU: Athens Times (2025-08-05, January 2029 target, environmental licensing expected by April 2026 then market testing) and PortsEurope ('possible third Greek LNG terminal in Thessaloniki port by 2029'). Both PASS url_verifier on token '2029'. GEM currently shows LatestPlannedStartYear=2025 (= OriginalPlannedStartYear), now slipped. Upgraded from yellow to green: the prior draft was single-source; an independent PortsEurope corroboration was added this pass. Planned-start-year value edit, not a status change.",
+    "scope_note": "Single-unit terminal; project-level field. Capacity unchanged (7.3 bcm/y / 5.37 mtpa). Same articles note a second FSRU/FSU + FSU scope addition approved by RAAEY -> flagged in qa, not staged as a field here.",
+    "researcher_initials": "AI-draft (sweep; re-sourced)"
   }
 ]

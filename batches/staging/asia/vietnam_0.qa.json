@@ -50,14 +50,14 @@
     "researcher_initials": "AI-draft"
   },
   {
-    "category": "data_quality",
+    "category": "unsourced_after_reverify",
     "terminal_id": "T100000130980",
     "unit_id": "G100002098000",
     "terminal_name": "Cat Hai FSRU",
-    "issue": "Cat Hai (ExxonMobil/JERA/Hai Phong, 6 mtpa MOU 2020) excluded from PDP8; >4 years with no project updates. GEM status 'cancelled' (inferred). ShelvedYear/StopYear=2023 are inferred with no primary source pinning those exact years, hence blank [ref] cells — these cannot be cleanly [ref]-filled.",
+    "issue": "Cat Hai (ExxonMobil/JERA/Hai Phong, 6 mtpa MOU 2020) excluded from PDP8; >4 years with no project updates. GEM status 'cancelled' (inferred). Re-verify: the previously staged Status [ref]-fill (energytracker.asia 'jera-vietnam-lng-plans-in-the-wake-of-pdp8') does NOT explicitly name Cat Hai or Hai Phong and fails url_verifier on both tokens, so it cannot serve as a citation for this terminal. No independent non-GEM page could be found that explicitly supports Cat Hai's cancelled status with the value on the page (power-technology.com and offshore-technology.com return HTTP 403; gastopowerjournal HTTP 000; only gem.wiki states it, which is circular). ShelvedYear/StopYear=2023 are likewise inferred with no primary source.",
     "severity": "low",
-    "suggested_action": "Filling Status [ref] with energytracker JERA-PDP8 analysis (staged). Leave ShelvedYear/StopYear [ref] blank — inferred years, no source confirms 2023 specifically.",
-    "researcher_initials": "AI-draft"
+    "suggested_action": "Dropped the Status [ref]-fill — leaving Status [ref] blank rather than citing a non-corroborating or GEM-derivative source. GEM's inferred-cancelled status (no updates 4+ years, not in PDP8) is plausible but uncorroborable off-GEM at unit granularity. Leave ShelvedYear/StopYear [ref] blank — inferred years, no source confirms 2023.",
+    "researcher_initials": "AI-draft (reverify)"
   },
   {
     "category": "data_quality",

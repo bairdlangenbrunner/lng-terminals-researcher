@@ -1,5 +1,63 @@
 # LNG country sweep — progress ledger
 
+## ✅ RE-VERIFY PASS 2026-06-04 — sourcing fix on the completed sweep — COMPLETE (all 6 regions, 12 workbooks rebuilt)
+
+**Result:** 125/125 slug-groups re-verified (europe 27, africa 22, americas 30, asia 28, middleeast 11, oceania 7). Final tree-wide grep: **0 gem.wiki/globalenergymonitor.org URLs** in any citation field across all regions (remaining substring hits are `.reverify.done.json` notes + source_notes/qa prose documenting that GEM was deliberately NOT cited). Every staged value re-sourced to ≥2 independent non-GEM url_verifier-PASS URLs where corroborable; genuinely single-source values kept yellow; values whose only support was gem.wiki/GEM-inference blanked + qa'd (notably cambodia ×8, canada_1_east ×13 lifecycle-year refs, PNG T3 FID). 12 workbooks rebuilt with the README `--checked-roster` fix (every checked country listed, incl. US). Limits hit twice (resets 12:40pm, 1am) — both cleared early, resumed live, zero lost work.
+
+**Why:** user mandate — (1) NEVER cite gem.wiki/globalenergymonitor.org (circular, GEM's own publication);
+(2) every staged value needs ≥2 INDEPENDENT working URLs that each explicitly contain the value (3 if
+findable), single-source is the disfavored exception. The completed sweep below violated both. Rules now
+codified as CLAUDE.md hard requirements + in `_country_agent_brief.md` / `_discovery_brief.md` (permanent).
+
+**Scope:** targeted re-verification of every staged reference/url-bearing file (not a fresh re-sweep of
+qa-only countries). 125 slug-groups / 238 files across the 6 regions. Each group → one re-verify agent
+(brief `_resweep_reverify_brief.md`, workflow `_resweep_reverify_wf.js`, args `/tmp/reverify_args_<region>.json`).
+Agent re-sources each staged value off-GEM, requires ≥2 independent verified URLs, blanks+qa what can't be
+corroborated, writes `<slug>.reverify.done.json` LAST. One workflow at a time (8 concurrent cap; the
+two-simultaneous-workflows rate-limit lesson holds).
+
+**Resume:** run `python batches/staging/_reverify_state.py` (self-contained; recomputes groups from the
+committed tree, lists marker-less slugs per region, writes `/tmp/reverify_args_<region>_remaining.json`,
+prints `NEXT_REGION`). Dispatch NEXT_REGION's remaining slugs via `_resweep_reverify_wf.js` (one workflow
+at a time). When a region has 0 remaining, build its two workbooks: `python batches/staging/_build_region.py
+<region> <STAMP>` (STAMP = `TZ=America/New_York date +%Y%m%d_%H%M_ET`). After all 6 regions reverified +
+built: grep the staging tree for `gem.wiki`/`globalenergymonitor.org` → must be 0 in ref/url fields; then
+commit/push/merge to main (user's standing go-ahead, 2026-06-04).
+
+**AUTO-RESUME ON SESSION LIMIT (autonomous — no user nudge needed):** when a re-verify workflow result
+contains `session limit` / `resets <time>`, do NOT stop and wait. Instead:
+1. `python batches/staging/_reverify_state.py --reset "<time from the message>"` → emits `CRON: M H DOM MON *`
+   (reset + 3 min buffer, America/New_York).
+2. `CronCreate({cron: "<that>", recurring: false, durable: true, prompt: <RESUME PROMPT below>})` — one-shot,
+   survives session restart. Record the job id + reset time in the run-log below, then end the turn.
+3. The cron fires just after reset and re-enters the sweep. If still limited, the prompt re-schedules itself
+   (self-healing). Local workbook builds use no agents, so do those immediately even while limited.
+
+**RESUME PROMPT (verbatim — enqueue this as the cron prompt):**
+> [AUTO-RESUME] Continue the LNG re-verify sweep autonomously. Run `python batches/staging/_reverify_state.py`
+> for remaining marker-less slugs + NEXT_REGION. Dispatch NEXT_REGION's `/tmp/reverify_args_<region>_remaining.json`
+> via Workflow `batches/staging/_resweep_reverify_wf.js` (ONE workflow at a time). When a region has 0 remaining,
+> build its two workbooks with `python batches/staging/_build_region.py <region> <STAMP>`. Repeat down
+> europe→africa→americas→asia→middleeast→oceania. After all 6 are reverified+built, grep the staging tree for
+> `gem.wiki`/`globalenergymonitor.org` (must be 0 in URL fields) and commit/push/merge to main (standing
+> go-ahead). If any workflow returns `session limit`/`resets <time>`, run `_reverify_state.py --reset "<time>"`
+> and CronCreate a new one-shot durable resume at the emitted CRON, then stop. Full state: this file's RE-VERIFY section.
+
+| Region | Reverify status | Rebuilt workbooks |
+|---|---|---|
+| europe | ✅ DONE 27/27 (limit cleared same-day, resumed clean) | `…_2109_ET_europe_update.xlsx` · `…_2109_ET_europe_discovery.xlsx` (recalc OK; 0 gem.wiki URLs; README lists all 28 checked) |
+| africa | ✅ DONE 22/22 | `…_2109_ET_africa_update.xlsx` · `…_2109_ET_africa_discovery.xlsx` (recalc OK; 0 gem.wiki URLs; README lists all 25 checked) |
+| americas | ✅ DONE 30/30 | `…_2108_ET_americas_update.xlsx` · `…_2108_ET_americas_discovery.xlsx` (recalc OK; 0 gem.wiki URLs; README lists all 25 checked incl. US; canada_1_east purged 15 gem.wiki cites, 13 lifecycle-year refs blanked) |
+
+**README roster fix (2026-06-04 ~21:08):** the "Countries checked" README list was built only from staged records that carry a `country` field, so a country whose only output was a country-less discovery `qa` note (e.g. **United States** — Rio Grande T6/Plaquemines/Galveston/San Juan routing notes) or a clean no-findings run was silently omitted (americas disc showed 21, should be 25). Fixed permanently: `build_review_package.py` now takes `--checked-roster` (a JSON list unioned into `checked`), and `_build_region.py` generates it from the per-country done-markers (`*.disc.done.json` for discovery, non-disc `*.done.json` for update). europe/africa/americas rebuilt with the fix; asia/middleeast/oceania get it natively.
+| asia | ✅ DONE 28/28 | `…_2114_ET_asia_update.xlsx` · `…_2114_ET_asia_discovery.xlsx` (recalc OK; 0 gem.wiki URLs; README roster fix) |
+| middleeast | ✅ DONE 11/11 (limit cleared early again; resumed live, cron `3d23c633` deleted) | `…_2124_ET_middleeast_update.xlsx` · `…_2124_ET_middleeast_discovery.xlsx` (recalc OK; 0 gem.wiki URLs; README lists all 12 checked) |
+| oceania | ✅ DONE 7/7 | `…_2129_ET_oceania_update.xlsx` · `…_2129_ET_oceania_discovery.xlsx` (recalc OK; 0 gem.wiki URLs; README lists all 4 checked) |
+
+**Limit hit + auto-resume armed (2026-06-04 21:16 ET):** middleeast re-verify fully clipped (0 markers). Reset 1am ET. One-shot cron `3d23c633` (`3 1 5 6 *`) scheduled to auto-resume at 01:03 ET → middleeast then oceania → builds → tree-wide gem.wiki grep → commit/push/merge. **Caveat:** cron is SESSION-ONLY (durable flag not honored this build) — fires only if Claude Code stays open AND the Mac stays awake. If the session dies, resume is still deterministic: `python batches/staging/_reverify_state.py` → dispatch NEXT_REGION's remaining slugs.
+
+---
+
 ## ✅ RE-SWEEP 2026-06-03/04 — standard update + tracker-only discovery — COMPLETE (all 6 regions, 12 workbooks)
 
 Supersedes the completed morning sweep below (its 1241/1258 workbooks + per-country JSONs; JSONs

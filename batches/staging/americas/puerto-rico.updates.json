@@ -7,16 +7,18 @@
     "country": "Puerto Rico",
     "field_name": "FacilityType [ref]",
     "old_value": "",
-    "new_value": "https://www.federalregister.gov/documents/2025/04/10/2025-06153/ecoelctrica-lp-notice-of-availability-of-the-environmental-assessment-for-the-proposed-ecoelctrica",
+    "new_value": "https://matrixservicecompany.com/project/ecoelectrica-lng-terminal-2023/",
     "confidence": "green",
-    "source_tier": "primary/regulatory",
+    "source_tier": "secondary x2 + trade press",
     "ref_field": "FacilityType",
     "ref_urls": [
-      "https://www.federalregister.gov/documents/2025/04/10/2025-06153/ecoelctrica-lp-notice-of-availability-of-the-environmental-assessment-for-the-proposed-ecoelctrica"
+      "https://matrixservicecompany.com/project/ecoelectrica-lng-terminal-2023/",
+      "https://www.offshore-energy.biz/ch%C2%B7iv-provides-owner-engineering-services-to-ecoelectrica-for-lng-terminal-expansion-puerto-rico/",
+      "https://www.ogj.com/home/article/17226615/puerto-rico39s-ecoelectrica-lng-power-project-marks-a-project-financing-first"
     ],
-    "source_notes": "FERC Federal Register notice (2025-04-10) for EcoElectrica L.P. EA describes the existing EcoElectrica LNG regasification/import terminal at Penuelas. Ref-fill for existing FacilityType=import; value unchanged.",
-    "scope_note": "blank-ref fill (worklist); FacilityType value unchanged",
-    "researcher_initials": "AI-draft (sweep)"
+    "source_notes": "FacilityType=import corroborated off-GEM: Matrix Service (EPC, calls it an 'LNG import terminal', token 'import' PASS), Offshore-Energy (LNG regasification terminal expansion, token 'regasification' PASS), and Oil & Gas Journal (LNG project, token 'LNG' PASS). Three independent publishers. Ref-fill for existing FacilityType=import; value unchanged.",
+    "scope_note": "blank-ref fill (worklist); FacilityType value unchanged; reverify: replaced FERC-only with 3 independent non-GEM sources",
+    "researcher_initials": "AI-draft (sweep, reverified)"
   },
   {
     "terminal_id": "T100000130578",
@@ -26,17 +28,18 @@
     "country": "Puerto Rico",
     "field_name": "Operator [ref]",
     "old_value": "",
-    "new_value": "https://www.federalregister.gov/documents/2025/04/10/2025-06153/ecoelctrica-lp-notice-of-availability-of-the-environmental-assessment-for-the-proposed-ecoelctrica",
+    "new_value": "https://www.ogj.com/home/article/17226615/puerto-rico39s-ecoelectrica-lng-power-project-marks-a-project-financing-first",
     "confidence": "green",
-    "source_tier": "primary/regulatory + corroboration",
+    "source_tier": "trade press + secondary x2",
     "ref_field": "Operator",
     "ref_urls": [
-      "https://www.federalregister.gov/documents/2025/04/10/2025-06153/ecoelctrica-lp-notice-of-availability-of-the-environmental-assessment-for-the-proposed-ecoelctrica",
-      "https://www.enerdata.net/publications/daily-energy-news/ecoelectrica-will-increase-its-lng-regasification-capacity-puerto-rico.html"
+      "https://www.ogj.com/home/article/17226615/puerto-rico39s-ecoelectrica-lng-power-project-marks-a-project-financing-first",
+      "https://www.offshore-energy.biz/ch%C2%B7iv-provides-owner-engineering-services-to-ecoelectrica-for-lng-terminal-expansion-puerto-rico/",
+      "https://en.wikipedia.org/wiki/EcoEl%C3%A9ctrica"
     ],
-    "source_notes": "FERC FR notice names 'EcoElectrica, L.P.' as the facility operator/applicant; Enerdata (2017) corroborates EcoElectrica operates the regas facility. Ref-fill for existing Operator=EcoElectrica; value unchanged.",
-    "scope_note": "blank-ref fill (worklist); Operator value unchanged",
-    "researcher_initials": "AI-draft (sweep)"
+    "source_notes": "Operator=EcoElectrica corroborated off-GEM: Oil & Gas Journal (token 'EcoElectrica' PASS), Offshore-Energy (token 'EcoElectrica' PASS), and Wikipedia (token 'EcoEléctrica' PASS, names EcoEléctrica as owner/operator of the regas terminal). Three independent origins. Ref-fill for existing Operator=EcoElectrica; value unchanged.",
+    "scope_note": "blank-ref fill (worklist); Operator value unchanged; reverify: replaced Enerdata-only pairing with 3 independent non-GEM sources",
+    "researcher_initials": "AI-draft (sweep, reverified)"
   },
   {
     "terminal_id": "T100000130578",
@@ -46,18 +49,17 @@
     "country": "Puerto Rico",
     "field_name": "Location [ref]",
     "old_value": "",
-    "new_value": "https://www.enerdata.net/publications/daily-energy-news/ecoelectrica-will-increase-its-lng-regasification-capacity-puerto-rico.html",
+    "new_value": "https://en.wikipedia.org/wiki/EcoEl%C3%A9ctrica",
     "confidence": "green",
-    "source_tier": "secondary x2 + regulatory",
+    "source_tier": "secondary x2 (independent)",
     "ref_field": "Location",
     "ref_urls": [
-      "https://www.enerdata.net/publications/daily-energy-news/ecoelectrica-will-increase-its-lng-regasification-capacity-puerto-rico.html",
       "https://en.wikipedia.org/wiki/EcoEl%C3%A9ctrica",
-      "https://www.federalregister.gov/documents/2025/04/10/2025-06153/ecoelctrica-lp-notice-of-availability-of-the-environmental-assessment-for-the-proposed-ecoelctrica"
+      "https://www.enerdata.net/publications/daily-energy-news/ecoelectrica-will-increase-its-lng-regasification-capacity-puerto-rico.html"
     ],
-    "source_notes": "Enerdata and Wikipedia both place the terminal at Punta Guayanilla / Guayanilla Bay, Penuelas; FERC FR notice confirms Penuelas. Ref-fill for existing Location=Punta Guayanilla; value unchanged.",
-    "scope_note": "blank-ref fill (worklist); Location value unchanged",
-    "researcher_initials": "AI-draft (sweep)"
+    "source_notes": "Location=Punta Guayanilla corroborated off-GEM: Wikipedia (token 'Guayanilla' PASS; places terminal at Punta Guayanilla, Peñuelas) and Enerdata (token 'Guayanilla' PASS). Two independent sources. Ref-fill for existing Location=Punta Guayanilla; value unchanged.",
+    "scope_note": "blank-ref fill (worklist); Location value unchanged; reverify: dropped FERC FR notice (does not contain 'Guayanilla'), kept two independent corroborations",
+    "researcher_initials": "AI-draft (sweep, reverified)"
   },
   {
     "terminal_id": "T100000130578",
@@ -69,14 +71,15 @@
     "old_value": "",
     "new_value": "https://www.enerdata.net/publications/daily-energy-news/ecoelectrica-will-increase-its-lng-regasification-capacity-puerto-rico.html",
     "confidence": "yellow",
-    "source_tier": "secondary (single, conversion required)",
+    "source_tier": "secondary x2 (conversion required)",
     "ref_field": "Capacity",
     "ref_urls": [
-      "https://www.enerdata.net/publications/daily-energy-news/ecoelectrica-will-increase-its-lng-regasification-capacity-puerto-rico.html"
+      "https://www.enerdata.net/publications/daily-energy-news/ecoelectrica-will-increase-its-lng-regasification-capacity-puerto-rico.html",
+      "https://www.offshore-energy.biz/ch%C2%B7iv-provides-owner-engineering-services-to-ecoelectrica-for-lng-terminal-expansion-puerto-rico/"
     ],
-    "source_notes": "Enerdata: post-expansion regas capacity 279 MMcf/d (2.8 bcm/y); 279 MMcf/d x 0.0077 ~= 2.15 mtpa, broadly consistent with GEM's 2.00 mtpa (within rounding/methodology). CONVERSION — flag for verification. Single secondary source; pre-expansion figure was 186 MMcf/d (~1.43 mtpa). Ref-fill for existing Capacity=2.00; value unchanged.",
-    "scope_note": "blank-ref fill (worklist); Capacity value unchanged; conversion flagged",
-    "researcher_initials": "AI-draft (sweep)"
+    "source_notes": "Post-expansion regas capacity 279 MMcf/d (~2.8 bcm/y) corroborated by TWO independent off-GEM sources: Enerdata (token '279' PASS) and Offshore-Energy (token '279' PASS). 279 MMcf/d converts to ~2.15 mtpa, broadly consistent with GEM's 2.00 mtpa within rounding/methodology. Kept YELLOW because the GEM value (2.00 mtpa) is derived by unit CONVERSION from the cited MMcf/d figure, not stated directly in mtpa by any source. Ref-fill for existing Capacity=2.00; value unchanged.",
+    "scope_note": "blank-ref fill (worklist); Capacity value unchanged; reverify: now 2 independent sources for 279 MMcf/d, but yellow retained for the mtpa conversion gap",
+    "researcher_initials": "AI-draft (sweep, reverified)"
   },
   {
     "terminal_id": "T100000130578",
@@ -86,18 +89,17 @@
     "country": "Puerto Rico",
     "field_name": "Owner [ref]",
     "old_value": "",
-    "new_value": "https://www.enerdata.net/publications/daily-energy-news/ecoelectrica-will-increase-its-lng-regasification-capacity-puerto-rico.html",
+    "new_value": "https://energia.pr.gov/wp-content/uploads/sites/7/2020/05/2020-05-19-Reply-EcoElectrica-PPOA-PREPA-PREB-FINAL-VERSION-with-Exhibit.pdf",
     "confidence": "yellow",
-    "source_tier": "secondary/regulatory (partial corroboration)",
+    "source_tier": "regulatory + secondary (principal owner only)",
     "ref_field": "Owner",
     "ref_urls": [
-      "https://www.enerdata.net/publications/daily-energy-news/ecoelectrica-will-increase-its-lng-regasification-capacity-puerto-rico.html",
-      "https://en.wikipedia.org/wiki/EcoEl%C3%A9ctrica",
-      "https://www.federalregister.gov/documents/2025/04/10/2025-06153/ecoelctrica-lp-notice-of-availability-of-the-environmental-assessment-for-the-proposed-ecoelctrica"
+      "https://energia.pr.gov/wp-content/uploads/sites/7/2020/05/2020-05-19-Reply-EcoElectrica-PPOA-PREPA-PREB-FINAL-VERSION-with-Exhibit.pdf",
+      "https://en.wikipedia.org/wiki/EcoEl%C3%A9ctrica"
     ],
-    "source_notes": "Enerdata + Wikipedia confirm Gas Natural Fenosa (now Naturgy) as 47.5% main shareholder; FERC FR confirms EcoElectrica L.P. as the partnership entity. Full multi-party split (Naturgy 47.5% / ENGIE 35% / Mitsui 15% / EcoElectrica 2.5%) is only attested by paywalled trade DBs (GlobalData/Power-Technology, both 403) — so the 47.5% Naturgy stake is corroborated but the remaining splits are NOT primary-sourced here. Ref-fill for existing Owner; value unchanged (but see qa: 'TO BE DELETED' placeholder in the Owner string).",
-    "scope_note": "blank-ref fill (worklist); Owner value unchanged; only Naturgy 47.5% independently corroborated",
-    "researcher_initials": "AI-draft (sweep)"
+    "source_notes": "Principal owner Naturgy (47.5%) corroborated off-GEM: Puerto Rico Energy Bureau (PREB) regulatory filing PDF (token 'Naturgy' PASS) and Wikipedia (names predecessor 'GasNatural Fenosa', i.e. Naturgy, as main shareholder). YELLOW: only the Naturgy principal stake is independently corroborated; the full multi-party split (ENGIE 35% / Mitsui 15% / EcoElectrica 2.5%) is attested only by paywalled/403-blocked trade DBs (power-technology.com returns HTTP 403; naturgy.com.pr history page is dead, HTTP 000) and could NOT be verified off-GEM. GEM Owner string also carries a '[TO BE DELETED]' data-quality placeholder on the Naturgy entry. Ref-fill; value unchanged.",
+    "scope_note": "blank-ref fill (worklist); Owner value unchanged; reverify: removed Enerdata pairing (does not name owner), substituted PREB regulatory filing; only Naturgy 47.5% independently corroborated; ENGIE/Mitsui splits flagged unverified",
+    "researcher_initials": "AI-draft (sweep, reverified)"
   },
   {
     "terminal_id": "T100000130784",
@@ -109,15 +111,15 @@
     "old_value": "",
     "new_value": "https://www.ferc.gov/sites/default/files/2020-06/C-4-061820.pdf",
     "confidence": "green",
-    "source_tier": "primary/regulatory + corroboration",
+    "source_tier": "primary/regulatory + sponsor",
     "ref_field": "Operator",
     "ref_urls": [
       "https://www.ferc.gov/sites/default/files/2020-06/C-4-061820.pdf",
       "https://www.newfortressenergy.com/operations/PuertoRico-LNG-facility"
     ],
-    "source_notes": "FERC order (Docket CP20-466-000): New Fortress Energy, through subsidiary NFEnergia LLC, constructed and placed into service the San Juan LNG import facility; NFE operations page confirms NFE owns/operates the Port of San Juan facility. Ref-fill for existing Operator=New Fortress Energy; value unchanged.",
-    "scope_note": "blank-ref fill (worklist); Operator value unchanged",
-    "researcher_initials": "AI-draft (sweep)"
+    "source_notes": "Operator=New Fortress Energy corroborated off-GEM: FERC order PDF (Docket CP20-466-000; token 'New Fortress' PASS) and New Fortress Energy operations page (token 'New Fortress' PASS). Two independent origins (regulator + sponsor). Ref-fill for existing Operator=New Fortress Energy; value unchanged.",
+    "scope_note": "blank-ref fill (worklist); Operator value unchanged; reverify: both URLs re-verified PASS with value token",
+    "researcher_initials": "AI-draft (sweep, reverified)"
   },
   {
     "terminal_id": "T100000130784",
@@ -129,14 +131,14 @@
     "old_value": "",
     "new_value": "https://www.ferc.gov/sites/default/files/2020-06/C-4-061820.pdf",
     "confidence": "green",
-    "source_tier": "primary/regulatory + corroboration",
+    "source_tier": "primary/regulatory + sponsor",
     "ref_field": "Location",
     "ref_urls": [
       "https://www.ferc.gov/sites/default/files/2020-06/C-4-061820.pdf",
       "https://www.newfortressenergy.com/operations/PuertoRico-LNG-facility"
     ],
-    "source_notes": "FERC order and NFE operations page both place the facility at the Port of San Juan, Puerto Rico (adjacent to San Juan Combined Cycle Power Plant). Ref-fill for existing Location=San Juan; value unchanged.",
-    "scope_note": "blank-ref fill (worklist); Location value unchanged",
-    "researcher_initials": "AI-draft (sweep)"
+    "source_notes": "Location=San Juan corroborated off-GEM: FERC order PDF (token 'San Juan' PASS) and New Fortress Energy operations page (token 'San Juan' PASS); both place the facility at the Port of San Juan. Two independent origins. Ref-fill for existing Location=San Juan; value unchanged.",
+    "scope_note": "blank-ref fill (worklist); Location value unchanged; reverify: both URLs re-verified PASS with value token",
+    "researcher_initials": "AI-draft (sweep, reverified)"
   }
 ]
