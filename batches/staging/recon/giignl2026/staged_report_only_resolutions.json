@@ -6,20 +6,13 @@
     "resolution": "name_mismatch",
     "gem_terminal_id": "T100000130927",
     "gem_terminal_name": "Cosan FSRU",
-    "suggested_othernames": ["Terminal de Regaseificação de São Paulo (TRSP), Santos", "TRSP", "Santos FSRU"],
+    "suggested_othernames": [
+      "Terminal de Regaseificação de São Paulo (TRSP), Santos",
+      "TRSP",
+      "Santos FSRU"
+    ],
     "confidence": "high",
-    "basis": "Same terminal: 3.7 MTPA both; Santos/São Paulo; FSRU fleet table p.43 lists vessel 'Höegh Giant' deployed at Santos, Brazil — GEM Cosan FSRU carries 'Höegh Giant'. GIIGNL just names the terminal by its regulatory name (TRSP)."
-  },
-  {
-    "report_site_name": "Caofeidian (Tangshan), Hebei",
-    "country": "China",
-    "section_type": "regasification",
-    "resolution": "name_mismatch",
-    "gem_terminal_id": "T100000130409",
-    "gem_terminal_name": "Tangshan LNG Terminal (PetroChina)",
-    "suggested_othernames": ["Caofeidian (Tangshan)", "Caofeidian LNG Terminal", "Caofeidian, Hebei"],
-    "confidence": "high",
-    "basis": "Same terminal: 10.0 MTPA both. GIIGNL owner cell 'Gas Blue Sky Holdings, Hebei Natural Gas' = the PetroChina Jingtang terminal's minority shareholders (PetroChina Jingtang 51%, Beijing Gas Blue Sky 29%, Hebei Natural Gas). The PetroChina terminal sits at Caofeidian port. (Distinct from the Xintian/Suntien terminal also at Caofeidian — see Suntien resolution.)"
+    "basis": "Same terminal: 3.7 MTPA both; Santos/São Paulo. GIIGNL FSRU fleet table (p.43) lists vessel 'Höegh Giant' (sendout 3.7) deployed at Santos, Brazil; GEM Cosan FSRU (operating) carries FloatingVesselName 'Höegh Giant'. GIIGNL names it by the regulatory name (TRSP); GEM by operator Cosan."
   },
   {
     "report_site_name": "GDLNG",
@@ -28,9 +21,11 @@
     "resolution": "name_mismatch",
     "gem_terminal_id": "T100000130384",
     "gem_terminal_name": "Guangdong Dapeng LNG Terminal",
-    "suggested_othernames": ["GDLNG"],
+    "suggested_othernames": [
+      "GDLNG"
+    ],
     "confidence": "high",
-    "basis": "GDLNG = Guangdong Dapeng LNG (the acronym). China regas; GIIGNL owners (Guangdong Energy, Shenzhen Energy, HK & China Gas, HK Electric, Foshan Gas, Guangzhou Gas) are the Dapeng shareholders. Web search confirms GDLNG stands for Guangdong Dapeng LNG."
+    "basis": "GDLNG is the standard acronym for Guangdong Dapeng LNG. China regas; GIIGNL owner cell (Guangdong Energy Group, Shenzhen Energy, HK & China Gas, HK Electric, Guangzhou Gas) are the Dapeng shareholders. GEM Phase 1 unit is operating at 7.7 MTPA vs GIIGNL 6.8 — same operating terminal (capacity delta routes to Update, not a separate facility)."
   },
   {
     "report_site_name": "Suntien, Tangshan",
@@ -39,9 +34,27 @@
     "resolution": "name_mismatch",
     "gem_terminal_id": "T100000130811",
     "gem_terminal_name": "Tangshan LNG Terminal (Xintian)",
-    "suggested_othernames": ["Suntien, Tangshan", "Suntien", "Suntien LNG Terminal"],
+    "suggested_othernames": [
+      "Suntien, Tangshan",
+      "Suntien",
+      "Suntien LNG Terminal"
+    ],
     "confidence": "high",
-    "basis": "Same terminal: 5.0 MTPA both. 'Suntien' = China Suntien Green Energy = 新天 = GEM's 'Xintian'; owner Hebei Construction & Investment Group is Suntien/Xintian's parent (controls Caofeidian Xintian LNG 51%). Phase 1 operational 2022."
+    "basis": "Same terminal: 5.0 MTPA both. 'Suntien' = China Suntien Green Energy = 新天 = GEM's 'Xintian'; GEM owner 'Caofeidian Xintian LNG Co Ltd' at Tangshan/Caofeidian. GIIGNL owners (China Suntien Green Energy, Hebei Construction & Investment Group — Suntien/Xintian parent group) align. Distinct from the PetroChina Tangshan terminal (T...130409)."
+  },
+  {
+    "report_site_name": "Zhuangyuanao",
+    "country": "China",
+    "section_type": "regasification",
+    "resolution": "name_mismatch",
+    "gem_terminal_id": "T100000130958",
+    "gem_terminal_name": "Wenzhou Huagang LNG Terminal",
+    "suggested_othernames": [
+      "Zhuangyuanao",
+      "Wenzhou Huafon"
+    ],
+    "confidence": "medium",
+    "basis": "Discovery pass alias-check matched this to the existing GEM Wenzhou Huagang LNG Terminal (Huafon/Huafeng parent, Wenzhou/Zhuangyuanao site) — NOT a new terminal. Capacity/owner deltas route to Update."
   },
   {
     "report_site_name": "Oristano, Sardinia",
@@ -50,9 +63,26 @@
     "resolution": "name_mismatch",
     "gem_terminal_id": "T100000130724",
     "gem_terminal_name": "HIGAS LNG Terminal",
-    "suggested_othernames": ["Oristano, Sardinia", "Oristano"],
+    "suggested_othernames": [
+      "Oristano, Sardinia",
+      "Oristano"
+    ],
     "confidence": "high",
-    "basis": "Same terminal: 0.2 MTPA both; GIIGNL owner cell names 'HiGas: Avenir LNG'. HiGas operates the small-scale FSU terminal at Oristano (Santa Giusta), Sardinia."
+    "basis": "Same terminal: 0.2 MTPA both, operating. GIIGNL owner cell names 'HiGas: Avenir LNG'; GEM owner 'HIGAS' parent 'Avenir LNG'. GEM OtherNames already carries 'Santa Giusta LNG Terminal' — the small-scale terminal at Oristano (Santa Giusta), Sardinia. Oristano is the location alias."
+  },
+  {
+    "report_site_name": "Minato",
+    "country": "Japan",
+    "section_type": "regasification",
+    "resolution": "name_mismatch",
+    "gem_terminal_id": "T100000130875",
+    "gem_terminal_name": "Sendai LNG Terminal",
+    "suggested_othernames": [
+      "Minato",
+      "Minato Works LNG Terminal"
+    ],
+    "confidence": "high",
+    "basis": "Owner match exact: GIIGNL owner 'City of Sendai Gas Bureau' = GEM owner 'City of Sendai Gas Bureau' (parent same); both operating. 'Minato' is the Sendai Gas Bureau's LNG pier/Minato Works in the Port of Sendai (Sendai-Shiogama, Minato ward) — confirmed via MLIT/port records. Capacity 0.3 in GIIGNL; GEM capacity blank (route to Update to fill)."
   },
   {
     "report_site_name": "Thanlyin, Yangoon",
@@ -61,9 +91,12 @@
     "resolution": "name_mismatch",
     "gem_terminal_id": "T100000130882",
     "gem_terminal_name": "MCV LNG Terminal",
-    "suggested_othernames": ["Thanlyin, Yangon", "Thanlyin"],
-    "confidence": "medium",
-    "basis": "Owner CNTIC VPower (GIIGNL 'CNTIC VPower / VPower Global / China National Technical Import Corp') matches GEM MCV LNG Terminal (owner CNTIC VPower). The MCV LNG-to-power terminal is at Thanlyin/Thaketa, Yangon. NOTE status conflict: GEM has it MOTHBALLED, GIIGNL 2026 lists it operating (0.5) — route to Update to verify."
+    "suggested_othernames": [
+      "Thanlyin, Yangon",
+      "Thanlyin"
+    ],
+    "confidence": "high",
+    "basis": "Owner + vessel match: GIIGNL owners (CNTIC VPower / VPower Global / China National Technical Import Corp) = GEM owner 'CNTIC VPower'; GIIGNL report_vessel 'CNTIC Vpower Energy' = the FSU used at this LNG-to-power terminal. GEM OtherNames 'Thilawa LNG'; facility is at Thaketa/Thanlyin, Yangon (confirmed via Myanma Port Authority). STATUS CONFLICT: GEM mothballed (FSU left Myanmar Mar-2023), GIIGNL 2026 lists operating (0.5) — route to Update to verify, do not auto-apply."
   },
   {
     "report_site_name": "Kaliningrad",
@@ -72,19 +105,8 @@
     "resolution": "name_mismatch",
     "gem_terminal_id": "T100000130831",
     "gem_terminal_name": "Marshal Vasilevskiy FSRU",
-    "suggested_othernames": ["Kaliningrad"],
-    "confidence": "high",
-    "basis": "Same terminal: owner Gazprom; 2.0 MTPA; FSRU fleet table p.43 lists vessel 'Marshal Vasilevskiy' (Gazprom) deployed at Kaliningrad, Russia — GEM 'Marshal Vasilevskiy FSRU'. NOTE status conflict: GEM has it IDLED, GIIGNL 2026 lists it operating — route to Update to verify."
-  },
-  {
-    "report_site_name": "Zhuangyuanao",
-    "country": "China",
-    "section_type": "regasification",
-    "resolution": "discovery",
-    "gem_terminal_id": "",
-    "gem_terminal_name": "",
     "suggested_othernames": [],
-    "confidence": "medium",
-    "basis": "Genuinely not found in GEM. Owner 'Huafon Group' (华峰集团, a Wenzhou-based group), 1.0 MTPA, start 2025, at Zhuangyuanao (状元岙) port, Wenzhou. Distinct from GEM's existing 'Wenzhou Huagang' (Huagang Petrochemical) and 'Wenzhou' (Zheneng) terminals — different owner. Route to Discovery; verify it isn't an expansion of an existing Wenzhou terminal before adding."
+    "confidence": "high",
+    "basis": "Same terminal: owner Gazprom (GEM Gazprom Flot / Gazprom PJSC). GIIGNL FSRU fleet table (p.43) lists vessel 'Marshal Vasilevskiy' (Gazprom, 2.0 sendout) deployed at Kaliningrad, Russia; GEM 'Marshal Vasilevskiy FSRU' carries FloatingVesselName 'Marshal Vasilevskiy' and OtherNames 'Kaliningrad FSRU'. STATUS CONFLICT: GEM idled, GIIGNL 2026 lists operating — route to Update to verify."
   }
 ]

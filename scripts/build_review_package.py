@@ -197,7 +197,9 @@ SHEET_DESCRIPTIONS = {
     "giignl_diff_operating": (
         "OPERATING match audit: GEM operating capacity vs GIIGNL's (operating-only) "
         "liq/regas tables. match_type is 'exact', 'exact_via_alias' (via GEM "
-        "OtherNames — `matched_alias` shows which), or 'fuzzy' (medium confidence). "
+        "OtherNames — `matched_alias` shows which), 'fuzzy' (medium confidence), or "
+        "'override' (agent-pinned in staged_match_overrides.json to correct a wrong "
+        "same-token exact match — `match_override` shows the basis). "
         "match_granularity is 'unit' when GIIGNL rows aligned 1:1 to GEM unit names "
         "(GIIGNL 'Arzew GL1Z' ⊃ GEM unit 'GL1Z') or 'project' when only the project "
         "total is comparable (e.g. Taichung, whose GIIGNL phase rows don't map to "
@@ -231,7 +233,15 @@ SHEET_DESCRIPTIONS = {
         "reasoning inline without opening the unit. `insight` + `suggested_resolution` "
         "(cols B, C) translate each flagged row for a human: `insight` says in plain "
         "language what the disagreement IS; `suggested_resolution` says whether GEM or "
-        "GIIGNL 2026 is likely more accurate and the action. Deterministic verdicts — "
+        "GIIGNL 2026 is likely more accurate and the action. Three copy/paste columns "
+        "(`action`, `gem_field`, `paste_value`, cols D-F) distill that verdict into a "
+        "crisp imperative (e.g. 'Replace capacity'), the GEM DB column to edit "
+        "(CapacityinMtpa / Status / Owner), and a paste-ready value when the rule "
+        "settled on one (the GIIGNL 2026 figure for an edition-supersede) — blank for "
+        "research/verify verdicts, where the value lives in suggested_resolution. A "
+        "researched staged verdict drives these too (action='Apply researched verdict', "
+        "field from its `facet`); 'No action…' verdicts → 'No change — keep GEM value'. "
+        "Deterministic verdicts — "
         "(a) GEM capacity is itself sourced from an older GIIGNL edition (parsed from "
         "the capacity_ref URL, carried as `gem_capacity_source` in the diff) and GIIGNL "
         "is its SOLE source → 'replace with GIIGNL 2026'; (b) status-lag (op=0) → 'GEM "
@@ -287,6 +297,8 @@ SHEET_DESCRIPTIONS = {
         "Workflow routing: per-finding action recommendations. Categories: "
         "report_only_potential_discovery (GIIGNL has it, GEM doesn't → Discovery), "
         "gem_only_operating (GEM operating not in GIIGNL → Update verify), "
+        "gem_only_in_fsru_fleet (GEM FSRU absent from the country regas tables but "
+        "present in GIIGNL's FSRU fleet table → no action, confirm vs fleet sheet), "
         "ambiguous_disambiguate (multiple GEM candidates), and "
         "matched_with_disagreement (GIIGNL ≠ GEM on a field → Update via normal "
         "source search; do NOT auto-apply GIIGNL values per SOP §3.8). Also carries "
@@ -297,7 +309,20 @@ SHEET_DESCRIPTIONS = {
         "Argentina SESA FLNG), narrative_monitor (below add-threshold — Tomakomai), "
         "and narrative_confirm_already_tracked (blue — prose mentions GEM already "
         "tracks; confidence bump only). The notes column carries the verified "
-        "non-GIIGNL CITES: citation for each (prose is never auto-applied, §3.8)."
+        "non-GIIGNL CITES: citation for each (prose is never auto-applied, §3.8). "
+        "Four copy/paste columns (`action`, `gem_field`, `paste_value`, "
+        "`corroborated_refs`) sit before `recommended_workflow` (now the 'why' "
+        "detail): `action` is the crisp verb ('Add OtherNames alias (append)', "
+        "'Investigate — possible new terminal', 'Verify status change'), `gem_field` "
+        "the GEM DB column to touch (OtherNames / Status / Owner, blank when the "
+        "action is investigate/disambiguate), `paste_value` the value to paste when "
+        "there is one (the alias to append, a prose-confirmed status, a former name) "
+        "— always a candidate, never auto-applied — and `corroborated_refs` the "
+        "url_verifier-passed corroborating URLs (`; `-joined) for the [ref] column: "
+        "the narrative finding's `sources` for prose rows (and its owner/name "
+        "deltas), and the pooled staged_recon_verdicts.json `sources` for "
+        "matched_with_disagreement rows. Blank where no external URL applies "
+        "(report_only/gem_only/ambiguous routing rows)."
     ),
     "candidate_edits": (
         "Reconciliation deliverable in GEM-CSV shape: one row per GEM unit-row "
@@ -360,12 +385,16 @@ SHEET_DESCRIPTIONS = {
     "country_notes_contributions": (
         "Drafted additions to GEM's country-resource Google doc — research "
         "patterns, regulator URLs, country-specific gotchas worth preserving. "
-        "User manually copies these into the GEM doc."
+        "User manually copies these into the GEM doc. When a note IS a concrete "
+        "DB edit (an auto-drafted OtherNames alias addition), `gem_field` + "
+        "`paste_value` carry the column and the value to paste; blank for prose-only notes."
     ),
     "qa_review": (
         "Per-cell quality-assurance items: defects, conflicts, citations needing "
         "verification, negative-result log entries. severity column color-coded "
-        "(red=high, yellow=medium)."
+        "(red=high, yellow=medium). `suggested_action` is the prose recommendation; "
+        "the optional `gem_field` + `paste_value` columns carry a concrete edit "
+        "(GEM column + value to paste) when the item resolves to one, blank otherwise."
     ),
     "wiki_updates": (
         "Narrative / Background content that does NOT map to a structured DB "
@@ -544,6 +573,23 @@ def _tid_country_map(gem_csv_path):
                 tid = (row.get("TerminalID") or "").strip()
                 if tid:
                     m[tid] = (row.get("Country/Area") or "").strip()
+    except (FileNotFoundError, OSError):
+        pass
+    return m
+
+
+def _tid_othernames_map(gem_csv_path):
+    """TerminalID -> existing OtherNames cell from the GEM export. Used to filter
+    suggested OtherNames aliases against what GEM already carries (see
+    _useful_othernames) so we never propose a substring of an existing alias."""
+    import csv as _csv
+    m = {}
+    try:
+        with open(gem_csv_path, encoding="utf-8-sig", newline="") as f:
+            for row in _csv.DictReader(f):
+                tid = (row.get("TerminalID") or "").strip()
+                if tid:
+                    m[tid] = (row.get("OtherNames") or "").strip()
     except (FileNotFoundError, OSError):
         pass
     return m
@@ -1003,6 +1049,28 @@ def _norm_term_name(s):
     return re.sub(r"\s+", " ", s).strip()
 
 
+def _useful_othernames(res, existing_othernames=""):
+    """Filter a resolution's suggested_othernames down to aliases worth adding:
+    drop any candidate already findable (case-insensitively) in what GEM already
+    carries — either as a substring of the GEM terminal name ('Guangdong Dapeng
+    LNG' inside 'Guangdong Dapeng LNG Terminal') OR of the existing OtherNames
+    string ('Kaliningrad' inside an existing OtherNames 'Kaliningrad FSRU'). Either
+    way the alias adds zero matching power. Acronyms (GDLNG) and genuinely distinct
+    site/owner variants survive. De-dupes while preserving order. existing_othernames
+    is the GEM record's current OtherNames cell (from the export); pass "" if
+    unknown — the name check still applies."""
+    haystack = ((res.get("gem_terminal_name") or "") + " ; "
+                + (existing_othernames or "")).lower()
+    seen, out = set(), []
+    for alias in (res.get("suggested_othernames") or []):
+        a = (alias or "").strip()
+        if not a or a.lower() in haystack or a.lower() in seen:
+            continue
+        seen.add(a.lower())
+        out.append(a)
+    return out
+
+
 def _narrative_finding_for_unit(unit, narrative_findings):
     """Return the §3.2.1 narrative finding (from giignl_narrative_findings.json)
     whose terminal + section matches this non-operating GEM unit, else None. Used
@@ -1290,6 +1358,7 @@ def build_fsru_fleet_sheet(wb, fleet, gem_csv_path):
 
 GIIGNL_OPERATING_HEADERS = [
     "disagreements", "insight", "suggested_resolution",
+    "action", "gem_field", "paste_value",
     "match_type", "confidence", "match_granularity", "level",
     "country", "site_name", "report_sites_merged",
     "gem_terminal_id", "gem_terminal_name", "gem_unit_name", "matched_alias",
@@ -1331,6 +1400,44 @@ def _operating_zero_note(nonop_units, total_units):
 # light-yellow fill and are the rows the agentic research pass resolves via
 # staged_recon_verdicts.json (which overrides the placeholder at build time).
 _NEEDS_RESEARCH = "NEEDS RESEARCH"
+
+# Maps a staged-verdict `facet` (or a deterministic disagreement facet) to the GEM
+# DB column a reviewer would edit — populates the `gem_field` copy/paste column.
+_FACET_TO_GEM_FIELD = {
+    "capacity": "CapacityinMtpa",
+    "owner": "Owner",
+    "owners": "Owner",
+    "both": "CapacityinMtpa; Owner",  # staged verdicts use "both" for a joint capacity+owner delta
+    "capacity+owner": "CapacityinMtpa; Owner",
+    "status": "Status",
+    "vessel": "FloatingVesselName",
+    "fsru": "FloatingVesselName",
+    "name": "OtherNames",
+}
+
+
+def _combine_edits(edits):
+    """Collapse a list of (action, gem_field, paste_value) facet-edits into the three
+    flat copy/paste cells (action / gem_field / paste_value). Joins multiple facets
+    with '; '. Drops blank fields/values so a no-op facet doesn't litter the cell."""
+    return {
+        "action": "; ".join(a for a, _, _ in edits if a),
+        "gem_field": "; ".join(f for _, f, _ in edits if f),
+        "paste_value": "; ".join(str(v) for _, _, v in edits if v not in (None, "")),
+    }
+
+
+def _edit_from_verdict(v):
+    """Derive the (action, gem_field, paste_value) copy cells from a staged
+    recon verdict. The verdict prose is the detail; here we extract just the crisp
+    action verb + target field. 'No action…' verdicts map to a keep-as-is, anything
+    else to 'Apply researched verdict' on the facet's GEM field (paste_value stays
+    blank — the concrete value lives in the prose, not auto-extracted)."""
+    txt = (v.get("verdict") or "").strip()
+    field = _FACET_TO_GEM_FIELD.get((v.get("facet") or "").lower(), "")
+    if re.match(r"\s*no action", txt, re.I):
+        return _combine_edits([("No change — keep GEM value", "", "")])
+    return _combine_edits([("Apply researched verdict (see suggested_resolution)", field, "")])
 
 # Legal-form suffix tokens stripped before comparing owner names by core tokens.
 _OWNER_LEGAL_SUFFIX = {
@@ -1529,8 +1636,9 @@ def _classify_disagreement(m, suppress_nonop_insight=False):
     Rule spec lives in the giignl_diff_operating SHEET_DESCRIPTIONS entry."""
     dis = m.get("disagreements") or []
     if not dis:
-        return ("", "", False)
+        return ("", "", False, {"action": "", "gem_field": "", "paste_value": ""})
     insight, resolution, needs_research = [], [], False
+    edits = []  # (action, gem_field, paste_value) per settled/flagged facet
     rep, gem = m.get("report_capacity_mtpa"), m.get("gem_capacity_mtpa")
     pct = m.get("capacity_delta_pct")
     src = m.get("gem_capacity_source") or {}
@@ -1548,7 +1656,9 @@ def _classify_disagreement(m, suppress_nonop_insight=False):
         resolution.append(
             "GEM's status is likely the more current (GIIGNL lags retired/idled terminals); "
             "verify the terminal hasn't (re)started operation. No capacity replacement.")
-        return (" ".join(insight), " ".join(resolution), False)
+        return (" ".join(insight), " ".join(resolution), False,
+                _combine_edits([("Verify status (likely GEM is current — no capacity change)",
+                                 "Status", "")]))
 
     # 2. Capacity facet.
     if has_fsru:
@@ -1556,6 +1666,7 @@ def _classify_disagreement(m, suppress_nonop_insight=False):
             "FSRU metric mismatch: GIIGNL reports vessel nameplate regas capacity while GEM "
             "records terminal sendout — different bases, not necessarily a real conflict.")
         resolution.append("Confirm metric basis (nameplate vs sendout); usually no capacity change.")
+        edits.append(("Confirm metric basis (usually no change)", "", ""))
     elif has_cap:
         nonop_fires, gap, expl = _nonop_explains_shortfall(m)
         if nonop_fires and suppress_nonop_insight:
@@ -1567,6 +1678,8 @@ def _classify_disagreement(m, suppress_nonop_insight=False):
                 f"Capacity delta {pct}% (GIIGNL={rep}, GEM={gem}); GEM also has "
                 f"construction/proposed phases at this terminal — see suggested_resolution "
                 f"for the researched determination.")
+            # The researched verdict will supply the action; settle the facet quietly.
+            edits.append(("Verify status — do NOT overwrite capacity", "Status", ""))
         elif nonop_fires:
             # GIIGNL counts forward-phase capacity GEM holds as non-operating. This
             # PRE-EMPTS the edition-supersede rule below: GIIGNL's higher number is
@@ -1600,6 +1713,8 @@ def _classify_disagreement(m, suppress_nonop_insight=False):
                     "a status difference (GIIGNL counts a phase GEM hasn't moved to "
                     "operating). Verify whether those trains have reached commercial "
                     "operation; if so, route a STATUS update, not a capacity overwrite.")
+            edits.append(("Verify status (commercial ops declared?) — do NOT overwrite capacity",
+                          "Status", ""))
             # Settled deterministically (no research placeholder for the capacity facet);
             # fall through so the owner facet still classifies.
         elif years and not has_non and max(years) < 2026:
@@ -1610,10 +1725,13 @@ def _classify_disagreement(m, suppress_nonop_insight=False):
             resolution.append(
                 f"Replace GEM capacity with the GIIGNL 2026 value ({rep} mtpa) — same source, "
                 f"newer edition (delta {pct}%).")
+            edits.append(("Replace capacity (GIIGNL newer edition of same source)",
+                          "CapacityinMtpa", rep))
         elif years and not has_non:
             insight.append(f"Capacity delta {pct}% (GIIGNL={rep}, GEM={gem}); GEM already cites GIIGNL {max(years)}.")
             resolution.append(f"{_NEEDS_RESEARCH}: GEM and GIIGNL cite the same/newer edition yet differ — reconcile.")
             needs_research = True
+            edits.append(("Research — reconcile editions", "CapacityinMtpa", ""))
         elif pct is not None and abs(pct) < CAP_CONFLICT_PCT_THRESHOLD:
             insight.append(
                 f"Small capacity difference of {pct}% (GIIGNL={rep}, GEM={gem}). GIIGNL rounds to "
@@ -1621,6 +1739,7 @@ def _classify_disagreement(m, suppress_nonop_insight=False):
                 "not a real disagreement.")
             resolution.append(
                 "Keep GEM's value as-is. The difference is too small to act on — no change needed.")
+            edits.append(("No change — within GIIGNL rounding", "", ""))
         else:
             srcdesc = ("a non-GIIGNL source" if not years
                        else f"GIIGNL {max(years)} plus a non-GIIGNL source")
@@ -1630,6 +1749,7 @@ def _classify_disagreement(m, suppress_nonop_insight=False):
             resolution.append(
                 f"{_NEEDS_RESEARCH}: verify GIIGNL 2026 against GEM's source and decide which is current.")
             needs_research = True
+            edits.append(("Research — verify which source is current", "CapacityinMtpa", ""))
 
     # 3. Owner facet.
     if has_owner:
@@ -1640,6 +1760,8 @@ def _classify_disagreement(m, suppress_nonop_insight=False):
                 "differ by spelling/legal suffix. This is not an actual change in who owns the terminal.")
             resolution.append(
                 "Keep GEM's owners as-is — no real ownership change here, just a difference in naming.")
+            if not edits:
+                edits.append(("No change — owner naming difference only", "", ""))
         else:
             ro, go = m.get("owners_report_only") or [], m.get("owners_gem_only") or []
             bits = []
@@ -1652,15 +1774,17 @@ def _classify_disagreement(m, suppress_nonop_insight=False):
                 f"{_NEEDS_RESEARCH}: check for a real ownership change (stake sale / new operator); "
                 "run entity_lookup before staging.")
             needs_research = True
+            edits.append(("Research ownership (entity_lookup first) — do NOT auto-apply",
+                          "Owner", ""))
 
-    return (" ".join(insight), " ".join(resolution), needs_research)
+    return (" ".join(insight), " ".join(resolution), needs_research, _combine_edits(edits))
 
 
 def _classify_unit_disagreement(um):
     """(insight, suggested_resolution, needs_research) for a per-unit sub-row. Uses the
     unit's own capacity_ref for the GIIGNL-edition rule."""
     if um.get("agree"):
-        return ("", "", False)
+        return ("", "", False, {"action": "", "gem_field": "", "paste_value": ""})
     rep, gem = um.get("report_capacity_mtpa"), um.get("gem_unit_capacity_mtpa")
     pct = um.get("capacity_delta_pct")
     years, has_non = _parse_capacity_refs(um.get("gem_unit_capacity_ref", ""))
@@ -1668,14 +1792,18 @@ def _classify_unit_disagreement(um):
         y = max(years)
         return (f"GEM unit capacity ({gem}) is sourced from GIIGNL {y}; GIIGNL 2026 reports {rep}.",
                 f"Replace unit capacity with the GIIGNL 2026 value ({rep} mtpa) — newer edition.",
-                False)
+                False,
+                _combine_edits([("Replace unit capacity (GIIGNL newer edition)",
+                                 "CapacityinMtpa", rep)]))
     if pct is not None and abs(pct) < CAP_CONFLICT_PCT_THRESHOLD:
         return (f"Small unit capacity difference of {pct}% (GIIGNL={rep}, GEM={gem}) — within "
                 "GIIGNL's 0.1-mtpa rounding, almost certainly not a real disagreement.",
-                "Keep GEM's value as-is — the difference is too small to act on.", False)
+                "Keep GEM's value as-is — the difference is too small to act on.", False,
+                _combine_edits([("No change — within GIIGNL rounding", "", "")]))
     srcdesc = "a non-GIIGNL source" if not years else f"GIIGNL {max(years)} plus a non-GIIGNL source"
     return (f"Unit capacity conflict ({pct}%): GIIGNL={rep}, GEM={gem} from {srcdesc}.",
-            f"{_NEEDS_RESEARCH}: verify which source is current for this unit.", True)
+            f"{_NEEDS_RESEARCH}: verify which source is current for this unit.", True,
+            _combine_edits([("Research — verify which source is current", "CapacityinMtpa", "")]))
 
 
 def _recon_verdicts_lookup(recon_verdicts):
@@ -1777,17 +1905,22 @@ def build_giignl_diff_operating_sheet(wb, diff, recon_verdicts=None):
                     "(see suggested_resolution); do not overwrite GEM capacity. "
                     + note_quote)
         # Insight + GEM-vs-GIIGNL verdict.
-        insight, resolution, needs_research = _classify_disagreement(
+        insight, resolution, needs_research, edit = _classify_disagreement(
             m, suppress_nonop_insight=verdict_overrides_insight)
         if v:
             resolution = _recon_verdict_text(v)
             needs_research = False
+            edit = _edit_from_verdict(v)  # researched verdict supersedes the deterministic edit
             if v.get("insight"):
                 insight = v["insight"]
         proj["insight"] = insight
         proj["suggested_resolution"] = resolution
+        proj["action"] = edit["action"]
+        proj["gem_field"] = edit["gem_field"]
+        proj["paste_value"] = edit["paste_value"]
         if needs_research:
             cm["suggested_resolution"] = "yellow"
+            cm["action"] = "yellow"
         _write_row(ws, proj, headers, row_idx, confidence_map=cm)
         row_idx += 1
 
@@ -1819,12 +1952,13 @@ def build_giignl_diff_operating_sheet(wb, diff, recon_verdicts=None):
                 for col in ("report_capacity_mtpa", "gem_capacity_mtpa",
                             "capacity_delta_mtpa", "capacity_delta_pct", "disagreements"):
                     ucm[col] = cap_fill
-            u_insight, u_res, u_needs = _classify_unit_disagreement(um)
+            u_insight, u_res, u_needs, u_edit = _classify_unit_disagreement(um)
             uv = verdicts.get((m.get("gem_terminal_id"), m.get("section_type_gem"),
                                um.get("gem_unit_name") or ""))
             if uv:
                 u_res = _recon_verdict_text(uv)
                 u_needs = False
+                u_edit = _edit_from_verdict(uv)
                 if uv.get("insight"):
                     u_insight = uv["insight"]
             elif u_needs and verdicts.get(
@@ -1834,10 +1968,15 @@ def build_giignl_diff_operating_sheet(wb, diff, recon_verdicts=None):
                 # than dangle a NEEDS RESEARCH.
                 u_res = "See project-row resolution above (researched at project level)."
                 u_needs = False
+                u_edit = {"action": "See project-row above", "gem_field": "", "paste_value": ""}
             urow["insight"] = u_insight
             urow["suggested_resolution"] = u_res
+            urow["action"] = u_edit["action"]
+            urow["gem_field"] = u_edit["gem_field"]
+            urow["paste_value"] = u_edit["paste_value"]
             if u_needs:
                 ucm["suggested_resolution"] = "yellow"
+                ucm["action"] = "yellow"
             _write_row(ws, urow, headers, row_idx, confidence_map=ucm)
             row_idx += 1
     _autosize(ws)
@@ -1906,10 +2045,13 @@ def build_giignl_diff_nonoperating_sheet(wb, diff, narrative_findings=None):
     ws.freeze_panes = "A2"
 
 
-def _resolutions_to_country_notes(resolutions, existing_notes):
+def _resolutions_to_country_notes(resolutions, existing_notes, othernames_map=None):
     """Auto-draft OtherNames-addition country notes from report_only name-mismatch
     resolutions, skipping any GEM terminal already covered by a hand-written note
-    (matched on the '[T…]' id token) so the two don't duplicate."""
+    (matched on the '[T…]' id token) so the two don't duplicate. othernames_map
+    (TerminalID -> existing OtherNames) lets _useful_othernames drop aliases already
+    present in the GEM record's current OtherNames cell, not just its name."""
+    othernames_map = othernames_map or {}
     existing_tids = set()
     for n in (existing_notes or []):
         m = re.search(r"\[(T\d+)\]", n.get("contribution", "") or "")
@@ -1922,7 +2064,10 @@ def _resolutions_to_country_notes(resolutions, existing_notes):
         tid = res.get("gem_terminal_id", "")
         if not tid or tid in existing_tids:
             continue
-        others = "; ".join(res.get("suggested_othernames") or [])
+        others_list = _useful_othernames(res, othernames_map.get(tid, ""))
+        if not others_list:
+            continue
+        others = "; ".join(others_list)
         out.append({
             "country": res.get("country", ""),
             "topic": "GEM OtherNames alias addition (improves GIIGNL reconciliation matching)",
@@ -1930,23 +2075,48 @@ def _resolutions_to_country_notes(resolutions, existing_notes):
                 f"Add OtherNames alias(es) [{others}] to GEM "
                 f"'{res.get('gem_terminal_name')}' [{tid}]. GIIGNL 2026 lists it as "
                 f"'{res.get('report_site_name')}'. {res.get('basis', '')}"),
+            "gem_field": "OtherNames",
+            "paste_value": others,
             "source_url": "GIIGNL 2026 Annual Report",
             "researcher_initials": "",
         })
     return out
 
 
+def _verdict_refs_by_tid(recon_verdicts):
+    """terminal_id -> deduped list of url_verifier-passed source URLs, pooled
+    across every staged_recon_verdicts.json entry for that terminal (facets:
+    capacity/owner/status). Feeds the giignl_to_action `corroborated_refs`
+    copy/paste column for matched_with_disagreement rows."""
+    out = {}
+    for v in (recon_verdicts or []):
+        tid = v.get("terminal_id")
+        if not tid:
+            continue
+        bucket = out.setdefault(tid, [])
+        for s in (v.get("sources") or []):
+            if s and s not in bucket:
+                bucket.append(s)
+    return out
+
+
 def build_giignl_to_action_sheet(wb, diff, narrative_findings=None,
-                                 report_only_resolutions=None):
+                                 report_only_resolutions=None, othernames_map=None,
+                                 recon_verdicts=None):
     ws = wb.create_sheet("giignl_to_action")
     headers = [
         "action_category", "country", "site_name",
         "gem_terminal_id", "gem_terminal_name",
         "report_capacity_mtpa", "gem_capacity_mtpa",
         "section_type", "owners",
+        "action", "gem_field", "paste_value", "corroborated_refs",
         "recommended_workflow", "notes",
     ]
     _write_header(ws, headers)
+    othernames_map = othernames_map or {}
+    # terminal_id -> pooled corroborating URLs from staged_recon_verdicts.json,
+    # so matched_with_disagreement rows surface their refs for copy/paste.
+    verdict_refs = _verdict_refs_by_tid(recon_verdicts)
     # Agent-researched resolutions for report_only ("GIIGNL has, GEM seemingly
     # doesn't") rows — most are NOT missing terminals but the SAME GEM terminal
     # under a different name (TRSP=Cosan FSRU, GDLNG=Guangdong Dapeng, Caofeidian=
@@ -1964,7 +2134,8 @@ def build_giignl_to_action_sheet(wb, diff, narrative_findings=None,
     for r in diff.get("report_only", []):
         res = res_by_site.get(_norm_term_name(r.get("site_name", "")))
         if res and res.get("resolution") == "name_mismatch":
-            others = res.get("suggested_othernames") or []
+            others = _useful_othernames(
+                res, othernames_map.get(res.get("gem_terminal_id", ""), ""))
             row = {
                 "action_category": "report_only_name_mismatch_add_othernames",
                 "country": r["country"],
@@ -1975,9 +2146,13 @@ def build_giignl_to_action_sheet(wb, diff, narrative_findings=None,
                 "gem_capacity_mtpa": "",
                 "section_type": r["section_type"],
                 "owners": ", ".join(r.get("owners_in_report", [])),
+                "action": ("Add OtherNames alias (append)" if others
+                           else "No edit — already in GEM (no new alias)"),
+                "gem_field": "OtherNames" if others else "",
+                "paste_value": "; ".join(others) if others else "",
                 "recommended_workflow": (
-                    "Update — ALREADY IN GEM under the name above; NOT a new terminal. "
-                    f"Add to OtherNames: {'; '.join(others)}."),
+                    "Update — ALREADY IN GEM under the name above; NOT a new terminal."
+                    + (f" Add to OtherNames: {'; '.join(others)}." if others else "")),
                 "notes": f"[{res.get('confidence', '')} confidence] {res.get('basis', '')}",
             }
             # green = resolved (no longer an open discovery question)
@@ -2000,6 +2175,9 @@ def build_giignl_to_action_sheet(wb, diff, narrative_findings=None,
             "gem_capacity_mtpa": "",
             "section_type": r["section_type"],
             "owners": ", ".join(r.get("owners_in_report", [])),
+            "action": "Investigate — possible new terminal (Discovery)",
+            "gem_field": "",
+            "paste_value": "",
             "recommended_workflow": wf,
             "notes": note,
         }
@@ -2020,10 +2198,42 @@ def build_giignl_to_action_sheet(wb, diff, narrative_findings=None,
                 "gem_capacity_mtpa": r.get("gem_capacity_mtpa"),
                 "section_type": r["section_type"],
                 "owners": ", ".join(r.get("owners", [])),
+                "action": "No action — GIIGNL lists it under another name",
+                "gem_field": "",
+                "paste_value": "",
                 "recommended_workflow": (
                     f"No discovery needed — GIIGNL DOES list this, as "
                     f"'{res.get('report_site_name', '')}' (name mismatch; add to OtherNames)."),
                 "notes": f"[{res.get('confidence', '')} confidence] {res.get('basis', '')}",
+            }
+            _write_row(ws, row, headers, row_idx, confidence_map={"action_category": "green"})
+            row_idx += 1
+            continue
+        fm = r.get("report_fleet_match")
+        if fm:
+            # GIIGNL lists this FSRU in its fleet table, just not the country regas
+            # tables — so it is NOT a "report missed it" case. Resolve, don't route
+            # to a status investigation. (See report_diff._fleet_match_for_gem_only.)
+            row = {
+                "action_category": "gem_only_in_fsru_fleet",
+                "country": r["country"],
+                "site_name": r["terminal_name"],
+                "gem_terminal_id": r["terminal_id"],
+                "gem_terminal_name": r["terminal_name"],
+                "report_capacity_mtpa": "",
+                "gem_capacity_mtpa": r.get("gem_capacity_mtpa"),
+                "section_type": r["section_type"],
+                "owners": ", ".join(r.get("owners", [])),
+                "action": "No action — GIIGNL lists it in the FSRU fleet table",
+                "gem_field": "",
+                "paste_value": "",
+                "recommended_workflow": (
+                    f"GIIGNL DOES list this — FSRU fleet table, vessel "
+                    f"'{fm.get('vessel_name', '')}' at '{fm.get('location_site', '')}' "
+                    f"(country regas tables skip it, as GIIGNL routinely does for "
+                    f"floating terminals). Confirm GEM vs the giignl_fsru_fleet "
+                    f"sheet; not a country-table miss."),
+                "notes": r.get("note", ""),
             }
             _write_row(ws, row, headers, row_idx, confidence_map={"action_category": "green"})
             row_idx += 1
@@ -2038,6 +2248,9 @@ def build_giignl_to_action_sheet(wb, diff, narrative_findings=None,
             "gem_capacity_mtpa": r.get("gem_capacity_mtpa"),
             "section_type": r["section_type"],
             "owners": ", ".join(r.get("owners", [])),
+            "action": "Verify GEM status (why is GIIGNL missing it?)",
+            "gem_field": "Status",
+            "paste_value": "",
             "recommended_workflow": "Update (verify GEM status; may be small/non-member/sanctioned)",
             "notes": r.get("note", ""),
         }
@@ -2055,6 +2268,9 @@ def build_giignl_to_action_sheet(wb, diff, narrative_findings=None,
             "gem_capacity_mtpa": ", ".join(str(c.get("gem_capacity_mtpa")) for c in r.get("candidates", [])),
             "section_type": "",
             "owners": "",
+            "action": "Disambiguate manually (pick the right GEM terminal)",
+            "gem_field": "",
+            "paste_value": "",
             "recommended_workflow": "Manual disambiguation needed",
             "notes": f"Has {r.get('candidate_count')} candidate matches",
         }
@@ -2080,6 +2296,10 @@ def build_giignl_to_action_sheet(wb, diff, narrative_findings=None,
             "gem_capacity_mtpa": m.get("gem_capacity_mtpa"),
             "section_type": m.get("section_type_gem"),
             "owners": ", ".join(m.get("owners_overlap", [])),
+            "action": "Investigate disagreement (see giignl_diff_operating + candidate_edits)",
+            "gem_field": "",
+            "paste_value": "",
+            "corroborated_refs": "; ".join(verdict_refs.get(m.get("gem_terminal_id"), [])),
             "recommended_workflow": "Update (investigate disagreement; do NOT auto-apply report values)",
             "notes": m.get("analyst_note") or "; ".join(m.get("disagreements", [])),
         }
@@ -2102,12 +2322,28 @@ def build_giignl_to_action_sheet(wb, diff, narrative_findings=None,
         else:
             fill = "yellow"
         cite = f.get("citation", "")
+        # The structured, copy/paste-ready corroborating URLs (the `citation` field
+        # above is prose; `sources` is the url_verifier-passed list).
+        refs = "; ".join(f.get("sources") or [])
         note = f.get("prose_finding", "")
         chg = f.get("recommended_status_change")
         if chg:
             note = f"[{chg}] {note}"
         if cite:
             note = f"{note}  ||  CITES: {cite}"
+        # Discrete action cells: a prose-confirmed status change → Status; an
+        # already-tracked confirmation → no action; otherwise verify the finding.
+        # Never auto-apply (§3.8), so paste_value carries the candidate, not a commit.
+        if cat == "narrative_confirm_already_tracked":
+            n_action, n_field, n_val = ("No action — already tracked (confidence bump)", "", "")
+        elif chg:
+            n_action, n_field, n_val = ("Verify status change (do NOT auto-apply)", "Status", chg)
+        elif cat == "narrative_discovery":
+            n_action, n_field, n_val = ("Investigate — possible new terminal (Discovery)", "", "")
+        elif cat == "narrative_monitor":
+            n_action, n_field, n_val = ("Monitor (below add-threshold)", "", "")
+        else:
+            n_action, n_field, n_val = ("Verify narrative finding (do NOT auto-apply)", "", "")
         row = {
             "action_category": cat,
             "country": f.get("country", ""),
@@ -2118,6 +2354,10 @@ def build_giignl_to_action_sheet(wb, diff, narrative_findings=None,
             "gem_capacity_mtpa": "",
             "section_type": f.get("section_type", ""),
             "owners": "",
+            "action": n_action,
+            "gem_field": n_field,
+            "paste_value": n_val,
+            "corroborated_refs": refs,
             "recommended_workflow": f.get("recommended_workflow", ""),
             "notes": note,
         }
@@ -2151,6 +2391,10 @@ def build_giignl_to_action_sheet(wb, diff, narrative_findings=None,
                 "gem_capacity_mtpa": "",
                 "section_type": f.get("section_type", ""),
                 "owners": oc.get("entity", ""),
+                "action": "Verify stake change (entity_lookup first; do NOT auto-apply)",
+                "gem_field": "Owner",
+                "paste_value": "",
+                "corroborated_refs": refs,
                 "recommended_workflow": "Update (verify stake; run entity_lookup; do NOT auto-apply)",
                 "notes": oc_note,
             }
@@ -2180,6 +2424,10 @@ def build_giignl_to_action_sheet(wb, diff, narrative_findings=None,
                 "gem_capacity_mtpa": "",
                 "section_type": f.get("section_type", ""),
                 "owners": "",
+                "action": "Fold former name into OtherNames (do NOT auto-apply)",
+                "gem_field": nc.get("gem_field", "OtherNames"),
+                "paste_value": nc.get("new", "") or nc.get("old", ""),
+                "corroborated_refs": refs,
                 "recommended_workflow": "Update (fold former name into OtherNames; do NOT auto-apply)",
                 "notes": nm_note,
             }
@@ -2281,6 +2529,7 @@ def build_country_notes_sheet(wb, notes):
     ws = wb.create_sheet("country_notes_contributions")
     headers = [
         "country", "topic", "contribution",
+        "gem_field", "paste_value",
         "source_url", "researcher_initials",
     ]
     _write_header(ws, headers)
@@ -2404,7 +2653,8 @@ def build_qa_review_sheet(wb, qa_items):
     ws = wb.create_sheet("qa_review")
     headers = [
         "category", "terminal_id", "unit_id", "terminal_name",
-        "issue", "severity", "suggested_action", "researcher_initials",
+        "issue", "severity", "suggested_action", "gem_field", "paste_value",
+        "researcher_initials",
     ]
     _write_header(ws, headers)
     for i, q in enumerate(qa_items, start=2):
@@ -2606,8 +2856,12 @@ def main():
         # re-routes giignl_to_action AND auto-drafts any missing OtherNames notes.
         report_only_resolutions = _safe_load(
             inputs_dir / "staged_report_only_resolutions.json", default=[])
+        # TerminalID -> existing OtherNames, so suggested aliases get filtered
+        # against what GEM already carries (not just the terminal name).
+        othernames_map = _tid_othernames_map(args.gem_csv) if (
+            args.gem_csv and Path(args.gem_csv).exists()) else {}
         country_notes = country_notes + _resolutions_to_country_notes(
-            report_only_resolutions, country_notes)
+            report_only_resolutions, country_notes, othernames_map=othernames_map)
         # GIIGNL FSRU fleet table (giignl_fsru_fleet.py output) → giignl_fsru_fleet
         # cross-check sheet. Auto-discovered beside the diff; absent → sheet omitted.
         fsru_fleet = _safe_load(inputs_dir / "giignl_fsru_fleet.json", default={})
@@ -2648,7 +2902,8 @@ def main():
                     wb, diff, narrative_findings=narrative_findings)
             build_giignl_to_action_sheet(
                 wb, diff, narrative_findings=narrative_findings,
-                report_only_resolutions=report_only_resolutions)
+                report_only_resolutions=report_only_resolutions,
+                othernames_map=othernames_map, recon_verdicts=recon_verdicts)
             if args.gem_csv and Path(args.gem_csv).exists():
                 build_candidate_edits_sheet(wb, diff, args.gem_csv)
             if args.extracted_csv and Path(args.extracted_csv).exists():
