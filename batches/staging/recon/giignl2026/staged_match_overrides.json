@@ -1,0 +1,19 @@
+{
+  "_comment": "Agent-authored match overrides: pin a GIIGNL report row to a specific GEM terminal by id, overriding the deterministic matcher. This is the escape hatch for an EXACT name-token collision — GIIGNL's name exact-matches one GEM terminal verbatim but actually denotes a DIFFERENT same-token terminal at the same port. The operating-capacity/owner tie-breaks only fire on the FUZZY same-name-family path, never on an exact canonical hit, so the matcher takes the wrong terminal at face value and orphans the real one into gem_only_operating. report_diff reads this (auto-discovered beside the extracted CSV, or --match-overrides), re-pins the row via _forced_gem_key, and the displaced same-token terminal falls to gem_only (dropping out of gem_only_operating if non-operating). Nothing is auto-applied to GEM (§3.8) — only which GEM terminal the GIIGNL row is compared against. `report_site_name` is matched against the report key (same normalization). suggested_othernames is advisory for a follow-on Update batch (record the GIIGNL name on the GEM record), not used by the matcher. Relates to the name-shape-match-miss sweep (Reconciliation SOP / feedback_name_shape_match_misses).",
+  "edition_year": 2026,
+  "match_overrides": [
+    {
+      "country": "China",
+      "report_site_name": "Putian, Fujian",
+      "section_type": "regasification",
+      "gem_terminal_id": "T100000130381",
+      "gem_terminal_name": "Fujian LNG Terminal",
+      "confidence": "high",
+      "basis": "GIIGNL 'Putian, Fujian' = 6.3 MTPA operating, owner 'Investment Group Fujian LNG (CNOOC 60%, Fujian Inv. & Dev. Co. 40%)' — exactly GEM 'Fujian LNG Terminal' (T100000130381): CNOOC-Fujian LNG Co, parent China National Offshore Oil Corp 60% / Fujian Province Investment Development Group 40%, operating, Phase I 2.6 + Phase II 3.7 = 6.3 MTPA total, sited at Meizhou Bay, Putian (LocalNames 中海油福建LNG接收站 / 中国海油湄洲湾'绿能港'). The matcher snapped 'Putian, Fujian' to GEM 'Putian LNG Terminal' (T100000130399) on the bare 'putian' token — but that is the distinct HANAS terminal (Putian Hanas LNG Co / Ningxia Masite parent), Phase 1 construction + Phase 2 proposed, 0 operating MTPA, which GIIGNL's operating table would not list. Capacity (6.3 vs 0.0) and owner (CNOOC vs Hanas, zero overlap) both confirm the GIIGNL row is the CNOOC/Fujian terminal, not Hanas/Putian. Pinning here clears the false 6.3-vs-0.0 conflict on the Hanas site and the spurious gem_only_operating flag on Fujian LNG Terminal.",
+      "suggested_othernames": [
+        "Putian, Fujian",
+        "Putian"
+      ]
+    }
+  ]
+}

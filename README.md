@@ -31,7 +31,6 @@ requirements.txt             Python deps (pip install -r); the PDF reader also n
                              (brew install poppler / apt-get install poppler-utils — not pip-installable)
 .env.example                 Template for .env (GEM login cookies — only the web-export fallback needs them)
 .gitignore                   Keeps data pulls, scratch outputs, and xlsx workbooks out of git
-giignl_2026_triage_memo.md   Planning memo from triaging the 2026 GIIGNL report
 
 .claude/                     Claude Code settings (tool permissions); its README explains the choices
 
@@ -55,7 +54,7 @@ docs/
     workbook_conventions.md  What each sheet and cell color in the output xlsx means
     sop_pointers.md          Quick index of which rule lives in which document
   country_notes/             One research-notes file per country (regulators, quirks, key sources)
-  design-history/            Original design conversation transcript — why things are the way they are
+  design_history/            Original design conversation transcript — why things are the way they are
 
 scripts/                     Python tools called by the workflows
   README.md                  The index: per-script purpose, run order, deep-dives on the tricky ones
@@ -71,6 +70,8 @@ scripts/                     Python tools called by the workflows
   stale_sweep.py             Flag entries that haven't moved in too long; also lists the development
                              pipeline (every proposed/construction/shelved unit) for standard updates
   completeness_sweep.py      Find blank fields, missing [ref]s, and countries with no coverage
+  sweep_worklist_split.py    Split the central worklists per country for a regional sweep (one
+                             dispatch file per country; LNG-only)
   citation_qc.py             Re-verify every existing [ref] URL in scope (QC link-rot sweep)
   apply_check.py             Confirm an applied batch's edits actually landed in the live DB (QC)
   dedup_index.py             Name-matching indexes so "new" candidates can be checked against existing entries
@@ -125,5 +126,5 @@ operationally.
 ## Background
 
 The original design conversation for this scaffolding is in
-`docs/design-history/2026-05-scaffolding-conversation.txt` — useful for
+`docs/design_history/2026-05-scaffolding-conversation.txt` — useful for
 understanding why specific decisions were made.
