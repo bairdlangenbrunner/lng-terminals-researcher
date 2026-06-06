@@ -26,8 +26,10 @@ batches/staging/
     giignl_diff.json         │
     giignl_fsru_fleet.json   ┘
     giignl_prose_corrections.json   ┐ agent-authored — COMMITTED (audit trail; the build silently
-    giignl_narrative_findings.json  │ drops sheets if these go missing at rebuild time)
-    staged_*.json                   ┘ (recon verdicts, report-only resolutions, entity adds, qa, ...)
+    staged_match_overrides.json     │ drops sheets if these go missing at rebuild time). prose_corrections
+    giignl_narrative_findings.json  │ + match_overrides feed report_diff.py (re-pin/reclassify the diff —
+    staged_*.json                   ┘ regen the diff first); staged_* feed the build's --inputs-dir
+                                      (recon verdicts, report-only resolutions, match overrides, entity adds, qa, ...)
   <scope-slug>/              ad-hoc single-scope update/discovery batch (e.g. japan/, qatar/)
     staged_*.json            agent-authored staging written directly — COMMITTED; the build's --inputs-dir
   _prior/                    pre-sweep one-off batches, kept for provenance

@@ -14,8 +14,12 @@ human reviews; never touch the live DB. Leads are not pre-trusted; verify.
 - GEM export: `/Users/baird/Dropbox/_git_ALL/_github-repos-gem/lng-terminals-researcher/scripts/gem_export.csv`
   (open `utf-8-sig`; country col `Country/Area`). FIRST list the country's EXISTING GEM terminals so you
   know what's already covered.
-- `python /Users/baird/Dropbox/_git_ALL/_github-repos-gem/lng-terminals-researcher/scripts/dedup_index.py`
-  to check candidates against existing project/unit indexes (catches alias/local-name matches).
+- `python /Users/baird/Dropbox/_git_ALL/_github-repos-gem/lng-terminals-researcher/scripts/dedup_index.py match <candidates.json>`
+  scores your leads against GEM (name + `OtherNames` similarity, haversine location distance, capacity ratio, and the
+  cancelled/shelved + new-proposal "dead-and-revived" case) and returns a `recommended_route` per candidate:
+  `update_existing`/`update_dead_and_revived` (already in GEM — NOT a discovery; note in qa, route revivals to Update),
+  `manual_review` (judge by hand), `discovery_new` (genuine gap — proceed). Candidate JSON fields:
+  `country, name, sponsor, latitude, longitude, capacity_mtpa, status`.
 
 ## Method (per country)
 1. Enumerate GEM's existing terminals for the country.
@@ -36,8 +40,12 @@ human reviews; never touch the live DB. Leads are not pre-trusted; verify.
    forbidden. A source that derives from or republishes GEM (IEEFA/Wikipedia/news footnoting GEM) is likewise NOT
    independent evidence — chase the primary source it points to and cite THAT. If a candidate's only trace is on
    gem.wiki, it is already a GEM record — not a discovery.
-3. DEDUP every candidate against GEM (grep + dedup_index + alias/local/diacritic check). GEM coverage is
-   comprehensive, so MOST candidates are already in GEM → those are NOT discoveries; note briefly in qa, move on.
+3. DEDUP every candidate against GEM: run `dedup_index.py match <candidates.json>` (above) for the
+   name/location/capacity + dead-and-revived scoring, plus a grep + alias/local/diacritic eyeball check it can't
+   catch. GEM coverage is comprehensive, so MOST candidates are already in GEM → `update_existing` is NOT a
+   discovery (note briefly in qa, move on); `update_dead_and_revived` (a cancelled/shelved GEM record now re-proposed,
+   usually under a NEW name → low name similarity by design) is also NOT a new_terminal — flag it in qa for the Update
+   workflow. Only `discovery_new` candidates proceed; judge `manual_review` by hand.
 4. For a GENUINE gap:
    - Meets the bar (sponsor identified + approximate location + a concrete step taken) AND you have a VERIFIED
      source → stage a `new_terminal` (+ `new_units`).
