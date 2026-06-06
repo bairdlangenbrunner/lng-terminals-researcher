@@ -9,7 +9,7 @@
       "nonoperating_units": [
         { "unit": "F", "status": "idled" }
       ],
-      "source": "GIIGNL 2026 Annual Report, liquefaction narrative p.31: \"At Bontang LNG, Train E remains on standby, with only Trains G and H currently in operation due to limited feedgas availability.\" Train E is already tagged (Mothballed) in the table; Train F is listed untagged but the prose confirms only G and H operate."
+      "source": "GIIGNL 2026 Annual Report, liquefaction narrative p.29: \"At Bontang LNG, Train E remains on standby, with only Trains G and H currently in operation due to limited feedgas availability.\" Train E is already tagged (Mothballed) in the table; Train F is listed untagged but the prose confirms only G and H operate. GEM already holds E and F as idled."
     }
   ],
   "_nonop_comment": "Narrative corroborations of a GEM NON-operating unit that has NO GIIGNL operating-table row (the unit ceased/retired, so GIIGNL drops it from the operating table, but the prose names it). report_diff fills the unit's giignl_narrative_mention and clears its 'GEM has, GIIGNL doesn't' flag. Keyed by GEM terminal name (matched against the GEM project key) + GEM unit name.",
@@ -19,7 +19,21 @@
       "gem_terminal": "North West Shelf LNG Terminal",
       "section_type": "liquefaction",
       "units": ["T2"],
-      "source": "GIIGNL 2026 Annual Report narrative p.28: \"the NWS Train 2 terminal in Australia, with a capacity of 3.4 MTPA, has permanently ceased operations\" (also p.31: \"Woodside has definitively ceased operations at Train 2\"). GIIGNL drops Train 2 from the operating table accordingly; GEM has it retired — they agree."
+      "source": "GIIGNL 2026 Annual Report narrative p.27: \"the NWS Train 2 terminal in Australia, with a capacity of 3.4 MTPA, has permanently ceased operations\" (also p.29: \"Woodside has definitively ceased operations at Train 2\"). GIIGNL drops Train 2 from the operating table accordingly; GEM has it retired — they agree."
+    },
+    {
+      "country": "Yemen",
+      "gem_terminal": "Yemen LNG Terminal",
+      "section_type": "liquefaction",
+      "units": ["T1", "T2"],
+      "source": "GIIGNL 2026 Annual Report narrative p.29: \"The Balhaf LNG terminal in Yemen has been shut down since 2015 due to the security situation and remains under force majeure. The site, which has a total capacity of 6.7 MTPA across two trains, is still in preservation mode with no restart announced to date.\" GIIGNL omits both trains from the operating table; GEM has T1/T2 mothballed — they agree."
+    },
+    {
+      "country": "Trinidad and Tobago",
+      "gem_terminal": "Atlantic LNG Terminal",
+      "section_type": "liquefaction",
+      "units": ["T1"],
+      "source": "GIIGNL 2026 Annual Report narrative p.27: \"Atlantic LNG Train 1 remains shut down due to insufficient feedgas.\" GEM has T1 mothballed (T2/T3/T4 operating) — they agree on Train 1 being non-operating."
     }
   ]
 }

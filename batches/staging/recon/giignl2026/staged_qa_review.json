@@ -1,50 +1,66 @@
 [
   {
     "category": "verification_log",
-    "terminal_name": "GIIGNL 2026 §3.2.1 narrative pass",
-    "issue": "Full narrative pass completed over liquefaction pp.28-31 + regasification pp.48-52. ~60 forward-looking findings extracted, triaged against the fresh GEM export, and (for the actionable subset) web-verified against authoritative non-GIIGNL sources (all URLs passed url_verifier). Result: ~50 already tracked in GEM at correct lifecycle (confidence bump only); 7 status changes to existing records (routed, need timeline pull to finalize); 3 genuine discoveries (2 new_terminals + 1 monitor). Full routing in giignl_to_action (narrative_* categories).",
+    "terminal_name": "GIIGNL 2026 reconciliation — full from-scratch regen",
+    "issue": "Pipeline rebuilt against fresh GEM export (2026-06-05): extraction, three-way diff (with prose corrections), FSRU fleet, §3.2.1 narrative pass, and 80 GEM-vs-GIIGNL disagreement verdicts. All staged status/discovery values web-verified with ≥2 independent url_verifier-PASSing sources; no gem.wiki/globalenergymonitor citations. 11 status-flip Update candidates, 1 genuine discovery (Marsa LNG, Oman), 5 discovery candidates confirmed as aliases, 7 report_only orphans matched.",
     "severity": "info",
-    "suggested_action": "Review giignl_to_action narrative_* rows. Apply narrative_update items via Update workflow (pull existing timeline first per CLAUDE.md). Add narrative_discovery terminals.",
+    "suggested_action": "Review the workbook sheets; apply via Update batches.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_error_suspected",
+    "terminal_name": "LNG Canada Terminal — Phase 2 (Trains 3 & 4)",
+    "issue": "GEM marks Phase 2 (T3/T4) operating at ~14 MTPA, but GIIGNL prose and corroborating trade press (OGJ, LNG Industry) describe Phase 2 as pre-FID ('potential', FID possibly end-2026). The 14.0 MTPA looks duplicated from Phase 1. Phase 1 (T1/T2) commissioning by Nov 2025 is the operating capacity.",
+    "severity": "high",
+    "suggested_action": "Correct T3/T4 status operating -> proposed (pre-FID) and remove the duplicated 14 MTPA operating capacity. Route to Update. Sources in giignl_narrative_findings.json (qa_flag A).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "stale_value_suspected",
+    "terminal_name": "Mukran FSRU — Vessel 1",
+    "issue": "GEM lists vessel 'Energos Power' operating ~9.92 MTPA. The Energos Power charter was terminated Feb 2025; the current/only deployed vessel at Mukran is 'Neptune' (~5 bcm/y ≈ 3.7 MTPA). The 9.92 MTPA (≈13.5 bcm) appears to be the planned two-FSRU combined figure on a single row.",
+    "severity": "high",
+    "suggested_action": "Update floating_vessel_name Energos Power -> Neptune and correct capacity to single-vessel regas (~3.7 MTPA). FSRU sync check applies. Sources in giignl_narrative_findings.json (qa_flag C).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "checked_no_error",
+    "terminal_name": "Adriatic LNG (Rovigo)",
+    "issue": "Flagged for a GEM 9.6 vs GIIGNL 7.7 capacity conflict. Investigated: GEM actually stores 7.06 MTPA (correct). The '9.6' is the operator's bcm/y figure (9.6 bcm/y ≈ 7.06 MTPA); GIIGNL's 7.7/8 is the older pre-2022 nameplate. No data error in GEM.",
+    "severity": "info",
+    "suggested_action": "No action — documented to close the flag.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_hygiene",
+    "terminal_name": "Quintero LNG Terminal (Chile)",
+    "issue": "GEM owner list carries stale placeholder entities 'eig global energy partners [to be deleted]' and 'enap [to be deleted]'. Surfaced by the owner-delta verdict pass.",
+    "severity": "low",
+    "suggested_action": "Clean up the '[to be deleted]' owner rows in GEM; confirm current ownership (ENAP + EIG/Glenfarne).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "missing_value",
+    "terminal_name": "Guanabara Bay FSRU (Brazil); Tianjin LNG Terminal (Beijing Gas Group, China)",
+    "issue": "Both show blank/0 capacity in GEM (rendered as unknown, not genuine 0). GIIGNL gives Guanabara Bay 6.0 MTPA; the Beijing Gas Tianjin terminal is operating (Phases commissioned 2023–2024). Capacity gaps.",
+    "severity": "medium",
+    "suggested_action": "Route to Update to fill capacity (verify against operator/regulator before staging).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "internal_inconsistency",
+    "terminal_name": "Hibiki LNG Terminal (Japan)",
+    "issue": "GEM row stores 1.0 MTPA but operator/other GEM data and GIIGNL (2.0) point to ~2.4 MTPA total. Surfaced by the capacity verdict pass (delta 100%).",
+    "severity": "medium",
+    "suggested_action": "Reconcile the Hibiki capacity in GEM (do not auto-apply GIIGNL); verify against Saibu Gas/Kyushu Electric.",
     "researcher_initials": "AI-draft"
   },
   {
     "category": "status_update_pending_timeline",
-    "terminal_name": "7 narrative_update items (Mozambique LNG, Darwin LNG, Eni Congo FLNG II/Nguya, QatarEnergy LNG T4&6, Portovaya LNG, Vysotsk LNG, Nigeria LNG Train 7)",
-    "issue": "Each is a verified lifecycle/progress change on an EXISTING GEM record (e.g. Mozambique shelved->construction; Darwin idled->operating; Congo II construction->operating; Qatar T4/6 operating->idled per 2026-03 strike; Portovaya/Vysotsk operating->idled per sanctions). Not staged as status_timeline_additions here because the methodology requires pulling the existing timeline first (fetch_timeline.py, live DB) to avoid duplicate/illegal transitions.",
+    "terminal_name": "11 narrative_update items (Mozambique LNG, Darwin LNG T1, Eni Congo FLNG II/Nguya, Coral North FLNG, Manzanillo FSRU DR, Ravenna FSRU, Argentina LNG Ph1.1/1.2, Map Ta Phut 3, KOGAS Dangjin Ph2, Portovaya LNG, Vysotsk LNG)",
+    "issue": "Each is a verified lifecycle change on an existing GEM record (e.g. Mozambique shelved->construction; Darwin idled->operating; Congo II construction->operating; Coral North proposed->construction; Portovaya/Vysotsk operating->idled per sanctions). Not staged as status_timeline_additions because the methodology requires pulling the existing timeline first (fetch_timeline.py), and that host is currently stale (404) per CLAUDE.md known issue.",
     "severity": "medium",
-    "suggested_action": "For each, fetch_timeline.py <UnitID>, then stage the append-only status_timeline entry with the verified citation (see giignl_to_action notes / giignl_narrative_findings.json). Qatar T4/6 is medium-confidence (single-origin train numbers) — hold pending damage assessment.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "capacity_reconciliation_flag",
-    "terminal_name": "Wenzhou Huagang LNG Terminal (=GIIGNL 'Zhuangyuanao')",
-    "issue": "GEM Phase-1 regas capacity 3 MTPA vs Oilchem-reported Phase-1 turnover 1.54 Mt (trial through Sep 2025); GIIGNL frames ~3 MTPA. Operator name: GIIGNL 'Huafon' vs GEM 'Huafeng' (华峰) — likely the same parent (transliteration), verify before any entity edit.",
-    "severity": "low",
-    "suggested_action": "Confirm whether 3 MTPA is current or post-expansion; reconcile operator transliteration.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "capacity_reconciliation_flag",
-    "terminal_name": "Jieyang LNG Terminal (PipeChina) (=GIIGNL 'Yuedong')",
-    "issue": "GEM lists Phase-1 5.04 MTPA and a 'Phase 2 +5 -> 10.04 MTPA' note; the authoritative Guangdong DRC approval is a storage (储气工程) expansion targeting 6 MTPA total, distinct from any regas-train Phase 2. Construction of three 240,000 cbm tanks started 30 Dec 2025.",
-    "severity": "low",
-    "suggested_action": "Reconcile GEM's current capacity + Phase-2 description against the DRC approval (storage vs regas-train).",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "fsru_sync_touchpoint",
-    "terminal_name": "Khor Al Zubair (Hull 3407); Buenaventura (unnamed FSU); Eni Congo FLNG II (Nguya FLNG); Argentina SESA (Hilli Episeyo relocating from Cameroon)",
-    "issue": "New/changed FSRU/FLNG vessel deployments surfaced by the narrative pass. Vessel identity fields are owned by the LNG carrier project per the FSRU sync rule.",
-    "severity": "medium",
-    "suggested_action": "Run fsru_sync_check.py once these are staged. Khor Al Zubair vessel has only a hull number (no name/IMO yet); Buenaventura FSU is unnamed; Hilli Episeyo is a reassignment (Cameroon Kribi -> Argentina San Matías ~2027).",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "discovery_disambiguation",
-    "terminal_name": "Argentina LNG Terminal (SESA Phase 1: Hilli Episeyo + Golar MK II)",
-    "issue": "GEM's existing 'Argentina LNG Terminal' (proposed) already carries the SESA consortium ownership (YPF 25 / Pampa 20 / BP 15 / Golar 10 / Bridas 7.5 / CNOOC ...). The FID'd SESA FLNG units (Hilli Episeyo 2.45 MTPA, Golar MK II 3.5 MTPA) are a more-advanced sub-project; GEM shows owner 'BP PLC [15%]' where the SESA FID lists 'Harbour Energy 15%' (ownership change to reconcile).",
-    "severity": "low",
-    "suggested_action": "Update workflow: reconcile ownership (BP->Harbour Energy 15%) and consider adding Hilli/MK II as FID'd construction units; distinguish from the pre-FID YPF/Eni/XRG ARGLNG 12 MTPA phase.",
+    "suggested_action": "For each, pull the timeline (once the project DB base URL is reachable) then stage the append-only status_timeline entry with the verified citation from giignl_narrative_findings.json. Ravenna also needs the capacity units fix (GEM 5.0 'MTPA' is 5.0 bcm/y = 3.7 MTPA).",
     "researcher_initials": "AI-draft"
   }
 ]

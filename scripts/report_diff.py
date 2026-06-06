@@ -889,6 +889,88 @@ def _apply_prose_corrections(report_projects, corr_map):
         rp["trains_count"] = len(rp["rows"])
 
 
+def _load_match_overrides(path):
+    """Load agent-authored match overrides. Returns
+        {(country_norm, report_site_norm, section): {gem_terminal_id, gem_terminal_name, basis}}
+    Each entry PINS a GIIGNL report project to a specific GEM terminal by ID,
+    overriding the deterministic canonical/alias/fuzzy match.
+
+    This is the escape hatch for the one shape the matcher can't settle safely:
+    an EXACT name-token collision where GIIGNL's name matches one GEM terminal
+    verbatim but actually denotes a DIFFERENT same-token terminal. Canonical
+    case — GIIGNL "Putian, Fujian" (6.3 MTPA operating, owner CNOOC 60% / Fujian
+    Inv & Dev 40%) exact-matches GEM "Putian LNG Terminal" (the Hanas
+    construction site at the same Meizhou Bay port, 0 operating) on the bare
+    "putian" token, while the real operating terminal is GEM "Fujian LNG
+    Terminal" (CNOOC, 6.3, same owner split). The operating-capacity / owner
+    tie-breaks only fire on the FUZZY same-name-family path, never on an exact
+    canonical hit, so the matcher takes the wrong terminal at face value and
+    orphans the real one into gem_only_operating ("why is GIIGNL missing it?").
+    The override re-pins the report row to its true GEM terminal; the displaced
+    same-token terminal falls to gem_only and, being non-operating, drops out of
+    gem_only_operating (correct — GIIGNL's operating tables never list it).
+
+    `report_site_name` is matched against the REPORT project key (same
+    normalization, so the author can write the verbatim GIIGNL site name).
+    Nothing is auto-applied to GEM (§3.8) — this only corrects which GEM terminal
+    the GIIGNL row is compared against. {} if the file is absent/empty."""
+    if not path or not Path(path).exists():
+        return {}
+    data = json.loads(Path(path).read_text())
+    out = {}
+    for o in data.get("match_overrides", []):
+        key = (normalize_country(o.get("country", "")),
+               normalize_terminal_name(o.get("report_site_name", "")),
+               o.get("section_type", ""))
+        tid = (o.get("gem_terminal_id") or "").strip()
+        if not all(key) or not tid:
+            continue
+        out[key] = {
+            "gem_terminal_id": tid,
+            "gem_terminal_name": o.get("gem_terminal_name", ""),
+            "basis": o.get("basis", ""),
+        }
+    return out
+
+
+def _apply_match_overrides(report_projects, gem_projects, override_map):
+    """Pin each overridden report project to its target GEM terminal by setting
+    `_forced_gem_key` (the same mechanism the multi-terminal FSRU split uses).
+    The target is resolved by (terminal_id, section) — a liq+regas terminal is
+    two GEM projects sharing one id, so section disambiguates. No-op (with a
+    warning) if the report project or the target GEM terminal isn't present, or
+    if the report project is already force-matched (FSRU split wins; they don't
+    overlap in practice). Returns the count applied. Must run after the FSRU
+    split / subname merge / prose pass (final report-project keys) and before
+    `forced_gem` is read in the matching loop."""
+    if not override_map:
+        return 0
+    by_tid_section = {(gp["terminal_id"], gp["section_type"]): gk
+                      for gk, gp in gem_projects.items()}
+    applied = 0
+    for rkey, ov in override_map.items():
+        section = rkey[2]
+        rp = report_projects.get(rkey)
+        if rp is None:
+            print(f"  WARNING: match override {rkey} skipped — no such GIIGNL "
+                  f"report project (name may have changed this edition)")
+            continue
+        gkey = by_tid_section.get((ov["gem_terminal_id"], section))
+        if gkey is None:
+            print(f"  WARNING: match override {rkey} skipped — GEM terminal "
+                  f"{ov['gem_terminal_id']} ({section}) not in export")
+            continue
+        if rp.get("_forced_gem_key"):
+            print(f"  WARNING: match override {rkey} skipped — already "
+                  f"force-matched to {rp['_forced_gem_key']}")
+            continue
+        rp["_forced_gem_key"] = gkey
+        rp["_match_override_basis"] = (
+            ov.get("basis", "") or f"agent-pinned to {ov['gem_terminal_id']}")
+        applied += 1
+    return applied
+
+
 # Tokens to drop when matching a GIIGNL vessel name against a GEM unit name —
 # GEM unit names are the bare vessel ("Energos Power"); GIIGNL/site labels may
 # carry facility tags.
@@ -1047,6 +1129,63 @@ def _fsru_vessel_match(rp, gp):
             if rt and gt and (rt <= gt or gt <= rt):
                 return True
     return False
+
+
+def _build_fsru_fleet_index(fleet_path):
+    """Index the GIIGNL FSRU-fleet table by country so the gem_only pass can tell
+    when a GEM FSRU the country regasification tables OMIT is in fact listed in the
+    report's FSRU fleet table. GIIGNL routinely carries a floating terminal only in
+    the fleet table, not in the per-country regas tables (e.g. GEM 'Tema FSRU' /
+    Ghana ↔ fleet 'Tema LNG', vessel 'Torman') — without this cross-check the diff
+    wrongly reports 'the report doesn't list it'. Returns {country_norm: [entry]}
+    with each entry carrying precomputed site tokens (>=4-char, suffix-stripped)
+    and vessel-identity tokens. Empty dict if the file is absent/unreadable."""
+    if not fleet_path:
+        return {}
+    try:
+        data = json.loads(Path(fleet_path).read_text())
+    except (OSError, ValueError):
+        return {}
+    index = defaultdict(list)
+    for v in data.get("vessels", []):
+        country = normalize_country(v.get("location_country", "") or "")
+        site = (v.get("location_site", "") or "").strip()
+        if not country or not site:
+            continue
+        site_toks = {t for t in _simple_tokens(normalize_terminal_name(site))
+                     if len(t) >= 4}
+        index[country].append({
+            "location_site": site,
+            "vessel_name": (v.get("vessel_name", "") or "").strip(),
+            "site_tokens": site_toks,
+            "vessel_tokens": _vessel_key_tokens(v.get("vessel_name", "") or ""),
+        })
+    return dict(index)
+
+
+def _fleet_match_for_gem_only(gp, fleet_index):
+    """Return the FSRU-fleet entry that corroborates a gem_only FSRU project, or
+    None. Same-country match on either a vessel-name token containment (strongest —
+    the deployed vessel is a near-unique key) or a significant site-token subset
+    (GEM 'Tema' ⊆ fleet 'Tema'). Only fires for FSRU GEM terminals, so it never
+    manufactures a floating-vs-onshore false match."""
+    if not gp.get("fsru") or not fleet_index:
+        return None
+    entries = fleet_index.get(normalize_country(gp.get("country", "") or ""))
+    if not entries:
+        return None
+    gem_site_toks = {t for t in _simple_tokens(
+        normalize_terminal_name(gp.get("terminal_name", ""))) if len(t) >= 4}
+    gem_vessel_sets = gp.get("vessel_name_sets") or []
+    for e in entries:
+        for gt in gem_vessel_sets:
+            if gt and e["vessel_tokens"] and (
+                    gt <= e["vessel_tokens"] or e["vessel_tokens"] <= gt):
+                return e
+        st = e["site_tokens"]
+        if gem_site_toks and st and (gem_site_toks <= st or st <= gem_site_toks):
+            return e
+    return None
 
 
 def _fsru_operating_report_capacity(rp, gp):
@@ -1380,10 +1519,18 @@ def _build_gem_project_table(gem_csv):
                 row[ci["researcher_notes_unit"]]
                 if ci["researcher_notes_unit"] is not None else "")
 
+            # Distinguish a genuine 0 capacity from a MISSING/unknown one. A blank or
+            # unparseable cell leaves capacity UNKNOWN (cap_known=False) and must not
+            # render as "0" downstream — a cancelled unit with no DB capacity is
+            # unknown, not zero (Pluto LNG Terminal T3). `cap` stays a float (0.0
+            # sentinel) so the hardened capacity arithmetic below is unaffected;
+            # cap_known only gates DISPLAY (the non-operating sheet).
+            cap_known = bool(cap_mtpa)
             try:
                 cap = float(cap_mtpa) if cap_mtpa else 0.0
             except ValueError:
                 cap = 0.0
+                cap_known = False
 
             # Parse the GEM owner cell with the same parser the report side uses.
             # GEM cells are ";"-separated with "[NN%]" brackets ("QatarEnergy
@@ -1465,6 +1612,7 @@ def _build_gem_project_table(gem_csv):
                 "unit_name_norm": uname_norm,
                 "status": status,
                 "capacity_mtpa": cap,
+                "capacity_known": cap_known,
                 "capacity_ref": (cap_ref or "").strip(),
                 "start_year": _unit_anchor_year(row, ci, status),
                 "owners_set": owner_tags,
@@ -1553,7 +1701,7 @@ def _build_gem_project_table(gem_csv):
 
 
 def _classify(report_rows, gem_projects, alias_map=None, collision_regas=None,
-              prose_corrections=None):
+              prose_corrections=None, fsru_fleet_index=None, match_overrides=None):
     """Apply matching with canonical + alias + fuzzy passes, then classify.
 
     Returns dict with: matches, fuzzy_matches, report_only, gem_only_operating,
@@ -1561,6 +1709,7 @@ def _classify(report_rows, gem_projects, alias_map=None, collision_regas=None,
     """
     alias_map = alias_map or {}
     collision_regas = collision_regas or set()
+    fsru_fleet_index = fsru_fleet_index or {}
     prose_corrections = prose_corrections or {}
     prose_op = prose_corrections.get("op", {})
     prose_nonop = prose_corrections.get("nonop", {})
@@ -1773,6 +1922,13 @@ def _classify(report_rows, gem_projects, alias_map=None, collision_regas=None,
     # though the table lists it untagged). Move such rows out of the operating total.
     _apply_prose_corrections(report_projects, prose_op)
 
+    # Agent-authored match overrides: re-pin a GIIGNL report row that exact-matched
+    # the WRONG same-token GEM terminal to its true GEM terminal (e.g. "Putian,
+    # Fujian" → GEM "Fujian LNG Terminal", not the same-named Hanas construction
+    # site). Runs after the FSRU split / subname merge / prose pass so it sees the
+    # final report-project keys, and before `forced_gem` is read below.
+    _apply_match_overrides(report_projects, gem_projects, match_overrides or {})
+
     # Pass 1: exact match — first try canonical TerminalName, then OtherNames alias.
     matches = []
     matched_gp_keys: list[tuple] = []  # every GEM project key that got matched
@@ -1862,7 +2018,10 @@ def _classify(report_rows, gem_projects, alias_map=None, collision_regas=None,
         matched_rps_by_gp[gp_key].append(rp)
 
         matches.append({
-            "match_type": "exact_via_alias" if via_alias else "exact",
+            "match_type": ("exact_via_alias" if via_alias
+                           else "override" if rp.get("_match_override_basis")
+                           else "exact"),
+            "match_override": rp.get("_match_override_basis", ""),
             "confidence": confidence,
             "match_granularity": "unit" if unit_matches else "project",
             "country": rp["country"],
@@ -2270,7 +2429,7 @@ def _classify(report_rows, gem_projects, alias_map=None, collision_regas=None,
         # expected (GEM tracks pre-operating, GIIGNL doesn't)
         if "operating" not in gp["status_set"]:
             continue
-        gem_only.append({
+        rec = {
             "type": "gem_only",
             "country": gp["country"],
             "terminal_id": gp["terminal_id"],
@@ -2282,9 +2441,28 @@ def _classify(report_rows, gem_projects, alias_map=None, collision_regas=None,
             "total_units": gp["total_units"],
             "fsru": gp["fsru"],
             "owners": sorted(gp["owners_set"]),
-            "note": "GEM has this as operating but the report doesn't list it; investigate whether "
-                    "report missed it (small/non-member/sanctioned) OR GEM has it wrong",
-        })
+        }
+        # An FSRU absent from GIIGNL's country regas tables may still be in the
+        # separate FSRU fleet table — GIIGNL often lists floating terminals only
+        # there. Cross-check it before declaring "the report doesn't list it".
+        fleet_hit = _fleet_match_for_gem_only(gp, fsru_fleet_index)
+        if fleet_hit:
+            rec["report_fleet_match"] = {
+                "location_site": fleet_hit["location_site"],
+                "vessel_name": fleet_hit["vessel_name"],
+            }
+            rec["note"] = (
+                f"NOT a country-table omission to investigate — GIIGNL's FSRU "
+                f"fleet table DOES list this (vessel '{fleet_hit['vessel_name']}' "
+                f"at '{fleet_hit['location_site']}'); only the per-country regas "
+                f"tables skip it, as GIIGNL routinely does for floating terminals. "
+                f"Confirm GEM capacity/status against the giignl_fsru_fleet sheet.")
+        else:
+            rec["note"] = (
+                "GEM has this as operating but the report doesn't list it; "
+                "investigate whether report missed it "
+                "(small/non-member/sanctioned) OR GEM has it wrong")
+        gem_only.append(rec)
 
     # Attach the GEM capacity provenance to every match, so the build-script verdict
     # logic can fire the "GIIGNL <year> edition superseded by 2026" rule (and route
@@ -2337,7 +2515,10 @@ def _classify(report_rows, gem_projects, alias_map=None, collision_regas=None,
                 "gem_terminal_name": gp["terminal_name"],
                 "gem_unit_name": u["unit_name"],
                 "status": u["status"],
-                "capacity_mtpa": round(u["capacity_mtpa"], 2),
+                # None (blank cell) when GEM has NO capacity value for this unit —
+                # never conflate unknown with a genuine 0.
+                "capacity_mtpa": (round(u["capacity_mtpa"], 2)
+                                  if u.get("capacity_known", True) else None),
                 "start_year": u["start_year"],
                 "section_type": gp["section_type"],
                 "owners": sorted(u["owners_set"]),
@@ -2380,6 +2561,16 @@ def main():
                    help="Path to agent-authored §3.2.1 narrative operating-status "
                         "corrections JSON. Defaults to giignl_prose_corrections.json "
                         "next to the extracted CSV, if present.")
+    p.add_argument("--fsru-fleet", default=None,
+                   help="Path to the parsed GIIGNL FSRU-fleet JSON (from "
+                        "giignl_fsru_fleet.py). Defaults to giignl_fsru_fleet.json "
+                        "next to the extracted CSV, if present. Lets the gem_only "
+                        "pass recognize FSRUs GIIGNL lists only in the fleet table.")
+    p.add_argument("--match-overrides", default=None,
+                   help="Path to agent-authored match-override JSON (pins a "
+                        "GIIGNL row to a specific GEM terminal by id, overriding "
+                        "a wrong same-token exact match). Defaults to "
+                        "staged_match_overrides.json next to the extracted CSV.")
     # Default matches the filename every SOP/CLAUDE.md command passes and that
     # build_review_package.py looks for (it keeps a report_diff.json fallback too).
     p.add_argument("--output", default="./giignl_diff.json")
@@ -2400,14 +2591,38 @@ def main():
         print(f"  Loaded {n_op} operating-status correction(s) + {n_nonop} non-op "
               f"corroboration(s) from narrative pass ({prose_path})")
 
+    # Default the FSRU-fleet path to a file beside the extracted CSV.
+    fleet_path = args.fsru_fleet
+    if fleet_path is None:
+        guess = Path(args.extracted).with_name("giignl_fsru_fleet.json")
+        fleet_path = str(guess) if guess.exists() else None
+    fsru_fleet_index = _build_fsru_fleet_index(fleet_path)
+    if fsru_fleet_index:
+        n_vessels = sum(len(v) for v in fsru_fleet_index.values())
+        print(f"  Loaded {n_vessels} FSRU-fleet deployment(s) for gem_only "
+              f"cross-check ({fleet_path})")
+
+    # Default the match-overrides path to a file beside the extracted CSV.
+    override_path = args.match_overrides
+    if override_path is None:
+        guess = Path(args.extracted).with_name("staged_match_overrides.json")
+        override_path = str(guess) if guess.exists() else None
+    match_overrides = _load_match_overrides(override_path)
+    if match_overrides:
+        print(f"  Loaded {len(match_overrides)} match override(s) ({override_path})")
+
     gem_projects, alias_map, collision_regas = _build_gem_project_table(args.gem_csv)
     diff = _classify(report_rows, gem_projects, alias_map=alias_map,
                      collision_regas=collision_regas,
-                     prose_corrections=prose_corrections)
+                     prose_corrections=prose_corrections,
+                     fsru_fleet_index=fsru_fleet_index,
+                     match_overrides=match_overrides)
     diff["report_type"] = args.report
     diff["extracted_csv"] = args.extracted
     diff["gem_csv"] = args.gem_csv
     diff["prose_corrections_path"] = prose_path or ""
+    diff["fsru_fleet_path"] = fleet_path or ""
+    diff["match_overrides_path"] = override_path or ""
 
     Path(args.output).write_text(json.dumps(diff, indent=2, default=str))
 

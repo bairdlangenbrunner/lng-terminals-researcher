@@ -2,21 +2,29 @@
   "_comment": "Agent-authored §3.2.1 narrative-prose pass over the GIIGNL 2026 Annual Report (liquefaction narrative pp.28-31, regasification narrative pp.48-52). Every forward-looking / status finding from the prose, triaged against the fresh GEM export and (for actionable items) web-verified against authoritative sources. These route to giignl_to_action with their target route. GIIGNL prose is NOT authoritative and is never auto-applied (SOP §3.8); each actionable item carries a verified non-GIIGNL corroborating source. Confidence: high = corroborated by primary/IR or 2+ independent sources; medium = single-origin detail or recent/contested. action_category drives the giignl_to_action routing.",
   "_schema_optional_arrays": "Two OPTIONAL arrays may be added to any finding to carry STRUCTURED owner-change and name-change (rename) data instead of burying it in prose_finding free-text. A finding without them behaves exactly as before. (1) owner_changes: [{ entity: str (the entity whose stake changes — e.g. 'Stonepeak'), action: 'acquire'|'divest'|'add'|'remove', pct: number|null (stake percentage, null if unstated), stake_of: str (what the pct is a stake OF — e.g. 'infrastructure company' or terminal name), counterparty: str (the other party — seller/buyer/partner), anchor: str (year or YYYY-MM the change anchors to), entity_lookup: 'pending'|'done' (whether entity_lookup.py has been run to confirm the entity isn't a duplicate) }]. Each owner_changes entry routes (a) a row into the entity_additions sheet — so the entity goes through the dup-check path, with the dup-check column set to 'RUN entity_lookup' when entity_lookup=='pending' — AND (b) a giignl_to_action row with action_category 'narrative_owner_delta'. (2) name_changes: [{ old: str (former name), new: str (current name), gem_field: str (target GEM column, typically 'OtherNames'), anchor: str (year the rename anchors to) }]. Each name_changes entry routes (a) a row into a NEW name_reconciliation sheet AND (b) a giignl_to_action row with action_category 'narrative_name_delta'. Both arrays reuse the finding's citation; nothing is auto-applied (§3.8) — these are routing candidates for the human gate.",
   "edition_year": 2026,
-  "narrative_pages": {"liquefaction": "28-31", "regasification": "48-52"},
+  "narrative_pages": {
+    "liquefaction": "28-31",
+    "regasification": "48-52"
+  },
   "findings": [
     {
       "action_category": "narrative_update",
-      "country": "Mozambique",
-      "site_name": "Mozambique LNG (Afungi)",
-      "gem_terminal_name": "Mozambique LNG Terminal",
+      "country": "Republic of the Congo",
+      "site_name": "Congo LNG Phase 2 (Nguya FLNG)",
+      "gem_terminal_name": "Eni Congo FLNG II Terminal",
       "section_type": "liquefaction",
-      "gem_status_now": "shelved",
-      "prose_finding": "Force majeure (declared 2021) lifted; TotalEnergies announced full restart of onshore+offshore activities. 12.8 MTPA, ~40% complete, first LNG targeted 2029.",
-      "recommended_status_change": "shelved -> construction",
-      "recommended_workflow": "Update (+ status_timeline: construction 2025-11/2026-01)",
+      "gem_status_now": "construction",
+      "prose_finding": "Nguya FLNG (second floating unit of the Congo LNG complex) shipped its first LNG cargo on 7 Feb 2026, starting up Phase 2 and bringing the complex (with the existing Tango FLNG) to ~3 MTPA total liquefaction capacity. Gas sourced from the Nene/Litchendjili fields in the Marine XII license. Start-up came ~35 months after construction began. Status flip construction -> operating is well corroborated by Eni's own press release plus two independent trade-press outlets.",
+      "recommended_status_change": "construction -> operating",
+      "recommended_workflow": "Update (+ status_timeline: operating 2026-02). FSRU/FLNG vessel-sync touchpoint: Nguya FLNG vessel identity owned by the carrier project.",
       "confidence": "high",
-      "citation": "GIIGNL 2026 liq narrative p.~29; corroborated: TotalEnergies press release 2026-01-29 (full restart); Bloomberg 2025-10-25 (FM lift decision); JPT/SPE.",
-      "sources": ["https://totalenergies.com/newsroom/mozambique-lng-announces-the-full-restart-of-all-its-activities-onshore-and-offshore-in-mozambique/?lang=eng"]
+      "citation": "GIIGNL 2026 liq narrative p.~28; corroborated: Eni press release 2026-02-07; LNG Industry 2026-02-27; Oil & Gas Journal.",
+      "sources": [
+        "https://www.eni.com/en-IT/media/press-release/2026/02/president-congo-and-eni-celebrate-first-lng-cargo.html",
+        "https://www.lngindustry.com/floating-lng/27022026/nguya-flng-achieves-first-lng-cargo/",
+        "https://www.ogj.com/pipelines-transportation/lng/news/55357459/eni-delivers-congo-lng-phase-2-with-first-cargo-from-nguya-vessel"
+      ],
+      "verifier_log": "eni.com PR [Nguya, first, cargo] -> PASS; lngindustry.com [Nguya, first, cargo] -> PASS; ogj.com [Nguya, cargo] -> PASS"
     },
     {
       "action_category": "narrative_update",
@@ -25,184 +33,276 @@
       "gem_terminal_name": "Darwin LNG Terminal",
       "section_type": "liquefaction",
       "gem_status_now": "idled",
-      "prose_finding": "Bayu-Undan depleted; Barossa feedgas (via Barossa FPSO) now supplying the plant; resumed exports, first Barossa cargo loaded (vessel Kool Blizzard) 25 Jan 2026. 3.7 MTPA single train.",
+      "prose_finding": "Darwin LNG (3.7 MTPA single train) restarted after its Bayu-Undan feedgas depleted; the Barossa Gas Project (Barossa FPSO) now backfills the plant. First Barossa cargo loaded aboard the Kool Blizzard, departed Darwin LNG 25 Jan 2026 bound for Sakai, Japan. Santos (operator, 50%) confirmed restart; status flip idled -> operating corroborated by Santos plus an independent trade outlet. (Also explains the giignl_diff Darwin 3.7-vs-0.0 operating gap.)",
       "recommended_status_change": "idled -> operating",
-      "recommended_workflow": "Update (+ status_timeline: operating 2026-01) — also explains the giignl_diff Darwin 3.7-vs-0.0 gap (GEM operating total was 0 while idled)",
+      "recommended_workflow": "Update (+ status_timeline: operating 2026-01). Resolves giignl_diff Darwin 3.7-vs-0.0 (GEM operating total was 0 while idled).",
       "confidence": "high",
-      "citation": "GIIGNL 2026 liq narrative p.~30; corroborated: Santos 'first Barossa LNG cargo' (2026-01-27); Rigzone; Argus.",
-      "sources": ["https://www.santos.com/news/santos-announces-first-barossa-lng-cargo/"]
-    },
-    {
-      "action_category": "narrative_update",
-      "country": "Republic of the Congo",
-      "site_name": "Congo LNG Phase 2 (Nguya FLNG)",
-      "gem_terminal_name": "Eni Congo FLNG II Terminal",
-      "section_type": "liquefaction",
-      "gem_status_now": "construction",
-      "prose_finding": "Nguya FLNG shipped first cargo 7 Feb 2026, starting Phase 2; brings Congo LNG complex to ~3 MTPA (with existing Tango FLNG). Gas from Marine XII (Nene/Litchendjili).",
-      "recommended_status_change": "construction -> operating",
-      "recommended_workflow": "Update (+ status_timeline: operating 2026-02). FSRU/FLNG vessel-sync touchpoint (Nguya FLNG vessel identity owned by carrier project).",
-      "confidence": "high",
-      "citation": "GIIGNL 2026 liq narrative p.~28; corroborated: Eni press release 2026-02-07; Oil & Gas Journal; LNG Industry.",
-      "sources": ["https://www.eni.com/en-IT/media/press-release/2026/02/president-congo-and-eni-celebrate-first-lng-cargo.html"]
-    },
-    {
-      "action_category": "narrative_update",
-      "country": "Qatar",
-      "site_name": "Ras Laffan / QatarEnergy LNG Trains 4 & 6",
-      "gem_terminal_name": "QatarEnergy LNG (N) and/or QatarEnergy LNG (S) — identify which units are T4/T6",
-      "section_type": "liquefaction",
-      "gem_status_now": "operating",
-      "prose_finding": "Iranian missile strikes on 18 Mar 2026 damaged LNG Trains 4 and 6 (~12.8 MTPA, ~17% of Qatar LNG); QatarEnergy declared force majeure; repairs est. 3-5 years. (Post-dates the GIIGNL operating table snapshot, so NOT a giignl_diff correction — a forward Update.)",
-      "recommended_status_change": "operating -> idled (Trains 4 & 6 only; rest of complex unaffected)",
-      "recommended_workflow": "Update (+ status_timeline: idled 2026-03). VERIFY which GEM units map to GIIGNL 'Train 4/6'. Hold pending damage assessment.",
-      "confidence": "medium",
-      "citation": "GIIGNL 2026 liq narrative p.~28-29; corroborated: Al Jazeera 2026-03-24 (force majeure); CNBC 2026-03-18; Reuters via Bloomberg. NOTE: precise train numbers (4 & 6) are single-origin (QatarEnergy CEO via Reuters); figures still under assessment.",
-      "sources": ["https://www.aljazeera.com/news/2026/3/24/qatarenergy-declares-force-majeure-on-some-lng-contracts"]
-    },
-    {
-      "action_category": "narrative_update",
-      "country": "Russia",
-      "site_name": "Portovaya LNG",
-      "gem_terminal_name": "Portovaya LNG Terminal",
-      "section_type": "liquefaction",
-      "gem_status_now": "operating, shelved",
-      "prose_finding": "US sanctioned operator 13 Jan 2025; exports ceased after OFAC grace period ended 27 Feb 2025 (last cargo mid-Jan 2025). ~1.5 MTPA. Plant physically intact.",
-      "recommended_status_change": "operating -> idled (sanctions-driven; apply lifecycle_rules.md — idled/mothballed, not cancelled)",
-      "recommended_workflow": "Update (+ status_timeline: idled 2025-02)",
-      "confidence": "high",
-      "citation": "GIIGNL 2026 liq narrative p.~27; corroborated: LNG Prime 2025-01; Reuters via Gas Processing News; Pipeline & Gas Journal.",
-      "sources": ["https://lngprime.com/americas/us-sanctions-two-russian-lng-terminal-operators/137781/"]
-    },
-    {
-      "action_category": "narrative_update",
-      "country": "Russia",
-      "site_name": "Vysotsk LNG (Kryogaz-Vysotsk)",
-      "gem_terminal_name": "Vysotsk LNG Terminal",
-      "section_type": "liquefaction",
-      "gem_status_now": "operating",
-      "prose_finding": "US sanctioned operator 13 Jan 2025; exports ceased after grace period 27 Feb 2025 (last cargo dispatched 18 Feb 2025 -> Zeebrugge). ~0.82 MTPA.",
-      "recommended_status_change": "operating -> idled (sanctions-driven)",
-      "recommended_workflow": "Update (+ status_timeline: idled 2025-02)",
-      "confidence": "high",
-      "citation": "GIIGNL 2026 liq narrative p.~27; corroborated: LNG Prime 2025-01; Reuters via Gas Processing News.",
-      "sources": ["https://lngprime.com/americas/us-sanctions-two-russian-lng-terminal-operators/137781/"]
-    },
-    {
-      "action_category": "narrative_update",
-      "country": "Nigeria",
-      "site_name": "Nigeria LNG (NLNG) Train 7, Bonny Island",
-      "gem_terminal_name": "Nigeria LNG Terminal",
-      "section_type": "liquefaction",
-      "gem_status_now": "construction (Train 7), operating (T1-6)",
-      "prose_finding": "Train 7 >80% complete (GIIGNL); now 92% as of 21 May 2026 (NLNG official), entering pre-commissioning. Raises Bonny capacity 22->30 MTPA (+8).",
-      "recommended_status_change": "no lifecycle change (remains construction) — progress + anchor-year/confidence update",
-      "recommended_workflow": "Update (confidence bump; confirm % + no first-LNG date yet)",
-      "confidence": "high",
-      "citation": "GIIGNL 2026 liq narrative p.~28; corroborated: ThisDay 2026-05-21 (92%); NLNG official Train 7 page; Punch.",
-      "sources": ["https://www.nlng.com/operations/train-7"]
-    },
-    {
-      "action_category": "narrative_update",
-      "country": "United States",
-      "site_name": "Woodside Louisiana LNG (formerly Driftwood)",
-      "gem_terminal_name": "Driftwood LNG Terminal",
-      "section_type": "liquefaction",
-      "gem_status_now": "construction",
-      "prose_finding": "Woodside (which acquired Tellurian/Driftwood in 2024) renamed the Driftwood project 'Woodside Louisiana LNG' and took FID on Phase 1 (Apr 2025); Stonepeak agreed to acquire a 40% equity stake in the project's infrastructure company (Woodside retains ~60% + operatorship) to fund construction. Phase 1 ~16.5 MTPA.",
-      "recommended_status_change": "no lifecycle change (remains construction) — rename + ownership split (40% Stonepeak) + confidence/anchor refresh",
-      "recommended_workflow": "Update (rename → OtherNames; add Stonepeak as owner via entity_lookup; confirm Woodside operatorship). Do NOT auto-apply — corroborate prose vs Woodside IR / Stonepeak release before staging.",
-      "confidence": "medium",
-      "citation": "GIIGNL 2026 liq narrative; corroborate vs Woodside IR / Stonepeak release before staging",
-      "sources": [],
-      "owner_changes": [
-        {
-          "entity": "Stonepeak",
-          "action": "acquire",
-          "pct": 40,
-          "stake_of": "Woodside Louisiana LNG infrastructure company",
-          "counterparty": "Woodside",
-          "anchor": "2025",
-          "entity_lookup": "pending"
-        }
+      "citation": "GIIGNL 2026 liq narrative p.~30; corroborated: Santos 'first Barossa LNG cargo' 2026-01-27; Offshore Energy 2026-01.",
+      "sources": [
+        "https://www.santos.com/news/santos-announces-first-barossa-lng-cargo/",
+        "https://www.offshore-energy.biz/first-lng-cargo-from-australias-huge-gas-project-on-its-way-to-japan/"
       ],
-      "name_changes": [
-        {
-          "old": "Driftwood",
-          "new": "Woodside Louisiana LNG",
-          "gem_field": "OtherNames",
-          "anchor": "2025"
-        }
-      ]
+      "verifier_log": "santos.com [Darwin, Barossa] -> PASS; offshore-energy.biz [Darwin, Barossa] -> PASS; rigzone.com [Darwin,Barossa,Kool Blizzard] -> FAIL(HTTP 202 bot-challenge); offshore-technology.com -> FAIL(HTTP 403); lngindustry.com lng-shipping -> FAIL(missing Darwin/Kool Blizzard)"
     },
     {
-      "action_category": "narrative_discovery",
-      "country": "Iraq",
-      "site_name": "Khor Al Zubair LNG Import Terminal (FSRU)",
-      "gem_terminal_name": "",
+      "action_category": "narrative_update",
+      "country": "Dominican Republic",
+      "site_name": "Manzanillo (Pepillo Salcedo) LNG Terminal / Manzanillo Power Land FSRU",
+      "gem_terminal_name": "Manzanillo (Dominican Republic) LNG Terminal",
       "section_type": "regasification",
-      "gem_status_now": "NOT IN GEM",
-      "prose_finding": "Iraq's FIRST LNG import terminal. Excelerate Energy signed definitive agreement with Iraq Ministry of Electricity 28 Oct 2025; FSRU 'Hull 3407' (170,000 cbm) under construction at HD Hyundai, delivery 2026, COD 2026. Capacity ~500 MMscf/d guaranteed (vessel up to 1,000 MMscf/d); min offtake 250 MMscf/d. ~$450M.",
-      "recommended_status_change": "ADD as construction/proposed (agreement signed + FSRU under construction)",
-      "recommended_workflow": "Discovery (meets 'sufficient info to add': sponsor Excelerate + location Khor Al Zubair + signed agreement). FSRU SYNC: vessel = Hull 3407 (no name/IMO yet) -> cross-check carrier project. Run capacity_normalize on MMscf/d -> MTPA.",
-      "confidence": "high",
-      "citation": "GIIGNL 2026 regas narrative p.51; corroborated: Excelerate Energy press release 2025-10-28.",
-      "sources": ["https://excelerateenergy.com/news/excelerate-energy-signs-definitive-agreement-for-fully-integrated-floating-lng-import-terminal-in-iraq/"]
+      "gem_status_now": "construction",
+      "prose_finding": "New Fortress Energy's 125,856-cbm FSRU Energos Freeze (3-yr charter) was deployed to Manzanillo Bay (Pepillo Salcedo, Montecristi), arriving 31 Aug 2025 and due to start operations Sept 2025, providing LNG regasification to support power generation. First commissioning LNG cargo arrived early Jan 2026; the integrated 414 MW combined-cycle Manzanillo Power Land plant was commissioned and inaugurated 27 Mar 2026, consuming the regasified gas. The regas terminal is therefore in operation. NOTE: no source states the terminal itself was formally 'declared operating'; the operating inference rests on (a) FSRU deployed and operating + (b) the gas-consuming power plant commissioned/inaugurated -- two independent origins. Solid but inferential, hence medium confidence. (Watch: one source mentions a separate larger land-based storage phase with first injections ~2027 -- that is a future expansion, NOT the FSRU now feeding the plant.)",
+      "recommended_status_change": "construction -> operating",
+      "recommended_workflow": "Update (+ status_timeline: operating 2026-01/2026-03). FSRU SYNC: vessel = Energos Freeze (NFE/Energos fleet) -> cross-check carrier project for vessel name + IMO.",
+      "confidence": "medium",
+      "citation": "GIIGNL 2026 regas narrative; corroborated: Offshore (offshore-mag.com) FSRU deployment ('start operations in September', 'LNG regasification to support power generation'); Energia 2000 press release 27 Mar 2026 (414 MW plant commissioned).",
+      "sources": [
+        "https://www.offshore-mag.com/vessels/news/55290461/new-fortress-energy-new-fortress-clinches-fsru-deployment-in-dominican-republic-port",
+        "https://www.newsfilecorp.com/release/292153/Energia-2000-Commissions-414-MW-Manzanillo-Power-Plant-in-Dominican-Republic"
+      ],
+      "verifier_log": "offshore-mag.com [Manzanillo, FSRU] -> PASS; newsfilecorp.com [Manzanillo, natural gas] -> PASS; theglobeandmail.com mirror [Manzanillo, natural gas] -> PASS (same Energia2000 PR as Newsfile, NOT independent of it); dominicantoday 2026-01-08 -> FAIL(404); dominicantoday 2025-09-01 -> FAIL(404); inmobiliario.do -> FAIL(missing natural gas/LNG); splash247 -> FAIL(HTTP 403)"
     },
     {
-      "action_category": "narrative_discovery",
-      "country": "Colombia",
-      "site_name": "Buenaventura / Buga LNG (Regasificadora del Pacifico)",
-      "gem_terminal_name": "",
-      "section_type": "regasification",
-      "gem_status_now": "NOT IN GEM (distinct from existing 'Coveñas FSRU')",
-      "prose_finding": "Pacific-coast FSU-based import: FSU/marine at Buenaventura, regas plant at Buga (Valle del Cauca). Owner Regasificadora del Pacifico (RDP, part of PIO SAS); Ecopetrol offtaker; Exmar FSU lessor (5-yr charter, secured Sept 2025). Financial close ~Feb 2026 ($130M senior debt). Ops expected Q3 2026. ~60 MMcf/d (~0.45 MTPA, derived).",
-      "recommended_status_change": "ADD as construction (financial close reached, FSU conversion underway)",
-      "recommended_workflow": "Discovery. FSU SYNC: vessel not yet named -> leave blank. entity_lookup: 'Regasificadora del Pacifico' / 'PIO SAS' (likely new). Run capacity_normalize (source gives MMcf/d, not MTPA).",
-      "confidence": "high",
-      "citation": "GIIGNL 2026 regas narrative p.~50; corroborated: Exmar press release (financing close); LNG Prime 2026-02; LNG Industry. NB: Ecopetrol-PIO contract was Feb 2025 (GIIGNL said March).",
-      "sources": ["https://exmar.com/en/news-center/successful-closing-of-financing-documents-on-buenaventura-project/", "https://lngprime.com/americas/colombian-lng-import-project-secures-financing/177400/"]
-    },
-    {
-      "action_category": "narrative_discovery",
-      "country": "Argentina",
-      "site_name": "Southern Energy (SESA) FLNG — Hilli Episeyo + Golar MK II",
-      "gem_terminal_name": "Argentina LNG Terminal (existing umbrella; SESA Phase 1 likely missing at unit granularity)",
+      "action_category": "narrative_update",
+      "country": "Mozambique",
+      "site_name": "Coral North FLNG (Rovuma Area 4)",
+      "gem_terminal_name": "Coral North FLNG Terminal",
       "section_type": "liquefaction",
-      "gem_status_now": "proposed (single undifferentiated 'Argentina LNG Terminal')",
-      "prose_finding": "SESA FLNG in Gulf of San Matías, Río Negro. FID taken on TWO FLNG units: Hilli Episeyo (2.45 MTPA, relocating from Cameroon/Kribi ~mid-2027, ops Q4 2027) + Golar MK II (3.5 MTPA, late 2028); combined ~5.95 MTPA. Owners: Pan American Energy 30%, YPF 25%, Pampa Energía 20%, Harbour Energy 15%, Golar LNG 10%.",
-      "recommended_status_change": "ADD/UPDATE: SESA Phase 1 (Hilli + MK II) as FID'd construction units under the Argentina LNG complex — more advanced lifecycle than the rest of the umbrella",
-      "recommended_workflow": "Discovery/Update (two new FLNG units). FLNG vessel-sync: Hilli Episeyo is a relocating vessel (currently Cameroon FLNG) -> carrier-project cross-check. Distinguish from the pre-FID YPF/Eni/XRG ARGLNG 12 MTPA phase.",
+      "gem_status_now": "proposed",
+      "prose_finding": "Eni and partners (Eni 50%, CNPC 20%, Kogas 10%, ENH 10%, ADNOC/XRG 10%) took FID on the Coral North FLNG project on 2 Oct 2025; ultra-deepwater offshore Cabo Delgado, Area 4 Rovuma Basin. >$7.2bn investment; targeted operational 2028. Liquefaction capacity 3.6 MTPA -- confirmed in Eni's own FID press release (so the 3.4 -> 3.6 MTPA bump is correct, GIIGNL/GEM should carry 3.6). FID corroborated by Eni PR plus two independent outlets; status flip proposed -> construction is well supported.",
+      "recommended_status_change": "proposed -> construction",
+      "recommended_workflow": "Update (+ status_timeline: construction 2025-10; capacity 3.4 -> 3.6 MTPA).",
       "confidence": "high",
-      "citation": "GIIGNL 2026 liq narrative p.~29; corroborated: Harbour Energy IR (SESA FID); Offshore Mag; Oil & Gas Journal; JPT/SPE.",
-      "sources": ["https://www.harbourenergy.com/news-and-media/southern-energy-sa-final-investment-decision/"]
+      "citation": "GIIGNL 2026 liq narrative; corroborated: Eni press release 2025-10-02 (FID, '3.6 MTPA'); LNG Industry 2025-10-07; Xinhua 2025-10-04.",
+      "sources": [
+        "https://www.eni.com/en-IT/media/press-release/2025/10/pr-eni-announces-final-investment-decision-mozambique-coral-north-project.html",
+        "https://www.lngindustry.com/floating-lng/07102025/xrg-celebrates-coral-north-flng-positive-final-investment-decision/",
+        "https://english.news.cn/africa/20251004/78d3aae216574056a3ec7062a2d903b7/c.html"
+      ],
+      "verifier_log": "eni.com PR [Coral North, 3.6, investment] -> PASS; lngindustry.com [Coral North, 3.6] -> PASS; english.news.cn [Coral North, investment decision] -> PASS"
     },
     {
-      "action_category": "narrative_monitor",
-      "country": "Japan",
-      "site_name": "Tomakomai LNG Terminal (Tomakomai East Port)",
-      "gem_terminal_name": "",
-      "section_type": "regasification",
-      "gem_status_now": "NOT IN GEM",
-      "prose_finding": "Hokkaido Gas studying a new carbon-neutral LNG hub (LNG + future H2/e-methane) at Tomakomai East Port. Funded FY2024-FY2025 feasibility study; no FID, no capacity, no target year.",
-      "recommended_status_change": "monitor_list (below firm add-threshold — no capacity/FID)",
-      "recommended_workflow": "Monitor (sponsor + location + feasibility study, but no capacity/FID)",
+      "action_category": "narrative_update",
+      "country": "Mozambique",
+      "site_name": "Mozambique LNG (Afungi, TotalEnergies)",
+      "gem_terminal_name": "Mozambique LNG Terminal",
+      "section_type": "liquefaction",
+      "gem_status_now": "shelved",
+      "prose_finding": "TotalEnergies lifted the force majeure (declared 2021) on 7 Nov 2025 and announced a full restart of onshore and offshore activities at the Afungi site (>4,000 workers mobilized). Project ~40% complete; first LNG targeted 2029; revised budget ~$20.5bn. T1-T2 nameplate ~12.8-13.1 MTPA. Status flip shelved -> construction is strongly corroborated by TotalEnergies' own release plus two independent trade outlets (Upstream, JPT/SPE).",
+      "recommended_status_change": "shelved -> construction",
+      "recommended_workflow": "Update (+ status_timeline: construction 2025-11). Capacity ~12.8 MTPA (T1+T2).",
       "confidence": "high",
-      "citation": "GIIGNL 2026 regas narrative p.~48; corroborated: LNG Prime ('Hokkaido Gas eyes new LNG terminal').",
-      "sources": ["https://lngprime.com/asia/japans-hokkaido-gas-eyes-new-lng-terminal/137232/"]
+      "citation": "GIIGNL 2026 liq narrative p.~29; corroborated: TotalEnergies press release (full restart, Jan 2026); Upstream 2025 (FM lift, $20bn); JPT/SPE.",
+      "sources": [
+        "https://totalenergies.com/news/press-releases/mozambique-lng-announces-full-restart-all-its-activities-onshore-and-offshore",
+        "https://www.upstreamonline.com/lng/totalenergies-lifts-force-majeure-on-20-billion-mozambique-lng/2-1-1891251",
+        "https://jpt.spe.org/totalenergies-lifts-force-majeure-on-mozambique-lng"
+      ],
+      "verifier_log": "totalenergies.com [restart, Mozambique] -> PASS; upstreamonline.com [force majeure, Mozambique] -> PASS; jpt.spe.org [force majeure, Mozambique] -> PASS"
+    },
+    {
+      "action_category": "narrative_update",
+      "country": "Italy",
+      "site_name": "Ravenna FSRU (BW Singapore, Snam)",
+      "gem_terminal_name": "Ravenna FSRU Terminal",
+      "section_type": "regasification",
+      "gem_status_now": "construction",
+      "prose_finding": "Snam's FSRU BW Singapore (170,000-cbm, moored ~8.5 km offshore Ravenna at the Petra platform on 28 Feb 2025) completed commissioning 28 Apr 2025 and entered commercial regasification operations in May 2025. Status flip construction -> operating confirmed. CAPACITY CONFLICT RESOLVED: the terminal's regasification capacity is 5 BILLION CUBIC METRES PER YEAR (Snam official + LNG Prime + Offshore Energy all state '5 billion cubic metres'). 5 bcm/yr converts to ~3.7 MTPA. Therefore GIIGNL's 3.7 (MTPA) and the 5.0 (bcm/yr) figure describe the SAME capacity. GEM's stored '5.0' is the bcm/yr value mislabeled as MTPA -- a units error. CORRECT MTPA = 3.7 (GIIGNL is right); GEM should carry 3.7 MTPA (= 5.0 bcm/yr), not 5.0 MTPA.",
+      "recommended_status_change": "construction -> operating",
+      "recommended_workflow": "Update (+ status_timeline: operating 2025-05; capacity fix 5.0 MTPA -> 3.7 MTPA, i.e. correct the units: 5.0 is bcm/yr not MTPA). FSRU SYNC: vessel = BW Singapore -> carrier-project cross-check.",
+      "confidence": "high",
+      "citation": "GIIGNL 2026 regas narrative; corroborated: Snam official Ravenna page (5 bcm/yr); LNG Prime 2025-04-28 (commissioning complete, 5 bcm/yr, ops May 2025); Offshore Energy; Gas Processing News 2025-04 (commissioning complete).",
+      "sources": [
+        "https://www.snam.it/en/we-snam/about-us/our-infrastructure/onshore-regasification-terminal/ravenna.html",
+        "https://lngprime.com/europe/snam-wraps-up-ravenna-fsru-commissioning/149340/",
+        "https://www.offshore-energy.biz/snam-closing-in-on-lng-terminals-startup-as-fsru-is-moored-in-ravenna/",
+        "https://www.gasprocessingnews.com/news/2025/04/snam-completes-commissioning-of-fsru-offshore-ravenna-italy/"
+      ],
+      "verifier_log": "snam.it [Ravenna, 5 billion] -> PASS; lngprime.com [Ravenna, 5 billion] -> PASS; offshore-energy.biz [Ravenna, 5 billion] -> PASS; gasprocessingnews.com [Ravenna, commissioning] -> PASS; rigzone.com [Ravenna,BW Singapore,5 billion] -> FAIL(HTTP 202 bot-challenge); lngindustry.com [Ravenna,operational] -> FAIL(missing 'operational')"
+    },
+    {
+      "action_category": "narrative_update",
+      "country": "Argentina",
+      "site_name": "Southern Energy SA (SESA) FLNG — Hilli Episeyo + MK II FLNG, Gulf of San Matias, Rio Negro",
+      "gem_terminal_name": "Argentina LNG Terminal — Phase 1.1 (Golar Hilli Episeyo FLNG) + Phase 1.2 (Golar MK II FLNG)",
+      "section_type": "liquefaction",
+      "gem_status_now": "proposed (both units; GEM Owner already Southern Energy SA [100%], 2.45 + 3.5 MTPA = 5.95 MTPA)",
+      "prose_finding": "FID CONFIRMED on the SESA FLNG project. Definitive agreements signed 2 May 2025; FID announced 6 Aug 2025 for the 20-year charter of Golar's MK II FLNG (3.5 MTPA), and conditions precedent satisfied 23 Oct 2025. Two FLNG units in the Gulf of San Matias: Hilli Episeyo (2.45 MTPA, relocating from Cameroon/Kribi, charter start ~2027) and MK II (3.5 MTPA, under conversion in China, start-up ~2028). Combined nameplate 5.95 MTPA. SESA ownership: Pan American Energy 30%, YPF 25%, Pampa Energia 20%, Harbour Energy 15%, Golar 10%. Both GEM unit-rows still marked 'proposed' — should advance to construction (FID taken / charter contracts in force).",
+      "recommended_status_change": "proposed -> construction (both Phase 1.1 and Phase 1.2 unit-rows; apply to all unit-rows of the project for project-level fields)",
+      "recommended_workflow": "Update (+ status_timeline: construction 2025-08). FLNG vessel-sync: Hilli Episeyo is a relocating vessel (currently Cameroon FLNG) and MK II under conversion -> carrier-project cross-check. Distinguish from pre-FID YPF/Eni/XRG ARGLNG Phase 2/3 (those stay proposed).",
+      "confidence": "high",
+      "citation": "GIIGNL 2026 liq narrative p.~29; corroborated by 3 independent verified sources (Offshore Magazine, LNG Industry, Golar/GlobeNewswire FID release).",
+      "sources": [
+        "https://www.offshore-mag.com/vessels/news/55308495/golar-lng-southern-energy-issues-fid-for-flng-project-offshore-argentina",
+        "https://www.lngindustry.com/floating-lng/07082025/southern-energy-achieves-fid-for-flng-charter/",
+        "https://www.globenewswire.com/news-release/2025/08/06/3128725/0/en/Final-Investment-Decision-for-20-year-charter-of-MK-II-FLNG-to-Southern-Energy-in-Argentina.html"
+      ],
+      "verifier_log": "offshore-mag PASS (Southern Energy, FID, Hilli); lngindustry PASS (Southern Energy, FID, MK II); globenewswire PASS (Final Investment Decision, MK II, Southern Energy)"
+    },
+    {
+      "action_category": "narrative_update",
+      "country": "Thailand",
+      "site_name": "Map Ta Phut LNG Terminal 3 (Gulf MTP LNG Terminal), Map Ta Phut, Rayong",
+      "gem_terminal_name": "Map Ta Phut LNG Terminal 3 — Phase I + Phase II",
+      "section_type": "regasification",
+      "gem_status_now": "proposed (Phase I 5.0 MTPA + Phase II 5.8 MTPA; Owner Gulf MPT LNG Terminal Co Ltd)",
+      "prose_finding": "Narrative names Thailand's THIRD LNG terminal at Map Ta Phut (Gulf MTP JV: Gulf 70% / PTT Tank Terminal 30%) — NOT the existing Nong Fab terminal (that is the second/PTT-EGAT terminal, already operating). In April 2025 Gulf + PTT Tank announced via stock-exchange filing they would proceed; EPC/EPCC contract signed; construction expected to begin Q4 2025 with operations Q1 2029. Initial capacity ~8 Mt/y, expandable to ~10.8 Mt/y. GEM Phase I still 'proposed' — should advance to construction (EPC signed + construction start declared Q4 2025).",
+      "recommended_status_change": "proposed -> construction (Phase I at minimum; Phase II remains expansion/proposed pending confirmation)",
+      "recommended_workflow": "Update (+ status_timeline: construction 2025-Q4). Confirm Phase I vs Phase II capacity split vs the GEM 5.0/5.8 rows before applying. The narrative names Map Ta Phut Terminal 3, not Nong Fab.",
+      "confidence": "high",
+      "citation": "GIIGNL 2026 regas narrative pp.48-52; corroborated by 2 independent verified sources (Enerdata, Offshore Energy).",
+      "sources": [
+        "https://www.enerdata.net/publications/daily-energy-news/gulf-mtp-signs-epc-contract-new-8-mtyear-lng-terminal-thailand.html",
+        "https://www.offshore-energy.biz/epcc-deal-inked-for-next-stage-of-thailands-third-lng-terminal/"
+      ],
+      "verifier_log": "enerdata PASS (Gulf MTP, LNG, Thailand); offshore-energy PASS (Map Ta Phut, LNG, Gulf); moneyandbanking.co.th FAIL (missing tokens) - dropped; gem.wiki found in results but EXCLUDED (circular)"
+    },
+    {
+      "action_category": "narrative_update",
+      "country": "South Korea",
+      "site_name": "KOGAS Dangjin LNG Terminal (Dangjin Seokmun National Industrial Complex), South Chungcheong",
+      "gem_terminal_name": "KOGAS Dangjin LNG Terminal — Phase 2",
+      "section_type": "regasification",
+      "gem_status_now": "proposed (Phase 2, 7.7 MTPA; Phase 1 already 'construction', 6.0 MTPA; Owner Korea Gas Corp [100%])",
+      "prose_finding": "Phase 2 has moved into construction. KOGAS awarded Doosan Enerbility a KRW 560bn (~US$405-531M) contract for three 270,000-kL LNG storage tanks (tanks 5-7) for the Dangjin Phase 2 / 'second phase' of the terminal; construction scheduled to START September 2025, completion December 2029. Phase 1 (tanks 1-4) is already under construction with roof-raising complete. GEM Phase 2 still 'proposed' — should advance to construction (EPC tank contract awarded + Sept 2025 construction start).",
+      "recommended_status_change": "proposed -> construction (Phase 2 row; status_timeline: construction 2025-09)",
+      "recommended_workflow": "Update (+ status_timeline: construction 2025-09). Confirm the 7.7 MTPA Phase 2 capacity against KOGAS/Doosan tank count.",
+      "confidence": "high",
+      "citation": "GIIGNL 2026 regas narrative pp.48-52; corroborated by 2 independent verified sources (LNG Prime, Offshore Energy).",
+      "sources": [
+        "https://lngprime.com/asia/doosan-clinches-dangjin-lng-tank-gig-from-kogas/161082/",
+        "https://www.offshore-energy.biz/doosan-heavy-wins-531m-dangjin-lng-tank-order-from-kogas/"
+      ],
+      "verifier_log": "lngprime PASS (Dangjin, 'second phase', September 2025) - article uses 'second phase' not literal 'Phase 2'; offshore-energy PASS (Dangjin, Kogas, LNG); turbomachinery FAIL HTTP 403; cyprusshippingnews FAIL (missing 'Phase 2','KOGAS')"
+    },
+    {
+      "action_category": "narrative_update",
+      "country": "Russia",
+      "site_name": "Portovaya LNG (Gazprom LNG Portovaya), Baltic",
+      "gem_terminal_name": "Portovaya LNG Terminal — T1 + T2",
+      "section_type": "liquefaction",
+      "gem_status_now": "operating (T1 0.75 + T2 0.75 MTPA; T3 already shelved)",
+      "prose_finding": "US OFAC sanctioned the operator 13 Jan 2025; exports halted as the grace period ended 27 Feb 2025 (last cargo mid-January 2025). Plant physically intact, not destroyed. NUANCE: tracking data indicated limited resumption with a post-sanctions cargo to China's Beihai terminal reported ~December 2025 — so 'idled (sanctions-driven)' with intermittent activity, NOT permanently halted; verify current operating state before finalizing. Apply lifecycle_rules.md (idled/mothballed, not cancelled).",
+      "recommended_status_change": "operating -> idled (sanctions-driven; T1 and T2; status_timeline idled 2025-02). Flag intermittent Dec-2025 resumption for status verification via fetch_timeline.",
+      "recommended_workflow": "Update (+ status_timeline: idled 2025-02). Re-validates the prior Jun-1 narrative finding for Portovaya; adds the Dec-2025 partial-resumption nuance.",
+      "confidence": "high",
+      "citation": "GIIGNL 2026 liq narrative p.~27; corroborated by 3 independent verified sources (Gas Processing News/Reuters, MarineLink, Baird Maritime).",
+      "sources": [
+        "http://www.gasprocessingnews.com/news/2025/02/russias-portovaya-and-kryogaz-vysotsk-halt-lng-exports-as-sanctions-kick-in/",
+        "https://www.marinelink.com/news/russian-lng-pair-halts-exports-sanctions-522940",
+        "https://www.bairdmaritime.com/shipping/gas/small-scale-russian-suppliers-halt-lng-exports-as-sanctions-kick-in"
+      ],
+      "verifier_log": "gasprocessingnews PASS (Portovaya, Kryogaz-Vysotsk, sanctions); marinelink PASS (Portovaya, Vysotsk, sanctions); bairdmaritime PASS (Portovaya, Vysotsk, halt)"
+    },
+    {
+      "action_category": "narrative_update",
+      "country": "Russia",
+      "site_name": "Vysotsk LNG (Kryogaz-Vysotsk / Cryogaz-Vysotsk), Baltic",
+      "gem_terminal_name": "Vysotsk LNG Terminal — T1 + T2",
+      "section_type": "liquefaction",
+      "gem_status_now": "operating (T1 0.33 + T2 0.33 MTPA; Owner Novatek PJSC [51%]; Gazprombank JSC [49%])",
+      "prose_finding": "US OFAC sanctioned the operator 13 Jan 2025; exports halted as grace period ended 27 Feb 2025. Kryogaz-Vysotsk's last cargo was dispatched 18 Feb 2025, delivered to Zeebrugge ~22 Feb 2025. As of mid-2025 the plant is idle. Plant physically intact. Apply lifecycle_rules.md (idled, not cancelled).",
+      "recommended_status_change": "operating -> idled (sanctions-driven; T1 and T2; status_timeline idled 2025-02)",
+      "recommended_workflow": "Update (+ status_timeline: idled 2025-02). Re-validates the prior Jun-1 narrative finding for Vysotsk.",
+      "confidence": "high",
+      "citation": "GIIGNL 2026 liq narrative p.~27; corroborated by 3 independent verified sources (Gas Processing News/Reuters, MarineLink, Baird Maritime) which name Kryogaz-Vysotsk explicitly.",
+      "sources": [
+        "http://www.gasprocessingnews.com/news/2025/02/russias-portovaya-and-kryogaz-vysotsk-halt-lng-exports-as-sanctions-kick-in/",
+        "https://www.marinelink.com/news/russian-lng-pair-halts-exports-sanctions-522940",
+        "https://www.bairdmaritime.com/shipping/gas/small-scale-russian-suppliers-halt-lng-exports-as-sanctions-kick-in"
+      ],
+      "verifier_log": "gasprocessingnews PASS (Portovaya, Kryogaz-Vysotsk, sanctions); marinelink PASS (Portovaya, Vysotsk, sanctions); bairdmaritime PASS (Portovaya, Vysotsk, halt)"
+    },
+    {
+      "action_category": "qa_flag",
+      "country": "Canada",
+      "site_name": "LNG Canada (Kitimat), Phase 2 / Trains 3-4",
+      "gem_terminal_name": "LNG Canada Terminal — Phase 2 (T3-T4)",
+      "section_type": "liquefaction",
+      "gem_status_now": "operating (14.0 MTPA per GEM CapacityinMtpa) — ANOMALY",
+      "prose_finding": "GEM marks LNG Canada Phase 2 (T3-T4) as OPERATING at 14.0 MTPA, but Phase 2 has NOT taken FID and is NOT operating. As of 2026, Phase 2 is firmly pre-FID: JV participants approved incremental funding (1 May 2026) and a limited notice to proceed (Fluor/JGC) for early work, all aimed at a POTENTIAL FID by end-2026; if approved, it would add trains 3-4 raising total capacity from 14 to ~28 MTPA (US$12.5bn). Confirmed by the GEM unit's own contaminated FloatingVesselName cell reading 'Pre-FID'. GEM Phase 2 should be 'proposed' (or 'construction' only if/when FID + LNTP is judged sufficient), NOT 'operating'. The 14.0 MTPA on the Phase 2 row appears to be the Phase 1 capacity erroneously duplicated. Phase 1 (T1-T2) operating 14.0 MTPA is correct.",
+      "recommended_status_change": "investigate -> correct Phase 2 (T3-T4) from operating to proposed (pre-FID); remove/zero the erroneous 14.0 MTPA operating capacity on the Phase 2 row",
+      "recommended_workflow": "QA review -> Update if confirmed",
+      "confidence": "high",
+      "citation": "GIIGNL 2026 liq narrative (Phase 2 described as potential/not-FID); corroborated by 2 independent verified sources (Oil & Gas Journal, LNG Industry).",
+      "sources": [
+        "https://www.ogj.com/pipelines-transportation/lng/news/55381420/lng-canada-starts-early-work-on-phase-2-expansion-ahead-of-fid",
+        "https://www.lngindustry.com/liquefaction/15052026/lng-canada-advance-proposed-phase-2-expansion/"
+      ],
+      "verifier_log": "ogj PASS (Phase 2, FID, trains); lngindustry PASS (Phase 2, expansion, LNG Canada)"
+    },
+    {
+      "action_category": "qa_flag",
+      "country": "Italy",
+      "site_name": "Adriatic LNG Terminal (Rovigo / Porto Levante offshore GBS)",
+      "gem_terminal_name": "Adriatic LNG Terminal",
+      "section_type": "regasification",
+      "gem_status_now": "operating (GEM CapacityinMtpa = 7.06)",
+      "prose_finding": "Apparent conflict is a UNIT confusion, not a real discrepancy. Operator's official figure is a maximum AUTHORIZED regasification capacity of 9.6 BILLION CUBIC METERS per year (a 13% increase announced March 2022 from the original 8 bcm/y nameplate). 9.6 bcm/y converts to ~7.06 MTPA — which is EXACTLY GEM's CapacityinMtpa (7.06). So GEM's MTPA figure is CORRECT; the '9.6' in the flag is bcm/y, not MTPA. GIIGNL's ~7.7 MTPA / ~8 bcm reflects the OLDER pre-2022 8 bcm nameplate. NO correction to GEM's MTPA needed; if anything GEM could refresh the bcm/y field to 9.6 and note the 2022 uprate. A further +0.5 bcm/y expansion was in authorization (~2026).",
+      "recommended_status_change": "investigate -> NO MTPA change (GEM 7.06 MTPA = 9.6 bcm/y is correct); optionally refresh CapacityinBcm/y to 9.6 + anchor to 2022 uprate",
+      "recommended_workflow": "QA review -> Update if confirmed",
+      "confidence": "high",
+      "citation": "Operator primary source adriaticlng.it (9.6 bcm/y authorized capacity); corroborated by storageterminalsmag (VTTI/Snam acquisition). GIIGNL 7.7/8 reflects older nameplate.",
+      "sources": [
+        "https://www.adriaticlng.it/en/the-terminal",
+        "https://storageterminalsmag.com/vtti-and-snam-finalise-acquisition-of-adriatic-lng/"
+      ],
+      "verifier_log": "adriaticlng.it PASS (9.6 billion cubic meters, regasification) - PRIMARY/operator source; storageterminalsmag PASS (Adriatic LNG, regasification, billion cubic) - corroborating secondary; nsenergybusiness FAIL HTTP 403"
+    },
+    {
+      "action_category": "qa_flag",
+      "country": "Germany",
+      "site_name": "Mukran FSRU (Deutsche ReGas), Sassnitz/Ruegen",
+      "gem_terminal_name": "Mukran FSRU — Vessel 1",
+      "section_type": "regasification",
+      "gem_status_now": "operating (GEM CapacityinMtpa = 9.92; FloatingVesselName = Energos Power) — ANOMALY (both vessel and capacity stale)",
+      "prose_finding": "TWO data anomalies on Mukran FSRU Vessel 1. (1) WRONG VESSEL: GEM names 'Energos Power' as the operating vessel, but Deutsche ReGas TERMINATED the Energos Power sublet charter in February 2025 (citing DET pricing). The currently deployed and only operating vessel at Mukran is the FSRU NEPTUNE (2009-built, 145,000-cbm, ~5 bcm/y send-out; 50% Hoegh Evi, sub-chartered from TotalEnergies). GEM Vessel 2 (also 'Energos Power' in raw export) is mothballed. (2) CAPACITY TOO HIGH: GEM Vessel 1 shows 9.92 MTPA (~13.5 bcm/y). The 13.5 bcm/y figure is the planned TWO-FSRU combined terminal capacity, not a single vessel; with only Neptune deployed, realistic single-vessel send-out is ~5 bcm/y (~3.7 MTPA). GEM has assigned the combined two-vessel capacity AND the terminated vessel's name to a single operating row. Correction: Vessel 1 vessel name -> Neptune; single-vessel capacity ~5 bcm/y (~3.7 MTPA). FSRU SYNC: vessel name + IMO must agree with carrier project — flag the Energos Power->Neptune reassignment.",
+      "recommended_status_change": "investigate -> correct FloatingVesselName Energos Power -> Neptune; revise capacity from 9.92 MTPA to single-vessel ~3.7 MTPA (~5 bcm/y); 13.5 bcm is two-vessel combined, not Vessel 1 alone",
+      "recommended_workflow": "QA review -> Update if confirmed",
+      "confidence": "high",
+      "citation": "Charter termination corroborated by 2 independent verified sources (Argus, LNG Prime); current vessel = Neptune corroborated by 2 independent verified LNG Prime articles (Q4 busiest, permanent permit). Capacity (~5 bcm single / 13.5 bcm combined) from Deutsche ReGas reporting via LNG Prime - single-source for the precise bcm split, hence capacity correction is medium-confidence.",
+      "sources": [
+        "https://www.argusmedia.com/en/news-and-insights/latest-market-news/2656313-germany-s-deutsche-regas-terminates-lng-fsru-charter",
+        "https://lngprime.com/contracts-and-tenders/deutsche-regas-terminates-fsru-charter-deal/140790/",
+        "https://lngprime.com/europe/deutsche-regas-mukran-fsru-was-germanys-busiest-lng-terminal-in-q4/173453/",
+        "https://lngprime.com/europe/deutsche-regas-gets-permanent-mukran-lng-operating-permit/181186/"
+      ],
+      "verifier_log": "argusmedia PASS (Energos Power, Deutsche Regas, charter); lngprime/terminates-fsru-charter PASS (Energos Power, Neptune, charter); lngprime/busiest-q4 PASS (Neptune, Mukran, Deutsche ReGas); lngprime/permanent-permit PASS (Neptune, Mukran). NOTE: vessel-name correction is HIGH confidence (4 indep passes across 2 publishers); the precise single-vessel bcm capacity is the softer part (Deutsche-ReGas-origin figures) - capacity correction confidence medium."
+    },
+    {
+      "action_category": "narrative_discovery",
+      "country": "Oman",
+      "site_name": "Marsa LNG, Port of Sohar",
+      "gem_terminal_name": "Marsa LNG Terminal",
+      "section_type": "export/liquefaction (small-scale; LNG bunkering)",
+      "gem_status_now": "absent (not in GEM)",
+      "prose_finding": "Marsa LNG LLC is an 80/20 JV (TotalEnergies / OQEP) building a 1 Mt/y liquefaction plant at the Port of Sohar, northern Oman, to supply the Middle East's first marine LNG bunkering hub. FID announced April 2024; groundbreaking May 2025; first LNG expected Q1 2028. GEM-absence check: gem_export.csv has ZERO Oman LNG rows other than the existing 'Oman Qalhat LNG Terminal' (export); searches for marsa/sohar/OQ/barka/'marsa lng' return no Oman match. The only 'Marsa' hits are Marsa El Brega (Libya) and Armada LNG Mediterrana at Marsaxlokk (Malta) — unrelated. Genuinely new to GEM.",
+      "recommended_status_change": "new record -> construction",
+      "recommended_workflow": "Discovery (new record)",
+      "confidence": "high",
+      "citation": "GIIGNL 2026 narrative (Oman liquefaction pipeline); corroborated by TotalEnergies press release (primary), World Oil, and Offshore Energy",
+      "sources": [
+        "https://totalenergies.com/news/press-releases/oman-totalenergies-and-oqep-break-ground-marsa-lng",
+        "https://worldoil.com/news/2025/5/1/totalenergies-oqep-break-ground-on-marsa-lng-plant-in-oman/",
+        "https://www.offshore-energy.biz/totalenergies-breaks-ground-on-middle-easts-first-lng-bunkering-hub/"
+      ],
+      "capacity_mtpa": 1.0,
+      "owner": "TotalEnergies SE [80%]; OQ Exploration & Production [20%]",
+      "entity_lookup": "TotalEnergies SE -> EXISTING (E100000000xxx; appears in 31 owner / 49 parent rows, 23 terminals — reuse). OQ Exploration & Production (OQEP) -> NOT FOUND in local data (queried 'OQEP', 'OQ Exploration', 'OQ', 'OQ SAOC', 'Oman Oil') - needs creation, likely parented to OQ SAOC (Omani state energy co); confirm via --remote before staging.",
+      "verifier_log": "TotalEnergies PR: ['Marsa LNG','Sohar','TotalEnergies','OQEP','Mt/y']->PASS; ['80%','20%']->PASS | World Oil: ['Marsa LNG','Sohar','OQEP']->PASS; ['1 million','80%','20%']->PASS | Offshore Energy: ['Marsa LNG','Sohar','OQEP','bunkering']->PASS (['1 Mt/y'] FAIL on this page - capacity covered by other two) | LNG Prime FID URL -> FAIL (soft-block, all tokens missing) | NS Energy -> FAIL (HTTP 403)"
     },
     {
       "action_category": "narrative_confirm_already_tracked",
-      "country": "multiple",
-      "site_name": "≈50 forward-looking prose mentions already in GEM at the correct lifecycle — confidence bump / no new record",
-      "gem_terminal_name": "see list",
+      "country": "(multiple)",
+      "site_name": "5 narrative discovery candidates",
+      "gem_terminal_name": "Zhuangyuan'ao / Wenzhou (Wenzhou Huagang)→Wenzhou Huagang LNG Terminal; Dörtyol FSRU (Hatay)→Dörtyol FSRU; TGS / NFE Santa Catarina (São Francisco do Sul)→Terminal Gás Sul FSRU; Yan / Kedah (Pulau Bunting)→RGT Yan LNG Terminal; Botum Sakor (Koh Kong)→Botum Sakor LNG Terminal",
       "section_type": "mixed",
-      "gem_status_now": "tracked",
-      "prose_finding": "US: LNG Canada T1/2 (op), Corpus Christi Stage 3 (constr/op), Plaquemines Ph1/2 (constr/op), Calcasieu Pass (op since 15 Apr 2025), CP2 (constr, FID Jul 2025), Rio Grande T4/5 (FID, constr), Golden Pass (constr/op T1 first-LNG Mar 2026), Woodside Louisiana/Driftwood (constr, FID Apr 2025), Port Arthur Ph1/2 (constr), Commonwealth (constr), Texas LNG (proposed), Sabine Pass Midscale T8/9 (FID Jun 2025), Magnolia/Delfin/Alaska (proposed). Canada: Woodfibre (constr 65%), Cedar->'Cedar FLNG' (constr), Ksi Lisims (proposed). Russia: Arctic LNG 2 T2 (started May 2025, op/idled), Murmansk (proposed), Obsky LNG (proposed). UAE: Ruwais LNG (constr, FID Jun 2024). Oman: Marsa LNG -> verify GEM has it (FID Apr 2024, 1 MTPA, start 2028). Australia: Gorgon Stage 3 (sanctioned). Indonesia: Abadi (proposed). Mexico: Costa Azul (constr/op, Ph1 95%). Mozambique: Coral North FLNG (proposed)/Coral South (op). Mauritania/Senegal: GTA Tortue (op/proposed, FLNG Gimi ramped to ~3 MTPA). Regas already-tracked: Chhara (op), Dahej expansion (constr), Dabhol (op), Gopalpur (proposed), Crown Kakinada (proposed), Dhamra (op), Kochi (op), Wenzhou Huagang=Zhuangyuanao (op), Hongmei=Dongguan (op), Jieyang(PipeChina)=Yuedong (op+expansion), Shanghai Yangshan (op), Yangjiang (op), Zhoushan (op), Taoyuan=Guantang (op+proposed), Taichung (op/constr/proposed), Port Kembla (constr), Outer Harbor/Geelong/Port Phillip Bay (proposed), Summit Matarbari (proposed), Botum Sakor (proposed), Hibiki (constr/op), Lumut/RGT Yan (proposed), SLNG 2 (proposed), KOGAS Dangjin (constr), NE Asia Hub Yeosu (constr), Boryeong (op), Map Ta Phut 3 (proposed), Thi Vai (op/proposed), Cai Mep (op), Son My (proposed), Mukran/Wilhelmshaven TES/Stade/Brunsbüttel (Germany, op/constr), Gas Networks Ireland (proposed), Coveñas FSRU (proposed), Cartagena FSRU expansion (op/proposed), Manzanillo DR=Pepillo Salcedo (constr), Terminal Gás Sul=TGS (idled), Aqaba Jordan FSRU (op).",
-      "recommended_status_change": "none (verify status/capacity/anchor; confidence bump only)",
-      "recommended_workflow": "No new record. Optional: confidence bump + anchor-year refresh where stale. Capacity reconciliation flags noted in qa_review (Wenzhou Huagang, Jieyang, NWS post-T2).",
+      "gem_status_now": "already tracked",
+      "prose_finding": "Alias-checked against the fresh GEM export — all 5 are existing GEM terminals under different names, NOT new: Zhuangyuan'ao / Wenzhou (Wenzhou Huagang) = Wenzhou Huagang LNG Terminal (T100000130958 (G100002095800) — Wenzhou Huagang LNG Terminal); Dörtyol FSRU (Hatay) = Dörtyol FSRU (T100000130618 (G100002061800) — Dörtyol FSRU); TGS / NFE Santa Catarina (São Francisco do Sul) = Terminal Gás Sul FSRU (T100000130938 (G100002093800) — Terminal Gás Sul FSRU); Yan / Kedah (Pulau Bunting) = RGT Yan LNG Terminal (RGT Yan LNG Terminal (Pulau Bunting, Yan, Kedah)); Botum Sakor (Koh Kong) = Botum Sakor LNG Terminal (T100000131166 (G100002116600) — Botum Sakor LNG Terminal). No Discovery records warranted.",
+      "recommended_status_change": "none",
+      "recommended_workflow": "no action (aliases of existing GEM terminals)",
       "confidence": "high",
-      "citation": "GIIGNL 2026 narrative pp.28-31, 48-52; GEM cross-check 2026-05-29 against fresh export.",
+      "citation": "GEM export alias check + web confirmation",
       "sources": []
     }
   ]

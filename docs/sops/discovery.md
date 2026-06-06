@@ -141,7 +141,12 @@ Candidates that fail any threshold element from §3 go in `monitor_list` sheet w
 
 Purpose: avoid re-discovering the same vague-rumor project in every batch, and create a re-check trigger when the project may have firmed up.
 
-The `monitor_list` is intended to roll forward across batches — the build script should read the prior batch's monitor_list and merge with the current batch's additions, dropping items that have since moved to the real `new_terminals` sheet.
+The `monitor_list` rolls forward across batches via the durable store `monitor_list/current.json` and `scripts/monitor_store.py` (the two halves of the loop):
+
+1. **Before the discovery build:** `python scripts/monitor_store.py seed <inputs-dir>` copies the durable store into `<inputs-dir>/prior_monitor_list.json`, which `build_review_package.py` merges with this batch's candidates into the `monitor_list` sheet (so the reviewer sees the accumulated watch-list, with `first_observed_batch` preserved and `last_observed_batch` bumped).
+2. **After the discovery build:** `python scripts/monitor_store.py update <inputs-dir> --batch <stamp>` folds this batch's `staged_monitor_list.json` back into the durable store **and drops any candidate promoted to `new_terminals` this batch** (matched on normalized country + name). That is what keeps a vague-rumor project from being re-discovered every batch and retires it once it firms up.
+
+Without `monitor_store.py`, the build only ever sees an empty prior list and the durable store never accumulates — the roll-forward is inert.
 
 ## §6 Dedup against existing GEM
 
@@ -150,16 +155,20 @@ Before staging a candidate as new, verify it's not already in GEM under a differ
 - **Project index**: `(country_normalized, terminal_name_normalized)` → TerminalIDs
 - **Sponsor-country index**: `(country_normalized, sponsor_normalized)` → list of TerminalIDs
 
-For each candidate:
-1. Normalize the candidate's country, name, and sponsor per `normalize.py`
+Steps 1-6 below are implemented by `python dedup_index.py match <candidates.json>` (library: `match_candidate`) so the comparison is deterministic rather than eyeballed. Write the batch's leads to a JSON list (`country`, `name`, `sponsor`, optional `latitude`/`longitude`, `capacity_mtpa`, `status`) and run it; each candidate comes back with a `verdict` and a `recommended_route` — act on the route:
+
+1. Normalize the candidate's country, name, and sponsor per `normalize.py` (the matcher does this)
 2. Check project index for exact match → likely duplicate
 3. Check sponsor-country index → list of all GEM terminals from this sponsor in this country
-4. For each sponsor-country match, compare:
-   - Location (if both have lat/lng, distance in km)
-   - Capacity (if both have a value, ratio)
-   - Lifecycle status (cancelled GEM unit + new sponsor announcement = possible dead-and-revived)
-5. If similarity is high → likely duplicate, route to Update workflow (per docs/reference/lifecycle_rules.md dead-and-revived rules)
-6. If similarity is low → genuinely new candidate
+4. For each same-country match, compare (the matcher scores all three):
+   - Location (haversine km if both have lat/lng; ≤1.5 km ≈ same physical site, ≤10 km same port/complex)
+   - Capacity (ratio if both have a value; within ~15% corroborates)
+   - Lifecycle status (cancelled/shelved GEM record + new proposal = possible dead-and-revived — flagged even when the name doesn't match, since revived projects are routinely renamed)
+5. Route by verdict:
+   - `update_existing` / `update_dead_and_revived` (high similarity) → route to the Update workflow (per `docs/reference/lifecycle_rules.md` dead-and-revived rules); do **not** stage as new
+   - `manual_review` (ambiguous — e.g. same site, different sponsor) → the §12 pause-and-ask case; judge by hand
+   - `discovery_new` (low similarity) → genuinely new candidate, proceed to the threshold test (§3)
+6. The matcher is a gate, not an oracle — a `discovery_new` verdict on a candidate you have other reason to suspect is a duplicate still warrants a manual look (it only sees what's in the export).
 
 **Expansion vs new project** is a common ambiguity:
 - A new train at an existing terminal → new **unit** within an existing terminal (use `new_units` sheet, not `new_terminals`)
@@ -224,7 +233,7 @@ For JV-style entities (e.g. "TotalEnergies-Petronas JV"):
 1. **Confirm parameters** (§2)
 2. **Materialize scripts** per CLAUDE.md
 3. `python pull_gem_db.py` → fresh CSV, column-index map. **Mandatory every batch.**
-4. `python dedup_index.py` → project + sponsor-country indexes (§6)
+4. `python dedup_index.py` → project + sponsor-country indexes (§6); score leads with `python dedup_index.py match <candidates.json>` once gathered
 5. **For each ring (A → B → C → D) within the scope:**
    a. Execute the ring's search strategy (§4)
    b. For each lead, check dedup (§6) — skip if duplicate, route to Update if dead-and-revived
@@ -234,11 +243,12 @@ For JV-style entities (e.g. "TotalEnergies-Petronas JV"):
 7. `python entity_lookup.py` for every new entity reference (§9)
 8. `python capacity_normalize.py` for any candidate with capacity in non-standard units
 9. **If batch includes any FSRU candidates:** `python fsru_sync_check.py` against carrier project backend (CLAUDE.md FSRU sync rule)
-10. Merge the `monitor_list` with the prior batch's monitor_list (§5)
-11. **Contribute country findings** to `country_notes_contributions` sheet — new regulator URLs, search patterns that worked, country-specific gotchas
+10. **Contribute country findings** to `country_notes_contributions` sheet — new regulator URLs, search patterns that worked, country-specific gotchas
+11. **Seed the monitor roll-forward** (§5): `python monitor_store.py seed ../batches/staging/<scope-slug>` → writes `prior_monitor_list.json` into the inputs-dir so the build merges the durable watch-list with this batch's candidates
 12. `python build_review_package.py --mode discovery --inputs-dir ../batches/staging/<scope-slug> --output ../batches/lng_terminals_batch_<YYYYMMDD>_<HHMM>_ET_<scope>_discovery.xlsx` → staging xlsx (Eastern timestamp via `TZ=America/New_York date "+%Y%m%d_%H%M_ET"`; scope slug + mode per `docs/reference/workbook_conventions.md`; staged inputs live in `../batches/staging/<scope-slug>/`)
 13. `python recalc.py` → confirm zero formula errors
-14. `present_files`
+14. **Update the durable monitor store** (§5): `python monitor_store.py update ../batches/staging/<scope-slug> --batch <YYYYMMDD>_<HHMM>_ET` → folds this batch's monitor candidates into `monitor_list/current.json` and drops any promoted to `new_terminals`
+15. `present_files`
 
 ## §11 Hard rules
 
