@@ -41,7 +41,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 from normalize import (
     normalize_country, normalize_entity, normalize_terminal_name,
-    parse_entity_list, transliterate_to_english,
+    parse_entity_list, same_owner_entity, transliterate_to_english,
 )
 
 
@@ -106,11 +106,24 @@ def _find_matching_paren(s, open_idx):
 
 
 def _split_top_level(s, seps=",;"):
-    """Split on `seps` that are NOT inside (...) — so a shareholder list like
-    '(50% Enarsa, 50% YPF)' stays one segment instead of breaking at its comma
-    (the bug that produced the stray '50% YPF)' token)."""
+    """Split on `seps` — and on the connector word 'and' — that are NOT inside
+    (...) — so a shareholder list like '(50% Enarsa, 50% YPF)' stays one segment
+    instead of breaking at its comma (the bug that produced the stray '50% YPF)'
+    token).
+
+    GIIGNL writes an owner list with the final item joined by 'and' rather than a
+    comma: 'Petronas Gas (65%), Dialog Group (25%) and Johor State (10%)'. The
+    'and' is a list connector, not part of a name, so it splits like a comma and
+    is dropped — yielding three owners, not a merged 'Dialog Group and Johor
+    State'. The split is gated on word boundaries (so 'Finland', 'Iceland',
+    'Netherlands' are untouched) and only fires at depth 0. '&' is intentionally
+    NOT a separator — it identifies names like 'Black & Veatch'. (No GEM owner
+    entity contains a standalone 'and'; the only 'and' canonical is the COUNTRY
+    'Trinidad and Tobago', which never appears in an owner cell.)"""
     out, buf, depth = [], [], 0
-    for ch in s:
+    i, n = 0, len(s)
+    while i < n:
+        ch = s[i]
         if ch == "(":
             depth += 1
             buf.append(ch)
@@ -120,8 +133,16 @@ def _split_top_level(s, seps=",;"):
         elif ch in seps and depth == 0:
             out.append("".join(buf))
             buf = []
+        elif (depth == 0 and ch in "aA" and s[i:i + 3].lower() == "and"
+                and (i == 0 or not s[i - 1].isalnum())
+                and (i + 3 >= n or not s[i + 3].isalnum())):
+            out.append("".join(buf))
+            buf = []
+            i += 3
+            continue
         else:
             buf.append(ch)
+        i += 1
     if buf:
         out.append("".join(buf))
     return [x.strip() for x in out if x.strip()]
@@ -252,13 +273,26 @@ def _owner_alignment(rp_owners, gem_owners, gem_parents):
                     not expected to appear in GIIGNL, so they're not gem-only)
       via_parent  — report owners matched only at the GEM PARENT level (surfaced
                     so a reviewer sees the alignment is parent-, not owner-level)
+
+    Alignment is EQUIVALENCE-aware (normalize.same_owner_entity), not exact set
+    intersection: a name that differs only by a legal suffix or descriptive
+    qualifier ("Gasum" vs "Gasum Oy", "Chugoku Electric" vs "Chugoku Electric
+    Power") aligns rather than surfacing as a spurious report_only/gem_only delta.
+    This affects DELTA reporting only — the match gating stays owner-level exact
+    elsewhere (a shared ultimate parent is too broad to identify a terminal).
     """
     rp_owners, gem_owners, gem_parents = set(rp_owners), set(gem_owners), set(gem_parents)
     gem_all = gem_owners | gem_parents
-    return (rp_owners & gem_all,
-            rp_owners - gem_all,
-            gem_owners - rp_owners,
-            (rp_owners & gem_parents) - gem_owners)
+
+    def _aligned(o, others):
+        return any(same_owner_entity(o, x) for x in others)
+
+    overlap = {o for o in rp_owners if _aligned(o, gem_all)}
+    report_only = {o for o in rp_owners if not _aligned(o, gem_all)}
+    gem_only = {o for o in gem_owners if not _aligned(o, rp_owners)}
+    via_parent = {o for o in rp_owners
+                  if _aligned(o, gem_parents) and not _aligned(o, gem_owners)}
+    return overlap, report_only, gem_only, via_parent
 
 
 # Matches a trailing " Expansion" / " Extension" qualifier on a report site name.

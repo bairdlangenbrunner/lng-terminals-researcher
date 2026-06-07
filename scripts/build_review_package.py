@@ -53,6 +53,11 @@ import unicodedata
 from datetime import date
 from pathlib import Path
 
+# Owner equivalence is defined once in normalize.py and shared with report_diff so
+# both layers agree on what "the same owner" means (aliased to the established
+# private names used throughout this module).
+from normalize import owner_core as _owner_core, same_owner_entity as _same_owner_entity
+
 try:
     import openpyxl
     from openpyxl.styles import PatternFill, Font, Alignment, Border, Side
@@ -195,8 +200,14 @@ SHEET_DESCRIPTIONS = {
         "authoritative, §3.8). Empty-sheet-omitted: only present when ≥1 name_change exists."
     ),
     "giignl_diff_operating": (
-        "OPERATING match audit: GEM operating capacity vs GIIGNL's (operating-only) "
-        "liq/regas tables. match_type is 'exact', 'exact_via_alias' (via GEM "
+        "OPERATING match audit (DIFFERENCES ONLY): GEM operating capacity vs GIIGNL's "
+        "(operating-only) liq/regas tables — a match GEM and GIIGNL fully agree on "
+        "(no project-level disagreement and no disagreeing unit) is NOT emitted as a "
+        "row, and agreeing per-unit rows are likewise omitted. Owner naming-variants "
+        "(e.g. 'Gasum' vs 'Gasum Oy', 'Chugoku Electric' vs 'Chugoku Electric Power') "
+        "do not count as a disagreement (normalize.same_owner_entity), so a row whose "
+        "only former difference was such a variant drops out. match_type is 'exact', "
+        "'exact_via_alias' (via GEM "
         "OtherNames — `matched_alias` shows which), 'fuzzy' (medium confidence), or "
         "'override' (agent-pinned in staged_match_overrides.json to correct a wrong "
         "same-token exact match — `match_override` shows the basis). "
@@ -1439,39 +1450,17 @@ def _edit_from_verdict(v):
         return _combine_edits([("No change — keep GEM value", "", "")])
     return _combine_edits([("Apply researched verdict (see suggested_resolution)", field, "")])
 
-# Legal-form suffix tokens stripped before comparing owner names by core tokens.
-_OWNER_LEGAL_SUFFIX = {
-    "co", "ltd", "corp", "inc", "sa", "ab", "llc", "group", "bhd", "oy", "pvt",
-    "sas", "plc", "gmbh", "as", "spa", "nv", "kk", "ag", "holding", "holdings",
-    "company", "limited", "corporation", "lp", "slu", "pte", "the", "of"}
 # NARROW project-vehicle markers: an owner string carrying one names the operating
 # / JV company (a project vehicle), not a beneficial shareholder. The "one source
 # lists the vehicle, the other lists the shareholders" delta is representational.
+# (Owner-equivalence helpers _owner_core / _same_owner_entity and their legal-suffix
+# and acronym-alias tables live in normalize.py — imported at the top of this module.)
 _VEHICLE_MARKERS = ("lng", "terminal", "regas", "gnl", "ute", "development",
                     "project", "liquefaction", "natural gas", "infrastructure",
                     "authority", "regasification")
 # GIIGNL owner-cell extraction shards / aggregate phrasings that aren't real owners.
 _OWNER_NOISE_RE = re.compile(
     r"[%\[\]]|jv between|charterer:|govnt|its entities|including|^\(|\)$|\bunknown\b")
-# Short-form/acronym aliases GIIGNL uses for GEM's full legal names (the recurring
-# ones; the fuller canonical map is docs/reference/entity_canonical_map.md). Matched
-# bidirectionally on core tokens.
-_OWNER_ALIAS_PAIRS = [
-    ({"petronas"}, {"petroliam", "nasional"}),
-    ({"kogas"}, {"korea", "gas"}),
-    ({"sinopec"}, {"china", "petrochemical"}),
-    ({"cnpc"}, {"china", "national", "petroleum"}),
-    ({"cnooc"}, {"china", "national", "offshore", "oil"}),
-    ({"adnoc"}, {"abu", "dhabi", "national", "oil"}),
-    ({"eve"}, {"basque", "energy"}),
-]
-
-
-def _owner_core(name):
-    """Core identifying tokens of an owner string (lowercased, legal-form suffixes
-    and stray punctuation removed)."""
-    name = re.sub(r"[()%\[\].,/]", " ", name.lower())
-    return {t for t in re.findall(r"[a-z]{2,}", name) if t not in _OWNER_LEGAL_SUFFIX}
 
 
 def _owner_is_noise(name):
@@ -1483,17 +1472,6 @@ def _owner_is_vehicle(name):
     """Whether an owner string names a project/JV vehicle rather than a shareholder."""
     n = name.lower()
     return any(mk in n for mk in _VEHICLE_MARKERS)
-
-
-def _same_owner_entity(a, b):
-    """Same entity in a different name form — core-token overlap or a known alias."""
-    ca, cb = _owner_core(a), _owner_core(b)
-    if ca & cb:
-        return True
-    for s1, s2 in _OWNER_ALIAS_PAIRS:
-        if (ca & s1 and cb & s2) or (ca & s2 and cb & s1):
-            return True
-    return False
 
 
 def _parse_capacity_refs(refs):
@@ -1845,6 +1823,15 @@ def build_giignl_diff_operating_sheet(wb, diff, recon_verdicts=None):
     verdicts = _recon_verdicts_lookup(recon_verdicts)
     row_idx = 2
     for m in diff.get("matches", []) + diff.get("fuzzy_matches", []):
+        # Differences-only: a match that GEM and GIIGNL fully agree on (no
+        # project-level disagreement AND no disagreeing unit) carries nothing to
+        # review, so it isn't emitted as a row. (Owner naming-variants like
+        # "Gasum" vs "Gasum Oy" no longer count as a disagreement — see
+        # normalize.same_owner_entity / report_diff._owner_alignment — so a row
+        # whose only former "difference" was such a variant now drops out here.)
+        unit_diffs = [um for um in m.get("unit_matches", []) if not um.get("agree")]
+        if not m.get("disagreements") and not unit_diffs:
+            continue
         # Project-total row.
         proj = {k: (", ".join(map(str, v)) if isinstance(v, list) else v)
                 for k, v in m.items() if k in headers}
@@ -1924,8 +1911,11 @@ def build_giignl_diff_operating_sheet(wb, diff, recon_verdicts=None):
         _write_row(ws, proj, headers, row_idx, confidence_map=cm)
         row_idx += 1
 
-        # Per-unit rows for unit-granularity matches.
+        # Per-unit rows for unit-granularity matches — differences only (an
+        # agreeing unit carries nothing to review).
         for um in m.get("unit_matches", []):
+            if um.get("agree"):
+                continue
             delta = round(um["report_capacity_mtpa"] - um["gem_unit_capacity_mtpa"], 2)
             urow = {
                 "match_type": m.get("match_type"),
