@@ -453,6 +453,73 @@ def parse_entity_list(s):
     return out
 
 
+# ---------------------------------------------------------------------------
+# Owner equivalence (shared by report_diff's delta reporting and
+# build_review_package's benign-delta classifier — one definition so the two
+# layers agree on what "the same owner" means)
+# ---------------------------------------------------------------------------
+
+# Legal-form suffix tokens dropped before comparing owner names by core tokens —
+# "Gasum" == "Gasum Oy", "Toho Gas" == "Toho Gas Co Ltd", "Pakistan Gasport" ==
+# "Pakistan Gasport Consortium Ltd". "consortium" is here too: it's a legal/
+# structural descriptor, not an identifying token.
+_OWNER_LEGAL_SUFFIX = {
+    "co", "ltd", "corp", "inc", "sa", "ab", "llc", "group", "bhd", "oy", "pvt",
+    "sas", "plc", "gmbh", "as", "spa", "nv", "kk", "ag", "holding", "holdings",
+    "company", "limited", "corporation", "lp", "slu", "pte", "the", "of",
+    "consortium", "ase", "asa", "oao", "pao", "ojsc", "jsc", "srl", "bv"}
+
+# Short-form / acronym aliases an industry report uses for GEM's full legal names
+# (the recurring ones; the fuller canonical map is the _ENTITY_MAP above and
+# docs/reference/entity_canonical_map.md). Matched bidirectionally on core tokens.
+_OWNER_ALIAS_PAIRS = [
+    ({"petronas"}, {"petroliam", "nasional"}),
+    ({"kogas"}, {"korea", "gas"}),
+    ({"sinopec"}, {"china", "petrochemical"}),
+    ({"cnpc"}, {"china", "national", "petroleum"}),
+    ({"cnooc"}, {"china", "national", "offshore", "oil"}),
+    ({"adnoc"}, {"abu", "dhabi", "national", "oil"}),
+    ({"eve"}, {"basque", "energy"}),
+]
+
+
+def owner_core(name):
+    """Core identifying tokens of an owner string: lowercased, diacritics folded,
+    legal-form suffixes and stray punctuation removed. ('Gasum Oy' -> {'gasum'},
+    'Chugoku Electric Power' -> {'chugoku', 'electric', 'power'})."""
+    name = _strip_diacritics(str(name)).lower()
+    name = re.sub(r"[()%\[\].,/]", " ", name)
+    return {t for t in re.findall(r"[a-z]{2,}", name) if t not in _OWNER_LEGAL_SUFFIX}
+
+
+def same_owner_entity(a, b):
+    """True when two owner strings name the SAME entity in a different form, so a
+    diff shouldn't flag them as a real ownership change. The test, after stripping
+    legal-form suffixes:
+
+      * one side's core tokens are a SUBSET of the other's — covers an added
+        qualifier or legal suffix ("Gasum" ⊂ "Gasum Oy"; "Chugoku Electric" ⊂
+        "Chugoku Electric Power"; "Pakistan Gasport" ⊂ "Pakistan Gasport
+        Consortium Ltd"); or
+      * a known acronym alias matches (KOGAS = Korea Gas, Petronas = Petroliam
+        Nasional).
+
+    Subset (not "any shared token") is deliberate: names that merely share a
+    GENERIC word but each carry their own distinctive token stay DIFFERENT
+    ("Korea Gas" vs "Korea Electric", "Tokyo Gas" vs "Tokyo Electric") — i.e. we
+    only call owners the same when one name is essentially the other plus
+    descriptive padding, never when they are substantially different."""
+    ca, cb = owner_core(a), owner_core(b)
+    if not ca or not cb:
+        return False
+    if ca <= cb or cb <= ca:
+        return True
+    for s1, s2 in _OWNER_ALIAS_PAIRS:
+        if (ca & s1 and cb & s2) or (ca & s2 and cb & s1):
+            return True
+    return False
+
+
 def normalize_capacity_unit(s):
     """Return canonical capacity unit. Returns lowercased input if unknown."""
     if s is None:
