@@ -129,8 +129,8 @@
     "terminal_id": "T100000130859",
     "section_type": "regasification",
     "unit_name": null,
-    "verdict": "Route to Update: GEM export capacity is 0.0 (data gap) but the terminal is operating. Beijing Gas Tianjin Nangang Phases 1-3 are all commissioned (Phase 1 Sep 2023, Phase 2 early 2024, Phase 3 Nov 2024). Fill GEM operating capacity; GIIGNL 12.0 is a reasonable total (Phase 1 alone is 5 mtpa, design sums toward ~15 mtpa). Owner delta benign (Beijing Gas Group / Beijing Gas Group LNG Co name forms; GIIGNL tokens are parse-noise).",
-    "basis": "S&P: Beijing Gas approved a 5 mtpa Tianjin terminal; LNG Prime: Phases 1-3 commissioned Sep 2023 / 2024 / 26 Nov 2024 (10 tanks, 2.2 mcm). The terminal operates yet GEM shows 0.0 — a data gap to fill at Update; reconcile GIIGNL's 12.0 against the phase-sum then.",
+    "verdict": "No edit staged. GEM's export capacity is 0.0 although the terminal is operating - Beijing Gas Tianjin Nangang Phases 1-3 are commissioned (Phase 1 Sep 2023, Phase 2 early 2024, Phase 3 Nov 2024) - so the 0.0 is a GEM data gap, not a genuine zero. GIIGNL's 12.0 is a plausible phased total (Phase 1 alone ~5 mtpa, design sums toward ~15 mtpa) but no single independent source pins the current operating nameplate to the 2-source bar, so no value is asserted; the blank is left as-is and flagged in qa_review for a data-quality fill. Owner delta benign (Beijing Gas Group / Beijing Gas Group LNG Co name forms; GIIGNL tokens are parse-noise).",
+    "basis": "Beijing Gas Tianjin Nangang Phases 1-3 are commissioned (S&P; LNG Prime: Sep 2023 / 2024 / 26 Nov 2024, 10 tanks). The terminal operates yet GEM shows 0.0 - a data gap. GIIGNL 12.0 vs the phase-sum (~15) is not corroborated to the 2-source bar, so the blank stays and is flagged rather than filled with an unconfirmed number.",
     "sources": [
       "https://www.spglobal.com/commodityinsights/en/market-insights/latest-news/natural-gas/012220-beijing-gas-build-lng-terminal-tianjin",
       "https://lngprime.com/asia/beijing-gas-launches-third-phase-of-tianjin-nangang-lng-terminal/133896/"
@@ -154,7 +154,7 @@
     "terminal_id": "T100000130405",
     "section_type": "regasification",
     "unit_name": null,
-    "verdict": "Route to Update/new-unit (expansion timing): GIIGNL 12.0 vs GEM 6.0 reflects the Yangshan Phase II expansion that doubles capacity from 6 to 12 mtpa (Shenergy Yangshan LNG), with stages commissioning from late 2025 toward 2030 — not a simple capacity replacement. Add/move the Phase II unit to operating as stages come online rather than overwriting the 6.0 project total. Owner delta benign (Shanghai LNG Co / Shenergy Yangshan LNG name forms).",
+    "verdict": "No edit. GIIGNL 12.0 vs GEM 6.0 reflects the Yangshan Phase II expansion that doubles capacity from 6 to 12 mtpa (Shenergy Yangshan LNG), commissioning in stages from late 2025 toward 2030. GEM correctly models the expansion as a separate future unit per the China expansion-counting rule rather than crediting the full expanded nameplate to the operating project total, so the 6.0 operating total stays and the Phase II stages become operating units as they come online. Owner delta benign (Shanghai LNG Co / Shenergy Yangshan LNG name forms).",
     "basis": "Enerdata/Seatrade: the Yangshan expansion adds 6 mtpa (6->12 mtpa), with the terminal + first tanks before 2025 and the remainder by 2030. GIIGNL's 12.0 credits the full expanded nameplate; GEM models the expansion as a separate unit per the China expansion-counting rule.",
     "sources": [
       "https://www.enerdata.net/publications/daily-energy-news/china-launches-expansion-project-yangshan-lng-terminal.html",
@@ -293,8 +293,8 @@
     "terminal_id": "T100000130475",
     "section_type": "regasification",
     "unit_name": null,
-    "verdict": "Update workflow: reconcile GEM unit-row capacity. GIIGNL 2.0 mtpa vs GEM DB 1.0; GEM's own wiki and trade press (Saibu Gas 90% / Kyushu Electric 10%) state 2.4 mtpa total terminal capacity (2 x 180,000 m3 tanks). GEM's 1.0 DB value appears to be a stale/per-tank figure low vs both GIIGNL (2.0) and GEM's own 2.4 total. Recommend updating the unit-row toward the well-established ~2.4 mtpa total (sponsor/wiki sourced), NOT auto-applying GIIGNL's 2.0. Owner delta benign (Hibiki LNG Co = the Saibu Gas/Kyushu Electric JV).",
-    "basis": "GEM wiki and LNG Prime confirm 2.4 mtpa total send-out; GIIGNL reports 2.0; GEM DB row shows 1.0 (JOGMEC ref). Real internal inconsistency plus GIIGNL conflict - route to Update, use a current operator/IR source to set the unit-row.",
+    "verdict": "No edit from this comparison. GEM's terminal capacity is 2.4 mtpa (Saibu Gas 90% / Kyushu Electric 10%, 2 x 180,000 m3 tanks), which matches the well-established operator/trade-press total and already exceeds GIIGNL's lower 2.0 - so no GIIGNL-driven change. (A separate qa_review entry flags a possible internal inconsistency where a GEM unit-row may still hold 1.0 vs the 2.4 total; that is a data-hygiene check, not a GIIGNL conflict.) Owner delta benign (Hibiki LNG Co = the Saibu Gas / Kyushu Electric JV).",
+    "basis": "GEM terminal capacity is 2.4 mtpa total send-out (2 x 180,000 m3), matching operator/trade-press figures (LNG Prime); GIIGNL reports the lower 2.0, so GEM needs no change at the project level. Any GEM unit-row still at 1.0 is an internal-consistency item tracked in qa_review, separate from this GIIGNL comparison.",
     "sources": [
       "https://lngprime.com/asia/japans-saibu-gas-decides-to-build-third-hibiki-lng-tank/134177/"
     ],
@@ -386,7 +386,7 @@
     "terminal_id": "T100000130323",
     "section_type": "regasification",
     "unit_name": null,
-    "verdict": "keep-GEM (1.0 mtpa) - metric difference. GEM 1.0 = design/nameplate; GIIGNL 1.1 is an operating-throughput rounding (PV Gas Apr-2026 ran the regas system at 288 t/hr vs 171 t/hr design, above nameplate). No formal nameplate change above 1 mtpa yet; the 3-mtpa Phase 2 expansion is still future. MONITOR: the throughput de-bottlenecking and planned 3-mtpa expansion are a candidate for a future Update/Discovery unit. Owner: no action - GIIGNL Bitexco/Tokyo-Gas (+ stray '5' token = parse-noise) vs GEM PV Gas; benign, not a real ownership change.",
+    "verdict": "No edit. GEM 1.0 = design/nameplate; GIIGNL 1.1 is an operating-throughput rounding (PV Gas ran the regas system above its 171 t/hr design in Apr-2026, at 288 t/hr), not a nameplate change. No formal nameplate above 1 mtpa yet; the 3-mtpa Phase 2 expansion is still future (a monitor signal, not a current change). Owner: no action - GIIGNL Bitexco/Tokyo-Gas (+ stray '5' token = parse-noise) vs GEM PV Gas; benign, not a real ownership change.",
     "basis": "Thi Vai is a 1-mtpa nameplate terminal (PV Gas); the Apr-2026 de-bottlenecking pushed operating throughput above design, which is why GIIGNL rounds to 1.1 - an operating-vs-nameplate metric difference, not a true conflict. Planned expansion to ~3 mtpa is future.",
     "sources": [
       "https://lngprime.com/asia/petrovietnam-gas-boosts-thi-vai-regas-capacity/182732/"
@@ -471,8 +471,8 @@
     "terminal_id": "T100001083032",
     "section_type": "regasification",
     "unit_name": null,
-    "verdict": "Update workflow: re-verify GEM unit-row capacity; GIIGNL's lower figure looks better-grounded. GIIGNL 3.4 vs GEM (Damietta FSRU) 4.99, a real 31.9% conflict. The deployed vessel is the Energos Winter, a ~138,250 m3 FSRU whose prior NFE deployment ran a ~500 mmcf/d sendout (~3.8 mtpa) - close to GIIGNL's 3.4 and notably below GEM's 4.99, which appears to be a high terminal-nameplate or stale estimate. Recommend reconciling the GEM unit-row downward using a current NFE/EGAS sendout source; do NOT auto-apply GIIGNL's 3.4. Owner facet: no action - GIIGNL 'egpc' is an Egyptian state co-sponsor / charterer-side party vs GEM's vessel/terminal operator representation, benign.",
-    "basis": "Energos Winter is a ~138,250 m3 FSRU; in its prior NFE deployment it ran ~500 mmcf/d max sendout (~3.8 mtpa). GIIGNL 3.4 mtpa is consistent with that vessel class; GEM 4.99 is materially higher and from a non-GIIGNL source (energosinfra fleet page). Genuine capacity disagreement -> route to Update with a current operator source. EGPC is the Egyptian state sponsor, benign owner delta.",
+    "verdict": "No edit staged. GIIGNL 3.4 vs GEM (Damietta FSRU) 4.99 is a real ~32% conflict and GEM's 4.99 looks high: the deployed Energos Winter is a ~138,250 m3 FSRU whose prior NFE deployment ran ~500 mmcf/d sendout (~3.8 mtpa), closer to GIIGNL's 3.4. But no current NFE/EGAS operator source corroborating a specific sendout met the 2-source bar, so GEM's value is left unchanged and flagged as a likely-high figure for a data-quality recheck; GIIGNL's 3.4 is not auto-applied. Owner facet: no action - GIIGNL 'egpc' is an Egyptian state co-sponsor / charterer-side party vs GEM's vessel/terminal operator representation, benign.",
+    "basis": "Energos Winter is a ~138,250 m3 FSRU; in its prior NFE deployment it ran ~500 mmcf/d max sendout (~3.8 mtpa). GIIGNL 3.4 is consistent with that vessel class; GEM 4.99 is materially higher and from a non-GIIGNL fleet-page source. Genuine disagreement, but no corroborated current operator value was found, so the GEM figure is left unchanged and flagged. EGPC is the Egyptian state sponsor, benign owner delta.",
     "sources": [
       "https://lngprime.com/contracts-and-tenders/nfe-inks-second-fsru-charter-deal-with-egypts-egas/157090/"
     ],
@@ -615,8 +615,8 @@
     "terminal_id": "T100000130528",
     "section_type": "regasification",
     "unit_name": null,
-    "verdict": "route to Update - GIIGNL likely more current, verify vs Enagas. El Musel: material 13.3% delta. GEM 5.88 mtpa traces to a ~2022 proposal value (~8 bcm/y aspiration); the terminal is now repositioned as a transshipment/logistics hub under Spain's Feb-2024 special regime, not a standard grid regas. GIIGNL 2026 5.1 mtpa (~7 bcm) likely reflects the current regime more accurately. Do NOT auto-apply - verify against Enagas regas-plant capacity in Update, then decide. Owner facet: no action - 'reganosa' vs 'reganosa servicios slu' is a legal-suffix name variant.",
-    "basis": "El Musel 13.3% delta; GEM 5.88 is an older proposal-era figure, GIIGNL 5.1 likely reflects the current transshipment regime. Resolve in Update against Enagas, do not auto-apply. Owner delta is a Reganosa suffix variant. Independent source: Enagas regas-plant capacity page.",
+    "verdict": "No edit staged. El Musel shows a 13.3% delta: GEM 5.88 mtpa traces to a ~2022 proposal value (~8 bcm/y aspiration), while the terminal is now repositioned as a transshipment/logistics hub under Spain's Feb-2024 special regime; GIIGNL 2026's 5.1 mtpa (~7 bcm) likely reflects the current regime more accurately. But without an Enagas regas-plant capacity figure confirming 5.1, GIIGNL's number is not auto-applied; GEM's 5.88 is left unchanged and flagged as a likely-stale proposal-era figure for a data-quality recheck. Owner facet: no action - 'reganosa' vs 'reganosa servicios slu' is a legal-suffix name variant.",
+    "basis": "El Musel 13.3% delta; GEM 5.88 is an older proposal-era figure and GIIGNL 5.1 likely reflects the current transshipment regime, but the Enagas regas-plant capacity page was not confirmed to the value, so no change is staged and the figure is flagged. Owner delta is a Reganosa suffix variant.",
     "sources": [
       "https://www.enagas.es/en/energy-transition/gas-network/gas-infrastructure/regasification-plants/"
     ],
@@ -738,7 +738,7 @@
     "terminal_id": "T100000130708",
     "section_type": "liquefaction",
     "unit_name": null,
-    "verdict": "keep-GEM (0.66 mtpa) - GIIGNL 0.9 is the planned expansion figure, not realized operating capacity. Independent sources (Wikipedia, Novatek, Wood Mackenzie) put current Cryogas-Vysotsk (2 trains) at ~0.66 mtpa, matching GEM; a 2023 plan would expand it to 0.9 mtpa but that capacity is not yet built/operating. GIIGNL's 0.9 anticipates the expansion. Do not adopt GIIGNL 0.9; treat the expansion as a future Update/monitor signal. Owner facet: no action - 'gazprombank' vs 'gazprombank jsc' is a legal-suffix name variant (Novatek 51% / Gazprombank 49% JV).",
+    "verdict": "No edit. GEM 0.66 mtpa is the current realized operating capacity (Cryogas-Vysotsk, 2 trains), corroborated by Novatek and Wood Mackenzie; GIIGNL's 0.9 anticipates a 2023-planned expansion that is not yet built/operating. Keep GEM 0.66; the expansion is a future monitor signal, not a current change. Owner facet: no action - 'gazprombank' vs 'gazprombank jsc' is a legal-suffix name variant (Novatek 51% / Gazprombank 49% JV).",
     "basis": "Wikipedia/Novatek/Wood Mackenzie confirm current Cryogas-Vysotsk capacity is ~0.66 mtpa (NOVATEK 51% / Gazprombank 49%); a 2023 plan targets 0.9 mtpa (not yet realized). GEM 0.66 = current operating, GIIGNL 0.9 = planned. Owner delta is a gazprombank suffix variant. NOTE: corrects the prior pass's mistaken '1.5 mtpa by Nov 2023' basis.",
     "sources": [
       "https://en.wikipedia.org/wiki/Vysotsk_LNG",
@@ -752,8 +752,8 @@
     "terminal_id": "T100000130546",
     "section_type": "regasification",
     "unit_name": null,
-    "verdict": "CAPACITY: route to Update to fill GEM's blank (0.0 = missing, not zero). GIIGNL says 6.0 mtpa (operating basis); the FSRU Experience is rated higher (~30 Mm3/d). Fill a sourced sendout value via Update; metric basis differs, do NOT auto-apply GIIGNL. OWNER: no action - Excelerate is the FSRU charterer/operator while Petrobras owns/operates the terminal; benign FSRU-operator-vs-owner split.",
-    "basis": "GEM export capacity is blank (0.0), which means missing, not a genuine zero; GIIGNL provides 6.0 (operating). Recommend an Update fill with an independent sendout source. Excelerate provides the FSRU under a long-term time charter to Petrobras, so GIIGNL's 'excelerate' is not a terminal-owner change.",
+    "verdict": "No edit staged. GEM's export capacity is blank (0.0 = missing, not a genuine zero); GIIGNL gives 6.0 mtpa on an operating basis and the FSRU Experience is rated higher (~30 Mm3/d). No independent sendout figure was corroborated to the 2-source bar, so the blank is left as-is and the gap is logged in qa_review for a data-quality fill rather than asserting an unconfirmed value. OWNER: no action - Excelerate is the FSRU charterer/operator while Petrobras owns/operates the terminal; benign FSRU-operator-vs-owner split.",
+    "basis": "GEM export capacity is blank (0.0), meaning missing, not a genuine zero; GIIGNL provides 6.0 (operating). No independent sendout source was confirmed to the value, so the blank stays and is flagged in qa_review. Excelerate provides the FSRU under a long-term time charter to Petrobras, so GIIGNL's 'excelerate' is not a terminal-owner change.",
     "sources": [
       "https://excelerateenergy.com/projects/guanabara-bay-lng-import-terminal/"
     ],
@@ -803,8 +803,8 @@
     "terminal_id": "T100000130566",
     "section_type": "regasification",
     "unit_name": null,
-    "verdict": "CAPACITY: metric/range conflict - route to Update, do NOT auto-apply GIIGNL. Andres capacity varies by basis: EIA/operator cite ~1.5-1.7 mtpa, GEM 1.9, GIIGNL 2.7 (42% delta). This is a basis/range spread, not a clear newer value; reconcile in Update against an operator/regulatory figure. OWNER: no action - AES sold 20% of AES Andres to Grupo Linda/Grupo Estrella/AFI Popular (closed Dec 2023), retaining a majority; GEM already lists AES Corp + all three buyers and is MORE complete than GIIGNL's single 'aes'.",
-    "basis": "Andres regas figures disagree by basis (operator/EIA ~1.7, GEM 1.9, GIIGNL 2.7); resolve in Update rather than adopt GIIGNL. The 2023 AES minority-stake sale is already reflected in GEM's owner list, so no owner action.",
+    "verdict": "No edit. Andres capacity varies by basis: EIA/operator cite ~1.5-1.7 mtpa, GEM 1.9, GIIGNL 2.7 (42% spread). This is a basis/range spread rather than a clear newer value, and no single figure corroborated to the 2-source bar displaces GEM's mid-range 1.9, so GEM stays and GIIGNL's 2.7 is not adopted. OWNER: no action - AES sold 20% of AES Andres to Grupo Linda/Grupo Estrella/AFI Popular (closed Dec 2023) but retains a majority; GEM already lists AES Corp + all three buyers and is MORE complete than GIIGNL's single 'aes'.",
+    "basis": "Andres regas figures disagree by basis (operator/EIA ~1.7, GEM 1.9, GIIGNL 2.7); no corroborated newer value displaces GEM's 1.9, so it is kept rather than adopting GIIGNL. The 2023 AES minority-stake sale is already reflected in GEM's owner list, so no owner action.",
     "sources": [
       "https://lngprime.com/americas/aes-wraps-up-stake-sale-in-two-lng-terminals/100801/"
     ],
@@ -897,8 +897,8 @@
     "terminal_id": "T100000130688",
     "section_type": "regasification",
     "unit_name": null,
-    "verdict": "CAPACITY: metric/range conflict - route to Update, do NOT auto-apply GIIGNL. Porto do Acu (GNA, FSRU BW Magna) is rated ~21 Mm3/d (~5.6 mtpa, GIIGNL) with a reported upper range to ~28 Mm3/d (~7.5 mtpa, GEM); the 25% delta is a nameplate-vs-upper-range basis difference. Record max in sheet per methodology, reconcile in Update. OWNER: no action - GNA JV is Prumo Logistica + partners; GIIGNL adds the charterer label 'Gas Natural Acu', GEM has Prumo Logistica SA. Benign.",
-    "basis": "GNA FSRU rated ~21 Mm3/d nameplate (5.6 mtpa) with range to ~28 Mm3/d (7.5 mtpa); GEM 7.5 vs GIIGNL 5.6 is a range/basis difference. 'Gas Natural Acu' is the charterer/project label, not a new owner.",
+    "verdict": "No edit. Porto do Acu (GNA, FSRU BW Magna) is rated ~21 Mm3/d (~5.6 mtpa, GIIGNL nameplate) with a reported upper range to ~28 Mm3/d (~7.5 mtpa); the 25% delta is a nameplate-vs-upper-range basis difference. GEM already records 7.5, the upper/max figure (consistent with recording the max), so no change and GIIGNL's 5.6 is not adopted. OWNER: no action - GNA JV is Prumo Logistica + partners; GIIGNL adds the charterer label 'Gas Natural Acu', GEM has Prumo Logistica SA. Benign.",
+    "basis": "GNA FSRU rated ~21 Mm3/d nameplate (5.6 mtpa) with range to ~28 Mm3/d (7.5 mtpa); GEM 7.5 vs GIIGNL 5.6 is a range/basis difference and GEM already holds the upper/max value, so no change. 'Gas Natural Acu' is the charterer/project label, not a new owner.",
     "sources": [
       "https://www.gna.com.br/en/our-business/lng-regasification-terminal"
     ],
