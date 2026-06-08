@@ -62,5 +62,13 @@
     "severity": "medium",
     "suggested_action": "For each, pull the timeline (once the project DB base URL is reachable) then stage the append-only status_timeline entry with the verified citation from giignl_narrative_findings.json. Ravenna also needs the capacity units fix (GEM 5.0 'MTPA' is 5.0 bcm/y = 3.7 MTPA).",
     "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_data_error",
+    "terminal_name": "LNG Canada Terminal (Phase 2 / T3-T4, tid T100000130358)",
+    "issue": "Phase 2 (T3-T4), 14 mtpa, is recorded in the live GEM export as Status=operating with Substatus=planned, and carries NO ConstructionYear and NO ActualStartYear - i.e. it has not begun construction, let alone operation. By the planned/actual rule (lifecycle_rules.md 'Effective status'), an operating/planned milestone is merely projected, so the unit is effectively proposed (Phase 1 T1-T2 began exporting 2025; Phase 2 is a separate, not-yet-built expansion). Left as-is it inflates GEM's LNG Canada operating capacity from the correct 14.0 to 28.0. report_diff.py now demotes it automatically, so this reconciliation shows the correct GEM 14.0 = GIIGNL 14.0 match - but the LIVE DB still carries the planned-substatus operating flag.",
+    "severity": "warning",
+    "suggested_action": "Correct in the live DB exactly as Tilbury Phase 1b/2 were on 2026-06-07: set Phase 2 (T3-T4) to an explicit `proposed` status (the operating entry is planned, not actual). Do NOT change the 14 mtpa capacity. This is the only remaining operating/planned (or construction/planned) unit in the LNG dataset after the Tilbury fix.",
+    "researcher_initials": "AI-draft"
   }
 ]

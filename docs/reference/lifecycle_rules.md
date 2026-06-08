@@ -23,10 +23,18 @@ Per the methodology, every LNG unit has exactly one current status drawn from th
 
 Substatus has two distinct meanings depending on Status:
 
-1. **Active statuses** (`construction`, `operating`, `idled`, `mothballed`, `retired`) plus `FID`: `actual` vs `planned`. The export only ever emits `actual` because it shows current status; `planned` entries live in the timeline.
+1. **Active statuses** (`construction`, `operating`, `idled`, `mothballed`, `retired`) plus `FID`: `actual` vs `planned`. **The export does NOT only emit `actual`** — it surfaces the most-advanced timeline entry, and that entry can be a not-yet-realized `planned` one. When it is, the unit has NOT actually reached that milestone and is **effectively still `proposed`** (see "Effective status" below). Observed live: Tilbury Phase 1b carried `operating`/`planned`; LNG Canada Phase 2 (T3-T4) carries `operating`/`planned` at 14 mtpa. An earlier version of this doc wrongly assumed the export only ever emits `actual`, and the diff tooling trusted bare `Status == "operating"` — which silently inflated operating-capacity totals.
 2. **Dormancy statuses** (`shelved`, `cancelled`): `confirmed` vs `inferred 2 y` / `inferred 4 y`. Confirmed = the sponsor announced the pause/cancellation. Inferred = no updates for the threshold period.
 
 `proposed` has no substatus (blank); the rare `proposed` + `actual` cases are likely data-entry artifacts and should be flagged in `qa_review`.
+
+### Effective status (the planned/actual rule, applied in tooling)
+
+**A non-`proposed` status on the advancement ladder (`proposed` → `construction` → `operating`) only counts as the unit's official status when its substatus is `actual`. A `planned` substatus means the milestone is merely projected, so the unit defaults back to `proposed`.** Equivalently: a `Construction (planned)` or `Operating (planned)` row is still a `proposed` unit until the corresponding `actual` entry lands. (The dormant/terminal states — `shelved`, `cancelled`, `retired`, `idled`, `mothballed` — use the separate `confirmed`/`inferred` substatus axis and are NOT affected by this rule.)
+
+This is the same derivation as "current status = the status closest to the bottom of the timeline, excluding `planned` entries" (see "Why ordering matters") — restated for the flat export, where only one `(Status, Substatus)` pair is visible per unit-row.
+
+`normalize.effective_status(status, substatus)` implements it; `report_diff.py` applies it at read time so a `planned` unit never inflates the GEM operating-capacity total. `add_effective_status.py` appends an `EffectiveStatus` column to a handoff/archive export so the corrected status is visible alongside the raw `Status`/`Substatus`. A unit found with `operating`/`planned` or `construction`/`planned` in the live DB should be corrected there (set the explicit `proposed` entry) and flagged to the user.
 
 ## The timeline model
 
