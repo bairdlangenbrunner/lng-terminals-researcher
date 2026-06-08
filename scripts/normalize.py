@@ -520,6 +520,37 @@ def same_owner_entity(a, b):
     return False
 
 
+# ---------------------------------------------------------------------------
+# Effective status (planned/actual substatus rule)
+# ---------------------------------------------------------------------------
+
+# Statuses on the proposed -> (pre-)construction -> operating advancement ladder.
+# GEM models a unit's status as a TIMELINE with each entry flagged actual/planned;
+# the flat --all-fields export surfaces the most-advanced entry, which can be a
+# not-yet-realized 'planned' one (e.g. Tilbury Phase 1b carried operating/planned,
+# LNG Canada Phase 2 (T3-T4) carries operating/planned at 14 mtpa). A 'planned'
+# substatus on one of these means the milestone is merely PROJECTED, not reached,
+# so the unit is effectively still `proposed`. The terminal/dormant states
+# (shelved, cancelled, retired, idled, mothballed) use a different substatus axis
+# ("confirmed" / "inferred N y") and are deliberately untouched.
+_ADVANCING_STATUSES = {"proposed", "pre-construction", "construction", "operating"}
+
+
+def effective_status(status, substatus):
+    """GEM effective status, honoring the planned/actual substatus rule.
+
+    A non-`proposed` advancing status only stands as the unit's official status
+    when its substatus is `actual` (or otherwise confirmed); a `planned` substatus
+    means the status is projected, not realized, so the unit defaults back to
+    `proposed`. Returns the original `status` string unchanged in every other case
+    (including all dormant/terminal states and blank substatus)."""
+    s = (status or "").strip().lower()
+    sub = (substatus or "").strip().lower()
+    if sub == "planned" and s in _ADVANCING_STATUSES:
+        return "proposed"
+    return status
+
+
 def normalize_capacity_unit(s):
     """Return canonical capacity unit. Returns lowercased input if unknown."""
     if s is None:

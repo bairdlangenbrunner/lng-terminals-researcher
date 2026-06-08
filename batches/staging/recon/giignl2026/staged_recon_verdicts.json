@@ -807,13 +807,13 @@
     "terminal_id": "T100000131044",
     "section_type": "liquefaction",
     "unit_name": null,
-    "verdict": "Route to Update - GEM unit STATUS error inflates the operating total. The 67.7% delta is an artifact of GEM mis-statusing expansion units: GEM currently marks Phase 1b Expansion (0.65 mtpa) as 'operating' and Phase 2 Expansion (2.5) as 'construction', so GEM's operating total reads 0.93 (Original 0.03 + Phase 1a 0.25 + Phase 1b 0.65). The genuinely-operating units (Original + Phase 1a = 0.28) match GIIGNL's 0.3 within rounding. FortisBC/BCUC sources show Phase 1b construction was only 'expected to start as early as 2027' and Phase 2 was at effects-assessment stage in early 2026 - i.e. both are PROPOSED (no FID), not operating/construction. Recommend correcting the GEM unit statuses: Phase 1b operating->proposed, Phase 2 construction->proposed; after that GEM's operating total (0.28) agrees with GIIGNL. Do NOT touch capacity values. OWNER: no delta.",
-    "basis": "Tilbury Island is a small-scale FortisBC plant; only the Original Facility (0.03) and Phase 1a Expansion (0.25) are genuinely operating (=0.28, matching GIIGNL's 0.3). GEM's live export marks Phase 1b 'operating' and Phase 2 'construction', which contradicts FortisBC/BCUC reporting (1b construction-start ~2027, Phase 2 in effects-assessment in 2026 - both proposed). The capacity delta is therefore a status-data error in GEM, not a nameplate disagreement.",
+    "verdict": "No action needed - GEM corrected 2026-06-07. The earlier 67.7% delta was a GEM status-data error, not a nameplate disagreement: Phase 1b Expansion (0.65) carried operating/planned and Phase 2 Expansion (2.5) construction/planned, inflating GEM's operating total to 0.93. The user reset both to an explicit `proposed` status in the live DB on 2026-06-07, so GEM's operating total is now 0.28 (Original 0.03 + Phase 1a 0.25), agreeing with GIIGNL's 0.3 within rounding (0.02 delta). The planned/actual rule (operating/construction + substatus=planned -> effectively proposed) is now enforced in report_diff.py via normalize.effective_status, so this will not re-inflate. Capacity values unchanged. OWNER: no delta.",
+    "basis": "Only the Original Facility (0.03) and Phase 1a Expansion (0.25) are genuinely operating (=0.28, matching GIIGNL's 0.3 within rounding). Phase 1b and Phase 2 had carried planned-substatus operating/construction entries (milestones projected, not reached) and were reset to proposed in the live DB on 2026-06-07. The residual 0.02 delta is small-number rounding, not a real disagreement.",
     "sources": [
       "https://www.fortisbc.com/est/about-us/liquefied-natural-gas-(lng)-facilities"
     ],
     "facet": "capacity",
-    "confidence": "medium"
+    "confidence": "high"
   },
   {
     "terminal_id": "T100000130661",
