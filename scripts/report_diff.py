@@ -40,8 +40,9 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 from normalize import (
-    normalize_country, normalize_entity, normalize_terminal_name,
-    parse_entity_list, same_owner_entity, transliterate_to_english,
+    effective_status, normalize_country, normalize_entity,
+    normalize_terminal_name, parse_entity_list, same_owner_entity,
+    transliterate_to_english,
 )
 
 
@@ -1461,7 +1462,7 @@ def _build_gem_project_table(gem_csv):
     colmap = _load_colmap(gem_csv)
     ci = {k: colmap.get(k) for k in [
         "terminal_id", "terminal_name", "unit_name", "country", "facility_type",
-        "status", "fuel", "owner", "parent", "capacity_mtpa", "capacity_ref",
+        "status", "substatus", "fuel", "owner", "parent", "capacity_mtpa", "capacity_ref",
         "floating", "floating_vessel_name",
         "import_export_only", "other_names", "local_names", "language",
         "proposal_year", "construction_year", "shelved_year", "cancelled_year",
@@ -1542,7 +1543,13 @@ def _build_gem_project_table(gem_csv):
                 keyed_name = tname_norm + _FLOAT_VARIANT_SUFFIX
             key = (country_norm, keyed_name, section_type)
 
-            status = row[ci["status"]] if ci["status"] is not None else ""
+            raw_status = row[ci["status"]] if ci["status"] is not None else ""
+            substatus = row[ci["substatus"]] if ci["substatus"] is not None else ""
+            # Honor the planned/actual substatus rule: an operating/construction
+            # unit whose substatus is 'planned' has not actually reached that
+            # milestone, so it counts as `proposed` and must NOT inflate the
+            # operating capacity total (Tilbury Phase 1b / LNG Canada T3-T4).
+            status = effective_status(raw_status, substatus)
             owner = row[ci["owner"]] if ci["owner"] is not None else ""
             parent = row[ci["parent"]] if ci["parent"] is not None else ""
             cap_mtpa = row[ci["capacity_mtpa"]] if ci["capacity_mtpa"] is not None else ""
@@ -1645,6 +1652,11 @@ def _build_gem_project_table(gem_csv):
                 "unit_name": uname if (uname and uname != "--") else "",
                 "unit_name_norm": uname_norm,
                 "status": status,
+                # raw GEM status before the planned/actual substatus rule, kept for
+                # audit: status != raw_status means a planned milestone was demoted
+                # to proposed (e.g. operating/planned -> proposed).
+                "raw_status": raw_status,
+                "substatus": substatus,
                 "capacity_mtpa": cap,
                 "capacity_known": cap_known,
                 "capacity_ref": (cap_ref or "").strip(),

@@ -54,9 +54,10 @@ python recalc.py ../batches/...
 
 | Script | Purpose |
 |---|---|
-| `normalize.py` | Canonical names for countries, entities (owners/operators), capacity units, and terminal names. Also transliterates non-Latin names (e.g. Chinese `LocalNames`) to English via jieba + pypinyin for cross-script alias matching. Import as a library; CLI runs smoke tests. |
+| `normalize.py` | Canonical names for countries, entities (owners/operators), capacity units, and terminal names. Also transliterates non-Latin names (e.g. Chinese `LocalNames`) to English via jieba + pypinyin for cross-script alias matching. Also exposes `effective_status(status, substatus)` — the planned/actual rule (an `operating`/`construction` unit with substatus `planned` is effectively `proposed`; see `docs/reference/lifecycle_rules.md`). Import as a library; CLI runs smoke tests. |
 | `capacity_normalize.py` | mtpa/bcm/y conversion, range parsing (records max per methodology). |
 | `status_timeline.py` | Validates legal state transitions, anchor year invariants, current-status derivation. Used by build_review_package.py. |
+| `add_effective_status.py` | Appends an `EffectiveStatus` (+ `StatusRuleApplied`) column to a handoff/archive export via `normalize.effective_status`, leaving the raw 115-column schema intact. `report_diff.py` already applies the rule internally, so the working `gem_export.csv` doesn't need it — this is for snapshots handed to the user (e.g. the timestamped `data/gem_export_<stamp>_ET.csv`). **Snapshot retention:** when `-o` is a timestamped `gem_export_<YYYYMMDD>_<HHMM>_ET.csv` archive snapshot, it keeps only the `--keep` most recent such snapshots in that directory and prunes older ones (**default 2**) — so the local CSV archive never piles up. Self-scoping: only fires when the output is itself an archive snapshot, and only ever deletes siblings matching that same name pattern (the working `gem_export.csv` and any other name are untouched). `--keep -1` disables pruning. |
 
 ### Search and dedup
 
