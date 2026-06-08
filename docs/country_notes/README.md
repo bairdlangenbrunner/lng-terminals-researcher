@@ -17,6 +17,8 @@ For each country in scope of a batch:
 
 3. **At batch end**, stage them in the `country_notes_contributions` sheet of
    the batch xlsx. After review, the user transfers them into the country file.
+   This sheet appears in update and discovery batches; it is NOT produced in
+   reconciliation batches.
 
 ## Currently seeded
 

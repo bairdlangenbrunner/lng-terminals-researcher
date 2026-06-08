@@ -10,7 +10,7 @@ The methodology doc (LNG Terminals Manual) is authoritative for what counts as a
 
 Trigger conditions:
 - Triage SOP has scoped a country/region for discovery work this batch
-- A reconciliation batch produced `giignl_to_action` findings routed to Discovery (GIIGNL-only candidates)
+- A reconciliation batch produced `routing` findings routed to Discovery (GIIGNL-only candidates)
 - The user explicitly requests a discovery run for a country, region, or sponsor
 - A specific news event suggests new project activity in a region not covered by an upcoming Update batch (a major sponsor's quarterly announcement, a country opening a new round of bids)
 - A "catch-up sweep" after a long period without coverage of a particular region
