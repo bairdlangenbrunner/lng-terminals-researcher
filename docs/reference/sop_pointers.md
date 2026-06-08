@@ -131,12 +131,12 @@ Abbreviations:
 | wiki_updates | Update or discovery | UPD §3 (narrative content → wiki Background) |
 | status_timeline_additions | Any workflow touching status | UPD §3.2, LFC |
 | entity_additions | Any workflow adding entities | UPD §8, DSC §9 |
-| giignl_diff_operating | Reconciliation workflow | REC §3.10 |
-| giignl_diff_nonoperating | Reconciliation workflow | REC §3.10 |
+| audit_operating | Reconciliation workflow | REC §3.10 |
+| audit_nonoperating | Reconciliation workflow | REC §3.10 |
 | giignl_fsru_fleet | Reconciliation workflow | REC §3.10 |
-| candidate_edits | Reconciliation workflow | REC §3.10 |
+| edits_to_gem | Reconciliation workflow | GEM-CSV-shaped PASTE VIEW: only the rows the research pass concluded need a DB change, with resolved values in the real GEM columns, color-coded, ref URLs in [ref] cells, and a leftmost _change column explaining what changed and why |
 | giignl_full_extract | Reconciliation workflow | REC §3.10 |
-| giignl_to_action | Reconciliation workflow | REC §3.10 |
+| routing | Reconciliation workflow | REC §3.10 |
 | fsru_sync | Any batch touching FSRUs | SKL FSRU sync rule |
 | monitor_list | Discovery workflow | DSC §5 |
 | stale_sweep | Triage or update | TRG §3.1, UPD §3.4 |

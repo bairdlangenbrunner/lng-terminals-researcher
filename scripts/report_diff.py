@@ -2533,7 +2533,7 @@ def _classify(report_rows, gem_projects, alias_map=None, collision_regas=None,
     # unit was aligned to a report row, OR the §3.2.1 narrative-prose pass annotates
     # giignl_narrative_mention downstream (a confirmed forward phase, no conflict —
     # Reconciliation SOP §5.7). Scoped to matched projects only (gem-only projects
-    # live wholly in giignl_to_action).
+    # live wholly in the routing sheet).
     nonoperating_units = []
     for gk in sorted(set(matched_gp_keys)):
         gp = gem_projects[gk]

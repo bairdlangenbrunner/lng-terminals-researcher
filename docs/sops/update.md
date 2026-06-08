@@ -10,7 +10,7 @@ The methodology doc (LNG Terminals Manual) is authoritative for the underlying r
 
 Trigger conditions:
 - Triage SOP has selected a country/region for update this batch
-- A reconciliation batch produced `giignl_to_action` findings routed to Update
+- A reconciliation batch produced `routing` findings routed to Update
 - The user explicitly requests an update batch ("refresh the Japan terminals", "fill blank Capacity refs for the EU rows")
 - Stale-sweep flagged units passing dormancy thresholds (inferred shelved at 2y, inferred cancelled at 4y)
 - A QC memo (`docs/sops/qc.md`) routed fixes here — dead citations to replace, unsupported values to re-research, not-applied/diverged edits to re-stage ("QC detects, Update fixes")
