@@ -20,6 +20,7 @@ batches/staging/
   _assemble.py               merges <region>/*.<type>.json → <region>/_build/staged_*.json
   <region>/                  per-region sweep dir (southamerica, europe, africa, asia, americas, ...)
     <slug>.<type>.json       one file per country per finding-type (updates|qa|wiki|entity|monitor|newterminals|newunits)
+    <slug>.*.done.json       resume markers — checkpoints only, see lifecycle note below
     _build/                  assembled staged_*.json that build_review_package.py consumes (derived — gitignored)
   recon/<report><year>/      per-edition reconciliation dir (e.g. recon/giignl2026/)
     giignl_extracted.csv     ┐ derived from the data/ PDF + scripts — gitignored, re-derivable
@@ -32,10 +33,16 @@ batches/staging/
                                       (recon verdicts, report-only resolutions, match overrides, entity adds, qa, ...)
   <scope-slug>/              ad-hoc single-scope update/discovery batch (e.g. japan/, qatar/)
     staged_*.json            agent-authored staging written directly — COMMITTED; the build's --inputs-dir
-  _prior/                    pre-sweep one-off batches, kept for provenance
-    audit_import/            the original ChatGPT-audit import (US/Algeria/Australia → batch 0030)
-    egypt/                   the one-off Egypt batch (→ batch 1833 on 2026-06-02)
 ```
+
+(Pre-sweep one-off batches — the ChatGPT-audit import and the 2026-06-02 Egypt batch — lived in a
+`_prior/` dir here; it was removed from HEAD on 2026-06-09 and remains recoverable from git history.)
+
+**Done-marker lifecycle:** `<slug>.done.json` / `<slug>.disc.done.json` / `<slug>.reverify.done.json`
+are resume checkpoints only — the dispatch tooling (`_reverify_state.py`, `_build_region.py`) treats
+marker-present as "country done" while a sweep is in flight. Once a sweep is confirmed complete
+(`SWEEP_PROGRESS.md` is the durable record), delete its markers — don't let them accumulate. The
+substantive `<slug>.<type>.json` research files are the audit trail and stay committed.
 
 Principle: **commit what can't be re-derived (agent-authored research), gitignore what can (derived
 extracts/diffs/assemblies).** The `.gitignore` re-include rules encode exactly this split.
@@ -76,7 +83,7 @@ without the mode token for update builds — they are not renamed.
 The staging tree (`batches/staging/**`) **is committed** — it's the diffable audit trail of each batch
 (per-country research JSON, per-edition recon staging, ad-hoc staged_*.json, the `SWEEP_PROGRESS.md`
 ledger, the briefs, this README). `.gitignore` ignores only the large regenerable `*.xlsx` deliverables
-one level up, the derived recon artifacts (extracted CSV / diff / FSRU fleet), and the derived `_build/` /
-`_prior/` `staged_*.json` — with re-include rules for the agent-authored `recon/**` and `<scope-slug>/`
+one level up, the derived recon artifacts (extracted CSV / diff / FSRU fleet), and the derived `_build/`
+`staged_*.json` — with re-include rules for the agent-authored `recon/**` and `<scope-slug>/`
 staging. Durable knowledge still graduates elsewhere: country findings → `docs/country_notes/`, tooling
 fixes → `scripts/`. Cross-batch monitor state lives in `monitor_list/` (committed, not here).
