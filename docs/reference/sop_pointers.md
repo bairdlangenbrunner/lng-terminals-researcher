@@ -11,7 +11,7 @@ Last reconciled against:
 - Discovery SOP rev 1 (2026-05)
 - Triage SOP rev 2 (2026-06 — QC signals, tier-named options)
 - QC SOP rev 1 (2026-06)
-- CLAUDE.md (2026-06 — slimmed to a router; workflow recipes moved to `docs/workflows.md`, sheet/color detail to `docs/reference/workbook_conventions.md`, script table to `scripts/README.md`)
+- CLAUDE.md (2026-06-09 — second slim pass; pull/FSRU/color detail deduplicated to `docs/workflows.md` + `docs/reference/workbook_conventions.md`; workflow recipes in `docs/workflows.md`, script table in `scripts/README.md`)
 
 Abbreviations:
 - **REC** = `docs/sops/reconciliation.md`

@@ -2,11 +2,16 @@
 Pull the latest GEM database export and derive the column-index map from the
 header row.
 
-Wraps the user-supplied gem_export_via_web.py script. Requires the env vars:
+The fetch path wraps gem_export_via_web.py (NOT gem_query.py) — the cookie-based
+fallback. It requires the env vars:
   - GEM_PROJECT_DB_SESSIONID
   - GEM_PROJECT_DB_CSRFTOKEN
 (set from the user's browser session; expires periodically — re-export when
 auth fails)
+
+The common case is `--map-only` on a CSV already pulled by the cookie-free
+primary path (`python gem_query.py --all-fields lng -o gem_export.csv`) — this
+script then just derives the .colmap.json without fetching anything.
 
 Why re-derive the column map every batch:
   - GEM's all-fields export is 115 columns (Q2 2026) but the schema can
