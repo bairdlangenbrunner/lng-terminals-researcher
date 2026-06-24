@@ -120,7 +120,16 @@ def _split_top_level(s, seps=",;"):
     'Netherlands' are untouched) and only fires at depth 0. '&' is intentionally
     NOT a separator — it identifies names like 'Black & Veatch'. (No GEM owner
     entity contains a standalone 'and'; the only 'and' canonical is the COUNTRY
-    'Trinidad and Tobago', which never appears in an owner cell.)"""
+    'Trinidad and Tobago', which never appears in an owner cell.)
+
+    A SPACED slash ' / ' is likewise a co-owner connector (GIIGNL Japan regas:
+    'Tokyo Gas / JERA', 'Hokkaido Gas / Hokkaido Electric') — without the split
+    the whole cell normalized to its FIRST entity and the second owner silently
+    vanished from the report owner set (Sodegaura/Negishi surfaced a false
+    gem-only 'jera'). A TIGHT slash is part of a single name ('Japex/Fukushima
+    Gas Power', 'SIGER/ERGIS Group', 'Torp Technology A/S', 'N/A') and is never
+    split; `parse_entity_list` applies the same spaced-slash rule on the GEM
+    side so a slash-joined cell present in both stays aligned."""
     out, buf, depth = [], [], 0
     i, n = 0, len(s)
     while i < n:
@@ -132,6 +141,11 @@ def _split_top_level(s, seps=",;"):
             depth = max(0, depth - 1)
             buf.append(ch)
         elif ch in seps and depth == 0:
+            out.append("".join(buf))
+            buf = []
+        elif (depth == 0 and ch == "/"
+                and 0 < i and s[i - 1].isspace()
+                and i + 1 < n and s[i + 1].isspace()):
             out.append("".join(buf))
             buf = []
         elif (depth == 0 and ch in "aA" and s[i:i + 3].lower() == "and"
@@ -2533,7 +2547,7 @@ def _classify(report_rows, gem_projects, alias_map=None, collision_regas=None,
     # unit was aligned to a report row, OR the §3.2.1 narrative-prose pass annotates
     # giignl_narrative_mention downstream (a confirmed forward phase, no conflict —
     # Reconciliation SOP §5.7). Scoped to matched projects only (gem-only projects
-    # live wholly in the routing sheet).
+    # live wholly in the to_follow_up_on sheet).
     nonoperating_units = []
     for gk in sorted(set(matched_gp_keys)):
         gp = gem_projects[gk]

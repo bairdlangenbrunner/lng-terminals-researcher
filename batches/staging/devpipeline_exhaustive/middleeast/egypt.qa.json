@@ -1,0 +1,72 @@
+[
+  {
+    "category": "value_discrepancy",
+    "terminal_id": "T100000130249",
+    "unit_id": "G100002024902",
+    "terminal_name": "Damietta SEGAS LNG Terminal",
+    "issue": "GEM Capacity for the shelved second train (T2) = 5.00 mtpa, but every independent profile of the proposed Damietta second train quotes 5.55 million t/yr (7.6 bcm/yr) - e.g. offshore-technology, oilandgasadvancement, Wikipedia. The 2005 framework was to expand the plant to a 10 mtpa total (T1 ~5.5 + T2 ~5.55, rounded). Did NOT stage a value change (shelved historical proposal; GEM 5.00 may be a deliberate rounding/different basis), but the 5.00 figure is not corroborable off-GEM at that precision.",
+    "severity": "low",
+    "suggested_action": "Review whether T2 Capacity should be 5.55 mtpa (sourced) vs GEM's 5.00; if 5.00 is intentional, document the basis. Sources: https://www.oilandgasadvancement.com/projects/segas-liquefied-natural-gas-complex-damietta-egypt/ ; https://en.wikipedia.org/wiki/SEGAS_LNG",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130249",
+    "unit_id": "G100002024902",
+    "terminal_name": "Damietta SEGAS LNG Terminal",
+    "issue": "ShelvedYear=2009 and StopYear=2009 for the Damietta T2 second train could not be corroborated off-GEM. Sources document the proposal (2005), an expected FID (2008), delays over committed gas supply (June 2007) and Egypt's no-new-export-contracts stance through 2010, and that the project is 'presumed cancelled' with no updates - but none of the PASSing sources pin the year 2009 specifically as the shelving/stop year.",
+    "severity": "low",
+    "suggested_action": "Treat ShelvedYear/StopYear=2009 as unverified; the available evidence supports a 2007-2010 window. Leave as-is or document the source GEM used for 2009. Did NOT stage these cells.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130249",
+    "unit_id": "G100002024902",
+    "terminal_name": "Damietta SEGAS LNG Terminal",
+    "issue": "Damietta T2 exact coordinates (Latitude 31.4690000, Longitude 31.7473000) and Accuracy='exact' could not be corroborated off-GEM at that precision. Text sources confirm the Damietta location (Mediterranean coast, 60 km west of Port Said) but not the exact decimals. Existing GEM Location ref pair (google-maps link + hydrocarbons-technology.com) is not value-verifiable / returns HTTP 403.",
+    "severity": "low",
+    "suggested_action": "Lat/Long/Accuracy left unstaged (cannot corroborate exact decimals). Location/State text re-verified separately. No change needed unless a precise independent geocode is required.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130686",
+    "unit_id": "G100001093679",
+    "terminal_name": "Sumed FSRU",
+    "issue": "Ertugrul Gazi (Sumed) Capacity=4.10 mtpa could not be corroborated with a WORKING URL. The figure matches the GIIGNL 2025 FSRU fleet table (Ertugrul Gazi, 170,000 cbm, 4.1, BOTAS, Dortyol) - confirmed in the committed data/ archive PDF - but the online GIIGNL-2025 report URL is HTTP 404 and no live independent URL gives 4.10 (Wikipedia gives the vessel's 28 mcm/d send-out ~ 7.5 mtpa full-vessel basis). Did NOT stage Capacity/CapacityUnits for this unit.",
+    "severity": "low",
+    "suggested_action": "Capacity 4.10 mtpa is supported by the archived GIIGNL 2025 fleet table but lacks a currently-resolving public URL; treat as plausibly-correct-but-unlinked. Optionally cite the GIIGNL 2025 edition by reference. Sumed berth-allocated capacity vs full-vessel send-out (28 mcm/d) should be reconciled.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130686",
+    "unit_id": "G100001093679",
+    "terminal_name": "Sumed FSRU",
+    "issue": "Ertugrul Gazi ShelvedYear=2026 and StopYear=2026 could not be pinned to a source. Sources confirm the deployment was seasonal (summer 2025, June-Nov) and the vessel returns to Turkey for the rest of the year; the GEM researcher note states it was in Turkiye as of Feb 2026. The specific year 2026 as the shelving/stop year is an editorial GEM judgment not explicitly stated by any PASSing source.",
+    "severity": "low",
+    "suggested_action": "ShelvedYear/StopYear=2026 reflects the post-summer-2025 return-to-Turkey; reasonable but not source-pinned. Did NOT stage these cells. Verify against vessel AIS/tracking if a precise stop date is needed.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130686",
+    "unit_id": "G100001093679",
+    "terminal_name": "Sumed FSRU",
+    "issue": "Sumed FSRU exact coordinates (Latitude 29.6025441, Longitude 32.3403948) and Accuracy='exact' could not be corroborated off-GEM at that precision (applies to both the Ertugrul Gazi and Hoegh Gandria unit-rows). GEO gives a nearby but different Ain Sokhna FSRU point (29.6427, 32.358). The GEM researcher note explains the Sumed berth sits 'somewhat farther south' than the older Sonker jetty, so the exact GEM decimals are plausible but not independently verifiable. Existing marinetraffic ref returns HTTP 403; maps link not value-verifiable.",
+    "severity": "low",
+    "suggested_action": "Lat/Long/Accuracy left unstaged for both Sumed unit-rows. Location text ('Port of Ain Sokhna') and State ('Suez') re-verified independently (GEO, SUMED). No change needed unless a precise independent geocode of the southern Sumed berth is required.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "value_basis",
+    "terminal_id": "T100000130686",
+    "unit_id": "G100001093663",
+    "terminal_name": "Sumed FSRU",
+    "issue": "Hoegh Gandria Capacity 1.00 bcf/d is described by all sources (Hoegh Evi IR, LNG Prime, GIIGNL) as 'up to 1,000 mmscf/day of PEAK regasification capacity'. Per the brief, peak/optimized capacity should not be treated as a baseload/nameplate figure. The value (1.0 bcf/d) was re-verified as blue because it matches GEM's stored value and no separate baseload figure is published, but the peak basis is flagged.",
+    "severity": "low",
+    "suggested_action": "Confirm whether GEM intends Capacity for this FSRU unit to represent peak send-out (1.0 bcf/d) or a baseload/annualized figure. If a baseload mtpa figure is desired, derive separately. No bump made.",
+    "researcher_initials": "AI-draft"
+  }
+]

@@ -1,0 +1,280 @@
+{
+  "slug": "iran",
+  "country": "Iran",
+  "update_overrides": [
+    {
+      "terminal_id": "T100000130583",
+      "unit_id": "G100002058301",
+      "terminal_name": "Iran NIOC LNG Terminal",
+      "unit_name": "T1",
+      "country": "Iran",
+      "field_name": "PowerPlantsSupplied",
+      "old_value": "Tonbak LNG power station",
+      "new_value": "Tonbak LNG power station",
+      "confidence": "yellow",
+      "source_tier": "trade_press",
+      "ref_field": "PowerPlantsSupplied [ref]",
+      "ref_urls": [
+        "https://www.power-technology.com/marketdata/power-plant-profile-iran-lng-combined-cycle-power-plant-iran-2/",
+        "https://www.power-technology.com/data-insights/power-plant-profile-iran-lng-combined-cycle-power-plant-iran/"
+      ],
+      "source_notes": "RECOVERED. The cited power-technology.com marketdata profile is live but bot-blocked (HTTP 403 to url_verifier/WebFetch); value confirmed via Wayback snapshot 20260409011451 (url_verifier PASS on 'Iran LNG'/'power plant'). The sibling data-insights profile (also bot-blocked to the verifier but readable via WebFetch) describes the 'Iran LNG Combined Cycle Power Plant' (1,130 MW CCGT, Bushehr) as 'developed and currently owned by Iran Liquified Natural Gas' — i.e. the Iran LNG project's own co-located captive power station, which GEM tracks as 'Tonbak LNG power station'. The associated power plant and its Iran-LNG ownership are independently confirmed; YELLOW because the specific GEM name 'Tonbak' is single-source (power-technology labels it 'Iran LNG Combined Cycle Power Plant'; the Tonbak alias is only on gem.wiki, non-citable). Live marketdata URL is the [ref].",
+      "scope_note": "Project-level field; staged on each in-scope unit-row (T1, T2, T3) of Iran NIOC LNG Terminal.",
+      "researcher_initials": "AI-draft (recheck)"
+    },
+    {
+      "terminal_id": "T100000130583",
+      "unit_id": "G100002058302",
+      "terminal_name": "Iran NIOC LNG Terminal",
+      "unit_name": "T2",
+      "country": "Iran",
+      "field_name": "PowerPlantsSupplied",
+      "old_value": "Tonbak LNG power station",
+      "new_value": "Tonbak LNG power station",
+      "confidence": "yellow",
+      "source_tier": "trade_press",
+      "ref_field": "PowerPlantsSupplied [ref]",
+      "ref_urls": [
+        "https://www.power-technology.com/marketdata/power-plant-profile-iran-lng-combined-cycle-power-plant-iran-2/",
+        "https://www.power-technology.com/data-insights/power-plant-profile-iran-lng-combined-cycle-power-plant-iran/"
+      ],
+      "source_notes": "RECOVERED. The cited power-technology.com marketdata profile is live but bot-blocked (HTTP 403 to url_verifier/WebFetch); value confirmed via Wayback snapshot 20260409011451 (url_verifier PASS on 'Iran LNG'/'power plant'). The sibling data-insights profile (also bot-blocked to the verifier but readable via WebFetch) describes the 'Iran LNG Combined Cycle Power Plant' (1,130 MW CCGT, Bushehr) as 'developed and currently owned by Iran Liquified Natural Gas' — i.e. the Iran LNG project's own co-located captive power station, which GEM tracks as 'Tonbak LNG power station'. The associated power plant and its Iran-LNG ownership are independently confirmed; YELLOW because the specific GEM name 'Tonbak' is single-source. Live marketdata URL is the [ref].",
+      "scope_note": "Project-level field; staged on each in-scope unit-row (T1, T2, T3) of Iran NIOC LNG Terminal.",
+      "researcher_initials": "AI-draft (recheck)"
+    },
+    {
+      "terminal_id": "T100000130583",
+      "unit_id": "G100002058303",
+      "terminal_name": "Iran NIOC LNG Terminal",
+      "unit_name": "T3",
+      "country": "Iran",
+      "field_name": "PowerPlantsSupplied",
+      "old_value": "Tonbak LNG power station",
+      "new_value": "Tonbak LNG power station",
+      "confidence": "yellow",
+      "source_tier": "trade_press",
+      "ref_field": "PowerPlantsSupplied [ref]",
+      "ref_urls": [
+        "https://www.power-technology.com/marketdata/power-plant-profile-iran-lng-combined-cycle-power-plant-iran-2/",
+        "https://www.power-technology.com/data-insights/power-plant-profile-iran-lng-combined-cycle-power-plant-iran/"
+      ],
+      "source_notes": "RECOVERED. The cited power-technology.com marketdata profile is live but bot-blocked (HTTP 403 to url_verifier/WebFetch); value confirmed via Wayback snapshot 20260409011451 (url_verifier PASS on 'Iran LNG'/'power plant'). The sibling data-insights profile (readable via WebFetch) describes the 'Iran LNG Combined Cycle Power Plant' (1,130 MW CCGT, Bushehr) as 'developed and currently owned by Iran Liquified Natural Gas' — the Iran LNG project's own co-located captive power station, GEM's 'Tonbak LNG power station'. YELLOW because the specific GEM name 'Tonbak' is single-source. Live marketdata URL is the [ref].",
+      "scope_note": "Project-level field; staged on each in-scope unit-row (T1, T2, T3) of Iran NIOC LNG Terminal.",
+      "researcher_initials": "AI-draft (recheck)"
+    },
+    {
+      "terminal_id": "T100000130583",
+      "unit_id": "G100002058301",
+      "terminal_name": "Iran NIOC LNG Terminal",
+      "unit_name": "T1",
+      "country": "Iran",
+      "field_name": "Cost",
+      "old_value": "5000000000.00",
+      "new_value": "",
+      "delete": true,
+      "confidence": "green",
+      "source_tier": "trade_press",
+      "ref_field": "Cost [ref]",
+      "ref_urls": [],
+      "source_notes": "DELETE (unsupported). The cited Reuters 'Total in talks to buy Iranian LNG project' article (Feb 2017) is live but bot-blocked (HTTP 401) and has NO Wayback snapshot (archive.org/wayback/available returns empty); per the first pass its archived text gives $2.3B invested-to-date and 'up to $10 billion' total — never $5B. Searched independently (OilPrice US$3.3B for the flagship export phase, AGBI/Wikipedia ~$10B total needed, EIA >$2B spent): the figures that exist describe cumulative-investment or total-capex-needed, none maps to a $5,000,000,000 / 2017 project cost. The earlier verifier 'PASS on 5 billion' was a false positive (substring of '160.5 billion cubic metres', a gas volume). $5B/2017 is unsupportable — clearing Cost + its [ref].",
+      "scope_note": "Cost set deleted as a unit (Cost+CostUnits+CostYear) on each in-scope cost-bearing row (T1, T2).",
+      "researcher_initials": "AI-draft (recheck)"
+    },
+    {
+      "terminal_id": "T100000130583",
+      "unit_id": "G100002058301",
+      "terminal_name": "Iran NIOC LNG Terminal",
+      "unit_name": "T1",
+      "country": "Iran",
+      "field_name": "CostUnits",
+      "old_value": "USD",
+      "new_value": "",
+      "delete": true,
+      "confidence": "green",
+      "source_tier": "trade_press",
+      "ref_field": "Cost [ref]",
+      "ref_urls": [],
+      "source_notes": "DELETE as part of the unsupported Cost set ($5B/USD/2017). See the Cost record: no independent source supports the $5B/2017 value; the existing $5B is unsupportable so CostUnits is cleared with it.",
+      "scope_note": "Cost set deleted as a unit (Cost+CostUnits+CostYear) on each in-scope cost-bearing row (T1, T2).",
+      "researcher_initials": "AI-draft (recheck)"
+    },
+    {
+      "terminal_id": "T100000130583",
+      "unit_id": "G100002058301",
+      "terminal_name": "Iran NIOC LNG Terminal",
+      "unit_name": "T1",
+      "country": "Iran",
+      "field_name": "CostYear",
+      "old_value": "2017",
+      "new_value": "",
+      "delete": true,
+      "confidence": "green",
+      "source_tier": "trade_press",
+      "ref_field": "Cost [ref]",
+      "ref_urls": [],
+      "source_notes": "DELETE as part of the unsupported Cost set ($5B/USD/2017). See the Cost record: the $5B/2017 figure traces to a Reuters article that does not contain it; CostYear is cleared with the value.",
+      "scope_note": "Cost set deleted as a unit (Cost+CostUnits+CostYear) on each in-scope cost-bearing row (T1, T2).",
+      "researcher_initials": "AI-draft (recheck)"
+    },
+    {
+      "terminal_id": "T100000130583",
+      "unit_id": "G100002058302",
+      "terminal_name": "Iran NIOC LNG Terminal",
+      "unit_name": "T2",
+      "country": "Iran",
+      "field_name": "Cost",
+      "old_value": "5000000000.00",
+      "new_value": "",
+      "delete": true,
+      "confidence": "green",
+      "source_tier": "trade_press",
+      "ref_field": "Cost [ref]",
+      "ref_urls": [],
+      "source_notes": "DELETE (unsupported). The cited Reuters article (Feb 2017) is live but bot-blocked (HTTP 401) and has NO Wayback snapshot; its archived text gives $2.3B invested and up to $10B total, never $5B. Independent search (OilPrice US$3.3B, AGBI/Wikipedia ~$10B, EIA >$2B) yields no $5,000,000,000 / 2017 figure. The earlier verifier 'PASS on 5 billion' was a false positive (substring of '160.5 billion cubic metres'). $5B/2017 is unsupportable — clearing Cost + its [ref].",
+      "scope_note": "Cost set deleted as a unit (Cost+CostUnits+CostYear) on each in-scope cost-bearing row (T1, T2).",
+      "researcher_initials": "AI-draft (recheck)"
+    },
+    {
+      "terminal_id": "T100000130583",
+      "unit_id": "G100002058302",
+      "terminal_name": "Iran NIOC LNG Terminal",
+      "unit_name": "T2",
+      "country": "Iran",
+      "field_name": "CostUnits",
+      "old_value": "USD",
+      "new_value": "",
+      "delete": true,
+      "confidence": "green",
+      "source_tier": "trade_press",
+      "ref_field": "Cost [ref]",
+      "ref_urls": [],
+      "source_notes": "DELETE as part of the unsupported Cost set ($5B/USD/2017). See the Cost record on this unit.",
+      "scope_note": "Cost set deleted as a unit (Cost+CostUnits+CostYear) on each in-scope cost-bearing row (T1, T2).",
+      "researcher_initials": "AI-draft (recheck)"
+    },
+    {
+      "terminal_id": "T100000130583",
+      "unit_id": "G100002058302",
+      "terminal_name": "Iran NIOC LNG Terminal",
+      "unit_name": "T2",
+      "country": "Iran",
+      "field_name": "CostYear",
+      "old_value": "2017",
+      "new_value": "",
+      "delete": true,
+      "confidence": "green",
+      "source_tier": "trade_press",
+      "ref_field": "Cost [ref]",
+      "ref_urls": [],
+      "source_notes": "DELETE as part of the unsupported Cost set ($5B/USD/2017). See the Cost record on this unit.",
+      "scope_note": "Cost set deleted as a unit (Cost+CostUnits+CostYear) on each in-scope cost-bearing row (T1, T2).",
+      "researcher_initials": "AI-draft (recheck)"
+    }
+  ],
+  "qa_add": [
+    {
+      "category": "ref_recovered",
+      "terminal_id": "T100000130583",
+      "unit_id": "G100002058301",
+      "field_name": "PowerPlantsSupplied",
+      "terminal_name": "Iran NIOC LNG Terminal",
+      "issue": "PowerPlantsSupplied = 'Tonbak LNG power station' RECOVERED (was unsourced_after_reverify). The cited power-technology.com marketdata profile is live but bot-blocked (403); value confirmed via Wayback snapshot 20260409011451. Independently, the sibling power-technology data-insights profile (read via WebFetch) confirms the 'Iran LNG Combined Cycle Power Plant' (1,130 MW CCGT, Bushehr) is owned/developed by Iran Liquified Natural Gas — the project's co-located captive power station = GEM 'Tonbak LNG power station'. Staged yellow (the 'Tonbak' name itself is single-source).",
+      "severity": "low",
+      "suggested_action": "Accept the recovered yellow ref. If a green is wanted, find a second independent source using the exact 'Tonbak' name (currently only gem.wiki, non-citable).",
+      "researcher_initials": "AI-draft (recheck)"
+    },
+    {
+      "category": "value_deleted",
+      "terminal_id": "T100000130583",
+      "unit_id": "G100002058301",
+      "field_name": "Cost",
+      "terminal_name": "Iran NIOC LNG Terminal",
+      "issue": "Cost set ($5,000,000,000 / USD / 2017) STAGED FOR DELETION (green-empty) on T1. The cited Reuters article is bot-blocked and has no Wayback snapshot; its text and every independent source ($2.3B invested, US$3.3B export phase, ~$10B total) contradict $5B. No source supports $5B/2017. Cost+CostUnits+CostYear cleared as a set.",
+      "severity": "medium",
+      "suggested_action": "Apply the deletion (clears Cost, CostUnits, CostYear and the Cost [ref]). If a cost is desired later, stage a sourced value tied to its actual source (e.g. ~$10B total capex needed, or $2.3B invested-to-date) with the matching CostYear.",
+      "researcher_initials": "AI-draft (recheck)"
+    },
+    {
+      "category": "value_deleted",
+      "terminal_id": "T100000130583",
+      "unit_id": "G100002058302",
+      "field_name": "Cost",
+      "terminal_name": "Iran NIOC LNG Terminal",
+      "issue": "Cost set ($5,000,000,000 / USD / 2017) STAGED FOR DELETION (green-empty) on T2, same basis as T1: no source supports $5B/2017; the cited Reuters article (bot-blocked, no snapshot) and all independent sources give different figures.",
+      "severity": "medium",
+      "suggested_action": "Apply the deletion (clears Cost, CostUnits, CostYear and the Cost [ref]). If a cost is desired later, base it on its actual supporting source.",
+      "researcher_initials": "AI-draft (recheck)"
+    },
+    {
+      "category": "unsourced_after_reverify",
+      "terminal_id": "T100000130583",
+      "unit_id": "G100002058301",
+      "field_name": "FIDStatus",
+      "terminal_name": "Iran NIOC LNG Terminal",
+      "issue": "FIDStatus = 'Pre-FID' (T1) remains uncorroborated by any independent off-GEM source after recheck; Iran publishes no formal FID milestone for this sanctioned, state-funded project. Retained as a GEM analyst judgment (NOT deleted — it is an inferred flag, not a factual assertion contradicted by evidence). FIDYear [ref] stays blank.",
+      "severity": "low",
+      "suggested_action": "Leave FIDStatus uncolored and FIDYear [ref] blank.",
+      "researcher_initials": "AI-draft (recheck)"
+    },
+    {
+      "category": "unsourced_after_reverify",
+      "terminal_id": "T100000130583",
+      "unit_id": "G100002058302",
+      "field_name": "FIDStatus",
+      "terminal_name": "Iran NIOC LNG Terminal",
+      "issue": "FIDStatus = 'Pre-FID' (T2) remains uncorroborated after recheck; retained as GEM analyst judgment (not deleted). FIDYear [ref] stays blank.",
+      "severity": "low",
+      "suggested_action": "Leave FIDStatus uncolored and FIDYear [ref] blank.",
+      "researcher_initials": "AI-draft (recheck)"
+    },
+    {
+      "category": "unsourced_after_reverify",
+      "terminal_id": "T100000130583",
+      "unit_id": "G100002058303",
+      "field_name": "FIDStatus",
+      "terminal_name": "Iran NIOC LNG Terminal",
+      "issue": "FIDStatus = 'FID' (T3) remains uncorroborated after recheck; retained as GEM analyst judgment (not deleted). FIDYear [ref] stays blank.",
+      "severity": "low",
+      "suggested_action": "Leave FIDStatus uncolored and FIDYear [ref] blank.",
+      "researcher_initials": "AI-draft (recheck)"
+    }
+  ],
+  "qa_resolved": [
+    {
+      "terminal_id": "T100000130583",
+      "unit_id": "G100002058301",
+      "field_name": "PowerPlantsSupplied",
+      "issue_contains": "PowerPlantsSupplied = 'Tonbak LNG power station' could not be corroborated off-GEM. The cited power-technology.com profile returns HTTP 403"
+    },
+    {
+      "terminal_id": "T100000130583",
+      "unit_id": "G100002058302",
+      "field_name": "PowerPlantsSupplied",
+      "issue_contains": "PowerPlantsSupplied = 'Tonbak LNG power station' could not be corroborated off-GEM. The cited power-technology.com profile returns HTTP 403"
+    },
+    {
+      "terminal_id": "T100000130583",
+      "unit_id": "G100002058303",
+      "field_name": "PowerPlantsSupplied",
+      "issue_contains": "PowerPlantsSupplied = 'Tonbak LNG power station' could not be corroborated off-GEM. The cited power-technology.com profile returns HTTP 403"
+    },
+    {
+      "terminal_id": "T100000130583",
+      "unit_id": "G100002058301",
+      "field_name": "Cost",
+      "issue_contains": "Cost = $5,000,000,000 (USD, 2017) is unsupported"
+    },
+    {
+      "terminal_id": "T100000130583",
+      "unit_id": "G100002058302",
+      "field_name": "Cost",
+      "issue_contains": "Cost = $5,000,000,000 (USD, 2017) is unsupported"
+    }
+  ],
+  "summary": {
+    "refs_recovered": 3,
+    "values_changed": 0,
+    "values_deleted": 6,
+    "still_unsourced": 7
+  }
+}

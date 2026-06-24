@@ -1,0 +1,39 @@
+[
+  {
+    "entity_name": "Ukwanda LNG",
+    "entity_type": "operator",
+    "country": "South Africa",
+    "related_terminal_id": "T100001048121",
+    "related_unit_id": "G100001055097",
+    "related_terminal_name": "Ngqura LNG Terminal",
+    "role": "Terminal operator (new) for Ngqura LNG Terminal under a 25-year terminal operator agreement signed with TNPA on 28 May 2026.",
+    "parent_or_jv": "Joint venture between Tamasa Energy Group and the Strategic Fuel Fund (SFF).",
+    "lookup_result": "entity_lookup.py 'Ukwanda LNG' --country 'South Africa' --remote -> not_found_in_local_data / no_remote_match. New entity needed before staging the Operator change.",
+    "ref_urls": [
+      "https://lngprime.com/contracts-and-tenders/south-africas-tnpa-inks-ngqura-lng-terminal-operator-deal/187868/",
+      "https://www.hydrocarbonengineering.com/gas-processing/29052026/tnpa-signs-terminal-operator-agreement-to-advance-lng-development-in-south-africa/",
+      "https://www.greenbuildingafrica.co.za/transnet-national-ports-authority-and-ukwanda-lng-sign-r22-billion-port-of-ngqura-gas-terminal-agreement/",
+      "https://www.billionaires.africa/2026/06/04/tycoon-anna-mokgokongs-tamasa-signs-1-35-billion-lng-deal-to-transform-the-eastern-capes-energy-landscape/"
+    ],
+    "source_notes": "Required to support the Ngqura Operator change (Strategic Fuel Fund Association -> Ukwanda LNG). Confirmed by 4 independent outlets. Suggested fields: name 'Ukwanda LNG', HQ country South Africa, type project company/JV.",
+    "researcher_initials": "AI-draft (devpipeline-exh)"
+  },
+  {
+    "entity_name": "Tamasa Energy Group",
+    "entity_type": "parent",
+    "country": "South Africa",
+    "related_terminal_id": "T100001048121",
+    "related_unit_id": "G100001055097",
+    "related_terminal_name": "Ngqura LNG Terminal",
+    "role": "JV partner / co-parent of Ukwanda LNG (the new Ngqura terminal operator). Led by Prof. Anna Mokgokong, chairperson of Tamasa Energy Group.",
+    "parent_or_jv": "One of two shareholders in Ukwanda LNG (with the Strategic Fuel Fund).",
+    "lookup_result": "entity_lookup.py 'Tamasa Energy' --country 'South Africa' --remote -> not_found_in_local_data / no_remote_match. New entity if GEM records Ukwanda's JV parents.",
+    "ref_urls": [
+      "https://www.billionaires.africa/2026/06/04/tycoon-anna-mokgokongs-tamasa-signs-1-35-billion-lng-deal-to-transform-the-eastern-capes-energy-landscape/",
+      "https://www.hydrocarbonengineering.com/gas-processing/29052026/tnpa-signs-terminal-operator-agreement-to-advance-lng-development-in-south-africa/",
+      "https://www.greenbuildingafrica.co.za/transnet-national-ports-authority-and-ukwanda-lng-sign-r22-billion-port-of-ngqura-gas-terminal-agreement/"
+    ],
+    "source_notes": "Optional - only needed if GEM populates Ukwanda LNG's JV parents on the Ngqura record. The Ngqura Parent field currently stays Transnet SOC Ltd (port/berth owner); Tamasa/SFF sit under the operator entity (Ukwanda LNG), not the owner chain.",
+    "researcher_initials": "AI-draft (devpipeline-exh)"
+  }
+]

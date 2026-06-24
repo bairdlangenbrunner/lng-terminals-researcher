@@ -1,0 +1,82 @@
+[
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130254",
+    "unit_id": "G100002025400",
+    "terminal_name": "Mombasa LNG Terminal",
+    "issue": "Original Proposal Capacity = 0.26 mtpa could not be corroborated off-GEM. The 2011 Reuters source (confirmed via Wayback) describes STORAGE only: 'two storage tanks, each holding some 35,000 tonnes of gas' (= 70,000 t storage), not an annual throughput/regas nameplate. No independent source states 0.26 mtpa. The 0.26 mtpa figure appears to be a GEM-derived inference rather than a sourced nameplate. Left unstaged (no value colored).",
+    "severity": "medium",
+    "suggested_action": "Reviewer to decide whether to retain the 0.26 mtpa inferred capacity or blank it; if retained, document the derivation. No external source supports a 0.26 mtpa figure for the 2011 proposal.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130254",
+    "unit_id": "G100002025400",
+    "terminal_name": "Mombasa LNG Terminal",
+    "issue": "Original Proposal Status='shelved' / Substatus='inferred 2 y' / ShelvedYear=2024 / StopYear=2024 / ShelvedCancelledStatusType='inferred' are all GEM INFERENCES (no source declares the 2011 proposal shelved or gives a 2024 stop year). No 2024 news could be found about the original Ministry-of-Energy proposal; it simply went quiet after the 2011-12 tender period. Existing researcher_notes_unit deliberately keeps it 'shelved' not 'cancelled' due to ambiguity with the new AMACO proposal (possible un-shelving vs separate entity) - DEFERRED TO, not overridden. blank_refs_with_data for Status/Substatus/ShelvedYear/StopYear left unfilled (inferred values are not externally citable).",
+    "severity": "low",
+    "suggested_action": "No change recommended; the shelved/inferred status is a GEM judgement consistent with no project activity since 2011-12. Reviewer may revisit whether the AMACO 'Second Proposal' represents an un-shelving of this unit. fetch_timeline is DOWN, so no timeline edit staged.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "geocode",
+    "terminal_id": "T100000130254",
+    "unit_id": "G100002025400",
+    "terminal_name": "Mombasa LNG Terminal",
+    "issue": "Original Proposal coordinates (Lat -4.06016, Long 39.64864, Accuracy 'approximate') are geocode/derived metadata, not externally-citable factual values (per brief, coords are not staged). Sources confirm the city-level location (Mombasa) only; no source provides exact terminal coordinates. Coordinates fall within the Mombasa area, consistent with the sourced 'Mombasa' location.",
+    "severity": "low",
+    "suggested_action": "No change; coordinates are approximate and consistent with the Mombasa siting. Not staged as an updates record (geocode exemption).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130254",
+    "unit_id": "G100001054956",
+    "terminal_name": "Mombasa LNG Terminal",
+    "issue": "Second Proposal ParentHQCountry='Indonesia' is CONTRADICTED by the sponsor source. The AMACO project page is titled 'From AMACO - Greece to Kenya' and lists 'Operator: AMACO Ltd (Kenya)'; AMACO presents as a Greece/Kenya energy developer. No source associates this AMACO LNG project (registration ES00101/AMACO/2024) with Indonesia. The owner is an unnamed SPV, so an ultimate parent country is not externally established. ParentHQCountry has no [ref] column (ref_field null), so left unstaged.",
+    "severity": "medium",
+    "suggested_action": "Reviewer to verify/correct ParentHQCountry: the sponsor evidence points to Greece (developer HQ) / Kenya (operating entity), NOT Indonesia. Indonesia appears unsupported - recommend removing or correcting. Note possible confusion with a different AMACO entity.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_quality",
+    "terminal_id": "T100000130254",
+    "unit_id": "G100001054956",
+    "terminal_name": "Mombasa LNG Terminal",
+    "issue": "Second Proposal Parent='Unnamed special purpose vehicle' (no [ref] column). The sponsor (AMACO) page lists Owner='SPV' and Operator='AMACO Ltd (Kenya)'; an SPV as both owner and 'parent' is reasonable given no named parent exists. AMACO is the developer/operator, not necessarily the equity parent. Confirmed consistent with Owner; no external source names a parent entity.",
+    "severity": "low",
+    "suggested_action": "No change; Parent='Unnamed special purpose vehicle' is consistent with the sourced Owner=SPV. Reviewer may consider whether AMACO (Greece) should be recorded as the developer/parent given it sponsors the project.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_quality",
+    "terminal_id": "T100000130254",
+    "unit_id": "G100001054956",
+    "terminal_name": "Mombasa LNG Terminal",
+    "issue": "Second Proposal State/Province='Mombasa' but the AMACO sponsor page specifies 'Kwale County, Mombasa Port'. Kwale County is adjacent to (and includes the south/Dongo Kundu side of) Mombasa Port. GEM's existing Location [ref] for this 2024 unit also still points at the 2011 Reuters article rather than the AMACO page that actually describes this proposal.",
+    "severity": "low",
+    "suggested_action": "Reviewer to decide whether to record State/Province as Kwale (per sponsor) vs Mombasa (current), and to swap the Location [ref] to the AMACO page (now staged in updates). Geocode unchanged (still city-level Mombasa, consistent).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "geocode",
+    "terminal_id": "T100000130254",
+    "unit_id": "G100001054956",
+    "terminal_name": "Mombasa LNG Terminal",
+    "issue": "Second Proposal coordinates (Lat -4.06016, Long 39.64864, Accuracy 'approximate') are identical to the Original Proposal and are geocode metadata (not staged). Sponsor source confirms only city/port-level siting (Mombasa Port, Kwale County). Coordinates are approximate and consistent.",
+    "severity": "low",
+    "suggested_action": "No change; coordinates approximate and consistent with sourced Mombasa Port siting. Not staged (geocode exemption).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "bot_blocked_ref",
+    "terminal_id": "T100000130254",
+    "unit_id": "G100002025400",
+    "terminal_name": "Mombasa LNG Terminal",
+    "issue": "The GEM-cited Reuters URL https://www.reuters.com/article/kenya-energy-idUSL5E7L52CJ20111005/ returns HTTP 401 to automated clients (bot-blocked), NOT dead. The article is live and its values ($500 mln cost, Mombasa, LNG import terminal, two 35,000-t storage tanks, energy ministry PS Patrick Nyoike) were confirmed against the Wayback snapshot https://web.archive.org/web/20210518193913/https://www.reuters.com/article/kenya-energy-idUSL5E7L52CJ20111005 . Kept as a valid [ref]; reviewer can open it in a browser.",
+    "severity": "low",
+    "suggested_action": "Treat the Reuters URL as a live citation (bot-blocked, not dead). Optionally add the Wayback URL alongside it for resilience.",
+    "researcher_initials": "AI-draft"
+  }
+]

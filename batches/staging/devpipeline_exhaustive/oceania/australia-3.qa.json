@@ -1,0 +1,82 @@
+[
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130981",
+    "unit_id": "G100002098100",
+    "terminal_name": "Port Phillip Bay FSRU",
+    "issue": "Capacity nameplate of 4.70 mtpa could not be corroborated on any non-GEM source during exhaustive re-verify. Public Vopak/regulatory/trade sources express VET capacity as DAILY SEND-OUT (~636-850 TJ/d, commonly ~650 TJ/d), not as an annual mtpa nameplate. 650 TJ/d roughly back-converts to ~4.3-4.7 mtpa LNG-equivalent, so 4.70 is plausible but is a GEM-derived figure, not a cited one. The Capacity value cell was NOT staged (only CapacityUnits=mtpa re-verified blue).",
+    "severity": "medium",
+    "suggested_action": "Either (a) source the 4.70 mtpa figure to a citable Vopak/GIIGNL document, or (b) consider re-expressing capacity in the publicly stated send-out unit (TJ/d). Confirm GEM's mtpa-from-send-out conversion methodology for this row.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "citation_quality",
+    "terminal_id": "T100000130981",
+    "unit_id": "G100002098100",
+    "terminal_name": "Port Phillip Bay FSRU",
+    "issue": "GEM-cited Status/FacilityType/ProposalYear ref (argusmedia.com/.../2211845-australias-agl-ceases-crib-point-lng-import-plans) concerns AGL's CANCELLED Crib Point proposal - a DIFFERENT project at a different site - not the Vopak Victoria Energy Terminal. The URL also returns HTTP 404 live (verified only via 2022-11-30 Wayback snapshot).",
+    "severity": "medium",
+    "suggested_action": "Replace the Crib Point Argus citation on Status/FacilityType/ProposalYear with the Vopak VET-specific refs supplied in updates (Vopak planning-portal/EPBC, OGJ, gasprocessingnews, PGJ, VRFish, EES Summary).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "bot_blocked",
+    "terminal_id": "T100000130981",
+    "unit_id": "G100002098100",
+    "terminal_name": "Port Phillip Bay FSRU",
+    "issue": "GEM-cited FID ref (reuters.com/.../vopak-talks-with-partners-australia-lng-import-project-2025-05-30) returns HTTP 401 to automated clients and has NO Wayback snapshot - so it is live (bot-blocked) but not machine-verifiable here. A human can open it in a browser. Replaced in updates with independent gasprocessingnews + PGJ (which carry the same FID-expected-2026/2027 reporting).",
+    "severity": "low",
+    "suggested_action": "Optionally open the Reuters URL in a browser to confirm; otherwise the gasprocessingnews/PGJ refs already cover FIDStatus/FIDYear.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "citation_quality",
+    "terminal_id": "T100000130981",
+    "unit_id": "G100002098100",
+    "terminal_name": "Port Phillip Bay FSRU",
+    "issue": "OriginalPlannedStartYear=2024 could not be independently re-confirmed in current sources (which discuss the 2028 sponsor target and the current 2029 target). The 2024 original year is a historical artifact retained as blue but weakly sourced.",
+    "severity": "low",
+    "suggested_action": "Treat OriginalPlannedStartYear=2024 as historical; no change needed unless a specific early-target source is found.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130343",
+    "unit_id": "G100002034301",
+    "terminal_name": "Tassie Shoal LNG Terminal",
+    "issue": "Cost = USD 6,280,000,000 (CostYear 2013) could not be corroborated. The GEM-cited source (melbana.com/.../meosubmissiontoparliamentaryinquiryintoaustraliasrelationswithtimorleste.pdf) is a SCANNED image PDF with NO extractable text layer = a failed citation. Melbana's own TSLNG business-overview PDF instead states an indicative capital cost of '~US$2-$4B', which does NOT support the $6.28B figure. The Cost value cell was NOT staged.",
+    "severity": "medium",
+    "suggested_action": "Source the US$6.28B(2013) cost to a citable Melbana/MEO document, or replace with the sponsor's stated ~US$2-4B indicative range (note the wide range and 2013 vintage). The scanned parliamentary-submission citation should be dropped (no text layer).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dead_ref",
+    "terminal_id": "T100000130606",
+    "unit_id": "G100002060600",
+    "terminal_name": "Port Kembla FSRU",
+    "issue": "Two GEM-cited refs are dead/moved (HTTP 404) live: (1) Capacity ref argusmedia.com/.../2490553-australias-first-lng-import-terminal-70pc-complete (304 TJ/d) - verified via 2023-09-24 Wayback snapshot; (2) StartDate/FloatingVesselName ref giignl.org/wp-content/uploads/2025/06/GIIGNL-Annual-Report-2025.pdf - 404 (the GIIGNL 2025 edition lives locally in data/ and confirms Port Kembla + FSRU Hoegh Galleon, but the URL is gone).",
+    "severity": "low",
+    "suggested_action": "Updates supply working replacements: Argus value cited to its Wayback snapshot; vessel/start cited to LNG Prime + ABC. Optionally find the GIIGNL-2025 PDF's current canonical URL.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "bot_blocked",
+    "terminal_id": "T100000130606",
+    "unit_id": "G100002060600",
+    "terminal_name": "Port Kembla FSRU",
+    "issue": "Several GEM-cited live refs are bot-blocked (HTTP 403/401) but alive in a browser, each verified via Wayback or PASSing the value token: offshore-technology.com/projects/import-terminal-nsw (403, 2018 proposal - verified on 2026-01-22 snapshot); nsenergybusiness.com/.../port-kembla... (403, Location - verified on 2025-11-12 snapshot); afr.com APA-warns article (cost) PASSes the '1 billion' token despite typical AFR bot-blocking; lngjournal.com delay article (403).",
+    "severity": "low",
+    "suggested_action": "No action needed - values re-verified. Refs retained (live URL kept, archived copy noted in source_notes).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130343",
+    "unit_id": "G100002034301",
+    "terminal_name": "Tassie Shoal LNG Terminal",
+    "issue": "CostUnits=USD and CostYear=2013 pair with the Cost value (USD 6.28B) that could not be corroborated (its only GEM-cited source is a scanned/no-text-layer parliamentary-submission PDF = failed citation). With the Cost value unsourced, its unit/year tokens were not staged either (no orphan-ref / no citing an unsupported value).",
+    "severity": "low",
+    "suggested_action": "Resolve together with the Cost value: if a citable Melbana cost figure is found, stage Cost + CostUnits + CostYear together; otherwise leave all three as-is unverified.",
+    "researcher_initials": "AI-draft"
+  }
+]

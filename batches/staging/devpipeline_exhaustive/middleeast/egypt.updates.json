@@ -1,0 +1,850 @@
+[
+  {
+    "terminal_id": "T100000130249",
+    "unit_id": "G100002024902",
+    "terminal_name": "Damietta SEGAS LNG Terminal",
+    "unit_name": "T2",
+    "country": "Egypt",
+    "field_name": "FacilityType",
+    "old_value": "export",
+    "new_value": "export",
+    "confidence": "blue",
+    "source_tier": "trade/industry profile",
+    "ref_field": "FacilityType [ref]",
+    "ref_urls": [
+      "https://www.oilandgasadvancement.com/projects/segas-liquefied-natural-gas-complex-damietta-egypt/",
+      "https://en.wikipedia.org/wiki/SEGAS_LNG",
+      "https://www.eni.com/en-IT/media/press-release/2021/03/eni-closes-agreement-partners-restart-damietta-liquefied-natural-gas-plant-egypt.html"
+    ],
+    "source_notes": "Re-verified unchanged. SEGAS Damietta is an LNG liquefaction/export complex; the (shelved) T2 was a proposed second liquefaction train. Existing GEM ref mechademy.com is now HTTP 404 (dead) - replaced with PASSing sources. Eni PR confirms it is a liquefaction plant.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (devpipeline-exh)"
+  },
+  {
+    "terminal_id": "T100000130249",
+    "unit_id": "G100002024902",
+    "terminal_name": "Damietta SEGAS LNG Terminal",
+    "unit_name": "T2",
+    "country": "Egypt",
+    "field_name": "Status",
+    "old_value": "shelved",
+    "new_value": "shelved",
+    "confidence": "blue",
+    "source_tier": "trade/industry profile",
+    "ref_field": "Status [ref]",
+    "ref_urls": [
+      "https://www.oilandgasadvancement.com/projects/segas-liquefied-natural-gas-complex-damietta-egypt/",
+      "https://en.wikipedia.org/wiki/SEGAS_LNG",
+      "https://www.meed.com/segas-plans-for-damietta-stall-after-cairo-halts-gas-exports/"
+    ],
+    "source_notes": "Re-verified unchanged (shelved). The proposed second train (2005, FID expected 2008) was postponed over gas-supply/export issues and is 'presumed cancelled'; no development updates in ~15 years. Sources describe postponement/stall rather than the literal word 'shelved', but support GEM's shelved hold. Existing ref upstreamonline.com returns HTTP 403 (bot-block) - not re-citable.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (devpipeline-exh)"
+  },
+  {
+    "terminal_id": "T100000130249",
+    "unit_id": "G100002024902",
+    "terminal_name": "Damietta SEGAS LNG Terminal",
+    "unit_name": "T2",
+    "country": "Egypt",
+    "field_name": "Substatus",
+    "old_value": "confirmed",
+    "new_value": "confirmed",
+    "confidence": "blue",
+    "source_tier": "trade/industry profile",
+    "ref_field": "Status [ref]",
+    "ref_urls": [
+      "https://www.oilandgasadvancement.com/projects/segas-liquefied-natural-gas-complex-damietta-egypt/",
+      "https://en.wikipedia.org/wiki/SEGAS_LNG"
+    ],
+    "source_notes": "Re-verified unchanged. Shelving is well documented (postponed/presumed cancelled) -> substatus 'confirmed' is appropriate.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (devpipeline-exh)"
+  },
+  {
+    "terminal_id": "T100000130249",
+    "unit_id": "G100002024902",
+    "terminal_name": "Damietta SEGAS LNG Terminal",
+    "unit_name": "T2",
+    "country": "Egypt",
+    "field_name": "Owner",
+    "old_value": "Spanish Egyptian Gas Company SAE [100%]",
+    "new_value": "Spanish Egyptian Gas Company SAE [100%]",
+    "confidence": "blue",
+    "source_tier": "company IR / primary",
+    "ref_field": "Owner [ref]",
+    "ref_urls": [
+      "https://www.eni.com/en-IT/media/press-release/2021/03/eni-closes-agreement-partners-restart-damietta-liquefied-natural-gas-plant-egypt.html",
+      "https://en.wikipedia.org/wiki/SEGAS_LNG",
+      "https://www.oilandgasadvancement.com/projects/segas-liquefied-natural-gas-complex-damietta-egypt/",
+      "https://www.offshore-energy.biz/eni-completes-agreement-over-the-restart-of-damietta-lng/"
+    ],
+    "source_notes": "Re-verified unchanged. The Damietta plant (and any train, incl. the shelved T2) is owned by SEGAS = Spanish Egyptian Gas Company. Eni PR: 'the liquefaction plant, owned by SEGAS'. Existing GEM ref (giignl 2020 PDF URL) is HTTP 404 - replaced with PASSing sources. Existing-URL value (SEGAS as direct owner) reconfirmed.",
+    "scope_note": "Project-level owner - applies to all units of Damietta SEGAS terminal.",
+    "researcher_initials": "AI-draft (devpipeline-exh)"
+  },
+  {
+    "terminal_id": "T100000130249",
+    "unit_id": "G100002024902",
+    "terminal_name": "Damietta SEGAS LNG Terminal",
+    "unit_name": "T2",
+    "country": "Egypt",
+    "field_name": "Parent",
+    "old_value": "Eni SpA [50.0%]; Egyptian Natural Gas Holding Co [40.0%]; Egyptian General Petroleum Corp [10.0%]",
+    "new_value": "Eni SpA [50.0%]; Egyptian Natural Gas Holding Co [40.0%]; Egyptian General Petroleum Corp [10.0%]",
+    "confidence": "blue",
+    "source_tier": "company IR / primary",
+    "ref_urls": [
+      "https://www.eni.com/en-IT/media/press-release/2021/03/eni-closes-agreement-partners-restart-damietta-liquefied-natural-gas-plant-egypt.html",
+      "https://egyptoil-gas.com/news/eni-closes-agreement-to-restart-damietta-liquefied-natural-gas-plant/",
+      "https://www.offshore-energy.biz/eni-completes-agreement-over-the-restart-of-damietta-lng/"
+    ],
+    "source_notes": "Re-verified unchanged (ref_field null -> URLs here). Eni's Mar-2021 PR (closing the Union Fenosa Gas settlement) states SEGAS is owned 50% Eni / 40% EGAS / 10% EGPC - exactly the GEM Parent split. NOTE older profiles (Wikipedia, offshore-technology) still show the pre-2021 structure (Union Fenosa Gas 80% / EGAS 10% / EGPC 10%); the 50/40/10 figure is the CURRENT post-settlement structure and is correct.",
+    "scope_note": "Project-level parent - applies to all units of Damietta SEGAS terminal.",
+    "researcher_initials": "AI-draft (devpipeline-exh)"
+  },
+  {
+    "terminal_id": "T100000130249",
+    "unit_id": "G100002024902",
+    "terminal_name": "Damietta SEGAS LNG Terminal",
+    "unit_name": "T2",
+    "country": "Egypt",
+    "field_name": "ParentHQCountry",
+    "old_value": "Italy, Egypt, Egypt",
+    "new_value": "Italy, Egypt, Egypt",
+    "confidence": "blue",
+    "source_tier": "company IR / primary",
+    "ref_urls": [
+      "https://www.eni.com/en-IT/media/press-release/2021/03/eni-closes-agreement-partners-restart-damietta-liquefied-natural-gas-plant-egypt.html",
+      "https://egyptoil-gas.com/news/eni-closes-agreement-to-restart-damietta-liquefied-natural-gas-plant/"
+    ],
+    "source_notes": "Re-verified unchanged (ref_field null -> URLs here). Eni SpA is Italian; EGAS (Egyptian Natural Gas Holding) and EGPC (Egyptian General Petroleum Corp) are Egyptian state entities. Matches the Parent order Eni/EGAS/EGPC.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (devpipeline-exh)"
+  },
+  {
+    "terminal_id": "T100000130249",
+    "unit_id": "G100002024902",
+    "terminal_name": "Damietta SEGAS LNG Terminal",
+    "unit_name": "T2",
+    "country": "Egypt",
+    "field_name": "Operator",
+    "old_value": "SEGAS Services",
+    "new_value": "SEGAS Services",
+    "confidence": "blue",
+    "source_tier": "company IR / primary",
+    "ref_field": "Operator [ref]",
+    "ref_urls": [
+      "https://en.wikipedia.org/wiki/SEGAS_LNG",
+      "https://www.oilandgasadvancement.com/projects/segas-liquefied-natural-gas-complex-damietta-egypt/",
+      "https://www.eni.com/en-IT/media/press-release/2021/03/eni-closes-agreement-partners-restart-damietta-liquefied-natural-gas-plant-egypt.html"
+    ],
+    "source_notes": "Re-verified unchanged. Sources state the complex is 'operated by SEGAS' (the Spanish Egyptian Gas Company operating entity). The exact GEM string 'SEGAS Services' (the named operator entity) is not independently confirmed verbatim, but operatorship by SEGAS is. Existing GEM ref (giignl 2022 PDF URL) is HTTP 404 - replaced.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (devpipeline-exh)"
+  },
+  {
+    "terminal_id": "T100000130249",
+    "unit_id": "G100002024902",
+    "terminal_name": "Damietta SEGAS LNG Terminal",
+    "unit_name": "T2",
+    "country": "Egypt",
+    "field_name": "CapacityUnits",
+    "old_value": "mtpa",
+    "new_value": "mtpa",
+    "confidence": "blue",
+    "source_tier": "trade/industry profile",
+    "ref_field": "Capacity [ref]",
+    "ref_urls": [
+      "https://www.oilandgasadvancement.com/projects/segas-liquefied-natural-gas-complex-damietta-egypt/",
+      "https://en.wikipedia.org/wiki/SEGAS_LNG"
+    ],
+    "source_notes": "Re-verified unchanged. Proposed T2 capacity is quoted in million tonnes/yr (mtpa) by all profiles ('5.55 million t/yr'). Existing GEM ref (rigzone) returns HTTP 202 (bot-block) - not re-citable. See qa note on the Capacity NUMBER (GEM 5.00 vs sourced 5.55).",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (devpipeline-exh)"
+  },
+  {
+    "terminal_id": "T100000130249",
+    "unit_id": "G100002024902",
+    "terminal_name": "Damietta SEGAS LNG Terminal",
+    "unit_name": "T2",
+    "country": "Egypt",
+    "field_name": "ProposalYear",
+    "old_value": "2005",
+    "new_value": "2005",
+    "confidence": "blue",
+    "source_tier": "trade/industry profile",
+    "ref_field": "ProposalDate [ref]",
+    "ref_urls": [
+      "https://www.oilandgasadvancement.com/projects/segas-liquefied-natural-gas-complex-damietta-egypt/",
+      "https://en.wikipedia.org/wiki/SEGAS_LNG"
+    ],
+    "source_notes": "Re-verified unchanged. 'In 2005, not long after the first LNG train opened, SEGAS began considering plans for a second train' (oilandgasadvancement); Wikipedia: 28 Mar 2005 Eni/BP/EGAS MoU for the second train. Existing GEM ref offshore-technology.com returns HTTP 403 (bot-block) but its content is intact and corroborates 2005.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (devpipeline-exh)"
+  },
+  {
+    "terminal_id": "T100000130249",
+    "unit_id": "G100002024902",
+    "terminal_name": "Damietta SEGAS LNG Terminal",
+    "unit_name": "T2",
+    "country": "Egypt",
+    "field_name": "ShelvedCancelledStatusType",
+    "old_value": "confirmed",
+    "new_value": "confirmed",
+    "confidence": "blue",
+    "source_tier": "trade/industry profile",
+    "ref_urls": [
+      "https://www.oilandgasadvancement.com/projects/segas-liquefied-natural-gas-complex-damietta-egypt/",
+      "https://en.wikipedia.org/wiki/SEGAS_LNG"
+    ],
+    "source_notes": "Re-verified unchanged (ref_field null -> URLs here). The shelving/postponement of the second train is well documented and 'confirmed' (presumed cancelled, no updates in ~15 yrs).",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (devpipeline-exh)"
+  },
+  {
+    "terminal_id": "T100000130249",
+    "unit_id": "G100002024902",
+    "terminal_name": "Damietta SEGAS LNG Terminal",
+    "unit_name": "T2",
+    "country": "Egypt",
+    "field_name": "Location",
+    "old_value": "Damiette Port",
+    "new_value": "Damiette Port",
+    "confidence": "blue",
+    "source_tier": "trade/industry profile",
+    "ref_field": "Location [ref]",
+    "ref_urls": [
+      "https://www.oilandgasadvancement.com/projects/segas-liquefied-natural-gas-complex-damietta-egypt/",
+      "https://en.wikipedia.org/wiki/SEGAS_LNG"
+    ],
+    "source_notes": "Re-verified unchanged. SEGAS complex is at Damietta, on the Mediterranean coast 60 km west of Port Said. Existing GEM Location ref hydrocarbons-technology.com returns HTTP 403 (bot-block) and the google-maps link is not value-verifiable - replaced with PASSing sources confirming the Damietta location.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (devpipeline-exh)"
+  },
+  {
+    "terminal_id": "T100000130249",
+    "unit_id": "G100002024902",
+    "terminal_name": "Damietta SEGAS LNG Terminal",
+    "unit_name": "T2",
+    "country": "Egypt",
+    "field_name": "State/Province",
+    "old_value": "Damiette",
+    "new_value": "Damiette",
+    "confidence": "blue",
+    "source_tier": "trade/industry profile",
+    "ref_field": "Location [ref]",
+    "ref_urls": [
+      "https://www.oilandgasadvancement.com/projects/segas-liquefied-natural-gas-complex-damietta-egypt/",
+      "https://en.wikipedia.org/wiki/SEGAS_LNG"
+    ],
+    "source_notes": "Re-verified unchanged. Located in Damietta (Damiette) governorate, Egypt.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (devpipeline-exh)"
+  },
+  {
+    "terminal_id": "T100000130249",
+    "unit_id": "G100002024902",
+    "terminal_name": "Damietta SEGAS LNG Terminal",
+    "unit_name": "T2",
+    "country": "Egypt",
+    "field_name": "FIDStatus",
+    "old_value": "Pre-FID",
+    "new_value": "Pre-FID",
+    "confidence": "blue",
+    "source_tier": "trade/industry profile",
+    "ref_field": "FIDYear [ref]",
+    "ref_urls": [
+      "https://www.oilandgasadvancement.com/projects/segas-liquefied-natural-gas-complex-damietta-egypt/",
+      "https://www.meed.com/segas-plans-for-damietta-stall-after-cairo-halts-gas-exports/"
+    ],
+    "source_notes": "Re-verified unchanged. FID for the second train was 'expected to be taken in 2008' but was never reached (delayed over gas-supply/export-ban issues, presumed cancelled) -> Pre-FID is correct. Existing GEM ref offshore-technology.com returns HTTP 403 (bot-block); content intact and consistent.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (devpipeline-exh)"
+  },
+  {
+    "terminal_id": "T100000130249",
+    "unit_id": "G100002024902",
+    "terminal_name": "Damietta SEGAS LNG Terminal",
+    "unit_name": "T2",
+    "country": "Egypt",
+    "field_name": "FIDYear",
+    "old_value": "2008",
+    "new_value": "2008",
+    "confidence": "blue",
+    "source_tier": "trade/industry profile",
+    "ref_field": "FIDYear [ref]",
+    "ref_urls": [
+      "https://www.oilandgasadvancement.com/projects/segas-liquefied-natural-gas-complex-damietta-egypt/"
+    ],
+    "source_notes": "Re-verified unchanged. oilandgasadvancement: 'The final investment decision for the new train is expected to be taken in 2008.' Single PASSing source, but it directly states the cited year; the year was an expected-FID target (FID never actually occurred). Existing GEM ref offshore-technology.com (HTTP 403 bot-block) carries the same statement.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (devpipeline-exh)"
+  },
+  {
+    "terminal_id": "T100000130686",
+    "unit_id": "G100001093679",
+    "terminal_name": "Sumed FSRU",
+    "unit_name": "Ertugrul Gazi",
+    "country": "Egypt",
+    "field_name": "FacilityType",
+    "old_value": "import",
+    "new_value": "import",
+    "confidence": "blue",
+    "source_tier": "trade press",
+    "ref_field": "FacilityType [ref]",
+    "ref_urls": [
+      "https://lngprime.com/asia/report-egypt-to-deploy-turkish-fsru/141538/",
+      "https://www.giignl.org/news/egypt-scales-up-regas-capacity-with-fsru-deployments-from-botas-sefe-and-hoegh-lng",
+      "https://www.turkiyetoday.com/business/egypt-seeks-to-borrow-turkiyes-first-floating-storage-regasification-unit-ertugrul-gazi-120461/"
+    ],
+    "source_notes": "Re-verified unchanged. Ertugrul Gazi is an FSRU (regasification/import) deployed to Egypt's Ain Sokhna to cover import demand June-Nov 2025.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (devpipeline-exh)"
+  },
+  {
+    "terminal_id": "T100000130686",
+    "unit_id": "G100001093679",
+    "terminal_name": "Sumed FSRU",
+    "unit_name": "Ertugrul Gazi",
+    "country": "Egypt",
+    "field_name": "Status",
+    "old_value": "shelved",
+    "new_value": "shelved",
+    "confidence": "blue",
+    "source_tier": "trade press / industry assoc",
+    "ref_field": "Status [ref]",
+    "ref_urls": [
+      "https://www.giignl.org/news/egypt-scales-up-regas-capacity-with-fsru-deployments-from-botas-sefe-and-hoegh-lng",
+      "https://lngprime.com/asia/report-egypt-to-deploy-turkish-fsru/141538/"
+    ],
+    "source_notes": "Re-verified unchanged (shelved). The Ertugrul Gazi was a SEASONAL deployment: GIIGNL - 'Egypt has signed a seasonal agreement with Turkey's BOTAS to deploy the FSRU Ertugrul Gazi during the summer of 2025... and return to Turkey during the remainder of the year.' Vessel is owned by BOTAS and primarily serves Dortyol, Turkey - consistent with GEM's researcher note (in Turkiye as of Feb 2026). Existing ref hurriyetdailynews.com no longer mentions Ertugrul - replaced. See qa note on the ShelvedYear=2026 (year not pinned by sources).",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (devpipeline-exh)"
+  },
+  {
+    "terminal_id": "T100000130686",
+    "unit_id": "G100001093679",
+    "terminal_name": "Sumed FSRU",
+    "unit_name": "Ertugrul Gazi",
+    "country": "Egypt",
+    "field_name": "Substatus",
+    "old_value": "confirmed",
+    "new_value": "confirmed",
+    "confidence": "blue",
+    "source_tier": "trade press / industry assoc",
+    "ref_field": "Status [ref]",
+    "ref_urls": [
+      "https://www.giignl.org/news/egypt-scales-up-regas-capacity-with-fsru-deployments-from-botas-sefe-and-hoegh-lng",
+      "https://lngprime.com/asia/report-egypt-to-deploy-turkish-fsru/141538/"
+    ],
+    "source_notes": "Re-verified unchanged. The seasonal-only deployment ending (vessel back in Turkey) is documented -> 'confirmed' substatus on the shelved status.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (devpipeline-exh)"
+  },
+  {
+    "terminal_id": "T100000130686",
+    "unit_id": "G100001093679",
+    "terminal_name": "Sumed FSRU",
+    "unit_name": "Ertugrul Gazi",
+    "country": "Egypt",
+    "field_name": "Owner",
+    "old_value": "EGAS [100%]",
+    "new_value": "EGAS [100%]",
+    "confidence": "blue",
+    "source_tier": "trade press / industry assoc",
+    "ref_field": "Owner [ref]",
+    "ref_urls": [
+      "https://www.giignl.org/news/egypt-scales-up-regas-capacity-with-fsru-deployments-from-botas-sefe-and-hoegh-lng",
+      "https://lngprime.com/asia/report-egypt-to-deploy-turkish-fsru/141538/"
+    ],
+    "source_notes": "Re-verified unchanged. EGAS (Egyptian Natural Gas Holding) is the Egyptian counterparty/charterer that brings the FSRU to the Sumed/Ain Sokhna import terminal - i.e. terminal owner. NOTE: the VESSEL Ertugrul Gazi is owned by BOTAS (Turkey); GEM correctly separates terminal owner (EGAS) from vessel owner (BOTAS). Existing GEM ref (giignl 2020 PDF URL) is HTTP 404 - replaced.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (devpipeline-exh)"
+  },
+  {
+    "terminal_id": "T100000130686",
+    "unit_id": "G100001093679",
+    "terminal_name": "Sumed FSRU",
+    "unit_name": "Ertugrul Gazi",
+    "country": "Egypt",
+    "field_name": "Parent",
+    "old_value": "EGAS [100.0%]",
+    "new_value": "EGAS [100.0%]",
+    "confidence": "blue",
+    "source_tier": "trade press / industry assoc",
+    "ref_urls": [
+      "https://www.giignl.org/news/egypt-scales-up-regas-capacity-with-fsru-deployments-from-botas-sefe-and-hoegh-lng",
+      "https://lngprime.com/asia/report-egypt-to-deploy-turkish-fsru/141538/"
+    ],
+    "source_notes": "Re-verified unchanged (ref_field null -> URLs here). Terminal owner/parent is EGAS, the Egyptian state gas holding that charters the FSRUs into Ain Sokhna.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (devpipeline-exh)"
+  },
+  {
+    "terminal_id": "T100000130686",
+    "unit_id": "G100001093679",
+    "terminal_name": "Sumed FSRU",
+    "unit_name": "Ertugrul Gazi",
+    "country": "Egypt",
+    "field_name": "ProposalYear",
+    "old_value": "2025",
+    "new_value": "2025",
+    "confidence": "blue",
+    "source_tier": "trade press / industry assoc",
+    "ref_field": "ProposalDate [ref]",
+    "ref_urls": [
+      "https://www.giignl.org/news/egypt-scales-up-regas-capacity-with-fsru-deployments-from-botas-sefe-and-hoegh-lng",
+      "https://www.turkiyetoday.com/business/egypt-seeks-to-borrow-turkiyes-first-floating-storage-regasification-unit-ertugrul-gazi-120461/",
+      "https://lngprime.com/asia/report-egypt-to-deploy-turkish-fsru/141538/"
+    ],
+    "source_notes": "Re-verified unchanged. The Egypt-BOTAS seasonal agreement for Ertugrul Gazi was reached / reported in 2025 (for summer 2025). Existing GEM ref botas.gov.tr returns HTTP 000 (unreachable) - replaced with PASSing sources.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (devpipeline-exh)"
+  },
+  {
+    "terminal_id": "T100000130686",
+    "unit_id": "G100001093679",
+    "terminal_name": "Sumed FSRU",
+    "unit_name": "Ertugrul Gazi",
+    "country": "Egypt",
+    "field_name": "OriginalPlannedStartYear",
+    "old_value": "2025",
+    "new_value": "2025",
+    "confidence": "blue",
+    "source_tier": "trade press / industry assoc",
+    "ref_field": "StartDate [ref]",
+    "ref_urls": [
+      "https://www.giignl.org/news/egypt-scales-up-regas-capacity-with-fsru-deployments-from-botas-sefe-and-hoegh-lng",
+      "https://lngprime.com/asia/report-egypt-to-deploy-turkish-fsru/141538/"
+    ],
+    "source_notes": "Re-verified unchanged. Planned to start/operate summer 2025 (June-November 2025).",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (devpipeline-exh)"
+  },
+  {
+    "terminal_id": "T100000130686",
+    "unit_id": "G100001093679",
+    "terminal_name": "Sumed FSRU",
+    "unit_name": "Ertugrul Gazi",
+    "country": "Egypt",
+    "field_name": "LatestPlannedStartYear",
+    "old_value": "2025",
+    "new_value": "2025",
+    "confidence": "blue",
+    "source_tier": "trade press / industry assoc",
+    "ref_field": "StartDate [ref]",
+    "ref_urls": [
+      "https://www.giignl.org/news/egypt-scales-up-regas-capacity-with-fsru-deployments-from-botas-sefe-and-hoegh-lng",
+      "https://lngprime.com/asia/report-egypt-to-deploy-turkish-fsru/141538/"
+    ],
+    "source_notes": "Re-verified unchanged. Latest planned start = summer 2025; consistent with original.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (devpipeline-exh)"
+  },
+  {
+    "terminal_id": "T100000130686",
+    "unit_id": "G100001093679",
+    "terminal_name": "Sumed FSRU",
+    "unit_name": "Ertugrul Gazi",
+    "country": "Egypt",
+    "field_name": "ShelvedCancelledStatusType",
+    "old_value": "confirmed",
+    "new_value": "confirmed",
+    "confidence": "blue",
+    "source_tier": "trade press / industry assoc",
+    "ref_urls": [
+      "https://www.giignl.org/news/egypt-scales-up-regas-capacity-with-fsru-deployments-from-botas-sefe-and-hoegh-lng"
+    ],
+    "source_notes": "Re-verified unchanged (ref_field null -> URLs here). Seasonal-only deployment confirmed to revert to Turkey; shelving of the Egyptian Ertugrul service is confirmed.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (devpipeline-exh)"
+  },
+  {
+    "terminal_id": "T100000130686",
+    "unit_id": "G100001093679",
+    "terminal_name": "Sumed FSRU",
+    "unit_name": "Ertugrul Gazi",
+    "country": "Egypt",
+    "field_name": "Location",
+    "old_value": "Port of Ain Sokhna",
+    "new_value": "Port of Ain Sokhna",
+    "confidence": "blue",
+    "source_tier": "trade press / independent DB",
+    "ref_field": "Location [ref]",
+    "ref_urls": [
+      "https://lngprime.com/asia/report-egypt-to-deploy-turkish-fsru/141538/",
+      "https://globalenergyobservatory.org/geoid/46472",
+      "https://www.sumed.org/?p=facilities"
+    ],
+    "source_notes": "Re-verified unchanged. Ertugrul Gazi deployed at Egypt's Ain Sokhna port (Sumed berth). GEO confirms 'Ain Sokhna, Suez, Egypt'; SUMED confirms the Ain Sukhna FSRU berth. Existing marinetraffic ref returns HTTP 403 (bot-block) and the maps link is not value-verifiable - replaced.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (devpipeline-exh)"
+  },
+  {
+    "terminal_id": "T100000130686",
+    "unit_id": "G100001093679",
+    "terminal_name": "Sumed FSRU",
+    "unit_name": "Ertugrul Gazi",
+    "country": "Egypt",
+    "field_name": "State/Province",
+    "old_value": "Suez",
+    "new_value": "Suez",
+    "confidence": "blue",
+    "source_tier": "independent DB",
+    "ref_field": "Location [ref]",
+    "ref_urls": [
+      "https://globalenergyobservatory.org/geoid/46472",
+      "https://en.wikipedia.org/wiki/Ain_Sokhna"
+    ],
+    "source_notes": "Re-verified unchanged. Ain Sokhna is in Suez governorate, on the Gulf of Suez. GEO: 'Ain Sokhna, Suez, Egypt'.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (devpipeline-exh)"
+  },
+  {
+    "terminal_id": "T100000130686",
+    "unit_id": "G100001093679",
+    "terminal_name": "Sumed FSRU",
+    "unit_name": "Ertugrul Gazi",
+    "country": "Egypt",
+    "field_name": "Offshore",
+    "old_value": "True",
+    "new_value": "True",
+    "confidence": "blue",
+    "source_tier": "trade press / independent DB",
+    "ref_urls": [
+      "https://globalenergyobservatory.org/geoid/46472",
+      "https://www.sumed.org/?p=facilities"
+    ],
+    "source_notes": "Re-verified unchanged (ref_field null -> URLs here). The Sumed FSRU berth is an offshore marine terminal (3 km access trestle to berths at 15 m water depth per SUMED); FSRU floats at the offshore berth.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (devpipeline-exh)"
+  },
+  {
+    "terminal_id": "T100000130686",
+    "unit_id": "G100001093679",
+    "terminal_name": "Sumed FSRU",
+    "unit_name": "Ertugrul Gazi",
+    "country": "Egypt",
+    "field_name": "Floating",
+    "old_value": "True",
+    "new_value": "True",
+    "confidence": "blue",
+    "source_tier": "trade press / industry assoc",
+    "ref_urls": [
+      "https://lngprime.com/asia/report-egypt-to-deploy-turkish-fsru/141538/",
+      "https://www.giignl.org/news/egypt-scales-up-regas-capacity-with-fsru-deployments-from-botas-sefe-and-hoegh-lng"
+    ],
+    "source_notes": "Re-verified unchanged (ref_field null -> URLs here). FSRU (Floating Storage and Regasification Unit) - floating by definition.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (devpipeline-exh)"
+  },
+  {
+    "terminal_id": "T100000130686",
+    "unit_id": "G100001093679",
+    "terminal_name": "Sumed FSRU",
+    "unit_name": "Ertugrul Gazi",
+    "country": "Egypt",
+    "field_name": "FloatingVesselName",
+    "old_value": "Höegh Galleon FSRU, Energos Eskimo FSRU, Höegh Gandria FSRU, Ertugrul Gazi FSRU",
+    "new_value": "Höegh Galleon FSRU, Energos Eskimo FSRU, Höegh Gandria FSRU, Ertugrul Gazi FSRU",
+    "confidence": "blue",
+    "source_tier": "trade press / company IR",
+    "ref_field": "FloatingVesselName [ref]",
+    "ref_urls": [
+      "https://lngprime.com/africa/second-fsru-arrives-in-egypt/152652/",
+      "https://hoeghevi.com/hoegh-evi-signs-fsru-charter-with-egas-supporting-egypts-role-as-energy-hub-in-the-middle-east/",
+      "https://lngprime.com/asia/report-egypt-to-deploy-turkish-fsru/141538/",
+      "https://www.giignl.org/news/egypt-scales-up-regas-capacity-with-fsru-deployments-from-botas-sefe-and-hoegh-lng"
+    ],
+    "source_notes": "Re-verified unchanged. Vessels associated with the Sumed berth: Hoegh Galleon (deployed Jul 2024 at Sumed/Ain Sokhna), Hoegh Gandria (Q4 2026 deployment to Port of Sumed), Ertugrul Gazi (BOTAS, summer 2025 seasonal). Energos Eskimo also reported arriving in Egypt. Existing GEM refs (lngprime, pgjonline, bw-group, hoeghevi) re-confirmed; bw-group/hoeghevi PASS.",
+    "scope_note": "Project-level vessel-history field on the Sumed FSRU terminal.",
+    "researcher_initials": "AI-draft (devpipeline-exh)"
+  },
+  {
+    "terminal_id": "T100000130686",
+    "unit_id": "G100001093663",
+    "terminal_name": "Sumed FSRU",
+    "unit_name": "Höegh Gandria",
+    "country": "Egypt",
+    "field_name": "FacilityType",
+    "old_value": "import",
+    "new_value": "import",
+    "confidence": "blue",
+    "source_tier": "company IR / trade press",
+    "ref_field": "FacilityType [ref]",
+    "ref_urls": [
+      "https://lngprime.com/africa/second-fsru-arrives-in-egypt/152652/",
+      "https://hoeghevi.com/hoegh-evi-signs-fsru-charter-with-egas-supporting-egypts-role-as-energy-hub-in-the-middle-east/",
+      "https://pgjonline.com/news/2025/may/egypt-secures-10-year-floating-lng-terminal-deal-with-hoegh-evi"
+    ],
+    "source_notes": "Re-verified unchanged. Hoegh Gandria is a converted FSRU (import/regasification) for Egypt's Sumed port.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (devpipeline-exh)"
+  },
+  {
+    "terminal_id": "T100000130686",
+    "unit_id": "G100001093663",
+    "terminal_name": "Sumed FSRU",
+    "unit_name": "Höegh Gandria",
+    "country": "Egypt",
+    "field_name": "Status",
+    "old_value": "proposed",
+    "new_value": "proposed",
+    "confidence": "blue",
+    "source_tier": "company IR / industry assoc",
+    "ref_field": "Status [ref]",
+    "ref_urls": [
+      "https://hoeghevi.com/hoegh-evi-signs-fsru-charter-with-egas-supporting-egypts-role-as-energy-hub-in-the-middle-east/",
+      "https://www.giignl.org/news/egypt-scales-up-regas-capacity-with-fsru-deployments-from-botas-sefe-and-hoegh-lng",
+      "https://pgjonline.com/news/2025/may/egypt-secures-10-year-floating-lng-terminal-deal-with-hoegh-evi"
+    ],
+    "source_notes": "Re-verified unchanged (proposed). Hoegh Gandria is still under conversion (Seatrium contract, ~18 months from May 2025) for a Q4 2026 deployment to the Port of Sumed - i.e. not yet operating; 'proposed/in-development' is correct as of Jun 2026.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (devpipeline-exh)"
+  },
+  {
+    "terminal_id": "T100000130686",
+    "unit_id": "G100001093663",
+    "terminal_name": "Sumed FSRU",
+    "unit_name": "Höegh Gandria",
+    "country": "Egypt",
+    "field_name": "Owner",
+    "old_value": "EGAS [100%]",
+    "new_value": "EGAS [100%]",
+    "confidence": "blue",
+    "source_tier": "company IR / trade press",
+    "ref_field": "Owner [ref]",
+    "ref_urls": [
+      "https://hoeghevi.com/hoegh-evi-signs-fsru-charter-with-egas-supporting-egypts-role-as-energy-hub-in-the-middle-east/",
+      "https://pgjonline.com/news/2025/may/egypt-secures-10-year-floating-lng-terminal-deal-with-hoegh-evi",
+      "https://www.giignl.org/news/egypt-scales-up-regas-capacity-with-fsru-deployments-from-botas-sefe-and-hoegh-lng"
+    ],
+    "source_notes": "Re-verified unchanged. EGAS (Egyptian Natural Gas Holding) signed the 10-year charter and is the terminal owner/counterparty at Sumed. NOTE: the VESSEL Hoegh Gandria is owned by Hoegh Evi (vessel-owner, separate from terminal owner EGAS). Existing GEM ref (giignl 2020 PDF URL) is HTTP 404 - replaced.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (devpipeline-exh)"
+  },
+  {
+    "terminal_id": "T100000130686",
+    "unit_id": "G100001093663",
+    "terminal_name": "Sumed FSRU",
+    "unit_name": "Höegh Gandria",
+    "country": "Egypt",
+    "field_name": "Parent",
+    "old_value": "EGAS [100.0%]",
+    "new_value": "EGAS [100.0%]",
+    "confidence": "blue",
+    "source_tier": "company IR / trade press",
+    "ref_urls": [
+      "https://hoeghevi.com/hoegh-evi-signs-fsru-charter-with-egas-supporting-egypts-role-as-energy-hub-in-the-middle-east/",
+      "https://pgjonline.com/news/2025/may/egypt-secures-10-year-floating-lng-terminal-deal-with-hoegh-evi"
+    ],
+    "source_notes": "Re-verified unchanged (ref_field null -> URLs here). Terminal parent is EGAS, the Egyptian state gas holding.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (devpipeline-exh)"
+  },
+  {
+    "terminal_id": "T100000130686",
+    "unit_id": "G100001093663",
+    "terminal_name": "Sumed FSRU",
+    "unit_name": "Höegh Gandria",
+    "country": "Egypt",
+    "field_name": "Capacity",
+    "old_value": "1.00",
+    "new_value": "1.00",
+    "confidence": "blue",
+    "source_tier": "company IR / industry assoc",
+    "ref_field": "Capacity [ref]",
+    "ref_urls": [
+      "https://hoeghevi.com/hoegh-evi-signs-fsru-charter-with-egas-supporting-egypts-role-as-energy-hub-in-the-middle-east/",
+      "https://lngprime.com/africa/second-fsru-arrives-in-egypt/152652/",
+      "https://www.giignl.org/news/egypt-scales-up-regas-capacity-with-fsru-deployments-from-botas-sefe-and-hoegh-lng"
+    ],
+    "source_notes": "Re-verified unchanged. All sources: 'up to 1,000 mmscf/day' = 1.0 bcf/d (matches GEM Capacity 1.00 with CapacityUnits bcf/d). CAVEAT: sources describe this as PEAK regasification capacity, not baseload/nameplate - flagged in qa. Existing GEM ref pgjonline PASSes for the deal but uses 'million standard cubic feet' phrasing for the figure; hoeghevi/lngprime/GIIGNL give the '1,000 mmscf' value verbatim.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (devpipeline-exh)"
+  },
+  {
+    "terminal_id": "T100000130686",
+    "unit_id": "G100001093663",
+    "terminal_name": "Sumed FSRU",
+    "unit_name": "Höegh Gandria",
+    "country": "Egypt",
+    "field_name": "CapacityUnits",
+    "old_value": "bcf/d",
+    "new_value": "bcf/d",
+    "confidence": "blue",
+    "source_tier": "company IR / industry assoc",
+    "ref_field": "Capacity [ref]",
+    "ref_urls": [
+      "https://hoeghevi.com/hoegh-evi-signs-fsru-charter-with-egas-supporting-egypts-role-as-energy-hub-in-the-middle-east/",
+      "https://lngprime.com/africa/second-fsru-arrives-in-egypt/152652/"
+    ],
+    "source_notes": "Re-verified unchanged. 1,000 mmscf/day = 1.0 bcf/d; units bcf/d consistent.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (devpipeline-exh)"
+  },
+  {
+    "terminal_id": "T100000130686",
+    "unit_id": "G100001093663",
+    "terminal_name": "Sumed FSRU",
+    "unit_name": "Höegh Gandria",
+    "country": "Egypt",
+    "field_name": "ProposalYear",
+    "old_value": "2025",
+    "new_value": "2025",
+    "confidence": "blue",
+    "source_tier": "company IR / industry assoc",
+    "ref_field": "ProposalDate [ref]",
+    "ref_urls": [
+      "https://hoeghevi.com/hoegh-evi-signs-fsru-charter-with-egas-supporting-egypts-role-as-energy-hub-in-the-middle-east/",
+      "https://pgjonline.com/news/2025/may/egypt-secures-10-year-floating-lng-terminal-deal-with-hoegh-evi",
+      "https://worldoil.com/news/2025/5/12/hoegh-evi-signs-10-year-fsru-charter-with-egypt-s-egas/"
+    ],
+    "source_notes": "Re-verified unchanged. The EGAS-Hoegh 10-year charter for Gandria was signed/announced May 2025.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (devpipeline-exh)"
+  },
+  {
+    "terminal_id": "T100000130686",
+    "unit_id": "G100001093663",
+    "terminal_name": "Sumed FSRU",
+    "unit_name": "Höegh Gandria",
+    "country": "Egypt",
+    "field_name": "OriginalPlannedStartYear",
+    "old_value": "2026",
+    "new_value": "2026",
+    "confidence": "blue",
+    "source_tier": "company IR / industry assoc",
+    "ref_field": "StartDate [ref]",
+    "ref_urls": [
+      "https://hoeghevi.com/hoegh-evi-signs-fsru-charter-with-egas-supporting-egypts-role-as-energy-hub-in-the-middle-east/",
+      "https://www.giignl.org/news/egypt-scales-up-regas-capacity-with-fsru-deployments-from-botas-sefe-and-hoegh-lng",
+      "https://lngprime.com/africa/second-fsru-arrives-in-egypt/152652/"
+    ],
+    "source_notes": "Re-verified unchanged. Deployment to Port of Sumed planned for Q4 2026.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (devpipeline-exh)"
+  },
+  {
+    "terminal_id": "T100000130686",
+    "unit_id": "G100001093663",
+    "terminal_name": "Sumed FSRU",
+    "unit_name": "Höegh Gandria",
+    "country": "Egypt",
+    "field_name": "LatestPlannedStartYear",
+    "old_value": "2026",
+    "new_value": "2026",
+    "confidence": "blue",
+    "source_tier": "company IR / industry assoc",
+    "ref_field": "StartDate [ref]",
+    "ref_urls": [
+      "https://hoeghevi.com/hoegh-evi-signs-fsru-charter-with-egas-supporting-egypts-role-as-energy-hub-in-the-middle-east/",
+      "https://www.giignl.org/news/egypt-scales-up-regas-capacity-with-fsru-deployments-from-botas-sefe-and-hoegh-lng"
+    ],
+    "source_notes": "Re-verified unchanged. Latest planned start = Q4 2026; consistent with original.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (devpipeline-exh)"
+  },
+  {
+    "terminal_id": "T100000130686",
+    "unit_id": "G100001093663",
+    "terminal_name": "Sumed FSRU",
+    "unit_name": "Höegh Gandria",
+    "country": "Egypt",
+    "field_name": "Location",
+    "old_value": "Port of Ain Sokhna",
+    "new_value": "Port of Ain Sokhna",
+    "confidence": "blue",
+    "source_tier": "company IR / independent DB",
+    "ref_field": "Location [ref]",
+    "ref_urls": [
+      "https://hoeghevi.com/hoegh-evi-signs-fsru-charter-with-egas-supporting-egypts-role-as-energy-hub-in-the-middle-east/",
+      "https://globalenergyobservatory.org/geoid/46472",
+      "https://www.sumed.org/?p=facilities"
+    ],
+    "source_notes": "Re-verified unchanged. Gandria to deploy at the Port of Sumed in Ain Sokhna. GEO confirms 'Ain Sokhna, Suez, Egypt'; SUMED confirms the Ain Sukhna FSRU berth. Existing marinetraffic ref returns HTTP 403 and maps link not value-verifiable - replaced.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (devpipeline-exh)"
+  },
+  {
+    "terminal_id": "T100000130686",
+    "unit_id": "G100001093663",
+    "terminal_name": "Sumed FSRU",
+    "unit_name": "Höegh Gandria",
+    "country": "Egypt",
+    "field_name": "State/Province",
+    "old_value": "Suez",
+    "new_value": "Suez",
+    "confidence": "blue",
+    "source_tier": "independent DB",
+    "ref_field": "Location [ref]",
+    "ref_urls": [
+      "https://globalenergyobservatory.org/geoid/46472",
+      "https://en.wikipedia.org/wiki/Ain_Sokhna"
+    ],
+    "source_notes": "Re-verified unchanged. Ain Sokhna is in Suez governorate. GEO: 'Ain Sokhna, Suez, Egypt'.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (devpipeline-exh)"
+  },
+  {
+    "terminal_id": "T100000130686",
+    "unit_id": "G100001093663",
+    "terminal_name": "Sumed FSRU",
+    "unit_name": "Höegh Gandria",
+    "country": "Egypt",
+    "field_name": "Offshore",
+    "old_value": "True",
+    "new_value": "True",
+    "confidence": "blue",
+    "source_tier": "independent DB / industry assoc",
+    "ref_urls": [
+      "https://www.sumed.org/?p=facilities",
+      "https://globalenergyobservatory.org/geoid/46472"
+    ],
+    "source_notes": "Re-verified unchanged (ref_field null -> URLs here). Sumed FSRU berth is an offshore marine terminal (3 km access trestle, 15 m berth) - FSRU at offshore berth.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (devpipeline-exh)"
+  },
+  {
+    "terminal_id": "T100000130686",
+    "unit_id": "G100001093663",
+    "terminal_name": "Sumed FSRU",
+    "unit_name": "Höegh Gandria",
+    "country": "Egypt",
+    "field_name": "Floating",
+    "old_value": "True",
+    "new_value": "True",
+    "confidence": "blue",
+    "source_tier": "company IR / trade press",
+    "ref_urls": [
+      "https://hoeghevi.com/hoegh-evi-signs-fsru-charter-with-egas-supporting-egypts-role-as-energy-hub-in-the-middle-east/",
+      "https://lngprime.com/africa/second-fsru-arrives-in-egypt/152652/"
+    ],
+    "source_notes": "Re-verified unchanged (ref_field null -> URLs here). FSRU - floating by definition.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (devpipeline-exh)"
+  },
+  {
+    "terminal_id": "T100000130686",
+    "unit_id": "G100001093663",
+    "terminal_name": "Sumed FSRU",
+    "unit_name": "Höegh Gandria",
+    "country": "Egypt",
+    "field_name": "FloatingVesselName",
+    "old_value": "Höegh Galleon FSRU, Energos Eskimo FSRU, Höegh Gandria FSRU, Ertugrul Gazi FSRU",
+    "new_value": "Höegh Galleon FSRU, Energos Eskimo FSRU, Höegh Gandria FSRU, Ertugrul Gazi FSRU",
+    "confidence": "blue",
+    "source_tier": "trade press / company IR",
+    "ref_field": "FloatingVesselName [ref]",
+    "ref_urls": [
+      "https://lngprime.com/africa/second-fsru-arrives-in-egypt/152652/",
+      "https://hoeghevi.com/hoegh-evi-signs-fsru-charter-with-egas-supporting-egypts-role-as-energy-hub-in-the-middle-east/",
+      "https://lngprime.com/asia/report-egypt-to-deploy-turkish-fsru/141538/",
+      "https://www.giignl.org/news/egypt-scales-up-regas-capacity-with-fsru-deployments-from-botas-sefe-and-hoegh-lng"
+    ],
+    "source_notes": "Re-verified unchanged. Same project-level vessel-history list as the Ertugrul Gazi unit-row (Hoegh Galleon, Energos Eskimo, Hoegh Gandria, Ertugrul Gazi). All four are corroborated across lngprime / hoeghevi IR / GIIGNL.",
+    "scope_note": "Project-level vessel-history field on the Sumed FSRU terminal - staged on both in-scope unit-rows.",
+    "researcher_initials": "AI-draft (devpipeline-exh)"
+  }
+]

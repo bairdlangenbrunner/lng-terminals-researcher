@@ -1,0 +1,100 @@
+[
+  {
+    "terminal_id": "T100000131079",
+    "unit_id": "G100002107900",
+    "terminal_name": "Mauritius FSRU",
+    "unit_name": "--",
+    "country": "Mauritius",
+    "field_name": "FacilityType",
+    "old_value": "import",
+    "new_value": "import",
+    "confidence": "blue",
+    "source_tier": "trade press + US govt country commercial guide (2 independent)",
+    "ref_field": "FacilityType [ref]",
+    "ref_urls": [
+      "https://lngprime.com/africa/mauritius-plans-lng-to-power-project/53915/",
+      "https://www.trade.gov/country-commercial-guides/mauritius-energy"
+    ],
+    "source_notes": "Re-verified unchanged. Both sources describe a Mauritius LNG-to-power import scheme: an FSRU (floating storage and regasification unit) supplying gas to power barges; the FSRU is an import facility replenished by ship-to-ship transfer. trade.gov frames it as an LNG hub/import feasibility (PwC India 2021) + 2022 RFI. Both URLs PASS url_verifier on 'import' and 'FSRU'/CEB.",
+    "scope_note": "single-unit terminal",
+    "researcher_initials": "AI-draft (devpipeline-exh)"
+  },
+  {
+    "terminal_id": "T100000131079",
+    "unit_id": "G100002107900",
+    "terminal_name": "Mauritius FSRU",
+    "unit_name": "--",
+    "country": "Mauritius",
+    "field_name": "Status",
+    "old_value": "shelved",
+    "new_value": "shelved",
+    "confidence": "blue",
+    "source_tier": "US govt country commercial guide + trade press (2 independent)",
+    "ref_field": "Status [ref]",
+    "ref_urls": [
+      "https://www.trade.gov/country-commercial-guides/mauritius-energy",
+      "https://lngprime.com/africa/mauritius-plans-lng-to-power-project/53915/"
+    ],
+    "source_notes": "Re-verified unchanged. trade.gov (US Dept of Commerce country commercial guide) states the LNG-to-power project saw 'no further progress' after the 2021 PwC feasibility study and 2022 RFI and 'appears to be shelved' as of Sept 2025; PASSES url_verifier on 'shelved'. LNG Prime documents the project as a CEB RFI never advanced. No revival of THIS FSRU-barge scheme found; an Aug-2025 MARENA 2025-2030 plan proposes a separate land-based CCGT LNG concept (different facility, not this FSRU) - noted in qa, not a status change here.",
+    "scope_note": "single-unit terminal; Status unchanged so staged as blue re-verify per brief (no Status field edit / no timeline write)",
+    "researcher_initials": "AI-draft (devpipeline-exh)"
+  },
+  {
+    "terminal_id": "T100000131079",
+    "unit_id": "G100002107900",
+    "terminal_name": "Mauritius FSRU",
+    "unit_name": "--",
+    "country": "Mauritius",
+    "field_name": "ProposalYear",
+    "old_value": "2022",
+    "new_value": "2022",
+    "confidence": "blue",
+    "source_tier": "trade press + US govt country commercial guide (2 independent)",
+    "ref_field": "ProposalDate [ref]",
+    "ref_urls": [
+      "https://lngprime.com/africa/mauritius-plans-lng-to-power-project/53915/",
+      "https://www.trade.gov/country-commercial-guides/mauritius-energy"
+    ],
+    "source_notes": "Re-verified unchanged. LNG Prime: CEB launched the RFI for LNG power barges + FSRU in May/June 2022 (proposals due 15 June 2022). trade.gov: 'a 2022 Request for Information (RFI) for barge-mounted LNG power plants'. Both PASS url_verifier on '2022'.",
+    "scope_note": "single-unit terminal",
+    "researcher_initials": "AI-draft (devpipeline-exh)"
+  },
+  {
+    "terminal_id": "T100000131079",
+    "unit_id": "G100002107900",
+    "terminal_name": "Mauritius FSRU",
+    "unit_name": "--",
+    "country": "Mauritius",
+    "field_name": "Offshore",
+    "old_value": "True",
+    "new_value": "True",
+    "confidence": "blue",
+    "source_tier": "trade press + US govt country commercial guide (2 independent)",
+    "ref_urls": [
+      "https://lngprime.com/africa/mauritius-plans-lng-to-power-project/53915/",
+      "https://www.trade.gov/country-commercial-guides/mauritius-energy"
+    ],
+    "source_notes": "Re-verified unchanged. The project is an FSRU (floating storage and regasification unit) sited in the Port Louis harbour area in consultation with the Mauritius Ports Authority - an offshore/in-harbour floating import facility, consistent with Offshore=True. No [ref] column for Offshore (ref_field null); URLs in source_notes. Both PASS url_verifier on 'FSRU'.",
+    "scope_note": "single-unit terminal; Offshore has no paired [ref] column",
+    "researcher_initials": "AI-draft (devpipeline-exh)"
+  },
+  {
+    "terminal_id": "T100000131079",
+    "unit_id": "G100002107900",
+    "terminal_name": "Mauritius FSRU",
+    "unit_name": "--",
+    "country": "Mauritius",
+    "field_name": "Floating",
+    "old_value": "True",
+    "new_value": "True",
+    "confidence": "blue",
+    "source_tier": "trade press + US govt country commercial guide (2 independent)",
+    "ref_urls": [
+      "https://lngprime.com/africa/mauritius-plans-lng-to-power-project/53915/",
+      "https://www.trade.gov/country-commercial-guides/mauritius-energy"
+    ],
+    "source_notes": "Re-verified unchanged. Project explicitly an FSRU = floating storage and regasification unit, consistent with Floating=True. No [ref] column for Floating (ref_field null); URLs in source_notes. Both PASS url_verifier on 'FSRU'.",
+    "scope_note": "single-unit terminal; Floating has no paired [ref] column",
+    "researcher_initials": "AI-draft (devpipeline-exh)"
+  }
+]

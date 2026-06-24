@@ -1,0 +1,72 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000131090",
+    "unit_id": "G100002109001",
+    "terminal_name": "Rovuma FLNG Terminal",
+    "issue": "GEM holds this 2022-proposed Eni 'South Coral'/third Area 4 FLNG as shelved (ShelvedYear/StopYear 2024). The researcher_notes_unit says it 'likely ended up becoming the Coral North FLNG project.' That is now CONFIRMED: Eni and partners took FID on Coral North (Coral Norte) FLNG on 2 Oct 2025 ($7.2B development plan, 3.55 mtpa, first LNG Q2 2028, offshore Area 4 floating; consortium Eni 50% / CNPC 20% / KOGAS 10% / ENH 10% / ADNOC XRG 10%). GEM appears to track Coral North as a separate terminal (Coral_North_FLNG_Terminal exists). The shelved 'Rovuma FLNG Terminal' record is the same concept that revived as Coral North.",
+    "severity": "high",
+    "suggested_action": "Human to decide whether to (a) make this a redirect/merge into the existing Coral North FLNG Terminal record (per the researcher note), or (b) if kept distinct, update status from shelved to construction (FID reached Oct 2025). Per brief, no Status edit staged here (fetch_timeline down + deliberate-divergence note deferred to). Sources: https://jpt.spe.org/eni-inks-fid-on-coral-norte-flng-for-mozambique-area-4 ; https://www.offshore-energy.biz/7-2-billion-project-cleared-for-takeoff-to-unlock-more-gas-and-lng-offshore-mozambique/ ; https://www.compressortech2.com/news/coral-norte-flng-project-offshore-mozambique-moves-forward/8115056.article",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000131090",
+    "unit_id": "G100002109001",
+    "terminal_name": "Rovuma FLNG Terminal",
+    "issue": "Could not corroborate the shelved Status / Substatus ('inferred 2 y') / ShelvedYear 2024 / StopYear 2024 / ShelvedCancelledStatusType 'inferred' off-GEM. The cited Status [ref] cells are blank and the project concept did NOT in fact die in 2024 - it revived as Coral North FLNG (FID Oct 2025). No independent source supports a 2024 shelving; the 'shelved 2024' state is a GEM inference, not a citable external fact. blank_refs_with_data for Status/Substatus/ShelvedYear/StopYear therefore left UNFILLED (no citable source).",
+    "severity": "high",
+    "suggested_action": "Resolve together with the status_timeline note above - the shelved-2024 framing is superseded by the Coral North FID. Do not fill the Status/ShelvedYear/StopYear refs with any source until the redirect/merge decision is made.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000131090",
+    "unit_id": "G100002109001",
+    "terminal_name": "Rovuma FLNG Terminal",
+    "issue": "Owner/Parent/Operator string for this shelved 2022-FLNG record is the PRE-2023 Area 4 structure (lists Galp Energia 10%). Galp sold its 10% Area 4 stake to ADNOC in 2023; the project that actually advanced (Coral North) is owned Eni 50% / CNPC 20% / KOGAS 10% / ENH 10% / ADNOC XRG 10%. The exact 'Mozambique Rovuma Venture [70%]; ENH [10%]; KOGAS Canada [10%]; Galp [10%]' string could not be independently corroborated for this specific shelved entity (the only on-point owner sources describe the live Coral North consortium). No staged owner change (the right fix depends on the redirect/merge decision).",
+    "severity": "medium",
+    "suggested_action": "If this record is kept distinct and treated as the historical 2022 proposal, the Galp-10% structure is period-accurate; if merged into Coral North, adopt the ADNOC-XRG consortium. Resolve with the status_timeline note. Coral North owner source: https://jpt.spe.org/eni-inks-fid-on-coral-norte-flng-for-mozambique-area-4",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_quality",
+    "terminal_id": "T100000131090",
+    "unit_id": "G100002109001",
+    "terminal_name": "Rovuma FLNG Terminal",
+    "issue": "Location field reads 'Afungi peninsula' but this is a FLOATING, OFFSHORE liquefaction vessel (Offshore=True, Floating=True). JPT places the FLNG ~50 km offshore northern Mozambique in Area 4 (the Coral/Agulha fields). 'Afungi peninsula' is the ONSHORE site of the separate ExxonMobil Rovuma LNG terminal - it is the wrong locality for an offshore FLNG. The cited Location [ref] (jpt) does not contain 'Afungi'. Lat/Long (-10.7533, 40.7983) are geocodes (not staged per rules).",
+    "severity": "medium",
+    "suggested_action": "Correct Location to reflect the offshore Area 4 / Rovuma Basin position (the Coral North FLNG sits ~48-50 km off Cabo Delgado), not the onshore Afungi peninsula. Coordinates likely also need a re-check against the FLNG mooring location.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dead_ref",
+    "terminal_id": "T100000130789",
+    "unit_id": "G100002078901",
+    "terminal_name": "Rovuma LNG Terminal",
+    "issue": "Existing GEM ref https://www.nsenergybusiness.com/projects/rovuma-lng-project-mozambique/ (cited on FacilityType, Status, Owner, Operator, ProposalYear, Location, State/Province, Lat/Long, Accuracy, Source for this unit) returns HTTP 403 to automated clients AND has NO Wayback Machine snapshot, so its values could not be machine-verified here. It MAY be a live page that bot-blocks (human reviewer can open it in a browser), but with no archive it could not be confirmed. All affected values were re-corroborated and re-cited from independent non-bot-blocked sources (ExxonMobil PR, LNG Prime, Offshore Energy, upstream Wayback) in the staged updates, so the nsenergybusiness URL is now redundant.",
+    "severity": "low",
+    "suggested_action": "Consider dropping nsenergybusiness from the [ref] cells (replaced by verified sources) or have the reviewer confirm it loads in a browser. Not labeled dead (no 404), only unverifiable here.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "schedule_drift",
+    "terminal_id": "T100000130789",
+    "unit_id": "G100002078901",
+    "terminal_name": "Rovuma LNG Terminal",
+    "issue": "OriginalPlannedStartYear (2025) and LatestPlannedStartYear (2027) are stale. With FID now slipped to 2026 (force majeure only lifted Nov 2025), recent reporting points to first LNG ~2030. The 2025/2027 start values reflect a pre-delay schedule and could not be confirmed as current.",
+    "severity": "medium",
+    "suggested_action": "After FID (expected 2026) the planned start should be revised toward ~2030. Re-verify start year once a post-FID schedule is published. Source: https://www.offshore-energy.biz/exxonmobil-bumps-fid-to-2026-while-bp-eyes-startup-by-years-end-for-their-lng-mega-projects-offshore-africa/",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "cost_estimate_drift",
+    "terminal_id": "T100000130789",
+    "unit_id": "G100002078901",
+    "terminal_name": "Rovuma LNG Terminal",
+    "issue": "Cost ($22B, 2023) is single-sourced (LNG Prime) and may be outdated. Some 2025 reporting around the force-majeure lift cites the megaproject at ~$30 billion. Kept $22B/2023 (matches the cited source and the 18-mtpa restructured plan) but the figure is contested.",
+    "severity": "low",
+    "suggested_action": "Re-confirm project cost at/after FID 2026; if the $30B figure is corroborated as the current 18-mtpa estimate, update Cost and CostYear accordingly.",
+    "researcher_initials": "AI-draft"
+  }
+]

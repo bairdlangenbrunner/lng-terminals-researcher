@@ -1,0 +1,32 @@
+[
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130593",
+    "unit_id": "G100002059306",
+    "terminal_name": "Oman Qalhat LNG Terminal",
+    "issue": "Train 4 Owner is 'unknown' in GEM. No Train-4-specific equity/ownership split has been publicly announced. Sources name Oman LNG (the JV) as operator/developer and the existing operating-train shareholders (Government of Oman 51%, Shell 30%, TotalEnergies 5.54%, Korea LNG 5%, Mitsubishi 2.77%, Mitsui 2.77%, PTTEP 2%, Itochu 0.92%), but none assign equity ownership of the proposed fourth train itself. Could not corroborate a Train-4 Owner value off-GEM; leaving Owner='unknown' and its blank Owner [ref] unfilled (cannot cite 'unknown').",
+    "severity": "low",
+    "suggested_action": "Keep Owner='unknown' until an FID/ownership announcement assigns Train-4 equity. Revisit when FID is reached. If GEM wishes to inherit the project-level JV shareholders, confirm with sponsor IR rather than assuming.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130593",
+    "unit_id": "G100002059306",
+    "terminal_name": "Oman Qalhat LNG Terminal",
+    "issue": "Train 4 Parent is 'unknown' in GEM (entity id E100000132388 present but no parent name in export). No public source confirms a Train-4-specific parent. Could not corroborate off-GEM.",
+    "severity": "low",
+    "suggested_action": "Leave Parent='unknown' pending FID/ownership disclosure. Parent has no [ref] column (ref_field null), so nothing to fill.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dead_ref",
+    "terminal_id": "T100000130593",
+    "unit_id": "G100002059306",
+    "terminal_name": "Oman Qalhat LNG Terminal",
+    "issue": "Two existing GEM refs no longer verify. (1) S&P Global Commodity Insights URL (spglobal.com/.../042324-oman-lng-looks-to-fill-supply-gap...) returns HTTP 403 (paywall) — cited on FacilityType/Operator/Location/State/Lat/Long [ref]. (2) GIIGNL 2022 Annual Report PDF (giignl.org/wp-content/uploads/2022/05/GIIGNL2022_Annual_Report_May24.pdf) returns HTTP 404 (dead) — cited on Operator [ref]. Both fail url_verifier; replaced in staged records with PASSing independent sources (LNG Prime, Zawya, OGJ, offshore-energy, Google Maps).",
+    "severity": "low",
+    "suggested_action": "On apply, drop the S&P Global (403) and GIIGNL-2022 (404) URLs from the affected [ref] cells in favor of the PASSing replacements in the staged updates. If GIIGNL provenance is wanted, the committed archive in data/ holds the editions.",
+    "researcher_initials": "AI-draft"
+  }
+]

@@ -1,0 +1,82 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130835",
+    "unit_id": "G100002083500",
+    "terminal_name": "Ivory Coast FSRU",
+    "issue": "Status-watch (no change staged): the original CI-GNL/Vridi FSRU remains stalled with no construction since 2016-17; TotalEnergies EXITED in May 2021 and CI-Energies re-tendered an FSRU for the Port of Abidjan in June 2021. Separately, U.S. trade.gov (dated 2025-12-15) reports that Côte d'Ivoire still has 'a terminal for importing liquefied natural gas (LNG)... being planned' in early stages targeting ~2030, with cost still under evaluation — but does NOT tie this to the CI-GNL/Vridi project. GEM's 'shelved' status for THIS terminal is therefore still defensible, but the country's broader LNG-import intent appears live. No independent source documents a discrete shelving/cancellation EVENT for the CI-GNL FSRU; the 'shelved (inferred 2y)' status rests on inactivity, not a cited event.",
+    "severity": "medium",
+    "suggested_action": "Keep Status='shelved' for now. Human reviewer: consider whether the re-tendered Abidjan FSRU / the trade.gov 2030 'planned' LNG-import terminal is the SAME project re-emerging (would warrant un-shelving or a new proposed record) or a distinct effort. fetch_timeline is DOWN so no timeline file staged. Total-exit source: corroborated via offshore-mag project identity + multiple trade-press; the exit detail itself appears strongest on gem.wiki (not citable) — chase a primary May-2021 Total/CI-Energies statement before recording the exit.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130835",
+    "unit_id": "G100002083500",
+    "terminal_name": "Ivory Coast FSRU",
+    "issue": "Substatus 'inferred 2 y', ShelvedYear '2023', StopYear '2023', LatestPlannedStartYear '2023', and ShelvedCancelledStatusType 'inferred' could NOT be corroborated from any independent non-GEM source. These are GEM-inferred timeline values (the year-2021 Shell report listed start 2023 / 'Under Planning'; the 2023 shelved/stop years appear to be GEM's 2-year-inactivity inference, not a sourced event). No web source confirms a 2023 latest-planned-start, a 2023 shelving, or a 2023 stop. No value staged for these cells (left uncolored).",
+    "severity": "low",
+    "suggested_action": "Leave as GEM-inferred (no [ref] available). If a primary source surfaces (a 2023+ CI-Energies/Shell statement), record it then. The '2 y' substatus and 'inferred' status-type are internal GEM bookkeeping consistent with the inactivity inference.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130835",
+    "unit_id": "G100002083500",
+    "terminal_name": "Ivory Coast FSRU",
+    "issue": "Parent and ParentHQCountry (no [ref] column; null ref_field in worklist) mirror the original 2017 consortium and its HQ countries (France, Azerbaijan, United Kingdom, Côte d'Ivoire). The corporate parents of the consortium members are not independently re-verifiable as PROJECT facts beyond the Owner cell already re-verified via the TotalEnergies primary release. Note GEM's ParentHQCountry list omits the United States (Endeavor Energy is Houston-based per offshore-energy.biz) — minor.",
+    "severity": "low",
+    "suggested_action": "No edit staged (parent equals owner here; entity-system derived). Optionally add 'United States' to ParentHQCountry for Endeavor Energy (Houston) — corroborated by offshore-energy.biz — but defer to the GEM entity system.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dead_ref",
+    "terminal_id": "T100000130835",
+    "unit_id": "G100002083500",
+    "terminal_name": "Ivory Coast FSRU",
+    "issue": "Three GEM-cited reference URLs FAILED verification and should be replaced (replacements already staged in updates): (1) ijglobal.com/data/transaction/40869/... [FacilityType, Owner refs] is now JS/login-gated, returns no extractable value, and has NO Wayback snapshot = unusable; (2) the JOGMEC-hosted Shell 2022 PDF (oilgas-info.jogmec.go.jp/.../4_3_Shell_2022_en.pdf) [Owner, StartDate refs] is a SCANNED/IMAGE PDF with no text layer (pdftotext yields nothing) = failed citation; (3) hkenergy.org/2024/01/17/energy-in-cote-divoire/ [Location ref] returns HTTP 000 with NO Wayback snapshot = dead.",
+    "severity": "medium",
+    "suggested_action": "Drop the three dead/unusable refs; use the staged replacement URLs (TotalEnergies press release, offshore-mag, offshore-energy.biz, rivieramm, enerdata) which all PASS url_verifier on the actual values.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "bot_blocked_ref",
+    "terminal_id": "T100000130835",
+    "unit_id": "G100002083500",
+    "terminal_name": "Ivory Coast FSRU",
+    "issue": "The Cost [ref] gasstrategies.com URL returns HTTP 403 to automated clients (bot-block) but is ALIVE — its Wayback snapshot (web.archive.org/web/20230606094843/...) PASSES and reads verbatim 'an estimated USD 100 million floating storage and regasification unit (FSRU) project'. Retained as the live [ref]; NOT dead.",
+    "severity": "low",
+    "suggested_action": "Reviewer can open the live gasstrategies URL in a browser to confirm; value is archive-verified. Keep the live URL.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "value_discrepancy",
+    "terminal_id": "T100000130835",
+    "unit_id": "G100002083500",
+    "terminal_name": "Ivory Coast FSRU",
+    "issue": "Cost discrepancy: GEM has $100,000,000 (gasstrategies 2016, 'estimated USD 100 million'), but rivieramm (28827) reports the project cost as 'US$131-141.5 million'. Both are 2016-era estimates for the same FSRU project. Not staged as a change (GEM's $100M is independently archive-verified and is the cited value); flagged for awareness.",
+    "severity": "low",
+    "suggested_action": "Treat as estimate-range noise on a shelved project; keep $100M unless a firmer figure emerges. The higher figure may include the connecting pipeline, which GEM's terminal-only cost would exclude.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_typo",
+    "terminal_id": "T100000130835",
+    "unit_id": "G100002083500",
+    "terminal_name": "Ivory Coast FSRU",
+    "issue": "Location cell reads 'Vridi, Por of Abidjan' — 'Por' is a typo for 'Port'. Correct location verbatim is Vridi, Port of Abidjan (confirmed: TotalEnergies/offshore-mag 'Vridi, Abidjan area'; rivieramm 'moored off Vridi').",
+    "severity": "low",
+    "suggested_action": "Minor copy-edit: 'Por of Abidjan' -> 'Port of Abidjan'. Not staged as a value change (free-text typo, not a research finding); reviewer can fix in place.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130835",
+    "unit_id": "G100002083500",
+    "terminal_name": "Ivory Coast FSRU",
+    "issue": "Latitude (5.2729880), Longitude (-4.0287440) and Accuracy ('approximate') are GEM-inferred geocodes for Vridi/Abidjan, not asserted factual values citable to a source. The coordinates plot in the Vridi Canal / Port of Abidjan area, consistent with the verified Location. No deletion/edit appropriate (coords excluded from corroborate/delete logic).",
+    "severity": "low",
+    "suggested_action": "No edit. Coordinates are consistent with the re-verified 'Vridi, Port of Abidjan' location; 'approximate' accuracy is correct for a never-built FSRU mooring.",
+    "researcher_initials": "AI-draft"
+  }
+]
