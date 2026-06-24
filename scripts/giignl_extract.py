@@ -597,6 +597,7 @@ def _merge_lines_into_cells(
 def _attribute_owner_fragments(
     body_lines: list[str], data_idxs: list[int], skip: set[int],
     columns: list[ColumnSpec], owner_col_name: str,
+    subtotal_idxs: set[int] | None = None,
 ) -> dict[int, str]:
     """Per-row OWNER-cell text, attributing each owner fragment to the data row
     whose owner BLOCK it belongs to — fixing the cross-row owner bleed that the
@@ -629,11 +630,23 @@ def _attribute_owner_fragments(
       * A data line's own (non-blank) owner is the cell's centre → its own row.
 
     This is the distance-tie the naive nearest-line partition gets backwards.
+
+    SUBTOTAL lines are in `skip` (their Site/data content is ignored), but GIIGNL
+    sometimes wraps a multi-line owner cell onto the country-subtotal line — the
+    "<NN.N> MTPA" subtotal sits in the Market column while the owner column on the
+    SAME physical line carries a real owner fragment (Egypt: "20.5 MTPA" shares its
+    line with "Owner: Energos", the prefix of Ain-Sokhna/Energos Eskimo's "Owner:
+    Energos Infrastructure"; UK: "39.4 MTPA" shares with "QatarEnergy (67.5%),").
+    Dropping those fragments strands the row below with a bare tail ("Infrastructure")
+    AND breaks the far-side symmetry of its neighbours' ties. So owner-column text on
+    a subtotal line is RESCUED — `subtotal_idxs` (skip lines that are subtotals) are
+    re-admitted for owner attribution though they stay skipped for every other column.
     Returns {row_idx: owner_string}.
     """
     owner_col = next((c for c in columns if c.name == owner_col_name), None)
     if owner_col is None or not data_idxs:
         return {}
+    subtotal_idxs = subtotal_idxs or set()
     row_of_data = {d: r for r, d in enumerate(data_idxs)}
     n = len(body_lines)
 
@@ -642,11 +655,20 @@ def _attribute_owner_fragments(
 
     owner_line: dict[int, str] = {}
     for i in range(n):
-        if i in skip or not body_lines[i].strip():
+        if (i in skip and i not in subtotal_idxs) or not body_lines[i].strip():
             continue
         f = owner_frag(i)
         if f:
             owner_line[i] = f
+
+    # A fragment RESCUED from a subtotal line is ASSIGNED to a row, but must NOT
+    # serve as a far-side symmetry anchor for another fragment's distance-tie:
+    # admitting it as an anchor would flip a neighbour's already-correct tie — the
+    # "Owner: Energos" wrapped onto Egypt's "20.5 MTPA" subtotal line would
+    # otherwise poach Energos Power's "Charterer: Egas" (moving the bogus delta from
+    # Sumed FSRU onto Ain Sokhna FSRU instead of clearing it). Anchors are only the
+    # genuine, non-subtotal owner lines.
+    anchors = {i for i in owner_line if i not in subtotal_idxs}
 
     D = sorted(data_idxs)
     data_set = set(D)
@@ -676,13 +698,47 @@ def _attribute_owner_fragments(
         elif dd < du:
             assign[b] = db
         else:  # tie → far-side centring symmetry, else lower row
-            fa = (da - du) in owner_line
-            fb = (db + dd) in owner_line
+            fa = (da - du) in anchors
+            fb = (db + dd) in anchors
             assign[b] = da if (fa and not fb) else db
 
     result: dict[int, list[tuple[int, str]]] = {r: [] for r in range(len(data_idxs))}
     for b, d in assign.items():
         result[row_of_data[d]].append((b, owner_line[b]))
+
+    # Paren-balance repair (Niigata/Niihama fix): the HEAD of a tall centered
+    # owner cell — a dangling-OPEN fragment like "Niihama LNG (Tokyo Gas" — can
+    # sit strictly NEARER the previous row's data line than its own (a 4-line
+    # cell's head is 2 above its own data line but only 1 below the previous
+    # row's), so the distance rule above assigns it UP, fusing it onto the
+    # previous row's owner ("Nihonkai LNG Niihama LNG (Tokyo Gas") while this
+    # row keeps the orphaned shareholder tail. The mis-split is self-marking:
+    # the upper row's cell ends in a positive paren balance carried by trailing
+    # fragments BELOW its own data line, and the next row's cell nets negative
+    # (the close arrived without its open). Move the minimal trailing run back
+    # down to rebalance both. Strictly adjacent-row, fires only on the
+    # complementary-imbalance signature, so balanced rows are never touched.
+    def _bal(f: str) -> int:
+        return f.count("(") - f.count(")")
+    for r in range(len(data_idxs) - 1):
+        parts = sorted(result[r])
+        if not parts or not result[r + 1]:
+            continue
+        if sum(_bal(f) for _, f in result[r + 1]) >= 0:
+            continue
+        k, run = None, 0
+        for j in range(len(parts) - 1, -1, -1):
+            b, f = parts[j]
+            if b <= data_idxs[r]:
+                break
+            run += _bal(f)
+            if run > 0:
+                k = j
+                break
+        if k is None:
+            continue
+        result[r] = parts[:k]
+        result[r + 1].extend(parts[k:])
 
     out: dict[int, str] = {}
     for r, parts in result.items():
@@ -1218,7 +1274,8 @@ def _extract_liquefaction_page(
     assignments = _partition_lines_by_data(body_lines, data_idxs, skip, columns, cap_col)
     # Owner-column gets a dedicated block-attribution pass (fixes cross-row owner
     # bleed the generic nearest-line partition causes); see _attribute_owner_fragments.
-    owner_by_row = _attribute_owner_fragments(body_lines, data_idxs, skip, columns, "Owner(s)")
+    owner_by_row = _attribute_owner_fragments(
+        body_lines, data_idxs, skip, columns, "Owner(s)", {i for i, _ in subtotals})
 
     rows: list[dict] = []
     rows_with_meta: list[tuple[int, str, dict, float]] = []
@@ -1279,7 +1336,8 @@ def _extract_regasification_page(
     assignments = _partition_lines_by_data(body_lines, data_idxs, skip, columns, cap_col)
     # Owner-column gets a dedicated block-attribution pass (see liq page / the
     # _attribute_owner_fragments docstring) — fixes cross-row owner bleed.
-    owner_by_row = _attribute_owner_fragments(body_lines, data_idxs, skip, columns, "Owner")
+    owner_by_row = _attribute_owner_fragments(
+        body_lines, data_idxs, skip, columns, "Owner", {i for i, _ in subtotals})
 
     rows: list[dict] = []
     rows_with_meta: list[tuple[int, str, dict, float]] = []

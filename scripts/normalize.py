@@ -431,7 +431,11 @@ def parse_entity_list(s):
     if not s:
         return []
     s = str(s).strip()
-    parts = re.split(r"[,;]", s)
+    # A SPACED slash joins co-owners ("New Fortress Energy / Celba"; GIIGNL
+    # "Tokyo Gas / JERA" — report_diff._split_top_level applies the same rule).
+    # A TIGHT slash is part of one name ("SIGER/ERGIS Group", "Torp Technology
+    # A/S", "Japex/Fukushima Gas Power") and never splits.
+    parts = re.split(r"[,;]|\s+/\s+", s)
     out = []
     for part in parts:
         part = part.strip()

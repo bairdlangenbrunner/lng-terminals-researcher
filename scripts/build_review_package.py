@@ -3,6 +3,7 @@ Assemble the batch review xlsx from staged JSON inputs.
 
 Modes:
   - update: produces sheets for updates, status_timeline_additions, entity_additions,
+            monitor_list (sub-threshold discovery leads found while re-verifying, if any),
             stale_sweep, country_notes_contributions, qa_review, fsru_sync (if any),
             and a README
   - discovery: produces new_terminals, new_units, status_timeline_additions,
@@ -54,6 +55,7 @@ import sys
 import unicodedata
 from datetime import date
 from pathlib import Path
+from urllib.parse import unquote
 
 # Owner equivalence is defined once in normalize.py and shared with report_diff so
 # both layers agree on what "the same owner" means (aliased to the established
@@ -151,13 +153,13 @@ SHEET_DESCRIPTIONS = {
         "sheet definitions (this section), and input summary stats including any "
         "SOP §6 sanity-gate trips. Always read this first."
     ),
-    "updates": (
+    "updates_summary": (
         "Update workflow: one row per (terminal_id, unit_id, field) being changed. "
         "Columns: field_name, old_value, new_value, ref_url, confidence, source_tier, "
         "source_notes, scope_note, researcher_initials. new_value cell is color-coded "
         "by confidence (green=primary/regulatory, yellow=single non-primary, red=weak)."
     ),
-    "updates_all_fields": (
+    "updates_in_database_format": (
         "PRIMARY update deliverable: the full all_fields GEM-CSV laid out in its EXACT "
         "column order (one row per in-scope unit-row), so it reads/edits like the DB. "
         "Cells we researched are highlighted by confidence — green (high: >=2 corroborating "
@@ -169,9 +171,14 @@ SHEET_DESCRIPTIONS = {
         "of them mirrors the all_fields CSV exactly."
     ),
     "new_terminals": (
-        "Discovery workflow: one row per newly discovered terminal, in GEM CSV "
-        "shape (project-level fields + [ref] partners). researcher_initials and "
-        "confidence_overall at the right. Cells optionally color-coded per field."
+        "Discovery workflow: one row per newly discovered terminal, laid out in the "
+        "EXACT gem_export.csv column order (read from its header — never hard-coded, "
+        "survives schema drift) so a reviewer can paste a new-terminal row straight "
+        "into the DB. Read-only columns (TerminalID/UnitID/Wiki/derived totals/out-of-"
+        "scope) are italicized and never written — blank for a brand-new row. "
+        "researcher_initials and confidence_overall are appended at the far right; "
+        "everything left of them mirrors the CSV exactly. Cells are color-coded per "
+        "field by confidence (green/yellow/red)."
     ),
     "new_units": (
         "Discovery or update workflow: one row per new unit (within new OR existing "
@@ -279,7 +286,7 @@ SHEET_DESCRIPTIONS = {
         "is a recommendation; GIIGNL is never auto-applied. THIS IS THE EVIDENCE LAYER — it "
         "shows every disagreement and the reasoning behind each conclusion. Conclusions that "
         "resolve to a concrete DB change become resolved cells in `edits_to_gem` (the paste "
-        "view); possible new terminals / gem-only / discovery leads go to `routing`."
+        "view); possible new terminals / gem-only / discovery leads go to `to_follow_up_on`."
     ),
     "audit_nonoperating": (
         "AUDIT VIEW (non-operating). NON-OPERATING units of matched projects (proposed/construction/shelved/"
@@ -308,8 +315,8 @@ SHEET_DESCRIPTIONS = {
         "reads as a deliberate, documented status decision, not a GEM omission. Such a "
         "note ALSO drives the operating sheet's non-op-shortfall verdict (rule f)."
     ),
-    "routing": (
-        "ROUTING VIEW: the NON-EDIT follow-ups — leads that aren't a direct change to "
+    "to_follow_up_on": (
+        "FOLLOW-UP VIEW: the NON-EDIT follow-ups — leads that aren't a direct change to "
         "an existing GEM cell (those live in `edits_to_gem`). Categories: "
         "report_only_potential_discovery (GIIGNL has it, GEM doesn't → Discovery), "
         "report_only_name_mismatch_add_othernames (GIIGNL row is the SAME GEM terminal "
@@ -456,6 +463,22 @@ def _safe_load(path, default=None):
     except json.JSONDecodeError as e:
         print(f"  WARNING: {path} is not valid JSON ({e}); treating as empty", file=sys.stderr)
         return default
+
+
+def _csv_header(gem_csv_path):
+    """Return the gem_export.csv header row (BOM stripped) as a list, or None if
+    the CSV is missing/unreadable. The single source of truth for DB column order
+    — never hard-code offsets; the 115-col schema can drift."""
+    if not gem_csv_path or not Path(gem_csv_path).exists():
+        return None
+    try:
+        with open(gem_csv_path, encoding="utf-8") as f:
+            header = next(csv.reader(f))
+    except (OSError, StopIteration):
+        return None
+    if header and header[0].startswith("﻿"):
+        header[0] = header[0][1:]
+    return header
 
 
 def _autosize(ws, max_width=60):
@@ -707,7 +730,7 @@ def _append_country_breakdown(wb, checked, changed, not_found):
 
 
 def build_updates_sheet(wb, updates):
-    ws = wb.create_sheet("updates")
+    ws = wb.create_sheet("updates_summary")
     # Common update fields plus the cluster of [ref] partners
     headers = [
         "terminal_id", "unit_id", "terminal_name", "unit_name", "country",
@@ -718,7 +741,13 @@ def build_updates_sheet(wb, updates):
     _write_header(ws, headers)
     for i, u in enumerate(updates, start=2):
         confidence_map = {"new_value": u.get("confidence")}
-        _write_row(ws, u, headers, i, confidence_map=confidence_map)
+        disp = u
+        if u.get("delete"):
+            # Staged deletion (green+empty convention): the paste view leaves the cell blank,
+            # but the human-readable list must SAY it's a deletion, not just show an empty cell.
+            disp = dict(u)
+            disp["new_value"] = "(DELETE — value unsupported)"
+        _write_row(ws, disp, headers, i, confidence_map=confidence_map)
     _autosize(ws)
 
 
@@ -730,6 +759,39 @@ def _looks_like_url(v):
 # can never silently land in a data/enum column (e.g. Status) and ship in a deliverable.
 _BAD_VALUE_WRITES = []   # (tid, uid, field_name, url) — a URL aimed at a non-[ref] column (rejected)
 _BAD_REF_TARGETS = []    # (tid, uid, field_name, ref_name) — ref_field named a non-[ref] column (skipped)
+
+_GIIGNL_EDITION_RE = re.compile(r"(?:livre|giignl)[^0-9]{0,8}(20[12]\d)")
+
+
+def warn_duplicate_giignl_refs(updates):
+    """Non-blocking guard: flag any record whose ref_urls cite the SAME GIIGNL edition via ≥2 mirror
+    URLs as if they were independent corroborations. The GIIGNL annual report is mirrored at multiple
+    hosts (elfsightcdn / website-files.com); two mirrors of one edition is ONE source, not two (see the
+    corroboration rule in CLAUDE.md). Different editions (GIIGNL 2025 + 2026) are independent and fine.
+    Heuristic + warn-only — it can't dedup the ref for the agent, but it surfaces the footgun at build."""
+    hits = []
+    for u in updates:
+        if u.get("delete"):
+            continue
+        by_year = {}
+        for url in (u.get("ref_urls") or []):
+            # URL-decode first: a mirror like "...Livre%202025-..." would otherwise let the %20 derail
+            # the year regex (it'd read "2020", not "2025") and the two mirrors wouldn't group together.
+            low = unquote(str(url)).lower()
+            if "giignl" not in low and "livre" not in low:
+                continue
+            m = _GIIGNL_EDITION_RE.search(low) or re.search(r"(20[12]\d)", low)
+            if m:
+                by_year.setdefault(m.group(1), []).append(url)
+        for yr, us in by_year.items():
+            if len(us) > 1:
+                hits.append((u.get("terminal_id"), u.get("unit_id"), u.get("field_name"), yr, len(us)))
+    if hits:
+        print(f"  GIIGNL-DUP: {len(hits)} ref cell(s) cite the SAME GIIGNL edition via ≥2 mirror URLs "
+              f"(one document = one source — dedup to a single canonical URL):")
+        for tid, uid, fn, yr, n in hits[:15]:
+            print(f"    {tid}/{uid} {fn}: GIIGNL {yr} ×{n}")
+    return hits
 
 
 def build_update_csv_shaped_sheet(wb, updates, gem_csv_path, scope_terminal_ids=None):
@@ -746,7 +808,7 @@ def build_update_csv_shaped_sheet(wb, updates, gem_csv_path, scope_terminal_ids=
     exactly. Models build_edits_to_gem_sheet.
 
     `updates` are the same per-(terminal_id, unit_id, field_name) records as the
-    `updates` sheet; they are inverted here into a per-unit field map. Each record
+    `updates_summary` sheet; they are inverted here into a per-unit field map. Each record
     may carry: new_value, confidence (green/yellow/red), ref_urls (list of verified
     URLs for the paired [ref] cell). A record with no new_value still colors the
     cell (a re-verification at its current value).
@@ -755,7 +817,7 @@ def build_update_csv_shaped_sheet(wb, updates, gem_csv_path, scope_terminal_ids=
     (so units with no changes still appear — e.g. the full-country pass). If None,
     falls back to the terminal_ids present in `updates`.
     """
-    ws = wb.create_sheet("updates_all_fields")
+    ws = wb.create_sheet("updates_in_database_format")
     _BAD_VALUE_WRITES.clear()
     _BAD_REF_TARGETS.clear()
     if not Path(gem_csv_path).exists():
@@ -809,6 +871,26 @@ def build_update_csv_shaped_sheet(wb, updates, gem_csv_path, scope_terminal_ids=
                 conf = rec.get("confidence", "")
                 new_val = rec.get("new_value")
                 is_ref_col = fname.endswith("[ref]")
+                if rec.get("delete"):
+                    # Staged DELETION (green+empty convention): clear the data cell AND its
+                    # paired [ref], color both, count it as a change. Used when a value cannot
+                    # be supported by ANY source and no alternative is findable — the reviewer
+                    # pastes the blank cell to clear the DB value. Distinct from a blue
+                    # re-verify (keeps old_value) and from an empty new_value (leaves the cell
+                    # untouched). No ref_urls are written: a deleted value has no citation.
+                    if str(work[ci]) != "":
+                        changed.append(fname)
+                    work[ci] = ""
+                    fills[ci] = conf
+                    researched.append((fname, conf))
+                    ref_name = rec.get("ref_field") or (
+                        fname if is_ref_col else f"{fname} [ref]")
+                    rci = col_of.get(ref_name)
+                    if (rci is not None and ref_name.endswith("[ref]")
+                            and ref_name not in READ_ONLY_COLUMNS):
+                        work[rci] = ""
+                        fills[rci] = conf
+                    continue
                 if new_val is not None and str(new_val) != "":
                     # A data/enum column (Status, Capacity, Owner, ...) holds a VALUE, never a
                     # URL — URLs belong only in the paired "<field> [ref]" column. Reject a
@@ -878,42 +960,53 @@ def build_update_csv_shaped_sheet(wb, updates, gem_csv_path, scope_terminal_ids=
                 print(f"    field_name={fname!r} ref_field={ref_name!r} (e.g. {tid}/{uid})")
 
 
-def build_new_terminals_sheet(wb, new_terminals):
+# Meta columns appended at the far RIGHT of new_terminals (everything to their left
+# mirrors the gem_export.csv column order exactly — the same convention as
+# updates_in_database_format's _changed_fields/_confidence_summary).
+NEW_TERMINAL_META_COLS = ["researcher_initials", "confidence_overall"]
+
+# Fallback column order when no gem_export.csv is available to read the live header
+# from (keeps the builder usable offline / in tests). A curated subset of GEM
+# columns in CSV order; the live path below uses the full CSV header instead.
+NEW_TERMINALS_FALLBACK_HEADERS = [
+    "TerminalName", "FacilityType", "FacilityType [ref]", "Fuel",
+    "Status", "Substatus", "Status [ref]", "Country/Area",
+    "ResearcherNotesUnit", "ResearcherNotesProject",
+    "OtherNames", "LocalNames", "Language",
+    "Owner", "Owner [ref]", "Parent", "ParentHQCountry", "Parent GEM Entity ID",
+    "Operator", "Operator [ref]",
+    "Capacity", "CapacityUnits", "Capacity [ref]",
+    "ProposalYear", "ProposalMonth", "ProposalDate [ref]",
+    "ConstructionYear", "ConstructionMonth", "ConstructionDate [ref]",
+    "OriginalPlannedStartYear", "LatestPlannedStartYear",
+    "ActualStartYear", "ActualStartMonth", "ActualStartYear2", "ActualStartYear3",
+    "StartDate [ref]", "ShelvedYear", "ShelvedYear [ref]",
+    "CancelledYear", "CancelledYear [ref]", "StopYear", "StopYear [ref]",
+    "PlannedStopYear", "TempFacility", "ImportExportOnly",
+    "Location", "Region", "SubRegion", "Prefecture/District", "State/Province",
+    "Latitude", "Longitude", "Accuracy", "Location [ref]",
+    "AssociatedTerminals", "AssociatedTerminals [ref]", "Source", "Source [ref]",
+    "PowerPlantsSupplied", "PowerPlantsSupplied [ref]",
+    "CaptiveGasPower", "CaptiveGasPower [ref]", "Pipelines", "Pipelines [ref]",
+    "Cost", "CostUnits", "CostYear", "Cost [ref]",
+    "FIDStatus", "FIDYear", "FIDYear [ref]", "Financing", "Financing [ref]",
+    "Offshore", "Floating", "FloatingVesselName", "FloatingVesselName [ref]",
+    "VesselOwner", "VesselOwner [ref]", "VesselParent",
+    "VesselOperator", "VesselOperator [ref]",
+    "Opposition", "ESJNotes", "Defeated", "CCS", "CCSNotes",
+]
+
+
+def build_new_terminals_sheet(wb, new_terminals, gem_csv_path=None):
     ws = wb.create_sheet("new_terminals")
-    # Schema-aligned columns the user would create at terminal level
-    headers = [
-        "TerminalName", "OtherNames", "LocalNames", "Language",
-        "FacilityType", "Fuel", "Country/Area", "Region", "SubRegion",
-        "State/Province", "Prefecture/District",
-        "Latitude", "Longitude", "Accuracy", "Location",
-        "Owner", "Parent", "ParentHQCountry", "Parent GEM Entity ID", "Operator",
-        "AssociatedTerminals",
-        "ProposalYear", "ProposalMonth",
-        "OriginalPlannedStartYear", "LatestPlannedStartYear",
-        "ConstructionYear", "ConstructionMonth",
-        "ActualStartYear", "ActualStartMonth", "ActualStartYear2", "ActualStartYear3",
-        "Status", "Substatus", "FIDStatus", "FIDYear",
-        "ShelvedYear", "CancelledYear", "StopYear", "PlannedStopYear",
-        "Capacity", "CapacityUnits", "Cost", "CostUnits", "CostYear",
-        "Offshore", "Floating", "FloatingVesselName",
-        "VesselOwner", "VesselParent", "VesselOperator",
-        "TempFacility", "ImportExportOnly", "CaptiveGasPower",
-        "PowerPlantsSupplied", "Pipelines",
-        "Opposition", "ESJNotes", "Defeated",
-        "CCS", "CCSNotes",
-        # [ref] columns
-        "FacilityType [ref]", "Owner [ref]", "Operator [ref]", "Status [ref]",
-        "Capacity [ref]", "ProposalDate [ref]", "ConstructionDate [ref]",
-        "StartDate [ref]", "ShelvedYear [ref]", "CancelledYear [ref]",
-        "StopYear [ref]", "Location [ref]", "AssociatedTerminals [ref]",
-        "PowerPlantsSupplied [ref]", "CaptiveGasPower [ref]",
-        "Pipelines [ref]", "Cost [ref]", "FIDYear [ref]", "Financing [ref]",
-        "FloatingVesselName [ref]", "VesselOwner [ref]", "VesselOperator [ref]",
-        "Source [ref]",
-        # Meta
-        "ResearcherNotesProject", "ResearcherNotesUnit", "Source",
-        "researcher_initials", "confidence_overall",
-    ]
+    # Columns in the EXACT gem_export.csv order (read from its header, never
+    # hard-coded — survives the 115-col schema drifting) so a reviewer can paste a
+    # new-terminal row straight into the DB. Read-only columns are italicized and
+    # never written (TerminalID/UnitID/Wiki/derived totals etc. are blank for a new
+    # row). The two meta columns sit at the far right; everything left of them
+    # mirrors the CSV exactly. Mirrors build_update_csv_shaped_sheet.
+    csv_cols = _csv_header(gem_csv_path) or NEW_TERMINALS_FALLBACK_HEADERS
+    headers = list(csv_cols) + NEW_TERMINAL_META_COLS
     _write_header(ws, headers)
     for i, t in enumerate(new_terminals, start=2):
         cm = t.get("confidence_per_field", {})
@@ -2055,7 +2148,7 @@ def build_routing_sheet(wb, diff, narrative_findings=None,
     (status investigation / FSRU-fleet resolution), ambiguous disambiguation, and
     §3.2.1 narrative-prose findings. Matched-with-disagreement value conflicts are
     NOT here — once researched they become resolved rows in edits_to_gem."""
-    ws = wb.create_sheet("routing")
+    ws = wb.create_sheet("to_follow_up_on")
     headers = [
         "action_category", "country", "site_name",
         "gem_terminal_id", "gem_terminal_name",
@@ -2774,8 +2867,14 @@ def main():
     inputs_summary = {}
     if args.mode == "update":
         updates = _safe_load(inputs_dir / "staged_updates.json", default=[])
+        warn_duplicate_giignl_refs(updates)
         timeline = _safe_load(inputs_dir / "staged_status_timeline.json", default=[])
         entity_adds = _safe_load(inputs_dir / "staged_entity_additions.json", default=[])
+        # An exhaustive update legitimately surfaces sub-threshold discovery leads
+        # (a shelved terminal stirring, a fresh FSRU MoU) while re-verifying — carry
+        # them on the same monitor_list sheet Discovery uses, when present.
+        monitor = _safe_load(inputs_dir / "staged_monitor_list.json", default=[])
+        prior_monitor = _safe_load(inputs_dir / "prior_monitor_list.json", default=[])
         stale = _safe_load(inputs_dir / "stale_sweep.json", default={"flagged_units": []})
         country_notes = _safe_load(inputs_dir / "staged_country_notes.json", default=[])
         qa = _safe_load(inputs_dir / "staged_qa_review.json", default=[])
@@ -2793,6 +2892,7 @@ def main():
             "csv_shaped_scope_terminals": len(scope_tids or []),
             "status_timeline_additions": len(timeline),
             "entity_additions": len(entity_adds),
+            "monitor_list": len(monitor),
             "stale_flagged_units": len(stale.get("flagged_units", [])),
             "country_notes": len(country_notes),
             "qa_review_items": len(qa),
@@ -2812,6 +2912,8 @@ def main():
             build_status_timeline_sheet(wb, timeline)
         if entity_adds:
             build_entity_additions_sheet(wb, entity_adds)
+        if monitor:
+            build_monitor_list_sheet(wb, monitor, prior_monitor)
         if fsru.get("matched_pairs") or fsru.get("mode") == "cross_check":
             build_fsru_sync_sheet(wb, fsru)
         if stale.get("flagged_units"):
@@ -2853,7 +2955,7 @@ def main():
             new_terms=new_terms, new_units=new_units, roster=checked_roster)
         _append_country_breakdown(wb, _chk, _chg, _no)
         if new_terms:
-            build_new_terminals_sheet(wb, new_terms)
+            build_new_terminals_sheet(wb, new_terms, args.gem_csv)
         if new_units:
             build_new_units_sheet(wb, new_units)
         if timeline:
@@ -2893,7 +2995,7 @@ def main():
         name_change_count = _count_narrative_name_changes(narrative_findings)
         # Agent-researched resolutions for report_only rows that are really the same
         # GEM terminal under a different name (TRSP=Cosan, GDLNG=Guangdong Dapeng, …):
-        # re-routes the routing sheet (the add-OtherNames action rows surface the
+        # re-routes the to_follow_up_on sheet (the add-OtherNames action rows surface the
         # alias directly; country_notes_contributions is not produced in recon mode).
         report_only_resolutions = _safe_load(
             inputs_dir / "staged_report_only_resolutions.json", default=[])
@@ -2957,7 +3059,7 @@ def main():
         if name_change_count:
             build_name_reconciliation_sheet(wb, narrative_findings)
         # NOTE: country_notes_contributions is intentionally NOT produced in
-        # reconciliation mode (the add-OtherNames actions live in `routing`).
+        # reconciliation mode (the add-OtherNames actions live in `to_follow_up_on`).
         # update/discovery modes still emit it.
         if qa:
             build_qa_review_sheet(wb, qa)

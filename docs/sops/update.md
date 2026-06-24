@@ -10,7 +10,7 @@ The methodology doc (LNG Terminals Manual) is authoritative for the underlying r
 
 Trigger conditions:
 - Triage SOP has selected a country/region for update this batch
-- A reconciliation batch produced `routing` findings routed to Update
+- A reconciliation batch produced `to_follow_up_on` findings routed to Update
 - The user explicitly requests an update batch ("refresh the Japan terminals", "fill blank Capacity refs for the EU rows")
 - Stale-sweep flagged units passing dormancy thresholds (inferred shelved at 2y, inferred cancelled at 4y)
 - A QC memo (`docs/sops/qc.md`) routed fixes here — dead citations to replace, unsupported values to re-research, not-applied/diverged edits to re-stage ("QC detects, Update fixes")
@@ -89,7 +89,7 @@ Workflow:
 4. If adding an actual entry, append to the bottom of the timeline
 5. Backfill the corresponding anchor year column if it's blank (e.g. confirming construction start → populate `ConstructionYear` if blank)
 6. Backfill the paired `[ref]` column for the anchor year
-7. Stage in `status_timeline_additions` sheet AND update the unit row in `updates` sheet
+7. Stage in `status_timeline_additions` sheet AND update the unit row in `updates_summary` sheet
 
 Special cases per `docs/reference/lifecycle_rules.md`:
 - **Inferred shelved/cancelled additions** — substatus `inferred 2 y` or `inferred 4 y`; datasource can re-use the source for the latest active entry per methodology FAQ
@@ -111,7 +111,7 @@ For each value update:
 - Source-search per §4
 - URL-verify per §7
 - Apply confidence color per §6
-- Stage in `updates` sheet
+- Stage in `updates_summary` sheet
 
 ### §3.4 Stale-driven sweeps
 
@@ -227,9 +227,9 @@ Existing URLs that fail re-verification go in `qa_review` with proposed action: 
 
 Per the methodology, GEM's entity system is shared across all trackers. Creating a duplicate entity is real cleanup work for the Ownership Team. Before staging any new Owner, Parent, Operator, VesselOwner, VesselParent, or VesselOperator:
 
-1. `python entity_lookup.py "<entity name>" "<country>"` — searches the existing entity DB
-2. If a match is found, use its existing entity ID (the schema's `Parent GEM Entity ID` column)
-3. If no match is found, add to `entity_additions` sheet with the lookup attempts logged
+1. `python entity_lookup.py "<entity name>" --remote` — searches the local export AND the entity system. **Run it bare — do NOT pass `--country`.** Entities are shared across countries, so the developer of a project in one country routinely already exists on a project in another; `--country` only *annotates* matches (in-country vs. elsewhere) and never hides one, but running bare keeps the result unambiguous. (A real 2026 case: `entity_lookup.py "LNG Alliance" --country Singapore` was read as not-found and the entity was wrongly staged as new — it already existed on an India terminal. The script now refuses to hide such a match, but run bare regardless.)
+2. If a match is found *anywhere* (note the `cross_country_warning` if it only matches outside a `--country` filter), use its existing entity ID (the schema's `Parent GEM Entity ID` column) — do NOT stage a new entity
+3. If no match is found locally **or remotely**, add to `entity_additions` sheet with the lookup attempts logged (record that both the local and `--remote` checks ran)
 4. The user reviews `entity_additions` before applying the batch; they create the new entity via the GEM UI and link it
 
 For entity *name* variants (e.g. "TotalEnergies" vs "Total Energies" vs "Total"):
@@ -242,7 +242,7 @@ For entity *name* variants (e.g. "TotalEnergies" vs "Total Energies" vs "Total")
 Per `docs/reference/gem_db_schema.md`, fields fall into three classes: project-level (apply to all unit-rows), unit-level (apply only to the target unit-row), and mixed/context-dependent (decide per case).
 
 The build script enforces:
-- **Project-level field edits** are applied to every unit-row of the project automatically. The staging xlsx shows the edit on one representative row in `updates` with a note "project-level: applies to N unit-rows".
+- **Project-level field edits** are applied to every unit-row of the project automatically. The staging xlsx shows the edit on one representative row in `updates_summary` with a note "project-level: applies to N unit-rows".
 - **Unit-level field edits** are applied only to the targeted UnitID.
 - **Mixed-class field edits** trigger a read-before-write: the script checks current consistency across unit-rows.
   - If currently consistent → apply to all unit-rows
