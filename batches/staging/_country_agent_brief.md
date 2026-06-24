@@ -26,8 +26,10 @@ pre-trusted. Be conservative; verify everything.
 3. Stage a FIELD update ONLY when a VERIFIED value DIFFERS from GEM. If GEM already matches: standard tier →
    record ONE representative blue re-verify for the terminal (not every field) or a brief qa "no-change";
    exhaustive tier → blue-mark each field actually re-verified. Don't spam.
-4. Discovery dedup: a real terminal NOT in GEM, that meets the add-bar (sponsor + approx location + concrete
-   step) AND has a verified source → new_terminal; otherwise → monitor_list.
+4. Discovery dedup: a real terminal NOT in GEM that is IN SCOPE (moves LNG across a border by ship — import or
+   export; a domestic-only virtual-pipeline / trucking / peak-shaving plant is OUT OF SCOPE, drop it) AND meets the
+   add-bar (sponsor + approx location + concrete step) AND has a verified source → new_terminal; otherwise →
+   monitor_list. Resolve scope doubt before staging — never stage-with-doubt.
 
 ## VERIFY EVERY URL before using it — and verify the VALUE is on the page
 `python /Users/baird/Dropbox/_git_ALL/_github-repos-gem/lng-terminals-researcher/scripts/url_verifier.py "<url>" "<token>"`
@@ -59,8 +61,12 @@ content-checks) — a PDF failing with "no extractable text" is a scanned/image 
 - Status change (proposed→construction, idled→operating, etc.) → a qa note (category "status_timeline");
   do NOT stage a Status field edit and do NOT write a timeline file (fetch_timeline endpoint is DOWN).
 - Ownership: separate owner vs parent vs operator vs offtaker vs vessel-owner; don't conflate offtake/feedgas with equity.
-- entity_lookup before any new entity: `python .../scripts/entity_lookup.py "<name>" --country "<C>" --remote`
-  (a generic-only result = inconclusive → set lookup_was_run starting with "RUN").
+- entity_lookup before any new entity, run BARE (no `--country`): `python .../scripts/entity_lookup.py "<name>" --remote`
+  (a generic-only result = inconclusive → set lookup_was_run starting with "RUN"). Do NOT pass `--country`: entities are
+  shared across countries, so a `--country` filter can hide an entity that already exists on a terminal elsewhere and make
+  you stage a DUPLICATE (this exact bug staged "LNG Alliance" as new — it already existed on an India terminal). A match
+  ANYWHERE = reuse the existing entity. `--country` only annotates; the script emits a `cross_country_warning` instead of
+  hiding a match, but run bare regardless.
 - >5 GENUINE new candidates in one country → monitor_list + escalation=true in your summary; do NOT mass-generate.
 - Ambiguous match → qa, never a guessed edit. No orphan [ref] (every ref pairs a data value).
 - URLs go ONLY in `[ref]` columns; a data/enum column holds a VALUE, never a link. `Status` must be an

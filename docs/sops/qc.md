@@ -36,7 +36,7 @@ Run all four for a periodic health check; a targeted QC run (e.g. "did my edits 
 
 Existing tools, no web traffic, minutes to run:
 
-- `python completeness_sweep.py` — blank `[ref]` cells with populated data (the [ref]-fill worklist, Update SOP §3.1), orphan refs (citation without data — Rule F violations already in the DB), missing required fields per status, project-level fields inconsistent across unit-rows, enum values outside the schema catalog, plus the country `coverage_gap` block
+- `python completeness_sweep.py` — blank `[ref]` cells with populated data (the [ref]-fill worklist, Update SOP §3.1), orphan refs (citation without data — Rule F violations already in the DB), missing required fields per status, project-level fields inconsistent across unit-rows, enum values outside the schema catalog, the country `coverage_gap` block, plus the `dormant_revival_watch` block (wholly cancelled/shelved sites to revival-check — both route to Discovery, §5)
 - `python stale_sweep.py` — dormancy flags (lifecycle thresholds) plus the `dev_pipeline` block (every proposed/construction/shelved unit with recency annotation — sizes the standard-tier Update worklist, Update SOP §2.1)
 - `python dedup_index.py` — project-key collisions that could indicate duplicate terminals
 
@@ -68,7 +68,7 @@ Verdict per checked cell: **supported** (citation backs the value), **unsupporte
 
 ### §3.4 Post-apply check
 
-`python apply_check.py --batch ../batches/<applied batch>.xlsx` — reads the applied batch's `updates` sheet and compares each staged edit against the fresh export, classifying applied / not_applied / **diverged** (fresh value matches neither old nor new — the manual-transcription-error catcher) / not_found / reverify_only.
+`python apply_check.py --batch ../batches/<applied batch>.xlsx` — reads the applied batch's `updates_summary` sheet and compares each staged edit against the fresh export, classifying applied / not_applied / **diverged** (fresh value matches neither old nor new — the manual-transcription-error catcher) / not_found / reverify_only.
 
 Run this against any batch the user reports having applied since the last QC pass. Caveats: the fresh pull must postdate the user's application; formatting the DB re-renders server-side (dates, rounding) can read as benign diverged — equal-float values are auto-normalized, anything else is reviewer judgment.
 
@@ -92,7 +92,7 @@ QC doesn't run any other batch's workflow. After the user picks, the Update (or 
 - **No staged edits and no fixes.** Even a trivially obvious fix (dead URL that should be blanked) routes to an Update batch — that batch's gates (URL verification, confidence labeling, qa_review logging) are what make the fix safe.
 - **No live-database writes.** Ever.
 - **No external-report reconciliation.** Diffing GEM against GIIGNL/IGU is the Reconciliation SOP — QC checks GEM against *its own citations* and *its own staged batches*.
-- **No new-terminal hunting.** A coverage gap surfaced by `completeness_sweep.py` is reported and routed to Discovery, not researched in-pass.
+- **No new-terminal hunting.** A coverage gap *or* a `dormant_revival_watch` hit surfaced by `completeness_sweep.py` is reported and routed to Discovery (§4.0 / §4.0a), not researched in-pass.
 
 ## §6 Escalation thresholds / pause-and-ask
 

@@ -31,6 +31,19 @@ set and returns the uncovered coastal countries as a discovery worklist — the
 "are we missing a whole country?" question. See the Discovery SOP: iterate
 covered ∪ uncovered, not just covered.
 
+And it emits a DORMANT-REVIVAL WATCH (compute_dormant_revival_watch): the OTHER
+discovery blind spot. A GEM terminal that is wholly cancelled/shelved is a dead
+SITE, and a brand-new project at that site (different sponsor, different design)
+is a NEW terminal per the dead-and-revived rule (lifecycle_rules.md) — but nothing
+in the routine workflow revisits dead records to ask "did something new rise here?"
+(stale_sweep's dev_pipeline covers shelved for the Update worklist but never
+cancelled, and it re-verifies the EXISTING record, not a new project at the site).
+This block lists every wholly cancelled/shelved in-scope terminal as a Discovery
+revival-check worklist, prioritizing long-dead sites (5+ y → a new project at the
+same site is plausible, Discovery SOP §12). This is exactly the class of miss that
+let "POIC Lahad Datu" (a 2026 FSU project on the site of the 2016-cancelled "Lahad
+Datu Sabah LNG Terminal") slip past a discovery sweep.
+
 NEVER flags read-only/computed columns (you can't write them — the backend
 recomputes) or out-of-scope "no longer updated as of 2026" columns (LH2/NH3/PCI…).
 Boolean fields are never "missing" — blank encodes False per the schema.
@@ -41,10 +54,14 @@ Usage:
     python completeness_sweep.py --country "United States"   # field audit only
     python completeness_sweep.py --no-coverage              # skip coverage gap
 
+    python completeness_sweep.py --no-dormant-watch        # skip dormant-revival watch
+
 Library:
-    from completeness_sweep import compute_gaps, compute_coverage_gap
+    from completeness_sweep import (compute_gaps, compute_coverage_gap,
+                                    compute_dormant_revival_watch)
     gaps = compute_gaps("./gem_export.csv")
     coverage = compute_coverage_gap("./gem_export.csv")
+    dormant = compute_dormant_revival_watch("./gem_export.csv")
 
 NOTE: the required-field POLICY (ALWAYS_REQUIRED / REQUIRED_BY_STATUS /
 FLOATING_REQUIRED below) is the part that encodes methodology judgment, not just
@@ -57,6 +74,7 @@ import csv
 import json
 import sys
 from collections import Counter, defaultdict
+from datetime import date, datetime
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
@@ -387,6 +405,149 @@ def compute_coverage_gap(csv_path):
     }
 
 
+def _parse_year(v):
+    """Pull a 4-digit year out of a cell like '2016', '2016.0', 'cancelled 2016'."""
+    if v is None:
+        return None
+    s = str(v).strip()
+    if not s:
+        return None
+    # tolerate floats and trailing text
+    for tok in s.replace(",", " ").split():
+        tok = tok.split(".")[0]
+        if tok.isdigit() and len(tok) == 4:
+            y = int(tok)
+            if 1900 <= y <= 2100:
+                return y
+    head = s.split(".")[0]
+    if head.isdigit() and len(head) == 4:
+        return int(head)
+    return None
+
+
+DORMANT_STATUSES = {"cancelled", "shelved"}
+
+
+def compute_dormant_revival_watch(csv_path, country_filter=None, today=None):
+    """List wholly cancelled/shelved in-scope terminals as a Discovery revival worklist.
+
+    A terminal counts as DORMANT only if EVERY one of its unit-rows is cancelled or
+    shelved — a terminal with any living (proposed/construction/operating/idle/…)
+    unit is an active project, not a dead site. For each dormant terminal we report
+    the death status (cancelled outranks shelved), the death year (max across units),
+    years-since-death, and a revival_priority:
+
+      - "high"        → dead 5+ years: a fresh proposal here is likely a NEW distinct
+                        project at the same site, not a revival of this record
+                        (Discovery SOP §12). These are the ones a sweep most often misses.
+      - "normal"      → dead < 5 years.
+      - "unknown_age" → no parseable death year.
+
+    The Discovery sweep should web-search each of these sites for new activity (new
+    sponsor, new FSU/FSRU charter, new permit) and, per the dead-and-revived rule
+    (lifecycle_rules.md), stage a genuinely different new project as a NEW terminal
+    (AssociatedTerminals → the dead record) rather than overwriting the dead record.
+
+    Read via the snake_case colmap keys (like compute_coverage_gap); global by
+    design unless country_filter is given.
+    """
+    if today is None:
+        today = date.today()
+
+    colmap = _load_colmap(csv_path)
+    ci_tid = colmap.get("terminal_id")
+    ci_fuel = colmap.get("fuel")
+    ci_country = colmap.get("country")
+    ci_status = colmap.get("status")
+    if ci_tid is None or ci_status is None:
+        return {"error": "terminal_id/status missing from colmap"}
+
+    ci_name = colmap.get("terminal_name")
+    ci_loc = colmap.get("location")
+    ci_state = colmap.get("state_province")
+    ci_district = colmap.get("prefecture_district")
+    ci_owner = colmap.get("owner")
+    ci_cancelled_yr = colmap.get("cancelled_year")
+    ci_shelved_yr = colmap.get("shelved_year")
+
+    def g(row, i):
+        return row[i].strip() if i is not None and i < len(row) and row[i] else ""
+
+    terminals = defaultdict(lambda: {"statuses": set(), "cancelled_yrs": [],
+                                     "shelved_yrs": [], "rep": None})
+    with open(csv_path, encoding="utf-8") as f:
+        reader = csv.reader(f)
+        next(reader)  # header
+        for row in reader:
+            if len(row) < colmap["_total_columns"]:
+                continue
+            if ci_fuel is not None and row[ci_fuel] != "LNG":
+                continue
+            if country_filter and ci_country is not None and row[ci_country] != country_filter:
+                continue
+            tid = g(row, ci_tid)
+            if not tid:
+                continue
+            rec = terminals[tid]
+            rec["statuses"].add(g(row, ci_status).lower())
+            cy = _parse_year(g(row, ci_cancelled_yr))
+            sy = _parse_year(g(row, ci_shelved_yr))
+            if cy:
+                rec["cancelled_yrs"].append(cy)
+            if sy:
+                rec["shelved_yrs"].append(sy)
+            if rec["rep"] is None:
+                rec["rep"] = row
+
+    watch = []
+    for tid, rec in terminals.items():
+        statuses = {s for s in rec["statuses"] if s}
+        if not statuses or not statuses.issubset(DORMANT_STATUSES):
+            continue  # has a living unit, or unknown status — not a dead site
+        row = rec["rep"]
+        death_status = "cancelled" if "cancelled" in statuses else "shelved"
+        death_yrs = rec["cancelled_yrs"] if death_status == "cancelled" else rec["shelved_yrs"]
+        # fall back to whichever year list is populated
+        if not death_yrs:
+            death_yrs = rec["cancelled_yrs"] or rec["shelved_yrs"]
+        death_year = max(death_yrs) if death_yrs else None
+        if death_year is None:
+            years_dead, priority = None, "unknown_age"
+        else:
+            years_dead = today.year - death_year
+            priority = "high" if years_dead >= 5 else "normal"
+        loc_bits = [g(row, ci_district), g(row, ci_state), g(row, ci_loc)]
+        watch.append({
+            "terminal_id": tid,
+            "terminal_name": g(row, ci_name),
+            "country": g(row, ci_country),
+            "location": " — ".join(b for b in loc_bits if b),
+            "prior_owner": g(row, ci_owner),
+            "death_status": death_status,
+            "death_year": death_year,
+            "years_dead": years_dead,
+            "revival_priority": priority,
+        })
+
+    order = {"high": 0, "normal": 1, "unknown_age": 2}
+    watch.sort(key=lambda w: (order[w["revival_priority"]],
+                              -(w["years_dead"] or 0), w["country"], w["terminal_name"]))
+    by_priority = Counter(w["revival_priority"] for w in watch)
+    return {
+        "dormant_count": len(watch),
+        "by_priority": dict(by_priority),
+        "watch": watch,
+        "_note": (
+            "Wholly cancelled/shelved in-scope terminals = dead SITES to revival-check "
+            "during Discovery (Discovery SOP §4.0a / §6). A genuinely different new "
+            "project at one of these sites is a NEW terminal per the dead-and-revived "
+            "rule (lifecycle_rules.md), not an edit to the dead record. 'high' priority "
+            "= dead 5+ years (Discovery SOP §12). This is the blind spot that let POIC "
+            "Lahad Datu slip past a sweep."
+        ),
+    }
+
+
 def summarize(gaps):
     by_type = Counter(g["gap_type"] for g in gaps)
     by_sev = Counter(g["severity"] for g in gaps)
@@ -421,13 +582,21 @@ def main():
     p.add_argument("--csv", default="./gem_export.csv")
     p.add_argument("--out", default="work/completeness_sweep.json")
     p.add_argument("--country",
-                   help="Filter the field audit to one country (coverage gap stays global)")
+                   help="Filter the field audit + dormant watch to one country "
+                        "(coverage gap stays global)")
     p.add_argument("--no-coverage", action="store_true",
                    help="Skip the country coverage-gap check")
+    p.add_argument("--no-dormant-watch", action="store_true",
+                   help="Skip the dormant-revival watch (cancelled/shelved sites to recheck)")
+    p.add_argument("--today", help="Override today's date (YYYY-MM-DD) for dormant-age calc")
     args = p.parse_args()
 
     if not Path(args.csv).exists():
         sys.exit(f"ERROR: {args.csv} not found. Run pull_gem_db.py first.")
+
+    today = date.today()
+    if args.today:
+        today = datetime.strptime(args.today, "%Y-%m-%d").date()
 
     gaps = compute_gaps(args.csv, country_filter=args.country)
     summary = summarize(gaps)
@@ -445,10 +614,26 @@ def main():
             print(f"  NOTE: {len(outside)} GEM countries absent from the reference list "
                   f"(extend country_universe.py): {', '.join(outside)}")
 
+    dormant = None
+    if not args.no_dormant_watch:
+        dormant = compute_dormant_revival_watch(args.csv, country_filter=args.country, today=today)
+        n = dormant.get("dormant_count", 0)
+        bp = dormant.get("by_priority", {})
+        print(f"\n  Dormant-revival watch: {n} wholly cancelled/shelved site(s) to revival-check"
+              f"{f' ({args.country})' if args.country else ''}"
+              f" — {bp.get('high', 0)} high-priority (dead 5+ y)")
+        for w in dormant.get("watch", [])[:10]:
+            yd = f"{w['years_dead']}y" if w["years_dead"] is not None else "age?"
+            print(f"    [{w['revival_priority']:>11}] {w['death_status']:>9} {yd:>4}  "
+                  f"{w['country']}: {w['terminal_name']}")
+        if n > 10:
+            print(f"    … and {n - 10} more (see {args.out})")
+
     out_path = Path(args.out)
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(json.dumps(
-        {"summary": summary, "gaps": gaps, "coverage_gap": coverage},
+        {"summary": summary, "gaps": gaps, "coverage_gap": coverage,
+         "dormant_revival_watch": dormant},
         indent=2, default=str))
     print(f"\n  Saved to {args.out}")
 

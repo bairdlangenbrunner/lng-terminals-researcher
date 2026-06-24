@@ -39,7 +39,7 @@ Triage pulls signals from six sources, in order:
 `python stale_sweep.py` (writes `work/stale_sweep.json`) produces a flagged-units list per `docs/reference/lifecycle_rules.md`:
 
 - `proposed` / `construction` / `idled` / `mothballed` units with no project updates for 2 years → candidates for `inferred shelved`
-- `shelved` units (confirmed or inferred 2y) with no updates for 2 more years → candidates for `inferred cancelled`
+- `shelved` units (confirmed or `inferred 2 y`) with no updates for 2 more years → candidates for `inferred cancelled`
 - `operating` units with `LastUpdated > 18 months` → due for routine refresh (lower priority)
 - `proposed` units with `LatestPlannedStartYear < current_year - 1` → planned start date has slipped past, worth checking status
 
@@ -62,9 +62,9 @@ Per the carrier project's discovery model, this is essentially a Ring B sweep at
 
 ### §3.3 Reconciliation backlog
 
-Check for `routing` items from prior reconciliation batches that haven't been processed:
+Check for `to_follow_up_on` items from prior reconciliation batches that haven't been processed:
 - Look for the most recent reconciliation batch xlsx in `../batches/` (or wherever the user keeps the batch archive)
-- Count items in `routing` sheet that haven't been routed to a subsequent Update or Discovery batch
+- Count items in `to_follow_up_on` sheet that haven't been routed to a subsequent Update or Discovery batch
 
 If items are unprocessed, triage's recommended composition should include processing them — they're partly pre-done research.
 
@@ -209,7 +209,7 @@ Triage is itself a pause-and-ask, so escalation triggers are narrower. But:
 |---|---|---|
 | Stale-sweep | `stale_sweep.py` (incl. `dev_pipeline` block) | Identify concentrated dormancy candidates, routine-refresh queue, and standard-tier worklist sizes |
 | Activity scan | LNG Prime, Reuters, sponsor IR (last 90 days) | Identify countries/sponsors needing Discovery or Update |
-| Reconciliation backlog | Prior batch xlsx `routing` sheets | Surface partly-done research that should land in next batch |
+| Reconciliation backlog | Prior batch xlsx `to_follow_up_on` sheets | Surface partly-done research that should land in next batch |
 | Fresh annual report | Project files + giignl.org/igu.org | Trigger reconciliation recommendation |
 | QC signals | Last `qc_*.md` memo + `work/citation_qc.json` | Weigh a QC pass; route link-rot debt to an exhaustive Update |
 | User priorities | Direct ask | Validate or override agent's recommendations |

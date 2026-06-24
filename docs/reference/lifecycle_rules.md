@@ -228,7 +228,7 @@ Each unit has its own status timeline. A project may have:
 - Train 3: `proposed`
 - Train 4: `cancelled`
 
-This is normal. The project-level rollups (`TotImportLNGTerminalCapacityinMtpa` etc.) summarize operating capacity differently from total proposed-or-greater capacity — the build script doesn't compute these (they're read-only DB-side), but staging xlsx outputs should make per-unit status differences visible in the `updates` sheet.
+This is normal. The project-level rollups (`TotImportLNGTerminalCapacityinMtpa` etc.) summarize operating capacity differently from total proposed-or-greater capacity — the build script doesn't compute these (they're read-only DB-side), but staging xlsx outputs should make per-unit status differences visible in the `updates_summary` sheet.
 
 ### Operating unit that's part of a permanent-replacement scheme
 

@@ -1,0 +1,38 @@
+[
+  {
+    "entity_name": "Vitol",
+    "entity_type": "company",
+    "country_of_hq": "Switzerland",
+    "parent_entity": "",
+    "rationale_for_new_entity": "Lead consortium member developing the proposed Durban LNG import terminal (new_terminal staged this batch). Global energy and commodities trader. VERY LIKELY ALREADY EXISTS in the shared GEM entity system (Vitol is an owner/offtaker on many GEM gas/LNG/power assets worldwide) -- do NOT create a duplicate; resolve to the existing entity ID. Flagged here only because it is referenced by the staged Durban Owner.",
+    "lookup_was_run": "RUN -- entity_lookup.py 'Vitol' --remote (bare, no --country) returned not_found_in_local_data within the LNG export CSV, but Vitol almost certainly exists elsewhere in the shared GEM entity system. TREAT AS lookup-needed / existing, NOT a confirmed new entity.",
+    "lookup_result_summary": "No match within the LNG terminals CSV; high prior probability of an existing shared GEM entity (cross-tracker). Ownership Team to resolve to the canonical Vitol entity ID.",
+    "referenced_by_terminals": ["Durban LNG Terminal"],
+    "referenced_by_units": [],
+    "researcher_initials": "AI-draft (discovery follow-up)"
+  },
+  {
+    "entity_name": "ACWA Power",
+    "entity_type": "company",
+    "country_of_hq": "Saudi Arabia",
+    "parent_entity": "",
+    "rationale_for_new_entity": "Consortium member developing the proposed Durban LNG import terminal (new_terminal staged this batch). Saudi power and water developer. LIKELY ALREADY EXISTS in the shared GEM entity system (ACWA Power is a developer/owner on numerous GEM power and desalination assets) -- do NOT create a duplicate; resolve to the existing entity ID first.",
+    "lookup_was_run": "RUN -- entity_lookup.py 'ACWA Power' --remote (bare) returned not_found_in_local_data within the LNG export CSV. TREAT AS lookup-needed / likely-existing, NOT a confirmed new entity.",
+    "lookup_result_summary": "No match within the LNG terminals CSV; probable existing shared GEM entity (cross-tracker, power side). Ownership Team to resolve.",
+    "referenced_by_terminals": ["Durban LNG Terminal"],
+    "referenced_by_units": [],
+    "researcher_initials": "AI-draft (discovery follow-up)"
+  },
+  {
+    "entity_name": "Engen",
+    "entity_type": "company",
+    "country_of_hq": "South Africa",
+    "parent_entity": "Vivo Energy (Vitol-backed)",
+    "rationale_for_new_entity": "South African downstream fuels company and consortium member on the proposed Durban LNG import terminal (new_terminal staged this batch). Now part of Vivo Energy (itself Vitol-backed), which may be relevant to the consortium structure. May already exist in the shared GEM entity system -- resolve before creating to avoid a duplicate.",
+    "lookup_was_run": "RUN -- entity_lookup.py 'Engen' --remote (bare) returned not_found_in_local_data within the LNG export CSV. Confirm against the shared GEM entity system (and check the Vivo Energy parent) before creating.",
+    "lookup_result_summary": "No match within the LNG terminals CSV; check shared GEM entities and the Vivo Energy parent. Ownership Team to resolve.",
+    "referenced_by_terminals": ["Durban LNG Terminal"],
+    "referenced_by_units": [],
+    "researcher_initials": "AI-draft (discovery follow-up)"
+  }
+]
