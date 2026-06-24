@@ -1,0 +1,211 @@
+{
+  "slug": "israel",
+  "country": "Israel",
+  "update_overrides": [
+    {
+      "terminal_id": "T100000130829",
+      "unit_id": "G100002082901",
+      "terminal_name": "NewMed FLNG Terminal",
+      "unit_name": "--",
+      "country": "Israel",
+      "field_name": "Location",
+      "old_value": "Dor",
+      "new_value": "Dor",
+      "confidence": "blue",
+      "source_tier": "Reuters wire + trade press / sponsor IR (multiple independent)",
+      "ref_field": "Location [ref]",
+      "ref_urls": [
+        "https://www.nasdaq.com/articles/newmed-energys-planned-floating-lng-terminal-to-have-7-bcm-capacity-says-ceo",
+        "https://news.yahoo.com/newmed-energys-planned-floating-lng-155434768.html",
+        "https://www.mees.com/2023/11/24/oil-gas/leviathan-flng-plans-stall-as-costs-rise/8cafdd40-8ace-11ee-8b26-2f19f8a0c4aa",
+        "https://lngprime.com/europe/israels-newmed-energy-keen-to-develop-leviathan-flng-project/67243/",
+        "https://newmedenergy.com/operations/leviathan/"
+      ],
+      "source_notes": "RECHECK: the dropped worklist Nasdaq ref (the Reuters '7 bcm capacity, says CEO' wire) is RECOVERED. The live nasdaq.com URL returns HTTP 404 to automated clients, but its content is confirmed via Wayback (http://web.archive.org/web/20240421083453/ snapshot PASSes for 'Dor' and the 7-bcm figure; 'Haifa' is not on that page). The IDENTICAL Reuters wire is live and working at news.yahoo.com/...155434768 (url_verifier PASS for 'Dor', '7', 'billion cubic') - added as the working independent corroboration. The Nasdaq live URL is retained as the [ref] (bot-blocked/404 to bots; value confirmed via Wayback 20240421083453). MEES contains 'Dor'; LNGprime + NewMed IR confirm the ~130km-offshore-Haifa siting / Dor tie-in. Value unchanged -> blue.",
+      "scope_note": "single-unit terminal",
+      "researcher_initials": "AI-draft (recheck)"
+    },
+    {
+      "terminal_id": "T100000130829",
+      "unit_id": "G100002082901",
+      "terminal_name": "NewMed FLNG Terminal",
+      "unit_name": "--",
+      "country": "Israel",
+      "field_name": "Prefecture/District",
+      "old_value": "Haifa",
+      "new_value": "Haifa",
+      "confidence": "blue",
+      "source_tier": "trade press / sponsor IR",
+      "ref_field": "Location [ref]",
+      "ref_urls": [
+        "https://lngprime.com/europe/israels-newmed-energy-keen-to-develop-leviathan-flng-project/67243/",
+        "https://newmedenergy.com/operations/leviathan/"
+      ],
+      "source_notes": "RECHECK: Prefecture/District = Haifa (~130 km off Haifa, Haifa District). The recovered Nasdaq/Yahoo Reuters wire confirms 'Dor' but NOT 'Haifa', so the Haifa District value rests on LNGprime ('Haifa'+'offshore') + NewMed IR ('Haifa') - both still PASS and unchanged from the first pass. Kept as-is.",
+      "scope_note": "single-unit terminal",
+      "researcher_initials": "AI-draft (recheck)"
+    },
+    {
+      "terminal_id": "T100000130829",
+      "unit_id": "G100002082901",
+      "terminal_name": "NewMed FLNG Terminal",
+      "unit_name": "--",
+      "country": "Israel",
+      "field_name": "Latitude",
+      "old_value": "32.6140000",
+      "new_value": "32.6140000",
+      "confidence": "blue",
+      "source_tier": "Reuters wire + trade press / sponsor IR",
+      "ref_field": "Location [ref]",
+      "ref_urls": [
+        "https://www.nasdaq.com/articles/newmed-energys-planned-floating-lng-terminal-to-have-7-bcm-capacity-says-ceo",
+        "https://news.yahoo.com/newmed-energys-planned-floating-lng-155434768.html",
+        "https://www.mees.com/2023/11/24/oil-gas/leviathan-flng-plans-stall-as-costs-rise/8cafdd40-8ace-11ee-8b26-2f19f8a0c4aa",
+        "https://lngprime.com/europe/israels-newmed-energy-keen-to-develop-leviathan-flng-project/67243/",
+        "https://newmedenergy.com/operations/leviathan/"
+      ],
+      "source_notes": "RECHECK: dropped Nasdaq Location ref recovered (live URL 404 to bots; value confirmed via Wayback 20240421083453 + live Reuters wire on news.yahoo). Coordinates are an approximate FLNG placement near the Dor/Haifa coast (~130km offshore Haifa near the Leviathan platform); no source publishes an exact FLNG lat/long (Accuracy=approximate). Unchanged.",
+      "scope_note": "single-unit terminal",
+      "researcher_initials": "AI-draft (recheck)"
+    },
+    {
+      "terminal_id": "T100000130829",
+      "unit_id": "G100002082901",
+      "terminal_name": "NewMed FLNG Terminal",
+      "unit_name": "--",
+      "country": "Israel",
+      "field_name": "Longitude",
+      "old_value": "34.8080000",
+      "new_value": "34.8080000",
+      "confidence": "blue",
+      "source_tier": "Reuters wire + trade press / sponsor IR",
+      "ref_field": "Location [ref]",
+      "ref_urls": [
+        "https://www.nasdaq.com/articles/newmed-energys-planned-floating-lng-terminal-to-have-7-bcm-capacity-says-ceo",
+        "https://news.yahoo.com/newmed-energys-planned-floating-lng-155434768.html",
+        "https://www.mees.com/2023/11/24/oil-gas/leviathan-flng-plans-stall-as-costs-rise/8cafdd40-8ace-11ee-8b26-2f19f8a0c4aa",
+        "https://lngprime.com/europe/israels-newmed-energy-keen-to-develop-leviathan-flng-project/67243/",
+        "https://newmedenergy.com/operations/leviathan/"
+      ],
+      "source_notes": "RECHECK: dropped Nasdaq Location ref recovered (live URL 404 to bots; value confirmed via Wayback 20240421083453 + live Reuters wire on news.yahoo). Approximate placement near the Dor/Haifa coast; no source gives an exact FLNG long (Accuracy=approximate). Unchanged.",
+      "scope_note": "single-unit terminal",
+      "researcher_initials": "AI-draft (recheck)"
+    },
+    {
+      "terminal_id": "T100000130829",
+      "unit_id": "G100002082901",
+      "terminal_name": "NewMed FLNG Terminal",
+      "unit_name": "--",
+      "country": "Israel",
+      "field_name": "Accuracy",
+      "old_value": "approximate",
+      "new_value": "approximate",
+      "confidence": "blue",
+      "source_tier": "Reuters wire + trade press / sponsor IR",
+      "ref_field": "Location [ref]",
+      "ref_urls": [
+        "https://www.nasdaq.com/articles/newmed-energys-planned-floating-lng-terminal-to-have-7-bcm-capacity-says-ceo",
+        "https://news.yahoo.com/newmed-energys-planned-floating-lng-155434768.html",
+        "https://lngprime.com/europe/israels-newmed-energy-keen-to-develop-leviathan-flng-project/67243/",
+        "https://newmedenergy.com/operations/leviathan/"
+      ],
+      "source_notes": "RECHECK: dropped Nasdaq Location ref recovered (live URL 404 to bots; confirmed via Wayback 20240421083453 + live Reuters wire on news.yahoo). FLNG is a floating offshore facility with no fixed published site coordinates; 'approximate' is correct and unchanged.",
+      "scope_note": "single-unit terminal",
+      "researcher_initials": "AI-draft (recheck)"
+    },
+    {
+      "terminal_id": "T100000130829",
+      "unit_id": "G100002082901",
+      "terminal_name": "NewMed FLNG Terminal",
+      "unit_name": "--",
+      "country": "Israel",
+      "field_name": "Cost",
+      "old_value": "435000000.00",
+      "new_value": "435000000.00",
+      "confidence": "blue",
+      "source_tier": "Rystad (primary) + trade press (multiple independent)",
+      "ref_field": "Cost [ref]",
+      "ref_urls": [
+        "https://www.rystadenergy.com/news/trouble-eastern-mediterranean-disrupt-gas-market",
+        "https://www.offshore-mag.com/regional-reports/middle-east/article/14300493/rystad-energy-middle-east-tensions-could-impact-growth-plans-for-israels-offshore-gas-fields",
+        "https://www.lngindustry.com/special-reports/20102023/rystad-trouble-in-eastern-mediterranean-could-disrupt-regional-gas-market/"
+      ],
+      "source_notes": "RECHECK: the first pass had Cost on a SINGLE soft source (offshore-mag). Now corroborated to PRIMARY+2-independent: Rystad's own page (rystadenergy.com, the originator) states verbatim 'Leviathan Phase 1B is another plan impacted, particularly in 2026, as $435 million of capital investment is at risk' and ties the figure explicitly to establishing the FLNG unit (4-5 MM t/y) - PASS on '$435 million' and 'FLNG'. lngindustry.com (independent trade outlet, separate publisher) also PASS on '$435 million'. offshore-mag (Rystad-sourced) retained. $-token used per GUARD; sentence read to confirm it is the Phase-1B/FLNG capex, not a collision. Value unchanged -> blue (now well-corroborated, not soft).",
+      "scope_note": "single-unit terminal",
+      "researcher_initials": "AI-draft (recheck)"
+    },
+    {
+      "terminal_id": "T100000130829",
+      "unit_id": "G100002082901",
+      "terminal_name": "NewMed FLNG Terminal",
+      "unit_name": "--",
+      "country": "Israel",
+      "field_name": "CostUnits",
+      "old_value": "USD",
+      "new_value": "USD",
+      "confidence": "blue",
+      "source_tier": "Rystad (primary) + trade press (multiple independent)",
+      "ref_field": "Cost [ref]",
+      "ref_urls": [
+        "https://www.rystadenergy.com/news/trouble-eastern-mediterranean-disrupt-gas-market",
+        "https://www.offshore-mag.com/regional-reports/middle-east/article/14300493/rystad-energy-middle-east-tensions-could-impact-growth-plans-for-israels-offshore-gas-fields",
+        "https://www.lngindustry.com/special-reports/20102023/rystad-trouble-in-eastern-mediterranean-could-disrupt-regional-gas-market/"
+      ],
+      "source_notes": "RECHECK: figure quoted in USD ('$435 million') across Rystad primary + offshore-mag + lngindustry. Unchanged.",
+      "scope_note": "single-unit terminal",
+      "researcher_initials": "AI-draft (recheck)"
+    },
+    {
+      "terminal_id": "T100000130829",
+      "unit_id": "G100002082901",
+      "terminal_name": "NewMed FLNG Terminal",
+      "unit_name": "--",
+      "country": "Israel",
+      "field_name": "CostYear",
+      "old_value": "2024",
+      "new_value": "2024",
+      "confidence": "blue",
+      "source_tier": "Rystad (primary) + trade press (multiple independent)",
+      "ref_field": "Cost [ref]",
+      "ref_urls": [
+        "https://www.rystadenergy.com/news/trouble-eastern-mediterranean-disrupt-gas-market",
+        "https://www.offshore-mag.com/regional-reports/middle-east/article/14300493/rystad-energy-middle-east-tensions-could-impact-growth-plans-for-israels-offshore-gas-fields",
+        "https://www.lngindustry.com/special-reports/20102023/rystad-trouble-in-eastern-mediterranean-could-disrupt-regional-gas-market/"
+      ],
+      "source_notes": "RECHECK: CostYear retained at 2024 (the Rystad estimate dates to the Oct/Nov-2023 analysis carried in offshore-mag/lngindustry/2024 coverage). The Rystad primary frames the $435M spend as 'particularly in 2026' (the at-risk capital-deployment year, not the estimate year). The first-pass value_scope_nuance qa note already flags whether CostYear should track 2026 - left for the human (a judgment call, not an unsourced-value deletion). Value unchanged.",
+      "scope_note": "single-unit terminal",
+      "researcher_initials": "AI-draft (recheck)"
+    }
+  ],
+  "qa_add": [
+    {
+      "category": "ref_recovered",
+      "terminal_id": "T100000130829",
+      "unit_id": "G100002082901",
+      "terminal_name": "NewMed FLNG Terminal",
+      "field_name": "Location",
+      "issue": "RECHECK: the dropped worklist Nasdaq Location ref (Reuters '7 bcm capacity, says CEO' wire) is recovered. Live nasdaq.com URL returns HTTP 404 to automated clients but its content is confirmed via Wayback (snapshot 20240421083453 PASSes 'Dor' + the 7-bcm figure). The identical Reuters wire is live and working at news.yahoo.com/...155434768 (PASS 'Dor','7','billion cubic') and added as the working corroboration. Kallanish (HTTP 522) has NO Wayback snapshot and stays dropped (already replaced first pass).",
+      "severity": "low",
+      "suggested_action": "Use the recovered Location [ref] set (Nasdaq live + news.yahoo Reuters wire + MEES + LNGprime + NewMed IR). No value change.",
+      "researcher_initials": "AI-draft (recheck)"
+    },
+    {
+      "category": "ref_corroborated",
+      "terminal_id": "T100000130829",
+      "unit_id": "G100002082901",
+      "terminal_name": "NewMed FLNG Terminal",
+      "field_name": "Cost",
+      "issue": "RECHECK: Cost=$435,000,000 was single-soft-sourced in the first pass; now corroborated to primary + 2 independent. Rystad's own page (originator) states '$435 million of capital investment is at risk' for Leviathan Phase 1B / the FLNG unit; lngindustry.com independently carries '$435 million'; offshore-mag retained.",
+      "severity": "low",
+      "suggested_action": "Cost is now well-corroborated. The Rystad primary frames the spend as occurring 'particularly in 2026'; the standing value_scope_nuance question (CostYear 2024 vs 2026, and that $435M is a Phase-1B/FLNG-install figure rather than a standalone FLNG-terminal capex) remains for the human to settle - see retained first-pass qa.",
+      "researcher_initials": "AI-draft (recheck)"
+    }
+  ],
+  "qa_resolved": [],
+  "summary": {
+    "refs_recovered": 1,
+    "values_changed": 0,
+    "values_deleted": 0,
+    "still_unsourced": 1
+  }
+}

@@ -1,0 +1,82 @@
+[
+  {
+    "category": "dead_ref",
+    "terminal_id": "T100000131168",
+    "unit_id": "G100002116801",
+    "terminal_name": "Ace Gas Nigeria FLNG Terminal",
+    "issue": "Existing GEM Owner [ref] https://www.aceenergygroup.org/3-mtpa-flng-project/ now returns HTTP 404 (genuinely dead/gone, not a bot-block). The sponsor's current live site is aceflng.com (e.g. aceflng.com/project-details.html), but its pages were intermittently unreachable (ECONNREFUSED/HTTP 000) from the automated client and could not be url_verifier-confirmed this pass.",
+    "severity": "low",
+    "suggested_action": "Replace the dead aceenergygroup.org Owner ref with the working independent sources staged in updates (lngprime/offshore-energy/oedigital). Reviewer may also re-test aceflng.com/project-details.html in a browser as a primary sponsor source.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dead_ref",
+    "terminal_id": "T100000131125",
+    "unit_id": "G100002112501",
+    "terminal_name": "Golar Nigeria FLNG Terminal",
+    "issue": "Existing GEM Location [ref] https://hawilti.com/energy/lng/nigerias-nnpc-ltd-and-golar-lng-announce-new-flng-project/ now returns HTTP 404 (soft-error '404 - File or directory not found'); genuinely dead, not bot-blocked. No Wayback snapshot needed since working replacements exist.",
+    "severity": "low",
+    "suggested_action": "Replace the dead hawilti Location ref with the working sources staged in updates (lngprime FID-unlikely article + energychamber), both PASS for 'Niger Delta'.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dead_ref",
+    "terminal_id": "T100000131170",
+    "unit_id": "G100002117001",
+    "terminal_name": "Riverside LNG Terminal",
+    "issue": "Existing GEM ref https://dev.riversidelng.com/projects/ (cited for FacilityType, Owner, Capacity, Location, State, Lat/Long/Accuracy) is DOWN (HTTP 000 / connection failed). This matches the existing researcher note 'IM: Project website no longer live'. A 2024 Wayback snapshot exists but the staging-domain (dev.) site is offline.",
+    "severity": "medium",
+    "suggested_action": "Replace dev.riversidelng.com refs with the working independent sources staged in updates (oilfieldafricareview + Reuters-via-Wayback). The live company domain riversidelng.com (non-dev) has a 2025 Wayback snapshot; reviewer may check it in a browser.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "bot_blocked",
+    "terminal_id": "T100000131170",
+    "unit_id": "G100002117001",
+    "terminal_name": "Riverside LNG Terminal",
+    "issue": "Existing GEM ref https://www.reuters.com/sustainability/climate-energy/nigeria-germany-sign-500-mln-renewable-energy-gas-deal-2023-11-21/ returns HTTP 401 to the automated client (bot-block, NOT dead). The Wayback snapshot (web.archive.org/web/20240222155929/...) PASSes for 'Riverside', 'Onne', '2023', '2026'.",
+    "severity": "low",
+    "suggested_action": "Keep the live Reuters URL as the [ref] (it is alive in a browser); the value is confirmed via the archived snapshot. Updates records cite the snapshot URL so the build can machine-verify; reviewer may swap to the live Reuters URL.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000131125",
+    "unit_id": "G100002112501",
+    "terminal_name": "Golar Nigeria FLNG Terminal",
+    "issue": "Golar/NNPC FLNG FID target of end-2024 has SLIPPED: Golar CEO Karl Staubo (Nov 2024) said FID 'less likely' within 2024 and called Nigeria only 'one of the contenders' for a 2025 FLNG charter. GEM still stores FIDYear 2024 (the original target) and Status proposed. No FID and no new firm FID date located through mid-2025. Status remains correctly 'proposed'; only the FID timing is now stale.",
+    "severity": "medium",
+    "suggested_action": "Status stays proposed (no change). Reviewer should consider whether FIDYear 2024 should be revised to a later/unknown target given the public slippage; do NOT auto-bump (fetch_timeline is down). Flagging the FID-date staleness for the human.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000131170",
+    "unit_id": "G100002117001",
+    "terminal_name": "Riverside LNG Terminal",
+    "issue": "GEM holds Riverside as shelved (Substatus 'inferred 2 y', ShelvedYear/StopYear 2025, ShelvedCancelledStatusType 'inferred'), inferred from inactivity + a dead project website. Re-verification found NO independent source that declares the project shelved/cancelled, AND no independent source showing fresh activity since the 2023/early-2024 announcements (Germany offtake, South Africa talks). The most recent concrete coverage is late-2023; the dev project site is offline. The shelved-by-inference call is therefore plausible but unconfirmed either way.",
+    "severity": "medium",
+    "suggested_action": "Treat shelved status as GEM-inferred metadata: it CANNOT be cited to an off-GEM source (so the Status/ShelvedYear/StopYear blank [ref] cells in blank_refs_with_data were left blank, not filled). Reviewer should decide whether the 2-year inference still holds or whether to keep monitoring; do not stage a Status edit (fetch_timeline down).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000131170",
+    "unit_id": "G100002117001",
+    "terminal_name": "Riverside LNG Terminal",
+    "issue": "Status='shelved', Substatus='inferred 2 y', ShelvedYear='2025', StopYear='2025', ShelvedCancelledStatusType='inferred' are GEM-inferred status metadata, not facts asserted by any public source. No off-GEM URL corroborates a 'shelved' designation or the 2025 shelved/stop year, so the paired blank [ref] cells (Status [ref], ShelvedYear [ref], StopYear [ref]) were NOT filled (cannot cite an inference; no orphan [ref]).",
+    "severity": "low",
+    "suggested_action": "Leave these [ref] cells blank (inferred metadata is not externally citable). This is expected for an inferred-shelved record; no action needed unless the inference is revisited.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000131170",
+    "unit_id": "G100002117001",
+    "terminal_name": "Riverside LNG Terminal",
+    "issue": "GEM Parent field lists 'AA Holdings; GasInvest; Oilserve Ltd' (ref_field null, no [ref] column). Only GasInvest is corroborable off-GEM (CEO David Ige is associated with GasInvest in trade coverage); 'AA Holdings' and 'Oilserve Ltd' as Riverside parents could not be confirmed in any independent non-GEM source this pass (corporate-registry pages b2bhint were HTTP 403/404 to the client).",
+    "severity": "low",
+    "suggested_action": "Do not stage a Parent change. Reviewer may verify AA Holdings / Oilserve Ltd against the Nigerian CAC registry (RC-1862276) or a browser-accessible corporate-registry source; left unstaged here as unconfirmed off-GEM.",
+    "researcher_initials": "AI-draft"
+  }
+]

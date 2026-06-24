@@ -110,7 +110,7 @@ def _read_fresh_export(csv_path):
     return by_unit, header
 
 
-def compute_apply_check(batch_path, csv_path, sheet_name="updates", log=print):
+def compute_apply_check(batch_path, csv_path, sheet_name="updates_summary", log=print):
     staged = _read_updates_sheet(batch_path, sheet_name)
     fresh_by_unit, fresh_header = _read_fresh_export(csv_path)
     fresh_cols = set(fresh_header)
@@ -187,7 +187,7 @@ def main():
     p.add_argument("--csv", default="./gem_export.csv",
                    help="FRESH gem_export.csv (pull after the user applied the batch)")
     p.add_argument("--out", default="work/apply_check.json")
-    p.add_argument("--sheet", default="updates")
+    p.add_argument("--sheet", default="updates_summary")
     args = p.parse_args()
 
     checked, summary, by_classification = compute_apply_check(

@@ -8,7 +8,7 @@ Quick lookup for "which SOP section governs X" without re-reading the whole SOP 
 Last reconciled against:
 - Reconciliation SOP rev 1 (2026-05)
 - Update SOP rev 2 (2026-06 — standard/exhaustive tiers)
-- Discovery SOP rev 1 (2026-05)
+- Discovery SOP rev 2 (2026-06-24 — scope gate §3, gem.wiki coverage cross-check §4.0b, upstream-oil-operator FLNG sweep §4.3)
 - Triage SOP rev 2 (2026-06 — QC signals, tier-named options)
 - QC SOP rev 1 (2026-06)
 - CLAUDE.md (2026-06-09 — second slim pass; pull/FSRU/color detail deduplicated to `docs/workflows.md` + `docs/reference/workbook_conventions.md`; workflow recipes in `docs/workflows.md`, script table in `scripts/README.md`)
@@ -39,7 +39,7 @@ Abbreviations:
 | URL verification gate on every URL | SKL "Hard requirements", UPD §7, DSC §8, REC §3.9 | HTTP 200 + content check + soft-error detection |
 | No orphan [ref] cells (Rule F) | UPD §3.1, §12 | Never fill a [ref] without paired data |
 | Status timeline edits require timeline pull | SKL "Hard requirements", UPD §3.2, LFC "Anchor years vs timeline" | Export doesn't contain timeline; use fetch_timeline.py |
-| No duplicate entities | UPD §8, DSC §9 | Run entity_lookup.py before staging new entity |
+| No duplicate entities | UPD §8, DSC §9 | Run entity_lookup.py (bare + `--remote`) before staging new entity; `--country` annotates, never filters |
 | Out-of-scope fields are read-only | UPD §10, SCH "Read-only column list" | LH2/NH3/SyntheticLNG/PCI/RetrofitProposed/AltFuel*, all computed totals |
 | Project-level field edits apply to all unit-rows | UPD §9, SCH "Field classification" | Mixed-class fields trigger read-before-write |
 | Cluster coherence on URLs (Rule E) | UPD §5 | URL must verifiably reference project AND contain value |
@@ -49,6 +49,9 @@ Abbreviations:
 | Standard tier is the Update default | UPD §2, SKL "Workflow router" | Exhaustive only when the user / triage / QC escalation says so |
 | Multi-train projects → one terminal + N units | DSC §7, UNT "When to create new unit vs new terminal" | Not N terminals |
 | Sufficient information threshold for new candidates | DSC §3 | Sponsor + approximate location + concrete step |
+| Discovery scope gate (before the threshold) | DSC §3, SKL "Workflow router" | Must move LNG across a border by ship; domestic-only virtual-pipeline/trucking/peak-shaving is OUT OF SCOPE; resolve scope doubt before staging |
+| gem.wiki coverage cross-check | DSC §4.0b, WFL §3 | Reconcile gem.wiki LNG pages vs the export CSV — a wiki page with no row is a discovery candidate (gem.wiki detects the gap, never the citation) |
+| Upstream-oil-operator FLNG sweep | DSC §4.3, WFL §3 | In coastal hydrocarbon producers, sweep field operators monetizing associated gas (Gas Code / flaring-reduction tell), not just established LNG developers |
 
 ## Workflow steps
 
@@ -70,7 +73,10 @@ Abbreviations:
 | Apply naming conventions | UNT | Terminal / unit / phase / train naming per methodology |
 | Cluster coherence check | UPD §5 | URLs must reference correct project AND value |
 | URL verification | UPD §7, DSC §8, REC §3.9 | `url_verifier.py` |
-| Entity lookup | UPD §8, DSC §9 | `entity_lookup.py` |
+| Entity lookup | UPD §8, DSC §9 | `entity_lookup.py` — bare + `--remote`; `--country` annotates only |
+| Country coverage gap | DSC §4.0, QCS §3.1 | `completeness_sweep.py` `coverage_gap` — countries with zero GEM terminals |
+| Dormant-revival watch | DSC §4.0a, QCS §3.1 | `completeness_sweep.py` `dormant_revival_watch` — cancelled/shelved sites to revival-check (→ Discovery) |
+| gem.wiki coverage cross-check | DSC §4.0b | Enumerate gem.wiki LNG pages, reconcile vs the export CSV — wiki page with no row = discovery candidate (gem.wiki never cited) |
 | Capacity normalization | UPD §3.3, UNT "Capacity conventions" | `capacity_normalize.py` for unit conversion |
 | FSRU sync check | SKL "FSRU sync rule" | When batch touches any FSRU terminal |
 | Build review package | UPD §11.12, DSC §10.12, REC §3.10 | `build_review_package.py` |

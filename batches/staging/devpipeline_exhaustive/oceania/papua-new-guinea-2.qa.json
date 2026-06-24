@@ -1,0 +1,102 @@
+[
+  {
+    "category": "data_quality",
+    "terminal_id": "T100000130303",
+    "unit_id": "G100002030305",
+    "terminal_name": "Papua LNG Terminal",
+    "issue": "T5 (Kumul FLNG) field conflict: GEM lists Source='Elk and Antelope onshore gas fields', Location='Caution Bay', Capacity=1.0 mtpa. But the current Kumul Petroleum FLNG (Wison New Energies pre-FEED signed Oct 2024) is a 1.5 mtpa FLNG fed by the Pandora and Uramu OFFSHORE gas fields (PRLs 47 & 50, Gulf Province) - NOT Elk and Antelope (which feed the TotalEnergies Papua LNG, T1-T4). T5's data appears to conflate the 2023 AFR '$4.5b new train at Caution Bay' concept with the later Wison offshore FLNG.",
+    "severity": "high",
+    "suggested_action": "Human review: decide whether T5 represents (a) the 2023 Caution Bay new-train plan (keep Elk/Antelope/Caution Bay/1.0) or (b) the current Wison offshore FLNG (then Source->Pandora/Uramu, Location->offshore Gulf Province, Capacity->1.5 mtpa). Likely the feed-gas attribution 'Elk and Antelope' is incorrect for the FLNG. Route resolution to an Update batch once the modeling is decided.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130303",
+    "unit_id": "G100002030305",
+    "terminal_name": "Papua LNG Terminal",
+    "issue": "Could not corroborate T5 Source='Elk and Antelope onshore gas fields' off-GEM. The only Kumul FLNG sources (LNG Prime) name Pandora/Uramu offshore fields instead. AFR 2023 (cited) does not surface 'Elk' to the verifier.",
+    "severity": "high",
+    "suggested_action": "Do not stage a deletion (value is a contested factual attribution, not unsupportable noise) - leave for human to reconcile per the T5 identity decision above.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_quality",
+    "terminal_id": "T100000130303",
+    "unit_id": "G100002030305",
+    "terminal_name": "Papua LNG Terminal",
+    "issue": "Owner/Parent spell the developer 'Kumal Petroleum Holdings Ltd' - this is a typo for 'Kumul Petroleum Holdings Limited' (PNG national oil & gas company). Appears in both Owner and Parent cells.",
+    "severity": "low",
+    "suggested_action": "Correct spelling 'Kumal'->'Kumul' in a follow-on Update (entity name fix); confirm against entity system.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_quality",
+    "terminal_id": "T100000130303",
+    "unit_id": "G100002030305",
+    "terminal_name": "Papua LNG Terminal",
+    "issue": "T5 Capacity GEM=1.0 mtpa vs current Kumul FLNG 1.5 mtpa (Wison pre-FEED). Did not bump (single trade source + tied to the unresolved T5 identity question).",
+    "severity": "medium",
+    "suggested_action": "If T5 is confirmed = Wison offshore FLNG, update Capacity to 1.5 mtpa with LNG Prime + a second source in a follow-on Update.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_quality",
+    "terminal_id": "T100000130303",
+    "unit_id": "G100002030305",
+    "terminal_name": "Papua LNG Terminal",
+    "issue": "T5 CostUnits=AUD: the AFR lede states '$4.5b' without explicitly naming currency in the machine-verifiable portion (paywalled). AUD inferred from AFR being Australian.",
+    "severity": "low",
+    "suggested_action": "Confirm AUD vs USD if the full AFR text becomes available; low impact.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_quality",
+    "terminal_id": "T100000130303",
+    "unit_id": "G100002030304",
+    "terminal_name": "Papua LNG Terminal",
+    "issue": "Per-train capacity / train-count ambiguity (already documented in T4 researcher_notes): sponsor says 3 eLNG trains @ 5.6 Mtpa total; IGU 2025 says 4 trains @ 4.0 Mtpa total. GEM models 4 trains x 1.40 = 5.6 mtpa. Project TOTAL of 5.6 mtpa is sponsor-confirmed; the per-train value and train count are the open question.",
+    "severity": "low",
+    "suggested_action": "No change staged - deferred to existing researcher_notes (deliberate divergence). Revisit per-train modeling once FID locks the final train configuration.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130303",
+    "unit_id": "G100002030301",
+    "terminal_name": "Papua LNG Terminal",
+    "issue": "Project-level (T1-T4): GEM OriginalPlannedStartYear=2027 / LatestPlannedStartYear=2028 are corroborated for the ~2024 'end-2027/early-2028' expectation, but current expectations have slipped - first production is ~4 years after FID and FID has moved to ~2026, implying startup ~2029-2030. Status itself unchanged (still proposed/pre-FID).",
+    "severity": "medium",
+    "suggested_action": "No Status edit staged (fetch_timeline down). Consider updating LatestPlannedStartYear toward ~2030 in a follow-on Update once a dated source pins the post-FID schedule. Applies to all of T1-T4.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dead_or_miscited_ref",
+    "terminal_id": "T100000130303",
+    "unit_id": "G100002030301",
+    "terminal_name": "Papua LNG Terminal",
+    "issue": "Existing GEM StartDate [ref] for T1 (and T2-T4) cited 'energyvoice.com/.../exxonmobil-expects-mozambique-lng-investment-decision-in-2025' - this is a MOZAMBIQUE LNG article (returns HTTP 403 live; Wayback snapshot confirms it is a Mozambique piece), NOT a Papua LNG start-year source. Mis-cited.",
+    "severity": "medium",
+    "suggested_action": "Replaced in staged records with offshore-energy + Petroleum Economist (both PASS '2028'). Remove the energyvoice Mozambique URL from the StartDate [ref] for T1-T4.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dead_or_miscited_ref",
+    "terminal_id": "T100000130303",
+    "unit_id": "G100002030301",
+    "terminal_name": "Papua LNG Terminal",
+    "issue": "Existing GEM FIDYear [ref] for T1-T4 cited the IGU '2025-world-lng-report' LANDING page (igu.org/igu-reports/2025-world-lng-report...) - the landing page does not contain 'Papua' (verifier FAIL); it is a download/gateway page, not the report text.",
+    "severity": "low",
+    "suggested_action": "Replaced with LNG Prime (Santos CEO expects FID early 2026) + offshore-energy in staged FIDYear records. Consider citing the actual IGU PDF page if available.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_quality",
+    "terminal_id": "T100000130303",
+    "unit_id": "G100002030301",
+    "terminal_name": "Papua LNG Terminal",
+    "issue": "ParentHQCountry='United States, France, Japan' (T1-T4) omits Australia despite Santos (Australian, 22.83%) being a named parent/owner. Re-verified the three listed HQs as correct; the omission of Australia/Santos appears to be an existing GEM convention or gap.",
+    "severity": "low",
+    "suggested_action": "Optional: add 'Australia' for Santos in a follow-on Update if GEM's ParentHQCountry convention includes all parents. Left unchanged this batch.",
+    "researcher_initials": "AI-draft"
+  }
+]

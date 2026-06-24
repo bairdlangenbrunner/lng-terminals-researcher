@@ -1,0 +1,52 @@
+[
+  {
+    "category": "dead_existing_ref",
+    "terminal_id": "T100000130829",
+    "unit_id": "G100002082901",
+    "terminal_name": "NewMed FLNG Terminal",
+    "issue": "Existing GEM ref kallanishenergy.com/2019/08/01/delek-considers-lng-terminal-offshore-israel/ is DEAD (HTTP 522) - it is cited for FacilityType, Status, Capacity, and ProposalYear. The Nasdaq ref (nasdaq.com/articles/newmed-energys-planned-floating-lng-terminal-to-have-7-bcm-capacity-says-ceo) cited for Location/coords is DEAD (HTTP 404).",
+    "severity": "medium",
+    "suggested_action": "Replace the dead Kallanish ref with the working sources staged in updates (oedigital, offshore-energy, lngprime, finance.yahoo carrying the Reuters 7-bcm wire). Replace the dead Nasdaq Location ref with MEES + LNG Prime + NewMed IR (all staged).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130829",
+    "unit_id": "G100002082901",
+    "terminal_name": "NewMed FLNG Terminal",
+    "issue": "The Parent cell's granular ultimate-shareholder breakdown ('NewMed Energy [TO BE DELETED] [45.3%]; Chevron Corp [39.7%]; small shareholder(s) [79.4%]; Landlan Investments Ltd [11.6%]; Menora Mivtachim Holdings Ltd [9.1%]') could not be corroborated off-GEM at the terminal level - public terminal/field sources confirm only the direct working interests (NewMed 45.3/45.34%, Chevron 39.66/39.7%, Ratio 15%) and the parent HQ countries (US/Israel/Israel), not the NewMed parent-shareholder percentages. No Parent [ref] column exists in the worklist.",
+    "severity": "low",
+    "suggested_action": "Leave Parent as-is (entity-system derived). If GEM wants the NewMed parent-shareholder split independently sourced, pull NewMed Energy's TASE major-shareholders filing in a future Update; not citable from FLNG-terminal sources.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "value_scope_nuance",
+    "terminal_id": "T100000130829",
+    "unit_id": "G100002082901",
+    "terminal_name": "NewMed FLNG Terminal",
+    "issue": "Cost=$435,000,000 (CostYear 2024) is supported by a single source (Offshore Magazine / Rystad), which describes it as the capital investment associated with Leviathan Phase 1B INCLUDING the FLNG vessel installation - i.e. a blended Phase-1B figure, not a pure FLNG-terminal capex; the article frames the spend as occurring in 2026, not 2024.",
+    "severity": "low",
+    "suggested_action": "Treat cost as re-verified-but-soft. If GEM wants an FLNG-terminal-specific capex, note that pre-FID public estimates for the FLNG facility itself run multi-billion USD ($2-4bn range cited in trade press) and differ from this $435M Phase-1B figure - worth a dedicated source search at FID. Confirm whether CostYear should track 2026.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130829",
+    "unit_id": "G100002082901",
+    "terminal_name": "NewMed FLNG Terminal",
+    "issue": "Context note (NO status change): in Jan 2026 Chevron/NewMed/Ratio took FID on the Leviathan gas-FIELD/production-platform expansion (to ~21 bcm) - this is NOT an FID on the FLNG export terminal. The floating liquefaction facility itself remains pre-FID (FEED/pre-FEED, developer selection ongoing), so GEM Status 'proposed' is still correct. Flagging so the Jan-2026 field FID is not mistaken for an FLNG-terminal status change (proposed->construction).",
+    "severity": "low",
+    "suggested_action": "Keep Status=proposed. Watch for a separate FLNG-terminal FID announcement (NewMed had targeted a possible decision ~2025, repeatedly slipped on regional instability). fetch_timeline is DOWN - do not stage a Status timeline edit.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "fsru_sync",
+    "terminal_id": "T100000130829",
+    "unit_id": "G100002082901",
+    "terminal_name": "NewMed FLNG Terminal",
+    "issue": "Record is flagged is_fsru=true but it is a proposed FLNG (floating liquefaction/export) facility with no named vessel or IMO yet (developer selection between Golar/Exmar and others still open) - there is no vessel identity to cross-check against the carrier project. The FSRU/FLNG vessel linking fields (vessel name + IMO) are absent from the worklist and from public sources.",
+    "severity": "low",
+    "suggested_action": "No FSRU sync action possible (no vessel identity assigned). Re-run fsru_sync_check.py once a vessel/IMO is named at FID. Note: this is export FLNG, not an import FSRU.",
+    "researcher_initials": "AI-draft"
+  }
+]

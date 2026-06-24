@@ -1,0 +1,102 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130331",
+    "unit_id": "G100002033102",
+    "terminal_name": "Darwin LNG Terminal",
+    "issue": "DLNG T2 is held status=proposed with ShelvedYear=StopYear=2023 (ShelvedCancelledStatusType='inferred'). The expansion has since been REVIVED: Santos and Tamboran signed a non-binding MOU in Jan 2025 to study a ~6 MTPA second train fed by Beetaloo/EP 161 gas. The 'shelved 2023' framing now looks stale - the unit reads as actively proposed/under-study again. Reviewer should decide whether ShelvedYear/StopYear should be cleared or kept as a historical lapse marker, and whether a status-timeline event (re-proposed 2025) is warranted. fetch_timeline is down, so no timeline file staged.",
+    "severity": "medium",
+    "suggested_action": "Confirm the intended treatment of the 2023 shelve year given the 2025 MOU revival; consider clearing ShelvedYear/StopYear or recording a re-proposed-2025 timeline event when fetch_timeline is restored.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130331",
+    "unit_id": "G100002033102",
+    "terminal_name": "Darwin LNG Terminal",
+    "issue": "ShelvedYear=2023 and StopYear=2023 could not be corroborated by any independent non-GEM source. The 2023 link is plausibly Bayu-Undan feedgas ceasing in late 2023, but no source explicitly dates the T2 EXPANSION as shelved in 2023. blank_refs_with_data ShelvedYear [ref] and StopYear [ref] left UNFILLED (no citable source found).",
+    "severity": "low",
+    "suggested_action": "Leave ShelvedYear/StopYear refs blank; do not stage a citation. If retaining the values, document the basis in researcher_notes.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130335",
+    "unit_id": "G100002033503",
+    "terminal_name": "Ichthys FLNG Terminal",
+    "issue": "T3 ProposalYear=2020 / ProposalMonth=March could not be corroborated off-GEM. Public reporting dates INPEX's third-train ambition to Feb 2022 (and reaffirmations through 2024-2025), not March 2020. The existing Upstream subsea ref is now behind an SSO paywall and does not substantiate a March 2020 proposal date. No updates record staged for ProposalYear/ProposalMonth.",
+    "severity": "medium",
+    "suggested_action": "Re-derive the T3 proposal date; Feb 2022 (INPEX third-train announcement) is the better-supported anchor. Confirm against INPEX disclosures before changing.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130335",
+    "unit_id": "G100002033503",
+    "terminal_name": "Ichthys FLNG Terminal",
+    "issue": "T3 OriginalPlannedStartYear=2023 could not be corroborated by any independent source; all current reporting points to a ~2030 / first-half-2030s start (now staged blue for LatestPlannedStartYear=2030). The 2023 original-start value appears to be a stale internal anchor. No updates record staged for OriginalPlannedStartYear.",
+    "severity": "low",
+    "suggested_action": "Verify or clear OriginalPlannedStartYear=2023; the T3 expansion was never targeting a 2023 start in any public source found.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "capacity_basis",
+    "terminal_id": "T100000130982",
+    "unit_id": "G100002098200",
+    "terminal_name": "Geelong FSRU",
+    "issue": "GEM Capacity=2.90 mtpa matches the baseload throughput (~160 PJ/yr; Viva quotes 'in excess of 120 PJ/yr' supply). The FSRU's PEAK regasification capacity is higher - Enerdata cites 7.7 bcm/yr (~5.7 Mt/yr) and Viva cites peak 750 TJ/d. Confirming GEM correctly uses baseload throughput, not the FSRU peak. NOT staged as a nameplate bump per the capacity rule (peak/optimized -> qa, not a capacity edit).",
+    "severity": "low",
+    "suggested_action": "Confirm Capacity=2.90 mtpa is the intended baseload throughput; optionally note the FSRU peak regas (5.7 Mt/yr) in wiki/researcher_notes, do not raise the nameplate.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "entity_mapping",
+    "terminal_id": "T100000130335",
+    "unit_id": "G100002033503",
+    "terminal_name": "Ichthys FLNG Terminal",
+    "issue": "Ichthys Parent equity changed after INPEX's 2024 acquisition of Tokyo Gas's 1.575% stake (staged green). Mapping the new JV against GEM's prior entity list: 'unknown [1.2%]' resolves to Osaka Gas Co Ltd [1.2%], and the Chubu/TEPCO 0.4%+0.4% pair resolves to JERA Co Inc [0.735%] (JERA is the Chubu/TEPCO 50:50 JV). Tokyo Gas should be DROPPED. Reviewer must confirm Osaka Gas and JERA exist in the GEM entity system before applying (entity_lookup), and decide whether GEM prefers naming JERA or its Chubu/TEPCO parents.",
+    "severity": "medium",
+    "suggested_action": "entity_lookup confirms both already exist in the GEM entity system: Osaka Gas Co Ltd = E100000000654; JERA Co Inc = E100001000130 (its parents Chubu = E100000000630, TEPCO = E100000000659). No new entity creation needed. Confirm GEM's convention for representing JERA vs the Chubu/TEPCO pair; verify the rounding of 67.82/2.625/0.735/0.42 against GEM's percent-precision convention.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "modeling_check",
+    "terminal_id": "T100000130335",
+    "unit_id": "G100002033503",
+    "terminal_name": "Ichthys FLNG Terminal",
+    "issue": "Terminal is named 'Ichthys FLNG Terminal' with Offshore=True and Floating=True, but Ichthys liquefaction is ONSHORE at Bladin Point near Darwin; only the upstream CPF/FPSO is floating/offshore. The Offshore/Floating flags reflect GEM's modeling of the offshore field/CPF component. Flagging for reviewer to confirm this is the intended convention for the export-train unit (T3 trains would be onshore).",
+    "severity": "low",
+    "suggested_action": "Confirm whether Offshore/Floating=True is the intended GEM convention for this onshore-liquefaction project, or a legacy mislabel; not changed by this pass.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dead_ref",
+    "terminal_id": "T100000130331",
+    "unit_id": "G100002033102",
+    "terminal_name": "Darwin LNG Terminal",
+    "issue": "Two existing refs are DEAD (not bot-blocked): (1) Capacity ref via Google webcache of OGJ (http://webcache.googleusercontent.com/...ogj.com/...14208264...) - Google cache service discontinued, returns no content; (2) Operator ref GIIGNL2022_Annual_Report_May24.pdf - HTTP 404. Both replaced with live sources in the staged updates. Separately, the Rigzone Santos/Tamboran ref (FacilityType/Status/Capacity/Source) is BOT-BLOCKED (HTTP 202), not dead, and has no Wayback snapshot - left out of ref sets in favor of verifiable sources but the human can open it in a browser.",
+    "severity": "low",
+    "suggested_action": "Replace the dead OGJ-webcache and GIIGNL-2022 refs with the staged live sources; keep Rigzone only if a browser confirms it (bot-blocked, not dead).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dead_ref",
+    "terminal_id": "T100000130335",
+    "unit_id": "G100002033503",
+    "terminal_name": "Ichthys FLNG Terminal",
+    "issue": "Existing Operator ref GIIGNL-2023-Annual-Report-July20.pdf is HTTP 404 (dead). Existing FacilityType/Status/StartDate refs on upstreamonline.com are behind a Zephr SSO paywall (302 to nhst.auth.zephr.com) and energynewsbulletin.net returns HTTP 403 (bot-blocked; ENB verified via Wayback). All replaced/supplemented with live INPEX/JERA/offshore-energy sources in the staged updates.",
+    "severity": "low",
+    "suggested_action": "Replace the dead GIIGNL-2023 ref; treat upstreamonline (SSO) and energynewsbulletin (403) as live-but-not-machine-verifiable - reviewer can open in a browser.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "bot_blocked_ref",
+    "terminal_id": "T100000130982",
+    "unit_id": "G100002098200",
+    "terminal_name": "Geelong FSRU",
+    "issue": "Existing Reuters Capacity ref (reuters.com/.../australia-could-import-lng-2027...) returns HTTP 401 (bot-blocked, live) with NO Wayback snapshot available, so it could not be machine-verified here. The Vic-planning Owner ref returns HTTP 403 but its Wayback snapshot PASSes (live, bot-blocked). Capacity is supported by Viva primary + LNG Prime in the staged update regardless.",
+    "severity": "low",
+    "suggested_action": "Reviewer can open the Reuters URL in a browser to confirm; the Vic-planning page is live (verified via Wayback).",
+    "researcher_initials": "AI-draft"
+  }
+]

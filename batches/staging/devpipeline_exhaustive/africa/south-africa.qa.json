@@ -1,0 +1,82 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100001048121",
+    "unit_id": "G100001055097",
+    "terminal_name": "Ngqura LNG Terminal",
+    "issue": "On 28 May 2026 TNPA signed a 25-year terminal operator agreement with Ukwanda LNG (Tamasa Energy Group + Strategic Fuel Fund JV) for a R22bn (~$1.34-1.35bn) LNG project at the Port of Ngqura, with a ~36-month construction period and full operationalisation targeted 2035; TNPA is concurrently building a dedicated ~R2bn LNG berth. GEM status is 'proposed'. This is a major de-risking milestone; once berth/terminal construction physically begins the status should likely advance to 'construction'. No confirmation that civil works have started yet.",
+    "severity": "medium",
+    "suggested_action": "Monitor for construction start; if/when berth or terminal civil works begin, advance Status proposed->construction (timeline edit). fetch_timeline endpoint is DOWN, so route any status/timeline change through QA rather than a staged Status edit.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100001048121",
+    "unit_id": "G100001055097",
+    "terminal_name": "Ngqura LNG Terminal",
+    "issue": "OriginalPlannedStartYear=2029 could not be corroborated off-GEM. Independent sources give varying start years: early lngprime coverage targeted COD ~2027; easterncapeindustrialnews said the LNG berth would complete by 2028/9 with the terminal 'operational not long after'; the May-2026 deal coverage now targets full operationalisation by 2035. None states 2029 as the ORIGINAL planned start. (LatestPlannedStartYear was updated to 2035 in the updates file.)",
+    "severity": "low",
+    "suggested_action": "Reviewer to decide whether OriginalPlannedStartYear should stay 2029 (no clean source), revert to ~2027 (earliest published target), or be left as-is. Not staged because no off-GEM source explicitly supports 2029.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000131126",
+    "unit_id": "G100002112600",
+    "terminal_name": "Richards Bay Transnet FSRU",
+    "issue": "Phase 1 FID has slipped from 2026 to 2028 (LNG Prime, 5 Jun 2026: 'Vopak and Transnet Pipelines plan to take a final investment decision on this phase in 2028'), reportedly linked to delays in Eskom's 3,000 MW Richards Bay gas-to-power programme (Sept 2025 SCA setting aside Eskom's environmental authorisation). FIDYear updated to 2028 (staged). Consequently the Phase 1 COD (currently 2028) and Phase 2 COD (2030) are very likely to slip too, though no specific revised first-gas years are published yet. Status remains 'proposed' (no construction).",
+    "severity": "medium",
+    "suggested_action": "Monitor for revised Phase 1/Phase 2 COD years after FID (now 2028); update LatestPlannedStartYear once a developer/regulator figure is published. Status stays proposed until FID/construction.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000131126",
+    "unit_id": "G100002112600",
+    "terminal_name": "Richards Bay Transnet FSRU",
+    "issue": "Phase 1 OriginalPlannedStartYear=2026 is not supported by current sources, which give the original Phase 1 COD as ~2027 (Reuters/economictimes: 'import 2 mtpa of LNG by 2027') or 2028 (lngprime 140944). No source supports a 2026 original start. Left unstaged (not changed) to avoid manufacturing an edit, but the value looks stale/low.",
+    "severity": "low",
+    "suggested_action": "Reviewer to consider correcting OriginalPlannedStartYear from 2026 to 2027 (Reuters) or 2028 (lngprime TOA coverage). Not staged because 'original' planned year is a judgement call on which historical target to anchor.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_quality",
+    "terminal_id": "T100000131126",
+    "unit_id": "G100002112601",
+    "terminal_name": "Richards Bay Transnet FSRU",
+    "issue": "Phase 2 OriginalPlannedStartYear/LatestPlannedStartYear = 2030, but lngprime 140944 gives Phase 2 COD as 'Q4 2029'. Minor (~1 year) discrepancy; 2030 retained as within rounding. With Phase 1 FID slipped to 2028, the Phase 2 timeline is likely to move regardless.",
+    "severity": "low",
+    "suggested_action": "Optionally align Phase 2 start year to 2029 per lngprime 140944, or leave at 2030; revisit after the (now 2028) FID sets a firm schedule.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_quality",
+    "terminal_id": "T100000131126",
+    "unit_id": "G100002112601",
+    "terminal_name": "Richards Bay Transnet FSRU",
+    "issue": "Phase 2 includes an onshore LNG storage tank (up to 220,000 cbm) that 'potentially replaces' the Phase 1 FSU (lngprime 188580 / marineinsight). If Phase 2 is realised as a land-based tank, its Offshore/Floating booleans (currently both True) may warrant reclassification to False. Retained True for now since the project remains FSU-based through Phase 1 and the tank is not yet committed.",
+    "severity": "low",
+    "suggested_action": "Reviewer to decide Phase 2 Offshore/Floating once the onshore-tank vs FSU configuration is confirmed at FID.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dead_link",
+    "terminal_id": "T100000131126",
+    "unit_id": "G100002112600",
+    "terminal_name": "Richards Bay Transnet FSRU",
+    "issue": "Existing GEM ref http://www.lngworldnews.com/south-africa-selects-ports-to-develop-lng-to-power-infrastructure/ (cited for ProposalYear 2016) returns HTTP 404 (genuinely dead - lngworldnews.com defunct). The value IS preserved on the Wayback snapshot http://web.archive.org/web/20190601032430/https://www.lngworldnews.com/south-africa-selects-ports-to-develop-lng-to-power-infrastructure/ (PASSes url_verifier for 'Richards Bay').",
+    "severity": "low",
+    "suggested_action": "Replace the dead live URL in ProposalDate [ref] with the Wayback snapshot URL (or keep the live URL flagged as archived). The 2016-proposal value remains supported via the snapshot.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dead_link",
+    "terminal_id": "T100000131126",
+    "unit_id": "G100002112600",
+    "terminal_name": "Richards Bay Transnet FSRU",
+    "issue": "Existing GEM ref https://af.reuters.com/article/energyOilNews/idAFL8N24Q5AI (in StartDate [ref] for Phase 1) returns HTTP 401 to automated clients; af.reuters.com is also a deprecated Reuters Africa subdomain. Wayback snapshot http://web.archive.org/web/20190725160151/https://af.reuters.com/article/energyOilNews/idAFL8N24Q5AI PASSes url_verifier for 'Richards Bay', so the underlying article exists. Likely bot-blocked/deprecated rather than content-gone, but the af.reuters subdomain is unreliable.",
+    "severity": "low",
+    "suggested_action": "Reviewer to open the af.reuters URL in a browser; if it redirects/404s, replace with the Wayback snapshot or a current Reuters URL. Not labelled fully dead (snapshot confirms the article).",
+    "researcher_initials": "AI-draft"
+  }
+]

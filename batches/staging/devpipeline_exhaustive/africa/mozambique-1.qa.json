@@ -1,0 +1,142 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130257",
+    "unit_id": "G100002025701",
+    "terminal_name": "Mozambique LNG Terminal",
+    "issue": "STATUS CHANGE for T1: GEM has Status='shelved' (Substatus='confirmed', ShelvedYear/StopYear=2021, last_updated 2025-07-01 - i.e. pre-restart). The Mozambique LNG consortium LIFTED the 2021 force majeure on 7 November 2025 and TotalEnergies + President Chapo announced the FULL RESTART of all onshore and offshore activities on 29 January 2026. Construction has resumed at the Afungi site (>4,000 workers mobilised), the project is reported ~40% complete, and first LNG is targeted for 2029. The sanctioned two-train plant (T1/T2) is therefore effectively 'construction' again, NOT 'shelved'. Per brief, a Status change is flagged here and NOT staged as a Status field edit (fetch_timeline endpoint is down). Sources: totalenergies.com restart PR (29 Jan 2026), Al Jazeera, Enerdata, JPT (force-majeure lift).",
+    "severity": "high",
+    "suggested_action": "Change Status shelved->construction and Substatus confirmed->construction for T1/T2; add a timeline event (force majeure lifted 2025-11-07; full restart 2026-01-29) when fetch_timeline is reachable. Re-set ShelvedYear/StopYear handling (the 2021 shelving is now a closed historical interval, not the current status). First LNG 2029.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130257",
+    "unit_id": "G100001054919",
+    "terminal_name": "Mozambique LNG Terminal",
+    "issue": "STATUS CHANGE for T2: GEM has Status='shelved' (Substatus='confirmed', ShelvedYear/StopYear=2021, last_updated 2025-07-01 - i.e. pre-restart). The Mozambique LNG consortium LIFTED the 2021 force majeure on 7 November 2025 and TotalEnergies + President Chapo announced the FULL RESTART of all onshore and offshore activities on 29 January 2026. Construction has resumed at the Afungi site (>4,000 workers mobilised), the project is reported ~40% complete, and first LNG is targeted for 2029. The sanctioned two-train plant (T1/T2) is therefore effectively 'construction' again, NOT 'shelved'. Per brief, a Status change is flagged here and NOT staged as a Status field edit (fetch_timeline endpoint is down). Sources: totalenergies.com restart PR (29 Jan 2026), Al Jazeera, Enerdata, JPT (force-majeure lift).",
+    "severity": "high",
+    "suggested_action": "Change Status shelved->construction and Substatus confirmed->construction for T1/T2; add a timeline event (force majeure lifted 2025-11-07; full restart 2026-01-29) when fetch_timeline is reachable. Re-set ShelvedYear/StopYear handling (the 2021 shelving is now a closed historical interval, not the current status). First LNG 2029.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130257",
+    "unit_id": "G100002025701",
+    "terminal_name": "Mozambique LNG Terminal",
+    "issue": "T1 shelved-status metadata is now stale given the 2025/26 restart: Substatus='confirmed', ShelvedYear=2021, StopYear=2021, ShelvedCancelledStatusType='confirmed'. The 2021 force-majeure suspension genuinely occurred (so 2021 is correct as the START of the now-CLOSED shelved interval), but these cells currently present the project as still shelved. Not staged as edits (they hang off the Status change above).",
+    "severity": "high",
+    "suggested_action": "When applying the Status->construction change, convert ShelvedYear/StopYear=2021 into a closed historical interval (shelved 2021 -> restart 2025/26) via the timeline; clear/repurpose Substatus and ShelvedCancelledStatusType accordingly.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130257",
+    "unit_id": "G100001054919",
+    "terminal_name": "Mozambique LNG Terminal",
+    "issue": "T2 shelved-status metadata is now stale given the 2025/26 restart: Substatus='confirmed', ShelvedYear=2021, StopYear=2021, ShelvedCancelledStatusType='confirmed'. The 2021 force-majeure suspension genuinely occurred (so 2021 is correct as the START of the now-CLOSED shelved interval), but these cells currently present the project as still shelved. Not staged as edits (they hang off the Status change above).",
+    "severity": "high",
+    "suggested_action": "When applying the Status->construction change, convert ShelvedYear/StopYear=2021 into a closed historical interval (shelved 2021 -> restart 2025/26) via the timeline; clear/repurpose Substatus and ShelvedCancelledStatusType accordingly.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130257",
+    "unit_id": "G100002025703",
+    "terminal_name": "Mozambique LNG Terminal",
+    "issue": "T3 models the PROPOSED Train 3 / Train 4 expansion (announced Nov 2019), which never reached FID and was not part of the sanctioned/financed two-train project. GEM holds it 'shelved' (ShelvedYear/StopYear=2021). With the base project (T1/T2) restarting in 2025/26, the expansion's status is ambiguous: it was never under construction, so 'proposed' (or 'shelved' pending an expansion decision) may be more accurate than tying it to the 2021 base-project force majeure. No current source confirms an active T3/T4 expansion decision. Not staged.",
+    "severity": "medium",
+    "suggested_action": "Decide whether T3/T4 should be 'proposed' (never-FID'd expansion) vs 'shelved'; the 2021 force-majeure framing fits the base plant, not the unsanctioned expansion. Watch for an expansion FID announcement post-restart.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130257",
+    "unit_id": "G100002025704",
+    "terminal_name": "Mozambique LNG Terminal",
+    "issue": "T4 models the PROPOSED Train 3 / Train 4 expansion (announced Nov 2019), which never reached FID and was not part of the sanctioned/financed two-train project. GEM holds it 'shelved' (ShelvedYear/StopYear=2021). With the base project (T1/T2) restarting in 2025/26, the expansion's status is ambiguous: it was never under construction, so 'proposed' (or 'shelved' pending an expansion decision) may be more accurate than tying it to the 2021 base-project force majeure. No current source confirms an active T3/T4 expansion decision. Not staged.",
+    "severity": "medium",
+    "suggested_action": "Decide whether T3/T4 should be 'proposed' (never-FID'd expansion) vs 'shelved'; the 2021 force-majeure framing fits the base plant, not the unsanctioned expansion. Watch for an expansion FID announcement post-restart.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dead_ref",
+    "terminal_id": "T100000130257",
+    "unit_id": "G100002025701",
+    "terminal_name": "Mozambique LNG Terminal",
+    "issue": "Multiple GEM-cited refs across all 4 units are DEAD or wrong: (a) giignl.org/sites/default/files/PUBLIC_AREA/Publications/giignl_-_2020_annual_report_-_04082020.pdf = HTTP 404 GONE (cited for FacilityType and listed 7x in every Owner [ref] cell) - replaced in staged records with the working website-files mirror of the same GIIGNL 2020 edition; note GIIGNL does NOT actually carry the owner equity split, so the sponsor PR + lngprime now back Owner. (b) igu.org/publications-page = HTTP 404 (generic landing, carried no value; cited for Capacity/CapacityUnits on T1/T2) - replaced with nsenergybusiness/Enerdata. (c) bloombergquint.com/business/total-suspends-mozambique-lng-indefinitely-on-security-threat = HTTP 000 / domain defunct (bloombergquint rebranded to NDTV Profit; no Wayback snapshot) - cited for Status/Substatus on T1/T2; dead. (d) allafrica.com/stories/202008060648.html = loads (200) but does NOT contain the $14.9bn financing figure - it covers the separate ECIC/South-Africa guarantee and a $24bn total - so it is a WRONG citation for the Financing cell, not a valid corroborator; dropped.",
+    "severity": "medium",
+    "suggested_action": "Replace the GIIGNL-2020 404 with the website-files mirror; drop igu.org/publications-page and bloombergquint; drop allafrica from Financing (use Reuters + asaaseradio). All replacement URLs are in the staged updates records.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "bot_blocked",
+    "terminal_id": "T100000130257",
+    "unit_id": "G100002025701",
+    "terminal_name": "Mozambique LNG Terminal",
+    "issue": "Three GEM-cited refs are LIVE but bot-blocked (not dead): Reuters financing article (idUSKCN24I2FZ, HTTP 401 - value '$14.9 billion'+'African Development Bank' verify on Wayback 20240207044222); S&P Global Platts 042921 delay article (HTTP 403 - 'Mozambique'/'delayed' verify on Wayback 20210705074709); nsenergybusiness Area-1 profile (HTTP 403 - '12.88'/'Cabo Delgado'/'export'/'Golfinho' verify on Wayback 20260508081148). These remain valid citations - the reviewer can open them in a browser.",
+    "severity": "low",
+    "suggested_action": "Keep these live URLs as refs (verified via Wayback). No action needed beyond awareness; open in a browser if manual confirmation wanted.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130257",
+    "unit_id": "G100002025703",
+    "terminal_name": "Mozambique LNG Terminal",
+    "issue": "T3 Capacity=5.00 mtpa could NOT be corroborated off-GEM. The T3/T4 expansion (Train 3 & 4) was announced as a study in Nov 2019 but never reached FID, and no published source states a discrete ~5.0 mtpa-per-train figure for it (sources give the BASE plant as 12.88-13.1 mtpa total and the long-run expansion ceiling as 'up to 43 mtpa', not a 5.0/train breakdown). Additionally, the GEM-cited Capacity [ref] for T3/T4 (reuters.com/...anadarko-jera...idUSL8N0Z92O120150625) is a 2015 JERA-offtake article that PRE-DATES the 2019 T3/T4 proposal and does not support a 5.0 mtpa figure - a mismatched citation. Capacity staged yellow (single weak basis via clubofmozambique for the existence of the trains, not the number).",
+    "severity": "medium",
+    "suggested_action": "Treat T3/T4 Capacity=5.0 mtpa as a GEM planning estimate; relocate or blank if no per-train expansion capacity is published. Replace the mismatched 2015 Reuters ref. The expansion remains pre-FID.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130257",
+    "unit_id": "G100002025704",
+    "terminal_name": "Mozambique LNG Terminal",
+    "issue": "T4 Capacity=5.00 mtpa could NOT be corroborated off-GEM. The T3/T4 expansion (Train 3 & 4) was announced as a study in Nov 2019 but never reached FID, and no published source states a discrete ~5.0 mtpa-per-train figure for it (sources give the BASE plant as 12.88-13.1 mtpa total and the long-run expansion ceiling as 'up to 43 mtpa', not a 5.0/train breakdown). Additionally, the GEM-cited Capacity [ref] for T3/T4 (reuters.com/...anadarko-jera...idUSL8N0Z92O120150625) is a 2015 JERA-offtake article that PRE-DATES the 2019 T3/T4 proposal and does not support a 5.0 mtpa figure - a mismatched citation. Capacity staged yellow (single weak basis via clubofmozambique for the existence of the trains, not the number).",
+    "severity": "medium",
+    "suggested_action": "Treat T3/T4 Capacity=5.0 mtpa as a GEM planning estimate; relocate or blank if no per-train expansion capacity is published. Replace the mismatched 2015 Reuters ref. The expansion remains pre-FID.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130257",
+    "unit_id": "G100002025701",
+    "terminal_name": "Mozambique LNG Terminal",
+    "issue": "T1 Latitude=-10.8071040 / Longitude=40.5553330 / Accuracy='approximate' could not be machine-verified: the GEM-cited Location [ref] is a Google Maps URL (interactive, no extractable text value) and coordinates are geocodes (per project convention not staged as factual values). The general location IS independently corroborated (Afungi Peninsula, Palma District, Cabo Delgado, ~10.8S/40.55E) by Enerdata, nsenergybusiness (Wayback) and Al Jazeera; State/Province staged blue. Coordinates left untouched (not coloured).",
+    "severity": "low",
+    "suggested_action": "Retain the approximate Afungi geocode; no change. Optionally cite a text-bearing source for the location alongside the Google Maps pin.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130257",
+    "unit_id": "G100001054919",
+    "terminal_name": "Mozambique LNG Terminal",
+    "issue": "T2 Latitude=-10.8071040 / Longitude=40.5553330 / Accuracy='approximate' could not be machine-verified: the GEM-cited Location [ref] is a Google Maps URL (interactive, no extractable text value) and coordinates are geocodes (per project convention not staged as factual values). The general location IS independently corroborated (Afungi Peninsula, Palma District, Cabo Delgado, ~10.8S/40.55E) by Enerdata, nsenergybusiness (Wayback) and Al Jazeera; State/Province staged blue. Coordinates left untouched (not coloured).",
+    "severity": "low",
+    "suggested_action": "Retain the approximate Afungi geocode; no change. Optionally cite a text-bearing source for the location alongside the Google Maps pin.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130257",
+    "unit_id": "G100002025703",
+    "terminal_name": "Mozambique LNG Terminal",
+    "issue": "T3 Latitude=-10.8071040 / Longitude=40.5553330 / Accuracy='approximate' could not be machine-verified: the GEM-cited Location [ref] is a Google Maps URL (interactive, no extractable text value) and coordinates are geocodes (per project convention not staged as factual values). The general location IS independently corroborated (Afungi Peninsula, Palma District, Cabo Delgado, ~10.8S/40.55E) by Enerdata, nsenergybusiness (Wayback) and Al Jazeera; State/Province staged blue. Coordinates left untouched (not coloured).",
+    "severity": "low",
+    "suggested_action": "Retain the approximate Afungi geocode; no change. Optionally cite a text-bearing source for the location alongside the Google Maps pin.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130257",
+    "unit_id": "G100002025704",
+    "terminal_name": "Mozambique LNG Terminal",
+    "issue": "T4 Latitude=-10.8071040 / Longitude=40.5553330 / Accuracy='approximate' could not be machine-verified: the GEM-cited Location [ref] is a Google Maps URL (interactive, no extractable text value) and coordinates are geocodes (per project convention not staged as factual values). The general location IS independently corroborated (Afungi Peninsula, Palma District, Cabo Delgado, ~10.8S/40.55E) by Enerdata, nsenergybusiness (Wayback) and Al Jazeera; State/Province staged blue. Coordinates left untouched (not coloured).",
+    "severity": "low",
+    "suggested_action": "Retain the approximate Afungi geocode; no change. Optionally cite a text-bearing source for the location alongside the Google Maps pin.",
+    "researcher_initials": "AI-draft"
+  }
+]

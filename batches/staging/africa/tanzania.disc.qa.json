@@ -8,5 +8,15 @@
     "severity": "low",
     "suggested_action": "In a Tanzania Update batch, refresh OriginalPlannedStartYear/LatestPlannedStartYear and FID-related notes for the Lindi export terminal to reflect the latest (2025-2026) FID-by-2025/2026-or-2028 and first-export-~2032 reporting; verify HGA signing status. Sources: https://www.intellinews.com/tanzania-pushes-for-42bn-lng-deal-with-shell-equinor-by-end-2025-after-decades-of-delays-404556/ ; https://lngprime.com/contracts-and-tenders/shell-and-equinor-moving-forward-with-giant-tanzania-lng-project/82089/",
     "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "scope_correction",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Dar es Salaam Small-Scale LNG Terminal (Rosetta Energy virtual pipeline)",
+    "issue": "WITHDRAWN from this batch (user correction 2026-06-24). The June africa discovery sweep wrongly staged this as a new_terminal with FacilityType='export'. It is a DOMESTIC-ONLY small-scale LNG 'virtual pipeline' -- a Dar es Salaam liquefaction skid feeding cryogenic ROAD TANKERS to domestic regas points (e.g. Elsewedy Industrial City ~100 km inland). It moves no LNG by ship across a border in either direction, so it is neither an import nor an export terminal in the GEM sense and is OUT OF SCOPE for the LNG Terminals Tracker. The staged record self-flagged the doubt ('reviewer may prefer a small-scale/peakshaving classification') yet was staged anyway -- the discipline failure was staging-with-doubt instead of resolving the scope question first. Its three entity additions (Rosetta Energy Solutions, TAQA Arabia, Africa50) are withdrawn with it.",
+    "severity": "medium",
+    "suggested_action": "Do NOT add. Removed from tanzania.disc.newterminals.json and tanzania.disc.entity.json. Rule now in Discovery SOP §3: a candidate whose only function is domestic gas distribution (virtual pipeline / trucking / peak-shaving with no marine LNG import or export) is out of scope; 'export'/'import' FacilityType requires cross-border marine LNG movement.",
+    "researcher_initials": "AI-draft (discovery follow-up)"
   }
 ]

@@ -1,0 +1,32 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100001048176",
+    "unit_id": "G100001055238",
+    "terminal_name": "Sheikh Sabah LNG Terminal",
+    "issue": "GEM holds Status='proposed' (last updated 2025-07-09), but multiple sources now describe the project as in active construction. Zawya (2025-10-13) reports the energy minister inspecting on-site 'progress' / 'ongoing development works'; Oil & Gas Middle East and Jordan Times carry the same minister-inspection story. The EPCIC contract was awarded Aug 2024 with a 22-month build to Q2 2026 commissioning (Sept 2026 service entry per the Oct-2025 update), implying the build is underway. This reads as proposed -> construction.",
+    "severity": "medium",
+    "suggested_action": "Review for a Status change to 'construction' with an anchor ~2024-2025. Did NOT stage a Status field edit and did NOT touch the timeline (fetch_timeline endpoint is down). Corroborating PASS URLs: https://www.zawya.com/en/economy/levant/jordan-energy-minister-reviews-lng-terminal-expansion-in-aqaba-jnuoplsw ; https://lngprime.com/middle-east/agp-gas-entec-score-jordan-lng-terminal-gig/121897/ . Confirm with a primary/ADC source before changing in the live DB.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dead_ref",
+    "terminal_id": "T100001048176",
+    "unit_id": "G100001055238",
+    "terminal_name": "Sheikh Sabah LNG Terminal",
+    "issue": "Existing GEM Capacity [ref] https://www.adc.jo/project_details.aspx?pro_id=1133 now returns HTTP 302 (redirect/dead) on url_verifier; the project ID appears to have moved (ADC project pages 1019/1134 are the live equivalents). Existing Financing [ref] https://www.fananews.com/language/en/aqaba-development-company-signs-125-million-deal-to-modernize-liquefied-natural-gas-terminal/ now returns HTTP 404.",
+    "severity": "low",
+    "suggested_action": "Drop both dead refs. This batch replaces them with PASSing trade-press sources: Capacity -> PRNewswire/OGJ/LNG Prime/LNG Industry; Financing -> LNG Industry/Zawya. The staged updates records carry the replacements.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "field_completeness",
+    "terminal_id": "T100001048176",
+    "unit_id": "G100001055238",
+    "terminal_name": "Sheikh Sabah LNG Terminal",
+    "issue": "GEM Financing names only the Kuwait Fund soft loan. Zawya (2025-10-13) and Oil & Gas Middle East report the $125m is financed via TWO concessional loans: KD 18.2m from the Kuwait Fund for Arab Economic Development AND KD 21m from the Arab Fund for Economic and Social Development. The Arab Fund tranche is not reflected in the GEM Financing cell.",
+    "severity": "low",
+    "suggested_action": "Consider expanding Financing to note both concessional loans (Kuwait Fund + Arab Fund for Economic and Social Development). Left the existing Kuwait-Fund value as a blue re-verify rather than overwriting it, since the GEM text is not wrong, only incomplete. PASS source: https://www.zawya.com/en/economy/levant/jordan-energy-minister-reviews-lng-terminal-expansion-in-aqaba-jnuoplsw",
+    "researcher_initials": "AI-draft"
+  }
+]

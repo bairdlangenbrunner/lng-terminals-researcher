@@ -1,0 +1,53 @@
+{
+  "slug": "lebanon",
+  "country": "Lebanon",
+  "update_overrides": [
+    {
+      "terminal_id": "T100000130965",
+      "unit_id": "G100002096500",
+      "terminal_name": "Zahrani FSRU",
+      "unit_name": "--",
+      "country": "Lebanon",
+      "field_name": "PowerPlantsSupplied",
+      "old_value": "Zahrani Power Plant",
+      "new_value": "Zahrani Power Plant",
+      "confidence": "green",
+      "source_tier": "regulatory_plus_trade",
+      "ref_field": "PowerPlantsSupplied [ref]",
+      "ref_urls": [
+        "https://files.elnashra.com/elnashra/documents/4857824_1645366179.pdf",
+        "https://www.linkedin.com/pulse/saving-grace-lebanese-electricity-problem-lng-import-better-zahr/"
+      ],
+      "source_notes": "Recovered the dropped elnashra.com ref via Wayback. The live URL (https://files.elnashra.com/elnashra/documents/4857824_1645366179.pdf) is bot-blocked (HTTP 000) but is alive; value confirmed via Wayback snapshot 20230426141526 (PASS for 'Zahrani Power Plant'). The snapshot is the Lebanese MoEW Feb-2022 electricity plan, which explicitly pairs the FSRU with the Zahrani power plant: 'FSRU at Zahrani', 'Zahrani FSRU', and 'Generation cost of existing Zahrani power plant goes down to ~10 c/KWH when running on re-gasified LNG'. The live elnashra URL remains the [ref] (bot-blocked; confirmed via Wayback 20230426141526). This regulatory MoEW source plus the LinkedIn pulse (still PASSes 'Zahrani Power Plant') = two independent sources -> upgraded from yellow to green.",
+      "scope_note": "single-unit terminal",
+      "researcher_initials": "AI-draft (recheck)"
+    }
+  ],
+  "qa_add": [
+    {
+      "category": "value_corroborated",
+      "terminal_id": "T100000130965",
+      "unit_id": "G100002096500",
+      "terminal_name": "Zahrani FSRU",
+      "field_name": "PowerPlantsSupplied",
+      "issue": "PowerPlantsSupplied (Zahrani Power Plant) upgraded yellow->green. The previously-dead elnashra.com MoEW planning PDF was recovered via Wayback (snapshot 20230426141526 PASSes 'Zahrani Power Plant'; live URL is bot-blocked HTTP 000 but archived and alive). Now two independent sources (MoEW plan + LinkedIn pulse) tie the FSRU to the Zahrani Power Plant.",
+      "severity": "low",
+      "suggested_action": "No further action; cell is now green-sourced.",
+      "researcher_initials": "AI-draft (recheck)"
+    }
+  ],
+  "qa_resolved": [
+    {
+      "terminal_id": "T100000130965",
+      "unit_id": "G100002096500",
+      "field_name": "PowerPlantsSupplied",
+      "issue_contains": "files.elnashra.com/elnashra/documents/4857824_1645366179.pdf"
+    }
+  ],
+  "summary": {
+    "refs_recovered": 1,
+    "values_changed": 0,
+    "values_deleted": 0,
+    "still_unsourced": 3
+  }
+}

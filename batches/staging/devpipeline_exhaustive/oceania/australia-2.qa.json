@@ -1,0 +1,82 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000131118",
+    "unit_id": "G100002111801",
+    "terminal_name": "Northern Territory LNG Terminal",
+    "issue": "GEM holds NTLNG as Status=shelved (substatus=confirmed, ShelvedYear/StopYear=2026, ShelvedCancelledStatusType=confirmed; set 2026-05-28). The cited basis (Tamboran Q3-FY2026 earnings call, 15 May 2026) and corroborating coverage describe the project as 'on hold pending a JV partner' / 'no capital allocated to full FEED until JV partner secured' - it does NOT literally state the project is 'shelved'/'deferred'/'cancelled'. The 'shelved' classification is GEM's editorial read of an indefinite deferral, which is defensible, but no off-GEM source asserts the literal word 'shelved' nor a shelving date of 2026.",
+    "severity": "medium",
+    "suggested_action": "Human to confirm GEM's editorial 'shelved' call is the intended lifecycle state vs 'proposed' (project not formally cancelled; sponsor still markets NTLNG and lists 2026 sanction target). If retained as shelved, ShelvedYear/StopYear=2026 rest on GEM's interpretation, not a sourced shelving event - acceptable as inferred metadata but should be documented in researcher_notes. fetch_timeline is down; status not staged.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000131118",
+    "unit_id": "G100002111801",
+    "terminal_name": "Northern Territory LNG Terminal",
+    "issue": "LatestPlannedStartYear=2031 could not be corroborated against any non-GEM source. The ABC FOI report (Nov 2024) supports an original 2029 target and a ~2-year delay, but no source states a specific 2031 latest-start year; LNG Prime (2023) framed first volumes 'by 2030'. The literal 2031 appears to be a GEM-derived inference (2029 + ~2yr delay).",
+    "severity": "low",
+    "suggested_action": "Leave LatestPlannedStartYear as the GEM inference but treat as unsourced; do not color/stage. If a current schedule emerges, update. Not staged.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000131118",
+    "unit_id": "G100002111801",
+    "terminal_name": "Northern Territory LNG Terminal",
+    "issue": "Location locality='Wickham' could not be confirmed as a literal string on any verified non-GEM source. Verified sources place NTLNG at the 'Middle Arm Sustainable Development Precinct, Darwin Harbour, NT' (lngprime, offshore-technology via Wayback, dipl.nt.gov.au via Wayback). 'Wickham' most likely refers to Wickham Point on Darwin Harbour (a real feature adjacent to Middle Arm/Bladin Point), but the locality label itself is not independently sourced. Coordinates (-12.540309, 130.960794, Accuracy=approximate) are GEM-inferred geocode metadata, not independently re-derived this pass; they are broadly consistent with the Darwin Harbour/Middle Arm area.",
+    "severity": "low",
+    "suggested_action": "Consider normalizing Location locality to 'Middle Arm' or 'Wickham Point, Darwin Harbour' for clarity; verify the approximate coordinate against the Middle Arm precinct footprint. State/Province=Northern Territory is solidly confirmed (staged blue). Coords/Accuracy not staged (geocode metadata).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "stale_value",
+    "terminal_id": "T100000131118",
+    "unit_id": "G100002111801",
+    "terminal_name": "Northern Territory LNG Terminal",
+    "issue": "FIDYear=2026 (FIDStatus=Pre-FID) rests on the original 2023 LNG Prime statement that Tamboran aimed to sanction 'by 2026'. The Q3-FY2026 earnings call (May 2026) makes a 2026 FID look unlikely: the company will not allocate capital to full FEED until a JV partner is secured. Value retained (yellow, single-sourced) but probably stale.",
+    "severity": "low",
+    "suggested_action": "Human to decide whether to clear/blank FIDYear or push it out; no firm replacement year is sourced, so left as-is rather than staging an unsourced new year.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "stale_value",
+    "terminal_id": "T100000130607",
+    "unit_id": "G100002060700",
+    "terminal_name": "Outer Harbor FSRU",
+    "issue": "FIDYear=2025 (FIDStatus=Pre-FID) is the targeted FID year. AG&P/Nebula targeted FID in 2025, but researcher_notes_unit records 'still no FID as of may 2026' and no FID announcement was found - the 2025 target was missed. GEM correctly holds Pre-FID; the FIDYear is a target, not an achieved FID.",
+    "severity": "low",
+    "suggested_action": "Retain FIDYear=2025 as the last stated target (or update to a newer target if one is published); FIDStatus stays Pre-FID. No off-GEM source gives a revised FID year, so none staged.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "bot_blocked_ref",
+    "terminal_id": "T100000130607",
+    "unit_id": "G100002060700",
+    "terminal_name": "Outer Harbor FSRU",
+    "issue": "Two existing GEM refs are 401-bot-blocked to automated clients with NO Wayback snapshot available, so they could not be machine-verified here (they are alive in a browser, NOT dead): (1) reuters.com/business/energy/australia-could-import-lng-2027-...-2025-06-12 (cited for Operator + Capacity); (2) the same Reuters east-coast piece. Existing veniceenergy.com sale-agreement ref (cited for Owner + Financing) is a thin 117-word post behind a Cloudflare WAF and does not contain 'AG&P' literally.",
+    "severity": "low",
+    "suggested_action": "Reviewer can open the Reuters URL in a browser to confirm. Replacement verifiable independents (naturalgasworld, LNG Prime nebula-FID, LNG Prime finds-partner) have been staged for Owner/Operator/Capacity/Financing, so the values are independently supported regardless.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_quality",
+    "terminal_id": "T100000130338",
+    "unit_id": "G100002033802",
+    "terminal_name": "Pluto LNG Terminal",
+    "issue": "GEM Location city='Perth' for Pluto LNG Train 2, but the plant is on the Burrup Peninsula near Karratha (~1,500 km from Perth). 'Perth' appears to be a nearest-major-city / WA-state label rather than the site town. Coordinates (-20.6128, 116.76556, Accuracy=exact) and Prefecture/District='Burrup Peninsula' are correct for the Karratha site; the Location ref is a Google Maps pin (geocode, verified as a maps URL, not an asserted-value page).",
+    "severity": "low",
+    "suggested_action": "Consider changing Location city to 'Karratha' for accuracy (State=Western Australia and Prefecture=Burrup Peninsula already correct). Coordinates verified consistent with the Pluto LNG Park pin; Accuracy=exact retained. Not staged as an edit (city label is a soft convention call for the reviewer).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130338",
+    "unit_id": "G100002033802",
+    "terminal_name": "Pluto LNG Terminal",
+    "issue": "Pluto Train 2 is >90% complete with first LNG cargo targeted H2/Q4 2026 (multiple independent sources). Status correctly remains 'construction' (pre-first-cargo) as of latest reporting. Flagging as a forward-looking watch item: once first cargo loads (expected H2 2026), Status should move construction->operating.",
+    "severity": "low",
+    "suggested_action": "No change now (still under construction/commissioning). Monitor for first-cargo announcement in H2 2026 to trigger a status_timeline update then. fetch_timeline is down; not staged.",
+    "researcher_initials": "AI-draft"
+  }
+]

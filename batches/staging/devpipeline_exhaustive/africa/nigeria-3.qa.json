@@ -1,0 +1,52 @@
+[
+  {
+    "category": "data_quality",
+    "terminal_id": "T100000130262",
+    "unit_id": "G100002026201,G100002026202",
+    "terminal_name": "Olokola LNG Terminal",
+    "issue": "State/Province = 'Cross River State' appears WRONG. Every independent source places Olokola / the Olokola Free Trade Zone on the Ogun/Ondo State border in SW Nigeria (Ogun Waterside LGA, extending to Ilaje LGA in Ondo State) -- NOT Cross River State in SE Nigeria. lngprime says 'Ogun State'; ThisDay (2017) headline 'Why NNPC May Cancel Olokola LNG Project in Ogun, Ondo States' and body 'between the border town of Ondo and Ogun States'; OK Free Trade Zone descriptions confirm Ogun/Ondo. The OGJ Gastech-2024 article does say 'Cross River State' but appears to echo GEM (circular, not independent). Could not stage a single replacement value cleanly since the site straddles two states (Ogun + Ondo); GEM's current single 'Cross River State' is the most defensible correction target. Coordinates compound the issue (see separate qa).",
+    "severity": "high",
+    "suggested_action": "Route to Update: correct State/Province to reflect Ogun/Ondo border (Olokola is in Ogun Waterside LGA, Ogun State, on the Ondo State boundary). Re-geocode (see coords qa). Sources: lngprime 126432; thisdaylive 2017/01/03 (PASS 'Ogun'); OK Free Trade Zone descriptions.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_quality",
+    "terminal_id": "T100000130262",
+    "unit_id": "G100002026201,G100002026202",
+    "terminal_name": "Olokola LNG Terminal",
+    "issue": "Coordinates (Lat 5.0216670, Long 8.3202780) plot near Calabar in Cross River State (SE Nigeria) -- consistent with the erroneous 'Cross River State' value, NOT the actual Olokola site. Olokola Free Trade Zone sits on the Atlantic coast at the Ogun/Ondo border (~roughly 6.3-6.4 N, ~4.5 E), far to the west. Geocode is out of scope for this batch to overwrite (Lat/Long/Accuracy are GEM-inferred geocodes, not asserted factual values), so no coordinate edit staged -- flagging for the reviewer.",
+    "severity": "high",
+    "suggested_action": "Route to Update / geocode fix: relocate the point to the Olokola coast on the Ogun/Ondo border. The existing Location [ref] (reuters L18216793) is bot-blocked (401) with no Wayback snapshot and cannot be machine-verified for coordinates here.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130262",
+    "unit_id": "G100002026201,G100002026202",
+    "terminal_name": "Olokola LNG Terminal",
+    "issue": "OriginalPlannedStartYear and LatestPlannedStartYear = 2011 could not be corroborated against any independent non-GEM page. lngprime and OGJ FAILed the '2011' token; the OGJ 'Japanese venture joins Olokola' article PASSed '2011' only as a false-positive substring match (it actually cites 2009/2010 target shipment dates, and a Reuters headline says startup 2012). abarrelfull.wikidot.com PASSes '2011' but is a GEM-adjacent tertiary wiki, not independent. The two GEM-cited Reuters refs (oklng 2007; start-up-2012 L18216793) are bot-blocked (401) with NO Wayback snapshot, so the value is not machine-verifiable here. Did NOT stage a blue re-verify for these two cells.",
+    "severity": "low",
+    "suggested_action": "Reviewer to open the Reuters refs in a browser to confirm the 2011 planned-startup figure; sources variously cite 2009/2010/2011/2012, so the planned-start year is soft. No staged change.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130262",
+    "unit_id": "G100002026201,G100002026202",
+    "terminal_name": "Olokola LNG Terminal",
+    "issue": "ShelvedYear = 2015 could not be pinned to any source. The project effectively stalled after the IOC exits (Shell+Chevron Aug 2013) and entered formal wind-down/preservation mode in early 2017 (ThisDay 2017-01-03). No source identifies a discrete 2015 shelving event. Consistent with the GEM ShelvedCancelledStatusType = 'inferred'. Left the ShelvedYear [ref] BLANK (did not fill the blank_ref) since the specific 2015 value is uncorroborated.",
+    "severity": "low",
+    "suggested_action": "Reviewer may reconsider ShelvedYear: 2013 (IOC exit) or 2017 (preservation mode) are the documentable milestones; 2015 has no found basis. No staged change.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dead_or_blocked_ref",
+    "terminal_id": "T100000130262",
+    "unit_id": "G100002026201,G100002026202",
+    "terminal_name": "Olokola LNG Terminal",
+    "issue": "Existing GEM refs status: (1) reuters.com/article/markets/nigerian-olokola-lng-to-start-up-in-2012-...-L18216793 (cited for Location/coords) -> HTTP 401 bot-block, NO Wayback snapshot available -> live-but-not-machine-verifiable here. (2) reuters.com/article/nigeria-oklng-...20070418 (cited for StartDate) -> HTTP 401 bot-block, NO Wayback snapshot. (3) marketresearch.com Timetric NNPC-Olokola (cited for FacilityType + Owner) -> HTTP 403 bot-block; a Wayback snapshot (2021-05-06) exists and PASSes 'Olokola' but does NOT contain 'export' -> insufficient as a FacilityType citation, though it confirms the project. Replaced FacilityType/Owner/Capacity/ProposalYear citations with fresh independent sources (lngprime, FER, OGJ, Hart, Punch, ThisDay).",
+    "severity": "medium",
+    "suggested_action": "Reviewer can open the two Reuters URLs in a browser to confirm location/coords/start-year (bot-blocked, not dead). FacilityType/Owner now cited to live independent sources in the updates sheet; marketresearch Timetric ref can be dropped.",
+    "researcher_initials": "AI-draft"
+  }
+]

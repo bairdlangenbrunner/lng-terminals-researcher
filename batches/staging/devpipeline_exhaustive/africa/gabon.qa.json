@@ -1,0 +1,42 @@
+[
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000131107",
+    "unit_id": "G100002110701",
+    "terminal_name": "Cap Lopez FLNG Terminal",
+    "issue": "Latitude (-0.6322790), Longitude (8.7125300) and Accuracy ('approximate') are map geocodes, not asserted by any cited or findable text source. Cap Lopez/Port-Gentil placement is confirmed in prose but the exact coordinates cannot be corroborated off-GEM (they are GEM-inferred geocode metadata). Not staged as a value change; left as-is.",
+    "severity": "low",
+    "suggested_action": "Treat coordinates/Accuracy as GEM geocode metadata (not a citable factual value); no change needed. Cap Lopez/Ogooué-Maritime placement is correct.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "value_conflict",
+    "terminal_id": "T100000131107",
+    "unit_id": "G100002110701",
+    "terminal_name": "Cap Lopez FLNG Terminal",
+    "issue": "Cost discrepancy in newer promotional material: GEM holds Cost = $1,000,000,000 (USD, 2023), corroborated by all FID-era sources (LNG Prime, OGJ, Zawya, World Oil, energycapitalpower) and reconfirmed in 2025 French press ('un milliard de dollars'). However, 2026 African Energy Week promo material (aecweek.com) repeatedly cites the project as '$2 billion'. No primary/sponsor source confirms the $2B figure; it may reflect total program cost or escalation. GEM's $1B is the better-sourced FID value; retained.",
+    "severity": "low",
+    "suggested_action": "Keep Cost at $1B (FID-anchored, multi-sourced). Watch for a sponsor/regulatory restatement that would justify revising to ~$2B; do not adopt the AEC promo figure without a primary source.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000131107",
+    "unit_id": "G100002110701",
+    "terminal_name": "Cap Lopez FLNG Terminal",
+    "issue": "State/Province = 'Ogooué-Maritime' is geographically correct (Cap Lopez / Port-Gentil lie within Ogooué-Maritime, whose capital is Port-Gentil) but the province name does not appear verbatim in the cited trade-press Location [ref]; sources say 'Cap Lopez'/'Port-Gentil'/'Gabon'. Retained as unchanged; not independently citable beyond the city-to-province mapping.",
+    "severity": "low",
+    "suggested_action": "No change; province is correct by the Port-Gentil/Cap Lopez to Ogooué-Maritime mapping. Optionally cite a gazetteer if a verbatim source is required.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dead_ref",
+    "terminal_id": "T100000131107",
+    "unit_id": "G100002110701",
+    "terminal_name": "Cap Lopez FLNG Terminal",
+    "issue": "The StartDate [ref] in GEM pairs northafricapost with an IGU 2025 World LNG Report URL (igu.org/igu-reports/2025-world-lng-report?gad_source=...). That URL is a marketing/landing page with tracking params and no machine-verifiable text for the 2026/2027 values (not a dead 404, but not citable here). Replaced/supplemented with northafricapost + gabonreview (2026) and the drydocks LNG Prime article (2027 sail-away), all of which PASS. Existing OriginalPlannedStartYear/LatestPlannedStartYear values unchanged.",
+    "severity": "low",
+    "suggested_action": "Drop the IGU gad-tracked landing URL from StartDate [ref]; use the trade-press URLs that explicitly carry 2026 (proposal-era target) and 2027 (FSU sail-away). Values 2026/2027 confirmed.",
+    "researcher_initials": "AI-draft"
+  }
+]
