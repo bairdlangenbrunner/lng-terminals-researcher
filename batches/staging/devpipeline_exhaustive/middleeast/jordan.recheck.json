@@ -1,0 +1,64 @@
+{
+  "slug": "jordan",
+  "country": "Jordan",
+  "update_overrides": [
+    {
+      "terminal_id": "T100001048176",
+      "unit_id": "G100001055238",
+      "terminal_name": "Sheikh Sabah LNG Terminal",
+      "unit_name": "--",
+      "country": "Jordan",
+      "field_name": "Financing",
+      "old_value": "Soft loan from Kuwait Fund for Arab Economic Development",
+      "new_value": "Soft loan from Kuwait Fund for Arab Economic Development",
+      "confidence": "blue",
+      "source_tier": "trade press (multiple independent) + recovered original ref",
+      "ref_field": "Financing [ref]",
+      "ref_urls": [
+        "https://www.lngindustry.com/liquid-natural-gas/20082024/adc-to-develop-lng-port-in-jordan/",
+        "https://www.zawya.com/en/economy/levant/jordan-energy-minister-reviews-lng-terminal-expansion-in-aqaba-jnuoplsw",
+        "https://www.fananews.com/language/en/aqaba-development-company-signs-125-million-deal-to-modernize-liquefied-natural-gas-terminal/"
+      ],
+      "source_notes": "RECHECK: recovered the original GEM Financing ref (fananews.com) that the first pass dropped as HTTP 404. The live URL is gone/bot-blocked (live 404; raw archive.org fetch later 000-throttled), but the Wayback snapshot 20250106123559 PASSes url_verifier for the cell value 'Kuwait Fund' and co-locates it with '125' and 'Aqaba' on the same article ('Aqaba Development Company Signs $125 Million Deal to Modernize Liquefied Natural Gas Terminal') -> not a collision; confirms 'Soft loan from Kuwait Fund for Arab Economic Development'. Per brief, the LIVE fananews URL is the [ref]; value confirmed via Wayback 20250106123559. Merged into the first-pass corroboration set (LNG Industry + Zawya), so this cell now has 3 independent sources. Value unchanged (blue). The separate field_completeness qa note (add the Arab Fund for Economic and Social Development tranche) still stands.",
+      "scope_note": "single-unit terminal",
+      "researcher_initials": "AI-draft (recheck)"
+    }
+  ],
+  "qa_add": [
+    {
+      "category": "dead_ref",
+      "terminal_id": "T100001048176",
+      "unit_id": "G100001055238",
+      "terminal_name": "Sheikh Sabah LNG Terminal",
+      "field_name": "Capacity",
+      "issue": "RECHECK: the original Capacity [ref] https://www.adc.jo/project_details.aspx?pro_id=1133 is genuinely unrecoverable. Live URL returns HTTP 302 (project ID moved per first pass; ADC pages 1019/1134 are the live equivalents) AND the Wayback Machine has NO snapshot of pro_id=1133 (archive.org/wayback/available -> archived_snapshots:{}). It stays dropped. Capacity (0.72 bcf/d = 720 mmscfd) remains corroborated by the trade-press set (PRNewswire/OGJ/LNG Prime/LNG Industry) staged in the first pass.",
+      "severity": "low",
+      "suggested_action": "No action needed; the dropped adc.jo ref has working trade-press replacements already staged. If a primary ADC source is wanted, check the live ADC project pages (pro_id 1019/1134) in a future batch.",
+      "researcher_initials": "AI-draft (recheck)"
+    },
+    {
+      "category": "dead_ref",
+      "terminal_id": "T100001048176",
+      "unit_id": "G100001055238",
+      "terminal_name": "Sheikh Sabah LNG Terminal",
+      "field_name": "Financing",
+      "issue": "RECHECK: the original Financing [ref] fananews.com (first pass called it 404) was RECOVERED via Wayback snapshot 20250106123559, which PASSes url_verifier for 'Kuwait Fund' (+ '125'/'Aqaba' on the same article). The live URL is bot-blocked/gone but the value is confirmed; it is re-attached as the [ref] (see update_overrides) alongside LNG Industry + Zawya.",
+      "severity": "low",
+      "suggested_action": "Financing now carries 3 independent refs (LNG Industry, Zawya, recovered fananews). The fananews live URL may render 404 to a browser; the value is archived at Wayback 20250106123559.",
+      "researcher_initials": "AI-draft (recheck)"
+    }
+  ],
+  "qa_resolved": [
+    {
+      "terminal_id": "T100001048176",
+      "unit_id": "G100001055238",
+      "issue_contains": "Existing Financing [ref] https://www.fananews.com"
+    }
+  ],
+  "summary": {
+    "refs_recovered": 1,
+    "values_changed": 0,
+    "values_deleted": 0,
+    "still_unsourced": 0
+  }
+}

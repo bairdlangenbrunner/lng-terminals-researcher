@@ -1,0 +1,32 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100001083374",
+    "unit_id": "G100001094188",
+    "terminal_name": "Taranaki LNG Terminal",
+    "issue": "Possible start-year slip: every current source frames the schedule as 'operational as soon as 2027 or early 2028'. GEM holds OriginalPlannedStartYear=2027 and LatestPlannedStartYear=2027. The recurring 'or early 2028' wording, plus interest.co.nz noting 'the earliest that LNG might be available through this route is winter 2028', suggests LatestPlannedStartYear may warrant a bump to 2028. Not staged as a change because no source presents 2028 as a confirmed revised target (still framed as the same 2027/early-2028 plan, contract not yet signed).",
+    "severity": "low",
+    "suggested_action": "When the mid-2026 contract is signed and infrastructure type (in-port jetty vs FSRU/FSU) is locked, re-check the firm in-service date and consider setting LatestPlannedStartYear=2028 if the provider's schedule confirms early 2028.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100001083374",
+    "unit_id": "G100001094188",
+    "terminal_name": "Taranaki LNG Terminal",
+    "issue": "Status reconfirmed as 'proposed' (no change to flag). As of June 2026 the project is in commercial contracting: govt narrowed to two providers, aims to sign a contract by mid-2026; not yet under construction. Reviewer context only — included so the timeline is visible. The procurement (MBIE ROI) opened Oct 2025; govt decision 9 Feb 2026; June 2026 saw the funding model changed (power-bill levy dropped).",
+    "severity": "low",
+    "suggested_action": "Re-verify Status after the mid-2026 contract award; a signed BOOM contract / financial close would justify a future proposed->construction status review (do via timeline once fetch_timeline is back).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ref_integrity",
+    "terminal_id": "T100001083374",
+    "unit_id": "G100001094188",
+    "terminal_name": "Taranaki LNG Terminal",
+    "issue": "The ProposalDate [ref] currently cites the nzherald 9-Feb-2026 announcement, which does NOT itself substantiate ProposalYear=2024. The 2024 origin is substantiated by interest.co.nz (1 Oct 2025): the govt is 'reviving the LNG import terminal proposed a year ago'.",
+    "severity": "low",
+    "suggested_action": "Replace/supplement the ProposalDate [ref] with the interest.co.nz article (staged in updates) so the cited source actually supports the 2024 proposal year.",
+    "researcher_initials": "AI-draft"
+  }
+]

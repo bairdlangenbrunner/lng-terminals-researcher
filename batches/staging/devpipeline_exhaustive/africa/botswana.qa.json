@@ -1,0 +1,72 @@
+[
+  {
+    "category": "capacity_phasing_contested",
+    "terminal_id": "T100001048162",
+    "unit_id": "G100001055209",
+    "terminal_name": "Botswana LNG Terminal",
+    "issue": "GEM Phase 1 Capacity = 0.07 mtpa (~200 t/day). This matches one documented plan (Phase 1 = 200 t/day LNG by end-2026), but the sponsor's CURRENT framing conflicts: Botala's own project page describes phases by PJ/year tiers (Phase 1 ~0.25 PJ/yr, scaling to 3.5 PJ/yr ~200 t/day at full build), and Offshore Energy (offshore-energy.biz) reports Phase 1 = 50 t/day by 2026, Phase 2 = >200 t/day by 2028. The 200/800 t/day phasing and the 50/>200 t/day phasing are both in circulation. No single current capacity value is cleanly corroborated by >=2 independent sources, so the numeric Capacity was NOT re-confirmed (left uncolored).",
+    "severity": "medium",
+    "suggested_action": "Obtain Botala's bankable feasibility study (BFS) outcome or the latest ASX/BSE plant-design release to pin the definitive Phase 1 / Phase 2 nameplate. Until then treat 0.07/0.29 mtpa as provisional. CapacityUnits (mtpa) is correct.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "capacity_phasing_contested",
+    "terminal_id": "T100001048162",
+    "unit_id": "G100001055210",
+    "terminal_name": "Botswana LNG Terminal",
+    "issue": "GEM Phase 2 Capacity = 0.29 mtpa (~800 t/day). Same conflict as Phase 1: the 800 t/day figure matches one plan, but recent sponsor/trade sources describe Phase 2 as 'over 200 t/day' (offshore-energy.biz) or ~1.0 PJ/yr (Botala site). Numeric value NOT re-confirmed.",
+    "severity": "medium",
+    "suggested_action": "Reconcile Phase 2 nameplate against the BFS / latest Botala plant-scale disclosure before staging a capacity change.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "start_year_contested",
+    "terminal_id": "T100001048162",
+    "unit_id": "G100001055209",
+    "terminal_name": "Botswana LNG Terminal",
+    "issue": "GEM Original/LatestPlannedStartYear = 2026 (Phase 1). Sources diverge: some report first LNG by end-2026; energiesmedia (Botala overview) now states 'first LNG delivery anticipated in 2027'; FID itself is only targeted for H2 2026. First-output year is slipping/uncertain. StartYear cells were NOT re-confirmed (left uncolored).",
+    "severity": "medium",
+    "suggested_action": "Confirm Phase 1 first-LNG year (2026 vs 2027) from the next Botala ASX/BSE release post-FID; update StartDate accordingly. This is a date refinement, not a Status change (still proposed).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "start_year_contested",
+    "terminal_id": "T100001048162",
+    "unit_id": "G100001055210",
+    "terminal_name": "Botswana LNG Terminal",
+    "issue": "GEM Original/LatestPlannedStartYear = 2028 (Phase 2). Tied to the contested phasing; some sources keep 2028, others fold Phase 2 into a 'first LNG 2027-2028' window. Not re-confirmed.",
+    "severity": "low",
+    "suggested_action": "Refine Phase 2 start year alongside the Phase 1/Phase 2 capacity reconciliation post-BFS/FID.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ownership_change_pending",
+    "terminal_id": "T100001048162",
+    "unit_id": "G100001055209",
+    "terminal_name": "Botswana LNG Terminal",
+    "issue": "Minerals Development Company Botswana (MDCB, government investment arm) has confirmed an INTENTION to acquire 15% equity in the Serowe CBM Project (exercising its option under Section 40 of the Mines and Minerals Act; ~35 million pula / ~$3.6M, plus a 1% royalty on future LNG). Source: BSE disclosure 6114 (primary/regulatory) + energiesmedia/newvision/energycapitalpower. Transaction is 'subject to approval by the MDCB Board and shareholder', with operating agreements expected Nov/Dec 2025 — NOT yet closed. If/when it closes, Owner becomes Botala ~85% + MDCB 15%, and Parent should add MDCB (HQ Botswana / government).",
+    "severity": "medium",
+    "suggested_action": "Monitor for the MDCB acquisition to close; on close, update Owner to 'Botala Energy Ltd. [85%]; Minerals Development Company Botswana [15%]' and add MDCB as a Botswana government-owned entity (run entity_lookup first). Currently kept as Botala 100% (deal not consummated).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dead_ref",
+    "terminal_id": "T100001048162",
+    "unit_id": "G100001055209",
+    "terminal_name": "Botswana LNG Terminal",
+    "issue": "Two existing GEM [ref] URLs failed re-verification: (1) https://botalaenergy.com/serowe-cbm-project/gas-pitse-commercial/ returns HTTP 404 (genuinely dead; the sponsor restructured its site to https://botalaenergy.com/serowe-cbm-project/). (2) https://www.pressreader.com/botswana/botswana-guardian/20240315/281904483152121 returns HTTP 200 but no longer contains the cited value (failed citation; PressReader is paywalled). Both currently cited for FacilityType/Owner/Operator/Capacity/Status/ProposalYear.",
+    "severity": "low",
+    "suggested_action": "Replace the dead botalaenergy gas-pitse-commercial URL and the pressreader URL with the current sources staged in this batch (botalaenergy.com/serowe-cbm-project/, energiesmedia, proactiveinvestors, BSE 6114, etc.).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "uncitable_scanned_ref",
+    "terminal_id": "T100001048162",
+    "unit_id": "G100001055209",
+    "terminal_name": "Botswana LNG Terminal",
+    "issue": "Existing GEM Location [ref] https://wcsecure.weblink.com.au/pdf/BTE/02964806.pdf is a scanned/image PDF with no extractable text layer (and apis.bse.co.bw/.../5725.pdf is likewise scanned) — not machine-verifiable. Live but not citable by the value-on-page standard.",
+    "severity": "low",
+    "suggested_action": "Prefer the text-verifiable location sources staged this batch (proactiveinvestors.com.au + NS Energy) over the scanned ASX PDF for Location/State/District.",
+    "researcher_initials": "AI-draft"
+  }
+]

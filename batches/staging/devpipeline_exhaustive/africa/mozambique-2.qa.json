@@ -1,0 +1,72 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000131124",
+    "unit_id": "G100002112401",
+    "terminal_name": "Coral North FLNG Terminal",
+    "issue": "GEM Status = 'proposed', but Eni and partners took FID on 2 Oct 2025 and the FLNG hull was launched in Geoje, South Korea in Jan 2026 'in line with schedule'. The project is now effectively under construction (post-FID, construction underway). Status should advance proposed -> construction.",
+    "severity": "high",
+    "suggested_action": "Change Status to 'construction' with ConstructionYear 2025 (FID Oct 2025) and a timeline entry. NOT staged as a Status edit per brief (fetch_timeline endpoint is DOWN); route to a follow-on Update with the timeline. Refs: https://www.eni.com/en-IT/media/press-release/2025/10/pr-eni-announces-final-investment-decision-mozambique-coral-north-project.html ; https://www.eni.com/en-IT/media/press-release/2026/01/eni-announces-hull-launch-coral-north-flng.html ; https://lngprime.com/africa/eni-takes-fid-on-coral-norte-flng/165046/",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130788",
+    "unit_id": "G100002078800",
+    "terminal_name": "Nacala FSRU",
+    "issue": "Status = 'shelved' (substatus 'inferred 2 y') is a GEM INFERENCE (no project updates for ~2 years; the earmarked KARMOL Powership Asia FSRU was redeployed to Sepetiba Bay, Brazil in 2022). No independent primary source explicitly declares Nacala FSRU shelved/cancelled, so the Status/Substatus/ShelvedYear/StopYear [ref] cells cannot be citably filled (they are inferred, not asserted). researcher_notes asks whether the Aug-2024 Karpowership $1B Mozambique announcement revives it - that announcement is framed as a NEW South African Power Pool (SAPP) LNG-to-power investment, not a clear Nacala FSRU revival, though Karpowership references its existing powership in Nacala Bay.",
+    "severity": "medium",
+    "suggested_action": "Keep Status 'shelved (inferred)'. Do NOT fill the inferred status/shelved/stop [ref] cells (no citable primary). Monitor the Aug-2024 Karpowership SAPP $1B investment for whether it adopts the Nacala FSRU site. Evidence of redeployment to Brazil: https://www.tradewindsnews.com/gas/karmol-s-brazil-based-fsru-receives-first-lng-to-supply-powership-quartet/2-1-1347676 ; SAPP announcement: https://www.prnewswire.com/news-releases/international-energy-leader-karpowership-announces-1-billion-lng-to-power-investment-in-south-african-power-pool-302221215.html",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dead_link",
+    "terminal_id": "T100000130788",
+    "unit_id": "G100002078800",
+    "terminal_name": "Nacala FSRU",
+    "issue": "Existing GEM Owner [ref] URL https://karpowership.com/en/karpowership returns HTTP 404 (genuinely DEAD, page gone - not a bot-block). It no longer supports the KARMOL owner value.",
+    "severity": "low",
+    "suggested_action": "Drop the dead karpowership.com/en/karpowership URL from Owner [ref]. Replaced in the staged update with the MOL primary press release (https://www.mol.co.jp/en/pr/2019/19055.html) + TradeWinds, both of which PASS for KARMOL.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "bot_blocked",
+    "terminal_id": "T100000131124",
+    "unit_id": "G100002112401",
+    "terminal_name": "Coral North FLNG Terminal",
+    "issue": "Two existing GEM refs are live but bot-block automated clients (return 401/403), NOT dead: allafrica.com/stories/202306300102.html (403) and the FurtherAfrica $7.2B article (403). Both verified alive via Wayback snapshots (allafrica: web/20230711062841 PASSes for Coral/Eni/Cabo Delgado/Rovuma/3.4; FurtherAfrica: web/20251003094542 PASSes for '7.2 billion'). The ADNOC press release adnoc.ae/.../adnoc-to-acquire-10-equity-stake... also 403s but is now superseded by the post-FID XRG structure anyway.",
+    "severity": "low",
+    "suggested_action": "Keep the live URLs as [ref]s (reviewer can open them in a browser). Do not flag as dead. allafrica is retained for FacilityType/Operator/Location/Source; FurtherAfrica retained for Cost.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "entity_modeling",
+    "terminal_id": "T100000131124",
+    "unit_id": "G100002112401",
+    "terminal_name": "Coral North FLNG Terminal",
+    "issue": "Post-FID consortium attributes the 10% ADNOC stake to ADNOC's subsidiary XRG (formerly the entity that holds ADNOC's international gas/LNG investments). GEM currently models this stake as 'Abu Dhabi National Oil Co [10%]'. XRG is not found in GEM's entity system (entity_lookup -> not_found / no_remote_match).",
+    "severity": "medium",
+    "suggested_action": "Decide whether to add XRG as a new owner entity (parent = Abu Dhabi National Oil Co, HQ UAE) or keep the stake under ADNOC. Staged Owner uses 'XRG [10%]' per the FID sources; Parent keeps ADNOC as the ultimate parent. See entity record.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "value_scope",
+    "terminal_id": "T100000130825",
+    "unit_id": "G100002082500",
+    "terminal_name": "Matola FSRU",
+    "issue": "Two cost figures circulate: the GEM value $550M (Reuters 2022, terminal/FSRU scope) and a larger ~$3.2B (200 billion meticais) figure that energyconnects/dabafinance/Gigajoule describe as 'including a gas-fired power plant' (i.e. terminal + power-plant scope). They are not the same scope.",
+    "severity": "low",
+    "suggested_action": "Retained $550M as the terminal cost (correct scope for the GEM Cost field). Human: confirm GEM's Cost field convention - if it should capture total project cost, consider $3.2B with CostYear noting the broader scope. Refs: $3.2B incl. power plant - https://www.energyconnects.com/news/gas-lng/2024/october/total-set-to-back-mozambique-lng-terminal-to-boost-gas-imports/ , https://www.dabafinance.com/en/news/totalenergies-plans-3-2b-gas-import-terminal-in-mozambique",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130825",
+    "unit_id": "G100002082500",
+    "terminal_name": "Matola FSRU",
+    "issue": "FIDYear = 2025 is an EXPECTED (target) FID year - energyconnects (Oct 2024) reported FID 'expected Q2 2025'. As of the latest source (lngprime, Nov 2025) the project is still 'being developed' with NO FID announced; FIDStatus remains Pre-FID. The 2025 target appears to have slipped. LatestPlannedStartYear 2027 is likewise at risk of slippage.",
+    "severity": "low",
+    "suggested_action": "Keep FIDStatus = Pre-FID. Monitor for an actual FID; if none materializes, FIDYear 2025 should be treated as missed/expected and refreshed in the next Update. Confirm via a 2026 source whether FID has since been taken.",
+    "researcher_initials": "AI-draft"
+  }
+]

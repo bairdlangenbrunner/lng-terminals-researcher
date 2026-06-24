@@ -1,0 +1,52 @@
+[
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130913",
+    "unit_id": "G100002091301",
+    "terminal_name": "Etinde FLNG Terminal",
+    "issue": "Cost = $500,000,000 (USD, CostYear 2018) could NOT be corroborated off-GEM. The GEM-cited ref (plsx.com/news/article/new-age-pushing-forward-with-cameroon-flng-plans) returns HTTP 404 (genuinely dead, no Wayback snapshot exists). No independent source found that states a ~$500M FLNG-TERMINAL cost: contemporaneous reporting gives $1.1bn for the first development PHASE (10 wells + 2 wellhead platforms) and the offshore-technology/GlobalData profile gives $1,451m for the whole upstream FIELD development - neither is the FLNG-terminal capex. Value left unstaged (not coloured); CostUnits/CostYear likewise unverifiable since they hang off the same dead source.",
+    "severity": "medium",
+    "suggested_action": "Leave Cost/CostUnits/CostYear as-is pending a citable terminal-capex source, or blank if the human cannot relocate the $500M figure. Replace the dead plsx 404 ref. Confirm whether the GEM $500M is the FLNG-unit capex vs the field-development figure (the two are routinely conflated for Etinde).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130913",
+    "unit_id": "G100002091301",
+    "terminal_name": "Etinde FLNG Terminal",
+    "issue": "FIDYear = 2024 could NOT be corroborated as the FLNG-terminal FID year. FID has NOT occurred: Bowleven's AGM-2023 PDF puts Etinde on 'care and maintenance' and still seeking funding 'to take its investment in Etinde to FID'; the '2024' mentions in that PDF refer to the (subsequently TERMINATED, Jan 2024) Perenco transaction and the 2024 work-plan budget, not an FID. The only forward 'FID approved in 2024' statement is on offshore-technology.com's GlobalData marketdata profile, which covers the upstream conventional GAS FIELD (no FLNG/liquefaction) and is a generic forecast, not evidence of a terminal FID. So FIDYear=2024 is an unrealised TARGET, not an actual FID year.",
+    "severity": "medium",
+    "suggested_action": "Treat FIDYear=2024 as a (now-lapsed) target, not an actual FID. Consider blanking or re-labelling once a current FID timeline is published. FIDStatus stays Pre-FID (staged blue).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130913",
+    "unit_id": "G100002091301",
+    "terminal_name": "Etinde FLNG Terminal",
+    "issue": "Latitude 4.0237344 / Longitude 8.9039890 / Accuracy 'approximate' could not be independently corroborated. The GEM-cited Location ref (connect.ihsmarkit.com .../etinde-fixed-platforms-fid-targeted-in-2020) is a paywalled subscriber page (HTTP 403, no Wayback snapshot) and no public source gives exact FLNG-unit coordinates. The coordinates are geocodes (Accuracy='approximate') and per project convention are not staged as factual values; the general Location 'offshore Cameroon' IS corroborated (staged blue). Coordinates left untouched (not coloured).",
+    "severity": "low",
+    "suggested_action": "Retain the approximate offshore-Cameroon geocode; no change. Optionally swap the dead IHS-Markit Location ref for the offshore-mag/OGJ refs now cited on the Location cell.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dead_ref",
+    "terminal_id": "T100000130913",
+    "unit_id": "G100002091301",
+    "terminal_name": "Etinde FLNG Terminal",
+    "issue": "Two GEM-cited refs are dead and one trio is paywalled/bot-blocked: (1) plsx.com/news/article/new-age-pushing-forward-with-cameroon-flng-plans = HTTP 404 GONE, no Wayback (DEAD - cited for Cost). (2) connect.ihsmarkit.com/.../etinde-fixed-platforms-fid-targeted-in-2020 = HTTP 403, paywalled subscriber site, no Wayback (BOT-BLOCKED/paywall, live but not machine-verifiable; listed 3x in the Owner [ref] cell - cited for Owner+Location). (3) allafrica.com/stories/201806110409.html = HTTP 403 but ALIVE - the value (1.3 mtpa) verifies on its Wayback snapshot (20190919164156), so it is bot-blocked/archived, NOT dead; keep as the Capacity [ref].",
+    "severity": "medium",
+    "suggested_action": "Replace the plsx 404 (Cost ref) with a working source if Cost is retained. The IHS-Markit refs are paywalled - reviewer can open in a browser; Owner/Location now also carry public refs (OGJ, sponsor, offshore-mag). The allafrica 403 is fine to keep (verify in browser if needed).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_discrepancy",
+    "terminal_id": "T100000130913",
+    "unit_id": "G100002091301",
+    "terminal_name": "Etinde FLNG Terminal",
+    "issue": "Scope/naming caution for the reviewer: external 'Etinde' coverage splits into TWO things that get conflated - the upstream CONVENTIONAL GAS FIELD development (offshore-technology/GlobalData profile: cost $1,451m, 'FID approved in 2024', wellhead platforms, MMscfd, NO liquefaction) and the FLNG EXPORT TERMINAL that GEM tracks (1.3 mtpa floating liquefaction). The field-development cost/FID figures must NOT be imported onto the terminal record. The Feb-2026 worldoil licensing-round article also lists 'Etinde Exploration' as a block being re-tendered, reinforcing that the export terminal remains proposed/pre-FID and stalled.",
+    "severity": "low",
+    "suggested_action": "Keep terminal record scoped to the FLNG export terminal; do not adopt upstream-field cost/FID numbers. No data change needed.",
+    "researcher_initials": "AI-draft"
+  }
+]

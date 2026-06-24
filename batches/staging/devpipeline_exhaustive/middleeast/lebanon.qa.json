@@ -1,0 +1,52 @@
+[
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100001048245",
+    "unit_id": "G100001055355",
+    "terminal_name": "Deir Ammar FSRU",
+    "issue": "Latitude (34.4675720), Longitude (35.8941710) and Accuracy (approximate) could not be corroborated by any independent non-GEM source. The World Bank tender doc (the cited Location [ref]) PASSes 'Deir Ammar' and 'North Lebanon' but FAILs the exact decimal coordinates; trade coverage gives no precise coordinates. The only coordinate echoes found derive from GEM itself (not independent). Coordinates left as-is, not re-staged with a citation.",
+    "severity": "low",
+    "suggested_action": "Leave the existing GEM-geocoded coordinates; treat as 'approximate' (matches Accuracy). No external citation exists for the exact decimals - acceptable for an approximate geocode of the Deir Ammar site.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130965",
+    "unit_id": "G100002096500",
+    "terminal_name": "Zahrani FSRU",
+    "issue": "Latitude (33.5080470), Longitude (35.3422655) and Accuracy (approximate) could not be corroborated by any independent non-GEM source. The existing Location [ref] (rivieramm.com) does not even PASS for 'Zahrani'; no source carries the exact decimals.",
+    "severity": "low",
+    "suggested_action": "Leave the existing GEM-geocoded approximate coordinates. No external citation for the exact decimals exists.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130965",
+    "unit_id": "G100002096500",
+    "terminal_name": "Zahrani FSRU",
+    "issue": "ShelvedYear (2024), StopYear (2024), Substatus ('inferred 2 y') and ShelvedCancelledStatusType ('inferred') are GEM's own derived inference (researcher_notes: 'Last formal update was in 2022, so shelved as of 2024'), not values stated in any external source. Independent coverage supports the project being stalled/abandoned in favor of Deir Ammar but gives no specific 2024 shelved/stop date. These cells (and the blank_refs_with_data for Status/Substatus/ShelvedYear/StopYear) cannot be filled with an independent citation - the underlying datum is unknown/inferred, so the blank [ref]s were left blank (no orphan refs).",
+    "severity": "low",
+    "suggested_action": "Keep GEM's inferred 'shelved as of 2024' designation - it is reasonable and consistent with the documented researcher note and the 2-year-no-update rule. No external source can be cited for the exact inferred year; leave the Status/ShelvedYear/StopYear [ref] cells blank rather than orphan-citing.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dead_reference",
+    "terminal_id": "T100000130965",
+    "unit_id": "G100002096500",
+    "terminal_name": "Zahrani FSRU",
+    "issue": "The existing PowerPlantsSupplied [ref] for Zahrani (https://files.elnashra.com/elnashra/documents/4857824_1645366179.pdf - a Feb-2022 Lebanese Ministry of Energy and Water planning PDF) is now dead (url_verifier HTTP 000 on repeated tries). It was the only source explicitly tying the FSRU to the Zahrani Power Plant.",
+    "severity": "medium",
+    "suggested_action": "Replace the dead elnashra.com ref. Staged a yellow PowerPlantsSupplied record citing the LinkedIn pulse (only currently-working source naming 'Zahrani Power Plant'); seek a second independent live source (e.g. an archived/Wayback copy of the 2022 ministry plan) to upgrade to green.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dead_reference",
+    "terminal_id": "T100000130965",
+    "unit_id": "G100002096500",
+    "terminal_name": "Zahrani FSRU",
+    "issue": "The existing FacilityType [ref] and Location [ref] for Zahrani (https://www.rivieramm.com/news-content-hub/news-content-hub/global-lng-to-power-projects-will-underpin-fsru-growth-60441) loads but does NOT contain 'Zahrani' (it is a generic global FSRU-growth article) - a failed citation for any Zahrani-specific value.",
+    "severity": "low",
+    "suggested_action": "Drop the rivieramm.com ref from Zahrani's FacilityType/Location cells (replaced in staged records by MEES + Oil Review ME + LinkedIn, which explicitly name Zahrani).",
+    "researcher_initials": "AI-draft"
+  }
+]

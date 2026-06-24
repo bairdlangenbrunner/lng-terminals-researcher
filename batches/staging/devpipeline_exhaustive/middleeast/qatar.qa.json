@@ -1,0 +1,62 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130817",
+    "unit_id": "G100002081707",
+    "terminal_name": "Qatar North Field LNG Terminal",
+    "issue": "North Field West (T7-8) first-LNG date slipped from 2030 to end-2031. LatestPlannedStartYear staged 2030->2031 (green, NGI + OE Digital). Status remains 'proposed' in GEM though the onshore EPCC contract was awarded Feb 2026 (Technip Energies JV) and offshore/equipment contracts (Baker Hughes, $1bn extraction) are placed; project may be transitioning toward construction.",
+    "severity": "low",
+    "suggested_action": "Confirm whether NFW has progressed from proposed to construction (EPCC + long-lead equipment now contracted). If a groundbreaking/main-works start is documented, route a Status proposed->construction change via the timeline workflow (fetch_timeline is currently DOWN).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130817",
+    "unit_id": "G100002081705",
+    "terminal_name": "Qatar North Field LNG Terminal",
+    "issue": "NFS (T5-6) exact coordinates (Lat 25.9449336, Lng 51.5016651, Accuracy=approximate) and State/Province 'Al Khawr' could not be corroborated against any off-GEM source; no public source carries these precise coords. Location TEXT 'Ras Laffan Industrial City' IS corroborated (Enerdata).",
+    "severity": "low",
+    "suggested_action": "Leave coordinate cells uncolored (not staged). Coordinates are GEM-internal approximate placements within Ras Laffan; acceptable as 'approximate'. No edit needed.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130817",
+    "unit_id": "G100002081707",
+    "terminal_name": "Qatar North Field LNG Terminal",
+    "issue": "NFW (T7-8) exact coordinates (Lat 25.9449336, Lng 51.5016651, Accuracy=approximate) and State/Province 'Al Khawr' could not be corroborated off-GEM (identical to NFS placeholder coords). Location TEXT 'Ras Laffan Industrial City' IS corroborated (Offshore Energy).",
+    "severity": "low",
+    "suggested_action": "Leave coordinate cells uncolored (not staged); 'approximate' accuracy is appropriate pending a precise public coordinate.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130817",
+    "unit_id": "G100002081701",
+    "terminal_name": "Qatar North Field LNG Terminal",
+    "issue": "NFE (T1-4) State/Province 'Al Khawr' not explicitly corroborated by an off-GEM source (the Ras Laffan/Al Khor municipality assignment is geographically correct but not stated in cited trade sources). Lat/Long/Accuracy ARE corroborated via Google Maps NFE pin.",
+    "severity": "low",
+    "suggested_action": "No change; Al Khawr (Al Khor) is the correct municipality for Ras Laffan. Acceptable as-is.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_quality",
+    "terminal_id": "T100000130817",
+    "unit_id": "G100002081707",
+    "terminal_name": "Qatar North Field LNG Terminal",
+    "issue": "NFW (T7-8) FIDStatus=FID / FIDYear=2024 attribution ambiguity. GEM anchors FID to QatarEnergy's Feb-2024 commitment announcement ('142 mtpa before end of 2030'), but some trade press framed a formal FID as expected 2025/early-2026; the onshore EPCC contract was only awarded Feb 2026. Staged as blue (kept) but the FID year is softer than NFE(2021)/NFS(2022) which had explicit FID/EPC milestones.",
+    "severity": "low",
+    "suggested_action": "Optionally re-anchor FIDYear to the 2026 EPCC award if GEM methodology defines FID by contract award rather than sponsor commitment. Left at 2024 for now.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dead_ref",
+    "terminal_id": "T100000130817",
+    "unit_id": "G100002081701",
+    "terminal_name": "Qatar North Field LNG Terminal",
+    "issue": "Several existing GEM [ref] URLs are dead or non-rendering for verification: GIIGNL-2022 PDF (404), GIIGNL-2021 PDF (404), CNBC 2019 (404), Reuters $12.5bn bond (401 paywall), S&P Platts COVID-delay (403), offshore-technology North Field pages (403), nsenergybusiness pages (403), and the IGU 2025 World LNG Report landing URL (gated PDF, value not on landing page). All affected values were re-corroborated with fresh PASSing sources and piled into ref_urls.",
+    "severity": "medium",
+    "suggested_action": "Replace the dead/paywalled/gated [ref] URLs with the fresh PASSing URLs supplied in the staged updates records (trade.gov, LNG Industry, LNG Prime, OE Digital, Enerdata, JPT, Argus, Gulf Times, PR Newswire, GlobeNewswire, OilPrice, Google Maps, NGI).",
+    "researcher_initials": "AI-draft"
+  }
+]

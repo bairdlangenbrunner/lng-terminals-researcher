@@ -1,0 +1,52 @@
+[
+  {
+    "category": "dead_ref",
+    "terminal_id": "T100000130260",
+    "unit_id": null,
+    "terminal_name": "Brass LNG Terminal",
+    "issue": "The ProposalDate [ref] currently cites a Bechtel 2004 press release (http://www.bechtel.com/newsroom/releases/2004/11/front-end-engineering-design-contract-awarded/) which now returns HTTP 404 (genuinely gone; a Wayback snapshot exists at web.archive.org/web/20230327045648/). The proposal-year value (2003) is otherwise corroborated by LNGPrime and ThisDay (both 'incorporated in 2003'), which are staged on the ProposalDate [ref] instead.",
+    "severity": "low",
+    "suggested_action": "Replace the dead Bechtel URL on ProposalDate [ref] with the staged LNGPrime + ThisDay refs (the staged updates record does this). Optionally retain the Bechtel Wayback snapshot as a historical citation.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130260",
+    "unit_id": "G100002026001",
+    "terminal_name": "Brass LNG Terminal",
+    "issue": "ShelvedYear=2019 and StopYear=2019 (applies to both units) could not be corroborated off-GEM. No independent source pins a 2019 shelving/stop event. Sources instead describe: ConocoPhillips/Total divestment ~2013-2014, the project 'abandoned for 17 years' (i.e. since ~2007), and government revival efforts 'since 2022' (OGJ). GEM flags these as ShelvedCancelledStatusType='inferred', consistent with no hard 2019 milestone existing. Blank ShelvedYear [ref] / StopYear [ref] were therefore NOT filled (cannot cite an inferred year).",
+    "severity": "medium",
+    "suggested_action": "Treat the 2019 dates as GEM-inferred (no external citation available). Consider re-anchoring to a sourced milestone (e.g. 2014 last-partner divestment, or 2017 re-announcement that subsequently stalled) or leaving as inferred; either way the [ref] cell stays blank.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130260",
+    "unit_id": "G100002026001",
+    "terminal_name": "Brass LNG Terminal",
+    "issue": "Substatus='inferred 2 y' and ShelvedCancelledStatusType='inferred' (both units) are GEM-internal status inferences with no corresponding off-GEM datum to verify. No external value staged; the shared Status [ref] carries the corroborated Status='shelved' citations (OGJ/LNGPrime/Punch).",
+    "severity": "low",
+    "suggested_action": "Leave the inferred substatus/status-type as GEM-internal metadata; no external citation is possible. They remain consistent with the 'shelved' status verified this batch.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130260",
+    "unit_id": null,
+    "terminal_name": "Brass LNG Terminal",
+    "issue": "Status-word nuance: OGJ (Sep 2024 Gastech) describes Brass LNG as having been 'subsequently cancelled', whereas GEM holds it as 'shelved'. GEM's framing is the better fit and was retained: the project never reached FID, NNPC is actively 'seeking investors to revive' it (OGJ/LNGPrime, Sep 2024) and govt has pursued revival 'since 2022' (OGJ), matching GEM researcher_notes ('government has indicated intentions to revive'). No status edit staged (Status re-verified blue=shelved; fetch_timeline endpoint is down).",
+    "severity": "low",
+    "suggested_action": "Keep Status='shelved' (active revival interest argues against 'cancelled'). Monitor NNPC investor-search outcomes; if a credible FID/restart emerges, route a shelved->proposed/construction status change to a follow-on Update once fetch_timeline is restored.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "value_conflict",
+    "terminal_id": "T100000130260",
+    "unit_id": null,
+    "terminal_name": "Brass LNG Terminal",
+    "issue": "Capacity outlier: Punch (well-complete-brass-lng-project-abandoned-for-17-years-fg) describes 'trains 1-4 concept, with an annual projected capacity of 8.4 million metric tonnes' - conflicting with the dominant 2-train / 10 mtpa total (5 mtpa per train) design corroborated by LNGPrime ('two LNG trains each with a capacity of 5 mtpa'), OGJ, abarrelfull and Boskalis. GEM's 5.00 mtpa/unit (2x5=10) was retained (blue).",
+    "severity": "low",
+    "suggested_action": "Disregard the 8.4 mtpa / 4-train figure as a single weak/garbled outlier; the 2-train, 10 mtpa-total (5 mtpa/unit) design is well-corroborated. No change to Capacity.",
+    "researcher_initials": "AI-draft"
+  }
+]

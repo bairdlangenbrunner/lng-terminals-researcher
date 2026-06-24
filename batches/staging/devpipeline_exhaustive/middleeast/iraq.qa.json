@@ -1,0 +1,52 @@
+[
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000131158",
+    "unit_id": "G100002115800",
+    "terminal_name": "Al-Faw FSRU Terminal",
+    "issue": "Owner = 'unknown' (placeholder, not citable). GEM's Owner [ref] (upstreamonline) PASSes url_verifier for 'Al-Faw' but does not name an equity owner. Off-GEM research found the project is Iraqi-government-led (PM Al-Sudani directed it; ~$1.5bn public/private funding, Nov 2023) and that in Dec 2024 the government appointed SOUTH GAS COMPANY to oversee installing the FSRU/regas platform (with KBR assisting). South Gas Company is an overseer/operator role, not confirmed equity owner, and the corroborating iraq-businessnews page returns HTTP 401 so it could not be url_verifier-confirmed this pass. South Gas Company is also NOT in the GEM entity system (entity_lookup --remote returned no_remote_match).",
+    "severity": "low",
+    "suggested_action": "Route to an Update batch: research the true equity Owner/Operator. Strong candidate Operator = South Gas Company (state-owned, Basra) per Dec 2024 government appointment; would need an entity record created (not currently in GEM entity system) and >=2 independent PASSing sources. Leave Owner=unknown until corroborated; do not fill Owner [ref] for a placeholder value. Parent likewise unknown (the Iraqi state / Ministry of Oil is the implicit ultimate parent but not citably distinct from 'government').",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100001048168",
+    "unit_id": "G100001055225",
+    "terminal_name": "Khor Al-Zubair FSRU",
+    "issue": "Material status progression since GEM last_updated (2025-07-09), though terminal record reasonably stays 'proposed' for now. On 28 Oct 2025 Excelerate Energy signed a DEFINITIVE commercial agreement with a subsidiary of Iraq's Ministry of Electricity (5-yr regas+supply, ~$450M, 500 MMscf/d guaranteed, expandable; min offtake 250 MMscf/d) to deploy FSRU Hull 3407 (HD Hyundai, 170,000 m3). Hull 3407 launched Jul 2025, completed SEA TRIALS ~29 Jan 2026, with gas trials slated late Feb 2026 ahead of delivery. Commercial operations targeted 2026.",
+    "severity": "medium",
+    "suggested_action": "Track for advance to 'construction' (or 'operating' once gas flows) in a future Update once terminal-side works / commissioning are confirmed. fetch_timeline is DOWN, so no Status field edit or timeline file is staged here. Also consider populating Owner/Operator (Excelerate Energy as terminal operator/FSRU owner; counterparty = subsidiary of Iraq Ministry of Electricity) and the FSRU vessel fields (vessel 'Hull 3407'/Excelerate's TBN) in a follow-on Update + fsru_sync_check (vessel name+IMO are the carrier-project linking fields).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000131158",
+    "unit_id": "G100002115800",
+    "terminal_name": "Al-Faw FSRU Terminal",
+    "issue": "Capacity 1.00 bcf/d is re-confirmed by only ONE PASSing independent source (iranoilgas, the existing GEM ref; '1 billion cubic feet of gas daily'). Other '1 bcf/d' mentions in 2025-2026 trade press attach to Excelerate's Hull 3407 at the SEPARATE Khor Al-Zubair terminal and must NOT be counted as Al-Faw corroboration. The figure traces to the single Nov 2023 government announcement.",
+    "severity": "low",
+    "suggested_action": "Acceptable as a blue re-verify (existing GEM ref still PASSes), but capacity rests on one source. If a second independent Al-Faw-specific capacity source surfaces (e.g. tender/EPC documents for the Grand Faw fixed regas platform), add it. Watch for conflation with the Khor Al-Zubair Excelerate figures.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ref_rot",
+    "terminal_id": "T100000131158",
+    "unit_id": "G100002115800",
+    "terminal_name": "Al-Faw FSRU Terminal",
+    "issue": "Existing GEM ref jiac.it/blog/2024/01/31/iraqs-proposed-lng-import-terminal-to-be-ready-in-2-years/ (cited on FacilityType, OriginalPlannedStartYear, LatestPlannedStartYear, Location, State/Province, Prefecture/District, Latitude, Longitude, Accuracy) now returns HTTP 403 and fails url_verifier.",
+    "severity": "low",
+    "suggested_action": "Replace jiac.it with the open, still-PASSing zawya report of the same Jan 31 2024 story (and iranoilgas) - already done in the staged updates' ref_urls. Drop jiac.it from those [ref] cells.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ref_rot",
+    "terminal_id": "T100001048168",
+    "unit_id": "G100001055225",
+    "terminal_name": "Khor Al-Zubair FSRU",
+    "issue": "Two existing GEM refs are now paywalled and fail url_verifier: Bloomberg (2025-03-23, cited on FacilityType/Status/ProposalYear/ProposalMonth/Original+LatestPlannedStartYear/Location/State/Prefecture/Lat/Long/Accuracy) HTTP 403, and Reuters (2025-03-10, cited on Capacity/CapacityUnits) HTTP 401.",
+    "severity": "low",
+    "suggested_action": "Supplement/replace with open, PASSing sources already piled into the staged updates' ref_urls: Excelerate IR release, enerdata, offshore-energy, shafaq, pgjonline, worldoil. Bloomberg/Reuters may be retained as primary-but-paywalled if GEM prefers, but each cell now has >=1 open PASSing ref.",
+    "researcher_initials": "AI-draft"
+  }
+]
