@@ -1,0 +1,33 @@
+[
+  {
+    "proposed_name": "XRG",
+    "entity_type": "owner",
+    "country_hq": "United Arab Emirates",
+    "parent": "Abu Dhabi National Oil Co",
+    "related_terminal_id": "T100000131124",
+    "related_terminal_name": "Coral North FLNG Terminal",
+    "lookup_result": "entity_lookup.py 'XRG' --country 'United Arab Emirates' --remote -> not_found_in_local_data / no_remote_match",
+    "evidence_urls": [
+      "https://www.eni.com/en-IT/media/press-release/2025/10/pr-eni-announces-final-investment-decision-mozambique-coral-north-project.html",
+      "https://jpt.spe.org/eni-inks-fid-on-coral-norte-flng-for-mozambique-area-4"
+    ],
+    "notes": "ADNOC's subsidiary 'XRG' holds the 10% Coral North stake post-FID (Oct 2025). Not present in GEM's shared entity system. If GEM tracks the equity holder at the subsidiary level, add XRG (parent = Abu Dhabi National Oil Co); otherwise keep the stake under ADNOC. Human decision.",
+    "researcher_initials": "AI-draft (devpipeline-exh)"
+  },
+  {
+    "proposed_name": "Beluluane Gas Company",
+    "entity_type": "owner",
+    "country_hq": "Mozambique",
+    "parent": "Gigajoule; TotalEnergies SE",
+    "related_terminal_id": "T100000130825",
+    "related_terminal_name": "Matola FSRU",
+    "lookup_result": "entity_lookup.py 'Beluluane Gas Company' --country 'Mozambique' --remote -> not_found_in_local_data / no_remote_match",
+    "evidence_urls": [
+      "https://www.bgc.co.mz/",
+      "https://lngprime.com/africa/mozambique-oks-two-fsru-terminals/169934/",
+      "https://clubofmozambique.com/news/gigajoule-and-total-sign-joint-development-agreement-for-the-importation-of-lng-and-power-generation/"
+    ],
+    "notes": "Beluluane Gas Company (BGC) is the Gigajoule + TotalEnergies JV awarded the Matola FSRU/terminal concession - the actual terminal owner/project company. GEM currently lists owner 'Matola Gas Co' (MGC), which is Gigajoule's local pipeline-DISTRIBUTION subsidiary, not the terminal owner. Add BGC (parent Gigajoule/TotalEnergies) and replace MGC as terminal owner if confirmed. Staged Owner update reflects this.",
+    "researcher_initials": "AI-draft (devpipeline-exh)"
+  }
+]

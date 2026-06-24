@@ -1,0 +1,52 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000131123",
+    "unit_id": "G100002112301",
+    "terminal_name": "Eni Congo FLNG II Terminal",
+    "issue": "STATUS CHANGE: GEM has Status=construction/substatus=actual, but Phase 2 of Congo LNG (Nguya FLNG) came on stream in December 2025 and exported its FIRST LNG CARGO on February 13, 2026. The unit is now OPERATING. Sources: Eni Dec-2025 start-up PR (https://www.eni.com/en-IT/media/press-release/2025/12/pr-eni-launches-phase-2-congo-lng.html), OGJ first-cargo report (https://www.ogj.com/pipelines-transportation/lng/news/55357459/eni-delivers-congo-lng-phase-2-with-first-cargo-from-nguya-vessel), Enerdata (https://www.enerdata.net/publications/daily-energy-news/enis-congo-lng-reaches-3-mtyear-phase-2-start-24-mtyear.html).",
+    "severity": "high",
+    "suggested_action": "Update Status construction -> operating with a status-timeline entry (start-up Dec 2025 / first cargo 13 Feb 2026). Not staged as a Status field edit per brief (fetch_timeline endpoint is DOWN); route to an Update batch / live-DB timeline edit. Original/Latest planned start years (2025/2026) were re-verified blue.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000131123",
+    "unit_id": "G100002112301",
+    "terminal_name": "Eni Congo FLNG II Terminal",
+    "issue": "Cost cells (Cost=4000000000.00 USD, CostYear=2023) cannot be corroborated off-GEM. The only GEM-cited Cost ref (https://energycapitalpower.com/africa-lng-industry-growth-nj-ayuk-oped/) now returns HTTP 404 (dead) with NO Wayback snapshot available. No independent source (Eni IR, OGJ, lngprime, Reuters, Enerdata) publishes a ~$4 billion project/Nguya FLNG capex figure - searches return capacity and timeline data but no capital-cost number.",
+    "severity": "medium",
+    "suggested_action": "Leave Cost/CostUnits/CostYear unstaged (not re-verified). Reviewer to either source a primary capex figure (e.g. Eni full-year results / annual report) before retaining, or consider blanking the unsupportable $4B cost in a follow-on Update. Note Cost is a GEM computed/asserted factual value; the dead ref alone warrants replacement.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dead_ref",
+    "terminal_id": "T100000131123",
+    "unit_id": "G100002112301",
+    "terminal_name": "Eni Congo FLNG II Terminal",
+    "issue": "DEAD existing GEM ref (404, no Wayback snapshot): https://energycapitalpower.com/africa-lng-industry-growth-nj-ayuk-oped/ - cited in Cost [ref]. Genuine 404, not a bot-block.",
+    "severity": "medium",
+    "suggested_action": "Remove the dead energycapitalpower op-ed URL from Cost [ref]; see the unsourced_after_reverify cost note above.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "bot_blocked_ref",
+    "terminal_id": "T100000131123",
+    "unit_id": "G100002112301",
+    "terminal_name": "Eni Congo FLNG II Terminal",
+    "issue": "Existing GEM ref for FloatingVesselName is bot-blocked (HTTP 401), not dead: https://www.reuters.com/world/europe/italys-eni-readies-second-floating-lng-facility-congo-2024-11-23/ . Reuters returns 401 to automated clients; no Wayback snapshot exists to machine-verify the 'Nguya' token. The page is likely alive in a browser.",
+    "severity": "low",
+    "suggested_action": "Reviewer may open the Reuters URL in a browser to confirm; meanwhile FloatingVesselName=Nguya FLNG is corroborated by 6 other PASSing sources (Eni hull-launch news, Eni start-up PR, OGJ x2, offshore-energy, lngprime), which are staged in its [ref]. Keep or drop the Reuters URL at reviewer discretion - not machine-verifiable here.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ownership_nuance",
+    "terminal_id": "T100000131123",
+    "unit_id": "G100002112301",
+    "terminal_name": "Eni Congo FLNG II Terminal",
+    "issue": "Owner 'Eni Congo SAU [100%]' is the FLNG-FACILITY owner (Eni's local subsidiary), which is correct and distinct from the Marine XII UPSTREAM license consortium (Eni 65% operator / Lukoil 25% / SNPC 10%). Off-GEM sources confirm 'Eni' as the FLNG owner-operator but do not separately state the exact legal-entity string 'Eni Congo SAU' nor an explicit 100% terminal-ownership figure - both are GEM's normalization.",
+    "severity": "low",
+    "suggested_action": "No edit needed; flagged so the reviewer doesn't mistakenly 'correct' the terminal owner to the upstream consortium split. Owner re-verified blue as Eni-owned. Do NOT conflate the FLNG owner with the Marine XII license stakes.",
+    "researcher_initials": "AI-draft"
+  }
+]

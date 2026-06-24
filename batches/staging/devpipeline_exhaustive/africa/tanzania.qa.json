@@ -1,0 +1,62 @@
+[
+  {
+    "category": "dead_ref",
+    "terminal_id": "T100000130263",
+    "unit_id": "G100002026301,G100002026302 (T1,T2)",
+    "terminal_name": "Tanzania LNG Terminal",
+    "issue": "Existing FacilityType [ref] https://www.lngglobal.com/equinor-stops-tanzania-lng-project-writes-off-982-million returns HTTP 404 (gone). Note: that 2021 Equinor write-off story predates the project's 2023 restart and is stale context anyway.",
+    "severity": "medium",
+    "suggested_action": "Replace with the re-verified FacilityType refs staged this batch (Shell project brief + East African Wayback snapshot).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dead_ref",
+    "terminal_id": "T100000130263",
+    "unit_id": "G100002026301,G100002026302 (T1,T2)",
+    "terminal_name": "Tanzania LNG Terminal",
+    "issue": "Existing Owner [ref] https://www.medcoenergi.com/en/subpagelist/view/12/2941 returns HTTP 404 (MedcoEnergi 'Page 404'); and https://www.pavilionenergy.com/en/home no longer contains 'Pavilion Energy' (site restructured/redirect). Both are dead as citations.",
+    "severity": "medium",
+    "suggested_action": "Drop both; replaced by the re-verified Owner refs staged this batch (jpt.spe.org, africaenergyinsights, businessinsider, bakerbotts).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dead_ref",
+    "terminal_id": "T100000130263",
+    "unit_id": "G100002026301,G100002026302 (T1,T2)",
+    "terminal_name": "Tanzania LNG Terminal",
+    "issue": "Existing Owner [ref] and Operator [ref] https://giignl.org/wp-content/uploads/2023/07/GIIGNL-2023-Annual-Report-July20.pdf returns HTTP 404 (GIIGNL moved/removed that PDF path).",
+    "severity": "medium",
+    "suggested_action": "Drop the dead GIIGNL-2023 PDF URL from Owner/Operator/StartDate refs; replaced by current trade-press refs staged this batch. (A live GIIGNL edition exists in the repo data/ archive if a GIIGNL citation is still wanted.)",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dead_ref",
+    "terminal_id": "T100000130263",
+    "unit_id": "G100002026301,G100002026302 (T1,T2)",
+    "terminal_name": "Tanzania LNG Terminal",
+    "issue": "Existing Capacity [ref] https://www.igu.org/igu-reports/2020-world-lng-report (IGU 2020 World LNG Report landing page) no longer contains 'Tanzania' — the report PDF behind it is gated/changed, so the page does not verify the 5.00 mtpa value.",
+    "severity": "low",
+    "suggested_action": "Replace with the lngprime capacity ref staged this batch (states ~10 mtpa total = 5/train). Capacity remains single-sourced; reviewer may wish to add a second independent capacity source.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "bot_blocked_ref",
+    "terminal_id": "T100000130263",
+    "unit_id": "G100002026301,G100002026302 (T1,T2)",
+    "terminal_name": "Tanzania LNG Terminal",
+    "issue": "Existing Status/ProposalDate [ref] http://www.theeastafrican.co.ke/news/...sjwbqsz/index.html returns HTTP 403 to automated clients (bot-blocked, NOT dead). The value verifies against the Wayback snapshot (web.archive.org/web/20171017044302/...).",
+    "severity": "low",
+    "suggested_action": "Keep the live East African URL but treat as bot-blocked; the staged ProposalYear/FacilityType records cite the Wayback snapshot which PASSes. Reviewer can open the live page in a browser.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130263",
+    "unit_id": "G100002026301,G100002026302 (T1,T2)",
+    "terminal_name": "Tanzania LNG Terminal",
+    "issue": "Status remains 'proposed' (re-verified). FORWARD-LOOKING: as of early-mid 2026, Tanzania's government and the Shell/Equinor consortium report commercial negotiations complete and are targeting signing of the Host Government Agreement by ~June 2026, with FID to follow (GEM currently records FIDYear 2028). If the HGA/FID is signed, Status would move toward construction and FIDYear may pull earlier than 2028. No status edit staged (fetch_timeline is down).",
+    "severity": "medium",
+    "suggested_action": "Monitor the June-2026 HGA/FID outcome; on a confirmed FID, route a Status (proposed->construction) and FIDYear update through a follow-on Update batch with a timeline edit. Sources: enerdata, ecofin, CNBC Africa (2026).",
+    "researcher_initials": "AI-draft"
+  }
+]

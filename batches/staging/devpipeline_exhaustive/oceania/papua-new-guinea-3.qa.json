@@ -1,0 +1,52 @@
+[
+  {
+    "category": "dead_ref",
+    "terminal_id": "T100000131159",
+    "unit_id": "G100002115901",
+    "terminal_name": "Pasca FLNG Terminal",
+    "issue": "Two GEM-cited Twinza refs are DEAD (HTTP 404, not bot-block): https://www.twinzaoil.com/what-we-do/papua-new-guinea-pasca-a (Owner/Operator/Location/Cap refs) and https://www.twinzaoil.com/who-we-are/about-twinza (Owner ref). Twinza migrated its corporate site from twinzaoil.com to twinza.com; the equivalent live page is https://twinza.com/development. No Wayback snapshot exists for the pasca-a page (only the about-twinza page is archived). All values those refs supported (50/50 Twinza+Hevehe ownership, Twinza operator, Gulf of Papua location) are re-corroborated on twinza.com/development + pmnec + businessadvantagepng and re-staged with the live URL.",
+    "severity": "medium",
+    "suggested_action": "Replace the two dead twinzaoil.com refs with https://twinza.com/development (already in the staged Owner/Operator/Location records). Old domain is fully deprecated.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000131159",
+    "unit_id": "G100002115901",
+    "terminal_name": "Pasca FLNG Terminal",
+    "issue": "LatestPlannedStartYear = 2031 could not be corroborated off-GEM. Every current source dates the Phase II LNG facility (this FLNG terminal) commissioning to 2030 (Argus 'first gas in 2030'; Twinza/businessadvantagepng 'commissioned 2030'). No source gives a 2031 slip; 2031 appears to be a GEM internal buffer year. OriginalPlannedStartYear=2030 IS corroborated and staged blue. Left LatestPlannedStartYear uncolored (not staged) per the could-not-corroborate rule.",
+    "severity": "low",
+    "suggested_action": "Consider aligning LatestPlannedStartYear to 2030 (matching every current source) unless GEM holds 2031 deliberately as a risk-adjusted buffer; if kept, no external ref supports it.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ownership_parent_review",
+    "terminal_id": "T100000131159",
+    "unit_id": "G100002115901",
+    "terminal_name": "Pasca FLNG Terminal",
+    "issue": "ParentHQCountry = 'Papua New Guinea' is only partly accurate for a 50/50 JV. The second owner (Hevehe Petroleum / parent MRDC) is PNG state-owned (PNG HQ - correct). But the 50% owner/operator Twinza Oil Ltd is an Australian independent (Argus: 'Australian independent Twinza Oil'); its parent HQ is Australia, not PNG. The single ParentHQCountry cell cannot capture both. No external source asserts a single combined parent-HQ-country, so the field was not re-staged with a value.",
+    "severity": "low",
+    "suggested_action": "Reviewer to decide GEM convention for a split-nationality JV parent field (PNG for the MRDC side vs Australia for Twinza). If the convention is the operator/lead parent, Twinza's HQ is Australia. Flagging rather than overriding the no-ref field.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "field_note",
+    "terminal_id": "T100000131159",
+    "unit_id": "G100002115901",
+    "terminal_name": "Pasca FLNG Terminal",
+    "issue": "Source field value 'Pasca Oil and Gas Field (Papua New Guinea)' is a GEM-internal cross-reference / underlying-field name, not an externally citable factual datum. The underlying fact (Pasca A is a gas-condensate field in the Gulf of Papua feeding this FLNG terminal) is corroborated by twinza.com/development and Argus, but the literal Source string is a GEM label. Not staged as a value edit; existing Argus Source ref still PASSes.",
+    "severity": "low",
+    "suggested_action": "No change needed; informational. The Source label correctly references the Pasca gas field as the supply source for the FLNG terminal.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000131159",
+    "unit_id": "G100002115901",
+    "terminal_name": "Pasca FLNG Terminal",
+    "issue": "No status change this batch - unit correctly remains 'proposed' (still pre-FID, FEED underway, FID anticipated mid-2026). Researcher note ('Phase II should begin around 2027 so keep as proposed until then') remains valid. Watch item only: if Pasca reaches FID in 2026 as Twinza targets, the Phase II FLNG unit would move proposed -> construction at that point - route to an Update batch when FID is confirmed.",
+    "severity": "low",
+    "suggested_action": "No edit now. Re-check after the targeted mid-2026 FID; an FID announcement would trigger a proposed->construction status change (route via timeline once fetch_timeline is back).",
+    "researcher_initials": "AI-draft"
+  }
+]

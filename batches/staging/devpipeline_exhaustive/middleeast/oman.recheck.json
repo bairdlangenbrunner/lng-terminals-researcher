@@ -1,0 +1,47 @@
+{
+  "slug": "oman",
+  "country": "Oman",
+  "update_overrides": [
+    {
+      "terminal_id": "T100000130593",
+      "unit_id": "G100002059306",
+      "terminal_name": "Oman Qalhat LNG Terminal",
+      "unit_name": "T4",
+      "country": "Oman",
+      "field_name": "Operator",
+      "old_value": "Oman LNG",
+      "new_value": "Oman LNG",
+      "confidence": "blue",
+      "source_tier": "trade press (multiple independent) + S&P Global (recovered via Wayback)",
+      "ref_field": "Operator [ref]",
+      "ref_urls": [
+        "https://lngprime.com/middle-east/oman-lng-to-boost-capacity-with-new-train/118488/",
+        "https://www.zawya.com/en/business/energy/oman-lng-shortlists-bidders-for-fourth-liquefaction-train-qzmepdk1",
+        "https://gasoutlook.com/analysis/more-oman-lng-deals-on-the-cards-4th-train-under-study-interview/",
+        "https://www.spglobal.com/commodityinsights/en/market-insights/latest-news/natural-gas/042324-oman-lng-looks-to-fill-supply-gap-starting-in-2029-with-possible-new-train"
+      ],
+      "source_notes": "Operator = Oman LNG, unchanged. RECOVERED the S&P Global ref the first pass dropped as a 403 paywall: the live URL is alive but bot-blocked (url_verifier FAIL HTTP 403); value confirmed via Wayback snapshot web.archive.org/web/20240430162903 (snapshot returns 200 and PASSes 'Oman LNG', 'train', 'Sur' for the Oman LNG fourth-train article). The LIVE S&P URL is kept as the [ref] (not the snapshot URL) per the recheck brief. Merged with the three already-PASSing first-pass sources (LNG Prime, Zawya, gasoutlook). The GIIGNL-2022 PDF (giignl.org/.../GIIGNL2022_Annual_Report_May24.pdf) is a genuine HTTP 404 and stays dropped.",
+      "scope_note": "",
+      "researcher_initials": "AI-draft (recheck)"
+    }
+  ],
+  "qa_add": [
+    {
+      "category": "ref_recovered",
+      "terminal_id": "T100000130593",
+      "unit_id": "G100002059306",
+      "terminal_name": "Oman Qalhat LNG Terminal",
+      "issue": "Recheck pass recovered the S&P Global ref the first pass had dropped as a 403 paywall on the Operator cell. The live URL is alive but bot-blocks automated clients (url_verifier FAIL HTTP 403); the value 'Oman LNG' was confirmed on the Wayback snapshot web.archive.org/web/20240430162903 (snapshot HTTP 200, PASSes 'Oman LNG'/'train'/'Sur'). The live S&P URL is restored to Operator [ref] alongside the first-pass replacements. NOTE: S&P only verifiably supports the Operator value (snapshot did NOT contain 'export'/'Qalhat'), so it was NOT re-attached to FacilityType/Location/State/Lat/Long, which keep their first-pass PASSing replacements. The separately-flagged GIIGNL-2022 Annual Report PDF (giignl.org/.../GIIGNL2022_Annual_Report_May24.pdf) is a genuine HTTP 404 (not a bot-block) and remains correctly dropped from Operator [ref] per the original dead_ref note.",
+      "severity": "low",
+      "suggested_action": "On apply, keep the live S&P Global URL on Operator [ref]; leave the GIIGNL-2022 404 dropped.",
+      "researcher_initials": "AI-draft (recheck)"
+    }
+  ],
+  "qa_resolved": [],
+  "summary": {
+    "refs_recovered": 1,
+    "values_changed": 0,
+    "values_deleted": 0,
+    "still_unsourced": 2
+  }
+}

@@ -1,0 +1,42 @@
+[
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130342",
+    "unit_id": "G100002034201",
+    "terminal_name": "Sunrise FLNG Terminal",
+    "issue": "FIDYear = 2021 could not be corroborated off-GEM and is contradicted by current sources. The project is firmly Pre-FID: concept selection only targeted ~mid-2026, first LNG 2032-2035 'subject to concept selection and investment decisions', and the development concept is 'yet to be finalised'. No FID was taken in 2021 (or since). A 2021 FIDYear is therefore stale/erroneous as a forecast and unsupportable. No off-GEM source asserts a 2021 FID.",
+    "severity": "medium",
+    "suggested_action": "Blank the FIDYear data value (2021) OR re-cast it as a forward target once a concept is selected; do NOT fill a FIDYear [ref] for the 2021 value (no orphan ref — left blank). FIDStatus=Pre-FID was re-verified blue and is correct.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dead_ref",
+    "terminal_id": "T100000130342",
+    "unit_id": "G100002034201",
+    "terminal_name": "Sunrise FLNG Terminal",
+    "issue": "Existing FacilityType [ref] = rigzone.com/news/oil_gas/a/79058/shell_gas_find_supports_w_australia_floating_lng_plan/ fails verification: returns HTTP 202 (bot-block) AND has NO Wayback Machine snapshot, so the asserted value ('export'/floating LNG) cannot be confirmed against it from here. Distinct from a simple bot-block (no archive exists to fall back on). The article is also tangential (a Shell W. Australia floating-LNG gas find), not a direct Greater Sunrise source.",
+    "severity": "low",
+    "suggested_action": "Replace with the current FacilityType refs staged in updates (offshore-energy, aseanbriefing, naturalgasworld). Human can confirm the rigzone page in a browser if they wish to retain it.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_modeling",
+    "terminal_id": "T100000130342",
+    "unit_id": "G100002034201",
+    "terminal_name": "Sunrise FLNG Terminal",
+    "issue": "FLNG vs onshore concept mismatch. The unit is named 'Sunrise FLNG Terminal' and carries Floating=True, Offshore=True, is_fsru=True (an older floating-LNG development concept). But the CURRENT (Nov 2025) development concept that Woodside and Timor-Leste are maturing is a greenfield ONSHORE Timor-Leste-based LNG plant (~5 mtpa, plus a domestic-gas facility and helium-extraction unit) — a 'Timor-based LNG concept (TLNG)'. Multiple Nov-2025 sources describe the onshore Timor plant; none describe a floating facility. Because the concept is explicitly 'yet to be finalised' (concept selection targeted ~mid-2026), I did NOT flip the Floating/Offshore/is_fsru flags or the name — but they likely no longer reflect the live plan and should be reviewed by a human. These three cells (Floating, Offshore in cells_to_reverify) were therefore left uncolored (not blue-confirmed) rather than staged.",
+    "severity": "medium",
+    "suggested_action": "On concept selection (expected ~mid-2026), revisit Floating/Offshore/is_fsru and the 'FLNG' name. If the onshore Timor plant is selected, these flags should flip to False and the terminal renamed (the OtherName 'Beaco LNG Terminal' already reflects a Timor-Leste shore site near Beaco). FSRU sync (fsru_sync_check.py) may also need re-evaluation if the FLNG/FSRU framing is dropped. Do not change now while concept is unselected.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130342",
+    "unit_id": "G100002034201",
+    "terminal_name": "Sunrise FLNG Terminal",
+    "issue": "No status change (remains proposed, re-verified blue), but a timeline-worthy milestone occurred after the existing researcher note: on/around 26 Nov 2025, Timor-Leste's MPRM and Woodside signed a cooperation agreement to mature the Timor-based ~5 mtpa LNG concept, for the first time publishing a target timeline (first LNG 2032-2035, concept selection ~mid-2026). The GEM researcher_notes (RR 8/25: 'remains proposed... Woodside CEO said in May 25 that the project was stalled') predates this. fetch_timeline.py endpoint is DOWN, so no timeline file is staged.",
+    "severity": "low",
+    "suggested_action": "When fetch_timeline is back, add a Nov-2025 timeline event (MPRM-Woodside cooperation agreement / concept-maturation, first-LNG 2032-2035 target) and refresh the researcher note. Status stays proposed for now (pre-concept-selection, pre-FID).",
+    "researcher_initials": "AI-draft"
+  }
+]

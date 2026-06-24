@@ -1,0 +1,82 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000131049",
+    "unit_id": "G100002104900",
+    "terminal_name": "Karmol Dakar FSRU",
+    "issue": "GEM holds Status=construction (Substatus=actual), but the FSRU appears to have entered operation in 2025: first LNG cargo received May 2025 and power generation achieved on 29 April 2025 by transferring gas from the FSRU to Karpowership's powership KPS 10 (Offshore Energy, May 2025: 'Africa's first LNG-to-power project up and running off Senegal'). The existing researcher_notes_unit already anticipates this ('Full commissioning may be complete before 2025 update cycle is over, first LNG cargo was received in May'). Likely construction->operating.",
+    "severity": "high",
+    "suggested_action": "Verify operating status and set Status=operating with an appropriate StartYear once confirmed; route to a follow-on Update (Status edit + timeline not staged here because fetch_timeline is down). Refs: https://www.offshore-energy.biz/four-years-in-the-making-africas-first-lng-to-power-project-up-and-running-off-senegal/",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000131049",
+    "unit_id": "G100002104900",
+    "terminal_name": "Karmol Dakar FSRU",
+    "issue": "Capacity=2.50 mtpa (CapacityUnits=mtpa) could not be corroborated off-GEM. The GEM-cited IGU 2025 report URL is a download-portal landing page that does not expose a Senegal capacity value to the verifier. Independent sources describe the FSRU's RegasTainer capacity as scalable 15-300 MMscfd: 300 MMscfd ~= 2.28 mtpa (max throughput), with one 2026 trade item citing ~2.4 mtpa actual LNG throughput (~90% of nameplate). No source states 2.50 mtpa exactly; 2.50 may be a rounded/nameplate figure. Did NOT stage a value (no clean independent match; avoids a peak-vs-nameplate error).",
+    "severity": "medium",
+    "suggested_action": "Confirm the nameplate basis (likely 300 MMscfd ~= 2.28-2.3 mtpa) and reconcile with GEM's 2.50. Useful refs: https://www.oedigital.com/news/496380-senegal-gas-entec-builds-world-s-first-modular-lng-floating-storage-regasification-unit-for-karmol ; https://energycapitalpower.com/first-ever-modular-lng-fsru-ready-for-deployment-in-senegal/",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000131049",
+    "unit_id": "G100002104900",
+    "terminal_name": "Karmol Dakar FSRU",
+    "issue": "OriginalPlannedStartYear=2023 could not be independently corroborated. The three GEM-cited IGU report URLs (lng2023/2024/2025 World LNG Report) are landing/portal pages; the 2024 one returns HTTP 404. No open source explicitly states a 2023 original start target (sources document 2021 arrival, prolonged commissioning, then 2025 operation). LatestPlannedStartYear=2025 IS corroborated (operation April/May 2025) and was staged blue.",
+    "severity": "low",
+    "suggested_action": "Either source the 2023 original-target figure from the original IGU edition (re-derive PDF offset) or leave as-is; the dead IGU [ref] URLs should be refreshed/removed.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dead_ref",
+    "terminal_id": "T100000131049",
+    "unit_id": "G100002104900",
+    "terminal_name": "Karmol Dakar FSRU",
+    "issue": "Dead/unusable GEM-cited refs: FacilityType [ref] https://www.igu.org/resources/2024-world-lng-report/ -> HTTP 404 (gone). StartDate [ref] https://www.igu.org/resources/lng2023-world-lng-report/ -> HTTP 404 (gone); https://www.igu.org/igu-reports/2024-world-lng-report and .../2025-world-lng-report -> 200 landing pages that do not expose the Senegal/start-year value to the verifier. Capacity [ref] (IGU 2025 portal) -> same, value not on the landing page. The Upstream Location ref (https://www.upstreamonline.com/lng/world-first-modularised-fsru-enters-service/2-1-1219546) loads (PASS for 'Dakar') but redirects to a paywall/SSO when fetched -- live but not machine-verifiable here (bot-blocked, not dead).",
+    "severity": "medium",
+    "suggested_action": "Replace the 404 IGU URLs; the staged updates supply working open-source replacements for FacilityType/StartDate/Location. Keep Upstream as a bot-blocked live ref if desired.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_quality",
+    "terminal_id": "T100000131049",
+    "unit_id": "G100002104900",
+    "terminal_name": "Karmol Dakar FSRU",
+    "issue": "FloatingVesselName=Karmol LNGT Powership: MOL's own release and LNG Prime give the full vessel name as 'KARMOL LNGT POWERSHIP Africa' (with the 'Africa' suffix). GEM's value matches the core name but omits 'Africa'. Minor; staged blue as-is.",
+    "severity": "low",
+    "suggested_action": "Optionally append 'Africa' to match the registered vessel name, or record it in OtherNames. Ref: https://www.mol.co.jp/en/pr/2021/21051.html",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000131092",
+    "unit_id": "G100002109201",
+    "terminal_name": "Yakaar-Teranga LNG Hub",
+    "issue": "Planned-start years have slipped. GEM holds OriginalPlannedStartYear=2026 and LatestPlannedStartYear=2026, but 2026 sources (World Oil, MSGBC, discovery coverage) put first gas in late 2028/early 2029 (Petrosen DG: 'first gas' targeted Jan 2029), following FID now targeted Dec 2026. Status itself remains proposed/Pre-FID (re-confirmed blue). Did NOT stage a precise new start year (sources give a 2028-2029 range, not a single year).",
+    "severity": "medium",
+    "suggested_action": "Update LatestPlannedStartYear (and likely Original) to ~2029 once a firm first-gas year is published; route to a follow-on Update. Refs: https://worldoil.com/news/2026/5/13/senegal-advances-7-5-billion-yakaar-teranga-gas-development/ ; https://msgbcoilgasandpower.com/news/senegal-advances-yakaar-teranga-toward-next-phase-offshore-gas-development",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000131092",
+    "unit_id": "G100002109201",
+    "terminal_name": "Yakaar-Teranga LNG Hub",
+    "issue": "Capacity=10.00 mtpa (CapacityUnits=mtpa) is no longer supported by current sources and could not be corroborated off-GEM. The 10 mtpa figure reflected the earlier BP/Kosmos LNG-export concept. Under Petrosen's 2026 domestic-first plan the development targets ~300 MMcf/d (Phase 1 domestic, ~$2.5B) scaling toward ~550 MMcf/d for domestic + LNG export; one source cites ~150 MMcf/d initial. These imply ~2.3-4.2 mtpa, materially below 10 mtpa, but the LNG-export volume is not yet firm. The GEM-cited IISD ref (https://www.iisd.org/publications/report/senegal-lng-gamble) is bot-blocked (HTTP 403) and the value was not machine-verifiable (Wayback snapshot fetch failed). Did NOT stage a new capacity (project re-scoped, new export volume unfirm).",
+    "severity": "high",
+    "suggested_action": "Re-scope Capacity once Petrosen publishes a firm LNG-export volume; the legacy 10 mtpa likely overstates the current plan. Refs: https://worldoil.com/news/2026/5/13/senegal-advances-7-5-billion-yakaar-teranga-gas-development/ ; https://msgbcoilgasandpower.com/news/senegal-advances-yakaar-teranga-toward-next-phase-offshore-gas-development",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dead_ref",
+    "terminal_id": "T100000131092",
+    "unit_id": "G100002109201",
+    "terminal_name": "Yakaar-Teranga LNG Hub",
+    "issue": "Location [ref] https://www.ogj.com/general-interest/companies/article/17246908/chevron-unit-farms-into-mauritania-offshore-blocks loads (200) but does NOT mention Yakaar-Teranga (it is about Chevron farming into Mauritania offshore blocks) -- a wrong/irrelevant citation for this terminal's location; dropped from the staged Location refs. FacilityType/Capacity/FIDYear refs (naturalgasintel, iisd, reuters) are bot-blocked (401/403) but live: Reuters and IISD both have working Wayback snapshots; the Reuters FID target (2025) is moreover now stale.",
+    "severity": "medium",
+    "suggested_action": "Remove the OGJ Mauritania article from Location [ref]; the staged Location update keeps the Oxford Energy ref which does cite the project. Treat Reuters/IISD as bot-blocked (browser-openable), not dead, but note Reuters FID-2025 is superseded.",
+    "researcher_initials": "AI-draft"
+  }
+]

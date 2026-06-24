@@ -1,0 +1,57 @@
+[
+  {
+    "category": "dead_ref",
+    "terminal_id": "T100000130259",
+    "unit_id": "(all units)",
+    "terminal_name": "Nigeria LNG Terminal",
+    "unit_name": "Trains 7–12 + debottlenecking",
+    "issue": "Existing GEM ref 'https://www.igu.org/publications-page' (cited for FacilityType, Location, State/Province, Latitude, Longitude, Accuracy on every NLNG dev-pipeline unit) returns HTTP 404 — genuinely dead (not a bot-block; the IGU site reorganized publications). Staged updates replace it with live sources (Saipem, constructionreviewonline, NLNG official, ThisDay).",
+    "severity": "high",
+    "suggested_action": "Replace the dead igu.org/publications-page ref on these cells with the live URLs supplied in the staged updates (Location [ref] / FacilityType [ref]).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130259",
+    "unit_id": "G100002025907",
+    "terminal_name": "Nigeria LNG Terminal",
+    "unit_name": "T07",
+    "issue": "GEM Cost=$3,592,105,263 (CostYear 2022) for Train 7 could not be corroborated off-GEM. Independent sources report Train 7 as '~$5 billion' (ThisDay 2026, widely) or the broader expansion as '~$6.5bn'/'~$10bn'; none reproduce GEM's specific ~$3.59B sub-train allocation or its cent-level precision. The figure appears to be an internal GEM split, not an externally citable value.",
+    "severity": "medium",
+    "suggested_action": "Leave Cost/CostUnits/CostYear unchanged but treat as internal estimate; do NOT cite. Consider documenting the $5bn (Train 7) vs ~$6.5bn (full expansion) split in researcher_notes. No external ref staged (cannot cite GEM's allocation).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130259",
+    "unit_id": "G100002025913",
+    "terminal_name": "Nigeria LNG Terminal",
+    "unit_name": "Trains 1–6 Debottlenecking Project",
+    "issue": "GEM Cost=$2,907,894,737 (CostYear 2020) for the debottlenecking project could not be corroborated off-GEM. No independent source breaks out a debottlenecking-specific cost; reported figures cover the whole expansion ($5bn Train 7 / ~$6.5bn / ~$10bn). GEM's ~$2.91B allocation with cent precision reads as an internal split.",
+    "severity": "medium",
+    "suggested_action": "Leave Cost/CostUnits/CostYear unchanged as internal estimate; do NOT cite externally. No ref staged.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130259",
+    "unit_id": "G100002025907",
+    "terminal_name": "Nigeria LNG Terminal",
+    "unit_name": "T07",
+    "issue": "Train 7 reached ~92% completion and entered systems-completion/pre-commissioning as of May 2026 (ThisDay), with trade press (Worldstage Feb 2026, Leadership) pointing to commissioning in 2026 / mid-2026. GEM LatestPlannedStartYear is still 2027. Status remains 'construction' (correct — not yet operating), but the latest planned start may warrant pulling forward to 2026.",
+    "severity": "low",
+    "suggested_action": "Monitor for first-LNG / commissioning announcement; on commissioning, route a Status change construction→operating to an Update batch (fetch_timeline is down, so flag, do not stage Status here). Consider LatestPlannedStartYear 2027→2026.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130259",
+    "unit_id": "(units T08–T12)",
+    "terminal_name": "Nigeria LNG Terminal",
+    "unit_name": "T08–T12 (shelved)",
+    "issue": "Trains 8-12 'shelved' rests on a single 2023 source (Nairametrics: NLNG MD said Train 8 'no longer be possible' due to feed-gas shortage). No newer source found either reversing the shelving or escalating to 'cancelled'. Status/ShelvedYear/StopYear cells are single-sourced (yellow-equivalent) but left blue as re-confirmed unchanged.",
+    "severity": "low",
+    "suggested_action": "Watch for a feed-gas/PSC resolution (could revive) or a formal cancellation (would route Status shelved→cancelled to an Update batch). Currently no change warranted.",
+    "researcher_initials": "AI-draft"
+  }
+]

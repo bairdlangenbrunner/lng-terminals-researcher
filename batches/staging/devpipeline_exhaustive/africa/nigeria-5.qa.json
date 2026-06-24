@@ -1,0 +1,52 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000131052",
+    "unit_id": "G100002105201",
+    "terminal_name": "UTM Offshore FLNG Terminal",
+    "issue": "Possible status advance: GEM holds Status=proposed (re-verified as still pre-FID per Riviera and Guardian, Oct 2025). However a Feb 2026 report quotes UTM CEO Julius Rone saying the project is 'entering the construction phase' this year and construction will begin in 2026, with regulatory hurdles (NMDPRA construction license, Sept 2024) cleared and the project moving into 'full execution'. Sources conflict on whether FID has actually been taken; no confirmed FID announcement or steel-cutting was found. If a confirmed FID/construction start is verified, Status would move proposed -> construction and FIDYear/FIDStatus would change.",
+    "severity": "medium",
+    "suggested_action": "Monitor for a confirmed FID announcement or construction start (EPC contract signed / fabrication begun) from UTM Offshore, NNPC, Afreximbank, Technip Energies/JGC. If confirmed, route a Status (proposed->construction) and FIDStatus/FIDYear update to a follow-on Update batch (fetch_timeline endpoint is DOWN, so status change is flagged here, not staged).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000131052",
+    "unit_id": "G100002105201",
+    "terminal_name": "UTM Offshore FLNG Terminal",
+    "issue": "FIDYear=2025 is a now-missed target. The cited Riviera source supports 'FID anticipated in Q1 2025', but FID was not declared in 2025 (Guardian, Oct 2025, reports the company was still sequencing land-supply/sales/finance agreements before FID; Feb 2026 CEO comments target 2026). The GEM value is reconfirmed as-cited but is stale as a forward target.",
+    "severity": "low",
+    "suggested_action": "Reviewer to decide whether to advance FIDYear (e.g. to 2026) and update FIDStatus once a firmer FID date or an actual FID is confirmed by a primary/sponsor source. Not staged as a change because no single replacement year is reliably corroborated.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "capacity_discrepancy",
+    "terminal_id": "T100000131052",
+    "unit_id": "G100002105201",
+    "terminal_name": "UTM Offshore FLNG Terminal",
+    "issue": "Capacity figures vary widely across sources: GEM=2.10 mtpa (LNG nameplate, from Riviera '2.1 MTPA LNG' within a 2.8 mtpa total). Other outlets cite 2.72 mtpa (offshore-mag/LNG Prime; this is total gas incl ~0.45 mtpa LPG, not LNG nameplate), 1.5 mtpa (earlier/initial CEO figure), and 1.7 mtpa (a 2026 outlet). GEM's 2.1 mtpa LNG nameplate is the correct baseload interpretation and is retained (blue).",
+    "severity": "low",
+    "suggested_action": "No change. Be aware that '2.72 mtpa' in trade press = total gas (LNG+LPG), not the LNG nameplate; do not bump Capacity to it. Re-confirm 2.1 mtpa LNG against the eventual FEED/FID disclosure.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ownership_discrepancy",
+    "terminal_id": "T100000131052",
+    "unit_id": "G100002105201",
+    "terminal_name": "UTM Offshore FLNG Terminal",
+    "issue": "Some 2025-2026 outlets state UTM Offshore holds a 78% stake (with NNPC 20%, Delta State 8%), which sums to 106% and is internally inconsistent. GEM's 72%/20%/8% (sum=100%) matches the explicit Offshore Energy quote ('the remaining 72% share is reserved for UTM Offshore'). Kept GEM's value.",
+    "severity": "low",
+    "suggested_action": "No change. Watch for a definitive post-FID shareholder statement; if equity is restated, reconcile then.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dead_or_blocked_ref",
+    "terminal_id": "T100000131052",
+    "unit_id": "G100002105201",
+    "terminal_name": "UTM Offshore FLNG Terminal",
+    "issue": "Existing GEM Status/ProposalYear ref https://www.offshore-technology.com/news/nigerias-utm-licence-lng/?cf-view&cf-closed returns HTTP 403 to automated clients (bot-block, NOT dead). The value ('UTM Offshore' / '2019') is confirmed on the Wayback snapshot (http://web.archive.org/web/20250724191859/...). The page is alive in a browser.",
+    "severity": "low",
+    "suggested_action": "Keep the live URL as the [ref]; reviewer can open it in a browser. Not a dead link - do not remove. (Snapshot URL available if a non-blocked citation is preferred.)",
+    "researcher_initials": "AI-draft"
+  }
+]

@@ -1,0 +1,52 @@
+[
+  {
+    "category": "data_quality_typo",
+    "terminal_id": "T100000131161",
+    "unit_id": "G100002116100",
+    "terminal_name": "Nador FSRU",
+    "issue": "Pipelines value 'Maghred-Europe Gas Pipeline' is misspelled; correct name is 'Maghreb-Europe Gas Pipeline' (corroborated verbatim by moroccoworldnews and atalayar).",
+    "severity": "low",
+    "suggested_action": "Correct the spelling 'Maghred' -> 'Maghreb' in the Pipelines cell.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "value_discrepancy",
+    "terminal_id": "T100000131161",
+    "unit_id": "G100002116100",
+    "terminal_name": "Nador FSRU",
+    "issue": "GEM Capacity = 500 MMcf/d (~0.5 bcm/y, the existing Spain-import pipeline volume; verified on constructionreviewonline & pgjonline-2025). Several 2026 sources (Enerdata, agenzianova) instead cite a planned regas capacity of ~5-5.2 bcm/y for the Nador terminal. These differ ~10x; the 500 MMcf/d figure may reflect initial throughput vs full nameplate regas capacity.",
+    "severity": "medium",
+    "suggested_action": "Reviewer to decide whether the 5-5.2 bcm/y figure is the nameplate regas capacity that should replace 500 MMcf/d (~0.5 bcm/y). Moot for now since the project is shelved, but worth resolving for accuracy.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130256",
+    "unit_id": "G100002025600",
+    "terminal_name": "Jorf Lasfar LNG Terminal",
+    "issue": "Parent 'SIGER/ERGIS Group [100.0%]' could not be independently corroborated off-GEM as ONEE's parent. ONEE is a Moroccan state utility; SIGER (Societe d'Investissement Energetique) / ERGIS link to ONEE was not found in non-GEM trade/regulator sources during re-verify.",
+    "severity": "low",
+    "suggested_action": "Reviewer to confirm the SIGER/ERGIS parent relationship from a primary Moroccan corporate/regulator source, or reconsider the Parent value. Left unchanged for now.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "link_rot",
+    "terminal_id": "T100000131161",
+    "unit_id": "G100002116100",
+    "terminal_name": "Nador FSRU",
+    "issue": "Existing GEM Location ref hellenicshippingnews.com/morocco-plans-to-build-lng-regasification-terminals/ returns HTTP 404 (genuinely dead). Existing Reuters status ref (reuters.com/.../moroccos-energy-ministry-puts-gas-pipeline-project-hold-2026-02-02/) returns 401 bot-block and has no Wayback snapshot yet - it is LIVE/openable in a browser, not dead; retained as a bot-blocked ref.",
+    "severity": "low",
+    "suggested_action": "Drop the dead hellenicshippingnews URL from the Location [ref]. Keep the Reuters URL (bot-blocked, not dead) - reviewer can open in a browser to confirm the value.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "link_rot",
+    "terminal_id": "T100000130256",
+    "unit_id": "G100002025600",
+    "terminal_name": "Jorf Lasfar LNG Terminal",
+    "issue": "Existing GEM StartDate ref offshore-technology.com/comment/morocco-lng/ returns HTTP 403 (bot-block, NOT dead). Wayback snapshot (20251207005503) PASSES '2025' - citation is good; use live URL as ref (archived/bot-blocked).",
+    "severity": "low",
+    "suggested_action": "Retain the offshore-technology URL (bot-blocked, live). Note: its Wayback snapshot does not contain '2030', so it does not support LatestPlannedStartYear=2030 (constructionreviewonline does).",
+    "researcher_initials": "AI-draft"
+  }
+]
