@@ -29,7 +29,7 @@ sum across the project via report_diff.py's existing aggregation.
 
 Usage:
     python scripts/giignl_extract.py \\
-        /Users/baird/Downloads/GIIGNL-2026-Annual-Report-0526b.pdf \\
+        data/GIIGNL-2026-Annual-Report-0526b.pdf \\
         --output giignl_extracted.csv
 
 The script auto-detects liquefaction and regasification table page ranges

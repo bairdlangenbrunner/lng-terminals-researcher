@@ -3,12 +3,16 @@
 All scripts are standalone (no install step). Each has a `--help` and a
 top-of-file docstring.
 
+**CWD convention: the recipes below (and in `docs/workflows.md`) assume you run
+from `scripts/`** — that's what the `../batches/…` and `../data/…` paths mean.
+From the repo root, drop the `../` (e.g. `--output batches/…`), per `CLAUDE.md`.
+
 ## Typical invocation order in a batch
 
 ```
 # 1. Always start with a fresh pull (no cookies needed for the all-fields path)
 python gem_query.py --all-fields lng -o gem_export.csv   # gem_all_fields.py is the library; running it directly is a no-op
-python pull_gem_db.py --map-only --out gem_export.csv   # derive the .colmap.json
+python pull_gem_db.py --map-only --output gem_export.csv   # derive the .colmap.json
 
 # 2. Build the matching indexes
 python dedup_index.py
@@ -43,8 +47,8 @@ python recalc.py ../batches/...
 
 | Script | Purpose |
 |---|---|
-| `gem_query.py` | Queries the GEM read-only Postgres database directly and exports to CSV. Lowest-level acquisition tool. |
-| `gem_all_fields.py` | Reproduces the website's "all-fields" LNG terminal CSV. **No cookies needed** — preferred fresh-pull path. |
+| `gem_query.py` | Queries the GEM read-only Postgres database directly (`GEM_READONLY_DB_URL`) and exports to CSV. **`gem_query.py --all-fields lng` is the canonical fresh pull** (no cookies needed). |
+| `gem_all_fields.py` | Library behind `gem_query.py --all-fields` — reproduces the website's "all-fields" LNG terminal CSV shape. **No `__main__`: running it directly is a silent no-op**; always invoke via `gem_query.py`. |
 | `gem_export_via_web.py` | Downloads the all-fields CSV from the running GEM website. Cookie-based (auth from `.env`). |
 | `pull_gem_db.py` | Wraps a data-pull and derives the 115-column index map, writing `.colmap.json` next to the CSV. Use `--map-only` to derive the colmap from an existing CSV without re-pulling. |
 | `fetch_timeline.py` | Pulls the full status timeline for a single UnitID from the live DB web UI. Required before any status timeline edit — the CSV export doesn't include timeline data. **Parser is heuristic — verify against the live UI for at least one unit per batch.** **Known issue: the default Heroku host is stale (404) — set `GEM_PROJECT_DB_BASE_URL`; until reachable, route status changes to qa notes, don't stage a blind timeline edit.** |
@@ -82,6 +86,7 @@ python recalc.py ../batches/...
 | `report_diff.py` | Reconciliation diff between an industry report (GIIGNL or IGU) and current GEM data. Parameterized on report type. Three-pass matching (canonical name → alias via `OtherNames`/`LocalNames` + transliterations → fuzzy); project key includes `section_type` so a mixed liquefaction+regasification terminal splits into two projects rather than summing. Report rows ending in "Expansion"/"Extension" fold into their base `<Site>` row (when a base partner resolves) so phased terminals sum correctly; the `report_sites_merged` field records each fold. Set iterations are sorted, so the diff is reproducible run-to-run. Also auto-discovers `giignl_fsru_fleet.json` beside the extracted CSV (or `--fsru-fleet`): a gem_only FSRU matched (by vessel name or site token) to a fleet-table deployment is tagged `report_fleet_match` so the build routes it as `gem_only_in_fsru_fleet` ("GIIGNL lists it in the fleet table") instead of "report doesn't list it" — so run `giignl_fsru_fleet.py` first. |
 | `giignl_fsru_fleet.py` | Parses the GIIGNL "FSRU FLEET AT THE END OF \<year\>" table (2026: PDF p.43, 54 deployed + 4 orderbook) → `giignl_fsru_fleet.json`. Fixed-column slicing (Built/Converted, Vessel Name + "(ex …)", Storage m³, CCS, Send-out MTPA, Owner, Builder, Location), with location-wrap merging for vertically-centered "Site, Country" deployments. **Separate from `giignl_extract.py` (clean table, NOT the hardened country-table machinery).** The build matches each vessel to a GEM FSRU terminal (vessel name → location) for the `giignl_fsru_fleet` sheet — this catches FSRUs the country tables omit (Tema LNG / "Torman"). Older editions move the page (p.20/p.11/p.23/p.33/p.29/p.43 for 2020–2025; pass `--page`). |
 | `fsru_sync_check.py` | Cross-checks FSRU records between the LNG Terminals project and the LNG Carrier Tracker project. Graceful degradation if carrier backend unavailable. |
+| `refsweep_missing_year.py` | Missing-year ref-sweep (Ref-sweep SOP; `docs/workflows.md` §8) — the two deterministic ends of the status-timeline year backfill, with agentic research per shard in between. `extract` queries the read-only Postgres (`GEM_READONLY_DB_URL`) for every LNG (`projectType=8`, `deleted=false`) `status_timeline` entry with `year IS NULL` and a tracked status, splits into N `shard_NN.json` files, and writes the shared `BRIEF.md` + `_index.json`. `build` merges `shards/*.json` (+ optional `shards_p2/*.json` overlay by `st_id`, applied in sorted filename order so `p3_*` beats `p2_*`), **re-derives `tl_order` and `fuel_type` fresh from the DB** (by `st_id` / `pu_id`; never trusts values round-tripped through the shards; `fuel_type` = `lng_unit.fuel`, sorts oil/NGL legacy terminals apart from LNG), and writes `missing_year_refsweep_results.{csv,json,xlsx}` (year cell colored by tier: green=high/≥2 independent, yellow=medium/1 strong, red=low/1 weak, grey=UNRESOLVED). `build --sync-db` prunes points that left the extract scope in the live DB (st_id deleted; plant/unit deleted; year backfilled upstream; status now untracked) — for refresh runs only; default off preserves historical rebuilds. Read-only — no live-DB writes, no CSV pull. Point count drifts run-to-run as staff edit the live DB (expected). |
 
 ### Output
 
@@ -92,13 +97,15 @@ python recalc.py ../batches/...
 
 ## Data-acquisition paths
 
-There are three ways to pull the GEM CSV, in increasing reliance on auth:
+There are two ways to pull the GEM CSV, in increasing reliance on auth:
 
-- `gem_all_fields.py` — reproduces the website's all-fields export with **no cookies**. Preferred default.
-- `gem_query.py` — hits the read-only Postgres DB directly.
-- `gem_export_via_web.py` — downloads from the live website using auth cookies from `.env`.
+- `gem_query.py --all-fields lng` — hits the read-only Postgres directly
+  (`GEM_READONLY_DB_URL`, **no cookies**), reproducing the website's all-fields
+  export via the `gem_all_fields.py` library. **Canonical default.**
+- `gem_export_via_web.py` — downloads from the live website using auth cookies
+  from `.env`. The fallback when the read-only DB is unreachable.
 
-All three are committed to the repo (no longer user-supplied). `pull_gem_db.py`
+All of these are committed to the repo (no longer user-supplied). `pull_gem_db.py`
 wraps a pull and derives the column-index map; run it with `--map-only` to derive
 the colmap from a CSV you already pulled.
 

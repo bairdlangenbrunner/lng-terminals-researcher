@@ -273,7 +273,7 @@ def summarize(flags):
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--csv", default="./gem_export.csv")
-    p.add_argument("--out", default="work/stale_sweep.json")
+    p.add_argument("--output", "--out", dest="out", default="work/stale_sweep.json")
     p.add_argument("--country", help="Filter to a specific country")
     p.add_argument("--today", help="Override today's date (YYYY-MM-DD); useful for testing")
     p.add_argument("--pipeline-recent-months", type=int, default=3,

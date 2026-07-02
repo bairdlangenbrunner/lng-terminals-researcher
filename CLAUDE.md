@@ -12,7 +12,7 @@ Scaffolding for an agentic research workflow that helps a GEM contractor update 
 Where things live — **read on demand as the workflow dictates, not at session start**:
 
 - **The GEM LNG Terminals Manual** (Google Doc) — the authoritative methodology ("the methodology doc"). Not in the repo; reference URL in `docs/reference/sop_pointers.md`.
-- **SOPs** — `docs/sops/`: `reconciliation.md` (three-way diff vs GIIGNL; generic body + GIIGNL appendix, future IGU SOP reuses the body), `update.md` (annual bread-and-butter; standard/exhaustive tiers; folds in [ref]-fill), `discovery.md`, `triage.md`, `qc.md` (data-health audit; memo only).
+- **SOPs** — `docs/sops/`: `reconciliation.md` (three-way diff vs GIIGNL; generic body + GIIGNL appendix, future IGU SOP reuses the body), `update.md` (annual bread-and-butter; standard/exhaustive tiers; folds in [ref]-fill), `discovery.md`, `triage.md`, `qc.md` (data-health audit; memo only), `ref_sweep.md` (missing-year timeline backfill; workbook kept in `batches/deliverables/`).
 - **Workflow recipes** — `docs/workflows.md`: the step-by-step command sequences for every workflow below, plus the FSRU sync rule detail.
 - **Reference docs** — `docs/reference/` (`gem_db_schema.md`, `lifecycle_rules.md`, `source_roster.md`, `entity_canonical_map.md`, `unit_conventions.md`, `sop_pointers.md`, `workbook_conventions.md`) and `docs/country_notes/`.
 - **Scripts** — `scripts/`; index, invocation order, when-to-read-source, and the GIIGNL deep-dives all in `scripts/README.md`.
@@ -43,6 +43,7 @@ Full command-by-command recipes live in `docs/workflows.md` — **read the relev
 | **Triage** (plan the batch) | "what should we work on this quarter", "what's stale", "plan the [Q] batch", "where are the gaps" | `docs/workflows.md` §4 + Triage SOP; output is a markdown memo, not an xlsx |
 | **Quality control** (backward-looking checker) | "qc pass", "check accuracy", "link-rot sweep", "did my edits land", "audit the data quality" | `docs/workflows.md` §6 + QC SOP; output is a markdown memo, not an xlsx; fixes route to a follow-on Update batch |
 | **Regional sweep** (scaled multi-country update/discovery, one subagent per country) | "sweep [region]", "update every country in [region]", "audit the whole tracker", "overnight sweep" | `docs/workflows.md` §5; **read `batches/staging/README.md` + `SWEEP_PROGRESS.md` first** to resume a sweep in progress; the dispatch prompt states the tier |
+| **Missing-year ref-sweep** (on-request; status-timeline year backfill from the read-only Postgres) | "missing-year ref-sweep", "backfill timeline years", "fill missing status years", "which status milestones have no year" | `docs/workflows.md` §8 + Ref-sweep SOP; `scripts/refsweep_missing_year.py` extract→research→build; read-only, no live-DB writes; workbook kept in `batches/deliverables/` |
 
 Routing notes that prevent the most common mistakes:
 

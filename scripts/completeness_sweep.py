@@ -580,7 +580,7 @@ def summarize(gaps):
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--csv", default="./gem_export.csv")
-    p.add_argument("--out", default="work/completeness_sweep.json")
+    p.add_argument("--output", "--out", dest="out", default="work/completeness_sweep.json")
     p.add_argument("--country",
                    help="Filter the field audit + dormant watch to one country "
                         "(coverage gap stays global)")

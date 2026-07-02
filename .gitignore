@@ -54,7 +54,11 @@ batches/staging/*/_build_disc/
 # But TRACK the staging tree (batches/staging/**: per-country research JSON, the sweep
 # ledger, briefs, README) — it's the diffable audit trail and lives on the batch branch.
 # (The derived _build/ and _prior/ staged_*.json stay ignored via the staged_*.json rule above.)
+# NB: deliberately TOP-LEVEL-ONLY (no **) so batches/deliverables/*.xlsx stays trackable —
+# kept-long-term workbooks are committed there (see batches/deliverables/README.md).
 batches/*.xlsx
+# Derived staging workbooks are regenerable too (a kept copy goes to batches/deliverables/).
+batches/staging/**/*.xlsx
 # Superseded workbooks parked for pruning (derived artifacts, never committed).
 batches/old/
 

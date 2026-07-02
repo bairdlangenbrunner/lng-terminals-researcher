@@ -53,7 +53,7 @@ These parameters get written into the staging xlsx README sheet.
    - `giignl_extract.py`, `report_diff.py`, `url_verifier.py`
    - `build_review_package.py`, `recalc.py`
 4. `python scripts/gem_query.py --all-fields lng -o gem_export.csv` → fresh GEM CSV. **Mandatory** per the [ref]-fill SOP discipline — the database changes between batches.
-5. `python scripts/pull_gem_db.py --map-only --out gem_export.csv` → derives the column-index map `gem_export.colmap.json` (consumed by `report_diff.py` and `build_review_package.py`).
+5. `python scripts/pull_gem_db.py --map-only --output gem_export.csv` → derives the column-index map `gem_export.colmap.json` (consumed by `report_diff.py` and `build_review_package.py`).
 
 ### §3.2 Extract GIIGNL into structured form
 
@@ -286,7 +286,7 @@ Any URLs included in the staging xlsx (e.g. for GIIGNL-only findings where the a
 
 Get the Eastern-time stamp via `TZ=America/New_York date "+%Y%m%d_%H%M_ET"`. The HHMM_ET suffix disambiguates multiple batches in one day; the `_giignl<YEAR>_reconciliation` suffix carries the scope + mode per the repo-wide naming convention (`docs/reference/workbook_conventions.md`). `--inputs-dir` points at the edition's staging home (§3.2) so the build finds the diff and every staged JSON.
 
-**README sheet definitions are MANDATORY.** Every staging xlsx must include a "Sheet definitions" block in the README listing every other tab and what it contains, so a researcher opening the file without prior context knows what each tab is for. This is handled automatically by `build_review_package.py` via the `SHEET_DESCRIPTIONS` constant + `_populate_readme_sheet_defs(wb)` helper, which is invoked at the end of `main()`. If you add a new sheet builder to the script, you MUST add a corresponding entry to `SHEET_DESCRIPTIONS` — otherwise the README will fall back to a "no description registered" placeholder that prompts the next agent to fix it.
+**README sheet definitions are MANDATORY.** Every staging xlsx must include a "Sheet definitions" block in the README listing every other tab and what it contains, so a researcher opening the file without prior context knows what each tab is for. This is handled automatically by `build_review_package.py` via the `SHEET_DESCRIPTIONS` constant + `build_readme(...)`, invoked at the end of `main()` after all other sheets exist (the README is still inserted as the first tab, with the sheet definitions directly after the color legend). If you add a new sheet builder to the script, you MUST add a corresponding entry to `SHEET_DESCRIPTIONS` — otherwise the README will fall back to a "no description registered" placeholder that prompts the next agent to fix it.
 
 Produces an xlsx with the standard sheets plus four reconciliation-specific sheets:
 
