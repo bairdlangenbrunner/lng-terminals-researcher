@@ -1,0 +1,42 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130584",
+    "unit_id": "G100002058401",
+    "terminal_name": "North Pars LNG Terminal",
+    "issue": "The live overhaul (updater 311, 2026-06-30 ~13:42 ET) left an EMPTY draft status-timeline row open on the unit (visible in the unit's draft JSON state). If it was intended for the dead-state milestone, the staged shelved-2012 / cancelled-2014 entries in status_timeline_additions cover it.",
+    "severity": "medium",
+    "suggested_action": "When applying this batch, complete or delete the blank draft timeline row so it doesn't linger as an open edit.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ownership",
+    "terminal_id": "T100000130584",
+    "unit_id": "G100002058401",
+    "terminal_name": "North Pars LNG Terminal",
+    "issue": "Ownership staged as National Iranian Oil Co [100%] (state sponsor; CNOOC framework never finalized — Reuters was still reporting 'in talks to finalize' in Aug 2009, and OilPrice 2021 confirms the deal never went ahead). Documented alternative reading: OGJ Apr 2010 describes the planned framework as 'CNOOC currently holds 100% of the shares … half of LNG production belonging to NIOC'. If GEM prefers to reflect that never-consummated framework, the alternative is CNOOC as owner/operator with NIOC context in notes; CNOOC already exists in the entity system.",
+    "severity": "low",
+    "suggested_action": "Apply NIOC [100%] as staged (matches South Pars LNG Terminal precedent, E100000000556); no action unless the reviewer prefers the CNOOC framework reading.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "entity",
+    "terminal_id": "T100000130584",
+    "unit_id": "G100002058401",
+    "terminal_name": "North Pars LNG Terminal",
+    "issue": "Pars Oil and Gas Co (POGC — the NIOC subsidiary that manages the North Pars field and is running the 2025-26 domestic field-development revival) is NOT in the GEM entity system (entity_lookup bare + --remote: no match). Not needed for this batch since ownership is staged at the NIOC level, but it will be needed if the field revival ever grows an LNG component. Lookup caveat learned this batch: NIOC's registered GEM name is 'National Iranian Oil Co' — querying 'National Iranian Oil Company' false-negatives; search a distinctive substring before concluding an entity is missing.",
+    "severity": "low",
+    "suggested_action": "No action now. Create POGC (parent: National Iranian Oil Co, HQ Iran) only if a POGC-sponsored project is staged later.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "location",
+    "terminal_id": "T100000130584",
+    "unit_id": "G100002058401",
+    "terminal_name": "North Pars LNG Terminal",
+    "issue": "The overhaul wiped the old (wrong) location block ('South Pars gas field', 26.6191250/52.0679640). Location is staged as 'Tombak' per OGJ 2010 ('LNG production plant to be constructed by CNOOC in Tombak region'), but coordinates are deliberately left blank — no source gives site coordinates for the never-built plant, and inventing them would be unsourced.",
+    "severity": "low",
+    "suggested_action": "If GEM wants approximate coordinates, reuse the Tombak Port area coords GEM already carries on Iran NIOC LNG Terminal (27.476111, 52.6075, accuracy 'approximate') rather than deriving new ones.",
+    "researcher_initials": "AI-draft"
+  }
+]
