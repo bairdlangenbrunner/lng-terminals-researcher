@@ -1,0 +1,48 @@
+[
+  {
+    "st_id": "91",
+    "pu_id": "100002021400",
+    "country": "United States",
+    "terminal": "Cameron LNG Terminal",
+    "unit": "Import Terminal",
+    "fuel_type": "LNG",
+    "status": "mothballed",
+    "substatus": "actual",
+    "timeline_order": "2",
+    "proposed_year": "2012",
+    "class_out": "FILLED",
+    "proposed_refs": [
+      "https://www.eia.gov/dnav/ng/hist/nga_epg0_iml_ycam-ntd_mmcfm.htm"
+    ],
+    "verifications": [
+      {
+        "url": "https://www.eia.gov/dnav/ng/hist/nga_epg0_iml_ycam-ntd_mmcfm.htm",
+        "ok": true,
+        "contains": ["2012", "Cameron"]
+      }
+    ],
+    "tier": "medium",
+    "independent": false,
+    "source_language": "en",
+    "researcher_notes": "YEAR = 2012 = the year LNG import receipts at Cameron ceased (de facto mothballing of the import/regas service), NOT a formal suspension date. Anchor is EIA's official LNG-imports-by-point-of-entry statistics: the cited page (Cameron, LA imports from Trinidad and Tobago, monthly) shows the terminal's final import cargoes in Jan 2012 (2,825 MMcf) and Feb 2012 (2,891 MMcf) with nothing after. The full EIA point-of-entry picture (per-country history pages + the annual-total page https://www.eia.gov/dnav/ng/hist/nga_epg0_iml_ycam-z00_mmcfa.htm, cited here in notes only because EIA's annual layout encodes years as decade rows so the literal 4-digit year is absent and it cannot pass the verifier year-token rule): Qatar receipts 2009-2010, Egypt last 2011, Peru last 2011, Trinidad last Feb 2012; annual totals 2009: 9,654 / 2010: 7,011 / 2011: 12,662 / 2012: 5,716 MMcf, then zero every year 2013-2018 and no data since. Third-pass tactics that came up empty for a SECOND independent publisher or a formal-suspension date: DOE/FE final export order (EIS-0488 docket, full text searched - no import-history language), DOE FECM Cameron terminal page (export contracts only), Sempra FY2012/FY2013 10-Ks via EDGAR (describe the liquefaction conversion, never date the end of imports; zero 'cargo' mentions), EDGAR full-text 'mothball' search (no relevant hits), trade press (no article states a last-import year); ferc.gov/eLibrary is bot-gated (Cloudflare) so FERC EIS/docket pages cannot pass the verifier. No FERC/DOE filing formally suspends or inactivates the import service - the terminal retained regas capability while being converted to export (DOE FTA export authorization 17 Jan 2012; FERC CP13-25 application 26 Dec 2012; FID Aug 2014; first export cargo May 2019), so the import unit was never 'retired', it simply stopped receiving cargoes after Feb 2012. Single strong primary (official EIA federal statistics) -> tier medium."
+  },
+  {
+    "st_id": "2792",
+    "pu_id": "100002103101",
+    "country": "United States",
+    "terminal": "Valero East Corpus Christi Terminal",
+    "unit": "--",
+    "fuel_type": "Oil",
+    "status": "operating",
+    "substatus": "actual",
+    "timeline_order": "1",
+    "proposed_year": "",
+    "class_out": "UNRESOLVED",
+    "proposed_refs": [],
+    "verifications": [],
+    "tier": null,
+    "independent": null,
+    "source_language": "en",
+    "researcher_notes": "UNRESOLVED (3rd pass) - no web-verifiable source gives a 4-digit operating-start year for this terminal/refinery; only acquisition years (not the milestone) and decade-level claims exist. Third pass CORRECTED one lineage lead and closed the rest: (1) The Pontiac Refining Co. refinery (one of Corpus Christi's largest 1930s plants per TSHA's oil-and-gas-industry Handbook entry) is NOT this terminal's ancestor - Mobil Oil Corp. v. W.R. Grace, 367 F. Supp. 207 (D. Conn. 1973) identifies Pontiac Refining of Corpus Christi as a division of Champlin Petroleum, and the TxDOT Northside History Project report (texashistory.unt.edu/ark:/67531/metapth1310487, full PDF read) says 'Pontiac Refining Company (later CITGO)'; CITGO's separate plant 'first went online in 1935' (CITGO 80th-anniversary release, Wayback-confirmed) - that 1935 is a red herring for this record. (2) Valero East lineage confirmed: Valero operates the East Plant from June 1, 2001 (Valero FY2001 10-K405: results 'include ... the Corpus Christi East Plant beginning on June 1, 2001', acquired from El Paso; El Paso had absorbed Coastal in 2001); Coastal's Corpus Christi refinery came from Sinclair - TSHA Handbook (Coastal Corporation entry): 'In the early 1960s Coastal purchased the Sinclair Oil Corpus Christi refinery and pipeline network'; the Int'l Directory of Company Histories text (FundingUniverse and its mirrors = one source) dates that purchase 1962 at ~30,000 bpd. Both 1962 and 2001 are acquisition years, explicitly not the operating-start milestone. (3) The Sinclair-era refinery's startup year (pre-1962) is documented nowhere web-accessible: TxDOT Northside history and TSHA give only decades; CLUI and Valero's own site say only 'built in the 1960s' (which reflects Coastal's mid-1960s buildout to ~185,000 bpd - govinfo 1976 BLM/OCS facilities inventory lists 'Coastal States, Corpus Christi, 185,000' - not the original start); 1976 inventory has no build years. Portal to Texas History search and ferc-style archives are bot-challenge-gated (search UI blocked; only direct PDFs fetchable), Chronicling America has no Corpus Christi papers for this, CourtListener recitals and Sempra/Valero/Coastal-era SEC filings are silent. Would settle it: Corpus Christi Caller-Times microfilm (1930s-60s), Moody's Industrial Manual entries for Sinclair/Coastal States, or Oil & Gas Journal annual refinery surveys showing when Sinclair's Corpus Christi refinery first appears. Per the no-weak-year rule, left UNRESOLVED rather than staging an acquisition year or a decade."
+  }
+]

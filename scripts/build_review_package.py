@@ -149,9 +149,11 @@ def assign_confidence(source_tier, n_corroborating_verified):
 # these definitions for all sheets present in the workbook.
 SHEET_DESCRIPTIONS = {
     "README": (
-        "Batch metadata: mode, edition (for reconciliation), color conventions, "
-        "sheet definitions (this section), and input summary stats including any "
-        "SOP §6 sanity-gate trips. Always read this first."
+        "Batch metadata, in reading order: mode, color conventions (key cells "
+        "carry the actual fill swatches), sheet definitions (this section), "
+        "column notes (read-only columns enumerated; meta columns are never "
+        "pasted), input summary stats including any SOP §6 sanity-gate trips, "
+        "and — for sweep builds — the countries checked. Always read this first."
     ),
     "updates_summary": (
         "Update workflow: one row per (terminal_id, unit_id, field) being changed. "
@@ -168,7 +170,8 @@ SHEET_DESCRIPTIONS = {
         "separated) and takes its data cell's color. Un-researched cells are shown verbatim, "
         "uncolored. Read-only columns are italicized and never written. Two meta columns "
         "(_changed_fields, _confidence_summary) are appended at the far right; everything left "
-        "of them mirrors the all_fields CSV exactly."
+        "of them mirrors the all_fields CSV exactly. The meta columns are reference only — "
+        "never paste them into the GEM DB."
     ),
     "new_terminals": (
         "Discovery workflow: one row per newly discovered terminal, laid out in the "
@@ -438,20 +441,22 @@ SHEET_DESCRIPTIONS = {
     ),
 }
 
-# Columns NEVER written by this script (per gem_db_schema.md)
-READ_ONLY_COLUMNS = {
-    # Computed
+# Columns NEVER written by this script (per gem_db_schema.md). Kept as two
+# named groups so the README sheet can enumerate them with the reason.
+COMPUTED_COLUMNS = {
     "TerminalID", "UnitID", "Wiki",
     "CapacityinMtpa", "CapacityinBcm/y",
     "TotImportLNGTerminalCapacityinMtpa", "TotImportLNGTerminalCapacityinBcm/y",
     "TotExportLNGTerminalCapacityinMtpa", "TotExportLNGTerminalCapacityinBcm/y",
     "CostUSD", "CostEuro",
     "TotKnownTerminalCostsUSD", "TotTerminalCost [ref]",
-    # Out-of-scope
+}
+OUT_OF_SCOPE_COLUMNS = {
     "PCINotes", "PCI3", "PCI4", "PCI5", "PCI6",
     "LH2", "NH3", "SyntheticLNG", "RetrofitProposed",
     "AltFuelPrelimAgreement", "AltFuelCallMarketInterest",
 }
+READ_ONLY_COLUMNS = COMPUTED_COLUMNS | OUT_OF_SCOPE_COLUMNS
 
 
 def _safe_load(path, default=None):
@@ -524,76 +529,74 @@ def _write_row(ws, row_dict, headers, row_idx, confidence_map=None):
 
 
 def build_readme(wb, mode, inputs_summary):
-    """Build the README sheet.
+    """Build the README sheet in ONE pass, AFTER every other sheet exists
+    (it lists them, so it must come last in build order; `create_sheet(..., 0)`
+    still makes it the FIRST tab). Ordered for a reviewer opening the file
+    cold: title → color legend (with real fill swatches) → sheet definitions →
+    read-only / meta column notes → input summary. The countries-checked block
+    (update/discovery sweeps) is appended after this by
+    _append_country_breakdown.
 
-    NOTE: build_readme is called BEFORE the other sheets exist, but we need
-    to write sheet definitions for all sheets that WILL exist. Solution:
-    the caller is responsible for invoking _populate_readme_sheet_defs(wb)
-    after all other sheets have been built. build_readme writes everything
-    EXCEPT the sheet-definitions block, leaving a placeholder anchor row.
+    Per reconciliation SOP §3.10: every batch xlsx README must include the
+    sheet definitions so a researcher opening the file without prior context
+    knows what each tab is for.
     """
-    ws = wb.create_sheet("README")
-    today = date.today().isoformat()
+    ws = wb.create_sheet("README", 0)
     ws["A1"] = f"LNG Terminals batch review package — {mode} mode"
     ws["A1"].font = Font(bold=True, size=14)
-    ws["A2"] = f"Generated: {today}"
-    ws["A3"] = ""
-    rows = [
-        ("Mode", mode),
-        ("", ""),
-        ("Color conventions", ""),
-        ("  Green", "Primary/regulatory-grade source — apply with confidence"),
-        ("  Yellow", "Single non-primary source OR value implied — review before applying"),
-        ("  Red", "Single weak source — consider leaving blank instead"),
-        ("  Blue", "Re-verified unchanged — value reconfirmed against current source(s)"),
-        ("  None", "Searched but no confirming source found"),
-    ]
+    ws["A2"] = f"Generated: {date.today().isoformat()}"
+
+    SECTION_FONT = Font(bold=True, size=12)
+    NOTE_FONT = Font(italic=True, color="666666")
+    row = 4
+
+    def put(key, value="", key_font=None, key_fill=None, wrap=False):
+        nonlocal row
+        kc = ws.cell(row=row, column=1, value=key)
+        if key_font:
+            kc.font = key_font
+        if key_fill is not None:
+            kc.fill = key_fill
+        kc.alignment = Alignment(vertical="top")
+        vc = ws.cell(row=row, column=2, value=value)
+        vc.alignment = Alignment(wrap_text=wrap, vertical="top")
+        row += 1
+
+    put("Mode", mode)
+    row += 1
+
+    # Color legend — the key cell is filled with the ACTUAL PatternFill the
+    # data sheets use, so the legend shows the colors, not just names them.
+    put("Color conventions", key_font=SECTION_FONT)
+    for name, fill, desc in [
+        ("Green", GREEN, "Primary/regulatory-grade source, or >=2 independent "
+                         "corroborations — apply with confidence"),
+        ("Yellow", YELLOW, "Single non-primary source OR value implied — review before applying"),
+        ("Red", RED, "Single weak source — consider leaving blank instead"),
+        ("Blue", BLUE, "Re-verified unchanged — value reconfirmed against current source(s)"),
+        ("Green + EMPTY cell", GREEN, "Staged DELETION — value unsupported by any source; "
+                                      "paste the blank to clear the DB value"),
+        ("None", None, "Searched but no confirming source found"),
+    ]:
+        put(f"  {name}", desc, key_fill=fill)
     if mode == "reconciliation":
-        rows += [
-            ("", ""),
-            ("giignl_diff_* color override", ""),
-            ("  Light red", "Capacity disagreement <5%, or an owner-only delta"),
-            ("  Darker red", "Capacity disagreement >=5% (or undefined when GEM capacity is 0)"),
-            ("  Yellow", "Fuzzy (medium-confidence) match — see confidence cell"),
-        ]
-    rows += [
-        ("", ""),
-        ("Read-only columns", "Italicized headers — never edit; these are GEM-computed or out-of-scope"),
-        ("", ""),
-        ("Input summary", ""),
-    ]
-    for k, v in inputs_summary.items():
-        rows.append((f"  {k}", v))
-    for i, (k, v) in enumerate(rows, start=4):
-        ws.cell(row=i, column=1, value=k)
-        ws.cell(row=i, column=2, value=v)
-    ws.column_dimensions["A"].width = 30
-    ws.column_dimensions["B"].width = 80
+        row += 1
+        put("audit_* sheets override", "(audit_operating / audit_nonoperating "
+            "use red to mark GIIGNL-vs-GEM conflicts, not source confidence)",
+            key_font=Font(bold=True))
+        for name, fill, desc in [
+            ("Light red", RED, "Capacity disagreement <5%, or an owner-only delta / gem-only flag"),
+            ("Darker red", RED_DARK, "Capacity disagreement >=5% (or undefined when GEM capacity is 0)"),
+            ("Yellow", YELLOW, "Fuzzy (medium-confidence) match — see confidence cell"),
+        ]:
+            put(f"  {name}", desc, key_fill=fill)
+    row += 1
 
-
-def _populate_readme_sheet_defs(wb):
-    """Append a 'Sheet definitions' block to the README listing every sheet
-    in the workbook (except README itself) with its description from
-    SHEET_DESCRIPTIONS. Call AFTER all other sheets have been built.
-
-    Per reconciliation SOP §3.10: every batch xlsx README must include these
-    definitions so a researcher opening the file without prior context knows
-    what each tab is for.
-    """
-    if "README" not in wb.sheetnames:
-        return
-    ws = wb["README"]
-    # Find first empty row at the bottom.
-    start_row = ws.max_row + 2
-    hdr = ws.cell(row=start_row, column=1, value="Sheet definitions")
-    hdr.font = Font(bold=True, size=12)
-    start_row += 1
-    intro = ws.cell(
-        row=start_row, column=1,
-        value="What each tab in this workbook contains. Listed in workbook order.",
-    )
-    intro.font = Font(italic=True, color="666666")
-    start_row += 2
+    # Sheet definitions — directly after the legend; the "what is each tab"
+    # content is the first thing a reviewer needs.
+    put("Sheet definitions", key_font=SECTION_FONT)
+    put("What each tab in this workbook contains. Listed in workbook order.",
+        key_font=NOTE_FONT)
     for sheet_name in wb.sheetnames:
         if sheet_name == "README":
             continue
@@ -602,12 +605,26 @@ def _populate_readme_sheet_defs(wb):
             "(no description registered for this sheet — add one to "
             "SHEET_DESCRIPTIONS in build_review_package.py)",
         )
-        name_cell = ws.cell(row=start_row, column=1, value=sheet_name)
-        name_cell.font = Font(bold=True)
-        name_cell.alignment = Alignment(vertical="top")
-        desc_cell = ws.cell(row=start_row, column=2, value=desc)
-        desc_cell.alignment = Alignment(wrap_text=False, vertical="top")
-        start_row += 1
+        put(sheet_name, desc, key_font=Font(bold=True))
+    row += 1
+
+    # Column notes — which cells must never be edited or pasted.
+    put("Column notes", key_font=SECTION_FONT)
+    put("  Read-only columns", "Italicized gray headers — never edit these; "
+        "the build never writes them. Two groups:")
+    put("    GEM-computed", ", ".join(sorted(COMPUTED_COLUMNS)), wrap=True)
+    put("    Out-of-scope (frozen 2026)", ", ".join(sorted(OUT_OF_SCOPE_COLUMNS)), wrap=True)
+    put("  Meta columns (_*)", "Underscore-prefixed columns (_change, _changed_fields, "
+        "_confidence_summary) are build annotations for review — reference only, "
+        "do NOT paste into the GEM DB.", wrap=True)
+    row += 1
+
+    put("Input summary", key_font=SECTION_FONT)
+    for k, v in inputs_summary.items():
+        put(f"  {k}", v)
+
+    ws.column_dimensions["A"].width = 32
+    ws.column_dimensions["B"].width = 80
 
 
 def _tid_country_map(gem_csv_path):
@@ -701,8 +718,9 @@ def _country_breakdown(gem_csv_path, updates=(), qa=(), wiki=(),
 
 
 def _append_country_breakdown(wb, checked, changed, not_found):
-    """Append the 'Countries checked' block to the README (lands between the
-    input summary and the sheet-definitions block)."""
+    """Append the 'Countries checked' block to the bottom of the README.
+    Call after build_readme (which is itself called after all other sheets
+    are built)."""
     if "README" not in wb.sheetnames:
         return
     ws = wb["README"]
@@ -838,6 +856,11 @@ def build_update_csv_shaped_sheet(wb, updates, gem_csv_path, scope_terminal_ids=
             header[0] = header[0][1:]
         out_header = header + ["_changed_fields", "_confidence_summary"]
         _write_header(ws, out_header)
+        for meta in ("_changed_fields", "_confidence_summary"):
+            cell = ws.cell(row=1, column=out_header.index(meta) + 1)
+            cell.font = Font(bold=True, italic=True)
+            cell.comment = Comment("Reference only — do NOT paste into the GEM DB.",
+                                   "build_review_package")
         try:
             tid_idx = header.index("TerminalID")
             uid_idx = header.index("UnitID")
@@ -2642,6 +2665,10 @@ def build_edits_to_gem_sheet(wb, diff, gem_csv_path, recon_verdicts=None):
             header[0] = header[0][1:]
         out_header = ["_change"] + header
         _write_header(ws, out_header)
+        change_hdr = ws.cell(row=1, column=1)
+        change_hdr.font = Font(bold=True, italic=True)
+        change_hdr.comment = Comment("Reference only — do NOT paste into the GEM DB.",
+                                     "build_review_package")
         try:
             tid_idx = header.index("TerminalID")
         except ValueError:
@@ -2863,8 +2890,11 @@ def main():
     wb = openpyxl.Workbook()
     wb.remove(wb.active)  # remove default empty sheet
 
-    # Load inputs based on mode
+    # Load inputs based on mode. The README is built LAST (it lists the sheets
+    # that exist) but inserted as the FIRST tab; each branch just collects
+    # inputs_summary + the optional country breakdown for it.
     inputs_summary = {}
+    country_breakdown = None
     if args.mode == "update":
         updates = _safe_load(inputs_dir / "staged_updates.json", default=[])
         warn_duplicate_giignl_refs(updates)
@@ -2900,10 +2930,8 @@ def main():
             "fsru_sync_mode": fsru.get("mode"),
         }
 
-        build_readme(wb, "update", inputs_summary)
-        _chk, _chg, _no = _country_breakdown(args.gem_csv, updates=updates, qa=qa, wiki=wiki,
-                                             roster=checked_roster)
-        _append_country_breakdown(wb, _chk, _chg, _no)
+        country_breakdown = _country_breakdown(args.gem_csv, updates=updates, qa=qa, wiki=wiki,
+                                               roster=checked_roster)
         if updates:
             build_updates_sheet(wb, updates)
             build_update_csv_shaped_sheet(wb, updates, args.gem_csv,
@@ -2949,11 +2977,9 @@ def main():
             "wiki_updates": len(wiki),
         }
 
-        build_readme(wb, "discovery", inputs_summary)
-        _chk, _chg, _no = _country_breakdown(
+        country_breakdown = _country_breakdown(
             args.gem_csv, qa=qa, wiki=wiki, monitor=monitor,
             new_terms=new_terms, new_units=new_units, roster=checked_roster)
-        _append_country_breakdown(wb, _chk, _chg, _no)
         if new_terms:
             build_new_terminals_sheet(wb, new_terms, args.gem_csv)
         if new_units:
@@ -3033,7 +3059,6 @@ def main():
             "TRIPPED" if stats.get("report_only_unmatched", 0) > 30 else "OK"
         )
 
-        build_readme(wb, "reconciliation", inputs_summary)
         if diff:
             if diff.get("matches") or diff.get("fuzzy_matches"):
                 build_audit_operating_sheet(wb, diff, recon_verdicts=recon_verdicts)
@@ -3072,8 +3097,11 @@ def main():
     if tail:
         wb._sheets = [ws for ws in wb._sheets if ws not in tail] + tail
 
-    # Append sheet definitions to the README now that all sheets exist.
-    _populate_readme_sheet_defs(wb)
+    # Build the README last (it lists every sheet) as the first tab, then the
+    # countries-checked block (update/discovery sweeps) at its bottom.
+    build_readme(wb, args.mode, inputs_summary)
+    if country_breakdown:
+        _append_country_breakdown(wb, *country_breakdown)
 
     Path(args.output).parent.mkdir(parents=True, exist_ok=True)
     wb.save(args.output)

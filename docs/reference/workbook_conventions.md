@@ -20,7 +20,7 @@ Empty sheets are omitted from the final workbook.
 
 | Sheet | Populated when | Contents |
 |---|---|---|
-| `README` | Always | Batch params, color conventions, **per-sheet definitions for every other tab in this workbook**, and input-summary stats (incl. any SOP §6 gate trips). The definitions are sourced from `SHEET_DESCRIPTIONS` in `scripts/build_review_package.py` — required so a researcher can open the file without prior context and know what each tab is for. |
+| `README` | Always | First tab, ordered for a reviewer opening the file cold: mode → color legend (each key cell filled with the **actual swatch**) → **per-sheet definitions for every other tab in this workbook** → column notes (the read-only columns enumerated by group, plus the underscore-prefixed meta columns' "reference only — do not paste" warning) → input-summary stats (incl. any SOP §6 gate trips) → countries checked (sweep builds). The definitions are sourced from `SHEET_DESCRIPTIONS` in `scripts/build_review_package.py` — required so a researcher can open the file without prior context and know what each tab is for. |
 | `updates_summary` | Update workflow | Rows for existing units being updated, with old → new diffs and citations |
 | `updates_in_database_format` | Update workflow | PRIMARY update deliverable: the full all_fields GEM-CSV in its exact column order (one row per in-scope unit-row), so it reads/edits like the DB; researched cells color-coded by confidence |
 | `new_terminals` | Discovery workflow | Newly discovered projects (project-level fields) |

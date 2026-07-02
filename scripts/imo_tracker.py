@@ -22,7 +22,9 @@ Usage:
 """
 import argparse
 import re
+import os
 import subprocess
+import tempfile
 import sys
 import time
 import urllib.parse
@@ -36,7 +38,7 @@ _DEFAULT_UA = (
 
 
 def _fetch(url, timeout=30):
-    tmp = "/tmp/imo_lookup.html"
+    tmp = os.path.join(tempfile.gettempdir(), "imo_lookup.html")
     result = subprocess.run(
         ["curl", "-sL", "-A", _DEFAULT_UA,
          "-o", tmp,

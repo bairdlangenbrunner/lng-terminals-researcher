@@ -11,6 +11,7 @@ Last reconciled against:
 - Discovery SOP rev 2 (2026-06-24 — scope gate §3, gem.wiki coverage cross-check §4.0b, upstream-oil-operator FLNG sweep §4.3)
 - Triage SOP rev 2 (2026-06 — QC signals, tier-named options)
 - QC SOP rev 1 (2026-06)
+- Ref-sweep SOP rev 1 (2026-06-30 — missing-year status-timeline backfill; read-only Postgres)
 - CLAUDE.md (2026-06-09 — second slim pass; pull/FSRU/color detail deduplicated to `docs/workflows.md` + `docs/reference/workbook_conventions.md`; workflow recipes in `docs/workflows.md`, script table in `scripts/README.md`)
 
 Abbreviations:
@@ -19,6 +20,7 @@ Abbreviations:
 - **DSC** = `docs/sops/discovery.md`
 - **TRG** = `docs/sops/triage.md`
 - **QCS** = `docs/sops/qc.md`
+- **RSW** = `docs/sops/ref_sweep.md`
 - **SKL** = `CLAUDE.md`
 - **WFL** = `docs/workflows.md`
 - **WBC** = `docs/reference/workbook_conventions.md`
@@ -81,6 +83,7 @@ Abbreviations:
 | FSRU sync check | SKL "FSRU sync rule" | When batch touches any FSRU terminal |
 | Build review package | UPD §11.12, DSC §10.12, REC §3.10 | `build_review_package.py` |
 | Recalc verification | All workflow §s | `recalc.py` before present_files |
+| Missing-year ref-sweep (extract → research → build) | RSW §3–§4, WFL §8 | `refsweep_missing_year.py extract`/`build` over the read-only status timeline; year cell colored by tier; re-derive `tl_order` from DB every build |
 
 ## Confidence labels (cross-SOP)
 
@@ -170,6 +173,9 @@ Abbreviations:
 | QC: >10% sampled spot-check cells unsupported | QCS §6 (systemic flag) |
 | QC: >25% dead link-rot in one country | QCS §6 (→ recommend exhaustive Update) |
 | QC: multiple diverged edits in one applied batch | QCS §6 (apply-process error?) |
+| Ref-sweep: whole class of timeline years look wrong | RSW §8 (schema misread, not data gap) |
+| Ref-sweep: large share of UNRESOLVED are structural | RSW §8 (methodology signal — lead with it) |
+| Ref-sweep: `GEM_READONLY_DB_URL` unset/unreachable | RSW §8 (no CSV fallback for timeline data) |
 
 ## Source roster pointers
 

@@ -7,7 +7,7 @@ This repo is designed to be used with [Claude Code](https://docs.claude.com/en/d
 The assistant produces staged xlsx files for review; it never edits the live
 database directly.
 
-## Five workflows
+## Seven workflows
 
 | Workflow | When to use | Output |
 |---|---|---|
@@ -15,9 +15,53 @@ database directly.
 | **Reconciliation** | A new GIIGNL/IGU annual report is out | xlsx with diff vs current GEM data |
 | **Update** | Refresh known terminals — **standard** tier (worklist: stale + pipeline + blank refs) or **exhaustive** tier (every field, every ref) | xlsx with staged updates |
 | **Discovery** | Find terminals that aren't yet in GEM | xlsx with new terminal/unit candidates |
+| **Regional sweep** | Scaled Update/Discovery across a whole region — one subagent per country, resumable ledger | One xlsx per region + committed staging tree |
 | **QC** | Audit data health — link-rot, accuracy spot-check, did-my-edits-land | Markdown memo; fixes route to an Update batch |
+| **Missing-year ref-sweep** | Status-timeline milestones with no year — backfill from research | xlsx worklist kept in `batches/deliverables/` |
 
 See `CLAUDE.md` for the routing logic and `docs/sops/` for the full procedures.
+
+## Setup
+
+```bash
+pip install -r requirements.txt
+brew install poppler        # or: apt-get install poppler-utils
+```
+
+`poppler` provides `pdftotext`, which the GIIGNL PDF extraction needs — it is not
+pip-installable.
+
+**Environment variables** (put them in `.env`, gitignored; `.env.example` is the
+template). None are needed to read the repo or build a workbook from committed
+staging — they gate the live-data scripts:
+
+| Variable | Needed by | What it is |
+|---|---|---|
+| `GEM_READONLY_DB_URL` | `gem_query.py` (the canonical data pull), `refsweep_missing_year.py` | Postgres connection string for GEM's read-only replica (`postgres://readonly:…@host:5432/db`). Ask GEM staff. |
+| `GEM_PROJECT_DB_SESSIONID`, `GEM_PROJECT_DB_CSRFTOKEN` | `gem_export_via_web.py` / `pull_gem_db.py` (web-export fallback), `fetch_timeline.py`, `entity_lookup.py --remote` | Login cookies from a browser session on the GEM project DB. Extraction procedure in `gem_export_via_web.py`'s docstring. |
+| `GEM_PROJECT_DB_BASE_URL` | `fetch_timeline.py`, `gem_export_via_web.py` | Overrides the built-in project-DB host. Required for `fetch_timeline.py` — see Known issues. |
+
+**Access prerequisite:** the GEM LNG Terminals Manual (a Google Doc) is the
+authoritative methodology and is NOT in this repo. Ask your GEM lead for access;
+the reference URL lives in `docs/reference/sop_pointers.md`.
+
+## Getting started
+
+1. Read `CLAUDE.md` — the workflow router and hard rules; it is the assistant's
+   entry point and the fastest orientation for a human too.
+2. Skim `batches/run_records/README.md` — the dated log of what was last done.
+3. Run a **Triage** batch first (`docs/workflows.md` §4). It is memo-only —
+   lowest-risk way to exercise the pipeline end to end.
+
+Smoke-check the setup (from `scripts/`, needs `GEM_READONLY_DB_URL`):
+
+```bash
+python gem_query.py --all-fields lng -o gem_export.csv   # fresh pull of the LNG dataset
+python pull_gem_db.py --map-only                         # derive the column-index map (.colmap.json)
+python dedup_index.py                                    # build the name-match indexes
+```
+
+All three succeeding means the data pull, schema map, and matching indexes work.
 
 ## Repository layout
 
@@ -29,7 +73,7 @@ README.md                    This file
 TODO.md                      Open design questions and ideas not yet decided
 requirements.txt             Python deps (pip install -r); the PDF reader also needs poppler's pdftotext
                              (brew install poppler / apt-get install poppler-utils — not pip-installable)
-.env.example                 Template for .env (GEM login cookies — only the web-export fallback needs them)
+.env.example                 Template for .env (see Setup — env vars for the live-data scripts)
 .gitignore                   Keeps data pulls, scratch outputs, and xlsx workbooks out of git
 
 .claude/                     Claude Code settings (tool permissions); its README explains the choices
@@ -39,12 +83,13 @@ data/                        GIIGNL annual report PDFs 2020–2026 — the recon
 
 docs/
   workflows.md               Step-by-step command recipes for every workflow
-  sops/                      The five procedures
+  sops/                      The procedures
     reconciliation.md        Compare GEM to a new GIIGNL report
     update.md                Refresh existing terminals (standard or exhaustive tier; fill blanks, advance status, [ref] backfill)
     discovery.md             Find terminals missing from GEM
     triage.md                Decide what to work on
     qc.md                    Audit data health (link-rot, accuracy, post-apply checks); fixes route to Update
+    ref_sweep.md             Backfill missing years on status-timeline milestones
   reference/                 Lookup tables and rules (read on demand)
     gem_db_schema.md         What every GEM database column means
     lifecycle_rules.md       Status rules — when a project counts as proposed/shelved/cancelled etc.
@@ -58,10 +103,11 @@ docs/
 
 scripts/                     Python tools called by the workflows
   README.md                  The index: per-script purpose, run order, deep-dives on the tricky ones
-  gem_all_fields.py          Download the full LNG dataset from GEM (no login) — the usual way
-  gem_export_via_web.py      Same download via the website with login cookies — the fallback
-  gem_query.py               Ask the GEM read-only database direct questions
+  gem_query.py               Query the GEM read-only Postgres; --all-fields lng is the CANONICAL fresh pull
+  gem_all_fields.py          Library behind gem_query.py's export (no __main__ — running it directly is a no-op)
+  gem_export_via_web.py      Download via the website with login cookies — the fallback pull
   pull_gem_db.py             Wrap a download + write the column-index map (.colmap.json)
+  add_effective_status.py    Stamp effective_status onto the export + prune old CSV snapshots
   fetch_timeline.py          Pull a unit's full status history (the CSV export only has current status)
   giignl_extract.py          Turn the GIIGNL PDF's terminal tables into a flat CSV
   giignl_fsru_fleet.py       Extract the report's FSRU fleet table (which floating vessel is where)
@@ -72,6 +118,8 @@ scripts/                     Python tools called by the workflows
   completeness_sweep.py      Find blank fields, missing [ref]s, and countries with no coverage
   sweep_worklist_split.py    Split the central worklists per country for a regional sweep (one
                              dispatch file per country; LNG-only)
+  refsweep_missing_year.py   Missing-year ref-sweep: extract no-year milestones from the read-only
+                             Postgres, build the research workbook
   citation_qc.py             Re-verify every existing [ref] URL in scope (QC link-rot sweep)
   apply_check.py             Confirm an applied batch's edits actually landed in the live DB (QC)
   dedup_index.py             Name-matching indexes so "new" candidates can be checked against existing entries
@@ -82,22 +130,37 @@ scripts/                     Python tools called by the workflows
   normalize.py               Standardize country/company/terminal names (incl. Chinese transliteration)
   capacity_normalize.py      Convert capacity units (mtpa, bcm/y, …) to one standard
   country_universe.py        Reference list of coastal countries (used to spot coverage gaps)
+  monitor_store.py           Read/write monitor_list/current.json (watchlist candidates)
   build_review_package.py    Assemble everything into the final review xlsx
   recalc.py                  Sanity-check the xlsx for formula errors before it's presented
 
-batches/                     Finished review workbooks (*.xlsx, gitignored — regenerable); named
-                             lng_terminals_batch_<stamp>_ET[_<scope>]_<mode>.xlsx so the file says what it is
+batches/                     Everything a batch produces; see batches/README.md for the tracked/ignored split
+  README.md                  One-screen map of this tree
   staging/                   TRACKED: ALL per-batch staging inputs (the audit trail) — per-country sweep
                              research in <region>/, per-edition reconciliation staging in recon/<edition>/,
-                             ad-hoc batches in <scope>/, plus the sweep ledger (SWEEP_PROGRESS.md),
+                             ad-hoc batches in <scope>/, plus the sweep ledger stub (SWEEP_PROGRESS.md),
                              subagent briefs, and _assemble.py which merges sweep output. Derived files
                              there (extracted CSV, diff, _build assemblies) are gitignored; see its README
+  run_records/               TRACKED: one dated md per major run (trigger → work → outcome) + index README
+  deliverables/              TRACKED (xlsx included): workbooks kept long-term because the exact artifact matters
+  old/                       Superseded workbooks parked for pruning (gitignored)
+                             Routine workbooks land at this tree's top level as
+                             lng_terminals_batch_<stamp>_ET[_<scope>]_<mode>.xlsx (gitignored — regenerable)
 
 work/                        Scratch — derived sweep/index/QC outputs, regenerable (gitignored)
 monitor_list/                current.json: discovery candidates not yet solid enough to add, re-checked each batch
+notes/                       Ad-hoc analysis memos that aren't run records (rare)
 ```
 
 A batch in progress also drops the untracked fresh data pull (`gem_export.csv` + `.colmap.json`) wherever it was pulled (repo root or `scripts/`). Everything else batch-scoped — extracted report CSVs, diffs, `staged_*.json`, prose/narrative findings — lives under `batches/staging/` per its README, never loose in the repo root.
+
+## Known issues
+
+- **`fetch_timeline.py`'s default host is stale.** The built-in Heroku URL
+  404s; set `GEM_PROJECT_DB_BASE_URL` to the live project-DB host. Until it is
+  reachable, route status changes to qa notes rather than staging blind
+  timeline edits. (Timeline *reads/audits* have an alternative path: the
+  read-only Postgres `status_timeline` table via `GEM_READONLY_DB_URL`.)
 
 ## Hard rules
 
@@ -110,6 +173,16 @@ A non-exhaustive list of things the agent should never do (full list in `CLAUDE.
 - Run `entity_lookup.py` before staging any new entity. The GEM entity system is shared across trackers.
 - Status timeline edits require pulling the full timeline first (`fetch_timeline.py`). The CSV export doesn't include it.
 - Out-of-scope fields (LH2, NH3, SyntheticLNG, PCI, AltFuel*) are read-only.
+
+## Running tests
+
+```bash
+pytest tests/
+```
+
+Covers the unit/capacity normalizers, the GIIGNL owner-parser edge cases, the
+workbook build guard, and a snapshot extraction of the committed 2026 GIIGNL PDF
+(skipped if `pdftotext` is absent). See `tests/README.md`.
 
 ## Branching and batches
 
