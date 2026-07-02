@@ -40,6 +40,7 @@ import csv
 import json
 import os
 import subprocess
+import tempfile
 import sys
 import urllib.parse
 from collections import Counter
@@ -188,7 +189,7 @@ def lookup_remote(name, base_url=DEFAULT_BASE_URL, timeout=30):
 
     # Heuristic URL — GEM entity search is typically at /entities/?q=<name>
     url = f"{base_url}/entities/?q={urllib.parse.quote(name)}"
-    tmp = "/tmp/entity_lookup.html"
+    tmp = os.path.join(tempfile.gettempdir(), "entity_lookup.html")
     cookie = f"sessionid={sid}; csrftoken={csrf}"
 
     result = subprocess.run(

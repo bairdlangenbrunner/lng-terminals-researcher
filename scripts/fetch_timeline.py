@@ -34,7 +34,7 @@ Usage:
     python fetch_timeline.py G100002027401
     # Prints the parsed timeline for that UnitID
 
-    python fetch_timeline.py G100002027401 --output /tmp/timeline.json
+    python fetch_timeline.py G100002027401 --output work/timeline.json
 """
 import argparse
 import json
@@ -42,6 +42,7 @@ import os
 import re
 import subprocess
 import sys
+import tempfile
 import urllib.parse
 from pathlib import Path
 
@@ -82,7 +83,7 @@ def _fetch_unit_page(unit_id, base_url=DEFAULT_BASE_URL, timeout=30):
     host = urllib.parse.urlparse(base_url).hostname
     # The unit detail URL — pattern based on observed GEM URL structure
     url = f"{base_url}/units/{unit_id}/"
-    tmp = "/tmp/fetch_timeline.html"
+    tmp = os.path.join(tempfile.gettempdir(), "fetch_timeline.html")
 
     cookie = f"sessionid={sid}; csrftoken={csrf}"
     result = subprocess.run(
@@ -206,8 +207,15 @@ def fetch_timeline(unit_id, base_url=DEFAULT_BASE_URL):
     }
 
 
+_STALE_HOST = "https://internal-project-db-host"
+
 def main():
-    p = argparse.ArgumentParser()
+    p = argparse.ArgumentParser(
+        description="Fetch a unit's full status timeline from the GEM project DB.",
+        epilog=("KNOWN ISSUE: the built-in default host (%s) is stale (404). "
+                "Set GEM_PROJECT_DB_BASE_URL or pass --base-url with the live host; "
+                "until reachable, route status changes to qa notes instead of "
+                "staging blind timeline edits." % _STALE_HOST))
     p.add_argument("unit_id", help="UnitID (e.g. G100002027401)")
     p.add_argument("--output", help="Write JSON to this path instead of stdout")
     p.add_argument("--base-url", default=DEFAULT_BASE_URL,
@@ -217,6 +225,11 @@ def main():
     args = p.parse_args()
 
     base_url = TEST_BASE_URL if args.test else args.base_url
+    if base_url.rstrip("/") == _STALE_HOST:
+        print("  WARNING: using the built-in default host, which is KNOWN STALE "
+              "(404). Set GEM_PROJECT_DB_BASE_URL or pass --base-url with the "
+              "live host — this request will almost certainly fail.",
+              file=sys.stderr)
     result = fetch_timeline(args.unit_id, base_url=base_url)
 
     if args.output:

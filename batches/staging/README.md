@@ -14,7 +14,8 @@ root or `scripts/`.**
 
 ```
 batches/staging/
-  SWEEP_PROGRESS.md          ledger / checkpoint — read this first to resume a sweep
+  SWEEP_PROGRESS.md          live ledger while a sweep is in flight (read first to resume); a stub
+                             between sweeps — finished ledgers archive to batches/run_records/
   _country_agent_brief.md    the brief each per-country UPDATE subagent reads (tier-parameterized)
   _discovery_brief.md        the brief for discovery-sweep subagents
   _assemble.py               merges <region>/*.<type>.json → <region>/_build/staged_*.json
@@ -57,7 +58,14 @@ python scripts/build_review_package.py --mode update \
     --inputs-dir batches/staging/<region>/_build --gem-csv scripts/gem_export.csv \
     --output batches/lng_terminals_batch_$(TZ=America/New_York date "+%Y%m%d_%H%M_ET")_<region>_update.xlsx
 python scripts/recalc.py <the output xlsx>
-# if the region produced monitor/new candidates, also build --mode discovery into a _<region>_discovery.xlsx
+# if the region produced monitor/new candidates (per _assemble.py's discovery_mode_needed line),
+# ALSO run a --mode discovery build BRACKETED by the monitor roll-forward (workflows.md §5 step 4):
+python scripts/monitor_store.py seed batches/staging/<region>/_build
+python scripts/build_review_package.py --mode discovery \
+    --inputs-dir batches/staging/<region>/_build --gem-csv scripts/gem_export.csv \
+    --output batches/lng_terminals_batch_$(TZ=America/New_York date "+%Y%m%d_%H%M_ET")_<region>_discovery.xlsx
+python scripts/recalc.py <the discovery xlsx>
+python scripts/monitor_store.py update batches/staging/<region>/_build --batch <stamp>
 ```
 
 ## Run a reconciliation (per edition)
@@ -74,8 +82,9 @@ python scripts/build_review_package.py --mode reconciliation --report giignl --y
 ## xlsx naming
 
 Every deliverable: `batches/lng_terminals_batch_<YYYYMMDD>_<HHMM>_ET[_<scope>]_<mode>.xlsx` — the
-`<mode>` token (`update` / `discovery` / `reconciliation`) is always present; the `<scope>` slug
-(country, region, or report edition) whenever the batch is scoped. Pre-2026-06 files used `[_<region>]`
+`<mode>` token (`update` / `exhaustive_update` / `discovery` / `reconciliation`; an exhaustive-tier
+Update batch uses `exhaustive_update` even though it still builds with `--mode update`) is always
+present; the `<scope>` slug (country, region, or report edition) whenever the batch is scoped. Pre-2026-06 files used `[_<region>]`
 without the mode token for update builds — they are not renamed.
 
 ## Git note
