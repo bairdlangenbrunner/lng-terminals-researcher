@@ -31,7 +31,7 @@ def main() -> None:
     p.add_argument("--stale", default=str(HERE / "work" / "stale_sweep.json"))
     p.add_argument("--completeness", default=str(HERE / "work" / "completeness_sweep.json"))
     p.add_argument("--region-map", default=str(HERE.parent / "batches" / "staging" / "_region_map.json"))
-    p.add_argument("--out", default=str(HERE / "work" / "sweep"))
+    p.add_argument("--output", "--out", dest="out", default=str(HERE / "work" / "sweep"))
     p.add_argument("--shard-state-threshold", type=int, default=40,
                    help="include a by_state breakdown in the index for countries with more LNG units than this")
     args = p.parse_args()

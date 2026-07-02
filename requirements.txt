@@ -2,6 +2,9 @@ openpyxl>=3.1.0
 jieba>=0.42
 pypinyin>=0.55
 
+# Dev-only: test suite (tests/ — see tests/README.md)
+pytest>=8.0
+
 # SYSTEM dependency (NOT pip-installable): giignl_extract.py shells out to the
 # `pdftotext` CLI from poppler — there is no Python PDF library in this repo.
 #   macOS:          brew install poppler

@@ -186,7 +186,7 @@ def main():
     p.add_argument("--batch", required=True, help="Path to the APPLIED batch xlsx")
     p.add_argument("--csv", default="./gem_export.csv",
                    help="FRESH gem_export.csv (pull after the user applied the batch)")
-    p.add_argument("--out", default="work/apply_check.json")
+    p.add_argument("--output", "--out", dest="out", default="work/apply_check.json")
     p.add_argument("--sheet", default="updates_summary")
     args = p.parse_args()
 

@@ -36,7 +36,9 @@ Library usage:
     url_or_none = verify_and_format(url, expected)
 """
 import re
+import os
 import subprocess
+import tempfile
 import sys
 
 
@@ -92,7 +94,7 @@ def _fetch(url, timeout=30, ua=_DEFAULT_UA):
     if url in _CACHE:
         return _CACHE[url]
 
-    tmp = "/tmp/verify_page.bin"
+    tmp = os.path.join(tempfile.gettempdir(), "verify_page.bin")
     result = subprocess.run(
         ["curl", "-sL", "-A", ua, "-o", tmp,
          "-w", "%{http_code} %{content_type}", "--max-time", str(timeout), url],

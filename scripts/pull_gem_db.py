@@ -21,7 +21,7 @@ Why re-derive the column map every batch:
 
 Usage:
     python pull_gem_db.py                            # default: lng export
-    python pull_gem_db.py --out /tmp/gem.csv         # custom path
+    python pull_gem_db.py --output gem_export.csv    # custom path
     python pull_gem_db.py --map-only                 # skip fetch, derive map only
     python pull_gem_db.py --kind lng_export          # the shorter "LNG Export" format
 """
@@ -253,7 +253,7 @@ def derive_column_map(csv_path):
 
 def main():
     p = argparse.ArgumentParser()
-    p.add_argument("--out", default=DEFAULT_OUT)
+    p.add_argument("--output", "--out", dest="out", default=DEFAULT_OUT)
     p.add_argument("--kind", default="lng",
                    choices=["lng", "lng_export"],
                    help="Which export format (default: lng)")
