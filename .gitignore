@@ -44,6 +44,8 @@ giignl_prose_corrections.json
 !batches/staging/recon/**/giignl_narrative_findings.json
 !batches/staging/recon/**/giignl_prose_corrections.json
 !batches/staging/*/staged_*.json
+# Captive-power staging nests one level deeper (captive_power/<area>/), like recon — track it too.
+!batches/staging/captive_power/**/staged_*.json
 
 # Derived per-region build scratch (assembled staged_*.json + the _roster_*.json the build
 # regenerates each run). Fully reproducible from the tracked per-country JSON; never commit.

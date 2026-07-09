@@ -32,6 +32,7 @@ batches/staging/
     giignl_narrative_findings.json  │ + match_overrides feed report_diff.py (re-pin/reclassify the diff —
     staged_*.json                   ┘ regen the diff first); staged_* feed the build's --inputs-dir
                                       (recon verdicts, report-only resolutions, match overrides, entity adds, qa, ...)
+  captive_power/<area>/      captive-power cross-tracker staging (Captive-power SOP; e.g. louisiana/)
   <scope-slug>/              ad-hoc single-scope update/discovery batch (e.g. japan/, qatar/)
     staged_*.json            agent-authored staging written directly — COMMITTED; the build's --inputs-dir
 ```

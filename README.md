@@ -7,7 +7,7 @@ This repo is designed to be used with [Claude Code](https://docs.claude.com/en/d
 The assistant produces staged xlsx files for review; it never edits the live
 database directly.
 
-## Seven workflows
+## Eight workflows
 
 | Workflow | When to use | Output |
 |---|---|---|
@@ -18,6 +18,7 @@ database directly.
 | **Regional sweep** | Scaled Update/Discovery across a whole region — one subagent per country, resumable ledger | One xlsx per region + committed staging tree |
 | **QC** | Audit data health — link-rot, accuracy spot-check, did-my-edits-land | Markdown memo; fixes route to an Update batch |
 | **Missing-year ref-sweep** | Status-timeline milestones with no year — backfill from research | xlsx worklist kept in `batches/deliverables/` |
+| **Captive-power cross-tracker** | Match LNG terminals to GOGPT captive gas power plants | LNG staging xlsx (`CaptiveGasPower`/`PowerPlantsSupplied`) + memo for GOGPT-side gaps |
 
 See `CLAUDE.md` for the routing logic and `docs/sops/` for the full procedures.
 
@@ -90,6 +91,7 @@ docs/
     triage.md                Decide what to work on
     qc.md                    Audit data health (link-rot, accuracy, post-apply checks); fixes route to Update
     ref_sweep.md             Backfill missing years on status-timeline milestones
+    captive_power.md         Match LNG terminals to GOGPT captive gas power plants (LNG-side staging only)
   reference/                 Lookup tables and rules (read on demand)
     gem_db_schema.md         What every GEM database column means
     lifecycle_rules.md       Status rules — when a project counts as proposed/shelved/cancelled etc.
@@ -120,6 +122,8 @@ scripts/                     Python tools called by the workflows
                              dispatch file per country; LNG-only)
   refsweep_missing_year.py   Missing-year ref-sweep: extract no-year milestones from the read-only
                              Postgres, build the research workbook
+  captive_power_colocation.py  Match LNG terminals to GOGPT captive gas power plants (geo + name +
+                             captive flags) from the read-only Postgres; emits tiered candidate pairs
   citation_qc.py             Re-verify every existing [ref] URL in scope (QC link-rot sweep)
   apply_check.py             Confirm an applied batch's edits actually landed in the live DB (QC)
   dedup_index.py             Name-matching indexes so "new" candidates can be checked against existing entries
