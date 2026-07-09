@@ -1,0 +1,141 @@
+{
+ "country": "Cameroon",
+ "slug": "cameroon",
+ "tier": "standard",
+ "gem_rows": [
+  {
+   "terminal_id": "T100000130247",
+   "unit_id": "G100002024701",
+   "terminal": "Cameroon FLNG Terminal",
+   "unit": "T1",
+   "status": "operating",
+   "facility_type": "export",
+   "last_updated": "2025-06-22"
+  },
+  {
+   "terminal_id": "T100000130247",
+   "unit_id": "G100002024702",
+   "terminal": "Cameroon FLNG Terminal",
+   "unit": "T2",
+   "status": "operating",
+   "facility_type": "export",
+   "last_updated": "2025-05-22"
+  },
+  {
+   "terminal_id": "T100000130247",
+   "unit_id": "G100002024703",
+   "terminal": "Cameroon FLNG Terminal",
+   "unit": "T3",
+   "status": "operating",
+   "facility_type": "export",
+   "last_updated": "2025-06-22"
+  },
+  {
+   "terminal_id": "T100000130247",
+   "unit_id": "G100002024704",
+   "terminal": "Cameroon FLNG Terminal",
+   "unit": "T4",
+   "status": "operating",
+   "facility_type": "export",
+   "last_updated": "2025-06-22"
+  },
+  {
+   "terminal_id": "T100000130248",
+   "unit_id": "G100002024801",
+   "terminal": "Cameroon LNG Terminal",
+   "unit": "--",
+   "status": "cancelled",
+   "facility_type": "export",
+   "last_updated": "2025-06-22"
+  },
+  {
+   "terminal_id": "T100000130913",
+   "unit_id": "G100002091301",
+   "terminal": "Etinde FLNG Terminal",
+   "unit": "--",
+   "status": "proposed",
+   "facility_type": "export",
+   "last_updated": "2025-06-22"
+  }
+ ],
+ "dev_pipeline": [
+  {
+   "terminal_id": "T100000130913",
+   "unit_id": "G100002091301",
+   "terminal_name": "Etinde FLNG Terminal",
+   "unit_name": "--",
+   "country": "Cameroon",
+   "status": "proposed",
+   "substatus": "",
+   "last_updated": "2025-06-22",
+   "months_since_update": 12.3,
+   "recently_updated": false
+  }
+ ],
+ "stale_flags": [],
+ "blank_refs": [
+  {
+   "terminal_id": "T100000130248",
+   "unit_id": "G100002024801",
+   "terminal_name": "Cameroon LNG Terminal",
+   "unit_name": "--",
+   "country": "Cameroon",
+   "status": "cancelled",
+   "gap_type": "blank_ref",
+   "column": "Status [ref]",
+   "severity": "medium",
+   "detail": "Status populated but Status [ref] blank — [ref]-fill target"
+  },
+  {
+   "terminal_id": "T100000130248",
+   "unit_id": "G100002024801",
+   "terminal_name": "Cameroon LNG Terminal",
+   "unit_name": "--",
+   "country": "Cameroon",
+   "status": "cancelled",
+   "gap_type": "blank_ref",
+   "column": "CancelledYear [ref]",
+   "severity": "low",
+   "detail": "CancelledYear populated but CancelledYear [ref] blank — [ref]-fill target"
+  },
+  {
+   "terminal_id": "T100000130248",
+   "unit_id": "G100002024801",
+   "terminal_name": "Cameroon LNG Terminal",
+   "unit_name": "--",
+   "country": "Cameroon",
+   "status": "cancelled",
+   "gap_type": "blank_ref",
+   "column": "StopYear [ref]",
+   "severity": "low",
+   "detail": "StopYear populated but StopYear [ref] blank — [ref]-fill target"
+  }
+ ],
+ "other_gaps": [
+  {
+   "terminal_id": "T100000130913",
+   "unit_id": "G100002091301",
+   "terminal_name": "Etinde FLNG Terminal",
+   "unit_name": "--",
+   "country": "Cameroon",
+   "status": "proposed",
+   "gap_type": "missing_field",
+   "column": "FloatingVesselName",
+   "severity": "medium",
+   "detail": "proposed unit missing required field 'FloatingVesselName'"
+  }
+ ],
+ "dormant_revival_watch": [
+  {
+   "terminal_id": "T100000130248",
+   "terminal_name": "Cameroon LNG Terminal",
+   "country": "Cameroon",
+   "location": "South Region — Kribi Southern Coastline",
+   "prior_owner": "ENGIE SA; Société Nationale des Hydrocarbures",
+   "death_status": "cancelled",
+   "death_year": 2020,
+   "years_dead": 6,
+   "revival_priority": "high"
+  }
+ ]
+}

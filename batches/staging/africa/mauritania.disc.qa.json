@@ -1,22 +1,22 @@
 [
   {
-    "category": "status_timeline",
-    "terminal_id": "T100000131091",
-    "unit_id": "G100002109101",
-    "terminal_name": "BirAllah LNG Hub",
-    "issue": "Sponsor/status change on an existing GEM row. GEM lists Owner/Parent = Societe Mauritanienne Des Hydrocarbures et de Patrimoine Minier (SMHPM) and Status = proposed. Reporting indicates BP's PSA for the BirAllah gas resource (signed Oct 2022; FID originally expected H1 2025) has ENDED/EXPIRED after BP declined to proceed on the original timeline and the conditions for a 4-year extension were not met; Mauritania is now actively seeking a new development partner, still targeting FID and ~10 mtpa LNG with production ~2030. GEM's owner roster may predate or not reflect BP's departure, and the proposed status/anchor years may be stale.",
-    "severity": "medium",
-    "suggested_action": "Route to an Update batch: re-verify BirAllah's current sponsor/operator set (confirm BP is OUT; SMHPM/government as interim holder; watch for a new partner), refresh proposed-status anchor (ProposalYear / latest planned start / FID expectation), and source-search the BP-exit and partner-search reporting. fetch_timeline is DOWN this batch, so no timeline edit is staged here. Lead URLs (verified): https://energycapitalpower.com/mauritanias-contract-with-bp-for-birallah-gas-field-ends-seeks-new-development-partner/ ; ministry 'projects under study' page https://www.energies.gov.mr/en/node/2564 (BirAllah described as under study, ~40 km north of GTA). Not auto-applied.",
-    "researcher_initials": "AI-draft (discovery sweep)"
-  },
-  {
-    "category": "scope_clarification",
+    "category": "dormant_revival",
     "terminal_id": "T100000131048",
     "unit_id": "G100002104801",
     "terminal_name": "New Fortress Banda LNG Terminal",
-    "issue": "GEM correctly carries this New Fortress Energy 'Fast LNG' Banda project as cancelled (NFE never advanced past the non-binding Dec 2021 MOU). Discovery note: the Banda gas field is being REVIVED under a different consortium — Mauritania's energy ministry lists Banda development with a Taqa Arabia / Go Gas Holding consortium (development contract signed March 2024), but the announced scope is gas-to-power plus GTL (gas-to-liquids) and CNG conversion, with NO dedicated LNG liquefaction/regasification. So the revival is OUT OF LNG-terminal scope and is not a new LNG terminal; the GEM cancelled NFE record should stay cancelled (it correctly reflects NFE's withdrawal, not the field's later non-LNG redevelopment).",
+    "issue": "Dead-site revival check: NEW activity at the Banda field, but it is OUT OF LNG SCOPE. A Taqa Arabia + Go Gas Holding consortium signed a partnership with Somelec and SNIM to commercialize Banda gas domestically for power generation (fuel an existing 180 MW dual-fuel plant + a new ~120 MW plant; also a GoGas/Madkour 365 MW CCGT reported) - pipeline gas-to-power, no liquefaction, no LNG moving by ship. Not a revival of the NFE 'Fast LNG' export project and not a new LNG terminal. Verified ref: https://energies.gov.mr/en/node/2564 (Ministry of Energy and Petroleum, token Banda, PASS).",
     "severity": "low",
-    "suggested_action": "No LNG-terminal edit needed. Optionally annotate the cancelled NFE Banda record (e.g., ResearcherNotes/OtherNames) that the Banda field's post-2024 redevelopment (Taqa Arabia/Go Gas) is a non-LNG gas-to-power/GTL/CNG scheme, so a future sweep does not mistake it for a revived LNG terminal. Verified leads: https://www.energies.gov.mr/en/node/2564 (Banda named, GTL+CNG) ; https://energycapitalpower.com/madkour-go-gas-drive-365-mw-gas-to-power-expansion-in-mauritania/ (Go Gas gas-to-power). Not auto-applied.",
+    "suggested_action": "Record stays cancelled. Optionally note the gas-to-power development in ResearcherNotes on the next update pass so future sweeps don't re-flag it.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "update_candidate",
+    "terminal_id": "T100000131091",
+    "unit_id": "G100002109101",
+    "terminal_name": "BirAllah LNG Hub",
+    "issue": "Sponsor churn on an existing row (update_existing, not a discovery): BP's licence lapsed and Mauritania sought a new developer (2024); TotalEnergies walked away in H2 2025; as of Feb 2026 Energean is assessing entry with a lower-cost, domestic-power-first model rather than large-scale LNG export. Verified refs: https://worldoil.com/news/2024/5/7/mauritania-seeks-developer-for-birallah-offshore-natural-gas-discovery-following-bp-license-expiration/ (token BirAllah, PASS) and https://dispatchrisk.com/energean-evaluating-birallah-gas-project-targeting-domestic-market/ (token Energean, PASS).",
+    "severity": "medium",
+    "suggested_action": "Update workflow (row is 12+ months stale): verify current owner/operator holdings and whether an LNG component survives; adjust status/notes accordingly.",
     "researcher_initials": "AI-draft (discovery sweep)"
   }
 ]

@@ -1,0 +1,162 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130901",
+    "unit_id": "G100002090100",
+    "terminal_name": "Ca Na LNG Terminal",
+    "issue": "RE-VERIFIED 2026-07-09: NOT a status change - correctly stays 'proposed' (confirmed via fresh export + read-only Postgres: live status 'proposed', timeline has no construction entry). Investor selected (2026-01-28 award) and investment-business contract signed with Khanh Hoa PC on 2026-04-10; the VIR 'kicks off construction' headline describes the contract-signing ceremony, not a groundbreaking. Trung Nam-Sideros consortium is the winning bidder for the $2.2bn complex, but the project is still pre-FID: FID expected Q4 2026, main construction Q4 2026 at the earliest, COD 2030 (theinvestor.vn, vir.com.vn). Terminal-level construction start NOT confirmed as of Jul 2026.",
+    "severity": "low",
+    "suggested_action": "No edit. This was NOT a valid never-punt case - the blocker was 'construction not independently confirmed', not the (now-void) 'timeline endpoint down'. Watch for an actual LNG-terminal groundbreaking after the Q4 2026 FID; move proposed->construction only when a real groundbreak is confirmed.",
+    "researcher_initials": "AI-draft (resolved 2026-07-09)"
+  },
+  {
+    "category": "lifecycle_fields",
+    "terminal_id": "T100000130901",
+    "unit_id": "G100002090100",
+    "terminal_name": "Ca Na LNG Terminal",
+    "issue": "ShelvedYear=2023 and StopYear=2023 (ShelvedCancelledStatusType=inferred) remain populated on a row whose Status=proposed - and the project is now decisively revived (international tender won, contract signed).",
+    "severity": "medium",
+    "suggested_action": "Clear ShelvedYear/StopYear/ShelvedCancelledStatusType, or confirm the convention for retaining historical shelved years on revived projects; researcher note already documents the 2023-24 shelve/revive history.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "orphan_ref_resolution",
+    "terminal_id": "T100000130901",
+    "unit_id": "G100002090100",
+    "terminal_name": "Ca Na LNG Terminal",
+    "issue": "StartDate [ref] (vir 83522) supported the OLD planned start (2024) with ActualStartYear blank - resolved: superseded by the staged LatestPlannedStartYear=2030 update refs. Location [ref] (same vir article) pairs with populated State/Province + approximate coordinates while the Location text cell is blank - acceptable pairing, not a true orphan.",
+    "severity": "low",
+    "suggested_action": "No action beyond applying the staged 2030 update; keep Location [ref] as the coordinates citation.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "capacity_gap",
+    "terminal_id": "T100000130901",
+    "unit_id": "G100002090100",
+    "terminal_name": "Ca Na LNG Terminal",
+    "issue": "Terminal regas capacity is specified as a RANGE (1-1.2 mtpa, with a 220,000 m3 tank and 2,400 m breakwater) in the award/contract coverage; tokens '1.2 million' (theinvestor d18836) and '220,000' (vir 150496) verified. Capacity cell left blank because GEM needs a single nameplate figure.",
+    "severity": "low",
+    "suggested_action": "Decide convention (likely 1.2 as upper design figure) and fill Capacity + Capacity [ref] next batch.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ownership_change_pending",
+    "terminal_id": "T100000130324",
+    "unit_id": "G100002032400",
+    "terminal_name": "Cai Mep LNG Terminal",
+    "issue": "AG&P LNG (Nebula Energy) agreed in April 2026 to acquire 100% of Cai Mep LNG; Hai Linh Co Ltd to fully exit. Deal explicitly 'subject to customary regulatory approvals and closing conditions' - NOT closed, so no Owner/Parent edit staged (current Parent: Hai Linh 51% / Nebula 39.2% / Asiya / JBIC / Osaka Gas).",
+    "severity": "medium",
+    "suggested_action": "Track deal close (LNG Prime 184019, pgjonline 2026-04); when completed, restate Parent to Nebula Energy/AG&P LNG 100% and drop Hai Linh.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ref_bot_blocked",
+    "terminal_id": "T100000130324",
+    "unit_id": "G100002032400",
+    "terminal_name": "Cai Mep LNG Terminal",
+    "issue": "Three Cai Mep refs are bot-blocked, not dead: S&P Global Platts + Commodity Insights (HTTP 403; the two URLs are host-variants of ONE 2020 article - also a mirror-pair, count once) - archive copy verified ('Hai Linh'); rigzone (HTTP 202 challenge) - archive verified ('$500 million'); Reuters 2024-05-08 (HTTP 401 live AND 401 on Wayback playback - could NOT be content-verified anywhere, though its cited values are corroborated by bairdmaritime/LNG Prime/AG&P).",
+    "severity": "low",
+    "suggested_action": "Keep live URLs (bot-block != dead). If a future pass needs to re-verify the Reuters piece, use a browser; consider adding one of the passing corroborating URLs alongside it.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "orphan_ref_resolution",
+    "terminal_id": "T100000130325",
+    "unit_id": "G100002032500",
+    "terminal_name": "Son My LNG Terminal",
+    "issue": "Phase 1 ProposalDate [ref] (vnexpress, 2016 piece on the project's postponement) is filled while ProposalYear is blank; the article shows the project already proposed and postponed by 2016. Phase 2 ProposalDate [ref] (vietnamnews, 2023 investment approval) similarly pairs with a blank ProposalYear.",
+    "severity": "low",
+    "suggested_action": "If desired: ProposalYear ~2016 for Phase 1 (or earlier - original PV Gas proposal) and 2023 for Phase 2; left unstaged because both are inference from article dates, not stated proposal years.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "capacity_structure",
+    "terminal_id": "T100000130325",
+    "unit_id": "G100002032500",
+    "terminal_name": "Son My LNG Terminal",
+    "issue": "Official phasing per the July 2023 investment approval coverage: Phase 1 = 3.6 mtpa (staged, replacing stale 2.4), expanding to 6 mtpa TOTAL through the terminal in Phase 2 (2027-2030), with long-run potential of 10 mtpa. GEM Phase 2 = 2.4 is consistent as the increment (6.0 - 3.6). AES's '450 TBtu' (~9-10 mtpa) refers to the long-run build-out.",
+    "severity": "medium",
+    "suggested_action": "Apply the Phase 1 update; keep Phase 2 at 2.4 (increment convention); TotImport* computed totals will move from 4.8 to 6.0 on recalc.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ref_quality",
+    "terminal_id": "T100000130975",
+    "unit_id": "G100002097500",
+    "terminal_name": "Mui Ke Ga FSRU",
+    "issue": "FloatingVesselName cannot be filled: no FSRU vessel was ever chartered/assigned (project shelved pre-FID). Status [ref]/ShelvedYear [ref]/StopYear [ref] are blank because shelved is a GEM inference (2 years of inactivity; the April 2025 PDP8 revision reportedly lists the project among behind-schedule/cannot-implement projects, but the only machine-readable copy of Decision 768 found is a scanned PDF).",
+    "severity": "low",
+    "suggested_action": "Leave vessel blank; keep inferred status undocumented or add a text-layer copy of Decision 768 as Status [ref] if one can be verified in a browser (thuvienphapluat.vn is bot-blocked).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "revival_check",
+    "terminal_id": "T100000130975",
+    "unit_id": "G100002097500",
+    "terminal_name": "Mui Ke Ga FSRU",
+    "issue": "Dormant-revival watch: web search (EN+VN) found no new activity for Mui Ke Ga FSRU / ECV / B.Grimm / Gunvor at the Ke Ga site through 2026-07. Shelved (inferred 2025) stands.",
+    "severity": "low",
+    "suggested_action": "No action; re-check next sweep.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "revival_check",
+    "terminal_id": "T100000131041",
+    "unit_id": "G100002104100",
+    "terminal_name": "South East LNG Terminal",
+    "issue": "Dormant-revival watch: no revival or successor activity found for South East LNG (old MOIT master-plan entry, Binh Thuan) through 2026-07; cancelled (inferred 2023) stands. Owner was never publicly identified for this master-plan project - Owner cell correctly left blank; blank Status/CancelledYear/StopYear refs reflect the inferred cancellation (nothing citable exists).",
+    "severity": "low",
+    "suggested_action": "No action; re-check next sweep.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dead_ref",
+    "terminal_id": "T100000131041",
+    "unit_id": "G100002104100",
+    "terminal_name": "South East LNG Terminal",
+    "issue": "All four South East refs cited http://www.jccp.or.jp/country/docs/4_CPJ-5-18_MOIT.pdf which now returns 404. Wayback snapshot 2020-01-13 verified (contains 'South East' and start year '2022') and staged as replacement on all four ref cells. Caveat: literal '6.0' was not found in the archived PDF's text layer, so the 6.0 mtpa capacity could not be re-verified verbatim (formatting may differ).",
+    "severity": "medium",
+    "suggested_action": "Apply the archive-URL swaps; eyeball the archived deck for the capacity figure when applying (or accept 6.0 as legacy).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ref_unverifiable",
+    "terminal_id": "T100000130974",
+    "unit_id": "G100002097400",
+    "terminal_name": "Long Son LNG Terminal",
+    "issue": "Status [ref], ProposalDate [ref] and StartDate [ref] cite https://vepg.vn/wp-content/uploads/2025/06/768_QD-TTg_658055.pdf (Decision 768/QD-TTg, April 2025 PDP8 revision) - the PDF is a scanned image with NO text layer, so it fails content verification (pdftotext present and working). The text version at thuvienphapluat.vn returns 403 (bot-block) with no Wayback snapshot. Consequently LatestPlannedStartYear=2030 could not be re-verified against the decision.",
+    "severity": "high",
+    "suggested_action": "Human-browser check of Decision 768 (thuvienphapluat.vn or chinhphu.vn) to (a) confirm Long Son's timeline (2030) and (b) check whether the 4.4 mtpa figure appears there - this decides the staged Capacity edit.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "capacity_conflict",
+    "terminal_id": "T100000130974",
+    "unit_id": "G100002097400",
+    "terminal_name": "Long Son LNG Terminal",
+    "issue": "Capacity=4.4 is NOT present in its cited ref (marketscreener factbox; archived copy shows 3.5, and '4.4' is absent). Two verified sources support 3.5 mtpa phase 1 (marketscreener via Wayback; baodautu '3,5 trieu tan'); EVNGENCO3 materials describe 3.5 mtpa phase 1 -> 6.5 mtpa phase 2. Staged 4.4->3.5 as YELLOW pending the Decision-768 check above.",
+    "severity": "high",
+    "suggested_action": "If Decision 768 (or another verifiable source) states 4.4, reject the staged edit and re-ref 4.4; otherwise apply 3.5.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "admin_geography",
+    "terminal_id": "T100000130901",
+    "unit_id": "G100002090100",
+    "terminal_name": "Ca Na LNG Terminal",
+    "issue": "Vietnam's July 2025 province mergers affect State/Province on ALL rows in this shard: Ninh Thuan -> Khanh Hoa (Ca Na), Binh Thuan -> Lam Dong (Son My, Mui Ke Ga, South East), Ba Ria-Vung Tau -> Ho Chi Minh City (Long Son, Cai Mep). Values in GEM are pre-merger. This is a whole-class geography question, not a per-row research finding, so no edits staged.",
+    "severity": "medium",
+    "suggested_action": "Decide a tracker-wide convention (keep legacy provinces vs adopt merged units) and apply Vietnam-wide in one pass.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "entity_gap",
+    "terminal_id": "T100000130901",
+    "unit_id": "G100002090100",
+    "terminal_name": "Ca Na LNG Terminal",
+    "issue": "entity_lookup (bare + --remote; variants 'Trungnam Group', 'Trung Nam', 'Trungnam') found NO existing entity - surprising for a major Vietnamese energy developer with a large GEM-tracked wind/solar portfolio. 'Sideros River' also not found (expected - new, undisclosed HQ).",
+    "severity": "medium",
+    "suggested_action": "Before creating the staged 'Trungnam Group' entity, have the entity team check for variant spellings (e.g. 'Trung Nam Group', 'Trungnam Construction Investment JSC') in the cross-tracker entity system.",
+    "researcher_initials": "AI-draft"
+  }
+]

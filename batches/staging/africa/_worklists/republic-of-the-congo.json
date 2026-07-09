@@ -1,0 +1,113 @@
+{
+ "country": "Republic of the Congo",
+ "slug": "republic-of-the-congo",
+ "tier": "standard",
+ "gem_rows": [
+  {
+   "terminal_id": "T100000131003",
+   "unit_id": "G100002100301",
+   "terminal": "Congo FLNG Terminal",
+   "unit": "--",
+   "status": "operating",
+   "facility_type": "export",
+   "last_updated": "2026-06-24"
+  },
+  {
+   "terminal_id": "T100000131123",
+   "unit_id": "G100002112301",
+   "terminal": "Eni Congo FLNG II Terminal",
+   "unit": "--",
+   "status": "operating",
+   "facility_type": "export",
+   "last_updated": "2026-06-24"
+  },
+  {
+   "terminal_id": "T100001083728",
+   "unit_id": "G100001094888",
+   "terminal": "Nkossa FLNG Terminal",
+   "unit": "--",
+   "status": "proposed",
+   "facility_type": "export",
+   "last_updated": "2026-06-24"
+  }
+ ],
+ "dev_pipeline": [
+  {
+   "terminal_id": "T100001083728",
+   "unit_id": "G100001094888",
+   "terminal_name": "Nkossa FLNG Terminal",
+   "unit_name": "--",
+   "country": "Republic of the Congo",
+   "status": "proposed",
+   "substatus": "",
+   "last_updated": "2026-06-24",
+   "months_since_update": 0.3,
+   "recently_updated": true
+  }
+ ],
+ "stale_flags": [],
+ "blank_refs": [],
+ "other_gaps": [
+  {
+   "terminal_id": "T100000131003",
+   "unit_id": "G100002100301",
+   "terminal_name": "Congo FLNG Terminal",
+   "unit_name": "--",
+   "country": "Republic of the Congo",
+   "status": "operating",
+   "gap_type": "orphan_ref",
+   "column": "Location [ref]",
+   "severity": "medium",
+   "detail": "Location [ref] filled but Location blank — Rule F violation"
+  },
+  {
+   "terminal_id": "T100000131123",
+   "unit_id": "G100002112301",
+   "terminal_name": "Eni Congo FLNG II Terminal",
+   "unit_name": "--",
+   "country": "Republic of the Congo",
+   "status": "operating",
+   "gap_type": "orphan_ref",
+   "column": "Location [ref]",
+   "severity": "medium",
+   "detail": "Location [ref] filled but Location blank — Rule F violation"
+  },
+  {
+   "terminal_id": "T100001083728",
+   "unit_id": "G100001094888",
+   "terminal_name": "Nkossa FLNG Terminal",
+   "unit_name": "--",
+   "country": "Republic of the Congo",
+   "status": "proposed",
+   "gap_type": "missing_field",
+   "column": "FloatingVesselName",
+   "severity": "medium",
+   "detail": "proposed unit missing required field 'FloatingVesselName'"
+  },
+  {
+   "terminal_id": "T100001083728",
+   "unit_id": "G100001094888",
+   "terminal_name": "Nkossa FLNG Terminal",
+   "unit_name": "--",
+   "country": "Republic of the Congo",
+   "status": "proposed",
+   "gap_type": "orphan_ref",
+   "column": "StartDate [ref]",
+   "severity": "medium",
+   "detail": "StartDate [ref] filled but ActualStartYear/ActualStartMonth/ActualStartYear2/ActualStartYear3 blank — Rule F violation"
+  },
+  {
+   "terminal_id": "T100001083728",
+   "unit_id": "G100001094888",
+   "terminal_name": "Nkossa FLNG Terminal",
+   "unit_name": "--",
+   "country": "Republic of the Congo",
+   "status": "proposed",
+   "gap_type": "orphan_ref",
+   "column": "Location [ref]",
+   "severity": "medium",
+   "detail": "Location [ref] filled but Location blank — Rule F violation"
+  }
+ ],
+ "dormant_revival_watch": []
+}

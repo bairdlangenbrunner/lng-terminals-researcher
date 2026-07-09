@@ -1,0 +1,12 @@
+[
+  {
+    "category": "data_hygiene",
+    "terminal_id": "T100000130244",
+    "unit_id": "G100002024407",
+    "terminal_name": "Skikda LNG Terminal",
+    "issue": "Project-level field inconsistency: Location [ref] on the GL1K Rebuild unit-row (G100002024407) carries only the long Google Maps place URL, while the other 6 Skikda unit-rows (T10-T6P) all carry 'https://maps.app.goo.gl/5aqvCTcgWukNkYQ97, <same long Google Maps URL>'. Both values point to the same GL1K plant location; the GL1K Rebuild row is simply missing the short-link prefix. Project-level fields must be uniform across unit-rows.",
+    "severity": "low",
+    "suggested_action": "Harmonize Location [ref] on G100002024407 to the 6-row majority value (prepend https://maps.app.goo.gl/5aqvCTcgWukNkYQ97). Pure consistency fix using values already in GEM; no research change.",
+    "researcher_initials": "AI-draft"
+  }
+]

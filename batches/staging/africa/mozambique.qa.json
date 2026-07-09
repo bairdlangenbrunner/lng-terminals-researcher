@@ -1,72 +1,82 @@
 [
   {
     "category": "status_timeline",
-    "terminal_id": "T100000131124",
-    "unit_id": "G100002112401",
-    "terminal_name": "Coral North FLNG Terminal",
-    "issue": "Eni and Area 4 partners reached FID on the Coral North (Coral Norte) FLNG on 2 Oct 2025 (announced in Maputo; ~$7.2B; first LNG targeted 2028 Q2). Technip Energies was awarded the construction contract. GEM still lists Status=proposed. This is a proposed-to-construction transition.",
+    "terminal_id": "T100000130257",
+    "unit_id": "G100002025701",
+    "terminal_name": "Mozambique LNG Terminal (T1; identical for T2 G100001054919)",
+    "issue": "Status is 'shelved' (confirmed, 2021) but the project has restarted: the Mozambique LNG consortium lifted the 2021 force majeure on 7 Nov 2025, and TotalEnergies announced the full restart of all onshore/offshore activities on 29 Jan 2026 — construction resumed at Afungi (>4,000 workers mobilized, project ~40% complete), first LNG expected 2029, revised budget ~$20.5bn. Verified sources: https://totalenergies.com/news/press-releases/mozambique-lng-announces-full-restart-all-its-activities-onshore-and-offshore and https://jpt.spe.org/totalenergies-lifts-force-majeure-on-mozambique-lng",
     "severity": "high",
-    "suggested_action": "Pull existing status timeline and advance Status proposed->construction with a 2025 construction anchor (FID 2025-10-02), once the fetch_timeline endpoint is back. FIDYear (2025) already matches. Corroborated off-GEM by three independent sources: Eni PR https://www.eni.com/en-IT/media/press-release/2025/10/pr-eni-announces-final-investment-decision-mozambique-coral-north-project.html ; JPT (SPE) https://jpt.spe.org/eni-inks-fid-on-coral-norte-flng-for-mozambique-area-4 ; Oil & Gas Journal https://www.ogj.com/pipelines-transportation/lng/news/55321132/eni-takes-fid-for-coral-north-flng-project-offshore-mozambique",
-    "researcher_initials": "AI-draft (reverified)"
+    "suggested_action": "Move T1 and T2 from shelved(confirmed) back to construction via the status timeline (restart year 2025 FM-lift / 2026 full restart); keep 2021 shelved/stop years as historical timeline entries. fetch_timeline endpoint down — apply manually.",
+    "researcher_initials": "AI-draft"
   },
   {
     "category": "status_timeline",
     "terminal_id": "T100000130257",
-    "unit_id": null,
-    "terminal_name": "Mozambique LNG Terminal",
-    "issue": "TotalEnergies' Mozambique LNG (Area 1, Afungi) lifted the April-2021 force majeure on 7 Nov 2025; CEO Pouyanne announced a FULL restart of onshore+offshore activities on 29 Jan 2026, with construction resumed (>4,000 workers mobilized, project ~40% complete, first LNG now targeted 2029, budget raised to ~$20.5B). GEM lists all four trains (T1-T4) as Status=shelved (ShelvedYear/StopYear 2021). The project is no longer shelved — it has returned to construction.",
-    "severity": "high",
-    "suggested_action": "Apply to ALL four unit-rows (T1-T4; UnitIDs G100002025701, G100001054919, G100002025703, G100002025704). Once fetch_timeline is reachable, move Status shelved->construction with a 2025/2026 restart anchor and clear/annotate ShelvedYear+StopYear 2021. Corroborated off-GEM by three independent sources: TotalEnergies PR https://totalenergies.com/news/press-releases/mozambique-lng-announces-full-restart-all-its-activities-onshore-and-offshore ; JPT (SPE) https://jpt.spe.org/totalenergies-lifts-force-majeure-on-mozambique-lng ; Offshore Energy https://www.offshore-energy.biz/totalenergies-reboots-20-billion-lng-project-after-years-long-hiatus/ (replaces the prior Rigzone link, which now returns HTTP 202 / soft-block and fails verification).",
-    "researcher_initials": "AI-draft (reverified)"
+    "unit_id": "G100002025703",
+    "terminal_name": "Mozambique LNG Terminal (T3; also T4 G100002025704)",
+    "issue": "The 2025-26 restart reporting covers the FID'd 2-train project (T1-T2, ~13 mtpa). T3 and T4 are the never-FID'd expansion trains (no FIDYear in GEM) — they are not part of the announced construction restart, so they should NOT be flipped to construction alongside T1-T2.",
+    "severity": "medium",
+    "suggested_action": "Keep T3/T4 shelved for now (or review whether 'proposed' better fits post-restart reality); re-check once TotalEnergies gives expansion-train guidance.",
+    "researcher_initials": "AI-draft"
   },
   {
-    "category": "capacity",
+    "category": "status_timeline",
     "terminal_id": "T100000131124",
     "unit_id": "G100002112401",
     "terminal_name": "Coral North FLNG Terminal",
-    "issue": "Capacity discrepancy. GEM Capacity = 3.40 mtpa. Eni's FID press release states 3.6 MTPA; JPT and Oil & Gas Journal state 3.55 mtpa / 3.6 MTPA respectively; both describe Coral North as an 'identical twin' to Coral South, which GEM carries at 3.4 mtpa nameplate. The 3.55-3.6 figures appear to be optimized/rounded marketing capacity rather than a different nameplate, so I did NOT stage a Capacity bump (per the baseload-not-peak rule).",
-    "severity": "low",
-    "suggested_action": "Reviewer judgment: keep 3.40 (twin of Coral South) or adopt 3.6 if Eni's figure is treated as the official nameplate. Do not bump on optimized capacity alone. Off-GEM sources for the figures: Eni PR (3.6 MTPA) https://www.eni.com/en-IT/media/press-release/2025/10/pr-eni-announces-final-investment-decision-mozambique-coral-north-project.html (PASS on '3.6') ; JPT https://jpt.spe.org/eni-inks-fid-on-coral-norte-flng-for-mozambique-area-4 (PASS on '3.55', 'identical twin to Coral Sul') ; Oil & Gas Journal https://www.ogj.com/pipelines-transportation/lng/news/55321132/eni-takes-fid-for-coral-north-flng-project-offshore-mozambique (PASS on '3.6').",
-    "researcher_initials": "AI-draft (reverified)"
-  },
-  {
-    "category": "data_gap",
-    "terminal_id": "T100000130788",
-    "unit_id": "G100002078800",
-    "terminal_name": "Nacala FSRU",
-    "issue": "Blank-ref target. ShelvedYear=2024 and StopYear=2024 are inferred values (substatus 'inferred 2 y' — GEM's 2-year-no-news shelving rule), not tied to a datable 2024 source event. The underlying basis is the 2022 redeployment of the earmarked KARMOL LNGT Powership Asia to Sepetiba Bay, Brazil (it never reached Nacala). I filled Status [ref] with the redeployment source but did NOT fill ShelvedYear [ref] / StopYear [ref], because citing a 2022 article for a 2024 year would be a mismatched/orphan-ish ref.",
-    "severity": "low",
-    "suggested_action": "Leave ShelvedYear/StopYear [ref] blank — the 2024 year is GEM's internal 2-year-no-news inference (substatus 'inferred 2 y'), and no dated 2024 source event exists to cite. The shelving BASIS is documented off-GEM by two independent sources: MOL/Mitsui O.S.K. Lines 2019 primary PR naming the original Nacala LNG-to-Powership earmark https://www.mol.co.jp/en/pr/2019/19055.html ; and TradeWinds on the unit's redeployment to Sepetiba Bay, Brazil https://www.tradewindsnews.com/gas/karpowership-puts-french-built-lng-carrier-back-into-action/2-1-1399432 . (Do not attach a GEM-published page as a citation — circular.)",
-    "researcher_initials": "AI-draft (reverified)"
-  },
-  {
-    "category": "data_gap",
-    "terminal_id": "T100000131090",
-    "unit_id": "G100002109001",
-    "terminal_name": "Rovuma FLNG Terminal",
-    "issue": "Blank-ref target. ShelvedYear=2024/StopYear=2024 reflect GEM's inference (substatus 'inferred 2 y'). The standalone 'Rovuma FLNG' concept (Eni's earlier second-FLNG study for Area 4) has effectively been superseded/realized by the Coral North FLNG that took FID in Oct 2025 — i.e. it did not proceed as a separate named project. I filled Status [ref] with the JPT reboot article plus an Offshore Energy corroboration but left ShelvedYear/StopYear [ref] blank (no datable 2024 source for the year).",
-    "severity": "low",
-    "suggested_action": "Reviewer: confirm Status=shelved is still the right model now that Coral North (the realization of the second-FLNG concept) is under construction, or consider linking/merging the records. Leave the year [ref]s blank absent a dated source. Off-GEM sources: JPT https://jpt.spe.org/eni-aims-to-reboot-mozambiques-rovuma-lng-with-flng ; Offshore Energy https://www.offshore-energy.biz/eni-moves-ahead-with-second-flng-unit-in-mozambiques-supergiant-basin/",
-    "researcher_initials": "AI-draft (reverified)"
-  },
-  {
-    "category": "fid_year",
-    "terminal_id": "T100000130825",
-    "unit_id": "G100002082500",
-    "terminal_name": "Matola FSRU",
-    "issue": "GEM FIDYear=2025, but FID was NOT taken in 2025. As of Oct 2023 TotalEnergies expected FID by Sept 2024; as of Oct 2024 Gigajoule expected FID in Q2 2025; trade press now anticipates an FID in 2026. Project remains proposed (Gigajoule/Matola Gas Co + TotalEnergies/Beluluane Gas Co; 2.5 mtpa, which matches GEM). No firm dated FID commitment found.",
-    "severity": "low",
-    "suggested_action": "Reviewer: treat FIDYear=2025 as a stale/expected-year that lapsed; consider updating to 2026 (anticipated) only if a firmer source is found, or leave as the last published expectation. No status change (still proposed). Off-GEM sources (prior GEM-published citation removed as circular): LNG Prime https://lngprime.com/africa/mozambique-oks-two-fsru-terminals/169934/ ; 360 Mozambique (Sept-2024 FID expectation) https://360mozambique.com/oil-gas/lng/matola-lng-import-terminal-totalenergies-to-make-final-investment-decision-by-september-2024/ ; Gulf Oil & Gas https://www.gulfoilandgas.com/webpro1/main/mainnews.asp?id=981495 .",
-    "researcher_initials": "AI-draft (reverified)"
+    "issue": "Status is 'proposed' but Eni took FID on 2 Oct 2025 (GEM FIDYear 2025 already correct) and the FLNG hull was launched at Samsung Heavy Industries' Geoje yard on 16 Jan 2026 — vessel construction is well underway; first LNG targeted 2028 (matches GEM LatestPlannedStartYear). Verified sources: https://www.eni.com/en-IT/media/press-release/2025/10/pr-eni-announces-final-investment-decision-mozambique-coral-north-project.html and https://www.eni.com/en-IT/media/press-release/2026/01/eni-announces-hull-launch-coral-north-flng.html and https://www.marinelink.com/news/eni-launches-hull-coral-north-flng-534522",
+    "severity": "high",
+    "suggested_action": "Move proposed -> construction via the status timeline (construction start 2025, post-FID vessel construction; hull already launched Jan 2026). fetch_timeline endpoint down — apply manually.",
+    "researcher_initials": "AI-draft"
   },
   {
     "category": "status_timeline",
     "terminal_id": "T100000130789",
     "unit_id": "G100002078901",
     "terminal_name": "Rovuma LNG Terminal",
-    "issue": "Re-verify (no change needed). ExxonMobil-led onshore Rovuma LNG (Area 4): force majeure lifted Nov 2025; FID anticipated early 2026; 18 mtpa via ~12 modular trains; partners include Mozambique Rovuma Venture (Eni/Exxon/CNPC) 70% + ADNOC/ENH/KOGAS 10% each. All of this matches GEM's current row (Status=proposed, FIDYear=2026, Capacity=18.00, owner split). No field edit warranted; flagged so reviewer knows FID is imminent (watch for a 2026 proposed->construction move).",
+    "issue": "ExxonMobil lifted force majeure on Rovuma LNG on 20 Nov 2025; FID is anticipated in 2026 (H2) — GEM's proposed status and FIDYear 2026 (Pre-FID) remain correct, no status change needed yet. Start year staged separately (2027 -> 2030). Verified source: https://jpt.spe.org/exxonmobil-lifts-force-majeure-on-mozambique-megaproject",
     "severity": "low",
-    "suggested_action": "No edit now. Monitor for the early-2026 FID; on FID, move proposed->construction. Off-GEM sources: JPT (SPE) https://jpt.spe.org/exxonmobil-lifts-force-majeure-on-mozambique-megaproject ; 360 Mozambique https://360mozambique.com/oil-gas/area-4-exxonmobil-prepares-to-resume-lng-project-with-fid-expected-in-the-near-future/",
-    "researcher_initials": "AI-draft (reverified)"
+    "suggested_action": "No edit now; watch for the 2026 FID announcement, which would trigger proposed -> construction in a future batch.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_gap",
+    "terminal_id": "T100000130788",
+    "unit_id": "G100002078800",
+    "terminal_name": "Nacala FSRU",
+    "issue": "Blank-ref targets (Status [ref], ShelvedYear [ref], StopYear [ref]) cannot be filled: the shelved-2024 status is GEM-inferred from >=2 years of project inactivity (substatus 'inferred 2 y'); no source explicitly reports the KARMOL Nacala project as shelved. Last concrete developments were the earmarked FSRU (KARMOL LNGT Powership Asia) being redeployed to Brazil (2022). Separately, Karpowership announced (Aug 2024) a ~$1bn LNG-to-power plan for Mozambique with an FRU + up to 500 MW powership (https://www.africa-energy.com/news-centre/article/karpowership-lines-mozambique-south-africa-lng-plans) — a possible revival/new project at or near this dead site.",
+    "severity": "medium",
+    "suggested_action": "Leave the three refs blank (no citable source for an inferred status). Route the 2024 Karpowership Mozambique plan to Discovery for dormant-revival assessment — do not edit this record.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_gap",
+    "terminal_id": "T100000131090",
+    "unit_id": "G100002109001",
+    "terminal_name": "Rovuma FLNG Terminal",
+    "issue": "Blank-ref targets (Status [ref], ShelvedYear [ref], StopYear [ref]) cannot be filled: the shelved-2024 status is GEM-inferred (substatus 'inferred 2 y'); no source explicitly reports Eni's Rovuma FLNG concept as shelved — coverage simply shifted to Coral Norte (FID Oct 2025), which Eni bills as Mozambique's second FLNG. 2026 reporting says Eni is considering a THIRD floating LNG platform off Mozambique (cnbcafrica.com, unverified/paywall-blocked) — a possible revival of this concept.",
+    "severity": "medium",
+    "suggested_action": "Leave the three refs blank (no citable source for an inferred status). Flag the third-FLNG talk to Discovery's dormant-revival watch; if a concrete third FLNG emerges with a different design/JV, it goes in as a NEW terminal linked via AssociatedTerminals.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "stale_field",
+    "terminal_id": "T100000130825",
+    "unit_id": "G100002082500",
+    "terminal_name": "Matola FSRU",
+    "issue": "FIDYear 2025 (Pre-FID, i.e. an expected-FID year) is stale: FID has not been taken as of mid-2026 per available reporting. Last firm guidance was Gigajoule (Oct 2024) targeting FID by Q2 2025 with first gas end-2027; no FID announcement or new target date found in 2025-26 coverage. No confirmed replacement value to stage.",
+    "severity": "medium",
+    "suggested_action": "Review FIDYear (blank it or update when Beluluane Gas Company/TotalEnergies give a new FID target); status 'proposed' and LatestPlannedStartYear 2027 remain plausible in the interim.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ownership",
+    "terminal_id": "T100000131124",
+    "unit_id": "G100002112401",
+    "terminal_name": "Coral North FLNG Terminal",
+    "issue": "Follow-on to the staged Owner change (Eni 50%, no ExxonMobil): (a) the Parent cell still carries the old Area 4 look-through (Eni 25 / Exxon 25) and needs matching alignment; (b) the 10% partner is formally XRG, ADNOC's subsidiary — entity_lookup (bare + --remote) found no 'XRG' entity in the GEM entity system, so the staged Owner keeps the existing 'Abu Dhabi National Oil Co' label. If GEM wants XRG as a distinct entity it must be created upstream.",
+    "severity": "medium",
+    "suggested_action": "Align Parent with the new JV (remove Exxon Mobil Corp, Eni to 50%); decide ADNOC-vs-XRG entity treatment (XRG missing from entity system — per escalation rules, worth a user look).",
+    "researcher_initials": "AI-draft"
   }
 ]

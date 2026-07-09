@@ -1,0 +1,129 @@
+{
+ "country": "Kenya",
+ "slug": "kenya",
+ "tier": "standard",
+ "gem_rows": [
+  {
+   "terminal_id": "T100000130254",
+   "unit_id": "G100002025400",
+   "terminal": "Mombasa LNG Terminal",
+   "unit": "Original Proposal",
+   "status": "shelved",
+   "facility_type": "import",
+   "last_updated": "2025-06-25"
+  },
+  {
+   "terminal_id": "T100000130254",
+   "unit_id": "G100001054956",
+   "terminal": "Mombasa LNG Terminal",
+   "unit": "Second Proposal",
+   "status": "proposed",
+   "facility_type": "import",
+   "last_updated": "2025-07-02"
+  }
+ ],
+ "dev_pipeline": [
+  {
+   "terminal_id": "T100000130254",
+   "unit_id": "G100002025400",
+   "terminal_name": "Mombasa LNG Terminal",
+   "unit_name": "Original Proposal",
+   "country": "Kenya",
+   "status": "shelved",
+   "substatus": "inferred 2 y",
+   "last_updated": "2025-06-25",
+   "months_since_update": 12.2,
+   "recently_updated": false
+  },
+  {
+   "terminal_id": "T100000130254",
+   "unit_id": "G100001054956",
+   "terminal_name": "Mombasa LNG Terminal",
+   "unit_name": "Second Proposal",
+   "country": "Kenya",
+   "status": "proposed",
+   "substatus": "",
+   "last_updated": "2025-07-02",
+   "months_since_update": 12.0,
+   "recently_updated": false
+  }
+ ],
+ "stale_flags": [],
+ "blank_refs": [
+  {
+   "terminal_id": "T100000130254",
+   "unit_id": "G100002025400",
+   "terminal_name": "Mombasa LNG Terminal",
+   "unit_name": "Original Proposal",
+   "country": "Kenya",
+   "status": "shelved",
+   "gap_type": "blank_ref",
+   "column": "Status [ref]",
+   "severity": "medium",
+   "detail": "Status populated but Status [ref] blank — [ref]-fill target"
+  },
+  {
+   "terminal_id": "T100000130254",
+   "unit_id": "G100002025400",
+   "terminal_name": "Mombasa LNG Terminal",
+   "unit_name": "Original Proposal",
+   "country": "Kenya",
+   "status": "shelved",
+   "gap_type": "blank_ref",
+   "column": "ShelvedYear [ref]",
+   "severity": "low",
+   "detail": "ShelvedYear populated but ShelvedYear [ref] blank — [ref]-fill target"
+  },
+  {
+   "terminal_id": "T100000130254",
+   "unit_id": "G100002025400",
+   "terminal_name": "Mombasa LNG Terminal",
+   "unit_name": "Original Proposal",
+   "country": "Kenya",
+   "status": "shelved",
+   "gap_type": "blank_ref",
+   "column": "StopYear [ref]",
+   "severity": "low",
+   "detail": "StopYear populated but StopYear [ref] blank — [ref]-fill target"
+  }
+ ],
+ "other_gaps": [
+  {
+   "terminal_id": "T100000130254",
+   "unit_id": "G100002025400",
+   "terminal_name": "Mombasa LNG Terminal",
+   "unit_name": "Original Proposal",
+   "country": "Kenya",
+   "status": "shelved",
+   "gap_type": "project_field_inconsistent",
+   "column": "Operator [ref]",
+   "severity": "medium",
+   "detail": "2 distinct values across 2 unit-rows: ['', 'https://amaco.gr/from-amaco-greece-to-kenya-mombasa-lng-to-power/'] — project-level field must be uniform"
+  },
+  {
+   "terminal_id": "T100000130254",
+   "unit_id": "G100002025400",
+   "terminal_name": "Mombasa LNG Terminal",
+   "unit_name": "Original Proposal",
+   "country": "Kenya",
+   "status": "shelved",
+   "gap_type": "project_field_inconsistent",
+   "column": "Operator",
+   "severity": "medium",
+   "detail": "2 distinct values across 2 unit-rows: ['', 'AMACO'] — project-level field must be uniform"
+  },
+  {
+   "terminal_id": "T100000130254",
+   "unit_id": "G100001054956",
+   "terminal_name": "Mombasa LNG Terminal",
+   "unit_name": "Second Proposal",
+   "country": "Kenya",
+   "status": "proposed",
+   "gap_type": "orphan_ref",
+   "column": "StartDate [ref]",
+   "severity": "medium",
+   "detail": "StartDate [ref] filled but ActualStartYear/ActualStartMonth/ActualStartYear2/ActualStartYear3 blank — Rule F violation"
+  }
+ ],
+ "dormant_revival_watch": []
+}

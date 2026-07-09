@@ -1,32 +1,22 @@
 [
   {
-    "category": "status_timeline",
-    "terminal_id": "T100000131049",
-    "unit_id": "G100002104900",
-    "terminal_name": "Karmol Dakar FSRU",
-    "issue": "GEM Status='construction' but the project appears OPERATING. The FSRU 'KARMOL LNGT POWERSHIP AFRICA' (= GEM FloatingVesselName 'Karmol LNGT Powership', 125,000 m3, Karmol JV) achieved first power generation off Dakar via STS transfer of regasified LNG to Karpowership's KPS 10 powership on 29 April 2025 - reported as Africa's first operational LNG-to-power project (Senelec, 335 MW powership capacity, ~25% of Senegal demand). Discovery surfaced this while distinguishing the separate Elton terminal; fetch_timeline is DOWN so cannot stage a timeline edit.",
-    "severity": "high",
-    "suggested_action": "Update agent: verify operational start and move Status construction -> operating with an ActualStartYear=2025 status-timeline entry once fetch_timeline is reachable. Sources: https://www.offshore-energy.biz/four-years-in-the-making-africas-first-lng-to-power-project-up-and-running-off-senegal/ ; https://energycapitalpower.com/senelec-karpowership-launch-senegals-first-lng-to-power-project/",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "status_timeline",
+    "category": "dormant_revival",
     "terminal_id": "T100000131092",
     "unit_id": "G100002109201",
     "terminal_name": "Yakaar-Teranga LNG Hub",
-    "issue": "Material OWNERSHIP/structure change on existing GEM row. GEM Owner='Kosmos Energy [90%]; Petrosen [10%]'. In 2025 Kosmos announced its exit; on 23 April 2026 Senegal obtained the joint withdrawal of Kosmos and Petrosen from the Yakaar-Teranga licence (Cayar Offshore Profond block), with a new licence to be granted EXCLUSIVELY to Petrosen. Government now sole accountable; development reoriented to DOMESTIC gas supply (not LNG export). Petrosen DG cites FID expected ~Dec 2026, first gas targeted ~Jan 2029. NOTE GEM FacilityType='export' / Capacity 10 mtpa may no longer reflect a domestic-first concept.",
+    "issue": "Dead-site revival check HIT, routed to Update (not a new terminal). GEM holds the record cancelled (2026, on Kosmos exit), but the project is actively advancing under Petrosen: Senegal took over the field in April 2026 (Petrosen granted exclusive rights; Kosmos returning the block by licence expiry July 2026), and in May 2026 Petrosen confirmed the development concept - integrated gas chain, ~550 MMscf/d, domestic gas by pipeline plus export volumes liquefied on an FLNG vessel - entering FEED, ~$7.5bn. Same site and same basic design as the cancelled record, and Petrosen was already a JV partner (10%), so per lifecycle_rules this is a TRUE REVIVAL of the same project, not a new terminal. Verified refs: https://worldoil.com/news/2026/5/13/senegal-advances-7-5-billion-yakaar-teranga-gas-development/ (token Yakaar-Teranga, PASS) and https://www.offshore-energy.biz/7-5-billion-gas-project-on-senegals-development-agenda/ (token Yakaar-Teranga, PASS).",
     "severity": "high",
-    "suggested_action": "Update agent: re-verify Owner (Kosmos exit -> Petrosen 100%), Parent, Status/Substatus, FacilityType (export vs domestic-supply), Capacity, and proposal/FID timeline. Sources: https://www.theafricareport.com/416323/senegals-gas-gamble-sonko-claims-victory-as-kosmos-energy-exits-yakaar-teranga/ ; https://oilprice.com/Latest-Energy-News/World-News/Senegal-Moves-to-Seize-Kosmos-Offshore-Gas-Project.html",
-    "researcher_initials": "AI-draft"
+    "suggested_action": "Update workflow: re-open the record (cancelled -> proposed) with a status-timeline entry, change Owner to Petrosen (100% / exclusive rights holder), and update notes/refs. Pull the existing status timeline first per SOP.",
+    "researcher_initials": "AI-draft (discovery sweep)"
   },
   {
-    "category": "coverage_note",
-    "terminal_id": "",
-    "unit_id": "",
-    "terminal_name": "Greater Tortue Ahmeyim FLNG Terminal (GTA) + GTA Phase 2",
-    "issue": "Not a Senegal coverage gap - flagged so reviewer knows it was checked. GTA is a Senegal/Mauritania cross-border FLNG project; GEM tracks it under MAURITANIA (two rows: 'operating' Phase 1 + 'proposed' Phase 2, Owner BP/Kosmos/Petrosen/SMH). Phase 1 achieved first LNG Feb 2025, first cargo Apr 2025, ramping to ~2.7 mtpa. Phase 2 (GBS-based, 2.5-3.0 mtpa) development concept approved/advanced to next evaluation stage by BP and partners; FID not yet taken. No separate Senegal GEM row needed.",
+    "category": "update_candidate",
+    "terminal_id": "T100001083714",
+    "unit_id": "G100001094861",
+    "terminal_name": "Dakar LNG Terminal",
+    "issue": "Discovery dedup: the 'second Dakar LNG import project' in 2025-26 trade press (Elton Logistics and Services promoter, Reganosa as project management consultant, GasEntec regasification package, full operations targeted H1 2027) is THIS existing GEM record (Owner ELTON Logistics and Services) - update_existing, not a discovery. Verified ref: https://lngprime.com/asia/gasentec-secures-senegal-lng-terminal-gig/184073/ (token Elton, PASS).",
     "severity": "low",
-    "suggested_action": "No action for Senegal discovery. If desired, Update/Reconciliation agent owning Mauritania should confirm GTA Phase 1 operating status and Phase 2 concept-approval status on the existing Mauritania rows. Sources: https://www.bp.com/en/global/corporate/news-and-insights/press-releases/bp-and-partners-progress-concept-for-greater-tortue-ahmeyim-phase-2-to-next-phase-of-evaluation.html ; https://www.kosmosenergy.com/greater-tortue/",
-    "researcher_initials": "AI-draft"
+    "suggested_action": "No new record. Row was last updated 2026-06-23; on next update pass fold in the Reganosa PMC role, GasEntec award and H1-2027 target if not already captured.",
+    "researcher_initials": "AI-draft (discovery sweep)"
   }
 ]

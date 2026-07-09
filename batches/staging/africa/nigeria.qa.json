@@ -2,81 +2,111 @@
   {
     "category": "status_timeline",
     "terminal_id": "T100000130259",
-    "unit_id": "G100002025907",
-    "terminal_name": "Nigeria LNG Terminal",
-    "issue": "NLNG Train 7 reported ~92% complete and entering systems-completion/pre-commissioning as of May 2026 (NLNG operator page; ThisDay 21 May 2026). Still 'construction' in GEM (correct now), but an operating flip is plausible within ~12 months. LatestPlannedStartYear=2027 remains consistent.",
+    "unit_id": "G100002025908",
+    "terminal_name": "Nigeria LNG Terminal (T08, applies to T08-T12)",
+    "issue": "Revival signals for Train 8: April/June 2026 reporting (MyPetroCareer, verified: NLNG utilization above 86 per cent) says the Presidency's energy adviser and the new NLNG MD discussed 'the potential for further expansion through Train 8 plus'. A separate Leadership headline ('NLNG Begins Plant Expansion With Train 8') is bot-blocked (403) and could not be verified; no primary NLNG announcement of a Train 8 restart was found. GEM holds T08-T12 shelved (2023, per NLNG's Oct 2023 statement that Train 8 'will no longer be possible').",
     "severity": "medium",
-    "suggested_action": "Watch for commercial-operations/first-LNG declaration; when confirmed, flip Status construction->operating with an ActualStartYear and timeline edit (fetch_timeline endpoint currently down). Do not pre-empt the flip on % complete alone.",
+    "suggested_action": "Keep T08-T12 shelved for now — talks are exploratory, no FID/FEED/restart announced. Watch for a formal NLNG Train 8 restart; if confirmed, route shelved→proposed through the status timeline (fetch_timeline endpoint down). Verified corroboration: https://www.mypetrocareer.com/nlng-hits-86-capacity-as-fg-eyes-train-8-expansion/",
     "researcher_initials": "AI-draft"
   },
   {
     "category": "status_timeline",
-    "terminal_id": "T100000131170",
-    "unit_id": "G100002117001",
-    "terminal_name": "Riverside LNG Terminal",
-    "issue": "GEM holds Riverside as 'shelved (inferred 2 y)' (ResearcherNote: project website no longer live — confirmed, dev.riversidelng.com returns HTTP 000). However an Aug-2025 trade headline ('Nigeria's Riverside LNG Agrees Gas Supply To Germany From 2026', fastbull, paywalled) suggests possible reactivation of the German supply arrangement. Single paywalled headline only; a supply MOU is not a construction milestone.",
-    "severity": "medium",
-    "suggested_action": "Seek a non-paywalled confirmation (sponsor/Reuters/LNG Prime) of a 2025 supply deal or any FID/construction step. If a concrete step is verified, route a status revival (shelved->proposed/construction) to a follow-on Update. Until then keep 'shelved'.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "link_rot",
-    "terminal_id": "T100000131170",
-    "unit_id": "G100002117001",
-    "terminal_name": "Riverside LNG Terminal",
-    "issue": "Owner [ref] and Capacity [ref] both point to https://dev.riversidelng.com/projects/ which now FAILS url_verifier (HTTP 000 — site down). Owner='Riverside LNG [100%]', Parent='AA Holdings; GasInvest; Oilserve Ltd', Capacity=1.4 mtpa all depend on this dead citation.",
-    "severity": "medium",
-    "suggested_action": "Replace dead dev.riversidelng.com citation with a live off-GEM source for owner/parent/capacity (e.g. Africa Oil+Gas Report 2023, ENR Advisory Nigeria-Germany partnership page). Owner/parent/capacity breakdown needs a fresh primary or independent trade source (do not cite gem.wiki — circular).",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "link_rot",
-    "terminal_id": "T100000130967",
-    "unit_id": "G100002096700",
-    "terminal_name": "Golar Lagos FSRU",
-    "issue": "Owner [ref] and Capacity [ref] both point to https://www.africanreview.com/energy-a-power/oil-a-gas/lagos-in-talks-to-acquire-fsru-to-boost-energy-security which now FAILS url_verifier (expected content not found — paywall/JS gate). Owner='Golar LNG [100%]' and Capacity=5.70 mtpa rely on it.",
-    "severity": "low",
-    "suggested_action": "Replace with a live off-GEM citation for Golar ownership and the 750 MMscf/d (~5.7 mtpa) regas capacity. Punch Newspapers ('Golar to establish LNG-fired power plant in Nigeria') confirms the Golar Embedded Power Supply Programme scope; do not cite gem.wiki (circular).",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "data_quality",
     "terminal_id": "T100000130262",
     "unit_id": "G100002026201",
-    "terminal_name": "Olokola LNG Terminal",
-    "issue": "Status='proposed' (revival narrative, well-cited) yet the row still carries ShelvedYear=2015, CancelledYear=2017, StopYear=2017 (leftover from the pre-revival shelving). These year fields are internally inconsistent with a 'proposed' status and have blank [ref] cells (the blank-ref-fill targets). Filling those year-refs would entrench stale values.",
-    "severity": "low",
-    "suggested_action": "Decide whether Olokola is genuinely re-proposed (clear the Shelved/Cancelled/Stop year fields, or move them into timeline history) OR remains shelved/cancelled (then Status should not be 'proposed'). Resolve the status-vs-year inconsistency before filling ShelvedYear/CancelledYear/StopYear [ref]. Applies to both T1 and T2 (identical).",
+    "terminal_name": "Olokola LNG Terminal (T1; applies to T2)",
+    "issue": "Revival confirmed moving: June 2026 — Ogun State Governor Abiodun announced NNPC Ltd has informed the state government of its decision to revive the OKLNG project (The News Nigeria 2026-06-27 and WorldStage, both url_verifier PASS). GEM status 'proposed' for T1/T2 already reflects the revival and stands. Stale flag: LatestPlannedStartYear=2011 is 15 years past; no new startup schedule has been announced for the revived project, so no replacement value can be staged yet.",
+    "severity": "medium",
+    "suggested_action": "Keep proposed. Consider clearing or annotating LatestPlannedStartYear=2011 (belongs to the pre-2013 incarnation); refresh when NNPC announces a new development schedule. Verified sources: https://thenewsnigeria.com.ng/2026/06/27/oklng-revival-deep-sea-port-to-drive-ogun-watersides-economic-transformation-says-abiodun/ ; https://www.worldstagenews.com/abiodun-signals-return-of-oklng-unveils-bigger-vision-for-ogun-waterside/",
     "researcher_initials": "AI-draft"
   },
   {
-    "category": "data_quality",
+    "category": "blank_ref",
+    "terminal_id": "T100000130262",
+    "unit_id": "G100002026201",
+    "terminal_name": "Olokola LNG Terminal (T1; same for T2)",
+    "issue": "Blank-ref targets ShelvedYear [ref] (2015), CancelledYear [ref] (2017), StopYear [ref] (2017) are unfillable: these years are inferred (project had no development updates after the 2013 IOC exits; NNPC still declared commitment in Dec 2016, and the press thereafter presumed it dead). No source explicitly states a 2015 shelving or 2017 cancellation, so any URL would fail value-verification.",
+    "severity": "low",
+    "suggested_action": "Leave the three [ref] cells blank and mark the years as inferred in researcher notes rather than forcing a citation.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_ref",
     "terminal_id": "T100000130260",
     "unit_id": "G100002026001",
-    "terminal_name": "Brass LNG Terminal",
-    "issue": "ShelvedYear=2019 and StopYear=2019 have blank [ref] cells (low-severity fill targets), but no located source pins the shelving to 2019. The best available citation (constructionreviewonline, Dec 2022) only confirms abandonment after ~2011 site works with no specific year; the Sept-2024 NNPC revival talks are later. Did not fill these year-refs to avoid a mis-citation. Status [ref] (medium) was filled — see updates.",
+    "terminal_name": "Brass LNG Terminal (T1; same for T2)",
+    "issue": "Blank-ref targets Status [ref], ShelvedYear [ref], StopYear [ref] (all 2019) are unfillable: the shelved-2019 dating is inferred (substatus 'inferred 2 y' — two years after last activity). Press describes the project as stalled/abandoned but no source states a 2019 shelving, so a citation would fail value-verification. Status check: still shelved — NNPC investor talks to revive Brass (Gastech 2024) and 2024-2026 ministerial statements remain aspirational; no sanctioned restart, funding, or schedule found through mid-2026.",
     "severity": "low",
-    "suggested_action": "Locate a source dating the Brass shelving to 2019 (or correct the year) before filling ShelvedYear/StopYear [ref]. Applies to both T1 and T2.",
+    "suggested_action": "Leave the [ref] cells blank and note the inferred dating. Keep status shelved; a dormant-revival check at this site is handled by the discovery agent.",
     "researcher_initials": "AI-draft"
   },
   {
-    "category": "unsourced_after_reverify",
+    "category": "blank_ref",
     "terminal_id": "T100000130967",
     "unit_id": "G100002096700",
     "terminal_name": "Golar Lagos FSRU",
-    "issue": "Re-verification: the prior sweep filled Status [ref], CancelledYear [ref] and StopYear [ref] (all =2022, presumed cancelled) using only the gem.wiki Golar_Lagos_FSRU profile, which is circular (GEM citing GEM). No independent off-GEM source explicitly corroborates a 'cancelled' status or a 2022 cancellation/stop year — the cancellation is an absence-of-news inference ('no development updates in 4+ years'). Punch Newspapers confirms the 2018 Embedded Power Supply Programme existed but says nothing about cancellation. These three blank-ref fills were therefore DROPPED from nigeria.updates.json rather than cite gem.wiki.",
+    "issue": "Blank-ref targets Status [ref], CancelledYear [ref], StopYear [ref] (all 2022) are unfillable: the cancellation is presumed from >4 years of inactivity after the 2018 Lagos State/Golar FSRU discussions; no source explicitly reports a cancellation or a 2022 date, so any URL would fail value-verification. No 2025-2026 reporting revives this specific FSRU project (Golar's Nigeria activity moved to the separate NNPC FLNG record).",
     "severity": "low",
-    "suggested_action": "Leave Status [ref]/CancelledYear [ref]/StopYear [ref] blank until an independent source dates or confirms the cancellation. The 'cancelled (inferred 4 y)' status may stand as a GEM editorial inference, but it should not be propped up with a gem.wiki self-citation.",
-    "researcher_initials": "AI-draft (reverify)"
+    "suggested_action": "Leave the three [ref] cells blank and mark the cancellation/years as inferred in researcher notes.",
+    "researcher_initials": "AI-draft"
   },
   {
-    "category": "unsourced_after_reverify",
+    "category": "blank_ref",
     "terminal_id": "T100000131170",
     "unit_id": "G100002117001",
     "terminal_name": "Riverside LNG Terminal",
-    "issue": "Re-verification: the prior sweep filled Status [ref] (supporting 'shelved, inferred 2 y') using only the gem.wiki Riverside_LNG_Terminal profile, which is circular. Independent off-GEM sources (ENR Advisory, oilfieldafricareview, fastbull Aug-2025 headline) describe ACTIVE Germany/South Africa supply MOUs from 2023-2025, not a shelving — so they do not corroborate the 'shelved' value and in fact cut the other way. No off-GEM source confirms 'shelved'. The Status [ref] fill was DROPPED from nigeria.updates.json rather than cite gem.wiki.",
+    "issue": "No-change + unfillable refs: no development reporting found after Dec 2023 (South Africa supply talks; Nov 2023 Germany/Johannes Schuetze offtake deal), so the inferred-shelved (2025, substatus 'inferred 2 y') status stands. Blank-ref targets Status [ref], ShelvedYear [ref], StopYear [ref] are unfillable because the shelving is inferred from inactivity — no source states it explicitly.",
+    "severity": "low",
+    "suggested_action": "Keep shelved; leave the [ref] cells blank with an inferred-dating note. Watch for any revival of the Onne 1.4 mtpa modular export scheme (planned German deliveries from 2026 clearly did not materialize).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "fid_year",
+    "terminal_id": "T100000131125",
+    "unit_id": "G100002112501",
+    "terminal_name": "Golar Nigeria FLNG Terminal",
+    "issue": "Stale expected-FID year: FIDStatus=Pre-FID with FIDYear=2024 (the PDA-target FID by end-Q4 2024). FID was not taken: Golar's CEO said in Nov 2024 an NNPC FLNG FID was unlikely before 2025 (LNG Prime, url_verifier PASS), and Golar's Q1 2026 interim results discuss Hilli/Gimi/MKII and a targeted fourth FLNG order with no Nigeria FID. Status 'proposed' remains correct.",
     "severity": "medium",
-    "suggested_action": "Do not fill Status [ref] from gem.wiki. Reconcile the 'shelved' status against the live supply-MOU news (see the existing status_timeline note) — either confirm shelving with an independent source or route a status revival to a follow-on Update.",
-    "researcher_initials": "AI-draft (reverify)"
+    "suggested_action": "Update FIDYear when a new expected-FID year is announced, or blank it (with FIDYear [ref]) since the 2024 target lapsed; do not treat 2024 as an actual FID. Verified source: https://lngprime.com/lng-terminals/golar-ceo-says-nigerian-flng-fid-unlikely-before-2025/132219/",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "fid_year",
+    "terminal_id": "T100000131052",
+    "unit_id": "G100002105201",
+    "terminal_name": "UTM Offshore FLNG Terminal",
+    "issue": "Stale expected-FID year: FIDStatus=Pre-FID with FIDYear=2025. FID had not been taken as of Oct 2025 — UTM said the gas supply agreement was ~95 per cent negotiated, with the sales agreement and financial close still ahead of FID (The Business Intelligence 2025-10-08, url_verifier PASS) — and no FID announcement was found through mid-2026. Status 'proposed' and 2029 start remain correct.",
+    "severity": "medium",
+    "suggested_action": "Update FIDYear to the next credibly announced expected-FID year (none verifiable yet), or blank it since the 2025 target lapsed. Verified source: https://tbiafrica.com/2025/10/08/utm-offshore-reaffirms-commitment-to-nigerias-first-flng-project/",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change",
+    "terminal_id": "T100000131168",
+    "unit_id": "G100002116801",
+    "terminal_name": "Ace Gas Nigeria FLNG Terminal",
+    "issue": "Status check, no change: latest verifiable milestone remains the Wison New Energies design-validation/pre-FEED start for the 3 mtpa FLNG offshore Escravos (Jan 2024, already reflected in GEM refs). No 2025-2026 development reporting (FEED completion, FID, offtake finalization) found.",
+    "severity": "low",
+    "suggested_action": "No edit; keep proposed. Re-check next batch for FEED/FID progress by Wison/Ace Gas.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change",
+    "terminal_id": "T100000131169",
+    "unit_id": "G100002116901",
+    "terminal_name": "Transoceanic Nigeria FLNG Terminal",
+    "issue": "Status check, no change: latest verifiable milestone remains the Wison New Energies design-validation/pre-FEED start for the 3 mtpa FLNG offshore Pennington (Jan 2024, already reflected in GEM refs). No 2025-2026 development reporting found.",
+    "severity": "low",
+    "suggested_action": "No edit; keep proposed. Re-check next batch for FEED/FID progress by Wison/Transoceanic.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change",
+    "terminal_id": "T100000130259",
+    "unit_id": "G100002025913",
+    "terminal_name": "Nigeria LNG Terminal (Trains 1-6 Debottlenecking Project)",
+    "issue": "Status check, no change: the debottlenecking (+3.4 mtpa across Trains 1-6) remains bundled with the Train 7 EPC scope (FID 2019); 2026 reporting on the project covers Train 7 construction progress (92 per cent, May 2026) without a separate debottlenecking milestone. 'Proposed' with 2027 planned start stands.",
+    "severity": "low",
+    "suggested_action": "No edit. When Train 7 starts up (expected 2027), check whether the debottlenecking increments commission on the same schedule.",
+    "researcher_initials": "AI-draft"
   }
 ]

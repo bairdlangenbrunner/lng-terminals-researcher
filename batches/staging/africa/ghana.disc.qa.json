@@ -1,22 +1,12 @@
 [
   {
-    "category": "status_timeline",
-    "terminal_id": "T100000130253",
-    "unit_id": "G100002025300",
-    "terminal_name": "Tema FSRU",
-    "issue": "GEM records Tema FSRU as Status=operating / Substatus=actual, but multiple independent 2024-2025 sources indicate the terminal had NOT yet come online / received first commercial cargo as of mid-2025. The IGU 2025 World LNG Report lists the start year as 2025 (i.e. not-yet-started when GIIGNL 2024 was compiled); GIIGNL's 2024 report (June 2024) still listed it as under construction; the Ghanaian oil regulator in Feb 2024 said it expected completion 'by the end of the year' with LNG supply secured from Equatorial Guinea. Earliest 'awaiting first cargo' reporting dates to May 2021 (Reganosa ready, awaiting Shell-GNPC first-delivery agreement), and the project has slipped repeatedly since. No verified primary source confirming an actual first cargo / commercial start was found in this discovery sweep. The operating/actual status may be premature or may reflect a 2025/2026 start not yet corroborated by a primary source.",
-    "severity": "medium",
-    "suggested_action": "Route to an Update batch for status verification (fetch_timeline was DOWN during this sweep so the existing status timeline could not be pulled). Confirm whether Tema FSRU has actually received first cargo / declared commercial operations; if not yet operating, the correct status is likely construction (or commissioning) with the appropriate anchor year, not operating/actual. Cross-check against the IGU 2025 report start-year=2025 entry and any 2025-2026 first-cargo announcement before changing the live cell.",
-    "researcher_initials": "AI-draft (discovery sweep)"
-  },
-  {
-    "category": "discovery_dedup_audit",
-    "terminal_id": "T100000130253",
+    "category": "discovery_coverage",
+    "terminal_id": "",
     "unit_id": "",
-    "terminal_name": "Tema FSRU",
-    "issue": "Discovery sweep of Ghana found NO LNG terminal missing from GEM. Every lead surfaced across regulator/govt (Ghana MOFEP 2024 PPP report, oil regulator), trade press (TradeWinds, LNG Industry, Offshore Energy, African Energy, S&P), sponsor IR (Helios/TLTC, Reganosa, Quantum Group, Genser, Sahara/WAGL) and DFI pipelines (AfDB ESIA, EAIF US$31m loan to Access LNG/Gasfin) resolves to the SINGLE existing GEM row, the Tema FSRU (T100000130253), under its tangled prior-developer history: (a) 'Access LNG' = the Helios+Gasfin JV / EAIF+AfDB financing of the FSU+FRU for Tema LNG Terminal Co (verified via eaif.com, PASS) -- same project, not new; (b) Quantum Power Ghana Gas Ltd 'Tema LNG' (2016 heads-of-terms with GNPC, 3.4 MMtpa FSRU, Hoegh LNG FSRU contract) -- earlier competing proposal for the same Tema site, collapsed and superseded by the Helios/Reganosa terminal; (c) West African Gas Ltd / WAGL (NNPC 60% + Sahara 40%) with a 2015 Golar FSRU contract -- WAGL built the Tema jetty/breakwater and is the gas-supply partner for the SAME Tema terminal (confirmed via Sahara Group's March 2024 statement, which concerns a charter-cost/payment dispute on that project, not a separate facility); (d) a 2016 'second FSRU at Takoradi' (Quantum / WAGL) -- never advanced beyond 2016 reporting, no concrete step since, effectively dead and tied to the same superseded sponsors. Atuabo II and Genser Energy gas-processing/cryogenic-storage projects are upstream gas processing / LPG, NOT LNG import/export terminals (out of scope). No FLNG/liquefaction export project exists for Jubilee/TEN beyond generic vendor marketing.",
+    "terminal_name": "Ghana (country-level)",
+    "issue": "Discovery sweep Jul 2026: no active missing terminal found. gem.wiki coverage cross-check clean — only Ghana LNG-terminal page found (Tema FSRU) and it has a CSV row; other Ghana gem.wiki hits are oil/gas-field pages, not LNG terminals. Upstream-operator sweep (Eni OCTP/NAG expansion term sheet May 2026, Tullow Jubilee/TEN, Kosmos): all gas monetization is domestic pipeline gas to the grid — no marine LNG export/FLNG component, out of scope. Two historical-gap candidates (WAGL Tema FSRU; Ghana 1000 Aboadze FSRU) parked in ghana.disc.monitor.json for a reviewer inclusion decision.",
     "severity": "low",
-    "suggested_action": "No action -- documents that Ghana LNG-terminal coverage is complete (1 terminal, Tema FSRU) and records the alias/superseded-developer trail so the same dead leads (Quantum, WAGL/Golar, Takoradi second FSRU, Access LNG) are not re-investigated as gaps in a future discovery batch.",
+    "suggested_action": "Review the two historical-gap monitor entries; no other action.",
     "researcher_initials": "AI-draft (discovery sweep)"
   }
 ]

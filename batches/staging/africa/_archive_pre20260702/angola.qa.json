@@ -1,0 +1,32 @@
+[
+  {
+    "category": "link_rot",
+    "terminal_id": "T100000130823",
+    "unit_id": "G100002082300",
+    "terminal_name": "New Fortress Angola LNG Terminal",
+    "issue": "Existing Owner [ref] is dead: https://constructionreviewonline.com/2019/06/angola-signs-mou-to-develop-a-liquefied-natural-gas-plant/ returns HTTP 404 (url_verifier FAIL). This is the only [ref] currently populated on the record and is the originally-cited 2019-MOU/active-status source. Two other obvious citations for this project also fail verification: NFE investor-relations MOU release (ir.newfortressenergy.com/.../new-fortress-energy-signs-mou-angolan-ministries-advance-natural, HTTP 000) and S&P Global Market Intelligence (HTTP 403 / paywall).",
+    "severity": "medium",
+    "suggested_action": "Replace the rotted Owner [ref] with the live equivalent covering the same June 2019 NFE-Angola MOU: https://www.offshore-energy.biz/new-fortress-to-develop-lng-to-power-infrastructure-in-angola/ (url_verifier PASS; also used for the Status/CancelledYear/StopYear ref-fills staged this batch). Route via Update.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_consistency",
+    "terminal_id": "T100000130823",
+    "unit_id": "G100002082300",
+    "terminal_name": "New Fortress Angola LNG Terminal",
+    "issue": "Record carries StopYear=2023 on a 'cancelled' proposal that never reached operation (StartYear1/ActualStartYear blank, CapacityInMtpa blank). Per lifecycle_rules.md, StopYear pairs with ActualStartYear for idled/mothballed/retired facilities; a never-built cancelled proposal would normally carry only CancelledYear (=2023 here), not StopYear. Possibly a redundant/mis-set field rather than a research issue.",
+    "severity": "low",
+    "suggested_action": "Decide whether StopYear should be cleared for this never-operating cancelled proposal (keeping CancelledYear=2023), or retained per local convention. Out of scope for a blank-ref-fill task; flag only. The staged StopYear [ref] fill is harmless either way (pairs an existing value).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130823",
+    "unit_id": "G100002082300",
+    "terminal_name": "New Fortress Angola LNG Terminal",
+    "issue": "Status='cancelled' (CancelledYear 2023) rests entirely on GEM's inferred-4y inactivity rule, not on any announced cancellation. Research found no NFE/Angolan-government statement terminating the project; last substantive coverage is the June 2019 MOU (corroborated by three independent non-GEM outlets: Offshore Energy, Hydrocarbon Engineering, Natural Gas World). The GEM record's only underlying citation is that (now-rotted) 2019 proposal source. Status is plausible and unchanged — recorded for transparency, not a proposed status edit (fetch_timeline endpoint is down).",
+    "severity": "low",
+    "suggested_action": "No status edit. If desired, document the inferred-4y basis in researcher_notes (currently blank) so the cancellation rationale is captured on-record. No timeline file written (endpoint down).",
+    "researcher_initials": "AI-draft"
+  }
+]

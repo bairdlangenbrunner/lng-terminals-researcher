@@ -1,0 +1,182 @@
+[
+ {
+  "category": "status_timeline",
+  "terminal_id": "T100000131073",
+  "unit_id": "G100002107300",
+  "terminal_name": "Thai Binh FSRU",
+  "issue": "APPLIED IN LIVE DB (2026-07-09). Status is now 'construction' with ConstructionYear=2025/ConstructionMonth=October, ConstructionDate [ref]=the GIIGNL groundbreak URL, and the live status_timeline carries construction/actual/2025-October (st_id 41217, tl_order 3) between proposed/2023-Dec and operating-planned/2029 - all confirmed via fresh export + read-only Postgres. The Thai Binh LNG-to-power project (incl. the LNG receiving terminal) broke ground October 10, 2025. Construction date is green: verifier-PASS 'October'+'2025' at TWO independent sources https://www.giignl.org/news/tokyo-gas-and-partners-start-construction-on-vietnam-lng-to-power-project and https://southeastasiainfra.com/construction-works-commence-for-usd2-billion-lng-power-plant-in-vietnam/ ; JV/JSC launch: https://vietnamenergy.vn/launching-thai-binh-lng-gas-power-joint-stock-company-32170.html",
+  "severity": "high",
+  "suggested_action": "DONE - no edit outstanding. Original punt reason ('fetch_timeline endpoint down') is void: the timeline is readable from read-only Postgres, so a confirmed status change must be staged, not deferred to a qa note (never-punt rule). Optional strengthen: ConstructionDate [ref] carries only the GIIGNL URL; the value is green on two sources, so the SoutheastAsiaInfra URL could be added as a second corroborating ref.",
+  "researcher_initials": "AI-draft (resolved 2026-07-09)"
+ },
+ {
+  "category": "orphan_ref_resolution",
+  "terminal_id": "T100000131073",
+  "unit_id": "G100002107300",
+  "terminal_name": "Thai Binh FSRU",
+  "issue": "StartDate [ref] (kyuden-intl.co.jp/en/news/detail/80) is flagged orphan because ActualStartYear* are blank, but the page explicitly supports the planned start ('commercial operation by 2029', verifier-PASS '2029').",
+  "severity": "low",
+  "suggested_action": "Keep the ref - it pairs with OriginalPlannedStartYear/LatestPlannedStartYear=2029; no blanking needed.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "ref_health",
+  "terminal_id": "T100000131073",
+  "unit_id": "G100002107300",
+  "terminal_name": "Thai Binh FSRU",
+  "issue": "Capacity [ref] (gastopowerjournal.com item 14218) returns HTTP 403 (bot-block) and has NO Wayback snapshot, so the 1.0 mtpa value could not be re-confirmed anywhere accessible; no alternative public source states the terminal's mtpa throughput.",
+  "severity": "medium",
+  "suggested_action": "Keep URL for now (403 = bot-blocked, not dead) but seek a replacement source for 1.0 mtpa next batch; treat the value as unconfirmed-legacy.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "ref_health",
+  "terminal_id": "T100000131073",
+  "unit_id": "G100002107300",
+  "terminal_name": "Thai Binh FSRU",
+  "issue": "FacilityType [ref] and Location [ref] include https://www.marinecurrents.com/thai-binh-lng-power-plant-vietnam-proposal/ which now renders an empty JS shell and has no Wayback snapshot (verifier FAIL 'Thai Binh').",
+  "severity": "low",
+  "suggested_action": "Drop the marinecurrents URL from both refs; the co-cited LNG Prime article (verifier-PASS) is sufficient.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "lifecycle_inference",
+  "terminal_id": "T100000131076",
+  "unit_id": "G100002107600",
+  "terminal_name": "Tien Lang FSRU",
+  "issue": "Status=cancelled (inferred 4 y) but CancelledYear and StopYear are blank and Status/ShelvedYear/StopYear [ref] are empty. ShelvedYear=2023; last substantive activity ~2021. Revival check July 2026 found no new activity at the site.",
+  "severity": "medium",
+  "suggested_action": "Per lifecycle rules set CancelledYear=2025 (the year the inference was made; LastUpdated 2025-08) and StopYear=2025, and per the methodology FAQ reuse the last-active-status source (https://vietnamenergy.vn/a-proposal-to-include-2-lng-power-projects-in-hai-phong-in-the-pdp-viii-25342.html, verifier-PASS 'Tien Lang') as the datasource for the inferred entries. Requires timeline pull first (endpoint down), so routed to qa instead of a staged edit.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "no_change",
+  "terminal_id": "T100000130980",
+  "unit_id": "G100002098000",
+  "terminal_name": "Cat Hai FSRU",
+  "issue": "Dormant-revival check clean: no new project, sponsor, or PDP8 listing found at the Cat Hai site (ExxonMobil/JERA/Hai Phong PC MOU dead; Hai Phong 1&2 gas plants dropped from PDP8). Status cancelled (2024) stands.",
+  "severity": "low",
+  "suggested_action": "No action; next revival check in the next Vietnam batch.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "orphan_ref_resolution",
+  "terminal_id": "T100000130980",
+  "unit_id": "G100002098000",
+  "terminal_name": "Cat Hai FSRU",
+  "issue": "StartDate [ref] (OIES NG-162 PDF) flagged orphan because ActualStartYear* blank; the PDF supports the planned 2030 start (verifier-PASS '2030' and 'Cat Hai').",
+  "severity": "low",
+  "suggested_action": "Keep - pairs with OriginalPlannedStartYear/LatestPlannedStartYear=2030.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "duplicate_suspect",
+  "terminal_id": "T100001057498",
+  "unit_id": "G100001065727",
+  "terminal_name": "Nam Dinh LNG Terminal",
+  "issue": "Probable duplicate/mislocation: the record's sole primary source (JAPEX 2022-01-11 release, titled 'JAPEX Participates in the NORTHERN VIETNAM LNG TERMINAL Project') places the ITECO project at Nam Dinh Vu Industrial Park in HAI PHONG CITY (50,000 m3 tank, 650,000 t/y), but GEM's coords (20.101, 106.214) and State/Province put it in Nam Dinh province ~80 km away - 'Nam Dinh Vu' is an industrial park in Hai Phong, not Nam Dinh province. It is very likely the same ITECO terminal family as GEM's 'Northern Vietnam LNG Terminal' T100000131176 (Excelerate-ITECO, Hai Phong, coords 20.824/106.797 = Dinh Vu area; phases 0.7+0.5=1.2 mtpa vs ITECO 0.65 + planned expansion).",
+  "severity": "high",
+  "suggested_action": "Review for merge/dedup: either merge T100001057498 into T100000131176 (keeping the JAPEX-era history in OtherNames/notes) or, if kept separate, fix Location/State/coords to Nam Dinh Vu IP, Hai Phong.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "fid_ambiguity",
+  "terminal_id": "T100001057498",
+  "unit_id": "G100001065727",
+  "terminal_name": "Nam Dinh LNG Terminal",
+  "issue": "FIDStatus=Pre-FID with FIDYear=2022 is the legacy 'planned FID year' pattern; the Jan 2022 JAPEX release said FID was expected 2H2022 but FID was never taken and JAPEX exited pre-FID in March 2026 on economic grounds.",
+  "severity": "medium",
+  "suggested_action": "Blank FIDYear (planned FID long passed without FID) or leave as legacy per lifecycle_rules; project is a stale-sweep candidate.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "duplicate_suspect",
+  "terminal_id": "T100000131176",
+  "unit_id": "G100002117600",
+  "terminal_name": "Northern Vietnam LNG Terminal",
+  "issue": "Mirror of the Nam Dinh finding: this Excelerate-ITECO record and 'Nam Dinh LNG Terminal' T100001057498 (ITECO-JAPEX, Nam Dinh Vu IP, Hai Phong) appear to be the same underlying ITECO terminal. JAPEX's release for the OTHER record is literally titled 'Northern Vietnam LNG Terminal Project'.",
+  "severity": "high",
+  "suggested_action": "Same merge review as T100001057498; applies to Phase 1 and Phase 2 unit rows.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "watch",
+  "terminal_id": "T100000131176",
+  "unit_id": "G100002117600",
+  "terminal_name": "Northern Vietnam LNG Terminal",
+  "issue": "No definitive agreements yet: June 2024 Excelerate-ITECO term sheet remains the latest concrete step; Excelerate's 2025 Vietnam activity has been supply/FSRU MOUs with PV Gas/PTSC, not this terminal. JAPEX transferred its ITECO JSC shareholding to ITECO's partners in March 2026 (context for the co-developer). Planned 2027 Phase 1 start is increasingly tight.",
+  "severity": "low",
+  "suggested_action": "Re-check for definitive agreements/FID next batch; consider LatestPlannedStartYear slip if 2027 passes unannounced.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "ref_note",
+  "terminal_id": "T100000131176",
+  "unit_id": "G100002117601",
+  "terminal_name": "Northern Vietnam LNG Terminal",
+  "issue": "Phase 2 Capacity=0.5 mtpa is supported by the cited theinvestor d11687 page only by subtraction (total 1.2 - Phase 1 0.7; the string '0.5' does not appear; verifier FAIL).",
+  "severity": "low",
+  "suggested_action": "Acceptable derived value; if a source stating Phase 2 capacity explicitly appears, add it.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "owner_selection",
+  "terminal_id": "T100000131175",
+  "unit_id": "G100002117500",
+  "terminal_name": "Nghi Son LNG Terminal",
+  "issue": "Owner correctly blank - investor selection has failed three times: bidding cancelled a third time in July 2025 after zero dossiers were submitted by the June 10, 2025 deadline (https://vir.com.vn/bidding-cancelled-a-third-time-on-lng-fired-power-plant-152228.html, verifier-PASS). Since then JERA expressed renewed interest at a Sept 8 meeting with Thanh Hoa leadership, and POSCO has proposed direct investor appointment for Nghi Son + Quynh Lap.",
+  "severity": "medium",
+  "suggested_action": "Keep Owner blank; watch for a direct-appointment decision by Thanh Hoa/MOIT - that event will supply Owner + possibly a new timeline entry.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "ref_health",
+  "terminal_id": "T100000131175",
+  "unit_id": "G100002117500",
+  "terminal_name": "Nghi Son LNG Terminal",
+  "issue": "Five refs on this row (Status, ProposalDate, StartDate, Location, PowerPlantsSupplied) use the utm-tagged URL vir.com.vn/...113319.html?utm_source=substack&utm_medium=email, which intermittently soft-404s (redirects to a 'Page Not Found - Stavian Group' shell); the canonical URL without the query string passes cleanly.",
+  "severity": "low",
+  "suggested_action": "Strip '?utm_source=substack&utm_medium=email' from all five refs.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "timeline_conflict",
+  "terminal_id": "T100001057476",
+  "unit_id": "G100001065704",
+  "terminal_name": "Quang Ninh LNG Terminal",
+  "issue": "Planned-start signals conflict: MOIT has demanded commercial operation by Q3 2027 (vietnam.vn 'Accelerating Quang Ninh LNG Power Plant Project'), the province targets 2028-2029 (theinvestor d11629), GEM holds 2029. Construction has NOT started - 2025 activity is site clearance and mine-clearance tendering (theinvestor d14586). Status=proposed stands.",
+  "severity": "medium",
+  "suggested_action": "Keep LatestPlannedStartYear=2029 (staged ref repair points to the 2028-2029 source); watch for the actual construction start, which would trigger a status_timeline change.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "data_gap",
+  "terminal_id": "T100001061416",
+  "unit_id": "G100001070364",
+  "terminal_name": "Haiphong FSRU",
+  "issue": "Capacity/CapacityUnits and FloatingVesselName remain unfindable: public sources describe the FSRU site (Van Uc river mouth, -16 m, berth for >=180,000 m3 carriers) and the 4,800 MW plant, but no regas capacity in mtpa and no chartered vessel have been announced.",
+  "severity": "medium",
+  "suggested_action": "Leave blank; check for an FSRU charter award (Vingroup/VinEnergo) and a stated terminal throughput next batch - plant scale implies roughly 3-4 mtpa at full build-out (do not stage an inferred number).",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "entity_tooling",
+  "terminal_id": "T100000131073",
+  "unit_id": "G100002107300",
+  "terminal_name": "Thai Binh FSRU",
+  "issue": "entity_lookup.py remote returned no_remote_match for 'Kyushu Electric Power', 'Kyuden' and 'Truong Thanh' (identical raw_html_size 6294 for all three), while the local control ('Tokyo Gas') matched only via the local CSV path - the remote endpoint's result is suspect. Kyuden International Corp's parent Kyushu Electric Power almost certainly exists in GEM's cross-tracker entity system.",
+  "severity": "medium",
+  "suggested_action": "Before creating the two entities staged in vietnam_0.entity.json, confirm in the live entity system whether 'Kyushu Electric Power Co Inc' / 'Kyuden International Corp' / 'Truong Thanh Viet Nam Group' already exist (e.g. from the coal/gas plant trackers) and reuse IDs.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "entity_reuse",
+  "terminal_id": "T100000131073",
+  "unit_id": "G100002107300",
+  "terminal_name": "Thai Binh FSRU",
+  "issue": "Central entity re-check (read-only Postgres entity system; the Heroku remote endpoint is degraded and returns empty results for every query): 'Kyuden International' EXISTS (100000003449) and 'Truong Thanh Vietnam Group' EXISTS (100000001336; two '[TO BE DELETED]' duplicates also present). The shard's two new-entity requests were DROPPED from the entity file; the staged Thai Binh Parent value was respelled 'Truong Thanh Vietnam Group'.",
+  "severity": "low",
+  "suggested_action": "Reuse entity ids 100000003449 (Kyuden International) and 100000001336 (Truong Thanh Vietnam Group) when applying the Thai Binh Parent update; do not create new entities.",
+  "researcher_initials": "AI-draft (central review)"
+ }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130318",
+    "unit_id": "G100002031801",
+    "terminal_name": "Taoyuan LNG Terminal",
+    "issue": "GEM lists Taoyuan LNG Terminal Phase 2 (location 'Guantang (Kwun Tong) Industrial Zone', CPC's Third LNG Receiving Terminal supplying Datan power station) as status='proposed' (LastUpdated 2026-03-12). Multiple sources confirm the 3 mtpa Guantang terminal received its first LNG cargo (63,780 t aboard Methane Rita Andrea) on 7 April 2025, with commissioning completed ~May 2025; it 'came on stream in 2025'. Status appears to lag reality by ~1 year (should be operating, or at minimum construction/commissioning). Note Dec 2025 prosecutorial investigation into alleged budget inflation at this terminal, which may bear on commercial-operation declaration timing.",
+    "severity": "high",
+    "suggested_action": "Verify exact commercial-operation declaration date and pull existing status timeline (fetch_timeline endpoint currently DOWN), then advance Status from 'proposed' toward operating in a follow-on Update batch once the timeline can be staged. Sources: Energy Intelligence (https://www.energyintel.com/00000196-b59a-d583-a5b6-bfde33cb0000), TPCB Taiwan LNG guide (https://www.tpcb.com.tw/the-ultimate-taiwan-lng-guide/), LNG Prime (https://lngprime.com/asia/japans-jfe-engineering-bags-contract-for-cpcs-third-lng-terminal-in-taiwan/77365/). All verified PASS except Argus (paywalled, FAIL).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Taiwan dev-pipeline (7 units)",
+    "issue": "Skim-confirmed the 7 remaining dev-pipeline units (all LastUpdated 2026-03, <3 months): Taichung Phase 3 (construction, ~2026 commissioning, Bechtel 2x180,000m3 tanks); Taichung Phase 4 (proposed, FEED awarded Daigas/Osaka Gas, target 2029); Mailiao Phase 1 / No.6 terminal (construction, CTCI+Kawasaki EPC, mid-2029); Taichung (TaiPower)/No.5 terminal (proposed, stalled on EIA over white-dolphin habitat); Zhouji/Kaohsiung 4th terminal (proposed, 6 mtpa, target 2029); Hsieh-Ho Phase 1 FSRU / No.4 terminal (proposed, EIA upheld Jan 2026, environmental lawsuits ongoing, completion slipped to ~2037); Yung-An Phase 5 expansion (proposed, 1.8 mtpa, stalled since 2021). All consistent with current public reporting; no verified field-value divergence found.",
+    "severity": "low",
+    "suggested_action": "No edit needed; entries verified current as of 2026-06.",
+    "researcher_initials": "AI-draft"
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "terminal_id": "T100000130248",
+    "unit_id": "G100002024801",
+    "terminal_name": "Cameroon LNG Terminal",
+    "unit_name": "--",
+    "country": "Cameroon",
+    "field_name": "Status [ref]",
+    "old_value": "",
+    "new_value": "https://www.offshore-energy.biz/engie-puts-cameroon-lng-project-on-hold/",
+    "confidence": "green",
+    "source_tier": "trade press, multiple independent",
+    "ref_field": "Status [ref]",
+    "ref_urls": [
+      "https://www.offshore-energy.biz/engie-puts-cameroon-lng-project-on-hold/",
+      "https://www.ecofinagency.com/production/1807-34909-engie-postpones-cameroon-lng-project-due-to-unfavorable-market-conditions",
+      "https://www.africa-energy.com/news-centre/article/cameroon-engie-drops-lng-scheme"
+    ],
+    "source_notes": "Blank-ref fill for Status=cancelled. ENGIE put the onshore Kribi Cameroon LNG project (3.5 mtpa; ENGIE + SNH) on hold in July 2016 citing unfavorable market conditions; no project activity since, and GEM/industry treat it as cancelled. Three INDEPENDENT non-GEM trade-press sources document the suspension/abandonment: Offshore Energy ('on hold'), Ecofin Agency ('postpones... due to unfavourable market conditions'), and African Energy ('drops LNG scheme'). All verified PASS via url_verifier.py. No source uses 'cancelled' verbatim — the cancellation is GEM's editorial inference from the 2016 suspension with no subsequent activity (also flagged in qa). Upgraded to green on multi-source corroboration of the underlying event.",
+    "scope_note": "Single-unit terminal; no project-level fan-out needed.",
+    "researcher_initials": "AI-draft (sweep; reverify-sourcing pass)"
+  },
+  {
+    "terminal_id": "T100000130913",
+    "unit_id": "G100002091301",
+    "terminal_name": "Etinde FLNG Terminal",
+    "unit_name": "--",
+    "country": "Cameroon",
+    "field_name": "Status",
+    "old_value": "proposed",
+    "new_value": "proposed",
+    "confidence": "blue",
+    "source_tier": "trade press, multiple independent (corroborated)",
+    "ref_field": "Status [ref]",
+    "ref_urls": [
+      "https://www.offshore-mag.com/regional-reports/africa/article/14304127/perenco-withdraws-from-planned-etinde-acquisition-offshore-cameroon",
+      "https://oilfieldafricareview.com/perenco-newage-end-sale-transaction-on-etinde-permit-offshore-cameroon/",
+      "https://www.energy-pedia.com/news/cameroon/bowleven-reports-termination-of-transaction-regarding-the-sale-of-new-ages-participating-interests-in-the-etinde-permit-to-new-age-194035"
+    ],
+    "source_notes": "Representative blue re-verify for this dev-pipeline (proposed) terminal. Dev-pipeline news check: Etinde remains pre-FID/proposed. Perenco's 2022 deal to take New Age's 37.5% interest + operatorship was TERMINATED in Jan 2024; partners (LUKOIL 37.5%, New Age 37.5%, Bowleven 25%) reverted to reassessing the development plan to secure FID. Three INDEPENDENT non-GEM sources confirm the termination/pre-FID status: Offshore Magazine, Oil Field Africa Review, and Energy-Pedia (Bowleven RNS) — all verified PASS. No FID, no construction as of 2026-06; owners/operator/capacity unchanged vs GEM, so no field edits. (Separately flagged in qa: FIDYear=2024 is an erroneous aspirational anchor.) Status field itself not changed (blue, not a Status edit).",
+    "scope_note": "Single-unit terminal; one representative blue re-verify per standard-tier guidance (not per-field).",
+    "researcher_initials": "AI-draft (sweep; reverify-sourcing pass)"
+  }
+]

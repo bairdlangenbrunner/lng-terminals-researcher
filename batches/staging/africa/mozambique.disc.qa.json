@@ -1,32 +1,22 @@
 [
   {
-    "category": "status_timeline",
-    "terminal_id": "T100000131124",
-    "unit_id": "G100002112401",
-    "terminal_name": "Coral North FLNG Terminal",
-    "issue": "GEM has Coral North FLNG as Status=proposed. Eni announced Final Investment Decision (FID) for the Coral North project on 28 Oct 2025 (partners Eni, CNPC, ENH, Kogas, XRG; capacity ~3.5 mtpa; first gas targeted 2028). Surfaced during discovery sweep; status likely should advance to construction with FIDStatus/FIDYear set. fetch_timeline is DOWN, so routing as a qa note rather than staging a blind timeline edit.",
-    "severity": "high",
-    "suggested_action": "Update agent: pull the existing status timeline, then advance Coral North to construction (FID 2025); set FIDStatus/FIDYear=2025 and LatestPlannedStartYear=2028. Source: https://www.eni.com/en-IT/media/press-release/2025/10/pr-eni-announces-final-investment-decision-mozambique-coral-north-project.html (url_verifier PASS).",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "status_timeline",
-    "terminal_id": "T100000130257",
+    "category": "discovery_monitor_confirmation",
+    "terminal_id": "",
     "unit_id": "",
-    "terminal_name": "Mozambique LNG Terminal",
-    "issue": "GEM has all four trains (T1-T4) as Status=shelved/confirmed. Project partners (TotalEnergies-led) lifted force majeure in Nov 2025 and construction officially resumed Jan 2026, with first LNG re-targeted to 2029; US EXIM approved a ~$4.7bn loan in Mar 2025. Surfaced during discovery sweep; shelved status is now stale. fetch_timeline is DOWN, so routing as a qa note.",
-    "severity": "high",
-    "suggested_action": "Update agent: pull the existing timeline, then move Mozambique LNG off shelved (to construction) for the restarted trains and refresh LatestPlannedStartYear=2029. Verify which trains are in the resumed scope. Sources: https://totalenergies.com/news/press-releases/mozambique-lng-announces-full-restart-all-its-activities-onshore-and-offshore (re-verify URL before use).",
-    "researcher_initials": "AI-draft"
+    "terminal_name": "Beira FSRU / Inhassoro FSRU (monitor-list candidates, not in GEM)",
+    "issue": "Discovery sweep re-examined the two Nov-2025 state FSRU concession candidates (Beira, Inhassoro) against the add bar with fresh searches. MATERIAL ADVANCE since the update agent's judgment: on April 8, 2026 the four state shareholders (CFM, ENH, EDM, HCB) incorporated the concession SPV — Servicos de Logistica Integrada de Gas Natural de Mocambique, S.A. (SLIGM) — and signed a Joint Development Agreement for the FSRU (verified: https://www.cfm.co.mz/en/2026/04/17/cfm-assina-acordo-de-sociedade-para-garantir-fornecimento-de-gas-domestico/, tokens 'SLIGM', 'Inhambane'; https://clubofmozambique.com/news/mozambique-enh-cfm-and-hcb-sign-agreement-to-establish-gas-logistics-company/, token 'gas logistics'). Sponsor + concrete step now arguably meet the threshold, BUT the record definition is unresolved across sources: CFM (primary, latest) describes ONE FSRU 'anchored in northern Inhambane with connected infrastructure at the Port of Beira', while the Nov-2025 decree coverage frames it as facilities at BOTH the Port of Beira and Inhassoro ('two FSRU terminals' in LNG Prime's headline; body text singular 'an FSRU anchored in Beira and Inhambane') (verified: https://lngprime.com/africa/mozambique-oks-two-fsru-terminals/169934/ and https://oilprice.com/Latest-Energy-News/World-News/Mozambique-Awards-State-Firms-30-Year-Concession-for-LNG-Infrastructure.html, token 'Inhassoro'). One-vs-two terminals and the FSRU anchorage site cannot be corroborated by >=2 independent sources, and there is still no capacity, no vessel, no commercial/technical partner (government selection pending), no development plan or FID timeline.",
+    "severity": "medium",
+    "suggested_action": "Keep both as monitor entries (already staged by the update agent in mozambique.monitor.json — not re-staged here to avoid duplication), but treat as NEAR-BAR: promote to new_terminal candidate(s) as soon as the siting/configuration (one FSRU at Inhassoro vs separate Beira unit), a partner selection, or a capacity/vessel announcement firms up. Next batch should update the monitor entries' current_state with the April 2026 SLIGM incorporation + JDA.",
+    "researcher_initials": "AI-draft (discovery sweep)"
   },
   {
-    "category": "status_timeline",
-    "terminal_id": "T100000130789",
-    "unit_id": "G100002078901",
-    "terminal_name": "Rovuma LNG Terminal",
-    "issue": "GEM has Rovuma LNG (Area 4 onshore, T1-T12) as Status=proposed. ExxonMobil lifted force majeure on the Rovuma LNG development in Nov 2025, positioning the project for FID in 2026 and first exports in the early 2030s (18 mtpa). Surfaced during discovery sweep; status/timeline fields may need refresh. fetch_timeline is DOWN, so routing as a qa note.",
-    "severity": "medium",
-    "suggested_action": "Update agent: confirm whether force-majeure lift / FID-2026 positioning warrants a substatus/timeline note; refresh LatestPlannedStartYear if a primary source gives a firm date. Verify a primary (Exxon/INP) source before editing.",
-    "researcher_initials": "AI-draft"
+    "category": "dormant_revival_check",
+    "terminal_id": "T100000130257; T100000130788; T100000131090",
+    "unit_id": "",
+    "terminal_name": "Mozambique LNG Terminal; Nacala FSRU; Rovuma FLNG Terminal",
+    "issue": "Revival checks on all three shelved sites: (1) Mozambique LNG (T100000130257) — TotalEnergies announced the FULL restart of all onshore/offshore activities on January 29, 2026 (first LNG expected 2029): SAME sponsor/consortium, SAME four-train design → true revival, routes to Update (already covered by the update agent's staged edits), NOT a new terminal. (2) Nacala FSRU (T100000130788, KARMOL) — the only post-shelving signal is Karpowership's August 2024 announcement of a $1bn LNG-to-power plan in Mozambique (up to 500 MW powership + FSRU serving SAPP offtakers; Karpowership has operated a powership in Nacala Bay since 2018): same sponsor family and site, evolved design, and NO 2025-2026 follow-through found in fresh searches → not a distinct new project; GEM's shelved (inferred 2 y) status stands. (3) Rovuma FLNG (T100000131090) — no distinct new project at the site; Eni's follow-on floating unit is Coral Norte (FID October 2025), already a separate GEM record (Coral North FLNG Terminal).",
+    "severity": "low",
+    "suggested_action": "No discovery action; no new-terminal staging warranted at any dead site. Nacala FSRU was NOT on the update agent's edit list — next Update pass should re-verify its status and consider a researcher note on the Aug-2024 Karpowership 500 MW announcement (https://gastopowerjournal.com/news/market/karpowership-to-spend-1bn-on-lng-to-power-project-in-mozambique/) if it verifies.",
+    "researcher_initials": "AI-draft (discovery sweep)"
   }
 ]

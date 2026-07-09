@@ -1,62 +1,52 @@
 [
   {
-    "category": "status_timeline",
-    "terminal_id": "T100001048121",
-    "unit_id": "G100001055097",
-    "terminal_name": "Ngqura LNG Terminal",
-    "issue": "Material advancement not yet a tier change: on 2026-05-28 TNPA signed a 25-year terminal operator agreement with Ukwanda LNG (Tamasa Energy Group + Strategic Fuel Fund) for an LNG terminal at the Port of Ngqura, ~R22bn, TNPA to build a ~R2bn dedicated LNG berth, full ops targeted 2035, phased via a temporary FSRU then onshore regas. Project remains pre-FID / pre-construction (berth build ~36 months, not yet started), so Status stays 'proposed' for now, but this is a concrete operator-agreement milestone worth a timeline entry. (fetch_timeline endpoint is DOWN — not staging a Status edit or timeline file.)",
-    "severity": "medium",
-    "suggested_action": "Add a 2026-05-28 'operator agreement signed (Ukwanda LNG)' timeline event when the timeline endpoint is back; re-evaluate proposed->construction at berth-construction start. Operator + LatestPlannedStartYear field edits staged separately in updates.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "ownership",
-    "terminal_id": "T100001048121",
-    "unit_id": "G100001055097",
-    "terminal_name": "Ngqura LNG Terminal",
-    "issue": "Owner/developer structure may need restructuring alongside the staged Operator change. GEM lists Owner='Transnet SOC Ltd' and Parent='Transnet SOC Ltd'. Under the 2026-05-28 deal, TNPA (Transnet) owns/builds the LNG berth while Ukwanda LNG (Tamasa Energy Group + Strategic Fuel Fund) is the 25-year terminal operator/developer of the regas facility. Whether GEM's Owner should shift toward the Ukwanda LNG JV (with Transnet as berth/landlord) is genuinely ambiguous from current sourcing — not staging a guessed Owner/Parent edit.",
-    "severity": "low",
-    "suggested_action": "Reviewer to decide Owner/Parent treatment (terminal operator-developer Ukwanda LNG vs port-authority landlord Transnet) once an equity/ownership breakdown for the regas facility is published. Only the Operator field was changed this batch.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "blank_ref",
-    "terminal_id": "T100000130265",
-    "unit_id": "G100002026500",
-    "terminal_name": "Coega FSRU",
-    "issue": "ShelvedYear=2021 has a blank ShelvedYear [ref]. The 2021 shelving is well-documented (DFFE refused environmental authorization for all three Karpowership floating gas-to-power projects — Coega/Ngqura, Richards Bay, Saldanha — on/around 24 June 2021), BUT the cleanest primary sources for that event (NS Energy Business, Energy Voice, News24) are all bot-blocked and FAIL url_verifier (HTTP 403), so no verifier-passing citation could be staged. Did not fill the [ref] to avoid pairing it with an unverifiable URL.",
-    "severity": "low",
-    "suggested_action": "Reviewer to manually cite the June 2021 DFFE environmental-authorization refusal for ShelvedYear [ref], e.g. nsenergybusiness.com/news/south-africa-rejects-environmental-permits-karpowership-projects/ (article 2021-06-25, names all three ports) once confirmed in-browser. Value (2021) appears correct.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "data_quality",
+    "category": "unsupported_value",
     "terminal_id": "T100000130266",
     "unit_id": "G100002026600",
     "terminal_name": "Richards Bay FSRU",
-    "issue": "ShelvedYear=2019 is both unsourced (blank ShelvedYear [ref]) AND inconsistent with the documented record. The Karpowership Richards Bay floating gas-to-power project was an active RMIPPPP preferred bidder (named March 2021) up until the DFFE refused environmental authorization for all three projects in June 2021 — i.e. its first real shelving event was 2021, the same as Coega. No source supports a 2019 shelving (2019 may reflect a lapse of the original 2016 LNG-to-Power IPPPP, but no citation found). Did not fill a [ref] for a value that looks wrong.",
+    "issue": "ShelvedYear=2019 has no findable source (blank-ref target could not be filled). The documented shelving event for Karpowership's Richards Bay proposal is the June 2021 DFFE environmental-authorisation refusal — the same event the sibling Coega FSRU record dates as ShelvedYear=2021.",
     "severity": "medium",
-    "suggested_action": "Reviewer to re-examine ShelvedYear: likely should be 2021 (DFFE June 2021 EA refusal, matching Coega) rather than 2019, then cite accordingly. CancelledYear=2024 unaffected.",
+    "suggested_action": "Either re-date ShelvedYear to 2021 (verified refs: foeafrica.org/karpowerships-refused-environmental-authorisation/ and dailymaverick.co.za 2021-06-24 Karpowership article) or supply the original 2019 source; not staged as an edit because which shelving event the 2019 value encodes is ambiguous.",
     "researcher_initials": "AI-draft"
   },
   {
-    "category": "data_quality",
+    "category": "unsupported_value",
     "terminal_id": "T100000130267",
     "unit_id": "G100002026700",
     "terminal_name": "Saldanha Bay FSRU",
-    "issue": "ShelvedYear=2019 is unsourced (blank ShelvedYear [ref]) AND inconsistent with the record. Saldanha Bay was explicitly EXCLUDED from the first phase of the original 2016 LNG-to-Power IPPPP, then named a Karpowership RMIPPPP preferred bidder in March 2021; the first documented shelving was the June 2021 DFFE environmental-authorization refusal (all three projects). No source supports a 2019 shelving for Saldanha. Did not fill a [ref] for a value that looks wrong.",
+    "issue": "ShelvedYear=2019 has no findable source (blank-ref target could not be filled). The documented shelving event for Karpowership's Saldanha Bay proposal is the June 2021 DFFE environmental-authorisation refusal (covered Richards Bay, Ngqura and Saldanha Bay), which sibling Coega FSRU dates as ShelvedYear=2021.",
     "severity": "medium",
-    "suggested_action": "Reviewer to re-examine ShelvedYear: likely 2021 (DFFE June 2021 EA refusal) rather than 2019, then cite. CancelledYear=2024 unaffected.",
+    "suggested_action": "Either re-date ShelvedYear to 2021 (same verified refs as Coega staged fill) or supply the original 2019 source; not staged as an edit due to ambiguity.",
     "researcher_initials": "AI-draft"
   },
   {
-    "category": "data_quality",
-    "terminal_id": "T100000131126",
-    "unit_id": "G100002112600",
-    "terminal_name": "Richards Bay Transnet FSRU",
-    "issue": "Planned start years (Phase 1 Original 2026 / Latest 2028; Phase 2 2030) are now likely optimistic given FID is pushed to Q1 2028 (staged FIDYear edit). Some 2026 coverage referred to a 'target commercial operation date of 2028' for the Richards Bay terminal, which is inconsistent with a Q1 2028 FID. No explicit, citable post-delay COD figure was found, so no start-year edit was staged (ambiguous -> not guessed).",
+    "category": "no_change",
+    "terminal_id": "T100001083665",
+    "unit_id": "G100001094774",
+    "terminal_name": "Durban LNG Terminal",
+    "issue": "Fast confirm (recently updated 2026-06-22): still proposed; Vitol/ACWA-led $3bn LNG-to-power plan at Durban port (Reuters 2026-02-16) remains the latest substantive development. No field changes staged.",
     "severity": "low",
-    "suggested_action": "Revisit LatestPlannedStartYear once a post-2028-FID commissioning date is published by Vopak/ZET; for now only FIDYear (2026->2028) is staged.",
+    "suggested_action": "None.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change",
+    "terminal_id": "T100001048121",
+    "unit_id": "G100001055097",
+    "terminal_name": "Ngqura LNG Terminal",
+    "issue": "Fast confirm (recently updated 2026-06-18): still proposed; TNPA/Ukwanda Ngqura plans unchanged since existing refs. No field changes staged.",
+    "severity": "low",
+    "suggested_action": "None.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change",
+    "terminal_id": "T100000131126",
+    "unit_id": "G100002112600; G100002112601",
+    "terminal_name": "Richards Bay Transnet FSRU",
+    "issue": "Fast confirm Phases 1-2 (recently updated 2026-06-18): still proposed/pre-FID (FID pushed to 2028 per existing ref); June 2026 ExxonMobil heads of agreement already reflected in current refs. New since: ZET launched an EPC contractor Expression-of-Interest process (see wiki note). No field changes staged.",
+    "severity": "low",
+    "suggested_action": "None.",
     "researcher_initials": "AI-draft"
   }
 ]
