@@ -1,0 +1,108 @@
+{
+ "country": "Mauritius",
+ "slug": "mauritius",
+ "tier": "standard",
+ "gem_rows": [
+  {
+   "terminal_id": "T100000131079",
+   "unit_id": "G100002107900",
+   "terminal": "Mauritius FSRU",
+   "unit": "--",
+   "status": "shelved",
+   "facility_type": "import",
+   "last_updated": "2025-06-26"
+  }
+ ],
+ "dev_pipeline": [
+  {
+   "terminal_id": "T100000131079",
+   "unit_id": "G100002107900",
+   "terminal_name": "Mauritius FSRU",
+   "unit_name": "--",
+   "country": "Mauritius",
+   "status": "shelved",
+   "substatus": "inferred 2 y",
+   "last_updated": "2025-06-26",
+   "months_since_update": 12.2,
+   "recently_updated": false
+  }
+ ],
+ "stale_flags": [],
+ "blank_refs": [
+  {
+   "terminal_id": "T100000131079",
+   "unit_id": "G100002107900",
+   "terminal_name": "Mauritius FSRU",
+   "unit_name": "--",
+   "country": "Mauritius",
+   "status": "shelved",
+   "gap_type": "blank_ref",
+   "column": "Status [ref]",
+   "severity": "medium",
+   "detail": "Status populated but Status [ref] blank — [ref]-fill target"
+  },
+  {
+   "terminal_id": "T100000131079",
+   "unit_id": "G100002107900",
+   "terminal_name": "Mauritius FSRU",
+   "unit_name": "--",
+   "country": "Mauritius",
+   "status": "shelved",
+   "gap_type": "blank_ref",
+   "column": "ShelvedYear [ref]",
+   "severity": "low",
+   "detail": "ShelvedYear populated but ShelvedYear [ref] blank — [ref]-fill target"
+  },
+  {
+   "terminal_id": "T100000131079",
+   "unit_id": "G100002107900",
+   "terminal_name": "Mauritius FSRU",
+   "unit_name": "--",
+   "country": "Mauritius",
+   "status": "shelved",
+   "gap_type": "blank_ref",
+   "column": "StopYear [ref]",
+   "severity": "low",
+   "detail": "StopYear populated but StopYear [ref] blank — [ref]-fill target"
+  }
+ ],
+ "other_gaps": [
+  {
+   "terminal_id": "T100000131079",
+   "unit_id": "G100002107900",
+   "terminal_name": "Mauritius FSRU",
+   "unit_name": "--",
+   "country": "Mauritius",
+   "status": "shelved",
+   "gap_type": "missing_field",
+   "column": "FloatingVesselName",
+   "severity": "medium",
+   "detail": "shelved unit missing required field 'FloatingVesselName'"
+  },
+  {
+   "terminal_id": "T100000131079",
+   "unit_id": "G100002107900",
+   "terminal_name": "Mauritius FSRU",
+   "unit_name": "--",
+   "country": "Mauritius",
+   "status": "shelved",
+   "gap_type": "orphan_ref",
+   "column": "Location [ref]",
+   "severity": "medium",
+   "detail": "Location [ref] filled but Location blank — Rule F violation"
+  }
+ ],
+ "dormant_revival_watch": [
+  {
+   "terminal_id": "T100000131079",
+   "terminal_name": "Mauritius FSRU",
+   "country": "Mauritius",
+   "location": "",
+   "prior_owner": "unknown",
+   "death_status": "shelved",
+   "death_year": 2024,
+   "years_dead": 2,
+   "revival_priority": "normal"
+  }
+ ]
+}

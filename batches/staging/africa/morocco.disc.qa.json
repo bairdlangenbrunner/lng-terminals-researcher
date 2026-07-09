@@ -1,22 +1,22 @@
 [
   {
-    "category": "scope_question",
-    "terminal_id": "",
+    "category": "dormant_revival_watch",
+    "terminal_id": "T100000131161",
     "unit_id": "",
-    "terminal_name": "Tendrara micro-LNG plant (Phase 1) — Morocco (NOT in GEM)",
-    "issue": "Discovery found a verified, real small-scale liquefaction facility absent from GEM: the Tendrara micro-LNG plant (Mana Energy 55%/operator, ONHYM 25%, Sound Energy 20%; EPC Italfluid Geoenergy; offtaker Afriquia Gaz). Capacity ~100 million scm/y LNG (~0.07 MTPA equiv), trucked to domestic industrial customers (virtual pipeline, no marine berth). First commissioning gas Dec 2025; first LNG targeted Q3 2026. It clears the §3 add threshold (sponsor + location + concrete step), but its tracker eligibility is ambiguous because it is a truck-fed micro-LNG unit far below typical terminal scale and has no jetty. Staged to monitor_list, not new_terminals, pending a methodology call.",
+    "terminal_name": "Nador FSRU",
+    "issue": "Revival check on the shelved Nador FSRU (dormant_revival_watch, shelved 2026): NEGATIVE as of 2026-07-02 — no retender and no new sponsor/design. Sequence: tenders launched Dec 2025 (~USD 950M for the FSRU terminal + GME-link pipelines), then the energy ministry suspended candidacy reception and bid opening on 2026-02-02 citing 'new parameters and assumptions' (verified: https://www.moroccoworldnews.com/2026/02/277284/morocco-suspends-1-billion-nador-west-med-lng-terminal-project/ token 'suspend' PASS; https://www.enerdata.net/publications/daily-energy-news/morocco-suspends-tender-lng-import-project-and-pipelines.html token 'suspend' PASS). Ministry says it intends to resume 'in due course' (Bloomberg/Energy Connects, 2026-02-03 — energyconnects.com copy is bot-blocked 403, unverifiable). Same government scheme, same site — NOT a new project; GEM 'shelved' stands.",
     "severity": "low",
-    "suggested_action": "Methodology ruling: are truck-delivered micro-LNG / virtual-pipeline liquefaction plants in scope for the Global Gas Infrastructure Tracker? If yes, route Tendrara to an Update/Discovery batch to stage as a new export terminal (run entity_lookup.py on Mana Energy/Managem/Italfluid Geoenergy/ONHYM/Afriquia Gaz first). If no, drop from monitor. See morocco.disc.monitor.json.",
+    "suggested_action": "No discovery action. Keep Status=shelved; the Update workflow should watch for a fresh tender/appel à concurrence at Nador West Med (port itself still opens Q4 2026), which would be a true revival (timeline entry), not a new terminal.",
     "researcher_initials": "AI-draft (discovery sweep)"
   },
   {
-    "category": "coverage_note",
-    "terminal_id": "T100000131162",
+    "category": "gem_wiki_coverage",
+    "terminal_id": "",
     "unit_id": "",
-    "terminal_name": "Dakhla LNG Terminal",
-    "issue": "The Morocco country note (docs/country_notes/morocco.md) states 'Dakhla Atlantic LNG regas ... NOT in GEM.' That is stale: GEM DOES track it as 'Dakhla LNG Terminal' (TerminalID T100000131162), but under Country/Area = 'Western Sahara' (Dakhla Atlantique port is in the disputed territory), which is why it does not surface in a Morocco-scoped row enumeration. No discovery gap. Flagging so the note isn't relied on as a lead in future Morocco batches; the row is outside Morocco scope and untouched here.",
+    "terminal_name": "Tendrara LNG Terminal (gem.wiki page; no CSV row)",
+    "issue": "gem.wiki coverage cross-check found a wiki-only page 'Tendrara LNG Terminal' (Sound Energy micro-LNG plant, Figuig Province) with no export-CSV row. Researched from independent sources and resolved as OUT OF SCOPE, not a missing terminal: it is an inland (~120 km from the coast, 33.06 -2.08) domestic-only micro-LNG/virtual-pipeline plant — ~100 million m3/yr of gas liquefied at the Tendrara field and trucked to domestic buyer Afriquia Gaz under a 10-year GSA; no marine LNG import or export. Verified: https://lngprime.com/lng-terminals/sound-energy-breaks-ground-on-small-lng-plant-in-morocco/46717/ (token 'Tendrara' PASS) and https://www.moroccoworldnews.com/2026/03/283726/sound-energy-secures-2-2-million-as-tendrara-gas-project-nears-production/ (token 'Tendrara' PASS). Current status: commissioning, first gas targeted Q3 2026; Managem now holds 75% (ONHYM 25%), Sound Energy exiting. The wiki page's 'Export' type label is wrong under current methodology (Dar-es-Salaam class).",
     "severity": "low",
-    "suggested_action": "Correct docs/country_notes/morocco.md to record that Dakhla LNG Terminal is already in GEM under Country/Area='Western Sahara' (T100000131162), not a missing terminal. Any Dakhla data work belongs to a Western Sahara-scoped batch, not Morocco.",
+    "suggested_action": "Do NOT add to the tracker (domestic-only, out of scope — scope gate resolved before staging). Flag to GEM staff that the gem.wiki page mislabels it an 'export terminal'; consider marking the wiki page out-of-scope/small-scale so future sweeps don't re-flag it.",
     "researcher_initials": "AI-draft (discovery sweep)"
   }
 ]

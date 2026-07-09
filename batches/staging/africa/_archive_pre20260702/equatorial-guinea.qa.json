@@ -1,0 +1,62 @@
+[
+  {
+    "category": "ownership_change",
+    "terminal_id": "T100000130252",
+    "unit_id": "G100002025201",
+    "terminal_name": "Punta Europa LNG Terminal",
+    "issue": "Project-level Parent lists 'Marathon Oil Corp [60.0%]' on both Punta Europa unit-rows (T1 G100002025201, T2 G100002025202), but ConocoPhillips COMPLETED its all-stock acquisition of Marathon Oil on 22 Nov 2024; Marathon Oil is now a wholly-owned ConocoPhillips subsidiary and its Equatorial Guinea (EG LNG / Alba) interests transferred to ConocoPhillips. Verified primary source: ConocoPhillips press release 'ConocoPhillips completes acquisition of Marathon Oil Corporation' (PASS via url_verifier). These rows are OFF the standard-tier worklist (T1 operating, T2's Parent is not a blank-ref gap), so no field edit was staged.",
+    "severity": "medium",
+    "suggested_action": "In a follow-on Update batch, update the Punta Europa project Parent to replace 'Marathon Oil Corp [60.0%]' with 'ConocoPhillips [60.0%]' on ALL unit-rows (project-level field applies to every unit), citing https://www.conocophillips.com/news-media/story/conocophillips-completes-acquisition-of-marathon-oil-corporation/ (green/primary). Confirm whether GEM tracks the surviving entity as 'ConocoPhillips' in the shared entity system before staging.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ref_unavailable",
+    "terminal_id": "T100000130787",
+    "unit_id": "G100002078700",
+    "terminal_name": "Akonikien LNG Terminal",
+    "issue": "Blank-ref worklist targets ShelvedYear [ref] and StopYear [ref] (both year=2022) could not be filled with a citable source: the 2022 value is GEM's own inference (last documented activity was a 2022 agreement; Substatus 'inferred 2 y'), and no verifiable published source pins a 2022 shelving/stop date. Status [ref] WAS filled (offshore-energy.biz, see updates). The oilreviewafrica.com URL cited on the GEM wiki for status FAILED url_verifier (no 'Akonikien' token).",
+    "severity": "low",
+    "suggested_action": "Leave ShelvedYear [ref] / StopYear [ref] blank rather than orphan-fill. If a precise shelving date matters, search local/Spanish-language sources (Elite Construcciones, MMH) for a dated abandonment; otherwise accept the inferred 2022 year without a [ref].",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ref_unavailable",
+    "terminal_id": "T100000130251",
+    "unit_id": "G100002025101",
+    "terminal_name": "Fortuna FLNG Terminal",
+    "issue": "Blank-ref worklist targets ShelvedYear [ref] and StopYear [ref] (both year=2025, Second Proposal) could not be filled: 2025 is GEM's inference (~2 y of no progress after the Sept 2023 Golar talks), not a sourced shelving date. Status [ref] WAS filled (LNG Prime, see updates).",
+    "severity": "low",
+    "suggested_action": "Leave ShelvedYear [ref] / StopYear [ref] blank rather than orphan-fill; the inferred 2025 year stands on the documented 2-year-silence basis already captured in the Status [ref].",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ref_unavailable",
+    "terminal_id": "T100000130252",
+    "unit_id": "G100002025202",
+    "terminal_name": "Punta Europa LNG Terminal",
+    "issue": "Blank-ref worklist targets for Punta Europa T2 (cancelled) — Status [ref], CancelledYear [ref] (2021), StopYear [ref] (2021) — could not be filled with a verifiable external source. The well-documented cause (Alba feedgas decline; Marathon judged reserves insufficient even for Train 1) is real, but candidate citations failed url_verifier: offshore-technology.com/projects/bioko-lng (HTTP 403), ICIS 2021 article (missing token), S&P Alen article (HTTP 403). Only the circular gem.wiki page passed, which is excluded per anti-circularity. No status change found in 2023-2025 searches.",
+    "severity": "low",
+    "suggested_action": "Leave the three T2 [ref] cells blank rather than fill with an unverifiable/circular source. Optionally retry a fresh fetch of the offshore-technology Bioko LNG page or an Energy Intelligence/S&P paywalled archive for a dated 'second train abandoned/cancelled' citation in a future batch.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change",
+    "terminal_id": "T100000130787",
+    "unit_id": "G100002078700",
+    "terminal_name": "Akonikien LNG Terminal",
+    "issue": "Standard-tier dev-pipeline status check: Akonikien remains shelved/incomplete. Latest mention (Offshore Energy, Mar 2024) still calls it merely 'proposed in 2019'; no completion, FID, or revival found in 2024-2025 sweep searches. Status, year fields, owner (Government of Equatorial Guinea) all current.",
+    "severity": "low",
+    "suggested_action": "No edit. Status [ref] filled (see updates); treat as verified-current this batch.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change",
+    "terminal_id": "T100000130251",
+    "unit_id": "G100002025101",
+    "terminal_name": "Fortuna FLNG Terminal",
+    "issue": "Standard-tier dev-pipeline status check: Fortuna FLNG Second Proposal (block EG-27) remains shelved/dormant. No development beyond the Sept 2023 Golar talks; 2024-2025 searches surfaced only pre-2024 coverage. Owner/Parent correctly 'unknown' pending a confirmed developer.",
+    "severity": "low",
+    "suggested_action": "No edit. Status [ref] filled (see updates); treat as verified-current this batch.",
+    "researcher_initials": "AI-draft"
+  }
+]

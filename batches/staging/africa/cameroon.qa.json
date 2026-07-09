@@ -1,22 +1,32 @@
 [
   {
-    "category": "status_timeline",
+    "category": "data_consistency",
     "terminal_id": "T100000130913",
     "unit_id": "G100002091301",
     "terminal_name": "Etinde FLNG Terminal",
-    "issue": "GEM records FIDYear=2024, but no final investment decision has ever been taken on Etinde. The 2024 date was an ASPIRATIONAL target from Bowleven's 2023 AGM, CONDITIONAL on Perenco taking over operatorship. Perenco withdrew/terminated the New Age interest+operatorship acquisition in January 2024 (Offshore Magazine, 2024-01-26), and the partners (LUKOIL 37.5%, New Age 37.5%, Bowleven 25%) reverted to reassessing the development plan to 'secure FID'. The FIDYear=2024 field therefore records an aspirational/target year, not an achieved FID. Status=proposed is correct and was re-verified.",
+    "issue": "FIDStatus='Pre-FID' with FIDYear=2024 — the 2024 value was a PLANNED FID year (existing FIDYear [ref] is Bowleven's 2023 AGM presentation). FID did not occur: Perenco withdrew from the New Age transaction in January 2024 and, as of the latest coverage, the JV is still reviewing development options with no new FID target announced. FIDYear=2024 is now a stale planned year sitting in a field that reads as an actual milestone.",
     "severity": "medium",
-    "suggested_action": "Clear FIDYear (no FID taken) or, if GEM intends FIDYear to hold an expected/target year, re-label/verify. Confirm Status remains 'proposed' (no FID, no construction as of 2026-06). Independent sources confirming the Jan-2024 termination / pre-FID status (all verified PASS, none GEM-derived): https://www.offshore-mag.com/regional-reports/africa/article/14304127/perenco-withdraws-from-planned-etinde-acquisition-offshore-cameroon ; https://oilfieldafricareview.com/perenco-newage-end-sale-transaction-on-etinde-permit-offshore-cameroon/ ; https://www.energy-pedia.com/news/cameroon/bowleven-reports-termination-of-transaction-regarding-the-sale-of-new-ages-participating-interests-in-the-etinde-permit-to-new-age-194035 .",
+    "suggested_action": "Review whether FIDYear should be cleared (Pre-FID with no credible announced target) or updated when Bowleven/NewAge publish a new FID timeline. Not staged as an edit — needs a methodology call on planned-vs-actual FIDYear semantics.",
     "researcher_initials": "AI-draft"
   },
   {
-    "category": "data_quality",
+    "category": "status_timeline",
+    "terminal_id": "T100000130247",
+    "unit_id": "",
+    "terminal_name": "Cameroon FLNG Terminal",
+    "issue": "Off-worklist heads-up (operating rows untouched per standard tier): the Hilli Episeyo charter with Perenco/SNH ends in 2026 and Golar has committed the vessel to a 20-year Argentina charter thereafter; SNH/Perenco exercised production rights only through end-2026. Unless a replacement vessel/charter is announced, Cameroon FLNG (all four units) likely ceases operating around end-2026 (operating → retired/idle transition).",
+    "severity": "medium",
+    "suggested_action": "Watch H2 2026 for the Hilli Episeyo departure/redeployment announcement, then route a status-timeline update (fetch_timeline endpoint down — no timeline edit staged now).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
     "terminal_id": "T100000130248",
     "unit_id": "G100002024801",
     "terminal_name": "Cameroon LNG Terminal",
-    "issue": "CancelledYear=2020 and StopYear=2020 are not supported by any locatable source. The only documented event is ENGIE putting the project on hold in July 2016 (matches GEM ShelvedYear=2016). GEM's own wiki flags the 2020 cancelled date as INFERRED ('No updates released since 2016; presumed cancelled'). The two CancelledYear/StopYear [ref] cells were left blank on the worklist; I did not fill them because no source states 2020, and citing the 2016 'on hold' article against a 2020 value would be a mismatched/orphan reference.",
+    "issue": "Transparency note for the three ref-fills staged this batch: the record's cancelled status rests on GEM's inferred-4y rule (shelved 2016 after ENGIE's July 2016 hold; +4y inactivity -> cancelled 2020). Research found no ENGIE/SNH statement formally terminating the project. Status is plausible and unchanged; recorded for the record, not a proposed edit.",
     "severity": "low",
-    "suggested_action": "Either (a) accept 2020 as an editorial inference and add an internal/researcher note in lieu of an external [ref], or (b) revisit the cancellation year against an authoritative source. Do NOT pair the 2016 offshore-energy 'on hold' URL with the 2020 values. If GEM prefers to anchor the documented event, consider 2016 with the offshore-energy citation.",
+    "suggested_action": "No status edit. Optionally document the inferred-4y basis in researcher_notes.",
     "researcher_initials": "AI-draft"
   }
 ]

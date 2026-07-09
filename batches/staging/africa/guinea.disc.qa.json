@@ -1,12 +1,12 @@
 [
   {
-    "category": "discovery_coverage_complete",
+    "category": "update_candidate",
     "terminal_id": "T100000131050",
     "unit_id": "",
     "terminal_name": "Guinea LNG Terminal",
-    "issue": "Discovery sweep of Guinea (Conakry) found NO LNG import/export terminal missing from GEM. The country's sole LNG terminal project is the West Africa LNG Group (WALNG) / AfricaGlobal Schaffer 'Guinea LNG Project' anchored at the Port of Kamsar, Boke region - already in GEM as T100000131050 with both an import unit and an export unit. Trade press describing 'several receiving terminals' and distribution to Conakry / the coastline is this single project's distribution network (regas at Kamsar + cryogenic-trailer / pipeline distribution), not separate terminals; the floating storage unit (FSU) hub for the project is sited in Freetown, Sierra Leone (out of Guinea scope). Karpowership's Conakry operation is HFO/diesel powerships (no LNG, out of scope). No distinct second sponsor or site surfaced via regulator/DFI (World Bank Guinea Energy Compact / Mission 300, AfDB, USTDA), trade press (Offshore Energy, LNG Industry, Bloomberg, Energy Capital Power, African Energy), sponsor IR (wa-lng.com), or French-language press.",
-    "severity": "low",
-    "suggested_action": "No discovery add for Guinea. Coverage is complete (1 project, in GEM). NOTE for the Update workflow (UPDATE agent owns guinea.* edits): GEM PowerPlantsSupplied currently lists only 'West Africa Kamsar power station', but the World Bank Guinea Energy Compact (2025) records ~500 MW of planned LNG-fired generation tied to this gas supply - 200 MW Boke, 200 MW Fanye, 100 MW Kaloum 3 (Conakry), planned ~2029, largely unfinanced. These are downstream gas-fired POWER PLANTS (power-tracker scope, not LNG-terminal rows), but they suggest the terminal's PowerPlantsSupplied / distribution footprint and status anchors may warrant a refresh on the existing row. Status remains 'proposed' for both units; no status-timeline change observed (no commissioning/construction-start reported), so no timeline edit required (fetch_timeline is down regardless).",
+    "issue": "Discovery sweep found no LNG terminal missing from GEM in Guinea. The government's Kamsar LNG import/export terminal promotion (paired with up to 1,900 MW of gas-fired capacity, re-pitched toward IAE 2026 in March 2026) is the existing GEM record (OtherNames 'Kamsar LNG Terminal', Owner West Africa LNG Group) - dedup score 1.0, update_existing. Row is stale (LatestPlannedStartYear 2023, 3 years past; last updated 2025-06-25). Verified ref: https://invest-africa-energy.com/news/guinea-conakry-energy-minister-bring-frontier-oil-power-opportunities-iae-2026 (token Kamsar, PASS).",
+    "severity": "medium",
+    "suggested_action": "Route to Update workflow: refresh status/planned-start from the 2026 government promotion cycle; project remains proposed with no FID evidence found.",
     "researcher_initials": "AI-draft (discovery sweep)"
   }
 ]

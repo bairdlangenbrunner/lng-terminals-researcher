@@ -1,0 +1,82 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130259",
+    "unit_id": "G100002025907",
+    "terminal_name": "Nigeria LNG Terminal",
+    "issue": "NLNG Train 7 reported ~92% complete and entering systems-completion/pre-commissioning as of May 2026 (NLNG operator page; ThisDay 21 May 2026). Still 'construction' in GEM (correct now), but an operating flip is plausible within ~12 months. LatestPlannedStartYear=2027 remains consistent.",
+    "severity": "medium",
+    "suggested_action": "Watch for commercial-operations/first-LNG declaration; when confirmed, flip Status construction->operating with an ActualStartYear and timeline edit (fetch_timeline endpoint currently down). Do not pre-empt the flip on % complete alone.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000131170",
+    "unit_id": "G100002117001",
+    "terminal_name": "Riverside LNG Terminal",
+    "issue": "GEM holds Riverside as 'shelved (inferred 2 y)' (ResearcherNote: project website no longer live — confirmed, dev.riversidelng.com returns HTTP 000). However an Aug-2025 trade headline ('Nigeria's Riverside LNG Agrees Gas Supply To Germany From 2026', fastbull, paywalled) suggests possible reactivation of the German supply arrangement. Single paywalled headline only; a supply MOU is not a construction milestone.",
+    "severity": "medium",
+    "suggested_action": "Seek a non-paywalled confirmation (sponsor/Reuters/LNG Prime) of a 2025 supply deal or any FID/construction step. If a concrete step is verified, route a status revival (shelved->proposed/construction) to a follow-on Update. Until then keep 'shelved'.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "link_rot",
+    "terminal_id": "T100000131170",
+    "unit_id": "G100002117001",
+    "terminal_name": "Riverside LNG Terminal",
+    "issue": "Owner [ref] and Capacity [ref] both point to https://dev.riversidelng.com/projects/ which now FAILS url_verifier (HTTP 000 — site down). Owner='Riverside LNG [100%]', Parent='AA Holdings; GasInvest; Oilserve Ltd', Capacity=1.4 mtpa all depend on this dead citation.",
+    "severity": "medium",
+    "suggested_action": "Replace dead dev.riversidelng.com citation with a live off-GEM source for owner/parent/capacity (e.g. Africa Oil+Gas Report 2023, ENR Advisory Nigeria-Germany partnership page). Owner/parent/capacity breakdown needs a fresh primary or independent trade source (do not cite gem.wiki — circular).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "link_rot",
+    "terminal_id": "T100000130967",
+    "unit_id": "G100002096700",
+    "terminal_name": "Golar Lagos FSRU",
+    "issue": "Owner [ref] and Capacity [ref] both point to https://www.africanreview.com/energy-a-power/oil-a-gas/lagos-in-talks-to-acquire-fsru-to-boost-energy-security which now FAILS url_verifier (expected content not found — paywall/JS gate). Owner='Golar LNG [100%]' and Capacity=5.70 mtpa rely on it.",
+    "severity": "low",
+    "suggested_action": "Replace with a live off-GEM citation for Golar ownership and the 750 MMscf/d (~5.7 mtpa) regas capacity. Punch Newspapers ('Golar to establish LNG-fired power plant in Nigeria') confirms the Golar Embedded Power Supply Programme scope; do not cite gem.wiki (circular).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_quality",
+    "terminal_id": "T100000130262",
+    "unit_id": "G100002026201",
+    "terminal_name": "Olokola LNG Terminal",
+    "issue": "Status='proposed' (revival narrative, well-cited) yet the row still carries ShelvedYear=2015, CancelledYear=2017, StopYear=2017 (leftover from the pre-revival shelving). These year fields are internally inconsistent with a 'proposed' status and have blank [ref] cells (the blank-ref-fill targets). Filling those year-refs would entrench stale values.",
+    "severity": "low",
+    "suggested_action": "Decide whether Olokola is genuinely re-proposed (clear the Shelved/Cancelled/Stop year fields, or move them into timeline history) OR remains shelved/cancelled (then Status should not be 'proposed'). Resolve the status-vs-year inconsistency before filling ShelvedYear/CancelledYear/StopYear [ref]. Applies to both T1 and T2 (identical).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_quality",
+    "terminal_id": "T100000130260",
+    "unit_id": "G100002026001",
+    "terminal_name": "Brass LNG Terminal",
+    "issue": "ShelvedYear=2019 and StopYear=2019 have blank [ref] cells (low-severity fill targets), but no located source pins the shelving to 2019. The best available citation (constructionreviewonline, Dec 2022) only confirms abandonment after ~2011 site works with no specific year; the Sept-2024 NNPC revival talks are later. Did not fill these year-refs to avoid a mis-citation. Status [ref] (medium) was filled — see updates.",
+    "severity": "low",
+    "suggested_action": "Locate a source dating the Brass shelving to 2019 (or correct the year) before filling ShelvedYear/StopYear [ref]. Applies to both T1 and T2.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000130967",
+    "unit_id": "G100002096700",
+    "terminal_name": "Golar Lagos FSRU",
+    "issue": "Re-verification: the prior sweep filled Status [ref], CancelledYear [ref] and StopYear [ref] (all =2022, presumed cancelled) using only the gem.wiki Golar_Lagos_FSRU profile, which is circular (GEM citing GEM). No independent off-GEM source explicitly corroborates a 'cancelled' status or a 2022 cancellation/stop year — the cancellation is an absence-of-news inference ('no development updates in 4+ years'). Punch Newspapers confirms the 2018 Embedded Power Supply Programme existed but says nothing about cancellation. These three blank-ref fills were therefore DROPPED from nigeria.updates.json rather than cite gem.wiki.",
+    "severity": "low",
+    "suggested_action": "Leave Status [ref]/CancelledYear [ref]/StopYear [ref] blank until an independent source dates or confirms the cancellation. The 'cancelled (inferred 4 y)' status may stand as a GEM editorial inference, but it should not be propped up with a gem.wiki self-citation.",
+    "researcher_initials": "AI-draft (reverify)"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "T100000131170",
+    "unit_id": "G100002117001",
+    "terminal_name": "Riverside LNG Terminal",
+    "issue": "Re-verification: the prior sweep filled Status [ref] (supporting 'shelved, inferred 2 y') using only the gem.wiki Riverside_LNG_Terminal profile, which is circular. Independent off-GEM sources (ENR Advisory, oilfieldafricareview, fastbull Aug-2025 headline) describe ACTIVE Germany/South Africa supply MOUs from 2023-2025, not a shelving — so they do not corroborate the 'shelved' value and in fact cut the other way. No off-GEM source confirms 'shelved'. The Status [ref] fill was DROPPED from nigeria.updates.json rather than cite gem.wiki.",
+    "severity": "medium",
+    "suggested_action": "Do not fill Status [ref] from gem.wiki. Reconcile the 'shelved' status against the live supply-MOU news (see the existing status_timeline note) — either confirm shelving with an independent source or route a status revival to a follow-on Update.",
+    "researcher_initials": "AI-draft (reverify)"
+  }
+]

@@ -1,5 +1,5 @@
 """
-Pull the full status timeline for a UnitID from the live GEM database web UI.
+Pull the full status timeline for a UnitID from the read-only GEM Postgres.
 
 WHY THIS EXISTS: The CSV export does NOT contain the full status timeline —
 only the current status, substatus, and a flat set of anchor years. Per
@@ -11,30 +11,34 @@ lifecycle_rules.md "Anchor years vs timeline (the export gap)":
   timestamps. Working blind from the export risks duplicate entries, incorrect
   ordering, and lost methodology-required context.
 
-This script scrapes the unit edit page from the GEM project DB web UI.
+PRIMARY PATH — read-only Postgres (default): the whole `status_timeline` table is
+readable via GEM_READONLY_DB_URL (the same connection `gem_query.py` and
+`refsweep_missing_year.py` use), joined unit→plant. This is exact SQL, not a
+heuristic scrape, and needs no session cookies. USE THIS to pull the ordered
+timeline before staging any status change. It is read-only — no live-DB writes.
 
-IMPORTANT CAVEAT: This script is best-effort. The exact HTML structure of the
-GEM unit edit page is not documented in this codebase; the parser below uses
-heuristics. **Verify the parsed output against the live UI for at least one
-unit per batch** before trusting it for many units.
+  So there is NO reason to punt a status change to a qa note "because the timeline
+  tool is down": the timeline is always readable here. Pull it, then stage the
+  status change + the new timeline milestone properly. (This is exactly the
+  Quynh Lap miss — construction was found but the status edit was deferred to a
+  qa note on the false premise that the timeline was unreadable.)
 
-If the parser fails or returns empty, the fallback is to manually view the unit
-page in the browser and copy the timeline into the staging xlsx.
+LEGACY PATH — web-UI scraper (`--web`): the old scraper hit the GEM project-DB
+edit page and heuristically parsed the HTML. Its default Heroku host is retired
+(404), so it is off by default and kept only for the case where the read-only DB
+is itself unreachable AND a live web host is supplied via GEM_PROJECT_DB_BASE_URL.
+Parser is best-effort — verify against the live UI if you must use it.
 
-KNOWN ISSUE (observed through the 2026-06 sweep): the default Heroku host below is
-stale and returns 404 — the GEM project DB appears to have moved off Heroku (free
-dynos were retired). The sweep ran with this endpoint DOWN and routed every status
-change to a qa_review note instead of staging a timeline edit. Set the live host
-via the GEM_PROJECT_DB_BASE_URL env var (or --base-url) once confirmed. Until the
-endpoint is reachable, follow that same fallback: record status changes as qa
-notes — do NOT stage a timeline edit blind (the export lacks the ordered timeline,
-so a blind edit risks duplicates / reordering).
+Only if BOTH the read-only DB and any web host are unreachable does the qa-note
+fallback apply (record the status change as a qa_review item, do not stage a blind
+timeline edit) — and that should be rare, not the default.
 
 Usage:
     python fetch_timeline.py G100002027401
-    # Prints the parsed timeline for that UnitID
+    # Reads the timeline from the read-only Postgres (GEM_READONLY_DB_URL)
 
     python fetch_timeline.py G100002027401 --output work/timeline.json
+    python fetch_timeline.py G100002027401 --web   # legacy scraper (needs a live host)
 """
 import argparse
 import json
@@ -45,6 +49,9 @@ import sys
 import tempfile
 import urllib.parse
 from pathlib import Path
+
+DB_ENV_VAR = "GEM_READONLY_DB_URL"
+LNG_PROJECT_TYPE = 8
 
 
 # The legacy Heroku host is known-stale (404 through the 2026-06 sweep — see the
@@ -191,11 +198,12 @@ def parse_timeline(html):
 
 
 def fetch_timeline(unit_id, base_url=DEFAULT_BASE_URL):
-    """Fetch and parse the timeline for a UnitID."""
+    """Fetch and parse the timeline for a UnitID via the legacy web scraper."""
     html = _fetch_unit_page(unit_id, base_url=base_url)
     entries = parse_timeline(html)
     return {
         "unit_id": unit_id,
+        "source": "web_scraper",
         "source_base_url": base_url,
         "entry_count": len(entries),
         "entries": entries,
@@ -207,30 +215,122 @@ def fetch_timeline(unit_id, base_url=DEFAULT_BASE_URL):
     }
 
 
+# The single-unit timeline query. Mirrors refsweep_missing_year.py's EXTRACT_SQL
+# join (status_timeline → powerplant_unit → plant), minus the year-is-null filter:
+# here we want the WHOLE ordered timeline for one unit so a status change can be
+# staged without duplicating/reordering entries. st."order" is the DB's per-unit
+# sort key (tl_order — not a dense index; units may start at 0 or 1, with gaps).
+_TIMELINE_SQL = """
+select st.id                       as st_id,
+       st."order"                  as tl_order,
+       st.status                   as status,
+       coalesce(st.substatus, '')  as sub_status,
+       st.year                     as year,
+       coalesce(st."monthOrHalfYear", '') as part_of_year,
+       coalesce(st.notes, '')      as notes,
+       p.name                      as terminal,
+       coalesce(nullif(pu.name, ''), '(default)') as unit
+from status_timeline st
+join powerplant_unit pu on pu.id = st.unit_id
+join plant p           on p.id  = pu.plant_id
+where st.unit_id = :uid
+  and coalesce(p.deleted, false)  = false
+  and coalesce(pu.deleted, false) = false
+order by st."order"
+"""
+
+
+def _pu_id(unit_id):
+    """GEM UnitID (e.g. 'G100001065714') -> numeric powerplant_unit.id."""
+    digits = re.sub(r"\D", "", str(unit_id))
+    if not digits:
+        sys.exit(f"ERROR: could not parse a numeric unit id from {unit_id!r}")
+    return int(digits)
+
+
+def fetch_timeline_db(unit_id):
+    """Read the full ordered timeline for a UnitID from the read-only Postgres.
+
+    This is the PRIMARY path — exact SQL, no scrape, no cookies. Read-only.
+    """
+    url = os.environ.get(DB_ENV_VAR)
+    if not url:
+        sys.exit(
+            f"ERROR: {DB_ENV_VAR} not set — cannot read the timeline from the\n"
+            f"  read-only Postgres. Set it (same URL as gem_query.py). To force the\n"
+            f"  legacy web scraper instead, pass --web with a live GEM_PROJECT_DB_BASE_URL."
+        )
+    try:
+        from sqlalchemy import create_engine, text
+    except ImportError:
+        sys.exit("error: pip install 'sqlalchemy>=2.0' psycopg2-binary")
+    if url.startswith("postgres://"):
+        url = "postgresql+psycopg2://" + url[len("postgres://"):]
+    eng = create_engine(url)
+    pu = _pu_id(unit_id)
+    with eng.connect() as conn:
+        rows = conn.execute(text(_TIMELINE_SQL), {"uid": pu}).mappings().all()
+    entries = []
+    for r in rows:
+        entries.append({
+            "tl_order": r["tl_order"],
+            "status": r["status"],
+            "sub_status": r["sub_status"],
+            "year": r["year"],
+            "part_of_year": r["part_of_year"],
+            "notes": r["notes"],
+            "_st_id": r["st_id"],
+        })
+    terminal = rows[0]["terminal"] if rows else None
+    unit = rows[0]["unit"] if rows else None
+    return {
+        "unit_id": unit_id,
+        "pu_id": pu,
+        "terminal": terminal,
+        "unit": unit,
+        "source": "readonly_postgres",
+        "entry_count": len(entries),
+        "entries": entries,
+        "_warning": None if entries else (
+            f"No timeline rows for unit {unit_id} (pu_id {pu}). Either the unit id "
+            f"is wrong, the unit/plant is deleted, or it genuinely has no timeline. "
+            f"Confirm the UnitID against the fresh export before staging a status change."
+        ),
+    }
+
+
 _STALE_HOST = "https://internal-project-db-host"
 
 def main():
     p = argparse.ArgumentParser(
-        description="Fetch a unit's full status timeline from the GEM project DB.",
-        epilog=("KNOWN ISSUE: the built-in default host (%s) is stale (404). "
-                "Set GEM_PROJECT_DB_BASE_URL or pass --base-url with the live host; "
-                "until reachable, route status changes to qa notes instead of "
-                "staging blind timeline edits." % _STALE_HOST))
+        description="Fetch a unit's full status timeline. Default: read-only Postgres "
+                    "(GEM_READONLY_DB_URL). --web uses the legacy scraper.",
+        epilog=("Default path reads the ordered timeline straight from the read-only "
+                "Postgres — always available, so a status change is NEVER blocked for "
+                "want of a timeline. Only if GEM_READONLY_DB_URL is unset AND the web "
+                "host is dead does the qa-note fallback apply."))
     p.add_argument("unit_id", help="UnitID (e.g. G100002027401)")
     p.add_argument("--output", help="Write JSON to this path instead of stdout")
+    p.add_argument("--web", action="store_true",
+                   help="Use the legacy web-UI scraper instead of the read-only DB "
+                        "(needs a live GEM_PROJECT_DB_BASE_URL; default host is 404).")
     p.add_argument("--base-url", default=DEFAULT_BASE_URL,
-                   help=f"Base URL (default: {DEFAULT_BASE_URL})")
+                   help=f"[--web only] Base URL (default: {DEFAULT_BASE_URL})")
     p.add_argument("--test", action="store_true",
-                   help=f"Use test database ({TEST_BASE_URL})")
+                   help=f"[--web only] Use test database ({TEST_BASE_URL})")
     args = p.parse_args()
 
-    base_url = TEST_BASE_URL if args.test else args.base_url
-    if base_url.rstrip("/") == _STALE_HOST:
-        print("  WARNING: using the built-in default host, which is KNOWN STALE "
-              "(404). Set GEM_PROJECT_DB_BASE_URL or pass --base-url with the "
-              "live host — this request will almost certainly fail.",
-              file=sys.stderr)
-    result = fetch_timeline(args.unit_id, base_url=base_url)
+    if not args.web:
+        result = fetch_timeline_db(args.unit_id)
+    else:
+        base_url = TEST_BASE_URL if args.test else args.base_url
+        if base_url.rstrip("/") == _STALE_HOST:
+            print("  WARNING: using the built-in default host, which is KNOWN STALE "
+                  "(404). Set GEM_PROJECT_DB_BASE_URL or pass --base-url with the "
+                  "live host — this request will almost certainly fail. The read-only "
+                  "DB path (drop --web) does not have this problem.",
+                  file=sys.stderr)
+        result = fetch_timeline(args.unit_id, base_url=base_url)
 
     if args.output:
         Path(args.output).write_text(json.dumps(result, indent=2, default=str))

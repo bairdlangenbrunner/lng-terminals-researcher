@@ -1,0 +1,22 @@
+[
+  {
+    "category": "ref_fill",
+    "terminal_id": "T100000130479",
+    "unit_id": "G100002047901",
+    "terminal_name": "Higashi Ohgishima LNG Terminal (Expansion)",
+    "issue": "Blank-ref targets Status [ref], ShelvedYear [ref], CancelledYear [ref], StopYear [ref] could not be filled: the cancellation (shelved 2015, cancelled 2017) was inferred from prolonged inactivity of TEPCO's 2013 lean-LNG 6 mtpa conversion plan — no public cancellation announcement exists; web search surfaces only GEM-derived pages (not citable).",
+    "severity": "low",
+    "suggested_action": "Leave refs blank; document the inference basis (no progress since 2013 plan, per GEM lifecycle inference rules) in ResearcherNotes instead of forcing a citation.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_check",
+    "terminal_id": "T100000130513",
+    "unit_id": "G100001094395",
+    "terminal_name": "Sakaide LNG Terminal (Expansion)",
+    "issue": "Capacity=50.00 with blank CapacityUnits looks like the initially-reported ~50,000 kL tank plan entered without units; the Oct 2025 Kawasaki/JFE EPC instead specifies a 180,000 kL tank (operation from FY2031) with vaporization facilities completed FY2029 (https://global.kawasaki.com/en/corp/newsroom/news/detail/?f=20251014_1903, https://lngprime.com/contracts-and-tenders/jfe-engineering-kawasaki-heavy-win-sakaide-lng-terminal-gig/181418/). Also ambiguous whether LatestPlannedStartYear should track the vaporizers (2029, current GEM value) or the tank (2031).",
+    "severity": "medium",
+    "suggested_action": "Review Capacity/CapacityUnits (value is storage volume, not mtpa throughput — likely should be blank or restated), and decide which milestone anchors LatestPlannedStartYear (2029 vaporizers vs 2031 tank).",
+    "researcher_initials": "AI-draft"
+  }
+]

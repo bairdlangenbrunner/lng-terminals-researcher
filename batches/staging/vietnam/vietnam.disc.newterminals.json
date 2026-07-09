@@ -1,0 +1,161 @@
+[
+  {
+    "TerminalName": "Cong Thanh LNG Terminal",
+    "Country/Area": "Vietnam",
+    "State/Province": "Thanh Hóa",
+    "FacilityType": "import",
+    "Status": "proposed",
+    "Substatus": "",
+    "Owner": "Cong Thanh Thermal Power",
+    "Operator": "Cong Thanh Thermal Power",
+    "Parent": "",
+    "Location": "Nghi Son Economic Zone, Thanh Hoa province (LNG regasification terminal serving the 1,500 MW Phase 1 / 4,500 MW total Cong Thanh CCGT power plant, a coal-to-LNG conversion)",
+    "Capacity": "",
+    "CapacityUnits": "mtpa",
+    "ProposalYear": "2025",
+    "FIDStatus": "",
+    "Offshore": "",
+    "Floating": "",
+    "Source [ref]": "https://lngprime.com/asia/deal-signed-for-vietnams-cong-thanh-lng-power-plant/160534/",
+    "Status [ref]": "https://www.lngindustry.com/liquid-natural-gas/21082025/pecc2-signs-aip-for-cong-thanh-lng-project/",
+    "corroborating_urls": [
+      "https://lngprime.com/asia/deal-signed-for-vietnams-cong-thanh-lng-power-plant/160534/",
+      "https://www.lngindustry.com/liquid-natural-gas/21082025/pecc2-signs-aip-for-cong-thanh-lng-project/",
+      "https://vir.com.vn/cong-thanh-back-in-play-to-boost-energy-security-135308.html",
+      "https://theinvestor.vn/principle-agreement-signed-for-4500-mw-lng-power-project-in-central-vietnam-d16748.html"
+    ],
+    "confidence_per_field": {
+      "TerminalName": "yellow",
+      "Owner": "green",
+      "Status": "green",
+      "Location": "green",
+      "ProposalYear": "green"
+    },
+    "_discovery_notes": "RE-STAGED: previously staged in the 2026-06 discovery batch (batches/staging/asia/vietnam.disc.newterminals.json); still absent from the 2026-07 gem_export.csv, so re-verified and re-staged. All four URLs re-verified PASS this batch. Distinct from GEM's Nghi Son LNG Terminal (JERA-led, also in Nghi Son Economic Zone): different sponsor (Cong Thanh Thermal Power), a coal-to-LNG conversion of the long-idle Cong Thanh coal project with its own dedicated LNG regasification terminal + port. Concrete step: agreement-in-principle / framework agreement with Doosan Enerbility (KR) and PECC2, late Aug 2025. ENTITY CORRECTION vs 2026-06 batch: owner matches the EXISTING GEM entity 'Cong Thanh Thermal Power' (entity id 100000120281, confirmed via read-only Postgres entity_history; the 2026-06 remote entity_lookup 'not found' was a false negative from the dead Heroku endpoint) — reuse that entity ID and DROP the prior batch's new-entity addition (see qa). Dedup 2026-07: manual_review vs Long An LNG Terminal (name-token score 0.706 only, no location overlap) — clearly distinct provinces (Thanh Hoa vs Long An); proceed. researcher_initials: AI-draft (discovery sweep)",
+    "researcher_initials": "AI-draft (discovery sweep)",
+    "qa": [
+      {
+        "category": "unsourced_after_reverify",
+        "field": "Capacity",
+        "note": "Prior staged Capacity (1.2 mtpa, single-source/yellow) still cannot be corroborated by any independent non-GEM source; the only '1.2 million tons/year' echo traces to GEM-derivative material. Capacity left blank per re-verify rule; terminal row retained on independently-sourced fields."
+      }
+    ]
+  },
+  {
+    "TerminalName": "Quang Trach II LNG Terminal",
+    "Country/Area": "Vietnam",
+    "State/Province": "Quảng Trị",
+    "FacilityType": "import",
+    "Status": "proposed",
+    "Substatus": "",
+    "Owner": "EVN",
+    "Operator": "EVN",
+    "Parent": "",
+    "Location": "Hon La Economic Zone, Phu Trach commune (former Quang Trach district, Quang Binh), Quang Tri province — the LNG storage and receiving-port component ('kho, cảng LNG') of EVN's Quang Trach II LNG power project",
+    "Capacity": "",
+    "CapacityUnits": "",
+    "ProposalYear": "2024",
+    "Latitude": "",
+    "Longitude": "",
+    "Accuracy": "",
+    "PowerPlantsSupplied": "Quang Trach II power station",
+    "Source [ref]": "https://vneconomy.vn/dieu-chinh-chu-truong-dau-tu-sieu-du-an-52-000-ty-tai-quang-binh.htm",
+    "Status [ref]": "https://nhadautu.vn/hai-du-an-nhiet-dien-36-ty-usd-tai-quang-tri-se-khoi-cong-trong-nam-2026-d102320.html",
+    "Owner [ref]": "https://tuoitre.vn/bon-ong-lon-ngan-hang-cung-ung-von-du-an-dien-khi-quang-trach-2-co-tong-muc-dau-tu-52-490-ti-dong-20260116175823041.htm",
+    "Location [ref]": "https://tuoitre.vn/bon-ong-lon-ngan-hang-cung-ung-von-du-an-dien-khi-quang-trach-2-co-tong-muc-dau-tu-52-490-ti-dong-20260116175823041.htm",
+    "ProposalDate [ref]": "https://vneconomy.vn/dieu-chinh-chu-truong-dau-tu-sieu-du-an-52-000-ty-tai-quang-binh.htm",
+    "PowerPlantsSupplied [ref]": "https://nhadautu.vn/hai-du-an-nhiet-dien-36-ty-usd-tai-quang-tri-se-khoi-cong-trong-nam-2026-d102320.html",
+    "corroborating_urls": [
+      "https://cafef.vn/du-an-nha-may-nhiet-dien-lng-quang-trach-ii-du-kien-hoan-thanh-vao-2030-188260210083817671.chn",
+      "https://tuoitre.vn/bon-ong-lon-ngan-hang-cung-ung-von-du-an-dien-khi-quang-trach-2-co-tong-muc-dau-tu-52-490-ti-dong-20260116175823041.htm",
+      "https://vneconomy.vn/dieu-chinh-chu-truong-dau-tu-sieu-du-an-52-000-ty-tai-quang-binh.htm",
+      "https://nhadautu.vn/hai-du-an-nhiet-dien-36-ty-usd-tai-quang-tri-se-khoi-cong-trong-nam-2026-d102320.html"
+    ],
+    "confidence_per_field": {
+      "TerminalName": "yellow",
+      "Owner": "green",
+      "Status": "green",
+      "Location": "green",
+      "ProposalYear": "yellow",
+      "PowerPlantsSupplied": "green"
+    },
+    "_discovery_notes": "Dedicated LNG storage + receiving port ('kho, cảng LNG', component 2, ~VND 11,800bn of the VND 52,490bn total project — component cost verified on cafef only, single-source) of EVN's Quang Trach II LNG-to-power project at Hon La EZ. Formerly a coal project; investment-policy adjustment to LNG approved 2024 (vneconomy; ProposalYear yellow, single passing source — baochinhphu/nhandan bot-blocked/failed). EPC signed 9 Feb 2026 covers the POWER island only (POWERCHINA–LILAMA consortium); terminal component not under construction, groundbreaking targeted 2026 (nhadautu: 'quý I/2026') -> Status proposed. Tank/berth figures circulating in secondary reports (250,000 m3 tank, 100,000 DWT berth) FAILED verification on every passing URL -> deliberately left out (no Capacity staged). Coordinates left blank: Hon La EZ is ~17.9 N / 106.45 E approximate; reviewer to pin exact site. Dedup 2026-07: manual_review vs Quang Nam LNG Terminal (score 0.398, 304.57 km away, 'Quang' token collision) — clearly distinct; also distinct from PV Gas's Vung Ang LNG Terminal (T100000131060, ~30 km north in Ha Tinh; see qa on PV Gas approval). PDP8-revision (Decision 768/QD-TTg, Apr 2025) lists LNG Quang Trach II — this staging closes that PDP8 reconciliation gap. researcher_initials: AI-draft (discovery sweep)",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "TerminalName": "Dung Quat LNG Terminal",
+    "Country/Area": "Vietnam",
+    "State/Province": "Quảng Ngãi",
+    "FacilityType": "import",
+    "Status": "proposed",
+    "Substatus": "",
+    "Owner": "Van Tuong Energy JSC",
+    "Operator": "Van Tuong Energy JSC",
+    "Parent": "",
+    "Location": "Dong (East) Dung Quat Industrial Park, Dung Quat Economic Zone, Van Tuong commune, Quang Ngai province",
+    "Capacity": "4.5",
+    "CapacityUnits": "mtpa",
+    "ProposalYear": "2025",
+    "Source [ref]": "https://baodautu.vn/de-xuat-dau-tu-du-an-cang-tram-va-kho-lng-dung-quat-hon-14350-ty-dong-d627766.html",
+    "Status [ref]": "https://petrotimes.vn/quang-ngai-xem-xet-de-xuat-dau-tu-du-an-cang-va-kho-lng-dung-quat-742651.html",
+    "Capacity [ref]": "https://baodautu.vn/de-xuat-dau-tu-du-an-cang-tram-va-kho-lng-dung-quat-hon-14350-ty-dong-d627766.html",
+    "Owner [ref]": "https://baodautu.vn/de-xuat-dau-tu-du-an-cang-tram-va-kho-lng-dung-quat-hon-14350-ty-dong-d627766.html",
+    "Location [ref]": "https://petrotimes.vn/quang-ngai-xem-xet-de-xuat-dau-tu-du-an-cang-va-kho-lng-dung-quat-742651.html",
+    "ProposalDate [ref]": "https://baodautu.vn/de-xuat-dau-tu-du-an-cang-tram-va-kho-lng-dung-quat-hon-14350-ty-dong-d627766.html",
+    "corroborating_urls": [
+      "https://baodautu.vn/de-xuat-dau-tu-du-an-cang-tram-va-kho-lng-dung-quat-hon-14350-ty-dong-d627766.html",
+      "https://petrotimes.vn/quang-ngai-xem-xet-de-xuat-dau-tu-du-an-cang-va-kho-lng-dung-quat-742651.html"
+    ],
+    "confidence_per_field": {
+      "TerminalName": "yellow",
+      "Owner": "green",
+      "Status": "green",
+      "Location": "green",
+      "Capacity": "green",
+      "ProposalYear": "green"
+    },
+    "_discovery_notes": "LNG port + storage/regasification terminal ('cảng, trạm và kho LNG') proposed by Van Tuong Energy JSC (Công ty CP Năng lượng Vạn Tường); investment proposal under Quang Ngai provincial review since Aug 2025, site agreed with EZ authorities; total investment VND 14,352bn (~USD 545m, unverified conversion — notes only); proposed schedule Q2/2026 – Q1/2031 (petrotimes single-source, notes only). Capacity 4.5 mtpa verified on 2 independent publishers (baodautu '4,5 triệu tấn' PASS; petrotimes PASS) -> green. Dedup 2026-07: discovery_new (no GEM Dung Quat LNG record; the Dung Quat EZ hosts other energy plants but no staged/existing LNG terminal). Serves the Dung Quat energy-center build-out incl. gas-to-power demand. Coordinates left blank (Van Tuong commune ~15.38 N / 108.75 E approximate; reviewer to pin). New entity Van Tuong Energy JSC staged (see entity file). researcher_initials: AI-draft (discovery sweep)",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "TerminalName": "Nam Van Phong LNG Terminal",
+    "Country/Area": "Vietnam",
+    "State/Province": "Khánh Hòa",
+    "FacilityType": "import",
+    "Status": "cancelled",
+    "Substatus": "inferred 4 y",
+    "ShelvedCancelledStatusType": "inferred",
+    "CancelledYear": "2024",
+    "OtherNames": "Van Phong LNG Terminal; Petrolimex Van Phong LNG",
+    "Owner": "Petrolimex",
+    "Operator": "Petrolimex",
+    "Parent": "",
+    "Location": "South (Nam) Van Phong area, Van Phong Economic Zone, Ninh Phuoc commune, Ninh Hoa, Khanh Hoa province (on the land previously reserved for Petrolimex's cancelled Nam Van Phong refinery)",
+    "Capacity": "",
+    "CapacityUnits": "",
+    "ProposalYear": "2019",
+    "AssociatedTerminals": "Khanh Hoa LNG Terminal (T100000130979)",
+    "Source [ref]": "https://www.petrolimex.com.vn/content/press-releases/pm-witnesses-mou-signing-between-petrolimex-and-jxtg-jccp.html",
+    "Status [ref]": "https://web.archive.org/web/2023/https://en.vietnamplus.vn/petrolimex-plans-lng-project-in-khanh-hoa-province/152640.vnp",
+    "Owner [ref]": "https://e.vnexpress.net/news/business/industries/petrolimex-and-jxtg-sign-mou-on-lng-research-3946896.html",
+    "Location [ref]": "https://e.vnexpress.net/news/business/industries/petrolimex-and-jxtg-sign-mou-on-lng-research-3946896.html",
+    "ProposalDate [ref]": "https://e.vnexpress.net/news/business/industries/petrolimex-and-jxtg-sign-mou-on-lng-research-3946896.html",
+    "corroborating_urls": [
+      "https://www.petrolimex.com.vn/content/press-releases/pm-witnesses-mou-signing-between-petrolimex-and-jxtg-jccp.html",
+      "https://phukhanh.petrolimex.com.vn/nd/hoatdong-vhxh/petrolimex-khanh-hoa-nghe-bao-cao-du-an-trung-tam-dien-luc-khi-va-kho-cang-lng-van-phong.html",
+      "https://e.vnexpress.net/news/business/industries/petrolimex-and-jxtg-sign-mou-on-lng-research-3946896.html",
+      "https://vietnamnet.vn/en/investors-interested-in-lng-projects-in-van-phong-ez-692500.html",
+      "https://web.archive.org/web/2023/https://en.vietnamplus.vn/petrolimex-plans-lng-project-in-khanh-hoa-province/152640.vnp"
+    ],
+    "confidence_per_field": {
+      "TerminalName": "yellow",
+      "Owner": "green",
+      "Status": "yellow",
+      "Location": "green",
+      "ProposalYear": "green",
+      "CancelledYear": "yellow"
+    },
+    "_discovery_notes": "Historical (dead) proposal surfaced by the sponsor sweep — staged so the tracker records it rather than a future sweep re-discovering it. Petrolimex LNG import terminal + gas power center at South Van Phong on its ex-refinery land: proposed to the government 2019 (e.vnexpress, 2019 PASS), PM-witnessed MOU with JXTG (Oct 2019, Petrolimex primary PR), phase-1 storage 180,000 m3 per vietnamplus (Wayback snapshot used — live page content broken; '180,000' PASS; the 3,000 MW power figure FAILED verification so it stays out of staged fields). No progress found after ~Feb 2020; absent from PDP8 (2023) and the Apr-2025 PDP8 revision -> Status cancelled, Substatus 'inferred 4 y', CancelledYear 2024 = last-activity 2020 + 4y inference (both yellow, inferred not confirmed). SOURCE-INDEPENDENCE NOTE: petrolimex.com.vn and phukhanh.petrolimex.com.vn are the SAME publisher cluster = one primary source; independence comes from e.vnexpress + vietnamnet + vietnamplus. DEDUP MANUAL OVERRIDE: matcher scored update_existing vs Khanh Hoa LNG Terminal (T100000130979, 0.68 km on approximate coords) — that GEM record is Millennium Energy's distinct USD-15bn proposal at the same South Van Phong locality (different sponsor, different design/history); per the dead-site rule this is a SEPARATE record linked via AssociatedTerminals, not an edit to the Millennium record. Coordinates left blank (locality ~12.21 N / 109.22 E approximate). New entity Petrolimex staged (see entity file). researcher_initials: AI-draft (discovery sweep)",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  }
+]

@@ -1,0 +1,187 @@
+{
+ "country": "Benin",
+ "slug": "benin",
+ "tier": "standard",
+ "gem_rows": [
+  {
+   "terminal_id": "T100000130668",
+   "unit_id": "G100002066800",
+   "terminal": "Benin FSRU",
+   "unit": "--",
+   "status": "cancelled",
+   "facility_type": "import",
+   "last_updated": "2025-06-22"
+  },
+  {
+   "terminal_id": "T100000130246",
+   "unit_id": "G100002024600",
+   "terminal": "Cotonou FSRU",
+   "unit": "--",
+   "status": "cancelled",
+   "facility_type": "import",
+   "last_updated": "2025-06-22"
+  }
+ ],
+ "dev_pipeline": [],
+ "stale_flags": [],
+ "blank_refs": [
+  {
+   "terminal_id": "T100000130668",
+   "unit_id": "G100002066800",
+   "terminal_name": "Benin FSRU",
+   "unit_name": "--",
+   "country": "Benin",
+   "status": "cancelled",
+   "gap_type": "blank_ref",
+   "column": "Status [ref]",
+   "severity": "medium",
+   "detail": "Status populated but Status [ref] blank — [ref]-fill target"
+  },
+  {
+   "terminal_id": "T100000130668",
+   "unit_id": "G100002066800",
+   "terminal_name": "Benin FSRU",
+   "unit_name": "--",
+   "country": "Benin",
+   "status": "cancelled",
+   "gap_type": "blank_ref",
+   "column": "ShelvedYear [ref]",
+   "severity": "low",
+   "detail": "ShelvedYear populated but ShelvedYear [ref] blank — [ref]-fill target"
+  },
+  {
+   "terminal_id": "T100000130668",
+   "unit_id": "G100002066800",
+   "terminal_name": "Benin FSRU",
+   "unit_name": "--",
+   "country": "Benin",
+   "status": "cancelled",
+   "gap_type": "blank_ref",
+   "column": "CancelledYear [ref]",
+   "severity": "low",
+   "detail": "CancelledYear populated but CancelledYear [ref] blank — [ref]-fill target"
+  },
+  {
+   "terminal_id": "T100000130668",
+   "unit_id": "G100002066800",
+   "terminal_name": "Benin FSRU",
+   "unit_name": "--",
+   "country": "Benin",
+   "status": "cancelled",
+   "gap_type": "blank_ref",
+   "column": "StopYear [ref]",
+   "severity": "low",
+   "detail": "StopYear populated but StopYear [ref] blank — [ref]-fill target"
+  },
+  {
+   "terminal_id": "T100000130246",
+   "unit_id": "G100002024600",
+   "terminal_name": "Cotonou FSRU",
+   "unit_name": "--",
+   "country": "Benin",
+   "status": "cancelled",
+   "gap_type": "blank_ref",
+   "column": "Status [ref]",
+   "severity": "medium",
+   "detail": "Status populated but Status [ref] blank — [ref]-fill target"
+  },
+  {
+   "terminal_id": "T100000130246",
+   "unit_id": "G100002024600",
+   "terminal_name": "Cotonou FSRU",
+   "unit_name": "--",
+   "country": "Benin",
+   "status": "cancelled",
+   "gap_type": "blank_ref",
+   "column": "ShelvedYear [ref]",
+   "severity": "low",
+   "detail": "ShelvedYear populated but ShelvedYear [ref] blank — [ref]-fill target"
+  },
+  {
+   "terminal_id": "T100000130246",
+   "unit_id": "G100002024600",
+   "terminal_name": "Cotonou FSRU",
+   "unit_name": "--",
+   "country": "Benin",
+   "status": "cancelled",
+   "gap_type": "blank_ref",
+   "column": "CancelledYear [ref]",
+   "severity": "low",
+   "detail": "CancelledYear populated but CancelledYear [ref] blank — [ref]-fill target"
+  },
+  {
+   "terminal_id": "T100000130246",
+   "unit_id": "G100002024600",
+   "terminal_name": "Cotonou FSRU",
+   "unit_name": "--",
+   "country": "Benin",
+   "status": "cancelled",
+   "gap_type": "blank_ref",
+   "column": "StopYear [ref]",
+   "severity": "low",
+   "detail": "StopYear populated but StopYear [ref] blank — [ref]-fill target"
+  }
+ ],
+ "other_gaps": [
+  {
+   "terminal_id": "T100000130668",
+   "unit_id": "G100002066800",
+   "terminal_name": "Benin FSRU",
+   "unit_name": "--",
+   "country": "Benin",
+   "status": "cancelled",
+   "gap_type": "missing_field",
+   "column": "FloatingVesselName",
+   "severity": "medium",
+   "detail": "cancelled unit missing required field 'FloatingVesselName'"
+  },
+  {
+   "terminal_id": "T100000130668",
+   "unit_id": "G100002066800",
+   "terminal_name": "Benin FSRU",
+   "unit_name": "--",
+   "country": "Benin",
+   "status": "cancelled",
+   "gap_type": "orphan_ref",
+   "column": "StartDate [ref]",
+   "severity": "medium",
+   "detail": "StartDate [ref] filled but ActualStartYear/ActualStartMonth/ActualStartYear2/ActualStartYear3 blank — Rule F violation"
+  },
+  {
+   "terminal_id": "T100000130246",
+   "unit_id": "G100002024600",
+   "terminal_name": "Cotonou FSRU",
+   "unit_name": "--",
+   "country": "Benin",
+   "status": "cancelled",
+   "gap_type": "missing_field",
+   "column": "FloatingVesselName",
+   "severity": "medium",
+   "detail": "cancelled unit missing required field 'FloatingVesselName'"
+  }
+ ],
+ "dormant_revival_watch": [
+  {
+   "terminal_id": "T100000130246",
+   "terminal_name": "Cotonou FSRU",
+   "country": "Benin",
+   "location": "Littoral — Contonou",
+   "prior_owner": "Gasol; SOCAR Trading",
+   "death_status": "cancelled",
+   "death_year": 2019,
+   "years_dead": 7,
+   "revival_priority": "high"
+  },
+  {
+   "terminal_id": "T100000130668",
+   "terminal_name": "Benin FSRU",
+   "country": "Benin",
+   "location": "Littoral — Contonou",
+   "prior_owner": "TotalEnergies SE [100%]",
+   "death_status": "cancelled",
+   "death_year": 2024,
+   "years_dead": 2,
+   "revival_priority": "normal"
+  }
+ ]
+}

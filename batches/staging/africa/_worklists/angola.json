@@ -1,0 +1,104 @@
+{
+ "country": "Angola",
+ "slug": "angola",
+ "tier": "standard",
+ "gem_rows": [
+  {
+   "terminal_id": "T100000130245",
+   "unit_id": "G100002024501",
+   "terminal": "Angola LNG Terminal",
+   "unit": "--",
+   "status": "operating",
+   "facility_type": "export",
+   "last_updated": "2026-07-01"
+  },
+  {
+   "terminal_id": "T100000130823",
+   "unit_id": "G100002082300",
+   "terminal": "New Fortress Angola LNG Terminal",
+   "unit": "--",
+   "status": "cancelled",
+   "facility_type": "import",
+   "last_updated": "2026-07-01"
+  }
+ ],
+ "dev_pipeline": [],
+ "stale_flags": [],
+ "blank_refs": [
+  {
+   "terminal_id": "T100000130823",
+   "unit_id": "G100002082300",
+   "terminal_name": "New Fortress Angola LNG Terminal",
+   "unit_name": "--",
+   "country": "Angola",
+   "status": "cancelled",
+   "gap_type": "blank_ref",
+   "column": "Status [ref]",
+   "severity": "medium",
+   "detail": "Status populated but Status [ref] blank — [ref]-fill target"
+  },
+  {
+   "terminal_id": "T100000130823",
+   "unit_id": "G100002082300",
+   "terminal_name": "New Fortress Angola LNG Terminal",
+   "unit_name": "--",
+   "country": "Angola",
+   "status": "cancelled",
+   "gap_type": "blank_ref",
+   "column": "CancelledYear [ref]",
+   "severity": "low",
+   "detail": "CancelledYear populated but CancelledYear [ref] blank — [ref]-fill target"
+  },
+  {
+   "terminal_id": "T100000130823",
+   "unit_id": "G100002082300",
+   "terminal_name": "New Fortress Angola LNG Terminal",
+   "unit_name": "--",
+   "country": "Angola",
+   "status": "cancelled",
+   "gap_type": "blank_ref",
+   "column": "StopYear [ref]",
+   "severity": "low",
+   "detail": "StopYear populated but StopYear [ref] blank — [ref]-fill target"
+  }
+ ],
+ "other_gaps": [
+  {
+   "terminal_id": "T100000130823",
+   "unit_id": "G100002082300",
+   "terminal_name": "New Fortress Angola LNG Terminal",
+   "unit_name": "--",
+   "country": "Angola",
+   "status": "cancelled",
+   "gap_type": "missing_field",
+   "column": "Latitude",
+   "severity": "high",
+   "detail": "cancelled unit missing required field 'Latitude'"
+  },
+  {
+   "terminal_id": "T100000130823",
+   "unit_id": "G100002082300",
+   "terminal_name": "New Fortress Angola LNG Terminal",
+   "unit_name": "--",
+   "country": "Angola",
+   "status": "cancelled",
+   "gap_type": "missing_field",
+   "column": "Longitude",
+   "severity": "high",
+   "detail": "cancelled unit missing required field 'Longitude'"
+  }
+ ],
+ "dormant_revival_watch": [
+  {
+   "terminal_id": "T100000130823",
+   "terminal_name": "New Fortress Angola LNG Terminal",
+   "country": "Angola",
+   "location": "",
+   "prior_owner": "New Fortress Energy Inc [100%]",
+   "death_status": "cancelled",
+   "death_year": 2023,
+   "years_dead": 3,
+   "revival_priority": "normal"
+  }
+ ]
+}

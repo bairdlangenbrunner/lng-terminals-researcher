@@ -1,62 +1,32 @@
 [
   {
-    "category": "data_freshness",
+    "category": "status_timeline",
+    "terminal_id": "T100000130612",
+    "unit_id": "G100001063877",
+    "terminal_name": "KOGAS Dangjin LNG Terminal (Phase 2)",
+    "issue": "GEM holds Phase 2 as proposed, but the Aug 2025 Doosan Enerbility award (KRW 560bn, three 270,000 kL tanks) states construction was to begin September 2025 with completion December 2029 (https://www.doosan.com/en/media-center/press-release_view?id=20172714). Could not confirm actual groundbreaking from an independent source.",
+    "severity": "medium",
+    "suggested_action": "Verify whether Phase 2 tank construction actually started (KOGAS/Doosan announcements, Korean trade press); if so, status proposed→construction with a timeline entry. Timeline endpoint down — routed here per sweep rule.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
     "terminal_id": "T100001055027",
     "unit_id": "G100001062921",
     "terminal_name": "Gwangyang 2 LNG Terminal",
-    "issue": "Dev-pipeline skim-confirm (construction/actual, LastUpdated 2026-05-07): status, owner (POSCO International 100%), and 2.1 mtpa capacity all match current sources. Offshore Energy / Korea Herald give a more specific commercial-start month — July 2026 — vs GEM's LatestPlannedStartYear=2026 (no month). GEM has no ActualStartMonth field populated and year-level is correct; flagging in case a planned-start month is desired. No field edit staged.",
+    "issue": "Commercial operations were targeted for July 2026 (some reports Q3 2026); as of this sweep (early July 2026) no start-up announcement found. construction→operating is imminent.",
     "severity": "low",
-    "suggested_action": "Optional: if GEM tracks planned-start month, note July 2026 target for Gwangyang 2. Otherwise no action — GEM value is current and correct at year granularity.",
+    "suggested_action": "Re-check POSCO International announcements in the next batch for commissioning/first cargo; update status + ActualStartYear when confirmed.",
     "researcher_initials": "AI-draft"
   },
   {
-    "category": "data_freshness",
-    "terminal_id": "T100000130612",
-    "unit_id": "G100002061200",
-    "terminal_name": "KOGAS Dangjin LNG Terminal",
-    "issue": "Dev-pipeline skim-confirm. Phase 1 (construction/actual) and Phase 2 (proposed): Phase 2 construction reported beginning Sep 2025 with Doosan KRW560bn award; completion ~Dec 2029. GEM Phase 2 has ConstructionYear=2025 and LatestPlannedStartYear=2029 already, but Status=proposed. The Sep-2025 construction-start reports suggest Phase 2 may now be construction rather than proposed.",
-    "severity": "medium",
-    "suggested_action": "Status timeline: consider moving KOGAS Dangjin Phase 2 from proposed to construction (Doosan contract / Sep-2025 ground-start per turbomachinerymag / walkintokorea). Verify groundbreaking actually occurred before reclassifying; routed as note since fetch_timeline is down.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "no_change",
-    "terminal_id": "T100000130891",
-    "unit_id": "G100002089100",
-    "terminal_name": "Northeast Asia LNG Hub Terminal",
-    "issue": "Dev-pipeline skim-confirm (construction/actual). Hanyang + GS Energy JV, construction underway, USD815m project finance secured Apr 2025, 3.0 mtpa, target online 2028-2029. All match GEM (LatestPlannedStartYear=2028, parent Hanyang 60% / GS Holdings 40%). No change.",
-    "severity": "low",
-    "suggested_action": "No action — verified current.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "no_change",
-    "terminal_id": "T100000131131",
-    "unit_id": "G100002113101",
-    "terminal_name": "Ulsan LNG Terminal",
-    "issue": "Dev-pipeline skim-confirm. Phase 2 (Tanks 3-4) and Phase 3 (Tanks 5-6), both construction/actual. KET (SK Gas + KNOC JV) terminal operational; tank 3 targeted for 2026 completion, additional tanks 4-6 within Clean Energy Complex. Matches GEM (Phase 2 LatestPlannedStartYear=2026, Phase 3 2029; operator/owner KET, parent SK Gas/KNOC). No discrepancy found.",
-    "severity": "low",
-    "suggested_action": "No action — verified current.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "no_change",
+    "category": "ref_fill",
     "terminal_id": "T100000131132",
     "unit_id": "G100002113200",
     "terminal_name": "POSCO Dangjin LNG Terminal",
-    "issue": "Dev-pipeline skim-confirm (shelved/inferred 2 y) plus blank-ref fills (see updates). Confirmed no positive shelving/cancellation announcement; project has had no updates since the 2023 proposal, Aug-2024 IEEFA documents groundbreaking delay. Inferred-shelved classification remains appropriate.",
+    "issue": "Blank-ref targets Status [ref], ShelvedYear [ref], StopYear [ref] could not be filled: the shelved(2025) status is inferred from >2 years without project updates (groundbreaking delay noted by IEEFA in 2024); no public shelving announcement by POSCO International/LX International exists to cite.",
     "severity": "low",
-    "suggested_action": "No action beyond the staged blank-ref fills — inferred status holds.",
+    "suggested_action": "Leave refs blank and document the inference basis in ResearcherNotes; revisit if the sponsors formally cancel or revive the project.",
     "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "unsourced_after_reverify",
-    "terminal_id": "T100000131132",
-    "unit_id": "G100002113200",
-    "terminal_name": "POSCO Dangjin LNG Terminal",
-    "issue": "Re-verify pass: the ShelvedYear=2025 and StopYear=2025 blank-ref fills previously staged in south-korea.updates.json were sourced ONLY to gem.wiki. The year 2025 is GEM's arithmetic inference point (2023 proposal + 'inferred 2 y' substatus), not a dated event. No independent off-GEM source dates a shelving/stop of the POSCO Dangjin terminal to 2025 (LNG Prime, Korea Times, Enerdata, and the IEEFA Aug-2024 fact sheet document the project's 2023 proposal and groundbreaking delay, but none declares it shelved or assigns a 2025 stop/shelve year). The two ref-fill rows were therefore DROPPED from updates.json rather than carry a gem.wiki-only / uncorroborated citation.",
-    "severity": "low",
-    "suggested_action": "Leave ShelvedYear/StopYear [ref] blank in GEM unless a dated, off-GEM shelving event surfaces. The inferred year values themselves remain GEM internal inferences; do not stage [ref] support for them off circular sources.",
-    "researcher_initials": "AI-draft (re-verified)"
   }
 ]

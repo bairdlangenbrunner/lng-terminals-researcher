@@ -1,0 +1,42 @@
+[
+  {
+    "category": "dead_and_revived",
+    "terminal_id": "T100000130251",
+    "unit_id": "",
+    "terminal_name": "Fortuna FLNG Terminal",
+    "issue": "The newly-advancing US$4.5bn 'EG-27 LNG project' (Sonagas-led, Ebano field, ~2.4 MTPA, Afreximbank financial advisor mandated ~July 2025; ConocoPhillips/GEPetrol/Sonagas Heads of Agreement Sept 2025) develops the SAME Block EG-27 (formerly Block R) that GEM's Fortuna FLNG Terminal already tracks (the Fortuna rows carry Source='block EG-27'). Sponsor has shifted from the old Ophir/Golar/Schlumberger consortium to a Sonagas-led, ConocoPhillips-partnered structure; resource is reframed as the 3.8 Tscf 'Ebano field' (the ~2 Tscf Fortuna field sits within it). Plant configuration (revived FLNG vs onshore liquefaction vs new train at Punta Europa) and precise location remain unconfirmed in all public sources. This is a Discovery SOP §6/§12 dead-and-revived / project-rename situation, NOT a clean new terminal.",
+    "severity": "medium",
+    "suggested_action": "Route to an Update batch to re-verify and likely revise the Fortuna FLNG Terminal status/timeline (GEM Second Proposal is currently shelved/inferred-2y, ShelvedYear 2025; the EG-27/Ebano activity in 2025 may warrant a status revision and a refreshed owner set toward Sonagas/ConocoPhillips). Do NOT create a duplicate new terminal for EG-27 unless a future source confirms a genuinely distinct new-build plant at a different site. See monitor entry for full lead set. Verified lead: sonagas-ge.com EG-27 post (url_verifier PASS).",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130251",
+    "unit_id": "G100002025101",
+    "terminal_name": "Fortuna FLNG Terminal",
+    "issue": "Golar LNG's interest in deploying an FLNG to Equatorial Guinea (last reported Sept 2023, candidate vessels FLNG Hilli or a MkII unit) has NOT progressed: as of Golar's 2025 reporting both vessels are committed elsewhere (Hilli to a 20-yr Argentina charter from ~Q2 2027 after a 2026 yard upgrade; MkII to Argentina ~2028). The GEM Fortuna Second Proposal (shelved, inferred 2 y, ProposalYear 2022) is the right home for this storyline; no new FLNG vessel is currently available to EG. fetch_timeline.py is DOWN this batch, so no timeline edit is staged.",
+    "severity": "low",
+    "suggested_action": "When fetch_timeline is reachable, confirm the Fortuna Second Proposal remains shelved (no Golar vessel availability through 2028); no new terminal warranted from the Golar talks. Verified lead: lngprime.com/lng-terminals/golar-in-flng-talks-with-equatorial-guinea/90508 (url_verifier PASS).",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130787",
+    "unit_id": "G100002078700",
+    "terminal_name": "Akonikien LNG Terminal",
+    "issue": "Possible status discrepancy. GEM has Akonikien (Port of Akonikien, mainland Litoral; import/regas; contractor Elite Construcciones) as shelved/inferred-2y with no decisive progress since 2022. Some 2024 promotional coverage (African Energy Chamber / Pulse) frames Equatorial Guinea as having 'inaugurated the first LNG storage and regasification plant on the West African coast' under the Gas Mega Hub / LNG2Africa banner, which could imply commissioning. EIA- and GEM-aligned reporting still treats Akonikien as not advanced past 2022; the 'inaugurated' language appears promotional and is not corroborated by a primary regulatory/operator source.",
+    "severity": "low",
+    "suggested_action": "Update batch: re-verify Akonikien's true status against a primary source (Sonagas / Ministry of Mines and Hydrocarbons / operator) before any change; do not bump status to operating on promotional copy alone. fetch_timeline is DOWN this batch so no timeline edit staged.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "no_new_terminal",
+    "terminal_id": "T100000130252",
+    "unit_id": "",
+    "terminal_name": "Punta Europa LNG Terminal",
+    "issue": "Equatorial Guinea's 'Gas Mega Hub' upstream backfill projects examined and found NOT to be new terminals: Aseng gas project (Chevron, ~US$690m, FID 2025), the cross-border Yoyo-Yolanda fields (EG-Cameroon unitization agreement Feb 2026), Alen gas, and Blocks B/4 all feed NEW GAS VOLUMES into the EXISTING Punta Europa / EG LNG liquefaction complex rather than adding new liquefaction trains or new terminals. ConocoPhillips loaded its first Punta Europa cargo June 2025 (took over operatorship from the former Marathon interest). These are upstream/feed-gas developments, not GEM terminal additions; flagged only so a future batch does not mistake them for missing terminals.",
+    "severity": "low",
+    "suggested_action": "No new terminal. If a future source explicitly states a NEW liquefaction train is being built at Punta Europa to handle Aseng/Yoyo-Yolanda/EG-27 gas, stage it then as a new_unit on T100000130252 (Punta Europa). Owner/operator refresh toward ConocoPhillips for the operating Punta Europa T1 belongs to the Update workflow.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  }
+]

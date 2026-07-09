@@ -1,22 +1,42 @@
 [
   {
-    "category": "ownership",
+    "category": "link_rot",
     "terminal_id": "T100001048162",
-    "unit_id": "G100001055209",
+    "unit_id": "G100001055209; G100001055210",
     "terminal_name": "Botswana LNG Terminal",
-    "issue": "Minerals Development Company Botswana (MDCB), the Botswana government mining-investment arm, confirmed (ASX/BSE announcement 30 Sep / released 6 Oct 2025) its INTENTION to acquire a 15% equity interest AT THE PROJECT/ASSET LEVEL of the Serowe CBM Project (35m pula / ~USD 3.6m, plus a 1% royalty on future LNG). The transaction was PENDING as of latest reporting: subject to MDCB Board + shareholder approval and execution of detailed operating agreements (expected Nov/Dec 2025); no completion confirmation found as of the May 2026 drilling updates. NOT staged as an Owner edit because it is unconsummated and is at the project level (GEM Owner currently 'Botala Energy Ltd. [100%]'). NOTE: a SignalBase aggregator page claims MDCB 'acquired Botala Energy Ltd' as a whole company on 7 Oct 2025 — this is FALSE/conflated (it is a 15% project-level stake, still pending) and was disregarded.",
+    "issue": "Ref URL https://botalaenergy.com/serowe-cbm-project/gas-pitse-commercial/ returns HTTP 404 (site restructured). It is cited in Capacity [ref], Owner [ref] and StartDate [ref] on BOTH phases. Staged updates replace Phase 1 Capacity [ref] and StartDate [ref]; Owner [ref] (both phases) and Phase 2 Capacity [ref]/StartDate [ref] still point at the dead URL.",
     "severity": "medium",
-    "suggested_action": "Monitor for completion. On confirmed close, update Owner to 'Botala Energy Ltd. [85%]; Minerals Development Company Botswana [15%]' (run entity_lookup for MDCB before staging — likely a new GEM entity). Leave GEM Parent (Botala's corporate shareholders: small shareholder(s) 59.4%; natural person(s) 24.6%; Pure Hydrogen Corp Ltd 16.0%) unchanged — that is the company-ownership layer, distinct from the project-level MDCB stake. Primary ASX/BSE PDFs (apis.bse.co.bw .../6114.pdf and wcsecure.weblink.com.au .../03003755.pdf) FAILED url_verifier (no extractable text on live fetch); use the verified trade-press source below as the lead.",
+    "suggested_action": "Replace remaining dead refs with live sources (e.g. smallcaps.com.au and energiesmedia.com articles staged on Phase 1, or a current botalaenergy.com project page once one exists).",
     "researcher_initials": "AI-draft"
   },
   {
-    "category": "no_change",
+    "category": "unsupported_value",
     "terminal_id": "T100001048162",
-    "unit_id": "G100001055209",
+    "unit_id": "G100001055210",
     "terminal_name": "Botswana LNG Terminal",
-    "issue": "Blue re-verify (standard tier, one representative for the terminal): Status 'proposed' confirmed CURRENT for both units. Project is actively advancing (Pitse Pilot well 3.5B reached total depth 449 m on 26 May 2026; wireline logging + flow testing underway) but no FID/construction-start has occurred, so 'proposed' remains correct. SCAW South Africa offtake LoI (Mar 2025, up to 3.5 PJ/y, option to 4.7) and Mining Licence 0052/2025 also confirmed. Capacity (Phase 1 0.07 / Phase 2 0.29 mtpa), sponsor Botala Energy, operator, and Serowe location all consistent with current sources — no field divergence found.",
+    "issue": "Phase 2 Capacity = 0.29 mtpa (~14 PJ/a) could not be corroborated: accessible sources only support 3.5 PJ/a expanding to 4.7 PJ/a total (~0.07-0.10 mtpa), and the original citation is dead (404). Value left untouched pending review.",
+    "severity": "medium",
+    "suggested_action": "Locate the original Botala presentation/ASX announcement behind the 0.29 mtpa figure, or revisit Phase 2 capacity against the 4.7 PJ/a expansion figure.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "scope",
+    "terminal_id": "T100001048162",
+    "unit_id": "",
+    "terminal_name": "Botswana LNG Terminal",
+    "issue": "Botswana is landlocked; the Serowe LNG would move to South African customers (SCAW) by road/rail, with no marine import/export leg. Methodology scope is LNG crossing a border BY SHIP. Existing record — not staging any change — but inclusion may merit a staff decision.",
     "severity": "low",
-    "suggested_action": "No edit. Bump LastUpdated for the two units this batch (re-verified). Status stays 'proposed' (FID endpoint down; any future status change routes to a status_timeline qa note).",
+    "suggested_action": "Confirm with GEM staff whether cross-border trucked/rail LNG exports keep this record in scope.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ownership",
+    "terminal_id": "T100001048162",
+    "unit_id": "",
+    "terminal_name": "Botswana LNG Terminal",
+    "issue": "Minerals Development Company Botswana (government) has a PROPOSED equity investment (increased to BWP35m, ~15% stake + 1% LNG royalty) in the Serowe project. Still described as proposed — Owner (Botala Energy Ltd. [100%]) left unchanged.",
+    "severity": "low",
+    "suggested_action": "Watch for completion of the MDCB investment; on closing, restage Owner as Botala ~85% / MDCB ~15% with refs.",
     "researcher_initials": "AI-draft"
   }
 ]

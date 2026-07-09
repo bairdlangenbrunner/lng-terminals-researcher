@@ -1,0 +1,210 @@
+{
+ "country": "Cambodia",
+ "slug": "cambodia",
+ "tier": "standard",
+ "gem_rows": [
+  {
+   "terminal_id": "T100000131166",
+   "unit_id": "G100002116600",
+   "terminal": "Botum Sakor LNG Terminal",
+   "unit": "--",
+   "status": "construction",
+   "facility_type": "import",
+   "last_updated": "2026-06-05"
+  },
+  {
+   "terminal_id": "T100000130709",
+   "unit_id": "G100002070902",
+   "terminal": "Cambodia LNG Project",
+   "unit": "Phase 2",
+   "status": "cancelled",
+   "facility_type": "import",
+   "last_updated": "2026-06-05"
+  },
+  {
+   "terminal_id": "T100000130709",
+   "unit_id": "G100002070903",
+   "terminal": "Cambodia LNG Project",
+   "unit": "Phase 3",
+   "status": "cancelled",
+   "facility_type": "import",
+   "last_updated": "2026-06-05"
+  }
+ ],
+ "dev_pipeline": [
+  {
+   "terminal_id": "T100000131166",
+   "unit_id": "G100002116600",
+   "terminal_name": "Botum Sakor LNG Terminal",
+   "unit_name": "--",
+   "country": "Cambodia",
+   "status": "construction",
+   "substatus": "actual",
+   "last_updated": "2026-06-05",
+   "months_since_update": 1.1,
+   "recently_updated": true
+  }
+ ],
+ "stale_flags": [],
+ "blank_refs": [
+  {
+   "terminal_id": "T100000130709",
+   "unit_id": "G100002070902",
+   "terminal_name": "Cambodia LNG Project",
+   "unit_name": "Phase 2",
+   "country": "Cambodia",
+   "status": "cancelled",
+   "gap_type": "blank_ref",
+   "column": "Status [ref]",
+   "severity": "medium",
+   "detail": "Status populated but Status [ref] blank — [ref]-fill target"
+  },
+  {
+   "terminal_id": "T100000130709",
+   "unit_id": "G100002070902",
+   "terminal_name": "Cambodia LNG Project",
+   "unit_name": "Phase 2",
+   "country": "Cambodia",
+   "status": "cancelled",
+   "gap_type": "blank_ref",
+   "column": "ShelvedYear [ref]",
+   "severity": "low",
+   "detail": "ShelvedYear populated but ShelvedYear [ref] blank — [ref]-fill target"
+  },
+  {
+   "terminal_id": "T100000130709",
+   "unit_id": "G100002070902",
+   "terminal_name": "Cambodia LNG Project",
+   "unit_name": "Phase 2",
+   "country": "Cambodia",
+   "status": "cancelled",
+   "gap_type": "blank_ref",
+   "column": "CancelledYear [ref]",
+   "severity": "low",
+   "detail": "CancelledYear populated but CancelledYear [ref] blank — [ref]-fill target"
+  },
+  {
+   "terminal_id": "T100000130709",
+   "unit_id": "G100002070902",
+   "terminal_name": "Cambodia LNG Project",
+   "unit_name": "Phase 2",
+   "country": "Cambodia",
+   "status": "cancelled",
+   "gap_type": "blank_ref",
+   "column": "StopYear [ref]",
+   "severity": "low",
+   "detail": "StopYear populated but StopYear [ref] blank — [ref]-fill target"
+  },
+  {
+   "terminal_id": "T100000130709",
+   "unit_id": "G100002070903",
+   "terminal_name": "Cambodia LNG Project",
+   "unit_name": "Phase 3",
+   "country": "Cambodia",
+   "status": "cancelled",
+   "gap_type": "blank_ref",
+   "column": "Status [ref]",
+   "severity": "medium",
+   "detail": "Status populated but Status [ref] blank — [ref]-fill target"
+  },
+  {
+   "terminal_id": "T100000130709",
+   "unit_id": "G100002070903",
+   "terminal_name": "Cambodia LNG Project",
+   "unit_name": "Phase 3",
+   "country": "Cambodia",
+   "status": "cancelled",
+   "gap_type": "blank_ref",
+   "column": "ShelvedYear [ref]",
+   "severity": "low",
+   "detail": "ShelvedYear populated but ShelvedYear [ref] blank — [ref]-fill target"
+  },
+  {
+   "terminal_id": "T100000130709",
+   "unit_id": "G100002070903",
+   "terminal_name": "Cambodia LNG Project",
+   "unit_name": "Phase 3",
+   "country": "Cambodia",
+   "status": "cancelled",
+   "gap_type": "blank_ref",
+   "column": "CancelledYear [ref]",
+   "severity": "low",
+   "detail": "CancelledYear populated but CancelledYear [ref] blank — [ref]-fill target"
+  },
+  {
+   "terminal_id": "T100000130709",
+   "unit_id": "G100002070903",
+   "terminal_name": "Cambodia LNG Project",
+   "unit_name": "Phase 3",
+   "country": "Cambodia",
+   "status": "cancelled",
+   "gap_type": "blank_ref",
+   "column": "StopYear [ref]",
+   "severity": "low",
+   "detail": "StopYear populated but StopYear [ref] blank — [ref]-fill target"
+  }
+ ],
+ "other_gaps": [
+  {
+   "terminal_id": "T100000131166",
+   "unit_id": "G100002116600",
+   "terminal_name": "Botum Sakor LNG Terminal",
+   "unit_name": "--",
+   "country": "Cambodia",
+   "status": "construction",
+   "gap_type": "orphan_ref",
+   "column": "StartDate [ref]",
+   "severity": "medium",
+   "detail": "StartDate [ref] filled but ActualStartYear/ActualStartMonth/ActualStartYear2/ActualStartYear3 blank — Rule F violation"
+  },
+  {
+   "terminal_id": "T100000130709",
+   "unit_id": "G100002070902",
+   "terminal_name": "Cambodia LNG Project",
+   "unit_name": "Phase 2",
+   "country": "Cambodia",
+   "status": "cancelled",
+   "gap_type": "missing_field",
+   "column": "FloatingVesselName",
+   "severity": "medium",
+   "detail": "cancelled unit missing required field 'FloatingVesselName'"
+  },
+  {
+   "terminal_id": "T100000130709",
+   "unit_id": "G100002070902",
+   "terminal_name": "Cambodia LNG Project",
+   "unit_name": "Phase 2",
+   "country": "Cambodia",
+   "status": "cancelled",
+   "gap_type": "orphan_ref",
+   "column": "StartDate [ref]",
+   "severity": "medium",
+   "detail": "StartDate [ref] filled but ActualStartYear/ActualStartMonth/ActualStartYear2/ActualStartYear3 blank — Rule F violation"
+  },
+  {
+   "terminal_id": "T100000130709",
+   "unit_id": "G100002070903",
+   "terminal_name": "Cambodia LNG Project",
+   "unit_name": "Phase 3",
+   "country": "Cambodia",
+   "status": "cancelled",
+   "gap_type": "orphan_ref",
+   "column": "StartDate [ref]",
+   "severity": "medium",
+   "detail": "StartDate [ref] filled but ActualStartYear/ActualStartMonth/ActualStartYear2/ActualStartYear3 blank — Rule F violation"
+  }
+ ],
+ "dormant_revival_watch": [
+  {
+   "terminal_id": "T100000130709",
+   "terminal_name": "Cambodia LNG Project",
+   "country": "Cambodia",
+   "location": "Kampong Spueu — Phnom Penh",
+   "prior_owner": "Cambodia Natural Gas Corp [100%]",
+   "death_status": "cancelled",
+   "death_year": 2025,
+   "years_dead": 1,
+   "revival_priority": "normal"
+  }
+ ]
+}

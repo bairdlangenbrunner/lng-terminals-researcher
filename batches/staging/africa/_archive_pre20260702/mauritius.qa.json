@@ -1,0 +1,32 @@
+[
+  {
+    "category": "blank_ref",
+    "terminal_id": "T100000131079",
+    "unit_id": "G100002107900",
+    "terminal_name": "Mauritius FSRU",
+    "issue": "ShelvedYear=2024 and StopYear=2024 are GEM-inferred (ShelvedCancelledStatusType='inferred') and have blank [ref] cells, but no source pins the LNG plan's shelving to 2024 specifically. The original lngprime article is 2022; the US ITA guide only says 'as of September 2025... appears to be shelved' and reports no progress since the 2022 RFI. 2024 is plausible (CEB pivoted to a separate HFO power-barge tender launched Aug 2024) but not directly cited. Per the no-orphan-[ref] rule I did NOT fabricate a citation for these year values.",
+    "severity": "low",
+    "suggested_action": "Leave ShelvedYear/StopYear=2024 [ref] blank as a defensible inferred date, OR have the reviewer decide whether to (a) re-anchor the shelve year to the period of the Aug-2024 CEB HFO power-barge tender, or (b) cite the trade.gov guide loosely as 'no progress since 2022 RFI; shelved by Sep 2025'. No primary source establishes an exact 2024 shelve date.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "scope_clarification",
+    "terminal_id": "T100000131079",
+    "unit_id": "G100002107900",
+    "terminal_name": "Mauritius FSRU",
+    "issue": "The mid-2025 Mauritius 'powership' / floating-power-plant procurement (CEB RFP-CPR-2025-8770, two bids, award letter 11 Jun 2025; ~100 MW to cover a near-term shortfall) is fuelled by HEAVY FUEL OIL / DIESEL, not LNG (confirmed by Ecofin Agency, 30 Jul 2025, and the CEB RFP title). It is NOT a revival of this shelved LNG-to-power barge+FSRU plan and is out of scope for the LNG tracker. Flagging so a future batch does not mistake the 2025 HFO power-barge award for an LNG-terminal revival and un-shelve this record.",
+    "severity": "low",
+    "suggested_action": "No action; keep Status=shelved. Do not link the 2025 HFO power-barge award to this LNG terminal.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000131079",
+    "unit_id": "G100002107900",
+    "terminal_name": "Mauritius FSRU",
+    "issue": "MARENA's 2025-2030 Renewable Energy Strategic Plan (announced Aug 2025, per US ITA guide last published 2026-02-19) signals renewed government intent toward LNG: a feasibility + environmental impact assessment for LNG deployment and site selection, plus deployment of LNG-fuelled CCGT generation with 'associated LNG infrastructure' targeted by 2030. This is still planning/feasibility stage with no concrete FSRU/import procurement, so it does NOT yet warrant un-shelving this terminal — but it is a forward watch item. (fetch_timeline endpoint is down, so this is a note, not a Status edit.)",
+    "severity": "low",
+    "suggested_action": "Watch MARENA / CEB over the next 1-2 batches for a concrete LNG import / FSRU procurement step tied to the 2025-2030 RESP; if a sponsor + site + concrete step materialize, route to an Update status change (or Discovery if it is a distinct new facility). For now leave Status=shelved.",
+    "researcher_initials": "AI-draft"
+  }
+]

@@ -1,22 +1,22 @@
 [
   {
-    "category": "coverage_gap",
+    "category": "gemwiki_coverage_gap",
     "terminal_id": "",
     "unit_id": "",
-    "terminal_name": "Durban LNG Terminal (Vitol / ACWA Power / Engen)",
-    "issue": "USER-FLAGGED MISS (2026-06-24). The June africa discovery sweep failed to surface the proposed Durban LNG import terminal (Port of Durban; Vitol / ACWA Power / Engen consortium; FSRU under evaluation) to serve KwaZulu-Natal ahead of South Africa's gas-cliff supply gap. Staged this batch as a new_terminal (import, proposed). TWO ROOT CAUSES: (1) The terminal HAS a gem.wiki page (Durban_LNG_Terminal) but NO corresponding row in the GEM LNG export CSV -- so it was invisible to BOTH the CSV-dedup step (nothing to match) AND the web discovery step (gem.wiki is correctly excluded as a source, so the existing internal page never entered the candidate pool). A wiki page with no tracker row is a structural blind spot the web-only discovery method cannot see. (2) The South Africa trade-press sweep under-covered the Durban scheme as distinct from the better-known Richards Bay and Ngqura/Coega projects.",
-    "severity": "medium",
-    "suggested_action": "Review the staged south-africa.disc.newterminals.json record. Capacity left blank (trade-press ~400 mmscfd / ~1,000-1,800 MW figures risk conflation with Richards Bay -- confirm before fixing). Process fix added to Discovery SOP: a gem.wiki COVERAGE CROSS-CHECK is now a standing discovery step -- enumerate gem.wiki LNG-terminal pages for in-scope countries and reconcile against the export CSV so wiki-only terminals are caught (they are reconciled to a tracker row, NOT cited as a source).",
-    "researcher_initials": "AI-draft (discovery follow-up)"
+    "terminal_name": "Virginia LNG Terminal (gem.wiki page, no tracker row)",
+    "issue": "gem.wiki coverage cross-check (Discovery SOP §4.0b): 'Virginia LNG Terminal' sits in gem.wiki's 'LNG terminals in South Africa' category but has NO row in the export CSV. Independent research: this is the Renergen/Tetra4 Virginia Gas Project (Free State, inland; acquired by ASP Isotopes in Jan 2026) — a domestic small-scale LNG + liquid-helium plant whose LNG is distributed inland (virtual pipeline/trucking); Phase 1 targeted ~2,500 GJ/day LNG in Q3 2026 (verified: https://www.globenewswire.com/news-release/2026/06/23/3315880/0/en/ASP-Isotopes-Inc-Announces-that-a-Subsidiary-of-Renergen-Limited-Has-Entered-into-its-First-Take-or-Pay-Contract-for-the-Supply-of-Contained-Helium-to-be-Produced-at-the-Virginia-G.html). No marine LNG import/export link found in any source, so the project FAILS the scope gate (domestic-only) and its absence from the tracker appears correct — but the gem.wiki page/category placement is inconsistent with that exclusion.",
+    "severity": "low",
+    "suggested_action": "Confirm with GEM staff that Virginia's exclusion from the tracker is intentional (domestic-only, out of scope) and consider recategorizing/annotating the gem.wiki page so it stops reading as a tracker coverage gap. Do NOT add a tracker row unless a marine LNG link emerges.",
+    "researcher_initials": "AI-draft (discovery sweep)"
   },
   {
-    "category": "disambiguation",
-    "terminal_id": "",
+    "category": "dormant_revival_check",
+    "terminal_id": "T100000130264; T100000130265; T100000130266; T100000130267",
     "unit_id": "",
-    "terminal_name": "Durban LNG Terminal vs. Richards Bay / Ngqura",
-    "issue": "South Africa now has multiple distinct proposed LNG import schemes that are easy to conflate: (a) Richards Bay LNG (Transnet/TNPA, existing GEM rows), (b) Ngqura/Coega LNG (Port of Ngqura, existing GEM row T100001048121, Ukwanda LNG operator), and (c) the NEW Durban LNG terminal (Port of Durban, Vitol/ACWA Power/Engen) staged here. Capacity and power-MW figures in trade press are sometimes attributed loosely across these and must not be cross-applied.",
+    "terminal_name": "Mossel Bay FSRU / Coega FSRU / Richards Bay FSRU / Saldanha Bay FSRU",
+    "issue": "Revival check of all four cancelled South Africa sites found NO new project activity. Mossel Bay FSRU (cancelled 2014, high priority): no LNG-terminal revival — the PetroSA–Gazprombank Africa refinery-revival deal reportedly neared collapse by Jan 2025 and no new import-terminal proposal exists. The three Karpowership sites (Coega, Richards Bay, Saldanha Bay, cancelled 2024): the Karpowership deal is definitively over (2025 Pretoria High Court ruling invalidated the mooring licence; Eskom cancelled grid access) with no successor project at any of the three sites. All 2025-2026 South African LNG activity maps to existing GEM records: Zululand Energy Terminal (= Richards Bay Transnet FSRU; Eskom LNG agreement + ExxonMobil supply arrangement, June 2026), Ukwanda/TNPA Ngqura (= Ngqura LNG Terminal), and Vitol/ACWA Durban (= Durban LNG Terminal).",
     "severity": "low",
-    "suggested_action": "Keep the three projects as separate tracker entries; verify any capacity/power figure is specifically attributed to the Port of Durban scheme before staging a number on the Durban row.",
-    "researcher_initials": "AI-draft (discovery follow-up)"
+    "suggested_action": "No action — recorded so the sweep's dead-site revival checks are auditable. Cancelled records stay as-is.",
+    "researcher_initials": "AI-draft (discovery sweep)"
   }
 ]
