@@ -1,0 +1,207 @@
+{
+ "country": "Mauritania",
+ "slug": "mauritania",
+ "tier": "standard",
+ "gem_rows": [
+  {
+   "terminal_id": "T100000131091",
+   "unit_id": "G100002109101",
+   "terminal": "BirAllah LNG Hub",
+   "unit": "--",
+   "status": "proposed",
+   "facility_type": "export",
+   "last_updated": "2025-06-25"
+  },
+  {
+   "terminal_id": "T100000130661",
+   "unit_id": "G100002066101",
+   "terminal": "Greater Tortue Ahmeyim FLNG Terminal",
+   "unit": "Phase 1",
+   "status": "operating",
+   "facility_type": "export",
+   "last_updated": "2025-06-26"
+  },
+  {
+   "terminal_id": "T100000130661",
+   "unit_id": "G100002066105",
+   "terminal": "Greater Tortue Ahmeyim FLNG Terminal",
+   "unit": "Phase 2",
+   "status": "proposed",
+   "facility_type": "export",
+   "last_updated": "2025-06-26"
+  },
+  {
+   "terminal_id": "T100000131048",
+   "unit_id": "G100002104801",
+   "terminal": "New Fortress Banda LNG Terminal",
+   "unit": "--",
+   "status": "cancelled",
+   "facility_type": "export",
+   "last_updated": "2025-06-26"
+  }
+ ],
+ "dev_pipeline": [
+  {
+   "terminal_id": "T100000131091",
+   "unit_id": "G100002109101",
+   "terminal_name": "BirAllah LNG Hub",
+   "unit_name": "--",
+   "country": "Mauritania",
+   "status": "proposed",
+   "substatus": "",
+   "last_updated": "2025-06-25",
+   "months_since_update": 12.2,
+   "recently_updated": false
+  },
+  {
+   "terminal_id": "T100000130661",
+   "unit_id": "G100002066105",
+   "terminal_name": "Greater Tortue Ahmeyim FLNG Terminal",
+   "unit_name": "Phase 2",
+   "country": "Mauritania",
+   "status": "proposed",
+   "substatus": "",
+   "last_updated": "2025-06-26",
+   "months_since_update": 12.2,
+   "recently_updated": false
+  }
+ ],
+ "stale_flags": [],
+ "blank_refs": [
+  {
+   "terminal_id": "T100000131048",
+   "unit_id": "G100002104801",
+   "terminal_name": "New Fortress Banda LNG Terminal",
+   "unit_name": "--",
+   "country": "Mauritania",
+   "status": "cancelled",
+   "gap_type": "blank_ref",
+   "column": "Status [ref]",
+   "severity": "medium",
+   "detail": "Status populated but Status [ref] blank — [ref]-fill target"
+  },
+  {
+   "terminal_id": "T100000131048",
+   "unit_id": "G100002104801",
+   "terminal_name": "New Fortress Banda LNG Terminal",
+   "unit_name": "--",
+   "country": "Mauritania",
+   "status": "cancelled",
+   "gap_type": "blank_ref",
+   "column": "ShelvedYear [ref]",
+   "severity": "low",
+   "detail": "ShelvedYear populated but ShelvedYear [ref] blank — [ref]-fill target"
+  },
+  {
+   "terminal_id": "T100000131048",
+   "unit_id": "G100002104801",
+   "terminal_name": "New Fortress Banda LNG Terminal",
+   "unit_name": "--",
+   "country": "Mauritania",
+   "status": "cancelled",
+   "gap_type": "blank_ref",
+   "column": "CancelledYear [ref]",
+   "severity": "low",
+   "detail": "CancelledYear populated but CancelledYear [ref] blank — [ref]-fill target"
+  },
+  {
+   "terminal_id": "T100000131048",
+   "unit_id": "G100002104801",
+   "terminal_name": "New Fortress Banda LNG Terminal",
+   "unit_name": "--",
+   "country": "Mauritania",
+   "status": "cancelled",
+   "gap_type": "blank_ref",
+   "column": "StopYear [ref]",
+   "severity": "low",
+   "detail": "StopYear populated but StopYear [ref] blank — [ref]-fill target"
+  }
+ ],
+ "other_gaps": [
+  {
+   "terminal_id": "T100000131091",
+   "unit_id": "G100002109101",
+   "terminal_name": "BirAllah LNG Hub",
+   "unit_name": "--",
+   "country": "Mauritania",
+   "status": "proposed",
+   "gap_type": "orphan_ref",
+   "column": "StartDate [ref]",
+   "severity": "medium",
+   "detail": "StartDate [ref] filled but ActualStartYear/ActualStartMonth/ActualStartYear2/ActualStartYear3 blank — Rule F violation"
+  },
+  {
+   "terminal_id": "T100000131091",
+   "unit_id": "G100002109101",
+   "terminal_name": "BirAllah LNG Hub",
+   "unit_name": "--",
+   "country": "Mauritania",
+   "status": "proposed",
+   "gap_type": "orphan_ref",
+   "column": "Location [ref]",
+   "severity": "medium",
+   "detail": "Location [ref] filled but Location blank — Rule F violation"
+  },
+  {
+   "terminal_id": "T100000130661",
+   "unit_id": "G100002066101",
+   "terminal_name": "Greater Tortue Ahmeyim FLNG Terminal",
+   "unit_name": "Phase 1",
+   "country": "Mauritania",
+   "status": "operating",
+   "gap_type": "missing_field",
+   "column": "FloatingVesselName",
+   "severity": "medium",
+   "detail": "operating unit missing required field 'FloatingVesselName'"
+  },
+  {
+   "terminal_id": "T100000130661",
+   "unit_id": "G100002066101",
+   "terminal_name": "Greater Tortue Ahmeyim FLNG Terminal",
+   "unit_name": "Phase 1",
+   "country": "Mauritania",
+   "status": "operating",
+   "gap_type": "orphan_ref",
+   "column": "Location [ref]",
+   "severity": "medium",
+   "detail": "Location [ref] filled but Location blank — Rule F violation"
+  },
+  {
+   "terminal_id": "T100000130661",
+   "unit_id": "G100002066105",
+   "terminal_name": "Greater Tortue Ahmeyim FLNG Terminal",
+   "unit_name": "Phase 2",
+   "country": "Mauritania",
+   "status": "proposed",
+   "gap_type": "orphan_ref",
+   "column": "StartDate [ref]",
+   "severity": "medium",
+   "detail": "StartDate [ref] filled but ActualStartYear/ActualStartMonth/ActualStartYear2/ActualStartYear3 blank — Rule F violation"
+  },
+  {
+   "terminal_id": "T100000131048",
+   "unit_id": "G100002104801",
+   "terminal_name": "New Fortress Banda LNG Terminal",
+   "unit_name": "--",
+   "country": "Mauritania",
+   "status": "cancelled",
+   "gap_type": "orphan_ref",
+   "column": "StartDate [ref]",
+   "severity": "medium",
+   "detail": "StartDate [ref] filled but ActualStartYear/ActualStartMonth/ActualStartYear2/ActualStartYear3 blank — Rule F violation"
+  }
+ ],
+ "dormant_revival_watch": [
+  {
+   "terminal_id": "T100000131048",
+   "terminal_name": "New Fortress Banda LNG Terminal",
+   "country": "Mauritania",
+   "location": "Banda gas field",
+   "prior_owner": "New Fortress Energy Inc [100%]",
+   "death_status": "cancelled",
+   "death_year": 2025,
+   "years_dead": 1,
+   "revival_priority": "normal"
+  }
+ ]
+}

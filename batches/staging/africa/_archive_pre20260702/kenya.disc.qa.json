@@ -1,0 +1,22 @@
+[
+  {
+    "category": "unverifiable_source",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Source Africa LNG — Dongo Kundu SEZ (discovery candidate, NOT staged)",
+    "issue": "The only 'primary' source for the recurring Source Africa LNG / Dongo Kundu FEGASUS LNG-import candidate is the sponsor's own domain sourceafricalng.com, which serves nothing but a CentOS-WebPanel default 'HTTP Server Test Page' placeholder (verified across https/http and www/non-www, all HTTP 200, zero LNG content) and presents a TLS certificate issued for an UNRELATED domain (CN=mail.pharmacy2home.com). It FAILS url_verifier (HTTP 000). All concrete SAL/FEGASUS detail in circulation appears to originate from this non-functional site or from GEM-derived text, so there is currently no independent, verifiable basis to add an SAL terminal. Did NOT stage a new_terminal and did NOT cite the site.",
+    "severity": "low",
+    "suggested_action": "Treat Source Africa LNG as monitor-only (see kenya.disc.monitor.json) until a functioning sponsor site or an independent trade-press / SEZ-Authority primary source appears. If a future batch is tempted to cite sourceafricalng.com, block it — placeholder page, mismatched cert, fails the verification gate.",
+    "researcher_initials": "AI-draft (reverify 2026-06-04)"
+  },
+  {
+    "category": "coverage_context",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Dongo Kundu LNG-to-power (KenGen) — receiving infrastructure",
+    "issue": "Kenya's most concrete current LNG-demand driver is the KenGen-led 1,200 MW Dongo Kundu LNG-to-power plant (USD2.9bn; National Treasury PPP unit seeking transaction advisers as of Mar 2026; viability testing reported underway Apr 2026 per Construction Review Online). It is tracked in GEM's POWER tracker, correctly OUTSIDE the LNG-terminals tracker. Its 'associated LNG import handling facilities' are referenced but undefined (no FSRU/vessel, no onshore-vs-floating decision, no capacity for a receiving terminal); a 600 km gas pipeline from Tanzania is also cited as an alternative supply route. This is the same demand-side rationale already captured by GEM's Mombasa LNG Terminal 'Second Proposal' (AMACO, 6.2 mtpa, LatestPlannedStartYear=2027) — NOT a separate LNG import terminal at this time.",
+    "severity": "low",
+    "suggested_action": "No discovery action. When KenGen/PPP procurement defines the LNG-receiving facility (FSRU charter, onshore regas EPC, or a named import terminal distinct from the Mombasa LNG Terminal proposal), evaluate then for a new_terminal/new_unit or an Update to T100000130254. fetch_timeline is down, so no timeline edit attempted.",
+    "researcher_initials": "AI-draft (reverify 2026-06-04)"
+  }
+]

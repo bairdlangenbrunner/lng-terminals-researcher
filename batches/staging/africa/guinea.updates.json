@@ -9,15 +9,14 @@
     "old_value": "proposed",
     "new_value": "proposed",
     "confidence": "blue",
-    "source_tier": "sponsor PR + regulator + trade press (independent corroboration)",
+    "source_tier": "company / trade press",
     "ref_field": "Status [ref]",
     "ref_urls": [
-      "https://www.prnewswire.com/news-releases/west-africa-lng-group-highlights-strategic-progress-on-guinea-lng-project-at-powering-africa-summit-302734402.html",
-      "https://www.offshore-energy.biz/walng-secures-funding-for-lng-import-terminal-in-guinea/",
-      "https://www.ustda.gov/ustda-supports-lng-importation-and-distribution-in-guinea/"
+      "https://www.prnewswire.co.uk/news-releases/west-africa-lng-group-highlights-strategic-progress-on-guinea-lng-project-at-powering-africa-summit-302734402.html",
+      "https://invest-africa-energy.com/news/guinea-conakry-energy-minister-bring-frontier-oil-power-opportunities-iae-2026"
     ],
-    "source_notes": "Status 'proposed' is a GEM lifecycle enum and does not appear verbatim in external sources; corroborated instead by independent off-GEM evidence that the project remains pre-FID / in development with no construction start. Three independent non-GEM publishers agree: (1) WALNG press release via PRNewswire (2026-04-07, post-dates GEM LastUpdated 2025-06-25) reports the Guinea LNG / Kamsar project is 'advancing through key development milestones' and WALNG 'continues to engage with U.S. government agencies, development finance institutions, and private investors as it progresses toward final development and financing stages' — no FID, financial close, or construction start. (2) Offshore Energy (2022-08-23) describes WALNG as 'in active discussions with several strategic and financial investors as well as potential offtake customers' and finalizing offtake agreements — pre-financial-close. (3) USTDA (2019-09-04) describes a grant for a feasibility study to assess viability of the LNG receiving terminal — early-stage. No gem.wiki/globalenergymonitor.org sources used. All three URLs PASS url_verifier.py on project-identifying tokens (Kamsar / Guinea / Guinea LNG); the literal enum 'proposed' is not token-matchable on any independent page by nature of the field. Status correctly remains 'proposed' for both units; no field value changes.",
-    "scope_note": "Project-level status confirmed unchanged for the whole project; recording one representative blue cell (Export unit) rather than every field per standard-tier guidance.",
-    "researcher_initials": "AI-draft (sweep; reverified)"
+    "source_notes": "Blue re-verify: project remains an ACTIVE proposal, not inferred-shelved despite the 2023 planned start slipping — WALNG press release (2026-04-07, PRNewswire, verified) says the Guinea LNG Project is 'progressing toward final development and financing stages'; IAE 2026 coverage (Mar 2026, invest-africa-energy.com, verified) describes the Kamsar terminal as supporting 'both import and export operations'. Two independent publishers. No construction start reported; no field values differ from GEM. Applies to both units (G100002105001, G100002105000).",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
   }
 ]

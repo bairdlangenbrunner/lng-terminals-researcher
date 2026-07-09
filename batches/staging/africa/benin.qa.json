@@ -1,32 +1,22 @@
 [
   {
-    "category": "data_quality",
+    "category": "blank_ref_unfillable",
     "terminal_id": "T100000130668",
     "unit_id": "G100002066800",
     "terminal_name": "Benin FSRU",
-    "issue": "gem.wiki/Benin_FSRU has broken citations: reference #1 (TotalEnergies press release) renders with a missing title, and reference #3 throws 'Invalid <ref> tag; no text was provided'. Underlying source URL is live and correct; the wiki markup is malformed. Does not affect the GEM DB record, only the public wiki rendering.",
+    "issue": "Blank-ref targets Status [ref], ShelvedYear [ref], CancelledYear [ref], StopYear [ref] could not be filled. Status 'cancelled', ShelvedYear 2021, CancelledYear/StopYear 2024 are GEM inferences (ShelvedCancelledStatusType='inferred', Substatus 'inferred 4 y', researcher note 'Changed status to cancelled; no updates in 4 years'), not externally published facts. July 2026 searches (TotalEnergies newsroom, Jeune Afrique, Agence Ecofin, Riviera, Maritime Executive, worldoil, French-language press) found no source stating the TotalEnergies Benin FSRU / Maria Gleta supply project was shelved or cancelled — public record simply ends with the 2019 agreements and the missed 2021 start. No revival activity found either (Lloyds Energy's June 2026 'strategic evaluation' PR names only 'selected African markets', no Benin commitment).",
     "severity": "low",
-    "suggested_action": "Fix the malformed <ref> tags on the Benin_FSRU wiki page (re-add the press-release title and the empty named-ref body).",
+    "suggested_action": "Leave the four [ref] cells blank; the inactivity-inference basis belongs in ResearcherNotesUnit, not a [ref] URL.",
     "researcher_initials": "AI-draft"
   },
   {
-    "category": "status_timeline",
-    "terminal_id": "T100000130668",
-    "unit_id": "G100002066800",
-    "terminal_name": "Benin FSRU",
-    "issue": "Standard-tier dev-pipeline/dormancy confirm: Benin FSRU (Total) remains cancelled — no revival or new milestone found in 2024-2026 search; GEM's inferred cancelled/2024 is corroborated by continued silence. No status change to stage (no source for a different status; fetch_timeline endpoint is down regardless).",
-    "severity": "low",
-    "suggested_action": "No action — confirms current 'cancelled' status; blank-ref fills staged separately.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "status_timeline",
+    "category": "blank_ref_unfillable",
     "terminal_id": "T100000130246",
     "unit_id": "G100002024600",
     "terminal_name": "Cotonou FSRU",
-    "issue": "Standard-tier dev-pipeline/dormancy confirm: Cotonou FSRU (Gasol/SOCAR) remains cancelled — Gasol-SOCAR project never advanced past the 2012 alliance; no revival found. GEM's inferred cancelled/2019 corroborated.",
+    "issue": "Blank-ref targets Status [ref], ShelvedYear [ref], CancelledYear [ref], StopYear [ref] could not be filled. Status 'cancelled', ShelvedYear 2017, CancelledYear/StopYear 2019 are GEM inferences (ShelvedCancelledStatusType='inferred'); the Gasol/SOCAR Cotonou project's public record ends around 2015 (dredging-contract era) and July 2026 searches found no source explicitly stating cancellation or naming 2017/2019. No revival signals for the site.",
     "severity": "low",
-    "suggested_action": "No action — confirms current 'cancelled' status; blank-ref fills staged separately.",
+    "suggested_action": "Leave the four [ref] cells blank; document the inactivity inference in ResearcherNotesUnit if a basis is needed.",
     "researcher_initials": "AI-draft"
   }
 ]

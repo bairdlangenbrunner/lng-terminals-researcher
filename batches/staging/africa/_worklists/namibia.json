@@ -1,0 +1,116 @@
+{
+ "country": "Namibia",
+ "slug": "namibia",
+ "tier": "standard",
+ "gem_rows": [
+  {
+   "terminal_id": "T100000130622",
+   "unit_id": "G100002062201",
+   "terminal": "Walvis Bay LNG Terminal",
+   "unit": "Export Terminal",
+   "status": "cancelled",
+   "facility_type": "export",
+   "last_updated": "2025-06-27"
+  },
+  {
+   "terminal_id": "T100000130622",
+   "unit_id": "G100002062200",
+   "terminal": "Walvis Bay LNG Terminal",
+   "unit": "Import Terminal",
+   "status": "cancelled",
+   "facility_type": "import",
+   "last_updated": "2025-06-27"
+  }
+ ],
+ "dev_pipeline": [],
+ "stale_flags": [],
+ "blank_refs": [
+  {
+   "terminal_id": "T100000130622",
+   "unit_id": "G100002062201",
+   "terminal_name": "Walvis Bay LNG Terminal",
+   "unit_name": "Export Terminal",
+   "country": "Namibia",
+   "status": "cancelled",
+   "gap_type": "blank_ref",
+   "column": "Status [ref]",
+   "severity": "medium",
+   "detail": "Status populated but Status [ref] blank — [ref]-fill target"
+  },
+  {
+   "terminal_id": "T100000130622",
+   "unit_id": "G100002062201",
+   "terminal_name": "Walvis Bay LNG Terminal",
+   "unit_name": "Export Terminal",
+   "country": "Namibia",
+   "status": "cancelled",
+   "gap_type": "blank_ref",
+   "column": "CancelledYear [ref]",
+   "severity": "low",
+   "detail": "CancelledYear populated but CancelledYear [ref] blank — [ref]-fill target"
+  },
+  {
+   "terminal_id": "T100000130622",
+   "unit_id": "G100002062201",
+   "terminal_name": "Walvis Bay LNG Terminal",
+   "unit_name": "Export Terminal",
+   "country": "Namibia",
+   "status": "cancelled",
+   "gap_type": "blank_ref",
+   "column": "StopYear [ref]",
+   "severity": "low",
+   "detail": "StopYear populated but StopYear [ref] blank — [ref]-fill target"
+  }
+ ],
+ "other_gaps": [
+  {
+   "terminal_id": "T100000130622",
+   "unit_id": "G100002062201",
+   "terminal_name": "Walvis Bay LNG Terminal",
+   "unit_name": "Export Terminal",
+   "country": "Namibia",
+   "status": "cancelled",
+   "gap_type": "missing_field",
+   "column": "FloatingVesselName",
+   "severity": "medium",
+   "detail": "cancelled unit missing required field 'FloatingVesselName'"
+  },
+  {
+   "terminal_id": "T100000130622",
+   "unit_id": "G100002062201",
+   "terminal_name": "Walvis Bay LNG Terminal",
+   "unit_name": "Export Terminal",
+   "country": "Namibia",
+   "status": "cancelled",
+   "gap_type": "orphan_ref",
+   "column": "StartDate [ref]",
+   "severity": "medium",
+   "detail": "StartDate [ref] filled but ActualStartYear/ActualStartMonth/ActualStartYear2/ActualStartYear3 blank — Rule F violation"
+  },
+  {
+   "terminal_id": "T100000130622",
+   "unit_id": "G100002062200",
+   "terminal_name": "Walvis Bay LNG Terminal",
+   "unit_name": "Import Terminal",
+   "country": "Namibia",
+   "status": "cancelled",
+   "gap_type": "orphan_ref",
+   "column": "StartDate [ref]",
+   "severity": "medium",
+   "detail": "StartDate [ref] filled but ActualStartYear/ActualStartMonth/ActualStartYear2/ActualStartYear3 blank — Rule F violation"
+  }
+ ],
+ "dormant_revival_watch": [
+  {
+   "terminal_id": "T100000130622",
+   "terminal_name": "Walvis Bay LNG Terminal",
+   "country": "Namibia",
+   "location": "Erongo — Walvis Bay",
+   "prior_owner": "Excelerate Energy LP [100%]",
+   "death_status": "cancelled",
+   "death_year": 2024,
+   "years_dead": 2,
+   "revival_priority": "normal"
+  }
+ ]
+}

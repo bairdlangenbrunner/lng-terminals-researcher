@@ -1,0 +1,32 @@
+[
+  {
+    "category": "link_rot",
+    "terminal_id": "T100000130691",
+    "unit_id": "G100002069100",
+    "terminal_name": "Sudan Red Sea LNG Terminal",
+    "issue": "Existing citation https://sofregaz.fr/projects-archive/red-sea-lng-import-terminal-sudan/ (currently cited for FacilityType [ref], Owner [ref], ProposalDate [ref], Location [ref]) now returns HTTP 404 — link rot. Sofregaz removed the project from its archive.",
+    "severity": "medium",
+    "suggested_action": "Replace the four FacilityType/Owner/ProposalDate/Location refs that point to the dead Sofregaz URL with live sources: Industrial Info brief (https://www.industrialinfo.com/news/article.jsp?newsitemID=265450) for facility type/developer/proposal-era detail, and sunagas.com (https://sunagas.com/) for owner/developer. Out of the blank-ref worklist scope but worth a follow-on fix.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "anchor_year_invariant",
+    "terminal_id": "T100000130691",
+    "unit_id": "G100002069100",
+    "terminal_name": "Sudan Red Sea LNG Terminal",
+    "issue": "StopYear is populated (2026) on a project that was cancelled and never reached operating status. Per lifecycle_rules.md, StopYear applies to idled/mothballed/retired (operation actually stopped); a never-operating cancelled project should have CancelledYear but not StopYear. StopYear=2026 == CancelledYear=2026 suggests a data-entry artifact mirroring CancelledYear.",
+    "severity": "low",
+    "suggested_action": "Review whether StopYear should be cleared for this cancelled-never-operated unit. The blank-ref worklist asked to fill StopYear [ref]; the ref has been staged (Industrial Info anchor) to satisfy no-orphan-ref, but the underlying StopYear value itself is questionable.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130691",
+    "unit_id": "G100002069100",
+    "terminal_name": "Sudan Red Sea LNG Terminal",
+    "issue": "Current status cancelled (Substatus 'inferred 4 y', ShelvedCancelledStatusType 'inferred') is well-supported: last concrete activity 2018, no progress since, no revival, civil war since Apr 2023. No status CHANGE recommended — this is a no-change confirmation that the inferred-cancelled status is correct as of 2026-06. Recorded as a qa note per the rule that status matters route to qa, not a staged Status edit (fetch_timeline endpoint is down).",
+    "severity": "low",
+    "suggested_action": "No action: status verified current/correct. The ref-fill updates supply the missing Status/Shelved/Cancelled/Stop [ref] citations.",
+    "researcher_initials": "AI-draft"
+  }
+]

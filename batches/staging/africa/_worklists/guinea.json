@@ -1,0 +1,99 @@
+{
+ "country": "Guinea",
+ "slug": "guinea",
+ "tier": "standard",
+ "gem_rows": [
+  {
+   "terminal_id": "T100000131050",
+   "unit_id": "G100002105001",
+   "terminal": "Guinea LNG Terminal",
+   "unit": "Export Terminal",
+   "status": "proposed",
+   "facility_type": "export",
+   "last_updated": "2025-06-25"
+  },
+  {
+   "terminal_id": "T100000131050",
+   "unit_id": "G100002105000",
+   "terminal": "Guinea LNG Terminal",
+   "unit": "Import Terminal",
+   "status": "proposed",
+   "facility_type": "import",
+   "last_updated": "2025-06-25"
+  }
+ ],
+ "dev_pipeline": [
+  {
+   "terminal_id": "T100000131050",
+   "unit_id": "G100002105001",
+   "terminal_name": "Guinea LNG Terminal",
+   "unit_name": "Export Terminal",
+   "country": "Guinea",
+   "status": "proposed",
+   "substatus": "",
+   "last_updated": "2025-06-25",
+   "months_since_update": 12.2,
+   "recently_updated": false
+  },
+  {
+   "terminal_id": "T100000131050",
+   "unit_id": "G100002105000",
+   "terminal_name": "Guinea LNG Terminal",
+   "unit_name": "Import Terminal",
+   "country": "Guinea",
+   "status": "proposed",
+   "substatus": "",
+   "last_updated": "2025-06-25",
+   "months_since_update": 12.2,
+   "recently_updated": false
+  }
+ ],
+ "stale_flags": [
+  {
+   "terminal_id": "T100000131050",
+   "unit_id": "G100002105001",
+   "terminal_name": "Guinea LNG Terminal",
+   "unit_name": "Export Terminal",
+   "country": "Guinea",
+   "status": "proposed",
+   "substatus": "",
+   "last_updated": "2025-06-25",
+   "flags": [
+    {
+     "flag": "planned_start_slipped",
+     "severity": "medium",
+     "planned_year": 2023,
+     "reason": "proposed with LatestPlannedStartYear=2023, now 3 years past planned start"
+    }
+   ]
+  }
+ ],
+ "blank_refs": [],
+ "other_gaps": [
+  {
+   "terminal_id": "T100000131050",
+   "unit_id": "G100002105001",
+   "terminal_name": "Guinea LNG Terminal",
+   "unit_name": "Export Terminal",
+   "country": "Guinea",
+   "status": "proposed",
+   "gap_type": "orphan_ref",
+   "column": "StartDate [ref]",
+   "severity": "medium",
+   "detail": "StartDate [ref] filled but ActualStartYear/ActualStartMonth/ActualStartYear2/ActualStartYear3 blank — Rule F violation"
+  },
+  {
+   "terminal_id": "T100000131050",
+   "unit_id": "G100002105000",
+   "terminal_name": "Guinea LNG Terminal",
+   "unit_name": "Import Terminal",
+   "country": "Guinea",
+   "status": "proposed",
+   "gap_type": "orphan_ref",
+   "column": "StartDate [ref]",
+   "severity": "medium",
+   "detail": "StartDate [ref] filled but ActualStartYear/ActualStartMonth/ActualStartYear2/ActualStartYear3 blank — Rule F violation"
+  }
+ ],
+ "dormant_revival_watch": []
+}

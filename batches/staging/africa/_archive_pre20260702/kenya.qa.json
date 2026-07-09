@@ -1,0 +1,22 @@
+[
+  {
+    "category": "data_gap",
+    "terminal_id": "T100000130254",
+    "unit_id": "G100002025400",
+    "terminal_name": "Mombasa LNG Terminal",
+    "issue": "Blank-ref targets Status [ref], ShelvedYear [ref], StopYear [ref] on the Original Proposal (status=shelved, ShelvedYear=StopYear=2024) cannot be filled with a primary source: the shelving is a GEM editorial INFERENCE (Substatus='inferred 2 y', ShelvedCancelledStatusType='inferred', '~no updates in over two years'), not a sourced event. No press release, regulator notice, or news article states the project was shelved/stopped in 2024 — independent web search returns only the AMACO Second-Proposal coverage and trade-press feasibility reporting, none of which document a shelving/stop event for the Original Proposal. The only artifact carrying the shelving rationale is GEM's own record, which is circular as a [ref] and cannot be cited. Did NOT fabricate or stage a weak/circular ref-fill.",
+    "severity": "low",
+    "suggested_action": "Leave the three [ref] cells blank by convention for inferred shelved/stop statuses (no independent primary source exists to cite). Do NOT backfill these with the GEM record itself (anti-circularity). No staged ref-fill provided.",
+    "researcher_initials": "AI-draft (reverify 2026-06-04)"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130254",
+    "unit_id": "G100001054956",
+    "terminal_name": "Mombasa LNG Terminal",
+    "issue": "Second Proposal (AMACO) LatestPlannedStartYear=2027 is increasingly unlikely: as of 2026-06 the project is still at feasibility/permitting/business-assignment stage with no FID, tender, or construction (per AMACO's own project page and independent trade press). No verified differing planned-start year to stage (sponsor has not published a revised date), so no field edit made; flagging the slippage risk only.",
+    "severity": "low",
+    "suggested_action": "Monitor for a revised planned-start date from AMACO/sponsor; if 2027 passes with no progression, the unit trends toward stale/shelved at the next batch. fetch_timeline endpoint is down, so no timeline edit attempted.",
+    "researcher_initials": "AI-draft (reverify 2026-06-04)"
+  }
+]

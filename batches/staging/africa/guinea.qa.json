@@ -1,22 +1,12 @@
 [
   {
-    "category": "status_timeline",
+    "category": "stale_start_year",
     "terminal_id": "T100000131050",
     "unit_id": "G100002105001",
     "terminal_name": "Guinea LNG Terminal",
-    "issue": "LatestPlannedStartYear is lapsed and stale with no verified replacement COD. Export unit LatestPlannedStartYear=2023 (3 years past); Import unit LatestPlannedStartYear=2025 (now in the past). The freshest sourcing (WALNG press release 2026-04-07, after GEM LastUpdated 2025-06-25) describes the project as still in development advancing toward final development and financing stages with no FID and no construction start, and gives NO new firm first-gas/COD year. No verified replacement start year is publicly available, so no LatestPlannedStartYear field edit was staged (would be a guess). Routed to QA per the status-timeline rule (fetch_timeline endpoint is down).",
-    "severity": "low",
-    "suggested_action": "Leave Status='proposed' (confirmed current). Do not bump LatestPlannedStartYear without a sourced COD. Watch WALNG / AfricaGlobal Schaffer IR for an FID or a restated commercial-operations year; if a firm new year is published, stage a LatestPlannedStartYear update (both units) in a follow-on Update batch. Optionally note in researcher_notes that the original 2023/2025 targets have lapsed pending financing.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "no_change_verified",
-    "terminal_id": "T100000131050",
-    "unit_id": "G100002105000",
-    "terminal_name": "Guinea LNG Terminal",
-    "issue": "Standard-tier re-verification of the Guinea LNG Terminal (both units, proposed, Kamsar/Boke). Owner=West Africa LNG Group [100%], Parent=AfricaGlobal Schaffer, Operator=WALNG, cost ~US$300M (import terminal; ~US$3bn full program incl. 1,800 MW gas power), import+export (Phase 1 import / Phase 2 liquefaction-export), location Kamsar/Boke — all consistent with current sources (sponsor AfricaGlobal project page and WALNG 2026-04-07 release). No verified value differs from GEM; no field edits warranted beyond the single representative blue re-verify of Status. Capacity (mtpa) remains blank in GEM and no nameplate mtpa figure was found in public sources (only the 1,800-1,900 MW downstream power figure, which is not terminal nameplate capacity).",
-    "severity": "low",
-    "suggested_action": "No action. Country is verified current as of 2026-06 sweep. If a terminal nameplate capacity (mtpa/Bcf) is ever disclosed by the sponsor, capture it in a future batch; the MW power-plant figure must not be entered as terminal capacity.",
+    "issue": "Stale flag check (export unit, LatestPlannedStartYear=2023, now 3 years past): NOT an inferred-shelved candidate — sponsor WALNG was actively promoting the project as of 2026-04-07 (Powering Africa Summit PR, PRNewswire, url_verifier PASS: 'progressing toward final development and financing stages') and Guinea's energy ministry was marketing the Kamsar import+export terminal at IAE 2026 (Mar 2026, invest-africa-energy.com, url_verifier PASS). However the project is still pre-financing ~7 years after 2019 proposal; no new planned start date has been published.",
+    "severity": "medium",
+    "suggested_action": "Keep Status=proposed. Update LatestPlannedStartYear (export unit still shows 2023, import unit 2025) only when a sourced new target date appears — none found this sweep; recheck after financing close.",
     "researcher_initials": "AI-draft"
   }
 ]

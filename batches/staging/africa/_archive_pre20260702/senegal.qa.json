@@ -1,0 +1,32 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000131049",
+    "unit_id": "G100002104900",
+    "terminal_name": "Karmol Dakar FSRU",
+    "issue": "GEM status = construction/actual (LastUpdated 2025-06-30), but the FSRU appears to have entered commercial operation. The Karmol Dakar FSRU received its first LNG cargo in May 2025 and began transferring regasified LNG to Karpowership's KPS 10, achieving power generation, on 29 Apr 2025; by mid-July 2025 the LNG-to-power project was reported 'up and running' and supplying Senegal's grid (Offshore Energy, 16 Jul 2025, VERIFIED PASS). GEM's own ResearcherNotesUnit anticipated this ('Full commissioning may be complete before 2025 update cycle is over, first LNG cargo was received in May.'). Status likely construction -> operating, start year 2025.",
+    "severity": "high",
+    "suggested_action": "Verify the operating/commissioning milestone and, if confirmed, update Status construction -> operating with a 2025 status-timeline entry and start year 2025 (and review LatestPlannedStartYear=2025 vs actual). Handled as a QA note (not a staged Status edit / timeline file) because the fetch_timeline endpoint is down this sweep. Source: https://www.offshore-energy.biz/four-years-in-the-making-africas-first-lng-to-power-project-up-and-running-off-senegal/",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ownership_change",
+    "terminal_id": "T100000131092",
+    "unit_id": "G100002109201",
+    "terminal_name": "Yakaar-Teranga LNG Hub",
+    "issue": "Operator/equity change in progress. GEM Owner = 'Kosmos Energy [90%]; Petrosen [10%]'. Kosmos Energy has withdrawn from the Yakaar-Teranga (Cayar offshore) block: a joint Kosmos+Petrosen withdrawal agreement was announced by PM Ousmane Sonko on 23 Apr 2026 with no financial compensation, and the license is to be reassigned EXCLUSIVELY to Petrosen, subject to validation by ministerial decree (Financial Afrik 24 Apr 2026; Xinhua 24 Apr 2026; Ecofin; Kosmos Energy's own 11 Dec 2025 statement: 'In the absence of a new partner, Kosmos will work with Petrosen to transfer the block back to the Senegalese state on or before the license expiry in July 2026.'). Petrosen now holds full responsibility for advancing the field (MSGBC, 4 May 2026). The current GEM Parent field is also malformed ('Kosmos Energy [90.0%]; Government of Senegal [99.0%]; unknown [1.0%]' sums >100%).",
+    "severity": "high",
+    "suggested_action": "Revisit Owner/Parent/Operator to reflect Kosmos's exit and Petrosen as sole/lead holder once the ministerial decree formalizing the reassignment is published (precise resulting equity split / any state-vehicle share not yet public, so not staged as a guessed equity edit). Also clean up the malformed Parent percentages. VERIFIED sources: https://www.financialafrik.com/en/2026/04/24/senegal-petrosen-to-exclusively-recover-the-license-of-the-yakaar-teranga-gas-block/ ; https://english.news.cn/africa/20260424/1f39f10ee35941feacd5d6f9cb0bb969/c.html ; https://www.kosmosenergy.com/spotlight/kosmos-energy-statement-on-yakaar-teranga/ ; https://www.ecofinagency.com/news-industry/2704-55052-senegal-regains-control-of-key-gas-block-after-kosmos-exit",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "fsru_sync",
+    "terminal_id": "T100000131049",
+    "unit_id": "G100002104900",
+    "terminal_name": "Karmol Dakar FSRU",
+    "issue": "FSRU vessel-name variant to reconcile (cross-project FSRU sync). GEM FloatingVesselName = 'Karmol LNGT Powership'. Start-up coverage (Offshore Energy, 16 Jul 2025) refers to the unit as 'LNGT Africa' / 'Karmol LNGT Powership Africa', and a separate Karpowership vessel 'KPS 10' is the powership receiving the regasified gas. Possible that 'Karmol LNGT Powership' (GEM) and 'LNGT Africa' name the same FSRU hull at different granularity, with 'KPS 10' being the linked powership rather than the FSRU.",
+    "severity": "low",
+    "suggested_action": "Confirm the FSRU's exact vessel name + IMO (and distinguish it from the KPS 10 powership) and align with the LNG carrier project's vessel record per the FSRU sync rule before adjusting FloatingVesselName. Left unchanged this sweep (ambiguous). Source: https://www.offshore-energy.biz/four-years-in-the-making-africas-first-lng-to-power-project-up-and-running-off-senegal/",
+    "researcher_initials": "AI-draft"
+  }
+]

@@ -1,22 +1,22 @@
 [
   {
-    "category": "status_timeline",
+    "category": "dormant_revival_watch",
     "terminal_id": "T100000130835",
     "unit_id": "G100002083500",
     "terminal_name": "Ivory Coast FSRU",
-    "issue": "Discovery sweep found no independent primary evidence of any progress on the Vridi/Abidjan FSRU since the last hard milestone: TotalEnergies' exit (May 2021) and the June 2021 CI-Energies FSRU operator tender. The Dec 2025 Côte d'Ivoire–Benin–Togo World Bank gas framework still treats regional LNG import as a pre-feasibility item (technical working group yet to be formed), implying no operating Abidjan import terminal exists. GEM currently carries Status=shelved / Substatus='inferred 2 y'; trade-press characterizes the project as 'presumed cancelled as of 2025'. The shelved status looks correct, but the inferred-2y substatus and the anchor year may warrant refresh, and a Cancelled determination could be considered if no revival surfaces. (Could also be subsumed if the trilateral pooled-import hub revives this site — see monitor item.)",
-    "severity": "low",
-    "suggested_action": "Route to an Update batch to re-verify lifecycle: confirm shelved vs cancelled and refresh the substatus/anchor year. fetch_timeline.py is DOWN this batch, so no timeline edit staged. Anchor on primary milestones (TotalEnergies operator PR 2018; TotalEnergies exit May 2021; CI-Energies tender June 2021) rather than the GEM-derived 'presumed cancelled' phrasing. Verified anchor source: https://totalenergies.com/media/news/press-releases/ivory-coast-total-becomes-operator-lng-terminal-project",
+    "issue": "Revival-watch signal, not a restart: on 8 December 2025 Côte d'Ivoire, Benin and Togo signed a regional gas-coordination declaration (pooled LNG imports; technical working group; World Bank-assisted bankable structure), and the World Bank-backed PRIME-GAS program (feasibility/SESA phase, 2026) develops a regional LNG-import supply chain in which Abidjan is a natural import node. No concrete restart of the shelved Abidjan FSRU found through Jul 2026 — no new tender since CI-Energies' June 2021 tender, no sponsor, no vessel charter. Eni's Baleine/Calao development is domestic pipeline gas with no marine LNG terminal component (upstream-operator sweep clean).",
+    "severity": "medium",
+    "suggested_action": "Keep status shelved. If PRIME-GAS matures into a concrete Abidjan FSRU: same fundamentals (CI-Energies/state-led import FSRU at Port of Abidjan) would be a revival routed to Update; a materially different sponsor/design would be a NEW terminal with AssociatedTerminals -> T100000130835. Lead URLs verified: https://www.togofirst.com/en/energy/0812-17753-cote-d-ivoire-benin-togo-agree-on-regional-gas-coordination-mechanism (token 'liquefied natural gas', PASS); https://www.ecofinagency.com/news/0905-55424-togo-advances-prime-gas-plan-to-connect-regional-gas-markets (token 'LNG reception and storage infrastructure at the port of', PASS).",
     "researcher_initials": "AI-draft (discovery sweep)"
   },
   {
-    "category": "out_of_scope_confirmation",
+    "category": "discovery_coverage",
     "terminal_id": "",
     "unit_id": "",
-    "terminal_name": "Eni Baleine field Phase 3 (offshore Côte d'Ivoire)",
-    "issue": "Checked as a possible LNG lead and confirmed OUT OF SCOPE for the terminals tracker. Eni + Petroci + Vitol approved FID for Baleine Phase 3 on 25 May 2026 (~US$4bn; ~150,000 bbl/d oil and ~200 MMcf/d gas via a new FPSO). All Baleine gas (Phases 1–3) is allocated to the DOMESTIC market for power generation — there is no liquefaction, no LNG export terminal, and no LNG import terminal associated with it. It is an upstream oil-and-gas FPSO development, not an LNG terminal. Recorded so a future sweep does not re-investigate Baleine as an LNG-terminal candidate.",
+    "terminal_name": "Côte d'Ivoire (country-level)",
+    "issue": "Discovery sweep Jul 2026: no missing terminal found. gem.wiki coverage cross-check clean — only CI LNG-terminal page found (Ivory Coast FSRU) and it has a CSV row.",
     "severity": "low",
-    "suggested_action": "No GEM LNG-terminal action. Do not stage as a terminal. Verified source: https://www.eni.com/en-IT/media/press-release/2026/05/eni-and-partners-approve-investment-for-baleine-phase-3-in-c-te-d-ivoire.html",
+    "suggested_action": "None.",
     "researcher_initials": "AI-draft (discovery sweep)"
   }
 ]

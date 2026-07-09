@@ -1,0 +1,162 @@
+[
+  {
+    "category": "field_consistency",
+    "terminal_id": "T100000130323",
+    "unit_id": "G100001070375",
+    "terminal_name": "Thi Vai LNG Terminal",
+    "issue": "PlannedStopYear inconsistent across the 3 unit rows (FSRU row=2029, Phase 1/2 blank) - schema treats PlannedStopYear as project-level (98% consistent). The 2029 is the END of the FSRU's 2026-2029 deployment/charter window (offshore-energy.biz + LNG Prime 144071), not a planned terminal closure.",
+    "severity": "medium",
+    "suggested_action": "Recommend BLANKING PlannedStopYear on the FSRU row: a PlannedStopYear on an import terminal implies planned shutdown, which no source supports; the 2026-2029 window is already documented in ResearcherNotesUnit. Alternative (if unit-level charter-end is intended) is to accept non-uniformity deliberately.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "capacity_peak_vs_nameplate",
+    "terminal_id": "T100000130323",
+    "unit_id": "G100002032300",
+    "terminal_name": "Thi Vai LNG Terminal",
+    "issue": "On 2026-04-02 PV Gas completed a regas capacity upgrade at Thi Vai: send-out raised from 171 t/h to 288 t/h (~9.5 million m3/d), DNV-verified, explicitly 'beyond original design specifications' (lngindustry.com 2026-04-09; theinvestor.vn d18819, both PASS '288').",
+    "severity": "low",
+    "suggested_action": "Do NOT bump the 1.0 mtpa nameplate - this is peak/optimized throughput per the peak-vs-nameplate rule. Wiki text staged. Nameplate change should wait for the Phase 2 expansion (to 3 mtpa total) completing.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "orphan_ref_resolution",
+    "terminal_id": "T100000130323",
+    "unit_id": "G100001070375",
+    "terminal_name": "Thi Vai LNG Terminal",
+    "issue": "FSRU unit flagged for orphan StartDate [ref]: ActualStartYear is blank but Original/LatestPlannedStartYear=2026 are populated and the refs (offshore-energy.biz; LNG Prime 144071 appended) explicitly support the 2026-2029 planned deployment window.",
+    "severity": "low",
+    "suggested_action": "No action - ref correctly pairs with the planned start years. Note: no FSRU vessel has been chartered/named as of Jul 2026; 2026 start likely to slip but no revised date published - keep on watch next batch.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "orphan_ref_resolution",
+    "terminal_id": "T100000130323",
+    "unit_id": "G100002032301",
+    "terminal_name": "Thi Vai LNG Terminal",
+    "issue": "Phase 2 flagged for orphan StartDate [ref]: planned years (2023 original / 2029 latest) are populated; existing refs (pvgas.com.vn pages, KBSV PDF) re-verified live (PASS 'Thi Vai'). Could not text-verify the literal '2029' on those pages; EPC award was expected late 2025 (LNG Prime 139996) so 2029 completion remains plausible.",
+    "severity": "low",
+    "suggested_action": "No structural action. If reviewer wants tighter support for 2029, watch for the EPC award announcement (expected from late 2025) which should carry a completion date.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "url_verification",
+    "terminal_id": "T100000130323",
+    "unit_id": "G100002032300",
+    "terminal_name": "Thi Vai LNG Terminal",
+    "issue": "Exhaustive URL re-verify results, Phase 1: (a) Financing ref enpc.hal.science bot-blocked by Anubis - 'Taipei Fubon' VERIFIED on Wayback (web/2023), keep; (b) Capacity ref marketscreener.com HTTP 403 bot-block - '1 million' VERIFIED on Wayback (web/2023), kept + GIIGNL 2026 appended; (c) Tokyo Gas 2012 ProposalDate PDF loads but does not name 'Thi Vai' (MOU-era release naming only the Vietnam LNG project) - weak bind, acceptable; (d) spglobal PowerPlantsSupplied ref 403 with NO Wayback snapshot - replaced with PVN primary (staged).",
+    "severity": "low",
+    "suggested_action": "Bot-blocked-but-wayback-verified refs kept per convention; replacements staged in updates.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "timeline_conflict",
+    "terminal_id": "T100001057474",
+    "unit_id": "G100001065701",
+    "terminal_name": "Long An LNG Terminal",
+    "issue": "LatestPlannedStartYear=2030 kept but its (JOGMEC) source is dead and recent targets conflict: June 2028 for Long An I (theinvestor 2025-12-25, PASS 'June 2028' - restating the Apr-2024 provincial approval), 2029 (GS Energy statement, theinvestor d14857 Feb-2025, PASS '2029'), 2029-2030 (province, Aug 2024). power-technology profile (GlobalData) is bot-blocked (403). OriginalPlannedStartYear 2030->2025 staged (VIR 2021: 'December 2025').",
+    "severity": "medium",
+    "suggested_action": "Reviewer pick the latest-start year: 2029 (GS Energy's own most recent statement) is best supported; 2028 is the approved-plan date, 2030 the pessimistic bound. StartDate [ref] replacement staged cites VIR (original) + d14857 (2029).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "orphan_ref_resolution",
+    "terminal_id": "T100001057474",
+    "unit_id": "G100001065701",
+    "terminal_name": "Long An LNG Terminal",
+    "issue": "Orphan Location [ref] flag: ref is a Google Maps coordinates link pairing with populated Lat/Long + State/Province (Accuracy=approximate) - standard GEM coordinate-ref practice.",
+    "severity": "low",
+    "suggested_action": "No action.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ref_rot",
+    "terminal_id": "T100001057487",
+    "unit_id": "G100001065717",
+    "terminal_name": "Ca Mau LNG Terminal",
+    "issue": "FacilityType/Owner/Capacity refs all cite the JOGMEC dh2025 datahub URL which now 301-redirects to a restructured page WITHOUT Vietnam terminal content; the Wayback copy also lacks it (page was dynamic). Row was updated TODAY (2026-07-02) so no edits staged to avoid churn.",
+    "severity": "medium",
+    "suggested_action": "Flag to the user/researcher who edited today: replace the three JOGMEC refs. Candidate: theinvestor.vn d8889 'PV Gas, PV Power join hands to build LNG port, power plant' (not yet token-verified for the 1.0 mtpa figure).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "missing_field",
+    "terminal_id": "T100000131075",
+    "unit_id": "G100002107500",
+    "terminal_name": "Ben Tre FSRU",
+    "issue": "Owner and FloatingVesselName missing (flagged high in completeness sweep) - NOT FINDABLE: the Ben Tre FSRU never advanced past provincial/master-plan concept stage; no sponsor, JV, or vessel was ever named in searchable sources (project now cancelled, listed only as a PDP8 backup location).",
+    "severity": "low",
+    "suggested_action": "Leave blank; do not fabricate. Revisit only if the dormant-revival watch surfaces a new sponsor (that would be a NEW terminal record per SOP, not an edit here).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "missing_ref",
+    "terminal_id": "T100000131075",
+    "unit_id": "G100002107500",
+    "terminal_name": "Ben Tre FSRU",
+    "issue": "ShelvedYear=2023 has no [ref] - the 2023 shelving is inferred (4-year inactivity rule; ShelvedCancelledStatusType=inferred); no citable document exists for an inferred milestone.",
+    "severity": "low",
+    "suggested_action": "Accept blank ref for inferred years, or mirror the Status [ref] pair (vepg Decision 768 + Russin & Vecchi) staged in updates if a ref is preferred.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "scanned_pdf_ref",
+    "terminal_id": "T100000131075",
+    "unit_id": "G100002107500",
+    "terminal_name": "Ben Tre FSRU",
+    "issue": "Status/CancelledYear/StopYear ref (vepg.vn Decision 768/QD-TTg PDF) is a SCANNED image PDF - url_verifier cannot extract text, and the cancellation logically rests on Ben Tre's OMISSION from the revised PDP8 list (unverifiable by token in principle).",
+    "severity": "low",
+    "suggested_action": "Readable corroboration (Russin & Vecchi May-2025 analysis, 'Ben Tre' verified, backup-location listing) appended in staged updates. Consider also thuvienphapluat.vn text version of Decision 768 if a machine-readable government copy is wanted.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "missing_field",
+    "terminal_id": "T100000131074",
+    "unit_id": "G100002107400",
+    "terminal_name": "Tien Giang LNG Terminal",
+    "issue": "Owner missing (flagged high) - NOT FINDABLE: Gas Master Plan-era proposal (Oxford Energy NG-162 lists it without a sponsor); no developer ever attached. Blank Status/CancelledYear/StopYear refs: cancellation 2023 is inferred (4-y rule), no citable document exists; Russin & Vecchi PDP8 PDF does NOT mention Tien Giang (token FAIL). Orphan StartDate/Location refs resolve: Oxford PDF (PASS 'Tien Giang','2022') supports planned 2022 start and location.",
+    "severity": "low",
+    "suggested_action": "Leave Owner and the inferred-year refs blank; no edits staged beyond the blue re-verify.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "missing_field",
+    "terminal_id": "T100000130991",
+    "unit_id": "G100002099100",
+    "terminal_name": "South West FSRU",
+    "issue": "Owner and FloatingVesselName missing (flagged high) - NOT FINDABLE: the archived MOIT slide does not name an owner ('PV GAS' token FAIL) and no other source attaches a sponsor to this cancelled concept. Blank Status/CancelledYear/StopYear refs: 2023 cancellation inferred (4-y rule), no citable ref exists.",
+    "severity": "low",
+    "suggested_action": "Leave blank. Dormant-revival note: PV Gas's CURRENT FSRU plan (2025-2026 news) is at Vung Tau/Thi Vai - already tracked as the Thi Vai FSRU unit, not a revival of this Tra Vinh/South West concept.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ref_rot",
+    "terminal_id": "T100000130991",
+    "unit_id": "G100002099100",
+    "terminal_name": "South West FSRU",
+    "issue": "Capacity [ref] and Location [ref] still cite the 404 jccp.or.jp MOIT PDF: the Wayback copy verifies the project name and 2030 (StartDate/FacilityType swaps staged) but the 1-mtpa figure and Tra Vinh siting could not be text-verified (image tables/map in the slide deck).",
+    "severity": "medium",
+    "suggested_action": "Reviewer option: swap these two refs to the same Wayback URL accepting map/table-based support, or leave the dead URL with this note. No alternative source for this defunct concept was found.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "systematic",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "(all Vietnam rows)",
+    "issue": "Vietnam's July-2025 administrative reorganization merged provinces (34 remain): Bac Lieu->Ca Mau, Ben Tre & Tra Vinh->Vinh Long, Tien Giang->Dong Thap, Long An->Tay Ninh, Ba Ria-Vung Tau->Ho Chi Minh City. State/Province values on all 9 assigned rows predate the merger.",
+    "severity": "medium",
+    "suggested_action": "Do NOT edit row-by-row: this needs a coordinated, country-wide GEM decision on whether State/Province follows the new 34-province scheme. Escalate once at batch review.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130826",
+    "unit_id": "G100002082600",
+    "terminal_name": "Bac Lieu LNG Terminal",
+    "issue": "No status CHANGE (still proposed), but material milestone: principal grid-connection agreement with EVNNPT signed 2026-03-10; COD re-targeted to phased 2030. LatestPlannedStartYear 2027->2030 and ConstructionYear deletion staged in updates; fetch_timeline is down so no timeline rows touched.",
+    "severity": "low",
+    "suggested_action": "When the timeline endpoint returns, confirm no construction milestone was ever recorded for 2024.",
+    "researcher_initials": "AI-draft"
+  }
+]

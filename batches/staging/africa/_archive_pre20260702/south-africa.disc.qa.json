@@ -1,0 +1,22 @@
+[
+  {
+    "category": "coverage_gap",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Durban LNG Terminal (Vitol / ACWA Power / Engen)",
+    "issue": "USER-FLAGGED MISS (2026-06-24). The June africa discovery sweep failed to surface the proposed Durban LNG import terminal (Port of Durban; Vitol / ACWA Power / Engen consortium; FSRU under evaluation) to serve KwaZulu-Natal ahead of South Africa's gas-cliff supply gap. Staged this batch as a new_terminal (import, proposed). TWO ROOT CAUSES: (1) The terminal HAS a gem.wiki page (Durban_LNG_Terminal) but NO corresponding row in the GEM LNG export CSV -- so it was invisible to BOTH the CSV-dedup step (nothing to match) AND the web discovery step (gem.wiki is correctly excluded as a source, so the existing internal page never entered the candidate pool). A wiki page with no tracker row is a structural blind spot the web-only discovery method cannot see. (2) The South Africa trade-press sweep under-covered the Durban scheme as distinct from the better-known Richards Bay and Ngqura/Coega projects.",
+    "severity": "medium",
+    "suggested_action": "Review the staged south-africa.disc.newterminals.json record. Capacity left blank (trade-press ~400 mmscfd / ~1,000-1,800 MW figures risk conflation with Richards Bay -- confirm before fixing). Process fix added to Discovery SOP: a gem.wiki COVERAGE CROSS-CHECK is now a standing discovery step -- enumerate gem.wiki LNG-terminal pages for in-scope countries and reconcile against the export CSV so wiki-only terminals are caught (they are reconciled to a tracker row, NOT cited as a source).",
+    "researcher_initials": "AI-draft (discovery follow-up)"
+  },
+  {
+    "category": "disambiguation",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Durban LNG Terminal vs. Richards Bay / Ngqura",
+    "issue": "South Africa now has multiple distinct proposed LNG import schemes that are easy to conflate: (a) Richards Bay LNG (Transnet/TNPA, existing GEM rows), (b) Ngqura/Coega LNG (Port of Ngqura, existing GEM row T100001048121, Ukwanda LNG operator), and (c) the NEW Durban LNG terminal (Port of Durban, Vitol/ACWA Power/Engen) staged here. Capacity and power-MW figures in trade press are sometimes attributed loosely across these and must not be cross-applied.",
+    "severity": "low",
+    "suggested_action": "Keep the three projects as separate tracker entries; verify any capacity/power figure is specifically attributed to the Port of Durban scheme before staging a number on the Durban row.",
+    "researcher_initials": "AI-draft (discovery follow-up)"
+  }
+]

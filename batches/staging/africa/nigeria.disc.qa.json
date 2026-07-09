@@ -1,12 +1,72 @@
 [
   {
-    "category": "discovery_escalation",
+    "category": "wiki_coverage_gap_resolved_out_of_scope",
     "terminal_id": "",
     "unit_id": "",
-    "terminal_name": "Ajaokuta mini-LNG cluster (5 plants: Prime LNG, NGML/Gasnexus LNG, BUA LNG, Highland LNG, LNG Arete)",
-    "issue": "Five distinct small-scale (modular) domestic LNG liquefaction plants broke ground together at Ajaokuta, Kogi State on 2025-01-30/02-03 (NNPC + partners; combined ~97.5 mmscfd, ~$500m) and none are in GEM. This is a >5-candidate-cluster in one country (CLAUDE.md / Discovery SOP §12 systematic-gap trigger) AND raises a genuine methodology-scope question: does GEM track sub-MTPA modular domestic mini-LNG liquefaction plants, and if so as one terminal-per-plant or one Ajaokuta cluster terminal with five units? Staged to monitor_list rather than mass-generating new_terminal records.",
+    "terminal_name": "Greenville LNG Terminal (Rumuji, Rivers State)",
+    "issue": "gem.wiki coverage cross-check (Discovery SOP §4.0b): 'Greenville LNG Terminal' is the ONLY page in gem.wiki's 'LNG terminals in Nigeria' category, yet it has no GEM export-CSV row. Researched independently: Greenville Oil & Gas's Rumuji plant (3 trains, ~2,250 t/d, commissioned 2018) is a domestic virtual-pipeline operation — LNG is distributed 100% within Nigeria by a fleet of ~300 cryogenic trucks to inland customers; there is no marine LNG import or export. It therefore fails the scope gate (domestic-only trucking/virtual pipeline), so the missing CSV row is CORRECT and no new_terminal is staged. Company evidence verified: https://www.greenvillelng.com/who-we-are/ (tokens 'virtual pipeline', 'Rumuji' — PASS).",
+    "severity": "low",
+    "suggested_action": "No tracker addition needed. GEM staff may want to review whether the gem.wiki page's 'LNG terminals in Nigeria' categorization should be adjusted, since the facility is out of GGIT scope (domestic-only, no marine trade).",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "dormant_revival_check",
+    "terminal_id": "T100000130260",
+    "unit_id": "",
+    "terminal_name": "Brass LNG Terminal",
+    "issue": "Revival watch result: NNPC (an existing Brass LNG shareholder) said at Gastech in September 2024 it is in talks with investors to revive the ~$20bn Brass LNG project (alongside Olokola). This is investor talks by the SAME sponsor group at the same site with the same basic design — a potential true revival, not a new project; no different-sponsor activity found at the Twon-Brass site through July 2026. Sources verified: https://lngprime.com/africa/nigerias-nnpc-in-talks-to-revive-two-lng-projects/126432/ (tokens 'Brass', 'Olokola', 'revive' — PASS) and https://www.thisdaylive.com/2024/09/21/nnpc-in-talks-with-investors-for-revival-of-30bn-brass-olokola-lng-projects-2/ (tokens 'Brass', 'Olokola', 'NNPC' — PASS).",
     "severity": "medium",
-    "suggested_action": "Human scope decision before staging new_terminal rows: (1) confirm whether modular domestic mini-LNG plants are in GEM scope; (2) if yes, decide terminal granularity (5 terminals vs 1 cluster terminal + 5 units); (3) chase per-plant nameplate capacities (only NGML/Gasnexus disclosed: 20 mmscfd full / 7.5 mmscfd phase 1) and equity splits. Then route to an Update/add batch. Sources verified: lngprime.com, gasprocessingnews.com, pgjonline.com.",
+    "suggested_action": "Route to Update workflow: keep status shelved (talks are not a concrete restart), but the record's ResearcherNotes/timeline could note the Sept 2024 NNPC revival talks; also fills the blank Status [ref] flagged for this record.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "dormant_revival_check",
+    "terminal_id": "T100000130262",
+    "unit_id": "",
+    "terminal_name": "Olokola LNG Terminal",
+    "issue": "Revival watch result, two distinct threads at the Olokola site: (1) NNPC (existing sponsor) said in September 2024 it is in talks with investors to revive the ~$9.8bn OK LNG project — same-sponsor revival talks, Update material (sources verified, see Brass entry: lngprime.com 126432 and thisdaylive.com 2024/09/21, PASS). (2) Dangote Industries — a DIFFERENT sponsor — applied in June/July 2025 to build Nigeria's largest deep-sea seaport at Olokola explicitly to anchor LNG exports and revived the Olokola FTZ. The Dangote thread is tracked as a discovery monitor candidate ('Dangote LNG Export Project') pending a confirmed plant site and a plant-specific concrete step; if it firms up it should be staged as a NEW terminal with AssociatedTerminals -> T100000130262, not an edit to this record.",
+    "severity": "medium",
+    "suggested_action": "Update workflow: re-verify OK LNG status (proposed T1/T2 with LatestPlannedStartYear=2011 is already flagged stale); note the NNPC revival talks and the separate Dangote development at the site. Watch the monitor entry for the Dangote project.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "data_check",
+    "terminal_id": "T100000130262",
+    "unit_id": "",
+    "terminal_name": "Olokola LNG Terminal",
+    "issue": "Coordinates look wrong: GEM holds Latitude 5.0216670, Longitude 8.3202780, which plots near the Cross River/Akwa Ibom estuary (Oron/Calabar area, ~8.3°E) — roughly 400+ km east of Olokola. The Olokola FTZ site straddles the Ogun/Ondo coast in southwest Nigeria (approx. 6.2–6.4°N, 4.2–4.9°E, near Ode-Omi, Ogun Waterside LGA). Not staged as an edit from discovery (coordinate re-derivation belongs in Update with proper sourcing), but the current values appear internally inconsistent with the record's own Location field ('Ogun'/'Ondo').",
+    "severity": "medium",
+    "suggested_action": "Update workflow: re-derive and re-source Latitude/Longitude for the Olokola site (both unit rows T1–T4 share the project-level coords, so fix all rows).",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "update_lead_from_discovery",
+    "terminal_id": "T100000131168",
+    "unit_id": "G100002116801",
+    "terminal_name": "Ace Gas Nigeria FLNG Terminal",
+    "issue": "Discovery sweep surfaced a concrete milestone on this existing record (not a new terminal): Wison New Energies signed a FEED contract on 6 December 2024 for Ace Gas & FLNG's 3-mtpa FLNG, sited ~10 km offshore in ~20 m water depth within the Escravos–Forcados hub, processing up to 500 MMscf/d, with a 230 MW power barge; pre-FEED was completed in early 2024. Source verified: https://lngprime.com/africa/wison-secures-feed-for-nigerian-flng-project/136223/ (tokens 'Ace Gas', 'FEED', '3 mtpa' — PASS).",
+    "severity": "low",
+    "suggested_action": "Route to Update workflow: verify/stage capacity (3 mtpa), the FEED milestone, and location detail against a second independent source (Wison press release corroborates); record is 12 months stale.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "dormant_revival_check",
+    "terminal_id": "T100000130967",
+    "unit_id": "G100002096700",
+    "terminal_name": "Golar Lagos FSRU",
+    "issue": "Revival watch result: NEGATIVE. No new FSRU/regasification activity found at the Lagos site through July 2026 — no new sponsor, charter, or permit; Golar's Nigeria focus shifted to the FLNG project already tracked as Golar Nigeria FLNG Terminal (T100000131125). Cancelled status remains correct.",
+    "severity": "low",
+    "suggested_action": "None — record as checked in this sweep.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "dormant_revival_check",
+    "terminal_id": "T100000131170",
+    "unit_id": "G100002117001",
+    "terminal_name": "Riverside LNG Terminal",
+    "issue": "Revival watch result: no NEW project by a different sponsor at the Onne site. The activity found — the Johannes Schuetze Energy Import AG (Germany) MOU (Nov 2023) and talks on a first-ever Nigeria–South Africa gas supply deal (Dec 2023/Jan 2024, CEO David Ige; deliveries not before 2027) — is the same sponsor pursuing offtake for the same project, and pre-dates the 2025 shelving. No 2025–2026 development news found.",
+    "severity": "low",
+    "suggested_action": "None from discovery; Update workflow already has this record in the dev_pipeline (shelved, inferred) and can weigh whether the 2023–2024 offtake talks justify a status re-check.",
     "researcher_initials": "AI-draft (discovery sweep)"
   }
 ]

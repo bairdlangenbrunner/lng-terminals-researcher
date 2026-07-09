@@ -1,32 +1,22 @@
 [
   {
-    "category": "blank_ref",
+    "category": "status_timeline",
+    "terminal_id": "T100000131107",
+    "unit_id": "G100002110701",
+    "terminal_name": "Cap Lopez FLNG Terminal",
+    "issue": "Startup watch: Perenco/AEC press (2025) repeatedly said the $2bn Cap Lopez terminal is 'set to come online in 2026', while GEM holds LatestPlannedStartYear=2027. As of 2026-07 the FLNG barge (Bran6) integration in the UAE has no reported sail-away, and no commissioning/startup announcement was found — construction status stands, and the 2027 GEM start year looks at least as plausible as the 2026 press line. Real status movement (barge delivery to Gabon, first LNG) is likely within the next 6-12 months.",
+    "severity": "medium",
+    "suggested_action": "Re-check each pass for barge sail-away/arrival at Cap Lopez and first-cargo news; on confirmed startup route a status-timeline update (fetch_timeline endpoint down — nothing staged now). Reconcile LatestPlannedStartYear (2027) against any dated startup guidance found then.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
     "terminal_id": "T100000130909",
     "unit_id": "G100002090900",
     "terminal_name": "Boudji FLNG Terminal",
-    "issue": "Worklist targets four blank-ref fills (Status [ref], ShelvedYear [ref] 2022, CancelledYear [ref] 2024, StopYear [ref] 2024), but these values are GEM's own INFERENCE, not sourced facts: the row carries ShelvedCancelledStatusType='inferred' and Substatus='inferred 4 y'. Petronas never issued a formal shelving/cancellation announcement for the Boudji FLNG concept; every available source (incl. GEM.wiki's own narrative) frames it as 'presumed cancelled, no project updates in 4+ years' after the 2019 FLNG-option floor. No source states the 2022/2024 years or an explicit cancellation. The only verifiable Boudji-FLNG citation is the 2019 Upstream proposal article (https://www.upstreamonline.com/weekly/petronas-eyes-flng-as-boudji-option-off-gabon/2-1-583987, verified PASS), which supports the PROPOSAL, not the shelved/cancelled/stop status.",
+    "issue": "Transparency note for the four ref-fills staged this batch: the cancelled status rests entirely on GEM's inferred rule (no Petronas statement; last substantive FLNG coverage April 2019, single Upstream source). Petronas's reported divestment of African upstream assets supports the inference but is not explicit.",
     "severity": "low",
-    "suggested_action": "Do NOT fill the four blank [ref] cells: attaching the 2019 proposal article to inferred shelving/cancellation/stop years would be a mismatched/orphan ref (the source does not support those values). Recommend leaving the [ref] cells blank and relying on the existing ShelvedCancelledStatusType='inferred' flag, OR (reviewer's call) document the inference basis in a researcher_notes/Wiki line ('presumed cancelled; no Petronas updates since the 2019 FLNG option, 4+ y silence') rather than as a [ref] citation. These blank-ref targets are legitimately unfillable from primary/secondary sourcing.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "value_discrepancy",
-    "terminal_id": "T100000131107",
-    "unit_id": "G100002110701",
-    "terminal_name": "Cap Lopez FLNG Terminal",
-    "issue": "GEM Cost = USD 1,000,000,000 (CostYear 2023, sourced to the FID-era >$1bn figure and corroborated by LNG Prime: 'positive FID worth more than $1 billion'). Some 2025-2026 trade-conference/PR coverage (e.g. African Energy Week / APO Group press releases) headlines the project as a '$2 billion Cap Lopez LNG project'. The $2bn figure appears to be a single-source PR/promotional total of broader/expanded scope (possibly downstream/LPG or full-program) rather than the FLNG capex; sources are not independent (syndicated press release).",
-    "severity": "low",
-    "suggested_action": "Do NOT bump Cost to $2bn on the strength of conference PR. GEM's $1bn (FID-era, >$1bn) remains the better-supported nameplate capex. If a reviewer wants the higher figure on record, treat it as contested/yellow and pin down what scope the $2bn covers before editing; otherwise leave Cost unchanged.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "url_verifier_anomaly",
-    "terminal_id": "T100000131107",
-    "unit_id": "G100002110701",
-    "terminal_name": "Cap Lopez FLNG Terminal",
-    "issue": "url_verifier.py returns FAIL ('soft-error page, title: Page not found - Construction Review') for the existing GEM citation https://lngprime.com/europe/perenco-secures-fsu-for-gabon-lng-project/147209/ , which is used in Status [ref], ConstructionDate [ref], and FloatingVesselName [ref]. This is a FALSE POSITIVE: a manual WebFetch of the same URL returns the correct live article ('Perenco secures FSU for Gabon LNG project', LNG Bayelsa/Bran6, dates Nov 2024 / 12 Mar 2025 / 4 Apr 2025). The site appears to serve an anti-bot/interstitial 'Construction Review' page to the verifier's fetcher. The article is NOT rotted.",
-    "severity": "low",
-    "suggested_action": "Treat lngprime 147209 as a valid live citation; do not flag/remove it as link rot. If the workbook build re-verifies URLs and chokes on this one, whitelist or manually confirm it. Worth noting as a recurring lngprime.com interstitial pattern for url_verifier across the sweep.",
+    "suggested_action": "No status edit. Optionally document the inferred basis in researcher_notes.",
     "researcher_initials": "AI-draft"
   }
 ]
