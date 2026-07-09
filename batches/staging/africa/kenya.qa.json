@@ -1,22 +1,22 @@
 [
   {
-    "category": "data_gap",
+    "category": "ref_fill",
     "terminal_id": "T100000130254",
     "unit_id": "G100002025400",
     "terminal_name": "Mombasa LNG Terminal",
-    "issue": "Blank-ref targets Status [ref], ShelvedYear [ref], StopYear [ref] on the Original Proposal (status=shelved, ShelvedYear=StopYear=2024) cannot be filled with a primary source: the shelving is a GEM editorial INFERENCE (Substatus='inferred 2 y', ShelvedCancelledStatusType='inferred', '~no updates in over two years'), not a sourced event. No press release, regulator notice, or news article states the project was shelved/stopped in 2024 — independent web search returns only the AMACO Second-Proposal coverage and trade-press feasibility reporting, none of which document a shelving/stop event for the Original Proposal. The only artifact carrying the shelving rationale is GEM's own record, which is circular as a [ref] and cannot be cited. Did NOT fabricate or stage a weak/circular ref-fill.",
-    "severity": "low",
-    "suggested_action": "Leave the three [ref] cells blank by convention for inferred shelved/stop statuses (no independent primary source exists to cite). Do NOT backfill these with the GEM record itself (anti-circularity). No staged ref-fill provided.",
-    "researcher_initials": "AI-draft (reverify 2026-06-04)"
+    "issue": "Original Proposal unit: blank Status [ref], ShelvedYear [ref], StopYear [ref] are structurally unfillable — the shelving is inferred (Substatus 'inferred 2 y', ShelvedCancelledStatusType 'inferred'; 2011 Kenya Ministry of Energy proposal with no activity since). No source states 'shelved'/'2024', so any ref URL would fail value-verification.",
+    "severity": "medium",
+    "suggested_action": "Leave the three refs blank; inference already documented via ShelvedCancelledStatusType='inferred'. Existing ResearcherNotesUnit (IM) already explains the shelved-vs-cancelled judgment.",
+    "researcher_initials": "AI-draft"
   },
   {
-    "category": "status_timeline",
+    "category": "no_change",
     "terminal_id": "T100000130254",
     "unit_id": "G100001054956",
     "terminal_name": "Mombasa LNG Terminal",
-    "issue": "Second Proposal (AMACO) LatestPlannedStartYear=2027 is increasingly unlikely: as of 2026-06 the project is still at feasibility/permitting/business-assignment stage with no FID, tender, or construction (per AMACO's own project page and independent trade press). No verified differing planned-start year to stage (sponsor has not published a revised date), so no field edit made; flagging the slippage risk only.",
+    "issue": "Second Proposal (AMACO LNG-to-power, 6.2 mtpa, proposed 2024): re-checked 2026-07. No reporting found since the January 2025 coverage of AMACO's feasibility work; the amaco.gr project page (existing GEM ref) remains the latest substantive source. Status 'proposed' stands; no field changes warranted.",
     "severity": "low",
-    "suggested_action": "Monitor for a revised planned-start date from AMACO/sponsor; if 2027 passes with no progression, the unit trends toward stale/shelved at the next batch. fetch_timeline endpoint is down, so no timeline edit attempted.",
-    "researcher_initials": "AI-draft (reverify 2026-06-04)"
+    "suggested_action": "No change. If silence persists into 2027, the unit will enter the 2-year shelved-inference window — re-check next annual pass.",
+    "researcher_initials": "AI-draft"
   }
 ]

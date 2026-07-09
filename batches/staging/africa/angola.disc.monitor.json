@@ -1,26 +1,14 @@
 [
   {
     "country": "Angola",
-    "candidate_name": "Angola LNG expansion (mini-train / 2nd train, ~3 MTPA)",
-    "sponsor_or_proposer": "Angola LNG Ltd (Sonangol EP; Chevron Corp; BP PLC / Azule Energy; Eni SpA; TotalEnergies SE)",
+    "candidate_name": "Angola LNG expansion train (mini train / additional train at Soyo)",
+    "sponsor_or_proposer": "Angola LNG Ltd (Chevron 36.4%, Sonangol 22.8%, Azule/Eni, TotalEnergies, BP)",
     "first_observed_batch": "2026-06 discovery",
     "last_observed_batch": "2026-06 discovery",
-    "current_state": "Stated intent only. Azule Energy CEO Adriano Mongini (Nov 2024) said Angola LNG 'is already thinking about this expansion, if it's a mini train or one additional train' (~3 MTPA), to capitalize on rising non-associated gas supply from the New Gas Consortium (Quiluma/Maboqueiro). No FID, no FEED award, no separate site selection reported as of this sweep.",
-    "missing_threshold_elements": "Concrete step (no FID/FEED/permit/contract; verbal intent only). NOTE: this is an EXPANSION of the existing Angola LNG Terminal (GEM TerminalID T100000130245) at Soyo, NOT a new terminal -- if it firms up it routes to a new_unit on that terminal (Discovery SOP §6 expansion-vs-new), never a new_terminals record.",
-    "watch_for": "FEED contract award, FID, EPC tender, or a formal capacity-addition announcement for the new train/mini-train; confirmation of train size (3 MTPA mini-train vs full additional train).",
-    "best_lead_url": "https://pgjonline.com/news/2024/november/angola-lng-weighs-adding-capacity-as-gas-output-grows",
-    "notes": "Two independent non-GEM corroborations, both url_verifier.py PASS (re-verified 2026-06): https://pgjonline.com/news/2024/november/angola-lng-weighs-adding-capacity-as-gas-output-grows and https://energycapitalpower.com/12b-angola-lng-project-explores-expansion-options/ . Feedstock context: New Gas Consortium / Soyo Gas Treatment Plant (first gas 2025/2026) raises gas available to the existing single 5.2 MTPA train (running ~70%), which is what motivates the expansion talk."
-  },
-  {
-    "country": "Angola",
-    "candidate_name": "Medium-sized LNG import terminal -- Benguela/Lobito or Namibe (gas-to-power)",
-    "sponsor_or_proposer": "None named (Angola Gas Master Plan / Gesto Energy 'Angola Energy 2025' planning study)",
-    "first_observed_batch": "2026-06 discovery",
-    "last_observed_batch": "2026-06 discovery",
-    "current_state": "Conceptual planning-study option. The 'Angola Energy 2025' Gas Master Plan study lists 'a medium-sized LNG terminal in Benguela/Lobito' (and Namibe-area power options) as one of several alternative scenarios for domestic gas-to-power. No developer, no chosen site (Benguela/Lobito OR Namibe), no concrete step. Document is a pre-2025-vintage strategy doc ('not expected availability of this gas on the horizon of 2025'); the active 2025 Gas Master Plan emphasis is on ammonia/methanol/gas-to-power rather than a new LNG import terminal.",
-    "missing_threshold_elements": "Sponsor (none identified), Location (alternative sites, none selected), Concrete step (planning study only). Fails all three §3 elements.",
-    "watch_for": "Any sponsor (FSRU operator or domestic utility) attached to an import terminal at Benguela, Lobito, or Namibe; a charter/MOU; or ANPG/government tender. Distinct from the cancelled New Fortress Angola import terminal (GEM TerminalID T100000130823).",
-    "best_lead_url": "https://cdn.bndlyr.com/ndwqs4c5a9/_assets/newsletter_gas-master-plan.pdf",
-    "notes": "Lead swapped on re-verification 2026-06: the previously-cited Gesto Energy 'Angola Energy 2025' page (angolaenergia2025.gestoenergy.com/en/conteudo/natural-gas) now fails url_verifier.py (HTTP 000, repeatedly, http+https) and is no longer a usable lead. Live non-GEM replacement = the Angola Gas Master Plan newsletter PDF (bndlyr.com), url_verifier.py PASS for 'Benguela'; web research confirms the GMP (public consultation Oct 2024, adopted Apr 2025) lists 'a medium-sized regasification port terminal in Benguela/Lobito' (and a smaller one toward Namibe) among gas-to-power alternatives. This remains a conceptual planning-study option (no sponsor, no chosen site, no concrete step) -- single live lead, so treat as monitor-only, not a corroborated value."
+    "current_state": "Under study, not sanctioned. With New Gas Consortium (Quiluma & Maboqueiro) first gas achieved Nov 2025 and Sanha/NGC supply ramping, Azule CEO said Angola LNG 'is already thinking about this expansion, if it is a mini train or one additional train' (~3 mtpa mini-train concept). No FID, no design selected, no regulatory filing.",
+    "missing_threshold_elements": "No concrete step taken (no FEED/FID, no EPC, no capacity/design decision); expansion of the existing Angola LNG Terminal (T100000130245), so if it firms up it is a NEW UNIT on the existing record, not a new terminal.",
+    "watch_for": "FEED award or FID on a second/mini train at Soyo; capacity and configuration announcement; Azule Energy / Angola LNG Ltd statements as NGC plateaus.",
+    "best_lead_url": "https://pgjonline.com/news/2026/january/angola-accelerates-gas-strategy-with-lng-expansion-non-associated-gas-development",
+    "notes": "dedup_index: manual_review vs Angola LNG Terminal (0.0 km) — same site, same consortium → expansion of existing record. Revival check on New Fortress Angola LNG Terminal (T100000130823, cancelled 2023): no post-2023 activity found (NFE IR terminal list has no Angola asset). Upstream-operator sweep: Azule/Eni NGC and Chevron associated-gas schemes all feed the existing Angola LNG plant; no standalone FLNG signal for Angola/Cabinda."
   }
 ]

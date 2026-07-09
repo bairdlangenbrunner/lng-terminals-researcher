@@ -1,0 +1,32 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000131123",
+    "unit_id": "G100002112301",
+    "terminal_name": "Eni Congo FLNG II Terminal",
+    "issue": "GEM lists this (Eni Congo LNG Phase 2 / Nguya FLNG, 2.4 mtpa) as 'construction'. Eni announced start-up of Congo LNG Phase 2 in December 2025 -- about six months ahead of schedule -- with the Nguya FLNG receiving gas and the goal of first LNG cargo in early 2026, bringing total Congo LNG project output to 3.0 mtpa. Status likely now 'operating' (or at minimum commissioning/start-up). Routed to QA note rather than a staged timeline edit because fetch_timeline is DOWN this batch. Sources: Eni press release 03-Dec-2025; LNG Industry; worldoil 04-Dec-2025.",
+    "severity": "medium",
+    "suggested_action": "In a follow-on Update batch, pull the existing status timeline (fetch_timeline) and update Status construction->operating with ActualStartYear 2025/2026 per first-cargo timing; cite https://www.eni.com/en-IT/media/press-release/2025/12/pr-eni-launches-phase-2-congo-lng.html and https://www.worldoil.com/news/2025/12/4/congo-accelerates-upstream-expansion-as-lng-phase-2-comes-online/. Confirm whether first cargo (early 2026) vs gas-in (Dec 2025) is GEM's 'operating' trigger.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "coverage_gap",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Banga Kayo LNG Terminal (Wing Wah / SNPC)",
+    "issue": "Onshore associated-gas valorisation plant on the Banga-Kayo field (Tchamba Nzassi, near Pointe-Noire), operated by Wing Wah E&P with SNPC, inaugurated 20-Nov-2025, producing LNG (plus LPG/propane/butane/dry gas) for domestic and international markets. NOT present in the GEM LNG terminals tracker (the only Congo rows are the two Eni FLNG terminals). GEM has an upstream 'Banga Kayo (Phase 1) Oil and Gas Field' wiki page but that is the field, not the LNG plant. Staged this batch as a new_terminal (export, operating).",
+    "severity": "medium",
+    "suggested_action": "Review the staged republic-of-the-congo.disc.newterminals.json record; confirm the LNG-specific liquefaction/export share (vs. a primarily LPG plant) before fixing a firm Capacity; link to the existing upstream field page via Source/AssociatedTerminals.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "coverage_gap",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Trident Energy Congo FLNG Terminal (Nkossa / Nsoko II)",
+    "issue": "USER-FLAGGED MISS (2026-06-24). The June africa discovery sweep failed to surface Trident Energy's proposed Congo FLNG. Trident acquired ~85% operated interest in the Nkossa/Nsoko II offshore fields in 2025 and is advancing a 'Nkossa Gas Project' FLNG planned as SHARED basin infrastructure (able to take associated gas from multiple operators), aligned with Congo's Oct-2025 Gas Code and flaring-reduction Gas Master Plan; the CEO has publicly stated they are 'expediting' it (~3-year commissioning target). Staged this batch as a new_terminal (export, proposed, capacity blank). ROOT CAUSE: the original sponsor ring (Discovery SOP Ring C) enumerated established LNG developers, not the upstream OIL operators who are the actual FLNG sponsors in associated-gas economies like Congo, Gabon, Nigeria. The miss was discoverable in June (2025 acquisition; Energy Chamber 25-May-2026; AEW 2025).",
+    "severity": "medium",
+    "suggested_action": "Review the staged record. No FEED/FID/firm capacity yet reported, so the reviewer may prefer monitor_list over a firm proposed add. Process fix added to Discovery SOP: an upstream-oil-operator / associated-gas FLNG sweep is now part of Ring C for every coastal hydrocarbon producer (see discovery.md §4).",
+    "researcher_initials": "AI-draft (discovery follow-up)"
+  }
+]

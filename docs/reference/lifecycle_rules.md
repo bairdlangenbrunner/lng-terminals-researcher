@@ -151,6 +151,14 @@ By current status:
 - **`shelved`**: `ShelvedYear` should be populated. `CancelledYear`, `StopYear` should be blank (unless the project was operating before being shelved, which is rare).
 - **`cancelled`**: `CancelledYear` should be populated.
 
+### Which year to record: event date, not publication date
+
+**Every anchor year (`ProposalYear`, `ConstructionYear`, `FIDYear`, `ActualStartYear`, `ShelvedYear`, `CancelledYear`, …) is the year of the underlying *event*, read from the body of the source — NOT the source's publication date and NOT the date in the URL slug.** A press release dated January 2022 routinely reports an event (agreement signed, FID taken, construction started) that happened in the prior December; the anchor year is the event's year.
+
+- Read the sentence that states the milestone and take *its* date. If the body says "the Share Purchase Agreement was signed on December 28, 2021," `ProposalYear = 2021` even though the release published in January 2022 and the URL is `…/20220111_01/`.
+- A URL date slug is the publisher's filing date, never authoritative for the value — treat it like a publication date.
+- Canonical miss: Nam Dinh LNG Terminal staged `ProposalYear = 2022` off the JAPEX release's Jan-2022 publication/slug; the body states the project SPA was Dec 28 **2021** → the correct value is 2021 (and the same release's Feb-2020 master-plan addition is an even-earlier candidate anchor).
+
 ### Reality check: invariants are violated in the existing data
 
 The May 2026 export reveals that "should be populated" is aspirational, not enforced:
@@ -180,6 +188,17 @@ Per the methodology:
 
 The "no updates" clock starts from the most recent of: the last status timeline entry's year, or the LastUpdated field on the unit (whichever is more recent and trustworthy). `stale_sweep.py` uses `LastUpdated` as the primary signal because it's mechanically tractable.
 
+### Applying the clock during research (the news-recency test)
+
+When status-checking a `proposed` (or other pre-operating) unit, the dormancy clock is judged by **the date of the most recent news article / reference the research pass can find** — not by `LastUpdated`, which only says when GEM last touched the row:
+
+- Most recent article **< 2 years old** → the unit stays `proposed`; references cited for it should themselves be less than 2 years old.
+- Most recent article **≥ 2 years but < 4 years old** → `shelved`, substatus `inferred 2 y`, with **that most-recent article as the `Status [ref]` URL**.
+- Most recent article **≥ 4 years old** → `cancelled`, substatus `inferred 4 y`, again citing that most-recent article.
+- An **actual announcement** of shelving or cancellation found online → `shelved`/`cancelled` with substatus `confirmed`, citing the announcement (this overrides the inference ladder).
+
+**Year of the inferred entry:** if the project simply slips out of national planning documents or investor presentations, the `ShelvedYear`/`CancelledYear` can be **the first year it no longer appears** in those documents — a legitimate alternative to stamping the inference-was-made year.
+
 ### Adding an inferred entry
 
 When `stale_sweep.py` flags a unit:
@@ -189,9 +208,16 @@ When `stale_sweep.py` flags a unit:
 3. If genuinely dormant, append a new timeline entry:
    - Status: `shelved` or `cancelled`
    - Substatus: `inferred 2 y` or `inferred 4 y`
-   - Year: the current year (the year the inference is being made)
+   - Year: the current year (the year the inference is being made) — or, if the project dropped out of national planning docs / investor presentations, the first year it no longer appears (see the news-recency test above)
    - Notes: a brief explanation including the "last known activity" date
-   - Datasource: per the methodology FAQ, the datasource for `inferred shelved` and the subsequent `inferred cancelled` can be the same source — the one originally cited for the latest active-status entry
+   - Datasource: the most recent news article found (per the news-recency test above); fallback per the methodology FAQ — the source originally cited for the latest active-status entry can be re-used for `inferred shelved` and the subsequent `inferred cancelled`
+
+**An inferred shelving/cancellation is NOT ref-free.** Populate BOTH `Status [ref]` and the anchor-year `[ref]` (`ShelvedYear [ref]` / `CancelledYear [ref]`) with the same URL — an inferred entry never leaves those blank. "Inferred" means no source states the word *shelved*, so the citation is not a source asserting the status; it is the source that establishes the **dormancy** the inference rests on. Pick it in this order:
+
+1. **A planning-document / regulatory record that shows the project stalled or dropped** — e.g. for Vietnam LNG-to-power projects, the national Power Development Plan (PDP8) revision that lists the project as "behind schedule or cannot be implemented," or the current revision it has vanished from. Strongest option: it is primary/regulatory (green-eligible), it is the most-recent substantive mention, and its date directly anchors the `ShelvedYear`/`CancelledYear`.
+2. **Otherwise, the most-recent substantive project-specific news article** — the one whose age is what trips the dormancy clock. Use the *newest* coverage, never the earliest proposal/JV-formation article (that argues against the inference, not for it).
+
+**Verification of an inferred `[ref]`:** `url_verifier.py`'s "value on the page" gate still applies, but the value being verified is the *dormancy evidence + its date* — the project named in a stalled/behind-schedule/absent context in a document of the right vintage — NOT the literal string `shelved`/`cancelled` or the bare year. And as always, gem.wiki's own narrative may point you to the stall, but is NEVER the citation — cite the underlying planning document or article it derives from.
 
 ### Shelved → Cancelled escalation
 

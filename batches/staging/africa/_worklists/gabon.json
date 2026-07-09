@@ -1,0 +1,141 @@
+{
+ "country": "Gabon",
+ "slug": "gabon",
+ "tier": "standard",
+ "gem_rows": [
+  {
+   "terminal_id": "T100000130909",
+   "unit_id": "G100002090900",
+   "terminal": "Boudji FLNG Terminal",
+   "unit": "--",
+   "status": "cancelled",
+   "facility_type": "export",
+   "last_updated": "2025-06-24"
+  },
+  {
+   "terminal_id": "T100000131107",
+   "unit_id": "G100002110701",
+   "terminal": "Cap Lopez FLNG Terminal",
+   "unit": "--",
+   "status": "construction",
+   "facility_type": "export",
+   "last_updated": "2025-06-24"
+  }
+ ],
+ "dev_pipeline": [
+  {
+   "terminal_id": "T100000131107",
+   "unit_id": "G100002110701",
+   "terminal_name": "Cap Lopez FLNG Terminal",
+   "unit_name": "--",
+   "country": "Gabon",
+   "status": "construction",
+   "substatus": "actual",
+   "last_updated": "2025-06-24",
+   "months_since_update": 12.3,
+   "recently_updated": false
+  }
+ ],
+ "stale_flags": [],
+ "blank_refs": [
+  {
+   "terminal_id": "T100000130909",
+   "unit_id": "G100002090900",
+   "terminal_name": "Boudji FLNG Terminal",
+   "unit_name": "--",
+   "country": "Gabon",
+   "status": "cancelled",
+   "gap_type": "blank_ref",
+   "column": "Status [ref]",
+   "severity": "medium",
+   "detail": "Status populated but Status [ref] blank — [ref]-fill target"
+  },
+  {
+   "terminal_id": "T100000130909",
+   "unit_id": "G100002090900",
+   "terminal_name": "Boudji FLNG Terminal",
+   "unit_name": "--",
+   "country": "Gabon",
+   "status": "cancelled",
+   "gap_type": "blank_ref",
+   "column": "ShelvedYear [ref]",
+   "severity": "low",
+   "detail": "ShelvedYear populated but ShelvedYear [ref] blank — [ref]-fill target"
+  },
+  {
+   "terminal_id": "T100000130909",
+   "unit_id": "G100002090900",
+   "terminal_name": "Boudji FLNG Terminal",
+   "unit_name": "--",
+   "country": "Gabon",
+   "status": "cancelled",
+   "gap_type": "blank_ref",
+   "column": "CancelledYear [ref]",
+   "severity": "low",
+   "detail": "CancelledYear populated but CancelledYear [ref] blank — [ref]-fill target"
+  },
+  {
+   "terminal_id": "T100000130909",
+   "unit_id": "G100002090900",
+   "terminal_name": "Boudji FLNG Terminal",
+   "unit_name": "--",
+   "country": "Gabon",
+   "status": "cancelled",
+   "gap_type": "blank_ref",
+   "column": "StopYear [ref]",
+   "severity": "low",
+   "detail": "StopYear populated but StopYear [ref] blank — [ref]-fill target"
+  }
+ ],
+ "other_gaps": [
+  {
+   "terminal_id": "T100000130909",
+   "unit_id": "G100002090900",
+   "terminal_name": "Boudji FLNG Terminal",
+   "unit_name": "--",
+   "country": "Gabon",
+   "status": "cancelled",
+   "gap_type": "missing_field",
+   "column": "FloatingVesselName",
+   "severity": "medium",
+   "detail": "cancelled unit missing required field 'FloatingVesselName'"
+  },
+  {
+   "terminal_id": "T100000130909",
+   "unit_id": "G100002090900",
+   "terminal_name": "Boudji FLNG Terminal",
+   "unit_name": "--",
+   "country": "Gabon",
+   "status": "cancelled",
+   "gap_type": "orphan_ref",
+   "column": "Location [ref]",
+   "severity": "medium",
+   "detail": "Location [ref] filled but Location blank — Rule F violation"
+  },
+  {
+   "terminal_id": "T100000131107",
+   "unit_id": "G100002110701",
+   "terminal_name": "Cap Lopez FLNG Terminal",
+   "unit_name": "--",
+   "country": "Gabon",
+   "status": "construction",
+   "gap_type": "orphan_ref",
+   "column": "StartDate [ref]",
+   "severity": "medium",
+   "detail": "StartDate [ref] filled but ActualStartYear/ActualStartMonth/ActualStartYear2/ActualStartYear3 blank — Rule F violation"
+  }
+ ],
+ "dormant_revival_watch": [
+  {
+   "terminal_id": "T100000130909",
+   "terminal_name": "Boudji FLNG Terminal",
+   "country": "Gabon",
+   "location": "",
+   "prior_owner": "Petroliam Nasional Bhd [100%]",
+   "death_status": "cancelled",
+   "death_year": 2024,
+   "years_dead": 2,
+   "revival_priority": "normal"
+  }
+ ]
+}

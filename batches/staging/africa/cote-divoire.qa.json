@@ -1,52 +1,32 @@
 [
   {
+    "category": "blank_ref_unfillable",
+    "terminal_id": "T100000130835",
+    "unit_id": "G100002083500",
+    "terminal_name": "Ivory Coast FSRU",
+    "issue": "Blank-ref targets Status [ref], ShelvedYear [ref], StopYear [ref] could not be filled. Status 'shelved' and ShelvedYear/StopYear 2023 are GEM inferences (ShelvedCancelledStatusType='inferred', Substatus 'inferred 2 y', researcher note 'No update since 2021'), not externally published facts. July 2026 searches of trade press (Riviera, Offshore Energy, ESI Africa), French-language press (Jeune Afrique, Agence Ecofin, euro-petrole), TotalEnergies newsroom, and the Ivorian government PPP portal (project page now 404) found no source explicitly stating the project is shelved or naming 2023 — coverage ends with the 2021 CI-Energies re-tender era. Per sourcing rules a ref must explicitly contain the cell's value, so no citation can honestly be staged.",
+    "severity": "low",
+    "suggested_action": "Leave the three [ref] cells blank; if a basis must be recorded, document the 2-year-inactivity inference in ResearcherNotesUnit rather than a [ref] URL.",
+    "researcher_initials": "AI-draft"
+  },
+  {
     "category": "status_timeline",
     "terminal_id": "T100000130835",
     "unit_id": "G100002083500",
     "terminal_name": "Ivory Coast FSRU",
-    "issue": "Dev-pipeline status check (shelved): CONFIRMED still dormant — no revival 2022-2026. Last project-specific activity was the June 2021 CI-Energies FSRU re-tender and a year-end-2021 Shell report listing the terminal as 'Under Planning' (start 2023). Côte d'Ivoire has since pivoted to domestic gas (Eni Baleine field; Phase 2 launched Dec 2024, output dedicated to local demand), which supersedes LNG imports. No formal cancellation has been announced. GEM's 'shelved (inferred 2 y)' remains accurate; no Status field edit staged (status changes route to qa per sweep rule + fetch_timeline endpoint is down).",
+    "issue": "Revival check (July 2026): no new activity found on the CI-GNL / Abidjan (Vridi) FSRU since the June 2021 CI-Energies tender for an FSRU provider; no award, contract, vessel, or restart reported in trade or Ivorian press through mid-2026. Eni's Baleine field (producing since 2023, all gas allocated to the domestic market, expanding through Phase 3) has materially weakened the LNG-import rationale. Status 'shelved' remains appropriate; no status or timeline movement to stage.",
     "severity": "low",
-    "suggested_action": "Keep Status=shelved. Optionally refresh Substatus age (currently 'inferred 2 y'; on a 2023 inferred shelving that is now ~3 y) and note Baleine Phase 2 (Dec 2024) as the contextual cause in researcher notes / wiki.",
+    "suggested_action": "No change; re-check at next annual pass.",
     "researcher_initials": "AI-draft"
   },
   {
-    "category": "missing_ref",
+    "category": "ownership_review",
     "terminal_id": "T100000130835",
     "unit_id": "G100002083500",
     "terminal_name": "Ivory Coast FSRU",
-    "issue": "Blank-ref fill targets ShelvedYear [ref] and StopYear [ref] (both values = 2023) could NOT be sourced. No source documents a 2023 shelving/stop event — the year is GEM's inference from the lapsed 2023 planned start (Shell year-end-2021 report). The only source underpinning that 2023 figure (the JOGMEC-hosted Shell 2022 PDF already in GEM's Owner/StartDate refs) FAILS url_verifier (scanned/image PDF, no extractable text). Filling these [ref] cells with the Dec-2024 Baleine sources would be a mismatched/orphan ref (the 2023 value is not supported by those sources).",
-    "severity": "low",
-    "suggested_action": "Leave ShelvedYear [ref] and StopYear [ref] blank — the 2023 year is an unsourceable inference. If a citable year is wanted, anchor to the June-2021 CI-Energies re-tender as the last documented active step rather than the inferred 2023, and adjust ShelvedYear/StopYear accordingly; otherwise retain 2023 as inferred-only with no [ref].",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "link_health",
-    "terminal_id": "T100000130835",
-    "unit_id": "G100002083500",
-    "terminal_name": "Ivory Coast FSRU",
-    "issue": "Existing GEM citation fails verification: the JOGMEC-hosted Shell 2022 PDF (https://oilgas-info.jogmec.go.jp/_res/projects/default_project/_page_/001/009/258/4_3_Shell_2022_en.pdf) is a scanned/image PDF with no extractable text layer — FAILS url_verifier (confirmed twice, 2026-06-03). It currently appears in Owner [ref] and StartDate [ref] (and was the implied basis for the 2023 start/shelved-year inference).",
+    "issue": "GEM's own wiki page for this terminal states TotalEnergies exited the project in May 2021 and that CI-Energies re-tendered for an FSRU provider/operator in June 2021, but the GEM DB Owner/Parent still carries the 2018 Total-led consortium (Total 34% / SOCAR 26% / Shell 13% / Petroci 11% / Golar 6% / CI-Energies 5% / Endeavor 5%). No independent source verifying Total's exit could be located (the likely origin, an African Energy article, is paywalled), so no owner edit is staged — but the wiki-vs-DB inconsistency should be reviewed by a human with access to the original citation. Also note Owner [ref] in the export contains the same three URLs duplicated seven times (data-hygiene artifact).",
     "severity": "medium",
-    "suggested_action": "Treat as a failed/unverifiable citation. Replace or drop in Owner [ref] and StartDate [ref] in a follow-on Update batch. The live TotalEnergies operator press release (https://totalenergies.com/media/news/press-releases/ivory-coast-total-becomes-operator-lng-terminal-project, PASS) covers the early consortium/start-year facts and can substitute for the start-date citation.",
+    "suggested_action": "Human review of Owner/Parent against the wiki page's May-2021-exit citation; deduplicate Owner [ref] URL list; do not auto-edit without an independent source.",
     "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "ownership",
-    "terminal_id": "T100000130835",
-    "unit_id": "G100002083500",
-    "terminal_name": "Ivory Coast FSRU",
-    "issue": "Possible owner conflict (OFF the standard worklist; flagged for follow-on Update, not staged here). GEM's structured Owner and Parent fields list TotalEnergies SE at 34% as the operator. Multiple secondary sources (incl. the GEM wiki narrative for this terminal, citing Africa Intelligence) state 'In May 2021, TotalEnergies exited the project,' after which CI-Energies re-tendered the FSRU (June 2021). If the exit is correct, the 34% TotalEnergies equity/operatorship in GEM is stale. Not independently confirmable from a primary/free source in this pass (the Africa Intelligence item appears paywalled); single-source, so no ownership edit staged.",
-    "severity": "medium",
-    "suggested_action": "In a follow-on Update batch, verify TotalEnergies' May-2021 exit against a primary or paywalled-confirmable source; if confirmed, remove TotalEnergies as 34% owner/operator and re-derive the operator (project is shelved, so low urgency). Do not edit on the single secondary source alone.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "unsourced_after_reverify",
-    "terminal_id": "T100000130835",
-    "unit_id": "G100002083500",
-    "terminal_name": "Ivory Coast FSRU",
-    "issue": "Re-verification pass (2026-06-04) dropped the staged 'Status [ref]' blank-ref fill from cote-divoire.updates.json. That row would have cited two non-GEM Baleine URLs (energycapitalpower.com, eni.com) as support for GEM's INFERRED 'shelved' status. Both URLs PASS url_verifier and are non-GEM, but neither page states or contains the asserted value (the FSRU's shelving/cancellation) — they document only the domestic-gas pivot that is the inferred CAUSE. No off-GEM source explicitly asserts the shelving/cancellation: the only statement of TotalEnergies' May-2021 exit traces to gem.wiki / a paywalled Africa Intelligence item (GEM-derivative, not independent). Per the re-verify rule, a value whose only on-page support is GEM-derivative and cannot be corroborated off-GEM is blanked rather than cited with a mismatched ref.",
-    "severity": "low",
-    "suggested_action": "Leave Status [ref] blank; keep Status=shelved as an unsourced inference (consistent with the ShelvedYear/StopYear [ref] handling above). If a citable anchor is wanted, cite the June-2021 CI-Energies FSRU re-tender as the last documented active step rather than attaching the Baleine context URLs to the Status [ref] cell.",
-    "researcher_initials": "AI-draft (reverify)"
   }
 ]

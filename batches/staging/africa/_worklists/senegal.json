@@ -1,0 +1,125 @@
+{
+ "country": "Senegal",
+ "slug": "senegal",
+ "tier": "standard",
+ "gem_rows": [
+  {
+   "terminal_id": "T100001083714",
+   "unit_id": "G100001094861",
+   "terminal": "Dakar LNG Terminal",
+   "unit": "--",
+   "status": "proposed",
+   "facility_type": "import",
+   "last_updated": "2026-06-23"
+  },
+  {
+   "terminal_id": "T100000131049",
+   "unit_id": "G100002104900",
+   "terminal": "Karmol Dakar FSRU",
+   "unit": "--",
+   "status": "operating",
+   "facility_type": "import",
+   "last_updated": "2026-06-22"
+  },
+  {
+   "terminal_id": "T100000131092",
+   "unit_id": "G100002109201",
+   "terminal": "Yakaar-Teranga LNG Hub",
+   "unit": "--",
+   "status": "cancelled",
+   "facility_type": "export",
+   "last_updated": "2026-06-23"
+  }
+ ],
+ "dev_pipeline": [
+  {
+   "terminal_id": "T100001083714",
+   "unit_id": "G100001094861",
+   "terminal_name": "Dakar LNG Terminal",
+   "unit_name": "--",
+   "country": "Senegal",
+   "status": "proposed",
+   "substatus": "",
+   "last_updated": "2026-06-23",
+   "months_since_update": 0.3,
+   "recently_updated": true
+  }
+ ],
+ "stale_flags": [],
+ "blank_refs": [],
+ "other_gaps": [
+  {
+   "terminal_id": "T100001083714",
+   "unit_id": "G100001094861",
+   "terminal_name": "Dakar LNG Terminal",
+   "unit_name": "--",
+   "country": "Senegal",
+   "status": "proposed",
+   "gap_type": "orphan_ref",
+   "column": "StartDate [ref]",
+   "severity": "medium",
+   "detail": "StartDate [ref] filled but ActualStartYear/ActualStartMonth/ActualStartYear2/ActualStartYear3 blank — Rule F violation"
+  },
+  {
+   "terminal_id": "T100001083714",
+   "unit_id": "G100001094861",
+   "terminal_name": "Dakar LNG Terminal",
+   "unit_name": "--",
+   "country": "Senegal",
+   "status": "proposed",
+   "gap_type": "orphan_ref",
+   "column": "Location [ref]",
+   "severity": "medium",
+   "detail": "Location [ref] filled but Location blank — Rule F violation"
+  },
+  {
+   "terminal_id": "T100000131092",
+   "unit_id": "G100002109201",
+   "terminal_name": "Yakaar-Teranga LNG Hub",
+   "unit_name": "--",
+   "country": "Senegal",
+   "status": "cancelled",
+   "gap_type": "orphan_ref",
+   "column": "StartDate [ref]",
+   "severity": "medium",
+   "detail": "StartDate [ref] filled but ActualStartYear/ActualStartMonth/ActualStartYear2/ActualStartYear3 blank — Rule F violation"
+  },
+  {
+   "terminal_id": "T100000131092",
+   "unit_id": "G100002109201",
+   "terminal_name": "Yakaar-Teranga LNG Hub",
+   "unit_name": "--",
+   "country": "Senegal",
+   "status": "cancelled",
+   "gap_type": "orphan_ref",
+   "column": "Location [ref]",
+   "severity": "medium",
+   "detail": "Location [ref] filled but Location blank — Rule F violation"
+  },
+  {
+   "terminal_id": "T100000131092",
+   "unit_id": "G100002109201",
+   "terminal_name": "Yakaar-Teranga LNG Hub",
+   "unit_name": "--",
+   "country": "Senegal",
+   "status": "cancelled",
+   "gap_type": "orphan_ref",
+   "column": "FloatingVesselName [ref]",
+   "severity": "medium",
+   "detail": "FloatingVesselName [ref] filled but FloatingVesselName blank — Rule F violation"
+  }
+ ],
+ "dormant_revival_watch": [
+  {
+   "terminal_id": "T100000131092",
+   "terminal_name": "Yakaar-Teranga LNG Hub",
+   "country": "Senegal",
+   "location": "Dakar",
+   "prior_owner": "Kosmos Energy [90%]; Petrosen [10%]",
+   "death_status": "cancelled",
+   "death_year": 2026,
+   "years_dead": 0,
+   "revival_priority": "normal"
+  }
+ ]
+}

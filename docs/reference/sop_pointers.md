@@ -50,6 +50,7 @@ Abbreviations:
 | QC stages no edits and builds no xlsx | QCS §5, §7 | Memo only; fixes route to a follow-on Update ("QC detects, Update fixes") |
 | Standard tier is the Update default | UPD §2, SKL "Workflow router" | Exhaustive only when the user / triage / QC escalation says so |
 | Multi-train projects → one terminal + N units | DSC §7, UNT "When to create new unit vs new terminal" | Not N terminals |
+| Capacity range → record the MAX | UNT "Capacity conventions" | If a range is found, stage the **highest** value in the backend `Capacity` (cost range → median); the full range goes only in the wiki Background narrative — never stage the low end |
 | Sufficient information threshold for new candidates | DSC §3 | Sponsor + approximate location + concrete step |
 | Discovery scope gate (before the threshold) | DSC §3, SKL "Workflow router" | Must move LNG across a border by ship; domestic-only virtual-pipeline/trucking/peak-shaving is OUT OF SCOPE; resolve scope doubt before staging |
 | gem.wiki coverage cross-check | DSC §4.0b, WFL §3 | Reconcile gem.wiki LNG pages vs the export CSV — a wiki page with no row is a discovery candidate (gem.wiki detects the gap, never the citation) |
@@ -109,6 +110,7 @@ Abbreviations:
 | Anchor year invariants | "Anchor year invariants" |
 | FIDStatus / FIDYear ambiguity | "FIDStatus / FIDYear ambiguity" |
 | Dormancy thresholds (stale-sweep rules) | "Dormancy thresholds (the stale-sweep rules)" |
+| News-recency test (proposed <2y; 2–4y inferred shelved; ≥4y inferred cancelled; most-recent article = ref) | "Applying the clock during research (the news-recency test)" |
 | Inferred shelved/cancelled entries | "Adding an inferred entry" |
 | Shelved → Cancelled escalation | "Shelved → Cancelled escalation" |
 | Dead-and-revived | "Edge cases" → first bullet |

@@ -82,8 +82,10 @@ Priority columns by yield (from `docs/reference/gem_db_schema.md`):
 
 Adding a new timeline entry, changing current status, or correcting a prior entry. **The most rule-bound sub-type** — `docs/reference/lifecycle_rules.md` governs end-to-end.
 
+**Never punt a confirmed status change to a qa note.** If research establishes a status transition happened (e.g. construction broke ground), it gets STAGED as a `Status` update + the paired anchor year + a `status_timeline_additions` entry — not deferred to `qa_review` for someone else to apply. `fetch_timeline.py` reads the ordered timeline from the read-only Postgres, so "the timeline tool is down" is never a reason to defer (that premise was the Quynh Lap miss — construction was found and researched but only written as a qa note). A qa note is correct only when the status question is *genuinely unresolved* — and if the doubt is resolvable with one more source (e.g. "did the terminal component break ground, or just the co-located power plant?"), resolve it first, then stage; a "reviewer should confirm…" hedge in your own note is the signal that you haven't finished the research, not a reason to hand it off.
+
 Workflow:
-1. `python fetch_timeline.py <UnitID>` — pull the existing timeline from the live DB (mandatory; the export doesn't contain it)
+1. `python fetch_timeline.py <UnitID>` — pull the existing ordered timeline (reads the read-only Postgres; mandatory, the export doesn't contain it). Always available — not gated on the retired web scraper.
 2. Verify the proposed change is a legal state transition (`docs/reference/lifecycle_rules.md` "Legal state transitions")
 3. If adding a planned entry, locate the correct insertion point (typically after the most recent matching actual)
 4. If adding an actual entry, append to the bottom of the timeline
@@ -118,7 +120,7 @@ For each value update:
 Processing `stale_sweep.py` output. Mechanical compared to the others — the rule is in `docs/reference/lifecycle_rules.md`, the work is mostly verification + entry.
 
 For each flagged unit:
-1. Quick news search to confirm genuine dormancy (sometimes units are stale because of researcher capacity, not because the project is dormant)
+1. Quick news search to confirm genuine dormancy (sometimes units are stale because of researcher capacity, not because the project is dormant). The date of the most recent article found drives the call — <2y stays proposed, 2–4y → inferred shelved, ≥4y → inferred cancelled, with that article as the ref (news-recency test, `lifecycle_rules.md` §Dormancy thresholds)
 2. If genuinely dormant, follow the §3.2 timeline-update workflow with substatus `inferred 2 y` or `inferred 4 y`
 3. If active development is found, the result is a regular value/status update (§3.2 or §3.3), and the stale flag is incidentally cleared by virtue of `LastUpdated` becoming current
 

@@ -1,32 +1,12 @@
 [
   {
-    "category": "discovery_coverage",
-    "terminal_id": "",
-    "unit_id": "",
-    "terminal_name": "Algeria (country-level discovery sweep)",
-    "issue": "Discovery sweep of Algeria (2026-06 sweep) found NO LNG terminal missing from GEM. GEM's two export complexes (Arzew-Bethioua T100000130243, Skikda T100000130244) cover the country. All 'new' signals in trade press / French-language press / Sonatrach IR for the last 24 months are modernization or auxiliary infrastructure on the EXISTING complexes, not new terminals or trains: (1) Skikda new LNG jetty/'M3' berth (CHEC EPC, 2019, ~USD445m; first large carrier Mar-2024) -- belongs to existing Skikda; The Asset's 'Africa's first LNG terminal' framing is clickbait (Algeria has exported LNG since 1964). (2) Skikda GL1K new 150,000 m3 storage tank (Sinopec, ~25bn DZD, 40-month delivery) -- new storage at existing GL1K, not a new unit; note the 150,000 m3 figure bears on the GL1K storage [CONFLICTING DATA] item already flagged for Update. (3) Saipem liquefaction-train modernization and Oct-2025 restart of the GL1K Rebuild train -- brownfield, existing units. No new liquefaction train, no FID, and no FLNG/offshore project surfaced; the Sonatrach 2026-2030 / USD60bn plan is explicitly brownfield optimization + reserve growth.",
+    "category": "gem_wiki_coverage",
+    "terminal_id": "T100000130243",
+    "unit_id": "G100002024313",
+    "terminal_name": "Arzew-Bethioua LNG Terminal",
+    "issue": "gem.wiki coverage cross-check found a wiki-only page 'Gassi Touil LNG Terminal' (no export-CSV row) that is NOT a missing terminal: it is a stale duplicate of the existing Arzew-Bethioua GL3Z train. The wiki page itself locates the liquefaction plant at 'Djedid gas port, Arzew' (coords 35.845, -0.306 — inside the Arzew complex) and its title source names it 'Gassi Touil LNG Arzew GL3Z'. Independent confirmation: the Arzew GL3Z train (onstream 2014, Sonatrach, Saipem/Chiyoda EPC) sources gas from the Gassi Touil and Rhourde Nouss fields — verified at https://www.oilandgasadvancement.com/projects/arzew-lng-algeria/ (url_verifier token 'Gassi Touil' PASS; corroborating pages at offshore-technology.com and gasstrategies.com are bot-blocked 403, live but unverifiable). The wiki page also carries long-obsolete ownership (Repsol 48%/Gas Natural 32%/Sonatrach 20% — the Repsol/Gas Natural contract was rescinded in 2007; Sonatrach built GL3Z alone).",
     "severity": "low",
-    "suggested_action": "No new_terminals/new_units staged. Treat Skikda jetty + Sinopec storage tank as Update-workflow facility detail on existing Skikda (T100000130244), not as discovery additions. Algeria coverage confirmed complete this round.",
-    "researcher_initials": "AI-draft (discovery sweep)"
-  },
-  {
-    "category": "discovery_coverage",
-    "terminal_id": "",
-    "unit_id": "",
-    "terminal_name": "Ertugrul Gazi FSRU (open item from country note)",
-    "issue": "Clears the algeria.md open item ('Ertugrul Gazi FSRU -- loaned to Egypt, or agreement fell through?'). The Ertugrul Gazi is a BOTAS (Turkey)-owned FSRU that operates at Turkey's Dortyol terminal (already in GEM as Dortyol FSRU) and was seasonally chartered to Egypt (Ain Sukhna) for summer 2025. Algeria's ONLY connection is as an LNG supplier: the vessel's first cargo and ongoing volumes come from Sonatrach under the BOTAS-Sonatrach supply deal (~4.4 bcm/yr, extended). It is NOT an Algerian import terminal and never was -- Algeria is a net exporter with no hosted FSRU and no import/regas terminal in any master-plan, DFI pipeline, or sponsor IR. No Algerian FSRU/import gap exists.",
-    "severity": "low",
-    "suggested_action": "Close the algeria.md FSRU open item. No Algerian FSRU terminal to add. The Ertugrul Gazi is correctly a Turkey/Egypt vessel; FSRU-sync (if run) concerns Dortyol/Ain Sukhna, not Algeria.",
-    "researcher_initials": "AI-draft (discovery sweep)"
-  },
-  {
-    "category": "scope_note",
-    "terminal_id": "",
-    "unit_id": "",
-    "terminal_name": "Algeria LNG bunkering aspiration (out of GEM scope)",
-    "issue": "A long-standing Algerian aspiration to develop LNG marine-bunkering infrastructure (Naftal / Ministry of Energy, first voiced 2014, restated in market commentary) surfaced during the sweep. It is (a) bunkering, which is explicitly OUT of GEM terminal scope ('all scales except bunkering'), and (b) below the discovery threshold anyway -- statement of intent only, no named site, sponsor SPV, or concrete step. Recorded so future sweeps do not re-investigate it as a terminal lead.",
-    "severity": "low",
-    "suggested_action": "No action. Out of scope (bunkering) and below threshold; not a monitor_list terminal candidate.",
+    "suggested_action": "No tracker edit needed (GL3Z already covered under Arzew-Bethioua). Flag to GEM staff that the orphan gem.wiki page 'Gassi Touil LNG Terminal' should be merged/redirected into the Arzew-Bethioua LNG Terminal page to prevent future discovery sweeps re-flagging it.",
     "researcher_initials": "AI-draft (discovery sweep)"
   }
 ]

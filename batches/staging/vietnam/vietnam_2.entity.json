@@ -1,0 +1,34 @@
+[
+ {
+  "entity_name": "Trungnam Group",
+  "entity_type": "company (private Vietnamese infrastructure/energy group)",
+  "country_of_hq": "Vietnam",
+  "parent_entity": "",
+  "rationale_for_new_entity": "Consortium lead selected as investor of the Ca Na LNG power project (LNG import terminal + 1,500 MW CCGT), contract signed 2026-04-10; needed for the staged Ca Na Owner fill.",
+  "lookup_was_run": "RUN 2026-07-02: entity_lookup.py bare + --remote for 'Trungnam Group', 'Trung Nam', 'Trungnam' - all not_found_in_local_data + no_remote_match",
+  "lookup_result_summary": "No match anywhere; flagged in qa (entity_gap) because Trungnam is a major GEM-tracked renewables developer and may exist under a variant spelling - check before creating. [Central re-check vs read-only Postgres entity system (latest entity_history): no 'Trungnam Group' parent entity, but subsidiary 'Trung Nam Wind Power' EXISTS (100002002611) - Ownership Team may prefer creating the group parent and linking, or reusing/renaming; flag both options.]",
+  "referenced_by_terminals": [
+   "T100000130901"
+  ],
+  "referenced_by_units": [
+   "G100002090100"
+  ],
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "entity_name": "Sideros River",
+  "entity_type": "company (consortium partner; registration/HQ not disclosed in press)",
+  "country_of_hq": "unknown (not disclosed in any award or contract coverage)",
+  "parent_entity": "",
+  "rationale_for_new_entity": "Second member of the Trung Nam-Sideros River consortium holding the Ca Na LNG project investment-business contract (2026-04-10).",
+  "lookup_was_run": "RUN 2026-07-02: entity_lookup.py bare + --remote for 'Sideros River', 'Sideros' - not_found_in_local_data + no_remote_match",
+  "lookup_result_summary": "No match anywhere; genuinely new. Press (theinvestor, VIR, Vietnam News, trungnamgroup PR) names it only as 'Sideros River' with no corporate suffix or country.",
+  "referenced_by_terminals": [
+   "T100000130901"
+  ],
+  "referenced_by_units": [
+   "G100002090100"
+  ],
+  "researcher_initials": "AI-draft"
+ }
+]

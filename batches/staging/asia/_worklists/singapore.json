@@ -1,0 +1,168 @@
+{
+ "country": "Singapore",
+ "slug": "singapore",
+ "tier": "standard",
+ "gem_rows": [
+  {
+   "terminal_id": "T100000130890",
+   "unit_id": "G100002089000",
+   "terminal": "SLNG 2 LNG Terminal",
+   "unit": "--",
+   "status": "proposed",
+   "facility_type": "import",
+   "last_updated": "2025-08-28"
+  },
+  {
+   "terminal_id": "T100000130309",
+   "unit_id": "G100002030900",
+   "terminal": "Singapore LNG Terminal",
+   "unit": "Phase 1",
+   "status": "operating",
+   "facility_type": "import",
+   "last_updated": "2025-08-27"
+  },
+  {
+   "terminal_id": "T100000130309",
+   "unit_id": "G100002030901",
+   "terminal": "Singapore LNG Terminal",
+   "unit": "Phase 2",
+   "status": "operating",
+   "facility_type": "import",
+   "last_updated": "2025-08-27"
+  },
+  {
+   "terminal_id": "T100000130309",
+   "unit_id": "G100002030902",
+   "terminal": "Singapore LNG Terminal",
+   "unit": "Phase 3",
+   "status": "operating",
+   "facility_type": "import",
+   "last_updated": "2025-08-27"
+  },
+  {
+   "terminal_id": "T100000130889",
+   "unit_id": "G100002088900",
+   "terminal": "Singapore Offshore LNG Terminal",
+   "unit": "--",
+   "status": "cancelled",
+   "facility_type": "import",
+   "last_updated": "2025-08-27"
+  }
+ ],
+ "dev_pipeline": [
+  {
+   "terminal_id": "T100000130890",
+   "unit_id": "G100002089000",
+   "terminal_name": "SLNG 2 LNG Terminal",
+   "unit_name": "--",
+   "country": "Singapore",
+   "status": "proposed",
+   "substatus": "",
+   "last_updated": "2025-08-28",
+   "months_since_update": 10.3,
+   "recently_updated": false
+  }
+ ],
+ "stale_flags": [],
+ "blank_refs": [
+  {
+   "terminal_id": "T100000130890",
+   "unit_id": "G100002089000",
+   "terminal_name": "SLNG 2 LNG Terminal",
+   "unit_name": "--",
+   "country": "Singapore",
+   "status": "proposed",
+   "gap_type": "blank_ref",
+   "column": "ShelvedYear [ref]",
+   "severity": "low",
+   "detail": "ShelvedYear populated but ShelvedYear [ref] blank — [ref]-fill target"
+  },
+  {
+   "terminal_id": "T100000130890",
+   "unit_id": "G100002089000",
+   "terminal_name": "SLNG 2 LNG Terminal",
+   "unit_name": "--",
+   "country": "Singapore",
+   "status": "proposed",
+   "gap_type": "blank_ref",
+   "column": "StopYear [ref]",
+   "severity": "low",
+   "detail": "StopYear populated but StopYear [ref] blank — [ref]-fill target"
+  }
+ ],
+ "other_gaps": [
+  {
+   "terminal_id": "T100000130890",
+   "unit_id": "G100002089000",
+   "terminal_name": "SLNG 2 LNG Terminal",
+   "unit_name": "--",
+   "country": "Singapore",
+   "status": "proposed",
+   "gap_type": "missing_field",
+   "column": "FloatingVesselName",
+   "severity": "medium",
+   "detail": "proposed unit missing required field 'FloatingVesselName'"
+  },
+  {
+   "terminal_id": "T100000130890",
+   "unit_id": "G100002089000",
+   "terminal_name": "SLNG 2 LNG Terminal",
+   "unit_name": "--",
+   "country": "Singapore",
+   "status": "proposed",
+   "gap_type": "orphan_ref",
+   "column": "StartDate [ref]",
+   "severity": "medium",
+   "detail": "StartDate [ref] filled but ActualStartYear/ActualStartMonth/ActualStartYear2/ActualStartYear3 blank — Rule F violation"
+  },
+  {
+   "terminal_id": "T100000130889",
+   "unit_id": "G100002088900",
+   "terminal_name": "Singapore Offshore LNG Terminal",
+   "unit_name": "--",
+   "country": "Singapore",
+   "status": "cancelled",
+   "gap_type": "missing_field",
+   "column": "Latitude",
+   "severity": "high",
+   "detail": "cancelled unit missing required field 'Latitude'"
+  },
+  {
+   "terminal_id": "T100000130889",
+   "unit_id": "G100002088900",
+   "terminal_name": "Singapore Offshore LNG Terminal",
+   "unit_name": "--",
+   "country": "Singapore",
+   "status": "cancelled",
+   "gap_type": "missing_field",
+   "column": "Longitude",
+   "severity": "high",
+   "detail": "cancelled unit missing required field 'Longitude'"
+  },
+  {
+   "terminal_id": "T100000130889",
+   "unit_id": "G100002088900",
+   "terminal_name": "Singapore Offshore LNG Terminal",
+   "unit_name": "--",
+   "country": "Singapore",
+   "status": "cancelled",
+   "gap_type": "orphan_ref",
+   "column": "Location [ref]",
+   "severity": "medium",
+   "detail": "Location [ref] filled but Location blank — Rule F violation"
+  }
+ ],
+ "dormant_revival_watch": [
+  {
+   "terminal_id": "T100000130889",
+   "terminal_name": "Singapore Offshore LNG Terminal",
+   "country": "Singapore",
+   "location": "",
+   "prior_owner": "Singapore Energy Market Authority [100%]",
+   "death_status": "cancelled",
+   "death_year": 2024,
+   "years_dead": 2,
+   "revival_priority": "normal"
+  }
+ ]
+}

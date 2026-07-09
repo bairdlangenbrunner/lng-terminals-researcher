@@ -1,0 +1,202 @@
+[
+ {
+  "category": "stale_data",
+  "terminal_id": "T100000131060",
+  "unit_id": "G100002106000",
+  "terminal_name": "Vung Ang LNG Terminal",
+  "issue": "CancelledYear=2023 and StopYear=2023 (ShelvedCancelledStatusType=inferred) sit on a row whose Status is proposed (Substatus actual) - residue of a prior inferred cancellation that was reversed when the project revived. Ha Tinh approved investment policy AND the PV Power/Lilama/B.Grimm consortium in June 2026 (provincial portal post 2026-06-09), so the cancel-year fields are contradictory stale data, which is also why their [ref] cells were blank.",
+  "severity": "high",
+  "suggested_action": "Apply the staged green+empty deletions of CancelledYear, StopYear, ShelvedCancelledStatusType (see updates file). No replacement refs needed once deleted.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "status_timeline",
+  "terminal_id": "T100001057484",
+  "unit_id": "G100001065714",
+  "terminal_name": "Quynh Lap LNG Terminal",
+  "issue": "APPLIED IN LIVE DB (2026-07-09). Staged as a Status + ConstructionYear update (see updates file), and the live status_timeline now carries the construction/actual/2026-May milestone (st_id 41207, tl_order 4) alongside the pre-existing proposed/2023 (tl_order 1) and operating-planned/2030 (tl_order 3) - confirmed via read-only Postgres. Groundbreaking held 2026-05-18/19 for the integrated Quynh Lap LNG project (~$2.3bn, 1,500 MW plant + LNG terminal). Korea Herald (2026-05-20, https://www.koreaherald.com/article/10740997) explicitly scopes the groundbreaking as 'the construction of a 1.5-gigawatt LNG combined-cycle power plant and an LNG terminal in Nghe An province' -> the terminal IS in scope, which resolves the earlier plant-vs-terminal doubt.",
+  "severity": "high",
+  "suggested_action": "DONE - status is now construction in the live DB. Optional cleanup: the construction/2026 milestone sits at tl_order 4 (after operating-planned/2030 at order 3); nudge its order below the proposed/2023 entry if you want the timeline to render chronologically. Residual reviewer caveat: vneconomy + lngprime use power-plant-centric 'technical infrastructure' framing; koreaherald is the source explicitly naming the terminal in the groundbreaking. Withdrawn: the earlier disc.qa 'terminal construction from 2027' figure is not supported by any re-verified source. Refs: koreaherald 10740997; lngprime 186858; vneconomy quynh-lap (all re-verified 2026-07-09).",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "orphan_ref_resolution",
+  "terminal_id": "T100001057484",
+  "unit_id": "G100001065714",
+  "terminal_name": "Quynh Lap LNG Terminal",
+  "issue": "ProposalDate [ref] (theinvestor d12084, article dated 2024-09-04) is filled while ProposalYear/Month are blank. The ref genuinely supports proposal-phase reporting: Nghe An called for investment in Sept 2024; the project entered plans earlier as the PDP8 coal->LNG conversion (PDP8 approved May 2023).",
+  "severity": "medium",
+  "suggested_action": "Fill ProposalYear - recommend 2024 (September), matching the cited ref; 2023 (PDP8 listing) is defensible if GEM prefers plan-inclusion dates, but would need a different ref. Do not blank the ref. StartDate [ref] on this row is NOT orphaned - it supports the populated Original/LatestPlannedStartYear=2030 ('2030' PASS); keep. Location [ref] (Google Maps) supports the populated lat/lng (coordinate token PASS); keep - free-text Location staged separately.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "entity",
+  "terminal_id": "T100001057484",
+  "unit_id": "G100001065714",
+  "terminal_name": "Quynh Lap LNG Terminal",
+  "issue": "Parent ('Government of Vietnam', E100001000204) and ParentHQCountry become stale once the staged Owner update (PV Power/SK Innovation/NASU consortium) is applied.",
+  "severity": "medium",
+  "suggested_action": "Update Parent to the consortium members' parents (PetroVietnam for PV Power; SK Inc for SK Innovation; NASU's parent unclear - Tate & Lyle/TH-linked sugar JV history, needs staff check) and set Parent GEM Entity IDs. Same applies to Vung Ang (Parent='unknown' E100000132388 after its staged Owner update).",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "link_rot",
+  "terminal_id": "T100000131059",
+  "unit_id": "G100002105900",
+  "terminal_name": "Hai Lang LNG Terminal",
+  "issue": "nsenergybusiness.com/projects/hai-lang-lng-power-centre/ (used in FacilityType/Status/Owner/Capacity/ProposalDate/StartDate/PowerPlantsSupplied refs) returns HTTP 403 to automated checks - bot-blocked, not dead; Wayback snapshot verified ('Korea Gas' PASS via web.archive.org/web/2024/...). Separately, https://www.igu.org/resources/2024-world-lng-report/ in Owner [ref] returns HTTP 404 (dead).",
+  "severity": "medium",
+  "suggested_action": "Keep the nsenergy refs (bot-block != dead; optionally append the Wayback URL). Remove the dead IGU URL from Owner [ref] or replace with an archived copy of the IGU 2024 World LNG Report; owner value remains supported by nsenergy (via archive), baodautu ('40%' PASS) and newsworld.co.kr ('Hanwha' PASS).",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "data_hygiene",
+  "terminal_id": "T100000131059",
+  "unit_id": "G100002105900",
+  "terminal_name": "Hai Lang LNG Terminal",
+  "issue": "Owner [ref] cell contains duplicated URLs: nsenergy listed 4x, igu.org 2x, newsworld.co.kr 2x (8 entries, only 3 distinct sources - mirror/duplicate URLs are one source each).",
+  "severity": "low",
+  "suggested_action": "Dedup Owner [ref] to one URL per distinct source (nsenergy, newsworld; drop dead igu per link_rot note).",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "ref_verification",
+  "terminal_id": "T100000131059",
+  "unit_id": "G100002105900",
+  "terminal_name": "Hai Lang LNG Terminal",
+  "issue": "Location [ref] (vietnambiz.vn 2021 article) loads (token 'LNG' PASS) but neither 'Hai Lang' nor 'Hải Lăng' was found in the extracted text - likely lazy-rendered body; support for the location values could not be machine-confirmed. Also note orphan-pattern check: StartDate [ref] is NOT orphaned (planned start years populated and re-verified); Location free-text is blank but Prefecture/District (Hải Lăng District) + coordinates are populated, so no fill staged.",
+  "severity": "low",
+  "suggested_action": "Manually confirm the vietnambiz page still names Hai Lang, or swap to a provincial source (e.g. quangtri.gov.vn project pages). Optionally fill Location='Southeast Quang Tri Economic Zone' if a verified ref is added.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "status_timeline",
+  "terminal_id": "T100000131059",
+  "unit_id": "G100002105900",
+  "terminal_name": "Hai Lang LNG Terminal",
+  "issue": "Status=proposed re-confirmed: as of the latest verified reporting the project is pre-construction (project company formation, land clearance, EPC bidding through 2025; construction planned from Jan/Q1 2026 with COD 2029-12-31). No groundbreaking-on-main-works confirmation found as of Jul 2026. ConstructionYear/Month staged 2025/Q4 -> 2026/Q1 (yellow) to reflect the slipped plan.",
+  "severity": "low",
+  "suggested_action": "No status change. When fetch_timeline is back, check whether the timeline carries the 2022 'technical component' groundbreaking event; if EPC/main construction is confirmed started in 2026, escalate to a construction status review.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "link_rot",
+  "terminal_id": "T100000130902",
+  "unit_id": "G100002090200",
+  "terminal_name": "Chan May LNG Terminal",
+  "issue": "Both refs on this row fail live automated checks: Reuters (FacilityType/StartDate/Location refs) returns HTTP 401 (bot-blocked, not dead; Wayback verified, 'Chan May' PASS via web.archive.org/web/2024/...); chanmaylng.com/en/ (Owner [ref]) is unreachable (HTTPS connection failure; /eng.html variant 403) - site effectively defunct; Wayback 2024 snapshot verified.",
+  "severity": "medium",
+  "suggested_action": "Keep the Reuters ref (bot-block); replace or supplement the chanmaylng.com Owner [ref] with the archived snapshot (https://web.archive.org/web/2024/https://chanmaylng.com/en/).",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "inferred_status",
+  "terminal_id": "T100000130902",
+  "unit_id": "G100002090300",
+  "terminal_name": "Chan May LNG Terminal",
+  "issue": "Completeness flags on blank Status [ref]/ShelvedYear [ref]/CancelledYear [ref]/StopYear [ref]: these are inherent to an INFERRED cancellation (ShelvedCancelledStatusType=inferred; shelved 2022 = 2y after last ~2020 news, cancelled 2024 = 4y) - there is no citable cancellation document. Dormancy re-confirmed Jul 2026: no activity on the original Chan May LNG JSC project found since ~2020. The Stavian Chan May record (T100001049935) is a distinct newer project at the same port and is correctly kept separate; trade coverage of Stavian does NOT revive this record. StartDate [ref] (Reuters) is not orphaned - it supports the populated planned start 2024.",
+  "severity": "low",
+  "suggested_action": "Leave the inferred-status ref cells blank per methodology (no fabricated refs); keep cancelled (inferred 4y). Discovery/dormant-revival watch covers any genuinely new third project at the site.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "link_rot",
+  "terminal_id": "T100001049935",
+  "unit_id": "G100001057589",
+  "terminal_name": "Stavian Chan May LNG Terminal",
+  "issue": "The sponsor MOU page (stavian.com, used in FacilityType/Status/Owner/ProposalDate refs) returns HTTP 404 live (www and bare host) - genuinely dead, not bot-blocked. Wayback snapshot verified ('Wealth Power'/'Chan May' PASS). No independent press coverage of the Sept 2024 MOU was found to substitute.",
+  "severity": "high",
+  "suggested_action": "Apply the staged ref swaps to the archive URL (4 ref columns; also dedups the doubled URL in Owner [ref]).",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "monitoring",
+  "terminal_id": "T100001049935",
+  "unit_id": "G100001057589",
+  "terminal_name": "Stavian Chan May LNG Terminal",
+  "issue": "No development found since the Sept 2024 Stavian-Wealth Power MOU (checked through Jul 2026, EN+VN searches; Hue coverage of Chan May-Lang Co now emphasizes eco-tourism/logistics). Sponsor page removal is a mild negative signal.",
+  "severity": "low",
+  "suggested_action": "If still no concrete step by ~Sept 2026 (2 years after last news), apply the standard shelved (inferred 2y) treatment at the next pass.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "orphan_ref_resolution",
+  "terminal_id": "T100001050072",
+  "unit_id": "G100001057745",
+  "terminal_name": "Danang LNG Terminal",
+  "issue": "Location [ref] (Google Maps) filled while Location free-text blank: the ref supports the populated lat/lng (coordinate token PASS), so it is not a true orphan. Free-text Location='Lien Chieu' staged with two verified news refs.",
+  "severity": "low",
+  "suggested_action": "Apply staged Location fill; keep the Google Maps ref alongside for coordinates.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "capacity_note",
+  "terminal_id": "T100001050072",
+  "unit_id": "G100001057745",
+  "terminal_name": "Danang LNG Terminal",
+  "issue": "Vietnamese coverage of the Lien Chieu liquid/gas berth cites ~2 million tonnes/year handling capacity and 62.29 ha across a combined LNG+LPG complex (2 berths first phase, 4 more post-2030, 10,000-100,000 DWT). This is combined liquid-cargo throughput, NOT an LNG nameplate - Capacity correctly left blank.",
+  "severity": "low",
+  "suggested_action": "Do not stage a Capacity value until an LNG-specific figure (mtpa or m3 storage) is published. Watch for the investor-selection outcome (container-port award Mar 2026 did not include this berth).",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "ref_verification",
+  "terminal_id": "T100000130903",
+  "unit_id": "G100002090300",
+  "terminal_name": "Quang Nam LNG Terminal",
+  "issue": "Status [ref]/CancelledYear [ref]/StopYear [ref] all point to https://vepg.vn/wp-content/uploads/2025/06/768_QD-TTg_658055.pdf (PDP8 revision Decision 768/QD-TTg, 2025-04-15) - the PDF is image-only (no text layer), so the citation fails automated value verification. Text mirrors could not be machine-verified either (thuvienphapluat.vn 403 bot-block; xaydungchinhsach.chinhphu.vn / baochinhphu.vn render via JS). Note the cancellation is an EXCLUSION-based inference (project absent from the revised PDP8 list) - no page will literally state 'Quang Nam LNG cancelled'; ShelvedYear=2023 [ref] blank is inherent to the inferred shelving.",
+  "severity": "medium",
+  "suggested_action": "Manually swap the three refs to a text version of Decision 768/QD-TTg (e.g. https://thuvienphapluat.vn/van-ban/Tai-nguyen-Moi-truong/Quyet-dinh-768-QD-TTg-2025-Dieu-chinh-Quy-hoach-phat-trien-dien-luc-quoc-gia-thoi-ky-2021-2030-651977.aspx - loads in a browser) or keep the vepg PDF with a researcher note that it is scanned. Dormancy re-confirmed: no ECV Quang Nam activity through Jul 2026 (ECV's active Vietnam record is Mui Ke Ga FSRU); cancelled stands.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "inferred_status",
+  "terminal_id": "T100000130979",
+  "unit_id": "G100002097900",
+  "terminal_name": "Khanh Hoa LNG Terminal",
+  "issue": "Completeness flags on blank Status [ref]/ShelvedYear [ref]/StopYear [ref]: inherent to the INFERRED shelving (2023 = 2y after the 2021 Millennium Energy proposal wave; no shelving document exists). Dormancy re-confirmed Jul 2026: no Millennium Energy/Van Phong LNG-terminal news found (EN+VN), and the project is not in the Apr 2025 PDP8 revision.",
+  "severity": "low",
+  "suggested_action": "Leave inferred-status ref cells blank; keep shelved (inferred). At the 4-year mark (~2027 vs last 2021-2023 activity) apply the cancelled inference per lifecycle rules. Any genuinely new project at Van Phong belongs to Discovery as a NEW record.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "ref_verification",
+  "terminal_id": "T100000130979",
+  "unit_id": "G100002097900",
+  "terminal_name": "Khanh Hoa LNG Terminal",
+  "issue": "StartDate [ref] (vir.com.vn 84264) is filled and the page loads ('Millennium' PASS), but the token '2030' backing Original/LatestPlannedStartYear=2030 was NOT found in the extracted text (VIR pages appear partially rendered to bots); the Vietnamnet ref also lacks '2030'. The 2030 value matches VietnamPlus-reported phasing (phase 1 ops 2027-2030, phase 2 after 2030) but is only weakly machine-verified.",
+  "severity": "low",
+  "suggested_action": "Manually confirm 2030 on the VIR page; if absent, consider https://en.vietnamplus.vn/us-firm-proposes-two-lng-projects-in-van-phong-ez/201466.vnp as a supplementary ref (verify first). Not an orphan - the ref pairs with populated planned start years.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "admin_note",
+  "terminal_id": "T100000131060",
+  "unit_id": "G100002106000",
+  "terminal_name": "Vung Ang LNG Terminal",
+  "issue": "June 2026 approval documents place the project in 'Hoanh Son ward, Ha Tinh province' (post-2025 administrative reorganization), while GEM has Location='Ky Loi commune', Prefecture='Ky Anh District'. Same site (coordinates unchanged, Accuracy=exact) - naming drift from Vietnam's 2025 commune/ward mergers, which will affect many Vietnam rows.",
+  "severity": "low",
+  "suggested_action": "Optionally update Location/Prefecture to the new administrative names on a future pass (consider handling Vietnam-wide for consistency rather than piecemeal).",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "correction",
+  "terminal_id": "T100000131060",
+  "unit_id": "G100002106000",
+  "terminal_name": "Vung Ang LNG Terminal",
+  "issue": "PLANT-vs-TERMINAL conflation caught in central review: the shard staged Owner = PV Power [51%]/B.Grimm Power [34%]/Lilama - that consortium was approved (June 2026) for the separate Vung Ang III POWER PLANT (2x750 MW, VND 51.43tn). The LNG TERMINAL (this GEM record) was separately approved by Ha Tinh to PV GAS: North Central LNG Terminal / Kho LNG Vung Ang, VND 26.7tn (~$1.01bn), phase 1 operational 2029-2030 (1-3 mtpa), completion target Q4/2029. Owner corrected to 'PetroVietnam Gas' (3 verified independent refs), LatestPlannedStartYear corrected 2031→2029, Parent staged 'Vietnam Oil and Gas Group Co' (yellow, single explicit source).",
+  "severity": "high",
+  "suggested_action": "Apply the corrected Owner/Parent/StartYear values. Keep the Vung Ang III power-plant consortium in the gas-plant tracker, not on this terminal record. Terminal capacity was approved as a 1-3 mtpa phase-1 RANGE - Capacity left blank per range rule; revisit when a firm figure lands.",
+  "researcher_initials": "AI-draft (central review)"
+ },
+ {
+  "category": "entity_reuse",
+  "terminal_id": "T100000131060",
+  "unit_id": "G100002106000",
+  "terminal_name": "Vung Ang LNG Terminal",
+  "issue": "Lilama new-entity request dropped in central review: with the Owner correction, Lilama no longer appears in any staged value; and it EXISTS in GEM anyway as 'Vietnam Mechanical Assembly' (100002016754) - already a Parent on the Quang Ninh LNG Terminal row ('Vietnam Mechanical Assembly JSC').",
+  "severity": "low",
+  "suggested_action": "If Lilama is ever needed on a Vietnam record, reuse entity 100002016754 (Vietnam Mechanical Assembly).",
+  "researcher_initials": "AI-draft (central review)"
+ }
+]

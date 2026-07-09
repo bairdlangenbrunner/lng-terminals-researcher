@@ -72,4 +72,9 @@ COASTAL_COUNTRIES = {
     "Federated States of Micronesia", "Nauru", "New Zealand", "Palau",
     "Papua New Guinea", "Samoa", "Solomon Islands", "Tonga", "Tuvalu",
     "Vanuatu", "New Caledonia", "French Polynesia", "Guam",
+
+    # --- Hand-added edge cases (GEM-covered despite no open-ocean coast; see
+    # docstring — a gem_countries_outside_reference hit means ADD, not ignore) ---
+    "Botswana",      # landlocked; GEM tracks a domestic-linked LNG project (Serowe)
+    "Turkmenistan",  # Caspian-coastal only; GEM-covered
 }

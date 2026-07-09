@@ -1,0 +1,112 @@
+[
+ {
+  "category": "entity_correction",
+  "terminal_id": "",
+  "unit_id": "",
+  "terminal_name": "Cong Thanh LNG Terminal (staged candidate)",
+  "issue": "The 2026-06 discovery batch staged 'Cong Thanh Thermal Power JSC' as a NEW entity based on entity_lookup --remote returning no match — but that remote endpoint (gem-project-db.herokuapp.com) is degraded and returns an empty page for every query. The read-only Postgres entity_history table shows an EXISTING entity 'Cong Thanh Thermal Power' (entity id 100000120281; an older duplicate 100000002348 is marked '[TO BE DELETED]').",
+  "severity": "medium",
+  "suggested_action": "Drop the 2026-06 batch's new-entity addition for Cong Thanh Thermal Power JSC and reuse existing entity id 100000120281; the re-staged 2026-07 Cong Thanh record already uses the canonical name 'Cong Thanh Thermal Power'. Also note for tooling: entity_lookup --remote is currently non-functional (empty 6.3kB response); the Postgres entity_history check is the working remote path.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "update_lead",
+  "terminal_id": "T100000131060",
+  "unit_id": "",
+  "terminal_name": "Vung Ang LNG Terminal",
+  "issue": "GEM row has Owner blank / status proposed. PV Gas has been approved as the investor of the USD 1.01bn Vung Ang LNG terminal project (Ha Tinh in-principle approval; phase 1 targeted 2029-2030). Verified: theinvestor.vn d17112 ('PV Gas' / 'Vung Ang' PASS).",
+  "severity": "medium",
+  "suggested_action": "Route to Update: set Owner/Operator = PetroVietnam Gas (existing entity), refresh status refs and timeline. URL: https://theinvestor.vn/pv-gas-approved-as-investor-of-1-bln-lng-terminal-project-in-central-vietnam-d17112.html",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "update_lead",
+  "terminal_id": "T100001057484",
+  "unit_id": "",
+  "terminal_name": "Quynh Lap LNG Terminal",
+  "issue": "GEM row: proposed, Owner 'Government of Vietnam'. Groundbreaking held May 2026 for the Quynh Lap LNG power project (SK Innovation / PV Power / NASU consortium; 250,000 m3 tank + receiving port; terminal construction from 2027, COD ~2030). Verified: lngprime.com 186858 ('Quynh Lap' / 'SK' PASS) + koreaherald 10740997 ('Quynh Lap' / 'LNG' PASS).",
+  "severity": "medium",
+  "suggested_action": "Route to Update: owner to the SK Innovation/PV Power/NASU consortium, status/timeline refresh (power-project groundbreaking May 2026; terminal itself pre-construction — verify which component broke ground before any status change). URLs: https://lngprime.com/asia/work-starts-on-lng-power-plant-project-in-vietnam/186858/ ; https://www.koreaherald.com/article/10740997",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "update_lead",
+  "terminal_id": "T100001061416",
+  "unit_id": "",
+  "terminal_name": "Haiphong FSRU Terminal",
+  "issue": "Vingroup/VinEnergo's Hai Phong LNG project: power-plant construction started Sep 2025; the LNG terminal component is proposed at Nam Do Son (Oct 2025 port-master-plan addition request; Jan 2026 submission to Ministry of Construction). Verified: theinvestor.vn d18029 ('Nam Do Son' / 'LNG' PASS).",
+  "severity": "medium",
+  "suggested_action": "Route to Update: refine location (Nam Do Son port area) and terminal-component status/refs on the existing record — NOT a new terminal (same sponsor/project as the GEM Haiphong FSRU row; the 2026-06 batch already matched Vingroup's project to this record). URL: https://theinvestor.vn/vingroup-proposes-adding-lng-terminal-project-to-north-vietnam-port-master-plan-d18029.html",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "dormant_revival_check",
+  "terminal_id": "",
+  "unit_id": "",
+  "terminal_name": "(10 cancelled/shelved Vietnam sites)",
+  "issue": "2026-07 dormant-revival watch web-searched all 10 dead sites: Khanh Hoa (T100000130979, shelved — Millennium project, no new activity), Mui Ke Ga FSRU (T100000130975, shelved — still listed 'behind schedule' in the Apr-2025 PDP8 revision, no restart), South East (T100000131041), South West FSRU (T100000130991), Tien Giang (T100000131074), Tien Lang FSRU (T100000131076), Cat Hai FSRU (T100000130980), Ben Tre FSRU (T100000131075), Quang Nam (T100000130903), Chan May (T100000130902). No revivals found. The two look-alike revivals are already in GEM as separate records: Stavian Chan May (vs dead Chan May) and Haiphong FSRU/Vingroup (vs dead Cat Hai / Tien Lang).",
+  "severity": "low",
+  "suggested_action": "No action; recorded so the next sweep can diff against this pass. Note the new (cancelled) Nam Van Phong LNG Terminal staging links to Khanh Hoa LNG Terminal via AssociatedTerminals — a distinct dead Petrolimex proposal at the same locality, not a revival.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "gemwiki_coverage_check",
+  "terminal_id": "",
+  "unit_id": "",
+  "terminal_name": "(Vietnam gem.wiki coverage cross-check)",
+  "issue": "2026-07 discovery: enumerated gem.wiki 'Category:LNG Terminals in Vietnam' via the MediaWiki API (29 pages) plus intitle LNG/FSRU/FSU searches (31/8/0 hits; extras were power stations, pipelines, and non-Vietnam terminals) and reconciled against the export CSV's 29 Vietnam TerminalIDs: exact 1:1 match, no wiki-only terminal (no Durban-class gap).",
+  "severity": "low",
+  "suggested_action": "No action; recorded so the next sweep can diff against this pass.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "pdp8_reconciliation",
+  "terminal_id": "",
+  "unit_id": "",
+  "terminal_name": "(Apr-2025 revised PDP8 LNG list vs GEM)",
+  "issue": "2026-07 discovery reconciled the Decision 768/QD-TTg (Apr 2025) revised-PDP8 LNG-to-power list against GEM's 29 Vietnam terminals + this batch's staged candidates: Quang Ninh, Thai Binh, Nghi Son, Quynh Lap, Hai Lang I, Ca Na, Son My I&II, Long Son, Long An I&II, Bac Lieu, Vung Ang, Hai Phong all map to existing GEM records; LNG Quang Trach II maps to this batch's staged Quang Trach II LNG Terminal; Nhon Trach 3&4 is supplied by Thi Vai and LNG Hiep Phuoc I by Cai Mep (GEM PowerPlantsSupplied = 'Hiep Phuoc power station' — power projects on third-party terminal supply, not missing terminals); 'Hung Yen' in post-Jul-2025 province-merger reporting = the Thai Binh project (Thai Binh merged into Hung Yen province). No PDP8-listed LNG import site is uncovered. Foreign-sponsor sweep same result: Marubeni/Tokyo Gas = Quang Ninh, AES = Son My, GS Energy = Long An, SK = Quynh Lap — all existing records.",
+  "severity": "low",
+  "suggested_action": "No action; PDP8 reconciliation closed with zero uncovered sites.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "flng_export_check",
+  "terminal_id": "",
+  "unit_id": "",
+  "terminal_name": "(offshore-gas FLNG/export angle)",
+  "issue": "2026-07 discovery checked Vietnam's offshore gas developments for any FLNG/liquefaction-export angle: Block B (PetroVietnam/Mitsui/PTTEP, first gas ~Q4 2026), Ca Voi Xanh (ExxonMobil, stalled) and Ken Bau (Eni/Essar, appraisal 2024-2026) are all pipe-to-shore developments feeding domestic power/industry — no FLNG or LNG-export project found. No candidate.",
+  "severity": "low",
+  "suggested_action": "No action; recorded so the next sweep can diff against this pass.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "update_lead",
+  "terminal_id": "T100001061416",
+  "unit_id": "",
+  "terminal_name": "Haiphong FSRU",
+  "issue": "STATUS RISK: Vingroup told the government (25 Mar 2026 document, Reuters-reported) it proposes ABANDONING the 4.8 GW Haiphong LNG power plant in favor of a renewables+BESS project, citing Iran-war LNG price escalation (~5 mtpa import need, USD 3.5-3.8bn/yr). GEM holds the terminal record as construction (power-plant groundbreaking Sep 2025). Verified: reccessary.com ('Vingroup' PASS). A proposal to exit, not yet a confirmed cancellation.",
+  "severity": "high",
+  "suggested_action": "Route to Update: watch for the government's response / formal withdrawal; if the exit is confirmed, status -> shelved/cancelled with timeline entry. Read together with the earlier Nam Do Son location lead on this record (both are 2026 signals pulling in opposite directions). URL: https://www.reccessary.com/en/news/vingroup-seeks-exit-lng-project-energy-risks-escalate",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "update_lead",
+  "terminal_id": "T100000130826",
+  "unit_id": "",
+  "terminal_name": "Bac Lieu LNG Terminal",
+  "issue": "Sponsor Delta Offshore Energy's own PR (20 Mar 2026, USTDA U.S. Global Gas Initiative launch) now brands the Bac Lieu LNG-to-power project 'Trump Terminal Vietnam'. Verified: deltaoffshoreenergy.com ('Trump Terminal' PASS). Sponsor-PR alias only so far, not seen in independent press as the project name.",
+  "severity": "low",
+  "suggested_action": "Route to Update: consider adding 'Trump Terminal Vietnam' to OtherNames once an independent outlet uses it; no other field change. URL: https://deltaoffshoreenergy.com/2026/03/20/doe-spotlights-bac-lieu-lng-project/",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "cross_reference",
+  "terminal_id": "",
+  "unit_id": "",
+  "terminal_name": "Quang Trach II LNG Terminal (staged candidate)",
+  "issue": "Supply-chain tension for reviewer context: reporting on the PV Gas Vung Ang / North Central LNG Terminal approval positions THAT terminal as the LNG supplier to the Quang Trach II and III power plants, while the staged Quang Trach II candidate has its own dedicated 'kho, cang LNG' component (~VND 11.8tn of the VND 52.49tn EVN project) per its verified sources. Both can proceed or either could absorb the other's role as PDP8 implementation firms up.",
+  "severity": "low",
+  "suggested_action": "Keep the Quang Trach II candidate (own terminal component independently sourced); watch for a supply decision that would demote it to a Vung Ang-supplied plant (then retire/cancel the candidate record).",
+  "researcher_initials": "AI-draft (central review)"
+ }
+]

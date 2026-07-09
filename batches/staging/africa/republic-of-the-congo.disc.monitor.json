@@ -1,0 +1,14 @@
+[
+  {
+    "country": "Republic of the Congo",
+    "candidate_name": "Banga Kayo LNG (Wing Wah associated-gas valorization plant, Tchamba Nzassi)",
+    "sponsor_or_proposer": "Wing Wah Exploration & Production Pétrolière (Southernpec subsidiary), with SNPC; part of the Sep-2025 US$23bn Banga Kayo/Holmoni/Cayo integrated development",
+    "first_observed_batch": "2026-06 discovery",
+    "last_observed_batch": "2026-07 discovery",
+    "current_state": "Onshore associated-gas plant at the Banga-Kayo field (Tchamba Nzassi sub-prefecture, Kouilou, near the Cabinda border south of Pointe-Noire), inaugurated by President Sassou N'Guesso 2025-11-17. Three trains (1+2+2 mcm/d, 5 mcm/d at full capacity); government figures: 219,000 t propane, 151,000 t butane and 250,000 t LNG (~0.25 mtpa) per year 'for national and international markets'. Phase 3 was due December 2025.",
+    "missing_threshold_elements": "SCOPE GATE UNRESOLVED — no source confirms LNG crossing a border BY SHIP: no marine jetty/loading facility, no LNG carrier call, and no seaborne cargo is reported anywhere found (products are described as 'primarily for the domestic market, with excess exported regionally', consistent with trucking to Cabinda/DRC). dedup_index routes it discovery_new and the sponsor/location/capacity/step elements are all met, so ONLY the marine-export scope question keeps this off new_terminals. Per the scope-gate rule (resolve doubt before staging, never stage-with-doubt) it is held here.",
+    "watch_for": "Evidence of seaborne LNG export or import: a jetty/marine loading terminal at or serving the plant, an LNG carrier loading at Pointe-Noire attributed to Banga Kayo/Wing Wah, an SNPC/Wing Wah statement on LNG shipping, or the plant's LNG appearing in trade-flow data. Any such evidence => stage as a new operating export terminal (owner Wing Wah/SNPC, ~0.25 mtpa, start 2025).",
+    "best_lead_url": "https://gouvernement.cg/hydrocarbures-le-chef-de-letat-inaugure-lusine-de-valorisation-du-gaz-associe/",
+    "notes": "url_verifier.py PASS on best_lead_url (primary, Government of Congo) and on Enerdata (https://www.enerdata.net/publications/daily-energy-news/congo-inaugurates-wing-wahs-and-snpcs-5-mcmday-18-bcmyear-gas-plant.html). NOTE: the 2026-06 sweep staged this as a new operating export terminal (archived in _archive_pre20260702/republic-of-the-congo.disc.newterminals.json); that record was NOT applied to GEM, and this pass demotes the candidate to monitor because the marine-export scope question could not be resolved — the earlier 'export' classification rested on inference, not an explicit source."
+  }
+]

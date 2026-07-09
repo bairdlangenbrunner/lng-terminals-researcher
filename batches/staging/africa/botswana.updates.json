@@ -9,14 +9,75 @@
     "old_value": "2026",
     "new_value": "2027",
     "confidence": "green",
-    "source_tier": "trade press (sponsor-derived), 2 independent",
+    "source_tier": "trade press (3 independent)",
     "ref_field": "StartDate [ref]",
     "ref_urls": [
       "https://energiesmedia.com/botswana-serowe-cbm-targets-2026-fid/",
-      "https://smallcaps.com.au/article/botala-energy-lng-offtake-deal-serowe-project-botswana"
+      "https://smallcaps.com.au/article/botala-energy-lng-offtake-deal-serowe-project-botswana",
+      "https://www.offshore-energy.biz/botswanas-lng-to-provide-energy-lifeline-for-impending-gas-shortage-in-south-africa/"
     ],
-    "source_notes": "Sponsor Botala Energy (ASX/BSE: BTE) now targets FID on the Serowe CBM-to-LNG project in H2 2026 and 'first LNG to flow and be delivered in 2027' (Energies Media; corroborated independently by Smallcaps (Australia): Botala 'now targeting first LNG supply in 2027/2028'). With FID not taken until H2 2026, the GEM Phase 1 LatestPlannedStartYear of 2026 is no longer achievable. Phase 1 = the ~200 t/day Galileo Cryobox unit (~0.07 mtpa, matches GEM). OriginalPlannedStartYear deliberately left at 2026 (records the original plan).",
-    "scope_note": "Per-unit timing field; applies to Phase 1 unit row only. Phase 2 LatestPlannedStartYear (2028) unchanged — still consistent with current sourcing.",
+    "source_notes": "Energies Media (2026-01-12): 'Botala anticipates the first LNG to flow and be delivered in 2027'; Small Caps: 'targeting first LNG supply in 2027/2028'; Offshore Energy corroborates 2027. All three URLs verifier-PASS on '2027'. Also replaces the current StartDate [ref] (botalaenergy.com gas-pitse-commercial page), which now returns HTTP 404.",
+    "scope_note": "Phase 1 only; Phase 2 planned start (2028) unchanged.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100001048162",
+    "unit_id": "G100001055209",
+    "terminal_name": "Botswana LNG Terminal",
+    "unit_name": "Phase 1",
+    "country": "Botswana",
+    "field_name": "FIDYear",
+    "old_value": "",
+    "new_value": "2026",
+    "confidence": "green",
+    "source_tier": "trade press (2 independent)",
+    "ref_field": "FIDYear [ref]",
+    "ref_urls": [
+      "https://energiesmedia.com/botswana-serowe-cbm-targets-2026-fid/",
+      "https://energycapitalpower.com/botswana-bets-on-cbm-critical-minerals-in-2026/"
+    ],
+    "source_notes": "Energies Media (2026-01-12): 'targeting a final investment decision sometime in the second half of 2026'; Energy Capital & Power: 'Botala targets a final investment decision in the second half of 2026'. Both verifier-PASS. Expected (pre-FID) year, same convention as Richards Bay Transnet FSRU FIDYear=2028.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100001048162",
+    "unit_id": "G100001055209",
+    "terminal_name": "Botswana LNG Terminal",
+    "unit_name": "Phase 1",
+    "country": "Botswana",
+    "field_name": "FIDStatus",
+    "old_value": "",
+    "new_value": "Pre-FID",
+    "confidence": "green",
+    "source_tier": "trade press (2 independent)",
+    "ref_field": "",
+    "ref_urls": [
+      "https://energiesmedia.com/botswana-serowe-cbm-targets-2026-fid/",
+      "https://energycapitalpower.com/botswana-bets-on-cbm-critical-minerals-in-2026/"
+    ],
+    "source_notes": "FID not yet taken; both sources state FID is targeted for H2 2026 (i.e., project is pre-FID). No FIDStatus [ref] column exists; citations land in FIDYear [ref] via the paired FIDYear record.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100001048162",
+    "unit_id": "G100001055209",
+    "terminal_name": "Botswana LNG Terminal",
+    "unit_name": "Phase 1",
+    "country": "Botswana",
+    "field_name": "Capacity [ref]",
+    "old_value": "https://botalaenergy.com/serowe-cbm-project/gas-pitse-commercial/",
+    "new_value": "https://smallcaps.com.au/article/botala-energy-lng-offtake-deal-serowe-project-botswana, https://energiesmedia.com/botswana-serowe-cbm-targets-2026-fid/",
+    "confidence": "green",
+    "source_tier": "trade press (2 independent)",
+    "ref_field": "",
+    "ref_urls": [
+      "https://smallcaps.com.au/article/botala-energy-lng-offtake-deal-serowe-project-botswana",
+      "https://energiesmedia.com/botswana-serowe-cbm-targets-2026-fid/"
+    ],
+    "source_notes": "Existing Capacity [ref] (botalaenergy.com gas-pitse-commercial) returns HTTP 404 (verifier FAIL). Replacement sources both state Phase 1 offtake/plant scale of 3.5 PJ per annum (Small Caps: 'up to 3.5 petajoules per annum (PJ/a) of LNG in Phase 1'); both verifier-PASS on '3.5'.",
+    "scope_note": "CONVERSION: 3.5 PJ/a of LNG ~= 0.07 mtpa (matches existing GEM Capacity value 0.07 mtpa; value unchanged, ref repair only). Flagged for reviewer verification of the conversion.",
     "researcher_initials": "AI-draft (sweep)"
   }
 ]

@@ -1,0 +1,22 @@
+[
+  {
+    "entity_name": "CEC Africa (Sierra Leone) Limited",
+    "entity_type": "owner/developer",
+    "country_of_hq": "Sierra Leone",
+    "parent_entity": "CEC Africa Investments Limited (unconfirmed - verify before creating)",
+    "rationale_for_new_entity": "Lead developer of the Freetown LNG Terminal per the 25 June 2025 MoU with the Government of Sierra Leone (state.gov summit release names 'CEC Africa Sierra Leone Ltd.'; Anergi release names 'CEC Africa (Sierra Leone) Limited (CECASL)'). No occurrence in the LNG export CSV under any CEC variant.",
+    "lookup_was_run": "yes - bare local (entity_lookup.py 'CEC Africa') and --remote both run 2026-07-02",
+    "lookup_result_summary": "not_found_in_local_data; remote returned no_remote_match - BUT the remote endpoint returned an identical empty 6294-byte response for every query including known entities (e.g. 'Eskom'), so the remote check is INCONCLUSIVE (endpoint appears non-functional). Re-run the entity-system search manually before creating this entity. NOTE for co-developers: AG&P already exists in GEM ('AG&P Terminals & Logistics Pte Ltd', 'AG&P Indonesia', parent 'Atlantic Gulf and Pacific Co' in the export) - REUSE those if AG&P is ever staged as operator; do not create a new AG&P entity. TCQ Power / Anergi / BB Energy have no LNG-export rows and are not being staged as entities (not in owner/operator fields). FOLLOW-UP by lead session 2026-07-02: read-only Postgres company-table search found near-match 'CECA SL Generation' (id 100000002571, Sierra Leone, active) - see candidate_existing_entity. Do NOT create a new entity without resolving against it.",
+    "referenced_by_terminals": "Freetown LNG Terminal (new, Sierra Leone)",
+    "referenced_by_units": "Freetown LNG Terminal -- (new)",
+    "researcher_initials": "AI-draft (discovery sweep)",
+    "candidate_existing_entity": {
+      "entity_id": 100000002571,
+      "name": "CECA SL Generation",
+      "country": "Sierra Leone",
+      "status": "active (deleted=false, defunct=false)",
+      "found_via": "read-only Postgres company table, 2026-07-02 (remote entity_lookup endpoint is non-functional - stale gem-project-db.herokuapp.com host)",
+      "assessment": "Same corporate family (CEC Africa Sierra Leone; 'CECA SL' abbreviation). CECA SL Generation is likely the power-generation SPV, while the LNG MoU names 'CEC Africa (Sierra Leone) Limited (CECASL)' - possibly the parent/sibling legal entity. REVIEWER DECISION: reuse 100000002571 if GEM treats the group as one entity, else create the new entity with CECA SL Generation cross-referenced."
+    }
+  }
+]
