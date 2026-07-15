@@ -1,14 +1,17 @@
 """
 Assemble the batch review xlsx from staged JSON inputs.
 
-Modes:
-  - update: produces sheets for updates, status_timeline_additions, entity_additions,
-            monitor_list (sub-threshold discovery leads found while re-verifying, if any),
-            stale_sweep, country_notes_contributions, qa_review, fsru_sync (if any),
-            and a README
-  - discovery: produces new_terminals, new_units, status_timeline_additions,
-               entity_additions, monitor_list, country_notes_contributions,
-               qa_review, fsru_sync (if any), and README
+Modes (update and discovery are non-overlapping — no row appears in both books):
+  - update: existing-terminal edits — updates, status_timeline_additions,
+            entity_additions, stale_sweep, country_notes_contributions,
+            qa_review (update-pass), wiki_updates, fsru_sync (if any), captive-power
+            review sheets (if any), and a README. NOT monitor_list (discovery-only).
+  - discovery: new/potential-terminal content ONLY — new_terminals, new_units,
+               monitor_list (rolled forward but filtered to the batch's checked
+               roster), entity_additions (discovery-pass = `*.disc.entity.json`,
+               e.g. a new terminal's sponsor), qa_review (discovery-pass =
+               `*.disc.qa.json`), and a README. NOT status_timeline_additions /
+               wiki_updates (those are existing-terminal artifacts, update-only).
   - reconciliation: produces audit_operating / audit_nonoperating (evidence layer),
                     routing (non-edit items: Discovery / gem_only / narrative),
                     edits_to_gem (GEM-CSV-shaped paste view, resolved values for
@@ -24,7 +27,8 @@ Input JSON files (collected from prior script outputs OR built in-session):
   - ./staged_entity_additions.json
   - ./staged_monitor_list.json
   - ./staged_country_notes.json
-  - ./staged_qa_review.json
+  - ./staged_qa_review.json            (update-pass qa; update mode)
+  - ./staged_qa_review_discovery.json  (discovery-pass qa; discovery mode)
   - ./stale_sweep.json
   - ./fsru_sync.json
   - ./report_diff.json (for reconciliation mode)
@@ -439,6 +443,33 @@ SHEET_DESCRIPTIONS = {
         "verification_status color-coded (green=CONFIRMED, yellow=single-source, "
         "red=CONFLICTING DATA)."
     ),
+    "terminal_first_priors": (
+        "Captive-power cross-tracker (§9), REVIEW CONTEXT — not a paste target. One row per "
+        "confirmed-captive terminal: whether GOGPT carried a correct captive prior "
+        "(gogpt_captive_prior) and HOW captive power was confirmed (confirmed_how) with the "
+        "verified source URLs (confirmed_how [ref]). Demonstrates the terminal-first method — "
+        "most terminals had NO correct GOGPT prior yet were confirmed by researching each "
+        "terminal's own drive technology. confidence cell color-coded."
+    ),
+    "neighboring_plants": (
+        "Captive-power cross-tracker (§9), REVIEW CONTEXT — not a paste target. The nearest "
+        "GOGPT gas plant(s) to each confirmed-captive terminal by pure haversine distance "
+        "(uncapped). The point: the nearest GOGPT plant is an unrelated merchant/grid/"
+        "industrial plant, NOT the terminal's own captive power (which is on-site mechanical-"
+        "drive turbines GOGPT doesn't track) — so a plant-first sweep would miss these "
+        "terminals. info_url is an INDEPENDENT (non-gem.wiki) source about the plant; "
+        "'gogpt_record (nav only)' is the GOGPT/gem.wiki page as a navigation pointer only, "
+        "italic/gray, NEVER a citation."
+    ),
+    "gogpt_candidates": (
+        "Captive-power cross-tracker (§9), GOGPT-SIDE PROPOSAL — nothing here is staged on the "
+        "LNG side. One row per confirmed-captive terminal assessing whether its on-site power "
+        "is a candidate NEW GOGPT power-station record. gogpt_candidate verdict color-coded "
+        "(green=add / yellow=maybe/reviewer-call / uncolored=do-not-add). electric_mw is "
+        "ELECTRICITY-generating nameplate only; mechanical_drive_note keeps the (non-electric) "
+        "compressor shaft-power figure OUT of electric_mw. basis [ref] holds the verified "
+        "sources. confidence cell color-coded."
+    ),
 }
 
 # Columns NEVER written by this script (per gem_db_schema.md). Kept as two
@@ -749,8 +780,13 @@ def _append_country_breakdown(wb, checked, changed, not_found):
 
 def build_updates_sheet(wb, updates):
     ws = wb.create_sheet("updates_summary")
-    # Common update fields plus the cluster of [ref] partners
+    # Common update fields plus the cluster of [ref] partners. `mechanical` is a
+    # left-most review flag (captive-power batches): True where the terminal's
+    # captive power includes mechanical-drive turbines (shaft power to the
+    # refrigeration compressors) rather than being purely electricity-generating.
+    # It is a review annotation only — not a GEM column, never in the paste view.
     headers = [
+        "mechanical",
         "terminal_id", "unit_id", "terminal_name", "unit_name", "country",
         "field_name", "old_value", "new_value",
         "ref_url", "confidence", "source_tier", "source_notes",
@@ -849,18 +885,55 @@ def build_update_csv_shaped_sheet(wb, updates, gem_csv_path, scope_terminal_ids=
         by_unit.setdefault(key, {})[u.get("field_name")] = u
     scope_tids = set(scope_terminal_ids) if scope_terminal_ids else {k[0] for k in by_unit}
 
+    # Left-most REVIEW-ONLY annotation columns (captive-power batches): the related
+    # GOGPT oil & gas plant's id / name / gem.wiki pointer, so a reviewer sees which
+    # cross-tracker record each CaptiveGasPower edit came from. These are NOT GEM
+    # columns and are NEVER pasted into the DB — the gem.wiki URL is a navigation
+    # pointer to the GOGPT record, not a citation. Emitted whenever the staged records
+    # CARRY these keys (a normal Update batch has none, so the sheet is unchanged); a
+    # captive-power area where no terminal has a *confirmed* GOGPT power-station record
+    # (the terminal-first finding — e.g. Texas) can instead carry the NEAREST plant by
+    # distance as a SUGGESTION: a record sets `gogpt_suggested` truthy and those cells
+    # are filled RED so a reviewer reads them as "verify this, likely not the real
+    # captive source", never as a confirmed match. Value is per-terminal (all unit-rows
+    # of a terminal share it). `gogpt_match_note` (optional) explains the suggestion.
+    _ANNOT_COLS = ("gogpt_plant_id", "gogpt_plant", "gogpt_wiki_url", "gogpt_match_note")
+    left_cols = [c for c in _ANNOT_COLS if any(c in u for u in updates)]
+    left_by_tid: dict[str, dict] = {}
+    for u in updates:
+        if any(str(u.get(c) or "") for c in left_cols):
+            left_by_tid.setdefault(u.get("terminal_id"), {
+                c: str(u.get(c) or "") for c in left_cols})
+    # Terminals whose GOGPT annotation is a distance-only suggestion (not a confirmed
+    # match) -> their annotation cells are filled RED.
+    suggested_tids = {u.get("terminal_id") for u in updates
+                      if str(u.get("gogpt_suggested") or "")}
+    # Columns with no value on any record (no GOGPT match anywhere in the batch) get an
+    # explanatory header note so an empty column doesn't read as an oversight.
+    empty_left = [c for c in left_cols
+                  if not any(str(u.get(c) or "") for u in updates)]
+    n_left = len(left_cols)
+
     with open(gem_csv_path, encoding="utf-8") as f:
         reader = csv.reader(f)
         header = next(reader)
         if header and header[0].startswith("﻿"):
             header[0] = header[0][1:]
-        out_header = header + ["_changed_fields", "_confidence_summary"]
+        out_header = left_cols + header + ["_changed_fields", "_confidence_summary"]
         _write_header(ws, out_header)
-        for meta in ("_changed_fields", "_confidence_summary"):
+        for meta in list(left_cols) + ["_changed_fields", "_confidence_summary"]:
             cell = ws.cell(row=1, column=out_header.index(meta) + 1)
             cell.font = Font(bold=True, italic=True)
-            cell.comment = Comment("Reference only — do NOT paste into the GEM DB.",
-                                   "build_review_package")
+            note = "Reference only — do NOT paste into the GEM DB."
+            if meta in empty_left:
+                note += (" Empty: no GOGPT captive power-station record exists for these "
+                         "terminals (terminal-first finding — GOGPT does not track their "
+                         "captive/mechanical-drive power).")
+            elif meta in left_cols and suggested_tids:
+                note += (" RED cells = nearest GOGPT plant by distance, a SUGGESTION only — "
+                         "likely NOT the terminal's captive source (GOGPT does not track its "
+                         "captive/mechanical-drive power); verify before use.")
+            cell.comment = Comment(note, "build_review_package")
         try:
             tid_idx = header.index("TerminalID")
             uid_idx = header.index("UnitID")
@@ -948,23 +1021,29 @@ def build_update_csv_shaped_sheet(wb, updates, gem_csv_path, scope_terminal_ids=
 
             changed_str = ", ".join(sorted(set(changed)))
             conf_summary = "; ".join(f"{f}={c}" for f, c in researched if c)
-            full = work + [changed_str, conf_summary]
+            left_vals = [left_by_tid.get(tid, {}).get(c, "") for c in left_cols]
+            full = left_vals + work + [changed_str, conf_summary]
             for col_idx, value in enumerate(full, start=1):
                 col_name = out_header[col_idx - 1]
                 cell = ws.cell(row=row_idx, column=col_idx, value=value)
                 cell.alignment = Alignment(wrap_text=False, vertical="top")
                 cell.border = CELL_BORDER
-                if col_name in READ_ONLY_COLUMNS:
+                if col_name in READ_ONLY_COLUMNS or col_name in left_cols:
                     cell.font = Font(italic=True, color="666666")
-                ci0 = col_idx - 1
+                # A distance-only GOGPT suggestion is flagged RED so it reads as
+                # "verify, likely not the real captive source", never a confirmed match.
+                if col_name in left_cols and value and tid in suggested_tids:
+                    cell.fill = CONFIDENCE_TO_FILL.get("red", NONE_FILL)
+                ci0 = col_idx - 1 - n_left  # fills are keyed by CSV-column index
                 if ci0 in fills:
                     cell.fill = CONFIDENCE_TO_FILL.get(fills[ci0], NONE_FILL)
             row_idx += 1
 
     _autosize(ws, max_width=40)
     # Freeze the header row + identity columns through UnitName (or UnitID).
+    # +n_left accounts for the prepended review-only annotation columns.
     anchor_idx = col_of.get("UnitName", col_of.get("UnitID", 1))
-    ws.freeze_panes = f"{get_column_letter(anchor_idx + 2)}2"
+    ws.freeze_panes = f"{get_column_letter(anchor_idx + n_left + 2)}2"
 
     # Guardrail report: URLs must never reach a data/enum column. Both lists should be empty;
     # non-empty means a staged record was malformed and the build script correctly refused it.
@@ -2861,6 +2940,93 @@ def build_wiki_updates_sheet(wb, wiki_items):
     _autosize(ws)
 
 
+# ---------------------------------------------------------------------------
+# Captive-power cross-tracker informational sheets (§9). Each is emitted only
+# when its JSON input is present (empty-sheet-omitted convention), so normal
+# Update batches are unaffected. All three are REVIEW CONTEXT — nothing here is
+# a paste target: they explain WHY the CaptiveGasPower edits were made (the
+# terminal-first coverage), what the nearest GOGPT plants actually are (none of
+# them the terminal's own captive power), and which terminals are candidate
+# GOGPT power-station additions. gem.wiki appears ONLY as a GOGPT nav pointer,
+# clearly labelled, never as a citation.
+# ---------------------------------------------------------------------------
+
+def _color_for_conf(v):
+    v = str(v or "").strip().lower()
+    return v if v in ("green", "yellow", "red", "blue") else ""
+
+
+def build_terminal_first_sheet(wb, rows):
+    """Terminal-first coverage: for each confirmed-captive terminal, whether GOGPT
+    carried a correct captive prior and HOW captive power was confirmed (with the
+    verified source URLs). Answers 'did you check terminals not near a flagged plant?'."""
+    ws = wb.create_sheet("terminal_first_priors")
+    headers = ["terminal", "terminal_id", "mechanical", "confidence",
+               "gogpt_captive_prior", "confirmed_how", "confirmed_how [ref]"]
+    _write_header(ws, headers)
+    for i, r in enumerate(rows, start=2):
+        rec = dict(r)
+        if isinstance(rec.get("confirmed_how [ref]"), (list, tuple)):
+            rec["confirmed_how [ref]"] = "\n".join(rec["confirmed_how [ref]"])
+        _write_row(ws, rec, headers, i,
+                   confidence_map={"confidence": _color_for_conf(rec.get("confidence"))})
+        ws.cell(row=i, column=7).alignment = Alignment(wrap_text=True, vertical="top")
+    _autosize(ws)
+    ws.column_dimensions["F"].width = 60
+    ws.column_dimensions["G"].width = 60
+
+
+def build_neighboring_plants_sheet(wb, rows):
+    """Nearest GOGPT gas plants to each confirmed-captive terminal, by pure haversine
+    distance (uncapped). The point of the table: the nearest GOGPT plant is an
+    unrelated merchant/grid/industrial plant, NOT the terminal's own captive power —
+    which is why a plant-first sweep would miss these terminals. info_url is an
+    independent (non-gem.wiki) source about the plant; gogpt_record is the GOGPT/gem.wiki
+    page as a NAV POINTER only (never a citation)."""
+    ws = wb.create_sheet("neighboring_plants")
+    headers = ["terminal", "terminal_id", "rank", "neighboring_plant", "dist_km",
+               "gogpt_mw", "gogpt_units", "gogpt_captive", "gogpt_status", "subnational",
+               "relation", "info_url", "gogpt_record (nav only)"]
+    _write_header(ws, headers)
+    for i, r in enumerate(rows, start=2):
+        _write_row(ws, dict(r), headers, i)
+        # italic/gray the gem.wiki nav pointer so it never reads as a citation
+        nav = ws.cell(row=i, column=13)
+        nav.font = Font(italic=True, color="888888")
+    _autosize(ws)
+    ws.column_dimensions["K"].width = 46
+    ws.column_dimensions["L"].width = 52
+    ws.column_dimensions["M"].width = 52
+
+
+def build_gogpt_candidates_sheet(wb, rows):
+    """GOGPT-side candidate power-station additions for the confirmed-captive terminals.
+    verdict cell colored: green=add, yellow=maybe/reviewer-call, gray/none=do-not-add.
+    basis [ref] holds the verified sources; mechanical_drive_note keeps the (non-electric)
+    shaft-power figure OUT of the electric_mw column. GOGPT-side proposal only — nothing staged."""
+    ws = wb.create_sheet("gogpt_candidates")
+    headers = ["terminal", "terminal_id", "gogpt_candidate", "electric_mw", "confidence",
+               "basis", "basis [ref]", "mechanical_drive_note"]
+    _write_header(ws, headers)
+    _VERDICT_FILL = {"add": "green", "yes": "green", "maybe": "yellow",
+                     "reviewer": "yellow", "no": ""}
+    for i, r in enumerate(rows, start=2):
+        rec = dict(r)
+        if isinstance(rec.get("basis [ref]"), (list, tuple)):
+            rec["basis [ref]"] = "\n".join(rec["basis [ref]"])
+        verdict = str(rec.get("gogpt_candidate", "")).strip().lower()
+        vfill = next((c for k, c in _VERDICT_FILL.items() if verdict.startswith(k)), "")
+        _write_row(ws, rec, headers, i,
+                   confidence_map={"gogpt_candidate": vfill,
+                                   "confidence": _color_for_conf(rec.get("confidence"))})
+        for col in (6, 7, 8):
+            ws.cell(row=i, column=col).alignment = Alignment(wrap_text=True, vertical="top")
+    _autosize(ws)
+    ws.column_dimensions["F"].width = 54
+    ws.column_dimensions["G"].width = 58
+    ws.column_dimensions["H"].width = 54
+
+
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--mode", choices=["update", "discovery", "reconciliation"], required=True)
@@ -2900,11 +3066,6 @@ def main():
         warn_duplicate_giignl_refs(updates)
         timeline = _safe_load(inputs_dir / "staged_status_timeline.json", default=[])
         entity_adds = _safe_load(inputs_dir / "staged_entity_additions.json", default=[])
-        # An exhaustive update legitimately surfaces sub-threshold discovery leads
-        # (a shelved terminal stirring, a fresh FSRU MoU) while re-verifying — carry
-        # them on the same monitor_list sheet Discovery uses, when present.
-        monitor = _safe_load(inputs_dir / "staged_monitor_list.json", default=[])
-        prior_monitor = _safe_load(inputs_dir / "prior_monitor_list.json", default=[])
         stale = _safe_load(inputs_dir / "stale_sweep.json", default={"flagged_units": []})
         country_notes = _safe_load(inputs_dir / "staged_country_notes.json", default=[])
         qa = _safe_load(inputs_dir / "staged_qa_review.json", default=[])
@@ -2916,19 +3077,27 @@ def main():
         scope = _safe_load(inputs_dir / "staged_scope.json", default={})
         scope_tids = scope.get("terminal_ids") if isinstance(scope, dict) else (
             scope if isinstance(scope, list) else None)
+        # Captive-power cross-tracker (§9) review-context sheets — each emitted only
+        # when its JSON input exists, so normal Update batches never gain these tabs.
+        captive_priors = _safe_load(inputs_dir / "captive_terminal_first.json", default=[])
+        captive_neighbors = _safe_load(inputs_dir / "captive_neighboring_plants.json", default=[])
+        captive_candidates = _safe_load(inputs_dir / "captive_gogpt_candidates.json", default=[])
 
         inputs_summary = {
             "updates": len(updates),
             "csv_shaped_scope_terminals": len(scope_tids or []),
             "status_timeline_additions": len(timeline),
             "entity_additions": len(entity_adds),
-            "monitor_list": len(monitor),
             "stale_flagged_units": len(stale.get("flagged_units", [])),
             "country_notes": len(country_notes),
             "qa_review_items": len(qa),
             "wiki_updates": len(wiki),
             "fsru_sync_mode": fsru.get("mode"),
         }
+        if captive_priors or captive_neighbors or captive_candidates:
+            inputs_summary["captive_terminal_first"] = len(captive_priors)
+            inputs_summary["captive_neighboring_plants"] = len(captive_neighbors)
+            inputs_summary["captive_gogpt_candidates"] = len(captive_candidates)
 
         country_breakdown = _country_breakdown(args.gem_csv, updates=updates, qa=qa, wiki=wiki,
                                                roster=checked_roster)
@@ -2940,8 +3109,6 @@ def main():
             build_status_timeline_sheet(wb, timeline)
         if entity_adds:
             build_entity_additions_sheet(wb, entity_adds)
-        if monitor:
-            build_monitor_list_sheet(wb, monitor, prior_monitor)
         if fsru.get("matched_pairs") or fsru.get("mode") == "cross_check":
             build_fsru_sync_sheet(wb, fsru)
         if stale.get("flagged_units"):
@@ -2952,51 +3119,57 @@ def main():
             build_qa_review_sheet(wb, qa)
         if wiki:
             build_wiki_updates_sheet(wb, wiki)
+        if captive_priors:
+            build_terminal_first_sheet(wb, captive_priors)
+        if captive_neighbors:
+            build_neighboring_plants_sheet(wb, captive_neighbors)
+        if captive_candidates:
+            build_gogpt_candidates_sheet(wb, captive_candidates)
 
     elif args.mode == "discovery":
+        # The discovery workbook holds ONLY new/potential-terminal content:
+        # new_terminals, new_units, monitor_list, and its own discovery-pass qa.
+        # Existing-terminal artifacts (status_timeline, wiki, entity, stale, fsru)
+        # live exclusively in the update workbook — no row appears in both books.
         new_terms = _safe_load(inputs_dir / "staged_new_terminals.json", default=[])
         new_units = _safe_load(inputs_dir / "staged_new_units.json", default=[])
-        timeline = _safe_load(inputs_dir / "staged_status_timeline.json", default=[])
-        entity_adds = _safe_load(inputs_dir / "staged_entity_additions.json", default=[])
         monitor = _safe_load(inputs_dir / "staged_monitor_list.json", default=[])
         prior_monitor = _safe_load(inputs_dir / "prior_monitor_list.json", default=[])
-        country_notes = _safe_load(inputs_dir / "staged_country_notes.json", default=[])
-        qa = _safe_load(inputs_dir / "staged_qa_review.json", default=[])
-        wiki = _safe_load(inputs_dir / "staged_wiki_updates.json", default=[])
-        fsru = _safe_load(inputs_dir / "fsru_sync.json", default={"mode": "skipped"})
+        # Discovery shows its own pass's qa and entity additions (`*.disc.qa.json` /
+        # `*.disc.entity.json` → these files); the update workbook shows the
+        # update-pass equivalents. New-terminal sponsors ride with the discovery book.
+        qa = _safe_load(inputs_dir / "staged_qa_review_discovery.json", default=[])
+        entity_adds = _safe_load(inputs_dir / "staged_entity_additions_discovery.json", default=[])
+
+        # monitor_list rolls the GLOBAL cross-region store forward, but a scoped
+        # batch's workbook should list only its own countries; filter the displayed
+        # rows to the checked roster (the persistent store still keeps every country).
+        if checked_roster:
+            _roster = set(checked_roster)
+            monitor = [m for m in monitor if m.get("country") in _roster]
+            prior_monitor = [m for m in (prior_monitor or []) if m.get("country") in _roster]
 
         inputs_summary = {
             "new_terminals": len(new_terms),
             "new_units": len(new_units),
-            "status_timeline_additions": len(timeline),
             "entity_additions": len(entity_adds),
             "monitor_list_new": len(monitor),
             "monitor_list_prior": len(prior_monitor or []),
-            "country_notes": len(country_notes),
             "qa_review_items": len(qa),
-            "wiki_updates": len(wiki),
         }
 
         country_breakdown = _country_breakdown(
-            args.gem_csv, qa=qa, wiki=wiki, monitor=monitor,
+            args.gem_csv, qa=qa, monitor=monitor,
             new_terms=new_terms, new_units=new_units, roster=checked_roster)
         if new_terms:
             build_new_terminals_sheet(wb, new_terms, args.gem_csv)
         if new_units:
             build_new_units_sheet(wb, new_units)
-        if timeline:
-            build_status_timeline_sheet(wb, timeline)
         if entity_adds:
             build_entity_additions_sheet(wb, entity_adds)
         build_monitor_list_sheet(wb, monitor, prior_monitor=prior_monitor)
-        if fsru.get("matched_pairs"):
-            build_fsru_sync_sheet(wb, fsru)
-        if country_notes:
-            build_country_notes_sheet(wb, country_notes)
         if qa:
             build_qa_review_sheet(wb, qa)
-        if wiki:
-            build_wiki_updates_sheet(wb, wiki)
 
     elif args.mode == "reconciliation":
         diff_path = inputs_dir / "report_diff.json"

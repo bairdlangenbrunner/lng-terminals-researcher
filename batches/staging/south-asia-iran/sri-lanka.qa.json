@@ -1,0 +1,102 @@
+[
+  {
+    "category": "citation_hygiene",
+    "terminal_id": "T100000130970",
+    "unit_id": "G100002097000",
+    "terminal_name": "Hambantota LNG Terminal",
+    "issue": "Cost=$100,000,000 (per tankterminals.com headline '$100mn') vs. the original BOI-Pearl Energy deal figure of $97.2m reported by Daily FT (ft.lk/front-page/BOI-signs-deal-with-Pearl-Energy-for-97-2-m-LNG-plant-in-Hambantota) -- likely the same underlying deal with a rounded vs. precise figure, not a real conflict, but worth a precision check.",
+    "severity": "low",
+    "suggested_action": "Optionally tighten Cost to $97.2m citing ft.lk, or leave the rounded $100m as-is; not urgent.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "source_dead",
+    "terminal_id": "T100000130316",
+    "unit_id": "G100002031600",
+    "terminal_name": "Kerawalapitiya LNG Terminal",
+    "issue": "FacilityType [ref] / Owner [ref] / Location [ref] all cite https://ceylontoday.lk/2025/08/02/sl-awards-kerawalapitiya-lng-project-to-china/ , which returns HTTP 403 (Cloudflare) on every direct fetch attempt in this pass, AND whose Wayback Machine snapshot (20250803035537) also returns only the Cloudflare 'Just a moment...' interstitial (not the real article text) -- so the citation cannot be verified by automated tooling despite the domain being live, not dead. The underlying claim (China Harbour Engineering Co Ltd awarded the Kerawalapitiya FSRU+pipeline BOOT project in Aug 2025 after Petronet LNG's earlier tender was cancelled and after CHEC's original partner Engro Corp withdrew) is independently corroborated by multiple search-engine-cached summaries of the same article and is consistent with the terminal's current Owner/Location/FacilityType=import values, so the VALUES are not in doubt -- only the automated re-verifiability of this specific ref URL.",
+    "severity": "medium",
+    "suggested_action": "Leave Owner/FacilityType/Location and their ceylontoday.lk ref UNCHANGED (not staging a swap to an unverifiable/guessed alternative). Recommend the human reviewer either (a) open ceylontoday.lk directly in a browser to confirm, since Cloudflare typically only blocks bots/curl, or (b) search Daily Mirror / EconomyNext / LNG Prime for an independent write-up of the same Aug 2025 CHEC award to add as a second, machine-verifiable corroboration.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130316",
+    "unit_id": "G100002031600",
+    "terminal_name": "Kerawalapitiya LNG Terminal",
+    "issue": "Two live threads at Kerawalapitiya as of mid-2026: (1) CHEC's Aug-2025 FSRU/pipeline BOOT award (current GEM Owner), still reported as moving toward Attorney-General clearance as of the most recent search results found in this pass, with no news of it being cancelled or reopened; (2) a SEPARATE Feb-2026-dated Daily FT report (ft.lk/44-765800) of Sri Lanka and India signing an MoU for LNG infrastructure/supply to feed the adjacent 'Sobadhanavi' combined-cycle plant via Petronet -- an interim/parallel supply arrangement, not a reversal of the CHEC terminal award. No Cabinet Gazette or other primary confirmation of CHEC's FINAL signed agreement (as opposed to the Aug 2025 award decision) was found.",
+    "severity": "low",
+    "suggested_action": "No status change warranted this cycle (Status=proposed remains correct either way). Re-check next cycle for (a) CHEC agreement signing/Attorney-General clearance, which would support a proposed->construction move, and (b) whether the India/Petronet MoU is for the separate Sobadhanavi interim ISO-container supply chain (most likely) or something that supersedes CHEC.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "citation_hygiene",
+    "terminal_id": "T100000130316",
+    "unit_id": "G100002031600",
+    "terminal_name": "Kerawalapitiya LNG Terminal",
+    "issue": "Cost=$250,000,000 [ref=sundaytimes.lk 2017] reflects the original 2017 Petronet-led cost estimate. The project has since changed sponsor (CHEC, 2025) and capacity basis (2.7 mtpa vs. the earlier 2.6-2.7 mtpa figure), so the cost figure is likely stale, but no updated cost estimate for the CHEC-led BOOT project was found in this pass (the ceylontoday.lk source that names CHEC could not be content-verified -- see the source_dead qa item above).",
+    "severity": "low",
+    "suggested_action": "Leave Cost as-is; revisit once a verifiable CHEC-era cost figure surfaces.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "citation_hygiene",
+    "terminal_id": "T100000131055",
+    "unit_id": "G100002105500",
+    "terminal_name": "New Fortress Colombo LNG Terminal",
+    "issue": "FloatingVesselName is BLANK but FloatingVesselName [ref] is populated (ir.newfortressenergy.com) -- an orphan ref. No FSRU vessel was ever named in any source found for this project (it never reached FID/vessel selection before being shelved/cancelled), so there is no vessel name to fill in.",
+    "severity": "low",
+    "suggested_action": "Clear the orphan FloatingVesselName [ref] cell (no paired value exists or is findable).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "citation_hygiene",
+    "terminal_id": "T100000130971",
+    "unit_id": "G100002097100",
+    "terminal_name": "SK Group Sri Lanka LNG Terminal",
+    "issue": "FloatingVesselName is BLANK but FloatingVesselName [ref] is populated (lankacoal.lk/docs/Tender Notice.pdf, https://archives1.dailynews.lk/...) -- an orphan ref. No FSRU vessel name was ever found in any source for this project (never reached FID); the tender-notice PDF is a generic tender document, not a vessel-naming source.",
+    "severity": "low",
+    "suggested_action": "Clear the orphan FloatingVesselName [ref] cell (no paired value exists or is findable). Note the archives1.dailynews.lk leg of this ref is also dead (HTTP 403, no Wayback snapshot) independent of the orphan issue.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "entity_precision",
+    "terminal_id": "T100000130971",
+    "unit_id": "G100002097100",
+    "terminal_name": "SK Group Sri Lanka LNG Terminal",
+    "issue": "Owner is listed as 'SK Inc [100%]' (the South Korean holding-company parent). Source articles (Daily News 2020, Daily FT) describe the investor simply as 'SK' / 'SK Group' (Korea's 3rd-largest conglomerate) without specifying which SK subsidiary would develop the LNG terminal -- SK's actual energy/LNG arm is typically SK E&S, a distinct entity that does NOT currently exist in the GEM entity system (entity_lookup.py \"SK E&S\" --remote returned not_found_in_local_data / no_remote_match, run 2026-07-14).",
+    "severity": "low",
+    "suggested_action": "Leave Owner as SK Inc (existing entity E100000001647) for now -- no source found names a specific subsidiary, and the project never reached a definitive agreement before stalling. If a future source specifies SK E&S (or another named subsidiary) as the actual project entity, it will need to be created fresh in the GEM entity system (confirmed not already present).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "discovery_coverage_check",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "(country-level)",
+    "issue": "gem.wiki LNG-page-vs-CSV coverage cross-check for Sri Lanka: gem.wiki lists exactly 4 Sri Lanka LNG terminal pages (Hambantota, Kerawalapitiya, New Fortress Colombo, SK Group Sri Lanka) -- all 4 already match the scope file's 4 tracked terminals 1:1. No wiki-only orphan page found (no Durban-style gap).",
+    "severity": "low",
+    "suggested_action": "No action; coverage confirmed complete.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "discovery_upstream_sweep",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "(country-level)",
+    "issue": "Upstream-oil-operator / associated-gas sweep for Sri Lanka: the only offshore hydrocarbon resource is the undeveloped Barracuda and Dorado gas discoveries in the Mannar Basin (Cairn Lanka, discovered 2011, ~839 Bcf combined; Cairn exited 2015 citing non-commerciality). In May 2025 Sri Lanka's Cabinet approved opening 4 new Mannar Basin blocks for international exploration. No operator, FLNG sponsor, or concrete LNG-export terminal proposal tied to these fields exists yet -- this is upstream E&P licensing, not an LNG terminal candidate.",
+    "severity": "low",
+    "suggested_action": "No monitor_list entry staged (too early / no sponsor or terminal concept yet). Logged in monitor_list as a longer-horizon watch item per the discovery brief's oil-operator sweep requirement.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "discovery_dormant_revival",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "(country-level)",
+    "issue": "Dormant-revival check on the 3 cancelled Sri Lanka terminals: (1) Hambantota (Pearl Energy/SOCAR) -- no news of any kind since 2020-2021; no revival signal found. (2) SK Group -- no news since 2020; no revival signal found. (3) New Fortress Colombo -- the underlying Kerawalapitiya-area LNG-import concept was NOT abandoned, but it is already tracked as a SEPARATE, distinct GEM record (Kerawalapitiya LNG Terminal, T100000130316, currently Owner=China Harbour Engineering Co Ltd) rather than as a revival of the New Fortress site -- no new terminal needed.",
+    "severity": "low",
+    "suggested_action": "No new_terminal staged for any of the 3; Kerawalapitiya's CHEC-era incarnation is already correctly captured under its own existing TerminalID.",
+    "researcher_initials": "AI-draft"
+  }
+]

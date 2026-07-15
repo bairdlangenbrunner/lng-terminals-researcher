@@ -1,0 +1,79 @@
+{
+    "terminal_name": "Bataan-Manila LNG Terminal",
+    "unit_id": "G100002030500",
+    "ref_fills": [
+        {
+            "field": "Status [ref]",
+            "ref_urls": [
+                "https://business.inquirer.net/239762/araneta-pursue-p10-b-hydropower-project",
+                "https://www.philstar.com/business/2017/05/01/1690012/pnoc-seeks-partners-bataan-property"
+            ],
+            "confidence": "yellow",
+            "note": "No source explicitly states 'cancelled' -- this is a genuinely dead, old project with no 2018-2026 coverage found. Citing the two newest available independent articles documenting the project's collapse: Inquirer (Nov 2, 2017) reports the $1.2-billion 'Energy City' project proposed by Gregorio Araneta III in Bataan was 'stalled by leasehold issues with state-owned Philippine National Oil Co.' and that Araneta was pivoting to pursue a separate hydropower project instead; Philstar (May 1, 2017) reports the Araneta group's 2015 MOA with PNOC for the 220-ha Limay 'energy city' site 'expired' in 2016 and PNOC was soliciting other partners because the Araneta offer 'was not acceptable.' Two independent publishers, but both predate the inferred 2018/2020 years and describe 'stalled'/'expired' rather than an explicit cancellation announcement -- capped at yellow rather than green. No later article resuming or formally killing the project was found despite extensive searching (PNOC's 2019 Lloyds Energy/Mitsubishi MOU explored an undecided site among Limay Bataan, Bauan Batangas, and Mabini Batangas for an unrelated 1,200 MW merchant plant and does not mention the Araneta project or confirm the Limay site was vacated, so it was not used as a citation)."
+        },
+        {
+            "field": "ShelvedYear [ref]",
+            "ref_urls": [
+                "https://business.inquirer.net/239762/araneta-pursue-p10-b-hydropower-project",
+                "https://www.philstar.com/business/2017/05/01/1690012/pnoc-seeks-partners-bataan-property"
+            ],
+            "confidence": "yellow",
+            "note": "Per the 'inferred shelved needs a ref' convention: cite the dormancy evidence (newest available article on the stall), not a source that literally says 'shelved.' These are the newest articles found discussing this specific project's status (both 2017); no later reporting exists to use as a newer anchor."
+        },
+        {
+            "field": "CancelledYear [ref]",
+            "ref_urls": [
+                "https://business.inquirer.net/239762/araneta-pursue-p10-b-hydropower-project",
+                "https://www.philstar.com/business/2017/05/01/1690012/pnoc-seeks-partners-bataan-property"
+            ],
+            "confidence": "yellow",
+            "note": "Same dormancy-evidence rationale as ShelvedYear [ref]. No article dated closer to 2020 was found; the 2017 stall/expiry reporting plus the total absence of any newer coverage is the only available basis for the inferred 2020 cancellation."
+        },
+        {
+            "field": "StopYear [ref]",
+            "ref_urls": [
+                "https://business.inquirer.net/239762/araneta-pursue-p10-b-hydropower-project",
+                "https://www.philstar.com/business/2017/05/01/1690012/pnoc-seeks-partners-bataan-property"
+            ],
+            "confidence": "yellow",
+            "note": "StopYear (2020) mirrors CancelledYear in the GEM record; same two dormancy-evidence sources are the best available citation."
+        }
+    ],
+    "unfillable": [],
+    "url_verifications": [
+        {
+            "url": "https://business.inquirer.net/239762/araneta-pursue-p10-b-hydropower-project",
+            "tokens": ["stalled", "Energy City"],
+            "passed": true
+        },
+        {
+            "url": "https://business.inquirer.net/239762/araneta-pursue-p10-b-hydropower-project",
+            "tokens": ["Araneta", "leasehold", "PNOC"],
+            "passed": true
+        },
+        {
+            "url": "https://www.philstar.com/business/2017/05/01/1690012/pnoc-seeks-partners-bataan-property",
+            "tokens": ["Bataan", "expired"],
+            "passed": true
+        },
+        {
+            "url": "https://www.philstar.com/business/2017/05/01/1690012/pnoc-seeks-partners-bataan-property",
+            "tokens": ["Araneta", "2016", "PNOC"],
+            "passed": true
+        },
+        {
+            "url": "https://www.philstar.com/business/2017/05/01/1690012/pnoc-seeks-partners-bataan-property",
+            "tokens": [],
+            "passed": false,
+            "note": "WebFetch (non-verifier) returned HTTP 403 on first attempt via the generic fetch tool; refetched via curl with a browser user-agent (200 OK) and confirmed content, then re-checked with url_verifier.py directly, which passed. Bot-block-is-not-dead case; not a genuine failure."
+        }
+    ],
+    "qa_notes": [
+        "fetch_timeline.py G100002030500 confirms the existing timeline: proposed/2012 (tl_order 1), operating-planned/2020 (tl_order 2, effectively still 'proposed' per the substatus_planned_means_proposed convention -- not a real operating milestone), shelved/2018 inferred-2y (tl_order 3), cancelled/2020 inferred-4y (tl_order 4). No changes were made to this timeline or to any data value -- this is a ref-fill-only task.",
+        "This is confirmed to be a genuinely dormant, obscure 2012-era project (aka Limay LNG Terminal, Batman II, $2.4-B/$1.2-B Energy City Bataan) with essentially no press coverage after 2017. Extensive searching (Araneta lease dispute, PNOC partner solicitations, DOE project lists, court/arbitration records, GlobalData project database) turned up nothing newer. The 2018 shelved / 2020 cancelled years in GEM appear to be judgment calls inferred from this silence, consistent with the 'inferred 2y'/'inferred 4y' substatus tags already in the DB.",
+        "Did NOT cite gem.wiki, globalenergymonitor.org, or any source that merely republishes/echoes GEM (several search results were gem.wiki pages for this and sibling Philippines terminals -- excluded per the hard rule).",
+        "Did NOT cite the existing StartDate [ref] URLs (inquirer.net/230356 proposal-era article, upstreamonline.com) as evidence for the cancelled/shelved status -- those only document the original 2012-2015 proposal, not its later collapse.",
+        "Because both usable sources are dated 2017 (before the 2018/2020 inferred years) and neither uses an explicit cancellation term, all four ref_fills are staged at yellow, not green, despite having two independent publishers. Reviewer should treat these as reasonable dormancy citations for an inferred status, not as direct primary confirmation of the specific years."
+    ],
+    "summary": "Filled all four blank ref fields (Status [ref], ShelvedYear [ref], CancelledYear [ref], StopYear [ref]) at yellow confidence, citing the same two independent 2017 articles (Inquirer Nov 2017: Araneta project 'stalled' by PNOC leasehold dispute, Araneta pivoting to a different project; Philstar May 2017: the Araneta-PNOC MOA for the Limay site 'expired' in 2016, PNOC reshopping for new partners). No source dated 2018-2026 discussing this specific project was found despite extensive searching, and no source explicitly uses the word 'cancelled' or 'shelved' -- so confidence is capped at yellow per the inferred-status/dormancy-evidence convention rather than treated as unfillable, since these are the newest available anchors and no better evidence exists. Nothing was left unfillable; no data values were changed."
+}

@@ -1,0 +1,72 @@
+[
+  {
+    "category": "duplicate_entity_check",
+    "terminal_id": "T100000130449",
+    "unit_id": "G100002044900",
+    "terminal_name": "Krishna Godavari FSRU",
+    "issue": "A PNGRB public-comment filing dated 03/07/2024 (https://pngrb.gov.in/pdf/public-notice/KGLNG_11072024.pdf) is signed 'For Krishna Godavari LNG Pvt Ltd' by a director whose email is @crownlng.com, describing a 7.2 MTPA Gravity-Based Storage & Regasification Unit (GBSRU) at Kakinada 'designed by world class partners like Crown LNG, Aker Solutions, Siemens, Wartsila'. 'Krishna Godavari LNG Terminal Pvt Ltd' is the SAME company name GEM uses as Owner on this CANCELLED record (formerly the Constellation/Exmar/VGS Group FSRU project, cancelled ~2021). The described project (7.2 mtpa GBSRU, Crown LNG involvement) matches the separate, ACTIVE GEM record 'Crown Kakinada LNG Terminal' (T100000131053). Crown LNG Holdings acquired 100% of this SPV in Nov 2024 (~$60M) and redesigned it from floating FSRU to fixed GBSRU. Both records currently coexist as distinct terminals.",
+    "severity": "medium",
+    "suggested_action": "RESOLVED at researcher level per the dormant-revival rule (different sponsor + different design at the same site = two separate historical projects), and a reciprocal AssociatedTerminals cross-reference between the two records has been STAGED (see india-east.updates.json). Remaining question for the GEM methodology team: confirm whether 'Krishna Godavari LNG Terminal Pvt Ltd' being legally the same corporate shell as Crown LNG's Kakinada SPV should ultimately drive a MERGE of the two records rather than a cross-reference. Did NOT merge or auto-edit -- ambiguity on the merge decision routed to methodology.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130437",
+    "unit_id": "G100002043700",
+    "terminal_name": "Digha FSRU",
+    "issue": "GEM has this terminal as cancelled with an INFERRED CancelledYear=2023 ('no dev updates in 4 years', no ref). Gas Outlook (https://gasoutlook.com/analysis/petrobangla-private-firms-cancel-rlng-imports-from-india/, PASS on 'Digha') reports Bangladesh's Petrobangla formally cancelled RLNG-import negotiations on the Digha-to-Khulna cross-border pipeline (the commercial rationale for this FSRU) via letters in March 2025 -- which could argue the project was not truly dead until 2025, i.e. CancelledYear should be 2023->2025.",
+    "severity": "medium",
+    "suggested_action": "NOT STAGED as a field edit (deliberately). It is a single, tangential source (a Bangladesh cross-border-pipeline import cancellation, not a West-Bengal terminal-construction cancellation), the dedicated re-verify pass found 'no revival, 2023 stands', and moving an inferred cancellation year LATER on one indirect source is a stage-with-doubt the never-stage-with-doubt rule says to resolve first. Reviewer to decide whether the March-2025 Petrobangla cancellation is the better-dated basis for CancelledYear/StopYear (2025, with the gasoutlook ref) or whether the 2023 inference should stand.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130801",
+    "unit_id": "G100002080100",
+    "terminal_name": "H-Energy Kakinada LNG Terminal",
+    "issue": "A stale 2024 IGU World LNG Report line describes the H-Energy Kakinada project as 'under construction' with a 2026 start, which conflicts with GEM's shelved (2024) status. Could not independently corroborate the IGU 'under construction' claim with any primary source; contemporaneous coverage (The Hindu BusinessLine; Petrowatch, 11 Jul 2024) instead documents H-Energy's formal EXIT from the project in mid-2024.",
+    "severity": "low",
+    "suggested_action": "Do NOT reverse the shelved status on the strength of the uncorroborated IGU line. The 2024 shelving is now corroborated by 2 independent sources (staged as a Status [ref] upgrade). Worth a future re-check if any primary construction evidence surfaces.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "stale_proposal",
+    "terminal_id": "T100000130662",
+    "unit_id": "G100002066201",
+    "terminal_name": "Ennore LNG Terminal",
+    "issue": "Existing ResearcherNotesUnit (Aug 2025) flagged: 'no news on expansion in 25 cycle, consider shelving if no news in one more year.' Re-search (mid-2025 -> Jul 2026) found the expansion (5->10 mtpa, Rs 3,400 cr / ~$408m) received MoEFCC environmental clearance on ~7 Jul 2026 (see wiki entry) but NO construction start, FID, or contractor award. So there IS fresh regulatory progress (EC granted), but not enough to move the unit off 'proposed'. Owner/Parent remain 'unknown' on this unit.",
+    "severity": "low",
+    "suggested_action": "The self-imposed shelving trigger should NOT fire -- the July-2026 environmental clearance is contrary evidence that the expansion is still live; recommend the reviewer refresh/remove the stale 'consider shelving' researcher note rather than shelve. IndianOil LNG Pvt Ltd (IOLPL) is the confirmed project company/operator but the exact JV partner/equity split beyond IOC was not independently verifiable, so Owner/Parent left unfilled rather than guessed.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130803",
+    "unit_id": "G100002080300",
+    "terminal_name": "Karaikal FSRU",
+    "issue": "A Jan-2024 source cited an Oct-2025 target start-up for the AGP/Nebula Karaikal FSRU (FSU Ghasha). That target has silently lapsed with zero 2025-2026 coverage found; no FID, construction start, or new date located.",
+    "severity": "low",
+    "suggested_action": "No verified new date to stage -- status stays proposed. Flag for a future cycle: if another cycle passes with no activity this becomes a shelving candidate.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dead_ref",
+    "terminal_id": "T100000130852",
+    "unit_id": "G100002085200",
+    "terminal_name": "Krishnapatnam FSRU",
+    "issue": "The sole ref for Status/ShelvedYear/CancelledYear/StopYear (https://indbiz.gov.in/petronet-to-take-a-26-stake-in-planned-lng-terminal/) was unreachable (HTTP 000 / connection failure via url_verifier, on repeat attempts). indbiz.gov.in is an Indian government site and the record was verified only 8 days ago (LastUpdated 2026-07-06), so this looks like a transient outage, not a dead link. Did not delete or replace the ref.",
+    "severity": "low",
+    "suggested_action": "Re-check indbiz.gov.in reachability next cycle before treating the ref as dead; if it stays down across multiple cycles, find a mirror/alternative for the Petronet 26%-stake / shelving story.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unref_dormant",
+    "terminal_id": "T100000130445",
+    "unit_id": "G100002044500",
+    "terminal_name": "GAIL Kakinada FSRU",
+    "issue": "No ref exists for Shelved/Cancelled/Stop years (2019/2021/2021, all inferred). Found a real, verified historical event -- Shell and Engie (GDF Suez) withdrew in May 2017 over GAIL's inability to guarantee minimum LNG offtake (deccanchronicle.com, PASS) -- but that 2017 event predates the inferred 2019/2021 anchors, so it was NOT forced into those ref fields. No revival found as of 2026; distinct dead project from Crown Kakinada and H-Energy Kakinada at the same port.",
+    "severity": "low",
+    "suggested_action": "The 2017 Shell/Engie exit is useful project-history context -- staged as a wiki entry rather than a Shelved/Cancelled ref. Shelved(2019)/Cancelled(2021) remain inferred/unref'd; no better-dated source found despite searching.",
+    "researcher_initials": "AI-draft"
+  }
+]

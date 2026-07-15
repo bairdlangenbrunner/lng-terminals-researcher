@@ -1,0 +1,79 @@
+{
+  "terminal_name": "Pagbilao Grande Island LNG Terminal",
+  "unit_id": "G100002030800",
+  "findings": [
+    {
+      "field": "Status",
+      "current_value": "shelved (substatus 'inferred 2 y'); ShelvedYear 2023",
+      "new_value": "shelved (substatus 'inferred 2 y'); ShelvedYear 2023",
+      "ref_urls": [
+        "https://greentechlead.com/energy-news/philippines-lng-crisis-deepens-as-650-mw-pagbilao-project-collapses-after-17-years-285-million-write-down-signals-shift-to-renewable-energy-54086",
+        "http://web.archive.org/web/20260611075308/https://ieefa.org/resources/gas-turbine-sale-signals-end-another-philippine-lng-project",
+        "http://web.archive.org/web/20260611214638/https://businessmirror.com.ph/2026/06/11/quezon-community-re-backers-claim-victory-against-lng/"
+      ],
+      "confidence": "blue",
+      "change_summary": "Re-verified, unchanged, applying the news-recency test (fetch_timeline.py run first; existing timeline already carries a 'shelved'/'inferred 2 y' entry at 2023, tl_order 4 -- no new timeline entry needed since the call is unchanged). Most recent activity is only weeks old: on 2 June 2026 Energy World Corp (ASX:EWC) agreed to sell the two Siemens SGT6-5000F gas turbines and one steam turbine long held idle at Pagbilao to US-listed Hallador Energy for US$350m, booking a ~US$285m non-cash impairment against the power-plant assets (17 years after the project's 2009 launch, having never reached commercial operation). Because this activity is <2 years old, the case falls in the 'stays shelved (blue-confirm)' bucket, not the >=4y 'escalate to inferred cancelled' bucket -- so Status and ShelvedYear are left unchanged and simply re-verified. EWC's own framing (per its ASX filings covered by these sources) is that turbine-sale proceeds will fund 'continued development of the Pagbilao LNG platform ... as a standalone third-party access facility', i.e. the company has NOT declared the import terminal itself cancelled, only decoupled it from the now-abandoned integrated power plant -- consistent with keeping the terminal at 'shelved' rather than escalating to 'cancelled'. IEEFA and local Quezon community/church groups (PMCJ, QUEEN) independently characterize the turbine divestment as confirming the wider project is a stranded asset that never advanced past ~70% construction (as of 2024) with no PPA/gas supply secured, supporting continued 'shelved' (not operating, not moving to construction) rather than any upgrade in status. No new construction, PPA, or FEED news found -- the terminal remains dormant; only the equipment/strategy news is new. This also fills the previously blank Status [ref] and ShelvedYear [ref] cells (Rule F: valid fill targets since both paired values already exist and are unchanged)."
+    }
+  ],
+  "status_timeline_additions": [],
+  "entity_checks": [],
+  "url_verifications": [
+    {
+      "url": "https://greentechlead.com/energy-news/philippines-lng-crisis-deepens-as-650-mw-pagbilao-project-collapses-after-17-years-285-million-write-down-signals-shift-to-renewable-energy-54086",
+      "tokens": ["Pagbilao", "$285 million"],
+      "passed": true
+    },
+    {
+      "url": "https://ieefa.org/resources/gas-turbine-sale-signals-end-another-philippine-lng-project",
+      "tokens": ["Pagbilao", "$285"],
+      "passed": false
+    },
+    {
+      "url": "http://web.archive.org/web/20260611075308/https://ieefa.org/resources/gas-turbine-sale-signals-end-another-philippine-lng-project",
+      "tokens": ["Pagbilao"],
+      "passed": true
+    },
+    {
+      "url": "https://businessmirror.com.ph/2026/06/11/quezon-community-re-backers-claim-victory-against-lng/",
+      "tokens": ["Pagbilao"],
+      "passed": false
+    },
+    {
+      "url": "http://web.archive.org/web/20260611214638/https://businessmirror.com.ph/2026/06/11/quezon-community-re-backers-claim-victory-against-lng/",
+      "tokens": ["Pagbilao"],
+      "passed": true
+    },
+    {
+      "url": "https://www.climatejustice.ph/post/quezon-community-wins-against-lng-after-gas-turbine-sale",
+      "tokens": ["Pagbilao"],
+      "passed": true
+    },
+    {
+      "url": "https://stocksdownunder.com/energy-world-corporation-asxewc/",
+      "tokens": ["Pagbilao"],
+      "passed": true
+    },
+    {
+      "url": "https://www.tradingview.com/news/smallcaps:2c0d45e19094b:0-energy-world-corporation-to-sell-siemens-turbines-for-us-350m-to-help-fund-lng-pivot/",
+      "tokens": ["Pagbilao"],
+      "passed": true
+    },
+    {
+      "url": "https://smallcaps.com.au/article/energy-world-corporation-to-sell-siemens-turbines-for-usdollar350m-to-help-fund-lng-pivot",
+      "tokens": ["Pagbilao"],
+      "passed": false
+    },
+    {
+      "url": "https://announcements.asx.com.au/asxpdf/20250829/pdf/06nlhjbctk3btv.pdf",
+      "tokens": ["Pagbilao"],
+      "passed": false
+    }
+  ],
+  "qa_notes": [
+    "ieefa.org and businessmirror.com.ph both 403 bot-block on direct fetch; verified instead via their Wayback Machine snapshots (20260611) per the bot-block-is-not-dead rule -- both PASS with the claimed value present, so used as citations.",
+    "climatejustice.ph and stocksdownunder.com/tradingview(smallcaps syndication) also passed verification independently and corroborate the same facts (turbine sale date, impairment, EWC's standalone-terminal framing); not all included as refs to avoid an unwieldy ref list, but available if a 4th corroboration is wanted.",
+    "smallcaps.com.au direct article and the Aug 2025 ASX PDF could not be verified (scanned/no extractable text or missing token) -- dropped, not relied on.",
+    "No evidence found that the LNG import terminal itself is under active construction, has a signed PPA, or has any binding third-party access agreement; EWC's 'continued development' language is a stated intent, not a confirmed construction milestone -- status is being re-verified as unchanged (shelved), not upgraded."
+  ],
+  "summary": "Status verdict: STAYS SHELVED (blue re-verify, unchanged), not escalated to inferred-cancelled. Most recent activity is Energy World Corp's 2 June 2026 sale of the long-idle Pagbilao turbines to Hallador Energy (US$350m) plus a ~US$285m impairment -- under 2 months old, so the news-recency test keeps this in the '<2y: stays shelved' bucket rather than the '>=4y: escalate to cancelled' bucket. EWC's own stated plan is to keep developing the LNG import terminal as a standalone third-party facility (power plant/turbines abandoned separately), which argues against calling the terminal itself cancelled. Filled the previously blank Status [ref] and ShelvedYear [ref] with 3 independent, verified sources (greentechlead.com, IEEFA via Wayback, BusinessMirror via Wayback) -- green-level corroboration. No timeline edit needed; the existing 2023 shelved/inferred-2y timeline entry stands."
+}

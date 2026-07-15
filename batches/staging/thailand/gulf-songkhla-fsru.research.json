@@ -1,0 +1,149 @@
+{
+  "scope_verdict": "in_scope",
+  "batch_note": "Two cancelled Thai FSRUs (marine LNG import, both in scope). Standard-tier data-health + re-verify. Both FSRUs but with blank FloatingVesselName — FSRU sync applies yet there is nothing to sync (no vessel ever chartered).",
+  "terminals": [
+    {
+      "terminal_name": "Gulf of Thailand FSRU",
+      "terminal_id": "T100000130896",
+      "updates": [
+        {
+          "unit_id": "G100002089600",
+          "unit_name": "--",
+          "field": "Status",
+          "current_value": "cancelled",
+          "new_value": "cancelled",
+          "ref_urls": [
+            "https://www.upstreamonline.com/lng/new-thailand-lng-import-project-mooted/2-1-1011271",
+            "https://www.bangkokpost.com/business/1955391/egat-poised-to-approve-first-thai-fsru"
+          ],
+          "confidence": "blue",
+          "source_tier": "trade press (Upstream) + national daily (Bangkok Post)",
+          "change_summary": "Re-verified unchanged. EGAT's Gulf-of-Thailand / Samut Prakan FSRU (5.0 mtpa) was a 2021-era proposal (upstream 'mooted'; Bangkok Post 'poised to approve first Thai FSRU') that EGAT dropped in favour of onshore terminals; no marine LNG import ever proceeded. Both cited sources still load and confirm EGAT + Thailand + FSRU. CancelledYear/StopYear 2021 anchor confirmed in the Upstream body. Status held cancelled."
+        },
+        {
+          "unit_id": "G100002089600",
+          "unit_name": "--",
+          "field": "Owner",
+          "current_value": "EGAT [100%]",
+          "new_value": "EGAT [100%]",
+          "ref_urls": [
+            "https://www.upstreamonline.com/lng/new-thailand-lng-import-project-mooted/2-1-1011271",
+            "https://www.bangkokpost.com/business/1955391/egat-poised-to-approve-first-thai-fsru"
+          ],
+          "confidence": "blue",
+          "source_tier": "two independent working sources naming EGAT as sponsor",
+          "change_summary": "Owner value unchanged (EGAT [100%]) but the existing Owner [ref] (egat.co.th CMS article, id=428) now returns HTTP 404 with no Wayback snapshot — genuine link-rot, not a bot-block. Re-verified the owner against two independent still-working sources (Upstream + Bangkok Post), both of which explicitly name EGAT as the FSRU sponsor. Routing these working URLs to Owner [ref] to replace the dead egat.co.th citation."
+        }
+      ],
+      "qa_notes": [
+        {
+          "category": "missing_field",
+          "unit_id": "G100002089600",
+          "gem_field": "FloatingVesselName",
+          "severity": "low",
+          "issue": "Completeness sweep flags FloatingVesselName as required for a cancelled FSRU, but no primary source names or charters any FSRU vessel for this project. It was cancelled at the planning stage (2021) before any vessel was assigned. OtherNames carries 'Samut Prakan FSRU' (the site), not a vessel.",
+          "suggested_action": "No vessel was ever chartered; leave FloatingVesselName blank. Do not guess or invent a vessel name."
+        },
+        {
+          "category": "data_health",
+          "unit_id": "G100002089600",
+          "gem_field": "StartDate [ref]",
+          "severity": "low",
+          "issue": "Orphan [ref] (Rule F): StartDate [ref] is filled (bangkokpost.com/business/1955391) but the paired StartDate value is blank. Terminal was cancelled and never operated, so no valid start date exists.",
+          "suggested_action": "Data-health cleanup batch: clear the orphan StartDate [ref] (no paired value to justify it). Do not invent a StartDate."
+        },
+        {
+          "category": "data_health",
+          "unit_id": "G100002089600",
+          "gem_field": "Location [ref]",
+          "severity": "low",
+          "issue": "Orphan [ref] (Rule F): Location [ref] is filled but its paired location value is blank per the completeness sweep.",
+          "suggested_action": "Data-health cleanup batch: either populate the paired location value from the cited source or clear the orphan Location [ref]. Do not invent a value in this batch."
+        },
+        {
+          "category": "link_rot",
+          "unit_id": "G100002089600",
+          "gem_field": "Owner [ref]",
+          "severity": "low",
+          "issue": "Existing Owner [ref] egat.co.th CMS article (index.php?...id=428:fsru-a-new-option...) returns HTTP 404 and has no Wayback snapshot — dead, not bot-blocked.",
+          "suggested_action": "Replace with the two working sources staged in the Owner update (Upstream + Bangkok Post), both naming EGAT."
+        }
+      ]
+    },
+    {
+      "terminal_name": "Songkhla FSRU",
+      "terminal_id": "T100000130898",
+      "updates": [
+        {
+          "unit_id": "G100002089800",
+          "unit_name": "--",
+          "field": "Status",
+          "current_value": "cancelled",
+          "new_value": "cancelled",
+          "ref_urls": [
+            "https://www.bangkokpost.com/business/1493658/souths-fsru-development-plan-shelved",
+            "https://www.offshore-energy.biz/ptt-to-set-up-fsru-duo/"
+          ],
+          "confidence": "blue",
+          "source_tier": "national daily (Bangkok Post) + trade press (Offshore Energy)",
+          "change_summary": "Re-verified unchanged. PTT's Songkhla FSRU (3.0 mtpa) was shelved in 2018 (Bangkok Post: 'South's FSRU development plan shelved') and, with no revival in the >4y since, is held cancelled. Bangkok Post still loads and confirms FSRU + Songkhla + shelved + 2018; Offshore Energy confirms PTT + Songkhla + FSRU + 3 mtpa. CancelledYear/StopYear 2018 anchor confirmed. Status held cancelled."
+        },
+        {
+          "unit_id": "G100002089800",
+          "unit_name": "--",
+          "field": "Owner",
+          "current_value": "PTT PCL [100%]",
+          "new_value": "PTT PCL [100%]",
+          "ref_urls": [
+            "https://www.offshore-energy.biz/ptt-to-set-up-fsru-duo/",
+            "https://www.bangkokpost.com/business/1493658/souths-fsru-development-plan-shelved"
+          ],
+          "confidence": "blue",
+          "source_tier": "two independent working sources naming PTT",
+          "change_summary": "Re-verified unchanged (PTT PCL [100%]). Both existing refs still load and explicitly name PTT as sponsor of the Songkhla FSRU. Existing Owner/Capacity [ref] (offshore-energy) and Status refs (bangkokpost) all pass verification."
+        }
+      ],
+      "qa_notes": [
+        {
+          "category": "missing_field",
+          "unit_id": "G100002089800",
+          "gem_field": "FloatingVesselName",
+          "severity": "low",
+          "issue": "Completeness sweep flags FloatingVesselName as required for a cancelled FSRU, but no primary source names or charters any FSRU vessel. PTT's Songkhla FSRU was shelved in 2018 at the planning stage before any vessel was assigned.",
+          "suggested_action": "No vessel was ever chartered; leave FloatingVesselName blank. Do not guess or invent a vessel name."
+        }
+      ]
+    }
+  ],
+  "entity_checks": [],
+  "url_verifications": [
+    {
+      "url": "https://www.upstreamonline.com/lng/new-thailand-lng-import-project-mooted/2-1-1011271",
+      "tokens": ["Thailand", "EGAT", "FSRU", "2021", "5"],
+      "passed": true
+    },
+    {
+      "url": "https://www.bangkokpost.com/business/1955391/egat-poised-to-approve-first-thai-fsru",
+      "tokens": ["EGAT", "FSRU", "5"],
+      "passed": true,
+      "note": "EGAT/FSRU/5 pass; '2021' not in visible body (undated proposal article) — used for Owner + FSRU corroboration, not the year anchor."
+    },
+    {
+      "url": "https://www.egat.co.th/en/index.php?option=com_content&view=article&id=428:fsru-a-new-option-for-fuel-imported-to-strengthen-thailand-s-power-security&catid=23&Itemid=203",
+      "tokens": ["EGAT", "FSRU"],
+      "passed": false,
+      "note": "HTTP 404, no Wayback snapshot available — dead link (link-rot). Existing T1 Owner [ref]; replaced by working sources."
+    },
+    {
+      "url": "https://www.bangkokpost.com/business/1493658/souths-fsru-development-plan-shelved",
+      "tokens": ["FSRU", "Songkhla", "shelved", "2018", "PTT"],
+      "passed": true
+    },
+    {
+      "url": "https://www.offshore-energy.biz/ptt-to-set-up-fsru-duo/",
+      "tokens": ["PTT", "FSRU", "Songkhla", "3", "mtpa"],
+      "passed": true
+    }
+  ],
+  "summary": "Both cancelled Thai FSRUs re-verified. Gulf of Thailand FSRU (T100000130896, EGAT, 5.0 mtpa, cancelled 2021) and Songkhla FSRU (T100000130898, PTT, 3.0 mtpa, cancelled 2018) remain firmly dead — cited Bangkok Post / Upstream / Offshore Energy sources all still load and support the cancelled status, ownership, capacity, and year anchors, so Status/Owner held unchanged at confidence blue. Neither project ever named or chartered an FSRU vessel (both cancelled at planning stage), so FloatingVesselName is left blank with a missing_field qa note on each — nothing to guess and nothing for FSRU sync to reconcile. Data-health: T1 has two orphan refs (StartDate [ref], Location [ref] filled with no paired value) filed as data_health notes for a cleanup batch (not fixed), and T1's egat.co.th Owner [ref] is dead (404, no Wayback) so the unchanged Owner=EGAT is re-cited to two working independent sources (Upstream + Bangkok Post)."
+}

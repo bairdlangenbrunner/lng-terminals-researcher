@@ -1,0 +1,76 @@
+{
+  "terminal_name": "Filipinas LNG Gateway Project FSRU",
+  "unit_id": "G100002090600",
+  "findings": [
+    {
+      "field": "Status",
+      "current_value": "construction (substatus actual); ConstructionYear 2024",
+      "new_value": "construction (substatus actual); ConstructionYear 2024 -- UNCHANGED",
+      "ref_urls": [
+        "https://www.datocms-assets.com/146580/1736938573-2024-world-lng-report.pdf",
+        "https://tanknewsinternational.com/excelerate-prepares-to-start-work-on-new-open-access-batangas-lng-terminal/",
+        "https://www.gmanetwork.com/news/money/companies/761722/us-firm-excelerate-to-build-phl-s-first-open-access-lng-terminal-in-batangas/story/"
+      ],
+      "confidence": "yellow",
+      "change_summary": "No status change found in either direction -- no evidence of commissioning cargo, commercial operations, or FSRU mobilization (ruling this OUT as 'operating'), but also no independent confirmation that physical construction is actively underway (so cannot upgrade confidence). Re-ran the existing IGU 2024 World LNG Report citation: it still resolves and still lists 'Philippines / Filipinas LNG Gateway / 2025 / 4.40 / Excelerate Energy (100%) / Floating', but this is a comprehensive global terminal-inventory table (Table 7.1) with a 'start year' column, not a status-labeled 'under construction' list -- it does not itself assert physical construction has begun, which is exactly the ambiguity the GEM researcher_notes_unit already flagged (RR 8/25: 'under construction per IGU, but no other verifying sources... consider whether this is in fact under construction and not just approved, or misreported'). This research pass could not resolve that flag either way despite an extensive search (Excelerate IR/press archive, Q1 2026 earnings call transcript, Excelerate's floating-terminal fleet page, Philippine DOE/PNA/GMA/tanknewsinternational/LNG Prime/offshore-energy.biz/Reuters coverage, and the GIIGNL 2026 Annual Report). Recommend leaving Status as-is (do not invent a downgrade without a citable source) but keep the researcher flag open for a future cycle with direct DOE/Excelerate IR outreach."
+    },
+    {
+      "field": "Capacity",
+      "current_value": "4.4 mtpa",
+      "new_value": "4.4 mtpa -- UNCHANGED",
+      "ref_urls": [
+        "https://www.datocms-assets.com/146580/1736938573-2024-world-lng-report.pdf"
+      ],
+      "confidence": "blue",
+      "change_summary": "Re-verified unchanged. IGU 2024 World LNG Report table still lists 4.40 MTPA for Filipinas LNG Gateway; no updated capacity figure found anywhere else."
+    },
+    {
+      "field": "Owner",
+      "current_value": "Luzon LNG Terminal Inc [100%]",
+      "new_value": "Luzon LNG Terminal Inc [100%] -- UNCHANGED",
+      "ref_urls": [
+        "https://www.gmanetwork.com/news/money/companies/761722/us-firm-excelerate-to-build-phl-s-first-open-access-lng-terminal-in-batangas/story/"
+      ],
+      "confidence": "blue",
+      "change_summary": "Re-verified unchanged. No ownership change news found; IGU 2024 report separately lists the ultimate sponsor as 'Excelerate Energy (100%)', consistent with GEM's existing project-company/parent split (Luzon LNG Terminal Inc as local project owner, Excelerate Energy Inc as parent)."
+    }
+  ],
+  "status_timeline_additions": [],
+  "floating_vessel_name": {
+    "value": "",
+    "imo": "",
+    "ref_urls": [],
+    "confidence": "none",
+    "note": "Could not confirm. The only FSRU historically linked to this project in early press (2019-2020, 'Hull 2477'/Maran Gas Maritime bareboat charter) was delivered as Excelerate Sequoia in June 2020 -- but Sequoia is independently confirmed (VesselFinder, Excelerate/Petrobras press) to be deployed at the Bahia FSRU terminal in Brazil under a 10-year Petrobras charter since 2024, i.e. NOT the Philippines. No other Excelerate fleet vessel (Exemplar/Finland, Acadia/Jordan via 9-month charter per Q1 2026 earnings call, others) is linked to Batangas in any source found. Excelerate's own floating-LNG-terminals fleet page makes no Philippines/Batangas assignment. Leaving FloatingVesselName blank rather than guessing."
+  },
+  "entity_checks": [],
+  "url_verifications": [
+    {
+      "url": "https://www.datocms-assets.com/146580/1736938573-2024-world-lng-report.pdf",
+      "tokens": ["Filipinas LNG", "4.40", "Excelerate"],
+      "passed": true
+    },
+    {
+      "url": "https://tanknewsinternational.com/excelerate-prepares-to-start-work-on-new-open-access-batangas-lng-terminal/",
+      "tokens": ["Excelerate", "Batangas"],
+      "passed": true
+    },
+    {
+      "url": "https://www.gmanetwork.com/news/money/companies/761722/us-firm-excelerate-to-build-phl-s-first-open-access-lng-terminal-in-batangas/story/",
+      "tokens": ["Excelerate", "Batangas", "Luzon"],
+      "passed": true
+    },
+    {
+      "url": "https://www.datocms-assets.com/146580/1747916410-igu-world-lng-report-2025.pdf",
+      "tokens": ["Filipinas LNG Gateway"],
+      "passed": false
+    }
+  ],
+  "qa_notes": [
+    "The 2025 IGU World LNG Report URL already cited in start_date_ref (datocms-assets.com/146580/1747916410-igu-world-lng-report-2025.pdf) now 404s -- link rot, could not re-verify or use as a source in this pass.",
+    "GIIGNL's 2026 Annual Report (data/GIIGNL-2026-Annual-Report-0526b.pdf) -- which lists Excelerate Energy as a direct contributing member company -- has ZERO mention of this project (Luzon/Filipinas/Batangas-Excelerate) anywhere in its Philippines country update or its global existing-terminal tables; only 'FGEN Batangas' and 'PHLNG, Batangas' appear for the Philippines. This is a notable silence given GIIGNL/Excelerate reported other Excelerate developments (Inkoo dry-dock, Acadia deployment) in the same edition, but it is absence-of-evidence, not a citable claim, so it was not staged as a finding.",
+    "Philippine Energy Secretary Sharon Garin was quoted (Reuters, Oct 28 2025, paywalled at bworldonline.com/manilatimes.net/tradingview) saying the Philippines is 'currently using only about 60 percent of its existing regasification capacity' and that DOE is 'not prioritising additional facilities in Luzon' -- context suggesting no urgency behind new Luzon LNG import capacity, but the article (behind paywall in all mirrors found) does not name this project specifically, so it was not used as a ref_url.",
+    "Recommend a future-cycle direct check with Philippine DOE (permit-to-construct status) or Excelerate Energy IR to definitively resolve whether physical construction has begun -- this is the same flag the prior researcher (RR, 8/25) raised and this pass could not close it either way despite an extensive independent search."
+  ],
+  "summary": "No confirmed status change: found zero evidence of commissioning cargo, commercial operations, or FSRU mobilization at Batangas for Excelerate's Filipinas LNG Gateway (Luzon LNG Terminal), so 'operating' is ruled out. But also found no independent confirmation that physical construction is actually underway -- the existing IGU-2024-report citation is a global inventory table, not a status assertion, and GIIGNL's 2026 report (with Excelerate as a contributor) is silent on this project. Status/ConstructionYear/Capacity/Owner staged as unchanged (Status downgraded to yellow confidence to reflect the unresolved doubt; Capacity/Owner blue). FloatingVesselName remains unconfirmed and left blank -- the only historically linked FSRU (Excelerate Sequoia) is independently confirmed deployed in Brazil, not the Philippines."
+}
