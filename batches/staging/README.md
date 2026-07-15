@@ -54,7 +54,7 @@ extracts/diffs/assemblies).** The `.gitignore` re-include rules encode exactly t
 ## Run a region (sweep)
 
 ```bash
-# 1. (subagents — Sonnet by default, workflows.md "Model selection" — write
+# 1. (subagents — model chosen at dispatch, workflows.md "Model selection" — write
 #     batches/staging/<region>/<slug>.<type>.json per _country_agent_brief.md;
 #     the dispatch prompt states the tier — standard default, exhaustive for full re-verification)
 # 1a. after all markers land, run the merge-time QC gate (workflows.md §5 step 3a):
