@@ -1,0 +1,62 @@
+[
+  {
+    "category": "entity_reuse",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Hiep Phuoc LNG Terminal (staged candidate)",
+    "issue": "entity_lookup.py --remote returned 'no_remote_match' for 'Hiep Phuoc Power Company' (6.3 kB empty response — the degraded Heroku endpoint, same false-negative mode as the 2026-07 Cong Thanh case). The read-only Postgres entity_history shows an EXISTING entity 'Hiep Phuoc Power' (entity id 100000003214), the co-located power-station sponsor shared across GEM trackers.",
+    "severity": "medium",
+    "suggested_action": "Reuse existing entity id 100000003214 ('Hiep Phuoc Power') as Owner/Operator of the new terminal — do NOT create a new entity. No entity addition staged. Standing tooling note: entity_lookup --remote is non-functional; verify entities via the Postgres entity_history distinct-on(entity_id) latest-row query before staging.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsourced_after_reverify",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Hiep Phuoc LNG Terminal (staged candidate)",
+    "issue": "Capacity left blank. The developer (HPPC) states the terminal design as 2.15 mtpa regasification with two 75,000 m³ full-containment tanks (150,000 m³) and a 40,000 DWT LNG jetty for carriers 10,000-75,000 m³, but this spec appears only on HPPC's own project page (hiep-phuoc.com/kho-cang-lng-hiep-phuoc) — a self-source. Neither of the two independent sources (baochinhphu government paper, VIR) states a terminal nameplate capacity; they confirm the import-port upgrade + storage + regas qualitatively only.",
+    "severity": "low",
+    "suggested_action": "Leave Capacity blank until an independent (non-sponsor) source publishes a terminal nameplate. The 2.15 mtpa / 150,000 m³ / 40,000 DWT jetty figures can go in the wiki Background as developer-stated design specs (attributed), not in the backend Capacity field.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_verification",
+    "terminal_id": "T100001061416",
+    "unit_id": "",
+    "terminal_name": "Haiphong FSRU",
+    "issue": "Update-side signal (NOT a discovery item). The tracked Haiphong FSRU (Vingroup JSC / VinEnergo JSC, construction, ProposalYear 2025) is the marine berth for the 4,800 MW Vingroup Hai Phong LNG plant — the 'Nam Do Son' LNG-berth proposal (Oct 2025 seaport-master-plan request) refers to THIS terminal, not a new one (dedup confirmed: same sponsor/city/coords). But Vingroup reportedly proposed (~April 2026) scrapping the 4,800 MW LNG plant in favour of renewables + battery storage, citing LNG import cost / FX. If the plant is dropped the terminal is at risk.",
+    "severity": "high",
+    "suggested_action": "Route to an Update batch: verify whether the Vingroup Hai Phong LNG plant + its FSRU berth are proceeding or being withdrawn before the next annual publication; a confirmed withdrawal would move Haiphong FSRU construction→shelved/cancelled. Not staged here (discovery pass).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_verification",
+    "terminal_id": "T100000131176",
+    "unit_id": "",
+    "terminal_name": "Northern Vietnam LNG Terminal",
+    "issue": "Update-side signal (NOT a discovery item). This shelved record is the Excelerate Energy / ITECO greenfield Hai Phong terminal (Nam Dinh Vu IP, distinct from the Vingroup Haiphong FSRU). JAPEX announced its exit from the project ~March 2026 — a further negative signal reinforcing shelved, possibly toward cancelled.",
+    "severity": "medium",
+    "suggested_action": "Route to an Update batch: re-verify status; JAPEX exit + no revival step found argues shelved (or inferred-cancelled). Not staged here (discovery pass).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "revival_watch",
+    "terminal_id": "T100001049935",
+    "unit_id": "",
+    "terminal_name": "Stavian Chan May LNG Terminal",
+    "issue": "Update-side signal (NOT a discovery item). Dormant-revival check found a SAME-SPONSOR revival signal: Stavian Group + Wealth Power MOU (Sept 2024) to develop the Chan May Port terminal (Lang Co EZ, Hue), kept on Hue's 2025-2026 priority-project list (~27 ha, ~VND 8.6tn). Same sponsor/design → revival of the existing shelved record, not a new terminal.",
+    "severity": "medium",
+    "suggested_action": "Route to an Update batch to consider shelved→proposed with a timeline entry (fetch_timeline via Postgres). Not staged here — a same-sponsor revival is an Update, not a discovery add.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "sponsor_reconcile",
+    "terminal_id": "T100001084032",
+    "unit_id": "",
+    "terminal_name": "Dung Quat LNG Terminal",
+    "issue": "Update-side check (NOT a discovery item). 2026-06 reporting (baodautu/petrotimes, 24 Jun 2026) attributes a 'Cảng, Trạm và Kho LNG Dung Quất' proposal to VT Energy / Van Tuong Energy JSC (Le Van Tam, GD of Hai Linh — the same Hai Linh/Le Van Tam cluster behind Cai Mep and now Hiep Phuoc). The tracked Dung Quat record was staged 2026-07 with this sponsor; confirm the live record carries Van Tuong Energy JSC as Owner.",
+    "severity": "low",
+    "suggested_action": "Verify in a follow-on Update that the live Dung Quat record's Owner = Van Tuong Energy JSC; no discovery action (Dung Quat already tracked).",
+    "researcher_initials": "AI-draft"
+  }
+]

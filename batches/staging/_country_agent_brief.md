@@ -58,11 +58,21 @@ content-checks) — a PDF failing with "no extractable text" is a scanned/image 
   computed Capacity*/Cost* totals, Wiki, TerminalID, UnitID. Such findings → wiki or qa.
 - Capacity = baseload/nameplate (GEM uses mtpa); peak/optimized → qa/wiki, never a nameplate bump. Convert
   carefully (1 Bcf/d ≈ 7.66 mtpa; 1 MMcf/d ≈ 0.0077 mtpa) and flag conversions for verification.
-- Status change (proposed→construction, idled→operating, etc.) → a qa note (category "status_timeline");
-  do NOT stage a Status field edit and do NOT write a timeline file (fetch_timeline endpoint is DOWN).
+- Status change (proposed→construction, idled→operating, etc.): a CONFIRMED change gets STAGED, never
+  punted to a qa note. First pull the existing ordered timeline:
+  `python /Users/baird/Dropbox/_git_ALL/_github-repos-gem/lng-terminals-researcher/scripts/fetch_timeline.py <UnitID>`
+  (reads the read-only Postgres — always available; a "timeline tool down" excuse is invalid). Then stage
+  (a) the `Status` field update + `Status [ref]`, (b) the paired anchor-year field
+  (ConstructionYear/ShelvedYear/CancelledYear/StartYear…), and (c) an append entry in `<slug>.timeline.json`
+  (schema below). A qa note (category "status_timeline") is ONLY for a status question left genuinely
+  unresolved after research — never for a change you've confirmed.
 - Ownership: separate owner vs parent vs operator vs offtaker vs vessel-owner; don't conflate offtake/feedgas with equity.
 - entity_lookup before any new entity, run BARE (no `--country`): `python .../scripts/entity_lookup.py "<name>" --remote`
-  (a generic-only result = inconclusive → set lookup_was_run starting with "RUN"). Do NOT pass `--country`: entities are
+  (a generic-only result = inconclusive → set lookup_was_run starting with "RUN"). CAVEAT: the `--remote` endpoint has
+  intermittent FALSE NEGATIVES (it once said no-match for "Mitsubishi Corp", which sits on ~48 LNG rows) — treat
+  `no_remote_match` as a lead, not proof of absence: record the exact lookup output in `lookup_result_summary`; the
+  orchestrator re-checks every proposed new entity against the read-only Postgres `entity_history` before building
+  and drops duplicates. Do NOT pass `--country`: entities are
   shared across countries, so a `--country` filter can hide an entity that already exists on a terminal elsewhere and make
   you stage a DUPLICATE (this exact bug staged "LNG Alliance" as new — it already existed on an India terminal). A match
   ANYWHERE = reuse the existing entity. `--country` only annotates; the script emits a `cross_country_warning` instead of
@@ -84,20 +94,23 @@ Write each NON-EMPTY list (skip empty ones) to
 `/Users/baird/Dropbox/_git_ALL/_github-repos-gem/lng-terminals-researcher/batches/staging/<REGION>/<slug>.<type>.json`
 where `<REGION>` is given in your task prompt (e.g. `europe`) and slug = lowercase country (e.g.
 `germany`; for a country with spaces use a hyphen, e.g. `united-kingdom`). `mkdir -p` the region dir
-first. Types: `updates`, `qa`, `wiki`, `entity`, `monitor`, `newterminals`, `newunits`. Each file is
-a JSON list. Use `json.dump(..., ensure_ascii=False, indent=2)`.
+first. Types: `updates`, `timeline`, `qa`, `wiki`, `entity`, `monitor`, `newterminals`, `newunits`. Each file is
+a JSON list. Use `json.dump(..., ensure_ascii=False, indent=2)`. In a combined update+discovery sweep,
+discovery-pass `qa`/`entity` findings go in `<slug>.disc.qa.json` / `<slug>.disc.entity.json` (the discovery
+brief's convention) — YOUR update-pass files stay plain `<slug>.qa.json` / `<slug>.entity.json`.
 
 AFTER all finding files are written, ALWAYS write `<slug>.done.json` LAST — even when you found
-nothing: `{"slug": ..., "country": ..., "mode": "update", "summary": {"updates": N, "qa": N,
+nothing: `{"slug": ..., "country": ..., "mode": "update", "summary": {"updates": N, "timeline": N, "qa": N,
 "wiki": N, "entity": N, "monitor": N, "new": N, "escalation": false}}`. Sweep orchestrators use its
 presence as the resume marker — a country without it is treated as never-run and re-dispatched.
 
 Record schemas (keys EXACT):
 - updates: {terminal_id,unit_id,terminal_name,unit_name,country,field_name(exact GEM header),old_value,new_value,confidence,source_tier,ref_field,ref_urls:[..],source_notes,scope_note,researcher_initials:"AI-draft (sweep)"}
+- timeline: {terminal_id,unit_id,terminal_name,unit_name,operation:"append",status,sub_status,year,part_of_year,notes(include the existing Postgres timeline you pulled + why this appends legally),source_url,confidence,legal_transition_check,researcher_initials:"AI-draft (sweep)"} — one entry per confirmed status transition, paired with its `updates` Status/anchor-year records; flag any non-monotonic transition (e.g. shelved→proposed) in `notes` for reviewer sign-off.
 - qa: {category,terminal_id,unit_id,terminal_name,issue,severity:"high|medium|low",suggested_action,researcher_initials:"AI-draft"}
 - wiki: {country,terminal_id,terminal_name,unit_id,topic,wiki_text,verification_status:"[CONFIRMED]|[UNVERIFIED — SINGLE SOURCE]|[CONFLICTING DATA]|[NOT FOUND]",source_urls:[..],researcher_initials:"AI-draft"}
 - entity: {entity_name,entity_type,country_of_hq,parent_entity,rationale_for_new_entity,lookup_was_run,lookup_result_summary,referenced_by_terminals,referenced_by_units,researcher_initials:"AI-draft"}
-- monitor: {country,candidate_name,sponsor_or_proposer,first_observed_batch:"2026-06 sweep",last_observed_batch:"2026-06 sweep",current_state,missing_threshold_elements,watch_for,best_lead_url,notes}
+- monitor: {country,candidate_name,sponsor_or_proposer,first_observed_batch:"<YYYY-MM> sweep" (the CURRENT batch month),last_observed_batch:same,current_state,missing_threshold_elements,watch_for,best_lead_url,notes}
 - new_terminals / new_units: keys = exact GEM headers (read `build_new_terminals_sheet` ~L657 and `build_new_units_sheet` ~L699 in `scripts/build_review_package.py`); fill only sourced fields; optional `confidence_per_field` {Header:color}.
 
 RETURN ONLY a terse summary (≤12 lines): country; #terminals reviewed; #updates (by color); #qa; #wiki; #monitor;

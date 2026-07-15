@@ -1,0 +1,84 @@
+{
+  "terminal_name": "Map Ta Phut LNG Terminal 2",
+  "terminal_id": "T100000130322",
+  "updates": [
+    {
+      "unit_id": "G100002032200",
+      "unit_name": "--",
+      "field": "Status",
+      "current_value": "operating",
+      "new_value": "operating",
+      "ref_urls": [
+        "https://lngprime.com/asia/saipem-and-ctci-wrap-up-work-on-ptts-nong-fab-lng-terminal-in-thailand/75287/",
+        "https://www.offshore-energy.biz/saipem-and-ctci-commission-nong-fab-lng-terminal-in-thailand/",
+        "https://www.saipem.com/en/saipem-worldwide-projects/pttlng-nong"
+      ],
+      "confidence": "blue",
+      "source_tier": "EPC contractors (Saipem) + trade press (LNG Prime, Offshore Energy)",
+      "change_summary": "Blank Status [ref] fill. Status unchanged (operating). Saipem/CTCI completed, commissioned and started up the Nong Fab (Map Ta Phut LNG Terminal 2) receiving terminal, announced March 2023; first commissioning cargo received June 2022. Terminal is in operation. No status transition."
+    },
+    {
+      "unit_id": "G100002032200",
+      "unit_name": "--",
+      "field": "Capacity",
+      "current_value": "7.5",
+      "new_value": "7.5",
+      "ref_urls": [
+        "https://lngprime.com/asia/saipem-and-ctci-wrap-up-work-on-ptts-nong-fab-lng-terminal-in-thailand/75287/",
+        "https://www.saipem.com/en/saipem-worldwide-projects/pttlng-nong",
+        "https://web.archive.org/web/2023/https://www.offshore-technology.com/projects/nong-fab-lng-receiving-terminal/"
+      ],
+      "confidence": "blue",
+      "source_tier": "EPC contractor (Saipem) + trade press (LNG Prime) + industry profile (Offshore Technology via Wayback)",
+      "change_summary": "Blank Capacity [ref] fill. 7.5 mtpa regasification capacity re-verified across three independent sources; value unchanged. Offshore Technology fetched via Wayback (live page 403 bot-block)."
+    },
+    {
+      "unit_id": "G100002032200",
+      "unit_name": "--",
+      "field": "Location",
+      "current_value": "Map Ta Phut",
+      "new_value": "Map Ta Phut",
+      "ref_urls": [
+        "https://www.saipem.com/en/saipem-worldwide-projects/pttlng-nong",
+        "https://web.archive.org/web/2022/https://lngjournal.com/index.php/latest-news-mainmenu-47/item/106071-thailand-s-second-onshore-lng-import-terminal-at-nong-fab-receives-first-cargo-for-commissioning-purposes",
+        "https://web.archive.org/web/2023/https://www.offshore-technology.com/projects/nong-fab-lng-receiving-terminal/"
+      ],
+      "confidence": "blue",
+      "source_tier": "EPC contractor (Saipem) + trade press (LNG Journal) + industry profile (Offshore Technology), Wayback where bot-blocked",
+      "change_summary": "Blank Location [ref] fill. Terminal is at Nong Fab, Mueang Rayong district, Rayong province, adjacent to the Map Ta Phut industrial area (~5 km west of Map Ta Phut Port). Location value unchanged. LNG Journal and Offshore Technology fetched via Wayback (live pages 403 bot-block)."
+    },
+    {
+      "unit_id": "G100002032200",
+      "unit_name": "--",
+      "field": "Cost",
+      "current_value": "38500000000.00",
+      "new_value": "38500000000.00",
+      "ref_urls": [
+        "https://www.bangkokpost.com/business/general/1517794/nong-fab-contract-awarded"
+      ],
+      "confidence": "yellow",
+      "source_tier": "single non-primary source (Bangkok Post)",
+      "change_summary": "Blank Cost [ref] fill. PTT awarded the 38.5-billion-baht EPC contract for the Nong Fab terminal to the Saipem/CTCI JV (Bangkok Post). Value matches GEM (38,500,000,000 THB). Only one working source explicitly states the baht figure; other reports cite the ~$900M-$925M USD equivalent (different phrasing/value, not a corroboration of the baht number). Staged yellow; see qa note."
+    }
+  ],
+  "qa_notes": [
+    {
+      "category": "unverifiable_value",
+      "unit_id": "G100002032200",
+      "gem_field": "Cost",
+      "severity": "low",
+      "issue": "The 38,500,000,000 THB (38.5 billion baht) EPC cost is confirmed by only one independent working source (Bangkok Post, 'Nong Fab contract awarded'). Other sources report the contract value as the ~$900M-$925M USD equivalent rather than restating the baht figure, so the baht value is effectively single-sourced.",
+      "suggested_action": "Cost [ref] staged with the single Bangkok Post citation at yellow confidence. Acceptable to keep; a future batch could add a Thai-language PTT/regulatory disclosure if one restating 38,500 million baht is found."
+    }
+  ],
+  "url_verifications": [
+    {"url": "https://www.saipem.com/en/saipem-worldwide-projects/pttlng-nong", "tokens": ["Nong Fab", "Rayong", "7.5"], "passed": true},
+    {"url": "https://lngprime.com/asia/saipem-and-ctci-wrap-up-work-on-ptts-nong-fab-lng-terminal-in-thailand/75287/", "tokens": ["7.5", "Nong Fab"], "passed": true},
+    {"url": "https://www.bangkokpost.com/business/general/1517794/nong-fab-contract-awarded", "tokens": ["38.5", "Nong Fab"], "passed": true},
+    {"url": "https://web.archive.org/web/2023/https://www.offshore-technology.com/projects/nong-fab-lng-receiving-terminal/", "tokens": ["7.5", "Rayong", "Nong Fab"], "passed": true},
+    {"url": "https://web.archive.org/web/2022/https://lngjournal.com/index.php/latest-news-mainmenu-47/item/106071-thailand-s-second-onshore-lng-import-terminal-at-nong-fab-receives-first-cargo-for-commissioning-purposes", "tokens": ["Nong Fab", "Rayong"], "passed": true},
+    {"url": "https://www.offshore-energy.biz/saipem-and-ctci-commission-nong-fab-lng-terminal-in-thailand/", "tokens": ["Nong Fab", "7.5"], "passed": true}
+  ],
+  "scope_verdict": "in_scope",
+  "summary": "Map Ta Phut LNG Terminal 2 (Nong Fab), Rayong, is a marine LNG import terminal - in scope. Filled all four blank refs (Status, Capacity, Location, Cost) for existing, unchanged values. Operating status re-verified (Saipem/CTCI completed and commissioned the terminal, March 2023 announcement; first commissioning cargo June 2022) - no transition, so no timeline change. Capacity 7.5 mtpa and Location (Nong Fab / Map Ta Phut, Rayong) each corroborated by three independent sources (blue). Cost of 38.5 billion THB is confirmed by only one working source (Bangkok Post) - staged yellow with a qa_review note rather than fabricating a second citation; USD-equivalent reports are different phrasing, not corroboration."
+}

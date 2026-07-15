@@ -1,0 +1,52 @@
+[
+  {
+    "category": "dead_ref",
+    "terminal_id": "T100000130671",
+    "unit_id": "G100002067100",
+    "terminal_name": "Al Zour LNG Terminal",
+    "issue": "ProposalYear [ref] (dextragroup.com/es/al-zour-lng-import-terminal/) returns HTTP 402/403 on both the /es/ and non-/es/ paths; no Wayback Machine snapshot exists for either URL. Could not find a clean, url_verifier-passing replacement that explicitly dates the 2014 proposal/pre-FEED study. Secondary corroboration (offshore-technology.com project page content, multiple WebSearch AI summaries) consistently describes a Foster Wheeler pre-FEED/conceptual study starting March 2014, consistent with GEM's existing ProposalYear=2014, but none of these pages passed url_verifier for a 2014-specific token.",
+    "severity": "low",
+    "suggested_action": "Leave ProposalYear (2014) and its ref as-is for now (value itself is plausible and unchanged); reviewer may want to manually source a working 2014 proposal citation, or accept the dead ref as historical and deprioritize since the terminal has been operating since 2022.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dead_ref",
+    "terminal_id": "T100000130671",
+    "unit_id": "G100002067100",
+    "terminal_name": "Al Zour LNG Terminal",
+    "issue": "Cost [ref] (hydrocarbons-technology.com) is dead (403/bot-block, mirrors also unverifiable). GEM's existing Cost=$3,000,000,000 (CostYear=2020) could not be re-confirmed at that exact figure/year from a working source. The best working replacement found (LNG Prime) instead cites a $2.93 billion EPC/construction contract value dated 2016, which is a different figure and a different year than GEM's current Cost/CostYear -- likely describes the construction contract only, not total project cost, so I did NOT overwrite Cost/CostYear (exhaustive tier still requires an affirmative match to update; a differing-but-ambiguous figure is a flag, not evidence to change the value).",
+    "severity": "medium",
+    "suggested_action": "Reviewer should determine whether GEM's $3.0bn/2020 figure and the $2.93bn/2016 EPC contract figure are describing the same or different costs (total project vs. construction contract) before deciding whether to update Cost/CostYear or just the ref.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_quality",
+    "terminal_id": "T100000130592",
+    "unit_id": null,
+    "terminal_name": "Mina Al-Ahmadi LNG Terminal",
+    "issue": "FloatingVesselName is identically 'Explorer, Golar Igloo' on BOTH unit-rows (Explorer FSRU G100002059200 and Golar FSRU G100002059201) -- i.e. each unit-row lists both vessels rather than just its own. This looks like a project-level value that was copy-duplicated across unit-rows rather than split per-unit (Explorer FSRU row should probably read just 'Explorer'; Golar FSRU row should probably read just 'Golar Igloo').",
+    "severity": "low",
+    "suggested_action": "Reviewer decide whether to split FloatingVesselName per unit (Explorer row -> 'Explorer'; Golar FSRU row -> 'Golar Igloo') or keep as an intentional project-level list; did not unilaterally split since the convention wasn't specified.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "researcher_gotcha",
+    "terminal_id": "T100000130592",
+    "unit_id": null,
+    "terminal_name": "Mina Al-Ahmadi LNG Terminal",
+    "issue": "A MEED article titled 'Kuwait tenders liquefied natural gas vessel' initially looked (via search-result summary) like a fresh 2025-2026 tender for a new FSRU at Mina Al-Ahmadi. WebFetch of the full article showed it was actually published 31 Oct 2012 (tender announced 21 Oct 2012, bids due 2 Dec 2012) -- this is the HISTORICAL tender that led to the existing Golar Igloo charter delivered Feb 2014, already reflected in GEM. Not a new discovery candidate. Flagging so a future researcher doesn't re-stage this as new.",
+    "severity": "low",
+    "suggested_action": "No action needed; informational note only.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change",
+    "terminal_id": "T100000130671",
+    "unit_id": "G100002067100",
+    "terminal_name": "Al Zour LNG Terminal",
+    "issue": "FacilityType (import), Location, and unit Status/ActualStartYear all re-verified as still accurate and current for 2026; no discrepancies found beyond the dead-ref refreshes staged in updates.json.",
+    "severity": "low",
+    "suggested_action": "No action needed; informational confirmation of exhaustive-tier re-verification.",
+    "researcher_initials": "AI-draft"
+  }
+]

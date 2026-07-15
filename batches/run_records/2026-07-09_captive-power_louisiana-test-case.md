@@ -109,12 +109,14 @@ terminal/liquefaction; partial counts):
 All verified source URLs (each a `url_verifier.py` PASS) are captured per-pair in the agent
 returns; to be transcribed into the Phase-5 staging JSON `[ref]` cells.
 
-## Phase 5 — staging xlsx + memo (done 2026-07-09)
+## Phase 5 — staging xlsx + memo (done 2026-07-09; SUPERSEDED by the 2026-07-10 addendum below)
 
 **Definitional call resolved (user):** mechanical-drive liquefaction turbines count as captive
 power (not only electricity generators). → all 10 pairs in scope; **Woodside included** (GOGPT
 aggregate MW kept as-is). This flips the Phase-3 Woodside "NO" to a scoped-in YES with a
-mechanical-drive caveat in the memo.
+mechanical-drive caveat in the memo. **↳ FINAL STATE 2026-07-10 (after a same-day flip-flop; see
+addenda): mechanical-drive is in scope but flagged `mechanical=True`; Woodside is back IN;
+`PowerPlantsSupplied` is NOT staged (26 `CaptiveGasPower` edits + 1 FID fix across 10 terminals).**
 
 **Deliverable:** `batches/lng_terminals_batch_20260709_1532_ET_louisiana-captive_update.xlsx`
 (53 update records; `recalc.py` clean). Staging JSON committed at
@@ -140,3 +142,106 @@ Decide whether to scale past Louisiana (memo recommends US Gulf, Texas first —
 Freeport, Golden Pass, Rio Grande, Port Arthur). Before a wide sweep, resolve the
 mechanical-drive-vs-electric capacity semantics with GOGPT (memo point 2). Delfin `Status`
 proposed → construction remains an open Update item pending a construction-start source.
+
+## Addendum — 2026-07-10: mechanical-drive carve-out reversed; Woodside excluded
+
+**Decision reversed (user, 2026-07-10):** the 2026-07-09 call that mechanical-drive liquefaction
+turbines count as captive power is **withdrawn**. New rule (now in SOP §2, CLAUDE.md, workflows §9):
+**captive requires a real on-site electricity-generating plant** (partial/grid-exporting still
+counts); **pure mechanical compressor-drive with no generator does NOT count.**
+
+Effect on the LA batch:
+- **Woodside Louisiana — excluded.** It is the one pure mechanical-drive site (8× LM6000PF+ turbines
+  spinning the refrigeration compressors; site electricity grid-fed via Entergy 230 kV, no generator).
+  Its 4 staged records (`CaptiveGasPower`/`PowerPlantsSupplied` × 2 unit-rows) are removed.
+- **Sabine Pass and Commonwealth stay IN** — both have genuine on-site electricity generation (Sabine
+  GTGs; Commonwealth ~120 MW electric plant), so their captive verdict is unchanged. Their GOGPT MW
+  figures still carry the mechanical-conflation caveat in the memo (that's a capacity note, not a
+  scope call).
+- **Batch is now 49 records / 9 terminals** (was 53 / 10). Staging JSON re-trimmed; workbook rebuilt
+  with a fresh timestamp + `recalc.py` (see below); memo updated.
+
+**Matcher deliverable — GOGPT plant id/name/wiki now left-most (2026-07-10).** Per user request,
+`captive_power_colocation.py` now pulls the GOGPT plant's `wikiUrl` and outputs the related oil &
+gas plant's **`gogpt_plant_id` / `gogpt_plant` / `gogpt_wiki_url` as the three left-most columns**
+of both the candidates CSV/xlsx and the `unmatched_captive` sheet. The wiki URL is a navigation
+pointer to the GOGPT record for review only — NOT a citation/`[ref]` (never enters a staging sheet
+as a source). Regenerated deliverable:
+`batches/deliverables/captive_power_colocation_20260710_1331_ET_louisiana.{csv,xlsx}` (15 candidate
+pairs; A=9/B=1/C=5, unchanged). NB the matcher is deterministic geo/name/flag matching, so it still
+lists Woodside as a colocated pair — the captive-definition exclusion is applied downstream at the
+staging step, not in the candidate list.
+
+## Addendum — 2026-07-10 (later, FINAL): mechanical-drive back IN scope, but flagged `mechanical`
+
+**The exclusion above is reversed again (user, 2026-07-10, same day) — this is the settled state.**
+New rule (now in SOP §2, CLAUDE.md router, workflows §9): **mechanical-drive turbines DO count as
+captive power** (so any on-site gas turbine doing liquefaction shaft-work is captive, generator or
+not), **but any terminal whose captive verdict rests on mechanical drive is flagged `mechanical =
+True`** in a left-most, review-only column of `updates_summary`.
+
+Effect on the LA batch:
+- **Woodside Louisiana — back IN** (`mechanical = True`; pure mechanical drive, no generator). Its 4
+  records are restored.
+- **`mechanical` flag stamped on every staged record.** `True` for **Woodside** (pure mechanical),
+  **Sabine Pass** and **Commonwealth** (mixed: real generator *plus* mechanical drives) = 24 records;
+  `False` for the seven pure-generator terminals = 29 records.
+- **Batch is 53 records / 10 terminals again.** The `mechanical` column is review-only — NOT a GEM
+  field, and it never appears in the `updates_in_database_format` paste sheet.
+
+**Implementation:** `mechanical` added as the first key of each staged record; `build_review_package.py`
+`build_updates_sheet` emits it as the first `updates_summary` header (not in `READ_ONLY_COLUMNS`, so
+it's written; absent from the paste sheet by construction). Workbook rebuilt fresh +
+`recalc.py` clean: `batches/lng_terminals_batch_20260710_1335_ET_louisiana-captive_update.xlsx`
+(53 records; `mechanical` verified as col 1 = 24 True / 29 False). Memo + SOP §2/§3/§4 updated.
+
+## Addendum — 2026-07-10 (final): `PowerPlantsSupplied` dropped + GOGPT plant id/name/wiki on the paste tab
+
+Two changes bring the batch to its settled state:
+
+1. **`PowerPlantsSupplied` is no longer staged.** Per the CLAUDE.md hard rule (and workflows §9 /
+   SOP §2), captive power flows INTO the terminal, whereas `PowerPlantsSupplied` describes the
+   opposite (terminal → external plant, e.g. Vung Ang → Quang Trach). The 26 `PowerPlantsSupplied`
+   records were removed; the batch is now **26 `CaptiveGasPower` edits + 1 FID fix (Delfin) across 10
+   terminals** = 27 staged records / 26 paste rows. `CaptiveGasPower` (+ `[ref]`) is the only captive
+   field staged.
+
+2. **GOGPT plant id/name/wiki added to the paste tab (user request).** `build_review_package.py`'s
+   `build_update_csv_shaped_sheet` now prepends `gogpt_plant_id` / `gogpt_plant` / `gogpt_wiki_url`
+   as the three left-most, **review-only** columns of `updates_in_database_format` (italic + "do NOT
+   paste" comment; freeze-panes offset by `n_left`). Emitted only when the staged records carry those
+   keys, so normal Update batches are unaffected. The records were stamped from the matcher
+   deliverable's Tier-A/B primary pair per terminal. The gem.wiki URL is a navigation pointer to the
+   GOGPT record — NOT a citation (same status as the export's native `Wiki` column; no URL-guard trip).
+
+Rebuilt fresh + `recalc.py` clean:
+`batches/lng_terminals_batch_20260710_1408_ET_louisiana-captive_update.xlsx` (26 paste rows;
+`updates_summary` leads with `mechanical`, `updates_in_database_format` leads with the 3 GOGPT
+columns; `mechanical` absent from the paste sheet, verified). Memo + SOP §1/§3/§4 reconciled to
+drop the stale `PowerPlantsSupplied`-staged language. `tests/test_build_guard.py` green (6 passed).
+
+## Addendum — 2026-07-14: three review-context tabs added (matching Texas)
+
+User asked to add the same three review tabs to Louisiana. Unlike Texas (no real GOGPT captive
+records), every LA terminal has a matched GOGPT captive plant, so the tabs document those matches:
+
+- **`terminal_first_priors`** (10 rows) — each terminal's Tier-A GOGPT captive prior, how captive was
+  confirmed, and `confirmed_how [ref]`.
+- **`neighboring_plants`** (10 rows) — the matched captive plant per terminal (dist_km ≈ 0 for most;
+  Argent 2.19, Gulfstream 4.15, G2 0.38), its GOGPT MW/units/status, a `relation` note, an
+  independent `info_url`, and a gem.wiki `gogpt_record (nav only)` pointer. The nearest GOGPT plant
+  here genuinely IS the terminal's own captive power — the inverse of Texas.
+- **`gogpt_candidates`** (10 rows) — since the records already exist, verdicts are `IN GOGPT — OK`
+  for clean CCGTs vs `IN GOGPT — REVIEW MW (mechanical conflation)` for Woodside (430.4 MW all
+  mechanical, grid-fed), Commonwealth (~120 MW electric vs 438.6 GOGPT), Sabine Pass (1,665.6
+  unverified); G2 flagged `status/name + MW review` (record renamed 'G2 Net-Zero power plant' →
+  'G2 LNG Terminal power station'; 300 MW vs >1,000 MW design). `mechanical_drive_note` keeps shaft
+  MW out of `electric_mw`.
+
+Staging JSON: `captive_terminal_first.json` / `captive_neighboring_plants.json` /
+`captive_gogpt_candidates.json` (committed). All 25 URLs re-verified via `url_verifier.py` — one fix:
+the Woodside FERC FEIS predates the Woodside rename (it's the Driftwood-era FEIS), so it's verified
+under `Driftwood`/`Entergy` for the grid-fed claim while the LM6000PF+ compressor-drive detail is
+sourced to the Baker Hughes order. Rebuilt fresh + recalc clean:
+`batches/lng_terminals_batch_20260714_1107_ET_louisiana-captive_update.xlsx` (6 sheets).
+Standing layout now documented in SOP §3a/§4a + workflows §9.

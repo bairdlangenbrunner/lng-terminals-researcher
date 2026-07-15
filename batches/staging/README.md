@@ -20,7 +20,9 @@ batches/staging/
   _discovery_brief.md        the brief for discovery-sweep subagents
   _assemble.py               merges <region>/*.<type>.json → <region>/_build/staged_*.json
   <region>/                  per-region sweep dir (southamerica, europe, africa, asia, americas, ...)
-    <slug>.<type>.json       one file per country per finding-type (updates|qa|wiki|entity|monitor|newterminals|newunits)
+    <slug>.<type>.json       one file per country per finding-type (updates|timeline|qa|wiki|entity|monitor|newterminals|newunits);
+                             discovery-pass qa/entity use the .disc. infix (<slug>.disc.qa.json) for the
+                             two-book non-overlap split (workbook_conventions.md)
     <slug>.*.done.json       resume markers — checkpoints only, see lifecycle note below
     _build/                  assembled staged_*.json that build_review_package.py consumes (derived — gitignored)
   recon/<report><year>/      per-edition reconciliation dir (e.g. recon/giignl2026/)
@@ -52,8 +54,11 @@ extracts/diffs/assemblies).** The `.gitignore` re-include rules encode exactly t
 ## Run a region (sweep)
 
 ```bash
-# 1. (subagents write batches/staging/<region>/<slug>.<type>.json per _country_agent_brief.md;
+# 1. (subagents — Sonnet by default, workflows.md "Model selection" — write
+#     batches/staging/<region>/<slug>.<type>.json per _country_agent_brief.md;
 #     the dispatch prompt states the tier — standard default, exhaustive for full re-verification)
+# 1a. after all markers land, run the merge-time QC gate (workflows.md §5 step 3a):
+#     gem.wiki citation scan, Postgres entity_history re-check, URL spot-check, marker completeness
 python batches/staging/_assemble.py <region>
 python scripts/build_review_package.py --mode update \
     --inputs-dir batches/staging/<region>/_build --gem-csv scripts/gem_export.csv \

@@ -1,0 +1,482 @@
+[
+  {
+    "terminal_id": "T100000130618",
+    "unit_id": "G100002061800",
+    "terminal_name": "Dörtyol FSRU",
+    "unit_name": "--",
+    "country": "Türkiye",
+    "field_name": "Owner [ref]",
+    "old_value": "https://www.botas.gov.tr/Icerik/our-first-fsru-vessel-ertugrul/380, https://giignl.org/sites/default/files/PUBLIC_AREA/Publications/giignl_-_2020_annual_report_-_04082020.pdf, https://www.nasdaq.com/articles/mol-and-vopak-to-jointly-own-operate-unit-at-hong-kongs-new-lng-terminal",
+    "new_value": "https://www.botas.gov.tr/Icerik/our-first-fsru-vessel-ertugrul/380, https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf",
+    "confidence": "blue",
+    "source_tier": "primary (BOTAŞ) + GIIGNL 2026",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.botas.gov.tr/Icerik/our-first-fsru-vessel-ertugrul/380",
+      "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf"
+    ],
+    "source_notes": "Exhaustive-tier re-verify. Owner value (BOTAŞ AŞ [100%]) unchanged -- GIIGNL 2026 p.59 confirms 'Owner: Botas' for Dörtyol/Ertuğrul Gazi. Dropped two dead/bad refs from the existing 3-URL list: the giignl.org/sites/default/files 2020-edition PDF is now HTTP 404 (giignl.org restructured file hosting site-wide -- see companion qa note), and the nasdaq.com URL is BOTH dead (HTTP 404) AND, based on its title ('MOL and Vopak to jointly own/operate unit at Hong Kong's new LNG terminal'), appears to be an unrelated citation about a Hong Kong terminal, not Dörtyol/Türkiye -- looks like a stray/mismatched ref. Kept the working botas.gov.tr primary source (url_verifier returns HTTP 000 on scripted fetch -- bot-blocked, not dead; content independently confirmed via WebFetch) and added the current working GIIGNL 2026 mirror as a second corroboration.",
+    "scope_note": "Single-unit terminal; project-level field.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130618",
+    "unit_id": "G100002061800",
+    "terminal_name": "Dörtyol FSRU",
+    "unit_name": "--",
+    "country": "Türkiye",
+    "field_name": "FacilityType [ref]",
+    "old_value": "https://giignl.org/wp-content/uploads/2024/06/GIIGNL-2024-Annual-Report-1.pdf",
+    "new_value": "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf",
+    "confidence": "blue",
+    "source_tier": "GIIGNL 2026 (industry report)",
+    "ref_field": null,
+    "ref_urls": [
+      "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf"
+    ],
+    "source_notes": "Exhaustive-tier re-verify. Existing giignl.org/wp-content/uploads/2024/06 URL is HTTP 404 (systemic giignl.org restructuring, see qa note). FacilityType=import confirmed unchanged (Dörtyol listed under Türkiye's regasification/import terminals, GIIGNL 2026 p.59). Replaced with the current working GIIGNL 2026 mirror.",
+    "scope_note": "Single-unit terminal; project-level field.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130618",
+    "unit_id": "G100002061800",
+    "terminal_name": "Dörtyol FSRU",
+    "unit_name": "--",
+    "country": "Türkiye",
+    "field_name": "ProposalDate [ref]",
+    "old_value": "http://www.businesskorea.co.kr/news/articleView.html?idxno=18556",
+    "new_value": "https://gcaptain.com/daewoo-mol-fsru-regasification-lng/",
+    "confidence": "yellow",
+    "source_tier": "trade press (single, imperfect match)",
+    "ref_field": null,
+    "ref_urls": [
+      "https://gcaptain.com/daewoo-mol-fsru-regasification-lng/"
+    ],
+    "source_notes": "Exhaustive-tier re-verify. The existing businesskorea.co.kr URL is dead/wrong -- WebFetch confirms it now serves an unrelated Hanwha Energy Guam solar-power article, nothing about Turkey or FSRUs. Replaced with gcaptain.com's Dec 2013 report on Daewoo Shipbuilding's order to build a 263,000 cbm FSRU for Mitsui O.S.K. Lines (MOL) -- this is the vessel that became the Dörtyol FSRU (delivered as MOL Challenger, later renamed Ertuğrul Gazi; GEM's own OtherNames field already carries 'MOL Challenger FSRU'). Flagged yellow/imperfect: the gcaptain article confirms the Dec-2013 order/spec but does not explicitly name Turkey or BOTAŞ as the eventual charterer -- see companion qa note recommending a Turkish-language or BOTAŞ-side source for a firmer citation.",
+    "scope_note": "Single-unit terminal; project-level field.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130541",
+    "unit_id": "G100002054100",
+    "terminal_name": "Etki FSRU",
+    "unit_name": "--",
+    "country": "Türkiye",
+    "field_name": "Owner [ref]",
+    "old_value": "https://giignl.org/wp-content/uploads/2025/06/GIIGNL-2025-Annual-Report-1-1.pdf",
+    "new_value": "https://www.denizhaber.net/kolin-kalyon-ve-onal-kardeslere-ait-turquoise-p-isimli-fsru-yarin-etki-limanina--haber-89348.htm, https://www.patronlardunyasi.com/kalyon-ve-kolinden-15-milyarlik-gemi-turk-gemisine-panama-bayragi",
+    "confidence": "blue",
+    "source_tier": "trade press (2 independent)",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.denizhaber.net/kolin-kalyon-ve-onal-kardeslere-ait-turquoise-p-isimli-fsru-yarin-etki-limanina--haber-89348.htm",
+      "https://www.patronlardunyasi.com/kalyon-ve-kolinden-15-milyarlik-gemi-turk-gemisine-panama-bayragi"
+    ],
+    "source_notes": "Exhaustive-tier re-verify. Existing giignl.org/wp-content/uploads/2025/06 URL is HTTP 404 (systemic giignl.org restructuring, see qa note). Owner value ('Etki Liman İşletmeleri Doğalgaz İthalat ve Ticaret AŞ') confirmed unchanged and directly named in both replacement sources, which also supply the companion Parent-field correction (see that record). Both url_verifier PASS.",
+    "scope_note": "Single-unit terminal; project-level field.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130541",
+    "unit_id": "G100002054100",
+    "terminal_name": "Etki FSRU",
+    "unit_name": "--",
+    "country": "Türkiye",
+    "field_name": "Parent",
+    "old_value": "Kalyon Group [50.0%]; Kolin Group",
+    "new_value": "Kalyon Group [50.0%]; Kolin Group [30.0%]; Önal Kardeşler [20.0%]",
+    "confidence": "green",
+    "source_tier": "trade press (2 independent)",
+    "ref_field": "Owner [ref]",
+    "ref_urls": [
+      "https://www.denizhaber.net/kolin-kalyon-ve-onal-kardeslere-ait-turquoise-p-isimli-fsru-yarin-etki-limanina--haber-89348.htm",
+      "https://www.patronlardunyasi.com/kalyon-ve-kolinden-15-milyarlik-gemi-turk-gemisine-panama-bayragi"
+    ],
+    "source_notes": "GEM's existing Parent field is missing Kolin's percentage and omits Önal Kardeşler entirely. Both denizhaber.net and patronlardunyasi.com independently and explicitly state the full ownership split of Etki Liman İşletmeleri Doğalgaz İthalat ve Ticaret AŞ: 'Kalyon Grubu'nun yüzde 50, Kolin Grubu'nun yüzde 30 ve Önal kardeşlerin yüzde 20' (verified via direct page-text extraction, not just search snippets). No 'Parent [ref]' column exists in the GEM schema (Parent shares Owner [ref] per docs/reference/gem_db_schema.md); ref_field points there accordingly. Önal Kardeşler ('Önal Brothers') is a genuinely new entity not found via entity_lookup.py (bare + --remote, both name variants) -- see turkiye.entity.json.",
+    "scope_note": "Single-unit terminal; project-level field.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130541",
+    "unit_id": "G100002054100",
+    "terminal_name": "Etki FSRU",
+    "unit_name": "--",
+    "country": "Türkiye",
+    "field_name": "FloatingVesselName [ref]",
+    "old_value": "https://giignl.org/wp-content/uploads/2025/06/GIIGNL-2025-Annual-Report-1-1.pdf",
+    "new_value": "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf",
+    "confidence": "blue",
+    "source_tier": "GIIGNL 2026 (industry report)",
+    "ref_field": null,
+    "ref_urls": [
+      "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf"
+    ],
+    "source_notes": "Exhaustive-tier re-verify. Existing ref is HTTP 404. FloatingVesselName='FSRU Turquoise' confirmed current/correct -- GIIGNL 2026's FSRU fleet table lists 'Turquoise P ... Etki, Türkiye' (delivered by HHI in 2019, replacing the original inaugurating vessel GDF Suez Neptune from Dec 2016). No change to the value.",
+    "scope_note": "Single-unit terminal; project-level field.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130541",
+    "unit_id": "G100002054100",
+    "terminal_name": "Etki FSRU",
+    "unit_name": "--",
+    "country": "Türkiye",
+    "field_name": "FacilityType [ref]",
+    "old_value": "https://giignl.org/wp-content/uploads/2024/06/GIIGNL-2024-Annual-Report-1.pdf, https://giignl.org/sites/default/files/PUBLIC_AREA/Publications/giignl_-_2020_annual_report_-_04082020.pdf",
+    "new_value": "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf",
+    "confidence": "blue",
+    "source_tier": "GIIGNL 2026 (industry report)",
+    "ref_field": null,
+    "ref_urls": [
+      "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf"
+    ],
+    "source_notes": "Exhaustive-tier re-verify. Both existing refs are HTTP 404 (systemic giignl.org restructuring, see qa note). FacilityType=import confirmed unchanged.",
+    "scope_note": "Single-unit terminal; project-level field.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130541",
+    "unit_id": "G100002054100",
+    "terminal_name": "Etki FSRU",
+    "unit_name": "--",
+    "country": "Türkiye",
+    "field_name": "Capacity [ref]",
+    "old_value": "https://giignl.org/wp-content/uploads/2024/06/GIIGNL-2024-Annual-Report-1.pdf",
+    "new_value": "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf",
+    "confidence": "blue",
+    "source_tier": "GIIGNL 2026 (industry report)",
+    "ref_field": null,
+    "ref_urls": [
+      "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf"
+    ],
+    "source_notes": "Exhaustive-tier re-verify. Existing ref is HTTP 404. Capacity=5.70 MTPA confirmed unchanged -- consistent in both GIIGNL 2026's main Türkiye regas-terminal table ('Etki ... 5.7 ... Etki Liman') and its FSRU fleet table ('Turquoise P ... 5.7 ... Etki, Türkiye').",
+    "scope_note": "Single-unit terminal; project-level field.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130807",
+    "unit_id": "G100002080700",
+    "terminal_name": "Gulf of Saros FSRU",
+    "unit_name": "--",
+    "country": "Türkiye",
+    "field_name": "FloatingVesselName",
+    "old_value": "Vasant",
+    "new_value": "Saros",
+    "confidence": "green",
+    "source_tier": "vessel registry (primary) + trade press + GIIGNL 2026",
+    "ref_field": "FloatingVesselName [ref]",
+    "ref_urls": [
+      "https://www.vesselfinder.com/vessels/details/9837066",
+      "https://lngprime.com/asia/botas-to-buy-swan-energys-fsru-for-399-million/121455/",
+      "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf"
+    ],
+    "source_notes": "The FSRU 'Vasant 1' (IMO 9837066), built 2020 by HHI for Swan Energy's stalled Jafrabad LNG project in India, was chartered to BOTAŞ from Feb 2023 and stationed at the Saros site. BOTAŞ agreed (Aug 2024, LNG Prime/Splash247/World Oil) to buy the vessel outright from Swan Energy's subsidiary Triumph Offshore for $399M. VesselFinder's live AIS registry now shows the vessel renamed 'SAROS' (IMO 9837066 unchanged, currently positioned at Botas Saros). GIIGNL 2026 confirms in its main Türkiye table 'Saros (FSRU)' and in its FSRU fleet table 'Saros (ex Vasant 1)'. Supersedes the existing FloatingVesselName [ref] (argusmedia.com), which was written while the vessel was still named 'Vasant' and is now stale, not wrong.",
+    "scope_note": "Single-unit terminal; project-level field.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130807",
+    "unit_id": "G100002080700",
+    "terminal_name": "Gulf of Saros FSRU",
+    "unit_name": "--",
+    "country": "Türkiye",
+    "field_name": "Owner [ref]",
+    "old_value": "https://giignl.org/sites/default/files/PUBLIC_AREA/Publications/giignl_-_2020_annual_report_-_04082020.pdf, https://giignl.org/wp-content/uploads/2021/11/GIIGNL_Annual_Report_November2021.pdf",
+    "new_value": "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf",
+    "confidence": "blue",
+    "source_tier": "GIIGNL 2026 (industry report)",
+    "ref_field": null,
+    "ref_urls": [
+      "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf"
+    ],
+    "source_notes": "Exhaustive-tier re-verify. Both existing refs are HTTP 404 (systemic, see qa note). Owner=BOTAŞ AŞ [100%] confirmed unchanged -- GIIGNL 2026 p.59 'Saros (FSRU) ... Botas Botas'.",
+    "scope_note": "Single-unit terminal; project-level field.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130807",
+    "unit_id": "G100002080700",
+    "terminal_name": "Gulf of Saros FSRU",
+    "unit_name": "--",
+    "country": "Türkiye",
+    "field_name": "Operator [ref]",
+    "old_value": "https://giignl.org/wp-content/uploads/2025/06/GIIGNL-2025-Annual-Report-1-1.pdf",
+    "new_value": "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf",
+    "confidence": "blue",
+    "source_tier": "GIIGNL 2026 (industry report)",
+    "ref_field": null,
+    "ref_urls": [
+      "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf"
+    ],
+    "source_notes": "Exhaustive-tier re-verify. Existing ref is HTTP 404. Operator=BOTAŞ confirmed unchanged.",
+    "scope_note": "Single-unit terminal; project-level field.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130807",
+    "unit_id": "G100002080700",
+    "terminal_name": "Gulf of Saros FSRU",
+    "unit_name": "--",
+    "country": "Türkiye",
+    "field_name": "FacilityType [ref]",
+    "old_value": "https://giignl.org/wp-content/uploads/2024/06/GIIGNL-2024-Annual-Report-1.pdf",
+    "new_value": "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf",
+    "confidence": "blue",
+    "source_tier": "GIIGNL 2026 (industry report)",
+    "ref_field": null,
+    "ref_urls": [
+      "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf"
+    ],
+    "source_notes": "Exhaustive-tier re-verify. Existing ref is HTTP 404. FacilityType=import confirmed unchanged.",
+    "scope_note": "Single-unit terminal; project-level field.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130807",
+    "unit_id": "G100002080700",
+    "terminal_name": "Gulf of Saros FSRU",
+    "unit_name": "--",
+    "country": "Türkiye",
+    "field_name": "Capacity",
+    "old_value": "5.00",
+    "new_value": "5.70",
+    "confidence": "green",
+    "source_tier": "GIIGNL 2026 (industry report, definitive terminal table)",
+    "ref_field": "Capacity [ref]",
+    "ref_urls": [
+      "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf"
+    ],
+    "source_notes": "GIIGNL 2025 (both live and locally archived) still shows Saros at 5.0 MTPA (matching GEM's current value); GIIGNL 2026 (both the elfsightcdn-hosted live PDF and the locally archived data/GIIGNL-2026-Annual-Report-0526b.pdf) revises this to 5.7 MTPA in its main Türkiye regasification-terminal table (p.59: 'Saros (FSRU) Offshore - 180,000 N/A 5.7 Botas Botas - - 2023'), and the Türkiye country total explicitly given as '36.6 MTPA' only reconciles with Saros=5.7 (5.7+5.7+10.7+8.8+5.7=36.6; with Saros=5.0 the total would be 35.9). This is the SAME authoritative table/edition already relied on as the current source for Dörtyol/Etki/Marmara's capacities in this batch, so treated as equivalent evidentiary weight, not a lone weak source. Plausible driver: BOTAŞ took over the vessel from Swan Energy's 5.0-mtpa-spec lease in 2023-2024 and appears to now rate the site's nominal send-out at 5.7 MTPA. NOTE: a qa entry flags that other public figures for this site disagree (Wood Mackenzie's public abstract cites 4.9 MTPA/6.7 bcm actual operating capacity since Feb-2023 start-up; GIIGNL 2026's OWN separate FSRU-fleet table lists the vessel's original nameplate as 5.0 MTPA) -- recommend a closer look at BOTAŞ's own technical documentation in a future cycle to fully settle this.",
+    "scope_note": "Single-unit terminal; project-level field.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130543",
+    "unit_id": "G100002054300",
+    "terminal_name": "Izmir Aliaga LNG Terminal",
+    "unit_name": "--",
+    "country": "Türkiye",
+    "field_name": "Owner [ref]",
+    "old_value": "https://giignl.org/wp-content/uploads/2022/05/GIIGNL2022_Annual_Report_May24.pdf",
+    "new_value": "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf",
+    "confidence": "blue",
+    "source_tier": "GIIGNL 2026 (industry report)",
+    "ref_field": null,
+    "ref_urls": [
+      "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf"
+    ],
+    "source_notes": "Exhaustive-tier re-verify. Existing ref is HTTP 404. Owner=EgeGaz AS [100%] confirmed unchanged.",
+    "scope_note": "Single-unit terminal; project-level field.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130543",
+    "unit_id": "G100002054300",
+    "terminal_name": "Izmir Aliaga LNG Terminal",
+    "unit_name": "--",
+    "country": "Türkiye",
+    "field_name": "Operator [ref]",
+    "old_value": "https://giignl.org/wp-content/uploads/2022/05/GIIGNL2022_Annual_Report_May24.pdf",
+    "new_value": "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf",
+    "confidence": "blue",
+    "source_tier": "GIIGNL 2026 (industry report)",
+    "ref_field": null,
+    "ref_urls": [
+      "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf"
+    ],
+    "source_notes": "Exhaustive-tier re-verify. Existing ref is HTTP 404. Operator=EgeGaz confirmed unchanged.",
+    "scope_note": "Single-unit terminal; project-level field.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130543",
+    "unit_id": "G100002054300",
+    "terminal_name": "Izmir Aliaga LNG Terminal",
+    "unit_name": "--",
+    "country": "Türkiye",
+    "field_name": "FacilityType [ref]",
+    "old_value": "https://giignl.org/wp-content/uploads/2024/06/GIIGNL-2024-Annual-Report-1.pdf",
+    "new_value": "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf",
+    "confidence": "blue",
+    "source_tier": "GIIGNL 2026 (industry report)",
+    "ref_field": null,
+    "ref_urls": [
+      "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf"
+    ],
+    "source_notes": "Exhaustive-tier re-verify. Existing ref is HTTP 404. FacilityType=import confirmed unchanged.",
+    "scope_note": "Single-unit terminal; project-level field.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130543",
+    "unit_id": "G100002054300",
+    "terminal_name": "Izmir Aliaga LNG Terminal",
+    "unit_name": "--",
+    "country": "Türkiye",
+    "field_name": "Capacity [ref]",
+    "old_value": "https://giignl.org/wp-content/uploads/2024/06/GIIGNL-2024-Annual-Report-1.pdf",
+    "new_value": "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf",
+    "confidence": "blue",
+    "source_tier": "GIIGNL 2026 (industry report)",
+    "ref_field": null,
+    "ref_urls": [
+      "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf"
+    ],
+    "source_notes": "Exhaustive-tier re-verify. Existing ref is HTTP 404. Capacity=10.70 MTPA confirmed unchanged (GIIGNL 2026 p.59: 'Izmir Aliaga ... 10.7 EgeGaz'). Despite the task brief's hint that this capacity may be stale/expanded, no expansion found this batch -- the most current authoritative report confirms no throughput change.",
+    "scope_note": "Single-unit terminal; project-level field.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130543",
+    "unit_id": "G100002054300",
+    "terminal_name": "Izmir Aliaga LNG Terminal",
+    "unit_name": "--",
+    "country": "Türkiye",
+    "field_name": "Status [ref]",
+    "old_value": "https://giignl.org/wp-content/uploads/2025/06/GIIGNL-Annual-Report-2025.pdf",
+    "new_value": "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf",
+    "confidence": "blue",
+    "source_tier": "GIIGNL 2026 (industry report)",
+    "ref_field": null,
+    "ref_urls": [
+      "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf"
+    ],
+    "source_notes": "Exhaustive-tier re-verify. Existing ref is HTTP 404. Status=operating confirmed unchanged.",
+    "scope_note": "Single-unit terminal; project-level field.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130543",
+    "unit_id": "G100002054300",
+    "terminal_name": "Izmir Aliaga LNG Terminal",
+    "unit_name": "--",
+    "country": "Türkiye",
+    "field_name": "StartDate [ref]",
+    "old_value": "https://giignl.org/wp-content/uploads/2025/06/GIIGNL-Annual-Report-2025.pdf",
+    "new_value": "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf",
+    "confidence": "blue",
+    "source_tier": "GIIGNL 2026 (industry report)",
+    "ref_field": null,
+    "ref_urls": [
+      "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf"
+    ],
+    "source_notes": "Exhaustive-tier re-verify. Existing ref is HTTP 404. Start-up year (2006) confirmed unchanged (GIIGNL 2026 p.59).",
+    "scope_note": "Single-unit terminal; project-level field.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130545",
+    "unit_id": "G100002054500",
+    "terminal_name": "Marmara LNG Terminal",
+    "unit_name": "--",
+    "country": "Türkiye",
+    "field_name": "Owner [ref]",
+    "old_value": "https://giignl.org/wp-content/uploads/2022/05/GIIGNL2022_Annual_Report_May24.pdf",
+    "new_value": "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf",
+    "confidence": "blue",
+    "source_tier": "GIIGNL 2026 (industry report)",
+    "ref_field": null,
+    "ref_urls": [
+      "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf"
+    ],
+    "source_notes": "Exhaustive-tier re-verify. Existing ref is HTTP 404. Owner=BOTAŞ AŞ [100%] confirmed unchanged.",
+    "scope_note": "Single-unit terminal; project-level field.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130545",
+    "unit_id": "G100002054500",
+    "terminal_name": "Marmara LNG Terminal",
+    "unit_name": "--",
+    "country": "Türkiye",
+    "field_name": "Operator [ref]",
+    "old_value": "https://giignl.org/wp-content/uploads/2025/06/GIIGNL-Annual-Report-2025.pdf",
+    "new_value": "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf",
+    "confidence": "blue",
+    "source_tier": "GIIGNL 2026 (industry report)",
+    "ref_field": null,
+    "ref_urls": [
+      "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf"
+    ],
+    "source_notes": "Exhaustive-tier re-verify. Existing ref is HTTP 404. Operator=BOTAŞ confirmed unchanged.",
+    "scope_note": "Single-unit terminal; project-level field.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130545",
+    "unit_id": "G100002054500",
+    "terminal_name": "Marmara LNG Terminal",
+    "unit_name": "--",
+    "country": "Türkiye",
+    "field_name": "FacilityType [ref]",
+    "old_value": "https://giignl.org/wp-content/uploads/2024/06/GIIGNL-2024-Annual-Report-1.pdf",
+    "new_value": "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf",
+    "confidence": "blue",
+    "source_tier": "GIIGNL 2026 (industry report)",
+    "ref_field": null,
+    "ref_urls": [
+      "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf"
+    ],
+    "source_notes": "Exhaustive-tier re-verify. Existing ref is HTTP 404. FacilityType=import confirmed unchanged.",
+    "scope_note": "Single-unit terminal; project-level field.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130545",
+    "unit_id": "G100002054500",
+    "terminal_name": "Marmara LNG Terminal",
+    "unit_name": "--",
+    "country": "Türkiye",
+    "field_name": "Status [ref]",
+    "old_value": "https://giignl.org/wp-content/uploads/2025/06/GIIGNL-Annual-Report-2025.pdf",
+    "new_value": "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf",
+    "confidence": "blue",
+    "source_tier": "GIIGNL 2026 (industry report)",
+    "ref_field": null,
+    "ref_urls": [
+      "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf"
+    ],
+    "source_notes": "Exhaustive-tier re-verify. Existing ref is HTTP 404. Status=operating confirmed unchanged.",
+    "scope_note": "Single-unit terminal; project-level field.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130545",
+    "unit_id": "G100002054500",
+    "terminal_name": "Marmara LNG Terminal",
+    "unit_name": "--",
+    "country": "Türkiye",
+    "field_name": "StartDate [ref]",
+    "old_value": "https://giignl.org/wp-content/uploads/2025/06/GIIGNL-Annual-Report-2025.pdf",
+    "new_value": "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf",
+    "confidence": "blue",
+    "source_tier": "GIIGNL 2026 (industry report)",
+    "ref_field": null,
+    "ref_urls": [
+      "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf"
+    ],
+    "source_notes": "Exhaustive-tier re-verify. Existing ref is HTTP 404. Start-up year (1994) confirmed unchanged.",
+    "scope_note": "Single-unit terminal; project-level field.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130545",
+    "unit_id": "G100002054500",
+    "terminal_name": "Marmara LNG Terminal",
+    "unit_name": "--",
+    "country": "Türkiye",
+    "field_name": "Capacity",
+    "old_value": "8.80",
+    "new_value": "8.80",
+    "confidence": "blue",
+    "source_tier": "GIIGNL 2026 (industry report)",
+    "ref_field": "Capacity [ref]",
+    "ref_urls": [
+      "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf"
+    ],
+    "source_notes": "Exhaustive-tier re-verify (existing ref already pointed at the current working GIIGNL 2026 URL, no fix needed). Confirmed unchanged at 8.8 MTPA (GIIGNL 2026 p.59: 'Marmara Ereglisi ... 8.8 Botas'). Despite the task brief's hint that this capacity may be stale/expanded, the only active expansion at this site (construction started 13 July 2026 per Daily Sabah/Hurriyet Daily News -- see wiki entry) is a 4th STORAGE TANK (255,000 to 415,000 cbm liquid storage), which does not change the regasification/send-out Capacity field. Note: Daily Sabah separately quotes the terminal's daily regasification capacity as '37 million cubic meters', which converts to roughly 9.9-10 MTPA rather than 8.8 -- flagged as a minor cross-source discrepancy in a qa note, not acted on given GIIGNL's more precise/consistent MTPA figure.",
+    "scope_note": "Single-unit terminal; project-level field.",
+    "researcher_initials": "AI-draft (sweep)"
+  }
+]

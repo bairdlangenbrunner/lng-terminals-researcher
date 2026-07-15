@@ -1,0 +1,74 @@
+[
+  {
+    "category": "status_verification",
+    "terminal_id": "T100000130906",
+    "unit_id": "G100002090600",
+    "terminal_name": "Filipinas LNG Gateway Project FSRU",
+    "issue": "Status='construction (actual)' could not be independently confirmed. The only citation (IGU 2024 World LNG Report) is a global terminal-inventory table with a 'start year' column, NOT a construction-status assertion; GIIGNL 2026 (Excelerate is a contributing member) is silent on the project; no commissioning cargo, FSRU mobilization/charter, or physical-construction evidence found despite an extensive search (Excelerate IR/press, Q1 2026 earnings call, DOE/PNA/GMA/LNG Prime/offshore-energy.biz/Reuters). 'operating' was ruled out. Re-opens the prior researcher flag (RR 8/25: 'misreported under construction?'). No downgrade staged without a citable source.",
+    "severity": "medium",
+    "suggested_action": "Future cycle: direct DOE permit-to-construct check or Excelerate Energy IR outreach to confirm whether physical construction has begun; consider downgrade to 'proposed' if no construction evidence surfaces.",
+    "gem_field": "Status",
+    "paste_value": "",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "missing_field",
+    "terminal_id": "T100000130906",
+    "unit_id": "G100002090600",
+    "terminal_name": "Filipinas LNG Gateway Project FSRU",
+    "issue": "FloatingVesselName blank (completeness sweep flags it required for a construction FSRU unit). The only FSRU historically linked to this project (2019-2020, 'Hull 2477'/Maran Gas Maritime charter) was delivered as Excelerate Sequoia and is independently confirmed (VesselFinder, Excelerate/Petrobras) deployed at the Bahia FSRU terminal in Brazil under a 10-year Petrobras charter — NOT the Philippines. No Excelerate fleet vessel is tied to Batangas in any source found.",
+    "severity": "low",
+    "suggested_action": "Leave FloatingVesselName blank until a vessel is named in a primary source; do not guess. Re-check when construction status is resolved.",
+    "gem_field": "FloatingVesselName",
+    "paste_value": "",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "link_rot",
+    "terminal_id": "T100000130906",
+    "unit_id": "G100002090600",
+    "terminal_name": "Filipinas LNG Gateway Project FSRU",
+    "issue": "Existing StartDate [ref] cites the IGU 2025 World LNG Report (datocms-assets.com/146580/1747916410-igu-world-lng-report-2025.pdf), which now 404s (link rot). The cell is also a Rule F orphan (StartDate [ref] filled but no ActualStart* value; the unit has not started operating).",
+    "severity": "low",
+    "suggested_action": "Clear or re-home the orphan StartDate [ref] (belongs on a construction/proposal ref if anywhere). See the batch-level orphan-StartDate-ref data-health note.",
+    "gem_field": "StartDate [ref]",
+    "paste_value": "",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unverifiable_value",
+    "terminal_id": "T100000131167",
+    "unit_id": "G100002116700",
+    "terminal_name": "Quezon LNG Terminal",
+    "issue": "GEM lists 1.1 mtpa LNG capacity, but all sources found report only the 1,200 MW power-plant capacity and the P71B (~US$1.2B) investment — none state an LNG regasification/import mtpa figure for this specific facility. The 1.1 mtpa value could be neither corroborated nor contradicted via web search this session; no change staged.",
+    "severity": "low",
+    "suggested_action": "Re-check via EGCO investor decks or the DOE Luzon Indicative Power Projects PDF (Cloudflare-blocked to this session) which may carry the mtpa figure directly.",
+    "gem_field": "Capacity",
+    "paste_value": "",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "source_health",
+    "terminal_id": "T100000130610",
+    "unit_id": "G100002061000",
+    "terminal_name": "FGEN Batangas LNG Terminal",
+    "issue": "Existing Status [ref] / ShelvedYear [ref] / StopYear [ref] all point to one spglobal.com article that now returns HTTP 403 (bot-block). Per bot-block-is-not-dead it is treated as live but was not re-verifiable this session. Status [ref] has been restrengthened with 2 working independent sources (Inquirer May 2026, LNG Industry Nov 2025); ShelvedYear/StopYear [ref] left pointing to the bot-blocked spglobal URL.",
+    "severity": "low",
+    "suggested_action": "Future cycle with Wayback/browser access: re-verify the spglobal citation for ShelvedYear/StopYear 2023, or replace with a working source.",
+    "gem_field": "ShelvedYear [ref]",
+    "paste_value": "",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_health",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Philippines (batch-level, 12 terminals)",
+    "issue": "Rule F orphan-ref sweep: 12 Philippine terminals carry a filled StartDate [ref] but no paired ActualStartYear/Month value because none has begun operating (all proposed/construction/shelved/cancelled). Off-worklist cancelled sites not otherwise touched this batch: Atimonan LNG (G100002114900), PNOC Batangas LNG (G100002030600), Vires FSRU (G100002097700), Tanglawan LNG (G100002070600). On-worklist ones (Filipinas, Mariveles, Quezon, FGEN Batangas, Pagbilao, Tabangao, Bataan-Manila) also carry the orphan — Bataan-Manila's blank status/year refs were filled this batch but its StartDate [ref] orphan remains. These StartDate [ref] URLs are mostly proposal/construction-era references misfiled against the ActualStart pairing.",
+    "severity": "low",
+    "suggested_action": "Data-health cleanup (route to a follow-on Update batch): for each, either re-home the URL to the correct anchor ref (Proposal/Construction) or clear the orphan StartDate [ref]. Not mass-edited this standard batch to avoid touching off-worklist rows.",
+    "gem_field": "StartDate [ref]",
+    "paste_value": "",
+    "researcher_initials": "AI-draft"
+  }
+]

@@ -1,0 +1,68 @@
+[
+ {
+  "terminal": "Port Arthur LNG Terminal",
+  "terminal_id": "T100000130237",
+  "gogpt_candidate": "ADD (yes)",
+  "electric_mw": "240 MW (8 gas combustion-turbine generators + 1 backup)",
+  "confidence": "green",
+  "basis": "FERC-certified on-site gas-turbine generating plant (240 MW) — real gas-fired electricity, ~4.8x the >50 MW GOGPT threshold. Single-origin regulatory (FERC order + FEIS are both FERC); no independent trade restatement of the exact number, but a lone primary/regulatory source is green.",
+  "basis [ref]": [
+   "https://www.ferc.gov/sites/default/files/2020-04/C-3.pdf",
+   "https://aglaw.psu.edu/wp-content/uploads/2021/02/Port-Arthur-LNG-Final-Environmental-Impact-Statement.pdf"
+  ],
+  "mechanical_drive_note": "SEPARATE, NOT in the 240 MW: 4x GE Frame 7 gas turbines drive 8 refrigerant compressors + 2 electric-motor boost compressors (Phase 1); shaft MW not disclosed. Never sum into the generating MW."
+ },
+ {
+  "terminal": "Coastal Bend LNG Terminal",
+  "terminal_id": "T100001061247",
+  "gogpt_candidate": "MAYBE (proposed, MW unknown)",
+  "electric_mw": "undisclosed — do not populate; >50 MW only scale-inferred from 22.5 Mtpa",
+  "confidence": "yellow",
+  "basis": "On-site gas-fired cogeneration integral to the ConocoPhillips Optimized Cascade design; existence well-corroborated (3 independent publishers) but NO public MW anywhere and project is pre-FERC-file -> a proposed GOGPT record with an unpopulated capacity. TCEQ NSR air permit is the doc most likely to carry per-turbine MW; re-check.",
+  "basis [ref]": [
+   "https://www.conocophillips.com/news-media/story/coastal-bend-lng-selects-conocophillips-optimized-cascade-process-technology/",
+   "https://www.ogj.com/pipelines-transportation/lng/article/55299673/coastal-bend-lng-plans-2025-pre-file-for-225-million-tpy-lng-export-plant",
+   "https://www.hartenergy.com/exclusives/coastal-bend-plans-225-mtpa-lng-export-facility-gulf-coast-213382/"
+  ],
+  "mechanical_drive_note": "Compressor-driver architecture unconfirmed; reads as electricity-generating cogeneration but no source rules out gas-turbine mechanical drive."
+ },
+ {
+  "terminal": "Golden Pass LNG Terminal",
+  "terminal_id": "T100000130227",
+  "gogpt_candidate": "REVIEWER CALL (no citable nameplate)",
+  "electric_mw": "undisclosed — waste-heat steam-turbine cogen generator set(s), MW not published; + emergency-only engine gensets",
+  "confidence": "yellow",
+  "basis": "Only continuous on-site electricity is waste-heat steam-turbine cogeneration (HRSGs on the six Frame 7EA feed Siemens STG sets) with no published nameplate; largest on-site MW is mechanical drive (non-electric). Decision: track a cogen plant with an unsourceable nameplate, or hold until an MW surfaces?",
+  "basis [ref]": [
+   "https://www.bakerhughes.com/company/news/baker-hughes-ge-company-supply-turbomachinery-equipment-golden-pass-lng-export",
+   "https://www.hydrocarbonengineering.com/tanks-terminals/11022019/bhge-to-supply-turbomachinery-equipment-for-golden-pass-lng-export-facility/"
+  ],
+  "mechanical_drive_note": "SEPARATE, NOT electricity: 6x GE/Baker Hughes MS7001EA (Frame 7EA) shaft-drive 12 refrigerant compressors, ~515 MW aggregate shaft (per-unit ~86 MW inferred, not PASS-verified). The 3x 6.8-MW BOG motors are electrical LOAD, not generation."
+ },
+ {
+  "terminal": "Rio Grande LNG Terminal",
+  "terminal_id": "T100000130239",
+  "gogpt_candidate": "DO NOT ADD (grid-fed)",
+  "electric_mw": "none — operating power from the AEP 138 kV grid; only on-site gen is ~16.35 MW diesel emergency (6x 2,725 kW), non-gas",
+  "confidence": "green (negative determination)",
+  "basis": "FERC FEIS is unambiguous: operating power comes from the AEP grid (new transmission line + switchyard), not self-generation; only on-site electricity is emergency diesel. The large gas turbines are mechanical drive for compressors. Secondary '300 MW generators' / 'self-powered' claims are contradicted by the FERC record and were not used.",
+  "basis [ref]": [
+   "https://www.globenewswire.com/news-release/2025/09/11/3148922/0/en/Baker-Hughes-Secures-Order-for-Rio-Grande-LNG-Expansion.html",
+   "https://www.worldoil.com/news/2025/11/6/baker-hughes-wins-order-for-nextdecade-s-rio-grande-lng-train-5-expansion/"
+  ],
+  "mechanical_drive_note": "SEPARATE, NOT electricity: 2x Baker Hughes Frame 7 gas turbines per train drive centrifugal refrigerant compressors (Trains 1-3 = 6; Trains 4 & 5 = +2 each); per-turbine MW not in any verified source."
+ },
+ {
+  "terminal": "Corpus Christi LNG Terminal",
+  "terminal_id": "T100000130216",
+  "gogpt_candidate": "DO NOT ADD (mechanical drive + grid-fed)",
+  "electric_mw": "none — Trains 1-3 mechanical drive; Stage 3 grid electric-motor; only on-site gen is ~0.75 MW/unit diesel standby",
+  "confidence": "green (negative determination)",
+  "basis": "No gas-fired electricity generation: Trains 1-3 have no gensets, Stage 3 compressor power is imported from the transmission grid (electric-motor drive), only on-site generators are diesel standby. FERC Stage 3 EA + EPA GHG permit primary.",
+  "basis [ref]": [
+   "https://archive.epa.gov/region6/6pd/air/pd-r/ghg/web/pdf/corpuschristi-liq-turbine-simple-cycle060613.pdf",
+   "https://www.bakerhughes.com/company/news/bhge-wins-turbomachinery-contract-cheniere-energy-incs-lng-facility-corpus-christi"
+  ],
+  "mechanical_drive_note": "SEPARATE, NOT electricity: Trains 1-3 = 18x GE LM2500 G4+ / Baker Hughes PGT25+G4 (6/train), ~34 MW-class ISO shaft each (~600 MW aggregate shaft). Any aggregate 'power station MW' from a turbine count would conflate shaft power with electricity."
+ }
+]

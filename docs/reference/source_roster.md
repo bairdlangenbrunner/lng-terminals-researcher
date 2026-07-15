@@ -66,7 +66,7 @@ Same as carrier project — useful when the terminal involves a named vessel:
 
 | Source | Notes |
 |---|---|
-| GIIGNL Annual Report | Tier 1 for the annual operating snapshot it covers; **not authoritative** per methodology FAQ. A value supported by GIIGNL alone is yellow; GIIGNL + sponsor IR is green. Known gaps in coverage (small-scale, non-member, sanctioned). |
+| GIIGNL Annual Report | Tier 1 for the annual operating snapshot it covers; **not authoritative** per methodology FAQ. A value supported by GIIGNL alone is yellow; GIIGNL + sponsor IR is green. Known gaps in coverage (small-scale, non-member, sanctioned). **Legacy giignl.org report/PDF citation URLs are systematically rotted tracker-wide** (found in Kuwait, Türkiye, Bangladesh, India, 2026-07-14) — expect to REPLACE a dead giignl.org ref rather than re-verify it; the `/news/` paths are still live, and the committed archive in `data/` (all editions 2020–2026) back-checks whatever edition a cell cites. |
 | IGU World LNG Report | Same caveats as GIIGNL; methodology FAQ notes IGU often disagrees with GIIGNL on capacity and owners. |
 | BloombergNEF (BNEF) | Methodology FAQ explicitly cautions: a 2020/2021 BNEF data import is the source of many unreliable values in the legacy data. **Avoid citing standalone**; replace with primary source when possible. |
 

@@ -1,0 +1,340 @@
+[
+  {
+    "terminal_id": "T100000130307",
+    "unit_id": "G100002030700",
+    "terminal_name": "Mariveles LNG Terminal",
+    "unit_name": "--",
+    "country": "Philippines",
+    "field_name": "Status",
+    "old_value": "proposed",
+    "new_value": "shelved",
+    "confidence": "yellow",
+    "source_tier": "business press (single non-primary)",
+    "ref_field": "Status [ref]",
+    "ref_urls": [
+      "https://www.bworldonline.com/corporate/2024/01/22/570182/pnoc-eyes-jv-for-small-scale-lng-terminal-in-bataan/"
+    ],
+    "source_notes": "Dormancy call via the news-recency test. Newest project-specific dated coverage is a BusinessWorld article of 22 Jan 2024 (PNOC president Butalid: exploring a JV with Samat LNG for a small-scale receiving terminal, construction 'expected to start in March', two-year completion). No project-specific news, DOE filing, or corporate update found since — a ~2.5-year gap as of Jul 2026, which is the 2-4y inferred-shelved band (not the <2y stays-proposed band). Single non-primary source => yellow. Non-citable corroborating dormancy signals: developer site samatlng.com now resolves to a parked-domain placeholder, and PNOC's 10 Feb 2026 MOU with a DIFFERENT company (BESTC) for a much larger separate 1,800 MW FSRU+CCPP at the same PNOC Bataan industrial park makes no mention of Samat LNG.",
+    "scope_note": "Scope confirmed IN SCOPE: genuine ship-borne marine LNG import/regas terminal (small LNG vessels/barges), not a domestic-only virtual-pipeline/trucking plant.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "terminal_id": "T100000130307",
+    "unit_id": "G100002030700",
+    "terminal_name": "Mariveles LNG Terminal",
+    "unit_name": "--",
+    "country": "Philippines",
+    "field_name": "Substatus",
+    "old_value": "",
+    "new_value": "inferred 2 y",
+    "confidence": "yellow",
+    "source_tier": "business press (single non-primary)",
+    "source_notes": "Substatus tag for the inferred-shelved call: last confirmed project activity dated 22 Jan 2024, ~2.5 years before this Jul 2026 check — within the 2-4y band. Citation rides on Status [ref].",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "terminal_id": "T100000130307",
+    "unit_id": "G100002030700",
+    "terminal_name": "Mariveles LNG Terminal",
+    "unit_name": "--",
+    "country": "Philippines",
+    "field_name": "ShelvedYear",
+    "old_value": "",
+    "new_value": "2024",
+    "confidence": "yellow",
+    "source_tier": "business press (single non-primary)",
+    "ref_field": "ShelvedYear [ref]",
+    "ref_urls": [
+      "https://www.bworldonline.com/corporate/2024/01/22/570182/pnoc-eyes-jv-for-small-scale-lng-terminal-in-bataan/"
+    ],
+    "source_notes": "Anchor year set to 2024 — the event year of the newest dormancy evidence (the PNOC JV-exploration article), per the 'use the newest anchor' rule; not the 2020 ProposalYear and not the 2026 check date.",
+    "researcher_initials": "AI-draft"
+  },
+
+  {
+    "terminal_id": "T100000131167",
+    "unit_id": "G100002116700",
+    "terminal_name": "Quezon LNG Terminal",
+    "unit_name": "--",
+    "country": "Philippines",
+    "field_name": "Status",
+    "old_value": "proposed",
+    "new_value": "proposed",
+    "confidence": "blue",
+    "source_tier": "trade press (2 independent)",
+    "ref_field": "Status [ref]",
+    "ref_urls": [
+      "https://powerphilippines.com/quezon-power-to-construct-php71b-lng-power-plant/",
+      "https://context.ph/2024/02/18/quezon-power-eyes-p71b-natural-gas-fired-plant-in-quezon/"
+    ],
+    "source_notes": "Re-verified unchanged. Read-only Postgres timeline shows only proposed/Feb-2024 and operating(planned)/2028 — no FEED, EPC, permit/ECC, or construction milestone. Targeted 2025-2026 searches found no groundbreaking/notice-to-proceed/ECC issuance; EGCO's Jul 2026 'POWER4' strategy release omits the LNG project entirely. Stays proposed.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "terminal_id": "T100000131167",
+    "unit_id": "G100002116700",
+    "terminal_name": "Quezon LNG Terminal",
+    "unit_name": "--",
+    "country": "Philippines",
+    "field_name": "Owner",
+    "old_value": "Quezon Power (Philippines) Ltd Co [100%]",
+    "new_value": "Quezon Power (Philippines) Ltd Co [100%]",
+    "confidence": "green",
+    "source_tier": "developer IR + independent news (2 independent)",
+    "ref_field": "Owner [ref]",
+    "ref_urls": [
+      "https://www.egco.com/en/newsroom/press-releases/97/egco-group-completely-owns-quezon-power-plant-in-philippines",
+      "https://www.philstar.com/business/2015/10/02/1506406/thailands-egco-gains-full-control-coal-fired-quezon-power-plant"
+    ],
+    "source_notes": "Re-verified unchanged. Quezon Power (Philippines) Ltd Co remains held via Electricity Generating PCL (EGCO, Thailand) per EGCO's own IR release + independent news. Ruled out a false lead: the MGen (Meralco PowerGen)-EGCO JV is San Buenaventura Power Ltd, an unrelated 460 MW coal plant — NOT QPPL.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "terminal_id": "T100000131167",
+    "unit_id": "G100002116700",
+    "terminal_name": "Quezon LNG Terminal",
+    "unit_name": "--",
+    "country": "Philippines",
+    "field_name": "ProposalYear",
+    "old_value": "2024",
+    "new_value": "2024",
+    "confidence": "blue",
+    "source_tier": "trade press (2 independent)",
+    "ref_field": "ProposalDate [ref]",
+    "ref_urls": [
+      "https://powerphilippines.com/quezon-power-to-construct-php71b-lng-power-plant/",
+      "https://context.ph/2024/02/18/quezon-power-eyes-p71b-natural-gas-fired-plant-in-quezon/"
+    ],
+    "source_notes": "Re-verified unchanged. Anchor 2024 confirmed as the year QPPL filed public-scoping/environmental-compliance documents with DENR (Feb 2024 per source body), not a later publication date.",
+    "researcher_initials": "AI-draft"
+  },
+
+  {
+    "terminal_id": "T100000130308",
+    "unit_id": "G100002030800",
+    "terminal_name": "Pagbilao Grande Island LNG Terminal",
+    "unit_name": "--",
+    "country": "Philippines",
+    "field_name": "Status",
+    "old_value": "shelved",
+    "new_value": "shelved",
+    "confidence": "blue",
+    "source_tier": "trade/NGO press (3 independent; 2 via Wayback)",
+    "ref_field": "Status [ref]",
+    "ref_urls": [
+      "https://greentechlead.com/energy-news/philippines-lng-crisis-deepens-as-650-mw-pagbilao-project-collapses-after-17-years-285-million-write-down-signals-shift-to-renewable-energy-54086",
+      "http://web.archive.org/web/20260611075308/https://ieefa.org/resources/gas-turbine-sale-signals-end-another-philippine-lng-project",
+      "http://web.archive.org/web/20260611214638/https://businessmirror.com.ph/2026/06/11/quezon-community-re-backers-claim-victory-against-lng/"
+    ],
+    "source_notes": "Re-verified unchanged; also FILLS the previously blank Status [ref] (Rule F: paired value exists). News-recency test: most recent activity is Energy World Corp's 2 Jun 2026 sale of the long-idle Pagbilao turbines to Hallador Energy (US$350m) + ~US$285m impairment — <2 months old, so the '<2y stays shelved' bucket, NOT the '>=4y escalate to cancelled' bucket. EWC's stated plan is to keep developing the import terminal standalone (power plant/turbines abandoned separately), arguing against 'cancelled'. ieefa.org and businessmirror.com.ph 403 bot-block on direct fetch — verified via Wayback (20260611), both PASS.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "terminal_id": "T100000130308",
+    "unit_id": "G100002030800",
+    "terminal_name": "Pagbilao Grande Island LNG Terminal",
+    "unit_name": "--",
+    "country": "Philippines",
+    "field_name": "ShelvedYear",
+    "old_value": "2023",
+    "new_value": "2023",
+    "confidence": "blue",
+    "source_tier": "trade/NGO press (3 independent; 2 via Wayback)",
+    "ref_field": "ShelvedYear [ref]",
+    "ref_urls": [
+      "https://greentechlead.com/energy-news/philippines-lng-crisis-deepens-as-650-mw-pagbilao-project-collapses-after-17-years-285-million-write-down-signals-shift-to-renewable-energy-54086",
+      "http://web.archive.org/web/20260611075308/https://ieefa.org/resources/gas-turbine-sale-signals-end-another-philippine-lng-project",
+      "http://web.archive.org/web/20260611214638/https://businessmirror.com.ph/2026/06/11/quezon-community-re-backers-claim-victory-against-lng/"
+    ],
+    "source_notes": "Fills the previously blank ShelvedYear [ref] (Rule F: paired value 2023 exists, unchanged). Same collapse/stranded-asset evidence corroborating the long-dormant state.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "terminal_id": "T100000130308",
+    "unit_id": "G100002030800",
+    "terminal_name": "Pagbilao Grande Island LNG Terminal",
+    "unit_name": "--",
+    "country": "Philippines",
+    "field_name": "StopYear",
+    "old_value": "2023",
+    "new_value": "2023",
+    "confidence": "blue",
+    "source_tier": "trade/NGO press (3 independent; 2 via Wayback)",
+    "ref_field": "StopYear [ref]",
+    "ref_urls": [
+      "https://greentechlead.com/energy-news/philippines-lng-crisis-deepens-as-650-mw-pagbilao-project-collapses-after-17-years-285-million-write-down-signals-shift-to-renewable-energy-54086",
+      "http://web.archive.org/web/20260611075308/https://ieefa.org/resources/gas-turbine-sale-signals-end-another-philippine-lng-project",
+      "http://web.archive.org/web/20260611214638/https://businessmirror.com.ph/2026/06/11/quezon-community-re-backers-claim-victory-against-lng/"
+    ],
+    "source_notes": "Fills the previously blank StopYear [ref] (Rule F: paired value 2023 exists, unchanged). For a never-operated shelved project StopYear = ShelvedYear (2023); same dormancy/collapse evidence. Completeness sweep flagged this ref blank alongside Status/ShelvedYear.",
+    "researcher_initials": "AI-draft"
+  },
+
+  {
+    "terminal_id": "T100000130976",
+    "unit_id": "G100002097600",
+    "terminal_name": "Tabangao FSRU",
+    "unit_name": "--",
+    "country": "Philippines",
+    "field_name": "Status",
+    "old_value": "shelved",
+    "new_value": "shelved",
+    "confidence": "blue",
+    "source_tier": "trade press + DOE-data mirror (2 independent)",
+    "ref_field": "Status [ref]",
+    "ref_urls": [
+      "https://mb.com.ph/2025/05/13/shell-to-improve-investments-in-tabangao-terminal",
+      "https://matuwid.org/doe-2-large-lng-terminals-likely-completed-by-2025/"
+    ],
+    "source_notes": "Re-verified shelved (unchanged); strengthened the citation from one weak-inference source to two independent, non-mirror sources. matuwid.org mirrors the Dec 2023 Manila Standard/DOE report (Sept-2025 commercial-ops target, 3 MTPA) — the last forward-looking milestone, now lapsed with zero commissioning news. May 2025 Manila Bulletin covers only Shell's Tabangao OIL-products spend and never mentions the LNG/FSRU project. Current Batangas rosters list only FGEN Batangas FSRU and AG&P/PHLNG as operating — Shell's Tabangao absent. No formal cancellation found, so 'inferred 2 y' (not 'confirmed') stands; ShelvedYear 2025 kept.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "terminal_id": "T100000130976",
+    "unit_id": "G100002097600",
+    "terminal_name": "Tabangao FSRU",
+    "unit_name": "--",
+    "country": "Philippines",
+    "field_name": "ResearcherNotesProject",
+    "old_value": "",
+    "new_value": "Lifecycle note (AI-draft, Jul 2026): ConstructionYear=2024 reflects a DOE-reported PLANNED/target construction start (per Dec 2023 Manila Standard/DOE data citing a Sept-2025 commercial-ops target), not an actual confirmed construction event — consistent with the status_timeline carrying both the 2024 construction and 2025 operating entries as substatus 'planned', never 'actual'. No source confirms ground was broken, an FSRU was chartered/named, or the Jetty 4 conversion proceeded. The Sept-2025 target passed with no commissioning news and no mention of the project in Shell's 2025-2026 Tabangao/SEPH capex announcements, so 'shelved (inferred 2 y)' correctly describes current status — there is no construction/shelved contradiction, just an unactualized forecast year alongside the correct current status.",
+    "confidence": "green",
+    "source_tier": "researcher note (free text)",
+    "source_notes": "Resolves the ConstructionYear-vs-shelved question flagged for this terminal; no value changes.",
+    "researcher_initials": "AI-draft"
+  },
+
+  {
+    "terminal_id": "T100000130610",
+    "unit_id": "G100002061000",
+    "terminal_name": "FGEN Batangas LNG Terminal",
+    "unit_name": "--",
+    "country": "Philippines",
+    "field_name": "Status",
+    "old_value": "shelved",
+    "new_value": "shelved",
+    "confidence": "blue",
+    "source_tier": "trade press (2 independent)",
+    "ref_field": "Status [ref]",
+    "ref_urls": [
+      "https://business.inquirer.net/589960/first-gen-prime-infras-p50-b-deal-ensures-supply-for-gas-assets",
+      "https://www.lngindustry.com/liquid-natural-gas/18112025/prime-infra-acquires-60-of-first-gens-gas-assets/"
+    ],
+    "source_notes": "Re-verified unchanged (onshore permanent terminal, shelved/confirmed, ShelvedYear 2023). No 2026 revival or cancellation. Key distinction: Prime Infrastructure Capital's Nov 2025 P50B/US$896M acquisition of 60% of First Gen's gas assets covers only the separate OPERATING interim FSRU (unit G100002101200, already updated 2026-07-02), NOT this shelved onshore permit — both cited sources confirm the deal is about the interim/offshore facility. This onshore record correctly retains its pre-deal ownership (First Gen 80% / Tokyo Gas 20%). Restrengthens Status [ref] (prior spglobal.com ref now 403 bot-blocks and was not re-verifiable this session; see qa_review).",
+    "researcher_initials": "AI-draft"
+  },
+
+  {
+    "terminal_id": "T100000130906",
+    "unit_id": "G100002090600",
+    "terminal_name": "Filipinas LNG Gateway Project FSRU",
+    "unit_name": "--",
+    "country": "Philippines",
+    "field_name": "Capacity",
+    "old_value": "4.4",
+    "new_value": "4.4",
+    "confidence": "blue",
+    "source_tier": "industry report (IGU 2024 World LNG Report)",
+    "ref_field": "Capacity [ref]",
+    "ref_urls": [
+      "https://www.datocms-assets.com/146580/1736938573-2024-world-lng-report.pdf"
+    ],
+    "source_notes": "Re-verified unchanged. IGU 2024 World LNG Report table still lists 4.40 MTPA for Filipinas LNG Gateway; no updated capacity figure found elsewhere.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "terminal_id": "T100000130906",
+    "unit_id": "G100002090600",
+    "terminal_name": "Filipinas LNG Gateway Project FSRU",
+    "unit_name": "--",
+    "country": "Philippines",
+    "field_name": "Owner",
+    "old_value": "Luzon LNG Terminal Inc [100%]",
+    "new_value": "Luzon LNG Terminal Inc [100%]",
+    "confidence": "blue",
+    "source_tier": "trade press",
+    "ref_field": "Owner [ref]",
+    "ref_urls": [
+      "https://www.gmanetwork.com/news/money/companies/761722/us-firm-excelerate-to-build-phl-s-first-open-access-lng-terminal-in-batangas/story/"
+    ],
+    "source_notes": "Re-verified unchanged. No ownership change found; IGU 2024 separately lists ultimate sponsor Excelerate Energy (100%), consistent with GEM's split (Luzon LNG Terminal Inc local owner, Excelerate parent). NOTE: Status is NOT staged here — the construction-status doubt is unresolved and routed to qa_review.",
+    "researcher_initials": "AI-draft"
+  },
+
+  {
+    "terminal_id": "T100000130305",
+    "unit_id": "G100002030500",
+    "terminal_name": "Bataan-Manila LNG Terminal",
+    "unit_name": "--",
+    "country": "Philippines",
+    "field_name": "Status",
+    "old_value": "cancelled",
+    "new_value": "cancelled",
+    "confidence": "yellow",
+    "source_tier": "business press (2 independent, dormancy-onset)",
+    "ref_field": "Status [ref]",
+    "ref_urls": [
+      "https://business.inquirer.net/239762/araneta-pursue-p10-b-hydropower-project",
+      "https://www.philstar.com/business/2017/05/01/1690012/pnoc-seeks-partners-bataan-property"
+    ],
+    "source_notes": "Blank-ref fill (Rule F); value unchanged (cancelled, inferred 4y). This is a genuinely dead 2012-era project (aka Limay/Energy City Bataan) with NO press coverage after 2017. Per the inferred-status convention, citing the two newest independent dormancy-onset articles: Inquirer (2 Nov 2017 — the $1.2B Araneta 'Energy City' project 'stalled by leasehold issues with PNOC', Araneta pivoting to a hydropower project) and Philstar (1 May 2017 — the Araneta-PNOC Limay MOA 'expired' in 2016, PNOC reshopping partners). CAVEAT for reviewer: both sources predate the inferred 2018 shelved / 2020 cancelled years and describe 'stalled'/'expired', not an explicit cancellation — hence yellow, not green. These document the dormancy basis, not the specific years.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "terminal_id": "T100000130305",
+    "unit_id": "G100002030500",
+    "terminal_name": "Bataan-Manila LNG Terminal",
+    "unit_name": "--",
+    "country": "Philippines",
+    "field_name": "ShelvedYear",
+    "old_value": "2018",
+    "new_value": "2018",
+    "confidence": "yellow",
+    "source_tier": "business press (2 independent, dormancy-onset)",
+    "ref_field": "ShelvedYear [ref]",
+    "ref_urls": [
+      "https://business.inquirer.net/239762/araneta-pursue-p10-b-hydropower-project",
+      "https://www.philstar.com/business/2017/05/01/1690012/pnoc-seeks-partners-bataan-property"
+    ],
+    "source_notes": "Blank-ref fill (Rule F); value unchanged. Cites the dormancy evidence (newest available 2017 stall/expiry articles), not a source literally saying 'shelved' — per the inferred-shelved convention. No later reporting exists to use as a newer anchor.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "terminal_id": "T100000130305",
+    "unit_id": "G100002030500",
+    "terminal_name": "Bataan-Manila LNG Terminal",
+    "unit_name": "--",
+    "country": "Philippines",
+    "field_name": "CancelledYear",
+    "old_value": "2020",
+    "new_value": "2020",
+    "confidence": "yellow",
+    "source_tier": "business press (2 independent, dormancy-onset)",
+    "ref_field": "CancelledYear [ref]",
+    "ref_urls": [
+      "https://business.inquirer.net/239762/araneta-pursue-p10-b-hydropower-project",
+      "https://www.philstar.com/business/2017/05/01/1690012/pnoc-seeks-partners-bataan-property"
+    ],
+    "source_notes": "Blank-ref fill (Rule F); value unchanged. Same dormancy-evidence rationale — no article dated near 2020 was found; the 2017 stall/expiry reporting plus total absence of newer coverage is the only available basis for the inferred 2020 cancellation. Reviewer: treat as dormancy citation for an inferred status, not primary confirmation of the year.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "terminal_id": "T100000130305",
+    "unit_id": "G100002030500",
+    "terminal_name": "Bataan-Manila LNG Terminal",
+    "unit_name": "--",
+    "country": "Philippines",
+    "field_name": "StopYear",
+    "old_value": "2020",
+    "new_value": "2020",
+    "confidence": "yellow",
+    "source_tier": "business press (2 independent, dormancy-onset)",
+    "ref_field": "StopYear [ref]",
+    "ref_urls": [
+      "https://business.inquirer.net/239762/araneta-pursue-p10-b-hydropower-project",
+      "https://www.philstar.com/business/2017/05/01/1690012/pnoc-seeks-partners-bataan-property"
+    ],
+    "source_notes": "Blank-ref fill (Rule F); value unchanged. StopYear (2020) mirrors CancelledYear in the GEM record; same two 2017 dormancy-onset sources are the best available citation.",
+    "researcher_initials": "AI-draft"
+  }
+]

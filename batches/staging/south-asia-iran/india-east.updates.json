@@ -1,0 +1,209 @@
+[
+  {
+    "terminal_id": "T100000130431",
+    "unit_id": "G100002043100",
+    "terminal_name": "Dhamra LNG Terminal",
+    "unit_name": "--",
+    "country": "India",
+    "field_name": "Status [ref]",
+    "old_value": "https://cyprus-mail.com/2023/02/22/completion-of-lng-project-at-vasiliko-delayed-yet-again/, https://www.mees.com/2024/4/26/power-water/cyprus-aims-for-2025-lng-imports/dac84be0-03c7-11ef-af14-27fe73f7df8e",
+    "new_value": "https://totalenergies.com/newsroom/india-delivery-first-cargo-dhamra-lng-terminal/?lang=eng, https://business.outlookindia.com/news/adani-total-dhamra-lng-terminal-to-start-commercial-operations-at-may-end-news-279042, https://psuwatch.com/corporatewatch/adani-totals-dhamra-lng-terminal-to-start-commercial-operations-in-may-end",
+    "confidence": "green",
+    "source_tier": "primary (TotalEnergies IR) + 2 independent trade press",
+    "ref_field": null,
+    "ref_urls": [
+      "https://totalenergies.com/newsroom/india-delivery-first-cargo-dhamra-lng-terminal/?lang=eng",
+      "https://business.outlookindia.com/news/adani-total-dhamra-lng-terminal-to-start-commercial-operations-at-may-end-news-279042",
+      "https://psuwatch.com/corporatewatch/adani-totals-dhamra-lng-terminal-to-start-commercial-operations-in-may-end"
+    ],
+    "source_notes": "DATA-BUG FIX (citation contamination): the existing Status [ref] cell pointed to two articles about the Vasiliko LNG terminal in CYPRUS (cyprus-mail.com, mees.com) -- wrong project entirely, clear copy/paste error. Status='operating', Substatus='actual' are unchanged and correct; only the citation is being corrected. Replacement sources (all PASS via url_verifier, all confirm Dhamra operating / first cargo Apr 2023 / commercial ops end-May 2023, 50-50 Adani-TotalEnergies): TotalEnergies press release (primary), Outlook India, PSU Watch. Value unchanged; ref correction only.",
+    "scope_note": "east-coast shard; single-unit terminal, project-level field.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130431",
+    "unit_id": "G100002043100",
+    "terminal_name": "Dhamra LNG Terminal",
+    "unit_name": "--",
+    "country": "India",
+    "field_name": "StartDate [ref]",
+    "old_value": "https://giignl.org/wp-content/uploads/2023/07/GIIGNL-2023-Annual-Report-July20.pdf, https://www.offshore-energy.biz/dhamra-lng-eyeing-completion-in-july-2022/, https://cyprus-mail.com/2023/02/22/completion-of-lng-project-at-vasiliko-delayed-yet-again/, https://www.mees.com/2024/4/26/power-water/cyprus-aims-for-2025-lng-imports/dac84be0-03c7-11ef-af14-27fe73f7df8e",
+    "new_value": "https://giignl.org/wp-content/uploads/2023/07/GIIGNL-2023-Annual-Report-July20.pdf, https://www.offshore-energy.biz/dhamra-lng-eyeing-completion-in-july-2022/, https://totalenergies.com/newsroom/india-delivery-first-cargo-dhamra-lng-terminal/?lang=eng, https://business.outlookindia.com/news/adani-total-dhamra-lng-terminal-to-start-commercial-operations-at-may-end-news-279042",
+    "confidence": "green",
+    "source_tier": "primary (TotalEnergies IR) + trade press",
+    "ref_field": null,
+    "ref_urls": [
+      "https://giignl.org/wp-content/uploads/2023/07/GIIGNL-2023-Annual-Report-July20.pdf",
+      "https://www.offshore-energy.biz/dhamra-lng-eyeing-completion-in-july-2022/",
+      "https://totalenergies.com/newsroom/india-delivery-first-cargo-dhamra-lng-terminal/?lang=eng",
+      "https://business.outlookindia.com/news/adani-total-dhamra-lng-terminal-to-start-commercial-operations-at-may-end-news-279042"
+    ],
+    "source_notes": "Same ref-contamination fix as Status [ref]: dropped the two Cyprus/Vasiliko URLs, retained the two valid pre-existing Dhamra refs (GIIGNL 2023 annual report; offshore-energy.biz) and added TotalEnergies (primary, first cargo Apr 2023) + Outlook India (commercial ops end-May 2023). ActualStartYear=2023/May unchanged; ref correction only.",
+    "scope_note": "east-coast shard; single-unit terminal, project-level field.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100001061415",
+    "unit_id": "G100001070362",
+    "terminal_name": "Haldia FSRU",
+    "unit_name": "Phase 1",
+    "country": "India",
+    "field_name": "Owner",
+    "old_value": "Invenire Petrodyne Ltd",
+    "new_value": "Invenire Petrodyne Ltd; Excelerate Energy",
+    "confidence": "green",
+    "source_tier": "3 independent (GIIGNL news + Hellenic Shipping News + Legal Era)",
+    "ref_field": "Owner [ref]",
+    "ref_urls": [
+      "https://www.giignl.org/news/excelerate-invenire-move-forward-with-indian-lng-terminal-plans",
+      "https://www.hellenicshippingnews.com/invenire-boosts-india-upstream-presence-ventures-into-lng-infrastructure/",
+      "https://www.legaleraonline.com/deal-street/azb-partners-excelerate-energy-invenire-jv-980856"
+    ],
+    "source_notes": "GEM lists Invenire Petrodyne as sole (100%) owner, but the Haldia FSRU is a JV: SMP Kolkata (Haldia Dock) awarded the 30-year concession to an Invenire Petrodyne + Excelerate Energy consortium. Three independent sources verified (all PASS url_verifier on 'Excelerate'). Excelerate Energy already exists in GEM (entity_lookup.py run bare + --remote: appears on 13 terminals across albania/bangladesh/brazil/jamaica/namibia/philippines/puerto rico/uae/us/vietnam) -- REUSE existing entity, do NOT create new. Equity split not disclosed in any source; % left unset (consistent with GEM's handling of undisclosed splits, e.g. Karaikal's Asiya/JBIC/Osaka Gas). Reviewer to confirm exact split/entity variant.",
+    "scope_note": "east-coast shard; project-level field applied to both unit-rows.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100001061415",
+    "unit_id": "G100001070362",
+    "terminal_name": "Haldia FSRU",
+    "unit_name": "Phase 1",
+    "country": "India",
+    "field_name": "Parent",
+    "old_value": "Invenire Energy Pvt Ltd [100.0%]",
+    "new_value": "Invenire Energy Pvt Ltd; Excelerate Energy Inc; Excelerate Energy Holdings LLC",
+    "confidence": "green",
+    "source_tier": "3 independent (GIIGNL news + Hellenic Shipping News + Legal Era)",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.giignl.org/news/excelerate-invenire-move-forward-with-indian-lng-terminal-plans",
+      "https://www.hellenicshippingnews.com/invenire-boosts-india-upstream-presence-ventures-into-lng-infrastructure/",
+      "https://www.legaleraonline.com/deal-street/azb-partners-excelerate-energy-invenire-jv-980856"
+    ],
+    "source_notes": "Companion to the Owner fix -- adds Excelerate's existing GEM parent entities alongside Invenire Energy. GEM has no 'Parent [ref]' column, so the citation lives in Owner [ref] (same JV sources). Equity split undisclosed; % left unset.",
+    "scope_note": "east-coast shard; project-level field applied to both unit-rows.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100001061415",
+    "unit_id": "G100001070363",
+    "terminal_name": "Haldia FSRU",
+    "unit_name": "Phase 2",
+    "country": "India",
+    "field_name": "Owner",
+    "old_value": "Invenire Petrodyne Ltd",
+    "new_value": "Invenire Petrodyne Ltd; Excelerate Energy",
+    "confidence": "green",
+    "source_tier": "3 independent (GIIGNL news + Hellenic Shipping News + Legal Era)",
+    "ref_field": "Owner [ref]",
+    "ref_urls": [
+      "https://www.giignl.org/news/excelerate-invenire-move-forward-with-indian-lng-terminal-plans",
+      "https://www.hellenicshippingnews.com/invenire-boosts-india-upstream-presence-ventures-into-lng-infrastructure/",
+      "https://www.legaleraonline.com/deal-street/azb-partners-excelerate-energy-invenire-jv-980856"
+    ],
+    "source_notes": "Project-level ownership fields apply to all unit-rows -- same Excelerate JV correction as Phase 1.",
+    "scope_note": "east-coast shard; project-level field.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100001061415",
+    "unit_id": "G100001070363",
+    "terminal_name": "Haldia FSRU",
+    "unit_name": "Phase 2",
+    "country": "India",
+    "field_name": "Parent",
+    "old_value": "Invenire Energy Pvt Ltd [100.0%]",
+    "new_value": "Invenire Energy Pvt Ltd; Excelerate Energy Inc; Excelerate Energy Holdings LLC",
+    "confidence": "green",
+    "source_tier": "3 independent (GIIGNL news + Hellenic Shipping News + Legal Era)",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.giignl.org/news/excelerate-invenire-move-forward-with-indian-lng-terminal-plans",
+      "https://www.hellenicshippingnews.com/invenire-boosts-india-upstream-presence-ventures-into-lng-infrastructure/",
+      "https://www.legaleraonline.com/deal-street/azb-partners-excelerate-energy-invenire-jv-980856"
+    ],
+    "source_notes": "Project-level ownership fields apply to all unit-rows -- same Excelerate JV correction as Phase 1. Citation lives in Owner [ref] (no Parent [ref] column).",
+    "scope_note": "east-coast shard; project-level field.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130801",
+    "unit_id": "G100002080100",
+    "terminal_name": "H-Energy Kakinada LNG Terminal",
+    "unit_name": "--",
+    "country": "India",
+    "field_name": "Status [ref]",
+    "old_value": "https://www.thehindubusinessline.com/companies/ap-maritime-board-to-issue-comfort-letter-to-h-energy-for-kakinada-lng-terminal/article35440644.ece",
+    "new_value": "https://www.thehindubusinessline.com/companies/ap-maritime-board-to-issue-comfort-letter-to-h-energy-for-kakinada-lng-terminal/article35440644.ece, https://www.petrowatch.com/synopsis.php?artId=21777&w=1",
+    "confidence": "green",
+    "source_tier": "2 independent (upgraded from single-source)",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.thehindubusinessline.com/companies/ap-maritime-board-to-issue-comfort-letter-to-h-energy-for-kakinada-lng-terminal/article35440644.ece",
+      "https://www.petrowatch.com/synopsis.php?artId=21777&w=1"
+    ],
+    "source_notes": "Re-verification added independent corroboration for the 2024 shelving: Petrowatch (11 Jul 2024) confirms H-Energy formally exited the Kakinada LNG project (Kakinada Seaports applied to PNGRB 28 Jun 2024 re: the exit), consistent with existing ShelvedYear=2024. Both URLs PASS url_verifier. Status='shelved' unchanged; upgrades citation from single-source to green. NOTE a stale 2024 IGU World LNG Report line describing the project 'under construction' surfaced but could NOT be independently corroborated -- do not use it to reverse the shelved status (see qa).",
+    "scope_note": "east-coast shard; single-unit terminal, project-level field.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131053",
+    "unit_id": "G100002105300",
+    "terminal_name": "Crown Kakinada LNG Terminal",
+    "unit_name": "--",
+    "country": "India",
+    "field_name": "FIDYear",
+    "old_value": "2025",
+    "new_value": "2026",
+    "confidence": "green",
+    "source_tier": "2 independent (Crown LNG GlobeNewswire release + LNG Prime)",
+    "ref_field": "FIDYear [ref]",
+    "ref_urls": [
+      "https://www.globenewswire.com/news-release/2025/02/18/3027814/0/en/Crown-LNG-Signs-Gas-Sales-MOU-with-India-Gas-Exchange.html",
+      "https://lngprime.com/asia/crown-igx-ink-kakinada-lng-pact/141954/"
+    ],
+    "source_notes": "GEM's FIDYear=2025 traced to a stale target ('FID expected Q3 2025') that has now passed. Two independent 2025 sources -- Crown LNG's own GlobeNewswire release on the IGX gas-sales MOU, and LNG Prime coverage of the same -- state FID is now expected in 2026 (first gas 2029). LNG Prime verbatim: 'Crown LNG said it expects to achieve a final investment decision for the project in 2026 and to deliver first gas in 2029.' No FID reached yet; Status stays proposed / FIDStatus Pre-FID. Both URLs PASS url_verifier on '2026' and substance confirmed by fetch. FIDYear [ref] updated to the two 2026 sources.",
+    "scope_note": "east-coast shard; single-unit terminal, project-level field.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131053",
+    "unit_id": "G100002105300",
+    "terminal_name": "Crown Kakinada LNG Terminal",
+    "unit_name": "--",
+    "country": "India",
+    "field_name": "AssociatedTerminals",
+    "old_value": "",
+    "new_value": "Krishna Godavari FSRU",
+    "confidence": "green",
+    "source_tier": "regulatory (PNGRB) + independent trade press",
+    "ref_field": "AssociatedTerminals [ref]",
+    "ref_urls": [
+      "https://pngrb.gov.in/pdf/public-notice/KGLNG_11072024.pdf",
+      "https://www.lngindustry.com/regasification/04112024/crown-lng-executes-final-agreements-to-acquire-lng-import-terminal-assets/"
+    ],
+    "source_notes": "Blank-ref fill / cross-reference. Crown LNG Holdings acquired 100% of Krishna Godavari LNG Terminal Pvt Ltd ('KGLNG' -- the owner-of-record on GEM's cancelled Krishna Godavari FSRU row, T100000130449) for ~$60M in Nov 2024, inheriting its Kakinada operating licence, then redesigned it from a floating FSRU to a fixed gravity-based structure (GBSRU). Per the dormant-revival rule (different sponsor + different design = new terminal) the two are correctly kept as SEPARATE GEM records, but neither cross-referenced the other -- filling that gap. PNGRB public notice (regulatory; confirms KGLNG = Krishna Godavari LNG Terminal Pvt Ltd, director email @crownlng.com, 7.2 mtpa GBSRU) and LNG Industry both PASS url_verifier. See qa note for the methodology-team question on whether these should ultimately merge.",
+    "scope_note": "east-coast shard; single-unit terminal, project-level field. Reciprocal fill staged on Krishna Godavari FSRU.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130449",
+    "unit_id": "G100002044900",
+    "terminal_name": "Krishna Godavari FSRU",
+    "unit_name": "--",
+    "country": "India",
+    "field_name": "AssociatedTerminals",
+    "old_value": "",
+    "new_value": "Crown Kakinada LNG Terminal",
+    "confidence": "green",
+    "source_tier": "regulatory (PNGRB) + independent trade press",
+    "ref_field": "AssociatedTerminals [ref]",
+    "ref_urls": [
+      "https://pngrb.gov.in/pdf/public-notice/KGLNG_11072024.pdf",
+      "https://www.lngindustry.com/regasification/04112024/crown-lng-executes-final-agreements-to-acquire-lng-import-terminal-assets/"
+    ],
+    "source_notes": "Reciprocal blank-ref cross-reference to Crown Kakinada LNG Terminal. This cancelled Krishna Godavari FSRU project (SPV: Krishna Godavari LNG Terminal Pvt Ltd = 'KGLNG') was acquired 100% by Crown LNG Holdings in Nov 2024 and revived under a new sponsor + fixed (non-floating) design as the Crown Kakinada terminal -- kept as a separate record per the dormant-revival rule. Same PNGRB + LNG Industry sources (both PASS url_verifier).",
+    "scope_note": "east-coast shard; single-unit terminal, project-level field. Reciprocal of the fill on Crown Kakinada LNG Terminal.",
+    "researcher_initials": "AI-draft (sweep)"
+  }
+]

@@ -1,0 +1,52 @@
+[
+  {
+    "category": "dead_ref_minor",
+    "terminal_id": "T100000130268",
+    "unit_id": "G100002026800",
+    "terminal_name": "Kutubdia LNG Terminal (Petronet)",
+    "issue": "StartDate [ref] (ifri.org PDF, cornotgandolphe_new_emerging_lng_markets_2018.pdf) is dead (HTTP 404, citation_qc + manual recheck). Field is OriginalPlannedStartYear/LatestPlannedStartYear=2025 on a project confirmed cancelled since 2021 -- low materiality (a planning date on a never-built project). No independent live replacement found in this sweep.",
+    "severity": "low",
+    "suggested_action": "Leave as-is or clear StartDate [ref] pending a future pass; Status/Cancelled fields (sourced to business-standard.com, still live) are unaffected.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dead_ref_minor",
+    "terminal_id": "T100000130614",
+    "unit_id": "G100002061400",
+    "terminal_name": "RPGC Matarbari LNG Terminal",
+    "issue": "StartDate [ref] (petrobangla.org.bd PDF, webtable/1263_upload_0.pdf) is dead (HTTP 404, citation_qc + manual recheck). Field is OriginalPlannedStartYear/LatestPlannedStartYear=2023 on a project now confirmed cancelled (see updates.json) -- low materiality. No independent live replacement found in this sweep.",
+    "severity": "low",
+    "suggested_action": "Leave as-is or clear StartDate [ref] pending a future pass; the CancelledYear correction in updates.json is unaffected.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_dispute",
+    "terminal_id": "T100000131051",
+    "unit_id": "G100002105100",
+    "terminal_name": "Summit Matarbari FSRU",
+    "issue": "The October 2024 cancellation (staged as confirmed in updates.json, refs replaced) remains legally disputed: Summit publicly urged Petrobangla to reverse the decision and, per The Business Standard, obtained a Supreme Court stay of the re-tender process pending its appeal (tbsnews.net/bangladesh/court/sc-stays-re-tender-process-3rd-fsru-following-summits-appeal-1097061 -- could not confirm live via url_verifier, HTTP 403; content via WebSearch snippet only). GEM's cancelled/confirmed call is still the best-supported current status (Petrobangla's own termination notice stands; no reports found of the courts overturning it), but the underlying commercial/legal dispute is ongoing as of this sweep.",
+    "severity": "medium",
+    "suggested_action": "Keep Status=cancelled as staged; re-check next sweep for a court ruling or a re-tender award that would supersede this.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "internal_inconsistency",
+    "terminal_id": "T100000130862",
+    "unit_id": "G100002086200",
+    "terminal_name": "Payra FSRU",
+    "issue": "Before this sweep's edit, GEM's own record was internally inconsistent: Status='proposed' while ShelvedYear/StopYear=2022 and ShelvedCancelledStatusType='confirmed' were already populated (fields normally paired with a shelved/cancelled Status, not proposed). The Postgres timeline explains this: shelved(2022) was followed by a re-proposal (March 2023), but the shelved-era anchor fields were never cleared. This sweep's Status->cancelled edit supersedes it; flagging the pattern in case similar stale anchor-field residue exists elsewhere.",
+    "severity": "low",
+    "suggested_action": "No further action needed for this terminal now that Status=cancelled/CancelledYear=2024 is staged; noting the pattern for QC awareness.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "entity_dedup",
+    "terminal_id": "T100000130272",
+    "unit_id": "G100002027200",
+    "terminal_name": "Summit FSRU",
+    "issue": "Sweep staged 'Mitsubishi Corp' as a NEW entity for the confirmed 25% Summit FSRU stake, citing entity_lookup --remote = no_remote_match. That is a FALSE NEGATIVE: the read-only Postgres entity_history holds 30 Mitsubishi entities (incl. bare 'Mitsubishi' id 100000000650 and 'Summit-Mitsubishi-GE JV' id 100000004125), and the exact display string 'Mitsubishi Corp' is already the Owner/Parent on ~48 LNG rows across the tracker (Gorgon, LNG Canada, Brunei, Donggi-Senoro, etc.). The remote entity endpoint is unreliable this session (same degradation seen in the 2026-07-02 Vietnam batch); Postgres is authoritative.",
+    "severity": "medium",
+    "suggested_action": "Do NOT create a new entity. Reuse the EXISTING 'Mitsubishi Corp' entity when applying the Summit FSRU Owner/Parent 25% edit (the staged value string 'Mitsubishi Corp [25%]' already matches GEM convention). New-entity staging removed from bangladesh.entity.json.",
+    "researcher_initials": "AI-draft"
+  }
+]

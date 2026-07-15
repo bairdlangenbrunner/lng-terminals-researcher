@@ -1,0 +1,78 @@
+{
+    "terminal_name": "Mariveles LNG Terminal (Samat LNG)",
+    "unit_id": "G100002030700",
+    "findings": [
+        {
+            "field": "Status",
+            "current_value": "proposed",
+            "new_value": "shelved (inferred)",
+            "ref_urls": [
+                "https://www.bworldonline.com/corporate/2024/01/22/570182/pnoc-eyes-jv-for-small-scale-lng-terminal-in-bataan/"
+            ],
+            "confidence": "yellow",
+            "change_summary": "Dormancy check per news-recency test. LatestPlannedStartYear (2024) has slipped and status has been 'proposed' since 2020, so applying the news-recency rule to the most recent activity found: the newest substantive, dated coverage specific to this project is a BusinessWorld article of Jan 22 2024 (PNOC president Oliver Butalid: 'We have a potential joint venture (JV) with an investor for a small-scale receiving terminal for LNG'; construction 'expected to start in March', completion targeted 'within the next two years'). No project-specific news, DOE filing, or corporate update has been found since -- a ~2.5-year gap as of Jul 2026. That places the project in the 2-4-year 'inferred shelved' band, not the <2-year 'stays proposed' band. Single non-primary source (business press quoting PNOC's president) -> yellow. Corroborating (non-citable) dormancy signals: the developer's own corporate site (samatlng.com) now resolves to a parked-domain placeholder page (failed url_verifier check for 'Tectoroe' -- no longer live content); and PNOC's Feb 10 2026 MOU with a different company (BESTC) for a much larger, separate 1,800 MW FSRU + combined-cycle power project at the same PNOC Bataan industrial park makes no mention of Samat LNG at all."
+        },
+        {
+            "field": "Substatus",
+            "current_value": "",
+            "new_value": "inferred 2 y",
+            "ref_urls": [
+                "https://www.bworldonline.com/corporate/2024/01/22/570182/pnoc-eyes-jv-for-small-scale-lng-terminal-in-bataan/"
+            ],
+            "confidence": "yellow",
+            "change_summary": "Substatus tag for the inferred-shelved call: last confirmed project activity dated Jan 22 2024, ~2.5 years before this Jul 2026 check -- within the 2-4-year band."
+        },
+        {
+            "field": "ShelvedYear",
+            "current_value": "",
+            "new_value": "2024",
+            "ref_urls": [
+                "https://www.bworldonline.com/corporate/2024/01/22/570182/pnoc-eyes-jv-for-small-scale-lng-terminal-in-bataan/"
+            ],
+            "confidence": "yellow",
+            "change_summary": "Anchor year set to 2024, the event year of the newest dormancy evidence (the PNOC JV-exploration article), per the 'use the newest anchor' rule -- not the 2020 ProposalYear and not the 2026 check date."
+        }
+    ],
+    "status_timeline_additions": [
+        {
+            "status": "shelved",
+            "substatus": "inferred 2 y",
+            "year": 2024,
+            "part_of_year": "",
+            "note": "Inferred dormant via the news-recency test: newest confirmed project-specific activity is PNOC's Jan 22, 2024 disclosure of exploring a joint venture with Samat LNG for the Mariveles small-scale LNG receiving terminal (construction said to start 'in March [2024]', completion targeted within two years). No further project-specific reporting, DOE update, or corporate announcement found through Jul 2026 (~2.5-year gap, the 2-4y inferred-shelved band). Existing DB timeline already carries a 2024 H1 'operating/planned' anchor for the same original target date; this entry adds the inferred-shelved read driven by the subsequent silence, without altering that pre-existing entry.",
+            "ref_url": "https://www.bworldonline.com/corporate/2024/01/22/570182/pnoc-eyes-jv-for-small-scale-lng-terminal-in-bataan/"
+        }
+    ],
+    "scope_verdict": "in_scope",
+    "entity_checks": [],
+    "url_verifications": [
+        {
+            "url": "https://www.bworldonline.com/corporate/2024/01/22/570182/pnoc-eyes-jv-for-small-scale-lng-terminal-in-bataan/",
+            "tokens": ["PNOC", "Samat"],
+            "passed": true
+        },
+        {
+            "url": "https://www.bworldonline.com/corporate/2024/01/22/570182/pnoc-eyes-jv-for-small-scale-lng-terminal-in-bataan/",
+            "tokens": ["joint venture", "Bataan"],
+            "passed": true
+        },
+        {
+            "url": "https://www.pnoc.com.ph/pnoc-and-samat-lng-corporation-signed-a-long-term-lease-agreement-for-a-small-scale-lng-terminal-at-pnoc-industrial-park-in-limay-bataan/",
+            "tokens": ["September 14", "Samat"],
+            "passed": true
+        },
+        {
+            "url": "https://www.rivieramm.com/news-content-hub/news-content-hub/small-scale-lng-initiative-in-the-philippines-77189",
+            "tokens": ["200,000", "Mariveles"],
+            "passed": true
+        }
+    ],
+    "qa_notes": [
+        "Scope confirmed IN SCOPE: this is a genuine marine LNG import terminal, not a domestic-only virtual-pipeline/trucking plant. Per DOE/press description it is an LNG receiving terminal + regasification facility that takes marine LNG delivery via small LNG vessels/barges (ship-borne import), then distributes locally onward by truck/barge to industrial and power customers -- the ship-borne import leg satisfies the marine-crossing threshold; small-scale is fine per the methodology.",
+        "samatlng.com (the developer's own corporate site) now resolves to a parked/inactive-domain placeholder ('choose one of our premium packages...'); failed url_verifier check for 'Tectoroe'. Treated only as a soft corroborating dormancy signal, never as a citation -- consistent with corporate silence since the Jan 2024 article.",
+        "PNOC signed a Feb 10, 2026 MOU with a different company, BESTC (Bergs Energy Solutions and Technology Corp), to explore a separate 3x600MW gas-fired CCPP + FSRU (~1,800 MW, much larger scale) at the same PNOC Bataan industrial park (businessmirror.com.ph, Feb 17 2026). This article makes no mention of Samat LNG or the small-scale terminal; noted as context for the inferred-shelved call but NOT used as the ref (it doesn't address Samat's project directly, and is a distinct, unrelated project).",
+        "bworldonline.com initially returned a blocked/blank response via generic web-fetch but PASSED url_verifier.py directly -- treated as live per the bot-block-is-not-dead rule.",
+        "No new owner/operator/parent is being staged (Samat LNG Corp / Samat LNG / Tectoroe Pte Ltd all remain unchanged), so entity_lookup.py was not required per the hard rule (only triggered before staging a NEW entity)."
+    ],
+    "summary": "Dormancy check: newest project-specific news is a Jan 22, 2024 BusinessWorld article on a proposed PNOC-Samat joint venture (~2.5 years stale as of Jul 2026) -- no activity found since. Falls in the 2-4-year band, so staged Status -> shelved (inferred), Substatus 'inferred 2 y', ShelvedYear 2024, cited to that article (single non-primary source, yellow), with a new shelved timeline entry. Corroborating but non-citable dormancy signals: the developer's own site is now a parked domain, and PNOC's Feb 2026 MOU with a different company for a much larger separate FSRU+CCPP at the same industrial park does not mention Samat. Scope confirmed IN SCOPE -- this is a genuine ship-borne marine LNG import/regas terminal (small vessels/barges), not a domestic-only trucking plant, so no scope concern to flag."
+}

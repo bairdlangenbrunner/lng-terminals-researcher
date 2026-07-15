@@ -1,0 +1,36 @@
+[
+  {
+    "terminal_id": "T100000130862",
+    "unit_id": "G100002086200",
+    "terminal_name": "Payra FSRU",
+    "unit_name": "--",
+    "operation": "append",
+    "status": "cancelled",
+    "sub_status": "confirmed",
+    "year": 2024,
+    "part_of_year": "October",
+    "notes": "Petrobangla/interim government terminated Excelerate's FSRU bid/term-sheet near Payra seaport. Existing Postgres timeline: proposed(2017-12) -> operating/planned(2025,2028) -> shelved/confirmed(2022) -> proposed(2023-03) -> operating/planned(2028); this appends the confirmed cancellation following the March-2023 re-proposal.",
+    "source_url": "https://today.thefinancialexpress.com.bd/last-page/excelerate-bid-for-fsru-near-payra-seaport-fails-1729015984",
+    "confidence": "green",
+    "validation_warnings": [],
+    "legal_transition_check": "proposed -> cancelled is a legal transition per status_timeline.py LEGAL_TRANSITIONS.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130614",
+    "unit_id": "G100002061400",
+    "terminal_name": "RPGC Matarbari LNG Terminal",
+    "unit_name": "",
+    "operation": "append",
+    "status": "cancelled",
+    "sub_status": "confirmed",
+    "year": 2024,
+    "part_of_year": "October",
+    "notes": "RPGCL cancelled the shortlist of prequalified bidders for the Matarbari onshore LNG terminal (~2024-10-08/09), confirming and correcting the year of the existing tl_order-29 entry (cancelled/inferred-4y/2025). Same-status refinement (cancelled -> cancelled): no status transition, just a confirmed/corrected append.",
+    "source_url": "https://energynews.oedigital.com/bangladeshs-rpgcl-cancels-shortlist-for-matarbari-lng-terminal-strategy",
+    "confidence": "green",
+    "validation_warnings": [],
+    "legal_transition_check": "cancelled -> cancelled: no transition (from_status == to_status), legal same-status refinement per status_timeline.py.",
+    "researcher_initials": "AI-draft (sweep)"
+  }
+]

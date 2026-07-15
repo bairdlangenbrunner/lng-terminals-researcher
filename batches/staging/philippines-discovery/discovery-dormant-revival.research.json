@@ -1,0 +1,41 @@
+{
+  "ring": "dormant_revival",
+  "revival_candidates": [
+    {
+      "dead_site": "Bataan-Manila LNG / Limay / Energy City",
+      "dead_unit_id": "G100002030500",
+      "new_project_name": "PNOC-BESTC Bataan Gas Power & FSRU Project",
+      "new_sponsor": "BERGS Energy Solutions and Technology Corp. (BESTC), in partnership with PNOC",
+      "how_different": "Original Bataan-Manila LNG/Energy City project (cancelled 2020) was a ~$2.4B mega LNG import terminal led by PNOC with Petron, Mitsui, and Osaka Gas near the Petron refinery. This new project is a distinct sponsor (BESTC/BERGS Energy, a private energy company with no involvement in the original consortium) proposing a smaller-footprint 3x600MW (1,800MW) gas-fired CCPP paired with an FSRU, under a PPP framework with PNOC as minority stakeholder, at PNOC's Industrial Park spanning Limay and Mariveles, Bataan. Different sponsor, different project design/scale (FSRU+power-plant bundle vs. standalone mega import terminal), same broad dormant site.",
+      "concrete_step": "PNOC and BESTC signed a Memorandum of Understanding on February 10, 2026 (2-year term) to jointly explore the FSRU + 1,800MW CCPP project and conduct feasibility studies ahead of a definitive agreement.",
+      "ref_urls": [
+        "https://www.pnoc.com.ph/pnoc-bestc-seals-partnership-for-clean-energy-infra-in-bataan/",
+        "https://tribune.net.ph/2026/02/16/pnoc-eyes-1800-mw-bataan-natgas-plant"
+      ],
+      "confidence": "yellow",
+      "meets_tight_threshold": true
+    }
+  ],
+  "no_revival_found": [
+    "Atimonan LNG (G100002114900) — Meralco PowerGen/Atimonan One Energy remains the sole developer throughout; the site's LNG-fired plan was itself dropped in favor of a coal-fired plant (2024-2025); no new/different sponsor proposing LNG at the site.",
+    "Batangas Clean Energy LNG (Lucio Tan / ACE Enexor / Gen X Energy) — Ayala's ACE Enexor formally discontinued the JV with Gen X Energy in Nov 2025 (strategic shift to renewables); no successor sponsor has emerged to revive LNG at the site.",
+    "PNOC Batangas LNG (G100002030600) — PNOC's current Batangas-area initiatives are non-LNG (offshore wind integration port at Mabini, LPG facility checks); no new LNG import project at the original PNOC Batangas site.",
+    "Tanglawan LNG (G100002070600) — Phoenix Petroleum/CNOOC/PNOC MOU project remains dormant since the 2019-2021 withdrawal/cancellation; the only 'new' coverage found (constructionboxscore.com) is a republish of 2018-2019 news, not a fresh 2025/2026 development, and would in any case be the SAME original sponsors, not a new one.",
+    "Vires FSRU (G100002097700) — Vires Energy Corp. (A Brown Co. subsidiary) formally withdrew its NTP in Sept 2024 and pivoted to a third-party-access power model rather than an LNG terminal; no different sponsor has stepped in at the Simlong, Batangas site.",
+    "FGEN Batangas LNG Terminal onshore (G100002061000) — First Gen/Tokyo Gas continue as sponsors; Prime Infrastructure Capital's June 2025 acquisition of a 60% equity stake is an ownership change within the SAME ongoing project/sponsor group (which also operates the interim FGEN FSRU), not a distinct new project.",
+    "Pagbilao Grande Island LNG (G100002030800) — Energy World Corp. sold the power-plant turbines earmarked for this site to a US buyer (Hallador Energy) in June 2026, effectively ending the power component; no replacement developer has proposed a new LNG terminal at the site.",
+    "Tabangao FSRU / Shell (G100002097600) — Shell remains the last-named sponsor (project inferred shelved since ~2023); no other company (AG&P, Excelerate, First Gen, or others) has been reported taking over or proposing a distinct new project at the Tabangao site.",
+    "Mariveles LNG (G100002030700) — The Jan 2024 PNOC lease covering a 4.5-ha parcel in the PNOC Industrial Park 'in Limay, Bataan' is the SAME Samat LNG Corp. small-scale terminal project referenced by the 2023 NTP (sited at Barangay Sisiman, Mariveles, within the same PNOC Industrial Park that spans both Limay and Mariveles barangays) — same sponsor, same underlying project, not a new/different one."
+  ],
+  "monitor_list": [],
+  "out_of_scope_found": [],
+  "url_verifications": [
+    {"url": "https://www.pnoc.com.ph/pnoc-bestc-seals-partnership-for-clean-energy-infra-in-bataan/", "tokens": ["BESTC", "FSRU", "Mariveles"], "passed": true},
+    {"url": "https://tribune.net.ph/2026/02/16/pnoc-eyes-1800-mw-bataan-natgas-plant", "tokens": ["BERGS", "FSRU"], "passed": true},
+    {"url": "https://manilastandard.net/business/314704642/pnoc-bergs-energy-study-1200-mw-gas-power-project-in-bataan.html", "tokens": ["BERGS", "FSRU"], "passed": false, "reason": "HTTP 202 (bot-block/pending); not used as a cited ref, PNOC + Tribune sources sufficed"},
+    {"url": "https://context.ph/2026/02/17/bataan-eyed-for-major-gas-power-hub-under-pnoc-bestc-deal/", "tokens": ["BESTC", "FSRU"], "passed": false, "reason": "missing expected content (FSRU token not found in fetched text); not used"},
+    {"url": "https://businessmirror.com.ph/2026/02/17/pnoc-keen-on-tieup-with-bestc-for-power-project/", "tokens": ["BESTC", "FSRU"], "passed": false, "reason": "HTTP 403 (bot-block); not used, PNOC + Tribune sources sufficed"}
+  ],
+  "notes": "Only one genuine revival candidate surfaced across all 10 dead/dormant PH sites: the Feb 2026 PNOC-BESTC (BERGS Energy) MOU for a 1,800MW gas CCPP + FSRU at PNOC's Limay/Mariveles Industrial Park, which overlaps the dormant Bataan-Manila LNG/Energy City mega-terminal site but under a wholly different, newly-named private sponsor and a smaller/different project design. Confidence rated yellow (not green) because the underlying step is still an exploratory 2-year MOU/feasibility-study framework, not a definitive agreement, construction permit, or NTP, even though sourcing itself (PNOC's own primary statement + independent Tribune coverage) is solid. All other candidate leads investigated (Samat LNG's Limay lease, Phoenix/CNOOC old Tanglawan coverage, FGEN LNG's PIC equity stake) resolved to being the SAME sponsor/project as an existing dead or already-tracked record, not a genuinely new one, and were excluded per the tight how-different threshold. No out-of-scope (domestic-only) candidates were encountered in this ring.",
+  "summary": "Across all 10 dead/dormant Philippine LNG sites checked, only one lead cleared the tight revival threshold: a February 10, 2026 MOU between PNOC and a new private sponsor, BERGS Energy Solutions and Technology Corp. (BESTC), to explore an 1,800MW gas-fired CCPP paired with an FSRU at PNOC's Limay/Mariveles Industrial Park — the same broad site as the cancelled Bataan-Manila LNG/Energy City mega-terminal (G100002030500) but with a distinct sponsor and project design, supported by PNOC's own press release and independent Tribune.net.ph coverage (both url_verifier-passed). Every other site (Atimonan, Batangas Clean Energy, PNOC Batangas, Tanglawan, Vires FSRU, FGEN Batangas onshore, Pagbilao Grande Island, Tabangao/Shell, Mariveles LNG) showed either continued dormancy with no new activity, or apparent 'new' news that on inspection was either the same incumbent sponsor continuing/evolving the same project (Samat LNG's Limay lease = the same Mariveles LNG project; FGEN's PIC equity stake = same FGEN LNG project) or stale republished old coverage (Phoenix/CNOOC Tanglawan), so none qualify as genuinely new/different revival projects. No out-of-scope findings arose in this ring."
+}
