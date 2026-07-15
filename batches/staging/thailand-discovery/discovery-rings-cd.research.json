@@ -1,0 +1,127 @@
+{
+  "_meta": {
+    "ring_assignment": "C (sponsor IR) + D (broader/upstream) + gem.wiki coverage cross-check",
+    "country": "Thailand",
+    "date": "2026-07-10",
+    "threshold": "tight (sponsor + approx location + concrete step)"
+  },
+
+  "new_terminals": [],
+
+  "monitor_list": [
+    {
+      "name": "Thailand ASEAN LNG re-export / trading hub (aspiration)",
+      "country": "Thailand",
+      "sponsor": "PTT / EGAT / Gulf (national policy, EPPO/ERC framing)",
+      "location": "Map Ta Phut, Rayong (uses existing + planned MTP terminals)",
+      "concrete_step": "none for a NEW facility — policy aspiration; re-export would run through the existing Map Ta Phut 1/2 and the under-construction MTP3, not a new-build terminal",
+      "why_monitor_not_stage": "Not a new physical terminal. The 'regional LNG hub' vision re-exports cargoes through terminals already in GEM (MTP1/2 operating, MTP3 in the roster). No sponsor+location+concrete step for a distinct new facility. Watch for a dedicated re-export/bunkering terminal announcement.",
+      "source_urls": [
+        "https://www.bangkokpost.com/business/general/3022182/lng-imports-may-create-hub-status",
+        "https://energytracker.asia/thailands-plans-to-become-aseans-lng-hub/"
+      ]
+    }
+  ],
+
+  "entity_checks": [
+    {
+      "name": "Gulf Energy Development / Gulf MTP LNG Terminal (GMTP)",
+      "found": true,
+      "entity_id": "n/a (no staging — already the owner of roster T100000130894 / MTP3)",
+      "note": "No new entity needed; Gulf and PTT Tank already carried on the existing Map Ta Phut 3 record. entity_lookup not run because nothing is being staged."
+    },
+    {
+      "name": "EGAT / PTT",
+      "found": true,
+      "entity_id": "n/a",
+      "note": "Both already exist across the Thai roster (Surat Thani FSRU, MTP2/Nong Fab). No new entity created — nothing staged."
+    }
+  ],
+
+  "dormant_revival_findings": [
+    {
+      "terminal_id": "T100000130898",
+      "site": "Songkhla FSRU, Songkhla",
+      "new_activity": "none",
+      "verdict": "still_dead",
+      "notes": "gem.wiki confirms plan suspended summer 2018; no revival signal in 2025-2026 press. No new sponsor/design at the site."
+    },
+    {
+      "terminal_id": "T100000130896",
+      "site": "Gulf of Thailand FSRU (aka Samut Prakan FSRU), offshore Gulf",
+      "new_activity": "none",
+      "verdict": "still_dead",
+      "notes": "Cancelled by the National Energy Policy Council; explicitly replaced by the Surat Thani FSRU concept. No independent revival."
+    },
+    {
+      "terminal_id": "T100000130893",
+      "site": "Chana LNG Terminal, Chana/Songkhla (KOGAS/Korea Western Power/TPIPP)",
+      "new_activity": "none",
+      "verdict": "still_dead",
+      "notes": "March 2021 KOGAS/KOWEPO/TPIPP MOU for an LNG terminal + Songkhla Chana power station; no updates in 4+ years, inferred cancelled. TPIPP 'Chana Project' page describes an industrial-estate/power plan, not a live marine LNG import terminal. No different-sponsor new project at the site."
+    },
+    {
+      "terminal_id": "T100000131071",
+      "site": "Surat Thani FSRU (EGAT/PTT, Phunphin), offshore Surat Thani",
+      "new_activity": "none (same shelved EGAT-PTT 5 mtpa concept)",
+      "verdict": "still_dead",
+      "notes": "The EGAT+PTT '5 Mt/year FSRU in southern Thailand' feeding the 1,400 MW Surat Thani (Phunphin) power plant IS this shelved record, not a new project. No FID/EPC/land-lease step; no revival beyond the existing shelved concept."
+    }
+  ],
+
+  "documented_duplicates": [
+    {
+      "candidate": "Gulf MTP LNG Terminal (GMTP) / Map Ta Phut Industrial Port Development Phase 3 / MTP3",
+      "maps_to": "Map Ta Phut LNG Terminal 3 (T100000130894, roster #3)",
+      "why": "Same project. Gulf (70%) + PTT Tank (30%) JV, 35-yr PPP with IEAT, initial ~5-8 mtpa expandable to 10.8 mtpa, EPCC signed 2025 (PEC-CAZ / Posco), construction Q4 2025, ops Q1 2029. This is an UPDATE (status proposed->construction, capacity, FID) for the Update workflow, not a Discovery. gem.wiki page 'Gulf MTP LNG Terminal' redirects to Map Ta Phut LNG Terminal 3."
+    },
+    {
+      "candidate": "EGAT-PTT 5 Mt/year southern-Thailand FSRU (Enerdata/Bangkok Post)",
+      "maps_to": "Surat Thani FSRU (T100000131071, roster #4)",
+      "why": "Same shelved EGAT+PTT concept feeding the 1,400 MW Surat Thani/Phunphin power plant; explicitly the replacement for the cancelled Gulf of Thailand FSRU."
+    }
+  ],
+
+  "out_of_scope_dropped": [
+    {
+      "candidate": "Hin Kong Power LNG imports (Gulf + Ratch, 1.4 mtpa shipper licence, Ratchaburi 1,400 MW plant)",
+      "why_out_of_scope": "LNG-shipper licence, not a terminal. First private cargo (Feb 2025) was received at PTT's existing Map Ta Phut 2 / Nong Fab terminal; the Hin Kong power plant is pipeline-fed from that terminal. No new marine facility. Gas turbine plant = GOGPT, not a terminal (Quang-Trach-class)."
+    },
+    {
+      "candidate": "B.Grimm Power LNG imports (first private importer, feeds 7 small power plants)",
+      "why_out_of_scope": "Shipper licence importing through existing PTT terminals; no dedicated new import facility. Power plants are GOGPT."
+    },
+    {
+      "candidate": "Ratch Group / GPSC / Siam Gas & Petrochemical LNG shipper licences",
+      "why_out_of_scope": "ERC has licensed many new LNG shippers 2021-2025, but a shipper licence is not a physical import terminal (they all use MTP1/MTP2). No new-build facility from any of them."
+    },
+    {
+      "candidate": "PTT plan to grow LNG portfolio to 15 mtpa; PTTEP Erawan/Bongkot upstream reinvestment",
+      "why_out_of_scope": "Portfolio/volume growth and domestic upstream gas production, not a new terminal. No FLNG/export idea: Thailand is a declining producer + net LNG importer; PTTEP capex only slows the Gulf-of-Thailand decline, no export/liquefaction terminal proposed."
+    }
+  ],
+
+  "gemwiki_crosscheck": {
+    "pages_found": [
+      "Map Ta Phut LNG Terminal 1 (-> roster #1)",
+      "Map Ta Phut LNG Terminal 2 / Nong Fab (-> roster #2)",
+      "Map Ta Phut LNG Terminal 3 / Gulf MTP LNG Terminal [redirect] (-> roster #3)",
+      "Surat Thani FSRU (-> roster #4)",
+      "Chana LNG Terminal (-> roster #5)",
+      "Gulf of Thailand FSRU / Samut Prakan FSRU (-> roster #6)",
+      "Songkhla FSRU (-> roster #7)"
+    ],
+    "wiki_only_gaps": [],
+    "notes": "Every gem.wiki Thailand LNG-terminal page maps 1:1 to a roster entry; no wiki page lacks a roster/CSV match. 'Songkhla Chana power station' and 'Thailand and fossil gas' are a power plant and a country overview, not terminal pages. gem.wiki fetch returned HTTP 403 (bot-block, expected); page inventory built from search-result titles/snippets. gem.wiki used only to DETECT coverage — never cited."
+  },
+
+  "url_verifications": [
+    {"url": "https://lngprime.com/asia/gulf-moves-forward-with-thai-lng-import-terminal/147492/", "tokens": ["Gulf"], "passed": true},
+    {"url": "https://www.enerdata.net/publications/daily-energy-news/egat-and-ptt-plan-5-mtyear-lng-import-terminal-thailand.html", "tokens": ["FSRU"], "passed": true},
+    {"url": "https://www.bangkokpost.com/business/general/3022182/lng-imports-may-create-hub-status", "tokens": ["hub"], "passed": true},
+    {"url": "https://lngprime.com/asia/thailands-b-grimm-power-imports-first-lng-cargo/122432/", "tokens": ["B.Grimm"], "passed": true},
+    {"url": "https://www.offshore-energy.biz/epcc-deal-inked-for-next-stage-of-thailands-third-lng-terminal/", "tokens": ["LNG"], "passed": true}
+  ],
+
+  "summary": "Rings C (sponsor IR) + D (upstream/broader) + gem.wiki cross-check: ZERO new terminals clear the tight bar. The only new physical terminal in Thailand's pipeline is Map Ta Phut LNG Terminal 3 (= Gulf MTP LNG Terminal / MTP3), which is already GEM roster #3 (T100000130894) and now has EPCC + PPP + construction start Q4 2025 -> that is an Update (status/capacity/FID), not a Discovery. All the 2021-2025 'private LNG' activity (Gulf/Ratch Hin Kong, B.Grimm, GPSC, Siam Gas) is LNG-shipper licences importing through existing MTP1/MTP2 terminals -> out of scope (shipper != terminal; the power plants are GOGPT). No FLNG/export idea: Thailand is a declining Gulf-of-Thailand producer and net LNG importer; PTTEP only reinvests to slow field decline. The 'ASEAN LNG hub / re-export' vision runs through existing/planned MTP terminals, not a new facility (1 monitor entry). All 4 dormant sites (Songkhla FSRU, Gulf of Thailand/Samut Prakan FSRU, Chana, Surat Thani FSRU) remain dead with no different-sponsor revival. gem.wiki cross-check: 7 Thai LNG-terminal pages found, all map 1:1 to the roster -> 0 wiki-only gaps. Counts: 0 new_terminals, 1 monitor, 0 gem.wiki gaps, 2 documented duplicates, 4 out-of-scope drops."
+}

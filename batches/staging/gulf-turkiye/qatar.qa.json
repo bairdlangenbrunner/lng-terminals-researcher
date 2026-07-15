@@ -1,0 +1,92 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130594; T100000130598",
+    "unit_id": "ALL 7 legacy N/S units",
+    "terminal_name": "QatarEnergy LNG (N); QatarEnergy LNG (S)",
+    "issue": "MAJOR EVENT NOT YET REFLECTED IN GEM: a US/Israel-Iran conflict beginning 2026-02-28 ('Operation Epic Fury') led to Iranian missile/drone strikes on Qatar's Ras Laffan Industrial City (and Mesaieed) on 2026-03-02 and again 2026-03-18, causing QatarEnergy to halt ALL LNG/gas production at Ras Laffan. QatarEnergy has stated 2 of Qatar's 14 LNG trains (~12.8 mtpa, ~17% of exports) were physically damaged and will take 3-5 years to repair (~$20bn/yr revenue loss); a Pearl GTL train was also damaged (out of LNG-tracker scope). Production resumed partially from undamaged trains from early April 2026 after a ceasefire, but a restart attempt suffered an internal explosion on 2026-06-21, and as of this batch (mid-2026) full recovery of even the undamaged trains is not expected before ~end-August 2026 at the earliest, with Strait of Hormuz transit still constrained. Every Qatar row in the fresh export still shows LastUpdated 2025-07-14/15/16 (over a year stale relative to the conflict) and Status='operating' uniformly with no note of any of this. This is a systemic, country-wide finding, not a single-field edit -- escalating rather than guessing at edits.",
+    "severity": "high",
+    "suggested_action": "Run a dedicated follow-up research pass (ideally with a QatarEnergy investor-relations disclosure or a Reuters/S&P Global piece that names trains by their GEM-recognizable JV, not just 'Train 4'/'Train 6') to: (1) pin the exact GEM UnitID(s) of the two damaged trains (see companion qa note below for the two leading candidates), (2) decide with the human reviewer how to represent a partial (sub-unit) outage given GEM's per-unit granularity groups multiple physical trains together, and (3) consider whether ResearcherNotesUnit/Substatus text on the affected unit(s) and/or the terminal-level Wiki entry (see wiki record) is the right vehicle versus a literal Status enum change. Did NOT stage any Status flip myself -- see wiki entry for full sourcing.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130594; T100000130598",
+    "unit_id": "G100002059402 (N(2) T4-5); G100001055432 (S(3) T6-7); G100002059802 (S(2) T3-5)",
+    "terminal_name": "QatarEnergy LNG (N); QatarEnergy LNG (S)",
+    "issue": "Candidate unit mapping for the two damaged trains (S&P Global, 2026-03-19): 'Train 6' (JV QatarEnergy 70%/ExxonMobil 30%, ~6.4 mtpa) -- ownership ratio is an exact match to S(3) 'T6-7' [G100001055432] per QatarEnergy LNG's own corporate-structure page (QE 70%/Exxon 30%, 8 mtpa nameplate per train), so HIGH confidence Train 6 = one of the two trains inside that unit (Train 7, un-named as damaged, presumably still running). 'Train 4' (JV QatarEnergy 66%/ExxonMobil 34%, ~6.4 mtpa) is more ambiguous: N(2) 'T4-5' [G100002059402]'s own Train 4 is QE 70%/Exxon 30% (exact structure match but different % than reported) while S(2) 'T3-5' [G100002059802]'s trains are QE 67%/Exxon 31%/OPIC Middle East 2% (closer numerically to the reported 66/34 but a 3-way not 2-way JV). Could not resolve which of these two candidates the press 'Train 4' refers to from public reporting.",
+    "severity": "high",
+    "suggested_action": "Reviewer/next-pass: check a QatarEnergy investor disclosure, force-majeure notice to offtakers, or a Reuters piece with more precise train identification to confirm whether the second damaged train sits in N(2) T4-5 or S(2) T3-5, then decide the Status/notes treatment for that unit.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130817",
+    "unit_id": "G100002081701; G100002081705",
+    "terminal_name": "Qatar North Field LNG Terminal",
+    "issue": "North Field expansion construction (NFE + NFS) was suspended ~2026-02-28 through the April 2026 ceasefire (evacuation of non-essential rig/barge personnel, Strait of Hormuz closure, war-risk insurance cancellations for Gulf vessels); contractors such as Chiyoda only confirmed full remobilization to Ras Laffan after the ceasefire. QatarEnergy's CEO maintains NFE is 'on track' for H2 2026 first LNG and attributes any slippage to pre-conflict (COVID-era) supply-chain factors rather than the war, so GEM's existing LatestPlannedStartYear=2026 for NFE is not clearly wrong and was left as blue/unchanged (see updates.json). NFS's schedule (LatestPlannedStartYear=2028) could not be independently re-confirmed post-conflict this batch.",
+    "severity": "medium",
+    "suggested_action": "Re-check NFE's first-LNG date at the next update once H2 2026 arrives or passes; re-check NFS timeline commentary once more post-conflict reporting is available.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "other",
+    "terminal_id": "T100000130817",
+    "unit_id": "G100002081701",
+    "terminal_name": "Qatar North Field LNG Terminal",
+    "issue": "A low-quality aggregator site (themiddleeastinsider.com, 2026-04-22 article) claims 'NFE Train 1 achieved first LNG in November 2025' -- this claim is CONTRADICTED by established trade press: LNG Prime (2025-10-30) describes Train 1 as still in pre-commissioning, and MEES (2025-12-12) describes QatarEnergy as still 'hoping' to start the first train in 3Q 2026. Flagging so a future researcher does not mistakenly cite the aggregator claim and stage a premature Status flip to 'operating'.",
+    "severity": "low",
+    "suggested_action": "No action needed beyond awareness; do not cite themiddleeastinsider.com for this project.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "sourcing_quality",
+    "terminal_id": "T100000130594; T100000130598",
+    "unit_id": "ALL 7 legacy N/S units",
+    "terminal_name": "QatarEnergy LNG (N); QatarEnergy LNG (S)",
+    "issue": "Across all 7 legacy N/S unit-rows, the Status/Operator/Capacity/StartDate [ref] cells (in addition to Owner [ref], which this batch replaced -- see updates.json) all cite the identical generic URL 'https://www.igu.org/igu-reports/2025-world-lng-report?gad_source=1&gad_campaignid=...&gclid=...' -- a marketing landing page carrying Google-Ads click-tracking parameters, not a link to the actual report data. A direct fetch of that page confirms it does NOT display per-terminal capacity/ownership figures in its visible text; url_verifier nonetheless returned a false PASS for at least one arbitrary numeric token ('9.6') checked against it, i.e. the existing citation would not survive a real content check. This looks like a boilerplate ref pasted identically across many cells rather than a value-specific citation.",
+    "severity": "medium",
+    "suggested_action": "This batch replaced the Owner [ref] cell on all 7 units with a working, value-specific primary source (QatarEnergy LNG's own corporate-structure page). Recommend a follow-up pass to similarly replace the Status/Operator/Capacity/StartDate [ref] cells still pointing at the generic IGU tracking-param URL, and consider a spot-check of url_verifier's substring matching for short numeric tokens (false-positive risk already known per project memory on '$' tokens; '9.6' appears to be another false-positive-prone case).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ownership",
+    "terminal_id": "T100000130817",
+    "unit_id": "G100002081701",
+    "terminal_name": "Qatar North Field LNG Terminal",
+    "issue": "NFE's current Owner field (QatarEnergy 71.25% + Shell/Total/ConocoPhillips/Eni/CNPC/Exxon/Sinopec, summing ~98.76%) does not itemize CPC Corporation Taiwan's 5% equity stake in one 8-mtpa NFE train, acquired 2024-06-05/06 (confirmed via multiple trade press: chemanalyst, offshore-technology, energyconnects, JPT/SPE) alongside a 27-year, 4-mtpa LNG SPA. Recalculating a precise blended project-level percentage across all 4 trains would require QatarEnergy's own per-train disclosure (as used successfully for N(2)'s owner split in this batch) -- did not attempt a guessed blend given the risk of an imprecise figure.",
+    "severity": "low",
+    "suggested_action": "If/when QatarEnergy discloses NFE's per-train ownership breakdown (as it does for the legacy N/S ventures on its corporate-structure page), recompute the blended Owner % including CPC Corporation Taiwan.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ownership",
+    "terminal_id": "T100000130817",
+    "unit_id": "G100002081707",
+    "terminal_name": "Qatar North Field LNG Terminal",
+    "issue": "North Field West's Owner/Parent remain 'unknown' in GEM. Despite the Feb 2026 EPC contract award (Technip Energies/CCC/Gulf Asia Contractor JV) and a separate Baker Hughes equipment contract, no international equity partner names or percentages for NFW have been publicly disclosed as of this batch (July 2026) -- it appears QatarEnergy may still be the sole confirmed owner pending partner selection, or partners simply haven't been announced. Left blank rather than guessing.",
+    "severity": "low",
+    "suggested_action": "Re-check for an NFW partner-selection announcement at the next update.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130817",
+    "unit_id": "G100002081707",
+    "terminal_name": "Qatar North Field LNG Terminal",
+    "issue": "NFW's Status remains 'proposed' in GEM. An EPC contract (the actual construction contract) was awarded in Feb 2026 and long-lead equipment (Baker Hughes: 6 gas turbines, 12 compressors) has been ordered, which is a step beyond a bare FID, but no explicit construction-start/groundbreaking/site-mobilization announcement was found this batch, so I left Status as-is rather than guessing a flip to 'construction'.",
+    "severity": "low",
+    "suggested_action": "Watch for an explicit construction-start announcement (site works, first concrete, mobilization) at the next update; that would be the trigger to flip Status to construction.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ownership",
+    "terminal_id": "T100000130598",
+    "unit_id": "G100002059802",
+    "terminal_name": "QatarEnergy LNG (S)",
+    "issue": "QatarEnergy LNG's own corporate-structure page gives S(2) 'T3-5' as QatarEnergy 67%/ExxonMobil 31%/OPIC Middle East 2%, versus GEM's current QatarEnergy 70%/ExxonMobil 30% (no OPIC Middle East line). A 2-3 point variance either way; not large enough to confidently override without a second corroborating breakdown, so left as blue/unchanged this batch.",
+    "severity": "low",
+    "suggested_action": "Cross-check against a GIIGNL or IGU per-venture ownership table (not the broken landing-page ref) to see whether OPIC Middle East's ~2% stake should be added.",
+    "researcher_initials": "AI-draft"
+  }
+]

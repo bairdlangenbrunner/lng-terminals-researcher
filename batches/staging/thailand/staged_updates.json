@@ -1,0 +1,613 @@
+[
+ {
+  "terminal_id": "T100000130893",
+  "unit_id": "G100002089300",
+  "terminal_name": "Chana LNG Terminal",
+  "unit_name": "--",
+  "country": "Thailand",
+  "field_name": "Status",
+  "old_value": "cancelled",
+  "new_value": "cancelled",
+  "confidence": "blue",
+  "source_tier": "regional infrastructure trade press + Korean business press (independent)",
+  "ref_field": "Status [ref]",
+  "ref_urls": [
+   "http://southeastasiainfra.com/new-1-7-gw-gas-power-plant-and-lng-supply-infrastructure-in-thailand/",
+   "https://www.ajupress.com/view/20210305100018217"
+  ],
+  "source_notes": "Re-verified 2026-07-10. No revival, FID, or construction found in Thai (Bangkok Post/Thai PBS), English, or Korean (Aju) press. Project's last known activity was the March 2021 KOWEPO/KOGAS/TPIPP tripartite agreement; the parent Chana Industrial Estate was halted by cabinet resolution in Dec 2021 pending a strategic environmental assessment, and protests stalled it. No LNG-terminal-specific progress since. The inferred-dormancy anchors (proposal 2021 -> shelved 2023 inferred-2y -> cancelled 2025 inferred-4y) remain correct per GEM dormancy convention; status stays cancelled. Also strengthens Status [ref] from a single source to two independent sources.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "terminal_id": "T100000130893",
+  "unit_id": "G100002089300",
+  "terminal_name": "Chana LNG Terminal",
+  "unit_name": "--",
+  "country": "Thailand",
+  "field_name": "AssociatedTerminals",
+  "old_value": "Songkhla Chana power station",
+  "new_value": "Songkhla Chana power station",
+  "confidence": "green",
+  "source_tier": "three independent publishers all describing the LNG terminal as part of the same Songkhla Chana 1.7 GW project",
+  "ref_field": "AssociatedTerminals [ref]",
+  "ref_urls": [
+   "http://southeastasiainfra.com/new-1-7-gw-gas-power-plant-and-lng-supply-infrastructure-in-thailand/",
+   "https://www.ajupress.com/view/20210305100018217",
+   "https://ippjournal.com/update/kowepo-tpipp-to-build-17-gw-gas-power-plant-in-songkhla-chana"
+  ],
+  "source_notes": "Blank-ref fill. The existing AssociatedTerminals value 'Songkhla Chana power station' was uncited. All three sources describe the LNG import terminal / LNG tanks and the 1.7 GW Songkhla Chana gas power plant as a single joint KOWEPO/KOGAS/TPIPP project at Chana, Songkhla, linking the two facilities. Value unchanged; ref filled. >=2 independent publishers -> green.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "terminal_id": "T100000130893",
+  "unit_id": "G100002089300",
+  "terminal_name": "Chana LNG Terminal",
+  "unit_name": "--",
+  "country": "Thailand",
+  "field_name": "FacilityType",
+  "old_value": "import",
+  "new_value": "import",
+  "confidence": "green",
+  "source_tier": "independent business + infrastructure trade press describing an LNG import terminal",
+  "ref_field": "FacilityType [ref]",
+  "ref_urls": [
+   "https://www.ajupress.com/view/20210305100018217",
+   "http://southeastasiainfra.com/new-1-7-gw-gas-power-plant-and-lng-supply-infrastructure-in-thailand/"
+  ],
+  "source_notes": "Ref-fix. The prior FacilityType [ref] pointed to DOI 10.2523/10452-ms, which is an unrelated 2005 SPE/IPTC petroleum-geology paper ('Seismic Sequence Stratigraphy... Habshan Formation, UAE') with nothing about Chana/Songkhla/LNG (fails url_verifier, HTTP 403 + wrong topic). Replaced with two independent sources supporting the 'import' type: Aju ('LNG tanks and other facilities in Chana', 'KOGAS is responsible for LNG procurement and terminal operation') and southeastasiainfra ('LNG supply infrastructure' feeding the 1.7 GW plant). KOGAS procuring/importing LNG into coastal Songkhla tanks = a marine LNG import terminal.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "terminal_id": "T100000130893",
+  "unit_id": "G100002089300",
+  "terminal_name": "Chana LNG Terminal",
+  "unit_name": "--",
+  "country": "Thailand",
+  "field_name": "Location",
+  "old_value": "",
+  "new_value": "Chana, Songkhla, Thailand",
+  "confidence": "yellow",
+  "source_tier": "independent press confirming Chana district, Songkhla province location",
+  "ref_field": "Location [ref]",
+  "ref_urls": [
+   "https://www.ajupress.com/view/20210305100018217",
+   "http://southeastasiainfra.com/new-1-7-gw-gas-power-plant-and-lng-supply-infrastructure-in-thailand/"
+  ],
+  "source_notes": "Ref-fix. Same unrelated DOI mis-citation as FacilityType [ref]. Replaced with two independent sources placing the project in Chana, Songkhla province (~750 km south of Bangkok). Sources confirm district/province only, not the exact GEM coordinates (7.2355, 100.5642, flagged 'approximate' in-record); yellow because the precise lat/long is not independently sourced. Location district/province value unchanged.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "terminal_id": "T100000130896",
+  "unit_id": "G100002089600",
+  "terminal_name": "Gulf of Thailand FSRU",
+  "unit_name": "--",
+  "country": "Thailand",
+  "field_name": "Status",
+  "old_value": "cancelled",
+  "new_value": "cancelled",
+  "confidence": "blue",
+  "source_tier": "trade press (Upstream) + national daily (Bangkok Post)",
+  "ref_field": "Status [ref]",
+  "ref_urls": [
+   "https://www.upstreamonline.com/lng/new-thailand-lng-import-project-mooted/2-1-1011271",
+   "https://www.bangkokpost.com/business/1955391/egat-poised-to-approve-first-thai-fsru"
+  ],
+  "source_notes": "Re-verified unchanged. EGAT's Gulf-of-Thailand / Samut Prakan FSRU (5.0 mtpa) was a 2021-era proposal (upstream 'mooted'; Bangkok Post 'poised to approve first Thai FSRU') that EGAT dropped in favour of onshore terminals; no marine LNG import ever proceeded. Both cited sources still load and confirm EGAT + Thailand + FSRU. CancelledYear/StopYear 2021 anchor confirmed in the Upstream body. Status held cancelled.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "terminal_id": "T100000130896",
+  "unit_id": "G100002089600",
+  "terminal_name": "Gulf of Thailand FSRU",
+  "unit_name": "--",
+  "country": "Thailand",
+  "field_name": "Owner",
+  "old_value": "EGAT [100%]",
+  "new_value": "EGAT [100%]",
+  "confidence": "blue",
+  "source_tier": "two independent working sources naming EGAT as sponsor",
+  "ref_field": "Owner [ref]",
+  "ref_urls": [
+   "https://www.upstreamonline.com/lng/new-thailand-lng-import-project-mooted/2-1-1011271",
+   "https://www.bangkokpost.com/business/1955391/egat-poised-to-approve-first-thai-fsru"
+  ],
+  "source_notes": "Owner value unchanged (EGAT [100%]) but the existing Owner [ref] (egat.co.th CMS article, id=428) now returns HTTP 404 with no Wayback snapshot — genuine link-rot, not a bot-block. Re-verified the owner against two independent still-working sources (Upstream + Bangkok Post), both of which explicitly name EGAT as the FSRU sponsor. Routing these working URLs to Owner [ref] to replace the dead egat.co.th citation.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "terminal_id": "T100000130898",
+  "unit_id": "G100002089800",
+  "terminal_name": "Songkhla FSRU",
+  "unit_name": "--",
+  "country": "Thailand",
+  "field_name": "Status",
+  "old_value": "cancelled",
+  "new_value": "cancelled",
+  "confidence": "blue",
+  "source_tier": "national daily (Bangkok Post) + trade press (Offshore Energy)",
+  "ref_field": "Status [ref]",
+  "ref_urls": [
+   "https://www.bangkokpost.com/business/1493658/souths-fsru-development-plan-shelved",
+   "https://www.offshore-energy.biz/ptt-to-set-up-fsru-duo/"
+  ],
+  "source_notes": "Re-verified unchanged. PTT's Songkhla FSRU (3.0 mtpa) was shelved in 2018 (Bangkok Post: 'South's FSRU development plan shelved') and, with no revival in the >4y since, is held cancelled. Bangkok Post still loads and confirms FSRU + Songkhla + shelved + 2018; Offshore Energy confirms PTT + Songkhla + FSRU + 3 mtpa. CancelledYear/StopYear 2018 anchor confirmed. Status held cancelled.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "terminal_id": "T100000130898",
+  "unit_id": "G100002089800",
+  "terminal_name": "Songkhla FSRU",
+  "unit_name": "--",
+  "country": "Thailand",
+  "field_name": "Owner",
+  "old_value": "PTT PCL [100%]",
+  "new_value": "PTT PCL [100%]",
+  "confidence": "blue",
+  "source_tier": "two independent working sources naming PTT",
+  "ref_field": "Owner [ref]",
+  "ref_urls": [
+   "https://www.offshore-energy.biz/ptt-to-set-up-fsru-duo/",
+   "https://www.bangkokpost.com/business/1493658/souths-fsru-development-plan-shelved"
+  ],
+  "source_notes": "Re-verified unchanged (PTT PCL [100%]). Both existing refs still load and explicitly name PTT as sponsor of the Songkhla FSRU. Existing Owner/Capacity [ref] (offshore-energy) and Status refs (bangkokpost) all pass verification.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "terminal_id": "T100000130321",
+  "unit_id": "G100002032100",
+  "terminal_name": "Map Ta Phut LNG Terminal 1",
+  "unit_name": "--",
+  "country": "Thailand",
+  "field_name": "Capacity",
+  "old_value": "10.00",
+  "new_value": "10.0",
+  "confidence": "blue",
+  "source_tier": "trade press x2 independent (Offshore Energy + Offshore Technology)",
+  "ref_field": "Capacity [ref]",
+  "ref_urls": [
+   "https://www.offshore-energy.biz/thailands-ptt-eyes-28-mln-map-ta-phut-lng-terminal-expansion/",
+   "http://web.archive.org/web/20260121064455/https://www.offshore-technology.com/projects/thailandptt/"
+  ],
+  "source_notes": "Blank Capacity [ref] fill; value unchanged. Offshore Energy: capacity 'increased to 10 mtpa with works due for completion in 2017'; Offshore Technology profile: '(ten million tons capacity)'. Two independent publishers.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "terminal_id": "T100000130321",
+  "unit_id": "G100002032100",
+  "terminal_name": "Map Ta Phut LNG Terminal 1",
+  "unit_name": "--",
+  "country": "Thailand",
+  "field_name": "FacilityType",
+  "old_value": "import",
+  "new_value": "import",
+  "confidence": "blue",
+  "source_tier": "trade press x2 independent",
+  "ref_field": "FacilityType [ref]",
+  "ref_urls": [
+   "https://www.offshore-energy.biz/thailands-ptt-eyes-28-mln-map-ta-phut-lng-terminal-expansion/",
+   "http://web.archive.org/web/20250518110923/https://www.offshore-technology.com/marketdata/map-ta-phut-lng-regasification-terminal-thailand/"
+  ],
+  "source_notes": "Blank FacilityType [ref] fill; unchanged. Both sources describe an LNG import/regasification (receiving) terminal at Map Ta Phut.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "terminal_id": "T100000130321",
+  "unit_id": "G100002032100",
+  "terminal_name": "Map Ta Phut LNG Terminal 1",
+  "unit_name": "--",
+  "country": "Thailand",
+  "field_name": "Status",
+  "old_value": "operating",
+  "new_value": "operating",
+  "confidence": "blue",
+  "source_tier": "trade press x2 independent (incl. 2025 LNG Prime)",
+  "ref_field": "Status [ref]",
+  "ref_urls": [
+   "http://web.archive.org/web/20250518110923/https://www.offshore-technology.com/marketdata/map-ta-phut-lng-regasification-terminal-thailand/",
+   "https://lngprime.com/asia/thailands-ptt-plans-to-grow-lng-portfolio-to-15-mtpa/187625/"
+  ],
+  "source_notes": "Status re-verified unchanged (operating). Offshore Technology: terminal 'started operations in 2011'; LNG Prime (2025): LMPT 1 is 'operated by PTT'. No evidence of any status change.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "terminal_id": "T100000130321",
+  "unit_id": "G100002032100",
+  "terminal_name": "Map Ta Phut LNG Terminal 1",
+  "unit_name": "--",
+  "country": "Thailand",
+  "field_name": "Owner",
+  "old_value": "PTT LNG Co Ltd [100%]",
+  "new_value": "PTT LNG Co Ltd [100%]",
+  "confidence": "blue",
+  "source_tier": "trade press + GIIGNL 2025 (2 independent)",
+  "ref_field": "Owner [ref]",
+  "ref_urls": [
+   "http://web.archive.org/web/20250518110923/https://www.offshore-technology.com/marketdata/map-ta-phut-lng-regasification-terminal-thailand/",
+   "https://cdn.prod.website-files.com/67bdb9fc993751711c5f54fd/685278fda1e68e3b4324e2cf_0432365c1c5b8fb129ae8055cca8cb9b_%23GIIGNL%20-%20Livre%202025-20250610-Simple.pdf"
+  ],
+  "source_notes": "Blank Owner [ref] fill; unchanged. Offshore Technology: 'operated by PTT LNG'; GIIGNL 2025 Annual Report names PTT LNG as owner/operator of Map Ta Phut Terminal 1. Entity reused (no new entity).",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "terminal_id": "T100000130321",
+  "unit_id": "G100002032100",
+  "terminal_name": "Map Ta Phut LNG Terminal 1",
+  "unit_name": "--",
+  "country": "Thailand",
+  "field_name": "Location",
+  "old_value": "Map Ta Phut",
+  "new_value": "Map Ta Phut",
+  "confidence": "blue",
+  "source_tier": "trade press x2 independent",
+  "ref_field": "Location [ref]",
+  "ref_urls": [
+   "https://www.offshore-energy.biz/thailands-ptt-eyes-28-mln-map-ta-phut-lng-terminal-expansion/",
+   "http://web.archive.org/web/20250518110923/https://www.offshore-technology.com/marketdata/map-ta-phut-lng-regasification-terminal-thailand/"
+  ],
+  "source_notes": "Blank Location [ref] fill; unchanged. Both sources place the terminal at Map Ta Phut, Rayong, Thailand.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "terminal_id": "T100000130321",
+  "unit_id": "G100002032101",
+  "terminal_name": "Map Ta Phut LNG Terminal 1",
+  "unit_name": "Expansion",
+  "country": "Thailand",
+  "field_name": "FacilityType",
+  "old_value": "import",
+  "new_value": "import",
+  "confidence": "blue",
+  "source_tier": "trade press x2 independent",
+  "ref_field": "FacilityType [ref]",
+  "ref_urls": [
+   "https://www.offshore-energy.biz/thailands-ptt-eyes-28-mln-map-ta-phut-lng-terminal-expansion/",
+   "http://web.archive.org/web/20250518110923/https://www.offshore-technology.com/marketdata/map-ta-phut-lng-regasification-terminal-thailand/"
+  ],
+  "source_notes": "Blank FacilityType [ref] fill (Expansion row); unchanged import terminal. Same corroboration as base unit.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "terminal_id": "T100000130321",
+  "unit_id": "G100002032101",
+  "terminal_name": "Map Ta Phut LNG Terminal 1",
+  "unit_name": "Expansion",
+  "country": "Thailand",
+  "field_name": "Owner",
+  "old_value": "PTT LNG Co Ltd [100%]",
+  "new_value": "PTT LNG Co Ltd [100%]",
+  "confidence": "blue",
+  "source_tier": "trade press + GIIGNL 2025 (2 independent)",
+  "ref_field": "Owner [ref]",
+  "ref_urls": [
+   "http://web.archive.org/web/20250518110923/https://www.offshore-technology.com/marketdata/map-ta-phut-lng-regasification-terminal-thailand/",
+   "https://cdn.prod.website-files.com/67bdb9fc993751711c5f54fd/685278fda1e68e3b4324e2cf_0432365c1c5b8fb129ae8055cca8cb9b_%23GIIGNL%20-%20Livre%202025-20250610-Simple.pdf"
+  ],
+  "source_notes": "Blank Owner [ref] fill (Expansion row); unchanged. Same project-level owner (PTT LNG) as base unit.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "terminal_id": "T100000130321",
+  "unit_id": "G100002032101",
+  "terminal_name": "Map Ta Phut LNG Terminal 1",
+  "unit_name": "Expansion",
+  "country": "Thailand",
+  "field_name": "Capacity",
+  "old_value": "1.50",
+  "new_value": "1.5",
+  "confidence": "yellow",
+  "source_tier": "single non-primary (Offshore Energy, echoing May-2016 Reuters announcement)",
+  "ref_field": "Capacity [ref]",
+  "ref_urls": [
+   "https://www.offshore-energy.biz/thailands-ptt-eyes-28-mln-map-ta-phut-lng-terminal-expansion/"
+  ],
+  "source_notes": "Blank Capacity [ref] fill for the +1.5 mtpa expansion. Offshore Energy explicitly states PTT would raise capacity 'by 1.5 million tons ... per year' (10 -> 11.5 mtpa). Only one independent outlet carries the literal 1.5 figure; GIIGNL/LNG Prime give only the 11.5 mtpa project total, so staged yellow, not green. See qa note.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "terminal_id": "T100000130321",
+  "unit_id": "G100002032101",
+  "terminal_name": "Map Ta Phut LNG Terminal 1",
+  "unit_name": "Expansion",
+  "country": "Thailand",
+  "field_name": "Cost",
+  "old_value": "28000000.00",
+  "new_value": "28000000",
+  "confidence": "yellow",
+  "source_tier": "single non-primary (Offshore Energy, echoing May-2016 Reuters announcement)",
+  "ref_field": "Cost [ref]",
+  "ref_urls": [
+   "https://www.offshore-energy.biz/thailands-ptt-eyes-28-mln-map-ta-phut-lng-terminal-expansion/"
+  ],
+  "source_notes": "Blank Cost [ref] fill for the expansion. Offshore Energy: 'PTT ... planning to invest about US$28 million to increase the capacity ... by 1.5 million tons ... per year.' Figure traces to a single 2016 Reuters announcement; no independent second outlet found carrying the $28M figure. Staged yellow with a qa note; the existing GEM value is unchanged.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "terminal_id": "T100000130322",
+  "unit_id": "G100002032200",
+  "terminal_name": "Map Ta Phut LNG Terminal 2",
+  "unit_name": "--",
+  "country": "Thailand",
+  "field_name": "Status",
+  "old_value": "operating",
+  "new_value": "operating",
+  "confidence": "blue",
+  "source_tier": "EPC contractors (Saipem) + trade press (LNG Prime, Offshore Energy)",
+  "ref_field": "Status [ref]",
+  "ref_urls": [
+   "https://lngprime.com/asia/saipem-and-ctci-wrap-up-work-on-ptts-nong-fab-lng-terminal-in-thailand/75287/",
+   "https://www.offshore-energy.biz/saipem-and-ctci-commission-nong-fab-lng-terminal-in-thailand/",
+   "https://www.saipem.com/en/saipem-worldwide-projects/pttlng-nong"
+  ],
+  "source_notes": "Blank Status [ref] fill. Status unchanged (operating). Saipem/CTCI completed, commissioned and started up the Nong Fab (Map Ta Phut LNG Terminal 2) receiving terminal, announced March 2023; first commissioning cargo received June 2022. Terminal is in operation. No status transition.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "terminal_id": "T100000130322",
+  "unit_id": "G100002032200",
+  "terminal_name": "Map Ta Phut LNG Terminal 2",
+  "unit_name": "--",
+  "country": "Thailand",
+  "field_name": "Capacity",
+  "old_value": "7.50",
+  "new_value": "7.5",
+  "confidence": "blue",
+  "source_tier": "EPC contractor (Saipem) + trade press (LNG Prime) + industry profile (Offshore Technology via Wayback)",
+  "ref_field": "Capacity [ref]",
+  "ref_urls": [
+   "https://lngprime.com/asia/saipem-and-ctci-wrap-up-work-on-ptts-nong-fab-lng-terminal-in-thailand/75287/",
+   "https://www.saipem.com/en/saipem-worldwide-projects/pttlng-nong",
+   "https://web.archive.org/web/2023/https://www.offshore-technology.com/projects/nong-fab-lng-receiving-terminal/"
+  ],
+  "source_notes": "Blank Capacity [ref] fill. 7.5 mtpa regasification capacity re-verified across three independent sources; value unchanged. Offshore Technology fetched via Wayback (live page 403 bot-block).",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "terminal_id": "T100000130322",
+  "unit_id": "G100002032200",
+  "terminal_name": "Map Ta Phut LNG Terminal 2",
+  "unit_name": "--",
+  "country": "Thailand",
+  "field_name": "Location",
+  "old_value": "Map Ta Phut",
+  "new_value": "Map Ta Phut",
+  "confidence": "blue",
+  "source_tier": "EPC contractor (Saipem) + trade press (LNG Journal) + industry profile (Offshore Technology), Wayback where bot-blocked",
+  "ref_field": "Location [ref]",
+  "ref_urls": [
+   "https://www.saipem.com/en/saipem-worldwide-projects/pttlng-nong",
+   "https://web.archive.org/web/2022/https://lngjournal.com/index.php/latest-news-mainmenu-47/item/106071-thailand-s-second-onshore-lng-import-terminal-at-nong-fab-receives-first-cargo-for-commissioning-purposes",
+   "https://web.archive.org/web/2023/https://www.offshore-technology.com/projects/nong-fab-lng-receiving-terminal/"
+  ],
+  "source_notes": "Blank Location [ref] fill. Terminal is at Nong Fab, Mueang Rayong district, Rayong province, adjacent to the Map Ta Phut industrial area (~5 km west of Map Ta Phut Port). Location value unchanged. LNG Journal and Offshore Technology fetched via Wayback (live pages 403 bot-block).",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "terminal_id": "T100000130322",
+  "unit_id": "G100002032200",
+  "terminal_name": "Map Ta Phut LNG Terminal 2",
+  "unit_name": "--",
+  "country": "Thailand",
+  "field_name": "Cost",
+  "old_value": "38500000000.00",
+  "new_value": "38500000000.00",
+  "confidence": "yellow",
+  "source_tier": "single non-primary source (Bangkok Post)",
+  "ref_field": "Cost [ref]",
+  "ref_urls": [
+   "https://www.bangkokpost.com/business/general/1517794/nong-fab-contract-awarded"
+  ],
+  "source_notes": "Blank Cost [ref] fill. PTT awarded the 38.5-billion-baht EPC contract for the Nong Fab terminal to the Saipem/CTCI JV (Bangkok Post). Value matches GEM (38,500,000,000 THB). Only one working source explicitly states the baht figure; other reports cite the ~$900M-$925M USD equivalent (different phrasing/value, not a corroboration of the baht number). Staged yellow; see qa note.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "terminal_id": "T100000130894",
+  "unit_id": "G100002089400",
+  "terminal_name": "Map Ta Phut LNG Terminal 3",
+  "unit_name": "Phase I",
+  "country": "Thailand",
+  "field_name": "Status",
+  "old_value": "proposed",
+  "new_value": "construction",
+  "confidence": "green",
+  "source_tier": "company primary (Gulf newsroom) + 2 independent trade press (LNG Prime, Offshore Energy)",
+  "ref_field": "Status [ref]",
+  "ref_urls": [
+   "https://www.gulf.co.th/en/newsroom/news-and-activities/473/gulf-and-ptt-tank-signed-epcc-contract-with-posco-e-and-c-and-caz-for-map-ta-phut-phase-3-superstructure-development-to-enhance-thailand-s-energy-security",
+   "https://lngprime.com/asia/gulf-thailands-third-lng-terminal-to-launch-commercial-ops-in-2029/155136/",
+   "https://www.offshore-energy.biz/epcc-deal-inked-for-next-stage-of-thailands-third-lng-terminal/"
+  ],
+  "source_notes": "Proposed -> construction. Firm EPCC (engineering, procurement, construction, commissioning) contract signed 1 July 2025 between Gulf MTP LNG Terminal Co (Gulf 70% / PTT Tank 30%) and the PEC-CAZ consortium (POSCO E&C + CAZ) for the terminal superstructure; FID reached April 2025 and THB60bn investment approved by EGM 24 June 2025; land-reclamation substructure completed March 2025; superstructure construction scheduled to begin Q4 2025 (now ~8 months past). Per the batch brief, a confirmed EPC award is construction-start evidence -> stage the transition rather than punt.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "terminal_id": "T100000130894",
+  "unit_id": "G100002089400",
+  "terminal_name": "Map Ta Phut LNG Terminal 3",
+  "unit_name": "Phase I",
+  "country": "Thailand",
+  "field_name": "ConstructionYear",
+  "old_value": "2025",
+  "new_value": "2025",
+  "confidence": "green",
+  "source_tier": "3 sources confirm Q4 2025 construction start (LNG Prime x2, Offshore Energy)",
+  "ref_field": "ConstructionDate [ref]",
+  "ref_urls": [
+   "https://lngprime.com/asia/gulf-thailands-third-lng-terminal-to-launch-commercial-ops-in-2029/155136/",
+   "https://www.offshore-energy.biz/epcc-deal-inked-for-next-stage-of-thailands-third-lng-terminal/",
+   "https://lngprime.com/asia/posco-ec-secures-contract-for-thailands-third-lng-terminal/155825/"
+  ],
+  "source_notes": "ConstructionYear 2025 corroborated: superstructure construction scheduled to begin Q4 2025 per multiple sources; anchor year for the proposed->construction transition. Value unchanged; ref now filled.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "terminal_id": "T100000130894",
+  "unit_id": "G100002089400",
+  "terminal_name": "Map Ta Phut LNG Terminal 3",
+  "unit_name": "Phase I",
+  "country": "Thailand",
+  "field_name": "FIDStatus",
+  "old_value": "FID",
+  "new_value": "FID",
+  "confidence": "blue",
+  "source_tier": "2 independent (LNG Prime Apr-2025 go-ahead; Kaohoon EGM Jun-2025 THB60bn approval)",
+  "ref_field": "FIDYear [ref]",
+  "ref_urls": [
+   "https://lngprime.com/asia/gulf-moves-forward-with-thai-lng-import-terminal/147492/",
+   "https://www.kaohooninternational.com/markets/560131"
+  ],
+  "source_notes": "FID re-verified. Gulf announced it would move forward via SET filing April 2025; EGM approved the THB60bn investment 24 June 2025. FIDStatus=FID / FIDYear=2025 unchanged and confirmed.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "terminal_id": "T100000130894",
+  "unit_id": "G100002089400",
+  "terminal_name": "Map Ta Phut LNG Terminal 3",
+  "unit_name": "Phase I",
+  "country": "Thailand",
+  "field_name": "FIDYear",
+  "old_value": "2025",
+  "new_value": "2025",
+  "confidence": "blue",
+  "source_tier": "2 independent (LNG Prime Apr-2025; Kaohoon Jun-2025)",
+  "ref_field": "FIDYear [ref]",
+  "ref_urls": [
+   "https://lngprime.com/asia/gulf-moves-forward-with-thai-lng-import-terminal/147492/",
+   "https://www.kaohooninternational.com/markets/560131"
+  ],
+  "source_notes": "FIDYear 2025 re-verified (Apr-2025 go-ahead + Jun-2025 EGM approval).",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "terminal_id": "T100000130894",
+  "unit_id": "G100002089400",
+  "terminal_name": "Map Ta Phut LNG Terminal 3",
+  "unit_name": "Phase I",
+  "country": "Thailand",
+  "field_name": "Cost",
+  "old_value": "1830000000.00",
+  "new_value": "1830000000.00",
+  "confidence": "blue",
+  "source_tier": "2 independent (LNG Prime; Kaohoon)",
+  "ref_field": "Cost [ref]",
+  "ref_urls": [
+   "https://lngprime.com/asia/gulf-thailands-third-lng-terminal-to-launch-commercial-ops-in-2029/155136/",
+   "https://www.kaohooninternational.com/markets/560131"
+  ],
+  "source_notes": "Cost re-verified: THB60 billion (~US$1.83bn) total investment approved. US$1,830,000,000 unchanged; ref filled. Project-level field -> applies to both unit rows.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "terminal_id": "T100000130894",
+  "unit_id": "G100002089400",
+  "terminal_name": "Map Ta Phut LNG Terminal 3",
+  "unit_name": "Phase I",
+  "country": "Thailand",
+  "field_name": "Owner",
+  "old_value": "Gulf MPT LNG Terminal Co Ltd [100%]",
+  "new_value": "Gulf MPT LNG Terminal Co Ltd [100%]",
+  "confidence": "blue",
+  "source_tier": "company primary + trade press (JV entity Gulf MTP LNG Terminal Co Ltd; Gulf 70% / PTT Tank 30%)",
+  "ref_field": "Owner [ref]",
+  "ref_urls": [
+   "https://www.gulf.co.th/en/newsroom/news-and-activities/473/gulf-and-ptt-tank-signed-epcc-contract-with-posco-e-and-c-and-caz-for-map-ta-phut-phase-3-superstructure-development-to-enhance-thailand-s-energy-security",
+   "https://lngprime.com/asia/gulf-thailands-third-lng-terminal-to-launch-commercial-ops-in-2029/155136/"
+  ],
+  "source_notes": "Ownership re-verified: JV is 70% Gulf / 30% PTT Tank; entity name in sources is 'Gulf MTP LNG Terminal Company Limited' (see qa note re GEM spelling 'MPT'). Value left unchanged; ref filled.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "terminal_id": "T100000130894",
+  "unit_id": "G100002089401",
+  "terminal_name": "Map Ta Phut LNG Terminal 3",
+  "unit_name": "Phase II",
+  "country": "Thailand",
+  "field_name": "FIDStatus",
+  "old_value": "FID",
+  "new_value": "FID",
+  "confidence": "blue",
+  "source_tier": "2 independent (LNG Prime; Kaohoon)",
+  "ref_field": "FIDYear [ref]",
+  "ref_urls": [
+   "https://lngprime.com/asia/gulf-moves-forward-with-thai-lng-import-terminal/147492/",
+   "https://www.kaohooninternational.com/markets/560131"
+  ],
+  "source_notes": "FID (April 2025 / EGM June 2025) covers the whole THB60bn project incl. the expansion to 10.8 mtpa, so Phase II FIDStatus=FID / FIDYear=2025 re-verified. Status left proposed: sources describe the first phase (>=5 mtpa) being built first, expandable to 10.8 mtpa; no separate Phase II (expansion) construction start is stated.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "terminal_id": "T100000130894",
+  "unit_id": "G100002089401",
+  "terminal_name": "Map Ta Phut LNG Terminal 3",
+  "unit_name": "Phase II",
+  "country": "Thailand",
+  "field_name": "FIDYear",
+  "old_value": "2025",
+  "new_value": "2025",
+  "confidence": "blue",
+  "source_tier": "2 independent",
+  "ref_field": "FIDYear [ref]",
+  "ref_urls": [
+   "https://lngprime.com/asia/gulf-moves-forward-with-thai-lng-import-terminal/147492/",
+   "https://www.kaohooninternational.com/markets/560131"
+  ],
+  "source_notes": "FIDYear 2025 re-verified for Phase II (project-wide FID).",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "terminal_id": "T100000131071",
+  "unit_id": "G100002107100",
+  "terminal_name": "Surat Thani FSRU",
+  "unit_name": "--",
+  "country": "Thailand",
+  "field_name": "Status",
+  "old_value": "shelved",
+  "new_value": "shelved",
+  "confidence": "blue",
+  "source_tier": "two independent non-GEM sources (Thai energy-policy outlet + project-intelligence aggregator)",
+  "ref_field": "Status [ref]",
+  "ref_urls": [
+   "https://www.exri.co.th/post/ministry-of-energy-organizes-public-hearing-on-draft-pdp-2024-increases-renewable-energy-share-to-5",
+   "https://www.dmsuniverse.com/projects/thailand/egat-surat-thani-gas-fired-power-plant-block-1-2-project"
+  ],
+  "source_notes": "Re-verified shelved (inferred). No revival step found (no FID / FSRU charter / EIA-permit advance). The FSRU exists only to feed EGAT's proposed 1,400 MW Surat Thani (Phunphin) gas plant; that plant was NOT included in the Draft PDP 2024 and remains at feasibility only, held back by high cost and a >100 km gas pipeline (exri, dated 2024-06-12), and DMS Universe lists the project status as 'Shelved'. Newest project-specific activity is June 2024 (~2 yr silence), consistent with shelved (inferred 2y); not >4y dormant, so not cancelled. The read-only-Postgres operating(planned) 2027 timeline entry = the power plant's 2027-2029 target commissioning date, a forward-looking target, not a revival milestone.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "terminal_id": "T100000131071",
+  "unit_id": "G100002107100",
+  "terminal_name": "Surat Thani FSRU",
+  "unit_name": "--",
+  "country": "Thailand",
+  "field_name": "ShelvedYear",
+  "old_value": "2025",
+  "new_value": "2025",
+  "confidence": "blue",
+  "source_tier": "dormancy evidence: Draft PDP 2024 exclusion (2024-06-12) + project-intelligence 'Shelved' status",
+  "ref_field": "ShelvedYear [ref]",
+  "ref_urls": [
+   "https://www.exri.co.th/post/ministry-of-energy-organizes-public-hearing-on-draft-pdp-2024-increases-renewable-energy-share-to-5",
+   "https://www.dmsuniverse.com/projects/thailand/egat-surat-thani-gas-fired-power-plant-block-1-2-project"
+  ],
+  "source_notes": "Blank-ref fill for existing ShelvedYear=2025. Cites the dormancy evidence (Draft PDP 2024 exclusion / feasibility stall), not a source literally stating 'shelved 2025'. Newest project-specific evidence found is June 2024, which is OLDER than the 2025 anchor, so no upward adjustment; 2025 (~2y after the last substantive news) stands as the inferred-shelved anchor.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "terminal_id": "T100000131071",
+  "unit_id": "G100002107100",
+  "terminal_name": "Surat Thani FSRU",
+  "unit_name": "--",
+  "country": "Thailand",
+  "field_name": "StopYear",
+  "old_value": "2025",
+  "new_value": "2025",
+  "confidence": "blue",
+  "source_tier": "dormancy evidence: Draft PDP 2024 exclusion (2024-06-12) + project-intelligence 'Shelved' status",
+  "ref_field": "StopYear [ref]",
+  "ref_urls": [
+   "https://www.exri.co.th/post/ministry-of-energy-organizes-public-hearing-on-draft-pdp-2024-increases-renewable-energy-share-to-5",
+   "https://www.dmsuniverse.com/projects/thailand/egat-surat-thani-gas-fired-power-plant-block-1-2-project"
+  ],
+  "source_notes": "Blank-ref fill for existing StopYear=2025; same dormancy evidence as ShelvedYear. Development stopped after the proposal stage; project sits at feasibility only and was dropped from the Draft PDP 2024.",
+  "researcher_initials": "AI-draft"
+ }
+]

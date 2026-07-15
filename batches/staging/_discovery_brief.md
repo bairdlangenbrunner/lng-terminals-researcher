@@ -108,7 +108,10 @@ human reviews; never touch the live DB. Leads are not pre-trusted; verify.
   you stage a DUPLICATE (this exact bug staged "LNG Alliance" as new when it already existed on an India
   terminal). A match ANYWHERE = reuse the existing entity, do NOT add it to `entity`. `--country` only annotates;
   the script now emits a `cross_country_warning` rather than hiding a match, but run bare regardless.
-  `lookup_was_run` records that BOTH the bare-local and `--remote` checks ran.
+  `lookup_was_run` records that BOTH the bare-local and `--remote` checks ran. CAVEAT: the `--remote` endpoint
+  has intermittent FALSE NEGATIVES — treat `no_remote_match` as a lead, not proof of absence; record the exact
+  lookup output in `lookup_result_summary` (the orchestrator re-checks every proposed new entity against the
+  read-only Postgres `entity_history` before building and drops duplicates).
 - Conservative: a candidate you can't verify or confidently distinguish from an existing GEM record →
   qa/monitor, never a fabricated new_terminal.
 
@@ -117,8 +120,8 @@ Write to `/Users/baird/Dropbox/_git_ALL/_github-repos-gem/lng-terminals-research
 (REGION given in your prompt; `mkdir -p` first; slug = lowercase country, hyphens for spaces). Types you'll
 mostly produce: `newterminals`, `newunits`, `monitor`, `entity`, `qa`, `wiki`. Schemas:
 - new_terminals / new_units: keys = exact GEM headers (see above).
-- monitor: {country, candidate_name, sponsor_or_proposer, first_observed_batch:"2026-06 discovery",
-  last_observed_batch:"2026-06 discovery", current_state, missing_threshold_elements, watch_for, best_lead_url, notes}
+- monitor: {country, candidate_name, sponsor_or_proposer, first_observed_batch:"<YYYY-MM> discovery" (the
+  CURRENT batch month), last_observed_batch:same, current_state, missing_threshold_elements, watch_for, best_lead_url, notes}
 - qa: {category, terminal_id, unit_id, terminal_name, issue, severity:"high|medium|low", suggested_action, researcher_initials:"AI-draft"}
 - wiki: {country, terminal_id, terminal_name, unit_id, topic, wiki_text, verification_status, source_urls:[..], researcher_initials:"AI-draft"}
 - entity: {entity_name, entity_type, country_of_hq, parent_entity, rationale_for_new_entity, lookup_was_run, lookup_result_summary, referenced_by_terminals, referenced_by_units, researcher_initials:"AI-draft"}

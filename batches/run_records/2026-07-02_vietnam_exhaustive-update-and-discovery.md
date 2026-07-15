@@ -58,3 +58,14 @@ Prompted by the question "you said Thai Binh broke ground but staged no status c
 - **Hai Lang / Bac Lieu** — no status change (already so noted).
 
 Net: nothing left to re-stage — every confirmed transition is applied in the live DB. Only qa-note hygiene updated (vietnam_0.qa.json, vietnam_2.qa.json).
+
+## Follow-up 2026-07-09 — Quang Trach II withdrawn (power-plant ≠ terminal)
+
+Prompted by the user pointing out (via en.vcci.com.vn/…/116362) that Quang Trach II is supplied by the existing Vung Ang LNG Terminal, so the staged "Quang Trach II LNG Terminal" is not a separate import terminal — it's a GOGPT power plant fed by piped regas from Vung Ang (T100000131060, ~30 km north). Root cause: the batch staged a power project's bundled `kho, cảng LNG` component as an independent marine terminal without confirming a ship berths there (tank/berth specs never verified — a red flag), AND flagged the exact supply-chain tension in a qa note yet kept the candidate anyway (stage-with-doubt violation).
+
+Corrections:
+- Removed "Quang Trach II LNG Terminal" from `vietnam.disc.newterminals.json` (4 → 3 new terminals); reassembled `_build`.
+- Rewrote the cross_reference qa note → `correction` (terminal_id T100000131060): withdraw candidate, route `PowerPlantsSupplied += Quang Trach 2/3` to the existing Vung Ang row (ref: vcci 116362, verified PASS), and — if the 2026-07-02 discovery workbook was already applied — DELETE the erroneous live-DB terminal row. Fixed the PDP8-reconciliation note mapping (LNG Quang Trach II → Vung Ang + GOGPT, not a new terminal).
+- Staged the withdrawn candidate's research as Vung Ang **wiki fodder** (per user: a power-plant candidate's research is useful Background on the supplier terminal, not wasted) — `vietnam_1.wiki.json` topic "Downstream LNG supply to the Quang Trach power complex", [CONFIRMED] on vcci 116362 + theinvestor d17112 (both PASS "Quang Trach").
+- Rebuilt discovery workbook (final): `batches/lng_terminals_batch_20260709_1757_ET_vietnam_discovery.xlsx` (recalc OK; Quang Trach absent from new_terminals; correction qa note + Vung Ang supply-wiki entry present; wiki_updates 15 → 16). Supersedes the `_1718_` interim rebuild.
+- Encoded the lesson: Discovery SOP §3 rev 3 "Power-plant ≠ terminal" (incl. the wiki-fodder guidance) + §11 hard rule; CLAUDE.md scope-gate routing note; memory `power_plant_not_terminal`.

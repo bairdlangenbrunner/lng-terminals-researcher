@@ -1,0 +1,113 @@
+{
+  "terminal_name": "Chana LNG Terminal",
+  "terminal_id": "T100000130893",
+  "updates": [
+    {
+      "unit_id": "G100002089300",
+      "unit_name": "--",
+      "field": "Status",
+      "current_value": "cancelled",
+      "new_value": "cancelled",
+      "ref_urls": [
+        "http://southeastasiainfra.com/new-1-7-gw-gas-power-plant-and-lng-supply-infrastructure-in-thailand/",
+        "https://www.ajupress.com/view/20210305100018217"
+      ],
+      "confidence": "blue",
+      "source_tier": "regional infrastructure trade press + Korean business press (independent)",
+      "change_summary": "Re-verified 2026-07-10. No revival, FID, or construction found in Thai (Bangkok Post/Thai PBS), English, or Korean (Aju) press. Project's last known activity was the March 2021 KOWEPO/KOGAS/TPIPP tripartite agreement; the parent Chana Industrial Estate was halted by cabinet resolution in Dec 2021 pending a strategic environmental assessment, and protests stalled it. No LNG-terminal-specific progress since. The inferred-dormancy anchors (proposal 2021 -> shelved 2023 inferred-2y -> cancelled 2025 inferred-4y) remain correct per GEM dormancy convention; status stays cancelled. Also strengthens Status [ref] from a single source to two independent sources."
+    },
+    {
+      "unit_id": "G100002089300",
+      "unit_name": "--",
+      "field": "AssociatedTerminals [ref]",
+      "current_value": "",
+      "new_value": "Songkhla Chana power station",
+      "ref_urls": [
+        "http://southeastasiainfra.com/new-1-7-gw-gas-power-plant-and-lng-supply-infrastructure-in-thailand/",
+        "https://www.ajupress.com/view/20210305100018217",
+        "https://ippjournal.com/update/kowepo-tpipp-to-build-17-gw-gas-power-plant-in-songkhla-chana"
+      ],
+      "confidence": "green",
+      "source_tier": "three independent publishers all describing the LNG terminal as part of the same Songkhla Chana 1.7 GW project",
+      "change_summary": "Blank-ref fill. The existing AssociatedTerminals value 'Songkhla Chana power station' was uncited. All three sources describe the LNG import terminal / LNG tanks and the 1.7 GW Songkhla Chana gas power plant as a single joint KOWEPO/KOGAS/TPIPP project at Chana, Songkhla, linking the two facilities. Value unchanged; ref filled. >=2 independent publishers -> green."
+    },
+    {
+      "unit_id": "G100002089300",
+      "unit_name": "--",
+      "field": "FacilityType [ref]",
+      "current_value": "http://dx.doi.org/10.2523/10452-ms",
+      "new_value": "import",
+      "ref_urls": [
+        "https://www.ajupress.com/view/20210305100018217",
+        "http://southeastasiainfra.com/new-1-7-gw-gas-power-plant-and-lng-supply-infrastructure-in-thailand/"
+      ],
+      "confidence": "green",
+      "source_tier": "independent business + infrastructure trade press describing an LNG import terminal",
+      "change_summary": "Ref-fix. The prior FacilityType [ref] pointed to DOI 10.2523/10452-ms, which is an unrelated 2005 SPE/IPTC petroleum-geology paper ('Seismic Sequence Stratigraphy... Habshan Formation, UAE') with nothing about Chana/Songkhla/LNG (fails url_verifier, HTTP 403 + wrong topic). Replaced with two independent sources supporting the 'import' type: Aju ('LNG tanks and other facilities in Chana', 'KOGAS is responsible for LNG procurement and terminal operation') and southeastasiainfra ('LNG supply infrastructure' feeding the 1.7 GW plant). KOGAS procuring/importing LNG into coastal Songkhla tanks = a marine LNG import terminal."
+    },
+    {
+      "unit_id": "G100002089300",
+      "unit_name": "--",
+      "field": "Location [ref]",
+      "current_value": "http://dx.doi.org/10.2523/10452-ms",
+      "new_value": "Chana, Songkhla, Thailand",
+      "ref_urls": [
+        "https://www.ajupress.com/view/20210305100018217",
+        "http://southeastasiainfra.com/new-1-7-gw-gas-power-plant-and-lng-supply-infrastructure-in-thailand/"
+      ],
+      "confidence": "yellow",
+      "source_tier": "independent press confirming Chana district, Songkhla province location",
+      "change_summary": "Ref-fix. Same unrelated DOI mis-citation as FacilityType [ref]. Replaced with two independent sources placing the project in Chana, Songkhla province (~750 km south of Bangkok). Sources confirm district/province only, not the exact GEM coordinates (7.2355, 100.5642, flagged 'approximate' in-record); yellow because the precise lat/long is not independently sourced. Location district/province value unchanged."
+    }
+  ],
+  "qa_notes": [
+    {
+      "category": "link_rot",
+      "unit_id": "G100002089300",
+      "gem_field": "FacilityType [ref], Location [ref]",
+      "severity": "medium",
+      "issue": "Both FacilityType [ref] and Location [ref] cited http://dx.doi.org/10.2523/10452-ms, which resolves (via OnePetro) to an unrelated 2005 SPE/IPTC petroleum-geology paper ('Seismic Sequence Stratigraphy and Reservoir Distribution of the Early Cretaceous Habshan Formation in the UAE'). It has nothing to do with Chana, Songkhla, or an LNG terminal, and returns HTTP 403. Clear mis-citation / citation-quality defect.",
+      "suggested_action": "Replace with the sourced refs staged in this batch (Aju + southeastasiainfra for both fields). The DOI should not be reused anywhere."
+    },
+    {
+      "category": "data_health",
+      "unit_id": "G100002089300",
+      "gem_field": "StartDate [ref]",
+      "severity": "low",
+      "issue": "Orphan ref: StartDate [ref] points to a power-technology.com Songkhla profile but there is no paired ActualStart/StartDate value (the terminal was cancelled and never operated). Rule-F orphan.",
+      "suggested_action": "Leave for a data-health cleanup batch: either remove the orphan StartDate [ref] or relocate it to the appropriate planned-year ref column. Do not invent a start-date value."
+    },
+    {
+      "category": "status_verification",
+      "unit_id": "G100002089300",
+      "gem_field": "Status",
+      "severity": "low",
+      "issue": "Status is 'cancelled (inferred 4 y)' with no explicit cancellation announcement — it is inferred from >4 years of silence since the March 2021 agreement. Re-verification found no contradicting evidence (no revival) but also no article stating outright cancellation; the anchor is dormancy-based.",
+      "suggested_action": "None required; anchors are consistent with GEM's inferred-dormancy convention. Recheck on the next annual sweep in case the Chana Industrial Estate SEA is revived."
+    }
+  ],
+  "url_verifications": [
+    {
+      "url": "http://dx.doi.org/10.2523/10452-ms",
+      "tokens": ["Chana", "Songkhla", "LNG", "import", "Thailand"],
+      "passed": false
+    },
+    {
+      "url": "http://southeastasiainfra.com/new-1-7-gw-gas-power-plant-and-lng-supply-infrastructure-in-thailand/",
+      "tokens": ["Chana", "LNG", "1.7 GW", "Songkhla", "supply infrastructure", "power plant"],
+      "passed": true
+    },
+    {
+      "url": "https://www.ajupress.com/view/20210305100018217",
+      "tokens": ["LNG tanks", "terminal operation", "Chana", "Songkhla", "procurement", "Korea Western Power", "power plant"],
+      "passed": true
+    },
+    {
+      "url": "https://ippjournal.com/update/kowepo-tpipp-to-build-17-gw-gas-power-plant-in-songkhla-chana",
+      "tokens": ["LNG", "Songkhla Chana", "1.7 GW", "power"],
+      "passed": true
+    }
+  ],
+  "scope_verdict": "in_scope",
+  "summary": "Chana LNG Terminal (T100000130893) is confirmed dead: re-verification across Thai/English/Korean press found no revival, FID, or construction; last activity was the March 2021 KOWEPO/KOGAS/TPIPP tripartite agreement, and the parent Chana Industrial Estate was halted by cabinet in Dec 2021 pending a strategic environmental assessment. The inferred-dormancy anchors (proposal 2021 -> shelved 2023 -> cancelled 2025) and cancelled status are correct and unchanged; the Postgres timeline already reflects them, so nothing to stage there. It is a genuine, dedicated marine LNG import terminal (KOGAS-operated LNG tanks/procurement to supply the 1.7 GW Songkhla Chana power plant), not a captive pipe-fed arrangement from an existing terminal, so it is correctly in scope and correctly modeled as a terminal with the power station as AssociatedTerminals. Staged: strengthened Status [ref] to two independent sources (blue re-verify), filled the blank AssociatedTerminals [ref] (green, 3 sources), and replaced the FacilityType [ref] and Location [ref] DOI mis-citation (an unrelated 2005 SPE petroleum paper) with proper sources. Filed 3 qa notes: the DOI link_rot/citation-quality defect, the StartDate [ref] Rule-F orphan (data-health, don't fix), and a low-severity note that the cancellation is dormancy-inferred."
+}

@@ -223,6 +223,7 @@ class LngTerminal:
 class GogptPlant:
     plant_id: str
     name: str
+    wiki_url: str
     subnational: str
     lat: float | None
     lon: float | None
@@ -250,14 +251,16 @@ def _truthy(s: str) -> bool:
     return (s or "").strip().lower() in ("true", "t", "1", "yes")
 
 
-def load_lng_terminals(csv_path: str, subnational: str) -> list[LngTerminal]:
-    """Read the LNG all-fields CSV, filter to a subnational, roll unit-rows up to
-    terminal (project) level."""
-    sub = subnational.strip().lower()
+def load_lng_terminals(csv_path: str, area: str,
+                       area_col: str = "State/Province") -> list[LngTerminal]:
+    """Read the LNG all-fields CSV, filter to an area, roll unit-rows up to
+    terminal (project) level. `area_col` is "State/Province" for a US-style state
+    scope or "Country/Area" for a whole-country scope (matched exactly, lower)."""
+    want = area.strip().lower()
     rows_by_tid: dict[str, list[dict]] = defaultdict(list)
     with open(csv_path, encoding="utf-8-sig", newline="") as fh:
         for r in csv.DictReader(fh):
-            if (r.get("State/Province", "") or "").strip().lower() == sub:
+            if (r.get(area_col, "") or "").strip().lower() == want:
                 rows_by_tid[r["TerminalID"]].append(r)
 
     terminals: list[LngTerminal] = []
@@ -297,8 +300,9 @@ def load_lng_terminals(csv_path: str, subnational: str) -> list[LngTerminal]:
     return terminals
 
 
-_GOGPT_SQL = text("""
-    SELECT p.id AS plant_id, p.name AS plant_name, p.subnational,
+_GOGPT_SELECT = """
+    SELECT p.id AS plant_id, p.name AS plant_name, p."wikiUrl" AS wiki_url,
+           p.subnational,
            p.latitude AS plat, p.longitude AS plon,
            p.captive,
            p."captiveIndustryType" AS cap_type_json,
@@ -310,20 +314,36 @@ _GOGPT_SQL = text("""
     LEFT JOIN status s ON s.id = u.status_id
     LEFT JOIN captive_industry_use ciu ON ciu.id = p."captiveIndustryUse_id"
     LEFT JOIN captive_non_industry_use cniu ON cniu.id = p."captiveNonIndustryUse_id"
+"""
+
+# Subnational scope: match GOGPT's free-text subnational field.
+_GOGPT_SQL_SUB = text(_GOGPT_SELECT + """
     WHERE p."projectType" = 1
       AND u."trackerSearch" = 'GOGPT'
-      AND p.subnational ILIKE :sub
+      AND p.subnational ILIKE :area
+""")
+
+# Country scope (for areas where a state/province isn't meaningful): join the
+# country table and match on GEM/ISO country name.
+_GOGPT_SQL_COUNTRY = text(_GOGPT_SELECT + """
+    JOIN country co ON co.id = p.country_id
+    WHERE p."projectType" = 1
+      AND u."trackerSearch" = 'GOGPT'
+      AND (co."gemName" ILIKE :area OR co."isoName" ILIKE :area)
 """)
 
 
-def load_gogpt_plants(engine, subnational: str) -> list[GogptPlant]:
-    """Pull GOGPT (oil & gas) power plants for a subnational, roll units up to
-    plant level. captiveIndustryType is a jsonb array of ids into
+def load_gogpt_plants(engine, area: str, by_country: bool = False) -> list[GogptPlant]:
+    """Pull GOGPT (oil & gas) power plants for an area, roll units up to plant
+    level. `by_country` switches from the subnational free-text filter to a
+    country-name join. captiveIndustryType is a jsonb array of ids into
     captive_industry_type -- resolved to labels here."""
+    sql = _GOGPT_SQL_COUNTRY if by_country else _GOGPT_SQL_SUB
+    param = area if by_country else f"%{area}%"
     with engine.connect() as conn:
         type_labels = {row[0]: row[1] for row in
                        conn.execute(text("SELECT id, option FROM captive_industry_type"))}
-        rows = list(conn.execute(_GOGPT_SQL, {"sub": f"%{subnational}%"}).mappings())
+        rows = list(conn.execute(sql, {"area": param}).mappings())
 
     by_plant: dict[str, list[dict]] = defaultdict(list)
     for r in rows:
@@ -345,6 +365,7 @@ def load_gogpt_plants(engine, subnational: str) -> list[GogptPlant]:
         plants.append(GogptPlant(
             plant_id=str(pid),
             name=r0.get("plant_name", ""),
+            wiki_url=r0.get("wiki_url") or "",
             subnational=r0.get("subnational", ""),
             lat=_to_float(str(r0.get("plat"))) if r0.get("plat") is not None else None,
             lon=_to_float(str(r0.get("plon"))) if r0.get("plon") is not None else None,
@@ -490,12 +511,16 @@ def match(terminals: list[LngTerminal], plants: list[GogptPlant], radius_km: flo
 # Output
 # ---------------------------------------------------------------------------
 
+# Left-most columns identify the related GOGPT (oil & gas) plant: id, name, and
+# its gem.wiki record pointer. NB the wiki URL here is a navigation pointer to the
+# GOGPT record, NOT a citation/[ref] -- it never enters a staging sheet as a source.
 _OUT_COLS = [
+    "gogpt_plant_id", "gogpt_plant", "gogpt_wiki_url",
     "confidence_tier", "status_flag", "signals",
     "lng_terminal_id", "lng_terminal", "lng_facility_type", "lng_status",
     "lng_lat", "lng_lon", "lng_accuracy",
     "lng_captive_gas_power", "lng_power_plants_supplied", "lng_owner", "lng_parent",
-    "gogpt_plant_id", "gogpt_plant", "gogpt_status", "gogpt_total_mw", "gogpt_n_units",
+    "gogpt_status", "gogpt_total_mw", "gogpt_n_units",
     "gogpt_lat", "gogpt_lon", "gogpt_captive",
     "gogpt_captive_industry_type", "gogpt_captive_industry_use",
     "dist_km",
@@ -508,6 +533,9 @@ def write_candidates(candidates: list[Candidate], out_path: str) -> None:
         w.writeheader()
         for c in candidates:
             w.writerow({
+                "gogpt_plant_id": c.plant.plant_id,
+                "gogpt_plant": c.plant.name,
+                "gogpt_wiki_url": c.plant.wiki_url,
                 "confidence_tier": c.tier,
                 "status_flag": c.status_flag,
                 "signals": "|".join(c.signals),
@@ -519,8 +547,6 @@ def write_candidates(candidates: list[Candidate], out_path: str) -> None:
                 "lng_captive_gas_power": c.lng.captive_gas_power,
                 "lng_power_plants_supplied": c.lng.power_plants_supplied,
                 "lng_owner": c.lng.owner, "lng_parent": c.lng.parent,
-                "gogpt_plant_id": c.plant.plant_id,
-                "gogpt_plant": c.plant.name,
                 "gogpt_status": "/".join(sorted(c.plant.statuses)),
                 "gogpt_total_mw": round(c.plant.total_mw, 1),
                 "gogpt_n_units": c.plant.n_units,
@@ -530,6 +556,73 @@ def write_candidates(candidates: list[Candidate], out_path: str) -> None:
                 "gogpt_captive_industry_use": c.plant.captive_industry_use,
                 "dist_km": round(c.dist_km, 2) if c.dist_km is not None else "",
             })
+
+
+# ---------------------------------------------------------------------------
+# Terminal-first worklist
+# ---------------------------------------------------------------------------
+
+# A terminal is "dead" (and, absent a GOGPT captive prior, screen-able without a
+# deep web dive) if every one of its unit statuses is in this set.
+_DEAD_LNG_STATUS = {"cancelled", "shelved", "retired"}
+
+_WORKLIST_COLS = [
+    "lng_terminal_id", "lng_terminal", "lng_facility_type", "lng_status",
+    "lng_captive_gas_power_current", "suggested_bucket",
+    "gogpt_prior", "gogpt_prior_tier", "gogpt_plant", "gogpt_captive",
+    "gogpt_total_mw", "gogpt_captive_industry_type", "dist_km", "gogpt_wiki_url",
+]
+
+
+def build_worklist(terminals: list[LngTerminal],
+                   candidates: list[Candidate]) -> list[dict]:
+    """One row per in-scope LNG terminal (terminal-first), annotated with its best
+    GOGPT captive-plant PRIOR if any. This is the research worklist: the GOGPT
+    match is a prior, not a filter -- every live terminal is a research candidate
+    whether or not a GOGPT plant matched it.
+
+    suggested_bucket (advisory only): 'screen' for a wholly-dead terminal with no
+    GOGPT prior (document the dismissal, no deep web dive); 'deep' otherwise.
+    """
+    tier_rank = {"A": 0, "B": 1, "C": 2}
+    best: dict[str, Candidate] = {}
+    for c in candidates:
+        cur = best.get(c.lng.terminal_id)
+        if cur is None or (tier_rank[c.tier], c.dist_km if c.dist_km is not None else 9e9) \
+                < (tier_rank[cur.tier], cur.dist_km if cur.dist_km is not None else 9e9):
+            best[c.lng.terminal_id] = c
+
+    rows: list[dict] = []
+    for t in sorted(terminals, key=lambda x: x.name):
+        c = best.get(t.terminal_id)
+        statuses = {s.strip().lower() for s in t.statuses if s.strip()}
+        dead = bool(statuses) and statuses <= _DEAD_LNG_STATUS
+        has_prior = c is not None
+        bucket = "screen" if (dead and not has_prior) else "deep"
+        rows.append({
+            "lng_terminal_id": t.terminal_id,
+            "lng_terminal": t.name,
+            "lng_facility_type": t.facility_type,
+            "lng_status": "/".join(sorted(t.statuses)),
+            "lng_captive_gas_power_current": t.captive_gas_power,
+            "suggested_bucket": bucket,
+            "gogpt_prior": "yes" if has_prior else "no",
+            "gogpt_prior_tier": c.tier if c else "",
+            "gogpt_plant": c.plant.name if c else "",
+            "gogpt_captive": c.plant.captive if c else "",
+            "gogpt_total_mw": round(c.plant.total_mw, 1) if c else "",
+            "gogpt_captive_industry_type": c.plant.captive_industry_type if c else "",
+            "dist_km": (round(c.dist_km, 2) if c and c.dist_km is not None else ""),
+            "gogpt_wiki_url": c.plant.wiki_url if c else "",
+        })
+    return rows
+
+
+def write_worklist(rows: list[dict], out_path: str) -> None:
+    with open(out_path, "w", encoding="utf-8", newline="") as fh:
+        w = csv.DictWriter(fh, fieldnames=_WORKLIST_COLS)
+        w.writeheader()
+        w.writerows(rows)
 
 
 def write_xlsx(candidates: list[Candidate], unmatched_captive: list[GogptPlant],
@@ -584,14 +677,16 @@ def write_xlsx(candidates: list[Candidate], unmatched_captive: list[GogptPlant],
 
     # --- screened-out captive plants ---
     ws2 = wb.create_sheet("unmatched_captive")
-    cols2 = ["gogpt_plant", "gogpt_total_mw", "gogpt_captive_industry_type",
+    cols2 = ["gogpt_plant_id", "gogpt_plant", "gogpt_wiki_url",
+             "gogpt_total_mw", "gogpt_captive_industry_type",
              "gogpt_captive_industry_use", "note"]
     ws2.append(cols2)
     for j in range(1, len(cols2) + 1):
         ws2.cell(row=1, column=j).fill = HEAD
         ws2.cell(row=1, column=j).font = head_font
     for p in unmatched_captive:
-        ws2.append([p.name, round(p.total_mw, 1), p.captive_industry_type,
+        ws2.append([p.plant_id, p.name, p.wiki_url,
+                    round(p.total_mw, 1), p.captive_industry_type,
                     p.captive_industry_use,
                     "captive-flagged in GOGPT but no LNG-terminal match "
                     "(screened out by the strict definition, or LNG terminal missing)"])
@@ -629,6 +724,10 @@ def write_xlsx(candidates: list[Candidate], unmatched_captive: list[GogptPlant],
          "gogpt-captive; lng-captivegaspower; lng-powerplantssupplied; "
          "primary-claim:X (this plant's primary terminal is X, so this pair is secondary).", False),
         ("", False),
+        ("Left-most columns (gogpt_plant_id / gogpt_plant / gogpt_wiki_url) identify the related "
+         "GOGPT oil & gas plant. The wiki URL is a POINTER to that GOGPT record for review only -- "
+         "it is NOT a citation and never enters a staging sheet as a source.", False),
+        ("", False),
         ("Provenance: LNG side from `gem_query.py --all-fields lng`; GOGPT side from the read-only "
          "Postgres (projectType=1 + trackerSearch=GOGPT). No web research; no live-DB writes.", False),
     ]
@@ -642,11 +741,12 @@ def write_xlsx(candidates: list[Candidate], unmatched_captive: list[GogptPlant],
 
 def _candidate_row(c: Candidate) -> list:
     return [
+        c.plant.plant_id, c.plant.name, c.plant.wiki_url,
         c.tier, c.status_flag, "|".join(c.signals),
         c.lng.terminal_id, c.lng.name, c.lng.facility_type, "/".join(sorted(c.lng.statuses)),
         c.lng.lat, c.lng.lon, c.lng.accuracy,
         c.lng.captive_gas_power, c.lng.power_plants_supplied, c.lng.owner, c.lng.parent,
-        c.plant.plant_id, c.plant.name, "/".join(sorted(c.plant.statuses)),
+        "/".join(sorted(c.plant.statuses)),
         round(c.plant.total_mw, 1), c.plant.n_units, c.plant.lat, c.plant.lon,
         c.plant.captive, c.plant.captive_industry_type, c.plant.captive_industry_use,
         round(c.dist_km, 2) if c.dist_km is not None else "",
@@ -703,8 +803,12 @@ def build_arg_parser() -> argparse.ArgumentParser:
                                 formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("--lng-csv", default="gem_export.csv",
                    help="LNG all-fields CSV (from `gem_query.py --all-fields lng`).")
-    p.add_argument("--subnational", default="Louisiana",
-                   help="State/Province scope (matched case-insensitively on both sides).")
+    p.add_argument("--subnational",
+                   help="State/Province scope (matched case-insensitively on both sides). "
+                        "Use for US-style states; mutually exclusive with --country.")
+    p.add_argument("--country",
+                   help="Whole-country scope (Country/Area on the LNG side, GEM/ISO country "
+                        "name on the GOGPT side). Use where a state/province isn't meaningful.")
     p.add_argument("--radius-km", type=float, default=2.0,
                    help="Geospatial candidate radius in km (default 2.0).")
     p.add_argument("--name-max-km", type=float, default=10.0,
@@ -714,21 +818,37 @@ def build_arg_parser() -> argparse.ArgumentParser:
                    help="Max GOGPT candidates kept per LNG terminal (default 5).")
     p.add_argument("--out", required=True, help="Output candidate-pairs CSV path.")
     p.add_argument("--xlsx", help="Optional path to also write a reviewer workbook (.xlsx).")
+    p.add_argument("--worklist", help="Optional path for the terminal-first worklist CSV "
+                   "(one row per in-scope LNG terminal, annotated with its GOGPT prior).")
     return p
 
 
 def main(argv: list[str] | None = None) -> int:
     args = build_arg_parser().parse_args(argv)
 
-    terminals = load_lng_terminals(args.lng_csv, args.subnational)
+    if bool(args.subnational) == bool(args.country):
+        print("error: pass exactly one of --subnational or --country", file=sys.stderr)
+        return 2
+    by_country = bool(args.country)
+    area = args.country if by_country else args.subnational
+    area_col = "Country/Area" if by_country else "State/Province"
+
+    terminals = load_lng_terminals(args.lng_csv, area, area_col)
     engine = build_engine(get_database_url(), statement_timeout_ms=60_000)
-    plants = load_gogpt_plants(engine, args.subnational)
+    plants = load_gogpt_plants(engine, area, by_country=by_country)
 
     candidates, unmatched = match(terminals, plants, args.radius_km,
                                   args.max_candidates, args.name_max_km)
     write_candidates(candidates, args.out)
     print_summary(terminals, plants, candidates, unmatched, [1.0, 2.0, 5.0])
     print(f"\nwrote {len(candidates)} candidate pairs -> {args.out}")
+
+    if args.worklist:
+        rows = build_worklist(terminals, candidates)
+        write_worklist(rows, args.worklist)
+        n_deep = sum(1 for r in rows if r["suggested_bucket"] == "deep")
+        print(f"wrote worklist ({len(rows)} terminals, {n_deep} deep / "
+              f"{len(rows) - n_deep} screen) -> {args.worklist}")
 
     if args.xlsx:
         try:
@@ -737,7 +857,7 @@ def main(argv: list[str] | None = None) -> int:
             generated = datetime.now(ZoneInfo("America/New_York")).strftime("%Y-%m-%d %H:%M ET")
         except Exception:
             generated = ""
-        meta = {"subnational": args.subnational, "radius_km": args.radius_km,
+        meta = {"subnational": area, "radius_km": args.radius_km,
                 "name_max_km": args.name_max_km, "generated": generated}
         write_xlsx(candidates, unmatched, terminals, plants, meta, args.xlsx)
         print(f"wrote workbook -> {args.xlsx}")

@@ -9,7 +9,7 @@
     "Owner": "Cong Thanh Thermal Power",
     "Operator": "Cong Thanh Thermal Power",
     "Parent": "",
-    "Location": "Nghi Son Economic Zone, Thanh Hoa province (LNG regasification terminal serving the 1,500 MW Phase 1 / 4,500 MW total Cong Thanh CCGT power plant, a coal-to-LNG conversion)",
+    "Location": "Nghi Son Economic Zone, Nghi Son city (Hai Yen commune), Thanh Hoa province — dedicated LNG import port for the Cong Thanh coal-to-LNG power conversion (1,500 MW Phase 1 / 4,500 MW total CCGT): ~18.3 ha LNG port/storage zone ('kho cảng LNG') plus ~22 ha of port water surface, with pier/reclamation already under construction; LNG received by ship ('cảng nhập LNG'), BP named as LNG-port/supply partner. Distinct from the separate Nghi Son LNG tender terminal (GEM T100000131175).",
     "Capacity": "",
     "CapacityUnits": "mtpa",
     "ProposalYear": "2025",
@@ -18,7 +18,11 @@
     "Floating": "",
     "Source [ref]": "https://lngprime.com/asia/deal-signed-for-vietnams-cong-thanh-lng-power-plant/160534/",
     "Status [ref]": "https://www.lngindustry.com/liquid-natural-gas/21082025/pecc2-signs-aip-for-cong-thanh-lng-project/",
+    "Location [ref]": "https://baodautu.vn/nhiet-dien-cong-thanh-de-xuat-chuyen-sang-dien-khi-lng-ich-nuoc-loi-doanh-nghiep-d196492.html",
     "corroborating_urls": [
+      "https://baodautu.vn/nhiet-dien-cong-thanh-de-xuat-chuyen-sang-dien-khi-lng-ich-nuoc-loi-doanh-nghiep-d196492.html",
+      "https://taichinhdoanhnghiep.net.vn/nang-luc-cac-nha-dau-tu-nuoc-ngoai-cung-cong-thanh-lam-du-an-dien-lng-ct-ra-sao-d41423.html",
+      "https://thoibaotaichinhvietnam.vn/giup-thanh-hoa-tang-thu-ngan-sach-10000-ty-dongnam-199393-199393.html",
       "https://lngprime.com/asia/deal-signed-for-vietnams-cong-thanh-lng-power-plant/160534/",
       "https://www.lngindustry.com/liquid-natural-gas/21082025/pecc2-signs-aip-for-cong-thanh-lng-project/",
       "https://vir.com.vn/cong-thanh-back-in-play-to-boost-energy-security-135308.html",
@@ -31,56 +35,15 @@
       "Location": "green",
       "ProposalYear": "green"
     },
-    "_discovery_notes": "RE-STAGED: previously staged in the 2026-06 discovery batch (batches/staging/asia/vietnam.disc.newterminals.json); still absent from the 2026-07 gem_export.csv, so re-verified and re-staged. All four URLs re-verified PASS this batch. Distinct from GEM's Nghi Son LNG Terminal (JERA-led, also in Nghi Son Economic Zone): different sponsor (Cong Thanh Thermal Power), a coal-to-LNG conversion of the long-idle Cong Thanh coal project with its own dedicated LNG regasification terminal + port. Concrete step: agreement-in-principle / framework agreement with Doosan Enerbility (KR) and PECC2, late Aug 2025. ENTITY CORRECTION vs 2026-06 batch: owner matches the EXISTING GEM entity 'Cong Thanh Thermal Power' (entity id 100000120281, confirmed via read-only Postgres entity_history; the 2026-06 remote entity_lookup 'not found' was a false negative from the dead Heroku endpoint) — reuse that entity ID and DROP the prior batch's new-entity addition (see qa). Dedup 2026-07: manual_review vs Long An LNG Terminal (name-token score 0.706 only, no location overlap) — clearly distinct provinces (Thanh Hoa vs Long An); proceed. researcher_initials: AI-draft (discovery sweep)",
+    "_discovery_notes": "RE-STAGED: previously staged in the 2026-06 discovery batch (batches/staging/asia/vietnam.disc.newterminals.json); still absent from the 2026-07 gem_export.csv, so re-verified and re-staged. All four URLs re-verified PASS this batch. Distinct from GEM's Nghi Son LNG Terminal (T100000131175, POW/T&T-consortium tender project, 57,524 bn VND, also in Nghi Son EZ): different sponsor (Cong Thanh Thermal Power), a coal-to-LNG conversion of the long-idle Cong Thanh coal project with ITS OWN dedicated LNG import port (~18.3 ha kho cảng LNG + ~22 ha port water surface, pier/reclamation under construction, LNG by ship; BP named as LNG-port/supply partner — baodautu d196492, taichinhdoanhnghiep d41423, both PASS 2026-07; province's land-use/port request reserves 595 m of coastline for a Cong-Thanh LNG receiving berth + storage + regas system — thoibaotaichinhvietnam 199393, PASS). Listed among important national power-source projects in the revised PDP8 (Decision 768/QĐ-TTg, 15 Apr 2025). CAPACITY ATTRIBUTION (2026-07 review): the '1.2 mtpa regas + ~230,000 m³ tank + cảng nhập LNG' spec that recurs in Thanh-Hoa LNG reporting is the SEPARATE Nghi Son tender terminal's (= T100000131175, already 1.2 mtpa), NOT Cong Thanh's — confirmed by the baodauthau tender article + nhadautu two-project article; do not attach it to this row (that is the standing conflation trap). Concrete step: agreement-in-principle / framework agreement with Doosan Enerbility (KR) and PECC2, late Aug 2025. ENTITY CORRECTION vs 2026-06 batch: owner matches the EXISTING GEM entity 'Cong Thanh Thermal Power' (entity id 100000120281, confirmed via read-only Postgres entity_history; the 2026-06 remote entity_lookup 'not found' was a false negative from the dead Heroku endpoint) — reuse that entity ID and DROP the prior batch's new-entity addition (see qa). Dedup 2026-07: manual_review vs Long An LNG Terminal (name-token score 0.706 only, no location overlap) — clearly distinct provinces (Thanh Hoa vs Long An); proceed. researcher_initials: AI-draft (discovery sweep)",
     "researcher_initials": "AI-draft (discovery sweep)",
     "qa": [
       {
         "category": "unsourced_after_reverify",
         "field": "Capacity",
-        "note": "Prior staged Capacity (1.2 mtpa, single-source/yellow) still cannot be corroborated by any independent non-GEM source; the only '1.2 million tons/year' echo traces to GEM-derivative material. Capacity left blank per re-verify rule; terminal row retained on independently-sourced fields."
+        "note": "Capacity correctly left blank. The '1.2 mtpa regas + ~230,000 m³ tank + cảng nhập LNG' figure that circulates in Thanh-Hoa LNG reporting belongs to the SEPARATE Nghi Son LNG tender project (POW/T&T consortium, 57,524 bn VND) = GEM's existing Nghi Son LNG Terminal T100000131175 (already 1.2 mtpa), NOT Cong Thanh — verified 2026-07 via the baodauthau tender article + the nhadautu two-project article, which both attribute that terminal spec to the Nghi Son project. Cong Thanh's only throughput figure is plant LNG consumption of 1.2–1.5 Mt/yr (baodautu d196492, taichinhdoanhnghiep d41423), which is not a terminal nameplate. Terminal existence is well-sourced (dedicated LNG import port, 18.3 ha + 22 ha water surface, pier under construction); leave Capacity blank until a Cong-Thanh-specific terminal nameplate is published."
       }
     ]
-  },
-  {
-    "TerminalName": "Quang Trach II LNG Terminal",
-    "Country/Area": "Vietnam",
-    "State/Province": "Quảng Trị",
-    "FacilityType": "import",
-    "Status": "proposed",
-    "Substatus": "",
-    "Owner": "EVN",
-    "Operator": "EVN",
-    "Parent": "",
-    "Location": "Hon La Economic Zone, Phu Trach commune (former Quang Trach district, Quang Binh), Quang Tri province — the LNG storage and receiving-port component ('kho, cảng LNG') of EVN's Quang Trach II LNG power project",
-    "Capacity": "",
-    "CapacityUnits": "",
-    "ProposalYear": "2024",
-    "Latitude": "",
-    "Longitude": "",
-    "Accuracy": "",
-    "PowerPlantsSupplied": "Quang Trach II power station",
-    "Source [ref]": "https://vneconomy.vn/dieu-chinh-chu-truong-dau-tu-sieu-du-an-52-000-ty-tai-quang-binh.htm",
-    "Status [ref]": "https://nhadautu.vn/hai-du-an-nhiet-dien-36-ty-usd-tai-quang-tri-se-khoi-cong-trong-nam-2026-d102320.html",
-    "Owner [ref]": "https://tuoitre.vn/bon-ong-lon-ngan-hang-cung-ung-von-du-an-dien-khi-quang-trach-2-co-tong-muc-dau-tu-52-490-ti-dong-20260116175823041.htm",
-    "Location [ref]": "https://tuoitre.vn/bon-ong-lon-ngan-hang-cung-ung-von-du-an-dien-khi-quang-trach-2-co-tong-muc-dau-tu-52-490-ti-dong-20260116175823041.htm",
-    "ProposalDate [ref]": "https://vneconomy.vn/dieu-chinh-chu-truong-dau-tu-sieu-du-an-52-000-ty-tai-quang-binh.htm",
-    "PowerPlantsSupplied [ref]": "https://nhadautu.vn/hai-du-an-nhiet-dien-36-ty-usd-tai-quang-tri-se-khoi-cong-trong-nam-2026-d102320.html",
-    "corroborating_urls": [
-      "https://cafef.vn/du-an-nha-may-nhiet-dien-lng-quang-trach-ii-du-kien-hoan-thanh-vao-2030-188260210083817671.chn",
-      "https://tuoitre.vn/bon-ong-lon-ngan-hang-cung-ung-von-du-an-dien-khi-quang-trach-2-co-tong-muc-dau-tu-52-490-ti-dong-20260116175823041.htm",
-      "https://vneconomy.vn/dieu-chinh-chu-truong-dau-tu-sieu-du-an-52-000-ty-tai-quang-binh.htm",
-      "https://nhadautu.vn/hai-du-an-nhiet-dien-36-ty-usd-tai-quang-tri-se-khoi-cong-trong-nam-2026-d102320.html"
-    ],
-    "confidence_per_field": {
-      "TerminalName": "yellow",
-      "Owner": "green",
-      "Status": "green",
-      "Location": "green",
-      "ProposalYear": "yellow",
-      "PowerPlantsSupplied": "green"
-    },
-    "_discovery_notes": "Dedicated LNG storage + receiving port ('kho, cảng LNG', component 2, ~VND 11,800bn of the VND 52,490bn total project — component cost verified on cafef only, single-source) of EVN's Quang Trach II LNG-to-power project at Hon La EZ. Formerly a coal project; investment-policy adjustment to LNG approved 2024 (vneconomy; ProposalYear yellow, single passing source — baochinhphu/nhandan bot-blocked/failed). EPC signed 9 Feb 2026 covers the POWER island only (POWERCHINA–LILAMA consortium); terminal component not under construction, groundbreaking targeted 2026 (nhadautu: 'quý I/2026') -> Status proposed. Tank/berth figures circulating in secondary reports (250,000 m3 tank, 100,000 DWT berth) FAILED verification on every passing URL -> deliberately left out (no Capacity staged). Coordinates left blank: Hon La EZ is ~17.9 N / 106.45 E approximate; reviewer to pin exact site. Dedup 2026-07: manual_review vs Quang Nam LNG Terminal (score 0.398, 304.57 km away, 'Quang' token collision) — clearly distinct; also distinct from PV Gas's Vung Ang LNG Terminal (T100000131060, ~30 km north in Ha Tinh; see qa on PV Gas approval). PDP8-revision (Decision 768/QD-TTg, Apr 2025) lists LNG Quang Trach II — this staging closes that PDP8 reconciliation gap. researcher_initials: AI-draft (discovery sweep)",
-    "researcher_initials": "AI-draft (discovery sweep)"
   },
   {
     "TerminalName": "Dung Quat LNG Terminal",

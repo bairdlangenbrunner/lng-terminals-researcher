@@ -1,0 +1,32 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130583",
+    "unit_id": "G100002058301,G100002058302,G100002058303",
+    "terminal_name": "Iran NIOC LNG Terminal",
+    "issue": "GEM holds all three units (T1/T2/T3) as Status=construction, with the newest citation dated January 2024 (S&P Global interview) and Status [ref] itself an oilprice.com piece from September 2023 (~50% complete claim). No independent source found reporting on this specific project (Tombak Port / Asaluyeh, Bushehr Province) since Jan 2024 -- over two years of no fresh confirmation either way. Meanwhile the exact host region has been an active war zone since 18 March 2026: Israeli/US strikes hit the Asaluyeh gas-treatment complex (which processes South Pars phases 3-6 feedgas, the same feedgas source the LNG project depends on) and South Pars gas field itself, taking roughly 12% of Iran's gas production offline; fighting/strikes in the Strait of Hormuz region were still ongoing as of 13 July 2026 (post an 8 April ceasefire that did not hold). No source located explicitly states the NIOC LNG plant/construction site itself was struck, damaged, halted, or conversely that work has continued or resumed since the war began -- extensive searching (Reuters/Argus/S&P Global/Shana/Iran Intl/oilprice/CGEP/Gas Outlook/IEEFA/Wikipedia) turned up nothing project-specific post-Jan 2024. The read-only Postgres timeline (fetch_timeline.py, unit G100002058301) shows only proposed(2005) -> construction actual(2023) -> operating planned(2025) -- the 2025 entry is a planned/target milestone only, not a confirmed operating date, and start did not visibly occur (no source found announcing first LNG / commissioning). Given the substantial war-related disruption to the exact feedgas source and immediately adjacent processing infrastructure, plus the total absence of any fresh (2025-2026) confirmation that construction is ongoing, 'construction' can no longer be affirmatively verified as current -- but there is also no confirmed report of a shelved/mothballed/cancelled status. This is a genuine verification gap, not a confirmed status change, so per the never-punt rule no Status/timeline edit is being staged.",
+    "severity": "high",
+    "suggested_action": "Reviewer should check Iranian oil-ministry (Shana/shana.ir) statements, NIOC press releases, and any post-April-2026-ceasefire energy-sector damage assessments (e.g. satellite-imagery services, IEA/EIA Iran updates, HRW's targeting-of-energy-infrastructure tracking) specifically for the Tombak/Asaluyeh LNG plant. If a credible source confirms the project was damaged/halted, stage Status=shelved or mothballed with anchor year + timeline entry per never-punt; if a source confirms construction is continuing/resumed, refresh Status [ref] to a post-war citation. Until then, leave Status=construction as-is (unverified but not disproven) and flag on next review cycle -- do not let this go another cycle without a fresh check given the war context.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dead_ref",
+    "terminal_id": "T100000130585",
+    "unit_id": "G100002058501",
+    "terminal_name": "Kangan LNG Terminal",
+    "issue": "Status [ref] / CancelledYear [ref] / StopYear [ref] URL (https://www.mah-taab.com/company/mahtaab-parto-kangan-en/) no longer resolves to the cited project page -- it now 200s but redirects/renders as the generic MahTaab Group homepage, and has no Wayback snapshot after 2022-01-24 (last successful crawl of the real page). The project's own dedicated site (kanganlng.com) is now a 404. This is consistent with -- and mildly corroborates -- GEM's existing 'cancelled, inferred, 2022' call (the developer's project-specific content appears to have gone dark around/after Jan 2022), but the specific citation URL currently on file no longer supports the claim it's attached to, and I could not find a fresh independent source restating the cancellation to replace it.",
+    "severity": "medium",
+    "suggested_action": "Swap Status/CancelledYear/StopYear [ref] for the Wayback snapshot https://web.archive.org/web/20220124042640/https://www.mah-taab.com/company/mahtaab-parto-kangan-en/ (last live capture, 24 Jan 2022) if the reviewer wants a working citation preserved, or leave as-is given the underlying inferred-cancellation call is unaffected. Owner [ref] (mah-taab.com/companies/) is still live (confirmed via a Feb 2026 Wayback snapshot; direct fetch returns a Cloudflare challenge page, not a dead link).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_ref",
+    "terminal_id": "T100000130627",
+    "unit_id": "G100002062701",
+    "terminal_name": "Qeshm LNG Terminal",
+    "issue": "Record has almost no ref citations at all (Status, Owner, ProposalYear/ShelvedYear/CancelledYear, Location are all blank). Searched for independent sourcing on 'Qeshm LNG', 'Tak-Iranian Gas Co', and the Qeshm Free Zone LNG proposal; found only tertiary/aggregator listings (IranOilGas Network project database, SourceWatch mirror of the same Persian-AMG-adjacent content, offshore-technology.com) that either paywall/403, or don't independently corroborate the specific owner name or years already in GEM. Could not find a citable primary/independent source to fill any of the blank refs within a reasonable search effort.",
+    "severity": "low",
+    "suggested_action": "Leave as-is (cancelled/inferred is already the conservative call and matches the general pattern of Iran's other stalled early-2000s LNG projects). If a reviewer has access to IranOilGas Network's project page (paywalled from this search) or a Farsi-language source, that may be the only route to a working citation.",
+    "researcher_initials": "AI-draft"
+  }
+]

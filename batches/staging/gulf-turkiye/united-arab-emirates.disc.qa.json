@@ -1,0 +1,22 @@
+[
+  {
+    "category": "new_terminal_data_gap",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Khalifa Port LNG Terminal",
+    "issue": "Khalifa Port LNG Terminal (AD Ports Group + Nimex Terminals, agreements signed 2025-11-04, ~$8.17bn/AED30bn combined LNG+LPG deal) is staged as a new_terminal at Status=proposed, FacilityType=import. Key data gaps: (1) no mtpa/throughput capacity has been published anywhere -- only storage volume (400,000 m3 cryogenic tanks across 130,000 m2) and investment figures; (2) equity split between AD Ports Group and Nimex Terminals is not disclosed (only capex-by-scope: AD Ports AED1.3bn for infrastructure/dredging/jetties, Nimex AED2.6bn for tanks/superstructure) -- Owner is staged without percentages, reviewer should confirm before DB entry; (3) sources describe the facility's strategic remit as 'import, export, and transshipment' (a trading/reload hub aimed at Asian markets) but the only named process equipment is regasification facilities plus loading arms/storage -- no liquefaction train is mentioned anywhere, so FacilityType=import (with likely reload/transshipment capability) is the conservative call; flag for reviewer judgment if GEM wants a dual import/export tag. (4) 'Initial operations mid-2028' vs 'steady-state/fully functional by 2031' -- staged OriginalPlannedStartYear/LatestPlannedStartYear as 2028 (first ops); 2031 is noted here as the full-buildout year, not stored as a separate field.",
+    "severity": "medium",
+    "suggested_action": "Reviewer to confirm FacilityType and Owner percentage treatment before pasting to GEM; watch for a follow-up construction-start or capacity announcement (LNG-side groundbreaking had not occurred as of Feb 2026, unlike the parallel LPG terminal which broke ground 2026-02-24).",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "no_new_candidate",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "n/a",
+    "issue": "Checked for additional UAE candidates beyond Khalifa Port: (a) gem.wiki cross-check -- all 6 gem.wiki UAE LNG-terminal pages (Fujairah, Jebel Ali FLNG, Ruwais FSRU, Ruwais LNG, plus the Ruwais LNG power-station GOGPT page which is out of tracker scope) match existing GEM CSV rows one-to-one; no coverage gap. (b) Upstream-oil-operator/associated-gas sweep -- ADNOC is the only relevant hydrocarbon operator active on LNG; no other UAE field operator (independent emirate NOCs: RAK Gas, SNOC, Dubai's DUSUP) has an active FLNG/LNG-export initiative beyond what's already in GEM. (c) RAK Gas is pursuing a domestic gas pipeline/supply-enhancement programme (140km pipeline) with no marine LNG component -- out of scope. (d) ADNOC's 2021-era interest in an LNG bunkering start-up (Fujairah or Jebel Ali) has produced no confirmed project to date; not staged as monitor given its age and lack of recent (2025/2026) follow-up.",
+    "severity": "low",
+    "suggested_action": "None required.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  }
+]

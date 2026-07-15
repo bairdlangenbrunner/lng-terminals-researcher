@@ -1,0 +1,131 @@
+[
+ {
+  "terminal": "Argent LNG Terminal",
+  "terminal_id": "T100000131163",
+  "gogpt_candidate": "IN GOGPT \u2014 MW single-source (verify)",
+  "electric_mw": "675 MW (GOGPT; from a single Baker Hughes announcement \u2014 corroborate)",
+  "confidence": "yellow",
+  "basis": "Captive plant already tracked in GOGPT (id 100001063931, 675 MW, pre-construction). Baker Hughes liquefaction tech selection is the primary basis; 675 MW rests on one announcement.",
+  "basis [ref]": [
+   "https://worldoil.com/news/2025/2/4/baker-hughes-to-provide-liquefaction-tech-for-argent-lng-24-mtpa-facility/",
+   "https://www.hydrocarbonengineering.com/gas-processing/04022025/argent-energy-selects-baker-hughes-as-technology-provider/"
+  ],
+  "mechanical_drive_note": "Electric-drive design; not mechanical-drive flagged."
+ },
+ {
+  "terminal": "CP2 LNG Terminal",
+  "terminal_id": "T100000130973",
+  "gogpt_candidate": "IN GOGPT \u2014 OK",
+  "electric_mw": "2,190 MW (GOGPT; 1,470 MW approved + 720 MW Phase-3 proposed)",
+  "confidence": "green",
+  "basis": "Captive plant already tracked in GOGPT (id 100001048547). DOE FEIS is the primary basis for the on-site generation.",
+  "basis [ref]": [
+   "https://www.energy.gov/sites/default/files/2023-08/eis-0551-venture-global-cp2-lng-feis-2023-07-01.pdf",
+   "https://naturalgasintel.com/news/venture-global-secures-pre-filing-waiver-for-cp2-phase-3-buildout/"
+  ],
+  "mechanical_drive_note": "Electric-drive CCGT; not mechanical-drive flagged."
+ },
+ {
+  "terminal": "Calcasieu Pass LNG Terminal",
+  "terminal_id": "T100000130212",
+  "gogpt_candidate": "IN GOGPT \u2014 OK",
+  "electric_mw": "720 MW (GOGPT; on-site CCGT)",
+  "confidence": "green",
+  "basis": "Captive plant already tracked in GOGPT (id 100001063643, 720 MW, operating). FERC DEIS + DOE FEIS + sponsor corroborate the on-site CCGT.",
+  "basis [ref]": [
+   "https://www.ferc.gov/sites/default/files/2020-05/06-22-18-DEIS.pdf",
+   "https://www.eia.gov/todayinenergy/detail.php?id=52238"
+  ],
+  "mechanical_drive_note": "Electric-drive CCGT; not mechanical-drive flagged."
+ },
+ {
+  "terminal": "Commonwealth LNG Terminal",
+  "terminal_id": "T100000130215",
+  "gogpt_candidate": "IN GOGPT \u2014 REVIEW MW (mechanical conflation)",
+  "electric_mw": "~120 MW electric (DOE FEIS); GOGPT lists 438.6 MW total",
+  "confidence": "green",
+  "basis": "Already in GOGPT (id 100001063923, 438.6 MW). DOE FEIS shows only ~120 MW is a dedicated electric plant; the ~348 MW balance is mechanical compressor drive and must not be read as generation.",
+  "basis [ref]": [
+   "https://www.energy.gov/sites/default/files/2022-09/final-eis-0533-vol1-commonwealth-lng-2022-09_0.pdf"
+  ],
+  "mechanical_drive_note": "MIXED: dedicated electric plant ~120 MW + ~348 MW mechanical compressor drives \u2192 mechanical=True. GOGPT 438.6 MW conflates the two."
+ },
+ {
+  "terminal": "Delfin FLNG Terminal",
+  "terminal_id": "T100000130218",
+  "gogpt_candidate": "IN GOGPT \u2014 OK",
+  "electric_mw": "168.8 MW (GOGPT)",
+  "confidence": "green",
+  "basis": "Already in GOGPT (id 100001048543, 168.8 MW, construction). FID confirmed 2026-06-03; DOE FEIS + design update are the primary basis. (LNG side: FIDStatus Pre-FID\u2192FID staged.)",
+  "basis [ref]": [
+   "https://www.energy.gov/sites/prod/files/2018/11/f57/final-eis-0531-port-delfin-lng-main-volume-2016-11.pdf",
+   "https://www.globenewswire.com/news-release/2026/06/03/3306350/0/en/delfin-midstream-announces-5-billion-final-investment-decision-for-first-flng-vessel.html"
+  ],
+  "mechanical_drive_note": "Offshore FLNG on-vessel power; not mechanical-drive flagged."
+ },
+ {
+  "terminal": "Gulfstream LNG Terminal",
+  "terminal_id": "T100000131128",
+  "gogpt_candidate": "IN GOGPT \u2014 OK",
+  "electric_mw": "275 MW (GOGPT; on-site CCGT)",
+  "confidence": "green",
+  "basis": "Already in GOGPT (id 100001063919, 275 MW, pre-construction). FERC application + trade press corroborate the 275 MW CCGT.",
+  "basis [ref]": [
+   "https://www.hydrocarbonprocessing.com/news/2024/05/gulfstream-lng-export-terminal-us-receives-us-ferc-approval/",
+   "https://lngprime.com/americas/gulfstream-lng-asks-us-ferc-to-start-pre-filing-process/110112/"
+  ],
+  "mechanical_drive_note": "Electric-drive CCGT; not mechanical-drive flagged."
+ },
+ {
+  "terminal": "Plaquemines LNG Terminal",
+  "terminal_id": "T100000130242",
+  "gogpt_candidate": "IN GOGPT \u2014 OK",
+  "electric_mw": "2,860 MW (GOGPT; 2\u00d7720 MW CCGT/phase, 4-unit rollup)",
+  "confidence": "green",
+  "basis": "Already in GOGPT (id 100001063717, 2,860 MW). FERC FEIS + sponsor confirm the on-site CCGT phases.",
+  "basis [ref]": [
+   "https://www.ferc.gov/sites/default/files/2020-05/05-03-19-FEIS.pdf",
+   "https://ventureglobal.com/venture-global-plaquemines/plaquemines-facility/"
+  ],
+  "mechanical_drive_note": "Electric-drive CCGT; not mechanical-drive flagged."
+ },
+ {
+  "terminal": "Sabine Pass LNG Terminal",
+  "terminal_id": "T100000130240",
+  "gogpt_candidate": "IN GOGPT \u2014 REVIEW MW (mechanical conflation)",
+  "electric_mw": "undisclosed electric; GOGPT lists 1,665.6 MW (unverified)",
+  "confidence": "green",
+  "basis": "Already in GOGPT (id 100001063737, 1,665.6 MW). On-site GTGs confirmed by DOE EA + EPA, but the 1,665.6 MW / 8-unit figure appears in no primary source and likely bundles mechanical compressor turbines \u2014 GOGPT capacity review recommended.",
+  "basis [ref]": [
+   "https://www.energy.gov/sites/prod/files/EA-1845-FEA-2011.pdf",
+   "https://www.epa.gov/sites/default/files/2015-08/documents/sabinepass_petition2012.pdf"
+  ],
+  "mechanical_drive_note": "MIXED: on-site gas-turbine generators + mechanical compressor drives \u2192 mechanical=True. GOGPT 1,665.6 MW (8 units) not in any primary source; likely conflates the two."
+ },
+ {
+  "terminal": "G2 LNG Terminal",
+  "terminal_id": "T100000130226",
+  "gogpt_candidate": "IN GOGPT \u2014 status/name + MW review",
+  "electric_mw": "300 MW (GOGPT; design was >1,000 MW \u2014 conflation risk with NET Power's Texas plant)",
+  "confidence": "yellow",
+  "basis": "Already in GOGPT (id 100000408059), now named 'G2 LNG Terminal power station' (was 'G2 Net-Zero power plant'); listed cancelled-inferred. 300 MW figure vs the >1,000 MW design suggests a possible mix-up with NET Power's Texas demo plant \u2014 flag for GOGPT.",
+  "basis [ref]": [
+   "https://www.lngindustry.com/special-reports/11052021/g2-and-net-power-collaborate-on-net-zero-lng-project/",
+   "https://www.offshore-energy.biz/g2-advances-its-net-zero-lng-export-project/"
+  ],
+  "mechanical_drive_note": "Electric-drive (NET Power Allam-cycle) design; not mechanical-drive flagged."
+ },
+ {
+  "terminal": "Woodside Louisiana LNG Terminal",
+  "terminal_id": "T100000130219",
+  "gogpt_candidate": "IN GOGPT \u2014 REVIEW MW (all mechanical drive)",
+  "electric_mw": "0 MW electric (grid-fed); GOGPT lists 430.4 MW = mechanical shaft power",
+  "confidence": "green",
+  "basis": "Already in GOGPT (id 100001064065, 430.4 MW, construction). The FERC (Driftwood-era) FEIS shows site power is grid-supplied from Entergy; Baker Hughes' equipment order confirms LM6000PF+ gas-turbine compressor drives -> pure mechanical drive, so GOGPT should tag this as mechanical-drive, not a generating power station.",
+  "basis [ref]": [
+   "https://www.ferc.gov/sites/default/files/2020-05/01-18-19-FEIS.pdf",
+   "https://www.lngindustry.com/liquefaction/03012025/baker-hughes-secures-liquefaction-equipment-order-for-woodside-louisiana-lng/"
+  ],
+  "mechanical_drive_note": "PURE mechanical drive: LM6000PF+ gas turbines drive the refrigerant compressors, no generator; grid-fed site electricity (Entergy). GOGPT 430.4 MW = shaft power, not electricity."
+ }
+]

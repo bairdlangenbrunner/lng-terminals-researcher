@@ -1,0 +1,90 @@
+{
+  "terminal_name": "Surat Thani FSRU",
+  "terminal_id": "T100000131071",
+  "updates": [
+    {
+      "unit_id": "G100002107100",
+      "unit_name": "--",
+      "field": "Status",
+      "current_value": "shelved",
+      "new_value": "shelved",
+      "ref_urls": [
+        "https://www.exri.co.th/post/ministry-of-energy-organizes-public-hearing-on-draft-pdp-2024-increases-renewable-energy-share-to-5",
+        "https://www.dmsuniverse.com/projects/thailand/egat-surat-thani-gas-fired-power-plant-block-1-2-project"
+      ],
+      "confidence": "blue",
+      "source_tier": "two independent non-GEM sources (Thai energy-policy outlet + project-intelligence aggregator)",
+      "change_summary": "Re-verified shelved (inferred). No revival step found (no FID / FSRU charter / EIA-permit advance). The FSRU exists only to feed EGAT's proposed 1,400 MW Surat Thani (Phunphin) gas plant; that plant was NOT included in the Draft PDP 2024 and remains at feasibility only, held back by high cost and a >100 km gas pipeline (exri, dated 2024-06-12), and DMS Universe lists the project status as 'Shelved'. Newest project-specific activity is June 2024 (~2 yr silence), consistent with shelved (inferred 2y); not >4y dormant, so not cancelled. The read-only-Postgres operating(planned) 2027 timeline entry = the power plant's 2027-2029 target commissioning date, a forward-looking target, not a revival milestone."
+    },
+    {
+      "unit_id": "G100002107100",
+      "unit_name": "--",
+      "field": "ShelvedYear [ref]",
+      "current_value": "",
+      "new_value": "2025",
+      "ref_urls": [
+        "https://www.exri.co.th/post/ministry-of-energy-organizes-public-hearing-on-draft-pdp-2024-increases-renewable-energy-share-to-5",
+        "https://www.dmsuniverse.com/projects/thailand/egat-surat-thani-gas-fired-power-plant-block-1-2-project"
+      ],
+      "confidence": "blue",
+      "source_tier": "dormancy evidence: Draft PDP 2024 exclusion (2024-06-12) + project-intelligence 'Shelved' status",
+      "change_summary": "Blank-ref fill for existing ShelvedYear=2025. Cites the dormancy evidence (Draft PDP 2024 exclusion / feasibility stall), not a source literally stating 'shelved 2025'. Newest project-specific evidence found is June 2024, which is OLDER than the 2025 anchor, so no upward adjustment; 2025 (~2y after the last substantive news) stands as the inferred-shelved anchor."
+    },
+    {
+      "unit_id": "G100002107100",
+      "unit_name": "--",
+      "field": "StopYear [ref]",
+      "current_value": "",
+      "new_value": "2025",
+      "ref_urls": [
+        "https://www.exri.co.th/post/ministry-of-energy-organizes-public-hearing-on-draft-pdp-2024-increases-renewable-energy-share-to-5",
+        "https://www.dmsuniverse.com/projects/thailand/egat-surat-thani-gas-fired-power-plant-block-1-2-project"
+      ],
+      "confidence": "blue",
+      "source_tier": "dormancy evidence: Draft PDP 2024 exclusion (2024-06-12) + project-intelligence 'Shelved' status",
+      "change_summary": "Blank-ref fill for existing StopYear=2025; same dormancy evidence as ShelvedYear. Development stopped after the proposal stage; project sits at feasibility only and was dropped from the Draft PDP 2024."
+    }
+  ],
+  "qa_notes": [
+    {
+      "category": "missing_field",
+      "unit_id": "G100002107100",
+      "gem_field": "FloatingVesselName",
+      "severity": "low",
+      "issue": "FloatingVesselName is blank. No FSRU vessel was ever chartered or named for Surat Thani in any source: the project never advanced past the 2021 proposal (shelved/feasibility-only), so no vessel was assigned. No primary source names a vessel.",
+      "suggested_action": "Leave blank (do not guess). No FSRU vessel exists for this shelved project; revisit only if a charter is announced."
+    },
+    {
+      "category": "data_health",
+      "unit_id": "G100002107100",
+      "gem_field": "StartDate [ref]",
+      "severity": "low",
+      "issue": "Orphan [ref]: 'StartDate [ref]' is filled (EGAT 2023 annual report PDF + upstreamonline) but the paired ActualStart / StartDate value is blank. Rule-F orphan on a never-operated, shelved unit.",
+      "suggested_action": "Do not invent a value. Route to a cleanup batch to clear the orphan [ref] (or supply the paired value only if a real commissioning date ever exists, which it does not for this shelved project)."
+    }
+  ],
+  "url_verifications": [
+    {
+      "url": "https://www.exri.co.th/post/ministry-of-energy-organizes-public-hearing-on-draft-pdp-2024-increases-renewable-energy-share-to-5",
+      "tokens": ["Surat Thani", "1,400", "PDP 2024", "feasibility"],
+      "passed": true
+    },
+    {
+      "url": "https://www.dmsuniverse.com/projects/thailand/egat-surat-thani-gas-fired-power-plant-block-1-2-project",
+      "tokens": ["Shelved", "Surat Thani", "1,400"],
+      "passed": true
+    },
+    {
+      "url": "https://www.enerdata.net/publications/daily-energy-news/egat-and-ptt-plan-5-mtyear-lng-import-terminal-thailand.html",
+      "tokens": ["5 Mt", "FSRU", "EGAT", "PTT"],
+      "passed": true
+    },
+    {
+      "url": "https://www.upstreamonline.com/lng/new-thailand-lng-import-project-mooted/2-1-1011271",
+      "tokens": ["Surat Thani", "5 million", "EGAT"],
+      "passed": true
+    }
+  ],
+  "scope_verdict": "in_scope",
+  "summary": "Surat Thani FSRU remains shelved (inferred) - no revival. The 5 mtpa FSRU exists only to feed EGAT's proposed 1,400 MW Surat Thani (Phunphin) gas plant, which was excluded from the Draft PDP 2024 and held at feasibility by high cost and a >100 km pipeline (exri.co.th, 2024-06-12); DMS Universe independently lists the project 'Shelved'. Newest project-specific activity is June 2024 (~2 yr silence): shelved (inferred 2y) stands, not cancelled (<4y dormant). The Postgres operating(planned) 2027 entry is the power plant's 2027-2029 target commissioning date - a forward target, not a revival step. Filled the three blank refs (Status/ShelvedYear/StopYear) with the dormancy evidence (2 independent non-GEM publishers, confidence blue); no upward anchor-year change since the newest evidence (2024) predates the 2025 anchor. FloatingVesselName left blank (no vessel ever chartered - missing_field qa note); StartDate [ref] orphan logged as a data_health note (not fixed)."
+}

@@ -1,5 +1,26 @@
 # LNG sweep — progress ledger
 
+## ⚠ STATE NOTE — 2026-07-14 (read before resuming the Asia sweep below)
+
+- **Two environment bullets below are now STALE — do not propagate them into dispatch prompts:**
+  `fetch_timeline.py` reads the read-only Postgres (a confirmed status change is STAGED, never punted
+  to qa — briefs updated 2026-07-14), and `entity_lookup.py --remote` is reachable again but has
+  intermittent FALSE NEGATIVES — the orchestrator re-checks staged entities against Postgres
+  `entity_history` at the merge-time QC gate (workflows.md §5 step 3a).
+- **Only 4 of 22 update/discovery groups ever landed** (markers: japan, south-korea, taiwan, vietnam).
+  The 15:05 ET fan-out of U1–U12 did not complete; no findings files exist for the other groups.
+- **Much of the remaining scope was since covered by newer, separately-recorded batches** — do NOT
+  re-dispatch these slugs at standard tier without reading their run records: vietnam (07-02 exhaustive,
+  07-09 discovery-recheck, 07-10 closeout), philippines (07-09 update+discovery), thailand (07-10
+  update+discovery), bangladesh / india ×2 / pakistan / sri-lanka (07-14 south-asia-iran exhaustive
+  update+discovery — a HIGHER tier than this sweep's standard).
+- **Still genuinely uncovered from this sweep's scope:** china (4 shards), indonesia, malaysia, myanmar,
+  cambodia, singapore, brunei, hong-kong, turkmenistan (update); discovery for those same countries plus
+  the coverage-gap pair (maldives, north korea) and japan/south-korea/taiwan (U13 did update only).
+- **Conventions added since this sweep dispatched** (apply to any resume): subagents on Sonnet
+  (workflows.md "Model selection"); discovery-pass qa/entity use the `.disc.` infix (non-overlap rule);
+  confirmed status changes write `<slug>.timeline.json`; discovery build takes `--checked-roster`.
+
 ## Sweep: Asia update + discovery — started 2026-07-08
 
 - **Scope:** whole `asia` region — 19 GEM-covered countries (bangladesh, brunei, cambodia,

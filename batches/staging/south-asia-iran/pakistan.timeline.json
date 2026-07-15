@@ -1,0 +1,21 @@
+[
+  {
+    "terminal_id": "T100000131104",
+    "unit_id": "G100002110400",
+    "terminal_name": "LNG Easy Floating LNG Terminal",
+    "unit_name": "--",
+    "operation": "append",
+    "status": "proposed",
+    "sub_status": "",
+    "year": 2026,
+    "part_of_year": "",
+    "notes": "Reverting from 'shelved (inferred 2y, 2025)' back to 'proposed' per Pakistan Economic Survey 2025-26 (Ch.14 Energy): OGRA construction license remains active, company has not reached FID -- same characterization GEM already uses for peer projects Energas/Tabeer. Existing Postgres timeline for this unit: proposed(2022) -> operating/planned(2022) -> shelved/inferred-2y(2025); this appends the un-shelve back to proposed.",
+    "source_url": "https://www.finance.gov.pk/survey/chapter_26/14_Energy.pdf",
+    "confidence": "green",
+    "validation_warnings": [
+      "Non-monotonic transition (shelved -> proposed) -- a deliberate reversal of a prior inferred-shelved call, not a forward status progression; reviewer should confirm before applying."
+    ],
+    "legal_transition_check": "shelved->proposed is not a normal forward transition in the status state machine, but is the correct call here: the prior 'shelved' was itself an INFERRED call (absence-of-news default), not a confirmed cancellation/abandonment, and new primary-source evidence shows continued (if stalled) regulatory activity. Flagging for reviewer sign-off given the non-standard direction.",
+    "researcher_initials": "AI-draft (sweep)"
+  }
+]

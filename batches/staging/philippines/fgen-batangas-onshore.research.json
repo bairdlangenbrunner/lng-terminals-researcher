@@ -1,0 +1,61 @@
+{
+  "terminal_name": "FGEN Batangas LNG Terminal",
+  "unit_id": "G100002061000",
+  "findings": [
+    {
+      "field": "Status",
+      "current_value": "shelved (substatus confirmed); ShelvedYear 2023",
+      "new_value": "shelved (substatus confirmed); ShelvedYear 2023",
+      "ref_urls": [
+        "https://business.inquirer.net/589960/first-gen-prime-infras-p50-b-deal-ensures-supply-for-gas-assets",
+        "https://www.lngindustry.com/liquid-natural-gas/18112025/prime-infra-acquires-60-of-first-gens-gas-assets/"
+      ],
+      "confidence": "blue",
+      "change_summary": "Re-verified, unchanged. No 2026 news of the permanent onshore terminal being revived or cancelled. Prime Infrastructure Capital's Nov 17 2025 P50B/$896M acquisition of a 60% stake in First Gen's gas assets covers only the operating 'Interim Offshore LNG Terminal' (the FSRU, unit G100002101200) -- confirmed by both the May 2026 Inquirer piece and the Nov 2025 LNG Industry report, neither of which mentions the shelved permanent onshore facility. This is consistent with GEM's own current data: the FSRU record was updated 2026-07-02 to Owner 'FGEN LNG [100%]' / Parent 'Prime Infrastructure Capital Inc [60%]; First Generation Holdings Corp [20%]; Tokyo Gas Co Ltd [20%]', while this onshore-terminal record (updated one day later, 2026-07-03) correctly retains the pre-deal ownership 'First Generation Holdings Corp [80%]; Tokyo Gas Co Ltd [20%]' -- i.e. the onshore permit/project was deliberately left outside the Prime Infra transaction. Existing DB timeline note (tl_order 4, 2023) -- 'Whether First Gen would build the full initially contemplated terminal or a variation of that would be reevaluated in the future' -- still reflects the current public position; no subsequent FEED restart, construction notice-to-proceed, or cancellation announcement found."
+    }
+  ],
+  "status_timeline_additions": [],
+  "entity_checks": [],
+  "url_verifications": [
+    {
+      "url": "https://www.spglobal.com/commodityinsights/en/market-insights/latest-news/lng/060923-interview-first-gen-targets-commercial-operations-at-batangas-offshore-lng-terminal-early-oct",
+      "tokens": ["reevaluated in the future", "First Gen"],
+      "passed": false
+    },
+    {
+      "url": "https://www.gmanetwork.com/news/money/companies/966530/prime-infra-completes-p50-b-acquisition-of-first-gen-s-60-gas-assets/story/",
+      "tokens": ["offshore LNG terminal", "First Gen"],
+      "passed": false
+    },
+    {
+      "url": "https://www.gmanetwork.com/news/money/companies/966530/prime-infra-completes-p50-b-acquisition-of-first-gen-s-60-gas-assets/story/",
+      "tokens": ["LNG terminal", "First Gen"],
+      "passed": false
+    },
+    {
+      "url": "https://business.inquirer.net/589960/first-gen-prime-infras-p50-b-deal-ensures-supply-for-gas-assets",
+      "tokens": ["Interim Offshore", "First Gen"],
+      "passed": true
+    },
+    {
+      "url": "https://www.lngindustry.com/liquid-natural-gas/18112025/prime-infra-acquires-60-of-first-gens-gas-assets/",
+      "tokens": ["Interim Offshore", "First Gen"],
+      "passed": false
+    },
+    {
+      "url": "https://www.lngindustry.com/liquid-natural-gas/18112025/prime-infra-acquires-60-of-first-gens-gas-assets/",
+      "tokens": ["LNG terminal", "First Gen"],
+      "passed": true
+    },
+    {
+      "url": "https://www.lngindustry.com/liquid-natural-gas/18112025/prime-infra-acquires-60-of-first-gens-gas-assets/",
+      "tokens": ["Tokyo Gas", "First Gen"],
+      "passed": true
+    }
+  ],
+  "qa_notes": [
+    "powerphilippines.com and S&P Global sources are bot-blocked (403) and could not be re-verified; not relied on for this confirm.",
+    "Owner field for this onshore record intentionally differs from the FGEN Batangas FSRU record (which now shows Prime Infrastructure Capital as 60% parent) -- confirmed correct: the Nov 2025 Prime Infra deal applies only to the interim/operating FSRU asset, not the shelved onshore permit."
+  ],
+  "summary": "Fast-confirm: shelved/confirmed status (ShelvedYear 2023) for the onshore permanent terminal still holds as of mid-2026; no revival or cancellation news found. Prime Infra's Nov 2025 60% acquisition applies only to the separate operating FSRU, not this shelved onshore record -- GEM's current ownership split here is correct and unaffected. Staged as a blue (re-verified unchanged) Status finding."
+}
