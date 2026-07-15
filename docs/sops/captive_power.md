@@ -92,9 +92,8 @@ manual:
    confirms against §2 and finds capacity/status, held to the full hard rules: every cited URL
    value-checked through `url_verifier.py`, **≥2 independent publishers**, **no gem.wiki / no
    GEM-derivative**. Return a structured verdict (captive yes/no, **whether captive power is
-   mechanical-drive**, capacity finding + whether it's verified, status). Use a cost-appropriate
-   model for this verification-style work (Sonnet — see the Model selection block at the top of
-   `docs/workflows.md`) — it does not need the top reasoning tier.
+   mechanical-drive**, capacity finding + whether it's verified, status). Choose a cost-appropriate
+   model at dispatch time (Model selection block at the top of `docs/workflows.md`).
 3. **Reconcile & stage (LNG side)** — for each confirmed terminal, stage `CaptiveGasPower = True`
    with a paired `[ref]` on **every unit-row** of the terminal (project-level fields propagate to
    all units — Sabine Pass = 9 rows). **Do NOT stage `PowerPlantsSupplied`** (§2 — captive power

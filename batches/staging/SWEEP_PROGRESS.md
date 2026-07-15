@@ -17,8 +17,9 @@
 - **Still genuinely uncovered from this sweep's scope:** china (4 shards), indonesia, malaysia, myanmar,
   cambodia, singapore, brunei, hong-kong, turkmenistan (update); discovery for those same countries plus
   the coverage-gap pair (maldives, north korea) and japan/south-korea/taiwan (U13 did update only).
-- **Conventions added since this sweep dispatched** (apply to any resume): subagents on Sonnet
-  (workflows.md "Model selection"); discovery-pass qa/entity use the `.disc.` infix (non-overlap rule);
+- **Conventions added since this sweep dispatched** (apply to any resume): subagent model chosen
+  at dispatch time (workflows.md "Model selection" — cheapest that's good enough);
+  discovery-pass qa/entity use the `.disc.` infix (non-overlap rule);
   confirmed status changes write `<slug>.timeline.json`; discovery build takes `--checked-roster`.
 
 ## Sweep: Asia update + discovery — started 2026-07-08
