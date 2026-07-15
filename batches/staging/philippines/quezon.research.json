@@ -1,0 +1,97 @@
+{
+  "terminal_name": "Quezon LNG Terminal",
+  "unit_id": "G100002116700",
+  "findings": [
+    {
+      "field": "Status",
+      "current_value": "proposed",
+      "new_value": "proposed",
+      "ref_urls": [
+        "https://powerphilippines.com/quezon-power-to-construct-php71b-lng-power-plant/",
+        "https://context.ph/2024/02/18/quezon-power-eyes-p71b-natural-gas-fired-plant-in-quezon/"
+      ],
+      "confidence": "blue",
+      "change_summary": "No advancement found beyond proposed/permitting. Existing read-only Postgres timeline (fetch_timeline.py) shows only proposed/Feb-2024 and operating(planned)/2028 entries -- no FEED, EPC, permit, or construction milestone recorded. Web search (targeted queries for 2025/2026 construction start, groundbreaking, notice-to-proceed, ECC issuance, FEED) turned up no news of physical construction. The DENR/EMB environmental critical projects list as of 30 June 2025 does not show an issued ECC for the San Francisco Power Plant / QPPL project (fetch of the EMB PDF itself was blocked by Cloudflare, so this is corroborative, not primary, evidence). EGCO Group's July 2026 'POWER4' 2026 strategy press release discusses the existing 460 MW Quezon coal plant's new PSA but does not mention the LNG project at all, consistent with no material progress to report. DOE Luzon Indicative Power Projects listings (May 2023 through Nov 2025, per search snippets) continue to show the project at 1,200 MW with commercial operation year 2028 unchanged -- direct PDF fetch blocked by Cloudflare on both prod-cms.doe.gov.ph and legacy.doe.gov.ph, so not independently verified beyond search-result snippets. Net: status remains proposed; re-verified unchanged (blue)."
+    },
+    {
+      "field": "Capacity",
+      "current_value": "1.1 mtpa",
+      "new_value": "1.1 mtpa",
+      "ref_urls": [],
+      "confidence": "blue",
+      "change_summary": "Unchanged. Independent sources consistently report the 1,200 MW power-plant capacity and P71 billion (~US$1.2B) investment, but none state an LNG regasification/import mtpa figure for this specific facility, so the existing 1.1 mtpa GEM value could not be independently corroborated or contradicted via web search. No qa action taken since no conflicting value was found; noting in qa_notes for visibility."
+    },
+    {
+      "field": "Owner",
+      "current_value": "Quezon Power (Philippines) Ltd Co [100%]",
+      "new_value": "Quezon Power (Philippines) Ltd Co [100%]",
+      "ref_urls": [
+        "https://www.egco.com/en/newsroom/press-releases/97/egco-group-completely-owns-quezon-power-plant-in-philippines",
+        "https://www.philstar.com/business/2015/10/02/1506406/thailands-egco-gains-full-control-coal-fired-quezon-power-plant"
+      ],
+      "confidence": "green",
+      "change_summary": "Unchanged. Quezon Power (Philippines) Ltd Co remains 100% indirectly owned by Electricity Generating PCL (EGCO, Thailand) via its own investor-relations press release plus an independent news corroboration. A separate MGen (Meralco PowerGen)-EGCO joint venture (San Buenaventura Power Ltd) exists for an unrelated 460 MW coal plant -- confirmed this is NOT the same entity as QPPL/the Mauban LNG project, ruling out a false ownership-change lead surfaced mid-search."
+    },
+    {
+      "field": "Operator",
+      "current_value": "Quezon Power (Philippines)",
+      "new_value": "Quezon Power (Philippines)",
+      "ref_urls": [
+        "https://www.egco.com/en/newsroom/press-releases/97/egco-group-completely-owns-quezon-power-plant-in-philippines"
+      ],
+      "confidence": "blue",
+      "change_summary": "Unchanged. No evidence found of an operator change; the project continues to be developed and would be operated by QPPL itself, per EGCO's own site."
+    },
+    {
+      "field": "Parent",
+      "current_value": "Electricity Generating PCL (EGCO, Thailand)",
+      "new_value": "Electricity Generating PCL (EGCO, Thailand)",
+      "ref_urls": [
+        "https://www.egco.com/en/newsroom/press-releases/97/egco-group-completely-owns-quezon-power-plant-in-philippines",
+        "https://www.philstar.com/business/2015/10/02/1506406/thailands-egco-gains-full-control-coal-fired-quezon-power-plant"
+      ],
+      "confidence": "green",
+      "change_summary": "Unchanged. EGCO's own 2026 corporate strategy release (POWER4) still references the Quezon Power Plant (Philippines) as part of its portfolio, consistent with continued full ownership. No re-sale or divestment reported."
+    },
+    {
+      "field": "ProposalYear",
+      "current_value": "2024",
+      "new_value": "2024",
+      "ref_urls": [
+        "https://powerphilippines.com/quezon-power-to-construct-php71b-lng-power-plant/",
+        "https://context.ph/2024/02/18/quezon-power-eyes-p71b-natural-gas-fired-plant-in-quezon/"
+      ],
+      "confidence": "blue",
+      "change_summary": "Unchanged. Anchor year confirmed as 2024, the year QPPL filed its public-scoping/environmental-compliance documents with DENR (per the source-body reporting, February 2024), not a later publication date."
+    }
+  ],
+  "status_timeline_additions": [],
+  "entity_checks": [
+    {
+      "entity": "Quezon Power (Philippines) Ltd Co",
+      "command": "python entity_lookup.py \"Quezon Power (Philippines) Ltd Co\" --remote",
+      "result": "not_found_in_local_data / no_remote_match -- expected, this is an EXISTING GEM entity already on the terminal record, not a new entity being staged. No new entity additions required for this batch (owner/operator/parent all unchanged)."
+    }
+  ],
+  "url_verifications": [
+    {"url": "https://powerphilippines.com/quezon-power-to-construct-php71b-lng-power-plant/", "tokens": ["1,200", "2028"], "passed": true},
+    {"url": "https://context.ph/2024/02/18/quezon-power-eyes-p71b-natural-gas-fired-plant-in-quezon/", "tokens": ["1,200", "2028"], "passed": true},
+    {"url": "https://www.philstar.com/business/2015/10/02/1506406/thailands-egco-gains-full-control-coal-fired-quezon-power-plant", "tokens": ["Quezon Power", "EGCO"], "passed": true},
+    {"url": "https://www.egco.com/en/newsroom/press-releases/97/egco-group-completely-owns-quezon-power-plant-in-philippines", "tokens": ["Quezon Power", "100"], "passed": true},
+    {"url": "https://eia.emb.gov.ph/wp-content/uploads/2024/02/Project-Description-of-QPL.pdf", "tokens": ["1200", "Mauban"], "passed": false, "reason": "PDF has no extractable text (scanned/image PDF, or poppler pdftotext CLI unavailable)"},
+    {"url": "https://eia.emb.gov.ph/wp-content/uploads/2024/02/Project-Description-of-QPL.pdf", "tokens": ["Mauban"], "passed": false, "reason": "PDF has no extractable text"},
+    {"url": "https://manilastandard.net/?p=314417903", "tokens": ["Quezon Power", "71"], "passed": false, "reason": "HTTP 202 (bot-block / not-ready response)"},
+    {"url": "https://manilastandard.net/?p=314417903", "tokens": ["Quezon"], "passed": false, "reason": "HTTP 202 (bot-block / not-ready response)"},
+    {"url": "https://businessmirror.com.ph/2015/10/02/thai-firm-now-fully-owns-quezon-power-philippines/", "tokens": ["100 percent", "EGCO"], "passed": false, "reason": "HTTP 403"},
+    {"url": "https://businessmirror.com.ph/2024/02/19/quezon-power-sets-sights-on-1200-mw-thermal-plant/", "tokens": ["1,200", "Mauban"], "passed": false, "reason": "HTTP 403"},
+    {"url": "https://www.egco.com/en/news-update/2015/egco-group-completely-owns-quezon-power-plant-in-philippines", "tokens": ["Quezon Power", "100"], "passed": false, "reason": "HTTP 404 (superseded by /en/newsroom/press-releases/97/... which passed)"},
+    {"url": "https://bilyonaryo.com/2024/02/18/egco-groups-bold-bet-transforming-quezon-energys-landscape-with-p71-billion-lng-power-plant/power/", "tokens": ["1,200", "2028"], "passed": false, "reason": "HTTP 403"}
+  ],
+  "qa_notes": [
+    "Bot-blocked (403/202) but not confirmed dead: manilastandard.net, businessmirror.com.ph, bilyonaryo.com all returned bot-block responses to url_verifier and WebFetch; content was readable via WebSearch snippets only, so not cited per the never-cite-unverified rule. If a future batch has Wayback/browser access, re-check these for corroboration.",
+    "Could not independently verify GEM's existing 1.1 mtpa LNG capacity figure -- all found sources report only the 1,200 MW power-plant capacity, not a regasification mtpa figure. No change staged; flagging for a future batch with access to EGCO's investor decks or DOE's Luzon Indicative Power Projects PDF (Cloudflare-blocked to this session) which may carry the mtpa figure directly.",
+    "DOE's Luzon Indicative Power Projects PDFs (prod-cms.doe.gov.ph and legacy.doe.gov.ph) and the EMB Updated List of ECPs PDF were all blocked by Cloudflare bot protection (403) to both curl and WebFetch in this session -- could not directly confirm absence of an issued ECC or the DOE's own COD figure; relied on WebSearch result snippets instead, which is corroborative but weaker than a direct primary-document read.",
+    "Ruled out a false lead: search results for 'MGen EGCO joint venture' initially suggested a Meralco PowerGen tie-in, but this refers to a SEPARATE, unrelated joint venture (San Buenaventura Power Ltd, a 460 MW coal plant) -- the Quezon LNG project (QPPL) remains 100% EGCO-owned, confirmed via EGCO's own press release."
+  ],
+  "summary": "Standard-tier refresh of Quezon LNG Terminal (G100002116700): no confirmed advancement beyond proposed -- no FEED, EPC, permit/ECC issuance, or construction-start news found for 2025-2026 despite targeted searches, and EGCO's own July 2026 corporate strategy release omits the LNG project entirely. Status, capacity, ownership (100% EGCO via QPPL), operator, parent, and ProposalYear (2024) all re-verified unchanged (blue/green). Ruled out a false MGen-JV ownership lead. Capacity mtpa figure could not be independently corroborated (no change staged). Several Philippine outlets (Manila Standard, BusinessMirror, Bilyonaryo) were bot-blocked and excluded per citation rules; DOE/EMB primary PDFs were Cloudflare-blocked in this session."
+}

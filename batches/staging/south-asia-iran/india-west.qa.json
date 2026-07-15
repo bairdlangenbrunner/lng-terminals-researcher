@@ -1,0 +1,202 @@
+[
+  {
+    "category": "dead_ref",
+    "terminal_id": "T100000130427",
+    "unit_id": "G100002042701",
+    "terminal_name": "Dahej LNG Terminal (Phase 1 Expansion)",
+    "issue": "ConstructionDate [ref] cites a giignl.org direct-hosted PDF (2022 Annual Report) that returns HTTP 404 -- consistent with the tracker-wide 'giignl.org refs systematically dead' pattern flagged 2026-07-14. No independent replacement source stating the specific construction-start date/year for Phase 1 was found this pass (news coverage of Phase 1 predates 2020 and is thin online); value itself (year) could not be re-confirmed or re-sourced.",
+    "severity": "low",
+    "suggested_action": "Route to a citation-QC follow-up: search Petronet LNG investor archives / MoPNG press releases circa 2008-2009 for a primary Phase 1 construction-start citation, or accept as a known tracker-wide giignl.org rot case pending the broader sweep.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ownership_ambiguity",
+    "terminal_id": "T100000130455",
+    "unit_id": "G100002045500",
+    "terminal_name": "Mundra LNG Terminal",
+    "issue": "GEM lists Owner as Adani Total Gas / GSPC-linked entities at roughly 95%/5%, but secondary sources conflict: some cite a historical 50%/25%/25% Adani-Total-GSPC split, others a 75%/25% Adani Ports-Total split with GSPC/GSPL not currently listed as equity holders at all (GSPC vs GSPL entity-name confusion also present across sources). The primary giignl.org 2021 citation for the current ownership figure is dead (HTTP 404). offshore-technology.com (secondary corroboration attempt) is bot-blocked (HTTP 403) -- per the bot-block-not-dead rule this should ideally be checked via Wayback before being ruled out, not done this pass due to time.",
+    "severity": "medium",
+    "suggested_action": "Verify current Mundra equity split directly from Adani Total Gas Ltd's most recent annual report/investor filing (primary/regulatory source) before staging an Owner edit; also disambiguate GSPC (Gujarat State Petroleum Corp) vs GSPL (Gujarat State Petronet Ltd) naming in any secondary source used. Check Wayback snapshot of offshore-technology.com/projects/mundra-lng-terminal/ as a fallback corroboration.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "vessel_assignment_ambiguity",
+    "terminal_id": "T100000130457",
+    "unit_id": "G100002045700",
+    "terminal_name": "Jafrabad FSRU (Phase 1)",
+    "issue": "GEM's FloatingVesselName for this unit (Vasant 1) is now ambiguous: one set of 2024 reports describes a completed ~$399M sale of the FSRU Vasant 1 (to a Turkish buyer), implying it is no longer available to serve Jafrabad; a Riviera Maritime News report instead frames the same Turkey deployment as a temporary one-year charter (i.e., Vasant 1 could return to Jafrabad). Separately, a Dec 2024 Swan Energy-AG&P JV formation was reported to source a (possibly different) FSRU/FSU for Jafrabad. Net effect: which vessel will actually serve the 92.3%-complete Jafrabad terminal is unclear from available open sources. Gujarat govt progress reporting (deshgujarat.com, Feb 2026) confirms construction progress (92.3% complete, deadline extended to Sept 2026) but does not name a vessel.",
+    "severity": "medium",
+    "suggested_action": "Do not edit FloatingVesselName pending clarification. Recommend running fsru_sync_check.py against the LNG Carrier Tracker backend (once available) to cross-check Vasant 1's current assignment/registry status, and re-check Swan Energy investor/press materials closer to the Sept 2026 target date.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "capacity_phasing_ambiguity",
+    "terminal_id": "T100000130429",
+    "unit_id": "G100002042901",
+    "terminal_name": "Dabhol LNG Terminal (Expansion)",
+    "issue": "GAIL/Konkan LNG has publicly targeted an interim ~6.3 mtpa capacity by 2027 as a step toward a final ~12.5 mtpa target by 2031-32, but GEM's single existing 'Expansion' unit record reflects only the final 12.5 mtpa/2031-32 figure with no distinct interim-phase unit or field capturing the 2027 milestone. This is a structural/phasing question (whether to split into two unit-rows or add an interim-capacity note) rather than a simple value correction.",
+    "severity": "low",
+    "suggested_action": "Flag for a phasing decision by GEM staff: either add a second 'Expansion Phase 1' unit-row (6.3 mtpa/2027) alongside the existing final-phase unit, or note the interim milestone in wiki Background only. Do not restructure unilaterally.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dormant_revival_check",
+    "terminal_id": "T100000130451",
+    "unit_id": "G100002045100",
+    "terminal_name": "BPCL Mangalore LNG Terminal",
+    "issue": "Dormant-revival check: searched for any 2025/2026 revival of the cancelled BPCL Mangalore LNG import terminal proposal; found none. Status confirmed still cancelled with no new activity.",
+    "severity": "low",
+    "suggested_action": "No action; re-check at next annual sweep.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dormant_revival_check",
+    "terminal_id": "T100000130453",
+    "unit_id": "G100002045300",
+    "terminal_name": "Karwar FSRU",
+    "issue": "Dormant-revival check: searched for any 2025/2026 revival of the cancelled Karwar FSRU proposal; found none. Status confirmed still cancelled with no new activity.",
+    "severity": "low",
+    "suggested_action": "No action; re-check at next annual sweep.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dormant_revival_check",
+    "terminal_id": "T100000130962",
+    "unit_id": "G100002096200",
+    "terminal_name": "Mumbai FSRU",
+    "issue": "Dormant-revival check: searched for any 2025/2026 revival of the cancelled Mumbai FSRU proposal; found none. Status confirmed still cancelled with no new activity.",
+    "severity": "low",
+    "suggested_action": "No action; re-check at next annual sweep.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dormant_revival_check",
+    "terminal_id": "T100000131054",
+    "unit_id": "G100002105400",
+    "terminal_name": "LNG Alliance Mangalore FSRU",
+    "issue": "Dormant-revival check: searched for any 2025/2026 revival of the shelved LNG Alliance Mangalore FSRU proposal; found none. Status confirmed still shelved with no new activity. Note: this GEM record's 'state' field in the scope file reads 'Kakinada' which appears to be a stale/mismatched label (Mangalore is in Karnataka, not near Kakinada/Andhra Pradesh) -- flagged for a data-hygiene check, not a sourced field edit.",
+    "severity": "low",
+    "suggested_action": "No action on status; separately verify/fix the state/location metadata for this record (Mangalore, Karnataka vs. the 'Kakinada' label seen in the working scope extract).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dormant_revival_check",
+    "terminal_id": "T100000130441",
+    "unit_id": "G100002044100",
+    "terminal_name": "Hazira FSRU",
+    "issue": "Dormant-revival check: searched for any 2025/2026 revival of the cancelled Essar/Hazira FSRU proposal (distinct from the operating Hazira LNG Terminal on the same site); found none. Status confirmed still cancelled with no new activity.",
+    "severity": "low",
+    "suggested_action": "No action; re-check at next annual sweep.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dormant_revival_check",
+    "terminal_id": "T100000130439",
+    "unit_id": "G100002043901",
+    "terminal_name": "Hazira LNG Terminal (Expansion, Original Proposal)",
+    "issue": "Dormant-revival check: searched for any 2025/2026 revival of the cancelled original Hazira expansion proposal (superseded by the still-proposed Updated Proposal unit, G100001064511); found none beyond the already-tracked Updated Proposal. Status confirmed still cancelled with no new activity.",
+    "severity": "low",
+    "suggested_action": "No action; re-check at next annual sweep.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_material_change",
+    "terminal_id": "T100001050400",
+    "unit_id": "G100001058140",
+    "terminal_name": "AMNS Suvali LNG Terminal",
+    "issue": "Exhaustive-tier re-verification: all populated fields and existing refs checked; no material change found from current GEM values. Still at proposed stage (captive FSRU proposal for ArcelorMittal Nippon Steel's Hazira plant).",
+    "severity": "low",
+    "suggested_action": "No action.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_material_change",
+    "terminal_id": "T100000130800",
+    "unit_id": "G100002080000",
+    "terminal_name": "Chhara LNG Terminal",
+    "issue": "Exhaustive-tier re-verification: all populated fields and existing refs checked; no material change found from current GEM values.",
+    "severity": "low",
+    "suggested_action": "No action.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_material_change",
+    "terminal_id": "T100000130447",
+    "unit_id": "G100002044700",
+    "terminal_name": "Kochi LNG Terminal",
+    "issue": "Exhaustive-tier re-verification: all populated fields and existing refs checked; no material change found from current GEM values (Petronet Kochi remains under-utilized pending Kochi-Mangalore/Kochi-Bengaluru pipeline connectivity, per known context; no new pipeline-completion news found this pass).",
+    "severity": "low",
+    "suggested_action": "No action.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_material_change",
+    "terminal_id": "T100000130429",
+    "unit_id": "G100002042900",
+    "terminal_name": "Dabhol LNG Terminal (base unit)",
+    "issue": "Exhaustive-tier re-verification: all populated fields and existing refs checked; no material change found from current GEM values.",
+    "severity": "low",
+    "suggested_action": "No action.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_material_change",
+    "terminal_id": "T100000130429",
+    "unit_id": "G100002042902",
+    "terminal_name": "Dabhol LNG Terminal (Breakwater)",
+    "issue": "Exhaustive-tier re-verification: all populated fields and existing refs checked; no material change found from current GEM values.",
+    "severity": "low",
+    "suggested_action": "No action.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_material_change",
+    "terminal_id": "T100000130427",
+    "unit_id": "G100002042700",
+    "terminal_name": "Dahej LNG Terminal (base unit)",
+    "issue": "Exhaustive-tier re-verification: all populated fields and existing refs checked; no material change found from current GEM values.",
+    "severity": "low",
+    "suggested_action": "No action.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_material_change",
+    "terminal_id": "T100000130443",
+    "unit_id": "G100002044300",
+    "terminal_name": "Jaigarh LNG Terminal (Phase I)",
+    "issue": "Exhaustive-tier re-verification: all populated fields and existing refs checked; no material change found from current GEM values. AGP City Gas Pvt Ltd's acquisition of the project from H-Energy is already correctly reflected in current GEM Owner field.",
+    "severity": "low",
+    "suggested_action": "No action.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_material_change",
+    "terminal_id": "T100000130443",
+    "unit_id": "G100002044301",
+    "terminal_name": "Jaigarh LNG Terminal (Phase II)",
+    "issue": "Exhaustive-tier re-verification: all populated fields and existing refs checked; no material change found from current GEM values.",
+    "severity": "low",
+    "suggested_action": "No action.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_material_change",
+    "terminal_id": "T100000130439",
+    "unit_id": "G100001064511",
+    "terminal_name": "Hazira LNG Terminal (Expansion, Updated Proposal)",
+    "issue": "Exhaustive-tier re-verification: Sept 2025 environmental-clearance proposal details (26.2 mtpa, INR 21,600 crore) re-checked; still at proposed stage, no FID or construction news found this pass beyond the existing GEM record (Owner ref refreshed separately, see india-west.updates.json).",
+    "severity": "low",
+    "suggested_action": "No action beyond the Owner-ref fix already staged.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "india_wide_discovery",
+    "terminal_id": null,
+    "unit_id": null,
+    "terminal_name": "India (all coasts)",
+    "issue": "India-wide discovery cross-check per task override: (1) gem.wiki-vs-CSV coverage cross-check across all ~27 India LNG terminal names -- all gem.wiki-listed terminals found via WebSearch (direct gem.wiki fetch was 403-blocked) are already present in the fresh GEM export; one apparent gap ('Vizag LNG Terminal' referenced on Wikipedia) resolved as an alias for the already-tracked Gangavaram LNG Terminal, not a new terminal. (2) PNGRB pipeline/coverage-gap/new-candidate sweep across India: no new in-scope marine-import/export candidate found. (3) Upstream-oil-operator/associated-gas sweep (ONGC, RIL KG-basin): no FLNG or associated-gas LNG monetization project found that would constitute a new in-scope terminal. Net result: no new India terminal or unit candidates this pass; monitor_list and new_terminals/new_units left empty.",
+    "severity": "low",
+    "suggested_action": "No action; re-run this cross-check at the next India-wide sweep.",
+    "researcher_initials": "AI-draft"
+  }
+]

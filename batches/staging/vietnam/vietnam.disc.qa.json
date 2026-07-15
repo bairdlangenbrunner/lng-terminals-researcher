@@ -64,7 +64,7 @@
   "terminal_id": "",
   "unit_id": "",
   "terminal_name": "(Apr-2025 revised PDP8 LNG list vs GEM)",
-  "issue": "2026-07 discovery reconciled the Decision 768/QD-TTg (Apr 2025) revised-PDP8 LNG-to-power list against GEM's 29 Vietnam terminals + this batch's staged candidates: Quang Ninh, Thai Binh, Nghi Son, Quynh Lap, Hai Lang I, Ca Na, Son My I&II, Long Son, Long An I&II, Bac Lieu, Vung Ang, Hai Phong all map to existing GEM records; LNG Quang Trach II maps to this batch's staged Quang Trach II LNG Terminal; Nhon Trach 3&4 is supplied by Thi Vai and LNG Hiep Phuoc I by Cai Mep (GEM PowerPlantsSupplied = 'Hiep Phuoc power station' — power projects on third-party terminal supply, not missing terminals); 'Hung Yen' in post-Jul-2025 province-merger reporting = the Thai Binh project (Thai Binh merged into Hung Yen province). No PDP8-listed LNG import site is uncovered. Foreign-sponsor sweep same result: Marubeni/Tokyo Gas = Quang Ninh, AES = Son My, GS Energy = Long An, SK = Quynh Lap — all existing records.",
+  "issue": "2026-07 discovery reconciled the Decision 768/QD-TTg (Apr 2025) revised-PDP8 LNG-to-power list against GEM's 29 Vietnam terminals + this batch's staged candidates: Quang Ninh, Thai Binh, Nghi Son, Quynh Lap, Hai Lang I, Ca Na, Son My I&II, Long Son, Long An I&II, Bac Lieu, Vung Ang, Hai Phong all map to existing GEM records; LNG Quang Trach II maps to the EXISTING Vung Ang LNG Terminal (its LNG supplier by pipeline, per en.vcci.com.vn 116362) plus the GOGPT Quang Trach 2/3 power plants — NOT a missing terminal (the earlier 'Quang Trach II LNG Terminal' candidate was withdrawn 2026-07-09, see correction note); Nhon Trach 3&4 is supplied by Thi Vai and LNG Hiep Phuoc I by Cai Mep (GEM PowerPlantsSupplied = 'Hiep Phuoc power station' — power projects on third-party terminal supply, not missing terminals); 'Hung Yen' in post-Jul-2025 province-merger reporting = the Thai Binh project (Thai Binh merged into Hung Yen province). No PDP8-listed LNG import site is uncovered. Foreign-sponsor sweep same result: Marubeni/Tokyo Gas = Quang Ninh, AES = Son My, GS Energy = Long An, SK = Quynh Lap — all existing records.",
   "severity": "low",
   "suggested_action": "No action; PDP8 reconciliation closed with zero uncovered sites.",
   "researcher_initials": "AI-draft"
@@ -100,13 +100,13 @@
   "researcher_initials": "AI-draft"
  },
  {
-  "category": "cross_reference",
-  "terminal_id": "",
+  "category": "correction",
+  "terminal_id": "T100000131060",
   "unit_id": "",
-  "terminal_name": "Quang Trach II LNG Terminal (staged candidate)",
-  "issue": "Supply-chain tension for reviewer context: reporting on the PV Gas Vung Ang / North Central LNG Terminal approval positions THAT terminal as the LNG supplier to the Quang Trach II and III power plants, while the staged Quang Trach II candidate has its own dedicated 'kho, cang LNG' component (~VND 11.8tn of the VND 52.49tn EVN project) per its verified sources. Both can proceed or either could absorb the other's role as PDP8 implementation firms up.",
-  "severity": "low",
-  "suggested_action": "Keep the Quang Trach II candidate (own terminal component independently sourced); watch for a supply decision that would demote it to a Vung Ang-supplied plant (then retire/cancel the candidate record).",
-  "researcher_initials": "AI-draft (central review)"
+  "terminal_name": "Vung Ang LNG Terminal (was: erroneous 'Quang Trach II LNG Terminal' candidate)",
+  "issue": "CORRECTED 2026-07-09 (user review): the 'Quang Trach II LNG Terminal' new-terminal candidate was WITHDRAWN. Quang Trach II is a gas-fired POWER PLANT (GOGPT), not a marine LNG import terminal. Its LNG is supplied by regasified gas delivered by pipeline from the EXISTING Vung Ang / North Central LNG Terminal (PV Gas, Ha Tinh, GEM T100000131060, ~30 km north) — so no LNG ship crosses the border at Quang Trach and the marine-import scope gate FAILS there. Confirmed: PV Gas 'will supply regasified LNG from its planned Vung Ang Terminal (Ha Tinh) to the Quang Trach power complex ... including Quang Trach 2 and Quang Trach 3' (en.vcci.com.vn 116362, PASS 'Vung Ang'+'Quang Trach'; deliveries from Apr 2029). The 'kho, cảng LNG' component in the EVN project documents is downstream receiving/regas fed from Vung Ang, not an independent import point; the tank/berth figures never verified (already left blank). The 2026-07 batch flagged this exact supply-chain tension in a prior note but wrongly chose to KEEP the candidate and defer to the reviewer — a stage-with-doubt error; scope doubt must be RESOLVED before staging, not staged-and-hedged.",
+  "severity": "high",
+  "suggested_action": "1) Candidate removed from vietnam.disc.newterminals.json (no live-DB terminal to add). If the 2026-07 discovery workbook was already applied, DELETE the erroneous 'Quang Trach II LNG Terminal' row from the live DB. 2) Route to Update: add 'Quang Trach 2 power station; Quang Trach 3 power station' to the existing Vung Ang terminal's PowerPlantsSupplied (append, don't overwrite), citing en.vcci.com.vn/economic-news/vietnam-moves-to-cement-lng-supply-chain-as-power-demand-surges-116362. The supply relationship is ALSO staged as Vung Ang wiki fodder (vietnam_1.wiki.json, topic 'Downstream LNG supply to the Quang Trach power complex', [CONFIRMED] on vcci 116362 + theinvestor d17112) — a withdrawn power-plant candidate's research is useful Background on the supplier terminal's wiki, not wasted. 3) PDP8 'LNG Quang Trach II' now reconciles to Vung Ang (supplier) + the GOGPT power plant, closing the same PDP8 gap without a new terminal.",
+  "researcher_initials": "AI-draft (user correction 2026-07-09)"
  }
 ]

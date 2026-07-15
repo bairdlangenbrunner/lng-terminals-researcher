@@ -1,0 +1,42 @@
+[
+  {
+    "TerminalName": "Hiep Phuoc LNG Terminal",
+    "Country/Area": "Vietnam",
+    "State/Province": "Ho Chi Minh City",
+    "FacilityType": "import",
+    "Status": "proposed",
+    "Substatus": "",
+    "Owner": "Hiep Phuoc Power",
+    "Operator": "Hiep Phuoc Power",
+    "Parent": "",
+    "Location": "Hiep Phuoc Industrial Park, Hiep Phuoc commune, Nha Be area, Ho Chi Minh City, on the Soai Rap river — the existing 40,000 DWT petroleum port is being upgraded into a dedicated LNG import terminal ('cảng nhập LNG'): an LNG jetty able to receive LNG carriers of ~10,000-75,000 m³ with marine unloading arms, onshore LNG storage tanks and a regasification system, supplying the co-located Hiep Phuoc LNG-fired power plant (2,700 MW; Phase 1 1,200 MW) and industrial/CNG customers. Distinct site from the Ba Ria-Vung Tau terminals (Cai Mep / Thi Vai); no HCMC terminal previously in GEM. LNG is received by ship at Hiep Phuoc's own jetty (international cargoes and transshipment from Cai Mep) — a marine import terminal, NOT a piped-regas-only power plant.",
+    "Capacity": "",
+    "CapacityUnits": "mtpa",
+    "ProposalYear": "",
+    "FIDStatus": "",
+    "Offshore": "",
+    "Floating": "",
+    "PowerPlantsSupplied": "Hiep Phuoc LNG Power Plant (1,200 MW Phase 1; 2,700 MW total)",
+    "PowerPlantsSupplied [ref]": "https://vietnamenergy.vn/power-purchase-agreement-signed-and-construction-launched-for-hiep-phuoc-lng-power-plant-phase-1-35811.html",
+    "Source [ref]": "https://vir.com.vn/hiep-phuoc-lng-fired-power-plant-to-start-operation-in-2027-141125.html",
+    "Status [ref]": "https://vietnamenergy.vn/power-purchase-agreement-signed-and-construction-launched-for-hiep-phuoc-lng-power-plant-phase-1-35811.html",
+    "Owner [ref]": "https://en.evn.com.vn/d/en-US/news/EVN-signs-power-purchase-agreement-for-Hiep-Phuoc-LNG-power-plant-project-60-163-501357",
+    "FacilityType [ref]": "https://vir.com.vn/hiep-phuoc-lng-fired-power-plant-to-start-operation-in-2027-141125.html",
+    "Location [ref]": "http://web.archive.org/web/20251211154916/https://baochinhphu.vn/dua-vao-van-hanh-du-an-nha-may-dien-khi-lng-hiep-phuoc-trong-nam-2027-102251120122949976.htm",
+    "corroborating_urls": [
+      "https://vir.com.vn/hiep-phuoc-lng-fired-power-plant-to-start-operation-in-2027-141125.html",
+      "http://web.archive.org/web/20251211154916/https://baochinhphu.vn/dua-vao-van-hanh-du-an-nha-may-dien-khi-lng-hiep-phuoc-trong-nam-2027-102251120122949976.htm",
+      "https://vietnamenergy.vn/power-purchase-agreement-signed-and-construction-launched-for-hiep-phuoc-lng-power-plant-phase-1-35811.html",
+      "https://en.evn.com.vn/d/en-US/news/EVN-signs-power-purchase-agreement-for-Hiep-Phuoc-LNG-power-plant-project-60-163-501357"
+    ],
+    "confidence_per_field": {
+      "TerminalName": "yellow",
+      "FacilityType": "green",
+      "Status": "green",
+      "Owner": "green",
+      "Location": "green"
+    },
+    "_discovery_notes": "GENUINE MISS surfaced by the 2026-07-09 Vietnam discovery re-check (Ring A / PDP8 pass). LNG import terminal at Hiep Phuoc IP, HCMC (Soai Rap river), integral to the Hiep Phuoc LNG-to-power project (HPPC, chairman Le Van Tam; 2,700 MW / Phase 1 1,200 MW). SCOPE GATE — PASSES as a marine import terminal, and this was resolved BEFORE staging (not stage-with-doubt): the project explicitly upgrades the existing 40,000 DWT petroleum port into a dedicated LNG import port with its own jetty + marine unloading arms + onshore storage + regas, so LNG carriers physically berth and discharge AT Hiep Phuoc. This is categorically different from the Quang Trach II class (a power plant fed by piped regas from an existing terminal, no berth) — here the marine import point IS this site. Two independent sources, one primary: baochinhphu.vn (Government of Vietnam newspaper; Wayback snapshot 2025-12-11, 'cảng nhập LNG' + 'Hiệp Phước' + 'LNG' PASS) and vir.com.vn (independent trade press; 'import terminal' + '40,000' + 'LNG' + 'Hiep Phuoc' PASS). CONCRETE STEP (well past threshold): included in revised PDP8 (Decision 768/QĐ-TTg, 15 Apr 2025); HCMC People's Committee approval of the integrated 2,700 MW LNG model; EVN–HPPC power purchase agreement signed and project groundbreaking on 2026-03-26 (vietnamenergy.vn + en.evn.com.vn, both PASS; VND 18.9tn / ~USD 892m Phase 1); PM directive (Nov 2025) to accelerate commissioning to 2027; power-plant civil works ~60% / equipment ~20% complete. STATUS = proposed: the terminal (jetty/tanks/regas) is approved and part of the integrated project but its own construction is not independently confirmed (the investor was still seeking Ministry of Construction procedures for LNG import as of late 2025); the power plant broke ground, the terminal component is pre-construction — proposed is the honest classification (reviewer may upgrade with a terminal-specific construction source). ENTITY: Owner reuses EXISTING GEM entity 'Hiep Phuoc Power' (entity id 100000003214, confirmed via read-only Postgres entity_history) — the power-station sponsor shared across trackers; the entity_lookup --remote 'no_remote_match' was a false negative from the degraded Heroku endpoint (same failure mode as the Cong Thanh case). No new entity staged. DEDUP: matcher returned manual_review with a weak 0.656 name-only score vs Cat Hai FSRU (Hai Phong) — a false geographic match (Hiep Phuoc is in HCMC, ~1,600 km away, different sponsor); judged discovery_new by hand. CAPACITY left blank: the sponsor states 2.15 mtpa regas + two 75,000 m³ tanks (150,000 m³), but that spec is only on HPPC's own site (self-source) — not independently corroborated, so left blank per the discipline (see qa). Coordinates left blank (Hiep Phuoc power station ~10.66 N / 106.75 E approximate — reviewer to pin). researcher_initials: AI-draft (discovery sweep)",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  }
+]

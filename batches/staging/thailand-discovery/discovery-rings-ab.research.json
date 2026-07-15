@@ -1,0 +1,100 @@
+{
+  "_meta": {
+    "rings": "A (regulators/planners) + B (trade press) + dormant-revival check of all 4 dead Thai sites",
+    "date": "2026-07-10",
+    "threshold": "tight (sponsor + approx location + concrete step)",
+    "scope_gate": "marine LNG import/export by ship only"
+  },
+
+  "new_terminals": [],
+
+  "monitor_list": [],
+
+  "entity_checks": [
+    {"name": "(none)", "found": null, "entity_id": "", "note": "No new terminal cleared the tight bar and no dormant site revived with a genuinely different project, so no new owner/operator/parent entity needed to be staged. entity_lookup.py not run because there is nothing to stage."}
+  ],
+
+  "dormant_revival_findings": [
+    {
+      "terminal_id": "T100000130898",
+      "site": "Songkhla FSRU (PTT), Songkhla",
+      "new_activity": "none",
+      "verdict": "still_dead",
+      "notes": "Development of the FSRU (for southern power generation) was suspended in summer 2018; confirmed cancelled. No 2024-2026 sponsor, permit, land, or design activity found at this site. Southern LNG-import ambition migrated first to the Gulf of Thailand FSRU and then to the Surat Thani FSRU (both also dead/shelved). No genuinely different new project at Songkhla."
+    },
+    {
+      "terminal_id": "T100000130896",
+      "site": "Gulf of Thailand FSRU (a.k.a. Samut Prakan FSRU), EGAT, offshore Gulf",
+      "new_activity": "none",
+      "verdict": "still_dead",
+      "notes": "Cancelled 2021 when EGAT/PTT re-scoped the southern FSRU to Surat Thani (Phunphin). No new activity 2024-2026; the concept was explicitly REPLACED by the Surat Thani FSRU (roster #4), not revived here. No different new project at this site."
+    },
+    {
+      "terminal_id": "T100000130893",
+      "site": "Chana LNG Terminal (KOGAS/KEPCO-KOWEPO/TPI Polene Power), Chana District, Songkhla",
+      "new_activity": "none",
+      "verdict": "still_dead",
+      "notes": "Tied to the Songkhla Chana power station (KOWEPO/TPIPP ~1.7 GW CCGT). No project updates in >4 years; inferred cancelled 2025. TPI Polene 'Chana Project' pages describe the broader industrial estate concept, not a live LNG-import terminal. No new sponsor/design at the site; power-station side is itself cancelled. Still dead."
+    },
+    {
+      "terminal_id": "T100000131071",
+      "site": "Surat Thani FSRU (EGAT/PTT, 5 mtpa), Phunphin district, offshore Surat Thani",
+      "new_activity": "none (no revival evidence beyond the original 2021 EGAT/PTT proposal)",
+      "verdict": "still_dead",
+      "notes": "This IS the EGAT/PTT 5 mtpa southern FSRU that Enerdata/Upstream describe feeding the proposed 1,400 MW Surat Thani (Phunphin) power plant. Origin articles are 2021; most recent references (to Feb 2025) still describe it as shelved/presumed, no updates since ~July 2023. The associated 1,400 MW gas plant is a GOGPT power-station matter, not a terminal. No genuinely different new sponsor/design at this site, so nothing to stage as NEW here; any future EGAT/PTT resurrection of the SAME FSRU would be a status Update to T100000131071, not a Discovery add. Left as still_dead; watch on the next Update pass."
+    }
+  ],
+
+  "documented_duplicates": [
+    {
+      "candidate": "Map Ta Phut LNG Terminal 3 / Gulf MTP LNG Terminal (GMTP) / MTP Industrial Port Phase 3 (Gulf Development 70% + PTT Tank 30%; POSCO E&C + CAZ EPCC; 8 mtpa expandable to 10.8; COD Q1 2029)",
+      "maps_to": "Map Ta Phut LNG Terminal 3 (T100000130894)",
+      "why": "Same Rayong/Map Ta Phut Phase-3 project already in the roster as proposed/construction. The Apr-Jul 2025 EPCC/POSCO news is progress on this existing record (routes to an Update status bump, not a Discovery add). Not new."
+    },
+    {
+      "candidate": "EGAT/PTT 5 mtpa southern FSRU feeding the 1,400 MW Surat Thani (Phunphin) power plant",
+      "maps_to": "Surat Thani FSRU (T100000131071)",
+      "why": "Identical sponsor (EGAT/PTT), location (Phunphin), capacity (5 mtpa), and off-taker (1,400 MW Surat Thani plant) as the existing shelved roster record. Same project, not a new one."
+    }
+  ],
+
+  "out_of_scope_dropped": [
+    {
+      "candidate": "Gulf LNG (Gulf Energy subsidiary) ERC natural-gas procurement & shipper licence, up to 6.4 mtpa; first cargo 6 Jan 2025",
+      "why_out_of_scope": "A shipper/import LICENCE, not a physical terminal. Gulf LNG imports THROUGH existing terminals (Map Ta Phut) under gas-market deregulation; it builds no new marine-import facility. Same class as the other newly-licensed shippers (e.g. B.Grimm/Saha Pathana-era licensees). Licence != terminal."
+    },
+    {
+      "candidate": "PTT/PTTGL LNG offtake agreements (Alaska LNG 2 mtpa 20-yr; Corpus Christi 1 mtpa 20-yr from 2026; +1 mtpa US LNG)",
+      "why_out_of_scope": "Supply/sourcing contracts, not Thai import infrastructure. PTT's stated 15 mtpa portfolio growth is procurement strategy, explicitly not new terminal construction (LNG Prime 27 May 2026). No facility."
+    },
+    {
+      "candidate": "1,400 MW Surat Thani (Phunphin) gas-fired power plant; Hin Kong / other EGAT CCGT approvals",
+      "why_out_of_scope": "Gas-fired power stations (GOGPT), not LNG terminals. Where a plant is fed by regas piped from a terminal it belongs to GOGPT; the Surat Thani plant's marine-import component is the shelved Surat Thani FSRU already in the roster."
+    },
+    {
+      "candidate": "Thailand small inland 'LNG' distribution / satellite regas depots and LNG-by-truck",
+      "why_out_of_scope": "Domestic virtual-pipeline / peak-shaving distribution with no marine LNG import across a border by ship. Out of scope per the scope gate; none rose to a named threshold-clearing project anyway."
+    }
+  ],
+
+  "gemwiki_crosscheck": {
+    "pages_found": [
+      "Map_Ta_Phut_LNG_Terminal_3 (= Gulf_MTP_LNG_Terminal alias)",
+      "Gulf_MTP_LNG_Terminal (alias page for MTP3)",
+      "Surat_Thani_FSRU",
+      "Chana_LNG_Terminal",
+      "Gulf_of_Thailand_FSRU (a.k.a. Samut Prakan FSRU)",
+      "Songkhla_FSRU"
+    ],
+    "wiki_only_gaps": [],
+    "notes": "Every gem.wiki Thailand LNG-terminal page surfaced maps to an existing roster entry (Gulf_MTP_LNG_Terminal is an alias of MTP3). Map Ta Phut 1 and Nong Fab/MTP2 also present in roster. No gem.wiki page exists for a Thai terminal that is absent from the CSV roster, so no wiki-only Durban-class gap. (gem.wiki used only to DETECT coverage; never cited as evidence.)"
+  },
+
+  "url_verifications": [
+    {"url": "https://www.enerdata.net/publications/daily-energy-news/egat-and-ptt-plan-5-mtyear-lng-import-terminal-thailand.html", "tokens": ["EGAT", "FSRU", "Surat Thani"], "passed": true},
+    {"url": "https://www.ogj.com/pipelines-transportation/lng/article/14176434/thai-gulf-energy-gets-17-million-tpy-lng-import-license", "tokens": ["Gulf Energy", "import license"], "passed": true},
+    {"url": "https://lngprime.com/asia/thailands-ptt-plans-to-grow-lng-portfolio-to-15-mtpa/187625/", "tokens": ["PTT", "15 mtpa"], "passed": true}
+  ],
+
+  "summary": "Rings A (ERC/EPPO/DMF/PDP-2024/Gas-Plan, EGAT, PTT) and B (LNG Prime, Reuters, S&P, Upstream, Bangkok Post, Nation Thailand, offshore-energy.biz) surfaced NO Thai LNG import/export terminal missing from the 8-terminal roster. Every 2024-2026 lead resolves to an existing record or is out of scope: (a) the active Map Ta Phut Phase-3 / Gulf MTP terminal is roster #3 (Apr-Jul 2025 EPCC/POSCO progress = an Update, not a new terminal); (b) the EGAT/PTT 5 mtpa southern FSRU is the already-shelved Surat Thani FSRU (roster #4); (c) the ERC shipper licences (Gulf LNG 6.4 mtpa, first cargo Jan 2025) and PTT's Alaska/Corpus Christi offtakes are import LICENCES / supply contracts, not physical terminals; (d) no FLNG/export idea from PTTEP or Gulf-of-Thailand upstream operators. gem.wiki cross-check found zero wiki-only Thai terminal pages. Dormant-revival: all 4 dead sites STILL DEAD (Songkhla cancelled 2018, Gulf of Thailand/Samut Prakan cancelled 2021, Chana cancelled 2025, Surat Thani shelved) with no genuinely different new project at any of them. COUNTS: 0 new_terminals, 0 monitor, 4 dormant = still_dead."
+}

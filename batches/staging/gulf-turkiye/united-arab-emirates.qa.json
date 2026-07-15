@@ -1,0 +1,52 @@
+[
+  {
+    "category": "dead_ref",
+    "terminal_id": "T100000130972",
+    "unit_id": "G100002097200",
+    "terminal_name": "Sharjah FSRU",
+    "issue": "Capacity [ref] cites the same dead zawya URL (ZAWYA20190619134347, HTTP 404, no Wayback snapshot) used for Owner [ref]. A replacement was found and staged for Owner [ref], but no single independently-verifiable page was found that both (a) resolves and (b) states the 1 bcf/d (7.67 mtpa) figure explicitly -- meed.com's 'largest in UAE by 2019' piece and seatrade-maritime's FSRU piece discuss the project but seatrade-maritime is bot-blocked (HTTP 403 to the automated verifier, not confirmed dead) and meed.com's page text does not contain the capacity figure in extractable form. Left the Capacity value and its dead ref untouched rather than force a weak citation.",
+    "severity": "low",
+    "suggested_action": "On a future pass, try fetching seatrade-maritime.com's 'Sharjah to go ahead with FSRU for LNG imports' via Wayback/Google cache, or search GIIGNL historical editions (pre-2020) for a corroborating capacity figure, then replace Capacity [ref].",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "naming",
+    "terminal_id": "T100000130603",
+    "unit_id": "G100002060300",
+    "terminal_name": "Jebel Ali FLNG Terminal",
+    "issue": "Terminal is named 'Jebel Ali FLNG Terminal' but its own GEM fields (Offshore=True, Floating=True, FloatingVesselName='FSRU Explorer') and every source found (Excelerate Energy, DUSUP, GIIGNL) describe it as an FSRU-based IMPORT/regasification terminal, not a floating liquefaction (FLNG) export facility. 'FLNG' in the name is a misnomer inherited from the record's original naming; OtherNames already lists 'Dubai FLNG Terminal, DUSUP FSRU'. No data field is wrong (Facility Type=import and Floating=True are both correct), but the TerminalName itself is inconsistent with FacilityType=import.",
+    "severity": "low",
+    "suggested_action": "Consider renaming the terminal to 'Jebel Ali FSRU Terminal' (or similar) on a future editorial pass; not staged here since a TerminalName change is an editorial/identity decision outside this batch's field-update scope.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unverifiable_detail",
+    "terminal_id": "T100000130604",
+    "unit_id": "G100002060400",
+    "terminal_name": "Ruwais FSRU",
+    "issue": "Could not find a published IMO number for the current vessel (FSRU Express, ex-Excelerate Energy fleet, deployed to Ruwais in 2019 replacing the original FSRU Excelerate which departed 2018). Excelerate Energy's own project page and trade press (TradeWinds, LNG World Shipping, MEED) name the vessel but do not publish an IMO number.",
+    "severity": "low",
+    "suggested_action": "No action needed for this batch; FloatingVesselName is already correctly populated. IMO is not a tracked GEM field.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change_confirmed",
+    "terminal_id": "T100000130602",
+    "unit_id": null,
+    "terminal_name": "Fujairah LNG Terminal",
+    "issue": "Dormant-revival check: no new activity found at the Fujairah site under any sponsor. Confirmed via multiple 2025/2026 sources that ADNOC's export project was relocated from Fujairah to Ruwais in May 2023 (captured in GEM's AssociatedTerminals link on Ruwais LNG); the original EmiratesLNG import project remains dead since 2016/2017. No revival.",
+    "severity": "low",
+    "suggested_action": "None -- record correctly remains cancelled.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "no_change_confirmed",
+    "terminal_id": "T100000130972",
+    "unit_id": "G100002097200",
+    "terminal_name": "Sharjah FSRU",
+    "issue": "Dormant-revival check: no new SNOC or third-party FSRU/LNG import activity found at Sharjah/Hamriyah as of mid-2026; SNOC's focus remains on the Mahani domestic gas field. No revival.",
+    "severity": "low",
+    "suggested_action": "None -- record correctly remains cancelled.",
+    "researcher_initials": "AI-draft"
+  }
+]

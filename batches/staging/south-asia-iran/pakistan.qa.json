@@ -1,0 +1,12 @@
+[
+  {
+    "category": "capacity_conflict",
+    "terminal_id": "T100000131104",
+    "unit_id": "G100002110400",
+    "terminal_name": "LNG Easy Floating LNG Terminal",
+    "issue": "GEM's Capacity=1.0 mtpa for LNG Easy is not corroborated by the sources found this sweep. The company's own JV materials (lngeasy.com PDF, currently the Owner [ref]) describe 'full capacity of the facility would be 1 mtpa' as an eventual/multi-phase figure, but IEEFA's Pakistan LNG fact sheet (ieefa.org, 2022, table of proposed terminals) lists 'Easy LNG Terminal ... 50-60 [mmcfd]' (~0.4-0.46 mtpa) as the terminal's capacity -- a materially different, smaller figure. Did not stage a Capacity change given the conflict between a company-sourced eventual/full figure and an independent tracker's mmcfd figure that may describe an earlier phase.",
+    "severity": "medium",
+    "suggested_action": "Leave Capacity=1.0 mtpa as-is (not overwritten); a future pass should try to pin down whether 50-60 mmcfd is Phase 1 of a multi-phase 1 mtpa build-out or a genuinely smaller current plan.",
+    "researcher_initials": "AI-draft"
+  }
+]

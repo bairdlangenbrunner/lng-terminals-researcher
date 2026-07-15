@@ -1,0 +1,64 @@
+[
+ {
+  "terminal": "Corpus Christi LNG Terminal",
+  "terminal_id": "T100000130216",
+  "mechanical": "True",
+  "confidence": "green",
+  "gogpt_captive_prior": "none / false C-tier — matcher's nearest GOGPT plants (Gregory 3.86 km, Ingleside cogen 5.5 km) are unrelated merchant/industrial gas plants, not this terminal's captive power",
+  "confirmed_how": "Researched the terminal's own drive tech: Optimized Cascade with gas-turbine mechanical drive (GE LM2500 G4+ / Baker Hughes PGT25+G4) on operating Trains 1-3; only on-site generators are diesel standby.",
+  "confirmed_how [ref]": [
+   "https://archive.epa.gov/region6/6pd/air/pd-r/ghg/web/pdf/corpuschristi-liq-turbine-simple-cycle060613.pdf",
+   "https://www.bakerhughes.com/company/news/bhge-wins-turbomachinery-contract-cheniere-energy-incs-lng-facility-corpus-christi"
+  ]
+ },
+ {
+  "terminal": "Golden Pass LNG Terminal",
+  "terminal_id": "T100000130227",
+  "mechanical": "True",
+  "confidence": "green",
+  "gogpt_captive_prior": "none — matcher's nearest GOGPT captive plant (Sabine Pass LNG power station, 4.45 km) is across the state line in Louisiana and belongs to a DIFFERENT terminal",
+  "confirmed_how": "Researched the terminal's own drive tech: 6x GE MS7001EA (Frame 7EA) gas turbines mechanical-drive 12 refrigerant compressors across the 3 liquefaction trains; continuous electricity is waste-heat steam cogen + emergency gensets.",
+  "confirmed_how [ref]": [
+   "https://www.bakerhughes.com/company/news/baker-hughes-ge-company-supply-turbomachinery-equipment-golden-pass-lng-export",
+   "https://www.hydrocarbonengineering.com/tanks-terminals/11022019/bhge-to-supply-turbomachinery-equipment-for-golden-pass-lng-export-facility/"
+  ]
+ },
+ {
+  "terminal": "Port Arthur LNG Terminal",
+  "terminal_id": "T100000130237",
+  "mechanical": "True",
+  "confidence": "green",
+  "gogpt_captive_prior": "false C-tier — matcher's nearest GOGPT plants (Air Products Port Arthur H2/cogen 6.12 km, Legend 8.38 km) serve refineries/grid, not the LNG terminal; the terminal's own 240 MW generating plant is NOT in GOGPT",
+  "confirmed_how": "Researched the terminal's own drive tech: MIXED — FERC-certified 240 MW on-site gas-turbine generators PLUS 4x GE Frame 7 gas turbines mechanical-drive the Phase 1 refrigerant compressors.",
+  "confirmed_how [ref]": [
+   "https://www.ferc.gov/sites/default/files/2020-04/C-3.pdf",
+   "https://www.lngindustry.com/liquefaction/28032023/baker-hughes-to-supply-liquefaction-trains-for-sempra-infrastructures-port-arthur-lng-phase-1-project/"
+  ]
+ },
+ {
+  "terminal": "Rio Grande LNG Terminal",
+  "terminal_id": "T100000130239",
+  "mechanical": "True",
+  "confidence": "green",
+  "gogpt_captive_prior": "none — matcher's nearest GOGPT plants (SpaceX 7.79 km cancelled, Port of Brownsville Energy Complex 12.53 km) are unrelated projects",
+  "confirmed_how": "Researched the terminal's own drive tech: Baker Hughes gas-turbine (Frame 7-class) mechanical-drive main refrigeration compressors across Trains 1-5; operating power drawn from the AEP grid, on-site generation is emergency diesel only.",
+  "confirmed_how [ref]": [
+   "https://www.globenewswire.com/news-release/2025/09/11/3148922/0/en/Baker-Hughes-Secures-Order-for-Rio-Grande-LNG-Expansion.html",
+   "https://www.lngindustry.com/liquefaction/15092025/baker-hughes-to-supply-main-liquefaction-equipment-for-rio-grande-lng-expansion/",
+   "https://www.worldoil.com/news/2025/11/6/baker-hughes-wins-order-for-nextdecade-s-rio-grande-lng-train-5-expansion/"
+  ]
+ },
+ {
+  "terminal": "Coastal Bend LNG Terminal",
+  "terminal_id": "T100001061247",
+  "mechanical": "False",
+  "confidence": "yellow",
+  "gogpt_captive_prior": "none — matcher's nearest GOGPT plants (Corpus Christi energy center 2.83 km, Nueces Bay 3.55 km) are unrelated merchant CCGTs",
+  "confirmed_how": "Researched the proposed design: on-site gas-fired cogeneration integral to the ConocoPhillips Optimized Cascade selection; >50 MW inferred from the 22.5 Mtpa scale (no cited MW yet -> yellow; chase FERC pre-file resource reports).",
+  "confirmed_how [ref]": [
+   "https://www.conocophillips.com/news-media/story/coastal-bend-lng-selects-conocophillips-optimized-cascade-process-technology/",
+   "https://www.hartenergy.com/exclusives/coastal-bend-plans-225-mtpa-lng-export-facility-gulf-coast-213382/",
+   "https://www.ogj.com/pipelines-transportation/lng/article/55299673/coastal-bend-lng-plans-2025-pre-file-for-225-million-tpy-lng-export-plant"
+  ]
+ }
+]

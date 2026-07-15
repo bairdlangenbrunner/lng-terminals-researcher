@@ -1,0 +1,42 @@
+[
+  {
+    "category": "dormant_revival",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Bangladesh (country-wide)",
+    "issue": "Dormant-revival watch run on all cancelled/shelved scope terminals: ACWA LNG Terminal, Kutubdia (Reliance) FSRU, Kutubdia LNG Terminal (Petronet), Matarbari GE LNG Terminal, Pertamina Bangladesh FSRU, Payra LNG Terminal, RPGC Matarbari LNG Terminal, Summit Matarbari FSRU. No revival signal found for ACWA (no update since 2019 MoU), Kutubdia Reliance (terminated 2018, no successor), Kutubdia Petronet (cancelled 2021, no successor), Matarbari GE (cancelled ~2022, no successor), Payra LNG Terminal (superseded by the Payra FSRU proposal, itself now cancelled -- see updates.json). Pertamina Bangladesh FSRU: the terminal itself remains dormant, but its associated power plant (Pertamina Anwara 1,400MW CCGT) is a live, separate project still in the permitting stage per recent tracking (energytransitionbd.org), consistent with GEM's existing 'keep an eye' researcher note -- no terminal-side change warranted, this is the power-plant side, and per the power-plant!=terminal gate the FSRU marine-import leg is what's tracked here and it remains cancelled. RPGC Matarbari and Summit Matarbari FSRU were NOT left dormant -- see updates.json/timeline.json (both got a confirmed-cancellation refinement this sweep). No revival-based new_terminal or monitor candidate generated.",
+    "severity": "low",
+    "suggested_action": "No action; re-check next sweep, particularly Pertamina's Anwara power plant construction start.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "gemwiki_coverage_check",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Bangladesh (country-wide)",
+    "issue": "gem.wiki LNG-page-vs-CSV cross-check for Bangladesh: every one of the 12 scope rows' Wiki field resolves to its own distinct gem.wiki page, confirmed 1:1 against the fresh export (no CSV row lacks a wiki page, no in-scope wiki page lacks a CSV row for the 12 tracked pages). Two anomalies investigated and resolved as non-gaps: (1) 'Moheshkhali FLNG Terminal (Petrobangla)' is a plain MediaWiki REDIRECT to 'Moheshkhali FSRU' = 'Moheshkhali Floating LNG Terminal' (confirmed by fetching the page; last-edited 2025-08-18) -- not a separate project. (2) A bare 'Kutubdia LNG Terminal' page (distinct URL from 'Kutubdia LNG Terminal (Petronet)') exists, has NO corresponding CSV row, and was last edited literally today (2026-07-14) -- but its content (Owner: Petronet/Petrobangla; Kutubdia Islands; 7.5 mtpa; Start Year 2021) is identical in substance to the already-tracked, already-cancelled 'Kutubdia LNG Terminal (Petronet)' (T100000130268) -- it looks like an orphaned pre-disambiguation duplicate stub, not a genuinely separate untracked project. A separate 2017 HSMPL/Petronas term-sheet for a 3rd Kutubdia proposal (500 mmcfd FSU+jetty) surfaces in press archives but has no dedicated gem.wiki page and zero follow-up reporting since 2017 -- too dormant/thin to meet the discovery add-bar (no sponsor activity, no concrete recent step); noted here rather than staged.",
+    "severity": "medium",
+    "suggested_action": "Recommend GEM wiki maintenance redirect/merge the orphan 'Kutubdia LNG Terminal' page into 'Kutubdia LNG Terminal (Petronet)' to prevent future confusion; no tracker (CSV) action needed since no genuinely new/distinct project was found.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "scope_gate",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Bangladesh (country-wide)",
+    "issue": "Scope-gate check: all 12 in-scope rows are marine import terminals (FSRU or onshore jetty-fed), consistent with the import-by-ship threshold. No domestic-only virtual-pipeline/trucking/peak-shaving candidate surfaced in this sweep's web research.",
+    "severity": "low",
+    "suggested_action": "No action.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "oil_operator_flng_sweep",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Bangladesh (country-wide)",
+    "issue": "Upstream-oil-operator/associated-gas FLNG sweep: Bangladesh is a gas-consuming, not a hydrocarbon-exporting, jurisdiction for this scope (Bay of Bengal offshore blocks are exploration-stage, no discovered gas volumes large enough yet to motivate an associated-gas FLNG export scheme). A 2026 offshore block licensing round is ongoing (Petrobangla/PSC bidding), but no operator (Chevron-successor, ExxonMobil, or any NOC/independent) has announced FLNG or gas-export plans tied to it. No FLNG sponsor candidates found.",
+    "severity": "low",
+    "suggested_action": "No action; re-check if the 2026 offshore licensing round yields a discovery announcement.",
+    "researcher_initials": "AI-draft"
+  }
+]

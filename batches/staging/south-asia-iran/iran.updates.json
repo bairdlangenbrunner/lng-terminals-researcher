@@ -1,0 +1,99 @@
+[
+  {
+    "terminal_id": "T100000130587",
+    "unit_id": "G100002058701",
+    "terminal_name": "Iran FLNG Terminal",
+    "unit_name": "--",
+    "country": "Iran",
+    "field_name": "Status",
+    "old_value": "cancelled",
+    "new_value": "cancelled",
+    "confidence": "blue",
+    "source_tier": "trade_press",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.themeditelegraph.com/en/shipping/2018/02/12/news/iran-cancels-norwegian-flng-project-1.38085493",
+      "https://www.iranobserver.org/iran-cancels-first-flng-deal-with-norway/"
+    ],
+    "source_notes": "Re-verified both existing refs live and on-topic (url_verifier PASS). Searched specifically for a 2025/2026 revival of the Exmar/Hemla/IFLNG Caribbean-FLNG-at-Pars-Service-Port deal; all hits trace back to the same 2016-2018 episode already reflected in GEM (NIOC signed with IFLNG Oct 2017, put on hold Feb 2018 over gas-price terms, formally cancelled by Iran per the cited sources). No revival found -- status confirmed unchanged.",
+    "scope_note": "export, in-scope (marine FLNG cargo transfer).",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130585",
+    "unit_id": "G100002058501",
+    "terminal_name": "Kangan LNG Terminal",
+    "unit_name": "--",
+    "country": "Iran",
+    "field_name": "Owner",
+    "old_value": "MahTaab Parto Kangan LNG Co [100%]",
+    "new_value": "MahTaab Parto Kangan LNG Co [100%]",
+    "confidence": "blue",
+    "source_tier": "company_website",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.mah-taab.com/companies/"
+    ],
+    "source_notes": "Direct fetch returns a Cloudflare interstitial (bot-blocked, not dead); a Wayback snapshot from 2026-02-14 confirms the live page still lists MahTaab Parto Kangan LNG Co among MahTaab Group's companies. See iran.qa.json for the separate dead-ref issue on the Status/CancelledYear citation for this same terminal.",
+    "scope_note": "export, in-scope; project remains dormant/no revival found (dormant-revival check).",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130584",
+    "unit_id": "G100002058401",
+    "terminal_name": "North Pars LNG Terminal",
+    "unit_name": "--",
+    "country": "Iran",
+    "field_name": "Status",
+    "old_value": "cancelled",
+    "new_value": "cancelled",
+    "confidence": "blue",
+    "source_tier": "news",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.ynetnews.com/articles/0,7340,L-4117027,00.html",
+      "https://www.uscc.gov/sites/default/files/transcripts/USCC%20Hearing%20Transcript%20-%20June%206%202013.pdf"
+    ],
+    "source_notes": "Re-verified ynetnews ref live and on-topic (url_verifier PASS). Searched for a CNOOC/NIOC revival of the North Pars LNG (as distinct from ongoing North Pars gas-field-only development, which is in scope of a separate GEM oil/gas-field record, not this LNG terminal); found none -- status confirmed unchanged. Dormant-revival check: clean.",
+    "scope_note": "export, in-scope.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130586",
+    "unit_id": "G100002058601",
+    "terminal_name": "Persian NIOC LNG Terminal",
+    "unit_name": "T1-T2",
+    "country": "Iran",
+    "field_name": "Status",
+    "old_value": "cancelled",
+    "new_value": "cancelled",
+    "confidence": "blue",
+    "source_tier": "news",
+    "ref_field": null,
+    "ref_urls": [
+      "https://web.archive.org/web/20080323042428/http://uk.reuters.com/article/oilRpt/idUKL2886631920070924"
+    ],
+    "source_notes": "Re-verified existing ref live, contains 'Persian LNG' project subject matter (url_verifier PASS on that token). Searched for a Shell/Repsol/NIOC revival of Persian LNG specifically; found none post-2010s -- status confirmed unchanged. Dormant-revival check: clean.",
+    "scope_note": "export, in-scope.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130916",
+    "unit_id": "G100002091601",
+    "terminal_name": "South Pars LNG Terminal",
+    "unit_name": "T1-T2",
+    "country": "Iran",
+    "field_name": "ShelvedYear",
+    "old_value": "2010",
+    "new_value": "2010",
+    "confidence": "blue",
+    "source_tier": "trade_press",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.energyintel.com/0000017b-a7b3-de4c-a17b-e7f38e1b0000"
+    ],
+    "source_notes": "Re-verified existing ref live and on-topic (url_verifier PASS). Searched for a Total/Petronas/NIOC revival of Pars LNG (South Pars phase 11/LNG train JV); found only that international partners were displaced by Iranian companies years ago, no LNG-train revival -- status confirmed unchanged. Dormant-revival check: clean.",
+    "scope_note": "export, in-scope.",
+    "researcher_initials": "AI-draft (sweep)"
+  }
+]

@@ -1,0 +1,50 @@
+{
+  "terminal_name": "Tabangao FSRU",
+  "unit_id": "G100002097600",
+  "findings": [
+    {
+      "field": "Status [ref]",
+      "current_value": "https://mb.com.ph/2025/05/13/shell-to-improve-investments-in-tabangao-terminal",
+      "new_value": "https://mb.com.ph/2025/05/13/shell-to-improve-investments-in-tabangao-terminal",
+      "ref_urls": [
+        "https://mb.com.ph/2025/05/13/shell-to-improve-investments-in-tabangao-terminal",
+        "https://matuwid.org/doe-2-large-lng-terminals-likely-completed-by-2025/"
+      ],
+      "confidence": "green",
+      "change_summary": "Status re-confirmed as shelved (unchanged); strengthened the citation from one weak-inference source to two independent, non-mirror sources. Chain: matuwid.org's mirror of the Dec 8 2023 Manila Standard/DOE report (verified: 'Tabangao', 'September 2025') is the last known forward-looking milestone -- Shell Energy Philippines' Tabangao FSRU was DOE-targeted to begin commercial operations by September 2025 at 3 MTPA. That target date has now passed (current date July 2026) with zero commissioning/inauguration news anywhere (checked LNG Prime, offshore-technology.com, BusinessWorld, Manila Bulletin, Manila Standard, Philstar, PNA, industry roundups). The May 13 2025 Manila Bulletin piece (verified: 'Tabangao') is Shell Pilipinas' own capital-spending announcement for the Tabangao site and covers ONLY the oil-products import facility (fuel storage/gantry) and mobility/gas-station spend -- it makes zero mention of the LNG/FSRU project despite being exactly the kind of announcement that would flag it if alive. A further Sept 22 2025 Manila Bulletin piece on Shell Energy Philippines' (SEPH -- the actual LNG project developer) capex priorities (solar, battery, onshore wind) also contains no LNG/gas mention (checked but not cited as a ref since it never names Tabangao directly). Current published rosters of Philippine Batangas-area import terminals (as of 2025-2026) list only FGEN Batangas FSRU and the AG&P/Philippines LNG Terminal as operating -- Shell's own Tabangao FSRU is absent from all of them, consistent with the inferred-shelved call. No source found announcing formal cancellation, so 'inferred 2 y' substatus (not 'confirmed') remains correct; keep ShelvedYear 2025 (the point at which the missed Sept-2025 DOE target plus ~2 years of silence since the last real project update crystallized the inference)."
+    },
+    {
+      "field": "ResearcherNotesProject",
+      "current_value": "",
+      "new_value": "Lifecycle note: ConstructionYear=2024 reflects a DOE-reported PLANNED/target construction start (per Dec 2023 Manila Standard/DOE data citing a Sept-2025 commercial-ops target), not an actual confirmed construction event -- consistent with the GEM status_timeline carrying both the 2024 construction and 2025 operating entries as substatus 'planned', never 'actual'. No source found confirms ground was ever broken, an FSRU was chartered/named, or the jetty conversion (Jetty 4) proceeded. The Sept-2025 target has passed with no commissioning news and no mention of the project in Shell's own 2025-2026 Tabangao/SEPH capex announcements, so 'shelved (inferred 2 y)' correctly describes current status -- there is no construction/shelved contradiction, just an unactualized forecast year sitting alongside the correct current status.",
+      "ref_urls": [
+        "https://matuwid.org/doe-2-large-lng-terminals-likely-completed-by-2025/",
+        "https://mb.com.ph/2025/05/13/shell-to-improve-investments-in-tabangao-terminal"
+      ],
+      "confidence": "green",
+      "change_summary": "Added researcher note resolving the construction-year vs. shelved-status question the CLAUDE.md task flagged; no Status/ShelvedYear/ConstructionYear value changes -- all reconfirmed correct as recorded."
+    }
+  ],
+  "status_timeline_additions": [],
+  "floating_vessel_name": {
+    "value": null,
+    "ref_urls": [],
+    "confidence": "n/a",
+    "note": "No FSRU was ever chartered or named in any source found -- the project never progressed past the DOE-reported planning/target stage (see ResearcherNotesProject). FloatingVesselName correctly stays blank."
+  },
+  "entity_checks": [],
+  "url_verifications": [
+    {"url": "https://mb.com.ph/2025/05/13/shell-to-improve-investments-in-tabangao-terminal", "tokens": ["Tabangao"], "passed": true},
+    {"url": "https://matuwid.org/doe-2-large-lng-terminals-likely-completed-by-2025/", "tokens": ["Tabangao", "September 2025"], "passed": true},
+    {"url": "https://mb.com.ph/2025/09/22/seph-eyes-onshore-wind-to-grow-renewable-portfolio", "tokens": ["SEPH", "wind"], "passed": true},
+    {"url": "https://lngprime.com/asia/shell-to-supply-commissioning-cargo-to-first-gens-batangas-lng-terminal/85748/", "tokens": ["Shell"], "passed": true}
+  ],
+  "qa_notes": [
+    "Sept 22 2025 Manila Bulletin (SEPH eyes onshore wind, mb.com.ph/2025/09/22/) verified PASS for 'SEPH'/'wind' but NOT cited as a Status ref because it never names Tabangao/LNG directly -- used only as supporting context (SEPH's entire 2025 capex messaging is solar/battery/wind, no gas).",
+    "July 2023 LNG Prime article on Shell supplying a commissioning cargo to FIRST GEN's Batangas FSRU confirms Shell participates in the Philippine LNG market as a CARGO SUPPLIER to a competitor's terminal, not evidence about Shell's own Tabangao project -- checked and ruled irrelevant to Tabangao's status, not cited.",
+    "Attempted the Philippine DOE 'Energy Sector Updates' presentation (legacy.doe.gov.ph/sites/default/files/pdf/e_ipo/08 Energy Sector Updates.pdf) as a potential primary DOE source -- returns HTTP 403 (bot-blocked) and has no Wayback Machine snapshot (checked archive.org availability API, empty result), so it could not be verified/cited this batch. Worth re-attempting in a future batch if DOE unblocks the legacy subdomain.",
+    "Shell's global 'LNG Outlook 2025' PDF (shell.com IR-published) was checked for a Philippines/Tabangao mention -- none found; not a citable source for this terminal.",
+    "gem.wiki's Tabangao FSRU page was consulted only to confirm it is NOT independently sourced beyond GEM's own prior citations (May 2025 MB article) -- per hard rule, never cited."
+  ],
+  "summary": "Resolved: Tabangao FSRU remains correctly SHELVED (inferred 2 y, anchor year 2025) -- no status change staged. The apparent construction/shelved contradiction is not a real contradiction: ConstructionYear=2024 and the 2025 'operating' timeline entry are both DOE-reported PLANNED targets (per a Dec 2023 Manila Standard/DOE report citing a Sept-2025 commercial-ops target for Shell Energy Philippines' 3 MTPA FSRU), never marked 'actual' in the timeline, and no source shows the project ever actually broke ground or chartered an FSRU. That Sept-2025 target has now passed with total silence: Shell's own May 2025 and Sept 2025 Tabangao/SEPH capex announcements make zero mention of the LNG project, and current Philippine Batangas-terminal rosters list only FGEN Batangas FSRU and the AG&P/Philippines LNG Terminal as operating, not Shell. Strengthened the Status [ref] citation from one weak single source to two independent verified sources; added a ResearcherNotesProject note explaining the planned-vs-actual distinction for future researchers. No FSRU vessel was ever named (FloatingVesselName stays blank); no new entities needed."
+}
