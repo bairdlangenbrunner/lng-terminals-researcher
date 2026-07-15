@@ -33,7 +33,7 @@ Before any batch:
 
 ## Workflow router
 
-Full command-by-command recipes live in `docs/workflows.md` — **read the relevant section before starting a batch.** Any workflow that fans out subagents follows the **Model selection** block at the top of `docs/workflows.md`: research subagents on Sonnet, judgment/QC-gate work stays in the top-tier main loop, and subagent output is never pre-trusted regardless of model.
+Full command-by-command recipes live in `docs/workflows.md` — **read the relevant section before starting a batch.** Subagent model choice follows the global dispatch-time rule (user-level CLAUDE.md); the **Model selection** block at the top of `docs/workflows.md` maps it onto this repo's workflows.
 
 | Workflow | Trigger phrases | Recipe + rules |
 |---|---|---|
