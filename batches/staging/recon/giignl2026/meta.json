@@ -1,0 +1,12 @@
+{
+  "scope_slug": "recon/giignl2026",
+  "workflow": "reconciliation",
+  "tier": null,
+  "countries": ["*"],
+  "started": "2026-06-03",
+  "built": "2026-06-09",
+  "applied": null,
+  "status": "built",
+  "run_record": "batches/run_records/2026-06-09_recon-owner-fixes_giignl2026.md",
+  "notes": "Global (whole-tracker) reconciliation against the GIIGNL 2026 annual report, not scoped to any country subset -- see coverage_status.py cross-cutting-passes handling. First committed 2026-06-03 (git log), rerun against a fresh GEM CSV 2026-06-05, and had owner-column-contamination parser fixes + a recon rebuild through 2026-06-09 (run_record 2026-06-09_recon-owner-fixes_giignl2026.md) and again 2026-06-07 (substatus-rule rebuild, run_record 2026-06-07_substatus-rule_status-logic-and-recon-rebuild.md). Using 2026-06-09 as 'built' since that is the latest dated rebuild found in run records. Reconciliation findings are candidates for Update, never auto-applied (CLAUDE.md hard rule)."
+}

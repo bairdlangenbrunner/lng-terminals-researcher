@@ -28,6 +28,16 @@ A single markdown memo with five sections:
 
 The memo gets saved to `../batches/qc_<YYYYMMDD>_<HHMM>_ET.md` (stamp via `TZ=America/New_York date "+%Y%m%d_%H%M_ET"`) and presented to the user. No xlsx is produced by QC itself.
 
+### §2.1 Structured findings (committed alongside the memo)
+
+QC still stages no edits and the memo is still the deliverable — that hasn't changed. What's new is that the *detection evidence* behind the memo is now committed as structured JSON in `batches/staging/qc-<stamp>/`, rather than living only as prose in the memo:
+
+- `python citation_qc.py --output batches/staging/qc-<stamp>/staged_qc_findings.json [...]` — the link-rot verdicts (§3.2), as data rather than only a memo summary.
+- `staged_qc_spotchecks.json` — the accuracy spot-check verdicts (§3.3), a list of `{terminal_id, unit_id, field, verdict, checked_ref, note}` records, one per checked cell.
+- The `qc-<stamp>` dir gets a `meta.json` like any other staging dir (`workflow: "qc"`; see `batches/staging/README.md`).
+
+This is an audit-trail upgrade, not a change to the split: **QC detects, Update fixes.** A follow-on Update batch can read these JSONs directly instead of re-deriving the worklist from the memo's prose.
+
 ## §3 The four passes
 
 Run all four for a periodic health check; a targeted QC run (e.g. "did my edits land") can run a single pass — say which passes ran in the memo.

@@ -1,0 +1,12 @@
+{
+  "scope_slug": "asia",
+  "workflow": "update+discovery",
+  "tier": "standard",
+  "countries": ["Japan", "South Korea", "Taiwan"],
+  "started": "2026-07-08",
+  "built": null,
+  "applied": null,
+  "status": "abandoned",
+  "run_record": null,
+  "notes": "This was meant to be a full Asia re-sweep (started 2026-07-08, per batches/staging/SWEEP_PROGRESS.md) but STALLED after only 4 of 22 planned update/discovery country groups landed: japan, south-korea, taiwan (done markers dated 2026-07-08) plus a vietnam.done.json touch (updates=0, qa=1 — a trivial 'nothing to update' check, NOT substantive coverage; Vietnam's real coverage lives in the dedicated vietnam/ dir, built 2026-07-02, five days BEFORE this sweep even started). No run record was ever written for this sweep — SWEEP_PROGRESS.md is the only record. The remaining ~15 Asia countries in scope (china x4 shards, indonesia, malaysia, myanmar, cambodia, singapore, brunei, hong-kong, turkmenistan, maldives, north-korea) were NEVER refreshed by this dir and still only carry whatever coverage the original 2026-06-03/04 full-tracker sweep gave them (that sweep's asia output lives in _archive_pre20260708/, i.e. it predates and is superseded generation-wise by this dir's live files, but this dir never actually re-touched those countries). Bottom line: japan/south-korea/taiwan are genuinely fresh as of 2026-07-08; everything else in Asia is stale at 2026-06-03/04 vintage and due for a resumed sweep. Countries list here intentionally excludes Vietnam (trivial touch, not real coverage) — see vietnam/meta.json for Vietnam's real last-touch."
+}

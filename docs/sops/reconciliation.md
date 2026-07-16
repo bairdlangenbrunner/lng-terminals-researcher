@@ -274,7 +274,7 @@ Reconciliation used to stop at "route to Update" — flag the disagreement and d
 
 Verdicts with `resolution: "edit"` (and ≥1 `edits` entry) become resolved rows in `edits_to_gem`; everything else (the `no_change` majority) stays out of the paste view, its reasoning visible only in `audit_operating`. If no verdict resolves to an edit, `edits_to_gem` says so explicitly.
 
-The Update / Discovery batches still consume the `to_follow_up_on` findings that aren't DB edits (GIIGNL-only → Discovery, gem_only → review), citing GIIGNL as ONE source among others.
+The Update / Discovery batches still consume the `to_follow_up_on` findings that aren't DB edits (GIIGNL-only → Discovery, gem_only → review), citing GIIGNL as ONE source among others. When a later batch actually processes one of these items, it should record that in `batches/staging/recon/giignl<YEAR>/staged_followup_resolutions.json` — a list of `{item_key or terminal_id, action_taken, batch, date}` entries — so the next Triage pass (§3.3 there) can tell what's already been worked rather than re-scanning the whole `to_follow_up_on` sheet by hand.
 
 ### §3.9 URL verification
 

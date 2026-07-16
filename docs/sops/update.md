@@ -40,7 +40,7 @@ A standard update works a **worklist derived at batch start**, not every row in 
 
 1. **Stale-sweep flags** — every unit `stale_sweep.py` flags for the scope (inferred shelved/cancelled candidates, routine-refresh-due operating units, slipped planned starts), processed per §3.4.
 2. **Development-pipeline check** — **every unit with Status ∈ {`proposed`, `construction`, `shelved`} in scope, regardless of staleness** (the `dev_pipeline` block of `stale_sweep.py`). These are the statuses that move — proposed/construction toward FID, milestones, and startup; shelved toward revival or cancellation — so each gets a quick status/news search every standard pass (same mechanics as §3.4: verified change → a normal §3.2/§3.3 edit; no change found → one blue re-verify on the Status cell per §6.2). Units annotated `recently_updated` (LastUpdated within ~3 months; `--pipeline-recent-months`) get a fast confirm rather than a full search. Idled/mothballed units ride on the dormancy flags in item 1 rather than this every-pass check. Note the stale flags also annotate which pipeline rows carry an inferred-status candidate action on top of the routine check.
-3. **Blank-ref fill targets** — `completeness_sweep.py`'s `blank_ref` rows for the scope, processed per §3.1 ([ref]-fill, Rule F).
+3. **Blank-ref fill targets** — `completeness_sweep.py`'s `blank_ref` rows for the scope, processed per §3.1 ([ref]-fill, Rule F). This excludes **workflow-owned refs** (`WORKFLOW_OWNED_REFS` in `completeness_sweep.py`, e.g. `CaptiveGasPower [ref]`) — those pairs belong to their own SOP (Captive-power SOP owns `CaptiveGasPower`) and are not generic fill targets here, even if blank.
 
 Rows in scope that appear on none of these lists are **left untouched** — no blue marks, no re-verification, no `LastUpdated` bump. Standard is the bread-and-butter tier: high-throughput, keeps the active pipeline current, appropriate as the recurring default.
 
@@ -197,6 +197,8 @@ Every URL staged in the xlsx must pass `url_verifier.py` before the batch is pre
 python url_verifier.py <url> <expected_string_1> <expected_string_2> ...
 ```
 
+Export `URL_VERIFIER_LOG=<path into the batch's staging dir>` (or pass `--log`) before running verifications for the batch — it appends every attempt, pass and fail with reason, to a JSONL log alongside the staged JSON.
+
 The verifier checks:
 1. HTTP 200 (not 4xx/5xx)
 2. Not a soft-error page (title doesn't contain "404", "429", "Just a moment" (Cloudflare), etc.)
@@ -275,7 +277,7 @@ If a batch would otherwise want to write one of these (e.g. a source confirms a 
 
 Putting it together, an update batch looks like:
 
-1. **Confirm parameters** (§2) — including the tier (§2.1/§2.2)
+1. **Confirm parameters** (§2) — including the tier (§2.1/§2.2). Write `meta.json` in the batch's staging dir now — every staging dir carries one (`batches/staging/README.md`).
 2. **Materialize scripts** per CLAUDE.md
 3. `python pull_gem_db.py` → fresh CSV, column-index map. **Mandatory every batch.**
 4. `python dedup_index.py` → project + unit indexes

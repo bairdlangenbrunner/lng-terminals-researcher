@@ -11,9 +11,10 @@ meaningful — one area per batch, and for EACH terminal research whether it has
 power. The deterministic GOGPT match (§3.1) is a PRIOR that flags likely cases; it is NOT the
 worklist filter. Many terminals run captive/mechanical-drive turbines that GOGPT never tracks as a
 separate "power station," so a plant-first sweep silently misses them (e.g. Corpus Christi / Rio
-Grande gas-turbine drives). Areas already completed: **Louisiana** (2026-07-09), **Texas**
-(2026-07-10). Process order follows GEM's own cadence — finish a state/country before moving to the
-next.
+Grande gas-turbine drives). **Which areas are done lives in the coverage ledger** — each area's
+`batches/staging/captive_power/<area>/meta.json` (`scripts/coverage_status.py` reads these), not in
+this prose; Louisiana (2026-07-09) and Texas (2026-07-10) are the completed-to-date areas as of this
+writing. Process order follows GEM's own cadence — finish a state/country before moving to the next.
 
 ## 1. What this workflow answers
 
@@ -35,8 +36,8 @@ methodology's "Associated Projects and Fuel Sources" section + the GOGPT captive
   refrigeration compressors** (shaft power, no electricity generated) are captive power just as much
   as electricity generators are. This keeps e.g. **Woodside Louisiana** in scope even though its
   site *electricity* is grid-fed (its 8× LM6000PF+ turbines are pure mechanical compressor drives).
-  *(This carve-out was briefly reversed on 2026-07-10, then reinstated the same day with the flag
-  requirement below.)*
+  Settled 2026-07-10 (in-scope-but-flagged, per the `mechanical` flag below); see the run record for
+  that date if the history matters.
 - **`mechanical` flag (required, 2026-07-10).** Any terminal whose captive designation includes
   mechanical-drive turbines is marked `mechanical = True` in a left-most column of the staging
   review sheet — so a reviewer can see at a glance which "captive" verdicts rest on shaft-power

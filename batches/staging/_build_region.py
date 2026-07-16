@@ -38,20 +38,28 @@ def write_roster(marker_glob, exclude_substr, out_path):
     """Read the per-country done-markers and write a JSON list of the `country`
     values actually swept. This is the authoritative 'countries checked' roster
     for the README — it includes countries whose only output was a country-less
-    qa note or a clean no-findings run (which records alone would omit)."""
+    qa note or a clean no-findings run (which records alone would omit).
+    Returns (out_path, summaries): the full marker dicts (+ their filename) so
+    the caller can persist per-country summary counts and the escalation flag —
+    previously only `country` survived and everything else was discarded."""
     import json as _json
     countries = set()
+    summaries = []
     for p in glob.glob(str(RDIR / marker_glob)):
         if any(x in os.path.basename(p) for x in exclude_substr):
             continue
         try:
-            c = (_json.loads(Path(p).read_text(encoding="utf-8")).get("country") or "").strip()
-            if c:
-                countries.add(c)
+            d = _json.loads(Path(p).read_text(encoding="utf-8"))
         except Exception:
-            pass
+            continue
+        d["marker"] = os.path.basename(p)
+        summaries.append(d)
+        c = (d.get("country") or "").strip()
+        if c:
+            countries.add(c)
     Path(out_path).write_text(_json.dumps(sorted(countries), ensure_ascii=False, indent=2), encoding="utf-8")
-    return out_path
+    summaries.sort(key=lambda d: d["marker"])
+    return out_path, summaries
 
 def build(mode, outfile, roster_path=None):
     cmd = [sys.executable, str(ROOT / "scripts/build_review_package.py"),
@@ -82,8 +90,26 @@ results = {}
 # Rosters from the per-country done-markers (authoritative "countries checked").
 # Update markers = <slug>.done.json EXCLUDING <slug>.disc.done.json and <slug>.reverify.done.json.
 # Discovery markers = <slug>.disc.done.json.
-upd_roster = write_roster("*.done.json", (".disc.done.json", ".reverify.done.json"), RDIR / "_build" / "_roster_update.json")
-disc_roster = write_roster("*.disc.done.json", (), RDIR / "_build" / "_roster_discovery.json")
+(RDIR / "_build").mkdir(exist_ok=True)
+upd_roster, upd_sums = write_roster("*.done.json", (".disc.done.json", ".reverify.done.json"), RDIR / "_build" / "_roster_update.json")
+disc_roster, disc_sums = write_roster("*.disc.done.json", (), RDIR / "_build" / "_roster_discovery.json")
+
+# Persist the full marker summaries (counts, notes, escalation flag) alongside the
+# rosters — the workbook doesn't carry them, and the markers get pruned post-batch.
+import json as _json
+(RDIR / "_build" / "_roster_summaries.json").write_text(
+    _json.dumps({"update": upd_sums, "discovery": disc_sums}, ensure_ascii=False, indent=2),
+    encoding="utf-8")
+
+# Done-markers may carry `escalation: true` (a subagent hit a pause-and-ask trigger).
+# That flag used to be silently discarded here — surface it loudly instead.
+escalated = [d["marker"] for d in upd_sums + disc_sums if d.get("escalation")]
+if escalated:
+    print("=" * 72)
+    print("ESCALATION flagged in done-marker(s) — review before shipping the batch:")
+    for m in escalated:
+        print(f"  - {m}")
+    print("=" * 72)
 
 # UPDATE: hide discovery-side files
 upd_out = ROOT / "batches" / f"lng_terminals_batch_{STAMP}_{REGION}_update.xlsx"

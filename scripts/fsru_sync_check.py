@@ -36,16 +36,10 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 from normalize import normalize_entity
+from colmap import load_colmap as _load_colmap
 
 
 DEFAULT_GEM_CSV = "./gem_export.csv"
-
-
-def _load_colmap(csv_path):
-    map_path = Path(csv_path).with_suffix(".colmap.json")
-    if not map_path.exists():
-        raise RuntimeError(f"colmap.json not found at {map_path}")
-    return json.loads(map_path.read_text())
 
 
 def gather_gem_fsrus(gem_csv):

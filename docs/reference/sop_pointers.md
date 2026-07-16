@@ -5,13 +5,14 @@ Quick lookup for "which SOP section governs X" without re-reading the whole SOP 
 **The GEM LNG Terminals Manual** (the methodology doc, authoritative over everything below):
 <https://docs.google.com/document/d/18BvRBWLhXVgj92y5XOv98Co1QtMFj3ny20pmN9XbDko> — "Last updated: Baird and Rob, May 2026" as of this writing. Confirm it is in context before any batch (CLAUDE.md "Read the methodology + relevant SOPs first").
 
-Last reconciled against:
-- Reconciliation SOP rev 1 (2026-05)
+Last reconciled against (2026-07-16):
+- Reconciliation SOP rev 9 (2026-06-09)
 - Update SOP rev 2 (2026-06 — standard/exhaustive tiers)
-- Discovery SOP rev 2 (2026-06-24 — scope gate §3, gem.wiki coverage cross-check §4.0b, upstream-oil-operator FLNG sweep §4.3)
+- Discovery SOP rev 3 (2026-07-09 — power-plant ≠ terminal / supplier-terminal-may-already-exist scope-gate sub-rule §3, on top of rev 2's domestic-only scope gate §3, gem.wiki coverage cross-check §4.0b, upstream-oil-operator FLNG sweep §4.3)
 - Triage SOP rev 2 (2026-06 — QC signals, tier-named options)
-- QC SOP rev 1 (2026-06)
-- Ref-sweep SOP rev 1 (2026-06-30 — missing-year status-timeline backfill; read-only Postgres)
+- QC SOP rev 1 (2026-06 — plus structured-findings JSON committed alongside the memo, see below)
+- Ref-sweep SOP rev 2 (2026-07-01 — fuel_type column, `--sync-db` refresh flag; plus refs_overflow/verified columns and lossless JSON, see below)
+- Captive-power SOP (2026-07-10 — mechanical-drive flag settled)
 - CLAUDE.md (2026-06-09 — second slim pass; pull/FSRU/color detail deduplicated to `docs/workflows.md` + `docs/reference/workbook_conventions.md`; workflow recipes in `docs/workflows.md`, script table in `scripts/README.md`)
 
 Abbreviations:
@@ -21,6 +22,7 @@ Abbreviations:
 - **TRG** = `docs/sops/triage.md`
 - **QCS** = `docs/sops/qc.md`
 - **RSW** = `docs/sops/ref_sweep.md`
+- **CPW** = `docs/sops/captive_power.md`
 - **SKL** = `CLAUDE.md`
 - **WFL** = `docs/workflows.md`
 - **WBC** = `docs/reference/workbook_conventions.md`
@@ -55,6 +57,9 @@ Abbreviations:
 | Discovery scope gate (before the threshold) | DSC §3, SKL "Workflow router" | Must move LNG across a border by ship; domestic-only virtual-pipeline/trucking/peak-shaving is OUT OF SCOPE; resolve scope doubt before staging |
 | gem.wiki coverage cross-check | DSC §4.0b, WFL §3 | Reconcile gem.wiki LNG pages vs the export CSV — a wiki page with no row is a discovery candidate (gem.wiki detects the gap, never the citation) |
 | Upstream-oil-operator FLNG sweep | DSC §4.3, WFL §3 | In coastal hydrocarbon producers, sweep field operators monetizing associated gas (Gas Code / flaring-reduction tell), not just established LNG developers |
+| Captive-power stages `CaptiveGasPower` ONLY, never `PowerPlantsSupplied` | CPW §2 | Captive power flows INTO the terminal; `PowerPlantsSupplied` is the opposite relationship — stays blank in every captive-power record |
+| Coverage ledger — check before choosing scope | `scripts/coverage_status.py`, TRG §5, WFL §4/§5 | Every staging dir carries a `meta.json` (scope_slug, workflow, tier, countries, started/built/applied, status, run_record); triage and sweep dispatch consult `coverage_status.py` before picking scope |
+| QC structured findings | QCS §2, §3.2, §3.3 | Detection evidence (citation_qc findings + accuracy spot-check verdicts) is committed as JSON in `batches/staging/qc-<stamp>/` alongside the memo — "QC detects, Update fixes" still holds |
 
 ## Workflow steps
 
@@ -136,7 +141,8 @@ Abbreviations:
 | Sheet | When populated | Source SOP |
 |---|---|---|
 | README | Always | WBC "Sheets" |
-| updates | Update workflow | UPD §3 |
+| updates_summary | Update workflow | UPD §3 |
+| updates_in_database_format | Update workflow | UPD §3 (PRIMARY paste-view deliverable — full GEM-CSV column order) |
 | new_terminals | Discovery workflow | DSC §7 |
 | new_units | Discovery or update | DSC §7, UNT |
 | wiki_updates | Update or discovery | UPD §3 (narrative content → wiki Background) |
@@ -145,14 +151,17 @@ Abbreviations:
 | audit_operating | Reconciliation workflow | REC §3.10 |
 | audit_nonoperating | Reconciliation workflow | REC §3.10 |
 | giignl_fsru_fleet | Reconciliation workflow | REC §3.10 |
+| to_follow_up_on | Reconciliation workflow | REC §3.10 (non-edit findings: Discovery / gem_only / narrative; see the follow-up resolution convention in REC §3.8) |
 | edits_to_gem | Reconciliation workflow | GEM-CSV-shaped PASTE VIEW: only the rows the research pass concluded need a DB change, with resolved values in the real GEM columns, color-coded, ref URLs in [ref] cells, and a leftmost _change column explaining what changed and why |
 | giignl_full_extract | Reconciliation workflow | REC §3.10 |
-| routing | Reconciliation workflow | REC §3.10 |
 | fsru_sync | Any batch touching FSRUs | SKL FSRU sync rule |
 | monitor_list | Discovery workflow | DSC §5 |
 | stale_sweep | Triage or update | TRG §3.1, UPD §3.4 |
 | country_notes_contributions | Any batch developing country knowledge | CNT "How to use this file" |
 | qa_review | Always | All SOPs |
+| terminal_first_priors | Captive-power workflow | CPW §3a |
+| neighboring_plants | Captive-power workflow | CPW §3a |
+| gogpt_candidates | Captive-power workflow | CPW §3a, §4a |
 
 (Triage and QC are memo-only — no workbook. Memos land at `batches/triage_<stamp>_ET.md` / `batches/qc_<stamp>_ET.md`; TRG §2, QCS §2.)
 
