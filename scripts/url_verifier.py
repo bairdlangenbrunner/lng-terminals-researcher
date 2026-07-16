@@ -34,12 +34,19 @@ Library usage:
     from url_verifier import verify_url, verify_and_format
     ok, reason = verify_url("https://...", ["Cheniere", "Sabine Pass", "23 MTPA"])
     url_or_none = verify_and_format(url, expected)
+
+Audit log (optional): set env URL_VERIFIER_LOG=<path> or pass --log <path> on the
+CLI to append one JSONL line per check ({ts, url, expected, ok, reason}). This is
+the durable record of which URLs were verified with which tokens — without it a
+batch's verification evidence lives only in scrollback.
 """
+import json
 import re
 import os
 import subprocess
 import tempfile
 import sys
+import time
 
 
 class CitationError(Exception):
@@ -47,6 +54,33 @@ class CitationError(Exception):
 
 
 _CACHE = {}
+
+# JSONL audit-log path; None = disabled. Set via URL_VERIFIER_LOG or --log.
+_LOG_PATH = os.environ.get("URL_VERIFIER_LOG") or None
+
+
+def set_log_path(path):
+    """Enable/disable the JSONL audit log (None disables)."""
+    global _LOG_PATH
+    _LOG_PATH = path or None
+
+
+def _log_check(url, expected, ok, reason):
+    """Append one audit line; never let logging break verification."""
+    if not _LOG_PATH:
+        return
+    try:
+        entry = {
+            "ts": time.strftime("%Y-%m-%dT%H:%M:%S%z"),
+            "url": url,
+            "expected": list(expected),
+            "ok": ok,
+            "reason": reason,
+        }
+        with open(_LOG_PATH, "a") as f:
+            f.write(json.dumps(entry, ensure_ascii=False) + "\n")
+    except OSError as e:
+        print(f"  WARNING: url_verifier log write failed ({e}); continuing", file=sys.stderr)
 
 _DEFAULT_UA = (
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
@@ -139,22 +173,25 @@ def verify_url(url, expected, strict=False, require_all=True):
     
     Returns: (ok: bool, reason: str)
     """
+    ok, reason = _check(url, expected, require_all)
+    _log_check(url, expected, ok, reason)
+    if not ok and strict:
+        raise CitationError(f"URL failed verification ({reason}): {url}")
+    return ok, reason
+
+
+def _check(url, expected, require_all):
+    """The three checks; returns (ok, reason) with no side effects."""
     status, text, is_pdf = _fetch(url)
 
     if status != "200":
-        reason = f"HTTP {status}"
-        if strict:
-            raise CitationError(f"URL failed verification ({reason}): {url}")
-        return False, reason
+        return False, f"HTTP {status}"
 
     if is_pdf:
         # No HTML <title> to soft-error-check; require a usable text layer instead.
         if not text.strip():
-            reason = ("PDF has no extractable text (scanned/image PDF, or the "
-                      "poppler pdftotext CLI is unavailable)")
-            if strict:
-                raise CitationError(f"URL failed verification ({reason}): {url}")
-            return False, reason
+            return False, ("PDF has no extractable text (scanned/image PDF, or the "
+                           "poppler pdftotext CLI is unavailable)")
     else:
         # Soft-error detection via title (HTML only)
         title_match = re.search(r"<title[^>]*>([^<]+)</title>", text, re.IGNORECASE)
@@ -162,10 +199,7 @@ def verify_url(url, expected, strict=False, require_all=True):
             title = title_match.group(1).lower()
             for bad in _SOFT_ERROR_TITLES:
                 if bad in title:
-                    reason = f"soft-error page (title: {title_match.group(1).strip()!r})"
-                    if strict:
-                        raise CitationError(f"URL failed verification ({reason}): {url}")
-                    return False, reason
+                    return False, f"soft-error page (title: {title_match.group(1).strip()!r})"
 
     # Content check
     text_lower = text.lower()
@@ -173,15 +207,9 @@ def verify_url(url, expected, strict=False, require_all=True):
     missing = [s for s in expected if s.lower() not in text_lower]
 
     if require_all and missing:
-        reason = f"missing expected content: {missing}"
-        if strict:
-            raise CitationError(f"URL failed verification ({reason}): {url}")
-        return False, reason
+        return False, f"missing expected content: {missing}"
     if not require_all and not found:
-        reason = f"none of expected content found: {expected}"
-        if strict:
-            raise CitationError(f"URL failed verification ({reason}): {url}")
-        return False, reason
+        return False, f"none of expected content found: {expected}"
 
     return True, "OK"
 
@@ -203,11 +231,20 @@ def clear_cache():
 
 
 def main():
-    if len(sys.argv) < 2:
-        print("Usage: python url_verifier.py <url> [<expected1> <expected2> ...]")
+    argv = sys.argv[1:]
+    if "--log" in argv:
+        i = argv.index("--log")
+        try:
+            set_log_path(argv[i + 1])
+        except IndexError:
+            print("Usage: python url_verifier.py [--log <path>] <url> [<expected1> ...]")
+            sys.exit(2)
+        del argv[i:i + 2]
+    if len(argv) < 1:
+        print("Usage: python url_verifier.py [--log <path>] <url> [<expected1> <expected2> ...]")
         sys.exit(2)
-    url = sys.argv[1]
-    expected = sys.argv[2:]
+    url = argv[0]
+    expected = argv[1:]
     ok, reason = verify_url(url, expected, strict=False, require_all=True)
     print(f"  URL: {url}")
     print(f"  Expected: {expected}")

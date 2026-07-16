@@ -64,7 +64,7 @@ Per the carrier project's discovery model, this is essentially a Ring B sweep at
 
 Check for `to_follow_up_on` items from prior reconciliation batches that haven't been processed:
 - Look for the most recent reconciliation batch xlsx in `../batches/` (or wherever the user keeps the batch archive)
-- Count items in `to_follow_up_on` sheet that haven't been routed to a subsequent Update or Discovery batch
+- Read that edition's `staged_followup_resolutions.json` (Reconciliation SOP §3.8) first — it lists what's already been routed to a subsequent batch — then count only what's left unresolved in the `to_follow_up_on` sheet, rather than re-checking the whole sheet by hand.
 
 If items are unprocessed, triage's recommended composition should include processing them — they're partly pre-done research.
 

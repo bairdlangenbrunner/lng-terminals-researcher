@@ -33,6 +33,9 @@ import subprocess
 import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).parent))
+from schema_constants import COMPUTED_COLUMNS, OUT_OF_SCOPE_COLUMNS
+
 
 DEFAULT_OUT = "./gem_export.csv"
 WRAPPER_SCRIPT = "gem_export_via_web.py"  # user-supplied; must be in same dir or PYTHONPATH
@@ -158,21 +161,13 @@ EXPECTED_COLUMNS = {
     "ccs_notes": "CCSNotes",
 }
 
-# Read-only columns (build_review_package.py must NEVER write these)
-READ_ONLY_COMPUTED = {
-    "capacity_mtpa", "capacity_bcm",
-    "tot_import_mtpa", "tot_import_bcm",
-    "tot_export_mtpa", "tot_export_bcm",
-    "cost_usd", "cost_euro",
-    "tot_known_terminal_costs_usd", "tot_terminal_cost_ref",
-    "terminal_id", "unit_id", "wiki",
-}
+# Read-only columns (build_review_package.py must NEVER write these). Derived
+# from the canonical header-string sets in schema_constants.py, translated into
+# this script's short/canonical column-name keys via EXPECTED_COLUMNS (this
+# module keys everything by the short name, not the raw CSV header string).
+READ_ONLY_COMPUTED = {k for k, v in EXPECTED_COLUMNS.items() if v in COMPUTED_COLUMNS}
 
-READ_ONLY_OUT_OF_SCOPE = {
-    "pci_notes", "pci3", "pci4", "pci5", "pci6",
-    "lh2", "nh3", "synthetic_lng", "retrofit_proposed",
-    "alt_fuel_prelim_agreement", "alt_fuel_call_market_interest",
-}
+READ_ONLY_OUT_OF_SCOPE = {k for k, v in EXPECTED_COLUMNS.items() if v in OUT_OF_SCOPE_COLUMNS}
 
 
 def _check_env():

@@ -79,6 +79,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 from normalize import normalize_country  # noqa: E402
+from colmap import load_colmap as _load_colmap  # noqa: E402
 
 try:
     from country_universe import COASTAL_COUNTRIES
@@ -90,25 +91,13 @@ except ImportError:  # coverage-gap check degrades gracefully if the list is abs
 # Exact header strings (note "Country/Area", "CapacityinBcm/y", "… [ref]").
 # ---------------------------------------------------------------------------
 
-# Computed/rollup + DB-assigned — the build script must never write these, so a
-# blank here is not actionable. (gem_db_schema.md "Read-only column list".)
-READONLY = {
-    "CapacityinMtpa", "CapacityinBcm/y",
-    "TotImportLNGTerminalCapacityinMtpa", "TotImportLNGTerminalCapacityinBcm/y",
-    "TotExportLNGTerminalCapacityinMtpa", "TotExportLNGTerminalCapacityinBcm/y",
-    "CostUSD", "CostEuro",
-    "TotKnownTerminalCostsUSD", "TotTerminalCost [ref]",
-    "TerminalID", "UnitID", "Wiki",
-}
+# Computed/rollup + DB-assigned, and "no longer updated as of 2026" columns —
+# the build script must never write these, so a blank here is not actionable.
+# Canonical sets live in schema_constants.py (shared with build_review_package.py
+# / pull_gem_db.py). (gem_db_schema.md "Read-only column list".)
+from schema_constants import COMPUTED_COLUMNS, OUT_OF_SCOPE_COLUMNS
 
-# "No longer updated as of 2026" per methodology — never flag.
-OUT_OF_SCOPE = {
-    "PCINotes", "PCI3", "PCI4", "PCI5", "PCI6",
-    "LH2", "NH3", "SyntheticLNG", "RetrofitProposed",
-    "AltFuelPrelimAgreement", "AltFuelCallMarketInterest",
-}
-
-EXCLUDED = READONLY | OUT_OF_SCOPE  # never flagged by any check
+EXCLUDED = COMPUTED_COLUMNS | OUT_OF_SCOPE_COLUMNS  # never flagged by any check
 
 # Klass=P columns from the gem_db_schema.md 115-col table. A blank/defect in one
 # of these is reported ONCE per terminal (on the representative row), and these
@@ -157,6 +146,12 @@ REF_DATA_ALIASES = {
 }
 SKIP_REFS = {"TotTerminalCost [ref]"}
 
+# [ref] columns whose data column is owned by a dedicated workflow with its own
+# inclusion rules — a standard Update batch must not half-apply those rules from
+# a blank-ref flag. CaptiveGasPower: the captive-power SOP (§9) owns the pair
+# (>50 MW threshold, mechanical-drive flagging). Orphan-ref (Rule F) still applies.
+WORKFLOW_OWNED_REFS = {"CaptiveGasPower [ref]"}
+
 # [ref] columns whose paired data is densely populated → a blank ref here is a
 # high-yield fill target (gem_db_schema.md "[ref]-fill targets in order of yield").
 HIGH_YIELD_REFS = {
@@ -199,21 +194,6 @@ ENUM_CATALOGS = {
     # For LNG terminals the schema says use mtpa or bcm/y only.
     "CapacityUnits": {"mtpa", "bcm/y"},
 }
-
-
-def _load_colmap(csv_path):
-    map_path = Path(csv_path).with_suffix(".colmap.json")
-    if not map_path.exists():
-        raise RuntimeError(
-            f"colmap.json not found at {map_path}. Run pull_gem_db.py first."
-        )
-    colmap = json.loads(map_path.read_text())
-    if "_header_columns" not in colmap:
-        # pull_gem_db.py strips _header_columns before serializing the colmap
-        # to disk, so re-derive the header list from the CSV itself (BOM-safe).
-        with open(csv_path, encoding="utf-8-sig") as f:
-            colmap["_header_columns"] = next(csv.reader(f))
-    return colmap
 
 
 def _blank(v):
@@ -327,6 +307,8 @@ def compute_gaps(csv_path, country_filter=None):
                 data_present = any(not _blank(col(row, d)) for d in data_cols)
                 ref_present = not _blank(col(row, ref_col))
                 if data_present and not ref_present:
+                    if ref_col in WORKFLOW_OWNED_REFS:
+                        continue  # owned by a dedicated workflow, not an Update fill target
                     sev = "medium" if ref_col in HIGH_YIELD_REFS else "low"
                     add(row, "blank_ref", ref_col, sev,
                         f"{'/'.join(data_cols)} populated but {ref_col} blank — [ref]-fill target")

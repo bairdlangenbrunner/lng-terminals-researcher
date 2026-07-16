@@ -40,8 +40,18 @@ Not part of the routine quarterly cycle — it's an on-request analysis.
 - `missing_year_refsweep_results.csv` / `.json` — same rows, flat.
 
 Columns: `country, terminal, unit, fuel_type, status, substatus, tl_order, year,
-class_out, tier, independent, ref1, ref2, ref3, source_language, researcher_notes,
-pu_id, st_id`.
+class_out, tier, independent, ref1, ref2, ref3, refs_overflow, verified,
+source_language, researcher_notes, pu_id, st_id`.
+
+- `refs_overflow` = any 4th+ proposed ref beyond `ref1`–`ref3`, `" | "`-joined — a shard's
+  research sometimes turns up more corroborating URLs than the three display columns hold;
+  this column keeps them visible instead of silently dropping them.
+- `verified` = a compact "N/M ok" summary of the shard's `verifications` array (N of M
+  attempted URLs passed `url_verifier.py`).
+- The `.json` output is **lossless**: it carries the full `proposed_refs` and
+  `verifications` arrays per row (not just the flattened `ref1..3` + `refs_overflow` /
+  `verified` columns the CSV/xlsx show), so nothing found during research is discarded —
+  only the flat display is capped at three refs plus the overflow column.
 
 - `st_id` = `status_timeline.id` (the specific timeline row).
 - `fuel_type` = `lng_unit.fuel` (LNG / Oil / NGL / NH3 / LH2 / combos) — lets the

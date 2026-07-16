@@ -321,7 +321,10 @@ def _load_records(basedir):
 
 
 def _norm(r):
-    refs = ((r.get("proposed_refs") or []) + ["", "", ""])[:3]
+    raw_refs = [u for u in (r.get("proposed_refs") or []) if u]
+    refs = (raw_refs + ["", "", ""])[:3]
+    verifs = r.get("verifications") or []
+    n_ok = sum(1 for v in verifs if v.get("ok"))
     return {
         "country": r.get("country", ""), "terminal": r.get("terminal", ""),
         "unit": r.get("unit", ""), "fuel_type": r.get("fuel_type") or "",
@@ -329,7 +332,10 @@ def _norm(r):
         "substatus": r.get("substatus") or "", "tl_order": r.get("timeline_order", ""),
         "year": r.get("proposed_year") or "", "class_out": r.get("class_out", ""),
         "tier": r.get("tier") or "", "independent": r.get("independent", ""),
+        "verified": f"{n_ok}/{len(verifs)} ok" if verifs else "",
         "ref1": refs[0], "ref2": refs[1], "ref3": refs[2],
+        # 4th+ refs — shown, not silently dropped (shard_05 West Delta had a 4th)
+        "refs_overflow": " | ".join(raw_refs[3:]),
         "source_language": r.get("source_language") or "",
         "researcher_notes": (r.get("researcher_notes") or "").replace("\n", " "),
         "pu_id": r.get("pu_id", ""), "st_id": r.get("st_id", ""),
@@ -337,8 +343,8 @@ def _norm(r):
 
 
 COLS = ["country", "terminal", "unit", "fuel_type", "status", "substatus",
-        "tl_order", "year", "class_out", "tier", "independent",
-        "ref1", "ref2", "ref3",
+        "tl_order", "year", "class_out", "tier", "independent", "verified",
+        "ref1", "ref2", "ref3", "refs_overflow",
         "source_language", "researcher_notes", "pu_id", "st_id"]
 
 
@@ -383,7 +389,14 @@ def cmd_build(args):
     for rec in base.values():
         rec["fuel_type"] = fuels.get(str(rec.get("pu_id")), rec.get("fuel_type", ""))
 
-    flat = [_norm(r) for r in base.values()]
+    # flat rows carry the display columns PLUS the full proposed_refs/verifications
+    # arrays so the JSON output is lossless (the CSV/xlsx write only COLS).
+    flat = []
+    for r in base.values():
+        n = _norm(r)
+        n["proposed_refs"] = [u for u in (r.get("proposed_refs") or []) if u]
+        n["verifications"] = r.get("verifications") or []
+        flat.append(n)
 
     def tl(x):
         try:
@@ -468,7 +481,9 @@ def _write_xlsx(path, flat, fill, unr, tiers):
     widths = {"country": 14, "terminal": 30, "unit": 20, "fuel_type": 10,
               "status": 13, "substatus": 12,
               "tl_order": 8, "year": 7, "class_out": 12, "tier": 8, "independent": 11,
-              "ref1": 38, "ref2": 38, "ref3": 38, "source_language": 10,
+              "verified": 10,
+              "ref1": 38, "ref2": 38, "ref3": 38, "refs_overflow": 38,
+              "source_language": 10,
               "researcher_notes": 70, "pu_id": 9, "st_id": 8}
     for i, name in enumerate(COLS, 1):
         ws.column_dimensions[get_column_letter(i)].width = widths[name]

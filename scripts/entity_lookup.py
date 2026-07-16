@@ -48,6 +48,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 from normalize import normalize_entity, normalize_country
+from colmap import load_colmap as _load_colmap
 
 
 DEFAULT_BASE_URL = "https://internal-project-db-host"
@@ -57,13 +58,6 @@ _DEFAULT_UA = (
     "AppleWebKit/537.36 (KHTML, like Gecko) "
     "Chrome/120.0.0.0 Safari/537.36"
 )
-
-
-def _load_colmap(csv_path):
-    map_path = Path(csv_path).with_suffix(".colmap.json")
-    if not map_path.exists():
-        raise RuntimeError(f"colmap.json not found at {map_path}")
-    return json.loads(map_path.read_text())
 
 
 def lookup_local(name, country=None, csv_path=DEFAULT_CSV):
