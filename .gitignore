@@ -34,7 +34,7 @@ fsru_sync.json
 # Agent-authored inputs there ARE tracked (diffable audit trail — the recon xlsx
 # silently drops sheets when they go missing). Derived artifacts (extracted CSV,
 # diff, FSRU fleet) stay ignored everywhere via the patterns above; assembled
-# sweep outputs (_build/, _build_disc/) and parked prior batches (_prior/<batch>/)
+# sweep outputs (_build/) and parked prior batches (_prior/<batch>/)
 # sit one level deeper than the re-includes below, so they stay ignored.
 # Cross-batch state (monitor_list/current.json) is committed.
 staged_*.json
@@ -50,7 +50,6 @@ giignl_prose_corrections.json
 # Derived per-region build scratch (assembled staged_*.json + the _roster_*.json the build
 # regenerates each run). Fully reproducible from the tracked per-country JSON; never commit.
 batches/staging/*/_build/
-batches/staging/*/_build_disc/
 
 # Batch deliverable workbooks are large regenerable binaries — keep them untracked.
 # But TRACK the staging tree (batches/staging/**: per-country research JSON, the sweep

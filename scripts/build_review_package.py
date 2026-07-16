@@ -472,22 +472,10 @@ SHEET_DESCRIPTIONS = {
     ),
 }
 
-# Columns NEVER written by this script (per gem_db_schema.md). Kept as two
-# named groups so the README sheet can enumerate them with the reason.
-COMPUTED_COLUMNS = {
-    "TerminalID", "UnitID", "Wiki",
-    "CapacityinMtpa", "CapacityinBcm/y",
-    "TotImportLNGTerminalCapacityinMtpa", "TotImportLNGTerminalCapacityinBcm/y",
-    "TotExportLNGTerminalCapacityinMtpa", "TotExportLNGTerminalCapacityinBcm/y",
-    "CostUSD", "CostEuro",
-    "TotKnownTerminalCostsUSD", "TotTerminalCost [ref]",
-}
-OUT_OF_SCOPE_COLUMNS = {
-    "PCINotes", "PCI3", "PCI4", "PCI5", "PCI6",
-    "LH2", "NH3", "SyntheticLNG", "RetrofitProposed",
-    "AltFuelPrelimAgreement", "AltFuelCallMarketInterest",
-}
-READ_ONLY_COLUMNS = COMPUTED_COLUMNS | OUT_OF_SCOPE_COLUMNS
+# Columns NEVER written by this script (per gem_db_schema.md). Canonical sets
+# live in schema_constants.py (shared with completeness_sweep.py / pull_gem_db.py)
+# so the README sheet can enumerate them with the reason.
+from schema_constants import COMPUTED_COLUMNS, OUT_OF_SCOPE_COLUMNS, READ_ONLY_COLUMNS
 
 
 def _safe_load(path, default=None):
@@ -499,6 +487,170 @@ def _safe_load(path, default=None):
     except json.JSONDecodeError as e:
         print(f"  WARNING: {path} is not valid JSON ({e}); treating as empty", file=sys.stderr)
         return default
+
+
+# Known/required keys per staged-record type. A key outside `known` is never read by
+# any sheet builder, so a typo becomes a silently blank cell — the updates_summary
+# citation column shipped blank in every batch while records said `ref_urls` and the
+# sheet read `ref_url`. Warn-only: never fail a build over vocabulary drift, but say it.
+# When a sheet builder gains a column, add its key here in the same change.
+STAGED_KEYS = {
+    "updates": {
+        "known": {
+            "terminal_id", "unit_id", "terminal_name", "unit_name", "country",
+            "field_name", "old_value", "new_value", "confidence", "source_tier",
+            "ref_field", "ref_urls", "ref_url", "source_notes", "scope_note",
+            "researcher_initials", "delete",
+            # captive-power (§9) review annotations riding on the update record
+            "mechanical", "gogpt_plant_id", "gogpt_plant", "gogpt_wiki_url",
+        },
+        "required": {"terminal_id", "field_name"},
+    },
+    "status_timeline": {
+        # matches build_status_timeline_sheet's headers
+        "known": {
+            "terminal_id", "unit_id", "terminal_name", "unit_name",
+            "operation", "status", "sub_status", "year", "part_of_year",
+            "notes", "source_url", "confidence",
+            "validation_warnings", "legal_transition_check",
+            "researcher_initials",
+        },
+        "required": {"terminal_id", "status"},
+    },
+    "entity_additions": {
+        # matches build_entity_additions_sheet's headers
+        "known": {
+            "entity_name", "entity_type", "country_of_hq", "parent_entity",
+            "rationale_for_new_entity", "lookup_was_run", "lookup_result_summary",
+            "referenced_by_terminals", "referenced_by_units",
+            "researcher_initials",
+        },
+        "required": {"entity_name"},
+    },
+    "qa_review": {
+        # matches build_qa_review_sheet's headers
+        "known": {
+            "category", "terminal_id", "unit_id", "terminal_name",
+            "issue", "severity", "suggested_action", "gem_field", "paste_value",
+            "researcher_initials",
+        },
+        "required": {"issue"},
+    },
+    "wiki_updates": {
+        # matches build_wiki_updates_sheet's headers
+        "known": {
+            "country", "terminal_id", "terminal_name", "unit_id",
+            "topic", "wiki_text", "verification_status", "source_urls",
+            "researcher_initials",
+        },
+        # terminal_name, not terminal_id: country-wide wiki notes legitimately
+        # carry a blank terminal_id (e.g. "Bangladesh (country-wide)").
+        "required": {"terminal_name", "wiki_text"},
+    },
+    "country_notes": {
+        # matches build_country_notes_sheet's headers
+        "known": {
+            "country", "topic", "contribution",
+            "gem_field", "paste_value",
+            "source_url", "researcher_initials",
+        },
+        "required": {"country", "contribution"},
+    },
+    "fsru_sync": {
+        # matches build_fsru_sync_sheet's per-matched_pair keys (fsru_sync.json is
+        # a dict; validate the "matched_pairs" list it carries, not the dict itself)
+        "known": {
+            "gem_terminal_id", "gem_unit_id", "gem_terminal_name",
+            "vessel_name", "in_sync", "disagreements",
+        },
+        "required": {"gem_terminal_id", "vessel_name"},
+    },
+    "captive_terminal_first": {
+        # matches build_terminal_first_sheet's headers
+        "known": {
+            "terminal", "terminal_id", "mechanical", "confidence",
+            "gogpt_captive_prior", "confirmed_how", "confirmed_how [ref]",
+        },
+        "required": {"terminal_id"},
+    },
+    "captive_neighboring_plants": {
+        # matches build_neighboring_plants_sheet's headers
+        "known": {
+            "terminal", "terminal_id", "rank", "neighboring_plant", "dist_km",
+            "gogpt_mw", "gogpt_units", "gogpt_captive", "gogpt_status", "subnational",
+            "relation", "info_url", "gogpt_record (nav only)",
+        },
+        "required": {"terminal_id"},
+    },
+    "captive_gogpt_candidates": {
+        # matches build_gogpt_candidates_sheet's headers
+        "known": {
+            "terminal", "terminal_id", "gogpt_candidate", "electric_mw", "confidence",
+            "basis", "basis [ref]", "mechanical_drive_note",
+        },
+        "required": {"terminal_id"},
+    },
+    "new_units": {
+        # matches build_new_units_sheet's headers, plus confidence_per_field (read
+        # via u.get() beyond the headers list)
+        "known": {
+            "terminal_id", "TerminalName",
+            "UnitName", "UnitName Local",
+            "Capacity", "CapacityUnits",
+            "Status", "Substatus", "FIDStatus", "FIDYear",
+            "ProposalYear", "ConstructionYear", "OriginalPlannedStartYear",
+            "LatestPlannedStartYear", "ActualStartYear",
+            "ShelvedYear", "CancelledYear",
+            "Floating", "FloatingVesselName", "VesselOwner", "VesselOperator",
+            "Capacity [ref]", "ProposalDate [ref]", "ConstructionDate [ref]",
+            "StartDate [ref]", "ShelvedYear [ref]", "CancelledYear [ref]",
+            "FloatingVesselName [ref]", "VesselOwner [ref]", "VesselOperator [ref]",
+            "Source [ref]",
+            "ResearcherNotesUnit",
+            "researcher_initials", "confidence_overall",
+            "confidence_per_field",
+        },
+        "required": {"terminal_id", "UnitName"},
+    },
+    "monitor_list": {
+        # matches build_monitor_list_sheet's headers
+        "known": {
+            "country", "candidate_name", "sponsor_or_proposer",
+            "first_observed_batch", "last_observed_batch",
+            "current_state", "missing_threshold_elements",
+            "watch_for", "best_lead_url", "notes",
+        },
+        "required": {"country", "candidate_name"},
+    },
+    # "new_terminals" is intentionally NOT a static entry here — its known-key set
+    # depends on the live gem_export.csv header (build_new_terminals_sheet reads the
+    # CSV header at build time, same as the actual sheet). main() builds its spec
+    # dynamically and passes it directly to _validate_records.
+}
+
+
+def _validate_records(label, records, spec=None):
+    """Warn (never fail) on unknown or missing-required keys in a staged list."""
+    spec = spec or STAGED_KEYS.get(label)
+    if not spec or not isinstance(records, list):
+        return
+    known, required = spec.get("known", set()), spec.get("required", set())
+    unknown, missing = {}, {}
+    for i, r in enumerate(records):
+        if not isinstance(r, dict):
+            continue
+        for k in r:
+            if k not in known:
+                unknown.setdefault(k, []).append(i)
+        for k in required:
+            if not str(r.get(k, "")).strip():
+                missing.setdefault(k, []).append(i)
+    for k, idxs in sorted(unknown.items()):
+        print(f"  GUARD: staged_{label}: unknown key {k!r} on {len(idxs)} record(s) "
+              f"(first: #{idxs[0]}) — no sheet reads it (typo? wrong record type?)")
+    for k, idxs in sorted(missing.items()):
+        print(f"  GUARD: staged_{label}: required key {k!r} blank/missing on "
+              f"{len(idxs)} record(s) (first: #{idxs[0]})")
 
 
 def _csv_header(gem_csv_path):
@@ -789,17 +941,18 @@ def build_updates_sheet(wb, updates):
         "mechanical",
         "terminal_id", "unit_id", "terminal_name", "unit_name", "country",
         "field_name", "old_value", "new_value",
-        "ref_url", "confidence", "source_tier", "source_notes",
+        "ref_urls", "confidence", "source_tier", "source_notes",
         "scope_note", "researcher_initials",
     ]
     _write_header(ws, headers)
     for i, u in enumerate(updates, start=2):
         confidence_map = {"new_value": u.get("confidence")}
-        disp = u
+        disp = dict(u)
+        # Records cite via ref_urls (list); tolerate the legacy singular key.
+        disp["ref_urls"] = u.get("ref_urls") or u.get("ref_url") or ""
         if u.get("delete"):
             # Staged deletion (green+empty convention): the paste view leaves the cell blank,
             # but the human-readable list must SAY it's a deletion, not just show an empty cell.
-            disp = dict(u)
             disp["new_value"] = "(DELETE — value unsupported)"
         _write_row(ws, disp, headers, i, confidence_map=confidence_map)
     _autosize(ws)
@@ -3063,14 +3216,21 @@ def main():
     country_breakdown = None
     if args.mode == "update":
         updates = _safe_load(inputs_dir / "staged_updates.json", default=[])
+        _validate_records("updates", updates)
         warn_duplicate_giignl_refs(updates)
         timeline = _safe_load(inputs_dir / "staged_status_timeline.json", default=[])
+        _validate_records("status_timeline", timeline)
         entity_adds = _safe_load(inputs_dir / "staged_entity_additions.json", default=[])
+        _validate_records("entity_additions", entity_adds)
         stale = _safe_load(inputs_dir / "stale_sweep.json", default={"flagged_units": []})
         country_notes = _safe_load(inputs_dir / "staged_country_notes.json", default=[])
+        _validate_records("country_notes", country_notes)
         qa = _safe_load(inputs_dir / "staged_qa_review.json", default=[])
+        _validate_records("qa_review", qa)
         wiki = _safe_load(inputs_dir / "staged_wiki_updates.json", default=[])
+        _validate_records("wiki_updates", wiki)
         fsru = _safe_load(inputs_dir / "fsru_sync.json", default={"mode": "skipped", "_skip_reason": "not run"})
+        _validate_records("fsru_sync", fsru.get("matched_pairs", []) if isinstance(fsru, dict) else [])
         # Optional scope for the all_fields-CSV-shaped sheet: a list of terminal_ids
         # (or {"terminal_ids": [...]}) whose unit-rows should ALL appear even if a
         # given unit had no change this batch (e.g. a full-country pass).
@@ -3080,8 +3240,11 @@ def main():
         # Captive-power cross-tracker (§9) review-context sheets — each emitted only
         # when its JSON input exists, so normal Update batches never gain these tabs.
         captive_priors = _safe_load(inputs_dir / "captive_terminal_first.json", default=[])
+        _validate_records("captive_terminal_first", captive_priors)
         captive_neighbors = _safe_load(inputs_dir / "captive_neighboring_plants.json", default=[])
+        _validate_records("captive_neighboring_plants", captive_neighbors)
         captive_candidates = _safe_load(inputs_dir / "captive_gogpt_candidates.json", default=[])
+        _validate_records("captive_gogpt_candidates", captive_candidates)
 
         inputs_summary = {
             "updates": len(updates),
@@ -3132,14 +3295,26 @@ def main():
         # Existing-terminal artifacts (status_timeline, wiki, entity, stale, fsru)
         # live exclusively in the update workbook — no row appears in both books.
         new_terms = _safe_load(inputs_dir / "staged_new_terminals.json", default=[])
+        # new_terminals' known-key set is the live gem_export.csv header (same as
+        # what build_new_terminals_sheet itself reads) — built dynamically rather
+        # than as a static STAGED_KEYS entry so a real CSV header never false-warns.
+        _new_terminal_csv_cols = _csv_header(args.gem_csv) or NEW_TERMINALS_FALLBACK_HEADERS
+        _validate_records("new_terminals", new_terms, spec={
+            "known": set(_new_terminal_csv_cols) | set(NEW_TERMINAL_META_COLS) | {"confidence_per_field"},
+            "required": {"TerminalName"},
+        })
         new_units = _safe_load(inputs_dir / "staged_new_units.json", default=[])
+        _validate_records("new_units", new_units)
         monitor = _safe_load(inputs_dir / "staged_monitor_list.json", default=[])
+        _validate_records("monitor_list", monitor)
         prior_monitor = _safe_load(inputs_dir / "prior_monitor_list.json", default=[])
         # Discovery shows its own pass's qa and entity additions (`*.disc.qa.json` /
         # `*.disc.entity.json` → these files); the update workbook shows the
         # update-pass equivalents. New-terminal sponsors ride with the discovery book.
         qa = _safe_load(inputs_dir / "staged_qa_review_discovery.json", default=[])
+        _validate_records("qa_review", qa)
         entity_adds = _safe_load(inputs_dir / "staged_entity_additions_discovery.json", default=[])
+        _validate_records("entity_additions", entity_adds)
 
         # monitor_list rolls the GLOBAL cross-region store forward, but a scoped
         # batch's workbook should list only its own countries; filter the displayed

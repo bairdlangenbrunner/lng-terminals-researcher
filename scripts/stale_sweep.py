@@ -38,13 +38,7 @@ from datetime import datetime, date
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-
-
-def _load_colmap(csv_path):
-    map_path = Path(csv_path).with_suffix(".colmap.json")
-    if not map_path.exists():
-        raise RuntimeError(f"colmap.json not found at {map_path}")
-    return json.loads(map_path.read_text())
+from colmap import load_colmap as _load_colmap
 
 
 def _parse_date(s):
