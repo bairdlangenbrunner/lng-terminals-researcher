@@ -1,86 +1,18 @@
 # `.claude/` — Claude Code configuration
 
-This directory holds the [Claude Code](https://docs.claude.com/en/docs/claude-code)
-configuration for this project. The only file committed here is `settings.json`,
-the **shared team baseline** for tool permissions.
+This repo intentionally commits **no** `settings.json` permission baseline.
+Permissions inherit from the user-global Claude Code settings
+(`~/.claude*/settings.json`), the same as the sibling researcher repos
+(lng-carriers, pipelines, refineries) — kept identical on purpose so no repo
+prompts differently from the others (settled 2026-07-16; a committed `ask`
+rule here used to make only this repo prompt on `git push`).
 
-## `settings.json` — what it does
+Personal per-machine overrides go in `.claude/settings.local.json`
+(gitignored, never committed). Settings layer as: enterprise policy → CLI
+flags → `settings.local.json` → this repo's `settings.json` (absent) →
+user-global.
 
-```json
-{
-  "permissions": {
-    "defaultMode": "acceptEdits",
-    "allow": [ "Bash", "Read", "Write", "Edit", ... ]
-  }
-}
-```
-
-- **`defaultMode: "acceptEdits"`** — Claude auto-accepts file edits and writes in
-  the project without prompting. This is the most permissive *standard* mode; it
-  is **not** the "dangerously bypass" mode (`bypassPermissions`), so a `deny` list
-  is still honored if one is ever added.
-- **`allow` list** — tools/commands that run without a confirmation prompt. A bare
-  tool name with no parentheses (e.g. `"Bash"`) matches **every** use of that tool,
-  so `"Bash"` means *any* shell command runs unprompted. Entries like
-  `"Bash(python3 *)"` would instead allow only matching commands.
-- **`deny` list** — hard blocks that override `allow` (deny always wins). Because
-  this baseline allows bare `Bash`, the deny list is the *only* guard carving
-  dangerous operations back out. The current rules block reading secret files
-  (`.env*`) and a few destructive shell commands (`rm -rf`, `git push --force`,
-  `git reset --hard`). Note Bash deny matching is **prefix-based and best-effort** —
-  the same command phrased differently (e.g. `git push origin main --force`) can
-  slip past a `git push --force` rule. Treat it as a safety net, not a guarantee.
-
-In short: with this config Claude will edit files and run shell commands during a
-batch without stopping to ask. That speed is the point — the whole workflow is
-"produce a staging xlsx," and the hard rule that Claude **never writes to the live
-GEM database** lives in `CLAUDE.md`, not in this permission layer.
-
-> ⚠️ **`deny` rules do NOT apply under `bypassPermissions` mode.** If a user's
-> `settings.local.json` sets `"defaultMode": "bypassPermissions"`, that session
-> skips *all* permission evaluation — both `allow` and `deny`. The only blocks that
-> still fire in bypass mode are two hard-coded circuit breakers (`rm -rf /` and
-> `rm -rf ~`). So the deny rules above protect sessions running the `acceptEdits`
-> baseline (i.e. anyone who hasn't opted into local bypass), **not** a bypass
-> session. The only way to enforce hard blocks against bypass is to disable bypass
-> mode entirely via enterprise `managed-settings.json`
-> (`"disableBypassPermissionsMode": "disable"`).
-
-## How settings layer (precedence, highest wins)
-
-1. Enterprise managed policy (`managed-settings.json`) — if your org pushes one
-2. Command-line flags
-3. `.claude/settings.local.json` — **personal, gitignored, never committed**
-4. `.claude/settings.json` — **this file, shared/committed**
-5. `~/.claude/settings.json` — your user-global settings
-
-Settings are **merged**, not replaced: a higher layer wins on conflicting scalar
-keys (like `defaultMode`), while permission `allow`/`deny`/`ask` lists
-**accumulate** across all layers. `deny` always beats `allow` at any level.
-
-## Making it less (or more) permissive for yourself
-
-Don't edit `settings.json` for a personal preference — that changes the shared
-baseline for everyone. Instead create your own `.claude/settings.local.json`
-(gitignored), which overrides this file for you only. For example, to require a
-prompt before shell commands while keeping auto-edits:
-
-```json
-{
-  "permissions": {
-    "defaultMode": "acceptEdits",
-    "deny": [ "Bash" ]
-  }
-}
-```
-
-## What is / isn't committed in `.claude/`
-
-| Path | Committed? | Purpose |
-|---|---|---|
-| `settings.json` | yes | Shared team permission baseline |
-| `README.md` | yes | This file |
-| `settings.local.json` | no (gitignored) | Your personal overrides |
-
-Secrets are never stored here — GEM auth cookies live in `.env`, which is
-separately gitignored.
+The guardrails that matter for this project are not permission rules: the
+"never write to the live GEM database" rule and the staging-xlsx workflow
+live in `CLAUDE.md`. Secrets (GEM auth cookies) live in `.env`, which is
+gitignored and denied to Claude's Read tool at the user-global layer.
