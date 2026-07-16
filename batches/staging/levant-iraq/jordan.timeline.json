@@ -1,0 +1,34 @@
+[
+  {
+    "terminal_id": "T100001048176",
+    "unit_id": "G100001055238",
+    "terminal_name": "Sheikh Sabah LNG Terminal",
+    "unit_name": "--",
+    "operation": "append",
+    "status": "construction",
+    "sub_status": "",
+    "year": 2024,
+    "part_of_year": "",
+    "notes": "Existing Postgres timeline (fetch_timeline.py G100001055238): tl_order1 proposed/2024, tl_order3 operating(planned)/2026 - no construction milestone present. Appending construction/2024, anchored to the Aug 2024 EPCIC (engineering/procurement/construction/installation/commissioning) turnkey contract award to the GAS Entec/AG&P/Issa Haddadin consortium, corroborated by an Oct 2025 ministerial site visit describing 'ongoing development works' with the ADC project manager and contractor present. Sequence proposed(2024) -> construction(2024) -> operating-planned(2026) is monotonic (no backward transition); same-year proposed->construction reflects a fast-tracked EPCIC award, not a data error.",
+    "source_url": "https://www.ogj.com/pipelines-transportation/lng/article/55134517/aqaba-development-lets-contract-to-build-lng-terminal-in-the-kingdom-of-jordan",
+    "confidence": "yellow",
+    "legal_transition_check": "monotonic: proposed(2024) -> construction(2024) -> operating/planned(2026); no backward transition",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130591",
+    "unit_id": "G100002059100",
+    "terminal_name": "Aqaba Jordan FSRU",
+    "unit_name": "--",
+    "operation": "append",
+    "status": "retired",
+    "sub_status": "planned",
+    "year": 2026,
+    "part_of_year": "",
+    "notes": "Existing Postgres timeline (fetch_timeline.py G100002059100): tl_order1 operating(actual)/2015, tl_order4 retired(planned)/2025 - matching GEM's PlannedStopYear=2025. That 2025 target has confirmably slipped: the terminal continued operating past 2025 via a new chartered FSRU (Excelerate Acadia, arrived Aqaba ~22 Jun 2026, 9-month NEPCO charter). Appending a corrected retired/planned milestone at 2026, aligned with the targeted Q3-Q4 2026 / September 2026 entry into service of the permanent Sheikh Sabah LNG Terminal (onshore ORU + BW LNG 10-year FSU charter), which is expected to supersede the interim-FSRU operating model. This is a forward slip of the SAME planned-retirement milestone, not a status reversal.",
+    "source_url": "https://www.rivieramm.com/news-content-hub/news-content-hub/bw-lng-secures-10-year-fsu-charter-with-nepco-82193",
+    "confidence": "green",
+    "legal_transition_check": "same status/substatus (retired/planned), year revised forward 2025->2026 - not a backward or conflicting transition",
+    "researcher_initials": "AI-draft (sweep)"
+  }
+]

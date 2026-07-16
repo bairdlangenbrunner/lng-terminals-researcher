@@ -1,0 +1,12 @@
+{
+  "scope_slug": "levant-iraq",
+  "workflow": "update+discovery",
+  "tier": "exhaustive",
+  "countries": ["Cyprus", "Iraq", "Israel", "Jordan", "Lebanon"],
+  "started": "2026-07-16",
+  "built": "2026-07-16",
+  "applied": null,
+  "status": "built",
+  "run_record": "batches/run_records/2026-07-16_levant-iraq_exhaustive-update-and-discovery.md",
+  "notes": "Correction to the task brief that seeded this backfill: the brief described this dir as 'in_progress' with countries 'lebanon/jordan/iraq/cyprus' (4). File evidence says otherwise -- the run record documents a completed assembly (136 updates, 3 timeline, 24 qa, 8 wiki, 2 entity, 2 monitor), both workbooks exist on disk (batches/lng_terminals_batch_20260716_1049_ET_levant-iraq_exhaustive_update.xlsx and ..._discovery.xlsx, recalc OK/zero formula errors), and all done markers were pruned per the run record ('done markers pruned now the run is recorded here') -- the standard end-of-batch cleanup, not an in-progress state. The run also covers a 5th country, Israel, which the brief omitted. Status set to 'built' (not 'in_progress') and countries set to the full 5 on this file evidence. This is the exact near-duplicate-risk case that motivated the coverage ledger: a future batch must not re-research these 5 countries as if untouched."
+}

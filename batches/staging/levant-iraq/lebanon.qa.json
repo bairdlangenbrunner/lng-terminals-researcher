@@ -1,0 +1,52 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130965",
+    "unit_id": "G100002096500",
+    "terminal_name": "Zahrani FSRU",
+    "issue": "Staged shelved->cancelled (inferred 4y) escalation rests on absence of any Zahrani-FSRU-specific news since 2022, not an explicit cancellation statement. All current Lebanon FSRU/gas-to-power coverage (WB EOI Jun-2025, IFC advisory Nov-2025, Egypt gas MoU Jan-2026) discusses only the new Deir Ammar site and simply never mentions Zahrani -- silence, not confirmation. The transition itself is mechanically due (4+ years since last activity) and legal, so it is staged rather than punted, but the sourcing is weaker than a typical inferred-cancellation (reused 2022 source per the methodology's fallback allowance, not a fresh document establishing the drop).",
+    "severity": "medium",
+    "suggested_action": "Reviewer sign-off recommended before applying; if reviewer has any more recent Lebanese-government or MoEW source that still lists Zahrani as active, keep it at shelved instead.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dead_ref",
+    "terminal_id": "T100000130965",
+    "unit_id": "G100002096500",
+    "terminal_name": "Zahrani FSRU",
+    "issue": "PowerPlantsSupplied [ref] URL https://files.elnashra.com/elnashra/documents/4857824_1645366179.pdf fails DNS resolution entirely ('Could not resolve host', confirmed via curl) -- not a bot-block (elnashra.com's main domain returns a live Cloudflare challenge page, but the files.elnashra.com subdomain no longer resolves at all). Replaced in lebanon.updates.json with an identical-document mirror at lebanoneconomy.net (same filename/ID, verified live and content-matching).",
+    "severity": "low",
+    "suggested_action": "Applied replacement ref is in updates.json; no further action needed for this record. Worth checking if other GEM terminals cite files.elnashra.com URLs -- may be a systematically dead subdomain akin to the known giignl.org rot.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_field_expected",
+    "terminal_id": "T100001048245",
+    "unit_id": "G100001055355",
+    "terminal_name": "Deir Ammar FSRU",
+    "issue": "FloatingVesselName remains blank. Project is at the advisory/PPP-structuring stage (IFC lead transaction advisor as of Nov-2025); no FSRU vessel has been tendered, selected, or chartered yet.",
+    "severity": "low",
+    "suggested_action": "No action -- blank is correct at this stage; revisit once a vessel charter or FSRU tender award is announced.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_field_expected",
+    "terminal_id": "T100000130963",
+    "unit_id": "G100002096300",
+    "terminal_name": "Beddawi FSRU",
+    "issue": "FloatingVesselName remains blank -- the 2019-2020 Petronas/shortlist stage never reached vessel charter before the project went dormant.",
+    "severity": "low",
+    "suggested_action": "No action -- blank is correct given cancelled status.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_field_expected",
+    "terminal_id": "T100000130964",
+    "unit_id": "G100002096400",
+    "terminal_name": "Selaata FSRU",
+    "issue": "FloatingVesselName remains blank -- the QatarEnergy/Eni consortium offer was reportedly never finalized before the project went dormant.",
+    "severity": "low",
+    "suggested_action": "No action -- blank is correct given cancelled status.",
+    "researcher_initials": "AI-draft"
+  }
+]
