@@ -1,0 +1,42 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130829",
+    "unit_id": "G100002082901",
+    "terminal_name": "NewMed FLNG Terminal",
+    "issue": "FloatingVesselName correctly blank -- no vessel has been selected or chartered; the project only reached the FEED-provider stage (Golar LNG / Exmar NV, 2019) and has never progressed to a vessel-selection/charter decision.",
+    "severity": "low",
+    "suggested_action": "No action -- leave blank; confirm at next update pass if project advances to FID.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130590",
+    "unit_id": "G100002059001",
+    "terminal_name": "Tamar FLNG Terminal",
+    "issue": "FloatingVesselName correctly blank -- project (Gazprom/Levant LNG-linked floating concept) was cancelled/abandoned before any vessel-selection stage was reached.",
+    "severity": "low",
+    "suggested_action": "No action -- leave blank.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "sourcing",
+    "terminal_id": "T100000130588",
+    "unit_id": "G100002058801",
+    "terminal_name": "Eilat FLNG Terminal",
+    "issue": "All 6 populated fields (FacilityType, Owner, Capacity, Location, Cost, ProposalYear) cite a single source (en.globes.co.il/en/article-1000714303) -- live and PASS-verified, but a lone non-primary source per CLAUDE.md sourcing rules (yellow-tier at best). Could not find a second independent corroborating source for this ~2012-era Eilat FLNG proposal within this batch's search effort.",
+    "severity": "medium",
+    "suggested_action": "Future pass: search Israeli Ministry of Energy archives or a second 2012-2014-era trade press piece to corroborate Eilat's basic facts to green tier.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "sourcing",
+    "terminal_id": "T100000130590",
+    "unit_id": "G100002059001",
+    "terminal_name": "Tamar FLNG Terminal",
+    "issue": "Owner and Source refs both point to spglobal.com, which returns 403 (bot-blocked) on live re-fetch. Content Wayback-confirmed as matching, so treated as blue (not dead) per the bot-block-is-not-dead convention -- flagging so a reviewer with an S&P Global login/IP can re-verify directly if desired.",
+    "severity": "low",
+    "suggested_action": "No action required; optional direct re-check by a reviewer with subscription access.",
+    "researcher_initials": "AI-draft"
+  }
+]

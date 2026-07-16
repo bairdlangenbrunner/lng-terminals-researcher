@@ -55,6 +55,7 @@ from normalize import (
     parse_entity_list,
     to_mtpa,
 )
+from colmap import load_colmap as _load_colmap
 
 # --- similarity thresholds (visible + tunable; deterministic) ---------------
 NAME_SIM_DUPLICATE = 0.92   # near-identical name -> duplicate outright
@@ -65,16 +66,6 @@ DIST_NEAR_KM = 10.0         # within this, same port/complex — corroborating
 DIST_SAME_AREA_KM = 50.0    # within this, location is corroborating-ish
 CAP_RATIO_NEAR = 0.85       # min/max capacity ratio >= this == within ~15%
 REVIVED_STATUSES = {"cancelled", "shelved"}
-
-
-def _load_colmap(csv_path):
-    """Load the colmap.json sibling, or raise if missing."""
-    map_path = Path(csv_path).with_suffix(".colmap.json")
-    if not map_path.exists():
-        raise RuntimeError(
-            f"colmap.json not found at {map_path}. Run pull_gem_db.py first."
-        )
-    return json.loads(map_path.read_text())
 
 
 def _to_float(x):

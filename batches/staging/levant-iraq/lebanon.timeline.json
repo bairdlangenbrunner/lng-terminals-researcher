@@ -1,0 +1,18 @@
+[
+  {
+    "terminal_id": "T100000130965",
+    "unit_id": "G100002096500",
+    "terminal_name": "Zahrani FSRU",
+    "unit_name": "--",
+    "operation": "append",
+    "status": "cancelled",
+    "sub_status": "inferred 4 y",
+    "year": 2026,
+    "part_of_year": "",
+    "notes": "Existing Postgres timeline (fetch_timeline.py G100002096500, pulled 2026-07-16): [1] proposed, 2019; [2] shelved/inferred 2y, 2024 (last confirmed activity 2022 per ResearcherNotesUnit 'Last formal update was in 2022, so shelved as of 2024'). This appends a 3rd entry: cancelled/inferred 4y, 2026. Legal per lifecycle_rules.md ('shelved can transition to cancelled'). Rests on the mechanical dormancy clock: shelved (2024) + 2 more years with no update = 4 years total since last activity (2022) -> now 2026-07, threshold met. 2026-07 re-search (Zahrani FSRU/LNG/power plant, Qatar/Eni Lebanon FSRU) found no Zahrani-FSRU-specific news newer than the 2022 planning document; current Lebanon gas-to-power coverage (WB EOI Jun-2025, IFC advisory Nov-2025, Egypt gas MoU Jan-2026) is exclusively about the new Deir Ammar site and never mentions Zahrani/Selaata/Beddawi. No explicit sponsor cancellation statement found -- this is an absence-based inference under the fallback rule (reusing the last-active-status source), not a confirmed cancellation. Flagged for reviewer sign-off given the weaker (silence-based) evidentiary basis, though the transition itself (shelved -> cancelled) is a normal monotonic dormancy escalation, not a forbidden/non-monotonic one.",
+    "source_url": "https://lebanoneconomy.net/wp-content/uploads/2022/02/4857824_1645366179.pdf",
+    "confidence": "yellow",
+    "legal_transition_check": "shelved -> cancelled is a legal transition per lifecycle_rules.md ('shelved can transition to: cancelled (either confirmed or inferred)'). Monotonic, not flagged as forbidden. Anchor year invariant (ShelvedYear <= CancelledYear) holds: 2024 <= 2026.",
+    "researcher_initials": "AI-draft (sweep)"
+  }
+]

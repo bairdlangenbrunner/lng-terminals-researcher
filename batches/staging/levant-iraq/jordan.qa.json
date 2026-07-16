@@ -1,0 +1,52 @@
+[
+  {
+    "category": "status_confidence",
+    "terminal_id": "T100001048176",
+    "unit_id": "G100001055238",
+    "terminal_name": "Sheikh Sabah LNG Terminal",
+    "issue": "Staged Status change proposed->construction (ConstructionYear 2024) rests on: (a) the Aug 2024 EPCIC contract award (3 independent trade sources, solid), and (b) an Oct 2025 ministerial site visit described as reviewing 'ongoing development works' with the project manager and contractor on site - but that site-visit detail traces back through zawya and oilandgasmiddleeast to a single original Jordan Times story, so it does not independently corroborate 'construction'. No source gives an explicit %-complete or a plain 'construction began on X' statement. Reviewer should sanity-check this classification (e.g. against ADC/NEPCO's own project tracker or a newer 2026 site update) before applying.",
+    "severity": "medium",
+    "suggested_action": "Confirm construction status directly with ADC/NEPCO or a more recent (2026) site-progress article before applying; if unconfirmable, revert to 'proposed' and keep only the ConstructionYear/ref as a qa lead.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "duplicate_check",
+    "terminal_id": "T100000130591",
+    "unit_id": "G100002059100",
+    "terminal_name": "Aqaba Jordan FSRU",
+    "issue": "Confirmed NOT a duplicate of T100001048176 (Sheikh Sabah LNG Terminal), despite the shared 'Sheikh Sabah' name/OtherNames overlap. Independent reporting (LNG Prime, Offshore Energy, MEES, Riviera, OGJ, Natural Gas World) consistently distinguishes: (1) this record = the sequence of interim CHARTERED FSRUs (Golar/Energos Eskimo 2015-2025 -> Energos Force 2025-2026 -> Excelerate Acadia from mid-2026) serving Aqaba on short-term leases; (2) T100001048176 = the PERMANENT onshore regasification unit + BW LNG-chartered FSU under construction, targeted for service Sept/Q3-Q4 2026, which will supersede this FSRU record. Two separate physical facilities at the same port, correctly modeled as two TerminalIDs.",
+    "severity": "low",
+    "suggested_action": "No merge needed. Consider adding 'Sheikh Sabah' disambiguation note to both records' OtherNames/ResearcherNotes if not already clear enough for future researchers (both already carry 'Sheikh Sabah...' OtherNames, which is the source of the apparent collision).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "false_positive_flag",
+    "terminal_id": "T100001048176",
+    "unit_id": "G100001055238",
+    "terminal_name": "Sheikh Sabah LNG Terminal",
+    "issue": "The task brief's 'orphan StartDate [ref]' flag for this row appears to be a false positive. Per docs/reference/gem_db_schema.md, StartDate [ref] is the single shared ref column for OriginalPlannedStartYear, LatestPlannedStartYear, AND ActualStartYear (there is no separate [ref] column for the two Planned* fields). This row has OriginalPlannedStartYear=2026 and LatestPlannedStartYear=2026 populated, so the existing StartDate [ref] (prnewswire) is legitimately paired, just not to ActualStartYear (which is blank because the terminal hasn't started yet).",
+    "severity": "low",
+    "suggested_action": "No fix needed on this row; consider updating whatever completeness-sweep logic flags 'orphan StartDate [ref]' to check OriginalPlannedStartYear/LatestPlannedStartYear as valid pairings, not just ActualStartYear.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ownership_precision",
+    "terminal_id": "T100001048176",
+    "unit_id": "G100001055238",
+    "terminal_name": "Sheikh Sabah LNG Terminal",
+    "issue": "Staged Owner = 'Aqaba Development Corporation [100%]'. Two independent trade sources call ADC 'the state-owned infrastructure company and the client for the facility,' but no source gives an explicit ownership percentage or describes whether NEPCO/Ministry of Energy hold a co-ownership stake (they are described as partners/overseers, not named as co-owners). A separate Oct 2025 tripartite FSRU-transport agreement also involves a 'Jordanian-Egyptian Fajr for Natural Gas Company' in the broader gas-transport arrangement, though not tied to the Sheikh Sabah terminal specifically.",
+    "severity": "low",
+    "suggested_action": "Reviewer may want to confirm the exact ownership split with ADC/NEPCO directly rather than rely on the inferred 100%.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "vessel_timing_precision",
+    "terminal_id": "T100000130591",
+    "unit_id": "G100002059100",
+    "terminal_name": "Aqaba Jordan FSRU",
+    "issue": "FloatingVesselName staged as Excelerate Acadia based on its arrival at Aqaba (~22 Jun 2026) and 9-month NEPCO charter (executed 5 May 2026, targeted mid-2026 start). The most recent verifiable source (29 Jun 2026, LNG Prime) still described Acadia as in commissioning/not-yet-operational, with Energos Force still moored alongside pending its own redeployment to Germany's Stade terminal (ops there start Sept 2026). No source dated after 29 Jun 2026 was found confirming the exact day Acadia took over commercial operations from Force.",
+    "severity": "low",
+    "suggested_action": "If reviewer has access to more recent (July 2026) shipping/AIS data or a NEPCO statement, confirm the precise handover date; otherwise the staged vessel/operator change is well-supported as the current/imminent state.",
+    "researcher_initials": "AI-draft"
+  }
+]

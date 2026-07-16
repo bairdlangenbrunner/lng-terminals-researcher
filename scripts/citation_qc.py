@@ -45,19 +45,13 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 
 from url_verifier import verify_url, clear_cache  # noqa: E402
+from colmap import load_colmap as _load_colmap  # noqa: E402
 
 # Read-only / computed ref columns the build never writes — skip them here too.
 _EXCLUDED_REF_KEYS = {"tot_terminal_cost_ref"}
 
 _URL_RE = re.compile(r"https?://[^\s,;\"'<>]+")
 _TRAILING_PUNCT = ".,;:)]}>\"'"
-
-
-def _load_colmap(csv_path):
-    map_path = Path(csv_path).with_suffix(".colmap.json")
-    if not map_path.exists():
-        raise RuntimeError(f"colmap.json not found at {map_path}")
-    return json.loads(map_path.read_text())
 
 
 def _extract_urls(cell):

@@ -1,5 +1,25 @@
 # LNG sweep — progress ledger
 
+## ✅ CLOSED — 2026-07-16 (this file is now historical; do not resume from it)
+
+This Asia sweep was **formally closed** during the 2026-07-16 repo audit
+(`docs/repo_audit_2026-07-16.md`) after sitting stalled since 2026-07-08 with 4 of 22
+groups landed (japan, south-korea, taiwan, + a trivial vietnam touch). Coverage state
+now lives in the **coverage ledger** — per-dir `batches/staging/*/meta.json` +
+`python scripts/coverage_status.py` — which supersedes this file as the "what was last
+done where" source. `batches/staging/asia/meta.json` records what this sweep actually
+covered; `asia/_archive_pre20260708/meta.json` credits the June full-tracker vintage
+for the countries this sweep never reached.
+
+- The remaining scope (china ×4 shards, indonesia, malaysia, myanmar, cambodia,
+  singapore, brunei, hong-kong, turkmenistan, + discovery incl. maldives / north korea /
+  japan / south-korea / taiwan) is **a future batch, dispatched fresh from the ledger's
+  stale list** — not a resume of this sweep. Worklists under `asia/_worklists/` are
+  stale (2026-07-08 export) and must be regenerated from a fresh pull.
+- The done-markers this file calls "authoritative for resume" were pruned 2026-07-16
+  (coverage recorded in meta.json); the resume recipe below is void.
+- Everything below is preserved as the historical record of the sweep as dispatched.
+
 ## ⚠ STATE NOTE — 2026-07-14 (read before resuming the Asia sweep below)
 
 - **Two environment bullets below are now STALE — do not propagate them into dispatch prompts:**

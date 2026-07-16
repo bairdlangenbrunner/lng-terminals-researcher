@@ -1,0 +1,52 @@
+[
+  {
+    "category": "stale_field",
+    "terminal_id": "T100000130432",
+    "unit_id": "G100002043200",
+    "terminal_name": "Cyprus FSRU",
+    "issue": "LatestPlannedStartYear=2026 is now clearly stale. Multiple 2026 sources (Cyprus Mail Jan/Feb/Jul 2026, Hellenic Shipping News) confirm the project is being restarted under a new contractual framework (CPP-Metron consortium contract terminated July 2024; Technip Energies now assessing existing works) and that NO firm replacement completion date has been announced — the energy minister explicitly declined to give one as of Feb 2026 ('not even Technip... could do that'). The government's only public commitment is selecting a new contractor 'by end of 2026'; independent analysis (Cyprus Mail 7/7/2026) estimates realistic first gas 'towards the end of the decade or around 2030', vs. the government's vaguer 'well before the end of the decade'. No single authoritative year to stage as a confident replacement value.",
+    "severity": "medium",
+    "suggested_action": "Leave LatestPlannedStartYear as-is pending a firm official date, or reviewer's judgment call between leaving blank vs. setting a provisional ~2028-2030 range noted as unconfirmed. Re-check next batch once a new contractor is selected (expected ~end of 2026 per the minister).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "weak_sourcing",
+    "terminal_id": "T100001048370",
+    "unit_id": "G100001055528",
+    "terminal_name": "Cyprus LNG Terminal",
+    "issue": "Capacity=5.00 mtpa (export) has a dead [ref] (igu.org LNG2023 report, 404, no wayback snapshot) and no clean independent replacement could be found for the specific 5.00 mtpa total-project figure. Secondary sourcing (IndexBox summary of a Noble Energy feasibility study) describes 'up to three LNG trains, nominal capacity of 5 MTPA each' for the Vasilikos site — which, if that is the basis for GEM's total, would imply the intended total capacity could have been read as up to 15 mtpa (3 trains x 5) rather than 5 mtpa total, though the project was cancelled (2019) before any such distinction was operationally settled.",
+    "severity": "medium",
+    "suggested_action": "Reviewer should check original 2013-2014 project documentation (Noble/Total-era feasibility study, if archived) to confirm whether 5.00 mtpa was meant as per-train or total-project capacity before restaging a [ref]; left Capacity value unchanged in this pass per 'don't manufacture edits'.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "tool_artifact",
+    "terminal_id": "T100000130432",
+    "unit_id": "G100002043200",
+    "terminal_name": "Cyprus FSRU / Hoegh Cyprus FSRU",
+    "issue": "completeness_sweep.py flags 'StartDate [ref]' as an orphan_ref on both the Cyprus FSRU and Hoegh Cyprus FSRU rows. Checked: this is a tool-heuristic false positive — the schema has no separate 'StartDate' data column; 'StartDate [ref]' is the correct paired ref for OriginalPlannedStartYear/LatestPlannedStartYear, both of which are populated on both rows. Not a true orphan; no Rule-F violation.",
+    "severity": "low",
+    "suggested_action": "No action needed. Consider teaching completeness_sweep.py's orphan detector about this StartDate/OriginalPlannedStartYear-LatestPlannedStartYear pairing so it stops flagging it tracker-wide.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "missing_field",
+    "terminal_id": "T100000130828",
+    "unit_id": "G100002082800",
+    "terminal_name": "Hoegh Cyprus FSRU",
+    "issue": "FloatingVesselName is blank. Confirmed genuinely unknowable: per Financial Mirror (2020-04-24/28) and Cyprus Shipping News (2020-04-02) coverage, Hoegh LNG's April 2020 FSRU proposal for Cyprus was an early-stage MOU/licence-application submission that never progressed to naming a specific vessel before the project was shelved in favour of the CPP-Metron-led Cyprus FSRU project (by ~Jan 2021) and then formally cancelled (2021, confirmed).",
+    "severity": "low",
+    "suggested_action": "Leave blank — no vessel was ever named for this proposal.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "weak_sourcing",
+    "terminal_id": "T100001048370",
+    "unit_id": "G100001055528",
+    "terminal_name": "Cyprus LNG Terminal",
+    "issue": "Owner [ref] (DEFA, LinkedIn company page) returns a login-wall soft-error, not a 404 — presumed bot-blocked-live per project convention, but unconfirmable (no wayback snapshot exists). No independent replacement citation for DEFA's 100% ownership of this now-cancelled export-terminal record was found in this pass.",
+    "severity": "low",
+    "suggested_action": "Re-check in a future batch, or accept the LinkedIn ref as bot-blocked-live given DEFA's ownership of ETYFA (and hence this legacy project) is otherwise well corroborated on the sibling Cyprus FSRU row.",
+    "researcher_initials": "AI-draft"
+  }
+]

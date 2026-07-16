@@ -258,7 +258,7 @@ For JV-style entities (e.g. "TotalEnergies-Petronas JV"):
 
 ## §10 Workflow (linear)
 
-1. **Confirm parameters** (§2)
+1. **Confirm parameters** (§2). Write `meta.json` in the batch's staging dir now — every staging dir carries one (`batches/staging/README.md`).
 2. **Materialize scripts** per CLAUDE.md
 3. `python pull_gem_db.py` → fresh CSV, column-index map. **Mandatory every batch.**
 4. `python completeness_sweep.py [--country "<C>"]` → read its `coverage_gap` (§4.0, which countries to add to scope) AND its `dormant_revival_watch` (§4.0a, which dead sites to revival-check) blocks before searching

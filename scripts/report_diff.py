@@ -44,6 +44,7 @@ from normalize import (
     normalize_terminal_name, parse_entity_list, same_owner_entity,
     transliterate_to_english,
 )
+from colmap import load_colmap as _load_colmap
 
 
 DEFAULT_GEM_CSV = "./gem_export.csv"
@@ -1439,13 +1440,6 @@ def _report_row_is_floating(r):
     if (r.get("vessel_name") or "").strip():
         return True
     return (r.get("type") or "").strip().lower() in ("fsru", "fsu", "fru")
-
-
-def _load_colmap(csv_path):
-    map_path = Path(csv_path).with_suffix(".colmap.json")
-    if not map_path.exists():
-        raise RuntimeError(f"colmap.json not found at {map_path}. Run pull_gem_db.py first.")
-    return json.loads(map_path.read_text())
 
 
 def _build_gem_project_table(gem_csv):

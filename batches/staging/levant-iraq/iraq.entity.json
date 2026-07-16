@@ -1,0 +1,18 @@
+[
+  {
+    "entity_name": "South Gas Company",
+    "entity_type": "State-owned company (national oil & gas, Ministry of Oil subsidiary)",
+    "country_of_hq": "Iraq",
+    "parent_entity": "Iraq Ministry of Oil",
+    "rationale_for_new_entity": "Needed to fill the Owner field on Al-Faw FSRU Terminal (T100000131158). Iraq's Cabinet appointed South Gas Company to oversee the Al-Faw fixed regasification platform (Zawya 2024-10-16; Iraq Business News 2024-12-04). SGC is also 51% owner of Basrah Gas Company (JV with Shell/Mitsubishi), tracked elsewhere in GEM's oil & gas infrastructure.",
+    "lookup_was_run": "RUN bare local + --remote",
+    "lookup_result_summary": "entity_lookup.py 'South Gas Company' --remote: local lookup found nothing; remote lookup returned result='not_found_in_local_data' locally and result='no_remote_match' (raw_html_size=6309, no candidates) from the remote endpoint. Per the --remote false-negative caveat, treating this as a lead, not proof of absence -- orchestrator should re-check against the read-only Postgres entity_history before building.",
+    "referenced_by_terminals": [
+      "T100000131158"
+    ],
+    "referenced_by_units": [
+      "G100002115800"
+    ],
+    "researcher_initials": "AI-draft (sweep)"
+  }
+]
