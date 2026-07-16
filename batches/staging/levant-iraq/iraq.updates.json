@@ -1,0 +1,451 @@
+[
+  {
+    "terminal_id": "T100000131158",
+    "unit_id": "G100002115800",
+    "terminal_name": "Al-Faw FSRU Terminal",
+    "unit_name": "--",
+    "country": "Iraq",
+    "field_name": "Owner",
+    "old_value": "unknown",
+    "new_value": "South Gas Company",
+    "confidence": "green",
+    "source_tier": "government/state-company + 2 independent trade press",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.zawya.com/en/projects/oil-and-gas/iraq-to-award-deal-for-faw-gas-platform-hfa1b9rh",
+      "https://www.iraq-businessnews.com/2024/12/04/south-gas-company-to-lead-lng-platform-project/"
+    ],
+    "source_notes": "Iraq's Cabinet appointed South Gas Company (SGC) -- a Ministry of Oil subsidiary, HQ'd at Khor Al-Zubair, Basrah, and 51% owner of Basrah Gas Company -- to oversee establishment of the fixed regasification platform at Grand Al-Faw Port (Zawya 2024-10-16; Iraq Business News 2024-12-04). KBR was separately contracted (via Iraq's Ministry of Planning) for organizational/contractual project-management support -- NOT staged as Owner/Operator since its role is advisory, not asset ownership. No EPC/technical contractor award confirmed as of 2026-07 despite a March-2025 tender launch; searched extensively for a 2025-2026 award announcement, none found -- see qa note.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131158",
+    "unit_id": "G100002115800",
+    "terminal_name": "Al-Faw FSRU Terminal",
+    "unit_name": "--",
+    "country": "Iraq",
+    "field_name": "FacilityType",
+    "old_value": "import",
+    "new_value": "import",
+    "confidence": "blue",
+    "source_tier": "re-verified",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.zawya.com/en/projects/construction/iraqs-proposed-lng-import-terminal-to-be-ready-in-2-years-report-ql10wkzg"
+    ],
+    "source_notes": "zawya verified PASS (token 'Al-Faw'); jiac.it (the other existing ref) returns HTTP 403 to url_verifier.py but content confirmed live via manual fetch -- see qa note on bot-blocked-not-dead citations.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131158",
+    "unit_id": "G100002115800",
+    "terminal_name": "Al-Faw FSRU Terminal",
+    "unit_name": "--",
+    "country": "Iraq",
+    "field_name": "Status",
+    "old_value": "proposed",
+    "new_value": "proposed",
+    "confidence": "blue",
+    "source_tier": "re-verified",
+    "ref_field": null,
+    "ref_urls": [
+      "http://www.iranoilgas.com/news/details?id=25908&title=Iraq+eyes+building+LNG+import+terminal+in+Al-Faw+Port"
+    ],
+    "source_notes": "Re-checked against 2024-2026 reporting (South Gas Co appointed Dec-2024; fixed-platform tender launched Mar-2025; no contract-award or construction-start found through 2026-07). Still proposed -- no status change.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131158",
+    "unit_id": "G100002115800",
+    "terminal_name": "Al-Faw FSRU Terminal",
+    "unit_name": "--",
+    "country": "Iraq",
+    "field_name": "Capacity",
+    "old_value": "1.00",
+    "new_value": "1.00",
+    "confidence": "blue",
+    "source_tier": "re-verified",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.iranoilgas.com/news/details.aspx?id=25908&title=Iraq+eyes+building+LNG+import+terminal+in+Al-Faw+Port"
+    ],
+    "source_notes": "url_verifier PASS on token '1 billion' (cubic feet/day). CapacityinMtpa=7.67 checks out (1.00 bcf/d x 7.67 = 7.67).",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131158",
+    "unit_id": "G100002115800",
+    "terminal_name": "Al-Faw FSRU Terminal",
+    "unit_name": "--",
+    "country": "Iraq",
+    "field_name": "CapacityUnits",
+    "old_value": "bcf/d",
+    "new_value": "bcf/d",
+    "confidence": "blue",
+    "source_tier": "re-verified",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.iranoilgas.com/news/details.aspx?id=25908&title=Iraq+eyes+building+LNG+import+terminal+in+Al-Faw+Port"
+    ],
+    "source_notes": "completeness_sweep.py flags 'bcf/d' as outside its catalog, but it is a legitimate, tracker-wide-used enum (28 rows) and the mtpa conversion is exact -- see qa note (script catalog is stale, not a data error).",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131158",
+    "unit_id": "G100002115800",
+    "terminal_name": "Al-Faw FSRU Terminal",
+    "unit_name": "--",
+    "country": "Iraq",
+    "field_name": "ProposalYear",
+    "old_value": "2023",
+    "new_value": "2023",
+    "confidence": "blue",
+    "source_tier": "re-verified",
+    "ref_field": null,
+    "ref_urls": [
+      "http://www.iranoilgas.com/news/details?id=25908&title=Iraq+eyes+building+LNG+import+terminal+in+Al-Faw+Port"
+    ],
+    "source_notes": "url_verifier PASS on token '2023'.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131158",
+    "unit_id": "G100002115800",
+    "terminal_name": "Al-Faw FSRU Terminal",
+    "unit_name": "--",
+    "country": "Iraq",
+    "field_name": "OriginalPlannedStartYear",
+    "old_value": "2026",
+    "new_value": "2026",
+    "confidence": "blue",
+    "source_tier": "re-verified",
+    "ref_field": "StartDate [ref]",
+    "ref_urls": [
+      "https://www.zawya.com/en/projects/construction/iraqs-proposed-lng-import-terminal-to-be-ready-in-2-years-report-ql10wkzg"
+    ],
+    "source_notes": "Source (Jan-2024 report) states terminal 'expected to start operations in two years' -> 2026; still the most recent explicit target found (no 2025/2026 update supersedes it). Manually confirmed live via jiac.it content fetch even though url_verifier 403s that URL.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131158",
+    "unit_id": "G100002115800",
+    "terminal_name": "Al-Faw FSRU Terminal",
+    "unit_name": "--",
+    "country": "Iraq",
+    "field_name": "LatestPlannedStartYear",
+    "old_value": "2026",
+    "new_value": "2026",
+    "confidence": "blue",
+    "source_tier": "re-verified",
+    "ref_field": "StartDate [ref]",
+    "ref_urls": [
+      "https://www.zawya.com/en/projects/construction/iraqs-proposed-lng-import-terminal-to-be-ready-in-2-years-report-ql10wkzg"
+    ],
+    "source_notes": "Same as OriginalPlannedStartYear -- no more recent explicit target date found despite extensive 2025-2026 search.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131158",
+    "unit_id": "G100002115800",
+    "terminal_name": "Al-Faw FSRU Terminal",
+    "unit_name": "--",
+    "country": "Iraq",
+    "field_name": "Location",
+    "old_value": "Al-Faw Port",
+    "new_value": "Al-Faw Port",
+    "confidence": "blue",
+    "source_tier": "re-verified",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.zawya.com/en/projects/construction/iraqs-proposed-lng-import-terminal-to-be-ready-in-2-years-report-ql10wkzg",
+      "http://www.iranoilgas.com/news/details?id=25908&title=Iraq+eyes+building+LNG+import+terminal+in+Al-Faw+Port"
+    ],
+    "source_notes": "Confirmed: Grand Al-Faw Port, Basrah Governorate.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100001048168",
+    "unit_id": "G100001055225",
+    "terminal_name": "Khor Al-Zubair FSRU",
+    "unit_name": "--",
+    "country": "Iraq",
+    "field_name": "Operator",
+    "old_value": "",
+    "new_value": "Excelerate Energy",
+    "confidence": "green",
+    "source_tier": "primary (company release) + independent trade press",
+    "ref_field": null,
+    "ref_urls": [
+      "https://excelerateenergy.com/news/excelerate-energy-signs-definitive-agreement-for-fully-integrated-floating-lng-import-terminal-in-iraq/",
+      "https://lngprime.com/americas/excelerate-seals-definitive-deal-for-iraq-lng-terminal/167305/"
+    ],
+    "source_notes": "2025-10-28 definitive commercial agreement between Excelerate Energy and a subsidiary of Iraq's Ministry of Electricity: Excelerate constructs the floating terminal, deploys its FSRU, delivers topside equipment/berth modifications, and supplies the LNG under a 5-year regasification-services + LNG-supply agreement. Staged as Operator (clearly supported); Owner NOT staged -- see qa note on unresolved ownership structure.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100001048168",
+    "unit_id": "G100001055225",
+    "terminal_name": "Khor Al-Zubair FSRU",
+    "unit_name": "--",
+    "country": "Iraq",
+    "field_name": "FloatingVesselName",
+    "old_value": "",
+    "new_value": "Excelerate Acadia",
+    "confidence": "green",
+    "source_tier": "primary (company release) + independent trade press",
+    "ref_field": null,
+    "ref_urls": [
+      "https://excelerateenergy.com/news/excelerate-energy-signs-definitive-agreement-for-fully-integrated-floating-lng-import-terminal-in-iraq/",
+      "https://lngprime.com/americas/excelerate-names-new-fsru/181943/"
+    ],
+    "source_notes": "Vessel originally identified as 'Hull 3407' (under construction, HD Hyundai Heavy Industries, Ulsan) in the Oct-2025 Excelerate/Iraq agreement; officially named 'Excelerate Acadia' at a 2026-03-31 naming ceremony (170,000 cbm storage, up to 1,000 MMscf/d regas capacity). IMPORTANT CAVEAT: due to Iraq-side delays, Excelerate signed a 9-month charter deploying this vessel to Jordan's Aqaba LNG terminal (NEPCO) instead, starting ~April/May 2026 -- it is NOT currently physically at Khor Al-Zubair. See qa note (project_delay_context) and the FSRU cross-project sync rule -- fsru_sync_check.py --gem-csv was run and short-circuited (no carrier backend configured this session).",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100001048168",
+    "unit_id": "G100001055225",
+    "terminal_name": "Khor Al-Zubair FSRU",
+    "unit_name": "--",
+    "country": "Iraq",
+    "field_name": "Cost",
+    "old_value": "",
+    "new_value": "450000000.00",
+    "confidence": "green",
+    "source_tier": "primary (company release) + independent trade press",
+    "ref_field": null,
+    "ref_urls": [
+      "https://excelerateenergy.com/news/excelerate-energy-signs-definitive-agreement-for-fully-integrated-floating-lng-import-terminal-in-iraq/",
+      "https://www.offshore-energy.biz/us-firm-lands-450-million-job-for-floating-lng-terminal-in-iraq/"
+    ],
+    "source_notes": "Total project investment ~$450 million (inclusive of FSRU cost), per the 2025-10-28 definitive agreement announcement, corroborated by independent trade press.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100001048168",
+    "unit_id": "G100001055225",
+    "terminal_name": "Khor Al-Zubair FSRU",
+    "unit_name": "--",
+    "country": "Iraq",
+    "field_name": "CostUnits",
+    "old_value": "",
+    "new_value": "USD",
+    "confidence": "green",
+    "source_tier": "primary (company release) + independent trade press",
+    "ref_field": null,
+    "ref_urls": [
+      "https://excelerateenergy.com/news/excelerate-energy-signs-definitive-agreement-for-fully-integrated-floating-lng-import-terminal-in-iraq/",
+      "https://www.offshore-energy.biz/us-firm-lands-450-million-job-for-floating-lng-terminal-in-iraq/"
+    ],
+    "source_notes": "Total project investment ~$450 million (inclusive of FSRU cost), per the 2025-10-28 definitive agreement announcement, corroborated by independent trade press.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100001048168",
+    "unit_id": "G100001055225",
+    "terminal_name": "Khor Al-Zubair FSRU",
+    "unit_name": "--",
+    "country": "Iraq",
+    "field_name": "CostYear",
+    "old_value": "",
+    "new_value": "2025",
+    "confidence": "green",
+    "source_tier": "primary (company release) + independent trade press",
+    "ref_field": null,
+    "ref_urls": [
+      "https://excelerateenergy.com/news/excelerate-energy-signs-definitive-agreement-for-fully-integrated-floating-lng-import-terminal-in-iraq/",
+      "https://www.offshore-energy.biz/us-firm-lands-450-million-job-for-floating-lng-terminal-in-iraq/"
+    ],
+    "source_notes": "Total project investment ~$450 million (inclusive of FSRU cost), per the 2025-10-28 definitive agreement announcement, corroborated by independent trade press.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100001048168",
+    "unit_id": "G100001055225",
+    "terminal_name": "Khor Al-Zubair FSRU",
+    "unit_name": "--",
+    "country": "Iraq",
+    "field_name": "LatestPlannedStartYear",
+    "old_value": "2025",
+    "new_value": "2026",
+    "confidence": "green",
+    "source_tier": "primary (company release)",
+    "ref_field": "StartDate [ref]",
+    "ref_urls": [
+      "https://excelerateenergy.com/news/excelerate-energy-signs-definitive-agreement-for-fully-integrated-floating-lng-import-terminal-in-iraq/"
+    ],
+    "source_notes": "GEM's current LatestPlannedStartYear=2025 is now stale. Excelerate's own 2025-10-28 release states 'commercial operations are expected to commence in 2026, subject to final permitting and construction timelines.' OriginalPlannedStartYear left at 2025 (that was the original target, now superseded). Note continuing 2026 delay risk documented in a qa note -- do not treat 2026 as firm.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100001048168",
+    "unit_id": "G100001055225",
+    "terminal_name": "Khor Al-Zubair FSRU",
+    "unit_name": "--",
+    "country": "Iraq",
+    "field_name": "FacilityType",
+    "old_value": "import",
+    "new_value": "import",
+    "confidence": "blue",
+    "source_tier": "re-verified",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.bloomberg.com/news/articles/2025-03-23/iraq-in-talks-over-floating-gas-terminals-to-bridge-power-gap",
+      "https://excelerateenergy.com/news/excelerate-energy-signs-definitive-agreement-for-fully-integrated-floating-lng-import-terminal-in-iraq/"
+    ],
+    "source_notes": "Existing Bloomberg ref returns HTTP 403 to url_verifier.py (bot-blocked, no Wayback snapshot); value reconfirmed via the Oct-2025 Excelerate agreement instead (verified). See qa note citation_recheck_blocked.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100001048168",
+    "unit_id": "G100001055225",
+    "terminal_name": "Khor Al-Zubair FSRU",
+    "unit_name": "--",
+    "country": "Iraq",
+    "field_name": "Status",
+    "old_value": "proposed",
+    "new_value": "proposed",
+    "confidence": "blue",
+    "source_tier": "re-verified",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.bloomberg.com/news/articles/2025-03-23/iraq-in-talks-over-floating-gas-terminals-to-bridge-power-gap",
+      "https://excelerateenergy.com/news/excelerate-energy-signs-definitive-agreement-for-fully-integrated-floating-lng-import-terminal-in-iraq/"
+    ],
+    "source_notes": "Still proposed -- no confirmed construction-start or commercial-operations evidence found; see qa note project_delay_context.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100001048168",
+    "unit_id": "G100001055225",
+    "terminal_name": "Khor Al-Zubair FSRU",
+    "unit_name": "--",
+    "country": "Iraq",
+    "field_name": "Capacity",
+    "old_value": "0.50",
+    "new_value": "0.50",
+    "confidence": "blue",
+    "source_tier": "re-verified",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.reuters.com/business/energy/after-us-move-iraq-iran-power-trade-baghdad-looks-replace-iranian-gas-2025-03-10/",
+      "https://excelerateenergy.com/news/excelerate-energy-signs-definitive-agreement-for-fully-integrated-floating-lng-import-terminal-in-iraq/"
+    ],
+    "source_notes": "Matches the guaranteed 500 MMscf/d regasification capacity in the definitive agreement (url_verifier PASS on '500 MMscf' at excelerateenergy.com). Existing Reuters ref returns HTTP 401 (bot-blocked, no Wayback snapshot).",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100001048168",
+    "unit_id": "G100001055225",
+    "terminal_name": "Khor Al-Zubair FSRU",
+    "unit_name": "--",
+    "country": "Iraq",
+    "field_name": "CapacityUnits",
+    "old_value": "bcf/d",
+    "new_value": "bcf/d",
+    "confidence": "blue",
+    "source_tier": "re-verified",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.reuters.com/business/energy/after-us-move-iraq-iran-power-trade-baghdad-looks-replace-iranian-gas-2025-03-10/",
+      "https://excelerateenergy.com/news/excelerate-energy-signs-definitive-agreement-for-fully-integrated-floating-lng-import-terminal-in-iraq/"
+    ],
+    "source_notes": "Valid, tracker-wide-used enum; mtpa conversion exact (0.50 x 7.67 = 3.835 ~ 3.84). See qa note.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100001048168",
+    "unit_id": "G100001055225",
+    "terminal_name": "Khor Al-Zubair FSRU",
+    "unit_name": "--",
+    "country": "Iraq",
+    "field_name": "ProposalYear",
+    "old_value": "2025",
+    "new_value": "2025",
+    "confidence": "blue",
+    "source_tier": "re-verified",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.bloomberg.com/news/articles/2025-03-23/iraq-in-talks-over-floating-gas-terminals-to-bridge-power-gap"
+    ],
+    "source_notes": "Consistent with independently-found contemporaneous reporting (worldoil.com 2025-03-24, AGBI 2025-02).",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100001048168",
+    "unit_id": "G100001055225",
+    "terminal_name": "Khor Al-Zubair FSRU",
+    "unit_name": "--",
+    "country": "Iraq",
+    "field_name": "ProposalMonth",
+    "old_value": "Q1",
+    "new_value": "Q1",
+    "confidence": "blue",
+    "source_tier": "re-verified",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.bloomberg.com/news/articles/2025-03-23/iraq-in-talks-over-floating-gas-terminals-to-bridge-power-gap"
+    ],
+    "source_notes": "Consistent with Q1-2025 reporting timeline.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100001048168",
+    "unit_id": "G100001055225",
+    "terminal_name": "Khor Al-Zubair FSRU",
+    "unit_name": "--",
+    "country": "Iraq",
+    "field_name": "OriginalPlannedStartYear",
+    "old_value": "2025",
+    "new_value": "2025",
+    "confidence": "blue",
+    "source_tier": "re-verified",
+    "ref_field": "StartDate [ref]",
+    "ref_urls": [
+      "https://www.bloomberg.com/news/articles/2025-03-23/iraq-in-talks-over-floating-gas-terminals-to-bridge-power-gap"
+    ],
+    "source_notes": "Left unchanged as the historical original target (now superseded by LatestPlannedStartYear=2026 update above).",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100001048168",
+    "unit_id": "G100001055225",
+    "terminal_name": "Khor Al-Zubair FSRU",
+    "unit_name": "--",
+    "country": "Iraq",
+    "field_name": "Location",
+    "old_value": "Khor Al-Zubair Port",
+    "new_value": "Khor Al-Zubair Port",
+    "confidence": "blue",
+    "source_tier": "re-verified",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.bloomberg.com/news/articles/2025-03-23/iraq-in-talks-over-floating-gas-terminals-to-bridge-power-gap",
+      "https://excelerateenergy.com/news/excelerate-energy-signs-definitive-agreement-for-fully-integrated-floating-lng-import-terminal-in-iraq/"
+    ],
+    "source_notes": "Confirmed: Port of Khor Al Zubair, Basrah Governorate.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  }
+]

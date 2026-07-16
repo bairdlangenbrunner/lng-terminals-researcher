@@ -1,0 +1,567 @@
+[
+  {
+    "terminal_id": "T100000130432",
+    "unit_id": "G100002043200",
+    "terminal_name": "Cyprus FSRU",
+    "unit_name": "--",
+    "country": "Cyprus",
+    "field_name": "Owner [ref]",
+    "old_value": "https://entsog.eu/tyndp",
+    "new_value": "https://www.ogj.com/pipelines-transportation/lng/article/14290202/cyprus-lng-terminal-jetty-construction-under-way-fsru-90-complete",
+    "confidence": "green",
+    "source_tier": "trade_press",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.ogj.com/pipelines-transportation/lng/article/14290202/cyprus-lng-terminal-jetty-construction-under-way-fsru-90-complete",
+      "https://www.rivieramm.com/news-content-hub/news-content-hub/fsru-conversion-etyfa-prometheas-leaves-shipyard-78343"
+    ],
+    "source_notes": "Old ref (entsog.eu/tyndp) is a generic ENTSOG TYNDP landing page that does not mention ETYFA — verifier FAIL (missing expected content). Replaced with 2 independent trade-press sources that both explicitly confirm ETYFA as the terminal-owning entity (Owner value ETYFA [100%] unchanged, only the ref improved).",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130432",
+    "unit_id": "G100002043200",
+    "terminal_name": "Cyprus FSRU",
+    "unit_name": "--",
+    "country": "Cyprus",
+    "field_name": "Status [ref]",
+    "old_value": "https://giignl.org/wp-content/uploads/2021/11/GIIGNL_Annual_Report_November2021.pdf",
+    "new_value": "http://web.archive.org/web/20250527131321/https://giignl.org/wp-content/uploads/2021/11/GIIGNL_Annual_Report_November2021.pdf",
+    "confidence": "blue",
+    "source_tier": "trade_report",
+    "ref_field": null,
+    "ref_urls": [
+      "http://web.archive.org/web/20250527131321/https://giignl.org/wp-content/uploads/2021/11/GIIGNL_Annual_Report_November2021.pdf"
+    ],
+    "source_notes": "Live giignl.org URL is 404 (dead; matches the tracker-wide giignl.org rot flagged 2026-07-14). Wayback mirror (2025-05-27 snapshot) returns HTTP 200 and pdftotext confirms 'Construction of the FSRU-based import terminal at the Vasilikos port in Cyprus started in July 2020' — same document, same value (construction/actual), only the URL changed. Verified manually via curl+pdftotext (url_verifier.py timed out intermittently on this 6.6MB PDF over the wayback mirror; direct curl fetch + text search succeeded reliably).",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130432",
+    "unit_id": "G100002043200",
+    "terminal_name": "Cyprus FSRU",
+    "unit_name": "--",
+    "country": "Cyprus",
+    "field_name": "ProposalDate [ref]",
+    "old_value": "https://giignl.org/wp-content/uploads/2021/11/GIIGNL_Annual_Report_November2021.pdf",
+    "new_value": "http://web.archive.org/web/20250527131321/https://giignl.org/wp-content/uploads/2021/11/GIIGNL_Annual_Report_November2021.pdf",
+    "confidence": "blue",
+    "source_tier": "trade_report",
+    "ref_field": null,
+    "ref_urls": [
+      "http://web.archive.org/web/20250527131321/https://giignl.org/wp-content/uploads/2021/11/GIIGNL_Annual_Report_November2021.pdf"
+    ],
+    "source_notes": "Same dead-giignl.org / wayback-mirror swap as Status [ref] above; ProposalYear 2009 unchanged.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130432",
+    "unit_id": "G100002043200",
+    "terminal_name": "Cyprus FSRU",
+    "unit_name": "--",
+    "country": "Cyprus",
+    "field_name": "ConstructionDate [ref]",
+    "old_value": "https://giignl.org/wp-content/uploads/2021/11/GIIGNL_Annual_Report_November2021.pdf",
+    "new_value": "http://web.archive.org/web/20250527131321/https://giignl.org/wp-content/uploads/2021/11/GIIGNL_Annual_Report_November2021.pdf",
+    "confidence": "blue",
+    "source_tier": "trade_report",
+    "ref_field": null,
+    "ref_urls": [
+      "http://web.archive.org/web/20250527131321/https://giignl.org/wp-content/uploads/2021/11/GIIGNL_Annual_Report_November2021.pdf"
+    ],
+    "source_notes": "Same dead-giignl.org / wayback-mirror swap; ConstructionYear 2020 July directly confirmed in report text ('Construction ... started in July 2020'), unchanged.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130432",
+    "unit_id": "G100002043200",
+    "terminal_name": "Cyprus FSRU",
+    "unit_name": "--",
+    "country": "Cyprus",
+    "field_name": "PowerPlantsSupplied [ref]",
+    "old_value": "https://giignl.org/wp-content/uploads/2021/11/GIIGNL_Annual_Report_November2021.pdf",
+    "new_value": "https://www.rivieramm.com/news-content-hub/news-content-hub/fsru-conversion-etyfa-prometheas-leaves-shipyard-78343",
+    "confidence": "green",
+    "source_tier": "trade_press",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.rivieramm.com/news-content-hub/news-content-hub/fsru-conversion-etyfa-prometheas-leaves-shipyard-78343",
+      "https://www.ogj.com/pipelines-transportation/lng/article/14290202/cyprus-lng-terminal-jetty-construction-under-way-fsru-90-complete"
+    ],
+    "source_notes": "Old giignl.org ref dead. Replaced with 2 independent trade-press sources confirming the FSRU feeds the Vasilikos power plant (868 MW EAC station); PowerPlantsSupplied value 'Vasilikos power station' unchanged.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130432",
+    "unit_id": "G100002043200",
+    "terminal_name": "Cyprus FSRU",
+    "unit_name": "--",
+    "country": "Cyprus",
+    "field_name": "AssociatedTerminals [ref]",
+    "old_value": "http://www.reuters.com/article/cyprus-total-lng-idUSL5N0IS2CA20131107",
+    "new_value": "http://web.archive.org/web/20210518223228/https://www.reuters.com/article/cyprus-total-lng-idUSL5N0IS2CA20131107",
+    "confidence": "blue",
+    "source_tier": "trade_press",
+    "ref_field": null,
+    "ref_urls": [
+      "http://web.archive.org/web/20210518223228/https://www.reuters.com/article/cyprus-total-lng-idUSL5N0IS2CA20131107"
+    ],
+    "source_notes": "Live reuters.com URL returns HTTP 401 (bot-blocked, per project convention not treated as dead outright, but no longer independently checkable live). Wayback mirror (2021-05-18 snapshot) passes and confirms the 2013 Cyprus-Total LNG export MoU that is the basis for the Cyprus FSRU <-> Cyprus LNG Terminal association. Value unchanged (AssociatedTerminals = Cyprus LNG Terminal).",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130432",
+    "unit_id": "G100002043200",
+    "terminal_name": "Cyprus FSRU",
+    "unit_name": "--",
+    "country": "Cyprus",
+    "field_name": "StartDate [ref]",
+    "old_value": "https://www.financialmirror.com/news-details.php?nid=37887, https://cyprus-mail.com/2021/11/09/work-begins-on-lng-ship-for-cyprus/, https://cyprus-mail.com/2022/02/07/lng-project-problems-from-the-outset/, https://cyprus-mail.com/2023/04/07/lng-project-only-40-per-cent-complete/, https://cyprus-mail.com/2023/08/10/chinese-led-consortium-adjusts-lng-terminal-timeline-aims-for-july-2024, https://www.ekathimerini.com/economy/1234789/cyprus-aims-to-complete-vasilikos-lng-terminal-by-2024/, https://www.mees.com/2024/4/26/power-water/cyprus-aims-for-2025-lng-imports/dac84be0-03c7-11ef-af14-27fe73f7df8e, https://in-cyprus.philenews.com/insider/url-slug-cyprus-natural-gas-company-vasilikos-lng-terminal-additional-funding/, https://www.upstreamonline.com/lng/fresh-delays-hit-cyprus-lng-terminal-project-while-fsru-awaits-missing-components-/2-1-1844007?utm_medium=email&utm_source=substack",
+    "new_value": "https://cyprus-mail.com/2021/11/09/work-begins-on-lng-ship-for-cyprus/, https://cyprus-mail.com/2022/02/07/lng-project-problems-from-the-outset/, https://cyprus-mail.com/2023/04/07/lng-project-only-40-per-cent-complete/, https://cyprus-mail.com/2023/08/10/chinese-led-consortium-adjusts-lng-terminal-timeline-aims-for-july-2024, https://www.mees.com/2024/4/26/power-water/cyprus-aims-for-2025-lng-imports/dac84be0-03c7-11ef-af14-27fe73f7df8e, https://in-cyprus.philenews.com/insider/url-slug-cyprus-natural-gas-company-vasilikos-lng-terminal-additional-funding/, https://www.upstreamonline.com/lng/fresh-delays-hit-cyprus-lng-terminal-project-while-fsru-awaits-missing-components-/2-1-1844007?utm_medium=email&utm_source=substack",
+    "confidence": "blue",
+    "source_tier": "trade_press",
+    "ref_field": null,
+    "ref_urls": [
+      "https://cyprus-mail.com/2021/11/09/work-begins-on-lng-ship-for-cyprus/",
+      "https://cyprus-mail.com/2022/02/07/lng-project-problems-from-the-outset/",
+      "https://cyprus-mail.com/2023/04/07/lng-project-only-40-per-cent-complete/",
+      "https://cyprus-mail.com/2023/08/10/chinese-led-consortium-adjusts-lng-terminal-timeline-aims-for-july-2024",
+      "https://www.mees.com/2024/4/26/power-water/cyprus-aims-for-2025-lng-imports/dac84be0-03c7-11ef-af14-27fe73f7df8e",
+      "https://in-cyprus.philenews.com/insider/url-slug-cyprus-natural-gas-company-vasilikos-lng-terminal-additional-funding/",
+      "https://www.upstreamonline.com/lng/fresh-delays-hit-cyprus-lng-terminal-project-while-fsru-awaits-missing-components-/2-1-1844007?utm_medium=email&utm_source=substack"
+    ],
+    "source_notes": "Re-verified all 9 existing StartDate [ref] URLs. 7 pass. 2 now broken with no wayback snapshot available: financialmirror.com/news-details.php?nid=37887 (HTTP 500, persistent) and ekathimerini.com .../cyprus-aims-to-complete-vasilikos-lng-terminal-by-2024/ (HTTP 403, likely bot-block but unconfirmable via wayback). Dropped both from the ref list; OriginalPlannedStartYear/LatestPlannedStartYear values themselves unchanged (see qa note on LatestPlannedStartYear staleness).",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130432",
+    "unit_id": "G100002043200",
+    "terminal_name": "Cyprus FSRU",
+    "unit_name": "--",
+    "country": "Cyprus",
+    "field_name": "Capacity [ref]",
+    "old_value": "https://www.igu.org/resources/lng2023-world-lng-report/",
+    "new_value": "https://www.datocms-assets.com/146580/1751026179-igu-world-lng-report-2025-hr_dp_c.pdf",
+    "confidence": "green",
+    "source_tier": "trade_report",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.datocms-assets.com/146580/1751026179-igu-world-lng-report-2025-hr_dp_c.pdf",
+      "https://www.enerdata.net/publications/daily-energy-news/cyprus-plans-revive-2-mtyear-vasilikos-lng-import-terminal-project.html"
+    ],
+    "source_notes": "Old igu.org LNG2023-report URL is dead (404, no wayback snapshot). Replaced with the current IGU World LNG Report 2025 PDF, which lists 'Cyprus, 2 MTPA' in its planned-liquefaction/regas capacity chart (Rystad Energy sourced), corroborated independently by Enerdata's 2026 news brief describing the '2 Mt/year Vasilikos LNG import terminal project'. Capacity value (2.00 mtpa) unchanged.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130432",
+    "unit_id": "G100002043200",
+    "terminal_name": "Cyprus FSRU",
+    "unit_name": "--",
+    "country": "Cyprus",
+    "field_name": "FacilityType [ref]",
+    "old_value": "https://www.petrogressinc.com/wp-content/uploads/2018/03/Vassiliko-LNG-Terminal-porject-1.pdf",
+    "new_value": "https://www.petrogressinc.com/wp-content/uploads/2018/03/Vassiliko-LNG-Terminal-porject-1.pdf",
+    "confidence": "blue",
+    "source_tier": "primary",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.petrogressinc.com/wp-content/uploads/2018/03/Vassiliko-LNG-Terminal-porject-1.pdf"
+    ],
+    "source_notes": "Re-verified live and unchanged (url_verifier PASS). No edit needed.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130432",
+    "unit_id": "G100002043200",
+    "terminal_name": "Cyprus FSRU",
+    "unit_name": "--",
+    "country": "Cyprus",
+    "field_name": "Location [ref]",
+    "old_value": "https://www.petrogressinc.com/wp-content/uploads/2018/03/Vassiliko-LNG-Terminal-porject-1.pdf",
+    "new_value": "https://www.petrogressinc.com/wp-content/uploads/2018/03/Vassiliko-LNG-Terminal-porject-1.pdf",
+    "confidence": "blue",
+    "source_tier": "primary",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.petrogressinc.com/wp-content/uploads/2018/03/Vassiliko-LNG-Terminal-porject-1.pdf"
+    ],
+    "source_notes": "Re-verified live and unchanged (url_verifier PASS). No edit needed.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130432",
+    "unit_id": "G100002043200",
+    "terminal_name": "Cyprus FSRU",
+    "unit_name": "--",
+    "country": "Cyprus",
+    "field_name": "Cost [ref]",
+    "old_value": "https://cyprus-mail.com/2024/01/19/management-of-lng-project-has-been-tragic-audit-office-says/",
+    "new_value": "https://cyprus-mail.com/2024/01/19/management-of-lng-project-has-been-tragic-audit-office-says/",
+    "confidence": "blue",
+    "source_tier": "trade_press",
+    "ref_field": null,
+    "ref_urls": [
+      "https://cyprus-mail.com/2024/01/19/management-of-lng-project-has-been-tragic-audit-office-says/"
+    ],
+    "source_notes": "Re-verified live; confirms EUR 542,000,000 (2024) figure. Unchanged.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130432",
+    "unit_id": "G100002043200",
+    "terminal_name": "Cyprus FSRU",
+    "unit_name": "--",
+    "country": "Cyprus",
+    "field_name": "Financing [ref]",
+    "old_value": "https://www.ebrd.com/news/2020/ebrd-supports-decarbonisation-of-energy-sector-in-cyprus.html",
+    "new_value": "https://www.ebrd.com/news/2020/ebrd-supports-decarbonisation-of-energy-sector-in-cyprus.html",
+    "confidence": "blue",
+    "source_tier": "primary",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.ebrd.com/news/2020/ebrd-supports-decarbonisation-of-energy-sector-in-cyprus.html"
+    ],
+    "source_notes": "Re-verified live; confirms EIB/CEF/EBRD/EAC financing package. Unchanged.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130432",
+    "unit_id": "G100002043200",
+    "terminal_name": "Cyprus FSRU",
+    "unit_name": "--",
+    "country": "Cyprus",
+    "field_name": "FloatingVesselName [ref]",
+    "old_value": "https://lngprime.com/asia/cyprus-fsru-conversion-nearing-completion-in-china/75346/",
+    "new_value": "https://lngprime.com/asia/cyprus-fsru-conversion-nearing-completion-in-china/75346/",
+    "confidence": "blue",
+    "source_tier": "trade_press",
+    "ref_field": null,
+    "ref_urls": [
+      "https://lngprime.com/asia/cyprus-fsru-conversion-nearing-completion-in-china/75346/"
+    ],
+    "source_notes": "Re-verified live; confirms vessel name Etyfa Prometheas (ex-Galea). 2026 news confirms vessel still assigned to Cyprus (idle in Malaysia awaiting deployment, NOT sold/redeployed elsewhere) — checked per task note.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100001048370",
+    "unit_id": "G100001055528",
+    "terminal_name": "Cyprus LNG Terminal",
+    "unit_name": "T1 through T3/T8",
+    "country": "Cyprus",
+    "field_name": "FacilityType [ref]",
+    "old_value": "http://www.reuters.com/article/cyprus-total-lng-idUSL5N0IS2CA20131107",
+    "new_value": "http://web.archive.org/web/20210518223228/https://www.reuters.com/article/cyprus-total-lng-idUSL5N0IS2CA20131107",
+    "confidence": "blue",
+    "source_tier": "trade_press",
+    "ref_field": null,
+    "ref_urls": [
+      "http://web.archive.org/web/20210518223228/https://www.reuters.com/article/cyprus-total-lng-idUSL5N0IS2CA20131107"
+    ],
+    "source_notes": "Live reuters.com URL returns HTTP 401. Wayback mirror (2021-05-18) passes and confirms the 2013 Total-Cyprus LNG export MoU. FacilityType (export) unchanged.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100001048370",
+    "unit_id": "G100001055528",
+    "terminal_name": "Cyprus LNG Terminal",
+    "unit_name": "T1 through T3/T8",
+    "country": "Cyprus",
+    "field_name": "AssociatedTerminals [ref]",
+    "old_value": "https://www.lngworldnews.com/cyprus-extends-tender-deadline-for-lng-import-facility/",
+    "new_value": "http://web.archive.org/web/20191214103151/https://www.lngworldnews.com/cyprus-extends-tender-deadline-for-lng-import-facility/",
+    "confidence": "blue",
+    "source_tier": "trade_press",
+    "ref_field": null,
+    "ref_urls": [
+      "http://web.archive.org/web/20191214103151/https://www.lngworldnews.com/cyprus-extends-tender-deadline-for-lng-import-facility/"
+    ],
+    "source_notes": "Live lngworldnews.com URL is 404 (site restructured). Wayback mirror (2019-12-14) passes. AssociatedTerminals (Cyprus FSRU) unchanged.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100001048370",
+    "unit_id": "G100001055528",
+    "terminal_name": "Cyprus LNG Terminal",
+    "unit_name": "T1 through T3/T8",
+    "country": "Cyprus",
+    "field_name": "Status [ref]",
+    "old_value": "",
+    "new_value": "https://cyprus-mail.com/2026/05/19/cabinet-approves-development-plan-for-kronos-gas-field, https://cyprus-mail.com/2022/04/24/at-last-a-bankable-lng-project-for-cyprus/",
+    "confidence": "yellow",
+    "source_tier": "trade_press",
+    "ref_field": null,
+    "ref_urls": [
+      "https://cyprus-mail.com/2026/05/19/cabinet-approves-development-plan-for-kronos-gas-field",
+      "https://cyprus-mail.com/2022/04/24/at-last-a-bankable-lng-project-for-cyprus/"
+    ],
+    "source_notes": "Status is 'cancelled (inferred 4y)' with no [ref] on file. Per the inferred-status convention, cite the newest evidence of continued dormancy rather than an explicit 'it's cancelled' statement (none exists for an inferred status). Two facts corroborate continued dormancy through 2026: (1) Energean's April 2022 CEO remark floating an FLNG-at-Vasilikos export concept using Israeli-field gas never advanced beyond a media comment — no FEED/site/permit step found in any subsequent search; (2) Cyprus's actual 2026 plan for monetizing its own offshore gas (Chevron-operated Aphrodite, Eni/TotalEnergies-operated Cronos) routes via subsea PIPELINE to Egypt's existing LNG plants, not a new domestic liquefaction facility — confirming no revival of the Vasilikos export-terminal concept is underway. Confidence yellow (indirect/inferential, not a direct primary statement) rather than green.",
+    "scope_note": "Also functions as the Update-pass finding for the Discovery SOP's dormant-revival-watch check on this dead site; no revival found, see cyprus.disc.qa.json.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100001048370",
+    "unit_id": "G100001055528",
+    "terminal_name": "Cyprus LNG Terminal",
+    "unit_name": "T1 through T3/T8",
+    "country": "Cyprus",
+    "field_name": "ShelvedYear [ref]",
+    "old_value": "",
+    "new_value": "https://cyprus-mail.com/2026/05/19/cabinet-approves-development-plan-for-kronos-gas-field, https://cyprus-mail.com/2022/04/24/at-last-a-bankable-lng-project-for-cyprus/",
+    "confidence": "yellow",
+    "source_tier": "trade_press",
+    "ref_field": null,
+    "ref_urls": [
+      "https://cyprus-mail.com/2026/05/19/cabinet-approves-development-plan-for-kronos-gas-field",
+      "https://cyprus-mail.com/2022/04/24/at-last-a-bankable-lng-project-for-cyprus/"
+    ],
+    "source_notes": "Same inferred-dormancy sourcing as Status [ref] above (ShelvedYear 2017 unchanged, ref only being filled).",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100001048370",
+    "unit_id": "G100001055528",
+    "terminal_name": "Cyprus LNG Terminal",
+    "unit_name": "T1 through T3/T8",
+    "country": "Cyprus",
+    "field_name": "CancelledYear [ref]",
+    "old_value": "",
+    "new_value": "https://cyprus-mail.com/2026/05/19/cabinet-approves-development-plan-for-kronos-gas-field, https://cyprus-mail.com/2022/04/24/at-last-a-bankable-lng-project-for-cyprus/",
+    "confidence": "yellow",
+    "source_tier": "trade_press",
+    "ref_field": null,
+    "ref_urls": [
+      "https://cyprus-mail.com/2026/05/19/cabinet-approves-development-plan-for-kronos-gas-field",
+      "https://cyprus-mail.com/2022/04/24/at-last-a-bankable-lng-project-for-cyprus/"
+    ],
+    "source_notes": "Same inferred-dormancy sourcing as Status [ref] above (CancelledYear 2019 unchanged, ref only being filled).",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100001048370",
+    "unit_id": "G100001055528",
+    "terminal_name": "Cyprus LNG Terminal",
+    "unit_name": "T1 through T3/T8",
+    "country": "Cyprus",
+    "field_name": "StopYear [ref]",
+    "old_value": "",
+    "new_value": "https://cyprus-mail.com/2026/05/19/cabinet-approves-development-plan-for-kronos-gas-field, https://cyprus-mail.com/2022/04/24/at-last-a-bankable-lng-project-for-cyprus/",
+    "confidence": "yellow",
+    "source_tier": "trade_press",
+    "ref_field": null,
+    "ref_urls": [
+      "https://cyprus-mail.com/2026/05/19/cabinet-approves-development-plan-for-kronos-gas-field",
+      "https://cyprus-mail.com/2022/04/24/at-last-a-bankable-lng-project-for-cyprus/"
+    ],
+    "source_notes": "Same inferred-dormancy sourcing as Status [ref] above (StopYear 2019 unchanged, ref only being filled).",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100001048370",
+    "unit_id": "G100001055528",
+    "terminal_name": "Cyprus LNG Terminal",
+    "unit_name": "T1 through T3/T8",
+    "country": "Cyprus",
+    "field_name": "Cost [ref]",
+    "old_value": "https://cyprus-mail.com/2023/02/22/completion-of-lng-project-at-vasiliko-delayed-yet-again/, https://cyprus-mail.com/2024/01/19/management-of-lng-project-has-been-tragic-audit-office-says/",
+    "new_value": "https://cyprus-mail.com/2023/02/22/completion-of-lng-project-at-vasiliko-delayed-yet-again/, https://cyprus-mail.com/2024/01/19/management-of-lng-project-has-been-tragic-audit-office-says/",
+    "confidence": "blue",
+    "source_tier": "trade_press",
+    "ref_field": null,
+    "ref_urls": [
+      "https://cyprus-mail.com/2023/02/22/completion-of-lng-project-at-vasiliko-delayed-yet-again/",
+      "https://cyprus-mail.com/2024/01/19/management-of-lng-project-has-been-tragic-audit-office-says/"
+    ],
+    "source_notes": "Both re-verified live and passing. Cost (USD 6,000,000,000 / 2013) unchanged.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100001048370",
+    "unit_id": "G100001055528",
+    "terminal_name": "Cyprus LNG Terminal",
+    "unit_name": "T1 through T3/T8",
+    "country": "Cyprus",
+    "field_name": "Financing [ref]",
+    "old_value": "https://www.ebrd.com/news/2020/ebrd-supports-decarbonisation-of-energy-sector-in-cyprus.html",
+    "new_value": "https://www.ebrd.com/news/2020/ebrd-supports-decarbonisation-of-energy-sector-in-cyprus.html",
+    "confidence": "blue",
+    "source_tier": "primary",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.ebrd.com/news/2020/ebrd-supports-decarbonisation-of-energy-sector-in-cyprus.html"
+    ],
+    "source_notes": "Re-verified live. Unchanged. (Same EAC/EIB/CEF/EBRD financing package is properly disclosed on both the sibling FSRU import terminal and this legacy export-terminal record.)",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100001048370",
+    "unit_id": "G100001055528",
+    "terminal_name": "Cyprus LNG Terminal",
+    "unit_name": "T1 through T3/T8",
+    "country": "Cyprus",
+    "field_name": "Owner [ref]",
+    "old_value": "https://www.linkedin.com/company/natural-gas-infrastructure-company-etyfa/about/",
+    "new_value": "https://www.linkedin.com/company/natural-gas-infrastructure-company-etyfa/about/",
+    "confidence": "blue",
+    "source_tier": "corporate",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.linkedin.com/company/natural-gas-infrastructure-company-etyfa/about/"
+    ],
+    "source_notes": "URL returns a LinkedIn login-wall soft-error (title 'LinkedIn Login, Sign in | LinkedIn'), not a 404 — treated as bot-blocked-live per project convention, not dead. No wayback snapshot exists to independently confirm. No better replacement citation for DEFA's ownership of this now-cancelled export project was found in this pass; left as-is (Owner value DEFA [100%] unchanged). Flagged in qa for future re-check.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130828",
+    "unit_id": "G100002082800",
+    "terminal_name": "Hoegh Cyprus FSRU",
+    "unit_name": "--",
+    "country": "Cyprus",
+    "field_name": "FacilityType [ref]",
+    "old_value": "https://cyprus-mail.com/2020/04/24/energy-company-confirms-it-has-proposed-installation-of-an-frsu-in-cyprus/",
+    "new_value": "http://web.archive.org/web/20211127111225/https://cyprus-mail.com/2020/04/24/energy-company-confirms-it-has-proposed-installation-of-an-frsu-in-cyprus/",
+    "confidence": "blue",
+    "source_tier": "trade_press",
+    "ref_field": null,
+    "ref_urls": [
+      "http://web.archive.org/web/20211127111225/https://cyprus-mail.com/2020/04/24/energy-company-confirms-it-has-proposed-installation-of-an-frsu-in-cyprus/"
+    ],
+    "source_notes": "Live cyprus-mail.com URL now 404 (page removed). Wayback mirror (2021-11-27 snapshot) passes for both 'Hoegh' and 'FSRU'. FacilityType (import) unchanged.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130828",
+    "unit_id": "G100002082800",
+    "terminal_name": "Hoegh Cyprus FSRU",
+    "unit_name": "--",
+    "country": "Cyprus",
+    "field_name": "Owner [ref]",
+    "old_value": "https://cyprus-mail.com/2020/04/24/energy-company-confirms-it-has-proposed-installation-of-an-frsu-in-cyprus/",
+    "new_value": "http://web.archive.org/web/20211127111225/https://cyprus-mail.com/2020/04/24/energy-company-confirms-it-has-proposed-installation-of-an-frsu-in-cyprus/",
+    "confidence": "blue",
+    "source_tier": "trade_press",
+    "ref_field": null,
+    "ref_urls": [
+      "http://web.archive.org/web/20211127111225/https://cyprus-mail.com/2020/04/24/energy-company-confirms-it-has-proposed-installation-of-an-frsu-in-cyprus/"
+    ],
+    "source_notes": "Same dead-live/wayback swap as FacilityType [ref] above. Owner (Hoegh Evi [100%]) unchanged.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130828",
+    "unit_id": "G100002082800",
+    "terminal_name": "Hoegh Cyprus FSRU",
+    "unit_name": "--",
+    "country": "Cyprus",
+    "field_name": "ProposalDate [ref]",
+    "old_value": "https://cyprus-mail.com/2020/04/24/energy-company-confirms-it-has-proposed-installation-of-an-frsu-in-cyprus/",
+    "new_value": "http://web.archive.org/web/20211127111225/https://cyprus-mail.com/2020/04/24/energy-company-confirms-it-has-proposed-installation-of-an-frsu-in-cyprus/",
+    "confidence": "blue",
+    "source_tier": "trade_press",
+    "ref_field": null,
+    "ref_urls": [
+      "http://web.archive.org/web/20211127111225/https://cyprus-mail.com/2020/04/24/energy-company-confirms-it-has-proposed-installation-of-an-frsu-in-cyprus/"
+    ],
+    "source_notes": "Same dead-live/wayback swap. ProposalYear (2020 April) unchanged.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130828",
+    "unit_id": "G100002082800",
+    "terminal_name": "Hoegh Cyprus FSRU",
+    "unit_name": "--",
+    "country": "Cyprus",
+    "field_name": "StartDate [ref]",
+    "old_value": "https://cyprus-mail.com/2020/04/24/energy-company-confirms-it-has-proposed-installation-of-an-frsu-in-cyprus/",
+    "new_value": "http://web.archive.org/web/20211127111225/https://cyprus-mail.com/2020/04/24/energy-company-confirms-it-has-proposed-installation-of-an-frsu-in-cyprus/",
+    "confidence": "blue",
+    "source_tier": "trade_press",
+    "ref_field": null,
+    "ref_urls": [
+      "http://web.archive.org/web/20211127111225/https://cyprus-mail.com/2020/04/24/energy-company-confirms-it-has-proposed-installation-of-an-frsu-in-cyprus/"
+    ],
+    "source_notes": "Same dead-live/wayback swap. OriginalPlannedStartYear/LatestPlannedStartYear (2021) unchanged. Note: this field pairs with OriginalPlannedStartYear/LatestPlannedStartYear (there is no separate 'StartDate' data column in the schema) — completeness_sweep's 'orphan_ref' flag on this cell is a tool-heuristic false positive, not a true orphan; see qa note.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130828",
+    "unit_id": "G100002082800",
+    "terminal_name": "Hoegh Cyprus FSRU",
+    "unit_name": "--",
+    "country": "Cyprus",
+    "field_name": "Status [ref]",
+    "old_value": "https://cyprus-mail.com/2024/02/03/taxpayers-will-pay-the-cost-of-lng-debacle/",
+    "new_value": "https://cyprus-mail.com/2024/02/03/taxpayers-will-pay-the-cost-of-lng-debacle/",
+    "confidence": "blue",
+    "source_tier": "trade_press",
+    "ref_field": null,
+    "ref_urls": [
+      "https://cyprus-mail.com/2024/02/03/taxpayers-will-pay-the-cost-of-lng-debacle/"
+    ],
+    "source_notes": "Re-verified live and passing. Status (cancelled/confirmed) unchanged.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130828",
+    "unit_id": "G100002082800",
+    "terminal_name": "Hoegh Cyprus FSRU",
+    "unit_name": "--",
+    "country": "Cyprus",
+    "field_name": "CancelledYear [ref]",
+    "old_value": "https://cyprus-mail.com/2024/02/03/taxpayers-will-pay-the-cost-of-lng-debacle/",
+    "new_value": "https://cyprus-mail.com/2024/02/03/taxpayers-will-pay-the-cost-of-lng-debacle/",
+    "confidence": "blue",
+    "source_tier": "trade_press",
+    "ref_field": null,
+    "ref_urls": [
+      "https://cyprus-mail.com/2024/02/03/taxpayers-will-pay-the-cost-of-lng-debacle/"
+    ],
+    "source_notes": "Re-verified live and passing. CancelledYear (2021) unchanged.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130828",
+    "unit_id": "G100002082800",
+    "terminal_name": "Hoegh Cyprus FSRU",
+    "unit_name": "--",
+    "country": "Cyprus",
+    "field_name": "StopYear [ref]",
+    "old_value": "https://cyprus-mail.com/2024/02/03/taxpayers-will-pay-the-cost-of-lng-debacle/",
+    "new_value": "https://cyprus-mail.com/2024/02/03/taxpayers-will-pay-the-cost-of-lng-debacle/",
+    "confidence": "blue",
+    "source_tier": "trade_press",
+    "ref_field": null,
+    "ref_urls": [
+      "https://cyprus-mail.com/2024/02/03/taxpayers-will-pay-the-cost-of-lng-debacle/"
+    ],
+    "source_notes": "Re-verified live and passing. StopYear (2021) unchanged.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  }
+]

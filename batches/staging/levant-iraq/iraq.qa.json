@@ -1,0 +1,52 @@
+[
+  {
+    "category": "citation_recheck_blocked",
+    "terminal_id": "T100001048168",
+    "unit_id": "G100001055225",
+    "terminal_name": "Khor Al-Zubair FSRU",
+    "issue": "Existing Bloomberg (2025-03-23) and Reuters (2025-03-10) refs both return HTTP 403/401 to url_verifier.py; no Wayback Machine snapshot exists for either URL (checked archive.org/wayback/available -- empty). Underlying values (location, ~0.5 bcf/d capacity, still-proposed status, 2025 proposal date) independently reconfirmed via the verified Oct-2025 Excelerate Energy definitive-agreement announcement. Existing refs left in place (bot-blocked, not proven dead) with the new source added alongside.",
+    "severity": "low",
+    "suggested_action": "No action needed this cycle; if Bloomberg/Reuters access matters for compliance, retry with an authenticated fetch.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ownership_structure_unresolved",
+    "terminal_id": "T100001048168",
+    "unit_id": "G100001055225",
+    "terminal_name": "Khor Al-Zubair FSRU",
+    "issue": "Owner field remains blank. All public sources (Excelerate's own release, a Mayer Brown legal advisory, and four trade-press outlets) describe the Oct-2025 deal as a 'regasification services and LNG supply' agreement (tolling-style) between Excelerate and an unnamed subsidiary of Iraq's Ministry of Electricity -- none states which party holds legal title to the FSRU/terminal. Excelerate is well-supported as Operator (staged) but NOT staged as Owner given this ambiguity, even though Excelerate is Owner on 11/13 other GEM terminals it appears on -- that pattern is not proof for this specific deal. The Ministry of Electricity subsidiary's exact legal name is also undisclosed in every source checked.",
+    "severity": "medium",
+    "suggested_action": "Leave Owner blank pending an explicit ownership statement; do not infer BOO structure from Excelerate's pattern elsewhere.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "project_delay_context",
+    "terminal_id": "T100001048168",
+    "unit_id": "G100001055225",
+    "terminal_name": "Khor Al-Zubair FSRU",
+    "issue": "The FSRU built for this project (Excelerate Acadia / Hull 3407) has been temporarily chartered to Jordan (NEPCO, Aqaba LNG terminal) for ~9 months from ~April/May 2026, due to Iraq-side delays. MEES reporting (2026-05-01 and 2026-07-03) attributes the delay to Iraqi government payment failures during a financial crisis linked to Strait-of-Hormuz closure risk amid the 2026 regional conflict, plus an intervening change of Iraqi Prime Minister (Sudani -> al-Zaidi per the July article). Iraq approved a $48M initial payment to Excelerate in both the May and July 2026 reporting (unclear if this is the same payment re-approved after further delay, or two separate approvals). No construction-start or commercial-operations-date confirmation found as of 2026-07-16. Status intentionally left at 'proposed' -- no confirmed construction-start evidence, and per SOP a status flip is never inferred from geopolitical/conflict reporting alone.",
+    "severity": "medium",
+    "suggested_action": "Recheck next batch once the Jordan charter ends (~Dec 2026/Jan 2027) or a construction-start/FSRU-arrival announcement appears.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "suspect_enum_value_false_positive",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Al-Faw FSRU Terminal / Khor Al-Zubair FSRU",
+    "issue": "completeness_sweep.py flags CapacityUnits='bcf/d' on both Iraq rows as outside its catalog (['bcm/y','mtpa']), but bcf/d is a legitimate, actively-used GEM enum (28 rows tracker-wide) and the CapacityinMtpa conversions on both rows check out exactly (1.00 bcf/d x 7.67 = 7.67 mtpa; 0.50 x 7.67 = 3.84 mtpa). No data error -- the script's catalog list is stale/incomplete.",
+    "severity": "low",
+    "suggested_action": "Consider adding 'bcf/d', 'MMcf/d' etc. to completeness_sweep.py's CapacityUnits catalog (script fix, not a data fix).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "orphan_ref_false_positive",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Al-Faw FSRU Terminal / Khor Al-Zubair FSRU",
+    "issue": "completeness_sweep.py flags 'StartDate [ref]' as an orphan (Rule F) on both Iraq rows because ActualStartYear/ActualStartMonth are blank -- but StartDate [ref] correctly pairs with OriginalPlannedStartYear/LatestPlannedStartYear too (per gem_db_schema.md ~L94), and both of those ARE populated on both rows. This is a mechanical false positive for still-proposed projects that have a planned-but-not-yet-actual start date; not a real orphan.",
+    "severity": "low",
+    "suggested_action": "Consider narrowing completeness_sweep.py's orphan_ref check to require ALL of OriginalPlannedStartYear/LatestPlannedStartYear/ActualStartYear blank before flagging StartDate [ref] as orphaned.",
+    "researcher_initials": "AI-draft"
+  }
+]
