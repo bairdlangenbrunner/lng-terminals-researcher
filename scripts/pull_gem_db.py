@@ -1,17 +1,12 @@
 """
-Pull the latest GEM database export and derive the column-index map from the
-header row.
+Derive the column-index map for a GEM all-fields export CSV from its header row.
 
-The fetch path wraps gem_export_via_web.py (NOT gem_query.py) — the cookie-based
-fallback. It requires the env vars:
-  - GEM_PROJECT_DB_SESSIONID
-  - GEM_PROJECT_DB_CSRFTOKEN
-(set from the user's browser session; expires periodically — re-export when
-auth fails)
-
-The common case is `--map-only` on a CSV already pulled by the cookie-free
-primary path (`python gem_query.py --all-fields lng -o gem_export.csv`) — this
-script then just derives the .colmap.json without fetching anything.
+This script never fetches anything. Pull the CSV first via the sibling
+gem-db-ops repo's engine (`python ../../gem-db-ops/gem_query.py --all-fields
+lng -o gem_export.csv`, from scripts/), then run `python pull_gem_db.py
+--map-only` to derive the .colmap.json. Running without `--map-only` exits
+with a pointer to that command — the old cookie-based fetch path was
+decommissioned 2026-07-21 and this repo keeps no pull-engine copies.
 
 Why re-derive the column map every batch:
   - GEM's all-fields export is 115 columns (Q2 2026) but the schema can
@@ -20,16 +15,12 @@ Why re-derive the column map every batch:
   - The derived map is saved next to the CSV so other scripts use the same one
 
 Usage:
-    python pull_gem_db.py                            # default: lng export
-    python pull_gem_db.py --output gem_export.csv    # custom path
-    python pull_gem_db.py --map-only                 # skip fetch, derive map only
-    python pull_gem_db.py --kind lng_export          # the shorter "LNG Export" format
+    python pull_gem_db.py --map-only                 # derive map from ./gem_export.csv
+    python pull_gem_db.py --map-only --output x.csv  # custom CSV path
 """
 import argparse
 import csv
 import json
-import os
-import subprocess
 import sys
 from pathlib import Path
 
@@ -38,7 +29,6 @@ from schema_constants import COMPUTED_COLUMNS, OUT_OF_SCOPE_COLUMNS
 
 
 DEFAULT_OUT = "./gem_export.csv"
-WRAPPER_SCRIPT = "gem_export_via_web.py"  # user-supplied; must be in same dir or PYTHONPATH
 
 # Columns we depend on — keyed by canonical short name, value is the expected
 # header text (case-insensitive). The actual column index is derived from the
@@ -170,47 +160,6 @@ READ_ONLY_COMPUTED = {k for k, v in EXPECTED_COLUMNS.items() if v in COMPUTED_CO
 READ_ONLY_OUT_OF_SCOPE = {k for k, v in EXPECTED_COLUMNS.items() if v in OUT_OF_SCOPE_COLUMNS}
 
 
-def _check_env():
-    """Verify auth env vars are set before invoking the wrapper."""
-    missing = []
-    for var in ("GEM_PROJECT_DB_SESSIONID", "GEM_PROJECT_DB_CSRFTOKEN"):
-        if not os.environ.get(var):
-            missing.append(var)
-    if missing:
-        sys.exit(
-            f"ERROR: missing env var(s): {', '.join(missing)}\n\n"
-            f"  See {WRAPPER_SCRIPT} for the cookie extraction procedure.\n"
-            f"  Briefly: log into the GEM project DB in your browser, copy the\n"
-            f"  sessionid and csrftoken cookies, export as env vars."
-        )
-
-
-def fetch_gem_export(out_path, kind="lng"):
-    """Invoke the user's gem_export_via_web.py wrapper to download the CSV."""
-    _check_env()
-    # The wrapper expects to be invoked as `python gem_export_via_web.py <kind> -o <path>`
-    # We use sys.executable to be explicit about the python interpreter
-    script_dir = Path(__file__).parent
-    wrapper = script_dir / WRAPPER_SCRIPT
-    if not wrapper.exists():
-        sys.exit(
-            f"ERROR: {WRAPPER_SCRIPT} not found in {script_dir}.\n"
-            f"  This script wraps the user-supplied {WRAPPER_SCRIPT}.\n"
-            f"  Materialize it from project files into the same directory before running."
-        )
-    Path(out_path).parent.mkdir(parents=True, exist_ok=True)
-    result = subprocess.run(
-        [sys.executable, str(wrapper), kind, "-o", out_path],
-        capture_output=False,  # let stderr stream through for auth diagnostics
-    )
-    if result.returncode != 0:
-        sys.exit(f"ERROR: {WRAPPER_SCRIPT} failed with exit code {result.returncode}")
-    size = Path(out_path).stat().st_size
-    if size < 1000:
-        sys.exit(f"ERROR: CSV suspiciously small ({size} bytes) — verify auth and try again")
-    print(f"  Pulled {size:,} bytes to {out_path}", file=sys.stderr)
-
-
 def derive_column_map(csv_path):
     """Read header row, return {canonical_name: 0-indexed-column} dict.
     Unknown columns get None; missing expected columns also get None
@@ -249,15 +198,17 @@ def derive_column_map(csv_path):
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--output", "--out", dest="out", default=DEFAULT_OUT)
-    p.add_argument("--kind", default="lng",
-                   choices=["lng", "lng_export"],
-                   help="Which export format (default: lng)")
     p.add_argument("--map-only", action="store_true",
-                   help="Skip the fetch; just derive the map from an existing CSV")
+                   help="Derive the map from an existing CSV (the only mode)")
     args = p.parse_args()
 
     if not args.map_only:
-        fetch_gem_export(args.out, kind=args.kind)
+        sys.exit(
+            "ERROR: this script never fetches the export — pull via the sibling\n"
+            "  gem-db-ops repo's engine, then derive the map (from scripts/):\n\n"
+            "    python ../../gem-db-ops/gem_query.py --all-fields lng -o gem_export.csv\n"
+            "    python pull_gem_db.py --map-only\n"
+        )
 
     col_map = derive_column_map(args.out)
 

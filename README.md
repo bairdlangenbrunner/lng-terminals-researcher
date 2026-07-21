@@ -38,9 +38,9 @@ staging — they gate the live-data scripts:
 
 | Variable | Needed by | What it is |
 |---|---|---|
-| `GEM_READONLY_DB_URL` | `gem_query.py` (the canonical data pull), `refsweep_missing_year.py` | Postgres connection string for GEM's read-only replica (`postgres://readonly:…@host:5432/db`). Ask GEM staff. |
-| `GEM_PROJECT_DB_SESSIONID`, `GEM_PROJECT_DB_CSRFTOKEN` | `gem_export_via_web.py` / `pull_gem_db.py` (web-export fallback), `fetch_timeline.py`, `entity_lookup.py --remote` | Login cookies from a browser session on the GEM project DB. Extraction procedure in `gem_export_via_web.py`'s docstring. |
-| `GEM_PROJECT_DB_BASE_URL` | `fetch_timeline.py`, `gem_export_via_web.py` | Overrides the built-in project-DB host. Required for `fetch_timeline.py` — see Known issues. |
+| `GEM_READONLY_DB_URL` | `../gem-db-ops/gem_query.py` (the canonical data pull, in the sibling repo), `refsweep_missing_year.py`, `fetch_timeline.py`, `captive_power_colocation.py` | Postgres connection string for GEM's read-only replica (`postgres://readonly:…@host:5432/db`). Ask GEM staff. |
+| `GEM_PROJECT_DB_SESSIONID`, `GEM_PROJECT_DB_CSRFTOKEN` | `fetch_timeline.py`, `entity_lookup.py --remote` | Login cookies from a browser session on the GEM project DB (copy `sessionid`/`csrftoken` from DevTools; re-copy when they expire). |
+| `GEM_PROJECT_DB_BASE_URL` | `fetch_timeline.py` | Overrides the built-in project-DB host. Required for `fetch_timeline.py` — see Known issues. |
 
 **Access prerequisite:** the GEM LNG Terminals Manual (a Google Doc) is the
 authoritative methodology and is NOT in this repo. Ask your GEM lead for access;
@@ -57,7 +57,7 @@ the reference URL lives in `docs/reference/sop_pointers.md`.
 Smoke-check the setup (from `scripts/`, needs `GEM_READONLY_DB_URL`):
 
 ```bash
-python gem_query.py --all-fields lng -o gem_export.csv   # fresh pull of the LNG dataset
+python ../../gem-db-ops/gem_query.py --all-fields lng -o gem_export.csv   # fresh pull (engine lives in the sibling gem-db-ops repo)
 python pull_gem_db.py --map-only                         # derive the column-index map (.colmap.json)
 python dedup_index.py                                    # build the name-match indexes
 ```
@@ -105,10 +105,7 @@ docs/
 
 scripts/                     Python tools called by the workflows
   README.md                  The index: per-script purpose, run order, deep-dives on the tricky ones
-  gem_query.py               Query the GEM read-only Postgres; --all-fields lng is the CANONICAL fresh pull
-  gem_all_fields.py          Library behind gem_query.py's export (no __main__ — running it directly is a no-op)
-  gem_export_via_web.py      Download via the website with login cookies — the fallback pull
-  pull_gem_db.py             Wrap a download + write the column-index map (.colmap.json)
+  pull_gem_db.py             Write the column-index map (.colmap.json); the pull ENGINE lives in ../gem-db-ops (sibling repo)
   add_effective_status.py    Stamp effective_status onto the export + prune old CSV snapshots
   fetch_timeline.py          Pull a unit's full status history (the CSV export only has current status)
   giignl_extract.py          Turn the GIIGNL PDF's terminal tables into a flat CSV

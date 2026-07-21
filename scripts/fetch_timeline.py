@@ -12,7 +12,7 @@ lifecycle_rules.md "Anchor years vs timeline (the export gap)":
   ordering, and lost methodology-required context.
 
 The whole `status_timeline` table is readable via GEM_READONLY_DB_URL (the same
-connection `gem_query.py` and `refsweep_missing_year.py` use), joined
+connection `../gem-db-ops/gem_query.py` and `refsweep_missing_year.py` use), joined
 unit→plant. This is exact SQL, not a heuristic scrape, and needs no session
 cookies. USE THIS to pull the ordered timeline before staging any status
 change. It is read-only — no live-DB writes.
@@ -83,7 +83,7 @@ def fetch_timeline_db(unit_id):
     if not url:
         sys.exit(
             f"ERROR: {DB_ENV_VAR} not set — cannot read the timeline from the\n"
-            f"  read-only Postgres. Set it (same URL as gem_query.py). If the\n"
+            f"  read-only Postgres. Set it (same URL as the gem-db-ops pulls). If the\n"
             f"  read-only DB is genuinely unreachable, escalate to the user before\n"
             f"  staging any status change (see the module docstring)."
         )
