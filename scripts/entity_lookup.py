@@ -51,7 +51,9 @@ from normalize import normalize_entity, normalize_country
 from colmap import load_colmap as _load_colmap
 
 
-DEFAULT_BASE_URL = "https://internal-project-db-host"
+# Remote endpoint host comes from the environment — the internal admin site's
+# URL is deliberately not hard-coded in this public repo. Ask GEM staff.
+DEFAULT_BASE_URL = os.environ.get("GEM_PROJECT_DB_BASE_URL", "")
 DEFAULT_CSV = "./gem_export.csv"
 _DEFAULT_UA = (
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
@@ -178,6 +180,8 @@ def lookup_remote(name, base_url=DEFAULT_BASE_URL, timeout=30):
     """
     sid = os.environ.get("GEM_PROJECT_DB_SESSIONID")
     csrf = os.environ.get("GEM_PROJECT_DB_CSRFTOKEN")
+    if not base_url:
+        return {"result": "skipped_no_base_url", "_warning": "Set GEM_PROJECT_DB_BASE_URL for remote lookup"}
     if not sid or not csrf:
         return {"result": "skipped_no_auth", "_warning": "Set GEM_PROJECT_DB_SESSIONID/CSRFTOKEN for remote lookup"}
 
