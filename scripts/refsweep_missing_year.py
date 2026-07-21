@@ -9,7 +9,7 @@ per point; the user applies edits manually. See docs/sops/ref_sweep.md for the
 full procedure (this script is the deterministic scaffolding around the agentic
 research step).
 
-Reads the connection URL from GEM_READONLY_DB_URL (same as gem_query.py). Never
+Reads the connection URL from GEM_READONLY_DB_URL (same as the gem-db-ops pulls). Never
 hardcodes credentials.
 
 TWO SUBCOMMANDS
@@ -191,7 +191,7 @@ aggregators.
 
 
 def get_engine():
-    """SQLAlchemy engine from GEM_READONLY_DB_URL (matches gem_query.py)."""
+    """SQLAlchemy engine from GEM_READONLY_DB_URL (matches the gem-db-ops engine)."""
     url = os.environ.get(ENV_VAR)
     if not url:
         sys.exit(f"error: set {ENV_VAR} (e.g. export {ENV_VAR}='postgres://...').")

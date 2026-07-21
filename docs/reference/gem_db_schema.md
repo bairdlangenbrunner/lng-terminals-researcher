@@ -10,7 +10,7 @@ The authoritative schema source is the live database. This doc captures what the
 python pull_gem_db.py
 ```
 
-Wraps `gem_export_via_web.py` (uploaded by the user). Requires `GEM_PROJECT_DB_SESSIONID` and `GEM_PROJECT_DB_CSRFTOKEN` env vars set from the user's browser session — cookies expire periodically, re-export when auth fails. Output at `gem_export.csv` with a sibling `./gem_export.colmap.json` containing the derived column-index map.
+The pull reads the read-only Postgres: `python ../../gem-db-ops/gem_query.py --all-fields lng -o gem_export.csv && python pull_gem_db.py --map-only` (from `scripts/`; requires `GEM_READONLY_DB_URL`; the pull engine lives in the sibling `../gem-db-ops` repo — `pull_gem_db.py` here is map-derivation only). Output at `gem_export.csv` with a sibling `./gem_export.colmap.json` containing the derived column-index map.
 
 ## Row structure
 

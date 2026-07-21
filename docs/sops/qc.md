@@ -84,7 +84,7 @@ Run this against any batch the user reports having applied since the last QC pas
 
 ## §4 Workflow (linear)
 
-1. Fresh pull: `python gem_all_fields.py -o gem_export.csv && python pull_gem_db.py --map-only` — QC against a stale export is meaningless, and §3.4 specifically needs a pull that postdates the user's apply
+1. Fresh pull: `python ../../gem-db-ops/gem_query.py --all-fields lng -o gem_export.csv && python pull_gem_db.py --map-only` (from `scripts/`) — QC against a stale export is meaningless, and §3.4 specifically needs a pull that postdates the user's apply
 2. `python completeness_sweep.py`, `python stale_sweep.py`, `python dedup_index.py` (§3.1)
 3. `python citation_qc.py` with the cycle's scope shard (§3.2)
 4. Accuracy spot-check (§3.3) — draw the sample, verify cells, record verdicts

@@ -10,8 +10,8 @@ From the repo root, drop the `../` (e.g. `--output batches/…`), per `CLAUDE.md
 ## Typical invocation order in a batch
 
 ```
-# 1. Always start with a fresh pull (no cookies needed for the all-fields path)
-python gem_query.py --all-fields lng -o gem_export.csv   # gem_all_fields.py is the library; running it directly is a no-op
+# 1. Always start with a fresh pull (engine lives in the sibling gem-db-ops repo; no cookies)
+python ../../gem-db-ops/gem_query.py --all-fields lng -o gem_export.csv
 python pull_gem_db.py --map-only --output gem_export.csv   # derive the .colmap.json
 
 # 2. Build the matching indexes
@@ -47,10 +47,7 @@ python recalc.py ../batches/...
 
 | Script | Purpose |
 |---|---|
-| `gem_query.py` | Queries the GEM read-only Postgres database directly (`GEM_READONLY_DB_URL`) and exports to CSV. **`gem_query.py --all-fields lng` is the canonical fresh pull** (no cookies needed). |
-| `gem_all_fields.py` | Library behind `gem_query.py --all-fields` — reproduces the website's "all-fields" LNG terminal CSV shape. **No `__main__`: running it directly is a silent no-op**; always invoke via `gem_query.py`. |
-| `gem_export_via_web.py` | Downloads the all-fields CSV from the running GEM website. Cookie-based (auth from `.env`). |
-| `pull_gem_db.py` | Wraps a data-pull and derives the 115-column index map, writing `.colmap.json` next to the CSV. Use `--map-only` to derive the colmap from an existing CSV without re-pulling. |
+| `pull_gem_db.py` | Derives the 115-column index map from an existing CSV's header, writing `.colmap.json` next to it (`--map-only` is the only mode; it never fetches). The pull **engine** (`gem_query.py` + `gem_all_fields.py`) lives only in the sibling `../gem-db-ops` repo — `python ../../gem-db-ops/gem_query.py --all-fields lng` is the canonical fresh pull. |
 | `fetch_timeline.py` | Pulls the full ordered status timeline for a single UnitID. Required before any status timeline edit — the CSV export doesn't include timeline data. **The read-only Postgres (`GEM_READONLY_DB_URL`) is the only path — exact SQL, no cookies, always available**, so a confirmed status change is NEVER deferred to a qa note for lack of a timeline (that was the Quynh Lap miss). The legacy `--web` scraper has been **removed entirely** (its Heroku host is permanently 404); if the read-only DB is itself unreachable, escalate to the user rather than falling back to a scraper. |
 | `giignl_extract.py` | Parses the GIIGNL annual-report PDF into a flat CSV with GEM-aligned columns. Uses `pdftotext -layout` + column-position row partitioning; per-country capacity subtotals act as block-boundary budgets. Every edition 2020–2026 is committed in `data/` (all real PDFs v1.4–v1.7; see `data/README.md`); offsets are 2026-tuned, so older editions need re-derivation. (The legacy zip-of-JPEGs + OCR vision pipeline lives in git history if a future download reverts.) |
 
@@ -70,7 +67,8 @@ python recalc.py ../batches/...
 | `dedup_index.py` | Builds project/sponsor-country/unit indexes from the GEM CSV. Bare `python dedup_index.py` writes the indexes; `python dedup_index.py match <candidates.json>` scores discovery candidates against GEM and implements the Discovery SOP §6 similarity comparison (steps 4-6) — name ratio (incl. `OtherNames`), haversine location distance, capacity ratio, and the cancelled/shelved + new-proposal "dead-and-revived" case — emitting a per-candidate `verdict` + `recommended_route` (`discovery_new` / `update_existing` / `update_dead_and_revived` / `manual_review`) to `work/dedup_matches.json`. Library: `match_candidate(cand, build_indexes(csv))`. |
 | `monitor_store.py` | Maintains the durable cross-batch monitor list (`monitor_list/current.json`) — the Discovery SOP §5 roll-forward loop. `seed <inputs-dir>` copies the durable store → `<inputs-dir>/prior_monitor_list.json` (run **before** a `--mode discovery` build so the sheet's roll-forward starts from accumulated state); `update <inputs-dir> [--batch <label>]` folds the batch's `staged_monitor_list.json` back into the durable store and **drops candidates promoted to `new_terminals`** (run **after** the build). `show` prints the store. |
 | `entity_lookup.py` | Searches local CSV (and, with `--remote`, the entity system) for an entity name. Run before staging any new entity — **bare and with `--remote`**. `--country` only *annotates* matches (in-country vs. elsewhere) and NEVER filters them out: entities are shared across countries, so an entity on a terminal in another country is still a match (a `--country` filter once produced a false not-found → a duplicate; the script now emits a `cross_country_warning` instead of hiding it). |
-| `url_verifier.py` | HTTP 200 + content check + soft-error detection. Every cited URL must pass before being staged. Optional append-only JSONL log of every verification attempt (pass AND fail, with reason) via `--log <path>` or `URL_VERIFIER_LOG=<path>`; convention is to export `URL_VERIFIER_LOG` pointing into the batch's staging dir so the attempt log lands next to the staged JSON. |
+| `url_verifier.py` | HTTP 200 + content check + soft-error detection. Every cited URL must pass before being staged. **Bot-block ≠ dead:** on 401/403/429 (or a 200 Cloudflare/paywall interstitial) it auto-falls back to the newest Wayback snapshot and runs the same content check there — a pass verifies the LIVE URL (reason names the snapshot; disable with `--no-wayback`/`wayback_fallback=False`). Optional append-only JSONL log of every verification attempt (pass AND fail, with reason) via `--log <path>` or `URL_VERIFIER_LOG=<path>`; convention is to export `URL_VERIFIER_LOG` pointing into the batch's staging dir so the attempt log lands next to the staged JSON. |
+| `audit_ref_drops.py` | Audits (and with `--apply` repairs) staged `[ref]` edits that DROPPED existing citation URLs — the Al Zour / gulf-turkiye miss class (Update SOP §7.2a merge semantics). Classifies each dropped URL (`rehosted_same_doc` / `restore_live` / `restore_botblocked_wayback` / `drop_ok_dead` / `drop_ok_content_gone` / `dropped_unverifiable`), writes `work/ref_drop_audit_<slug>.json`, and `--apply` merges live URLs back into the per-country updates JSONs (existing-first) + stamps `dropped_urls_dead` so the build's `REF-DROP:` guard passes. Re-assemble + rebuild the xlsx afterwards. |
 | `imo_tracker.py` | Look up FSRU/FLNG vessel IMO via marinetraffic.org. |
 
 ### Workflow-specific
@@ -99,17 +97,12 @@ python recalc.py ../batches/...
 
 ## Data-acquisition paths
 
-There are two ways to pull the GEM CSV, in increasing reliance on auth:
-
-- `gem_query.py --all-fields lng` — hits the read-only Postgres directly
-  (`GEM_READONLY_DB_URL`, **no cookies**), reproducing the website's all-fields
-  export via the `gem_all_fields.py` library. **Canonical default.**
-- `gem_export_via_web.py` — downloads from the live website using auth cookies
-  from `.env`. The fallback when the read-only DB is unreachable.
-
-All of these are committed to the repo (no longer user-supplied). `pull_gem_db.py`
-wraps a pull and derives the column-index map; run it with `--map-only` to derive
-the colmap from a CSV you already pulled.
+There is ONE way to pull the GEM CSV: the sibling **`../gem-db-ops`** repo's
+engine — `python ../../gem-db-ops/gem_query.py --all-fields lng -o
+gem_export.csv` (from `scripts/`; read-only Postgres via `GEM_READONLY_DB_URL`,
+no cookies). This repo keeps no engine copies — engine fixes happen in
+gem-db-ops only. `pull_gem_db.py` (here) derives the column-index map from a
+CSV you already pulled (`--map-only` is its only mode).
 
 ## Inter-script dependencies
 
@@ -144,8 +137,7 @@ Trust the scripts by default — they're versioned scaffolding, not throwaway co
 
 | Script | Read source when |
 |---|---|
-| `gem_all_fields.py` | Export columns/shape change; a pull path fails |
-| `pull_gem_db.py` | Schema changed; column indices look wrong; auth fails on the cookie fallback |
+| `pull_gem_db.py` | Schema changed; column indices look wrong |
 | `fetch_timeline.py` | Postgres unreachable; timeline parse returns nothing for a unit known to have one |
 | `coverage_status.py` | A `meta.json` field looks stale/wrong; triage or sweep dispatch scope decision doesn't match what the ledger reports |
 | `normalize.py` | Adding new country/entity; cluster matching is over- or under-merging |

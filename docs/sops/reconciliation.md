@@ -49,10 +49,10 @@ These parameters get written into the staging xlsx README sheet.
 1. Select the edition from the committed archive in `data/` — every edition **2020–2026** is checked into the repo (see `data/README.md` for the manifest: filenames, page counts, table/fleet page locations, edition→calendar-year map). The current target is `data/GIIGNL-2026-Annual-Report-0526b.pdf`. (If the user supplies a newer edition, drop it in `data/` and add a manifest row.)
 2. `file <path>` to confirm format. **All seven archived editions (2020–2026) are genuine PDFs** (`PDF document, version 1.4`–`1.7`) with clean `pdftotext -layout` text layers — `giignl_extract.py`'s `pdftotext` pipeline applies to all of them. A `(zip deflate encoded)` tag is just normal PDF stream compression, NOT the legacy distribution form. The `file` check still matters because a **future** download could arrive as the legacy **zip-disguised-as-PDF** (file reports a zip archive: per-page JPEG + OCR text + manifest.json) — that pre-2026 vision-LLM code path lives in git history and would need restoration. **Caveat:** the extractor's page/column offsets are tuned to the 2026 edition, so back-extracting an older archived edition needs per-edition page selection + offset re-derivation (`data/README.md`, Appendix A.8).
 3. The scripts are committed to `scripts/` (no separate "materialize" step needed):
-   - `gem_query.py` / `gem_all_fields.py` for the GEM pull (no auth cookies needed)
    - `giignl_extract.py`, `report_diff.py`, `url_verifier.py`
    - `build_review_package.py`, `recalc.py`
-4. `python scripts/gem_query.py --all-fields lng -o gem_export.csv` → fresh GEM CSV. **Mandatory** per the [ref]-fill SOP discipline — the database changes between batches.
+   (The GEM pull engine lives in the sibling `../gem-db-ops` repo.)
+4. `python ../gem-db-ops/gem_query.py --all-fields lng -o gem_export.csv` (from the repo root) → fresh GEM CSV. **Mandatory** per the [ref]-fill SOP discipline — the database changes between batches.
 5. `python scripts/pull_gem_db.py --map-only --output gem_export.csv` → derives the column-index map `gem_export.colmap.json` (consumed by `report_diff.py` and `build_review_package.py`).
 
 ### §3.2 Extract GIIGNL into structured form

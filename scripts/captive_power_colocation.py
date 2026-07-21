@@ -22,7 +22,7 @@ candidate-pairs CSV that a human reviews before the (gated) research pass that
 confirms the captive relationship and reconciles statuses.
 
 Data access mirrors the rest of the repo: the LNG side is read from the canonical
-all-fields CSV (`gem_query.py --all-fields lng -o gem_export.csv`); the GOGPT side
+all-fields CSV (`../../gem-db-ops/gem_query.py --all-fields lng -o gem_export.csv`); the GOGPT side
 is pulled directly from `GEM_READONLY_DB_URL` (there is no standing GOGPT CSV).
 
 Usage:
@@ -36,15 +36,30 @@ import argparse
 import csv
 import json
 import math
+import os
 import sys
 from collections import defaultdict
 from dataclasses import dataclass, field
 
 from sqlalchemy import text
 
-# Reuse the repo's read-only engine (same GEM_READONLY_DB_URL path as every
-# other DB-backed script here).
-from gem_query import build_engine, get_database_url
+
+def _get_engine(statement_timeout_ms=60_000):
+    """Read-only engine from GEM_READONLY_DB_URL (same env var as every other
+    DB-backed script here; the shared pull engine lives in ../gem-db-ops)."""
+    url = os.environ.get("GEM_READONLY_DB_URL")
+    if not url:
+        sys.exit("error: set GEM_READONLY_DB_URL (postgres://readonly:...@host/db).")
+    if url.startswith("postgres://"):
+        url = url.replace("postgres://", "postgresql://", 1)
+    from sqlalchemy import create_engine
+    return create_engine(
+        url,
+        connect_args={"options": (
+            f"-c default_transaction_read_only=on "
+            f"-c statement_timeout={statement_timeout_ms}")},
+        pool_pre_ping=True,
+    )
 
 # ---------------------------------------------------------------------------
 # Status normalisation -- the two trackers use different vocabularies. Collapse
@@ -728,7 +743,7 @@ def write_xlsx(candidates: list[Candidate], unmatched_captive: list[GogptPlant],
          "GOGPT oil & gas plant. The wiki URL is a POINTER to that GOGPT record for review only -- "
          "it is NOT a citation and never enters a staging sheet as a source.", False),
         ("", False),
-        ("Provenance: LNG side from `gem_query.py --all-fields lng`; GOGPT side from the read-only "
+        ("Provenance: LNG side from `gem-db-ops/gem_query.py --all-fields lng`; GOGPT side from the read-only "
          "Postgres (projectType=1 + trackerSearch=GOGPT). No web research; no live-DB writes.", False),
     ]
     for text_, bold in lines:
@@ -802,7 +817,7 @@ def build_arg_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(description=__doc__,
                                 formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("--lng-csv", default="gem_export.csv",
-                   help="LNG all-fields CSV (from `gem_query.py --all-fields lng`).")
+                   help="LNG all-fields CSV (from `gem-db-ops/gem_query.py --all-fields lng`).")
     p.add_argument("--subnational",
                    help="State/Province scope (matched case-insensitively on both sides). "
                         "Use for US-style states; mutually exclusive with --country.")
@@ -834,7 +849,7 @@ def main(argv: list[str] | None = None) -> int:
     area_col = "Country/Area" if by_country else "State/Province"
 
     terminals = load_lng_terminals(args.lng_csv, area, area_col)
-    engine = build_engine(get_database_url(), statement_timeout_ms=60_000)
+    engine = _get_engine(statement_timeout_ms=60_000)
     plants = load_gogpt_plants(engine, area, by_country=by_country)
 
     candidates, unmatched = match(terminals, plants, args.radius_km,
