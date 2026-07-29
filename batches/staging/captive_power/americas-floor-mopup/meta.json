@@ -1,0 +1,23 @@
+{
+  "scope_slug": "captive_power/americas-floor-mopup",
+  "workflow": "captive_power",
+  "tier": null,
+  "countries": [
+    "United States",
+    "Mexico",
+    "Puerto Rico"
+  ],
+  "areas": [
+    "Americas (no-MW-floor mop-up increment)"
+  ],
+  "started": "2026-07-27",
+  "built": "2026-07-27",
+  "applied": null,
+  "status": "superseded",
+  "run_record": "batches/run_records/2026-07-27_europe_captive-power.md",
+  "supplements": [
+    "captive_power/americas-all"
+  ],
+  "notes": "MOP-UP INCREMENT, NOT a mutation of captive_power/americas-all. americas-all is already built and its Louisiana rows are already applied to GEM, so editing it in place would desync the built workbook from its staging inputs. This dir is a sibling that supplements it. Scope: the nine Americas terminals whose earlier verdicts rested on the >50 MW captive-power floor abolished by user directive 2026-07-27, re-researched after the floor was removed. Result: 2 YES, 7 INSUFFICIENT. Only ONE new row is staged -- Penuelas LNG Terminal (T100000130578, G100002057800) CaptiveGasPower=True, yellow. Penuelas is the batch's canonical PARTIALLY-CAPTIVE case: the adjacent EcoElectrica combined-cycle plant sells power to the PREPA grid AND supplies the integrated LNG terminal on the same site ('the only generating station in the world with an integrated LNG terminal'), so the fact that power flows outward does not defeat captive status. Coastal Bend (T100001061247) is a YES but is deliberately NOT staged here -- americas-all already stages CaptiveGasPower=True for its single unit-row, and re-staging would create a duplicate (unit_id, field_name) pair across the two dirs; this dir records only its strengthened basis (the developer now NAMES 'cogeneration', replacing an inference from the Optimized Cascade technology choice plus 22.5 Mtpa scale) and downgrades its confidence green -> yellow, because both cited URLs are coastalbendlng.com -- one self-published origin, not two independent sources, and a developer press release is not a primary/regulatory source. The seven INSUFFICIENT verdicts are an evidence UPGRADE, not a regression: several previously read as NO on floor reasoning ('two orders of magnitude below the scale at which a >50 MW turbine set is ever installed' at Hialeah), and absence of any mention of on-site generation is INSUFFICIENT, never a documented NO. Both Penuelas URLs re-verified through url_verifier.py at build time. Zero PowerPlantsSupplied. Three incidental findings routed to qa_review for a follow-on Update batch, one of them high severity: American LNG Titusville (T100000130209) is recorded 'cancelled' in GEM but filed a DOE 15-19-LNG semi-annual report on 19 Mar 2026 and had its FTA authorisation transferred to LNG Holdings LLC / New Fortress Energy in Nov 2024 -- a cancelled project does not keep filing DOE semi-annual reports.",
+  "superseded_by": "captive_power/americas-complete"
+}

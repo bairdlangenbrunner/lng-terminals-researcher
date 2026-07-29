@@ -1,0 +1,18 @@
+[
+  {
+    "terminal_id": "T100000130817",
+    "unit_id": "G100002081701",
+    "terminal_name": "Qatar North Field LNG Terminal",
+    "unit_name": "North Field East (T1-4)",
+    "operation": "append",
+    "status": "operating",
+    "sub_status": "planned",
+    "year": 2027,
+    "part_of_year": "H1",
+    "notes": "Existing Postgres timeline (fetch_timeline.py G100002081701): proposed/2018, FID(actual)/2021, construction(actual)/2023 Oct, operating(actual)/2026 H1 [st_id 41359, added to the live DB 2026-07-20 -- contradicted by all reporting, flagged for manual removal in the companion qa entry], operating(planned)/2026 H2 (notes 'T1-2: 2026, T3-4: 2027'). Appending the post-Iran-conflict slip of the planned first-train startup: 'pushed to early 2027' (constructionreviewonline June 4 2026, citing MEES), independently corroborated by Bloomberg-syndicated reporting (energynow.com Mar 2026) and Energy Intelligence ('IOC Heads Expect Qatar's North Field to Start By Early 2027'). Pairs with the staged LatestPlannedStartYear 2026->2027 edit in updates.",
+    "source_url": "https://constructionreviewonline.com/north-field-east-lng-in-qatar-project-resumes-full-construction-after-iran-conflict-evacuation/",
+    "confidence": "green",
+    "legal_transition_check": "same status/substatus as the newest planned entry (operating/planned), year revised forward 2026 H2 -> 2027 H1 -- a forward slip of the SAME planned milestone, not a backward or conflicting transition. Valid only alongside the staged operating->construction Status revert; the 07-20 operating(actual)/2026 entry must be removed manually for the timeline to stay monotonic.",
+    "researcher_initials": "AI-draft (follow-up)"
+  }
+]

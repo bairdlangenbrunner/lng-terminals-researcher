@@ -4,8 +4,13 @@
 Goal: identify which GEM LNG terminals have a captive gas power plant that is
 separately tracked in the Global Oil & Gas Plant Tracker (GOGPT). Per the LNG
 Terminals Manual (May 2026), a captive gas power plant is one that "functions to
-power the terminal", >50 MW (the GOGPT inclusion threshold); partially-captive
-plants still count and they are more common at export terminals.
+power the terminal"; partially-captive plants still count and they are more
+common at export terminals. There is NO MW floor -- a 3 MW on-site gas turbine
+is a `CaptiveGasPower = True` (user directive 2026-07-27). The old ">50 MW"
+qualifier was imported from a supposed GOGPT inclusion threshold that does not
+exist either: GOGPT carries ~1,900 sub-50 MW units, 861 of them captive, and
+`load_gogpt_plants()` below applies no MW filter. Size is never grounds for a NO
+nor for `gogpt_candidate: DO NOT ADD` -- see docs/sops/captive_power.md 2/2b.
 
 This is the Phase-1/2 (local, no web research) half of that workflow:
 

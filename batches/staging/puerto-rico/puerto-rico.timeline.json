@@ -1,0 +1,18 @@
+[
+  {
+    "terminal_id": "T100000130577",
+    "unit_id": "G100002057700",
+    "terminal_name": "Aguirre GasPort FSRU",
+    "unit_name": "--",
+    "operation": "append",
+    "status": "proposed",
+    "sub_status": "",
+    "year": 2013,
+    "part_of_year": "",
+    "notes": "Existing Postgres timeline (fetch_timeline.py G100002057700): single entry cancelled/confirmed/2019, no proposed milestone present. Appending proposed/2013, anchored to Aguirre Offshore GasPort, LLC's formal FERC application filing on April 17, 2013 (Docket CP13-193-000; Federal Register notice of application published May 6, 2013). This is the event-date anchor for the formal proposal, not FERC's earlier Jan 2012 pre-filing docket (PF12-4-000, a preliminary review step short of a formal application) and not the 2015 authorization order or 2019 cancellation. Sequence proposed(2013) -> cancelled(2019) is monotonic.",
+    "source_url": "https://www.federalregister.gov/documents/2013/05/06/2013-10643/aguirre-offshore-gasport-llc-notice-of-application",
+    "confidence": "green",
+    "legal_transition_check": "monotonic: proposed(2013) -> cancelled(2019); no backward transition",
+    "researcher_initials": "AI-draft (sweep)"
+  }
+]

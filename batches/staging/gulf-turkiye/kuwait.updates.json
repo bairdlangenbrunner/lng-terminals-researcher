@@ -7,12 +7,15 @@
     "country": "Kuwait",
     "field_name": "FacilityType [ref]",
     "old_value": "https://www.hydrocarbons-technology.com/projects/al-zour-lng-import-terminal-project/",
-    "new_value": "https://lngprime.com/lng-terminals/south-korean-consortium-completes-kuwaits-al-zour-lng-import-terminal/34113/",
+    "new_value": "https://www.offshore-technology.com/projects/al-zour-lng-import-terminal-project/, https://lngprime.com/lng-terminals/south-korean-consortium-completes-kuwaits-al-zour-lng-import-terminal/34113/",
     "confidence": "blue",
     "source_tier": "trade_press",
     "ref_field": null,
-    "ref_urls": ["https://lngprime.com/lng-terminals/south-korean-consortium-completes-kuwaits-al-zour-lng-import-terminal/34113/"],
-    "source_notes": "Old ref domain hydrocarbons-technology.com now 301-redirects to offshore-technology.com, which url_verifier 403s (Cloudflare bot-block). Replaced with a verified-working LNG Prime article that explicitly describes the facility as an import terminal. FacilityType value (import) unchanged.",
+    "ref_urls": [
+      "https://www.offshore-technology.com/projects/al-zour-lng-import-terminal-project/",
+      "https://lngprime.com/lng-terminals/south-korean-consortium-completes-kuwaits-al-zour-lng-import-terminal/34113/"
+    ],
+    "source_notes": "Old ref domain hydrocarbons-technology.com now 301-redirects to offshore-technology.com, which url_verifier 403s (Cloudflare bot-block). Replaced with a verified-working LNG Prime article that explicitly describes the facility as an import terminal. FacilityType value (import) unchanged. [ref-restore 2026-07-17: restored existing live URL(s) https://www.offshore-technology.com/projects/al-zour-lng-import-terminal-project/ per merge-semantics rule (bot-block != dead; never drop a URL not proven dead)]",
     "scope_note": "in scope (marine LNG import)",
     "researcher_initials": "AI-draft (sweep)"
   },
@@ -24,18 +27,23 @@
     "country": "Kuwait",
     "field_name": "Capacity [ref]",
     "old_value": "https://www.hydrocarbons-technology.com/projects/al-zour-lng-import-terminal-project/, https://giignl.org/wp-content/uploads/2022/05/GIIGNL2022_Annual_Report_May24.pdf, https://giignl.org/wp-content/uploads/2023/07/GIIGNL_2023_Annual_Report_July14.pdf",
-    "new_value": "https://lngprime.com/lng-terminals/south-korean-consortium-completes-kuwaits-al-zour-lng-import-terminal/34113/, https://cdn.prod.website-files.com/67bdb9fc993751711c5f54fd/67d40f9112efb57309cae007_GIIGNL-2022-Annual-Report.pdf, https://cdn.prod.website-files.com/67bdb9fc993751711c5f54fd/67d40f91fd8b5ad05589ef9e_GIIGNL-2023-Annual-Report.pdf",
+    "new_value": "https://www.offshore-technology.com/projects/al-zour-lng-import-terminal-project/, https://lngprime.com/lng-terminals/south-korean-consortium-completes-kuwaits-al-zour-lng-import-terminal/34113/, https://cdn.prod.website-files.com/67bdb9fc993751711c5f54fd/67d40f9112efb57309cae007_GIIGNL-2022-Annual-Report.pdf, https://cdn.prod.website-files.com/67bdb9fc993751711c5f54fd/67d40f91fd8b5ad05589ef9e_GIIGNL-2023-Annual-Report.pdf",
     "confidence": "green",
     "source_tier": "trade_press + GIIGNL",
     "ref_field": null,
     "ref_urls": [
+      "https://www.offshore-technology.com/projects/al-zour-lng-import-terminal-project/",
       "https://lngprime.com/lng-terminals/south-korean-consortium-completes-kuwaits-al-zour-lng-import-terminal/34113/",
       "https://cdn.prod.website-files.com/67bdb9fc993751711c5f54fd/67d40f9112efb57309cae007_GIIGNL-2022-Annual-Report.pdf",
       "https://cdn.prod.website-files.com/67bdb9fc993751711c5f54fd/67d40f91fd8b5ad05589ef9e_GIIGNL-2023-Annual-Report.pdf"
     ],
-    "source_notes": "All three original URLs now 404 (giignl.org moved its PDF hosting) or 403 (hydrocarbons-technology.com bot-block). Replaced with: (1) a working LNG Prime article confirming '22 mtpa'; (2) and (3) the SAME GIIGNL 2022/2023 editions re-hosted at giignl's cdn.prod.website-files.com mirror (verified to contain 'Kuwait') -- same documents, not new independent sources, just fixed hosting. Capacity value unchanged (22.0 mtpa).",
+    "source_notes": "All three original URLs now 404 (giignl.org moved its PDF hosting) or 403 (hydrocarbons-technology.com bot-block). Replaced with: (1) a working LNG Prime article confirming '22 mtpa'; (2) and (3) the SAME GIIGNL 2022/2023 editions re-hosted at giignl's cdn.prod.website-files.com mirror (verified to contain 'Kuwait') -- same documents, not new independent sources, just fixed hosting. Capacity value unchanged (22.0 mtpa). [ref-restore 2026-07-17: restored existing live URL(s) https://www.offshore-technology.com/projects/al-zour-lng-import-terminal-project/ per merge-semantics rule (bot-block != dead; never drop a URL not proven dead)]",
     "scope_note": "in scope (marine LNG import)",
-    "researcher_initials": "AI-draft (sweep)"
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_dead": [
+      "https://giignl.org/wp-content/uploads/2022/05/GIIGNL2022_Annual_Report_May24.pdf",
+      "https://giignl.org/wp-content/uploads/2023/07/GIIGNL_2023_Annual_Report_July14.pdf"
+    ]
   },
   {
     "terminal_id": "T100000130671",
@@ -45,12 +53,15 @@
     "country": "Kuwait",
     "field_name": "ConstructionDate [ref]",
     "old_value": "https://www.hydrocarbons-technology.com/projects/al-zour-lng-import-terminal-project/",
-    "new_value": "https://lngprime.com/lng-terminals/south-korean-consortium-completes-kuwaits-al-zour-lng-import-terminal/34113/",
+    "new_value": "https://www.offshore-technology.com/projects/al-zour-lng-import-terminal-project/, https://lngprime.com/lng-terminals/south-korean-consortium-completes-kuwaits-al-zour-lng-import-terminal/34113/",
     "confidence": "yellow",
     "source_tier": "trade_press",
     "ref_field": null,
-    "ref_urls": ["https://lngprime.com/lng-terminals/south-korean-consortium-completes-kuwaits-al-zour-lng-import-terminal/34113/"],
-    "source_notes": "Old ref dead (see Capacity note). Replacement LNG Prime article verified to state the Hyundai-led consortium 'won the construction project valued at $2.93 billion in 2016.' ConstructionYear (2016) unchanged. Still single-sourced (yellow) -- could not find a second independent source explicitly dating construction start to 2016.",
+    "ref_urls": [
+      "https://www.offshore-technology.com/projects/al-zour-lng-import-terminal-project/",
+      "https://lngprime.com/lng-terminals/south-korean-consortium-completes-kuwaits-al-zour-lng-import-terminal/34113/"
+    ],
+    "source_notes": "Old ref dead (see Capacity note). Replacement LNG Prime article verified to state the Hyundai-led consortium 'won the construction project valued at $2.93 billion in 2016.' ConstructionYear (2016) unchanged. Still single-sourced (yellow) -- could not find a second independent source explicitly dating construction start to 2016. [ref-restore 2026-07-17: restored existing live URL(s) https://www.offshore-technology.com/projects/al-zour-lng-import-terminal-project/ per merge-semantics rule (bot-block != dead; never drop a URL not proven dead)]",
     "scope_note": "in scope (marine LNG import)",
     "researcher_initials": "AI-draft (sweep)"
   },
@@ -73,7 +84,10 @@
     ],
     "source_notes": "IMPORTANT CONTEXT: old ref (GIIGNL 2023 report) is now 404, and even when live it actually named 'KIPIC' as owner, NOT 'Kuwait National Petroleum Co' (checked via url_verifier token test on the re-hosted mirror). Pre-2026, KIPIC (a KPC subsidiary formed 2016) was the entity that owned/managed Al-Zour's LNG import terminal (confirmed by MEES 25-Apr-2025: 'the 22mn t/y Al Zour LNG import terminal ... operated by Kipic'). However, Kuwait's Supreme Petroleum Council formally dissolved KIPIC and merged it into KNPC (decision gazetted ~31 May 2026, per Kuwait Times/AGBI/Zawya reporting), bringing the Al-Zour complex including the LNG import terminal under KNPC. So GEM's existing Owner value 'Kuwait National Petroleum Co [100%]' -- previously an imprecise/premature attribution given the old ref actually says KIPIC -- is now factually correct as of the 2026 merger. Value unchanged; refreshed the ref to current, accurate sourcing. ProTenders lists KNPC as 'Developer' of the project (independent secondary industry database).",
     "scope_note": "in scope (marine LNG import)",
-    "researcher_initials": "AI-draft (sweep)"
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_dead": [
+      "https://giignl.org/wp-content/uploads/2023/07/GIIGNL_2023_Annual_Report_July14.pdf"
+    ]
   },
   {
     "terminal_id": "T100000130671",
@@ -129,7 +143,9 @@
     "confidence": "blue",
     "source_tier": "trade_press",
     "ref_field": null,
-    "ref_urls": ["https://www.mees.com/2022/2/25/news-in-brief/kuwaits-al-zour-lng-full-operations/43656080-964e-11ec-be2a-f105a3a62fe1"],
+    "ref_urls": [
+      "https://www.mees.com/2022/2/25/news-in-brief/kuwaits-al-zour-lng-full-operations/43656080-964e-11ec-be2a-f105a3a62fe1"
+    ],
     "source_notes": "Re-verified unchanged. Existing MEES ref still live and confirms 'full operations'. Terminal remains fully operating in 2026 (300th cargo received Nov 2024 per LNG Prime; continuous cargo activity confirmed via multiple 2025-2026 sources above).",
     "scope_note": "in scope (marine LNG import)",
     "researcher_initials": "AI-draft (sweep)"
@@ -146,7 +162,9 @@
     "confidence": "blue",
     "source_tier": "trade_press",
     "ref_field": null,
-    "ref_urls": ["https://www.mees.com/2022/2/25/news-in-brief/kuwaits-al-zour-lng-full-operations/43656080-964e-11ec-be2a-f105a3a62fe1"],
+    "ref_urls": [
+      "https://www.mees.com/2022/2/25/news-in-brief/kuwaits-al-zour-lng-full-operations/43656080-964e-11ec-be2a-f105a3a62fe1"
+    ],
     "source_notes": "Re-verified unchanged; existing ref still live.",
     "scope_note": "in scope (marine LNG import)",
     "researcher_initials": "AI-draft (sweep)"
@@ -159,14 +177,21 @@
     "country": "Kuwait",
     "field_name": "Capacity [ref]",
     "old_value": "http://bit.ly/2mFGrzK",
-    "new_value": "http://abarrelfull.wikidot.com/mina-al-ahmadi-lng-terminal",
+    "new_value": "https://excelerateenergy.com/projects/mina-al-ahmadi-gasport/, https://www.ogj.com/pipelines-transportation/lng/article/17276519/kuwait-terminal-receives-first-lng, https://www.technicaltd.com/portfolio/kuwait-gasport/",
     "confidence": "blue",
     "source_tier": "secondary",
     "ref_field": null,
-    "ref_urls": ["http://abarrelfull.wikidot.com/mina-al-ahmadi-lng-terminal"],
-    "source_notes": "Old ref was a bit.ly shortlink; resolved (301) to abarrelfull.wikidot.com/mina-al-ahmadi-lng-terminal, which is still live and states 'Base load throughput capacity 500 MMcf/d with peak capacity of 600 MMcf/d' -- matches GEM's existing 3.8 mtpa conversion. Replaced the rot-prone shortlink with the resolved canonical URL; same document, value unchanged.",
+    "ref_urls": [
+      "https://excelerateenergy.com/projects/mina-al-ahmadi-gasport/",
+      "https://www.ogj.com/pipelines-transportation/lng/article/17276519/kuwait-terminal-receives-first-lng",
+      "https://www.technicaltd.com/portfolio/kuwait-gasport/"
+    ],
+    "source_notes": "Old ref was a bit.ly shortlink; resolved (301) to abarrelfull.wikidot.com/mina-al-ahmadi-lng-terminal, which is still live and states 'Base load throughput capacity 500 MMcf/d with peak capacity of 600 MMcf/d' -- matches GEM's existing 3.8 mtpa conversion. Replaced the rot-prone shortlink with the resolved canonical URL; same document, value unchanged. [ref-restore 2026-07-17: restored existing live URL(s) http://abarrelfull.wikidot.com/mina-al-ahmadi-lng-terminal per merge-semantics rule (bot-block != dead; never drop a URL not proven dead)] [ref-drop disposition 2026-07-17: http://bit.ly/2mFGrzK is a shortlink that 301-redirects to the kept http://abarrelfull.wikidot.com/mina-al-ahmadi-lng-terminal — citation kept at its redirect target per merge rules; shortlink alias dropped] [banned-source removal 2026-07-17: abarrelfull (wikidot/co.uk) is banned as a citation per user directive — replaced with verified sources.] Capacity appears on all three pages as the 500 MMcf/d baseload send-out of the Explorer GasPort (≈3.8 mtpa; Excelerate is the primary/operator source, OGJ and Technica independent). The GEM 3.8 mtpa figure is the Explorer-era capacity, distinct from GIIGNL's later 5.8 mtpa (Golar Igloo era).",
     "scope_note": "in scope (marine LNG import)",
-    "researcher_initials": "AI-draft (sweep)"
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_dead": [
+      "http://bit.ly/2mFGrzK"
+    ]
   },
   {
     "terminal_id": "T100000130592",
@@ -187,7 +212,10 @@
     ],
     "source_notes": "Old giignl.org URL 404s; replaced with the same 2022 edition re-hosted at GIIGNL's website-files.com mirror (verified). The other two refs still resolve fine. Value unchanged (both units still list 'Explorer, Golar Igloo'). See qa note re: whether this project-level-looking vessel list should be split per unit.",
     "scope_note": "in scope (marine LNG import)",
-    "researcher_initials": "AI-draft (sweep)"
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_dead": [
+      "https://giignl.org/wp-content/uploads/2022/05/GIIGNL2022_Annual_Report_May24.pdf"
+    ]
   },
   {
     "terminal_id": "T100000130592",
@@ -201,7 +229,9 @@
     "confidence": "yellow",
     "source_tier": "primary (company's own project page)",
     "ref_field": "VesselOwner [ref]",
-    "ref_urls": ["https://excelerateenergy.com/projects/mina-al-ahmadi-gasport/"],
+    "ref_urls": [
+      "https://excelerateenergy.com/projects/mina-al-ahmadi-gasport/"
+    ],
     "source_notes": "Blank VesselOwner field filled. Excelerate Energy's own project page lists Mina Al-Ahmadi GasPort among its projects with role 'EPCIC, Commissioning, FSRU' for 2009-2013. Multiple secondary sources (Wood Mackenzie report title, general trade coverage) describe 'Excelerate Energy's Explorer FSRU' at this site, but I could not find a second independently-hosted, url_verifier-passing source that names the vessel 'Explorer' explicitly alongside Excelerate -- hence yellow (single primary-ish source) rather than green. entity_lookup.py confirms 'Excelerate Energy' already exists as a GEM entity -- reuse.",
     "scope_note": "in scope (marine LNG import)",
     "researcher_initials": "AI-draft (sweep)"
@@ -218,7 +248,9 @@
     "confidence": "yellow",
     "source_tier": "primary",
     "ref_field": null,
-    "ref_urls": ["https://excelerateenergy.com/projects/mina-al-ahmadi-gasport/"],
+    "ref_urls": [
+      "https://excelerateenergy.com/projects/mina-al-ahmadi-gasport/"
+    ],
     "source_notes": "Paired ref for the VesselOwner fill above.",
     "scope_note": "in scope (marine LNG import)",
     "researcher_initials": "AI-draft (sweep)"
@@ -235,7 +267,9 @@
     "confidence": "blue",
     "source_tier": "trade_press",
     "ref_field": null,
-    "ref_urls": ["https://gcaptain.com/golar-lng-fsru-igloo-kuwait/"],
+    "ref_urls": [
+      "https://gcaptain.com/golar-lng-fsru-igloo-kuwait/"
+    ],
     "source_notes": "Re-verified unchanged; existing ref still live. No evidence found of reactivation -- the Explorer vessel itself is now confirmed deployed in the UAE (per Excelerate's Q1 2026 update), so this Kuwait unit remains idled/vacated, not returning.",
     "scope_note": "in scope (marine LNG import)",
     "researcher_initials": "AI-draft (sweep)"
@@ -252,10 +286,15 @@
     "confidence": "blue",
     "source_tier": "trade_press",
     "ref_field": null,
-    "ref_urls": ["https://gnlglobal.com/la-fsru-golar-igloo-de-new-fortress-energy-ya-se-encuentra-en-europa/"],
+    "ref_urls": [
+      "https://gnlglobal.com/la-fsru-golar-igloo-de-new-fortress-energy-ya-se-encuentra-en-europa/"
+    ],
     "source_notes": "Old eia.gov ref checked both live and via a May-2026 Wayback snapshot -- neither contains 'Golar', 'Igloo', 'Al-Zour', or 'Mina Al-Ahmadi'; it appears to be a generic country-overview page that never supported this specific claim (or its content changed). Replaced with a verified article confirming the Golar Igloo FSRU arrived in Rotterdam en route to the Netherlands on 28 Aug 2022 -- consistent with, and corroborating, its 2022 departure from Kuwait. Status value unchanged (mothballed).",
     "scope_note": "in scope (marine LNG import)",
-    "researcher_initials": "AI-draft (sweep)"
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_dead": [
+      "https://www.eia.gov/international/analysis/country/KWT"
+    ]
   },
   {
     "terminal_id": "T100000130592",
@@ -269,10 +308,15 @@
     "confidence": "blue",
     "source_tier": "trade_press",
     "ref_field": null,
-    "ref_urls": ["https://gnlglobal.com/la-fsru-golar-igloo-de-new-fortress-energy-ya-se-encuentra-en-europa/"],
+    "ref_urls": [
+      "https://gnlglobal.com/la-fsru-golar-igloo-de-new-fortress-energy-ya-se-encuentra-en-europa/"
+    ],
     "source_notes": "Same dead-ref issue and replacement as Status [ref] above. StopYear (2022) unchanged.",
     "scope_note": "in scope (marine LNG import)",
-    "researcher_initials": "AI-draft (sweep)"
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_dead": [
+      "https://www.eia.gov/international/analysis/country/KWT"
+    ]
   },
   {
     "terminal_id": "T100000130592",
@@ -293,7 +337,10 @@
     ],
     "source_notes": "Same GIIGNL mirror fix as the Explorer unit's FloatingVesselName [ref] (identical field value/refs replicated across both units).",
     "scope_note": "in scope (marine LNG import)",
-    "researcher_initials": "AI-draft (sweep)"
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_dead": [
+      "https://giignl.org/wp-content/uploads/2022/05/GIIGNL2022_Annual_Report_May24.pdf"
+    ]
   },
   {
     "terminal_id": "T100000130592",
@@ -347,9 +394,55 @@
     "confidence": "blue",
     "source_tier": "IGU",
     "ref_field": null,
-    "ref_urls": ["https://www.datocms-assets.com/146580/1736937901-igu-world-lng-report-2019.pdf"],
+    "ref_urls": [
+      "https://www.datocms-assets.com/146580/1736937901-igu-world-lng-report-2019.pdf"
+    ],
     "source_notes": "Re-verified unchanged; existing IGU 2019 World LNG Report ref still live and contains both '5.8' and 'Kuwait'.",
     "scope_note": "in scope (marine LNG import)",
     "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130592",
+    "unit_id": "G100002059200",
+    "terminal_name": "Mina Al-Ahmadi LNG Terminal",
+    "unit_name": "Explorer FSRU",
+    "country": "Kuwait",
+    "field_name": "Owner [ref]",
+    "old_value": "https://giignl.org/wp-content/uploads/2023/07/GIIGNL_2023_Annual_Report_July14.pdf",
+    "new_value": "https://cdn.prod.website-files.com/67bdb9fc993751711c5f54fd/67d40f91fd8b5ad05589ef9e_GIIGNL-2023-Annual-Report.pdf",
+    "confidence": "blue",
+    "source_tier": "GIIGNL 2023 (official mirror)",
+    "ref_field": null,
+    "ref_urls": [
+      "https://cdn.prod.website-files.com/67bdb9fc993751711c5f54fd/67d40f91fd8b5ad05589ef9e_GIIGNL-2023-Annual-Report.pdf"
+    ],
+    "source_notes": "Batch-wide dead-giignl.org sweep (2026-07-17): Owner (Kuwait National Petroleum Co) support kept at the SAME edition via GIIGNL's official 2023-edition mirror on the rebuilt site ('Mina Al Ahmadi ... Charterer: KPC (Kuwait National Petroleum Company)', url_verifier-passed) -- the 2026 edition no longer carries a Mina Al-Ahmadi regas row (map label only), so the current edition cannot replace this citation. The old giignl.org URL scheme is dead site-wide (HTTP 404, site rebuilt); GIIGNL now hosts official mirrors of every edition at giignl.org/annual-report.",
+    "scope_note": "Unit-level ref cell.",
+    "researcher_initials": "AI-draft (giignl-sweep)",
+    "dropped_urls_dead": [
+      "https://giignl.org/wp-content/uploads/2023/07/GIIGNL_2023_Annual_Report_July14.pdf"
+    ]
+  },
+  {
+    "terminal_id": "T100000130592",
+    "unit_id": "G100002059201",
+    "terminal_name": "Mina Al-Ahmadi LNG Terminal",
+    "unit_name": "Golar FSRU",
+    "country": "Kuwait",
+    "field_name": "Owner [ref]",
+    "old_value": "https://giignl.org/wp-content/uploads/2023/07/GIIGNL_2023_Annual_Report_July14.pdf",
+    "new_value": "https://cdn.prod.website-files.com/67bdb9fc993751711c5f54fd/67d40f91fd8b5ad05589ef9e_GIIGNL-2023-Annual-Report.pdf",
+    "confidence": "blue",
+    "source_tier": "GIIGNL 2023 (official mirror)",
+    "ref_field": null,
+    "ref_urls": [
+      "https://cdn.prod.website-files.com/67bdb9fc993751711c5f54fd/67d40f91fd8b5ad05589ef9e_GIIGNL-2023-Annual-Report.pdf"
+    ],
+    "source_notes": "Batch-wide dead-giignl.org sweep (2026-07-17): Owner (Kuwait National Petroleum Co) support kept at the SAME edition via GIIGNL's official 2023-edition mirror on the rebuilt site ('Mina Al Ahmadi ... Charterer: KPC (Kuwait National Petroleum Company)', url_verifier-passed) -- the 2026 edition no longer carries a Mina Al-Ahmadi regas row (map label only), so the current edition cannot replace this citation. The old giignl.org URL scheme is dead site-wide (HTTP 404, site rebuilt); GIIGNL now hosts official mirrors of every edition at giignl.org/annual-report.",
+    "scope_note": "Unit-level ref cell.",
+    "researcher_initials": "AI-draft (giignl-sweep)",
+    "dropped_urls_dead": [
+      "https://giignl.org/wp-content/uploads/2023/07/GIIGNL_2023_Annual_Report_July14.pdf"
+    ]
   }
 ]

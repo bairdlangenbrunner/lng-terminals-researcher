@@ -1,0 +1,22 @@
+[
+  {
+    "category": "gemwiki_coverage_check",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Italy (country-level)",
+    "issue": "gem.wiki-vs-CSV coverage cross-check per Discovery SOP Sec.4.0b: one gem.wiki LNG page not matching an Italy CSV row was found ('Eagle FSRU'). Investigated and confirmed this page describes an ALBANIAN project (out of scope for the Italy country pass), not a missed Italian terminal. No genuine Italy coverage gap found.",
+    "severity": "low",
+    "suggested_action": "None -- documenting the clean cross-check result for the record; flag to the Albania sweep agent if not already covered there.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "revival_watch",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Italy (dormant-site revival watch, 7 sites)",
+    "issue": "Ran the mandatory dead-site revival check (completeness_sweep.py dormant_revival_watch list) on all 7 named dormant/cancelled Italy sites: Brindisi, Priolo Augusta, Trieste Monfalcone, Zaule, Falconara Marittima, Porto Empedocle, Portovesme. Porto Empedocle is confirmed ACTIVELY REVIVED under its SAME original sponsor (Enel) and design -- routed to the Update pass per the dead-and-revived rule (same sponsor/design = Update, not a new terminal); see italy.updates.json / italy.timeline.json for the staged status correction. The other 6 sites (Brindisi, Priolo Augusta, Trieste Monfalcone, Zaule, Falconara Marittima, Portovesme) show no revival activity as of this pass -- all remain cancelled/shelved with no new sponsor or design found.",
+    "severity": "low",
+    "suggested_action": "None for the 6 dormant sites this cycle; Porto Empedocle handled in the Update pass.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  }
+]

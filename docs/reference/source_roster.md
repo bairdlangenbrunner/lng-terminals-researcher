@@ -118,6 +118,7 @@ Use as corroborators or leads, not standalone primary citations.
 |---|---|
 | **SFOC** | Project's legacy data origin; not a citable URL |
 | **GEM.wiki** | Don't self-cite. Wiki pages link back to original sources; use those. |
+| **abarrelfull** (`abarrelfull.wikidot.com`, `abarrelfull.co.uk`) | **Banned outright** — never a reference, ever, even corroborated; must not appear in any output (user directive 2026-07-17, all GEM researcher projects). Chase the primary source it footnotes. Build guard: `warn_banned_domain_urls`. |
 | **BNEF (legacy 2020/2021 imports)** | Per methodology FAQ. Replace with primary source where possible; if absolutely necessary as a citation, mark in qa_review. |
 | **GTT standalone** | The containment supplier appears as a generic source for many projects; pair with non-GTT source. |
 | **Auto-generated wiki citations from October 2025 batch** | Per methodology FAQ, these are the "orange error" references; replace if possible. |

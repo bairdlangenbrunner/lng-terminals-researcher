@@ -39,6 +39,18 @@ is not verification; the specific datum your cell asserts MUST appear explicitly
 handles PDFs itself (detects by content-type/extension/magic, extracts via `pdftotext -layout`, then
 content-checks) — a PDF failing with "no extractable text" is a scanned/image PDF, treat as a failed citation.
 
+This gate covers EVERY lane that carries a URL — `ref_urls`, `[ref]` new_values, wiki `source_urls`,
+monitor `best_lead_url`, qa prose citations — not just the updates lane. And a citation must be the
+**SPECIFIC page** containing the claimed value: a bare domain/homepage (`https://outlet.com/` — scheme +
+host, no path) is NEVER a citation, can never legitimately pass the token check, and is rejected by a
+build-time guard. Cite the article/report page you actually read. Pass `--log <staging-dir>/url_verifier_log.jsonl`
+so every verification attempt is auditable.
+
+Known rot: legacy `giignl.org/...` citation URLs are dead site-wide. Treat any giignl.org URL as dead on
+sight; official mirrors of every edition 2020–2026 live at giignl.org/annual-report (elfsightcdn /
+cdn.prod.website-files.com hosts — exact URLs in `data/README.md`). Re-cite the SAME edition's mirror when
+it still contains the value; mirrors of one document count as ONE source.
+
 ## SOURCING — these are ABSOLUTE (CLAUDE.md hard requirements)
 - **NEVER cite gem.wiki or globalenergymonitor.org — anywhere, in any field, any sheet.** It is GEM's own
   publication; citing it as evidence for the GEM database is circular and is forbidden. Do not put a
@@ -46,6 +58,9 @@ content-checks) — a PDF failing with "no extractable text" is a scanned/image 
   prose as a citation. A source that merely republishes or footnotes GEM (Wikipedia, IEEFA, news citing GEM)
   is NOT independent — chase the primary source it points to and cite THAT. If a value exists ONLY on
   gem.wiki, it is unsourced: leave the cell blank and write a qa note, never cite GEM.
+- **Banned source: abarrelfull** (`abarrelfull.wikidot.com`, `abarrelfull.co.uk`) — NEVER a reference,
+  ever, even corroborated, in any lane (user directive 2026-07-17). If a value exists only there,
+  it is unsourced — chase the primary source it footnotes and cite that. A build guard flags it.
 - **Corroborate every staged value with ≥2 INDEPENDENT working URLs that each explicitly contain it (3 when
   findable).** Independent = different publishers/origins — not two pages of one outlet, not a primary plus
   its own press release echo. A single source is the disfavored exception. Confidence then follows:
@@ -66,6 +81,15 @@ content-checks) — a PDF failing with "no extractable text" is a scanned/image 
   (ConstructionYear/ShelvedYear/CancelledYear/StartYear…), and (c) an append entry in `<slug>.timeline.json`
   (schema below). A qa note (category "status_timeline") is ONLY for a status question left genuinely
   unresolved after research — never for a change you've confirmed.
+- Planned-startup slip = same rule. Read EVERY source you cite in full for schedule content, whatever field
+  you came for: a corroborated revised planned startup that differs from GEM's `LatestPlannedStartYear` (or
+  contradicts the newest operating/planned timeline entry) gets STAGED — `LatestPlannedStartYear` +
+  `StartDate [ref]` + an operating/planned timeline append at the new year — never left in source_notes/qa.
+  A sponsor's "still on track" line does not veto a well-corroborated slip (note it in source_notes instead).
+  Relative anchors count ("phase B ~12–18 months after phase A") — resolve them against the phase-A date and
+  check the result against GEM's year. `OriginalPlannedStartYear` stays untouched (correctly historical).
+  (NFE gulf-turkiye 2026-07 miss: an article cited for construction-resumption also said "first train pushed
+  to early 2027" vs GEM's 2026, and the year edit was wrongly left in a qa note.)
 - Ownership: separate owner vs parent vs operator vs offtaker vs vessel-owner; don't conflate offtake/feedgas with equity.
 - entity_lookup before any new entity, run BARE (no `--country`): `python .../scripts/entity_lookup.py "<name>" --remote`
   (a generic-only result = inconclusive → set lookup_was_run starting with "RUN"). CAVEAT: the `--remote` endpoint has
@@ -84,6 +108,16 @@ content-checks) — a PDF failing with "no extractable text" is a scanned/image 
   goes in `Status [ref]`; `Capacity` is a number, `Owner`/`Operator` are names. To fill a blank ref, set
   `field_name` = `"<Field> [ref]"`, `new_value` = the URL, `ref_urls` = [that URL]; do NOT also set
   `ref_field` to the base data column (`ref_field`, when used at all, names another `[ref]` column only).
+- **Ref edits MERGE, never replace (Update SOP §7.2a).** A `[ref]` edit's `new_value` replaces the whole
+  cell, so it must carry forward EVERY still-valid existing URL from `old_value` (original order) plus your
+  additions. You only ever (a) fix genuinely dead/wrong URLs or (b) add corroboration — never swap a good
+  existing citation for your own find. **Bot-block ≠ dead:** 401/403/429 or a Cloudflare/paywall
+  interstitial = live page refusing bots; `url_verifier.py` auto-falls back to the newest Wayback snapshot
+  and a pass verifies the LIVE URL (keep it; never cite web.archive.org). A 301/302 to a live page = keep
+  the citation at its final redirect target. Drop an existing URL ONLY if it's proven dead (hard 404/410/DNS,
+  or live-but-value-gone), and DECLARE every such drop in the record's `dropped_urls_dead:[..]` key — the
+  build prints a `REF-DROP:` guard for any undeclared drop. A bot-blocked URL that fails even the Wayback
+  check → keep it out of new_value but flag in qa, never silently drop.
 - Confidence: green = primary/regulatory or 2+ independent; yellow = single non-primary/implied; red = single weak;
   blue = unchanged-but-re-verified.
 - CONTEXT: GEM is already very current (LastUpdated ~2026-05). Expect FEW genuine changes. Do NOT manufacture
@@ -105,10 +139,10 @@ nothing: `{"slug": ..., "country": ..., "mode": "update", "summary": {"updates":
 presence as the resume marker — a country without it is treated as never-run and re-dispatched.
 
 Record schemas (keys EXACT):
-- updates: {terminal_id,unit_id,terminal_name,unit_name,country,field_name(exact GEM header),old_value,new_value,confidence,source_tier,ref_field,ref_urls:[..],source_notes,scope_note,researcher_initials:"AI-draft (sweep)"}
+- updates: {terminal_id,unit_id,terminal_name,unit_name,country,field_name(exact GEM header),old_value,new_value,confidence,source_tier,ref_field,ref_urls:[..],source_notes,scope_note,dropped_urls_dead:[..](only when a [ref] edit drops a proven-dead old URL),researcher_initials:"AI-draft (sweep)"}
 - timeline: {terminal_id,unit_id,terminal_name,unit_name,operation:"append",status,sub_status,year,part_of_year,notes(include the existing Postgres timeline you pulled + why this appends legally),source_url,confidence,legal_transition_check,researcher_initials:"AI-draft (sweep)"} — one entry per confirmed status transition, paired with its `updates` Status/anchor-year records; flag any non-monotonic transition (e.g. shelved→proposed) in `notes` for reviewer sign-off.
 - qa: {category,terminal_id,unit_id,terminal_name,issue,severity:"high|medium|low",suggested_action,researcher_initials:"AI-draft"}
-- wiki: {country,terminal_id,terminal_name,unit_id,topic,wiki_text,verification_status:"[CONFIRMED]|[UNVERIFIED — SINGLE SOURCE]|[CONFLICTING DATA]|[NOT FOUND]",source_urls:[..],researcher_initials:"AI-draft"}
+- wiki: {country,terminal_id,terminal_name,unit_id,topic,wiki_text,verification_status:"[CONFIRMED]|[UNVERIFIED — SINGLE SOURCE]|[CONFLICTING DATA]|[NOT FOUND]",source_urls:[..],researcher_initials:"AI-draft"} — each source_urls entry SHOULD be an object {url,title(article/page headline as published),publisher(opt),access_date:"YYYY-MM-DD"(opt, the date you accessed it)} so the workbook can emit a paste-ready {{cite web}} ref; a bare URL string is still accepted but builds only a bare <ref>url</ref>. You already have the title from reading the page — capture it.
 - entity: {entity_name,entity_type,country_of_hq,parent_entity,rationale_for_new_entity,lookup_was_run,lookup_result_summary,referenced_by_terminals,referenced_by_units,researcher_initials:"AI-draft"}
 - monitor: {country,candidate_name,sponsor_or_proposer,first_observed_batch:"<YYYY-MM> sweep" (the CURRENT batch month),last_observed_batch:same,current_state,missing_threshold_elements,watch_for,best_lead_url,notes}
 - new_terminals / new_units: keys = exact GEM headers (read `build_new_terminals_sheet` ~L657 and `build_new_units_sheet` ~L699 in `scripts/build_review_package.py`); fill only sourced fields; optional `confidence_per_field` {Header:color}.

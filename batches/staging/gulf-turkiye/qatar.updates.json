@@ -1,197 +1,391 @@
 [
-  {
-    "terminal_id": "T100000130817",
-    "unit_id": "G100002081707",
-    "terminal_name": "Qatar North Field LNG Terminal",
-    "unit_name": "North Field West  (T7-8)",
-    "country": "Qatar",
-    "field_name": "LatestPlannedStartYear",
-    "old_value": "2030",
-    "new_value": "2031",
-    "confidence": "green",
-    "source_tier": "trade press (3 independent)",
-    "ref_field": "StartDate [ref]",
-    "ref_urls": [
-      "https://naturalgasintel.com/news/qatarenergys-north-field-west-lng-project-startup-slips-to-2031/",
-      "https://www.rivieramm.com/news-content-hub/news-content-hub/qataris-hand-out-critical-us1bn-contract-for-north-field-west-lng-extraction-87927",
-      "https://www.oedigital.com/amp/news/536137-qatarenergy-selects-technip-energies-jv-for-north-field-west-expansion-work"
-    ],
-    "source_notes": "Exhaustive-tier check. QatarEnergy now expects NFW's first LNG cargo by end of 2031, slipped from the 2024-announcement target of 2030 (engineering/supply-chain slippage confirmed Feb 2026, compounded by the Feb-Apr 2026 Iran conflict per qa note). EPC contract to Technip Energies/CCC/Gulf Asia Contractor JV (awarded Feb 2026, QNA/oedigital/rivieramm all confirm) covers the onshore 16 mtpa plant; Baker Hughes separately awarded the long-lead equipment package. All 3 URLs url_verifier PASS on token '2031'. OriginalPlannedStartYear left at 2030 (that is the as-announced original target, correctly historical) -- only LatestPlannedStartYear moves.",
-    "scope_note": "Project-level field; single-unit terminal-phase row (T7-8 is NFW's only unit so far).",
-    "researcher_initials": "AI-draft (sweep)"
-  },
-  {
-    "terminal_id": "T100000130817",
-    "unit_id": "G100002081701",
-    "terminal_name": "Qatar North Field LNG Terminal",
-    "unit_name": "North Field East (T1-4)",
-    "country": "Qatar",
-    "field_name": "Status",
-    "old_value": "construction",
-    "new_value": "construction",
-    "confidence": "blue",
-    "source_tier": "trade press (3 independent)",
-    "ref_field": "Status [ref]",
-    "ref_urls": [
-      "https://lngprime.com/lng-terminals/qatarenergy-progresses-pre-commissioning-of-first-nfe-lng-train/167510/",
-      "https://www.mees.com/2025/12/12/oil-gas/qatar-hopes-to-start-first-nfe-train-in-3q-2026/a86a1cc0-d75d-11f0-809a-87fc20d7d094",
-      "https://constructionreviewonline.com/north-field-east-lng-in-qatar-project-resumes-full-construction-after-iran-conflict-evacuation/"
-    ],
-    "source_notes": "Exhaustive-tier re-verify. As of this batch (July 2026) NFE Train 1 is in pre-commissioning (LNG Prime, Oct 2025) with commercial start still targeted mid/H2-2026 (MEES, Dec 2025); construction resumed after the Feb-Apr 2026 Iran-conflict evacuation per constructionreviewonline (Chiyoda staff returned to site). No train has yet produced first LNG -- see qa note flagging a low-quality aggregator claim ('Train 1 first LNG Nov 2025') that is contradicted by these established outlets and should NOT be relied on. Status remains construction, unchanged; blue re-verify only.",
-    "scope_note": "Project-level field; only this unit-row affected.",
-    "researcher_initials": "AI-draft (sweep)"
-  },
-  {
-    "terminal_id": "T100000130817",
-    "unit_id": "G100002081705",
-    "terminal_name": "Qatar North Field LNG Terminal",
-    "unit_name": "North Field South (T5-6)",
-    "country": "Qatar",
-    "field_name": "Status",
-    "old_value": "construction",
-    "new_value": "construction",
-    "confidence": "blue",
-    "source_tier": "primary (QatarEnergy LNG) + trade press",
-    "ref_field": "Status [ref]",
-    "ref_urls": [
-      "https://www.qatarenergylng.qa/english/about-us/corporate-structure",
-      "https://www.nsenergybusiness.com/projects/north-field-south-lng-project-qatar/"
-    ],
-    "source_notes": "Exhaustive-tier re-verify. NFS listed as under construction on QatarEnergy LNG's own current corporate-structure page; no NFS-specific startup/first-LNG announcement found this batch (general 2027-2028 target range unchanged; see qa note on conflict-related schedule uncertainty). Status remains construction, unchanged; blue re-verify only.",
-    "scope_note": "Project-level field; only this unit-row affected.",
-    "researcher_initials": "AI-draft (sweep)"
-  },
-  {
-    "terminal_id": "T100000130594",
-    "unit_id": "G100002059401",
-    "terminal_name": "QatarEnergy LNG (N)",
-    "unit_name": "N(1) T1-3",
-    "country": "Qatar",
-    "field_name": "Owner",
-    "old_value": "QatarEnergy [100%]",
-    "new_value": "QatarEnergy [100%]",
-    "confidence": "blue",
-    "source_tier": "primary (QatarEnergy LNG corporate site)",
-    "ref_field": "Owner [ref]",
-    "ref_urls": [
-      "https://www.qatarenergylng.qa/english/about-us/corporate-structure"
-    ],
-    "source_notes": "Exhaustive-tier re-verify via QatarEnergy LNG's own current corporate-structure page: N(1)/Trains 1-3 = QatarEnergy 100%. Confirmed unchanged. NOTE: the existing Owner [ref] cell for this row (and the other 6 legacy N/S units) cites a generic IGU '2025-world-lng-report' landing-page URL carrying Google-Ads tracking parameters (gclid/gbraid/gad_campaignid); a direct fetch of that page shows it does NOT display per-terminal capacity/ownership figures (see qa note) -- replacing with this value-specific primary source.",
-    "scope_note": "Project-level field; only this unit-row affected.",
-    "researcher_initials": "AI-draft (sweep)"
-  },
-  {
-    "terminal_id": "T100000130594",
-    "unit_id": "G100002059402",
-    "terminal_name": "QatarEnergy LNG (N)",
-    "unit_name": "N(2) T4-5",
-    "country": "Qatar",
-    "field_name": "Owner",
-    "old_value": "QatarEnergy [67.5%]; Exxon Mobil Corp [24.15%]; TotalEnergies SE [8.35%]",
-    "new_value": "QatarEnergy [67.5%]; Exxon Mobil Corp [24.15%]; TotalEnergies SE [8.35%]",
-    "confidence": "blue",
-    "source_tier": "primary (QatarEnergy LNG corporate site)",
-    "ref_field": "Owner [ref]",
-    "ref_urls": [
-      "https://www.qatarenergylng.qa/english/about-us/corporate-structure"
-    ],
-    "source_notes": "Exhaustive-tier re-verify. Corporate-structure page gives per-train splits: Train 4 = QatarEnergy 70%/ExxonMobil 30%; Train 5 = QatarEnergy 65%/ExxonMobil 18.3%/TotalEnergies 16.7%. Averaged across the two equal-capacity (7.8 mtpa each) trains this reproduces GEM's blended figures exactly (67.5 / 24.15 / 8.35) -- confirmed unchanged. Replacing the generic tracking-param IGU landing-page ref with this value-specific primary source (see qa note on the broader ref-quality issue).",
-    "scope_note": "Project-level field; only this unit-row affected.",
-    "researcher_initials": "AI-draft (sweep)"
-  },
-  {
-    "terminal_id": "T100000130594",
-    "unit_id": "G100002059403",
-    "terminal_name": "QatarEnergy LNG (N)",
-    "unit_name": "N(3) T6",
-    "country": "Qatar",
-    "field_name": "Owner",
-    "old_value": "QatarEnergy [68.5%]; ConocoPhillips Corp [30%]; Mitsui Group [1.5%]",
-    "new_value": "QatarEnergy [68.5%]; ConocoPhillips Corp [30%]; Mitsui Group [1.5%]",
-    "confidence": "blue",
-    "source_tier": "primary (QatarEnergy LNG corporate site)",
-    "ref_field": "Owner [ref]",
-    "ref_urls": [
-      "https://www.qatarenergylng.qa/english/about-us/corporate-structure"
-    ],
-    "source_notes": "Exhaustive-tier re-verify. Corporate-structure page confirms N(3)/Train 6 = QatarEnergy 68.5%/ConocoPhillips 30%/Mitsui 1.5%, matching GEM exactly. Confirmed unchanged; replacing generic tracking-param IGU ref with this value-specific primary source.",
-    "scope_note": "Project-level field; only this unit-row affected.",
-    "researcher_initials": "AI-draft (sweep)"
-  },
-  {
-    "terminal_id": "T100000130594",
-    "unit_id": "G100001055426",
-    "terminal_name": "QatarEnergy LNG (N)",
-    "unit_name": "N(4) T7",
-    "country": "Qatar",
-    "field_name": "Owner",
-    "old_value": "QatarEnergy [70%]; Shell PLC [30%]",
-    "new_value": "QatarEnergy [70%]; Shell PLC [30%]",
-    "confidence": "blue",
-    "source_tier": "primary (QatarEnergy LNG corporate site)",
-    "ref_field": "Owner [ref]",
-    "ref_urls": [
-      "https://www.qatarenergylng.qa/english/about-us/corporate-structure"
-    ],
-    "source_notes": "Exhaustive-tier re-verify. Corporate-structure page confirms N(4)/Train 7 = QatarEnergy 70%/Shell 30%, matching GEM exactly. Confirmed unchanged; replacing generic tracking-param IGU ref with this value-specific primary source.",
-    "scope_note": "Project-level field; only this unit-row affected.",
-    "researcher_initials": "AI-draft (sweep)"
-  },
-  {
-    "terminal_id": "T100000130598",
-    "unit_id": "G100002059801",
-    "terminal_name": "QatarEnergy LNG (S)",
-    "unit_name": "S(1) T1-2",
-    "country": "Qatar",
-    "field_name": "Owner",
-    "old_value": "QatarEnergy [63%]; Exxon Mobil Corp [25%]; ITOCHU Corp [3%]; Korea Gas Corp [3%]; Sojitz Corp [1.5%]; Sumitomo Corp [1.5%]; Samsung [0.5%]; Hyundai Corp [0.4%]; Hanwha Energy Corp [0.15%]",
-    "new_value": "QatarEnergy [63%]; Exxon Mobil Corp [25%]; ITOCHU Corp [3%]; Korea Gas Corp [3%]; Sojitz Corp [1.5%]; Sumitomo Corp [1.5%]; Samsung [0.5%]; Hyundai Corp [0.4%]; Hanwha Energy Corp [0.15%]",
-    "confidence": "blue",
-    "source_tier": "primary (QatarEnergy LNG corporate site)",
-    "ref_field": "Owner [ref]",
-    "ref_urls": [
-      "https://www.qatarenergylng.qa/english/about-us/corporate-structure"
-    ],
-    "source_notes": "Exhaustive-tier re-verify. Corporate-structure page confirms QatarEnergy ~63% for S(1)/Trains 1-2, with ExxonMobil and several Japanese/Korean minority holders consistent with GEM's existing granular breakdown (the corporate page groups the small non-QE/Exxon holders as 'Korea Ras Laffan LNG 5%/Itochu 4%/LNG Japan 3%' at a slightly different resolution but the same overall minority pool GEM already itemizes more granularly). No conflicting figures found; confirmed unchanged. Replacing generic tracking-param IGU ref with this value-specific primary source.",
-    "scope_note": "Project-level field; only this unit-row affected.",
-    "researcher_initials": "AI-draft (sweep)"
-  },
-  {
-    "terminal_id": "T100000130598",
-    "unit_id": "G100002059802",
-    "terminal_name": "QatarEnergy LNG (S)",
-    "unit_name": "S(2) T3-5",
-    "country": "Qatar",
-    "field_name": "Owner",
-    "old_value": "QatarEnergy [70%]; Exxon Mobil Corp [30%]",
-    "new_value": "QatarEnergy [70%]; Exxon Mobil Corp [30%]",
-    "confidence": "blue",
-    "source_tier": "primary (QatarEnergy LNG corporate site)",
-    "ref_field": "Owner [ref]",
-    "ref_urls": [
-      "https://www.qatarenergylng.qa/english/about-us/corporate-structure"
-    ],
-    "source_notes": "Exhaustive-tier re-verify. Corporate-structure page gives QatarEnergy 67%/ExxonMobil 31%/OPIC Middle East 2% for S(2)/Trains 3-5 -- a small (2-3 pt) variance from GEM's 70/30. Not material enough to confidently override (OPIC Middle East's 2% may already be folded into QatarEnergy's number by GEM's convention, or the corporate page may be rounding); leaving GEM's existing 70/30 in place as blue/unchanged rather than staging a low-confidence edit, but flagging the discrepancy in a qa note for a closer look next cycle.",
-    "scope_note": "Project-level field; only this unit-row affected.",
-    "researcher_initials": "AI-draft (sweep)"
-  },
-  {
-    "terminal_id": "T100000130598",
-    "unit_id": "G100001055432",
-    "terminal_name": "QatarEnergy LNG (S)",
-    "unit_name": "S(3) T6-7",
-    "country": "Qatar",
-    "field_name": "Owner",
-    "old_value": "QatarEnergy [70%]; Exxon Mobil Corp [30%]",
-    "new_value": "QatarEnergy [70%]; Exxon Mobil Corp [30%]",
-    "confidence": "blue",
-    "source_tier": "primary (QatarEnergy LNG corporate site)",
-    "ref_field": "Owner [ref]",
-    "ref_urls": [
-      "https://www.qatarenergylng.qa/english/about-us/corporate-structure"
-    ],
-    "source_notes": "Exhaustive-tier re-verify. Corporate-structure page confirms S(3)/Trains 6-7 = QatarEnergy 70%/ExxonMobil 30%, matching GEM exactly. Confirmed unchanged. NOTE: this is also the unit whose ownership ratio exactly matches the 'Train 6' facility S&P Global reports was damaged in the March 2026 Iran strikes (see high-severity qa note) -- flagging for status/capacity review, not editing here since the co-located Train 7 is not reported damaged and GEM tracks the pair as one unit.",
-    "scope_note": "Project-level field; only this unit-row affected.",
-    "researcher_initials": "AI-draft (sweep)"
-  }
+ {
+  "terminal_id": "T100000130817",
+  "unit_id": "G100002081707",
+  "terminal_name": "Qatar North Field LNG Terminal",
+  "unit_name": "North Field West  (T7-8)",
+  "country": "Qatar",
+  "field_name": "LatestPlannedStartYear",
+  "old_value": "2030",
+  "new_value": "2031",
+  "confidence": "green",
+  "source_tier": "trade press (3 independent)",
+  "ref_field": "StartDate [ref]",
+  "ref_urls": [
+   "https://naturalgasintel.com/news/qatarenergys-north-field-west-lng-project-startup-slips-to-2031/",
+   "https://www.rivieramm.com/news-content-hub/news-content-hub/qataris-hand-out-critical-us1bn-contract-for-north-field-west-lng-extraction-87927",
+   "https://www.oedigital.com/amp/news/536137-qatarenergy-selects-technip-energies-jv-for-north-field-west-expansion-work"
+  ],
+  "source_notes": "Exhaustive-tier check. QatarEnergy now expects NFW's first LNG cargo by end of 2031, slipped from the 2024-announcement target of 2030 (engineering/supply-chain slippage confirmed Feb 2026, compounded by the Feb-Apr 2026 Iran conflict per qa note). EPC contract to Technip Energies/CCC/Gulf Asia Contractor JV (awarded Feb 2026, QNA/oedigital/rivieramm all confirm) covers the onshore 16 mtpa plant; Baker Hughes separately awarded the long-lead equipment package. All 3 URLs url_verifier PASS on token '2031'. OriginalPlannedStartYear left at 2030 (that is the as-announced original target, correctly historical) -- only LatestPlannedStartYear moves.",
+  "scope_note": "Project-level field; single-unit terminal-phase row (T7-8 is NFW's only unit so far).",
+  "researcher_initials": "AI-draft (sweep)"
+ },
+ {
+  "terminal_id": "T100000130817",
+  "unit_id": "G100002081701",
+  "terminal_name": "Qatar North Field LNG Terminal",
+  "unit_name": "North Field East (T1-4)",
+  "country": "Qatar",
+  "field_name": "Status",
+  "old_value": "operating",
+  "new_value": "construction",
+  "confidence": "green",
+  "source_tier": "trade press (3 independent)",
+  "ref_field": "Status [ref]",
+  "ref_urls": [
+   "https://lngprime.com/lng-terminals/qatarenergy-progresses-pre-commissioning-of-first-nfe-lng-train/167510/",
+   "https://www.mees.com/2025/12/12/oil-gas/qatar-hopes-to-start-first-nfe-train-in-3q-2026/a86a1cc0-d75d-11f0-809a-87fc20d7d094",
+   "https://constructionreviewonline.com/north-field-east-lng-in-qatar-project-resumes-full-construction-after-iran-conflict-evacuation/"
+  ],
+  "source_notes": "REVISED 2026-07-20 (was a blue construction->construction re-verify when researched 2026-07-14/17). The live DB was manually set to operating with ActualStartYear=2026/H1 on 2026-07-20, AFTER this batch was built. That conflicts with every available report: NFE Train 1 was in pre-commissioning (LNG Prime, Oct 2025), commercial start was targeted 3Q-2026 pre-conflict (MEES, Dec 2025), and the June 4 2026 post-conflict report says first-train startup is 'now been pushed to early 2027' (constructionreviewonline, citing MEES) -- and no first-LNG/first-cargo announcement exists as of 2026-07-20 (searched this date). Staging the revert to construction + deletion of ActualStartYear/Month (paired records); if the reviewer knows of a first-LNG event behind the 07-20 live edit, keep operating and discard these records + the LatestPlannedStartYear=2027 record. See also qa note on the operating/actual/2026/H1 timeline entry (status_timeline_additions is append-only, so its removal must be manual).",
+  "scope_note": "Project-level field; only this unit-row affected.",
+  "researcher_initials": "AI-draft (sweep)"
+ },
+ {
+  "terminal_id": "T100000130817",
+  "unit_id": "G100002081701",
+  "terminal_name": "Qatar North Field LNG Terminal",
+  "unit_name": "North Field East (T1-4)",
+  "country": "Qatar",
+  "field_name": "LatestPlannedStartYear",
+  "old_value": "2026",
+  "new_value": "2027",
+  "confidence": "green",
+  "source_tier": "trade press (3 independent underlying reporters: MEES, Bloomberg, Energy Intelligence)",
+  "ref_field": "StartDate [ref]",
+  "ref_urls": [
+   "https://constructionreviewonline.com/north-field-east-lng-in-qatar-project-resumes-full-construction-after-iran-conflict-evacuation/",
+   "https://energynow.com/2026/03/qatar-said-to-push-lng-expansion-to-2027-after-iran-drone-attack/",
+   "https://www.energyintel.com/0000019d-e402-df5e-addf-f5c31fec0000"
+  ],
+  "source_notes": "ADDED 2026-07-20 (user-flagged miss from the 07-14/17 sweep: the constructionreviewonline article was cited for construction-resumption but its schedule content was not elevated). NFE Train 1 first-train startup 'has now been pushed to early 2027' per the June 4 2026 constructionreviewonline report (citing MEES); independently corroborated by Bloomberg-syndicated reporting (energynow.com, Mar 2026: expansion pushed to 2027 after the Iran drone attack) and Energy Intelligence ('IOC Heads Expect Qatar's North Field to Start By Early 2027'). All 3 URLs url_verifier PASS on '2027' tokens 2026-07-20. Companion status_timeline_additions row appends operating/planned 2027 H1 (existing timeline pulled via fetch_timeline.py first: newest planned entry is operating/planned 2026 H2, notes 'T1-2: 2026, T3-4: 2027'). OriginalPlannedStartYear stays 2026 (correctly historical). NOTE: only valid together with the Status operating->construction revert record above -- if the reviewer confirms a real first-LNG event behind the 07-20 live edit, discard this record too.",
+  "scope_note": "Project-level field; single NFE unit-row.",
+  "researcher_initials": "AI-draft (follow-up)"
+ },
+ {
+  "terminal_id": "T100000130817",
+  "unit_id": "G100002081701",
+  "terminal_name": "Qatar North Field LNG Terminal",
+  "unit_name": "North Field East (T1-4)",
+  "country": "Qatar",
+  "field_name": "ActualStartYear",
+  "old_value": "2026",
+  "new_value": "",
+  "delete": true,
+  "confidence": "green",
+  "source_tier": "trade press (3 independent)",
+  "ref_field": null,
+  "ref_urls": [],
+  "source_notes": "Paired with the Status operating->construction revert (see Status record): ActualStartYear=2026 was set in the live DB on 2026-07-20 but no first-LNG/first-cargo event is reported anywhere as of that date; latest reporting (June 2026) has first-train startup pushed to early 2027. Cleared because an actual start year cannot precede first LNG. Discard if the reviewer confirms a real first-LNG event.",
+  "scope_note": "",
+  "researcher_initials": "AI-draft (follow-up)"
+ },
+ {
+  "terminal_id": "T100000130817",
+  "unit_id": "G100002081701",
+  "terminal_name": "Qatar North Field LNG Terminal",
+  "unit_name": "North Field East (T1-4)",
+  "country": "Qatar",
+  "field_name": "ActualStartMonth",
+  "old_value": "H1",
+  "new_value": "",
+  "delete": true,
+  "confidence": "green",
+  "source_tier": "trade press (3 independent)",
+  "ref_field": null,
+  "ref_urls": [],
+  "source_notes": "Paired with the ActualStartYear deletion above (same 2026-07-20 live-DB edit; same evidence).",
+  "scope_note": "",
+  "researcher_initials": "AI-draft (follow-up)"
+ },
+ {
+  "terminal_id": "T100000130817",
+  "unit_id": "G100002081705",
+  "terminal_name": "Qatar North Field LNG Terminal",
+  "unit_name": "North Field South (T5-6)",
+  "country": "Qatar",
+  "field_name": "Status",
+  "old_value": "construction",
+  "new_value": "construction",
+  "confidence": "blue",
+  "source_tier": "primary (QatarEnergy LNG) + trade press",
+  "ref_field": "Status [ref]",
+  "ref_urls": [
+   "https://www.qatarenergylng.qa/english/about-us/corporate-structure",
+   "https://www.nsenergybusiness.com/projects/north-field-south-lng-project-qatar/"
+  ],
+  "source_notes": "Exhaustive-tier re-verify; notes REVISED 2026-07-20. NFS listed as under construction on QatarEnergy LNG's own current corporate-structure page. NFS-specific schedule IS anchored in the June 4 2026 constructionreviewonline report (initially missed): NFS is 'projected to enter service roughly 12 to 18 months after the first NFE train comes online' -- with NFE Train 1 now pushed to early 2027 (see NFE LatestPlannedStartYear record), that puts NFS in service early-to-mid 2028, CONSISTENT with GEM's existing LatestPlannedStartYear=2028 and the existing newest timeline entry (operating/planned 2028, pulled via fetch_timeline.py) -- so no NFS year change is staged; the article is added to StartDate [ref] as post-conflict corroboration of 2028 instead. Status remains construction, unchanged; blue re-verify only.",
+  "scope_note": "Project-level field; only this unit-row affected.",
+  "researcher_initials": "AI-draft (sweep)"
+ },
+ {
+  "terminal_id": "T100000130594",
+  "unit_id": "G100002059401",
+  "terminal_name": "QatarEnergy LNG (N)",
+  "unit_name": "N(1) T1-3",
+  "country": "Qatar",
+  "field_name": "Owner",
+  "old_value": "QatarEnergy [100%]",
+  "new_value": "QatarEnergy [100%]",
+  "confidence": "blue",
+  "source_tier": "primary (QatarEnergy LNG corporate site)",
+  "ref_field": "Owner [ref]",
+  "ref_urls": [
+   "https://www.qatarenergylng.qa/english/about-us/corporate-structure"
+  ],
+  "source_notes": "Exhaustive-tier re-verify via QatarEnergy LNG's own current corporate-structure page: N(1)/Trains 1-3 = QatarEnergy 100%. Confirmed unchanged. NOTE: the existing Owner [ref] cell for this row (and the other 6 legacy N/S units) cites a generic IGU '2025-world-lng-report' landing-page URL carrying Google-Ads tracking parameters (gclid/gbraid/gad_campaignid); a direct fetch of that page shows it does NOT display per-terminal capacity/ownership figures (see qa note) -- replacing with this value-specific primary source.",
+  "scope_note": "Project-level field; only this unit-row affected.",
+  "researcher_initials": "AI-draft (sweep)"
+ },
+ {
+  "terminal_id": "T100000130594",
+  "unit_id": "G100002059402",
+  "terminal_name": "QatarEnergy LNG (N)",
+  "unit_name": "N(2) T4-5",
+  "country": "Qatar",
+  "field_name": "Owner",
+  "old_value": "QatarEnergy [67.5%]; Exxon Mobil Corp [24.15%]; TotalEnergies SE [8.35%]",
+  "new_value": "QatarEnergy [67.5%]; Exxon Mobil Corp [24.15%]; TotalEnergies SE [8.35%]",
+  "confidence": "blue",
+  "source_tier": "primary (QatarEnergy LNG corporate site)",
+  "ref_field": "Owner [ref]",
+  "ref_urls": [
+   "https://www.qatarenergylng.qa/english/about-us/corporate-structure"
+  ],
+  "source_notes": "Exhaustive-tier re-verify. Corporate-structure page gives per-train splits: Train 4 = QatarEnergy 70%/ExxonMobil 30%; Train 5 = QatarEnergy 65%/ExxonMobil 18.3%/TotalEnergies 16.7%. Averaged across the two equal-capacity (7.8 mtpa each) trains this reproduces GEM's blended figures exactly (67.5 / 24.15 / 8.35) -- confirmed unchanged. Replacing the generic tracking-param IGU landing-page ref with this value-specific primary source (see qa note on the broader ref-quality issue).",
+  "scope_note": "Project-level field; only this unit-row affected.",
+  "researcher_initials": "AI-draft (sweep)"
+ },
+ {
+  "terminal_id": "T100000130594",
+  "unit_id": "G100002059403",
+  "terminal_name": "QatarEnergy LNG (N)",
+  "unit_name": "N(3) T6",
+  "country": "Qatar",
+  "field_name": "Owner",
+  "old_value": "QatarEnergy [68.5%]; ConocoPhillips Corp [30%]; Mitsui Group [1.5%]",
+  "new_value": "QatarEnergy [68.5%]; ConocoPhillips Corp [30%]; Mitsui Group [1.5%]",
+  "confidence": "blue",
+  "source_tier": "primary (QatarEnergy LNG corporate site)",
+  "ref_field": "Owner [ref]",
+  "ref_urls": [
+   "https://www.qatarenergylng.qa/english/about-us/corporate-structure"
+  ],
+  "source_notes": "Exhaustive-tier re-verify. Corporate-structure page confirms N(3)/Train 6 = QatarEnergy 68.5%/ConocoPhillips 30%/Mitsui 1.5%, matching GEM exactly. Confirmed unchanged; replacing generic tracking-param IGU ref with this value-specific primary source.",
+  "scope_note": "Project-level field; only this unit-row affected.",
+  "researcher_initials": "AI-draft (sweep)"
+ },
+ {
+  "terminal_id": "T100000130594",
+  "unit_id": "G100001055426",
+  "terminal_name": "QatarEnergy LNG (N)",
+  "unit_name": "N(4) T7",
+  "country": "Qatar",
+  "field_name": "Owner",
+  "old_value": "QatarEnergy [70%]; Shell PLC [30%]",
+  "new_value": "QatarEnergy [70%]; Shell PLC [30%]",
+  "confidence": "blue",
+  "source_tier": "primary (QatarEnergy LNG corporate site)",
+  "ref_field": "Owner [ref]",
+  "ref_urls": [
+   "https://www.qatarenergylng.qa/english/about-us/corporate-structure"
+  ],
+  "source_notes": "Exhaustive-tier re-verify. Corporate-structure page confirms N(4)/Train 7 = QatarEnergy 70%/Shell 30%, matching GEM exactly. Confirmed unchanged; replacing generic tracking-param IGU ref with this value-specific primary source.",
+  "scope_note": "Project-level field; only this unit-row affected.",
+  "researcher_initials": "AI-draft (sweep)"
+ },
+ {
+  "terminal_id": "T100000130598",
+  "unit_id": "G100002059801",
+  "terminal_name": "QatarEnergy LNG (S)",
+  "unit_name": "S(1) T1-2",
+  "country": "Qatar",
+  "field_name": "Owner",
+  "old_value": "QatarEnergy [63%]; Exxon Mobil Corp [25%]; ITOCHU Corp [3%]; Korea Gas Corp [3%]; Sojitz Corp [1.5%]; Sumitomo Corp [1.5%]; Samsung [0.5%]; Hyundai Corp [0.4%]; Hanwha Energy Corp [0.15%]",
+  "new_value": "QatarEnergy [63%]; Exxon Mobil Corp [25%]; ITOCHU Corp [3%]; Korea Gas Corp [3%]; Sojitz Corp [1.5%]; Sumitomo Corp [1.5%]; Samsung [0.5%]; Hyundai Corp [0.4%]; Hanwha Energy Corp [0.15%]",
+  "confidence": "blue",
+  "source_tier": "primary (QatarEnergy LNG corporate site)",
+  "ref_field": "Owner [ref]",
+  "ref_urls": [
+   "https://www.qatarenergylng.qa/english/about-us/corporate-structure"
+  ],
+  "source_notes": "Exhaustive-tier re-verify. Corporate-structure page confirms QatarEnergy ~63% for S(1)/Trains 1-2, with ExxonMobil and several Japanese/Korean minority holders consistent with GEM's existing granular breakdown (the corporate page groups the small non-QE/Exxon holders as 'Korea Ras Laffan LNG 5%/Itochu 4%/LNG Japan 3%' at a slightly different resolution but the same overall minority pool GEM already itemizes more granularly). No conflicting figures found; confirmed unchanged. Replacing generic tracking-param IGU ref with this value-specific primary source.",
+  "scope_note": "Project-level field; only this unit-row affected.",
+  "researcher_initials": "AI-draft (sweep)"
+ },
+ {
+  "terminal_id": "T100000130598",
+  "unit_id": "G100002059802",
+  "terminal_name": "QatarEnergy LNG (S)",
+  "unit_name": "S(2) T3-5",
+  "country": "Qatar",
+  "field_name": "Owner",
+  "old_value": "QatarEnergy [70%]; Exxon Mobil Corp [30%]",
+  "new_value": "QatarEnergy [70%]; Exxon Mobil Corp [30%]",
+  "confidence": "blue",
+  "source_tier": "primary (QatarEnergy LNG corporate site)",
+  "ref_field": "Owner [ref]",
+  "ref_urls": [
+   "https://www.qatarenergylng.qa/english/about-us/corporate-structure"
+  ],
+  "source_notes": "Exhaustive-tier re-verify. Corporate-structure page gives QatarEnergy 67%/ExxonMobil 31%/OPIC Middle East 2% for S(2)/Trains 3-5 -- a small (2-3 pt) variance from GEM's 70/30. Not material enough to confidently override (OPIC Middle East's 2% may already be folded into QatarEnergy's number by GEM's convention, or the corporate page may be rounding); leaving GEM's existing 70/30 in place as blue/unchanged rather than staging a low-confidence edit, but flagging the discrepancy in a qa note for a closer look next cycle.",
+  "scope_note": "Project-level field; only this unit-row affected.",
+  "researcher_initials": "AI-draft (sweep)"
+ },
+ {
+  "terminal_id": "T100000130598",
+  "unit_id": "G100001055432",
+  "terminal_name": "QatarEnergy LNG (S)",
+  "unit_name": "S(3) T6-7",
+  "country": "Qatar",
+  "field_name": "Owner",
+  "old_value": "QatarEnergy [70%]; Exxon Mobil Corp [30%]",
+  "new_value": "QatarEnergy [70%]; Exxon Mobil Corp [30%]",
+  "confidence": "blue",
+  "source_tier": "primary (QatarEnergy LNG corporate site)",
+  "ref_field": "Owner [ref]",
+  "ref_urls": [
+   "https://www.qatarenergylng.qa/english/about-us/corporate-structure"
+  ],
+  "source_notes": "Exhaustive-tier re-verify. Corporate-structure page confirms S(3)/Trains 6-7 = QatarEnergy 70%/ExxonMobil 30%, matching GEM exactly. Confirmed unchanged. NOTE: this is also the unit whose ownership ratio exactly matches the 'Train 6' facility S&P Global reports was damaged in the March 2026 Iran strikes (see high-severity qa note) -- flagging for status/capacity review, not editing here since the co-located Train 7 is not reported damaged and GEM tracks the pair as one unit.",
+  "scope_note": "Project-level field; only this unit-row affected.",
+  "researcher_initials": "AI-draft (sweep)"
+ },
+ {
+  "terminal_id": "T100000130817",
+  "unit_id": "G100002081701",
+  "terminal_name": "Qatar North Field LNG Terminal",
+  "unit_name": "North Field East (T1-4)",
+  "country": "Qatar",
+  "field_name": "FacilityType [ref]",
+  "old_value": "https://giignl.org/wp-content/uploads/2022/05/GIIGNL2022_Annual_Report_May24.pdf",
+  "new_value": "https://cdn.prod.website-files.com/67bdb9fc993751711c5f54fd/67d40f9112efb57309cae007_GIIGNL-2022-Annual-Report.pdf",
+  "confidence": "blue",
+  "source_tier": "GIIGNL 2022 (official mirror)",
+  "ref_field": null,
+  "ref_urls": [
+   "https://cdn.prod.website-files.com/67bdb9fc993751711c5f54fd/67d40f9112efb57309cae007_GIIGNL-2022-Annual-Report.pdf"
+  ],
+  "source_notes": "Batch-wide dead-giignl.org sweep (2026-07-17): FacilityType export support kept at the SAME edition via GIIGNL's official 2022-edition mirror ('North Field East expansion project ... 33 MTPA of liquefaction capacity', url_verifier-passed); the 2026 edition's narrative uses only the abbreviation NFE. The old giignl.org URL scheme is dead site-wide (HTTP 404, site rebuilt); GIIGNL now hosts official mirrors of every edition at giignl.org/annual-report.",
+  "scope_note": "Unit-level ref cell.",
+  "researcher_initials": "AI-draft (giignl-sweep)",
+  "dropped_urls_dead": [
+   "https://giignl.org/wp-content/uploads/2022/05/GIIGNL2022_Annual_Report_May24.pdf"
+  ]
+ },
+ {
+  "terminal_id": "T100000130817",
+  "unit_id": "G100002081701",
+  "terminal_name": "Qatar North Field LNG Terminal",
+  "unit_name": "North Field East (T1-4)",
+  "country": "Qatar",
+  "field_name": "ProposalDate [ref]",
+  "old_value": "https://www.spglobal.com/platts/en/market-insights/latest-news/natural-gas/040720-qatar-petroleum-delays-start-up-of-north-field-lng-expansion-due-to-covid-19, https://giignl.org/system/files/giignl_2021_annual_report_may4.pdf",
+  "new_value": "https://www.spglobal.com/platts/en/market-insights/latest-news/natural-gas/040720-qatar-petroleum-delays-start-up-of-north-field-lng-expansion-due-to-covid-19, https://cdn.prod.website-files.com/67bdb9fc993751711c5f54fd/67d40f93805223c8ccba8ef7_GIIGNL-2021-Annual-Report.pdf",
+  "confidence": "blue",
+  "source_tier": "S&P Global + GIIGNL 2021 (official mirror)",
+  "ref_field": null,
+  "ref_urls": [
+   "https://www.spglobal.com/platts/en/market-insights/latest-news/natural-gas/040720-qatar-petroleum-delays-start-up-of-north-field-lng-expansion-due-to-covid-19",
+   "https://cdn.prod.website-files.com/67bdb9fc993751711c5f54fd/67d40f93805223c8ccba8ef7_GIIGNL-2021-Annual-Report.pdf"
+  ],
+  "source_notes": "Batch-wide dead-giignl.org sweep (2026-07-17): Dead giignl.org 2021-edition URL replaced with GIIGNL's official 2021-edition mirror (Feb 2021 NFE FID narrative, url_verifier-passed). The spglobal.com URL is bot-blocked (HTTP 403), not dead -- kept per merge rules. The old giignl.org URL scheme is dead site-wide (HTTP 404, site rebuilt); GIIGNL now hosts official mirrors of every edition at giignl.org/annual-report.",
+  "scope_note": "Unit-level ref cell.",
+  "researcher_initials": "AI-draft (giignl-sweep)",
+  "dropped_urls_dead": [
+   "https://giignl.org/system/files/giignl_2021_annual_report_may4.pdf"
+  ]
+ },
+ {
+  "terminal_id": "T100000130817",
+  "unit_id": "G100002081705",
+  "terminal_name": "Qatar North Field LNG Terminal",
+  "unit_name": "North Field South (T5-6)",
+  "country": "Qatar",
+  "field_name": "ProposalDate [ref]",
+  "old_value": "https://giignl.org/system/files/giignl_2021_annual_report_may4.pdf, https://www.cnbc.com/2019/11/25/reuters-america-update-2-qatar-plans-to-boost-lng-production-to-126-mln-t-by-2027.html",
+  "new_value": "https://cdn.prod.website-files.com/67bdb9fc993751711c5f54fd/67d40f93805223c8ccba8ef7_GIIGNL-2021-Annual-Report.pdf",
+  "confidence": "blue",
+  "source_tier": "GIIGNL 2021 (official mirror)",
+  "ref_field": null,
+  "ref_urls": [
+   "https://cdn.prod.website-files.com/67bdb9fc993751711c5f54fd/67d40f93805223c8ccba8ef7_GIIGNL-2021-Annual-Report.pdf"
+  ],
+  "source_notes": "Batch-wide dead-giignl.org sweep (2026-07-17): Dead giignl.org 2021-edition URL replaced with GIIGNL's official 2021-edition mirror ('North Field South Project (NFS) ... two additional 8 MTPA mega LNG trains', url_verifier-passed). The cnbc.com URL is HTTP 404 with NO Wayback snapshot available -- proven dead, dropped. The old giignl.org URL scheme is dead site-wide (HTTP 404, site rebuilt); GIIGNL now hosts official mirrors of every edition at giignl.org/annual-report.",
+  "scope_note": "Unit-level ref cell.",
+  "researcher_initials": "AI-draft (giignl-sweep)",
+  "dropped_urls_dead": [
+   "https://giignl.org/system/files/giignl_2021_annual_report_may4.pdf",
+   "https://www.cnbc.com/2019/11/25/reuters-america-update-2-qatar-plans-to-boost-lng-production-to-126-mln-t-by-2027.html"
+  ]
+ },
+ {
+  "terminal_id": "T100000130817",
+  "unit_id": "G100002081705",
+  "terminal_name": "Qatar North Field LNG Terminal",
+  "unit_name": "North Field South (T5-6)",
+  "country": "Qatar",
+  "field_name": "StartDate [ref]",
+  "old_value": "https://giignl.org/system/files/giignl_2021_annual_report_may4.pdf, https://www.cnbc.com/2019/11/25/reuters-america-update-2-qatar-plans-to-boost-lng-production-to-126-mln-t-by-2027.html, https://www.igu.org/igu-reports/2025-world-lng-report?gad_source=1&gad_campaignid=22570706637&gbraid=0AAAAA9kOlQjyt6hUkZGX_RurEkcHXmNXD&gclid=CjwKCAjwi-DBBhA5EiwAXOHsGaWVYYsRaJy3-JGSjWw0q0CXTzrVa1-hCgvxwPR541313mP7dAIk5RoCum0QAvD_BwE",
+  "new_value": "https://cdn.prod.website-files.com/67bdb9fc993751711c5f54fd/67d40f93805223c8ccba8ef7_GIIGNL-2021-Annual-Report.pdf, https://www.igu.org/igu-reports/2025-world-lng-report?gad_source=1&gad_campaignid=22570706637&gbraid=0AAAAA9kOlQjyt6hUkZGX_RurEkcHXmNXD&gclid=CjwKCAjwi-DBBhA5EiwAXOHsGaWVYYsRaJy3-JGSjWw0q0CXTzrVa1-hCgvxwPR541313mP7dAIk5RoCum0QAvD_BwE, https://constructionreviewonline.com/north-field-east-lng-in-qatar-project-resumes-full-construction-after-iran-conflict-evacuation/",
+  "confidence": "blue",
+  "source_tier": "GIIGNL 2021 (official mirror) + IGU + trade press",
+  "ref_field": null,
+  "ref_urls": [
+   "https://cdn.prod.website-files.com/67bdb9fc993751711c5f54fd/67d40f93805223c8ccba8ef7_GIIGNL-2021-Annual-Report.pdf",
+   "https://www.igu.org/igu-reports/2025-world-lng-report?gad_source=1&gad_campaignid=22570706637&gbraid=0AAAAA9kOlQjyt6hUkZGX_RurEkcHXmNXD&gclid=CjwKCAjwi-DBBhA5EiwAXOHsGaWVYYsRaJy3-JGSjWw0q0CXTzrVa1-hCgvxwPR541313mP7dAIk5RoCum0QAvD_BwE",
+   "https://constructionreviewonline.com/north-field-east-lng-in-qatar-project-resumes-full-construction-after-iran-conflict-evacuation/"
+  ],
+  "source_notes": "Batch-wide dead-giignl.org sweep (2026-07-17): Dead giignl.org 2021-edition URL replaced with GIIGNL's official 2021-edition mirror (NFS narrative, url_verifier-passed); kept the live igu.org 2025 World LNG Report page. The cnbc.com URL is HTTP 404 with NO Wayback snapshot available -- proven dead, dropped. The old giignl.org URL scheme is dead site-wide (HTTP 404, site rebuilt); GIIGNL now hosts official mirrors of every edition at giignl.org/annual-report. ADDED 2026-07-20: constructionreviewonline June 2026 report appended as post-conflict corroboration of the 2028 in-service target (NFS 'roughly 12 to 18 months after the first NFE train' with all four NFE trains commissioned by 'mid-2028'; url_verifier PASS on 'mid-2028' + 'North Field South').",
+  "scope_note": "Unit-level ref cell.",
+  "researcher_initials": "AI-draft (giignl-sweep)",
+  "dropped_urls_dead": [
+   "https://giignl.org/system/files/giignl_2021_annual_report_may4.pdf",
+   "https://www.cnbc.com/2019/11/25/reuters-america-update-2-qatar-plans-to-boost-lng-production-to-126-mln-t-by-2027.html"
+  ]
+ },
+ {
+  "terminal_id": "T100000130594",
+  "unit_id": "G100002059401",
+  "terminal_name": "QatarEnergy LNG (N)",
+  "unit_name": "N(1) T1-3",
+  "country": "Qatar",
+  "field_name": "FacilityType [ref]",
+  "old_value": "https://giignl.org/wp-content/uploads/2022/05/GIIGNL2022_Annual_Report_May24.pdf",
+  "new_value": "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf",
+  "confidence": "blue",
+  "source_tier": "GIIGNL 2026",
+  "ref_field": null,
+  "ref_urls": [
+   "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf"
+  ],
+  "source_notes": "Batch-wide dead-giignl.org sweep (2026-07-17): FacilityType export re-verified: QatarEnergy LNG N(1) T1-T3 listed in the GIIGNL 2026 existing-liquefaction-plants table; dead giignl.org 2022-edition URL replaced with the 2026 edition. The old giignl.org URL scheme is dead site-wide (HTTP 404, site rebuilt); GIIGNL now hosts official mirrors of every edition at giignl.org/annual-report.",
+  "scope_note": "Unit-level ref cell.",
+  "researcher_initials": "AI-draft (giignl-sweep)",
+  "dropped_urls_dead": [
+   "https://giignl.org/wp-content/uploads/2022/05/GIIGNL2022_Annual_Report_May24.pdf"
+  ]
+ },
+ {
+  "terminal_id": "T100000130594",
+  "unit_id": "G100002059401",
+  "terminal_name": "QatarEnergy LNG (N)",
+  "unit_name": "N(1) T1-3",
+  "country": "Qatar",
+  "field_name": "Owner [ref]",
+  "old_value": "https://giignl.org/wp-content/uploads/2022/05/GIIGNL2022_Annual_Report_May24.pdf",
+  "new_value": "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf",
+  "confidence": "blue",
+  "source_tier": "GIIGNL 2026",
+  "ref_field": null,
+  "ref_urls": [
+   "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf"
+  ],
+  "source_notes": "Batch-wide dead-giignl.org sweep (2026-07-17): Owner QatarEnergy [100%] re-verified against GIIGNL 2026 ('QatarEnergy LNG N(1) T1/T2/T3 ... Qatar Energy (100%)', url_verifier-passed). Deliberately cited the 2026 edition rather than the 2022 mirror: the 2022 edition pre-dates the QatarEnergy consolidation and shows a legacy multi-party shareholding that CONTRADICTS the current 100% value, so a same-edition mirror swap would have kept a citation that does not support the cell. The old giignl.org URL scheme is dead site-wide (HTTP 404, site rebuilt); GIIGNL now hosts official mirrors of every edition at giignl.org/annual-report.",
+  "scope_note": "Unit-level ref cell.",
+  "researcher_initials": "AI-draft (giignl-sweep)",
+  "dropped_urls_dead": [
+   "https://giignl.org/wp-content/uploads/2022/05/GIIGNL2022_Annual_Report_May24.pdf"
+  ]
+ }
 ]

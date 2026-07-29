@@ -1,0 +1,18 @@
+[
+  {
+    "terminal_id": "T100000130890",
+    "unit_id": "G100002089000",
+    "terminal_name": "SLNG 2 LNG Terminal",
+    "unit_name": "--",
+    "operation": "append",
+    "status": "construction",
+    "sub_status": "",
+    "year": 2026,
+    "part_of_year": "March",
+    "notes": "Existing Postgres timeline (fetch_timeline.py G100002089000) prior to this append: [0] proposed 2021-07; [1] shelved 2023 (inferred 2y); [2] proposed 2023-10; [3] operating/planned 2030 (a placeholder eventual-operating entry, not literal current operating -- see GEM convention that operating+sub_status=planned = effectively proposed). This append inserts a 'construction' entry between [2] and [3] once onshore civil works + FSRU fabrication both began (see updates.json Status record for full sourcing: SLNG/CCCC onshore infrastructure groundbreaking ~Mar 2026; MOL/Hanwha Ocean FSRU keel laid 26 May 2026). Legal per lifecycle_rules.md: proposed->construction is a strict/normal transition (and this timeline already shows the shelved->re-proposed->construction 'rare revival' path explicitly permitted for dead-and-revived proposals). Anchor-year invariants check: ProposalYear(2021)<=ConstructionYear(2026), ConstructionYear(2026)<=LatestPlannedStartYear(2030) -- both satisfied.",
+    "source_url": "https://www.giignl.org/news/singapore-starts-onshore-infrastructure-work-for-second-lng-terminal",
+    "confidence": "green",
+    "legal_transition_check": "proposed -> construction is a strict/normal forward transition per lifecycle_rules.md ('proposed can transition to: construction, shelved, cancelled'). No transitions skipped or reversed; monotonic given the existing 2023 re-proposed entry.",
+    "researcher_initials": "AI-draft (sweep)"
+  }
+]

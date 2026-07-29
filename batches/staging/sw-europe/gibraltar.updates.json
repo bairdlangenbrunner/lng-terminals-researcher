@@ -1,0 +1,154 @@
+[
+  {
+    "terminal_id": "T100000130682",
+    "unit_id": "G100002068200",
+    "terminal_name": "Gibraltar LNG Terminal",
+    "unit_name": "--",
+    "country": "Gibraltar",
+    "field_name": "Operator",
+    "old_value": "Gasnor",
+    "new_value": "PX Group",
+    "confidence": "green",
+    "source_tier": "government press release + company press release + 2x trade press",
+    "ref_field": "Operator [ref]",
+    "ref_urls": [
+      "https://www.gibraltar.gov.gi/press-releases/transition-of-operatorship-at-gibraltar-lng-terminal-7341015-11302",
+      "https://www.pxlimited.com/news/px-group-takes-over-operation-of-gibraltar-lng-terminal/",
+      "https://lngprime.com/europe/px-selected-to-operate-gibraltar-lng-terminal/166193/"
+    ],
+    "source_notes": "Operator has changed TWICE since GEM's current value: Gasnor (2019 commissioning) -> Molgas Energy (2021, after Shell sold Gasnor to Molgas; GEM's Operator cell was never updated past 'Gasnor') -> PX (Gibraltar) Ltd, part of UK-based px Group, effective 1 November 2025 (Shell LNG Gibraltar Ltd transitioned O&M from Molgas to px Group after Molgas's parent ME Group exited O&M services). Confirmed by HM Government of Gibraltar's own press release, px Group's own press release, and LNG Prime/LNG Industry trade press (4 independent sources). Ownership (Shell PLC 51% / HM Govt of Gibraltar 49%) is explicitly stated as UNCHANGED. Staged Operator value as 'PX Group' to match the existing GEM entity string already used for this same operator on Risavika LNG Terminal (Norway, T100000130496) - confirmed via entity_lookup.py --remote (found, reuse existing entity, no new entity needed).",
+    "scope_note": "confirmed operator change, not a status change",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130682",
+    "unit_id": "G100002068200",
+    "terminal_name": "Gibraltar LNG Terminal",
+    "unit_name": "--",
+    "country": "Gibraltar",
+    "field_name": "Status [ref]",
+    "old_value": "https://www.spglobal.com/commodityinsights/en/market-insights/latest-news/natural-gas/050719-gibraltar-opens-new-lng-terminal-built-by-shell-and-gasnor",
+    "new_value": "https://www.spglobal.com/commodityinsights/en/market-insights/latest-news/natural-gas/050719-gibraltar-opens-new-lng-terminal-built-by-shell-and-gasnor, https://www.gibraltar.gov.gi/press-releases/new-lng-terminal-provides-cleaner-energy-for-gibraltar-3342019-4904, https://www.tradewindsnews.com/gas/shell-opens-gibraltars-new-small-scale-lng-terminal/2-1-599235",
+    "confidence": "green",
+    "source_tier": "government press release + trade press",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.spglobal.com/commodityinsights/en/market-insights/latest-news/natural-gas/050719-gibraltar-opens-new-lng-terminal-built-by-shell-and-gasnor",
+      "https://www.gibraltar.gov.gi/press-releases/new-lng-terminal-provides-cleaner-energy-for-gibraltar-3342019-4904",
+      "https://www.tradewindsnews.com/gas/shell-opens-gibraltars-new-small-scale-lng-terminal/2-1-599235"
+    ],
+    "source_notes": "Existing S&P Global ref now returns HTTP 403 with no Wayback snapshot available (checked - not archived). Replaced with the HM Government of Gibraltar's own 2019 press release (primary/regulatory source) plus TradeWinds trade press, both confirming the terminal opened and is operating. Status=operating unchanged; still operating as of the Nov-2025 operator-transition press releases (terminal continues to supply the Gibraltar Electricity Authority power station). [ref-restore 2026-07-17: restored existing live URL(s) https://www.spglobal.com/commodityinsights/en/market-insights/latest-news/natural-gas/050719-gibraltar-opens-new-lng-terminal-built-by-shell-and-gasnor per merge-semantics rule (bot-block != dead; never drop a URL not proven dead)]",
+    "scope_note": "ref-fix only, no status change",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130682",
+    "unit_id": "G100002068200",
+    "terminal_name": "Gibraltar LNG Terminal",
+    "unit_name": "--",
+    "country": "Gibraltar",
+    "field_name": "StartDate [ref]",
+    "old_value": "https://www.spglobal.com/commodityinsights/en/market-insights/latest-news/natural-gas/050719-gibraltar-opens-new-lng-terminal-built-by-shell-and-gasnor",
+    "new_value": "https://www.spglobal.com/commodityinsights/en/market-insights/latest-news/natural-gas/050719-gibraltar-opens-new-lng-terminal-built-by-shell-and-gasnor, https://www.gibraltar.gov.gi/press-releases/new-lng-terminal-provides-cleaner-energy-for-gibraltar-3342019-4904, https://www.tradewindsnews.com/gas/shell-opens-gibraltars-new-small-scale-lng-terminal/2-1-599235",
+    "confidence": "green",
+    "source_tier": "government press release + trade press",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.spglobal.com/commodityinsights/en/market-insights/latest-news/natural-gas/050719-gibraltar-opens-new-lng-terminal-built-by-shell-and-gasnor",
+      "https://www.gibraltar.gov.gi/press-releases/new-lng-terminal-provides-cleaner-energy-for-gibraltar-3342019-4904",
+      "https://www.tradewindsnews.com/gas/shell-opens-gibraltars-new-small-scale-lng-terminal/2-1-599235"
+    ],
+    "source_notes": "Same dead/blocked S&P Global ref as Status [ref]. ActualStartYear=2019 re-confirmed unchanged (gov.gi release: first cargo Jan 2019 for commissioning, official opening May 2019). [ref-restore 2026-07-17: restored existing live URL(s) https://www.spglobal.com/commodityinsights/en/market-insights/latest-news/natural-gas/050719-gibraltar-opens-new-lng-terminal-built-by-shell-and-gasnor per merge-semantics rule (bot-block != dead; never drop a URL not proven dead)]",
+    "scope_note": "ref-fix only",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130682",
+    "unit_id": "G100002068200",
+    "terminal_name": "Gibraltar LNG Terminal",
+    "unit_name": "--",
+    "country": "Gibraltar",
+    "field_name": "ConstructionDate [ref]",
+    "old_value": "https://reports.shell.com/tax-contribution-report/2018/our-tax-data/europe/gibraltar.html",
+    "new_value": "https://www.gibraltar.gov.gi/press-releases/new-lng-terminal-provides-cleaner-energy-for-gibraltar-3342019-4904",
+    "confidence": "yellow",
+    "source_tier": "government press release",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.gibraltar.gov.gi/press-releases/new-lng-terminal-provides-cleaner-energy-for-gibraltar-3342019-4904"
+    ],
+    "source_notes": "Existing Shell tax-report ref now 301-redirects to a generic Shell reporting-archive landing page with no Gibraltar/LNG content - dead. Replacement (gov.gi 2019 press release) confirms construction followed the 2016 Shell/HM Govt of Gibraltar LNG supply agreement and predated the Jan-2019 first cargo, consistent with GEM's ConstructionYear=2016 (H2), but does not pin the exact half-year - single non-primary-for-this-specific-claim source, marked yellow rather than green. Could not find a more precise construction-start article; flagged, not left with a dead ref.",
+    "scope_note": "dead-ref fix; precision caveat only",
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_dead": [
+      "https://reports.shell.com/tax-contribution-report/2018/our-tax-data/europe/gibraltar.html"
+    ]
+  },
+  {
+    "terminal_id": "T100000130682",
+    "unit_id": "G100002068200",
+    "terminal_name": "Gibraltar LNG Terminal",
+    "unit_name": "--",
+    "country": "Gibraltar",
+    "field_name": "FacilityType [ref]",
+    "old_value": "https://giignl.org/wp-content/uploads/2024/06/GIIGNL-2024-Annual-Report-1.pdf",
+    "new_value": "https://web.archive.org/web/20240904143217/https://giignl.org/wp-content/uploads/2024/06/GIIGNL-2024-Annual-Report-1.pdf",
+    "confidence": "blue",
+    "source_tier": "trade body report",
+    "ref_field": null,
+    "ref_urls": [
+      "https://web.archive.org/web/20240904143217/https://giignl.org/wp-content/uploads/2024/06/GIIGNL-2024-Annual-Report-1.pdf"
+    ],
+    "source_notes": "Live giignl.org URL now 404 (tracker-wide giignl.org link rot). Replaced with Wayback snapshot, verified to contain 'Gibraltar'. FacilityType=import unchanged.",
+    "scope_note": "dead-ref fix only",
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_dead": [
+      "https://giignl.org/wp-content/uploads/2024/06/GIIGNL-2024-Annual-Report-1.pdf"
+    ]
+  },
+  {
+    "terminal_id": "T100000130682",
+    "unit_id": "G100002068200",
+    "terminal_name": "Gibraltar LNG Terminal",
+    "unit_name": "--",
+    "country": "Gibraltar",
+    "field_name": "Capacity [ref]",
+    "old_value": "https://giignl.org/wp-content/uploads/2024/06/GIIGNL-2024-Annual-Report-1.pdf",
+    "new_value": "https://web.archive.org/web/20240904143217/https://giignl.org/wp-content/uploads/2024/06/GIIGNL-2024-Annual-Report-1.pdf",
+    "confidence": "blue",
+    "source_tier": "trade body report",
+    "ref_field": null,
+    "ref_urls": [
+      "https://web.archive.org/web/20240904143217/https://giignl.org/wp-content/uploads/2024/06/GIIGNL-2024-Annual-Report-1.pdf"
+    ],
+    "source_notes": "Same dead-link fix as FacilityType [ref]. Capacity=0.10 mtpa re-verified unchanged (small-scale LNG-to-power terminal, no expansion found).",
+    "scope_note": "dead-ref fix only",
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_dead": [
+      "https://giignl.org/wp-content/uploads/2024/06/GIIGNL-2024-Annual-Report-1.pdf"
+    ]
+  },
+  {
+    "terminal_id": "T100000130682",
+    "unit_id": "G100002068200",
+    "terminal_name": "Gibraltar LNG Terminal",
+    "unit_name": "--",
+    "country": "Gibraltar",
+    "field_name": "Owner [ref]",
+    "old_value": "https://giignl.org/wp-content/uploads/2022/05/GIIGNL2022_Annual_Report_May24.pdf, https://giignl.org/wp-content/uploads/2022/05/GIIGNL2022_Annual_Report_May24.pdf",
+    "new_value": "https://web.archive.org/web/20250527131223/https://giignl.org/wp-content/uploads/2022/05/GIIGNL2022_Annual_Report_May24.pdf",
+    "confidence": "blue",
+    "source_tier": "trade body report",
+    "ref_field": null,
+    "ref_urls": [
+      "https://web.archive.org/web/20250527131223/https://giignl.org/wp-content/uploads/2022/05/GIIGNL2022_Annual_Report_May24.pdf"
+    ],
+    "source_notes": "Existing ref cell was the SAME dead giignl.org 2022-report URL duplicated twice (mirror padding, not two sources - also now 404 live). Replaced with a single Wayback snapshot, verified to contain 'Gibraltar'. Owner (Shell PLC 51% / HM Govt of Gibraltar 49%) re-confirmed unchanged - explicitly stated as unchanged in the Nov-2025 operator-transition press releases too.",
+    "scope_note": "dead-ref + duplicate-mirror fix",
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_dead": [
+      "https://giignl.org/wp-content/uploads/2022/05/GIIGNL2022_Annual_Report_May24.pdf",
+      "https://giignl.org/wp-content/uploads/2022/05/GIIGNL2022_Annual_Report_May24.pdf"
+    ]
+  }
+]

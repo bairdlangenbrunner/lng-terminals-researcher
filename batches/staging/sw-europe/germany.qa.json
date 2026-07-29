@@ -1,0 +1,52 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130722",
+    "unit_id": "G100002072200",
+    "terminal_name": "Rostock LNG Terminal",
+    "issue": "Existing ResearcherNotesUnit (7/16/26) asks whether Status should revert from 'shelved inferred 2y' to 'proposed', citing a March 2025 Business Insider DE article. Re-checked that article directly: it uses forward-looking planning language ('für den Betrieb ab 2026 geplant') but contains no evidence of active/physical construction progress, no new financing/permit milestone, and focuses on a KRITIS-designation controversy over BarMalGas's Novatek ties -- not a project-status confirmation. No other 2025-2026 source (German or English trade press) reports renewed activity; ENTSOG TYNDP inclusion (GEM's current Status [ref]) is the only concrete recent signal and is itself just a planning-document listing, not evidence of progress. This is also a dormant-revival-watch site per the sweep brief; no different sponsor or new project was found at the site either.",
+    "severity": "medium",
+    "suggested_action": "Leave Status as 'shelved inferred 2y' this cycle -- the status question remains genuinely unresolved, not confirmed either way. Re-check next cycle for a BarMalGas financing/partner announcement or fresh construction news.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_quality",
+    "terminal_id": "T100000131141",
+    "unit_id": "G100001094549",
+    "terminal_name": "Mukran FSRU",
+    "issue": "Unit 'Energos Power replacement' (proposed) carries LatestPlannedStartYear=2026, but the most recent trade press (LNG Prime, Dec 2025, 'Deutsche ReGas seeks second Mukran FSRU') reports the tender for a second FSRU is still open with 'several suitable options ... reviewed carefully', no vessel selected, and that 'a timeline can be communicated once FID has been made' -- i.e. FID has NOT yet been reached as of the most recent reporting found. The 2026 target increasingly looks optimistic given no FID/vessel selection has surfaced.",
+    "severity": "low",
+    "suggested_action": "Monitor for an FID/vessel-selection announcement; if none surfaces by late 2026, revisit LatestPlannedStartYear at the next update cycle. No change staged this cycle since no firm replacement date has been published.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "citation_health",
+    "terminal_id": "multiple",
+    "unit_id": "multiple",
+    "terminal_name": "Brunsbüttel FSRU / Lubmin FSRU / Mukran FSRU (all units)",
+    "issue": "Several existing [ref] cells cite giignl.org/wp-content/uploads/... PDF archive URLs (e.g. GIIGNL-2024-Annual-Report-1.pdf) that return HTTP 404 (url_verifier.py confirmed). This matches the already-known tracker-wide 'giignl.org refs systematically dead' issue (memory note, Türkiye/Kuwait 2026-07-14). Every affected ref cell in Germany still has at least one other working URL alongside the dead giignl.org link, so nothing is orphaned, but the dead links should be dropped/replaced in the eventual tracker-wide citation-QC sweep.",
+    "severity": "low",
+    "suggested_action": "Defer to the planned tracker-wide GIIGNL citation-QC sweep rather than patching Germany rows piecemeal this cycle.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "entity_ownership",
+    "terminal_id": "T100000131001",
+    "unit_id": "G100002100100",
+    "terminal_name": "Wilhelmshaven TES LNG Terminal",
+    "issue": "TES rebranded this project 'Jade Energy' (2026-04-30) with Fortescue named as a partner on the jadeenergy.de site. Fortescue's confirmed role (per a 2022 TES-Fortescue agreement) is a EUR30M equity stake in TES itself plus a EUR100M construction-funding commitment and a green-hydrogen/e-methane offtake deal -- not clearly a direct equity stake in this specific terminal asset. Did NOT stage Fortescue as Owner/Parent given this ambiguity. Separately, AI web-search summaries repeatedly asserted the terminal will start commercial operations in 2030 with 15-20+ bcm/y capacity, but directly fetching jadeenergy.de's own project page and running url_verifier.py against it FAILED to find '2030' anywhere in the page text -- the actual page gives no start year or capacity figure. Treat the '2030'/capacity claims as unconfirmed/likely search-summary hallucination; did not stage any Capacity or LatestPlannedStartYear change.",
+    "severity": "medium",
+    "suggested_action": "Reviewer: decide whether to promote 'Jade Energy' from OtherNames to the primary TerminalName (project is now marketed under that name). Watch for a primary/trade-press source with a concrete revised start year and capacity before staging any Capacity/LatestPlannedStartYear change, and for clearer equity-stake reporting before adding Fortescue as Owner/Parent.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dormant_revival_watch",
+    "terminal_id": "multiple",
+    "unit_id": "multiple",
+    "terminal_name": "Wilhelmshaven NWO FSRU / Lubmin RWE FSRU",
+    "issue": "Per sweep dispatch, both dead sites were web-searched for revival activity (new sponsor, new FSRU charter, new permit). No evidence of any new project at either site was found -- both remain dormant with no reporting since 2024-2025. (Rostock LNG Terminal, the third named dormant-revival-watch site, is handled in a separate qa entry above since its own researcher note raised an open status question.)",
+    "severity": "low",
+    "suggested_action": "No action; re-check in a future sweep.",
+    "researcher_initials": "AI-draft"
+  }
+]

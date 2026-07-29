@@ -1,0 +1,171 @@
+[
+  {
+    "terminal": "ST LNG FLNG Terminal",
+    "terminal_id": "T100001061236",
+    "mechanical": "True",
+    "confidence": "green",
+    "gogpt_captive_prior": "none — GOGPT has no record for this offshore project; nearest GOGPT plant is Big Hill Energy 38.07 km onshore (unrelated). Matcher could not have surfaced it: the terminal's State/Province is blank in the LNG export, so the state-filtered LA/TX runs never saw it either.",
+    "confirmed_how": "Researched the project's own design in the MARAD deepwater-port docket. Applicant's licence application: 'The facility would have no connection to the electric power grid... Gas turbine generators with waste heat recovery units would be utilized to provide power and heat to the DWP.' Draft EIS stationary-source list, 'inclusive of all phases': 16 x Baker Hughes LT-16 (NovaLT16) combustion turbines for power GENERATION project-wide = 270.4 MW nameplate at 16.9 MW/unit; plus 8 x Siemens SGT-750 as MR compressor drivers (shaft power, excluded from the MW). Mixed generator + mechanical-drive site.",
+    "confirmed_how [ref]": [
+      "https://downloads.regulations.gov/MARAD-2025-0096-0001/attachment_1.pdf",
+      "https://downloads.regulations.gov/MARAD-2025-0096-0028/attachment_1.pdf"
+    ]
+  },
+  {
+    "terminal": "Gulf LNG Terminal",
+    "terminal_id": "T100000130228",
+    "mechanical": "True",
+    "confidence": "yellow",
+    "gogpt_captive_prior": "none / false C-tier — nearest GOGPT plant is Chevron Oil power station at 2.26 km (101 MW, operating), which belongs to the Chevron Pascagoula REFINERY, not to this terminal.",
+    "confirmed_how": "Two unit-rows with opposite answers. OPERATING IMPORT: grid-fed by Mississippi Power Co. (23,000 V stepped to 4,160 V), 10 submerged-combustion vaporizers (process heat, not power/drive), only on-site gas combustion is 2 x 12 MW backup gas-turbine generators = 24 MW, below threshold and backup-only — a clean negative. PROPOSED EXPORT (FERC-authorized 2019, never built, no FID): gas turbines mechanically driving the MR/PR refrigeration compressors, 2 per train x 2 trains. FERC order condition #48 cites the 'MR/PR compressor gas turbine emission control system'; NS Energy: 'Fitted with two gas-fired turbine compressors...'. No MW/HP rating found in any verified source.",
+    "confirmed_how [ref]": [
+      "https://www.ferc.gov/sites/default/files/CalendarFiles/20190716201154-CP15-521-000.pdf",
+      "https://www.nsenergybusiness.com/projects/kinder-morgans-gulf-lng-export-project/",
+      "https://www.energy.gov/sites/prod/files/2019/04/f62/final-eis-0504-gulf-lng-2019-04-chp-2.pdf",
+      "https://www.kindermorgan.com/Operations/Projects/Gulf-LNG-Liquefaction-Project/Gulf-LNG-Existing-Import-Terminal"
+    ]
+  },
+  {
+    "terminal": "Eagle LNG Terminal",
+    "terminal_id": "T100000130220",
+    "mechanical": "False",
+    "confidence": "green",
+    "gogpt_captive_prior": "none — nearest GOGPT plants are JEA utility stations (J D Kennedy 5.11 km, Northside 5.44 km, Power Island 5.97 km), all grid generation, none captive.",
+    "confirmed_how": "NO captive power. The never-built Jacksonville export terminal (3 trains, Chart IPSMR, 1.65M gal/day) is grid-tied: its own project description has facility electricity supplied by Jacksonville Electric Authority and the inlet boost compressor explicitly 'motor-driven' (electric), not turbine-driven. Independently, JEA's own five-year capital plan funds three dedicated interconnection projects for this site (Eagle LNG 138-13.8 kV Substation, ...-SPCP, 138 kV Circuit 847 Interconnect) — a real utility-side buildout, the opposite of on-site captive generation. No source anywhere mentions an on-site gas turbine at this site.",
+    "confirmed_how [ref]": [
+      "https://www.offshore-technology.com/projects/jacksonville-lng-project-jacksonville-florida/",
+      "https://www.jea.com/Pdf/Download/12884910955"
+    ]
+  },
+  {
+    "terminal": "American LNG Hialeah Terminal",
+    "terminal_id": "T100000130208",
+    "mechanical": "False",
+    "confidence": "yellow",
+    "gogpt_captive_prior": "none — nearest GOGPT plants are FPL utility stations (Port Everglades 35.19 km, Turkey Point 41.68 km); nothing on-site.",
+    "confirmed_how": "NO captive power, on scale. A 0.06 mtpa / 100,000 gal-per-day modular skid-mounted small-scale liquefier — roughly two orders of magnitude below the scale at which a >50 MW turbine set is ever installed. DOE's 2016 categorical-exclusion determination describes the plant as built from 'modular skids' needing only 'electrical connections' between them, consistent with electric-motor-driven equipment. No DOE docket filing (2014 application through the Oct 2025 semi-annual report), operator material, or trade press mentions any on-site generation, combustion turbine, or MW rating. YELLOW rather than green: the finding rests on capacity/design evidence plus the conspicuous absence of any generation mention, not on an explicit 'grid-tied, no on-site generation' statement (no FDEP/Miami-Dade air-construction permit with enumerated units was locatable).",
+    "confirmed_how [ref]": [
+      "https://www.offshore-technology.com/marketdata/hialeah-lng-liquefaction-terminal-the-us/",
+      "https://www.energy.gov/sites/default/files/2016/02/f29/CX-200000.pdf"
+    ]
+  },
+  {
+    "terminal": "AGP LNG Terminal",
+    "terminal_id": "T100001061234",
+    "mechanical": "False",
+    "confidence": "red",
+    "gogpt_captive_prior": "none — no site is establishable, so no geographic prior is computable.",
+    "confirmed_how": "INSUFFICIENT EVIDENCE — no verdict. No site or state could be established for this project from any citable source; no FERC, MARAD, or DOE docket was found. The only citable source is an LNG Prime item on a 7.2 mtpa floating export proposal (matching GEM's capacity). The sponsor's homepage claim of holding 'all DOE authorizations' is unverifiable and, being a bare homepage, uncitable in any lane. Nothing stages. Routed to the Update workflow for a status re-check: the stated 2025 FID target has passed while GEM still shows Pre-FID.",
+    "confirmed_how [ref]": [
+      "https://lngprime.com/americas/agp-plans-7-billion-us-floating-lng-export-project/135283/"
+    ]
+  },
+  {
+    "terminal": "Casotte Landing LNG Terminal",
+    "terminal_id": "T100000130845",
+    "mechanical": "False",
+    "confidence": "n/a (screened)",
+    "gogpt_captive_prior": "false C-tier — Chevron Oil power station 2.26 km (101 MW cogen) belongs to the Chevron Pascagoula REFINERY, not to any LNG terminal.",
+    "confirmed_how": "SCREENED, not deep-researched. Chevron's 10 mtpa Pascagoula import/regas terminal was FERC-authorized in 2006 but never built; confirmed cancelled 2009. Nothing was constructed, so no on-site captive power ever existed.",
+    "confirmed_how [ref]": []
+  },
+  {
+    "terminal": "Bienville FSRU",
+    "terminal_id": "T100000130638",
+    "mechanical": "False",
+    "confidence": "n/a (screened)",
+    "gogpt_captive_prior": "none",
+    "confirmed_how": "SCREENED. TORP Terminal's offshore HiLoad/FSRU import concept off Dauphin Island; cancelled 2010, never built. No constructed site, therefore no captive power. Regas-only in any case.",
+    "confirmed_how [ref]": []
+  },
+  {
+    "terminal": "Compass Port LNG Terminal",
+    "terminal_id": "T100000130840",
+    "mechanical": "False",
+    "confidence": "n/a (screened)",
+    "gogpt_captive_prior": "none",
+    "confirmed_how": "SCREENED. ConocoPhillips deepwater-port import proposal off Dauphin Island; MARAD licence application withdrawn, cancelled 2006, never built. No constructed site, therefore no captive power.",
+    "confirmed_how [ref]": []
+  },
+  {
+    "terminal": "Calypso LNG Terminal",
+    "terminal_id": "T100000130656",
+    "mechanical": "False",
+    "confidence": "n/a (screened)",
+    "gogpt_captive_prior": "FALSE C-tier — the area's ONLY matcher hit: Port Everglades power station at 1.00 km, 1,352 MW, gogpt_captive=False. That is FPL's utility-owned Next Generation Clean Energy Center serving the Florida grid, not captive power for a terminal that was never constructed. Textbook false geographic prior.",
+    "confirmed_how": "SCREENED. SUEZ/ENGIE deepwater-port regas buoy off Port Everglades; cancelled 2009, never built.",
+    "confirmed_how [ref]": []
+  },
+  {
+    "terminal": "Port Dolphin LNG Terminal",
+    "terminal_id": "T100000130654",
+    "mechanical": "False",
+    "confidence": "n/a (screened)",
+    "gogpt_captive_prior": "none",
+    "confirmed_how": "SCREENED. Hoegh's deepwater-port regas buoy off Tampa; licensed but never built, cancelled 2015. No constructed site, therefore no captive power.",
+    "confirmed_how [ref]": []
+  },
+  {
+    "terminal": "Floridian LNG Terminal",
+    "terminal_id": "T100000130223",
+    "mechanical": "False",
+    "confidence": "n/a (screened)",
+    "gogpt_captive_prior": "none",
+    "confirmed_how": "SCREENED. Floridian Natural Gas Storage's 0.10 bcf/d small-scale liquefaction proposal in Martin County; shelved 2017, cancelled 2019, never built. Sub-threshold scale even if built.",
+    "confirmed_how [ref]": []
+  },
+  {
+    "terminal": "Nopetro LNG Terminal",
+    "terminal_id": "T100000131130",
+    "mechanical": "False",
+    "confidence": "n/a (screened)",
+    "gogpt_captive_prior": "none",
+    "confirmed_how": "SCREENED. Nopetro's 0.01 bcf/d small-scale liquefaction project at Port St. Joe; cancelled 2023, never built. Sub-threshold scale.",
+    "confirmed_how [ref]": []
+  },
+  {
+    "terminal": "Strom LNG Terminal",
+    "terminal_id": "T100000130241",
+    "mechanical": "False",
+    "confidence": "n/a (screened)",
+    "gogpt_captive_prior": "none",
+    "confirmed_how": "SCREENED. Strom Inc's 0.02 bcf/d small-scale liquefaction proposal (Crystal River / Starke); cancelled 2021, never built. Sub-threshold scale.",
+    "confirmed_how [ref]": []
+  },
+  {
+    "terminal": "American LNG Titusville Terminal",
+    "terminal_id": "T100000130209",
+    "mechanical": "False",
+    "confidence": "n/a (screened)",
+    "gogpt_captive_prior": "none",
+    "confirmed_how": "SCREENED. American LNG Marketing's 0.08 bcf/d small-scale liquefaction proposal at Titusville; shelved 2019, cancelled 2021, never built. Sub-threshold scale.",
+    "confirmed_how [ref]": []
+  },
+  {
+    "terminal": "American Coast LNG Terminal",
+    "terminal_id": "T100000130678",
+    "mechanical": "False",
+    "confidence": "n/a (screened)",
+    "gogpt_captive_prior": "none",
+    "confirmed_how": "SCREENED. General American LNG's 8 mtpa two-phase export proposal; shelved 2016, cancelled 2018, never built. NOTE: its blank State/Province is why the state-filtered Louisiana batch (2026-07-09) never saw it — coordinates place it in Cameron Parish, Louisiana.",
+    "confirmed_how [ref]": []
+  },
+  {
+    "terminal": "Phillips 66 Beamont Oil Terminal",
+    "terminal_id": "T100001083859",
+    "mechanical": "False",
+    "confidence": "n/a (screened)",
+    "gogpt_captive_prior": "none",
+    "confirmed_how": "SCREENED, OUT OF SCOPE. A crude-oil export terminal carried in the LNG terminals dataset. Same data-quality class as the five crude-oil deepwater ports flagged in the Texas increment (2026-07-10); routed to the memo, not researched. Blank State/Province, so no state-filtered batch would have seen it.",
+    "confirmed_how [ref]": []
+  },
+  {
+    "terminal": "IMTT St. Rose Oil Terminal",
+    "terminal_id": "T100001083857",
+    "mechanical": "False",
+    "confidence": "n/a (screened)",
+    "gogpt_captive_prior": "none",
+    "confirmed_how": "SCREENED, OUT OF SCOPE. An IMTT petroleum-products storage terminal carried in the LNG terminals dataset (coordinates in St. Rose, Louisiana). Same data-quality class as above; routed to the memo, not researched. Blank State/Province.",
+    "confirmed_how [ref]": []
+  }
+]

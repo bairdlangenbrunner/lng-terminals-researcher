@@ -1,0 +1,92 @@
+[
+  {
+    "category": "dead_ref",
+    "terminal_id": "T100000130476",
+    "unit_id": "G100002047600",
+    "terminal_name": "Panigaglia LNG Terminal",
+    "issue": "Owner [ref] and Operator [ref] on all three Panigaglia unit-rows (main, Expansion I, Expansion II) cite a dead giignl.org 2022 PDF (HTTP 404). Owner/Operator value 'GNL Italia Spa' itself is uncontested (well-established Snam subsidiary; confirmed via snam.it/en/about-us/company-structure/gnl-italia/ and multiple trade sources) but none of the candidate replacement URLs checked this pass contained the exact 'GNL Italia' string to pass verification.",
+    "severity": "low",
+    "suggested_action": "Replace with any live source citing GNL Italia by name as Panigaglia operator (e.g. snam.it's GNL Italia company-structure page, once phrasing is confirmed) in a future pass; value itself does not need to change.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ownership_ambiguity",
+    "terminal_id": "T100000130724",
+    "unit_id": "G100002072400",
+    "terminal_name": "HIGAS LNG Terminal",
+    "issue": "Parent field shows 'Avenir LNG [100.0%]'. Avenir LNG itself underwent an ownership restructuring (Golar retained a reported 25% stake per public sources); the resulting split of the remaining ~75% among other parties (candidates researched this pass: Stolt-Nielsen, Höegh Evi) could not be confirmed -- entity_lookup returned an inconclusive 'no_remote_match' (raw_html_size 6309, the known intermittent false-negative signature) for Stolt-Nielsen and Smart Gas; Höegh Evi was confirmed to already exist in GEM as a reusable entity.",
+    "severity": "medium",
+    "suggested_action": "Recheck Stolt-Nielsen and Smart Gas against the read-only Postgres entity_history directly (bypassing the remote lookup's known false-negative bug) before any Parent-field change; do not stage a Parent split without a confirmed percentage breakdown. NOTE (orchestrator): Postgres entity_history confirms 'Stolt-Nielsen' is genuinely absent from the GEM entity system (only the unrelated 'Stolt LNGaz' exists) — if the Avenir LNG ownership is later confirmed, a new entity will be needed.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "pending_transaction",
+    "terminal_id": "T100000130474",
+    "unit_id": "G100002047400",
+    "terminal_name": "Toscana FSRU",
+    "issue": "Staged Parent update this batch sets Snam SpA to 97.31% (confirmed closed 2 March 2026). A further ~2.69% tranche from Golar was reported 'expected to close in the coming days' as of a 5 March 2026 article; no independent confirmation the final tranche has actually closed to reach Snam 100% sole ownership was found this pass.",
+    "severity": "low",
+    "suggested_action": "Recheck in the next update cycle whether Snam has reached 100% and bump the Parent percentage if confirmed.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "deliberate_convention_confirmed",
+    "terminal_id": "T100000130474",
+    "unit_id": "G100002047401",
+    "terminal_name": "Toscana FSRU",
+    "issue": "Expansion (Efficiency) unit-row has a populated Capacity [ref] but a BLANK Capacity value -- looks like a Rule F orphan at a glance. Confirmed via ResearcherNotesUnit this is DELIBERATE: 'RR (7/24): Expansion added 1.25 bcm/y. Capacity is now zeroed out, as it has been added to the base Toscana FSRU row capacity' -- i.e. the main unit's Capacity=5.00 already includes this expansion's delta, avoiding double-counting. NOT staged as a fill; a prior fork's draft recommendation to fill Capacity=1.25 here was reviewed and rejected as it would double-count against the main unit.",
+    "severity": "low",
+    "suggested_action": "No action -- documenting for the record so a future pass doesn't re-flag or 'fix' this as an orphan.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unreferenced_field",
+    "terminal_id": "T100000130470",
+    "unit_id": "G100002047000",
+    "terminal_name": "Falconara Marittima LNG Terminal",
+    "issue": "CancelledYear=2020 and StopYear=2020 have no [ref] (only ShelvedYear=2018 has a ResearcherNotesUnit rationale, no formal ref either). StartDate [ref] cites two sources describing regulatory APPROVAL (2011) rather than an actual start -- the terminal never became operational and has no ActualStartYear, so this ref is mis-scoped to StartDate rather than a proposal/approval-year field.",
+    "severity": "low",
+    "suggested_action": "Verify a cancellation-year source for Falconara Marittima and correct the ref placement on the approval-era sources.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unreferenced_field",
+    "terminal_id": "T100000130482",
+    "unit_id": "G100002048200",
+    "terminal_name": "Trieste Monfalcone LNG Terminal",
+    "issue": "ShelvedYear=2013, CancelledYear=2015 and StopYear=2015 all carry no [ref] at all. Additionally FloatingVesselName [ref] is POPULATED (energy-daily.com) while FloatingVesselName itself is BLANK -- an orphan ref in the ref-without-value direction.",
+    "severity": "low",
+    "suggested_action": "Either populate FloatingVesselName from the cited source or clear the orphan ref; source the shelved/cancelled years if findable (this was a pre-2010 proposal per ResearcherNotesUnit, so sourcing may not exist online).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unreferenced_field",
+    "terminal_id": "T100000130480",
+    "unit_id": "G100002048000",
+    "terminal_name": "Priolo Augusta LNG Terminal",
+    "issue": "CancelledYear=2014 and StopYear=2014 have no [ref] (ShelvedYear=2012 does have refs).",
+    "severity": "low",
+    "suggested_action": "Low priority -- long-dead (2005-2014) proposal; source if a future exhaustive pass has spare capacity.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "citation_risk",
+    "terminal_id": "T100001084182",
+    "unit_id": "G100001095559",
+    "terminal_name": "Taranto LNG Terminal",
+    "issue": "trmtv.it (existing candidate source for the VIA-suspension story) returns HTTP 403 to the automated url_verifier (curl), consistent with bot-blocking rather than dead content -- content was independently confirmed readable via a browser-based fetch. Not used as a primary staged ref this pass in favor of the passing tarantotoday.it + corriereditaranto.it citations.",
+    "severity": "low",
+    "suggested_action": "No action needed; tarantotoday.it and corriereditaranto.it are sufficient corroboration.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "escalation_flag",
+    "terminal_id": "T100000130478",
+    "unit_id": "G100002047800",
+    "terminal_name": "Porto Empedocle LNG Terminal",
+    "issue": "Status correction shelved->proposed is a non-monotonic lifecycle transition (project reactivation), staged with green-tier corroboration (regional-government-adjacent extension decree + Feb 2026 trade press + Snam's own Dec 2025 ten-year grid plan). Flagging per SOP for reviewer sign-off given the reversal direction, though evidence is strong and multi-sourced across 2024-2026.",
+    "severity": "medium",
+    "suggested_action": "Reviewer confirms the shelved->proposed reversal before applying.",
+    "researcher_initials": "AI-draft"
+  }
+]

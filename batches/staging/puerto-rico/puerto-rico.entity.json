@@ -1,0 +1,14 @@
+[
+  {
+    "entity_name": "OCO Partners",
+    "entity_type": "company",
+    "country_of_hq": "",
+    "parent_entity": "",
+    "rationale_for_new_entity": "GIIGNL's 2021 annual report narrative states GE Capital sold its 2.5% share in the Penuelas terminal to OCO Partners; GIIGNL's 2025 and 2026 ownership tables both independently list OCO Partners as the 2.5% Penuelas stakeholder. Staged to replace GEM's apparently erroneous self-referential 'EcoElectrica LP [2.5%]' Owner entry on Penuelas LNG Terminal (T100000130578). Entity identity is not fully pinned down: it is unconfirmed whether this is the same 'OCO Capital Partners LP' found in some SEC filing searches, or a distinct entity; country_of_hq and parent_entity left blank pending confirmation. GIIGNL alone is the only source found (searched Naturgy IR, SEC EDGAR, PREB filings, power-technology.com with no independent corroboration), so this should be treated as a probable-but-not-certain identification.",
+    "lookup_was_run": "RAN entity_lookup.py \"OCO Partners\" bare (no --country) and with --remote. Local result: not_found_in_local_data. Remote result: skipped_no_base_url (GEM_PROJECT_DB_BASE_URL not set in this session's environment) -- orchestrator should re-check against Postgres entity_history before this is built into the workbook, per standing convention for subagent-staged entities.",
+    "lookup_result_summary": "No existing match found locally under this or similar names (checked 'OCO Partners', 'OCO Capital Partners'); remote lookup could not run due to missing env var.",
+    "referenced_by_terminals": ["Penuelas LNG Terminal (T100000130578)"],
+    "referenced_by_units": ["G100002057800"],
+    "researcher_initials": "AI-draft"
+  }
+]

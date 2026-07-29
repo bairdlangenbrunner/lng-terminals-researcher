@@ -338,12 +338,12 @@
     "candidate_name": "Thailand ASEAN LNG re-export / trading hub (aspiration)",
     "sponsor_or_proposer": "PTT / EGAT / Gulf (national policy; EPPO/ERC framing)",
     "first_observed_batch": "20260710_1329_ET",
-    "last_observed_batch": "20260710_1329_ET",
-    "current_state": "policy aspiration only — no distinct new-build facility proposed",
-    "missing_threshold_elements": "no sponsor+site+concrete step for a NEW physical terminal; the 'regional hub / re-export' vision would run through the existing Map Ta Phut 1/2 (operating) and the under-construction MTP3, not a new terminal",
-    "watch_for": "a dedicated re-export / LNG-bunkering terminal announcement (named sponsor + specific site + permit/MOU/FID) that is a distinct new facility rather than throughput on the existing MTP terminals",
-    "best_lead_url": "https://www.bangkokpost.com/business/general/3022182/lng-imports-may-create-hub-status",
-    "notes": "Thai policy/press (Bangkok Post; energytracker.asia) frame an ambition for Thailand to become an ASEAN LNG trading/re-export hub. Re-export would use terminals already in GEM (MTP1/2 operating; MTP3 in the roster, now moving to construction), so there is no new physical terminal to stage. Fails the tight threshold on both a distinct sponsor-for-a-new-facility and a concrete new-build step. Surfaced by discovery ring C+D; ring A+B found no new terminal at all. Monitor items are not staged values (best_lead_url given for convenience, not a citation)."
+    "last_observed_batch": "20260727_1842_ET",
+    "current_state": "still policy aspiration only — no distinct new-build facility proposed; reaffirmed by Gastech 2026 (Bangkok, 14-17 Sep 2026) host-country framing of Thailand as a prospective regional LNG hub",
+    "missing_threshold_elements": "no sponsor+site+concrete step for a NEW physical terminal; the 'regional hub / re-export' vision runs through the existing Map Ta Phut 1/2 (operating) and the under-construction MTP3 (Gulf MTP / Gulf Development + PTT Tank), not a new terminal",
+    "watch_for": "a dedicated re-export / LNG-bunkering terminal announcement (named sponsor + specific site + permit/MOU/FID) that is a distinct new facility rather than throughput on the existing MTP terminals; also watch for any Gastech 2026 (Sep 2026, Bangkok) announcements of new Thai LNG infrastructure",
+    "best_lead_url": "https://www.bangkokpost.com/business/general/3273539/gastech-2026-to-tout-thai-lng-potential",
+    "notes": "RE-VERIFIED from the 2026-07-10 thailand-discovery batch (never applied); superseding that batch's monitor entry. Re-checked 2026-07-27: original two source URLs (Bangkok Post 'LNG imports may create hub status', energytracker.asia ASEAN-hub piece) both re-verified live via url_verifier.py. New corroborating signal since 2026-07-10: Bangkok Post 'Gastech 2026 to tout Thai LNG potential' (Gastech 2026 hosted in Bangkok 14-17 Sep 2026) reiterates the same aspiration — Thailand's 3 receiving terminals (27 mtpa combined, all Rayong/EEC) positioned as a hub given its location on shipping routes — but still names no distinct new-build re-export/bunkering facility, sponsor, or site. Fails sponsor-for-a-new-facility and concrete-step elements; carried forward, not staged. Monitor items are not staged values (best_lead_url given for convenience, not a citation)."
   },
   {
     "country": "Türkiye",
@@ -416,5 +416,65 @@
     "watch_for": "Any gas discovery announcement from Block 8/9 drilling (earliest possible per drill-or-drop clause: by ~2029), followed by any FLNG or export-terminal feasibility study, MOU, or FEED award naming a specific site/sponsor",
     "best_lead_url": "https://www.offshore-energy.biz/totalenergies-eni-and-qatarenergy-enter-new-exploration-permit-offshore-lebanon/",
     "notes": "Re-check at the next Lebanon discovery/update batch and whenever Block 8/9 drilling news breaks. This is a very early, low-probability watch item -- not a near-term terminal candidate."
+  },
+  {
+    "country": "Albania",
+    "candidate_name": "Vlora Integrated Energy Hub (LNG terminal + Vlora TPP gas conversion + Fier-Vlora pipeline)",
+    "sponsor_or_proposer": "Aktor Energy USA / Aktor LNG USA; Venture Global; Atlantic SEE LNG Trade (JV: Aktor Group 60% / DEPA Commercial (Greece))",
+    "first_observed_batch": "2026-07 sweep",
+    "last_observed_batch": "20260717_0051_ET",
+    "current_state": "Feasibility/commercial-supply stage MOUs (Feb-Apr 2026 reporting) at the SAME Vlora site as the now-cancelled Excelerate/ExxonMobil Port of Vlora FSRU (T100000130924, dedup_index.py match: score 0.455, 0.0km, dead-and-revived flag). Proposal bundles an LNG import terminal, conversion of the existing Vlora thermal power plant to gas, and a new Fier-Vlora pipeline linking to TAP. Initial gas supply reportedly routed via Greece before any dedicated Vlora import terminal is built.",
+    "missing_threshold_elements": "No terminal-specific nameplate capacity figure found (only a general ~1 bcm/yr gas supply volume for the wider hub); power-plant capacity cited inconsistently across sources (~380 MW vs ~250 MW); no FID, no permit filing, no confirmed site/berth specification for the LNG component distinct from the power-plant conversion.",
+    "watch_for": "A terminal-specific capacity figure, an FID/permit filing, or an EIA submission naming the LNG import component distinctly from the power-plant conversion; confirmation of whether this reuses the original Vlora FSRU site/berth or a different location.",
+    "best_lead_url": "https://tiranaexaminer.com/the-vlora-hub-returns-with-a-new-supplier-and-a-familiar-question/",
+    "notes": "Different sponsor group from the original Excelerate/ExxonMobil Vlora project (now staged as cancelled in the update pass) -- per the dead-and-revived lifecycle rule, a materially different sponsor/design at a dead site is a NEW-terminal candidate, not a revival of T100000130924. However, given the ambiguity on terminal-specific capacity and the early (MOU/feasibility) stage, this is routed to monitor_list with escalation flagged rather than staged as new_terminal this cycle -- resolve scope/threshold doubt before staging, not after (CLAUDE.md escalation trigger: 'sufficient information to add' genuinely ambiguous)."
+  },
+  {
+    "country": "France",
+    "candidate_name": "Antifer replacement/second terminal (GRTgaz forward planning)",
+    "sponsor_or_proposer": "GRTgaz (TSO forward-planning study; no project sponsor/developer named yet)",
+    "first_observed_batch": "2026-07 sweep",
+    "last_observed_batch": "20260717_0051_ET",
+    "current_state": "Dormant-revival watch on the cancelled Le Havre-Antifer LNG Terminal site (T100000130454). GRTgaz's 2022-2031 ten-year development plan lists 'opportunity studies' for new LNG import capacity at Le Havre, including a possible new floating terminal moored at Antifer port, explicitly framed as a potential replacement/complement for the Le Havre FSRU. With the Le Havre FSRU now retired (Jan 2026, see france.timeline.json), this forward-planning signal becomes more salient, but there is still no named sponsor, concrete siting decision, or FID -- add-bar not met.",
+    "missing_threshold_elements": "No sponsor/developer named; no concrete site-specific step (permitting, FID, land agreement) beyond a TSO opportunity study.",
+    "watch_for": "A named sponsor or a concrete permitting/FID step tied specifically to Antifer, especially now that Le Havre FSRU capacity has been retired.",
+    "best_lead_url": "https://www.natrangroupe.com/sites/default/files/2023-04/Plan-Decennal-de-Developpement-2022-2031.pdf",
+    "notes": "PASS-verified URL contains 'Antifer'. Distinct from the original cancelled Gaz de Normandie/Poweo project (different era, different sponsor) -- would be a NEW terminal record if/when it clears the add-bar, not an edit to the cancelled record."
+  },
+  {
+    "country": "Italy",
+    "candidate_name": "Smart Gas Monfalcone (small-scale LNG import concept)",
+    "sponsor_or_proposer": "Smart Gas (entity unconfirmed in GEM)",
+    "first_observed_batch": "2026-07 discovery",
+    "last_observed_batch": "20260717_0051_ET",
+    "current_state": "Early-stage concept referencing LNG import capability near Monfalcone (in the vicinity of the long-dead Trieste Monfalcone / Zaule sites); could not confirm sufficient project detail (sponsor structure, capacity, permitting stage, or a firm marine-import design) to meet the Discovery SOP's 'sufficient information to add' threshold.",
+    "missing_threshold_elements": "Confirmed capacity, permitting status, and marine-vs-domestic scope (ship-borne import not yet clearly established)",
+    "watch_for": "A formal project filing, permitting application, or press coverage confirming ship-borne LNG import scope and a named sponsor entity",
+    "best_lead_url": "",
+    "notes": "entity_lookup --remote for 'Smart Gas' returned 'no_remote_match' with the known intermittent false-negative signature (raw_html_size 6309) -- inconclusive on whether this maps to an existing GEM entity under another name. Not staged as a new terminal; genuinely too early-stage."
+  },
+  {
+    "country": "Italy",
+    "candidate_name": "Gioia Tauro LNG Terminal (Status watch)",
+    "sponsor_or_proposer": "Iren Group / Sorgenia (existing GEM parent); Snam under evaluation",
+    "first_observed_batch": "2026-07 sweep",
+    "last_observed_batch": "20260717_0051_ET",
+    "current_state": "Already an existing GEM 'proposed' terminal (T100000130472), not a new candidate. Iren and Sorgenia have publicly stepped back (17 June 2026, Corriere della Calabria); Calabria's regional president Occhiuto is evaluating bringing in Snam as a replacement sponsor. No firm agreement yet.",
+    "missing_threshold_elements": "Confirmed sponsor commitment (current Iren/Sorgenia parent may be stale if Snam takes over)",
+    "watch_for": "A firm Snam (or other) sponsorship agreement, which would warrant a Parent-field update",
+    "best_lead_url": "https://www.ilreggino.it/politica/rigassificatore-di-gioia-tauro-campana-europaverde-avs-occhiuto-insiste-su-progetto-del-passato-calabria-attende-svolta-strategica-ekgg6r8n",
+    "notes": "Not staged as an update this pass -- no confirmed new owner/parent to substitute for Iren/Sorgenia yet; watch for the next batch."
+  },
+  {
+    "country": "Slovenia",
+    "candidate_name": "Port of Koper gas/LNG terminal (disputed)",
+    "sponsor_or_proposer": "Luka Koper d.d. (denied)",
+    "first_observed_batch": "2026-07 discovery",
+    "last_observed_batch": "20260717_0051_ET",
+    "current_state": "Denied by the port operator (June 2026). Ankaran municipality alleged a tanker/LPG/LNG terminal project; Luka Koper called the claim false/misleading and says the national spatial plan only covers an upgrade of existing port capacities, with no fixed LNG infrastructure foreseen. Separately, Koper is developing ship-to-ship LNG BUNKERING capability (out of scope for this tracker regardless).",
+    "missing_threshold_elements": "No sponsor commitment (actively denied); no location beyond the existing port footprint; no concrete step (permit/FID/MOU) — pure political allegation vs. denial.",
+    "watch_for": "A confirmed permit filing, EIA, or FID for a genuine marine LNG import/export terminal (fixed regas/liquefaction infrastructure) at Koper or elsewhere on Slovenia's short coastline.",
+    "best_lead_url": "https://seenews.com/news/local-govt-opposes-slovenias-luka-koper-plans-to-build-tanker-gas-terminal-1295779",
+    "notes": "Slovenia remains a zero-GEM-terminal coverage-gap country; its only near-term LNG access is via Croatia's Krk FSRU and Italy's Adriatic LNG terminal by pipeline, not a domestic marine terminal."
   }
 ]

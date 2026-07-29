@@ -1,0 +1,35 @@
+{
+  "scope_slug": "captive_power/americas",
+  "workflow": "captive_power",
+  "tier": null,
+  "countries": [
+    "United States",
+    "Canada",
+    "Mexico",
+    "Puerto Rico",
+    "Dominican Republic",
+    "Jamaica",
+    "Panama",
+    "Colombia",
+    "Brazil",
+    "Chile",
+    "Peru",
+    "Argentina",
+    "Trinidad and Tobago",
+    "El Salvador",
+    "Venezuela"
+  ],
+  "areas": [
+    "United States (all non-Gulf: East Coast, West Coast, Alaska, inland)",
+    "all remaining Americas countries"
+  ],
+  "started": "2026-07-27",
+  "built": "2026-07-27",
+  "applied": null,
+  "status": "superseded",
+  "run_record": "batches/run_records/2026-07-27_americas_captive-power.md",
+  "workbook": "batches/lng_terminals_batch_20260727_1330_ET_americas-captive_update.xlsx",
+  "memo": "batches/captive_power_memo_20260727_1330_ET_americas.md",
+  "notes": "Fourth and final Americas captive-power increment, after Louisiana (2026-07-09), Texas (2026-07-10) and the US Gulf remainder (2026-07-27) -- WITH THIS BATCH THE AMERICAS ARE COMPLETE. Terminal-first; LNG-side edits only (CaptiveGasPower + ref), never PowerPlantsSupplied. OUTCOME: 45 terminals crawled; 12 confirmed captive -> 32 CaptiveGasPower unit-rows staged (25 green, 5 blue = already True and re-verified, 2 yellow) across Kenai, LNG Canada, NF Altamira, Alaska LNG, Peru LNG, Costa Azul, Firebird, Atlantic LNG, Goldboro, Cove Point, Ksi Lisims, Argentina LNG; 11 confirmed NO, 8 insufficient, 14 screened-not-researched. 17 qa_review items (2 high: Argentina LNG post-FID status, Bahia Blanca's Tango FLNG barge sold to Eni and redeployed to Congo). Generalisable finding: the axis is GRID ACCESS, not geography -- grid-connected North American projects after ~2015 chose electric drive and said so in filings, so the prior for them should be NO. QC gate blanked Argentina LNG's unsourced 66 MW (cited article was about Gimi, a different vessel), dropped Alaska LNG's FERC FEIS Vol 1 citation (verified in full: does not contain the claim), and overrode two verdicts for consistency (Placentia Bay YES->not staged, TGS Puerto Galvan NO->INSUFFICIENT). Open reviewer decision: whether green-quality NO verdicts should be staged as CaptiveGasPower=False (precedent is positives-only). SUPERSEDED 2026-07-27 by the consolidated captive_power/americas-all batch (same records, one hemisphere-wide workbook) -- apply that one, not this. This dir remains the per-increment audit trail.",
+  "superseded_by": "captive_power/americas-all"
+}

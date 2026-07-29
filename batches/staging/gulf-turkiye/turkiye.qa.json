@@ -1,62 +1,62 @@
 [
-  {
-    "category": "sourcing_integrity",
-    "terminal_id": null,
-    "unit_id": null,
-    "terminal_name": "All 5 Türkiye terminals",
-    "issue": "Systemic dead-link problem: every existing giignl.org/wp-content/uploads/... and giignl.org/sites/default/files/... direct-PDF citation across all 5 Türkiye rows now returns HTTP 404 (giignl.org has restructured its file hosting). Confirmed dead: the 2020, 2021, 2022, 2024, and 2025-edition direct URLs, all of which were cited repeatedly across Dörtyol, Etki, Gulf of Saros, Izmir Aliaga, and Marmara. This batch replaced every instance with the current working GIIGNL 2026 mirror (https://files.elfsightcdn.com/.../GIIGNL-2026-Annual-Report-0521.pdf, cross-checked against the locally archived data/GIIGNL-2026-Annual-Report-0526b.pdf).",
-    "severity": "high",
-    "suggested_action": "This almost certainly affects giignl.org refs on OTHER countries' rows too, not just Türkiye. Recommend a repo-wide sweep (or a dedicated script pass) that finds every 'giignl.org/wp-content' and 'giignl.org/sites/default/files' ref URL across the whole GEM export and replaces it with the corresponding still-live edition mirror or a locally archived data/ PDF, prioritized by how many rows cite the dead pattern.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "data_conflict",
-    "terminal_id": "T100000130807",
-    "unit_id": "G100002080700",
-    "terminal_name": "Gulf of Saros FSRU",
-    "issue": "Capacity figures for the Saros FSRU disagree across sources beyond the 5.0-to-5.7 edition change staged this batch. Wood Mackenzie's public report abstract states the site started operation in Feb 2023 with 'a regasification capacity of 4.9 mmtpa (6.7 bcm/yr)'. GIIGNL 2026's OWN separate FSRU-fleet table (distinct from its main Türkiye regas-terminal table used for this batch's staged Capacity=5.7 edit) lists the vessel's original nameplate as 5.0 MTPA under 'Saros (ex Vasant 1)'. BOTAŞ's own technical fact sheet for the project (botas.gov.tr PDF '78396-saros-fsru-teknik-bilgiler.pdf') covers only environmental/permitting details and states no capacity figure at all.",
-    "severity": "medium",
-    "suggested_action": "In a future cycle, try to find a BOTAŞ-side operational spec sheet or a second independent trade-press figure that explicitly states 5.7 MTPA to fully corroborate the staged Capacity value; until then treat it as GIIGNL's own single-report figure (same evidentiary tier already relied on for the other 4 Türkiye capacities).",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "dev_pipeline",
-    "terminal_id": "T100000130618",
-    "unit_id": "G100002061800",
-    "terminal_name": "Dörtyol FSRU",
-    "issue": "BOTAŞ announced (Feb 2026, per turkiyetoday.com, ceenergynews.com, and text in the GIIGNL 2026 report) plans to add a SECOND FSRU at the Dörtyol site, aiming to roughly double the site's pipeline send-out capacity (from 28 to 56 million cubic meters/day). Engineering work is reported ongoing; no FID, vessel name, or construction start has been confirmed yet. Too early-stage to stage as a new unit row or a capacity/status edit this batch.",
-    "severity": "medium",
-    "suggested_action": "Track for a future Update batch to add a second Dörtyol unit row (Status=proposed) once FID, a vessel, and a firmer timeline are confirmed. See companion wiki entry for background detail to reuse at that time.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "sourcing_integrity",
-    "terminal_id": "T100000130618",
-    "unit_id": "G100002061800",
-    "terminal_name": "Dörtyol FSRU",
-    "issue": "The existing ProposalDate [ref] (businesskorea.co.kr) was confirmed dead/wrong -- it now resolves to an unrelated Hanwha Energy Guam solar-power article, nothing about Turkey or FSRUs. Replaced this batch with gcaptain.com's Dec 2013 article on the Daewoo/MOL 263,000 cbm FSRU order, staged at yellow confidence because that article confirms the order/spec/date but does not explicitly name Turkey or BOTAŞ as the eventual charterer.",
-    "severity": "low",
-    "suggested_action": "Find a Turkish-language or BOTAŞ-side 2013 source that directly ties the Daewoo/MOL order to the Dörtyol project, to upgrade this ref to green.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "vessel_history",
-    "terminal_id": "T100000130618",
-    "unit_id": "G100002061800",
-    "terminal_name": "Dörtyol FSRU",
-    "issue": "Since a May 2025 agreement, BOTAŞ has seasonally redeployed the Ertuğrul Gazi FSRU to Egypt's Ain Sokhna terminal during summer months (per GIIGNL 2026 report text and turkiyetoday.com), returning it to Dörtyol off-season. GEM's FloatingVesselName correctly remains 'Ertugrul Gazi' as Dörtyol's designated/owned vessel -- flagging only as a nuance for FSRU-sync checks.",
-    "severity": "low",
-    "suggested_action": "A future summer-months spot-check should confirm whether a substitute/backup vessel is physically present at Dörtyol during the Egypt deployment window, or whether the site sits without an FSRU during that period.",
-    "researcher_initials": "AI-draft"
-  },
-  {
-    "category": "data_conflict",
-    "terminal_id": "T100000130545",
-    "unit_id": "G100002054500",
-    "terminal_name": "Marmara LNG Terminal",
-    "issue": "Daily Sabah (13 Jul 2026) quotes the terminal's daily regasification capacity as '37 million cubic meters', which converts to roughly 9.9-10 MTPA -- higher than GEM/GIIGNL's 8.8 MTPA nameplate. Not acted on this batch given GIIGNL's more precise, internally consistent MTPA figure (and its use as the current source for this same field), but flagging the discrepancy in case it reflects a genuinely higher peak/optimized send-out rate distinct from baseload nameplate.",
-    "severity": "low",
-    "suggested_action": "If a future BOTAŞ technical source states the terminal's baseload nameplate capacity directly, use it to confirm or resolve this gap.",
-    "researcher_initials": "AI-draft"
-  }
+ {
+  "category": "sourcing_integrity",
+  "terminal_id": null,
+  "unit_id": null,
+  "terminal_name": "All 5 Türkiye terminals",
+  "issue": "Systemic dead-link problem: every existing giignl.org/wp-content/uploads/... and giignl.org/sites/default/files/... direct-PDF citation across all 5 Türkiye rows now returns HTTP 404 (giignl.org has restructured its file hosting). Confirmed dead: the 2020, 2021, 2022, 2024, and 2025-edition direct URLs, all of which were cited repeatedly across Dörtyol, Etki, Gulf of Saros, Izmir Aliaga, and Marmara. This batch replaced every instance with the current working GIIGNL 2026 mirror (https://files.elfsightcdn.com/.../GIIGNL-2026-Annual-Report-0521.pdf, cross-checked against the locally archived data/GIIGNL-2026-Annual-Report-0526b.pdf).",
+  "severity": "high",
+  "suggested_action": "This almost certainly affects giignl.org refs on OTHER countries' rows too, not just Türkiye. Recommend a repo-wide sweep (or a dedicated script pass) that finds every 'giignl.org/wp-content' and 'giignl.org/sites/default/files' ref URL across the whole GEM export and replaces it with the corresponding still-live edition mirror or a locally archived data/ PDF, prioritized by how many rows cite the dead pattern.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "data_conflict",
+  "terminal_id": "T100000130807",
+  "unit_id": "G100002080700",
+  "terminal_name": "Gulf of Saros FSRU",
+  "issue": "Capacity figures for the Saros FSRU disagree across sources beyond the 5.0-to-5.7 edition change staged this batch. Wood Mackenzie's public report abstract states the site started operation in Feb 2023 with 'a regasification capacity of 4.9 mmtpa (6.7 bcm/yr)'. GIIGNL 2026's OWN separate FSRU-fleet table (distinct from its main Türkiye regas-terminal table used for this batch's staged Capacity=5.7 edit) lists the vessel's original nameplate as 5.0 MTPA under 'Saros (ex Vasant 1)'. BOTAŞ's own technical fact sheet for the project (botas.gov.tr PDF '78396-saros-fsru-teknik-bilgiler.pdf') covers only environmental/permitting details and states no capacity figure at all.",
+  "severity": "medium",
+  "suggested_action": "In a future cycle, try to find a BOTAŞ-side operational spec sheet or a second independent trade-press figure that explicitly states 5.7 MTPA to fully corroborate the staged Capacity value; until then treat it as GIIGNL's own single-report figure (same evidentiary tier already relied on for the other 4 Türkiye capacities).",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "dev_pipeline",
+  "terminal_id": "T100000130618",
+  "unit_id": "G100002061800",
+  "terminal_name": "Dörtyol FSRU",
+  "issue": "BOTAŞ announced (Feb 2026, per https://www.turkiyetoday.com/business/turkiye-plans-new-fsru-deployment-at-dortyol-terminal-minister-3213860 , https://ceenergynews.com/oil-gas/turkiye-will-install-two-new-fsrus/, and text in the GIIGNL 2026 report) plans to add a SECOND FSRU at the Dörtyol site, aiming to roughly double the site's pipeline send-out capacity (from 28 to 56 million cubic meters/day). Engineering work is reported ongoing; no FID, vessel name, or construction start has been confirmed yet. Too early-stage to stage as a new unit row or a capacity/status edit this batch.",
+  "severity": "medium",
+  "suggested_action": "Track for a future Update batch to add a second Dörtyol unit row (Status=proposed) once FID, a vessel, and a firmer timeline are confirmed. See companion wiki entry for background detail to reuse at that time.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "sourcing_integrity",
+  "terminal_id": "T100000130618",
+  "unit_id": "G100002061800",
+  "terminal_name": "Dörtyol FSRU",
+  "issue": "The existing ProposalDate [ref] (businesskorea.co.kr) was confirmed dead/wrong -- it now resolves to an unrelated Hanwha Energy Guam solar-power article, nothing about Turkey or FSRUs. Replaced this batch with gcaptain.com's Dec 2013 article on the Daewoo/MOL 263,000 cbm FSRU order, staged at yellow confidence because that article confirms the order/spec/date but does not explicitly name Turkey or BOTAŞ as the eventual charterer.",
+  "severity": "low",
+  "suggested_action": "Find a Turkish-language or BOTAŞ-side 2013 source that directly ties the Daewoo/MOL order to the Dörtyol project, to upgrade this ref to green.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "vessel_history",
+  "terminal_id": "T100000130618",
+  "unit_id": "G100002061800",
+  "terminal_name": "Dörtyol FSRU",
+  "issue": "Since a May 2025 agreement, BOTAŞ has seasonally redeployed the Ertuğrul Gazi FSRU to Egypt's Ain Sokhna terminal during summer months (per GIIGNL 2026 report text and https://www.turkiyetoday.com/business/turkiye-plans-new-fsru-deployment-at-dortyol-terminal-minister-3213860), returning it to Dörtyol off-season. GEM's FloatingVesselName correctly remains 'Ertugrul Gazi' as Dörtyol's designated/owned vessel -- flagging only as a nuance for FSRU-sync checks.",
+  "severity": "low",
+  "suggested_action": "A future summer-months spot-check should confirm whether a substitute/backup vessel is physically present at Dörtyol during the Egypt deployment window, or whether the site sits without an FSRU during that period.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "data_conflict",
+  "terminal_id": "T100000130545",
+  "unit_id": "G100002054500",
+  "terminal_name": "Marmara LNG Terminal",
+  "issue": "Daily Sabah (13 Jul 2026) quotes the terminal's daily regasification capacity as '37 million cubic meters', which converts to roughly 9.9-10 MTPA -- higher than GEM/GIIGNL's 8.8 MTPA nameplate. Not acted on this batch given GIIGNL's more precise, internally consistent MTPA figure (and its use as the current source for this same field), but flagging the discrepancy in case it reflects a genuinely higher peak/optimized send-out rate distinct from baseload nameplate.",
+  "severity": "low",
+  "suggested_action": "If a future BOTAŞ technical source states the terminal's baseload nameplate capacity directly, use it to confirm or resolve this gap.",
+  "researcher_initials": "AI-draft"
+ }
 ]

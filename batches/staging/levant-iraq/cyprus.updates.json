@@ -17,7 +17,10 @@
     ],
     "source_notes": "Old ref (entsog.eu/tyndp) is a generic ENTSOG TYNDP landing page that does not mention ETYFA — verifier FAIL (missing expected content). Replaced with 2 independent trade-press sources that both explicitly confirm ETYFA as the terminal-owning entity (Owner value ETYFA [100%] unchanged, only the ref improved).",
     "scope_note": "",
-    "researcher_initials": "AI-draft (sweep)"
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_dead": [
+      "https://entsog.eu/tyndp"
+    ]
   },
   {
     "terminal_id": "T100000130432",
@@ -36,7 +39,10 @@
     ],
     "source_notes": "Live giignl.org URL is 404 (dead; matches the tracker-wide giignl.org rot flagged 2026-07-14). Wayback mirror (2025-05-27 snapshot) returns HTTP 200 and pdftotext confirms 'Construction of the FSRU-based import terminal at the Vasilikos port in Cyprus started in July 2020' — same document, same value (construction/actual), only the URL changed. Verified manually via curl+pdftotext (url_verifier.py timed out intermittently on this 6.6MB PDF over the wayback mirror; direct curl fetch + text search succeeded reliably).",
     "scope_note": "",
-    "researcher_initials": "AI-draft (sweep)"
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_dead": [
+      "https://giignl.org/wp-content/uploads/2021/11/GIIGNL_Annual_Report_November2021.pdf"
+    ]
   },
   {
     "terminal_id": "T100000130432",
@@ -55,7 +61,10 @@
     ],
     "source_notes": "Same dead-giignl.org / wayback-mirror swap as Status [ref] above; ProposalYear 2009 unchanged.",
     "scope_note": "",
-    "researcher_initials": "AI-draft (sweep)"
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_dead": [
+      "https://giignl.org/wp-content/uploads/2021/11/GIIGNL_Annual_Report_November2021.pdf"
+    ]
   },
   {
     "terminal_id": "T100000130432",
@@ -74,7 +83,10 @@
     ],
     "source_notes": "Same dead-giignl.org / wayback-mirror swap; ConstructionYear 2020 July directly confirmed in report text ('Construction ... started in July 2020'), unchanged.",
     "scope_note": "",
-    "researcher_initials": "AI-draft (sweep)"
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_dead": [
+      "https://giignl.org/wp-content/uploads/2021/11/GIIGNL_Annual_Report_November2021.pdf"
+    ]
   },
   {
     "terminal_id": "T100000130432",
@@ -94,7 +106,10 @@
     ],
     "source_notes": "Old giignl.org ref dead. Replaced with 2 independent trade-press sources confirming the FSRU feeds the Vasilikos power plant (868 MW EAC station); PowerPlantsSupplied value 'Vasilikos power station' unchanged.",
     "scope_note": "",
-    "researcher_initials": "AI-draft (sweep)"
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_dead": [
+      "https://giignl.org/wp-content/uploads/2021/11/GIIGNL_Annual_Report_November2021.pdf"
+    ]
   },
   {
     "terminal_id": "T100000130432",
@@ -104,14 +119,14 @@
     "country": "Cyprus",
     "field_name": "AssociatedTerminals [ref]",
     "old_value": "http://www.reuters.com/article/cyprus-total-lng-idUSL5N0IS2CA20131107",
-    "new_value": "http://web.archive.org/web/20210518223228/https://www.reuters.com/article/cyprus-total-lng-idUSL5N0IS2CA20131107",
+    "new_value": "https://www.reuters.com/article/cyprus-total-lng-idUSL5N0IS2CA20131107",
     "confidence": "blue",
     "source_tier": "trade_press",
     "ref_field": null,
     "ref_urls": [
-      "http://web.archive.org/web/20210518223228/https://www.reuters.com/article/cyprus-total-lng-idUSL5N0IS2CA20131107"
+      "https://www.reuters.com/article/cyprus-total-lng-idUSL5N0IS2CA20131107"
     ],
-    "source_notes": "Live reuters.com URL returns HTTP 401 (bot-blocked, per project convention not treated as dead outright, but no longer independently checkable live). Wayback mirror (2021-05-18 snapshot) passes and confirms the 2013 Cyprus-Total LNG export MoU that is the basis for the Cyprus FSRU <-> Cyprus LNG Terminal association. Value unchanged (AssociatedTerminals = Cyprus LNG Terminal).",
+    "source_notes": "Live reuters.com URL returns HTTP 401 (bot-blocked, per project convention not treated as dead outright, but no longer independently checkable live). Wayback mirror (2021-05-18 snapshot) passes and confirms the 2013 Cyprus-Total LNG export MoU that is the basis for the Cyprus FSRU <-> Cyprus LNG Terminal association. Value unchanged (AssociatedTerminals = Cyprus LNG Terminal). [ref-restore 2026-07-17: restored existing live URL(s) https://www.reuters.com/article/cyprus-total-lng-idUSL5N0IS2CA20131107 per merge-semantics rule (bot-block != dead; never drop a URL not proven dead)] [ref-restore 2026-07-17: dropped web.archive.org mirror of the restored live URL — live + its own snapshot is one source (mirror rule); live URL Wayback-verified via url_verifier]",
     "scope_note": "",
     "researcher_initials": "AI-draft (sweep)"
   },
@@ -138,7 +153,11 @@
     ],
     "source_notes": "Re-verified all 9 existing StartDate [ref] URLs. 7 pass. 2 now broken with no wayback snapshot available: financialmirror.com/news-details.php?nid=37887 (HTTP 500, persistent) and ekathimerini.com .../cyprus-aims-to-complete-vasilikos-lng-terminal-by-2024/ (HTTP 403, likely bot-block but unconfirmable via wayback). Dropped both from the ref list; OriginalPlannedStartYear/LatestPlannedStartYear values themselves unchanged (see qa note on LatestPlannedStartYear staleness).",
     "scope_note": "",
-    "researcher_initials": "AI-draft (sweep)"
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_dead": [
+      "https://www.financialmirror.com/news-details.php?nid=37887",
+      "https://www.ekathimerini.com/economy/1234789/cyprus-aims-to-complete-vasilikos-lng-terminal-by-2024/"
+    ]
   },
   {
     "terminal_id": "T100000130432",
@@ -158,7 +177,10 @@
     ],
     "source_notes": "Old igu.org LNG2023-report URL is dead (404, no wayback snapshot). Replaced with the current IGU World LNG Report 2025 PDF, which lists 'Cyprus, 2 MTPA' in its planned-liquefaction/regas capacity chart (Rystad Energy sourced), corroborated independently by Enerdata's 2026 news brief describing the '2 Mt/year Vasilikos LNG import terminal project'. Capacity value (2.00 mtpa) unchanged.",
     "scope_note": "",
-    "researcher_initials": "AI-draft (sweep)"
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_dead": [
+      "https://www.igu.org/resources/lng2023-world-lng-report/"
+    ]
   },
   {
     "terminal_id": "T100000130432",
@@ -263,14 +285,14 @@
     "country": "Cyprus",
     "field_name": "FacilityType [ref]",
     "old_value": "http://www.reuters.com/article/cyprus-total-lng-idUSL5N0IS2CA20131107",
-    "new_value": "http://web.archive.org/web/20210518223228/https://www.reuters.com/article/cyprus-total-lng-idUSL5N0IS2CA20131107",
+    "new_value": "https://www.reuters.com/article/cyprus-total-lng-idUSL5N0IS2CA20131107",
     "confidence": "blue",
     "source_tier": "trade_press",
     "ref_field": null,
     "ref_urls": [
-      "http://web.archive.org/web/20210518223228/https://www.reuters.com/article/cyprus-total-lng-idUSL5N0IS2CA20131107"
+      "https://www.reuters.com/article/cyprus-total-lng-idUSL5N0IS2CA20131107"
     ],
-    "source_notes": "Live reuters.com URL returns HTTP 401. Wayback mirror (2021-05-18) passes and confirms the 2013 Total-Cyprus LNG export MoU. FacilityType (export) unchanged.",
+    "source_notes": "Live reuters.com URL returns HTTP 401. Wayback mirror (2021-05-18) passes and confirms the 2013 Total-Cyprus LNG export MoU. FacilityType (export) unchanged. [ref-restore 2026-07-17: restored existing live URL(s) https://www.reuters.com/article/cyprus-total-lng-idUSL5N0IS2CA20131107 per merge-semantics rule (bot-block != dead; never drop a URL not proven dead)] [ref-restore 2026-07-17: dropped web.archive.org mirror of the restored live URL — live + its own snapshot is one source (mirror rule); live URL Wayback-verified via url_verifier]",
     "scope_note": "",
     "researcher_initials": "AI-draft (sweep)"
   },
@@ -291,7 +313,10 @@
     ],
     "source_notes": "Live lngworldnews.com URL is 404 (site restructured). Wayback mirror (2019-12-14) passes. AssociatedTerminals (Cyprus FSRU) unchanged.",
     "scope_note": "",
-    "researcher_initials": "AI-draft (sweep)"
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_dead": [
+      "https://www.lngworldnews.com/cyprus-extends-tender-deadline-for-lng-import-facility/"
+    ]
   },
   {
     "terminal_id": "T100001048370",
@@ -448,7 +473,10 @@
     ],
     "source_notes": "Live cyprus-mail.com URL now 404 (page removed). Wayback mirror (2021-11-27 snapshot) passes for both 'Hoegh' and 'FSRU'. FacilityType (import) unchanged.",
     "scope_note": "",
-    "researcher_initials": "AI-draft (sweep)"
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_dead": [
+      "https://cyprus-mail.com/2020/04/24/energy-company-confirms-it-has-proposed-installation-of-an-frsu-in-cyprus/"
+    ]
   },
   {
     "terminal_id": "T100000130828",
@@ -467,7 +495,10 @@
     ],
     "source_notes": "Same dead-live/wayback swap as FacilityType [ref] above. Owner (Hoegh Evi [100%]) unchanged.",
     "scope_note": "",
-    "researcher_initials": "AI-draft (sweep)"
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_dead": [
+      "https://cyprus-mail.com/2020/04/24/energy-company-confirms-it-has-proposed-installation-of-an-frsu-in-cyprus/"
+    ]
   },
   {
     "terminal_id": "T100000130828",
@@ -486,7 +517,10 @@
     ],
     "source_notes": "Same dead-live/wayback swap. ProposalYear (2020 April) unchanged.",
     "scope_note": "",
-    "researcher_initials": "AI-draft (sweep)"
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_dead": [
+      "https://cyprus-mail.com/2020/04/24/energy-company-confirms-it-has-proposed-installation-of-an-frsu-in-cyprus/"
+    ]
   },
   {
     "terminal_id": "T100000130828",
@@ -505,7 +539,10 @@
     ],
     "source_notes": "Same dead-live/wayback swap. OriginalPlannedStartYear/LatestPlannedStartYear (2021) unchanged. Note: this field pairs with OriginalPlannedStartYear/LatestPlannedStartYear (there is no separate 'StartDate' data column in the schema) — completeness_sweep's 'orphan_ref' flag on this cell is a tool-heuristic false positive, not a true orphan; see qa note.",
     "scope_note": "",
-    "researcher_initials": "AI-draft (sweep)"
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_dead": [
+      "https://cyprus-mail.com/2020/04/24/energy-company-confirms-it-has-proposed-installation-of-an-frsu-in-cyprus/"
+    ]
   },
   {
     "terminal_id": "T100000130828",

@@ -1,0 +1,38 @@
+{
+  "scope_slug": "captive_power/americas-all",
+  "workflow": "captive_power",
+  "tier": null,
+  "countries": [
+    "United States",
+    "Canada",
+    "Mexico",
+    "Puerto Rico",
+    "Dominican Republic",
+    "Jamaica",
+    "Panama",
+    "Colombia",
+    "Brazil",
+    "Chile",
+    "Peru",
+    "Argentina",
+    "Trinidad and Tobago",
+    "El Salvador",
+    "Venezuela"
+  ],
+  "areas": [
+    "Americas (whole hemisphere, all four increments consolidated)"
+  ],
+  "started": "2026-07-27",
+  "built": "2026-07-27",
+  "applied": null,
+  "status": "superseded",
+  "run_record": "batches/run_records/2026-07-27_americas-all_captive-power-consolidation.md",
+  "consolidates": [
+    "captive_power/louisiana",
+    "captive_power/texas",
+    "captive_power/us-gulf",
+    "captive_power/americas"
+  ],
+  "notes": "CONSOLIDATION ONLY -- no new research. Straight concatenation of the four Americas captive-power increments' staging JSONs (Louisiana 2026-07-09, Texas 2026-07-10, US Gulf remainder 2026-07-27, rest-of-Americas 2026-07-27) into one hemisphere-wide deliverable, so the reviewer applies one workbook instead of four. Zero duplicate (unit_id, field_name) pairs across the four sets; zero duplicate terminal_ids in the three review tabs -- the increments partition the hemisphere cleanly. Totals: 88 staged unit-rows across 29 terminals (87 CaptiveGasPower + 1 FIDStatus; 52 green / 6 yellow / 30 blue after the apply-check recolour), 77 terminals crawled (terminal_first_priors), 62 neighboring-plant rows, 64 gogpt_candidates rows, 27 qa_review items. Zero PowerPlantsSupplied. The four source dirs remain the per-increment audit trail and keep their own run records; this dir supersedes them for the apply step -- apply THIS workbook, not the four. APPLY-CHECK (fresh export re-pull): Louisiana is ALREADY APPLIED (9 of its 10 terminals; G2 LNG not applied) -- every old_value was refreshed against the fresh CSV and the 25 already-landed rows recoloured blue with their original per-area confidence preserved in source_notes. 13 of those rows (Gulfstream 1, Plaquemines 3, Sabine Pass 9) have the value applied but CaptiveGasPower [ref] STILL BLANK in GEM -- the ref half is outstanding. Three ref-MERGE violations fixed: CP2 (FERC eLibrary accession carried forward), Delfin FIDStatus (DOE progress report carried forward into FIDYear [ref]), Alaska LNG (FERC FEIS Vol 1 declared in dropped_urls_dead). None tripped the build guard because warn_ref_url_drops only inspected '<field> [ref]' records, never value-records carrying ref_urls -- guard extended 2026-07-27 to read the target ref cell from the fresh export for that shape.",
+  "superseded_by": "captive_power/americas-complete"
+}

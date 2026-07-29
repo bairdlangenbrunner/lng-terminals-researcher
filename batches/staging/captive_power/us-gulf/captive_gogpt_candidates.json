@@ -1,0 +1,54 @@
+[
+  {
+    "terminal": "ST LNG FLNG Terminal",
+    "terminal_id": "T100001061236",
+    "gogpt_candidate": "ADD (yes)",
+    "electric_mw": "270.4 MW installed nameplate project-wide (16 x Baker Hughes NovaLT16 @ 16.9 MW, 4 per phase x 4 phases; ~202.8 MW at normal N+1 load, 3 running + 1 standby per phase)",
+    "confidence": "green",
+    "basis": "A genuine off-grid gas-fired generating plant, 5.4x the >50 MW GOGPT threshold, documented in two primary/regulatory documents on the MARAD deepwater-port docket. The applicant's licence application states the facility 'would have no connection to the electric power grid' and that 'Gas turbine generators with waste heat recovery units would be utilized to provide power and heat to the DWP.' The Draft EIS (April 2026) stationary-source list, explicitly 'inclusive of all phases', enumerates 'Sixteen Baker Hughes LT-16 natural-gas-fired combustion turbines for power generation'. Offshore, ~10.4 nm off Matagorda, Brazos OCS Block BA-476; pre-FID, first LNG targeted 2Q 2030 — so the GOGPT record would be announced/pre-construction, not operating. GOGPT naming convention would make this 'ST LNG FLNG Terminal power station'.",
+    "basis [ref]": [
+      "https://downloads.regulations.gov/MARAD-2025-0096-0001/attachment_1.pdf",
+      "https://downloads.regulations.gov/MARAD-2025-0096-0028/attachment_1.pdf"
+    ],
+    "mechanical_drive_note": "SEPARATE, NOT in the 270.4 MW: 8 x Siemens SGT-750 gas turbines as MR compressor drivers project-wide (2 per phase), shaft power with no generator. The Draft EIS lists these under a distinct 'MR Compressor System Driver' heading, separate from 'Power Generation Gas Turbines'. Never sum them into the generating MW. Unresolved vendor conflict: the March-2026 Baker Hughes press release was read as LM6000PF compressor trains, while the application and Draft EIS both name Siemens SGT-750 — either a post-DEIS vendor change or a trade-press inaccuracy; it does not change the electric figure, which comes only from the NovaLT16 count."
+  },
+  {
+    "terminal": "Gulf LNG Terminal",
+    "terminal_id": "T100000130228",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "yellow",
+    "basis": "GOGPT tracks electricity generation with a nameplate MW. The only captive power here is pure mechanical-drive shaft power (gas turbines driving the MR/PR compressors, no generator) on a project that was never built and never reached FID — no generating capacity to record and no physical plant to tag. The operating import terminal's only on-site generation is 2 x 12 MW backup gas-turbine generators (24 MW), below the 50 MW threshold and backup-only.",
+    "basis [ref]": [
+      "https://www.ferc.gov/sites/default/files/CalendarFiles/20190716201154-CP15-521-000.pdf",
+      "https://www.energy.gov/sites/prod/files/2019/04/f62/final-eis-0504-gulf-lng-2019-04-chp-2.pdf"
+    ],
+    "mechanical_drive_note": "The captive designation rests entirely on mechanical drive: 4 gas turbines (2 per train x 2 trains) driving propane-precool/mixed-refrigerant compressors. No MW/HP rating appears in any verified source — left undisclosed rather than invented, which is also why no MW could be offered to GOGPT even if the project were built."
+  },
+  {
+    "terminal": "Eagle LNG Terminal",
+    "terminal_id": "T100000130220",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "No captive gas power exists or is planned on-site. The design is grid-electric (JEA-supplied) with a motor-driven inlet boost compressor, and the project was never built — the 227-acre Zoo Parkway site is being rezoned into an industrial park. Nothing for GOGPT to track. The three nearby JEA stations are already-tracked utility generation, not captive.",
+    "basis [ref]": [
+      "https://www.offshore-technology.com/projects/jacksonville-lng-project-jacksonville-florida/",
+      "https://www.jea.com/Pdf/Download/12884910955"
+    ],
+    "mechanical_drive_note": "None — no mechanical-drive turbines at this site; the compressor is explicitly motor-driven (electric)."
+  },
+  {
+    "terminal": "American LNG Hialeah Terminal",
+    "terminal_id": "T100000130208",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "yellow",
+    "basis": "A 0.06 mtpa modular skid-mounted small-scale liquefier with no evidence of any on-site power generation asset, let alone one approaching 50 MW. DOE's categorical-exclusion determination describes modular skids needing only 'electrical connections' between them. GOGPT's own matcher found no captive-flagged plant nearby, consistent with this terminal-first finding.",
+    "basis [ref]": [
+      "https://www.offshore-technology.com/marketdata/hialeah-lng-liquefaction-terminal-the-us/",
+      "https://www.energy.gov/sites/default/files/2016/02/f29/CX-200000.pdf"
+    ],
+    "mechanical_drive_note": "None — no turbine-driven equipment identified; scale is far below any turbine-drive threshold."
+  }
+]

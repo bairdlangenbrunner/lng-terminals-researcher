@@ -7,7 +7,7 @@ This repo is designed to be used with [Claude Code](https://docs.claude.com/en/d
 The assistant produces staged xlsx files for review; it never edits the live
 database directly.
 
-## Eight workflows
+## Nine workflows
 
 | Workflow | When to use | Output |
 |---|---|---|
@@ -18,7 +18,8 @@ database directly.
 | **Regional sweep** | Scaled Update/Discovery across a whole region — one subagent per country, resumable ledger | One xlsx per region + committed staging tree |
 | **QC** | Audit data health — link-rot, accuracy spot-check, did-my-edits-land | Markdown memo; fixes route to an Update batch |
 | **Missing-year ref-sweep** | Status-timeline milestones with no year — backfill from research | xlsx worklist kept in `batches/deliverables/` |
-| **Captive-power cross-tracker** | Match LNG terminals to GOGPT captive gas power plants | LNG staging xlsx (`CaptiveGasPower`/`PowerPlantsSupplied`) + memo for GOGPT-side gaps |
+| **Captive-power cross-tracker** | Match LNG terminals to GOGPT captive gas power plants | LNG staging xlsx (`CaptiveGasPower` only — never `PowerPlantsSupplied`) + memo for GOGPT-side gaps |
+| **Georeference** | Derive or fix a terminal coordinate — mapping services/OSM first for built facilities, then published coordinates, then figure georeferencing (last resort) | Staged `Latitude`/`Longitude` + mandatory verification overlays (sub-recipe inside any batch) |
 
 See `CLAUDE.md` for the routing logic and `docs/sops/` for the full procedures.
 
@@ -92,6 +93,7 @@ docs/
     qc.md                    Audit data health (link-rot, accuracy, post-apply checks); fixes route to Update
     ref_sweep.md             Backfill missing years on status-timeline milestones
     captive_power.md         Match LNG terminals to GOGPT captive gas power plants (LNG-side staging only)
+    georeference.md          Derive a terminal coordinate (decision ladder; figure georeferencing last)
   reference/                 Lookup tables and rules (read on demand)
     gem_db_schema.md         What every GEM database column means
     lifecycle_rules.md       Status rules — when a project counts as proposed/shelved/cancelled etc.
@@ -121,6 +123,8 @@ scripts/                     Python tools called by the workflows
                              Postgres, build the research workbook
   captive_power_colocation.py  Match LNG terminals to GOGPT captive gas power plants (geo + name +
                              captive flags) from the read-only Postgres; emits tiered candidate pairs
+  georeference_figure.py     Georeference a report/EIS map figure against satellite imagery and
+                             read a lat/lon off it (last rung of the Georeference SOP ladder)
   citation_qc.py             Re-verify every existing [ref] URL in scope (QC link-rot sweep)
   apply_check.py             Confirm an applied batch's edits actually landed in the live DB (QC)
   dedup_index.py             Name-matching indexes so "new" candidates can be checked against existing entries
@@ -154,14 +158,6 @@ notes/                       Ad-hoc analysis memos that aren't run records (rare
 ```
 
 A batch in progress also drops the untracked fresh data pull (`gem_export.csv` + `.colmap.json`) wherever it was pulled (repo root or `scripts/`). Everything else batch-scoped — extracted report CSVs, diffs, `staged_*.json`, prose/narrative findings — lives under `batches/staging/` per its README, never loose in the repo root.
-
-## Known issues
-
-- **`fetch_timeline.py`'s default host is stale.** The built-in Heroku URL
-  404s; set `GEM_PROJECT_DB_BASE_URL` to the live project-DB host. Until it is
-  reachable, route status changes to qa notes rather than staging blind
-  timeline edits. (Timeline *reads/audits* have an alternative path: the
-  read-only Postgres `status_timeline` table via `GEM_READONLY_DB_URL`.)
 
 ## Hard rules
 

@@ -163,7 +163,13 @@ def compute_citation_qc(csv_path, country_filter=None, status_filter=None,
                     seen_urls.add(url)
 
                     # Signal 1: liveness (HTTP + soft-error + PDF text layer).
-                    live, reason = verify_url(url, [], strict=False)
+                    # wayback_fallback OFF: this sweep's taxonomy wants bot-walls
+                    # graded 'blocked' (verify manually), and with an empty token
+                    # list the fallback would grade any 403-with-a-snapshot 'ok'
+                    # on snapshot existence alone. Value-level Wayback checks
+                    # belong to the staging path (url_verifier default), not QC.
+                    live, reason = verify_url(url, [], strict=False,
+                                              wayback_fallback=False)
                     verdict = "ok" if live else _verdict(reason)
                     # Signal 2: terminal-name containment (cached fetch — free).
                     name_found = None
