@@ -1,0 +1,42 @@
+[
+  {
+    "category": "stale_sponsor",
+    "terminal_id": "T100000131102",
+    "unit_id": "G100002110200",
+    "terminal_name": "Bar LNG Terminal",
+    "issue": "GEM's Owner/Parent fields (EPCG; LNG Alliance Pte Ltd) reflect the original Dec 2021 MOU. Since then the project has passed through at least two further sponsor arrangements: an Enerflex/Wethington-linked US MOU (2023, per the existing 'montenegro-inks-mou-with-us-companies' ref already cited on this record) and a Sept 2025 feasibility-study MOU with JERA (Japan) -- the most recent and currently active partnership as of Feb 2026 reporting. It is unclear whether LNG Alliance remains an active equity partner or has been superseded.",
+    "severity": "medium",
+    "suggested_action": "Reviewer confirm current active development partner(s) directly with EPCG/Ministry before amending Owner/Parent; do not overwrite Owner from a single trade-press MOU announcement without confirming continuity/status of the LNG Alliance stake.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "stale_anchor_year",
+    "terminal_id": "T100000131102",
+    "unit_id": "G100002110200",
+    "terminal_name": "Bar LNG Terminal",
+    "issue": "FIDYear (2023), OriginalPlannedStartYear and LatestPlannedStartYear (both 2025) have all passed with no FID taken and no construction started. No updated target date was found in current sourcing -- the Sept 2025 JERA MOU is a feasibility-study agreement, not a revised FID/start-year commitment.",
+    "severity": "medium",
+    "suggested_action": "Leave FIDYear/start-year fields as-is (no sourced replacement date found) but flag for a future cycle once JERA's feasibility study concludes or a new FID target is announced.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "location_precision",
+    "terminal_id": "T100000131102",
+    "unit_id": "G100002110200",
+    "terminal_name": "Bar LNG Terminal",
+    "issue": "GEM's Location/coordinates are the generic Port of Bar centroid (42.093367, 19.081096). Montenegro's 2024 draft national spatial plan and subsequent local reporting identify the specific candidate site as 'Bigovica', near Volujica, a few km from the main port -- a more precise siting than the current generic port location.",
+    "severity": "low",
+    "suggested_action": "If a primary-source map/plan document with explicit Bigovica coordinates can be located in a future cycle, refine Location/coordinates; not staged now for lack of a verifiable coordinate-bearing source.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "conflicting_data",
+    "terminal_id": "T100000131102",
+    "unit_id": "G100002110200",
+    "terminal_name": "Bar LNG Terminal",
+    "issue": "Capacity/scale figures across the project's sponsor history are inconsistent: the LNG Alliance-era figure (0.40 mtpa, modular expansion to 1.2 mtpa mooted) is what GEM currently carries, while the 2023 Enerflex/Wethington MOU described a differently-scaled offloading/storage concept (~25,000 bbl/hr pier, ~250,000 bbl storage) that may not map 1:1 to an mtpa-equivalent LNG terminal capacity. These may be different vintages/configurations of the same site rather than directly comparable figures.",
+    "severity": "low",
+    "suggested_action": "No change staged (0.40 mtpa remains the only trade-press-cited nameplate figure); flag for reviewer awareness given the sponsor churn.",
+    "researcher_initials": "AI-draft"
+  }
+]

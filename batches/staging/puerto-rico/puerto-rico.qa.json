@@ -1,0 +1,82 @@
+[
+  {
+    "category": "field_intentionally_blank",
+    "terminal_id": "T100000130577",
+    "unit_id": "G100002057700",
+    "terminal_name": "Aguirre GasPort FSRU",
+    "issue": "FloatingVesselName is blank despite Offshore=True/Floating=True. Confirmed this is the accurate state, not a gap: the Aguirre Offshore GasPort was designed around an offshore berthing platform where LNG would be transferred from a tanker to a chartered FSRU (per FERC's own reference to the Aguirre docket in the San Juan CP20-466 order), but the project was cancelled in November 2019 before any vessel was ever chartered or assigned. Do not backfill a candidate vessel name from proposal-era charter discussions (e.g. an Excelerate fleet vessel) -- an unbuilt terminal has no vessel.",
+    "severity": "low",
+    "suggested_action": "No action -- leave FloatingVesselName blank. Documented so a future pass does not re-flag it as an unexamined gap.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "sourcing_gap",
+    "terminal_id": "T100000130577",
+    "unit_id": "G100002057700",
+    "terminal_name": "Aguirre GasPort FSRU",
+    "issue": "Status/CancelledYear/StopYear [ref] were repaired this batch by replacing a dead lngworldnews.com URL with two offshore-energy.biz articles -- but offshore-energy.biz (Navingo) is the rebranded successor to lngworldnews.com, so both citations are effectively the same publisher network, not two independent outlets. A Caribbean Business article that would have provided genuine independence ('Excelerate renegotiating Aguirre Offshore GasPort deal with Prepa') is itself dead (HTTP 000). Staged as yellow rather than green for this reason.",
+    "severity": "low",
+    "suggested_action": "If a future pass finds a genuinely independent outlet (Reuters, S&P Global, a PREB IE Report at energia.pr.gov) confirming the 2019 cancellation, upgrade to green.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "entity_data_quality",
+    "terminal_id": "T100000130578",
+    "unit_id": "G100002057800",
+    "terminal_name": "Penuelas LNG Terminal",
+    "issue": "Prior to this batch's Owner correction (EcoElectrica LP -> OCO Partners for the 2.5% stake), GEM's Owner and Parent fields were internally inconsistent: Owner named 'EcoElectrica LP [2.5%]' (the facility naming itself as its own owner) while Parent already carried 'unknown [2.5%]' -- likely GEM's generic placeholder entity (E100000132388, confirmed used tracker-wide for genuinely unknown parents) mapped to a real, since-identified party. This batch corrects Owner to 'OCO Partners' and adds an entity_additions record for OCO Partners, but leaves Parent/ParentHQCountry/the underlying entity ID untouched -- the Parent-side 'unknown' placeholder should ideally be reconciled to the same OCO Partners entity once it exists in GEM's entity system, but that is an entity-merge decision outside an Update batch's scope.",
+    "severity": "medium",
+    "suggested_action": "Once OCO Partners exists as a confirmed GEM entity, reconcile Penuelas's Parent field from 'unknown [2.5%]' to the same entity (likely a follow-on task, not this batch).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unresolved_after_research",
+    "terminal_id": "T100000130784",
+    "unit_id": "G100002078400",
+    "terminal_name": "San Juan LNG Terminal",
+    "issue": "FloatingVesselName is blank on a terminal that genuinely does use a floating storage unit (confirmed via primary source: FERC's show-cause order, 174 FERC 61,207/Docket CP20-466, describes an FSU 'semi-permanently moored at San Juan Harbor'; GIIGNL's 2026 edition independently reclassified San Juan as 'Onshore + FSU'). The specific vessel currently serving as that FSU could NOT be confirmed. A January 2023 HuffPost article and several vessel-database mirrors name 'Coral Encanto' (IMO 9693719, Anthony Veder-chartered small-scale LNG carrier) as the vessel moored there at that time -- but current AIS tracking (Nov 2025) shows Coral Encanto trading in the West Mediterranean under Anthony Veder charter, indicating it is a rotating spot/contract carrier, not a permanently dedicated FSU, and it may well have been swapped for a different vessel since. No source found ties a specific vessel to the FSU role as of 2025-2026. Per the coordinator's guidance, a supply carrier that calls, discharges, and leaves should not be staged in FloatingVesselName regardless -- this field genuinely requires a vessel identified as the semi-permanently moored unit, which was not found.",
+    "severity": "high",
+    "suggested_action": "Do not stage FloatingVesselName. A future pass should search recent (2025-2026) FERC filings in the ongoing CP20-466 proceeding, NFE's 10-K vessel/charter disclosures, or direct AIS/MarineTraffic history for a vessel showing a multi-month continuous stay at San Juan Harbor to identify the current FSU.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "conditional_not_staged",
+    "terminal_id": "T100000130784",
+    "unit_id": "G100002078400",
+    "terminal_name": "San Juan LNG Terminal",
+    "issue": "PowerPlantsSupplied was staged this batch as 'San Juan Power Plant; Palo Seco Power Plant' (confirmed, in-effect NGSPA delivery points). Two additional candidates were investigated and deliberately left OUT of the staged value because they are conditional/pending, not confirmed current deliveries: (1) Cambalache Units 2-3 conversion, an NGSPA delivery point pending PREB/NEPR approval under docket MI-2024-0004 (~34 TBtu/yr if approved); (2) Genera PR's Mayaguez diesel-to-gas conversion, which received a Feb-2025 NEPR conditional approval, with gas to be sourced from the existing San Juan terminal/NGSPA framework rather than any new marine import facility.",
+    "severity": "medium",
+    "suggested_action": "Re-check NEPR dockets MI-2024-0004 and the Mayaguez conversion proceeding in a future pass; add Cambalache and/or Mayaguez to PowerPlantsSupplied once gas deliveries are confirmed as actually flowing, not merely approved.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "background_lead_not_staged",
+    "terminal_id": "T100000130784",
+    "unit_id": "G100002078400",
+    "terminal_name": "San Juan LNG Terminal",
+    "issue": "A trade-press claim that USACE's San Juan Bay dredging project would let the terminal receive carriers up to 6x current size was NOT independently verified and is NOT cited for any numeric claim. What IS verified: the U.S. Army Corps of Engineers is conducting a real, ongoing San Juan Harbor channel-deepening project (confirmed via DVIDS, an official DoD distribution channel), and a Center for Biological Diversity press release covering litigation against the project explicitly ties its purpose to accommodating larger LNG and petroleum tankers. Staged as non-numeric wiki Background only (see wiki.json) -- the '6x' figure and any capacity implication is NOT staged anywhere.",
+    "severity": "low",
+    "suggested_action": "If a future pass finds a primary USACE/FERC document stating a specific vessel-size or capacity implication, it could support a monitor_list entry for a future capacity increase.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "entity_data_quality",
+    "terminal_id": "T100000130578",
+    "unit_id": "G100002057800",
+    "terminal_name": "Penuelas LNG Terminal",
+    "issue": "Parent totalled 197.5% before this batch: 'Naturgy Energy Group SA [47.5%]; ENGIE SA [35.0%]; Mitsui Group [15.0%]; Naturgy Energy Group SA [47.5%]; ENGIE SA [35.0%]; Mitsui & Co Ltd [15.0%]; unknown [2.5%]' — the first three holders duplicated, with the two blocks differing ONLY in which Mitsui entity they name. Both Mitsui entities really exist in GEM (E100000134078 'Mitsui Group' and E100000000651 'Mitsui & Co Ltd', verified against the read-only Postgres entity_history), so this looks like a merge/paste artifact from two separate edits rather than a typo. A deduped Parent is staged this batch. TWO things the paste cannot carry and the reviewer must handle in the UI: (1) `Parent GEM Entity ID` currently mirrors the duplication ('E100000000978 [47.5%]; E100000000382 [35.0%]; E100000134078 [15.0%]; E100000000978 [47.5%]; E100000000382 [35.0%]; E100000000651 [15.0%]; E100000132388 [2.5%]') and must be re-picked to match the deduped Parent — it is deliberately NOT staged, because entity IDs should come from GEM's entity picker, not a typed paste. (2) Whether 'Mitsui Group' or 'Mitsui & Co Ltd' is the correct canonical parent here is a GEM-wide canonicalisation question, not a Puerto Rico research question — two entities for the same corporate group may warrant a merge beyond this tracker.",
+    "severity": "medium",
+    "suggested_action": "Apply the staged deduped Parent, then re-pick `Parent GEM Entity ID` in the entity picker so both cells agree and sum to 100%. Separately consider whether 'Mitsui Group' (E100000134078) and 'Mitsui & Co Ltd' (E100000000651) should be merged tracker-wide.",
+    "researcher_initials": "orchestrator QC"
+  },
+  {
+    "category": "schema_limitation",
+    "terminal_id": "T100000130784",
+    "unit_id": "G100002078400",
+    "terminal_name": "San Juan LNG Terminal",
+    "issue": "The Offshore=True / Floating=True flags were re-verified this batch against primary evidence (FERC show-cause order, Docket CP20-466 / 174 FERC 61,207, describing an FSU 'semi-permanently moored at San Juan Harbor'; GIIGNL 2026 classifying San Juan as 'Onshore + FSU'), but GEM's 115-column schema has NO `Offshore [ref]` or `Floating [ref]` column, so that corroboration cannot be written to a ref cell — the only vessel-side ref column is `FloatingVesselName [ref]`, which stays blank because the vessel itself is unidentified (see the unresolved_after_research note). The evidence is therefore recorded on the blue value rows and here. Worth noting that GIIGNL's 'Onshore + FSU' phrasing and GEM's Offshore=True are in apparent tension; GEM's own usage resolves it, since across the whole export the two flags are only ever set together (352 True/True, 12 True/blank, 909 blank/blank, zero False/True), i.e. Floating implies Offshore by convention rather than by geography.",
+    "severity": "low",
+    "suggested_action": "No action on the data. If GEM ever wants citable Offshore/Floating flags, the schema would need ref columns for them; until then a re-verification of these Booleans can only be evidenced in ResearcherNotes or a batch qa note.",
+    "researcher_initials": "orchestrator QC"
+  }
+]

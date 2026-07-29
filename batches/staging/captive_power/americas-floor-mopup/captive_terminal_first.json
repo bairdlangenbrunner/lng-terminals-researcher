@@ -1,0 +1,100 @@
+[
+ {
+  "terminal": "American LNG Hialeah Terminal",
+  "terminal_id": "T100000130208",
+  "mechanical": "False",
+  "confidence": "red",
+  "gogpt_captive_prior": "No sourced information exists on whether Hialeah has on-site generation; nothing to add or exclude absent a positive finding.",
+  "confirmed_how": "VERDICT: INSUFFICIENT. DOE/FE Docket No. 14-209-LNG Semi-Annual Report (Apr. 1, 2022): confirms construction complete and LNG production since ~2016; no power-equipment content.\n\nORCHESTRATOR QC (2026-07-27): the round-2 verdict INSUFFICIENT is correct and is an UPGRADE over the americas-all record, which read 'NO captive power, on scale ... roughly two orders of magnitude below the scale at which a >50 MW turbine set is ever installed.' That is the abolished MW floor and is void reasoning. Absence of any mention of generation across the DOE docket is INSUFFICIENT, never a documented NO.",
+  "confirmed_how [ref]": []
+ },
+ {
+  "terminal": "American LNG Titusville Terminal",
+  "terminal_id": "T100000130209",
+  "mechanical": "False",
+  "confidence": "red",
+  "gogpt_captive_prior": "No sourced basis to add or exclude.",
+  "confirmed_how": "VERDICT: INSUFFICIENT. DOE/FE Docket No. 15-19-LNG Semi-Annual Report (filed Mar. 19, 2026): \"Development activities for the Titusville facility are ongoing, with a likely commercial operation date in 2027.\" No power-equipment content.",
+  "confirmed_how [ref]": []
+ },
+ {
+  "terminal": "Coastal Bend LNG Terminal",
+  "terminal_id": "T100001061247",
+  "mechanical": "False",
+  "confidence": "yellow",
+  "gogpt_captive_prior": "Cogeneration is confirmed by name but no MW figure or unit count has been published (project is proposed/pre-FID); revisit once FERC Resource Reports or FEED-stage documents publish equipment specs.",
+  "confirmed_how": "VERDICT: YES. \"Coastal Bend LNG's planned development includes multiple liquefaction trains, cogeneration, LNG storage tanks, and export facilities.\" / \"up to five 4.5 Mtpa liquefaction trains, cogeneration, LNG storage tanks, and export facilities for shipping, bunkering, and ISO containers.\"\n\nORCHESTRATOR QC (2026-07-27): confidence DOWNGRADED green -> yellow. The verdict YES stands and is a real improvement -- the developer's releases NAME 'cogeneration' as a design element, replacing the prior batch's inference from the Optimized Cascade technology choice plus 22.5 Mtpa scale. But both cited URLs are coastalbendlng.com, i.e. ONE publisher and one self-published origin, not two independent sources, and a developer press release is not a primary/regulatory source. Under the workbook rules that is yellow, not green. NOT RE-STAGED HERE: americas-all already stages CaptiveGasPower=True for this terminal's single unit-row (T1-T5). This increment records the strengthened basis only; staging it again would create a duplicate (unit_id, field_name) pair across the two dirs.",
+  "confirmed_how [ref]": [
+   "https://coastalbendlng.com/news/coastal-bend-lng-selects-conocophillips-optimized-cascade-process-technology",
+   "https://coastalbendlng.com/news/coastal-bend-lng-initiates-development-of-22-5-mtpa-lng-export-facility"
+  ]
+ },
+ {
+  "terminal": "Coatzacoalcos II LNG Terminal",
+  "terminal_id": "T100001054469",
+  "mechanical": "False",
+  "confidence": "yellow",
+  "gogpt_captive_prior": "Not a size call — there is no documented generating plant of any kind (on-site or otherwise) at this proposed site to add to GOGPT. Revisit if a future FEED/permit discloses generation equipment.",
+  "confirmed_how": "VERDICT: INSUFFICIENT. Feb 2025 (energymagazine.mx): '⚡ Demanda de energía de 30 MW' listed as a bare fact alongside '4 trenes de procesamiento con capacidad de 47,000 mcfd' — no sentence anywhere describes how that demand is met. Jun 2026 (energymagazine.mx, 'Coatzacoalcos-PODEBI LNG', $450M phase): no mention of power/MW/generation/grid at all. Aug 2026 (mexicobusiness.news x2): $2.1B investment, FEED-EPC framework with Samsung E&A, Honeywell nitrogen-pretreatment tech, 2.1 Mt/y target, civil works summer 2026, first export late 2029, feedstock is 'associated natural gas contaminated with nitrogen that PEMEX currently flares or vents' — zero mention of power supply anywhere. energynews.mx (legal/land-tenure dispute piece): 'las inversiones del sector público (vías férreas, escolleras y conectividad de la CFE) y los desarrollos de naves por parte de privados' — CFE grid connectivity named as a public-infrastructure input for the industrial pole generally, not attributed specifically to this plant's own generation-vs-grid choice.",
+  "confirmed_how [ref]": [
+   "https://energymagazine.mx/2025/02/ursus-aqualita-lng-anuncia-planta-de-gnl-en-coatzacoalcos/",
+   "https://energymagazine.mx/2025/06/ursus-energy-desarrollara-planta-de-gnl-en-coatzacoalcos/",
+   "https://mexicobusiness.news/energy/news/ursus-energy-scales-investment-us21-billion",
+   "https://mexicobusiness.news/energy/news/ursus-energy-advances-coatzacoalcos-podebis-lng",
+   "https://energynews.mx/conflicto-legal-en-coatzacoalcos-frena-megaproyecto-de-gas-de-ursus-y-samsung-por-2100-mdd/"
+  ]
+ },
+ {
+  "terminal": "Floridian LNG Terminal",
+  "terminal_id": "T100000130223",
+  "mechanical": "False",
+  "confidence": "red",
+  "gogpt_captive_prior": "No sourced basis to add or exclude.",
+  "confirmed_how": "VERDICT: INSUFFICIENT. DOE/FE Order No. 3744 facility description (storage tank, liquefaction trains, vaporization equipment, truck loading), reviewed in full (pp.1-20 of 29); contains no generator/turbine/power-supply content of any kind.",
+  "confirmed_how [ref]": []
+ },
+ {
+  "terminal": "Gato Negro Manzanillo LNG Terminal",
+  "terminal_id": "T100000131178",
+  "mechanical": "False",
+  "confidence": "red",
+  "gogpt_captive_prior": "No sourced basis exists to add or exclude; project is pre-FID with no published equipment list. Revisit once a MIA/engineering filing surfaces.",
+  "confirmed_how": "VERDICT: INSUFFICIENT. \"contar con acceso inmediato a infraestructura eléctrica y servicios industriales\" — company/press language; does not specify generation source, self-supply arrangement, or capacity.",
+  "confirmed_how [ref]": [
+   "https://gnlglobal.com/gato-negro-manzanillo-lng-obtiene-permiso-ambiental-federal-de-asea-y-avanza-hacia-la-fid-en-mexico/",
+   "https://www.colimanoticias.com/avanza-proyecto-para-nueva-planta-de-gas-licuado-en-manzanillo/"
+  ]
+ },
+ {
+  "terminal": "Nopetro LNG Terminal",
+  "terminal_id": "T100000131130",
+  "mechanical": "False",
+  "confidence": "red",
+  "gogpt_captive_prior": "No sourced basis to add or exclude; also unresolved whether this GEM record corresponds to a single physical facility or an aggregator business model (see status finding).",
+  "confirmed_how": "VERDICT: INSUFFICIENT. Local/press reporting: Port St. Joe site \"up to three liquefaction trains that would liquify up to 3.86 billion cubic feet per year of natural gas for export\"; cancellation announced July 2023. No power-equipment content in any located source.",
+  "confirmed_how [ref]": []
+ },
+ {
+  "terminal": "Penuelas LNG Terminal",
+  "terminal_id": "T100000130578",
+  "mechanical": "False",
+  "confidence": "yellow",
+  "gogpt_captive_prior": "Not a size call — EcoEléctrica is a large (500+ MW), decades-old merchant IPP selling to PREPA and almost certainly already carries a GOGPT plant record. 'Record already exists' is the correct DO NOT ADD basis. Recommend the memo (not this staged edit) flag the existing GOGPT record for a captiveIndustryUse/partially-captive tagging review — a GOGPT-side data-quality note, not a new-record proposal.",
+  "confirmed_how": "VERDICT: YES. CCJ (2012 plant report): 'Three generators produce power for sale and internal use—two are driven by the gas turbines and rated 205 MVA each at 0.85 pf, one by the steam turbine and rated 252 MVA at 0.85 pf.' ... 'Two station service transformers, each rated 42 MVA, step down the voltage from 18 kV to 4.16 kV. An additional step down to 480 V provides power to a dozen motor control centers throughout the facility.' Same article establishing 'facility' = the integrated terminal+plant site: 'When EcoElectrica began commercial operation in March 2000 ... it was the only generating station in the world with an integrated LNG terminal ... It continues as the only such facility in the Western Hemisphere today.' DRNA Title V permit (PFE-TV-4911-57-0899-0006): 'EcoEléctrica propose the operation a marine unloading terminal for liquefied natural gas and a combined cycle cogeneration plant' [as one permitted facility]; and on direction of the OTHER flow (unchanged finding, not restaged): 'the storage tanks will be vaporized to form natural gas, which will be used as fuel in the combustion turbines.'",
+  "confirmed_how [ref]": [
+   "https://www.ccj-online.com/4q-2012/plant-report-ecoelectrica-lp/",
+   "https://drna.pr.gov/wp-content/uploads/2020/01/Ecoelectrica-English-TV-4911-57-0899-0006.pdf"
+  ]
+ },
+ {
+  "terminal": "Strom LNG Terminal",
+  "terminal_id": "T100000130241",
+  "mechanical": "False",
+  "confidence": "red",
+  "gogpt_captive_prior": "Independent reporting indicates Strom never built or controlled any site and had no assets ('ghost company') — there is no physical facility to add to GOGPT, regardless of size.",
+  "confirmed_how": "VERDICT: INSUFFICIENT. DOE/FE Order No. 3537, read in full (12 pages): describes MLNG modular units and export/business terms with zero power-equipment content. WWALS (2021): \"A ghost company with no assets, not even an office or the land it claims for its Liquid Natural Gas (LNG) liquefaction facility, no investment, and no business partners.\"",
+  "confirmed_how [ref]": [
+   "https://wwals.net/2021/07/21/ghost-company-strom-lng/"
+  ]
+ }
+]

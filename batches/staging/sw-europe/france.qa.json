@@ -1,0 +1,52 @@
+[
+  {
+    "category": "ownership",
+    "terminal_id": "T100000130446",
+    "unit_id": "",
+    "terminal_name": "Dunkirk LNG Terminal",
+    "issue": "Parent field (LastUpdated 2025-07-21) predates a confirmed Sept 17-18 2025 ownership restructuring: Asterion Industrial Partners acquired ~15% of Dunkerque LNG indirectly via a holding vehicle ('FluxDune'), per LNG Prime and Asterion's own press release (2 independent sources). Current framing per those sources: a 61% consortium (Fluxys, Asterion Industrial Partners, Credit Agricole Assurances) and a 39% consortium (Korean investors led by IPM Group and Samsung Asset Management). Neither source gives a complete itemized percentage breakdown matching GEM's existing granular list (Publigaz SA [23.5%]; AXA SA [15.2%]; Credit Agricole Group [15.2%]; Hanwha Investment and Securities [13.1%]; IBK Securities [13.1%]; Samsung [13.1%]; small shareholder(s) [2.2%]; Energy Infrastructure Partners AG) -- e.g. 'Fluxys' itself isn't named in GEM's current list (Publigaz SA, a Fluxys-linked entity, may be a partial proxy), and Asterion/FluxDune are entirely absent. Could not reconcile old itemized % list to the new consortium framing with confidence -- staging a guessed full replacement risked being less accurate than the existing (if stale) granular list.",
+    "severity": "high",
+    "suggested_action": "Reviewer/orchestrator to pull Fluxys's or Dunkerque LNG's own investor-relations disclosure (or the original 2018 'Fluxys becomes core shareholder' release plus a post-Sept-2025 filing) to get a complete itemized cap table, then replace the Parent field. See france.wiki.json for the confirmed narrative and both sources; france.entity.json proposes 'Asterion Industrial Partners' as a new entity. NOTE (orchestrator): Asterion already exists in the GEM entity system as 'Asterion Industrial Partners SGEIC' (100001010765) — reuse it, do not create a new entity.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "other",
+    "terminal_id": "T100000130446",
+    "unit_id": "G100002044600",
+    "terminal_name": "Dunkirk LNG Terminal",
+    "issue": "ProposalYear (2009) and ConstructionYear (2011) have no populated [ref] cells; not re-researched this batch (old, stable, low-priority anchor years; time-boxed).",
+    "severity": "low",
+    "suggested_action": "Fill with a primary source (e.g. a 2009-2011 era Dunkerque LNG / Elengy / EDF press release) on a future exhaustive pass.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130448",
+    "unit_id": "G100002044802",
+    "terminal_name": "Fos Cavaou LNG Terminal (Expansion 2)",
+    "issue": "Deliberate-divergence check: existing researcher_notes documents data uncertainty around Expansion 2's contribution to Fos Cavaou's total capacity. GIIGNL 2026 Annual Report still shows only 8.0 mtpa total for Fos Cavaou (not the 10.0 mtpa combined figure a completed Expansion 2 would imply), consistent with 'still under construction.' Per CLAUDE.md's hard rule on deliberate researcher_notes divergences, left UNCHANGED this batch rather than auto-bumping capacity or status.",
+    "severity": "low",
+    "suggested_action": "No action needed -- re-check when GIIGNL's next edition (2027) is available.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "other",
+    "terminal_id": "T100000131008",
+    "unit_id": "G100002100800",
+    "terminal_name": "Le Havre FSRU",
+    "issue": "Owner [ref] (spglobal.com) returns HTTP 403 on this pass. Per project rule, 401/403 = bot-blocked, not dead -- left unchanged rather than replaced. TotalEnergies SE [100%] as terminal Owner is independently corroborated by the retirement-news sources already staged (Enerdata, Baird Maritime, JPT, LNG Prime all identify TotalEnergies as the charterer/operator).",
+    "severity": "low",
+    "suggested_action": "No action needed; optionally swap in a non-paywalled TotalEnergies-branded source on a future pass.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "other",
+    "terminal_id": "T100000130454",
+    "unit_id": "G100002045400",
+    "terminal_name": "Le Havre-Antifer LNG Terminal",
+    "issue": "Owner [ref] (reuters.com/article/poweo-lng-eon-...) returns HTTP 401 on this pass. Per project rule, 401/403 = bot-blocked, not dead -- left unchanged. Also: journaldelintro.com (previously flagged in this same investigation as a scanned/no-text-layer PDF) is not currently cited as a populated [ref] in the fresh CSV pull -- no action needed for it.",
+    "severity": "low",
+    "suggested_action": "No action needed.",
+    "researcher_initials": "AI-draft"
+  }
+]

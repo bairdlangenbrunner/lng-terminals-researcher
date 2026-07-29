@@ -1,0 +1,52 @@
+[
+  {
+    "category": "vessel_naming",
+    "terminal_id": "T100000130890",
+    "unit_id": "G100002089000",
+    "terminal_name": "SLNG 2 LNG Terminal",
+    "issue": "FloatingVesselName remains blank. The MOL-chartered FSRU newbuild at Hanwha Ocean (204,000-cbm, 5 mtpa regas, keel laid 26 May 2026, delivery ~Oct 2027) has no commercial vessel name assigned yet -- only a shipyard hull number (2597) circulates in secondary trade-press summaries, but I could not independently verify that specific hull number on any page I could actually fetch (marinelink.com and splash247.com pages, which likely carry it, did not contain the token '2597' when checked / were paywalled). GEM does have a dataset precedent for filling FloatingVesselName with a hull-number placeholder pre-naming (e.g. Al-Faw FSRU Terminal = 'Hull 3407'), so this is worth revisiting once a source with the hull number is directly verifiable, or once the vessel is formally named (typically closer to delivery).",
+    "severity": "low",
+    "suggested_action": "Leave FloatingVesselName blank this batch. Recheck nearer FSRU delivery (~2027) or if a verifiable hull-number source is found.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unused_field_convention",
+    "terminal_id": "T100000130890",
+    "unit_id": "G100002089000",
+    "terminal_name": "SLNG 2 LNG Terminal",
+    "issue": "VesselOwner/VesselOperator fields are populated on ZERO of the 352 Floating=True rows in the current export -- appears to be an unused/dormant field in current GEM practice even for FSRUs with a well-known charterer (e.g. Hoegh, BW). I have a well-sourced, primary fact (MOL's own press release, mol.co.jp/en/pr/2024/24114.html) that Mitsui O.S.K. Lines will own/manage/operate this FSRU post-delivery, while SLNG remains the terminal operator -- but did not stage it into VesselOwner/VesselOperator given zero dataset precedent, to avoid guessing at field semantics/intended usage.",
+    "severity": "low",
+    "suggested_action": "Reviewer call: if VesselOwner/VesselOperator are in active use, stage VesselOwner=VesselOperator='Mitsui O.S.K. Lines' (source: mol.co.jp/en/pr/2024/24114.html, primary). Otherwise the fact is captured in the wiki entry as background.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "geolocation_not_available",
+    "terminal_id": "T100000130889",
+    "unit_id": "G100002088900",
+    "terminal_name": "Singapore Offshore LNG Terminal",
+    "issue": "Latitude/Longitude and a real Location value remain unfillable. Read the full 2019 EMA Expression-of-Interest PDF (source of Location [ref]): it is deliberately site-agnostic -- EMA invited private Participants to propose their own OLT site/design (Ancillary Services and/or Regasification Services), and no site was ever publicly named before the project went dormant (last activity found: Oct 2020) and was inferred shelved (2022)/cancelled (2024). No later source names a location either.",
+    "severity": "low",
+    "suggested_action": "No action -- expected/correct that Latitude/Longitude/Location stay blank; do not invent a coordinate. Location [ref] remains a structural (pre-existing) orphan ref with no pairable data value; reviewer may consider blanking Location [ref] entirely if strict no-orphan-ref cleanup is wanted, but I judged keeping the (now-repaired, live) background citation more useful than removing it.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "citation_link_rot",
+    "terminal_id": "T100000130889",
+    "unit_id": "G100002088900",
+    "terminal_name": "Singapore Offshore LNG Terminal",
+    "issue": "Existing zawya.com citation (used for Status/ShelvedYear/CancelledYear/StopYear refs) returned HTTP 400 on every attempt today (both direct fetch and WebFetch), not a clean 404/410 so not unambiguously 'proven dead' by the strict rule, but unreachable in practice. Replaced with a same-wire-story mirror (Reuters Oct-2020 story, hosted at Yahoo News SG) -- see updates.json for the 4 paired ref-field records and dropped_urls_dead declarations.",
+    "severity": "low",
+    "suggested_action": "No further action needed; recheck zawya.com in a future batch in case the 400 was transient.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "citation_link_rot",
+    "terminal_id": "T100000130309",
+    "unit_id": "",
+    "terminal_name": "Singapore LNG Terminal",
+    "issue": "One of two existing Status [ref] URLs on all 3 Phase rows (https://www.ema.gov.sg/Gas_Terminal_Development.aspx) could not be re-verified today: the entire ema.gov.sg domain currently serves an Incapsula bot-challenge page (no <title> tag, so it doesn't trip url_verifier's bot-block/Wayback-fallback detector) to automated requests. This is very likely bot-block-not-dead (matches the site-wide pattern seen on ema.gov.sg's other .aspx pages during this same research session), not a genuinely dead page. Left untouched -- did not drop, since not proven dead. The OTHER existing Status ref (2b1stconsulting.com) verified fine and independently confirms 'operating'.",
+    "severity": "low",
+    "suggested_action": "No action needed this batch (not dropped). Recheck ema.gov.sg reachability in a future batch; consider hardening url_verifier's bot-block title-detection for Incapsula's no-title challenge page if this recurs across other countries' government sites.",
+    "researcher_initials": "AI-draft"
+  }
+]

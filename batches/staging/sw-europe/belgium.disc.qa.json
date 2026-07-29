@@ -1,0 +1,22 @@
+[
+  {
+    "category": "discovery_gemwiki_crosscheck",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Belgium (country-level)",
+    "issue": "Enumerated gem.wiki LNG-terminal pages for Belgium (Ring/§4.0b cross-check): Zeebrugge LNG Terminal (matches existing GEM row T100000130426) and 'Antwerp LNG Terminal' (gem.wiki page, NOT in the GEM CSV). Independently researched Antwerp: it is a Fluxys Bunkering SRL truck-to-ship LNG BUNKERING facility at Quay 526/528 (Lilo, Antwerp) commissioned March 2021 (FlexFueler002) — LNG arrives by TRUCK (from Zeebrugge) and is supplied as marine FUEL to vessels in port, not imported/exported as cargo crossing a border by ship. Fails the marine-import/export-by-ship scope gate (same class as the Dar es Salaam domestic-only miss) — this is a bunkering installation, not an LNG terminal in the tracker's sense.",
+    "severity": "low",
+    "suggested_action": "Confirmed OUT OF SCOPE — no new_terminal staged. Resolved before staging per the 'never stage-with-doubt' rule.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "discovery_ring_sweep",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Belgium (country-level)",
+    "issue": "Ring A (CREG regulator), Ring B (trade press), and Ring C (Fluxys IR) swept for any additional proposed Belgian LNG import/export terminal beyond Zeebrugge. Belgium has a single deepwater LNG import point (Zeebrugge); no second terminal or genuinely new proposed project found.",
+    "severity": "low",
+    "suggested_action": "No new_terminal or monitor_list entries — discovery pass clean.",
+    "researcher_initials": "AI-draft"
+  }
+]

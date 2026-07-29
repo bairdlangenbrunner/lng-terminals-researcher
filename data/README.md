@@ -51,6 +51,27 @@ copy encountered early in the project, **not** a property of pre-2026 editions. 
 vision-LLM fallback still lives in git history, and the standing rule remains: **`file
 <path>` before assuming the format** — a future download could still arrive as a zip.
 
+## Official web mirrors — citation URLs for `[ref]` repairs
+
+Legacy `giignl.org/...` deep links are dead site-wide (rot confirmed 2026-07-14), but GIIGNL's
+rebuilt site hosts every edition at <https://giignl.org/annual-report>. These are the canonical
+citable URLs when repairing a dead GIIGNL `[ref]` — re-cite the **same edition** the cell
+originally cited (after confirming the value is in it). Mirrors of one edition count as ONE
+source; different editions count separately.
+
+| Edition | Citable mirror URL |
+|---|---|
+| 2026 | `https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf` |
+| 2025 | `https://cdn.prod.website-files.com/67bdb9fc993751711c5f54fd/685278fda1e68e3b4324e2cf_0432365c1c5b8fb129ae8055cca8cb9b_%23GIIGNL%20-%20Livre%202025-20250610-Simple.pdf` |
+| 2024 | `https://cdn.prod.website-files.com/67bdb9fc993751711c5f54fd/6854051dda46281e5ec60285_GIIGNL%20Annual%20Report%202024.pdf` |
+| 2023 | `https://cdn.prod.website-files.com/67bdb9fc993751711c5f54fd/67d40f91fd8b5ad05589ef9e_GIIGNL-2023-Annual-Report.pdf` |
+| 2022 | `https://cdn.prod.website-files.com/67bdb9fc993751711c5f54fd/67d40f9112efb57309cae007_GIIGNL-2022-Annual-Report.pdf` |
+| 2021 | `https://cdn.prod.website-files.com/67bdb9fc993751711c5f54fd/67d40f93805223c8ccba8ef7_GIIGNL-2021-Annual-Report.pdf` |
+| 2020 | `https://cdn.prod.website-files.com/67bdb9fc993751711c5f54fd/67d40f92d6ed82e473b54f8e_GIIGNL-2020-Annual-Report.pdf` |
+
+(All seven passed `url_verifier.py` on 2026-07-17; log in `batches/staging/gulf-turkiye/url_verifier_log.jsonl`.
+CDN paths could churn if GIIGNL redeploys — if one 404s, re-derive from giignl.org/annual-report and update this table.)
+
 ## What this archive is for
 
 - **Back-checking a GEM `capacity_ref` against the edition it cites.** Many GEM unit-rows

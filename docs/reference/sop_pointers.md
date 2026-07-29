@@ -13,6 +13,7 @@ Last reconciled against (2026-07-16):
 - QC SOP rev 1 (2026-06 — plus structured-findings JSON committed alongside the memo, see below)
 - Ref-sweep SOP rev 2 (2026-07-01 — fuel_type column, `--sync-db` refresh flag; plus refs_overflow/verified columns and lossless JSON, see below)
 - Captive-power SOP (2026-07-10 — mechanical-drive flag settled)
+- Georeference SOP rev 1 (2026-07-29 — coordinate-derivation decision ladder + figure-georeferencing tool, from the Aguirre case)
 - CLAUDE.md (2026-06-09 — second slim pass; pull/FSRU/color detail deduplicated to `docs/workflows.md` + `docs/reference/workbook_conventions.md`; workflow recipes in `docs/workflows.md`, script table in `scripts/README.md`)
 
 Abbreviations:
@@ -23,6 +24,7 @@ Abbreviations:
 - **QCS** = `docs/sops/qc.md`
 - **RSW** = `docs/sops/ref_sweep.md`
 - **CPW** = `docs/sops/captive_power.md`
+- **GRF** = `docs/sops/georeference.md`
 - **SKL** = `CLAUDE.md`
 - **WFL** = `docs/workflows.md`
 - **WBC** = `docs/reference/workbook_conventions.md`
@@ -90,6 +92,7 @@ Abbreviations:
 | Build review package | UPD §11.12, DSC §10.12, REC §3.10 | `build_review_package.py` |
 | Recalc verification | All workflow §s | `recalc.py` before present_files |
 | Missing-year ref-sweep (extract → research → build) | RSW §3–§4, WFL §8 | `refsweep_missing_year.py extract`/`build` over the read-only status timeline; year cell colored by tier; re-derive `tl_order` from DB every build |
+| Coordinate derivation (decision ladder) | GRF §2, WFL §10 | Built → mapping services/OSM (`exact`); else published coords → graticule → `georeference_figure.py` (verify overlays mandatory, GRF §4; never-built stays `approximate`, GRF §5) |
 
 ## Confidence labels (cross-SOP)
 

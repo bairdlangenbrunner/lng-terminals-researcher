@@ -1,0 +1,43 @@
+{
+  "scope_slug": "captive_power/americas-complete",
+  "workflow": "captive_power",
+  "tier": null,
+  "countries": [
+    "United States",
+    "Canada",
+    "Mexico",
+    "Puerto Rico",
+    "Dominican Republic",
+    "Jamaica",
+    "Panama",
+    "Colombia",
+    "Brazil",
+    "Chile",
+    "Peru",
+    "Argentina",
+    "Suriname",
+    "Trinidad and Tobago",
+    "El Salvador",
+    "Venezuela"
+  ],
+  "areas": [
+    "Americas (whole hemisphere — all five increments, single deliverable)"
+  ],
+  "started": "2026-07-27",
+  "built": "2026-07-28",
+  "applied": null,
+  "status": "built",
+  "run_record": "batches/run_records/2026-07-28_captive-power_standby-reversal-and-hardware-taxonomy.md",
+  "consolidates": [
+    "captive_power/louisiana",
+    "captive_power/texas",
+    "captive_power/us-gulf",
+    "captive_power/americas",
+    "captive_power/americas-all",
+    "captive_power/americas-floor-mopup"
+  ],
+  "notes": "THE single Americas captive-power deliverable — supersedes captive_power/americas-all and captive_power/americas-floor-mopup, which are the last two of six increments. No verdict, citation, confidence or source note was rewritten in the merge; this is consolidation, not research. Content (as of the 2026-07-28 rebuild): 102 staged unit-rows (101 CaptiveGasPower + 1 FIDStatus) across 32 terminals, 77 terminal_first_priors rows, 68 gogpt_candidates, 62 neighboring_plants, 30 qa_review items. Zero PowerPlantsSupplied. Merge keys: staged_updates concatenated with zero duplicate (unit_id, field_name) pairs; captive_terminal_first and captive_gogpt_candidates deduped on terminal_id with the MOPUP row winning on the 9 overlaps (it is the post-floor-removal re-research) and its ref list UNIONED with the americas-all row's rather than replacing it, so no verified independent URL is dropped — the superseded prior basis is preserved verbatim in _superseded_prior. Coastal Bend is the case that makes the union matter: the mopup row cites two coastalbendlng.com URLs (one self-published origin) while americas-all cited conocophillips.com + ogj.com + hartenergy.com; the merged row keeps all five and the mopup's stronger basis (the developer now NAMES 'cogeneration', retiring the >50 MW-from-scale inference the floor removal invalidated). Both rows were already yellow, so the mopup's stated green->yellow downgrade was moot. NEW IN THIS BUILD: hybrid_basis, a review-only column (SOP §2c) that names the mixed grid arrangement a CaptiveGasPower=True rests on, so a partially-captive judgment is visible in the sheet instead of buried in source_notes prose. Four of the 30 Americas terminals carry one: Penuelas grid_export (EcoElectrica sells to the PREPA grid AND supplies the co-sited terminal), Atlantic LNG grid_tied (Solar Mars gensets on the complex's own 12.47 kV internal grid, one unit tied to the external grid; over-determined by the mechanical-drive Frame 5 fleet), Woodside Louisiana grid_fed_site (the inverse case — site electricity is bought from Entergy, the True rests wholly on mechanical drive), Ksi Lisims contingency_only. Blank is a positive finding (plain dedicated on-site plant), not an unasked question — all 30 were classified explicitly. REBUILT 2026-07-28 (standby policy reversal + hardware taxonomy). User directive: \"if there is any turbine whatsoever that runs when grid supply fails, that counts as a yes\" — this REVERSES the current-state disposition rule settled in the europe pass the day before, and SOP §2b was rewritten accordingly. Standby duty is no longer a screen or a reviewer call; it now decides the captive_category, not the value. The fuel gate survives unchanged (diesel-only standby is still NO; unstated fuel is still INSUFFICIENT). Americas consequences: +13 unit-rows, 89 -> 102. (a) Elba Island (T100000130221, 12 rows, GREEN) — a previously DISMISSED NO; the Georgia EPD PSD permit documents on-site gas-fired emergency generation, so it flips on the primary source. (b) Placentia Bay (T100000131034, 1 row, YELLOW, mechanical=True) — a YES verdict that was deliberately left unstaged under never-stage-with-doubt because the EA deferred the mechanical-driver choice; the emergency gas generation in the SAME filing is unconditional, so the True no longer depends on the deferred study, and its qa_review item 21 moved unresolved_conflict/medium -> resolved/low. (c) The Gulf LNG IMPORT unit-row was rewritten: its negative rested on BOTH now-void grounds (the >50 MW floor and backup-only duty), and the 2019 FERC/DOE Final EIS Ch.2 names \"two essential power backup gas turbine generators each with a capacity of 12 megawatts\" — gas-fired, so the row now carries its own standby_backup basis instead of propagating the export row's mechanical-drive True, its mechanical flag is False, and the FEIS URL was appended. The superseded reasoning is recorded verbatim in the record rather than deleted. THE KSI LISIMS ESCALATION IS RESOLVED BY THIS DIRECTIVE and is no longer an outstanding reviewer call: contingency-design power barges that build only if the BC Hydro interconnection slips are the same class the directive admits, so the row stands as staged (yellow, captive_category=contingency_design) — SOP §2c updated to match. ALSO NEW: every staged record now carries captive_category + hardware_summary (SOP §2d), the two review-only PER-UNIT-ROW columns the user asked to sit left-most in updates_in_database_format — a five-value taxonomy (mechanical_drive / power_generation / mechanical_drive+power_generation / standby_backup / contingency_design) plus a one-line description of the actual hardware, each grounded in that record's already-verified source_notes rather than newly asserted ratings. Americas split: 39 both / 28 mechanical_drive / 19 power_generation / 14 standby_backup / 1 contingency_design. Gulf LNG is the case that forced per-unit-row rather than per-terminal values (import row standby_backup, export row mechanical_drive). Deliverable: batches/lng_terminals_batch_20260728_1021_ET_americas-complete-captive_update.xlsx (recalc clean, zero GUARD warnings).",
+  "prior_run_records": [
+    "batches/run_records/2026-07-27_americas-complete_captive-power-consolidation.md"
+  ]
+}

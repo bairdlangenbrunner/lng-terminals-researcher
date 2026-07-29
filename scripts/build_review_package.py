@@ -64,7 +64,9 @@ from urllib.parse import unquote
 # Owner equivalence is defined once in normalize.py and shared with report_diff so
 # both layers agree on what "the same owner" means (aliased to the established
 # private names used throughout this module).
-from normalize import owner_core as _owner_core, same_owner_entity as _same_owner_entity
+from normalize import (owner_core as _owner_core,
+                       same_owner_entity as _same_owner_entity,
+                       normalize_country as _normalize_country)
 
 try:
     import openpyxl
@@ -163,7 +165,13 @@ SHEET_DESCRIPTIONS = {
         "Update workflow: one row per (terminal_id, unit_id, field) being changed. "
         "Columns: field_name, old_value, new_value, ref_url, confidence, source_tier, "
         "source_notes, scope_note, researcher_initials. new_value cell is color-coded "
-        "by confidence (green=primary/regulatory, yellow=single non-primary, red=weak)."
+        "by confidence (green=primary/regulatory, yellow=single non-primary, red=weak). "
+        "Captive-power batches add two left-most REVIEW-ONLY flags (neither is a GEM "
+        "column, neither appears in the paste sheet): `mechanical` (the captive "
+        "designation rests wholly or partly on mechanical-drive turbines — shaft power "
+        "to the refrigeration compressors, zero MWe) and `hybrid_basis` (the verdict "
+        "rests on a partially-captive / mixed grid arrangement rather than a plain "
+        "dedicated on-site plant — see SOP §2c for the four values)."
     ),
     "updates_in_database_format": (
         "PRIMARY update deliverable: the full all_fields GEM-CSV laid out in its EXACT "
@@ -175,7 +183,13 @@ SHEET_DESCRIPTIONS = {
         "uncolored. Read-only columns are italicized and never written. Two meta columns "
         "(_changed_fields, _confidence_summary) are appended at the far right; everything left "
         "of them mirrors the all_fields CSV exactly. The meta columns are reference only — "
-        "never paste them into the GEM DB."
+        "never paste them into the GEM DB. Captive-power batches prepend two more "
+        "review-only columns at the FAR LEFT — `captive_category` (the hardware class "
+        "behind the Boolean: mechanical_drive / power_generation / "
+        "mechanical_drive+power_generation / standby_backup / contingency_design) and "
+        "`hardware_summary` (a one-line description of the on-site gas hardware) — "
+        "per unit-row, followed by the GOGPT plant pointers. None of these are GEM "
+        "columns; never paste them either."
     ),
     "new_terminals": (
         "Discovery workflow: one row per newly discovered terminal, laid out in the "
@@ -294,6 +308,21 @@ SHEET_DESCRIPTIONS = {
         "shows every disagreement and the reasoning behind each conclusion. Conclusions that "
         "resolve to a concrete DB change become resolved cells in `edits_to_gem` (the paste "
         "view); possible new terminals / gem-only / discovery leads go to `to_follow_up_on`."
+    ),
+    "giignl_recon": (
+        "GIIGNL RECONCILIATION (country-scoped, INFORMATIONAL) — an update-workbook tab "
+        "built when the batch passes --recon-inputs-dir: the audit_operating layout (same "
+        "columns, colors, and verdict semantics — see that sheet's definition in the "
+        "reconciliation workbook) filtered to THIS batch's countries, with one difference: "
+        "fully-agreeing matches are INCLUDED as blue 'agrees — no action' rows, so the tab "
+        "shows GIIGNL's complete coverage of the scope rather than differences only. Any "
+        "report_only / gem_only orphan rows for these countries are appended beneath the "
+        "matches (level column = report_only / gem_only). Researched verdicts from "
+        "staged_recon_verdicts.json render in suggested_resolution. NOTHING on this tab is "
+        "a paste target: a delta that resolves to a DB change is staged through this "
+        "workbook's normal update sheets (or a reconciliation batch's edits_to_gem) — the "
+        "tab exists so the reviewer sees GEM-vs-GIIGNL state for the batch's countries "
+        "without opening the separate reconciliation workbook."
     ),
     "audit_nonoperating": (
         "AUDIT VIEW (non-operating). NON-OPERATING units of matched projects (proposed/construction/shelved/"
@@ -441,7 +470,10 @@ SHEET_DESCRIPTIONS = {
         "historical events. Destined for the GEM.wiki Background; kept separate "
         "from the field-level `updates` sheet so non-column findings aren't lost. "
         "verification_status color-coded (green=CONFIRMED, yellow=single-source, "
-        "red=CONFLICTING DATA)."
+        "red=CONFLICTING DATA). source_urls_wiki_style is the same sources as "
+        "paste-ready concatenated <ref> tags for the wiki Background — "
+        "{{cite web|url=|title=|publisher=|access-date=}} when the staged entry "
+        "carries a title, bare <ref>url</ref> otherwise."
     ),
     "terminal_first_priors": (
         "Captive-power cross-tracker (§9), REVIEW CONTEXT — not a paste target. One row per "
@@ -449,7 +481,10 @@ SHEET_DESCRIPTIONS = {
         "(gogpt_captive_prior) and HOW captive power was confirmed (confirmed_how) with the "
         "verified source URLs (confirmed_how [ref]). Demonstrates the terminal-first method — "
         "most terminals had NO correct GOGPT prior yet were confirmed by researching each "
-        "terminal's own drive technology. confidence cell color-coded."
+        "terminal's own drive technology. confidence cell color-coded. hybrid_basis names "
+        "the mixed grid arrangement a verdict rests on where there is one (SOP §2c) — a "
+        "blank means the terminal has a plain dedicated on-site plant with no grid "
+        "entanglement, NOT that the question went unasked."
     ),
     "neighboring_plants": (
         "Captive-power cross-tracker (§9), REVIEW CONTEXT — not a paste target. The nearest "
@@ -500,9 +535,11 @@ STAGED_KEYS = {
             "terminal_id", "unit_id", "terminal_name", "unit_name", "country",
             "field_name", "old_value", "new_value", "confidence", "source_tier",
             "ref_field", "ref_urls", "ref_url", "source_notes", "scope_note",
-            "researcher_initials", "delete",
+            "researcher_initials", "delete", "dropped_urls_dead",
             # captive-power (§9) review annotations riding on the update record
-            "mechanical", "gogpt_plant_id", "gogpt_plant", "gogpt_wiki_url",
+            "mechanical", "hybrid_basis", "captive_category", "hardware_summary",
+            "gogpt_plant_id", "gogpt_plant", "gogpt_wiki_url",
+            "gogpt_match_note", "gogpt_suggested",
         },
         "required": {"terminal_id", "field_name"},
     },
@@ -541,6 +578,8 @@ STAGED_KEYS = {
         "known": {
             "country", "terminal_id", "terminal_name", "unit_id",
             "topic", "wiki_text", "verification_status", "source_urls",
+            # derived at build time from source_urls (any staged value is regenerated)
+            "source_urls_wiki_style",
             "researcher_initials",
         },
         # terminal_name, not terminal_id: country-wide wiki notes legitimately
@@ -568,8 +607,9 @@ STAGED_KEYS = {
     "captive_terminal_first": {
         # matches build_terminal_first_sheet's headers
         "known": {
-            "terminal", "terminal_id", "mechanical", "confidence",
+            "terminal", "terminal_id", "mechanical", "hybrid_basis", "confidence",
             "gogpt_captive_prior", "confirmed_how", "confirmed_how [ref]",
+            "_superseded_prior",
         },
         "required": {"terminal_id"},
     },
@@ -586,7 +626,7 @@ STAGED_KEYS = {
         # matches build_gogpt_candidates_sheet's headers
         "known": {
             "terminal", "terminal_id", "gogpt_candidate", "electric_mw", "confidence",
-            "basis", "basis [ref]", "mechanical_drive_note",
+            "basis", "basis [ref]", "mechanical_drive_note", "_superseded_prior",
         },
         "required": {"terminal_id"},
     },
@@ -762,10 +802,11 @@ def build_readme(wb, mode, inputs_summary):
         ("None", None, "Searched but no confirming source found"),
     ]:
         put(f"  {name}", desc, key_fill=fill)
-    if mode == "reconciliation":
+    if mode == "reconciliation" or "giignl_recon" in wb.sheetnames:
         row += 1
-        put("audit_* sheets override", "(audit_operating / audit_nonoperating "
-            "use red to mark GIIGNL-vs-GEM conflicts, not source confidence)",
+        put("audit_* / giignl_recon override", "(audit_operating / audit_nonoperating "
+            "/ giignl_recon use red to mark GIIGNL-vs-GEM conflicts, not source "
+            "confidence; blue on giignl_recon marks a fully-agreeing match)",
             key_font=Font(bold=True))
         for name, fill, desc in [
             ("Light red", RED, "Capacity disagreement <5%, or an owner-only delta / gem-only flag"),
@@ -932,13 +973,17 @@ def _append_country_breakdown(wb, checked, changed, not_found):
 
 def build_updates_sheet(wb, updates):
     ws = wb.create_sheet("updates_summary")
-    # Common update fields plus the cluster of [ref] partners. `mechanical` is a
-    # left-most review flag (captive-power batches): True where the terminal's
-    # captive power includes mechanical-drive turbines (shaft power to the
-    # refrigeration compressors) rather than being purely electricity-generating.
-    # It is a review annotation only — not a GEM column, never in the paste view.
+    # Common update fields plus the cluster of [ref] partners. `mechanical` and
+    # `hybrid_basis` are left-most review flags (captive-power batches). `mechanical`
+    # is True where the terminal's captive power includes mechanical-drive turbines
+    # (shaft power to the refrigeration compressors) rather than being purely
+    # electricity-generating. `hybrid_basis` names the mixed grid arrangement a
+    # `True` rests on when it isn't a plain dedicated on-site plant (SOP §2c:
+    # grid_export / grid_tied / grid_fed_site / contingency_only) — blank means no
+    # grid entanglement, not an unasked question. Both are review annotations only —
+    # not GEM columns, never in the paste view.
     headers = [
-        "mechanical",
+        "mechanical", "hybrid_basis",
         "terminal_id", "unit_id", "terminal_name", "unit_name", "country",
         "field_name", "old_value", "new_value",
         "ref_urls", "confidence", "source_tier", "source_notes",
@@ -1001,6 +1046,170 @@ def warn_duplicate_giignl_refs(updates):
     return hits
 
 
+_STAGED_URL_RE = re.compile(r"https?://\S+")
+
+
+def _csv_ref_cells(gem_csv_path):
+    """unit_id -> {ref column name: cell text} from the fresh export. Used to give
+    the ref-drop guard an old_value for VALUE records that carry their citations in
+    `ref_urls` (the captive-power / §9 record shape) rather than in a `<field> [ref]`
+    record of their own — those never have the existing ref cell in `old_value`."""
+    if not gem_csv_path or not Path(gem_csv_path).exists():
+        return {}
+    out = {}
+    try:
+        with open(gem_csv_path, encoding="utf-8-sig", newline="") as f:
+            rdr = csv.reader(f)
+            hdr = next(rdr)
+            cols = {h: i for i, h in enumerate(hdr) if h.endswith("[ref]")}
+            uid_i = hdr.index("UnitID") if "UnitID" in hdr else None
+            if uid_i is None:
+                return {}
+            for row in rdr:
+                if uid_i >= len(row):
+                    continue
+                out[row[uid_i]] = {c: (row[i] if i < len(row) else "")
+                                   for c, i in cols.items()}
+    except (OSError, StopIteration, ValueError):
+        return {}
+    return out
+
+
+def warn_ref_url_drops(updates, gem_csv_path=None):
+    """Non-blocking guard: flag any staged record whose citation set silently DROPS
+    a URL already in GEM's ref cell. Ref edits use MERGE semantics (Update SOP §7.2a):
+    new_value = every still-valid existing URL + additions — an existing citation is
+    never dropped unless proven dead (bot-block 401/403 ≠ dead; verify via the
+    url_verifier Wayback fallback). A deliberate drop must be declared by listing the
+    dead URL(s) in the record's `dropped_urls_dead` key; undeclared drops are the
+    Al Zour / gulf-turkiye miss class (existing live refs overwritten by an agent's
+    own replacement URLs). Warn-only, like every other staged-input guard.
+
+    Two record shapes are checked: a `<field> [ref]` record (old_value = the existing
+    cell) and — when `gem_csv_path` is given — a VALUE record carrying `ref_urls`,
+    whose target ref cell is read from the fresh export. The second shape is the
+    captive-power (§9) shape; it was invisible to this guard until 2026-07-27, which
+    is how an undeclared Alaska LNG / CP2 ref drop reached a built workbook."""
+    hits = []
+    csv_refs = _csv_ref_cells(gem_csv_path)
+    for u in updates:
+        if u.get("delete"):
+            continue
+        fld = str(u.get("field_name", ""))
+        if fld.endswith("[ref]"):
+            old_cell = str(u.get("old_value") or "")
+        elif csv_refs and (u.get("ref_urls") or u.get("ref_url")):
+            refcol = str(u.get("ref_field") or f"{fld} [ref]")
+            old_cell = csv_refs.get(str(u.get("unit_id")), {}).get(refcol, "")
+        else:
+            continue
+        old_urls = [x.rstrip(",;") for x in _STAGED_URL_RE.findall(old_cell)]
+        if not old_urls:
+            continue
+        kept = _STAGED_URL_RE.findall(str(u.get("new_value") or ""))
+        kept += [str(x) for x in (u.get("ref_urls") or [])]
+        if u.get("ref_url"):
+            kept.append(str(u.get("ref_url")))
+        declared = [str(x) for x in (u.get("dropped_urls_dead") or [])]
+
+        def _norm(x):
+            x = x.strip().rstrip(",;").rstrip("/").lower()
+            return re.sub(r"^https?://(www\.)?", "", x)
+
+        def _path(x):
+            n = _norm(x)
+            return n.split("/", 1)[1] if "/" in n else ""
+
+        kept_n = {_norm(x) for x in kept}
+        # A dropped URL whose exact path survives in new_value at a different
+        # host is the citation kept at its redirect/rehost target (301/302 =
+        # keep at target, Update SOP §7.2a; audit_ref_drops' rehosted_same_doc
+        # class) — not a drop. Host-only paths are too generic to match on.
+        kept_paths = {p for p in (_path(x) for x in kept) if p}
+        declared_n = {_norm(x) for x in declared}
+        undeclared = [x for x in old_urls
+                      if _norm(x) not in kept_n and _norm(x) not in declared_n
+                      and _path(x) not in kept_paths]
+        if undeclared:
+            hits.append((u.get("terminal_id"), u.get("unit_id"),
+                         u.get("field_name"), undeclared))
+    if hits:
+        n_urls = sum(len(us) for _, _, _, us in hits)
+        print(f"  REF-DROP: {len(hits)} [ref] record(s) drop {n_urls} existing URL(s) without a "
+              "dropped_urls_dead declaration (merge semantics: keep every still-valid existing "
+              "URL; declare verified-dead ones — see scripts/audit_ref_drops.py):")
+        for tid, uid, fn, us in hits[:15]:
+            for x in us:
+                print(f"    {tid}/{uid} {fn}: drops {x[:90]}")
+    return hits
+
+
+_CITATION_KEYS = {"new_value", "ref_urls", "source_urls", "ref_url", "url", "urls"}
+
+
+def warn_bare_domain_urls(label, records):
+    """Non-blocking guard: flag citation URLs that are bare domains/homepages
+    (scheme + host, no path). A homepage is never a citation — it can't durably
+    contain the claimed value and can never pass url_verifier against the
+    specific claim (gulf-turkiye Dörtyol wiki-row miss: 'https://www.turkiyetoday.com'
+    staged instead of the article URL). Checks every lane's citation-carrying
+    keys: [ref]/_ref fields, new_value, ref_urls, source_urls."""
+    hits = []
+    for i, rec in enumerate(records or []):
+        if not isinstance(rec, dict):
+            continue
+        for k, v in rec.items():
+            lk = str(k).lower()
+            if not (lk in _CITATION_KEYS or lk.endswith("[ref]") or lk.endswith("_ref")):
+                continue
+            vals = v if isinstance(v, (list, tuple)) else [v]
+            for item in vals:
+                for u in _STAGED_URL_RE.findall(str(item or "")):
+                    if re.match(r"^https?://[^/\s]+/?$", u.rstrip(",;")):
+                        hits.append((f"{label}[{i}]", rec.get("terminal_name") or rec.get("terminal_id"), k, u))
+    if hits:
+        print(f"  GUARD: {len(hits)} bare-domain/homepage citation URL(s) — a citation must be "
+              "the specific page containing the claimed value, url_verifier-passed:")
+        for where, name, k, u in hits[:15]:
+            print(f"    {where} ({name}) {k}: {u}")
+    return hits
+
+
+# Sources banned as citations everywhere, in any lane, even corroborated —
+# user directive 2026-07-17 ("never use abarrelfull as a reference ever").
+# Substring-matched against the URL's host. gem.wiki/globalenergymonitor.org
+# circularity is enforced separately at the merge-QC gate; listing them here
+# adds a build-time backstop.
+BANNED_CITATION_DOMAINS = ("abarrelfull", "gem.wiki", "globalenergymonitor.org")
+
+
+def warn_banned_domain_urls(label, records):
+    """Non-blocking guard: flag citation URLs on banned hosts (BANNED_CITATION_DOMAINS).
+    Scans the same citation-carrying keys as warn_bare_domain_urls; prose fields
+    (source_notes, qa issue text) are deliberately not scanned — they may document
+    a banned source's removal."""
+    hits = []
+    for i, rec in enumerate(records or []):
+        if not isinstance(rec, dict):
+            continue
+        for k, v in rec.items():
+            lk = str(k).lower()
+            if not (lk in _CITATION_KEYS or lk.endswith("[ref]") or lk.endswith("_ref")):
+                continue
+            vals = v if isinstance(v, (list, tuple)) else [v]
+            for item in vals:
+                for u in _STAGED_URL_RE.findall(str(item or "")):
+                    host = re.sub(r"^https?://", "", u).split("/")[0].lower()
+                    if any(b in host for b in BANNED_CITATION_DOMAINS):
+                        hits.append((f"{label}[{i}]", rec.get("terminal_name") or rec.get("terminal_id"), k, u))
+    if hits:
+        print(f"  GUARD: {len(hits)} BANNED-source citation URL(s) "
+              f"(banned hosts: {', '.join(BANNED_CITATION_DOMAINS)}) — never citable, even corroborated:")
+        for where, name, k, u in hits[:15]:
+            print(f"    {where} ({name}) {k}: {u}")
+    return hits
+
+
 def build_update_csv_shaped_sheet(wb, updates, gem_csv_path, scope_terminal_ids=None):
     """The all_fields-CSV-shaped update deliverable.
 
@@ -1051,20 +1260,42 @@ def build_update_csv_shaped_sheet(wb, updates, gem_csv_path, scope_terminal_ids=
     # captive source", never as a confirmed match. Value is per-terminal (all unit-rows
     # of a terminal share it). `gogpt_match_note` (optional) explains the suggestion.
     _ANNOT_COLS = ("gogpt_plant_id", "gogpt_plant", "gogpt_wiki_url", "gogpt_match_note")
-    left_cols = [c for c in _ANNOT_COLS if any(c in u for u in updates)]
+    annot_cols = [c for c in _ANNOT_COLS if any(c in u for u in updates)]
     left_by_tid: dict[str, dict] = {}
     for u in updates:
-        if any(str(u.get(c) or "") for c in left_cols):
+        if any(str(u.get(c) or "") for c in annot_cols):
             left_by_tid.setdefault(u.get("terminal_id"), {
-                c: str(u.get(c) or "") for c in left_cols})
+                c: str(u.get(c) or "") for c in annot_cols})
     # Terminals whose GOGPT annotation is a distance-only suggestion (not a confirmed
     # match) -> their annotation cells are filled RED.
     suggested_tids = {u.get("terminal_id") for u in updates
                       if str(u.get("gogpt_suggested") or "")}
     # Columns with no value on any record (no GOGPT match anywhere in the batch) get an
     # explanatory header note so an empty column doesn't read as an oversight.
-    empty_left = [c for c in left_cols
+    empty_left = [c for c in annot_cols
                   if not any(str(u.get(c) or "") for u in updates)]
+
+    # Further left still (captive-power batches): WHAT the on-site gas hardware is and
+    # WHY it counts. `CaptiveGasPower` is one Boolean, so the paste sheet alone can't
+    # distinguish a mechanical-drive compressor turbine from a grid-loss standby genset
+    # — these two review-only columns carry the class and a one-line hardware
+    # description (the short form of the updates_summary source_notes) next to the
+    # value being pasted. Unlike the GOGPT annotations these are PER UNIT-ROW: one
+    # terminal can hold different hardware on different unit-rows (Gulf LNG's operating
+    # import row is standby_backup; its proposed export row is mechanical_drive), and
+    # the project-level Boolean is written to both. Unit-rows of an in-scope terminal
+    # with no staged record of their own inherit the terminal's first value.
+    _CATEGORY_COLS = ("captive_category", "hardware_summary")
+    cat_cols = [c for c in _CATEGORY_COLS if any(c in u for u in updates)]
+    cat_by_unit: dict[tuple, dict] = {}
+    cat_by_tid: dict[str, dict] = {}
+    for u in updates:
+        vals = {c: str(u.get(c) or "") for c in cat_cols}
+        if any(vals.values()):
+            cat_by_unit.setdefault((u.get("terminal_id"), u.get("unit_id")), vals)
+            cat_by_tid.setdefault(u.get("terminal_id"), vals)
+
+    left_cols = cat_cols + annot_cols
     n_left = len(left_cols)
 
     with open(gem_csv_path, encoding="utf-8") as f:
@@ -1078,7 +1309,20 @@ def build_update_csv_shaped_sheet(wb, updates, gem_csv_path, scope_terminal_ids=
             cell = ws.cell(row=1, column=out_header.index(meta) + 1)
             cell.font = Font(bold=True, italic=True)
             note = "Reference only — do NOT paste into the GEM DB."
-            if meta in empty_left:
+            if meta == "captive_category":
+                note += (" Hardware class behind the CaptiveGasPower value: "
+                         "mechanical_drive = gas turbines shaft-driving the refrigeration "
+                         "compressors (no generator); power_generation = gas-fired generating "
+                         "sets supplying the site's electricity in normal operation (incl. an "
+                         "FSRU/FLNG's own onboard engines); mechanical_drive+power_generation = "
+                         "both on site; standby_backup = gas-fired generation that runs when "
+                         "grid supply fails; contingency_design = approved generation built only "
+                         "on a stated trigger. All five are True.")
+            elif meta == "hardware_summary":
+                note += (" One-line description of the on-site gas-fired hardware (count, type, "
+                         "rating where a source states one) — the short form of the "
+                         "updates_summary source_notes for the same row.")
+            elif meta in empty_left:
                 note += (" Empty: no GOGPT captive power-station record exists for these "
                          "terminals (terminal-first finding — GOGPT does not track their "
                          "captive/mechanical-drive power).")
@@ -1174,7 +1418,9 @@ def build_update_csv_shaped_sheet(wb, updates, gem_csv_path, scope_terminal_ids=
 
             changed_str = ", ".join(sorted(set(changed)))
             conf_summary = "; ".join(f"{f}={c}" for f, c in researched if c)
-            left_vals = [left_by_tid.get(tid, {}).get(c, "") for c in left_cols]
+            cat_src = cat_by_unit.get((tid, uid)) or cat_by_tid.get(tid, {})
+            left_vals = ([cat_src.get(c, "") for c in cat_cols]
+                         + [left_by_tid.get(tid, {}).get(c, "") for c in annot_cols])
             full = left_vals + work + [changed_str, conf_summary]
             for col_idx, value in enumerate(full, start=1):
                 col_name = out_header[col_idx - 1]
@@ -1185,7 +1431,7 @@ def build_update_csv_shaped_sheet(wb, updates, gem_csv_path, scope_terminal_ids=
                     cell.font = Font(italic=True, color="666666")
                 # A distance-only GOGPT suggestion is flagged RED so it reads as
                 # "verify, likely not the real captive source", never a confirmed match.
-                if col_name in left_cols and value and tid in suggested_tids:
+                if col_name in annot_cols and value and tid in suggested_tids:
                     cell.fill = CONFIDENCE_TO_FILL.get("red", NONE_FILL)
                 ci0 = col_idx - 1 - n_left  # fills are keyed by CSV-column index
                 if ci0 in fills:
@@ -2165,11 +2411,19 @@ def _recon_verdict_text(v):
     return txt
 
 
-def build_audit_operating_sheet(wb, diff, recon_verdicts=None):
+def build_audit_operating_sheet(wb, diff, recon_verdicts=None,
+                                sheet_name="audit_operating",
+                                include_agreeing=False):
     """Operating-side match audit (the evidence layer). One project-total row per
     match; for unit-granularity matches, per-unit rows are emitted directly beneath
-    it. Conclusions that resolve to a DB change become resolved rows in edits_to_gem."""
-    ws = wb.create_sheet("audit_operating")
+    it. Conclusions that resolve to a DB change become resolved rows in edits_to_gem.
+
+    Reused by the update-workbook `giignl_recon` tab (build_giignl_recon_sheet)
+    with include_agreeing=True: a fully-agreeing match is then emitted as a blue
+    "agrees — no action" row (skipping verdict lookup and the deterministic
+    insight machinery) instead of being dropped, so a country-scoped tab shows
+    GIIGNL's full coverage of the scope, not just the conflicts."""
+    ws = wb.create_sheet(sheet_name)
     headers = GIIGNL_OPERATING_HEADERS
     _write_header(ws, headers)
     # Lookup of non-operating units, used to annotate matches whose operating
@@ -2192,7 +2446,8 @@ def build_audit_operating_sheet(wb, diff, recon_verdicts=None):
         # normalize.same_owner_entity / report_diff._owner_alignment — so a row
         # whose only former "difference" was such a variant now drops out here.)
         unit_diffs = [um for um in m.get("unit_matches", []) if not um.get("agree")]
-        if not m.get("disagreements") and not unit_diffs:
+        agrees = not m.get("disagreements") and not unit_diffs
+        if agrees and not include_agreeing:
             continue
         # Project-total row.
         proj = {k: (", ".join(map(str, v)) if isinstance(v, list) else v)
@@ -2205,6 +2460,14 @@ def build_audit_operating_sheet(wb, diff, recon_verdicts=None):
         rv = m.get("report_vessel")
         if rv and "(" not in str(proj.get("site_name", "")):
             proj["site_name"] = f'{proj.get("site_name", "")} ({rv})'
+        if agrees:
+            # Blue "agrees" row (blue = re-verified/unchanged in the workbook's
+            # color conventions). No verdict lookup, no deterministic insight.
+            proj["suggested_resolution"] = "agrees — GIIGNL and GEM align; no action"
+            _write_row(ws, proj, headers, row_idx,
+                       confidence_map={"suggested_resolution": "blue"})
+            row_idx += 1
+            continue
         cm = {}
         if m.get("disagreements"):
             cm["disagreements"] = "red"
@@ -2333,6 +2596,72 @@ def build_audit_operating_sheet(wb, diff, recon_verdicts=None):
             row_idx += 1
     _autosize(ws)
     ws.freeze_panes = "A2"
+    return ws
+
+
+def _diff_filtered_to_countries(diff, countries):
+    """Shallow copy of a report diff restricted to a set of countries. Comparison
+    goes through normalize_country because the diff mixes forms ('UAE' in the
+    match rows vs 'United Arab Emirates' in nonoperating_units)."""
+    want = {_normalize_country(c) for c in countries}
+    out = dict(diff)
+    for k in ("matches", "fuzzy_matches", "report_only", "gem_only_operating",
+              "nonoperating_units", "ambiguous"):
+        out[k] = [r for r in diff.get(k, [])
+                  if isinstance(r, dict) and _normalize_country(r.get("country", "")) in want]
+    return out
+
+
+def build_giignl_recon_sheet(wb, diff, countries, recon_verdicts=None):
+    """Country-scoped GIIGNL reconciliation tab for an UPDATE workbook (built when
+    `--recon-inputs-dir` is passed in --mode update): the audit_operating layout
+    filtered to the batch's countries, WITH fully-agreeing matches included as blue
+    rows so the tab shows GIIGNL's complete coverage of the scope. Any report_only /
+    gem_only orphans for those countries are appended beneath the matches. This tab
+    is INFORMATIONAL — a delta that resolves to a DB change is staged through the
+    batch's normal update sheets (or a recon batch's edits_to_gem), never from here;
+    researched verdicts from staged_recon_verdicts.json render in
+    suggested_resolution exactly as they do on audit_operating."""
+    fd = _diff_filtered_to_countries(diff, countries)
+    ws = build_audit_operating_sheet(wb, fd, recon_verdicts=recon_verdicts,
+                                     sheet_name="giignl_recon",
+                                     include_agreeing=True)
+    headers = GIIGNL_OPERATING_HEADERS
+    row_idx = ws.max_row + 1
+    for r in fd.get("report_only", []):
+        row = {
+            "level": "report_only",
+            "country": r.get("country"),
+            "site_name": r.get("site_name"),
+            "section_type_report": r.get("section_type"),
+            "report_capacity_mtpa": r.get("report_capacity_mtpa"),
+            "owners_report_only": ", ".join(r.get("owners_in_report", []) or []),
+            "disagreements": "GIIGNL lists this; no GEM match",
+            "insight": ("Orphan GIIGNL row — almost always a name-mismatch to an "
+                        "existing GEM terminal, not a missing one; resolve via the "
+                        "reconciliation workflow's routing (to_follow_up_on), not here."),
+        }
+        _write_row(ws, row, headers, row_idx, confidence_map={"disagreements": "red"})
+        row_idx += 1
+    for r in fd.get("gem_only_operating", []):
+        row = {
+            "level": "gem_only",
+            "country": r.get("country"),
+            "gem_terminal_id": r.get("gem_terminal_id"),
+            "gem_terminal_name": r.get("gem_terminal_name"),
+            "gem_unit_name": ", ".join(r.get("gem_unit_name", []) or []) if
+                isinstance(r.get("gem_unit_name"), list) else r.get("gem_unit_name"),
+            "section_type_gem": r.get("section_type"),
+            "gem_capacity_mtpa": r.get("gem_capacity_mtpa"),
+            "disagreements": r.get("reason") or "GEM operating; GIIGNL doesn't list it",
+            "insight": ("GEM-only operating row — verify GEM's operating status is "
+                        "still supported; a fleet-table-matched FSRU is tagged "
+                        "'no action' by report_diff and won't appear here."),
+        }
+        _write_row(ws, row, headers, row_idx, confidence_map={"disagreements": "red"})
+        row_idx += 1
+    _autosize(ws)
+    return ws
 
 
 def build_audit_nonoperating_sheet(wb, diff, narrative_findings=None):
@@ -3059,6 +3388,39 @@ def build_qa_review_sheet(wb, qa_items):
     _autosize(ws)
 
 
+def _wiki_ref_tag(entry):
+    """One paste-ready MediaWiki <ref> for a staged wiki source entry.
+
+    An entry is either a bare URL string (legacy; yields <ref>url</ref>) or a
+    dict {url, title, publisher?, access_date? (YYYY-MM-DD)} — with a title it
+    yields a {{cite web}} template. Pipes in free-text params are escaped to
+    &#124; so they can't terminate the template parameter."""
+    if isinstance(entry, dict):
+        url = (entry.get("url") or "").strip()
+        title = (entry.get("title") or "").strip().replace("|", "&#124;")
+        if not url:
+            return ""
+        if not title:
+            return f"<ref>{url}</ref>"
+        parts = [f"url={url}", f"title={title}"]
+        publisher = (entry.get("publisher") or "").strip().replace("|", "&#124;")
+        if publisher:
+            parts.append(f"publisher={publisher}")
+        access_date = (entry.get("access_date") or "").strip()
+        if access_date:
+            parts.append(f"access-date={access_date}")
+        return "<ref>{{cite web|" + "|".join(parts) + "}}</ref>"
+    url = str(entry or "").strip()
+    return f"<ref>{url}</ref>" if url else ""
+
+
+def _wiki_source_url(entry):
+    """The bare URL of a staged wiki source entry (string or dict form)."""
+    if isinstance(entry, dict):
+        return (entry.get("url") or "").strip()
+    return str(entry or "").strip()
+
+
 def build_wiki_updates_sheet(wb, wiki_items):
     """Narrative / Background content that does NOT map to a structured DB column.
 
@@ -3073,13 +3435,16 @@ def build_wiki_updates_sheet(wb, wiki_items):
     headers = [
         "country", "terminal_id", "terminal_name", "unit_id",
         "topic", "wiki_text", "verification_status", "source_urls",
-        "researcher_initials",
+        "source_urls_wiki_style", "researcher_initials",
     ]
     _write_header(ws, headers)
     for i, w in enumerate(wiki_items, start=2):
         rec = dict(w)
-        if isinstance(rec.get("source_urls"), list):
-            rec["source_urls"] = ", ".join(rec["source_urls"])
+        entries = rec.get("source_urls")
+        if not isinstance(entries, list):
+            entries = [u.strip() for u in str(entries or "").split(",") if u.strip()]
+        rec["source_urls"] = ", ".join(filter(None, (_wiki_source_url(e) for e in entries)))
+        rec["source_urls_wiki_style"] = "".join(_wiki_ref_tag(e) for e in entries)
         vs = str(rec.get("verification_status", "")).upper()
         if "CONFIRMED" in vs:
             color = "green"
@@ -3114,7 +3479,7 @@ def build_terminal_first_sheet(wb, rows):
     carried a correct captive prior and HOW captive power was confirmed (with the
     verified source URLs). Answers 'did you check terminals not near a flagged plant?'."""
     ws = wb.create_sheet("terminal_first_priors")
-    headers = ["terminal", "terminal_id", "mechanical", "confidence",
+    headers = ["terminal", "terminal_id", "mechanical", "hybrid_basis", "confidence",
                "gogpt_captive_prior", "confirmed_how", "confirmed_how [ref]"]
     _write_header(ws, headers)
     for i, r in enumerate(rows, start=2):
@@ -3123,10 +3488,10 @@ def build_terminal_first_sheet(wb, rows):
             rec["confirmed_how [ref]"] = "\n".join(rec["confirmed_how [ref]"])
         _write_row(ws, rec, headers, i,
                    confidence_map={"confidence": _color_for_conf(rec.get("confidence"))})
-        ws.cell(row=i, column=7).alignment = Alignment(wrap_text=True, vertical="top")
+        ws.cell(row=i, column=8).alignment = Alignment(wrap_text=True, vertical="top")
     _autosize(ws)
-    ws.column_dimensions["F"].width = 60
     ws.column_dimensions["G"].width = 60
+    ws.column_dimensions["H"].width = 60
 
 
 def build_neighboring_plants_sheet(wb, rows):
@@ -3197,6 +3562,15 @@ def main():
                    help="JSON list of country names actually swept (from per-country done-markers). "
                         "Unioned into the README 'Countries checked' list so a country appears even "
                         "when its only output was a country-less qa note or a clean no-findings run.")
+    p.add_argument("--recon-inputs-dir", default=None,
+                   help="Update mode only: a reconciliation batch's staged-inputs dir (e.g. "
+                        "batches/staging/recon/giignl2026). Adds a country-scoped `giignl_recon` tab "
+                        "(audit_operating layout + agreeing rows) built from its giignl_diff.json + "
+                        "staged_recon_verdicts.json. REGENERATE the diff against the batch's fresh "
+                        "gem_export.csv first, or the tab shows stale deltas.")
+    p.add_argument("--recon-countries", default=None,
+                   help="Comma-separated country list scoping the giignl_recon tab. Default: the "
+                        "`countries` list in <inputs-dir>/meta.json.")
     args = p.parse_args()
 
     inputs_dir = Path(args.inputs_dir)
@@ -3218,6 +3592,7 @@ def main():
         updates = _safe_load(inputs_dir / "staged_updates.json", default=[])
         _validate_records("updates", updates)
         warn_duplicate_giignl_refs(updates)
+        warn_ref_url_drops(updates, args.gem_csv)
         timeline = _safe_load(inputs_dir / "staged_status_timeline.json", default=[])
         _validate_records("status_timeline", timeline)
         entity_adds = _safe_load(inputs_dir / "staged_entity_additions.json", default=[])
@@ -3229,6 +3604,12 @@ def main():
         _validate_records("qa_review", qa)
         wiki = _safe_load(inputs_dir / "staged_wiki_updates.json", default=[])
         _validate_records("wiki_updates", wiki)
+        warn_bare_domain_urls("updates", updates)
+        warn_banned_domain_urls("updates", updates)
+        warn_bare_domain_urls("wiki_updates", wiki)
+        warn_banned_domain_urls("wiki_updates", wiki)
+        warn_bare_domain_urls("qa_review", qa)
+        warn_banned_domain_urls("qa_review", qa)
         fsru = _safe_load(inputs_dir / "fsru_sync.json", default={"mode": "skipped", "_skip_reason": "not run"})
         _validate_records("fsru_sync", fsru.get("matched_pairs", []) if isinstance(fsru, dict) else [])
         # Optional scope for the all_fields-CSV-shaped sheet: a list of terminal_ids
@@ -3289,6 +3670,38 @@ def main():
         if captive_candidates:
             build_gogpt_candidates_sheet(wb, captive_candidates)
 
+        # Optional country-scoped GIIGNL reconciliation tab (--recon-inputs-dir).
+        # Country scope: --recon-countries, else the staging dir's meta.json.
+        if args.recon_inputs_dir:
+            rdir = Path(args.recon_inputs_dir)
+            rdiff_path = rdir / "report_diff.json"
+            if not rdiff_path.exists() and (rdir / "giignl_diff.json").exists():
+                rdiff_path = rdir / "giignl_diff.json"
+            rdiff = _safe_load(rdiff_path, default={})
+            rverdicts = _safe_load(rdir / "staged_recon_verdicts.json", default=[])
+            if args.recon_countries:
+                recon_countries = [c.strip() for c in args.recon_countries.split(",")
+                                   if c.strip()]
+            else:
+                # meta.json lives in the staging dir itself for ad-hoc batches, but
+                # one level UP for sweeps (whose --inputs-dir is <region>/_build).
+                meta_path = inputs_dir / "meta.json"
+                if not meta_path.exists() and (inputs_dir.parent / "meta.json").exists():
+                    meta_path = inputs_dir.parent / "meta.json"
+                meta = _safe_load(meta_path, default={})
+                recon_countries = meta.get("countries", []) if isinstance(meta, dict) else []
+            if not rdiff:
+                print(f"  WARN: --recon-inputs-dir given but no diff found at {rdiff_path}; "
+                      "giignl_recon tab skipped")
+            elif not recon_countries:
+                print("  WARN: --recon-inputs-dir given but no country scope (no "
+                      "--recon-countries and no countries in meta.json); giignl_recon tab skipped")
+            else:
+                ws_recon = build_giignl_recon_sheet(wb, rdiff, recon_countries,
+                                                    recon_verdicts=rverdicts)
+                inputs_summary["giignl_recon_countries"] = ", ".join(recon_countries)
+                inputs_summary["giignl_recon_rows"] = ws_recon.max_row - 1
+
     elif args.mode == "discovery":
         # The discovery workbook holds ONLY new/potential-terminal content:
         # new_terminals, new_units, monitor_list, and its own discovery-pass qa.
@@ -3315,6 +3728,14 @@ def main():
         _validate_records("qa_review", qa)
         entity_adds = _safe_load(inputs_dir / "staged_entity_additions_discovery.json", default=[])
         _validate_records("entity_additions", entity_adds)
+        warn_bare_domain_urls("new_terminals", new_terms)
+        warn_banned_domain_urls("new_terminals", new_terms)
+        warn_bare_domain_urls("new_units", new_units)
+        warn_banned_domain_urls("new_units", new_units)
+        warn_bare_domain_urls("monitor_list", monitor)
+        warn_banned_domain_urls("monitor_list", monitor)
+        warn_bare_domain_urls("qa_review", qa)
+        warn_banned_domain_urls("qa_review", qa)
 
         # monitor_list rolls the GLOBAL cross-region store forward, but a scoped
         # batch's workbook should list only its own countries; filter the displayed

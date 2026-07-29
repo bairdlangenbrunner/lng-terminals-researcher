@@ -1,0 +1,72 @@
+[
+  {
+    "category": "ownership",
+    "terminal_id": "T100000130534",
+    "unit_id": "G100002053400",
+    "terminal_name": "Mugardos LNG Terminal",
+    "issue": "Owner field currently reads 'Reganosa Servicios SLU [100%]'. Per Reganosa's own 2023-2024 corporate restructuring announcements, 'Reganosa Servicios SLU' is the subsidiary used for the group's INTERNATIONAL operations (Malta, Ghana, Italy, Germany) -- the actual Spanish legal owner of the Mugardos terminal is 'Regasificadora del Noroeste, S.A.' (a distinct legal entity within the same corporate group). This batch staged a Parent-field correction (see spain.updates.json) to the true ultimate ownership chain (Tojeiro Group / Region of Galicia / Sonatrach) but left the Owner field's entity name unchanged pending reviewer judgment on whether GEM's entity system should rename/reassign the Owner entity to 'Regasificadora del Noroeste, S.A.' specifically.",
+    "severity": "medium",
+    "suggested_action": "Reviewer to confirm whether GEM's Owner entity for Mugardos should be renamed to 'Regasificadora del Noroeste, S.A.' (the precise legal owner) rather than 'Reganosa Servicios SLU' (the international-ops subsidiary); run entity_lookup.py on the more precise name before creating it, since it may already exist under a variant spelling.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "other",
+    "terminal_id": "T100000130530",
+    "unit_id": "G100002053000",
+    "terminal_name": "Gran Canaria LNG Terminal",
+    "issue": "The replacement Status/CancelledYear ref (canarias7.es, staged in spain.updates.json) is a Jan-2025 article whose PRIMARY subject is the separate, still-live Totisa/Puerto de la Luz proposal (T100000130856); it mentions the historical Arinaga (Gran Canaria) project only in passing ('institutional and civic opposition managed to stop it'), which supports Status=cancelled in general terms but does not itself pin down CancelledYear=2025 as a newly-confirmed decision date. The dead original cabildo.grancanaria.com URL (same spokesperson, same month) appears to have supported the same underlying fact pattern, so CancelledYear=2025 was left unchanged rather than guessed at a different year, but the precision of '2025' as the specific cancellation year (vs. an earlier true cancellation date reconfirmed publicly in 2025) could not be independently pinned down this pass.",
+    "severity": "low",
+    "suggested_action": "If a future pass can find the actual original cancellation decision/announcement (rather than a 2025 reconfirmation quote), consider whether CancelledYear should move earlier; otherwise no action needed.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "other",
+    "terminal_id": "T100000130530",
+    "unit_id": "G100002053000",
+    "terminal_name": "Gran Canaria LNG Terminal",
+    "issue": "Capacity [ref] (https://www.gie.eu/download/maps/2019/GIE_LNG_Map_Database_May_2019_v3.xlsx) is a 2019 spreadsheet download; not re-verified this pass (spreadsheet content isn't reliably checkable via the standard PDF/HTML url_verifier path, and this is a long-cancelled, low-priority record).",
+    "severity": "low",
+    "suggested_action": "Low priority given cancelled status; re-check on a future pass if time allows.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "other",
+    "terminal_id": "T100000130534",
+    "unit_id": "G100002053401",
+    "terminal_name": "Mugardos LNG Terminal (Expansion, cancelled)",
+    "issue": "This cancelled-expansion unit-row's Owner/Parent list (Endesa SA 21%, Tojeiro Group 18%, NovaCaixaGalicia 15%, Region of Galicia 10%, Sonatrach SpA 10%, Santander Bank 5%, Naturgy Energy Group SA 21% -- note these percentages sum to >100% and Parent additionally shows 'Santander Group [100.0%]' inconsistently vs. Owner's 'Santander Bank [5%]') was NOT re-researched this pass -- it plausibly reflects a genuine HISTORICAL shareholding structure from the pre-2011/pre-Reganosa-consolidation era specific to the now-defunct expansion proposal, distinct from the current (2023-restructured) ownership staged for the main Mugardos unit. Also has no Status [ref] populated for its Status=cancelled value.",
+    "severity": "low",
+    "suggested_action": "A future pass should either verify this historical breakdown against a period-appropriate source or confirm it should mirror the just-corrected current Parent value; also source a Status [ref] for the cancelled sub-status.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ownership",
+    "terminal_id": "T100000130536",
+    "unit_id": "G100002053600",
+    "terminal_name": "Sagunto LNG Terminal",
+    "issue": "Parent field reads 'Enagás SA [85.0%]; OQ [15.0%]; Enagás SA [60.0%]; Osaka Gas Co Ltd' -- Enagás SA appears TWICE with two different percentages (85% and 60%), and 'Osaka Gas Co Ltd' has no percentage at all. This looks like a data-entry artifact from tracing two separate holding-company chains (Infraestructuras de Gas and Iniciativas de Gas, the two 50%-each Owner entities) without correctly separating them. Not confidently reconcilable this pass -- did not stage a guessed replacement.",
+    "severity": "medium",
+    "suggested_action": "Reviewer to check Saggas/Enagás/Osaka Gas corporate filings to correctly attribute percentages to each holding-company chain (Infraestructuras de Gas's parent(s) vs. Iniciativas de Gas's parent(s)) before editing Parent.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "other",
+    "terminal_id": "T100000130528",
+    "unit_id": "G100002052800",
+    "terminal_name": "El Musel LNG Terminal",
+    "issue": "Operator field is blank; could not confidently determine (or verify) whether Enagás or Reganosa (the 75%/25% co-owners) is the designated Operator of record -- GIIGNL 2026 did not clearly resolve this for El Musel specifically in the tokens checked this pass.",
+    "severity": "low",
+    "suggested_action": "A future pass should check Enagás's or Reganosa's own site for an explicit operator designation before filling.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "other",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "(all Spain terminals)",
+    "issue": "giignl.org direct URLs are systematically dead site-wide for every edition checked this pass (2021, 2022, 2024, 2025) -- consistent with the known tracker-wide giignl.org link-rot pattern. Live working replacements used throughout this batch: the current GIIGNL 2026 mirror (files.elfsightcdn.com/.../GIIGNL-2026-Annual-Report-0521.pdf) and a Wayback Machine snapshot of the 2024 edition (web.archive.org/web/20240904143217/.../GIIGNL-2024-Annual-Report-1.pdf). No Wayback snapshot could be found for the specific 2021 or 2022 edition URLs cited in the original GEM export.",
+    "severity": "low",
+    "suggested_action": "Consider a tracker-wide citation-QC sweep to replace all giignl.org direct-URL refs with the elfsightcdn mirror or Wayback snapshots proactively, rather than country-by-country.",
+    "researcher_initials": "AI-draft"
+  }
+]

@@ -1,0 +1,1796 @@
+[
+  {
+    "terminal": "Adria LNG Terminal",
+    "terminal_id": "T100000130428",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "yellow",
+    "basis": "Not a gas power station — published design shows only non-combustion seawater vaporizers and BOG compressors, no generation equipment of any kind.",
+    "basis [ref]": [
+      "https://www.offshore-technology.com/projects/adrialngproject/",
+      "https://www.oilandgasadvancement.com/projects/adria-lng-project-croatia/",
+      "https://www.energetika-net.com/plin/uputa-o-sadrzaju-studije-za-lng-terminal-6318"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Adriatic LNG Terminal",
+    "terminal_id": "T100000130466",
+    "gogpt_candidate": "REVIEWER CALL",
+    "electric_mw": "30",
+    "confidence": "green",
+    "basis": "Genuine 30 MW gas-turbine generation exists on-site, so size is not a bar to adding. I could not check the live GOGPT database from this task to confirm whether a record already exists for this offshore facility, so the orchestrator should check GOGPT before adding to avoid a duplicate.",
+    "basis [ref]": [
+      "https://www.ge.com/news/press-releases/ge-oil-gas-powers-worlds-first-offshore-gravity-based-lng-terminal",
+      "https://www.adriaticlng.it/wps/wcm/connect/web2/site/en/The+Terminal/Technical+features/"
+    ],
+    "mechanical_drive_note": "GE's own release frames the figure as electric 'power output' from generator modules, and Adriatic LNG's official site independently calls the units 'electricity generators' (not compressor/refrigeration drivers) — both sources point to electric generation, not mechanical shaft drive."
+  },
+  {
+    "terminal": "Alexandroupolis FSRU",
+    "terminal_id": "T100000130681",
+    "gogpt_candidate": "REVIEWER CALL",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "Undisclosed MW is not a reason to exclude, but this is a vessel-mounted generator set of unknown size, likely too small/non-fixed to be a distinct GOGPT power-station entry; reviewer should confirm GOGPT scope/treatment rather than defaulting to DO NOT ADD.",
+    "basis [ref]": [
+      "https://www.gastrade.gr/en/the-project/",
+      "https://www.gastrade.gr/en/sustainabilty/"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Arctic LNG 1 Terminal",
+    "terminal_id": "T100000130918",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "No power facility of any kind has been identified for this project in the public record — it is pre-construction with no disclosed liquefaction technology or power-supply design yet. Nothing exists to add. Re-check once Novatek selects a technology/FID.",
+    "basis [ref]": [],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Arctic LNG 2 Terminal",
+    "terminal_id": "T100000130520",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "1500",
+    "confidence": "green",
+    "basis": "ORCHESTRATOR NORMALISATION: electric_mw was returned as prose ('1500 (planned, 3 x 500 MW stages; Wison-built gas-turbine-generator modules, CGT30 turbines); Train 1 alone separately carries 5 x CGT30 ...') and has been reduced to the bare number 1500 so the column stays numeric; the stage/turbine detail is preserved here and in mechanical_drive_note. INDEPENDENCE COUNT: the four refs are TWO independent publishers, not four -- interfax.com (1) plus highnorthnews.com (3 articles across its www. and en. hosts, one publisher). Two independent publishers still satisfies green. || RESEARCHER'S ORIGINAL BASIS: A correctly-attributed GOGPT record for this plant already exists at 0.5 km with a generation MW figure that matches sourced evidence reasonably well; no new record needed. (Not a captive-power negative -- captive power is confirmed YES; this field addresses whether a NEW record is warranted, and it is not since one exists.)",
+    "basis [ref]": [
+      "https://interfax.com/newsroom/top-stories/90530/",
+      "https://www.highnorthnews.com/en/undeterred-sanctions-novatek-begins-production-arctic-lng-2",
+      "https://en.highnorthnews.com/business/china-to-supply-key-turbines-to-novateks-arctic-lng-2/157312",
+      "https://en.highnorthnews.com/business/russias-novatek-on-track-to-complete-2nd-train-of-arctic-lng-2-in-2024/202782"
+    ],
+    "mechanical_drive_note": "Train 1 refrigeration compressors are driven mechanically by 4 x Baker Hughes LM9000 aeroderivative gas turbines (each >65 MW at the shaft per Baker Hughes spec; aggregate ~260-290 MW shaft power). This shaft power is NOT part of the electric_mw figure. Trains 2 and 3 were redesigned away from LM9000 mechanical drive to electric-motor drive after the Baker Hughes exit (per Highnorthnews: 'modifications ... to accommodate the electric motors and remove all the piping accessories related to the canceled LM9000s'), so mechanical drive is now present on Train 1 only."
+  },
+  {
+    "terminal": "Arctic LNG 3 Terminal",
+    "terminal_id": "T100000131066",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "No power facility of any kind exists or has been announced for this project — it is pre-exploration-completion, roughly a decade from commissioning. Nothing exists to add.",
+    "basis [ref]": [],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Argo FSRU",
+    "terminal_id": "T100000131007",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "yellow",
+    "basis": "No captive generation found; nearest GOGPT plants are too distant and unrelated.",
+    "basis [ref]": [
+      "https://www.radiovera.gr/2026/06/24/ypourgeio-energeias-ypen-aporrifthike-i-meleti-perivallontikon-epiptoseon-gia-to-fsru-ston-pagasitiko-telos-to-lng-gia-tin-periochi/",
+      "https://www.powergame.gr/green-power/1376179/ypen-aporrifthike-i-meleti-perivallontikon-epiptoseon-gia-to-fsru-ston-pagasitiko/"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Arkhangelsk LNG Terminal",
+    "terminal_id": "T100000131152",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "No candidate power plant was identified for this terminal — nothing to propose adding. (Note: a GOGPT record for the co-located Arkhangelsk Pulp & Paper Mill power station, ~3 km away, already exists per the prior pass and is captive to the paper mill, an unrelated host — not this terminal's plant, and already correctly excluded on host grounds rather than size.)",
+    "basis [ref]": [],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Aurora Spassk-Dalny LNG Terminal",
+    "terminal_id": "T100001047640",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "Nothing documented either way; adding a GOGPT unit on no evidence would be a fabrication.",
+    "basis [ref]": [],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Bar LNG Terminal",
+    "terminal_id": "T100000131102",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "This is the terminal's PowerPlantsSupplied relationship, not a captive generator for the terminal itself.",
+    "basis [ref]": [
+      "https://www.jera.co.jp/en/news/information/20250911_2261",
+      "https://montenegrobusiness.eu/lng-terminal-and-a-gas-power-plant-in-the-port-of-bar-is-planned/"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Barcelona LNG Terminal",
+    "terminal_id": "T100000130522",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "Terminal is documented grid-fed with no on-site gas-fired generation (see captive_summary); the GOGPT prior is an unrelated area merchant plant, not this terminal's captive power.",
+    "basis [ref]": [
+      "https://www.enagas.es/content/dam/enagas/es/ficheros/conocenos/sostenibilidad/medioambiente/medioambiente/Declaraci%C3%B3n%20Ambiental%20Planta%20de%20Barcelona.pdf"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Bilbao LNG Terminal",
+    "terminal_id": "T100000130524",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "BBE is already a distinct, externally-owned merchant power station fed by BBG's gas (PowerPlantsSupplied relationship), not this terminal's captive plant — it should already exist (or be added) as its own GOGPT record, not attributed to the LNG terminal.",
+    "basis [ref]": [
+      "https://bbg.es/servicios/",
+      "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2000-22376"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Black Sea LNG Terminal",
+    "terminal_id": "T100000131101",
+    "gogpt_candidate": "REVIEWER CALL",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "Project is active (not dead) but pre-design; too early to add or reject — revisit once a technical design or FEED is published.",
+    "basis [ref]": [
+      "https://www.energynomics.ro/en/ministry-of-energy-feasibility-study-for-the-socar-romgaz-lng-terminal-was-completed/",
+      "https://www.replicaonline.ro/romgaz-si-socar-proiect-comun-pentru-construirea-unui-terminal-lng-in-portul-constanta-588339"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Brindisi LNG Terminal",
+    "terminal_id": "T100000130468",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "Never built; the design drew site power from the grid, and the only on-site generator ever proposed was a ~1 MW DIESEL backup. Fails the gas-fired test (and the not-standby-only test) -- size is not the reason.",
+    "basis [ref]": [
+      "https://www.provincia.brindisi.it/Down/lng/Parte-3_Sintesi_non_Tecnica/Testo/02-527-H38-Sintesi_non_Tecnica.pdf"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Brunnsviksholme LNG Terminal",
+    "terminal_id": "T100000130539",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "Nothing documented either way.",
+    "basis [ref]": [],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Brunsbuttel LNG Terminal - onshore (Germany)",
+    "terminal_id": "T100000131084",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "yellow",
+    "basis": "Grid-connected; regas heat sourced from a third-party industrial neighbour (Covestro), not from an on-site gas power plant.",
+    "basis [ref]": [
+      "https://dgmk.de/app/uploads/2018/11/GLNG-praesentation-dgmk-2018-11-6.pdf",
+      "https://www.duh.de/fileadmin/user_upload/download/Projektinformation/Energiewende/DUH_Gutachten_LNG_Terminal_final.pdf"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Brunsbüttel LNG Terminal",
+    "terminal_id": "T100000130460",
+    "gogpt_candidate": "REVIEWER CALL",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "Genuine gas-fired captive generation exists and is sizeable (up to ~49.9 MW FWL combined); size is not a bar to inclusion. Reviewer should check GOGPT for an existing Brunsbüttel/Höegh Gannet entry before adding to avoid duplication.",
+    "basis [ref]": [
+      "https://energy-terminal.de/fileadmin/user_upload/Test/Meldungen/2024-02-09_Para8a-Bescheid.pdf",
+      "https://www.wartsila.com/energy/engine-power-plant-solutions/engine-power-plant-products/wartsila-50df-dual-fuel-engine"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Canatxx LNG Terminal",
+    "terminal_id": "T100000130547",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "yellow",
+    "basis": "The proposed CCGT was never built (shelved) and the terminal itself was never built; there is no gas power station in existence to add to GOGPT.",
+    "basis [ref]": [
+      "https://www.anglesey-today.com/could-canatxx-gas-turbine-plant-rescue-island-smelter.html",
+      "https://amlwchhistory.co.uk/canatxx/"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Canvey LNG Terminal",
+    "terminal_id": "T100000130549",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "No gas power station of any kind is documented at this cancelled, never-built project; nothing exists to add to GOGPT.",
+    "basis [ref]": [
+      "https://www.modernpowersystems.com/news/centrica-appeals-over-lng-plan/",
+      "https://hansard.parliament.uk/Commons/2007-04-25/debates/07042568000055/CentricaCanveyIsland"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Cartagena LNG Terminal (Spain)",
+    "terminal_id": "T100000130526",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "yellow",
+    "basis": "All three priors are large merchant CCGTs elsewhere in the Escombreras complex (refinery/petrochemical/independent generation), not this LNG terminal's captive power; no evidence found of the terminal itself hosting or being powered by any of them.",
+    "basis [ref]": [
+      "http://web.archive.org/web/20251012085145/https://prtr-es.es/informes/fichacomplejo.aspx?Id_Complejo=4905"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Chernomorsky LNG Terminal",
+    "terminal_id": "T100000130983",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "Nothing has been built and no power-plant design exists to add — there is no facility of any kind for GOGPT to track at this site.",
+    "basis [ref]": [
+      "https://sudostroenie.info/novosti/14803.html",
+      "https://www.vedomosti.ru/business/articles/2021/03/22/862660-gazprom-spg-zavoda"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Constanta LNG Terminal",
+    "terminal_id": "T100000130502",
+    "gogpt_candidate": "ADD",
+    "electric_mw": "18",
+    "confidence": "yellow",
+    "basis": "Documented gas-fired captive electric generation (3x6MW steam turbo-generators fired by natural-gas boilers) in a published engineering design — qualifies regardless of the fact the project was never built; flag to reviewer only because the terminal itself is cancelled/never-constructed, not because of size or fuel type.",
+    "basis [ref]": [
+      "http://energy-cie.ro/archives/2013/nr_3/v4-n3-5.pdf"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Crimea LNG Terminal",
+    "terminal_id": "T100000130619",
+    "gogpt_candidate": "REVIEWER CALL",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "No design published in either direction; too speculative/preliminary a project to make an add/reject call.",
+    "basis [ref]": [
+      "https://www.irishtimes.com/business/energy-and-resources/teeling-oil-company-in-talks-with-gazprom-over-crimea-venture-1.3537573",
+      "https://www.irishtimes.com/business/energy-and-resources/ukraine-warns-teeling-oil-company-about-gazprom-talks-1.3547438"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Cyprus FSRU",
+    "terminal_id": "T100000130432",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "Vasilikos and Mari are existing utility-owned merchant/public generation supplied BY this terminal (PowerPlantsSupplied, already reflected in GEM's existing_PowerPlantsSupplied field) — the opposite relationship from captive power.",
+    "basis [ref]": [
+      "https://maritime-executive.com/article/first-fsru-for-cyprus-begins-commissioning-at-cosco-shipyard",
+      "https://www.offshore-energy.biz/cosco-hands-over-first-fsru-to-cyprus/"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Cyprus LNG Terminal",
+    "terminal_id": "T100001048370",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "Not a documented gas power station of any kind at this site; the project itself is cancelled and no captive generation evidence exists to add regardless of size.",
+    "basis [ref]": [],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Delimara FSRU",
+    "terminal_id": "T100000130490",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "The D4 plant's 3x SGT-800 + 1x SGT-900 belong to Electrogas, a distinct power station, not CaptiveGasPower evidence for this LNG terminal. The FSU's own possible generating plant (if any) is unconfirmed, so there is nothing sourced to add pending resolution.",
+    "basis [ref]": [
+      "https://www.offshore-energy.biz/malta-in-lng-first/",
+      "https://worldmaritimenews.com/archives/198533/maltas-lng-floating-storage-unit-ready-for-work/"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Dioriga FSRU",
+    "terminal_id": "T100000130992",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "Not a gas power station at all — the only on-site generator is diesel and standby-only; Motor Oil's neighboring 57 MW gas CHP (GT-6) belongs to the refinery, a different host, and is presumably already tracked (if at all) under that facility, not under this LNG terminal.",
+    "basis [ref]": [
+      "https://dioriga.gr/wp-content/uploads/2025/09/%CE%95%CE%95-%CE%91%CE%A3%CE%A6%CE%91-%CE%94%CE%99%CE%A9%CE%A1%CE%A5%CE%93%CE%91-GAS_.pdf"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Dortyol FSRU",
+    "terminal_id": "T100000130618",
+    "gogpt_candidate": "REVIEWER CALL",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "Verdict is INSUFFICIENT, not a confirmed YES -- do not add pending resolution of fuel basis. Do not mark DO NOT ADD either: undisclosed MW is not disqualifying and a genuine dual-fuel generator plant is plausible for a 2021 HHI newbuild FSRU.",
+    "basis [ref]": [
+      "https://www.botas.gov.tr/Sayfa/dortyol-fsru-terminali/699"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Dragon LNG Terminal",
+    "terminal_id": "T100000130551",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "yellow",
+    "basis": "Grid-fed site; the only on-site generation found is a 12.6 MW WIND asset, which is not gas power at all. Fails the gas-fired test -- size is not the reason.",
+    "basis [ref]": [
+      "https://www.powersystemsuk.co.uk/projects/dragon-lng-wind-farm-12-6-mw-electrical-infrastructure-11-kv-grid-connection/"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Dunkirk LNG Terminal",
+    "terminal_id": "T100000130446",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "Grid-fed, zero on-site combustion (nuclear waste-heat vaporization); no generation asset exists at the terminal to add.",
+    "basis [ref]": [
+      "https://www.fluxys.com/en/about-us/dunkerque-lng/infrastructure",
+      "https://www.spppi-cof.org/risques-majeurs/en-savoir-plus-sur-les-sites-industriels/dunkerque-lng/",
+      "https://www.economiecirculaire.org/initiative/h/des-eaux-tiedes-pour-regazeifier-du-gnl.html"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Eagle FSRU",
+    "terminal_id": "T100000130424",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "No design ever published for this cancelled project; nothing to add.",
+    "basis [ref]": [],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Eemshaven FSRU",
+    "terminal_id": "T100000130997",
+    "gogpt_candidate": "REVIEWER CALL",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "Currently standby/emergency-only under normal operation, which is the borderline case the brief flags for reviewer judgment rather than an automatic ADD or DO NOT ADD; size is not the determining factor either way.",
+    "basis [ref]": [
+      "https://www.rvo.nl/sites/default/files/2022-12/OB01-Ontwerpbesluit-Omgevingsvergunning-EemsEnergy-Terminal.pdf"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "El Musel LNG Terminal",
+    "terminal_id": "T100000130528",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "yellow",
+    "basis": "No GOGPT prior exists for this terminal; no on-site generation found to warrant a new record either.",
+    "basis [ref]": [
+      "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2021-8255"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Etki FSRU",
+    "terminal_id": "T100000130541",
+    "gogpt_candidate": "REVIEWER CALL",
+    "electric_mw": "",
+    "confidence": "yellow",
+    "basis": "No MW disclosed on the spec page; per the no-floor rule this does not block adding. Aliaga is a dense heavy-industry port (refinery, steel mills) -- reviewer should confirm no existing GOGPT record already covers this vessel-mounted generator, and must not conflate it with neighboring industrial captive plants (Colakoglu, Petkim/STAR, Habas), which are captive to THEM, not to Etki.",
+    "basis [ref]": [
+      "https://www.etkiliman.com.tr/en/FSRU/FSRU.html"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Falconara Marittima LNG Terminal",
+    "terminal_id": "T100000130470",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "Design is grid-fed via electric-motor compressors; no gas-fired generation of any size in the design.",
+    "basis [ref]": [
+      "https://va.mite.gov.it/File/Documento/14896"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Far East LNG Terminal",
+    "terminal_id": "T100000130506",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "No captive gas power source is documented for this still-proposed, unbuilt LNG terminal. The De-Kastrinskaya TEC is a genuine gas-fired plant but is a public district utility, not captive to this LNG project, so it should not be added as this terminal's captive plant.",
+    "basis [ref]": [
+      "https://energoseti.ru/station/de-kastrinskaya-tec",
+      "https://dekastri-tec.ru",
+      "https://en.wikipedia.org/wiki/De-Kastri_terminal"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Fos Cavaou LNG Terminal",
+    "terminal_id": "T100000130448",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "Diesel emergency gensets and fire-pump motors; not a gas power station.",
+    "basis [ref]": [
+      "https://www.bouches-du-rhone.gouv.fr/contenu/telechargement/2517/14874/file/Elengy%20r%C3%A9sum%C3%A9%20non%20tech.%C3%A9tude%20d%27impact.pdf",
+      "https://www.georisques.gouv.fr/risques/installations/donnees/details/0006402139"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Fos Lavera Marseille LNG Terminal",
+    "terminal_id": "T100000130450",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "",
+    "basis": "Project never reached a design stage; no generation asset to evaluate.",
+    "basis [ref]": [],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Fos Tonkin LNG Terminal",
+    "terminal_id": "T100000130452",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "Documented grid-fed site; the only nearby generation belongs to other industrial hosts.",
+    "basis [ref]": [
+      "https://concertation-rhone-decarbonation.fr/les-caracteristiques-du-projet/",
+      "https://www.debatpublic.fr/infrastructures-de-captage-et-de-transport-de-co2-le-long-de-la-vallee-du-rhone-de-montalieu"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Fredrikstad LNG Terminal",
+    "terminal_id": "T100000130730",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "Nothing documented either way.",
+    "basis [ref]": [],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Gate LNG Terminal",
+    "terminal_id": "T100000130492",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "All nearby GOGPT plants belong to other industrial hosts or are independent merchant generation; Gate itself has no generating equipment.",
+    "basis [ref]": [
+      "https://repository.officiele-overheidspublicaties.nl/externebijlagen/exb-2022-70828/1/bijlage/exb-2022-70828.pdf",
+      "https://www.gateterminal.com/en/gate-terminal/profiel/"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Gibraltar LNG Terminal",
+    "terminal_id": "T100000130682",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "This is the terminal's PowerPlantsSupplied relationship (already a separate, correctly-attributed GOGPT record), not a captive generator for the terminal itself.",
+    "basis [ref]": [
+      "https://www.offshore-energy.biz/man-commissions-gibraltars-lng-fired-power-plant/"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Gioia Tauro LNG Terminal",
+    "terminal_id": "T100000130472",
+    "gogpt_candidate": "ADD",
+    "electric_mw": "20",
+    "confidence": "green",
+    "basis": "20 MW gas-fired on-site electric generator serving the terminal; size is not a valid reason to exclude (no MW floor applies to CaptiveGasPower or GOGPT candidacy).",
+    "basis [ref]": [
+      "https://va.mite.gov.it/File/Documento/2773"
+    ],
+    "mechanical_drive_note": "Confirmed electric generation ('generatore di energia elettrica' / 'generatore elettrico'), not mechanical/process drive."
+  },
+  {
+    "terminal": "Gorskaya FLNG Terminal",
+    "terminal_id": "T100000130617",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "No candidate power plant was identified for this terminal — nothing to propose adding. (The three nearby large merchant St. Petersburg-grid CHPs identified in the prior pass — Severo-Zapadnaya, Vasileostrovskaya, Yugo-Zapadnaya — remain correctly excluded as unrelated city-grid plants, not on host/relationship grounds tied to size.)",
+    "basis [ref]": [],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Gothenburg LNG Terminal",
+    "terminal_id": "T100000130663",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "yellow",
+    "basis": "No captive generation equipment found in any design description of the terminal itself. The only nearby gas-fired generation (Rya CHP / Göteborg power station) is an independent municipal-utility asset already presumably in GOGPT under its own owner (Göteborg Energi), not colocated/captive to this LNG terminal — adding it here would repeat exactly the host-trap error the brief warns against.",
+    "basis [ref]": [
+      "https://mb.cision.com/Main/3229/9598525/254364.pdf",
+      "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svar-pa-skriftlig-fraga/lng-terminal-langs-det-vastsvenska-gasnatet_hb12641/",
+      "https://www.offshore-energy.biz/construction-starts-on-port-of-gothenburg-lng-bunkering-facilty/"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Grain LNG Terminal",
+    "terminal_id": "T100000130553",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "Grain power station is already tracked in GOGPT as its own record (merchant plant); it is not Grain LNG's captive asset and the relationship (heat export TO the terminal) is the reverse of captive power, so nothing new should be added for Grain LNG.",
+    "basis [ref]": [
+      "http://www.eib.org/attachments/pipeline/20070184_nts_en.pdf",
+      "https://www.uniper.energy/news/grain-power-station-an-innovative-site",
+      "https://www.gevernova.com/news/press-releases/ge-vernova-uniper-announce-turbine-upgrade-grain-power-station-GT26-HE"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Gran Canaria LNG Terminal (Spain)",
+    "terminal_id": "T100000130530",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "No GOGPT prior exists; project was cancelled and, as designed, had no on-site generation component.",
+    "basis [ref]": [
+      "https://www.eldebate.com/economia/20251018/estado-debera-indemnizar-18-millones-enagas-regasificadoras-canarias_346097.html",
+      "https://www.eldiario.es/canariasahora/tribunales/debera-indemnizar-18-millones-enagas-promotora-plantas-regasificadoras-pretendian-construir-canarias_1_12694795.html"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Grangemouth FSRU",
+    "terminal_id": "T100000131134",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "Not a captive-power case at all — the design direction is the terminal supplying gas to an (now reportedly dropped) external power plant, the opposite of CaptiveGasPower. There is no gas power station serving the terminal itself.",
+    "basis [ref]": [
+      "https://lngprime.com/europe/crown-lng-to-go-public-via-catcha-deal-working-on-fids-for-two-terminals/88004/",
+      "http://web.archive.org/web/20240906234027/https://www.bnnbloomberg.ca/investing/2024/08/09/lng-builder-plans-new-uk-terminal-to-help-cut-reliance-on-europe/"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Gulf of Saros FSRU",
+    "terminal_id": "T100000130807",
+    "gogpt_candidate": "REVIEWER CALL",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "Undisclosed generation plant; do not exclude on distance-to-nearest-land-plant grounds -- that reasoning applies to a different, land-based-plant matching purpose and is irrelevant to a vessel-mounted question.",
+    "basis [ref]": [
+      "https://www.offshore-energy.biz/swan-energy-to-commission-indias-first-newbuild-fsru-this-year/"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Gävle LNG Terminal",
+    "terminal_id": "T100000130732",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "yellow",
+    "basis": "Project never reached construction; there is no facility of any kind, gas-fired or otherwise, to add to GOGPT.",
+    "basis [ref]": [
+      "https://www.nyteknik.se/energi/naturgasen-flyter-allt-mer-i-roren/723433"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "HIGAS LNG Terminal",
+    "terminal_id": "T100000130724",
+    "gogpt_candidate": "REVIEWER CALL",
+    "electric_mw": "",
+    "confidence": "yellow",
+    "basis": "A natural-gas captive power generation system at the terminal is documented, but no capacity, unit count, technology or commissioning date is published, so there is not enough to seed a GOGPT power-station record without further research. Recommend the gogpt-researcher repo pick it up with the Italian AIA/AUA file for the Santa Giusta depot.",
+    "basis [ref]": [
+      "https://www.ogj.com/pipelines-transportation/lng/article/14198204/sardinia-lng-terminal-nears-completion",
+      "https://www.rivieramm.com/news-content-hub/news-content-hub/reganosa-to-operate-new-italian-small-scale-lng-terminal-64474"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Hamina LNG Terminal",
+    "terminal_id": "T100000130438",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "yellow",
+    "basis": "No generating unit in the terminal's turnkey scope or the operator's own plant description. Separately: BASF Oy's two gas engines at Kaasusatamantie 6, Hamina are a real gas-fired generating installation but belong to BASF, not to this terminal - if GOGPT lacks them that is a GOGPT-side lead, not a captive-power finding for the LNG record.",
+    "basis [ref]": [
+      "https://www.wartsila.com/media/news/04-10-2017-wartsila-signs-a-contract-to-supply-lng-terminal-to-finland",
+      "https://www.kaasuyhdistys.fi/wp-content/uploads/2019/05/Hamina-LNG-Projektiesittely-SKY-24.5.2019.pdf"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Hammerfest LNG Snohvit Terminal",
+    "terminal_id": "T100000130494",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "229",
+    "confidence": "green",
+    "basis": "ORCHESTRATOR OVERRIDE (was ADD): the GOGPT record already EXISTS (plant_id 100000407847, 229 MW, 0.0 km), so there is nothing to add. The real GOGPT-side action is a data-quality FIX: its captive=false flag is wrong and should be true. Record-exists is the reason -- not size.",
+    "basis [ref]": [
+      "https://snl.no/Melk%C3%B8ya",
+      "https://www.equinor.com/news/20221220-high-gas-exports-and-emissions-cuts-from-hammerfest-lng",
+      "https://www.equinor.com/news/20230808-governmental-green-light-snohvit-future"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Hoegh Cyprus FSRU",
+    "terminal_id": "T100000130828",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "yellow",
+    "basis": "Same reasoning as Cyprus FSRU: Vasilikos/Mari are recipients of gas supply (or would have been), not a captive plant for this record.",
+    "basis [ref]": [
+      "https://cyprus-mail.com/2026/07/07/can-vasilikos-lng-import-project-still-achieve-its-original-objective"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Huelva LNG Terminal",
+    "terminal_id": "T100000130532",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "Both GOGPT priors are tier-A 'gogpt_captive=true' but captive to a DIFFERENT industrial host (CEPSA's La Rábida refinery/Palos chemical complex), not the Enagas LNG terminal — matching the brief's explicit worked example of this exact trap (captive-to-other-host, not to the LNG terminal).",
+    "basis [ref]": [
+      "https://www.enagas.es/content/dam/enagas/es/ficheros/conocenos/sostenibilidad/medioambiente/medioambiente/Declaraci%C3%B3n%20Ambiental%20Planta%20de%20Huelva%202024.pdf"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Inkoo FSRU",
+    "terminal_id": "T100000131064",
+    "gogpt_candidate": "REVIEWER CALL",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "Structurally very likely to be a YES (moored FSRUs without shore power run their own generators as primary supply, industry-wide) but this session could not find a citable primary source naming Exemplar's specific engines/fuel mode, so it should not be staged as YES without one. A DNV/class-society record, an Excelerate technical data sheet not indexed by general search, or direct outreach to Gasgrid Finland would likely resolve this definitively - worth a targeted follow-up rather than further open-web searching.",
+    "basis [ref]": [
+      "https://gasgrid.fi/en/lng-terminal/inkoo-lng-terminal/",
+      "https://terramare.boskalis.com/en/projektit/finlands-first-floating-lng-terminal-in-inkoo-completed-in-record-time/"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Izmir Aliaga LNG Terminal",
+    "terminal_id": "T100000130543",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "No captive generation at the terminal (confirmed grid-fed/wholesale-supplier business model via regulatory filing); all three nearby GOGPT plants belong to other, independently-confirmed industrial/utility hosts.",
+    "basis [ref]": [
+      "http://avrasyagaz.com.tr/wp-content/uploads/bsk-pdf-manager/EGEGAZ_ALIAGA_LNG_TERMINAL_BASIC_USAGE_PROCEDURES_AND_PRINCIPALS_6.pdf",
+      "https://erranet.org/wp-content/uploads/2022/05/5.-A.Camci-TR-case-study-2-pre-recorded.pdf"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Jade Energy LNG Terminal",
+    "terminal_id": "T100000131001",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "yellow",
+    "basis": "No on-site gas power station identified; the nearby gas-fired plant referenced is a separate, external facility (direction test fails, not a size call).",
+    "basis [ref]": [
+      "https://www.jadeenergy.de/terminal-projects/lng-e-ng-import",
+      "https://tes-h2.com/news/jade-energy-launched-in-wilhelmshaven-to-advance-energy-security-and-decarbonization"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Kara LNG Terminal",
+    "terminal_id": "T100000131067",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "No generation facility exists — the project itself has no confirmed physical plant, let alone a power system.",
+    "basis [ref]": [
+      "https://neftegazpro.ru/analitika/rosneft-zayavila-o-planakh-postroit-krupneishii-v-mire-spg-proekt-na-taimyre-taimyr-spg-i-kara-spg"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Khabarovskiy LNG Terminal",
+    "terminal_id": "T100001047484",
+    "gogpt_candidate": "REVIEWER CALL",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "No documented power source of any kind was found for this terminal, so there is nothing to ADD; but per the absolute rule that absence of a published spec is insufficient to conclude NO, DO NOT ADD is also not appropriate. Needs a primary project document (design/EIA or a Glavgosekspertiza conclusion for this specific plant) to resolve.",
+    "basis [ref]": [],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Klaipeda FSRU",
+    "terminal_id": "T100000130488",
+    "gogpt_candidate": "MAYBE",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "This is genuine onboard gas-fired generation (dual-fuel gas/diesel engines) serving the FSRU itself, so it qualifies for GOGPT consideration. No MW figure was published for the individual engines/gensets (only that there are four of them), so a reviewer should decide whether to add a placeholder-MW or unresourced-capacity GOGPT candidate, or wait for a spec figure. Not DO NOT ADD — this is not a case of no gas power station or an already-existing record.",
+    "basis [ref]": [
+      "https://ve.lt/verslas/klaipedos-sgd-terminalo-elektrifikacijos-projekte-svarbus-zingsnis-pradeti-pirmieji-darbai",
+      "https://gargzdai.lt/kn-energies-issirinko-elektros-linijos-jungties-su-klaipedos-sgd-terminalu-projektavimo-ir-statybos-darbu-rangova/",
+      "https://www.offshore-energy.biz/lng-terminal-electrification-moving-forward-as-contractor-gets-shore-connection-job/",
+      "https://ceenergynews.com/lng/klaipeda-lng-terminal-contractor-electrification/",
+      "https://www.atviraklaipeda.lt/2025/10/24/pradeta-sgd-terminalo-elektrifikacija/"
+    ],
+    "mechanical_drive_note": "No mechanical-drive (shaft power) use identified; the four engines are described as generating electricity, not driving compressors/refrigeration directly."
+  },
+  {
+    "terminal": "Klaipeda Small-Scale LNG Terminal",
+    "terminal_id": "T100001048134",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "No verifiable evidence of a generating unit; the on-site combustion described in the (uncitable) literature is a boiler house, i.e. heat.",
+    "basis [ref]": [],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Kollsnes LNG Terminal",
+    "terminal_id": "T100000130728",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "Gasnor's LNG installation has no generating unit; the neighbouring Kollsnes naeringspark cogeneration plant and the Equinor/Gassco processing plant are separate installations under separate permits and are not this terminal's captive power.",
+    "basis [ref]": [
+      "https://www.norskeutslipp.no/WebHandlers/PDFDocumentHandler.ashx?documentID=15385&documentType=T&companyID=6424&aar=0&epslanguage=no",
+      "https://www.norskeutslipp.no/WebHandlers/PDFDocumentHandler.ashx?documentID=858865&documentType=T&companyID=18852&aar=0&epslanguage=no"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Krk FSRU",
+    "terminal_id": "T100000130430",
+    "gogpt_candidate": "REVIEWER CALL",
+    "electric_mw": "16.5",
+    "confidence": "green",
+    "basis": "This is a genuine on-site gas-fired generation source (16.5 MW, gas-burning), so size/existence is not a reason to exclude it. Flagging REVIEWER CALL rather than ADD because it is a vessel-mounted module on an FSRU, not a conventional land-sited power plant, and it's unclear whether GOGPT's ontology captures FSRU-integrated generation or whether a record already exists for it — the reviewer should check GOGPT before adding.",
+    "basis [ref]": [
+      "http://web.archive.org/web/20240905234117/https://hrcak.srce.hr/file/425010",
+      "https://www.lng.hr/en/about-the-terminal"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Kulevi LNG Terminal",
+    "terminal_id": "T100000130910",
+    "gogpt_candidate": "REVIEWER CALL",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "No design published in either direction; project was abandoned before any engineering stage.",
+    "basis [ref]": [
+      "https://www.azernews.az/oil_and_gas/91412.html"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "LNG Yakutia Terminal",
+    "terminal_id": "T100000131151",
+    "gogpt_candidate": "REVIEWER CALL",
+    "electric_mw": "",
+    "confidence": "yellow",
+    "basis": "On-site power generation is documented as part of the plant's design, but fuel type is not confirmed as gas — cannot ADD a gas-power record without that confirmation, and it would be wrong to DO NOT ADD since a genuine gas-fired unit may exist. Needs a primary design document (e.g., a Glavgosekspertiza positive conclusion or project EIA) naming the generation technology before either ADD or DO NOT ADD.",
+    "basis [ref]": [
+      "https://www.interfax.ru/business/951798",
+      "https://neftegaz.ru/news/spg-szhizhennyy-prirodnyy-gaz/825463-v-yakutii-postroyat-zavod-po-proizvodstvu-spg-moshchnostyu-525-tys-t-god/",
+      "https://www.eastrussia.ru/news/srednetonnazhnyy-zavod-spg-planiruyut-postroit-v-yakutii/"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Le Havre FSRU",
+    "terminal_id": "T100000131008",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "39.9",
+    "confidence": "green",
+    "basis": "Shipboard generation on a chartered FSRU that has since left the berth (GEM status 'retired'); not a land-based power station. Size is not the reason.",
+    "basis [ref]": [
+      "https://www.seine-maritime.gouv.fr/index.php/contenu/telechargement/57970/407572/file/Arr%C3%AAt%C3%A9%20pr%C3%A9fectoral%2009.08.23%20TOTALENERGIES%20LNG%20Services%20France%20-%20Le%20Havre.pdf",
+      "https://www.aukevisser.nl/supertankers/gas-2/id737.htm"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Le Havre-Antifer LNG Terminal",
+    "terminal_id": "T100000130454",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "yellow",
+    "basis": "Never-built, cancelled project; no plant exists.",
+    "basis [ref]": [
+      "https://archives.debatpublic.fr/file/1477/download?token=NiAtASPc"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Lubmin LNG Terminal (Deutsche Ostsee)",
+    "terminal_id": "T100000131077",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "yellow",
+    "basis": "No on-site generating equipment currently present at this location; nothing to add to GOGPT for Lubmin as things stand.",
+    "basis [ref]": [
+      "https://www.rivieramm.com/news-content-hub/shuttle-and-regas-ship-gdf-suez-neptune-enters-service-46488",
+      "https://lngprime.com/lng-terminals/deutsche-regas-makes-first-step-to-relocate-lubmin-fsru-to-mukran/109019/",
+      "https://www.regierung-mv.de/Landesregierung/stk/inbetriebnahme-lng-terminal/"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Lubmin RWE FSRU",
+    "terminal_id": "T100000131098",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "yellow",
+    "basis": "Not because of size — because no power generation of any kind was ever specified for this shelved paper project.",
+    "basis [ref]": [
+      "https://en.wikipedia.org/wiki/Lubmin_LNG_terminals"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Lysekil LNG Terminal",
+    "terminal_id": "T100000130687",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "Terminal supplies gas OUT to Preem's refinery by pipe; any refinery captive power belongs to Preem, not to a terminal-side GOGPT record.",
+    "basis [ref]": [
+      "https://www.gasum.com/en/gasum/supply-chain/lng-terminals/lysekil-lng-terminal/",
+      "https://demaco-cryogenics.com/projects/cryo-ab-lysekil/"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Marmara LNG Terminal",
+    "terminal_id": "T100000130545",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "yellow",
+    "basis": "No captive generation at the terminal; the two closest GOGPT plants are supply-OUT customers of the terminal's gas (PowerPlantsSupplied direction), not captive power sources for it.",
+    "basis [ref]": [
+      "https://www.enmar.com.tr/en/projects/botas-petroleum-pipeline-corporation-marmara-ereglisi-lng-terminal"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Marshal Vasilevskiy FSRU",
+    "terminal_id": "T100000130831",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "yellow",
+    "basis": "This is shipboard machinery (the FSRU's own engine/generator plant), not a fixed power-plant facility of the kind GOGPT tracks as a separate infrastructure entity — nothing land-based exists to add even though the LNG-terminal-side CaptiveGasPower Boolean leans YES.",
+    "basis [ref]": [
+      "https://www.korabel.ru/fleet/info/60111.html"
+    ],
+    "mechanical_drive_note": "Power reaches all shipboard/terminal loads via the DFDE electrical bus (generators), not by a direct mechanical shaft drive to a compressor — so this is electric captive power, not mechanical-drive."
+  },
+  {
+    "terminal": "Montoir LNG Terminal",
+    "terminal_id": "T100000130456",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "GOGPT's own tagging already treats both nearby plants as non-captive merchant generation; no evidence ties either to the LNG terminal as owner/host.",
+    "basis [ref]": [
+      "https://www.georisques.gouv.fr/webappReport/ws/installations/document/f28699db1b6b4fa2b9211c28a7607ee6",
+      "https://www.georisques.gouv.fr/risques/installations/donnees/details/0006300974"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Mosjoen LNG Terminal",
+    "terminal_id": "T100000130733",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "No documented generating unit; nothing to hand GOGPT.",
+    "basis [ref]": [],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Mowi LNG Terminal",
+    "terminal_id": "T100000131133",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "yellow",
+    "basis": "No generating unit in the terminal's turnkey scope and none found at the feed mill it supplies.",
+    "basis [ref]": [
+      "https://www.prnewswire.com/in/news-releases/inoxcva-commissions-the-first-ever-multifunctional-mini-lng-terminal-in-uk-for-mowi-scotland-821996502.html"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Mugardos LNG Terminal (Spain)",
+    "terminal_id": "T100000130534",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "No GOGPT prior exists for this terminal; the terminal is a gas SUPPLIER to an external plant (As Pontes), not itself hosting captive generation.",
+    "basis [ref]": [
+      "https://mugardos.reganosa.com/wp-content/uploads/2026/04/Declaracion_Ambiental_REGANOSA_2024.pdf",
+      "https://www.galiciapress.es/texto-diario/mostrar/2247465/reganosa-acuerda-terminal-gas-natural-licuado-suministro-electrico-2021-garantia-origen"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Mukran LNG Terminal (Deutsche Ostsee)",
+    "terminal_id": "T100000131141",
+    "gogpt_candidate": "REVIEWER CALL",
+    "electric_mw": "39.9",
+    "confidence": "green",
+    "basis": "Documented nameplate capacity is sizeable (up to ~40.2 MW electric on Neptune's 4 engines, ~34 MW on Energos Power's 4 engines per the 2024 permit) and clearly gas-fired — size is not a reason to withhold. Reviewer should check GOGPT for an existing Mukran/Deutsche Ostsee entry before adding, since GOGPT may already track it under Deutsche ReGas.",
+    "basis [ref]": [
+      "https://www.stalu-mv.de/vp/Service/Presse_Bekanntmachungen/?id=200530&processor=processor.sa.pressemitteilung",
+      "https://www.stalu-mv.de/vp/Service/Bekanntmachungen-nach-BImSchG/Bereich-Immissionsschutz/?processor=processor.sa.bimschbekannt&bekann_id=1719",
+      "https://www.energie-und-management.de/nachrichten/recht/detail/deutsche-regas-darf-mukran-dauerhaft-ohne-landstrom-betreiben-356711",
+      "https://www.duh.de/presse/pressemitteilungen/pressemitteilung/lng-terminal-in-mukran-deutsche-umwelthilfe-legt-widerspruch-gegen-aenderungsgenehmigung-ein/",
+      "https://www.offshore-energy.biz/german-player-picks-up-permanent-permit-for-lng-terminal-with-fsru-duo/",
+      "https://www.wartsila.com/energy/engine-power-plant-solutions/engine-power-plant-products/wartsila-50df-dual-fuel-engine",
+      "https://www.enerdata.net/publications/daily-energy-news/deutsche-regas-terminates-contract-fsru-energos-power-germany.html"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Murmansk LNG Terminal",
+    "terminal_id": "T100000131112",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "Documented grid-fed, electric-drive design -- no captive gas generation exists or is planned.",
+    "basis [ref]": [
+      "https://www.novatek.ru/en/press/releases/index.php?id_4=5982",
+      "https://lngprime.com/asia/novatek-rosseti-ink-murmansk-lng-power-supply-pact/91501/"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "NextDecade Cork FSRU",
+    "terminal_id": "T100000130723",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "Not a size call — the project never reached a design stage, so there is no gas power station design to consider adding.",
+    "basis [ref]": [
+      "https://tanknewsinternational.com/plans-shelved-for-floating-terminal-at-cork-striking-new-blow-for-irish-lng/",
+      "https://worldmaritimenews.com/archives/225649/nextdecade-looks-to-build-lng-terminal-at-port-of-cork/"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Obsky LNG Terminal",
+    "terminal_id": "T100000130921",
+    "gogpt_candidate": "REVIEWER CALL",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "Not a size issue. The captive gas-turbine compressor-drive architecture is well documented, but the plant itself has been repeatedly reformatted (LNG -> ammonia/Obsky GHK pivot in ~2021-22 -> back to LNG Feb 2022) and Final Investment Decision was still pending as of VEF-23 (2023) per Novatek's CEO. Given the pre-FID/pre-construction status and multiple design revisions (turbine supplier and unit count unsettled since 2021), the reviewer should decide whether/how to stage a pending-construction captive unit versus waiting for FID/construction contract announcements.",
+    "basis [ref]": [
+      "https://www.kommersant.ru/doc/4290335",
+      "https://www.tek-all.ru/news/id7693-gazovaya-turbina-serdtse-proekta-novatek-po-transportirovke-gaza-budet-kitayskoy/",
+      "https://bmpd.livejournal.com/4324161.html"
+    ],
+    "mechanical_drive_note": "7 x Siemens SGT-700 gas turbines, 32.8 MW each (one spare), as mechanical drive for the methane/ethane refrigerant-circuit compressors — 2020 contract with Kazankompressormash/GMS. Reported successor/alternative: 1 x Chinese CGT25-D 'gas-pumping' turbine, 27 MW (industrial derivative of naval GT-25000), reported in 2021 for the same compressor-drive role after the Siemens contract was slated for termination. Current post-2022 'Arctic Cascade Modified' 2-line (3 Mtpa/line) configuration's exact final turbine supplier/count is not confirmed by a post-2022 primary source, but retains the same gas-turbine mechanical-drive architecture (Arctic Cascade template, shared with Yamal LNG Train 4's ~25 MW turbine + compressor group)."
+  },
+  {
+    "terminal": "Oristano FSRU",
+    "terminal_id": "T100001084124",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "Project is at the acquisition-evaluation stage only, no design exists to assess captive power against.",
+    "basis [ref]": [
+      "https://pgjonline.com/news/2025/october/snam-eyes-acquisition-of-higas-lng-terminal-plans-conversion-to-sardinia-fsru"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Paldiski FSRU",
+    "terminal_id": "T100000131004",
+    "gogpt_candidate": "MAYBE",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "Cannot evaluate — no vessel present. Not a documented non-gas facility, so not DO NOT ADD; not confirmed gas power either.",
+    "basis [ref]": [],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Paldiski LNG Terminal",
+    "terminal_id": "T100000130434",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "Not a gas power station at all — the on-site compressor is grid-electric, and no other generation exists on site.",
+    "basis [ref]": [
+      "https://elering.ee/en/elering-signs-agreements-worth-60-million-euros-building-balticconnector-compressor-stations",
+      "https://elering.ee/en/elering-will-build-two-substations-powering-balticconnector-compression-stations"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Panigaglia LNG Terminal",
+    "terminal_id": "T100000130476",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "yellow",
+    "basis": "No source found of any on-site generation at Panigaglia; the terminal is a small legacy regas plant tied to the external grid via a substation.",
+    "basis [ref]": [
+      "https://va.mite.gov.it/File/Documento/1090578"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Pechora LNG Terminal",
+    "terminal_id": "T100000130510",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "No candidate power plant of any kind was identified for this terminal this pass — there is nothing to propose adding to GOGPT. This is an evidence gap, not a size-based screen: if a captive plant is later documented, this should be revisited.",
+    "basis [ref]": [],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Pilot Cork FSRU",
+    "terminal_id": "T100000131135",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "Not a size call — there is no evidence of any on-site gas generation to add in the first place; nothing to stage.",
+    "basis [ref]": [
+      "https://www.echolive.ie/corknews/arid-41106664.html",
+      "https://www.portofcork.ie/the-port-of-cork-energy-hub-momentum-on-display-during-taoiseach-tour-of-offshore-renewable-energy-infrastructure/"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Piombino FSRU",
+    "terminal_id": "T100000131096",
+    "gogpt_candidate": "REVIEWER CALL",
+    "electric_mw": "23.4",
+    "confidence": "green",
+    "basis": "As with Toscana, this is vessel-integral genset equipment on the FSRU itself rather than a separable fixed power-plant site; whether GOGPT should carry a discrete captive-plant entry for it is a reviewer call. Size (23.4 MW) is NOT the reason for any hesitation -- the industrial-host trap already correctly excluded the unrelated 180 MW steelworks plant from this terminal's attribution.",
+    "basis [ref]": [
+      "https://va.mite.gov.it/File/Documento/678395",
+      "https://va.mite.gov.it/File/Documento/837896"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Polish Baltic Sea Coast FSRU",
+    "terminal_id": "T100000130731",
+    "gogpt_candidate": "MAYBE",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "Genuine on-site gas-fired power generation is documented, but no MW figure is published for the generators specifically (the 176.4 MW figure is for the steam boilers/thermal only and must not be used here), and the terminal is not yet operational — FSRU still under construction, regasification start planned Q1 2028. Reviewer should decide whether to log a placeholder now or wait for commissioning data.",
+    "basis [ref]": [
+      "https://www.gaz-system.pl/dam/jcr:5e7b9dea-7e9b-4d4c-a759-92bbed766b4c/fsru-raport-o-oddzialywaniu-na-srodowisko-tom-i-streszczenie.pdf",
+      "https://www.gaz-system.pl/pl/dla-mediow/komunikaty-prasowe/2026/maj/19-05-2026-jednostka-fsru-zwodowana-kolejny-kamien-milowy-strategicznej-inwestycji-gaz-system.html"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Pori LNG Terminal",
+    "terminal_id": "T100000130440",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "No verifiable evidence of a generating unit at the terminal.",
+    "basis [ref]": [],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Port Meridian FSRU",
+    "terminal_id": "T100000130555",
+    "gogpt_candidate": "REVIEWER CALL",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "Project entity is in liquidation, but per rule 6 a cancelled project's own design still counts if confirmable — it could not be confirmed here. Reviewer should decide whether pursuing the original DCO Environmental Statement (circa 2014-2016) is worth it before closing this out as NO; absence of a spec must not become a documented NO.",
+    "basis [ref]": [
+      "http://web.archive.org/web/20230128032300/https://portmeridian.com/regasification-vessel/",
+      "https://find-and-update.company-information.service.gov.uk/company/06518055"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Port of Vlora FSRU",
+    "terminal_id": "T100000130924",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "This is a PowerPlantsSupplied relationship to an existing/planned GOGPT record (Vlora power station), not a captive generator for the FSRU itself.",
+    "basis [ref]": [
+      "https://excelerateenergy.com/news/excelerate-energy-exxonmobil-and-the-republic-of-albania-agree-to-lng-terminal-study/",
+      "https://seenews.com/news/gas-fired-vlora-tpp-to-have-350-mw-capacity-albania-energy-min-1245264",
+      "https://www.ogj.com/pipelines-transportation-lng/article/14199312/excelerate-exxonmobil-study-lng-to-power-terminal-in-albania"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Porto Empedocle LNG Terminal",
+    "terminal_id": "T100000130478",
+    "gogpt_candidate": "REVIEWER CALL",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "Not a size question — no captive generation has been documented to exist at all yet at this shelved terminal. Do not treat absence of evidence as a negative finding; a future revival (Enel restarted the project 2022-2024, decree extensions through 2023 per Regione Sicilia) may surface fuller technical filings worth re-checking.",
+    "basis [ref]": [],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Porto Torres FSRU",
+    "terminal_id": "T100000131061",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "Not a size call -- there is no confirmed terminal (project inferred shelved, never built) and no documented captive-power design of any kind to add. The only confirmed nearby captive gas/coal power asset (Saras' 140 MW Porto Torres Refinery station) was already ruled out as belonging to a different, unrelated industrial host.",
+    "basis [ref]": [
+      "https://www.unionesarda.it/en/sardinia/porto-torres-the-regasification-terminal-ready-to-receive-46-lng-tankers-a-year-ft1psmpy"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Portovaya LNG Terminal",
+    "terminal_id": "T100000130707",
+    "gogpt_candidate": "REVIEWER CALL",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "This is mechanical-drive shaft power (gas turbine turning a refrigerant compressor), not an electric generator, at a Gazprom industrial site adjacent to the KS Portovaya compressor station. GOGPT reportedly already tracks mechanical-drive units elsewhere and its MW figures sometimes conflate mechanical/electric — reviewer should check whether GOGPT already carries a Portovaya-area record before adding; do not default to DO NOT ADD merely because it's mechanical drive.",
+    "basis [ref]": [
+      "https://lngnews.ru/project/kspg-portovaya/",
+      "https://oilgascom.com/rep-xolding-otgruzil-oborudovanie-dlya-zavoda-spg-v-rajone-ks-portovaya/"
+    ],
+    "mechanical_drive_note": "GE MS5002E / Frame 5 (localized as GPA-32 'Ladoga' by REP Holding), GOST-rated ≥32.0 MW at the drive coupling, direct-drives the mixed-refrigerant compressor per train (2 trains total) — shaft/mechanical drive, not an electric generator. Do not populate electric_mw with this 32 MW figure."
+  },
+  {
+    "terminal": "Portovesme FSRU",
+    "terminal_id": "T100000131058",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "Project cancelled before any conversion or design work began — never reached a stage where captive power could have been designed.",
+    "basis [ref]": [
+      "https://lngprime.com/contracts-and-tenders/golars-fsru-conversion-deal-with-italys-snam-falls-through/88647/"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Predator FSRU (Mag Mell)",
+    "terminal_id": "T100000130855",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "yellow",
+    "basis": "No design exists yet; an offshore-moored FSRU with no shore connection is a strong PRIOR for onboard generation being necessary, but per the brief a prior is not evidence and must not drive a verdict.",
+    "basis [ref]": [],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Priolo Augusta LNG Terminal",
+    "terminal_id": "T100000130480",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "No on-site gas-fired power generation of any kind (electric or mechanical) is documented in the terminal's own design; basis is the absence of any generator in a comprehensive, primary-source enumeration of the terminal's operations and process units, not size.",
+    "basis [ref]": [
+      "https://va.mite.gov.it/File/Documento/12600"
+    ],
+    "mechanical_drive_note": "No mechanical-drive equipment found or indicated; vaporization is heat-exchange based (open-rack/seawater-type per the 'scambio con un fluido più caldo' description), not combustion-driven."
+  },
+  {
+    "terminal": "Puerto de la Luz LNG Terminal",
+    "terminal_id": "T100000130856",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "yellow",
+    "basis": "Cancelled, and even as designed the generation component was diesel-fueled (non-gas, categorically out of scope) and directionally a grid-export/PowerPlantsSupplied asset, not captive power.",
+    "basis [ref]": [
+      "https://www.eldiario.es/canariasahora/ciencia_y_medio_ambiente/cabildo-gran-canaria-acepta-planta-gas-licuado-puerto-luz-rechaza-central-electrica_1_10550586.html",
+      "https://www.eldiario.es/canariasahora/politica/antonio-morales-regasificadora-puerto-luz-no-permitir-gas-frene-descarbonizacion-isla_1_11991852.html"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Rauma LNG Terminal",
+    "terminal_id": "T100000130720",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "If the terminal was never built, there is no physical site for a captive gas power match against GOGPT at all - this is the one case in this batch where 'not a gas power station' plausibly applies because there may be no facility, not because of size.",
+    "basis [ref]": [],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Ravenna FSRU",
+    "terminal_id": "T100000131095",
+    "gogpt_candidate": "REVIEWER CALL",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "Size is not the issue -- existence is simply undocumented. A moored combi-type FSRU built in 2015 almost certainly has dual-fuel diesel-electric (or similar) generator sets that can burn boil-off gas for hotel/plant load (this is standard industry design for this vessel class), which is the single most likely path to a documented YES per the five tests -- but no source actually states this for BW Singapore specifically, so it cannot be staged as a finding.",
+    "basis [ref]": [
+      "https://www.snam.it/en/we-snam/about-us/our-infrastructure/onshore-regasification-terminal/ravenna.html",
+      "https://www.lngindustry.com/floating-lng/04032025/snam-announces-mooring-of-fsru-bw-singapore/"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Ravenna LNG Terminal",
+    "terminal_id": "T100000130683",
+    "gogpt_candidate": "ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "Three BOG-fired reciprocating engine-gensets running in normal operation and exporting surplus to the national grid; no GOGPT record found for them. Rating is not published in the filing, which is not a disqualifier (no MW floor).",
+    "basis [ref]": [
+      "https://va.mite.gov.it/File/Documento/905969",
+      "https://va.mite.gov.it/File/Documento/522381"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Revithoussa LNG Terminal",
+    "terminal_id": "T100000130462",
+    "gogpt_candidate": "ADD",
+    "electric_mw": "13",
+    "confidence": "green",
+    "basis": "13 MW gas-engine CHP plant; no evidence found in this research that a GOGPT record already exists for it — size is not a disqualifier under current rules.",
+    "basis [ref]": [
+      "https://www.desfa.gr/wp-content/uploads/2024/07/DESFA-LNG-Terminal-Revithoussa_.pdf"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Riga FSRU",
+    "terminal_id": "T100000130486",
+    "gogpt_candidate": "REVIEWER CALL",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "Nothing to add or withhold — there is no design to assess. Revisit only if the project revives with published technical content.",
+    "basis [ref]": [],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Risavika LNG Terminal",
+    "terminal_id": "T100000130496",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "No gas-fired generating unit exists at the site; the only permitted energy plant is a 3.8 MWt hot-oil boiler and the only generator is a diesel emergency set.",
+    "basis [ref]": [
+      "https://www.norskeutslipp.no/WebHandlers/PDFDocumentHandler.ashx?documentID=21021&documentType=T&companyID=23290&aar=0&epslanguage=no",
+      "https://www.norskeutslipp.no/WebHandlers/PDFDocumentHandler.ashx?documentID=698778&documentType=T&companyID=23291&aar=0&epslanguage=no"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Rostock LNG Terminal",
+    "terminal_id": "T100000130722",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "yellow",
+    "basis": "No gas power station identified on site at all — not a size call.",
+    "basis [ref]": [
+      "https://www.stalu-mv.de/mm/Service/Presse_Bekanntmachungen/?id=199249&processor=processor.sa.pressemitteilung"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Sagunto LNG Terminal",
+    "terminal_id": "T100000130536",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "Terminal is documented grid-fed with no on-site generation; the GOGPT prior is a separate large merchant plant, not this terminal's captive power.",
+    "basis [ref]": [
+      "https://www.saggas.com/pdf/DECLARACION-AMBIENTAL-PLANTA-DE-REGASIFICACION-DE-SAGUNTO.pdf"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Sakhalin II LNG Terminal",
+    "terminal_id": "T100000130512",
+    "gogpt_candidate": "MAYBE",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "A genuine, sourced, gas-fired generating plant (5x GE Frame 5 turbine-generators) exists on-site and is currently absent from GOGPT entirely -- it should eventually become a new GOGPT record. Held at MAYBE rather than ADD because no verified nameplate MW was obtainable from 2 independent sources (the commonly-cited 129 MW figure traces to gem.wiki and could not be corroborated elsewhere); a reviewer should pull GE Frame 5001/5002 spec sheets or a Sakhalin Energy technical paper to pin the MW before staging.",
+    "basis [ref]": [
+      "https://www.ge.com/news/press-releases/ge-wins-333-million-service-contract-extension-sakhalin-2-lng-plant-subarctic-russia",
+      "https://www.nsenergybusiness.com/projects/sakhalin-2-oil-and-gas-project/"
+    ],
+    "mechanical_drive_note": "4x GE Frame 7EA gas turbines drive the LNG process trains (mechanical/shaft drive, no electricity generated) per GE's own service-contract release and corroborating trade press. A commonly circulated ~129 MW aggregate figure for the separate 5x GE Frame 5 electric generator sets could not be independently corroborated in 2 verified sources (it traces back to gem.wiki, which is banned as a citation) and is NOT reported as electric_mw."
+  },
+  {
+    "terminal": "Shannon FSRU",
+    "terminal_id": "T100000130464",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "The 600MW plant is a real, GOGPT-tracked asset already (100000407710) and is NOT this terminal's captive power -- nothing to add on the LNG side.",
+    "basis [ref]": [
+      "https://www.pleanala.ie/publicaccess/EIAR-NIS/320300/Construction%20Environmental%20Management%20Plan.pdf",
+      "https://www.pleanala.ie/en-ie/case/322568",
+      "https://www.rte.ie/news/ireland/2025/0318/1502701-planning-permission-lng/",
+      "https://www.rte.ie/news/regional/2025/0530/1515893-shannon-lng/"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Shtokman LNG Terminal",
+    "terminal_id": "T100000130514",
+    "gogpt_candidate": "REVIEWER CALL",
+    "electric_mw": "600",
+    "confidence": "green",
+    "basis": "A real, specific, vendor-class design (600 MW / GTE-110 gas turbines) was documented and tendered by the project operator — this is a legitimate, well-sourced captive-plant finding, not a scale-based exclusion. However the plant was never built and the project entity (Shtokman Development AG) was later liquidated, so whether a never-constructed design-stage plant belongs in GOGPT (which generally tracks physical/existing or firmly-planned assets) is a judgment call for the reviewer rather than a mechanical ADD.",
+    "basis [ref]": [
+      "https://ru.thebarentsobserver.com/tender-na-stroitelstvo-elektrostancii-v-teriberke/300953",
+      "https://cyberleninka.ru/article/n/potentsial-energosberezheniya-gazoturbinnoy-elektrostantsii-pri-realizatsii-pervoy-stadii-shtokmanovskogo-proekta"
+    ],
+    "mechanical_drive_note": "Both sources describe electricity generation (an own-needs power STATION feeding the plant), not gas turbines directly driving refrigeration compressors — this is electric generation, not mechanical drive. The academic source's alternative recommended configuration (4x GTE-110, ~442 MW combined) is noted here rather than as a separate electric_mw value, since 600 MW is the originally tendered spec tied to the formal announcement."
+  },
+  {
+    "terminal": "Sines LNG Terminal (Portugal)",
+    "terminal_id": "T100000130500",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "yellow",
+    "basis": "No captive generation found at the LNG terminal itself; the two nearby GOGPT records are already correctly attributed to their actual industrial hosts (Repsol, Indorama), not to this terminal.",
+    "basis [ref]": [],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Skulte LNG Terminal",
+    "terminal_id": "T100000130725",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "Not a gas power station at all — the documented on-site generator is diesel-fired.",
+    "basis [ref]": [
+      "https://www.skultelng.lv/lv/ivn/?getfile=15&iid=58"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "South Hook LNG Terminal",
+    "terminal_id": "T100000130557",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "No built generating asset exists on South Hook's own site; the historically-designed 500MWe CHP was cancelled in 2015/16 and never constructed, so there is nothing to add to GOGPT for this terminal today.",
+    "basis [ref]": [
+      "https://www.legislation.gov.uk/uksi/2014/2846/made",
+      "https://www.gov.uk/government/news/south-hook-chp-plant-moves-a-step-closer-to-being-built",
+      "https://www.lngindustry.com/liquid-natural-gas/03022015/delay-for-south-hook-lng-chp-171/",
+      "https://find-and-update.company-information.service.gov.uk/company/08109296",
+      "https://pembrokeshire-herald.com/24955/south-hook-power-plant-plans-cancelled/"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Southern Finland LNG Terminal (Gasum Finngulf LNG)",
+    "terminal_id": "T100000130442",
+    "gogpt_candidate": "REVIEWER CALL",
+    "electric_mw": "",
+    "confidence": "yellow",
+    "basis": "A backup power system's existence is documented but its fuel basis is not - insufficient either to add (fuel unconfirmed as gas) or to exclude (this was never a documented NO). Also note: this project was a large-scale import terminal that never reached FID/construction (superseded by the smaller Hamina/Pori terminals and later the Inkoo FSRU) - worth confirming current GEM Status reflects that it was shelved/never built, which would bear on whether this record should carry any captive-power annotation at all.",
+    "basis [ref]": [
+      "https://www.ymparisto.fi/sites/default/files/documents/Gasum_Finngulf_LNG_YVA_23052013_pieni.pdf",
+      "https://kliimaministeerium.ee/media/1244/download"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Stade LNG Terminal",
+    "terminal_id": "T100000131086",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "No generating equipment currently present at the Stade site to add.",
+    "basis [ref]": [
+      "https://lngprime.com/contracts-and-tenders/det-terminates-stade-fsru-contract-with-heh/145568/",
+      "https://lngprime.com/europe/det-says-stade-fsru-to-be-deployed-in-jordan/156263/",
+      "https://lngprime.com/middle-east/stade-fsru-arrives-in-jordan/158881/",
+      "https://lngprime.com/europe/det-plans-to-launch-stade-fsru-terminal-in-september/188929/"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Stade LNG Terminal",
+    "terminal_id": "T100000130721",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "GOGPT's existing Dow/AOS attribution is correct as-is; the LNG terminal does not own, and is not shown to draw electricity from, either plant.",
+    "basis [ref]": [
+      "https://de.wikipedia.org/wiki/LNG-Terminal_Stade",
+      "https://www.nsenergybusiness.com/projects/stade-lng-terminal-germany/",
+      "https://www.powerengineeringint.com/coal-fired/equipment-coal-fired/chp-for-dow-chemical-site-in-stade-germany/"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Strategic Gas Emergency Reserve (SGER) FSRU",
+    "terminal_id": "T100001048053",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "No evidence of any on-site gas generation exists to stage — project has not reached design stage.",
+    "basis [ref]": [
+      "https://www.gasnetworks.ie/about/projects/strategic-gas-emergency-reserve",
+      "https://www.gasnetworks.ie/about/projects/strategic-gas-emergency-reserve/location",
+      "https://www.tradewindsnews.com/gas/site-selected-for-ireland-s-first-fsru-to-bolster-gas-supply-security/2-1-1907810"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Taimyr LNG Terminal",
+    "terminal_id": "T100000131155",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "The large associated-gas power fleet at Bukhta Sever/Vostok Oil is documented as serving oil operations, not an LNG plant — it is not this terminal's captive plant even if eventually correlated by GOGPT's matcher on proximity; and no LNG-specific generation asset exists to add regardless.",
+    "basis [ref]": [
+      "https://www.kommersant.ru/doc/4541156",
+      "https://neftegazpro.ru/analitika/rosneft-zayavila-o-planakh-postroit-krupneishii-v-mire-spg-proekt-na-taimyre-taimyr-spg-i-kara-spg"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Tallinn LNG Terminal",
+    "terminal_id": "T100000130436",
+    "gogpt_candidate": "MAYBE",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "Insufficient information — no design exists to evaluate one way or the other; do not treat this as a settled NO.",
+    "basis [ref]": [],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Tambey LNG Terminal",
+    "terminal_id": "T100000131154",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "No generation facility of any kind — gas, diesel, or otherwise — has been identified for this site; nothing exists yet to add to GOGPT.",
+    "basis [ref]": [
+      "https://neftegaz.ru/news/transport-and-storage/868100-na-yamale-postroyat-terminal-dlya-sug-i-kondensata-v-ramkakh-osvoeniya-tambeyskogo-mestorozhdeniya-g/",
+      "https://geoinform.ru/licenzii-na-mestorozhdeniya-tambejskoj-gruppy-zapadno-tambejskoe-severo-tambejskoe-i-tasijskoe-pereoformleny-na-sp-gazproma-i-rusgazdobychi-gazprom-dobycha-tambej/"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Taranto LNG Terminal",
+    "terminal_id": "T100001084182",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "3",
+    "confidence": "green",
+    "basis": "Not a size issue — the project is still in VIA permitting (not yet built; no physical plant exists to catalog in GOGPT). Even once built, its standby-only role (activates only on grid loss) is a reviewer call for GOGPT's own inclusion criteria, but that decision is moot until construction/FID.",
+    "basis [ref]": [
+      "https://va.mite.gov.it/File/Documento/1350130",
+      "https://va.mite.gov.it/File/Documento/1350095"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Teesside GasPort FSRU",
+    "terminal_id": "T100000130559",
+    "gogpt_candidate": "REVIEWER CALL",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "Terminal has been decommissioned since 2015; absence of a spec is insufficient to call this NO, but no positive evidence of captive gas power was found either. Reviewer should decide whether archival research (contemporaneous EA permit filings, now likely surrendered/archived) is worth pursuing for a retired terminal.",
+    "basis [ref]": [
+      "https://excelerateenergy.com/projects/teesside-gasport/"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Teesside WaveCrest LNG Terminal",
+    "terminal_id": "T100000131171",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "No gas-fired power generation exists or is designed anywhere on this site — it's a grid-electric plant with diesel-only (not gas) emergency backup. DO NOT ADD because it isn't a gas power station at all, not because of size.",
+    "basis [ref]": [
+      "https://nsip-documents.planninginspectorate.gov.uk/published-documents/EN040001-000032-TFRP%20-%20Scoping%20Report%20-%20Volume%201%20Main%20Text.pdf"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Tenerife LNG Terminal",
+    "terminal_id": "T100000130537",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "Never built; the design was grid-fed by a dual 20 kV underground connection from the Granadilla industrial-park substation, and the 2.8-3.9 MW figure in the dossier is site DEMAND, a load, not a generator. Fails the loads-are-not-generators test -- size is not the reason. (The separate Granadilla power station is a PowerPlantsSupplied relationship, the opposite of captive.)",
+    "basis [ref]": [
+      "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2016-7130"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Terneuzen FSRU",
+    "terminal_id": "T100000131100",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "Project cancelled before any design existed; no generation equipment to add.",
+    "basis [ref]": [
+      "https://maritime-executive.com/article/gasunie-drops-plans-for-lng-terminal-in-terneuzen",
+      "https://www.rivieramm.com/news-content-hub/news-content-hub/gasunie-still-looking-to-expand-says-terneuzen-terminal-not-feasible-74992"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Thessaloniki FSRU",
+    "terminal_id": "T100000131010",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "yellow",
+    "basis": "No design exists yet to evaluate; nothing to add on either the LNG or power side for this specific FSRU's own captive generation until an EIA is published.",
+    "basis [ref]": [],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Thrace FSRU",
+    "terminal_id": "T100000131006",
+    "gogpt_candidate": "MAYBE",
+    "electric_mw": "",
+    "confidence": "yellow",
+    "basis": "A confirmed 9.5 MW demand exists and the project has a real permitting milestone (AEPO), so this is not a dead lead -- but supply-side is genuinely unresolved, so DO NOT ADD would be premature and ADD would be unsupported; a future pass with access to the actual ΑΕΠΟ/ΣΜΠΕ PDF (via eprm.ypen.gr once reachable, or a FOI-style request) could resolve this.",
+    "basis [ref]": [
+      "https://www.newmoney.gr/roh/palmos-oikonomias/energeia/gastrade-pire-to-prasino-fos-tou-ipen-gia-to-thraki-fsru-pics/"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Tjelbergodden LNG Terminal",
+    "terminal_id": "T100000130726",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "Not a size call — there is no captive relationship to add on the LNG side. The gas plant found belongs to Statnett's regional grid, not to this terminal; the plant itself was also dismantled/sold and no longer exists at the site to track as anyone's captive asset.",
+    "basis [ref]": [
+      "https://www.tu.no/artikler/det-kostet-en-milliard-og-ble-aldri-tatt-i-bruk-na-selger-statnett-reservegasskraftverket-pa-tjeldbergodden/222344",
+      "https://www.nrk.no/mr/statnett-selger-gasskraftverket-pa-tjeldbergodden-1.12316469",
+      "https://www.tbu.no/historie",
+      "https://no.wikipedia.org/wiki/Tjeldbergodden_industrianlegg"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Tornio Manga LNG Terminal",
+    "terminal_id": "T100000130444",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "Terminal supplies gas OUT to an external industrial host (Outokumpu steel mill), not generation powering the terminal; not a GOGPT-relevant relationship at all.",
+    "basis [ref]": [
+      "https://www.wartsila.com/media/news/28-11-2017-wartsila-built-tornio-manga-lng-terminal-project-achieves-notable-milestone-with-successful-unloading-of-first-lng-supply",
+      "https://www.nsenergybusiness.com/news/finland-tornio-manga-lng-terminal/",
+      "https://www.offshore-technology.com/projects/tornio-manga-lng-terminal/"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Toscana FSRU",
+    "terminal_id": "T100000130474",
+    "gogpt_candidate": "REVIEWER CALL",
+    "electric_mw": "26.7",
+    "confidence": "green",
+    "basis": "This is a vessel-integral steam-turbogenerator/genset system (engine-room equipment on the FSRU itself), not a separable fixed power-plant site of the kind GOGPT typically inventories as a discrete entry; whether GOGPT already tracks (or should track) this as its own captive-plant record is a reviewer call, not resolved by search. Size (26.7 MW combined) is NOT the reason for any hesitation.",
+    "basis [ref]": [
+      "https://va.mite.gov.it/File/Documento/135472",
+      "https://va.mite.gov.it/File/Documento/42972"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Trieste Monfalcone LNG Terminal",
+    "terminal_id": "T100000130482",
+    "gogpt_candidate": "ADD",
+    "electric_mw": "48",
+    "confidence": "green",
+    "basis": "Documented on-site gas-fired generation exists at design level (as-designed counts even though the terminal itself was never built — VIA was ultimately rejected 24/04/2013). Size (48 MW nameplate / ~32 MW normal duty) is not the basis for this call; the basis is that self-sufficient on-site gas turbine generation is explicitly and specifically documented in the terminal's own EIA filing.",
+    "basis [ref]": [
+      "https://va.mite.gov.it/File/Documento/3068"
+    ],
+    "mechanical_drive_note": "Not mechanical drive — the SIA explicitly labels these units 'Generatori elettrici' (electric generators) producing electricity, not shaft-power gas turbines. Installed total is 3 x 16 MW = 48 MW nameplate (2 units normally in service + 1 standby/reserve, i.e. ~32 MW under normal two-unit operation); 2 diesel gensets (startup + emergency) are separate, diesel-fuelled, and standby-only — not counted in electric_mw."
+  },
+  {
+    "terminal": "Ukraine LNG Terminal",
+    "terminal_id": "T100000130561",
+    "gogpt_candidate": "REVIEWER CALL",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "No design published; project status itself (repeatedly proposed/stalled) makes an add/reject call premature.",
+    "basis [ref]": [
+      "https://gasua.com/en/ukraine-offers-the-us-to-build-an-lng-terminal-in-odesa/",
+      "https://lng2030.com/project/lng_321"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Ust Luga LNG Terminal",
+    "terminal_id": "T100000130504",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "yellow",
+    "basis": "Captive power here is mechanical-drive (shaft power) refrigeration-compressor turbines, not electricity generation; no MW of grid or self electricity generation is confirmed to add as a GOGPT station. (If the reported shift to Russian ODK GTD-110M generator-class turbines is later confirmed as a generator + electric-motor-drive architecture, revisit as MAYBE/ADD — see status_or_other_findings.)",
+    "basis [ref]": [
+      "https://power.mhi.com/news/20211125.html"
+    ],
+    "mechanical_drive_note": "4 x dual-shaft 120 MW Mitsubishi Power/MHI H-100 gas turbines (~480 MW aggregate shaft power, calculated from 4x120MW) driving 10 centrifugal compressors for the main refrigeration gas compression trains, ordered by Linde Engineering for RusChemAlliance's Ust-Luga LNG plant."
+  },
+  {
+    "terminal": "Valentina LNG Terminal",
+    "terminal_id": "T100000131113",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "Project is still pre-construction (design documentation stage, contractor not yet selected) — there is no built or even design-confirmed generation asset to add to GOGPT yet.",
+    "basis [ref]": [
+      "https://portnews.ru/news/328441/",
+      "https://neftegaz.ru/news/spg-szhizhennyy-prirodnyy-gaz/734809-kitaytsy-postroyat-na-yuge-primorya-krupnotonnazhnyy-spg-zavod/"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Vysotsk LNG Terminal",
+    "terminal_id": "T100000130708",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "Confirmed grid-connected via renewable PPA; no gas-fired captive generation exists to add.",
+    "basis [ref]": [
+      "https://neftegaz.ru/news/Alternative-energy/764292-spg-zavod-kriogaz-vysotsk-budet-poluchat-elektroenergiyu-s-azovskoy-ves/",
+      "https://neftegaz.ru/news/Alternative-energy/720455-kriogaz-vysotsk-budet-szhizhat-gaz-za-schet-zelenoy-elektroenergii/",
+      "https://gasandmoney.ru/novosti/kriogaz-vysoczk-poluchit-energiyu-vie/"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Wilhelmshaven LNG Terminal (Wilhelmshaven 1)",
+    "terminal_id": "T100000130458",
+    "gogpt_candidate": "REVIEWER CALL",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "Genuine dual-fuel onboard generation confirmed; no MW figure published so sizing for GOGPT entry is unclear. Reviewer should check GOGPT for an existing Wilhelmshaven/Höegh Esperanza entry before adding.",
+    "basis [ref]": [
+      "https://www.wilhelmshaven-lng.de/index.php/en/fsru",
+      "https://www.asap.nl/hoegh-esperanza-fsru-flawless-lng-sampler-inspection/"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Wilhelmshaven NWO FSRU",
+    "terminal_id": "T100000131000",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "Documented diesel-fired equipment, not a gas power station — this is a real NO on fuel type, not a size call.",
+    "basis [ref]": [
+      "https://www.gewerbeaufsicht.niedersachsen.de/download/210881/Genehmigungsbescheid.pdf"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Wilhelmshaven TES / Wilhelmshaven 2 LNG Terminal",
+    "terminal_id": "T100000131097",
+    "gogpt_candidate": "MAYBE",
+    "electric_mw": "",
+    "confidence": "yellow",
+    "basis": "Onboard generation is confirmed to exist and be BImSchG-regulated (i.e., combustion-based); size and fuel are unknown pending follow-up. Not a DO NOT ADD — there is very likely something real here, just unconfirmed in this pass.",
+    "basis [ref]": [
+      "https://www.gewerbeaufsicht.niedersachsen.de/download/201174/Oeffentliche_Bekanntmachung.pdf"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Yakutia LNG Project",
+    "terminal_id": "T100000130995",
+    "gogpt_candidate": "REVIEWER CALL",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "No captive plant exists to add for this LNG terminal record. Separately, the newly announced 200 MW gas-fired power project (for data centers/mining) could itself be a candidate for GOGPT on its OWN project record once details firm up, but that is a different site/project outside this terminal's scope — flag to reviewer rather than mark DO NOT ADD, since the underlying situation is still resolving post-shelving.",
+    "basis [ref]": [
+      "https://www.upstreamonline.com/lng/russian-gas-independent-scraps-sanctions-hit-lng-export-plant/2-1-1893065",
+      "https://eadaily.com/en/news/2025/10/30/russia-abandons-the-lng-sanctions-project-gas-will-be-used-for-electricity-and-ai"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Yamal LNG Terminal",
+    "terminal_id": "T100000130518",
+    "gogpt_candidate": "ADD",
+    "electric_mw": "376",
+    "confidence": "green",
+    "basis": "Genuine, sourced, gas-fired 376 MW electricity-generating plant, on-site and dedicated to the terminal, currently absent from GOGPT entirely -- textbook new-record case.",
+    "basis [ref]": [
+      "https://www.power-technology.com/data-insights/power-plant-profile-yamal-lng-power-plant-russia/",
+      "https://energoseti.ru/station/yamal-spg-tes",
+      "https://www.niiosp.ru/objects/0010/"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Zaule LNG Terminal",
+    "terminal_id": "T100000130484",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "Not a size issue — the project was formally withdrawn in May 2018 after 14 years of permitting and was never built, so there is no physical plant to catalog in GOGPT. This is an as-designed CaptiveGasPower=True finding for GEM's LNG terminal record only.",
+    "basis [ref]": [
+      "https://va.mite.gov.it/File/Documento/2489"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Zeebrugge LNG Terminal",
+    "terminal_id": "T100000130426",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "45,875 kVA (installed AC-generating capacity, VLAREM rubriek 12.1.1.3°)",
+    "confidence": "green",
+    "basis": "Retired plant, unconfirmed host, and inconsistent with the LNG terminal's documented (non-generating) vaporizer technology -- not this terminal's captive power.",
+    "basis [ref]": [
+      "https://gpbv.omgeving.vlaanderen.be/api/view/vergunningsbesluiten/bestand?uniekeSleutel=a2526f5f-59a9-44db-8ec4-118c5bb28da7"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Zeeland Energy FSRU (ZET)",
+    "terminal_id": "T100000131099",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "Design explicitly excludes normal-operation onboard generation; this is a backup-only case per the brief's STANDBY_ONLY framing, not a captive generation source.",
+    "basis [ref]": [
+      "https://www.rvo.nl/sites/default/files/2025-12/Concept-NRD%20-%20Zeeland-Energy-Terminal-(ZET).pdf"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Świnoujście Polskie LNG Terminal",
+    "terminal_id": "T100000130498",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "The site's only large gas combustion installation is submerged-combustion vaporizer process-heat equipment (MWt), not an electricity generator, and no colocated GOGPT plant exists. Fails the power-not-heat test -- size is not the reason.",
+    "basis [ref]": [
+      "https://bip.um.swinoujscie.pl/artykul/538/14825/przetargi-i-ogloszenia",
+      "https://www.gaz-system.pl/en/terminal-lng/lng-terminal-expansion-program.html",
+      "https://gtsa.pl/jak-dziala-terminal-lng-swinoujscie-proces-regazyfikacji-krok-po-kroku/"
+    ],
+    "mechanical_drive_note": ""
+  }
+]

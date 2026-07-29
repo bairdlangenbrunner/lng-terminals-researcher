@@ -1,0 +1,34 @@
+[
+  {
+    "entity_name": "Enerwave",
+    "entity_type": "company",
+    "country_of_hq": "Greece",
+    "parent_entity": "HELLENiQ ENERGY Holdings SA; HELLENiQ ENERGY International GmbH",
+    "rationale_for_new_entity": "Elpedison A.E. (prior 100% owner of the Thessaloniki FSRU) was renamed Enerwave A.E. in 2026 following HELLENiQ ENERGY Holdings' completed acquisition of the Elpedison stake formerly held by EDF/Edison; the new company name is not yet in GEM.",
+    "lookup_was_run": "RUN: python entity_lookup.py \"Enerwave\" --remote (bare, no --country)",
+    "lookup_result_summary": "no_remote_match; not found in local gem_export.csv (grep -io across whole export, all countries: 0 hits). Treated as a lead per CLAUDE.md caveat, but a fresh entity is expected here since Enerwave is a genuine 2025-2026 rename of Elpedison A.E. (the prior Thessaloniki FSRU owner, itself presumably already an existing GEM entity under the old name). | Orchestrator Postgres entity_history re-check 2026-07-17: ABSENT — stands as new.",
+    "referenced_by_terminals": [
+      "Thessaloniki FSRU"
+    ],
+    "referenced_by_units": [
+      "G100002101000"
+    ],
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "entity_name": "HELLENiQ ENERGY International GmbH",
+    "entity_type": "company",
+    "country_of_hq": "Austria",
+    "parent_entity": "HELLENiQ ENERGY Holdings SA",
+    "rationale_for_new_entity": "New 45% parent-level shareholder of Enerwave (Thessaloniki FSRU project company) following HELLENiQ ENERGY Holdings' 2025 acquisition of Elpedison/Edison's stake; not yet found in GEM as a distinct entity (only the parent group 'HELLENiQ ENERGY Holdings SA' already exists, referenced on the Alexandroupolis FSRU terminal's Parent field).",
+    "lookup_was_run": "RUN: python entity_lookup.py \"HELLENiQ ENERGY International GmbH\" --remote (bare, no --country); also grepped gem_export.csv whole-export for 'HELLENiQ' and 'Hellenic Energy International'",
+    "lookup_result_summary": "no_remote_match; local grep found 'HELLENiQ ENERGY Holdings SA' already present (on Alexandroupolis FSRU's Parent field) but no hit for 'HELLENiQ ENERGY International GmbH' anywhere in the export. Treated as a lead per CLAUDE.md caveat. | Orchestrator Postgres entity_history re-check 2026-07-17: only 'HELLENiQ ENERGY Holdings' (100000000473) exists; the GmbH subsidiary is a distinct 45% shareholder and stands as new.",
+    "referenced_by_terminals": [
+      "Thessaloniki FSRU"
+    ],
+    "referenced_by_units": [
+      "G100002101000"
+    ],
+    "researcher_initials": "AI-draft"
+  }
+]

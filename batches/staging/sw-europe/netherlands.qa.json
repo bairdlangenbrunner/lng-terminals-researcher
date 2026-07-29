@@ -1,0 +1,42 @@
+[
+  {
+    "category": "citation_error",
+    "terminal_id": "T100000130997",
+    "unit_id": "G100002099700",
+    "terminal_name": "Eemshaven FSRU",
+    "issue": "Prior ConstructionDate [ref] cited an NDR article about the Wilhelmshaven (Germany) LNG terminal, not Eemshaven (Netherlands) — a wrong-subject citation, not just link-rot. Fixed in this batch (see updates.json) with a Gasunie press release specific to Eemshaven.",
+    "severity": "medium",
+    "suggested_action": "Applied fix in this batch; flagging as a data-quality pattern worth a tracker-wide spot-check (mismatched-country citations).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "pending_development",
+    "terminal_id": "T100000130997",
+    "unit_id": "G100002099700",
+    "terminal_name": "Eemshaven FSRU",
+    "issue": "Gasunie/Vopak took a CONDITIONAL FID (June 1 2026) to add a second EXMAR-converted FSRU at Eemshaven for 2028-2036 contracted capacity (~190,000 m3 combined storage, 1,350 MMcf/d regas). Final FID still contingent on permits — not yet a confirmed status/capacity change.",
+    "severity": "low",
+    "suggested_action": "No field edit staged (FID not yet unconditional/final). Added a wiki Background entry. Revisit next batch — may warrant a new unit-row once final FID/permits land.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ownership_structure",
+    "terminal_id": "T100000131099",
+    "unit_id": "G100002109900",
+    "terminal_name": "Zeeland Energy FSRU",
+    "issue": "Staged Owner/Operator change from VTTI[100%] to a VTTI/Höegh Evi 50/50 joint venture — a materially significant ownership correction, well-corroborated (project's own site + VTTI + LNG Prime) but flagging given the significance.",
+    "severity": "low",
+    "suggested_action": "Review the staged Owner/Operator update in updates.json; no exact equity percentage was found in a primary filing beyond 'equal' — if a more precise split surfaces, refine.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dormant_revival_watch",
+    "terminal_id": "T100000131100",
+    "unit_id": "G100002110000",
+    "terminal_name": "Terneuzen FSRU",
+    "issue": "Checked dormant-revival-watch for the cancelled Terneuzen FSRU (Braakmanhaven site). Found that Braakmanhaven/Terneuzen was briefly considered by the Zeeland Energy Terminal (VTTI/Höegh Evi) developers as an alternate site before they selected Vlissingen-Oost instead — this is NOT a distinct new project reviving the dead site; it is already fully captured as the existing separate Zeeland Energy FSRU terminal (T100000131099).",
+    "severity": "low",
+    "suggested_action": "No new_terminal or monitor entry needed — informational only, confirms no discovery miss at this site.",
+    "researcher_initials": "AI-draft"
+  }
+]

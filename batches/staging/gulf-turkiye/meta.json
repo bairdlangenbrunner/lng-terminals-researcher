@@ -2,11 +2,16 @@
   "scope_slug": "gulf-turkiye",
   "workflow": "update+discovery",
   "tier": "exhaustive",
-  "countries": ["Kuwait", "Qatar", "Türkiye", "United Arab Emirates"],
+  "countries": [
+    "Kuwait",
+    "Qatar",
+    "Türkiye",
+    "United Arab Emirates"
+  ],
   "started": "2026-07-14",
-  "built": "2026-07-14",
+  "built": "2026-07-17",
   "applied": null,
   "status": "built",
   "run_record": "batches/run_records/2026-07-14_gulf-turkiye_exhaustive-update-and-discovery.md",
-  "notes": "Exhaustive-tier update+discovery across all four countries; Qatar and United Arab Emirates additionally got a genuine discovery pass (disc.done markers + UAE new-terminals candidate file). This supersedes Qatar/UAE's coverage from the original middleeast/ full-tracker sweep."
+  "notes": "Exhaustive-tier update+discovery across all four countries; Qatar and United Arab Emirates additionally got a genuine discovery pass (disc.done markers + UAE new-terminals candidate file). This supersedes Qatar/UAE's coverage from the original middleeast/ full-tracker sweep. Rebuilt 2026-07-17 after ref-drop repair (audit_ref_drops.py --apply; see run_records/2026-07-17_ref-drop-repair_all-built-batches.md). Rebuilt again 2026-07-17 (1047_ET) with the new giignl_recon tab after refreshing the giignl2026 diff + verdicts for these countries (see run_records/2026-07-17_gulf-turkiye_giignl-recon-tab-experiment.md). Rebuilt again 2026-07-17 (1224_ET) after the batch-wide dead-giignl.org sweep (33 [ref] repairs across Qatar/UAE/Kuwait) + Dörtyol wiki-row bare-homepage citation fix (see run_records/2026-07-17_bare-homepage-citation-sweep.md). Rebuilt 2026-07-17 (1246_ET): abarrelfull banned as a source (user directive) — Mina Al-Ahmadi Capacity [ref] re-cited to Excelerate/OGJ/Technica. Rebuilt 2026-07-20 (1053_ET): user-flagged NFE schedule-slip miss — staged NFE LatestPlannedStartYear 2026->2027 + operating/planned 2027 timeline append (new qatar.timeline.json), NFS 2028 re-anchored, plus revert records + high-severity qa flag for the 2026-07-20 live-DB operating/ActualStartYear=2026 edit that contradicts all reporting (see run_records/2026-07-20_gulf-turkiye_nfe-schedule-slip-fix.md)."
 }

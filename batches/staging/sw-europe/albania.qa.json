@@ -1,0 +1,22 @@
+[
+  {
+    "category": "new_sponsor_same_site",
+    "terminal_id": "T100000130924",
+    "unit_id": "G100002092400",
+    "terminal_name": "Port of Vlora FSRU",
+    "issue": "A different 2026 sponsor group -- Aktor Energy USA / Aktor LNG USA, Venture Global, and Atlantic SEE LNG Trade (a JV of Aktor 60% + DEPA Commercial) -- is pursuing an 'integrated energy hub' at the same Vlora site (LNG terminal + conversion of the Vlora thermal power plant to gas + a Fier-Vlora pipeline link to TAP). Per the dead-and-revived lifecycle rule, a materially different sponsor/design at a now-cancelled site is a candidate for a NEW terminal record rather than reviving this one, but current sourcing (Feb/Apr 2026 MOUs) is at feasibility/commercial-supply stage with inconsistent power-plant MW figures (~380 MW vs ~250 MW cited across sources) and no terminal-specific capacity or FID -- genuinely ambiguous on the 'sufficient information to add' bar.",
+    "severity": "medium",
+    "suggested_action": "Tracked as a discovery-pass monitor_list candidate (escalation flagged) rather than staged as a new_terminal this cycle; revisit once a terminal-specific capacity figure or FID/permit is confirmed.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dead_refs",
+    "terminal_id": "T100000130424",
+    "unit_id": "G100002042400",
+    "terminal_name": "Eagle FSRU",
+    "issue": "Both of this record's legacy [ref] URLs failed re-verification: eagle-lng.com (FacilityType/Owner/ProposalDate/Pipelines/Cost refs) is unreachable (connection failure, likely defunct domain for this small 2008-era Italian-sponsored project); the EU pci_list_gas.pdf (Owner/Capacity/ProposalDate/Pipelines/Cost refs) fails url_verifier text extraction (scanned/image PDF or no extractable text).",
+    "severity": "low",
+    "suggested_action": "No replacement sourced (project has been cancelled/dormant 14 years with no ongoing coverage to cite instead); flag for awareness only. Do not remove existing ref cells absent a confirmed replacement or delete-and-blank determination for a data value.",
+    "researcher_initials": "AI-draft"
+  }
+]

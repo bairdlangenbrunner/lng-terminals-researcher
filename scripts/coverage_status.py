@@ -100,6 +100,7 @@ def build_ledger(meta_records):
     per_country: {country: {lane: (date, scope_slug, tier)}} — latest per lane.
     cross_cutting / in_flight: lists of (path, meta)."""
     per_country = defaultdict(dict)
+    ranks = {}  # (country, lane) -> live/retired rank of the record currently held
     cross_cutting, in_flight = [], []
 
     for path, meta in meta_records:
@@ -114,12 +115,20 @@ def build_ledger(meta_records):
         if when_d is None:
             continue
         touch = (when_d, meta.get("scope_slug", path.parent.name), meta.get("tier"))
+        # Consolidation leaves several same-day dirs covering one region, all but the
+        # last superseded. Date alone can't separate them and the glob is alphabetical,
+        # so a plain `>` hands the ledger whichever sorts first — which is how
+        # "captive_power/americas" (superseded) outranked "americas-complete" and
+        # pointed a reader at a dead staging dir. Rank live records above retired ones
+        # on a tie; date still wins across different dates.
+        rank = 0 if meta.get("status") in ("superseded", "abandoned") else 1
 
         for lane in LANES.get(meta.get("workflow"), []):
             for country in countries:
                 existing = per_country[country].get(lane)
-                if existing is None or when_d > existing[0]:
+                if existing is None or (when_d, rank) > (existing[0], ranks[(country, lane)]):
                     per_country[country][lane] = touch
+                    ranks[(country, lane)] = rank
 
     return per_country, cross_cutting, in_flight
 

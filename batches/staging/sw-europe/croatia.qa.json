@@ -1,0 +1,22 @@
+[
+  {
+    "category": "ref_verification",
+    "terminal_id": "T100000130430",
+    "unit_id": "G100002043103",
+    "terminal_name": "Krk FSRU",
+    "issue": "Phase 2 Expansion (Onshore) unit-row (proposed, 4.1 bcm/y, target 2030) cites https://www.entsog.eu/tyndp for FacilityType/Status/Capacity/ProposalDate/StartDate — this is a generic homepage link that fails url_verifier.py (no 'Krk' match; flaky PDF extraction on the linked TYNDP 2024 Infrastructure Report). Re-search confirms the value is still current: ENTSOG's TYNDP 2024 project list and the EU Three Seas Initiative project page both independently describe an onshore LNG terminal near the Krk FSRU at 4.1 bcm/y capacity (unchanged from GEM). Recommend a follow-up pass locate the specific TYNDP 2024 project-sheet PDF or Three Seas project page as a working, specific replacement ref.",
+    "severity": "low",
+    "suggested_action": "Find and substitute a specific, verifiable ENTSOG TYNDP project-sheet URL (or projects.3seas.eu page, currently unreachable via WebFetch/DNS from this environment but resolves in browser) for the generic entsog.eu/tyndp link on all Phase 2 Onshore ref columns.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "ref_verification",
+    "terminal_id": "T100000130428",
+    "unit_id": "G100002042800",
+    "terminal_name": "Adria LNG Terminal",
+    "issue": "Several legacy refs (uk.reuters.com Owner/FIDYear/StartDate citations, euractiv.com AssociatedTerminals citation) return HTTP 401/403 from url_verifier.py. Spot-checked one (uk.reuters.com/article/croatia-lng-idUKL333439920090303) against the Wayback Machine — a 2016 snapshot (HTTP 200) confirms the page existed and is bot-blocked rather than dead, consistent with the known bot-block-not-dead pattern. Given the terminal is long-cancelled and low-priority, did not replace every one; flagging for a future dedicated citation-QC sweep.",
+    "severity": "low",
+    "suggested_action": "No action needed now; treat as bot-blocked-but-valid. Revisit if a future batch needs to actively cite these values.",
+    "researcher_initials": "AI-draft"
+  }
+]

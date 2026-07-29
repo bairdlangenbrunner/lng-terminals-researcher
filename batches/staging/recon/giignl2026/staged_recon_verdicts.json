@@ -1012,5 +1012,45 @@
     ]
    }
   ]
+ },
+ {
+  "terminal_id": "T100000130601",
+  "section_type": "liquefaction",
+  "unit_name": "",
+  "verdict": "keep-GEM 6.0 mtpa. GIIGNL 5.8 vs GEM 6.0 (3.3%). ADNOC Gas (operator, primary) states the Das Island three-train plant capacity as 6 mtpa, and the Air Products plant-capability table carries the per-train breakdown GEM records (T1 1.7 + T2 1.7 + T3 2.6 = 6.0). GIIGNL's 5.8 is a nominal rounding variant not supported by the operator. No capacity change. Note: the Air Products PDF went 404 at the live host — its Wayback snapshot replacement is staged as a Capacity [ref] repair in the gulf-turkiye exhaustive-update batch (July 2026).",
+  "basis": "Operator (ADNOC Gas) primary page states 6 mtpa; per-train 1.7/1.7/2.6 verified in the Air Products table (Wayback).",
+  "sources": [
+   "https://adnocgas.ae/en/our-operations/lng",
+   "http://web.archive.org/web/20240721223810/https://www.airproducts.com/-/media/files/en/230/230-17-004-glb-lng-large-plant-capabilities.pdf"
+  ],
+  "facet": "capacity",
+  "confidence": "high",
+  "resolution": "no_change"
+ },
+ {
+  "terminal_id": "T100000130598",
+  "section_type": "liquefaction",
+  "unit_name": "",
+  "verdict": "no action — S(1) T1-2 owner facet only. GIIGNL abbreviates the Qatargas 1 shareholding to the lead owner(s); GEM carries the full JV list (QatarEnergy 63%, ExxonMobil 25%, ITOCHU 3%, KOGAS 3%, Sojitz 1.5%, Sumitomo 1.5%, Samsung 0.5%, Hyundai 0.4%, Hanwha 0.15%), re-verified blue against QatarEnergy LNG's corporate-structure page in the gulf-turkiye exhaustive-update batch (July 2026). 'Owners in GEM not in report' is GIIGNL's abbreviation, not a GEM error. S(2)/S(3) and all N(1)-N(4) rows agree.",
+  "basis": "GEM's fuller shareholding verified against the primary QatarEnergy LNG corporate-structure page; GIIGNL lists abbreviated ownership.",
+  "sources": [
+   "https://www.qatarenergylng.qa/english/about-us/corporate-structure"
+  ],
+  "facet": "owner",
+  "confidence": "high",
+  "resolution": "no_change"
+ },
+ {
+  "terminal_id": "T100000130807",
+  "section_type": "regasification",
+  "unit_name": "",
+  "verdict": "RESOLVED via the gulf-turkiye exhaustive-update batch (July 2026), which stages Capacity 5.0 -> 5.7 mtpa: GEM 5.0 was the start-up-era figure; GIIGNL 2026 lists 5.7 and Oxford Institute for Energy Studies (Insight 171, Oct 2025) puts Saros at 7.6 bcm/y (~5.6 mtpa) — two independent publishers supporting ~5.6-5.7 mtpa, recorded at the range max (5.7) per methodology. No separate recon edit needed; do not double-stage.",
+  "basis": "GIIGNL 2026 (5.7 mtpa) + OIES Insight 171 (7.6 bcm/y) corroborate; edit already staged in the update batch.",
+  "sources": [
+   "https://www.oxfordenergy.org/wpcms/wp-content/uploads/2025/10/Insight-171-Turkish-LNG-Shopping-Spree.pdf"
+  ],
+  "facet": "capacity",
+  "confidence": "high",
+  "resolution": "no_change"
  }
 ]

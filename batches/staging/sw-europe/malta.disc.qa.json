@@ -1,0 +1,12 @@
+[
+  {
+    "category": "discovery_scope",
+    "terminal_id": null,
+    "unit_id": null,
+    "terminal_name": "Delimara Onshore Natural Gas Terminal (gem.wiki, no CSV row)",
+    "issue": "gem.wiki has a page 'Delimara Onshore Natural Gas Terminal' (proposed) with no matching row in the GEM export CSV - normally a discovery candidate per the gem.wiki-coverage-blind-spot rule. However, on inspection this 'terminal' is the planned RECEIVING STATION for the Melita TransGas (Malta-Italy) subsea gas PIPELINE at Delimara, built to eliminate the need for the Delimara FSU by piping natural gas in from Sicily - it receives gas by pipeline, not by ship. It therefore fails the marine-LNG-import scope gate for this tracker (no LNG carrier deliveries) and is out of scope for the LNG Terminals dataset; if tracked at all it belongs under GEM's gas pipeline tracker (a 'Malta-Italy Gas Pipeline' gem.wiki page already exists separately). Resolved scope doubt before staging per the discovery brief's rule - not staged as a new_terminal or monitor_list candidate.",
+    "severity": "low",
+    "suggested_action": "No action - out of scope for LNG Terminals. If the LNG-terminals team wants pipeline-side tracking cross-referenced, route to whoever owns the gas-pipelines tracker instead.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  }
+]

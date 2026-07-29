@@ -1,0 +1,192 @@
+[
+  {
+    "category": "link_rot",
+    "terminal_id": "T100000130893",
+    "unit_id": "G100002089300",
+    "terminal_name": "Chana LNG Terminal",
+    "issue": "FacilityType [ref] and Location [ref] cite a DOI (10.2523/10452-ms), an unrelated 2005 SPE petroleum-geology conference paper (HTTP 403, no relation to Chana LNG). Replaced this run with ajupress.com + southeastasiainfra.com in the paired updates records.",
+    "severity": "medium",
+    "suggested_action": "Apply the FacilityType/Location ref replacements staged in thailand.updates.json.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "orphan_ref",
+    "terminal_id": "T100000130893",
+    "unit_id": "G100002089300",
+    "terminal_name": "Chana LNG Terminal",
+    "issue": "StartDate [ref] is populated but StartDate/ActualStartYear data cells are blank -- orphan ref (project never reached construction/startup; Chana was cancelled at the proposal stage).",
+    "severity": "low",
+    "suggested_action": "Either clear the orphan StartDate [ref] or leave as historical residue; do not invent a StartDate value.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_verification",
+    "terminal_id": "T100000130893",
+    "unit_id": "G100002089300",
+    "terminal_name": "Chana LNG Terminal",
+    "issue": "Cancelled status is inferred from prolonged dormancy (no news since Mar-2021 agreement), not from an explicit 'cancelled'/'terminated' statement in any source.",
+    "severity": "low",
+    "suggested_action": "No action needed; inferred-dormancy convention applied per SOP, anchor years carried on newest available evidence.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "missing_field",
+    "terminal_id": "T100000130896",
+    "unit_id": "G100002089600",
+    "terminal_name": "Gulf of Thailand FSRU",
+    "issue": "FloatingVesselName is blank; no source found naming a specific FSRU vessel for this cancelled/pre-procurement proposal.",
+    "severity": "low",
+    "suggested_action": "Leave blank; project never reached vessel-chartering stage.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "orphan_ref",
+    "terminal_id": "T100000130896",
+    "unit_id": "G100002089600",
+    "terminal_name": "Gulf of Thailand FSRU",
+    "issue": "StartDate [ref] and Location [ref] are populated but the corresponding data cells are blank -- orphan refs (project cancelled pre-construction, exact siting never finalized).",
+    "severity": "low",
+    "suggested_action": "Leave as historical residue; do not invent StartDate/Location values.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "link_rot",
+    "terminal_id": "T100000130896",
+    "unit_id": "G100002089600",
+    "terminal_name": "Gulf of Thailand FSRU",
+    "issue": "Owner [ref] (egat.co.th CMS article id=428) re-checked 2026-07-27: HTTP 404, no Wayback snapshot -- proven dead. Dropped and declared in dropped_urls_dead on the Owner update record; replaced with Upstream + Bangkok Post.",
+    "severity": "medium",
+    "suggested_action": "Apply the Owner ref replacement staged in thailand.updates.json.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "missing_field",
+    "terminal_id": "T100000130898",
+    "unit_id": "G100002089800",
+    "terminal_name": "Songkhla FSRU",
+    "issue": "FloatingVesselName is blank; no source found naming a specific FSRU vessel for this shelved pre-procurement proposal.",
+    "severity": "low",
+    "suggested_action": "Leave blank; project never reached vessel-chartering stage.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "single_source",
+    "terminal_id": "T100000130321",
+    "unit_id": "G100002032101",
+    "terminal_name": "Map Ta Phut LNG Terminal 1",
+    "issue": "Capacity (1.5 mtpa) and Cost (US$28m) for the MTP1 Expansion are each supported by exactly one outlet (offshore-energy.biz); no independent second source located after a fresh 2026-07-27 search.",
+    "severity": "low",
+    "suggested_action": "Kept yellow per confidence rules (single non-primary source); re-search in a future batch if PTT publishes an investor update.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unverifiable_source",
+    "terminal_id": "T100000130321",
+    "unit_id": "G100002032101",
+    "terminal_name": "Map Ta Phut LNG Terminal 1",
+    "issue": "ConstructionDate [ref] (ptt.listedcompany.com/misc/PRESN/20190901-ptt-ptt101.pdf) returns HTTP 202 with an AWS WAF bot-challenge (x-amzn-waf-action: challenge) even under a browser User-Agent. Its sole Wayback snapshot (20240616070532) downloads as a malformed/unparseable PDF (pdftotext: 'Couldn't find trailer dictionary'). Not proven dead (WAF-challenge + corrupted archive copy is inconclusive, not a 404/410), so kept in the merged ref list per the bot-block!=dead rule; a working independent replacement (offshore-energy.biz) was added alongside it in this run's update record.",
+    "severity": "medium",
+    "suggested_action": "If a human reviewer can access the PDF directly (e.g. from a non-flagged residential IP), re-verify and consider dropping if genuinely inaccessible; otherwise leave as-is -- it is corroborated by the new offshore-energy.biz source regardless.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "single_source",
+    "terminal_id": "T100000130322",
+    "unit_id": "G100002032200",
+    "terminal_name": "Map Ta Phut LNG Terminal 2",
+    "issue": "Cost (THB 38.5bn) is supported by exactly one outlet (Bangkok Post general/1517794); no independent second source located after a fresh 2026-07-27 search.",
+    "severity": "low",
+    "suggested_action": "Kept yellow; re-search in a future batch.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "link_rot",
+    "terminal_id": "T100000130322",
+    "unit_id": "G100002032200",
+    "terminal_name": "Map Ta Phut LNG Terminal 2",
+    "issue": "ConstructionDate [ref] co-citation aseanenergy.org/news-clipping/thailand-sets-its-sights-on-larger-lng-share/ re-checked 2026-07-27: HTTP 404 live AND archive.org/wayback/available returns an empty archived_snapshots -- genuinely proven dead. Dropped and declared in dropped_urls_dead on the ConstructionYear update record; bangkokpost.com/1663232 (still live) remains as sole citation.",
+    "severity": "medium",
+    "suggested_action": "Apply the ConstructionDate ref drop staged in thailand.updates.json.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unverifiable_source",
+    "terminal_id": "T100000130322",
+    "unit_id": "G100002032200",
+    "terminal_name": "Map Ta Phut LNG Terminal 2",
+    "issue": "StartDate [ref] (icis.com/explore/resources/news/2018/08/07/10248355/...) is blocked by an Incapsula bot-challenge on the live page AND on its own Wayback snapshot (the page was archived while already challenge-walled) -- content cannot be verified by any method available to this batch, but there is no 404/410/DNS failure either, so it is NOT proven dead. Kept in the merged ref list per the bot-block!=dead rule; two working independent sources (LNG Prime, Offshore Energy) were added in this run's update record so ActualStartYear=2023 no longer depends on icis.com alone.",
+    "severity": "low",
+    "suggested_action": "No action required; the value is now independently corroborated by the two new sources regardless of icis.com's status.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unresolved_conflict",
+    "terminal_id": "T100000130894",
+    "unit_id": "G100002089400",
+    "terminal_name": "Map Ta Phut LNG Terminal 3",
+    "issue": "Phase I initial capacity is reported as 5 mtpa by Reuters/LNG Prime-155136 but as 8 mtpa by Offshore Energy/Enerdata/KED Global (the Jul-2025 EPCC-signing wave of articles). GEM currently splits 5.0 (Phase I) + 5.8 (Phase II) = 10.8 total; the 8-mtpa figure may describe a different construction-phase boundary (e.g., first EPCC package capacity vs. commercial-operation capacity) rather than conflict with the 10.8 total.",
+    "severity": "medium",
+    "suggested_action": "Unresolved after this run's re-verification; flag for a human capacity reconciliation against the original FID documents/EGM filing if available. Kept Capacity confidence at yellow on both units pending resolution -- do not silently pick one figure.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "orphan_ref",
+    "terminal_id": "T100000130894",
+    "unit_id": "G100002089400",
+    "terminal_name": "Map Ta Phut LNG Terminal 3",
+    "issue": "StartDate [ref] is populated but StartDate/ActualStartYear are blank (terminal not yet operating; commercial ops targeted 2029 per LatestPlannedStartYear, already reflecting the 2027->2029 slip found by the prior batch).",
+    "severity": "low",
+    "suggested_action": "Leave as historical residue until actual startup is confirmed.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "orphan_ref",
+    "terminal_id": "T100000130894",
+    "unit_id": "G100002089401",
+    "terminal_name": "Map Ta Phut LNG Terminal 3",
+    "issue": "StartDate [ref] is populated but StartDate/ActualStartYear are blank (Phase II expansion not yet operating).",
+    "severity": "low",
+    "suggested_action": "Leave as historical residue until actual startup is confirmed.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "entity_naming",
+    "terminal_id": "T100000130894",
+    "unit_id": "G100002089400",
+    "terminal_name": "Map Ta Phut LNG Terminal 3",
+    "issue": "Owner entity is recorded as 'Gulf MPT LNG Terminal Co Ltd'; company-primary sources (gulf.co.th) refer to the same JV variously as 'Gulf MTP LNG Terminal' and 'PTT Tank' as the 30% partner -- MPT vs MTP appears to be a transliteration variant of the same entity, not a different one.",
+    "severity": "low",
+    "suggested_action": "No entity_lookup discrepancy found this run; flag only if a future batch stages a NEW owner entity under the MTP spelling, to avoid a duplicate.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "missing_field",
+    "terminal_id": "T100000131071",
+    "unit_id": "G100002107100",
+    "terminal_name": "Surat Thani FSRU",
+    "issue": "FloatingVesselName is blank; no source found naming a specific FSRU vessel for this shelved feasibility-stage proposal.",
+    "severity": "low",
+    "suggested_action": "Leave blank; project never reached vessel-chartering stage.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "orphan_ref",
+    "terminal_id": "T100000131071",
+    "unit_id": "G100002107100",
+    "terminal_name": "Surat Thani FSRU",
+    "issue": "StartDate [ref] cites EGAT Annual Report 2023 (egat.co.th, .../EGAT-Annual-Report-2023-EN_2024-06-24.pdf) but StartDate/ActualStartYear are blank -- pre-existing orphan ref. Re-checked 2026-07-27: the PDF has no extractable text layer (scanned/image PDF; pdftotext returns empty), so its content cannot be re-verified by this batch either, compounding the orphan.",
+    "severity": "low",
+    "suggested_action": "Leave as historical residue (project never reached construction); a human with OCR tooling could re-check the PDF content if ever needed, but no data value depends on it currently.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "terminal_id": "T100000130893",
+    "unit_id": "G100002089300",
+    "terminal_name": "Chana LNG Terminal",
+    "issue": "Existing FacilityType/Location citation http://dx.doi.org/10.2523/10452-ms resolves to OnePetro but is bot-blocked (HTTP 429) with no Wayback snapshot to content-verify against. Kept in the ref merge per SOP §7.2a (bot-block that fails the Wayback check goes to qa_review, not a silent drop) — reviewer with OnePetro access should confirm the paper still supports the cited FacilityType/Location values.",
+    "severity": "low",
+    "suggested_action": "manual check via OnePetro access",
+    "researcher_initials": "AI-draft (sweep)",
+    "category": "link_rot"
+  }
+]

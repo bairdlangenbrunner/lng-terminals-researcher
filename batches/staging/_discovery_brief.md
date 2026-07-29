@@ -123,7 +123,7 @@ mostly produce: `newterminals`, `newunits`, `monitor`, `entity`, `qa`, `wiki`. S
 - monitor: {country, candidate_name, sponsor_or_proposer, first_observed_batch:"<YYYY-MM> discovery" (the
   CURRENT batch month), last_observed_batch:same, current_state, missing_threshold_elements, watch_for, best_lead_url, notes}
 - qa: {category, terminal_id, unit_id, terminal_name, issue, severity:"high|medium|low", suggested_action, researcher_initials:"AI-draft"}
-- wiki: {country, terminal_id, terminal_name, unit_id, topic, wiki_text, verification_status, source_urls:[..], researcher_initials:"AI-draft"}
+- wiki: {country, terminal_id, terminal_name, unit_id, topic, wiki_text, verification_status, source_urls:[..], researcher_initials:"AI-draft"} — each source_urls entry SHOULD be an object {url,title,publisher(opt),access_date:"YYYY-MM-DD"(opt)} for a paste-ready {{cite web}} ref; bare URL strings accepted but build only <ref>url</ref>.
 - entity: {entity_name, entity_type, country_of_hq, parent_entity, rationale_for_new_entity, lookup_was_run, lookup_result_summary, referenced_by_terminals, referenced_by_units, researcher_initials:"AI-draft"}
 researcher_initials = "AI-draft (discovery sweep)". Each file is a JSON list; `json.dump(..., ensure_ascii=False, indent=2)`.
 

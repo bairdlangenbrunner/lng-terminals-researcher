@@ -1,0 +1,52 @@
+[
+  {
+    "category": "dormant_revival_watch",
+    "terminal_id": "T100000130577",
+    "unit_id": "",
+    "terminal_name": "Aguirre GasPort FSRU",
+    "issue": "Discovery revival-check (dead 7y, high-priority per completeness_sweep.py) found NO new sponsor, FSRU charter, permit, or renamed project at the Aguirre/Jobos Bay site since Excelerate Energy's November 2019 cancellation. PREPA/Genera PR's current gas-conversion push at other plants (Palo Seco, Cambalache, Mayaguez) is supplied via NFEnergia's EXISTING San Juan LNG Terminal under the March 15 2024 Natural Gas Sale and Purchase Agreement (NGSPA) -- not a revival of the offshore Aguirre GasPort concept. No dead-and-revived new_terminal warranted this batch. Leads checked: offshore-technology.com/projects/aguirre-offshore-gasport/, energia.pr.gov Aguirre IE Report (2021/2022), no 2025-2026 hits for any new Aguirre-area marine LNG proposal. (An IEEFA 'project dead' piece was also read during the sweep but is NOT citable -- IEEFA republishes/footnotes GEM, so it is not independent evidence; it is recorded here only as a search lead, never as a source.)",
+    "severity": "low",
+    "suggested_action": "No staging action. Record confirmed correctly cancelled with no revival; re-run the revival check next discovery pass.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "power_plants_supplied",
+    "terminal_id": "T100000130784",
+    "unit_id": "",
+    "terminal_name": "San Juan LNG Terminal",
+    "issue": "NFEnergia LLC's March 15 2024 NGSPA with PREPA names San Juan and Palo Seco power plants as delivery points; Cambalache Units 2-3 conversion to LNG is pending PREB/NEPR approval (NEPR docket MI-2024-0004, ~34 TBtu/yr if approved) and is also structured as an NGSPA delivery point; Genera PR's Mayaguez units received a Feb-2025 NEPR-conditional approval to convert to natural gas with a competitively-sourced fuel supply -- gas is delivered from the existing San Juan terminal/NGSPA framework, NOT a new marine import facility sited at Mayaguez (confirmed no new terminal permit/FEED/siting found for Mayaguez). Recommend Update agent verify current approval status of Cambalache and Mayaguez conversions and add/update PowerPlantsSupplied on San Juan LNG Terminal accordingly. Leads: energia.pr.gov NEPR dockets MI-2024-0004 and MI-2020-0001 (e.g. 20250306-MI20240004-Motion..., 20260326-MI20200001-Genera-Motion...), newfortressenergy.com/stories/pr-genera-will-be-able-convert-mayaguez-units-natural-gas. (An IEEFA piece on NFE's Puerto Rico gas expansion was also read but is NOT citable -- IEEFA footnotes GEM and is therefore not independent evidence; cite the NEPR dockets and NFE's own filings instead.)",
+    "severity": "medium",
+    "suggested_action": "Update agent: verify via NEPR dockets + NFE 10-K/8-K disclosures; add PowerPlantsSupplied entries (Palo Seco confirmed; Cambalache and Mayaguez conditional/pending) + refs to San Juan LNG Terminal.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "background_lead",
+    "terminal_id": "T100000130578",
+    "unit_id": "",
+    "terminal_name": "Penuelas LNG Terminal",
+    "issue": "Crowley and Naturgy deployed a dedicated newbuild US-flagged LNG carrier, 'American Energy' (~130,400 m3 / 34.4M gal capacity), in scheduled service between the US Gulf Coast and EcoElectrica's Penuelas facility starting March 2025 under a multi-year agreement -- first US-flagged carrier dedicated to Puerto Rico. Crowley also operates a co-located 'LNG Loading Terminal' at Penuelas that draws from the EcoElectrica facility for onward ISO-container/truck distribution to industrial and commercial customers island-wide (pharma manufacturer, luxury resort CHP plant via a separate June-2026 Clean Energy Fuels Corp equipment contract) -- this downstream distribution is domestic-only and out of scope as its own terminal, but is useful Background on the existing Penuelas terminal. Leads: crowley.com/news-and-media/press-releases/crowley-and-naturgy-deploy-first-u-s-lng-carrier-american-energy-to-serve-puerto-rico/, lngprime.com/americas/crowley-launches-puerto-rico-lng-hub/52461/.",
+    "severity": "low",
+    "suggested_action": "Update agent: optional wiki Background addition on Penuelas LNG Terminal (dedicated carrier + onward distribution hub); not a discovery item, no new terminal.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "background_lead",
+    "terminal_id": "T100000130784",
+    "unit_id": "",
+    "terminal_name": "San Juan LNG Terminal",
+    "issue": "Trade press reports the U.S. Army Corps of Engineers dredging San Juan Bay (~$59M project) to deepen the shipping channel so the San Juan LNG Terminal can receive larger LNG carriers (reported up to 6x current vessel capacity). Relevant to a capacity/vessel-size update on the existing terminal, not a new terminal. Not independently verified against a primary Corps/FERC source this pass.",
+    "severity": "low",
+    "suggested_action": "Update agent: verify dredging project status/completion date against a primary source (USACE, FERC docket) before citing.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "scope_gate_resolved",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Mayaguez / Yabucoa proposed ship-based LNG import terminals (PREPA IRP)",
+    "issue": "PREPA's 2019 Siemens IRP 'preferred plan' (ESM scenario) proposed NEW ship-based LNG import terminals at Mayaguez and Yabucoa alongside CCGT conversions (~302 MW each, ~$1B gas-port capex). Puerto Rico's Energy Bureau REJECTED this in its 2020 IRP Final Resolution and Order as economically unjustified (not selected by optimization modeling in any other scenario). Current status (2025-2026): Yabucoa's aging Frame-5 peaker units are being DECOMMISSIONED in favor of a PREB-approved (Feb 2024) 40 MW battery storage system -- the Yabucoa LNG-terminal concept is superseded, not merely dormant. Mayaguez's Feb-2025 NEPR-conditional approval to convert its diesel units to natural gas is supplied via the existing San Juan terminal/NGSPA framework (see the power_plants_supplied finding above) -- no new marine import facility at Mayaguez has been permitted, sited, or funded as an independent project. SCOPE DOUBT RESOLVED (per CLAUDE.md/Discovery SOP: resolve before staging, never stage-with-doubt): neither candidate meets the concrete-step threshold for a new terminal today. Not staged as new_terminal or monitor_list. Documenting here so a future discovery pass does not re-surface this IRP-era planning-document proposal as a fresh lead without first checking whether the underlying IRP cycle has reopened it. Leads: rmi.org/puerto-ricos-electricity-system-at-a-crossroads/, sanjuandailystar.com 'Genera PR submits plan to decommission Yabucoa peaker units', energia.pr.gov IRP 2019/2020 dockets (AP20180001).",
+    "severity": "low",
+    "suggested_action": "No staging action this batch. If a future PREPA/PREB IRP cycle re-proposes a Mayaguez or Yabucoa marine LNG terminal with an actual permit/siting/FEED step, re-open as a discovery candidate.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  }
+]

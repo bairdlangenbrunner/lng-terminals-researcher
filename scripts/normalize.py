@@ -484,6 +484,7 @@ _OWNER_ALIAS_PAIRS = [
     ({"cnooc"}, {"china", "national", "offshore", "oil"}),
     ({"adnoc"}, {"abu", "dhabi", "national", "oil"}),
     ({"eve"}, {"basque", "energy"}),
+    ({"dusup"}, {"dubai", "supply", "authority"}),
 ]
 
 

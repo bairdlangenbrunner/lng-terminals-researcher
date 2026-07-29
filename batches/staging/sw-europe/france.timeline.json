@@ -1,0 +1,18 @@
+[
+  {
+    "terminal_id": "T100000131008",
+    "unit_id": "G100002100800",
+    "terminal_name": "Le Havre FSRU",
+    "unit_name": "--",
+    "operation": "append",
+    "status": "retired",
+    "sub_status": "actual",
+    "year": 2026,
+    "part_of_year": "H1",
+    "notes": "Existing Postgres timeline (fetch_timeline.py G100002100800) at pull time: 1) proposed/actual 2022; 2) construction/actual 2022; 3) operating/actual 2023-Oct; 4) retired/planned 2028 (tied to the original interim-facility/TempFacility contract horizon). This new entry appends an ACTUAL retired milestone in 2026, ahead of the previously-planned 2028 date -- driven by a Rouen Administrative Court ruling (Oct 2025) that revoked the operating decree; the Cape Ann FSRU physically departed Le Havre Jan 20-21 2026. Legal transition operating(actual) -> retired(actual) is on the allowed graph (operating can transition to retired). The pre-existing retired/planned/2028 row is NOT deleted (append-only rule) but is now superseded for effective-status purposes by this actual entry.",
+    "source_url": "https://www.enerdata.net/publications/daily-energy-news/totalenergies-flng-terminal-5-bcmyear-leaves-le-havre-france.html",
+    "confidence": "green",
+    "legal_transition_check": "operating(actual) -> retired(actual): LEGAL per lifecycle_rules.md transition graph (operating -> retired allowed). Not a skip/non-monotonic case.",
+    "researcher_initials": "AI-draft (sweep)"
+  }
+]

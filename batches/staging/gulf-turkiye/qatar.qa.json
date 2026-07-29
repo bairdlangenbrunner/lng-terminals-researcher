@@ -24,10 +24,20 @@
     "terminal_id": "T100000130817",
     "unit_id": "G100002081701; G100002081705",
     "terminal_name": "Qatar North Field LNG Terminal",
-    "issue": "North Field expansion construction (NFE + NFS) was suspended ~2026-02-28 through the April 2026 ceasefire (evacuation of non-essential rig/barge personnel, Strait of Hormuz closure, war-risk insurance cancellations for Gulf vessels); contractors such as Chiyoda only confirmed full remobilization to Ras Laffan after the ceasefire. QatarEnergy's CEO maintains NFE is 'on track' for H2 2026 first LNG and attributes any slippage to pre-conflict (COVID-era) supply-chain factors rather than the war, so GEM's existing LatestPlannedStartYear=2026 for NFE is not clearly wrong and was left as blue/unchanged (see updates.json). NFS's schedule (LatestPlannedStartYear=2028) could not be independently re-confirmed post-conflict this batch.",
+    "issue": "RESOLVED 2026-07-20 (was: deferred as 'not clearly wrong'). North Field expansion construction (NFE + NFS) was suspended ~2026-02-28 through the April 2026 ceasefire; contractors such as Chiyoda only confirmed full remobilization after the ceasefire. The original version of this note punted on the schedule, leaning on QatarEnergy's CEO 'on track for H2 2026' line -- but the June 4 2026 constructionreviewonline report (already cited in this batch for construction-resumption) explicitly states the first-train startup 'has now been pushed to early 2027' (citing MEES), corroborated independently by Bloomberg-syndicated reporting (Mar 2026) and Energy Intelligence. That slip is now STAGED: NFE LatestPlannedStartYear 2026->2027 + operating/planned 2027 H1 timeline append (see updates.json / timeline.json). NFS's schedule IS anchored by the same article ('roughly 12 to 18 months after the first NFE train comes online' = early-to-mid 2028), consistent with GEM's existing LatestPlannedStartYear=2028 -- no NFS year change needed; article added as StartDate [ref] corroboration.",
     "severity": "medium",
-    "suggested_action": "Re-check NFE's first-LNG date at the next update once H2 2026 arrives or passes; re-check NFS timeline commentary once more post-conflict reporting is available.",
-    "researcher_initials": "AI-draft"
+    "suggested_action": "Apply the staged NFE LatestPlannedStartYear + timeline records (they are paired with the Status/ActualStartYear revert records -- see the companion live-DB-conflict qa entry below). Re-check NFS once a train-specific NFS schedule announcement appears.",
+    "researcher_initials": "AI-draft (revised follow-up)"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130817",
+    "unit_id": "G100002081701",
+    "terminal_name": "Qatar North Field LNG Terminal",
+    "issue": "LIVE-DB CONFLICT (found 2026-07-20 on a fresh export pull): NFE (T1-4) was manually edited in the live DB on 2026-07-20 -- after this batch was built -- to Status=operating with ActualStartYear=2026/ActualStartMonth=H1, and a matching operating/actual/2026/H1 status-timeline entry (st_id 41359) was inserted. No first-LNG/first-cargo announcement exists in any outlet as of 2026-07-20 (searched that day); the latest reporting (LNG Prime Oct 2025 pre-commissioning; MEES Dec 2025 'hopes to start 3Q 2026'; constructionreviewonline June 2026 'pushed to early 2027') all contradicts an H1-2026 actual start, as does the previously-flagged low-quality aggregator claim (see separate qa note). This batch stages the evidence-consistent state: Status operating->construction, ActualStartYear/Month deletions, LatestPlannedStartYear 2026->2027, and an operating/planned/2027/H1 timeline append. The status_timeline_additions sheet is append-only, so the st_id 41359 operating/actual entry CANNOT be removed via this workbook.",
+    "severity": "high",
+    "suggested_action": "Reviewer: confirm what prompted the 2026-07-20 live edit. If it was a mistake (e.g. the aggregator's 'first LNG Nov 2025' claim, or a mis-click), apply the staged revert records AND manually delete timeline entry st_id 41359. If a genuine first-LNG event occurred that outpaced public reporting, discard the four staged NFE records (Status, ActualStartYear, ActualStartMonth, LatestPlannedStartYear) and the timeline append instead, and add the first-LNG citation to Status/StartDate [ref].",
+    "researcher_initials": "AI-draft (follow-up)"
   },
   {
     "category": "other",

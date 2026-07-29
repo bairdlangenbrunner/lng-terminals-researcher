@@ -1,0 +1,189 @@
+[
+ {
+  "category": "status_change_found",
+  "terminal_id": "T100000130832",
+  "unit_id": "",
+  "terminal_name": "Argentina LNG Terminal",
+  "issue": "GEM status is 'proposed', but Southern Energy SA reached FID on phase 1 (Hilli Episeyo) by May 2025, holds a RIGI authorization certificate and a 30-year export permit, signed a 20-year ~US$13.7bn charter for Hilli, and Seatrium's mooring/life-extension contract starts Q3 2026 for a 2027 operations start; FID on the second FLNG (MK II, Fuji LNG hull, 3.5 mtpa, 2028) followed around Aug 2025.",
+  "severity": "high",
+  "suggested_action": "FOLLOW-ON UPDATE BATCH, not this one: this captive batch's edit lane is CaptiveGasPower only, and the status evidence is incidental to the captive research rather than the systematic source-and-timeline pull a status change deserves. Pull the timeline from the read-only Postgres, re-verify the FID dates, and stage Status + FIDStatus/FIDYear + a construction timeline entry. Flagged here WITH sources so it is not lost - deliberately not buried in a source note.",
+  "gem_field": "",
+  "paste_value": ""
+ },
+ {
+  "category": "vessel_identity",
+  "terminal_id": "T100000130832",
+  "unit_id": "",
+  "terminal_name": "Argentina LNG Terminal",
+  "issue": "Press coverage calls the second FLNG 'MK II', but its underlying hull is Fuji LNG - NOT Gimi, which is a different Golar FLNG serving BP's Greater Tortue Ahmeyim off Mauritania/Senegal. Golar's own fleet page lists Gimi and Fuji LNG as distinct vessels.",
+  "severity": "medium",
+  "suggested_action": "Check GEM's vessel/OtherNames fields for a Gimi conflation. This is the same conflation that corrupted a captive figure at this batch's QC gate (a cited article about Gimi's conversion was read as describing Hilli), so it is a live risk in this record's sources.",
+  "gem_field": "",
+  "paste_value": ""
+ },
+ {
+  "category": "stale_record",
+  "terminal_id": "T100000131182",
+  "unit_id": "",
+  "terminal_name": "Bah\u00eda Blanca FLNG Terminal (Tango FLNG)",
+  "issue": "GEM shows status 'mothballed' with owner YPF, but the Tango FLNG barge (ex-Caribbean FLNG, Wison-built, delivered 2017) left Bahia Blanca after the Oct 2020 Exmar-YPF settlement (YPF paid Exmar US$150M), was SOLD TO ENI in Aug 2022, redeployed to Eni's Marine XII block offshore Republic of Congo, and achieved first gas Dec 2023. The hull cannot return to this site.",
+  "severity": "high",
+  "suggested_action": "FOLLOW-ON UPDATE + CROSS-TRACKER CHECK: (a) review this record's status/owner - the floating asset is gone, not idle; (b) verify GEM's Congo-side FLNG record carries this vessel. A textbook vessel-reassignment issue of the kind the FSRU sync rule exists to catch - run fsru_sync_check.py in that batch.",
+  "gem_field": "",
+  "paste_value": ""
+ },
+ {
+  "category": "stale_ownership",
+  "terminal_id": "T100000130349",
+  "unit_id": "",
+  "terminal_name": "Saint John LNG Terminal (Canaport)",
+  "issue": "GEM's Owner reads Repsol 75% / Irving Oil 25%. Repsol acquired Irving Oil's remaining 25% stake in 2021 and has been sole (100%) owner of the Canaport LNG Limited Partnership since; verified across three independent outlets. The facility now trades under the operator's 'Saint John LNG' brand, with 'Canaport' still common industry usage.",
+  "severity": "medium",
+  "suggested_action": "FOLLOW-ON UPDATE: stage Owner (+ [ref]) to Repsol 100%. Consider 'Canaport LNG' for OtherNames, but check the no-substring-OtherNames rule first.",
+  "gem_field": "",
+  "paste_value": ""
+ },
+ {
+  "category": "record_structure",
+  "terminal_id": "T100000130349",
+  "unit_id": "",
+  "terminal_name": "Saint John LNG Terminal (Canaport)",
+  "issue": "One TerminalID conflates the OPERATING import/regasification terminal with a physically distinct export/liquefaction addition proposed twice (c.2013-14 and 2022) and cancelled both times - most recently March 2023 over uneconomic pipeline logistics - never reaching an engineering stage.",
+  "severity": "medium",
+  "suggested_action": "Reviewer decision on whether GEM's record structure should disambiguate the two facilities.",
+  "gem_field": "",
+  "paste_value": ""
+ },
+ {
+  "category": "scope_question",
+  "terminal_id": "T100001083566",
+  "unit_id": "",
+  "terminal_name": "Summit Lake PG LNG Terminal",
+  "issue": "Summit Lake PG is an INLAND site (Hart North Industrial Site, ~30 km north of Prince George, not on tidewater). Per the sponsor's own site and trade press, LNG would be loaded into ISO containers and railed to Prince Rupert for export by ship - the terminal itself performs no marine loading/unloading.",
+  "severity": "medium",
+  "suggested_action": "Resolve the marine-export scope gate: CLAUDE.md requires LNG to cross a border BY SHIP, and it does here, but not at THIS site. Related to the Dar es Salaam domestic-only miss class, though weaker. The captive verdict (NO, grid electric-drive) is unaffected either way, so nothing in this batch depends on the answer.",
+  "gem_field": "",
+  "paste_value": ""
+ },
+ {
+  "category": "project_shape_change",
+  "terminal_id": "T100000130357",
+  "unit_id": "",
+  "terminal_name": "Kitsault LNG Terminal",
+  "issue": "Natural Gas Intelligence (2026-05-21) reports Kitsault Energy now pitching a ~700-750 km dual-pipe crude-oil-and-gas export corridor with a dedicated port, terminal and floating butanol plant, ~C$40bn - far beyond the original LNG terminal. NEB approved a 20 Mt/y 20-year export licence in 2016 that never reached an environmental assessment, and the Westcoast Connector pipeline certificate has expired with Enbridge declining to proceed. The company's own website still advertises a straightforward LNG export terminal, so the sources are in tension.",
+  "severity": "medium",
+  "suggested_action": "Dormant-revival-watch review: is 'Kitsault LNG Terminal' still the right characterisation? Route to a Discovery/Update conversation.",
+  "gem_field": "",
+  "paste_value": ""
+ },
+ {
+  "category": "blank_field",
+  "terminal_id": "T100000130578",
+  "unit_id": "",
+  "terminal_name": "Penuelas LNG Terminal",
+  "issue": "PowerPlantsSupplied is BLANK, yet the Puerto Rico Energy Bureau docket shows this terminal supplies gas to BOTH the on-site EcoElectrica power station AND PREPA's separate Costa Sur station at Guayanilla, and FERC's June 2020 order (CP20-466-000) states the terminal 'connects to a non-jurisdictional pipeline that delivers gas to a nearby powerplant.'",
+  "severity": "medium",
+  "suggested_action": "FOLLOW-ON UPDATE ONLY - PowerPlantsSupplied is explicitly OFF-LANE for the captive workflow and must never be staged from a captive batch. Fill with EcoElectrica + Costa Sur, citing the FERC order and the PREB docket.",
+  "gem_field": "",
+  "paste_value": ""
+ },
+ {
+  "category": "blank_field",
+  "terminal_id": "T100000130784",
+  "unit_id": "",
+  "terminal_name": "San Juan LNG Terminal",
+  "issue": "PowerPlantsSupplied is BLANK despite a well-documented purpose-built relationship: FERC's 2020 order and New Fortress Energy's 10-K both state the facility supplies gas to Units 5 and 6 of the adjacent PREPA-owned San Juan Combined Cycle Power Plant, plus LNG by truck to industrial users and microgrids.",
+  "severity": "medium",
+  "suggested_action": "FOLLOW-ON UPDATE ONLY (off-lane here). Fill citing the FERC order and/or the NFE 10-K.",
+  "gem_field": "",
+  "paste_value": ""
+ },
+ {
+  "category": "cross_tracker_conflict",
+  "terminal_id": "T100000130578",
+  "unit_id": "",
+  "terminal_name": "Penuelas LNG Terminal",
+  "issue": "GOGPT lists EcoElectrica at 574 MW. The Puerto Rico Energy Bureau regulatory record states 507 MW originally, amended to 530 MW under the 2020 Amended and Restated Agreements. No source found supports 574 MW.",
+  "severity": "medium",
+  "suggested_action": "GOGPT-side data-quality item: reconcile EcoElectrica's capacity against the PREB docket. The plant is a cogeneration/desalination facility, which may explain a conflated figure.",
+  "gem_field": "",
+  "paste_value": ""
+ },
+ {
+  "category": "cross_tracker_conflict",
+  "terminal_id": "T100000130566",
+  "unit_id": "",
+  "terminal_name": "Andres LNG Terminal",
+  "issue": "San Felipe (470 MW, construction) is carried as a GOGPT prior near this terminal but could NOT be independently re-verified this pass - the session's WebSearch budget was exhausted, targeted lookups for San Felipe/ENADOM/TotalEnergies primary documents did not resolve, and AES's FY2025 10-K does not name it.",
+  "severity": "medium",
+  "suggested_action": "Re-check San Felipe's sponsor chain and MW once search budget resets; do not assume it follows the AES-integrated pattern of the other Dominican assets.",
+  "gem_field": "",
+  "paste_value": ""
+ },
+ {
+  "category": "unresolved_conflict",
+  "terminal_id": "T100000131042",
+  "unit_id": "",
+  "terminal_name": "Placentia Bay FLNG Terminal",
+  "issue": "PRESERVED FINDING, deliberately NOT staged. The Nov 2021 Newfoundland EA registration (#2177, LNG Newfoundland and Labrador Limited) gives a gas-turbine BASE CASE for the refrigeration compressor drivers, ~120-140 MW shaft plus ~40 MW utility demand, with site electricity otherwise from the NL Power hydro grid. But the same document states the driver-selection study (gas-turbine mechanical drive vs electric motor) was DEFERRED to later engineering, and the project was shelved before it was done (Crown Lands application cancelled 2023-11-07).",
+  "severity": "medium",
+  "suggested_action": "Left OUT of staged_updates on purpose: the design was never settled, the same evidentiary state as AMIGO FLNG (scored INSUFFICIENT in this batch), and CLAUDE.md's never-stage-with-doubt rule governs. Recorded here so the 120-140 MW primary-source finding survives if the project revives. Also: two distinct proposals at the same Grassy Point site - EA reg #1304 (transshipment, 2006-08) vs #2177 (FLNG export, 2021) - do not conflate.",
+  "gem_field": "",
+  "paste_value": ""
+ },
+ {
+  "category": "status_change_found",
+  "terminal_id": "T100000130984",
+  "unit_id": "",
+  "terminal_name": "Vista Pacifico LNG Terminal",
+  "issue": "Research surfaced evidence that the project has been cancelled (sourcing in terminal_first_priors).",
+  "severity": "medium",
+  "suggested_action": "FOLLOW-ON UPDATE: verify and stage the status change with a timeline entry. Off-lane for this captive batch.",
+  "gem_field": "",
+  "paste_value": ""
+ },
+ {
+  "category": "status_change_found",
+  "terminal_id": "T100000130579",
+  "unit_id": "",
+  "terminal_name": "Atlantic LNG Terminal",
+  "issue": "Train 1 permanent decommissioning, a phased restructuring of the Atlantic LNG shareholding, and a possible CIC stake all surfaced during captive research.",
+  "severity": "medium",
+  "suggested_action": "FOLLOW-ON UPDATE: Train 1 is already 'mothballed'; if decommissioning is permanent the correct status is likely retired. Verify and stage with a timeline entry.",
+  "gem_field": "",
+  "paste_value": ""
+ },
+ {
+  "category": "unsourced_value",
+  "terminal_id": "T100000131115",
+  "unit_id": "",
+  "terminal_name": "Sycar Venezuela FLNG Terminal",
+  "issue": "The record's shelved status appears to rest only on gem.wiki, which can never be cited as evidence for the GEM database.",
+  "severity": "medium",
+  "suggested_action": "Find independent evidence for the current status and re-cite; if none exists the status is effectively unsourced. Per the inferred-shelved rule, cite the dormancy evidence itself rather than a source saying 'shelved'.",
+  "gem_field": "",
+  "paste_value": ""
+ },
+ {
+  "category": "cross_tracker_conflict",
+  "terminal_id": "T100000130917",
+  "unit_id": "",
+  "terminal_name": "AMIGO FLNG Terminal",
+  "issue": "GOGPT carries a 'Mexico Pacific power station' at 141 MW that could not be corroborated during this pass.",
+  "severity": "low",
+  "suggested_action": "GOGPT-side verification item.",
+  "gem_field": "",
+  "paste_value": ""
+ },
+ {
+  "category": "ownership_chain",
+  "terminal_id": "T100000131068",
+  "unit_id": "",
+  "terminal_name": "Lakach Field FLNG Terminal",
+  "issue": "Ownership chain could not be resolved during captive research.",
+  "severity": "low",
+  "suggested_action": "Note for a follow-on Update pass on Mexican records.",
+  "gem_field": "",
+  "paste_value": ""
+ }
+]

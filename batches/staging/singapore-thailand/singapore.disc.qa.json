@@ -1,0 +1,32 @@
+[
+  {
+    "category": "discovery_sweep_finding",
+    "terminal_id": "T100000130890",
+    "unit_id": "",
+    "terminal_name": "SLNG 2 LNG Terminal",
+    "issue": "GEM holds this record as status=proposed, but by 2026-04 SLNG had begun construction of the onshore connecting infrastructure (jetty, main process area, pipelines to national grid; EPC awarded to China Communication Construction Co. Singapore) and the MOL-chartered FSRU (Hanwha Ocean build) had its keel laid, per SLNG press release (https://www.slng.com.sg/construction-of-the-FSRU-for-Singapores-second-LNG-terminal-begins, verified) and GIIGNL news digest (https://www.giignl.org/news/singapore-starts-onshore-infrastructure-work-for-second-lng-terminal, verified). This looks like a status=construction candidate (target online 2030), not a discovery item since the terminal is already in GEM.",
+    "severity": "medium",
+    "suggested_action": "Route to Update workflow: verify and stage Status=construction (with existing-timeline pull via fetch_timeline.py) + FSRU vessel name/IMO once assigned (MOL/Hanwha Ocean newbuild) for T100000130890.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "dormant_revival_check",
+    "terminal_id": "T100000130889",
+    "unit_id": "",
+    "terminal_name": "Singapore Offshore LNG Terminal",
+    "issue": "Web-searched for revival activity at this cancelled site (part of an EMA EOI process for a floating LNG terminal, no updates since 2021-2022). Found no new sponsor, permit, or activity tied specifically to this dead record. The active offshore-FSRU project in Singapore (SLNG 2 / Jurong Port, MOL FSRU) is a separate, already-in-GEM proposed record (T100000130890), not a revival of this cancelled one.",
+    "severity": "low",
+    "suggested_action": "No action; leave cancelled. Re-check in a future sweep if new offshore LNG project news surfaces referencing a site/sponsor distinct from SLNG2.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "gemwiki_coverage_check",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "",
+    "issue": "Enumerated gem.wiki LNG-terminal pages for Singapore: Singapore_LNG_Terminal, Singapore_Offshore_LNG_Terminal, SLNG_2_LNG_Terminal. All three reconcile 1:1 to existing export CSV rows (T100000130309, T100000130889, T100000130890). No gem.wiki-only coverage gap found.",
+    "severity": "low",
+    "suggested_action": "None.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  }
+]

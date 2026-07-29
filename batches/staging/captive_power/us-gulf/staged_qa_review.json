@@ -1,0 +1,112 @@
+[
+  {
+    "category": "data inconsistency",
+    "terminal_id": "T100000130228",
+    "unit_id": "G100002022801",
+    "terminal_name": "Gulf LNG Terminal",
+    "issue": "Status=proposed and ShelvedYear=2022 both populated on the export unit-row — an internally inconsistent pair. Verified filings show the project is being actively maintained, not abandoned: FERC granted a construction-deadline extension to 16 July 2029 (Feb 2024 filing citing COVID-19 impacts and litigation with existing import customers over terminal-use-agreement scope), and on 31 March 2026 GLLC filed to extend its DOE non-FTA export-commencement deadline five more years to 31 July 2031 because it 'has not commenced commercial LNG export operations'. Net read: alive on paper, commercially stalled, pre-FID. No verified source explicitly reverses a 2022 'shelved' characterization (the S&P Global April-2022 investor-call item failed url_verifier — HTTP 403, no Wayback snapshot — so it is not citable).",
+    "severity": "medium",
+    "suggested_action": "Update workflow: decide whether ShelvedYear=2022 is stale and should be cleared, or whether Status should read shelved. Do not resolve from this batch — the captive-power lane does not own status. Evidence URLs: https://public-inspection.federalregister.gov/2024-05021.pdf and https://public-inspection.federalregister.gov/2026-07980.pdf and https://lngprime.com/americas/kinder-morgan-seeks-doe-extension-for-gulf-lng-export-project/184334/",
+    "gem_field": "",
+    "paste_value": ""
+  },
+  {
+    "category": "field semantics",
+    "terminal_id": "T100000130228",
+    "unit_id": "",
+    "terminal_name": "Gulf LNG Terminal",
+    "issue": "CaptiveGasPower is a PROJECT-level field, but this TerminalID spans two facilities with opposite answers: an operating import terminal that is grid-fed by Mississippi Power (only 24 MW of sub-threshold backup gensets — a clean captive NO) and a FERC-authorized but never-built export project designed with gas-turbine mechanical drive on the MR/PR compressors (a captive YES). One DB value must serve both. This batch stages True with both unit-rows' source_notes spelling out which facility the captive power belongs to.",
+    "severity": "medium",
+    "suggested_action": "Read the two Gulf LNG rows in updates_summary together before pasting. If GEM would rather the field describe only built infrastructure, decline this one edit — the note preserves the finding either way. Raised as a data-model observation: the same import/export split under one TerminalID will recur elsewhere in the tracker.",
+    "gem_field": "",
+    "paste_value": ""
+  },
+  {
+    "category": "scope / dataset hygiene",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "(multiple — US Gulf)",
+    "issue": "Five terminals carry a BLANK State/Province in the LNG export (AGP LNG, American Coast LNG, ST LNG FLNG, Phillips 66 Beamont Oil, IMTT St. Rose Oil), so the state-filtered Louisiana (2026-07-09) and Texas (2026-07-10) captive-power runs could never see them. This produced a real miss: ST LNG FLNG is confirmed captive (270.4 MW, staged in this batch) and sits off the Texas coast. The mirror-image gap exists on the GOGPT side — 96 US GOGPT plants have a blank subnational, including Big Hill Energy Power Plant, the nearest GOGPT plant to ST LNG at 38 km, which the state-filtered matcher never surfaced.",
+    "severity": "high",
+    "suggested_action": "Two follow-ups. (1) Data: populate State/Province on the five LNG rows (coordinates resolve all of them). (2) Method: captive_power_colocation.py's --subnational filter silently drops blank-subnational records on BOTH sides; any future area run should either fall back to a coordinate-bounded selection or explicitly sweep the blank-subnational residue. Documented in the SOP and this batch's run record.",
+    "gem_field": "",
+    "paste_value": ""
+  },
+  {
+    "category": "scope / dataset hygiene",
+    "terminal_id": "T100001083859",
+    "unit_id": "",
+    "terminal_name": "Phillips 66 Beamont Oil Terminal",
+    "issue": "A crude-oil export terminal carried in the LNG terminals dataset — out of scope for an LNG tracker. Same class as the five crude-oil deepwater ports flagged in the Texas increment (Bluewater Texas, Blue Marlin, Brownsville Oil, SPOT, Texas GulfLink) and as IMTT St. Rose (T100001083857), a petroleum-products storage terminal. Note the terminal name also appears to misspell 'Beaumont'.",
+    "severity": "medium",
+    "suggested_action": "Route to a separate LNG-dataset scope cleanup, not to this workflow. The count of oil terminals mis-filed in the LNG tracker is now at least seven across TX and the blank-state residue.",
+    "gem_field": "",
+    "paste_value": ""
+  },
+  {
+    "category": "stale value",
+    "terminal_id": "T100000130208",
+    "unit_id": "G100002020801",
+    "terminal_name": "American LNG Hialeah Terminal",
+    "issue": "Operating-entity naming has moved on. New Fortress Energy sold its Miami/Hialeah small-scale LNG business to Pennybacker Capital Management (closed 2024), which rebranded the operator from 'Miami LNG' to 'Sawgrass LNG & Power' in April 2025. GEM's Parent (Pennybacker Capital Management LLC) is current and correct; the operator name is not. DOE filings still use the legacy docket name 'American LNG Marketing LLC'. Terminal confirmed OPERATING as of the October 2025 DOE semi-annual report.",
+    "severity": "low",
+    "suggested_action": "Update workflow: refresh Owner/Operator naming to Sawgrass LNG & Power. Sources: https://www.prnewswire.com/news-releases/miami-lng-rebrands-as-sawgrass-lng--power-302432441.html and https://marcellusdrilling.com/2025/04/pennybackers-miami-lng-changes-name-to-sawgrass-lng-power/",
+    "gem_field": "",
+    "paste_value": ""
+  },
+  {
+    "category": "status watch",
+    "terminal_id": "T100000130220",
+    "unit_id": "G100002022001",
+    "terminal_name": "Eagle LNG Terminal",
+    "issue": "GEM's shelved/2025 flag on the export unit is supported, and the trend is toward cancellation. FERC extended the construction deadline to 19 Sept 2029, but on the ground the 227-acre Zoo Parkway site is for sale / under contract: developer Merus signed a purchase-and-sale agreement (26 Nov 2025) for 67.56 acres, Feb-2026 rezoning ordinances (2026-0083/0084) would flip 42.58 acres from water-dependent 'Industrial Water' to 'Industrial Light', and in March 2026 Jacksonville City Council cleared the way for the 'Zoo Parkway Industrial Park'. Surrendering water-dependent zoning is hard to reverse. No FERC/DOE authorization surrender was found.",
+    "severity": "medium",
+    "suggested_action": "Update workflow: re-check whether shelved should move to cancelled in the next Florida pass. Not staged here — the captive-power lane is edit-restricted to CaptiveGasPower. Sources: https://www.jaxdailyrecord.com/news/2025/nov/03/eagle-lngs-planned-542-jacksonville-facility-sidetracked-land-is-for-sale/ and https://www.jaxdailyrecord.com/news/2026/mar/24/jacksonville-city-council-clears-way-for-planned-industrial-park-on-lng-eagle-land/",
+    "gem_field": "",
+    "paste_value": ""
+  },
+  {
+    "category": "identity check",
+    "terminal_id": "T100000130220",
+    "unit_id": "G100002022001",
+    "terminal_name": "Eagle LNG Terminal",
+    "issue": "Frequently-conflated pair, checked and found clean in GEM: the 'Export Terminal (T1-T3)' unit at 1,650,000 gal/day is the never-built Jacksonville PORT export terminal (Zoo Parkway/Talleyrand), NOT Eagle's separate operating Maxville small-scale plant 26 miles inland (~200,000-300,000+ gal/day, operating since 2018, serving JAXPORT bunkering and truck loading). Press coverage routinely merges the two. Separately, an older pre-FEED description cites 3 x 300,000 = 900,000 gal/day against the final FERC-authorized 3 x 550,000 = 1,650,000 that GEM carries — a permitting-stage scale-up, not an error.",
+    "severity": "low",
+    "suggested_action": "No action; logged so a future researcher does not 'correct' GEM's capacity to the stale pre-FEED figure or merge the Maxville plant into this record.",
+    "gem_field": "",
+    "paste_value": ""
+  },
+  {
+    "category": "insufficient evidence",
+    "terminal_id": "T100001061234",
+    "unit_id": "G100001070149",
+    "terminal_name": "AGP LNG Terminal",
+    "issue": "This record could not be researched to a captive verdict, and more broadly is thinly evidenced. No site or state is establishable from any citable source; no FERC, MARAD, or DOE docket was located. The only citable source found is an LNG Prime item on a 7.2 mtpa floating export proposal (capacity matches GEM). The sponsor's homepage claim of holding 'all DOE authorizations' could not be verified and, as a bare homepage, is uncitable in any lane. The stated 2025 FID target has passed while GEM still shows Pre-FID.",
+    "severity": "medium",
+    "suggested_action": "Update workflow: re-check status and whether the project still meets the 'sufficient information to include' threshold. If no docket or site can be established in a dedicated pass, escalate whether the record belongs in the tracker. Source: https://lngprime.com/americas/agp-plans-7-billion-us-floating-lng-export-project/135283/",
+    "gem_field": "",
+    "paste_value": ""
+  },
+  {
+    "category": "source conflict",
+    "terminal_id": "T100001061236",
+    "unit_id": "",
+    "terminal_name": "ST LNG FLNG Terminal",
+    "issue": "Unresolved compressor-driver vendor conflict, flagged for transparency. The June-2025 MARAD application and the April-2026 Draft EIS both name Siemens SGT-750 as the MR compressor driver (8 project-wide, 2/phase); the March-2026 Baker Hughes press release was read as LM6000PF compressor trains. Either a post-DEIS vendor change or a trade-press inaccuracy. It does not affect the captive verdict (mechanical drive is present either way) or the staged electric figure (270.4 MW comes solely from the 16 NovaLT16 generators). Also note: the Final EIS text itself was not reachable — regulations.gov docket entries 403 without a session — so engineering facts rest on the Draft EIS, on the reasoning that a FEIS is a DEIS plus comment responses, not a redesign.",
+    "severity": "low",
+    "suggested_action": "No action needed for the staged edit. Re-check the driver vendor and confirm against the Final EIS whenever the FEIS becomes retrievable or the project reaches FID.",
+    "gem_field": "",
+    "paste_value": ""
+  },
+  {
+    "category": "record detail",
+    "terminal_id": "T100001061236",
+    "unit_id": "",
+    "terminal_name": "ST LNG FLNG Terminal",
+    "issue": "GEM carries Floating=True, which is directionally right but imprecise: liquefaction sits on FIXED platforms (Gas Treatment Platform + Liquefaction Platform per phase), with converted LNG carriers used as floating storage. Project shape: 4 phases x 2.1 mtpa = 8.4 mtpa, ~10.4 nm offshore Matagorda, Brazos OCS Block BA-476, first LNG targeted 2Q 2030, pre-FID, MARAD/USCG deepwater-port track (no FERC).",
+    "severity": "low",
+    "suggested_action": "Optional precision note for a future Update batch; not a captive-power edit.",
+    "gem_field": "",
+    "paste_value": ""
+  }
+]

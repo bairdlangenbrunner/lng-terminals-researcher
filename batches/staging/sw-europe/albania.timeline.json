@@ -1,0 +1,18 @@
+[
+  {
+    "terminal_id": "T100000130924",
+    "unit_id": "G100002092400",
+    "terminal_name": "Port of Vlora FSRU",
+    "unit_name": "--",
+    "operation": "append",
+    "status": "cancelled",
+    "sub_status": "inferred 4 y",
+    "year": 2026,
+    "part_of_year": null,
+    "notes": "Existing Postgres timeline (fetch_timeline.py G100002092400): proposed 2021 (Mar, MOU with Excelerate/ExxonMobil/Albania) -> shelved 2024 (inferred 2 y, StopYear 2024). This append: shelved -> cancelled (inferred 4 y), 2026. Legally monotonic forward transition (shelved to cancelled is a valid strict transition per lifecycle_rules.md); no reversal. Basis: no delivered infrastructure since the 2021-2022 feasibility-study phase (Excelsior FSRU diverted to Germany Oct 2022), corroborated dormant through a 2026 Tirana Times retrospective (un-commissioned Vlora plant, no gas infrastructure delivered) and portseurope.com's 2023 'no progress' report -- 4+ years total with no material activity, crossing the shelved-to-cancelled inference threshold. A different 2026 sponsor group (Aktor/Venture Global/Atlantic SEE LNG Trade) pursuing a separate concept at the same site is NOT treated as a same-project revival (different sponsor/design) -- tracked instead as a discovery monitor_list candidate, so this timeline append is not reversed by that lead.",
+    "source_url": "https://www.tiranatimes.com/albanias-recurrent-gasification-mirage/",
+    "confidence": "green",
+    "legal_transition_check": "shelved -> cancelled: valid forward transition, no reviewer sign-off flag needed",
+    "researcher_initials": "AI-draft (sweep)"
+  }
+]

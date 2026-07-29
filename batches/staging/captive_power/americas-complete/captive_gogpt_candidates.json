@@ -1,0 +1,840 @@
+[
+  {
+    "terminal": "Argent LNG Terminal",
+    "terminal_id": "T100000131163",
+    "gogpt_candidate": "IN GOGPT — MW single-source (verify)",
+    "electric_mw": "675 MW (GOGPT; from a single Baker Hughes announcement — corroborate)",
+    "confidence": "yellow",
+    "basis": "Captive plant already tracked in GOGPT (id 100001063931, 675 MW, pre-construction). Baker Hughes liquefaction tech selection is the primary basis; 675 MW rests on one announcement.",
+    "basis [ref]": [
+      "https://worldoil.com/news/2025/2/4/baker-hughes-to-provide-liquefaction-tech-for-argent-lng-24-mtpa-facility/",
+      "https://www.hydrocarbonengineering.com/gas-processing/04022025/argent-energy-selects-baker-hughes-as-technology-provider/"
+    ],
+    "mechanical_drive_note": "Electric-drive design; not mechanical-drive flagged."
+  },
+  {
+    "terminal": "CP2 LNG Terminal",
+    "terminal_id": "T100000130973",
+    "gogpt_candidate": "IN GOGPT — OK",
+    "electric_mw": "2,190 MW (GOGPT; 1,470 MW approved + 720 MW Phase-3 proposed)",
+    "confidence": "green",
+    "basis": "Captive plant already tracked in GOGPT (id 100001048547). DOE FEIS is the primary basis for the on-site generation.",
+    "basis [ref]": [
+      "https://www.energy.gov/sites/default/files/2023-08/eis-0551-venture-global-cp2-lng-feis-2023-07-01.pdf",
+      "https://naturalgasintel.com/news/venture-global-secures-pre-filing-waiver-for-cp2-phase-3-buildout/"
+    ],
+    "mechanical_drive_note": "Electric-drive CCGT; not mechanical-drive flagged."
+  },
+  {
+    "terminal": "Calcasieu Pass LNG Terminal",
+    "terminal_id": "T100000130212",
+    "gogpt_candidate": "IN GOGPT — OK",
+    "electric_mw": "720 MW (GOGPT; on-site CCGT)",
+    "confidence": "green",
+    "basis": "Captive plant already tracked in GOGPT (id 100001063643, 720 MW, operating). FERC DEIS + DOE FEIS + sponsor corroborate the on-site CCGT.",
+    "basis [ref]": [
+      "https://www.ferc.gov/sites/default/files/2020-05/06-22-18-DEIS.pdf",
+      "https://www.eia.gov/todayinenergy/detail.php?id=52238"
+    ],
+    "mechanical_drive_note": "Electric-drive CCGT; not mechanical-drive flagged."
+  },
+  {
+    "terminal": "Commonwealth LNG Terminal",
+    "terminal_id": "T100000130215",
+    "gogpt_candidate": "IN GOGPT — REVIEW MW (mechanical conflation)",
+    "electric_mw": "~120 MW electric (DOE FEIS); GOGPT lists 438.6 MW total",
+    "confidence": "green",
+    "basis": "Already in GOGPT (id 100001063923, 438.6 MW). DOE FEIS shows only ~120 MW is a dedicated electric plant; the ~348 MW balance is mechanical compressor drive and must not be read as generation.",
+    "basis [ref]": [
+      "https://www.energy.gov/sites/default/files/2022-09/final-eis-0533-vol1-commonwealth-lng-2022-09_0.pdf"
+    ],
+    "mechanical_drive_note": "MIXED: dedicated electric plant ~120 MW + ~348 MW mechanical compressor drives → mechanical=True. GOGPT 438.6 MW conflates the two."
+  },
+  {
+    "terminal": "Delfin FLNG Terminal",
+    "terminal_id": "T100000130218",
+    "gogpt_candidate": "IN GOGPT — OK",
+    "electric_mw": "168.8 MW (GOGPT)",
+    "confidence": "green",
+    "basis": "Already in GOGPT (id 100001048543, 168.8 MW, construction). FID confirmed 2026-06-03; DOE FEIS + design update are the primary basis. (LNG side: FIDStatus Pre-FID→FID staged.)",
+    "basis [ref]": [
+      "https://www.energy.gov/sites/prod/files/2018/11/f57/final-eis-0531-port-delfin-lng-main-volume-2016-11.pdf",
+      "https://www.globenewswire.com/news-release/2026/06/03/3306350/0/en/delfin-midstream-announces-5-billion-final-investment-decision-for-first-flng-vessel.html"
+    ],
+    "mechanical_drive_note": "Offshore FLNG on-vessel power; not mechanical-drive flagged."
+  },
+  {
+    "terminal": "Gulfstream LNG Terminal",
+    "terminal_id": "T100000131128",
+    "gogpt_candidate": "IN GOGPT — OK",
+    "electric_mw": "275 MW (GOGPT; on-site CCGT)",
+    "confidence": "green",
+    "basis": "Already in GOGPT (id 100001063919, 275 MW, pre-construction). FERC application + trade press corroborate the 275 MW CCGT.",
+    "basis [ref]": [
+      "https://www.hydrocarbonprocessing.com/news/2024/05/gulfstream-lng-export-terminal-us-receives-us-ferc-approval/",
+      "https://lngprime.com/americas/gulfstream-lng-asks-us-ferc-to-start-pre-filing-process/110112/"
+    ],
+    "mechanical_drive_note": "Electric-drive CCGT; not mechanical-drive flagged."
+  },
+  {
+    "terminal": "Plaquemines LNG Terminal",
+    "terminal_id": "T100000130242",
+    "gogpt_candidate": "IN GOGPT — OK",
+    "electric_mw": "2,860 MW (GOGPT; 2×720 MW CCGT/phase, 4-unit rollup)",
+    "confidence": "green",
+    "basis": "Already in GOGPT (id 100001063717, 2,860 MW). FERC FEIS + sponsor confirm the on-site CCGT phases.",
+    "basis [ref]": [
+      "https://www.ferc.gov/sites/default/files/2020-05/05-03-19-FEIS.pdf",
+      "https://ventureglobal.com/venture-global-plaquemines/plaquemines-facility/"
+    ],
+    "mechanical_drive_note": "Electric-drive CCGT; not mechanical-drive flagged."
+  },
+  {
+    "terminal": "Sabine Pass LNG Terminal",
+    "terminal_id": "T100000130240",
+    "gogpt_candidate": "IN GOGPT — REVIEW MW (mechanical conflation)",
+    "electric_mw": "undisclosed electric; GOGPT lists 1,665.6 MW (unverified)",
+    "confidence": "green",
+    "basis": "Already in GOGPT (id 100001063737, 1,665.6 MW). On-site GTGs confirmed by DOE EA + EPA, but the 1,665.6 MW / 8-unit figure appears in no primary source and likely bundles mechanical compressor turbines — GOGPT capacity review recommended.",
+    "basis [ref]": [
+      "https://www.energy.gov/sites/prod/files/EA-1845-FEA-2011.pdf",
+      "https://www.epa.gov/sites/default/files/2015-08/documents/sabinepass_petition2012.pdf"
+    ],
+    "mechanical_drive_note": "MIXED: on-site gas-turbine generators + mechanical compressor drives → mechanical=True. GOGPT 1,665.6 MW (8 units) not in any primary source; likely conflates the two."
+  },
+  {
+    "terminal": "G2 LNG Terminal",
+    "terminal_id": "T100000130226",
+    "gogpt_candidate": "IN GOGPT — status/name + MW review",
+    "electric_mw": "300 MW (GOGPT; design was >1,000 MW — conflation risk with NET Power's Texas plant)",
+    "confidence": "yellow",
+    "basis": "Already in GOGPT (id 100000408059), now named 'G2 LNG Terminal power station' (was 'G2 Net-Zero power plant'); listed cancelled-inferred. 300 MW figure vs the >1,000 MW design suggests a possible mix-up with NET Power's Texas demo plant — flag for GOGPT.",
+    "basis [ref]": [
+      "https://www.lngindustry.com/special-reports/11052021/g2-and-net-power-collaborate-on-net-zero-lng-project/",
+      "https://www.offshore-energy.biz/g2-advances-its-net-zero-lng-export-project/"
+    ],
+    "mechanical_drive_note": "Electric-drive (NET Power Allam-cycle) design; not mechanical-drive flagged."
+  },
+  {
+    "terminal": "Woodside Louisiana LNG Terminal",
+    "terminal_id": "T100000130219",
+    "gogpt_candidate": "IN GOGPT — REVIEW MW (all mechanical drive)",
+    "electric_mw": "0 MW electric (grid-fed); GOGPT lists 430.4 MW = mechanical shaft power",
+    "confidence": "green",
+    "basis": "Already in GOGPT (id 100001064065, 430.4 MW, construction). The FERC (Driftwood-era) FEIS shows site power is grid-supplied from Entergy; Baker Hughes' equipment order confirms LM6000PF+ gas-turbine compressor drives -> pure mechanical drive, so GOGPT should tag this as mechanical-drive, not a generating power station.",
+    "basis [ref]": [
+      "https://www.ferc.gov/sites/default/files/2020-05/01-18-19-FEIS.pdf",
+      "https://www.lngindustry.com/liquefaction/03012025/baker-hughes-secures-liquefaction-equipment-order-for-woodside-louisiana-lng/"
+    ],
+    "mechanical_drive_note": "PURE mechanical drive: LM6000PF+ gas turbines drive the refrigerant compressors, no generator; grid-fed site electricity (Entergy). GOGPT 430.4 MW = shaft power, not electricity."
+  },
+  {
+    "terminal": "Port Arthur LNG Terminal",
+    "terminal_id": "T100000130237",
+    "gogpt_candidate": "ADD (yes)",
+    "electric_mw": "240 MW (8 gas combustion-turbine generators + 1 backup)",
+    "confidence": "green",
+    "basis": "FERC-certified on-site gas-turbine generating plant (240 MW) — real gas-fired electricity, ~4.8x the >50 MW GOGPT threshold. Single-origin regulatory (FERC order + FEIS are both FERC); no independent trade restatement of the exact number, but a lone primary/regulatory source is green.",
+    "basis [ref]": [
+      "https://www.ferc.gov/sites/default/files/2020-04/C-3.pdf",
+      "https://aglaw.psu.edu/wp-content/uploads/2021/02/Port-Arthur-LNG-Final-Environmental-Impact-Statement.pdf"
+    ],
+    "mechanical_drive_note": "SEPARATE, NOT in the 240 MW: 4x GE Frame 7 gas turbines drive 8 refrigerant compressors + 2 electric-motor boost compressors (Phase 1); shaft MW not disclosed. Never sum into the generating MW."
+  },
+  {
+    "terminal": "Coastal Bend LNG Terminal",
+    "terminal_id": "T100001061247",
+    "gogpt_candidate": "MAYBE",
+    "electric_mw": "",
+    "confidence": "yellow",
+    "basis": "Cogeneration is confirmed by name but no MW figure or unit count has been published (project is proposed/pre-FID); revisit once FERC Resource Reports or FEED-stage documents publish equipment specs.",
+    "basis [ref]": [
+      "https://coastalbendlng.com/news/coastal-bend-lng-selects-conocophillips-optimized-cascade-process-technology",
+      "https://coastalbendlng.com/news/coastal-bend-lng-initiates-development-of-22-5-mtpa-lng-export-facility",
+      "https://www.conocophillips.com/news-media/story/coastal-bend-lng-selects-conocophillips-optimized-cascade-process-technology/",
+      "https://www.ogj.com/pipelines-transportation/lng/article/55299673/coastal-bend-lng-plans-2025-pre-file-for-225-million-tpy-lng-export-plant",
+      "https://www.hartenergy.com/exclusives/coastal-bend-plans-225-mtpa-lng-export-facility-gulf-coast-213382/"
+    ],
+    "mechanical_drive_note": "",
+    "_superseded_prior": "Verdict re-researched after the >50 MW captive floor was removed (2026-07-27); this row replaces the pre-floor-removal one. Prior basis: On-site gas-fired cogeneration integral to the ConocoPhillips Optimized Cascade design; existence well-corroborated (3 independent publishers) but NO public MW anywhere and project is pre-FERC-file -> a proposed GOGPT record with an unpopulated capacity. TCEQ NSR air permit is the doc most likely to carry per-turbine MW; re-check."
+  },
+  {
+    "terminal": "Golden Pass LNG Terminal",
+    "terminal_id": "T100000130227",
+    "gogpt_candidate": "REVIEWER CALL (no citable nameplate)",
+    "electric_mw": "undisclosed — waste-heat steam-turbine cogen generator set(s), MW not published; + emergency-only engine gensets",
+    "confidence": "yellow",
+    "basis": "Only continuous on-site electricity is waste-heat steam-turbine cogeneration (HRSGs on the six Frame 7EA feed Siemens STG sets) with no published nameplate; largest on-site MW is mechanical drive (non-electric). Decision: track a cogen plant with an unsourceable nameplate, or hold until an MW surfaces?",
+    "basis [ref]": [
+      "https://www.bakerhughes.com/company/news/baker-hughes-ge-company-supply-turbomachinery-equipment-golden-pass-lng-export",
+      "https://www.hydrocarbonengineering.com/tanks-terminals/11022019/bhge-to-supply-turbomachinery-equipment-for-golden-pass-lng-export-facility/"
+    ],
+    "mechanical_drive_note": "SEPARATE, NOT electricity: 6x GE/Baker Hughes MS7001EA (Frame 7EA) shaft-drive 12 refrigerant compressors, ~515 MW aggregate shaft (per-unit ~86 MW inferred, not PASS-verified). The 3x 6.8-MW BOG motors are electrical LOAD, not generation."
+  },
+  {
+    "terminal": "Rio Grande LNG Terminal",
+    "terminal_id": "T100000130239",
+    "gogpt_candidate": "DO NOT ADD (grid-fed)",
+    "electric_mw": "none — operating power from the AEP 138 kV grid; only on-site gen is ~16.35 MW diesel emergency (6x 2,725 kW), non-gas",
+    "confidence": "green (negative determination)",
+    "basis": "FERC FEIS is unambiguous: operating power comes from the AEP grid (new transmission line + switchyard), not self-generation; only on-site electricity is emergency diesel. The large gas turbines are mechanical drive for compressors. Secondary '300 MW generators' / 'self-powered' claims are contradicted by the FERC record and were not used.",
+    "basis [ref]": [
+      "https://www.globenewswire.com/news-release/2025/09/11/3148922/0/en/Baker-Hughes-Secures-Order-for-Rio-Grande-LNG-Expansion.html",
+      "https://www.worldoil.com/news/2025/11/6/baker-hughes-wins-order-for-nextdecade-s-rio-grande-lng-train-5-expansion/"
+    ],
+    "mechanical_drive_note": "SEPARATE, NOT electricity: 2x Baker Hughes Frame 7 gas turbines per train drive centrifugal refrigerant compressors (Trains 1-3 = 6; Trains 4 & 5 = +2 each); per-turbine MW not in any verified source."
+  },
+  {
+    "terminal": "Corpus Christi LNG Terminal",
+    "terminal_id": "T100000130216",
+    "gogpt_candidate": "DO NOT ADD (mechanical drive + grid-fed)",
+    "electric_mw": "none — Trains 1-3 mechanical drive; Stage 3 grid electric-motor; only on-site gen is ~0.75 MW/unit diesel standby",
+    "confidence": "green (negative determination)",
+    "basis": "No gas-fired electricity generation: Trains 1-3 have no gensets, Stage 3 compressor power is imported from the transmission grid (electric-motor drive), only on-site generators are diesel standby. FERC Stage 3 EA + EPA GHG permit primary.",
+    "basis [ref]": [
+      "https://archive.epa.gov/region6/6pd/air/pd-r/ghg/web/pdf/corpuschristi-liq-turbine-simple-cycle060613.pdf",
+      "https://www.bakerhughes.com/company/news/bhge-wins-turbomachinery-contract-cheniere-energy-incs-lng-facility-corpus-christi"
+    ],
+    "mechanical_drive_note": "SEPARATE, NOT electricity: Trains 1-3 = 18x GE LM2500 G4+ / Baker Hughes PGT25+G4 (6/train), ~34 MW-class ISO shaft each (~600 MW aggregate shaft). Any aggregate 'power station MW' from a turbine count would conflate shaft power with electricity."
+  },
+  {
+    "terminal": "ST LNG FLNG Terminal",
+    "terminal_id": "T100001061236",
+    "gogpt_candidate": "ADD (yes)",
+    "electric_mw": "270.4 MW installed nameplate project-wide (16 x Baker Hughes NovaLT16 @ 16.9 MW, 4 per phase x 4 phases; ~202.8 MW at normal N+1 load, 3 running + 1 standby per phase)",
+    "confidence": "green",
+    "basis": "A genuine off-grid gas-fired generating plant, 5.4x the >50 MW GOGPT threshold, documented in two primary/regulatory documents on the MARAD deepwater-port docket. The applicant's licence application states the facility 'would have no connection to the electric power grid' and that 'Gas turbine generators with waste heat recovery units would be utilized to provide power and heat to the DWP.' The Draft EIS (April 2026) stationary-source list, explicitly 'inclusive of all phases', enumerates 'Sixteen Baker Hughes LT-16 natural-gas-fired combustion turbines for power generation'. Offshore, ~10.4 nm off Matagorda, Brazos OCS Block BA-476; pre-FID, first LNG targeted 2Q 2030 — so the GOGPT record would be announced/pre-construction, not operating. GOGPT naming convention would make this 'ST LNG FLNG Terminal power station'.",
+    "basis [ref]": [
+      "https://downloads.regulations.gov/MARAD-2025-0096-0001/attachment_1.pdf",
+      "https://downloads.regulations.gov/MARAD-2025-0096-0028/attachment_1.pdf"
+    ],
+    "mechanical_drive_note": "SEPARATE, NOT in the 270.4 MW: 8 x Siemens SGT-750 gas turbines as MR compressor drivers project-wide (2 per phase), shaft power with no generator. The Draft EIS lists these under a distinct 'MR Compressor System Driver' heading, separate from 'Power Generation Gas Turbines'. Never sum them into the generating MW. Unresolved vendor conflict: the March-2026 Baker Hughes press release was read as LM6000PF compressor trains, while the application and Draft EIS both name Siemens SGT-750 — either a post-DEIS vendor change or a trade-press inaccuracy; it does not change the electric figure, which comes only from the NovaLT16 count."
+  },
+  {
+    "terminal": "Gulf LNG Terminal",
+    "terminal_id": "T100000130228",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "yellow",
+    "basis": "GOGPT tracks electricity generation with a nameplate MW. The only captive power here is pure mechanical-drive shaft power (gas turbines driving the MR/PR compressors, no generator) on a project that was never built and never reached FID — no generating capacity to record and no physical plant to tag. The operating import terminal's only on-site generation is 2 x 12 MW backup gas-turbine generators (24 MW), below the 50 MW threshold and backup-only.",
+    "basis [ref]": [
+      "https://www.ferc.gov/sites/default/files/CalendarFiles/20190716201154-CP15-521-000.pdf",
+      "https://www.energy.gov/sites/prod/files/2019/04/f62/final-eis-0504-gulf-lng-2019-04-chp-2.pdf"
+    ],
+    "mechanical_drive_note": "The captive designation rests entirely on mechanical drive: 4 gas turbines (2 per train x 2 trains) driving propane-precool/mixed-refrigerant compressors. No MW/HP rating appears in any verified source — left undisclosed rather than invented, which is also why no MW could be offered to GOGPT even if the project were built."
+  },
+  {
+    "terminal": "Eagle LNG Terminal",
+    "terminal_id": "T100000130220",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "No captive gas power exists or is planned on-site. The design is grid-electric (JEA-supplied) with a motor-driven inlet boost compressor, and the project was never built — the 227-acre Zoo Parkway site is being rezoned into an industrial park. Nothing for GOGPT to track. The three nearby JEA stations are already-tracked utility generation, not captive.",
+    "basis [ref]": [
+      "https://www.offshore-technology.com/projects/jacksonville-lng-project-jacksonville-florida/",
+      "https://www.jea.com/Pdf/Download/12884910955"
+    ],
+    "mechanical_drive_note": "None — no mechanical-drive turbines at this site; the compressor is explicitly motor-driven (electric)."
+  },
+  {
+    "terminal": "American LNG Hialeah Terminal",
+    "terminal_id": "T100000130208",
+    "gogpt_candidate": "REVIEWER CALL",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "No sourced information exists on whether Hialeah has on-site generation; nothing to add or exclude absent a positive finding.",
+    "basis [ref]": [
+      "https://www.offshore-technology.com/marketdata/hialeah-lng-liquefaction-terminal-the-us/",
+      "https://www.energy.gov/sites/default/files/2016/02/f29/CX-200000.pdf"
+    ],
+    "mechanical_drive_note": "",
+    "_superseded_prior": "Verdict re-researched after the >50 MW captive floor was removed (2026-07-27); this row replaces the pre-floor-removal one. Prior basis: A 0.06 mtpa modular skid-mounted small-scale liquefier with no evidence of any on-site power generation asset, let alone one approaching 50 MW. DOE's categorical-exclusion determination describes modular skids needing only 'electrical connections' between them. GOGPT's own matcher found no captive-flagged plant nearby, consistent with this terminal-first finding."
+  },
+  {
+    "terminal": "Alaska LNG Terminal",
+    "terminal_id": "T100000130206",
+    "gogpt_candidate": "ADD",
+    "electric_mw": "124",
+    "confidence": "green",
+    "basis": "The on-site 124 MW facility is genuine electric generation (gas turbine generators, N+1), not merely mechanical drive, and is not grid-fed - it clears the >50 MW GOGPT threshold and is well-documented in FERC docket CP17-178. As-designed captive power on an unbuilt facility still counts. No GOGPT record for this on-site plant appears to exist (only the unrelated pre-existing Nikiski Combined Cycle plant nearby) - reviewer should decide whether to stage a new proposed-status GOGPT entry.",
+    "basis [ref]": [
+      "https://dec.alaska.gov/media/21764/02-general-project-info-resource-report-1.pdf"
+    ],
+    "mechanical_drive_note": "Each of the 3 LNG trains has 2 refrigerant compression strings, each driven directly by a natural gas turbine (mechanical/shaft drive, no generator) - 6 turbines total, combined ~800,000 ISO horsepower for refrigeration compression. Separate from the 124 MW electric-generation plant; produces zero MWe. NOTE: the 800,000 ISO-hp figure could not be cleanly verified (see verification_log) and is reported as background, not as a cited claim."
+  },
+  {
+    "terminal": "Cove Point LNG Terminal",
+    "terminal_id": "T100000130217",
+    "gogpt_candidate": "ADD",
+    "electric_mw": "130",
+    "confidence": "green",
+    "basis": "The 130 MW / 2-unit GOGPT record matches exactly the two 65 MW steam turbine generators confirmed as dedicated on-site electric generation in FERC CP13-113 and the Maryland PPRP fact sheet - genuine captive electricity generation, self-consumed, never exported. Clean case for flipping GOGPT captive False -> True.",
+    "basis [ref]": [
+      "https://aglaw.psu.edu/wp-content/uploads/2021/02/Cove-Point-FERC-Certificate-9.29.14.pdf",
+      "https://dnr.maryland.gov/pprp/Documents/Dominion_Energy_Cove_Point_Fact_Sheet.pdf"
+    ],
+    "mechanical_drive_note": "Two GE Frame 7EA gas turbines directly drive (mechanical/shaft coupling) the two main LNG refrigerant-compressor trains, ~86 MW ISO shaft power each (~172 MW combined shaft). Separate from and additional to the 130 MW electric figure."
+  },
+  {
+    "terminal": "Firebird LNG Terminal",
+    "terminal_id": "T100000131139",
+    "gogpt_candidate": "ADD",
+    "electric_mw": "430",
+    "confidence": "yellow",
+    "basis": "Disclosed nameplate capacity (430 MW) from an executed EPC supply contract (primary/legal source) for six gas-turbine generators plus a steam-turbine generator - true electricity generation, not mechanical-drive-only and not grid-fed. Reviewer flag: the plant's own description covers both 'LNG facilities and port facilities' (i.e. also the wider SEZ/port), so it is PARTIALLY captive rather than 100% dedicated to the LNG train - still ADD-eligible per the partially-captive rule.",
+    "basis [ref]": [
+      "https://www.lawinsider.com/contracts/emRNz0M0sxz",
+      "https://portofnickerie.com/en/lng-facility-en/"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Goldboro LNG Terminal",
+    "terminal_id": "T100000130354",
+    "gogpt_candidate": "ADD",
+    "electric_mw": "180",
+    "confidence": "green",
+    "basis": "GOGPT tracks electricity generation with a nameplate MW, and the design documents describe exactly that: a dedicated 180 MW natural-gas-fired generator plant (industrial gas turbines driving generator sets, open-cycle) built specifically to power the LNG facility's own electrical loads. This is textbook captive electric generation, not mechanical drive and not grid-fed, so it qualifies for CaptiveGasPower on the LNG terminal side.",
+    "basis [ref]": [
+      "https://novascotia.ca/nse/ea/goldboro-lng/03-Project-Description.pdf",
+      "https://novascotia.ca/nse/ea/goldboro-lng/goldboro-panel-report-2014-03-07.pdf"
+    ],
+    "mechanical_drive_note": "Design also included a fully SEPARATE set of mechanical-drive gas turbines: the two liquefaction trains' refrigerant compressors were to use gas turbine drivers (Frame 7) of approximately 160 MW shaft power per train (4 machines total for 2 trains, i.e. ~640 MW combined shaft power). These are NOT part of the 180 MW figure and do not generate electricity, so they are excluded from electric_mw. The 180 MW GOGPT entry corresponds only to the separate Frame-6-turbine electric generator plant, so the captive designation here rests on straightforward electricity generation, not on mechanical drive."
+  },
+  {
+    "terminal": "AMIGO FLNG Terminal",
+    "terminal_id": "T100000130917",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "AMIGO's own compressor drive is undetermined (could end up zero-MWe mechanical drive, or grid/utility-fed electric motors), and no on-site captive generator has been disclosed at any capacity. Nothing confirmed to add.",
+    "basis [ref]": [
+      "https://epcintel.com/insight/biggest-flng-on-the-planet-gets-greenlit-as-drydocks-world-wins-major-epc-contract-from-amigo-41"
+    ],
+    "mechanical_drive_note": "As of the mid-2026 EPC contract award, project documentation lists refrigerant-compressor prime movers as either 'large frame gas turbines or high voltage motors with variable speed drives' - an unresolved either/or, not a locked selection. No MW or turbine model disclosed for either option; the article notes cost ranges 'will tighten as technology and equipment selection are locked.'"
+  },
+  {
+    "terminal": "Andres LNG Terminal",
+    "terminal_id": "T100000130566",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "Andres power station (319 MW gas, confirmed against the AES 10-K's 329 MW combined gas+battery figure) is a merchant grid-connected generator selling under PPAs, not captive load of the terminal. Its GOGPT record is valid as stand-alone generation but must never be linked to the Andres terminal as CaptiveGasPower.",
+    "basis [ref]": [
+      "https://www.sec.gov/Archives/edgar/data/874761/000087476126000063/aes-20251231.htm"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Argentina LNG Terminal",
+    "terminal_id": "T100000130832",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "The onboard steam-turbine-generator sets (66 MW) and gas-turbine compressor drivers are integral shipboard equipment built into the FLNG vessels themselves, not a standalone onshore power-plant facility with its own site/address -- GOGPT tracks discrete power stations, and there is no such separate facility here to add. The CaptiveGasPower field on the LNG terminal record is the correct place to capture this, not a new GOGPT entry.",
+    "basis [ref]": [
+      "https://www.ge.com/news/press-releases/ge-technology-and-services-support-conversion-golar-lng-floating-liquefaction-vessel"
+    ],
+    "mechanical_drive_note": "Hilli Episeyo's 4 liquefaction trains (Black & Veatch PRICO single-mixed-refrigerant) are each driven by a GE PGT25+G4 aeroderivative gas turbine directly mechanically coupled to a GE 2BCL centrifugal refrigerant compressor - shaft drive, no generator in this loop - per GE's own press release announcing the equipment order for the conversion (4 compression trains with PGT25+G4 drivers) and GE's PGT25 brochure (~34 MW class per unit), i.e. roughly 136 MW of shaft power across 4 trains, far above the >50 MW threshold. NO PUBLICLY SOURCED ELECTRIC GENERATION FIGURE EXISTS for this vessel, so electric_mw is deliberately left blank (see orchestrator note). MK II (Fuji LNG hull) will also license PRICO but its equipment order for Argentina is not yet publicly disclosed."
+  },
+  {
+    "terminal": "Atlantic LNG Terminal",
+    "terminal_id": "T100000130579",
+    "gogpt_candidate": "MAYBE",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "The mechanical-drive Frame 5 turbines are shaft-power-only (zero MWe) and are DO-NOT-ADD material for a GOGPT generation record. However the same primary source confirms a genuine electricity-GENERATING plant on site (Solar Mars 100 gas-turbine generator sets on the complex's internal grid). Solar Mars 100 units are ~11 MW-ISO class and at least 4 were added for Train 4 alone on top of a pre-existing fleet for Trains 1-3, so >50 MW is plausibly met - but no source discloses the total unit count or aggregate nameplate MW for Atlantic LNG specifically, so this is a reviewer call (worth pursuing via EMA/CEC environmental filings) rather than a confident ADD.",
+    "basis [ref]": [
+      "https://static.conocophillips.com/files/resources/smid_016_atlantictrain.pdf"
+    ],
+    "mechanical_drive_note": "Train 1: 6x GE Frame 5C gas turbines mechanically driving the propane/ethylene/methane refrigeration compressors (2 per circuit); upgraded 2003-04 to Frame 5/2D spec, raising output 13% to 43,700 hp (~32.6 MW shaft) per unit (~196 MW aggregate shaft for Train 1 alone). Trains 2 & 3: 6x Frame 5D each, 2 per refrigeration circuit. Train 4: 8x Frame 5D turbine/compressor sets (3 propane + 3 ethylene + 2 methane) per the Phillips Optimized Cascade 'Two-Trains-in-One' design; aero-derivative alternatives (Rolls-Royce Coberra, LM-2500+/LM-6000) were evaluated for Train 4 and rejected in favour of more Frame 5D units. All four trains use gas-turbine MECHANICAL DRIVE for liquefaction refrigeration. The operator describes the resulting fleet as ~28 GE Frame 5-class turbine-compressors, the largest such fleet in the world - reported as BACKGROUND only, not a cited value, because that page failed the verifier (see verification_log)."
+  },
+  {
+    "terminal": "Bahía Blanca FLNG Terminal (Tango FLNG)",
+    "terminal_id": "T100000131182",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "No verified own-generation MW figure for Tango FLNG exists in any source found, and the unit is a small-scale barge (~0.5-0.6 mtpa, 69.5 MMscf/d feed) well below the scale where a >50 MW captive plant would typically be expected without confirmation -- GOGPT tracks confirmed electricity-generation nameplate capacity, and inventing a figure here would be a defect, not a finding. Separately, Solalban Energia is an already-tracked, independently owned/older plant with no relationship to this terminal.",
+    "basis [ref]": [
+      "https://www.albanesi.com.ar/en/en_solalban.php",
+      "https://openinframap.org/stats/area/Argentina/plants/977415412"
+    ],
+    "mechanical_drive_note": "Undisclosed. Exmar's own project pages and Eni's technical/press materials describe Tango FLNG as a non-propelled barge (built by Wison, delivered 2017) with ~69.5 MMscf/d feed-gas intake and ~0.5-0.6 mtpa liquefaction capacity, but none of the sources found (Exmar milestone pages, Eni press release/PDF, offshore-technology.com, marinelink.com, offshore-energy.biz) state the make/model/count of the onboard power-generation engines or a MW figure, electric or mechanical. Extensive searching (incl. under the barge's original name 'Caribbean FLNG') found no Wärtsilä-branded reference to this specific unit; could not confirm the premise that Wärtsilä supplied its engines."
+  },
+  {
+    "terminal": "Cedar FLNG Terminal",
+    "terminal_id": "T100000130350",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "No on-site generation asset to track - grid consumer; only combustion equipment is emergency/standby diesel (excluded by fuel and by function).",
+    "basis [ref]": [
+      "https://projects.eao.gov.bc.ca/api/public/document/68caf0067a03b4002205daf9/download/Cedar%20LNG%20Accommodation%20+%20Capacity%20Amendment%20Application.pdf"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Coatzacoalcos II LNG Terminal",
+    "terminal_id": "T100001054469",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "yellow",
+    "basis": "Not a size call — there is no documented generating plant of any kind (on-site or otherwise) at this proposed site to add to GOGPT. Revisit if a future FEED/permit discloses generation equipment.",
+    "basis [ref]": [
+      "https://energymagazine.mx/2025/02/ursus-aqualita-lng-anuncia-planta-de-gnl-en-coatzacoalcos/",
+      "https://energymagazine.mx/2025/06/ursus-energy-desarrollara-planta-de-gnl-en-coatzacoalcos/",
+      "https://mexicobusiness.news/energy/news/ursus-energy-scales-investment-us21-billion",
+      "https://mexicobusiness.news/energy/news/ursus-energy-advances-coatzacoalcos-podebis-lng",
+      "https://energynews.mx/conflicto-legal-en-coatzacoalcos-frena-megaproyecto-de-gas-de-ursus-y-samsung-por-2100-mdd/"
+    ],
+    "mechanical_drive_note": "",
+    "_superseded_prior": "Verdict re-researched after the >50 MW captive floor was removed (2026-07-27); this row replaces the pre-floor-removal one. Prior basis: No on-site electricity-generation plant is documented at all; the only figure found (30 MW total facility demand) is below threshold and of undetermined source (grid vs on-site)."
+  },
+  {
+    "terminal": "Coatzacoalcos LNG Terminal (CFE)",
+    "terminal_id": "T100000131114",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "No developer selected and no technical design published - nothing to base a GOGPT record on.",
+    "basis [ref]": [],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Costa Azul LNG Terminal",
+    "terminal_id": "T100000130810",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "The captive basis is mechanical-drive gas turbines (shaft horsepower on the refrigerant compressors), which GOGPT does not track. The one on-site item that does generate electricity (Unit 71, house power) has no disclosed MW and reads as balance-of-plant auxiliary, not a distinct generating station. The neighbouring 324 MW Baja California III plant is confirmed NOT captive (wrong direction, different owner) - GEM's existing captive=False flag on it is correct and should not change.",
+    "basis [ref]": [
+      "https://www.energy.gov/sites/prod/files/2018/10/f56/18-144-LNG.pdf"
+    ],
+    "mechanical_drive_note": "ECA LNG Phase 1's single APCI C3MR liquefaction train is refrigerant-compressor-driven, not electric: DOE FE docket 18-144-LNG (which incorporates ASEA's environmental-authorization letter ASEA/UGI/DGGPI/0233/2017 as an exhibit) identifies dedicated gas turbines driving both refrigerant compressor trains by equipment tag - the MR refrigerant High/Medium-pressure compressor turbine (G1-3101) and the propane refrigerant compressor turbine (G1-3102) - fed by the plant's own high-pressure fuel-gas system. No manufacturer/model disclosed in sources reviewed. Air Products' 2021 technology-award release separately confirms the train uses 'fuel-efficient mechanical drivers' alongside its coil-wound heat exchangers, consistent with shaft (non-electric) drive."
+  },
+  {
+    "terminal": "Costa Norte LNG Terminal",
+    "terminal_id": "T100000130575",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "AES Colon (381 MW) and Gatun (670 MW) are merchant grid-connected generators selling to Panama's distribution companies under PPAs, exactly matching the GOGPT Tier-C priors. Their GOGPT records are valid stand-alone generation entries but must never be linked to Costa Norte as CaptiveGasPower - the relationship is already correctly recorded as PowerPlantsSupplied on the GEM terminal record.",
+    "basis [ref]": [
+      "https://www.sec.gov/Archives/edgar/data/874761/000087476126000063/aes-20251231.htm"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Elba Island LNG Terminal",
+    "terminal_id": "T100000130221",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "Electric-motor drive on purchased Georgia Power grid electricity; only combustion units are backup-only and far below the >50 MW threshold.",
+    "basis [ref]": [
+      "https://epd.georgia.gov/air/sites/epd.georgia.gov.air/files/related_files/document/0510003pd.pdf"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Everett Marine Terminal",
+    "terminal_id": "T100000130631",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "yellow",
+    "basis": "Mystic is a GOGPT generation record in its own right (now retired), not captive power of the terminal; fuel flows terminal->plant.",
+    "basis [ref]": [
+      "https://www.eia.gov/todayinenergy/detail.php?id=62404",
+      "https://www.publicpower.org/periodical/article/gas-fired-power-plant-units-massachusetts-are-retired"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Fermeuse Energy FLNG Terminal",
+    "terminal_id": "T100001061412",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "Project is pre-FEED with no published power/drive design; there is no generating-capacity claim of any kind to evaluate for GOGPT at this stage.",
+    "basis [ref]": [
+      "https://fermeusebase.com/article/fermeuse-energy-announces-lng-export-development-in-newfoundland-and-labrador-canada/",
+      "https://www.hanwha.com/newsroom/news/press-releases/hanwha-ocean-advances-newfoundland-lng-project-as-part-of-broader-cpsp-linked-industrial-partnership-in-canada.do"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Gato Negro Manzanillo LNG Terminal",
+    "terminal_id": "T100000131178",
+    "gogpt_candidate": "REVIEWER CALL",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "No sourced basis exists to add or exclude; project is pre-FID with no published equipment list. Revisit once a MIA/engineering filing surfaces.",
+    "basis [ref]": [
+      "https://gnlglobal.com/gato-negro-manzanillo-lng-obtiene-permiso-ambiental-federal-de-asea-y-avanza-hacia-la-fid-en-mexico/",
+      "https://www.colimanoticias.com/avanza-proyecto-para-nueva-planta-de-gas-licuado-en-manzanillo/",
+      "https://www.energy.gov/sites/default/files/2024-05/24-43-NG.pdf",
+      "https://www.energy-analytics-institute.org/gato-negro-lng-expands-manzanillo-lng-export-project"
+    ],
+    "mechanical_drive_note": "",
+    "_superseded_prior": "Verdict re-researched after the >50 MW captive floor was removed (2026-07-27); this row replaces the pre-floor-removal one. Prior basis: No engineering description of any generation facility exists; project still pre-FID with technology and EPC selection incomplete. A GOGPT record requires a nameplate MW, which does not exist here even preliminarily."
+  },
+  {
+    "terminal": "Gibbstown Deepwater Port LNG Terminal",
+    "terminal_id": "T100000130853",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "No liquefaction, refrigeration compression or LNG storage per the governing DRBC docket, which affirmatively bars on-site manufacturing and LNG storage. A loading-only dock has no generation-scale load.",
+    "basis [ref]": [
+      "https://www.nj.gov/drbc/library/documents/ResMin_2017-009-2ext091025.pdf"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Guyana LNG Terminal",
+    "terminal_id": "T100001061364",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "No generation technology or nameplate MW has ever been disclosed; project remains pre-FEED with financing/negotiation unresolved.",
+    "basis [ref]": [],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Ilo LNG Terminal",
+    "terminal_id": "T100000130990",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "No nameplate MW or generation-equipment description has ever been published for this dormant proposal.",
+    "basis [ref]": [],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Kenai LNG Terminal",
+    "terminal_id": "T100000130231",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "GOGPT's existing Nikiski cogeneration record (captive=False) is correct as-is with respect to Kenai LNG: HEA/AEEC-owned grid generation whose historic steam host was the fertilizer plant, not the terminal.",
+    "basis [ref]": [
+      "https://www.homerelectric.com/wp-content/uploads/AEEC-HEA-History.pdf",
+      "https://www.homerelectric.com/my-cooperative/power-generation/nikiski-combined-cycle-plant/"
+    ],
+    "mechanical_drive_note": "Original 1969 liquefaction plant used single-shaft GE Frame 5 gas turbines to directly (mechanically) drive the LNG refrigeration compressors - shaft power only, no generator. Two independent verified sources confirm 'Frame 5' direct-drive turbines at Kenai; neither yields a verifiable aggregate MW/bhp figure (a candidate 84,600 bhp / 63.1 MW figure FAILED independent verification and was dropped)."
+  },
+  {
+    "terminal": "Kitsault LNG Terminal",
+    "terminal_id": "T100000130357",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "No power-generation design evidence to base a GOGPT record on; the project is also currently shelved with no construction/EA approval on record.",
+    "basis [ref]": [],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Ksi Lisims FLNG Terminal",
+    "terminal_id": "T100000130914",
+    "gogpt_candidate": "MAYBE",
+    "electric_mw": "603",
+    "confidence": "green",
+    "basis": "A real, disclosed, sized (603 MW, 8-unit combined-cycle) generation asset whose sole purpose would be powering the terminal. But explicitly a temporary/contingent fallback that activates only if the BC Hydro interconnection slips; project is pre-FID; barges designed for removal within 5 years of activation. Reviewer call.",
+    "basis [ref]": [
+      "https://projects.eao.gov.bc.ca/api/public/document/66d0fd0f51493a0022ff113a/download/34_K"
+    ],
+    "mechanical_drive_note": "None - the FLNGs' main refrigerant compressor drives are electric motors in every scenario (grid-fed and barge-fed); no mechanical-drive gas turbines anywhere in the design."
+  },
+  {
+    "terminal": "LNG Canada Terminal",
+    "terminal_id": "T100000130358",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "All confirmed on-site turbines are mechanical-drive-only, shaft-coupled to refrigeration compressors with no generator. No dedicated electricity-generation set is disclosed in the EAO GHG filing, the BCER air permit, or LNG Canada's own materials - the 'cogeneration' feature recovers waste heat for process heating, not electricity. GOGPT tracks nameplate generation MW; no such asset exists here.",
+    "basis [ref]": [
+      "https://jfjvkitimat.com/wp-content/uploads/2023/07/Waste_Discharge_Authorization_Permit_for_Air_Emissions-compressed.pdf",
+      "https://projects.eao.gov.bc.ca/api/document/5886905ce036fb0105768a9b/fetch/Greenhouse%20Gas%20Management%20Technical%20Data%20Report.pdf"
+    ],
+    "mechanical_drive_note": "4x GE LMS100(-PB) aeroderivative gas turbines (2 per train, 2 trains in Phase 1), each ~105 MW simple-cycle at ISO per GE; LNG Canada's own BC EAO GHG Management Technical Data Report cites a tested output rating of 93.4 MW per unit as its emissions basis. Each turbine's free power turbine is coupled directly to a refrigerant compressor string - shaft power only, no generator. Aggregate Phase-1 mechanical shaft output ~374-420 MW; a 4-train build-out doubles to 8 turbines per the same filing."
+  },
+  {
+    "terminal": "Lakach Field FLNG Terminal",
+    "terminal_id": "T100000131068",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "No power configuration for the Sevan Driller conversion was ever published, and the project was terminated (Nov 2023) before such detail would exist publicly.",
+    "basis [ref]": [],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "New Fortress Altamira LNG Terminal",
+    "terminal_id": "T100000131069",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "33 MW per built FLNG unit (3x ~11 MW Siemens SGT-400 simple-cycle); 66 MW across the two authorised units FLNG1+FLNG2",
+    "confidence": "green",
+    "basis": "The SGT-400 turbines are embedded facility/utility generation on a jackup platform, not a standalone separately-identifiable power station of the kind GOGPT tracks; the larger driver (LM6000PF+) is pure mechanical drive with zero MWe. LNG-side CaptiveGasPower(+ref) edit only.",
+    "basis [ref]": [],
+    "mechanical_drive_note": "1x Baker Hughes LM6000PF+ gas-turbine-driven compressor per FLNG unit, mechanically driving the main IPSMR refrigerant compressor on the liquefaction platform (Pioneer II) - not a generator; shaft MW undisclosed in any verified source."
+  },
+  {
+    "terminal": "New Fortress Wyalusing LNG Terminal",
+    "terminal_id": "T100000130660",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "GOGPT's captive=True flag on Wyalusing Energy Center is correct as a captive plant but MIS-ATTRIBUTED if read as an LNG-terminal relationship - its host is the Klondike data centre. GOGPT-side note for the memo, no LNG-side edit.",
+    "basis [ref]": [
+      "PADEP Plan Approval 08-00060A"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Penn LNG Terminal",
+    "terminal_id": "T100000131080",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "yellow",
+    "basis": "Stated design is electric-drive fed by purchased renewable/nuclear power; no engineering document, permit filing or turbine selection exists. Grid-fed electric drive is DO NOT ADD by definition.",
+    "basis [ref]": [
+      "https://stateimpact.npr.org/pennsylvania/2022/06/14/major-export-terminal-pitched-in-chester-sets-up-clash-between-bidens-lng-environmental-justice-goals/",
+      "https://whyy.org/articles/biden-chester-lng-pipeline-penn-america-energy/"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Penuelas LNG Terminal",
+    "terminal_id": "T100000130578",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "yellow",
+    "basis": "Not a size call — EcoEléctrica is a large (500+ MW), decades-old merchant IPP selling to PREPA and almost certainly already carries a GOGPT plant record. 'Record already exists' is the correct DO NOT ADD basis. Recommend the memo (not this staged edit) flag the existing GOGPT record for a captiveIndustryUse/partially-captive tagging review — a GOGPT-side data-quality note, not a new-record proposal.",
+    "basis [ref]": [
+      "https://www.ccj-online.com/4q-2012/plant-report-ecoelectrica-lp/",
+      "https://drna.pr.gov/wp-content/uploads/2020/01/Ecoelectrica-English-TV-4911-57-0899-0006.pdf",
+      "https://www.ferc.gov/sites/default/files/2020-06/C-4-061820.pdf",
+      "https://energia.pr.gov/wp-content/uploads/sites/7/2020/05/2020-05-19-Reply-EcoElectrica-PPOA-PREPA-PREB-FINAL-VERSION-with-Exhibit.pdf"
+    ],
+    "mechanical_drive_note": "LNG sendout pumps are electric-motor driven off the 480V motor control centers per CCJ (a third sendout pump's controls are explicitly described), not gas-turbine shaft/mechanical drive — so this is electric captive power, not mechanical-drive captive power. A separate ~1,250 kW Cummins diesel/generator provides site emergency power; diesel, and irrelevant to the gas-captive test.",
+    "_superseded_prior": "Verdict re-researched after the >50 MW captive floor was removed (2026-07-27); this row replaces the pre-floor-removal one. Prior basis: The EcoElectrica power station (574 MW per the GOGPT Tier-C prior; regulatory filings independently show 507 MW original / 530 MW as of the 2020 restructuring - see status_or_data_issues) is a legitimate stand-alone merchant IPP selling to PREPA's grid, not captive load of the terminal. It may validly exist in GOGPT as its own generation record but must NEVER be linked to Penuelas as CaptiveGasPow"
+  },
+  {
+    "terminal": "Peru LNG Terminal (Pampa Melchorita)",
+    "terminal_id": "T100000130576",
+    "gogpt_candidate": "MAYBE",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "Genuine electricity generation exists on-site (3x GE LM2500+ gas turbine-generators, confirmed by GE plus two trade-press corroborations) - a GOGPT-relevant asset type, not merely mechanical drive. But no Peru-specific nameplate MW is published anywhere found (generic LM2500+ ~30 MW each would put the 3-unit set near/above 50 MW, but that generic spec is NOT asserted as this site's rating). Reviewer should confirm nameplate MW via OSINERGMIN/COES registry or an EIA/ESIA equipment list before adding a GOGPT record.",
+    "basis [ref]": [
+      "https://www.ge.com/news/press-releases/ge-oil-gas-awarded-13-year-contract-provide-long-term-services-peru-lng-plant"
+    ],
+    "mechanical_drive_note": "2x GE Frame 7 / MS7001 ('7EA') gas turbines drive 4 centrifugal refrigeration compressors for the single-train ConocoPhillips Optimized Cascade process (propane/ethylene/methane loops). Shaft MW not disclosed in any available source (7EA units are generically ~85 MW-class, but no Peru-specific figure is published) - reported as turbine count/model only."
+  },
+  {
+    "terminal": "Petronas FLNG Terminal",
+    "terminal_id": "T100001048294",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "Pre-FEED/feasibility-study stage only; no generation technology or MW disclosed for the FLNG unit's own power system.",
+    "basis [ref]": [],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Placentia Bay FLNG Terminal",
+    "terminal_id": "T100000131042",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "yellow",
+    "basis": "The captive element here is gas-turbine shaft power directly driving the refrigeration compressors (mechanical drive, no generator/MWe); GOGPT tracks electricity-generation capacity with a nameplate MW, and this design assumption produces no separate generating plant to add. The site's actual electricity demand is planned to be grid-supplied hydro (NL Power/Muskrat Falls), which is the opposite of captive and also not a GOGPT-trackable generation asset belonging to this project.",
+    "basis [ref]": [
+      "https://www.gov.nl.ca/eccc/files/env_assessment_y2021-2177_registration_Redacted.pdf"
+    ],
+    "mechanical_drive_note": "The project's Nov 2021 NL environmental-assessment registration states gas turbine drivers are ASSUMED (base case) for the refrigerant compressor drivers, with total shaft power for refrigeration compressors estimated at 120-140 MW (plus ~40 MW additional utility power demand) for the 4 MTPA single-train FLNG design. Critically, the same document explicitly flags that a driver-selection study (gas turbine mechanical drive vs. electric motor drive fed by the NL hydro grid) was deferred to a later engineering phase, so the final choice was NOT settled at last filing — hence yellow rather than green confidence despite this being a primary regulatory source."
+  },
+  {
+    "terminal": "Qilak LNG Terminal",
+    "terminal_id": "T100000130922",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "No GOGPT record exists for this site and none should be added on current evidence - no citable finding of a specific gas-fired generation installation, only an undocumented concept.",
+    "basis [ref]": [],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Saguaro Energia LNG Terminal",
+    "terminal_id": "T100000130809",
+    "gogpt_candidate": "MAYBE",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "GOGPT's 'Mexico Pacific power station' (141 MW, 1 unit, 0.0 km, pre-construction, captive=True) is plausible in shape - Freeport LNG, which licenses the same Optimized Cascade process, uses electric-motor-driven compression fed by an on-site captive gas-fired plant, so a generation island at a same-technology remote site would fit. But NO independent primary or trade-press source confirming this specific 141 MW facility's existence, capacity, status or purpose could be found outside GEM's own database. REVIEWER CALL pending the ASEA MIA or a CRE generation permit.",
+    "basis [ref]": [],
+    "mechanical_drive_note": "No public source found specifying turbine count/model or shaft MW for the refrigeration compressors. The only power-related detail in primary/company material is diesel generation for temporary construction facilities (Techint EPC release), explicitly not the permanent design."
+  },
+  {
+    "terminal": "Saint John LNG Terminal (Canaport)",
+    "terminal_id": "T100000130349",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "The operating terminal is grid-fed (NB Power transmission line), which is a clean non-captive case; the cancelled export addition never had a published power design to evaluate. Nothing here corresponds to an on-site generating plant with a nameplate MW.",
+    "basis [ref]": [
+      "https://www.cbc.ca/news/canada/new-brunswick/canaport-lng-transmission-line-1.4270386",
+      "https://www.saintjohnlng.com/static/site-content/files/CCELC_2020_Yearly_Report.pdf"
+    ],
+    "mechanical_drive_note": "N/A for the operating regas terminal — vaporization is seawater/ambient heat exchange (submerged combustion / open-loop type), not a compressor-driven process, so no mechanical-drive question applies. The separate cancelled export/liquefaction addition never reached an engineering stage where compressor-driver technology was published."
+  },
+  {
+    "terminal": "Salina Cruz LNG Terminal (CFE)",
+    "terminal_id": "T100000130717",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "yellow",
+    "basis": "Cogeneracion Salina Cruz is captive to the PEMEX refinery, not to an LNG terminal. Its own captive=True flag is correct but must not be cross-linked to an LNG terminal's CaptiveGasPower.",
+    "basis [ref]": [
+      "https://globalenergy.mx/noticias/pemex-y-cfe-invertiran-2059-mdd-en-cogeneracion-con-capacidad-de-2422-mw/",
+      "https://energymagazine.mx/2025/10/pemex-invierte-mas-de-51-mil-millones-para-generar-electricidad-construira-tres-nuevas-centrales-con-cfe/"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Salina Cruz LNG Terminal (Pilot/GFI)",
+    "terminal_id": "T100000131173",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "yellow",
+    "basis": "Refinery-captive cogeneration 7 km away; must not be cross-linked to this terminal.",
+    "basis [ref]": [
+      "https://globalenergy.mx/noticias/pemex-y-cfe-invertiran-2059-mdd-en-cogeneracion-con-capacidad-de-2422-mw/",
+      "https://energymagazine.mx/2025/10/pemex-invierte-mas-de-51-mil-millones-para-generar-electricidad-construira-tres-nuevas-centrales-con-cfe/"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "San Juan LNG Terminal",
+    "terminal_id": "T100000130784",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "San Juan (PR) power station (840 MW, 6 units) and San Juan II (560 MW, pre-construction) are PREPA/grid-connected generation assets fed BY this terminal, not captive generators feeding it. Their GOGPT records stand on their own merits; the LNG-side relationship, if recorded at all, belongs in PowerPlantsSupplied, never CaptiveGasPower.",
+    "basis [ref]": [
+      "https://www.ferc.gov/sites/default/files/2020-06/C-4-061820.pdf",
+      "https://www.sec.gov/Archives/edgar/data/1749723/000174972325000029/nfe-20241231.htm"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Summit Lake PG LNG Terminal",
+    "terminal_id": "T100001083566",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "Grid-fed electric-motor liquefaction, no on-site electricity generation of any kind.",
+    "basis [ref]": [],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Sycar Venezuela FLNG Terminal",
+    "terminal_id": "T100000131115",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "No design or generation-capacity information exists in the public record found; project has not progressed beyond the November 2022 MOU.",
+    "basis [ref]": [],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "TGS Puerto Galván LNG Terminal",
+    "terminal_id": "T100000131177",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "GOGPT's own captive flag on Solalban is already False, and independent corroboration confirms why: Solalban was purpose-built as a captive generator for Solvay/Unipar Indupa's petrochemical plant, not for TGS's gas transport or LNG operations. No source ties Solalban's output to Puerto Galvan, and TGS's own project materials describe no dedicated power source at all -- nothing here supports a GOGPT-to-terminal captive link in either direction.",
+    "basis [ref]": [
+      "https://albanesi.com.ar/en/en_solalban.php",
+      "https://www.treslineas.com.ar/inversin-energtica-millones-dlares-polo-n-130955.html"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Tilbury Island LNG Terminal",
+    "terminal_id": "T100000131044",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "Grid-fed electric-motor liquefaction with no on-site gas-fired generation of any kind; no electricity-generation asset for GOGPT to track.",
+    "basis [ref]": [
+      "https://iaac-aeic.gc.ca/050/documents/p80496/142512E.pdf"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Vista Pacifico LNG Terminal",
+    "terminal_id": "T100000130984",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "No captive generation or drive technology was ever disclosed, and the project was cancelled before reaching a design stage where such details are published.",
+    "basis [ref]": [
+      "https://mexicobusiness.news/energy/news/sempra-infrastructure-cancels-vista-pacifico-lng-project"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Woodfibre LNG Terminal",
+    "terminal_id": "T100000130374",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "green",
+    "basis": "Grid-electricity consumer; only combustion equipment in the record is temporary construction-phase diesel.",
+    "basis [ref]": [
+      "https://projects.eao.gov.bc.ca/api/public/document/5886919de036fb0105768fe1/download/Executive%20Summary.pdf"
+    ],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "American LNG Titusville Terminal",
+    "terminal_id": "T100000130209",
+    "gogpt_candidate": "REVIEWER CALL",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "No sourced basis to add or exclude.",
+    "basis [ref]": [],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Floridian LNG Terminal",
+    "terminal_id": "T100000130223",
+    "gogpt_candidate": "REVIEWER CALL",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "No sourced basis to add or exclude.",
+    "basis [ref]": [],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Nopetro LNG Terminal",
+    "terminal_id": "T100000131130",
+    "gogpt_candidate": "REVIEWER CALL",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "No sourced basis to add or exclude; also unresolved whether this GEM record corresponds to a single physical facility or an aggregator business model (see status finding).",
+    "basis [ref]": [],
+    "mechanical_drive_note": ""
+  },
+  {
+    "terminal": "Strom LNG Terminal",
+    "terminal_id": "T100000130241",
+    "gogpt_candidate": "DO NOT ADD",
+    "electric_mw": "",
+    "confidence": "red",
+    "basis": "Independent reporting indicates Strom never built or controlled any site and had no assets ('ghost company') — there is no physical facility to add to GOGPT, regardless of size.",
+    "basis [ref]": [
+      "https://wwals.net/2021/07/21/ghost-company-strom-lng/"
+    ],
+    "mechanical_drive_note": ""
+  }
+]

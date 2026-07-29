@@ -28,6 +28,9 @@ batches/staging/
                              discovery-pass qa/entity use the .disc. infix (<slug>.disc.qa.json) for the
                              two-book non-overlap split (workbook_conventions.md)
     <slug>.*.done.json       resume markers — checkpoints only, see lifecycle note below
+    georef_<slug>/           georeference audit trail when a coordinate was derived from a figure
+                             (Georeference SOP §4): verify_point.png, verify_full.png, verify_fig.png
+                             + fit.json — COMMITTED (the user reviews the coordinate against these)
     _build/                  assembled staged_*.json that build_review_package.py consumes (derived — gitignored)
       _roster_summaries.json  per-country roster summary written by _build_region.py; the build prints an
                               ESCALATION banner if any country's summary carries `escalation: true` — read
