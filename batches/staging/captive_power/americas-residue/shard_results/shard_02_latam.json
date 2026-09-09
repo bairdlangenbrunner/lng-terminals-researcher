@@ -1,0 +1,161 @@
+[
+  {
+    "terminal": "Jambelí FSRU",
+    "terminal_id": "T100000130833",
+    "country": "Ecuador",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "The proposed Jambelí FSRU (Sycar, Bajo Alto, El Oro) is designed purely as an offshore LNG storage/regasification/truck-loading terminal that supplies regasified LNG to the existing, independently-owned Thermo Gas Machala (130 MW) power plant and to industrial/truck customers. No generation equipment is described in any project scope document.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Offshore Energy (2020/2021): the FSRU 'will supply regasified LNG to an existing power plant as well as deliver volumes to an LNG truck filling station,' developed 'near the existing Thermo Gas Machala power plant.' LNG Prime confirms Sycar's Jambelí project scope (FSRU + port facility) and status through 2024. Sycar's own project page describes only port/FSRU/regas facilities to supply 'the Ecuadorian electric and industrial markets' — no generation component is listed anywhere in the company's own technical scope.",
+    "refs": [
+      "https://www.offshore-energy.biz/sycar-steps-forward-ecuador-fsru-project/",
+      "https://lngprime.com/lng-terminals/sycar-to-deliver-first-ecuador-lng-shipment/38682/",
+      "https://sycar.us/products-services/ecuador-lng-terminal/"
+    ],
+    "verification_log": [
+      {"url": "https://www.offshore-energy.biz/sycar-steps-forward-ecuador-fsru-project/", "tokens": ["Thermo Gas Machala"], "result": "PASS", "note": "OK"},
+      {"url": "https://lngprime.com/lng-terminals/sycar-to-deliver-first-ecuador-lng-shipment/38682/", "tokens": ["Jambeli"], "result": "PASS", "note": "OK"},
+      {"url": "https://sycar.us/products-services/ecuador-lng-terminal/", "tokens": ["FSRU"], "result": "PASS", "note": "bot-blocked live (HTTP 403); value verified via Wayback snapshot 20240420041231"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT plant was given as a prior for this terminal (gogpt_prior: no). The terminal's documented offtaker is the existing, third-party Thermo Gas Machala I power station (~130 MW) — an independent generator predating and unrelated to the FSRU's captive status, not a captive plant of this terminal. Independent info: https://www.offshore-energy.biz/sycar-steps-forward-ecuador-fsru-project/",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No on-site generation exists or is designed at the terminal; its entire purpose is regasified-gas supply (by pipeline and truck) to an existing external plant and industrial customers — classic PowerPlantsSupplied territory, not a captive generator.",
+    "status_or_other_findings": "Project appears stalled: as of an August 2024 status check reported by LNG Prime, Sycar's site still listed a 2025 start-up date for the FSRU with no clear sign of further progress since 2022 LNG-by-ISO-tank deliveries began. Not acted upon.",
+    "notes": "Direction-test case: the terminal's whole purpose is piping/trucking gas to Thermo Gas Machala (GEM's PowerPlantsSupplied = 'Termogas Machala I power station' per shard data, already recorded) — never captive. No captive finding to stage."
+  },
+  {
+    "terminal": "Monteverde Pacific LNG Terminal",
+    "terminal_id": "T100001048451",
+    "country": "Ecuador",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "Monteverde Pacific LNG Terminal (Pacific Terminal S.A.) is designed as a cryogenic LNG storage and regasification terminal distributing gas via a ~100 km pipeline to third-party industrial users (shrimp farms, HOLCIM, breweries, glass, plastics, food/dairy plants) and to unspecified thermoelectric plants around Guayaquil. The company's own technical description covers storage tanks, regasification, jetty and pipeline scope only — no on-site power generation is included anywhere in the published project design.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Pacific Terminal's own site (lngpacificterminal.com) describes the facility as a 'Cryogenic Storage Terminal, Regasification, Transportation and Comercialization of Natural Gas' supplying ~70,000 ha of shrimp farms and named industries (HOLCIM etc.) via a 100 km pipeline to Guayaquil — no generation infrastructure mentioned. Argus Media (Oct 2024) confirms ARCH authorized Pacific Terminal S.A. to build the LNG import terminal with a 5-year completion window. El Universo (Ecuadorian daily) independently confirms the Monteverde authorization and project scope.",
+    "refs": [
+      "https://lngpacificterminal.com/en/home/",
+      "https://www.argusmedia.com/en/news-and-insights/latest-market-news/2618469-ecuador-authorizes-lng-import-terminal",
+      "https://www.eluniverso.com/noticias/economia/gas-natural-terminal-maritimo-monteverde-pacific-terminal-ecuador-nota/"
+    ],
+    "verification_log": [
+      {"url": "https://lngpacificterminal.com/en/home/", "tokens": ["HOLCIM"], "result": "PASS", "note": "OK"},
+      {"url": "https://www.americaeconomia.com/negocios-e-industrias/pacific-terminal-construira-terminal-maritimo-de-gas-natural-en-ecuador", "tokens": ["Santa Elena"], "result": "FAIL", "note": "HTTP 522 — dropped, not used as citation"},
+      {"url": "https://www.argusmedia.com/en/news-and-insights/latest-market-news/2618469-ecuador-authorizes-lng-import-terminal", "tokens": ["Pacific Terminal"], "result": "PASS", "note": "OK"},
+      {"url": "https://www.eluniverso.com/noticias/economia/gas-natural-terminal-maritimo-monteverde-pacific-terminal-ecuador-nota/", "tokens": ["Monteverde"], "result": "PASS", "note": "OK"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT plant was given as a prior for this terminal (gogpt_prior: no). Project literature mentions supplying gas to 'thermoelectric plants' generally but names no specific facility; no captive on-site generator is described.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No on-site generation exists or is designed; the terminal is a pipeline-distribution hub for third-party industrial and power customers, not a generator itself.",
+    "status_or_other_findings": "Authorized by Ecuador's ARCH in October 2024 with a 5-year completion window; construction not yet substantially underway as of this research. Not acted upon.",
+    "notes": "Direction-test case, diffuse variant: the terminal supplies multiple third-party industrial users and unnamed thermoelectric plants via pipeline rather than one dedicated captive plant. GEM's power_plants_supplied field is currently blank for this terminal despite the 'thermoelectric plants' language in project materials — worth a follow-on Update-workflow look to identify and populate specific recipient plant(s), but that is PowerPlantsSupplied territory, not a captive finding, and outside this batch's edit lane."
+  },
+  {
+    "terminal": "Puerto Cortés LNG Terminal",
+    "terminal_id": "T100001061417",
+    "country": "Honduras",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "Puerto Cortés LNG Terminal is an FSU-only storage and truck-loading facility (vessel Bilbao Knutsen, steam-turbine-propelled, 138,000 m³). LNG is trucked roughly 75 km inland via a 'virtual pipeline' to the separate Brassavola combined-cycle power plant in Villanueva, Cortés (~80 km from the port), where it is degasified and burned in the plant's own aeroderivative gas turbines plus a Siemens steam turbine generator for a combined 240 MW. No generation equipment is sited at the Puerto Cortés terminal itself.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Baird Maritime and Watson Farley & Williams (deal counsel) both describe Bilbao Knutsen's role as floating storage/transfer only, feeding Brassavola. La Prensa and El Heraldo (independent Honduran investigative outlets) both state the Brassavola plant installations are in Villanueva, Cortés, roughly 80 km from the Puerto Cortés port, and describe LNG being moved to the plant rather than power being generated at the port terminal.",
+    "refs": [
+      "https://www.bairdmaritime.com/shipping/tankers/gas/knutsen-lng-carrier-to-undergo-fsu-conversion-for-honduras-gas-to-power-project",
+      "https://www.wfw.com/press/wfw-advises-genesis-on-chartering-of-bilbao-knutsen-for-its-lng-to-power-project-in-honduras/",
+      "https://www.elheraldo.hn/elheraldoplus/investigaciones/terminal-gas-licuado-puerto-cortes-proyecto-alto-riesgo-ambiental-BG23073424",
+      "https://www.laprensa.hn/honduras/honduras-alto-riesgo-ambiental-planta-gas-natural-puerto-cortes-KG23074806"
+    ],
+    "verification_log": [
+      {"url": "https://www.bairdmaritime.com/shipping/tankers/gas/knutsen-lng-carrier-to-undergo-fsu-conversion-for-honduras-gas-to-power-project", "tokens": ["Brassavola"], "result": "PASS", "note": "OK"},
+      {"url": "https://www.wfw.com/press/wfw-advises-genesis-on-chartering-of-bilbao-knutsen-for-its-lng-to-power-project-in-honduras/", "tokens": ["Bilbao Knutsen"], "result": "PASS", "note": "OK"},
+      {"url": "https://energy-oil-gas.com/news/genesis-energias-is-reshaping-honduras-energy-landscape-through-lng-infrastructure-and-cleaner-power-generation/", "tokens": ["Brassavola"], "result": "FAIL", "note": "HTTP 403, no Wayback snapshot — dropped, not used as citation"},
+      {"url": "https://www.elheraldo.hn/elheraldoplus/investigaciones/terminal-gas-licuado-puerto-cortes-proyecto-alto-riesgo-ambiental-BG23073424", "tokens": ["Villanueva"], "result": "PASS", "note": "OK"},
+      {"url": "https://www.laprensa.hn/honduras/honduras-alto-riesgo-ambiental-planta-gas-natural-puerto-cortes-KG23074806", "tokens": ["Villanueva"], "result": "PASS", "note": "OK"}
+    ],
+    "gogpt_prior_assessment": "The given GOGPT prior 'Puerto Cortés power station' (350 MW, gogpt_captive already False, 1.97 km away) is a separate, dormant/shelved 2019 proposal by Cortés Gas Natural (CGN) — a different sponsor's combined-cycle project unrelated to Genesis Energías' LNG terminal or the Brassavola plant it actually supplies. Coincidentally close to the terminal but inactive since ~2021 with no link to this LNG project found. Independent info: https://www.power-technology.com/data-insights/power-plant-profile-cortes-natural-gas-power-plant-honduras/ (GlobalData: 'currently at the dormant stage').",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "GOGPT record already exists for the coincidentally-nearby CGN plant (correctly marked not captive); the terminal itself has no on-site generation, and its actual offtake plant (Brassavola, ~80 km away) is not fenceline/on-site and is a separate GOGPT-trackable facility, not this terminal's captive plant.",
+    "status_or_other_findings": "None beyond the above; project reported ~2028 target for full LNG-to-power operation per trade press. Not acted upon.",
+    "notes": "Direction-test case: GEM's power_plants_supplied field already correctly lists 'Brassavola power station' (per shard data); this is confirmed by 3 independent sources (Baird Maritime, La Prensa, El Heraldo) plus the WFW deal announcement. No captive finding to stage."
+  },
+  {
+    "terminal": "Puerto Sandino FSRU",
+    "terminal_id": "T100000130966",
+    "country": "Nicaragua",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "Puerto Sandino FSRU is New Fortress Energy's offshore floating storage/regasification facility, connected by a dedicated ~5-mile (8 km; ENEL cites 4-5 km) subsea/onshore pipeline to the separate onshore Puerto Sandino LNG power plant (300 MW nameplate, seven 44 MW open-cycle gas turbines) — Nicaragua's first natural-gas-fired generating plant per the national utility ENEL. No generation equipment is described at the offshore FSRU/terminal itself; the power plant is a distinct, non-fenceline facility reached only by dedicated pipeline.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "ENEL (Nicaragua's state electric utility, primary/regulatory source): 'su primera Planta generadora de electricidad a base de gas natural' (300 MW, 7×44 MW turbines), fed from 'un almacén flotante... de gas.' New Fortress Energy's own IR press release confirms the 25-year PPA for the ~300 MW plant tied to the FSRU. Gas Outlook and Power Technology (marketdata) both independently describe the FSRU as supplying the separate onshore power station. LNG Prime (2025) confirms the FSU/jetty and the power plant as two distinct pieces of infrastructure, reporting the power plant 100% complete and the FSU/jetty ~95% complete separately.",
+    "refs": [
+      "https://enel.gob.ni/nicaragua-proxima-a-inaugurar-su-primera-planta-de-gas-natural-de-300-mw/",
+      "https://ir.newfortressenergy.com/news-releases/news-release-details/new-fortress-energy-signs-25-year-agreement-300-mw-gas-power",
+      "https://gasoutlook.com/analysis/new-fortress-lng-project-in-nicaragua-tests-u-s-tolerance-for-commercial-ties/",
+      "https://www.power-technology.com/marketdata/puerto-sandino-lng-power-plant-nicaragua/",
+      "https://lngprime.com/americas/nfe-says-nicaragua-lng-to-power-project-almost-complete/131802/"
+    ],
+    "verification_log": [
+      {"url": "https://enel.gob.ni/nicaragua-proxima-a-inaugurar-su-primera-planta-de-gas-natural-de-300-mw/", "tokens": ["primera Planta"], "result": "PASS", "note": "OK"},
+      {"url": "https://ir.newfortressenergy.com/news-releases/news-release-details/new-fortress-energy-signs-25-year-agreement-300-mw-gas-power", "tokens": ["Puerto Sandino"], "result": "PASS", "note": "OK"},
+      {"url": "https://gasoutlook.com/analysis/new-fortress-lng-project-in-nicaragua-tests-u-s-tolerance-for-commercial-ties/", "tokens": ["power station"], "result": "PASS", "note": "OK"},
+      {"url": "https://www.power-technology.com/marketdata/puerto-sandino-lng-power-plant-nicaragua/", "tokens": ["300MW"], "result": "PASS", "note": "bot-blocked live (HTTP 403); value verified via Wayback snapshot 20240420035104"},
+      {"url": "https://lngprime.com/americas/nfe-says-nicaragua-lng-to-power-project-almost-complete/131802/", "tokens": ["Puerto Sandino"], "result": "PASS", "note": "OK"}
+    ],
+    "gogpt_prior_assessment": "The given GOGPT prior 'Planta Nicaragua power station' (106 MW, gogpt_captive already False, 0.85 km away) is a pre-existing, separate power station. ENEL's own description of the NFE 300 MW plant as Nicaragua's 'primera Planta generadora de electricidad a base de gas natural' (first gas-fired generating plant) confirms Planta Nicaragua is non-gas-fired (legacy fuel) and unrelated to this LNG terminal, despite being nearby. Independent info: https://enel.gob.ni/nicaragua-proxima-a-inaugurar-su-primera-planta-de-gas-natural-de-300-mw/",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "The terminal has no on-site generation. Its actual gas offtaker — the 300 MW Puerto Sandino LNG power plant — is a separate, non-fenceline facility (dedicated pipeline ~5 mi/8 km away) that is a candidate for its OWN GOGPT record on the power side (gogpt_prior here is already an unrelated plant), not a captive addition to this terminal.",
+    "status_or_other_findings": "Vessel discrepancy: GEM lists the FSRU vessel as 'Energos Princess,' but 2024-2025 NFE reporting (LNG Prime) referred to swapping in a dedicated FSRU named 'Freeze' once it exits dry dock, with Energos Princess serving as an interim FSU. Also, as of 2025-2026 there is conflicting reporting/speculation (referenced in broader search results, not independently verified here) about project inactivity tied to NFE's financial difficulties. Neither point acted upon — flagged for a status-focused Update pass.",
+    "notes": "Direction-test case: GEM's power_plants_supplied field already correctly lists 'Puerto Sandino power station' (per shard data), confirmed via ENEL (primary) plus 4 independent trade/news sources. No captive finding to stage."
+  },
+  {
+    "terminal": "GNL Del Plata FSRU",
+    "terminal_id": "T100000130580",
+    "country": "Uruguay",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "As designed (project cancelled ~2018, never built), GNL del Plata FSRU (Gas Sayago S.A., a UTE/Ancap joint venture) was purely a floating storage and regasification facility. Its own 2017 environmental impact study describes the regasification unit only as a heat-exchanger with 'high-efficiency motors' (low emissions) — no dedicated generation plant. The project's entire purpose was to supply regasified gas via pipeline to a separate onshore 530 MW combined-cycle power plant being built on-shore by state utility UTE — a direction-test relationship, not captive power.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "The project's own May 2017 EIA ('Proyecto GNL del Plata: Terminal de Recepción y Regasificación de Gas Natural Licuado') states the regasification unit 'contará con motores de alta eficiencia, asegurando muy bajas emisiones' and frames natural gas's role as feeding Uruguay's electricity system generally via UTE, with no on-site generation plant described for the FSRU/terminal. Offshore Technology and BNamericas independently confirm Gas Sayago S.A. (UTE/Ancap JV) developed the FSRU specifically to supply UTE's separate onshore 530 MW combined-cycle plant.",
+    "refs": [
+      "https://silo.tips/download/proyecto-gnl-del-plata-terminal-de-recepcion-y-regasificacion-de-gas-natural-lic",
+      "https://www.offshore-technology.com/projects/gnl-del-plata-project-port-of-montevideo/",
+      "https://www.bnamericas.com/en/company-profile/gas-sayago-sa-gssa"
+    ],
+    "verification_log": [
+      {"url": "https://silo.tips/download/proyecto-gnl-del-plata-terminal-de-recepcion-y-regasificacion-de-gas-natural-lic", "tokens": ["motores de alta eficiencia"], "result": "PASS", "note": "OK"},
+      {"url": "https://www.offshore-technology.com/projects/gnl-del-plata-project-port-of-montevideo/", "tokens": ["530MW"], "result": "FAIL", "note": "HTTP 403; Wayback fetch failed for '530MW' token"},
+      {"url": "https://www.offshore-technology.com/projects/gnl-del-plata-project-port-of-montevideo/", "tokens": ["530"], "result": "PASS", "note": "bot-blocked live (HTTP 403); value verified via Wayback snapshot 20241207012347 with broader token"},
+      {"url": "https://www.bnamericas.com/en/company-profile/gas-sayago-sa-gssa", "tokens": ["UTE"], "result": "PASS", "note": "OK"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT plant was given as a prior for this terminal (gogpt_prior: no). No power plant is co-located at the cancelled Gas Sayago site; the design's offtake is UTE's separate, independently-developed 530 MW combined-cycle plant onshore.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No on-site generation was ever designed for the FSRU/terminal itself; it was a pure storage/regasification facility feeding a separate utility-owned power plant, and the project was cancelled before construction.",
+    "status_or_other_findings": "Confirmed cancelled status (shard already reflects 'cancelled'); no new status information found. Not acted upon.",
+    "notes": "Direction-test case, as-designed: GEM's power_plants_supplied field is currently blank for this terminal despite the well-documented UTE 530 MW offtake relationship — a candidate for a follow-on Update-workflow note, but that is PowerPlantsSupplied territory and outside this batch's edit lane, especially given the project's cancelled/never-built status."
+  }
+]

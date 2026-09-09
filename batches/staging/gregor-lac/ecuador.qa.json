@@ -1,0 +1,52 @@
+[
+  {
+    "category": "field_completeness",
+    "terminal_id": "T100000130833",
+    "unit_id": "G100002083300",
+    "terminal_name": "Jambelí FSRU",
+    "issue": "field_gaps flagged FloatingVesselName as a missing required field for this shelved unit. No source (past or present) ever names a vessel -- the FSRU never reached the vessel-contracting stage before the project stalled and moved to shelved-inferred. This is likely a false-positive from the completeness sweep applying an operating/late-stage-unit rule to a pre-construction proposal.",
+    "severity": "low",
+    "suggested_action": "No action needed unless the project revives and a vessel is later named; consider excluding never-built FSRU proposals from the FloatingVesselName completeness check.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "citation_health",
+    "terminal_id": "T100000130833",
+    "unit_id": "G100002083300",
+    "terminal_name": "Jambelí FSRU",
+    "issue": "Existing FacilityType [ref] URL https://informationstreamer.com/2024/12/02/sycars-historic-lng-import-from-peru-marks-major-energy-milestone-for-ecuador/ -- also the newest-known evidence of any Sycar/Ecuador LNG activity per ResearcherNotesUnit -- returned HTTP 526 (invalid origin SSL cert) on re-verification; the Wayback availability API was rate-limited (429) on repeated attempts during this batch, so no fallback check could be completed. Not proven dead (4 other FacilityType URLs still pass), so left in place rather than dropped, but this is the row's most time-sensitive citation for the shelved-vs-cancelled call.",
+    "severity": "medium",
+    "suggested_action": "Recheck this URL (direct + Wayback) early in the next cycle before any shelved-to-cancelled escalation is considered.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "citation_health",
+    "terminal_id": "T100000130833",
+    "unit_id": "G100002083300",
+    "terminal_name": "Jambelí FSRU",
+    "issue": "Existing ProposalDate [ref] URL spglobal.com/platts/... returned HTTP 403 with no Wayback snapshot available on re-verification (bot-block, not proven dead).",
+    "severity": "low",
+    "suggested_action": "Recheck next batch; 3 other ProposalDate URLs still pass so ProposalYear=2019 remains adequately sourced.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "citation_health",
+    "terminal_id": "T100000130833",
+    "unit_id": "G100002083300",
+    "terminal_name": "Jambelí FSRU",
+    "issue": "Existing ProposalDate [ref] URL bnamericas.com/es/analisis/... returned 200 but the body no longer contains 'Ecuador' or 'Sycar' (likely a paywalled/stubbed article page). Not proven dead.",
+    "severity": "low",
+    "suggested_action": "Recheck next batch or seek a non-paywalled mirror/alternative citation.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "citation_health",
+    "terminal_id": "T100001048451",
+    "unit_id": "G100001055627",
+    "terminal_name": "Monteverde Pacific LNG Terminal",
+    "issue": "Existing Location [ref] URL https://lngpacificterminal.com/wp-content/uploads/2026/02/EsIA-PacificTerminal.pdf (the environmental impact study Gregor cites for the Aug-2025 coordinate refinement) is a scanned/image PDF with no extractable text layer (poppler pdftotext confirmed available in this environment, so the PDF itself is image-only, not a tooling gap) -- per QC convention this is 'unverifiable', not link-rot.",
+    "severity": "low",
+    "suggested_action": "No change to coordinates/Accuracy; consider requesting an OCR'd or text-layer version of the EsIA if a future batch needs to re-verify the specific figures cited from it.",
+    "researcher_initials": "AI-draft"
+  }
+]

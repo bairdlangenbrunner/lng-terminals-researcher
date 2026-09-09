@@ -1,0 +1,224 @@
+[
+  {
+    "terminal": "Danang LNG Terminal",
+    "terminal_id": "T100001050072",
+    "country": "Vietnam",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "",
+    "captive_summary": "No public design study exists yet. This is a very early-stage (proposed) LNG storage/distribution terminal at Lien Chieu Port (VND5,400bn / ~$208m investment call for tender); Da Nang is separately soliciting investment for it and has not yet found an investor. No source describes any on-site power generation, backup gensets, or captive plant for the terminal.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Da Nang city government's investment call (nhandan.vn, en.vneconomy.vn) describes the Lien Chieu 'bến cảng lỏng, khí' (liquid/gas port terminal) purely as LNG/LPG storage and distribution infrastructure seeking a private investor; no technical design (and hence no captive-power detail) has been published because no investor has yet been selected.",
+    "refs": [
+      "https://en.vneconomy.vn/da-nang-seeks-investors-for-major-port-upgrades-including-208-mln-liquid-gas-terminal.htm",
+      "https://nhandan.vn/moi-goi-dau-tu-ben-cang-longkhi-5400-ty-dong-tai-khu-ben-lien-chieu-thanh-pho-da-nang-post883500.html"
+    ],
+    "verification_log": [
+      {"url": "https://en.vneconomy.vn/da-nang-seeks-investors-for-major-port-upgrades-including-208-mln-liquid-gas-terminal.htm", "tokens": ["208"], "result": "PASS", "note": "confirms $208m investment call, storage/distribution scope"},
+      {"url": "https://nhandan.vn/moi-goi-dau-tu-ben-cang-longkhi-5400-ty-dong-tai-khu-ben-lien-chieu-thanh-pho-da-nang-post883500.html", "tokens": ["5.400"], "result": "PASS", "note": "confirms VND5,400bn figure, tender-stage"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT plant given (gogpt_prior=no). A separate 'Hoa Ninh LNG power plant' project exists ~10km away tied to the Hoa Ninh Industrial Park and PDP8, but it is a distinct project with no confirmed fuel-supply link to this terminal yet (no investor/pipeline design published for either side) — not this terminal's captive power in any case, since it would be an off-site utility plant, not on-site generation.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No on-site generation identified; terminal is a pre-investor storage/distribution proposal with no technical design published.",
+    "status_or_other_findings": "Da Nang has requested the Hoa Ninh LNG power plant (separate project, ~10km from this terminal site, part of Hoa Ninh Industrial Park) be included in PDP8; no confirmed pipeline link between the two projects has been published.",
+    "notes": "Too early-stage for a captive-power finding either way; revisit once an investor/EIA is published. No PowerPlantsSupplied relationship confirmed to any specific plant at this time — Hoa Ninh is a candidate but unconfirmed."
+  },
+  {
+    "terminal": "Dung Quat LNG Terminal",
+    "terminal_id": "T100001084032",
+    "country": "Vietnam",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "",
+    "captive_summary": "Very early-stage (proposed) LNG storage facility in the Dung Quat Economic Zone; developer Van Tuong Energy JSC (under Hai Linh Co.) was only established in October 2025. The project is described purely as storage tanks plus 'gas pipelines linking ports to storage tanks and onward to end users' — no on-site power generation, turbines, or backup gensets are mentioned in any source found.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "en.vcci.com.vn: 'Van Tuong Energy JSC' (est. Oct 2025) is developing a ~VND3.77 trillion ($143m) LNG storage facility (~1.2 Mtpa capacity, 19 ha) in the Dung Quat Economic Zone's Eastern Industrial Park; article makes no mention of on-site power generation, gas turbines, or backup generators — the facility's stated purpose is pipeline supply to 'end users,' not self-generation.",
+    "refs": [
+      "https://en.vcci.com.vn/vcci-news/143-mln-lng-storage-facility-proposed-in-central-vietnam-114815"
+    ],
+    "verification_log": [
+      {"url": "https://en.vcci.com.vn/vcci-news/143-mln-lng-storage-facility-proposed-in-central-vietnam-114815", "tokens": ["Van Tuong Energy"], "result": "PASS", "note": "confirms developer and project scope; no power-generation content found"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT plant given (gogpt_prior=no); no adjacent power plant identified in any source.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No on-site generation identified; project is a pipeline-fed storage terminal with no design study published.",
+    "status_or_other_findings": "Project scope: 19 ha, initial 0.5 Mtpa phase + Phase 1 adding ~0.7 Mtpa; 50-year land term; provincial review meeting held mid-January.",
+    "notes": "None of the sources link this terminal to a specific downstream power plant; 'end users' language suggests industrial/pipeline gas supply generally, not a single co-located power project."
+  },
+  {
+    "terminal": "Hai Lang LNG Terminal",
+    "terminal_id": "T100000131059",
+    "country": "Vietnam",
+    "verdict": "NO",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "No captive gas power at the terminal. Direction test applies: the Hai Lang LNG terminal is the import/regasification front-end of the single integrated 'Hải Lăng LNG Power Center' project, whose entire purpose is fueling the co-located 1,500 MW (Phase 1) combined-cycle power plant developed by the T&T Group-led consortium (Hanwha, KOSPO, KOGAS). Gas flows FROM the terminal TO the power plant (PowerPlantsSupplied), not the reverse; no source describes any separate on-site generation for the terminal's own auxiliary load.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Vietnam government e-newspaper (baochinhphu.vn) reports investment approval and Phase-1 groundbreaking (Jan 15, 2022) for the 'Hải Lăng LNG Power Center,' 1,500 MW / ~VND54,000bn, developed by T&T Group with Korean partners Hanwha, KOSPO and KOGAS — a single integrated LNG-to-power complex in which the terminal exists solely to fuel the plant.",
+    "refs": [
+      "https://baochinhphu.vn/quang-tri-khoi-cong-du-an-dien-khi-tri-gia-hon-23-ty-usd-102220117205748951.htm",
+      "https://baochinhphu.vn/quang-tri-trao-quyet-dinh-chu-truong-dau-tu-du-an-trung-tam-dien-khi-23-ty-usd-102301840.htm"
+    ],
+    "verification_log": [
+      {"url": "https://baochinhphu.vn/quang-tri-trao-quyet-dinh-chu-truong-dau-tu-du-an-trung-tam-dien-khi-23-ty-usd-102301840.htm", "tokens": ["1.500 MW", "54.000"], "result": "PASS", "note": "confirms Phase 1 capacity and investment figure"}
+    ],
+    "gogpt_prior_assessment": "GOGPT's 'Hai Lang power station' (3,000 MW, gogpt_captive=False, 0.01 km away) IS the plant this terminal exists to supply — it is a merchant/utility combined-cycle power station selling to the grid, not this terminal's captive power (the direction is opposite: terminal feeds plant). Independent confirmation: baochinhphu.vn (see refs).",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "GOGPT already tracks 'Hai Lang power station' at this site (gogpt_prior=yes); it is not a captive plant to add, and no separate on-site captive generator was found.",
+    "status_or_other_findings": "Phase 1 targeted for commercial operation by Dec 31, 2029 per baochinhphu.vn; investors: KOGAS 20%, KOSPO 20%, Hanwha Energy 20%, T&T Group 40% (matches GEM owner field).",
+    "notes": "PowerPlantsSupplied direction case: terminal feeds 'Hai Lang power station' (already reflected in GEM's power_plants_supplied field for this terminal) — flagging per the direction-test rule, not staging anything."
+  },
+  {
+    "terminal": "Haiphong FSRU",
+    "terminal_id": "T100001061416",
+    "country": "Vietnam",
+    "verdict": "NO",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "No captive gas power identified at the FSRU. Direction test applies: the Haiphong FSRU is the import/regas front-end of the integrated Vingroup/VinEnergo LNG-to-power project at Tan Trao Industrial Park (Kien Thuy district), built to fuel the co-located Haiphong LNG power plant (4,800 MW planned, ~100 ha) — not to be powered by it or any separate captive plant. No source describes on-site generation dedicated to the FSRU/terminal's own load.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "e.vnexpress.net and windpower.space both confirm the Vingroup/VinEnergo project is a single integrated FSRU-plus-power-plant complex: groundbreaking Sept 26, 2025 for the 4,800 MW plant (vnexpress); as of April 2026 Vingroup formally proposed replacing the still-not-yet-operating 4,800 MW LNG plant with a hybrid renewables+BESS scheme (windpower.space) — in both framings the FSRU/terminal's sole documented role is fuel supply to this plant, never self-generation.",
+    "refs": [
+      "https://e.vnexpress.net/news/business/companies/vingroup-breaks-ground-on-vietnam-s-largest-lng-power-plant-4944296.html",
+      "https://windpower.space/en/tin-tuc/2026-04-05-vingroup-huy-lng-chuyen-nang-luong-tai-tao-bess"
+    ],
+    "verification_log": [
+      {"url": "https://e.vnexpress.net/news/business/companies/vingroup-breaks-ground-on-vietnam-s-largest-lng-power-plant-4944296.html", "tokens": ["4,800 megawatts"], "result": "PASS", "note": "confirms capacity and groundbreaking date"},
+      {"url": "https://windpower.space/en/tin-tuc/2026-04-05-vingroup-huy-lng-chuyen-nang-luong-tai-tao-bess", "tokens": ["4,800 MW", "BESS"], "result": "PASS", "note": "confirms same 4,800 MW plant identity and 2026-04 status change"}
+    ],
+    "gogpt_prior_assessment": "GOGPT's 'Haiphong LNG power station' (6,400 MW per dispatch data / 4,800 MW per current press, gogpt_captive=False, 0.0 km) IS the plant the FSRU exists to supply — not this terminal's captive power (opposite direction). Independent confirmation: e.vnexpress.net (see refs).",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "GOGPT already tracks 'Haiphong LNG power station' at this site; not a captive plant, and no separate on-site captive generator for the FSRU itself was found.",
+    "status_or_other_findings": "IMPORTANT capacity/status discrepancy for a separate batch: dispatch data lists the associated GOGPT plant at 6,400 MW, but multiple 2025-2026 press sources (vnexpress, windpower.space) consistently report 4,800 MW. Additionally, as of April 2026 Vingroup formally proposed scrapping the LNG plant in favor of a hybrid renewable-energy + battery storage system (windpower.space) even though FSRU/plant-site construction had broken ground Sept 2025 — a live status question that should route to Update, not acted on here.",
+    "notes": "PowerPlantsSupplied direction case: FSRU feeds 'Haiphong LNG power station' (already reflected in GEM's power_plants_supplied field)."
+  },
+  {
+    "terminal": "Hiep Phuoc LNG Terminal",
+    "terminal_id": "T100001084037",
+    "country": "Vietnam",
+    "verdict": "NO",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "No captive gas power at the terminal. Direction test applies: the Hiep Phuoc LNG terminal (150,000 m3 storage, ~2.15 Mtpa regas capacity) and the co-located Hiep Phuoc LNG Power Plant (Phase 1: 1,200 MW, commissioning targeted 2027) are both developed by the same entity, Hiep Phuoc Power Company Ltd (HPPC), as one integrated import-storage-regasification-to-power chain — but the terminal's function is to fuel the plant, not to be powered by it or any separate captive generator.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "vir.com.vn reports EVN signed a power-purchase agreement for the 1,200 MW Hiep Phuoc LNG plant in Ho Chi Minh City; news.tuoitre.vn and vietnam.vn corroborate the same $718m Phase-1 project and PPA, developed together with the adjacent LNG terminal under the single HPPC entity — the terminal's documented role throughout is fuel supply to the plant.",
+    "refs": [
+      "https://vir.com.vn/evn-signs-power-deal-for-1200-mw-lng-plant-in-ho-chi-minh-city-149489.html",
+      "https://news.tuoitre.vn/first-sod-turned-at-718mn-lng-power-plant-in-ho-chi-minh-city-103260327102904505.htm",
+      "https://www.vietnam.vn/en/evn-ky-hop-dong-mua-ban-dien-cho-du-an-nha-may-dien-lng-hiep-phuoc"
+    ],
+    "verification_log": [
+      {"url": "https://vir.com.vn/evn-signs-power-deal-for-1200-mw-lng-plant-in-ho-chi-minh-city-149489.html", "tokens": ["1,200 MW"], "result": "PASS", "note": "confirms Phase 1 capacity and EVN PPA"},
+      {"url": "https://news.tuoitre.vn/first-sod-turned-at-718mn-lng-power-plant-in-ho-chi-minh-city-103260327102904505.htm", "tokens": ["Hiep Phuoc"], "result": "PASS", "note": "confirms $718m investment, groundbreaking"},
+      {"url": "https://www.vietnam.vn/en/evn-ky-hop-dong-mua-ban-dien-cho-du-an-nha-may-dien-lng-hiep-phuoc", "tokens": ["Hiep Phuoc"], "result": "PASS", "note": "corroborates PPA and integrated terminal+plant project"}
+    ],
+    "gogpt_prior_assessment": "GOGPT's 'Hiep Phuoc power station' (2,655 MW per dispatch data, gogpt_captive=False, 0.1 km) IS the plant this terminal exists to supply — it sells power via PPA to EVN (the national grid utility), not to the terminal (opposite direction). Independent confirmation: vir.com.vn (see refs).",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "GOGPT already tracks 'Hiep Phuoc power station' at this site; not a captive plant, and no separate on-site captive generator for the terminal itself was found.",
+    "status_or_other_findings": "Phase 1 (1,200 MW) targeted commissioning 2027; Phase 2 adds ~1,500 MW; total investment ~VND18.9 trillion (~$892m) per HPPC-linked reporting.",
+    "notes": "PowerPlantsSupplied direction case: same-owner (HPPC) integrated project is the canonical direction-test pattern for this Vietnam batch — terminal feeds the power plant it shares an owner with."
+  },
+  {
+    "terminal": "Khanh Hoa LNG Terminal",
+    "terminal_id": "T100000130979",
+    "country": "Vietnam",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "",
+    "captive_summary": "Screened: cancelled and never built. The only public record is a 2020 proposal by US-based Millennium Energy for a South Van Phong LNG-to-power complex (~$15bn, ~600 ha, proposed 9,600 MW power plant + 15 million m3 LNG storage). No subsequent public reporting (2021-2026) shows the project receiving formal investment approval, entering PDP8, breaking ground, or advancing in any way; GEM's own tracking already carries the terminal as cancelled. The Van Phong area subsequently saw other, unrelated developers (Petrolimex, Vingroup, Sumitomo) propose different LNG/power projects on nearby land — none tied to Millennium Energy — consistent with the original proposal having lapsed.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "en.vietstock.vn (Aug 2020): 'Millenium Group from the United States plans to develop a liquefied natural gas (LNG) project in the South Van Phong area' — a proposal-stage announcement only; no design, financing close, or construction was ever reported in any subsequent source found.",
+    "refs": [
+      "https://en.vietstock.vn/2020/08/millenium-to-develop-15-billion-lng-project-in-khanh-hoa-province-974-413216.htm"
+    ],
+    "verification_log": [
+      {"url": "https://en.vietstock.vn/2020/08/millenium-to-develop-15-billion-lng-project-in-khanh-hoa-province-974-413216.htm", "tokens": ["Millenium", "15 billion"], "result": "PASS", "note": "confirms original 2020 proposal-stage announcement, no later progress found"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT plant given (gogpt_prior=no); the proposed 9,600 MW power plant component never advanced to a stage where a GOGPT record would apply.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Project never advanced past a 2020 proposal announcement; no captive or merchant plant was ever built.",
+    "status_or_other_findings": "None beyond the screen finding above.",
+    "notes": "Screen criterion: cancelled-and-never-built (SOP definition) — consistent with GEM's current status=cancelled tracking for this record."
+  },
+  {
+    "terminal": "Long An LNG Terminal",
+    "terminal_id": "T100001057474",
+    "country": "Vietnam",
+    "verdict": "NO",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "No captive gas power at the terminal. Direction test applies: the Long An LNG terminal is the import/regasification front-end of the integrated Long An I & II LNG-to-power project (GS Energy/VinaCapital, 3,000 MW combined, $3.13bn), built to fuel the two co-located power plants. Gas flows FROM the terminal TO the plants (PowerPlantsSupplied); no source describes any separate on-site generation for the terminal's own load.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "theinvestor.vn reports GS Energy will operate the 3,000 MW Long An 1 and 2 LNG-to-power project from 2029; investvietnam.vn corroborates that VinaCapital and GS Energy received the investment certificate for the ~$3.13bn complex — both describe a single integrated LNG-to-power project in which the terminal's documented role is fuel supply.",
+    "refs": [
+      "https://theinvestor.vn/gs-energy-to-operate-3-bln-lng-power-project-in-vietnam-from-2029-d14857.html",
+      "https://investvietnam.vn/vinacapital-gs-energy-recieves-investment-certificate-for-036-3-billion-lng-plant-n1211.html"
+    ],
+    "verification_log": [
+      {"url": "https://theinvestor.vn/gs-energy-to-operate-3-bln-lng-power-project-in-vietnam-from-2029-d14857.html", "tokens": ["3,000 MW"], "result": "PASS", "note": "confirms combined capacity and GS Energy role"},
+      {"url": "https://investvietnam.vn/vinacapital-gs-energy-recieves-investment-certificate-for-036-3-billion-lng-plant-n1211.html", "tokens": ["GS Energy"], "result": "PASS", "note": "confirms investment certificate, VinaCapital/GS Energy JV"},
+      {"url": "https://vietnamenergy.vn/gs-energy-proposed-evn-to-support-long-an-1-and-2-lng-power-projects", "tokens": ["Long An"], "result": "FAIL", "note": "token not found on fetched page; dropped from refs"}
+    ],
+    "gogpt_prior_assessment": "GOGPT's 'Long An power station' (3,000 MW, gogpt_captive=False, 0.0 km) IS the plant this terminal exists to supply — it is the same integrated GS Energy/VinaCapital LNG-to-power complex, not this terminal's captive power (opposite direction). Independent confirmation: theinvestor.vn (see refs).",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "GOGPT already tracks 'Long An power station' at this site; not a captive plant, and no separate on-site captive generator for the terminal itself was found.",
+    "status_or_other_findings": "Timeline has slipped repeatedly: original target Dec 2025; April 2024 revision to Long An 1 by June 2028 / Long An 2 by June 2031; Feb 2025 GS Energy statement of operations from 2029. Project company: Long An Energy Corporation Company Ltd. Financing MOU with Korea Export-Import Bank (KEXIM).",
+    "notes": "PowerPlantsSupplied direction case: terminal feeds 'Long An power station' (already reflected in GEM's power_plants_supplied field)."
+  },
+  {
+    "terminal": "Long Son LNG Terminal",
+    "terminal_id": "T100000130974",
+    "country": "Vietnam",
+    "verdict": "NO",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "No captive gas power at the terminal. Direction test applies: the Long Son LNG terminal (regasification port, 47.5 ha water surface, separated out as its own project component) exists to fuel the co-located 'Long Son LNG Power Complex' (EVN, Phase 1: 1,500 MW, expandable to 4,500 MW, ~VND40,000bn / ~$1.6bn+ investment) on the adjoining 43 ha onshore site. Gas flows FROM the terminal TO the power plant; no source describes any separate on-site generation for the terminal's own load.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "congthuong.vn reports the 43 ha land parcel to be tendered for the 'Nhà máy nhiệt điện LNG Long Sơn' (Long Son LNG thermal power plant); ngoclonghaisongroup.com (a project stakeholder) separately confirms the combined-cycle gas-fired Long Son Power Complex at 1,500 MW installed capacity — both consistent with the terminal being the dedicated fuel-supply front-end for this EVN-led power complex, not a self-powered facility.",
+    "refs": [
+      "https://congthuong.vn/ba-ria-vung-tau-se-dau-thau-43-ha-lam-nha-may-nhiet-dien-lng-long-son-383739.html",
+      "https://ngoclonghaisongroup.com/en/long-son-power-complex-project"
+    ],
+    "verification_log": [
+      {"url": "https://congthuong.vn/ba-ria-vung-tau-se-dau-thau-43-ha-lam-nha-may-nhiet-dien-lng-long-son-383739.html", "tokens": ["43 ha"], "result": "PASS", "note": "confirms land parcel and plant identity"},
+      {"url": "https://ngoclonghaisongroup.com/en/long-son-power-complex-project", "tokens": ["1,500 MW"], "result": "PASS", "note": "confirms combined-cycle gas plant capacity"}
+    ],
+    "gogpt_prior_assessment": "GOGPT's 'Long Son power station' (3,900 MW per dispatch data, gogpt_captive=False, 3.97 km away) IS the plant this terminal's regasified gas is designed to supply — a EVN-led merchant/utility combined-cycle plant, not this terminal's captive power (opposite direction). The 3.97 km distance (vs. 0 km at the other Vietnam bundle sites) reflects that the regas port (47.5 ha water) and the power-plant land (43 ha onshore) were tendered/sited as separate but linked parcels. Independent confirmation: congthuong.vn (see refs).",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "GOGPT already tracks 'Long Son power station' near this site; not a captive plant, and no separate on-site captive generator for the terminal itself was found.",
+    "status_or_other_findings": "Reported project partners in various sources include EVN/GENCO 3 with GE involvement (MOU); capacity reported as 1,500 MW Phase 1, expandable to 4,500 MW; investment ~VND40,000bn.",
+    "notes": "PowerPlantsSupplied direction case: terminal's regasified gas is designed to feed 'Long Son power station' — GEM's power_plants_supplied field for this terminal is currently blank; flagging the relationship here for a separate Update-workflow batch to consider adding, not staged by this captive-power pass."
+  }
+]

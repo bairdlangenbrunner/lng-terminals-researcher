@@ -1,0 +1,197 @@
+[
+  {
+    "terminal": "Bahrain Hidd FLNG Terminal",
+    "terminal_id": "T100000130581",
+    "country": "Bahrain",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "None found. The FSU/regasification platform is supplied electricity via a purpose-built shore-power cable system from the Bahrain grid (Schneider Electric + igus, first-of-kind shore-power connection for a moored FSU), not on-site gas generation.",
+    "fuel_basis": "n/a — grid-fed, no on-site combustion equipment for power documented",
+    "confidence": "green",
+    "captive_summary": "Bahrain LNG's offshore terminal (Seapeak Bahrain / ex-Bahrain Spirit FSU + regasification platform) is powered by a dedicated shore-power connection from Bahrain's onshore grid, engineered by Schneider Electric with an igus flexible cable-chain system bridging the ~30 m jetty-to-FSU gap — described as the world's first shore-power supply system for a floating storage unit. No on-site/onboard gas-fired generation for the terminal's own power needs is documented; the nearby 963 MW Hidd Power and Water Station is a separate, pre-existing utility plant, not built for or dedicated to the LNG terminal.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "igus.eu project page and offshore-technology.com project profile both describe the FSU as connected to the Bahrain grid via a dedicated shore-power cable system (Schneider Electric electrical infrastructure, igus energy-chain cable management) installed for the terminal's June 2019 startup — this is the terminal's documented power source, distinct from on-site generation.",
+    "refs": [
+      "https://www.igus.eu/industry/shore-power/applications/shore-power-cable-management-for-offshore-lng-terminal",
+      "https://www.offshore-technology.com/projects/bahrain-lng-terminal/"
+    ],
+    "verification_log": [
+      {"url": "https://www.igus.eu/industry/shore-power/applications/shore-power-cable-management-for-offshore-lng-terminal", "tokens": ["shore power", "FSU"], "result": "PASS", "note": "confirms dedicated shore-power system for the FSU"},
+      {"url": "https://www.offshore-technology.com/projects/bahrain-lng-terminal/", "tokens": ["floating storage unit"], "result": "PASS", "note": "bot-blocked live (403), verified via Wayback snapshot 20251014211603"}
+    ],
+    "gogpt_prior_assessment": "gogpt_prior = no; no GOGPT plant given for this terminal to assess.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Documented negative: the terminal draws electricity from the Bahrain grid via a dedicated shore-power connection, not from any on-site gas-fired generating plant. Not a gas power station.",
+    "status_or_other_findings": "",
+    "notes": "The FSU (Seapeak Bahrain, ex-Bahrain Spirit, IMO 9771080) is a converted 174,000 m3 LNG carrier with a 2-stroke 5G70ME-C9-GI main propulsion engine (per vessel registries) — this is a propulsion engine, not evaluated here since the vessel is permanently moored and grid-powered for terminal operations; any standby diesel gensets standard to the vessel are not documented as gas-fired."
+  },
+  {
+    "terminal": "Das Island LNG Terminal",
+    "terminal_id": "T100000130601",
+    "country": "United Arab Emirates",
+    "verdict": "YES",
+    "mechanical": "True",
+    "captive_category": "mechanical_drive+power_generation",
+    "hardware_summary": "On-site electricity generation: an existing power plant of 5x GE Frame 5 gas turbine generators, plus a newer 36 MW power station (built Dec 2013-Mar 2015) built around a GE Frame 6 gas turbine burning both sweet and sour gas. Separately, mechanical drive: 2x GE Frame 5D gas turbine-driven turbocompressor trains (low-pressure + high-pressure casings) supplied by GE Oil & Gas for compression duty at the Das Island LNG/gas complex.",
+    "fuel_basis": "Setec (EPC design contractor) states the newer 36 MW power station is 'based on a GE Frame 6 turbine for both sweet and sour gas' — i.e. natural gas-fired. GE/oilandgasonline press release confirms gas-turbine-driven turbocompressor trains (GE Frame 5D) and a pre-existing power plant of five GE Frame 5 gas turbines at the same Das Island complex.",
+    "confidence": "green",
+    "captive_summary": "Das Island (ADGAS/ADNOC LNG liquefaction complex) hosts on-site gas turbine power generation: a legacy plant of 5x GE Frame 5 gas turbines and a newer 36 MW gas-fired (GE Frame 6, sweet+sour gas) power station commissioned circa 2015, plus separate gas-turbine-driven (GE Frame 5D) turbocompressor trains for mechanical compression duty. This is captive generation and mechanical drive at the same site — a mixed installation.",
+    "electric_mw": "36",
+    "mechanical_drive_note": "2x GE Frame 5D gas turbine-driven turbocompressor trains (each with a low-pressure and high-pressure casing), supplied by GE Oil & Gas to ADGAS for Das Island compression service; shaft-power rating not disclosed in sources found.",
+    "confirmed_how": "(1) GE Oil & Gas press release (via oilandgasonline.com, mirrored at ge.com) on the turbocompressor contract states ADGAS's Das Island site 'already includes a power plant based on five GE Frame 5 gas turbines' and that the new compression trains use 'GE Frame 5D gas turbines'. (2) Setec's own project case study (EPC design contractor) describes a distinct '36 MW power station' at Das Island 'based on a GE Frame 6 turbine for both sweet and sour gas', built Dec 2013-Mar 2015 for ACTEMIUM OIL & GAS. Two independent sources (equipment vendor + EPC design contractor) corroborate on-site gas turbine generation.",
+    "refs": [
+      "https://www.oilandgasonline.com/doc/ge-oil-gas-to-supply-turbocompressors-to-adga-0001",
+      "https://www.ge.com/news/press-releases/ge-oil-gas-supply-turbocompressors-adgas-das-island-lng-complex-0",
+      "https://www.setec.fr/en/blog/projets/das-island-thermal-power-station/"
+    ],
+    "verification_log": [
+      {"url": "https://www.oilandgasonline.com/doc/ge-oil-gas-to-supply-turbocompressors-to-adga-0001", "tokens": ["Frame 5"], "result": "PASS", "note": "confirms existing 5x GE Frame 5 power plant + new Frame 5D turbocompressor trains"},
+      {"url": "https://www.ge.com/news/press-releases/ge-oil-gas-supply-turbocompressors-adgas-das-island-lng-complex-0", "tokens": ["Frame 5"], "result": "PASS", "note": "GE's own press release, same content"},
+      {"url": "https://www.setec.fr/en/blog/projets/das-island-thermal-power-station/", "tokens": ["36 MW", "Frame 6"], "result": "PASS", "note": "confirms 36 MW GE Frame 6 gas-fired (sweet+sour) power station"}
+    ],
+    "gogpt_prior_assessment": "gogpt_prior = no; no GOGPT plant given for this terminal to assess.",
+    "gogpt_candidate": "ADD",
+    "gogpt_candidate_basis": "Genuine, sourced, gas-fired generating plant with a citable nameplate (36 MW, GE Frame 6, sweet+sour gas fuel, commissioned ~2015) and a further undisclosed-MW legacy 5x GE Frame 5 plant at the same site. No existing GOGPT record was matched to this terminal (gogpt_prior=no).",
+    "status_or_other_findings": "",
+    "notes": "The GE Frame 5D turbocompressor trains and the GE Frame 6 power station may relate to a broader 'Das Island Gas Compression Plants and Associated Facilities' project (offshore gas processing feeding the complex) rather than solely the LNG liquefaction trains narrowly — but both are on the Das Island site that hosts the LNG terminal, consistent with SOP scope."
+  },
+  {
+    "terminal": "Fujairah LNG Terminal",
+    "terminal_id": "T100000130602",
+    "country": "United Arab Emirates",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "None — project explicitly designed with electric-driven liquefaction compressors, not gas turbines.",
+    "fuel_basis": "n/a — electric drive design, no on-site combustion generation documented",
+    "confidence": "green",
+    "captive_summary": "This cancelled 9.6 Mtpa export project (ADNOC/EmiratesLNG, FEED by McDermott 2022) was explicitly designed with electric drives for the liquefaction compressors rather than conventional gas turbines, intended to run on grid power (later stated, after the project's 2023 relocation to Ruwais, to be nuclear/renewable grid power) — a documented as-designed negative, not an absence of information.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "McDermott's own press release (PR Newswire) on its May 2022 FEED contract award states: 'The plant will be designed with electric drives for the liquefaction compressors and will incorporate several features that significantly reduce greenhouse gas emissions.' Corroborated independently by LNG Industry's trade-press coverage of the same contract award, which repeats the electric-drive design detail.",
+    "refs": [
+      "https://www.prnewswire.com/news-releases/mcdermott-awarded-adnocs-fujairah-lng-feed-contract-301550071.html",
+      "https://www.lngindustry.com/liquid-natural-gas/19052022/adnoc-awards-mcdermott-feed-contract-for-fujairah-lng/"
+    ],
+    "verification_log": [
+      {"url": "https://www.mcdermott.com/press-release-detail/122830/mcdermott-awarded-adnocs-fujairah-lng-feed-contract", "tokens": ["electric drives"], "result": "FAIL", "note": "HTTP 403, no Wayback snapshot — dropped in favor of the PR Newswire mirror of the same release"},
+      {"url": "https://www.prnewswire.com/news-releases/mcdermott-awarded-adnocs-fujairah-lng-feed-contract-301550071.html", "tokens": ["electric drives"], "result": "PASS", "note": "PR Newswire mirror of McDermott's own release, confirms electric-drive design"},
+      {"url": "https://www.lngindustry.com/liquid-natural-gas/19052022/adnoc-awards-mcdermott-feed-contract-for-fujairah-lng/", "tokens": ["electric drives"], "result": "PASS", "note": "independent trade-press corroboration"}
+    ],
+    "gogpt_prior_assessment": "gogpt_prior = yes (tier A); given plant 'Fujairah F1 Integrated Water and power plant', 882 MW (per dispatch data; other sources cite ~893 MW nameplate / 760 MW installed), 0.61 km away, owned/operated by Emirates SembCorp Water and Power Company. This is NOT this terminal's captive power — it is (or was intended to be) a CUSTOMER of the terminal: Emirates LNG's stated main customers were the Fujairah F1 and F2 IWPPs (per MEED reporting on the original commercial-bid stage), the classic direction-test case (regas gas piped OUT to an external power plant, not captive generation flowing IN). Independent non-gem.wiki source: https://accgroup.com/our_projects/fujairah-f1-independent-water-and-power-plant-uae/",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Not a gas power station relationship in the captive direction — F1 IWPP is (or would have been) a gas customer of this terminal, and an existing GOGPT record already exists for it.",
+    "status_or_other_findings": "Confirmed (already reflected in GEM's cancelled status): ADNOC relocated this project to Al Ruwais Industrial City in May 2023, where it became the Ruwais LNG Terminal (a separate GEM record, also assessed in this batch) — do not act on this, it is background only.",
+    "notes": "Direction-test case: Fujairah LNG's whole commercial rationale was to feed regasified gas to the Fujairah F1/F2 IWPPs (PowerPlantsSupplied direction), the opposite of captive power. Flagging for the PowerPlantsSupplied field is a separate batch's concern per CLAUDE.md routing (not staged here)."
+  },
+  {
+    "terminal": "Jebel Ali FLNG Terminal",
+    "terminal_id": "T100000130603",
+    "country": "United Arab Emirates",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "A 'dual-fuel diesel generator power module' was added to the FSRU Explorer during its Oct-Dec 2015 dry-dock retrofit (per Excelerate's own PR Newswire release), described as providing 'more fuel-efficient power generation for FSRU services'. Existence of dual-fuel-capable generation is documented; no source found states which fuel (diesel vs. natural gas/BOG) the module actually burns in service, its manufacturer, or its rating.",
+    "fuel_basis": "Undocumented — 'dual-fuel diesel generator' by definition has gas-burning capability, but no source found confirms it is operated in gas/BOG mode rather than diesel mode.",
+    "confidence": "yellow",
+    "captive_summary": "The FSRU Explorer (moored at Jebel Ali, operated by Excelerate for DUSUP) received a dual-fuel diesel generator power module in a Dec 2015 retrofit, per Excelerate's own press release, but no public source establishes whether the module is fired on gas/boil-off gas or diesel in normal service. Per SOP, fuel-unstated is INSUFFICIENT, not NO or YES.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Excelerate Energy's PR Newswire release (15 Mar 2016) on the FSRU Explorer's efficiency upgrade states: 'A dual-fuel diesel generator power module was added to the FSRU. The module provides more fuel-efficient power generation for FSRU services.' Corroborated by Hydrocarbon Engineering's trade-press coverage of the same upgrade (also uses 'dual-fuel'). Neither source names a manufacturer, MW rating, or confirms the operating fuel mode.",
+    "refs": [
+      "https://www.prnewswire.com/news-releases/excelerate-energys-fsru-achieves-unprecedented-milestone-in-lng-industry-300236193.html",
+      "https://www.hydrocarbonengineering.com/gas-processing/16032016/excelerate-energy-fsru-excels-in-performance-test-2780/"
+    ],
+    "verification_log": [
+      {"url": "https://www.prnewswire.com/news-releases/excelerate-energys-fsru-achieves-unprecedented-milestone-in-lng-industry-300236193.html", "tokens": ["dual-fuel diesel generator"], "result": "PASS", "note": "confirms power module exists, no fuel-mode-in-service detail"},
+      {"url": "https://www.hydrocarbonengineering.com/gas-processing/16032016/excelerate-energy-fsru-excels-in-performance-test-2780/", "tokens": ["dual-fuel"], "result": "PASS", "note": "independent trade-press corroboration of the same upgrade, same gap in detail"}
+    ],
+    "gogpt_prior_assessment": "gogpt_prior = yes (tier A); given plant 'Jebel Ali M Power and Desalination Station', 2884.6 MW, 4.27 km away. This is DEWA's M-Station, the largest power/desalination complex in the UAE (~2,885 MW per DEWA/internationalfinance.com reporting) — a large, independently-owned (DEWA) grid utility plant unrelated to and far larger than anything a single moored FSRU would need; classic industrial-host trap, not captive to this terminal. Independent non-gem.wiki source: https://internationalfinance.com/insurance/dewa-m-station-largest-power-desalination-plant-uae/",
+    "gogpt_candidate": "REVIEWER CALL",
+    "gogpt_candidate_basis": "The given GOGPT plant (DEWA M-Station) is unrelated (DO-NOT-ADD-grade finding on its own), but the terminal's own onboard dual-fuel generator module is a case where 'generation exists but no citable nameplate, or it is vessel-mounted (FSRU onboard gensets) and it's unclear whether GOGPT's ontology captures it' — the textbook REVIEWER CALL per SOP §5.",
+    "status_or_other_findings": "",
+    "notes": "M-Station (DEWA) is not this terminal's captive plant — direction/ownership mismatch (different owner, vastly different scale, serves the whole Dubai grid). No PowerPlantsSupplied signal found either; the FSRU sends gas into DUSUP's onshore network generally, not specifically to M-Station."
+  },
+  {
+    "terminal": "Ruwais FSRU",
+    "terminal_id": "T100000130604",
+    "country": "United Arab Emirates",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "No public source found describing the FSRU Express's onboard power generation system, fuel type, or any shore-power connection at this terminal.",
+    "fuel_basis": "Undocumented — no source found on the vessel's engines/gensets or on a shore-power arrangement for this terminal.",
+    "confidence": "red",
+    "captive_summary": "The FSRU Express (Excelerate-operated, chartered by ADNOC, replaced the earlier FSRU Excelerate in 2019) is a 150,900 m3 converted vessel of the same Excelerate class as the Jebel Ali FSRU Explorer, but no public source found (press releases, class records, vessel registries) documents its onboard generator fuel type, or whether — like Bahrain's FSU — it is shore-power connected to ADNOC's grid instead of self-generating. Genuinely undocumented in any source found.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Searched Excelerate Energy's own project/fleet pages, trade press (LNG Industry, Riviera, Offshore Energy, MEED), Wood Mackenzie summary, and vessel-tracking sources for 'FSRU Express' engine/power specifications; none were found. Excelerate's fleet page confirms the Express's storage (150,900 m3) and send-out capacity (690 MMscf/d) but no power-generation detail.",
+    "refs": [],
+    "verification_log": [],
+    "gogpt_prior_assessment": "gogpt_prior = yes (tier C for its sister row, tier A here); given plant 'Ruwais General Utilities Plant', 922.8 MW, 1.65 km away. This is ADNOC Refining's own cogeneration/utility plant for the entire Al Ruwais industrial complex (refinery + petrochemicals + LNG) — 'Ruwais (Takreer) Cogeneration Power Plant' per power-technology.com/thenationalnews.com, expanded 2023 to reduce the complex's dependence on the national grid. It is a shared industrial utility built for the whole industrial city, not documented as built for or dedicated to this specific FSRU — industrial-host trap. Independent non-gem.wiki source: https://www.thenationalnews.com/business/energy/2022/09/14/adnoc-refining-to-complete-first-phase-of-600m-waste-heat-recovery-project-by-end-of-year/",
+    "gogpt_candidate": "REVIEWER CALL",
+    "gogpt_candidate_basis": "The given GOGPT plant (Ruwais General Utilities Plant) is a shared ADNOC Refining industrial cogen plant, not documented as captive to this specific FSRU — closer to DO NOT ADD on its own. But whether the FSRU itself self-generates (vessel-mounted, no citable nameplate found) is unresolved, so REVIEWER CALL for the terminal's own power source pending further vessel-specific research.",
+    "status_or_other_findings": "",
+    "notes": "Genuine research gap, not a screen: an active operating FSRU import terminal deserves further vessel-registry-level research (class society records, IMO number, engine builder) beyond what WebSearch/WebFetch surfaced this session to resolve fuel-basis definitively."
+  },
+  {
+    "terminal": "Ruwais LNG Terminal",
+    "terminal_id": "T100000131105",
+    "country": "United Arab Emirates",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "None — ADNOC's own materials describe this as the region's first all-electric LNG plant, using electric-driven motors instead of conventional gas turbines, powered by the UAE national grid (nuclear + renewable generation).",
+    "fuel_basis": "n/a — grid electric drive, no on-site combustion generation documented",
+    "confidence": "green",
+    "captive_summary": "Ruwais LNG (2x 4.8 Mtpa trains, FID June 2024, under construction) is explicitly designed as an all-electric plant: electric-driven motors run the liquefaction compressors instead of gas turbines, and the plant draws power from the UAE national grid's nuclear and renewable generation — a documented, deliberate negative on captive gas power, not an information gap.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "ADNOC's own press release (2023, 'Low-Carbon LNG Growth Project to Proceed in Al Ruwais Industrial City') describes the plant as electric-powered, running on renewable and nuclear grid power. ABB's press release on its Ruwais LNG contract explicitly titles it 'ADNOC's all-electric Ruwais LNG facility'. LNG Industry's independent trade-press coverage of the same ABB contract repeats 'all-electric'. Multiple independent corroborations (operator + equipment vendor + trade press) of the same documented design fact.",
+    "refs": [
+      "https://www.adnoc.ae/en/news-and-media/press-releases/2023/low-carbon-lng-growth-project-to--proceed-in-al-ruwais-industrial-city",
+      "https://new.abb.com/news/detail/130262/abb-integrated-solutions-to-support-adnocs-all-electric-ruwais-lng-facility",
+      "https://www.lngindustry.com/liquid-natural-gas/05112025/abb-to-support-adnocs-all-electric-ruwais-lng-facility/"
+    ],
+    "verification_log": [
+      {"url": "https://www.adnoc.ae/en/news-and-media/press-releases/2023/low-carbon-lng-growth-project-to--proceed-in-al-ruwais-industrial-city", "tokens": ["electric"], "result": "PASS", "note": "ADNOC's own release, confirms electric-powered/grid design"},
+      {"url": "https://new.abb.com/news/detail/130262/abb-integrated-solutions-to-support-adnocs-all-electric-ruwais-lng-facility", "tokens": ["all-electric"], "result": "PASS", "note": "ABB press release, explicit 'all-electric' framing"},
+      {"url": "https://www.lngindustry.com/liquid-natural-gas/05112025/abb-to-support-adnocs-all-electric-ruwais-lng-facility/", "tokens": ["all-electric"], "result": "PASS", "note": "independent trade-press corroboration"}
+    ],
+    "gogpt_prior_assessment": "gogpt_prior = yes (tier C); given plant 'Ruwais General Utilities Plant', 922.8 MW, 8.07 km away — same ADNOC Refining industrial cogen plant discussed for the Ruwais FSRU row. Given the terminal is documented as drawing power from the national grid (nuclear/renewable) rather than this specific industrial cogen plant, and the distance (8 km, further than the FSRU) and shared-utility framing, this is not captive to the LNG terminal. Independent non-gem.wiki source: https://www.thenationalnews.com/business/energy/2022/09/14/adnoc-refining-to-complete-first-phase-of-600m-waste-heat-recovery-project-by-end-of-year/",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Documented negative: the terminal is all-electric and grid-fed (nuclear/renewable national grid), not powered by the nearby Ruwais General Utilities Plant or any on-site gas turbine. Not a gas power station relationship.",
+    "status_or_other_findings": "",
+    "notes": "Direction test note: no PowerPlantsSupplied signal found (this is an export/liquefaction terminal, not typically a gas supplier to power plants)."
+  },
+  {
+    "terminal": "Sharjah FSRU",
+    "terminal_id": "T100000130972",
+    "country": "United Arab Emirates",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "",
+    "captive_summary": "Screened: the project (SNOC, originally a JV with Uniper, launched 2017) was shelved in 2020 before any FSRU vessel was selected or chartered and before any captive-power design was published — it never progressed past the commercial/JV stage. Its only documented power-sector relationship is the opposite direction: SNOC had signed an agreement to supply gas to three Sharjah Electricity and Water Authority (SEWA) power stations, i.e. this terminal was designed to FEED external power plants, not host captive generation.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Riviera Maritime Media ('Sharjah pushes back FSRU start date') and Gulf News (SNOC gas-storage project coverage) corroborate the project's shelved status and the SEWA gas-supply agreement; no source at any stage names an FSRU vessel or describes on-site power generation for this project.",
+    "refs": [
+      "https://www.rivieramm.com/news-content-hub/news-content-hub/sharjah-pushes-back-fsru-start-date-26440",
+      "https://gulfnews.com/business/energy/sharjah-national-oil-corporation-completes-second-phase-of-gas-storage-project-1.1730713526807"
+    ],
+    "verification_log": [
+      {"url": "https://www.rivieramm.com/news-content-hub/news-content-hub/sharjah-pushes-back-fsru-start-date-26440", "tokens": ["Sharjah Electricity"], "result": "PASS", "note": "confirms SEWA gas-supply agreement (opposite-direction relationship) and project delay/shelving history"},
+      {"url": "https://gulfnews.com/business/energy/sharjah-national-oil-corporation-completes-second-phase-of-gas-storage-project-1.1730713526807", "tokens": ["SNOC"], "result": "PASS", "note": "background corroboration on SNOC"}
+    ],
+    "gogpt_prior_assessment": "gogpt_prior = no; no GOGPT plant given for this terminal to assess.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Cancelled before any vessel selection or power design; not a gas power station relationship (only documented relationship is the opposite direction, feeding SEWA power stations).",
+    "status_or_other_findings": "",
+    "notes": "Direction-test case: SNOC's stated purpose for this terminal included supplying gas to three SEWA power stations — a PowerPlantsSupplied-direction finding for a different batch to consider if the project is ever revived, not a captive-power finding here."
+  }
+]

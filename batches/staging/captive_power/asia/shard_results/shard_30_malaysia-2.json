@@ -1,0 +1,319 @@
+[
+ {
+  "terminal": "MLNG T9 LNG Terminal",
+  "terminal_id": "T100000130293",
+  "country": "Malaysia",
+  "verdict": "YES",
+  "mechanical": "True",
+  "captive_category": "mechanical_drive+power_generation",
+  "hardware_summary": "2× GE Frame 7EA gas turbines (mechanical drive, each paired with a 13-megawatt induction motor running VSI/VSD technology at 3,600 rpm) driving Train 9's low/medium-pressure mixed-refrigerant and propane/high-pressure mixed-refrigerant compression trains; Train 9 is part of the wider Petronas LNG Complex (PLC), which Petronas states 'traditionally relies on fuel gas to power operations, with gas-powered turbines generating electricity on-site' (complex-wide, not train-specific MW disclosed).",
+  "fuel_basis": "Natural (fuel) gas — GE Frame 7EA gas turbines (mechanical drive) named by GE; Petronas' own sustainability article states the wider complex's turbines are 'gas-powered'.",
+  "confidence": "green",
+  "captive_summary": "Train 9 has 2 GE Frame 7EA mechanical-drive gas turbines (13 MW motor-assisted each) driving its refrigerant compression trains — a captive (mechanical-drive) gas installation. The wider Bintulu complex Train 9 belongs to is also confirmed by Petronas to generate a portion of its own electricity on-site via gas turbines (partially captive: Project GLORY now substitutes ~40%/90 MW of the complex's power with Sarawak Energy grid hydro, leaving the balance on-site gas generation).",
+  "electric_mw": "",
+  "mechanical_drive_note": "2× GE Frame 7EA gas turbines, mechanical drive, each paired with a 13 MW induction motor/VSD assist, 3,600 rpm, driving Train 9's mixed-refrigerant and propane/high-pressure mixed-refrigerant compression trains (GE, 2016 contract, ~$150M supply scope).",
+  "confirmed_how": "GE press release 'Petronas Selects GE Technology for the PETRONAS LNG Train 9 Project': GE supplied '2 Frame 7EA gas turbines' each paired with 'a 13-megawatt induction motor' running 'VSI technology' to drive Train 9's refrigerant compression trains — explicitly mechanical drive, not generator sets. Separately, Petronas' own 'Sparking a Sustainable Future: Electrifying PETRONAS LNG Complex' article states the Bintulu complex (all 9 trains, PLC) 'traditionally relies on fuel gas to power operations, with gas-powered turbines generating electricity on-site,' and that its Project GLORY now sources '90 megawatts from Sarawak Energy's state grid' via hydro, substituting '40 per cent of PLC's total power requirements' — meaning the remaining ~60% is still on-site gas-turbine generation (partially captive, which the SOP treats as captive).",
+  "refs": [
+   "https://www.ge.com/news/press-releases/petronas-selects-ge-technology-petronas-lng-train-9-project",
+   "https://www.offshore-energy.biz/malaysia-petronas-picks-ge-technology-for-lng-train-9-project/",
+   "https://www.petronas.com/flow/sustainability/sparking-sustainable-future-electrifying-petronas-lng-complex"
+  ],
+  "verification_log": [
+   {
+    "url": "https://www.ge.com/news/press-releases/petronas-selects-ge-technology-petronas-lng-train-9-project",
+    "tokens": [
+     "Frame 7EA",
+     "13-megawatt"
+    ],
+    "result": "PASS",
+    "note": "primary equipment vendor; confirms mechanical-drive config"
+   },
+   {
+    "url": "https://www.offshore-energy.biz/malaysia-petronas-picks-ge-technology-for-lng-train-9-project/",
+    "tokens": [
+     "Frame 7EA",
+     "13-megawatt"
+    ],
+    "result": "PASS",
+    "note": "independent trade-press corroboration (echoes GE release content)"
+   },
+   {
+    "url": "https://www.petronas.com/flow/sustainability/sparking-sustainable-future-electrifying-petronas-lng-complex",
+    "tokens": [
+     "gas-powered turbines",
+     "90 megawatts"
+    ],
+    "result": "PASS",
+    "note": "primary operator source; confirms complex-wide on-site gas generation, partially substituted by grid hydro"
+   }
+  ],
+  "gogpt_prior_assessment": "GOGPT-flagged plant is Tanjung Kidurong power station, 0.8 km away — a Sarawak Energy (state utility)-owned 842 MW CCGT commissioned 2022 and operated via subsidiary Kidurong Power Generation Sdn Bhd. Sarawak Energy supplies MLNG only 90 MW under a 20-year contract via Sesco/grid tie-in (dayakdaily.com, verified) — this is a merchant utility plant with many other customers on the Sarawak grid, feeding power INTO the complex under commercial contract, not a dedicated captive plant of this terminal. Consistent with GOGPT's own gogpt_captive=False flag for this plant. Info URL: https://dayakdaily.com/sarawak-energy-to-supply-energy-via-sesco-to-tanjung-kidurong-mlng-complex-for-20-years/ (verified, PASS on '90MW').",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "Tanjung Kidurong is a merchant grid utility plant, not this terminal's captive plant (direction test: power flows in from the grid under commercial PPA-style contract, not a dedicated on-site facility); the terminal's actual captive equipment (Frame 7EA mechanical-drive turbines) is shaft-power only, never populates electric_mw, and produces no citable generating nameplate for GOGPT.",
+  "status_or_other_findings": "",
+  "notes": "No PowerPlantsSupplied direction-test issue — Tanjung Kidurong supplies power TO the complex (partial), not fed by it."
+ },
+ {
+  "terminal": "MLNG Tiga LNG Terminal",
+  "terminal_id": "T100000130295",
+  "country": "Malaysia",
+  "verdict": "YES",
+  "mechanical": "True",
+  "captive_category": "mechanical_drive+power_generation",
+  "hardware_summary": "GE-supplied gas turbines comprising both dedicated on-site power-generation units and liquefaction-train mechanical drives are covered under GE's 2016 US$127.6M long-term service agreement, which explicitly names MLNG, MLNG Dua, and MLNG Tiga as the three facilities served (existing GEM ref, reconfirmed). Petronas separately states the wider Bintulu complex 'traditionally relies on fuel gas to power operations, with gas-powered turbines generating electricity on-site' (now partially substituted, ~40%, by Sarawak Energy grid hydro under Project GLORY).",
+  "fuel_basis": "Natural (fuel) gas — GE gas turbines (LTSA covers the complex's power-generation units and liquefaction-train drivers); Petronas states the complex's on-site turbines are 'gas-powered'.",
+  "confidence": "green",
+  "captive_summary": "MLNG Tiga is one of three facilities (with MLNG and MLNG Dua) named in a GE long-term service agreement covering 'all GE-supplied gas turbines and related equipment that comprise the power generation units and liquefaction trains for the LNG complex' — i.e. both on-site electricity generation and mechanical-drive liquefaction turbines. Petronas' own electrification article confirms the wider complex has traditionally self-generated its power via on-site gas turbines, partially substituted (not replaced) by grid hydro since 2024.",
+  "electric_mw": "",
+  "mechanical_drive_note": "GE LTSA covers liquefaction-train mechanical-drive turbines at MLNG Tiga alongside power-generation units (exact per-train model/count not broken out in the source); a separate report (oilandgasadvancement.com, not independently corroborated for the Tiga-specific facility) describes Siemens SGT-700 mechanical-drive turbines on the complex's BOG re-liquefaction facility, not cited as a standalone source here given the uncertain facility attribution.",
+  "confirmed_how": "RE-VERIFICATION of a pre-existing GEM CaptiveGasPower=True (confirmed live in scripts/gem_export.csv, col 73/74, for terminal_id T100000130295 / unit G100002029507: CaptiveGasPower=True, ref=https://www.ge.com/news/press-releases/ge-wins-1276-million-service-contract-malaysia-lng-complex). That URL was re-verified (still PASS) and still supports the True: GE press release 'GE Wins $127.6 Million Service Contract for Malaysia LNG Complex' — the agreement covers 'all GE-supplied gas turbines and related equipment that comprise the power generation units and liquefaction trains for the LNG complex,' applying to 'MLNG, MLNG Dua, and MLNG Tiga.' Petronas' 'Sparking a Sustainable Future: Electrifying PETRONAS LNG Complex' states the complex 'traditionally relies on fuel gas to power operations, with gas-powered turbines generating electricity on-site,' with Project GLORY substituting 40% (90 MW) via Sarawak Energy grid hydro — the remainder stays on-site gas generation.",
+  "refs": [
+   "https://www.ge.com/news/press-releases/ge-wins-1276-million-service-contract-malaysia-lng-complex",
+   "https://www.petronas.com/flow/sustainability/sparking-sustainable-future-electrifying-petronas-lng-complex"
+  ],
+  "verification_log": [
+   {
+    "url": "https://www.ge.com/news/press-releases/ge-wins-1276-million-service-contract-malaysia-lng-complex",
+    "tokens": [
+     "Malaysia LNG"
+    ],
+    "result": "PASS",
+    "note": "reconfirmed existing GEM ref; primary equipment vendor, names MLNG Tiga explicitly"
+   },
+   {
+    "url": "https://www.petronas.com/flow/sustainability/sparking-sustainable-future-electrifying-petronas-lng-complex",
+    "tokens": [
+     "gas-powered turbines",
+     "90 megawatts"
+    ],
+    "result": "PASS",
+    "note": "primary operator source; confirms complex-wide on-site gas generation"
+   }
+  ],
+  "gogpt_prior_assessment": "gogpt_prior tier A, same Tanjung Kidurong power station as MLNG T9 (0.73 km away) — same finding applies: Sarawak Energy state-utility CCGT contractually supplying 90 MW to the complex via grid tie-in, not a dedicated captive plant of MLNG Tiga specifically. Consistent with gogpt_captive=False. Info URL: https://dayakdaily.com/sarawak-energy-to-supply-energy-via-sesco-to-tanjung-kidurong-mlng-complex-for-20-years/ (verified, PASS on '90MW').",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "Tanjung Kidurong is a merchant grid utility plant supplying the complex under commercial contract, not MLNG Tiga's own dedicated plant; the terminal's own captive equipment (GE LTSA-covered turbines) has no disclosed standalone generating nameplate to cite.",
+  "status_or_other_findings": "",
+  "notes": "RE-VERIFY case (coordinator instruction): existing GEM CaptiveGasPower [ref] URL confirmed still live and still supports True; ref list here MERGES the existing URL with one new supplementary source (Petronas electrification article) — no existing URL dropped. No PowerPlantsSupplied direction-test issue."
+ },
+ {
+  "terminal": "Melaka LNG Terminal",
+  "terminal_id": "T100000130290",
+  "country": "Malaysia",
+  "verdict": "NO",
+  "mechanical": "False",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "yellow",
+  "captive_summary": "The GOGPT-flagged 'Melaka Refinery power station' (145 MWe, 4× GE MS5001/Frame 5 gas turbines) is a cogeneration plant built 2005-2007 inside the Petronas Melaka Refinery (now Melaka Energy Park) — a different industrial host (PETRONAS' refining business unit) that predates the LNG regas terminal (commercial ops Q2 2013) by 6 years. No source found documents any on-site gas turbine generation belonging to the RGT Sungai Udang jetty/FSU regas facility itself; it is a two-FSU (Tenaga Satu, Tenaga Empat) + island-jetty regasification unit with no liquefaction load, consistent with the SOP's 'regas is not liquefaction, most import terminals are grid-fed' prior.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "GE press release 'GE Gas Turbines to Power Cogeneration Project in Malaysian Refinery': GE supplied 'four MS5001 (Frame 5) gas turbines, electric generators...' for a cogeneration plant 'located inside the refinery in Melaka,' construction March 2005-February 2007 (MYR 460M contract) — years before RGT Sungai Udang began operations in Q2 2013 (Petronas Gas regasification business page, confirms RGTSU start). This is the industrial-host trap: the flagged plant is the refinery's own, not the LNG terminal's. No independent source describes on-site gas generation for the FSU/jetty regas facility itself; its grid/electrical-supply arrangement was not independently confirmed beyond this negative finding, hence yellow rather than green confidence.",
+  "refs": [
+   "https://www.ge.com/news/press-releases/ge-gas-turbines-power-cogeneration-project-malaysian-refinery",
+   "https://www.petronas.com/pgb/our-business/regasification"
+  ],
+  "verification_log": [
+   {
+    "url": "https://www.ge.com/news/press-releases/ge-gas-turbines-power-cogeneration-project-malaysian-refinery",
+    "tokens": [
+     "MS5001",
+     "cogeneration"
+    ],
+    "result": "PASS",
+    "note": "confirms refinery cogen plant, different host, predates terminal"
+   },
+   {
+    "url": "https://www.petronas.com/pgb/our-business/regasification",
+    "tokens": [
+     "Sungai Udang"
+    ],
+    "result": "PASS",
+    "note": "confirms RGTSU 2013 commercial-ops start date and facility description"
+   }
+  ],
+  "gogpt_prior_assessment": "GOGPT-flagged plant is 'Melaka Refinery power station' (145 MWe, GOGPT lists 150 MW), 2.99 km away, gogpt_captive=True — but captive to the Petronas Melaka Refinery (a separate PETRONAS business unit, 'Melaka Energy Park'), built 2005-2007, years before the LNG terminal existed. Classic industrial-host trap (same pattern as Huelva/CEPSA, Sines/Repsol). Not this terminal's captive power.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "GOGPT record already exists for this plant and it is correctly attributed elsewhere (the refinery); no separate captive generation found for the LNG terminal itself.",
+  "status_or_other_findings": "",
+  "notes": "Direction test: RGT Sungai Udang feeds gas OUT to the Peninsular Gas Utilisation (PGU) pipeline network, which in turn supplies TNB and other gas-fired power stations region-wide — this is a general grid-supply role, not a single-plant PowerPlantsSupplied relationship worth flagging."
+ },
+ {
+  "terminal": "Pengerang Johor LNG Terminal",
+  "terminal_id": "T100000130291",
+  "country": "Malaysia",
+  "verdict": "NO",
+  "mechanical": "False",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "green",
+  "captive_summary": "Classic direction-test case: RGT Pengerang (RGTP, commercial ops Q4 2017) supplies regasified gas to fuel the separate, stand-alone Pengerang Cogeneration Plant (PCP) — a 1,729 MW gas-fired H-Class-turbine plant that exports power to the Pengerang Integrated Complex (PIC) and 600 MW firm to the national grid under a PPA. The terminal's own FSU (Puteri Delima Satu, in service from 2025) is explicitly designed to receive shore power rather than self-generate.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Petronas PIC 'Utilities & Services' page: the PCP is 'a stand-alone, state-of-the-art power and steam provider to PIC' with total capacity '1,729 megawatts (MW) of electricity,' 'fuelled by natural gas' with 'H-Class gas turbine' technology, and '600 megawatts (MW)...contractually committed to the National Grid under the Power Purchase Agreement.' MISC press release on the RGTP FSU project: the new FSU (converted LNG carrier Puteri Delima Satu) 'is designed to receive shore power to reduce emissions while improving operational efficiency' — i.e. grid-fed, not self-generating. Together these confirm the terminal both (a) feeds a separate cogen plant rather than being powered by it, and (b) draws its own power from shore/grid.",
+  "refs": [
+   "https://www.petronas.com/pic/utilities-services",
+   "https://www.miscgroup.com/media/media-releases/misc-partners-with-pengerang-lng-two-sdn-bhd-for-lng-floating-storage-unit-project-d7503fdd178dc071ee535d98beb9e62e"
+  ],
+  "verification_log": [
+   {
+    "url": "https://www.petronas.com/pic/utilities-services",
+    "tokens": [
+     "1,729",
+     "cogeneration"
+    ],
+    "result": "PASS",
+    "note": "confirms PCP capacity, fuel, national-grid PPA"
+   },
+   {
+    "url": "https://www.petronas.com/pic/utilities-services",
+    "tokens": [
+     "1,220MW",
+     "cogeneration"
+    ],
+    "result": "FAIL",
+    "note": "an older PCP capacity figure (1,220 MW) circulating in secondary sources does not match the current primary page (1,729 MW) — dropped, used the verified figure instead"
+   },
+   {
+    "url": "https://www.miscgroup.com/media/media-releases/misc-partners-with-pengerang-lng-two-sdn-bhd-for-lng-floating-storage-unit-project-d7503fdd178dc071ee535d98beb9e62e",
+    "tokens": [
+     "shore power"
+    ],
+    "result": "PASS",
+    "note": "confirms FSU is grid/shore-power fed, not self-generating"
+   }
+  ],
+  "gogpt_prior_assessment": "gogpt_prior = no; no GOGPT plant record was given for this terminal in the assignment. The Pengerang Cogeneration Plant (1,729 MW, gas-fired) is the downstream offtake plant this terminal supplies — it is a candidate for a future GOGPT record/verification (if not already tracked) but is not this terminal's captive power. Info URL: https://www.petronas.com/pic/utilities-services (verified above).",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "The only gas-fired generation associated with this terminal is downstream (PCP), not captive to it; the terminal's own FSU is explicitly grid/shore-power fed with no on-site gas generation.",
+  "status_or_other_findings": "",
+  "notes": "PowerPlantsSupplied direction-test case: Pengerang Cogeneration Plant (1,729 MW gas-fired, PIC) is fed by gas from this terminal (among other sources) — the opposite relationship from captive power; flag for the PowerPlantsSupplied field in a different batch, not staged here."
+ },
+ {
+  "terminal": "Satu FLNG Terminal",
+  "terminal_id": "T100000130288",
+  "country": "Malaysia",
+  "verdict": "YES",
+  "mechanical": "True",
+  "captive_category": "mechanical_drive+power_generation",
+  "hardware_summary": "PFLNG SATU (moored at the Kanowit gas field, off-grid by construction): GE supplied '4 of its PGT25+G4 gas turbine generator systems' (electricity generation) plus '2 PGT25+G4 gas turbine driven compressor units' (mechanical drive) and '2 electric motor driven centrifugal compressors modules' for the liquefaction process — GE's compression trains are described as vital elements of the liquefaction process.",
+  "fuel_basis": "Natural/fuel gas — GE PGT25+G4 aeroderivative gas turbines, named explicitly by GE as the equipment supplier.",
+  "confidence": "green",
+  "captive_summary": "PFLNG SATU is a moored FLNG vessel (off-grid almost by construction, per the grid-access prior) with 4 GE PGT25+G4 gas turbine generator sets providing on-site electricity generation, plus 2 more PGT25+G4 units in gas-turbine-driven mechanical-drive mode for compression, alongside 2 electric-motor-driven compressor modules — a mixed generation + mechanical-drive site.",
+  "electric_mw": "",
+  "mechanical_drive_note": "2× GE PGT25+G4 gas turbine driven compressor units (mechanical drive), aggregate rating not disclosed in the source; kept separate from the 4× PGT25+G4 generator sets.",
+  "confirmed_how": "GE press release 'Petronas Selects GE's Compressor Technology for Asia's First Floating LNG Project': GE's scope comprised 'four of its PGT25+G4 gas turbine generator systems,' 'two PGT25+G4 gas turbine driven compressor units,' and 'two electric motor driven centrifugal compressors modules,' stating 'GE's compression trains are vital elements of the liquefaction process, which cools natural gas to a liquid state.' This is a primary equipment-vendor source naming both the generator and mechanical-drive equipment aboard the vessel.",
+  "refs": [
+   "https://www.ge.com/news/press-releases/petronas-selects-ges-compressor-technology-asias-first-floating-lng-project-0"
+  ],
+  "verification_log": [
+   {
+    "url": "https://www.ge.com/news/press-releases/petronas-selects-ges-compressor-technology-asias-first-floating-lng-project-0",
+    "tokens": [
+     "PGT25",
+     "gas turbine generator"
+    ],
+    "result": "PASS",
+    "note": "primary equipment vendor; names both generator sets and mechanical-drive compressor units"
+   }
+  ],
+  "gogpt_prior_assessment": "gogpt_prior = no; no GOGPT plant record given for this terminal in the assignment.",
+  "gogpt_candidate": "REVIEWER CALL",
+  "gogpt_candidate_basis": "Generation exists (4× GE PGT25+G4 gas turbine generator sets) but no per-unit MW nameplate was disclosed in the source, and the equipment is vessel-mounted (moored FLNG onboard gensets) — unclear whether GOGPT's ontology captures floating-facility onboard generation the way it does FSRU onboard gensets.",
+  "status_or_other_findings": "",
+  "notes": "No PowerPlantsSupplied direction-test issue — PFLNG SATU is an export/liquefaction facility, fully self-contained."
+ },
+ {
+  "terminal": "Tiga FLNG Terminal",
+  "terminal_id": "T100000131063",
+  "country": "Malaysia",
+  "verdict": "YES",
+  "mechanical": "False",
+  "captive_category": "power_generation",
+  "hardware_summary": "Purpose-built onshore gas-fired power plant at Sipitang (Sabah), adjacent to the Sipitang Oil and Gas Industrial Park (SOGIP) where PFLNG Tiga will be moored nearshore: 7× MAN Energy Solutions 20V35/44G gas engines, 70 MW total capacity, explicitly described by both MAN (equipment vendor) and Riviera Maritime Media (independent trade press) as becoming the SOLE electricity supply to the nearshore FLNG terminal. As-designed captive power on an under-construction facility (per SOP, this counts).",
+  "fuel_basis": "Natural gas — MAN Energy Solutions 20V35/44G gas engines (reciprocating gas engines), named by the equipment vendor.",
+  "confidence": "green",
+  "captive_summary": "PFLNG Tiga (nearshore FLNG, under construction, commercial ops targeted 2027) will draw its entire electricity supply from a dedicated, purpose-built decentralised gas power plant at Sipitang: 7 MAN 20V35/44G gas engines totaling 70 MW, described as the 'sole supply of electricity' to the terminal — i.e. a dedicated (not merchant-grid) captive arrangement, even though the genset island sits onshore adjacent to the mooring rather than on the vessel hull itself.",
+  "electric_mw": "70",
+  "mechanical_drive_note": "",
+  "confirmed_how": "MAN Energy Solutions press release (Sept 2024): 'A total of seven 20V35/44G gas engines with a total capacity of 70 MW will drive a decentralised power plant in Sipitang located in Sabah, East Malaysia,' which will 'become the sole supply of electricity to a nearshore FLNG terminal that is currently under construction and expected to be in commercial operation by year 2027.' Riviera Maritime Media independently corroborates: 'The power plant will run on natural gas and become the sole supply of electricity to the nearshore FLNG terminal.' The Star (Petronas construction-start coverage) separately describes the facility's design as incorporating 'energy-efficient power generation systems and aero-derivative gas turbines to reduce its carbon footprint' — this aero-derivative-turbine detail is noted but not independently attributed to a confirmed generator-vs-mechanical-drive role, so it is not scored into mechanical/electric_mw.",
+  "refs": [
+   "https://www.man-es.com/company/press-releases/press-details/2024/09/04/man-energy-solutions-to-supply-gas-engines-for-three-power-plants-in-southeast-asia",
+   "https://www.rivieramm.com/news-content-hub/news-content-hub/malaysia-gears-up-for-third-flng-project-82285",
+   "https://www.thestar.com.my/business/business-news/2024/04/01/petronas-begins-the-construction-of-its-third-floating-lng-facility"
+  ],
+  "verification_log": [
+   {
+    "url": "https://www.man-es.com/company/press-releases/press-details/2024/09/04/man-energy-solutions-to-supply-gas-engines-for-three-power-plants-in-southeast-asia",
+    "tokens": [
+     "Sipitang",
+     "70 MW"
+    ],
+    "result": "PASS",
+    "note": "primary equipment vendor; confirms 7x engines, 70 MW, sole-supply role"
+   },
+   {
+    "url": "https://www.rivieramm.com/news-content-hub/news-content-hub/malaysia-gears-up-for-third-flng-project-82285",
+    "tokens": [
+     "sole supply"
+    ],
+    "result": "PASS",
+    "note": "independent trade press corroboration"
+   },
+   {
+    "url": "https://www.thestar.com.my/business/business-news/2024/04/01/petronas-begins-the-construction-of-its-third-floating-lng-facility",
+    "tokens": [
+     "aero-derivative gas turbines"
+    ],
+    "result": "PASS",
+    "note": "informational only, not scored into verdict hardware fields"
+   }
+  ],
+  "gogpt_prior_assessment": "gogpt_prior = no; no GOGPT plant record given for this terminal in the assignment.",
+  "gogpt_candidate": "ADD",
+  "gogpt_candidate_basis": "Genuine, sourced, gas-fired generating plant (MAN 20V35/44G reciprocating gas engines) with a citable nameplate (70 MW) and a stated sole-customer relationship to this terminal — a real GOGPT candidate once operational, though currently under construction rather than operating.",
+  "status_or_other_findings": "Construction confirmed underway (SHI hull-launch Feb 2025 per multiple trade press); commercial operation targeted 2027 per The Star and MAN Energy Solutions — consistent with GEM's current 'construction' status. Not acted on here.",
+  "notes": "Flagging for the orchestrator: the Sipitang power plant is described as sited 'in the town of Sipitang' / 'in Sabah' rather than explicitly 'at SOGIP' or 'at the mooring site' — sources establish it is purpose-built and dedicated (sole supply) to this one terminal with no other stated customers or grid connection, which is the functional definition of captive even if the plant may sit some distance from the FLNG's exact mooring point within the wider Sipitang industrial area. Reviewer may want to confirm exact siting if this distinction matters for staging. [ORCHESTRATOR QC 2026-07-31: corrected terminal_id typo T100001131063 -> T100000131063 (dispatch/gem_export.csv both carry T100000131063).]"
+ },
+ {
+  "terminal": "Yan FSRU",
+  "terminal_id": "T100001050288",
+  "country": "Malaysia",
+  "verdict": "INSUFFICIENT",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "",
+  "captive_summary": "RGT Yan is a pre-FID proposed offshore FSRU off Pulau Bunting, Kedah (up to 6 mtpa regas capacity, RM2-3bn, Gas Malaysia/Tokyo Gas/VTTI JV, Energy Commission Letter to Proceed issued but no FID yet). No vessel has been named or chartered, and no technical/design documentation on the FSRU's own auxiliary power arrangement (onboard gensets vs shore power) was found in any public source — too early-stage for a design to be published.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Gas Malaysia press release describes RGT Yan's purpose as enhancing 'supply flexibility, diversify gas sources, and support the growing energy needs of industrial and power sectors in the region' (broader regional framing, not a single dedicated offtake plant) and gives project cost/capacity, but contains no information on the FSRU's own power generation. No vessel-selection or engineering announcement was found. GEM's own field already records power_plants_supplied = 'Pulau Bunting power station' for this terminal (a separate finding, not verified or restated here) — that field describes the opposite (terminal-to-plant) relationship and does not resolve the terminal's own on-site power question either way.",
+  "refs": [],
+  "verification_log": [
+   {
+    "url": "https://www.gasmalaysia.com/media_releases/gas-malaysia-advances-strategic-lng-infrastructure",
+    "tokens": [
+     "six million tonnes"
+    ],
+    "result": "PASS",
+    "note": "confirms project scope; no power-generation detail for the FSRU itself, not cited as a captive-power finding"
+   },
+   {
+    "url": "https://www.mmcports.com.my/prime-minister-yab-ismail-sabri-officiates-pulau-bunting",
+    "tokens": [
+     "Power Plant"
+    ],
+    "result": "PASS",
+    "note": "confirms integrated development includes a separate power-plant component; no technical detail on FSRU auxiliary power"
+   }
+  ],
+  "gogpt_prior_assessment": "gogpt_prior = no; no GOGPT plant record given for this terminal in the assignment. The GEM-listed 'Pulau Bunting power station' (power_plants_supplied) is the project's planned downstream offtake plant, not evidence of this terminal's own captive generation.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "No sourced on-site generation exists yet for this pre-FID project; nothing to add.",
+  "status_or_other_findings": "Project has an Energy Commission Letter to Proceed (per businesstoday.com.my, not independently re-verified here) and is described as moving toward FID — status/substatus not independently assessed beyond GEM's current 'proposed'.",
+  "notes": "PowerPlantsSupplied direction-test case: GEM already lists 'Pulau Bunting power station' as this terminal's downstream offtake, consistent with the Pulau Bunting Integrated Development bundling a Gas Supply Centre + Power Plant alongside RGT Yan — this is the terminal-feeds-plant direction, separate from (and does not resolve) the captive-power question asked here. Resolve with fresh research once the project reaches FID and a vessel/technical design is published."
+ }
+]

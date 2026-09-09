@@ -9,11 +9,20 @@ Update fixes") — this script never edits anything.
 
 Each URL gets a verdict, graded so the QC memo can weigh severity honestly:
   - ok:        HTTP 200, not a soft-error page (+ PDFs must have a text layer)
-  - blocked:   HTTP 401/403/429 or a paywall/bot-wall soft-error (Reuters,
-               Cloudflare interstitials, members-only pages…). The URL is
-               probably fine for a human — verify manually, do NOT count as rot.
-  - dead:      hard link-rot (404/410/5xx, DNS/timeout, soft-404 titles,
-               scanned-PDF-no-text). The >25%-per-country escalation in
+  - blocked:   HTTP 401/403/429, any 5xx, or a paywall/bot-wall soft-error
+               (Reuters, Cloudflare interstitials, members-only pages…). The URL
+               is probably fine for a human — verify manually, do NOT count as
+               rot. 5xx counts as blocked, not dead: an origin/edge error means
+               the server refused or failed, NOT that the path is gone — CDN
+               bot-walls routinely answer scripted UAs with 502/503 while
+               serving a browser 200 (offshore-energy.biz, 2026-07-29).
+  - unverifiable: the document is THERE and a human can read it, but this script
+               cannot machine-check the value — image-only/scanned PDFs with no
+               text layer (EU PCI fiches, older ministry scans). Not rot: do not
+               count toward the §6 threshold, but do report it, because a value
+               resting only on such a citation has never been machine-verified.
+  - dead:      hard link-rot (404/410, DNS failure, malformed URL, timeout,
+               soft-404 titles). The >25%-per-country escalation in
                QC SOP §6 counts ONLY these.
 Plus, for ok URLs, an advisory name_found signal: page/PDF text contains the
 terminal name (trailing parenthetical stripped; for 3+-word names a
@@ -41,6 +50,7 @@ import time
 from collections import Counter, defaultdict
 from datetime import date
 from pathlib import Path
+from urllib.parse import urlsplit
 
 sys.path.insert(0, str(Path(__file__).parent))
 
@@ -51,14 +61,42 @@ from colmap import load_colmap as _load_colmap  # noqa: E402
 _EXCLUDED_REF_KEYS = {"tot_terminal_cost_ref"}
 
 _URL_RE = re.compile(r"https?://[^\s,;\"'<>]+")
-_TRAILING_PUNCT = ".,;:)]}>\"'"
+# A comma only ends a URL when a new one starts right after it -- see _extract_urls.
+_LIST_SEP_RE = re.compile(r",(?=\s*https?://)")
+_TRAILING_PUNCT = ".,;:)]}>"
 
 
 def _extract_urls(cell):
     """A [ref] cell may carry several URLs (the build comma-joins them).
-    Findall + trailing-punctuation strip is robust to comma/semicolon/space
-    separators without truncating URLs that legitimately contain commas."""
-    return [u.rstrip(_TRAILING_PUNCT) for u in _URL_RE.findall(cell or "")]
+
+    Three characters are ambiguous here, and each one, handled naively, turns a
+    live citation into a false link-rot verdict that would get a good ref dropped
+    (all three found in the natalia-europe batch, 2026-07-29):
+
+    - **comma** -- both the cell's list separator and a legal URL character. A
+      plain ``[^\\s,;]+`` findall truncates Google Maps ``@lat,lon`` links and
+      ``lngworldshipping.com/news/view,slug`` paths. So a comma is treated as a
+      separator ONLY when a scheme marker follows it (``_LIST_SEP_RE``).
+    - **the scheme marker itself** -- splitting at every ``http(s)://`` looks
+      like the fix, but a Wayback URL *embeds* the original
+      (``.../web/<ts>/http://host/...``), so that tears every archived citation
+      into a target-less prefix plus an orphan. Only whitespace or a comma may
+      begin a new list item; an embedded scheme never does.
+    - **quotes** -- ``'`` and ``"`` are the degree/minute/second notation in
+      Google Maps place URLs (``35%C2%B049'00.0"N``), not delimiters, so they
+      must not end a URL and are not stripped from its tail either.
+
+    Whitespace is the only unambiguous terminator: a URL cannot contain it.
+    """
+    cell = cell or ""
+    urls = []
+    for token in cell.split():
+        # Handle comma-joined lists with no space after the comma.
+        for chunk in _LIST_SEP_RE.split(token):
+            chunk = chunk.strip().rstrip(_TRAILING_PUNCT)
+            if chunk.startswith(("http://", "https://")):
+                urls.append(chunk)
+    return urls
 
 
 def _match_name(terminal_name):
@@ -81,6 +119,13 @@ def _verdict(reason):
     manually, not rot) vs 'dead' (hard link-rot)."""
     if reason.startswith(("HTTP 401", "HTTP 403", "HTTP 429")):
         return "blocked"
+    # A 5xx is the server/edge failing or refusing — the path is still there.
+    # Never rot: CDN bot-walls answer scripted UAs with 502/503 and browsers 200.
+    if reason.startswith("HTTP 5"):
+        return "blocked"
+    # Image-only PDF: the document is there, we just can't read it in-process.
+    if reason.startswith("PDF has no extractable text"):
+        return "unverifiable"
     if reason.startswith("soft-error"):
         low = reason.lower()
         if any(h in low for h in _BLOCKED_TITLE_HINTS):
@@ -88,20 +133,73 @@ def _verdict(reason):
     return "dead"
 
 
+# Path components that carry no topical signal, so their absence from a page
+# proves nothing. Everything else in a URL's path is treated as a content token.
+_SLUG_STOPWORDS = frozenset("""
+    news view index default article articles story stories post posts page pages
+    html htm shtml php asp aspx ashx jsp pdf doc docx download downloads file files
+    fileid document documents documenti sites site content contents wp uploads upload
+    media assets static public web archive archives print detail details show item
+    items id node en it es de fr nl pt hr el gb us eu www com net org gov int co
+    section sections topic topics category categories tag tags press release releases
+    newsroom media-centre mediacentre communiques actualites notizie noticias nyheter
+    energy energia energie gas lng gnl terminal terminals project projects redaktion
+""".split())
+
+
+def _url_content_tokens(url):
+    """Distinctive words from a URL's own path — a live page almost always
+    contains its own slug words, because the slug is cut from the headline.
+
+    Used to catch the one failure mode an HTTP status can never reveal: a lapsed
+    or repurposed domain that answers 200 with a completely different site. Two
+    of those sat in this tracker undetected (2026-07-29) --
+    ``croenergo.eu/Download.ashx?FileID=…``, whose host now serves a generic
+    "European Environment" blog, and ``lngworldshipping.com``, whose newest
+    capture is a domain-parking page. Both scored ``ok``.
+
+    Only tokens that actually look like WORDS qualify. An opaque identifier --
+    a GUID chunk, a hex blob, a vowel-less code -- is not content the page has
+    any reason to contain, so treating one as a slug word manufactures rot: the
+    live GIIGNL 2026 report at ``files.elfsightcdn.com/<guid>/<guid>/GIIGNL-…``
+    was graded ``content_gone`` on its GUID segments alone (2026-07-29), a
+    false positive across 10 Croatian citations. Returns ``[]`` when a URL
+    carries no word-like path at all, and the caller then abstains -- an
+    inconclusive check must not become a verdict.
+    """
+    path = urlsplit(url).path + " " + urlsplit(url).query
+    toks = []
+    for t in re.split(r"[^0-9A-Za-z]+", path):
+        t = t.lower()
+        # >=4 chars keeps the check meaningful; pure digits are IDs, not content.
+        if len(t) < 4 or t.isdigit() or t in _SLUG_STOPWORDS:
+            continue
+        # Opaque-identifier screens: a hex string carrying a digit is a GUID
+        # chunk/checksum, and a token with no vowel is a code, not a word.
+        if re.fullmatch(r"[0-9a-f]+", t) and any(c.isdigit() for c in t):
+            continue
+        if not any(v in t for v in "aeiouy"):
+            continue
+        toks.append(t)
+    return list(dict.fromkeys(toks))[:8]
+
+
 def _classify_reason(reason):
     """Bucket url_verifier failure reasons for the summary."""
     if reason.startswith(("HTTP 401", "HTTP 403", "HTTP 429")):
         return "http_blocked"
+    if reason.startswith("HTTP 5"):
+        return "http_5xx_blocked"
     if reason.startswith("HTTP 4"):
         return "http_4xx"
-    if reason.startswith("HTTP 5"):
-        return "http_5xx"
     if reason.startswith("HTTP"):
         return "http_other"
     if reason.startswith("soft-error"):
         return "soft_error"
     if reason.startswith("PDF has no extractable text"):
         return "pdf_no_text"
+    if reason.startswith("HTTP 200 but the page contains neither"):
+        return "content_gone_soft_404"
     return "other"
 
 
@@ -181,6 +279,28 @@ def compute_citation_qc(csv_path, country_filter=None, status_filter=None,
                                                strict=False, require_all=False)
                         name_found = ok
 
+                    # Signal 3: does the page still contain the document the URL
+                    # asks for? A 200 only proves *something* answered. When the
+                    # terminal name is absent AND not one of the URL's own slug
+                    # words appears either, the host is serving a different page
+                    # than the one cited — lapsed domain, parking page, or a
+                    # soft-404 that redirects to a section landing page. Graded
+                    # 'content_gone' (real rot) rather than left as 'ok'.
+                    # Gated on name_found is False so a page that names the
+                    # terminal is never second-guessed on its slug.
+                    if live and name_found is False:
+                        slug = _url_content_tokens(url)
+                        if slug:
+                            slug_ok, _ = verify_url(url, slug, strict=False,
+                                                    require_all=False)
+                            if not slug_ok:
+                                verdict = "content_gone"
+                                reason = ("HTTP 200 but the page contains neither the "
+                                          "terminal name nor any of its own URL slug "
+                                          f"words ({', '.join(slug[:4])}) — served page "
+                                          "is not the cited document")
+                                live = False
+
                     results.append({
                         "terminal_id": row[ci_tid],
                         "unit_id": row[ci_uid],
@@ -201,9 +321,12 @@ def compute_citation_qc(csv_path, country_filter=None, status_filter=None,
                     break
 
     # ---- summary ----
-    by_country = defaultdict(lambda: {"checked": 0, "dead": 0, "blocked": 0, "name_miss": 0})
+    by_country = defaultdict(lambda: {"checked": 0, "dead": 0, "blocked": 0,
+                                      "unverifiable": 0, "content_gone": 0,
+                                      "name_miss": 0})
     by_reason = Counter()
-    by_ref_column = defaultdict(lambda: {"checked": 0, "dead": 0, "blocked": 0})
+    by_ref_column = defaultdict(lambda: {"checked": 0, "dead": 0, "blocked": 0,
+                                         "unverifiable": 0, "content_gone": 0})
     for r in results:
         c = by_country[r["country"]]
         c["checked"] += 1
@@ -216,16 +339,24 @@ def compute_citation_qc(csv_path, country_filter=None, status_filter=None,
         elif r["name_found"] is False:
             c["name_miss"] += 1
     for c in by_country.values():
-        # dead_pct counts hard rot only — blocked URLs are probably fine for a human
-        c["dead_pct"] = round(100.0 * c["dead"] / c["checked"], 1) if c["checked"] else 0.0
+        # dead_pct counts hard rot — 'dead' plus 'content_gone', which is rot the
+        # HTTP status hides (200 from a lapsed/repurposed host). Blocked URLs stay
+        # out: those are probably fine for a human.
+        rot = c["dead"] + c["content_gone"]
+        c["rot"] = rot
+        c["dead_pct"] = round(100.0 * rot / c["checked"], 1) if c["checked"] else 0.0
 
     total_dead = sum(c["dead"] for c in by_country.values())
     total_blocked = sum(c["blocked"] for c in by_country.values())
+    total_unverifiable = sum(c["unverifiable"] for c in by_country.values())
+    total_content_gone = sum(c["content_gone"] for c in by_country.values())
     summary = {
         "total_url_citations_checked": len(results),
         "unique_urls_fetched": len(seen_urls),
         "total_dead": total_dead,
         "total_blocked": total_blocked,
+        "total_unverifiable": total_unverifiable,
+        "total_content_gone": total_content_gone,
         "total_name_miss": sum(c["name_miss"] for c in by_country.values()),
         "truncated": truncated,
         "by_country": dict(by_country),
@@ -235,15 +366,17 @@ def compute_citation_qc(csv_path, country_filter=None, status_filter=None,
 
     log(f"\n  Citations checked: {len(results)} ({len(seen_urls)} unique URLs)"
         + ("  [TRUNCATED at --max-urls — coverage is partial]" if truncated else ""))
-    log(f"  Dead (hard link-rot): {total_dead}   Blocked (bot-wall/paywall — verify "
-        f"manually): {total_blocked}   Live-but-name-absent (advisory): "
+    log(f"  Dead (hard link-rot): {total_dead}   Content-gone (200 from a lapsed/"
+        f"repurposed host): {total_content_gone}   Blocked (bot-wall/paywall/5xx — verify "
+        f"manually): {total_blocked}   Unverifiable (image-only PDF): "
+        f"{total_unverifiable}   Live-but-name-absent (advisory): "
         f"{summary['total_name_miss']}")
     worst = sorted(by_country.items(), key=lambda kv: -kv[1]["dead_pct"])[:10]
     if worst:
-        log("  Worst countries by dead %:")
+        log("  Worst countries by rot % (dead + content-gone):")
         for country, c in worst:
             flag = "  ← >25%: recommend EXHAUSTIVE update (QC SOP §6)" if c["dead_pct"] > 25 else ""
-            log(f"    {country:30} {c['dead']:3}/{c['checked']:<4} ({c['dead_pct']}%){flag}")
+            log(f"    {country:30} {c['rot']:3}/{c['checked']:<4} ({c['dead_pct']}%){flag}")
 
     return results, summary
 

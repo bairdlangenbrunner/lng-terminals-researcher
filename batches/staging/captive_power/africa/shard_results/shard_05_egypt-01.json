@@ -1,0 +1,144 @@
+[
+  {
+    "terminal": "Ain Sokhna FSRU",
+    "terminal_id": "T100000130685",
+    "country": "Egypt",
+    "verdict": "YES",
+    "mechanical": "False",
+    "captive_category": "power_generation",
+    "hardware_summary": "Energos Power (currently operating FSRU at Ain Sokhna) runs MAN TFDE (tri-fuel diesel-electric) propulsion/generation machinery capable of burning gas, per the operator's own fleet page.",
+    "fuel_basis": "Energos Infrastructure's own fleet page names the propulsion/generation plant 'MAN TFDE propulsion' (Tri-Fuel Diesel Electric) - tri-fuel by definition includes natural gas/boil-off gas alongside HFO/MDO; page also notes 'advanced boil-off gas management' aboard the vessel.",
+    "confidence": "green",
+    "captive_summary": "Ain Sokhna FSRU's only currently-operating unit, Energos Power, is a moored FSRU whose onboard diesel-electric generating plant is tri-fuel (MAN TFDE) - gas-capable machinery providing the vessel's own power, per the FSRU-onboard convention this is captive gas power for the terminal. The two retired units (BW Singapore, Höegh Gallant) are no longer in service here.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Energos Infrastructure's own vessel fact page for Energos Power (https://energosinfra.com/our_fleet/energos-power/) states verbatim: '...With advanced boil-off gas management and MAN TFDE propulsion, Energos Power supports reliable LNG imports...' and confirms current deployment 'at Ain Sukhna, Egypt.' This is the operator's own fleet disclosure for its own vessel (brief's fleet-level-evidence convention).",
+    "refs": [
+      "https://energosinfra.com/our_fleet/energos-power/"
+    ],
+    "verification_log": [
+      {"url": "https://energosinfra.com/our_fleet/energos-power/", "tokens": ["MAN TFDE propulsion"], "result": "PASS", "note": "operator's own fleet page, direct fetch OK"}
+    ],
+    "gogpt_prior_assessment": "Ain Sokhna IWPP power station (457 MW, gogpt_captive=False, 2.4 km away) is a separate independent water and power project (IWPP) - a merchant/national-grid gas-fired plant built under a World Bank-supported IWPP structure, not sited at or owned by the FSRU terminal. Not this terminal's captive power. Independent info: World Bank project document, https://documents1.worldbank.org/curated/en/892801563296856758/pdf/Egypt-Ain-Sokhna-Power-Project.pdf (verified, token 'Ain Sokhna' PASS).",
+    "gogpt_candidate": "REVIEWER CALL",
+    "gogpt_candidate_basis": "Energos Power's onboard TFDE generation is real captive gas power but is vessel-mounted (moored FSRU machinery), not a fixed shore power station with a citable nameplate MW - unclear whether GOGPT's ontology captures vessel-mounted generation as a distinct power-station record (per brief §5 FSRU guidance).",
+    "status_or_other_findings": "None beyond what's in notes.",
+    "notes": "GEM's unit roster (BW Singapore retired, Energos Power operating, Höegh Gallant retired) matches Energos's own page, which confirms Energos Power is currently at Ain Sokhna specifically (no location discrepancy here, unlike Sumed FSRU - see that terminal's notes)."
+  },
+  {
+    "terminal": "Damietta FSRU",
+    "terminal_id": "T100001083032",
+    "country": "Egypt",
+    "verdict": "YES",
+    "mechanical": "False",
+    "captive_category": "power_generation",
+    "hardware_summary": "Energos Winter (sole operating unit) runs steam turbine propulsion machinery; steam-turbine LNG carriers of this vintage use dual-fuel boilers that burn boil-off gas to raise steam for both propulsion and shipboard turbo-generators.",
+    "fuel_basis": "Energos Infrastructure's own fleet page names Energos Winter's plant 'steam turbine propulsion' - the vessel was built by DSME as (per the operator) 'the second ever FSRU', an early Moss/steam-type LNG carrier conversion. Steam LNG carriers of this design class are dual-fuel-boiler vessels by construction (boiler burns boil-off gas plus bunker fuel; see Wikipedia's general LNG-carrier engineering description), so the plant is gas-capable; a vessel-specific boiler-fuel statement was not found despite search.",
+    "confidence": "yellow",
+    "captive_summary": "Damietta FSRU's sole unit, Energos Winter, is a moored former LNG-carrier FSRU on steam-turbine machinery. Steam LNG carriers of this class run dual-fuel boilers burning boil-off gas (as well as fuel oil) to generate the steam that (via turbo-generators, standard on this ship type) supplies the vessel's own electrical/hotel load and regas-plant power while moored - this is captive gas power under the FSRU-onboard convention. Confidence is yellow because the gas-burning capability is established by vessel-class engineering convention plus the operator's own 'steam turbine propulsion' label, not by a vessel-specific statement of boiler fuel.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Energos's own fleet page (https://energosinfra.com/our_fleet/energos-winter/): 'Powered by steam turbine propulsion, Energos Winter enhances reliability and flexibility within Egypt's energy network' and 'the second ever FSRU', built by DSME. Wikipedia's general LNG-carrier article (https://en.wikipedia.org/wiki/LNG_carrier): 'Normally, an LNG tanker is powered by steam turbines with dual fuel boilers that can run on methane... or bunker oil' and boil-off gas is 'traditionally diverted to the boilers and used as a fuel for the vessel' - general technical corroboration for the propulsion class, not vessel-specific.",
+    "refs": [
+      "https://energosinfra.com/our_fleet/energos-winter/",
+      "https://en.wikipedia.org/wiki/LNG_carrier"
+    ],
+    "verification_log": [
+      {"url": "https://energosinfra.com/our_fleet/energos-winter/", "tokens": ["steam turbine propulsion"], "result": "PASS", "note": "operator's own fleet page"},
+      {"url": "https://en.wikipedia.org/wiki/LNG_carrier", "tokens": ["dual fuel boilers"], "result": "PASS", "note": "general technical background, not vessel-specific - supporting only"}
+    ],
+    "gogpt_prior_assessment": "New Damietta power plant (500 MW, gogpt_captive=True per GOGPT, 10.8 km away) is a separate national-grid gas-fired power station near Damietta port, unconnected to the FSRU terminal and 10+ km distant. Not this terminal's captive power. Independent info: power-technology.com plant profile, https://www.power-technology.com/data-insights/power-plant-profile-damietta-gas-turbine-power-plant-egypt/ (verified via Wayback fallback, bot-blocked live).",
+    "gogpt_candidate": "REVIEWER CALL",
+    "gogpt_candidate_basis": "Vessel-mounted generation (moored FSRU steam/turbo-generator plant), no citable nameplate MW found; unclear whether GOGPT's ontology captures this as a distinct power-station record.",
+    "status_or_other_findings": "None beyond notes.",
+    "notes": "No PowerPlantsSupplied direction-test issue here - this is a straightforward single-vessel import FSRU with no evidence of feeding an external power plant."
+  },
+  {
+    "terminal": "Damietta SEGAS LNG Terminal",
+    "terminal_id": "T100000130249",
+    "country": "Egypt",
+    "verdict": "YES",
+    "mechanical": "True",
+    "captive_category": "mechanical_drive",
+    "hardware_summary": "2x GE Frame 7 (7EA) gas turbines shaft-drive the propane pre-cooled mixed-refrigerant (Split MRTM) compressors - one drives the propane and HP MR compressors, the second drives the LP/MP MR compressors - plus starter/helper motors; no electricity generated by these units.",
+    "fuel_basis": "GE Frame 7 / Frame 7EA are gas turbines (combustion turbines fired on natural gas) - named explicitly as such by the plant's own technical paper, co-authored by SEGAS's Managing Director of Operations, Union Fenosa Gas's infrastructure director, and KBR/M.W. Kellogg (the FEED/EPC technology providers).",
+    "confidence": "green",
+    "captive_summary": "SEGAS's single LNG train (T1, operating) is driven by two GE Frame 7 gas turbines in the Split MRTM refrigerant-compressor configuration - classic mechanical-drive captive gas power, described in detail in the plant's own conference paper. This is a project-level finding and applies to the operating T1; T2 (shelved) was designed to the same configuration but never built. The paper separately references a distinct on-site 'power generation station'/'power generation units' as part of the plant's self-contained utilities, but does not state that unit's fuel - not needed for the verdict since the compressor-drive turbines alone already establish captive gas power via mechanical drive.",
+    "electric_mw": "",
+    "mechanical_drive_note": "2x GE Frame 7 (7EA) gas turbine drivers for the Split MRTM refrigerant compressors (one drives propane + HP MR compressors, the second drives LP/MP MR compressors), plus gas-turbine starter/helper motors; no MW/shaft-power rating stated in the source.",
+    "confirmed_how": "GPA Europe conference paper 'Egypt's Premier LNG Project Establishes New Industry Benchmarks' (Fernández/SEGAS, Villanueva/Union Fenosa Gas, Mayer/M.W. Kellogg, Hill & Durr/KBR), https://www.gpaeurope.com/sites/default/files/download-file/documents/conference-papers/paper-6-MWK-LNG14-Segas.pdf: 'Split MRTM cycle with two Frame 7 gas turbine drivers, helper motors, and liquid expansion turbines' and '...using 2 GE Frame 7EA gas turbines as the primary drivers... One turbine drives the propane and high pressure MR compressors and the second drives the low and medium pressure MR compressors.' The same paper separately notes 'It is a totally self supporting facility with its own jetty, utilities, and power generation facilities' and 'The LNG facility is fully self contained with its own power generation units, emergency generation backup...' (existence of a separate electric power-generation utility, fuel unstated).",
+    "refs": [
+      "https://www.gpaeurope.com/sites/default/files/download-file/documents/conference-papers/paper-6-MWK-LNG14-Segas.pdf"
+    ],
+    "verification_log": [
+      {"url": "https://www.gpaeurope.com/sites/default/files/download-file/documents/conference-papers/paper-6-MWK-LNG14-Segas.pdf", "tokens": ["Frame 7 gas turbines"], "result": "PASS", "note": "PDF verified via pdftotext"},
+      {"url": "https://www.gpaeurope.com/sites/default/files/download-file/documents/conference-papers/paper-6-MWK-LNG14-Segas.pdf", "tokens": ["power generation units"], "result": "PASS", "note": "confirms separate power-gen utility exists; fuel not stated, not relied on for verdict"},
+      {"url": "https://www.eib.org/en/projects/all/20010169", "tokens": ["power"], "result": "N/A - not used", "note": "page is a nav-menu shell with no project detail text reachable by WebFetch/curl; abandoned"},
+      {"url": "https://www.oilandgasonline.com/doc/agreement-covers-12-gas-turbines-20-compresso-0001", "tokens": [], "result": "N/A - this source is about Idku, not SEGAS; listed here only to note it was checked and correctly excluded"}
+    ],
+    "gogpt_prior_assessment": "New Damietta power plant (500 MW, gogpt_captive=True per GOGPT, 10.0 km away) is the same separate national-grid plant matched to the neighboring Damietta FSRU (see that terminal) - a distinct merchant plant, not SEGAS's own generation. Not this terminal's captive power. Independent info: https://www.power-technology.com/data-insights/power-plant-profile-damietta-gas-turbine-power-plant-egypt/ (verified).",
+    "gogpt_candidate": "REVIEWER CALL",
+    "gogpt_candidate_basis": "The confirmed captive hardware (2x Frame 7 gas turbines) is pure mechanical drive - no electricity generated, so not GOGPT-relevant on its own (GOGPT tracks generating capacity). The plant's separate on-site 'power generation station/units' (per the same paper) IS an electric generation candidate, but neither its fuel nor its MW rating is disclosed in any source found - a follow-up search (SEGAS environmental permit / EPC contractor releases for the utilities package) could resolve this.",
+    "status_or_other_findings": "T2 (second train) is shelved per GEM/current status - the paper (written pre-startup, ~2003-2004) describes site-plan provision for 'a second LNG train... additional power generation capacity' but T2 was never built; consistent with GEM's shelved status. Not acting on this - flagging only.",
+    "notes": "No PowerPlantsSupplied direction-test concern - this is an export/liquefaction terminal, not a regas-to-power arrangement."
+  },
+  {
+    "terminal": "Egyptian LNG Terminal",
+    "terminal_id": "T100000130250",
+    "country": "Egypt",
+    "verdict": "YES",
+    "mechanical": "True",
+    "captive_category": "mechanical_drive",
+    "hardware_summary": "12x GE Frame 5-2D (MS5002D) gas turbines drive 20 refrigeration compressors (Phillips Optimized Cascade process) across the plant's two liquefaction trains; no electricity generated by these units.",
+    "fuel_basis": "GE Frame 5-2D / MS5002D are gas turbines (combustion turbines), named explicitly in both an industry trade-press maintenance-contract article and a GE-technology-upgrade article about the same 12-unit fleet at this plant.",
+    "confidence": "green",
+    "captive_summary": "Egyptian LNG (Idku)'s two operating trains (T1, T2) are each driven by GE Frame 5-2D gas turbines - 12 units total across the plant, driving 20 barrel-type centrifugal refrigeration compressors in the Phillips LNG process - classic mechanical-drive captive gas power, corroborated by two independent trade-press sources plus a GE technology-upgrade article confirming the same turbine fleet. A separate shared 'power generation unit' utility (electric, serving both trains) is also documented but its fuel is not stated - not needed for the verdict since the compressor-drive turbines already establish captive gas power.",
+    "electric_mw": "",
+    "mechanical_drive_note": "12x GE Frame 5-2D (MS5002D) gas turbines driving 20 horizontally-split barrel-type centrifugal refrigeration compressors (Phillips Optimized Cascade LNG process) across both trains; no MW/shaft-power rating stated in sources found.",
+    "confirmed_how": "Trade-press article on the plant's turbine/compressor maintenance agreement (https://www.oilandgasonline.com/doc/agreement-covers-12-gas-turbines-20-compresso-0001): '12 gas turbines are all GE Frame 5-2D machines' and '20 compressors [are] state-of-the-art, horizontally split and barrel-type centrifugal units used in the Phillips LNG refrigeration process.' Corroborated by a GE-technology article on the same fleet (https://egyptoil-gas.com/news/egyptian-lng-upgrade-project-to-mark-debut-of-ges-power-crystal-technology/): GE upgrading '12 GE MS5002D gas turbines plus four spare modules' at Idku. NS Energy Business's project profile (https://www.nsenergybusiness.com/projects/egyptian-lng-project-idku/) separately confirms 'Both the trains share common support utilities including a power generation unit, a fire water plant, and a control room' - existence of a separate electric power-gen utility, fuel unstated.",
+    "refs": [
+      "https://www.oilandgasonline.com/doc/agreement-covers-12-gas-turbines-20-compresso-0001",
+      "https://egyptoil-gas.com/news/egyptian-lng-upgrade-project-to-mark-debut-of-ges-power-crystal-technology/",
+      "https://www.nsenergybusiness.com/projects/egyptian-lng-project-idku/"
+    ],
+    "verification_log": [
+      {"url": "https://www.oilandgasonline.com/doc/agreement-covers-12-gas-turbines-20-compresso-0001", "tokens": ["GE Frame 5-2D"], "result": "PASS", "note": "direct fetch OK"},
+      {"url": "https://egyptoil-gas.com/news/egyptian-lng-upgrade-project-to-mark-debut-of-ges-power-crystal-technology/", "tokens": ["MS5002D"], "result": "PASS", "note": "direct fetch OK"},
+      {"url": "https://www.nsenergybusiness.com/projects/egyptian-lng-project-idku/", "tokens": ["power generation unit"], "result": "FAIL then PASS", "note": "first attempt 403 with no Wayback found; retry succeeded via Wayback snapshot 20260119061914 (bot-blocked live, not dead)"}
+    ],
+    "gogpt_prior_assessment": "Mediterranean Sea Floating power station (125 MW, gogpt_captive=True per GOGPT, 12.3 km away) is a separate offshore floating power unit well outside the LNG plant's fenceline, not owned by/sited at Egyptian LNG. Not this terminal's captive power. Could not find a non-GEM-derived independent info_url for this specific plant despite multiple searches (only GEM-wiki-derived aggregator pages surfaced) - flagging the gap rather than citing a banned/derivative source.",
+    "gogpt_candidate": "REVIEWER CALL",
+    "gogpt_candidate_basis": "The confirmed captive hardware (12x Frame 5-2D gas turbines) is pure mechanical drive - not GOGPT-relevant on its own. The plant's separate shared 'power generation unit' (per NS Energy Business) is an electric-generation candidate but neither fuel nor MW rating is disclosed in sources found.",
+    "status_or_other_findings": "None beyond notes.",
+    "notes": "No PowerPlantsSupplied direction-test concern - export/liquefaction terminal, not a regas-to-power arrangement. A separate, newer 'Idku Energy Hub' project (Bechtel-led FEED, per a 2026 ZAWYA article surfaced in search) appears to be a distinct green-hydrogen/ammonia-adjacent development near Idku, not part of the existing Egyptian LNG terminal - not researched further as it is out of scope for this captive-power question."
+  },
+  {
+    "terminal": "Sumed FSRU",
+    "terminal_id": "T100000130686",
+    "country": "Egypt",
+    "verdict": "YES",
+    "mechanical": "False",
+    "captive_category": "power_generation",
+    "hardware_summary": "Energos Eskimo (currently GEM-listed as operating at Sumed FSRU) runs Wärtsilä DFDE (dual-fuel diesel-electric) propulsion/generation machinery, confirmed gas-capable by the operator's own fleet page.",
+    "fuel_basis": "Energos Infrastructure's own fleet page names Energos Eskimo's plant 'Wärtsilä DFDE propulsion' - dual-fuel diesel-electric, explicitly gas-capable by definition, with 'advanced boil-off gas management' aboard.",
+    "confidence": "green",
+    "captive_summary": "Sumed FSRU's GEM-listed operating units include Energos Eskimo, whose onboard Wärtsilä dual-fuel diesel-electric generating plant is gas-capable - captive gas power for the terminal under the FSRU-onboard convention. A second GEM-listed 'operating' unit, Höegh Galleon, appears to have already redeployed away from Egypt (see status findings) but a sister/replacement vessel, Höegh Gandria (GEM: proposed), is under conversion with Wärtsilä-supplied dual-fuel-capable regasification/power equipment for delivery in 2026 - reinforcing rather than displacing the YES verdict.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Energos's own fleet page for Energos Eskimo (https://energosinfra.com/our_fleet/energos-eskimo/): '...With advanced boil-off gas management and Wärtsilä DFDE propulsion, Energos Eskimo plays a vital role in strengthening supply flexibility and security of energy for the region.' Corroborating context on the Höegh side: the Port Kembla (Australia) FSRU environmental-impact-statement air-quality appendix, prepared for the same vessel class chartered by AIE/Höegh (https://squadronenergy.com/wp-content/uploads/pdf/Port-Kembla-Energy-Terminal/PDF/Environmental-Impact-Statement/Appendix-M-Air-quality.pdf), states the FSRU 'is to be powered using four WARTSILA 8L50DF engines' and that 'AIE's intention [is] to primarily operate both the FSRU and LNG carrier using boil off gas (LNG) as a[n energy source]' with two engines running continuously during regas operations - direct regulatory-filing confirmation that this Höegh-chartered FSRU class runs dual-fuel Wärtsilä gensets on gas in normal service.",
+    "refs": [
+      "https://energosinfra.com/our_fleet/energos-eskimo/",
+      "https://squadronenergy.com/wp-content/uploads/pdf/Port-Kembla-Energy-Terminal/PDF/Environmental-Impact-Statement/Appendix-M-Air-quality.pdf"
+    ],
+    "verification_log": [
+      {"url": "https://energosinfra.com/our_fleet/energos-eskimo/", "tokens": ["Wärtsilä DFDE propulsion"], "result": "PASS", "note": "operator's own fleet page"},
+      {"url": "https://squadronenergy.com/wp-content/uploads/pdf/Port-Kembla-Energy-Terminal/PDF/Environmental-Impact-Statement/Appendix-M-Air-quality.pdf", "tokens": ["WARTSILA 8L50DF"], "result": "PASS", "note": "PDF verified via pdftotext; regulatory EIS filing for the same Höegh FSRU class/charter"},
+      {"url": "https://www.offshore-energy.biz/hoegh-evi-selects-seatrium-for-egypt-bound-fsru-conversion/", "tokens": ["Port of Sumed"], "result": "PASS", "note": "used only for the Gandria/Galleon status finding below, not load-bearing for the YES verdict"}
+    ],
+    "gogpt_prior_assessment": "Ain Sokhna IWPP power station (457 MW, gogpt_captive=False, 2.4 km away) - same separate merchant IWPP matched to the neighboring Ain Sokhna FSRU (see that terminal); not Sumed's own generation. Not this terminal's captive power. Independent info: World Bank project document, https://documents1.worldbank.org/curated/en/892801563296856758/pdf/Egypt-Ain-Sokhna-Power-Project.pdf (verified).",
+    "gogpt_candidate": "REVIEWER CALL",
+    "gogpt_candidate_basis": "Vessel-mounted generation (moored FSRU DFDE plant), no citable nameplate MW found; unclear whether GOGPT's ontology captures this as a distinct power-station record.",
+    "status_or_other_findings": "Location/roster discrepancies worth flagging, not acted on: (1) Energos's own fleet page states Energos Eskimo is 'Currently operating at Ain Sukhna, Egypt' - not Sumed as GEM's unit table assigns it; could not resolve which is current. (2) Höegh Galleon: GEM lists it 'operating' at Sumed FSRU, but Höegh Evi's own fleet page (fetched during this research) now shows Höegh Galleon at 'Port Kembla, Australia' - consistent with a 13-May-2025 offshore-energy.biz article confirming Höegh Gandria is being converted specifically to REPLACE Höegh Galleon at Egypt's 'Port of Sumed' under a 10-year charter starting Q4 2026, implying Galleon has already left Egypt for its original AIE Port Kembla charter. (3) Höegh Gandria (GEM: proposed) is mid-conversion at Seatrium with Wärtsilä regasification-module delivery expected Q2 2026 and charter start Q4 2026 - 'proposed' may already be understating its progress (conversion underway) but that is a status-tier judgment call for a different batch, not acted on here. (4) Ertugrul Gazi (GEM: shelved) was not researched further as shelved/out of scope for this pass.",
+    "notes": "No PowerPlantsSupplied direction-test concern."
+  }
+]

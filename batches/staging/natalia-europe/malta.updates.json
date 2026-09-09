@@ -1,0 +1,71 @@
+[
+  {
+    "terminal_id": "T100000130490",
+    "unit_id": "G100002049000",
+    "terminal_name": "Delimara FSRU",
+    "unit_name": "--",
+    "country": "Malta",
+    "field_name": "Owner [ref]",
+    "old_value": "(see live cell)",
+    "new_value": "MERGE: drop dead giignl.org 2025 annual-report URL; add its official mirror at elfsightcdn.com/website-files.com for the SAME 2025 edition; keep all other existing surviving URLs unchanged.",
+    "confidence": "blue",
+    "source_tier": "annual_report",
+    "ref_field": null,
+    "ref_urls": [
+      "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2025-Annual-Report.pdf"
+    ],
+    "source_notes": "QC (citqc_Malta.json) flagged the legacy giignl.org/annual-report URL cited in owner_ref as dead -- confirmed dead on re-check (301/404, no giignl.org host resolves any longer per the tracker-wide giignl.org rot). Repair per the standard mechanical fix: re-cite the SAME 2025 edition at its official mirror (verified PASS on 'Delimara' via url_verifier.py). This is a ref repair only -- the Owner value itself is unchanged and was not in question.",
+    "scope_note": null,
+    "dropped_urls_dead": [
+      "https://giignl.org/wp-content/uploads/2025/06/GIIGNL-Annual-Report-2025.pdf"
+    ],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130490",
+    "unit_id": "G100002049000",
+    "terminal_name": "Delimara FSRU",
+    "unit_name": "--",
+    "country": "Malta",
+    "field_name": "Status [ref]",
+    "old_value": "(see live cell)",
+    "new_value": "MERGE: drop the dead lngworldnews.com URL; keep the remaining surviving verified URLs (GIIGNL-2026 mirror, timesofmalta.com, electrogas.com.mt).",
+    "confidence": "blue",
+    "source_tier": "trade_press + annual_report + operator",
+    "ref_field": null,
+    "ref_urls": [
+      "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf",
+      "https://timesofmalta.com/article/lng-tanker-removed-delimara-first-legislature-pn-elected.1128008",
+      "https://www.electrogas.com.mt/about-delimara-power-plant/"
+    ],
+    "source_notes": "QC flagged http://www.lngworldnews.com/malta-in-lng-first/ (defunct outlet, shared across status_ref and start_date_ref) as dead -- confirmed dead (HTTP 404), no Wayback snapshot found. Repair: drop it, rely on remaining verified citations. timesofmalta.com's own automated re-check returned HTTP 403 (bot-block) with a transient Wayback-check failure, so I manually queried the Wayback CDX API directly, confirmed a real snapshot exists (20260507044328), and fetched it -- genuine article content ('LNG tanker to be removed from Delimara within first legislature if PN elected'), confirming bot-blocked-but-live, not dead. electrogas.com.mt (also HTTP 403 in QC's pass) verified live via url_verifier.py's automated Wayback bot-block fallback. Status value itself unchanged.",
+    "scope_note": null,
+    "dropped_urls_dead": [
+      "http://www.lngworldnews.com/malta-in-lng-first/"
+    ],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130490",
+    "unit_id": "G100002049000",
+    "terminal_name": "Delimara FSRU",
+    "unit_name": "--",
+    "country": "Malta",
+    "field_name": "ActualStartYear [ref]",
+    "old_value": "(see live cell)",
+    "new_value": "MERGE: drop the same dead lngworldnews.com URL wherever it also appears as start_date_ref; keep the remaining surviving verified URLs (timesofmalta.com, electrogas.com.mt).",
+    "confidence": "blue",
+    "source_tier": "trade_press + operator",
+    "ref_field": null,
+    "ref_urls": [
+      "https://timesofmalta.com/article/lng-tanker-removed-delimara-first-legislature-pn-elected.1128008",
+      "https://www.electrogas.com.mt/about-delimara-power-plant/"
+    ],
+    "source_notes": "Same http://www.lngworldnews.com/malta-in-lng-first/ dead URL as flagged above for status_ref, shared into start_date_ref -- QC listed it as one shared dead cell across both fields. Same repair: drop, keep the surviving timesofmalta.com and electrogas.com.mt citations (both re-verified live via Wayback bot-block fallback, per notes above). Value (ActualStartYear=2017) unchanged.",
+    "scope_note": null,
+    "dropped_urls_dead": [
+      "http://www.lngworldnews.com/malta-in-lng-first/"
+    ],
+    "researcher_initials": "AI-draft (sweep)"
+  }
+]

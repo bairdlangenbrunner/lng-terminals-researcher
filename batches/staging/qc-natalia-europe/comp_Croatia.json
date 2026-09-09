@@ -1,0 +1,149 @@
+{
+  "summary": {
+    "by_type": {
+      "blank_ref": 4
+    },
+    "by_severity": {
+      "medium": 1,
+      "low": 3
+    },
+    "fill_targets": {
+      "Status [ref]": 1,
+      "ShelvedYear [ref]": 1,
+      "CancelledYear [ref]": 1,
+      "StopYear [ref]": 1
+    },
+    "by_country": {
+      "Croatia": 4
+    }
+  },
+  "gaps": [
+    {
+      "terminal_id": "T100000130428",
+      "unit_id": "G100002042800",
+      "terminal_name": "Adria LNG Terminal",
+      "unit_name": "--",
+      "country": "Croatia",
+      "status": "cancelled",
+      "gap_type": "blank_ref",
+      "column": "Status [ref]",
+      "severity": "medium",
+      "detail": "Status populated but Status [ref] blank \u2014 [ref]-fill target"
+    },
+    {
+      "terminal_id": "T100000130428",
+      "unit_id": "G100002042800",
+      "terminal_name": "Adria LNG Terminal",
+      "unit_name": "--",
+      "country": "Croatia",
+      "status": "cancelled",
+      "gap_type": "blank_ref",
+      "column": "ShelvedYear [ref]",
+      "severity": "low",
+      "detail": "ShelvedYear populated but ShelvedYear [ref] blank \u2014 [ref]-fill target"
+    },
+    {
+      "terminal_id": "T100000130428",
+      "unit_id": "G100002042800",
+      "terminal_name": "Adria LNG Terminal",
+      "unit_name": "--",
+      "country": "Croatia",
+      "status": "cancelled",
+      "gap_type": "blank_ref",
+      "column": "CancelledYear [ref]",
+      "severity": "low",
+      "detail": "CancelledYear populated but CancelledYear [ref] blank \u2014 [ref]-fill target"
+    },
+    {
+      "terminal_id": "T100000130428",
+      "unit_id": "G100002042800",
+      "terminal_name": "Adria LNG Terminal",
+      "unit_name": "--",
+      "country": "Croatia",
+      "status": "cancelled",
+      "gap_type": "blank_ref",
+      "column": "StopYear [ref]",
+      "severity": "low",
+      "detail": "StopYear populated but StopYear [ref] blank \u2014 [ref]-fill target"
+    }
+  ],
+  "coverage_gap": {
+    "covered_count": 114,
+    "reference_count": 165,
+    "uncovered_coastal": [
+      "barbados",
+      "belize",
+      "bermuda",
+      "bosnia and herzegovina",
+      "bulgaria",
+      "cape verde",
+      "comoros",
+      "costa rica",
+      "cuba",
+      "curacao",
+      "democratic republic of the congo",
+      "denmark",
+      "dominica",
+      "eritrea",
+      "falkland islands",
+      "federated states of micronesia",
+      "fiji",
+      "french polynesia",
+      "gambia",
+      "greenland",
+      "grenada",
+      "guam",
+      "guatemala",
+      "guinea-bissau",
+      "iceland",
+      "kiribati",
+      "liberia",
+      "madagascar",
+      "maldives",
+      "marshall islands",
+      "monaco",
+      "nauru",
+      "new caledonia",
+      "north korea",
+      "palau",
+      "saint kitts and nevis",
+      "saint lucia",
+      "saint vincent and the grenadines",
+      "samoa",
+      "sao tome and principe",
+      "saudi arabia",
+      "seychelles",
+      "slovenia",
+      "solomon islands",
+      "somalia",
+      "syria",
+      "togo",
+      "tonga",
+      "tunisia",
+      "tuvalu",
+      "vanuatu"
+    ],
+    "gem_countries_outside_reference": [],
+    "_note": "uncovered_coastal = reference coastal countries with ZERO GEM LNG terminals \u2192 discovery worklist (Discovery SOP \u00a74.0: iterate covered \u222a uncovered). gem_countries_outside_reference = GEM-covered countries absent from country_universe.py \u2192 add them there (or fix a name) so they don't read as a false gap."
+  },
+  "dormant_revival_watch": {
+    "dormant_count": 1,
+    "by_priority": {
+      "high": 1
+    },
+    "watch": [
+      {
+        "terminal_id": "T100000130428",
+        "terminal_name": "Adria LNG Terminal",
+        "country": "Croatia",
+        "location": "Primorje-Gorski Kotar \u2014 Omi\u0161alj, Krk Island",
+        "prior_owner": "E.ON SE; Geoplin; OMV AG; RWE AG; TotalEnergies SE",
+        "death_status": "cancelled",
+        "death_year": 2017,
+        "years_dead": 9,
+        "revival_priority": "high"
+      }
+    ],
+    "_note": "Wholly cancelled/shelved in-scope terminals = dead SITES to revival-check during Discovery (Discovery SOP \u00a74.0a / \u00a76). A genuinely different new project at one of these sites is a NEW terminal per the dead-and-revived rule (lifecycle_rules.md), not an edit to the dead record. 'high' priority = dead 5+ years (Discovery SOP \u00a712). This is the blind spot that let POIC Lahad Datu slip past a sweep."
+  }
+}

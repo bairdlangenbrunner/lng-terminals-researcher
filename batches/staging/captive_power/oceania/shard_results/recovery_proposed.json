@@ -1,0 +1,218 @@
+[
+  {
+    "terminal": "Pasca FLNG Terminal",
+    "terminal_id": "T100000131159",
+    "country": "Papua New Guinea",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "",
+    "captive_summary": "Pasca A (Twinza Oil 95% WI / Hevehe Petroleum SPV per the December 2024 Pasca Gas Agreement) is still pre-FID: pre-FEED complete, FEED underway since January 2025, FID targeted mid-2026. Phase I is an unmanned wellhead platform braced to a self-installing platform with 'processing and utilities topsides'; Phase II is a floating liquefaction storage and offloading (FLSO) vessel. No public source describes either phase's power/utilities system in enough detail to determine on-site electricity generation vs. mechanical drive vs. fuel type.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Twinza Oil's own development page names 'processing and utilities topsides' for Phase I and an 'FLSO vessel' for Phase II with no power-system specifics. The 2017 Baker Hughes/BHGE 'fullstream' contract (drilling services, subsea equipment, gas processing topsides, gas compression and turbomachinery) establishes gas compression/turbomachinery scope but not generation-vs-mechanical-drive or fuel type. Recovery pass: attempted to retrieve Baker Hughes' own press release full text via direct fetch and via the r.jina.ai reader proxy — both returned only the site chrome/navigation; the press-release body itself is loaded client-side by a JS widget not present in either static or reader-rendered HTML, so the primary-source wording could not be recovered. The marketscreener.com mirror of the same release 403'd (Akamai edge block) on direct fetch. No additional independent technical source (EIS/PNG regulatory filing, conference paper) was found in this pass. GEM's current CaptiveGasPower=True still rests on an uncitable YouTube video that could not be transcript-verified.",
+    "refs": [],
+    "verification_log": [
+      {
+        "url": "https://www.offshore-energy.biz/baker-hughes-scores-its-first-fullstream-deal-with-gulf-of-papua-project/",
+        "tokens": ["turbomachinery"],
+        "result": "PASS",
+        "note": "confirms 'gas compression and turbomachinery' scope for Phase I topsides; too ambiguous (no fuel/MW/generation-vs-drive distinction) to support a YES on its own — not cited as a captive-power ref (carried forward from primary pass)"
+      },
+      {
+        "url": "https://www.bakerhughes.com/company/news/baker-hughes-ge-company-signs-agreement-twinza",
+        "tokens": ["turbomachinery", "Twinza", "power generation"],
+        "result": "FAIL",
+        "note": "recovery pass: page body is JS-rendered and empty in both direct curl fetch and r.jina.ai reader proxy — only nav/footer/cookie-banner chrome returned, no press-release text recoverable"
+      },
+      {
+        "url": "https://www.marketscreener.com/quote/stock/BAKER-HUGHES-COMPANY-40311111/news/Baker-Hughes-a-GE-Company-Signs-Agreement-with-Twinza-Oil-Limited-to-Provide-Fullstream-Support-for-35004372/",
+        "tokens": [],
+        "result": "FAIL",
+        "note": "recovery pass: 403 (Akamai edge block) on direct fetch"
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=wnpzWwNIXRE&t=121s",
+        "tokens": ["power generation", "gas turbine"],
+        "result": "FAIL",
+        "note": "existing GEM ref for this terminal; YouTube video content not extractable/verifiable by url_verifier (carried forward from primary pass)"
+      }
+    ],
+    "gogpt_prior_assessment": "No GOGPT prior was provided for this terminal (gogpt_prior: no).",
+    "gogpt_candidate": "MAYBE",
+    "gogpt_candidate_basis": "A gas-compression/turbomachinery scope is documented (Baker Hughes 2017), consistent with eventual on-site power/mechanical equipment, but project is pre-FID with no disclosed generation nameplate or confirmed design — matches MAYBE (cogeneration plausible but undisclosed/pre-filing).",
+    "status_or_other_findings": "Confirms GEM's proposed status is current and accurate: pre-FEED complete, FEED started Jan 2025, FID targeted mid-2026 (Twinza's own site); Hevehe Petroleum Ltd's 50% stake via MRDC/Gulf Provincial Government matches the Pasca Gas Agreement signed 19 Dec 2024 — consistent with GEM's owner field.",
+    "notes": "Recovery pass found no new verifiable source. Baker Hughes' own press release — the single most promising lead named in the recovery brief — turned out to be unreachable in full text by any method available this session (direct fetch, reader-proxy, or a major news mirror), all of which returned either JS-shell-only content or a 403. Recommend the existing YouTube-sourced CaptiveGasPower=True be revisited in a future Update batch — it remains uncorroborated by any independently verifiable source found across two research passes. As an offshore/moored FLSO vessel (once built) it would be expected under the SOP's off-grid FLNG prior to carry its own generation, but that prior cannot substitute for a documented citation today.",
+    "recovery_outcome": "unchanged"
+  },
+  {
+    "terminal": "Browse FLNG Terminal",
+    "terminal_id": "T100000130329",
+    "country": "Australia",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "",
+    "captive_summary": "Woodside's Browse FLNG concept (2012-2018, under a Shell FLNG technology license, two bridge-connected floating gas-processing platforms) underwent real FEED-level engineering — Fluor performed FEED on the offshore central gas processing platforms (>50,000 t of topsides) — before Woodside pivoted to an onshore tie-back via the existing North West Shelf plant in 2018. A 2024 Woodside environmental filing for the current tie-back project confirms an 'approved EIS for the Browse FLNG Development' exists (cited for its light-modelling studies), so a formal environmental approval for the floating concept was real and public at the time, but no accessible source in this pass describes that design's power-generation system.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Recovery pass: Woodside's own Browse project page still 403s. Fluor's project page (fluor.com/projects/offshore-lng-facility-feed) confirms Fluor's FEED scope was 'two bridge-connected gas processing platforms' with 'more than 50,000 tons of topsides' for the 'Browse FLNG JPP Development' — real engineering detail, but the retrievable executive-summary text covers weight/cost/safety-case optimization only, with no turbine/generator/MW mention. Woodside's 2024 Browse-to-NWS 'Environmental Review Document — Response to Submissions' (pdftotext-extracted in full, 23,591 lines) was searched for FLNG/floating/power-generation/topsides content: it confirms an 'approved EIS for the Browse FLNG Development' exists and was relied on for light-modelling studies, and separately notes 'production platform power generation' only in the context of an unrelated BP Shah Deniz analog study cited for air-quality modelling methodology — it does not itself describe Browse's own platform power system. DuckDuckGo HTML search (working intermittently this session) surfaced the Fluor page, a Hart Energy 'Woodside Takes Browse FLNG To FEED' article (fetched but JS-shell only, no body text), and EPA WA / Woodside pages for the CURRENT tie-back proposal (not the historical FLNG one) — none reached the actual historical Browse FLNG EIS/PER document itself.",
+    "refs": [],
+    "verification_log": [
+      {
+        "url": "https://www.fluor.com/projects/offshore-lng-facility-feed",
+        "tokens": ["power generation", "gas turbine", "generator"],
+        "result": "FAIL",
+        "note": "page confirms FEED scope (2 bridge-connected platforms, 50,000+ t topsides) but contains no power-generation/turbine/generator wording to verify a captive-power claim"
+      },
+      {
+        "url": "https://www.woodside.com/docs/default-source/our-business---documents-and-files/browse/browse-to-nws-project---environmental-review-document---response-to-submissions.pdf",
+        "tokens": ["Browse FLNG Development"],
+        "result": "PASS",
+        "note": "confirms an 'approved EIS for the Browse FLNG Development' is referenced as a real prior document, but this 2024 ERD itself contains no description of that design's power system — not usable as a captive-power citation"
+      },
+      {
+        "url": "https://www.hartenergy.com/news/woodside-takes-browse-flng-feed-104620",
+        "tokens": ["power generation"],
+        "result": "FAIL",
+        "note": "page is JS-shell only (ad/analytics scaffolding), no article body text recoverable via direct fetch"
+      }
+    ],
+    "gogpt_prior_assessment": "N/A — no GOGPT plant given in prior (gogpt_prior: no).",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No gas generation confirmed at this never-built site.",
+    "status_or_other_findings": "No new status findings beyond GEM's existing cancelled status across the 3 vessel unit-rows. Confirmed (2024 Woodside ERD) that Woodside's current proposal for the Browse field is the onshore North West Shelf tie-back, not a revival of the floating concept.",
+    "notes": "The floating concept reached genuine FEED-level engineering (Fluor FEED, Shell FLNG license) and had its own approved EIS, so a power-system design plausibly existed and was formally documented — but the specific historical Browse FLNG EIS/Public Environmental Review document (rather than references to its existence in later filings) was not reachable by any method available this session (Woodside's own project pages 403; search-engine access to older cached/archived copies did not surface it). Worth a follow-up with direct EPA WA proposals-register access (the WA EPA portal itself 403'd every attempt this session) or a targeted Wayback-archive pull of Woodside's pre-2018 Browse FLNG project pages.",
+    "recovery_outcome": "unchanged"
+  },
+  {
+    "terminal": "Crib Point FSRU Terminal",
+    "terminal_id": "T100000130330",
+    "country": "Australia",
+    "verdict": "YES",
+    "mechanical": "False",
+    "captive_category": "power_generation",
+    "hardware_summary": "FSRU-mounted dual fuel engines plus three gas-fired boilers (model/rating not disclosed in the source found); per AGL/APA's own EES risk assessment (Chapter 23, Climate Change Adaptation) the FSRU is 'electrically isolated from Jetty and generates its own power' as its normal operating arrangement, not a contingency-only backup.",
+    "fuel_basis": "AGL/APA's EES (Chapter 12, Air Quality), quoted verbatim in a public EES submission: 'The operation of the FSRU would emit various pollutants primarily from the use of gas-fired boilers and combustion within the dual fuel engines to regasify the LNG', further specifying 'the FSRU operates on gas with three boilers at 100 per cent load' — establishes the dual fuel engines run in gas mode, not diesel-only.",
+    "confidence": "yellow",
+    "captive_summary": "AGL/APA's Crib Point Gas Import Jetty (a moored FSRU plus a 56 km pipeline to the Pakenham transmission network in Victoria) underwent a full Environment Effects Statement before being rejected by the Victorian Government in March 2021. The EES itself (quoted in a public submission) states the FSRU is 'electrically isolated from Jetty and generates its own power' via onboard dual fuel engines/boilers documented to run on gas — i.e. the vessel is designed to be self-sufficient for its own electricity, not shore-powered, consistent with the SOP's FSRU-onboard-generation convention. This is a design-stage finding (project was rejected in 2021 before construction), which still counts under the 'as-designed captive power on an unbuilt facility' rule.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Recovery-pass finding: Western Port Biosphere Foundation's public submission to the Crib Point Gas Import Jetty and Pipeline Project EES (biosphere.org.au, EES-Submission-26-Aug-1.pdf) quotes the AGL/APA EES directly, in quotation marks, with chapter attribution: EES Chapter 12 (Air Quality) — 'The operation of the FSRU would emit various pollutants primarily from the use of gas-fired boilers and combustion within the dual fuel engines to regasify the LNG', and further that a licence/works approval is needed 'as the scheduled premises threshold is exceeded for NOx, CO, VOC and particulates when the FSRU operates on gas with three boilers at 100 per cent load.' Separately, the same document's Climate Change Adaptation risk table (repeated twice, for 'extreme heat' and 'extreme wind/storms' hazard scenarios) states as a design/mitigation fact: 'FSRU electrically isolated from Jetty and generates its own power.' Both passages are direct quotations of / summaries from the project's own EES, not the submitter's opinion. Verified with url_verifier.py against the tokens 'generates its own power' and 'dual fuel engines' — PASS. The source is a third-party (environmental advocacy group) submission rather than the government/proponent's own EES document, so treated as a single non-primary source (yellow) despite quoting primary text verbatim; the actual EES chapter PDFs (planning.vic.gov.au, mornpen.vic.gov.au, lighterfootprints.org) were 403-blocked or only Chapter 1 (Introduction, no technical content) was locatable this session, so independent corroboration of the same wording from the primary document itself was not achieved.",
+    "refs": ["https://www.biosphere.org.au/wp-content/uploads/EES-Submission-26-Aug-1.pdf"],
+    "verification_log": [
+      {
+        "url": "https://www.biosphere.org.au/wp-content/uploads/EES-Submission-26-Aug-1.pdf",
+        "tokens": ["generates its own power", "dual fuel engines"],
+        "result": "PASS",
+        "note": "confirms both the FSRU's onboard/self-generation design fact and the dual-fuel-engine gas-mode fuel finding, quoted directly from the AGL/APA EES"
+      },
+      {
+        "url": "https://lighterfootprints.org/wp-content/uploads/GIJPP-EES-Chapter-1-Introduction_0.pdf",
+        "tokens": ["power generation", "dual fuel"],
+        "result": "FAIL",
+        "note": "only the EES Introduction chapter is locatable at this host; contains no technical FSRU power-system content (confirmed via pdftotext full-text search)"
+      },
+      {
+        "url": "https://www.mornpen.vic.gov.au/Services/Planning-and-building/Strategic-planning/Environment-Effects-Statements-EES/AGL-Crib-Point-Gas-Import-Jetty-and-Pipeline-Project",
+        "tokens": [],
+        "result": "FAIL",
+        "note": "403 Forbidden on direct fetch; would likely host the full EES chapter set including Chapter 12 (Air Quality) for independent corroboration"
+      }
+    ],
+    "gogpt_prior_assessment": "N/A — no GOGPT plant given in prior (gogpt_prior: no).",
+    "gogpt_candidate": "REVIEWER CALL",
+    "gogpt_candidate_basis": "Generation is real and gas-fired per the EES, but it is vessel-mounted (FSRU onboard dual-fuel engines) with no disclosed nameplate MW, and the project was rejected in 2021 before an FSRU vessel was ever contracted/named — unclear whether GOGPT's ontology would capture a design-stage, cancelled, vessel-mounted generator.",
+    "status_or_other_findings": "Confirmed via Wikipedia and the EES submission: project rejected by the Victorian Government on 29 March 2021 due to 'unacceptable impacts on the Western Port environment and the Ramsar wetlands' — consistent with GEM's cancelled/confirmed status.",
+    "notes": "Overturns the primary shard's INSUFFICIENT verdict — the primary pass could only reach Wikipedia (no FSRU technical detail) and hit 404s on the direct EES hosts; this recovery pass located a public submission that quotes the actual EES technical chapters verbatim. Recommend a follow-up attempt to reach the EES chapters directly (planning.vic.gov.au / mornpen.vic.gov.au, both 403-blocked here) to upgrade this from yellow to green with a primary-source citation. No PowerPlantsSupplied-type direction-test case to flag — this is a straightforward import-jetty-to-pipeline-network project feeding the general Victorian gas transmission network, not a single named power plant.",
+    "recovery_outcome": "improved"
+  },
+  {
+    "terminal": "Fishermans Landing LNG Terminal",
+    "terminal_id": "T100000130332",
+    "country": "Australia",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "red",
+    "captive_summary": "LNG Ltd (LNGL) secured a 24-hectare mainland site opposite Curtis Island and planned 2×1.5 mtpa trains (expandable to 7 mtpa), but abandoned the project in May 2017 after failing for years to secure long-term gas supply agreements. No construction or FID was reached. No public source describing a power-generation plan (on-site plant vs. grid-connected) for this specific project could be located.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Background confirmed via secondary reporting (Oil & Gas Journal, May 2017 abandonment) and LNGL's own historical project description (site lease, train configuration). Recovery pass: retrieved the Queensland Coordinator-General's 'Draft Terms of Reference for an Environmental Impact Statement — Gladstone LNG (Fisherman's Landing)' in full (118 pages, pdftotext full-text search run for power/generation/engine/turbine/MW terms). This is a generic ToR template applicable to any Queensland EIS — its only power-related content is boilerplate guidance asking the proponent to address 'resource use efficiency (eg energy and water), integrated processing design, co-generation of power and by-products' as a general EIS requirement category; it contains no project-specific description of Fisherman's Landing's actual (never-completed) design. The project-specific EIS itself — which would have answered this — was apparently never finalised/published before the 2017 abandonment (pre-FID, pre-construction); the Coordinator-General's completed-EIS page and Fisherman's Landing Port Expansion executive summary/CG report (statedevelopment.qld.gov.au) 403'd on every fetch attempt across both passes.",
+    "refs": [],
+    "verification_log": [
+      {
+        "url": "https://www.epd.qld.gov.au/register/p2079.pdf",
+        "tokens": [],
+        "result": "FAIL",
+        "note": "DNS resolution failure, could not reach QLD register (carried forward from primary pass)"
+      },
+      {
+        "url": "https://www.qld.gov.au/__data/assets/pdf_file/0031/656185/gladstone-lng-fishermans-landing-draft-tor.pdf",
+        "tokens": ["gas turbine", "power generation", "MW"],
+        "result": "FAIL",
+        "note": "recovery pass: full document retrieved and searched — it is a generic EIS Terms-of-Reference template with only boilerplate 'co-generation of power' language, no project-specific power-system description for this site"
+      },
+      {
+        "url": "https://www.statedevelopment.qld.gov.au/__data/assets/pdf_file/0024/18447/executive-summary.pdf",
+        "tokens": [],
+        "result": "FAIL",
+        "note": "403 Forbidden on direct fetch (recovery pass, same as primary-pass finding for related QLD state-development hosts)"
+      }
+    ],
+    "gogpt_prior_assessment": "GOGPT prior is Yarwun power station (180 MW, flagged captive=True, 5.0 km away). GOGPT's own ownership data shows Yarwun is 100% owned by RTA Yarwun Pty Ltd (Rio Tinto), captive to the aluminium industry (Rio Tinto's own Yarwun alumina refinery) — a different industrial host on the mainland, unrelated to this cancelled LNG project.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Project was abandoned in 2017 before construction or FID; no generating plant of any kind was ever built or design-published for this site.",
+    "status_or_other_findings": "None beyond the confirmed 2017 cancellation already reflected in GEM's status.",
+    "notes": "Genuine INSUFFICIENT, not a screen — a real, fairly advanced proposal (secured site, named trains/capacity) that never reached a design stage with public power-generation detail. Recovery pass confirms this is not a research-access failure but a genuine absence: the only project-adjacent document reachable (the generic ToR) contains no project-specific answer, and the documents that plausibly would (state-development.qld.gov.au EIS/CG-report hosts) remain 403-blocked across two independent passes.",
+    "recovery_outcome": "unchanged"
+  },
+  {
+    "terminal": "Geelong FSRU",
+    "terminal_id": "T100000130982",
+    "country": "Australia",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "red",
+    "captive_summary": "Viva Energy's proposed 3 mtpa FSRU import terminal next to its Geelong refinery (announced Dec 2020, pre-FID/proposed as of GEM's current record). The EES Executive Summary (now retrieved and read in full) documents that the FSRU's REGASIFICATION process can use 'gas-fired boilers' in closed-loop mode to reheat seawater — an explicitly thermal/heating application, not electricity generation, and one the EES itself frames as the less-preferred, higher-emission mode versus the default open-loop (seawater-only, no gas combustion) mode. The document does not address the FSRU vessel's own electrical/hotel-load power supply (onboard dual-fuel generators vs. shore power), which is the actual captive-power question under the SOP's FSRU convention.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Recovery pass: retrieved and pdftotext-extracted the Viva Energy Gas Terminal Project EES Executive Summary in full (vivaenergy.com.au/ArticleDocuments/1193/VE-EES-EXCSUM_WEB.pdf.aspx, ~1900 lines) and searched it for power/generation/engine/turbine/electric/Hoegh terms. Findings: (1) Section 2.2.1 'FSRU operation' describes three regasification modes — open loop (seawater as heating medium, no gas combustion, 'the usual operating mode'), closed loop ('gas-fired boilers' reheat recirculated water), and combined loop; (2) the GHG section (4.2.2) states 'Fuel consumed by the FSRU would be the primary source of greenhouse gas emissions' during operation (Scope 1), while 'electricity consumed at Refinery Pier and within the treatment facility' is separately categorised as Scope 2 (imported grid electricity) — i.e., the plant's own gas combustion (the boilers) is explicitly the Scope-1 finding, and imported/grid electricity is a SEPARATE, distinct line item for the pier/treatment-facility infrastructure. This establishes the boilers are a thermal (regasification-heat) application under the SOP's 'power, not heat' rule, not captive power — but the document never states whether the FSRU vessel's own hotel-load/auxiliary electrical demand is met by onboard generators (which would be the real captive-power question per the FSRU convention) or by shore power/cold-ironing from the refinery. This is a materially different, more precise finding than the primary pass's total access failure (403 on every host), but it does not resolve the actual question either way.",
+    "refs": [],
+    "verification_log": [
+      {
+        "url": "https://www.vivaenergy.com.au/ArticleDocuments/1193/VE-EES-EXCSUM_WEB.pdf.aspx",
+        "tokens": ["fired boilers", "Closed loop mode"],
+        "result": "PASS",
+        "note": "confirms the EES describes gas-fired boilers used for closed-loop regasification heating — a thermal, not electric, finding; does not establish or rule out the FSRU's own hotel-load power generation"
+      },
+      {
+        "url": "https://www.vivaenergy.com.au/geelong-gas-terminal-project",
+        "tokens": [],
+        "result": "FAIL",
+        "note": "403 Forbidden (carried forward from primary pass)"
+      },
+      {
+        "url": "https://www.planning.vic.gov.au/permits-and-approvals/environment-effects-act-assessments/assessments-of-projects/viva-energy-gas-terminal-project",
+        "tokens": [],
+        "result": "FAIL",
+        "note": "403 Forbidden (carried forward from primary pass); would likely host the full EES with more detailed FSRU vessel machinery description"
+      }
+    ],
+    "gogpt_prior_assessment": "No GOGPT prior given for this terminal (gogpt_prior: no).",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "The only on-site gas combustion documented (closed-loop regasification boilers) is a thermal/heat application, not electricity generation; the vessel's own hotel-load power supply is undocumented either way.",
+    "status_or_other_findings": "None beyond GEM's existing proposed/pre-FID status. EES confirms up to 45 LNG carrier visits/year and a 750 TJ/day peak send-out capacity context (consistent with prior GEM record).",
+    "notes": "Recovery pass materially advanced the research (full EES Executive Summary read, versus 403s on every host in the primary pass) and productively RULES OUT the naive 'gas-fired boilers = captive power' reading (they are thermal, per the SOP's heat-vs-electric rule) — but it does not find the FSRU's own generator/hotel-load answer, so the verdict stays INSUFFICIENT rather than flipping to NO or YES. The full EES (not just the Executive Summary) at planning.vic.gov.au remains 403-blocked and is the most likely place the vessel's own power arrangement (onboard dual-fuel gensets vs. shore power / cold-ironing from the adjacent refinery) would be specified — worth a dedicated follow-up with browser-based or Wayback access.",
+    "recovery_outcome": "unchanged"
+  }
+]

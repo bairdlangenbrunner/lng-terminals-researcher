@@ -1,0 +1,22 @@
+[
+  {
+    "category": "url_reverify",
+    "terminal_id": "T100000131116",
+    "unit_id": "G100002111600",
+    "terminal_name": "Aruba LNG Terminal",
+    "issue": "Operator [ref] and PowerPlantsSupplied [ref] both cite https://www.reuters.com/markets/asia/us-firm-eagle-lng-signs-deal-set-up-aruba-receiving-terminal-2021-12-10/, which now returns HTTP 401 with no Wayback snapshot available to auto-verify against. Per bot-block-is-not-proof-of-death policy this was kept in place (not dropped), but the automated check could not positively re-confirm the cited content.",
+    "severity": "low",
+    "suggested_action": "Human spot check (e.g. via a Reuters subscription or an alternate mirror) that the article still supports Operator='Water- en Energiebedrijf Aruba' and PowerPlantsSupplied='RECIP (Balashi) power plant'. Both facts are independently plausible/unchanged given WEB's decades-long ownership of Balashi, but this ref was not re-verified this batch.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "url_reverify",
+    "terminal_id": "T100000131116",
+    "unit_id": "G100002111600",
+    "terminal_name": "Aruba LNG Terminal",
+    "issue": "ProposalDate [ref] cites https://newenergyevents.com/u-s-firm-eagle-lng-signs-deal-to-set-up-aruba-receiving-terminal/, which now returns HTTP 403 with no Wayback snapshot available. Kept (not dropped) per bot-block policy but not positively re-confirmed.",
+    "severity": "low",
+    "suggested_action": "Human spot check if convenient; gnlglobal.com (kept, verified live) already independently corroborates ProposalYear=2021 so this is not load-bearing alone.",
+    "researcher_initials": "AI-draft"
+  }
+]

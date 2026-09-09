@@ -1,0 +1,156 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000131121",
+    "unit_id": "G100002112100",
+    "terminal_name": "Nimofast Antonina LNG Terminal",
+    "issue": "Re-checked this pass (Aug 2026): no news specific to the Antonina marine LNG import terminal since the researcher's Aug 2025 shelved-inferred note. Did find one piece of new news (eixos.com.br, June 24 2026) about Nimofast Group launching 'GreenTech Logística Integrada' with Edge and Green Cargo — a R$8.3bn LNG-trucking initiative operating out of the Santos/TRSP terminal (Cosan FSRU) via Interconecta Logística. Confirmed via WebFetch that this article does NOT mention the Antonina marine terminal, construction, or vessel imports — it is a separate domestic trucking/logistics business line and does not indicate the marine terminal project is reviving. No Status change staged. Source: https://eixos.com.br/gas-natural/mercado-de-gas/edge-se-une-a-green-cargo-e-nimofest-em-projeto-de-r-8-bi-que-promete-escalar-uso-de-gnl-em-caminhoes-no-brasil/ (WebFetch-checked, not url_verifier-run since no data value is staged from it).",
+    "severity": "low",
+    "suggested_action": "No change to Status (stays shelved-inferred). Flag for the next dormant_revival_watch cycle: Nimofast Group is commercially active again (in a different LNG business line), which may correlate with renewed capacity to revive the Antonina terminal — worth a closer look in ~1 year if no direct terminal news emerges sooner.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "coverage_gap",
+    "terminal_id": "T100000130933",
+    "unit_id": "G100002093300",
+    "terminal_name": "Porto Norte Fluminense FSRU",
+    "issue": "Attempted re-verification of portonf.com.br (the owner's site, already cited on FacilityType/Location [ref]) this pass; the fetch failed with a TLS certificate error ('unable to verify the first certificate'), not a content finding — could not confirm or refute the researcher's Sep 2025 note (5-year CECA license valid until May 2027, no other progress). No independent secondary check was completed within this session's remaining budget (WebSearch was exhausted; no other lead found via WebFetch).",
+    "severity": "low",
+    "suggested_action": "Re-attempt portonf.com.br directly (may just need a browser-grade TLS stack) or find an alternate secondary source in a future pass; not urgent given the license runway extends to 2027.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "coverage_gap",
+    "terminal_id": "T100000130937",
+    "unit_id": "G100002093700",
+    "terminal_name": "Tepor Macaé FSRU",
+    "issue": "Exhaustive-tier full re-verification of this row's other populated fields/refs (beyond the FloatingVesselName false-positive noted separately) was not completed this session — WebSearch budget was exhausted before reaching this row. Existing refs (EPE 527, inea.rj.gov.br EIA-RIMA, economianegocios.com.br) were not independently re-fetched this pass.",
+    "severity": "low",
+    "suggested_action": "Include in a follow-up pass with a fresh search budget: verify whether the port-complex 'construction' start noted for July 2025 (ConstructionYear/ConstructionMonth populated while Status remains 'proposed') has progressed, per Gregor's Sep 2025 note that Eneva still described the LNG terminal itself in vague, not-yet-under-construction terms as of July 2025 (the ConstructionYear reflects the Tepor Macaé PORT complex, not the LNG terminal specifically, per the researcher's own reconciliation) — worth a closer look with fresh sources.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_hygiene",
+    "terminal_id": "T100000130927",
+    "unit_id": "G100002092700",
+    "terminal_name": "Cosan FSRU",
+    "issue": "State/Province field contains 'São Paulo' with a non-breaking space (U+00A0) between 'São' and 'Paulo' instead of a normal space (U+0020) — confirmed via byte-level codepoint inspection. Geographically correct (Cosan/TRSP FSRU is in São Paulo state) — only the invisible-character corruption needs fixing.",
+    "severity": "low",
+    "suggested_action": "Normalize the NBSP to a regular space so the cell reads as plain 'São Paulo'.",
+    "gem_field": "State/Province",
+    "paste_value": "São Paulo",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_hygiene",
+    "terminal_id": "T100000130550",
+    "unit_id": "G100002055001",
+    "terminal_name": "Santos Basin FLNG Terminal",
+    "issue": "State/Province field contains 'São Paulo' with a non-breaking space (U+00A0) between 'São' and 'Paulo' instead of a normal space (U+0020) — confirmed via byte-level codepoint inspection. Geographically correct (Santos Basin is offshore São Paulo state) — only the invisible-character corruption needs fixing.",
+    "severity": "low",
+    "suggested_action": "Normalize the NBSP to a regular space so the cell reads as plain 'São Paulo'.",
+    "gem_field": "State/Province",
+    "paste_value": "São Paulo",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_hygiene",
+    "terminal_id": "T100000130932",
+    "unit_id": "G100002093200",
+    "terminal_name": "Paraná FSRU",
+    "issue": "field_gaps flagged FloatingVesselName as a missing_field for this row, but this is an inferred-cancelled planning-stage FSRU project — PITER 2021 (EPE) and every later source found never name a contracted vessel; the project never reached FSRU-selection stage. False-positive gap, not a fillable blank.",
+    "severity": "low",
+    "suggested_action": "No action needed; leave FloatingVesselName blank until/unless the project revives and a vessel is actually contracted.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_hygiene",
+    "terminal_id": "T100000130933",
+    "unit_id": "G100002093300",
+    "terminal_name": "Porto Norte Fluminense FSRU",
+    "issue": "field_gaps flagged FloatingVesselName as a missing_field for this row, but no source found (this pass or prior researcher notes) identifies a contracted/named vessel for this proposed-stage project. False-positive gap.",
+    "severity": "low",
+    "suggested_action": "No action needed; leave FloatingVesselName blank pending an actual vessel announcement.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_hygiene",
+    "terminal_id": "T100000130934",
+    "unit_id": "G100002093400",
+    "terminal_name": "Presidente Kennedy FSRU",
+    "issue": "field_gaps flagged FloatingVesselName as a missing_field for this row. portocentral.com.br (re-fetched Aug 2026) describes the LNG opportunity only in general terms with no contracted vessel named. False-positive gap — no vessel exists to name at this project's current shelved/pre-FID stage.",
+    "severity": "low",
+    "suggested_action": "No action needed; leave FloatingVesselName blank.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_hygiene",
+    "terminal_id": "T100000130550",
+    "unit_id": "G100002055001",
+    "terminal_name": "Santos Basin FLNG Terminal",
+    "issue": "field_gaps flagged FloatingVesselName as a missing_field, but this is a floating LNG EXPORT (FLNG) facility that was cancelled before reaching vessel-naming/selection stage (per offshore-energy.biz). False-positive gap.",
+    "severity": "low",
+    "suggested_action": "No action needed; leave FloatingVesselName blank.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_hygiene",
+    "terminal_id": "T100000130937",
+    "unit_id": "G100002093700",
+    "terminal_name": "Tepor Macaé FSRU",
+    "issue": "field_gaps flagged FloatingVesselName as a missing_field for this row. Per ResearcherNotesUnit (Gregor, Sep 2025), the LNG terminal itself remains in vague/proposed status ('part of a future phase'), distinct from the Tepor Macaé PORT complex construction (ConstructionYear=2025 refers to the port, not the LNG terminal). No vessel has been named or contracted. False-positive gap.",
+    "severity": "low",
+    "suggested_action": "No action needed; leave FloatingVesselName blank pending an actual vessel announcement for the LNG-terminal phase specifically.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130938",
+    "unit_id": "G100002093800",
+    "terminal_name": "Terminal Gás Sul FSRU",
+    "issue": "Status remains correctly 'idled' — no change staged. Two live but unresolved forward-looking threads for a future pass: (1) NFE announced a March 2026 lease agreement referencing an Aug-2026 commencement and ~$50M EBITDA contribution in 2027 — a commercial/contractual arrangement, not a confirmed physical restart; no vessel has been named for a TGS restart. (2) The Energos Winter FSRU that formerly served TGS is now under a firm 5-year EGAS charter at Damietta, Egypt (since ~Aug 2025) — a restart would need a DIFFERENT vessel, not announced anywhere found. Sources for the halt/relocation: abegas.org.br/arquivos/96561; eixos.com.br TGS-relocation article (both url_verifier-passed this batch).",
+    "severity": "low",
+    "suggested_action": "Re-check in the next Brazil update cycle (targeting Aug/Sep 2026) for restart confirmation (with a named vessel) or a decommissioning announcement.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "fsru_sync",
+    "terminal_id": "T100000130938",
+    "unit_id": "G100002093800",
+    "terminal_name": "Terminal Gás Sul FSRU",
+    "issue": "The Energos Winter FSRU (this terminal's former vessel) has physically relocated to Damietta, Egypt under a firm 5-year EGAS charter (announced Aug 2025) — a cross-project FSRU vessel reassignment (vessel name + IMO must agree between this tracker and the LNG carrier project per the FSRU sync rule). Egypt is out of this shard's country scope to edit, so this is a flag only, not a staged edit.",
+    "severity": "medium",
+    "suggested_action": "Run fsru_sync_check.py; if Egypt's GEM terminal (Damietta) doesn't yet reflect the Energos Winter assignment, route to whichever batch covers Egypt/Middle East.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130989",
+    "unit_id": "G100002098900",
+    "terminal_name": "Tergás Rio Grande LNG Terminal",
+    "issue": "A March 24, 2026 TRF4 (Brazilian federal appellate court) ruling improved this shelved project's legal posture (found during this pass), but it is a legal/judicial step, not operational resumption, physical construction restart, or a new commercial FID. No change staged to Status (remains shelved, death_year 2022 per dormant_revival_watch) or any anchor year.",
+    "severity": "low",
+    "suggested_action": "No Status change this batch. Worth a closer look in the next dormant_revival_watch pass — the legal obstacle contributing to the original shelving appears to be clearing, making this a slightly better revival candidate than a typical shelved site.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "citation_repair_needed",
+    "terminal_id": "T100000130550",
+    "unit_id": "G100002055001",
+    "terminal_name": "Santos Basin FLNG Terminal",
+    "issue": "Owner [ref] cites abarrelfull.wikidot.com only (banned source, absolute ban) for the Petrobras/BG Group/Repsol/Galp Energia ownership-stakes value. Unlike FacilityType/Capacity/Location [ref] on this same row (repaired this batch using the already-cited offshore-energy.biz article), no compliant replacement citation carrying the specific ownership percentages could be found within this session's remaining research budget (WebSearch budget was exhausted mid-session). NOT staged as an update this batch.",
+    "severity": "medium",
+    "suggested_action": "Follow-up batch with a fresh search budget: check ICIS, Upstream Online, Petrobras investor materials, or ANP/EPE project filings for a Santos Basin FLNG ownership breakdown to replace the abarrelfull citation.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "value_correction_transparency",
+    "terminal_id": "T100000130546",
+    "unit_id": "G100002054600",
+    "terminal_name": "Guanabara Bay FSRU",
+    "issue": "Staged a large numeric change to Capacity (22.50 -> 6.04) in this batch's updates.json — flagging for reviewer visibility given the magnitude. The existing 22.50 value with blank CapacityUnits appears to have been a raw MMm3/d throughput figure (22.5 million cubic meters/day, matching Excelerate's own project page verbatim) entered into the Capacity field without conversion to the mtpa/bcm-y units GEM's CapacityUnits enum requires. Correction: 22.5 MMm3/d x 365 / 1.36 = 6.04 mtpa. Rated yellow confidence (single primary source for the precise 22.5 figure); cnnbrasil.com.br corroborates the MMm3/d unit convention and general scale but cites a different capacity-expansion phase (20->30 Mm3/d) rather than exactly 22.5, so it does not independently confirm the exact number.",
+    "severity": "medium",
+    "suggested_action": "Reviewer should sanity-check this conversion before applying; if a company source stating the mtpa/bcm figure directly (rather than via this MMm3/d back-conversion) is later found, prefer that.",
+    "researcher_initials": "AI-draft"
+  }
+]

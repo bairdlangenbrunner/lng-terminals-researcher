@@ -1,0 +1,192 @@
+[
+  {
+    "terminal": "Hibiki LNG Terminal",
+    "terminal_id": "T100000130475",
+    "country": "Japan",
+    "verdict": "NO",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "Hibiki LNG Terminal (ひびきLNG基地, Saibu Gas group / Hibiki LNG Co Ltd) is a city-gas import base that also feeds gas by pipeline to a large adjacent merchant power plant. The GEM PowerPlantsSupplied field already names Hibiki Natural Gas power plant (GOGPT: 1,880 MW, 0 km, captive=False). Trade press confirms this is a separate joint-venture project (Kyushu Electric / Saibu Gas, revived plan up to 1,600 MW CCGT) to be built NEXT TO the terminal, not equipment of the terminal itself.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "LNG Prime (2026) reports Kyushu Electric Power and Saibu Gas 'agreed to jointly work on the plan to build the combined cycle power plant next to the Hibiki terminal,' with the JV holding 'a capacity of up to 1,600-megawatt.' This is a separately-owned merchant power project fed by pipeline from the terminal, matching the direction-test pattern (terminal supplies gas OUT to a power station) rather than captive generation belonging to the terminal. Saibu Gas's own materials describe the Hibiki base as a receiving/storage/pipeline-distribution facility (city-gas trunk line to Fukuoka plus tanker-truck distribution), with no captive generation equipment mentioned.",
+    "refs": [
+      "https://lngprime.com/asia/japans-saibu-gas-kyushu-electric-revive-hibiki-lng-power-plant-plans/18172/"
+    ],
+    "verification_log": [
+      {"url": "https://lngprime.com/asia/japans-saibu-gas-kyushu-electric-revive-hibiki-lng-power-plant-plans/18172/", "tokens": ["Hibiki", "1,600"], "result": "PASS", "note": "confirms adjacent, separately-owned JV power plant fed from the terminal"}
+    ],
+    "gogpt_prior_assessment": "Hibiki Natural Gas power plant is NOT this terminal's captive power. It is a separately-owned merchant CCGT joint venture between Kyushu Electric Power and Saibu Gas, sited adjacent to (not inside) the LNG terminal and fed by pipeline from it — a PowerPlantsSupplied relationship, correctly already flagged non-captive by GOGPT (gogpt_captive: False). Independent info: https://lngprime.com/asia/japans-saibu-gas-kyushu-electric-revive-hibiki-lng-power-plant-plans/18172/",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "GOGPT already carries this plant (Hibiki Natural Gas power plant) and correctly flags it non-captive; it is the terminal's offtaker, not its captive generator.",
+    "status_or_other_findings": "",
+    "notes": "Classic direction-test case: terminal feeds an adjacent merchant power JV (Kyushu Electric 80% / Saibu Gas 20% per one 2026 report), not the reverse. Not a captive finding."
+  },
+  {
+    "terminal": "Higashi Niigata LNG Terminal",
+    "terminal_id": "T100000130477",
+    "country": "Japan",
+    "verdict": "NO",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "Higashi Niigata LNG Terminal (Nihonkai LNG Co Ltd, a Tohoku Electric Power subsidiary) is a storage/vaporization base whose own facility page lists only receiving arms, storage tanks, ORV (seawater) vaporizers, control room, and truck-loading equipment — no generation plant. The terminal's gas is piped to the adjacent Higashi-Niigata Thermal Power Station (Tohoku Electric's own plant) plus Niigata and Shin-Sendai thermal stations via a 251 km pipeline network.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Nihonkai LNG's own facility page (設備概要) itemizes the base's equipment as unloading arms, 8 LNG storage tanks, ORV vaporizers (seawater-heated), a central control room, and truck-loading bays — no boiler, turbine, engine, or generator line item. Japanese Wikipedia on Higashi-Niigata Thermal Power Station confirms: 'since 1998, the power station has received supply from an LNG terminal established near the adjacent wharf,' and that pipelines from this base (251 km total) also supply Niigata and Shin-Sendai Thermal Power Stations. Direction test: terminal supplies gas OUT to Tohoku Electric's power stations, not the reverse.",
+    "refs": [
+      "https://www.nihonkai-lng.co.jp/facility/index.html",
+      "https://ja.wikipedia.org/wiki/%E6%9D%B1%E6%96%B0%E6%BD%9F%E7%81%AB%E5%8A%9B%E7%99%BA%E9%9B%BB%E6%89%80"
+    ],
+    "verification_log": [
+      {"url": "https://www.nihonkai-lng.co.jp/facility/index.html", "tokens": ["ORV"], "result": "PASS", "note": "primary facility page: receiving/storage/ORV vaporization/truck-loading only, no generation equipment"},
+      {"url": "https://ja.wikipedia.org/wiki/%E6%9D%B1%E6%96%B0%E6%BD%9F%E7%81%AB%E5%8A%9B%E7%99%BA%E9%9B%BB%E6%89%80", "tokens": ["隣接", "LNG"], "result": "PASS", "note": "confirms adjacent LNG base supplies the Tohoku Electric power station by pipeline"}
+    ],
+    "gogpt_prior_assessment": "Higashi Niigata thermal power station is NOT this terminal's captive power. It is Tohoku Electric Power's own large merchant/utility plant (GOGPT: 4,810 MW, 0.56 km, tier B), fed by pipeline from the adjacent LNG terminal — a PowerPlantsSupplied relationship, correctly already flagged non-captive by GOGPT (gogpt_captive: False).",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No on-site generation at the terminal (ORV/seawater vaporization only); the offtake plant is a different company's (Tohoku Electric) large merchant station, already tracked by GOGPT.",
+    "status_or_other_findings": "",
+    "notes": "PowerPlantsSupplied direction case: terminal also feeds Niigata and Shin-Sendai Thermal Power Stations via the same pipeline network."
+  },
+  {
+    "terminal": "Higashi Ohgishima LNG Terminal",
+    "terminal_id": "T100000130479",
+    "country": "Japan",
+    "verdict": "NO",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "Higashi Ohgishima LNG Terminal (JERA) vaporizes LNG using ORV (seawater heat) units and pipes the gas to JERA's own Higashi-Ohgishima, Kawasaki, and Yokohama Thermal Power Stations. The GOGPT prior (Mizue Thermal power plant, 276.5 MW, 1.98 km, tier A, captive=True) is a false-positive proximity match: Mizue is TOA Oil's own refinery cogeneration plant, fuelled by refinery byproduct gas and residual oil, sited inside TOA Oil's Keihin Refinery at a different address (Mizue-cho) — an unrelated industrial host, not JERA's LNG terminal.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Search results on the Higashi-Ohgishima LNG base describe '2 ORV (Open Rack Vaporizer) units...seawater heat being used for LNG vaporization' and that the base 'supplies gas to the Kawasaki and Yokohama thermal power stations' plus the co-located Higashi-Ohgishima station (JERA, 2,000+ MW, 100% JERA-owned per JERA's own power-station list), confirmed via Japanese Wikipedia (ORV, JERA tokens verified) and JERA's own consignment pipeline map PDF (lists Higashi-Ohgishima → Kawasaki Thermal Power Station pipeline). Separately, on the GOGPT prior: TOA Oil's own English site and Japanese Wikipedia (東亜石油水江発電所) confirm the Mizue Thermal Power Plant is located inside TOA Oil's Keihin Refinery, uses refinery byproduct gas and residual oil (plus a hydrogen-blending project), rated 274,000 kW (~276.5 MW, matching the GOGPT figure), commissioned 2003 — an industrial-host plant with no relationship to JERA's LNG terminal beyond rough proximity.",
+    "refs": [
+      "https://ja.wikipedia.org/wiki/%E6%9D%B1%E6%89%87%E5%B3%B6%E7%81%AB%E5%8A%9B%E7%99%BA%E9%9B%BB%E6%89%80",
+      "https://www.jera.co.jp/static/files/business/optimization/consignment/pdf/pipeline.pdf",
+      "https://ja.wikipedia.org/wiki/%E6%9D%B1%E4%BA%9C%E7%9F%B3%E6%B2%B9%E6%B0%B4%E6%B1%9F%E7%99%BA%E9%9B%BB%E6%89%80",
+      "https://www.powermag.com/hydrogen-fueling-turbines-at-japan-refinery/"
+    ],
+    "verification_log": [
+      {"url": "https://ja.wikipedia.org/wiki/%E6%9D%B1%E6%89%87%E5%B3%B6%E7%81%AB%E5%8A%9B%E7%99%BA%E9%9B%BB%E6%89%80", "tokens": ["ORV", "JERA"], "result": "PASS", "note": "confirms ORV vaporization and JERA ownership of the co-located power station"},
+      {"url": "https://www.jera.co.jp/static/files/business/optimization/consignment/pdf/pipeline.pdf", "tokens": ["東扇島", "川崎火力発電所"], "result": "PASS", "note": "JERA's own pipeline map confirms Higashi-Ohgishima to Kawasaki Thermal Power Station gas pipeline"},
+      {"url": "https://ja.wikipedia.org/wiki/%E6%9D%B1%E4%BA%9C%E7%9F%B3%E6%B2%B9%E6%B0%B4%E6%B1%9F%E7%99%BA%E9%9B%BB%E6%89%80", "tokens": ["水江", "東亜石油"], "result": "PASS", "note": "confirms Mizue plant is TOA Oil's own refinery cogeneration plant, a different host"},
+      {"url": "https://www.powermag.com/hydrogen-fueling-turbines-at-japan-refinery/", "tokens": ["Mizue", "refinery"], "result": "PASS", "note": "confirms 80-MW-class Mizue plant is sited inside TOA Oil's Keihin refinery, fuelled by refinery byproduct gas/residual oil plus a hydrogen-blend pilot"}
+    ],
+    "gogpt_prior_assessment": "Mizue Thermal power plant is NOT this terminal's captive power — it is a different industrial host's (TOA Oil's) refinery cogeneration plant, fuelled by refinery byproduct gas and residual oil, sited inside TOA Oil's Keihin Refinery. The GOGPT tier-A/captive=True proximity match is a false positive on distance alone. Independent info: https://www.powermag.com/hydrogen-fueling-turbines-at-japan-refinery/",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "GOGPT already carries a record for this plant (Mizue Thermal power plant); it belongs to TOA Oil's refinery, not this LNG terminal, so it should not be attributed here — no new record needed from this terminal's research.",
+    "status_or_other_findings": "",
+    "notes": "PowerPlantsSupplied direction case for the terminal's own offtake (Higashi-Ohgishima, Kawasaki, Yokohama Thermal Power Stations, all JERA). Recommend flagging the GOGPT captive=True flag on Mizue for review by the GOGPT-side team — it appears mis-attributed to this LNG terminal by proximity; the correct captive host (if any) is TOA Oil's refinery, out of scope for this LNG project."
+  },
+  {
+    "terminal": "Himeji Joint LNG Terminal",
+    "terminal_id": "T100000130481",
+    "country": "Japan",
+    "verdict": "NO",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "Himeji Joint LNG Terminal (Kansai Electric Power, 姫路LNG基地) is a pure storage/vaporization/pipeline base. KEPCO's own facility page states the base only stores LNG delivered by dedicated tankers, converts it to gas, and sends it out as fuel to the Himeji No.1 and No.2 power stations — no on-site generation is described.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "KEPCO's own 姫路 LNG基地 page: '当基地は、専用のLNG船により運ばれてきたLNGを一旦貯蔵し、貯蔵されたLNGをガスにして姫路第一発電所および姫路第二発電所へ発電用燃料として送出しています' (the base temporarily stores LNG delivered by dedicated ships, converts it to gas, and sends it out as fuel to Himeji No.1 and No.2 power stations). This is a documented equipment/purpose statement from the site owner — storage and vaporization only, with output routed to KEPCO's own separate power stations via dedicated pipeline. Direction test: terminal supplies gas OUT to the power stations.",
+    "refs": [
+      "https://www.kepco.co.jp/energy_supply/energy/thermal_power/plant/himejilng.html"
+    ],
+    "verification_log": [
+      {"url": "https://www.kepco.co.jp/energy_supply/energy/thermal_power/plant/himejilng.html", "tokens": ["姫路第一発電所", "姫路第二発電所"], "result": "PASS", "note": "primary owner page: storage + vaporization + pipeline supply only, no generation equipment described"}
+    ],
+    "gogpt_prior_assessment": "Himeji Natural Gas power station is NOT this terminal's captive power. It is Kansai Electric's own separate merchant/utility power stations (Himeji No.1/No.2), fed by pipeline from this LNG base — a PowerPlantsSupplied relationship, correctly already flagged non-captive by GOGPT (gogpt_captive: False, 1,867.8 MW, 0.25 km).",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No on-site generation at the terminal (storage/vaporization only); the offtake plants are already tracked by GOGPT and correctly flagged non-captive.",
+    "status_or_other_findings": "",
+    "notes": "Same Himeji industrial area as the sibling Osaka Gas-owned Himeji LNG Terminal (T100000130483) — see that record for the separate cryogenic/cold-energy power caveat."
+  },
+  {
+    "terminal": "Himeji LNG Terminal",
+    "terminal_id": "T100000130483",
+    "country": "Japan",
+    "verdict": "NO",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "Himeji LNG Terminal (Osaka Gas, 姫路製造所) uses TRI-EX LNG vaporizers plus gas-decompression equipment with an expansion turbine generator, and shares operations with Kansai Electric's Himeji No.2 Power Station under a consignment arrangement. The on-site electricity output (~50,000 kW / 52,450 kW per Daigas's own page, and separately reported '3,700 kW' 冗熱発電) is non-combustion cryogenic/cold-energy (冗熱発電) expansion generation — recovering LNG cold energy via a pressure-letdown expansion turbine and Rankine-cycle equipment, NOT gas combustion. Per the SOP's explicit trap, cold-energy/turboexpander generation is never captive gas power.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Daigas G&P Solution's own plant page lists the terminal's vaporization equipment as 'Two TRI-EX type LNG vaporizers...gas decompression equipment with expansion turbine generator' and states the site includes '50,000kW power generation facilities (52,450kW)' operated jointly with Kansai Electric's Himeji No.2 Power Station under consignment. Independent trade coverage (Nikkan Kogyo) confirms Osaka Gas's Himeji cold-thermal (冗熱) power generation equipment, rated 3,700 kW, uses 'Rankine cycle method with an intermediate heat medium' to recover low-temperature energy from LNG regasification — an explicitly non-combustion expansion-generation technology, matching the SOP's named exclusion class (cf. Barcelona turboexpanders). No gas-fired generation equipment is documented at this site; the site's fuel gas is piped out to Kansai Electric's Himeji No.2 station and (per recent press) a new Osaka Gas-JV combined-cycle plant under construction nearby.",
+    "refs": [
+      "https://www.daigasgps.co.jp/en/service/gasproduction/plant/",
+      "https://www.nikkan.co.jp/articles/view/00367391"
+    ],
+    "verification_log": [
+      {"url": "https://www.daigasgps.co.jp/en/service/gasproduction/plant/", "tokens": ["Himeji", "TRI-EX"], "result": "PASS", "note": "primary owner page confirms TRI-EX vaporizers, expansion-turbine cold-energy generation, and consignment sharing with Kansai Electric's Himeji No.2"},
+      {"url": "https://www.nikkan.co.jp/articles/view/00367391", "tokens": ["姫路"], "result": "PASS", "note": "trade press confirms the site's power generation is Rankine-cycle cold-energy recovery, not gas combustion"}
+    ],
+    "gogpt_prior_assessment": "Himeji Natural Gas power station is NOT this terminal's captive power. It is Kansai Electric's separate merchant/utility power station consigned at this site, fed by pipeline — correctly already flagged non-captive by GOGPT (gogpt_captive: False, 1,867.8 MW, 0.25 km). The terminal's own on-site generation (cryogenic expansion, ~3,700-52,450 kW class) is non-combustion cold-energy recovery, out of scope for captive GAS power under the SOP's explicit exclusion.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "The only on-site generation is non-combustion cryogenic/expansion-turbine cold-energy recovery (SOP-excluded class, like Barcelona/Huelva ORC), not a gas-fired power station; the offtake plant is already tracked by GOGPT.",
+    "status_or_other_findings": "Osaka Gas separately announced (2025 press) a new ~600,000 kW (600 MW) gas turbine combined-cycle plant to be built in Himeji, fuelled via this terminal, targeting FY2030 operation — a future PowerPlantsSupplied-direction offtaker, not a captive finding for this terminal; noted for awareness, not acted on.",
+    "notes": "CRITICAL TRAP applied: the site's headline '冗熱発電' (cold-energy generation) capacity is non-combustion expansion generation and was correctly excluded from a YES verdict per the Japan country-hint warning."
+  },
+  {
+    "terminal": "Hitachi LNG Terminal",
+    "terminal_id": "T100000130485",
+    "country": "Japan",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "",
+    "captive_summary": "Hitachi LNG Terminal (Tokyo Gas, 日立LNG基地) is a city-gas import base (open rack vaporizers, above-ground storage) with no GOGPT prior and no power_plants_supplied entry. Tokyo Gas's own commissioning press release and facility pages describe storage tanks, ORV vaporizers, and truck-loading equipment, but none of the public sources found (press releases, engineering case pages, news coverage) discuss the site's own electricity source — neither a grid-connection statement nor any on-site generation equipment.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Tokyo Gas's 2016 commissioning press release (日立LNG基地の営業運転開始) itemizes storage (230,000 kL LNG tank, 50,000 kL LPG tank) and 3 open-rack vaporizers, with no mention of power supply source or generation equipment either way. Searches for the facility's environmental assessment / emergency generator documentation did not surface a public source describing the power source. Per SOP: undisclosed in any public source found is INSUFFICIENT, not NO.",
+    "refs": [],
+    "verification_log": [
+      {"url": "https://www.tokyo-gas.co.jp/Press/20160325-05.html", "tokens": ["オープンラック式"], "result": "PASS", "note": "confirms ORV vaporization/storage equipment list, but has no power-source statement either way so not used as a captive-power ref"}
+    ],
+    "gogpt_prior_assessment": "",
+    "gogpt_candidate": "MAYBE",
+    "gogpt_candidate_basis": "No captive generation confirmed or ruled out; nothing to add pending further research.",
+    "status_or_other_findings": "Terminal supplies gas (via truck/pipeline distribution, not adjacent siting) to third-party customers including a Kobe Steel gas-fired power plant near its Moka steelworks (~50 km inland, Tochigi) — this is ordinary wholesale gas commerce via the distribution network, not an adjacent PowerPlantsSupplied relationship at this site, and not investigated further as out of scope for the captive-power question.",
+    "notes": "Genuinely under-documented site for this specific question; a deeper dive into Japan's LNG third-party-access capacity-disclosure filings (the JERA-style 液化ガス貯蔵設備の容量等の公表 documents used elsewhere in this sweep) or an EIA filing might resolve this in a future pass."
+  },
+  {
+    "terminal": "Hokkaido Electric Tomakomai LNG Terminal",
+    "terminal_id": "T100001083517",
+    "country": "Japan",
+    "verdict": "NO",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "This proposed terminal is Hokkaido Electric Power's own new LNG import base at Tomakomai, planned specifically to fuel a new co-located 0.5-1.0 GW LNG-fired power station (targeted FY2035). HEPCO's own press release frames the LNG base as fuel-supply infrastructure for the power plant plus regional gas distribution — the terminal exists to feed the power station, not the reverse, matching the direction-test pattern even though both are HEPCO-owned.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "HEPCO's own press release on the Tomakomai energy supply chain concept states the LNG base is being planned '発電事業での活用のみならず、ガス事業と組み合わせることで' (to be utilized not only in the power generation business but also combined with the gas business), i.e. as a fuel-supply hub feeding a separately-sited new gas power plant near the existing Toto-Atsuma power station, plus regional gas customers. Independent trade press (Nikkei, PGJ, LNG Prime, Nikkan Kogyo cluster) corroborates a planned 500-1,000 MW LNG-fired plant with the LNG base as its dedicated fuel-receiving infrastructure. As a proposed project this is a design-stage direction-test call: the terminal's stated purpose is to supply the power plant, not to be powered by it, so it screens NO on the direction test even at the design stage.",
+    "refs": [
+      "https://www.hepco.co.jp/info/2025/1252997_2068.html"
+    ],
+    "verification_log": [
+      {"url": "https://www.hepco.co.jp/info/2025/1252997_2068.html", "tokens": ["LNG基地", "苫小牧"], "result": "PASS", "note": "HEPCO's own concept release: LNG base planned as fuel-supply infrastructure for the new power plant and gas business, not the reverse"}
+    ],
+    "gogpt_prior_assessment": "",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "As designed, the terminal is fuel-supply infrastructure for a separate new HEPCO power-plant project (itself a future GOGPT candidate on the power-plant side, out of scope for this LNG-terminal sweep); not a captive-power finding for the terminal.",
+    "status_or_other_findings": "Proposed HEPCO project: co-located ~500-1,000 MW LNG-fired power plant targeted for FY2035 startup, near the existing Toto-Atsuma coal plant; HEPCO plans eventual decarbonization via hydrogen/ammonia co-firing and CCS. Not acted on — status/capacity detail for awareness only.",
+    "notes": "Same-owner (HEPCO) direction-test case: the terminal is explicitly framed by its own owner as fuel infrastructure for a separately-sited new power station, the same pattern as the Hibiki/Higashi Niigata/Higashi Ohgishima/Himeji records in this shard — shared ownership of terminal and power plant does not convert a PowerPlantsSupplied relationship into a captive one."
+  }
+]

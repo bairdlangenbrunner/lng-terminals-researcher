@@ -1,0 +1,33 @@
+[
+  {
+    "terminal": "UTM Offshore FLNG Terminal",
+    "terminal_id": "T100000131052",
+    "country": "Nigeria",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "Not established in any public source found. The operator describes the facility design as including \"self-contained power generation\" but does not name a fuel (gas turbine/genset vs. diesel) or equipment for that on-site power generation.",
+    "confidence": "yellow",
+    "captive_summary": "UTM Offshore's own project description (NNPC 20%-stake announcement, 25 Jul 2023) lists \"self-contained power generation\" as one of the FLNG facility's design components, alongside a turret mooring system, gas pretreatment modules, LNG production modules, living quarters, and utilities/storage/offloading. No MW figure, turbine/generator model, or explicit fuel type is disclosed in any public source found. The project is pre-FID (FEED substantially complete since 2023; 15-year gas supply agreement signed ~7 Jul 2026; FID reportedly targeted later in 2026), so detailed engineering specifications for the power system are not yet public.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "UTM Offshore Limited's own press release (utmoffshore.com, 25 Jul 2023, 'NNPC Takes 20% Stake in UTM FLNG Project') states the FLNG facility 'comprises a turret mooring system, gas pretreatment modules, LNG production modules, living quarters, self-contained power generation, and utilities alongside storage and offloading.' This confirms the DESIGN includes on-site power generation, but no other public source checked — UTM Offshore's own FLNG service page (utmoffshore.com/flng/), its full press archive, the JGC/Technip Energies/KBR FEED-award coverage (aecweek.com, JGC's own 18 Nov 2022 press release), or business/trade press on the July 2026 gas supply agreement (Reuters, BusinessDay, InvestorsKing, energychamber.org, infradialogue.com) — names a fuel type, MW rating, or equipment model for that power generation. No environmental/regulatory filing was found publicly describing the power system; the only Nigerian regulatory milestone found is NMDPRA's Sept 2024 'License to Construct,' which is a construction authorization, not a technical EIA/permit with equipment detail. Multiple search engines were used to attempt corroboration (Bing, DuckDuckGo, Marginalia); most returned bot-challenge pages or irrelevant results for this query, so a second independent source could not be obtained despite a genuine search.",
+    "refs": [
+      "https://utmoffshore.com/2023/07/25/nnpc-takes-20-stake-in-utm-flng-project/"
+    ],
+    "verification_log": [
+      {
+        "url": "https://utmoffshore.com/2023/07/25/nnpc-takes-20-stake-in-utm-flng-project/",
+        "tokens": ["self-contained power generation"],
+        "result": "PASS",
+        "note": "Confirms the facility design includes on-site power generation as a listed component; no fuel type, MW, or equipment model stated on the page."
+      }
+    ],
+    "gogpt_prior_assessment": "No GOGPT plant was supplied for this terminal (gogpt_prior: no) — there is no nearby GOGPT-tracked power station to assess for this offshore FLNG site.",
+    "gogpt_candidate": "MAYBE",
+    "gogpt_candidate_basis": "The facility's design includes on-site power generation per the operator's own description, but the project is pre-FID with no MW rating, equipment, or fuel type disclosed anywhere public — this matches the MAYBE case (cogeneration/self-generation exists but is undisclosed or pre-filing). Revisit once FID/EPC technical documentation is published (FID reportedly targeted for later 2026 per InvestorsKing's coverage of the July 2026 gas supply agreement).",
+    "status_or_other_findings": "Project remains proposed/pre-FID. A 15-year gas supply agreement among UTM Offshore, Seplat Energy, and NNPC Ltd was reported signed ~7 Jul 2026 (Reuters, BusinessDay, InvestorsKing), described as clearing a hurdle toward FID on the reported $3 billion project. Reported capacity varies by source/date: 2.8 MTPA (UTM Offshore's Sept 2024 License-to-Construct release) vs. 1.7 MTPA LNG + 300,000 tpa LPG (JGC's Nov 2022 FEED-award release and UTM Offshore's Jul 2023 NNPC-stake release) vs. 176 mmscf/d gas feed reported consistently across sources — these may reflect different project vintages/phases and were not reconciled further here (out of scope for this pass; flagging for Update-workflow attention if this terminal's capacity fields are touched). NMDPRA granted a 'License to Construct' in Sept 2024. Feedstock is the OML 104 Yoho field.",
+    "notes": "Not a PowerPlantsSupplied case — this is a stand-alone offshore FLNG export terminal, not feeding gas to an external power station. The given coordinates (4.1485, 7.5526) are well offshore in the Niger Delta with no possible grid connection, which is consistent with the 'self-contained power generation' design language and the brief's grid-access prior, but that physical-necessity reasoning was deliberately NOT used to upgrade this to a YES — per the brief's fuel gate, unstated fuel means INSUFFICIENT, not an inferred positive. Re-check this terminal once FEED/FID technical disclosures (turbine/generator model, MW, fuel) become public."
+  }
+]

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/GlobalEnergyMonitor/lng-terminals-researcher/schemas/manifest.schema.json",
+  "title": "Reproducible review-package manifest",
+  "type": "object",
+  "required": ["manifest_version", "generated_at", "mode", "output", "repository", "inputs"],
+  "properties": {
+    "manifest_version": {"const": 1},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "mode": {"enum": ["update", "discovery", "reconciliation"]},
+    "output": {"type": "string"},
+    "command": {"type": "array", "items": {"type": "string"}},
+    "repository": {"$ref": "#/$defs/repository"},
+    "related_repositories": {"type": "array", "items": {"$ref": "#/$defs/repository"}},
+    "inputs": {"type": "array", "items": {"$ref": "#/$defs/file"}}
+  },
+  "$defs": {
+    "repository": {
+      "type": "object",
+      "required": ["path", "commit", "dirty"],
+      "properties": {"path": {"type": "string"}, "commit": {"type": ["string", "null"]}, "dirty": {"type": ["boolean", "null"]}}
+    },
+    "file": {
+      "type": "object",
+      "required": ["path", "bytes", "sha256"],
+      "properties": {"path": {"type": "string"}, "bytes": {"type": "integer", "minimum": 0}, "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}}
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "scope_slug": "captive_power/asia",
+  "workflow": "captive_power",
+  "tier": null,
+  "countries": [
+    "Bangladesh",
+    "Brunei",
+    "Cambodia",
+    "China",
+    "Hong Kong",
+    "India",
+    "Indonesia",
+    "Japan",
+    "Malaysia",
+    "Myanmar",
+    "Pakistan",
+    "Philippines",
+    "Singapore",
+    "South Korea",
+    "Sri Lanka",
+    "Taiwan",
+    "Thailand",
+    "Turkmenistan",
+    "Vietnam"
+  ],
+  "areas": [
+    "Asia (19 countries, whole-region increment; Russia was covered in captive_power/europe; Middle East/Gulf and Oceania are separate future increments)"
+  ],
+  "started": "2026-07-31",
+  "built": "2026-08-01",
+  "applied": null,
+  "status": "built",
+  "run_record": "batches/run_records/2026-07-31_captive-power-asia.md",
+  "notes": "Third regional increment after americas-complete and europe. 316 terminals / 458 unit-rows — the largest area yet (Europe was 144/210). Fresh pull 2026-07-31 (1,274 rows tracker-wide). Deterministic priors run per-country with --country (GOGPT by_country=True; NOT --subnational, per the blank-area blind-spot rule): worklists + colocation CSVs at batches/deliverables/captive_*_20260731_1055_ET_<country>.csv. Notable priors: China has 175 captive-flagged GOGPT plants in-country (165 unmatched to any LNG terminal), India 18, Singapore 9. Four terminals already carry CaptiveGasPower=True going in (Palu, Hatsukaichi, MLNG Tiga, Chana) — re-verify to blue, ref-MERGE applies. Terminal-first crawl sharded 45 ways (max 8 terminals/shard — Europe WebSearch-budget lesson), dispatch inputs committed under dispatch/. GOGPT-side context: Natalia applied the Europe+Americas captive additions to GOGPT 2026-07-31 with her screen (no cancelled; sub-20 MW aeroderivative/genset units only when plant total >=20 MW EU / >=50 MW Russia) — so this batch's gogpt_candidates tab carries per-unit tech (aeroderivative vs frame vs genset), per-unit MW, plant total, and status (SOP §4a).",
+  "prior_run_records": []
+}

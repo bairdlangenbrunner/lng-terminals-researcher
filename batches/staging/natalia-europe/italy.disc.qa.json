@@ -1,0 +1,22 @@
+[
+  {
+    "category": "capacity_basis_uncertain",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Monfalcone LNG Logistics Terminal (new-terminal candidate, this batch)",
+    "issue": "The only annual-volume figure found for this candidate terminal -- 'circa 1 miliardo di metri cubi' portato a terra (adriaports.com, sponsor's own project page; verified tokens '400 ISO' and 'miliardo di metri cubi' both PASS) -- does not carry a stated time basis on the source page and does not reconcile with the only concrete commercial figure available, a supply deal for 'massimi 400 ISO-container' of LNG (same page). 400 x 40-ft ISO containers (~17-18 t LNG each) is a small fraction of what 1 billion standard m3/y of gas would require if shipped this way; the 1 bcm figure reads as an aspirational full-buildout target for the logistics scheme (mother-ship + shuttle-vessel + dock), not a corroborated operating throughput. No second independent source was found that explains what the figure measures. This is exactly the class of capacity-basis error the batch was asked to watch for (cf. the live-DB Port of Vlora FSRU 2 record, whose Capacity is currently ~1e9x too large).",
+    "severity": "low",
+    "suggested_action": "Capacity left BLANK on the staged new_terminals record (see italy.newterminals.json) with the ambiguity explained in italy.disc.wiki.json. If a future pass finds a clean, dated, per-year throughput figure for this specific facility (not the mother-ship's storage volume, not a multi-year cumulative, not a full-buildout aspiration), stage it then with a proper [ref]. Do not backfill a number now on inference alone.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "status_reclassification",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Monfalcone LNG Logistics Terminal (new-terminal candidate, this batch)",
+    "issue": "Reclassified from an initial draft of Status=proposed to Status=shelved (inferred 2 y, ShelvedYear 2023) after a targeted 2024-2026 activity search turned up nothing past the Ministry's June 2023 full-VIA requirement: no follow-on full-VIA procedure appears in the va.mite.gov.it registry (searched directly; site flags an ongoing 'cybersecurity requirements analysis' banner that may affect search completeness, so a false negative there cannot be fully ruled out), no Autorita di Sistema Portuale del Mare Adriatico Orientale board-minutes confirmation was retrievable (one Dec-2023 PDF at trasparenza.porto.trieste.it could not be extracted by the fetch tooling used -- would need curl + pdftotext -layout to re-attempt), no FVG regional act found, and no company/press coverage since June 2023 (a Apr-2024 Monfalcone energy-transition article was checked and does not mention this project at all).",
+    "severity": "low",
+    "suggested_action": "If the Update or a later Discovery pass finds a MASE portal-search fix, a readable Port Authority board-minutes PDF, or any FVG regional act mentioning Smart Gas/Molino Casillo, re-check for 2024-2026 activity before the record is applied -- it could confirm continued dormancy (supporting shelved) or reveal a missed filing (reverting to proposed with a fresh anchor).",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  }
+]

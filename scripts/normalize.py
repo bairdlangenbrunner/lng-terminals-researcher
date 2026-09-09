@@ -362,10 +362,20 @@ _CAPACITY_TO_MTPA = {
     "bcm/year": 1.0 / 1.36,
     "billion cubic meters per year": 1.0 / 1.36,
     "mmtpa": 1.0,  # synonym for mtpa
-    "bcf/d": 365 / 130,  # 1 bcf/d ~ 2.81 mtpa
-    "bcf/day": 365 / 130,
-    "mmcf/d": 365 / 130_000,  # 1 MMcf/d ~ 0.00281 mtpa
-    "mmcf/day": 365 / 130_000,
+    # Derived from the same 1 mtpa = 1.36 bcm/y equivalence used above (1 bcm =
+    # 35.3147 bcf, so 1 mtpa = 1.36 * 35.3147 = 48.03 bcf/y). The previous
+    # constants here (365/130 and 365/130_000) were off by a factor of ~2.7x —
+    # they gave 1 MMcf/d ~ 0.00281 mtpa, which disagreed with both the
+    # ~0.0077 mtpa/MMcf/d approximation documented in CLAUDE.md and the GEM
+    # database's own precomputed CapacityinMtpa values for MMcf/d-denominated
+    # rows (e.g. Stade FSRU / Wilhelmshaven FSRU: 750 MMcf/d -> 5.75 mtpa,
+    # which implies ~0.00767 mtpa/MMcf/d, not 0.00281). Found + fixed
+    # 2026-07-29 while converting Germany's MMcf/d rows during a QC-driven
+    # exhaustive update; see batches/staging/natalia-europe/germany.qa.json.
+    "bcf/d": 365 / 48.03,  # 1 bcf/d ~ 7.60 mtpa
+    "bcf/day": 365 / 48.03,
+    "mmcf/d": 365 / 48_030,  # 1 MMcf/d ~ 0.0076 mtpa
+    "mmcf/day": 365 / 48_030,
 }
 
 

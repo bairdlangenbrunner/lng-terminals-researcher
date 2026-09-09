@@ -1,0 +1,220 @@
+[
+  {
+    "terminal": "Coega FSRU",
+    "terminal_id": "T100000130265",
+    "country": "South Africa",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "yellow",
+    "captive_summary": "Design was 1 FSRU + 2 separate 'Powership' vessels (Karpowership's own site: Coega = 450 MW via 2 Powerships + 1 FSRU) generating electricity under a NERSA generation licence sold to the national grid under the RMIPPPP emergency-power programme -- not power flowing into the FSRU to run its own regas process. Project was never built: the Pretoria High Court set aside all three Karpowership generation licences (Coega, Richards Bay, Saldanha Bay) in July 2025 and Eskom had already withdrawn grid-access allocation; GEM correctly shows status=cancelled.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Karpowership's own South Africa project page (fetched via proxy; direct fetch/url_verifier blocked by an expired TLS cert on karpowership.co.za, so NOT used as a citation) describes the Coega deployment as '2 Powerships + 1 FSRU', 450 MW. Independently, energize.co.za (verified) confirms Karpowership 'was named a preferred bidder in March 2021 to supply 1 220 MW from floating gas-to-power ships at Richards Bay, Coega and Saldanha Bay' under NERSA generation licences / the Risk Mitigation IPP Procurement Programme (RMIPPPP), and that the Pretoria High Court cancelled all three licences, ending the deal. RMIPPPP is explicitly a grid-supply emergency-power programme -- the direction is terminal-to-grid, not grid/plant-to-terminal.",
+    "refs": [
+      "https://www.energize.co.za/article/high-court-cancels-karpowership-power-licences-ending-emergency-energy-deal"
+    ],
+    "verification_log": [
+      {"url": "https://www.energize.co.za/article/high-court-cancels-karpowership-power-licences-ending-emergency-energy-deal", "tokens": ["Richards Bay"], "result": "PASS", "note": ""},
+      {"url": "https://www.energize.co.za/article/high-court-cancels-karpowership-power-licences-ending-emergency-energy-deal", "tokens": ["March 2021"], "result": "PASS", "note": ""},
+      {"url": "https://www.energize.co.za/article/high-court-cancels-karpowership-power-licences-ending-emergency-energy-deal", "tokens": ["floating gas-to-power"], "result": "PASS", "note": ""},
+      {"url": "https://www.energize.co.za/article/high-court-cancels-karpowership-power-licences-ending-emergency-energy-deal", "tokens": ["preferred bidder"], "result": "PASS", "note": ""},
+      {"url": "https://www.energize.co.za/article/high-court-cancels-karpowership-power-licences-ending-emergency-energy-deal", "tokens": ["NERSA"], "result": "PASS", "note": ""},
+      {"url": "https://www.energize.co.za/article/high-court-cancels-karpowership-power-licences-ending-emergency-energy-deal", "tokens": ["generation licences"], "result": "PASS", "note": ""},
+      {"url": "https://www.energize.co.za/article/high-court-cancels-karpowership-power-licences-ending-emergency-energy-deal", "tokens": ["Risk Mitigation"], "result": "PASS", "note": ""},
+      {"url": "https://www.energize.co.za/article/high-court-cancels-karpowership-power-licences-ending-emergency-energy-deal", "tokens": ["grid"], "result": "PASS", "note": ""},
+      {"url": "https://www.energize.co.za/article/high-court-cancels-karpowership-power-licences-ending-emergency-energy-deal", "tokens": ["1,220 MW"], "result": "FAIL", "note": "SA number formatting variant not matched by substring check; general facts confirmed via other passing tokens instead"},
+      {"url": "https://www.karpowership.co.za/south-africa/", "tokens": ["Powership"], "result": "FAIL", "note": "HTTP 000 -- TLS certificate expired on karpowership.co.za; content read via proxy only, NOT used as a citation per hard rule (every URL must pass url_verifier directly)"}
+    ],
+    "gogpt_prior_assessment": "'Karpowership Coega power station' (450 MW, 0.25 km) IS the Powership half of this exact two-vessel RMIPPPP project -- it is the grid generator this FSRU would have fed gas to, not a captive plant powering the FSRU. GOGPT's existing gogpt_captive=False is correct on the captive question (it's a merchant/grid asset), though note the whole project (both FSRU and Powership) is now delicensed/cancelled per the July 2025 court ruling. Independent info: https://www.energize.co.za/article/high-court-cancels-karpowership-power-licences-ending-emergency-energy-deal (non-gem.wiki).",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Plant already exists in GOGPT (named in the prior) and is correctly marked non-captive; the underlying RMIPPPP award is also now cancelled/delicensed, so there is nothing new to add.",
+    "status_or_other_findings": "GEM's cancelled status for Coega FSRU is corroborated: Pretoria High Court set aside all three Karpowership generation licences (Coega, Richards Bay, Saldanha Bay) in July 2025 (energize.co.za), following Eskom's earlier withdrawal of grid-access allocation after Karpowership missed the December 2023 financial-close deadline.",
+    "notes": "Classic PowerPlantsSupplied-direction case, not captive: the FSRU's sole function was to regasify LNG and pipe it a short distance to the separate, NERSA-licensed 'Powership' vessel(s) that actually generated the 450 MW sold to the grid. Since the whole award is now cancelled, no PowerPlantsSupplied edit is actionable, but flagging the relationship for context."
+  },
+  {
+    "terminal": "Durban LNG Terminal",
+    "terminal_id": "T100001083665",
+    "country": "South Africa",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "yellow",
+    "captive_summary": "This is a bundled LNG-import + power project: the same Vitol/ACWA Power/Vivo Energy/VTTI consortium is developing an LNG import facility AND an adjacent 1,000-1,800 MW combined-cycle gas-fired power station (CCGT) at Durban port, plus gas distribution via the existing Lilly pipeline to Secunda, LNG trucking to off-grid industrial/mining users, and LNG bunkering. The CCGT is a grid-scale merchant plant (up to 1,800 MW, ~$3bn) intended to help replace ageing coal capacity -- direction of gas flow is terminal-to-power-plant (and terminal-to-pipeline/truck/bunker), not a captive generator powering the terminal's own regas operations, which need a trivial fraction of that capacity.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "CNBC Africa (verified) and Zawya (verified) both report: 'a 1,000 (to) 1,800 MW CCGT power generation plant with associated LNG importation infrastructure,' consortium of Vitol, ACWA Power, Vivo Energy (Vitol's post-2024-Engen-merger unit) and terminal operator VTTI, ~$3 billion cost, Strategic Integrated Project status granted September 2025, timing 'to be determined.' CNBC Africa's headline matches a Reuters wire piece verbatim ('Vitol backs proposed $3 billion LNG power plant for South Africa's Durban port'), and Zawya carries the same facts in similar wording -- both are very likely republishing the same underlying Reuters wire text, so treated as ONE source for confidence purposes (yellow, not green) despite listing both URLs. A distinct Bloomberg piece on the same deal (2026-02-16) was found via search but is CAPTCHA/paywall-blocked and could not be independently value-verified; Engineering News' fuller writeup (which independently gives 'up to 1 800 MW' and describes the Lilly-pipeline/trucking/bunkering multi-offtake model) is 403-blocked with no Wayback snapshot, so also not citable.",
+    "electric_mw_note": "",
+    "refs": [
+      "https://www.cnbcafrica.com/2026/vitol-backs-proposed-3-billion-lng-power-plant-for-south-africas-durban-port",
+      "https://www.zawya.com/en/economy/africa/south-africa-vitol-joins-consortium-planning-3bln-gas-fired-power-station-at-durban-port-hds00g16"
+    ],
+    "verification_log": [
+      {"url": "https://www.cnbcafrica.com/2026/vitol-backs-proposed-3-billion-lng-power-plant-for-south-africas-durban-port", "tokens": ["CCGT"], "result": "PASS", "note": ""},
+      {"url": "https://www.cnbcafrica.com/2026/vitol-backs-proposed-3-billion-lng-power-plant-for-south-africas-durban-port", "tokens": ["1,800 MW"], "result": "PASS", "note": ""},
+      {"url": "https://www.cnbcafrica.com/2026/vitol-backs-proposed-3-billion-lng-power-plant-for-south-africas-durban-port", "tokens": ["1,000"], "result": "PASS", "note": ""},
+      {"url": "https://www.cnbcafrica.com/2026/vitol-backs-proposed-3-billion-lng-power-plant-for-south-africas-durban-port", "tokens": ["ACWA Power"], "result": "PASS", "note": ""},
+      {"url": "https://www.cnbcafrica.com/2026/vitol-backs-proposed-3-billion-lng-power-plant-for-south-africas-durban-port", "tokens": ["$3 billion"], "result": "PASS", "note": ""},
+      {"url": "https://www.cnbcafrica.com/2026/vitol-backs-proposed-3-billion-lng-power-plant-for-south-africas-durban-port", "tokens": ["combined-cycle"], "result": "FAIL", "note": "phrase not present verbatim; 'CCGT' token used instead and passed"},
+      {"url": "https://www.zawya.com/en/economy/africa/south-africa-vitol-joins-consortium-planning-3bln-gas-fired-power-station-at-durban-port-hds00g16", "tokens": ["CCGT"], "result": "PASS", "note": ""},
+      {"url": "https://www.zawya.com/en/economy/africa/south-africa-vitol-joins-consortium-planning-3bln-gas-fired-power-station-at-durban-port-hds00g16", "tokens": ["ACWA Power"], "result": "PASS", "note": ""},
+      {"url": "https://www.engineeringnews.co.za/article/lng-import-facility-and-power-station-south-africa-2026-04-17/rep_id:5872/company:engen-2013-05-28", "tokens": ["1800 MW"], "result": "FAIL", "note": "HTTP 403, no Wayback snapshot available -- dropped, not cited"},
+      {"url": "https://www.bloomberg.com/news/articles/2026-02-16/vitol-part-of-consortium-for-south-africa-lng-to-power-project", "tokens": ["not attempted"], "result": "FAIL", "note": "CAPTCHA-blocked on fetch, never reached url_verifier -- dropped, not cited"}
+    ],
+    "gogpt_prior_assessment": "gogpt_prior is 'no' -- no GOGPT plant identified yet, consistent with the project being pre-FID (SIP status only, granted Sept 2025, timing undetermined).",
+    "gogpt_candidate": "MAYBE",
+    "gogpt_candidate_basis": "A genuine gas-fired generating plant is proposed (1,000-1,800 MW CCGT) with a stated MW range, but it is a range not a fixed nameplate, pre-FID, and 'not possible to say' on timeline per the consortium -- matches the MAYBE criterion (cogeneration/generation plant exists but undisclosed-precise/pre-filing). It is NOT captive to the LNG terminal regardless of GOGPT treatment (see captive_summary).",
+    "status_or_other_findings": "Consortium composition confirms the GEM owner field exactly (Vitol, ACWA Power, VTTI, Vivo Energy). Project holds national Strategic Integrated Project (SIP) status as of September 2025; no FID or firm timeline yet.",
+    "notes": "PowerPlantsSupplied-direction case if/when built: this terminal's primary rationale is fueling an adjacent grid-scale CCGT (up to 1,800 MW) plus pipeline/truck/bunker distribution -- not captive generation for its own regas process. Flag for a future PowerPlantsSupplied edit once the CCGT reaches a citable stage; do not stage CaptiveGasPower=True for this record."
+  },
+  {
+    "terminal": "Mossel Bay FSRU",
+    "terminal_id": "T100000130264",
+    "country": "South Africa",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "yellow",
+    "captive_summary": "PetroSA's Mossel Bay FSRU was proposed purely as a feedstock/fuel-gas import route for PetroSA's own nearby Gas-to-Liquids (GTL) refinery -- not to generate electricity. PetroSA cancelled the plan after feasibility studies found 'higher than expected costs due to the harsh weather conditions' at the site; no captive-generation design was ever published, and the project never advanced past the concept/FEED stage before being shelved (matches GEM's cancelled status).",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Upstream Online (verified): 'PetroSA cancels its plan for FSRU at Mossel Bay ... [the FSRU] would have fed much-needed gas to the company's nearby gas-to-liquids plant,' cancelled due to 'higher than expected costs due to the harsh weather conditions at this location.' No power-generation purpose or captive-power design is mentioned anywhere in the sourcing found.",
+    "refs": [
+      "https://www.upstreamonline.com/weekly/petrosa-cancels-its-plan-for-fsru-at-mossel-bay/1-1-999169"
+    ],
+    "verification_log": [
+      {"url": "https://www.upstreamonline.com/weekly/petrosa-cancels-its-plan-for-fsru-at-mossel-bay/1-1-999169", "tokens": ["gas-to-liquids"], "result": "PASS", "note": ""}
+    ],
+    "gogpt_prior_assessment": "'Gourikwa power station' (740 MW, 17.2 km away -- not close) is an existing, separate power station near Mossel Bay unrelated to this defunct FSRU project, which was never built and was designed to feed the GTL refinery, not a power plant. Could not independently verify Gourikwa's own fuel/ownership details in the time available (searches for 'Gourikwa power station' returned no usable results); flagging as unconfirmed rather than asserting a fuel type.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No generation plant of any kind was ever part of this FSRU's design -- it was a refinery-feedstock project, cancelled at feasibility stage. Nothing to add to GOGPT from this terminal.",
+    "status_or_other_findings": "Cancellation is long-standing (PetroSA's decision predates the current GEM cancelled/confirmed status by roughly a decade -- Upstream's report is from the mid-2010s), so no new status change to flag.",
+    "notes": "Not a PowerPlantsSupplied case either -- the intended offtaker was PetroSA's GTL refinery (an industrial feedstock consumer), not a power station. No captive-power question really applies here since power generation was never in scope."
+  },
+  {
+    "terminal": "Ngqura LNG Terminal",
+    "terminal_id": "T100001048121",
+    "country": "South Africa",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "The Transnet/Ukwanda LNG project at the Port of Ngqura (Coega SEZ) is explicitly a multi-offtaker gas-import hub: designed to support 'up to about 3 500 MW' of gas-to-power capacity within and around the Coega Special Economic Zone (with a stated 3,000 MW gas-to-power allocation) plus industrial users, IPPs, and data centre operators -- not a captive generator for the terminal's own use. A temporary floating unit is planned ahead of full onshore commissioning, with full operations targeted for 2035.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "SAnews (South African Government News Agency, official government press service -- verified): quotes the project as supporting 'independent power producers' and enabling gas supply within the Coega SEZ. Green Building Africa (verified): 'up to about 3 500 MW of electricity generation capacity within the Coega Special Economic Zone,' serving 'multiple offtakers including industrial users, independent power producers, and data center operators -- not a single specific power plant.' A dedicated LNG berth (R2bn, TNPA) plus onshore regasification will serve these multiple, not-yet-built downstream users -- the direction of gas flow is terminal-outward to future IPPs/industry, never into the terminal itself.",
+    "refs": [
+      "https://www.sanews.gov.za/south-africa/transnet-signs-deal-r22-billion-gas-facility-project",
+      "https://www.greenbuildingafrica.co.za/transnet-national-ports-authority-and-ukwanda-lng-sign-r22-billion-port-of-ngqura-gas-terminal-agreement/"
+    ],
+    "verification_log": [
+      {"url": "https://www.sanews.gov.za/south-africa/transnet-signs-deal-r22-billion-gas-facility-project", "tokens": ["gas-to-power"], "result": "PASS", "note": ""},
+      {"url": "https://www.sanews.gov.za/south-africa/transnet-signs-deal-r22-billion-gas-facility-project", "tokens": ["3 500"], "result": "PASS", "note": ""},
+      {"url": "https://www.sanews.gov.za/south-africa/transnet-signs-deal-r22-billion-gas-facility-project", "tokens": ["independent power producers"], "result": "PASS", "note": ""},
+      {"url": "https://www.greenbuildingafrica.co.za/transnet-national-ports-authority-and-ukwanda-lng-sign-r22-billion-port-of-ngqura-gas-terminal-agreement/", "tokens": ["3 500"], "result": "PASS", "note": ""},
+      {"url": "https://www.greenbuildingafrica.co.za/transnet-national-ports-authority-and-ukwanda-lng-sign-r22-billion-port-of-ngqura-gas-terminal-agreement/", "tokens": ["gas-to-power"], "result": "FAIL", "note": "phrase not present verbatim on this page; '3 500' token passed instead and other facts corroborated by sanews.gov.za"}
+    ],
+    "gogpt_prior_assessment": "'Karpowership Coega power station' (450 MW, 0.95 km) is the unrelated, now-delicensed/cancelled Karpowership RMIPPPP project (see Coega FSRU above), not connected to Transnet/Ukwanda's separate, much larger multi-offtaker gas-to-power hub. GOGPT's gogpt_captive=False for that plant is correct on its own terms but irrelevant to Ngqura/Ukwanda's captive question. Independent info on the Karpowership plant: https://www.energize.co.za/article/high-court-cancels-karpowership-power-licences-ending-emergency-energy-deal (non-gem.wiki).",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "The named prior plant (Karpowership Coega) is unrelated and already in GOGPT/cancelled. The genuinely relevant downstream capacity (3,000-3,500 MW of future gas-to-power at Coega SEZ) has no named developer/plant yet -- it is an allocation, not a citable project -- so there is nothing concrete to add from this terminal today.",
+    "status_or_other_findings": "R22 billion Terminal Operator Agreement (25-year) signed between Transnet National Ports Authority and Ukwanda LNG (a JV of Tamasa Energy Group and the Strategic Fuel Fund per The Herald); designated a national Strategic Integrated Project; full commissioning targeted 2035; dedicated LNG berth investment R2bn by TNPA.",
+    "notes": "Textbook PowerPlantsSupplied-direction case (once specific IPPs are named/built): the whole point of this terminal is to enable up to 3,000-3,500 MW of THIRD-PARTY gas-to-power generation in the Coega SEZ, not to power itself. Do not stage CaptiveGasPower=True; flag the eventual named IPP offtakers for a PowerPlantsSupplied edit when they are announced."
+  },
+  {
+    "terminal": "Richards Bay FSRU",
+    "terminal_id": "T100000130266",
+    "country": "South Africa",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "yellow",
+    "captive_summary": "Same Karpowership RMIPPPP design as Coega and Saldanha Bay: 1 FSRU + 2 separate 'Powership' vessels, 450 MW, with the Powerships (not the FSRU) generating electricity under a NERSA licence for sale to the national grid under the emergency Risk Mitigation IPP Procurement Programme. Not captive -- direction is terminal-to-grid. Project never built: Pretoria High Court set aside all three Karpowership generation licences in July 2025; matches GEM's cancelled status.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Same evidence chain as Coega FSRU: energize.co.za (verified) -- Karpowership was 'named a preferred bidder in March 2021 to supply 1 220 MW from floating gas-to-power ships at Richards Bay, Coega and Saldanha Bay' under NERSA generation licences / RMIPPPP; all three licences cancelled by the Pretoria High Court, July 2025. Karpowership's own site (proxy-read only, not directly url_verifier-citable due to an expired TLS certificate on karpowership.co.za) separately describes Richards Bay specifically as 450 MW via 2 Powerships + 1 FSRU.",
+    "refs": [
+      "https://www.energize.co.za/article/high-court-cancels-karpowership-power-licences-ending-emergency-energy-deal"
+    ],
+    "verification_log": [
+      {"url": "https://www.energize.co.za/article/high-court-cancels-karpowership-power-licences-ending-emergency-energy-deal", "tokens": ["Richards Bay"], "result": "PASS", "note": ""},
+      {"url": "https://www.energize.co.za/article/high-court-cancels-karpowership-power-licences-ending-emergency-energy-deal", "tokens": ["NERSA"], "result": "PASS", "note": ""},
+      {"url": "https://www.energize.co.za/article/high-court-cancels-karpowership-power-licences-ending-emergency-energy-deal", "tokens": ["Risk Mitigation"], "result": "PASS", "note": ""},
+      {"url": "https://www.karpowership.co.za/south-africa/", "tokens": ["450 MW"], "result": "FAIL", "note": "HTTP 000 -- expired TLS certificate; not used as citation"}
+    ],
+    "gogpt_prior_assessment": "'Nseleni Independent Floating power station' (2800 MW, 1.74 km) is far larger than Karpowership's own 450 MW Richards Bay allocation -- almost certainly a different/aggregate floating-power project at the same port (Richards Bay hosted more RMIPPPP-linked floating capacity than just Karpowership's award), not this specific FSRU's captive plant. Could not independently confirm the Nseleni project's identity/ownership within the search budget available; gogpt_captive=False is plausible either way (RMIPPPP capacity is grid-directed by design) but I could not verify the specific plant.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Whatever the Nseleni plant is, this FSRU is not its captive supplier in the sense the SOP asks about (the FSRU/Powership pairing described above is Karpowership's own, separate 450 MW award, now cancelled). No new captive relationship to add.",
+    "status_or_other_findings": "Cancelled status corroborated by the July 2025 Pretoria High Court ruling voiding all three Karpowership RMIPPPP generation licences.",
+    "notes": "Same PowerPlantsSupplied-direction pattern as Coega: FSRU feeds a separate Powership generator, not itself. Award is cancelled, so no PowerPlantsSupplied edit is currently actionable."
+  },
+  {
+    "terminal": "Richards Bay Transnet FSRU",
+    "terminal_id": "T100000131126",
+    "country": "South Africa",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "This is the Zululand Energy Terminal (ZET) project -- a Vopak/Reatile/Transnet Pipelines joint venture holding a 25-year Transnet concession for an open-access LNG import/storage/regas terminal. Eskom signed a Heads of Agreement (June 2026) to be 'foundation customer,' explicitly to fuel Eskom's own separate 3,000 MW Richards Bay gas-to-power CCGT plant: 'The Eskom Richards Bay Project envisages the importation and consumption of regasified LNG as the primary fuel source of the power plant.' The terminal itself does not generate power -- it supplies gas to Eskom's plant, matching the GEM export's own pre-populated power_plants_supplied field ('Richards Bay (Eskom) power station').",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "AllAfrica (verified): 'Eskom and Zululand Energy Terminal (ZET) have signed a Heads of Agreement establishing the framework for a long-term strategic partnership,' ZET is a JV of Royal Vopak, Reatile Group and Transnet Pipelines, targeting Eskom's 3,000 MW gas-to-power project; national strategy is 6,000 MW of gas by 2030 (3,000 MW IPP program + Eskom's own 3,000 MW). Bizcommunity (verified): 'ZET ... will provide open access to liquefied natural gas (LNG) import, storage and regasification infrastructure, underpinning Eskom's planned 3 000MW gas-to-power programme' and explicitly: 'The Eskom Richards Bay Project envisages the importation and consumption of regasified LNG as the primary fuel source of the power plant.' Rigzone corroborates the same project (ZET, Phase 1 floating storage unit 170,000 m3, ~400 MMcf/d / 3 mtpa onshore regas, 25-year licence granted 2024, FID targeted 2028, ExxonMobil preliminary supply deal) but could not be url_verifier-passed (HTTP 202, likely bot-challenge) so is not included in refs.",
+    "refs": [
+      "https://allafrica.com/stories/202606050416.html",
+      "https://www.bizcommunity.com/article/sa-first-lng-import-terminal-gassed-up-in-new-eskom-zululand-agreement-512750a"
+    ],
+    "verification_log": [
+      {"url": "https://allafrica.com/stories/202606050416.html", "tokens": ["foundation customer"], "result": "PASS", "note": ""},
+      {"url": "https://allafrica.com/stories/202606050416.html", "tokens": ["Reatile"], "result": "PASS", "note": ""},
+      {"url": "https://www.bizcommunity.com/article/sa-first-lng-import-terminal-gassed-up-in-new-eskom-zululand-agreement-512750a", "tokens": ["primary fuel source"], "result": "PASS", "note": ""},
+      {"url": "https://www.bizcommunity.com/article/sa-first-lng-import-terminal-gassed-up-in-new-eskom-zululand-agreement-512750a", "tokens": ["foundation customer"], "result": "PASS", "note": ""},
+      {"url": "https://www.rigzone.com/news/exxonmobil_backs_1st_south_african_lng_import_terminal_with_supply_deal-18-jun-2026-183948-article/", "tokens": ["foundation customer"], "result": "FAIL", "note": "HTTP 202 (bot-challenge, no content served to verifier) -- dropped, not cited"}
+    ],
+    "gogpt_prior_assessment": "'Richards Bay (Mhlathuze Energy) power station' (3300 MW, 1.86 km) is almost certainly Eskom's own 3,000 MW Richards Bay gas-to-power CCGT project referenced in the sourcing above (Mhlathuze is the local municipal name for the Richards Bay area) -- i.e. this GOGPT plant IS the power station this terminal is built to supply, which is exactly why the direction test says NO on captive. GOGPT's gogpt_captive=False for it is consistent with that read. Independent info: https://allafrica.com/stories/202606050416.html (non-gem.wiki).",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "The relevant power plant (Eskom's 3,000 MW Richards Bay CCGT) already appears to exist in GOGPT as 'Richards Bay (Mhlathuze Energy) power station,' correctly marked non-captive since it is a grid-scale Eskom plant fed by this terminal, not a captive generator for it.",
+    "status_or_other_findings": "Two-phase proposed project (Phase 1 and Phase 2 unit rows), 25-year concession granted 2024, Phase 1 floating storage unit 170,000 m3 / ~400 MMcf/d (3 mtpa) regas per Rigzone (uncited, see note above), FID targeted 2028, ExxonMobil signed a preliminary LNG supply agreement (June 2026, per Rigzone -- uncited).",
+    "notes": "The GEM export's own power_plants_supplied field is already populated ('Richards Bay (Eskom) power station') for this record, which matches exactly what independent sourcing confirms: this is a supply-out relationship, not captive generation. No CaptiveGasPower edit warranted; the existing PowerPlantsSupplied value looks correct and well-evidenced."
+  },
+  {
+    "terminal": "Saldanha Bay FSRU",
+    "terminal_id": "T100000130267",
+    "country": "South Africa",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "yellow",
+    "captive_summary": "Same Karpowership RMIPPPP design as Coega and Richards Bay: 1 FSRU + 2 separate 'Powership' vessels, 320 MW at Saldanha Bay, with the Powerships (not the FSRU) generating electricity under a NERSA licence for grid sale under RMIPPPP. Not captive -- direction is terminal-to-grid. Project never built: Pretoria High Court set aside all three Karpowership generation licences in July 2025; matches GEM's cancelled status.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Same evidence chain as Coega/Richards Bay: energize.co.za (verified) -- Karpowership 'named a preferred bidder in March 2021 to supply 1 220 MW from floating gas-to-power ships at Richards Bay, Coega and Saldanha Bay' under NERSA generation licences / RMIPPPP; all three cancelled by the Pretoria High Court, July 2025. Karpowership's own site (proxy-read only, not url_verifier-citable due to an expired TLS certificate) separately gives Saldanha Bay specifically as 320 MW via 2 Powerships + 1 FSRU -- the smallest of the three sites.",
+    "refs": [
+      "https://www.energize.co.za/article/high-court-cancels-karpowership-power-licences-ending-emergency-energy-deal"
+    ],
+    "verification_log": [
+      {"url": "https://www.energize.co.za/article/high-court-cancels-karpowership-power-licences-ending-emergency-energy-deal", "tokens": ["Risk Mitigation"], "result": "PASS", "note": ""},
+      {"url": "https://www.energize.co.za/article/high-court-cancels-karpowership-power-licences-ending-emergency-energy-deal", "tokens": ["NERSA"], "result": "PASS", "note": ""},
+      {"url": "https://www.energize.co.za/article/high-court-cancels-karpowership-power-licences-ending-emergency-energy-deal", "tokens": ["grid"], "result": "PASS", "note": ""},
+      {"url": "https://www.karpowership.co.za/south-africa/", "tokens": ["320 MW"], "result": "FAIL", "note": "HTTP 000 -- expired TLS certificate; not used as citation"}
+    ],
+    "gogpt_prior_assessment": "'Karpowership Saldanha power station' (320 MW, 4.2 km) is the Powership half of this exact Karpowership two-vessel project -- the grid generator the FSRU would have fed, not a captive plant for the FSRU. gogpt_captive=False is correct on the captive question; the whole award is now cancelled. Independent info: https://www.energize.co.za/article/high-court-cancels-karpowership-power-licences-ending-emergency-energy-deal (non-gem.wiki).",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Plant already exists in GOGPT and is correctly marked non-captive; the underlying RMIPPPP award is cancelled, so there is nothing new to add.",
+    "status_or_other_findings": "Cancelled status corroborated by the July 2025 Pretoria High Court ruling voiding all three Karpowership RMIPPPP generation licences.",
+    "notes": "Same PowerPlantsSupplied-direction pattern as Coega/Richards Bay: FSRU feeds a separate Powership generator, not itself. Award is cancelled, so no PowerPlantsSupplied edit is currently actionable."
+  }
+]

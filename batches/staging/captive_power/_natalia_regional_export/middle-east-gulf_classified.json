@@ -1,0 +1,88 @@
+{
+ "qualifying": [
+  {
+   "terminal": "Iran NIOC LNG Terminal",
+   "terminal_id": "T100000130583",
+   "country": "Iran",
+   "status": "construction (LNG trains suspended by client since mid-2013 under sanctions); dedicated power plant completed and grid-connected unit-by-unit since ~2022",
+   "hardware_type": "Dedicated on-site CCGT power station purpose-built for the Iran LNG project's own use (project Package I-C, 'E-LNG': Power Station, Electric Motors and Compressors), comprising 5 gas turbine units and 2 steam turbine units, aggregate 1,130 MW nameplate. Also carries 4 dedicated 3.3 MVA diesel gensets for emergency backup (diesel-only, not counted toward the fuel gate).",
+   "individual_mw": "162 MW each (5 gas turbine units) and 160 MW each (2 steam turbine units), per project design table",
+   "aggregate_mw": "1,130 MW aggregate nameplate (not required to qualify; individual units already clear threshold)",
+   "basis": "Individual >=50 MW (heavy-duty CCGT units, 162 MW/160 MW each). As-designed captive power counts per SOP even though the LNG trains themselves never started up and the completed power units have since been connected to Iran's national grid."
+  },
+  {
+   "terminal": "Oman Qalhat LNG Terminal",
+   "terminal_id": "T100000130593",
+   "country": "Oman",
+   "status": "operating (power-generation plant and mechanical-drive compression trains); proposed (per GEM status list)",
+   "hardware_type": "Mixed site. (1) On-site power-generation plant: originally 4x GE Frame 6 gas turbine-generators (120 MW total), replaced circa 2018-2020 by nine MAN 51/60 reciprocating gas engines rated 120 MW total, supplying electricity to the LNG facility. (2) Separate mechanical-drive gas turbines run the compressor trains: a 280 MW GE Frame 7 gas turbine drives the mixed-refrigerant compression train and a 42 MW GE Frame 6 gas turbine drives the propane compression train (Train 3/debottlenecking expansion).",
+   "individual_mw": "280 MW (GE Frame 7, mechanical drive, MR train) qualifies individually; 42 MW (GE Frame 6, mechanical drive, propane train) is below the individual threshold; MAN gas-engine units are ~13 MW each (120 MW / 9 units), below the individual threshold",
+   "aggregate_mw": "120 MW aggregate for the on-site MAN gas-engine power plant (genset rule applies to reciprocating gas engines) qualifies on its own",
+   "basis": "Qualifies both ways: Individual >=50 MW (mechanical drive, 280 MW GE Frame 7) AND Aggregate >=50 MW (genset rule, 120 MW MAN gas-engine power plant, both the legacy Frame 6 and current MAN configurations)."
+  },
+  {
+   "terminal": "QatarEnergy LNG (N)",
+   "terminal_id": "T100000130594",
+   "country": "Qatar",
+   "status": "operating",
+   "hardware_type": "Heavy-frame gas turbines mechanically shaft-drive the refrigeration compressor strings across this entity's Ras Laffan trains (Qatargas-heritage side): GE Frame 9E turbines (~132 MW ISO rating, documented) on the Qatargas II mega-trains via a Siemens VFD/Ansaldo motor-generator system that can also export surplus electrical power to the plant grid; GE Frame 5C/5D turbines on the earlier trains drive the mixed-refrigerant and propane refrigeration cycles.",
+   "individual_mw": "~132 MW ISO each (GE Frame 9E, documented rating in source) qualifies individually; Frame 5C/5D units have no site-specific figure published (class rating ~25-32 MW, below threshold if inferred)",
+   "aggregate_mw": "n/a (mechanical drive, heavy-duty single units, not summed)",
+   "basis": "Individual >=50 MW (mechanical drive, GE Frame 9E ~132 MW ISO documented rating on the Qatargas II mega-trains)."
+  },
+  {
+   "terminal": "QatarEnergy LNG (S)",
+   "terminal_id": "T100000130598",
+   "country": "Qatar",
+   "status": "operating",
+   "hardware_type": "Heavy-frame gas turbines mechanically shaft-drive the refrigeration compressor strings on this entity's Ras Laffan trains (RasGas-heritage side): two GE Frame 7EA turbines (DLN-retrofitted 2011) drive the mixed-refrigerant and propane compressor trains on the earlier trains, and GE Frame 9E turbines (~132 MW ISO class) drive the Train 6-7 mega-trains, described by the turbine vendor as 'the world's largest mechanical-drive application.'",
+   "individual_mw": "~132 MW ISO each (GE Frame 9E, documented rating in source) qualifies individually; ~85-90 MW each (GE Frame 7EA; Frame 7 class rating inference, no site-specific figure published) also qualifies individually",
+   "aggregate_mw": "n/a (mechanical drive, heavy-duty single units, not summed)",
+   "basis": "Individual >=50 MW (mechanical drive; Frame 9E ~132 MW ISO documented + Frame 7EA ~85-90 MW class-rating inference, both named turbine models)."
+  }
+ ],
+ "excluded": [
+  {
+   "terminal": "South Pars LNG Terminal",
+   "terminal_id": "T100000130916",
+   "country": "Iran",
+   "reason": "Cancelled - excluded per instruction. Published project design (OGJ 2010) included a dedicated 1,000 MW combined-cycle gas turbine power plant built specifically 'to provide power for the project'; turbine count/model not disclosed in the source found - would qualify if active.",
+   "mw_figure": "1,000 MW aggregate CCGT plant (project cancelled; Total withdrew 2008, project presumed cancelled)"
+  },
+  {
+   "terminal": "Khor Al-Zubair FSRU",
+   "terminal_id": "T100001048168",
+   "country": "Iraq",
+   "reason": "No MW figure disclosed. Dual-fuel diesel-electric (DFDE) generating engines aboard the assigned FSRU (Excelerate Acadia, Hull 3407, 170,000 m3) supply the vessel's own onboard electric power for storage/regasification/hotel loads, but no engine model or MW rating is publicly disclosed. Status is proposed.",
+   "mw_figure": "None disclosed (FSRU onboard DFDE gensets, no MW rating published)"
+  },
+  {
+   "terminal": "Aqaba Jordan FSRU",
+   "terminal_id": "T100000130591",
+   "country": "Jordan",
+   "reason": "No MW figure disclosed. The assigned FSRU (Energos Eskimo, ex-Golar Eskimo) self-generates 100% of its own onboard power via a Wärtsilä DFDE (dual-fuel diesel-electric) plant, but engine count/MW is not publicly disclosed. Terminal is currently idled.",
+   "mw_figure": "None disclosed (FSRU onboard DFDE gensets)"
+  },
+  {
+   "terminal": "Mina Al-Ahmadi LNG Terminal",
+   "terminal_id": "T100000130592",
+   "country": "Kuwait",
+   "reason": "No MW figure disclosed. Both FSRUs assigned to this terminal (Explorer, now idled; Golar Igloo, now mothballed) self-generate power via onboard dual-fuel diesel-electric (DFDE) gensets - Wärtsilä 50DF engines are used on 14 of 16 fleet vessels - but no vessel-specific nameplate MW figure was found for either unit.",
+   "mw_figure": "None disclosed (FSRU onboard DFDE gensets); terminal status idled/mothballed"
+  },
+  {
+   "terminal": "Das Island LNG Terminal",
+   "terminal_id": "T100000130601",
+   "country": "United Arab Emirates",
+   "reason": "Below threshold. On-site power generation comprises 5x legacy GE Frame 5 gas turbine-generators (no site-specific total; Frame 5 class rating ~25-32 MW each) plus a newer, explicitly-rated 36 MW GE Frame 6 power station (commissioned ~2015); mechanical-drive compression uses 2x GE Frame 5D turbines (~25-32 MW class rating). No individual heavy-duty unit reaches the 50 MW threshold, and heavy-duty single-turbine fleets are judged individually, not aggregated.",
+   "mw_figure": "36 MW (newer GE Frame 6 power station, explicit figure); GE Frame 5 / Frame 5D units estimated ~25-32 MW each (class rating, no site-specific figure) - all below 50 MW individually"
+  },
+  {
+   "terminal": "Yemen LNG Terminal",
+   "terminal_id": "T100000130605",
+   "country": "Yemen",
+   "reason": "No MW figure disclosed. Both Balhaf liquefaction trains are compressor-driven by heavy-duty gas turbines in a 1x100% shaftline arrangement (industry-standard mechanical drive), but no turbine model/frame class is named in the source, precluding a class-rating inference. GE-supplied 11 MW induction motors (4 total) are starter/helper units only, not the prime mover, and do not themselves qualify. Terminal has been mothballed since 2015 (as-built design finding persists regardless of current idle status).",
+   "mw_figure": "None disclosed (turbine model/frame not named); 11 MW induction motors are starter/helper only, not prime movers"
+  }
+ ]
+}

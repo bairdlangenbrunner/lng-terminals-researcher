@@ -1,0 +1,460 @@
+[
+  {
+    "terminal_id": "T100000130552",
+    "unit_id": "G100002055200",
+    "terminal_name": "Colbun FLNG Terminal",
+    "unit_name": "--",
+    "country": "Chile",
+    "field_name": "Owner [ref]",
+    "old_value": "https://www.argusmedia.com/pages/NewsBody.aspx?id=1336212&menu=yes, https://www.argusmedia.com/pages/NewsBody.aspx?id=1336212&menu=yes",
+    "new_value": "https://www.icis.com/resources/news/2013/04/25/9662659/chile-s-colbun-fsru-project-hits-delays-as-supply-talks-begin/",
+    "confidence": "yellow",
+    "source_tier": "trade_press",
+    "ref_field": "",
+    "ref_urls": [
+      "https://www.icis.com/resources/news/2013/04/25/9662659/chile-s-colbun-fsru-project-hits-delays-as-supply-talks-begin/"
+    ],
+    "source_notes": "Existing argusmedia.com citation (duplicated twice in the cell) is confirmed via WebFetch to be an UNRELATED article about Argentina LNG (YPF / Dock Sud), not Colbun/Chile at all — a miscitation, not evidence for Owner. Replaced with an ICIS 2013 article that explicitly names Colbun and project partner AES Gener as the FSRU sponsors at Quintero Bay, matching GEM's Owner cell (AES Andes + Colbun). ICIS page is behind an intermittent Incapsula bot-challenge; verified via Wayback snapshot 20260416004549 (bot-block, not dead — kept per SOP 7.2).",
+    "scope_note": "",
+    "dropped_urls_dead": [
+      "https://www.argusmedia.com/pages/NewsBody.aspx?id=1336212&menu=yes"
+    ],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130552",
+    "unit_id": "G100002055200",
+    "terminal_name": "Colbun FLNG Terminal",
+    "unit_name": "--",
+    "country": "Chile",
+    "field_name": "Location [ref]",
+    "old_value": "https://www.icis.com/explore/resources/news/2014/11/13/9838389/chile-s-enap-offloads-excess-2015-lng-cargoes-to-colbun/, https://www.argusmedia.com/pages/NewsBody.aspx?id=1336212&menu=yes",
+    "new_value": "https://www.icis.com/explore/resources/news/2014/11/13/9838389/chile-s-enap-offloads-excess-2015-lng-cargoes-to-colbun/, https://www.icis.com/resources/news/2013/04/25/9662659/chile-s-colbun-fsru-project-hits-delays-as-supply-talks-begin/",
+    "confidence": "yellow",
+    "source_tier": "trade_press",
+    "ref_field": "",
+    "ref_urls": [
+      "https://www.icis.com/explore/resources/news/2014/11/13/9838389/chile-s-enap-offloads-excess-2015-lng-cargoes-to-colbun/",
+      "https://www.icis.com/resources/news/2013/04/25/9662659/chile-s-colbun-fsru-project-hits-delays-as-supply-talks-begin/"
+    ],
+    "source_notes": "Same argusmedia.com miscitation issue as Owner [ref] (unrelated Argentina LNG article) — dropped and replaced with the same corroborating ICIS 2013 Colbun/Quintero Bay article; the 2014 ICIS ENAP article is kept as-is (bot-blocked/Incapsula this batch, not proven dead).",
+    "scope_note": "",
+    "dropped_urls_dead": [
+      "https://www.argusmedia.com/pages/NewsBody.aspx?id=1336212&menu=yes"
+    ],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130552",
+    "unit_id": "G100002055200",
+    "terminal_name": "Colbun FLNG Terminal",
+    "unit_name": "--",
+    "country": "Chile",
+    "field_name": "Status",
+    "old_value": "cancelled",
+    "new_value": "cancelled",
+    "confidence": "blue",
+    "source_tier": "trade_press",
+    "ref_field": "Status [ref]",
+    "ref_urls": [
+      "http://www.nuevamineria.com/revista/colbun-and-gener-canceled-deal-to-build-lng-tanker/"
+    ],
+    "source_notes": "Re-verified: existing Status [ref] (nuevamineria.com) passes url_verifier for 'Colbun'; still confirms the 2018 cancellation. Same source also backs CancelledYear/StopYear (both 2018), likewise re-confirmed unchanged. Dormant-revival check performed this batch (web search): no signs of revival — Colbun instead became a capacity-reservation offtaker at the separate Quintero LNG terminal rather than reviving its own FSRU.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130554",
+    "unit_id": "G100002055400",
+    "terminal_name": "Gas Atacama FLNG Terminal",
+    "unit_name": "--",
+    "country": "Chile",
+    "field_name": "Capacity [ref]",
+    "old_value": "http://abarrelfull.wikidot.com/gas-atacama-floating-lng-import-terminal",
+    "new_value": "https://www.offshore-energy.biz/golar-lng-bags-chiles-gas-atacama-fsru-project/, https://www.ogj.com/pipelines-transportation/lng/article/17274623/gas-atacama-awards-first-chilean-frsu-to-golar-lng",
+    "confidence": "green",
+    "source_tier": "trade_press",
+    "ref_field": "",
+    "ref_urls": [
+      "https://www.offshore-energy.biz/golar-lng-bags-chiles-gas-atacama-fsru-project/",
+      "https://www.ogj.com/pipelines-transportation/lng/article/17274623/gas-atacama-awards-first-chilean-frsu-to-golar-lng"
+    ],
+    "source_notes": "abarrelfull.wikidot.com is a banned source (CLAUDE.md) — removed regardless of corroboration. Replaced with two independent trade-press sources (Offshore Energy, Oil & Gas Journal), each verified to explicitly state the 170,000 m3 FSRU / 180 MMcfd (~1.4 mtpa) capacity matching GEM's Capacity cell.  ||  Orchestrator QC gate: this drop was re-declared from dropped_urls_dead to dropped_urls_banned — it is a banned-source removal, and the banned page may well still be live, so calling it dead would be a false declaration (Update SOP §7.2).",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_banned": [
+      "http://abarrelfull.wikidot.com/gas-atacama-floating-lng-import-terminal"
+    ]
+  },
+  {
+    "terminal_id": "T100000130554",
+    "unit_id": "G100002055400",
+    "terminal_name": "Gas Atacama FLNG Terminal",
+    "unit_name": "--",
+    "country": "Chile",
+    "field_name": "StartDate [ref]",
+    "old_value": "http://abarrelfull.wikidot.com/gas-atacama-floating-lng-import-terminal",
+    "new_value": "https://www.offshore-energy.biz/golar-lng-bags-chiles-gas-atacama-fsru-project/, https://www.ogj.com/pipelines-transportation/lng/article/17274623/gas-atacama-awards-first-chilean-frsu-to-golar-lng",
+    "confidence": "green",
+    "source_tier": "trade_press",
+    "ref_field": "",
+    "ref_urls": [
+      "https://www.offshore-energy.biz/golar-lng-bags-chiles-gas-atacama-fsru-project/",
+      "https://www.ogj.com/pipelines-transportation/lng/article/17274623/gas-atacama-awards-first-chilean-frsu-to-golar-lng"
+    ],
+    "source_notes": "Same banned-source removal as Capacity [ref]. Both replacement articles explicitly confirm a targeted Q4 2015 LNG delivery/start date, matching GEM's OriginalPlannedStartYear/LatestPlannedStartYear (2015) — no change to those year fields, only the supporting ref.  ||  Orchestrator QC gate: this drop was re-declared from dropped_urls_dead to dropped_urls_banned — it is a banned-source removal, and the banned page may well still be live, so calling it dead would be a false declaration (Update SOP §7.2).",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_banned": [
+      "http://abarrelfull.wikidot.com/gas-atacama-floating-lng-import-terminal"
+    ]
+  },
+  {
+    "terminal_id": "T100000130554",
+    "unit_id": "G100002055400",
+    "terminal_name": "Gas Atacama FLNG Terminal",
+    "unit_name": "--",
+    "country": "Chile",
+    "field_name": "Status [ref]",
+    "old_value": "",
+    "new_value": "https://www.offshore-energy.biz/golar-lng-bags-chiles-gas-atacama-fsru-project/, https://www.ogj.com/pipelines-transportation/lng/article/17274623/gas-atacama-awards-first-chilean-frsu-to-golar-lng, https://www.mundomaritimo.cl/noticias/gasatacama-anuncia-terminal-de-gnl-en-mejillones",
+    "confidence": "yellow",
+    "source_tier": "trade_press",
+    "ref_field": "",
+    "ref_urls": [
+      "https://www.offshore-energy.biz/golar-lng-bags-chiles-gas-atacama-fsru-project/",
+      "https://www.ogj.com/pipelines-transportation/lng/article/17274623/gas-atacama-awards-first-chilean-frsu-to-golar-lng",
+      "https://www.mundomaritimo.cl/noticias/gasatacama-anuncia-terminal-de-gnl-en-mejillones"
+    ],
+    "source_notes": "[ref]-fill for a populated but previously blank Status cell (field_gaps list). GEM's Status ('cancelled', substatus 'inferred 4y') has no explicit cancellation announcement findable — per the methodology's inferred-status convention, cited the last-known-active-state sources (the 2014/2011-era project-launch coverage) rather than leaving unsourced. Web search this batch found no cancellation announcement and no revival signal either, consistent with the inferred designation. Rated yellow (inferred, not a direct cancellation statement).",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130554",
+    "unit_id": "G100002055400",
+    "terminal_name": "Gas Atacama FLNG Terminal",
+    "unit_name": "--",
+    "country": "Chile",
+    "field_name": "ShelvedYear [ref]",
+    "old_value": "",
+    "new_value": "https://www.offshore-energy.biz/golar-lng-bags-chiles-gas-atacama-fsru-project/, https://www.ogj.com/pipelines-transportation/lng/article/17274623/gas-atacama-awards-first-chilean-frsu-to-golar-lng, https://www.mundomaritimo.cl/noticias/gasatacama-anuncia-terminal-de-gnl-en-mejillones",
+    "confidence": "yellow",
+    "source_tier": "trade_press",
+    "ref_field": "",
+    "ref_urls": [
+      "https://www.offshore-energy.biz/golar-lng-bags-chiles-gas-atacama-fsru-project/",
+      "https://www.ogj.com/pipelines-transportation/lng/article/17274623/gas-atacama-awards-first-chilean-frsu-to-golar-lng",
+      "https://www.mundomaritimo.cl/noticias/gasatacama-anuncia-terminal-de-gnl-en-mejillones"
+    ],
+    "source_notes": "[ref]-fill, same inferred-status sourcing rationale as Status [ref] above (no explicit dormancy announcement found; citing last-known-active-state per methodology convention).",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130554",
+    "unit_id": "G100002055400",
+    "terminal_name": "Gas Atacama FLNG Terminal",
+    "unit_name": "--",
+    "country": "Chile",
+    "field_name": "CancelledYear [ref]",
+    "old_value": "",
+    "new_value": "https://www.offshore-energy.biz/golar-lng-bags-chiles-gas-atacama-fsru-project/, https://www.ogj.com/pipelines-transportation/lng/article/17274623/gas-atacama-awards-first-chilean-frsu-to-golar-lng, https://www.mundomaritimo.cl/noticias/gasatacama-anuncia-terminal-de-gnl-en-mejillones",
+    "confidence": "yellow",
+    "source_tier": "trade_press",
+    "ref_field": "",
+    "ref_urls": [
+      "https://www.offshore-energy.biz/golar-lng-bags-chiles-gas-atacama-fsru-project/",
+      "https://www.ogj.com/pipelines-transportation/lng/article/17274623/gas-atacama-awards-first-chilean-frsu-to-golar-lng",
+      "https://www.mundomaritimo.cl/noticias/gasatacama-anuncia-terminal-de-gnl-en-mejillones"
+    ],
+    "source_notes": "[ref]-fill, same inferred-status sourcing rationale as Status [ref] above.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130554",
+    "unit_id": "G100002055400",
+    "terminal_name": "Gas Atacama FLNG Terminal",
+    "unit_name": "--",
+    "country": "Chile",
+    "field_name": "StopYear [ref]",
+    "old_value": "",
+    "new_value": "https://www.offshore-energy.biz/golar-lng-bags-chiles-gas-atacama-fsru-project/, https://www.ogj.com/pipelines-transportation/lng/article/17274623/gas-atacama-awards-first-chilean-frsu-to-golar-lng, https://www.mundomaritimo.cl/noticias/gasatacama-anuncia-terminal-de-gnl-en-mejillones",
+    "confidence": "yellow",
+    "source_tier": "trade_press",
+    "ref_field": "",
+    "ref_urls": [
+      "https://www.offshore-energy.biz/golar-lng-bags-chiles-gas-atacama-fsru-project/",
+      "https://www.ogj.com/pipelines-transportation/lng/article/17274623/gas-atacama-awards-first-chilean-frsu-to-golar-lng",
+      "https://www.mundomaritimo.cl/noticias/gasatacama-anuncia-terminal-de-gnl-en-mejillones"
+    ],
+    "source_notes": "[ref]-fill, same inferred-status sourcing rationale as Status [ref] above.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130556",
+    "unit_id": "G100002055600",
+    "terminal_name": "Mejillones LNG Terminal",
+    "unit_name": "--",
+    "country": "Chile",
+    "field_name": "PowerPlantsSupplied [ref]",
+    "old_value": "https://engie-energia.cl/wp-content/uploads/2018/06/201604-Reporte-Integrado-EECL.pdf, https://www.engie.cl/gnl-mejillones-celebra-diez-anos-desde-el-inicio-de-su-operacion/",
+    "new_value": "",
+    "confidence": "green",
+    "source_tier": "unsourced",
+    "ref_field": "",
+    "ref_urls": [],
+    "source_notes": "Both existing citations are confirmed dead this batch: engie-energia.cl no longer resolves (DNS failure), and the engie.cl anniversary page is a hard HTTP 404. Attempted replacements (gnlm.cl/proyectos, gnlm.cl/somos-gnlm) load but do not explicitly name Mejillones/Tocopilla power stations as supplied clients, so no qualifying replacement was found this batch (WebSearch budget exhausted before a wider search could be completed). PowerPlantsSupplied VALUE ('Mejillones power station, Tocopilla power station') is left in place — it is a well-documented, long-standing SING-grid arrangement and not itself in doubt — but its [ref] cell is blanked per SOP 7.2 (drop proven-dead URLs; do not leave dead links). See qa entry for follow-up. || Orchestrator QC gate: marked delete=true + confidence green per the staged-deletion convention (green + empty = staged deletion). The green here marks a DELIBERATE blanking of this [ref] cell, not source strength.",
+    "scope_note": "",
+    "dropped_urls_dead": [
+      "https://engie-energia.cl/wp-content/uploads/2018/06/201604-Reporte-Integrado-EECL.pdf",
+      "https://www.engie.cl/gnl-mejillones-celebra-diez-anos-desde-el-inicio-de-su-operacion/"
+    ],
+    "researcher_initials": "AI-draft (sweep)",
+    "delete": true
+  },
+  {
+    "terminal_id": "T100000130556",
+    "unit_id": "G100002055600",
+    "terminal_name": "Mejillones LNG Terminal",
+    "unit_name": "--",
+    "country": "Chile",
+    "field_name": "Status",
+    "old_value": "operating",
+    "new_value": "operating",
+    "confidence": "blue",
+    "source_tier": "primary",
+    "ref_field": "Status [ref]",
+    "ref_urls": [
+      "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf",
+      "https://en.newsroom.engie.com/news/gdf-suez-inaugurates-on-shore-lng-storage-tank-in-chile-8dd1-314df.html",
+      "https://snifa.sma.gob.cl/UnidadFiscalizable/Ficha/659"
+    ],
+    "source_notes": "Exhaustive-tier re-verification: existing Status/Owner/Operator/Capacity/StartDate refs (GIIGNL 2026 mirror, ENGIE newsroom, SNIFA regulator ficha) all re-checked and PASS this batch; no change to any value. Recently updated by Gregor Clark 2026-08-04, one week prior to this run.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130558",
+    "unit_id": "G100002055800",
+    "terminal_name": "Penco Lirquén FSRU",
+    "unit_name": "--",
+    "country": "Chile",
+    "field_name": "Status",
+    "old_value": "proposed",
+    "new_value": "proposed",
+    "confidence": "blue",
+    "source_tier": "trade_press",
+    "ref_field": "Status [ref]",
+    "ref_urls": [
+      "https://www.biobiochile.cl/noticias/nacional/region-del-bio-bio/2023/10/25/tras-9-anos-comite-de-ministros-aprueba-cuestionado-proyecto-terminal-maritimo-gnl-penco-lirquen.shtml",
+      "https://www.terram.cl/sorpresa-en-el-biobio-comite-de-ministros-aprobo-resistido-proyecto-gnl-penco-lirquen/",
+      "https://www.sea.gob.cl/sites/default/files/imce/archivos/2026/02/16/Oficio%20Cita%20Sesi%C3%B3n%20N%C2%B0%201%20Ordinaria%2C%202%C2%B0%20citaci%C3%B3n%2C%20Comit%C3%A9%20de%20Ministros%20-%20Febrero%202026.pdf",
+      "https://snifa.sma.gob.cl/UnidadFiscalizable/Ficha/13925"
+    ],
+    "source_notes": "Exhaustive-tier re-verification: existing Status/Owner refs (biobiochile.cl, terram.cl, SEA Comite de Ministros Feb-2026 PDF, SNIFA ficha) all re-checked and PASS. No status change confirmed — project remains 'proposed', still tied up in litigation before the Third Environmental Court per the existing ResearcherNotes; 2027 planned start already flagged in-record as likely to slip but not yet independently corroborated with a new date this batch, so LatestPlannedStartYear is left untouched (no new source found to justify a slip edit).",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130560",
+    "unit_id": "G100002056000",
+    "terminal_name": "Quintero LNG Terminal",
+    "unit_name": "--",
+    "country": "Chile",
+    "field_name": "Status",
+    "old_value": "operating",
+    "new_value": "operating",
+    "confidence": "blue",
+    "source_tier": "primary",
+    "ref_field": "Status [ref]",
+    "ref_urls": [
+      "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf",
+      "https://www.datocms-assets.com/146580/1783403747-igu-world-lng-report-2026.pdf",
+      "https://www.fluxys.com/en/press-releases/fluxys-group/2022/220328_press_eig_fluxys_decarbonization_chile",
+      "https://lngprime.com/americas/eig-fluxys-wrap-up-purchase-of-chiles-quintero-lng-import-terminal/57606/"
+    ],
+    "source_notes": "Exhaustive-tier re-verification: GIIGNL/IGU report mirrors, Fluxys press release, and LNGPrime ownership-close article all re-checked and PASS. No change to Status/Owner/Capacity.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130560",
+    "unit_id": "G100002056001",
+    "terminal_name": "Quintero LNG Terminal",
+    "unit_name": "Expansion",
+    "country": "Chile",
+    "field_name": "Status",
+    "old_value": "cancelled",
+    "new_value": "cancelled",
+    "confidence": "blue",
+    "source_tier": "trade_press",
+    "ref_field": "Status [ref]",
+    "ref_urls": [
+      "https://www.argusmedia.com/en/news/1467943-quintero-lng-expansion-derailed-update"
+    ],
+    "source_notes": "Exhaustive-tier re-verification: existing Status/Capacity/CancelledYear/StopYear ref (Argus 'expansion derailed' article) re-checked and PASS. No change — expansion unit remains confirmed cancelled (2017).",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130716",
+    "unit_id": "G100002071600",
+    "terminal_name": "Talcahuano FSRU",
+    "unit_name": "--",
+    "country": "Chile",
+    "field_name": "FacilityType [ref]",
+    "old_value": "https://www.igu.org/resources/lng2023-world-lng-report/, http://gnlt.cl/maritime-terminal.php",
+    "new_value": "http://gnlt.cl/maritime-terminal.php",
+    "confidence": "yellow",
+    "source_tier": "sponsor_primary",
+    "ref_field": "",
+    "ref_urls": [
+      "http://gnlt.cl/maritime-terminal.php"
+    ],
+    "source_notes": "igu.org URL is a confirmed hard HTTP 404 (re-tested twice this batch, including a guessed alternate PDF path) — dropped as proven-dead. Remaining gnlt.cl (project sponsor's own site) returns HTTP 403 with no Wayback snapshot available this batch — repeated wayback.org lookups this session were themselves rate-limited (HTTP 429 on archive.org/wayback/available), so this is an inconclusive re-verification, not a proven-dead determination; kept per bot-block-not-dead. Rated yellow pending a clean re-check next batch (flagged in qa).",
+    "scope_note": "",
+    "dropped_urls_dead": [
+      "https://www.igu.org/resources/lng2023-world-lng-report/"
+    ],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130716",
+    "unit_id": "G100002071600",
+    "terminal_name": "Talcahuano FSRU",
+    "unit_name": "--",
+    "country": "Chile",
+    "field_name": "Capacity [ref]",
+    "old_value": "https://www.igu.org/resources/lng2023-world-lng-report/, http://gnlt.cl/maritime-terminal.php",
+    "new_value": "http://gnlt.cl/maritime-terminal.php",
+    "confidence": "yellow",
+    "source_tier": "sponsor_primary",
+    "ref_field": "",
+    "ref_urls": [
+      "http://gnlt.cl/maritime-terminal.php"
+    ],
+    "source_notes": "Same igu.org dead-link removal as FacilityType [ref] above (confirmed HTTP 404); same gnlt.cl inconclusive-this-batch caveat (Wayback API rate-limited during this session's checks).",
+    "scope_note": "",
+    "dropped_urls_dead": [
+      "https://www.igu.org/resources/lng2023-world-lng-report/"
+    ],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130716",
+    "unit_id": "G100002071600",
+    "terminal_name": "Talcahuano FSRU",
+    "unit_name": "--",
+    "country": "Chile",
+    "field_name": "Location",
+    "old_value": "",
+    "new_value": "Bay of Concepción",
+    "confidence": "green",
+    "source_tier": "regulatory",
+    "ref_field": "Location [ref]",
+    "ref_urls": [
+      "http://seia.sea.gob.cl/expediente/ficha/fichaPrincipal.php?modo=ficha&id_expediente=2131400134",
+      "http://gnlt.cl/maritime-terminal.php"
+    ],
+    "source_notes": "Rule-F fix: Location [ref] was filled (gnlt.cl) but Location itself was blank. SEA (Servicio de Evaluación Ambiental) e-SEIA ficha for the project (id_expediente=2131400134) explicitly places the terminal in the Bay of Concepción / Talcahuano port, matching the naming convention GEM already uses for the sibling Quintero/Colbun records ('Bay of Quintero'). SEA ficha verified PASS on 'TALCAHUANO'.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130716",
+    "unit_id": "G100002071600",
+    "terminal_name": "Talcahuano FSRU",
+    "unit_name": "--",
+    "country": "Chile",
+    "field_name": "Location [ref]",
+    "old_value": "http://gnlt.cl/maritime-terminal.php",
+    "new_value": "http://gnlt.cl/maritime-terminal.php, http://seia.sea.gob.cl/expediente/ficha/fichaPrincipal.php?modo=ficha&id_expediente=2131400134",
+    "confidence": "green",
+    "source_tier": "regulatory",
+    "ref_field": "",
+    "ref_urls": [
+      "http://gnlt.cl/maritime-terminal.php",
+      "http://seia.sea.gob.cl/expediente/ficha/fichaPrincipal.php?modo=ficha&id_expediente=2131400134"
+    ],
+    "source_notes": "Corroborating merge: added the SEA e-SEIA ficha (primary/regulatory, verified PASS) alongside the existing gnlt.cl citation to support the newly-filled Location value 'Bay of Concepción'. No drops.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130716",
+    "unit_id": "G100002071600",
+    "terminal_name": "Talcahuano FSRU",
+    "unit_name": "--",
+    "country": "Chile",
+    "field_name": "Status [ref]",
+    "old_value": "",
+    "new_value": "http://seia.sea.gob.cl/expediente/ficha/fichaPrincipal.php?modo=ficha&id_expediente=2131400134, https://www.biobiochile.cl/noticias/nacional/region-del-bio-bio/2023/01/12/corte-suprema-rechaza-recurso-de-gnl-talcahuano-y-proyecto-energetico-se-mantiene-paralizado.shtml",
+    "confidence": "green",
+    "source_tier": "regulatory",
+    "ref_field": "",
+    "ref_urls": [
+      "http://seia.sea.gob.cl/expediente/ficha/fichaPrincipal.php?modo=ficha&id_expediente=2131400134",
+      "https://www.biobiochile.cl/noticias/nacional/region-del-bio-bio/2023/01/12/corte-suprema-rechaza-recurso-de-gnl-talcahuano-y-proyecto-energetico-se-mantiene-paralizado.shtml"
+    ],
+    "source_notes": "[ref]-fill for the recently-moved Status ('cancelled', substatus 'inferred 4y', per Gregor's 2026-08-04 ResearcherNotesUnit moving it from shelved). SEA ficha explicitly shows the project's environmental qualification as 'Revocado' (revoked); biobiochile.cl corroborates the Jan-2023 Supreme Court ruling upholding the revocation. Web search this batch found no news of any kind since 2023 and no revival signal, consistent with the inferred-cancelled call — same two sources reused for CancelledYear [ref] / StopYear [ref] per the inferred-status sourcing convention (last-known-active-state evidence, no explicit cancellation statement exists to cite).",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130716",
+    "unit_id": "G100002071600",
+    "terminal_name": "Talcahuano FSRU",
+    "unit_name": "--",
+    "country": "Chile",
+    "field_name": "CancelledYear [ref]",
+    "old_value": "",
+    "new_value": "http://seia.sea.gob.cl/expediente/ficha/fichaPrincipal.php?modo=ficha&id_expediente=2131400134, https://www.biobiochile.cl/noticias/nacional/region-del-bio-bio/2023/01/12/corte-suprema-rechaza-recurso-de-gnl-talcahuano-y-proyecto-energetico-se-mantiene-paralizado.shtml",
+    "confidence": "green",
+    "source_tier": "regulatory",
+    "ref_field": "",
+    "ref_urls": [
+      "http://seia.sea.gob.cl/expediente/ficha/fichaPrincipal.php?modo=ficha&id_expediente=2131400134",
+      "https://www.biobiochile.cl/noticias/nacional/region-del-bio-bio/2023/01/12/corte-suprema-rechaza-recurso-de-gnl-talcahuano-y-proyecto-energetico-se-mantiene-paralizado.shtml"
+    ],
+    "source_notes": "[ref]-fill, same inferred-status sourcing rationale as Status [ref] above.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130716",
+    "unit_id": "G100002071600",
+    "terminal_name": "Talcahuano FSRU",
+    "unit_name": "--",
+    "country": "Chile",
+    "field_name": "StopYear [ref]",
+    "old_value": "",
+    "new_value": "http://seia.sea.gob.cl/expediente/ficha/fichaPrincipal.php?modo=ficha&id_expediente=2131400134, https://www.biobiochile.cl/noticias/nacional/region-del-bio-bio/2023/01/12/corte-suprema-rechaza-recurso-de-gnl-talcahuano-y-proyecto-energetico-se-mantiene-paralizado.shtml",
+    "confidence": "green",
+    "source_tier": "regulatory",
+    "ref_field": "",
+    "ref_urls": [
+      "http://seia.sea.gob.cl/expediente/ficha/fichaPrincipal.php?modo=ficha&id_expediente=2131400134",
+      "https://www.biobiochile.cl/noticias/nacional/region-del-bio-bio/2023/01/12/corte-suprema-rechaza-recurso-de-gnl-talcahuano-y-proyecto-energetico-se-mantiene-paralizado.shtml"
+    ],
+    "source_notes": "[ref]-fill, same inferred-status sourcing rationale as Status [ref] above.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  }
+]

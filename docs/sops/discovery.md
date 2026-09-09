@@ -270,7 +270,7 @@ For JV-style entities (e.g. "TotalEnergies-Petronas JV"):
    c. Apply threshold test (§3) — pass → `new_terminals`/`new_units`, fail → `monitor_list`
    d. For passing candidates, build the row (§7)
 7. `python url_verifier.py` on every staged URL (§8)
-8. `python entity_lookup.py` for every new entity reference (§9) — **run it bare (no `--country`) and with `--remote`**
+8. `python entity_lookup.py` for every new entity reference (§9) — **run it bare (no `--country`) and with `--pg`** (the read-only-Postgres check; `--remote` is a supplement that is often environmentally skipped)
 9. `python capacity_normalize.py` for any candidate with capacity in non-standard units
 10. **If batch includes any FSRU candidates:** `python fsru_sync_check.py` against carrier project backend (CLAUDE.md FSRU sync rule)
 11. **Contribute country findings** to `country_notes_contributions` sheet — new regulator URLs, search patterns that worked, country-specific gotchas
@@ -291,7 +291,7 @@ For JV-style entities (e.g. "TotalEnergies-Petronas JV"):
 - **Revival-check every in-scope dead site** — read `completeness_sweep.py`'s `dormant_revival_watch` and search each wholly cancelled/shelved in-scope site for new activity (§4.0a); a different new project at a dead site is a NEW terminal, not a record edit
 - **Every URL passes the verification gate** (§8)
 - **Pull a fresh GEM CSV at the start of every batch** (§10.3)
-- **Don't create duplicate entities** — `entity_lookup.py` per §9, run **bare (no `--country`) and with `--remote`**; `--country` only annotates, it never hides a match (an entity on a terminal in another country is still a match)
+- **Don't create duplicate entities** — `entity_lookup.py` per §9, run **bare (no `--country`) and with `--pg`**; `--country` only annotates, it never hides a match (an entity on a terminal in another country is still a match)
 - **No orphan `[ref]` cells** (Rule F from carrier and Update SOP)
 - **GIIGNL/IGU candidates require independent verification** — GIIGNL-only findings from reconciliation are leads, not authority. Source-search like any other candidate.
 - **Out-of-scope fields stay blank** — never populate LH2/NH3/SyntheticLNG/PCI fields on a new candidate, even if sources mention them

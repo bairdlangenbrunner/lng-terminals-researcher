@@ -1,0 +1,609 @@
+[
+  {
+    "terminal_id": "T100000131117",
+    "unit_id": "G100002111700",
+    "terminal_name": "Clifton Pier LNG Terminal",
+    "unit_name": "--",
+    "country": "Bahamas",
+    "field_name": "FIDStatus",
+    "old_value": "",
+    "new_value": "FID",
+    "confidence": "green",
+    "source_tier": "trade press (3 independent outlets)",
+    "ref_field": "FIDYear [ref]",
+    "ref_urls": [
+      "https://www.hydrocarbonengineering.com/gas-processing/17072026/shell-takes-fid-on-lng-regasification-terminal-in-the-bahamas/",
+      "https://pgjonline.com/news/2026/july/shell-reaches-fid-on-bahamas-lng-regasification-terminal",
+      "https://www.ogj.com/pipelines-transportation/lng/news/55391104/shell-fid-advances-lng-regasification-terminal-project-in-the-bahamas"
+    ],
+    "source_notes": "Handoff from the discovery agent's Caribbean sweep (Shell FID + $379.2M financing finding); resolved here as a staged edit rather than a qa note per the never-punt-a-confirmed-change rule. All 3 URLs confirm Shell Bahamas Power Company Inc. took FID on the Clifton Pier LNG regasification terminal; the row's Status was already construction/actual (set by the same 2026-08-06 batch that produced this packet), so no Status change is needed -- only the missing FID fields.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131117",
+    "unit_id": "G100002111700",
+    "terminal_name": "Clifton Pier LNG Terminal",
+    "unit_name": "--",
+    "country": "Bahamas",
+    "field_name": "FIDYear",
+    "old_value": "",
+    "new_value": "2026",
+    "confidence": "green",
+    "source_tier": "trade press (3 independent outlets)",
+    "ref_field": "FIDYear [ref]",
+    "ref_urls": [
+      "https://www.hydrocarbonengineering.com/gas-processing/17072026/shell-takes-fid-on-lng-regasification-terminal-in-the-bahamas/",
+      "https://pgjonline.com/news/2026/july/shell-reaches-fid-on-bahamas-lng-regasification-terminal",
+      "https://www.ogj.com/pipelines-transportation/lng/news/55391104/shell-fid-advances-lng-regasification-terminal-project-in-the-bahamas"
+    ],
+    "source_notes": "All 3 outlets datelined mid-July 2026 (hydrocarbonengineering.com 17 Jul; ogj.com 15 Jul; pgjonline.com July) reporting Shell's FID as a recent/just-announced decision; none give an exact day, so anchored to the reporting year 2026.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131117",
+    "unit_id": "G100002111700",
+    "terminal_name": "Clifton Pier LNG Terminal",
+    "unit_name": "--",
+    "country": "Bahamas",
+    "field_name": "Capacity",
+    "old_value": "55.00",
+    "new_value": "0.42",
+    "confidence": "green",
+    "source_tier": "trade press (2 independent outlets)",
+    "ref_field": "Capacity [ref]",
+    "ref_urls": [
+      "https://www.ogj.com/pipelines-transportation/lng/news/55391104/shell-fid-advances-lng-regasification-terminal-project-in-the-bahamas",
+      "https://www.datocms-assets.com/146580/1783403747-igu-world-lng-report-2026.pdf"
+    ],
+    "source_notes": "Enum/units fix flagged in field_gaps (suspect_enum_value: CapacityUnits='MMcf/d' not in catalog ['bcm/y','mtpa']). Sources explicitly state the regasification system capacity as 55 MMscfd (ogj.com). Converted to mtpa using the standard factor (1 MMcf/d ≈ 0.0077 mtpa): 55 x 0.0077 = 0.4235 ≈ 0.42, which matches the row's own pre-existing (read-only/computed) CapacityinMtpa=0.42 field -- flagging this conversion for reviewer verification per SOP as instructed, though the two values already agree.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131117",
+    "unit_id": "G100002111700",
+    "terminal_name": "Clifton Pier LNG Terminal",
+    "unit_name": "--",
+    "country": "Bahamas",
+    "field_name": "CapacityUnits",
+    "old_value": "MMcf/d",
+    "new_value": "mtpa",
+    "confidence": "green",
+    "source_tier": "trade press (2 independent outlets)",
+    "ref_field": "Capacity [ref]",
+    "ref_urls": [
+      "https://www.ogj.com/pipelines-transportation/lng/news/55391104/shell-fid-advances-lng-regasification-terminal-project-in-the-bahamas",
+      "https://www.datocms-assets.com/146580/1783403747-igu-world-lng-report-2026.pdf"
+    ],
+    "source_notes": "Companion edit to the Capacity value fix above -- re-expresses the same sourced 55 MMscfd figure in GEM's catalog unit (mtpa) instead of the non-catalog 'MMcf/d'.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131117",
+    "unit_id": "G100002111700",
+    "terminal_name": "Clifton Pier LNG Terminal",
+    "unit_name": "--",
+    "country": "Bahamas",
+    "field_name": "Owner [ref]",
+    "old_value": "https://www.hydrocarbonengineering.com/gas-processing/17072026/shell-takes-fid-on-lng-regasification-terminal-in-the-bahamas/, https://www.spglobal.com/energy/en/news-research/latest-news/natural-gas/071426-shell-greenlights-bahamas-lng-regasification-terminal, https://pgjonline.com/news/2026/july/shell-reaches-fid-on-bahamas-lng-regasification-terminal, https://www.hydrocarbonengineering.com/gas-processing/17072026/shell-takes-fid-on-lng-regasification-terminal-in-the-bahamas/, https://www.spglobal.com/energy/en/news-research/latest-news/natural-gas/071426-shell-greenlights-bahamas-lng-regasification-terminal, https://pgjonline.com/news/2026/july/shell-reaches-fid-on-bahamas-lng-regasification-terminal",
+    "new_value": "https://www.hydrocarbonengineering.com/gas-processing/17072026/shell-takes-fid-on-lng-regasification-terminal-in-the-bahamas/, https://www.spglobal.com/energy/en/news-research/latest-news/natural-gas/071426-shell-greenlights-bahamas-lng-regasification-terminal, https://pgjonline.com/news/2026/july/shell-reaches-fid-on-bahamas-lng-regasification-terminal",
+    "confidence": "green",
+    "source_tier": "trade press",
+    "ref_field": "",
+    "ref_urls": [
+      "https://www.hydrocarbonengineering.com/gas-processing/17072026/shell-takes-fid-on-lng-regasification-terminal-in-the-bahamas/",
+      "https://www.spglobal.com/energy/en/news-research/latest-news/natural-gas/071426-shell-greenlights-bahamas-lng-regasification-terminal",
+      "https://pgjonline.com/news/2026/july/shell-reaches-fid-on-bahamas-lng-regasification-terminal"
+    ],
+    "source_notes": "Deduplicated the pre-existing value, which repeated the same 3 URLs twice (CSV/export artifact). hydrocarbonengineering.com and pgjonline.com re-verified live. spglobal.com returns HTTP 403 with no Wayback snapshot -- kept (not dropped) per bot-block!=dead policy, flagged in qa for human spot check.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131117",
+    "unit_id": "G100002111700",
+    "terminal_name": "Clifton Pier LNG Terminal",
+    "unit_name": "--",
+    "country": "Bahamas",
+    "field_name": "FacilityType [ref]",
+    "old_value": "https://www.compressortech2.com/news/shell-approves-bahamas-lng-regasification-terminal/8126907.article",
+    "new_value": "https://www.compressortech2.com/news/shell-approves-bahamas-lng-regasification-terminal/8126907.article",
+    "confidence": "blue",
+    "source_tier": "trade press",
+    "ref_field": "",
+    "ref_urls": [
+      "https://www.compressortech2.com/news/shell-approves-bahamas-lng-regasification-terminal/8126907.article"
+    ],
+    "source_notes": "Re-verified live, no change.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131117",
+    "unit_id": "G100002111700",
+    "terminal_name": "Clifton Pier LNG Terminal",
+    "unit_name": "--",
+    "country": "Bahamas",
+    "field_name": "Status [ref]",
+    "old_value": "https://www.turner-industries.com/projects/turner-industries-bahamas-services-new-power-for-new-providence/, https://www.bahamaslocal.com/newsitem/348112/PM_Davis_LNG_Terminal_groundbreaking_represents_his_Governments_commitment_to_build_an_energy_future_that_is_stronger_cleaner_and_more_reliable_for_our_people.html, https://www.datocms-assets.com/146580/1783403747-igu-world-lng-report-2026.pdf",
+    "new_value": "https://www.turner-industries.com/projects/turner-industries-bahamas-services-new-power-for-new-providence/, https://www.bahamaslocal.com/newsitem/348112/PM_Davis_LNG_Terminal_groundbreaking_represents_his_Governments_commitment_to_build_an_energy_future_that_is_stronger_cleaner_and_more_reliable_for_our_people.html, https://www.datocms-assets.com/146580/1783403747-igu-world-lng-report-2026.pdf",
+    "confidence": "blue",
+    "source_tier": "trade press/industry report",
+    "ref_field": "",
+    "ref_urls": [
+      "https://www.turner-industries.com/projects/turner-industries-bahamas-services-new-power-for-new-providence/",
+      "https://www.bahamaslocal.com/newsitem/348112/PM_Davis_LNG_Terminal_groundbreaking_represents_his_Governments_commitment_to_build_an_energy_future_that_is_stronger_cleaner_and_more_reliable_for_our_people.html",
+      "https://www.datocms-assets.com/146580/1783403747-igu-world-lng-report-2026.pdf"
+    ],
+    "source_notes": "All 3 re-verified live, no change. Status=construction/actual confirmed current (set by the same-day 2026-08-06 update this packet reflects); FID does not change the Status value.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131117",
+    "unit_id": "G100002111700",
+    "terminal_name": "Clifton Pier LNG Terminal",
+    "unit_name": "--",
+    "country": "Bahamas",
+    "field_name": "ConstructionDate [ref]",
+    "old_value": "https://www.turner-industries.com/projects/turner-industries-bahamas-services-new-power-for-new-providence/, https://www.bahamaslocal.com/newsitem/348112/PM_Davis_LNG_Terminal_groundbreaking_represents_his_Governments_commitment_to_build_an_energy_future_that_is_stronger_cleaner_and_more_reliable_for_our_people.html, https://www.datocms-assets.com/146580/1783403747-igu-world-lng-report-2026.pdf",
+    "new_value": "https://www.turner-industries.com/projects/turner-industries-bahamas-services-new-power-for-new-providence/, https://www.bahamaslocal.com/newsitem/348112/PM_Davis_LNG_Terminal_groundbreaking_represents_his_Governments_commitment_to_build_an_energy_future_that_is_stronger_cleaner_and_more_reliable_for_our_people.html, https://www.datocms-assets.com/146580/1783403747-igu-world-lng-report-2026.pdf",
+    "confidence": "blue",
+    "source_tier": "trade press/industry report",
+    "ref_field": "",
+    "ref_urls": [
+      "https://www.turner-industries.com/projects/turner-industries-bahamas-services-new-power-for-new-providence/",
+      "https://www.bahamaslocal.com/newsitem/348112/PM_Davis_LNG_Terminal_groundbreaking_represents_his_Governments_commitment_to_build_an_energy_future_that_is_stronger_cleaner_and_more_reliable_for_our_people.html",
+      "https://www.datocms-assets.com/146580/1783403747-igu-world-lng-report-2026.pdf"
+    ],
+    "source_notes": "Re-verified live, no change. ConstructionYear=2026 confirmed.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131117",
+    "unit_id": "G100002111700",
+    "terminal_name": "Clifton Pier LNG Terminal",
+    "unit_name": "--",
+    "country": "Bahamas",
+    "field_name": "ProposalDate [ref]",
+    "old_value": "https://ewnews.com/still-on-the-table-chairman-insists-bpl-working-hard-to-close-on-shell-agreement",
+    "new_value": "https://ewnews.com/still-on-the-table-chairman-insists-bpl-working-hard-to-close-on-shell-agreement",
+    "confidence": "blue",
+    "source_tier": "trade press",
+    "ref_field": "",
+    "ref_urls": [
+      "https://ewnews.com/still-on-the-table-chairman-insists-bpl-working-hard-to-close-on-shell-agreement"
+    ],
+    "source_notes": "Site returns HTTP 403 (bot-block) but value re-verified against a live Wayback snapshot (20250623201249) -- kept, no change.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131117",
+    "unit_id": "G100002111700",
+    "terminal_name": "Clifton Pier LNG Terminal",
+    "unit_name": "--",
+    "country": "Bahamas",
+    "field_name": "StartDate [ref]",
+    "old_value": "https://www.tribune242.com/news/2025/mar/21/200m-building-cost-for-lng-terminal/, https://www.turner-industries.com/projects/turner-industries-bahamas-services-new-power-for-new-providence/, https://www.spglobal.com/energy/en/news-research/latest-news/natural-gas/071426-shell-greenlights-bahamas-lng-regasification-terminal",
+    "new_value": "https://www.tribune242.com/news/2025/mar/21/200m-building-cost-for-lng-terminal/, https://www.turner-industries.com/projects/turner-industries-bahamas-services-new-power-for-new-providence/, https://www.spglobal.com/energy/en/news-research/latest-news/natural-gas/071426-shell-greenlights-bahamas-lng-regasification-terminal",
+    "confidence": "blue",
+    "source_tier": "trade press",
+    "ref_field": "",
+    "ref_urls": [
+      "https://www.tribune242.com/news/2025/mar/21/200m-building-cost-for-lng-terminal/",
+      "https://www.turner-industries.com/projects/turner-industries-bahamas-services-new-power-for-new-providence/",
+      "https://www.spglobal.com/energy/en/news-research/latest-news/natural-gas/071426-shell-greenlights-bahamas-lng-regasification-terminal"
+    ],
+    "source_notes": "tribune242.com and turner-industries.com re-verified live. spglobal.com 403/no-snapshot kept per bot-block!=dead policy (same as Owner [ref] above), flagged in qa. LatestPlannedStartYear=2027 (Q1) unchanged and independently corroborated by the FID-timing sources.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131117",
+    "unit_id": "G100002111700",
+    "terminal_name": "Clifton Pier LNG Terminal",
+    "unit_name": "--",
+    "country": "Bahamas",
+    "field_name": "Location [ref]",
+    "old_value": "https://www.focol.com/press/FOCOL-Shell%20Phase%201%20EMP%20(10-09-24).pdf, https://www.bplco.com/wp-content/uploads/2021/09/EIA-BPL-Power-Plant-FINAL-1Jun21.pdf, https://goo.gl/maps/xz9UPJvHctaJigxU8",
+    "new_value": "https://www.focol.com/press/FOCOL-Shell%20Phase%201%20EMP%20(10-09-24).pdf, https://www.bplco.com/wp-content/uploads/2021/09/EIA-BPL-Power-Plant-FINAL-1Jun21.pdf, https://goo.gl/maps/xz9UPJvHctaJigxU8",
+    "confidence": "blue",
+    "source_tier": "government EIA/mapping service",
+    "ref_field": "",
+    "ref_urls": [
+      "https://www.focol.com/press/FOCOL-Shell%20Phase%201%20EMP%20(10-09-24).pdf",
+      "https://www.bplco.com/wp-content/uploads/2021/09/EIA-BPL-Power-Plant-FINAL-1Jun21.pdf",
+      "https://goo.gl/maps/xz9UPJvHctaJigxU8"
+    ],
+    "source_notes": "bplco.com and goo.gl/maps re-verified live. focol.com has an EXPIRED TLS certificate (verifier connection fails on strict cert check) but the page itself returns HTTP 200 and is reachable -- kept, flagged in qa for a human spot check. Location/Accuracy=approximate unchanged.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131117",
+    "unit_id": "G100002111700",
+    "terminal_name": "Clifton Pier LNG Terminal",
+    "unit_name": "--",
+    "country": "Bahamas",
+    "field_name": "PowerPlantsSupplied [ref]",
+    "old_value": "https://ewnews.com/still-on-the-table-chairman-insists-bpl-working-hard-to-close-on-shell-agreement, https://www.thenassauguardian.com/business/govt-finalizes-lng-deal-with-shell-north-america-focol/article_5d1a429a-071c-44ff-9367-e39cfe6fdcdc.html, https://www.bplco.com/wp-content/uploads/2021/09/EIA-BPL-Power-Plant-FINAL-1Jun21.pdf, https://www.thenassauguardian.com/business/shell-still-hoping-for-a-bpl-deal/article_ab7c85ee-b140-5289-8b24-765118d19cc0.html, https://opm.gov.bs/prime-minister-davis-lng-terminal-signing/",
+    "new_value": "https://ewnews.com/still-on-the-table-chairman-insists-bpl-working-hard-to-close-on-shell-agreement, https://www.thenassauguardian.com/business/govt-finalizes-lng-deal-with-shell-north-america-focol/article_5d1a429a-071c-44ff-9367-e39cfe6fdcdc.html, https://www.bplco.com/wp-content/uploads/2021/09/EIA-BPL-Power-Plant-FINAL-1Jun21.pdf, https://www.thenassauguardian.com/business/shell-still-hoping-for-a-bpl-deal/article_ab7c85ee-b140-5289-8b24-765118d19cc0.html, https://opm.gov.bs/prime-minister-davis-lng-terminal-signing/",
+    "confidence": "blue",
+    "source_tier": "trade press/government",
+    "ref_field": "",
+    "ref_urls": [
+      "https://ewnews.com/still-on-the-table-chairman-insists-bpl-working-hard-to-close-on-shell-agreement",
+      "https://www.thenassauguardian.com/business/govt-finalizes-lng-deal-with-shell-north-america-focol/article_5d1a429a-071c-44ff-9367-e39cfe6fdcdc.html",
+      "https://www.bplco.com/wp-content/uploads/2021/09/EIA-BPL-Power-Plant-FINAL-1Jun21.pdf",
+      "https://www.thenassauguardian.com/business/shell-still-hoping-for-a-bpl-deal/article_ab7c85ee-b140-5289-8b24-765118d19cc0.html",
+      "https://opm.gov.bs/prime-minister-davis-lng-terminal-signing/"
+    ],
+    "source_notes": "All 5 re-verified (ewnews.com via Wayback per above); no change.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130544",
+    "unit_id": "G100002054400",
+    "terminal_name": "Ocean Cay LNG Terminal",
+    "unit_name": "--",
+    "country": "Bahamas",
+    "field_name": "FacilityType [ref]",
+    "old_value": "https://www.offshore-technology.com/projects/oceancaylngterminala/, https://giignl.org/system/files/q-flexq-max_acceptability_database_-_march_.pdf, https://www.bahamasb2b.com/news/wmview.php?ArtID=5034, https://www.thenassauguardian.com/index.php?option=com_content&id=11181&Itemid",
+    "new_value": "https://www.offshore-technology.com/projects/oceancaylngterminala/, https://giignl.org/system/files/q-flexq-max_acceptability_database_-_march_.pdf",
+    "confidence": "blue",
+    "source_tier": "trade press/industry database",
+    "ref_field": "",
+    "ref_urls": [
+      "https://www.offshore-technology.com/projects/oceancaylngterminala/",
+      "https://giignl.org/system/files/q-flexq-max_acceptability_database_-_march_.pdf"
+    ],
+    "source_notes": "Legacy 2009-cancelled site, heavy link rot as expected. offshore-technology.com now returns HTTP 403 live but a Wayback snapshot (web.archive.org/web/20241203092050) confirms the content, incl. 'Project Type: LNG import terminal' and 'Location: Ocean Cay, The Bahamas' -- kept, bot-block-equivalent. giignl.org PDF is truly dead live (404) but a 2016 Wayback snapshot (web.archive.org/web/20160818011142) confirms it lists 'AES Ocean Cay ... Bahamas ... Ocean Cay ... Cancelled' -- kept via snapshot per policy (giignl.org rot is known tracker-wide).",
+    "scope_note": "",
+    "dropped_urls_dead": [
+      "https://www.bahamasb2b.com/news/wmview.php?ArtID=5034",
+      "https://www.thenassauguardian.com/index.php?option=com_content&id=11181&Itemid"
+    ],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130544",
+    "unit_id": "G100002054400",
+    "terminal_name": "Ocean Cay LNG Terminal",
+    "unit_name": "--",
+    "country": "Bahamas",
+    "field_name": "Capacity",
+    "old_value": "6.42",
+    "new_value": "9.19",
+    "confidence": "yellow",
+    "source_tier": "industry trade press (single source, via Wayback)",
+    "ref_field": "Capacity [ref]",
+    "ref_urls": [
+      "https://www.offshore-technology.com/projects/oceancaylngterminala/"
+    ],
+    "source_notes": "Could not corroborate the pre-existing 6.42 mtpa value against ANY currently-accessible source. The Wayback-confirmed offshore-technology.com snapshot (the row's own pre-existing citation, kept) explicitly states 'Sent-Out Capacity: 1.2bn ft3/d (bcf/d)' for this specific terminal -- converted using the standard factor (1 Bcf/d ~= 7.66 mtpa per SOP): 1.2 x 7.66 = 9.19 mtpa. MERGE note: the other pre-existing Capacity [ref] URL (giignl.org PDF) is dropped from THIS field specifically -- confirmed via Wayback text extraction (pdftotext) to be a Q-flex/Q-max acceptability status LISTING with no capacity figure at all, i.e. live-but-value-gone for Capacity. It is not dropped from the terminal overall: it remains a valid citation on FacilityType [ref], where its content does apply. Only 1 independent source found for the corrected Capacity figure -- staged yellow, not green, per the single-source rule. Flagged in qa for reviewer awareness of the correction and the unit conversion.",
+    "scope_note": "",
+    "dropped_urls_dead": [
+      "https://giignl.org/system/files/q-flexq-max_acceptability_database_-_march_.pdf"
+    ],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130544",
+    "unit_id": "G100002054400",
+    "terminal_name": "Ocean Cay LNG Terminal",
+    "unit_name": "--",
+    "country": "Bahamas",
+    "field_name": "Owner [ref]",
+    "old_value": "https://www.offshore-technology.com/projects/oceancaylngterminala/",
+    "new_value": "https://www.offshore-technology.com/projects/oceancaylngterminala/",
+    "confidence": "blue",
+    "source_tier": "trade press",
+    "ref_field": "",
+    "ref_urls": [
+      "https://www.offshore-technology.com/projects/oceancaylngterminala/"
+    ],
+    "source_notes": "Wayback snapshot confirms 'Owner and Operator: AES Ocean LNG' (AES Corp subsidiary). Kept, no change.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130544",
+    "unit_id": "G100002054400",
+    "terminal_name": "Ocean Cay LNG Terminal",
+    "unit_name": "--",
+    "country": "Bahamas",
+    "field_name": "Operator [ref]",
+    "old_value": "https://www.offshore-technology.com/projects/oceancaylngterminala/",
+    "new_value": "https://www.offshore-technology.com/projects/oceancaylngterminala/",
+    "confidence": "blue",
+    "source_tier": "trade press",
+    "ref_field": "",
+    "ref_urls": [
+      "https://www.offshore-technology.com/projects/oceancaylngterminala/"
+    ],
+    "source_notes": "Same source as Owner [ref]. Kept, no change.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130544",
+    "unit_id": "G100002054400",
+    "terminal_name": "Ocean Cay LNG Terminal",
+    "unit_name": "--",
+    "country": "Bahamas",
+    "field_name": "Location [ref]",
+    "old_value": "https://www.offshore-technology.com/projects/oceancaylngterminala/",
+    "new_value": "https://www.offshore-technology.com/projects/oceancaylngterminala/",
+    "confidence": "blue",
+    "source_tier": "trade press",
+    "ref_field": "",
+    "ref_urls": [
+      "https://www.offshore-technology.com/projects/oceancaylngterminala/"
+    ],
+    "source_notes": "Wayback snapshot confirms 'Location: Ocean Cay, The Bahamas'. Kept, no change.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130544",
+    "unit_id": "G100002054400",
+    "terminal_name": "Ocean Cay LNG Terminal",
+    "unit_name": "--",
+    "country": "Bahamas",
+    "field_name": "Status [ref]",
+    "old_value": "http://www.hydrocarbons-technology.com/projects/oceancaylngterminala/, https://bahamaschronicle.com/remembering-edward-st-georges-visionary-leadership-of-the-grand-bahama-port-authority",
+    "new_value": "http://www.hydrocarbons-technology.com/projects/oceancaylngterminala/, https://bahamaschronicle.com/remembering-edward-st-georges-visionary-leadership-of-the-grand-bahama-port-authority",
+    "confidence": "blue",
+    "source_tier": "trade press",
+    "ref_field": "",
+    "ref_urls": [
+      "http://www.hydrocarbons-technology.com/projects/oceancaylngterminala/",
+      "https://bahamaschronicle.com/remembering-edward-st-georges-visionary-leadership-of-the-grand-bahama-port-authority"
+    ],
+    "source_notes": "hydrocarbons-technology.com returns HTTP 403 live but Wayback (web.archive.org/web/20210123104451) confirms content -- kept, bot-block-equivalent (this is the SAME underlying GlobalData project-database article as offshore-technology.com, i.e. a mirror -- counted as one source alongside bahamaschronicle.com as the second independent one). bahamaschronicle.com re-verified live. Status=cancelled/confirmed re-confirmed by web search: no revival of any energy/industrial project found at the Ocean Cay site -- it is now exclusively developed as an MSC Cruises private island destination (checked per the dormant-revival-watch flag; see qa note).",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130544",
+    "unit_id": "G100002054400",
+    "terminal_name": "Ocean Cay LNG Terminal",
+    "unit_name": "--",
+    "country": "Bahamas",
+    "field_name": "CancelledYear [ref]",
+    "old_value": "http://www.hydrocarbons-technology.com/projects/oceancaylngterminala/, https://bahamaschronicle.com/remembering-edward-st-georges-visionary-leadership-of-the-grand-bahama-port-authority",
+    "new_value": "http://www.hydrocarbons-technology.com/projects/oceancaylngterminala/, https://bahamaschronicle.com/remembering-edward-st-georges-visionary-leadership-of-the-grand-bahama-port-authority",
+    "confidence": "blue",
+    "source_tier": "trade press",
+    "ref_field": "",
+    "ref_urls": [
+      "http://www.hydrocarbons-technology.com/projects/oceancaylngterminala/",
+      "https://bahamaschronicle.com/remembering-edward-st-georges-visionary-leadership-of-the-grand-bahama-port-authority"
+    ],
+    "source_notes": "Same re-verification as Status [ref]. CancelledYear=2009 unchanged.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130544",
+    "unit_id": "G100002054400",
+    "terminal_name": "Ocean Cay LNG Terminal",
+    "unit_name": "--",
+    "country": "Bahamas",
+    "field_name": "StopYear [ref]",
+    "old_value": "http://www.hydrocarbons-technology.com/projects/oceancaylngterminala/, https://bahamaschronicle.com/remembering-edward-st-georges-visionary-leadership-of-the-grand-bahama-port-authority",
+    "new_value": "http://www.hydrocarbons-technology.com/projects/oceancaylngterminala/, https://bahamaschronicle.com/remembering-edward-st-georges-visionary-leadership-of-the-grand-bahama-port-authority",
+    "confidence": "blue",
+    "source_tier": "trade press",
+    "ref_field": "",
+    "ref_urls": [
+      "http://www.hydrocarbons-technology.com/projects/oceancaylngterminala/",
+      "https://bahamaschronicle.com/remembering-edward-st-georges-visionary-leadership-of-the-grand-bahama-port-authority"
+    ],
+    "source_notes": "Same re-verification as Status [ref]. StopYear=2009 unchanged.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130544",
+    "unit_id": "G100002054400",
+    "terminal_name": "Ocean Cay LNG Terminal",
+    "unit_name": "--",
+    "country": "Bahamas",
+    "field_name": "ProposalDate [ref]",
+    "old_value": "https://www.oilandgasadvancement.com/projects/ocean-cay-lng-terminal-and-pipeline-bahamas-1/",
+    "new_value": "https://www.oilandgasadvancement.com/projects/ocean-cay-lng-terminal-and-pipeline-bahamas-1/",
+    "confidence": "blue",
+    "source_tier": "trade press",
+    "ref_field": "",
+    "ref_urls": [
+      "https://www.oilandgasadvancement.com/projects/ocean-cay-lng-terminal-and-pipeline-bahamas-1/"
+    ],
+    "source_notes": "Re-verified live, no change.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130544",
+    "unit_id": "G100002054400",
+    "terminal_name": "Ocean Cay LNG Terminal",
+    "unit_name": "--",
+    "country": "Bahamas",
+    "field_name": "StartDate [ref]",
+    "old_value": "https://www.oilandgasadvancement.com/projects/ocean-cay-lng-terminal-and-pipeline-bahamas-1/",
+    "new_value": "https://www.oilandgasadvancement.com/projects/ocean-cay-lng-terminal-and-pipeline-bahamas-1/",
+    "confidence": "blue",
+    "source_tier": "trade press",
+    "ref_field": "",
+    "ref_urls": [
+      "https://www.oilandgasadvancement.com/projects/ocean-cay-lng-terminal-and-pipeline-bahamas-1/"
+    ],
+    "source_notes": "Re-verified live, no change.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100001047792",
+    "unit_id": "G100001054688",
+    "terminal_name": "Island Power Producers LNG Terminal",
+    "unit_name": "--",
+    "country": "Bahamas",
+    "field_name": "FacilityType [ref]",
+    "old_value": "https://energy.economictimes.indiatimes.com/news/oil-and-gas/inox-bags-contract-to-build-bahamas-first-mini-lng-terminal-for-cruise-ship-power/115168906, https://lngprime.com/contracts-and-tenders/inoxcva-bags-bahamas-lng-terminal-gig/132099/",
+    "new_value": "https://energy.economictimes.indiatimes.com/news/oil-and-gas/inox-bags-contract-to-build-bahamas-first-mini-lng-terminal-for-cruise-ship-power/115168906, https://lngprime.com/contracts-and-tenders/inoxcva-bags-bahamas-lng-terminal-gig/132099/",
+    "confidence": "blue",
+    "source_tier": "trade press",
+    "ref_field": "",
+    "ref_urls": [
+      "https://energy.economictimes.indiatimes.com/news/oil-and-gas/inox-bags-contract-to-build-bahamas-first-mini-lng-terminal-for-cruise-ship-power/115168906",
+      "https://lngprime.com/contracts-and-tenders/inoxcva-bags-bahamas-lng-terminal-gig/132099/"
+    ],
+    "source_notes": "Both re-verified live via url_verifier.py. No change.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100001047792",
+    "unit_id": "G100001054688",
+    "terminal_name": "Island Power Producers LNG Terminal",
+    "unit_name": "--",
+    "country": "Bahamas",
+    "field_name": "Status [ref]",
+    "old_value": "https://energy.economictimes.indiatimes.com/news/oil-and-gas/inox-bags-contract-to-build-bahamas-first-mini-lng-terminal-for-cruise-ship-power/115168906, https://lngprime.com/contracts-and-tenders/inoxcva-bags-bahamas-lng-terminal-gig/132099/",
+    "new_value": "https://energy.economictimes.indiatimes.com/news/oil-and-gas/inox-bags-contract-to-build-bahamas-first-mini-lng-terminal-for-cruise-ship-power/115168906, https://lngprime.com/contracts-and-tenders/inoxcva-bags-bahamas-lng-terminal-gig/132099/",
+    "confidence": "blue",
+    "source_tier": "trade press",
+    "ref_field": "",
+    "ref_urls": [
+      "https://energy.economictimes.indiatimes.com/news/oil-and-gas/inox-bags-contract-to-build-bahamas-first-mini-lng-terminal-for-cruise-ship-power/115168906",
+      "https://lngprime.com/contracts-and-tenders/inoxcva-bags-bahamas-lng-terminal-gig/132099/"
+    ],
+    "source_notes": "Status=proposed re-confirmed by fresh search: EIA published Nov 2025, submitted for public review Jan 2026; no indication construction has begun as of Aug 2026 (per thenassauguardian.com coverage: project described as still awaiting environmental clearance, 'a few months out'). Refs re-verified live. No change.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100001047792",
+    "unit_id": "G100001054688",
+    "terminal_name": "Island Power Producers LNG Terminal",
+    "unit_name": "--",
+    "country": "Bahamas",
+    "field_name": "Owner [ref]",
+    "old_value": "https://www.tribune242.com/news/2025/jul/02/cfal-unveils-50m-target-for-new-private-equity-fund/",
+    "new_value": "https://www.tribune242.com/news/2025/jul/02/cfal-unveils-50m-target-for-new-private-equity-fund/",
+    "confidence": "blue",
+    "source_tier": "local press",
+    "ref_field": "",
+    "ref_urls": [
+      "https://www.tribune242.com/news/2025/jul/02/cfal-unveils-50m-target-for-new-private-equity-fund/"
+    ],
+    "source_notes": "Re-verified live, token 'Island Power' present. No change. Single-source citation carried forward as-is (pre-existing yellow-tier situation, not newly introduced this batch).",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100001047792",
+    "unit_id": "G100001054688",
+    "terminal_name": "Island Power Producers LNG Terminal",
+    "unit_name": "--",
+    "country": "Bahamas",
+    "field_name": "Operator [ref]",
+    "old_value": "https://energy.economictimes.indiatimes.com/news/oil-and-gas/inox-bags-contract-to-build-bahamas-first-mini-lng-terminal-for-cruise-ship-power/115168906, https://lngprime.com/contracts-and-tenders/inoxcva-bags-bahamas-lng-terminal-gig/132099/, https://www.chemanalyst.com/NewsAndDeals/NewsDetails/inoxcva-awarded-major-contract-to-build-largest-mini-lng-terminal-in-the-bahamas-31391, https://www.thenassauguardian.com/news/island-power-producers-ltd-selected-to-provide-shore-power-to-cruise-terminal/article_cbe598d0-6eb2-11ef-a05c-83607fa87a7f.html?utm_campaign=blox&utm_source=facebook&utm_medium=social",
+    "new_value": "https://www.thenassauguardian.com/news/island-power-producers-ltd-selected-to-provide-shore-power-to-cruise-terminal/article_cbe598d0-6eb2-11ef-a05c-83607fa87a7f.html?utm_campaign=blox&utm_source=facebook&utm_medium=social, https://energy.economictimes.indiatimes.com/news/oil-and-gas/inox-bags-contract-to-build-bahamas-first-mini-lng-terminal-for-cruise-ship-power/115168906, https://lngprime.com/contracts-and-tenders/inoxcva-bags-bahamas-lng-terminal-gig/132099/, https://www.chemanalyst.com/NewsAndDeals/NewsDetails/inoxcva-awarded-major-contract-to-build-largest-mini-lng-terminal-in-the-bahamas-31391",
+    "confidence": "blue",
+    "source_tier": "trade press + local press",
+    "ref_field": "",
+    "ref_urls": [
+      "https://www.thenassauguardian.com/news/island-power-producers-ltd-selected-to-provide-shore-power-to-cruise-terminal/article_cbe598d0-6eb2-11ef-a05c-83607fa87a7f.html?utm_campaign=blox&utm_source=facebook&utm_medium=social",
+      "https://energy.economictimes.indiatimes.com/news/oil-and-gas/inox-bags-contract-to-build-bahamas-first-mini-lng-terminal-for-cruise-ship-power/115168906",
+      "https://lngprime.com/contracts-and-tenders/inoxcva-bags-bahamas-lng-terminal-gig/132099/",
+      "https://www.chemanalyst.com/NewsAndDeals/NewsDetails/inoxcva-awarded-major-contract-to-build-largest-mini-lng-terminal-in-the-bahamas-31391"
+    ],
+    "source_notes": "All 4 sources re-verified live (all PASS). Minor cleanup: stripped social-share tracking query params (utm_campaign etc.) from the thenassauguardian.com URL -- same underlying page, cosmetic only. [ref-restore 2026-08-11: restored existing live URL(s) https://www.thenassauguardian.com/news/island-power-producers-ltd-selected-to-provide-shore-power-to-cruise-terminal/article_cbe598d0-6eb2-11ef-a05c-83607fa87a7f.html?utm_campaign=blox&utm_source=facebook&utm_medium=social per merge-semantics rule (bot-block != dead; never drop a URL not proven dead)]",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100001047792",
+    "unit_id": "G100001054688",
+    "terminal_name": "Island Power Producers LNG Terminal",
+    "unit_name": "--",
+    "country": "Bahamas",
+    "field_name": "ProposalDate [ref]",
+    "old_value": "https://energy.economictimes.indiatimes.com/news/oil-and-gas/inox-bags-contract-to-build-bahamas-first-mini-lng-terminal-for-cruise-ship-power/115168906, https://lngprime.com/contracts-and-tenders/inoxcva-bags-bahamas-lng-terminal-gig/132099/",
+    "new_value": "https://energy.economictimes.indiatimes.com/news/oil-and-gas/inox-bags-contract-to-build-bahamas-first-mini-lng-terminal-for-cruise-ship-power/115168906, https://lngprime.com/contracts-and-tenders/inoxcva-bags-bahamas-lng-terminal-gig/132099/",
+    "confidence": "blue",
+    "source_tier": "trade press",
+    "ref_field": "",
+    "ref_urls": [
+      "https://energy.economictimes.indiatimes.com/news/oil-and-gas/inox-bags-contract-to-build-bahamas-first-mini-lng-terminal-for-cruise-ship-power/115168906",
+      "https://lngprime.com/contracts-and-tenders/inoxcva-bags-bahamas-lng-terminal-gig/132099/"
+    ],
+    "source_notes": "Re-verified live. No change.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100001047792",
+    "unit_id": "G100001054688",
+    "terminal_name": "Island Power Producers LNG Terminal",
+    "unit_name": "--",
+    "country": "Bahamas",
+    "field_name": "StartDate [ref]",
+    "old_value": "https://www.theia.global/article/island-power-producers-plans-lng-power-plant-for-nassau-cruise-port-by-2027-03de6b67",
+    "new_value": "https://www.theia.global/article/island-power-producers-plans-lng-power-plant-for-nassau-cruise-port-by-2027-03de6b67",
+    "confidence": "blue",
+    "source_tier": "trade press",
+    "ref_field": "",
+    "ref_urls": [
+      "https://www.theia.global/article/island-power-producers-plans-lng-power-plant-for-nassau-cruise-port-by-2027-03de6b67"
+    ],
+    "source_notes": "Re-verified live, token '2027' present. LatestPlannedStartYear=2027 unchanged; fresh Aug-2026 search confirms no revision to this date (project 'a few months out' from construction start per thenassauguardian.com, consistent with a 2027 completion once ~12-13 month build begins).",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100001047792",
+    "unit_id": "G100001054688",
+    "terminal_name": "Island Power Producers LNG Terminal",
+    "unit_name": "--",
+    "country": "Bahamas",
+    "field_name": "Location [ref]",
+    "old_value": "https://depp.gov.bs/wp-content/uploads/2026/01/Compressed-Revised-Arawak-Cay-LNG-Project-EIA-Final-1.pdf",
+    "new_value": "https://depp.gov.bs/wp-content/uploads/2026/01/Compressed-Revised-Arawak-Cay-LNG-Project-EIA-Final-1.pdf",
+    "confidence": "blue",
+    "source_tier": "government EIA filing",
+    "ref_field": "",
+    "ref_urls": [
+      "https://depp.gov.bs/wp-content/uploads/2026/01/Compressed-Revised-Arawak-Cay-LNG-Project-EIA-Final-1.pdf"
+    ],
+    "source_notes": "depp.gov.bs returns HTTP 403 live; manually confirmed via Wayback CDX that NO snapshot exists yet for this URL (a Jan-2026 gov PDF, plausibly not yet crawled). Kept per bot-block-is-not-proof-of-death policy (403 is a block signal, not a dead-link signal), but flagged in qa since this is the sole citation for this field and could not be content-reverified this batch.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100001047792",
+    "unit_id": "G100001054688",
+    "terminal_name": "Island Power Producers LNG Terminal",
+    "unit_name": "--",
+    "country": "Bahamas",
+    "field_name": "PowerPlantsSupplied [ref]",
+    "old_value": "https://energy.economictimes.indiatimes.com/news/oil-and-gas/inox-bags-contract-to-build-bahamas-first-mini-lng-terminal-for-cruise-ship-power/115168906",
+    "new_value": "https://energy.economictimes.indiatimes.com/news/oil-and-gas/inox-bags-contract-to-build-bahamas-first-mini-lng-terminal-for-cruise-ship-power/115168906",
+    "confidence": "blue",
+    "source_tier": "trade press",
+    "ref_field": "",
+    "ref_urls": [
+      "https://energy.economictimes.indiatimes.com/news/oil-and-gas/inox-bags-contract-to-build-bahamas-first-mini-lng-terminal-for-cruise-ship-power/115168906"
+    ],
+    "source_notes": "Re-verified live. No change.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  }
+]

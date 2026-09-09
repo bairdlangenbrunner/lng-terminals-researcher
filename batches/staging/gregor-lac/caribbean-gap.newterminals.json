@@ -1,0 +1,38 @@
+[
+ {
+  "TerminalName": "Woodbourne LNG Terminal",
+  "OtherNames": "Woodbourne Regasification Plant",
+  "FacilityType": "import",
+  "Fuel": "LNG",
+  "Country/Area": "Barbados",
+  "State/Province": "Saint Philip",
+  "Location": "Woodbourne, Saint Philip, Barbados",
+  "Accuracy": "approximate",
+  "Owner": "Barbados National Oil Company",
+  "Operator": "Barbados National Oil Company",
+  "ProposalYear": "2015",
+  "ActualStartYear": "2016",
+  "Status": "operating",
+  "Capacity": "",
+  "CapacityUnits": "",
+  "Offshore": "False",
+  "Floating": "False",
+  "Owner [ref]": "https://www.bnecl.com.bb/our-portfolio/onshore-oil-and-gas",
+  "Operator [ref]": "https://www.bnecl.com.bb/our-portfolio/onshore-oil-and-gas",
+  "Status [ref]": "https://www.rivieramm.com/news-content-hub/flexible-iso-tanks-boost-small-scale-lng-28491",
+  "Location [ref]": "https://www.bnecl.com.bb/our-portfolio/",
+  "Source [ref]": "https://www.bnecl.com.bb/our-portfolio/onshore-oil-and-gas",
+  "ResearcherNotesProject": "ENTITY: Owner/Operator staged as the EXISTING GEM entity 'Barbados National Oil Company' (entity_id 100002005362, abbreviation BNOCL; last modified 2026-04-17) -- confirmed present in the read-only Postgres entity_history by the orchestrator on 2026-08-11. The company now trades as Barbados National Energy Company Limited (BNECL) following the 1 Apr 2025 amalgamation of BNOCL and the Barbados National Terminal Company Limited (BNTCL); that is an entity-level RENAME of 100002005362, not a new entity, and is filed as a separate qa item -- do NOT create a BNECL entity when pasting this row.  || Small-scale, ISO-tank-container LNG import terminal -- a genuine GEM coverage gap (Barbados had zero GEM LNG rows). LNG is produced at the American LNG Marketing liquefaction plant in Hialeah, Florida (60,000 tpa), trucked to Miami, and shipped in cryogenic 40ft ISO tank containers aboard container ships to Barbados; Barbados National Oil Company (BNOC, now merged into Barbados National Energy Company Ltd / BNECL as of 1 Apr 2025) receives and regasifies the containers at its Woodbourne, St Philip plant for injection into the national gas grid, replacing fuel oil for Barbados Light & Power generation and residential/commercial gas users. Import began in 2016 (Barbados was 'the second Caribbean island, after Puerto Rico, to import LNG in tank containers' per Riviera, published May 2017, describing the prior year). SCOPE: this passes the marine-import scope gate -- the LNG physically crosses the US-Barbados border aboard a ship (a container ship carrying ISO tanks), unlike a purely domestic virtual-pipeline/trucking scheme (the Dar es Salaam miss) where no marine crossing occurs at all; it is also not ship bunkering. The methodology tracks LNG terminals 'at all scales except bunkering.' Capacity left blank: no reliable current throughput figure was found (2017 reporting cited '4x40ft tank loads per week' plus a stated plan for 'a fourfold increase' in throughput and an eventual move to coastal-tanker imports, but no MTPA-equivalent figure was ever published, and no source after 2017 with a hard number surfaced). BNECL's 2026 corporate site still describes the plant as operating today ('operates a re-gasification plant that converts LNG into natural gas for distribution... 25% [of supply] from local [gas] sources'), corroborating current operating status. researcher_initials note: no lat/lon pin found in sources; Location is a place-name string (Woodbourne, St Philip) rather than a verified coordinate -- Accuracy=approximate.",
+  "Source": "American LNG Marketing (Hialeah, FL) via ISO tank container / container ship",
+  "researcher_initials": "AI-draft (discovery sweep)",
+  "confidence_overall": "yellow",
+  "confidence_per_field": {
+   "FacilityType": "yellow",
+   "Owner": "yellow",
+   "Operator": "yellow",
+   "Status": "yellow",
+   "Location": "yellow"
+  },
+  "StartDate [ref]": "https://www.rivieramm.com/news-content-hub/flexible-iso-tanks-boost-small-scale-lng-28491"
+ }
+]

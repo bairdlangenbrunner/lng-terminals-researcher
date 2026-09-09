@@ -1,0 +1,110 @@
+[
+  {
+    "terminal": "Tanjung Benoa FSRU",
+    "terminal_id": "T100000130276",
+    "country": "Indonesia",
+    "verdict": "YES",
+    "mechanical": "False",
+    "captive_category": "power_generation",
+    "hardware_summary": "Dual-fuel (gas/diesel) auxiliary generator set aboard the FSRU (vessel: Karunia Dewata), fitted with a SOGAV (Safety of Gas Admission Valve) fuel-gas supply system feeding the generator's cylinders -- a DFDE-type (dual-fuel diesel-electric) marine auxiliary power plant; count/rating not disclosed in the source.",
+    "fuel_basis": "A 2025 Politeknik Ilmu Pelayaran Makassar (Indonesian maritime academy) engineering thesis, based on direct onboard observation, documents a SOGAV malfunction that caused a 'fuel gas trip' in the Dual Fuel Generator, disrupting 'the fuel gas supply to each cylinder' -- direct technical confirmation the generator runs on fuel gas (in dual-fuel gas/diesel mode) during normal shipboard operation, consistent with the DFDE (Dual-Fuel Diesel-Electric) LNG-carrier/FSRU auxiliary-power design referenced in the thesis's own bibliography.",
+    "confidence": "yellow",
+    "captive_summary": "The FSRU Karunia Dewata carries its own onboard Dual Fuel Generator (DFDE-type, gas/diesel) providing the vessel's electrical power; a 2025 maritime-academy thesis documents a fuel-gas-supply fault (SOGAV/gas admission valve) in this generator during a May 2022 incident at Benoa Port, confirming gas-fired operation. No MW nameplate is disclosed. This is separate from the terminal's send-out relationship to the Pesanggaran Diesel and Gas Power Plant (PLTDG), which is an external grid power station the terminal supplies (not captive).",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Politeknik Ilmu Pelayaran Makassar thesis (Walajri Tri Putra Hamka, 2025), 'Upaya Meningkatkan Performance Dual Fuel Generator Guna Kelancaran Operasi Pada Kapal FSRU Karunia Dewata' -- an engineering-cadet paper based on direct onboard observation of the vessel's Dual Fuel Generator, describing a SOGAV (Safety of Gas Admission Valve) malfunction that caused a 'fuel gas trip', disrupting 'the fuel gas supply to each cylinder', during a May 7, 2022 incident at Benoa Port, Bali. The thesis's cited literature includes 'DFDE berbahan bakar utama CNG' (DFDE with main fuel CNG) and 'The DF-Electrical LNG Carrier Concept', situating the generator as a standard marine dual-fuel diesel-electric unit.",
+    "refs": [
+      "http://eprints.pipmakassar.ac.id/1239/"
+    ],
+    "verification_log": [
+      {"url": "https://eprints.pipmakassar.ac.id/1239/", "tokens": ["Dual Fuel Generator", "Karunia Dewata"], "result": "FAIL", "note": "HTTPS endpoint unreachable (connection refused) during this research session"},
+      {"url": "http://eprints.pipmakassar.ac.id/1239/", "tokens": ["Dual Fuel Generator", "FSRU Karunia Dewata", "SOGAV"], "result": "PASS", "note": "plain-HTTP variant reachable; page (eprints metadata/abstract) contains all tokens and the SOGAV/fuel-gas-trip finding"},
+      {"url": "https://id.scribd.com/document/581495451/FSRU-KARUNIA-DEWATA", "tokens": ["Karunia Dewata"], "result": "FAIL", "note": "landing page loads but full document text is paywalled; not used as a citation. Content skimmed via WebFetch confirms only the terminal's general regas/send-out purpose, not used as evidence for or against captive power"}
+    ],
+    "gogpt_prior_assessment": "gogpt_prior is recorded as 'no' and gogpt_plant is blank for this terminal -- no GOGPT plant was supplied as a colocation candidate to assess.",
+    "gogpt_candidate": "REVIEWER CALL",
+    "gogpt_candidate_basis": "Generation is confirmed to exist (vessel's own dual-fuel auxiliary generator) but there is no citable nameplate MW, and it is vessel-mounted (FSRU onboard genset) -- unclear whether GOGPT's ontology would capture a single FSRU's auxiliary power plant as a standalone power-station record.",
+    "status_or_other_findings": "",
+    "notes": "Direction-test check: GEM's existing power_plants_supplied field already lists 'Pesanggaran Diesel and Gas Power Plant (PLTDG)' for this terminal -- a supporting source (id.scribd.com/document/581495451) independently confirms the FSRU's stated purpose is to regasify LNG for distribution to power plants serving Bali's growing electricity demand. That send-out relationship is the opposite direction from captive power and does not negate the onboard generator finding above. Recommend re-attempting https://eprints.pipmakassar.ac.id/1239/ (https) in a future session in case the outage was transient, and searching for a second independent corroboration of the vessel's generator spec to upgrade confidence from yellow to green."
+  },
+  {
+    "terminal": "Teluk Lamong LNG Terminal",
+    "terminal_id": "T100000130698",
+    "country": "Indonesia",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "",
+    "captive_summary": "No public design, AMDAL/UKL-UPL, or EPC-scope document was found describing this terminal's electricity supply. It is reported as a small-scale (targeted 30 BBTUD) land-based LNG import/regasification terminal at Teluk Lamong port, Surabaya (a large, grid-served industrial port area), being built by PGN LNG Indonesia (via PT Lamong Nusantara Gas) and PT Pelindo Energi Logistik, with China's Furui LNG contracted for the plant EPC work and targeting operation by end-2028. No source found states whether the terminal is grid-fed (PLN) or carries any on-site gas-fired generation -- absence of a documented negative means this is INSUFFICIENT, not NO.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Searched PGN LNG Indonesia's own site (pgnlng.co.id -- no Teluk Lamong-specific content found), Petromindo trade press (project resumption/timeline article), and general web/Bahasa Indonesia searches for AMDAL/'pembangkit listrik'/'PLN' terms specific to this project. No AMDAL/UKL-UPL filing, no EPC technical scope document, and no news article describing the terminal's own power supply was located within the search budget available (WebSearch quota exhausted this session; DuckDuckGo/Bing/Google WebFetch searches used instead, several blocked by CAPTCHA or returning irrelevant cached results).",
+    "refs": [
+      "https://www.petromindo.com/news/article/teluk-lamong-lng-terminal-development-resumes-targets-operation-by-end-2028"
+    ],
+    "verification_log": [
+      {"url": "https://www.petromindo.com/news/article/teluk-lamong-lng-terminal-development-resumes-targets-operation-by-end-2028", "tokens": ["2028"], "result": "PASS", "note": "confirms project status/timeline only, not power supply"}
+    ],
+    "gogpt_prior_assessment": "gogpt_prior is recorded as 'no' and gogpt_plant is blank for this terminal -- no GOGPT plant was supplied as a colocation candidate to assess.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No on-site generation of any kind was found in the research conducted; nothing to add to GOGPT on current evidence.",
+    "status_or_other_findings": "Petromindo (2026) reports the project has resumed after prior delays (originally targeted for completion in 2019), now targets operation by end-2028, with China's Furui LNG selected for EPC work and PGN seeking additional LNG cargo supply. Not acted on -- for a future Update batch to consider against GEM's LatestPlannedStartYear field.",
+    "notes": "Do not confuse this LNG import terminal with the separate, well-documented 'green port' features (solar cells, LED lighting) of the adjacent Pelindo Teluk Lamong container/multipurpose port terminal -- those are unrelated port infrastructure, not the LNG facility's power supply, and were excluded from this assessment after a source (id.scribd.com/document/330513865) surfaced describing the container port rather than the LNG terminal."
+  },
+  {
+    "terminal": "West Papua FLNG Terminal",
+    "terminal_id": "T100000131148",
+    "country": "Indonesia",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "Generator sets are confirmed as part of the FLNG's long-lead procurement scope (alongside cold box and compressor) under the USD43.04 million Limited Notice to Proceed Agreement with Wison New Energies (8 Sept 2023) -- count, rating, and fuel type not disclosed in any source found.",
+    "fuel_basis": "Not established in any source found. 'Generator sets' are named as a long-lead procurement item for the FLNG vessel, but no source states whether they are gas-fired/dual-fuel or diesel. The facility is an offshore/moored FLNG (no grid access at the Fakfak-Bintuni concession site) processing its own feed gas (330 MMSCFD from the Asap/Merah/Kido structures), which is the class of project where on-site gas-fired generation is standard industry practice -- but that is a design prior, not a documented fact for this specific vessel, and the fuel gate requires a stated fuel, so this is scored INSUFFICIENT rather than YES.",
+    "confidence": "",
+    "captive_summary": "The FLNG vessel 'Alam Guyub' (under construction at Wison's Nantong shipyard, keel laid 18 Feb 2025, ~40% complete) will process feed gas from the Kasuri Block's Asap/Merah/Kido structures into 1.2 MTPA of LNG. Wison's EPCIC scope includes 'generator sets' as a named long-lead item, confirming on-site generation equipment is part of the design, but no source specifies whether these sets burn gas, diesel, or both.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Genting Berhad press releases (18 Feb 2025 keel-laying announcement; 28 Oct 2024 procurement/CIC contract announcement) confirm project status, contracts and timeline but do not mention power generation equipment. Ruangenergi.com (Indonesian trade press) quotes the Limited Notice to Proceed Agreement scope: 'pembelian long lead items termasuk cold box, compressor, generator sets dan lain-lain' (purchase of long lead items including cold box, compressor, generator sets, and others) -- confirming generator sets are part of the FLNG's equipment package, but not their fuel type. Searched specifically for Wison/Genting technical specs, AMDAL, and vendor releases naming a gas turbine/gas engine model; none found within the search budget available (WebSearch quota exhausted; DuckDuckGo/Bing WebFetch searches used, most returned no results for narrower technical queries).",
+    "refs": [
+      "https://www.genting.com/wp-content/uploads/2025/02/20250218_Gent_PTLayarNusantaraGas_FLNG_Facility.pdf",
+      "https://www.ruangenergi.com/pt-layar-nusantara-gas-anak-usaha-genting-oil-dan-wison-tandatangani-limited-notice-to-proceed-agreement/"
+    ],
+    "verification_log": [
+      {"url": "https://www.genting.com/wp-content/uploads/2025/02/20250218_Gent_PTLayarNusantaraGas_FLNG_Facility.pdf", "tokens": ["Alam Guyub", "keel"], "result": "PASS", "note": "confirms vessel name, status, timeline -- no power-equipment detail"},
+      {"url": "https://www.ruangenergi.com/pt-layar-nusantara-gas-anak-usaha-genting-oil-dan-wison-tandatangani-limited-notice-to-proceed-agreement/", "tokens": ["generator sets"], "result": "PASS", "note": "confirms 'generator sets' named as a long-lead procurement item for the FLNG"}
+    ],
+    "gogpt_prior_assessment": "gogpt_prior is recorded as 'no' and gogpt_plant is blank for this terminal -- no GOGPT plant was supplied as a colocation candidate to assess.",
+    "gogpt_candidate": "MAYBE",
+    "gogpt_candidate_basis": "On-site generation equipment ('generator sets') is confirmed to be part of the design, but the facility is still under construction (~40% complete as of Feb 2025), fuel type and MW are undisclosed, and no commissioning/nameplate data exists yet -- a pre-filing MAYBE pending the facility reaching operation.",
+    "status_or_other_findings": "Vessel named 'Alam Guyub'; keel laid 18 Feb 2025 at Wison's Nantong shipyard (construction ~40% complete at that date, up from 32.83% as of 26 Sept 2024); first-LNG/operations targeted Q2-Q3 2027; investment ~US$963 million; feed gas from Asap/Merah/Kido structures within the Kasuri Block PSC (Genting Oil Kasuri Pte Ltd, upstream operator), 330 MMSCFD projected from 2027. Not acted on -- flagging for the Update workflow to confirm/refresh vessel name, capacity, and timeline fields.",
+    "notes": "Recommend revisiting this terminal once construction nears completion/commissioning -- an EIA, vendor release (Wison/turbine OEM), or commissioning report is likely to name the generator sets' fuel and rating explicitly, converting this INSUFFICIENT to a real verdict either way."
+  },
+  {
+    "terminal": "Woodside Probolinggo LNG Terminal",
+    "terminal_id": "T100000131085",
+    "country": "Indonesia",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "",
+    "captive_summary": "",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "",
+    "refs": [
+      "https://jatim.antaranews.com/berita/411402/petrogas-jatim-utama-gandeng-woodside-australia-bangun-proyek-lng-regasifikasi"
+    ],
+    "verification_log": [
+      {"url": "https://jatim.antaranews.com/berita/411402/petrogas-jatim-utama-gandeng-woodside-australia-bangun-proyek-lng-regasifikasi", "tokens": ["memorandum of understanding"], "result": "PASS", "note": "confirms project never progressed past MOU stage"}
+    ],
+    "gogpt_prior_assessment": "gogpt_prior is recorded as 'no' and gogpt_plant is blank for this terminal -- no GOGPT plant was supplied as a colocation candidate to assess.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Project never reached design/construction; nothing to add to GOGPT.",
+    "status_or_other_findings": "",
+    "notes": "SCREENED -- cancelled-and-never-built proposal. PT Petrogas Jatim Utama (East Java regional SOE) and Woodside Energy signed only a Memorandum of Understanding for an LNG regasification hub at Probolinggo port on 1 September 2020, after ~16 months of preliminary talks (jatim.antaranews.com, 1 Sept 2020). The PJU CEO's own statement at signing named 'engineering detail' and a market 'letter of intent' as the NEXT steps still required before construction -- i.e. the project never reached a published engineering design. No further news of the project has surfaced since 2020, consistent with GEM's 'cancelled (inferred 4 y)' status. No design/EIA was ever published, so there is nothing to research for an as-designed captive-power finding."
+  }
+]

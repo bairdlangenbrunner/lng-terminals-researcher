@@ -1,0 +1,32 @@
+[
+  {
+    "category": "othername_not_staged",
+    "terminal_id": "T100000131001",
+    "unit_id": "",
+    "terminal_name": "Jade Energy LNG Terminal",
+    "issue": "The Germany discovery agent suggested 'TES Wilhelmshaven Import Terminal' as an additional OtherNames alias. Not staged: no source found using that literal phrase. Checked energate-messenger.com's rename article (403 bot-block, and no Wayback snapshot available to fall back on -- genuinely unverifiable this batch, not proven dead), en.wikipedia.org/wiki/Wilhelmshaven_LNG_terminal (doesn't mention TES or this project at all -- that article is about the unrelated Uniper/Hoegh Esperanza FSRU), and jadeenergy.de's launch article (uses 'Wilhelmshaven import terminal project' generically, not 'TES Wilhelmshaven Import Terminal'). The generic phrase 'Wilhelmshaven import terminal' is also low alias value on its own since multiple distinct GEM-tracked projects share the Wilhelmshaven port name (Wilhelmshaven FSRU, Wilhelmshaven TES FSRU, Wilhelmshaven NWO FSRU).",
+    "severity": "low",
+    "suggested_action": "No action needed now. If energate-messenger.com becomes reachable (or a Wayback snapshot appears) in a future pass and it contains this exact phrase, revisit.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "entity_lookup_false_negative",
+    "terminal_id": "T100000131001",
+    "unit_id": "",
+    "terminal_name": "Jade Energy LNG Terminal",
+    "issue": "entity_lookup.py run bare (no --country) for 'Fortescue' and 'Tree Energy Solutions' both returned result: not_found_in_local_data, even though both entities are already present on this exact terminal record (Parent GEM Entity ID E100002025092 = Netherlands Fortescue Future Industries Holdings BV [30%]; E100002025093 = Tree Energy Solutions BV [70%]). The local scanner appears not to index the Parent column the way it does Owner/Operator -- a false negative, not evidence of a genuine gap. --remote was unavailable this session per the task brief (GEM_PROJECT_DB_BASE_URL unset).",
+    "severity": "low",
+    "suggested_action": "No entity action needed -- both entities already exist with GEM Entity IDs on this record. Flagging only so the orchestrator's Postgres entity_history cross-check isn't misled by a stale 'not found' reading, and as a possible entity_lookup.py coverage gap worth checking (does the local scan cover the Parent field?).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000131001",
+    "unit_id": "G100002100100",
+    "terminal_name": "Jade Energy LNG Terminal",
+    "issue": "Status remains 'proposed' -- confirmed still accurate. fetch_timeline.py shows the read-only Postgres timeline already carries the 2030 operating/planned entry (superseding the earlier 2025 operating/planned entry) and no actual/FID entry; a 2026-07-29 WebSearch for 'Jade Energy Wilhelmshaven FID / final investment decision 2026' found no announcement. No status or timeline edit staged.",
+    "severity": "low",
+    "suggested_action": "No action needed. Re-check status in a future pass given the project's active permitting/FID-seeking stage.",
+    "researcher_initials": "AI-draft"
+  }
+]

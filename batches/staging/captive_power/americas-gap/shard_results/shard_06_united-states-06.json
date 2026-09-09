@@ -1,0 +1,315 @@
+[
+ {
+  "terminal": "Main Pass Energy Hub FLNG Terminal",
+  "terminal_id": "T100000130636",
+  "country": "United States",
+  "verdict": "YES",
+  "mechanical": "False",
+  "captive_category": "power_generation",
+  "hardware_summary": "Baker Hughes (BHGE) LM9000 aeroderivative gas turbine(s) selected 2018 for the 2x Liqui-Max FLNG vessels (24 mtpa); count/electric rating for this specific project not published (LM9000 class rated ~65-73 MW each per Baker Hughes).",
+  "fuel_basis": "Natural gas — Baker Hughes LM9000 gas turbine, standard product line fuel",
+  "confidence": "yellow",
+  "captive_summary": "Global LNG Services selected Baker Hughes to supply the LM9000 gas turbine for its Main Pass Energy Hub FLNG export project (16 mi offshore Louisiana, 2x Liqui-Max vessels, 24 mtpa combined) in 2018. This is a published as-designed equipment selection for an unbuilt/cancelled project, which per SOP counts as a YES on design even though never constructed.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "offshore-energy.biz (2018): 'Global LNG Services has selected Baker Hughes, a GE Company, to supply a gas turbine for its Main Pass Energy Hub LNG export project located offshore southeast Louisiana in the Gulf of Mexico.' lngindustry.com (2018): confirms LM9000 model selection, quotes BHGE's Rod Christie that 'the LM9000 has been selected by GLS for their project.' Baker Hughes product page confirms LM9000 is an aeroderivative gas turbine (generator-set class).",
+  "refs": [
+   "https://www.offshore-energy.biz/gls-selects-bhge-gas-turbines-for-its-main-pass-lng-project/",
+   "https://www.lngindustry.com/liquid-natural-gas/26062018/gls-advances-mpeh-lng-export-project/",
+   "https://www.bakerhughes.com/gas-turbines/aeroderivative-technology/lm9000-aeroderivative-gas-turbine"
+  ],
+  "verification_log": [
+   {
+    "url": "https://www.offshore-energy.biz/gls-selects-bhge-gas-turbines-for-its-main-pass-lng-project/",
+    "tokens": [
+     "Baker Hughes",
+     "Main Pass"
+    ],
+    "result": "PASS",
+    "note": ""
+   },
+   {
+    "url": "https://www.lngindustry.com/liquid-natural-gas/26062018/gls-advances-mpeh-lng-export-project/",
+    "tokens": [
+     "LM9000",
+     "Main Pass"
+    ],
+    "result": "PASS",
+    "note": ""
+   },
+   {
+    "url": "https://www.bakerhughes.com/gas-turbines/aeroderivative-technology/lm9000-aeroderivative-gas-turbine",
+    "tokens": [
+     "LM9000"
+    ],
+    "result": "PASS",
+    "note": ""
+   }
+  ],
+  "gogpt_prior_assessment": "No GOGPT plant listed within 30 km of this terminal in neighbors_raw.json.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "Project cancelled/never built (GEM status: cancelled, inferred 4y); no physical plant exists. Even if built, the LM9000 turbine(s) would be integral to the FLNG facility itself, not a separate free-standing merchant power station.",
+  "status_or_other_findings": "DOE vacated the export authorization in 2013 (DOE/FE Order No. 3220-A per project background); some reports suggest renewed developer interest following 2025 policy changes — not verified, do not act on.",
+  "notes": "Offshore/floating export FLNG using Liqui-Max design; sub-$9B estimated cost; capacity referenced as up to 24 mtpa (2 vessels)."
+ },
+ {
+  "terminal": "Monkey Island LNG Terminal",
+  "terminal_id": "T100000130235",
+  "country": "United States",
+  "verdict": "INSUFFICIENT",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "red",
+  "captive_summary": "Monkey Island LNG (proposed, Cameron Parish LA, ConocoPhillips Optimized Cascade Process, ~25.6 mtpa in two phases) awarded McDermott a FEED/master-services agreement in September 2025. No equipment-level design (gas turbine/generator selection, mechanical vs electric drive) has been published — FEED is still in progress and first LNG is not expected until the early 2030s.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "PRNewswire (Sept 8 2025) 'Monkey Island LNG and McDermott Join Forces to Increase LNG Output by up to 60% Per Acre': confirms Phase 1 = three 5.2 mtpa trains (15.6 mtpa), expansion to 26 mtpa, McDermott FEED/MSA award; no mention of power generation, turbines, or compressor drive anywhere in the release.",
+  "refs": [
+   "https://www.prnewswire.com/news-releases/monkey-island-lng-and-mcdermott-join-forces-to-increase-lng-output-by-up-to-60-per-acre-302548052.html"
+  ],
+  "verification_log": [
+   {
+    "url": "https://www.prnewswire.com/news-releases/monkey-island-lng-and-mcdermott-join-forces-to-increase-lng-output-by-up-to-60-per-acre-302548052.html",
+    "tokens": [
+     "Monkey Island",
+     "McDermott"
+    ],
+    "result": "PASS",
+    "note": ""
+   }
+  ],
+  "gogpt_prior_assessment": "Nearest GOGPT plants are Calcasieu Pass LNG Terminal power station (2.4 km, gogpt_plant_id 100001063643, captive=true) and Calcasieu Pass 2 power plant (2.7 km, gogpt_plant_id 100001048547, captive=true) — both are Venture Global's OWN captive power for the adjacent, separately-owned Calcasieu Pass LNG terminal, not Monkey Island LNG (different owner/site).",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "The nearby GOGPT captive plants already belong to and are correctly attributed to Calcasieu Pass LNG (a different terminal); no generation confirmed for Monkey Island itself.",
+  "status_or_other_findings": "",
+  "notes": "Re-verify once FEED completes and equipment is selected — large-scale US LNG export FEEDs begun in 2024-2025 have trended toward electric-drive (aeroderivative gas turbine generators feeding electric-motor compressors), but this is a general trend, not a confirmed fact for this site."
+ },
+ {
+  "terminal": "NOLA Oil Terminal",
+  "terminal_id": "T100000130742",
+  "country": "United States",
+  "verdict": "SCREENED",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "green",
+  "captive_summary": "This GEM record (owner Blue Marlin Offshore Port LLC, Louisiana) is actually the Blue Marlin Offshore Port — a proposed CRUDE OIL export deepwater port off Cameron Parish, Louisiana (1.9 million bbl/day crude export capacity, Energy Transfer/TotalEnergies offtake deal), not an LNG facility. This is a scope error in GEM's dataset.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "earthworks.org: identifies 'offshore crude oil export terminals (known as deepwater ports)' including 'the Blue Marlin Offshore Port LLC'. Separately confirmed: Blue Marlin Offshore Port LLC filed a deepwater port license application with MARAD/USCG under the Deepwater Port Act (Oct 1 2020) to export >1.9 million bbl/day of crude oil from Nederland, TX storage via a Gulf of Mexico offshore terminal; Energy Transfer and TotalEnergies signed a crude offtake deal for the project (Nov 2023).",
+  "refs": [
+   "https://earthworks.org/blog/would-the-blue-marlin-offshore-port-deliver-on-the-local-benefits-it-promises/"
+  ],
+  "verification_log": [
+   {
+    "url": "https://earthworks.org/blog/would-the-blue-marlin-offshore-port-deliver-on-the-local-benefits-it-promises/",
+    "tokens": [
+     "crude oil",
+     "Blue Marlin"
+    ],
+    "result": "PASS",
+    "note": ""
+   }
+  ],
+  "gogpt_prior_assessment": "Nearest GOGPT plants are Plaquemines LNG Terminal power station (7.3 km, gogpt_plant_id 100001063717, captive=true) and Gulfstream LNG power station (18.5 km, gogpt_plant_id 100001063919, captive=true) — both belong to genuine, separate LNG terminals (Plaquemines LNG / Venture Global, and the Gulfstream LNG project), not to this crude-oil facility.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "Not a gas facility at all — crude oil export terminal, out of scope for both LNG and GOGPT captive-gas-power tracking.",
+  "status_or_other_findings": "GEM's 'NOLA Oil Terminal' record (T100000130742) should likely be flagged to GEM staff as a scope/classification error (crude oil deepwater port carried in the LNG terminals tracker) — do not act on this beyond flagging; captive-power batch does not edit scope.",
+  "notes": "SCREENED per crude-oil deepwater port rule in this shard's dispatch brief."
+ },
+ {
+  "terminal": "Neptune LNG Terminal",
+  "terminal_id": "T100000130633",
+  "country": "United States",
+  "verdict": "YES",
+  "mechanical": false,
+  "captive_category": "power_generation",
+  "hardware_summary": "Shuttle/regas vessels' onboard dual-fuel power-generation engines, 2 x 11,400 kW, operable in gas mode, powering onboard regasification and vessel systems (EPA deepwater-port application).",
+  "fuel_basis": "gas (dual-fuel engines, gas mode)",
+  "confidence": "green",
+  "captive_summary": "Neptune LNG was an offshore deepwater port (Massachusetts Bay, Suez) with regasification aboard shuttle/regas vessels. The EPA deepwater-port application documents the vessels' onboard dual-fuel power-generation engines rated 2 x 11,400 kW, operable in gas mode — on-vessel gas-capable generation powering the terminal's own regas operations, the same class as the Northeast Gateway EBRV YES.",
+  "electric_mw": "22.8",
+  "mechanical_drive_note": "",
+  "confirmed_how": "northeastgas.org: confirms Neptune LNG deepwater port location/operational status and references onboard regasification, but does not document the power-generation equipment powering onboard systems. No EPA/MARAD filing equivalent to the Northeast Gateway one was located for Neptune within available search budget.",
+  "refs": [
+   "https://www.epa.gov/caa-permitting/permit-documents-neptune-deepwater-port-federal-waters-massachusetts-bay-lng",
+   "https://www.epa.gov/sites/default/files/2015-08/documents/ndp-application.pdf"
+  ],
+  "verification_log": [
+   {
+    "url": "https://northeastgas.org/",
+    "tokens": [
+     "Neptune",
+     "onboard"
+    ],
+    "result": "PASS",
+    "note": "SUPERSEDED 2026-08-02 citation-repair pass: bare homepage is not a valid citation per CLAUDE.md; replaced with the specific EPA permit page and application PDF below"
+   },
+   {
+    "url": "https://www.epa.gov/caa-permitting/permit-documents-neptune-deepwater-port-federal-waters-massachusetts-bay-lng",
+    "tokens": [
+     "Neptune"
+    ],
+    "result": "PASS",
+    "note": "EPA permit-documents index page confirms Neptune deepwater port project identity and permit history"
+   },
+   {
+    "url": "https://www.epa.gov/sites/default/files/2015-08/documents/ndp-application.pdf",
+    "tokens": [
+     "11,400"
+    ],
+    "result": "PASS",
+    "note": "SIGNIFICANT FINDING for orchestrator review: EPA deepwater port application PDF (pdftotext full-text read) documents the SRV(s)/regas vessel(s) carrying onboard dual-fuel power generation engines rated 2 x 11,400 kW, operable in gas mode -- this is vessel-specific equipment documentation of the kind the prior pass could not find, and appears analogous to the Northeast Gateway YES (same shard) under the FSRU-onboard convention. Not used to change this record's verdict -- this pass's scope was citation repair only -- but flagged here for orchestrator adjudication since it may resolve the INSUFFICIENT toward a YES."
+   }
+  ],
+  "gogpt_prior_assessment": "Nearest GOGPT plants: Salem Harbor Station and an MMWEC-affiliated unit, both onshore merchant/utility power plants unrelated to Neptune's offshore buoy infrastructure; neither is captive to this terminal.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "Nearby GOGPT plants are unrelated onshore merchant generation, not colocated with or fed by this terminal.",
+  "status_or_other_findings": "Terminal is reported idle/inactive in industry sources (Suez terminated the license); this does not itself bear on the captive-power verdict.",
+  "notes": "research budget (search-engine access) exhausted before a vessel-specific equipment source could be found; recommend recovery pass targeting MARAD deepwater port licensing docket for Neptune LNG (Suez Neptune, LLC) similar to the Northeast Gateway EPA filing. QC citation repair (2026-08-02): that recovery pass is now done -- the EPA deepwater port application PDF was located and documents 2x 11,400 kW onboard dual-fuel power generation engines (gas-mode capable); see verification_log. Verdict left as INSUFFICIENT per this pass's citation-repair-only scope; recommend orchestrator review this finding against the Northeast Gateway FSRU-onboard precedent in the same shard.\n\nQC adjudication 2026-08-02 (orchestrator): INSUFFICIENT upgraded to YES: the citation-repair pass's pdftotext read of the EPA application (token '11,400' verified) supplies the vessel-specific equipment documentation the first pass lacked; primary regulatory source -> green. Mirrors Northeast Gateway (same shard, same convention). Terminal now idle/licence terminated; verdict describes the licensed design/operating configuration."
+ },
+ {
+  "terminal": "New Fortress Grand Isle FLNG Terminal",
+  "terminal_id": "T100000131002",
+  "country": "United States",
+  "verdict": "INSUFFICIENT",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "",
+  "captive_summary": "New Fortress Energy's Grand Isle FLNG (Louisiana, nearshore/offshore small-scale liquefaction) has active MARAD/EPA/NOAA permitting (docket MARAD-2022-0076) implying air-quality-modeled onsite equipment, but the actual technical filings describing power/compressor-drive equipment could not be accessed (regulations.gov and EPA document pages returned access errors within available search budget).",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Docket MARAD-2022-0076 (deepwater port license application, New Fortress Energy Grand Isle) confirmed to exist via search-result snippets referencing air dispersion modeling, but no directly loadable/verifiable document URL was secured for citation.",
+  "refs": [],
+  "verification_log": [],
+  "gogpt_prior_assessment": "No GOGPT plants found within 30km in neighbors_raw.json for this terminal_id.",
+  "gogpt_candidate": "REVIEWER CALL",
+  "gogpt_candidate_basis": "Real regulatory activity (MARAD docket, air permitting) strongly suggests onsite gas-fired equipment (liquefaction trains commonly run gas turbine/engine-driven compressors), but nothing citable was confirmed this pass.",
+  "status_or_other_findings": "",
+  "notes": "research interrupted by search-engine access instability; no citable URL secured despite multiple attempts (regulations.gov, EPA document pages all blocked/403). Recommend recovery pass via regulations.gov docket MARAD-2022-0076 directly or Federal Register notice for this project."
+ },
+ {
+  "terminal": "Northeast Gateway FSRU",
+  "terminal_id": "T100000130632",
+  "country": "United States",
+  "verdict": "YES",
+  "mechanical": false,
+  "captive_category": "power_generation",
+  "hardware_summary": "Energy Bridge Regasification Vessel (EBRV) onboard MHI-supplied dual-fuel-capable boilers feeding three steam turbine generators, run on boil-off/natural gas during regasification operations to power onboard regas and vessel systems.",
+  "fuel_basis": "gas (dual-fuel boilers, gas-only during regas ops)",
+  "confidence": "green",
+  "captive_summary": "Northeast Gateway is an offshore deepwater port FSRU (Massachusetts Bay, Excelerate Energy) using submerged buoy technology; the Energy Bridge Regasification Vessel (EBRV) carries onboard steam turbine generators fed by dual-fuel boilers that burn boil-off/regasified natural gas to power the vessel's regasification and auxiliary systems during operation — a confirmed onboard captive gas power arrangement per the FSRU-onboard convention.",
+  "electric_mw": "",
+  "mechanical_drive_note": "An older auxiliary generator on early Excelerate EBRVs was diesel-only (fails the fuel gate on its own) but does not change the overall YES since the primary onboard power system (3 steam turbine generators via MHI dual-fuel boilers) is gas-fired during regas operations.",
+  "confirmed_how": "EPA Northeast Gateway Energy Bridge deepwater port application PDF (obtained and read in full via pdftotext): describes onboard Mitsubishi Heavy Industries (MHI) dual-fuel boilers supplying steam to three turbine generators, operated on boil-off gas/vaporized LNG during regasification. EPA permit-documents index page independently confirms project identity and permit history.",
+  "refs": [
+   "https://www.epa.gov/sites/default/files/2015-08/documents/ngeb-application.pdf",
+   "https://www.epa.gov/caa-permitting/permit-documents-northeast-gateway-energy-bridge"
+  ],
+  "verification_log": [
+   {
+    "url": "https://www.epa.gov/sites/default/files/2015-08/documents/ngeb-application.pdf",
+    "tokens": [
+     "Wärtsilä",
+     "boil-off gas"
+    ],
+    "result": "PASS",
+    "note": "MHI/turbine-generator detail confirmed via pdftotext full-text read; Wärtsilä token matched auxiliary diesel-genset section"
+   },
+   {
+    "url": "https://www.epa.gov/caa-permitting/permit-documents-northeast-gateway-energy-bridge",
+    "tokens": [
+     "Northeast Gateway",
+     "Energy Bridge"
+    ],
+    "result": "PASS",
+    "note": ""
+   }
+  ],
+  "gogpt_prior_assessment": "Nearest GOGPT plant is Salem Harbor Station (~25.6 km), an onshore merchant power plant unrelated to and not colocated with this offshore buoy facility.",
+  "gogpt_candidate": "REVIEWER CALL",
+  "gogpt_candidate_basis": "Vessel-mounted onboard generation raises an ontology question for GOGPT (which tracks fixed power-station sites) — flag for reviewer rather than assert ADD or DO NOT ADD.",
+  "status_or_other_findings": "",
+  "notes": ""
+ },
+ {
+  "terminal": "OceanWay LNG Terminal",
+  "terminal_id": "T100000130655",
+  "country": "United States",
+  "verdict": "SCREENED",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "green",
+  "captive_summary": "OceanWay LNG was a proposed offshore FSRU/deepwater port terminal off Ventura/Oxnard, California, cancelled/shelved in 2009 during early-stage environmental review — before reaching vessel-specific or facility-specific equipment design. No captive-power hardware was ever specified for this project.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "industrialinfo.com: confirms OceanWay LNG project shelved status in 2009, consistent with cancellation during preliminary review.",
+  "refs": [
+   "https://www.federalregister.gov/documents/2007/09/14/E7-18130/woodside-natural-gas-inc-oceanway-secure-energy-liquefied-natural-gas-deepwater-port-license",
+   "https://www.federalregister.gov/documents/2009/08/19/E9-19700/endangered-and-threatened-wildlife-and-plants-12-month-finding-on-a-petition-to-list-the-ashy"
+  ],
+  "verification_log": [
+   {
+    "url": "https://www.industrialinfo.com",
+    "tokens": [
+     "OceanWay",
+     "shelved"
+    ],
+    "result": "PASS",
+    "note": "SUPERSEDED 2026-08-02 citation-repair pass: bare homepage is not a valid citation per CLAUDE.md (and industrialinfo.com's own news search is login-gated, no specific article URL recoverable); replaced with the two Federal Register notices below"
+   },
+   {
+    "url": "https://www.federalregister.gov/documents/2007/09/14/E7-18130/woodside-natural-gas-inc-oceanway-secure-energy-liquefied-natural-gas-deepwater-port-license",
+    "tokens": [
+     "Woodside",
+     "OceanWay"
+    ],
+    "result": "PASS",
+    "note": "Federal Register docket-establishing notice confirms full project name (Woodside Natural Gas, Inc. OceanWay Secure Energy Liquefied Natural Gas Deepwater Port License Application) and MARAD/USCG deepwater port licensing process"
+   },
+   {
+    "url": "https://www.federalregister.gov/documents/2009/08/19/E9-19700/endangered-and-threatened-wildlife-and-plants-12-month-finding-on-a-petition-to-list-the-ashy",
+    "tokens": [
+     "OceanWay",
+     "withdrawn"
+    ],
+    "result": "PASS",
+    "note": "FWS notice references the OceanWay LNG application's January 2009 withdrawal, corroborating the shelved status"
+   }
+  ],
+  "gogpt_prior_assessment": "Nearest GOGPT plants are Redondo Beach Generating Station and El Segundo Generating Station, both onshore merchant power plants unrelated to and not colocated with this cancelled offshore proposal.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "Project never reached equipment design stage and neighboring GOGPT plants are unrelated onshore merchant generation.",
+  "status_or_other_findings": "",
+  "notes": "SCREENED per cancelled-never-designed rule (no FEED/EIS with equipment specificity was reached before shelving). QC citation repair (2026-08-02): replaced bare industrialinfo.com with two verified Federal Register notices (MARAD/USCG docket-establishing notice + FWS notice confirming the Jan 2009 withdrawal) -- confirmed project's full name is 'Woodside Natural Gas, Inc. OceanWay Secure Energy Liquefied Natural Gas Deepwater Port License Application.'"
+ },
+ {
+  "terminal": "Oregon LNG Terminal",
+  "terminal_id": "T100000130652",
+  "country": "United States",
+  "verdict": "INSUFFICIENT",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "",
+  "captive_summary": "Oregon LNG (Warrenton, Astoria area) was a substantial, well-documented proposed bidirectional import/export terminal (FERC dockets CP09-6/CP09-7, DEIS Aug 2015; ceased operations/withdrawn ~2016) but no power-generation or compressor-drive equipment documentation was found despite extensive search of FERC and industry sources within available search budget.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Project identity, FERC docket numbers, and DEIS timeline corroborated across multiple search-result snippets, but no directly loadable/verifiable document URL describing onsite power equipment was secured for citation within this pass.",
+  "refs": [],
+  "verification_log": [],
+  "gogpt_prior_assessment": "No GOGPT plants found within 30km in neighbors_raw.json for this terminal_id.",
+  "gogpt_candidate": "REVIEWER CALL",
+  "gogpt_candidate_basis": "Large FERC-reviewed project of this scale would typically require significant onsite compression/power equipment for LNG export trains, but nothing citable confirmed this pass.",
+  "status_or_other_findings": "Project withdrawn/ceased operations circa 2016 per industry reporting; does not itself resolve captive-power question.",
+  "notes": "research interrupted by search-engine access instability; recommend recovery pass via FERC eLibrary docket CP09-6/CP09-7 directly for equipment/compressor-drive specifications."
+ }
+]

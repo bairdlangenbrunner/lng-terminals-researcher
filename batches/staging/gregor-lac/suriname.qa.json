@@ -1,0 +1,52 @@
+[
+  {
+    "category": "unsupported_value",
+    "terminal_id": "T100000131139",
+    "unit_id": "G100002113900",
+    "terminal_name": "Firebird LNG Terminal",
+    "issue": "Capacity=2.70 mtpa currently has no verifiable surviving source: firebirdlng.com (dropped, DNS-dead) and the surviving lngindustry.com URL (paywalled stub, doesn't contain '2.7' or 'mtpa'). A 2023-01-27 Wayback snapshot of firebirdlng.com itself stated capacity as 4,000,000 tons/Annum (4.0 mtpa), conflicting with the current 2.70 mtpa value. Could not complete a replacement search this pass (WebSearch budget exhausted mid-batch).",
+    "severity": "medium",
+    "suggested_action": "Follow-up search for a source stating the Firebird capacity figure (try LNG Prime, Upstream, or a Suriname EIA/permit document); if none found, consider blanking Capacity + Capacity [ref] (paired) rather than carrying an unsupported 2.70, or leaving as-is since the project is now shelved and the number is of declining operational relevance.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unsupported_value",
+    "terminal_id": "T100000131139",
+    "unit_id": "G100002113900",
+    "terminal_name": "Firebird LNG Terminal",
+    "issue": "StartDate [ref] is now fully dead: firebirdlng.com (DNS failure) and the GECF 2024 Annual Gas Market Report PDF (HTTP 404; not re-found at gecf.org's current site via WebFetch). Blanked the ref cell (see updates.json); OriginalPlannedStartYear/LatestPlannedStartYear=2026 values left as historical record of the pre-shelving plan.",
+    "severity": "low",
+    "suggested_action": "Low priority given the project is shelved -- a replacement source isn't operationally urgent, but flag for a future ref_sweep pass if one becomes available.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "url_reverify_inconclusive",
+    "terminal_id": "T100000131139",
+    "unit_id": "G100002113900",
+    "terminal_name": "Firebird LNG Terminal",
+    "issue": "CaptiveGasPower [ref] includes https://portofnickerie.com/en/lng-facility-en/, which currently returns HTTP 403 with no Wayback snapshot available to fall back on. Not declared dead (bot-block ≠ dead, but unconfirmable) and left untouched since I am not editing this ref. The other two URLs in that cell (oilnow.gy, lawinsider.com) both re-verified alive, so CaptiveGasPower=True remains adequately supported.",
+    "severity": "low",
+    "suggested_action": "Re-check portofnickerie.com/en/lng-facility-en/ in a future pass; no action needed now.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "url_reverify_inconclusive",
+    "terminal_id": "T100001048294",
+    "unit_id": "G100001055425",
+    "terminal_name": "Petronas FLNG Terminal",
+    "issue": "Two Location [ref] URLs could not be positively re-verified this pass: nsenergybusiness.com (HTTP 403, no Wayback snapshot) and the arcgis.com dashboard (a JS app the verifier cannot extract text from -- likely a false negative, not proof of dead content). Kept both in the merged new_value (not proven dead) rather than silently drop them; flagging here per the 'never silently drop' rule for unconfirmable bot-blocks.",
+    "severity": "low",
+    "suggested_action": "Spot-check both URLs manually in a browser in a future pass; no action needed now given the Staatsolie + splash247 sources already support the Location value.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "url_reverify_inconclusive",
+    "terminal_id": "T100001048294",
+    "unit_id": "G100001055425",
+    "terminal_name": "Petronas FLNG Terminal",
+    "issue": "https://www.ainvest.com/news/petronas-suriname-offshore-play-strategic-gambit-high-risk-frontier-2507/ (used in both FIDYear [ref] and StartDate [ref]) currently returns HTTP 403 with no Wayback snapshot available. Not edited/dropped since other URLs in each of those cells (staatsolie.com for both fields) already independently verify FIDYear=2026 and LatestPlannedStartYear=2030.",
+    "severity": "low",
+    "suggested_action": "Re-check in a future pass; no action needed now.",
+    "researcher_initials": "AI-draft"
+  }
+]

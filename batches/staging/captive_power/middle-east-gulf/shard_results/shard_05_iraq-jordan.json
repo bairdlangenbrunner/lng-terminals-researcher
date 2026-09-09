@@ -1,0 +1,288 @@
+[
+ {
+  "terminal": "Al-Faw FSRU Terminal",
+  "terminal_id": "T100000131158",
+  "country": "Iraq",
+  "verdict": "INSUFFICIENT",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "",
+  "captive_summary": "This is a separate, earlier-stage Iraqi project (South Gas Company-led) for a 'fixed regasification platform' at Grand Al-Faw Port, still in tender/design stage (tender launched March 2025). No public source describes any onsite/captive power design for this facility. Genuinely undisclosed, not a documented negative.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Iraq Business News (4 Dec 2024) reports Iraq's Cabinet appointed South Gas Company (SGC) to oversee a 'fixed platform for importing liquefied gas' at Grand Al-Faw port, coordinating with the Iraqi Ports Authority on siting/specs; follow-on reporting (Feb-March 2025) describes a tender for a fixed regasification platform, still pre-award. No generator, engine, or captive-power design details found in any public source searched.",
+  "refs": [
+   "https://www.iraq-businessnews.com/2024/12/04/south-gas-company-to-lead-lng-platform-project/"
+  ],
+  "verification_log": [
+   {
+    "url": "https://www.iraq-businessnews.com/2024/12/04/south-gas-company-to-lead-lng-platform-project/",
+    "tokens": [
+     "South Gas Company"
+    ],
+    "result": "PASS",
+    "note": "confirms SGC-led fixed platform project at Al-Faw"
+   },
+   {
+    "url": "https://www.iraq-businessnews.com/2024/12/04/south-gas-company-to-lead-lng-platform-project/",
+    "tokens": [
+     "Faw"
+    ],
+    "result": "PASS",
+    "note": "re-verified with second token"
+   },
+   {
+    "url": "https://www.zawya.com/en/projects/oil-and-gas/iraq-shortlists-2-firms-for-offshore-lng-terminal-jeuv7h7z",
+    "tokens": [
+     "Faw"
+    ],
+    "result": "FAIL",
+    "note": "HTTP 400 - dropped, not cited"
+   },
+   {
+    "url": "https://www.zawya.com/en/projects/oil-and-gas/iraq-shortlists-2-firms-for-offshore-lng-terminal-jeuv7h7z",
+    "tokens": [
+     "LNG"
+    ],
+    "result": "FAIL",
+    "note": "HTTP 400 - dropped, not cited"
+   }
+  ],
+  "gogpt_prior_assessment": "Al Faw Oil Depot power station (150 MW GOGPT prior, ~8.4km away) is a separate Ministry of Oil gas-fired station (3x50MW Siemens units, inaugurated Feb 2026 per Iraq Business News) built to power the Fao oil-export depot/Grand Al-Faw port infrastructure generally — it is not documented as serving this proposed LNG regas platform specifically, and predates/parallels rather than depends on it. Independent source: iraq-businessnews.com.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "GOGPT plant already exists as its own record (Al Faw Oil Depot power station); it is unrelated port/export infrastructure, not captive to this proposed LNG terminal, and no on-site generation has been established at the LNG project itself.",
+  "status_or_other_findings": "GEM's record for this terminal lists vessel 'Hull 3407' and floating/offshore=True, but multiple independent sources (Excelerate Energy's own press release, TradeWindsNews, LNG Industry, PGJ) confirm Hull 3407 (named Excelerate Acadia) is dedicated to the SEPARATE Khor Al-Zubair FSRU project (Ministry of Electricity deal, ~35km away, distinct owner). Al-Faw is instead led by South Gas Company for a 'fixed platform,' with no vessel identified in any source found. This looks like a stale/incorrect vessel assignment in GEM data - flagging only, not acting on it.",
+  "notes": "If built, Iraq's LNG import program is explicitly framed (across both Al-Faw and Khor Al-Zubair reporting) as feeding gas to Iraqi power plants amid a national electricity shortage - a likely future PowerPlantsSupplied case once the offtake plant(s) are confirmed, not a captive finding for this terminal itself."
+ },
+ {
+  "terminal": "Khor Al-Zubair FSRU",
+  "terminal_id": "T100001048168",
+  "country": "Iraq",
+  "verdict": "YES",
+  "mechanical": "False",
+  "captive_category": "power_generation",
+  "hardware_summary": "Dual-fuel diesel-electric (DFDE) generating engines aboard the FSRU (Excelerate Acadia / Hull 3407, HD Hyundai-built, 170,000 m3, 1 Bcf/d regas capacity) generate the vessel's own electric power for storage/regasification/hotel loads; no engine model or MW rating disclosed publicly.",
+  "fuel_basis": "Two independent trade-press reports describe the specific hull as 'fitted with...dual-fuel diesel-electric engines' (LNG Industry) / 'dual-fuel diesel-electric engines and selective catalytic reduction technology' (BunkerIndex, reporting Bureau Veritas classification). DFDE is standard LNG-vessel generation technology whose gensets run primarily on boil-off gas with diesel as pilot/backup fuel; no source found stating the specific in-service fuel split once operating at Khor Al-Zubair.",
+  "confidence": "yellow",
+  "captive_summary": "Excelerate Acadia (Hull 3407), the FSRU assigned to this terminal, is built with dual-fuel diesel-electric (DFDE) engines generating the vessel's own onboard electric power - a documented on-site gas-capable generation plant. This is independent of the separate fact that the terminal's regasified gas output is intended to be piped onward to feed Iraqi power plants (that relationship is NOT captive - see notes).",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "LNG Industry (8 Jul 2025, 'Excelerate Energy launches FSRU in South Korea') and BunkerIndex ('Bureau Veritas classifies Excelerate Energy's new 170,000-cbm FSRU Excelerate Acadia') both independently state the vessel is fitted with dual-fuel diesel-electric engines. TradeWindsNews and Excelerate Energy's own press release ('Excelerate Energy Signs Definitive Agreement for Fully Integrated Floating LNG Import Terminal in Iraq') confirm Hull 3407/Excelerate Acadia is the vessel assigned to the Khor Al-Zubair (Ministry of Electricity subsidiary) project, $450m total investment, 250-500 MMscf/d contracted.",
+  "refs": [
+   "https://www.lngindustry.com/floating-lng/08072025/excelerate-energy-launches-fsru-in-south-korea/",
+   "https://bunkerindex.com/articles/article.php?a=22645&h=bureau-veritas-classifies-excelerate-energys-new-170000-cbm-fsru-excelerate-acadia",
+   "https://www.tradewindsnews.com/gas/excelerate-energy-allocates-its-lone-fsru-newbuilding-to-iraq/2-1-1892466",
+   "https://excelerateenergy.com/news/excelerate-energy-signs-definitive-agreement-for-fully-integrated-floating-lng-import-terminal-in-iraq/"
+  ],
+  "verification_log": [
+   {
+    "url": "https://www.lngindustry.com/floating-lng/08072025/excelerate-energy-launches-fsru-in-south-korea/",
+    "tokens": [
+     "dual-fuel diesel-electric"
+    ],
+    "result": "PASS",
+    "note": "confirms DFDE engines on Hull 3407"
+   },
+   {
+    "url": "https://bunkerindex.com/articles/article.php?a=22645&h=bureau-veritas-classifies-excelerate-energys-new-170000-cbm-fsru-excelerate-acadia",
+    "tokens": [
+     "dual-fuel diesel-electric"
+    ],
+    "result": "PASS",
+    "note": "independent BV-classification-society coverage, same fact"
+   },
+   {
+    "url": "https://www.tradewindsnews.com/gas/excelerate-energy-allocates-its-lone-fsru-newbuilding-to-iraq/2-1-1892466",
+    "tokens": [
+     "Khor Al Zubair"
+    ],
+    "result": "PASS",
+    "note": "confirms vessel assignment"
+   },
+   {
+    "url": "https://excelerateenergy.com/news/excelerate-energy-signs-definitive-agreement-for-fully-integrated-floating-lng-import-terminal-in-iraq/",
+    "tokens": [
+     "Khor Al Zubair",
+     "Ministry of Electricity"
+    ],
+    "result": "PASS",
+    "note": "primary company press release confirming project/counterparty"
+   },
+   {
+    "url": "https://excelerateenergy.com/news/excelerate-energy-signs-definitive-agreement-for-fully-integrated-floating-lng-import-terminal-in-iraq/",
+    "tokens": [
+     "3,000",
+     "4,000"
+    ],
+    "result": "FAIL",
+    "note": "MW-to-power figure from an AI search summary not actually present on page; dropped, not cited"
+   },
+   {
+    "url": "https://www.businesswire.com/news/home/20260331969185/en/Excelerate-Energy-Names-New-FSRU-Excelerate-Acadia-at-HD-Hyundai-Heavy-Industries",
+    "tokens": [
+     "dual-fuel diesel-electric"
+    ],
+    "result": "FAIL",
+    "note": "HTTP 403, no Wayback snapshot - dropped, used LNG Industry/BunkerIndex republications instead"
+   },
+   {
+    "url": "https://www.offshore-energy.biz/us-firm-lands-450-million-job-for-floating-lng-terminal-in-iraq/",
+    "tokens": [
+     "power plants"
+    ],
+    "result": "FAIL",
+    "note": "token not found on page - dropped"
+   },
+   {
+    "url": "https://pgjonline.com/news/2025/october/excelerate-energy-signs-450-million-deal-for-iraq-s-first-flng-import-terminal",
+    "tokens": [
+     "power generation"
+    ],
+    "result": "PASS",
+    "note": "supports general direction-test framing (gas to feed Iraqi power generation)"
+   }
+  ],
+  "gogpt_prior_assessment": "Khor Al Zubayr power station (877 MW GOGPT prior, gas-fired, ~6.6km away) is an existing Iraqi grid power plant near the port - it is the terminal's presumed downstream gas OFFTAKE once operational (regasified gas piped out to feed Iraqi power plants per the Ministry of Electricity's own framing), not a captive plant powering the FSRU. Independent source: power-technology.com power plant profile.",
+  "gogpt_candidate": "REVIEWER CALL",
+  "gogpt_candidate_basis": "The DFDE generation is vessel-integral shipboard equipment (FSRU onboard gensets), not a standalone facility with a citable nameplate MW - unclear whether GOGPT's ontology would separately track this as a power station; project is also still pre-operational (delayed to 2027).",
+  "status_or_other_findings": "Terminal startup has been delayed to 2027 due to the Iran-Israel-US conflict (per Energy Intelligence coverage referenced in search results); Excelerate deployed Excelerate Acadia to Jordan's Aqaba terminal on an interim ~9-month charter in the meantime (TradeWindsNews) - informational only, not acted on.",
+  "notes": "Direction test: the Ministry of Electricity counterparty's own framing (via project coverage, e.g. pgjonline.com) is that regasified gas will be piped to Iraqi power plants to help meet growing electricity demand - this is the classic PowerPlantsSupplied direction (terminal to external plant), NOT a captive relationship, and is entirely separate from the FSRU's own onboard DFDE generation addressed in the verdict above."
+ },
+ {
+  "terminal": "Aqaba Jordan FSRU",
+  "terminal_id": "T100000130591",
+  "country": "Jordan",
+  "verdict": "YES",
+  "mechanical": "False",
+  "captive_category": "power_generation",
+  "hardware_summary": "Wärtsilä DFDE (dual-fuel diesel-electric) onboard generating plant with advanced boil-off gas management (current owner Energos Infrastructure's vessel-specific spec), providing the vessel's own electric power; engine count/MW not publicly disclosed.",
+  "fuel_basis": "Vessel-specific: Energos Infrastructure's fleet page documents Wärtsilä DFDE (gas-capable dual-fuel) propulsion/generation with boil-off gas management on Energos Eskimo. Corroborated at fleet level by former owner Golar LNG's 2019 fleet report: no purchased electricity for any fleet vessel and FSRU fleet-wide heavy-fuel-oil share of just 3% (implying ~97% gas/BOG).",
+  "confidence": "green",
+  "captive_summary": "The Energos Eskimo (ex-Golar Eskimo) FSRU self-generates all of its own onboard power (Golar's fleet discloses zero purchased external electricity for any vessel) and burns predominantly non-HFO fuel (97% across the FSRU sub-fleet) - i.e. documented on-site gas-fired generation for the vessel's own operations. This is independent of the separate finding that the terminal's regasified send-out gas is piped to feed Jordan's Aqaba power plant/NEPCO grid (NOT a captive relationship - see notes).",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Energos Infrastructure (current owner, vessel-specific): 'With advanced boil-off gas management and Wärtsilä DFDE propulsion, Energos Eskimo plays a vital role...' Golar LNG 'Key facts and figures - Golar fleet' 2019 report (former owner, fleet-level): 'we do not purchase any electricity, steam, heat or cooling for use by any of our fleet (LNGC, FSRUs or FLNGs)', FSRU % of energy from heavy fuel oil: 3%. QC orchestrator strengthened this record 2026-08-01: the original single fleet-level source was not vessel-itemized; the Energos page adds the vessel-specific gas-capable (DFDE) hardware statement, so green now rests on two distinct publishers, one vessel-specific.",
+  "refs": [
+   "https://www.golarlng.com/~/media/Files/G/Golar-Lng/sustainability/Golar%20fleet%20-%202019%20Key%20facts%20and%20figures%20150720.pdf",
+   "https://energosinfra.com/fleet-assets/"
+  ],
+  "verification_log": [
+   {
+    "url": "https://www.golarlng.com/~/media/Files/G/Golar-Lng/sustainability/Golar%20fleet%20-%202019%20Key%20facts%20and%20figures%20150720.pdf",
+    "tokens": [
+     "heavy fuel oil"
+    ],
+    "result": "PASS",
+    "note": "confirms fleet-wide FSRU 3% HFO figure and no-purchased-electricity statement"
+   },
+   {
+    "url": "https://www.rivieramm.com/news-content-hub/news-content-hub/golar-newbuild-fsrus-find-homes-37594",
+    "tokens": [],
+    "result": "FAIL",
+    "note": "no vessel-specific propulsion detail found on page for Golar Eskimo - not cited"
+   },
+   {
+    "url": "https://gard.no/vessels/66342/",
+    "tokens": [],
+    "result": "FAIL",
+    "note": "vessel registry page had no propulsion/fuel detail - not cited"
+   },
+   {
+    "url": "https://www.vesselfinder.com/vessels/details/9624940",
+    "tokens": [],
+    "result": "FAIL",
+    "note": "engine fields blank on page - not cited"
+   },
+   {
+    "url": "https://energosinfra.com/fleet-assets/",
+    "tokens": [
+     "Eskimo",
+     "DFDE"
+    ],
+    "result": "PASS",
+    "note": "QC orchestrator re-verify 2026-08-01: current owner Energos Infrastructure's fleet page states vessel-specifically 'With advanced boil-off gas management and Wärtsilä DFDE propulsion, Energos Eskimo...' — sentence attribution confirmed by full-page read, not token co-occurrence"
+   }
+  ],
+  "gogpt_prior_assessment": "Aqaba power plant / Aqaba Thermal Power Station (GOGPT prior 390 MW, ~0.9km away) is Jordan's largest existing gas/oil-fired power station (656 MW per power-technology.com: 5x130MW steam + 2x3MW hydro, operated by CEGCO/ACWA Power), predating the FSRU (built 1986, converted to gas after the Arab Gas Pipeline) and serving as the terminal's downstream gas offtaker via that pipeline, not a captive plant serving the FSRU. Independent source: power-technology.com power plant profile.",
+  "gogpt_candidate": "REVIEWER CALL",
+  "gogpt_candidate_basis": "Vessel-mounted FSRU onboard DFDE generation with no vessel-specific nameplate MW found - unclear whether GOGPT's ontology would separately track shipboard gensets as a power station, and the vessel is now idled/reassigned (chartered onward to Egypt/EGAS at Ain Sokhna), complicating a fresh GOGPT record tied to this location.",
+  "status_or_other_findings": "GEM status is 'idled'; the vessel has since been chartered to Egypt (EGAS, Ain Sokhna) and other vessels (Energos Force, and briefly Excelerate Acadia) have cycled through the Aqaba berth on interim charters while Jordan's new permanent facility (see Sheikh Sabah LNG Terminal, T100001048176) is built - informational only, not acted on.",
+  "notes": "Direction test: since 2015 this FSRU's entire commercial purpose has been delivering regasified gas via the Arab Gas Pipeline to NEPCO/the Aqaba power plant and industrial users - that gas-OUT relationship is a PowerPlantsSupplied case, not captive, and is separate from the onboard-generation finding driving the verdict above."
+ },
+ {
+  "terminal": "Sheikh Sabah LNG Terminal",
+  "terminal_id": "T100001048176",
+  "country": "Jordan",
+  "verdict": "INSUFFICIENT",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "",
+  "captive_summary": "This is the new permanent Aqaba facility under construction: an onshore regasification unit (ORU, up to 700 MMcfd) plus a new floating storage unit (FSU, storage only, no onboard regasification) replacing the original FSRU. No public source documents the ORU's own operating power supply (grid vs. on-site generation) or the incoming FSU's onboard generation - the FSU vessel is unnamed and still undergoing conversion.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Oil & Gas Journal and Jordan Times/petra.gov.jo describe the $125m ORU+FSU project (GAS Entec/AG&P/Issa Haddadin consortium, financed via Kuwait Fund and Arab Fund loans) as designed to 'ensure a sustainable fuel supply for electricity generation and industrial use' for NEPCO - i.e. gas is piped OUT to Jordan's grid/industrial users. LNG Prime reports BW LNG will supply the replacement FSU (pure storage, no onboard regasification) under a 10-year charter with an unnamed LNG carrier undergoing conversion, operations expected Q3-Q4 2026. No source found addressing the ORU's own operational power source or the FSU's onboard generator/fuel type once named.",
+  "refs": [
+   "https://www.ogj.com/pipelines-transportation/lng/article/55134517/aqaba-development-lets-contract-to-build-lng-terminal-in-the-kingdom-of-jordan",
+   "https://petra.gov.jo/en/news/pm-inaugurates-aqaba-gas-projects-to-reduce-industrial-energy-costs-by-35-60",
+   "https://lngprime.com/contracts-and-tenders/bw-lng-seals-jordan-fsu-charter-deal/124017/"
+  ],
+  "verification_log": [
+   {
+    "url": "https://www.ogj.com/pipelines-transportation/lng/article/55134517/aqaba-development-lets-contract-to-build-lng-terminal-in-the-kingdom-of-jordan",
+    "tokens": [
+     "regasification"
+    ],
+    "result": "PASS",
+    "note": "confirms ORU + FSU project scope"
+   },
+   {
+    "url": "https://www.ogj.com/pipelines-transportation/lng/article/55134517/aqaba-development-lets-contract-to-build-lng-terminal-in-the-kingdom-of-jordan",
+    "tokens": [
+     "onshore regasification unit"
+    ],
+    "result": "FAIL",
+    "note": "exact phrase not matched (hyphenation/spacing) - re-verified with shorter token, PASS"
+   },
+   {
+    "url": "https://petra.gov.jo/en/news/pm-inaugurates-aqaba-gas-projects-to-reduce-industrial-energy-costs-by-35-60",
+    "tokens": [
+     "NEPCO"
+    ],
+    "result": "PASS",
+    "note": "confirms NEPCO/grid-supply framing for the gas project"
+   },
+   {
+    "url": "https://lngprime.com/contracts-and-tenders/bw-lng-seals-jordan-fsu-charter-deal/124017/",
+    "tokens": [
+     "Jordan",
+     "FSU"
+    ],
+    "result": "PASS",
+    "note": "confirms BW LNG FSU charter, unnamed vessel, Q3-Q4 2026 start"
+   },
+   {
+    "url": "https://lngprime.com/contracts-and-tenders/bw-lng-seals-jordan-fsu-charter-deal/124017/",
+    "tokens": [
+     "Sheikh Sabah"
+    ],
+    "result": "FAIL",
+    "note": "exact phrase not on page - re-verified with different tokens, PASS"
+   },
+   {
+    "url": "https://www.adc.jo/project_details.aspx?pro_id=1134",
+    "tokens": [],
+    "result": "FAIL",
+    "note": "too many redirects, page unreachable via fetch tool - not cited"
+   }
+  ],
+  "gogpt_prior_assessment": "Aqaba power plant / Aqaba Thermal Power Station (GOGPT prior 390 MW, ~0.89km away) is the same existing NEPCO/CEGCO grid plant assessed for the co-located Aqaba Jordan FSRU record (T100000130591) - explicitly the terminal's downstream gas offtaker once this new facility is operational, not a captive plant. Independent source: power-technology.com power plant profile.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "No generation of any kind established at this facility; the ORU's stated design purpose is to supply NEPCO/industrial users, and the incoming FSU is pure storage with no disclosed onboard generation profile yet (vessel unnamed).",
+  "status_or_other_findings": "Construction status confirmed by multiple 2024-2026 sources; some sources target commissioning for Q2 2026 while the FSU charter (BW LNG) is not expected operational until Q3-Q4 2026 - a status/timeline detail for a different batch to reconcile, not acted on here.",
+  "notes": "Direction test: explicit NEPCO framing ('ensure a sustainable fuel supply for electricity generation... for NEPCO', petra.gov.jo) makes this a strong PowerPlantsSupplied candidate once operational - flagging for a different batch, not a captive finding. This record is the NEW permanent ORU+FSU facility at the same physical Aqaba complex as the older 'Aqaba Jordan FSRU' record (T100000130591), which it is replacing/complementing."
+ }
+]

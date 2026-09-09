@@ -1,0 +1,216 @@
+[
+  {
+    "terminal": "Arzew-Bethioua LNG Terminal",
+    "terminal_id": "T100000130243",
+    "country": "Algeria",
+    "verdict": "YES",
+    "mechanical": "True",
+    "captive_category": "mechanical_drive",
+    "hardware_summary": "On-site gas turbines confirmed at the GL3Z liquefaction train (part of the combined Arzew-Bethioua complex) via Sonatrach's own equipment-maintenance tender for the complex's gas-turbine air filters; no turbine model or MW disclosed in the tender itself. GL1Z separately runs GE-brand steam turbines (waste-heat/process steam service, not itself gas-fired power).",
+    "fuel_basis": "Sonatrach Activite Liquefaction et Separation / Division GNL-GPL / Complexe GL3Z tender N13/A/GL3Z/2023, 'ACQUISITION DES FILTRES A AIR DES TURBINES A GAZ POUR LE COMPLEXE GL3Z' (acquisition of air filters for the complex's gas turbines) - Sonatrach's own words establish gas-fired turbines operate on site.",
+    "confidence": "green",
+    "captive_summary": "The Arzew-Bethioua complex (GL1Z/GL2Z/GL3Z operating, GL4Z retired) runs on-site gas turbines at least at the GL3Z train, confirmed by Sonatrach's own procurement tender for gas-turbine air filters at that complex. This is issued by the Liquefaction (GNL/GPL) division, consistent with the turbines being mechanical-drive units for the propane/mixed-refrigerant refrigeration compressors rather than a separate generating station.",
+    "electric_mw": "",
+    "mechanical_drive_note": "Sourced tender does not disclose turbine model or MW. GL3Z (single-train APCI/Chiyoda-Saipem design, commissioned 2013) is industry-standard gas-turbine-driven refrigeration-compressor design for this plant class, but no shaft-power figure is documented in the cited tender itself.",
+    "confirmed_how": "Sonatrach's Activite Liquefaction et Separation, Division GNL/GPL, Complexe GL3Z issued Appel d'Offres National & International Ouvert N13/A/GL3Z/2023, titled 'ACQUISITION DES FILTRES A AIR DES TURBINES A GAZ POUR LE COMPLEXE GL3Z' - Sonatrach's own maintenance/procurement notice for air filters serving the complex's gas turbines, verified by direct PDF fetch (pdftotext) confirming the title and complex name.",
+    "refs": [
+      "https://file05.erui.com/group1/M00/00/BF/rBFIw2Rut5yAEweyAAPfogTObfs042.pdf"
+    ],
+    "verification_log": [
+      {"url": "https://file05.erui.com/group1/M00/00/BF/rBFIw2Rut5yAEweyAAPfogTObfs042.pdf", "tokens": ["TURBINES A GAZ", "GL3Z"], "result": "PASS", "note": "Sonatrach's own tender PDF, verified via pdftotext"}
+    ],
+    "gogpt_prior_assessment": "No - Kahrama (345 MW, gogpt_captive=True in the prior) is a separate government BOO (build-own-operate, awarded 1999, 25-year contract) seawater-desalination-plus-power IWPP feeding Oran-area municipal water/grid needs, not Sonatrach's own captive plant for the LNG complex; an unrelated merchant/public-service plant sited nearby. https://www.power-technology.com/data-insights/power-plant-profile-arzew-kahrama-iwpp-power-plant-algeria/",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Our own finding is mechanical-drive shaft power only (no generator/nameplate MWe identified) - GOGPT tracks electricity-generating plants, and mechanical drive has no MWe to record.",
+    "status_or_other_findings": "GL1Z separately runs GE-brand steam turbines per a Dec-2024 Sonatrach tender (GL1Z/18/APP/2024/EXP) - a waste-heat/process-steam system, not gas-fired power generation, and not itself a captive-power finding.",
+    "notes": "No PowerPlantsSupplied direction issue identified - Kahrama and the Skikda IPP are proximate but unrelated grid/public plants, not fed by this terminal."
+  },
+  {
+    "terminal": "Skikda LNG Terminal",
+    "terminal_id": "T100000130244",
+    "country": "Algeria",
+    "verdict": "YES",
+    "mechanical": "True",
+    "captive_category": "mechanical_drive",
+    "hardware_summary": "GL1K complex (Skikda) operates at least two identified GE-brand gas turbines in liquefaction service: a GE MS5002D (Frame 5-class) unit and a GE MS7001EA/DLN-1 (Frame 7EA-class) unit, per Sonatrach's own rotor-overhaul procurement tenders (Activite LRP, Division LQS).",
+    "fuel_basis": "Sonatrach maintenance tenders name the turbines directly: 'Acquisition d'un rotor complet HP et BP pour turbine a gaz GE MS5002D' (tender 06/MNT/GL1K/2024) and 'Acquisition d'un rotor complet pour la turbine a gaz de marque GE MS7001EA-DLN-1' (GL1K-Skikda complex) - both explicitly labelled 'turbine a gaz' (gas turbine).",
+    "confidence": "green",
+    "captive_summary": "Skikda's GL1K complex runs on-site GE gas turbines (MS5002D and MS7001EA/DLN-1 models identified) procured/maintained by Sonatrach's own Liquefaction division - consistent with the classic gas-turbine-driven refrigeration-compressor design of this 1970s-era APCI LNG train.",
+    "electric_mw": "",
+    "mechanical_drive_note": "MS5002D (GE Frame 5-class) and MS7001EA/DLN-1 (GE Frame 7EA-class) turbines identified by model in Sonatrach's own rotor-overhaul tenders for the GL1K complex; no MW/shaft-power figure disclosed in the tenders themselves. These frame sizes are standard mechanical-drive turbines for LNG refrigeration-compressor trains of this vintage.",
+    "confirmed_how": "Two separate Sonatrach (Activite LRP, Division LQS) procurement tenders for the GL1K-Skikda complex: (1) 'Acquisition d'un rotor complet HP et BP pour turbine a gaz GE MS5002D' (tender 06/MNT/GL1K/2024, published 27 June 2024); (2) 'Acquisition d'un rotor complet pour la turbine a gaz de marque GE MS7001EA-DLN-1' at the GL1K-Skikda complex (published 17 Aug 2023). Both are Sonatrach's own rotor/overhaul procurement records naming specific GE gas-turbine models in service at the complex.",
+    "refs": [
+      "https://rhinotenders.com/tenders/tender/acquisition-d-un-rotor-complet-hp-bp-pour-turbine-a-gaz-ge-ms5002d-zasqr",
+      "https://rhinotenders.com/tenders/tender/acquisition-d-un-rotor-complet-pour-la-turbine-a-gaz-de-marque-ge-ms7001e-kyngk"
+    ],
+    "verification_log": [
+      {"url": "https://rhinotenders.com/tenders/tender/acquisition-d-un-rotor-complet-hp-bp-pour-turbine-a-gaz-ge-ms5002d-zasqr", "tokens": ["MS5002D", "GL1K"], "result": "PASS", "note": "Sonatrach GL1K rotor-overhaul tender"},
+      {"url": "https://rhinotenders.com/tenders/tender/acquisition-d-un-rotor-complet-pour-la-turbine-a-gaz-de-marque-ge-ms7001e-kyngk", "tokens": ["MS7001EA", "GL1K"], "result": "PASS", "note": "Sonatrach GL1K rotor-overhaul tender, different turbine"}
+    ],
+    "gogpt_prior_assessment": "No - the Skikda Combined-Cycle plant (880 MW, 'SKS'/Shariket Kahraba Skikda) is an independent power producer commissioned 2005-2006 by SNC-Lavalin selling into the national grid, roughly 30 years after GL1K's 1972 startup; an unrelated merchant plant, not built to power the LNG complex. https://www.power-technology.com/data-insights/power-plant-profile-skikda-combined-cycle-power-plant-algeria/",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Mechanical-drive shaft power only (no generator/nameplate MWe identified) - not a GOGPT-trackable generating plant.",
+    "status_or_other_findings": "The Jan 2004 Skikda explosion involved a waste-heat boiler on 'the westernmost LNG line' (Wikipedia) - a historical safety incident, not a status change; not acted on here.",
+    "notes": ""
+  },
+  {
+    "terminal": "Benin FSRU",
+    "terminal_id": "T100000130668",
+    "country": "Benin",
+    "verdict": "NO",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "No captive power - TotalEnergies' own project announcement states the FSRU's purpose was to pipe regasified LNG onward to power stations, explicitly naming the 127 MW Maria Gleta plant, not to power itself with an on-site plant. The project reached only a 2019 pre-FEED conceptual study before being abandoned in 2021; no FSRU vessel was ever selected, so onboard generation (per the FSRU-onboard convention) cannot be separately evaluated either.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "TotalEnergies' 24 July 2019 press release ('Total will develop the LNG market in Benin') states: 'offshore pipeline connexion to the existing and planned power plants in Maria Gleta' and 'The gas import project will supply plants in Benin, such as the new 127 MW power station at Maria Gleta, with imported liquefied natural gas' - a direction-test negative (gas flows OUT to an external plant, matching GEM's own gogpt_total_mw of 127.4 for the same plant). Sofregaz's own project page confirms the work performed was only a 2019 pre-FEED conceptual study (evaluating 'three potential FSRU connection schemes') before TotalEnergies abandoned the project in 2021 (per the independent LNG2030 tracker); no specific FSRU vessel was ever named.",
+    "refs": [
+      "https://totalenergies.com/media/news/press-releases/total-will-develop-lng-market-benin",
+      "https://sofregaz.fr/news/projects/fsru-benin/"
+    ],
+    "verification_log": [
+      {"url": "https://totalenergies.com/media/news/press-releases/total-will-develop-lng-market-benin", "tokens": ["Maria Gl", "regasified"], "result": "PASS", "note": "TotalEnergies own press release naming Maria Gleta as the supplied plant"},
+      {"url": "https://sofregaz.fr/news/projects/fsru-benin/", "tokens": ["Pre-FEED", "Benin"], "result": "PASS", "note": "confirms pre-FEED-only stage of design"}
+    ],
+    "gogpt_prior_assessment": "The prior (Maria Gleta power station I, 127.4 MW, gogpt_captive=False) is exactly the plant this project was designed to supply via offshore pipeline - confirms a PowerPlantsSupplied relationship (now moot, project cancelled), not a captive-power question. Same TotalEnergies press release as above.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Not a gas power station at this site at all - the terminal's role was gas supply outward to Maria Gleta, not on-site generation.",
+    "status_or_other_findings": "Project abandoned/cancelled circa 2021 after only a 2019 pre-FEED conceptual study (Sofregaz) - consistent with GEM's cancelled/inferred status.",
+    "notes": "PowerPlantsSupplied direction-test case: intended to feed the Maria Gleta 127 MW power station via offshore pipeline - the OPPOSITE relationship to captive power (regas gas piped OUT). Flagged for awareness only; project is cancelled so the relationship is moot for a live edit."
+  },
+  {
+    "terminal": "Cotonou FSRU",
+    "terminal_id": "T100000130246",
+    "country": "Benin",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "Screened: the Gasol/Socar Trading FSRU project (a distinct, earlier initiative from the neighboring TotalEnergies 'Benin FSRU' record despite similar coordinates) never progressed past a mid-2010s 'detailed feasibility study' authorization before going dormant/cancelled; no FEED, no vessel selection, no equipment-level design was ever published. Its stated commercial purpose was merchant gas supply piped onto the West African Gas Pipeline for power/industrial customers in Benin, Togo and Ghana - a gas-supply-outward scheme, not an on-site generation project.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Offshore Magazine (business brief, reporting the Dec-2012 Gasol/Socar Trading Strategic Alliance Agreement) states the project involved 'the regasification of LNG and the supply of that gas to power and industrial customers in Benin, Togo and Ghana' with gas 'routed to the West African Gas Pipeline.' Per the GEM tracker's own project-history summary, Benin's presidency approved the project Feb 2014 and the energy ministry granted only feasibility-study authorization in June 2015 - no FEED or vessel-specific design followed before the project went dormant.",
+    "refs": [
+      "https://www.offshore-mag.com/business-briefs/company-news/article/16785313/socar-gasol-team-for-benin-fsru"
+    ],
+    "verification_log": [
+      {"url": "https://www.offshore-mag.com/business-briefs/company-news/article/16785313/socar-gasol-team-for-benin-fsru", "tokens": ["West African Gas Pipeline", "Togo"], "result": "PASS", "note": "confirms gas-supply-outward purpose, feasibility-only stage"}
+    ],
+    "gogpt_prior_assessment": "Same nearby prior as the neighboring 'Benin FSRU' TotalEnergies record (Maria Gleta power station, 127.4 MW) - an existing/planned grid power plant in the area, not documented as this project's own captive plant; this project's own stated purpose was West African Gas Pipeline supply, not powering itself.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Never designed to generation-equipment level; screened at feasibility-only stage.",
+    "status_or_other_findings": "",
+    "notes": "Distinct project from the neighboring 'Benin FSRU' (TotalEnergies) GEM record despite similar coordinates/cancellation status - this is the earlier (2012-2015) Gasol/Socar Trading initiative."
+  },
+  {
+    "terminal": "Boudji FLNG Terminal",
+    "terminal_id": "T100000130909",
+    "country": "Gabon",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "Screened: Petronas only announced it was 'considering'/'examining' an FLNG option for the Boudji gas field (April 2019) to monetize associated gas from a deepwater discovery; no FLNG technical concept, vessel, or equipment-level design was ever published, and the project has been dormant since 2019 (presumed cancelled circa 2023).",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Upstream (upstreamonline.com, 10 April 2019): 'A floating liquefied natural gas solution could exploit associated gas from Petronas' deep-water Boudji discovery off Gabon' - an options-level statement following appraisal drilling, not a committed or designed project; no further public update found since 2019.",
+    "refs": [
+      "https://www.upstreamonline.com/focus/petronas-eyes-flng-as-option-for-boudji-off-gabon/2-1-579873"
+    ],
+    "verification_log": [
+      {"url": "https://www.upstreamonline.com/focus/petronas-eyes-flng-as-option-for-boudji-off-gabon/2-1-579873", "tokens": ["Boudji", "FLNG"], "result": "PASS", "note": "confirms options-only stage, no design"}
+    ],
+    "gogpt_prior_assessment": "gogpt_prior = no (no GOGPT plant identified nearby) - nothing to assess.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Never reached a design stage; nothing to add.",
+    "status_or_other_findings": "",
+    "notes": ""
+  },
+  {
+    "terminal": "Cap Lopez FLNG Terminal",
+    "terminal_id": "T100000131107",
+    "country": "Gabon",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "red",
+    "captive_summary": "Insufficient: Cap Lopez FLNG (Perenco, under construction, targeting 2026 startup) is a remote offshore barge-based FLNG (FSU 'LNG Cap Lopez' + 'Bran6' liquefaction barge, Aragon/Seatrium ODEC nitrogen-expander-cycle liquefaction technology) processing associated/flared gas with no shore-grid connection identified - the profile strongly implies on-site power generation is required (nitrogen-expander compressor trains are typically electric-motor driven), but no source discloses the plant's actual generation equipment, fuel, or MW rating despite an extensive search of EPC (Technomak/Dixstone), vendor (Aragon/Seatrium), and trade-press coverage.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Multiple 2025 trade-press articles (Offshore Energy, TradeWinds, Pan-African Visions, AEC Week, LNG Prime) describe the ~$2B Cap Lopez FLNG project (700,000 t/y LNG + 25,000 t/y LPG, 137,000 m3 storage, Aragon/Seatrium ODEC nitrogen-expander liquefaction technology, Dixstone/Technomak EPCCI, barge fabrication in Dubai/Sharjah) but none discloses the facility's power-generation equipment. One widely-syndicated Perenco press line quoting 'dual gas turbines linked to a 33-kV electrical hub' was checked in full surrounding context (panafricanvisions.com) and confirmed to describe a DIFFERENT Perenco asset - the Kombi 2 oil platform in Congo - not Cap Lopez; ruled out as a citation for this terminal.",
+    "refs": [
+      "https://www.offshore-energy.biz/african-flng-project-getting-its-ideal-choice-of-lng-liquefaction-technology/"
+    ],
+    "verification_log": [
+      {"url": "https://www.offshore-energy.biz/african-flng-project-getting-its-ideal-choice-of-lng-liquefaction-technology/", "tokens": ["Aragon", "Nitrogen"], "result": "PASS", "note": "confirms liquefaction technology choice, no power-gen detail found"}
+    ],
+    "gogpt_prior_assessment": "No - Port Gentil power plant (105 MW) is SEEG/AKSA national-grid infrastructure established 1977 (decades before Cap Lopez FLNG), operated by Turkish IPP AKSA Enerji under a 10-year O&M contract with Gabon's state utility SEEG; an unrelated grid asset, not built to power this FLNG project. https://www.aksaenerji.com.tr/power-plants/gabon-libreville-and-port-gentil-natural-gas-power-plants",
+    "gogpt_candidate": "REVIEWER CALL",
+    "gogpt_candidate_basis": "Generation almost certainly exists (off-grid barge running an electric-driven liquefaction process) but no citable nameplate or equipment source was found - matches 'generation exists but no citable nameplate,' not a clean ADD or DO NOT ADD.",
+    "status_or_other_findings": "Project sanctioned (FID reached) with EPCCI contracts running through 2025, targeting 2026 startup; ~$2B capex; 700,000 t/y capacity - consistent with GEM's construction status.",
+    "notes": "Re-check when the facility nears startup - commissioning-stage technical papers or any Gabon environmental/permit filing may finally disclose the power plant. The Kombi-2-Congo quote mix-up is flagged so a future batch doesn't mistakenly re-use it for Cap Lopez."
+  },
+  {
+    "terminal": "Botswana LNG Terminal",
+    "terminal_id": "T100001048162",
+    "country": "Botswana",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "red",
+    "captive_summary": "Insufficient: Botala Energy's phased Serowe coal-bed-methane-to-LNG project (Phase 1 = 5-well pilot flow test; Phase 2 = adds wells plus one 'Galileo mini-LNG unit') is still pre-FID (targeting 2H-2026 FID, first LNG 2027). Galileo Technologies' modular mini-LNG skids are typically deployed at remote/off-grid wellhead sites and commonly self-generate, but no Serowe-specific source discloses the power arrangement (grid tie vs on-site gensets, fuel, or MW) for either phase.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Botala Energy's own project page and 2026 trade press (Energies Media, citing the Minerals Development Company Botswana's ~$3.6M/15%-stake investment) describe the phased CBM-to-LNG plan and name a 'Galileo mini-LNG unit' as the Phase 2 liquefaction technology, but neither discloses power-generation equipment for the wellsite/liquefaction skid.",
+    "refs": [
+      "https://energiesmedia.com/botswana-serowe-cbm-targets-2026-fid/",
+      "https://botalaenergy.com/serowe-cbm-project/"
+    ],
+    "verification_log": [
+      {"url": "https://energiesmedia.com/botswana-serowe-cbm-targets-2026-fid/", "tokens": ["Galileo", "Serowe"], "result": "PASS", "note": "confirms Galileo mini-LNG unit for Phase 2, no power-gen detail"},
+      {"url": "https://botalaenergy.com/serowe-cbm-project/", "tokens": ["Serowe", "LNG"], "result": "PASS", "note": "operator's own project description, no power-gen detail"}
+    ],
+    "gogpt_prior_assessment": "gogpt_prior = no; nothing to assess.",
+    "gogpt_candidate": "MAYBE",
+    "gogpt_candidate_basis": "Cogeneration/on-site generation is plausible given the remote wellhead siting and modular mini-LNG technology, but the project is pre-FID with no disclosed MW or equipment - matches 'cogeneration exists but MW undisclosed or pre-filing.'",
+    "status_or_other_findings": "Minerals Development Company Botswana (government vehicle) took a 15% stake / 1% royalty in 2026 to fund flow testing and feasibility work; FID targeted 2H-2026, first LNG deliveries 2027.",
+    "notes": "Botswana is landlocked; this GEM 'export' terminal designation likely anticipates rail/road transport of LNG rather than marine export - a scope question for a different workflow, noted here only for awareness, not decided by this captive-power pass."
+  },
+  {
+    "terminal": "Dakhla LNG Terminal",
+    "terminal_id": "T100000131162",
+    "country": "Western Sahara",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "red",
+    "captive_summary": "Insufficient: 'Dakhla LNG Terminal' is one of several parallel LNG-terminal concepts inside Morocco's roughly $6B port/gas-infrastructure push (alongside a Nador West Med FSRU + pipeline, and older Jorf Lasfar/Mohammedia plans); no developer, FSRU vessel, capacity, or design has been published specifically for a Dakhla-sited facility - owner is listed as unknown in GEM's own record, consistent with this being a highly preliminary/aggregate plan.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "2025-2026 trade press (Port Technology, Energies Media, Gas Processing & LNG, Hespress, Atalayar, Devdiscourse, Angolan Mining O&G) describes Morocco's Nador West Med FSRU plus a pipeline running south toward Dakhla, and separately a large deepwater port under construction at Dakhla itself (2028 target), but is ambiguous about whether a physical import terminal/FSRU is sited AT Dakhla versus gas merely being piped there from Nador. No source names a developer, vessel, or capacity for a Dakhla-specific import facility.",
+    "refs": [
+      "https://www.porttechnology.org/morocco-builds-nador-2026-and-dakhla-2028-deepwater-ports/"
+    ],
+    "verification_log": [
+      {"url": "https://www.porttechnology.org/morocco-builds-nador-2026-and-dakhla-2028-deepwater-ports/", "tokens": ["Dakhla", "Western Sahara"], "result": "PASS", "note": "confirms Dakhla port project exists but no LNG-terminal design specifics"}
+    ],
+    "gogpt_prior_assessment": "gogpt_prior = no; nothing to assess.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No generation, no design, nothing to add at this stage.",
+    "status_or_other_findings": "",
+    "notes": "Scope/identity ambiguity: several sources describe the Nador FSRU plus a pipeline extension toward Dakhla rather than a standalone Dakhla-sited import terminal - worth flagging to a Discovery/Update pass to confirm this GEM record isn't double-counting the Nador project."
+  }
+]

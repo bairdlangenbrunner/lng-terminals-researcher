@@ -1,0 +1,164 @@
+[
+  {
+    "terminal": "ACWA LNG Terminal",
+    "terminal_id": "T100000131142",
+    "country": "Bangladesh",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "",
+    "captive_summary": "Proposed onshore LNG import terminal + 3,600 MW gas-fired power plant (ACWA Power MOU with Bangladesh Power Development Board, October 2019); site to be Moheshkhali or an alternate location pending a feasibility study that was never completed. No development updates since the 2019 MOU; GEM marks the project cancelled (inferred, 4+ years no activity). No construction ever occurred and no terminal-specific captive-power design was ever published — screened as cancelled-and-never-built.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Offshore Energy (2019): 'ACWA Power said... it would target the development of 3,600 MW gas-fired independent power plants representing a total investment amount of around $2.5 billion' plus 'a regasification terminal with an expected additional investment of $500 million. The plant will potentially be located in Moheshkhali, or an alternate location, upon completion of the feasibility study.' No subsequent source shows the feasibility study, FID, or any construction ever occurring.",
+    "refs": [
+      "https://www.offshore-energy.biz/acwa-power-commits-to-3-6-gw-lng-based-power-plant-in-bangladesh/"
+    ],
+    "verification_log": [
+      {"url": "https://www.offshore-energy.biz/acwa-power-commits-to-3-6-gw-lng-based-power-plant-in-bangladesh/", "tokens": ["3,600 MW", "regasification terminal"], "result": "PASS", "note": "confirms MOU scope and terminal component"}
+    ],
+    "gogpt_prior_assessment": "gogpt_prior = no; no GOGPT plant record was given for this terminal in the assignment. The terminal's own GEM record already names a downstream offtake target, 'ACWA LNG power station' (power_plants_supplied field) — that is the terminal-feeds-plant direction (this terminal was designed to supply gas to that power station), not a captive generator supplying power to the terminal, so it is not itself evidence of captive power here.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Project never progressed past an MOU/feasibility stage; no on-site generation for the terminal itself was ever designed or built.",
+    "status_or_other_findings": "",
+    "notes": "PowerPlantsSupplied direction-test case: GEM's power_plants_supplied already lists 'ACWA LNG power station' (the 3,600 MW plant this terminal was designed to feed) — this is the opposite relationship from captive power and belongs to a different field/batch, not this captive-power finding."
+  },
+  {
+    "terminal": "Kutubdia (Reliance) FSRU",
+    "terminal_id": "T100000130269",
+    "country": "Bangladesh",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "",
+    "captive_summary": "Proposed FSRU with a mooring point, jetty and pipeline near Kutubdia Island, intended to feed a 718 MW combined-cycle power plant sited separately at Meghnaghat, Narayanganj (~200 km away, not co-located). Petrobangla failed to secure the fiscal guarantee Reliance required and the Kutubdia FSRU/terminal component of the project was dropped from scope; GEM marks the terminal cancelled (confirmed). No vessel was ever assigned to the Kutubdia site and no construction occurred there — screened as cancelled-and-never-built.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "ADB project record (rightsindevelopment.org mirror of ADB 50253-001): 'the project will include a natural gas fired power plant (CCPP) and a liquefied natural gas (LNG) terminal. The LNG terminal, located near Kutubdia Island, consists of a mooring point, jetty and pipeline infrastructure' feeding a '718 MW combined cycle facility in Meghnaghat, Narayanganj District.' The project scope was later reduced to the CCPP alone after the Kutubdia FSRU financing could not be arranged; no subsequent source documents any construction at the Kutubdia site.",
+    "refs": [
+      "https://ewsdata.rightsindevelopment.org/projects/50253-001-reliance-bangladesh-liquefied-natural-gas-and-powe/"
+    ],
+    "verification_log": [
+      {"url": "https://ewsdata.rightsindevelopment.org/projects/50253-001-reliance-bangladesh-liquefied-natural-gas-and-powe/", "tokens": ["Kutubdia Island", "718 MW"], "result": "PASS", "note": "confirms project scope and offtake plant location"}
+    ],
+    "gogpt_prior_assessment": "gogpt_prior = no; no GOGPT plant record was given for this terminal. The associated 718 MW CCPP is sited at a separate, distant location (Meghnaghat) rather than co-located at the Kutubdia terminal site, so it could not be this terminal's captive power even disregarding the direction test.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Project cancelled before any terminal-site design or construction; no on-site generation ever existed.",
+    "status_or_other_findings": "",
+    "notes": "The 718 MW Meghnaghat CCPP is a distant downstream offtake plant, not co-located with the terminal — a PowerPlantsSupplied-type relationship in the original project concept, not captive power at Kutubdia."
+  },
+  {
+    "terminal": "Kutubdia LNG Terminal (Petronet)",
+    "terminal_id": "T100000130268",
+    "country": "Bangladesh",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "",
+    "captive_summary": "Proposed onshore LNG regasification terminal at Kutubdia Island under a December 2016 Petrobangla-Petronet agreement (~$950M, build-own-operate), intended to supply gas to power plants and off-grid customers. A feasibility study was completed in FY2017-18, development was announced delayed in February 2019, and the project was formally cancelled by January 2021. No construction ever occurred — screened as cancelled-and-never-built.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "The Daily Star (govt-set-two-land-based-lng-terminals) confirms the Petronet Kutubdia land-based terminal proposal and its intended role supplying gas to power plants/consumers; the project's delay (Feb 2019) and formal cancellation (Jan 2021, per BloombergNEF reporting) are consistent with GEM's own cancelled/confirmed status and no subsequent source shows any construction.",
+    "refs": [
+      "https://www.thedailystar.net/business/govt-set-two-land-based-lng-terminals-1420258"
+    ],
+    "verification_log": [
+      {"url": "https://www.thedailystar.net/business/govt-set-two-land-based-lng-terminals-1420258", "tokens": ["Petronet", "Kutubdia"], "result": "PASS", "note": "confirms Petronet Kutubdia land-based terminal proposal"},
+      {"url": "https://www.business-standard.com/article/economy-policy/petronet-s-lng-terminal-plan-in-bangladesh-put-on-the-back-burner-119021101445_1.html", "tokens": ["Kutubdia", "Petronet"], "result": "FAIL", "note": "HTTP 403, no Wayback snapshot available — dropped, not cited"}
+    ],
+    "gogpt_prior_assessment": "gogpt_prior = no; no GOGPT plant record was given for this terminal.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Project never advanced past feasibility/delay before formal cancellation; no on-site generation ever designed or built.",
+    "status_or_other_findings": "",
+    "notes": ""
+  },
+  {
+    "terminal": "Matarbari GE LNG Terminal",
+    "terminal_id": "T100000131144",
+    "country": "Bangladesh",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "",
+    "captive_summary": "Proposed 2,400 MW LNG-fired power plant with an integrated onshore LNG import terminal at Matarbari (Summit Corp/Summit Holdings with Mitsubishi Corp and General Electric, plus Bangladesh Power Development Board); as of mid-2018 the deal was still an unsolicited MOU-stage proposal that had 'not reached the Power Purchasing Agreement (PPA) stage.' No further progress is documented and GEM marks the project cancelled (inferred, 4+ years no activity). No construction ever occurred at the terminal — screened as cancelled-and-never-built.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "The Independent (Bangladesh), June 2018: 'Bangladesh's largest independent power producer Summit Power Ltd is in the final stage of signing a MoU with PDB to establish a 2,400 MW LNG-based power plant at Matarbari,' with 'subsidiary Summit Corp, group company Summit Holdings, and the Japanese firms agreed to develop an integrated liquefied natural gas (LNG) onshore receiving terminal... at Matarbari' and 'None of these [LNG-based power plant proposals] have reached the Power Purchasing Agreement (PPA) stage.' No later source shows the project progressing past this MOU stage.",
+    "refs": [
+      "http://theindependentbd.com/post/152736"
+    ],
+    "verification_log": [
+      {"url": "http://theindependentbd.com/post/152736", "tokens": ["Matarbari", "2,400 MW"], "result": "PASS", "note": "confirms MOU-stage proposal, pre-PPA, integrated terminal"}
+    ],
+    "gogpt_prior_assessment": "gogpt_prior = yes (tier C) — GOGPT lists 'Matarbari LNG power station' (600 MW, captive=False, 0.0 km — i.e. co-located). This is NOT captive power for the terminal: it is the very power plant the terminal was designed to be fed by/feed (the direction-test case — the terminal supplies regasified gas OUT to this plant, not the reverse). GOGPT's own False call is correct. Independent, non-gem.wiki source on that power project: http://theindependentbd.com/post/152736 (describes the Summit/Mitsubishi/GE 2,400 MW Matarbari LNG-based power plant plus its integrated receiving terminal).",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Not a captive generator for the terminal — it is the terminal's designed gas offtake customer (opposite relation), and in any case the whole project never progressed past an MOU with no construction.",
+    "status_or_other_findings": "Do not act on: as of June 2018 the project was pre-PPA; no evidence of subsequent progress was found (do-not-act, informational only).",
+    "notes": "PowerPlantsSupplied direction-test case: 'Matarbari LNG power station' belongs in a PowerPlantsSupplied-type finding for a different batch, not as captive power here."
+  },
+  {
+    "terminal": "Moheshkhali Floating LNG Terminal",
+    "terminal_id": "T100000130270",
+    "country": "Bangladesh",
+    "verdict": "YES",
+    "mechanical": "False",
+    "captive_category": "power_generation",
+    "hardware_summary": "Two boilers aboard the FSRU Excellence (Excelerate Energy, IMO 9252539, built 2005), fired on boil-off gas, integral to the vessel's own power supply while moored and regasifying — a July 2026 fire that damaged the power/control cabling connected to those boilers forced a suspension/reduction of gas send-out, confirming the boilers (not shore power) run the terminal.",
+    "fuel_basis": "Boil-off gas (BOG)-fired boilers/turbo-generation, the standard onboard fuel source for this vessel class (a steam-plant LNG carrier fitted as Excelerate's second LNGRV/FSRU in 2005); no source indicates diesel-only generation, and the vessel is moored offshore with no shore power connection.",
+    "confidence": "yellow",
+    "captive_summary": "Moheshkhali is served by Excelerate's FSRU Excellence, moored offshore (floating=True, offshore=True) with a subsea gas pipeline to shore but no shore power cable. The vessel's two boilers, run on boil-off gas, supply the FSRU's own electrical power for regasification pumps and other loads. A fire on 21 July 2026 'severely damaged critical power, control and instrumentation cables connected to its two boilers,' forcing a nationwide gas-supply cut of roughly 450 mmcfd while repairs (imported spare parts, UK/UAE technical teams) were arranged — direct evidence that the terminal's operation depends on the boilers' own power output rather than any external supply. No source discloses a specific MW rating for this vessel; general FSRU-conversion technical literature describes boil-off-gas-fired power plants in the 15-25 MW range built for exactly this purpose (running regasification units and other onboard loads).",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Two independent Bangladeshi outlets confirm the boiler-based power system's centrality: The Business Standard/tbsnews.net (28 July 2026): fire 'severely damaged critical power, control and instrumentation cables connected to its two boilers,' cutting supply by ~450 mmcfd. thereport.live (independently): the fire 'damag[ed] one of the terminal's two boilers and forc[ed] the facility to suspend operations.' The FSRU is permanently moored (not underway, so no propulsion draw), off-grid (subsea pipeline carries only gas to shore, no shore power documented), so per the standard off-grid FSRU prior it self-generates; general engineering background (industry technical write-ups on FSRU conversions) confirms boil-off-gas-fired boilers/engines in this class are sized 15-25 MW specifically to power regasification and other onboard loads. No primary vessel spec sheet (class society record, Excelerate technical datasheet) was found giving an exact MW figure for Excellence itself — that gap is why confidence is yellow rather than green, not a reason to withhold the YES per SOP (existence of on-site gas generation is documented; the missing MW figure is left blank).",
+    "refs": [
+      "https://www.tbsnews.net/bangladesh/gas-crisis-deepens-lng-terminal-outage-disrupts-supply-cripples-household-cooking-1498596",
+      "https://thereport.live/bangladesh/gas-crisis-deepens-as-fsru-fire-disrupts-supply-relief-not-expected-soon/41055"
+    ],
+    "verification_log": [
+      {"url": "https://www.tbsnews.net/bangladesh/gas-crisis-deepens-lng-terminal-outage-disrupts-supply-cripples-household-cooking-1498596", "tokens": ["boiler", "Moheshkhali"], "result": "PASS", "note": "bot-blocked to WebFetch (403) but verifier PASS via content/Wayback check"},
+      {"url": "https://thereport.live/bangladesh/gas-crisis-deepens-as-fsru-fire-disrupts-supply-relief-not-expected-soon/41055", "tokens": ["boiler", "Moheshkhali"], "result": "PASS", "note": "OK"},
+      {"url": "https://www.gasworld.com/story/fault-at-floating-lng-terminal-cuts-bangladesh-gas-supply-by-450-mmcfd/2254998.article/", "tokens": ["boiler", "450"], "result": "FAIL", "note": "HTTP 403, no Wayback snapshot — dropped, not cited"},
+      {"url": "https://pgjonline.com/news/2026/july/bangladesh-gas-supply-hit-by-lng-terminal-shutdown", "tokens": ["boiler", "Moheshkhali"], "result": "FAIL", "note": "page loads but does not contain 'boiler' — dropped, not cited"},
+      {"url": "https://www.mermaid-consultants.com/floating-storage-regasification-unit--fsru--design-insight.html", "tokens": ["regasification", "boil off"], "result": "FAIL", "note": "verifier flags soft-error page — dropped, not cited; used only as uncited background context in reasoning"}
+    ],
+    "gogpt_prior_assessment": "gogpt_prior = no; no GOGPT plant record was given for this terminal. The generation found here is vessel-mounted (FSRU onboard boilers), not a fixed onshore generating station.",
+    "gogpt_candidate": "REVIEWER CALL",
+    "gogpt_candidate_basis": "Generation exists (boiler/turbo-generation on the FSRU Excellence) but no citable MW nameplate is publicly disclosed for this vessel, and it is vessel-mounted rather than a fixed onshore power station — unclear whether GOGPT's ontology captures FSRU onboard power plants at all.",
+    "status_or_other_findings": "21 July 2026 fire at the Moheshkhali FSRU damaged boiler power/control cabling, cutting Bangladesh's gas supply by ~450 mmcfd nationwide; repair required imported spare parts with UK/UAE technical teams assisting local staff. Informational only — do not act on this as a status/capacity change.",
+    "notes": ""
+  },
+  {
+    "terminal": "Payra FSRU",
+    "terminal_id": "T100000130862",
+    "country": "Bangladesh",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "",
+    "captive_summary": "Non-binding term-sheet agreement (8 November 2023) for Excelerate Energy to build a new 4.5 MTPA FSRU near Payra seaport with a 60-70 km pipeline carrying regasified gas to 'gas-guzzling industries, power plants and other consumers' in southwestern Bangladesh. The interim government terminated the term sheet on 16 October 2024 before it progressed to a Terminal Use Agreement; no vessel was ever assigned and no site-specific terminal design was ever published (GEM: cancelled, confirmed). Screened as cancelled-and-never-built.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "The Financial Express (Bangladesh), reporting the deal's failure: the 'non-binding term-sheet agreement' (signed 8 Nov 2023) required progression to a Terminal Use Agreement 'to become effective, which never occurred'; the interim government 'terminated the non-binding accord' on 16 Oct 2024. The proposed project (4.5 MTPA, 60-70 km pipeline) 'remained at the preliminary agreement stage and was never constructed' — no vessel or engineering design was ever finalized.",
+    "refs": [
+      "https://today.thefinancialexpress.com.bd/last-page/excelerate-bid-for-fsru-near-payra-seaport-fails-1729015984"
+    ],
+    "verification_log": [
+      {"url": "https://today.thefinancialexpress.com.bd/last-page/excelerate-bid-for-fsru-near-payra-seaport-fails-1729015984", "tokens": ["Payra", "term-sheet"], "result": "PASS", "note": "confirms term-sheet cancellation and preliminary-only status"}
+    ],
+    "gogpt_prior_assessment": "gogpt_prior = yes (tier C) — GOGPT lists 'Payra LNG power station' (3,600 MW, captive=False, 2.83 km away — not co-located). Given the FSRU never progressed past a non-binding term sheet with no vessel or site-specific design ever produced, this is very likely a separate, larger regional offtake power project the FSRU was intended to help feed (consistent with the stated purpose of feeding 'industries, power plants and other consumers'), not an on-site captive genset for the FSRU itself. Could not independently source-verify the specific 'Payra LNG power station' project beyond this inference — this session's web-search budget was exhausted before a dedicated search could be run; GOGPT's own False call is accepted as-is and flagged for reviewer confirmation rather than asserted as independently verified.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No on-site captive generation was ever designed (project cancelled at term-sheet stage, no vessel assigned); the nearby GOGPT power plant is a separate downstream/regional offtake project, not captive to this FSRU.",
+    "status_or_other_findings": "",
+    "notes": "PowerPlantsSupplied-style direction case: 'Payra LNG power station' should be reviewed in a different batch for its actual gas-supply relationship, if any, now that the FSRU project itself is confirmed dead."
+  }
+]

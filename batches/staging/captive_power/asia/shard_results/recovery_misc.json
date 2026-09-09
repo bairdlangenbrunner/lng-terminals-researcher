@@ -1,0 +1,175 @@
+[
+ {
+  "terminal": "Teluk Lamong LNG Terminal",
+  "terminal_id": "T100000130698",
+  "country": "Indonesia",
+  "verdict": "NO",
+  "mechanical": "False",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "green",
+  "captive_summary": "A real 6.6 MW (2x3.3 MW) gas-engine power plant (PLTMG) has operated at Teluk Lamong Port since Jan 2018, but it is documented as powering PT Terminal Teluk Lamong / the Kawasan Pelabuhan Teluk Lamong -- the Pelindo container/multipurpose terminal company -- not the still-under-construction PGN small-scale LNG import facility that is the GEM record's subject. This is a 'captive to whom' case: the plant belongs to a different industrial host at the same port location.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Multiple Indonesian outlets (Bisnis.com, Kontan, Antara Jatim) report PT Widar Mandripa Nusantara (a PGN subsidiary/JV) operating a 2x3.3 MW PLTMG since Jan 2018 that supplies electricity to 'PT Terminal Teluk Lamong' / 'Kawasan Pelabuhan Teluk Lamong.' 'PT Terminal Teluk Lamong' is the Pelindo-affiliated container/multipurpose terminal operating company (opened 2014), a separate facility and separate corporate tenant from the LNG import terminal that is the GEM record's subject (PGN's small-scale LNG receiving facility, still under construction). The PLTMG predates the LNG terminal and is fed by PGN pipeline gas, not by the LNG terminal's own regasified output.",
+  "refs": [
+   "https://jatim.antaranews.com/berita/203558/pelindo-iii-operasikan-pembangkit-listrik-tenaga-mesin-gas",
+   "https://ekonomi.bisnis.com/read/20180115/44/726729/anak-usaha-pgn-pasok-listrik-ke-terminal-teluk-lamong-jatim",
+   "https://industri.kontan.co.id/news/anak-usaha-pgn-pasok-listrik-ke-pelabuhan-teluk-lamong"
+  ],
+  "verification_log": [
+   {"url": "https://jatim.antaranews.com/berita/203558/pelindo-iii-operasikan-pembangkit-listrik-tenaga-mesin-gas", "tokens": ["3,3 MW", "Teluk Lamong"], "result": "PASS", "note": "confirms PLTMG supplies 'Terminal Teluk Lamong' electricity needs"},
+   {"url": "https://ekonomi.bisnis.com/read/20180115/44/726729/anak-usaha-pgn-pasok-listrik-ke-terminal-teluk-lamong-jatim", "tokens": ["3,3 megawatt", "Teluk Lamong"], "result": "PASS", "note": "PGN subsidiary supplies power to Terminal Teluk Lamong (container terminal)"},
+   {"url": "https://industri.kontan.co.id/news/anak-usaha-pgn-pasok-listrik-ke-pelabuhan-teluk-lamong", "tokens": ["3,3 megawatt", "Teluk Lamong"], "result": "PASS", "note": "same PLTMG, framed as supplying 'Pelabuhan Teluk Lamong' (port)"}
+  ],
+  "gogpt_prior_assessment": "gogpt_prior was 'no' (no GOGPT plant flagged in this recovery assignment). Independently found: a 6.6 MW PLTMG (PT Widar Mandripa Nusantara, PGN subsidiary) operates at Teluk Lamong Port but is captive to the container/multipurpose terminal operator (PT Terminal Teluk Lamong / Pelindo), not to the LNG import terminal. Info URL: https://ekonomi.bisnis.com/read/20180115/44/726729/anak-usaha-pgn-pasok-listrik-ke-terminal-teluk-lamong-jatim",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "The on-site gas-engine plant found (PLTMG, 6.6 MW) is not this LNG terminal's captive power -- it belongs to a different industrial host (the container/multipurpose terminal operator) and is unrelated to the LNG import facility's own operations. Not a GOGPT candidate attributable to this record.",
+  "status_or_other_findings": "",
+  "notes": "Captive-to-whom case, same pattern as Huelva/Stade in the brief: the on-site gas power plant at Teluk Lamong belongs to the Pelindo container terminal (opened 2014, predates the LNG facility), fed by PGN pipeline gas, not the LNG import terminal under construction. Do not confuse the two co-located 'Teluk Lamong' facilities."
+ },
+ {
+  "terminal": "West Papua FLNG Terminal",
+  "terminal_id": "T100000131148",
+  "country": "Indonesia",
+  "verdict": "YES",
+  "mechanical": "True",
+  "captive_category": "mechanical_drive+power_generation",
+  "hardware_summary": "Wison New Energies standard FLNG design (Genting/Kasuri West Papua FLNG uses this platform): Gen-1 spec = 2x LM6000PF+ aeroderivative gas turbines (with waste-heat recovery) mechanically driving the refrigerant compressors, plus an LM2500 aeroderivative turbine driving NGL-recovery booster compression, plus Solar Titan 130 aeroderivative gas turbine generators (with WHR) for power generation.",
+  "fuel_basis": "FLNG standard design runs on produced/feed gas and BOG through its own gas turbines (LM6000PF+, LM2500, Solar Titan 130); off-grid moored FLNG vessel with no shore power option, so self-generation is structural, not optional.",
+  "confidence": "yellow",
+  "captive_summary": "West Papua FLNG (Kasuri, PT Layar Nusantara Gas / Genting Oil) is being built by Wison New Energies on Wison's standardized FLNG platform, whose published design includes both mechanical-drive turbines for refrigeration compression (LM6000PF+, LM2500) and dedicated gas-turbine generators (Solar Titan 130) for site power -- both gas-fuelled, both on-site, on a moored offshore facility with no grid connection.",
+  "electric_mw": "",
+  "mechanical_drive_note": "2x LM6000PF+ aeroderivative gas turbines (with WHR) drive refrigerant compressors; 1x LM2500 aeroderivative turbine drives NGL-recovery booster compression. Aggregate shaft rating not stated for this project-specific unit.",
+  "confirmed_how": "Wison New Energies / OpenWater Energy technical paper presented at Gastech Houston 2024 (co-authored by the FLNG EPC contractor building the Kasuri/West Papua unit) sets out the standard Wison FLNG equipment package: 'Refrigerant Compressor Drivers: 2x LM6000PF+ (with WHR)'; 'NGL Recovery Booster Compression: LM2500'; 'Power Generation Drivers: Solar Titan 130 (with WHR)' for their Gen-1 design (the generation in service for projects at this stage). Corroborated by Genting's own Oct 2024 press release and a trade-press (i3investor/The Edge) report both confirming Wison New Energies as the contractor for the Genting/Kasuri West Papua FLNG midstream infrastructure. Not vessel-serial-specific (no West-Papua-FLNG-named equipment list found), so kept at yellow rather than green.",
+  "refs": [
+   "https://www.gastechevent.com/media/zoppuuti/damian-nguyen_wison-new-energies_2094.pdf",
+   "https://www.genting.com/wp-content/uploads/2024/10/GENT-Press-Release-on-Procurement-Contract-and-CIC-Contract-for-Genting-FLNG-project.pdf",
+   "https://klse.i3investor.com/web/blog/detail/ceomorningbrief/2024-10-29-story-h472823971-Genting_Commissions_Contractors_to_Build_Midstream_Infra_to_Link_Kasuri_"
+  ],
+  "verification_log": [
+   {"url": "https://www.gastechevent.com/media/zoppuuti/damian-nguyen_wison-new-energies_2094.pdf", "tokens": ["Solar Titan 130"], "result": "PASS", "note": "Wison FLNG standard design equipment table"},
+   {"url": "https://klse.i3investor.com/web/blog/detail/ceomorningbrief/2024-10-29-story-h472823971-Genting_Commissions_Contractors_to_Build_Midstream_Infra_to_Link_Kasuri_", "tokens": ["Wison New Energies"], "result": "PASS", "note": "confirms Wison New Energies as EPC for Kasuri/West Papua FLNG"},
+   {"url": "https://www.genting.com/wp-content/uploads/2024/10/GENT-Press-Release-on-Procurement-Contract-and-CIC-Contract-for-Genting-FLNG-project.pdf", "tokens": ["Wison New Energies"], "result": "PASS", "note": "Genting's own release naming Wison New Energies as contractor"}
+  ],
+  "gogpt_prior_assessment": "gogpt_prior was 'no' (no GOGPT plant flagged). No standalone GOGPT-trackable generating plant identified -- the Solar Titan 130 generator package is integral, moored-vessel FLNG hardware, not a separable power-station record.",
+  "gogpt_candidate": "REVIEWER CALL",
+  "gogpt_candidate_basis": "Power generation exists (Solar Titan 130 gas turbine generators, with WHR) but is vessel-mounted FLNG hardware without a project-specific nameplate MW disclosed; unclear whether GOGPT's ontology captures FLNG onboard generation as a separate power-station record.",
+  "status_or_other_findings": "",
+  "notes": "This is Wison's standardized Gen-1 FLNG equipment package as described generically for their FLNG product line, applied here to the Kasuri/West Papua project via the confirmed EPC relationship -- not a West-Papua-FLNG-serial-numbered equipment list. Off-grid, moored FLNG facility (floating=True, offshore=True per assignment), consistent with the brief's 'no grid -> self-generation at scale' prior."
+ },
+ {
+  "terminal": "Engro Elengy FSRU",
+  "terminal_id": "T100000130298",
+  "country": "Pakistan",
+  "verdict": "INSUFFICIENT",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "",
+  "captive_summary": "The FSRU vessel Excelerate Exquisite (moored at Port Qasim for Engro Elengy Terminal Ltd) is an off-grid, moored facility where self-generation is structurally near-certain, but no public source found discloses the vessel's generator/engine make, model, count, rating, or fuel type (gas/dual-fuel/diesel).",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Extensive search found only generic vessel identity/registry facts (owner Excelerate Energy, mooring location, capacity in MMSCFD) -- no shipbuilder technical release, class-society record, or press material describing the onboard power plant was located.",
+  "refs": [],
+  "verification_log": [
+   {"url": "lite.duckduckgo.com/lite/ query: \"Excelerate Exquisite\" DFDE generator engine MW", "tokens": [], "result": "FAIL", "note": "no results found"},
+   {"url": "vesselfinder.com / marinetraffic.com / maritimeoptima.com / shipsio.com / maritime-database.com (Excelerate Exquisite)", "tokens": [], "result": "FAIL", "note": "registry-level specs only (IMO, DWT, GT, flag); no generator/engine detail"},
+   {"url": "equasis.org (Excelerate Exquisite)", "tokens": [], "result": "FAIL", "note": "login-required / 404, no public technical record accessible"},
+   {"url": "Excelerate Energy / Nakilat / Mitsui technical-management press releases", "tokens": [], "result": "FAIL", "note": "no vessel-specific power-plant disclosure found"}
+  ],
+  "gogpt_prior_assessment": "gogpt_prior was 'no' (no GOGPT plant flagged). No GOGPT-trackable generating plant identified for this record.",
+  "gogpt_candidate": "REVIEWER CALL",
+  "gogpt_candidate_basis": "Existence of onboard generation is a near-certain structural fact for a moored FSRU (off-grid) but is undocumented in any source found; a nameplate MW and fuel type could not be established, so a GOGPT record cannot be sourced.",
+  "status_or_other_findings": "",
+  "notes": "Recovery pass followed the dispatch hint (vessel-specific class-society/shipbuilder/fleet-technical sources) exhaustively; also corrected an earlier misconception in prior research that Excelerate Exquisite served Bahia Blanca, Argentina -- that was a different Excelerate vessel, the FSRU Exemplar. Genuine INSUFFICIENT after real search effort, not a budget-exhaustion punt."
+ },
+ {
+  "terminal": "GasPort FSRU",
+  "terminal_id": "T100000130299",
+  "country": "Pakistan",
+  "verdict": "INSUFFICIENT",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "",
+  "captive_summary": "The FSRU vessel BW Integrity (moored at Port Qasim for Pakistan GasPort Consortium) is an off-grid, moored facility where self-generation is structurally near-certain, but no public source found discloses the vessel's generator/engine make, model, count, rating, or fuel type.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Confirmed vessel identity/registry facts (built 2017 at Samsung Heavy Industries, Koje shipyard -- not Daewoo/DSME as the dispatch hint stated; IMO 9724946; 292.57m LOA; 87,190 DWT) but no source describing the onboard power-generation plant, engine model, or fuel type was found despite searches across vessel databases, BW Group/Nakilat technical releases, and shipyard delivery announcements.",
+  "refs": [],
+  "verification_log": [
+   {"url": "lite.duckduckgo.com/lite/ query: \"BW Integrity\" FSRU Samsung generator engine DFDE MW", "tokens": [], "result": "FAIL", "note": "returned only registry-level specs (builder, IMO, tonnage), no generator detail"},
+   {"url": "vesselfinder.com / marinetraffic.com / maritimeoptima.com / shipsio.com / maritime-database.com (BW Integrity)", "tokens": [], "result": "FAIL", "note": "no power-plant technical disclosure"},
+   {"url": "equasis.org (BW Integrity)", "tokens": [], "result": "FAIL", "note": "login-required / 404"},
+   {"url": "BW Group / Samsung Heavy Industries delivery press releases", "tokens": [], "result": "FAIL", "note": "corporate/delivery announcements only, no engine-room technical spec"}
+  ],
+  "gogpt_prior_assessment": "gogpt_prior was 'no' (no GOGPT plant flagged). No GOGPT-trackable generating plant identified for this record.",
+  "gogpt_candidate": "REVIEWER CALL",
+  "gogpt_candidate_basis": "Existence of onboard generation is near-certain for a moored FSRU but undocumented; no nameplate MW or fuel type sourced.",
+  "status_or_other_findings": "Corrected a factual error in the dispatch hint: BW Integrity was built by Samsung Heavy Industries (Koje), delivered March 2017, not Daewoo/DSME as stated in the recovery hint.",
+  "notes": "Direction-test finding (not this terminal's captive-power question, flagged for the record): search results (a PACRA credit-rating deck on Engro Elengy Terminal Ltd, https://www.pacra.com, general market reporting) indicate Pakistan GasPort's regasified LNG is substantially supplied onward to Pakistan's gas-fired power generation fleet in Punjab, i.e. GasPort primarily functions to feed external power plants (a PowerPlantsSupplied-type relationship), not the reverse. Specific plant names/MW figures for that onward supply were not confirmed to a citable standard in this pass and are NOT staged here."
+ },
+ {
+  "terminal": "SLNG 2 LNG Terminal",
+  "terminal_id": "T100000130890",
+  "country": "Singapore",
+  "verdict": "INSUFFICIENT",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "",
+  "captive_summary": "SLNG's second terminal is a Hanwha Ocean-built FSRU (owned/operated for Singapore LNG Corp, chartered via Mitsui O.S.K. Lines) fitted with an ABB-supplied medium-voltage generator and 6.6kV switchboards serving cargo, regasification, and propulsion loads -- confirming an onboard generating plant exists -- but no source discloses whether that generator is gas-fired, dual-fuel, or diesel.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "ABB press release (mirrored at gcaptain.com) confirms ABB is supplying 'medium voltage generator, 6.6kV switchboards for cargo and regasification' plus motor, transformer, propulsion drive and power-protection systems for the SLNG FSRU (200,000 m3, 5 MTPA, delivery 2027, built by Hanwha Ocean for MOL/SLNG). Neither this release nor SLNG's own steel-cutting-ceremony announcement (Hanwha Ocean, Geoje) states the generator's fuel type or MW rating.",
+  "refs": [
+   "https://gcaptain.com/abb-to-power-singapores-first-floating-lng-terminal/"
+  ],
+  "verification_log": [
+   {"url": "https://gcaptain.com/abb-to-power-singapores-first-floating-lng-terminal/", "tokens": ["ABB"], "result": "PASS", "note": "confirms ABB medium-voltage generator/switchboard package for the SLNG FSRU; fuel type not stated"},
+   {"url": "new.abb.com/news/detail/128927/abb-to-power-singapores-first-floating-lng-terminal (original ABB release)", "tokens": [], "result": "FAIL", "note": "timed out repeatedly (60s); content recovered via gcaptain.com mirror instead"},
+   {"url": "lite.duckduckgo.com/lite/ query: \"SLNG\" FSRU dual-fuel generator gas diesel fuel", "tokens": [], "result": "FAIL", "note": "no relevant results"},
+   {"url": "lite.duckduckgo.com/lite/ query: SLNG second terminal FSRU newbuild shipyard Hudong dual fuel", "tokens": [], "result": "FAIL", "note": "confirmed Hanwha Ocean shipyard/steel-cutting but no propulsion/generator fuel detail"}
+  ],
+  "gogpt_prior_assessment": "gogpt_prior was 'no' (no GOGPT plant flagged). No GOGPT-trackable generating plant identified.",
+  "gogpt_candidate": "REVIEWER CALL",
+  "gogpt_candidate_basis": "An onboard generator is confirmed to exist (ABB medium-voltage generator package) but fuel type and MW rating are undisclosed in any source found; cannot be sourced as a GOGPT record on this basis.",
+  "status_or_other_findings": "Terminal still under construction (steel-cutting held at Hanwha Ocean, Geoje); delivery expected 2027, operational ~2030; 200,000 m3 storage, 5 MTPA processing capacity, located offshore at Jurong Port.",
+  "notes": "Per the brief's fuel gate: 'fuel unstated anywhere = INSUFFICIENT (never NO, never YES).' Modern FSRUs are commonly DFDE (dual-fuel diesel-electric) vessels burning BOG/gas in normal service, which would be consistent with a YES if confirmed -- but that is an industry-pattern inference, not a documented finding for this hull, so the verdict is held at INSUFFICIENT rather than inferred."
+ },
+ {
+  "terminal": "Zhouji LNG Terminal",
+  "terminal_id": "T100000131111",
+  "country": "Taiwan",
+  "verdict": "NO",
+  "mechanical": "False",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "green",
+  "captive_summary": "Zhouji (also called the 'Intercontinental'/洲際 or '7th' LNG receiving terminal) is a proposed CPC Corporation Taiwan import facility in Kaohsiung whose own stated, primary purpose -- per CPC's official press release -- is to back up the saturated Yongan terminal and pipe regasified gas OUT to Talin (大林/Daling) power plant's planned new gas-fired generating units. This is the direction-test case: the terminal exists to fuel an external power station, not to power itself with captive generation. No evidence of on-site captive generation for the terminal itself was found in any source.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "CPC Taiwan's own official news release (cpc.com.tw, Jan 2023) states the Intercontinental receiving station's purpose is to 'serve as backup for Yongan, increase southern Taiwan's gas supply volume and supply security,' and that its location adjacent to Talin/Daling Power Plant enables it to 'supply natural gas needed for [the plant's] planned additional gas-generating units.' Corroborated independently by Liberty Times (自由財經) reporting the same project detail: underground pipelines run directly from the terminal to supply gas to both Talin power plant and the Daling distribution station. No source (CPC's own site, Liberty Times, offshore-technology.com data profile, or JOGMEC technical note) describes any on-site captive power generation for the terminal itself.",
+  "refs": [
+   "https://www.cpc.com.tw/News_Content.aspx?n=28&s=70634",
+   "https://ec.ltn.com.tw/article/paper/1519363"
+  ],
+  "verification_log": [
+   {"url": "https://www.cpc.com.tw/News_Content.aspx?n=28&s=70634", "tokens": ["洲際", "永安"], "result": "PASS", "note": "CPC official release: terminal backs up Yongan, feeds Daling/Talin power plant"},
+   {"url": "https://ec.ltn.com.tw/article/paper/1519363", "tokens": ["大林電廠", "洲際"], "result": "PASS", "note": "corroborates gas piped to Talin power plant"},
+   {"url": "https://www.offshore-technology.com/data-insights/zhouji-lng-regasification-terminal-taiwan/", "tokens": [], "result": "FAIL (not cited)", "note": "confirmed capacity/contractor detail (Daigas FEED) but no power-generation info either way, not used as a captive-power source"},
+   {"url": "journal.jogmec.go.jp/content/300516996.pdf", "tokens": [], "result": "FAIL", "note": "PDF unreadable/corrupted in fetch"}
+  ],
+  "gogpt_prior_assessment": "gogpt_prior was 'no'. The assignment's own power_plants_supplied field ('Hsinta power station, Talin power station') matches the confirmed direction-test finding for Talin; Hsinta (興達) was not independently corroborated as a recipient in this pass (only a hydrogen-infrastructure mention turned up), but Talin is well documented. Either way this is a PowerPlantsSupplied relationship, not a captive-generation finding, so no GOGPT candidate arises from this terminal's own operations.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "Not a gas power station at all from this terminal's perspective -- it is a gas SUPPLIER to existing/planned external power stations (Talin, and per the assignment data, Hsinta), the opposite relationship from captive power.",
+  "status_or_other_findings": "Proposed/under-construction terminal (site-construction EPC contract awarded to CTCI per Aug 2025 CNA report, targeting completion ~2030-2031); Daigas Gas and Power Solution performed design/FEED; 6x180,000 m3 storage tanks per some sources (offshore-technology.com cites 0.33 Mt storage / 292.2 bcf/yr regas capacity, JOGMEC cites 6.0 MTPA). Sources vary somewhat on capacity/tank count, likely reflecting design evolution 2023-2025 -- not resolved further here, not acted on.",
+  "notes": "The dispatch hint's data.zhupiter.com and China/Yangzhou framing appears to be a mismatched hint for this record: the assignment JSON (Taiwan, Kaohsiung, CPC Corporation Taiwan, power_plants_supplied listing Hsinta/Talin) is internally consistent and was treated as authoritative. data.zhupiter.com was confirmed genuinely down (ECONNREFUSED), not bot-blocked. This terminal follows the same pattern as the Quang Trach II / Vung Ang miss noted in the repo's routing rules: proposed import capacity whose real purpose is feeding an external power station, correctly a PowerPlantsSupplied case rather than a captive-power YES."
+ }
+]

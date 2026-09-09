@@ -1,0 +1,187 @@
+[
+  {
+    "terminal": "Boryeong LNG Terminal",
+    "terminal_id": "T100000130310",
+    "country": "South Korea",
+    "verdict": "NO",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "Boryeong LNG Terminal (GS Energy 50.1% / IMM Investment & KB Balhae Infrastructure consortium 49.9%, formerly GS Energy/SK Innovation JV) is a private regas terminal built to receive and supply natural gas to external power generation and industrial customers, not to run its own generation. GS Energy's own site describes the facility's purpose as delivering ~7 million tons/year of gas for power generation and industrial use, and GEM.wiki-independent reporting confirms LNG from the terminal was intended to feed GS Caltex's Anyang and Bucheon power plants and the adjacent Boryeong power station complex.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "GS Energy's official site (gsenergy.co.kr, English gas-business page) states the Boryeong terminal 'supplies approximately 7 million tons of natural gas annually for power generation and industrial use' — i.e. gas flows OUT from the terminal to downstream generation/industrial customers, not that the terminal itself generates power. No independent source found describing any on-site gas-fired generation (turbine, engine, or CHP) at the terminal; this is the direction test failing (PowerPlantsSupplied relationship, not captive).",
+    "refs": [
+      "https://www.gsenergy.co.kr/english/business_introduction/gas.php"
+    ],
+    "verification_log": [
+      {"url": "https://www.gsenergy.co.kr/english/business_introduction/gas.php", "tokens": ["power generation", "industrial"], "result": "PASS", "note": "primary operator source; confirms gas supplied OUT for power generation/industrial use"}
+    ],
+    "gogpt_prior_assessment": "GOGPT 'Boryeong power station' (2350 MW, 1.61 km away, gogpt_captive=False already) is the downstream destination the LNG terminal feeds via pipeline — a large mixed coal/gas generation complex operated by GS EPS/GS Power and other Boryeong-area generators, not co-located captive generation at the LNG terminal. This matches the terminal's stated purpose of supplying gas to power generation companies rather than self-generating.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "GOGPT record already exists for Boryeong power station and is correctly marked non-captive to this terminal (PowerPlantsSupplied direction, not captive-to-terminal).",
+    "status_or_other_findings": "Ownership recently changed: a consortium led by IMM Investment and KB Asset Management/KB Balhae Infrastructure acquired 49.9% (from SK Innovation E&S) in Nov 2025, with GS Energy retaining 50.1% — consistent with GEM's current owner field (IMM 35.9%/GS Energy 50.1%/KB 14%). Not acted on.",
+    "notes": "Direction-test case: terminal exists to supply gas to Boryeong-area power plants (GS Caltex Anyang/Bucheon per older reporting, and the Boryeong power station complex per GOGPT co-location), not to run captive generation. Flag for a possible PowerPlantsSupplied field check in a future Update batch — out of scope for this pass."
+  },
+  {
+    "terminal": "Gwangyang 2 LNG Terminal",
+    "terminal_id": "T100001055027",
+    "country": "South Korea",
+    "verdict": "NO",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "Gwangyang 2 LNG Terminal is POSCO International's expansion phase of its Gwangyang import terminal, under construction to add storage capacity by 2026-2027. POSCO International's own site states the terminal's regasified gas serves 'group captive demand' (POSCO group internal industrial/steel consumption) and downstream customers including LNG power generation, delivered via direct pipeline connections to nearby customer companies — with no mention of on-site power generation at the terminal itself.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "poscointl.com/lngBusiness (POSCO International's own LNG business page) describes the terminal's functions as unloading/storage/vaporization/dispatch (하역·저장·기화·송출) and states gas is piped to nearby customer companies including LNG power generation as part of 'Captive' GROUP DEMAND — i.e. POSCO's own industrial/steel-mill gas consumption, not on-site power generation at the terminal. No source found describing turbines, engines, or generators installed at the terminal site.",
+    "refs": [
+      "https://www.poscointl.com/lngBusiness"
+    ],
+    "verification_log": [
+      {"url": "https://www.poscointl.com/lngBusiness", "tokens": ["LNG", "터미널"], "result": "PASS", "note": "primary operator source; confirms terminal supplies power-generation/industrial customers via direct pipe, no on-site generation described"}
+    ],
+    "gogpt_prior_assessment": "GOGPT 'Gwangyang power station' (1126 MW, 0.49 km, tier C, gogpt_captive=False already) is downstream of the terminal — a separate combined-cycle power plant fed by pipeline from POSCO International's terminal, per trade reporting describing POSCO's integrated chain 'from upstream gas field development... to storage through LNG terminals and combined cycle power generation.' Not co-located captive generation.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "GOGPT record already exists (Gwangyang power station) and is correctly non-captive to this terminal — direction test fails.",
+    "status_or_other_findings": "Gwangyang 2 (Terminal 2) construction targets completion around 2026 to bring combined Gwangyang storage to 1.33 million m³. Not acted on.",
+    "notes": "IMPORTANT: POSCO International's own site uses the term '그룹 Captive 수요' (group 'Captive' demand) to describe internal POSCO-group industrial gas consumption — this is a DIFFERENT meaning of 'captive' (captive customer/demand) than this brief's 'captive power plant' (on-site generation). Do not conflate the two; the terminal has no on-site generation regardless of POSCO's own 'captive demand' terminology."
+  },
+  {
+    "terminal": "Gwangyang LNG Terminal",
+    "terminal_id": "T100000130311",
+    "country": "South Korea",
+    "verdict": "NO",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "Gwangyang LNG Terminal (POSCO International, 100%, operating since 2005 as Korea's first private LNG import terminal) supplies regasified gas to POSCO group industrial/steel-mill demand and to power-generation customers via direct pipeline — it does not run on-site power generation. Same operator statement and finding as the adjacent Gwangyang 2 expansion terminal.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "poscointl.com/lngBusiness: terminal performs unloading/storage/vaporization/dispatch and delivers gas via direct pipeline to nearby customer companies including LNG power generation, described as downstream 'group captive demand' — no on-site generation described anywhere in company materials or trade press found.",
+    "refs": [
+      "https://www.poscointl.com/lngBusiness"
+    ],
+    "verification_log": [
+      {"url": "https://www.poscointl.com/lngBusiness", "tokens": ["LNG", "터미널"], "result": "PASS", "note": "same primary source as Gwangyang 2 (single POSCO LNG-business page covers both terminals at the same site)"}
+    ],
+    "gogpt_prior_assessment": "GOGPT 'Gwangyang power station' (1126 MW, 0.62 km, tier B, gogpt_captive=False already) — same downstream, non-co-located combined-cycle plant fed by the terminal via pipeline; not captive generation at the terminal.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "GOGPT record already exists and is correctly non-captive to this terminal.",
+    "status_or_other_findings": "None beyond terminal capacity/ownership already in GEM.",
+    "notes": "Same 'group Captive demand' terminology caveat as Gwangyang 2 — POSCO's own use of 'Captive' refers to internal customer demand, not on-site generation. No captive gas power plant found at either Gwangyang terminal."
+  },
+  {
+    "terminal": "Incheon LNG Terminal",
+    "terminal_id": "T100000130312",
+    "country": "South Korea",
+    "verdict": "NO",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "Incheon LNG Terminal (KOGAS, 100%, world's largest single LNG base) uses diesel — not gas — for its on-site emergency generators and fire-suppression water pumps, per KOGAS's own public operational-data disclosure. The terminal also harvests LNG regasification cold energy via non-combustion Organic Rankine Cycle (ORC) units, feeding surplus electricity to the grid — a non-combustion process explicitly out of scope per this brief's 냉열발전 (cold-energy generation) exclusion, not gas-fired captive power.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Korea Gas Corporation's own public-data-portal filing (data.go.kr, dataset 15118162) states: '경유는 재고량에 따라 약 연 1회 구매하고 있으며 기지 내 비상 상황시 비상발전기 및 소화해수펌프 설비에 사용됩니다' (diesel is purchased about once a year and is used for emergency generators and fire-suppression seawater pump equipment during on-site emergencies) — a primary, government-portal-hosted operator disclosure that the terminal's only on-site combustion-based backup power is diesel-fuelled, which fails the fuel gate (diesel-only standby = NO). Cold-energy ORC power generation is separately documented but is non-combustion and excluded by definition.",
+    "refs": [
+      "https://www.data.go.kr/data/15118162/fileData.do"
+    ],
+    "verification_log": [
+      {"url": "https://www.data.go.kr/data/15118162/fileData.do", "tokens": ["비상발전기", "경유"], "result": "PASS", "note": "primary KOGAS operational-data disclosure confirming diesel-fuelled emergency generators"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT prior given for this terminal.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No gas-fired generation found on-site; emergency generators are diesel-fuelled (fails fuel gate) and the ORC cold-energy units are non-combustion, out of scope by definition.",
+    "status_or_other_findings": "KOGAS and KT have discussed a cold-energy-cooled data center project at Incheon using regasification cold energy — unrelated to captive gas power. Not acted on.",
+    "notes": "Direct, documented fuel-gate NO — a rare and clean case where the operator's own disclosure explicitly names the emergency-generator fuel as diesel."
+  },
+  {
+    "terminal": "Jeju Aewol LNG Terminal",
+    "terminal_id": "T100000130713",
+    "country": "South Korea",
+    "verdict": "NO",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "Jeju Aewol LNG Terminal (KOGAS, 100%, completed Dec 2019 / operating from March 2020) is a small-scale regas base that stores and vaporizes LNG shipped from the Tongyeong LNG base, then pipes gas ~island-wide to Jeju City households and to KOMIPO's separate LNG combined-cycle power plant at Samyang-dong (a different site, not co-located). The terminal itself is a receiving/storage/vaporization facility, not a captive power site — the direction test fails (gas flows OUT to a separate downstream power plant).",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "JOGMEC's KOGAS-sourced journal reporting (journal.jogmec.go.jp) states the Jeju (Aewol) small-scale LNG receiving terminal 'was completed in October 2019 and started supplying natural gas to power generation facilities and 27,000 households in Jeju City in March 2020' — i.e. supplies gas OUT to power generation, not on-site. Independent confirmation that the KOMIPO Jeju power plant fed by this gas is a physically separate facility at Samyang-dong (제주시 삼양동), ~15+ km from the Aewol coastal site (애월읍 애월해안로), per Yonhap News and KOMIPO's own site describing its Samyang-dong power division and 2023 150 MW LNG combined-cycle plant announcement.",
+    "refs": [
+      "https://journal.jogmec.go.jp/content/300513859.pdf",
+      "https://www.yna.co.kr/view/AKR20230925048300003"
+    ],
+    "verification_log": [
+      {"url": "https://journal.jogmec.go.jp/content/300513859.pdf", "tokens": ["Jeju", "27,000 households"], "result": "PASS", "note": "confirms terminal supplies gas OUT to power generation + households"},
+      {"url": "https://journal.jogmec.go.jp/content/300516995.pdf", "tokens": ["Jeju", "27,000 households"], "result": "PASS", "note": "second-edition mirror of the same JOGMEC reporting series — treated as ONE source with the above, not independent corroboration"},
+      {"url": "https://www.yna.co.kr/view/AKR20230925048300003", "tokens": ["제주", "복합"], "result": "PASS", "note": "confirms KOMIPO's Jeju LNG combined-cycle plant is a separate Samyang-dong facility, not co-located with Aewol terminal"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT prior given for this terminal.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No on-site generation at the Aewol terminal; the KOMIPO Jeju LNG combined-cycle plant it feeds is a separate site (Samyang-dong) that may already be, or should separately be, a GOGPT record on its own merits — not a captive addition tied to this terminal.",
+    "status_or_other_findings": "KOMIPO announced a new 150 MW LNG combined-cycle plant for Jeju (Samyang-dong site, idle land within the existing Jeju power division) per a Sept 2023 Yonhap report — a separate power-station development, not a terminal-level finding. Not acted on.",
+    "notes": "Direction-test case, same pattern as the mainland KOGAS/POSCO/GS terminals in this shard: small-scale island terminal built specifically to feed a separate, named downstream power plant."
+  },
+  {
+    "terminal": "KOGAS Dangjin LNG Terminal",
+    "terminal_id": "T100000130612",
+    "country": "South Korea",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "",
+    "captive_summary": "KOGAS Dangjin LNG Terminal (100% KOGAS; Phase 1 under construction, Phase 2 proposed) is a large new-build regas base in the Seokmun National Industrial Complex, described in available reporting only in terms of storage-tank count/capacity and its role as KOGAS's 5th (and largest-planned) terminal. No public source found — news coverage, KOGAS technical material, or environmental-assessment excerpts reachable via search — describes on-site power/generator equipment (gas-fired or otherwise) for this facility specifically.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Searched Korean-language terms (당진기지 자가발전/비상발전기), English terms, and the Korea Electrical Safety Corporation's public emergency-generator dataset (data.go.kr) for a Dangjin-specific record; found only general project/capacity/environmental-controversy reporting, no equipment-level disclosure. KOGAS's own Incheon base HAS a public diesel-emergency-generator disclosure (see Incheon terminal in this shard) but no equivalent Dangjin-specific filing was locatable — cannot extend that finding to Dangjin without a terminal-specific source.",
+    "refs": [],
+    "verification_log": [
+      {"url": "https://www.data.go.kr/data/15118162/fileData.do", "tokens": ["당진"], "result": "FAIL", "note": "Incheon-specific dataset; no equivalent Dangjin filing found in the public data portal via search"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT prior given for this terminal.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No generation of any kind documented at this terminal in any source found.",
+    "status_or_other_findings": "Phase 2 construction has drawn opposition from Dangjin-area climate/environmental groups citing stranded-asset risk amid declining LNG demand forecasts — a status/controversy note, not acted on.",
+    "notes": "Genuine INSUFFICIENT: this is a large, still-under-construction KOGAS terminal for which no equipment-level public disclosure (design study, EIA excerpt, or operational filing) was found describing any on-site power generation, gas-fired or otherwise. The analogous Incheon base is diesel-only, but that is KOGAS-pattern context, not a Dangjin-specific finding, and is not used to force a NO here."
+  },
+  {
+    "terminal": "KOMIPO Boryeong LNG Terminal",
+    "terminal_id": "T100001083270",
+    "country": "South Korea",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "",
+    "captive_summary": "Cancelled before construction (KOMIPO board withdrew the project 28 June 2024, citing a ~22% cost escalation to KRW 894.6bn and falling LNG demand) and, as designed, was purely an LNG receiving/storage terminal to supply fuel for KOMIPO's own coal-to-gas conversion of its adjacent Boryeong Units 1-2 (converting existing coal generation to LNG combined-cycle at the same power complex) — a fuel-supply (PowerPlantsSupplied-direction) project, not a captive-generation project at the terminal itself.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Gasworld and Energy Intelligence both report KOMIPO's June 2024 cancellation of the proposed Boryeong LNG terminal (~400,000 kL storage, targeted 2027/2028 start) due to cost increases and declining LNG demand for power generation. KOMIPO's own site (komipo.co.kr) describes its Boryeong power division as converting coal units to LNG combined-cycle generation, and industry reporting on the 10th/11th power-supply basic plans confirms Boryeong Units 1-2 were slated for full coal-to-LNG replacement — i.e. the (cancelled) terminal's design purpose was fuel supply to KOMIPO's own converted units, not independent captive generation at the terminal.",
+    "refs": [
+      "https://www.gasworld.com/story/south-korea-scraps-more-mega-lng-projects/2142167.article/",
+      "https://www.energyintel.com/00000190-ddea-daad-a5d9-fffef5ad0000"
+    ],
+    "verification_log": [
+      {"url": "https://www.gasworld.com/story/south-korea-scraps-more-mega-lng-projects/2142167.article/", "tokens": ["KOMIPO", "Boryeong"], "result": "PASS", "note": "bot-blocked (403), Wayback-verified live"},
+      {"url": "https://www.energyintel.com/00000190-ddea-daad-a5d9-fffef5ad0000", "tokens": ["Komipo", "Boryeong"], "result": "PASS", "note": "confirms cancellation and 'lower LNG demand for power generation' rationale"}
+    ],
+    "gogpt_prior_assessment": "GOGPT 'Boryeong power station' (2350 MW, 0.02 km, tier C, gogpt_captive=False already) is KOMIPO's own existing/converting power complex that this cancelled terminal would have fed — same relationship, and same non-captive determination, as the adjacent GS Energy Boryeong LNG Terminal in this shard.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Project cancelled before construction; GOGPT record for the destination power station already exists and correctly shows non-captive.",
+    "status_or_other_findings": "None beyond the cancellation itself, already reflected in GEM's cancelled status.",
+    "notes": "SCREEN criterion: cancelled-and-never-built. Noted for completeness that even as designed, the project's purpose was fuel supply to KOMIPO's own coal-to-gas conversion units at the same complex (0.02 km away), not a captive-generation facility at the terminal — so the direction test would also have produced a NO had it proceeded."
+  }
+]

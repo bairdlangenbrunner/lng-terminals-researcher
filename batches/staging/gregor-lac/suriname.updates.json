@@ -1,0 +1,239 @@
+[
+  {
+    "terminal_id": "T100000131139",
+    "unit_id": "G100002113900",
+    "terminal_name": "Firebird LNG Terminal",
+    "unit_name": "--",
+    "country": "Suriname",
+    "field_name": "Capacity [ref]",
+    "old_value": "https://www.lngindustry.com/special-reports/03082022/firebird-lng-project-now-fully-funded/, https://www.firebirdlng.com/",
+    "new_value": "https://www.lngindustry.com/special-reports/03082022/firebird-lng-project-now-fully-funded/",
+    "confidence": "red",
+    "source_tier": "trade press (paywalled stub)",
+    "ref_field": "",
+    "ref_urls": [
+      "https://www.lngindustry.com/special-reports/03082022/firebird-lng-project-now-fully-funded/"
+    ],
+    "source_notes": "firebirdlng.com no longer resolves (DNS failure, confirmed via curl -- consistent with the project's shelving and the company selling equipment to Fermi per Fortune 10/2025). It is dropped as proven-dead. The surviving lngindustry.com URL is a paywalled stub -- its visible content (meta description + 494-word teaser) does NOT contain '2.7' or 'mtpa', so it does not actually verify the 2.70 mtpa Capacity value; staged red rather than blank because I could not complete a replacement search this pass (WebSearch budget exhausted mid-batch) -- see paired qa_review entry recommending a follow-up search or a blank+qa disposition. A 2023-01-27 Wayback snapshot of firebirdlng.com's own homepage stated capacity as '4,000,000 tons/Annum' (4.0 mtpa), which conflicts with GEM's current 2.70 mtpa -- flagged, not auto-applied (single dead-site source, and project is now shelved so lower urgency).",
+    "scope_note": "",
+    "dropped_urls_dead": [
+      "https://www.firebirdlng.com/"
+    ],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131139",
+    "unit_id": "G100002113900",
+    "terminal_name": "Firebird LNG Terminal",
+    "unit_name": "--",
+    "country": "Suriname",
+    "field_name": "StartDate [ref]",
+    "old_value": "https://www.firebirdlng.com/, https://www.gecf.org/_resources/files/events/gecf-unveils-the-annual-gas-market-report-2024/gecf-agmr-2024.pdf",
+    "new_value": "",
+    "confidence": "green",
+    "source_tier": "n/a (deletion)",
+    "ref_field": "",
+    "ref_urls": [],
+    "source_notes": "Both existing URLs are dead: firebirdlng.com no longer resolves (DNS failure); the GECF PDF returns HTTP 404 (also not re-found at gecf.org's current report index via WebFetch). No replacement source located this pass (WebSearch budget exhausted). Blanked per Rule F rather than leave a dead-URL ref; OriginalPlannedStartYear/LatestPlannedStartYear (2026) values are left untouched as historical record of the pre-shelving plan -- see paired qa_review entry. || Orchestrator QC gate: marked delete=true + confidence green per the staged-deletion convention (green + empty = staged deletion). The green here marks a DELIBERATE blanking of this [ref] cell, not source strength.",
+    "scope_note": "",
+    "dropped_urls_dead": [
+      "https://www.firebirdlng.com/",
+      "https://www.gecf.org/_resources/files/events/gecf-unveils-the-annual-gas-market-report-2024/gecf-agmr-2024.pdf"
+    ],
+    "researcher_initials": "AI-draft (sweep)",
+    "delete": true
+  },
+  {
+    "terminal_id": "T100000131139",
+    "unit_id": "G100002113900",
+    "terminal_name": "Firebird LNG Terminal",
+    "unit_name": "--",
+    "country": "Suriname",
+    "field_name": "Status",
+    "old_value": "shelved",
+    "new_value": "shelved",
+    "confidence": "blue",
+    "source_tier": "local Dutch-language press + trade press",
+    "ref_field": "",
+    "ref_urls": [
+      "https://scheepvaart.headliner.nl/item/havenbedrijf-rotterdam-stopt-met-diepwaterhaven-suriname-schuttevaer-8165",
+      "https://www.dbsuriname.com/2025/01/15/met-veel-fanfare-aangekondigde-diepzeehaven-nickerie-voorlopig-van-de-baan/",
+      "https://fortune.com/2025/10/10/rick-perry-ai-power-startup-fermi-ipo-zero-revenue/"
+    ],
+    "source_notes": "Exhaustive re-verify of the shelved-status entry Gregor staged today (Aug 2026): all three existing citations re-verified alive. The firebirdlng.com domain now failing DNS resolution (see Capacity/StartDate ref findings above) is independent corroborating evidence the project is dormant, consistent with 'shelved'.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131139",
+    "unit_id": "G100002113900",
+    "terminal_name": "Firebird LNG Terminal",
+    "unit_name": "--",
+    "country": "Suriname",
+    "field_name": "FacilityType",
+    "old_value": "export",
+    "new_value": "export",
+    "confidence": "blue",
+    "source_tier": "trade press",
+    "ref_field": "",
+    "ref_urls": [
+      "https://www.naturalgasworld.com/phoenix-advances-firebird-lng-project-in-suriname-100050"
+    ],
+    "source_notes": "Exhaustive re-verify, no change. URL re-verified alive.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131139",
+    "unit_id": "G100002113900",
+    "terminal_name": "Firebird LNG Terminal",
+    "unit_name": "--",
+    "country": "Suriname",
+    "field_name": "Location",
+    "old_value": "Nieuw Nickerie",
+    "new_value": "Nieuw Nickerie",
+    "confidence": "blue",
+    "source_tier": "trade press + local press",
+    "ref_field": "",
+    "ref_urls": [
+      "https://www.naturalgasworld.com/phoenix-advances-firebird-lng-project-in-suriname-100050",
+      "https://oilnow.gy/featured/mega-lng-deep-water-port-for-suriname-up-for-environmental-authorisation/",
+      "https://www.bnamericas.com/en/news/environmental-permitting-begins-for-suriname-lng-port-hub"
+    ],
+    "source_notes": "Exhaustive re-verify, no change. Both re-checked URLs alive. [ref-restore 2026-08-11: restored existing live URL(s) https://www.naturalgasworld.com/phoenix-advances-firebird-lng-project-in-suriname-100050 per merge-semantics rule (bot-block != dead; never drop a URL not proven dead)]",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100001048294",
+    "unit_id": "G100001055425",
+    "terminal_name": "Petronas FLNG Terminal",
+    "unit_name": "--",
+    "country": "Suriname",
+    "field_name": "Location",
+    "old_value": "",
+    "new_value": "Offshore, Block 52 (Sloanea gas field)",
+    "confidence": "green",
+    "source_tier": "national oil company (primary) + trade press",
+    "ref_field": "",
+    "ref_urls": [
+      "https://splash247.com/wison-new-energies-nets-work-on-petronas-flng-set-for-suriname/",
+      "https://www.nsenergybusiness.com/news/wison-new-energies-secures-flng-dfs-contract-for-surinames-offshore-block-52/",
+      "https://www.arcgis.com/apps/dashboards/01bdba8b1bdb4136aabf89b6796772d2",
+      "https://www.staatsolie.com/en/news/staatsolie-approves-commercial-field-for-sloanea-1-gas-discovery-in-block-52/"
+    ],
+    "source_notes": "Location text field was blank (Rule F orphan vs. the already-populated Location [ref]). Filled from Staatsolie's own release (primary, re-verified alive, confirms Block 52 / Sloanea / 'floating LNG facility') plus splash247 (independent, re-verified alive, confirms 'Block 52'). Kept the two pre-existing URLs I could not re-verify this pass in new_value rather than silently drop them (neither is proven dead -- nsenergybusiness.com returned HTTP 403 with no Wayback snapshot available; arcgis.com is a JS dashboard the verifier cannot parse for text) -- flagged in a paired qa_review entry rather than declared dropped_urls_dead.",
+    "scope_note": "Petronas FLNG is Block 52 (Sloanea field, Petronas-operated) -- NOT Block 58/GranMorgu (TotalEnergies, oil-led). Confirmed in scope: sources describe a dedicated floating LNG (export) facility, not a piped domestic-only arrangement.",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100001048294",
+    "unit_id": "G100001055425",
+    "terminal_name": "Petronas FLNG Terminal",
+    "unit_name": "--",
+    "country": "Suriname",
+    "field_name": "FloatingVesselName [ref]",
+    "old_value": "https://www.staatsolie.com/en/news/staatsolie-approves-commercial-field-for-sloanea-1-gas-discovery-in-block-52/, https://www.reuters.com/business/energy/surinames-block-52-could-become-commercial-oil-18-months-staatsolie-says-2026-05-27/",
+    "new_value": "",
+    "confidence": "green",
+    "source_tier": "n/a (deletion)",
+    "ref_field": "",
+    "ref_urls": [],
+    "source_notes": "Rule F orphan: FloatingVesselName [ref] was populated with no paired FloatingVesselName value. Read both cited sources in full -- neither names a specific vessel; the project is still at the DFS (design feasibility study, Wison New Energies) stage with no FLNG unit selected/named yet. Blanked the ref; re-populate once a vessel is contracted/named. Neither underlying URL is dead (staatsolie re-verified alive; Reuters is bot-blocked with no Wayback fallback available -- see qa_review), so no dropped_urls_dead declaration -- they simply don't support this specific field. || Orchestrator QC gate: marked delete=true + confidence green per the staged-deletion convention (green + empty = staged deletion). The green here marks a DELIBERATE blanking of this [ref] cell, not source strength.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)",
+    "delete": true
+  },
+  {
+    "terminal_id": "T100001048294",
+    "unit_id": "G100001055425",
+    "terminal_name": "Petronas FLNG Terminal",
+    "unit_name": "--",
+    "country": "Suriname",
+    "field_name": "Status",
+    "old_value": "proposed",
+    "new_value": "proposed",
+    "confidence": "blue",
+    "source_tier": "national oil company (primary) + trade press",
+    "ref_field": "",
+    "ref_urls": [
+      "https://www.upstreamonline.com/rigs-and-vessels/wison-lands-study-for-suriname-flng-vessel/2-1-1811440",
+      "https://www.offshore-energy.biz/petronas-expands-suriname-footprint-and-picks-halliburtons-solutions-for-asset-optimization/",
+      "https://lngprime.com/americas/petronas-plans-flng-project-in-suriname/120770/",
+      "https://www.upstreamonline.com/field-development/petronas-eyes-flng-option-for-suriname-discovery/2-1-1608022?utm_medium=email&utm_source=substack",
+      "https://www.staatsolie.com/en/news/staatsolie-approves-commercial-field-for-sloanea-1-gas-discovery-in-block-52/"
+    ],
+    "source_notes": "Exhaustive re-verify, no change: Staatsolie's own release (checked in full) states FID is only 'planned in the second half of 2026' -- pre-FID/proposed confirmed, matches FIDStatus=Pre-FID and FIDYear=2026 already in GEM. [ref-restore 2026-08-11: restored existing live URL(s) https://www.upstreamonline.com/rigs-and-vessels/wison-lands-study-for-suriname-flng-vessel/2-1-1811440?zephr_sso_ott=mxCaQa, https://www.offshore-energy.biz/petronas-expands-suriname-footprint-and-picks-halliburtons-solutions-for-asset-optimization/, https://lngprime.com/americas/petronas-plans-flng-project-in-suriname/120770/, https://www.upstreamonline.com/field-development/petronas-eyes-flng-option-for-suriname-discovery/2-1-1608022?utm_medium=email&utm_source=substack&zephr_sso_ott=qdoAXv per merge-semantics rule (bot-block != dead; never drop a URL not proven dead)] [orchestrator QC gate: stripped a per-request zephr_sso_ott paywall session token from the restored upstreamonline URL(s) — a session token rots immediately and must never be stored in a citation; the clean article URL is the citation.]",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100001048294",
+    "unit_id": "G100001055425",
+    "terminal_name": "Petronas FLNG Terminal",
+    "unit_name": "--",
+    "country": "Suriname",
+    "field_name": "LatestPlannedStartYear",
+    "old_value": "2030",
+    "new_value": "2030",
+    "confidence": "blue",
+    "source_tier": "national oil company (primary)",
+    "ref_field": "",
+    "ref_urls": [
+      "https://www.staatsolie.com/en/news/staatsolie-approves-commercial-field-for-sloanea-1-gas-discovery-in-block-52/"
+    ],
+    "source_notes": "Exhaustive re-verify, no slip: Staatsolie's release explicitly states 'first gas to flow in 2030' -- matches GEM's LatestPlannedStartYear=2030 (already revised down from OriginalPlannedStartYear=2031). No further slip found.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100001048294",
+    "unit_id": "G100001055425",
+    "terminal_name": "Petronas FLNG Terminal",
+    "unit_name": "--",
+    "country": "Suriname",
+    "field_name": "Capacity",
+    "old_value": "2.40",
+    "new_value": "2.40",
+    "confidence": "blue",
+    "source_tier": "trade press",
+    "ref_field": "",
+    "ref_urls": [
+      "https://www.industrialinfo.com/news/article/suriname-eyes-bigger-role-in-global-oil-and-gas-industry--360013"
+    ],
+    "source_notes": "Exhaustive re-verify, no change: existing Capacity [ref] URL re-verified alive and contains '2.4'; per methodology the higher end of the cited 1.2-2.4 mtpa range is correctly recorded (researcher note already documents this).",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100001048294",
+    "unit_id": "G100001055425",
+    "terminal_name": "Petronas FLNG Terminal",
+    "unit_name": "--",
+    "country": "Suriname",
+    "field_name": "Owner",
+    "old_value": "Petronas International Co Ltd [80%]; Paradise Oil Company NV [20%]",
+    "new_value": "Petronas International Co Ltd [80%]; Paradise Oil Company NV [20%]",
+    "confidence": "blue",
+    "source_tier": "trade press + owner-adjacent (Petronas press release)",
+    "ref_field": "",
+    "ref_urls": [
+      "https://splash247.com/wison-new-energies-nets-work-on-petronas-flng-set-for-suriname/",
+      "https://lngprime.com/americas/petronas-plans-flng-project-in-suriname/120770/",
+      "https://oilnow.gy/featured/technip-energies-flng-is-the-smart-choice-for-guyana-suriname-gas-monetisation/",
+      "https://www.petronas.com/media/media-releases/petronas-and-staatsolie-declare-commerciality-sloanea-field-marking-surinames"
+    ],
+    "source_notes": "Exhaustive re-verify, no change: 80/20 Petronas/Paradise Oil (Staatsolie subsidiary) split matches current Petronas.com and Staatsolie coverage. Both spot-checked existing ref URLs alive. [ref-restore 2026-08-11: restored existing live URL(s) https://splash247.com/wison-new-energies-nets-work-on-petronas-flng-set-for-suriname/, https://lngprime.com/americas/petronas-plans-flng-project-in-suriname/120770/ per merge-semantics rule (bot-block != dead; never drop a URL not proven dead)]",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  }
+]

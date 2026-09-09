@@ -1,0 +1,184 @@
+[
+  {
+    "terminal": "KOSPO Hadong LNG Terminal",
+    "terminal_id": "T100001083277",
+    "country": "South Korea",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "Cancelled-and-never-built: Korea Southern Power (KOSPO) withdrew the Hadong LNG Storage Facility project at an April 22, 2024 board meeting. The completed basic design scope was storage tanks + vaporization/send-out facilities + a berthing dock only — no generation was ever part of the design. The terminal's business case depended on supplying a separate, adjacent 4-unit LNG power project; Korea's 11th Basic Power Supply and Demand Plan reassigned those units elsewhere (unit 4 to Goyang/Changnyeong, units 5-6 to Yongin), cutting the associated LNG power capacity from 2GW to 1GW and killing the terminal's rationale.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "OhMyNews (2024-04-22) and Energy Platform News both report the KOSPO board's withdrawal decision and quote the same environmental-group framing (\"경영환경변화로 LNG터미널의 사업성 확보가 불가능해지자\"). Energy Platform News additionally quotes the design scope verbatim: \"저장탱크, 기화시설, 접안부두\" (storage tanks, vaporization facilities, berthing facilities) at the Hadong coal power plant site, and explains the redirected LNG power units as the reason the terminal became unviable.",
+    "refs": [
+      "https://www.ohmynews.com/NWS_Web/View/at_pg.aspx?CNTN_CD=A0003023681",
+      "https://e-platform.net/news/articleView.html?idxno=84910"
+    ],
+    "verification_log": [
+      {"url": "https://www.news1.kr/local/busan-gyeongnam/5392480", "tokens": ["한국남부발전", "하동"], "result": "FAIL", "note": "HTTP 403, no Wayback snapshot available — dropped, not used as citation"},
+      {"url": "https://www.ohmynews.com/NWS_Web/View/at_pg.aspx?CNTN_CD=A0003023681", "tokens": ["한국남부발전", "하동"], "result": "PASS", "note": "confirms KOSPO board withdrawal 2024-04-22"},
+      {"url": "https://e-platform.net/news/articleView.html?idxno=84910", "tokens": ["저장탱크", "기화시설"], "result": "PASS", "note": "confirms design scope (tanks, vaporization, berth only) and redirected-units rationale"}
+    ],
+    "gogpt_prior_assessment": "GOGPT prior is 'Hadong power station' (3,000 MW, coal-fired, tier C, 0.82 km) — this is Korea Southern Power's existing, pre-existing coal-fired station, unrelated to the cancelled LNG terminal and not gas-fired. Already correctly flagged gogpt_captive=False in the assignment data.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "The colocated GOGPT plant is an existing coal station, not gas, and the LNG terminal itself never got built — there is no new captive gas plant to add. Also direction-test moot: even in its design phase the terminal existed to supply a separate LNG power project, not to power itself.",
+    "status_or_other_findings": "GEM's cancelled/confirmed status for this terminal is well-corroborated: KOSPO board withdrawal 2024-04-22, driven by the 11th Basic Power Supply and Demand Plan reassigning Hadong's planned LNG power units elsewhere and cutting associated capacity from 2GW to 1GW.",
+    "notes": "Direction-test case even hypothetically: had it been built, the terminal's whole purpose was to supply fuel to a separate LNG power project on an adjacent site, not to self-power — never a captive candidate."
+  },
+  {
+    "terminal": "Northeast Asia LNG Hub Terminal",
+    "terminal_id": "T100000130891",
+    "country": "South Korea",
+    "verdict": "NO",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "yellow",
+    "captive_summary": "Under-construction commercial LNG storage/regas/trading hub (Myodo Island, Yeosu; JV of BS Hanyang 60% / GS Energy 40%; phase 1 targeted 2027). The developer's own official facilities page gives a complete equipment inventory — four 200,000 m³ storage tanks, a 100,000 DWT berth, ORV (seawater) 140 t/h × 4 plus SCV (combustion) 140 t/h × 2 vaporizers, and 5.2 km of high-pressure pipeline to the Yeosu industrial complex — with no generation component, and separately touts 'cold-energy utilization' (냉열 에너지 활용) supplied to the industrial park, which is a non-combustion byproduct use, not captive gas power. The terminal's stated purpose is distributing LNG for industrial and power-generation use in the Yeosu/Gwangyang complexes — fuel flows OUT, not power IN.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Official project site (nea-lng.com) facilities page lists every major system (storage, dock, ORV/SCV vaporization, pipeline network, cold-energy use) with no generation equipment mentioned; this is a primary developer disclosure describing the full as-designed/as-built scope, consistent with multiple press descriptions (Yonhap, Financial Today, Kukmin Ilbo) of the terminal as a distribution/trading hub feeding the Yeosu/Gwangyang industrial complexes.",
+    "refs": [
+      "https://www.nea-lng.com/site/main/content/facilities"
+    ],
+    "verification_log": [
+      {"url": "https://www.nea-lng.com/site/main/content/facilities", "tokens": ["저장탱크", "기화송출"], "result": "FAIL", "note": "기화송출 not found verbatim (page uses different phrasing for the vaporization system)"},
+      {"url": "https://www.nea-lng.com/site/main/content/facilities", "tokens": ["저장탱크"], "result": "PASS", "note": "confirms storage tank content"},
+      {"url": "https://www.nea-lng.com/site/main/content/facilities", "tokens": ["ORV"], "result": "PASS", "note": "confirms seawater vaporizer listing"},
+      {"url": "https://www.nea-lng.com/site/main/content/facilities", "tokens": ["냉열"], "result": "PASS", "note": "confirms cold-energy utilization mention (non-captive byproduct use)"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT prior was seeded for this terminal (gogpt_prior: no). No colocated generation candidate found in research either.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No gas-fired generation of any kind found at this site; the developer's own complete facility inventory has no generation component.",
+    "status_or_other_findings": "Construction confirmed on track: GS E&C holds the main construction contract (2024), roof-topping ceremony for storage tanks reported November 2025, phase 1 targeted for operation 2028 per one source (nea-lng.com/press describe 2027 target elsewhere — minor date inconsistency across sources, not resolved here).",
+    "notes": "Direction-test case: terminal's stated purpose is supplying 3 million t/yr of LNG for industrial and power-generation use in Yeosu/Gwangyang — fuel flows out to external consumers, which is a PowerPlantsSupplied-type relationship, not captive power in."
+  },
+  {
+    "terminal": "POSCO Dangjin LNG Terminal",
+    "terminal_id": "T100000131132",
+    "country": "South Korea",
+    "verdict": "NO",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "yellow",
+    "captive_summary": "POSCO International's own newsroom article describes the full facility scope for the Dangjin terminal expansion: two 270,000 kℓ LNG storage tanks, two 200 t/h vaporization units, and LPG heat-supply equipment (증열설비, used to warm the send-out gas) — no power generation equipment is mentioned. This is POSCO's own private storage terminal supplying its industrial gas business, not a power-plant-adjacent site.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "POSCO Newsroom (posco.com) press article on the Dangjin LNG terminal project gives the complete equipment list (2 tanks, 2 vaporizers, LPG heat-supply unit) with no generation component named; company confirmed a local-government cooperation agreement (2026) targeting 2027 completion.",
+    "refs": [
+      "https://newsroom.posco.com/kr/%ED%8F%AC%EC%8A%A4%EC%BD%94%EC%9D%B8%ED%84%B0%EB%82%B4%EC%85%94%EB%84%90-%EB%8B%B9%EC%A7%84lng%ED%84%B0%EB%AF%B8%EB%84%90-%EC%B6%94%EC%A7%84%ED%95%B4-%EC%97%90%EB%84%88%EC%A7%80%EC%82%AC%EC%97%85/"
+    ],
+    "verification_log": [
+      {"url": "https://newsroom.posco.com/kr/%ED%8F%AC%EC%8A%A4%EC%BD%94%EC%9D%B8%ED%84%B0%EB%82%B4%EC%85%94%EB%84%90-%EB%8B%B9%EC%A7%84lng%ED%84%B0%EB%AF%B8%EB%84%90-%EC%B6%94%EC%A7%84%ED%95%B4-%EC%97%90%EB%84%88%EC%A7%80%EC%82%AC%EC%97%85/", "tokens": ["당진", "저장탱크"], "result": "PASS", "note": "confirms facility scope description"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT prior was seeded for this terminal (gogpt_prior: no). No colocated generation candidate found in research.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No generation equipment found in the primary company disclosure of facility scope.",
+    "status_or_other_findings": "IMPORTANT DISCREPANCY: GEM currently holds this unit as status=shelved (inferred ~2y). Current reporting (2026) shows the opposite — POSCO International signed a May 31 cooperation agreement with Chungcheongnam-do/Dangjin City and partners (incl. LX International) and is actively constructing toward a 2027 completion target, expanding storage from 730,000 kℓ (5 tanks, 6th under construction) toward ~1.87 million kℓ at full build-out. This looks like a status change (shelved → construction/operating) that the standard Update workflow should verify and stage — not acted on here per this shard's scope.",
+    "notes": "Not a PowerPlantsSupplied case — no colocated power plant found; this is a private industrial-gas storage terminal for POSCO's own operations, seawater vaporization only, no combustion generation equipment documented."
+  },
+  {
+    "terminal": "Pyeongtaek LNG Terminal",
+    "terminal_id": "T100000130313",
+    "country": "South Korea",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "",
+    "captive_summary": "KOGAS's original 1986 flagship LNG base, handling ~40% of national gas supply and feeding the national pipeline network plus several colocated/nearby merchant power plants (Pyeongtaek Thermal, Gumi CCGT already in GEM's PowerPlantsSupplied field; also identified in this research: Shin Pyeongtaek power station, a separate 950 MW gas IPP owned by a GS Energy / Korea Western Power / KB Asset Management joint venture, commissioned 2019, unrelated to KOGAS). No public source was found, despite extensive search, that states whether the KOGAS base itself has on-site backup/captive gas generation or is purely grid-fed. A same-operator precedent exists (KOGAS Incheon base's public-data-portal disclosure shows its emergency generators run on diesel) but per this batch's instructions that cannot be extrapolated to Pyeongtaek without a site-specific source, and no Pyeongtaek-specific dataset was found on data.go.kr (a targeted search for '비상발전기 경유' returned only the single Incheon dataset).",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Extensive search (KOGAS technical/press material, data.go.kr public data portal, environmental permit searches) found no site-specific statement of Pyeongtaek base's own power supply arrangement (grid vs self-generation) or emergency generator fuel type.",
+    "refs": [],
+    "verification_log": [],
+    "gogpt_prior_assessment": "GOGPT prior is 'Shin Pyeongtaek power station' (950 MW, tier B, 0.96 km, gogpt_captive already False). Confirmed via research: jointly owned by GS Energy, Korea Western Power, and KB Asset Management (completed 2019, ~883.3 billion KRW investment) — an independent gas-fired merchant IPP, not owned by or captive to KOGAS's LNG terminal.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Shin Pyeongtaek is a separate, independently-owned merchant power company with no KOGAS ownership stake found — not this terminal's captive plant.",
+    "status_or_other_findings": "Identified a third nearby gas power plant (Shin Pyeongtaek, 950 MW) not currently listed in GEM's PowerPlantsSupplied field for this terminal (which lists only Pyeongtaek Thermal Power Plant and Gumi CCGT) — worth a look for a future Update batch, not verified further here.",
+    "notes": "Genuinely undisclosed in every public source checked (fuel_unstated / existence-unstated for the terminal's own backup power) — INSUFFICIENT per brief, not NO, since no source documents the terminal itself as grid-fed or diesel-only."
+  },
+  {
+    "terminal": "Samcheok LNG Terminal",
+    "terminal_id": "T100000130314",
+    "country": "South Korea",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "",
+    "captive_summary": "KOGAS's fourth LNG production base (completed September 2017; four 200,000 kℓ tanks; up to 1,320 t/h send-out). No colocated power plant / GOGPT prior was seeded for this terminal, and no public source found (KOGAS technical material, data.go.kr, news, environmental permits) addresses whether the base has on-site backup/captive gas generation versus grid supply.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Search covered general facility overview, construction history, and emergency-preparedness news (forest-fire standby drills); none addressed power supply source or generator fuel type.",
+    "refs": [],
+    "verification_log": [],
+    "gogpt_prior_assessment": "No GOGPT prior was seeded for this terminal (gogpt_prior: no). No colocated generation candidate found in research.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No generation equipment or colocated plant identified.",
+    "status_or_other_findings": "None beyond routine facility/operational history.",
+    "notes": "Same-operator (KOGAS) diesel precedent from the Incheon base's data.go.kr disclosure is a prior worth flagging but was not extrapolated to Samcheok per this batch's instructions — no site-specific source found either way."
+  },
+  {
+    "terminal": "Tongyeong LNG Terminal",
+    "terminal_id": "T100000130315",
+    "country": "South Korea",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "",
+    "captive_summary": "KOGAS's third LNG base (construction from 1997; three 140,000 m³ tanks; ~21.3% of national LNG supply). The colocated GOGPT-prior plant, Tongyeong Eco Power, is confirmed via HDC Holdings' own site as a separate merchant power company (HDC Group, in partnership with Hanwha Energy; 1,012 MW LNG combined-cycle; commercial operation Oct 29 2024) that is 'directly connected to KOGAS Tongyeong base LNG supply equipment' but procures its own LNG fuel via its own 210,000 kℓ storage facility — a supply relationship (direction: terminal → plant), not captive power into the terminal. That settles the GOGPT-prior question. It does NOT, however, establish whether the KOGAS base itself has separate on-site backup/captive generation — no source found either way for that narrower question.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "HDC Holdings' official site (hdc-holdings.com) describes Tongyeong Eco Power's ownership, 1,012 MW capacity, and its 'joint operating system directly connected to' — but functionally separate from — KOGAS's Tongyeong base LNG supply equipment.",
+    "refs": [
+      "https://www.hdc-holdings.com/ko/business/energy/tongyeong-ecopower"
+    ],
+    "verification_log": [
+      {"url": "https://www.hdc-holdings.com/ko/business/energy/tongyeong-ecopower", "tokens": ["1,012MW", "한국가스공사 통영기지"], "result": "PASS", "note": "confirms Tongyeong Eco Power is a separate merchant company connected to, not part of, the KOGAS base"}
+    ],
+    "gogpt_prior_assessment": "GOGPT prior is 'Tongyeong power station' (1,000 MW, tier B, 0.71 km, gogpt_captive already False) — matches Tongyeong Eco Power, confirmed as an independent HDC/Hanwha merchant IPP with its own dedicated LNG storage, not KOGAS-owned and not captive to the LNG terminal.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Confirmed separate, independently-owned merchant plant — not this terminal's captive power.",
+    "status_or_other_findings": "None beyond the Tongyeong Eco Power ownership/connection details above.",
+    "notes": "Genuine INSUFFICIENT on the terminal's own captive-generation question, distinct from (and not resolved by) the settled non-captive finding on the colocated merchant IPP."
+  },
+  {
+    "terminal": "Ulsan LNG Terminal",
+    "terminal_id": "T100000131131",
+    "country": "South Korea",
+    "verdict": "NO",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "Ulsan LNG Terminal is operated by Korea Energy Terminal Co. (KET), a joint venture of Korea National Oil Corp (52.4%) and SK Gas (47.6%), whose entire described business is unloading, storage, regasification, and send-out (three tanks, 645,000 kℓ combined). KET supplies 900,000-1,000,000 t/yr of regasified LNG to Ulsan GPS, a separate 1.2 GW LNG/LPG combined-cycle power station (SK Gas subsidiary) located ~5-20 minutes away by road — the terminal's own PowerPlantsSupplied field already documents this relationship. This is the direction-test pattern explicitly: fuel flows OUT of the terminal to the power plant, not captive power IN.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "E2News feature article and iNews24 report both independently confirm KET and Ulsan GPS are separate companies/facilities, with KET supplying 900,000-1,000,000 t/yr of LNG to Ulsan GPS (1.2 GW, SK Gas subsidiary, ~5 km/20 min away); iNews24 additionally gives KET's ownership split (KNOC 52.4% / SK Gas 47.6%) and tank specs.",
+    "refs": [
+      "https://www.e2news.com/news/articleView.html?idxno=318320",
+      "https://www.inews24.com/view/1827997"
+    ],
+    "verification_log": [
+      {"url": "https://www.e2news.com/news/articleView.html?idxno=318320", "tokens": ["울산GPS", "코리아에너지터미널"], "result": "PASS", "note": "confirms direction-test supply relationship and capacity figures"},
+      {"url": "https://www.inews24.com/view/1827997", "tokens": ["울산GPS", "KET"], "result": "PASS", "note": "confirms separate ownership and supply volumes, corroborates e2news"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT prior was seeded for this terminal (gogpt_prior: no) despite the well-documented Ulsan GPS relationship — worth flagging for the GOGPT prior dataset. Ulsan GPS itself (1.2 GW, SK Gas subsidiary) is a large merchant IPP, not captive to KET.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Ulsan GPS is a separate, independently-owned 1.2 GW merchant power station fed by pipeline from KET — not this terminal's captive power (and likely already exists or belongs in GOGPT as its own standalone record, unrelated to a captive-power add here).",
+    "status_or_other_findings": "None beyond the KET/Ulsan GPS relationship above, which already matches GEM's existing PowerPlantsSupplied = 'Ulsan GPS power station' entry.",
+    "notes": "Textbook direction-test NO: KET's entire stated business model is regasification and supply to Ulsan GPS; no evidence of any on-site captive generation at KET itself in either source."
+  }
+]

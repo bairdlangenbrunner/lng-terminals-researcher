@@ -1,0 +1,82 @@
+[
+  {
+    "category": "citation_repair",
+    "terminal_id": "T100000130482",
+    "unit_id": "G100002048200",
+    "terminal_name": "Trieste Monfalcone LNG Terminal",
+    "issue": "Capacity [ref], FacilityType [ref], and ProposalDate [ref] all cite the same dead URL (energie-und-management.de/free-archive/feview3/1758 \u2014 a German paywalled trade archive, HTTP dead). No replacement source was located within this pass's effort/search budget (WebSearch quota exhausted mid-session). Existing values (Capacity=6.00 mtpa, FacilityType=import, ProposalYear=2004) are left unchanged/uncited, not deleted, since they are plausible and not contradicted by anything found.",
+    "severity": "medium",
+    "suggested_action": "Follow-up research pass: find an independent English- or Italian-language source (E.ON/Endesa press archives, Italian regional press ~2004-2006) confirming the original 6.00 mtpa proposal and import facility type for this project, distinct from the separate Zaule (Gas Natural) terminal in the same port.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "value_verification",
+    "terminal_id": "T100000130482",
+    "unit_id": "G100002048200",
+    "terminal_name": "Trieste Monfalcone LNG Terminal",
+    "issue": "ShelvedYear=2013 / CancelledYear=2015 / StopYear=2015 (Substatus 'inferred 4y') have no dated primary source found this pass. Trieste has TWO separate cancelled GEM terminal records at the same port \u2014 this one (E.ON/Endesa) and Zaule (Gas Natural/Naturgy, G100002048400, cancelled 2018) \u2014 and web search results repeatedly surfaced Zaule-relevant content even when searching for the E.ON project specifically (e.g. il Sole 24 Ore's 'Addio al rigassificatore di Trieste' 2013 article, on inspection, is actually about the Gas Natural/Zaule project, not E.ON's). There is a real risk these inferred years were conflated between the two records at some point.",
+    "severity": "medium",
+    "suggested_action": "Verify E.ON/Endesa's own project-withdrawal announcement (searching for 'Endesa' + 'Trieste Monfalcone' specifically, avoiding Gas Natural/Zaule hits) before the next annual update touches this record; until then the 'inferred' substatus honestly reflects the uncertainty and should not be firmed up without a dated primary source.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "citation_repair",
+    "terminal_id": "T100000130476",
+    "unit_id": "G100002047601",
+    "terminal_name": "Panigaglia LNG Terminal (Expansion I)",
+    "issue": "StartDate [ref] cites tankterminals.com (dead). ShelvedYear=2013 is also uncited (comp_Italy.json blank_ref gap). No replacement source was located within this pass's search budget.",
+    "severity": "medium",
+    "suggested_action": "Follow-up: source GNL Italia's own capacity-expansion announcements (~2013) or Italian regulator (ARERA) filings for this specific expansion unit's shelving date; existing 2013/3.50 mtpa values left unchanged.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "value_verification",
+    "terminal_id": "T100000130468",
+    "unit_id": "G100002046800",
+    "terminal_name": "Brindisi LNG Terminal",
+    "issue": "CancelledYear=2014 / StopYear=2014 remain uncited after this pass's citation repair. The only sourced date found (offshore-energy.biz, dmsprojects.net) is the 2012 shelving decision, matching GEM's own ShelvedYear=2012 (kept). No source specifically dating a later formal 2014 cancellation was found; per the 'search then delete' convention this could be deleted, but a shelve-then-formally-cancel-~2yrs-later pattern is plausible business practice, so it is left in place rather than removed on a search gap alone.",
+    "severity": "low",
+    "suggested_action": "Confirm 2014 (or find the correct year) via BG Group/Shell corporate archives or Italian energy-ministry project-withdrawal records; if no source surfaces, consider deleting per the unsupported-value convention.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "value_verification",
+    "terminal_id": "T100000130474",
+    "unit_id": "G100002047400",
+    "terminal_name": "Toscana FSRU",
+    "issue": "Snam's OLT stake may now be 100%, not 97.31% as staged. The 5-Mar-2026 emarketstorage.it regulatory filing (cited in the staged Parent/Parent GEM Entity ID update) also disclosed Snam signing to buy Golar Offshore Toscana's remaining 2.69%, with closing 'expected in the coming days.' A closing confirmation was found in an earlier pass of this same research session (Golar's own Q1 2026 interim results plus several Italian press outlets), but the exact source URLs could not be reliably reconstructed after a context reset partway through this batch, so 100% is NOT staged here \u2014 97.31% (fully re-verified this pass) is staged instead as the safe, dated, primary-sourced value.",
+    "severity": "medium",
+    "suggested_action": "Re-check Golar LNG's Q1/Q2 2026 investor filings (globenewswire.com) and Italian financial press for confirmation the Golar Offshore Toscana 2.69% sale closed; if confirmed, stage Parent -> Snam SpA [100%] on both Toscana unit-rows in a follow-on batch.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "missing_field",
+    "terminal_id": "T100001084124",
+    "unit_id": "G100001095485",
+    "terminal_name": "Oristano FSRU",
+    "issue": "FloatingVesselName is blank on this proposed-status FSRU (comp_Italy.json gap). Not researched this pass \u2014 no FSRU/vessel assignment for the Oristano (HIGAS-area) proposal was found or searched for within the effort budget available before the search quota was exhausted.",
+    "severity": "low",
+    "suggested_action": "Research whether a specific FSRU vessel has been named/chartered for the Oristano project in a follow-on batch; if the project remains at a pre-vessel-selection stage, blank may simply be correct and this can be closed as 'not yet assigned' rather than a gap.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "citation_verification",
+    "terminal_id": "T100000131061",
+    "unit_id": "G100002106100",
+    "terminal_name": "Porto Torres FSRU",
+    "issue": "FacilityType [ref], Operator [ref], ProposalDate [ref], and StartDate [ref] all cite the same scanned/image-only Snam AGM shareholder-question PDF (citqc verdict: unverifiable, not dead \u2014 human-readable, not machine-checkable). Per QC worklist \u00a7C this needs a machine-verifiable corroboration where the PDF is a value's sole support; a replacement/additional source was not located within this pass's search budget.",
+    "severity": "low",
+    "suggested_action": "Add a machine-readable corroborating source (Snam's own regasification-terminal web pages, or Italian regional press on the project) for these four fields in a follow-on batch; the PDF itself is not proven wrong, just not machine-verifiable.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "citation_verification",
+    "terminal_id": "T100000131058",
+    "unit_id": "G100002105800",
+    "terminal_name": "Portovesme FSRU",
+    "issue": "Operator [ref] and StartDate [ref] cite the same scanned/image-only Snam AGM shareholder-question PDF (citqc verdict: unverifiable). Same class of issue as Porto Torres above; not resolved this pass.",
+    "severity": "low",
+    "suggested_action": "Add a machine-readable corroborating source for these two fields in a follow-on batch.",
+    "researcher_initials": "AI-draft"
+  }
+]

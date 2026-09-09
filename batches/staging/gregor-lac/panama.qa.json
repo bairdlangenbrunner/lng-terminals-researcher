@@ -1,0 +1,52 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130854",
+    "unit_id": "G100002085401",
+    "terminal_name": "Telfers FSRU",
+    "issue": "Sole existing citation for Status=cancelled/CancelledYear=2021/StopYear=2021 (ijglobal.com) is proven dead (redirects to an unrelated marketing page). Ref repaired with two Spanish-language sources (laestrella.com.pa/articulo/LE134476; prensa.com ASEP article) documenting a well-corroborated legal saga for the COMPANION Telfers/Gatun combined-cycle power-plant license (Panama NG Power / LNG Group Panama): ASEP license granted 2014 -> revoked 2014 -> reinstated by Supreme Court ruling 2016 -> financial-close deadline missed and license declared expired, Oct-Nov 2017. This is a different, earlier-dated, more specific event than the current 'inferred, 4 years no news' convention driving CancelledYear=2021, but it documents the power PLANT's license, not the FSRU/import terminal specifically (the ICIS 2013 article treats them as one integrated scheme, so the linkage is a reasonable but unconfirmed inference).",
+    "severity": "medium",
+    "suggested_action": "Reviewer judgment: either (a) shift Substatus from 'inferred' to a confirmed ~2017-2018 cancellation citing the ASEP/court sources, or (b) keep the current inferred-2021 convention. Did not change the value myself given the FSRU-vs-powerplant inferential gap; sources are verified and live either way.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dormant_revival_watch",
+    "terminal_id": "T100000130854",
+    "unit_id": "G100002085401",
+    "terminal_name": "Telfers FSRU",
+    "issue": "No revival found for the Telfers FSRU/import scheme itself. The associated power-plant SITE was, however, eventually built and now operates as 'Gatun power station' (per GE press release + AES Panama's Costa Norte page), supplied by onshore LNG from Costa Norte LNG Terminal (T100000130575) -- already reflected in GEM's Costa Norte PowerPlantsSupplied field, which resolves an existing researcher note on that row questioning a possible link to an earlier iteration. Separately, unrelated 2024-2026 news about a 'Telfers'-named container-terminal expansion at the Panama Canal (Corozal area) is NOT related to this LNG project.",
+    "severity": "low",
+    "suggested_action": "No action needed; informational for future dormant-revival sweeps (avoid a keyword false positive on 'Telfers').",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "field_gap",
+    "terminal_id": "T100000130854",
+    "unit_id": "G100002085401",
+    "terminal_name": "Telfers FSRU",
+    "issue": "FloatingVesselName field_gap flagged in the packet is correctly blank, not a real gap: sources show the project never progressed past the proposal/financing stage before the associated license was cancelled -- no FSRU vessel was ever chartered or named.",
+    "severity": "low",
+    "suggested_action": "None; confirm blank is intentional. No fill staged.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "source_verification",
+    "terminal_id": "T100000131082",
+    "unit_id": "G100002108200",
+    "terminal_name": "Sinolam LNG Terminal",
+    "issue": "Reuters, jusmundi.com, and energiaestrategica.com citations on this row returned 401/403 in this run, and the Wayback CDX/availability check needed to apply the 'bot-block, not dead' policy was itself inconclusive due to intermittent connectivity from this sandbox to web.archive.org (repeated timeouts/connection resets). Treated as bot-blocked-live per SOP S7.2 (not dropped) since no evidence of genuine death was found.",
+    "severity": "low",
+    "suggested_action": "Recheck these 3 URLs against Wayback in a future batch with stable network access.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "source_verification",
+    "terminal_id": "T100000130575",
+    "unit_id": "G100002057500",
+    "terminal_name": "Costa Norte LNG Terminal",
+    "issue": "An AES investor-relations PDF ('Item 9 - Costa Norte LNG Terminal Update', cdn.prod.website-files.com host) was located as a possible source of 2025-2026 developments but returned HTTP 403 Forbidden on every automated fetch attempt in this run and could not be reviewed. Not used as a citation. All other Costa Norte fields were independently re-verified via already-cited sources with no changes found.",
+    "severity": "low",
+    "suggested_action": "A future batch with browser/authenticated access could review this PDF for any update not otherwise found; not blocking.",
+    "researcher_initials": "AI-draft"
+  }
+]

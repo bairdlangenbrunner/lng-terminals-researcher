@@ -1,11 +1,17 @@
 openpyxl>=3.1.0
 jieba>=0.42
 pypinyin>=0.55
+SQLAlchemy>=2.0
+psycopg2-binary>=2.9
 
 # Dev-only: test suite (tests/ — see tests/README.md)
 pytest>=8.0
+ruff>=0.9
 
 # SYSTEM dependency (NOT pip-installable): giignl_extract.py shells out to the
 # `pdftotext` CLI from poppler — there is no Python PDF library in this repo.
 #   macOS:          brew install poppler
 #   Debian/Ubuntu:  apt-get install poppler-utils
+# Optional workflow groups are declared in pyproject.toml:
+#   pip install -e '.[geo]'       # coordinate/country audits
+#   pip install -e '.[figures]'   # figure georeferencing

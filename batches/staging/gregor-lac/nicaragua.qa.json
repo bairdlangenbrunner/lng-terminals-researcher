@@ -1,0 +1,32 @@
+[
+  {
+    "category": "materiality_escalation",
+    "terminal_id": "T100000130966",
+    "unit_id": "G100002096600",
+    "terminal_name": "Puerto Sandino FSRU",
+    "issue": "Capacity conflict exceeding the SOP §13 20% materiality threshold: GEM lists 5.00 mtpa; TradeWinds (Aug 2026, verified) states the terminal being commissioned is '3 million tonnes per annum' — a ~40% delta. The terminal's sole existing Capacity [ref] citation (igu.org 2025-report gclid landing page) is itself a bad citation (live but content-mismatched, no 'Nicaragua' text) and was NOT repaired as part of this pass because the underlying value is in active dispute — repairing it to a citation supporting either figure would prejudge the escalation. Per the no-guessing rule, the Capacity data value was left UNCHANGED at 5.00 pending human review.",
+    "severity": "high",
+    "suggested_action": "Manually verify the correct nameplate capacity (5.0 vs 3.0 mtpa) from a primary/regulatory source (e.g. an NFE SEC filing or Nicaraguan energy-ministry document) and stage the correction with a clean citation; the current Capacity [ref] citation should be replaced regardless of which figure is confirmed.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_quality",
+    "terminal_id": "T100000130966",
+    "unit_id": "G100002096600",
+    "terminal_name": "Puerto Sandino FSRU",
+    "issue": "ResearcherNotesProject (dated 'NF 8/6/26', i.e. 5 days before this pass) reads: 'The FSRU sits offshore from San Juan, Puerto Rico.' This is factually inconsistent with the terminal's own Location ('Puerto Sandino'), State/Province ('León'), and coordinates (12.17N, -86.77W — Nicaragua's Pacific coast, nowhere near Puerto Rico). Appears to be a copy-paste error, likely from an unrelated New Fortress Energy Puerto Rico project note.",
+    "severity": "medium",
+    "suggested_action": "Remove or correct this ResearcherNotesProject line; it currently misdescribes the terminal's location in the live database.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "citation_unverifiable",
+    "terminal_id": "T100000130966",
+    "unit_id": "G100002096600",
+    "terminal_name": "Puerto Sandino FSRU",
+    "issue": "Both www.laprensani.com URLs (2024/11/12 and 2025/05/27 articles, previously in StartDate [ref]) are site-wide Cloudflare-blocked this session with no Wayback snapshot available (confirmed against the bare domain too). Their headlines independently corroborate the project's repeated postponement history but could not be cited. Kept out of the merged StartDate [ref] new_value; not declared as proven-dead drops.",
+    "severity": "low",
+    "suggested_action": "Re-check laprensani.com in a future pass (site-wide block may lift); restore as corroboration if it resolves.",
+    "researcher_initials": "AI-draft"
+  }
+]

@@ -1,0 +1,72 @@
+[
+  {
+    "category": "dormant_revival_check",
+    "terminal_id": "T100000130530",
+    "unit_id": "",
+    "terminal_name": "Gran Canaria LNG Terminal",
+    "issue": "Re-checked per this batch's Canary Islands dormant-revival sweep (carried forward from sw-europe finding): no new project activity, sponsor interest, or revival signal found at the Arinaga/Gran Canaria site. Terminal correctly stays cancelled.",
+    "severity": "low",
+    "suggested_action": "No action needed.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "dormant_revival_check",
+    "terminal_id": "T100000130856",
+    "unit_id": "",
+    "terminal_name": "Puerto de la Luz LNG Terminal",
+    "issue": "Checked for revival at the Las Palmas/Puerto de la Luz site. Found the Totisa LNG-bunkering-plus-grid-connected-power project already recognized as the reason this GEM record is cancelled (EIA rejected Nov 2024, negative resolution 2025). Post-rejection coverage surfaces only a vague, unconfirmed Port Authority remark about possibly repurposing part of the planned site for a generic LNG storage tank -- no sponsor, no concrete regulatory step, well below the 'sponsor + location + concrete step' threshold, and would likely also fail the scope gate (unclear if it is marine import vs on-site storage only). Not staged as new_terminal or monitor; genuinely too thin to track.",
+    "severity": "low",
+    "suggested_action": "No action needed under current information; re-check in a future discovery pass if a concrete proposal materializes.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "dormant_revival_check",
+    "terminal_id": "T100000130537",
+    "unit_id": "",
+    "terminal_name": "Tenerife LNG Terminal",
+    "issue": "Revival check found a genuinely new, differently-sponsored/designed project at this dormant site (Endesa floating storage/regas unit at the adjacent Granadilla dock) -- staged as a NEW terminal ('Granadilla Floating LNG Terminal') with AssociatedTerminals pointing back to this cancelled record, per the dead-and-revived rule. See spain.newterminals.json. The dead GEM record itself is left untouched (stays cancelled).",
+    "severity": "low",
+    "suggested_action": "No edit to this terminal; see new_terminals output for the associated new record.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "scope",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Los Barrios LNG bunkering terminal (Algeciras Bay, Cadiz)",
+    "issue": "Carried forward from sw-europe: Endesa/other-sponsor bunkering-only facility at Los Barrios (~4,080 m3 storage, ship-to-ship refueling, no cargo import/export). Re-confirmed still out of scope under current methodology (bunkering-only, no marine cargo import/export).",
+    "severity": "low",
+    "suggested_action": "No action needed under current scope rules; revisit only if methodology brings bunkering-only facilities into scope.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "scope",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Totisa Cueva Bermeja project (Port of Santa Cruz de Tenerife)",
+    "issue": "NEW finding this batch: Totisa (the same sponsor behind the cancelled Las Palmas/Puerto de la Luz project) is separately pursuing an LNG storage + bunkering + captive on-site power (~70MW) + hydrogen project at Cueva Bermeja, Port of Santa Cruz de Tenerife -- a DIFFERENT site from both Granadilla and Puerto de la Luz. Still active/reported as of Aug 2025, not yet in GEM. Resolved scope doubt via two independent source checks that explicitly confirm this is NOT a regasification facility feeding the national gas grid -- it is a bunkering + captive-power-only design, materially different from the Las Palmas project (which had a grid-connected power plant and an explicit 'planta de regasificacion'). OUT OF SCOPE per the domestic-only/bunkering exclusion, consistent with the Los Barrios precedent. Not staged as new_terminal or monitor.",
+    "severity": "low",
+    "suggested_action": "No action needed under current scope rules; resolved before staging per the never-stage-with-doubt rule.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "gemwiki_coverage_crosscheck",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "",
+    "issue": "Discovery SOP 4.0b: enumerated gem.wiki Spain LNG-terminal pages (Barcelona, Bilbao, Cartagena, El Musel, Gran Canaria, Huelva, Mugardos, Puerto de la Luz, Sagunto, Tenerife) -- all match existing export-CSV TerminalIDs 1:1. No orphan gem.wiki-only page found for Spain.",
+    "severity": "low",
+    "suggested_action": "No action needed -- clean cross-check.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "other",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Endesa entity naming (Melilla + Granadilla candidates)",
+    "issue": "entity_lookup.py run bare for 'Endesa', 'Endesa Generacion', and 'Enagas' returned not_found_in_local_data for those exact subsidiary-level strings; --remote returned skipped_no_base_url (GEM_PROJECT_DB_BASE_URL unset). Direct CSV grep confirms 'Endesa SA' already exists as an entity on Chile's Gas Atacama FLNG Terminal (Parent) and Spain's Mugardos LNG Terminal (Owner/Parent), and 'Enagas SA' already exists as the prior owner on the cancelled Gran Canaria and Tenerife records. Used the existing parent-level entity names for consistency rather than staging new subsidiary-level entities.",
+    "severity": "low",
+    "suggested_action": "No new entity needed; reuse Endesa SA / Enagas SA.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  }
+]

@@ -1,0 +1,59 @@
+[
+  {
+    "terminal_id": "T100000130665",
+    "unit_id": "G100002066500",
+    "terminal_name": "Maurice Bonnefil LNG Terminal",
+    "unit_name": "--",
+    "country": "Haiti",
+    "field_name": "Status [ref]",
+    "old_value": "",
+    "new_value": "https://www.oxfordenergy.org/wpcms/wp-content/uploads/2017/12/The-potential-market-for-LNG-in-the-Caribbean-and-Central-America-NG-124.pdf",
+    "confidence": "yellow",
+    "source_tier": "academic/policy institute (Oxford Institute for Energy Studies)",
+    "ref_field": "Status [ref]",
+    "ref_urls": [
+      "https://www.oxfordenergy.org/wpcms/wp-content/uploads/2017/12/The-potential-market-for-LNG-in-the-Caribbean-and-Central-America-NG-124.pdf"
+    ],
+    "source_notes": "Blank-ref fill. Status=cancelled is already 'inferred 4y' (no confirmed cancellation announcement exists for this project). Per lifecycle_rules.md special case ('inferred shelved/cancelled additions... datasource can re-use the source for the latest active entry') this reuses the same Oxford Energy report already cited for ShelvedYear (2017) — the newest verifiable evidence found that the project remained stalled (re-verified PASS, token 'Haiti'; a 'Bonnefil'-token check failed, i.e. the report discusses the Haiti LNG opportunity generically without naming the terminal, so it supports the country-level dormancy finding, not a terminal-specific fact). No newer corroborating source was found: web search (English + French, Aug 2026) turned up no coverage of the project since ~2014-2017, and IEA's Haiti natural-gas country page (which states Haiti still imported no natural gas as of 2023) failed url_verifier (HTTP 403, no Wayback snapshot) so could not be cited. Single-source yellow, consistent with the existing ShelvedYear citation pattern on this row.",
+    "scope_note": "[ref]-fill target from field_gaps (blank_ref, medium severity); single unit row.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130665",
+    "unit_id": "G100002066500",
+    "terminal_name": "Maurice Bonnefil LNG Terminal",
+    "unit_name": "--",
+    "country": "Haiti",
+    "field_name": "CancelledYear [ref]",
+    "old_value": "",
+    "new_value": "https://www.oxfordenergy.org/wpcms/wp-content/uploads/2017/12/The-potential-market-for-LNG-in-the-Caribbean-and-Central-America-NG-124.pdf",
+    "confidence": "yellow",
+    "source_tier": "academic/policy institute (Oxford Institute for Energy Studies)",
+    "ref_field": "CancelledYear [ref]",
+    "ref_urls": [
+      "https://www.oxfordenergy.org/wpcms/wp-content/uploads/2017/12/The-potential-market-for-LNG-in-the-Caribbean-and-Central-America-NG-124.pdf"
+    ],
+    "source_notes": "Blank-ref fill, same rationale as the paired Status [ref] fill on this row: CancelledYear=2018 is an inferred-dormancy year (shelved 2017 + no reactivation), not a dated cancellation announcement, so the anchor source used for the shelved finding is reused per lifecycle_rules.md's inferred-entry convention. No source postdating 2017 was found or verifiable (see Status [ref] note re: IEA 403).",
+    "scope_note": "[ref]-fill target from field_gaps (blank_ref, low severity); single unit row.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130665",
+    "unit_id": "G100002066500",
+    "terminal_name": "Maurice Bonnefil LNG Terminal",
+    "unit_name": "--",
+    "country": "Haiti",
+    "field_name": "StopYear [ref]",
+    "old_value": "",
+    "new_value": "https://www.oxfordenergy.org/wpcms/wp-content/uploads/2017/12/The-potential-market-for-LNG-in-the-Caribbean-and-Central-America-NG-124.pdf",
+    "confidence": "yellow",
+    "source_tier": "academic/policy institute (Oxford Institute for Energy Studies)",
+    "ref_field": "StopYear [ref]",
+    "ref_urls": [
+      "https://www.oxfordenergy.org/wpcms/wp-content/uploads/2017/12/The-potential-market-for-LNG-in-the-Caribbean-and-Central-America-NG-124.pdf"
+    ],
+    "source_notes": "Blank-ref fill, same rationale as the paired Status [ref] and CancelledYear [ref] fills on this row (StopYear mirrors CancelledYear at 2018, both inferred).",
+    "scope_note": "[ref]-fill target from field_gaps (blank_ref, low severity); single unit row.",
+    "researcher_initials": "AI-draft (sweep)"
+  }
+]

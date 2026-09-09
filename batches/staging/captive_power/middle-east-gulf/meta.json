@@ -1,0 +1,28 @@
+{
+ "scope_slug": "captive_power/middle-east-gulf",
+ "workflow": "captive_power",
+ "tier": null,
+ "countries": [
+  "Bahrain",
+  "Iran",
+  "Iraq",
+  "Israel",
+  "Jordan",
+  "Kuwait",
+  "Lebanon",
+  "Oman",
+  "Qatar",
+  "United Arab Emirates",
+  "Yemen"
+ ],
+ "areas": [
+  "Middle East/Gulf (11 countries, whole-region increment; Türkiye was covered in captive_power/europe, Turkmenistan in captive_power/asia; Egypt belongs to the future africa increment)"
+ ],
+ "started": "2026-08-01",
+ "built": "2026-08-01",
+ "applied": null,
+ "status": "built",
+ "run_record": "batches/run_records/2026-08-01_captive-power-middle-east-gulf.md",
+ "notes": "Fifth regional increment (after us-gulf -> americas-complete, europe, asia). 34 terminals / 55 unit-rows from the 2026-08-01 fresh pull (1,274 rows tracker-wide). No terminal in scope carries CaptiveGasPower=True going in. Deterministic priors per-country with --country (GOGPT by_country=True, never --subnational, per the blank-area rule); neighbors nearest-2 / 30 km cap / whole-country pulls WITH gogpt_plant_id kept from the start (the three gogpt_* staged columns travel together, SOP §3). Expect single-source-green primary/regulatory filings to carry the region (Gulf environment agencies, FSRU class records) and heavy vessel-mounted FSRU/FSU generation (keep REVIEWER CALL on the GOGPT side). Sister scope run in the same session: captive_power/americas-residue. BUILT 2026-08-01: 34/34 researched -> 10 YES (26 staged unit-rows), 10 NO, 10 INSUFFICIENT, 4 SCREENED; workbook batches/lng_terminals_batch_20260801_1237_ET_middle-east-gulf-captive_update.xlsx",
+ "prior_run_records": []
+}

@@ -1,0 +1,226 @@
+[
+  {
+    "terminal": "Atimonan LNG Terminal",
+    "terminal_id": "T100000131149",
+    "country": "Philippines",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "Atimonan One Energy Inc. (Meralco PowerGen/MGen subsidiary) designed this LNG terminal (floating storage unit, FSU) purely as the fuel-supply front end for the co-developed, co-located 2,400 MW (4x600 MWnet) Atimonan CCGT power station -- the direction is terminal-to-plant (gas OUT), the opposite of captive power. No source describes any separate on-site generation dedicated to powering the terminal's own regas/handling operations.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "BusinessWorld (Mar 2024): MGen 'is working on the development of a 2,400-megawatt natural gas-fired combined cycle gas turbine power plant project' at Atimonan, integrated with the LNG import facility. Daily Tribune (Sep 2024): Meralco/MGen were 'leaning towards continuing with their original plan to develop a supercritical coal plant in Atimonan, Quezon' instead of the gas/LNG route -- confirming the LNG terminal was dropped in favor of coal (consistent with GEM's terminal-level 'cancelled, confirmed' status), while the power station itself (Atimonan power station, GOGPT/GEM's PowerPlantsSupplied target) persists as a separate project now pursuing coal. No source anywhere describes standalone captive generation serving the LNG terminal's own operations; the entire point of the integrated design was terminal-to-plant gas supply.",
+    "refs": [
+      "https://www.bworldonline.com/corporate/2024/03/12/581070/meralco-unit-pursues-atimonan-gas-conversion-project/",
+      "https://tribune.net.ph/2024/09/09/coal-over-lng-meralco-pursues-atimonan-project"
+    ],
+    "verification_log": [
+      {"url": "https://www.bworldonline.com/corporate/2024/03/12/581070/meralco-unit-pursues-atimonan-gas-conversion-project/", "tokens": ["2,400-megawatt", "combined cycle"], "result": "PASS", "note": "confirms 2,400 MW CCGT + LNG terminal integrated project"},
+      {"url": "https://tribune.net.ph/2024/09/09/coal-over-lng-meralco-pursues-atimonan-project", "tokens": ["coal", "Atimonan"], "result": "PASS", "note": "confirms 2024 pivot back to coal, LNG/CCGT option dropped"}
+    ],
+    "gogpt_prior_assessment": "The GOGPT prior is Atimonan power station (2,560 MW total per the assignment sheet; sourced as 2,400 MW 4x600MW CCGT design in trade press), already recorded in GEM as this terminal's PowerPlantsSupplied target. It is the CUSTOMER the terminal was built to feed, not a captive plant powering the terminal -- textbook direction-test case. Independent info: https://www.bworldonline.com/corporate/2024/03/12/581070/meralco-unit-pursues-atimonan-gas-conversion-project/ (non-gem.wiki, PASS-verified).",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Atimonan power station already exists as its own GOGPT record and is the terminal's downstream customer (PowerPlantsSupplied direction), not a captive generator for the terminal -- adding it again or as 'captive' would be a direction-test error.",
+    "status_or_other_findings": "As of Sep 2024-Jul 2025 reporting, Meralco/MGen have flip-flopped and now appear to favor reviving the original SUPERCRITICAL COAL plant at this site rather than gas/LNG (Manila Bulletin, Jul 2025, 'Atimonan coal plant faces stiff re-approval hurdles'), consistent with GEM's LNG-terminal-level cancelled status. Not acted on here -- flagging for Update/status-review batches.",
+    "notes": "PowerPlantsSupplied direction-test case: this terminal exists to feed Atimonan power station (already captured in GEM's PowerPlantsSupplied field), not the reverse. No captive-power edit warranted."
+  },
+  {
+    "terminal": "BESTC FSRU",
+    "terminal_id": "T100001084327",
+    "country": "Philippines",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "yellow",
+    "captive_summary": "PNOC and BERGS Energy Solutions and Technology Corp. (BESTC) signed a two-year MOU (10 Feb 2026) to jointly study a 3x600 MW (1,800 MW) natural gas-fired combined cycle power project paired with an FSRU at PNOC's Industrial Park in Bataan. PNOC's own release frames the FSRU as feeding the CCPP's fuel requirements (direction: FSRU-to-plant), not the other way around -- but this is still a feasibility-study-stage MOU with no vessel selected and no equipment/power design published, so nothing establishes (or rules out) whether the eventual FSRU would carry its own house-load generation for its own regas/cargo operations.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "PNOC (official, primary): 'PNOC, BESTC seals partnership for clean energy infra in Bataan' -- MOU for 'a 3 x 600 MW Natural Gas-Fired Combined Cycle Power Project (CCPP) and a Floating Storage Regasification Unit' at the PNOC Industrial Park, Mariveles/Bataan, signed 10 Feb 2026, described as feeding the CCPP's fuel requirement. Daily Tribune (16 Feb 2026) corroborates the 1,800 MW figure and combined-cycle structure. Neither source, nor any other found, names a vessel, charterer, or onboard equipment -- the project is at joint feasibility-study stage only.",
+    "refs": [
+      "https://www.pnoc.com.ph/pnoc-bestc-seals-partnership-for-clean-energy-infra-in-bataan/",
+      "https://tribune.net.ph/2026/02/16/pnoc-eyes-1800-mw-bataan-natgas-plant"
+    ],
+    "verification_log": [
+      {"url": "https://www.pnoc.com.ph/pnoc-bestc-seals-partnership-for-clean-energy-infra-in-bataan/", "tokens": ["BESTC", "Bataan"], "result": "PASS", "note": "primary/official PNOC release confirming MOU, 1,800 MW CCPP + FSRU"},
+      {"url": "https://tribune.net.ph/2026/02/16/pnoc-eyes-1800-mw-bataan-natgas-plant", "tokens": ["1,800", "Bataan"], "result": "PASS", "note": "corroborates capacity and structure"}
+    ],
+    "gogpt_prior_assessment": "GOGPT prior is La Esperanza gas power station (1,800 MW total per assignment sheet, 0.77 km away). This does not match the BESTC/PNOC 1,800 MW CCPP name found in current reporting (which has no GOGPT record yet, being MOU-stage as of Feb 2026) -- 'La Esperanza' appears to be either an older/different working name for the same GOGPT proposed-plant record, or a genuinely separate nearby project; either way it is a downstream customer of the FSRU under the terminal-to-plant direction PNOC itself describes, not a captive generator for the FSRU. No independent (non-gem.wiki) source found yet describing 'La Esperanza' by that name to confirm/deny the identity match -- flagging for a status/name-reconciliation check outside this captive-power pass.",
+    "gogpt_candidate": "REVIEWER CALL",
+    "gogpt_candidate_basis": "The MOU-stage 1,800 MW CCPP itself is a plausible future GOGPT candidate once it reaches a firmer development stage, but that is a power-plant-tracker decision outside this terminal's captive-power scope; the FSRU's own house-load generation (the actual captive-power question) is undocumented at this stage.",
+    "status_or_other_findings": "Terminal is 'proposed' with no unit built; MOU dated 10 Feb 2026 with a 2-year feasibility window, so no FID or vessel selection yet. Not acted on here.",
+    "notes": "Direction test: as designed, this FSRU is meant to feed the co-developed 1,800 MW CCPP (terminal-to-plant), matching the Batangas-cluster pattern the assignment flagged, just replicated in Bataan. Revisit once a vessel/EPC package is announced -- FSRU onboard dual-fuel gensets are the SOP's single biggest YES class and this project is very likely to resolve YES once engineering details are public."
+  },
+  {
+    "terminal": "Bataan-Manila LNG Terminal",
+    "terminal_id": "T100000130305",
+    "country": "Philippines",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "yellow",
+    "captive_summary": "Screened: this is a dormant, never-designed proposal. PNOC partnered with Mitsui and Osaka Gas (plus local investors including Gregorio Araneta/Manuel Pangilinan per older Philippine trade coverage) on an unsolicited ~$2.4 billion LNG import-and-power concept for Limay, Bataan, first surfacing around 2012 and publicly reiterated to incoming President Duterte in mid-2016. No facility design, EIA/ECC, or equipment list was ever published; no further news after 2016-2017. PNOC has since moved on to separate, newer Bataan-area LNG initiatives at the same general industrial park (Samat LNG's small-scale terminal, the BESTC/BERGS FSRU+CCPP MOU) -- this specific record is the earlier, abandoned proposal GEM correctly marks 'cancelled (inferred).'",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Upstream Online: 'STATE-owned Philippine National Oil Company (PNOC) is teaming up with local companies and Japan's Osaka Gas and Mitsui for a planned $2.4 billion liquefied natural gas import and power project' in Bataan. No subsequent reporting found describing a completed design, ECC, or construction start; GEM's own gap of ~4 years of inactivity (the basis for the 'inferred' cancellation) is consistent with this being permanently shelved before reaching an engineering stage.",
+    "refs": [
+      "https://www.upstreamonline.com/weekly/pnoc-in-japan-tie-up-for-bataan-plant/2-1-92506"
+    ],
+    "verification_log": [
+      {"url": "https://www.upstreamonline.com/weekly/pnoc-in-japan-tie-up-for-bataan-plant/2-1-92506", "tokens": ["Osaka Gas", "Mitsui"], "result": "PASS", "note": "confirms PNOC/Mitsui/Osaka Gas Bataan LNG-and-power proposal"},
+      {"url": "https://manilastandard.net/?p=250027", "tokens": ["Mitsui", "Osaka Gas"], "result": "FAIL", "note": "HTTP 202 (site serves an interstitial to automated fetch); not used as a citation"}
+    ],
+    "gogpt_prior_assessment": "gogpt_prior is 'no' in the assignment sheet -- no colocated GOGPT power-plant record was matched to this terminal, consistent with the project never reaching a stage where a specific power-plant design/site would be tracked separately.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No power-plant design or site specifics were ever published for this dormant 2012-2017 proposal; nothing to add.",
+    "status_or_other_findings": "Older reporting (unverified here) suggests the concept envisioned a phased 600 MW -> 1,200 MW -> 2,000 MW LNG power buildout, but no ECC/detailed design was found confirming this proceeded past the proposal stage.",
+    "notes": "Screen criterion: cancelled/dormant proposal with no facility design ever published (never reached ECC/EIS or detailed engineering) -- distinct from the currently active PNOC Bataan-area projects (Samat LNG Corp's small-scale terminal, and the BESTC/BERGS FSRU+CCPP MOU), which are separate terminal records in this same shard."
+  },
+  {
+    "terminal": "Batangas Clean Energy LNG Terminal",
+    "terminal_id": "T100000130888",
+    "country": "Philippines",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "Batangas Clean Energy Inc.'s LNG terminal (3 MTPA design) existed solely to supply the co-developed 1,100 MW Batangas Clean Energy (BCE) combined-cycle gas power plant, developed by ACEN/Enex Energy Corp (Enexor). Both the terminal and the power plant were formally, jointly discontinued on 14 November 2025 due to offtake-contract difficulties. This is a direction-test case (terminal-to-plant, gas OUT) -- no source describes any separate on-site generation serving the terminal's own operations, and the whole bundled project is now dead.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Daily Tribune (14 Nov 2025): 'ENEXOR...halted its planned 1,100-megawatt (MW) combined-cycle gas turbine Batangas Clean Energy (BCE) project after struggling to secure an offtake contract,' announced via PSE disclosure, citing 'difficulty in securing an offtake contract' and alignment with ACEN's shift toward renewables. Climate Justice PH corroborates: communities welcomed 'the discontinuation of the proposed Batangas Clean Energy (BCE) Project.' Both the power plant and its dedicated LNG terminal (the BCE project as a single bundled proposal) were dropped together.",
+    "refs": [
+      "https://tribune.net.ph/2025/11/14/enexor-drops-batangas-gas-project-amid-offtake-hurdles",
+      "https://www.climatejustice.ph/post/communities-welcome-ayala-corp-s-withdrawal-from-fossil-gas-project-in-batangas-city"
+    ],
+    "verification_log": [
+      {"url": "https://tribune.net.ph/2025/11/14/enexor-drops-batangas-gas-project-amid-offtake-hurdles", "tokens": ["1,100", "Batangas Clean Energy"], "result": "PASS", "note": "primary confirmation of Nov 2025 discontinuation"},
+      {"url": "https://www.climatejustice.ph/post/communities-welcome-ayala-corp-s-withdrawal-from-fossil-gas-project-in-batangas-city", "tokens": ["Batangas Clean Energy", "discontinuation"], "result": "PASS", "note": "independent corroboration"},
+      {"url": "https://manilastandard.net/business/314668485/acen-unit-drops-planned-p60-b-batangas-power-plant-project.html", "tokens": ["1,100", "Batangas"], "result": "FAIL", "note": "HTTP 202 interstitial; not used"}
+    ],
+    "gogpt_prior_assessment": "GOGPT prior is Batangas Clean Energy power station (1,100 MW per assignment sheet, 0.5 km away) -- this is the terminal's intended downstream customer under the same now-discontinued BCE project, already captured in GEM's PowerPlantsSupplied field, not a captive generator for the terminal. Independent info: https://tribune.net.ph/2025/11/14/enexor-drops-batangas-gas-project-amid-offtake-hurdles (PASS-verified, non-gem.wiki).",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Batangas Clean Energy power station already exists as its own GOGPT record; it is the terminal's customer under the direction-test relationship, not a captive plant, and the whole bundled project is now cancelled.",
+    "status_or_other_findings": "Both terminal and power plant formally discontinued 14 Nov 2025 -- matches GEM's existing 'cancelled, confirmed' status on this terminal; no action needed.",
+    "notes": "PowerPlantsSupplied direction-test case, same pattern as the Batangas cluster the assignment flagged (AG&P/First Gen/Shell Tabangao feed Ilijan/Santa Rita/San Lorenzo/Avion) -- this terminal existed to feed the BCE power plant, both now cancelled together."
+  },
+  {
+    "terminal": "FGEN Batangas FSRU",
+    "terminal_id": "T100000131012",
+    "country": "Philippines",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "red",
+    "captive_summary": "FGEN LNG's terminal, operating since 2023 using the FSRU BW Batangas (ex-BW Paris, built 2009 by DSME, converted by Keppel, 162,400 cbm, ~500-750 MMscfd send-out), exists to fuel First Gen's own 2,017 MW fleet of four gas power plants at the adjacent Clean Energy Complex (Santa Rita, San Lorenzo, Avion, San Gabriel) -- a clear direction-test NO for that relationship (terminal-to-plants, gas OUT). Separately, whether the FSRU vessel itself carries onboard gas/dual-fuel generators to power its own regas/cargo/hotel loads (the actual captive-power question for a moored vessel) is genuinely undocumented in any public source found despite searching BW Group's own project page, conversion-milestone trade coverage, and DOE/POM reporting -- none specify the vessel's generator/engine configuration or fuel source for onboard power.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Offshore Energy (POM article): DOE authorized FGEN LNG to operate 'for a period of 25 years'; First Gen 'operates four natural gas-fired power plants with a combined capacity of 2,017 megawatts that the terminal fuels' -- establishes the direction-test finding cleanly. BW Group's own project page and Offshore Energy's conversion-milestone coverage confirm vessel identity/specs (ex-BW Paris, 2009-build DSME hull, Keppel FSRU conversion, three regasification modules) but neither, nor any other source located, describes the vessel's power-generation equipment. As a moored FSRU it is presumptively self-generating by the SOP's general FSRU/FLNG prior (off-grid almost by construction), but that prior is explicitly not a substitute for documented evidence, and none was found for this specific vessel.",
+    "refs": [
+      "https://www.offshore-energy.biz/first-gen-cleared-to-operate-batangas-lng-terminal-for-25-years/",
+      "https://bw-group.com/our-businesses/bw-lng/projects/bw-paris-phillipines/",
+      "https://www.offshore-energy.biz/bw-lng-hits-bw-paris-fsru-conversion-milestone/"
+    ],
+    "verification_log": [
+      {"url": "https://www.offshore-energy.biz/first-gen-cleared-to-operate-batangas-lng-terminal-for-25-years/", "tokens": ["25 years", "FGEN"], "result": "PASS", "note": "confirms direction test (feeds 2,017 MW of First Gen plants)"},
+      {"url": "https://bw-group.com/our-businesses/bw-lng/projects/bw-paris-phillipines/", "tokens": ["BW Batangas", "FSRU"], "result": "PASS", "note": "vessel/charter background, no genset spec"},
+      {"url": "https://www.offshore-energy.biz/bw-lng-hits-bw-paris-fsru-conversion-milestone/", "tokens": ["BW Paris", "regasification"], "result": "PASS", "note": "conversion detail, no power-generation spec"}
+    ],
+    "gogpt_prior_assessment": "GOGPT prior is Santa Rita power station (1,094.8 MW per assignment sheet, 0.4 km away) -- one of the four First Gen plants this terminal supplies with regasified gas (PowerPlantsSupplied direction), not a captive generator for the terminal. Independent info: https://www.offshore-energy.biz/first-gen-cleared-to-operate-batangas-lng-terminal-for-25-years/ (PASS-verified, non-gem.wiki).",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Santa Rita already exists as its own GOGPT record and is a downstream customer, not a captive plant; the vessel's own (undocumented) onboard generation, if it exists, would be vessel-mounted and outside GOGPT's land-based-plant ontology in any case (REVIEWER CALL territory, not ADD).",
+    "status_or_other_findings": "None beyond the operating/25-year-POM status already in GEM.",
+    "notes": "PowerPlantsSupplied direction-test case (Batangas cluster, as flagged in the assignment): this terminal feeds Santa Rita/San Lorenzo/Avion/San Gabriel, it is not fed by them. The unresolved question is narrower and vessel-specific -- does BW Batangas itself carry dual-fuel/gas gensets for its own house load. Worth a targeted follow-up against BW Group technical papers, Lloyd's Register/class records, or a DOE-filed vessel description if this shard's finding needs tightening in a future pass."
+  },
+  {
+    "terminal": "FGEN Batangas LNG Terminal",
+    "terminal_id": "T100000130610",
+    "country": "Philippines",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "yellow",
+    "captive_summary": "Screened: this record is First Gen's original December 2018 onshore (land-based) LNG terminal concept, which the company evolved into an interim offshore FSRU approach by 2019 before any facility design, ECC, or equipment list was published for the onshore version. That FSRU approach is what was actually built and now operates as the separate 'FGEN Batangas FSRU' record (T100000131012) using BW Batangas. No captive-power design was ever documented for this superseded onshore concept.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "First Balfour (EPC contractor track record page, Wayback-verified): describes the interim terminal's onshore gas receiving facility (OGRF) as an adjunct to the jetty conversion -- confirming First Gen's project evolved from an onshore concept into the offshore/FSRU-plus-OGRF hybrid that was actually built, rather than the onshore terminal being built as a standalone facility in its own right. No source found describes a standalone onshore-terminal design (with its own captive-power arrangement) that was ever finalized independent of the FSRU pivot.",
+    "refs": [
+      "https://firstbalfour.com/track-record/lng-terminal/"
+    ],
+    "verification_log": [
+      {"url": "https://firstbalfour.com/track-record/lng-terminal/", "tokens": ["onshore", "First Gen"], "result": "PASS", "note": "bot-blocked live (403), value verified via Wayback snapshot 20250625080108"}
+    ],
+    "gogpt_prior_assessment": "GOGPT prior is Santa Rita power station (1,094.8 MW, 0.4 km away) -- same as the FSRU record at this location; it is a downstream customer of the (superseded) onshore concept's successor project, not a captive plant.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Santa Rita already exists as its own GOGPT record, matched against the operating FSRU record at this same site; this shelved onshore-concept record has no independent design to evaluate.",
+    "status_or_other_findings": "This record and 'FGEN Batangas FSRU' (T100000131012) share identical coordinates (13.7729, 121.0379) -- consistent with being the same underlying project at two design stages (onshore concept, then built FSRU), not two physically distinct terminals. Flagging for a possible future record-consolidation review outside this captive-power pass.",
+    "notes": "Screen criterion: preliminary concept superseded within the same company's project timeline before any facility design was published (folded into the now-operating FGEN Batangas FSRU, T100000131012, researched separately in this shard)."
+  },
+  {
+    "terminal": "Filipinas LNG Gateway Project FSRU",
+    "terminal_id": "T100000130906",
+    "country": "Philippines",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "Vires Energy Corp. (VEC, an A Brown Company Inc. subsidiary) formally withdrew the DOE notice-to-proceed for this FSRU import-terminal project (Simlong, Batangas) on 30-31 August 2024, citing project non-viability. The company subsequently pursued a separate ~450-900 MW floating LNG-fired power plant (the GOGPT-tracked 'Vires Energy floating power plant') that IEEFA reports sources gas from THIRD PARTIES rather than being fed by (or feeding) this now-cancelled terminal -- and even that successor power project was itself later suspended. No captive on-site generation was ever documented for the terminal's own design before it was withdrawn.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Philippine Star (31 Aug 2024): 'ABCI subsidiary Vires Energy Corp. (VEC) informed the Department of Energy (DOE)...that it is withdrawing the notice to proceed (NTP) issued in 2021 for the LNG project in Simlong, Batangas.' IEEFA (2026): 'Vires Energy suspended its 900MW LNG-fired power plant after canceling an associated LNG import terminal in 2024' -- confirming both the terminal cancellation and that the follow-on power plant is a distinct project (sourcing gas from third parties, not from this dead terminal) that has itself since stalled.",
+    "refs": [
+      "https://www.philstar.com/business/2024/08/31/2381706/brown-scraps-plan-develop-lng-terminal-batangas",
+      "https://ieefa.org/resources/gas-turbine-sale-signals-end-another-philippine-lng-project"
+    ],
+    "verification_log": [
+      {"url": "https://www.philstar.com/business/2024/08/31/2381706/brown-scraps-plan-develop-lng-terminal-batangas", "tokens": ["Vires", "withdrawing"], "result": "PASS", "note": "primary confirmation of Aug 2024 NTP withdrawal"},
+      {"url": "https://ieefa.org/resources/gas-turbine-sale-signals-end-another-philippine-lng-project", "tokens": ["Vires", "900MW"], "result": "PASS", "note": "bot-blocked live (403), value verified via Wayback snapshot 20260724140134; confirms terminal-power plant are distinct projects and both are now dead/suspended"}
+    ],
+    "gogpt_prior_assessment": "GOGPT prior is Vires Energy floating power plant (450 MW per assignment sheet, 0.25 km away). This is VEC's SUCCESSOR project, pursued only after this LNG terminal was cancelled, explicitly designed to source gas from third-party suppliers rather than from this (dead) terminal -- fails the captive test on two independent grounds (different project, opposite/absent supply relationship) and is itself now suspended per IEEFA. Independent info: https://ieefa.org/resources/gas-turbine-sale-signals-end-another-philippine-lng-project (PASS-verified via Wayback, non-gem.wiki).",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Vires Energy floating power plant already exists as its own separate GOGPT record; it is not related to this terminal as a captive generator (different, later, third-party-gas-sourced project), and both are now dead/suspended.",
+    "status_or_other_findings": "Terminal formally withdrawn Aug 2024, consistent with GEM's 'shelved' status; the follow-on power plant project has itself been suspended per IEEFA reporting (gas-turbine resale). Not acted on here.",
+    "notes": "Not a PowerPlantsSupplied direction-test case in the usual sense -- rather a project-succession trap: same corporate sponsor (A Brown Company/Vires Energy) abandoned the LNG import terminal, then separately proposed a power plant fed by outside gas. The nearby GOGPT match is proximity/sponsor coincidence, not a captive relationship."
+  },
+  {
+    "terminal": "Mariveles Samat LNG Terminal",
+    "terminal_id": "T100000130307",
+    "country": "Philippines",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "yellow",
+    "captive_summary": "Samat LNG Corporation's project is a small-scale ($67M) LNG receiving terminal and regasification facility on a 4.5-hectare leased site within PNOC's Industrial Park in Limay/Sisiman, Mariveles, Bataan (DOE notice-to-proceed Jan 2023; PNOC lease signed Sep 2023), intended to deliver 'unported' LNG to industrial users to cut their electricity/fuel costs -- not to generate power itself. No source found describes any on-site power-generation equipment for the terminal; the small-scale receiving/regas description is the only design detail public.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "PNOC (official, primary): confirms the Sep 2023 long-term lease of 4.5 hectares at the PNOC Industrial Park, Limay, Bataan, for Samat LNG Corp's LNG project. Manila Standard/DOE reporting (not independently re-verified here beyond search snippets) describes it as a 'small-scale liquefied natural gas (LNG) receiving terminal and regasification facility,' with a Jan 2023 DOE notice-to-proceed for a ~$67M facility in Barangay Sisiman. No equipment/power-generation detail found in any source searched.",
+    "refs": [
+      "https://www.pnoc.com.ph/pnoc-and-samat-lng-corporation-signed-a-long-term-lease-agreement-for-a-small-scale-lng-terminal-at-pnoc-industrial-park-in-limay-bataan/"
+    ],
+    "verification_log": [
+      {"url": "https://www.pnoc.com.ph/pnoc-and-samat-lng-corporation-signed-a-long-term-lease-agreement-for-a-small-scale-lng-terminal-at-pnoc-industrial-park-in-limay-bataan/", "tokens": ["Samat", "Limay"], "result": "PASS", "note": "primary/official PNOC lease announcement"},
+      {"url": "https://www.pna.gov.ph/articles/1193731", "tokens": ["Sisiman", "Mariveles"], "result": "FAIL", "note": "HTTP 403, no Wayback snapshot available; not used as citation"},
+      {"url": "https://www.naturalgasworld.com/samat-lng-pens-lease-agreement-for-lng-project-in-philippines-114373", "tokens": ["Samat", "Limay"], "result": "FAIL", "note": "page does not contain 'Limay'; not used as citation"}
+    ],
+    "gogpt_prior_assessment": "GOGPT prior is Sisiman LNG Combined Cycle power plant (1,200 MW per assignment sheet, 1.67 km away) -- this is GNPower Ltd Co.'s own separate 1,200 MW gas power project (Barangays Alas-asin and Sisiman, Mariveles, Bataan; early planning/permitting stage, target construction ~2028), a DIFFERENT developer from Samat LNG Corp with no documented ownership or supply link between the two. Proximity within the same Mariveles/Sisiman corridor appears coincidental (or reflects shared industrial-zone siting), not a captive relationship. Independent info: https://www.power-technology.com/marketdata/power-plant-profile-gnpower-sisiman-lng-combined-cycle-power-plant-philippines/ (PASS-verified via Wayback, non-gem.wiki).",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Sisiman LNG Combined Cycle power plant already exists as its own GOGPT record under a separate developer (GNPower Ltd Co.); no sourced relationship connects it to Samat LNG Corp's terminal as captive generation.",
+    "status_or_other_findings": "The assignment sheet's 'shelved (inferred 2y)' status looks stale against what was found: DOE issued a notice-to-proceed in Jan 2023, PNOC signed the site lease in Sep 2023, and PNOC/Samat were still describing the partnership as active as of Jan 2024 reporting -- none of the sources found suggest the project was shelved. Worth a status re-check in an Update batch; not acted on here.",
+    "notes": "Small-scale industrial LNG receiving/regas facility, not a power project -- no captive-generation design published in any source found despite a real search effort (DOE, PNOC, and trade-press coverage all describe only the receiving-terminal function)."
+  }
+]

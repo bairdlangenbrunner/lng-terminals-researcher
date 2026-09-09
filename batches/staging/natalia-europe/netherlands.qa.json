@@ -1,0 +1,72 @@
+[
+ {
+  "category": "sourcing_gap",
+  "terminal_id": "T100000130997",
+  "unit_id": "G100002099700",
+  "terminal_name": "Eemshaven FSRU",
+  "issue": "Location [ref] (marinetraffic.com/en/ais/home/shipid:5043473) 403s and has no Wayback snapshot to verify against -- cannot positively re-verify this session. Not proven dead (no hard 404), so left in place per merge semantics. Applies to both the main unit and the Expansion unit-row (both share this citation for the shared terminal site).",
+  "severity": "low",
+  "suggested_action": "Try again in a later batch, or replace with a Google Maps / port-authority coordinate source.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "value_confirmation",
+  "terminal_id": "T100000131100",
+  "unit_id": "G100002110000",
+  "terminal_name": "Terneuzen FSRU",
+  "issue": "FloatingVesselName is blank. Confirmed legitimate: project was cancelled (Feb 2023, 'technically/commercially unfeasible') before any FSRU vessel was selected or chartered. No vessel-selection news exists for this site.",
+  "severity": "low",
+  "suggested_action": "None -- leave blank, no vessel to record.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "value_confirmation",
+  "terminal_id": "T100000131099",
+  "unit_id": "G100002109900",
+  "terminal_name": "Zeeland Energy FSRU",
+  "issue": "FloatingVesselName is blank. Confirmed likely legitimate: neither the project's own site (open-season-launch and about pages) nor press coverage names a specific FSRU vessel yet -- the terminal is still pre-FID (FIDYear 2027) and no charter/vessel-selection announcement has been made.",
+  "severity": "low",
+  "suggested_action": "None for now -- revisit once FID/vessel charter is announced.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "sourcing_gap",
+  "terminal_id": "T100000130997",
+  "unit_id": "G100001096022",
+  "terminal_name": "Eemshaven FSRU / Expansion",
+  "issue": "FloatingVesselName carries 'Eemshaven LNG, Energos Igloo', inherited/copied from the main unit-row, but the unit's own ResearcherNotesUnit (Natalia Fretz, 2026-07-27) flags: 'It looks like the new FSRU will replace Energos Igloo, but it is not mentioned anywhere.' The Expansion unit is a second/replacement FSRU whose vessel has not actually been named -- the current field value may misrepresent this as a confirmed vessel for the expansion itself.",
+  "severity": "medium",
+  "suggested_action": "Consider clearing FloatingVesselName on the Expansion unit-row specifically (or annotating that it reflects the EXISTING vessel, not the new one) until a vessel is actually named for the second FSRU.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "naming_cosmetic",
+  "terminal_id": "T100000131099",
+  "unit_id": "G100002109900",
+  "terminal_name": "Zeeland Energy FSRU",
+  "issue": "'Höegh Evi' appears with >=3 spellings across GEM (Höegh Evi / Hoegh Evi / Höegh Evi per entity_lookup.py raw_variants_seen). Known cosmetic issue, not fixed in this batch per instruction (Owner field is otherwise correct).",
+  "severity": "low",
+  "suggested_action": "Optional future cleanup: standardize spelling across the 4 terminals referencing this entity.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "citation_soft_block",
+  "terminal_id": "T100000130492",
+  "unit_id": "G100002049201",
+  "terminal_name": "Gate LNG Terminal / Expansion",
+  "issue": "icis.com open-season article (ProposalDate [ref]) returns HTTP 200 but renders no visible article text (JS-gated or subscriber-gated shell) -- cannot positively verify the cited value against it this session. Not a hard 404, so not dropped; the companion lngprime URL on the same field independently confirms the value.",
+  "severity": "low",
+  "suggested_action": "No action needed -- companion source covers it.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "transient_error",
+  "terminal_id": "T100000130492",
+  "unit_id": "G100002049201",
+  "terminal_name": "Gate LNG Terminal / Expansion",
+  "issue": "Two offshore-energy.biz URLs (StartDate [ref] here and the same-domain URL on Zeeland's StartDate [ref]) returned repeated transient 502s this session (Retry-After header present on direct WebFetch) -- a domain-wide outage, not link-rot. Not dropped per the repo's 5xx-is-not-rot convention.",
+  "severity": "low",
+  "suggested_action": "Re-check in a future batch once the outage clears.",
+  "researcher_initials": "AI-draft"
+ }
+]

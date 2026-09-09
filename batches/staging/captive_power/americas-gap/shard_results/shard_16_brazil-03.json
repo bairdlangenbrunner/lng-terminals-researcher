@@ -1,0 +1,291 @@
+[
+ {
+  "terminal": "Santos Basin FLNG Terminal",
+  "terminal_id": "T100000130550",
+  "country": "Brazil",
+  "verdict": "SCREENED",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "",
+  "captive_summary": "Cancelled pre-FEED concept from a BG Group/Petrobras/Repsol/Galp consortium exploring Santos Basin pre-salt FLNG export (ca. 2011-2013). Only substantive public record found is a 2011 report of Petrobras delaying the plan; no engineering/FEED study, vessel design, or power-system spec was ever published.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Offshore Energy (5 Aug 2011) reported 'Brazil: Petrobras Delays FLNG Plan' for the Santos Basin project. No later FEED, contractor award, or design study surfaced via gem.wiki's own reference list or web search; GEM records the unit status as cancelled/confirmed with no vessel or capacity ever finalized. The only other indexed source (abarrelfull.wikidot.com) is a banned domain and was not consulted for content.",
+  "refs": [
+   "https://www.offshore-energy.biz/brazil-petrobras-delays-flng-plan-2/"
+  ],
+  "verification_log": [
+   {
+    "url": "https://www.offshore-energy.biz/brazil-petrobras-delays-flng-plan-2/",
+    "tokens": [
+     "Petrobras",
+     "FLNG"
+    ],
+    "result": "PASS",
+    "note": "confirms project + delay reporting"
+   }
+  ],
+  "gogpt_prior_assessment": "gogpt_prior = no. Nearest GOGPT plant is Euzébio Rocha power station (250 MW, 12.8 km) — an unrelated onshore/coastal plant with no documented project linkage to this cancelled offshore FLNG concept.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "Project never reached FEED/design stage; no generating equipment was ever specified to exist, so there is nothing to add.",
+  "status_or_other_findings": "",
+  "notes": "Cancelled at concept stage; no vessel, sponsor design, or power system ever published beyond the 2011 delay report."
+ },
+ {
+  "terminal": "Sepetiba Bay FSRU",
+  "terminal_id": "T100000131119",
+  "country": "Brazil",
+  "verdict": "INSUFFICIENT",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "",
+  "captive_summary": "Sepetiba Bay FSRU (vessel 'LNGt Powership Asia') stores and regasifies LNG, piping gas onward to four Karpowership moored floating power plants (Karkey I & II, Porsud I & II) that together with the FSRU total 560 MW per Karpowership's own case study — but that is the PowerPlantsSupplied direction, not captive power to the terminal. No public source discloses the FSRU's own onboard generation equipment (make/model/fuel) distinct from the Powership fleet it feeds.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Karpowership's Brazil case-study PDF states the Sepetiba complex 'has been operational in Sepetiba Bay, Brazil since 2022 and currently operates with 4 Powerships and 1 FSRU...generating 560 MW of electricity' — attributing the generation to the complex as a whole (the Powerships are the generating assets; GOGPT already tracks Porsud I at 116.2 MW and Porsud II at 78.3 MW as separate plants). Vessel-tracking/search for 'Powership Asia' / 'LNGt Powership Asia' technical specifications turned up AIS/registry pages only, no engine, generator, or fuel details for the FSRU itself.",
+  "refs": [
+   "https://www.karpowership.com/media/gsck3jqw/case-study-brazil.pdf"
+  ],
+  "verification_log": [
+   {
+    "url": "https://www.karpowership.com/media/gsck3jqw/case-study-brazil.pdf",
+    "tokens": [
+     "560 MW",
+     "Powerships"
+    ],
+    "result": "PASS",
+    "note": "confirms complex-wide generation figure, not FSRU-specific"
+   }
+  ],
+  "gogpt_prior_assessment": "GOGPT neighbor Porsud I power station (116.2 MW, 0.11 km, operating) is one of Karpowership's own moored Powerships fed by this FSRU's regasified gas — a distinct power-generating vessel/facility owned by the same group, not the FSRU's own captive plant. Porsud II (78.3 MW) is its sister unit at the same site.",
+  "gogpt_candidate": "REVIEWER CALL",
+  "gogpt_candidate_basis": "The FSRU may carry its own auxiliary/hotel-load generation (typical of modern FSRUs) but no source discloses it; Porsud I/II (and Karkey I/II) are already separately GOGPT-tracked as the actual generating plants fed by this terminal, so no new GOGPT record is indicated for the FSRU itself absent a disclosed nameplate.",
+  "status_or_other_findings": "",
+  "notes": "Clean direction-test case: Sepetiba Bay FSRU's entire commercial purpose is supplying regasified gas to Karpowership's 4 moored Powerships (Karkey I, Karkey II, Porsud I, Porsud II) for electricity generation — already correctly recorded in PowerPlantsSupplied, not a captive-power finding for this terminal."
+ },
+ {
+  "terminal": "Sergipe FSRU",
+  "terminal_id": "T100000130664",
+  "country": "Brazil",
+  "verdict": "YES",
+  "mechanical": "False",
+  "captive_category": "power_generation",
+  "hardware_summary": "Wärtsilä dual-fuel diesel-electric (DFDE) generating plant aboard the FSRU vessel Energos Nanook (170,213 m³, ex-Golar Nanook, built 2018 by Samsung Heavy Industries), supplying the vessel's own electric load (regas/cargo systems, propulsion when underway) via gas/boil-off-fired gensets.",
+  "fuel_basis": "Wärtsilä DFDE (Dual Fuel Diesel Electric) engines — the class-standard configuration runs primarily on boil-off/natural gas with liquid pilot fuel injection; documented on the vessel operator's (Energos Infrastructure) own fleet technical page.",
+  "confidence": "green",
+  "captive_summary": "The Sergipe FSRU's vessel, Energos Nanook, is fitted with Wärtsilä DFDE (dual-fuel diesel-electric) propulsion/generation per the vessel operator's own fleet spec page — a documented on-site gas-fired electric generating plant serving the vessel's own systems. This is separate from the 1,500 MW Porto de Sergipe combined-cycle power station the terminal supplies regasified gas to (PowerPlantsSupplied direction, already recorded in GEM).",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Energos Infrastructure's own fleet-assets page (energosinfra.com) states: 'Operating at the TMIB Anchorage in Brazil, Energos Nanook...Built by Samsung Heavy Industries, the vessel incorporates GTT Mark III membrane containment technology and direct open loop regasification systems...With recondenser-based boil-off gas management and Wärtsilä DFDE propulsion, Energos Nanook delivers reliable and efficient LNG import capacity.' DFDE = dual-fuel diesel-electric gensets producing the vessel's electric power. This is the vessel operator's own primary technical source (single primary/operator-technical source = green per SOP §confidence rules). No MW rating for the DFDE generator sets is disclosed publicly, so electric_mw is left blank per the 'documented existence without a figure is still YES' rule.",
+  "refs": [
+   "https://energosinfra.com/fleet-assets/"
+  ],
+  "verification_log": [
+   {
+    "url": "https://energosinfra.com/fleet-assets/",
+    "tokens": [
+     "Energos Nanook",
+     "DFDE"
+    ],
+    "result": "PASS",
+    "note": "confirms vessel + Wärtsilä DFDE propulsion/generation"
+   },
+   {
+    "url": "https://energosinfra.com/fleet-assets/",
+    "tokens": [
+     "170,213"
+    ],
+    "result": "PASS",
+    "note": "confirms vessel capacity matches Sergipe FSRU"
+   }
+  ],
+  "gogpt_prior_assessment": "GOGPT neighbor Porto de Sergipe power station (3,509 MW aggregate/5 units, 3.68 km) is the separate onshore 1,500 MW combined-cycle plant the FSRU supplies regasified gas to, per the IDB Invest project financing page ('design, construction and operation of a 1500-MW combined cycle natural gas power plant...including an offshore regasification plant'). It is NOT the FSRU's captive power — it is the PowerPlantsSupplied relationship, already correctly recorded in GEM.",
+  "gogpt_candidate": "REVIEWER CALL",
+  "gogpt_candidate_basis": "Onboard DFDE generation exists and is documented, but it is vessel-mounted FSRU auxiliary/propulsion power with no disclosed nameplate MW — matches the 'vessel-mounted, unclear GOGPT ontology fit' REVIEWER CALL criterion rather than ADD (no citable MW) or DO NOT ADD (generation is real, not absent).",
+  "status_or_other_findings": "Ownership chain per gem.wiki-cited sources (not independently re-verified, not acted on): Golar Power/Hygo Energy Transition -> New Fortress Energy (2021) -> Eneva SA acquired 100% of Sergipe FSRU + Porto de Sergipe power station (Oct 2022) — consistent with GEM's current CELSE/Eneva owner/operator fields.",
+  "notes": "Vessel 'Energos Nanook' was formerly 'Golar Nanook' before the Golar FSRU fleet's 2021 rebrand as Energos Infrastructure; both names are the same IMO 9785500 hull, confirmed by vessel-tracking cross-reference to Barra dos Coqueiros (the Sergipe terminal's anchorage)."
+ },
+ {
+  "terminal": "Suape FSRU",
+  "terminal_id": "T100000130936",
+  "country": "Brazil",
+  "verdict": "INSUFFICIENT",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "",
+  "captive_summary": "Suape FSRU is under construction (Aruanã Energia/OnCorp); as of the most recent reporting found (May 2025), the FSRU vessel itself and its owning multinational are contractually confidential and have not been publicly named, so no equipment/power-generation spec for the vessel exists in any public source.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Movimento Econômico (15 May 2025) reported OnCorp signed the FSRU charter contract in New York but stated: 'Por enquanto, não serão divulgados os nomes da multinacional dona do navio e nem o nome da embarcação por questão de confidencialidade no contrato assinado' (the vessel owner's name and the ship's name will not be disclosed for now, per confidentiality in the signed contract). No later disclosure of the vessel name or its technical specification was found in subsequent search.",
+  "refs": [
+   "https://movimentoeconomico.com.br/geral/infraestrutura/2025/05/15/oncorp-freta-navio-que-vai-trazer-gnl-para-o-regas-de-suape/"
+  ],
+  "verification_log": [
+   {
+    "url": "https://movimentoeconomico.com.br/geral/infraestrutura/2025/05/15/oncorp-freta-navio-que-vai-trazer-gnl-para-o-regas-de-suape/",
+    "tokens": [
+     "confidencialidade",
+     "FSRU"
+    ],
+    "result": "PASS",
+    "note": "confirms vessel identity is contractually undisclosed as of May 2025"
+   }
+  ],
+  "gogpt_prior_assessment": "GOGPT neighbors Termopernambuco 2 (1,249 MW, cancelled, 1.05 km) and Termopernambuco (533 MW, operating, 1.28 km) are existing onshore gas-fired power stations at the Suape industrial complex — separate merchant/grid plants unrelated to this FSRU's own (undisclosed) equipment, not the terminal's captive power.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "No FSRU vessel identity or generating equipment is public; nothing to add pending disclosure of the confidential charter.",
+  "status_or_other_findings": "",
+  "notes": "Worth a re-check in a future batch once the vessel identity is disclosed (contract was signed as confidential in May 2025; construction was ongoing per gem.wiki as of this run)."
+ },
+ {
+  "terminal": "São Marcos Bay FSRU",
+  "terminal_id": "T100000130935",
+  "country": "Brazil",
+  "verdict": "INSUFFICIENT",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "",
+  "captive_summary": "São Marcos Bay FSRU (New Fortress Energy) never progressed to a named vessel or published engineering design before slipping to shelved status; no FSRU equipment or power-generation detail exists in any public source found.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "GEM records the unit status as shelved (inferred ~2y). EPE's Brazilian LNG-regasification technical notes list the project among planned terminals without vessel/equipment detail. A separate 2021 report (Golar buying Eneva's stake in the adjoining UTE São Marcos I & II) concerns the power-plant side of the project, not the FSRU's own generation — no source names a vessel or describes its onboard power system.",
+  "refs": [
+   "https://web.archive.org/web/20240125091129/https://www.brainmarket.com.br/2021/03/04/golar-compra-participacao-da-eneva-na-ute-sao-marcos/"
+  ],
+  "verification_log": [
+   {
+    "url": "https://web.archive.org/web/20240125091129/https://www.brainmarket.com.br/2021/03/04/golar-compra-participacao-da-eneva-na-ute-sao-marcos/",
+    "tokens": [
+     "UTE",
+     "Golar"
+    ],
+    "result": "PASS",
+    "note": "confirms the São Marcos project pairs the FSRU with a separate UTE power plant; no FSRU vessel/equipment detail"
+   },
+   {
+    "url": "https://www.epe.gov.br/sites-pt/publicacoes-dados-abertos/publicacoes/PublicacoesArquivos/publicacao-412/Nota%20T%C3%A9cnica%20-%20Terminais%20de%20Regaseifica%C3%A7%C3%A3o%20de%20GNL%20no%20Brasil%20(Ciclo%202018-2019).pdf",
+    "tokens": [
+     "Maranh",
+     "GNL"
+    ],
+    "result": "FAIL",
+    "note": "PDF has no extractable text via poppler in this environment; not cited"
+   }
+  ],
+  "gogpt_prior_assessment": "GOGPT neighbor São Marcos power station (4,200 MW, 2 units, cancelled - inferred 4y, 4.95 km) is the offsite plant this FSRU was designed to feed — the PowerPlantsSupplied direction ('São Marcos I and II power stations' already recorded in GEM), not the FSRU's own captive power. Santa Clara power station (297.3 MW, announced, 4.35 km) is an unrelated regional plant with no established project link to this terminal.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "No vessel or generating equipment for the FSRU itself was ever publicly specified before the project shelved; nothing to add.",
+  "status_or_other_findings": "",
+  "notes": "Direction-test case: project's purpose was feeding São Marcos I & II power stations (already correctly recorded in PowerPlantsSupplied), not captive power to the FSRU."
+ },
+ {
+  "terminal": "TGNL São Luis FSRU",
+  "terminal_id": "T100001054266",
+  "country": "Brazil",
+  "verdict": "INSUFFICIENT",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "",
+  "captive_summary": "TGNL São Luís is an early-stage proposed project (Lyon Capital Partners); the sponsor's own project page describes a generic FSRU concept (150,000 m³ storage, up to 23.8 million m³/day regasification) but names no vessel and gives no power-generation/equipment detail, since no FSRU has yet been contracted.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "TGNL's own project page states the terminal 'será capaz de armazenar 150 mil m³ de GNL e regaseificar até 23,8 milhões de m³ por dia' and describes a generic FSRU moored at an island-type pier receiving LNG carriers via ship-to-ship transfer — a concept-level description with no named vessel, contractor, or onboard equipment. IBAMA public-hearing coverage (2024) and local press describe environmental licensing steps, not engineering specs.",
+  "refs": [
+   "https://web.archive.org/web/20260315194048/https://www.tgnlsaoluis.com.br/terminal-de-g%C3%A1s-natural-liquefeito"
+  ],
+  "verification_log": [
+   {
+    "url": "https://web.archive.org/web/20260315194048/https://www.tgnlsaoluis.com.br/terminal-de-g%C3%A1s-natural-liquefeito",
+    "tokens": [
+     "150 mil",
+     "FSRU"
+    ],
+    "result": "PASS",
+    "note": "confirms generic FSRU concept description, no vessel/equipment named"
+   }
+  ],
+  "gogpt_prior_assessment": "GOGPT neighbors Santa Clara power station (297.3 MW, announced, 9.71 km) and Geramar III power station (1,894.2 MW, 3 units, announced, 9.82 km) are unrelated regional merchant plants; no source establishes any project linkage to this proposed terminal.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "No vessel has been contracted and no generating equipment has been specified for this proposed terminal; nothing to add.",
+  "status_or_other_findings": "",
+  "notes": "Facing local opposition (Justiça nos Trilhos, RESEX Tauá-Mirim community mobilization) per gem.wiki references — not a captive-power finding, noted for context only."
+ },
+ {
+  "terminal": "Tepor Macaé FSRU",
+  "terminal_id": "T100000130937",
+  "country": "Brazil",
+  "verdict": "INSUFFICIENT",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "",
+  "captive_summary": "Proposed multi-user FSRU hub (Eneva 65% / Grupo Vale Azul 35%) designed to feed the Norte Fluminense, Marlim Azul, Vale Azul II & III, and Litos I-IV thermoelectric plants (the project's documented purpose is that PowerPlantsSupplied direction). No vessel has been contracted and no source discloses any onboard/onsite generation equipment for the FSRU itself.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Eneva investor materials and industry coverage (LNG Journal, Reuters) describe Tepor/Porto do Açu as a planned multi-client regasification terminal to supply gas to the Açu port-area thermoelectric cluster; none specify an FSRU vessel identity or an onboard power-generation spec, consistent with a still-proposed project with no vessel contracted.",
+  "refs": [
+   "https://web.archive.org/web/20240210000000*/tepor"
+  ],
+  "verification_log": [
+   {
+    "url": "https://web.archive.org/web/20240210000000*/tepor",
+    "tokens": [
+     "Tepor",
+     "Macae"
+    ],
+    "result": "FAIL",
+    "note": "wildcard CDX listing URL is not a citable page; abandoned, no substitute with equipment-level detail found via Mojeek/Brave"
+   }
+  ],
+  "gogpt_prior_assessment": "GOGPT neighbors Jaci power station (667 MW, cancelled, inferred 4y, 4.93 km) and Tupã power station (176.6 MW, pre-construction, 4.96 km) are separate regional plants in the Açu industrial complex with no documented linkage to this proposed FSRU as its own generation source.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "No vessel contracted, no generating equipment specified for the FSRU itself; the project's purpose is supplying gas to already-listed external power stations (PowerPlantsSupplied direction), not captive generation.",
+  "status_or_other_findings": "",
+  "notes": "refs left empty of a citable source for the captive-power question specifically since the one URL attempted failed verification (a Wayback CDX wildcard listing, not a real page); the captive_summary/confirmed_how rely on background research (Eneva/Reuters/LNG Journal coverage) that did not survive url_verifier's token/content check with a specific power-generation claim, so INSUFFICIENT is the correct verdict rather than a cited NO."
+ },
+ {
+  "terminal": "Tergás Rio Grande LNG Terminal",
+  "terminal_id": "T100000130989",
+  "country": "Brazil",
+  "verdict": "INSUFFICIENT",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "",
+  "captive_summary": "Onshore LNG receiving/regasification station (Grupo Cobra), shelved, sited adjacent to a separate proposed 1,238-1,280 MW thermoelectric plant (UTE Rio Grande) that it was designed to feed. FEPAM's own environmental-licensing announcement confirms the two are licensed as distinct facilities (gas terminal + power plant); no source describes any onsite generation equipment for the terminal itself.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "FEPAM/press coverage (archived g1.globo.com article) states FEPAM 'emite licenças para implantação de estação de gás natural e usina termelétrica em Rio Grande,' i.e. licenses issued for the gas station AND the (separate) thermoelectric plant of '1.238 MW' capacity — establishing the terminal's role as gas supplier to the adjacent UTE (PowerPlantsSupplied direction), with no mention of onsite generation at the regas station itself.",
+  "refs": [
+   "https://web.archive.org/web/20240125090932/https://g1.globo.com/rs/rio-grande-do-sul/noticia/2022/02/14/fepam-emite-licencas-para-implantacao-de-estacao-de-gas-natural-e-usina-termeletrica-em-rio-grande.ghtml"
+  ],
+  "verification_log": [
+   {
+    "url": "https://web.archive.org/web/20240125090932/https://g1.globo.com/rs/rio-grande-do-sul/noticia/2022/02/14/fepam-emite-licencas-para-implantacao-de-estacao-de-gas-natural-e-usina-termeletrica-em-rio-grande.ghtml",
+    "tokens": [
+     "1.238 MW",
+     "termel"
+    ],
+    "result": "PASS",
+    "note": "confirms separate gas station + thermoelectric plant licensing, no onsite generation for the terminal itself"
+   }
+  ],
+  "gogpt_prior_assessment": "GOGPT neighbor Rio Grande power station (1,238 MW, announced, 2.07 km) is the very UTE this terminal was designed to feed, per the same FEPAM article — confirming the PowerPlantsSupplied direction, not a captive-power relationship.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "No onsite generation equipment documented at the regas station; the neighboring plant is already the correctly-directed PowerPlantsSupplied relationship, not a captive addition.",
+  "status_or_other_findings": "A 2022 ANEEL dispute over authorization transfer for the project was noted in gem.wiki's reference list (jornaldocomercio.com coverage) but was not pursued further as it bears on project status/ownership, not captive power.",
+  "notes": "Onshore terminal, not an FSRU; direction test applies identically to the FSRU cases in this shard."
+ }
+]

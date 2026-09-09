@@ -1,0 +1,236 @@
+[
+  {
+    "terminal": "Eilat FLNG Terminal",
+    "terminal_id": "T100000130588",
+    "country": "Israel",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "yellow",
+    "captive_summary": "Cancelled at the preliminary-proposal stage (a ~$6bn concept submitted to the Finance Ministry in 2012 for an LNG export/bunkering hub at EAPC's Eilat oil terminal); killed by coral-reef and tanker-maneuvering opposition in the narrow Gulf of Aqaba before any FEED or engineering design was commissioned. No source (independent or gem.wiki) describes a published design of any kind, let alone a power-generation package, unlike Tamar FLNG which did reach a real FEED.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Times of Israel (2021, in the context of the later EAPC/UAE pipeline controversy) recaps that the Eilat LNG-hub concept was 'apparently dismissed' after public opposition over coral reefs and tanker safety in the Gulf of Aqaba; no source found describes a FEED study, vessel selection, or any generation-system design ever being commissioned for this project, so there is no design for a captive-power finding to attach to.",
+    "refs": [
+      "https://www.timesofisrael.com/protesters-rally-against-plans-to-transform-eilat-into-oil-and-gas-hub/"
+    ],
+    "verification_log": [
+      {"url": "https://www.timesofisrael.com/protesters-rally-against-plans-to-transform-eilat-into-oil-and-gas-hub/", "tokens": ["Eilat"], "result": "PASS", "note": "protest/cancellation context"},
+      {"url": "https://naturalgasintel.com/news/israel-explores-diversifying-natural-gas-exports-with-lng-facility/", "tokens": ["Eilat"], "result": "FAIL", "note": "token not found on page; dropped"}
+    ],
+    "gogpt_prior_assessment": "GOGPT's 'Eilat power plant' (50 MW, 2.77 km away) is an existing, independently-operating Israel Electric Corp / municipal grid station serving the city of Eilat generally — it predates and is unconnected to the cancelled FLNG concept, which never broke ground. It is a coincidental nearby facility, not this (never-built) terminal's captive plant.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "GOGPT record for 'Eilat power plant' already exists and is unrelated to this cancelled, never-designed FLNG proposal (see http://www.eilateilot.org/the-israel-electric-company-reinforcing-electricity-flow-in-eilat-the-arava/ for background on the existing Eilat grid station).",
+    "status_or_other_findings": "Project appears to have been abandoned circa 2013-2014, well before the Leviathan/Tamar-era FLNG proposals gained traction; GEM's 'cancelled, inferred 4y' substatus is consistent with this.",
+    "notes": "Screened per SOP: cancelled-and-never-designed. No captive-power design to evaluate because no engineering design of any kind was ever published for this site."
+  },
+  {
+    "terminal": "Hadera FSRU Terminal",
+    "terminal_id": "T100000130589",
+    "country": "Israel",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "yellow",
+    "captive_summary": "SPLIT FINDING — shore side is a documented direction-test NO, but the vessel side is undocumented, and per the fuel gate (unstated fuel = INSUFFICIENT, never NO) the terminal verdict is INSUFFICIENT. Shore side (green): the Hadera FSRU (Excelsior, 2013-2022; a submerged-buoy deepwater mooring, Israel's first LNG import point) fed regasified gas into Israel Natural Gas Lines' (INGL) national transmission grid, which in turn supplies gas to essentially all of Israel's major power stations (~70% of national generation), not a single dedicated on-site plant. IEC's own Orot Rabin station (Hadera) is one of the grid's largest offtakers and converted from coal to GE 9HA gas turbines on this same gas supply. Regasification heat itself is met by boiler steam (closed loop) or seawater (open loop) — thermal, not electric, per the heat-is-not-power rule, so it would not count as captive power even setting the direction test aside.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Georgetown Journal of International Affairs (2020): INGL's ~700 km transmission system 'supply[ies] high-pressure natural gas to major consumers such as electric power generators,' with gas from Hadera entering this shared grid in 2013; Global Energy Observatory's Hadera Deepwater LNG Terminal entry corroborates the buoy/grid-injection design; GE Vernova's Israel Electric Orot Rabin case study confirms IEC's Hadera-area Orot Rabin plant runs on this national gas supply via its own GE 9HA conversion, i.e. Orot Rabin is a grid offtaker of common-carrier gas, not a captive plant built to serve the terminal. VESSEL SIDE (the open half): Riviera documents the Energy Bridge class design as carrying 'an oversize boiler to provide the steam and power necessary to sustain vessel operations and the shipboard regasification process' — the Excelsior self-powers via its steam plant — but no source found states what fuel that plant burns (BOG/dual-fuel vs. fuel oil), so the fuel gate blocks both YES and NO on the vessel half.",
+    "refs": [
+      "https://gjia.georgetown.edu/2020/05/25/natural-gas-discoveries-and-israels-energy-security/",
+      "https://globalenergyobservatory.org/geoid/46464",
+      "https://www.gevernova.com/gas-power/resources/case-studies/israel-electric-orot-rabin",
+      "https://www.rivieramm.com/news-content-hub/news-content-hub/shipyards-build-fsru-familiarity-37593"
+    ],
+    "verification_log": [
+      {"url": "https://gjia.georgetown.edu/2020/05/25/natural-gas-discoveries-and-israels-energy-security/", "tokens": ["Hadera"], "result": "PASS", "note": "INGL grid supplies gas to major power generators"},
+      {"url": "https://globalenergyobservatory.org/geoid/46464", "tokens": ["Hadera"], "result": "PASS", "note": "Hadera terminal design/buoy description"},
+      {"url": "https://www.gevernova.com/gas-power/resources/case-studies/israel-electric-orot-rabin", "tokens": ["Orot Rabin", "Hadera"], "result": "PASS", "note": "Orot Rabin gas conversion, IEC's own plant"},
+      {"url": "https://www.vesseltracker.com/en/Ships/Excelsior-9239616.html", "tokens": ["Kawasaki", "Steam"], "result": "FAIL", "note": "vessel engine spec not present on rendered page; tried to confirm Excelsior's own onboard generation fuel basis, inconclusive"},
+      {"url": "https://www.myshiptracking.com/vessels/excelsior-mmsi-205423000-imo-9239616", "tokens": ["Kawasaki", "Steam"], "result": "FAIL", "note": "same, engine data not exposed on page"},
+      {"url": "https://vesseljoin.com/vessel/excelsior/", "tokens": ["Kawasaki", "Steam Turbine"], "result": "FAIL", "note": "JS-rendered shell, no usable text"},
+      {"url": "https://www.vesselfinder.com/vessels/details/9239616", "tokens": ["Steam Turbine"], "result": "FAIL", "note": "engine data not present on fetched page"},
+      {"url": "https://www.rivieramm.com/news-content-hub/news-content-hub/shipyards-build-fsru-familiarity-37593", "tokens": ["oversize boiler", "Excelerate"], "result": "PASS", "note": "orchestrator QC add: Energy Bridge class 'oversize boiler to provide the steam and power necessary to sustain vessel operations and the shipboard regasification process' — documents onboard self-powering, NOT the fuel"}
+    ],
+    "gogpt_prior_assessment": "GOGPT's 'Hadera OPC power station' (998 MW total incl. planned Hadera 2 expansion, 0.43 km away) is a private cogeneration plant owned by OPC Energy (currently ~144 MW operating + an ~850 MW Hadera 2 expansion in permitting) — a distinct commercial entity from both the terminal and from IEC's Orot Rabin. It draws pipeline (common-carrier) gas from the same INGL grid the Hadera terminal fed, but is a merchant plant sited near the terminal by coincidence of the industrial coastline, not a dedicated/captive plant built to power the FSRU. See Galil Group project page for background.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "GOGPT record for 'Hadera OPC power station' already exists; it is a merchant grid-connected cogeneration plant unrelated to the terminal's own operation, not this terminal's captive power.",
+    "status_or_other_findings": "Excelsior FSRU left Hadera in December 2022 (charter not renewed) and was redeployed, ultimately serving Germany's Wilhelmshaven terminal from 2025; GEM's 'idled/actual' status is consistent with the terminal being currently unserved rather than decommissioned.",
+    "notes": "ORCHESTRATOR QC OVERTURN (2026-08-01): researcher returned NO (green) on the direction test alone while explicitly unable to confirm the Excelsior's own onboard generation fuel. Batch convention treats the FSRU's onboard plant as the captive question (Aqaba, Khor Al-Zubair, Mina Al-Ahmadi all YES on documented onboard gas-burning generation), and the fuel gate says unstated fuel = INSUFFICIENT, never NO — so the terminal verdict becomes INSUFFICIENT with the shore-side direction-test NO preserved above. Shore half stands: Hadera's purpose was injecting import gas into the national grid feeding Orot Rabin and other IEC/private stations — a PowerPlantsSupplied relationship for a different batch, never CaptiveGasPower. Vessel half open: could not confirm whether the Excelsior's hotel/auxiliary load (pumps/vaporizers) is generated via turbo-generators off dual-fuel boilers (Kawasaki UA-360 steam turbine confirmed for main propulsion) or diesel gensets. Sources attempted without a fuel statement: 4 vessel databases (researcher), q88 (redirect dead-end), Riviera FSRU-familiarity article (documents the class's oversize self-powering boiler, fuel unstated), Wartsila encyclopedia LNG RV entry, aukevisser Exmar RV spec page (36,000 SHP steam turbine, no genset/fuel data); OTC-18398 ('The Development of the First Energy Bridge Regasification Vessel', OnePetro) is paywalled and is the likeliest place the fuel spec is published — worth a library pull if this row is revisited. Steam-LNG-carrier boilers customarily burn BOG, but that is class-level inference, which this workflow prohibits as a basis for YES."
+  },
+  {
+    "terminal": "NewMed FLNG Terminal",
+    "terminal_id": "T100000130829",
+    "country": "Israel",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "red",
+    "captive_summary": "Proposed FLNG project (Leviathan Phase 1B) for the offshore, moored-vessel Leviathan field, ~130 km off Haifa. NewMed/Chevron 'confirmed the design concept' and funded pre-FEED work in 2023 (targeting a Golar-chartered vessel, described only as a 'generic mark III newbuild solution up to 5mtpa'), but the project remains pre-FID as of this research (August 2026) with no publicly disclosed generation-system specifics. A January 2026 Chevron/NewMed FID was for expanding Leviathan's platform production capacity to serve the Israel-Egypt pipeline gas deal, NOT for the FLNG facility itself — the standalone FLNG project appears to still be in limbo.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "LNG Prime (2023) and Energy Voice (2023, Wayback-verified) both report the design-concept confirmation and pre-FEED budget approval without generation-system detail; MEES (Jan 2026) confirms the subsequent FID covered platform production expansion for pipeline export via the Israel-Egypt deal, not the FLNG facility. No source found (independent or otherwise) describes power-generation equipment for this specific project; as a moored offshore FLNG vessel with no grid access it would, by class norm, require self-generation (all built Golar FLNG units — Hilli Episeyo, Gimi, Fuji — use Baker Hughes LM2500-family gas turbines), but that is a class-level prior, not a documented finding tied to this specific, still-undesigned vessel.",
+    "refs": [
+      "https://lngprime.com/europe/israels-newmed-energy-keen-to-develop-leviathan-flng-project/67243/",
+      "https://www.energyvoice.com/oilandgas/middle-east/lng-middle-east/484687/leviathan-newmed-feed-lng/",
+      "https://www.mees.com/2026/1/16/oil-gas/leviathan-expansion-fid-approved/15a124d0-f2e3-11f0-8683-8751df214f6d"
+    ],
+    "verification_log": [
+      {"url": "https://lngprime.com/europe/israels-newmed-energy-keen-to-develop-leviathan-flng-project/67243/", "tokens": ["Leviathan"], "result": "PASS", "note": "design concept / FLNG pursuit"},
+      {"url": "https://www.energyvoice.com/oilandgas/middle-east/lng-middle-east/484687/leviathan-newmed-feed-lng/", "tokens": ["FEED"], "result": "PASS", "note": "bot-blocked (403); verified via Wayback snapshot 20250811210035"},
+      {"url": "https://www.mees.com/2026/1/16/oil-gas/leviathan-expansion-fid-approved/15a124d0-f2e3-11f0-8683-8751df214f6d", "tokens": ["FID"], "result": "PASS", "note": "Jan 2026 FID is for platform production expansion, not FLNG"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT prior supplied for this terminal.",
+    "gogpt_candidate": "MAYBE",
+    "gogpt_candidate_basis": "If/when this FLNG proceeds to FID with a Golar-family vessel, it would almost certainly carry gas-turbine generation per Golar's standard FLNG design (as used on Hilli, Gimi, and Fuji), but no nameplate or even a firm vessel type is publicly attached to this specific project yet.",
+    "status_or_other_findings": "January 2026: Chevron/NewMed took FID on a separate $2.36bn Leviathan platform-production expansion (to 2.1 bcfd by 2029) to serve a 130.9 bcm Israel-Egypt gas export deal — this is a pipeline/production expansion, not the FLNG project, and should not be read as FLNG progress.",
+    "notes": "Genuinely pre-design: unlike Tamar (which reached a real Pangea/Daewoo FEED), NewMed FLNG has only a 'confirmed design concept' with no vessel or generation specifics published. INSUFFICIENT rather than a screen, since this is an active, well-funded proposed project still working toward FID, not a dead one."
+  },
+  {
+    "terminal": "Tamar FLNG Terminal",
+    "terminal_id": "T100000130590",
+    "country": "Israel",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "red",
+    "captive_summary": "Proposed (now presumed-cancelled) self-contained, permanently-moored FLNG export vessel ~90 km/60 miles offshore, sized ~3-3.4 mtpa, based on a 'Daewoo home-made FLNG design.' Noble/Isramco/Delek/Dor Gas awarded a genuine FEED contract to Pangea LNG (a Daewoo/Next Decade/D&H Solutions JV) in December 2012, targeting FEED completion and FID by mid/second-half 2013 — but no FID was ever announced, there have been no project updates in years, and the project is presumed dead. No source found discloses the vessel's power-generation system.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Offshore Magazine ('Tamar FLNG project enters FEED phase') and 2B1st Consulting ('Noble awards Tamar FLNG FEED contract to Pangea LNG') both confirm the December 2012 FEED award to Pangea LNG for a permanently-moored, self-contained liquefaction and storage vessel; neither, nor any other source found, describes the generation package (turbine make/model, MW, or fuel handling) for the design. As a moored, off-grid facility it would necessarily have been designed with on-site power generation, but that generic engineering necessity is not the same as a documented finding for this specific vessel's design.",
+    "electric_mw_note": "",
+    "refs": [
+      "https://www.offshore-mag.com/field-development/article/16784740/tamar-flng-project-enters-feed-phase",
+      "https://2b1stconsulting.com/noble-awards-tamar-flng-feed-contract-to-pangea-lng/"
+    ],
+    "verification_log": [
+      {"url": "https://www.offshore-mag.com/field-development/article/16784740/tamar-flng-project-enters-feed-phase", "tokens": ["FEED", "Pangea"], "result": "PASS", "note": "FEED award confirmation"},
+      {"url": "https://2b1stconsulting.com/noble-awards-tamar-flng-feed-contract-to-pangea-lng/", "tokens": ["Pangea", "FEED"], "result": "PASS", "note": "FEED award confirmation, second independent source"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT prior supplied for this terminal.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No generating plant was ever designed publicly, and the project is presumed dead with no FID reached.",
+    "status_or_other_findings": "No development updates found since the 2012-2013 FEED period; project presumed cancelled/abandoned, consistent with GEM's 'cancelled, inferred 4y' substatus.",
+    "notes": "Distinguish from Eilat: Tamar DID reach a real, contracted FEED study (unlike Eilat's conceptual-only proposal), so this is INSUFFICIENT (design existed but its power-generation content was never published) rather than SCREENED (no design ever existed). Per SOP, a cancelled project whose design is documented to include captive power would be a YES on design — but no source establishes that the Pangea/Daewoo FEED's generation content was ever made public, so the honest call is INSUFFICIENT, not YES."
+  },
+  {
+    "terminal": "Beddawi FSRU",
+    "terminal_id": "T100000130963",
+    "country": "Lebanon",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "Direction-test NO: Beddawi was one of Lebanon's Ministry of Energy and Water's planned FSRUs (2013 World Bank concept: located 1.7 km off Beddawi, ~3.5 mtpa), explicitly designed as import/regasification/storage infrastructure that pipes gas ~2.5 km to a gas terminal feeding the existing Beddawi/Deir Ammar power complex (465 MW at the time, plus planned expansions), and via the wider coastal 'Gasyle 2' pipeline to other Lebanese power stations. The FSRU itself carries no generation package in any source found — its whole function is fuel supply to power plants it does not own or co-locate with as a captive asset.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "The Edge Malaysia (Petronas shortlist article): describes all three original Ministry FSRUs (Beddawi, Selaata, Zahrani) as vessels where LNG 'is re-converted into gas and piped to power plants and other users' — explicitly a fuel-supply, not generation, function; MEES (2019, 'Lebanon Power Overhaul Gathers Pace'): confirms the Energy Ministry's FSRUs were built 'to supply gas to the grid' via a shared coastal pipeline network feeding multiple CCGT plants, 'rather than each FSRU having dedicated generation capacity.'",
+    "refs": [
+      "https://theedgemalaysia.com/article/petronas-shortlisted-us12-bil-lebanon-fsru-job",
+      "https://www.mees.com/2019/3/15/geopolitical-risk/lebanon-power-overhaul-gathers-pace/dd9af210-473b-11e9-a45f-894e22a438ed"
+    ],
+    "verification_log": [
+      {"url": "https://theedgemalaysia.com/article/petronas-shortlisted-us12-bil-lebanon-fsru-job", "tokens": ["piped to power plants"], "result": "PASS", "note": "names Beddawi, Selaata, Zahrani; direction-test language"},
+      {"url": "https://www.mees.com/2019/3/15/geopolitical-risk/lebanon-power-overhaul-gathers-pace/dd9af210-473b-11e9-a45f-894e22a438ed", "tokens": ["supply gas to the grid"], "result": "PASS", "note": "'rather than each FSRU having dedicated generation capacity'"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT prior supplied for this terminal in the worklist (power_plants_supplied field is blank in the export, but multiple independent sources confirm Beddawi's design purpose was feeding the adjacent Beddawi/Deir Ammar power complex).",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Not a gas power station in its own right; a fuel-supply FSRU with no on-site generation ever designed or built.",
+    "status_or_other_findings": "Project stalled for years amid Lebanon's economic crisis; the Ministry's newer effort has consolidated around the World Bank/IFC-backed Deir Ammar FSRU (see that terminal's entry) rather than reviving a standalone Beddawi FSRU.",
+    "notes": "PowerPlantsSupplied case: Beddawi FSRU was designed to feed the Beddawi/Deir Ammar Combined Cycle Power Plant (currently EDL-owned, YTL-operated, primarily diesel with gas-switching capability) — flag for a PowerPlantsSupplied entry in a different batch, not CaptiveGasPower."
+  },
+  {
+    "terminal": "Deir Ammar FSRU",
+    "terminal_id": "T100001048245",
+    "country": "Lebanon",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "Direction-test NO: the currently-active Lebanon Gas-to-Power project (World Bank/IFC-backed, EOI tenders published from June 2025) pairs a new Deir Ammar FSRU with the modernisation of the existing 465 MW Deir Ammar I power plant and a new 825 MW Deir Ammar II combined-cycle plant. The FSRU's stated role is only to 'import, store and convert liquefied natural gas into fuel' for these two separate, land-based generating assets — no on-site generation is part of the FSRU's own design in any source found.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "AGBI (Nov 2025, 'World Bank to advise Lebanon on power generation'): 'The agreement supports the development of a FSRU to import, store and convert liquefied natural gas into fuel... the project also includes the modernisation of the 465 megawatt Deir Ammar I power plant... [and] Deir Ammar II' (825 MW new CCGT) — explicitly separates the FSRU (fuel supply) from the generating assets it feeds; MEES (2019) corroborates the general Ministry design pattern of FSRUs feeding a shared coastal pipeline network 'rather than each FSRU having dedicated generation capacity.'",
+    "refs": [
+      "https://www.agbi.com/energy/2025/11/world-bank-to-advise-lebanon-on-power-generation/",
+      "https://www.mees.com/2019/3/15/geopolitical-risk/lebanon-power-overhaul-gathers-pace/dd9af210-473b-11e9-a45f-894e22a438ed"
+    ],
+    "verification_log": [
+      {"url": "https://www.agbi.com/energy/2025/11/world-bank-to-advise-lebanon-on-power-generation/", "tokens": ["import, store and convert"], "result": "PASS", "note": "FSRU role explicitly fuel-supply, separate from Deir Ammar I/II plants"},
+      {"url": "https://www.mees.com/2019/3/15/geopolitical-risk/lebanon-power-overhaul-gathers-pace/dd9af210-473b-11e9-a45f-894e22a438ed", "tokens": ["supply gas to the grid"], "result": "PASS", "note": "general Ministry FSRU design pattern"}
+    ],
+    "gogpt_prior_assessment": "GOGPT's 'Deir Ammar power plant' (955 MW, 0.32 km away) is the existing/planned Deir Ammar I+II generating complex the FSRU is explicitly designed to supply (per AGBI/IFC), i.e. a real gas power station but the SUPPLIED plant, not this terminal's captive plant — a textbook PowerPlantsSupplied relationship, correctly already flagged in the worklist's power_plants_supplied field.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "GOGPT record for 'Deir Ammar power plant' already exists; it is the supplied plant, not captive to the terminal.",
+    "status_or_other_findings": "This is the most active of the four Lebanese projects: World Bank/IFC published EOI tenders (legal, environmental & social, technical consultants) from June 2025 for a Lebanon Gas-to-Power project centered on this FSRU + Deir Ammar I modernisation + Deir Ammar II new-build.",
+    "notes": "PowerPlantsSupplied case, already correctly reflected in the worklist's power_plants_supplied field ('Deir Ammar Power Plant'). No captive power design found or expected given the project's explicit fuel-supply framing."
+  },
+  {
+    "terminal": "Selaata FSRU",
+    "terminal_id": "T100000130964",
+    "country": "Lebanon",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "Direction-test NO: Selaata was planned as an import/regas FSRU designed to feed the separate, proposed Selaata IPP (Independent Power Producer) plant — a 750 MW CCGT project developed under Lebanon's IPP scheme, now shelved on land-appropriation grounds. The two are distinct projects (fuel-supply vessel vs. land-based generator); no source describes on-site generation as part of the FSRU's own design.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "The Edge Malaysia: names Selaata among the three Ministry FSRUs whose LNG 'is re-converted into gas and piped to power plants' (existing plants plus 1,000-1,200 MW of planned generation cited for the Selaata/Beddawi area); DMS Projects (Ministry of Energy and Water project database): confirms the Selaata Power Plant is tracked as a separate 'Combined Cycle Gas Turbine (CCGT) power plant with a capacity of 750 megawatts' developed 'under the Independent Power Production (IPP) scheme' — i.e. a distinct generating asset from the FSRU.",
+    "refs": [
+      "https://theedgemalaysia.com/article/petronas-shortlisted-us12-bil-lebanon-fsru-job",
+      "https://www.dmsprojects.net/lebanon/projects/ministry-of-energy-and-water-selaata-750-mw-power-plant/PRJ00026419"
+    ],
+    "verification_log": [
+      {"url": "https://theedgemalaysia.com/article/petronas-shortlisted-us12-bil-lebanon-fsru-job", "tokens": ["piped to power plants"], "result": "PASS", "note": "names Selaata; direction-test language"},
+      {"url": "https://www.dmsprojects.net/lebanon/projects/ministry-of-energy-and-water-selaata-750-mw-power-plant/PRJ00026419", "tokens": ["Selaata", "750"], "result": "PASS", "note": "Selaata Power Plant is a separate 750 MW CCGT IPP project"}
+    ],
+    "gogpt_prior_assessment": "GOGPT's 'Salaata IPP power plant' (825 MW per GOGPT vs. ~750-550 MW per other sources — figures vary by planning phase, but consistently describing the same shelved land-based CCGT IPP project) is the SUPPLIED plant the Selaata FSRU was designed to feed, not this terminal's captive plant, matching the worklist's power_plants_supplied field.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "GOGPT record for the Salaata IPP power plant already exists; it is the supplied plant, not captive to the terminal.",
+    "status_or_other_findings": "Both the Selaata FSRU and the Selaata IPP power plant are currently shelved; Cabinet objections centered on costly land appropriation for the IPP plant.",
+    "notes": "PowerPlantsSupplied case, matching the worklist's power_plants_supplied field ('Selaata Power Plant'). No captive power design found or expected."
+  },
+  {
+    "terminal": "Zahrani FSRU",
+    "terminal_id": "T100000130965",
+    "country": "Lebanon",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "Direction-test NO: Zahrani was planned as an import/regas FSRU designed to feed the existing Zahrani power plant (EDL-owned, dual-fuel diesel/gas CCGT, ~465-470 MW, commissioned 1998-2001), switching it from diesel to gas. No source describes on-site generation as part of the FSRU's own design; the project is presumed shelved, with Lebanon's current gas-to-power effort now centered on Deir Ammar instead.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "The Edge Malaysia: names Zahrani among the three Ministry FSRUs (\"near Tyre\") whose regasified LNG is 'piped to power plants,' with Zahrani's existing 465 MW plant cited as the offtake target for expansion; WorldPowerPlants.com confirms the Zahrani plant is an existing '470 MW Natural Gas Power Plant' (dual-fuel, diesel-primary) at Zahrani, i.e. a real, separately-owned (EDL) generating station distinct from any FSRU.",
+    "refs": [
+      "https://theedgemalaysia.com/article/petronas-shortlisted-us12-bil-lebanon-fsru-job",
+      "https://worldpowerplants.com/en-us/countries/lebanon/zahrani"
+    ],
+    "verification_log": [
+      {"url": "https://theedgemalaysia.com/article/petronas-shortlisted-us12-bil-lebanon-fsru-job", "tokens": ["piped to power plants"], "result": "PASS", "note": "names Zahrani; direction-test language"},
+      {"url": "https://worldpowerplants.com/en-us/countries/lebanon/zahrani", "tokens": ["Natural Gas"], "result": "PASS", "note": "Zahrani plant is an existing EDL-owned station"}
+    ],
+    "gogpt_prior_assessment": "GOGPT's 'Zahrani power plant' (1415 MW total incl. planned expansions, 1.38 km away) is the existing/planned EDL generating station the FSRU was designed to supply, not this terminal's captive plant, matching the worklist's power_plants_supplied field.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "GOGPT record for the Zahrani power plant already exists; it is the supplied plant, not captive to the terminal.",
+    "status_or_other_findings": "No development updates found for the Zahrani FSRU in several years; as of 2025 the project is presumed shelved in favour of the World Bank/IFC-backed Deir Ammar FSRU effort.",
+    "notes": "PowerPlantsSupplied case, matching the worklist's power_plants_supplied field ('Zahrani Power Plant'). No captive power design found or expected."
+  }
+]

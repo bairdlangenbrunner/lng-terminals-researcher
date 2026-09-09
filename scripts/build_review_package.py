@@ -54,12 +54,17 @@ Usage:
 import argparse
 import csv
 import json
+import os
 import re
 import sys
+import tempfile
 import unicodedata
 from datetime import date
 from pathlib import Path
 from urllib.parse import unquote
+
+from atomic_io import atomic_write_json
+from batch_contract import build_manifest
 
 # Owner equivalence is defined once in normalize.py and shared with report_diff so
 # both layers agree on what "the same owner" means (aliased to the established
@@ -514,14 +519,13 @@ from schema_constants import COMPUTED_COLUMNS, OUT_OF_SCOPE_COLUMNS, READ_ONLY_C
 
 
 def _safe_load(path, default=None):
-    """Load JSON; return default if not found or unparseable."""
+    """Load JSON; a missing optional input is empty, malformed JSON is fatal."""
     if not Path(path).exists():
         return default
     try:
-        return json.loads(Path(path).read_text())
+        return json.loads(Path(path).read_text(encoding="utf-8"))
     except json.JSONDecodeError as e:
-        print(f"  WARNING: {path} is not valid JSON ({e}); treating as empty", file=sys.stderr)
-        return default
+        raise ValueError(f"{path} is not valid JSON: {e}") from e
 
 
 # Known/required keys per staged-record type. A key outside `known` is never read by
@@ -536,6 +540,7 @@ STAGED_KEYS = {
             "field_name", "old_value", "new_value", "confidence", "source_tier",
             "ref_field", "ref_urls", "ref_url", "source_notes", "scope_note",
             "researcher_initials", "delete", "dropped_urls_dead",
+            "dropped_urls_banned",
             # captive-power (§9) review annotations riding on the update record
             "mechanical", "hybrid_basis", "captive_category", "hardware_summary",
             "gogpt_plant_id", "gogpt_plant", "gogpt_wiki_url",
@@ -670,14 +675,22 @@ STAGED_KEYS = {
 
 
 def _validate_records(label, records, spec=None):
-    """Warn (never fail) on unknown or missing-required keys in a staged list."""
+    """Report unknown keys, missing keys, and non-object staged records.
+
+    Returns the number of distinct problems found, so a caller that gates on
+    findings (scripts/staging_qc.py) can count them instead of only echoing them.
+    """
     spec = spec or STAGED_KEYS.get(label)
-    if not spec or not isinstance(records, list):
-        return
+    if not spec:
+        return 0
+    if not isinstance(records, list):
+        print(f"  GUARD: staged_{label}: expected a JSON list, got {type(records).__name__}")
+        return 1
     known, required = spec.get("known", set()), spec.get("required", set())
-    unknown, missing = {}, {}
+    unknown, missing, invalid = {}, {}, []
     for i, r in enumerate(records):
         if not isinstance(r, dict):
+            invalid.append(i)
             continue
         for k in r:
             if k not in known:
@@ -691,6 +704,10 @@ def _validate_records(label, records, spec=None):
     for k, idxs in sorted(missing.items()):
         print(f"  GUARD: staged_{label}: required key {k!r} blank/missing on "
               f"{len(idxs)} record(s) (first: #{idxs[0]})")
+    if invalid:
+        print(f"  GUARD: staged_{label}: {len(invalid)} record(s) are not JSON objects "
+              f"(first: #{invalid[0]})")
+    return len(unknown) + len(missing) + len(invalid)
 
 
 def _csv_header(gem_csv_path):
@@ -1075,13 +1092,20 @@ def _csv_ref_cells(gem_csv_path):
     return out
 
 
+# Query params that identify a session/tracker/view, never the document — stripped
+# before comparing two URLs for identity (mirrors audit_ref_drops' own list).
+_JUNK_QUERY_PARAMS = ("cf-view", "cf_view", "zephr_sso_ott", "utm_source", "utm_medium",
+                      "utm_campaign", "utm_term", "utm_content", "gclid", "fbclid")
+
+
 def warn_ref_url_drops(updates, gem_csv_path=None):
     """Non-blocking guard: flag any staged record whose citation set silently DROPS
     a URL already in GEM's ref cell. Ref edits use MERGE semantics (Update SOP §7.2a):
     new_value = every still-valid existing URL + additions — an existing citation is
     never dropped unless proven dead (bot-block 401/403 ≠ dead; verify via the
     url_verifier Wayback fallback). A deliberate drop must be declared by listing the
-    dead URL(s) in the record's `dropped_urls_dead` key; undeclared drops are the
+    dead URL(s) in the record's `dropped_urls_dead` key — or, for a banned-source
+    removal of a page that is still live, the `dropped_urls_banned` key; undeclared drops are the
     Al Zour / gulf-turkiye miss class (existing live refs overwritten by an agent's
     own replacement URLs). Warn-only, like every other staged-input guard.
 
@@ -1110,11 +1134,25 @@ def warn_ref_url_drops(updates, gem_csv_path=None):
         kept += [str(x) for x in (u.get("ref_urls") or [])]
         if u.get("ref_url"):
             kept.append(str(u.get("ref_url")))
+        # `dropped_urls_banned` declares the OTHER legitimate drop reason: a
+        # banned-source removal (abarrelfull, gem.wiki/globalenergymonitor.org).
+        # Those pages are often still live, so declaring them dead would be a
+        # false declaration (Update SOP §7.2) — they get their own key.
         declared = [str(x) for x in (u.get("dropped_urls_dead") or [])]
+        declared += [str(x) for x in (u.get("dropped_urls_banned") or [])]
 
         def _norm(x):
             x = x.strip().rstrip(",;").rstrip("/").lower()
-            return re.sub(r"^https?://(www\.)?", "", x)
+            x = re.sub(r"^https?://(www\.)?", "", x)
+            # A tracking/session/view param is not part of the document's address:
+            # `…/pointfortin/?cf-view` and `…/pointfortin/` are the same citation, so
+            # canonicalising one to the other is not a drop (2026-08-11 false positive).
+            if "?" in x:
+                base, _, qs = x.partition("?")
+                keep = [kv for kv in qs.split("&")
+                        if kv and not any(kv.startswith(j) for j in _JUNK_QUERY_PARAMS)]
+                x = base + ("?" + "&".join(keep) if keep else "")
+            return x.rstrip("/")
 
         def _path(x):
             n = _norm(x)
@@ -1136,8 +1174,9 @@ def warn_ref_url_drops(updates, gem_csv_path=None):
     if hits:
         n_urls = sum(len(us) for _, _, _, us in hits)
         print(f"  REF-DROP: {len(hits)} [ref] record(s) drop {n_urls} existing URL(s) without a "
-              "dropped_urls_dead declaration (merge semantics: keep every still-valid existing "
-              "URL; declare verified-dead ones — see scripts/audit_ref_drops.py):")
+              "dropped_urls_dead / dropped_urls_banned declaration (merge semantics: keep every "
+              "still-valid existing URL; declare verified-dead ones in dropped_urls_dead and "
+              "banned-source removals in dropped_urls_banned — see scripts/audit_ref_drops.py):")
         for tid, uid, fn, us in hits[:15]:
             for x in us:
                 print(f"    {tid}/{uid} {fn}: drops {x[:90]}")
@@ -3571,15 +3610,47 @@ def main():
     p.add_argument("--recon-countries", default=None,
                    help="Comma-separated country list scoping the giignl_recon tab. Default: the "
                         "`countries` list in <inputs-dir>/meta.json.")
+    p.add_argument("--allow-warnings", action="store_true",
+                   help="Build despite staged-input guard findings (emergency/diagnostic use only)")
+    p.add_argument("--force", action="store_true",
+                   help="Replace an existing output and manifest; outputs are immutable by default")
+    p.add_argument("--no-manifest", action="store_true",
+                   help="Do not write the reproducibility manifest beside the workbook")
     args = p.parse_args()
 
     inputs_dir = Path(args.inputs_dir)
+    output = Path(args.output)
+    manifest_path = Path(str(output) + ".manifest.json")
+    if output.exists() and not args.force:
+        p.error(f"output already exists: {output} (choose a new batch stamp or pass --force)")
+    if not args.no_manifest and manifest_path.exists() and not args.force:
+        p.error(f"manifest already exists: {manifest_path} (choose a new batch stamp or pass --force)")
+    if not inputs_dir.is_dir():
+        p.error(f"inputs directory not found: {inputs_dir}")
+
+    gate_findings = 0
+
+    def validate(label, records, spec=None):
+        nonlocal gate_findings
+        gate_findings += _validate_records(label, records, spec=spec)
+
+    def guard(fn, *values):
+        nonlocal gate_findings
+        findings = fn(*values)
+        gate_findings += len(findings or [])
+        return findings
+
     checked_roster = []
-    if args.checked_roster and Path(args.checked_roster).exists():
+    if args.checked_roster and not Path(args.checked_roster).exists():
+        p.error(f"checked roster not found: {args.checked_roster}")
+    if args.checked_roster:
         try:
             checked_roster = json.loads(Path(args.checked_roster).read_text(encoding="utf-8"))
-        except Exception as e:
-            print(f"  WARN: could not read --checked-roster {args.checked_roster}: {e}")
+        except (OSError, json.JSONDecodeError) as e:
+            p.error(f"could not read --checked-roster {args.checked_roster}: {e}")
+        if not isinstance(checked_roster, list) or not all(
+                isinstance(c, str) and c.strip() for c in checked_roster):
+            p.error("--checked-roster must contain a JSON list of non-empty country names")
     wb = openpyxl.Workbook()
     wb.remove(wb.active)  # remove default empty sheet
 
@@ -3590,28 +3661,28 @@ def main():
     country_breakdown = None
     if args.mode == "update":
         updates = _safe_load(inputs_dir / "staged_updates.json", default=[])
-        _validate_records("updates", updates)
-        warn_duplicate_giignl_refs(updates)
-        warn_ref_url_drops(updates, args.gem_csv)
+        validate("updates", updates)
+        guard(warn_duplicate_giignl_refs, updates)
+        guard(warn_ref_url_drops, updates, args.gem_csv)
         timeline = _safe_load(inputs_dir / "staged_status_timeline.json", default=[])
-        _validate_records("status_timeline", timeline)
+        validate("status_timeline", timeline)
         entity_adds = _safe_load(inputs_dir / "staged_entity_additions.json", default=[])
-        _validate_records("entity_additions", entity_adds)
+        validate("entity_additions", entity_adds)
         stale = _safe_load(inputs_dir / "stale_sweep.json", default={"flagged_units": []})
         country_notes = _safe_load(inputs_dir / "staged_country_notes.json", default=[])
-        _validate_records("country_notes", country_notes)
+        validate("country_notes", country_notes)
         qa = _safe_load(inputs_dir / "staged_qa_review.json", default=[])
-        _validate_records("qa_review", qa)
+        validate("qa_review", qa)
         wiki = _safe_load(inputs_dir / "staged_wiki_updates.json", default=[])
-        _validate_records("wiki_updates", wiki)
-        warn_bare_domain_urls("updates", updates)
-        warn_banned_domain_urls("updates", updates)
-        warn_bare_domain_urls("wiki_updates", wiki)
-        warn_banned_domain_urls("wiki_updates", wiki)
-        warn_bare_domain_urls("qa_review", qa)
-        warn_banned_domain_urls("qa_review", qa)
+        validate("wiki_updates", wiki)
+        guard(warn_bare_domain_urls, "updates", updates)
+        guard(warn_banned_domain_urls, "updates", updates)
+        guard(warn_bare_domain_urls, "wiki_updates", wiki)
+        guard(warn_banned_domain_urls, "wiki_updates", wiki)
+        guard(warn_bare_domain_urls, "qa_review", qa)
+        guard(warn_banned_domain_urls, "qa_review", qa)
         fsru = _safe_load(inputs_dir / "fsru_sync.json", default={"mode": "skipped", "_skip_reason": "not run"})
-        _validate_records("fsru_sync", fsru.get("matched_pairs", []) if isinstance(fsru, dict) else [])
+        validate("fsru_sync", fsru.get("matched_pairs", []) if isinstance(fsru, dict) else fsru)
         # Optional scope for the all_fields-CSV-shaped sheet: a list of terminal_ids
         # (or {"terminal_ids": [...]}) whose unit-rows should ALL appear even if a
         # given unit had no change this batch (e.g. a full-country pass).
@@ -3621,11 +3692,11 @@ def main():
         # Captive-power cross-tracker (§9) review-context sheets — each emitted only
         # when its JSON input exists, so normal Update batches never gain these tabs.
         captive_priors = _safe_load(inputs_dir / "captive_terminal_first.json", default=[])
-        _validate_records("captive_terminal_first", captive_priors)
+        validate("captive_terminal_first", captive_priors)
         captive_neighbors = _safe_load(inputs_dir / "captive_neighboring_plants.json", default=[])
-        _validate_records("captive_neighboring_plants", captive_neighbors)
+        validate("captive_neighboring_plants", captive_neighbors)
         captive_candidates = _safe_load(inputs_dir / "captive_gogpt_candidates.json", default=[])
-        _validate_records("captive_gogpt_candidates", captive_candidates)
+        validate("captive_gogpt_candidates", captive_candidates)
 
         inputs_summary = {
             "updates": len(updates),
@@ -3712,30 +3783,30 @@ def main():
         # what build_new_terminals_sheet itself reads) — built dynamically rather
         # than as a static STAGED_KEYS entry so a real CSV header never false-warns.
         _new_terminal_csv_cols = _csv_header(args.gem_csv) or NEW_TERMINALS_FALLBACK_HEADERS
-        _validate_records("new_terminals", new_terms, spec={
+        validate("new_terminals", new_terms, spec={
             "known": set(_new_terminal_csv_cols) | set(NEW_TERMINAL_META_COLS) | {"confidence_per_field"},
             "required": {"TerminalName"},
         })
         new_units = _safe_load(inputs_dir / "staged_new_units.json", default=[])
-        _validate_records("new_units", new_units)
+        validate("new_units", new_units)
         monitor = _safe_load(inputs_dir / "staged_monitor_list.json", default=[])
-        _validate_records("monitor_list", monitor)
+        validate("monitor_list", monitor)
         prior_monitor = _safe_load(inputs_dir / "prior_monitor_list.json", default=[])
         # Discovery shows its own pass's qa and entity additions (`*.disc.qa.json` /
         # `*.disc.entity.json` → these files); the update workbook shows the
         # update-pass equivalents. New-terminal sponsors ride with the discovery book.
         qa = _safe_load(inputs_dir / "staged_qa_review_discovery.json", default=[])
-        _validate_records("qa_review", qa)
+        validate("qa_review", qa)
         entity_adds = _safe_load(inputs_dir / "staged_entity_additions_discovery.json", default=[])
-        _validate_records("entity_additions", entity_adds)
-        warn_bare_domain_urls("new_terminals", new_terms)
-        warn_banned_domain_urls("new_terminals", new_terms)
-        warn_bare_domain_urls("new_units", new_units)
-        warn_banned_domain_urls("new_units", new_units)
-        warn_bare_domain_urls("monitor_list", monitor)
-        warn_banned_domain_urls("monitor_list", monitor)
-        warn_bare_domain_urls("qa_review", qa)
-        warn_banned_domain_urls("qa_review", qa)
+        validate("entity_additions", entity_adds)
+        guard(warn_bare_domain_urls, "new_terminals", new_terms)
+        guard(warn_banned_domain_urls, "new_terminals", new_terms)
+        guard(warn_bare_domain_urls, "new_units", new_units)
+        guard(warn_banned_domain_urls, "new_units", new_units)
+        guard(warn_bare_domain_urls, "monitor_list", monitor)
+        guard(warn_banned_domain_urls, "monitor_list", monitor)
+        guard(warn_bare_domain_urls, "qa_review", qa)
+        guard(warn_banned_domain_urls, "qa_review", qa)
 
         # monitor_list rolls the GLOBAL cross-region store forward, but a scoped
         # batch's workbook should list only its own countries; filter the displayed
@@ -3773,11 +3844,15 @@ def main():
         if not diff_path.exists() and (inputs_dir / "giignl_diff.json").exists():
             diff_path = inputs_dir / "giignl_diff.json"
         diff = _safe_load(diff_path, default={})
+        if not diff:
+            print(f"  GUARD: reconciliation diff is missing or empty: {diff_path}")
+            gate_findings += 1
         # Agent-authored GEM-vs-GIIGNL verdicts for the rows the deterministic pass
         # marks NEEDS RESEARCH; merged into audit_operating's suggested_resolution,
         # and (resolution == "edit") materialized as resolved rows in edits_to_gem.
         recon_verdicts = _safe_load(inputs_dir / "staged_recon_verdicts.json", default=[])
         qa = _safe_load(inputs_dir / "staged_qa_review.json", default=[])
+        validate("qa_review", qa)
         narrative = _safe_load(inputs_dir / "giignl_narrative_findings.json", default={})
         narrative_findings = narrative.get("findings", []) if isinstance(narrative, dict) else []
         # entity_additions in reconciliation mode = any staged entities plus the
@@ -3785,6 +3860,7 @@ def main():
         # acquirer like Stonepeak goes through the dup-check path). name_changes
         # feed a separate name_reconciliation sheet.
         staged_entity_adds = _safe_load(inputs_dir / "staged_entity_additions.json", default=[])
+        validate("entity_additions", staged_entity_adds)
         narrative_entities = narrative_owner_entities(narrative_findings)
         entity_adds = staged_entity_adds + narrative_entities
         name_change_count = _count_narrative_name_changes(narrative_findings)
@@ -3858,6 +3934,17 @@ def main():
         if qa:
             build_qa_review_sheet(wb, qa)
 
+    # The paste-view builders also reject structurally dangerous writes. They run
+    # after record validation because these checks depend on the live CSV header.
+    gate_findings += len(_BAD_VALUE_WRITES) + len(_BAD_REF_TARGETS)
+    if gate_findings and not args.allow_warnings:
+        print(f"\nBUILD BLOCKED: {gate_findings} guard finding(s). Fix the staged inputs or "
+              "use --allow-warnings for an explicitly exceptional build.", file=sys.stderr)
+        return 2
+    if gate_findings:
+        print(f"\nWARNING OVERRIDE: building with {gate_findings} guard finding(s).",
+              file=sys.stderr)
+
     # Keep the bulky GIIGNL reference tabs at the very end of the workbook, after
     # the actionable + standard sheets (user preference) — applied whenever present,
     # in any mode. README stays first (it is never in this set).
@@ -3872,14 +3959,45 @@ def main():
     if country_breakdown:
         _append_country_breakdown(wb, *country_breakdown)
 
-    Path(args.output).parent.mkdir(parents=True, exist_ok=True)
-    wb.save(args.output)
+    output.parent.mkdir(parents=True, exist_ok=True)
+    fd, tmp_name = tempfile.mkstemp(prefix=f".{output.stem}.", suffix=".xlsx", dir=output.parent)
+    os.close(fd)
+    try:
+        wb.save(tmp_name)
+        os.replace(tmp_name, output)
+    except BaseException:
+        try:
+            os.unlink(tmp_name)
+        except FileNotFoundError:
+            pass
+        raise
+
+    if not args.no_manifest:
+        manifest_inputs = list(inputs_dir.glob("*.json"))
+        for candidate in (args.gem_csv, args.extracted_csv, args.checked_roster):
+            if candidate and Path(candidate).is_file():
+                manifest_inputs.append(Path(candidate))
+        if args.recon_inputs_dir:
+            manifest_inputs.extend(Path(args.recon_inputs_dir).glob("*.json"))
+        manifest = build_manifest(
+            output=output, mode=args.mode, inputs=manifest_inputs, command=sys.argv,
+        )
+        manifest["guard_findings"] = gate_findings
+        manifest["warnings_overridden"] = bool(gate_findings and args.allow_warnings)
+        atomic_write_json(manifest_path, manifest)
     print(f"\n  Wrote {args.output}")
     print(f"  Sheets: {', '.join(wb.sheetnames)}")
     print(f"  Input summary:")
     for k, v in inputs_summary.items():
         print(f"    {k:35} {v}")
+    if not args.no_manifest:
+        print(f"  Manifest: {manifest_path}")
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        sys.exit(main())
+    except ValueError as exc:
+        print(f"ERROR: {exc}", file=sys.stderr)
+        sys.exit(2)

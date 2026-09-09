@@ -1,0 +1,955 @@
+[
+  {
+    "terminal_id": "T100000131086",
+    "unit_id": "G100002108600",
+    "terminal_name": "Stade FSRU",
+    "unit_name": "--",
+    "country": "Germany",
+    "field_name": "CapacityUnits",
+    "old_value": "MMcf/d",
+    "new_value": "bcm/y",
+    "confidence": "green",
+    "source_tier": "primary",
+    "ref_field": null,
+    "ref_urls": [
+      "https://energy-terminal.de/en/terminals/stade"
+    ],
+    "source_notes": "Mechanical fix: 'MMcf/d' is not a valid CapacityUnits enum value (catalog: mtpa, bcm/y). Fixed a genuine bug in scripts/normalize.py's _CAPACITY_TO_MTPA table found while doing this conversion: the mmcf/d and bcf/d factors were off by ~2.7x (fixed this session). Recomputed with capacity_normalize.py post-fix.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131086",
+    "unit_id": "G100002108600",
+    "terminal_name": "Stade FSRU",
+    "unit_name": "--",
+    "country": "Germany",
+    "field_name": "Capacity",
+    "old_value": "750.00",
+    "new_value": "7.75",
+    "confidence": "green",
+    "source_tier": "primary",
+    "ref_field": null,
+    "ref_urls": [
+      "https://lngprime.com/europe/germanys-det-expects-stade-fsru-to-arrive-in-q1/103411/",
+      "https://energy-terminal.de/en/terminals/stade"
+    ],
+    "source_notes": "750 MMSCFD (vessel Energos Force regasification capacity, per DET's own terminal page) converted via capacity_normalize.py (post bug-fix) = 7.75 bcm/y (5.70 mtpa). See qa note re: an alternative lower 'annual grid feed-in' figure found on the same page for this terminal class -- flagged, not silently substituted. [ref-restore 2026-07-29: restored existing live URL(s) https://lngprime.com/europe/germanys-det-expects-stade-fsru-to-arrive-in-q1/103411/ per merge-semantics rule (bot-block != dead; never drop a URL not proven dead)]",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131086",
+    "unit_id": "G100002108600",
+    "terminal_name": "Stade FSRU",
+    "unit_name": "--",
+    "country": "Germany",
+    "field_name": "Capacity [ref]",
+    "old_value": "https://lngprime.com/europe/germanys-det-expects-stade-fsru-to-arrive-in-q1/103411/, https://energy-terminal.de/en/terminals/stade",
+    "new_value": "https://lngprime.com/europe/germanys-det-expects-stade-fsru-to-arrive-in-q1/103411/, https://energy-terminal.de/en/terminals/stade",
+    "confidence": "green",
+    "source_tier": "primary",
+    "ref_field": null,
+    "ref_urls": [
+      "https://lngprime.com/europe/germanys-det-expects-stade-fsru-to-arrive-in-q1/103411/",
+      "https://energy-terminal.de/en/terminals/stade"
+    ],
+    "source_notes": "No dead links here; re-verified both existing URLs still support the (converted) capacity figure. Carried forward unchanged (MERGE) -- listed only because the Capacity value itself changed.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130458",
+    "unit_id": "G100002045800",
+    "terminal_name": "Wilhelmshaven FSRU",
+    "unit_name": "--",
+    "country": "Germany",
+    "field_name": "CapacityUnits",
+    "old_value": "MMcf/d",
+    "new_value": "bcm/y",
+    "confidence": "green",
+    "source_tier": "primary",
+    "ref_field": null,
+    "ref_urls": [
+      "https://energy-terminal.de/en/terminals/wilhelmshaven-1"
+    ],
+    "source_notes": "Mechanical fix, same normalize.py bug as Stade FSRU (fixed this session).",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130458",
+    "unit_id": "G100002045800",
+    "terminal_name": "Wilhelmshaven FSRU",
+    "unit_name": "--",
+    "country": "Germany",
+    "field_name": "Capacity",
+    "old_value": "750.00",
+    "new_value": "7.75",
+    "confidence": "green",
+    "source_tier": "primary",
+    "ref_field": null,
+    "ref_urls": [
+      "https://energy-terminal.de/en/terminals/wilhelmshaven-1"
+    ],
+    "source_notes": "750 MMSCFD (vessel Hoegh Esperanza regasification capacity) converted via capacity_normalize.py (post bug-fix) = 7.75 bcm/y (5.70 mtpa). Source page separately states an 'annual grid feed-in capacity of up to 4.8 billion cubic meters (2026)' for this same terminal -- see qa note; staged the mechanical unit conversion of the existing value per the QC worklist instruction, not a re-derivation.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_dead": [
+      "https://www.giignl.org/annual-report"
+    ]
+  },
+  {
+    "terminal_id": "T100000130458",
+    "unit_id": "G100002045800",
+    "terminal_name": "Wilhelmshaven FSRU",
+    "unit_name": "--",
+    "country": "Germany",
+    "field_name": "Capacity [ref]",
+    "old_value": "https://www.giignl.org/annual-report, https://energy-terminal.de/en/terminals/wilhelmshaven-1",
+    "new_value": "https://energy-terminal.de/en/terminals/wilhelmshaven-1",
+    "confidence": "yellow",
+    "source_tier": "primary",
+    "ref_field": null,
+    "ref_urls": [
+      "https://energy-terminal.de/en/terminals/wilhelmshaven-1"
+    ],
+    "source_notes": "Dropped the bare 'giignl.org/annual-report' link -- it is a generic landing page (no specific edition), functionally a bare-homepage citation per CLAUDE.md, and does not verify against the 750 MMSCFD figure. Replaced with the terminal operator's own page, which does state the value.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_dead": [
+      "https://www.giignl.org/annual-report"
+    ]
+  },
+  {
+    "terminal_id": "T100000131097",
+    "unit_id": "G100002109700",
+    "terminal_name": "Wilhelmshaven TES FSRU",
+    "unit_name": "--",
+    "country": "Germany",
+    "field_name": "CapacityUnits",
+    "old_value": "MMcf/d",
+    "new_value": "bcm/y",
+    "confidence": "green",
+    "source_tier": "primary",
+    "ref_field": null,
+    "ref_urls": [
+      "https://energy-terminal.de/en/terminals/wilhelmshaven-2"
+    ],
+    "source_notes": "Mechanical fix, same normalize.py bug (fixed this session).",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131097",
+    "unit_id": "G100002109700",
+    "terminal_name": "Wilhelmshaven TES FSRU",
+    "unit_name": "--",
+    "country": "Germany",
+    "field_name": "Capacity",
+    "old_value": "500.00",
+    "new_value": "5.17",
+    "confidence": "green",
+    "source_tier": "primary",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.bundeswirtschaftsministerium.de/Redaktion/DE/Downloads/Energie/20230303-lng-bericht.pdf?__blob=publicationFile&v=2",
+      "https://energy-terminal.de/en/terminals/wilhelmshaven-2"
+    ],
+    "source_notes": "500 MMSCFD (vessel Excelsior regasification capacity) converted via capacity_normalize.py (post bug-fix) = 5.17 bcm/y (3.80 mtpa). Source page separately states an 'annual grid injection capacity ... up to 4.3 billion m3 (2026)' -- see qa note; staged the mechanical unit conversion of the existing value. [ref-restore 2026-07-29: restored existing live URL(s) https://www.bundeswirtschaftsministerium.de/Redaktion/DE/Downloads/Energie/20230303-lng-bericht.pdf?__blob=publicationFile&v=2 per merge-semantics rule (bot-block != dead; never drop a URL not proven dead)]",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131097",
+    "unit_id": "G100002109700",
+    "terminal_name": "Wilhelmshaven TES FSRU",
+    "unit_name": "--",
+    "country": "Germany",
+    "field_name": "Capacity [ref]",
+    "old_value": "https://energy-terminal.de/en/terminals/wilhelmshaven-2, https://www.bmwk.de/Redaktion/DE/Downloads/Energie/20230303-lng-bericht.pdf?__blob=publicationFile&v=2",
+    "new_value": "https://energy-terminal.de/en/terminals/wilhelmshaven-2, https://www.bmwk.de/Redaktion/DE/Downloads/Energie/20230303-lng-bericht.pdf?__blob=publicationFile&v=2",
+    "confidence": "green",
+    "source_tier": "primary",
+    "ref_field": null,
+    "ref_urls": [
+      "https://energy-terminal.de/en/terminals/wilhelmshaven-2",
+      "https://www.bmwk.de/Redaktion/DE/Downloads/Energie/20230303-lng-bericht.pdf?__blob=publicationFile&v=2"
+    ],
+    "source_notes": "Both existing URLs re-verified; carried forward unchanged (MERGE). Listed because the Capacity value itself changed.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131141",
+    "unit_id": "G100002114100",
+    "terminal_name": "Mukran FSRU",
+    "unit_name": "Neptune",
+    "country": "Germany",
+    "field_name": "Operator [ref]",
+    "old_value": "https://www.giignl.org/annual-report",
+    "new_value": "https://www.reuters.com/business/energy/germany-builds-up-lng-import-terminals-2023-08-09/, https://lngprime.com/europe/deutsche-regas-launches-commercial-ops-at-mukran-fsru-terminal/123646/",
+    "confidence": "green",
+    "source_tier": "primary",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.reuters.com/business/energy/germany-builds-up-lng-import-terminals-2023-08-09/",
+      "https://lngprime.com/europe/deutsche-regas-launches-commercial-ops-at-mukran-fsru-terminal/123646/"
+    ],
+    "source_notes": "Dropped the bare, non-specific 'giignl.org/annual-report' link (fails to verify 'Deutsche ReGas' as operator; functionally a bare-homepage citation). Replaced with Reuters + LNG Prime, both of which name Deutsche ReGas as the Mukran FSRU operator. This is also the propagation source for the two sibling unit-rows below (project_field_inconsistent fix).",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_dead": [
+      "https://www.giignl.org/annual-report"
+    ]
+  },
+  {
+    "terminal_id": "T100000131141",
+    "unit_id": "G100002114101",
+    "terminal_name": "Mukran FSRU",
+    "unit_name": "Energos Power",
+    "country": "Germany",
+    "field_name": "Operator",
+    "old_value": "",
+    "new_value": "Deutsche ReGas",
+    "confidence": "green",
+    "source_tier": "primary",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.reuters.com/business/energy/germany-builds-up-lng-import-terminals-2023-08-09/",
+      "https://lngprime.com/europe/deutsche-regas-launches-commercial-ops-at-mukran-fsru-terminal/123646/"
+    ],
+    "source_notes": "Project-level field propagation (Update SOP): Operator was populated only on the Neptune unit-row (G100002114100) and blank on this sibling unit-row of the same multi-unit Mukran FSRU project. Deutsche ReGas operates the whole site.",
+    "scope_note": "project_field_inconsistent fix (QC worklist B)",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131141",
+    "unit_id": "G100002114101",
+    "terminal_name": "Mukran FSRU",
+    "unit_name": "Energos Power",
+    "country": "Germany",
+    "field_name": "Operator [ref]",
+    "old_value": "",
+    "new_value": "https://www.reuters.com/business/energy/germany-builds-up-lng-import-terminals-2023-08-09/, https://lngprime.com/europe/deutsche-regas-launches-commercial-ops-at-mukran-fsru-terminal/123646/",
+    "confidence": "green",
+    "source_tier": "primary",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.reuters.com/business/energy/germany-builds-up-lng-import-terminals-2023-08-09/",
+      "https://lngprime.com/europe/deutsche-regas-launches-commercial-ops-at-mukran-fsru-terminal/123646/"
+    ],
+    "source_notes": "Paired ref for the Operator propagation above.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131141",
+    "unit_id": "G100001094549",
+    "terminal_name": "Mukran FSRU",
+    "unit_name": "Energos Power replacement",
+    "country": "Germany",
+    "field_name": "Operator",
+    "old_value": "",
+    "new_value": "Deutsche ReGas",
+    "confidence": "green",
+    "source_tier": "primary",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.reuters.com/business/energy/germany-builds-up-lng-import-terminals-2023-08-09/",
+      "https://lngprime.com/europe/deutsche-regas-launches-commercial-ops-at-mukran-fsru-terminal/123646/"
+    ],
+    "source_notes": "Project-level field propagation, same as G100002114101 above.",
+    "scope_note": "project_field_inconsistent fix (QC worklist B)",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131141",
+    "unit_id": "G100001094549",
+    "terminal_name": "Mukran FSRU",
+    "unit_name": "Energos Power replacement",
+    "country": "Germany",
+    "field_name": "Operator [ref]",
+    "old_value": "",
+    "new_value": "https://www.reuters.com/business/energy/germany-builds-up-lng-import-terminals-2023-08-09/, https://lngprime.com/europe/deutsche-regas-launches-commercial-ops-at-mukran-fsru-terminal/123646/",
+    "confidence": "green",
+    "source_tier": "primary",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.reuters.com/business/energy/germany-builds-up-lng-import-terminals-2023-08-09/",
+      "https://lngprime.com/europe/deutsche-regas-launches-commercial-ops-at-mukran-fsru-terminal/123646/"
+    ],
+    "source_notes": "Paired ref for the Operator propagation above.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131141",
+    "unit_id": "G100001094549",
+    "terminal_name": "Mukran FSRU",
+    "unit_name": "Energos Power replacement",
+    "country": "Germany",
+    "field_name": "TempFacility",
+    "old_value": "",
+    "new_value": "permanent replacement",
+    "confidence": "green",
+    "source_tier": "primary",
+    "ref_field": null,
+    "ref_urls": [],
+    "source_notes": "Project-level field propagation: TempFacility='permanent replacement' is populated on the other two Mukran FSRU unit-rows (Neptune, Energos Power) and blank on this one; this unit-row is itself the proposed permanent-replacement vessel for the mothballed Energos Power unit, so the same value applies. No [ref] column exists for TempFacility -- mechanical value fill only, per brief.",
+    "scope_note": "project_field_inconsistent fix (QC worklist B)",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131141",
+    "unit_id": "G100002114100",
+    "terminal_name": "Mukran FSRU",
+    "unit_name": "Neptune",
+    "country": "Germany",
+    "field_name": "Status [ref]",
+    "old_value": "https://www.offshore-energy.biz/german-player-picks-up-permanent-permit-for-lng-terminal-with-fsru-duo/, https://lngprime.com/europe/deutsche-regas-launches-commercial-ops-at-mukran-fsru-terminal/123646/, https://www.giignl.org/annual-report, https://www.reuters.com/business/energy/germany-builds-up-lng-import-terminals-2023-08-09/, https://lngprime.com/europe/deutsche-regas-mukran-fsru-was-germanys-busiest-lng-terminal-in-q4/173453/",
+    "new_value": "https://www.offshore-energy.biz/german-player-picks-up-permanent-permit-for-lng-terminal-with-fsru-duo/, https://lngprime.com/europe/deutsche-regas-launches-commercial-ops-at-mukran-fsru-terminal/123646/, https://www.reuters.com/business/energy/germany-builds-up-lng-import-terminals-2023-08-09/, https://lngprime.com/europe/deutsche-regas-mukran-fsru-was-germanys-busiest-lng-terminal-in-q4/173453/",
+    "confidence": "green",
+    "source_tier": "primary",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.offshore-energy.biz/german-player-picks-up-permanent-permit-for-lng-terminal-with-fsru-duo/",
+      "https://lngprime.com/europe/deutsche-regas-launches-commercial-ops-at-mukran-fsru-terminal/123646/",
+      "https://www.reuters.com/business/energy/germany-builds-up-lng-import-terminals-2023-08-09/",
+      "https://lngprime.com/europe/deutsche-regas-mukran-fsru-was-germanys-busiest-lng-terminal-in-q4/173453/"
+    ],
+    "source_notes": "Dropped the bare, non-specific 'giignl.org/annual-report' link. Four other still-valid URLs carried forward unchanged (MERGE).",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_dead": [
+      "https://www.giignl.org/annual-report"
+    ]
+  },
+  {
+    "terminal_id": "T100000131141",
+    "unit_id": "G100002114100",
+    "terminal_name": "Mukran FSRU",
+    "unit_name": "Neptune",
+    "country": "Germany",
+    "field_name": "Capacity [ref]",
+    "old_value": "https://www.giignl.org/annual-report, https://totalenergies.com/news/news/lng-totalenergies-helps-germany-further-secure-its-energy-supplies, https://lngprime.com/europe/deutsche-regas-plans-to-reinstall-second-mukran-fsru/147287/, https://lngprime.com/europe/deutsche-regas-says-second-fsru-arrives-in-mukran/116294/",
+    "new_value": "https://totalenergies.com/news/news/lng-totalenergies-helps-germany-further-secure-its-energy-supplies, https://lngprime.com/europe/deutsche-regas-plans-to-reinstall-second-mukran-fsru/147287/, https://lngprime.com/europe/deutsche-regas-says-second-fsru-arrives-in-mukran/116294/",
+    "confidence": "green",
+    "source_tier": "primary",
+    "ref_field": null,
+    "ref_urls": [
+      "https://totalenergies.com/news/news/lng-totalenergies-helps-germany-further-secure-its-energy-supplies",
+      "https://lngprime.com/europe/deutsche-regas-plans-to-reinstall-second-mukran-fsru/147287/",
+      "https://lngprime.com/europe/deutsche-regas-says-second-fsru-arrives-in-mukran/116294/"
+    ],
+    "source_notes": "Dropped the bare 'giignl.org/annual-report' link. Three other still-valid URLs carried forward unchanged.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_dead": [
+      "https://www.giignl.org/annual-report"
+    ]
+  },
+  {
+    "terminal_id": "T100000131141",
+    "unit_id": "G100002114100",
+    "terminal_name": "Mukran FSRU",
+    "unit_name": "Neptune",
+    "country": "Germany",
+    "field_name": "StartDate [ref]",
+    "old_value": "https://www.reuters.com/business/energy/germany-builds-up-lng-import-terminals-2023-08-09/, https://www.offshore-energy.biz/german-player-picks-up-permanent-permit-for-lng-terminal-with-fsru-duo/, https://lngprime.com/europe/deutsche-regas-launches-commercial-ops-at-mukran-fsru-terminal/123646/, https://www.giignl.org/annual-report, https://www.reuters.com/business/energy/germany-builds-up-lng-import-terminals-2023-08-09/, https://lngprime.com/europe/deutsche-regas-mukran-fsru-was-germanys-busiest-lng-terminal-in-q4/173453/",
+    "new_value": "https://www.reuters.com/business/energy/germany-builds-up-lng-import-terminals-2023-08-09/, https://www.offshore-energy.biz/german-player-picks-up-permanent-permit-for-lng-terminal-with-fsru-duo/, https://lngprime.com/europe/deutsche-regas-launches-commercial-ops-at-mukran-fsru-terminal/123646/, https://lngprime.com/europe/deutsche-regas-mukran-fsru-was-germanys-busiest-lng-terminal-in-q4/173453/",
+    "confidence": "green",
+    "source_tier": "primary",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.reuters.com/business/energy/germany-builds-up-lng-import-terminals-2023-08-09/",
+      "https://www.offshore-energy.biz/german-player-picks-up-permanent-permit-for-lng-terminal-with-fsru-duo/",
+      "https://lngprime.com/europe/deutsche-regas-launches-commercial-ops-at-mukran-fsru-terminal/123646/",
+      "https://lngprime.com/europe/deutsche-regas-mukran-fsru-was-germanys-busiest-lng-terminal-in-q4/173453/"
+    ],
+    "source_notes": "Dropped the bare 'giignl.org/annual-report' link and de-duplicated a repeated Reuters URL (same URL was listed twice in the existing cell). Remaining URLs carried forward unchanged.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_dead": [
+      "https://www.giignl.org/annual-report"
+    ]
+  },
+  {
+    "terminal_id": "T100000131141",
+    "unit_id": "G100002114101",
+    "terminal_name": "Mukran FSRU",
+    "unit_name": "Energos Power",
+    "country": "Germany",
+    "field_name": "FloatingVesselName [ref]",
+    "old_value": "https://giignl.org/wp-content/uploads/2024/06/GIIGNL-2024-Annual-Report-1.pdf",
+    "new_value": "https://lngprime.com/europe/deutsche-regas-says-second-fsru-arrives-in-mukran/116294/",
+    "confidence": "yellow",
+    "source_tier": "primary",
+    "ref_field": null,
+    "ref_urls": [
+      "https://lngprime.com/europe/deutsche-regas-says-second-fsru-arrives-in-mukran/116294/"
+    ],
+    "source_notes": "Sole citation was a dead legacy giignl.org deep link. Replaced with an LNG Prime article that names the vessel Energos Power at Mukran.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_dead": [
+      "https://giignl.org/wp-content/uploads/2024/06/GIIGNL-2024-Annual-Report-1.pdf"
+    ]
+  },
+  {
+    "terminal_id": "T100000131141",
+    "unit_id": "G100002114101",
+    "terminal_name": "Mukran FSRU",
+    "unit_name": "Energos Power",
+    "country": "Germany",
+    "field_name": "AssociatedTerminals [ref]",
+    "old_value": "https://giignl.org/wp-content/uploads/2024/06/GIIGNL-2024-Annual-Report-1.pdf, https://lngprime.com/africa/second-fsru-arrives-in-egypt/152652/",
+    "new_value": "https://lngprime.com/africa/second-fsru-arrives-in-egypt/152652/",
+    "confidence": "yellow",
+    "source_tier": "primary",
+    "ref_field": null,
+    "ref_urls": [
+      "https://lngprime.com/africa/second-fsru-arrives-in-egypt/152652/"
+    ],
+    "source_notes": "Dropped the dead giignl.org 2024 deep link; the remaining LNG Prime URL (re-verified) still supports the Ain Sokhna association.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_dead": [
+      "https://giignl.org/wp-content/uploads/2024/06/GIIGNL-2024-Annual-Report-1.pdf"
+    ]
+  },
+  {
+    "terminal_id": "T100000131141",
+    "unit_id": "G100002114101",
+    "terminal_name": "Mukran FSRU",
+    "unit_name": "Energos Power",
+    "country": "Germany",
+    "field_name": "Capacity [ref]",
+    "old_value": "https://www.giignl.org/annual-report, https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf, https://lngprime.com/europe/deutsche-regas-says-second-fsru-arrives-in-mukran/116294/",
+    "new_value": "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf, https://lngprime.com/europe/deutsche-regas-says-second-fsru-arrives-in-mukran/116294/",
+    "confidence": "green",
+    "source_tier": "primary",
+    "ref_field": null,
+    "ref_urls": [
+      "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf",
+      "https://lngprime.com/europe/deutsche-regas-says-second-fsru-arrives-in-mukran/116294/"
+    ],
+    "source_notes": "Dropped a dead giignl.org 2025-edition deep link (the 2026 official mirror + LNG Prime already present in this cell remain valid and sufficient).",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_dead": [
+      "https://www.giignl.org/annual-report"
+    ]
+  },
+  {
+    "terminal_id": "T100000131141",
+    "unit_id": "G100001094549",
+    "terminal_name": "Mukran FSRU",
+    "unit_name": "Energos Power replacement",
+    "country": "Germany",
+    "field_name": "FloatingVesselName [ref]",
+    "old_value": "https://giignl.org/wp-content/uploads/2024/06/GIIGNL-2024-Annual-Report-1.pdf",
+    "new_value": "https://lngprime.com/europe/deutsche-regas-says-second-fsru-arrives-in-mukran/116294/",
+    "confidence": "yellow",
+    "source_tier": "primary",
+    "ref_field": null,
+    "ref_urls": [
+      "https://lngprime.com/europe/deutsche-regas-says-second-fsru-arrives-in-mukran/116294/"
+    ],
+    "source_notes": "Sole citation was the same dead legacy giignl.org 2024 deep link. Replaced with the LNG Prime Energos Power / Mukran article.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_dead": [
+      "https://giignl.org/wp-content/uploads/2024/06/GIIGNL-2024-Annual-Report-1.pdf"
+    ]
+  },
+  {
+    "terminal_id": "T100000131141",
+    "unit_id": "G100001094549",
+    "terminal_name": "Mukran FSRU",
+    "unit_name": "Energos Power replacement",
+    "country": "Germany",
+    "field_name": "AssociatedTerminals [ref]",
+    "old_value": "https://giignl.org/wp-content/uploads/2024/06/GIIGNL-2024-Annual-Report-1.pdf, https://lngprime.com/africa/second-fsru-arrives-in-egypt/152652/",
+    "new_value": "https://lngprime.com/africa/second-fsru-arrives-in-egypt/152652/",
+    "confidence": "yellow",
+    "source_tier": "primary",
+    "ref_field": null,
+    "ref_urls": [
+      "https://lngprime.com/africa/second-fsru-arrives-in-egypt/152652/"
+    ],
+    "source_notes": "Dropped the dead giignl.org 2024 deep link; remaining LNG Prime URL re-verified.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_dead": [
+      "https://giignl.org/wp-content/uploads/2024/06/GIIGNL-2024-Annual-Report-1.pdf"
+    ]
+  },
+  {
+    "terminal_id": "T100000131001",
+    "unit_id": "G100001095736",
+    "terminal_name": "Jade Energy LNG Terminal",
+    "unit_name": "Expansion",
+    "country": "Germany",
+    "field_name": "PlannedStopYear",
+    "old_value": "",
+    "new_value": "2044",
+    "confidence": "green",
+    "source_tier": "primary",
+    "ref_field": null,
+    "ref_urls": [],
+    "source_notes": "Project-level field propagation: PlannedStopYear=2044 is populated on the project's main unit-row (G100002100100) and blank on this Expansion unit-row of the same multi-unit project. No [ref] column exists for PlannedStopYear -- mechanical value fill only.",
+    "scope_note": "project_field_inconsistent fix (QC worklist B)",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131001",
+    "unit_id": "G100001095736",
+    "terminal_name": "Jade Energy LNG Terminal",
+    "unit_name": "Expansion",
+    "country": "Germany",
+    "field_name": "TempFacility",
+    "old_value": "",
+    "new_value": "permanent replacement",
+    "confidence": "green",
+    "source_tier": "primary",
+    "ref_field": null,
+    "ref_urls": [],
+    "source_notes": "Project-level field propagation: TempFacility='permanent replacement' is populated on the other two Jade Energy unit-rows (main + eLNG Import Terminal) and blank on this Expansion unit-row. No [ref] column exists for TempFacility -- mechanical value fill only.",
+    "scope_note": "project_field_inconsistent fix (QC worklist B)",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131001",
+    "unit_id": "G100002100101",
+    "terminal_name": "Jade Energy LNG Terminal",
+    "unit_name": "eLNG Import Terminal",
+    "country": "Germany",
+    "field_name": "PlannedStopYear",
+    "old_value": "",
+    "new_value": "2044",
+    "confidence": "green",
+    "source_tier": "primary",
+    "ref_field": null,
+    "ref_urls": [],
+    "source_notes": "Project-level field propagation: PlannedStopYear=2044 is populated on the project's main unit-row (G100002100100) and blank on this eLNG Import Terminal unit-row. No [ref] column exists for PlannedStopYear -- mechanical value fill only.",
+    "scope_note": "project_field_inconsistent fix (QC worklist B)",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130460",
+    "unit_id": "G100002046000",
+    "terminal_name": "Brunsbüttel FSRU",
+    "unit_name": "--",
+    "country": "Germany",
+    "field_name": "FacilityType [ref]",
+    "old_value": "https://www.giignl.org/annual-report",
+    "new_value": "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf",
+    "confidence": "green",
+    "source_tier": "primary",
+    "ref_field": null,
+    "ref_urls": [
+      "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf"
+    ],
+    "source_notes": "Sole citation was the bare, non-specific 'giignl.org/annual-report' link. Replaced with the current (2026) official GIIGNL mirror -- confirmed via pdftotext that its regasification-terminal table lists Brunsbuttel/Hoegh Gannet (FSRU, offshore) at 3.8 mtpa (5.17 bcm/y), consistent with the existing Capacity value.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_dead": [
+      "https://www.giignl.org/annual-report"
+    ]
+  },
+  {
+    "terminal_id": "T100000130460",
+    "unit_id": "G100002046000",
+    "terminal_name": "Brunsbüttel FSRU",
+    "unit_name": "--",
+    "country": "Germany",
+    "field_name": "Capacity [ref]",
+    "old_value": "https://www.giignl.org/annual-report",
+    "new_value": "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf",
+    "confidence": "green",
+    "source_tier": "primary",
+    "ref_field": null,
+    "ref_urls": [
+      "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf"
+    ],
+    "source_notes": "Same fix as FacilityType [ref] above -- the 2026 GIIGNL mirror's terminal table verifiably states 3.8 mtpa (5.17 bcm/y) for Brunsbuttel.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_dead": [
+      "https://www.giignl.org/annual-report"
+    ]
+  },
+  {
+    "terminal_id": "T100000130460",
+    "unit_id": "G100002046000",
+    "terminal_name": "Brunsbüttel FSRU",
+    "unit_name": "--",
+    "country": "Germany",
+    "field_name": "Status [ref]",
+    "old_value": "https://www.giignl.org/annual-report, https://energy-terminal.de/terminals/brunsbuettel",
+    "new_value": "https://energy-terminal.de/terminals/brunsbuettel",
+    "confidence": "yellow",
+    "source_tier": "primary",
+    "ref_field": null,
+    "ref_urls": [
+      "https://energy-terminal.de/terminals/brunsbuettel"
+    ],
+    "source_notes": "Dropped the bare giignl.org link; DET's own operating terminal page remains as sole valid source.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_dead": [
+      "https://www.giignl.org/annual-report"
+    ]
+  },
+  {
+    "terminal_id": "T100000130460",
+    "unit_id": "G100002046000",
+    "terminal_name": "Brunsbüttel FSRU",
+    "unit_name": "--",
+    "country": "Germany",
+    "field_name": "StartDate [ref]",
+    "old_value": "https://giignl.org/wp-content/uploads/2024/06/GIIGNL-2024-Annual-Report-1.pdf, https://lngprime.com/contracts-and-tenders/update-gasunie-expects-german-fsru-terminal-to-launch-this-year/56894/, https://www.rwe.com/en/press/rwe-ag/2023-01-20-floating-lng-terminal-arrives-at-brunsbuettel, https://www.giignl.org/annual-report, https://energy-terminal.de/terminals/brunsbuettel",
+    "new_value": "https://lngprime.com/contracts-and-tenders/update-gasunie-expects-german-fsru-terminal-to-launch-this-year/56894/, https://www.rwe.com/en/press/rwe-ag/2023-01-20-floating-lng-terminal-arrives-at-brunsbuettel, https://energy-terminal.de/terminals/brunsbuettel",
+    "confidence": "green",
+    "source_tier": "primary",
+    "ref_field": null,
+    "ref_urls": [
+      "https://lngprime.com/contracts-and-tenders/update-gasunie-expects-german-fsru-terminal-to-launch-this-year/56894/",
+      "https://www.rwe.com/en/press/rwe-ag/2023-01-20-floating-lng-terminal-arrives-at-brunsbuettel",
+      "https://energy-terminal.de/terminals/brunsbuettel"
+    ],
+    "source_notes": "Dropped both the dead 2024-edition giignl.org deep link and the bare giignl.org/annual-report link; three still-valid URLs carried forward unchanged.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_dead": [
+      "https://giignl.org/wp-content/uploads/2024/06/GIIGNL-2024-Annual-Report-1.pdf",
+      "https://www.giignl.org/annual-report"
+    ]
+  },
+  {
+    "terminal_id": "T100000131084",
+    "unit_id": "G100002108400",
+    "terminal_name": "Brunsbüttel LNG Terminal",
+    "unit_name": "--",
+    "country": "Germany",
+    "field_name": "FacilityType [ref]",
+    "old_value": "https://germanlng.com/company-profile/?lang=en, https://www.igu.org/resources/lng2023-world-lng-report/",
+    "new_value": "https://germanlng.com/company-profile/?lang=en",
+    "confidence": "yellow",
+    "source_tier": "primary",
+    "ref_field": null,
+    "ref_urls": [
+      "https://germanlng.com/company-profile/?lang=en"
+    ],
+    "source_notes": "Dropped the dead igu.org URL. The terminal operator's own company-profile page (already re-verified) remains and is sufficient/near-primary for the import facility type.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_dead": [
+      "https://www.igu.org/resources/lng2023-world-lng-report/"
+    ]
+  },
+  {
+    "terminal_id": "T100000131077",
+    "unit_id": "G100002107700",
+    "terminal_name": "Lubmin FSRU",
+    "unit_name": "LNG import terminal",
+    "country": "Germany",
+    "field_name": "FloatingVesselName [ref]",
+    "old_value": "https://abcnews.go.com/International/wireStory/floating-lng-terminal-arrives-german-port-93844232?utm_source=substack&utm_medium=email",
+    "new_value": "https://lngprime.com/europe/deutsche-regas-launches-germanys-second-lng-import-terminal/70830/",
+    "confidence": "yellow",
+    "source_tier": "primary",
+    "ref_field": null,
+    "ref_urls": [
+      "https://lngprime.com/europe/deutsche-regas-launches-germanys-second-lng-import-terminal/70830/"
+    ],
+    "source_notes": "Sole citation (abcnews.go.com wire-story mirror) is dead. Replaced with an LNG Prime article confirming the FSRU Neptune launched commercial operations at this (Lubmin) terminal.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_dead": [
+      "https://abcnews.go.com/International/wireStory/floating-lng-terminal-arrives-german-port-93844232?utm_source=substack&utm_medium=email"
+    ]
+  },
+  {
+    "terminal_id": "T100000131077",
+    "unit_id": "G100002107700",
+    "terminal_name": "Lubmin FSRU",
+    "unit_name": "LNG import terminal",
+    "country": "Germany",
+    "field_name": "Operator [ref]",
+    "old_value": "https://giignl.org/wp-content/uploads/2024/06/GIIGNL-2024-Annual-Report-1.pdf",
+    "new_value": "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf, https://lngprime.com/europe/deutsche-regas-launches-commercial-ops-at-mukran-fsru-terminal/123646/",
+    "confidence": "green",
+    "source_tier": "primary",
+    "ref_field": null,
+    "ref_urls": [
+      "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf",
+      "https://lngprime.com/europe/deutsche-regas-launches-commercial-ops-at-mukran-fsru-terminal/123646/"
+    ],
+    "source_notes": "Sole citation was a dead giignl.org 2024 deep link. Replaced with the current GIIGNL official mirror (verified: names Deutsche ReGas + Lubmin) plus an LNG Prime article establishing Deutsche ReGas as the company operating this fleet of German FSRUs. deutsche-regas.de's own homepage was tried and rejected as a citation -- its raw HTML does not contain 'Lubmin' or 'Mukran' text (likely JS-rendered), so it fails url_verifier and would anyway be a bare-homepage citation, which CLAUDE.md forbids.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_dead": [
+      "https://giignl.org/wp-content/uploads/2024/06/GIIGNL-2024-Annual-Report-1.pdf"
+    ]
+  },
+  {
+    "terminal_id": "T100000131077",
+    "unit_id": "G100002107700",
+    "terminal_name": "Lubmin FSRU",
+    "unit_name": "LNG import terminal",
+    "country": "Germany",
+    "field_name": "AssociatedTerminals [ref]",
+    "old_value": "https://giignl.org/wp-content/uploads/2024/06/GIIGNL-2024-Annual-Report-1.pdf",
+    "new_value": "https://lngprime.com/europe/fsru-leaves-lubmin-to-start-mukran-job/113837/",
+    "confidence": "yellow",
+    "source_tier": "primary",
+    "ref_field": null,
+    "ref_urls": [
+      "https://lngprime.com/europe/fsru-leaves-lubmin-to-start-mukran-job/113837/"
+    ],
+    "source_notes": "Sole citation was a dead giignl.org 2024 deep link, which in any case does not itself assert an 'associated terminals' relationship. Replaced with an LNG Prime article specifically describing the FSRU's move from Lubmin to start the Mukran job -- the actual basis for the Lubmin<->Mukran association.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_dead": [
+      "https://giignl.org/wp-content/uploads/2024/06/GIIGNL-2024-Annual-Report-1.pdf"
+    ]
+  },
+  {
+    "terminal_id": "T100000131077",
+    "unit_id": "G100002107700",
+    "terminal_name": "Lubmin FSRU",
+    "unit_name": "LNG import terminal",
+    "country": "Germany",
+    "field_name": "Capacity [ref]",
+    "old_value": "https://giignl.org/wp-content/uploads/2023/07/GIIGNL-2023-Annual-Report-July20.pdf, https://deutsche-regas.de/",
+    "new_value": "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf",
+    "confidence": "yellow",
+    "source_tier": "primary",
+    "ref_field": null,
+    "ref_urls": [
+      "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf"
+    ],
+    "source_notes": "Dropped both the dead giignl.org 2023 deep link and deutsche-regas.de (its raw homepage HTML contains no 'Lubmin' text -- fails verification, and would be a bare-homepage citation regardless). Replaced with the current GIIGNL 2026 official mirror, which verifiably lists Lubmin's capacity.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_dead": [
+      "https://giignl.org/wp-content/uploads/2023/07/GIIGNL-2023-Annual-Report-July20.pdf",
+      "https://deutsche-regas.de/"
+    ]
+  },
+  {
+    "terminal_id": "T100000130721",
+    "unit_id": "G100002072100",
+    "terminal_name": "Stade LNG Terminal",
+    "unit_name": "--",
+    "country": "Germany",
+    "field_name": "StartDate [ref]",
+    "old_value": "https://www.spglobal.com/platts/en/market-insights/latest-news/coal/030321-belgiums-fluxys-to-join-hehs-stade-lng-import-terminal-project-in-germany, https://giignl.org/wp-content/uploads/2023/07/GIIGNL-2023-Annual-Report-July20.pdf, https://www.hanseatic-energy-hub.de/news/detail/hanseatic-energy-hub-erweitert-sein-management-team-fuer-bauphase-und-gruene-transformation/, https://giignl.org/wp-content/uploads/2023/07/GIIGNL-2023-Annual-Report-July20.pdf, https://www.trade.gov/market-intelligence/germany-energy-industry-lng-and-hydrogen",
+    "new_value": "https://www.spglobal.com/platts/en/market-insights/latest-news/coal/030321-belgiums-fluxys-to-join-hehs-stade-lng-import-terminal-project-in-germany, https://www.hanseatic-energy-hub.de/news/detail/hanseatic-energy-hub-erweitert-sein-management-team-fuer-bauphase-und-gruene-transformation/, https://www.trade.gov/market-intelligence/germany-energy-industry-lng-and-hydrogen, https://cdn.prod.website-files.com/67bdb9fc993751711c5f54fd/67d40f91fd8b5ad05589ef9e_GIIGNL-2023-Annual-Report.pdf",
+    "confidence": "green",
+    "source_tier": "primary",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.spglobal.com/platts/en/market-insights/latest-news/coal/030321-belgiums-fluxys-to-join-hehs-stade-lng-import-terminal-project-in-germany",
+      "https://www.hanseatic-energy-hub.de/news/detail/hanseatic-energy-hub-erweitert-sein-management-team-fuer-bauphase-und-gruene-transformation/",
+      "https://www.trade.gov/market-intelligence/germany-energy-industry-lng-and-hydrogen",
+      "https://cdn.prod.website-files.com/67bdb9fc993751711c5f54fd/67d40f91fd8b5ad05589ef9e_GIIGNL-2023-Annual-Report.pdf"
+    ],
+    "source_notes": "The dead giignl.org 2023 deep link was listed TWICE in this cell (duplicate). De-duplicated and replaced with the official 2023 GIIGNL mirror (same edition); the other three pre-existing URLs re-verified and carried forward unchanged.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_dead": [
+      "https://giignl.org/wp-content/uploads/2023/07/GIIGNL-2023-Annual-Report-July20.pdf"
+    ]
+  },
+  {
+    "terminal_id": "T100000130458",
+    "unit_id": "G100002045800",
+    "terminal_name": "Wilhelmshaven FSRU",
+    "unit_name": "--",
+    "country": "Germany",
+    "field_name": "FacilityType [ref]",
+    "old_value": "https://www.spglobal.com/commodity-insights/en/market-insights/latest-news/natural-gas/022822-germanys-uniper-mulls-resuming-work-on-wilhelmshaven-lng-import-terminal, https://giignl.org/wp-content/uploads/2024/06/GIIGNL-2024-Annual-Report-1.pdf",
+    "new_value": "https://energy-terminal.de/en/terminals/wilhelmshaven-1, https://cdn.prod.website-files.com/67bdb9fc993751711c5f54fd/6854051dda46281e5ec60285_GIIGNL%20Annual%20Report%202024.pdf",
+    "confidence": "green",
+    "source_tier": "primary",
+    "ref_field": null,
+    "ref_urls": [
+      "https://energy-terminal.de/en/terminals/wilhelmshaven-1",
+      "https://cdn.prod.website-files.com/67bdb9fc993751711c5f54fd/6854051dda46281e5ec60285_GIIGNL%20Annual%20Report%202024.pdf"
+    ],
+    "source_notes": "Both existing URLs are dead: the S&P Global URL returns HTTP 403 live AND its Wayback snapshot is itself unrecoverable (returns a Wayback error page, not the article); the giignl.org 2024 deep link is dead site-wide. Replaced with DET's own terminal page (states 'regasification capacity') plus the official 2024 GIIGNL mirror (same edition as the dropped link).",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_dead": [
+      "https://www.spglobal.com/commodity-insights/en/market-insights/latest-news/natural-gas/022822-germanys-uniper-mulls-resuming-work-on-wilhelmshaven-lng-import-terminal",
+      "https://giignl.org/wp-content/uploads/2024/06/GIIGNL-2024-Annual-Report-1.pdf"
+    ]
+  },
+  {
+    "terminal_id": "T100000130458",
+    "unit_id": "G100002045800",
+    "terminal_name": "Wilhelmshaven FSRU",
+    "unit_name": "--",
+    "country": "Germany",
+    "field_name": "ProposalDate [ref]",
+    "old_value": "https://www.spglobal.com/commodity-insights/en/market-insights/latest-news/natural-gas/022822-germanys-uniper-mulls-resuming-work-on-wilhelmshaven-lng-import-terminal",
+    "new_value": "https://en.wikipedia.org/wiki/Wilhelmshaven_LNG_terminal",
+    "confidence": "yellow",
+    "source_tier": "secondary",
+    "ref_field": null,
+    "ref_urls": [
+      "https://en.wikipedia.org/wiki/Wilhelmshaven_LNG_terminal"
+    ],
+    "source_notes": "Sole existing citation (S&P Global) is confirmed dead: HTTP 403 live, and its Wayback snapshot is itself unrecoverable (Wayback serves an internal error page for that exact timestamp, not the article text). Extensive search this session (WebSearch budget exhausted mid-search) could not locate a live primary/trade-press replacement -- multiple offshore-energy.biz and spglobal.com URL variants tried, all failed (403/404/502). The Feb 2022 date itself is well-established public record (Chancellor Scholz's Feb 27, 2022 Bundestag announcement fast-tracking Wilhelmshaven + Brunsbuttel; Uniper confirmed resuming work Feb 28, 2022) and Wikipedia's article corroborates it, but this is a single non-primary/tertiary source -- staged yellow, not green, and flagged in qa for a future primary-source pass.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_dead": [
+      "https://www.spglobal.com/commodity-insights/en/market-insights/latest-news/natural-gas/022822-germanys-uniper-mulls-resuming-work-on-wilhelmshaven-lng-import-terminal"
+    ]
+  },
+  {
+    "terminal_id": "T100000130458",
+    "unit_id": "G100002045800",
+    "terminal_name": "Wilhelmshaven FSRU",
+    "unit_name": "--",
+    "country": "Germany",
+    "field_name": "Operator [ref]",
+    "old_value": "https://www.giignl.org/annual-report, https://energy-terminal.de/en/terminals/wilhelmshaven-1",
+    "new_value": "https://energy-terminal.de/en/terminals/wilhelmshaven-1",
+    "confidence": "yellow",
+    "source_tier": "primary",
+    "ref_field": null,
+    "ref_urls": [
+      "https://energy-terminal.de/en/terminals/wilhelmshaven-1"
+    ],
+    "source_notes": "Dropped the bare giignl.org/annual-report link; DET's own terminal page (the named operator's own site) remains as sole valid source.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_dead": [
+      "https://www.giignl.org/annual-report"
+    ]
+  },
+  {
+    "terminal_id": "T100000130458",
+    "unit_id": "G100002045800",
+    "terminal_name": "Wilhelmshaven FSRU",
+    "unit_name": "--",
+    "country": "Germany",
+    "field_name": "Status [ref]",
+    "old_value": "https://www.giignl.org/annual-report, https://energy-terminal.de/en/terminals/wilhelmshaven-1, https://www.offshore-energy.biz/wilhelmshaven-lng-terminal-commences-regular-operations/?utm_medium=email&_hsmi=248690210&_hsenc=p2ANqtz-_XgxHfQjNRCnz4ZTrI6mU2WJGl4JE9OF4p_j4WpF4LECLz0LfC-JsEjRMbO0AUmtH8TJkLwfRRFYwOQtOfikx5NGlTAioGs8Hwi30g7l4ezXwwpUc&utm_content=248690210&utm_source=hs_email",
+    "new_value": "https://energy-terminal.de/en/terminals/wilhelmshaven-1, https://www.offshore-energy.biz/wilhelmshaven-lng-terminal-commences-regular-operations/?utm_medium=email&_hsmi=248690210&_hsenc=p2ANqtz-_XgxHfQjNRCnz4ZTrI6mU2WJGl4JE9OF4p_j4WpF4LECLz0LfC-JsEjRMbO0AUmtH8TJkLwfRRFYwOQtOfikx5NGlTAioGs8Hwi30g7l4ezXwwpUc&utm_content=248690210&utm_source=hs_email",
+    "confidence": "green",
+    "source_tier": "primary",
+    "ref_field": null,
+    "ref_urls": [
+      "https://energy-terminal.de/en/terminals/wilhelmshaven-1",
+      "https://www.offshore-energy.biz/wilhelmshaven-lng-terminal-commences-regular-operations/?utm_medium=email&_hsmi=248690210&_hsenc=p2ANqtz-_XgxHfQjNRCnz4ZTrI6mU2WJGl4JE9OF4p_j4WpF4LECLz0LfC-JsEjRMbO0AUmtH8TJkLwfRRFYwOQtOfikx5NGlTAioGs8Hwi30g7l4ezXwwpUc&utm_content=248690210&utm_source=hs_email"
+    ],
+    "source_notes": "Dropped the bare giignl.org/annual-report link; two remaining URLs carried forward unchanged.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_dead": [
+      "https://www.giignl.org/annual-report"
+    ]
+  },
+  {
+    "terminal_id": "T100000130458",
+    "unit_id": "G100002045800",
+    "terminal_name": "Wilhelmshaven FSRU",
+    "unit_name": "--",
+    "country": "Germany",
+    "field_name": "StartDate [ref]",
+    "old_value": "https://www.giignl.org/annual-report, https://energy-terminal.de/en/terminals/wilhelmshaven-1, https://www.offshore-energy.biz/wilhelmshaven-lng-terminal-commences-regular-operations/?utm_medium=email&_hsmi=248690210&_hsenc=p2ANqtz-_XgxHfQjNRCnz4ZTrI6mU2WJGl4JE9OF4p_j4WpF4LECLz0LfC-JsEjRMbO0AUmtH8TJkLwfRRFYwOQtOfikx5NGlTAioGs8Hwi30g7l4ezXwwpUc&utm_content=248690210&utm_source=hs_email",
+    "new_value": "https://energy-terminal.de/en/terminals/wilhelmshaven-1, https://www.offshore-energy.biz/wilhelmshaven-lng-terminal-commences-regular-operations/?utm_medium=email&_hsmi=248690210&_hsenc=p2ANqtz-_XgxHfQjNRCnz4ZTrI6mU2WJGl4JE9OF4p_j4WpF4LECLz0LfC-JsEjRMbO0AUmtH8TJkLwfRRFYwOQtOfikx5NGlTAioGs8Hwi30g7l4ezXwwpUc&utm_content=248690210&utm_source=hs_email",
+    "confidence": "green",
+    "source_tier": "primary",
+    "ref_field": null,
+    "ref_urls": [
+      "https://energy-terminal.de/en/terminals/wilhelmshaven-1",
+      "https://www.offshore-energy.biz/wilhelmshaven-lng-terminal-commences-regular-operations/?utm_medium=email&_hsmi=248690210&_hsenc=p2ANqtz-_XgxHfQjNRCnz4ZTrI6mU2WJGl4JE9OF4p_j4WpF4LECLz0LfC-JsEjRMbO0AUmtH8TJkLwfRRFYwOQtOfikx5NGlTAioGs8Hwi30g7l4ezXwwpUc&utm_content=248690210&utm_source=hs_email"
+    ],
+    "source_notes": "Dropped the bare giignl.org/annual-report link; two remaining URLs carried forward unchanged.",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_dead": [
+      "https://www.giignl.org/annual-report"
+    ]
+  },
+  {
+    "terminal_id": "T100000130458",
+    "unit_id": "G100002045801",
+    "terminal_name": "Wilhelmshaven FSRU",
+    "unit_name": "Ammonia Import Terminal",
+    "country": "Germany",
+    "field_name": "Operator [ref]",
+    "old_value": "https://www.giignl.org/annual-report, https://energy-terminal.de/en/terminals/wilhelmshaven-1",
+    "new_value": "https://energy-terminal.de/en/terminals/wilhelmshaven-1",
+    "confidence": "yellow",
+    "source_tier": "primary",
+    "ref_field": null,
+    "ref_urls": [
+      "https://energy-terminal.de/en/terminals/wilhelmshaven-1"
+    ],
+    "source_notes": "Dropped the bare giignl.org/annual-report link; DET's own terminal page remains as sole valid source (project-level Operator field, same repair as the parent unit-row).",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_dead": [
+      "https://www.giignl.org/annual-report"
+    ]
+  },
+  {
+    "terminal_id": "T100000131097",
+    "unit_id": "G100002109700",
+    "terminal_name": "Wilhelmshaven TES FSRU",
+    "unit_name": "--",
+    "country": "Germany",
+    "field_name": "Location [ref]",
+    "old_value": "https://tes-h2.com/signing-of-chartering-contract-for-fifth-fsru/,TES, https://www.marinetraffic.com/en/ais/home/shipid:114502/zoom:11",
+    "new_value": "https://energy-terminal.de/en/terminals/wilhelmshaven-2, https://www.marinetraffic.com/en/ais/home/shipid:114502/zoom:11",
+    "confidence": "green",
+    "source_tier": "primary",
+    "ref_field": null,
+    "ref_urls": [
+      "https://energy-terminal.de/en/terminals/wilhelmshaven-2",
+      "https://www.marinetraffic.com/en/ais/home/shipid:114502/zoom:11"
+    ],
+    "source_notes": "The tes-h2.com URL is dead. Replaced with DET's own Wilhelmshaven-2 terminal page (which this row already cites for Capacity/Operator/FloatingVesselName) confirming the Wilhelmshaven location; kept the still-live MarineTraffic vessel-tracking URL. Dropped the stray bare ',TES' text token that had been concatenated into the old cell value (not a URL).",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_dead": [
+      "https://tes-h2.com/signing-of-chartering-contract-for-fifth-fsru/",
+      "https://tes-h2.com/signing-of-chartering-contract-for-fifth-fsru/,TES"
+    ]
+  },
+  {
+    "terminal_id": "T100000131097",
+    "unit_id": "G100002109700",
+    "terminal_name": "Wilhelmshaven TES FSRU",
+    "unit_name": "--",
+    "country": "Germany",
+    "field_name": "StartDate [ref]",
+    "old_value": "https://www.offshore-energy.biz/installation-jobs-for-germanys-wilhelmshaven-2-lng-terminal-go-to-norwegian-and-french-firms/, https://giignl.org/wp-content/uploads/2023/07/GIIGNL-2023-Annual-Report-July20.pdf, https://lngprime.com/europe/germanys-det-expects-to-launch-two-fsru-terminals-in-january/133751/, https://lngprime.com/europe/germanys-det-plans-to-launch-two-fsru-terminals-in-q1-2024/95228/, https://lngprime.com/europe/germanys-det-plans-to-launch-two-fsru-terminals-in-q1-2024/95228/, https://www.offshore-energy.biz/installation-jobs-for-germanys-wilhelmshaven-2-lng-terminal-go-to-norwegian-and-french-firms/, https://lngprime.com/europe/germanys-det-expects-to-launch-two-fsru-terminals-in-january/133751/?utm_source=substack&utm_medium=email, https://www.offshore-energy.biz/installation-jobs-for-germanys-wilhelmshaven-2-lng-terminal-go-to-norwegian-and-french-firms/?utm_source=substack&utm_medium=email, https://energy-terminal.de/en/terminals/wilhelmshaven-2, https://lngprime.com/europe/germanys-det-launches-commercial-ops-at-second-wilhelmshaven-fsru/161623/",
+    "new_value": "https://lngprime.com/europe/germanys-det-expects-to-launch-two-fsru-terminals-in-january/133751/?utm_source=substack&utm_medium=email, https://www.offshore-energy.biz/installation-jobs-for-germanys-wilhelmshaven-2-lng-terminal-go-to-norwegian-and-french-firms/?utm_source=substack&utm_medium=email, https://www.offshore-energy.biz/installation-jobs-for-germanys-wilhelmshaven-2-lng-terminal-go-to-norwegian-and-french-firms/, https://lngprime.com/europe/germanys-det-expects-to-launch-two-fsru-terminals-in-january/133751/, https://lngprime.com/europe/germanys-det-plans-to-launch-two-fsru-terminals-in-q1-2024/95228/, https://energy-terminal.de/en/terminals/wilhelmshaven-2, https://lngprime.com/europe/germanys-det-launches-commercial-ops-at-second-wilhelmshaven-fsru/161623/",
+    "confidence": "green",
+    "source_tier": "primary",
+    "ref_field": null,
+    "ref_urls": [
+      "https://lngprime.com/europe/germanys-det-expects-to-launch-two-fsru-terminals-in-january/133751/?utm_source=substack&utm_medium=email",
+      "https://www.offshore-energy.biz/installation-jobs-for-germanys-wilhelmshaven-2-lng-terminal-go-to-norwegian-and-french-firms/?utm_source=substack&utm_medium=email",
+      "https://www.offshore-energy.biz/installation-jobs-for-germanys-wilhelmshaven-2-lng-terminal-go-to-norwegian-and-french-firms/",
+      "https://lngprime.com/europe/germanys-det-expects-to-launch-two-fsru-terminals-in-january/133751/",
+      "https://lngprime.com/europe/germanys-det-plans-to-launch-two-fsru-terminals-in-q1-2024/95228/",
+      "https://energy-terminal.de/en/terminals/wilhelmshaven-2",
+      "https://lngprime.com/europe/germanys-det-launches-commercial-ops-at-second-wilhelmshaven-fsru/161623/"
+    ],
+    "source_notes": "Dropped the dead giignl.org 2023 deep link. Also de-duplicated: the cell had listed the same offshore-energy.biz article twice (bare + UTM-tagged variant) and the same lngprime 'expects-to-launch...january' article twice (bare + UTM-tagged variant), and the 'plans-to-launch-two-fsru...95228' article was listed twice outright -- these are single documents, not independent corroboration (mirror/duplicate-URL rule). Collapsed to one URL per underlying document. [ref-restore 2026-07-29: restored existing live URL(s) https://lngprime.com/europe/germanys-det-expects-to-launch-two-fsru-terminals-in-january/133751/?utm_source=substack&utm_medium=email, https://www.offshore-energy.biz/installation-jobs-for-germanys-wilhelmshaven-2-lng-terminal-go-to-norwegian-and-french-firms/?utm_source=substack&utm_medium=email per merge-semantics rule (bot-block != dead; never drop a URL not proven dead)]",
+    "scope_note": "",
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_dead": [
+      "https://giignl.org/wp-content/uploads/2023/07/GIIGNL-2023-Annual-Report-July20.pdf"
+    ]
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "category": "dormant_revival_check",
+    "terminal_id": "T100001084613",
+    "unit_id": "",
+    "terminal_name": "Port of Vlora FSRU 2",
+    "issue": "Discovery brief flagged the Aktor Energy USA / Venture Global / Atlantic-SEE LNG Trade 'Vlora integrated energy hub' as the highest-value dead-site revival check (dead record T100000130924 'Port of Vlora FSRU', cancelled 2024). Independent verification (BalkanGreenEnergyNews, LNG Prime, Tirana Examiner, tovima.com, Venture Global IR) confirms the sponsor structure: Atlantic-SEE LNG Trade is a Nov-2025 JV of Aktor Group (60%) and DEPA Commercial (40%); it signed a 20-year, ~$6-9B supply deal with Venture Global (from 2030) covering ~1 bcm/y to Albania, bundled with a Fier-Vlora pipeline to TAP and conversion of the Vlora thermal power plant (~250-380 MW gas-fired). This candidate is ALREADY staged in GEM as a distinct new terminal, TerminalID T100001084613 'Port of Vlora FSRU 2' (proposed, Owner/Parent 'Aktor LNG USA'), added by Natalia Fretz 2026-07-28 -- correctly linked via AssociatedTerminals -> T100000130924 (which stays cancelled) per the dead-and-revived rule (different sponsor + design vs. the 2021-24 Excelerate/ExxonMobil proposal). Not a discovery gap; no new_terminal staged from this pass. DATA-QUALITY FLAG found while verifying: Capacity/CapacityinBcm-y/CapacityinMtpa on T100001084613 appear to carry a ~1e9x magnitude error -- stored as Capacity=1,000,000,000 / CapacityinBcm/y=1,000,000,000 / CapacityinMtpa=735,000,000, whereas every independent source states the deal volume as 'up to one billion cubic metres per year' (~1 bcm/y, ~0.735 mtpa).",
+    "severity": "medium",
+    "suggested_action": "No discovery action (already in GEM, correctly routed as new terminal + AssociatedTerminals link). Route to Update/QC: correct Capacity to ~1 (bcm/y) and CapacityinMtpa to ~0.735 on T100001084613 -- current values are off by roughly a factor of 1e9.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "dormant_revival_check",
+    "terminal_id": "T100000130424",
+    "unit_id": "",
+    "terminal_name": "Eagle FSRU",
+    "issue": "Revival-checked per Discovery SOP 4.0a. No news or activity found on the Levan/Fier offshore site since Gruppo Falcione's 2008 permit signing; project appears cancelled with no mention since 2008 in any source checked (trade press, gem.wiki, general web). No new sponsor, FSRU charter, or permit found.",
+    "severity": "low",
+    "suggested_action": "No action -- confirmed dormant with no revival. Re-check only if new Albania LNG news arises.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "gemwiki_coverage_crosscheck",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "",
+    "issue": "Discovery SOP 4.0b: enumerated gem.wiki Albania LNG-terminal pages via site search. Found: Eagle FSRU (also listed under an alias URL, same project), Port of Vlora FSRU. Both match existing export-CSV TerminalIDs (T100000130424, T100000130924). No orphan gem.wiki LNG page found for Albania.",
+    "severity": "low",
+    "suggested_action": "None -- coverage clean, no candidate generated from this check.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  }
+]

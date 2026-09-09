@@ -1,0 +1,22 @@
+[
+  {
+    "category": "source_verification",
+    "terminal_id": "T100000130684",
+    "unit_id": "G100002068400",
+    "terminal_name": "Old Harbour FSRU",
+    "issue": "jamaica-gleaner.com (via its past.jamaica-gleaner.com archive subdomain) -- the sole citation for ProposalYear/ProposalDate -- returned HTTP 503 Service Unavailable consistently across multiple attempts and redirect-chain traces in this run (Varnish backend error, not a bot-challenge: no 401/403/429 or Cloudflare markers). Could not locate an independent replacement source before this run's WebSearch budget was exhausted.",
+    "severity": "medium",
+    "suggested_action": "Recheck this URL in a future batch (503 suggests a possibly-temporary outage, not proof of death); if it remains down, web-search for an alternative source corroborating the ProposalYear before dropping.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "source_verification",
+    "terminal_id": "T100000130670",
+    "unit_id": "G100002067000",
+    "terminal_name": "Montego Bay LNG Terminal",
+    "issue": "Two ir.newfortressenergy.com static-file PDFs (cited on this row's PowerPlantsSupplied [ref] and one Old Harbour-adjacent Owner citation) could not be re-fetched in this run: WebFetch timed out at 60s on both, and a direct curl download to scratchpad also failed silently. This is a sandbox network limitation to that specific host, not confirmed evidence of death -- not dropped.",
+    "severity": "low",
+    "suggested_action": "Recheck these two URLs in a future batch with different network conditions; if still unreachable, escalate to a manual/browser check before considering a drop.",
+    "researcher_initials": "AI-draft"
+  }
+]

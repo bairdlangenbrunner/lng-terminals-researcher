@@ -1,0 +1,71 @@
+[
+  {
+    "terminal": "Zhuhai Huangmaodao LNG Terminal",
+    "terminal_id": "T100000130422",
+    "country": "China",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "",
+    "captive_summary": "Cancelled-and-never-built proposal — screened, not deep-researched. Hanas LNG Investment (Shanghai) Co., Ltd. signed an investment agreement with the Wanshan District (Zhuhai) government in July 2014 for a 6 mtpa reserve base on Huangmao Island (3 mtpa Phase 1), but the project never advanced past that signing — no construction, no design/EIA publication, no further news since 2014. GEM's own status (cancelled, inferred) matches: nothing was ever built, so there is no as-designed or as-built captive-power question to answer.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Hanas Group's own press release on the 2014 signing (verified PASS on '黄茅岛'/'珠海') is the only substantive public record of this project; no subsequent filing, construction report, or EIA exists. Independent trade-press coverage (Statista's cancelled-China-LNG-terminals ranking) lists it among China's largest cancelled LNG projects at 6 mtpa, corroborating that it never proceeded to construction.",
+    "refs": [
+      "http://www.hanas.com/news/%E5%93%88%E7%BA%B3%E6%96%AFlng%E6%8E%A5%E6%94%B6%E7%AB%99%E9%A1%B9%E7%9B%AE%E4%B8%8E%E7%8F%A0%E6%B5%B7%E7%AD%BE%E7%BA%A6/"
+    ],
+    "verification_log": [
+      {
+        "url": "http://www.hanas.com/news/%E5%93%88%E7%BA%B3%E6%96%AFlng%E6%8E%A5%E6%94%B6%E7%AB%99%E9%A1%B9%E7%9B%AE%E4%B8%8E%E7%8F%A0%E6%B5%B7%E7%AD%BE%E7%BA%A6/",
+        "tokens": ["黄茅岛", "珠海"],
+        "result": "PASS",
+        "note": "Hanas Group's own 2014 press release confirming the signing and location on Huangmao Island, Zhuhai."
+      }
+    ],
+    "gogpt_prior_assessment": "No GOGPT plant was supplied in the assignment data for this terminal (gogpt_plant field blank, gogpt_prior 'no'). No generation asset exists at this site to assess.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Project never built beyond a signed investment agreement — no facility, no generation asset of any kind exists to add to GOGPT.",
+    "status_or_other_findings": "Some 2026-era Hanas corporate material references a Zhuhai LNG project as part of the company's 14th Five-Year Plan portfolio alongside its Putian (Fujian) terminal, which could suggest the project concept has been revived under Hanas in some form — but nothing found ties this specifically back to the Huangmaodao site or shows construction restarting. Not acted on; flagging only in case a future Discovery/dormant-revival pass wants to re-check Hanas's Guangdong plans.",
+    "notes": "Screen criterion: cancelled-and-never-built proposal (SOP §2b / brief §4). Distinct from the other terminal in this shard, 'Zhuhai LNG Terminal' (owner Guangdong Zhuhai GOLDEN Bay LNG Ltd), which is the real operating CNOOC-affiliated facility — not to be confused with this Hanas proposal despite the shared 'Zhuhai' name."
+  },
+  {
+    "terminal": "Zhuhai LNG Terminal",
+    "terminal_id": "T100000130423",
+    "country": "China",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "Backup/abnormal-condition generation at the site is diesel-fuelled (柴油发电机 = 'diesel generator'), per the project's own environmental impact filing — no gas turbine or gas-fired generator of any kind is named anywhere in that filing.",
+    "confidence": "yellow",
+    "captive_summary": "No on-site gas-fired power generation is documented. The Phase 1 project's official environmental-impact supplement (MEE-published, dated April 2013, covering the receiving-terminal engineering) lists the facility's abnormal-condition emission sources as pigging operations, maintenance, diesel generator (柴油发电机) operation, and emergency venting — a diesel genset for backup, not gas. No gas turbine, gas engine, or captive gas power plant is mentioned anywhere in the filing. The surrounding Gaolan Port Economic Development Zone (chemical/petrochemical park where the terminal sits) is described in the zone's own industrial planning document as served by seven substations with dual-circuit (双回路) grid supply guaranteeing continuous production power, consistent with a grid-fed facility.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "MEE-hosted environmental impact supplement report ('广东珠海LNG项目一期工程接收站工程环境影响补充报告书简本', April 2013, filed by 广东珠海金湾液化天然气有限公司 — the terminal's own operating company) states: '非正常工况下，废气污染源主要来自于清管作业、检修、柴油发电机工作、事故状态下的放空气体' ('Under abnormal operating conditions, exhaust pollution sources mainly come from pigging operations, maintenance, diesel generator operation, and venting during accident conditions') — verified PASS on token '柴油发电机'. Separately, the Zhuhai Economic and Technological Development Zone's chemical-park industrial planning document (《珠海经济技术开发区化工园区产业规划》, Aug 2023) states the zone has seven substations with 双回路供电 (dual-circuit power supply) to guarantee continuous production/domestic power — verified PASS on '双回路供电'. Neither document names any gas turbine, gas engine, or gas-fired generator at the terminal.",
+    "refs": [
+      "https://www.mee.gov.cn/ywgz/hjyxpj/jsxmhjyxpj/xmslqk/201605/W020241219552885999699.pdf",
+      "https://zhsme.org.cn/eWebEditor/downFile?actionType=downFile&fileName=%E7%8F%A0%E6%B5%B7%E7%BB%8F%E6%B5%8E%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91%E5%8C%BA%E5%8C%96%E5%B7%A5%E5%9B%AD%E5%8C%BA%E4%BA%A7%E4%B8%9A%E8%A7%84%E5%88%92.pdf&filePath=/zhzqy/ueditor/upload/file/20240429/1714378431181070460.pdf"
+    ],
+    "verification_log": [
+      {
+        "url": "https://www.mee.gov.cn/ywgz/hjyxpj/jsxmhjyxpj/xmslqk/201605/W020241219552885999699.pdf",
+        "tokens": ["柴油发电机"],
+        "result": "PASS",
+        "note": "MEE-hosted EIA supplement for the terminal's Phase 1 receiving-station engineering; names only a diesel generator for backup/abnormal-condition power."
+      },
+      {
+        "url": "https://zhsme.org.cn/eWebEditor/downFile?actionType=downFile&fileName=%E7%8F%A0%E6%B5%B7%E7%BB%8F%E6%B5%8E%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91%E5%8C%BA%E5%8C%96%E5%B7%A5%E5%9B%AD%E5%8C%BA%E4%BA%A7%E4%B8%9A%E8%A7%84%E5%88%92.pdf&filePath=/zhzqy/ueditor/upload/file/20240429/1714378431181070460.pdf",
+        "tokens": ["双回路供电"],
+        "result": "PASS",
+        "note": "Zhuhai chemical-park industrial planning document; describes zone-wide dual-circuit grid supply, consistent with grid-fed operation for facilities in the park including this terminal."
+      }
+    ],
+    "gogpt_prior_assessment": "No GOGPT plant was supplied in the assignment data for this terminal (gogpt_plant field blank, gogpt_prior 'no'). Web research surfaced an independently-GEM-tracked entity, 'CNOOC Zhuhai Gas power station', which appears to sit in or near the same Zhuhai/Gaolan Port area and may share corporate lineage with the terminal's 30%-owner CNOOC Gas and Electricity Group. I could not confirm its location or its relationship to this terminal — attempts to fetch its GEM-wiki/SourceWatch pages for independent-source leads both returned HTTP 403, and the web-search budget for this session was exhausted before I could pursue it further. This terminal's own primary EIA filing names no on-site gas generation, so I am not treating that separate plant as this terminal's captive supply absent confirming evidence, but flagging it for a follow-up pass with search budget.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No captive gas generation was found at the terminal itself (grid-fed per the industrial-park planning document; only a diesel backup genset named in the terminal's own EIA). The separately-named 'CNOOC Zhuhai Gas power station' could not be confirmed as related to this terminal within available sources/budget this run — recommend a dedicated follow-up rather than adding on inference.",
+    "status_or_other_findings": "Trade press (NaturalGasWorld, Tank Storage Magazine — not independently url_verified here, not core to the captive-power question) reports a Phase 2 expansion approved around 2021 taking capacity from 3.5 to 7 mtpa; GEM's own unit data already shows Phase 2 as 'construction'. Not acted on; noted only in case useful to a status/capacity-focused Update batch.",
+    "notes": "No PowerPlantsSupplied / direction-test issue found — this is an ordinary import terminal distributing regasified gas via pipeline to Guangzhou/Hong Kong/Foshan/Zhuhai/Zhongshan/Macao/Jiangmen, not a single-purpose gas-to-power supply arrangement. Not to be confused with 'Zhuhai Huangmaodao LNG Terminal' (Hanas-proposed, cancelled) in the same shard, which shares the city name but is an unrelated, unbuilt project."
+  }
+]

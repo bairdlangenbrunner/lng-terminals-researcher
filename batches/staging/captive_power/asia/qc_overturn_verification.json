@@ -1,0 +1,28 @@
+[
+  {
+    "terminal": "Palu LNG Terminal",
+    "terminal_id": "T100000131070",
+    "overturn_upheld": true,
+    "original_ref_urls": [
+      "https://www.prnewswire.com/news-releases/aslan-energy-capital-aec-singapore-along-with-pt-agri-maritim-sulteng-ams-a-provincial-government-company-of-central-sulawesi-indonesia-unveil-the-green-energy-hub-development-plan-to-serve-the-industrial-and-mining-sector--301580127.html"
+    ],
+    "original_ref_supports_true": "no",
+    "original_ref_supports_true_explanation": "Independently re-fetched the PR Newswire release (2022-08-09) and confirmed the researcher's reading: it states the 2 MTPA Palu LNG import terminal 'will supply carbon neutral LNG for the captive 1.2 GW combined cycle powerplant' serving nickel-smelter industries. 'Captive' modifies the powerplant's relationship to the smelter/mining industrial host, not the terminal's own operations -- the release contains no statement that the terminal itself has on-site generation. url_verifier PASS confirms the exact phrase is still on the live page.",
+    "refutation_search_summary": "Multiple adversarial searches (Bing, DuckDuckGo html/lite) for 'Palu LNG genset', 'Palu LNG pembangkit/PLTGU', and 'Aslan Energy Capital Palu' returned no results describing on-site gas generation at the terminal. Found one newer lead not in the researcher's file: a May 2026 MoU (jawawa.id, PT Bangun Palu Sulawesi Tengah x Aslan Energy Capital) for a $1.75B 'battery gigafactory and LNG hub' at Palu SEZ -- this article gives no technical detail on the LNG terminal or any gas power plant. Aslan's own current projects page (aslanec.com/projects, url_verifier PASS on '400 MW') now describes the 'Palu Green Energy Hub' as 400 MW solar plus a 180 t/day green-ammonia plant, with NO mention of LNG or a gas-fired CCGT at all -- consistent with the original 1.2 GW gas plant design having been dropped/superseded in favor of solar+battery, which if anything strengthens the case against any captive gas generation existing at this site now or as designed. No source anywhere, old or new, describes on-site/onboard gas-fired generation at the Palu LNG terminal itself.",
+    "new_evidence_found": null,
+    "recommendation": "uphold overturn -- stage CaptiveGasPower True to False for Palu LNG Terminal; keep the existing PR Newswire ref as the qa/evidentiary basis for the correction (it was misread as terminal captive power when it actually describes the powerplant's captivity to the smelter host -- the direction-test case). No corroborating second source is needed since this is a deletion of an unsupported value, not a new positive claim.",
+    "confidence": "green"
+  },
+  {
+    "terminal": "Chana LNG Terminal",
+    "terminal_id": "T100000130893",
+    "overturn_upheld": true,
+    "original_ref_urls": [],
+    "original_ref_supports_true": "unreachable",
+    "original_ref_supports_true_explanation": "GEM export confirms CaptiveGasPower [ref] is BLANK for this terminal -- the pre-existing True was never backed by any citation, so there is no original source to check. An undocumented True is itself weaker evidentiary footing than Mukran's case (a documented permit statement), and does not meet the bar the brief sets for what a 'documented positive' is.",
+    "refutation_search_summary": "Adversarial searches (Bing, DuckDuckGo lite) for 'Chana LNG terminal captive power/generator', 'Songkhla Chana LNG KOWEPO TPIPP', and Thai-language EIA queries. Ten independent English-language sources (Seetao, thailand-construction.com, ippjournal.com, southeastasiainfra.com, teitimes.com, power-technology.com, TPI Polene's own official project page, EGAT's own Chana Power Plant page) consistently and only describe a jointly-developed 1.7 GW KOWEPO/TPIPP/KOGAS combined-cycle plant whose output is sold to EGAT under a PPA, paired with LNG import/storage infrastructure to fuel it. power-technology.com's project profile explicitly states 'the power generated from the project will be sold to Electricity Generating Authority of Thailand' with no mention of any captive/on-site use (note: this URL returned HTTP 403 on independent url_verifier re-check with no Wayback snapshot, so it is informational only, not re-citable). TPI Polene's own site (tpipolenepower.co.th) gives only high-level 'Green Energy Hub' framing, no technical detail suggesting on-site captive generation. No EIA or technical document surfaced despite repeated attempts. No source, in this pass or the researcher's, describes any on-site gas generation at the LNG terminal distinct from the export-only CCGT.",
+    "new_evidence_found": null,
+    "recommendation": "uphold overturn -- stage CaptiveGasPower True to False for Chana LNG Terminal using the researcher's two refs (southeastasiainfra.com, re-verified PASS on 'EGAT'; ajupress.com) as the evidentiary basis; note in the change record that the pre-existing True carried no ref at all, so this corrects an unsourced entry, not a documented one.",
+    "confidence": "green"
+  }
+]

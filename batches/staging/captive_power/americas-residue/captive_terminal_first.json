@@ -1,0 +1,141 @@
+[
+ {
+  "terminal": "Antigua Power LNG Terminal",
+  "terminal_id": "T100000131083",
+  "mechanical": "",
+  "confidence": "green",
+  "gogpt_captive_prior": "GOGPT's 'Antigua Power power station' (46.0 MW, gogpt_captive=False, 0.35 km away) IS the same Wärtsilä dual-fuel plant this terminal was purpose-built to fuel — but it is not this terminal's captive/auxiliary generation; it is the merchant/grid-selling IPP plant the terminal supplies gas to (GEM's PowerPlantsSupplied direction, correctly marked non-captive by GOGPT already). See https://www.wartsila.com/media/news/26-04-2022-wartsila-power-plant-coupled-to-lng-terminal-in-antigua-could-become-model-for-other-caribbean-utilities-3091085.",
+  "confirmed_how": "VERDICT: NO. The terminal exists to fuel Antigua Power's adjacent 46 MW dual-fuel Wärtsilä plant (five W34DF engines) at Crabbs Peninsula, which sells electricity to APUA; this is the terminal's PowerPlantsSupplied relationship, not captive generation for the terminal's own operations. No separate on-site generator powering the terminal's own pumps/regas train was found in any public source. EVIDENCE: Wärtsilä's own press release (2022) describes 'a power plant coupled to [an] LNG terminal' at Crabbs Peninsula, Antigua — five Wärtsilä 34DF dual-fuel engines totaling ~46 MW, developed jointly by Antigua Power Co and Eagle LNG's Caribbean LNG affiliate. islandpressbox.com (2023, Antigua Press Box) confirms APUA — the island utility — purchases the output ('Antigua Public Utilities Authority... will be able to purchase cleaner electricity from... APCMOL'). The LNG terminal (Caribbean LNG's 4,000 m3 storage/regas facility) is the fuel-supply leg of this project; the generation itself belongs to the power-plant entity and its electricity flows to the grid, matching the terminal's own PowerPlantsSupplied field ('Antigua Power power station') already in GEM rather than a captive-to-terminal finding.",
+  "confirmed_how [ref]": [
+   "https://www.wartsila.com/media/news/26-04-2022-wartsila-power-plant-coupled-to-lng-terminal-in-antigua-could-become-model-for-other-caribbean-utilities-3091085",
+   "https://islandpressbox.com/apc-months-away-from-providing-cleaner-safer-electricity-to-apua/"
+  ]
+ },
+ {
+  "terminal": "Aruba LNG Terminal",
+  "terminal_id": "T100000131116",
+  "mechanical": "",
+  "confidence": "green",
+  "gogpt_captive_prior": "No GOGPT prior was supplied for this terminal (gogpt_prior: no). The offtake plant (WEB's Balashi/RECIP station) is an existing, long-operating utility asset almost certainly already in GOGPT's database as Aruba's main power station; it is not this terminal's captive generation regardless.",
+  "confirmed_how": "VERDICT: NO. Proposed terminal at Refineria di Aruba (San Nicolas) was designed to pipe regasified gas to WEB's existing RECIP (Balashi) power plant — a separate utility asset owned/operated by Water- en Energiebedrijf Aruba (WEB), not the terminal. No on-site generation for the terminal's own operations is described in any source found. EVIDENCE: naturalgasworld.com (2021) and the WEB/Eagle LNG joint press release (PRNewswire, 2021) both describe the project as an LNG receiving/storage/regasification terminal that would 'send [gas] via pipeline to WEB's RECIP (Balashi) power plant' — WEB's own, pre-existing generation asset, a ~$100 million terminal investment separate from the power plant itself.",
+  "confirmed_how [ref]": [
+   "https://www.naturalgasworld.com/eagle-lng-in-aruba-regasification-project-94727",
+   "https://www.prnewswire.co.uk/news-releases/web-and-eagle-lng-enter-into-landmark-clean-lng-supply-agreement-825085693.html"
+  ]
+ },
+ {
+  "terminal": "Clifton Pier LNG Terminal",
+  "terminal_id": "T100000131117",
+  "mechanical": "",
+  "confidence": "green",
+  "gogpt_captive_prior": "GOGPT's 'Clifton Pier power station' (296.3 MW, gogpt_captive=False) is BPL's own, pre-existing multi-unit thermal plant — an entirely separate corporate host from the NPG/Shell LNG terminal. Not captive to the terminal. See https://www.bicmagazine.com/projects-expansions/downstream/shell-takes-final-investment-decision-on-lng-bahamas/.",
+  "confirmed_how": "VERDICT: NO. Shell/FOCOL's New Providence Gas Ltd (NPG) terminal at Clifton Pier is designed to supply gas to Bahamas Power and Light's (BPL) adjacent Clifton Pier power station — a separate government-utility-owned asset, not the terminal's own captive generation. EVIDENCE: BIC Magazine (2023) reports Shell's FID on the small-scale LNG regasification terminal at Clifton Pier built 'to supply the neighbouring power plant,' identifying BPL as the utility offtaker. Eye Witness News (ewnews.com, 2025) reports Parliament approving government guarantees for the Clifton Pier LNG project explicitly tied to BPL power generation. NPG (a FOCOL/Shell JV, Shell holding 40%) is a separate corporate entity from BPL, the Bahamian government-owned utility that owns and operates the Clifton Pier power station.",
+  "confirmed_how [ref]": [
+   "https://www.bicmagazine.com/projects-expansions/downstream/shell-takes-final-investment-decision-on-lng-bahamas/",
+   "https://ewnews.com/parliament-passes-resolutions-approving-government-guarantees-for-lng-project-at-clifton-pier/"
+  ]
+ },
+ {
+  "terminal": "Island Power Producers LNG Terminal",
+  "terminal_id": "T100001047792",
+  "mechanical": "",
+  "confidence": "green",
+  "gogpt_captive_prior": "GOGPT's 'Island Power Producers power station' (70.0 MW, gogpt_captive=False, listed 2.53 km away) is the same Siemens SGT800 combined-cycle plant this terminal supplies — but it sells power externally (cruise ships/BPL), so it is not the terminal's captive generation, matching GOGPT's own non-captive flag. See https://www.tribune242.com/news/2025/nov/04/cruise-power-provider-targets-10m-profit-within-four-years/.",
+  "confirmed_how": "VERDICT: NO. This is an integrated LNG-to-power project developed by FOCOL/Island Power Producers: LNG is offloaded at Nassau Container Port and piped to a Siemens SGT800 combined-cycle turbine-generator (up to 70 MW) at Arawak Cay, whose electricity is sold as shore power to docked cruise ships, with any excess potentially sold to BPL. The generation exists to sell power externally, not to run the terminal's own regas/pumping equipment — the direction test still applies even though one company develops both the terminal and the generation. EVIDENCE: The Arawak Cay LNG Project Environmental Impact Assessment (JSS Consulting for FOCOL Ltd., filed with the Bahamas Dept. of Environmental Planning and Protection, revised Nov 2025) describes a 'thermoelectric Combined Cycle Power Generation plant' using a 'Siemens Energy SGT800/SGen Gas Turbine-Generator' and 'Siemens Energy Steam Turbine-Generator SST300/SGen6,' stating the plant 'will supply cruise ships docked at the Nassau Cruise Port and supply any excess power to BPL.' I read this PDF directly (via WebFetch/local extraction) but url_verifier could not independently confirm it live — see verification_log; HTTP 403, no Wayback snapshot yet for this recently-filed document, so it is NOT included in refs. Independent corroboration: Tribune242 (Nov 2025) states 'Island Power Producers' combined cycle LNG plant will be capable of generating a maximum 70 MW,' billed to cruise ships with a possible future BPL agreement, and describes LNG being offloaded at Nassau Container Port then piped to the Arawak Cay generation plant. LNG Industry (Nov 2024) corroborates the LNG-terminal side of the same IPP project (INOX India's mini-LNG terminal contract, ten 1,500 m3 tanks) feeding IPP's '60 MW combined cycle power plant.'",
+  "confirmed_how [ref]": [
+   "https://www.tribune242.com/news/2025/nov/04/cruise-power-provider-targets-10m-profit-within-four-years/",
+   "https://www.lngindustry.com/small-scale-lng/11112024/inox-india-awarded-contract-by-island-power-producers-for-mini-lng-terminal/"
+  ]
+ },
+ {
+  "terminal": "Ocean Cay LNG Terminal",
+  "terminal_id": "T100000130544",
+  "mechanical": "False",
+  "confidence": "yellow",
+  "gogpt_captive_prior": "No GOGPT prior was supplied for this terminal (gogpt_prior: no). The 3×15 MW generators were house-load-only, aggregate 45 MW, and the project was fully cancelled by 2009, long before construction — no GOGPT record is expected to exist for this dead, never-built project.",
+  "confirmed_how": "VERDICT: YES. AES Ocean LNG's cancelled Ocean Cay import terminal (Bimini, proposed ~2002, EIA approved 2003, abandoned by 2009) was designed with three 15 MW natural gas-fired turbine generators on-site 'to generate power for the facilities of the project' — i.e., house power for the terminal's own regas/pumping/compression systems, not electricity for external sale. The project never proceeded past the design/EIA stage before the Bahamian government let it lapse amid local opposition. EVIDENCE: GlobalData's project-database entry for 'Ocean Cay LNG Terminal and Pipeline' (syndicated verbatim across offshore-technology.com and oilandgasadvancement.com — the same underlying document, treated as ONE source per the mirror rule) states: 'Three 15MW natural gas-fired turbine generators will be set up at the site to generate power for the facilities of the project.' This is explicitly distinguished from the project's separate 94-mile, 26in Ocean Cay Pipeline to Florida (built for gas export/sale, not power) — the turbine generators were purely for the terminal's own on-site use. As-designed captive power on a cancelled project that reached EIA/design stage (Bahamian government approval reported Oct 2003, before the project was scrapped ~2009) still counts per SOP §2 ('a cancelled project that got far enough to publish a design is also a YES on design').",
+  "confirmed_how [ref]": [
+   "https://www.offshore-technology.com/projects/oceancaylngterminala/"
+  ]
+ },
+ {
+  "terminal": "Jambelí FSRU",
+  "terminal_id": "T100000130833",
+  "mechanical": "False",
+  "confidence": "green",
+  "gogpt_captive_prior": "No GOGPT plant was given as a prior for this terminal (gogpt_prior: no). The terminal's documented offtaker is the existing, third-party Thermo Gas Machala I power station (~130 MW) — an independent generator predating and unrelated to the FSRU's captive status, not a captive plant of this terminal. Independent info: https://www.offshore-energy.biz/sycar-steps-forward-ecuador-fsru-project/",
+  "confirmed_how": "VERDICT: NO. The proposed Jambelí FSRU (Sycar, Bajo Alto, El Oro) is designed purely as an offshore LNG storage/regasification/truck-loading terminal that supplies regasified LNG to the existing, independently-owned Thermo Gas Machala (130 MW) power plant and to industrial/truck customers. No generation equipment is described in any project scope document. EVIDENCE: Offshore Energy (2020/2021): the FSRU 'will supply regasified LNG to an existing power plant as well as deliver volumes to an LNG truck filling station,' developed 'near the existing Thermo Gas Machala power plant.' LNG Prime confirms Sycar's Jambelí project scope (FSRU + port facility) and status through 2024. Sycar's own project page describes only port/FSRU/regas facilities to supply 'the Ecuadorian electric and industrial markets' — no generation component is listed anywhere in the company's own technical scope.",
+  "confirmed_how [ref]": [
+   "https://www.offshore-energy.biz/sycar-steps-forward-ecuador-fsru-project/",
+   "https://lngprime.com/lng-terminals/sycar-to-deliver-first-ecuador-lng-shipment/38682/",
+   "https://sycar.us/products-services/ecuador-lng-terminal/"
+  ]
+ },
+ {
+  "terminal": "Monteverde Pacific LNG Terminal",
+  "terminal_id": "T100001048451",
+  "mechanical": "False",
+  "confidence": "green",
+  "gogpt_captive_prior": "No GOGPT plant was given as a prior for this terminal (gogpt_prior: no). Project literature mentions supplying gas to 'thermoelectric plants' generally but names no specific facility; no captive on-site generator is described.",
+  "confirmed_how": "VERDICT: NO. Monteverde Pacific LNG Terminal (Pacific Terminal S.A.) is designed as a cryogenic LNG storage and regasification terminal distributing gas via a ~100 km pipeline to third-party industrial users (shrimp farms, HOLCIM, breweries, glass, plastics, food/dairy plants) and to unspecified thermoelectric plants around Guayaquil. The company's own technical description covers storage tanks, regasification, jetty and pipeline scope only — no on-site power generation is included anywhere in the published project design. EVIDENCE: Pacific Terminal's own site (lngpacificterminal.com) describes the facility as a 'Cryogenic Storage Terminal, Regasification, Transportation and Comercialization of Natural Gas' supplying ~70,000 ha of shrimp farms and named industries (HOLCIM etc.) via a 100 km pipeline to Guayaquil — no generation infrastructure mentioned. Argus Media (Oct 2024) confirms ARCH authorized Pacific Terminal S.A. to build the LNG import terminal with a 5-year completion window. El Universo (Ecuadorian daily) independently confirms the Monteverde authorization and project scope.",
+  "confirmed_how [ref]": [
+   "https://lngpacificterminal.com/en/home/",
+   "https://www.argusmedia.com/en/news-and-insights/latest-market-news/2618469-ecuador-authorizes-lng-import-terminal",
+   "https://www.eluniverso.com/noticias/economia/gas-natural-terminal-maritimo-monteverde-pacific-terminal-ecuador-nota/"
+  ]
+ },
+ {
+  "terminal": "Maurice Bonnefil LNG Terminal",
+  "terminal_id": "T100000130665",
+  "mechanical": "",
+  "confidence": "yellow",
+  "gogpt_captive_prior": "No GOGPT prior was supplied for this terminal (gogpt_prior: no). The 40 MW power plant this terminal was designed to feed was itself never built (project presumed cancelled since 2014) and was sited separately from the terminal — not this terminal's captive generation regardless.",
+  "confirmed_how": "VERDICT: NO. Haytrac's cancelled Maurice Bonnefil terminal (14 km north of Port-au-Prince; construction reportedly started 2013, presumed dead since 2014) was designed to supply gas via pipeline/trucking to Port-au-Prince and seven other cities, plus 'a 40 MW gas-fired power plant near the capital' — a facility separate from the terminal site itself, not on-site captive generation. EVIDENCE: SAIS Perspectives (Johns Hopkins School of Advanced International Studies, 2014) states: 'The terminal would supply users in Port-au-Prince and seven other cities, as well as a 40 MW gas-fired power plant near the capital' — placing the power plant near Port-au-Prince proper, distinct from the terminal site 14 km to the north. Caribbean Maritime (landmarine.org, Caribbean Shipping Association) independently describes the Maurice Bonnefil terminal purely as an LNG storage/regasification complex ('storage and regasification phases'), with no on-site generation capacity mentioned anywhere in the piece — consistent with the power plant being a separate, offsite facility rather than integrated into the terminal.",
+  "confirmed_how [ref]": [
+   "http://www.saisperspectives.com/2014issue/2014/10/12/lng-imports-a-case-study-in-developing-haitis-energy-sector-",
+   "https://landmarine.org/cm/index.php/221-lng.html"
+  ]
+ },
+ {
+  "terminal": "Puerto Cortés LNG Terminal",
+  "terminal_id": "T100001061417",
+  "mechanical": "False",
+  "confidence": "green",
+  "gogpt_captive_prior": "The given GOGPT prior 'Puerto Cortés power station' (350 MW, gogpt_captive already False, 1.97 km away) is a separate, dormant/shelved 2019 proposal by Cortés Gas Natural (CGN) — a different sponsor's combined-cycle project unrelated to Genesis Energías' LNG terminal or the Brassavola plant it actually supplies. Coincidentally close to the terminal but inactive since ~2021 with no link to this LNG project found. Independent info: https://www.power-technology.com/data-insights/power-plant-profile-cortes-natural-gas-power-plant-honduras/ (GlobalData: 'currently at the dormant stage').",
+  "confirmed_how": "VERDICT: NO. Puerto Cortés LNG Terminal is an FSU-only storage and truck-loading facility (vessel Bilbao Knutsen, steam-turbine-propelled, 138,000 m³). LNG is trucked roughly 75 km inland via a 'virtual pipeline' to the separate Brassavola combined-cycle power plant in Villanueva, Cortés (~80 km from the port), where it is degasified and burned in the plant's own aeroderivative gas turbines plus a Siemens steam turbine generator for a combined 240 MW. No generation equipment is sited at the Puerto Cortés terminal itself. EVIDENCE: Baird Maritime and Watson Farley & Williams (deal counsel) both describe Bilbao Knutsen's role as floating storage/transfer only, feeding Brassavola. La Prensa and El Heraldo (independent Honduran investigative outlets) both state the Brassavola plant installations are in Villanueva, Cortés, roughly 80 km from the Puerto Cortés port, and describe LNG being moved to the plant rather than power being generated at the port terminal.",
+  "confirmed_how [ref]": [
+   "https://www.bairdmaritime.com/shipping/tankers/gas/knutsen-lng-carrier-to-undergo-fsu-conversion-for-honduras-gas-to-power-project",
+   "https://www.wfw.com/press/wfw-advises-genesis-on-chartering-of-bilbao-knutsen-for-its-lng-to-power-project-in-honduras/",
+   "https://www.elheraldo.hn/elheraldoplus/investigaciones/terminal-gas-licuado-puerto-cortes-proyecto-alto-riesgo-ambiental-BG23073424",
+   "https://www.laprensa.hn/honduras/honduras-alto-riesgo-ambiental-planta-gas-natural-puerto-cortes-KG23074806"
+  ]
+ },
+ {
+  "terminal": "Puerto Sandino FSRU",
+  "terminal_id": "T100000130966",
+  "mechanical": "False",
+  "confidence": "green",
+  "gogpt_captive_prior": "The given GOGPT prior 'Planta Nicaragua power station' (106 MW, gogpt_captive already False, 0.85 km away) is a pre-existing, separate power station. ENEL's own description of the NFE 300 MW plant as Nicaragua's 'primera Planta generadora de electricidad a base de gas natural' (first gas-fired generating plant) confirms Planta Nicaragua is non-gas-fired (legacy fuel) and unrelated to this LNG terminal, despite being nearby. Independent info: https://enel.gob.ni/nicaragua-proxima-a-inaugurar-su-primera-planta-de-gas-natural-de-300-mw/",
+  "confirmed_how": "VERDICT: NO. Puerto Sandino FSRU is New Fortress Energy's offshore floating storage/regasification facility, connected by a dedicated ~5-mile (8 km; ENEL cites 4-5 km) subsea/onshore pipeline to the separate onshore Puerto Sandino LNG power plant (300 MW nameplate, seven 44 MW open-cycle gas turbines) — Nicaragua's first natural-gas-fired generating plant per the national utility ENEL. No generation equipment is described at the offshore FSRU/terminal itself; the power plant is a distinct, non-fenceline facility reached only by dedicated pipeline. EVIDENCE: ENEL (Nicaragua's state electric utility, primary/regulatory source): 'su primera Planta generadora de electricidad a base de gas natural' (300 MW, 7×44 MW turbines), fed from 'un almacén flotante... de gas.' New Fortress Energy's own IR press release confirms the 25-year PPA for the ~300 MW plant tied to the FSRU. Gas Outlook and Power Technology (marketdata) both independently describe the FSRU as supplying the separate onshore power station. LNG Prime (2025) confirms the FSU/jetty and the power plant as two distinct pieces of infrastructure, reporting the power plant 100% complete and the FSU/jetty ~95% complete separately.",
+  "confirmed_how [ref]": [
+   "https://enel.gob.ni/nicaragua-proxima-a-inaugurar-su-primera-planta-de-gas-natural-de-300-mw/",
+   "https://ir.newfortressenergy.com/news-releases/news-release-details/new-fortress-energy-signs-25-year-agreement-300-mw-gas-power",
+   "https://gasoutlook.com/analysis/new-fortress-lng-project-in-nicaragua-tests-u-s-tolerance-for-commercial-ties/",
+   "https://www.power-technology.com/marketdata/puerto-sandino-lng-power-plant-nicaragua/",
+   "https://lngprime.com/americas/nfe-says-nicaragua-lng-to-power-project-almost-complete/131802/"
+  ]
+ },
+ {
+  "terminal": "GNL Del Plata FSRU",
+  "terminal_id": "T100000130580",
+  "mechanical": "False",
+  "confidence": "green",
+  "gogpt_captive_prior": "No GOGPT plant was given as a prior for this terminal (gogpt_prior: no). No power plant is co-located at the cancelled Gas Sayago site; the design's offtake is UTE's separate, independently-developed 530 MW combined-cycle plant onshore.",
+  "confirmed_how": "VERDICT: NO. As designed (project cancelled ~2018, never built), GNL del Plata FSRU (Gas Sayago S.A., a UTE/Ancap joint venture) was purely a floating storage and regasification facility. Its own 2017 environmental impact study describes the regasification unit only as a heat-exchanger with 'high-efficiency motors' (low emissions) — no dedicated generation plant. The project's entire purpose was to supply regasified gas via pipeline to a separate onshore 530 MW combined-cycle power plant being built on-shore by state utility UTE — a direction-test relationship, not captive power. EVIDENCE: The project's own May 2017 EIA ('Proyecto GNL del Plata: Terminal de Recepción y Regasificación de Gas Natural Licuado') states the regasification unit 'contará con motores de alta eficiencia, asegurando muy bajas emisiones' and frames natural gas's role as feeding Uruguay's electricity system generally via UTE, with no on-site generation plant described for the FSRU/terminal. Offshore Technology and BNamericas independently confirm Gas Sayago S.A. (UTE/Ancap JV) developed the FSRU specifically to supply UTE's separate onshore 530 MW combined-cycle plant.",
+  "confirmed_how [ref]": [
+   "https://silo.tips/download/proyecto-gnl-del-plata-terminal-de-recepcion-y-regasificacion-de-gas-natural-lic",
+   "https://www.offshore-technology.com/projects/gnl-del-plata-project-port-of-montevideo/",
+   "https://www.bnamericas.com/en/company-profile/gas-sayago-sa-gssa"
+  ]
+ }
+]

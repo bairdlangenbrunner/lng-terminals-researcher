@@ -1,0 +1,342 @@
+[
+ {
+  "terminal": "Chita Kyodo LNG Terminal",
+  "terminal_id": "T100000130459",
+  "country": "Japan",
+  "verdict": "NO",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "green",
+  "captive_summary": "Chita Kyodo (知多LNG共同基地) is a JERA/Toho Gas joint-owned import base whose GEM PowerPlantsSupplied field already names Chita Thermal Power Station as the offtaker. JERA's official regulatory capacity-disclosure filing for this facility lists a complete equipment inventory — LNG tanks (75 thousand kL x4) and ORV vaporizers only, no generation equipment of any kind.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "JERA's mandatory 'liquefied gas storage facility capacity' disclosure (知多地区 液化ガス貯蔵設備の容量等の公表, filed under Japan's LNG third-party-access disclosure regime) itemizes 知多LNG共同基地's full equipment list — storage tanks + ORV vaporizers — with no boiler, turbine, engine or generator line item anywhere in the document. This is an equipment-enumeration NO: the regulatory filing is the kind of document that would list generation plant if it existed. Direction test: the terminal supplies regasified gas TO Chita Thermal Power Station (JERA's own large merchant/utility plant, ~5,286 MW per GOGPT prior on the sibling Chita LNG Terminal record), not the reverse.",
+  "refs": [
+   "https://www.jera.co.jp/static/files/business/optimization/lng/pdf/lng-tita-ekika.pdf"
+  ],
+  "verification_log": [
+   {
+    "url": "https://www.jera.co.jp/static/files/business/optimization/lng/pdf/lng-tita-ekika.pdf",
+    "tokens": [
+     "ORV"
+    ],
+    "result": "PASS",
+    "note": "confirms vaporizer-only gas-generation equipment list for the Chita-area facilities"
+   },
+   {
+    "url": "https://www.jera.co.jp/static/files/business/optimization/lng/pdf/lng-tita-ekika.pdf",
+    "tokens": [
+     "130t/h"
+    ],
+    "result": "FAIL",
+    "note": "PDF text extraction inserts spaces between characters in the ORV rating line ('1 3 0 t / h'); verifier's no-space-folding rule causes a false FAIL on this specific numeric token even though the value is present on the page — used 'ORV' and facility-name tokens instead"
+   }
+  ],
+  "gogpt_prior_assessment": "",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "No on-site generation found; not a gas power station at all (grid/vaporization-only import base). Size is not the reason — there is simply no generating hardware documented.",
+  "status_or_other_findings": "",
+  "notes": "PowerPlantsSupplied direction case: terminal feeds Chita Thermal Power Station (JERA), not the reverse. Not a captive finding."
+ },
+ {
+  "terminal": "Chita LNG Terminal",
+  "terminal_id": "T100000130461",
+  "country": "Japan",
+  "verdict": "NO",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "green",
+  "captive_summary": "Chita LNG Terminal (知多エル・エヌ・ジー 知多LNG基地) is a separate JERA-subsidiary import base in the same Chita cluster. The same JERA regulatory capacity-disclosure filing lists its full equipment as LNG tanks (80 thousand kL x6) plus ORV vaporizers only — no generation plant. The GOGPT prior itself already flags the matched Chita thermal power station as non-captive (gogpt_captive: False), which is correct: it is JERA's own large merchant/utility plant, not this terminal's captive generator.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Same JERA regulatory filing (知多地区 液化ガス貯蔵設備の容量等の公表) itemizes 知多エル・エヌ・ジー 知多LNG基地's equipment as storage tanks + ORV vaporizers, no generation line item. Direction/host test on the GOGPT prior: Chita Thermal Power Station (~5,286 MW, JERA-owned, confirmed by Japanese Wikipedia) is a large multi-unit merchant thermal station on the adjacent site that receives gas piped from the Chita terminals — the terminal supplies the plant, the plant does not power the terminal.",
+  "refs": [
+   "https://www.jera.co.jp/static/files/business/optimization/lng/pdf/lng-tita-ekika.pdf",
+   "https://ja.wikipedia.org/wiki/%E7%9F%A5%E5%A4%9A%E7%81%AB%E5%8A%9B%E7%99%BA%E9%9B%BB%E6%89%80"
+  ],
+  "verification_log": [
+   {
+    "url": "https://www.jera.co.jp/static/files/business/optimization/lng/pdf/lng-tita-ekika.pdf",
+    "tokens": [
+     "知多緑浜工場"
+    ],
+    "result": "PASS",
+    "note": "confirms the multi-facility Chita disclosure document is the right one"
+   },
+   {
+    "url": "https://ja.wikipedia.org/wiki/%E7%9F%A5%E5%A4%9A%E7%81%AB%E5%8A%9B%E7%99%BA%E9%9B%BB%E6%89%80",
+    "tokens": [
+     "知多火力発電所"
+    ],
+    "result": "PASS",
+    "note": "Chita Thermal Power Station background page, used for gogpt_prior_assessment only"
+   },
+   {
+    "url": "https://www.jera.co.jp/corporate/business/museum/chita/guide/thermalpower",
+    "tokens": [
+     "知多火力"
+    ],
+    "result": "FAIL",
+    "note": "HTTP 403, no Wayback snapshot available; dropped in favor of the Wikipedia page for the same fact"
+   }
+  ],
+  "gogpt_prior_assessment": "Chita thermal power station is NOT this terminal's captive power. It is JERA's own large multi-unit merchant/utility thermal station (rated ~5,286 MW per the GOGPT prior; background confirmed at https://ja.wikipedia.org/wiki/%E7%9F%A5%E5%A4%9A%E7%81%AB%E5%8A%9B%E7%99%BA%E9%9B%BB%E6%89%80 ), sited adjacent to the LNG terminals and fed by them, not the other way around — a PowerPlantsSupplied relationship, correctly already flagged non-captive by GOGPT (gogpt_captive: False).",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "Existing GOGPT record for Chita thermal power station already covers this plant and is correctly flagged non-captive; the LNG terminal itself has no on-site generation.",
+  "status_or_other_findings": "",
+  "notes": "PowerPlantsSupplied direction case, same cluster as Chita Kyodo LNG Terminal and Chita Midorihama LNG Terminal."
+ },
+ {
+  "terminal": "Chita Midorihama LNG Terminal",
+  "terminal_id": "T100000130463",
+  "country": "Japan",
+  "verdict": "NO",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "green",
+  "captive_summary": "Chita Midorihama (東邦ガス 知多緑浜工場) is a Toho Gas-owned base in the same Chita cluster, feeding Chubu Electric's Kawagoe Thermal Power Plant — a different company's plant entirely (Toho Gas is a gas utility, Chubu Electric is the separate power utility). The JERA/Toho Gas regulatory capacity disclosure lists its equipment as LNG tanks (200 thousand kL x2 plus 160/220 thousand kL) and ORV vaporizers only, no generation plant.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "知多地区 液化ガス貯蔵設備の容量等の公表 itemizes 東邦ガス 知多緑浜工場's equipment as storage tanks + ORV vaporizers with no generation line item. This is also a clean 'captive to WHOM' case: Kawagoe Thermal Power Plant is Chubu Electric Power's own asset, a wholly different company from terminal-owner Toho Gas — even if the terminal had on-site generation, a Kawagoe-side plant would never be this terminal's captive power by definition.",
+  "refs": [
+   "https://www.jera.co.jp/static/files/business/optimization/lng/pdf/lng-tita-ekika.pdf"
+  ],
+  "verification_log": [
+   {
+    "url": "https://www.jera.co.jp/static/files/business/optimization/lng/pdf/lng-tita-ekika.pdf",
+    "tokens": [
+     "知多緑浜工場"
+    ],
+    "result": "PASS",
+    "note": "confirms facility name and equipment section present"
+   }
+  ],
+  "gogpt_prior_assessment": "",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "No on-site generation; the named offtake plant (Kawagoe) belongs to a different company (Chubu Electric) and is not this terminal's captive power under any reading.",
+  "status_or_other_findings": "",
+  "notes": "PowerPlantsSupplied direction + different-host case: Kawagoe Thermal Power Plant belongs to Chubu Electric, not terminal-owner Toho Gas."
+ },
+ {
+  "terminal": "Fukuoka LNG Terminal",
+  "terminal_id": "T100000130465",
+  "country": "Japan",
+  "verdict": "NO",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "yellow",
+  "captive_summary": "Fukuoka LNG Terminal (Saibu Gas's 福北工場/Fukuhoku Plant) was a small municipal-gas-only satellite receiving/vaporization station — 2 above-ground tanks (70,000 kL total) and 7 vaporizers (103 t/h) per its facility profile — decommissioned in June 2015 once the much larger Hibiki LNG base came online. No power-plant offtake, vessel, or generation equipment is associated with it in any source found.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "The Japanese Wikipedia LNG-base list entry gives the complete equipment inventory (storage + vaporizers only, operations began 1993, scheduled for suspension after Hibiki LNG completion); Nikkei's 2015 article confirms the Fukuhoku and Kitakyushu plants were both decommissioned that year once Hibiki LNG took over. Neither source, nor any Saibu Gas corporate-history page found, mentions generation equipment at this site — it was a pure city-gas gasification satellite, not a power-linked terminal. Screened as a non-candidate on retired-and-non-power-linked grounds rather than deep-researching a decommissioned satellite station with a documented equipment list that excludes generation.",
+  "refs": [
+   "https://ja.wikipedia.org/wiki/%E6%97%A5%E6%9C%AC%E3%81%AELNG%E5%9F%BA%E5%9C%B0%E4%B8%80%E8%A6%A7",
+   "https://www.nikkei.com/article/DGXLZO84373980T10C15A3LX0000/"
+  ],
+  "verification_log": [
+   {
+    "url": "https://ja.wikipedia.org/wiki/%E6%97%A5%E6%9C%AC%E3%81%AELNG%E5%9F%BA%E5%9C%B0%E4%B8%80%E8%A6%A7",
+    "tokens": [
+     "福北工場"
+    ],
+    "result": "PASS",
+    "note": "confirms Fukuhoku plant equipment entry"
+   },
+   {
+    "url": "https://www.nikkei.com/article/DGXLZO84373980T10C15A3LX0000/",
+    "tokens": [
+     "西部ガス"
+    ],
+    "result": "PASS",
+    "note": "confirms 2015 closure article"
+   }
+  ],
+  "gogpt_prior_assessment": "",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "No generation found and the terminal has been decommissioned since 2015.",
+  "status_or_other_findings": "Facility retired 2015 (superseded by Hibiki LNG base) — matches GEM's retired status already on this record.",
+  "notes": "Screened for a retired, non-power-linked, equipment-documented-without-generation municipal-gas satellite station — flagging this as a slight extension beyond the brief's literal SCREENED criteria (cancelled-never-built / crude-oil) for orchestrator QC, since the facility DID operate historically but is now fully decommissioned and never had a power role. [ORCHESTRATOR QC 2026-07-31: re-graded SCREENED->NO. SCREEN criteria (cancelled-never-built/crude-oil) do not cover a retired facility that operated 1993-2015; however the researched equipment inventory (2 tanks + 7 vaporizers, no generation equipment) constitutes a documented equipment-enumeration NO, so the verdict stands on the same sources as a NO rather than a screen.]"
+ },
+ {
+  "terminal": "Futtsu LNG Terminal",
+  "terminal_id": "T100000130467",
+  "country": "Japan",
+  "verdict": "NO",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "green",
+  "captive_summary": "Futtsu LNG Terminal is JERA's LNG base embedded within the giant Futtsu Thermal Power Station complex (~5,160-5,334 MW). TEPCO/JERA's official regulatory capacity-disclosure filing lists the base's full equipment as LNG tanks (10 tanks, 1.11 million kL) plus ORV vaporizers and a 熱調設備 (heat-conditioning system) only — no separate generation plant. Gas from the base fuels Futtsu itself and is piped onward to other Keiyo/Keihin-side plants via the East-West interconnection gas pipeline — the base is auxiliary infrastructure of the power station, not the reverse.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "JERA's mandatory 液化ガス貯蔵設備の容量等の公表 filing itemizes the Futtsu LNG base's equipment (tanks, ORV vaporizers, heat-conditioning) with no boiler/turbine/engine/generator line item. This is a 'captive to WHOM' case in the opposite sense from most: the LNG base sits physically inside the Futtsu power station's site and draws station-service power from Futtsu itself (the primary generating asset), rather than having any separate captive plant of its own.",
+  "refs": [
+   "https://www.jera.co.jp/static/files/business/optimization/lng/pdf/lng-ekika.pdf"
+  ],
+  "verification_log": [
+   {
+    "url": "https://www.jera.co.jp/static/files/business/optimization/lng/pdf/lng-ekika.pdf",
+    "tokens": [
+     "170t/h",
+     "ORV"
+    ],
+    "result": "PASS",
+    "note": "confirms Futtsu section equipment list (tanks + ORV vaporizers only)"
+   },
+   {
+    "url": "https://www.jera.co.jp/static/files/business/optimization/lng/pdf/lng-ekika.pdf",
+    "tokens": [
+     "南横浜"
+    ],
+    "result": "PASS",
+    "note": "confirms multi-facility disclosure doc covers Futtsu among TEPCO/JERA LNG bases"
+   },
+   {
+    "url": "https://www.jera.co.jp/static/files/business/thermal-power/list/pdf/futtsu.pdf",
+    "tokens": [
+     "富津"
+    ],
+    "result": "FAIL",
+    "note": "text-extraction mismatch on this particular JERA plant-list PDF; not used as a citation"
+   },
+   {
+    "url": "https://ja.wikipedia.org/wiki/%E5%AF%8C%E6%B4%A5%E7%81%AB%E5%8A%9B%E7%99%BA%E9%9B%BB%E6%89%80",
+    "tokens": [
+     "富津火力発電所"
+    ],
+    "result": "PASS",
+    "note": "used for gogpt_prior_assessment background only, not as the captive-verdict citation"
+   }
+  ],
+  "gogpt_prior_assessment": "Futtsu Thermal Power Station is NOT this terminal's captive power — it is the opposite relationship. The LNG base is physically sited within JERA's own ~5,160-5,334 MW multi-unit Futtsu Thermal Power Station (background: https://ja.wikipedia.org/wiki/%E5%AF%8C%E6%B4%A5%E7%81%AB%E5%8A%9B%E7%99%BA%E9%9B%BB%E6%89%80 ) and supplies it (and other JERA/TEPCO plants via interconnecting pipeline) with regasified gas; GOGPT already correctly flags it non-captive (gogpt_captive: False).",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "Existing GOGPT record for Futtsu Thermal Power Station already covers this plant and is correctly flagged non-captive; the LNG base itself has no separate on-site generation.",
+  "status_or_other_findings": "",
+  "notes": "PowerPlantsSupplied direction case — terminal is auxiliary infrastructure of the Futtsu power station, not a captive generator for it."
+ },
+ {
+  "terminal": "Hachinohe LNG Terminal",
+  "terminal_id": "T100000130469",
+  "country": "Japan",
+  "verdict": "NO",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "green",
+  "captive_summary": "Hachinohe LNG Terminal is owned by ENEOS (via ENEOS LNG Service) and supplies gas to Tohoku Electric Power's separately-owned Hachinohe Thermal Power Station (416 MW) next door. ENEOS's own official equipment page for the terminal lists a complete inventory — 2x 140,000 kL LNG tanks, an LPG tank, BOG compressor, LNG vaporizer, truck loading facility, two vessel berths, and a flare stack — with no generation equipment of any kind.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "ENEOS's own facility equipment page (lng.eneos.co.jp/terminal/hachinohe/equipment.html) is a first-party, complete site equipment enumeration — storage, LPG tank, BOG compressor, vaporizer, loading, berths, flare — that would list a generator if one existed and does not. This is also a clean different-host case: the offtake plant is owned by Tohoku Electric Power, not by terminal-owner ENEOS, so even a captive-style generator at Hachinohe Thermal Power Station itself would not be this terminal's captive power.",
+  "refs": [
+   "https://www.lng.eneos.co.jp/terminal/hachinohe/equipment.html"
+  ],
+  "verification_log": [
+   {
+    "url": "https://www.lng.eneos.co.jp/terminal/hachinohe/equipment.html",
+    "tokens": [
+     "BOG",
+     "140,000"
+    ],
+    "result": "PASS",
+    "note": "confirms full equipment list, no generation line item"
+   },
+   {
+    "url": "https://www.tohoku-epco.co.jp/pr/aomori/hachinohe.html",
+    "tokens": [
+     "八戸"
+    ],
+    "result": "FAIL",
+    "note": "likely JS-rendered content not present in static fetch; dropped in favor of Wikipedia for gogpt_prior_assessment background"
+   },
+   {
+    "url": "https://ja.wikipedia.org/wiki/%E5%85%AB%E6%88%B8%E7%81%AB%E5%8A%9B%E7%99%BA%E9%9B%BB%E6%89%80",
+    "tokens": [
+     "八戸火力発電所"
+    ],
+    "result": "PASS",
+    "note": "used for gogpt_prior_assessment background only"
+   }
+  ],
+  "gogpt_prior_assessment": "Hachinohe thermal power station is NOT this terminal's captive power — it is Tohoku Electric Power's own plant (416 MW, matching the GOGPT prior's gogpt_total_mw exactly; background at https://ja.wikipedia.org/wiki/%E5%85%AB%E6%88%B8%E7%81%AB%E5%8A%9B%E7%99%BA%E9%9B%BB%E6%89%80 ), a different company from terminal-owner ENEOS. GOGPT already correctly flags it non-captive (gogpt_captive: False).",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "Existing GOGPT record for Hachinohe thermal power station already covers this plant, owned by a different company than the terminal, correctly flagged non-captive.",
+  "status_or_other_findings": "",
+  "notes": "PowerPlantsSupplied direction + different-host case."
+ },
+ {
+  "terminal": "Hatsukaichi LNG Terminal",
+  "terminal_id": "T100000130473",
+  "country": "Japan",
+  "verdict": "YES",
+  "mechanical": "False",
+  "captive_category": "power_generation",
+  "hardware_summary": "2x MHIET KU30GA natural gas engines, 5,500 kW each (11,000 kW / 11 MW total generation capacity), gas-engine cogeneration installed 2004; retrofitted in 2018 with Miller-cycle combustion and a switch from micro-pilot-oil ignition to spark ignition, further reducing residual liquid-fuel dependence.",
+  "fuel_basis": "Hiroshima Gas's own 2004 announcement explicitly names the equipment 天然ガスエンジン (natural gas engine) cogeneration, 高効率天然ガスエンジン5,500kW×2台 (high-efficiency natural gas engines, 5,500kW x2). MHIET's 2018 retrofit release independently confirms the engine model (KU30GA) and describes converting the ignition system away from oil-pilot ignition toward spark ignition — corroborating gas, not diesel/oil, as the operating fuel.",
+  "confidence": "green",
+  "captive_summary": "Hiroshima Gas installed an 11,000 kW (2x 5,500 kW) natural-gas-engine cogeneration plant at its Hatsukaichi factory in 2004 specifically to power the LNG terminal's own refrigeration/vaporization load, with waste heat recovered as hot water for LNG vaporization (cutting vaporization fuel gas use by ~60% per the announcement) and surplus power (~10,000 kW) wheeled to the grid for wholesale sale. This is on-site gas-fired electricity generation whose primary purpose is powering the terminal — a captive, partially-exporting plant, and stays green even with the grid-export component per SOP.",
+  "electric_mw": "11",
+  "mechanical_drive_note": "",
+  "confirmed_how": "RE-VERIFICATION of a pre-existing GEM True: checked scripts/gem_export.csv (utf-8-sig) for terminal_id T100000130473 — CaptiveGasPower='True', CaptiveGasPower [ref]='https://www.hiroshima-gas.co.jp/com/w_new/new03_11/hatsu_c.htm' (cols 73/74), matching the dispatch file's captive_gas_power_ref_current exactly (single existing URL, nothing else to carry forward). Re-fetched that URL directly: it is Hiroshima Gas's 2004 own-site announcement (廿日市工場へのガスコージェネレーションシステム導入について), still live, still states the same content — purpose ('発電した電力は工場設備で使用...余剰電力については電力会社の送電系から託送') and equipment spec ('発電容量　11,000kW（高効率天然ガスエンジン5,500kW×2台）'). The existing True and its ref both hold. Supplemented (did not replace) with MHIET/Nippon Steel Engineering's 2018 press release on a retrofit of these same two engines, which independently confirms model KU30GA, 5,500kW rating, and the 2004 original installation date at 広島ガス廿日市工場 — new corroboration from an independent turbine-OEM source, not a replacement citation. A newer (2025) LAES (liquid-air energy storage) project at the same site was checked and ruled out as a distinct, non-combustion technology (charges by liquefying air using grid power + LNG cold energy, discharges via expansion turbine) — not counted here.",
+  "refs": [
+   "https://www.hiroshima-gas.co.jp/com/w_new/new03_11/hatsu_c.htm",
+   "https://www.mhi.com/jp/group/mhiet/news/20181128.html"
+  ],
+  "verification_log": [
+   {
+    "url": "https://www.hiroshima-gas.co.jp/com/w_new/new03_11/hatsu_c.htm",
+    "tokens": [
+     "発電"
+    ],
+    "result": "FAIL",
+    "note": "bare kanji token too weak / page encoding quirk caused false FAIL"
+   },
+   {
+    "url": "https://www.hiroshima-gas.co.jp/com/w_new/new03_11/hatsu_c.htm",
+    "tokens": [
+     "5,500kW"
+    ],
+    "result": "PASS",
+    "note": "confirms per-unit rating"
+   },
+   {
+    "url": "https://www.hiroshima-gas.co.jp/com/w_new/new03_11/hatsu_c.htm",
+    "tokens": [
+     "11,000kW"
+    ],
+    "result": "PASS",
+    "note": "confirms total generation capacity"
+   },
+   {
+    "url": "https://www.mhi.com/jp/group/mhiet/news/20181128.html",
+    "tokens": [
+     "KU30GA"
+    ],
+    "result": "PASS",
+    "note": "confirms engine model, independent OEM source"
+   },
+   {
+    "url": "https://www.mhi.com/jp/group/mhiet/news/20181128.html",
+    "tokens": [
+     "5,500kW"
+    ],
+    "result": "PASS",
+    "note": "confirms per-unit output rating, corroborating the 2004 announcement"
+   }
+  ],
+  "gogpt_prior_assessment": "",
+  "gogpt_candidate": "ADD",
+  "gogpt_candidate_basis": "Genuine gas-engine cogeneration plant with a citable nameplate (11,000 kW / 11 MW), confirmed by two independent primary sources (site operator Hiroshima Gas + turbine OEM MHIET). No existing GOGPT match was given for this terminal (gogpt_prior: no) — a new sub-50 MW captive gas power-station record is warranted.",
+  "status_or_other_findings": "Separate from the captive-power finding: a new (Dec 2025) 4.99 MW LAES (liquid-air energy storage) demonstration plant was commissioned at the same Hatsukaichi site by Hiroshima Gas and Sumitomo Heavy Industries. It is explicitly non-combustion (charges via air liquefaction, discharges via expansion turbine using stored liquid air, with LNG cold energy improving charging efficiency) and was correctly excluded from the captive-gas-power verdict per SOP's cold-energy-generation trap — noting it here only as a status/technology finding, not acted on.",
+  "notes": "Pre-existing CaptiveGasPower=True in the GEM export (confirmed directly against scripts/gem_export.csv cols 73/74, not just the dispatch file's prior). Treated as a re-verify, not a fresh question: the existing ref URL was re-fetched and still fully supports the claimed value, so it is carried forward unchanged (MERGE — no URL dropped) plus one new independent MHIET corroboration added. Recommend keeping True and adding the MHIET ref as corroboration plus electric_mw=11 if the field build supports it."
+ }
+]

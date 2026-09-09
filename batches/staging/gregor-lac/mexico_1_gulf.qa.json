@@ -1,0 +1,92 @@
+[
+  {
+    "category": "value_conflict",
+    "terminal_id": "T100001054469",
+    "unit_id": "G100001062346",
+    "terminal_name": "Coatzacoalcos II LNG Terminal",
+    "issue": "Two independent sources disagree on total project investment for the 2026 URSUS Energy/Samsung E&A scale-up: mexicobusiness.news (7 Jul 2026) states US$2.1bn total ($450M initial phase); bnamericas.com's headline states US$2.2bn for the same announcement. Staged Cost=2.1bn at yellow (see updates.json); could not resolve the ~$100M gap -- bnamericas full text is blocked to WebFetch (HTTP 403) though url_verifier confirms the live page contains both '2.1' and '2.2' tokens (possibly a narrower vs. broader total).",
+    "severity": "medium",
+    "suggested_action": "Reviewer: read the full bnamericas.com article (may need a subscription/different access route) to see whether $2.2bn is a different scope (e.g. incl. pipeline/associated infrastructure) than mexicobusiness's $2.1bn plant figure; adjust Cost/CostYear accordingly next cycle.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "legal_regulatory_risk",
+    "terminal_id": "T100001054469",
+    "unit_id": "G100001062346",
+    "terminal_name": "Coatzacoalcos II LNG Terminal",
+    "issue": "mexicobusiness.news (7 Jul 2026) reports the URSUS Energy/Samsung E&A scale-up announcement references an unresolved port-concession revocation dispute with a prior concessionaire (Mota-Engil) at the PODEBIS Coatzacoalcos site, which the article says 'may complicate execution.' Not previously reflected in GEM's Status or notes. No Status edit staged (project remains 'proposed'; no confirmed groundbreaking found).",
+    "severity": "medium",
+    "suggested_action": "Watch for resolution of the Mota-Engil concession dispute in the next batch; a confirmed loss of site control would be a materially different finding than a normal permitting delay.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "entity_naming_ambiguity",
+    "terminal_id": "T100001054469",
+    "unit_id": "G100001062346",
+    "terminal_name": "Coatzacoalcos II LNG Terminal",
+    "issue": "GEM's Operator field reads 'Ursus Aqualita LNG' (from the original 2025 record); 2026 press (mexicobusiness.news, bnamericas.com) refers to the developer as 'URSUS Energy' with no explicit statement that this is a rebrand of the same entity vs. a related-but-distinct vehicle. Samsung E&A is named as EPC/engineering partner and co-announcer of the $2.1bn investment, with no disclosed equity percentage -- entity_lookup.py run bare + --remote for both 'Samsung E&A' and 'URSUS Energy' (RUN: local lookup returned not_found_in_local_data for both; --remote lookup skipped this session, GEM_PROJECT_DB_BASE_URL not set). No Owner/Operator field edit staged given the naming ambiguity and lack of a disclosed equity stake for Samsung E&A.",
+    "severity": "low",
+    "suggested_action": "If a future source explicitly equates 'Ursus Aqualita LNG' = 'URSUS Energy' (or clarifies they are distinct), update Operator accordingly; if Samsung E&A's role is later confirmed as an equity stake rather than pure EPC, add it to Owner/Parent with entity_lookup re-run against the live Postgres (not just the skipped --remote check).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "citation_unverifiable",
+    "terminal_id": "T100000131114",
+    "unit_id": "G100002111400",
+    "terminal_name": "Coatzacoalcos LNG Terminal (CFE)",
+    "issue": "Two pre-existing Reuters citations on this record (ProposalDate [ref]: 'mexico-plans-three-gas-liquefaction-facilities...2022-04-01'; FacilityType [ref]/Cost [ref]/Pipelines [ref]: 'mexico-plans-4-5-bln-lng-hub...2022-09-27') both returned HTTP 401 with no Wayback snapshot available to verify against this batch. Per bot-block-is-not-dead rule, left unchanged (not proven dead) rather than dropped.",
+    "severity": "medium",
+    "suggested_action": "Re-check both Reuters URLs in a future batch (bot-blocking or Wayback coverage may change); if still unverifiable after repeated attempts, consider hunting for an alternate corroborating source for the same facts.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "citation_unverifiable",
+    "terminal_id": "T100000130574",
+    "unit_id": "G100002057400",
+    "terminal_name": "Progreso LNG Terminal",
+    "issue": "Pre-existing offshore-technology.com citation (Owner [ref]/Location [ref]/FacilityType [ref]) returned HTTP 403 with no Wayback snapshot available this batch. Left unchanged (not proven dead); the paired web.archive.org/lngworldnews.com mirror on the same cells still verifies live.",
+    "severity": "low",
+    "suggested_action": "Re-check offshore-technology.com in a future batch.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "controlling_parent_change_watch",
+    "terminal_id": "T100000131069",
+    "unit_id": "",
+    "terminal_name": "New Fortress Altamira LNG Terminal (project-level -- all 5 units, G100002106901-05)",
+    "issue": "New Fortress Energy Inc (NFE) is undergoing a 2026 corporate restructuring (an English Court scheme of arrangement plus US Chapter 15 recognition) reported by trade press as splitting the company into a 'BrazilCo' and 'CoreCo,' with NFE's public statements describing an expected 'change in ownership/control' of the Altamira FLNG project as part of a debt restructuring. Verified via 3 independent sources (PGJ Online, Baird Maritime, TradingView/Reuters). On the evidence found, the operating/legal entity GEM tracks as Owner/Parent ('New Fortress Energy Inc') continues to exist and continues to directly hold the Mexico FLNG assets post-restructuring -- this reads as a shareholder/creditor-level equity change at the NFE parent-company level, not a project-level Owner/Parent change, so NO Owner/Parent edit was staged. Flagged per Update SOP Sec 13's escalation trigger for controlling-parent changes, since the restructuring is genuinely novel and the final post-restructuring entity structure was not fully resolved in available reporting as of this batch. Recorded as wiki Background.",
+    "severity": "high",
+    "suggested_action": "Escalate to reviewer for awareness. Re-check next batch once the BrazilCo/CoreCo restructuring closes -- if the entity actually holding the Altamira asset changes name/structure at that point, stage an Owner/Parent edit then (with entity_lookup run against the live Postgres for any new legal entity name).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "project_field_inconsistency",
+    "terminal_id": "T100000131069",
+    "unit_id": "G100002106901",
+    "terminal_name": "New Fortress Altamira LNG Terminal (Unit 1)",
+    "issue": "Pre-existing field_gap: Unit 1's Latitude/Longitude/Location/Location [ref] ('Offshore Altamira', 22.6543/-97.68048) differ from Units 2-5 (all 'Altamira', 22.494775/-97.89468, matching the existing onshore Altamira LNG import terminal's coordinates). Working hypothesis from known project facts: Unit 1 is the original offshore FLNG-barge train (moored at a distinct point offshore), while NFE's public plans for Units 2-3 site them AT the existing onshore Altamira import-terminal site -- i.e. this may be a GENUINE distinction rather than a data error. Could not obtain a fresh, citable confirming source this batch (candidate corroborating articles returned HTTP 403/404 to both WebFetch and url_verifier, and the WebSearch quota was exhausted before a substitute could be found). No location edit staged either way.",
+    "severity": "medium",
+    "suggested_action": "Confirm via NFE's environmental assessment or an SEC exhibit that gives unit-specific coordinates/siting for Fast LNG Unit 1 vs. Units 2-3; if Unit 1 is genuinely offshore at a distinct point, close this field_gap as 'not an error' rather than forcing uniformity; if it's a genuine data error, correct Unit 1 to match Units 2-5.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "missing_field",
+    "terminal_id": "T100000131069",
+    "unit_id": "G100002106901",
+    "terminal_name": "New Fortress Altamira LNG Terminal (Unit 1)",
+    "issue": "Pre-existing field_gap: operating Unit 1 has no FloatingVesselName. Unlike Lakach's converted drilling rig ('Sevan Driller'), NFE's 'Fast LNG' units are modular, semi-submersible, barge-mounted trains; no publicly documented individually-named/registered vessel for Unit 1 was found in this batch's research. This may be a genuine N/A rather than a fillable blank.",
+    "severity": "low",
+    "suggested_action": "Reviewer: confirm whether Fast LNG barges carry individual vessel names/IMO numbers at all; if not, consider marking N/A instead of leaving as an outstanding gap.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "citation_inconclusive",
+    "terminal_id": "T100000131069",
+    "unit_id": "",
+    "terminal_name": "New Fortress Altamira LNG Terminal (Units 2-5)",
+    "issue": "Two frequently-reused existing citations across Units 2-5 (ir.newfortressenergy.com/static-files/f4a8637f-8b9b-40d2-b528-da96b1ed83e0 -- used for Status/Operator/StartDate refs; and the FY2024 10-K PDF www.sec.gov/.../nfe-20241231x10k.pdf) were reachable (HTTP 200/bot-blocked-but-live) but automated content extraction did not surface 'Altamira' or even 'Mexico' in the extracted text, including via the Wayback fallback -- inconclusive rather than proven-dead (likely a large-PDF/pagination extraction artifact rather than genuinely absent content). Left unchanged; not declared dead, not dropped.",
+    "severity": "medium",
+    "suggested_action": "Manually open both documents in a future batch to confirm they still support the values cited (NFE Q4 2024 investor deck; FY2024 10-K p.63 Altamira section) rather than relying on automated extraction alone.",
+    "researcher_initials": "AI-draft"
+  }
+]

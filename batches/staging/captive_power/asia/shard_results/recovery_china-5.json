@@ -1,0 +1,130 @@
+[
+ {
+  "terminal": "Wuhaogou LNG Storage Facility",
+  "terminal_id": "T100000130414",
+  "country": "China",
+  "verdict": "NO",
+  "mechanical": "False",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "green",
+  "captive_summary": "Shanghai Wuhaogou LNG Co Ltd's own equipment-procurement tenders show its backup/emergency generator is a single indoor diesel genset rated ≥800kVA, not gas-fired. The terminal is Shanghai's urban emergency-peak-shaving LNG storage station (built 1996/1999), grid-connected in Pudong; no gas turbine or gas-fired generator was found anywhere in searches.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Shanghai Wuhaogou Liquefied Natural Gas Co., Ltd. itself issued two rounds of public tenders (first round's bids were all rejected at preliminary review, then re-tendered) for '五号沟LNG站应急备用柴油发电机组采购' (Wuhaogou LNG Station emergency backup diesel generator set procurement): '一台常用功率≥800KVA室内应急备用柴油发电机组' / '采购一台应急柴油发电机组，设计安装容量800kVA'. Both tender-platform listings (365trade.com.cn and shbid.com, the latter an earlier failed round of the same procurement) name the purchasing entity, project, and diesel fuel type explicitly — this is the LNG company's own equipment-procurement record, treated as a primary/regulatory-adjacent source (green on its own).",
+  "refs": [
+   "https://www.365trade.com.cn/zhwzb/777765.jhtml",
+   "https://www.shbid.com/html/jidian/gonggaogongshi/zhaobiaogonggao/2061344277920878593.html"
+  ],
+  "verification_log": [
+   {"url": "https://www.365trade.com.cn/zhwzb/777765.jhtml", "tokens": ["应急备用柴油发电机组", "五号沟LNG站"], "result": "PASS", "note": "Wuhaogou LNG Co's own re-tender for a diesel backup generator, ≥800kVA"},
+   {"url": "https://www.shbid.com/html/jidian/gonggaogongshi/zhaobiaogonggao/2061344277920878593.html", "tokens": ["应急柴油发电机组", "800kVA"], "result": "PASS", "note": "Earlier round of the same tender (all bids rejected, later re-tendered); corroborates diesel fuel and 800kVA rating"}
+  ],
+  "gogpt_prior_assessment": "gogpt_prior is 'no' — no GOGPT plant was supplied for this terminal, and none was found nearby in searches.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "Documented backup generation is diesel-only (fuel gate fails); no gas-fired generation found at this site.",
+  "status_or_other_findings": "",
+  "notes": "Fuel gate is the deciding factor here — the facility's own procurement paperwork explicitly names diesel, which is a documented negative under SOP §2, not an assumption. No PowerPlantsSupplied angle found (this is a storage/peak-shaving station serving the Shanghai city-gas network, not paired with a specific power plant)."
+ },
+ {
+  "terminal": "Wuhu LNG Terminal",
+  "terminal_id": "T100000130415",
+  "country": "China",
+  "verdict": "NO",
+  "mechanical": "False",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "green",
+  "captive_summary": "The terminal (Anhui Changjiang LNG Co Ltd, operated by Huaihe Energy Gas Group) draws its power from a dedicated 110kV substation (2×20MVA transformers) fed by the 220kV Yuyu grid substation, built specifically 'to ensure safe electricity supply for the terminal's commissioning' per two independent Wuhu-government approval documents. No on-site gas generation for the terminal itself was found in any source despite extensive searching; the GOGPT-flagged 'Wuhu Xinxing power station' at 3.53 km is an unrelated industrial host's plant (see gogpt_prior_assessment) on a different fuel.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Wuhu Development & Reform Commission approval notice for the 110kV substation project states its purpose explicitly: '为满足苜湖长江LNG内河接收（转运）站项目投产安全用电' ('to ensure safe electricity supply for the Wuhu Changjiang LNG inland receiving [transshipment] station project's commissioning'). Wuhu Ecology & Environment Bureau's environmental approval for the same 110kV substation project confirms it sits within the LNG facility compound and installs 2×20MVA 110/6kV transformers. A separate search result additionally described the arrangement as '双重电源' (dual power source) via the 220kV喇村变-LNG转运站部分 connection. No tender, EIA excerpt, or news source found any gas turbine, gas generator, or 'self-owned power station' at the terminal itself.",
+  "refs": [
+   "https://whfgw.wuhu.gov.cn/openness/public/6596311/38895093.html",
+   "https://sthjj.wuhu.gov.cn/hbyw/hjsp/jsxmhpsp/8870425.html"
+  ],
+  "verification_log": [
+   {"url": "https://whfgw.wuhu.gov.cn/openness/public/6596311/38895093.html", "tokens": ["苜湖长江LNG", "安全用电"], "result": "PASS", "note": "Wuhu DRC approval: 110kV substation built specifically to supply the LNG terminal's power"},
+   {"url": "https://sthjj.wuhu.gov.cn/hbyw/hjsp/jsxmhpsp/8870425.html", "tokens": ["110kV", "三山"], "result": "PASS", "note": "Wuhu Ecology & Environment Bureau approval for the same 110kV substation, located within the LNG facility compound"},
+   {"url": "https://sthjt.ah.gov.cn/public/21691/119820671.html", "tokens": [], "result": "FAIL", "note": "403 Forbidden — main project EIA report page could not be retrieved via WebFetch; not cited"}
+  ],
+  "gogpt_prior_assessment": "GOGPT's 'Wuhu Xinxing power station' (120 MW, captive=True per GOGPT, 3.53 km) is NOT this terminal's captive plant — it is Wuhu Xinxing Ductile Iron Pipes Co (苜湖新兴铸管), a state-owned steel/pipe manufacturer under Xinxing Jiahua Group, whose own 55MW cogeneration unit burns blast-furnace/converter/coke-oven gas (industrial byproduct gas, not natural gas) recovered from its own steelmaking process: '由中冶京诚总承包的苜湖新兴铸管有限责任公司55MW煌气发电项目汽轮发电机组一次性并网成功' (55MW coal-gas power generation project, one-time successful grid connection, July 2021). This is a classic industrial-host trap: different owner (a steel manufacturer, not the LNG terminal operator) AND different fuel category (blast-furnace/coke-oven gas, not LNG-sourced natural gas). Separately, Huaihe Energy Group (the LNG terminal's own parent group, Huaihe Energy Gas Group) is building a 2×450MW gas-steam combined-cycle PEAKING power plant at the same Sanshan port area (深河能源苜湖天然气调峰电厂, approved May 2024, groundbreaking Oct 2024) — this is plausibly fed BY regasified gas piped FROM the Wuhu Changjiang LNG terminal (a PowerPlantsSupplied-direction relationship, not captive TO the terminal); flagged in notes for a different batch, not staged here.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "GOGPT's 'Wuhu Xinxing power station' belongs to a different industrial host (a steel/pipe manufacturer) burning a different fuel (industrial byproduct gas); not this terminal's plant.",
+  "status_or_other_findings": "",
+  "notes": "PowerPlantsSupplied direction check: Huaihe Energy Group's 2×450MW Wuhu natural gas peaking plant (same parent group as the LNG terminal, same Sanshan port area) is a strong candidate to be fed by this terminal's regasified LNG — flag for a future PowerPlantsSupplied review; NOT staged here (out of scope for this captive-power question and unverified as to gas source)."
+ },
+ {
+  "terminal": "Yantai LNG Terminal",
+  "terminal_id": "T100000130417",
+  "country": "China",
+  "verdict": "INSUFFICIENT",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "red",
+  "captive_summary": "No public source found (in this fresh pass) that states whether the terminal's emergency/backup generator is gas- or diesel-fired, or otherwise confirms/rules out on-site gas generation. Documented is a dedicated 110kV 'LNG Central Substation' (part of an incremental-distribution-business reform pilot, electrical access design reviewed April 2021) — evidence of grid-supply infrastructure, but not an explicit statement that the site has no on-site generation.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Searched (DuckDuckGo html/lite) for 烟台西港区LNG + 自备电站/自备燃气发电/应急发电机组/柴油发电机组/供电系统 combinations. Found the project's 110kV substation and CNOOC Environmental Protection Services (Tianjin)-prepared EIA report references (builder: Zhongchengxiang [Yantai] LNG Co Ltd, under Shandong Poly GCL Huanya), and a generic '应急电源控制策略' (emergency power control strategy) passage on rapid auto-start of emergency generators — but this control-strategy language is generic engineering-literature boilerplate (identical phrasing turned up for Yingkou too), not a site-specific equipment record, so it was not treated as a citable finding either way. The main EIA report and substation design documents were not retrievable as readable text via WebFetch.",
+  "refs": [],
+  "verification_log": [],
+  "gogpt_prior_assessment": "gogpt_prior is 'no' — no GOGPT plant was supplied for this terminal.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "No sourced captive generation found this pass to justify a new-record referral; terminal is still under construction (Phase 1) / proposed (Phase 2).",
+  "status_or_other_findings": "Terminal main structure reported mechanically complete November 30, 2025, moving to nitrogen purge/pre-cooling ahead of a targeted first LNG delivery in 2026 — not acted on (read-only finding for a different batch).",
+  "notes": "Genuine INSUFFICIENT after a fresh multi-angle search pass. Did not default to a NO on grid-connection precedent alone (per SOP: 'reasoning from class precedent to a negative is not a finding') — the 110kV substation documents grid infrastructure but not an explicit absence of on-site gas generation. A future pass with working WebSearch or direct access to the Yantai/Shandong ecology-environment-bureau disclosure portal for the full main-terminal EIA text (utility-engineering/generator-room section) is the next step."
+ },
+ {
+  "terminal": "Yingkou LNG Terminal",
+  "terminal_id": "T100000130418",
+  "country": "China",
+  "verdict": "INSUFFICIENT",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "red",
+  "captive_summary": "No public source found (in this fresh pass) that states whether the terminal's emergency/backup generator is gas- or diesel-fired, or otherwise confirms/rules out on-site gas generation. Documented is a substantial grid-supply design — two dedicated 66kV transmission lines to a 66kV substation, plus internal dock-control-building and LNG-storage-area substations at 10/6/0.4kV — which is evidence of grid infrastructure but not an explicit statement ruling out on-site gas generation.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Searched (DuckDuckGo html/lite) for 营口LNG接收站 + 中交 + 自备电站/自备燃气发电/应急发电机组/柴油发电机组/供电系统 combinations. Found the Liaoning Provincial Ecological Environment Department's environmental approval (辽环函【2022】91号, Aug 26 2022) for China Communications Construction Yingkou LNG's EIA, plus the project's 66kV external-power and internal substation design — but the same generic 'rapid auto-start emergency generators' engineering-literature passage found for Yantai (not site-specific) was the only 'emergency generator' hit, so it was not treated as a citable finding. Full EIA report text (utility-engineering/generator-room section) was not retrievable via WebFetch.",
+  "refs": [],
+  "verification_log": [],
+  "gogpt_prior_assessment": "gogpt_prior is 'no' — no GOGPT plant was supplied for this terminal.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "No sourced captive generation found this pass to justify a new-record referral; terminal is still under construction (Phase 1) / proposed (Phase 2).",
+  "status_or_other_findings": "Main-body engineering reported complete December 28, 2025; production startup targeted for May 2026 — not acted on (read-only finding for a different batch).",
+  "notes": "Genuine INSUFFICIENT after a fresh multi-angle search pass. Did not default to a NO on grid-connection precedent alone (per SOP: 'reasoning from class precedent to a negative is not a finding') — the dedicated 66kV lines/substations document grid infrastructure but not an explicit absence of on-site gas generation. A future pass with working WebSearch or direct access to the Liaoning ecology-environment-bureau disclosure portal for the full EIA text is the next step."
+ },
+ {
+  "terminal": "Zhoushan LNG Terminal",
+  "terminal_id": "T100000130421",
+  "country": "China",
+  "verdict": "NO",
+  "mechanical": "False",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "green",
+  "captive_summary": "ENN (Zhoushan) LNG's only on-site 'power generation' is a non-combustion LNG cold-energy dual-cycle (Organic Rankine Cycle) system — 'the nation's first LNG gasification cold-energy dual-cycle power generation system,' using seawater as heat source, LNG as cold source, and propane as working fluid, producing ~23 million kWh/year — which is a settled non-captive ground per SOP §2 (turboexpander/ORC waste-cold recovery is not gas power). Separately, State Grid Zhoushan documented its role integrating ENN Zhoushan LNG's Phase 3 into the regional grid, describing 'seamless integration with the regional grid.' No gas turbine or gas-fired generator was found at the terminal itself. The nearby GOGPT-flagged SDIC Jineng (Zhoushan) Gas power station (1,490 MW, 3.2 km) is confirmed to be an unrelated state-owned merchant plant (see gogpt_prior_assessment), consistent with GOGPT's own captive=False tag.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Trade/industry articles describe the ORC cold-energy system's technology explicitly: '采用低温朗肯循环工艺，以海水为热源、LNG为冷源、丙烷为工作介质' (low-temperature Rankine cycle process, seawater heat source, LNG cold source, propane working medium) — non-combustion, ruled out as gas power per SOP. Sohu article (reposting a State Grid Zhoushan news release) states: '国网舟山供电公司...自项目启动之初，客户经理主动了解用电需求' and confirms grid coordination work for '新奥舟山LNG三期项目' (ENN Zhoushan LNG Phase 3), with no mention of on-site generation or backup gensets anywhere in the article.",
+  "refs": [
+   "https://www.sohu.com/a/954307806_121627717"
+  ],
+  "verification_log": [
+   {"url": "https://www.sohu.com/a/954307806_121627717", "tokens": ["新奥舟山LNG", "国网舟山供电"], "result": "PASS", "note": "State Grid Zhoushan grid-integration article for ENN Zhoushan LNG Phase 3; no on-site generation mentioned"},
+   {"url": "https://max.book118.com/html/2024/0221/6211153020010051.shtm", "tokens": [], "result": "FAIL", "note": "book118 preview page did not expose full report text via WebFetch (metadata only); not cited as a ref, used only as a secondary corroboration lead for the ORC cold-energy project's existence"}
+  ],
+  "gogpt_prior_assessment": "GOGPT's 'SDIC Jineng (Zhoushan) Gas power station' (1,490 MW, captive=False per GOGPT already, 3.2 km) is confirmed independently: it is 国投吉能（舟山）燃气发电有限公司, a Zhejiang provincial 14th-Five-Year-Plan 'clean thermal power key project' owned by SDIC (国家开发投资集团/State Development & Investment Corporation) — a wholly separate state-owned enterprise from ENN, building 2×745MW H-class (9HA.02) gas-steam combined-cycle units in Dinghai District's High-Tech Industrial Park (construction began March 2024, ~37 billion yuan investment). No relationship to ENN's LNG terminal found in any source; confirms it is a large regional merchant plant, not colocated captive generation.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "GOGPT already correctly tags this plant captive=False; independently confirmed as an unrelated SDIC merchant CCGT project, not ENN's plant.",
+  "status_or_other_findings": "Phase 3 fully completed and operational August 6, 2025 (38 billion yuan investment, four 220,000m³ tanks) — not acted on (read-only finding for a different batch).",
+  "notes": "No PowerPlantsSupplied angle found — no source links the terminal's regasified gas to the SDIC Jineng plant specifically; treated as an independent merchant station on the regional grid, not a direction-test case."
+ }
+]

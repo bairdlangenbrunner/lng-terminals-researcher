@@ -1,0 +1,52 @@
+[
+  {
+    "category": "url_reverify",
+    "terminal_id": "T100000131117",
+    "unit_id": "G100002111700",
+    "terminal_name": "Clifton Pier LNG Terminal",
+    "issue": "spglobal.com (cited in Owner [ref] / Operator [ref] / StartDate [ref]) returns HTTP 403 with no Wayback snapshot available. Kept per bot-block policy, not dropped -- each of these fields is independently corroborated by at least 2 other working URLs (hydrocarbonengineering.com, pgjonline.com, ogj.com, turner-industries.com, tribune242.com), so this is not load-bearing alone.",
+    "severity": "low",
+    "suggested_action": "Human spot check if convenient.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "category": "url_reverify",
+    "terminal_id": "T100000131117",
+    "unit_id": "G100002111700",
+    "terminal_name": "Clifton Pier LNG Terminal",
+    "issue": "focol.com EMP PDF (cited in Location [ref]) has an expired/broken TLS certificate on the live site (automated verifier gets a connection error). Manually confirmed via curl -k that the live site returns HTTP 200 with the certificate check disabled -- content is live, error is TLS-only. Kept.",
+    "severity": "low",
+    "suggested_action": "Human spot check if convenient; 2 other independent Location refs (bplco.com EIA, Google Maps) already corroborate the site.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "category": "url_reverify",
+    "terminal_id": "T100001047792",
+    "unit_id": "G100001054688",
+    "terminal_name": "Island Power Producers LNG Terminal",
+    "issue": "depp.gov.bs EIA PDF (the SOLE citation for Location [ref]) returns HTTP 403 live. Manually checked Wayback CDX and found no snapshot exists yet (plausibly because the PDF was only published Jan 2026 and hasn't been crawled). Kept per bot-block-is-not-proof-of-death policy, but this field currently rests on one uncheckable source.",
+    "severity": "medium",
+    "suggested_action": "Human spot check this specific PDF link when convenient, since it is the only Location citation for this terminal.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "category": "value_correction",
+    "terminal_id": "T100000130544",
+    "unit_id": "G100002054400",
+    "terminal_name": "Ocean Cay LNG Terminal",
+    "issue": "Existing Capacity=6.42 mtpa / CapacityinBcm/y=8.73 could not be corroborated against any currently-accessible source. Its own pre-existing Capacity [ref] pairing (offshore-technology.com + giignl.org PDF) does not actually support 6.42: the giignl.org PDF is a status LISTING with no capacity figure at all (mis-cited), and offshore-technology.com's own Wayback-confirmed content instead states 'Sent-Out Capacity: 1.2bn ft3/d (bcf/d)' -- which converts to ~9.19 mtpa via the standard factor, not 6.42. Staged the corrected 9.19 mtpa value as YELLOW (single mirror-counted source; hydrocarbons-technology.com is the same underlying GlobalData database entry, not an independent second source). Flagging here because this reverses a long-standing GEM value on a cancelled/dormant terminal where fresh corroboration is inherently hard to find.",
+    "severity": "medium",
+    "suggested_action": "Human review recommended given this changes a long-standing figure; if a second genuinely independent source can be found, upgrade to green.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "category": "url_reverify",
+    "terminal_id": "T100000130544",
+    "unit_id": "G100002054400",
+    "terminal_name": "Ocean Cay LNG Terminal",
+    "issue": "Two of the four pre-existing FacilityType [ref] URLs were dropped as dead/unusable: bahamasb2b.com returns HTTP 500 live with no Wayback snapshot found (genuinely dead). thenassauguardian.com's index.php?...id=11181 URL DOES have a Wayback snapshot (302 redirect confirmed), but the archived page content is only the bare Nassau Guardian homepage (title tag only, zero occurrences of 'ocean cay' or 'lng') -- the redirect/snapshot does not actually preserve the cited article, so it cannot corroborate anything despite being technically 'live.' Declared both in dropped_urls_dead on the FacilityType [ref] edit. The field remains supported by the other 2 URLs (offshore-technology.com, giignl.org PDF).",
+    "severity": "low",
+    "suggested_action": "No action needed; field remains adequately sourced. Noting the distinction for future batches: a technically-resolving Wayback snapshot is not sufficient if its content doesn't contain the cited claim.",
+    "researcher_initials": "AI-draft (sweep)"
+  }
+]

@@ -1,0 +1,209 @@
+[
+  {
+    "terminal": "PNOC Batangas LNG Terminal",
+    "terminal_id": "T100000130306",
+    "country": "Philippines",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "yellow",
+    "captive_summary": "No captive power identified. The original 2000s-era PNOC proposal paired the floating LNG storage/regas hub with a stand-alone 200 MW (expandable to 800 MW) gas-fired power plant intended to feed the grid, not to power the terminal's own liquefaction/regas process -- a direction-out, not captive, arrangement. The project never progressed past a scale-down stage and was superseded by an unrelated developer's separate FSRU in the same bay (First Gen's BW Batangas, a different GEM terminal record).",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "BusinessWorld (2018): 'The Department of Energy (DoE) previously wanted an initial 200-megawatt (MW) gas-fired power plant alongside the LNG facility,' reported in the context of PNOC scaling the project down. No source found describing on-site captive generation for the terminal's own operations -- only this bundled, grid-facing merchant plant concept, which itself was never built.",
+    "refs": [
+      "https://www.bworldonline.com/editors-picks/2018/09/11/186306/pnoc-scales-down-lng-project/"
+    ],
+    "verification_log": [
+      {"url": "https://www.bworldonline.com/editors-picks/2018/09/11/186306/pnoc-scales-down-lng-project/", "tokens": ["200-megawatt"], "result": "PASS", "note": "used as sole citation"},
+      {"url": "https://policycommons.net/artifacts/386403/philippines/1350900/", "tokens": ["PNOC"], "result": "FAIL", "note": "HTTP 403, no Wayback snapshot; dropped"},
+      {"url": "https://www.pnoc.com.ph/wp-content/uploads/2021/05/PNOC-Projects-as-of-Jun-30-2020.pdf", "tokens": ["Batangas"], "result": "PASS", "note": "token passed verifier but the PDF's extracted text was unreadable garble on manual re-check; dropped out of caution rather than cite unconfirmed content"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT prior was assigned to this terminal (gogpt_prior: no). No GOGPT plant found in any source specifically tied to this cancelled record.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Project never reached construction; no generation asset of any kind was ever built at this site.",
+    "status_or_other_findings": "Historical note only, not acted on: the original PNOC Batangas concept (floating storage/regas + up to 800 MW power plant, with interest from 26 companies including Shell, Osaka Gas, and Sinopec at its peak) was ultimately superseded by an unrelated, separately financed FSRU project in the same bay, developed by First Gen (vessel BW Batangas, commissioned 2023) -- a different GEM terminal record, not this one.",
+    "notes": "Direction-test case, same pattern as the other cancelled/shelved terminals in this shard: any power-generation component in the original design was a stand-alone, grid-feeding merchant plant, not captive generation for the terminal itself."
+  },
+  {
+    "terminal": "Pagbilao Grande Island LNG Terminal",
+    "terminal_id": "T100000130308",
+    "country": "Philippines",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "No captive power. Energy World Corp's own project description states the LNG Hub Terminal exists to 'support our adjacent 650 MW combined cycle gas fired power plant,' which in turn will 'secure gas from the adjacent LNG hub terminal' -- an explicit direction-out (terminal feeds plant) relationship, not captive generation for the terminal's own operations. The bundled power plant itself never reached commercial operation: after 17 years, EWC sold its Siemens heavy-duty gas turbines and a steam turbine (equipment that had sat on-site idle for roughly a decade) to US-based Hallador Energy, booking a $285 million write-down, effectively ending the project.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Energy World Corp official project page (energyworldcorp.com/projects.php): 'The Hub Terminal will support our adjacent 650 MW combined cycle gas fired power plant' and the power plant will 'secure gas from the adjacent LNG hub terminal.' GreenTechLead: 'Energy World Corporation has sold two Siemens heavy-duty gas turbines and one steam turbine ... to US-based Hallador Energy' with a '$285 million write-down,' describing the collapse of the '650 MW Pagbilao project ... after 17 years.'",
+    "refs": [
+      "http://energyworldcorp.com/projects.php",
+      "https://www.greentechlead.com/energy-news/philippines-lng-crisis-deepens-as-650-mw-pagbilao-project-collapses-after-17-years-285-million-write-down-signals-shift-to-renewable-energy-54086"
+    ],
+    "verification_log": [
+      {"url": "http://energyworldcorp.com/projects.php", "tokens": ["Pagbilao"], "result": "PASS", "note": "used; page also directly quotes the terminal-to-plant direction"},
+      {"url": "https://www.greentechlead.com/energy-news/philippines-lng-crisis-deepens-as-650-mw-pagbilao-project-collapses-after-17-years-285-million-write-down-signals-shift-to-renewable-energy-54086", "tokens": ["650", "MW"], "result": "PASS", "note": "used"},
+      {"url": "https://www.greentechlead.com/energy-news/philippines-lng-crisis-deepens-as-650-mw-pagbilao-project-collapses-after-17-years-285-million-write-down-signals-shift-to-renewable-energy-54086", "tokens": ["never installed"], "result": "FAIL", "note": "exact phrase not matched (paraphrase mismatch); relied on the 650/MW-verified pass instead, no substantive change to the finding"},
+      {"url": "https://ieefa.org/resources/gas-turbine-sale-signals-end-another-philippine-lng-project", "tokens": ["gas turbines"], "result": "FAIL", "note": "HTTP 403, Wayback fetch failed; dropped, corroboration not needed given the two PASSed sources"},
+      {"url": "https://stocksdownunder.com/energy-world-corporation-asxewc/", "tokens": ["Siemens"], "result": "FAIL", "note": "HTTP 403, no Wayback snapshot; dropped"},
+      {"url": "https://www.tipranks.com/news/company/announcements/energy-world-progresses-us350m-turbine-sale-and-refines-lng-strategy", "tokens": ["turbine"], "result": "FAIL", "note": "HTTP 403, no Wayback snapshot; dropped"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT prior was assigned to this terminal (gogpt_prior: no) despite the terminal's own power_plants_supplied field already naming 'Pagbilao Combined Cycle power station.' That plant never reached commercial operation (turbines sold off in 2025/2026); confirmed above as a direction-out, non-captive relationship regardless.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "The bundled 650 MW plant was cancelled before ever being commissioned (turbines sold to a third party); no generation asset exists to add.",
+    "status_or_other_findings": "GEM's cancelled/confirmed status for this terminal record is corroborated by the 2025/2026 turbine-sale reporting.",
+    "notes": "Direction-test case; power_plants_supplied field already correctly captures the (now-defunct) relationship."
+  },
+  {
+    "terminal": "Philippines LNG Terminal",
+    "terminal_id": "T100000130968",
+    "country": "Philippines",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "No captive power identified for the terminal's own liquefaction/regas process. AG&P's own platform page states the PHLNG import terminal was commissioned 'to supply gas to one of the largest power producers in the country,' and trade press confirms AG&P/Linseed Field Power were 'on-schedule to open the integrated LNG import terminal near the 1,200-megawatt (MW) Ilijan' plant -- a direction-out relationship matching the terminal's power_plants_supplied field. Could not confirm the fuel/power source of the ISH floating storage unit's own house-load generation: no public vessel database found gave the propulsion/genset type for IMO 9035864 despite checking several maritime registries. This does not change the verdict, since the terminal's documented purpose is external gas supply, not on-site power generation.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "AG&P Global (agpglobal.com/lng-platform/lng-terminals-logistics/): 'Philippines LNG (PHLNG) Import Terminal was commissioned in May 2023, to supply gas to one of the largest power producers in the country.' Power Philippines (tag/ilijan-power-plant): AG&P and Linseed Field Power Corporation 'said they are on-schedule to open the integrated liquefied natural gas (LNG) import terminal near the 1,200-megawatt (MW) Ilijan [power plant].'",
+    "refs": [
+      "https://agpglobal.com/lng-platform/lng-terminals-logistics/",
+      "https://powerphilippines.com/tag/ilijan-power-plant/"
+    ],
+    "verification_log": [
+      {"url": "https://agpglobal.com/lng-platform/lng-terminals-logistics/", "tokens": ["PHLNG"], "result": "PASS", "note": "used"},
+      {"url": "https://powerphilippines.com/tag/ilijan-power-plant/", "tokens": ["AG&P"], "result": "FAIL", "note": "ampersand token mismatch"},
+      {"url": "https://powerphilippines.com/tag/ilijan-power-plant/", "tokens": ["Ilijan"], "result": "PASS", "note": "used with this token instead"},
+      {"url": "https://www.icis.com/explore/resources/news/2024/11/22/11053419/overview-of-lng-gas-infrastructure-in-the-philippines/", "tokens": ["Ilijan"], "result": "FAIL", "note": "paywalled/blocked, no extractable matching content on multiple token attempts; dropped"}
+    ],
+    "gogpt_prior_assessment": "GOGPT prior names Ilijan power station (4,851 MW, gogpt_captive=False, 0.46 km away, tier C). Trade press independently confirms Ilijan (operated by San Miguel Global Power) as the merchant offtaker the terminal was built adjacent to and to supply -- consistent with the prior's captive=False call; it is not this terminal's own plant.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Ilijan is an existing, independent merchant power plant with its own ownership (San Miguel Global Power), already presumably tracked separately in GOGPT; the terminal itself has no citable generation asset of its own.",
+    "status_or_other_findings": "",
+    "notes": "Direction-test case. The FSU (ISH, IMO 9035864, 1995-built Moss-type LNG carrier, chartered from ADNOC Logistics and Services since Feb 2022, 137,500 m3) onboard propulsion/power-generation type could not be confirmed from any public source checked -- worth a targeted follow-up via Equasis/class-society records if a future pass wants to fully close out the FSU's own house-load question (per the country hint, FSU/FSRU onboard dual-fuel gensets are the biggest YES class, but I could not establish specifics for this specific hull)."
+  },
+  {
+    "terminal": "Quezon LNG Terminal",
+    "terminal_id": "T100000131167",
+    "country": "Philippines",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "No captive power. Quezon Power (Philippines) Ltd Co's own DENR-EMB project description document is titled '1200 MW Liquified Natural Gas (LNG) Combined Cycle Gas Turbine (CCGT) San Francisco Power Plant': the LNG terminal/regas component and the CCGT power plant are filed as one integrated project, with the terminal built expressly to fuel the CCGT -- a direction-out arrangement, not captive generation for a stand-alone terminal facility.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "DENR-EMB Project Description of QPL (eia.emb.gov.ph, Feb 2024 filing): document titled '1200 MW Liquified Natural Gas (LNG) Combined Cycle Gas Turbine (CCGT) San Francisco Power Plant,' sited in barangays Cagsiay I and II, Mauban, Quezon. Context.ph (Feb 18, 2024): describes the PHP 71 billion ($1.2bn) project as Quezon Power's plan to 'construct and operate' this LNG-fired CCGT, north of the company's existing 460 MW coal plant.",
+    "refs": [
+      "https://eia.emb.gov.ph/wp-content/uploads/2024/02/Project-Description-of-QPL.pdf",
+      "https://context.ph/2024/02/18/quezon-power-eyes-p71b-natural-gas-fired-plant-in-quezon/"
+    ],
+    "verification_log": [
+      {"url": "https://eia.emb.gov.ph/wp-content/uploads/2024/02/Project-Description-of-QPL.pdf", "tokens": ["San Francisco Power Plant"], "result": "PASS", "note": "used; primary DENR-EMB regulatory filing"},
+      {"url": "https://context.ph/2024/02/18/quezon-power-eyes-p71b-natural-gas-fired-plant-in-quezon/", "tokens": ["P71"], "result": "PASS", "note": "used"},
+      {"url": "https://context.ph/2024/02/18/quezon-power-eyes-p71b-natural-gas-fired-plant-in-quezon/", "tokens": ["71"], "result": "PASS", "note": "redundant check, same source"}
+    ],
+    "gogpt_prior_assessment": "GOGPT prior names San Francisco power station (1,200 MW, gogpt_captive=False, 1.98 km, tier C) -- confirmed above as exactly the CCGT the terminal was designed to fuel, not a separate captive asset.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "San Francisco power station is the merchant/utility-scale plant the terminal exists to supply, not a captive generator for the terminal; it is the subject of the prior match itself.",
+    "status_or_other_findings": "Project remains shelved per GEM; no construction start found in any source checked. QPPL (owned by Thailand's EGCO) also operates an adjacent, separate 460 MW coal-fired Quezon Power Plant at the same site.",
+    "notes": ""
+  },
+  {
+    "terminal": "Tabangao FSRU",
+    "terminal_id": "T100000130976",
+    "country": "Philippines",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "red",
+    "captive_summary": "Could not determine. Shell Energy Philippines' Tabangao FSRU project (Batangas City) is a live, still-funded project -- Shell confirmed continued investment of roughly PHP 2-3 billion/year at Tabangao as of May 2025, with a Sept 2025 commercial-start target reported elsewhere -- but no FSRU vessel has been publicly named/chartered in any source found, and the DENR-EMB EIS and its companion notice filing (located on eia.emb.gov.ph) are both scanned/image PDFs with no extractable text. No public source found stating whether the facility's own regas/house power would be grid-fed or from on-site/onboard gas generation.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Manila Bulletin (May 13, 2025): 'Shell Pilipinas Corp. announced that it would be investing around P2 billion to P3 billion per year within the next two years to sustain investments at its import facility in Tabangao.' DENR-EMB EIA portal lists a Shell Energy Philippines Inc. EIS filing (eia.emb.gov.ph/wp-content/uploads/2022/06/Shell-LNG-ESP-English.pdf) and public notice (.../2022/12/NOTICE-PH-SHELL-ENERGY-PHILIPPINES-INC..pdf) for the proposed terminal in Barangays Libjo, Malitam, and Tabangao Ambulong, Batangas City, but both PDFs would not yield readable text (image/scanned; and the terminal itself timed out on direct fetch) despite repeated attempts, so no power-source-specific content could be confirmed from them.",
+    "refs": [
+      "https://mb.com.ph/2025/05/13/shell-to-improve-investments-in-tabangao-terminal"
+    ],
+    "verification_log": [
+      {"url": "https://mb.com.ph/2025/05/13/shell-to-improve-investments-in-tabangao-terminal", "tokens": ["Tabangao"], "result": "PASS", "note": "used, status corroboration only, not a captive-power finding"},
+      {"url": "https://manilastandard.net/?p=314397343", "tokens": ["September", "2025"], "result": "FAIL", "note": "HTTP 202 (pending/processing); dropped"},
+      {"url": "https://eia.emb.gov.ph/wp-content/uploads/2022/12/NOTICE-PH-SHELL-ENERGY-PHILIPPINES-INC..pdf", "tokens": ["Shell"], "result": "FAIL", "note": "PDF has no extractable text (scanned/image PDF); dropped"}
+    ],
+    "gogpt_prior_assessment": "GOGPT prior names 'Stellar power station' (1,250 MW, gogpt_captive=False, 1.85 km, tier C). No public source found connecting this specific plant to the Tabangao FSRU's supply chain; it reads as a nearby Batangas-area merchant/independent plant coincidentally proximate, not documented anywhere as this terminal's captive asset -- but I could not independently confirm or refute the relationship either way given the inaccessible primary filings.",
+    "gogpt_candidate": "REVIEWER CALL",
+    "gogpt_candidate_basis": "Project status and vessel identity are both too undetermined from public sources to make a confident ADD/DO-NOT-ADD call; needs either a named vessel's spec sheet or a readable EIS to resolve.",
+    "status_or_other_findings": "Manila Bulletin (May 2025) shows Shell continuing to invest at Tabangao and earlier reporting targeted Sept 2025 commercial start -- GEM's current 'shelved (inferred 2y)' status may be stale. Flagging for a status-focused Update pass; not acted on here.",
+    "notes": "Not a direction-test screen-out like the other terminals in this shard -- Tabangao is a general-market import terminal, not bundled to one specific offtake plant, so genuine on-site FSRU house-load generation (the single biggest YES class per the brief) remains plausible. Resolving this needs the specific chartered vessel's identity and spec sheet, which I could not locate."
+  },
+  {
+    "terminal": "Tanglawan LNG Terminal",
+    "terminal_id": "T100000130706",
+    "country": "Philippines",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "No captive power. The Tanglawan Philippine LNG project (Phoenix Petroleum / CNOOC Gas & Power / PNOC joint venture) was designed as a 2.2 mtpa terminal paired with an associated 2,000 MW gas-fired power plant, 'expected to meet the supply requirements of the gas-fired power plants in Batangas province' -- an explicit direction-out relationship, not captive generation for the terminal itself. Investment was split roughly US$686m for the terminal and US$1.3bn for the power-plant component, filed as two parts of one bundle. The project never broke ground; GEM lists it cancelled/confirmed.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Phoenix Fuels (phoenixfuels.ph, Tanglawan Philippine LNG receives DOE NTP approval): confirms DOE Notice to Proceed (Jan 2019), 2.2 mtpa capacity, targeted 2023 commercial operations. Enerdata: 'the project would also entail the development of an associated 2,000 MW gas-fired power plant... Investments are set to reach US$686m for the terminal and US$1.3bn for the power plant... It is expected to meet the supply requirements of the gas-fired power plants in Batangas province.'",
+    "refs": [
+      "https://www.phoenixfuels.ph/tanglawan-philippine-lng-receives-doe-ntp-approval-for-terminal/",
+      "https://www.enerdata.net/publications/daily-energy-news/cnooc-and-pnoc-will-work-jointly-lng-import-terminal-philippines.html"
+    ],
+    "verification_log": [
+      {"url": "https://www.phoenixfuels.ph/tanglawan-philippine-lng-receives-doe-ntp-approval-for-terminal/", "tokens": ["Tanglawan"], "result": "PASS", "note": "used"},
+      {"url": "https://www.enerdata.net/publications/daily-energy-news/cnooc-and-pnoc-will-work-jointly-lng-import-terminal-philippines.html", "tokens": ["2.2"], "result": "PASS", "note": "used"},
+      {"url": "https://www.nsenergybusiness.com/news/tanglawan-philippine-lng-project/", "tokens": ["2.2", "mtpa"], "result": "FAIL", "note": "HTTP 403, no Wayback snapshot; dropped, not needed given the two PASSed sources"},
+      {"url": "https://tankterminals.com/news/phoenix-petroleum-to-build-philippines-first-lng-terminal/", "tokens": ["Tanglawan"], "result": "FAIL", "note": "HTTP 404; dropped"}
+    ],
+    "gogpt_prior_assessment": "GOGPT prior names 'Tanglawan power station' (1,000 MW, gogpt_captive=False, 1.23 km, tier B) -- this is exactly the bundled power plant (originally proposed at up to 2,000 MW, later apparently scaled) the terminal was designed to fuel; consistent with the direction-out finding above, not a captive asset.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "The power-plant component is the merchant plant the terminal was built to supply (already the subject of the GOGPT prior match), not a captive generator; and neither component was ever built.",
+    "status_or_other_findings": "",
+    "notes": ""
+  },
+  {
+    "terminal": "Vires FSRU",
+    "terminal_id": "T100000130977",
+    "country": "Philippines",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "No captive power. Vires Energy Corp's DOE Notice to Proceed 'covers the company's proposed integrated LNG storage and regasification facility, which includes a 450-megawatt floating power plant' -- again a direction-out bundle, terminal built to fuel VEC's own downstream power plant, not captive generation for the terminal's regas process. VEC formally scrapped/withdrew the FSRU terminal plan in August 2024, pivoting to sourcing gas from third parties for a stand-alone power plant instead.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Philippine Star (Aug 31, 2024): 'The NTP covers the company's proposed integrated LNG storage and regasification facility, which includes a 450-megawatt floating power plant.' Inquirer.net (Aug 2024): 'Vires Energy Corp. (VEC), a subsidiary of listed A Brown Co., has decided to junk its liquefied natural gas terminal project.' LNG Prime: 'Vires Energy, a unit of A Brown, has dropped plans to build an FSRU-based LNG import terminal.'",
+    "refs": [
+      "https://qa.philstar.com/business/2024/08/31/2381706/brown-scraps-plan-develop-lng-terminal-batangas",
+      "https://business.inquirer.net/477460/vires-energy-drops-lng-hub-project-in-batangas",
+      "https://lngprime.com/asia/vires-energy-drops-fsru-plans-puts-focus-on-developing-lng-power-plant/123235/"
+    ],
+    "verification_log": [
+      {"url": "https://qa.philstar.com/business/2024/08/31/2381706/brown-scraps-plan-develop-lng-terminal-batangas", "tokens": ["450-megawatt"], "result": "PASS", "note": "used"},
+      {"url": "https://business.inquirer.net/477460/vires-energy-drops-lng-hub-project-in-batangas", "tokens": ["LNG"], "result": "PASS", "note": "used"},
+      {"url": "https://lngprime.com/asia/vires-energy-drops-fsru-plans-puts-focus-on-developing-lng-power-plant/123235/", "tokens": ["FSRU"], "result": "PASS", "note": "used"}
+    ],
+    "gogpt_prior_assessment": "GOGPT prior names 'Vires Energy floating power plant' (450 MW, gogpt_captive=False, 9.39 km, tier C) -- this is VEC's own planned downstream generation asset (fed by the now-cancelled FSRU terminal, per the NTP description above), not a captive plant powering the terminal itself.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "The 450 MW plant is a stand-alone merchant/IPP asset downstream of the (cancelled) terminal, already the subject of the GOGPT prior match, not a captive generator for the terminal.",
+    "status_or_other_findings": "FSRU/terminal component formally cancelled Aug 2024; VEC's power-plant ambitions (450-900 MW) continue on a stand-alone basis sourcing third-party gas -- consistent with GEM's cancelled/confirmed status for this terminal record.",
+    "notes": ""
+  }
+]

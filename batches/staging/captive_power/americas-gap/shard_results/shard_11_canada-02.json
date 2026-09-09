@@ -1,0 +1,358 @@
+[
+  {
+    "terminal": "Kitimat LNG Terminal",
+    "terminal_id": "T100000130356",
+    "country": "Canada",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "All-electric \"Compact E-Drive\" design: electric motor drive technology (~700 MW total) for all liquefaction process and utility compressors, pumps and fans, powered by BC Hydro via a new ~16 km, 16 kV/high-voltage overhead transmission line from the Minette Substation to the Bish Cove plant site. On-site generation is limited to four 2.5 MW, 13.8 kV DIESEL-powered back-up generation units for essential power during emergencies/critical loads only - the filing explicitly states this design \"reduc[es] the need for an onsite natural gas-powered generation facility.\"",
+    "fuel_basis": "Primary power: none on-site (BC Hydro grid electricity). On-site backup only: diesel (not natural gas) - fails the captive-GAS-power fuel gate.",
+    "confidence": "green",
+    "captive_summary": "Chevron Canada Limited's own 2019 BC EAO Amendment #3 filing (the Kitimat LNG/KM LNG Expansion Project, a.k.a. Compact E-Drive design) explicitly states the terminal purchases power from the BC Hydro grid via a dedicated new transmission line, explicitly reducing the need for an on-site natural-gas-fired generation facility; the only on-site generation is diesel-fired emergency backup, which does not meet the captive-GAS-power fuel gate.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Located via the BC Environmental Assessment Office (EAO) public project registry (projects.eao.gov.bc.ca, project code kitimat-lng-terminal, id 588510cdaaecd9001b815f84) - the 2019 \"Kitimat LNG Project Description Amendment 3\" filing (document id 5d278561caf02f00216ee6ab), an official Chevron Canada Limited engineering document filed with the regulator, explicitly describing the all-electric compact-drive design, BC Hydro grid supply, new transmission line from Minette Substation, and diesel-only on-site backup generation (4x2.5MW).",
+    "refs": [
+      "https://projects.eao.gov.bc.ca/api/document/5d278561caf02f00216ee6ab/download"
+    ],
+    "verification_log": [
+      {
+        "url": "https://projects.eao.gov.bc.ca/api/document/5d278561caf02f00216ee6ab/download",
+        "tokens": [
+          "purchase power from BC Hydro",
+          "diesel"
+        ],
+        "result": "PASS",
+        "note": "2019 Chevron Canada Kitimat LNG Expansion Project Description Amendment #3 (BC EAO filing)"
+      },
+      {
+        "url": "https://projects.eao.gov.bc.ca/api/project?fields=name,type,sector,location,centroid&pageSize=400",
+        "tokens": [],
+        "result": "N/A (registry index, not cited)",
+        "note": "used to enumerate BC EAO project codes/ids, not itself a citation"
+      },
+      {
+        "url": "kitimatlng.com / kmlng.com (Wayback)",
+        "tokens": [],
+        "result": "FAIL - no usable content",
+        "note": "domains parked/squatted or pre-Chevron era content only; abandoned as a lead"
+      },
+      {
+        "url": "IAAC/CEAA registry search",
+        "tokens": [],
+        "result": "FAIL - non-functional search endpoint",
+        "note": "GET-based text search returns no embedded results for any query tested"
+      },
+      {
+        "url": "CBC news CDX enumeration",
+        "tokens": [],
+        "result": "FAIL - timed out / no usable results",
+        "note": "mid-path wildcard CDX query too slow to complete"
+      }
+    ],
+    "gogpt_prior_assessment": "Terminal ID not present in neighbors_raw.json - no GOGPT-neighbor prior available.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No on-site natural-gas generation facility; power is grid-purchased (BC Hydro) with diesel-only backup - not a GOGPT-relevant gas generation asset.",
+    "status_or_other_findings": "Significant status update found outside the captive-power question: BC EAO records show the KLNG Expansion Project's Amendment #3 application was WITHDRAWN by the proponent in July 2021, followed by formal decommissioning management plans filed in 2022 (Chevron letter dated 2022-03-25 regarding decommissioning). Then, in Sept-Dec 2025, EA Certificate E06-01 was TRANSFERRED from KM LNG Operating General Partnership to a new company, \"Bish LNG GP Ltd.\" (Application to Transfer filed 2025-09-05; Order for Transfer issued 2025-12-01) - suggesting a new/revived proposal at the Bish Cove site under new ownership as of very recently. This is outside the scope of this captive-power task but worth flagging for the GEM monitor/update lane, since GEM's current owner field (Chevron Canada Ltd/Woodside Energy Group Ltd) may now be stale.",
+    "notes": "Recovery-pass finding (2026-08-02): resolved from INSUFFICIENT to a fully documented NO using the BC EAO public document API (projects.eao.gov.bc.ca/api/document/<id>/download), which serves full, untruncated PDFs directly (unlike Wayback Machine fetches, which were capped at ~1MB in this sandbox and defeated earlier attempts on other terminals' large PDFs)."
+  },
+  {
+    "terminal": "Kwispaa LNG Terminal",
+    "terminal_id": "T100000130366",
+    "country": "Canada",
+    "verdict": "YES",
+    "mechanical": "False",
+    "captive_category": "power_generation",
+    "hardware_summary": "Proposed on-site \"Power Generation Facility\" train comprising gas turbines, steam turbines, a heat recovery steam generator, and electrical generators, sized at up to ~500 MW per 12 mtpa build-out phase (up to ~1,000 MW at full 24 mtpa build-out); fed by natural gas diverted from the terminal's own feed-gas pipeline supply (~5-7% of throughput) plus recovered boil-off/end-flash gas as fuel gas. Presented as one of two co-equal, formally-investigated power-supply options (the other being BC Hydro grid electricity via a new transmission line from the Dunsmuir substation), or a combination of both; the choice was not yet finalized (pending a joint power study with BC Hydro) when the project was cancelled at the conceptual/early-FEED stage.",
+    "fuel_basis": "Natural gas - both pipeline feed gas (diverted ~5-7% of throughput) and recovered boil-off/end-flash gas are explicitly named as the power generation facility's fuel.",
+    "confidence": "green",
+    "captive_summary": "Steelhead LNG's Initial Project Description, filed with the BC Environmental Assessment Office in October 2018 for the Kwispaa LNG floating (ASLNG) project at Sarita Bay, describes a fully specified on-site natural-gas-fired power generation facility (gas turbines, steam turbines, heat recovery steam generator, electrical generators) as a live, detailed design option under formal regulatory review, co-equal with a BC Hydro grid-supply option; per the shard's cancelled-proposal rule, a regulatory filing showing an as-designed spec counts as YES even though the project was cancelled before a final choice or FEED was completed.",
+    "electric_mw": "Up to 500 MW per 12 mtpa phase; up to 1,000 MW at full 24 mtpa build-out (self-generation option, as designed).",
+    "mechanical_drive_note": "",
+    "confirmed_how": "BC EAO public project registry (projects.eao.gov.bc.ca, project code kwispaa-lng, id 5bd33fd8e3a27a0024581f03) - \"Initial Project Description\" document (id 5be33b1e578b640024f5d4ac, filed 2018-10-27 by Kwispaa LNG (CF) Limited Partnership / Steelhead LNG), Sections 1 and 2, explicitly enumerating the self-generation power facility's equipment train and fuel source, alongside the BC Hydro grid alternative.",
+    "refs": [
+      "https://projects.eao.gov.bc.ca/api/document/5be33b1e578b640024f5d4ac/download"
+    ],
+    "verification_log": [
+      {
+        "url": "https://projects.eao.gov.bc.ca/api/document/5be33b1e578b640024f5d4ac/download",
+        "tokens": [
+          "self-generation power facility",
+          "Gas turbines"
+        ],
+        "result": "PASS",
+        "note": "Kwispaa LNG Initial Project Description (BC EAO filing, Oct 2018)"
+      },
+      {
+        "url": "archived steelheadlng.com Kwispaa \"POWER SOLUTION\" page (Wayback)",
+        "tokens": [],
+        "result": "NOT USED - not re-verified",
+        "note": "Earlier single-source lead superseded by the stronger, fully-verified BC EAO primary filing above; not cited in the final record"
+      }
+    ],
+    "gogpt_prior_assessment": "Terminal ID not present in neighbors_raw.json - no GOGPT-neighbor prior available.",
+    "gogpt_candidate": "REVIEWER CALL",
+    "gogpt_candidate_basis": "A detailed, regulator-filed design for a natural-gas-fired power generation facility (up to 1,000 MW) existed, but the project was cancelled at the conceptual stage before a final power-source decision (self-gen vs. BC Hydro grid vs. combination) was made or construction began - reviewer should weigh whether a cancelled/never-selected design option warrants a GOGPT candidate record.",
+    "status_or_other_findings": "Project description states the choice between self-generation and BC Hydro grid supply was still under active investigation (a joint \"power study with BC Hydro\") at the time of filing (Oct 2018); no later BC EAO filing exists to confirm a final decision was reached before cancellation.",
+    "notes": "Recovery-pass finding (2026-08-02): resolved from INSUFFICIENT (single unverified lead) to a fully documented YES using the BC EAO public document API, which serves the full, untruncated 14 MB Initial Project Description PDF directly (unverified via Wayback previously due to the ~1MB truncation issue there)."
+  },
+  {
+    "terminal": "Malahat LNG Terminal",
+    "terminal_id": "T100000130359",
+    "country": "Canada",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "red",
+    "captive_summary": "No power-supply design (electric-drive, mechanical-drive, or captive generation) was ever published for this Steelhead LNG floating/offshore proposal - it never reached the BC Environmental Assessment Office project registry (unlike its sibling Kwispaa project, which filed an Initial Project Description), and no archived sponsor content or press coverage describes the facility's power source.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "",
+    "refs": [],
+    "verification_log": [
+      {
+        "url": "https://projects.eao.gov.bc.ca/api/project?fields=name,type,sector,location,centroid&pageSize=400",
+        "tokens": [],
+        "result": "CHECKED - no match",
+        "note": "Searched all 358 BC EAO registry project codes for 'malahat' and 'steelhead' - zero matches; Malahat never filed a provincial EA project"
+      },
+      {
+        "url": "https://www.cer-rec.gc.ca/en/data-analysis/facilities-we-regulate/liquefied-natural-gas-facilities/index.html",
+        "tokens": [
+          "Malahat",
+          "Steelhead"
+        ],
+        "result": "FAIL - no mention",
+        "note": "CER LNG facilities listing page has no reference to Malahat or Steelhead"
+      },
+      {
+        "url": "http://web.archive.org/web/20160114154141/http://www.steelheadlng.com/proposed-malahat-lng-project/",
+        "tokens": [],
+        "result": "FAIL - no power/turbine/electric keywords found",
+        "note": "generic project overview page"
+      },
+      {
+        "url": "http://web.archive.org/web/20160710010135/http://www.steelheadlng.com:80/proposed-malahat-lng-project-2",
+        "tokens": [],
+        "result": "FAIL - no power/turbine/electric keywords found",
+        "note": "second project overview page variant"
+      },
+      {
+        "url": "http://web.archive.org/web/20170618224617/http://www.steelheadlng.com/victoria-times-colonist-comment-malahat-lng-plan-includes-extensive-consultation/",
+        "tokens": [],
+        "result": "FAIL - no power-related keywords found",
+        "note": "reprinted Victoria Times Colonist opinion piece, no facility design detail"
+      },
+      {
+        "url": "Malahat-LNG-Open-House-Story-Boards.pdf (Wayback)",
+        "tokens": [],
+        "result": "FAIL - unparseable",
+        "note": "3.3MB PDF truncated at 1,048,576 bytes when fetched via Wayback; could not be parsed by pdftotext"
+      }
+    ],
+    "gogpt_prior_assessment": "Terminal ID not present in neighbors_raw.json - no GOGPT-neighbor prior available.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No published design of any kind; nothing to assess.",
+    "status_or_other_findings": "Cancelled/confirmed per dispatch shard (Steelhead LNG Corp, floating/offshore, same corporate parent as Kwispaa, which DID reach the BC EAO registry - Malahat evidently did not advance as far).",
+    "notes": "Genuinely screened after real, multi-channel effort (BC EAO registry cross-check, CER LNG facilities page, 3 archived sponsor pages, 1 truncated open-house PDF) - not an interrupted research pass. The one unexplored option remaining would be re-attempting the open-house storyboards PDF via a direct (non-Wayback) host if one can be found, but no such host was located."
+  },
+  {
+    "terminal": "NewTimes Energy LNG Terminal",
+    "terminal_id": "T100000130360",
+    "country": "Canada",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "red",
+    "captive_summary": "No power-supply or facility design was ever published for this floating/offshore proposal by NewTimes Energy Ltd. The project never reached the BC Environmental Assessment Office registry, has no Wikipedia coverage, and the sponsor's own website's dedicated \"LNG Terminal\" page (archived 2023) is an empty template with no project content.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "",
+    "refs": [],
+    "verification_log": [
+      {
+        "url": "https://projects.eao.gov.bc.ca/api/project?fields=name,type,sector,location,centroid&pageSize=400",
+        "tokens": [],
+        "result": "CHECKED - no match",
+        "note": "Searched all 358 BC EAO registry project codes for 'newtimes' - zero matches"
+      },
+      {
+        "url": "https://en.wikipedia.org/w/api.php (search: NewTimes Energy LNG Prince Rupert)",
+        "tokens": [],
+        "result": "CHECKED - no dedicated article",
+        "note": "MediaWiki search API returned no relevant results"
+      },
+      {
+        "url": "http://web.archive.org/web/20230223223814/http://newtimesenergy.com/index.php/lng-terminal/",
+        "tokens": [],
+        "result": "FAIL - empty template page",
+        "note": "Sponsor's own dedicated LNG Terminal page has only nav/blog chrome, no body content describing the project"
+      }
+    ],
+    "gogpt_prior_assessment": "Terminal ID not present in neighbors_raw.json - no GOGPT-neighbor prior available.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No published design of any kind; nothing to assess.",
+    "status_or_other_findings": "Cancelled/inferred (4y) per dispatch shard; sponsor NewTimes Energy Ltd appears to be a small, diversified energy-trading company (\"GIT Group\") whose website also markets crude oil/fuel oil trading and generic LNG shipping/pipeline pages, none with substantive content specific to this terminal.",
+    "notes": "Genuinely screened after real effort (BC EAO registry cross-check, Wikipedia search, sponsor-domain Wayback check) - not an interrupted research pass."
+  },
+  {
+    "terminal": "Nisga'a LNG Terminal",
+    "terminal_id": "T100000130361",
+    "country": "Canada",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "red",
+    "captive_summary": "No power-supply or facility design was ever published for this proposal by the Government of Nisga'a Lisims. The project never reached the BC Environmental Assessment Office registry, has no Wikipedia coverage, and the Nisga'a Lisims Government's own website (a real, actively-maintained government site) has no LNG-specific project page.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "",
+    "refs": [],
+    "verification_log": [
+      {
+        "url": "https://projects.eao.gov.bc.ca/api/project?fields=name,type,sector,location,centroid&pageSize=400",
+        "tokens": [],
+        "result": "CHECKED - no match",
+        "note": "Searched all 358 BC EAO registry project codes for 'nisga' - zero matches"
+      },
+      {
+        "url": "https://en.wikipedia.org/w/api.php (search: Nisga'a LNG terminal Pearse Canal)",
+        "tokens": [],
+        "result": "CHECKED - no relevant results",
+        "note": "MediaWiki search API returned no dedicated coverage"
+      },
+      {
+        "url": "http://web.archive.org/cdx/search/cdx?url=nisgaalisims.ca&matchType=domain&filter=original:.*lng.*",
+        "tokens": [],
+        "result": "CHECKED - zero URLs matched",
+        "note": "Wayback CDX enumeration of nisgaalisims.ca finds no page with 'lng' in the URL path"
+      }
+    ],
+    "gogpt_prior_assessment": "Terminal ID not present in neighbors_raw.json - no GOGPT-neighbor prior available.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No published design of any kind; nothing to assess.",
+    "status_or_other_findings": "Cancelled/inferred (4y) per dispatch shard.",
+    "notes": "Genuinely screened after real effort (BC EAO registry cross-check, Wikipedia search, Nisga'a government site Wayback CDX enumeration for LNG content) - not an interrupted research pass."
+  },
+  {
+    "terminal": "Orca FLNG Terminal",
+    "terminal_id": "T100000130362",
+    "country": "Canada",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "red",
+    "captive_summary": "No power-supply or facility design was ever published for this floating/offshore FLNG proposal by Orca LNG Ltd. The project never reached the BC Environmental Assessment Office registry, has no Wikipedia coverage, and the sponsor's own archived website (orcalng.com, 2014) is a bare splash page (\"Welcome to Orca LNG... For Information Email: info@orcalng.com\") with no project content whatsoever.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "",
+    "refs": [],
+    "verification_log": [
+      {
+        "url": "https://projects.eao.gov.bc.ca/api/project?fields=name,type,sector,location,centroid&pageSize=400",
+        "tokens": [],
+        "result": "CHECKED - no match",
+        "note": "Searched all 358 BC EAO registry project codes for 'orca' - only an unrelated 'orca-sand-and-gravel' project found, no Orca LNG/FLNG"
+      },
+      {
+        "url": "http://web.archive.org/web/20140701093138/http://orcalng.com/",
+        "tokens": [],
+        "result": "FAIL - bare splash page, no content",
+        "note": "Only content is a welcome banner and a contact email address; no facility description of any kind"
+      }
+    ],
+    "gogpt_prior_assessment": "Terminal ID not present in neighbors_raw.json - no GOGPT-neighbor prior available.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No published design of any kind; nothing to assess.",
+    "status_or_other_findings": "Cancelled/inferred (4y) per dispatch shard; T1-T6 (six units) suggests a large planned scale, but no design detail was ever made public.",
+    "notes": "Genuinely screened after real effort (BC EAO registry cross-check, sponsor-domain Wayback check) - not an interrupted research pass."
+  },
+  {
+    "terminal": "Pacific NorthWest LNG Terminal",
+    "terminal_id": "T100000130363",
+    "country": "Canada",
+    "verdict": "YES",
+    "mechanical": "True",
+    "captive_category": "mechanical_drive",
+    "hardware_summary": "Aero-derivative gas turbines driving refrigerant compressors (mechanical drive, shaft power - not electricity generation) for the liquefaction trains.",
+    "fuel_basis": "Natural gas (feed/fuel gas at the terminal site) firing the aero-derivative gas turbines.",
+    "confidence": "green",
+    "captive_summary": "The federal Environmental Assessment Decision Statement for Pacific NorthWest LNG imposes a binding condition (3.1.5) mandating aero-derivative gas turbines to drive refrigerant compressors; the proponent's own Feb 2017 fact sheet corroborates this, citing an independent July 2014 KPMG review that recommended the same turbine technology.",
+    "electric_mw": "",
+    "mechanical_drive_note": "Condition 3.1.5 of the federal EA Decision Statement specifically requires aero-derivative gas turbines to drive the refrigerant compressors used in the liquefaction process - this is mechanical drive (shaft power), not electricity generation.",
+    "confirmed_how": "Federal Impact Assessment Agency (IAAC/CEAA) registry document (project 80032, document 115669) - the binding EA Decision Statement - independently corroborated by the proponent's own Feb 2017 air-quality fact sheet referencing a July 2014 KPMG engineering review recommending the same aero-derivative turbine choice.",
+    "refs": [
+      "https://iaac-aeic.gc.ca/050/evaluations/document/115669",
+      "http://web.archive.org/web/20170802063139/http://www.pacificnorthwestlng.com/media/PNW_fsAirQuality_V3.pdf"
+    ],
+    "verification_log": [
+      {
+        "url": "https://iaac-aeic.gc.ca/050/evaluations/document/115669",
+        "tokens": [
+          "aero-derivative gas turbines",
+          "refrigerant compressors"
+        ],
+        "result": "PASS",
+        "note": "Federal EA Decision Statement condition 3.1.5"
+      },
+      {
+        "url": "http://web.archive.org/web/20170802063139/http://www.pacificnorthwestlng.com/media/PNW_fsAirQuality_V3.pdf",
+        "tokens": [
+          "aero-derivative gas turbines",
+          "power generation"
+        ],
+        "result": "PASS",
+        "note": "Proponent fact sheet citing July 2014 KPMG review"
+      }
+    ],
+    "gogpt_prior_assessment": "Terminal ID not present in neighbors_raw.json - no GOGPT-neighbor prior available.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Mechanical-drive gas turbines produce shaft power only, not electricity for the grid or a power-station record; not a GOGPT-relevant generation asset.",
+    "status_or_other_findings": "Cancelled/confirmed per dispatch shard; project reached a mature FEED/regulatory stage (binding federal EA Decision Statement issued) before cancellation.",
+    "notes": "Two-unit project (T1-T2 and T3) per dispatch shard; project-level captive-power finding applies to all unit-rows per the project-level field-change rule."
+  },
+  {
+    "terminal": "Port Edward LNG Terminal",
+    "terminal_id": "T100000131127",
+    "country": "Canada",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "red",
+    "captive_summary": "No power-supply or facility design was ever published for this proposal by Port Edward LNG Ltd. The project never reached the BC Environmental Assessment Office registry under this or a related sponsor name (the nearby 'Prince Rupert LNG' EAO project belongs to a different proponent, Prince Rupert LNG Limited, and is not the same project), and the sponsor's own archived domain (portedwardlng.com) has no early content - its only Wayback snapshot from the project era (2018) is blank, and the domain was later squatted/parked (2023 snapshots show generic ads.txt/plugin-manifest domain-parking artifacts).",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "",
+    "refs": [],
+    "verification_log": [
+      {
+        "url": "https://projects.eao.gov.bc.ca/api/project?fields=name,type,sector,location,centroid&pageSize=400",
+        "tokens": [],
+        "result": "CHECKED - no match",
+        "note": "Searched all 358 BC EAO registry project codes; only 'prince-rupert-lng' (proponent Prince Rupert LNG Limited, a different company) found in the same coastal area - no 'port-edward' project"
+      },
+      {
+        "url": "http://web.archive.org/web/20180805213615/http://portedwardlng.com/",
+        "tokens": [],
+        "result": "FAIL - blank page, no content",
+        "note": "2018 snapshot (the project-era snapshot) has no rendered body content"
+      }
+    ],
+    "gogpt_prior_assessment": "Terminal ID not present in neighbors_raw.json - no GOGPT-neighbor prior available.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No published design of any kind; nothing to assess.",
+    "status_or_other_findings": "Cancelled/confirmed per dispatch shard; owner/operator Port Edward LNG Ltd, coordinates place it in the same immediate harbour area as several other cancelled Prince Rupert-area LNG proposals (Prince Rupert LNG, Pacific NorthWest LNG, Aurora LNG) - possible naming/site overlap with one of those better-documented projects was checked but not confirmed (different proponent names, no shared project registry entry found).",
+    "notes": "Genuinely screened after real effort (BC EAO registry cross-check including adjacent-project disambiguation, sponsor-domain Wayback check) - not an interrupted research pass."
+  }
+]

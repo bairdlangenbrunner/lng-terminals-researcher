@@ -1,0 +1,182 @@
+[
+  {
+    "terminal_id": "T100000130448",
+    "unit_id": "G100002044800",
+    "terminal_name": "Fos Cavaou LNG Terminal",
+    "country": "France",
+    "field": "Capacity",
+    "db_at_0717": "8.00",
+    "we_staged": "8.00",
+    "db_now": "10.00",
+    "verdict": "db_now_correct",
+    "correct_value": "10.00 (bcm/y)",
+    "checked_ref": "https://www.elengy.com/en/our-locations",
+    "checked_ref_verdict": "supports",
+    "corroboration_urls": [
+      "https://www.elengy.com/en/our-locations",
+      "https://lngprime.com/europe/engies-unit-books-long-term-capacity-at-frances-fos-cavaou-lng-terminal/66375/",
+      "https://www.energyintel.com/0000017b-ad8b-dc26-ab7b-edcb31090000"
+    ],
+    "naming_or_basis_only": false,
+    "note": "Elengy's own site (raw HTML) currently states Fos Cavaou 'Capacity 10 Gm3' (started 2010, storage 330,000 m3), and press coverage confirms a capacity-increase Open Season (2021-22) delivered ~10 bcm/y of marketed capacity effective Jan 1 2025 (up from the older 8.25/8.5 bcm/y figure). db_now (10.00) is correct and current; we_staged (8.00) is the pre-expansion figure and is stale, not a corroborated alternative.",
+    "recommended_action": "no_change",
+    "researcher_initials": "AI-draft (QC spotcheck)"
+  },
+  {
+    "terminal_id": "T100000131008",
+    "unit_id": "G100002100800",
+    "terminal_name": "Le Havre FSRU",
+    "country": "France",
+    "field": "VesselOwner",
+    "db_at_0717": "",
+    "we_staged": "Hoegh Evi [50%]; Mitsui O.S.K. Lines (MOL) [48.5%]; Tokyo LNG Tanker [1.5%]",
+    "db_now": "",
+    "verdict": "we_staged_correct",
+    "correct_value": "Höegh Evi [50%]; Mitsui O.S.K. Lines (MOL) [48.5%]; Tokyo LNG Tanker [1.5%]",
+    "checked_ref": "",
+    "checked_ref_verdict": "does_not_contain_value",
+    "corroboration_urls": [
+      "https://lngprime.com/europe/hoegh-lngs-fsrus-to-start-work-in-brazil-and-france/89787/",
+      "https://www.hoeghlngpartners.com/announcements-and-press-releases/press-release-details/2017/Hoegh-LNG-Partners-LP-Announces-Entry-into-a-Term-Sheet-to-Acquire-an-Additional-235-Interest-in-Joint-Ventures-Owning-FSRUs-Neptune-and-GDF-Suez-Cape-Ann/default.aspx"
+    ],
+    "naming_or_basis_only": true,
+    "note": "FloatingVesselName correctly reads 'Cape Ann' (ex-GDF Suez Cape Ann). The 50%/48.5%/1.5% Hoegh/MOL/Tokyo LNG Tanker split is confirmed both by the original 2017 JV documentation and by a 2023 LNGPrime article contemporaneous with the Le Havre deployment. Höegh LNG Partners was absorbed into Höegh LNG Holdings (2022), which rebranded to Höegh Evi (Sept 2024) — so 'Höegh Evi' is the correct current name for the 50% holder. Cell is still blank in db_now — the well-sourced draft was simply never applied. Separately: Status is already correctly 'retired' with a ref, since Cape Ann departed Le Havre after an Oct 2025 Rouen court ruling revoked the terminal's authorization — fill VesselOwner for historical completeness.",
+    "recommended_action": "fix_value",
+    "researcher_initials": "AI-draft (QC spotcheck)"
+  },
+  {
+    "terminal_id": "T100000130528",
+    "unit_id": "G100002052800",
+    "terminal_name": "El Musel LNG Terminal",
+    "country": "Spain",
+    "field": "Capacity",
+    "db_at_0717": "8.00",
+    "we_staged": "5.10",
+    "db_now": "7.00",
+    "verdict": "db_now_correct",
+    "correct_value": "7.00 (bcm/y)",
+    "checked_ref": "https://www.fluor.com/projects/el-musel-lng-terminal-epcm",
+    "checked_ref_verdict": "supports",
+    "corroboration_urls": [
+      "https://www.fluor.com/projects/el-musel-lng-terminal-epcm",
+      "https://www.nsenergybusiness.com/projects/el-musel-lng-terminal/"
+    ],
+    "naming_or_basis_only": true,
+    "note": "Two independent sources (Fluor EPCM page, nsenergybusiness) state El Musel's regasification send-out capacity as 800,000 Nm3/h, which annualizes to ~7.01 bcm/y — matching db_now (7.00 bcm/y) almost exactly. we_staged's 5.10 mtpa converts to ~6.94 bcm/y (1 mtpa ≈ 1.36 bcm/y) — the SAME underlying capacity in a different unit, not a real value conflict. The old 8.00 bcm/y (db_at_0717) was the stale figure. Enagas quotes a rounder 'up to 8 bcm/y' framing in a 2022 press release, but the two engineering-spec sources are more precise and consistent with db_now.",
+    "recommended_action": "no_change",
+    "researcher_initials": "AI-draft (QC spotcheck)"
+  },
+  {
+    "terminal_id": "T100000130528",
+    "unit_id": "G100002052800",
+    "terminal_name": "El Musel LNG Terminal",
+    "country": "Spain",
+    "field": "CapacityUnits",
+    "db_at_0717": "bcm/y",
+    "we_staged": "mtpa",
+    "db_now": "bcm/y",
+    "verdict": "db_now_correct",
+    "correct_value": "bcm/y",
+    "checked_ref": "https://www.fluor.com/projects/el-musel-lng-terminal-epcm",
+    "checked_ref_verdict": "supports",
+    "corroboration_urls": [
+      "https://www.fluor.com/projects/el-musel-lng-terminal-epcm",
+      "https://www.nsenergybusiness.com/projects/el-musel-lng-terminal/"
+    ],
+    "naming_or_basis_only": true,
+    "note": "Treated together with the Capacity cell above: this is a units artefact, not a genuine disagreement. db_now's pairing (7.00 bcm/y) is self-consistent and well supported; the draft's pairing (5.10 mtpa) represents essentially the same physical capacity in mtpa. No change needed to CapacityUnits.",
+    "recommended_action": "no_change",
+    "researcher_initials": "AI-draft (QC spotcheck)"
+  },
+  {
+    "terminal_id": "T100000130534",
+    "unit_id": "G100002053400",
+    "terminal_name": "Mugardos LNG Terminal",
+    "country": "Spain",
+    "field": "Parent",
+    "db_at_0717": "Reganosa Servicios SLU [100.0%]",
+    "we_staged": "Tojeiro Group [59.64%]; Region of Galicia [28.60%]; Sonatrach SpA [11.76%]",
+    "db_now": "Grupo Gadisa [59.6%]; Region of Galicia [28.6%]; Sonatrach SpA [11.8%]",
+    "verdict": "db_now_correct",
+    "correct_value": "Grupo Gadisa [59.6%]; Region of Galicia [28.6%]; Sonatrach SpA [11.8%]",
+    "checked_ref": "",
+    "checked_ref_verdict": "does_not_contain_value",
+    "corroboration_urls": [
+      "https://www.eleconomista.es/energia/noticias/12528768/11/23/la-familia-tojeiro-se-refuerza-en-reganosa-tras-la-salida-de-la-japonesa-sojitz.html",
+      "https://ferrol360.es/gadisa-aumenta-su-participacion-en-reganosa-y-roberto-tojeiro-asume-la-presidencia/",
+      "https://www.elidealgallego.com/articulo/a-coruna/otros-negocios-grupo-gadisa-gas-natural-licuado-hidrogeno-madera-transporte-5397058"
+    ],
+    "naming_or_basis_only": true,
+    "note": "Spanish press (elEconomista, Ferrol360, El Ideal Gallego, all Nov 2023) confirms the actual shareholding company is 'Grupo Gadisa' (59.64%), 'Region of Galicia'/Xunta (28.60%), Sonatrach (11.76%) — matching db_now's structure and rounded percentages. 'Tojeiro Group' (we_staged) is NOT a registered holding entity; the Tojeiro family CONTROLS Grupo Gadisa but the shareholder of record is Gadisa itself — conflating the two would misname the entity. Decimal precision (59.6 vs 59.64) is immaterial. 'Sonatrach SpA' matches GEM's existing canonical spelling used consistently elsewhere (22 instances, entity_lookup). NOTE: local entity_lookup (bare) found neither 'Gadisa' nor 'Tojeiro' in the CSV-derived local index (expected, since no other GEM row currently uses either string) and --remote is unavailable in this session (GEM_PROJECT_DB_BASE_URL not set) — recommend a remote re-check before any future edit that adds 'Grupo Gadisa' as a distinct entity, to rule out it existing under a bare 'Gadisa' spelling elsewhere in GEM's entity system.",
+    "recommended_action": "no_change",
+    "researcher_initials": "AI-draft (QC spotcheck)"
+  },
+  {
+    "terminal_id": "T100000131001",
+    "unit_id": "G100002100100",
+    "terminal_name": "Jade Energy LNG Terminal",
+    "country": "Germany",
+    "field": "OtherNames",
+    "db_at_0717": "German North Sea LNG",
+    "we_staged": "German North Sea LNG, Jade Energy",
+    "db_now": "German North Sea LNG, Wilhelmshaven TES LNG Terminal, Green Energy Hub LNG terminal project",
+    "verdict": "db_now_correct",
+    "correct_value": "German North Sea LNG, Wilhelmshaven TES LNG Terminal, Green Energy Hub LNG terminal project",
+    "checked_ref": "",
+    "checked_ref_verdict": "does_not_contain_value",
+    "corroboration_urls": [
+      "https://www.energate-messenger.com/news/261650/wilhelmshaven-import-terminal-is-now-called-jade-energy",
+      "https://tes-h2.com/news/jade-energy-launched-in-wilhelmshaven-to-advance-energy-security-and-decarbonization",
+      "https://tes-h2.com/news/wilhelmshaven-green-energy-hub-receives-exemption-from-regulation"
+    ],
+    "naming_or_basis_only": false,
+    "note": "CORRECTING THE BRIEF'S PREMISE: there is no self-referential-alias defect. TES (Tree Energy Solutions)/Fortescue renamed its Wilhelmshaven import project to 'Jade Energy' on 30 Apr 2026 (energate-messenger; confirmed by TES's own press release), so TerminalName='Jade Energy LNG Terminal' is the correct, current primary name, and 'Wilhelmshaven TES LNG Terminal' (the prior primary name) is a genuinely distinct, sourced alias, as is 'Green Energy Hub LNG terminal project' (TES's own site brands the site 'Wilhelmshaven Green Energy Hub' repeatedly). 'German North Sea LNG' (pre-existing, unchanged) is corroborated as a historical name by Wikipedia's Wilhelmshaven LNG terminal article. we_staged's proposed addition of 'Jade Energy' as an OtherNames alias is now WRONG/superseded: since the primary name already IS 'Jade Energy LNG Terminal', adding it to OtherNames would violate the no-self-duplicate-alias rule. No [ref] column exists for OtherNames in the schema.",
+    "recommended_action": "no_change",
+    "researcher_initials": "AI-draft (QC spotcheck)"
+  },
+  {
+    "terminal_id": "T100000131099",
+    "unit_id": "G100002109900",
+    "terminal_name": "Zeeland Energy FSRU",
+    "country": "Netherlands",
+    "field": "Owner",
+    "db_at_0717": "VTTI [100%]",
+    "we_staged": "VTTI [50%]; Höegh Evi [50%]",
+    "db_now": "VTTI BV [50%]; Hoegh Evi [50%]",
+    "verdict": "db_now_correct",
+    "correct_value": "VTTI BV [50%]; Höegh Evi [50%]",
+    "checked_ref": "https://zeelandenergyterminal.com/about-zeeland-energy-terminal/",
+    "checked_ref_verdict": "supports",
+    "corroboration_urls": [
+      "https://www.vtti.com/vtti-and-hoegh-evi-launch-permitting-process-for-zeeland-energy-terminal/",
+      "https://www.marinelink.com/news/vtti-plans-new-bcm-floating-lng-platform-501541",
+      "https://lngprime.com/contracts-and-tenders/vtti-and-hoegh-lng-join-forces-on-dutch-fsru-terminal/99584/"
+    ],
+    "naming_or_basis_only": true,
+    "note": "50/50 JV structure confirmed by VTTI's own releases, LNGPrime, and the JV's own site ('equal ownership'). db_now and we_staged agree on structure; differ only in naming — 'VTTI' vs 'VTTI BV' (VTTI is a Dutch B.V., so 'VTTI BV' is plausibly the more precise legal name) and 'Höegh Evi' vs 'Hoegh Evi' (diacritic-only; GEM's own entity system already carries at least 3 different spellings of this SAME canonical entity across different terminals — Höegh with precomposed ö, a combining-diaeresis variant, and plain-ASCII 'Hoegh' here — a display-consistency issue worth a future cleanup pass, though entity_lookup's canonical folding means it is not creating true duplicate entity records). entity_lookup(\"VTTI BV\", bare) returned not_found locally while entity_lookup(\"VTTI\", bare) found 1 match — likely a tokenization artifact of the local matcher rather than a real absence; --remote unavailable this session.",
+    "recommended_action": "no_change",
+    "researcher_initials": "AI-draft (QC spotcheck)"
+  },
+  {
+    "terminal_id": "T100000131099",
+    "unit_id": "G100002109900",
+    "terminal_name": "Zeeland Energy FSRU",
+    "country": "Netherlands",
+    "field": "Operator",
+    "db_at_0717": "",
+    "we_staged": "VTTI; Höegh Evi",
+    "db_now": "VTTI",
+    "verdict": "unsupported",
+    "correct_value": "VTTI; Höegh Evi",
+    "checked_ref": "https://zeelandenergyterminal.com/about-zeeland-energy-terminal/",
+    "checked_ref_verdict": "does_not_contain_value",
+    "corroboration_urls": [
+      "https://zeelandenergyterminal.com/about-zeeland-energy-terminal/",
+      "https://www.vtti.com/vtti-and-hoegh-evi-launch-permitting-process-for-zeeland-energy-terminal/"
+    ],
+    "naming_or_basis_only": false,
+    "note": "db_now's cited ref (zeelandenergyterminal.com/about) is the JV's own official page and explicitly states 'VTTI and Höegh Evi are jointly developing the terminal with equal ownership and operatorship' — that source does NOT support 'VTTI' as sole operator; it contradicts it. VTTI's own press releases likewise describe a joint agreement to 'develop and operate' the terminal. db_now is wrong here; we_staged's joint operator value is correct and better matches the cited (and re-verified) source. This is a project-stage (Status=proposed) JV-level operatorship statement, not yet a vessel-vs-onshore operational split, since the terminal has not started operations.",
+    "recommended_action": "fix_value",
+    "researcher_initials": "AI-draft (QC spotcheck)"
+  }
+]

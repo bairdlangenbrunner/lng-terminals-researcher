@@ -1,132 +1,97 @@
-"""Build a region's UPDATE + DISCOVERY workbooks from staged JSON, with disc-isolation.
+"""QC, assemble, build, and recalculate a region's isolated workbook lanes."""
+from __future__ import annotations
 
-Usage:  python batches/staging/_build_region.py <region> <STAMP>
-  STAMP e.g. 20260604_2030_ET (caller stamps via `TZ=America/New_York date +%Y%m%d_%H%M_ET`).
-
-Disc-isolation: _assemble.py globs ALL <slug>.<type>.json (both update-side and `.disc.` discovery-side)
-into one staged set, so a naive build would duplicate qa/wiki/entity across both workbooks. We instead:
-  - UPDATE build  -> hide every `*.disc.*` file, assemble, build --mode update
-  - DISCOVERY build -> hide every NON-`.disc` finding file, assemble, build --mode discovery
-restoring the hidden files (even on error) between phases. Each finding lands in exactly one workbook.
-"""
-import subprocess, sys, shutil, glob, os, tempfile
+import argparse
+import json
+import subprocess
+import sys
 from pathlib import Path
 
-REGION = sys.argv[1]
-STAMP = sys.argv[2]
 ROOT = Path(__file__).resolve().parents[2]
-RDIR = ROOT / "batches" / "staging" / REGION
-FIND_TYPES = ("updates", "qa", "wiki", "entity", "monitor", "newterminals", "newunits")
+sys.path.insert(0, str(ROOT / "scripts"))
+from atomic_io import atomic_write_json  # noqa: E402
 
-def finding_files():
-    out = []
-    for t in FIND_TYPES:
-        out += glob.glob(str(RDIR / f"*.{t}.json"))
-    return out
+FIND_TYPES = ("updates", "timeline", "qa", "wiki", "entity", "monitor", "newterminals", "newunits")
 
-def is_disc(p):
-    return ".disc." in os.path.basename(p)
 
-def run(cmd):
-    print("+", " ".join(cmd))
-    subprocess.run(cmd, check=True)
+def run(command: list[str]) -> None:
+    print("+", " ".join(command))
+    subprocess.run(command, check=True)
 
-def assemble():
-    run([sys.executable, str(ROOT / "batches/staging/_assemble.py"), REGION])
 
-def write_roster(marker_glob, exclude_substr, out_path):
-    """Read the per-country done-markers and write a JSON list of the `country`
-    values actually swept. This is the authoritative 'countries checked' roster
-    for the README — it includes countries whose only output was a country-less
-    qa note or a clean no-findings run (which records alone would omit).
-    Returns (out_path, summaries): the full marker dicts (+ their filename) so
-    the caller can persist per-country summary counts and the escalation flag —
-    previously only `country` survived and everything else was discarded."""
-    import json as _json
-    countries = set()
-    summaries = []
-    for p in glob.glob(str(RDIR / marker_glob)):
-        if any(x in os.path.basename(p) for x in exclude_substr):
+def write_roster(rdir: Path, pattern: str, excluded: tuple[str, ...], output: Path):
+    countries, summaries = set(), []
+    for path in sorted(rdir.glob(pattern)):
+        if any(token in path.name for token in excluded):
             continue
         try:
-            d = _json.loads(Path(p).read_text(encoding="utf-8"))
-        except Exception:
-            continue
-        d["marker"] = os.path.basename(p)
-        summaries.append(d)
-        c = (d.get("country") or "").strip()
-        if c:
-            countries.add(c)
-    Path(out_path).write_text(_json.dumps(sorted(countries), ensure_ascii=False, indent=2), encoding="utf-8")
-    summaries.sort(key=lambda d: d["marker"])
-    return out_path, summaries
+            data = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError) as exc:
+            raise ValueError(f"invalid done marker {path}: {exc}") from exc
+        if not isinstance(data, dict):
+            raise ValueError(f"done marker must be an object: {path}")
+        data = {**data, "marker": path.name}
+        summaries.append(data)
+        country = str(data.get("country") or "").strip()
+        if country:
+            countries.add(country)
+    atomic_write_json(output, sorted(countries))
+    return summaries
 
-def build(mode, outfile, roster_path=None):
-    cmd = [sys.executable, str(ROOT / "scripts/build_review_package.py"),
-           "--mode", mode, "--inputs-dir", str(RDIR / "_build"),
-           "--gem-csv", str(ROOT / "scripts/gem_export.csv"), "--output", str(outfile)]
-    if roster_path:
-        cmd += ["--checked-roster", str(roster_path)]
-    run(cmd)
-    run([sys.executable, str(ROOT / "scripts/recalc.py"), str(outfile)])
 
-def with_hidden(predicate, fn):
-    """Temporarily move files matching predicate to a hold dir, run fn(), restore."""
-    hold = Path(tempfile.mkdtemp(prefix=f"hold_{REGION}_"))
-    moved = []
-    try:
-        for p in finding_files():
-            if predicate(p):
-                dst = hold / os.path.basename(p)
-                shutil.move(p, dst)
-                moved.append((dst, p))
-        return fn()
-    finally:
-        for dst, orig in moved:
-            shutil.move(str(dst), orig)
-        shutil.rmtree(hold, ignore_errors=True)
+def build_lane(rdir: Path, region: str, stamp: str, lane: str, roster: Path, force: bool) -> Path:
+    run([sys.executable, str(ROOT / "batches/staging/_assemble.py"), region, "--lane", lane])
+    output = ROOT / "batches" / f"lng_terminals_batch_{stamp}_{region}_{lane}.xlsx"
+    command = [
+        sys.executable, str(ROOT / "scripts/build_review_package.py"),
+        "--mode", lane, "--inputs-dir", str(rdir / "_build"),
+        "--gem-csv", str(ROOT / "scripts/gem_export.csv"),
+        "--checked-roster", str(roster), "--output", str(output),
+    ]
+    if force:
+        command.append("--force")
+    run(command)
+    run([sys.executable, str(ROOT / "scripts/recalc.py"), str(output)])
+    return output
 
-results = {}
-# Rosters from the per-country done-markers (authoritative "countries checked").
-# Update markers = <slug>.done.json EXCLUDING <slug>.disc.done.json and <slug>.reverify.done.json.
-# Discovery markers = <slug>.disc.done.json.
-(RDIR / "_build").mkdir(exist_ok=True)
-upd_roster, upd_sums = write_roster("*.done.json", (".disc.done.json", ".reverify.done.json"), RDIR / "_build" / "_roster_update.json")
-disc_roster, disc_sums = write_roster("*.disc.done.json", (), RDIR / "_build" / "_roster_discovery.json")
 
-# Persist the full marker summaries (counts, notes, escalation flag) alongside the
-# rosters — the workbook doesn't carry them, and the markers get pruned post-batch.
-import json as _json
-(RDIR / "_build" / "_roster_summaries.json").write_text(
-    _json.dumps({"update": upd_sums, "discovery": disc_sums}, ensure_ascii=False, indent=2),
-    encoding="utf-8")
+def main(argv=None) -> int:
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("region")
+    ap.add_argument("stamp", help="YYYYMMDD_HHMM_ET")
+    ap.add_argument("--force", action="store_true", help="replace same-stamp derived outputs")
+    ap.add_argument("--skip-qc", action="store_true", help="skip staging_qc (diagnostic use only)")
+    args = ap.parse_args(argv)
 
-# Done-markers may carry `escalation: true` (a subagent hit a pause-and-ask trigger).
-# That flag used to be silently discarded here — surface it loudly instead.
-escalated = [d["marker"] for d in upd_sums + disc_sums if d.get("escalation")]
-if escalated:
-    print("=" * 72)
-    print("ESCALATION flagged in done-marker(s) — review before shipping the batch:")
-    for m in escalated:
-        print(f"  - {m}")
-    print("=" * 72)
+    rdir = ROOT / "batches" / "staging" / args.region
+    if not rdir.is_dir():
+        ap.error(f"no such staging directory: {rdir}")
+    if not args.skip_qc:
+        run([sys.executable, str(ROOT / "scripts/staging_qc.py"), args.region])
 
-# UPDATE: hide discovery-side files
-upd_out = ROOT / "batches" / f"lng_terminals_batch_{STAMP}_{REGION}_update.xlsx"
-def do_update():
-    assemble(); build("update", upd_out, roster_path=upd_roster); return upd_out
-with_hidden(is_disc, do_update)
-results["update"] = upd_out.name
+    build_dir = rdir / "_build"
+    build_dir.mkdir(exist_ok=True)
+    update_roster = build_dir / "_roster_update.json"
+    discovery_roster = build_dir / "_roster_discovery.json"
+    update_summaries = write_roster(rdir, "*.done.json", (".disc.done.json", ".reverify.done.json"), update_roster)
+    discovery_summaries = write_roster(rdir, "*.disc.done.json", (), discovery_roster)
+    atomic_write_json(build_dir / "_roster_summaries.json", {
+        "update": update_summaries, "discovery": discovery_summaries,
+    })
+    escalated = [d["marker"] for d in update_summaries + discovery_summaries if d.get("escalation")]
+    if escalated:
+        raise SystemExit("ERROR: unresolved escalation in done marker(s): " + ", ".join(escalated))
 
-# DISCOVERY: hide update-side (non-.disc) files. Only build if discovery content exists.
-disc_present = any(is_disc(p) for p in finding_files())
-if disc_present:
-    disc_out = ROOT / "batches" / f"lng_terminals_batch_{STAMP}_{REGION}_discovery.xlsx"
-    def do_disc():
-        assemble(); build("discovery", disc_out, roster_path=disc_roster); return disc_out
-    with_hidden(lambda p: not is_disc(p), do_disc)
-    results["discovery"] = disc_out.name
-else:
-    results["discovery"] = None
+    results = {"update": build_lane(rdir, args.region, args.stamp, "update", update_roster, args.force).name}
+    discovery_present = any(rdir.glob("*.monitor.json")) or any(rdir.glob("*.newterminals.json")) or any(
+        rdir.glob("*.newunits.json")) or any(rdir.glob("*.disc.qa.json")) or any(rdir.glob("*.disc.entity.json"))
+    results["discovery"] = (
+        build_lane(rdir, args.region, args.stamp, "discovery", discovery_roster, args.force).name
+        if discovery_present else None
+    )
+    print("BUILT:", results)
+    return 0
 
-print("BUILT:", results)
+
+if __name__ == "__main__":
+    sys.exit(main())

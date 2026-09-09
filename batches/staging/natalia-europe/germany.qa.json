@@ -1,0 +1,72 @@
+[
+  {
+    "category": "methodology",
+    "terminal_id": "T100000130458",
+    "unit_id": "G100002045800",
+    "terminal_name": "Wilhelmshaven FSRU",
+    "issue": "Wilhelmshaven FSRU and Wilhelmshaven TES FSRU's newly-converted Capacity (7.75 / 5.17 bcm/y, from the vessels' MMSCFD nameplate) may overstate real annual throughput. DET's own terminal pages separately state a lower 'annual grid feed-in/injection capacity' -- Wilhelmshaven-1: up to 4.8 bcm/y (2026); Wilhelmshaven-2: up to 4.3 bcm/y (2026); Stade: only 1.7 bcm/y through end-2026 (still ramping). This mirrors the already-resolved Thessaloniki peak-vs-nominal case (worklist item A). This batch staged the literal mechanical MMcf/d->bcm/y conversion of the EXISTING value per the QC worklist's Section B instruction; it did not substitute the lower grid-feed-in figure. Reviewer should decide whether Capacity should instead read the grid-feed-in/injection value for these three rows, matching how Thessaloniki was resolved.",
+    "severity": "medium",
+    "suggested_action": "Reviewer: compare against the Thessaloniki precedent and decide whether Capacity for Stade FSRU, Wilhelmshaven FSRU, and Wilhelmshaven TES FSRU should be restated using the grid feed-in/injection figures (4.8 / 4.3 / ~1.7 bcm/y respectively) rather than the vessel nameplate MMSCFD-derived figures.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_quality",
+    "terminal_id": "T100000131001",
+    "unit_id": "G100002100101",
+    "terminal_name": "Jade Energy LNG Terminal",
+    "issue": "This unit-row (eLNG Import Terminal) carries an open researcher question from Natalia's edits about whether it should remain a separate unit-row at all (relationship to the main Jade Energy project and the Expansion unit-row is not fully disentangled in the source notes). Not resolved in this pass -- flagging for reviewer judgment rather than guessing at a structural change.",
+    "severity": "low",
+    "suggested_action": "Reviewer: confirm whether eLNG Import Terminal should remain its own unit-row, be merged into the main row, or be relabelled; this batch only propagated the two blank mechanical fields (PlannedStopYear) and made no structural change.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "citation",
+    "terminal_id": "T100000130460",
+    "unit_id": "G100002046000",
+    "terminal_name": "Brunsbüttel FSRU",
+    "issue": "ConstructionDate [ref]'s sole citation (bayern-innovativ.de) is dead (HTTP-level failure, no Wayback recovery). Tried several replacement candidates this session (tankterminals.com, an lngprime construction-moving-forward article, two offshore-energy.biz URL-encoding variants) -- all returned 404. The offshore-energy.biz domain also returned repeated 502s on unrelated queries this session, consistent with a transient outage (5xx is not proof of rot per the citation_qc convention) rather than genuine link-rot, but that means I could not positively verify a replacement either. ConstructionYear=2022/ConstructionMonth=September is a well-established, undisputed fact (matches the Feb 2022 Bundestag fast-track announcement and the terminal's widely-reported construction timeline) so the value itself was left in place; only the ref needs a fresh, verified citation.",
+    "severity": "medium",
+    "suggested_action": "Re-run url_verifier against offshore-energy.biz's Brunsbuttel-construction article once the domain's outage clears, or source a fresh RWE/DET/press citation for 'construction started September 2022'.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "citation",
+    "terminal_id": "T100000131097",
+    "unit_id": "G100002109700",
+    "terminal_name": "Wilhelmshaven TES FSRU",
+    "issue": "ProposalDate [ref]'s sole citation (tes-h2.com) is dead (domain returns no usable content). Tried engie-deutschland.de and globalrenewablenews.com as replacements -- both failed to verify. A recalled offshore-mag.com URL also failed: confirmed via url_verifier and a direct Wayback-availability query that it is a 404 with zero archived snapshots, i.e. not a real article (likely mis-recalled from memory pre-WebSearch-exhaustion). Left un-staged rather than cite an unverified URL; ProposalDate's existing value was not touched.",
+    "severity": "medium",
+    "suggested_action": "Follow-up: find a live TES/E.ON/Engie press source (or trade-press pickup) for the ~August 2022 Wilhelmshaven-2/TES FSRU partnership announcement once WebSearch is available again.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130722",
+    "unit_id": "G100002072200",
+    "terminal_name": "Rostock LNG Terminal",
+    "issue": "Internal inconsistency carried over from Natalia's 7/16/26 edit: she set Status='proposed' (reflecting BarMalGas's active 2023-proposed project) but left CancelledYear=2021 / StopYear=2021 / ShelvedCancelledStatusType='confirmed' populated -- those fields describe the EARLIER Novatek-era project's 2021 cancellation, not the current BarMalGas project. Her own researcher note flags exactly this ambiguity ('if it gets revived, we should create a NEW row... keep this one as cancelled'). This matches the dormant-revival-watch pattern (a new sponsor reviving a previously-cancelled site) -- genuinely ambiguous whether to (a) clear the stale Cancelled/Stop fields since status is now proposed, or (b) split into a new terminal record for BarMalGas per the revival-watch rule, keeping this row cancelled for the Novatek project. Not resolved here -- staged as qa per 'ambiguous match -> qa, never a guessed edit'.",
+    "severity": "high",
+    "suggested_action": "Reviewer decision needed: clear CancelledYear/StopYear/ShelvedCancelledStatusType on this row (treating it as one project's status history), OR split into a new terminal record for the BarMalGas revival and leave this row as the cancelled Novatek project.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_ref",
+    "terminal_id": "T100000131098",
+    "unit_id": "G100002109800",
+    "terminal_name": "Lubmin RWE FSRU",
+    "issue": "Status [ref] / ShelvedYear [ref] / StopYear [ref] are all blank (part of the worklist's broader blank_ref set), and FloatingVesselName is blank with no ref. This session's WebSearch budget was exhausted before this row could be researched (spent on the Germany-specific defects prioritized by the worklist). Not fabricated a citation-free fill.",
+    "severity": "medium",
+    "suggested_action": "Follow-up: research and cite the dormancy evidence (stalled planning doc or newest article) for the 2025 shelved status, and the FSRU vessel name if one was ever named for this project.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_ref",
+    "terminal_id": "T100000131000",
+    "unit_id": "G100002100000",
+    "terminal_name": "Wilhelmshaven NWO FSRU",
+    "issue": "Status [ref] / CancelledYear [ref] / StopYear [ref] are blank (ShelvedYear [ref] is already populated). FloatingVesselName is also blank with no ref. Same WebSearch-budget constraint as Lubmin RWE FSRU above -- not researched this session.",
+    "severity": "medium",
+    "suggested_action": "Follow-up: research and cite the cancellation evidence (2026) and confirm whether a vessel was ever named for this cancelled project.",
+    "researcher_initials": "AI-draft"
+  }
+]

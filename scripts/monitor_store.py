@@ -45,6 +45,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
+from atomic_io import atomic_write_json, exclusive_lock
 from normalize import normalize_country, normalize_terminal_name
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
@@ -98,10 +99,7 @@ def load_store():
 
 
 def save_store(entries):
-    STORE_PATH.parent.mkdir(parents=True, exist_ok=True)
-    STORE_PATH.write_text(
-        json.dumps(entries, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
-    )
+    atomic_write_json(STORE_PATH, entries)
 
 
 def _load_list(path):
@@ -118,9 +116,10 @@ def cmd_seed(inputs_dir):
     inputs_dir = Path(inputs_dir)
     if not inputs_dir.exists():
         sys.exit(f"ERROR: inputs dir not found: {inputs_dir}")
-    store = load_store()
+    with exclusive_lock(STORE_PATH.with_suffix(".lock")):
+        store = load_store()
     out = inputs_dir / "prior_monitor_list.json"
-    out.write_text(json.dumps(store, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    atomic_write_json(out, store)
     print(f"  seeded {len(store)} durable monitor entr{'y' if len(store)==1 else 'ies'} -> {out}")
     print("  (build_review_package.py --mode discovery will roll these forward into the sheet)")
 
@@ -162,20 +161,19 @@ def cmd_update(inputs_dir, batch_label):
     if not inputs_dir.exists():
         sys.exit(f"ERROR: inputs dir not found: {inputs_dir}")
 
-    prior = load_store()
     current = _load_list(inputs_dir / "staged_monitor_list.json")
     promotions = _load_list(inputs_dir / "staged_new_terminals.json")
 
-    combined = _merge(prior, current, batch_label)
-
-    # Drop anything promoted to new_terminals this batch (Discovery SOP §5:
-    # "dropping items that have since moved to the real new_terminals sheet").
-    promoted_keys = {_new_terminal_key(t) for t in promotions}
-    dropped = [v for k, v in combined.items() if k in promoted_keys]
-    kept = {k: v for k, v in combined.items() if k not in promoted_keys}
-
-    entries = list(kept.values())
-    save_store(entries)
+    # Lock the whole read/merge/write transaction so simultaneous regions cannot
+    # overwrite one another's additions with stale snapshots.
+    with exclusive_lock(STORE_PATH.with_suffix(".lock")):
+        prior = load_store()
+        combined = _merge(prior, current, batch_label)
+        promoted_keys = {_new_terminal_key(t) for t in promotions}
+        dropped = [v for k, v in combined.items() if k in promoted_keys]
+        kept = {k: v for k, v in combined.items() if k not in promoted_keys}
+        entries = list(kept.values())
+        save_store(entries)
 
     added = len(kept) - sum(1 for e in prior if _entry_key(e) in kept)
     print(f"  durable store updated -> {STORE_PATH}")

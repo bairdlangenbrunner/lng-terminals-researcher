@@ -476,5 +476,101 @@
     "watch_for": "A confirmed permit filing, EIA, or FID for a genuine marine LNG import/export terminal (fixed regas/liquefaction infrastructure) at Koper or elsewhere on Slovenia's short coastline.",
     "best_lead_url": "https://seenews.com/news/local-govt-opposes-slovenias-luka-koper-plans-to-build-tanker-gas-terminal-1295779",
     "notes": "Slovenia remains a zero-GEM-terminal coverage-gap country; its only near-term LNG access is via Croatia's Krk FSRU and Italy's Adriatic LNG terminal by pipeline, not a domestic marine terminal."
+  },
+  {
+    "country": "Peru",
+    "candidate_name": "National LNG regasification plant (Proinversion tender, no site or bidder named)",
+    "sponsor_or_proposer": "Government of Peru / Ministerio de Energia y Minas (MINEM) -- to be tendered via Proinversion; no company/consortium named yet",
+    "first_observed_batch": "2026-08 discovery",
+    "last_observed_batch": "20260811_1631_ET",
+    "current_state": "On 16 Mar 2026 Energy Minister Angelo Alfaro announced the government will commission Proinversion to launch a public tender for a new LNG regasification plant, targeting roughly a two-year build once launched. The stated rationale is energy security / avoiding natural-gas supply contingencies, not a specific port or region. The article explicitly distinguishes this from Peru's existing 14 small regasification STATIONS (6 in the southwest concession, 8 in the north), which redistribute LNG trucked domestically rather than importing it; this new plant is described as importing LNG directly via LNG carriers ('buques metaneros') and connecting it to the pipeline network -- i.e. it would be Peru's first dedicated marine-import LNG terminal apart from the already-cancelled Ilo LNG Terminal (T100000130990, unrelated bi-national Peru-Bolivia pipeline concept). A follow-up targeted search found no later 2026 reporting naming a location, sponsor, or bidder.",
+    "missing_threshold_elements": "Sponsor: none named (pre-tender, government intent only). Location: none named (no port/region specified). Concrete step: partially present (ministerial commissioning of Proinversion to launch a tender is more than pure verbal intent, but no tender has yet been launched and no bidder selected).",
+    "watch_for": "Proinversion tender launch notice; any port/region named (Ilo/southern concession vs. a north-coast site vs. Callao/Lima area); a winning bidder or sponsor consortium.",
+    "best_lead_url": "https://www.gob.pe/institucion/minem/noticias/1366395",
+    "notes": "Verified via url_verifier.py (PASS, token 'regasificadora'). Single primary/official source (MEM press release); no independent second source needed for a monitor entry per SOP but none was required to be added here below the threshold anyway. Do not confuse with Ilo LNG Terminal (dead, different concept/site) when checking dedup on a future sweep once a site is named."
+  },
+  {
+    "country": "Bermuda",
+    "candidate_name": "Belco North Power Station LNG conversion (implied marine LNG import facility, no site named)",
+    "sponsor_or_proposer": "Belco (Bermuda Electric Light Company) / Ascendant Group",
+    "first_observed_batch": "2026-08 discovery",
+    "last_observed_batch": "20260811_1631_ET",
+    "current_state": "Belco has repeatedly proposed converting/supplementing its North Power Station (commissioned 2020, designed dual-fuel oil/LNG-capable) to run on LNG, most recently developing a renewed LNG proposal (Royal Gazette, Jun 2023) and reported as 'desperately' wanting LNG use (Royal Gazette, Aug 2025). Belco's LNG proposal was rejected in the prior Integrated Resource Plan (IRP) process. Belco submitted its final draft 2026 IRP to the Regulatory Authority on 24 Jun 2026, but the whole future energy-planning process was suspended for up to 18 months by ministerial action in Jul 2026 (Royal Gazette). No marine LNG receiving facility (FSRU, ISO-container terminal, or onshore regas plant) has ever been named, sited, or permitted -- only the power-plant fuel-switch concept has been proposed, and even that is currently paused pending the suspended IRP review.",
+    "missing_threshold_elements": "No terminal site or import-facility design identified (proposal is at the power-plant fuel-choice level, not a sited marine LNG receiving facility); concrete step actively blocked -- prior LNG IRP proposal was rejected by the regulator and the current planning process is suspended for up to 18 months.",
+    "watch_for": "Resumption of Bermuda's energy planning process (currently suspended through ~early 2028) and any subsequent RA decision approving LNG for Belco; a named import-facility design (FSRU vs small-scale/ISO-container vs onshore terminal) and site would be the trigger to reconsider.",
+    "best_lead_url": "https://www.royalgazette.com/environment/news/article/20250829/caines-belco-desperately-wants-lng-use/",
+    "notes": "Also: power-plant-fuel-choice != terminal (CLAUDE.md/SOP §3) -- even if approved, the LNG-receiving facility itself (not yet designed/sited) would be the terminal candidate, not the North Power Station. Do not stage as new_terminal."
+  },
+  {
+    "country": "Curacao",
+    "candidate_name": "Bullen Bay LNG Import Terminal (RdK-sponsored RFP, developer never selected)",
+    "sponsor_or_proposer": "Refineria di Kòrsou (RdK) as offtaker/advisor (Poten & Partners); no LNG-terminal developer/owner ever publicly named",
+    "first_observed_batch": "2026-08 discovery",
+    "last_observed_batch": "20260811_1631_ET",
+    "current_state": "In 2016 RdK (advised by Poten & Partners) ran a tender inviting bidders to develop, finance, build, own and operate an LNG import terminal (FSRU or conventional onshore) at Bullen Bay, with a ~12.9 km pipeline to RdK's Willemstad refinery, targeting ~175 MMcf/d of domestic demand and an in-service date of 2021 or earlier (Offshore Energy, 2016). No winning bidder/developer was ever identified in any source found, no construction or FID news exists, and the target in-service year (2021) passed five years ago with no follow-up reporting located. The Curacao Isla refinery itself has been shuttered since 2019, and 2024-2026 reporting on its potential reopening (RdK/Curacao government seeking a new operator and US OFAC clearance to process Venezuelan crude) discusses only crude-oil feedstock, with no LNG/gas-supply component mentioned in any 2024-2026 source found.",
+    "missing_threshold_elements": "Sponsor test fails for the actual terminal (RdK is the demand-side pipeline offtaker, not an identified terminal developer/owner -- the 2016 RFP for that role appears never to have concluded); no concrete recent step (nothing found since 2016, target in-service date lapsed).",
+    "watch_for": "Any RdK/Curacao government announcement naming a selected LNG-terminal developer/operator for Bullen Bay, or a gas-supply component attached to a refinery-reopening deal.",
+    "best_lead_url": "https://www.offshore-energy.biz/curacao-eyes-construction-of-lng-import-terminal/",
+    "notes": "Curacao has zero GEM LNG rows (confirmed coverage gap). A low-detail 'Curacao CNG-LNG Terminal feasibility study' document (scribd.com/document/660123711) also circulates but failed url_verifier (no LNG content retrievable) and adds no sponsor/date beyond the 2016 RFP already captured here -- not cited."
+  },
+  {
+    "country": "Trinidad and Tobago",
+    "candidate_name": "NGC small/micro-scale LNG hub (Caribbean supply)",
+    "sponsor_or_proposer": "National Gas Company of Trinidad and Tobago (NGC) with Globus Energy Group Trinidad Ltd, Corban Energy Group, Chester LNG LLC",
+    "first_observed_batch": "2026-08 discovery",
+    "last_observed_batch": "20260811_1631_ET",
+    "current_state": "MOU signed May 2023 to 'identify and screen technologies for micro and small-scale LNG development projects' to supply the wider Caribbean from Trinidad gas reserves. No site named, no capacity disclosed, no FEED/FID/permit since. A 2026 search for a follow-on announcement returned only the same 2023 MOU coverage — no evidence of progress in three years.",
+    "missing_threshold_elements": "No approximate site/location within Trinidad; no capacity; no concrete step beyond the exploratory MOU (no FEED, tender, or permit).",
+    "watch_for": "A named site (existing NGC/Atlantic LNG estate at Point Fortin vs. elsewhere), a capacity figure, or a FEED/FID announcement.",
+    "best_lead_url": "https://lngprime.com/contracts-and-tenders/trinidads-ngc-in-small-scale-lng-move/81125/",
+    "notes": "Distinct from (and not to be confused with) the Sept-2024 'Caribbean's first low-carbon bunkering HUB' MOU among Trinidad state agencies (nationalenergy.tt) — that is marine LNG/fuel bunkering and is out of scope per the discovery SOP's bunkering exclusion (confirmed via mid-task correction from orchestrator), not evaluated further. Also distinct from the Loran-Manatee/Dragon cross-border gas fields (Shell/BP), which are upstream backfill-gas supply for the EXISTING Atlantic LNG Terminal (T100000130579) via pipeline, not a new terminal — no discovery action, this is Update/Source-field territory if not already reflected."
+  },
+  {
+    "country": "Costa Rica",
+    "candidate_name": "RECOPE LNG/Natural Gas Import Initiative (unnamed site)",
+    "sponsor_or_proposer": "RECOPE (Refinadora Costarricense de Petróleo, S.A.)",
+    "first_observed_batch": "2026-08 discovery",
+    "last_observed_batch": "20260811_1631_ET",
+    "current_state": "RECOPE has repeatedly sought legislative authorization (most recently reported September 2023) to import and sell natural gas, floating two import methods -- isotank containers (non-marine, truck/rail-transported) and an unspecified 'extracción marítima' via ships/barges -- budgeted at roughly $20M for initial isotank rental, with a possible transition to larger storage infrastructure after 2035. No terminal site has been selected (Moín and Barranca are both mentioned only as existing/candidate RECOPE infrastructure, not a chosen site); no SETENA environmental filing or FID has been reported; the legislative reform faced opposition from environmental groups and multiple political parties. This is consistent with a string of RECOPE natural-gas feasibility studies dating to at least the early 2010s (an SNC-Lavalin/Enerchem Tek study once targeted an LNG receiving terminal near RECOPE's Moín Caribbean terminal in Limón for a 2015 in-service date) that have never advanced past the study/legislative stage, plausibly because Costa Rica's grid is ~98% renewable.",
+    "missing_threshold_elements": "No concrete step (legislative import authority not granted; no site selected; no environmental permit filed; no FID) and scope remains unresolved: the isotank method described is a non-marine, trucked/railed import mode that would fail the marine-import scope gate outright, while the vague 'extracción marítima via ship/barge' description is undefined and not yet verifiable as a genuine ship-borne LNG receiving facility.",
+    "watch_for": "Legislative approval of RECOPE's natural-gas import authority; a SETENA environmental-impact filing; a named site (Moín vs. Barranca) and named terminal operator; any FEED or terminal-design contract award; confirmation that the import mode is genuinely marine (ship-delivered), not isotank/trucked.",
+    "best_lead_url": "https://www.crhoy.com/nacionales/recope-insiste-en-aval-para-importar-y-vender-gas-natural/",
+    "notes": "From the coverage-gap discovery sweep of Belize, Costa Rica, Guatemala, and the Falkland Islands (all zero GEM LNG-terminal records as of the 2026-08-11 export). Re-check in ~12 months. Do not stage as new_terminal absent a named site, a resolved marine-vs-trucked scope determination, and a concrete regulatory step."
+  },
+  {
+    "country": "Panama",
+    "candidate_name": "LNG bunkering hub / small-scale LNG distribution project (Kanfer Shipping / C.B. Fenton / Melones Oil Terminal, Pacific side)",
+    "sponsor_or_proposer": "Kanfer Shipping (Norway) with C.B. Fenton (Ultramar, Chile) and Melones Oil Terminal (MOTI)",
+    "first_observed_batch": "2026-08 discovery",
+    "last_observed_batch": "20260811_1631_ET",
+    "current_state": "MOU/partnership stage since Dec 2022 (Kanfer-CB Fenton) and May 2023 (MOTI joined); framed by its own sponsors as an 'LNG bunkering hub' with an associated 'small-scale LNG distribution' component serving Pacific-side ports; no update found past 2023 in this sweep (limited search-tool availability, see qa scope_correction note).",
+    "missing_threshold_elements": "SCOPE, not threshold, is the open question: project self-describes as bunkering (out of scope per Discovery SOP header, 'all scales except bunkering'), but this batch's dispatch brief explicitly flagged Canal-serving LNG bunkering terminals as in-scope if they receive LNG by ship. Also no confirmed exact site/coordinates beyond 'MOTI, Pacific side' and no capacity figure found.",
+    "watch_for": "A named terminal project (not just a bunkering-hub MOU), a specific site/coordinates, a capacity figure, environmental permit filing, or explicit confirmation that the facility performs marine LNG IMPORT for onward distribution (not solely bunkering) — any of which would resolve the scope question.",
+    "best_lead_url": "https://www.offshore-energy.biz/kanfer-and-cb-fenton-bring-in-new-partner-to-commercialise-lng-bunkering-hub-in-panama/",
+    "notes": "Second corroborating URL: https://bunkermarket.com/lng-bunkering-in-panama-getting-closer-to-reality-kanfer/ (both url_verifier-passed on tokens Kanfer/Panama, logged to url_verifier_log.jsonl). SEE qa scope_correction entry — this candidate is deliberately NOT staged as new_terminal pending resolution of the SOP-vs-brief scope conflict on bunkering terminals."
+  },
+  {
+    "country": "Mexico",
+    "candidate_name": "Guaymas LNG Import/Regasification Terminal",
+    "sponsor_or_proposer": "Unnamed private capital (per SENER); no developer identified",
+    "first_observed_batch": "2026-08 discovery",
+    "last_observed_batch": "20260811_1631_ET",
+    "current_state": "SENER (Mexican energy ministry) announced in Feb 2026 that a new LNG import/regasification terminal is under consideration for Guaymas, Sonora, framed as an 'energy anchor' for the northwest grid. No named sponsor/developer, no permit filing, no site/berth specifics found.",
+    "missing_threshold_elements": "Fails sponsor-identified test (only 'private capital' referenced, no company named); no concrete step (no CRE/ASEA-SEMARNAT permit filing, no FID, no site plan) found in any source.",
+    "watch_for": "A named developer, a CRE permit application, or a specific port/site designation at Guaymas; also watch for this resolving into (or being absorbed by) an existing regional gas-supply project.",
+    "best_lead_url": "https://energymagazine.mx/guaymas-nueva-terminal-de-gnl-y-ancla-energetica-del-noroeste/",
+    "notes": "Verified via url_verifier.py (PASS) against tokens 'Guaymas'/'GNL'. Single-source lead; no corroborating second outlet found. Not a dead-site revival (no prior GEM record at Guaymas) -- a fresh, pre-sponsor proposal. Distinct from the existing Puerto Libertad/Topolobampo GEM terminals (different site)."
+  },
+  {
+    "country": "Mexico",
+    "candidate_name": "Karpowership Floating Power Plant, Quintana Roo / Yucatan Peninsula",
+    "sponsor_or_proposer": "Karpowership (Karadeniz Holding, Turkey)",
+    "first_observed_batch": "2026-08 discovery",
+    "last_observed_batch": "20260811_1631_ET",
+    "current_state": "Karpowership proposes deploying a 250 MW floating power plant (Powership) to the Yucatan Peninsula/Quintana Roo to address grid supply shortfalls; multiple Mexican outlets (El Economista, Energia a Debate, El Heraldo de Mexico, El Sol de Mexico/OEM) reported in May 2026 that the package includes 'un buque de gas natural licuado' (an LNG vessel) alongside the powership, suggesting a marine LNG supply component rather than a purely diesel/HFO-fired unit. However, Quintana Roo Governor Mara Lezama stated on 2026-05-25 that the project is still 'under analysis,' not contracted/approved, and CEMDA (environmental NGO) has raised objections. No specific port/berth location within Quintana Roo/Yucatan has been reported.",
+    "missing_threshold_elements": "Fails concrete-step test (governor confirms 'under analysis', no signed contract/permit found); fails precise-location test (only region-level 'Quintana Roo'/'Yucatan Peninsula' given, no port/site named); scope classification unresolved -- unclear whether the LNG vessel functions as an FSRU/marine-import supply (which would put this in-scope as an LNG terminal co-located with a power plant) or as an ancillary fuel-supply arrangement fed by an onshore/pipeline source (which would keep this purely a GOGPT-side power-plant record, out of scope here). Per SOP, scope doubt is resolved via monitor, not staged.",
+    "watch_for": "A signed contract/permit; a named port or municipality (e.g., Puerto Morelos, Progreso, Punta Venado); confirmation that the 'buque de gas natural licuado' is a dedicated FSRU/regasification vessel performing ship-to-shore or ship-to-ship LNG transfer (which would trigger the marine-import scope gate and could make this a genuine new LNG terminal candidate on a future pass) versus a diesel/HFO/pipeline-fed powership (out of scope, GOGPT-side only).",
+    "best_lead_url": "https://www.energiaadebate.com/energia-electrica/inyectara-karpowership-250-mw-de-energia-firme-a-yucatan/",
+    "notes": "Verified via url_verifier.py (PASS) against tokens 'Karpowership'/'250'. Multiple corroborating outlets exist (El Heraldo de Mexico, OEM/El Sol de Mexico, El Economista) reporting the same 250 MW figure and LNG-vessel detail, but direct-fetch attempts to those specific URLs 404'd/403'd in this session (only the energiaadebate.com URL and the Google News RSS redirect links were reachable) -- treat as corroborated by multiple named outlets even though only one URL passed automated verification this pass. No GEM record exists at any Quintana Roo/Yucatan coastal site to check for a dead-and-revived match."
   }
 ]

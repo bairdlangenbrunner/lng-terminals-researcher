@@ -291,10 +291,19 @@ def _fetch(url, timeout=30, ua=_DEFAULT_UA):
                 # as a scanned/image-only PDF.
                 is_pdf = True
             elif is_pdf:
-                text = _run_pdftotext(tmp)
-                # No text layer -> scanned image. OCR rather than call it empty.
-                if len(text.strip()) < _PDF_TEXT_MIN and raw[:5] == b"%PDF-":
-                    text = _run_pdf_ocr(tmp) or text
+                if raw[:5] != b"%PDF-" and raw.lstrip()[:1] == b"<":
+                    # A .pdf URL (or pdf content-type) that returned an HTML body
+                    # is not a PDF at all — it's an interstitial (bot challenge,
+                    # login wall). Hand the HTML downstream so the soft-error and
+                    # bot-wall body-marker checks can see it, instead of running
+                    # pdftotext on HTML and mis-reporting "no extractable text".
+                    is_pdf = False
+                    text = raw.decode("utf-8", errors="replace")
+                else:
+                    text = _run_pdftotext(tmp)
+                    # No text layer -> scanned image. OCR rather than call it empty.
+                    if len(text.strip()) < _PDF_TEXT_MIN and raw[:5] == b"%PDF-":
+                        text = _run_pdf_ocr(tmp) or text
             else:
                 text = raw.decode("utf-8", errors="replace")
 
@@ -321,17 +330,23 @@ _BOT_BLOCK_TITLES = (
     "just a moment", "attention required", "access denied", "forbidden",
     "too many requests",
 )
+# Bot-wall interstitials served as HTTP 200 with NO usable <title> — detected by
+# body markers instead. Incapsula/Imperva is the canonical case: bakerhughes.com
+# returns a 200 text/html challenge (an <iframe src="/_Incapsula_Resource...">)
+# for a .pdf URL, which read as "PDF has no extractable text" until 2026-08-01.
+_BOT_BLOCK_BODY_MARKERS = (
+    "_incapsula_resource",      # Imperva/Incapsula challenge iframe
+    "incapsula incident",       # Imperva block page
+    "px-captcha",               # PerimeterX
+    "cf-browser-verification",  # Cloudflare (older challenge markup)
+    "challenge-platform",       # Cloudflare (current challenge markup)
+)
 
 
-def _wayback_snapshot(url):
-    """Newest Wayback snapshot for `url` via the availability API.
-    Returns (snapshot_url, timestamp) or (None, None). Cached per process."""
-    key = ("__wayback__", url)
-    if key in _CACHE:
-        return _CACHE[key]
+def _wayback_snapshot_availability(url):
+    """Newest snapshot via the availability API. (snapshot_url, ts) or (None, None)."""
     api = ("https://archive.org/wayback/available?url="
            + urllib.parse.quote(url, safe=""))
-    snap = (None, None)
     try:
         r = subprocess.run(
             ["curl", "-sL", "-A", _DEFAULT_UA, "--max-time", "30", api],
@@ -343,9 +358,55 @@ def _wayback_snapshot(url):
             # Force https; the API often returns http:// snapshot URLs.
             u = closest["url"].replace("http://web.archive.org",
                                        "https://web.archive.org", 1)
-            snap = (u, closest.get("timestamp", ""))
+            return u, closest.get("timestamp", "")
     except (subprocess.SubprocessError, ValueError):
         pass
+    return None, None
+
+
+def _wayback_snapshot_cdx(url):
+    """Newest HTTP-200 snapshot via the CDX API. (snapshot_url, ts) or (None, None).
+
+    The availability API is the documented front door but it is NOT authoritative:
+    it routinely answers "no snapshot" for URLs the CDX index holds dozens of
+    captures for (its `closest` lookup consults a cached subset and quietly gives
+    up under load). Trusting it alone turns an archived page into a false "dead"
+    verdict and, downstream, into a ref wrongly dropped from a [ref] cell --
+    which is precisely the failure the merge-never-replace rule exists to prevent.
+    So a negative from availability is never final; CDX is queried before the URL
+    is allowed to fail. Observed on Puerto de la Luz's cost/facility-type refs
+    (natalia-europe batch, 2026-07-29): availability said none, CDX had captures.
+    """
+    api = ("https://web.archive.org/cdx/search/cdx?url="
+           + urllib.parse.quote(url, safe="")
+           + "&output=json&filter=statuscode:200&fl=timestamp,original&limit=-1")
+    try:
+        r = subprocess.run(
+            ["curl", "-sL", "-A", _DEFAULT_UA, "--max-time", "30", api],
+            capture_output=True, text=True, timeout=35,
+        )
+        rows = json.loads(r.stdout or "[]")
+        # First row is the ["timestamp","original"] header; limit=-1 returns the newest.
+        data_rows = [row for row in rows if row and row[0] != "timestamp"]
+        if data_rows:
+            ts, original = data_rows[-1][0], data_rows[-1][1]
+            return f"https://web.archive.org/web/{ts}/{original}", ts
+    except (subprocess.SubprocessError, ValueError, IndexError):
+        pass
+    return None, None
+
+
+def _wayback_snapshot(url):
+    """Newest Wayback snapshot for `url`. Returns (snapshot_url, timestamp) or
+    (None, None). Tries the availability API first, then falls back to the CDX
+    index -- see _wayback_snapshot_cdx for why the first answer is not trusted.
+    Cached per process."""
+    key = ("__wayback__", url)
+    if key in _CACHE:
+        return _CACHE[key]
+    snap = _wayback_snapshot_availability(url)
+    if not snap[0]:
+        snap = _wayback_snapshot_cdx(url)
     _CACHE[key] = snap
     return snap
 
@@ -427,6 +488,15 @@ def _check(url, expected, require_all, wayback_fallback=True):
             return False, ("PDF has no extractable text (scanned/image PDF, or the "
                            "poppler pdftotext CLI is unavailable)")
     else:
+        # Bot-wall interstitials served as 200 with no <title> (Incapsula et al.)
+        # — same bot-block ≠ dead treatment as a 401/403.
+        body_lower = text[:5000].lower()
+        for marker in _BOT_BLOCK_BODY_MARKERS:
+            if marker in body_lower:
+                reason = f"bot-challenge interstitial served as 200 (marker: {marker!r})"
+                if wayback_fallback:
+                    return _check_wayback(url, expected, require_all, reason)
+                return False, reason
         # Soft-error detection via title (HTML only)
         title_match = re.search(r"<title[^>]*>([^<]+)</title>", text, re.IGNORECASE)
         if title_match:

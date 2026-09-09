@@ -1,0 +1,42 @@
+{
+  "scope": "whole-tracker",
+  "scope_slug": "qc-20260826_0914_ET",
+  "workflow": "qc",
+  "tier": "n/a",
+  "countries": ["*"],
+  "status": "built",
+  "created": "2026-08-26",
+  "started": "2026-08-26",
+  "built": "2026-08-26",
+  "memo": "batches/qc_20260826_0958_ET.md",
+  "note": "QC never edits. These files are the detection evidence behind the memo (QC SOP 2.1) -- the follow-on Update batches read them instead of re-deriving worklists from prose. No xlsx and no staged edits belong in this directory.",
+  "export_snapshot": "scripts/gem_export.csv pulled 2026-08-26; 1281 rows / 1258 LNG-scope / 836 terminals / 114 countries",
+  "passes": {
+    "mechanical_integrity_3.1": "complete, whole-tracker",
+    "citation_link_rot_3.2": "IN FLIGHT -- citation_qc.py over all ~4846 ref URLs, no output yet at 48 min; memo section 2 is a placeholder and the memo must be re-issued at a new stamp when citation_qc_full.json lands",
+    "accuracy_spot_check_3.3": "NOT RUN -- needs a web-search budget; deferred to the Andrew/Africa census phase, sampling from outside Africa so the control group is not double-counted",
+    "post_apply_check_3.4": "complete, all 18 current batches (34 workbooks deduped to newest rebuild per scope+mode; 8 discovery workbooks have no updates_summary sheet and are not checkable)"
+  },
+  "findings": {
+    "completeness_sweep.json": "1207 gaps: blank_ref 709 / missing_field 272 / orphan_ref 144 / suspect_enum_value 61 / project_field_inconsistent 21; severity high 28",
+    "capacity_units.json": "144 of 1100 numeric-capacity LNG rows (13.1%) are not mtpa -> any un-converted rollup of the Capacity column is wrong; 6 rows in non-convertible units (Hamina MWh/d and Port Kembla TJ/d are live); all 5 blank-CapacityUnits rows carry a magnitude implausible as mtpa, 2 of them on operating terminals (Sendai 90, Thi Vai Phase 1 9.50)",
+    "bare_domain_refs.json": "102 bare-domain [ref] URLs on 39 terminals across 18 ref columns; Mexico/LAC-heavy. Pre-existing debt -- the build's warn_bare_domain_urls guard stops new ones",
+    "tbd_entity_links.json": "41 live [TO BE DELETED] company records (all deleted=False) on 45 LNG plants via 50 plant_owner links -> 143 LNG cells on 54 terminals. 34 repointable, 7 need an entity-team decision. Fix lane is the entity system, NOT an LNG field edit",
+    "coord_country_check.json": "832 of 836 terminals geometry-checked: 4 high country mismatches (Black Sea 1015 km inside Georgia; Cameroon FLNG operating+exact 611 km off; Poseidon FLNG 441 km; Zhiwan Island 60 km one-digit longitude) + 12 inland marine-access scope questions (8 high), incl. the 3 Chinese Yangtze terminals and landlocked Botswana typed export. Info-tier rows (Crimea, Dakhla, Qushan, 4 offshore fields, Gibraltar no_geometry) are deliberate non-findings",
+    "duplicate_candidates.json": "11 pairs for review; Dongying and Hazira are 0.0 km apart with no AssociatedTerminals cross-link and are the likeliest genuine duplicates",
+    "stale_sweep.json": "only 14 flagged units (12 planned_start_slipped + 2 routine_refresh_due); dev_pipeline 460 units, 296 updated within 3 months",
+    "apply_check/": "per-batch JSONs -- apply_check.py's --output default is a single fixed path, so a loop over batches silently overwrites itself; always pass --out work/apply_check/<batch>.json",
+    "apply_check_divergence.json": "2101 landable / 980 applied / 810 not_applied / 311 diverged (14.8%) / 12 not_found. Divergence is entirely confined to the 8 exhaustive_update batches (sw-europe 57.6% worst); all 10 captive-power update batches are 0.0%. 138 ref_no_overlap cases -- staged refs replaced rather than merged, clustered in sw-europe and natalia-europe -- are the real concern; 18 high-severity records need human judgment"
+  },
+  "clean_results": {
+    "circular_citations": "ZERO gem.wiki / globalenergymonitor.org URLs in any [ref] column in LNG scope",
+    "abarrelfull": "still live: 72 raw ref cells -> 53 distinct (terminal, column) cells on 28 terminals, 55 sole-citation. Removals declare dropped_urls_banned, never dropped_urls_dead"
+  },
+  "repo_changes": [
+    "scripts/apply_check.py -- fixed the deletion-sentinel misclassification (a landed deletion read as diverged): 319 -> 311 diverged, 972 -> 980 applied",
+    "docs/reference/gem_db_schema.md -- corrected the false claim that off-catalog CapacityUnits are non-LNG-only (bpd is the only one); refreshed stale Fuel and FacilityType counts; added a 'Behind the export: the read-only Postgres tables' section (company NOT entity, plant_owner, unit_update, research_status.option, plant_history, no country.name, the camelCase quoting rule, and the plantLevelLocation=false 14-terminal exemption)",
+    "docs/sops/qc.md 7 -- resolved the contradiction with 2.1: QC never EDITS; the findings JSON is an audit trail, not an edit",
+    "scripts/README.md -- documented coverage_audit_researcher.py and coord_country_check.py incl. their deliberate non-findings; noted apply_check.py's overwrite-prone --output default",
+    "batches/staging/README.md -- recorded that meta.json's applied field is unmaintained (1 of 29) and that apply_check.py against a fresh export is the authority on what landed"
+  ]
+}

@@ -19,7 +19,14 @@ Plus two structural checks the diff/update scripts don't cover:
   4. project_field_inconsistent — a project-level field differs across the
      unit-rows of a single terminal. Violates the CLAUDE.md hard rule
      "project-level field changes apply to ALL unit-rows" and will surface as
-     an inconsistency in the next export.
+     an inconsistency in the next export. EXCEPT for the ~14 terminals carrying
+     `plantLevelLocation = false` in the backend, whose coordinates live on the
+     unit rows BY DESIGN (Browse FLNG's three vessels really are 40 km apart).
+     For those, the location fields are exempt — before this exemption existed
+     they produced 34 of 55 findings, all false (2026-08-26). The flag is not in
+     the export, so it is read from the read-only Postgres; with no DB reachable
+     the check degrades to reporting them with a `plant_level_location_unknown`
+     note rather than silently asserting an error.
   5. suspect_enum_value — an enum cell holds a value outside the catalog in
      gem_db_schema.md. The schema says flag these, don't auto-accept.
 
@@ -139,8 +146,16 @@ BOOLEAN_FIELDS = {
 REF_DATA_ALIASES = {
     "ProposalDate [ref]": ["ProposalYear", "ProposalMonth"],
     "ConstructionDate [ref]": ["ConstructionYear", "ConstructionMonth"],
+    # StartDate [ref] is the SHARED ref for the whole start-date family, planned
+    # years included — a proposed/construction unit legitimately cites a planned
+    # start with no ActualStart* yet. Omitting the planned columns made every such
+    # row a phantom orphan_ref: 33 of 36 "orphans" in the natalia-europe QC pass
+    # (2026-07-29), all with LatestPlannedStartYear populated. Rule F is about a
+    # ref with NO paired value anywhere in its family, not a ref whose family
+    # member happens to be the planned rather than the actual year.
     "StartDate [ref]": [
         "ActualStartYear", "ActualStartMonth", "ActualStartYear2", "ActualStartYear3",
+        "LatestPlannedStartYear", "OriginalPlannedStartYear",
     ],
     # TotTerminalCost [ref] pairs with a computed rollup — skip entirely.
 }
@@ -194,6 +209,40 @@ ENUM_CATALOGS = {
     # For LNG terminals the schema says use mtpa or bcm/y only.
     "CapacityUnits": {"mtpa", "bcm/y"},
 }
+
+
+# Location fields are per-unit by design on `plantLevelLocation = false`
+# terminals, so cross-unit disagreement there is not a finding.
+UNIT_LEVEL_LOCATION_FIELDS = {
+    "Latitude", "Longitude", "Location", "Location [ref]", "Accuracy",
+    "State/Province", "LocationDatasource",
+}
+
+
+def unit_level_location_terminals():
+    """TerminalIDs whose coordinates legitimately vary per unit-row.
+
+    Returns (ids, available). `available` is False when the read-only Postgres
+    can't be reached, so the caller can annotate instead of asserting.
+    """
+    try:
+        import paths
+        from sqlalchemy import text
+        with paths.get_engine().connect() as conn:
+            ids = {r[0] for r in conn.execute(text(
+                'select id from plant where "projectType" = 8 '
+                'and deleted = false and "plantLevelLocation" = false'))}
+        return ids, True
+    except Exception as exc:                                       # noqa: BLE001
+        print(f"  NOTE: plantLevelLocation flag unavailable ({exc}); "
+              f"cross-unit location findings will be annotated, not suppressed",
+              file=sys.stderr)
+        return set(), False
+
+
+def _numeric_id(value):
+    digits = "".join(ch for ch in str(value) if ch.isdigit())
+    return int(digits) if digits else None
 
 
 def _blank(v):
@@ -250,6 +299,8 @@ def compute_gaps(csv_path, country_filter=None):
                 continue
             terminals[row[ci_tid]].append(row)
 
+    unit_level_ids, unit_level_known = unit_level_location_terminals()
+
     gaps = []
 
     def add(row, gap_type, column, severity, detail):
@@ -274,12 +325,23 @@ def compute_gaps(csv_path, country_filter=None):
 
         # --- (4) cross-unit consistency on project-level fields ---
         if len(rows) > 1:
+            per_unit_location = _numeric_id(tid) in unit_level_ids
             for name in consistency_cols:
                 vals = {(col(r, name) or "").strip() for r in rows}
-                if len(vals) > 1:
-                    add(rep, "project_field_inconsistent", name, "medium",
-                        f"{len(vals)} distinct values across {len(rows)} unit-rows: "
-                        f"{sorted(vals)!r} — project-level field must be uniform")
+                if len(vals) <= 1:
+                    continue
+                if name in UNIT_LEVEL_LOCATION_FIELDS:
+                    if per_unit_location:
+                        continue          # per-unit by design — not a finding
+                    if not unit_level_known:
+                        add(rep, "project_field_inconsistent", name, "low",
+                            f"{len(vals)} distinct values across {len(rows)} "
+                            f"unit-rows: {sorted(vals)!r} — plant_level_location"
+                            f"_unknown (DB unreachable; may be per-unit by design)")
+                        continue
+                add(rep, "project_field_inconsistent", name, "medium",
+                    f"{len(vals)} distinct values across {len(rows)} unit-rows: "
+                    f"{sorted(vals)!r} — project-level field must be uniform")
 
         for ri, row in enumerate(rows):
             is_rep = (ri == 0)
@@ -323,9 +385,30 @@ def compute_gaps(csv_path, country_filter=None):
                 if is_proj(name) and not is_rep:
                     continue
                 v = (col(row, name) or "").strip()
-                if v and v not in catalog:
-                    add(row, "suspect_enum_value", name, "medium",
-                        f"{name}={v!r} not in catalog {sorted(catalog)!r}")
+                if not v or v in catalog:
+                    continue
+                if name == "CapacityUnits":
+                    # An off-catalog unit the backend CAN convert is a style
+                    # deviation (mtpa still computes). One it CANNOT convert is
+                    # data loss: the row contributes zero to every mtpa rollup,
+                    # including the published capacity totals. Two different
+                    # findings, so two different severities.
+                    convertible = not _blank(col(row, "CapacityinMtpa"))
+                    if convertible:
+                        add(row, "suspect_enum_value", name, "low",
+                            f"{name}={v!r} not in catalog {sorted(catalog)!r} — "
+                            f"converts to mtpa, so a methodology-style deviation "
+                            f"(LNG terminals should use mtpa or bcm/y)")
+                    else:
+                        add(row, "suspect_enum_value", name, "high",
+                            f"{name}={v!r} not in catalog {sorted(catalog)!r} and "
+                            f"CapacityinMtpa is BLANK — Capacity="
+                            f"{(col(row, 'Capacity') or '').strip()!r} contributes "
+                            f"0 to every mtpa rollup, so this terminal is missing "
+                            f"from GEM capacity totals")
+                    continue
+                add(row, "suspect_enum_value", name, "medium",
+                    f"{name}={v!r} not in catalog {sorted(catalog)!r}")
 
     return gaps
 

@@ -1,0 +1,32 @@
+[
+  {
+    "category": "citation_unverifiable",
+    "terminal_id": "T100000130680",
+    "unit_id": "G100002068000",
+    "terminal_name": "Acajutla FSRU",
+    "issue": "Existing Location [ref] citation https://maps.app.goo.gl/bWXScrkMr2YXBFsh6 is a Google Maps short-link that returns 200 but has no extractable static text, so it can never pass a text-token verification check. Not proven dead — kept in the merged ref cell (not declared as a drop) — but it is structurally unverifiable by url_verifier.",
+    "severity": "low",
+    "suggested_action": "Reviewer may replace with a direct maps.google.com coordinate URL or an alt citation if precise verification is desired; no action required.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "citation_unverifiable",
+    "terminal_id": "T100000130568",
+    "unit_id": "G100002056800",
+    "terminal_name": "La Unión FSRU",
+    "issue": "ppiaf.org PDF (Output_P143848_2015_11_24_15_23.pdf, cited in FacilityType[ref] and formerly Owner[ref]) returns HTTP 403 with no Wayback snapshot available this session. centralamericalink.com (formerly in Owner[ref]) returns HTTP 521 (origin server down). Both excluded from the merged ref cells this pass (not proven dead, so not declared as drops).",
+    "severity": "low",
+    "suggested_action": "Re-check both URLs in a future pass; restore to the ref cell if they resolve.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_quality",
+    "terminal_id": "T100000130568",
+    "unit_id": "G100002056800",
+    "terminal_name": "La Unión FSRU",
+    "issue": "ProposalDate is blank in GEM despite ProposalDate [ref] carrying a citation (pre-existing orphan-ref condition, not created this session). The surviving citation (archived gasandoil.com, Sept 2007) may support a 2007 ProposalDate but was not read closely enough this session to confirm a specific date.",
+    "severity": "low",
+    "suggested_action": "Reviewer: read the archived gasandoil.com article in full to determine if a specific 2007 ProposalDate can be confidently backfilled.",
+    "researcher_initials": "AI-draft"
+  }
+]

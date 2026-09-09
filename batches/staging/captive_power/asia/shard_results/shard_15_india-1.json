@@ -1,0 +1,334 @@
+[
+  {
+    "terminal": "AMNS Suvali LNG Terminal",
+    "terminal_id": "T100001050400",
+    "country": "India",
+    "verdict": "NO",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "yellow",
+    "captive_summary": "No documented on-site gas power plant for the proposed Suvali regas terminal itself. The only nearby generating plant is AM/NS's Bhander gas-fired power station (500 MW, ~1.57 km away), commissioned 2006/commercial ops 2008 and acquired by AM/NS in March 2020 to power its Hazira integrated steel plant -- years before the Suvali LNG terminal was even conceived (reported 'in talks'/design stage 2021-2023, EC reportedly granted 2023). This is the industrial-host pattern: Bhander is a separate host's (the steel plant's) pre-existing captive plant, not a facility built to power the LNG terminal.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "The Hindu (article30975443.ece) and Wikipedia's 'Essar Bhander Power Plant' page confirm Bhander is a 500 MW natural-gas-fired plant commissioned 2006, commercial operations from 2008, acquired by ArcelorMittal Nippon Steel (AM/NS) India in March 2020 from Edelweiss ARC specifically to serve its Hazira steel operations. Trade press (Argus, Construction World) place AMNS's Suvali LNG terminal project at the talks/design stage only from ~2021-2023, i.e. well after Bhander was built and already captive to the steel mill. No source located describes Bhander as built for, or dedicated to, the LNG terminal, and no source describes a separate on-site generator built for the terminal's own regas operations -- a design-stage terminal's own EIA/power-source documentation was not found in this pass.",
+    "refs": [
+      "https://www.thehindu.com/business/amns-india-acquires-bhanderplant/article30975443.ece",
+      "https://en.wikipedia.org/wiki/Essar_Bhander_Power_Plant"
+    ],
+    "verification_log": [
+      {
+        "url": "https://www.argusmedia.com/en/news-and-insights/latest-market-news/2639678-india-s-amns-in-talks-to-build-suvali-lng-terminal",
+        "tokens": [
+          "sea-water",
+          "Suvali"
+        ],
+        "result": "FAIL",
+        "note": "HTTP 404 -- article URL no longer resolves; not used as a citation"
+      },
+      {
+        "url": "https://www.thehindubusinessline.com/companies/arcelormittal-nippon-steel-completes-acquisition-of-bhander-power-plant-in-hazira/article30971517.ece",
+        "tokens": [
+          "Bhander",
+          "500 MW"
+        ],
+        "result": "FAIL",
+        "note": "page loads but '500 MW' does not appear; not used"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Essar_Bhander_Power_Plant",
+        "tokens": [
+          "2006",
+          "ArcelorMittal Nippon Steel"
+        ],
+        "result": "PASS",
+        "note": "confirms commissioning year and current owner; cites Hindu Business Line + Essar Energy, not GEM"
+      },
+      {
+        "url": "https://www.thehindu.com/business/amns-india-acquires-bhanderplant/article30975443.ece",
+        "tokens": [
+          "Bhander",
+          "500 MW"
+        ],
+        "result": "PASS",
+        "note": "confirms 500 MW capacity and AM/NS acquisition"
+      }
+    ],
+    "gogpt_prior_assessment": "gogpt_prior names 'Bhander power station' (500 MW, gogpt_captive=True, 1.57 km away) as a prior. Bhander IS captive power -- but to AM/NS's Hazira STEEL plant, not to this proposed LNG terminal; it was built and already operating/captive over a decade before the LNG terminal was conceived (see The Hindu citation above). Different host, different purpose -- not this terminal's captive plant.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Bhander is already a GOGPT record (per gogpt_prior) and belongs to AM/NS's steel operations, not the LNG terminal -- not a new addition and not attributable to this terminal.",
+    "status_or_other_findings": "Project reported at 'in talks'/design stage in 2022-2023 trade press (Argus); AMNS reportedly received environmental clearance in 2023 per search snippets (not independently re-verified this pass). Not acted on.",
+    "notes": "Industrial-host/direction test case: Bhander long predates and is functionally unrelated to the proposed Suvali terminal. Revisit once the terminal's own EIA/design documents (with a stated power source for the regas facility itself) are publicly available -- none were located in this pass."
+  },
+  {
+    "terminal": "BPCL Mangalore LNG Terminal",
+    "terminal_id": "T100000130451",
+    "country": "India",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "Cancelled-and-never-built proposal: a floating LNG import terminal (3, scalable to 5 mtpa) proposed in 2013 by a BPCL/ONGC/Mitsui consortium was scrapped in October 2015 before any design or construction proceeded, citing low utilization of the nearby Kochi (Petronet) terminal. Screened per SOP -- cancelled-and-never-built, matching the input data's 'cancelled/confirmed' status.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "gasworld (2015) and MiningWeekly (29 Oct 2015) both report Bharat Petroleum scrapped the proposed floating LNG terminal at Mangalore port, citing the underused Kochi terminal ~360 km away as making the project unviable; no FID, design, or construction proceeded.",
+    "refs": [
+      "https://www.gasworld.com/story/bharat-petroleum-scraps-proposed-floating-lng-terminal-at-mangalore-port-india/2080608.article/",
+      "https://www.miningweekly.com/article/indian-lng-terminal-project-scrapped-2015-10-29"
+    ],
+    "verification_log": [
+      {
+        "url": "https://www.gasworld.com/story/bharat-petroleum-scraps-proposed-floating-lng-terminal-at-mangalore-port-india/2080608.article/",
+        "tokens": [
+          "scraps",
+          "Mangalore"
+        ],
+        "result": "PASS",
+        "note": "bot-blocked live (HTTP 403); value verified via Wayback snapshot 20250620174532"
+      },
+      {
+        "url": "https://www.miningweekly.com/article/indian-lng-terminal-project-scrapped-2015-10-29",
+        "tokens": [
+          "scrapped",
+          "Mangalore"
+        ],
+        "result": "PASS",
+        "note": "OK"
+      }
+    ],
+    "gogpt_prior_assessment": "gogpt_prior = no; no GOGPT plant to assess.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Terminal was cancelled before any design/construction proceeded -- no power plant of any kind was ever built or designed.",
+    "status_or_other_findings": "A separate, later floating-LNG proposal at the same port (Karnataka state government + LNG Alliance, announced Jan 2022, 4-8 mtpa) appears stalled/no updates since ~2022-2024 per trade press, but this is reported as a distinct project (LNG Alliance Mangalore FSRU is its own GEM entry), not this terminal_id.",
+    "notes": ""
+  },
+  {
+    "terminal": "Chhara LNG Terminal",
+    "terminal_id": "T100000130800",
+    "country": "India",
+    "verdict": "YES",
+    "mechanical": "False",
+    "captive_category": "power_generation",
+    "hardware_summary": "18 MW gas-turbine-based captive power plant (CPP) -- the terminal's primary power source, with Gujarat State grid (66 kV, from a substation ~10 km away) as standby, and an emergency diesel generator as a further backup for CPP-and-grid failure.",
+    "fuel_basis": "Regasified/send-out natural gas fires the Gas Turbine Generator (GTG); per the project's Risk Assessment/EIA report, three power-source configurations were evaluated (grid+gas-engine backup, gas-engine+grid backup, gas-turbine+grid backup) and gas-turbine-based generation of 18 MW was the selected configuration.",
+    "confidence": "green",
+    "captive_summary": "Chhara LNG Terminal's Risk Assessment / EIA report (filed by HPCL/HPLNG with India's environmental clearance authority) states the terminal's power will be supplied from an 18 MW captive power plant (CPP) using a Gas Turbine Generator, with the Gujarat State 66 kV grid as standby supply and an emergency diesel generator for CPP+grid failure. Heat recovered from the GTG exhaust also feeds an LNG vaporizer (STV) heat-recovery loop.",
+    "electric_mw": "18",
+    "mechanical_drive_note": "",
+    "confirmed_how": "The project's Risk Assessment report (filed on India's environmentclearance.nic.in portal for the HPCL/HPLNG Chhara LNG terminal, Gir Somnath, Gujarat) states: 'CPP configuration with Gas Turbine based Power Generation of 18 MW capacity is selected'; and 'Power will be supplied from 18 MW captive power plant with a provision of standby supply from nearest Gujarat State electric grid power supply of 66 KV available from Substation at Sarkhadi village, approx. 10 km from Project site. In case of failure of CPP and Grid supply, Emergency Diesel Generator will be used.' This is a primary regulatory filing, sufficient alone for a green verdict.",
+    "refs": [
+      "https://environmentclearance.nic.in/writereaddata/online/RiskAssessment/030120170Q1QDMZ8RiskAssessment.pdf"
+    ],
+    "verification_log": [
+      {
+        "url": "https://environmentclearance.nic.in/writereaddata/online/RiskAssessment/030120170Q1QDMZ8RiskAssessment.pdf",
+        "tokens": [
+          "18 MW captive power plant",
+          "Gas Turbine"
+        ],
+        "result": "PASS",
+        "note": "OK -- primary EIA/Risk Assessment document"
+      }
+    ],
+    "gogpt_prior_assessment": "gogpt_prior = no; no GOGPT plant currently associated with this terminal. Our own research found a genuine 18 MW gas-turbine CPP dedicated to the terminal (see refs) -- a plausible new GOGPT candidate not yet reflected in gogpt_prior.",
+    "gogpt_candidate": "ADD",
+    "gogpt_candidate_basis": "Genuine, sourced, gas-fired generating plant (18 MW GTG) with a citable nameplate from a primary regulatory filing; carries the terminal's primary load in normal service (grid is standby, not the other way round).",
+    "status_or_other_findings": "Terminal reported commissioned by HPCL in early 2025 per trade press (Indian Infrastructure, CGD India); not independently re-verified this pass -- informational only, not acted on.",
+    "notes": ""
+  },
+  {
+    "terminal": "Crown Kakinada LNG Terminal",
+    "terminal_id": "T100000131053",
+    "country": "India",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "Siemens Energy is contracted to deliver the onboard power generation, electrical distribution, and control system for the offshore gravity-based structure (GBS); Wartsila's regas-system scope includes a boil-off-gas (BOG) handling and fuel-gas system. No source found states the fuel/prime-mover type (gas turbine, gas engine, or diesel) for the power-generation units themselves.",
+    "fuel_basis": "",
+    "confidence": "",
+    "captive_summary": "As an approximately 11-19 km offshore gravity-based structure with no grid connection, on-site power generation is very likely (the FEED design includes a dedicated onboard 'power generation and electrical distribution system,' and the regas scope explicitly includes a fuel-gas/BOG-handling system, implying gas is available on the platform for combustion). However, no public source found in this pass explicitly states the power-generation prime movers burn gas rather than diesel, so the fuel gate cannot be confirmed either way. Per the brief, fuel-unstated is INSUFFICIENT, not NO, and not a YES.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Offshore Energy (offshore-energy.biz) and LNG Prime both report the July 2021 FEED award: Aker Solutions leads the gravity-based-structure engineering, Siemens Energy will develop 'the power generation and electrical distribution system onboard the GBS, including all control systems,' and Wartsila Gas Solutions will deliver the regasification system including 'boil-off gas (BOG) handling and fuel gas systems.' No source located names the power-generation equipment type or fuel. The project targeted FID in 2022 (per contemporaneous 2021 press); GEM shows the terminal still 'proposed'.",
+    "refs": [],
+    "verification_log": [],
+    "gogpt_prior_assessment": "gogpt_prior = no. No GOGPT plant currently proposed for this site; too early/undesigned in public sources to assess a firm candidate.",
+    "gogpt_candidate": "MAYBE",
+    "gogpt_candidate_basis": "On-site generation is being engineered (Siemens Energy FEED scope) but MW rating and fuel type are undisclosed pre-FID; revisit after FID/detailed design becomes public.",
+    "status_or_other_findings": "FEED awarded 2021 (Aker Solutions / Siemens Energy / Wartsila); FID was being targeted for end-2022 per contemporaneous 2021 press -- GEM currently shows 'proposed'; not independently re-verified for a status update this pass, not acted on.",
+    "notes": "Genuinely INSUFFICIENT on the fuel gate, not budget-exhausted -- searches were run but no source states the power system's fuel. Revisit if/when FEED/FID technical documents become public; the dedicated onboard fuel-gas system in Wartsila's scope is suggestive of gas-fired generation but is not itself dispositive."
+  },
+  {
+    "terminal": "Dabhol LNG Terminal",
+    "terminal_id": "T100000130429",
+    "country": "India",
+    "verdict": "NO",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "yellow",
+    "captive_summary": "Dabhol/Konkan LNG terminal was originally built as one integrated 'Power Block + LNG Terminal' project (the former Dabhol Power Company / RGPPL) whose purpose was to fuel the co-located Ratnagiri Combined Cycle power plant -- the reverse (PowerPlantsSupplied) relationship, not captive-to-the-terminal. RGPPL was legally demerged in 2018 into Konkan LNG Ltd (terminal) and RGPPL (power block) as separate companies. No source found describes a dedicated on-site gas power plant that generates electricity FOR the terminal itself; the terminal's own house/auxiliary power source (grid vs. drawn from the adjacent power block) is undocumented in the public sources found this pass.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Konkan LNG's own About Us/history page (konkanlng.in/about-us/) confirms the NCLAT-approved Scheme of Arrangement (Demerger), effective 28 February 2018, under which the LNG business of RGPPL was demerged and vested with Konkan LNG Pvt Ltd -- i.e. the terminal's LNG business was split out of the integrated RGPPL power+LNG entity, not the reverse. This matches the input data's own power_plants_supplied field ('Ratnagiri Combined Cycle power plant'). No independent source located describes a separate captive gas generator built to power the LNG terminal's own regas operations.",
+    "refs": [
+      "https://konkanlng.in/about-us/"
+    ],
+    "verification_log": [
+      {
+        "url": "https://konkanlng.in/about-us/",
+        "tokens": [
+          "demerged",
+          "RGPPL"
+        ],
+        "result": "PASS",
+        "note": "OK -- operator's own About Us/history page (NCLAT-approved Scheme of Arrangement (Demerger), 28 Feb 2018, LNG business of RGPPL demerged and vested with Konkan LNG Pvt Ltd); replaces the previously-cited bare homepage https://konkanlng.in/ per citation-fixer pass (bare domain is never a citation)"
+      }
+    ],
+    "gogpt_prior_assessment": "gogpt_prior = no; no GOGPT plant given as a prior for this terminal.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "The only associated generation (Ratnagiri Combined Cycle / RGPPL, ~1,967 MW) is a merchant power plant FED BY this terminal (opposite relationship -- already flagged in GEM's power_plants_supplied field), not this terminal's captive power. RGPPL is a large, decades-old plant almost certainly already tracked as its own GOGPT record.",
+    "status_or_other_findings": "",
+    "notes": "Direction-test case: power_plants_supplied ('Ratnagiri Combined Cycle power plant', already present in the input data) is the terminal's real, documented generation relationship -- this is explicitly NOT a captive-power finding for the LNG terminal itself, per the brief's direction test. Citation-fixer pass (2026-07-31): replaced bare-homepage ref (https://konkanlng.in/) with the specific About Us/history page (https://konkanlng.in/about-us/) that carries the demerger text; verified via url_verifier.py."
+  },
+  {
+    "terminal": "Dahej LNG Terminal",
+    "terminal_id": "T100000130427",
+    "country": "India",
+    "verdict": "YES",
+    "mechanical": "False",
+    "captive_category": "power_generation",
+    "hardware_summary": "Three (3) gas-turbine generator (GTG) packages forming Petronet's own on-site captive power plant at the Dahej terminal, running on regasified natural gas; a diesel genset is provided only for black-start of the gas turbines. Media reporting (not independently verified this pass) puts existing capacity at roughly 25 MW.",
+    "fuel_basis": "Regasified natural gas -- per the terminal's own technical bid/procurement specification for the GTG package, the turbines are designed for 'operation on regassified natural gas' supplied 'at the pressure and temperature required by the Gas Turbine manufacturer.'",
+    "confidence": "green",
+    "captive_summary": "Petronet's Dahej LNG terminal has its own on-site captive power plant: a technical bid/procurement specification document explicitly names 'three (3) GTG packages' as 'the captive power plant of Dahej LNG Terminal,' fired on regasified natural gas, with a diesel genset provided only for black-start of the gas turbines (not as the main power source). This is a primary operator/EPC technical specification, sufficient alone for green. Media reporting (Reuters; not independently verified this pass due to bot-blocking with no cached snapshot) additionally describes an existing ~25 MW captive plant at Dahej, and a much larger, separate 1,200 MW gas-fired commercial power project later proposed for the same site -- that larger unit is not itself confirmed built and is not part of this captive finding.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "A Petronet/EPC technical bid specification document (spec no. A324-00-TG-SP-0030) for Dahej terminal's Gas Turbine Generator (GTG) package states (section 3.6.5) there are 'three (3) GTG packages,' describes them (section 3.4.1) as designed for 'operation on regassified natural gas,' and explicitly labels the facility 'the captive power plant of Dahej LNG Terminal.' A black-start diesel generator is specified only to start the gas turbines. I could not independently verify a specific MW nameplate via a passing citation this pass -- Reuters/jp.reuters both cite 'about 25 MW' but are bot-blocked (HTTP 401) with no Wayback snapshot available to the verifier, and constructionworld.in's article does not restate the existing-capacity figure. electric_mw is left blank per the no-unverified-figures rule; the existence of the on-site GTG-based captive plant is documented and is itself sufficient for a YES per the brief (absence of a confirmed MW figure does not block the verdict).",
+    "refs": [
+      "https://pdfcoffee.com/a324-00-tg-sp-0030-pdf-free.html",
+      "https://www.adb.org/sites/default/files/project-documents/39921-ind-siee.pdf"
+    ],
+    "verification_log": [
+      {
+        "url": "https://pdfcoffee.com/a324-00-tg-sp-0030-pdf-free.html",
+        "tokens": [
+          "captive power plant",
+          "Dahej",
+          "gas turbine"
+        ],
+        "result": "PASS",
+        "note": "OK -- primary/operator technical bid specification"
+      },
+      {
+        "url": "https://www.reuters.com/article/world/us/petronet-lng-to-set-up-1200-mw-power-plant-in-dahej-idUSSGE69R0LE/",
+        "tokens": [
+          "captive power plant",
+          "25 MW"
+        ],
+        "result": "FAIL",
+        "note": "HTTP 401; no Wayback snapshot to verify against"
+      },
+      {
+        "url": "https://jp.reuters.com/article/update-1-petronet-lng-to-set-up-1200-mw-power-unit-in-dahej-idUSSGE69S033/",
+        "tokens": [
+          "captive power plant",
+          "25 MW"
+        ],
+        "result": "FAIL",
+        "note": "HTTP 401; no Wayback snapshot to verify against (Reuters mirror of same article)"
+      },
+      {
+        "url": "https://www.constructionworld.in/energy-infrastructure/oil-and-gas/Petronet-plans-1-200-MW-unit-in-Dahej/2060",
+        "tokens": [
+          "captive power plant",
+          "25 MW"
+        ],
+        "result": "FAIL",
+        "note": "page loads but only discusses the planned 1,200 MW unit, not the existing capacity figure"
+      },
+      {
+        "url": "https://www.adb.org/sites/default/files/project-documents/39921-ind-siee.pdf",
+        "tokens": [
+          "captive power plant",
+          "gas turbine generators"
+        ],
+        "result": "PASS",
+        "note": "OK -- independent corroboration: Asian Development Bank project document (Summary Initial Environmental Examination, prepared by Petronet LNG Ltd for ADB) lists 'Gas turbine generators: 3 units, each with 7.6 MW capacity' under Auxiliary Facilities, footnoted 'For captive power plant,' and labels the facility 'CAPTIVE POWER PLANT' in the terminal's process flow diagram -- confirms the pdfcoffee-hosted EPC spec's three-GTG captive plant finding from an independent, ADB-published source."
+      }
+    ],
+    "gogpt_prior_assessment": "gogpt_prior names 'Dahej OPAL Captive power plant' (195 MW, gogpt_captive=False, 9.26 km away). That plant is NOT this LNG terminal's captive power -- it is ONGC Petrochemicals Ltd's (OPaL) own ~195 MW gas-fired CPP, built to supply steam and power to OPaL's separate petrochemical complex about 9.26 km from the LNG terminal (a different industrial host; consistent with gogpt_captive already being marked False for this terminal's purposes). The LNG terminal's OWN captive plant (3x GTG, on-site) is a distinct, smaller facility not represented in gogpt_prior. I was unable to re-verify an independent non-gem.wiki URL for the OPAL plant specifically within remaining search budget this pass; its distinctness (different site, different owner, distance already logged in gogpt_prior) is not in doubt.",
+    "gogpt_candidate": "MAYBE",
+    "gogpt_candidate_basis": "A genuine on-site gas-turbine generating plant is documented via a primary spec, but no independently verified MW nameplate was confirmed this pass -- flag for a citable-nameplate follow-up before adding to GOGPT.",
+    "status_or_other_findings": "Media reports (Reuters, ConstructionWorld -- not independently verified this pass) describe a since-proposed, much larger 1,200 MW gas-fired power plant 'linked to' the Dahej terminal. This would be a major non-captive commercial power project, separate from this captive-power finding. Not acted on; flag for separate research if material.",
+    "notes": "The OPAL 195 MW plant (gogpt_prior) and Petronet's own ~3xGTG on-site plant are two different facilities near Dahej at different sites -- do not conflate them. Citation-fixer pass (2026-07-31): added an independent corroborating source -- an ADB Summary Initial Environmental Examination document (prepared by Petronet LNG for ADB) that independently documents three 7.6 MW gas turbine generators as the terminal's captive power plant (3 x 7.6 MW = 22.8 MW, consistent with the ~25 MW figure in bot-blocked Reuters reporting). pdfcoffee URL retained as it documents the underlying EPC spec. Confidence remains green (now two independent sources)."
+  },
+  {
+    "terminal": "Dhamra LNG Terminal",
+    "terminal_id": "T100000130431",
+    "country": "India",
+    "verdict": "YES",
+    "mechanical": "False",
+    "captive_category": "power_generation",
+    "hardware_summary": "Three 9.6 MW gensets (29 MW total) based on 20-cylinder Rolls-Royce Bergen B35:40 gas engines, delivered by Rolls-Royce under a full EPC contract for Dhamra LNG Terminal Pvt Ltd (DLTPL) to meet the terminal's baseload power requirement.",
+    "fuel_basis": "Gas engines -- Rolls-Royce Bergen B35:40, per Rolls-Royce's own EPC contract announcement.",
+    "confidence": "green",
+    "captive_summary": "Dhamra LNG (Adani Group / TotalEnergies JV, DLTPL) contracted Rolls-Royce in June 2020 for a complete EPC-delivered 29 MW gas power plant -- three 9.6 MW gensets on Bergen B35:40 gas engines -- explicitly to meet the LNG regasification terminal's own baseload power requirement, with over 98% reliability. This is on-site, dedicated generation for the terminal itself, not a supply to an external plant.",
+    "electric_mw": "29",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Rolls-Royce's own press release (10 June 2020) states it 'signed a contract with Dhamra LNG Terminal Pvt. Ltd. (DLTPL) for complete Engineering, Procurement and Construction (EPC) delivery' of 'three 9.6 MW gensets, based on the 20-cylinder Rolls-Royce Bergen B35:40 gas engines,' totalling 29 MW, to 'meet the baseload capacity of the LNG terminal' with over 98% reliability. Independently corroborated by DT Next and CNBC-TV18 news coverage of the same contract, both naming the same 29 MW / three-genset / Bergen B35:40 specifics.",
+    "refs": [
+      "https://www.rolls-royce.com/media/press-releases/2020/06-10-2020-rr-to-deliver-29-mw-gas-power-plant-for-dhamra-lng-regasification-terminal-in-india.aspx",
+      "https://www.dtnext.in/news/business/rollsroyce-to-deliver-29-mw-gas-power-plant-for-dhamra-lng-terminal",
+      "https://www.cnbctv18.com/energy/rolls-royce-to-deliver-29-mw-gas-power-plant-to-dhamra-lng-terminal-7118821.htm"
+    ],
+    "verification_log": [
+      {
+        "url": "https://www.rolls-royce.com/media/press-releases/2020/06-10-2020-rr-to-deliver-29-mw-gas-power-plant-for-dhamra-lng-regasification-terminal-in-india.aspx",
+        "tokens": [
+          "29 MW",
+          "Bergen B35:40",
+          "Dhamra"
+        ],
+        "result": "PASS",
+        "note": "OK -- operator/EPC-contractor primary press release"
+      },
+      {
+        "url": "https://www.nsenergybusiness.com/contracts/rolls-royce-gas-power-dhamra-lng-terminal/",
+        "tokens": [
+          "29MW",
+          "Dhamra"
+        ],
+        "result": "FAIL",
+        "note": "HTTP 403; no Wayback snapshot to verify against"
+      },
+      {
+        "url": "https://www.dtnext.in/news/business/rollsroyce-to-deliver-29-mw-gas-power-plant-for-dhamra-lng-terminal",
+        "tokens": [
+          "29 MW",
+          "Bergen"
+        ],
+        "result": "PASS",
+        "note": "OK"
+      },
+      {
+        "url": "https://www.cnbctv18.com/energy/rolls-royce-to-deliver-29-mw-gas-power-plant-to-dhamra-lng-terminal-7118821.htm",
+        "tokens": [
+          "29 MW",
+          "Dhamra"
+        ],
+        "result": "PASS",
+        "note": "OK"
+      }
+    ],
+    "gogpt_prior_assessment": "gogpt_prior = no. No GOGPT plant currently associated with this terminal -- our research found a genuine, well-documented 29 MW gas-engine captive plant not yet reflected as a prior.",
+    "gogpt_candidate": "ADD",
+    "gogpt_candidate_basis": "Genuine, well-sourced (3 independent publishers: Rolls-Royce, DT Next, CNBC-TV18), gas-fired generating plant with a citable 29 MW nameplate (three Bergen B35:40 gensets), dedicated to the terminal's baseload power.",
+    "status_or_other_findings": "",
+    "notes": ""
+  }
+]

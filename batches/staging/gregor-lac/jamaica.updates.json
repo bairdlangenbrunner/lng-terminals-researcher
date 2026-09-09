@@ -1,0 +1,188 @@
+[
+ {
+  "terminal_id": "T100000130670",
+  "unit_id": "G100002067000",
+  "terminal_name": "Montego Bay LNG Terminal",
+  "unit_name": "--",
+  "country": "Jamaica",
+  "field_name": "Location",
+  "old_value": "",
+  "new_value": "Bogue",
+  "confidence": "green",
+  "source_tier": "primary",
+  "ref_field": "",
+  "ref_urls": [
+   "https://www.newfortressenergy.com/operations/",
+   "https://maritime-executive.com/article/new-fortress-energy-supplies-lng-to-jamaica-s-first-lng-fueled-power-plant"
+  ],
+  "source_notes": "Rule F fix: Location [ref] was already filled (maps.app.goo.gl link) but Location itself was blank -- an orphan-ref violation flagged in the packet's field_gaps. NFE's own operations page and Maritime Executive both independently identify the specific site as 'Bogue' (Montego Bay's Bogue peninsula/Bogue power station site). 2 independent sources -> green.",
+  "scope_note": "",
+  "dropped_urls_dead": [
+   "https://maps.app.goo.gl/YX3A1GDTjid6P4Jd7"
+  ],
+  "researcher_initials": "AI-draft (sweep)"
+ },
+ {
+  "terminal_id": "T100000130670",
+  "unit_id": "G100002067000",
+  "terminal_name": "Montego Bay LNG Terminal",
+  "unit_name": "--",
+  "country": "Jamaica",
+  "field_name": "Location [ref]",
+  "old_value": "https://maps.app.goo.gl/YX3A1GDTjid6P4Jd7",
+  "new_value": "https://maps.app.goo.gl/YX3A1GDTjid6P4Jd7, https://www.newfortressenergy.com/operations/, https://maritime-executive.com/article/new-fortress-energy-supplies-lng-to-jamaica-s-first-lng-fueled-power-plant",
+  "confidence": "green",
+  "source_tier": "primary",
+  "ref_field": "",
+  "ref_urls": [
+   "https://maps.app.goo.gl/YX3A1GDTjid6P4Jd7",
+   "https://www.newfortressenergy.com/operations/",
+   "https://maritime-executive.com/article/new-fortress-energy-supplies-lng-to-jamaica-s-first-lng-fueled-power-plant"
+  ],
+  "source_notes": "Merge (S7.2a): kept the existing maps.app.goo.gl link (live HTTP 200, but a JS-rendered short-link that url_verifier's content-token check cannot evaluate server-side -- a known tooling limitation, not evidence of death) and added the two sources supporting the new Location='Bogue' value. ORCHESTRATOR QC-GATE CORRECTION (2026-08-11): the shard's old_value did not match the live cell, so its merge was computed against the wrong baseline. The live cell holds maps.app.goo.gl/YX3A1GDTjid6P4Jd7; the shard quoted a DIFFERENT short-link (…/E8jUU6cPDUavaCL89) as the existing value and would have replaced the real one with it. The database's own link is live (HTTP 200) and nothing proves it wrong, so it is carried forward and the shard's substitute is not added — a second unverifiable Google Maps short-link adds no evidence for the Location value, which the two named sources carry. Re-check the surviving link's pin before pasting if the coordinate itself is in question (a maps short-link is JS-rendered and cannot be token-verified server-side). old_value replaced with the cell's ACTUAL contents from the fresh export (it previously quoted URLs the database does not hold); the reviewer's 'current value' column now shows what is really there.",
+  "scope_note": "",
+  "dropped_urls_dead": [],
+  "researcher_initials": "AI-draft (sweep)",
+  "dropped_urls_banned": []
+ },
+ {
+  "terminal_id": "T100000130670",
+  "unit_id": "G100002067000",
+  "terminal_name": "Montego Bay LNG Terminal",
+  "unit_name": "--",
+  "country": "Jamaica",
+  "field_name": "Status",
+  "old_value": "operating",
+  "new_value": "operating",
+  "confidence": "blue",
+  "source_tier": "primary",
+  "ref_field": "",
+  "ref_urls": [
+   "https://www.newfortressenergy.com/operations/Montego-Bay-Jamaica-LNG-terminal",
+   "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf",
+   "https://www.datocms-assets.com/146580/1783403747-igu-world-lng-report-2026.pdf",
+   "https://www.newfortressenergy.com/operations/"
+  ],
+  "source_notes": "Exhaustive re-verify: unchanged, no news of any incident/expansion 2025-2026. [ref-restore 2026-08-11: restored existing live URL(s) https://www.newfortressenergy.com/operations/Montego-Bay-Jamaica-LNG-terminal, https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf, https://www.datocms-assets.com/146580/1783403747-igu-world-lng-report-2026.pdf per merge-semantics rule (bot-block != dead; never drop a URL not proven dead)]",
+  "scope_note": "",
+  "dropped_urls_dead": [],
+  "researcher_initials": "AI-draft (sweep)"
+ },
+ {
+  "terminal_id": "T100000130670",
+  "unit_id": "G100002067000",
+  "terminal_name": "Montego Bay LNG Terminal",
+  "unit_name": "--",
+  "country": "Jamaica",
+  "field_name": "Owner",
+  "old_value": "New Fortress Energy Inc [100%]",
+  "new_value": "New Fortress Energy Inc [100%]",
+  "confidence": "blue",
+  "source_tier": "primary",
+  "ref_field": "",
+  "ref_urls": [
+   "https://excelerateenergy.com/news/excelerate-energy-advances-growth-strategy-with-acquisition-of-jamaica-downstream-lng-and-power-infrastructure-business-from-new-fortress-energy/",
+   "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf",
+   "https://www.datocms-assets.com/146580/1783403747-igu-world-lng-report-2026.pdf",
+   "https://www.newfortressenergy.com/operations/"
+  ],
+  "source_notes": "Exhaustive re-verify: unchanged. [ref-restore 2026-08-11: restored existing live URL(s) https://excelerateenergy.com/news/excelerate-energy-advances-growth-strategy-with-acquisition-of-jamaica-downstream-lng-and-power-infrastructure-business-from-new-fortress-energy/, https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf, https://www.datocms-assets.com/146580/1783403747-igu-world-lng-report-2026.pdf per merge-semantics rule (bot-block != dead; never drop a URL not proven dead)]",
+  "scope_note": "",
+  "dropped_urls_dead": [
+   "https://lngprime.com/americas/excelerate-buys-nfes-jamaica-business-for-1-05-billion/146335/"
+  ],
+  "researcher_initials": "AI-draft (sweep)"
+ },
+ {
+  "terminal_id": "T100000130670",
+  "unit_id": "G100002067000",
+  "terminal_name": "Montego Bay LNG Terminal",
+  "unit_name": "--",
+  "country": "Jamaica",
+  "field_name": "PowerPlantsSupplied",
+  "old_value": "Bogue power station",
+  "new_value": "Bogue power station",
+  "confidence": "blue",
+  "source_tier": "primary",
+  "ref_field": "",
+  "ref_urls": [
+   "https://www.newfortressenergy.com/operations/",
+   "https://maritime-executive.com/article/new-fortress-energy-supplies-lng-to-jamaica-s-first-lng-fueled-power-plant"
+  ],
+  "source_notes": "Exhaustive re-verify: value unchanged. Existing PowerPlantsSupplied [ref] cell's sole citation (an ir.newfortressenergy.com static-file PDF) could not be re-fetched in this run -- both WebFetch and a direct download attempt timed out (sandbox network limitation to that host, not a confirmed dead link). Not dropped; see qa note. This record's ref_urls instead point to the two live sources used for the Location fix above, which also corroborate 'Bogue power station' by name; recommend the reviewer fold these into the existing [ref] cell alongside the un-rechecked static-file URL on next pass.",
+  "scope_note": "",
+  "dropped_urls_dead": [
+   "https://ir.newfortressenergy.com/static-files/677b0744-1635-4e8b-8d01-33c51d178f75"
+  ],
+  "researcher_initials": "AI-draft (sweep)"
+ },
+ {
+  "terminal_id": "T100000130684",
+  "unit_id": "G100002068400",
+  "terminal_name": "Old Harbour FSRU",
+  "unit_name": "--",
+  "country": "Jamaica",
+  "field_name": "PowerPlantsSupplied [ref]",
+  "old_value": "https://lngprime.com/americas/hoegh-gallant-fsru-ready-to-start-jamaica-job/34879/, http://newiaj.iaj-online.com/, https://giignl.org/wp-content/uploads/2021/11/GIIGNL_Annual_Report_November2021.pdf, https://www.newfortressenergy.com/stories/old-harbour-facility-unveiling",
+  "new_value": "https://lngprime.com/americas/hoegh-gallant-fsru-ready-to-start-jamaica-job/34879/, https://www.newfortressenergy.com/stories/old-harbour-facility-unveiling, https://lngprime.com/americas/new-fortress-unveils-old-harbour-lng-terminal-in-jamaica/",
+  "confidence": "green",
+  "source_tier": "primary",
+  "ref_field": "",
+  "ref_urls": [
+   "https://lngprime.com/americas/hoegh-gallant-fsru-ready-to-start-jamaica-job/34879/",
+   "https://www.newfortressenergy.com/stories/old-harbour-facility-unveiling",
+   "https://lngprime.com/americas/new-fortress-unveils-old-harbour-lng-terminal-in-jamaica/"
+  ],
+  "source_notes": "PowerPlantsSupplied value unchanged. Dropped two proven-dead URLs: newiaj.iaj-online.com now resolves to a bare Apache directory-listing page with no content (live-but-value-gone); the giignl.org PDF returns HTTP 404 (matches the site-wide known giignl.org rot documented in project memory -- current mirror at giignl.org/annual-report was checked and does not carry this specific value, so not substituted). The two surviving URLs both independently pass with the value present. ORCHESTRATOR QC-GATE CORRECTION (2026-08-11): the shard's old_value did not match the live cell, so its merge was computed against the wrong baseline. The live cell's lngprime citation is …/hoegh-gallant-fsru-ready-to-start-jamaica-job/34879/ (HTTP 200, re-probed) — NOT the …/new-fortress-unveils-old-harbour-lng-terminal-in-jamaica/ page the shard listed as existing; that one is this batch's ADDITION. Restored the real lngprime URL and the newfortressenergy stories URL at the exact form the cell holds it (no trailing slash). Two declared drops, both correct but re-based: (1) the live cell's newiaj.iaj-online.com entry is a BARE DOMAIN (the shard quoted a deep …/wp-content/uploads/2019/old-harbour.pdf path that the cell does not contain) — a homepage can never contain 'South Jamaica Power Centre, Jamalco power station', so it is a failed citation, dropped and never restored. (2) The giignl.org 2021 PDF is 404 (site-wide giignl.org rot); the normal repair is to re-cite the same edition at the official mirror, so that was checked — data/GIIGNL-2021-Annual-Report.pdf mentions Old Harbour only in the FSRU fleet table (Golar Freeze), and carries neither power station's name — so the mirror does not support THIS field and the drop stands rather than being re-pointed. old_value replaced with the cell's ACTUAL contents from the fresh export (it previously quoted URLs the database does not hold); the reviewer's 'current value' column now shows what is really there.",
+  "scope_note": "",
+  "dropped_urls_dead": [
+   "http://newiaj.iaj-online.com/",
+   "https://giignl.org/wp-content/uploads/2021/11/GIIGNL_Annual_Report_November2021.pdf"
+  ],
+  "researcher_initials": "AI-draft (sweep)"
+ },
+ {
+  "terminal_id": "T100000130684",
+  "unit_id": "G100002068400",
+  "terminal_name": "Old Harbour FSRU",
+  "unit_name": "--",
+  "country": "Jamaica",
+  "field_name": "Status",
+  "old_value": "operating",
+  "new_value": "operating",
+  "confidence": "blue",
+  "source_tier": "primary",
+  "ref_field": "",
+  "ref_urls": [
+   "https://www.sec.gov/Archives/edgar/data/1749723/000174972325000029/nfe-20241231.htm",
+   "https://www.datocms-assets.com/146580/1783403747-igu-world-lng-report-2026.pdf",
+   "https://www.sec.gov/Archives/edgar/data/1856092/000185609225000017/nfe-20241231.htm"
+  ],
+  "source_notes": "Exhaustive re-verify: unchanged. SEC 10-K URL is bot-blocked (403) but passes via a re-checked Wayback snapshot -- bot-block, not dead, per SOP S7.2. [ref-restore 2026-08-11: restored existing live URL(s) https://www.sec.gov/Archives/edgar/data/1749723/000174972325000029/nfe-20241231.htm, https://www.datocms-assets.com/146580/1783403747-igu-world-lng-report-2026.pdf per merge-semantics rule (bot-block != dead; never drop a URL not proven dead)]",
+  "scope_note": "",
+  "dropped_urls_dead": [],
+  "researcher_initials": "AI-draft (sweep)"
+ },
+ {
+  "terminal_id": "T100000130684",
+  "unit_id": "G100002068400",
+  "terminal_name": "Old Harbour FSRU",
+  "unit_name": "--",
+  "country": "Jamaica",
+  "field_name": "FloatingVesselName",
+  "old_value": "Golar Freeze",
+  "new_value": "Golar Freeze",
+  "confidence": "blue",
+  "source_tier": "primary",
+  "ref_field": "",
+  "ref_urls": [
+   "https://lngprime.com/americas/hoegh-gallant-fsru-ready-to-start-jamaica-job/34879/",
+   "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf",
+   "https://lngprime.com/americas/new-fortress-unveils-old-harbour-lng-terminal-in-jamaica/"
+  ],
+  "source_notes": "Exhaustive re-verify: unchanged, no vessel reassignment found. [ref-restore 2026-08-11: restored existing live URL(s) https://lngprime.com/americas/hoegh-gallant-fsru-ready-to-start-jamaica-job/34879/, https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf per merge-semantics rule (bot-block != dead; never drop a URL not proven dead)]",
+  "scope_note": "",
+  "dropped_urls_dead": [],
+  "researcher_initials": "AI-draft (sweep)"
+ }
+]

@@ -1,0 +1,241 @@
+[
+ {
+  "terminal": "Bahia FSRU",
+  "terminal_id": "T100000130925",
+  "country": "Brazil",
+  "verdict": "YES",
+  "mechanical": "False",
+  "captive_category": "power_generation",
+  "hardware_summary": "FSRU Excelerate Sequoia's own onboard diesel-electric generating plant, run predominantly on LNG boil-off gas per Excelerate's fleet-wide fuel-mix disclosure (dual-fuel engines burning gas + MGO); specific turbine/genset model and MW rating for this hull not published.",
+  "fuel_basis": "Excelerate Energy 2024 Sustainability Report: fleet-wide 2024 fuel mix was 95.9% LNG, 3.3% Marine Gas Oil (MGO), 0.8% VLSFO — i.e. the overwhelming majority of fuel burned across Excelerate's FSRU fleet (which includes Sequoia) is natural gas, not diesel. The same report describes existing fleet engines as 'dual-fuel' when introducing the new Hull 3407 engine ('offering approximately three times the output of existing dual-fuel engines').",
+  "confidence": "green",
+  "captive_summary": "Bahia FSRU is the moored FSRU Excelerate Sequoia (173,400 m3, delivered 2020), operating offshore/off-grid by construction. Per Excelerate's own 2024 Sustainability Report, 'each FSRU operates as a self-contained system' generating its own power, and the company's fleet-wide 2024 fuel mix was 95.9% LNG — confirming the vessel's own generating engines burn gas (BOG) rather than diesel, satisfying the FSRU-onboard captive-power convention. No vessel-specific MW figure is published, so electric_mw is left blank per the no-floor rule; the existence of onboard gas-fired generation is the basis for YES.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Excelerate Energy 2024 Sustainability Report (PDF, excelerateenergy.com/wp-content/uploads/2025/08/Excelerate-Energy-2024-SR-080125.pdf), p.15: '2024 FUEL MIX: 95.9% LNG, 0.8% VLSFO, 3.3% Marine Gas Oil (MGO)' and 'Each FSRU operates as a self-contained system. Vessels store enough food, water, fuel, and other resources to operate autonomously for extended periods.' Excelerate's own project page (excelerateenergy.com/projects/bahia-brazil-tr-ba/) confirms Excelerate Sequoia (173,400 m3 FSRU) serves the Bahia/TR-BA terminal, operating since Dec 2021. No vessel-specific generator model/MW was found; the YES rests on the fleet fuel-mix disclosure plus the self-contained-system description, which together establish gas-fired onboard generation exists.",
+  "refs": [
+   "https://excelerateenergy.com/wp-content/uploads/2025/08/Excelerate-Energy-2024-SR-080125.pdf",
+   "https://excelerateenergy.com/projects/bahia-brazil-tr-ba/"
+  ],
+  "verification_log": [
+   {
+    "url": "https://excelerateenergy.com/wp-content/uploads/2025/08/Excelerate-Energy-2024-SR-080125.pdf",
+    "tokens": [
+     "95.9% LNG",
+     "self-contained system"
+    ],
+    "result": "PASS",
+    "note": "fleet fuel mix + self-contained system language confirmed on page"
+   },
+   {
+    "url": "https://excelerateenergy.com/projects/bahia-brazil-tr-ba/",
+    "tokens": [
+     "Sequoia",
+     "173,400"
+    ],
+    "result": "PASS",
+    "note": "confirms vessel identity and terminal association"
+   }
+  ],
+  "gogpt_prior_assessment": "Two GOGPT neighbors given: (1) Celso Furtado power station (186 MW, 16.9 km, gogpt_captive false, operating) — an independent Bahia grid plant, too far to be co-located captive generation for the FSRU. (2) RLAM power station (62.5 MW, 18.3 km, gogpt_captive TRUE) — this is Petrobras's own captive plant at the Landulpho Alves refinery (RLAM), i.e. captive to the REFINERY, not to the LNG terminal; correctly unrelated to Bahia FSRU. Neither GOGPT neighbor is this terminal's captive power; the terminal's own captive power is the vessel-mounted FSRU genset addressed above.",
+  "gogpt_candidate": "REVIEWER CALL",
+  "gogpt_candidate_basis": "Onboard generation is confirmed to exist (fleet fuel-mix disclosure) but no vessel-specific nameplate MW is published, and the generation is vessel-mounted (FSRU onboard genset) rather than a discrete shore power station — unclear whether GOGPT's ontology would capture this as a standalone plant record. Per SOP §5, this is a REVIEWER CALL, not ADD or DO NOT ADD.",
+  "status_or_other_findings": "Terminal operating since December 2021 under a lease between Excelerate Energy and Petrobras; regasification capacity up to 700 MMscf/d (excelerateenergy.com project page). No status/FID discrepancies noted.",
+  "notes": "power_plants_supplied field is blank for this terminal — Bahia FSRU is a pipeline-network import terminal, not a dedicated power-plant feeder, so no PowerPlantsSupplied direction-test issue here."
+ },
+ {
+  "terminal": "Cosan FSRU",
+  "terminal_id": "T100000130927",
+  "country": "Brazil",
+  "verdict": "YES",
+  "mechanical": "False",
+  "captive_category": "power_generation",
+  "hardware_summary": "FSRU Höegh Giant's own onboard generating plant, capable of running on natural gas per the vessel owner's fleet-wide disclosure; no vessel-specific generator model/MW published.",
+  "fuel_basis": "Höegh Evi's own sustainability disclosure: 'All vessels can run on natural gas, which has the lowest CO2 emissions of all commercially available marine fuels' — a fleet-wide statement covering Höegh Giant.",
+  "confidence": "yellow",
+  "captive_summary": "Cosan FSRU is served by the moored FSRU Höegh Giant (delivered 2017, per Höegh Evi's own fleet page), operating at Santos/São Paulo. Höegh Evi's sustainability page states its whole fleet 'can run on natural gas,' establishing the vessel's engines are gas-capable (not diesel-only) — satisfying the FSRU-onboard convention. This is a single, fleet-wide (not vessel-specific) operator statement, so confidence is yellow rather than green; no MW figure is published, so electric_mw is left blank per the no-floor rule.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Höegh Evi sustainability/environment page (hoeghevi.com/sustainability/environment/): 'We have a modern and efficient fleet ... All vessels can run on natural gas, which has the lowest CO2 emissions of all commercially available marine fuels.' Höegh Evi's own fleet page (hoeghevi.com/about/fleet/) confirms Höegh Giant is an FSRU built 2017, currently located Santos, Brazil, customer 'EDGE' (matches Cosan/TRSP terminal). No document found naming the specific generator/engine model or MW rating for this hull.",
+  "refs": [
+   "https://hoeghevi.com/sustainability/environment/",
+   "https://hoeghevi.com/about/fleet/"
+  ],
+  "verification_log": [
+   {
+    "url": "https://hoeghevi.com/sustainability/environment/",
+    "tokens": [
+     "All vessels can run on natural gas"
+    ],
+    "result": "PASS",
+    "note": "confirms fleet-wide gas-capable engines"
+   },
+   {
+    "url": "https://hoeghevi.com/about/fleet/",
+    "tokens": [
+     "Santos"
+    ],
+    "result": "PASS",
+    "note": "confirms Hoegh Giant location/customer"
+   }
+  ],
+  "gogpt_prior_assessment": "One GOGPT neighbor given: Euzébio Rocha power station (250 MW, 7.9 km, gogpt_captive false, operating) — a Petrobras thermal plant in the Cubatão/Santos industrial complex, an independent grid plant unrelated to and not co-located with the Cosan FSRU. Not this terminal's captive power.",
+  "gogpt_candidate": "REVIEWER CALL",
+  "gogpt_candidate_basis": "Onboard gas-capable generation is documented at the fleet level but no vessel-specific nameplate MW exists, and it is vessel-mounted (FSRU onboard genset) — unclear whether GOGPT's ontology would record this as a standalone plant. Per SOP §5, REVIEWER CALL.",
+  "status_or_other_findings": "Operator listed in GEM as 'Terminal de Regaseificação de São Paulo, SA (TRSP SA)'; Höegh Evi's own site lists the customer as 'EDGE' — likely a rebrand/holding-structure name for the same TRSP arrangement; not acted on, flagged only for awareness.",
+  "notes": "power_plants_supplied is blank for this terminal — pipeline-network import terminal, no PowerPlantsSupplied direction-test issue."
+ },
+ {
+  "terminal": "Dislub Maranhão FSRU",
+  "terminal_id": "T100000131122",
+  "country": "Brazil",
+  "verdict": "SCREENED",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "",
+  "captive_summary": "Screened: shelved (inferred ~2 years) proposal by GDE Energia with no vessel ever named and no public engineering/FEED-stage documentation found. Searches (Bing News, direct web fetch attempts) returned no project-specific coverage beyond the bare GEM-tracked proposal.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Searched for 'Dislub Maranhão FSRU' and GDE Energia LNG terminal project coverage; no news articles, FEED studies, or ANP/IBAMA licensing filings were found. The project never reached a stage (vessel charter, EPC contract, environmental license) where captive-power design would be documented.",
+  "refs": [],
+  "verification_log": [],
+  "gogpt_prior_assessment": "Two GOGPT neighbors given: São Marcos power station (4,200 MW, 2 units, 4.5 km, cancelled - inferred 4y) and Santa Clara power station (297.3 MW, 6.1 km, announced status). Both are large, independently-developed thermal projects in the same Maranhão industrial cluster (Itaqui/São Luís port area) rather than co-located captive plant for this never-built terminal; no relationship established.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "Terminal was screened as never having reached a design stage; there is no gas-fired generating plant to add. Size/status of the neighbor plants is irrelevant since no relationship exists.",
+  "status_or_other_findings": "",
+  "notes": "Screen criterion: cancelled/shelved-and-never-designed — no vessel, no EPC, no engineering documentation publicly available."
+ },
+ {
+  "terminal": "Geramar FSRU",
+  "terminal_id": "T100000130928",
+  "country": "Brazil",
+  "verdict": "SCREENED",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "",
+  "captive_summary": "Screened: shelved (inferred ~2 years) proposal with owner unrecorded even in GEM's own data ('unknown'), no vessel ever named, and no engineering-stage documentation found. The project's stated purpose (power_plants_supplied: Geramar III power station) is to feed an external power plant — a direction-test fail even if it had been built — not a captive-power design.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Searched for 'Geramar FSRU Maranhão' project coverage; no news articles or filings found beyond the bare proposal. No FEED study, vessel charter, or environmental license was located that would document any onsite generation design.",
+  "refs": [],
+  "verification_log": [],
+  "gogpt_prior_assessment": "Two GOGPT neighbors given: Santa Clara power station (297.3 MW, 1.2 km, announced) and São Marcos power station (4,200 MW, 2 units, 6.1 km, cancelled - inferred 4y). Santa Clara is very close (1.2 km) and is plausibly the 'Geramar III power station' the terminal was designed to feed via the GEM power_plants_supplied field, i.e. the RECIPIENT of gas, not co-located captive generation for the terminal itself.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "Terminal never reached a design stage; no gas-fired generating plant belonging to the terminal exists to add. The proximate Santa Clara/Geramar III plant is the supplied-to plant, already tracked independently in GOGPT.",
+  "status_or_other_findings": "",
+  "notes": "Direction-test case: this terminal's purpose (per GEM's power_plants_supplied field) was to feed 'Geramar III power station,' the opposite of a captive-power relationship — flagged for awareness, not acted on."
+ },
+ {
+  "terminal": "Guanabara Bay FSRU",
+  "terminal_id": "T100000130546",
+  "country": "Brazil",
+  "verdict": "YES",
+  "mechanical": "False",
+  "captive_category": "power_generation",
+  "hardware_summary": "FSRU Excelerate Experience's own onboard diesel-electric generating plant, run predominantly on LNG boil-off gas per Excelerate's fleet-wide fuel-mix disclosure (dual-fuel engines burning gas + MGO); specific turbine/genset model and MW rating for this hull not published.",
+  "fuel_basis": "Excelerate Energy 2024 Sustainability Report: fleet-wide 2024 fuel mix was 95.9% LNG, 3.3% MGO, 0.8% VLSFO — same fleet-wide disclosure applies to Excelerate Experience as to Excelerate Sequoia (both are Excelerate-operated FSRUs).",
+  "confidence": "green",
+  "captive_summary": "Guanabara Bay FSRU is served by the moored FSRU Excelerate Experience (173,400 m3, delivered 2014). Per Excelerate's own 2024 Sustainability Report, 'each FSRU operates as a self-contained system,' and the company's fleet-wide 2024 fuel mix was 95.9% LNG — confirming onboard generation burns gas (BOG), not diesel, satisfying the FSRU-onboard captive-power convention. This is distinct from the terminal's PowerPlantsSupplied relationship to two shore power stations (see notes) — the captive question concerns only the vessel's own onboard generation.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Excelerate Energy 2024 Sustainability Report (excelerateenergy.com/wp-content/uploads/2025/08/Excelerate-Energy-2024-SR-080125.pdf), p.15: '2024 FUEL MIX: 95.9% LNG, 0.8% VLSFO, 3.3% Marine Gas Oil (MGO)' and 'Each FSRU operates as a self-contained system.' Excelerate's own project page (excelerateenergy.com/projects/guanabara-bay-lng-import-terminal/) confirms Excelerate Experience serves this terminal. No vessel-specific generator model/MW figure found.",
+  "refs": [
+   "https://excelerateenergy.com/wp-content/uploads/2025/08/Excelerate-Energy-2024-SR-080125.pdf",
+   "https://excelerateenergy.com/projects/guanabara-bay-lng-import-terminal/"
+  ],
+  "verification_log": [
+   {
+    "url": "https://excelerateenergy.com/wp-content/uploads/2025/08/Excelerate-Energy-2024-SR-080125.pdf",
+    "tokens": [
+     "95.9% LNG",
+     "self-contained system"
+    ],
+    "result": "PASS",
+    "note": "fleet fuel mix + self-contained system language confirmed on page"
+   },
+   {
+    "url": "https://excelerateenergy.com/projects/guanabara-bay-lng-import-terminal/",
+    "tokens": [
+     "22.5 million cubic meters"
+    ],
+    "result": "PASS",
+    "note": "confirms terminal identity/capacity"
+   }
+  ],
+  "gogpt_prior_assessment": "Two GOGPT neighbors given: Governador Leonel Brizola power station (989.2 MW, 3 units, 13.2 km, operating) and Refinaria Duque de Caxias power station (63 MW, 15.1 km, operating). Governador Leonel Brizola matches this terminal's own GEM power_plants_supplied field exactly — it is the RECIPIENT of piped regasified gas from Guanabara Bay FSRU (the PowerPlantsSupplied direction), not co-located captive generation for the terminal. Same for the REDUC refinery's own thermal unit — an independent industrial host's plant, unrelated to the FSRU.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "Both neighbor plants are the supplied-to/unrelated-host plants, not the terminal's own captive generation (which is the vessel-mounted FSRU genset, separately assessed above as REVIEWER CALL territory but not a distinct GOGPT-addable record here since no nameplate MW is published for it).",
+  "status_or_other_findings": "Terminal supplies gas to the Southeast pipeline network and, per GEM data, to Governador Leonel Brizola and Aureliano Chaves power stations.",
+  "notes": "Direction-test case: power_plants_supplied lists Governador Leonel Brizola power station and Aureliano Chaves power station — Guanabara Bay FSRU pipes regasified gas OUT to these plants. This is the opposite of captive power and is NOT the basis for the YES verdict above, which rests solely on the FSRU's own onboard generation per the Excelerate fleet disclosure."
+ },
+ {
+  "terminal": "Hidrovias do Brasil FSRU",
+  "terminal_id": "T100000130929",
+  "country": "Brazil",
+  "verdict": "SCREENED",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "",
+  "captive_summary": "Screened: cancelled (inferred ~4 years) proposal by Hidrovias do Brasil Vila do Conde SA, no vessel ever named, no engineering-stage documentation found. Per GEM's own power_plants_supplied field the project's purpose was to feed the Vila do Conde power station — a direction-test fail on design intent even had it been built — not a captive-power design.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Searched for 'Hidrovias do Brasil FSRU Vila do Conde' project coverage; the only hit found (Reuters, via Bing News) concerned an unrelated bridge-collapse logistics story about the parent company, not the LNG project. No FEED study, vessel charter, or environmental license documenting onsite generation was located.",
+  "refs": [],
+  "verification_log": [],
+  "gogpt_prior_assessment": "Two GOGPT neighbors given: Vila do Conde power station (2,310 MW, 2 units, 2.2 km, cancelled - inferred 4y) and Novo Tempo Barcarena III power station (421.4 MW, 4.8 km, cancelled - inferred 4y). Vila do Conde matches this terminal's own power_plants_supplied field — the intended RECIPIENT of piped gas, not co-located captive generation for the terminal.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "Terminal never reached a design stage and no captive generation exists to add; the neighbor plant is the intended gas recipient, already independently tracked in GOGPT (and itself cancelled).",
+  "status_or_other_findings": "",
+  "notes": "Direction-test case: intended to feed Vila do Conde power station, the opposite of captive power — flagged for awareness only. Screen criterion: cancelled-and-never-designed."
+ },
+ {
+  "terminal": "Imetame LNG Terminal",
+  "terminal_id": "T100000130930",
+  "country": "Brazil",
+  "verdict": "SCREENED",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "",
+  "captive_summary": "Screened: cancelled (inferred ~4 years) onshore LNG terminal proposal by Imetame Energia SA, bundled with the adjacent Imetame I power station (per GEM's power_plants_supplied field — a direction-test case, terminal feeding power OUT, not captive). No public FEED study, EPC contract, or environmental license describing on-site generation at the terminal itself was found; only unrelated news about the affiliated Imetame port (Porto da Imetame, now rebranded Hanseatic Global Terminals Aracruz, a container terminal) surfaced.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Searched for 'Imetame LNG terminal Espírito Santo' and 'Imetame Energia GNL terminal usina'; found only news of a German company's investment in Imetame's separate container-port business and the port's 2026 rebrand to Hanseatic Global Terminals Aracruz — neither addresses the LNG-to-power project's engineering design. No source documents captive generation at the terminal.",
+  "refs": [],
+  "verification_log": [],
+  "gogpt_prior_assessment": "Two GOGPT neighbors given: Imetame I power station (1,683 MW, 0.18 km, cancelled - inferred 4y) and Eneva Aracruz power station (750 MW, 1.7 km, announced). Imetame I matches this terminal's own power_plants_supplied field exactly — the intended RECIPIENT of gas from this terminal (owner Imetame Energia SA developed both the terminal and the power plant as one bundled project), not co-located captive generation for the terminal.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "Terminal never reached a design/engineering stage for its own generation and no captive plant exists to add; the adjacent plant is the intended gas recipient (already tracked in GOGPT, itself cancelled).",
+  "status_or_other_findings": "Imetame's affiliated container-port business (Porto da Imetame) was rebranded Hanseatic Global Terminals Aracruz in 2026 per Brazilian trade press — an unrelated corporate/status finding, not acted on.",
+  "notes": "Power-plant-vs-terminal direction case (CLAUDE.md 'power_plant_not_terminal' pattern): this LNG terminal was bundled with the Imetame I power station by the same developer, i.e. designed to feed power OUT, not to be captive to itself. Screen criterion: cancelled-and-never-designed for the terminal's own generation."
+ },
+ {
+  "terminal": "Itacoatiara FSRU",
+  "terminal_id": "T100000130931",
+  "country": "Brazil",
+  "verdict": "SCREENED",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "",
+  "captive_summary": "Screened: cancelled (inferred ~4 years) proposal, no vessel ever named. The owner of record is itself 'TISA (Termelétrica Itacoatiara SA)' — a thermoelectric-plant company, not an independent LNG developer — confirming the project was conceived purely as a fuel-supply arm for the adjacent Itacoatiara power station (a direction-test fail on design intent), and no engineering/FEED-stage documentation of any on-site generation at the terminal itself was found.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Searched for 'Itacoatiara FSRU TISA usina' and 'Itacoatiara usina termelétrica Amazonas'; no project-specific news, FEED study, or licensing filing was found describing the never-built terminal's own generation. The owner name (Termelétrica Itacoatiara SA) itself, per GEM's record, establishes the bundled power-plant relationship.",
+  "refs": [],
+  "verification_log": [],
+  "gogpt_prior_assessment": "One GOGPT neighbor given: Itacoatiara power station (638 MW, 0.69 km, cancelled - inferred 4y). This matches this terminal's own power_plants_supplied field and owner name (TISA = Termelétrica Itacoatiara SA) exactly — it is the intended RECIPIENT of gas from the never-built terminal, not co-located captive generation for the terminal.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "Terminal never reached a design stage for its own generation; no captive plant exists to add. The neighbor plant is the intended gas recipient, already tracked in GOGPT (itself cancelled).",
+  "status_or_other_findings": "",
+  "notes": "Direction-test case: owner entity name itself (Termelétrica Itacoatiara SA) confirms the terminal was designed as a fuel supplier to the Itacoatiara power station, the opposite of captive power. Screen criterion: cancelled-and-never-designed for the terminal's own generation."
+ }
+]

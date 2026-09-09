@@ -17,8 +17,20 @@ def test_mtpa_identity_and_synonym():
 
 
 def test_exotic_units():
-    assert cn.to_mtpa(1.0, "bcf/d") == pytest.approx(2.8077, abs=1e-3)
-    assert cn.to_mtpa(600, "MMcf/d") == pytest.approx(600 * 365 / 130_000, rel=1e-6)
+    # Volumetric-per-day units derive from the SAME 1 mtpa = 1.36 bcm/y
+    # equivalence as the bcm test above: 1 bcm = 35.3147 bcf, so
+    # 1 mtpa = 1.36 * 35.3147 = 48.03 bcf/y.
+    # These expectations were updated 2026-07-29 with the normalize.py fix that
+    # replaced the old 365/130 constants (1 bcf/d ~ 2.81 mtpa). Those were off by
+    # ~2.7x and contradicted both unit_conventions.md and GEM's own precomputed
+    # CapacityinMtpa values (Stade/Wilhelmshaven FSRU: 750 MMcf/d -> 5.75 mtpa,
+    # i.e. ~0.00767 mtpa per MMcf/d, not 0.00281).
+    assert cn.to_mtpa(1.0, "bcf/d") == pytest.approx(365 / 48.03, abs=1e-3)
+    assert cn.to_mtpa(600, "MMcf/d") == pytest.approx(600 * 365 / 48_030, rel=1e-6)
+    # Cross-check against the database's own figure for a real row. Allow 1%:
+    # GEM's stored 5.75 implies ~0.00767 mtpa per MMcf/d against our 0.00760, a
+    # sub-1% spread from rounding the mtpa<->bcm equivalence, not a unit error.
+    assert cn.to_mtpa(750, "MMcf/d") == pytest.approx(5.75, rel=0.01)
 
 
 def test_unknown_unit_returns_none():

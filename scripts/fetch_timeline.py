@@ -40,7 +40,10 @@ import re
 import sys
 from pathlib import Path
 
-DB_ENV_VAR = "GEM_READONLY_DB_URL"
+sys.path.insert(0, str(Path(__file__).parent))
+import paths  # noqa: E402  — GEM DB engine + sibling-repo resolution
+
+DB_ENV_VAR = paths.DB_ENV_VAR
 LNG_PROJECT_TYPE = 8
 
 
@@ -87,13 +90,11 @@ def fetch_timeline_db(unit_id):
             f"  read-only DB is genuinely unreachable, escalate to the user before\n"
             f"  staging any status change (see the module docstring)."
         )
-    try:
-        from sqlalchemy import create_engine, text
-    except ImportError:
-        sys.exit("error: pip install 'sqlalchemy>=2.0' psycopg2-binary")
-    if url.startswith("postgres://"):
-        url = "postgresql+psycopg2://" + url[len("postgres://"):]
-    eng = create_engine(url)
+    from sqlalchemy import text
+
+    # Engine (read-only guard, statement timeout, postgres:// fixup) comes from
+    # ../gem-db-ops via paths.py — the one definition every GEM repo shares.
+    eng = paths.get_engine()
     pu = _pu_id(unit_id)
     with eng.connect() as conn:
         rows = conn.execute(text(_TIMELINE_SQL), {"uid": pu}).mappings().all()

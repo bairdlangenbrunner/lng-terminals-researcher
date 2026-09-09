@@ -1,0 +1,173 @@
+[
+  {
+    "terminal": "Daewoo Gas LNG Terminal",
+    "terminal_id": "T100000130300",
+    "country": "Pakistan",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "",
+    "captive_summary": "Screened: proposed Gwadar/Balochistan LNG import terminal (aka Gwadar-Nawabshah LNG Terminal) that never advanced past the proposal stage. GEM already carries the sole unit as cancelled (inferred ~4y). No independent source found (extensive search) describing any published technical design for this terminal at any point in its history, let alone a captive-power component.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Web search corroborates the project was proposed near Gwadar and never built; no EIA/technical filing, EPC contractor release, or vendor press release was found — the project appears to have stalled pre-FEED. No non-gem.wiki independent source names any equipment for this site.",
+    "refs": [],
+    "verification_log": [],
+    "gogpt_prior_assessment": "No GOGPT plant given as a prior (gogpt_plant blank in assignment). Independently: no generating plant of any kind exists at this site — the project was never built.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Project never reached construction; no power station exists at this site.",
+    "status_or_other_findings": "Unrelated: a separate $14bn 'Tri-State Gas Terminal' at Gwadar was approved by the Balochistan cabinet in July 2026 with reported Turkmenistan investment interest — distinct project, not this record, not acted on.",
+    "notes": "Screen criterion: cancelled-and-never-designed."
+  },
+  {
+    "terminal": "Energas FSRU",
+    "terminal_id": "T100000130884",
+    "country": "Pakistan",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "",
+    "captive_summary": "No FSRU vessel has yet been assigned/chartered to this proposed Port Qasim terminal, and no technical design document, EIA, or vendor/EPC release describing onboard power arrangements was found despite an extensive search. The project holds an OGRA construction licence (April 2021) and 2024-2025 Pakistani press describes it as close to a construction start, but nothing at equipment level is public yet.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Searched the company's own site, the Sindh EPA public EIA/ESIA/IEE index (no Energas/Port Qasim filing listed), the ADB project-document mirror for the related Engro Fast-Track filing (403 on the direct PDF), and Pakistani business press. No vessel name, charter, or design study surfaced. OGRA construction-licence grant (Energas Terminal Pvt Ltd + Tabeer Energy, April 2021, 15-year licences under OGRA Ordinance 2002 / OGRA (LNG) Rules 2007) is corroborated by economy.pk.",
+    "refs": [
+      "https://www.economy.pk/energas-and-tabeer-acquire-construction-licenses/"
+    ],
+    "verification_log": [
+      {"url": "https://www.dawn.com/news/1621185", "tokens": ["Energas", "OGRA"], "result": "FAIL", "note": "HTTP 403; Wayback snapshot fetch also failed (HTTP 000) — dropped, not used as a citation"},
+      {"url": "https://www.economy.pk/energas-and-tabeer-acquire-construction-licenses/", "tokens": ["Energas", "OGRA"], "result": "PASS", "note": "OK"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT plant given as a prior (gogpt_plant blank). Independently: no generating plant exists yet at this pre-construction site.",
+    "gogpt_candidate": "REVIEWER CALL",
+    "gogpt_candidate_basis": "Captive-power status is itself INSUFFICIENT — no vessel or design published yet. Revisit once an FSRU is named/chartered and a design or EIA becomes public.",
+    "status_or_other_findings": "OGRA construction licence granted April 2021. 2024-2025 Pakistani press describes the project as ~$180m, 7.6 mtpa design capacity, 200 mmscfd initial output, 'ready to start construction activity.' Reported but not independently verified beyond a single search pass; not acted on.",
+    "notes": ""
+  },
+  {
+    "terminal": "Engro Elengy FSRU",
+    "terminal_id": "T100000130298",
+    "country": "Pakistan",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "",
+    "captive_summary": "Vessel identity confirmed as FSRU Exquisite (Excelerate Energy/Nakilat, DSME-built 2009, 150,900 m3 membrane, 4.8 MTPA send-out) via the GIIGNL 2026 Annual Report FSRU fleet table, on station at Port Qasim, Karachi. No vessel-specific technical document naming Exquisite's own engines, generator sets, or onboard power source was found despite an extensive multi-source search. The closest available evidence describes the SISTER vessel Engro itself selected to replace Exquisite in this exact role (Excelerate Sequoia) as having dual-fuel diesel-electric (DFDE) engines plus auxiliary generators serving regasification/onboard operations — a strong design-class analogy, not a vessel-exact citation, so held at INSUFFICIENT rather than staged as YES.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "GIIGNL 2026 Annual Report (FSRU fleet table) confirms Exquisite is the vessel on station at 'Port Qasim Karachi, Pakistan,' and lngprime.com (Feb 2023) / naturalgasworld.com (Jul 2024, 600th ship-to-ship transfer) independently confirm Exquisite still serving Engro Elengy Terminal as recently as mid-2024. Engro's own 2021 press release describes a plan to swap Exquisite for a newbuild, Excelerate Sequoia — but GIIGNL 2026 places Sequoia in Bahia, Brazil, not Pakistan, consistent with GEM's own 'Expansion (Replacement)' unit already carrying shelved status; the swap appears not to have happened, so Exquisite is the correct current vessel, not Sequoia. For Sequoia specifically, MarineLink's ports directory (ports.marinelink.com/ports/port/excelerate-sequoia) states: 'Dual-fuel diesel-electric (DFDE) engines, capable of running on natural gas or marine diesel oil' at approximately 28,000 kW, plus 'auxiliary generators to support regasification and other onboard operations.' This documents the design pattern for Excelerate's large membrane-type LNGRV/FSRU class (onboard gas-capable generation powering the vessel's own regas/house load, not shore power) but does not itself name Exquisite. No source, positive or negative, on shore-power/grid connection at the Engro Elengy mooring was found either way. Also checked and exhausted: Excelerate's own fleet page (storage/send-out only, no engine data), VesselFinder/MarineTraffic/BalticShipping (engine fields unpopulated without paid subscription), Sindh EPA's public EIA index (no Engro Elengy filing listed), ADB's direct project-document PDF (403).",
+    "electric_mw_note_internal": "",
+    "refs": [
+      "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf",
+      "https://lngprime.com/asia/engro-pakistans-first-lng-import-terminal-received-74-vessels-last-year/74229/",
+      "https://www.naturalgasworld.com/excelerates-fsru-exquisite-in-pakistan-completes-600th-sts-transfer-112173",
+      "https://www.engro.com/press-releases/engro-elengy-terminal-sets-new-industry-records-in-five-years-of-successful-operations",
+      "https://ports.marinelink.com/ports/port/excelerate-sequoia"
+    ],
+    "verification_log": [
+      {"url": "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf", "tokens": ["Exquisite", "BW Integrity", "Port Qasim"], "result": "PASS", "note": "OK — official 2026 mirror per data/README.md"},
+      {"url": "https://lngprime.com/asia/engro-pakistans-first-lng-import-terminal-received-74-vessels-last-year/74229/", "tokens": ["Exquisite", "150,900"], "result": "PASS", "note": "OK"},
+      {"url": "https://lngprime.com/asia/engro-pakistans-first-lng-import-terminal-received-74-vessels-last-year/74229/", "tokens": ["BW Integrity"], "result": "PASS", "note": "OK — same article also names BW Integrity as the other Port Qasim FSRU"},
+      {"url": "https://www.naturalgasworld.com/excelerates-fsru-exquisite-in-pakistan-completes-600th-sts-transfer-112173", "tokens": ["Exquisite", "600th"], "result": "PASS", "note": "OK"},
+      {"url": "https://www.engro.com/press-releases/engro-elengy-terminal-sets-new-industry-records-in-five-years-of-successful-operations", "tokens": ["Sequoia"], "result": "PASS", "note": "OK"},
+      {"url": "https://ports.marinelink.com/ports/port/excelerate-sequoia", "tokens": ["28,000", "dual-fuel"], "result": "PASS", "note": "OK — describes Sequoia (sister/replacement vessel), not Exquisite directly"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT plant given as a prior (gogpt_plant blank). Independently: any generation here would be vessel-mounted (FSRU onboard gensets); unclear whether GOGPT's ontology captures vessel-mounted generation even if later confirmed.",
+    "gogpt_candidate": "REVIEWER CALL",
+    "gogpt_candidate_basis": "Captive-power verdict is itself INSUFFICIENT. If later confirmed via a vessel-exact source, this is the 'vessel-mounted FSRU genset, unclear if GOGPT captures it' case (SOP §5).",
+    "status_or_other_findings": "Engro's 2021 plan to swap Exquisite for newbuild FSRU Excelerate Sequoia appears not to have proceeded — GIIGNL 2026 places Sequoia in Bahia, Brazil, consistent with GEM's own 'Expansion (Replacement)' unit already carrying shelved status. Informational only, not acted on.",
+    "notes": "Follow-up candidate: pursuing a paid maritime database (Clarksons/IHS Sea-web) or a class-society record for Exquisite's own engine model would likely resolve this to YES given the strength of the sister-vessel/design-class evidence."
+  },
+  {
+    "terminal": "Engro FSRU 2",
+    "terminal_id": "T100000130611",
+    "country": "Pakistan",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "",
+    "captive_summary": "Screened: a second Port Qasim FSRU proposed by Engro with partners Shell, Gunvor, and Fatima Energy (announced April 2018, ~$500m JV, targeted commissioning 2021). No development updates after ~2019; GEM already carries the sole unit as cancelled (inferred ~4y). No technical/design document was ever published — the project did not reach FEED/FID.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "profit.pakistantoday.com.pk (30 Apr 2018) confirms the JV announcement and partner list; no later coverage of construction, an EIA, or equipment selection was found in an extensive search — consistent with the project stalling pre-design.",
+    "refs": [
+      "https://profit.pakistantoday.com.pk/2018/04/30/engro-poised-to-set-up-first-pak-merchant-lng-terminal"
+    ],
+    "verification_log": [
+      {"url": "https://profit.pakistantoday.com.pk/2018/04/30/engro-poised-to-set-up-first-pak-merchant-lng-terminal", "tokens": ["Shell", "Gunvor"], "result": "PASS", "note": "OK"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT plant given as a prior (gogpt_plant blank). Independently: no generating plant exists at this site — project never built.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Project never reached construction; no power station exists at this site.",
+    "status_or_other_findings": "",
+    "notes": "Screen criterion: cancelled-and-never-designed."
+  },
+  {
+    "terminal": "GEIL FSRU",
+    "terminal_id": "T100000131078",
+    "country": "Pakistan",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "",
+    "captive_summary": "Screened: proposed as Pakistan's first private LNG import terminal at Port Qasim, backed by a consortium including ExxonMobil, Total, Qatar Petroleum, Mitsubishi, and Hoegh LNG, targeting construction start early 2017. The consortium collapsed when ExxonMobil withdrew in October/November 2017, and the project was never built. GEM already carries the sole unit as cancelled (inferred ~4y). No technical/design document describing project equipment (captive power or otherwise) was found.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "offshore-energy.biz ('ExxonMobil pulls out of Pakistan FSRU project') and profit.pakistantoday.com.pk (30 Oct 2017, 'Exxon Mobil quits LNG gas deal in major setback to Pakistan['s] LNG plans') both independently confirm ExxonMobil's October 2017 withdrawal and the consortium's collapse. No later coverage of construction or design work was found.",
+    "refs": [
+      "https://www.offshore-energy.biz/exxonmobil-pulls-out-of-pakistan-fsru-project/",
+      "https://profit.pakistantoday.com.pk/2017/10/30/exxon-mobil-quits-lng-gas-deal-in-major-setback-to-pakistan"
+    ],
+    "verification_log": [
+      {"url": "https://www.reuters.com/article/world/exclusive-exxon-exit-deals-blow-to-pakistan-plans-for-lng-imports-idUSKBN1CZ1SD/", "tokens": ["Exxon", "LNG"], "result": "FAIL", "note": "HTTP 401; no Wayback snapshot to verify against — dropped"},
+      {"url": "https://tribune.com.pk/story/1546976/exxon-mobil-pulls-major-lng-project-pakistan", "tokens": ["Exxon", "LNG"], "result": "FAIL", "note": "HTTP 403; no Wayback snapshot to verify against — dropped"},
+      {"url": "https://profit.pakistantoday.com.pk/2017/10/30/exxon-mobil-quits-lng-gas-deal-in-major-setback-to-pakistans-lng-plans", "tokens": ["Exxon", "LNG"], "result": "FAIL", "note": "HTTP 404 (wrong slug) — corrected URL used instead"},
+      {"url": "https://profit.pakistantoday.com.pk/2017/10/30/exxon-mobil-quits-lng-gas-deal-in-major-setback-to-pakistan", "tokens": ["Exxon", "LNG"], "result": "PASS", "note": "OK — corrected slug"},
+      {"url": "https://www.offshore-energy.biz/exxonmobil-pulls-out-of-pakistan-fsru-project/", "tokens": ["ExxonMobil", "FSRU"], "result": "PASS", "note": "OK"},
+      {"url": "https://pcq.com.pk/exxonmobil-pulls-out-of-deal-to-construct-lng-terminal-at-pakistans-port-qasim/", "tokens": ["ExxonMobil", "Port Qasim"], "result": "PASS", "note": "bot-blocked live (HTTP 403), value verified via Wayback snapshot 20260123083415 — usable but not needed given the two PASS sources above"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT plant given as a prior (gogpt_plant blank). Independently: no generating plant exists at this site — project never built.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Project never reached construction; no power station exists at this site.",
+    "status_or_other_findings": "",
+    "notes": "Screen criterion: cancelled-and-never-designed."
+  },
+  {
+    "terminal": "GasPort FSRU",
+    "terminal_id": "T100000130299",
+    "country": "Pakistan",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "",
+    "captive_summary": "Vessel identity confirmed as FSRU BW Integrity (BW LNG with 49% Mitsui, Samsung Heavy Industries-built, delivered March 2017, 170,000 m3 membrane, 5.0 MTPA send-out) via the GIIGNL 2026 Annual Report FSRU fleet table, on station at 'Port Qasim GasPort, Pakistan.' No vessel-specific technical document naming BW Integrity's own engines, generator sets, or onboard power arrangement was found despite an extensive search.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "GIIGNL 2026 Annual Report confirms vessel identity and current deployment at the GasPort terminal. lngprime.com (Feb 2023) independently corroborates BW Integrity serving the Pakistan GasPort project. No source giving BW Integrity's own engine model, generator rating, or fuel arrangement was found. Sister-class leads exist but were judged too indirect to cite as a documented positive for this specific vessel: (a) an ABB marine-references snippet for BW Integrity's own sister ship BW Singapore (same owner BW LNG, same 170,000 m3 class, built 2015) describes 'ABB power and distribution system in addition to electric propulsion,' but the source page itself would not load for direct verification (repeated timeouts), so it could not be verified via url_verifier and is not used as a citation; (b) a Wartsila press release (04-2017) states that two contemporaneous ~170,000 m3 Samsung/Hyundai-built FSRUs for a different owner (Hoegh LNG) were each powered by four Wartsila 50DF dual-fuel engines — same shipyard/era/size class as BW Integrity but a different owner, so also not cited as a vessel-specific finding. Also checked and exhausted: BW LNG's fleet page (404), VesselFinder (engine fields unpopulated without subscription), Sindh EPA's public EIA index (no Pakistan GasPort filing listed).",
+    "refs": [
+      "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf",
+      "https://lngprime.com/asia/engro-pakistans-first-lng-import-terminal-received-74-vessels-last-year/74229/"
+    ],
+    "verification_log": [
+      {"url": "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf", "tokens": ["Exquisite", "BW Integrity", "Port Qasim"], "result": "PASS", "note": "OK — official 2026 mirror per data/README.md"},
+      {"url": "https://lngprime.com/asia/engro-pakistans-first-lng-import-terminal-received-74-vessels-last-year/74229/", "tokens": ["BW Integrity"], "result": "PASS", "note": "OK"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT plant given as a prior (gogpt_plant blank). Independently: any generation here would be vessel-mounted (FSRU onboard gensets); unclear whether GOGPT's ontology captures vessel-mounted generation even if later confirmed.",
+    "gogpt_candidate": "REVIEWER CALL",
+    "gogpt_candidate_basis": "Captive-power verdict is itself INSUFFICIENT. If later confirmed via a vessel-exact source, this is the 'vessel-mounted FSRU genset, unclear if GOGPT captures it' case (SOP §5).",
+    "status_or_other_findings": "",
+    "notes": "Follow-up candidate: pursuing a paid maritime database (Clarksons/IHS Sea-web), a class-society record, or a direct Samsung Heavy Industries / Mitsui delivery release for BW Integrity's own engine spec would likely resolve this to YES given the strength of the shipyard/class-era evidence."
+  }
+]

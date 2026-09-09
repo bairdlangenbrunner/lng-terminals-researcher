@@ -1,0 +1,62 @@
+[
+  {
+    "category": "field_consistency",
+    "terminal_id": "T100000130579",
+    "unit_id": "G100002057901",
+    "terminal_name": "Atlantic LNG Terminal",
+    "issue": "field_gap flagged PlannedStopYear as project-level-inconsistent (blank on T2-T5, '2026' on T1 only). This is NOT a data error: T1 is the only unit with a documented, corroborated planned retirement (bp/Shell/NGC agreed in 2025 to decouple and decommission Train 1; articles: hartenergy.com, trinidadexpress.com bp-confirms-plans-to-decommission-train-1, stabroeknews.com -- all re-verified live this pass). T2-T4 are operating with no announced stop plan and T5 was never built (its stop/shelved/cancelled years are already populated separately). PlannedStopYear is legitimately unit-specific here per Update SOP's mixed-field handling -- no uniformity fix needed or applied.",
+    "severity": "low",
+    "suggested_action": "No action. Leave PlannedStopYear blank on T2-T5 and 2026 on T1 as-is.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "citation_quality",
+    "terminal_id": "T100000130579",
+    "unit_id": "",
+    "terminal_name": "Atlantic LNG Terminal",
+    "issue": "Location [ref] on all 5 unit rows is a Google Maps short link (maps.app.goo.gl/CEM1ke6WKBvU4s5fA) that redirects to a JavaScript-rendered page whose static HTML contains no grep-able place-name/coordinate text, so url_verifier.py cannot pass any text-based token against it (tried 'Point Fortin', 'Trinidad', '10.18' -- all fail with 'missing expected content'). Manually followed the redirect via curl: it resolves to a URL literally containing 'place/Atlantic+LNG/@10.1804959,-61.6905646,...' -- i.e. the coordinates ARE present, just embedded in the URL structure rather than page body text, and they closely match GEM's stored 10.1810600/-61.6918900 (Accuracy=exact). The location itself is not wrong; this is a tooling limitation, not link rot.",
+    "severity": "low",
+    "suggested_action": "No location change staged. If a cleaner citation is wanted, replace the short link with a stable satellite-imagery/OSM permalink for Atlantic LNG, Point Fortin -- not urgent since the coordinate is independently confirmed accurate.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "source_conflict",
+    "terminal_id": "T100000130579",
+    "unit_id": "G100002057904",
+    "terminal_name": "Atlantic LNG Terminal",
+    "issue": "GIIGNL's 2024 Annual Report lists Atlantic LNG Train 4's start year as 2006, one year before GEM's stored ActualStartYear=2007. Atlantic LNG's own official history page (atlanticlng.com/about-us/history/) independently states 2007, matching GEM. Per methodology (GIIGNL is a Tier 1 source but not authoritative; a more specific/current sponsor source takes priority on conflict), kept GEM's 2007 -- see the ActualStartYear blue-mark record in updates.json.",
+    "severity": "low",
+    "suggested_action": "No change. Documented for awareness only; GEM's 2007 is corroborated by the primary sponsor source.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "source_conflict",
+    "terminal_id": "T100000130579",
+    "unit_id": "G100002057901",
+    "terminal_name": "Atlantic LNG Terminal",
+    "issue": "GIIGNL's 2024 Annual Report lists Train 1 ownership as 'Shell 46%, BP 34%, China Investment Corporation (CIC) 10%, NGC Trinidad 10%' -- a structure that includes CIC and does not match GEM's current Owner value (Shell 51%/BP 39%/NGC 10%, no CIC), which is confirmed correct against Atlantic LNG's own current 'Our Trains' page. Historical context (per an archived Mechademy technical profile): CIC bought GDF Suez's 10% Train 1 stake in 2011, and a later, undated transfer evidently absorbed that stake into Shell/BP -- GIIGNL's figure appears to predate that later transfer. Kept GEM's current value; no independent source pinning the exact date of the CIC exit was found this pass (WebSearch budget exhausted).",
+    "severity": "low",
+    "suggested_action": "No change staged. A future pass with WebSearch available could try to pin the exact date Shell/BP absorbed CIC's 10% Train 1 stake, for the wiki history.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "sourcing_gap",
+    "terminal_id": "T100000130579",
+    "unit_id": "",
+    "terminal_name": "Atlantic LNG Terminal",
+    "issue": "igu.org/resources/2024-world-lng-report/ (previously cited on Operator [ref], StartDate [ref], and Capacity [ref] across all 5 units) is a genuine 404 -- IGU's site appears to have restructured its resources section. No replacement IGU URL was found this pass (WebSearch budget was exhausted session-wide before this could be searched). Dropped from every cell it appeared on; remaining citations (GIIGNL mirror + atlanticlng.com pages) still give >=2 independent sources on every affected cell, so no cell was left under-sourced.",
+    "severity": "low",
+    "suggested_action": "A future batch with WebSearch available should look for the IGU World LNG Report's new URL structure and re-add it where useful; not blocking since corroboration held up without it.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "cross_border_feedgas_context",
+    "terminal_id": "T100000130579",
+    "unit_id": "",
+    "terminal_name": "Atlantic LNG Terminal",
+    "issue": "Per orchestrator handoff from the Caribbean discovery pass: checked whether the Loran-Manatee/Dragon cross-border feedgas arrangements have moved any Atlantic LNG train's Status. Verified via jpt.spe.org and guardian.co.tt (both re-verified live this pass) that Shell gave financial approval for the Manatee field development in Oct 2023, explicitly as future feedstock for Atlantic LNG (Trinidad's declining gas supply 'can no longer keep its four liquefaction units operating'), with Shell's FID still pending as of the Nov 2023 source. GEM's own ResearcherNotesUnit for T1 separately records that Shell reached FID in July 2024, with Manatee first gas expected 2027 -- I could not independently re-verify that specific FID date/month this pass (WebSearch exhausted). Either way, no first gas has yet occurred (2027 is still future as of 2026-08-11), so Train 1's Status correctly stays 'mothballed' -- no status/timeline edit is warranted yet. Could not find any independently verifiable source on the 'Dragon' field specifically (no dedicated Wikipedia page, no guessable URL succeeded without WebSearch) -- Dragon is NOT included in the wiki background note as a result; only the verified Manatee/Loran-Manatee content is staged.",
+    "severity": "low",
+    "suggested_action": "No status/timeline edit staged (correctly deferred, not punted -- first gas hasn't happened). A future pass with WebSearch available should verify the exact Manatee FID date and look for Dragon field sourcing to complete the wiki background.",
+    "researcher_initials": "AI-draft"
+  }
+]

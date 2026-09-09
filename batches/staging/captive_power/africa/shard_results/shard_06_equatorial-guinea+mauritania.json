@@ -1,0 +1,155 @@
+[
+  {
+    "terminal": "Akonikien LNG Terminal",
+    "terminal_id": "T100000130787",
+    "country": "Equatorial Guinea",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "",
+    "captive_summary": "Cancelled, government-owned import-terminal proposal with no operator ever named and no design ever published. Zero trade-press or technical coverage found despite extensive searching (LNG Prime, gCaptain, Wikipedia, and the plant's own would-be sponsor pages). Screened as cancelled-and-never-designed.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "No public source of any kind mentions Akonikien LNG Terminal: site searches on LNG Prime ('Found 0 posts') and gCaptain ('Found 0 posts') both returned zero results, and no Wikipedia article or project-profile page exists. GEM's own status_by_unit shows the sole unit cancelled (inferred, ~4 years), consistent with a project that never advanced past a government proposal and attracted no independent coverage.",
+    "refs": [],
+    "verification_log": [],
+    "gogpt_prior_assessment": "gogpt_prior = no; no nearby GOGPT plant given for this terminal.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Cancelled project with no design ever published; not a gas power station of any kind, and no facility exists to add.",
+    "status_or_other_findings": "No independent confirmation of even the terminal's existence was found beyond GEM's own record; its cancelled status cannot be independently corroborated from any public source located.",
+    "notes": ""
+  },
+  {
+    "terminal": "Fortuna FLNG Terminal",
+    "terminal_id": "T100000130251",
+    "country": "Equatorial Guinea",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "",
+    "captive_summary": "Fortuna FLNG never reached FID and no detailed engineering description of its power-generation equipment was ever publicly disclosed. The project's history (Ophir Energy/GEPetrol Block R PSC; a 2016 Ophir-Golar-Schlumberger FLNG joint venture; Schlumberger's exit and Medco's 2018-19 acquisition of Ophir; a reported 2022 Golar-New Fortress revival attempt; renewed but unspecific Golar-government talks in 2023) is documented, but at no point does a source describe the vessel's power plant. Absence of a published spec is INSUFFICIENT, not a documented NO.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "LNG Prime's Sept 4, 2023 'Golar in FLNG talks with Equatorial Guinea' traces the project's ownership/partnership history in full (2016 Ophir-Golar-Schlumberger JV targeting Fortuna; Schlumberger's exit and Medco's acquisition of Ophir dissolving that structure in 2018-19; a reported 2022 Golar-New Fortress Energy attempt to revive Fortuna; fresh August 2023 Golar-government talks with no specific update on Fortuna) without ever mentioning a power plant, generator, or turbine for the vessel. An offshore-technology.com project profile with general FLSO design figures (length/storage/output) was found via WebFetch but FAILED url_verifier (403, no Wayback snapshot) and is therefore not used as a citation. No vendor/EPC/technical-paper source describing Fortuna's power system was located in gCaptain, LNG Prime, or direct site searches. GEM's own status (First Proposal cancelled/confirmed, Second Proposal shelved/inferred) is consistent with a project that never completed a public FEED.",
+    "refs": [
+      "https://lngprime.com/africa/golar-in-flng-talks-with-equatorial-guinea/90508/"
+    ],
+    "verification_log": [
+      {"url": "https://lngprime.com/africa/golar-in-flng-talks-with-equatorial-guinea/90508/", "tokens": ["Fortuna", "Schlumberger"], "result": "PASS", "note": "confirms Fortuna project history through 2023"},
+      {"url": "https://www.offshore-technology.com/projects/fortuna-flng/", "tokens": ["Ophir Energy", "FID"], "result": "FAIL", "note": "HTTP 403, no Wayback snapshot available to verify against; dropped, not cited"}
+    ],
+    "gogpt_prior_assessment": "gogpt_prior = no; no nearby GOGPT plant given.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Never built; no generating equipment exists or was ever specified for this vessel.",
+    "status_or_other_findings": "Project history per LNG Prime: Ophir Energy (80%)/GEPetrol (20%) held Block R; Ophir partnered with Golar LNG + Schlumberger in 2016 to deliver Fortuna via FLNG; Schlumberger exited and Medco acquired Ophir in 2018-19, collapsing that structure; a 2022 report had Golar teaming with New Fortress Energy to attempt a revival; as of Sept 2023 Golar was in fresh talks with Equatorial Guinea's government but with no confirmed Fortuna-specific update. Do not act on this beyond flagging.",
+    "notes": "GEM shows First Proposal=cancelled(confirmed), Second Proposal=shelved(inferred 2y) — consistent with the dormant/never-built history sourced above."
+  },
+  {
+    "terminal": "Punta Europa LNG Terminal",
+    "terminal_id": "T100000130252",
+    "country": "Equatorial Guinea",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "",
+    "captive_summary": "EG LNG's single-train liquefaction plant at Punta Europa, Bioko Island (operating since 2007) necessarily has significant compression/power demand, but no public source found in extensive searching discloses whether that demand is met by on-site gas turbines/generators or by grid/utility supply. Absence of a published spec is INSUFFICIENT, never a documented NO.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "eglng.com's own About-Us and Technology pages contain only corporate/CSR content, no equipment detail. Wikipedia's Bioko article confirms only that 'the majority of the residue gas from the Alba plant is delivered to a natural gas liquefaction plant operated by EG LNG,' with no machinery detail. LNG Prime's 2025-2026 EG LNG coverage (ConocoPhillips' first-cargo and offtake-deal articles, e.g. https://lngprime.com/lng-terminals/conocophillips-loads-its-first-equatorial-guinea-lng-cargo/154026/) covers commercial matters only and was confirmed (via WebFetch) to contain no capacity, trains, equipment, or power-generation detail. No vendor press release (GE/Baker Hughes/Siemens/MAN), EPC release, or technical paper describing EG LNG's compressor drivers or power plant was located via gCaptain, LNG Prime, or Hydrocarbon Engineering site searches. Not citing any of these as a captive-power finding since none contains the value.",
+    "refs": [],
+    "verification_log": [],
+    "gogpt_prior_assessment": "gogpt_prior = yes; nearest plant Malabo Turbogas power plant (154 MW, gogpt_captive=False, 1.996 km away). Malabo Turbogas reads as Equatorial Guinea's public grid power plant serving Malabo city (the Bioko Island capital, adjoining Punta Europa), not a dedicated/fenceline asset of EG LNG's liquefaction plant — the proximity is coincidental to both sites sitting at the edge of the same city. No independent non-gem.wiki source describing Malabo Turbogas specifically was found (searches on LNG Prime and Mojeek returned nothing), so this assessment rests on the public-utility framing implied by the plant's own name/GOGPT's captive=False determination rather than a freshly-sourced citation.",
+    "gogpt_candidate": "REVIEWER CALL",
+    "gogpt_candidate_basis": "The existence of any dedicated on-site generation at Punta Europa/EG LNG itself is unconfirmed (verdict INSUFFICIENT) — there is nothing to ADD or a basis to definitively rule DO NOT ADD until the underlying captive-power question is resolved with a source.",
+    "status_or_other_findings": "",
+    "notes": ""
+  },
+  {
+    "terminal": "BirAllah LNG Hub",
+    "terminal_id": "T100000131091",
+    "country": "Mauritania",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "",
+    "captive_summary": "Very early-stage proposed project (BP/Kosmos Block C8; PSC signed Oct 11, 2022; a 30-month engineering-study timeline announced at signing; FID targeted for H1 2025 per that announcement). No facility design, let alone power-generation equipment, has been publicly disclosed.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "LNG Prime's Oct 13, 2022 'BP, Kosmos ink new deal for Mauritanian gas field' documents the PSC signing among BP, Kosmos Energy and Mauritania (Mauritania holding a 25% stake), a 30-month engineering-study timeline, resources at BirAllah/Orca (Block C8, >50 Tcf, larger than GTA) roughly 60 km north of GTA and 100 km offshore, and a phased ~10 mtpa LNG development plan targeting FID in H1 2025 — with no engineering/design detail beyond scale, location, and schedule.",
+    "refs": [
+      "https://lngprime.com/contracts-and-tenders/bp-kosmos-ink-new-deal-for-mauritanian-gas-field/63709/"
+    ],
+    "verification_log": [
+      {"url": "https://lngprime.com/contracts-and-tenders/bp-kosmos-ink-new-deal-for-mauritanian-gas-field/63709/", "tokens": ["BirAllah", "Kosmos"], "result": "PASS", "note": "confirms PSC signing and project scale/timeline"}
+    ],
+    "gogpt_prior_assessment": "gogpt_prior = no; no nearby GOGPT plant given.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No facility exists yet at any stage of design; nothing to add.",
+    "status_or_other_findings": "PSC for BirAllah/Orca (Block C8) signed by BP, Kosmos Energy and Mauritania Oct 11, 2022; Mauritania holds 25%; resource estimated >50 Tcf; phased development targeting ~10 mtpa; FID was targeted for H1 2025 per the 2022 announcement. GEM still shows this terminal as proposed with a single unit and no further detail, consistent with FID not yet having occurred.",
+    "notes": ""
+  },
+  {
+    "terminal": "Greater Tortue Ahmeyim FLNG Terminal",
+    "terminal_id": "T100000130661",
+    "country": "Mauritania",
+    "verdict": "YES",
+    "mechanical": "False",
+    "captive_category": "power_generation",
+    "hardware_summary": "2x Rolls-Royce Bergen B35:40V20AG gas-fueled reciprocating engines for on-board power generation, per the design confirmed built on sister conversion vessel Hilli Episeyo and contractually optioned for Gimi specifically in the same 2015 shipyard/engine contract; MW rating not stated in the source found, and the as-built Gimi configuration (post-2023 conversion) is not independently confirmed.",
+    "fuel_basis": "gCaptain/Rolls-Royce, Mar 20, 2015: the Bergen B35:40V20AG engines installed on Hilli are 'fueled exclusively by LNG'; the same release states the contract 'includes an option for additional two engines for a second Golar LNG carrier to be converted, Gimi.'",
+    "confidence": "yellow",
+    "captive_summary": "Gimi FLNG (BP-chartered, moored offshore at the Tortue field, converted from a 1976-built Moss-type LNG carrier, operational 2025, 2.7 mtpa nameplate/2.45 mtpa output per Golar's own fleet page) is an off-grid moored FLNG facility that must generate all of its own electric power for liquefaction, utilities and crew — the brief's own grid-access prior for moored FLNG/FSRU vessels. Golar's FLNG conversion design uses gas-fired Bergen dual-fuel gensets for exactly this purpose, confirmed installed on sister vessel Hilli and contractually optioned for Gimi by name in the same 2015 contract. Verdict is YES at yellow confidence: the fuel/equipment class is documented and vessel-specific (not merely inferred), but the as-built Gimi confirmation is a 2015 option rather than a post-conversion disclosure, so it falls short of a second independent, vessel-specific, as-built source.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "gCaptain's Mar 20, 2015 'Rolls-Royce to Power Golar's New Floating LNG Liquefaction Ship' (reporting Rolls-Royce's own release) states two Bergen B35:40V20AG engines were installed on Hilli 'to supply the on-board power generation for the vessel,' fueled exclusively by LNG, powering 'the liquefaction processes, and also for supporting vessel operation and the energy needs of the crew onboard' — and that the same contract 'includes an option for additional two engines for a second Golar LNG carrier to be converted, Gimi.' LNG Prime's Aug 12, 2022 'Golar says Gimi FLNG 86 percent complete' confirms the Gimi conversion was underway at that yard/program. Golar's own fleet page (golarlng.com/fleet.aspx) confirms Gimi: 'Built 1976, Converted 2023,' operational from 2025, 2.7/2.45 mtpa, chartered to BP through 2045 — corroborating the vessel and deployment but not restating the power-plant equipment. The Gimi-specific power-system confirmation therefore rests on the 2015 option language plus the strong physical necessity of self-generation for a moored FLNG vessel, not a post-conversion as-built spec sheet — hence yellow, not green.",
+    "refs": [
+      "https://gcaptain.com/rolls-royce-power-golars-new-floating-lng-liquefaction-ship/",
+      "https://lngprime.com/africa/golar-says-gimi-flng-86-percent-complete/59169/",
+      "https://www.golarlng.com/fleet.aspx"
+    ],
+    "verification_log": [
+      {"url": "https://gcaptain.com/rolls-royce-power-golars-new-floating-lng-liquefaction-ship/", "tokens": ["Bergen", "Gimi"], "result": "PASS", "note": "confirms Bergen B35:40V20AG engines and Gimi option"},
+      {"url": "https://lngprime.com/africa/golar-says-gimi-flng-86-percent-complete/59169/", "tokens": ["Gimi", "86 percent"], "result": "PASS", "note": "confirms Gimi conversion progress at Keppel"},
+      {"url": "https://www.golarlng.com/fleet.aspx", "tokens": ["Gimi", "2045"], "result": "PASS", "note": "confirms Gimi build/convert years, capacity, BP charter to 2045"}
+    ],
+    "gogpt_prior_assessment": "gogpt_prior = no; no nearby GOGPT plant given (moored offshore facility with no colocated land-based plant to compare against).",
+    "gogpt_candidate": "REVIEWER CALL",
+    "gogpt_candidate_basis": "Vessel-mounted generation (FLNG-onboard, analogous to an FSRU) with no citable nameplate MW found for the as-installed Gimi gensets — per SOP §5, vessel-mounted generation with an undisclosed nameplate and unclear GOGPT-ontology fit is a REVIEWER CALL, not ADD or DO NOT ADD.",
+    "status_or_other_findings": "Gimi FLNG: built 1976 as an LNG carrier, converted at Keppel Shipyard 2020-2023 (86% complete per the Aug 2022 update), departed the yard and arrived at the GTA site in early 2024, first gas/startup followed, chartered to BP through 2045, nameplate 2.7 mtpa / 2.45 mtpa output. Golar refinanced/re-leased Gimi FLNG in 2025 ($1.2bn) — financial/status items only, not acted on. Phase 2 (proposed, unit_id G100002066105) has no separate FLNG unit identified in the sources reviewed.",
+    "notes": "This verdict covers the Gimi FLNG vessel serving Phase 1; no distinct captive-power finding is made for Phase 2, which remains proposed with no sourced facility detail."
+  },
+  {
+    "terminal": "New Fortress Banda LNG Terminal",
+    "terminal_id": "T100000131048",
+    "country": "Mauritania",
+    "verdict": "NO",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "yellow",
+    "captive_summary": "New Fortress Energy's Mauritania 'energy hub' (MoU announced Dec 2021) is explicitly a gas-to-power supply scheme: NFE was to supply gas to the existing 180 MW Somolec power plant and fund a new 120 MW combined-cycle plant, with its Fast LNG output serving 'local gas and power markets as well as international exports.' This is the direction-test case — the terminal's purpose is piping gas OUT to external power stations, not powering itself with captive on-site generation. No source found describes any on-site captive generation at the terminal itself, and GEM's own record already carries the matching `PowerPlantsSupplied` relationship.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "LNG Prime's Dec 22, 2021 'New Fortress plans FLNG project off Mauritania' states NFE signed an MoU 'to develop an energy hub, including natural gas, power, LNG and blue ammonia,' under which NFE will 'supply natural gas to the existing 180 MW Somolec power plant and fund a new 120 MW combined cycle power plant,' with Fast LNG output serving 'local gas and power markets as well as international exports.' GEM's own field for this terminal already records `power_plants_supplied: Banda Gas-to-Power Project, Nouakchott Nord power plant`, consistent with the sourced direction of gas flow (OUT to power plants, not captive power IN to the terminal).",
+    "refs": [
+      "https://lngprime.com/africa/new-fortress-plans-flng-project-off-mauritania/37476/"
+    ],
+    "verification_log": [
+      {"url": "https://lngprime.com/africa/new-fortress-plans-flng-project-off-mauritania/37476/", "tokens": ["Somolec", "120 MW"], "result": "PASS", "note": "confirms gas-to-power direction: Somolec 180 MW + new 120 MW plant"}
+    ],
+    "gogpt_prior_assessment": "gogpt_prior = no; no nearby GOGPT plant given in this shard. The project's own target power plants (Somolec, 180 MW existing; a new NFE-funded 120 MW combined-cycle plant, referenced elsewhere as the Nouakchott Nord power plant) are the relevant GOGPT-side records, but matching/creating those is a GOGPT-side matter for the sibling gogpt-researcher repo, not this terminal's captive-power question.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Not a captive/on-site gas power station at the terminal itself; it is a gas-to-power supply project feeding external plants (a PowerPlantsSupplied relationship), which is out of scope for this terminal's CaptiveGasPower question.",
+    "status_or_other_findings": "Project shown cancelled in GEM (inferred, ~4y). Originally announced Dec 2021 as an integrated gas/power/LNG/blue-ammonia hub at Banda; no further public news tracking construction progress was found, consistent with the cancellation.",
+    "notes": "Classic PowerPlantsSupplied direction-test case (SOP): terminal's purpose is supplying gas to Somolec (180 MW) and a new 120 MW combined-cycle plant (Nouakchott Nord), not self-powering. GEM's existing `power_plants_supplied` field already reflects this — no captive-power edit implied, this finding just confirms the direction is correctly NOT captive."
+  }
+]

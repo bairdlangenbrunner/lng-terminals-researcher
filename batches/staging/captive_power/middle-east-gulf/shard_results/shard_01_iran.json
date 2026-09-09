@@ -1,0 +1,354 @@
+[
+ {
+  "terminal": "Iran FLNG Terminal",
+  "terminal_id": "T100000130587",
+  "country": "Iran",
+  "verdict": "INSUFFICIENT",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "red",
+  "captive_summary": "No public source discloses on-site power generation for this project. Iran FLNG was a small (500,000 tpy) floating LNG scheme using Exmar's 'Caribbean FLNG' barge, chartered to a NIOC/Iranian-partner joint venture (IFLNG) and planned to dock at Pars Service port to receive ~2.3 MMcm/d of feed gas from the 7th South Pars Gas Refinery. The deal was put on hold by Iran's parliament energy committee in Dec 2017. No installation or Iran-specific site engineering appears to have followed, and the vessel's own published technical profile is silent on power/engine equipment.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Searched the Exmar/Caribbean FLNG vessel's published specs (offshore-technology.com: hull dimensions, 16,100 m3 storage, Black & Veatch PRICO liquefaction, mooring system) and Iran deal reporting (rivieramm.com, gasstrategies.com); neither discloses onboard power generation equipment (engines/turbines/generators). gasstrategies.com's own deal-status piece returned HTTP 403 with no Wayback snapshot, so it is not cited. Reporting confirms the Iran charter deal stalled at the negotiation/hold stage in Dec 2017, consistent with no Iran-specific power engineering ever being published for this vessel's Iranian deployment.",
+  "refs": [
+   "https://www.rivieramm.com/news-content-hub/news-content-hub/has-icaribbean-flngi-found-a-home-in-iran-26737",
+   "https://www.offshore-technology.com/projects/caribbean-flng-project/"
+  ],
+  "verification_log": [
+   {
+    "url": "https://www.gasstrategies.com/information-services/gas-matters-today/irans-nioc-inches-towards-charter-deal-exmar-caribbean-flng",
+    "tokens": [
+     "Exmar"
+    ],
+    "result": "FAIL",
+    "note": "HTTP 403, no Wayback snapshot available; dropped"
+   },
+   {
+    "url": "https://www.rivieramm.com/news-content-hub/news-content-hub/has-icaribbean-flngi-found-a-home-in-iran-26737",
+    "tokens": [
+     "Caribbean FLNG"
+    ],
+    "result": "PASS",
+    "note": "confirms vessel/deal identity"
+   },
+   {
+    "url": "https://www.offshore-technology.com/projects/caribbean-flng-project/",
+    "tokens": [
+     "PRICO"
+    ],
+    "result": "PASS",
+    "note": "bot-blocked live, verified via Wayback; vessel technical profile, no power-gen info present"
+   },
+   {
+    "url": "https://www.farab.com/en/portfolio/kharg-ngl-utility-units/",
+    "tokens": [
+     "Kharg"
+    ],
+    "result": "PASS",
+    "note": "used for gogpt_prior_assessment, not the captive verdict"
+   }
+  ],
+  "gogpt_prior_assessment": "GOGPT prior names 'Kharg NGL power plant' (125 MW, captive=True, 0.99 km from these coordinates on/near Kharg Island). This is the utility power plant for IOOC's (an NIOC subsidiary) Kharg Island Gas Gathering and NGL Recovery project — an existing, unrelated petroleum-complex facility (Farab was a utilities contractor on it) that predates and has no connection to the never-installed Exmar FLNG barge, which never reached the site-construction stage in Iran. Not this terminal's captive power.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "The GOGPT-matched plant already exists and belongs to a different industrial host (IOOC's Kharg NGL/gas-gathering complex), not this (never-built) FLNG project.",
+  "status_or_other_findings": "Confirms GEM's 'cancelled' status: the IFLNG charter deal with Exmar was placed on hold by Iran's parliament energy committee in Dec 2017 per Riviera/gas trade press; no later revival found.",
+  "notes": "Small-scale (500,000 tpy) project — per SOP scale is not a screening ground, but the project never reached the stage where power engineering would be published, hence INSUFFICIENT rather than NO."
+ },
+ {
+  "terminal": "Iran NIOC LNG Terminal",
+  "terminal_id": "T100000130583",
+  "country": "Iran",
+  "verdict": "YES",
+  "mechanical": "False",
+  "captive_category": "power_generation",
+  "hardware_summary": "5 gas turbine units + 2 steam turbine units (CCGT, aggregate 1,130 MW: 5x162 MW + 2x160 MW nameplate), built as the Iran LNG project's own power-station package (project Package I-C, 'E-LNG': Power Station, Electric Motors and Compressors) starting 2007; EPC by MAPNA-group subsidiary Nirpars/Neyr Perse. Also carries 4 dedicated 3.3 MVA diesel gensets for site emergency backup (diesel-only, does not itself satisfy the fuel gate, but confirms an ongoing captive electrical relationship to the LNG site).",
+  "fuel_basis": "Natural gas — OGJ: 'Six gas turbine electrical drivers will supply the plant's power' (project package breakdown); power-technology.com and MAPNA both describe the same plant as a 1,130 MW gas-fired CCGT.",
+  "confidence": "green",
+  "captive_summary": "This is the Iran LNG project at Tombak (owner match: IGEC 49% / Oil Industry Investment Co ~50% / Oil Industry Pension Fund 1%, matching GEM's listed owners almost exactly). The project's own design package included a dedicated on-site 1,130 MW CCGT power station (5 gas + 2 steam turbines) purpose-built to power the LNG plant, engineered/constructed by MAPNA-group companies from 2007. Because the LNG trains themselves have never started up (project suspended by the client since mid-2013 under sanctions), the completed power-plant units have instead been connected to Iran's national grid unit-by-unit since ~2022 to help meet national demand — but the plant was designed, sited, and built as this project's captive power block, which is a documented YES on design per SOP (as-designed captive power counts; partial/full grid export does not defeat a purpose-built captive finding).",
+  "electric_mw": "1130",
+  "mechanical_drive_note": "",
+  "confirmed_how": "OGJ ('Iran details LNG liquefaction plans'): NIOC's Iran LNG project package breakdown includes Package I ('processing and condensation units, utility, offsite equipment...') and states 'Six gas turbine electrical drivers will supply the plant's power.' power-technology.com power-plant-profile page independently profiles the 'Iran LNG Combined Cycle Power Plant:' 1,130 MW, 5x162 MW + 2x160 MW turbines, Bushehr, 100%-owned by Iran LNG Co. MAPNA Group's own project page (mapnagroup.com/1232) confirms: 'Iran LNG Combined Cycle Power Plant... five gas and two steam units with a total capacity of 1130 Megawatts,' built for the Iran LNG program via Nirpars from 2007, with its fifth gas unit connected to the national grid July 2022. A separate MAPNA release (mapnagroup.com/31279) confirms four dedicated 3.3 MVA diesel gensets were also installed 'to provide backup power to the LNG site in case of emergencies' — diesel, so not itself a captive-gas source, but corroborates the site's ongoing dedicated electrical infrastructure.",
+  "refs": [
+   "https://www.ogj.com/exploration-development/reserves/article/17228246/iran-details-lng-liquefaction-plans",
+   "https://www.power-technology.com/data-insights/power-plant-profile-iran-lng-combined-cycle-power-plant-iran/",
+   "https://mapnagroup.com/1232/%D8%A7%D8%AA%D8%B5%D8%A7%D9%84-%D9%88%D8%A7%D8%AD%D8%AF-%D9%BE%D9%86%D8%AC%D9%85-%DA%AF%D8%A7%D8%B2%DB%8C-%D9%86%DB%8C%D8%B1%D9%88%DA%AF%D8%A7%D9%87-%D8%A7%DB%8C%D8%B1%D8%A7%D9%86-%D8%A7%D9%84-%D8%A7/"
+  ],
+  "verification_log": [
+   {
+    "url": "https://www.ogj.com/exploration-development/reserves/article/17228246/iran-details-lng-liquefaction-plans",
+    "tokens": [
+     "gas turbine electrical drivers"
+    ],
+    "result": "PASS",
+    "note": "confirms on-site gas turbine power supply for the plant"
+   },
+   {
+    "url": "https://www.power-technology.com/data-insights/power-plant-profile-iran-lng-combined-cycle-power-plant-iran/",
+    "tokens": [
+     "1,130MW",
+     "Iran LNG"
+    ],
+    "result": "PASS",
+    "note": "bot-blocked live, verified via Wayback snapshot 20260422202525"
+   },
+   {
+    "url": "https://mapnagroup.com/1232/%D8%A7%D8%AA%D8%B5%D8%A7%D9%84-%D9%88%D8%A7%D8%AD%D8%AF-%D9%BE%D9%86%D8%AC%D9%85-%DA%AF%D8%A7%D8%B2%DB%8C-%D9%86%DB%8C%D8%B1%D9%88%DA%AF%D8%A7%D9%87-%D8%A7%DB%8C%D8%B1%D8%A7%D9%86-%D8%A7%D9%84-%D8%A7/",
+    "tokens": [
+     "1130"
+    ],
+    "result": "PASS",
+    "note": "MAPNA vendor page confirms 5 gas + 2 steam unit, 1130 MW plant built for Iran LNG program"
+   },
+   {
+    "url": "https://mapnagroup.com/52355/%D8%A7%D9%81%D8%AA%D8%AA%D8%A7%D8%AD-%D9%BE%D8%B3%D8%AA-%D8%AC%DB%8C-%D8%A2%DB%8C-%D8%A7%D8%B3-%D8%B4%D8%B1%DA%A9%D8%AA-%D9%86%DB%8C%D8%B1%D9%BE%D8%A7%D8%B1%D8%B3-%D9%85%D9%BE%D9%86%D8%A7/",
+    "tokens": [
+     "1130"
+    ],
+    "result": "FAIL",
+    "note": "substation page didn't restate '1130' figure; dropped, not needed given other MAPNA source passed"
+   },
+   {
+    "url": "https://mapnagroup.com/31279/iran-lng-project-four-diesel-generators-go-on-stream/?lang=en",
+    "tokens": [
+     "Iran LNG"
+    ],
+    "result": "PASS",
+    "note": "diesel backup gensets, corroborating context only, not the gas-turbine finding"
+   }
+  ],
+  "gogpt_prior_assessment": "GOGPT prior 'Tonbak LNG power station' (1,130 MW, captive=True, 0.69 km) IS this terminal's captive power — it is the exact same plant profiled independently at power-technology.com and by MAPNA as the 'Iran LNG Combined Cycle Power Plant.' Independent info: https://www.power-technology.com/data-insights/power-plant-profile-iran-lng-combined-cycle-power-plant-iran/",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "GOGPT record already exists and matches exactly (name, MW, ownership, location).",
+  "status_or_other_findings": "OGJ/MEED/MAPNA all corroborate the project has been suspended since mid-2013 (client suspension under sanctions) while the power-station package alone was completed and is being connected to the national grid unit-by-unit (5th of presumably 7 units by mid-2022) — consistent with GEM's current 'construction' status on the LNG trains themselves. Not acted on; flagged for reference.",
+  "notes": "QC orchestrator edit 2026-08-01: hybrid_basis=grid_export set per the researcher's own recommendation — the 1,130 MW CCGT was designed/built/owned as this project's captive power block, but with the LNG trains suspended its completed units have been connected to the national grid unit-by-unit since ~2022, so current dispatch is grid export. Direction-test note: because the LNG trains never started up, essentially 100% of the plant's current output goes to the national grid, not to the (non-operating) LNG facility. This is unusual among captive-power cases — the captive relationship is by original design/ownership/siting rather than current dispatch. Recommend the orchestrator flag this in hybrid_basis if staged (e.g. 'grid_export' or similar), since it is not a plain dedicated on-site plant currently powering an operating terminal.",
+  "hybrid_basis": "grid_export"
+ },
+ {
+  "terminal": "Kangan LNG Terminal",
+  "terminal_id": "T100000130585",
+  "country": "Iran",
+  "verdict": "SCREENED",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "",
+  "captive_summary": "Kangan LNG was a small (2 MMTPA, two-train) private LNG project 100%-owned by Iran's Mahtaab Group at a 25-hectare site at the Port of Tombak. It never progressed past an early WorleyParsons 'Concept Screening Study' (awarded Oct 2017, ~4-month scope); no FEED, EPC, or utilities/power-block design was ever published, and there have been no development updates since (the project's own website is no longer reachable). Screened: never reached a design stage that would document any power plant.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "AIJAC (Australia/Israel Review) and other trade coverage confirm WorleyParsons was awarded only a Concept Screening Study for Kangan LNG in Oct 2017 (100%-owned by Mahtaab Group, 2 MMTPA, Port of Tombak); no subsequent contract award or design publication found. kanganlng.com (the project's own site) no longer resolves (DNS failure), consistent with the project having stalled.",
+  "refs": [
+   "https://aijac.org.au/australia-israel-review/how-exposed-are-australian-businesses-in-iran/"
+  ],
+  "verification_log": [
+   {
+    "url": "https://aijac.org.au/australia-israel-review/how-exposed-are-australian-businesses-in-iran/",
+    "tokens": [
+     "Kangan LNG"
+    ],
+    "result": "PASS",
+    "note": "bot-blocked live, verified via Wayback snapshot 20260122105415; confirms Concept Screening Study scope/timing"
+   },
+   {
+    "url": "https://www.bncnetwork.net/project/Kangan-LNG-Port-of-Tombak/MTk2NzA1",
+    "tokens": [
+     "MahTaab"
+    ],
+    "result": "FAIL",
+    "note": "token not found on page"
+   },
+   {
+    "url": "https://www.bncnetwork.net/project/Kangan-LNG-Port-of-Tombak/MTk2NzA1",
+    "tokens": [
+     "Kangan LNG"
+    ],
+    "result": "FAIL",
+    "note": "token still not found; dropped as a citation"
+   },
+   {
+    "url": "https://www.wikidata.org/wiki/Q5816608",
+    "tokens": [
+     "164"
+    ],
+    "result": "PASS",
+    "note": "used for gogpt_prior_assessment (pre-existing unrelated Kangan Power Plant), not the terminal verdict"
+   },
+   {
+    "url": "https://database.earth/energy/power-plant/kangan",
+    "tokens": [
+     "164"
+    ],
+    "result": "FAIL",
+    "note": "HTTP 403, no Wayback snapshot; dropped"
+   }
+  ],
+  "gogpt_prior_assessment": "GOGPT prior 'Kangan power plant' (164 MW, captive=True, distance not recorded) is NOT this terminal's captive power. It is a pre-existing Iranian gas-fired grid power station in Jam, Bushehr, commissioned in 1995 (per Wikidata) — built more than two decades before Mahtaab's Kangan LNG was even proposed (2017), and belongs to Iran's national grid/gas-industry infrastructure, not to this never-built private LNG project. Independent info: https://www.wikidata.org/wiki/Q5816608",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "GOGPT record already exists (pre-existing 1995 grid plant); it is a different, unrelated industrial host, not this LNG project's captive power.",
+  "status_or_other_findings": "Confirms GEM's 'shelved' status is reasonable: no development activity found beyond the Oct 2017 Concept Screening Study award.",
+  "notes": "Per SOP, small scale alone is not a screening ground (HIGAS precedent) — this is screened because no design of any kind (let alone a power block) was ever published, not because of its 2 MMTPA size."
+ },
+ {
+  "terminal": "North Pars LNG Terminal",
+  "terminal_id": "T100000130584",
+  "country": "Iran",
+  "verdict": "INSUFFICIENT",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "red",
+  "captive_summary": "North Pars LNG was a CNOOC-developed, four-train (20 MMTPA) LNG project at Tombak fed by the North Pars gas field (MoU with NIOC 2006). WorleyParsons, in partnership with Linde, completed FEED-level engineering work for the project by 2010. Despite this substantial design stage, no public source found describes a power-generation/utilities package or MW figure for the project — CNOOC's slow progress led NIOC to suspend the deal before the project reached construction.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "OGJ's 2010 project-by-project summary (verified) covers North Pars' feed-gas volume, train count/capacity, and commercial terms in detail but contains no power-plant sentence (checked against the raw article text directly, paragraph-by-paragraph). Trade reporting on WorleyParsons/Linde's FEED work (industrialinfo.com; gasstrategies.com — both failed url_verifier / no Wayback) confirms the FEED occurred but none accessible describes its utilities/power scope. No EPC or vendor press release for a North Pars power block was found.",
+  "refs": [
+   "https://www.ogj.com/pipelines-transportation/lng/article/17209101/ogj-focus-iranian-lng-natural-gas-export-plans-outlined"
+  ],
+  "verification_log": [
+   {
+    "url": "https://www.ogj.com/pipelines-transportation/lng/article/17209101/ogj-focus-iranian-lng-natural-gas-export-plans-outlined",
+    "tokens": [
+     "North Pars"
+    ],
+    "result": "PASS",
+    "note": "confirms project identity/detail; raw text checked directly, no power-plant sentence present for North Pars"
+   },
+   {
+    "url": "https://www.industrialinfo.com/iirenergy/industry-news/article/worleyparsons-10-top-valued-projects-driven-by-lng-nuclear-facilities--263122",
+    "tokens": [
+     "North Pars"
+    ],
+    "result": "FAIL",
+    "note": "token not found; dropped"
+   },
+   {
+    "url": "https://www.gasstrategies.com/information-services/gas-matters-today/iran-talks-cnooc-develop-north-pars-field-0",
+    "tokens": [
+     "North Pars"
+    ],
+    "result": "FAIL",
+    "note": "HTTP 403, no Wayback snapshot; dropped"
+   }
+  ],
+  "gogpt_prior_assessment": "No GOGPT prior was supplied for this terminal (gogpt_prior: no).",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "No sourced generating plant found to propose.",
+  "status_or_other_findings": "Confirms GEM's 'cancelled' status: CNOOC's slow progress led NIOC to suspend the deal ahead of the broader 2011/12 sanctions escalation.",
+  "notes": "A real FEED (WorleyParsons + Linde, completed 2010) exists for this project, so this is a genuine research gap (undisclosed), not a never-designed screen — kept as INSUFFICIENT rather than SCREENED or NO."
+ },
+ {
+  "terminal": "Persian NIOC LNG Terminal",
+  "terminal_id": "T100000130586",
+  "country": "Iran",
+  "verdict": "INSUFFICIENT",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "red",
+  "captive_summary": "This is the Persian LNG project (owner match confirms: NIGEC/NIOC 50%, Shell 25%, Repsol 25%, matching GEM's listed owners exactly), a two-phase, two-train (16.2 MMTPA) project at Tombak fed by South Pars Phases 13-14, reported to be in FEED stage as of ~2010 with detailed published design tables. Unlike its Tombak neighbor 'Pars LNG' (NIOC/Total/Petronas, a separate project which does have a documented 1,000 MW power plant — see the South Pars LNG Terminal record), no source found describes any power-generation component for Persian LNG specifically.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "OGJ's 2010 project summary (verified) devotes a full paragraph to Persian LNG's trains, feed gas, byproduct yields and shareholders, with 'Table 5' referenced for its 'main characteristics' — but contains no power-plant sentence for this project (the power-plant sentence in the same article is explicitly attached to the preceding 'Pars LNG' paragraph, confirmed by reading the raw article text with section order intact). Wikipedia's own Persian LNG article (not cited as evidence, background only) likewise contains no power-generation content.",
+  "refs": [
+   "https://www.ogj.com/pipelines-transportation/lng/article/17209101/ogj-focus-iranian-lng-natural-gas-export-plans-outlined"
+  ],
+  "verification_log": [
+   {
+    "url": "https://www.ogj.com/pipelines-transportation/lng/article/17209101/ogj-focus-iranian-lng-natural-gas-export-plans-outlined",
+    "tokens": [
+     "Persian LNG"
+    ],
+    "result": "PASS",
+    "note": "confirms project identity/detail; raw text checked directly, no power-plant sentence present for Persian LNG (distinct from the adjacent Pars LNG paragraph which does have one)"
+   }
+  ],
+  "gogpt_prior_assessment": "No GOGPT prior was supplied for this terminal (gogpt_prior: no).",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "No sourced generating plant found to propose.",
+  "status_or_other_findings": "Shell and Repsol were excluded from the project by NIOC in 2010 per multiple sources; project presumed cancelled thereafter, consistent with GEM's inferred-cancelled status.",
+  "notes": "Care taken not to conflate this project's sourcing with the near-identically-located, near-identically-named sibling projects at Tombak (Iran LNG, Pars LNG, North Pars, Golshan/Ferdoussi) — several search-engine summaries incorrectly cross-attributed the Iran LNG power-plant figures to this project; verified against the raw OGJ article text to rule that out."
+ },
+ {
+  "terminal": "Qeshm LNG Terminal",
+  "terminal_id": "T100000130627",
+  "country": "Iran",
+  "verdict": "SCREENED",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "",
+  "captive_summary": "Qeshm LNG was a small, three-train (3x1.15 MMTPA) LNG proposal for Qeshm Free Zone, Hormozgan (owner listed as 'Tak-Iranian Gas Company'). It never progressed beyond a 2017 free-zone investment announcement; no engineering study, FEED, or design of any kind was found to have ever been published. Screened: never-designed.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Multiple searches (English) for the project, its named owner, and its promoter's public 2017 remarks returned no independent (non-GEM) source with technical/engineering content — only the free-zone investment announcement is corroborated elsewhere (Financial Tribune, Tehran Times cover Qeshm Free Zone investment generally but not this specific LNG project's figures), and no source at all discusses a power block.",
+  "refs": [],
+  "verification_log": [
+   {
+    "url": "https://www.iranoilgas.com/projects/details.aspx?id=362&title=Kangan+LNG",
+    "tokens": [],
+    "result": "FAIL",
+    "note": "wrong project (Kangan) surfaced by search; page is paywalled/members-only regardless, not used"
+   }
+  ],
+  "gogpt_prior_assessment": "No GOGPT prior was supplied for this terminal (gogpt_prior: no).",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "No sourced generating plant found to propose.",
+  "status_or_other_findings": "Presumed cancelled — no development updates found since the 2017 announcement stage, consistent with GEM's inferred-cancelled status.",
+  "notes": "Genuinely obscure project; a $250M investment figure attributed to a Qeshm Free Zone official (June 2017) appears ONLY on gem.wiki in the sources checked, so per the anti-circularity rule it is treated as unsourced and not repeated here as a verified fact."
+ },
+ {
+  "terminal": "South Pars LNG Terminal",
+  "terminal_id": "T100000130916",
+  "country": "Iran",
+  "verdict": "YES",
+  "mechanical": "False",
+  "captive_category": "power_generation",
+  "hardware_summary": "1,000 MW combined-cycle gas turbine power plant, described as built 'to provide power for the project' (project design table, OGJ 2010). Turbine count/model not disclosed in the source found.",
+  "fuel_basis": "Gas — 'combined-cycle gas turbines,' explicitly named as the plant's power source in the project's own design-characteristics summary.",
+  "confidence": "yellow",
+  "captive_summary": "This is the 'Pars LNG' project (owner match confirms: NIOC 50%, Total 30%, Petronas 20% — matching GEM's listed owners), a two-train (10 MMTPA) LNG project at Tombak fed by South Pars Phase 11. Oil & Gas Journal's 2010 project-by-project design summary states: 'It is noteworthy that a 1,000-Mw power plant utilizing combined-cycle gas turbines will provide power for the project' — an on-site captive power plant as part of the published project design. Total withdrew in 2008 over political risk; the project was later reassigned (CNPC, then PetroPars) and is presumed cancelled, but the design was published while the project was live, which is a YES on design per SOP.",
+  "electric_mw": "1000",
+  "mechanical_drive_note": "",
+  "confirmed_how": "OGJ 'OGJ Focus: Iranian LNG, natural gas export plans outlined' (2010), read from the raw article text to confirm paragraph attribution: the sentence 'It is noteworthy that a 1,000-Mw power plant utilizing combined-cycle gas turbines will provide power for the project' sits directly in the Pars LNG paragraph, immediately followed by 'Current shareholders are NIGEC (50%), Total (40%), and Petronas (10%)' (an earlier ownership split for the same three-party JV; later sources give 50/30/20). No second independent source describing the power plant was found despite searching MEED, oedigital, nsenergybusiness and Rigzone project write-ups on Pars LNG — those all cover ownership/capacity/timeline but not the power block, so this remains a single-source (yellow) finding.",
+  "refs": [
+   "https://www.ogj.com/pipelines-transportation/lng/article/17209101/ogj-focus-iranian-lng-natural-gas-export-plans-outlined"
+  ],
+  "verification_log": [
+   {
+    "url": "https://www.ogj.com/pipelines-transportation/lng/article/17209101/ogj-focus-iranian-lng-natural-gas-export-plans-outlined",
+    "tokens": [
+     "1,000-Mw"
+    ],
+    "result": "PASS",
+    "note": "confirms the 1,000 MW CCGT power-plant claim, attributed to the Pars LNG paragraph"
+   },
+   {
+    "url": "https://www.meed.com/the-most-important-energy-project-in-iran/",
+    "tokens": [
+     "Total"
+    ],
+    "result": "PASS",
+    "note": "confirms 50/30/20 NIOC/Total/Petronas ownership and project timeline; no power-plant content, used for background/status only"
+   },
+   {
+    "url": "https://www.rigzone.com/news/iran_inks_2bln_pars_lng_deal_with_total_petronas-01-jan-0001-11199-article/",
+    "tokens": [
+     "Petronas"
+    ],
+    "result": "FAIL",
+    "note": "HTTP 202 (not fully rendered); not used"
+   }
+  ],
+  "gogpt_prior_assessment": "GOGPT prior 'South Pars Field power plant' (180 MW, captive=True, 2.31 km) was not independently confirmed as the same asset as the 1,000 MW Pars LNG design plant (different MW figures, and this field hosts many separate phase-specific facilities); could not verify identity within available time/sources, so treated as a distinct, unconfirmed candidate rather than the same plant as this YES finding.",
+  "gogpt_candidate": "REVIEWER CALL",
+  "gogpt_candidate_basis": "A 1,000 MW CCGT captive plant is documented for this project, but whether it is the same physical asset as GOGPT's existing 180 MW 'South Pars Field power plant' entry (different capacity figure, ambiguous identity in a field with many phase-specific facilities) could not be resolved from available sources — needs reviewer/GOGPT-side cross-check rather than a fresh ADD.",
+  "status_or_other_findings": "Total withdrew from the JV in 2008 (political-risk concerns per its then-CEO); NIOC replaced Total/Petronas with CNPC in Feb 2010, then removed CNPC and signed with PetroPars in Sep 2013 for an estimated $5bn, with PetroPars 'not thought to have the technology to build the liquefaction plant required' (MEED). Consistent with GEM's inferred-cancelled status.",
+  "notes": "Distinguish carefully from GEM's separate 'North Pars LNG Terminal' (CNOOC-developed, different project) — this terminal record is 'South Pars LNG Terminal,' which by ownership (NIOC/Total/Petronas) matches the historically-named 'Pars LNG' project, not 'North Pars.'"
+ }
+]

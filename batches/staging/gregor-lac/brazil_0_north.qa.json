@@ -1,0 +1,132 @@
+[
+  {
+    "category": "citation_qc",
+    "terminal_id": "T100000130664",
+    "unit_id": "--",
+    "terminal_name": "Sergipe FSRU",
+    "issue": "Existing Status [ref] / Location [ref] Reuters URL (https://www.reuters.com/article/brazil-lng-idUKL5N2AP3AJ) now returns HTTP 401 and has no Wayback snapshot available to verify against (checked repeatedly; archive.org was rate-limiting this batch's shared IP). Could not confirm whether this is a genuine bot-block (keep) or a dead/moved article (drop). Excluded from the merged ref new_value for both cells pending a clean re-check; not declared as a dead-drop since it isn't proven dead.",
+    "severity": "low",
+    "suggested_action": "Re-run url_verifier.py against this Reuters URL once away from the shared rate limit; if it passes via Wayback, it can be restored to both refs.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "orphan_ref",
+    "terminal_id": "T100000130936",
+    "unit_id": "--",
+    "terminal_name": "Suape FSRU",
+    "issue": "FloatingVesselName is blank while FloatingVesselName [ref] is populated (packet-flagged orphan_ref). Root cause confirmed, not an oversight: OnCorp's 15 May 2025 vessel-charter announcement explicitly states the vessel name is being withheld under contractual confidentiality. The charterer (Energos) was later named (movimentoeconomico, 14 Jan 2026) but the specific FSRU vessel name remains undisclosed as of this batch. Ref repaired (dead suape.pe.gov.br URL dropped) but the value stays legitimately blank.",
+    "severity": "low",
+    "suggested_action": "No action needed unless OnCorp/Energos name the vessel in a future release -- worth a quick check next batch given the Oct-2027 target is approaching.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "data_quality",
+    "terminal_id": "T100000130936",
+    "unit_id": "--",
+    "terminal_name": "Suape FSRU",
+    "issue": "Capacity figures for this terminal vary across sources: GEM's Capacity = 5.11 bcm/y (~14 MMm3/day), matching EPE PDE 2034's 'Suape/PE ... 14 MMm3/dia'. But OnCorp's own 15 May 2025 release says the ORIGINAL plan was 12 MMm3/day and the newly-chartered FSRU has MORE capacity than originally planned ('capacidade maior do que a inicialmente prevista'), without giving a new number. GEM's 14 MMm3/day figure looks consistent with or possibly conservative relative to the upgraded vessel -- not staged as an edit given the ambiguity, but worth watching once the actual chartered FSRU's nameplate is public.",
+    "severity": "low",
+    "suggested_action": "Re-check capacity once the FSRU vessel/charter details are disclosed (see the FloatingVesselName note above).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dormant_revival_watch",
+    "terminal_id": "T100000131122",
+    "unit_id": "--",
+    "terminal_name": "Dislub Maranhão FSRU",
+    "issue": "Revival check (packet dormant_revival_watch, priority normal): no news found of renewed activity. EPE's Sept-2024 official terminal list (PDE 2034) does not include this project among current/near-term terminals, consistent with continued shelved status.",
+    "severity": "low",
+    "suggested_action": "Re-check next annual sweep; no action needed now.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dormant_revival_watch",
+    "terminal_id": "T100000130928",
+    "unit_id": "--",
+    "terminal_name": "Geramar FSRU",
+    "issue": "Revival check: no news found of renewed activity; Owner/Parent already 'unknown' in GEM and no new sponsor identity was found. EPE PDE 2034 (Sept 2024) doesn't list it among current/near-term terminals.",
+    "severity": "low",
+    "suggested_action": "Re-check next annual sweep.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dormant_revival_watch",
+    "terminal_id": "T100000131081",
+    "unit_id": "--",
+    "terminal_name": "Itaqui FSRU",
+    "issue": "Revival check: no news found of renewed activity beyond what's already in GEM (Eneva's stake is flagged [TO BE DELETED] in the packet -- Eneva appears to have exited; Servtec Energia's status unconfirmed). EPE PDE 2034 (Sept 2024) doesn't list it among current/near-term terminals.",
+    "severity": "low",
+    "suggested_action": "Re-check next annual sweep; confirm whether Eneva's ownership stake should be removed given the [TO BE DELETED] flag already in the export.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dormant_revival_watch",
+    "terminal_id": "T100000130935",
+    "unit_id": "--",
+    "terminal_name": "São Marcos Bay FSRU",
+    "issue": "Revival check: no news found of renewed activity at Sao Marcos Bay specifically. A broader search for 'New Fortress Energy Sao Marcos Bay Maranhao FSRU' surfaced 2026 articles about a DIFFERENT New Fortress Brazil FSRU project -- 'Terminal de Gas Sul (TGS)' in Santa Catarina, restarting under a new lease per worldoil.com (1 Apr 2026) and tied to a Dec-2025 debt-forbearance deal per sahmcapital.com (17 Jan 2026). These are NOT about this terminal (different state, different project name) -- noted here so a later batch doesn't re-chase the same false lead.",
+    "severity": "low",
+    "suggested_action": "If TGS/Santa Catarina isn't already a separate GEM terminal, flag to Discovery for the Southern Cone shard; do not conflate with Sao Marcos Bay.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dormant_revival_watch",
+    "terminal_id": "T100000130931",
+    "unit_id": "--",
+    "terminal_name": "Itacoatiara FSRU",
+    "issue": "Revival check: no news found of renewed activity. EPE PDE 2034 (Sept 2024) doesn't list it among current/near-term terminals.",
+    "severity": "low",
+    "suggested_action": "Re-check next annual sweep.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "missing_field",
+    "terminal_id": "T100000130929",
+    "unit_id": "G100002092900",
+    "terminal_name": "Hidrovias do Brasil FSRU",
+    "issue": "FloatingVesselName is blank (packet-flagged missing_field). This project never reached the FSRU-chartering stage before being shelved/cancelled, so no vessel was ever publicly named -- checked via web search, no vessel name found for this project at any stage. Field should stay blank; not an oversight.",
+    "severity": "low",
+    "suggested_action": "No action needed unless the project is revived.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "missing_field",
+    "terminal_id": "T100000130931",
+    "unit_id": "G100002093100",
+    "terminal_name": "Itacoatiara FSRU",
+    "issue": "FloatingVesselName is blank (packet-flagged missing_field). This project never reached the FSRU-chartering stage before being shelved/cancelled, so no vessel was ever publicly named -- checked via web search, no vessel name found for this project at any stage. Field should stay blank; not an oversight.",
+    "severity": "low",
+    "suggested_action": "No action needed unless the project is revived.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "missing_field",
+    "terminal_id": "T100000131081",
+    "unit_id": "G100002108100",
+    "terminal_name": "Itaqui FSRU",
+    "issue": "FloatingVesselName is blank (packet-flagged missing_field). This project never reached the FSRU-chartering stage before being shelved/cancelled, so no vessel was ever publicly named -- checked via web search, no vessel name found for this project at any stage. Field should stay blank; not an oversight.",
+    "severity": "low",
+    "suggested_action": "No action needed unless the project is revived.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "missing_field",
+    "terminal_id": "T100000130935",
+    "unit_id": "G100002093500",
+    "terminal_name": "São Marcos Bay FSRU",
+    "issue": "FloatingVesselName is blank (packet-flagged missing_field). This project never reached the FSRU-chartering stage before being shelved/cancelled, so no vessel was ever publicly named -- checked via web search, no vessel name found for this project at any stage. Field should stay blank; not an oversight.",
+    "severity": "low",
+    "suggested_action": "No action needed unless the project is revived.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130548",
+    "unit_id": "G100001062110",
+    "terminal_name": "Pecém FSRU",
+    "issue": "Eneva's proposed FSRU/LNG-import component at this terminal (unit 'Eneva/Ceiba Terminal', currently Status=proposed, ProposalYear=2024) may be progressing toward construction. Multiple June 2026 Brazilian trade-press articles (movimentoeconomico, riotimesonline, cenarioenergia, valor.globo.com) report a 9 June 2026 groundbreaking ('inicio das obras') for Eneva's integrated R$6bi / 1,147 MW 'gas-to-power' hub at Pecem (Jandaia II/III thermal plants), explicitly bundling a dedicated LNG receiving terminal and berth ('Pier Zero', ~R$430m of the total) built 'at the same time' as the power plants. However, no single article confirms physical construction has specifically started on the LNG terminal/berth itself (as opposed to the power-plant civil works) -- coverage treats the terminal as an integrated but separately-unconfirmed component. Capacity figures for the terminal also vary across these articles (12, 14, and ~18 MMm3/day all appear in different pieces) vs GEM's current 7.67 bcm/y (~21 MMm3/day). Per the ambiguous-match-goes-to-qa rule, NOT staging a Status change on this evidence alone.",
+    "severity": "high",
+    "suggested_action": "Follow up directly with Eneva IR / a press release specifically about the LNG terminal (not just the power plants) to confirm FID/construction status and current capacity figure before staging a Status or Capacity edit. If confirmed, this is a status_timeline update (proposed -> construction) requiring fetch_timeline.py + a timeline append, not a qa punt.",
+    "researcher_initials": "AI-draft"
+  }
+]

@@ -91,7 +91,10 @@ it still contains the value; mirrors of one document count as ONE source.
   (NFE gulf-turkiye 2026-07 miss: an article cited for construction-resumption also said "first train pushed
   to early 2027" vs GEM's 2026, and the year edit was wrongly left in a qa note.)
 - Ownership: separate owner vs parent vs operator vs offtaker vs vessel-owner; don't conflate offtake/feedgas with equity.
-- entity_lookup before any new entity, run BARE (no `--country`): `python .../scripts/entity_lookup.py "<name>" --remote`
+- entity_lookup before any new entity, run BARE (no `--country`): `python .../scripts/entity_lookup.py "<name>" --pg`
+  (`--pg` = the read-only-Postgres `entity_history` check, AUTHORITATIVE. `--remote` needs `GEM_PROJECT_DB_BASE_URL`,
+  which is usually unset → `skipped_no_base_url`: an environmental SKIP, never a not-found. Entities also get RENAMED,
+  so retry the abbreviation and any former name before you conclude a name is new.)
   (a generic-only result = inconclusive → set lookup_was_run starting with "RUN"). CAVEAT: the `--remote` endpoint has
   intermittent FALSE NEGATIVES (it once said no-match for "Mitsubishi Corp", which sits on ~48 LNG rows) — treat
   `no_remote_match` as a lead, not proof of absence: record the exact lookup output in `lookup_result_summary`; the
@@ -116,8 +119,26 @@ it still contains the value; mirrors of one document count as ONE source.
   and a pass verifies the LIVE URL (keep it; never cite web.archive.org). A 301/302 to a live page = keep
   the citation at its final redirect target. Drop an existing URL ONLY if it's proven dead (hard 404/410/DNS,
   or live-but-value-gone), and DECLARE every such drop in the record's `dropped_urls_dead:[..]` key — the
-  build prints a `REF-DROP:` guard for any undeclared drop. A bot-blocked URL that fails even the Wayback
+  build prints a `REF-DROP:` guard for any undeclared drop. A **banned-source removal** (abarrelfull,
+  gem.wiki/globalenergymonitor.org — remove regardless of link status) is declared in
+  `dropped_urls_banned:[..]` instead; those pages are usually live, so declaring them dead is a false
+  declaration. A bot-blocked URL that fails even the Wayback
   check → keep it out of new_value but flag in qa, never silently drop.
+- **The merge rule applies to a VALUE record's `ref_urls` too — this is the trap that catches nearly every
+  sweep agent.** A record like `{field_name: "Owner", new_value: "...", ref_urls: [your URL]}` does NOT
+  merely *add* a citation: the build writes `ref_urls` into the paired `Owner [ref]` cell, REPLACING it. So
+  `ref_urls` must also be existing-still-valid-URLs + yours, in that order — read the field's current
+  `<Field> [ref]` cell out of the fresh export before you stage the value. Citing only your own new source
+  is the single most common defect in this workflow (the 2026-08-11 `gregor-lac` sweep dropped 102 live URLs
+  across 61 records this way, every one repaired by `audit_ref_drops.py --apply` at the QC gate). The
+  build's `REF-DROP:` guard and `scripts/staging_qc.py` both catch it, but fixing it costs a rebuild.
+- **Never invent an id, and never write `old_value` from memory — both are COPIED out of the fresh export.**
+  `terminal_id`/`unit_id` must be a value you actually read in the CSV for the row you're editing, and a
+  `[ref]` record's `old_value` must be the live cell verbatim (whitespace aside). The QC gate resolves every
+  id against the export and checks each `old_value` URL is really in the live cell, because on 2026-08-11 one
+  shard staged two records against a `terminal_id` that does not exist, with a fabricated `old_value`
+  containing a 404 URL — the "merge" was reconstructed from a source list rather than from the database, so
+  what it actually staged was a replacement. If you cannot find the row, file a qa record; do not guess.
 - Confidence: green = primary/regulatory or 2+ independent; yellow = single non-primary/implied; red = single weak;
   blue = unchanged-but-re-verified.
 - CONTEXT: GEM is already very current (LastUpdated ~2026-05). Expect FEW genuine changes. Do NOT manufacture
@@ -139,7 +160,7 @@ nothing: `{"slug": ..., "country": ..., "mode": "update", "summary": {"updates":
 presence as the resume marker — a country without it is treated as never-run and re-dispatched.
 
 Record schemas (keys EXACT):
-- updates: {terminal_id,unit_id,terminal_name,unit_name,country,field_name(exact GEM header),old_value,new_value,confidence,source_tier,ref_field,ref_urls:[..],source_notes,scope_note,dropped_urls_dead:[..](only when a [ref] edit drops a proven-dead old URL),researcher_initials:"AI-draft (sweep)"}
+- updates: {terminal_id,unit_id,terminal_name,unit_name,country,field_name(exact GEM header),old_value,new_value,confidence,source_tier,ref_field,ref_urls:[..],source_notes,scope_note,dropped_urls_dead:[..](only when a [ref] edit drops a proven-dead old URL),dropped_urls_banned:[..](banned-source removal: abarrelfull/gem.wiki),researcher_initials:"AI-draft (sweep)"}
 - timeline: {terminal_id,unit_id,terminal_name,unit_name,operation:"append",status,sub_status,year,part_of_year,notes(include the existing Postgres timeline you pulled + why this appends legally),source_url,confidence,legal_transition_check,researcher_initials:"AI-draft (sweep)"} — one entry per confirmed status transition, paired with its `updates` Status/anchor-year records; flag any non-monotonic transition (e.g. shelved→proposed) in `notes` for reviewer sign-off.
 - qa: {category,terminal_id,unit_id,terminal_name,issue,severity:"high|medium|low",suggested_action,researcher_initials:"AI-draft"}
 - wiki: {country,terminal_id,terminal_name,unit_id,topic,wiki_text,verification_status:"[CONFIRMED]|[UNVERIFIED — SINGLE SOURCE]|[CONFLICTING DATA]|[NOT FOUND]",source_urls:[..],researcher_initials:"AI-draft"} — each source_urls entry SHOULD be an object {url,title(article/page headline as published),publisher(opt),access_date:"YYYY-MM-DD"(opt, the date you accessed it)} so the workbook can emit a paste-ready {{cite web}} ref; a bare URL string is still accepted but builds only a bare <ref>url</ref>. You already have the title from reading the page — capture it.

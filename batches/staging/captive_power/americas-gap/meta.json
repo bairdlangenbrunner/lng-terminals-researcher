@@ -1,0 +1,30 @@
+{
+ "scope_slug": "captive_power/americas-gap",
+ "workflow": "captive_power",
+ "tier": null,
+ "countries": [
+  "United States",
+  "Canada",
+  "Brazil",
+  "Colombia",
+  "Mexico",
+  "Chile",
+  "Argentina",
+  "Venezuela",
+  "El Salvador",
+  "Dominican Republic",
+  "Jamaica",
+  "Panama",
+  "Puerto Rico"
+ ],
+ "areas": [
+  "156 terminals (coordinate-first audit worklist, see worklist.json)"
+ ],
+ "started": "2026-08-01",
+ "built": "2026-08-02",
+ "applied": null,
+ "status": "built",
+ "run_record": "batches/run_records/2026-08-02_captive-power-coverage-gap-and-full-region-rebuild.md",
+ "notes": "Coverage-gap increment from the 2026-08-01 coordinate-first audit (_kickoff_coverage-gap.md): 156 americas terminals never crawled by any increment (hand-curated-list scope bug; early LA/TX increments recorded only confirmed subsets). Incl. Cameron LNG + Lake Charles (operating/major) and ~14 crude-oil deepwater ports to be SCREENED with evidence. Worklist = worklist.json, regenerated from captive_coverage_audit.py --csv on the fresh 2026-08-01 pull; scope is the terminal_id list, NOT the country list (countries here are annotation only).",
+ "prior_run_records": []
+}

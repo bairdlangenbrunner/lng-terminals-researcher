@@ -1,0 +1,64 @@
+[
+ {
+  "category": "materiality_escalation",
+  "terminal_id": "T100000130580",
+  "unit_id": "G100002058000",
+  "terminal_name": "GNL Del Plata FSRU",
+  "issue": "After removing the banned abarrelfull.wikidot.com citation, Capacity [ref] rests on a single non-primary source (2b1stconsulting.com, yellow) for GEM's existing 0.10 mtpa value. A separate lead (offshore-technology.com) that this session could not reach (404) appeared to imply a substantially larger regasification capacity (commonly cited elsewhere for this project design as ~10 MMm3/d, roughly 2.68 mtpa LNG-equivalent) — a >20% delta from GEM's value if confirmed. This was NOT auto-staged per SOP §13's materiality-pause rule; the data value is left unchanged pending review.",
+  "severity": "high",
+  "suggested_action": "Manually check offshore-technology.com's Gas Sayago project page (or an equivalent primary/regulatory source, e.g. Uruguay's ANCAP/UTE/URSEA filings) for the correct nameplate capacity and re-cite regardless of which figure is confirmed.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "blank_ref_gap",
+  "terminal_id": "T100000130580",
+  "unit_id": "G100002058000",
+  "terminal_name": "GNL Del Plata FSRU",
+  "issue": "ShelvedYear [ref] remains blank despite ShelvedYear=2017 being populated. No source search was conducted specifically for a ShelvedYear citation this session (deprioritized behind the revival-check and banned-source-removal work); this is an unresolved blank-ref-fill gap, not a checked-and-empty finding.",
+  "severity": "low",
+  "suggested_action": "Search for a 2017-era source documenting the project's shelving (e.g. an ANCAP/UTE announcement or contemporaneous Uruguayan press) and stage a ShelvedYear [ref] fill.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "data_ambiguity",
+  "terminal_id": "T100000130580",
+  "unit_id": "G100002058000",
+  "terminal_name": "GNL Del Plata FSRU",
+  "issue": "2b1stconsulting.com (the sole surviving ProposalDate [ref] source) gives two different candidate proposal milestones: the project 'conceived around 2000,' versus a more concrete 'July 2007' Energy Cooperation Agreement among Uruguay, Argentina, and Venezuela. GEM's existing ProposalYear value was not changed given this ambiguity.",
+  "severity": "low",
+  "suggested_action": "Reviewer should determine which milestone GEM's ProposalYear convention intends (initial concept vs. formal agreement) and confirm/correct the anchor year accordingly.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "discovery_revival_check",
+  "terminal_id": "T100000130580",
+  "unit_id": "G100002058000",
+  "terminal_name": "GNL Del Plata FSRU",
+  "issue": "Dispatch asked for a check on whether Gas Sayago/Montevideo (GNL del Plata) has been revived under UTE/ANCAP or a new sponsor, or whether a genuinely different NEW project exists at/near the dead site. COULD NOT BE CONFIDENTLY CHECKED this session: the WebSearch budget was exhausted session-wide (200/200, shared across all sweep agents, confirmed non-recoverable), and fallback search channels all failed or were blocked — html.duckduckgo.com returned an empty results page, bing.com returned only framework boilerplate with no result links, ecosia.org returned HTTP 403, a guessed Wikipedia URL (en.wikipedia.org/wiki/Liquefied_natural_gas_in_Uruguay) 404'd, a guessed gem.wiki URL 404'd, and BNamericas returned 403. NO POSITIVE 'checked and confirmed no revival' FINDING SHOULD BE INFERRED FROM THIS — this is an unrun check, not a negative result (per the coordinator's explicit instruction: a starved null must never pass as a positive finding).",
+  "severity": "medium",
+  "suggested_action": "Re-run the Uruguay revival/new-sponsor check with working search access in a future pass before treating the site as confirmed-still-dormant with no new activity.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "wrong_terminal_identity",
+  "terminal_id": "T100000130580",
+  "unit_id": "G100002058000",
+  "terminal_name": "GNL Del Plata FSRU",
+  "gem_field": "(record identity)",
+  "issue": "This country's staged records were authored against terminal_id T100000058656 and the name 'Gas Sayago LNG Terminal (Montevideo)', neither of which is in the fresh export — the record is T100000130580 'GNL Del Plata FSRU' (OtherNames already carries 'Montevideo LNG Terminal' and 'FSRU de GNL del Plata'). The shard's quoted old_value ref cells also did not match the live cells. Corrected at the orchestrator QC gate against the fresh export; flagged here so the reviewer knows the Uruguay rows were re-derived, not researcher-verified in place.",
+  "severity": "medium",
+  "suggested_action": "No database action. Spot-check the two Uruguay ref merges against the live cells before pasting.",
+  "researcher_initials": "AI-draft (orchestrator QC gate)"
+ },
+ {
+  "category": "value_conflict",
+  "terminal_id": "T100000130580",
+  "unit_id": "G100002058000",
+  "terminal_name": "GNL Del Plata FSRU",
+  "gem_field": "Capacity",
+  "issue": "Capacity conflict, now with a verified source (the shard's lead was an unreachable offshore-technology.com page). GEM holds 0.10 mtpa. 2B1st Consulting (https://www.2b1stconsulting.com/uruguay-to-go-on-his-own-with-montevideo-lng-regas-terminal/, url_verifier PASS) states the phase-1 Montevideo/GNL Del Plata terminal was to have a regasification capacity of 10 million m3/d of natural gas plus 267 million m3 of storage — 10 MMm3/d is ~3.65 bcm/y, i.e. ~2.68 mtpa, roughly 27x GEM's stored value. Also note that after the banned-source removal the Capacity [ref] cell is EMPTY, so 0.10 mtpa is now an uncited value.",
+  "severity": "high",
+  "suggested_action": "Reviewer decision, not staged: a single non-primary source plus a derived unit conversion should not overwrite a stored value on a cancelled project. Either corroborate 10 MMm3/d against a second independent source (ANCAP/UTE or Gas Sayago tender documents are the primary path) and restate Capacity in mtpa with that citation, or blank the unsupported 0.10.",
+  "researcher_initials": "AI-draft (orchestrator QC gate)"
+ }
+]

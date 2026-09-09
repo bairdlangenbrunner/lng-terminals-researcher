@@ -1,0 +1,242 @@
+[
+  {
+    "terminal_id": "G100002100800",
+    "unit_id": "G100002100800",
+    "terminal_name": "Le Havre FSRU",
+    "unit_name": "--",
+    "country": "France",
+    "field_name": "VesselOwner",
+    "old_value": "",
+    "new_value": "Höegh Evi [50%]; Mitsui O.S.K. Lines (MOL) [48.5%]; Tokyo LNG Tanker [1.5%]",
+    "confidence": "green",
+    "source_tier": "primary_corporate + independent_trade_press",
+    "ref_field": "VesselOwner [ref]",
+    "ref_urls": [
+      "https://www.hoeghlngpartners.com/announcements-and-press-releases/press-release-details/2017/Hoegh-LNG-Partners-LP-Announces-Entry-into-a-Term-Sheet-to-Acquire-an-Additional-235-Interest-in-Joint-Ventures-Owning-FSRUs-Neptune-and-GDF-Suez-Cape-Ann/default.aspx",
+      "https://lngprime.com/asia/fsru-cape-ann-leaves-china-to-start-le-havre-job/78070/"
+    ],
+    "source_notes": "Höegh LNG Partners' 2017 term-sheet release confirms Höegh's resulting 50% stake and co-owner Mitsui (MOL) after acquiring an additional 23.5% interest in the JV owning FSRU Cape Ann (the vessel serving Le Havre, ex-GDF Suez Cape Ann). LNG Prime's Cape Ann relocation article independently confirms the full three-way split (Höegh 50% / MOL 48.5% / Tokyo LNG Tanker remainder). Both URLs independently re-verified via url_verifier.py in this pass (not inherited from QC); hoeghlngpartners.com is bot-blocked live (HTTP 403) but content-verified via Wayback snapshot 20240619161709. Status (retired) and FloatingVesselName (Cape Ann) were already correct in the live DB — not touched.",
+    "scope_note": "QC worklist item (natalia-europe _QC_WORKLIST.md §A); independently re-sourced per brief instruction not to inherit QC's pass.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "G100002044801",
+    "unit_id": "G100002044801",
+    "terminal_name": "Fos Cavaou LNG Terminal",
+    "unit_name": "Expansion 1 (Debottlenecking)",
+    "country": "France",
+    "field_name": "Capacity",
+    "old_value": "",
+    "new_value": "1.50",
+    "confidence": "green",
+    "source_tier": "primary_regulatory + operator",
+    "ref_field": "Capacity [ref]",
+    "ref_urls": [
+      "https://www.cre.fr/fileadmin/Documents/Deliberations/2025/250109_2025-07_Offre_commerciale_terminaux_regules_Elengy.pdf",
+      "https://www.elengy.com/en/media/news/fos-cavaou-open-subscription-period-2022-2024"
+    ],
+    "source_notes": "CRE (French energy regulator) deliberation states: 'Jusqu'en avril 2022, Elengy y commercialisait une capacité de regazéification de 8,5 Gm3/an... A la suite d'un dégoulottage technique et contractuel, le terminal a porté sa capacité totale de regazéification à environ 10 Gm3/an' — i.e. the technical/contractual debottlenecking (this unit-row) added 10 - 8.5 = 1.5 bcm/y on top of the original 8.5 bcm/y baseline. Elengy's own open-season announcement independently confirms the resulting total of 10 bcm/y/117 TWh/y reached via this debottlenecking. Main unit-row 44800 already correctly holds the current cumulative total (10.00, confirmed correct by QC spot-check, not touched); Expansion 2 unit-row 44802 already correctly holds its own separate future increment (2.00, for ~2030). This value is the increment specific to THIS unit-row, consistent with that established per-unit-row pattern. Both URLs verified via url_verifier.py.",
+    "scope_note": "QC worklist item B (§B 'Operating units missing Capacity/CapacityUnits: ... Fos Cavaou G100002044801').",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "G100002044801",
+    "unit_id": "G100002044801",
+    "terminal_name": "Fos Cavaou LNG Terminal",
+    "unit_name": "Expansion 1 (Debottlenecking)",
+    "country": "France",
+    "field_name": "CapacityUnits",
+    "old_value": "",
+    "new_value": "bcm/y",
+    "confidence": "green",
+    "source_tier": "primary_regulatory + operator",
+    "ref_field": "Capacity [ref]",
+    "ref_urls": [
+      "https://www.cre.fr/fileadmin/Documents/Deliberations/2025/250109_2025-07_Offre_commerciale_terminaux_regules_Elengy.pdf",
+      "https://www.elengy.com/en/media/news/fos-cavaou-open-subscription-period-2022-2024"
+    ],
+    "source_notes": "Paired unit field with Capacity=1.50 above; same sourcing.",
+    "scope_note": "QC worklist item B.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "G100002045400",
+    "unit_id": "G100002045400",
+    "terminal_name": "Le Havre-Antifer LNG Terminal",
+    "unit_name": "--",
+    "country": "France",
+    "field_name": "Capacity [ref]",
+    "old_value": "http://abarrelfull.wikidot.com/le-havre-lng-terminal",
+    "new_value": "https://cpdp.debatpublic.fr/cpdp-antifer/docs/docs/dossier-mo.pdf",
+    "confidence": "green",
+    "source_tier": "primary_regulatory",
+    "ref_field": "Capacity [ref]",
+    "ref_urls": [
+      "https://cpdp.debatpublic.fr/cpdp-antifer/docs/docs/dossier-mo.pdf"
+    ],
+    "source_notes": "Existing citation was abarrelfull.wikidot.com — a permanently banned source (CLAUDE.md, user directive 2026-07-17); found this during exhaustive-tier re-verification, not previously flagged in the QC worklist for France. Replaced with the official Commission Nationale du Débat Public (CPDP) master-developer dossier for this exact project, which states verbatim: 'un terminal méthanier de grande capacité... terminal d'une capacité de 7 millions de tonnes' — confirming the existing 7.00 mtpa value (unchanged) from a genuine primary/regulatory government source. Verified via url_verifier.py on the tight phrase '7 millions de tonnes' (avoided bare-number tokens after a bare-digit co-occurrence false positive on '7/9 milliards' during testing).",
+    "dropped_urls_dead": [
+      "http://abarrelfull.wikidot.com/le-havre-lng-terminal"
+    ],
+    "scope_note": "Not on QC worklist; found independently during exhaustive re-verification. Banned-source removal, not a dead-link removal — recorded in dropped_urls_dead as the mechanism for declaring a non-carried-forward URL.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "G100002045400",
+    "unit_id": "G100002045400",
+    "terminal_name": "Le Havre-Antifer LNG Terminal",
+    "unit_name": "--",
+    "country": "France",
+    "field_name": "ProposalDate [ref]",
+    "old_value": "http://www.journaldelintro.com/communiques_presse/poweo/poweo_-_terminal_gnl_d_antifer_-_un_projet_d_interet_general.pdf",
+    "new_value": "http://www.journaldelintro.com/communiques_presse/poweo/poweo_-_terminal_gnl_d_antifer_-_un_projet_d_interet_general.pdf, https://cpdp.debatpublic.fr/cpdp-antifer/docs/docs/dossier-mo.pdf",
+    "confidence": "green",
+    "source_tier": "primary_regulatory (added) + existing image-only PDF (kept)",
+    "ref_field": "ProposalDate [ref]",
+    "ref_urls": [
+      "http://www.journaldelintro.com/communiques_presse/poweo/poweo_-_terminal_gnl_d_antifer_-_un_projet_d_interet_general.pdf",
+      "https://cpdp.debatpublic.fr/cpdp-antifer/docs/docs/dossier-mo.pdf"
+    ],
+    "source_notes": "The existing sole ref is a scanned/image-only PDF (poppler pdftotext extracts no text — flagged 'unverifiable' by citqc_France.json, not proven dead/wrong, so kept per merge rule). Added the CPDP (Commission Nationale du Débat Public) master dossier for the same Antifer project as a machine-verifiable corroboration; it passes url_verifier.py on '2009' and separately corroborates the project's 2009 government approval milestone referenced by ProposalYear=2009.",
+    "scope_note": "Resolves the France 'unverifiable image-only PDF' item in QC worklist §C (17 unverifiable image-only PDFs total, France 1).",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "G100002044600",
+    "unit_id": "G100002044600",
+    "terminal_name": "Dunkirk LNG Terminal",
+    "unit_name": "--",
+    "country": "France",
+    "field_name": "FacilityType [ref]",
+    "old_value": "https://giignl.org/wp-content/uploads/2024/06/GIIGNL-2024-Annual-Report-1.pdf",
+    "new_value": "https://cdn.prod.website-files.com/67bdb9fc993751711c5f54fd/6854051dda46281e5ec60285_GIIGNL%20Annual%20Report%202024.pdf",
+    "confidence": "green",
+    "source_tier": "GIIGNL 2024 edition (official mirror)",
+    "ref_field": "FacilityType [ref]",
+    "ref_urls": [
+      "https://cdn.prod.website-files.com/67bdb9fc993751711c5f54fd/6854051dda46281e5ec60285_GIIGNL%20Annual%20Report%202024.pdf"
+    ],
+    "source_notes": "Legacy giignl.org 2024-edition URL is dead (tracker-wide rot). Re-cited the SAME edition at its official mirror per data/README.md's edition→URL table (mechanical repair, no research needed). Verified via url_verifier.py for 'Dunkerque'.",
+    "scope_note": "QC worklist §C: 66 legacy giignl.org URLs dead tracker-wide.",
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_dead": [
+      "https://giignl.org/wp-content/uploads/2024/06/GIIGNL-2024-Annual-Report-1.pdf"
+    ]
+  },
+  {
+    "terminal_id": "G100002044601",
+    "unit_id": "G100002044601",
+    "terminal_name": "Dunkirk LNG Terminal",
+    "unit_name": "Debottlenecking",
+    "country": "France",
+    "field_name": "FacilityType [ref]",
+    "old_value": "https://giignl.org/wp-content/uploads/2024/06/GIIGNL-2024-Annual-Report-1.pdf",
+    "new_value": "https://cdn.prod.website-files.com/67bdb9fc993751711c5f54fd/6854051dda46281e5ec60285_GIIGNL%20Annual%20Report%202024.pdf",
+    "confidence": "green",
+    "source_tier": "GIIGNL 2024 edition (official mirror)",
+    "ref_field": "FacilityType [ref]",
+    "ref_urls": [
+      "https://cdn.prod.website-files.com/67bdb9fc993751711c5f54fd/6854051dda46281e5ec60285_GIIGNL%20Annual%20Report%202024.pdf"
+    ],
+    "source_notes": "Same dead giignl.org URL and repair as the terminal's main unit-row 44600; re-cited to the same official 2024-edition mirror. Verified via url_verifier.py for 'Dunkerque'.",
+    "scope_note": "QC worklist §C: 66 legacy giignl.org URLs dead tracker-wide.",
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_dead": [
+      "https://giignl.org/wp-content/uploads/2024/06/GIIGNL-2024-Annual-Report-1.pdf"
+    ]
+  },
+  {
+    "terminal_id": "G100002044600",
+    "unit_id": "G100002044600",
+    "terminal_name": "Dunkirk LNG Terminal",
+    "unit_name": "--",
+    "country": "France",
+    "field_name": "StartDate [ref]",
+    "old_value": "https://www.fluxys.com/en/about-us/dunkerque-lng, http://www.lngworldnews.com/dunkirk-lng-terminal-starts-commercial-operations/",
+    "new_value": "https://www.fluxys.com/en/about-us/dunkerque-lng",
+    "confidence": "blue",
+    "source_tier": "operator (re-verified, unchanged value)",
+    "ref_field": "StartDate [ref]",
+    "ref_urls": [
+      "https://www.fluxys.com/en/about-us/dunkerque-lng"
+    ],
+    "source_notes": "lngworldnews.com is a defunct outlet (dead site-wide per QC §C, 11 occurrences tracker-wide); dropping it here as proven-dead. Surviving fluxys.com citation independently re-verified via url_verifier.py for '2017' (matches ActualStartYear=2017/January). No live replacement found for the dropped URL; not needed since fluxys.com alone already supports the value.",
+    "dropped_urls_dead": [
+      "http://www.lngworldnews.com/dunkirk-lng-terminal-starts-commercial-operations/"
+    ],
+    "scope_note": "QC worklist §C: 11 lngworldnews.com dead citations tracker-wide.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "G100002044802",
+    "unit_id": "G100002044802",
+    "terminal_name": "Fos Cavaou LNG Terminal",
+    "unit_name": "Expansion 2",
+    "country": "France",
+    "field_name": "FacilityType [ref]",
+    "old_value": "https://www.datocms-assets.com/146580/1749457104-igu-world-lng-report-2025-hr_dp.pdf, https://www.natrangroupe.com/sites/default/files/co/concertation-gaz-pdd-2024-partie-projets-janvier2025.pdf, https://www.spglobal.com/commodityinsights/en/market-insights/latest-news/natural-gas/032321-frances-lng-terminal-fos-cavaou-launches-open-season-for-2022-45-capacity, https://www.gie.eu/transparency/databases/lng-database/",
+    "new_value": "https://www.datocms-assets.com/146580/1763396210-1747916410-igu-world-lng-report-2025.pdf, https://www.natrangroupe.com/sites/default/files/co/concertation-gaz-pdd-2024-partie-projets-janvier2025.pdf, https://www.spglobal.com/commodityinsights/en/market-insights/latest-news/natural-gas/032321-frances-lng-terminal-fos-cavaou-launches-open-season-for-2022-45-capacity, https://www.gie.eu/transparency/databases/lng-database/",
+    "confidence": "green",
+    "source_tier": "IGU World LNG Report 2025 (alternate live mirror) + corroborating sources kept",
+    "ref_field": "FacilityType [ref]",
+    "ref_urls": [
+      "https://www.datocms-assets.com/146580/1763396210-1747916410-igu-world-lng-report-2025.pdf",
+      "https://www.natrangroupe.com/sites/default/files/co/concertation-gaz-pdd-2024-partie-projets-janvier2025.pdf",
+      "https://www.spglobal.com/commodityinsights/en/market-insights/latest-news/natural-gas/032321-frances-lng-terminal-fos-cavaou-launches-open-season-for-2022-45-capacity",
+      "https://www.gie.eu/transparency/databases/lng-database/"
+    ],
+    "source_notes": "The '-hr_dp.pdf'-suffixed IGU World LNG Report 2025 URL is dead. Found the same document alive at a different datocms-assets.com path; verified via url_verifier.py for 'Fos Cavaou' and '2.0'. All other pre-existing URLs on this cell were left untouched (not proven dead).",
+    "scope_note": "QC worklist §C.",
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_dead": [
+      "https://www.datocms-assets.com/146580/1749457104-igu-world-lng-report-2025-hr_dp.pdf"
+    ]
+  },
+  {
+    "terminal_id": "G100002044802",
+    "unit_id": "G100002044802",
+    "terminal_name": "Fos Cavaou LNG Terminal",
+    "unit_name": "Expansion 2",
+    "country": "France",
+    "field_name": "Capacity [ref]",
+    "old_value": "https://www.datocms-assets.com/146580/1749457104-igu-world-lng-report-2025-hr_dp.pdf, https://www.natrangroupe.com/sites/default/files/co/concertation-gaz-pdd-2024-partie-projets-janvier2025.pdf, https://www.spglobal.com/commodityinsights/en/market-insights/latest-news/natural-gas/032321-frances-lng-terminal-fos-cavaou-launches-open-season-for-2022-45-capacity, https://www.gie.eu/transparency/databases/lng-database/",
+    "new_value": "https://www.datocms-assets.com/146580/1763396210-1747916410-igu-world-lng-report-2025.pdf, https://www.natrangroupe.com/sites/default/files/co/concertation-gaz-pdd-2024-partie-projets-janvier2025.pdf, https://www.spglobal.com/commodityinsights/en/market-insights/latest-news/natural-gas/032321-frances-lng-terminal-fos-cavaou-launches-open-season-for-2022-45-capacity, https://www.gie.eu/transparency/databases/lng-database/",
+    "confidence": "green",
+    "source_tier": "IGU World LNG Report 2025 (alternate live mirror) + corroborating sources kept",
+    "ref_field": "Capacity [ref]",
+    "ref_urls": [
+      "https://www.datocms-assets.com/146580/1763396210-1747916410-igu-world-lng-report-2025.pdf",
+      "https://www.natrangroupe.com/sites/default/files/co/concertation-gaz-pdd-2024-partie-projets-janvier2025.pdf",
+      "https://www.spglobal.com/commodityinsights/en/market-insights/latest-news/natural-gas/032321-frances-lng-terminal-fos-cavaou-launches-open-season-for-2022-45-capacity",
+      "https://www.gie.eu/transparency/databases/lng-database/"
+    ],
+    "source_notes": "Same dead IGU URL and repair as FacilityType [ref] above (identical citation list on this row). Verified via url_verifier.py for 'Fos Cavaou' and '2.0' (matches Capacity=2.00).",
+    "scope_note": "QC worklist §C.",
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_dead": [
+      "https://www.datocms-assets.com/146580/1749457104-igu-world-lng-report-2025-hr_dp.pdf"
+    ]
+  },
+  {
+    "terminal_id": "G100002045600",
+    "unit_id": "G100002045601",
+    "terminal_name": "Montoir LNG Terminal",
+    "unit_name": "Expansion",
+    "country": "France",
+    "field_name": "Capacity [ref]",
+    "old_value": "https://www.natrangroupe.com/sites/default/files/co/concertation-gaz-pdd-2024-partie-projets-janvier2025.pdf, https://www.gie.eu/index.php/gie-publications/databases/lng-investment-database",
+    "new_value": "https://www.natrangroupe.com/sites/default/files/co/concertation-gaz-pdd-2024-partie-projets-janvier2025.pdf",
+    "confidence": "blue",
+    "source_tier": "NaTran (re-verified, unchanged value)",
+    "ref_field": "Capacity [ref]",
+    "ref_urls": [
+      "https://www.natrangroupe.com/sites/default/files/co/concertation-gaz-pdd-2024-partie-projets-janvier2025.pdf"
+    ],
+    "source_notes": "gie.eu's old index.php-path investment-database URL is dead. The new gie.eu transparency-database URL is a JS-rendered dynamic page with no static terminal name in fetched HTML — tested, fails url_verifier.py, not usable as a replacement. Dropping the dead URL as proven-dead; surviving NaTran (GRTgaz successor) planning-document citation independently re-verified via url_verifier.py for 'Montoir' and already supports Capacity=2.50 on its own.",
+    "dropped_urls_dead": [
+      "https://www.gie.eu/index.php/gie-publications/databases/lng-investment-database"
+    ],
+    "scope_note": "QC worklist §C.",
+    "researcher_initials": "AI-draft (sweep)"
+  }
+]

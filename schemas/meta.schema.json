@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/GlobalEnergyMonitor/lng-terminals-researcher/schemas/meta.schema.json",
+  "title": "LNG research batch metadata",
+  "type": "object",
+  "required": ["scope_slug", "workflow", "countries", "status"],
+  "properties": {
+    "scope_slug": {"type": "string", "minLength": 1},
+    "workflow": {"enum": ["update", "discovery", "update+discovery", "reconciliation", "captive_power", "refsweep", "record_repair", "qc", "coverage_audit"]},
+    "tier": {"type": ["string", "null"]},
+    "countries": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+    "areas": {"type": ["array", "null"], "items": {"type": "string"}},
+    "started": {"type": ["string", "null"], "format": "date"},
+    "built": {"type": ["string", "null"], "format": "date"},
+    "applied": {"type": ["string", "null"], "format": "date"},
+    "status": {"enum": ["in_progress", "built", "applied", "abandoned", "superseded"]},
+    "run_record": {"type": ["string", "null"]},
+    "notes": {"type": ["string", "null"]},
+    "completed_slugs": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+  },
+  "additionalProperties": true
+}
