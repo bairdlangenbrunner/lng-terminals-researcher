@@ -427,9 +427,11 @@ Ordered by *risk retired per hour*, not by architectural tidiness.
 ### Phase 0 — Stabilize (do before anything else)
 
 - **0.1 ~~Resolve the public/private question~~ — DECIDED 2026-09-09: stay public,
-  names allowed, nothing scrubbed.** No renames, no history rewrite, no CI name scan,
-  and `docs/reference/researcher_assignments.json` commits normally. This closes the
-  finding rather than fixing it.
+  names allowed, nothing scrubbed.** No renames, no history rewrite, no CI name scan.
+  The one exception is `docs/reference/researcher_assignments.json`, now gitignored —
+  not for the names but because it is a regenerable cache of an internal sheet and
+  carries that sheet's id; `coverage_audit_researcher.py` re-fetches it over the
+  read-only `gws-gem` profile. This closes the finding rather than fixing it.
 - **0.2 Land the backlog in reviewable commits**, separated into three trains:
   (a) research outputs/staging/deliverables, (b) pre-existing code+doc changes,
   (c) Codex's infrastructure work. Never mixed — (c) is the only one that can be
