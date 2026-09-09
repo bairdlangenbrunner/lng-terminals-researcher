@@ -1,0 +1,32 @@
+[
+  {
+    "category": "url_reverify",
+    "terminal_id": "T100000131083",
+    "unit_id": "G100002108300",
+    "terminal_name": "Antigua Power LNG Terminal",
+    "issue": "islandpressbox.com/apc-months-away-from-providing-cleaner-safer-electricity-to-apua/ (cited in Status [ref] / ConstructionDate [ref]) returns HTTP 403 with no Wayback snapshot available. Kept per bot-block-is-not-proof-of-death policy, not dropped.",
+    "severity": "low",
+    "suggested_action": "Human spot check if convenient; 10 other independent sources already corroborate the construction status so this is not load-bearing alone.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "url_reverify",
+    "terminal_id": "T100000131083",
+    "unit_id": "G100002108300",
+    "terminal_name": "Antigua Power LNG Terminal",
+    "issue": "environment.gov.ag EIA PDF (cited in Location [ref]) has a broken TLS certificate on the live site (automated verifier gets a connection error, not a content-based failure). Manually confirmed via Wayback CDX that a live snapshot exists (web.archive.org/web/20230918153335/https://www.environment.gov.ag/...) -- treated as bot-block-equivalent and kept, but the automated tool could not directly re-verify page content this batch.",
+    "severity": "low",
+    "suggested_action": "Human spot check via the Wayback snapshot link above if convenient; 2 other independent Location refs (Google Maps links) already corroborate the site.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "missing_field",
+    "terminal_id": "T100000131083",
+    "unit_id": "G100002108300",
+    "terminal_name": "Antigua Power LNG Terminal",
+    "issue": "Capacity / CapacityUnits remain blank despite an exhaustive search. Checked: the packet's own cited sources (antiguaobserver.com, lngindustry.com INOXCVA feature, INOXCVA's own Feb-2025 and Nov-2024 earnings-call transcripts and FY2024-25 annual report PDFs, islandpressbox.com, cnbctv18.com, antigua.news, caribbeanlng.com) plus lng2030.com and general web search. Multiple sources give the ASSOCIATED POWER PLANT's electrical rating in MW (40 MW per APUA's official page and the lngindustry.com/INOXCVA article; 46 MW per antiguaobserver.com and gem.wiki; 47 MW per antiguanewsroom.com and pointville.ag) -- these figures conflict with each other AND are not the terminal-level regasification/storage throughput (mtpa/bcm-y) that the Capacity field requires. No throughput figure was found anywhere (the lngindustry.com article gives a storage/throughput figure for INOXCVA's separate Bahamas mini-LNG project -- 15,000 m3 storage, 72 MW power plant -- but explicitly does NOT give one for Antigua).",
+    "severity": "medium",
+    "suggested_action": "Leave Capacity/CapacityUnits blank per SOP (prefer blank + qa over a red single-weak-source stage). If a reviewer has access to APUA/Antigua Power Co technical filings or an INOXCVA spec sheet, that would be the most likely source for the actual regasification throughput figure.",
+    "researcher_initials": "AI-draft"
+  }
+]

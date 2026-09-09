@@ -1,0 +1,52 @@
+[
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000130809",
+    "unit_id": "G100002080901",
+    "terminal_name": "Saguaro Energía LNG Terminal",
+    "issue": "Saguaro Energía's original DOE gas-export permit expires 2025-12-14. Owner Mexico Pacific petitioned DOE in June 2025 for a 7-year extension through December 2032. No confirmation of the DOE's ruling (approved/denied/pending) was found this sweep — WebSearch budget was exhausted before a targeted docket check could be completed.",
+    "severity": "medium",
+    "suggested_action": "Next batch: check DOE docket 18-70-LNG (Mexico Pacific / Saguaro Energía) for the extension ruling; if denied or still pending past the Dec-2025 expiry, this may affect export authorization and warrants a status/qa review for both Phase 1 and Phase 2 units.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "sourcing_limitation",
+    "terminal_id": "T100000130572",
+    "unit_id": "G100002057200",
+    "terminal_name": "Lazaro Cardenas LNG Terminal",
+    "issue": "This terminal's cancelled status (inferred 2007 shelved / 2009 cancelled) has never had a direct dormancy-specific source; the blank Status/ShelvedYear/CancelledYear/StopYear refs were filled this batch with the terminal's only/newest source on file (a 2004 Cinco Dias article, pre-dating the dormancy itself) per the inferred-entry anchor convention, not because it discusses the shelving/cancellation. A genuinely dormancy-specific search (e.g. Spanish-language Michoacan port/energy news 2007-2010) was not completed — WebSearch budget was exhausted this session.",
+    "severity": "low",
+    "suggested_action": "Next batch (once WebSearch budget resets): targeted Spanish-language search for Lazaro Cardenas LNG / Repsol Michoacan 2007-2010 to find a genuine dormancy-era source and upgrade these 4 refs from yellow to green if found.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "sourcing_limitation",
+    "terminal_id": "T100000130674",
+    "unit_id": "G100002067401",
+    "terminal_name": "PEMEX LNG Terminal",
+    "issue": "Same limitation as Lazaro Cardenas: this terminal's cancelled status (inferred 2016 shelved / 2018 cancelled) has never had a direct dormancy-specific source. The blank refs were filled this batch with the terminal's only/newest source on file (a 2014 UT-Austin LACP article, archived via Wayback), used as the inferred-entry anchor rather than direct cancellation evidence. A genuine dormancy-era search (Salina Cruz / PEMEX LNG export 2016-2019) was not completed this session — WebSearch budget was exhausted.",
+    "severity": "low",
+    "suggested_action": "Next batch (once WebSearch budget resets): targeted search for PEMEX Salina Cruz LNG export terminal 2016-2019 to find a genuine dormancy-era source and upgrade these 4 refs from yellow to green if found.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "monitor_signal",
+    "terminal_id": "T100000131173",
+    "unit_id": "G100002117300",
+    "terminal_name": "Salina Cruz LNG Terminal (Pilot/GFI)",
+    "issue": "The owners' own project site (salinacruzlng.com) is now DNS-dead (confirmed NXDOMAIN, last Wayback capture 2026-06-06) and the prior researcher's Sep-2025 note already flagged no new project news since the original Aug-2024 announcement — now well over a year of silence plus a dead primary site. This is a plausible early dormancy signal, though not yet old enough to warrant an inferred shelved reclassification this batch.",
+    "severity": "low",
+    "suggested_action": "Next batch: re-check for any news on this project; if still silent with the site still dead, consider an inferred-shelved reclassification per the dormancy-threshold rule in lifecycle_rules.md.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "scope_note",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "(shard-wide)",
+    "issue": "Exhaustive-tier scoping note: given 15 unit rows and this session's WebSearch budget exhaustion (200/200 used region-wide before this shard's research concluded), full cell-by-cell re-verification of every populated field on every unchanged unit was not completed. Representative blue re-verify records were staged for the Status field of each unchanged unit (AMIGO T2, Costa Azul Phase 2, Manzanillo, Pichilingue, Saguaro Phase 1 & 2, Salina Cruz CFE, Salina Cruz Pilot/GFI) as a pragmatic compromise; other populated fields on those units (owner splits, capacities, coordinates, etc.) were read and appeared unchanged/plausible but were not independently re-verified against a fresh source this batch.",
+    "severity": "low",
+    "suggested_action": "If a future exhaustive pass has search budget to spare, do a full field-by-field re-verification sweep of the 8 unchanged units listed above.",
+    "researcher_initials": "AI-draft"
+  }
+]

@@ -1,0 +1,18 @@
+[
+ {
+  "entity_name": "Gas Natural Rigassificazione Italia S.p.A.",
+  "entity_type": "SPV / project company",
+  "country_of_hq": "Italy",
+  "parent_entity": "Naturgy Energy Group",
+  "rationale_for_new_entity": "Required by a staged Owner edit in this same batch (Zaule LNG Terminal, T100000130484 / G100002048400, Owner was blank). The Italian Ministry of the Environment's official VIA/VAS database (va.mite.gov.it/it-IT/Oggetti/Info/143, primary/regulatory) names this company as the proponent of the Zaule regasification terminal. It is the special-purpose project company, distinct from the parent Naturgy Energy Group (100000000978), which GEM already holds on the record's Parent/Operator fields.",
+  "lookup_was_run": true,
+  "lookup_result_summary": "Orchestrator-run, 2026-07-29. entity_lookup.py --remote is unavailable this session (GEM_PROJECT_DB_BASE_URL unset), so this was checked directly against the read-only Postgres `company` table on name / name_local / name_search, including soft-deleted rows: 0 hits for 'Rigassificazione' (any company), and 0 hits for the full name. Nearest existing entities are the parent lineage -- Naturgy Energy Group (100000000978), Gas Natural SDG (100000120485), and the soft-deleted Gas Natural Fenosa (100000120484) -- none of which is this SPV. Confirmed genuinely new.",
+  "referenced_by_terminals": [
+   "Zaule LNG Terminal"
+  ],
+  "referenced_by_units": [
+   "G100002048400"
+  ],
+  "researcher_initials": "AI-draft (orchestrator gate)"
+ }
+]

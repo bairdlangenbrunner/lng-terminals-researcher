@@ -14,6 +14,14 @@ compares each staged edit against a FRESH gem_export.csv, classifying:
                                                            excluded from the
                                                            applied/diverged math)
 
+A staged DELETION is written by build_review_package.py as the sentinel
+`new_value = "(DELETE — value unsupported)"`, not as a blank. Its success
+condition is the inverse of a normal edit — the cell should end up EMPTY — so
+it is classified against that: fresh blank -> `applied`, fresh still equal to
+`old_value` -> `not_applied`, anything else -> `diverged`. Comparing the
+sentinel string to the fresh cell (as a normal edit would) made every landed
+deletion read as `diverged`, which is what this special case exists to avoid.
+
 Used by QC SOP §3.4. The user applies staging xlsx edits to the live DB by
 hand, so `diverged` is the transcription-error catcher — but note that
 formatting-only differences the fresh export re-renders (dates, rounding the
@@ -28,6 +36,7 @@ Run AFTER the user reports applying a batch, against a fresh pull:
 import argparse
 import csv
 import json
+import re
 import sys
 from collections import Counter, defaultdict
 from datetime import date
@@ -37,6 +46,10 @@ sys.path.insert(0, str(Path(__file__).parent))
 
 CLASSIFICATIONS = ("applied", "not_applied", "diverged", "not_found",
                    "field_unknown", "reverify_only")
+
+# build_review_package.py stages a deletion as this sentinel in `new_value`;
+# match it loosely so a wording tweak there doesn't silently break the check.
+DELETE_SENTINEL = re.compile(r"^\(\s*DELETE\b", re.IGNORECASE)
 
 
 def _norm(v):
@@ -136,7 +149,15 @@ def compute_apply_check(batch_path, csv_path, sheet_name="updates_summary", log=
             fresh_value = None
         else:
             fresh_value = _norm(fresh_by_unit[(tid, uid)].get(field, ""))
-            if _values_equal(fresh_value, new_value):
+            if DELETE_SENTINEL.match(new_value):
+                # success for a deletion is an EMPTY cell, not the sentinel text
+                if not fresh_value:
+                    cls = "applied"
+                elif _values_equal(fresh_value, old_value):
+                    cls = "not_applied"
+                else:
+                    cls = "diverged"
+            elif _values_equal(fresh_value, new_value):
                 cls = "applied"
             elif _values_equal(fresh_value, old_value):
                 cls = "not_applied"

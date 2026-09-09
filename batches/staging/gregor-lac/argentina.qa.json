@@ -1,0 +1,155 @@
+[
+ {
+  "terminal_id": "T100000130832",
+  "unit_id": "G100002083203",
+  "terminal_name": "Argentina LNG Terminal",
+  "category": "wrong_ref",
+  "severity": "medium",
+  "suggested_action": "Re-source CaptiveGasPower ref to a source that actually discusses this terminal, or downgrade to qa_review pending re-verification. Not resolved this pass -- flagging per CLAUDE.md's Argentina-specific instruction rather than silently dropping or leaving uncorrected.",
+  "researcher_initials": "AI-draft (sweep)",
+  "issue": "CaptiveGasPower=True on this unit-row cites worldoil.com and hydrocarbonengineering.com articles about a '24 mtpa Argent LNG facility' -- this reads as an unrelated project (name collision with 'Argentina LNG'; possibly a different sponsor/geography entirely, e.g. an Angola or generic-name FLNG scheme) and does not describe Southern Energy S.A.'s Hilli Episeyo/MK II Argentina LNG project. The CaptiveGasPower VALUE may still be correct on independent grounds (FLNG vessels are near-universally self-powered by onboard gas turbines), but this specific ref does not support it for this terminal. Recommend a follow-up research pass to find a citation that actually names Hilli Episeyo/Southern Energy/Rio Negro, or drop the ref and re-source rather than carry the mismatched citation forward.",
+  "gem_field": "CaptiveGasPower [ref]"
+ },
+ {
+  "terminal_id": "T100000130832",
+  "unit_id": "G100001062165",
+  "terminal_name": "Argentina LNG Terminal",
+  "category": "wrong_ref",
+  "severity": "medium",
+  "suggested_action": "Re-source or downgrade in a follow-up pass.",
+  "researcher_initials": "AI-draft (sweep)",
+  "issue": "Same 'Argent LNG' ref-contamination issue as Phase 1.1 -- see that row's qa entry for full detail. Both Phase 1.1 and 1.2 share the CaptiveGasPower ref.",
+  "gem_field": "CaptiveGasPower [ref]"
+ },
+ {
+  "terminal_id": "T100000130832",
+  "unit_id": "G100002083201",
+  "terminal_name": "Argentina LNG Terminal",
+  "category": "wrong_ref",
+  "severity": "medium",
+  "suggested_action": "Re-source or downgrade in a follow-up pass.",
+  "researcher_initials": "AI-draft (sweep)",
+  "issue": "Same 'Argent LNG' ref-contamination issue -- see Phase 1.1's qa entry.",
+  "gem_field": "CaptiveGasPower [ref]"
+ },
+ {
+  "terminal_id": "T100000130832",
+  "unit_id": "G100002083202",
+  "terminal_name": "Argentina LNG Terminal",
+  "category": "wrong_ref",
+  "severity": "medium",
+  "suggested_action": "Re-source or downgrade in a follow-up pass.",
+  "researcher_initials": "AI-draft (sweep)",
+  "issue": "Same 'Argent LNG' ref-contamination issue -- see Phase 1.1's qa entry.",
+  "gem_field": "CaptiveGasPower [ref]"
+ },
+ {
+  "terminal_id": "T100000130832",
+  "unit_id": "G100002083201",
+  "terminal_name": "Argentina LNG Terminal",
+  "category": "field_gap",
+  "severity": "low",
+  "suggested_action": "Reviewer should confirm whether FIDYear=2025 is stale (pre-dates the Shell exit) and should be cleared/updated once a new partner and revised FID timeline are confirmed.",
+  "researcher_initials": "AI-draft (sweep)",
+  "issue": "FIDStatus='Pre-FID' with FIDYear=2025 already passed. Per the FIDStatus/FIDYear ambiguity rule, FIDStatus is left unchanged (no source found this pass confirming an actual FID took place in 2025 for this specific 10 mtpa phase -- if anything, Shell's Dec 2025 exit and YPF's ongoing partner search suggest FID has NOT occurred). Flagging for reviewer attention rather than silently updating FIDYear or FIDStatus.",
+  "gem_field": "FIDStatus / FIDYear"
+ },
+ {
+  "terminal_id": "T100000130832",
+  "unit_id": "G100002083202",
+  "terminal_name": "Argentina LNG Terminal",
+  "category": "field_gap",
+  "severity": "low",
+  "suggested_action": "Reviewer should confirm current FID timeline for the 12 mtpa phase now that XRG has joined.",
+  "researcher_initials": "AI-draft (sweep)",
+  "issue": "FIDStatus='Pre-FID' with FIDYear=2025 already passed. The XRG binding JDA (Feb 2026) postdates this FIDYear and is itself described in sourcing as a joint-development step, not an FID announcement. No source found this pass stating FID has actually occurred. Flagging per the ambiguity rule rather than silently updating.",
+  "gem_field": "FIDStatus / FIDYear"
+ },
+ {
+  "terminal_id": "T100000130832",
+  "unit_id": "G100002083202",
+  "terminal_name": "Argentina LNG Terminal",
+  "category": "entity_pending",
+  "severity": "low",
+  "suggested_action": "Once an entity record for XRG (or its correct legal name, e.g. 'XRG Investment Company' / ADNOC subsidiary) exists in GEM, backfill Parent GEM Entity ID on this row.",
+  "researcher_initials": "AI-draft (sweep)",
+  "issue": "Owner/Parent staged edit adds 'XRG' as a third party to this unit-row, but XRG has no existing GEM entity ID (entity_lookup.py local search: not found; remote lookup skipped this session -- GEM_PROJECT_DB_BASE_URL not set in this environment, and .env/.env.example reads were denied by the sandbox permission system, so the remote check could not be completed at all this pass). See argentina.entity.json for the new-entity candidate record.",
+  "gem_field": "Parent GEM Entity ID"
+ },
+ {
+  "terminal_id": "T100000130832",
+  "unit_id": "G100002083201",
+  "terminal_name": "Argentina LNG Terminal",
+  "category": "field_gap",
+  "severity": "low",
+  "suggested_action": "Follow-up pass: pin down whether Shell's exited phase and GEM's 'Phase 2' (10 mtpa) are the same scope; watch for a formal capacity revision once YPF names a replacement partner.",
+  "researcher_initials": "AI-draft (sweep)",
+  "issue": "Some trade-press coverage of the Shell exit refers loosely to a smaller (~6 mtpa) figure for the phase Shell was exiting, which is inconsistent with GEM's existing 10.00 mtpa Capacity for Phase 2. This session's sourcing could not resolve whether the loose figure is a reporting imprecision, an early/scoped-down train count, or a genuinely different phase breakdown. No capacity edit is staged -- GEM's 10.00 mtpa is left unchanged pending clearer sourcing.",
+  "gem_field": "Capacity"
+ },
+ {
+  "terminal_id": "T100000130832",
+  "unit_id": "G100002083201",
+  "terminal_name": "Argentina LNG Terminal",
+  "category": "informational",
+  "severity": "low",
+  "suggested_action": "Re-check for a named replacement partner in the next Argentina batch.",
+  "researcher_initials": "AI-draft (sweep)",
+  "issue": "Per the Dec 2025 Shell-exit coverage (Energy News Africa), YPF is actively seeking a new heavyweight partner to replace Shell on this 10 mtpa phase. No replacement was named in any source found this pass. Worth a revisit in a future update batch.",
+  "gem_field": "Owner"
+ },
+ {
+  "terminal_id": "T100000130542",
+  "unit_id": "G100002054200",
+  "terminal_name": "Escobar FSRU",
+  "category": "field_gap",
+  "severity": "low",
+  "suggested_action": "No action needed unless a third source contradicts the two-GIIGNL-edition agreement.",
+  "researcher_initials": "AI-draft (sweep)",
+  "issue": "ResearcherNotesProject on this row already flags a capacity-source discrepancy: IGU's 2024 World LNG Report cites 3.8 mtpa, a separate FSRU fleet-info source cites 5.2 mtpa, while GEM/GIIGNL (both 2024 and 2025 editions, now both re-cited at repaired mirror URLs) agree on 6.10 mtpa. Both GIIGNL editions corroborate the GEM value, so no edit is staged -- this qa entry preserves the researcher's own visibility flag rather than letting it get lost in a ref-URL repair pass.",
+  "gem_field": "Capacity"
+ },
+ {
+  "terminal_id": "T100000130540",
+  "unit_id": "G100002054000",
+  "terminal_name": "Dock Sud LNG Terminal",
+  "category": "informational",
+  "severity": "low",
+  "suggested_action": "No action; safe to leave off future revival-watch escalation unless new activity surfaces.",
+  "researcher_initials": "AI-draft (sweep)",
+  "issue": "Dormant_revival_watch flagged this cancelled site (CancelledYear=2020, 6 years dead) as high priority for a revival check. This pass found NO news of any new project, sponsor, or activity at the Dock Sud site since the 2020 cancellation -- confirmed dormant, negative revival result.",
+  "gem_field": "Status"
+ },
+ {
+  "terminal_id": "T100000131182",
+  "unit_id": "G100002118201",
+  "terminal_name": "Bahía Blanca FLNG Terminal",
+  "category": "informational",
+  "severity": "low",
+  "suggested_action": "No action.",
+  "researcher_initials": "AI-draft (sweep)",
+  "issue": "Mothballed since 2020 (StopYear=2020). No revival evidence, sponsor activity, or news found this pass.",
+  "gem_field": "Status"
+ },
+ {
+  "terminal_id": "T100000130832",
+  "unit_id": "G100002083202",
+  "terminal_name": "Argentina LNG Terminal",
+  "category": "field_gap",
+  "severity": "low",
+  "suggested_action": "Revisit with paywall access or a different source in a future pass; do not stage a year change without a clean citation.",
+  "researcher_initials": "AI-draft (sweep)",
+  "issue": "Some early-session leads suggested a possible startup slip beyond GEM's current 2029 value (to 2030/2031), but this pass could NOT corroborate a specific revised year with accessible, non-paywalled sources (Upstream/TradeWinds pieces that likely cover it are behind the nhst.auth.zephr.com SSO paywall). Per CLAUDE.md, only a genuinely corroborated slip gets staged -- since it isn't corroborated this pass, GEM's 2029 is left unchanged rather than guessed at.",
+  "gem_field": "LatestPlannedStartYear"
+ },
+ {
+  "category": "entity_dup_check",
+  "terminal_id": "T100000130832",
+  "unit_id": "G100002083202",
+  "terminal_name": "Argentina LNG Terminal (Phase 3, 12 mtpa)",
+  "issue": "The research agent staged 'XRG' (ADNOC's international gas/LNG investment arm, new Phase 3 JDA partner with YPF and Eni, binding agreement 12 Feb 2026) as a NEW entity because entity_lookup.py --remote could not run (GEM_PROJECT_DB_BASE_URL is not set in this environment, so the remote half returned skipped_no_base_url rather than a negative). The orchestrator's read-only-Postgres entity_history re-check on 2026-08-11 found it ALREADY EXISTS: entity_id 100002018879, name 'XRG'. The staged new-entity record has therefore been REMOVED — do not create a second XRG. The Owner/Parent edits on this unit-row are unchanged and correct; the staged string 'XRG' matches the existing entity name exactly. Related existing entities if the reviewer wants to set Parent explicitly: 'Abu Dhabi National Oil' (ADNOC) = 100000001079.",
+  "severity": "medium",
+  "suggested_action": "Reuse existing entity 100002018879 (XRG); no new entity to create.",
+  "researcher_initials": "AI-draft (orchestrator QC gate)"
+ }
+]

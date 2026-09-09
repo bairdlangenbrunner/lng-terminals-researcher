@@ -1,0 +1,217 @@
+[
+  {
+    "terminal": "Safe Harbor Energy LNG Terminal",
+    "terminal_id": "T100000130653",
+    "country": "United States",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "red",
+    "captive_summary": "Cancelled artificial-island LNG import deepwater port proposed by Atlantic Sea Island Group ~13.5 nautical miles off Long Beach, NY (Cholera Bank, Federal waters, 60-70 ft depth). Facility never got past environmental-review scoping before the state effectively killed it (NY recommended denial 2008; MARAD ultimately did not license it, 2009). No facility technical description (vaporization, power generation, or electrical supply) is disclosed in any Federal Register notice I could access -- those are all procedural (comment periods, EIS scoping/location corrections), not the underlying resource-report/DEIS technical content. A regulations.gov docket search that might hold the actual application/resource reports returned HTTP 403 (blocked) rather than a usable result, so I cannot rule out that a design existed with a power-source spec I simply couldn't reach.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Federal Register, Atlantic Sea Island Group LLC / Safe Harbor Energy LNG Deepwater Port License Application notices (2007-08-27 initial notice; 2009-02-10 EIS scoping comment-period extension and location correction to Cholera Bank, ~13.5 mi south of Long Beach NY). Neither notice contains facility engineering detail; both are procedural. regulations.gov docket search for the underlying application/resource reports returned HTTP 403.",
+    "refs": [
+      "https://www.federalregister.gov/documents/2007/08/27/E7-16875/atlantic-sea-island-group-llc-safe-harbor-energy-liquefied-natural-gas-deepwater-port-license",
+      "https://www.federalregister.gov/documents/2009/02/10/E9-2668/atlantic-sea-island-group-llc-safe-harbor-energy-liquefied-natural-gas-deepwater-port-license"
+    ],
+    "verification_log": [
+      {"url": "https://www.federalregister.gov/documents/2007/08/27/E7-16875/atlantic-sea-island-group-llc-safe-harbor-energy-liquefied-natural-gas-deepwater-port-license", "tokens": ["Safe Harbor Energy"], "result": "PASS", "note": "passed on retry after one transient HTTP 500"},
+      {"url": "https://www.federalregister.gov/documents/2009/02/10/E9-2668/atlantic-sea-island-group-llc-safe-harbor-energy-liquefied-natural-gas-deepwater-port-license", "tokens": [], "result": "not separately re-verified", "note": "used only for content orientation, not cited as a standalone claim beyond the 2007 notice"}
+    ],
+    "gogpt_prior_assessment": "Nearest GOGPT plants are E F Barrett power station (376 MW, 25.6 km, operating, gogpt_captive=false) and Jamaica Bay Peaking power station (61 MW, 27.8 km, operating, gogpt_captive=false). Both are pre-existing NYC-area utility/merchant plants, 25+ km from this never-built offshore site (itself ~13.5 nm / ~25 km out to sea) -- no relationship to this terminal. Not this terminal's captive power. https://www.gem.wiki/E_F_Barrett_power_station is GEM's own wiki so not citable; I could not find an independent non-GEM info_url for either plant within the research budget for this shard.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Terminal was never built and no captive-power design was found; the neighboring GOGPT plants are unrelated pre-existing utility stations, not colocated with this site.",
+    "status_or_other_findings": "GEM already carries this as cancelled/confirmed, consistent with the 2009 MARAD non-licensing after New York's gubernatorial veto recommendation. Not acted on.",
+    "notes": "Offshore/never-built; genuine engineering detail (if any exists) sits behind a regulations.gov docket that returned HTTP 403 to my fetch attempt -- a future pass with docket access could resolve this to a firmer verdict."
+  },
+  {
+    "terminal": "Sea Port Oil Terminal (SPOT)",
+    "terminal_id": "T100000130734",
+    "country": "United States",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "SPOT is a crude-oil export deepwater port (VLCC loading), not an LNG facility -- a scope error in the LNG terminals tracker.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "MARAD/USCG Federal Register notice (Final General Conformity Determination, 2022-07-29) for SPOT Terminal Services LLC states the project \"proposes to provide United States crude oil loading services on very large crude carriers (VLCCs) and other crude oil carriers for export to the global market.\"",
+    "refs": [
+      "https://www.federalregister.gov/documents/2022/07/29/2022-15966/deepwater-port-license-application-spot-terminal-services-llc-final-general-conformity-determination"
+    ],
+    "verification_log": [
+      {"url": "https://www.federalregister.gov/documents/2022/07/29/2022-15966/deepwater-port-license-application-spot-terminal-services-llc-final-general-conformity-determination", "tokens": ["crude oil"], "result": "PASS", "note": ""}
+    ],
+    "gogpt_prior_assessment": "No neighboring GOGPT plants were listed for this terminal_id in neighbors_raw.json.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Not a gas facility at all -- crude oil VLCC loading terminal, out of scope for both the LNG tracker and GOGPT.",
+    "status_or_other_findings": "None acted on.",
+    "notes": "Scope-error terminal per CLAUDE.md routing rule for crude-oil deepwater ports carried in error in the LNG tracker."
+  },
+  {
+    "terminal": "South Texas LNG Terminal",
+    "terminal_id": "T100000130849",
+    "country": "United States",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "yellow",
+    "captive_summary": "Cancelled export project (Pangea LNG (North America) Holdings LLC, proposed at the Port of Corpus Christi / Ingleside, TX). The only regulatory record found is a 2013 DOE/FE order granting long-term LNG export authorization (FE Docket Nos. 12-174-LNG / 12-184-LNG, ~1.09 Bcf/d); no FERC facility-siting docket, NOI, or EIS was ever filed, meaning no engineering/FEED-level facility design (and therefore no power-source design) was ever published before the project was abandoned.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Federal Register, \"Pangea LNG (North America) Holdings, LLC; Application for Long-Term Authorization To Export Liquefied Natural Gas...\" (2013-02-27), describing the proposed South Texas LNG Export Project at the Port of Corpus Christi, Ingleside, TX, seeking DOE non-FTA export authority. No subsequent FERC facility docket found for this project in Federal Register searches.",
+    "refs": [
+      "https://www.federalregister.gov/documents/2013/02/27/2013-04540/pangea-lng-north-america-holdings-llc-application-for-long-term-authorization-to-export-liquefied"
+    ],
+    "verification_log": [
+      {"url": "https://www.federalregister.gov/documents/2013/02/27/2013-04540/pangea-lng-north-america-holdings-llc-application-for-long-term-authorization-to-export-liquefied", "tokens": ["South Texas LNG"], "result": "PASS", "note": "passed on retry after one transient HTTP 500"}
+    ],
+    "gogpt_prior_assessment": "Nearest GOGPT plants are Nueces Bay power station (730 MW, 1.39 km, operating, gogpt_captive=false) and Corpus Christi energy center (593 MW, 2.08 km, operating, gogpt_captive=false). Both are pre-existing large merchant/utility gas plants in the Corpus Christi industrial corridor, unrelated to this cancelled, never-designed LNG export project. Not this terminal's captive power.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Project never reached a facility design stage; no captive plant was ever proposed. Neighboring plants are pre-existing, unrelated merchant generation.",
+    "status_or_other_findings": "GEM's cancelled/confirmed status is consistent with the project only holding a DOE export authorization and no FERC facility docket ever appearing.",
+    "notes": "Despite the worklist's 'deep' bucket suggestion, research turned up only a DOE export-license record with no facility engineering ever filed, which is the SCREENED case (cancelled proposal, no published design) rather than a researchable captive-power question."
+  },
+  {
+    "terminal": "Sparrows Point LNG Terminal",
+    "terminal_id": "T100000130651",
+    "country": "United States",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "red",
+    "captive_summary": "Cancelled AES/Mid-Atlantic Express LNG import terminal + pipeline project at Sparrows Point, Baltimore, MD. Reached a published Final EIS (2008) describing a 1.5 Bcfd baseload sendout facility using a \"closed-loop shell and tube heat exchanger vaporization system\" (a non-combustion heat-exchange process, not captive power on its own) plus admin buildings, control room, and platform control room -- but the FEIS availability notice itself (a procedural Federal Register document, not the full docket) does not disclose the facility's electrical supply source or any on-site generation equipment. No public source I could reach states whether the site was to be grid-fed (plausible, since Sparrows Point is a heavily industrialized ex-Bethlehem Steel peninsula with existing utility infrastructure) or included on-site gas generation.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Federal Register, \"AES Sparrows Point LNG, LLC; Mid-Atlantic Express, L.L.C.; Notice of Availability of the Final Environmental Impact Statement...\" (2008-12-11) -- confirms vaporization technology and general site layout but no power-source detail; the full FEIS/resource-report text (which would carry the electrical-design detail) was not reachable within this research pass.",
+    "refs": [
+      "https://www.federalregister.gov/documents/2008/12/11/E8-29361/aes-sparrows-point-lng-llc-mid-atlantic-express-llc-notice-of-availability-of-the-final"
+    ],
+    "verification_log": [
+      {"url": "https://www.federalregister.gov/documents/2008/12/11/E8-29361/aes-sparrows-point-lng-llc-mid-atlantic-express-llc-notice-of-availability-of-the-final", "tokens": ["shell and tube"], "result": "PASS", "note": "passed on retry after one transient HTTP 500"}
+    ],
+    "gogpt_prior_assessment": "Nearest GOGPT plants are Herbert Wagner Generating Station (906.7 MW, 3 units, 6.29 km, operating/retired, gogpt_captive=false) and Westport power station (122 MW, 14.2 km, retired, gogpt_captive=false). Both are legacy Baltimore-area utility (BGE-lineage) stations pre-dating and unrelated to the LNG proposal -- not this terminal's captive power.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No captive generation was found to be part of the design; neighboring plants are pre-existing, unrelated utility stations.",
+    "status_or_other_findings": "None acted on.",
+    "notes": "A genuine FEIS/resource report exists for this project (unlike Safe Harbor and South Texas LNG) but its power-source content was not accessible to me in this pass -- a stronger future finding is plausible if the underlying docket/resource reports can be pulled."
+  },
+  {
+    "terminal": "Texas Crude Offshore Loading Terminal",
+    "terminal_id": "T100000130737",
+    "country": "United States",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "This is Texas COLT LLC's (\"Texas Crude Offshore Loading Terminal\") proposed crude-oil export deepwater port, ~27.8 nautical miles off Brazoria County, TX -- a scope error in the LNG tracker, not a gas facility at all. Application withdrawn December 2019.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Federal Register, MARAD/USCG NOI to prepare an EIS for \"Texas COLT LLC (Texas COLT)\" (2019-03-08): the applicant is \"proposing to construct, own, and operate a deepwater port terminal in the Gulf of Mexico to export domestically produced crude oil,\" ~27.8 nm off Brazoria County, TX, 110 ft water depth. Withdrawal confirmed by the 2019-12-30 Federal Register notice.",
+    "refs": [
+      "https://www.federalregister.gov/documents/2019/03/08/2019-04176/deepwater-port-license-application-texas-colt-llc-texas-colt",
+      "https://www.federalregister.gov/documents/2019/12/30/2019-28137/deepwater-port-license-application-texas-colt-llc"
+    ],
+    "verification_log": [
+      {"url": "https://www.federalregister.gov/documents/2019/03/08/2019-04176/deepwater-port-license-application-texas-colt-llc-texas-colt", "tokens": ["crude oil"], "result": "PASS", "note": "passed on retry after two transient HTTP 500s"},
+      {"url": "https://www.federalregister.gov/documents/2019/12/30/2019-28137/deepwater-port-license-application-texas-colt-llc", "tokens": ["withdraw"], "result": "PASS", "note": "passed on retry after one transient HTTP 500"}
+    ],
+    "gogpt_prior_assessment": "No neighboring GOGPT plants were listed for this terminal_id in neighbors_raw.json.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Crude oil facility, out of scope for GOGPT (gas power) as well as the LNG tracker.",
+    "status_or_other_findings": "None acted on.",
+    "notes": "Scope-error terminal (crude oil, GEM record name literally 'Texas Crude Offshore Loading Terminal' = Texas COLT)."
+  },
+  {
+    "terminal": "Texas Gulf Terminals",
+    "terminal_id": "T100000130738",
+    "country": "United States",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "Texas Gulf Terminals, Inc. (TGTI) proposed an offshore crude-oil export deepwater port ~12.7 nautical miles off Corpus Christi/North Padre Island (Kleberg County), TX, loading crude at up to 60,000 bbl/hr onto ~8 VLCCs/month. A scope error in the LNG tracker -- not a gas facility. Application withdrawn March 2020.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Federal Register NOI to prepare an EIS (2018-08-10) describing the \"offshore oil export deepwater port ... approximately 12.7 nautical miles off the coast of Corpus Christi, Texas\" with crude-oil loading rates up to 60,000 bbl/hr for VLCCs. Withdrawal/cancellation confirmed by the Federal Register notice of 2020-03-16.",
+    "refs": [
+      "https://www.federalregister.gov/documents/2018/08/10/2018-17108/deepwater-port-license-application-texas-gulf-terminals-inc",
+      "https://www.federalregister.gov/documents/2020/03/16/2020-05343/deepwater-port-license-application-texas-gulf-terminals-inc"
+    ],
+    "verification_log": [
+      {"url": "https://www.federalregister.gov/documents/2018/08/10/2018-17108/deepwater-port-license-application-texas-gulf-terminals-inc", "tokens": ["oil export"], "result": "PASS", "note": ""},
+      {"url": "https://www.federalregister.gov/documents/2020/03/16/2020-05343/deepwater-port-license-application-texas-gulf-terminals-inc", "tokens": ["cancellation"], "result": "PASS", "note": ""}
+    ],
+    "gogpt_prior_assessment": "No neighboring GOGPT plants were listed for this terminal_id in neighbors_raw.json.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Crude oil facility, out of scope for GOGPT as well as the LNG tracker.",
+    "status_or_other_findings": "None acted on.",
+    "notes": "Scope-error terminal (crude oil deepwater port, Trafigura-related sponsorship per trade press; confirmed here from the primary MARAD/Federal Register record alone)."
+  },
+  {
+    "terminal": "Texas GulfLink Deepwater Port",
+    "terminal_id": "T100000130994",
+    "country": "United States",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "Sentinel Midstream's Texas GulfLink is a proposed crude-oil export deepwater port ~26.2 nautical miles off Brazoria County, TX. A scope error in the LNG tracker -- not a gas facility. Still in permitting (FEIS issued 2024; Record of Decision delayed per a December 2024 notice) but never a gas project.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Federal Register, MARAD/USCG Final EIS availability notice (2024-08-16): the GulfLink application \"describes a project that would be located approximately 26.2 nautical miles off the coast of Brazoria County, Texas\" for \"the export of oil from the United States to nations abroad.\"",
+    "refs": [
+      "https://www.federalregister.gov/documents/2024/08/16/2024-18349/deepwater-port-license-application-texas-gulflink-llc-final-environmental-impact-statement"
+    ],
+    "verification_log": [
+      {"url": "https://www.federalregister.gov/documents/2024/08/16/2024-18349/deepwater-port-license-application-texas-gulflink-llc-final-environmental-impact-statement", "tokens": ["export of oil"], "result": "PASS", "note": ""}
+    ],
+    "gogpt_prior_assessment": "No neighboring GOGPT plants were listed for this terminal_id in neighbors_raw.json.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Crude oil facility, out of scope for GOGPT as well as the LNG tracker.",
+    "status_or_other_findings": "Still active in MARAD permitting as of the Dec 2024 notice (ROD delayed) -- not acted on since it is a crude-oil project, out of scope for this tracker regardless of status.",
+    "notes": "Scope-error terminal (crude oil deepwater port)."
+  },
+  {
+    "terminal": "Texas LNG Terminal",
+    "terminal_id": "T100000130238",
+    "country": "United States",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "No on-site gas-fired generation or mechanical-drive turbines; liquefaction refrigeration compressors are electric-motor driven.",
+    "fuel_basis": "No gas combustion equipment involved -- electric motors, not gas turbines, drive the compression train.",
+    "confidence": "green",
+    "captive_summary": "Texas LNG (Brownsville, TX; Texas LNG Brownsville LLC / Glenfarne) is designed as an electric-drive facility: the developer's own project description states the liquefaction process uses electric-motor-driven compression powered by renewable/grid power, not on-site gas turbines -- re-verifying and confirming the prior 2026-07-10 finding referenced in this shard's research_hint (which had cited Baker Hughes electric-motor drives / renewable power but lost the citations). No captive gas generation exists at this site.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Texas LNG's own official project site states on its Project Overview page: \"Texas LNG's liquefaction process will eliminate most CO2 emissions by using electric motor compression driven by renewable power.\" A separate page on the same site states the facility \"will be powered by renewable energy driving the facility's electric motors, making it one of the lowest emitting liquefaction facilities globally.\" This is the operator's own technical description of the design -- a primary source establishing electric (not gas-turbine) drive.",
+    "refs": [
+      "http://texaslng.com/theproject/project-overview.html"
+    ],
+    "verification_log": [
+      {"url": "http://texaslng.com/theproject/project-overview.html", "tokens": ["electric motor"], "result": "PASS", "note": ""},
+      {"url": "https://www.txlng.com/", "tokens": [], "result": "not used", "note": "current txlng.com domain 404s / redirects to a bare frameset; legacy texaslng.com (same project, Alder Midstream-branded) is the working live source and was used instead"}
+    ],
+    "gogpt_prior_assessment": "Nearest GOGPT plants are Port Of Brownsville Energy Complex (192 MW, 8.7 km, pre-construction, gogpt_captive=false) and SpaceX power station (250 MW, 10.1 km, cancelled, gogpt_captive=false). Both are unrelated third-party industrial/merchant projects near the Port of Brownsville, not colocated with or supplying Texas LNG, which per its own design draws electric/renewable power rather than generating on-site. Not this terminal's captive power.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No gas-fired generation exists at this site; the facility is electric-drive by design.",
+    "status_or_other_findings": "Project has an active FERC Supplemental EIS process (Final Supplemental EIS notice 2025-08-05) following a 2024 D.C. Circuit remand -- unrelated to the power-source question; not acted on.",
+    "notes": "Re-verifies and closes out the research_hint: the electric-motor / renewable-power design is confirmed from the developer's own current site, restoring the citation lost in the 2026-07-10 pass."
+  }
+]

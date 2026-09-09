@@ -1,0 +1,121 @@
+[
+  {
+    "terminal_id": "T100000131001",
+    "unit_id": "G100002100100",
+    "terminal_name": "Jade Energy LNG Terminal",
+    "unit_name": "--",
+    "country": "Germany",
+    "field_name": "OtherNames",
+    "old_value": "German North Sea LNG, Wilhelmshaven TES LNG Terminal, Green Energy Hub LNG terminal project",
+    "new_value": "German North Sea LNG, Wilhelmshaven TES LNG Terminal, Green Energy Hub LNG terminal project, Wilhelmshaven Green Energy Hub",
+    "confidence": "green",
+    "source_tier": "secondary",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.offshore-energy.biz/tes-pushes-wilhelmshaven-green-energy-hub-development/",
+      "https://tes-h2.com/projects/projects-greenenergyhubwilhelmshaven"
+    ],
+    "source_notes": "Project-level field, same edit on all 3 unit-rows. 'Wilhelmshaven Green Energy Hub' is NOT already findable as a substring of TerminalName or the existing OtherNames cell (existing entries are 'Wilhelmshaven TES LNG Terminal' and 'Green Energy Hub LNG terminal project' -- different word order/phrasing), so it passes the no-substring-OtherNames filter (build_review_package.py _useful_othernames). Verified verbatim on 2 independent, already-cited sources: offshore-energy.biz headline 'TES pushes Wilhelmshaven Green Energy Hub development' (url_verifier PASS on exact phrase) and TES's own project page (url_verifier PASS on exact phrase, in an image caption). Did NOT stage the discovery agent's other suggested alias 'TES Wilhelmshaven Import Terminal' -- see qa note (no source found using that literal phrase).",
+    "scope_note": "Applies to all unit-rows of T100000131001 (OtherNames is identical across the project's 3 units in the current export).",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131001",
+    "unit_id": "G100001095736",
+    "terminal_name": "Jade Energy LNG Terminal",
+    "unit_name": "Expansion",
+    "country": "Germany",
+    "field_name": "OtherNames",
+    "old_value": "German North Sea LNG, Wilhelmshaven TES LNG Terminal, Green Energy Hub LNG terminal project",
+    "new_value": "German North Sea LNG, Wilhelmshaven TES LNG Terminal, Green Energy Hub LNG terminal project, Wilhelmshaven Green Energy Hub",
+    "confidence": "green",
+    "source_tier": "secondary",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.offshore-energy.biz/tes-pushes-wilhelmshaven-green-energy-hub-development/",
+      "https://tes-h2.com/projects/projects-greenenergyhubwilhelmshaven"
+    ],
+    "source_notes": "Project-level propagation of the same OtherNames addition staged on the main unit-row (G100002100100) -- see that record for full sourcing/rationale.",
+    "scope_note": "Applies to all unit-rows of T100000131001.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131001",
+    "unit_id": "G100002100101",
+    "terminal_name": "Jade Energy LNG Terminal",
+    "unit_name": "eLNG Import Terminal",
+    "country": "Germany",
+    "field_name": "OtherNames",
+    "old_value": "German North Sea LNG, Wilhelmshaven TES LNG Terminal, Green Energy Hub LNG terminal project",
+    "new_value": "German North Sea LNG, Wilhelmshaven TES LNG Terminal, Green Energy Hub LNG terminal project, Wilhelmshaven Green Energy Hub",
+    "confidence": "green",
+    "source_tier": "secondary",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.offshore-energy.biz/tes-pushes-wilhelmshaven-green-energy-hub-development/",
+      "https://tes-h2.com/projects/projects-greenenergyhubwilhelmshaven"
+    ],
+    "source_notes": "Project-level propagation of the same OtherNames addition staged on the main unit-row (G100002100100) -- see that record for full sourcing/rationale.",
+    "scope_note": "Applies to all unit-rows of T100000131001.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131001",
+    "unit_id": "G100002100100",
+    "terminal_name": "Jade Energy LNG Terminal",
+    "unit_name": "--",
+    "country": "Germany",
+    "field_name": "LatestPlannedStartYear",
+    "old_value": "2030",
+    "new_value": "2030",
+    "confidence": "blue",
+    "source_tier": "secondary",
+    "ref_field": null,
+    "ref_urls": [
+      "https://tes-h2.com/projects/projects-greenenergyhubwilhelmshaven"
+    ],
+    "source_notes": "Re-verified, unchanged. This resolves the discovery agent's flagged possible planned-start slip: older 2023-2024 coverage (mnimarkets, TES/H2-View) targeted first gas 2025-2026, but the 2026-04-30 Jade Energy rebrand set commercial operations at 2030. GEM's LatestPlannedStartYear was ALREADY updated to 2030 by the human researcher on 2026-07-17 (12 days before this batch) -- OriginalPlannedStartYear correctly stays 2025 (historical). The read-only Postgres timeline for this unit (fetch_timeline.py G100002100100) already carries an 'operating/planned/2030' entry superseding an earlier 'operating/planned/2025' entry, so the timeline-side elevation (Update SOP Sec3.2) is also already done -- no year edit or timeline append needed this batch. Re-confirmed via tes-h2.com project page, exact phrase 'begin commercial operations in 2030' (url_verifier PASS), and cross-checked with a fresh WebSearch (2026-07-29) that found no newer FID/status news implying a further slip.",
+    "scope_note": "Unit-level field; only the main import unit-row carries a populated LatestPlannedStartYear for this check (Expansion unit-row's is blank/not yet dated; eLNG unit-row's 2044 is a separate later-phase transition date, not in scope of this item).",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131001",
+    "unit_id": "G100002100100",
+    "terminal_name": "Jade Energy LNG Terminal",
+    "unit_name": "--",
+    "country": "Germany",
+    "field_name": "Capacity",
+    "old_value": "15.00",
+    "new_value": "15.00",
+    "confidence": "blue",
+    "source_tier": "secondary",
+    "ref_field": null,
+    "ref_urls": [
+      "https://tes-h2.com/news/tes-launches-new-capacity-booking-round-at-wilhelmshaven-green-energy-hub",
+      "https://tes-h2.com/projects/projects-greenenergyhubwilhelmshaven"
+    ],
+    "source_notes": "Re-verified, unchanged. Discovery flagged '~15 bcm/y, expandable to >20' for verification. GEM already stages this correctly as two unit-rows: main unit Capacity=15.00 bcm/y (11.03 mtpa) + Expansion unit Capacity=5.00 bcm/y (3.68 mtpa), summing to the project's TotImportLNGTerminalCapacityinBcm/y=20.01 -- i.e. the range's MAX (>20 bcm/y) is already reflected at the project-total level via the Expansion unit-row, per the capacity-range-record-max convention (the range itself doesn't belong crammed into one cell here since it's genuinely phased across two unit-rows, not a single ambiguous figure). Re-confirmed exact phrases '15 billion cubic meters' and 'expandable to more than 20 bcm' on tes-h2.com (url_verifier PASS both). [ref-restore 2026-07-29: restored existing live URL(s) https://tes-h2.com/news/tes-launches-new-capacity-booking-round-at-wilhelmshaven-green-energy-hub per merge-semantics rule (bot-block != dead; never drop a URL not proven dead)]",
+    "scope_note": "Unit-level field; representative re-verify on the main unit-row only.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131001",
+    "unit_id": "G100002100100",
+    "terminal_name": "Jade Energy LNG Terminal",
+    "unit_name": "--",
+    "country": "Germany",
+    "field_name": "Parent",
+    "old_value": "Tree Energy Solutions BV [70.0%]; Netherlands Fortescue Future Industries Holdings BV [30.0%]",
+    "new_value": "Tree Energy Solutions BV [70.0%]; Netherlands Fortescue Future Industries Holdings BV [30.0%]",
+    "confidence": "blue",
+    "source_tier": "secondary",
+    "ref_field": null,
+    "ref_urls": [
+      "https://capital.fortescue.com/en/articles/fortescue-future-industries-and-tree-energy-solutions-partner-to-develop-world-leading-gre",
+      "https://www.jadeenergy.de/news/jade-energy-launched-in-wilhelmshaven-to-advance-energy-security-and-decarbonization"
+    ],
+    "source_notes": "Re-verified, unchanged. Discovery flagged verifying whether Fortescue should be added as co-sponsor/parent -- it already IS present (Fortescue Future Industries Holdings BV, 30% parent stake, entity ID E100002025092), alongside Tree Energy Solutions BV (70%, E100002025093); Owner itself correctly stays the single operating entity 'Deutsche Gruengas- und Energieversorgung GmbH' (DGGEV), matching the 2026-04-30 Jade Energy launch material. No entity or ownership edit needed. Note: entity_lookup.py run bare for both 'Fortescue' and 'Tree Energy Solutions' returned 'not_found_in_local_data' -- a false negative (the local scanner apparently doesn't index the Parent column the way it does Owner/Operator); flagged in qa, not acted on, since both entities plainly already carry GEM Entity IDs on this very record.",
+    "scope_note": "Project-level field (identical across unit-rows); representative re-verify on the main unit-row only.",
+    "researcher_initials": "AI-draft (sweep)"
+  }
+]

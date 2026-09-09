@@ -1,0 +1,66 @@
+[
+ {
+  "terminal_id": "T100000131084",
+  "unit_id": "G100002108400",
+  "terminal_name": "Brunsbüttel LNG Terminal",
+  "unit_name": "--",
+  "country": "Germany",
+  "field_name": "ProposalDate [ref]",
+  "old_value": "http://www.lngworldshipping.com/news/view,gasunie-plans-midsize-lng-terminal-near-hamburg_45948.htm",
+  "new_value": "https://web.archive.org/web/20170413215219/http://www.lngworldshipping.com/news/view,gasunie-plans-midsize-lng-terminal-near-hamburg_45948.htm",
+  "confidence": "yellow",
+  "source_tier": "secondary",
+  "ref_field": null,
+  "ref_urls": [
+   "https://web.archive.org/web/20170413215219/http://www.lngworldshipping.com/news/view,gasunie-plans-midsize-lng-terminal-near-hamburg_45948.htm"
+  ],
+  "source_notes": "Citation repair found by the orchestrator, NOT by the country pass -- this cell was invisible to the QC sweep because citation_qc.py split ref cells on commas and this URL has a literal comma in its path ('/news/view,gasunie-plans-...'), so the checker graded the truncated stub '/news/view' as ok. Extractor fixed this session. The full URL is genuinely dead: lngworldshipping.com has lapsed entirely and now serves a Hover domain-parking page (its newest Wayback capture, 20260406195817, is that parking page at 2.4 KB -- do NOT cite it). The article itself survives at capture 20170413215219 (HTTP 200, 12.7 KB, retrieved and read this session): 'Gasunie plans midsize LNG terminal near Hamburg', Wed 04 Jan 2017, by Karen Thomas, reporting Gasunie's plan for 'a midsize LNG terminal in the Hamburg region'. That dates the proposal to January 2017 and matches GEM's ProposalYear=2017 + ProposalMonth=January exactly. Repaired to the archived copy rather than dropped -- same source, stable address, nothing lost. Remains a single trade-press source (yellow); a second independent citation for the Jan-2017 proposal would upgrade it.",
+  "researcher_initials": "AI-draft (orchestrator)",
+  "dropped_urls_dead": [
+   "http://www.lngworldshipping.com/news/view,gasunie-plans-midsize-lng-terminal-near-hamburg_45948.htm"
+  ]
+ },
+ {
+  "terminal_id": "T100000131097",
+  "unit_id": "G100002109700",
+  "terminal_name": "Wilhelmshaven TES FSRU",
+  "unit_name": "--",
+  "country": "Germany",
+  "field_name": "Location [ref]",
+  "old_value": "https://tes-h2.com/signing-of-chartering-contract-for-fifth-fsru/,TES, https://www.marinetraffic.com/en/ais/home/shipid:114502/zoom:11",
+  "new_value": "https://web.archive.org/web/20230602090047/https://tes-h2.com/signing-of-chartering-contract-for-fifth-fsru/, https://www.marinetraffic.com/en/ais/home/shipid:114502/zoom:11",
+  "confidence": "yellow",
+  "source_tier": "primary",
+  "ref_field": null,
+  "ref_urls": [
+   "https://web.archive.org/web/20230602090047/https://tes-h2.com/signing-of-chartering-contract-for-fifth-fsru/",
+   "https://www.marinetraffic.com/en/ais/home/shipid:114502/zoom:11"
+  ],
+  "source_notes": "Two defects in one cell, both surfaced by the comma-split fix to citation_qc.py this session. (1) The first URL carried a stray ',TES' suffix -- a mangled annotation fused onto the URL -- which made the cell's own text an invalid address; removed. (2) With the suffix stripped, the live tes-h2.com URL is a hard HTTP 404 (site restructured), so it is repaired to Wayback capture 20230602090047 (HTTP 200, 131 KB, retrieved and read this session). That page is TES's own release on the German federal government's fifth FSRU charter and states 'The floating platform is to be used at the Wilhelmshaven site from Autumn 2023', explicitly supporting Location='Wilhelmshaven'. The marinetraffic.com vessel page is KEPT unchanged: it returns HTTP 403 with no Wayback capture, which is a bot-block, not proven rot, so it must not be dropped -- but it is also unverifiable, which is why this stays yellow rather than green despite the primary sponsor source. Reviewer note: a marinetraffic ship-tracking page is weak evidence for a terminal's location in any case; a port-authority or NPorts citation would be the better second source.",
+  "researcher_initials": "AI-draft (orchestrator)",
+  "dropped_urls_dead": [
+   "https://tes-h2.com/signing-of-chartering-contract-for-fifth-fsru/,TES"
+  ]
+ },
+ {
+  "terminal_id": "T100000131097",
+  "unit_id": "G100002109700",
+  "terminal_name": "Wilhelmshaven TES FSRU",
+  "unit_name": "--",
+  "country": "Germany",
+  "field_name": "FacilityType [ref]",
+  "old_value": "https://www.offshore-energy.biz/installation-jobs-for-germanys-wilhelmshaven-2-lng-terminal-go-to-norwegian-and-french-firms/?utm_source=substack&utm_medium=email,TES",
+  "new_value": "https://www.offshore-energy.biz/installation-jobs-for-germanys-wilhelmshaven-2-lng-terminal-go-to-norwegian-and-french-firms/?utm_source=substack&utm_medium=email",
+  "confidence": "yellow",
+  "source_tier": "secondary",
+  "ref_field": null,
+  "ref_urls": [
+   "https://www.offshore-energy.biz/installation-jobs-for-germanys-wilhelmshaven-2-lng-terminal-go-to-norwegian-and-french-firms/?utm_source=substack&utm_medium=email"
+  ],
+  "source_notes": "Same stray ',TES' fragment fused onto the end of the URL as in this row's Location [ref] (both hidden from the QC sweep by the comma-splitting bug in citation_qc.py, fixed this session). Removing the fragment is the whole repair -- the underlying page is live and verified this session with the cell's actual claimed value as the token: FacilityType='import' -> PASS, and 'Wilhelmshaven' -> PASS. No URL added or dropped. Single trade-press source, so yellow. [ref-restore 2026-07-29: restored existing live URL(s) https://www.offshore-energy.biz/installation-jobs-for-germanys-wilhelmshaven-2-lng-terminal-go-to-norwegian-and-french-firms/?utm_source=substack&utm_medium=email,TES per merge-semantics rule (bot-block != dead; never drop a URL not proven dead)] ORCHESTRATOR NOTE (merge gate): the existing GEM cell held this URL with a stray ',TES' fragment fused onto the end of its query string — a copy/paste corruption, not a second citation. The declared drop is that corrupted token only; the SAME document is retained in clean form in new_value (verified live, PASS on tokens 'import' and 'Wilhelmshaven'). Nothing is actually being de-cited here.",
+  "researcher_initials": "AI-draft (orchestrator)",
+  "dropped_urls_dead": [
+   "https://www.offshore-energy.biz/installation-jobs-for-germanys-wilhelmshaven-2-lng-terminal-go-to-norwegian-and-french-firms/?utm_source=substack&utm_medium=email,TES"
+  ]
+ }
+]

@@ -1,0 +1,217 @@
+[
+  {
+    "terminal": "Brunei LNG Terminal",
+    "terminal_id": "T100000130273",
+    "country": "Brunei",
+    "verdict": "YES",
+    "mechanical": "True",
+    "captive_category": "mechanical_drive+power_generation",
+    "hardware_summary": "On-site fuel-gas-fired energy system at the Lumut plant ('equivalent to a 300 MW power station', 9 steam boilers fired on fuel gas incl. recovered BOG) driving both turbine-compressors (mechanical drive) and generator turbines (electricity); co-located with this is the 246 MWe Lumut Cogen Power Station, gas-fired, commissioned 1987, operated by Brunei LNG Sdn Bhd itself, supplying electricity and steam to the plant's industrial operations.",
+    "fuel_basis": "Fuel gas (including recycled boil-off gas recovered from storage/loading) fires the boilers; Global Energy Observatory separately classifies the co-located Lumut Cogen unit as a 'Gas Power Plant'.",
+    "confidence": "green",
+    "captive_summary": "Brunei LNG's Lumut plant runs its own on-site, fuel-gas-fired energy system (nine steam boilers, described by the operator as equivalent to a 300 MW power station) that drives both the liquefaction trains' turbine-compressors and generator turbines. The co-located 246 MWe Lumut Cogen Power Station is operated by Brunei LNG Sdn Bhd itself and supplies electricity and steam to the site.",
+    "electric_mw": "246",
+    "mechanical_drive_note": "Operator states the steam-boiler energy system 'drive[s] the turbine compressor and generator turbines' (fuel-gas-fired, incl. recovered BOG); no separate shaft-hp/MW figure disclosed for the compressor-drive train specifically.",
+    "confirmed_how": "Brunei LNG's own site (bruneilng.com/the-plant/) states the plant runs 'an energy system equivalent to a 300 MW power station, supplied by nine steam boilers driven by fuel gas' including 'recycled boil-off gas recovered from storage and loading', and that these boilers/turbines 'drive the turbine compressor and generator turbines'. Independently, Global Energy Observatory (geoid/45546) states the co-located 'Lumut Cogen Power Station' (246 MWe, natural gas, commissioned 1987) is 'located at Brunei LNG, Lumut, Belait, Brunei Darussalam' and 'operated by Brunei LNG Sdn. Bhd.', supplying 'both electricity and steam to industrial operations'.",
+    "refs": [
+      "https://bruneilng.com/the-plant/",
+      "https://globalenergyobservatory.org/geoid/45546"
+    ],
+    "verification_log": [
+      {"url": "https://bruneilng.com/the-plant/", "tokens": ["300 MW", "steam boilers"], "result": "PASS", "note": "operator's own plant description page"},
+      {"url": "https://globalenergyobservatory.org/geoid/45546", "tokens": ["Brunei LNG", "246"], "result": "PASS", "note": "independent power-plant database entry, operator = Brunei LNG Sdn Bhd"}
+    ],
+    "gogpt_prior_assessment": "GOGPT's 'Lumut Cogen power station' (246 MW, captive=True, 0.56 km) is confirmed correct: GEO independently states it is operated by Brunei LNG Sdn Bhd itself, on-site at the Lumut plant, and supplies both electricity and steam to the site.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "A GOGPT record for Lumut Cogen power station already exists and is already correctly flagged captive=True; no new record needed.",
+    "status_or_other_findings": "None beyond the power finding.",
+    "notes": "Two possibly-overlapping descriptions found (BLNG's own 'energy system equivalent to 300 MW' steam-boiler narrative vs. GEO's 246 MWe Lumut Cogen figure) may refer to the same underlying plant described two ways, or to genuinely separate/adjacent generation; either way both are on-site and gas-fired, so the YES verdict holds regardless."
+  },
+  {
+    "terminal": "Botum Sakor LNG Terminal",
+    "terminal_id": "T100000131166",
+    "country": "Cambodia",
+    "verdict": "NO",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "yellow",
+    "captive_summary": "This is an integrated 'LNG-to-Power' project: the import terminal exists specifically to fuel an adjacent 2x450 MW (900 MW) CCGT power station under a 30-year PPA with Electricite du Cambodge. Documented gas flow is terminal -> regasification -> CCGT -> grid export; no separate captive generation for the terminal's own operations is described anywhere found.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "SEAsia.co: the project is 'Cambodia's first liquefied natural gas (LNG)-fired power plant' developed by Royal Group as an integrated LNG-receiving-port-plus-CCGT facility. LinkedIn (Benedict Dimayuga industry write-up): 'Cambodia's first utility-scale LNG import terminal integrated with a Combined Cycle Gas Turbine (CCGT) power plant' with gas flow 'LNG -> Regasification -> Gas Turbines -> Heat Recovery Steam Generators -> Steam Turbines -> Grid', 2x450 MW CCGT under a 30-year PPA with Electricite du Cambodge (EDC), 'no separate captive power system for terminal operations is mentioned.'",
+    "refs": [
+      "https://seasia.co/short/cambodias-1-900-mw-lng-plant-to-start-operations-in-late-2026",
+      "https://www.linkedin.com/pulse/cambodias-first-lng-to-power-project-900-mw-benedict-dimayuga-umbmc"
+    ],
+    "verification_log": [
+      {"url": "https://seasia.co/short/cambodias-1-900-mw-lng-plant-to-start-operations-in-late-2026", "tokens": ["Royal Group", "combined-cycle"], "result": "PASS", "note": ""},
+      {"url": "https://www.linkedin.com/pulse/cambodias-first-lng-to-power-project-900-mw-benedict-dimayuga-umbmc", "tokens": ["Combined Cycle Gas Turbine", "Electricit"], "result": "PASS", "note": ""}
+    ],
+    "gogpt_prior_assessment": "GOGPT's 'Botum Sakor power station' (900 MW, captive=False, 1.79 km) is correctly non-captive TO the LNG terminal: it is the merchant/PPA-backed CCGT the terminal supplies gas to (direction OUT), not a plant that powers the terminal. See https://seasia.co/short/cambodias-1-900-mw-lng-plant-to-start-operations-in-late-2026 for independent detail on the power station itself.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Record already exists in GOGPT (Botum Sakor power station) and it is not this terminal's captive power (opposite direction: PowerPlantsSupplied).",
+    "status_or_other_findings": "Construction confirmed underway (matches GEM's current 'construction' status); EPC contractor for the LNG terminal is CNCEC CC6; developer is Royal Group; total project cost ~US$1.35 billion; phase 1 targeted end-2026, phase 2 2027.",
+    "notes": "Classic direction-test case (terminal's whole purpose = fueling an adjacent power plant): GEM's own power_plants_supplied field already correctly names 'Botum Sakor power station' for this terminal. No basis found for flipping to captive."
+  },
+  {
+    "terminal": "Cambodia LNG Project",
+    "terminal_id": "T100000130709",
+    "country": "Cambodia",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "red",
+    "captive_summary": "Both units (Phase 2, Phase 3) are cancelled (inferred). Extensive searching (multiple query variants for 'Cambodia LNG Project', 'Cambodia Natural Gas Corp', Kampong Speu/Kampong Spueu floating LNG) turned up zero independent trade-press, news, or regulatory coverage of this project ever reaching a published design, FID, or construction start -- in sharp contrast to Cambodia's other (and apparently only real) LNG project, Botum Sakor, which has abundant contemporary coverage.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Negative-evidence screen: no independent source found describing this project's design, sponsor activity, or any post-proposal milestone; GEM's own status for both listed units is cancelled (inferred).",
+    "refs": [],
+    "verification_log": [],
+    "gogpt_prior_assessment": "No GOGPT prior provided for this terminal (gogpt_prior: no).",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Project cancelled/never built; no generation to add.",
+    "status_or_other_findings": "None found.",
+    "notes": "SCREEN criterion: cancelled-and-never-built, with no evidence a design was ever published (distinct from Botum Sakor, which is a separate, active Cambodia LNG project)."
+  },
+  {
+    "terminal": "Hong Kong FSRU",
+    "terminal_id": "T100000130388",
+    "country": "Hong Kong",
+    "verdict": "YES",
+    "mechanical": "False",
+    "captive_category": "power_generation",
+    "hardware_summary": "4x MAN 9L51/60 dual-fuel generators, each rated >9 MW (>36 MW aggregate), powering two ABB AC 6,600V electric motors and, per class-society description, the vessel's own systems; five regasification units aboard bring LNG to gaseous state before it is piped ashore.",
+    "fuel_basis": "Bureau Veritas (the vessel's classification society) describes the engine-room fit as 'four MAN 9L51/60 dual fuel generators' -- i.e. gas/BOG-capable, not diesel-only.",
+    "confidence": "green",
+    "captive_summary": "The Bauhinia Spirit FSRU (world's largest FSRU, 263,000 m3, delivered 2023) is a self-contained, self-propelled vessel whose own onboard dual-fuel generators supply its electrical loads, including the five regasification units that vaporize the cargo before send-out. This is on-site (vessel-mounted) gas-fired generation powering the terminal's own regasification process.",
+    "electric_mw": "36",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Bureau Veritas (marine-offshore.bureauveritas.com), the vessel's classification society, states the engine room comprises 'two ABB AC 6,600V electric motors powered by four MAN 9L51/60 dual fuel generators that provide more than 9MW per unit', and that the vessel has 'five regasification units to bring the cryogenic and liquid cargo to a gaseous state to be piped ashore'.",
+    "refs": [
+      "https://marine-offshore.bureauveritas.com/magazine/explore-mols-fsru-bauhinia-spirit-bureau-veritas"
+    ],
+    "verification_log": [
+      {"url": "https://marine-offshore.bureauveritas.com/magazine/explore-mols-fsru-bauhinia-spirit-bureau-veritas", "tokens": ["MAN 9L51/60", "6,600V"], "result": "PASS", "note": "vessel classification society technical article; treated as primary/technical source"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT prior provided for this terminal (gogpt_prior: no).",
+    "gogpt_candidate": "REVIEWER CALL",
+    "gogpt_candidate_basis": "Generation exists and has a citable nameplate (4x >9 MW MAN dual-fuel gensets, >36 MW aggregate), but it is vessel-mounted (FSRU onboard power plant), not a fixed shore station -- unclear whether GOGPT's ontology captures vessel-based captive generation as a station.",
+    "status_or_other_findings": "Confirms GEM's existing power_plants_supplied entries: the terminal feeds regasified gas via two subsea pipelines to Black Point and CKI Lamma power stations onshore -- that is the opposite (OUT) direction and is NOT captive power; only the vessel's own onboard generation (above) counts here.",
+    "notes": "Direction-test case handled correctly in existing GEM data (power_plants_supplied already populated with Black Point / CKI Lamma); the YES verdict here rests solely on the vessel's own onboard gensets, not on the subsea gas it exports."
+  },
+  {
+    "terminal": "Kiyanly LNG Terminal",
+    "terminal_id": "T100000130827",
+    "country": "Turkmenistan",
+    "verdict": "NO",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "The only nearby gas-fired plant found -- the 1,574 MW Kiyanly combined-cycle power plant built by Calik Enerji -- was contracted by Turkmenistan's Ministry of Energy as national-grid infrastructure ('planned to replace old-technology power plants') rather than as a dedicated industrial plant for the adjacent Kiyanly gas-chemical complex; Turkmenistan exports electricity from its grid to Iran, Afghanistan and Uzbekistan. No evidence found of a separate, smaller on-site generator captive to the gas-chemical/LNG complex itself.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "WFW (law firm advising on the plant's financing) states Calik Enerji built 'a state-of-the-art 1574 MW combined cycle power plant at Kiyanly in Turkmenistan, which is planned to replace old-technology power plants' (national modernization framing, not complex-specific). Trend.az (bot-blocked live, verified via Wayback) states 'the project is being implemented by Calik Enerji under a contract concluded with Turkmenistan's Ministry of Energy' -- i.e. the counterparty is the state Ministry of Energy, not the Kiyanly gas-chemical complex operator.",
+    "refs": [
+      "https://www.wfw.com/press/wfw-advises-calik-enerji-on-us586-25m-turkmenistan-power-plant-facility-agreements/",
+      "https://www.trend.az/business/4186631.html"
+    ],
+    "verification_log": [
+      {"url": "https://www.wfw.com/press/wfw-advises-calik-enerji-on-us586-25m-turkmenistan-power-plant-facility-agreements/", "tokens": ["1574 MW", "Kiyanly"], "result": "PASS", "note": ""},
+      {"url": "https://www.trend.az/business/4186631.html", "tokens": ["Ministry of Energy", "Kiyanly"], "result": "PASS", "note": "bot-blocked live (HTTP 403); value verified via Wayback snapshot 20260517041625"}
+    ],
+    "gogpt_prior_assessment": "GOGPT's 'Kiyanly power station' (1574 MW, captive=False, 0.49 km) is confirmed correctly non-captive: it was contracted by/for Turkmenistan's Ministry of Energy as national/regional-grid infrastructure, not as the gas-chemical complex's dedicated plant. See https://www.wfw.com/press/wfw-advises-calik-enerji-on-us586-25m-turkmenistan-power-plant-facility-agreements/ for independent detail on the power plant itself.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Record already exists in GOGPT and is correctly flagged non-captive (belongs to the national grid operator, not the LNG/gas-chemical site).",
+    "status_or_other_findings": "Scope flag (not acted on): independent sourcing consistently describes the Kiyanly site as a gas-to-polymers (GTP) petrochemical complex (PE/PP production via a PETRONAS-operated Gas Treatment Plant and Onshore Gas Terminal) rather than describing a distinct marine LNG liquefaction/loading train; no source found confirming ship-borne LNG export from Kiyanly. Whether 'Kiyanly LNG Terminal' as tracked in GEM is genuinely a marine LNG export facility as designed may be worth a scope check outside this captive-power pass.",
+    "notes": "Captive-to-whom trap resolved: the large adjacent power plant belongs to the state grid operator, not the industrial site."
+  },
+  {
+    "terminal": "SLNG 2 LNG Terminal",
+    "terminal_id": "T100000130890",
+    "country": "Singapore",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "ABB-supplied 'medium voltage generator' plus 6.6kV switchboards for cargo and regasification, and motor/transformer/drive for propulsion, aboard the FSRU (built by Hanwha Ocean, owned by Mitsui O.S.K. Lines, chartered by Singapore LNG Corp, 200,000 m3, delivery 2027, mooring at Jurong Port with service from 2030).",
+    "fuel_basis": "Not established for this specific vessel -- the ABB press release names a 'medium voltage generator' without stating its fuel (gas/dual-fuel vs diesel-only).",
+    "confidence": "yellow",
+    "captive_summary": "ABB's press release confirms this FSRU newbuild carries its own onboard 'medium voltage generator' feeding 6.6kV switchboards that power cargo handling and regasification directly (i.e. on-site generation powering the terminal's own process) -- but the release does not state the generator's fuel type, so the fuel gate cannot be confirmed either way from this source.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "ABB press release (new.abb.com/news/detail/128927/): 'ABB's integrated electrical system on board the Floating Storage and Regasification Unit (FSRU) will comprise a medium voltage generator, 6.6kV switchboards for cargo and regasification, and the motor, transformer and drive for propulsion.' FSRU owned by Mitsui O.S.K. Lines (MOL), chartered by Singapore LNG Corporation, 200,000 m3, built by Hanwha Ocean, delivery 2027, commissioning at Jurong Port 2030, ~5 million tons/year processing capacity (~50% expansion of Singapore's import capacity).",
+    "refs": [
+      "https://new.abb.com/news/detail/128927/press-release-abb-to-power-singapores-first-floating-lng-terminal"
+    ],
+    "verification_log": [
+      {"url": "https://new.abb.com/news/detail/128927/press-release-abb-to-power-singapores-first-floating-lng-terminal", "tokens": ["medium voltage generator", "6.6kV"], "result": "PASS", "note": ""},
+      {"url": "https://www.marinelog.com/news/abb-to-power-singapore-lngs-first-fsru/", "tokens": ["medium voltage generator", "regasification"], "result": "FAIL", "note": "HTTP 403 bot-block; Wayback snapshot fetch also failed -- not used as a citation"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT prior provided for this terminal (gogpt_prior: no).",
+    "gogpt_candidate": "MAYBE",
+    "gogpt_candidate_basis": "On-site (vessel) generation confirmed to exist and to power cargo/regasification directly, but nameplate MW and fuel type are undisclosed and the vessel is still pre-delivery (2027) -- re-check trade press closer to delivery/commissioning (2030) for the fuel-type confirmation that would resolve this to a firm YES or NO.",
+    "status_or_other_findings": "Project is SLNG's second/expansion terminal: an FSRU (not fixed onshore infrastructure), 200,000 m3, ~5 Mtpa, moored at Jurong Port, in service 2030.",
+    "notes": "Do not assume dual-fuel from FSRU-industry precedent -- the fuel gate genuinely was not confirmed by any source found for this specific vessel, hence INSUFFICIENT rather than YES."
+  },
+  {
+    "terminal": "Singapore LNG Terminal",
+    "terminal_id": "T100000130309",
+    "country": "Singapore",
+    "verdict": "NO",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "The GOGPT-flagged nearby plant ('Singapore Chemical power station', 444 MW) is ExxonMobil's own cogeneration plant (aka ExxonMobil Cogen Plant), serving ExxonMobil's own refinery and Singapore Chemical Plant petrochemical complex on Jurong Island -- a different industrial host, not SLNG. No evidence found anywhere of SLNG operating its own on-site gas generation; SLNG's own materials describe its role as supplying ~50% of Singapore's gas for power generation (i.e. gas flows OUT of the terminal to Singapore's grid-connected power stations), the mirror image of captive power.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Singapore's Ministry of Sustainability and the Environment (nccs.gov.sg), official government speech at the plant's opening: 'I am happy to witness the opening of ExxonMobil's third co-generation plant in Singapore...will increase total co-generation capacity to 440 megawatts (MW)' -- confirms the ~444 MW cogen plant on Jurong Island is ExxonMobil's own, not SLNG's. SLNG's own site (slng.com.sg/stories/catalysing-lng-ecosystem-and-energy-transition) describes the terminal as supplying roughly 50% of Singapore's total natural gas demand for power generation -- i.e. its role is fuel supply OUT to power stations, not self-generation.",
+    "refs": [
+      "https://www.nccs.gov.sg/media/speeches/speech-by-masagos-zulkifli-minister-for-the-environment-and-water-resources-at-the-exxonmobil-jurong-cogeneration-plant-opening-ceremony-12-october-2017/",
+      "https://www.slng.com.sg/stories/catalysing-lng-ecosystem-and-energy-transition"
+    ],
+    "verification_log": [
+      {"url": "https://www.nccs.gov.sg/media/speeches/speech-by-masagos-zulkifli-minister-for-the-environment-and-water-resources-at-the-exxonmobil-jurong-cogeneration-plant-opening-ceremony-12-october-2017/", "tokens": ["ExxonMobil", "co-generation"], "result": "PASS", "note": "official Singapore government ministry speech"},
+      {"url": "https://www.slng.com.sg/stories/catalysing-lng-ecosystem-and-energy-transition", "tokens": ["50%", "power generation"], "result": "PASS", "note": "SLNG's own site"}
+    ],
+    "gogpt_prior_assessment": "GOGPT's 'Singapore Chemical power station' (444 MW, captive=True, 4.05 km) is captive, but to ExxonMobil's own refinery/petrochemical complex -- NOT to SLNG. Classic 'captive to whom' host mismatch: GOGPT's captive=True is correct for its actual host (ExxonMobil), just not for this terminal. See https://www.nccs.gov.sg/media/speeches/speech-by-masagos-zulkifli-minister-for-the-environment-and-water-resources-at-the-exxonmobil-jurong-cogeneration-plant-opening-ceremony-12-october-2017/ for independent confirmation it is ExxonMobil's plant.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Record already exists in GOGPT; it is not captive to this terminal (belongs to a different Jurong Island industrial host, ExxonMobil).",
+    "status_or_other_findings": "None beyond the power finding.",
+    "notes": "Emergency/backup genset fuel at SLNG's own site could not be confirmed from any source found (no EMA/NEA filing located); this residual gap does not change the NO verdict since the only identified generation candidate near the terminal is definitively another host's plant, but it is flagged in case a future pass finds a primary SLNG environmental/EMA filing worth checking for a small backup genset."
+  },
+  {
+    "terminal": "Singapore Offshore LNG Terminal",
+    "terminal_id": "T100000130889",
+    "country": "Singapore",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "yellow",
+    "captive_summary": "This was an EMA Expression-of-Interest concept (Build-Own-Operate an offshore LNG terminal, EOI issued November 2019) that never proceeded past the solicitation stage -- no siting, no construction, no operator ever confirmed. GEM's own record shows no state/province or coordinates and status cancelled (inferred), and the owner field is annotated '[TO BE DELETED]'.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Riviera Maritime Media: 'In November, Singapore issued an expression of interest (EOI) to build, own and operate a floating LNG terminal that would be licensed by EMA and most likely become operational after 2025.' No subsequent construction/FID coverage found for this specific offshore proposal (distinct from the SLNG 2 FSRU project awarded to Hanwha Ocean/MOL, which is the terminal that actually proceeded).",
+    "refs": [
+      "https://www.rivieramm.com/news-content-hub/terminal-and-bunkering-investments-advance-singaporersquos-lng-ambitions-57946"
+    ],
+    "verification_log": [
+      {"url": "https://www.rivieramm.com/news-content-hub/terminal-and-bunkering-investments-advance-singaporersquos-lng-ambitions-57946", "tokens": ["expression of interest", "EMA"], "result": "PASS", "note": ""},
+      {"url": "https://tankterminals.com/news/terminal-bunkering-investments-advance-singapore-lng-ambitions/", "tokens": ["expression of interest", "EMA"], "result": "FAIL", "note": "HTTP 404, not used"},
+      {"url": "https://www.oilcor.com/2019/12/31/singapore-makes-progress-on-second-import-terminal-and-on-becoming-global-lng-trading-hub/", "tokens": ["expressions of interest", "28th February 2020"], "result": "FAIL", "note": "HTTP 500, not used"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT prior provided for this terminal (gogpt_prior: no).",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Project never built; no generation to add.",
+    "status_or_other_findings": "The EOI's stated aim (operational 'after 2025') appears to have been superseded/absorbed by the SLNG 2 FSRU project (Hanwha Ocean/MOL, chartered by Singapore LNG Corp, in service 2030), which is tracked separately in GEM.",
+    "notes": "SCREEN criterion: cancelled, never built beyond a 2019-2020 EOI/solicitation stage."
+  }
+]

@@ -53,6 +53,33 @@ The export does NOT contain:
 
 See `lifecycle_rules.md` for the rules that derive current status from a timeline.
 
+## Behind the export: the read-only Postgres tables
+
+Several things the export cannot answer are one query away in the read-only Postgres
+(`GEM_READONLY_DB_URL`, engine via `paths.get_engine()`). LNG scope is always
+`plant."projectType" = 8 and deleted = false`; export IDs map as `TerminalID` = `T` + `plant.id`,
+`UnitID` = `G` + `powerplant_unit.id`.
+
+**Postgres folds unquoted identifiers to lowercase**, so every camelCase column must be
+double-quoted: `"projectType"`, `"plantJSON"`, `"plantLevelLocation"`, `"mergedInto"`,
+`"ultimateParent"`. An unquoted one fails with `UndefinedColumn: column "..." does not exist`.
+
+| Table | What it holds | Why you'd reach for it |
+|---|---|---|
+| `company` | **The entity table — it is NOT called `entity`** (87,631 rows). Columns include `id, name, name_local, name_search, country_id, abbreviation, deleted, "mergedInto", "ultimateParent", "gemParents"`. | Authoritative entity existence check (`entity_lookup.py --pg`). `name_search` is ASCII-folded, so accented names only match folded. |
+| `plant_owner` | `(id, share, "shareDatasource", company_id, plant_id, powerplant_unit_id, "impliedShare", "enhancedImpliedShare")` | The link table the export's `Owner`/`Parent`/`Operator` **strings are rendered from**. A bad owner name is an entity-system problem, not an LNG field edit. |
+| `unit_update` | `(id, "lastUpdated", "researchStatus_id", updater_id, unit_id)` | The per-unit "marked updated" tick log behind the export's `LastUpdated` / `Researcher`. Source of the coverage audit. |
+| `research_status` | `(id, option)` — **the label column is `option`, not `name`**: 1 added, 2 updated, 3 no changes, 4 in progress, 5 no interested party found | Distinguishes a substantive tick from a "no changes" tick. |
+| `plant_history` | `(id, plant_id, editor_id, modified, "plantJSON" jsonb)` | Plant-level field snapshots — **the only real audit trail for coordinate edits**, which `LastUpdated`/`Researcher` do not track at all. Walked by `location_edit_provenance.py`. |
+| `status_timeline` | ordered timeline entries, joined via `powerplant_unit` → `plant` | The whole timeline is readable here; `fetch_timeline.py` reads it by default. A status change is never blocked for want of a timeline. |
+| `country` | **has no `name` column** | Source `Country/Area` from the export CSV keyed by TerminalID instead of joining. |
+
+**`plantLevelLocation = false` on 14 LNG terminals.** Their coordinates legitimately live on
+the unit rows and the plant-level lat/lon are NULL, so they show up as `unit_level` /
+`NO HISTORY` in `location_edit_provenance.py` and must be exempted from
+"project-level fields inconsistent across unit-rows" checks — `completeness_sweep.py` does
+this, and it removed 34 of 55 false `project_field_inconsistent` findings.
+
 ## Field classification: project-level vs unit-level vs mixed
 
 The methodology doc treats some fields as "project-level" and others as "unit-level," but empirically several fields the manual classifies as project-level vary across units in practice. This matters for the build script: writing a "project-level" update to only one unit-row produces an inconsistent next-export.
@@ -300,17 +327,24 @@ The `inferred 2 y` / `inferred 4 y` values encode the year-threshold rule (2 yea
 
 For LNG terminals (Fuel = `LNG`): **use `mtpa` (preferred) or `bcm/y`.**
 
-Full enum seen: `mtpa` · `bcm/y` · `bpd` · `bcf/d` · `MMcf/d` · `gal/day` · `tpa` · `MWh/d` · `TJ/d`
+Full enum seen: `mtpa` (955) · `bcm/y` (88) · `bcf/d` (26) · `MMcf/d` (25) · `bpd` (12) · `gal/day` (3) · `MWh/d` (1) · `TJ/d` (1) · `tpa` (1) · blank (169).
 
-Non-LNG units (`bpd`, `bcf/d`, `MMcf/d`, etc.) appear on the 51 non-LNG rows (oil, NGL, NH3, LH2, eLNG). If a new value is needed for an LNG terminal, the methodology says to flag Rob/Baird rather than invent a unit.
+`bpd` is the only unit confined to non-LNG rows (all 12 are `Fuel = Oil`). **Every other off-catalog unit sits on LNG rows** — `bcf/d`, `MMcf/d`, `gal/day`, `MWh/d`, `TJ/d` and `tpa` account for 57 LNG rows, and with `bcm/y` a full **13% of LNG rows carrying a numeric capacity are not in mtpa** (2026-08-26 QC). Two consequences:
+
+- **Any capacity rollup must convert, never sum the `Capacity` column.** Six of those rows are in units with no clean mtpa conversion at all (`gal/day` ×3, `MWh/d`, `TJ/d`, `tpa`) — two of them live records (Hamina LNG operating, 6,000 MWh/d; Port Kembla FSRU construction, 304 TJ/d).
+- **A blank `CapacityUnits` next to a numeric `Capacity` is a red flag, not a default of mtpa.** Only 5 LNG rows are in that state and *all five* carry a magnitude implausible for the facility read as mtpa (Crib Point FSRU 100, Sendai 90, Sakaide Expansion 50 against a 1.20 mtpa sibling, Cook Inlet FSRU 22, Thi Vai Phase 1 9.50) — the number is in some other unit and the label was lost.
+
+  Sendai is the worked example of how the label goes missing: its cited source never states `90`; the page gives the vaporizer bank as ORV 30 t/h ×2 + SMV 30 t/h ×1, and someone summed it to **90 t/h** — a **send-out (grid-injection) rate**, ~0.79 mtpa — then entered the bare number. Note that "injection capacity" is industry terminology for send-out into the grid, **not** a GEM field: no column, JSON key or lookup value containing `inject` exists anywhere in the database. Findings in `batches/staging/qc-20260826_0914_ET/capacity_units.json`.
+
+If a new value is needed for an LNG terminal, the methodology says to flag Rob/Baird rather than invent a unit.
 
 ### FacilityType
 
-`import` (753) · `export` (509)
+`import` (784) · `export` (494) · blank (3)
 
 ### Fuel
 
-For standard work: filter to `LNG` (1,212 rows). Other values exist but are out of scope: `Oil` (35), `NGL` (5), `NH3` (6), `LH2` (2), `eLNG` (1), `Oil+NGL` (1), `Oil+Fuels` (1).
+For standard work: filter to `LNG` (1,257 rows of 1,281; `eLNG` (1) is in scope too, and a blank `Fuel` is treated as LNG). Other values are out of scope: `Oil` (15), `NH3` (6), `LH2` (2). The `NGL` / `Oil+NGL` / `Oil+Fuels` values recorded in earlier revisions of this doc no longer appear — counts drift, so re-derive from the fresh export rather than quoting these.
 
 ### FIDStatus
 
@@ -387,7 +421,7 @@ The IDs are assigned by the GEM database backend. Never invent or modify them.
 
 ## Schema drift detection
 
-`pull_gem_db.py` derives the column-index map from the header row on every pull. If a known column doesn't appear, the script flags it. The expected-column list lives in `pull_gem_db.py`'s `EXPECTED_COLUMNS` dict — update it when GEM adds or renames a column.
+`pull_gem_db.py` derives the column-index map from the header row on every pull. If a known column doesn't appear, the script flags it. The expected-column list is **`LNG_EXPECTED_COLUMNS` in `../gem-db-ops/gem_colmap.py`** (as of 2026-08-11; `pull_gem_db.py`'s `EXPECTED_COLUMNS` is an alias for it) — update it **there** when GEM adds or renames a column, so this repo, `gogpt-researcher` and the pulls themselves can't disagree about the schema.
 
 Indicators of meaningful schema drift:
 - New column appears that's not in `EXPECTED_COLUMNS` → review whether it's a new in-scope field or a backend-only addition

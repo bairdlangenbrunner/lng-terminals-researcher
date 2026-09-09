@@ -1,0 +1,230 @@
+[
+ {
+  "terminal": "Amazónica LNG Terminal",
+  "terminal_id": "T100001083292",
+  "country": "Colombia",
+  "verdict": "INSUFFICIENT",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "",
+  "captive_summary": "No public source describes the terminal's own power supply. This is a proposed land-based LNG import/regasification project (not floating, contrary to the shard's floating/offshore flags) in Palermo, Magdalena, developed by Amazónica LNG (a Retramar/Affinity Energy alliance), targeting 2027 startup with an FSU-or-berth, two land-based regas trains, and truck-loading, delivering up to 150 mmscfd into the Promigas national gas grid. No environmental/permit filing, EPC release, or trade-press piece found describing on-site generation, grid connection, or a captive plant.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Reviewed gem.wiki background (name/sponsor/design context only, not cited) and the developer's own site (amazonicalng.com), which lists three service lines — 'Suministro de Gas Natural' (gas supply), 'Gas to Power', and 'Estación de Carga de Camiones' (truck loading) — but names no specific customer plant and gives no engineering detail on the regas plant's own electricity source. Searched Google News (es-419/CO) for Amazónica LNG coverage: all hits (Portafolio, El Tiempo, El Colombiano, LaRepublica, BNamericas, Forbes.co, valoraanalitik.com, ElHeraldo) are commercial/financial/policy stories about gas pricing and investment, none discuss plant engineering or power supply. Targeted searches combining the project name with 'planta de energía', 'generadores' returned zero results.",
+  "refs": [],
+  "verification_log": [
+   {
+    "url": "https://amazonicalng.com",
+    "tokens": [
+     "Gas to Power"
+    ],
+    "result": "PASS",
+    "note": "developer homepage confirms a 'Gas to Power' service line exists, but this is a bare homepage (not a data citation) and names no specific plant, so not used as a staged citation"
+   }
+  ],
+  "gogpt_prior_assessment": "Nearest GOGPT plants are Termobarranquilla power station (1,358 MW, 6 units, ~4 km, gogpt_captive=false) and Termo Flores power station (760 MW, 5 units, ~9 km, gogpt_captive=false), both large existing merchant/grid plants in Atlántico department serving the regional grid, unrelated to this proposed Magdalena land-based regas terminal. info_url: https://en.wikipedia.org/wiki/Termobarranquilla (independent, not gem.wiki; not separately verified as this is background context, not a staged value).",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "No on-site generation of any kind confirmed for this terminal; nothing to add as a GOGPT power station record.",
+  "status_or_other_findings": "Design is land-based regasification (FSU/berth + 2 onshore regas trains + truck loading), not floating/offshore as flagged in the shard's floating/offshore fields — worth a data-quality check by the orchestrator. Targeting commercial start 2027; Vitol reportedly slated to supply LNG; sponsor is a Retramar/Affinity Energy joint venture. Not verified/staged — flagging only.",
+  "notes": "The developer's own 'Gas to Power' service line (alongside 'gas supply' and 'truck loading') suggests Amazónica may market delivered gas to power generators as a customer segment (a PowerPlantsSupplied-direction lead), but no specific plant is named in any source found — not enough to stage a PowerPlantsSupplied finding; worth a follow-up look once the project's off-take contracts are public."
+ },
+ {
+  "terminal": "Andes Energy LNG Terminal",
+  "terminal_id": "T100000130960",
+  "country": "Colombia",
+  "verdict": "NO",
+  "mechanical": "False",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "yellow",
+  "captive_summary": "This is a direction-test case, not a captive finding. The Andes Energy Terminal (AET), a proposed LNG import project near Buenaventura, Valle del Cauca, is itself designed as a 5-part integrated development: LNG reception terminal, land-based regasification plant, LNG truck-loading terminal, a power plant, and gas/electrical transmission infrastructure. The project's own chairman describes the power plant as serving 'southwest and central Colombia's energy needs' — i.e. the co-located Andes Energy power station (GOGPT: 400 MW, 2 units, 0.48 km away) is a merchant plant the terminal is built to FEED, the opposite of captive power. No source describes a separate captive plant powering the regas terminal's own operations.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Black & Veatch completed a feasibility study for AET (site assessment, design/financial estimates, climate resilience/financing); reported via Offshore-Energy.biz, which quotes AET Chairman Manuel Tenorio on the Pacific-coast gas deficit driving the project, and Black & Veatch's Laszlo von Lazar on 'the project's capacity to serve southwest and central Colombia's energy needs.' The article states directly: 'The AET project comprises an LNG terminal for receiving imported LNG, a land-based regasification plant, an LNG truck loading terminal, a power plant, and associated gas and electrical transmission infrastructure.'",
+  "refs": [
+   "https://www.offshore-energy.biz/colombias-lng-project-reaches-new-stage-as-black-veatch-concludes-feasibility-study/"
+  ],
+  "verification_log": [
+   {
+    "url": "https://www.offshore-energy.biz/colombias-lng-project-reaches-new-stage-as-black-veatch-concludes-feasibility-study/",
+    "tokens": [
+     "power plant",
+     "Buenaventura"
+    ],
+    "result": "PASS",
+    "note": "confirms AET's own 5-component design including 'a power plant' serving the regional grid"
+   }
+  ],
+  "gogpt_prior_assessment": "The single GOGPT neighbor, Andes Energy power station (400 MW, 2 units, 0.48 km, gogpt_captive=false, shelved), IS the power plant named in AET's own project description above — this is the PowerPlantsSupplied relationship (gas OUT to a merchant plant), not a captive plant powering the terminal. GEM's shard already records this as power_plants_supplied='Andes Energy power station', consistent with this finding.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "GOGPT record already exists (Andes Energy power station); and in any case the relationship is PowerPlantsSupplied, not captive, so it would never be added on captive-power grounds.",
+  "status_or_other_findings": "Both AET and its power-station component are listed as shelved/not advancing per GOGPT status metadata seen in the neighbor file; not independently verified here, flagging only.",
+  "notes": "Textbook direction-test case per SOP: terminal built expressly to fuel an adjacent merchant power plant, not to power itself. No captive plant for the regas terminal's own load was found or expected here — do not confuse the Andes Energy power station's existence with a captive finding."
+ },
+ {
+  "terminal": "Ballena FSRU",
+  "terminal_id": "T100001049463",
+  "country": "Colombia",
+  "verdict": "INSUFFICIENT",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "",
+  "captive_summary": "No public source describes any power supply for this proposed FSRU project. Coverage found is entirely political/commercial: TGI and Hocol signed an agreement to pursue a La Guajira regasification terminal; the Petro government reportedly gave a green light to the 'megaproyecto'; and a separate dispute is documented over TGI wanting Ecopetrol to hand it the import terminal directly, with Ecopetrol ultimately favoring its own Coveñas project instead. No engineering filing, vessel charter, or EPC release was found describing the FSRU itself, let alone its power source.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Google News (es-419/CO) searches for 'Ballena FSRU La Guajira TGI' and combinations with 'planta de energía'/'generadores' returned only policy/ownership-dispute headlines (valoraanalitik.com, Portafolio, El Tiempo, Infobae) — no technical/design content on the FSRU itself.",
+  "refs": [],
+  "verification_log": [],
+  "gogpt_prior_assessment": "No GOGPT neighbor plant listed for this terminal_id within 30 km in the neighbor file.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "No generation of any kind confirmed for this project at this stage.",
+  "status_or_other_findings": "Project appears to be in an early, contested stage — TGI/Hocol partnership vs. Ecopetrol's preference for Coveñas; not confirmed whether this project has since stalled or proceeded. Not verified/staged — flagging only, may be relevant to a status check in a future Update batch.",
+  "notes": ""
+ },
+ {
+  "terminal": "Caribe LNG Terminal",
+  "terminal_id": "T100001061406",
+  "country": "Colombia",
+  "verdict": "INSUFFICIENT",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "",
+  "captive_summary": "No public source identifying this specific project ('Caribe LNG', owner/operator 'Caribe LNG SASESP', Sucre department, listed by GEM as construction/actual) was found despite repeated searches, so no power-supply information could be located either. Coverage of Colombia's current wave of ~14 new regasification proposals discusses the Caribe/Pacific coast generally and Ecopetrol's Coveñas project and other developers, but no article names a distinct 'Caribe LNG' company or vessel with engineering detail.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Multiple Google News (es-419/CO and en-US) searches for '\"Caribe LNG\" Colombia', '\"Caribe LNG\" Sucre FSRU', '\"Caribe LNG\" SASESP/Tolú/Coveñas' returned no matching results (zero items) or only unrelated general Colombia-LNG-shortage roundups that don't name this project specifically.",
+  "refs": [],
+  "verification_log": [],
+  "gogpt_prior_assessment": "No GOGPT neighbor plant listed for this terminal_id within 30 km in the neighbor file.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "No generation of any kind confirmed; project itself could not be independently identified in public sources searched.",
+  "status_or_other_findings": "GEM records this unit as status=construction/substatus=actual, which is a substantive status claim I could not corroborate or refute in the sources found — flagging for the orchestrator/next Update batch to re-verify the status itself, since I could not find independent confirmation this project is under construction (or even independently identify the sponsor beyond the GEM record). Not verified/staged — flagging only.",
+  "notes": "Recommend a name-shape/alias check against other Sucre-coast proposals (e.g. Coveñas FSRU, which sits very close by at similar coordinates) in case 'Caribe LNG' is an alternate/earlier name for a project GEM already tracks under a different label — I did not find enough to confirm or rule this out."
+ },
+ {
+  "terminal": "Cartagena FSRU (Colombia)",
+  "terminal_id": "T100000130562",
+  "country": "Colombia",
+  "verdict": "YES",
+  "mechanical": "False",
+  "captive_category": "power_generation",
+  "hardware_summary": "Wärtsilä-Hyundai dual-fuel diesel-electric (DFDE) generator sets aboard the FSRU Höegh Grace (Hyundai Heavy Industries-built, 170,000 cbm, Mark III membrane containment) — the vessel's own power source while providing FSRU services to SPEC at Cartagena; no separate shore-side captive plant.",
+  "fuel_basis": "DFDE = Dual-Fuel Diesel-Electric: the vessel's generator engines can burn gas fuel (typically boil-off gas) as well as diesel to produce the electric power that runs the ship's own systems and, when underway, its propulsion motors. Established via Höegh LNG's own naming release for Höegh Grace (built at Hyundai Heavy Industries) describing 'a Wärtsila-Hyundai DFDE engine', corroborated by an independent trade outlet's description of sister FSRU Höegh Gannet (same fleet, same builder, same 170,000 cbm class) as having 'dual-fuel diesel-electric (DFDE) propulsion'.",
+  "confidence": "green",
+  "captive_summary": "The FSRU Höegh Grace, which has provided SPEC's Cartagena import service since 2016, is built with Wärtsilä-Hyundai DFDE (dual-fuel diesel-electric) generating engines — this is the vessel's own onboard power generation under the FSRU-onboard convention, and it is a YES regardless of the fact no specific generating MW figure is publicly disclosed for this hull. No electric_mw figure was found in either source, so it is left blank per the rule that an undisclosed MW does not block a YES once on-site generation is documented.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Offshore-Energy.biz (World Maritime News), 'Höegh LNG Names 6th FSRU at HHI' (Apr 15, 2015): 'The 249-long FSRU boasts a Mark III membrane containment system and a Wärtsila-Hyundai DFDE engine' — naming the vessel that became Höegh Grace, delivered Q2 2015/2016 and sent to Cartagena for SPEC. Corroborated by Marine Insight's article on sister-ship Höegh Gannet (delivered 2018, same 170,000 cbm HHI-built class): 'dual-fuel diesel-electric (DFDE) propulsion.' Höegh Evi's own current fleet page (hoeghevi.com/about/fleet) independently confirms Höegh Grace is an FSRU built 2016, serving customer 'SPEC – Sociedad Portuaria El Cayao' at Cartagena, Colombia — confirming vessel identity/deployment (not itself cited for the power claim).",
+  "refs": [
+   "https://www.offshore-energy.biz/hoegh-lng-names-6th-fsru-at-hhi/",
+   "https://www.marineinsight.com/hoegh-lng-takes-delivery-of-ninth-fsru-hoegh-gannet/"
+  ],
+  "verification_log": [
+   {
+    "url": "https://www.offshore-energy.biz/hoegh-lng-names-6th-fsru-at-hhi/",
+    "tokens": [
+     "DFDE",
+     "Höegh Grace"
+    ],
+    "result": "PASS",
+    "note": "primary naming release for the vessel that became Höegh Grace, states 'Wärtsila-Hyundai DFDE engine'"
+   },
+   {
+    "url": "https://www.marineinsight.com/hoegh-lng-takes-delivery-of-ninth-fsru-hoegh-gannet/",
+    "tokens": [
+     "DFDE",
+     "dual-fuel diesel-electric"
+    ],
+    "result": "PASS",
+    "note": "independent publisher corroborating DFDE propulsion/generation across the same Höegh/HHI FSRU class"
+   }
+  ],
+  "gogpt_prior_assessment": "Nearest GOGPT plants, Cartagena power station (203 MW, 3 units, ~9.8 km, gogpt_captive=false, operating) and Mamonal power station (100 MW, 2 units, ~10.5 km, gogpt_captive=false, operating), are existing merchant/industrial-grid plants in the Cartagena/Mamonal industrial zone, unrelated to the FSRU's own onboard generation — the FSRU is moored offshore and does not draw from or feed either plant.",
+  "gogpt_candidate": "REVIEWER CALL",
+  "gogpt_candidate_basis": "Generation exists (DFDE gensets) but it is vessel-mounted FSRU onboard power with no disclosed nameplate MW — exactly the case the brief flags as unclear whether GOGPT's ontology captures a moored FSRU's own generators as a power station.",
+  "status_or_other_findings": "GEM's power_plants_supplied field already lists Termobarranquilla, Termocandelaria, and Termo Flores power stations for this terminal (regasified gas piped out to Barranquilla-area plants) — confirmed as the OPPOSITE relationship from this captive finding, per the direction test below.",
+  "notes": "Direction-test note: Termobarranquilla/Termocandelaria/Termo Flores are fed BY this terminal's regasified output (PowerPlantsSupplied), a separate and correct GEM relationship that is NOT captive power and was not restaged here."
+ },
+ {
+  "terminal": "Ciénaga FSRU",
+  "terminal_id": "T100001049368",
+  "country": "Colombia",
+  "verdict": "INSUFFICIENT",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "",
+  "captive_summary": "No public source describes any power supply for this proposed FSRU project. Coverage found (BNamericas, Portafolio, ani.gov.co, Mundo Marítimo) confirms the project exists — ANLA opened an administrative licensing process, a port-concession socialization meeting was held with the Ciénaga community, and operations are targeted for 2028 — but none describe the FSRU's own electrical/power arrangement, and the ANLA process (a licensing intake, not yet an EIA) was too early-stage to contain engineering detail.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Google News (es-419/CO) search for 'Ciénaga FSRU Colombia' surfaced: BNamericas ('Ciénaga LNG avanza en proyecto de regasificación... con opción de exportación', 'Terminal de importación de gas de Ciénaga... espera iniciar operaciones en 2028'), Portafolio ('Anla inicia trámite administrativo para nueva terminal de importación de Gas Natural'), and ani.gov.co ('Socializan proyecto de concesión portuaria a comunidad de Ciénaga'). A follow-up search combining the project with 'planta de energía'/'generadores' returned zero results.",
+  "refs": [],
+  "verification_log": [],
+  "gogpt_prior_assessment": "Nearest GOGPT plants, Termogaira power station (94 MW, 1 unit, ~24 km, announced) and Termocosta power station (94 MW, 1 unit, ~24 km, announced), are both distant, not-yet-operating merchant plants unrelated to this proposed FSRU.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "No generation of any kind confirmed for this project at this stage.",
+  "status_or_other_findings": "Project reportedly carries an export option alongside import per the BNamericas headline ('con opción de exportación') and targets 2028 startup; ANLA licensing intake underway. Not verified/staged — flagging only, may warrant a Discovery/Update look independent of the captive-power question.",
+  "notes": ""
+ },
+ {
+  "terminal": "Colombia FLNG Terminal",
+  "terminal_id": "T100000130563",
+  "country": "Colombia",
+  "verdict": "INSUFFICIENT",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "",
+  "captive_summary": "This cancelled project maps to the historical 'Caribbean FLNG' project, an Exmar-developed, Wison Offshore & Marine-built floating liquefaction barge using Black & Veatch's PRICO single mixed-refrigerant technology, rated at 72 mmscfd of feed gas. It reached a real, publicly documented design (not just a paper proposal), so it does not qualify for SCREENED despite the shard's suggested_bucket flag. However, no source found describes the barge's own power/compressor-drive arrangement (electric-motor-driven vs. gas-turbine/gas-engine-driven refrigerant compressors) — a detail liquefaction-barge write-ups of this vintage often omit — so the captive-power question itself remains unanswered.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "offshore-technology.com project page 'Caribbean FLNG Project' (URL verified live-but-bot-blocked via Wayback snapshot by url_verifier.py, token 'PRICO' PASS) describes: Exmar as developer, Wison Offshore & Marine as EPC/barge builder, Black & Veatch's PRICO liquefaction process, 72 mmscfd throughput, moored nearshore Caribbean coast of Colombia design intended for associated/stranded gas monetization. The page details process/capacity/contractor scope but not the compressor drive's power source (electric motor vs. gas turbine vs. gas engine), which is the detail needed to resolve captive-power status.",
+  "refs": [],
+  "verification_log": [
+   {
+    "url": "https://www.offshore-technology.com/projects/caribbean-flng-project/",
+    "tokens": [
+     "PRICO"
+    ],
+    "result": "PASS",
+    "note": "bot-blocked live (HTTP 403); value verified via Wayback snapshot 20260418074812; describes Exmar/Wison/PRICO/72 mmscfd design in enough detail to rule out SCREENED, but article does not name a power/compressor-drive source so not cited as a captive-power finding"
+   }
+  ],
+  "gogpt_prior_assessment": "No GOGPT neighbor plant listed for this terminal_id within 30 km in the neighbor file, consistent with an offshore/nearshore floating barge design with no adjacent onshore plant.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "No power-generation source confirmed for this cancelled project; nothing to add.",
+  "status_or_other_findings": "Project is cancelled per GEM record; not independently re-verified here since the research question was scoped to captive power only. The Wison-built, PRICO-process, 72 mmscfd design is well documented and could support a Background/wiki note if useful to a future Update batch.",
+  "notes": "Recommend the orchestrator treat 'suggested_bucket: screen' as overridden here — this project reached a real engineering design (named EPC contractor, named liquefaction technology, disclosed capacity) and merits an INSUFFICIENT research verdict rather than a SCREENED skip, per the brief's guidance that cancelled proposals may only be screened after checking for engineering/FEED detail."
+ },
+ {
+  "terminal": "Coveñas FSRU",
+  "terminal_id": "T100001049499",
+  "country": "Colombia",
+  "verdict": "INSUFFICIENT",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "",
+  "captive_summary": "No public source describes any power supply for this proposed FSRU project. Coverage found (Portafolio, La República, valoraanalitik.com, Infobae) confirms Ecopetrol has advanced Coveñas, in Sucre department, as its preferred LNG import/regasification site over the competing TGI/Hocol-backed Ballena proposal, with reported plans for a chartered FSRU. No engineering filing, vessel charter identity, or EPC release was found describing the FSRU's own generating equipment.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Google News (es-419/CO) searches for 'Coveñas FSRU Ecopetrol' and 'terminal de regasificación Coveñas' returned policy/ownership headlines confirming Ecopetrol's preference for Coveñas over Ballena/TGI, and general Colombia gas-shortage context, but no technical/design content on the FSRU vessel itself. An attempt to fetch a guessed Ecopetrol press-release URL (ecopetrol.com.co) returned only a JavaScript-disabled navigation shell with no article text, so it could not be used.",
+  "refs": [],
+  "verification_log": [],
+  "gogpt_prior_assessment": "No GOGPT neighbor plant listed for this terminal_id within 30 km in the neighbor file.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "No generation of any kind confirmed for this project at this stage.",
+  "status_or_other_findings": "Ecopetrol reportedly favors Coveñas over the rival TGI/Hocol Ballena project as Colombia's next LNG import terminal (see also Ballena FSRU record, this shard); the FSRU charter/vessel has not yet been named in sources found. Not verified/staged — flagging only.",
+  "notes": "The Ecopetrol press-release content could not be retrieved (JS-rendered site); a future pass with a headless-browser fetch or an Ecopetrol PDF/investor-relations filing might surface vessel/engineering detail this search could not reach."
+ }
+]

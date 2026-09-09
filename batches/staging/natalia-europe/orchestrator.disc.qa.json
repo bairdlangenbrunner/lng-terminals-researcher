@@ -1,0 +1,22 @@
+[
+ {
+  "category": "classification_ambiguity",
+  "terminal_id": null,
+  "unit_id": null,
+  "terminal_name": "Monfalcone LNG Logistics Terminal (staged new terminal, Italy)",
+  "issue": "Orchestrator review of the staged new-terminal record: its own description and its Offshore/Floating flags disagree, and I could not resolve which reading GEM intends without a reviewer call. The record stages Offshore=False and Floating=False and anchors Latitude/Longitude (45.7874, 13.5279) on the onshore Molino Casillo dock in the Bacino di Panzano. But the design it documents receives LNG into a ~144,000-145,000 m3 floating storage vessel ('gasiera' / mother ship) moored roughly 20 nautical miles offshore in the Gulf of Trieste; the dock is only where barges transfer LNG into 40-ft ISO containers for onward truck/rail distribution. So the marine LNG receiving and storage facility -- the part that makes this a terminal at all -- is both offshore and floating, while the coordinates and the two booleans describe the shore-side transfer point.",
+  "severity": "medium",
+  "suggested_action": "Decide which component the record represents before entering it, and make the coordinates, Offshore, and Floating agree with that choice: either (a) the offshore FSU, in which case Offshore=True, Floating=True, and the coordinates should move to the mooring area, or (b) the shore-side transfer berth as staged, in which case the offshore mother ship belongs in ResearcherNotes/Wiki as the supply arrangement. I have deliberately NOT guessed -- the two booleans are currently asserted values I cannot support from the cited sources, so treat them as unverified rather than researched. The scope gate itself is NOT in doubt: LNG reaches Monfalcone across a border by ship, so this is an import terminal and not the out-of-scope domestic-only virtual-pipeline case, notwithstanding the trucking downstream.",
+  "researcher_initials": "AI-draft (orchestrator)"
+ },
+ {
+  "category": "entity_attachment",
+  "terminal_id": null,
+  "unit_id": null,
+  "terminal_name": "Melilla LNG Terminal (staged new terminal, Spain)",
+  "issue": "Owner/Parent/Operator are staged as the plain parents 'Endesa SA; Enagas SA', but the record's own research notes say the cited sources name the subsidiaries: Endesa Generacion S.A.U. and Enagas Emprende. Both plain parents exist in GEM (Endesa 100000000968, Enagas 100001014505), and so do live subsidiary entities (Endesa Generacion, Enagas Internacional, Enagas Renovable, ...). Flagging rather than changing it, because which level GEM records is a convention call the reviewer owns.",
+  "severity": "low",
+  "suggested_action": "Attach at whichever level the methodology prefers; if it is the named subsidiary, reuse the existing subsidiary entity rather than creating one. Note both parents also carry '[TO BE DELETED]' soft-deleted duplicates (Endesa 100000188589, Enagas 100000189152) -- do not attach to those. Status=proposed rather than an inferred shelved is well-argued in the record and I concur: the Endesa/central-government funding dispute is live 2025-2026 reporting, not multi-year silence.",
+  "researcher_initials": "AI-draft (orchestrator)"
+ }
+]

@@ -1,0 +1,189 @@
+[
+  {
+    "terminal": "Coral North FLNG Terminal",
+    "terminal_id": "T100000131124",
+    "country": "Mozambique",
+    "verdict": "YES",
+    "mechanical": "True",
+    "captive_category": "mechanical_drive+power_generation",
+    "hardware_summary": "As-designed replica of Coral Sul FLNG's topsides: aeroderivative-gas-turbine-driven turbo-compression trains (mechanical drive, refrigeration) plus separate aeroderivative-gas-turbine-driven turbo-generation units (electric generators) — vendor/model not yet separately announced for this hull.",
+    "fuel_basis": "Same feed-gas-fired aeroderivative gas turbines as the sister vessel Coral Sul FLNG (see Coral South FLNG Terminal entry, this shard); TechnipFMC states it is replicating that design.",
+    "confidence": "yellow",
+    "captive_summary": "Coral North (vessel 'Coral Norte', launched Jan 2026 at Samsung Heavy's Geoje yard) is Eni's second Coral-field FLNG, EPCIC'd by the same Technip Energies/JGC/Samsung Heavy (TJS-style) consortium that built Coral Sul. TechnipFMC's own release says it will 'leverage our experience gained from the successful delivery of Coral South... by replicating our proven playbook.' Coral Sul's confirmed design carries both mechanical-drive refrigeration turbines and dedicated turbo-generation power units (see next entry), so the as-designed captive power finding on this proposed/pre-startup (targeted 2028) sister project is a YES on design, not yet independently confirmed equipment-by-equipment.",
+    "electric_mw": "",
+    "mechanical_drive_note": "Not separately confirmed for this hull; inferred to mirror Coral Sul's 4x turbo-compression trains (see Coral South FLNG Terminal entry).",
+    "confirmed_how": "TechnipFMC (EPCIC contractor) quoted in offshore-energy.biz (19 Dec 2025): 'We will leverage our experience gained from the successful delivery of Coral South — the world's first FLNG project in ultradeep water — by replicating our proven playbook with an enhanced approach.' Separately, offshore-energy.biz (16 Jan 2026) confirms the vessel 'Coral Norte FLNG' launch at Samsung Heavy's shipyard, Eni's second such unit after Coral Sul (delivered 2021), 432m x 66m, 123,000-tonne launch weight. Neither article gives Coral North's own turbine-vendor equipment list, so the captive-power finding here rests on documented design replication of an already-confirmed sister facility, not independent equipment confirmation for this hull.",
+    "refs": [
+      "https://www.offshore-energy.biz/mozambiques-second-flng-project-on-technipfmcs-to-do-list/",
+      "https://www.offshore-energy.biz/eni-cheers-launch-of-its-mozambique-bound-flng-at-samsung-heavy-industries-shipyard/"
+    ],
+    "verification_log": [
+      {"url": "https://www.offshore-energy.biz/mozambiques-second-flng-project-on-technipfmcs-to-do-list/", "tokens": ["replicating our proven playbook"], "result": "PASS", "note": "TechnipFMC quote confirming Coral South design is being replicated for Coral North"},
+      {"url": "https://www.offshore-energy.biz/eni-cheers-launch-of-its-mozambique-bound-flng-at-samsung-heavy-industries-shipyard/", "tokens": ["Coral Sul FLNG", "2021"], "result": "FAIL", "note": "token 'Coral Sul FLNG' not found verbatim (page may use 'Coral South' or different phrasing); dropped that token"},
+      {"url": "https://www.offshore-energy.biz/eni-cheers-launch-of-its-mozambique-bound-flng-at-samsung-heavy-industries-shipyard/", "tokens": ["123,000 tons"], "result": "PASS", "note": "retried with the exact launch-weight figure only; passed"},
+      {"url": "https://www.offshore-energy.biz/technip-energies-assignment-on-enis-african-flng-bringing-in-above-e1-billion/", "tokens": ["EPCIC"], "result": "PASS", "note": "confirms EPCIC scope and 3.6 Mtpa capacity for Coral North, no equipment detail"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT prior plant given for this terminal (gogpt_prior: no). No standalone GOGPT power-station record found for Coral North.",
+    "gogpt_candidate": "REVIEWER CALL",
+    "gogpt_candidate_basis": "Generation (if confirmed) is vessel-mounted FSRU/FLNG-style turbo-generation with no independently confirmed nameplate MW for this specific hull; unclear whether GOGPT's ontology captures floating vessel-based generation as a power station, same open question as Coral Sul.",
+    "status_or_other_findings": "Coral North targeted for first production in 2028 per TechnipFMC (offshore-energy.biz, 19 Dec 2025); stated capacity 3.6 Mtpa (Technip Energies contract value >€1bn per offshore-energy.biz 8 Jun 2026) versus Coral Sul's 3.4 Mtpa — a capacity uptick worth flagging to Update, not acted on here. Vessel name 'Coral Norte FLNG' launched 16 Jan 2026 at Samsung Heavy Geoje yard.",
+    "notes": "Sister project to Coral South FLNG Terminal (T100000130258) in this same shard — see that entry for the confirmed equipment basis this YES is inferred from."
+  },
+  {
+    "terminal": "Coral South FLNG Terminal",
+    "terminal_id": "T100000130258",
+    "country": "Mozambique",
+    "verdict": "YES",
+    "mechanical": "True",
+    "captive_category": "mechanical_drive+power_generation",
+    "hardware_summary": "4x turbo-compression trains (aeroderivative gas turbines driving centrifugal refrigeration compressors, mechanical drive) + 4x turbo-generation units (aeroderivative gas turbines driving GE Power Conversion electric generators), all supplied by Baker Hughes (a GE company)/BHGE Nuovo Pignone, assembled/tested at BHGE's Massa (Italy) facility; plus BOG/booster compressors down to -180°C.",
+    "fuel_basis": "Feed/process gas from the Coral field liquefaction stream fuels the aeroderivative gas turbines; both the compression-drive and generation trains are gas turbines per the Baker Hughes contract announcements (2017).",
+    "confidence": "yellow",
+    "captive_summary": "Coral Sul FLNG (operating, Eni-operated, 3.4 Mtpa) carries on-board captive power: Baker Hughes/GE supplied 4 turbo-compression trains (mechanical drive for mixed-refrigeration compressors) plus 4 separate turbo-generation units in which aeroderivative gas turbines drive GE Power Conversion electric generators. This is both a mechanical-drive finding (True) and a genuine on-site electricity-generation finding (power_generation), so category is the mixed case.",
+    "electric_mw": "",
+    "mechanical_drive_note": "4x aeroderivative-gas-turbine-driven turbo-compression trains for mix-refrigeration service (Baker Hughes/BHGE Nuovo Pignone, per 2017 contract announcements); no aggregate shaft-power/MW figure disclosed in the sources found.",
+    "confirmed_how": "offshore-energy.biz (31 Aug 2017, 'Baker Hughes in Another Coral South Win'): 'four turbo-compression trains for mix refrigeration services, using the company's aeroderivative gas turbine technology and driving its centrifugal compressors' and 'four turbo-generation units, also driven by aeroderivative gas turbines' with 'electric generators provided by the GE Power Conversion business.' Corroborated by a same-outlet companion article (30 Aug 2017, 'Baker Hughes secures another Coral South FLNG contract'): 'The order consists of four turbo-compression trains for mix refrigeration services and four turbo-generation units,' manufactured at 'BHGE Nuovo Pignone facility in Florence, Italy.' Both articles are the same publisher's coverage of the same underlying 2017 Baker Hughes contract announcement (treated as one effective source per the mirror rule), hence yellow rather than green; I could not find an independent second-publisher account or the original Baker Hughes/GE press release with a live/waybacked URL (Baker Hughes' own newsroom no longer lists 2017-era releases; nsenergybusiness.com and offshore-technology.com carry corroborating equipment detail including the PGT25+G4 turbine model, but both 403'd against url_verifier.py with no Wayback snapshot available, so neither is usable as a citation here).",
+    "refs": [
+      "https://www.offshore-energy.biz/baker-hughes-in-another-coral-south-win/",
+      "https://www.offshore-energy.biz/baker-hughes-secures-another-coral-south-flng-contract/"
+    ],
+    "verification_log": [
+      {"url": "https://www.nsenergybusiness.com/projects/coral-south-flng-project/", "tokens": ["PGT25", "turbo-generation"], "result": "FAIL", "note": "HTTP 403, no Wayback snapshot available — page content (seen via a different fetch) names Baker Hughes PGT25+G4 turbines and 4+4 train split, but is unusable as a citation without independent verification"},
+      {"url": "https://www.offshore-technology.com/projects/coral-south-flng-project/", "tokens": ["Baker Hughes", "3.4 million tonnes"], "result": "FAIL", "note": "HTTP 403, no Wayback snapshot available"},
+      {"url": "https://www.nsenergybusiness.com/projects/coral-south-flng-project/", "tokens": ["PGT25"], "result": "FAIL", "note": "retried alone, same 403/no-snapshot result"},
+      {"url": "https://www.offshore-technology.com/projects/coral-south-flng-project/", "tokens": ["Baker Hughes"], "result": "FAIL", "note": "retried alone, same 403/no-snapshot result"},
+      {"url": "https://www.offshore-energy.biz/baker-hughes-in-another-coral-south-win/", "tokens": ["turbo-generation", "GE Power Conversion"], "result": "PASS", "note": "confirms 4x turbo-generation units with GE Power Conversion electric generators"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT prior plant given for this terminal (gogpt_prior: no). No standalone GOGPT power-station record found for Coral Sul FLNG.",
+    "gogpt_candidate": "REVIEWER CALL",
+    "gogpt_candidate_basis": "Genuine on-site electricity generation exists (4x turbo-generation units) but no citable nameplate MW was found in the sources reviewed, and the generation is vessel-mounted (FLNG hull) rather than a conventional shore-sited power station — same open ontology question as other FSRU/FLNG captive findings.",
+    "status_or_other_findings": "Operating since 2022 (first cargo Nov 2022); 3.4 Mtpa nameplate; EPCIC by TechnipFMC/JGC/Samsung Heavy Industries (TJS) joint venture; hull built by Samsung Heavy. Baker Hughes also holds a maintenance/monitoring service contract for Coral Sul's turbomachinery per a Sept 2022 offshore-energy.biz piece (not independently verified here, not needed for the captive-power finding).",
+    "notes": "This is the confirmed-design basis cited for the Coral North FLNG Terminal (T100000131124) YES verdict in this same shard, which replicates this design per its EPC contractor's own statement."
+  },
+  {
+    "terminal": "Matola FSRU",
+    "terminal_id": "T100000130825",
+    "country": "Mozambique",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "red",
+    "captive_summary": "Matola FSRU is a proposed small-scale LNG import terminal near Maputo (owner: Matola Gas Co / TotalEnergies SE; no vessel yet assigned, no operator named in the export). Despite searching trade press (offshore-energy.biz, lngprime.com) for the project by several names (Matola FSRU, Matola Gas Company, Maputo FSRU/LNG), I found no published engineering detail on the project's power arrangement — no confirmation of a captive generator, nor a documented grid-fed/regas-only design. This is genuinely undisclosed, not a documented negative.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "No usable source found describing on-site power generation (or its absence) for this specific project. A Nov 2025 LNG Prime headline ('Mozambique OKs two FSRU terminals,' Beira and Inhassoro) is a different pair of Mozambican FSRU sites, not Matola, and is paywalled beyond the headline in any case — not cited.",
+    "refs": [],
+    "verification_log": [
+      {"url": "https://www.gem.wiki/Matola_FSRU", "tokens": [], "result": "FAIL", "note": "HTTP 403; also gem.wiki is a banned citation source regardless, checked only for internal orientation, never intended as a ref"}
+    ],
+    "gogpt_prior_assessment": "GOGPT prior is 'Maputo power station' (121 MW, non-captive, 3.8 km away). I could not independently confirm what fuels or operates Maputo power station (gem.wiki 403'd and no other source was found), but nothing found connects it to this not-yet-built import project — it reads as a pre-existing, separately-owned merchant/grid plant rather than this terminal's own captive supply. Not confirmed either way.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No project design has been published; there is nothing to add. Revisit once the project reaches FEED/FID and a power arrangement is disclosed.",
+    "status_or_other_findings": "Proposed status, no vessel or operator assigned in the current GEM export. Owners: Matola Gas Co; TotalEnergies SE.",
+    "notes": "Worth a routine re-check in a future batch once this project progresses — currently too early-stage for any public engineering detail on power arrangement to exist."
+  },
+  {
+    "terminal": "Mozambique LNG Terminal",
+    "terminal_id": "T100000130257",
+    "country": "Mozambique",
+    "verdict": "YES",
+    "mechanical": "False",
+    "captive_category": "power_generation",
+    "hardware_summary": "6x Siemens Energy SGT-800 industrial gas turbine generators (54 MW each, 39% gross efficiency, dry low-emission combustion) for on-site power generation, plus 4x Siemens Energy centrifugal compressors for boil-off-gas service.",
+    "fuel_basis": "Siemens Energy SGT-800 industrial gas turbines, natural gas fuelled, confirmed by name/model in both cited sources.",
+    "confidence": "green",
+    "captive_summary": "TotalEnergies' onshore Mozambique LNG (Area 1, Afungi, Cabo Delgado) plant has confirmed dedicated on-site electricity generation: six Siemens Energy SGT-800 gas turbines (54 MW each, ~324 MW aggregate) explicitly for 'low-emissions onsite power generation,' per both the original 2020 contract announcement and a 2026 restart-coverage article. This matches the GOGPT-side 'Mozambique LNG power station' record (324 MW, 6.9 km away) almost exactly.",
+    "electric_mw": "6 x 54 MW = 324 MW aggregate (nameplate per turbine per source; not GEM-confirmed independently)",
+    "mechanical_drive_note": "Not confirmed for this project — the sources found describe only the SGT-800 generator trains and BOG compressors, not the main-refrigeration mechanical-drive turbines (which almost certainly also exist on a project this size but were not named in the sources reviewed).",
+    "confirmed_how": "offshore-energy.biz (15 Oct 2020, 'Siemens gets Mozambique LNG turbines job'): 'Siemens Energy will supply six SGT-800 industrial gas turbines. The units will provide low-emissions onsite power generation,' 54 MW rating, 39% gross efficiency, dry low-emission combustion; plus four centrifugal compressors for boil-off gas service. Independently corroborated by gascompressionmagazine.com (31 Jan 2026, on the project's 2026 restart): 'Siemens Energy supplied four centrifugal compressors for boil-off gas (BOG) service and six SGT-800 industrial gas turbines for onsite power generation.' Two genuinely independent publishers, 6 years apart, same specific finding — green.",
+    "refs": [
+      "https://www.offshore-energy.biz/siemens-gets-mozambique-lng-turbines-job/",
+      "https://gascompressionmagazine.com/2026/01/31/totalenergies-restarts-mozambique-lng-project/"
+    ],
+    "verification_log": [
+      {"url": "https://www.offshore-energy.biz/siemens-gets-mozambique-lng-turbines-job/", "tokens": ["SGT-800", "onsite power generation"], "result": "PASS", "note": "live 200 OK, both tokens present"},
+      {"url": "https://gascompressionmagazine.com/2026/01/31/totalenergies-restarts-mozambique-lng-project/", "tokens": ["SGT-800", "onsite power generation"], "result": "PASS", "note": "bot-blocked live (HTTP 403); verified via Wayback snapshot 20260719132225"}
+    ],
+    "gogpt_prior_assessment": "GOGPT prior 'Mozambique LNG power station' (324 MW, 6.9 km) matches the confirmed 6x54MW SGT-800 finding almost exactly and IS this terminal's own captive power plant.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "GOGPT record already exists (Mozambique LNG power station, 324 MW) and the MW figure matches the sourced 6x54MW SGT-800 finding.",
+    "status_or_other_findings": "T1/T2 in construction (restarted per the Jan 2026 gascompressionmagazine.com article, after the earlier force-majeure/security suspension); T3/T4 shelved per the current GEM export. Not acted on here.",
+    "notes": "None."
+  },
+  {
+    "terminal": "Nacala FSRU",
+    "terminal_id": "T100000130788",
+    "country": "Mozambique",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "The FSRU itself is a regasification-only unit; it delivers regasified LNG to an adjacent, separately-owned Karpowership floating power plant (a 'Powership'), which is where the gas-fired generation actually sits.",
+    "fuel_basis": "N/A — the terminal's own function is regasification, not generation; the adjacent Powership's generation is a different asset (Karpowership's, not this terminal's).",
+    "confidence": "green",
+    "captive_summary": "Nacala FSRU (KARMOL — a Mitsui O.S.K. Lines/Karpowership joint venture) is the LNG-supply half of Mozambique's first 'LNG-to-Powership' project: the FSRU regasifies LNG and delivers the gas to a separately-moored Karpowership Powership (previously running on heavy fuel oil), which burns it to generate ~120 MW for Mozambique's grid at Nacala. This is the textbook direction-test case: the terminal's whole purpose is supplying gas OUT to an external power station, not powering itself. Verdict is a documented NO for the terminal's own captive-power question; the relationship belongs in PowerPlantsSupplied for a different batch.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "offshore-energy.biz (2 Sep 2019, 'MOL, Karpowership Unveil 1st LNG-to-Powership Project in Africa'): 'the FSRU to deliver regasified LNG and the Powership to receive regasified LNG in order to produce electricity'; located at Nacala, Mozambique, where the Powership had been running on heavy fuel oil before the switch to LNG; combined capacity 120 MW, delivered under the co-brand 'Karmol' (MOL + Karpower International).",
+    "refs": [
+      "https://www.offshore-energy.biz/mol-karpowership-unveil-1st-lng-to-powership-project-in-africa/"
+    ],
+    "verification_log": [
+      {"url": "https://www.offshore-energy.biz/mol-karpowership-unveil-1st-lng-to-powership-project-in-africa/", "tokens": ["Karpowership", "Mozambique"], "result": "PASS", "note": "live 200 OK"}
+    ],
+    "gogpt_prior_assessment": "GOGPT prior 'Karpowership (Mozambique) Mehmet Bey power station' (125 MW, 2.5 km) is precisely the Powership vessel this FSRU feeds — it is NOT this terminal's own captive plant, it is the external generation asset the FSRU exists to supply. GOGPT's own gogpt_captive:'False' flag on that plant is consistent with it being a merchant/grid-feeding station rather than anyone's captive supply.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "GOGPT record already exists for the Karpowership Powership itself (the actual generating asset); nothing new to add on the FSRU side, which has no generation of its own.",
+    "status_or_other_findings": "GEM currently lists Nacala FSRU as shelved (inferred, ~2y). Owner: KARMOL [100%].",
+    "notes": "PowerPlantsSupplied direction-test case: Nacala FSRU's entire purpose is feeding the Karpowership (Mozambique) Mehmet Bey Powership. Flagging for a PowerPlantsSupplied entry in a future Update batch (not staged here — out of scope for this captive-power pass)."
+  },
+  {
+    "terminal": "Rovuma FLNG Terminal",
+    "terminal_id": "T100000131090",
+    "country": "Mozambique",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "",
+    "captive_summary": "",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "",
+    "refs": [],
+    "verification_log": [],
+    "gogpt_prior_assessment": "No GOGPT prior given for this terminal (gogpt_prior: no).",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Cancelled with no generation of any kind ever built or designed.",
+    "status_or_other_findings": "GEM lists this as cancelled (inferred, ~4y). My searches for 'Rovuma FLNG' as a distinct project turned up only its early-stage marketing/FID-track history (2018-2019 articles on Area 4 partners 'kicking off marketing' and 'nearing FID') under the Mozambique Rovuma Venture umbrella — the same ownership group that today has two settled, separately-tracked concepts: the onshore Rovuma LNG Terminal (T100000130789, this shard) and Eni's floating Coral field FLNGs (Coral South/Coral North, this shard). No topsides, EPC, or equipment-vendor announcement was found naming a standalone 'Rovuma FLNG' facility that reached a design stage before being cancelled/superseded.",
+    "notes": "SCREENED: cancelled at a pre-FEED/concept stage with no topsides or power-generation design ever published under this name, as best I can determine from available trade press. Likely an early scoping-era placeholder for what became the settled onshore Rovuma LNG + Coral-field FLNG structure. No credible basis exists for a captive-power finding either way."
+  },
+  {
+    "terminal": "Rovuma LNG Terminal",
+    "terminal_id": "T100000130789",
+    "country": "Mozambique",
+    "verdict": "YES",
+    "mechanical": "True",
+    "captive_category": "mechanical_drive",
+    "hardware_summary": "Mitsubishi Heavy Industries 120 MW dual-shaft H-100 gas turbines as mechanical drivers for the main liquefaction (refrigeration) compressors, supplied together with Mitsubishi Heavy Industries Compressor (MCO) main liquefaction compressors, for Rovuma LNG Phase 1 (two trains, Air Products AP-X process, ≥7.6 Mtpa).",
+    "fuel_basis": "Mitsubishi Heavy Industries H-100 gas turbines, natural-gas fuelled, named explicitly in the source as the mechanical drivers for the liquefaction trains.",
+    "confidence": "yellow",
+    "captive_summary": "The onshore Rovuma LNG project (Mozambique Rovuma Venture — the successor entity to the original ExxonMobil-led Area 4 onshore development, adjacent to but distinct from TotalEnergies' Mozambique LNG/Area 1 site) has a confirmed 2019 equipment order for Mitsubishi Heavy Industries 120 MW H-100 dual-shaft gas turbines as mechanical drivers for its liquefaction compressors — mechanical-drive captive gas power, which counts under the current definition regardless of the fact no separate electricity-generation figure was found.",
+    "electric_mw": "",
+    "mechanical_drive_note": "MHI 120 MW dual-shaft H-100 gas turbines as mechanical drivers (2 trains per the Phase 1 scope described in the source); aggregate/per-train shaft-power breakdown beyond the 120 MW-class rating was not further specified.",
+    "confirmed_how": "offshore-energy.biz (1 Apr 2019, 'Mitsubishi Heavy to supply equipment for Rovuma LNG project'): 'Japan's Mitsubishi Heavy Industries (MHI) has reached an agreement with ExxonMobil to supply a gas turbine and compressor packages for the Rovuma LNG Phase 1 project in Mozambique' — specifically '120 megawatt dual-shaft H-100 gas turbines as the mechanical drivers,' with Mitsubishi Heavy Industries Compressor (MCO) supplying 'the main liquefaction compressors'; project scope described as two liquefaction trains, ≥7.6 Mtpa, using Air Products' AP-X process. Single-publisher source; I could not find a second, independently-published account of this specific 2019 MHI order in the time available.",
+    "refs": [
+      "https://www.offshore-energy.biz/mitsubishi-heavy-to-supply-equipment-for-rovuma-lng-project/"
+    ],
+    "verification_log": [
+      {"url": "https://www.offshore-energy.biz/mitsubishi-heavy-to-supply-equipment-for-rovuma-lng-project/", "tokens": ["H-100", "mechanical"], "result": "PASS", "note": "live 200 OK, both tokens present"}
+    ],
+    "gogpt_prior_assessment": "GOGPT prior 'Mozambique LNG power station' (324 MW, 2.8 km) is the SGT-800 plant confirmed under the separate Mozambique LNG Terminal entry (T100000130257, this shard) — that plant belongs to the adjacent TotalEnergies-operated Area 1 project, a different industrial host, not to Rovuma LNG's own MRV-operated site. The captive-to-whom test says no: this is not Rovuma LNG's captive power.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "The confirmed captive finding here is mechanical-drive shaft power (MHI H-100 turbines driving compressors directly), not an electricity-generating plant with a nameplate MW — GOGPT tracks electricity generation, so mechanical-drive-only equipment is not a GOGPT candidate on its own. No separate on-site generator finding was made for this project.",
+    "status_or_other_findings": "GEM lists this project's units as 'T1-T12,' proposed, no year set — a far larger nominal unit count than the 'two liquefaction trains, >=7.6 Mtpa Phase 1' scope described in the 2019 MHI source; flagging the scale/train-count discrepancy for a future Update pass, not acted on here.",
+    "notes": "Adjacent-but-distinct from Mozambique LNG Terminal (T100000130257) at the same Afungi/Cabo Delgado LNG park — see that entry's gogpt_prior_assessment for the reciprocal cross-reference."
+  }
+]

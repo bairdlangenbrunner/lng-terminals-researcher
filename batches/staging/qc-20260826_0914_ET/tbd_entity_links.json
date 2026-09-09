@@ -1,0 +1,820 @@
+{
+ "finding": "entity-cleanup markers (\"[TO BE DELETED]\") published in Owner/Parent/Operator",
+ "scope": "LNG (projectType=8), non-deleted plants",
+ "fix_lane": "entity system, NOT an LNG field edit — the Owner string is rendered from the plant_owner link",
+ "summary": {
+  "marked_entity_records": 41,
+  "all_still_live_deleted_false": true,
+  "lng_plants_affected": 45,
+  "owner_links": 50,
+  "repointable_to_existing_clean_entity": 34,
+  "entity_team_decision": 7,
+  "db_wide_marked_companies": 3731,
+  "db_wide_marked_still_live": 131
+ },
+ "records": [
+  {
+   "company_id": 100000188677,
+   "marked_name": "Egyptian Natural Gas Holding [TO BE DELETED]",
+   "deleted": false,
+   "plants": [
+    {
+     "plant_id": "T100000130685",
+     "plant": "Ain Sokhna FSRU",
+     "country": "Egypt"
+    },
+    {
+     "plant_id": "T100000130686",
+     "plant": "Sumed FSRU",
+     "country": "Egypt"
+    },
+    {
+     "plant_id": "T100001083032",
+     "plant": "Damietta FSRU",
+     "country": "Egypt"
+    }
+   ],
+   "base_name": "Egyptian Natural Gas Holding",
+   "clean_target": {
+    "company_id": 100001014613,
+    "name": "Egyptian Natural Gas"
+   },
+   "resolution": "repoint",
+   "note": ""
+  },
+  {
+   "company_id": 100000188473,
+   "marked_name": "Kansai Electric Power [TO BE DELETED]",
+   "deleted": false,
+   "plants": [
+    {
+     "plant_id": "T100000130481",
+     "plant": "Himeji Joint LNG Terminal",
+     "country": "Japan"
+    },
+    {
+     "plant_id": "T100000130511",
+     "plant": "Sakai LNG Terminal",
+     "country": "Japan"
+    },
+    {
+     "plant_id": "T100000130850",
+     "plant": "Wakayama LNG Terminal",
+     "country": "Japan"
+    }
+   ],
+   "base_name": "Kansai Electric Power",
+   "clean_target": {
+    "company_id": 100000000646,
+    "name": "Kansai Electric Power"
+   },
+   "resolution": "repoint",
+   "note": ""
+  },
+  {
+   "company_id": 100000188750,
+   "marked_name": "EGAT [TO BE DELETED]",
+   "deleted": false,
+   "plants": [
+    {
+     "plant_id": "T100000130896",
+     "plant": "Gulf of Thailand FSRU",
+     "country": "Thailand"
+    },
+    {
+     "plant_id": "T100000131071",
+     "plant": "Surat Thani FSRU",
+     "country": "Thailand"
+    }
+   ],
+   "base_name": "EGAT",
+   "clean_target": {
+    "company_id": 100000002129,
+    "name": "Electricity Generating Authority of Thailand"
+   },
+   "resolution": "repoint",
+   "note": ""
+  },
+  {
+   "company_id": 100000188751,
+   "marked_name": "Energy Capital Vietnam [TO BE DELETED]",
+   "deleted": false,
+   "plants": [
+    {
+     "plant_id": "T100000130903",
+     "plant": "Quang Nam LNG Terminal",
+     "country": "Vietnam"
+    },
+    {
+     "plant_id": "T100000130975",
+     "plant": "Mui Ke Ga FSRU",
+     "country": "Vietnam"
+    }
+   ],
+   "base_name": "Energy Capital Vietnam",
+   "clean_target": null,
+   "resolution": "entity_team_decision",
+   "note": "no clean counterpart — rename in place or create canonical record"
+  },
+  {
+   "company_id": 100000188403,
+   "marked_name": "Oil and Natural Gas [TO BE DELETED]",
+   "deleted": false,
+   "plants": [
+    {
+     "plant_id": "T100000130257",
+     "plant": "Mozambique LNG Terminal",
+     "country": "Mozambique"
+    },
+    {
+     "plant_id": "T100000130506",
+     "plant": "Far East LNG Terminal",
+     "country": "Russia"
+    }
+   ],
+   "base_name": "Oil and Natural Gas",
+   "clean_target": {
+    "company_id": 100000000524,
+    "name": "Oil and Natural Gas"
+   },
+   "resolution": "repoint",
+   "note": ""
+  },
+  {
+   "company_id": 100000188405,
+   "marked_name": "PTTEP [TO BE DELETED]",
+   "deleted": false,
+   "plants": [
+    {
+     "plant_id": "T100000130257",
+     "plant": "Mozambique LNG Terminal",
+     "country": "Mozambique"
+    },
+    {
+     "plant_id": "T100000130693",
+     "plant": "Cash Maple FLNG Terminal",
+     "country": "Australia"
+    }
+   ],
+   "base_name": "PTTEP",
+   "clean_target": {
+    "company_id": 100000001034,
+    "name": "PTT Exploration and Production"
+   },
+   "resolution": "repoint",
+   "note": ""
+  },
+  {
+   "company_id": 100000188577,
+   "marked_name": "RomGaz [TO BE DELETED]",
+   "deleted": false,
+   "plants": [
+    {
+     "plant_id": "T100000130502",
+     "plant": "Constanta LNG Terminal",
+     "country": "Romania"
+    },
+    {
+     "plant_id": "T100000131101",
+     "plant": "Black Sea LNG Terminal",
+     "country": "Romania"
+    }
+   ],
+   "base_name": "RomGaz",
+   "clean_target": {
+    "company_id": 100000002067,
+    "name": "Romgaz"
+   },
+   "resolution": "repoint",
+   "note": ""
+  },
+  {
+   "company_id": 100000188861,
+   "marked_name": "Bangladesh Power Development Board [TO BE DELETED]",
+   "deleted": false,
+   "plants": [
+    {
+     "plant_id": "T100000131144",
+     "plant": "Matarbari GE LNG Terminal",
+     "country": "Bangladesh"
+    }
+   ],
+   "base_name": "Bangladesh Power Development Board",
+   "clean_target": {
+    "company_id": 100000000039,
+    "name": "Bangladesh Power Development Board"
+   },
+   "resolution": "repoint",
+   "note": ""
+  },
+  {
+   "company_id": 100000188402,
+   "marked_name": "Bharat PetroResources [TO BE DELETED]",
+   "deleted": false,
+   "plants": [
+    {
+     "plant_id": "T100000130257",
+     "plant": "Mozambique LNG Terminal",
+     "country": "Mozambique"
+    }
+   ],
+   "base_name": "Bharat PetroResources",
+   "clean_target": {
+    "company_id": 100000190598,
+    "name": "Bharat Petro Resources"
+   },
+   "resolution": "repoint",
+   "note": ""
+  },
+  {
+   "company_id": 100000188688,
+   "marked_name": "Cambodia Natural Gas [TO BE DELETED]",
+   "deleted": false,
+   "plants": [
+    {
+     "plant_id": "T100000130709",
+     "plant": "Cambodia LNG Project",
+     "country": "Cambodia"
+    }
+   ],
+   "base_name": "Cambodia Natural Gas",
+   "clean_target": {
+    "company_id": 100002004061,
+    "name": "Cambodian Natural Gas"
+   },
+   "resolution": "repoint",
+   "note": ""
+  },
+  {
+   "company_id": 100000188607,
+   "marked_name": "Colbún [TO BE DELETED]",
+   "deleted": false,
+   "plants": [
+    {
+     "plant_id": "T100000130552",
+     "plant": "Colbun FLNG Terminal",
+     "country": "Chile"
+    }
+   ],
+   "base_name": "Colbún",
+   "clean_target": {
+    "company_id": 100000002727,
+    "name": "Colbun"
+   },
+   "resolution": "repoint",
+   "note": ""
+  },
+  {
+   "company_id": 100000188555,
+   "marked_name": "DESFA [TO BE DELETED]",
+   "deleted": false,
+   "plants": [
+    {
+     "plant_id": "T100000130462",
+     "plant": "Revithoussa LNG Terminal",
+     "country": "Greece"
+    }
+   ],
+   "base_name": "DESFA",
+   "clean_target": {
+    "company_id": 100001014529,
+    "name": "Hellenic Gas Transmission System Operator"
+   },
+   "resolution": "repoint",
+   "note": ""
+  },
+  {
+   "company_id": 100000188648,
+   "marked_name": "DUSUP [TO BE DELETED]",
+   "deleted": false,
+   "plants": [
+    {
+     "plant_id": "T100000130603",
+     "plant": "Jebel Ali FLNG Terminal",
+     "country": "United Arab Emirates"
+    }
+   ],
+   "base_name": "DUSUP",
+   "clean_target": {
+    "company_id": 100001014608,
+    "name": "Dubai Supply Authority"
+   },
+   "resolution": "repoint",
+   "note": ""
+  },
+  {
+   "company_id": 100000188817,
+   "marked_name": "Eden Group [TO BE DELETED]",
+   "deleted": false,
+   "plants": [
+    {
+     "plant_id": "T100000131065",
+     "plant": "Thilawa LNG Terminal",
+     "country": "Myanmar"
+    }
+   ],
+   "base_name": "Eden Group",
+   "clean_target": {
+    "company_id": 100000002896,
+    "name": "Eden Group"
+   },
+   "resolution": "repoint",
+   "note": ""
+  },
+  {
+   "company_id": 100000188635,
+   "marked_name": "Eilat-Ashkelon Pipeline [TO BE DELETED]",
+   "deleted": false,
+   "plants": [
+    {
+     "plant_id": "T100000130588",
+     "plant": "Eilat FLNG Terminal",
+     "country": "Israel"
+    }
+   ],
+   "base_name": "Eilat-Ashkelon Pipeline",
+   "clean_target": null,
+   "resolution": "entity_team_decision",
+   "note": "no clean counterpart — rename in place or create canonical record"
+  },
+  {
+   "company_id": 100000188727,
+   "marked_name": "Endeavor Energy Holdings [TO BE DELETED]",
+   "deleted": false,
+   "plants": [
+    {
+     "plant_id": "T100000130835",
+     "plant": "Ivory Coast FSRU",
+     "country": "Côte d'Ivoire"
+    }
+   ],
+   "base_name": "Endeavor Energy Holdings",
+   "clean_target": {
+    "company_id": 100000001204,
+    "name": "Endeavor Energy Holdings"
+   },
+   "resolution": "repoint",
+   "note": ""
+  },
+  {
+   "company_id": 100000188766,
+   "marked_name": "Eneva [TO BE DELETED]",
+   "deleted": false,
+   "plants": [
+    {
+     "plant_id": "T100000131081",
+     "plant": "Itaqui FSRU",
+     "country": "Brazil"
+    }
+   ],
+   "base_name": "Eneva",
+   "clean_target": {
+    "company_id": 100000000067,
+    "name": "Eneva"
+   },
+   "resolution": "repoint",
+   "note": ""
+  },
+  {
+   "company_id": 100000188862,
+   "marked_name": "GE [TO BE DELETED]",
+   "deleted": false,
+   "plants": [
+    {
+     "plant_id": "T100000131144",
+     "plant": "Matarbari GE LNG Terminal",
+     "country": "Bangladesh"
+    }
+   ],
+   "base_name": "GE",
+   "clean_target": {
+    "company_id": 100000001223,
+    "name": "General Electric"
+   },
+   "resolution": "repoint",
+   "note": ""
+  },
+  {
+   "company_id": 100000188525,
+   "marked_name": "Geoplin [TO BE DELETED]",
+   "deleted": false,
+   "plants": [
+    {
+     "plant_id": "T100000130428",
+     "plant": "Adria LNG Terminal",
+     "country": "Croatia"
+    }
+   ],
+   "base_name": "Geoplin",
+   "clean_target": {
+    "company_id": 100001015862,
+    "name": "Geoplin"
+   },
+   "resolution": "repoint",
+   "note": ""
+  },
+  {
+   "company_id": 100000188653,
+   "marked_name": "Gunvor Group [TO BE DELETED]",
+   "deleted": false,
+   "plants": [
+    {
+     "plant_id": "T100000130611",
+     "plant": "Engro FSRU 2",
+     "country": "Pakistan"
+    }
+   ],
+   "base_name": "Gunvor Group",
+   "clean_target": {
+    "company_id": 100000189898,
+    "name": "Gunvor"
+   },
+   "resolution": "repoint",
+   "note": ""
+  },
+  {
+   "company_id": 100000188737,
+   "marked_name": "Hokuriku Electric [TO BE DELETED]",
+   "deleted": false,
+   "plants": [
+    {
+     "plant_id": "T100000130876",
+     "plant": "Toyama Shinko LNG Terminal",
+     "country": "Japan"
+    }
+   ],
+   "base_name": "Hokuriku Electric",
+   "clean_target": null,
+   "resolution": "entity_team_decision",
+   "note": ""
+  },
+  {
+   "company_id": 100000188658,
+   "marked_name": "Höegh Evi [TO BE DELETED]",
+   "deleted": false,
+   "plants": [
+    {
+     "plant_id": "T100000130828",
+     "plant": "Hoegh Cyprus FSRU",
+     "country": "Cyprus"
+    }
+   ],
+   "base_name": "Höegh Evi",
+   "clean_target": {
+    "company_id": 100000188839,
+    "name": "Hoegh Evi"
+   },
+   "resolution": "repoint",
+   "note": ""
+  },
+  {
+   "company_id": 100000188636,
+   "marked_name": "Israel Natural Gas Pipelines [TO BE DELETED]",
+   "deleted": false,
+   "plants": [
+    {
+     "plant_id": "T100000130588",
+     "plant": "Eilat FLNG Terminal",
+     "country": "Israel"
+    }
+   ],
+   "base_name": "Israel Natural Gas Pipelines",
+   "clean_target": {
+    "company_id": 100001015118,
+    "name": "Israel Natural Gas Lines"
+   },
+   "resolution": "repoint",
+   "note": ""
+  },
+  {
+   "company_id": 100000188586,
+   "marked_name": "Japex [TO BE DELETED]",
+   "deleted": false,
+   "plants": [
+    {
+     "plant_id": "T100000130527",
+     "plant": "Soma Port LNG Terminal",
+     "country": "Japan"
+    }
+   ],
+   "base_name": "Japex",
+   "clean_target": {
+    "company_id": 100000000645,
+    "name": "Japan Petroleum Exploration"
+   },
+   "resolution": "repoint",
+   "note": ""
+  },
+  {
+   "company_id": 100000188855,
+   "marked_name": "LX International [TO BE DELETED]",
+   "deleted": false,
+   "plants": [
+    {
+     "plant_id": "T100000131132",
+     "plant": "POSCO Dangjin LNG Terminal",
+     "country": "South Korea"
+    }
+   ],
+   "base_name": "LX International",
+   "clean_target": {
+    "company_id": 100000001558,
+    "name": "LX International"
+   },
+   "resolution": "repoint",
+   "note": ""
+  },
+  {
+   "company_id": 100000188567,
+   "marked_name": "Latvenergo [TO BE DELETED]",
+   "deleted": false,
+   "plants": [
+    {
+     "plant_id": "T100000130486",
+     "plant": "Riga FSRU",
+     "country": "Latvia"
+    }
+   ],
+   "base_name": "Latvenergo",
+   "clean_target": {
+    "company_id": 100000001565,
+    "name": "Latvenergo"
+   },
+   "resolution": "repoint",
+   "note": ""
+  },
+  {
+   "company_id": 100000188699,
+   "marked_name": "Molgas [TO BE DELETED]",
+   "deleted": false,
+   "plants": [
+    {
+     "plant_id": "T100000130728",
+     "plant": "Kollsnes LNG Terminal",
+     "country": "Norway"
+    }
+   ],
+   "base_name": "Molgas",
+   "clean_target": null,
+   "resolution": "entity_team_decision",
+   "note": "ambiguous: Molgas Norway (100001014813) vs Molgas Energy Holding (100001014815); Kollsnes is in Norway"
+  },
+  {
+   "company_id": 100002024778,
+   "marked_name": "National Iranian Gas Exports Company [TO BE DELETED]",
+   "deleted": false,
+   "plants": [
+    {
+     "plant_id": "T100000130583",
+     "plant": "Iran NIOC LNG Terminal",
+     "country": "Iran"
+    }
+   ],
+   "base_name": "National Iranian Gas Exports Company",
+   "clean_target": {
+    "company_id": 100000188634,
+    "name": "National Iranian Gas Export"
+   },
+   "resolution": "repoint",
+   "note": ""
+  },
+  {
+   "company_id": 100000188800,
+   "marked_name": "Nord-West Oelleitung [TO BE DELETED]",
+   "deleted": false,
+   "plants": [
+    {
+     "plant_id": "T100000131000",
+     "plant": "Wilhelmshaven NWO FSRU",
+     "country": "Germany"
+    }
+   ],
+   "base_name": "Nord-West Oelleitung",
+   "clean_target": {
+    "company_id": 100001015564,
+    "name": "Nord-West Oelleitung"
+   },
+   "resolution": "repoint",
+   "note": ""
+  },
+  {
+   "company_id": 100000188400,
+   "marked_name": "Office National de l’Electricite et de l’Eau Potable [TO BE DELETED]",
+   "deleted": false,
+   "plants": [
+    {
+     "plant_id": "T100000130256",
+     "plant": "Jorf Lasfar LNG Terminal",
+     "country": "Morocco"
+    }
+   ],
+   "base_name": "Office National de l’Electricite et de l’Eau Potable",
+   "clean_target": {
+    "company_id": 100000000724,
+    "name": "Office National de l'Electricité et de l'Eau Potable"
+   },
+   "resolution": "repoint",
+   "note": ""
+  },
+  {
+   "company_id": 100000188856,
+   "marked_name": "POSCO International [TO BE DELETED]",
+   "deleted": false,
+   "plants": [
+    {
+     "plant_id": "T100000131132",
+     "plant": "POSCO Dangjin LNG Terminal",
+     "country": "South Korea"
+    }
+   ],
+   "base_name": "POSCO International",
+   "clean_target": {
+    "company_id": 100000189769,
+    "name": "Posco International"
+   },
+   "resolution": "repoint",
+   "note": ""
+  },
+  {
+   "company_id": 100000188869,
+   "marked_name": "PT AKR Corporindo [TO BE DELETED]",
+   "deleted": false,
+   "plants": [
+    {
+     "plant_id": "T100000131164",
+     "plant": "Gresik LNG Terminal",
+     "country": "Indonesia"
+    }
+   ],
+   "base_name": "PT AKR Corporindo",
+   "clean_target": {
+    "company_id": 100000001943,
+    "name": "PT AKR Corporindo"
+   },
+   "resolution": "repoint",
+   "note": ""
+  },
+  {
+   "company_id": 100000188828,
+   "marked_name": "Sinolam Smarter Energy LNG Power [TO BE DELETED]",
+   "deleted": false,
+   "plants": [
+    {
+     "plant_id": "T100000131082",
+     "plant": "Sinolam LNG Terminal",
+     "country": "Panama"
+    }
+   ],
+   "base_name": "Sinolam Smarter Energy LNG Power",
+   "clean_target": {
+    "company_id": 100000004051,
+    "name": "Sinolam Smarter Energy LNG Power"
+   },
+   "resolution": "repoint",
+   "note": ""
+  },
+  {
+   "company_id": 100000189767,
+   "marked_name": "Société Mauritanienne Des Hydrocarbures et de Patrimoine Minier [TO BE DELETED]",
+   "deleted": false,
+   "plants": [
+    {
+     "plant_id": "T100000131091",
+     "plant": "BirAllah LNG Hub",
+     "country": "Mauritania"
+    }
+   ],
+   "base_name": "Société Mauritanienne Des Hydrocarbures et de Patrimoine Minier",
+   "clean_target": null,
+   "resolution": "entity_team_decision",
+   "note": ""
+  },
+  {
+   "company_id": 100000188744,
+   "marked_name": "Tabeer Energy Marketing (Pvt) [TO BE DELETED]",
+   "deleted": false,
+   "plants": [
+    {
+     "plant_id": "T100000130887",
+     "plant": "Tabeer LNG Terminal",
+     "country": "Pakistan"
+    }
+   ],
+   "base_name": "Tabeer Energy Marketing (Pvt)",
+   "clean_target": {
+    "company_id": 100000188743,
+    "name": "Tabeer Energy Marketing (Private)"
+   },
+   "resolution": "repoint",
+   "note": ""
+  },
+  {
+   "company_id": 100000188654,
+   "marked_name": "Taiwan Electric Power [TO BE DELETED]",
+   "deleted": false,
+   "plants": [
+    {
+     "plant_id": "T100000130892",
+     "plant": "Taichung (TaiPower) LNG Terminal",
+     "country": "Taiwan"
+    }
+   ],
+   "base_name": "Taiwan Electric Power",
+   "clean_target": null,
+   "resolution": "entity_team_decision",
+   "note": ""
+  },
+  {
+   "company_id": 100000188763,
+   "marked_name": "Termelétrica Itacoatiara [TO BE DELETED]",
+   "deleted": false,
+   "plants": [
+    {
+     "plant_id": "T100000130931",
+     "plant": "Itacoatiara FSRU",
+     "country": "Brazil"
+    }
+   ],
+   "base_name": "Termelétrica Itacoatiara",
+   "clean_target": {
+    "company_id": 100000004183,
+    "name": "Termelétrica Itacoatiara"
+   },
+   "resolution": "repoint",
+   "note": ""
+  },
+  {
+   "company_id": 100000188748,
+   "marked_name": "Thai Petrochemical Industry Polene Power [TO BE DELETED]",
+   "deleted": false,
+   "plants": [
+    {
+     "plant_id": "T100000130893",
+     "plant": "Chana LNG Terminal",
+     "country": "Thailand"
+    }
+   ],
+   "base_name": "Thai Petrochemical Industry Polene Power",
+   "clean_target": null,
+   "resolution": "entity_team_decision",
+   "note": ""
+  },
+  {
+   "company_id": 100000191708,
+   "marked_name": "Total [TO BE DELETED]",
+   "deleted": false,
+   "plants": [
+    {
+     "plant_id": "T100000130916",
+     "plant": "South Pars LNG Terminal",
+     "country": "Iran"
+    }
+   ],
+   "base_name": "Total",
+   "clean_target": {
+    "company_id": 100000189771,
+    "name": "Total"
+   },
+   "resolution": "repoint",
+   "note": ""
+  },
+  {
+   "company_id": 100000188790,
+   "marked_name": "Vietnam Electricity [TO BE DELETED]",
+   "deleted": false,
+   "plants": [
+    {
+     "plant_id": "T100000130974",
+     "plant": "Long Son LNG Terminal",
+     "country": "Vietnam"
+    }
+   ],
+   "base_name": "Vietnam Electricity",
+   "clean_target": {
+    "company_id": 100000004303,
+    "name": "Vietnam Electricity"
+   },
+   "resolution": "repoint",
+   "note": ""
+  },
+  {
+   "company_id": 100000189015,
+   "marked_name": "Vitol [TO BE DELETED]",
+   "deleted": false,
+   "plants": [
+    {
+     "plant_id": "T100001083665",
+     "plant": "Durban LNG Terminal",
+     "country": "South Africa"
+    }
+   ],
+   "base_name": "Vitol",
+   "clean_target": {
+    "company_id": 100000001006,
+    "name": "Vitol"
+   },
+   "resolution": "repoint",
+   "note": ""
+  }
+ ]
+}

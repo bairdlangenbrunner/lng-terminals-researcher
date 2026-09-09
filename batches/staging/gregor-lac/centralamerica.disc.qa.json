@@ -1,0 +1,52 @@
+[
+  {
+    "category": "scope_correction",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "LNG bunkering hub (Kanfer Shipping / C.B. Fenton / MOTI), Panama Pacific side",
+    "issue": "SOP/dispatch conflict: docs/sops/discovery.md header states terminal scope is 'both import and export, all scales except bunkering' (bunkering excluded). This batch's dispatch brief instead stated 'a bunkering terminal that receives LNG by ship IS in scope' for Panama Canal-transit bunkering. Found one live candidate that squarely tests this: a Kanfer Shipping/C.B. Fenton/Melones Oil Terminal (MOTI) project on Panama's Pacific side, self-described by its own sponsors as an 'LNG bunkering hub' with an attached 'small-scale LNG distribution' function to Pacific-side ports (MOU Dec 2022, MOTI joined May 2023; no update found past 2023 in this sweep). Deliberately NOT staged as new_terminal or even monitor-as-in-scope pending resolution -- logged only as a monitor/watch entry (centralamerica.monitor.json) with the conflict noted, per 'resolve scope doubt before staging, never stage-with-doubt.'",
+    "severity": "medium",
+    "suggested_action": "User/orchestrator to clarify whether GEM's LNG Terminals scope now includes ship-served bunkering terminals (a methodology change from the SOP's plain 'all scales except bunkering' line), or whether the dispatch brief's carve-out was Canal-context-specific and this candidate should stay excluded. If bunkering-with-ship-receipt is confirmed in scope, promote the monitor entry to new_terminal once a concrete site/coordinates and capacity are found (currently too vague -- 'MOTI, Pacific side' with no coordinates or MTPA figure). If out of scope, no further action needed; update docs/sops/discovery.md is already correct as written.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "coverage_verdict_search_limited",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Panama (country-level discovery sweep)",
+    "issue": "UNVERIFIED — SEARCH-LIMITED, RE-SWEEP NEEDED. This is NOT a checked-and-empty verdict: the session's WebSearch budget (200 calls, shared across all subagents) was exhausted before/during this sweep, so the agent worked from WebFetch + CAPTCHA-blocked DuckDuckGo/Bing HTML only. Do NOT treat this country as cleared — a future discovery sweep must re-search it with a raised CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION. Original agent verdict follows. || Checked and empty: no new in-scope Panama LNG terminal candidates found beyond the 3 already in GEM (Costa Norte LNG Terminal, Sinolam LNG Terminal, Telfers FSRU). Dormant-revival watch: both Panamanian dead sites checked -- Telfers FSRU (cancelled 2021, Colon; site now appears associated with an unrelated ACP container-transshipment terminal project at 'Corozal and Telfers,' no LNG revival found) and Sinolam LNG Terminal (shelved 2024, Isla Margarita; no 2024-2026 update found) -- neither shows new LNG activity. A separate legacy USTDA-funded feasibility study for an ACP LNG terminal (undated, pre-Costa Norte era, no sponsor beyond the government agency itself, no located site or recent update) was checked and is too thin/stale to meet the threshold -- not staged. gem.wiki cross-check: Panama gem.wiki LNG-terminal pages match the 3 CSV rows exactly, no wiki-only page found. One genuinely live candidate (Kanfer/CB Fenton/MOTI bunkering hub) was found but routed to monitor + scope_correction qa instead of new_terminal -- see those entries. CAVEAT: this sweep's search tools were constrained (WebSearch budget exhausted mid-sweep; DuckDuckGo HTML fallback repeatedly CAPTCHA-blocked; Bing fallback returned mostly generic/irrelevant results) -- treat this as a reduced-confidence sweep, a follow-up with full search access is warranted before treating Panama as conclusively clean.",
+    "severity": "medium",
+    "suggested_action": "Re-run Panama discovery with full WebSearch access if a higher-confidence clean bill is needed; otherwise no action.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "coverage_verdict_search_limited",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "El Salvador (country-level discovery sweep)",
+    "issue": "UNVERIFIED — SEARCH-LIMITED, RE-SWEEP NEEDED. This is NOT a checked-and-empty verdict: the session's WebSearch budget (200 calls, shared across all subagents) was exhausted before/during this sweep, so the agent worked from WebFetch + CAPTCHA-blocked DuckDuckGo/Bing HTML only. Do NOT treat this country as cleared — a future discovery sweep must re-search it with a raised CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION. Original agent verdict follows. || Checked and empty: no new in-scope El Salvador LNG terminal candidates found beyond the 2 already in GEM (Acajutla FSRU, La Union FSRU). No evidence of a second FSRU/import proposal beyond Acajutla. Dormant-revival watch: La Union FSRU (cancelled 2014, Port of La Union / Cutuco, revival_priority high) checked -- found only general Port of La Union logistics-expansion coverage (2026 investor-interest article), nothing LNG-specific; no revival found. gem.wiki cross-check: no gem.wiki LNG-terminal page found for El Salvador beyond the 2 already-tracked terminals. CAVEAT: same search-tool constraints as noted in the Panama coverage_verdict entry (WebSearch budget exhausted; DDG/Bing degraded) -- reduced-confidence sweep.",
+    "severity": "medium",
+    "suggested_action": "Re-run with full search access if higher confidence needed; otherwise no action.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "coverage_verdict_search_limited",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Honduras (country-level discovery sweep)",
+    "issue": "UNVERIFIED — SEARCH-LIMITED, RE-SWEEP NEEDED. This is NOT a checked-and-empty verdict: the session's WebSearch budget (200 calls, shared across all subagents) was exhausted before/during this sweep, so the agent worked from WebFetch + CAPTCHA-blocked DuckDuckGo/Bing HTML only. Do NOT treat this country as cleared — a future discovery sweep must re-search it with a raised CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION. Original agent verdict follows. || Checked and empty: no new in-scope Honduras LNG terminal candidates found beyond the 1 already in GEM (Puerto Cortes LNG Terminal, construction). The ENEE Puerto Cortes LNG-to-power tender that this batch was briefed to look for is already the tracked terminal -- confirmed, not a new find. Checked Amapala / Golfo de Fonseca specifically per the brief: found only a CABEI-financed deep-water megaport/logistics and bridge-connection project with no LNG component in any source surfaced -- no LNG terminal or LNG-fired power tender found there. gem.wiki cross-check: no gem.wiki LNG-terminal page found for Honduras beyond Puerto Cortes. CAVEAT: same search-tool constraints noted above -- reduced-confidence sweep; Amapala in particular deserves a follow-up with full search access given it was a named lead in the brief that could not be confirmed either way.",
+    "severity": "medium",
+    "suggested_action": "Re-run Amapala/Golfo de Fonseca check specifically with full search access; otherwise no action.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "coverage_verdict_search_limited",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Nicaragua (country-level discovery sweep)",
+    "issue": "UNVERIFIED — SEARCH-LIMITED, RE-SWEEP NEEDED. This is NOT a checked-and-empty verdict: the session's WebSearch budget (200 calls, shared across all subagents) was exhausted before/during this sweep, so the agent worked from WebFetch + CAPTCHA-blocked DuckDuckGo/Bing HTML only. Do NOT treat this country as cleared — a future discovery sweep must re-search it with a raised CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION. Original agent verdict follows. || Checked and empty: no new in-scope Nicaragua LNG terminal candidates found beyond the 1 already in GEM (Puerto Sandino FSRU, construction, New Fortress Energy). The 'Puesta del Sol' LNG-to-power concept this batch was briefed to check could not be distinguished from -- or confirmed as distinct from -- the already-tracked Puerto Sandino FSRU project in this sweep; no source surfaced under either search-tool fallback used. gem.wiki cross-check: no gem.wiki LNG-terminal page found for Nicaragua beyond Puerto Sandino. CAVEAT: same search-tool constraints noted above (WebSearch budget exhausted before Nicaragua queries could run properly; DDG captcha-blocked) -- this is the LOWEST-confidence country in the batch and should be re-swept with full search access before treating 'Puesta del Sol' as resolved either way (same project vs. genuinely separate).",
+    "severity": "medium",
+    "suggested_action": "Re-run Nicaragua 'Puesta del Sol' check specifically with full WebSearch access -- determine whether it is the same project as Puerto Sandino FSRU (no action) or a distinct proposal (route through dedup + threshold test).",
+    "researcher_initials": "AI-draft"
+  }
+]

@@ -1,0 +1,213 @@
+[
+  {
+    "terminal": "South East LNG Terminal",
+    "terminal_id": "T100000131041",
+    "country": "Vietnam",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "yellow",
+    "captive_summary": "No independent (non-GEM) source of any kind describes this Binh Thuan project — no owner, no operator, no sponsor name found anywhere in Vietnamese or English press. It never reached a design or feasibility-study stage that any public source documents.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Repeated targeted web search (English and Vietnamese: 'kho cảng LNG Đông Nam Bình Thuận') surfaced no project by this name or at these coordinates beyond the internal GEM record itself (cancelled, inferred 4y, blank owner/operator). Searches for Binh Thuan LNG proposals return only the unrelated, well-documented Son My LNG project (AES/PV Gas), confirming South East LNG Terminal is a distinct, undeveloped paper listing with zero independent footprint.",
+    "refs": [],
+    "verification_log": [],
+    "gogpt_prior_assessment": "No GOGPT plant was supplied in the dispatch record (gogpt_prior: no) — no colocated GOGPT plant to assess.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No sourced generation of any kind found at this site; nothing to add.",
+    "status_or_other_findings": "",
+    "notes": "SCREEN criterion: cancelled-and-never-designed — no owner/operator on record and no independent source of any kind describes a design, so no captive-power determination is researchable."
+  },
+  {
+    "terminal": "South West FSRU",
+    "terminal_id": "T100000130991",
+    "country": "Vietnam",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "yellow",
+    "captive_summary": "No independent source names a sponsor, vessel, or design for this Tra Vinh-area FSRU proposal intended to feed Ca Mau power station. Real, well-documented FSRU/LNG-to-power proposals in the same general region (Delta Offshore Energy's Bac Lieu LNG-to-power project, ~3,200 MW) are geographically and corporately distinct projects, not this listing.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Searched for 'South West FSRU', 'Tra Vinh FSRU LNG Ca Mau', and 'Delta Offshore Energy Tra Vinh' in English and Vietnamese; all results either return nothing or point to the unrelated, better-documented Bac Lieu LNG-to-power project (Delta Offshore Energy, southwest coast Gulf of Thailand side, not Tra Vinh). No owner/operator/vessel on record in GEM either. Cancelled, inferred 4y, with zero independent corroboration of any project stage.",
+    "refs": [],
+    "verification_log": [],
+    "gogpt_prior_assessment": "No GOGPT plant was supplied in the dispatch record (gogpt_prior: no) — no colocated GOGPT plant to assess.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No sourced generation of any kind found at this site; nothing to add.",
+    "status_or_other_findings": "",
+    "notes": "SCREEN criterion: cancelled-and-never-designed — no owner/operator/vessel on record, no independent source describes any design stage. power_plants_supplied lists 'Ca Mau power station' (direction-test note for a future batch if this record is ever revived)."
+  },
+  {
+    "terminal": "Stavian Chan May LNG Terminal",
+    "terminal_id": "T100001049935",
+    "country": "Vietnam",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "yellow",
+    "captive_summary": "This is a bundled LNG-terminal + gas-power project (Stavian Group / Wealth Power Vietnam Group JV) at Chan May Port, Thua Thien Hue, still at MOU/announcement stage (shelved, inferred 2y). Public sources describe the terminal and the associated 4,000-4,800 MW Chan May gas power plant as two components of one project, but none publishes engineering detail on the LNG storage/regas terminal's own power supply (captive generation vs. grid feed).",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Stavian Gas's own MOU announcement (staviangas.com, Sept 2024) confirms the terminal + power-plant project structure but gives no equipment detail. Southeast Asia Infra and PGS.com.vn corroborate the project scope (4,000-4,800 MW, up to $6bn) and 'announced'/pre-FID stage; the provincial government's own timeline places construction start at 2027-2031. No environmental impact assessment (ĐTM) or FEED-stage document is publicly available at this stage — the project has not reached the design depth at which captive-power equipment would be specified.",
+    "refs": [
+      "https://staviangas.com/en/the-memorandum-of-understanding-signing-ceremony-for-cooperation-on-development-of-chan-may-lng-terminal-project-between-stavian-group-and-wealth-power-group/"
+    ],
+    "verification_log": [
+      {"url": "https://staviangas.com/en/the-memorandum-of-understanding-signing-ceremony-for-cooperation-on-development-of-chan-may-lng-terminal-project-between-stavian-group-and-wealth-power-group/", "tokens": ["Chan May", "Wealth Power"], "result": "PASS", "note": "Stavian Gas's own MOU announcement; primary corporate source"},
+      {"url": "https://www.power-technology.com/marketdata/power-plant-profile-chan-may-lng-power-project-vietnam/", "tokens": ["Chan May", "4,000MW"], "result": "FAIL", "note": "HTTP 403, no Wayback snapshot — dropped, not cited"}
+    ],
+    "gogpt_prior_assessment": "GOGPT prior names 'Chan May power station' (1,500 MW per gogpt_total_mw, tier C, 0.56 km) with gogpt_captive already False — i.e. GOGPT already classifies it as a non-captive/merchant plant, consistent with the project's stated design as a grid-export LNG-to-power plant (4,000-4,800 MW total planned) rather than a small fenceline captive unit for the terminal alone. Independent info: https://southeastasiainfra.com/plans-proposed-for-a-usd2-4-billion-lng-power-plant-in-vietnam/",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "GOGPT record for Chan May power station already exists (gogpt_captive: False); it is a grid-export merchant plant bundled with, not captive to, the LNG terminal.",
+    "status_or_other_findings": "Owner field could be refined: Stavian Group JSC's gas subsidiary is publicly branded 'Stavian Gas'; JV partner is 'Wealth Power Vietnam Group JSC' per the September 2024 MOU (matches GEM's existing owner field). Not acted on.",
+    "notes": "Classic Vietnam LNG-to-power bundle (per country hint): the power-generation component is a separate, much larger (4,000-4,800 MW) grid-export asset, not evidence of terminal captive power. No ĐTM/FEED document found yet to confirm or deny on-site backup/auxiliary gas generation at the terminal itself — genuinely undocumented, not a documented negative."
+  },
+  {
+    "terminal": "Thai Binh FSRU",
+    "terminal_id": "T100000131073",
+    "country": "Vietnam",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "yellow",
+    "captive_summary": "Thai Binh LNG Power JSC (Tokyo Gas 40%, Kyuden 30%, Truong Thanh 30%) is building an FSRU + onshore 1,500 MW x2 combined-cycle power plant in Thai Binh province; construction broke ground in 2025 with commercial operation targeted 2029. Every source describes the FSRU strictly as the gas-supply link to the external power plant. No FSRU vessel has been named/chartered yet, so no source discloses whether the vessel's own house load (regas pumps, BOG handling) will run on onboard gas/dual-fuel generators or shore power — the existence question for the terminal's OWN generation is undocumented, not answered negatively.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "GIIGNL news (Oct 2025), The Investor, and Enerdata all confirm the FSRU + 1,500 MW x2 CCGT structure and JV equity split, but none names a vessel or describes onboard power equipment — as of these sources the FSRU had not yet been selected/chartered.",
+    "refs": [
+      "https://theinvestor.vn/northern-vietnam-province-determined-to-break-ground-on-lng-fueled-power-project-in-sept-d16455.html",
+      "https://www.giignl.org/news/tokyo-gas-and-partners-start-construction-on-vietnam-lng-to-power-project",
+      "https://www.enerdata.net/publications/daily-energy-news/tokyo-gas-forms-jv-fsru-and-15-gw-lng-power-project-vietnam.html"
+    ],
+    "verification_log": [
+      {"url": "https://theinvestor.vn/northern-vietnam-province-determined-to-break-ground-on-lng-fueled-power-project-in-sept-d16455.html", "tokens": ["Thai Binh", "Tokyo Gas"], "result": "PASS", "note": "confirms JV structure and project scope"},
+      {"url": "https://www.giignl.org/news/tokyo-gas-and-partners-start-construction-on-vietnam-lng-to-power-project", "tokens": ["Thai Binh", "FSRU"], "result": "PASS", "note": "confirms construction start, FSRU + 2x1,500MW CCGT"},
+      {"url": "https://www.enerdata.net/publications/daily-energy-news/tokyo-gas-forms-jv-fsru-and-15-gw-lng-power-project-vietnam.html", "tokens": ["Thai Binh", "FSRU"], "result": "PASS", "note": "confirms FSRU component of the 1.5GW project"},
+      {"url": "https://vietnamenergy.vn/launching-thai-binh-lng-gas-power-joint-stock-company-32170.html", "tokens": ["Thai Binh", "FSRU"], "result": "FAIL", "note": "missing expected content 'FSRU' — dropped, not cited"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT plant was supplied in the dispatch record (gogpt_prior: no) for this terminal.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No confirmed on-site generation at the terminal; the associated 1,500 MW x2 CCGT is a separate, external, grid-export power station appropriately tracked as its own GOGPT record, not as captive to this LNG terminal.",
+    "status_or_other_findings": "Construction reportedly broke ground in Sept/Oct 2025 per The Investor / GIIGNL news, consistent with GEM's current 'construction, actual' status. Not acted on.",
+    "notes": "Direction-test finding: the FSRU exists specifically to feed the external Thai Binh Combined Cycle power station (matches GEM's power_plants_supplied field) — that relationship is NOT captive. The separate question of the FSRU vessel's own house power is genuinely undocumented (no vessel named yet), hence INSUFFICIENT rather than NO."
+  },
+  {
+    "terminal": "Thi Vai LNG Terminal",
+    "terminal_id": "T100000130323",
+    "country": "Vietnam",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "Thi Vai LNG Terminal (PV Gas / LNG Vietnam) is a regasification terminal whose entire documented purpose is piping regasified gas to Nhon Trach 3 & 4 power station via a dedicated pipeline connecting into PV Gas's existing gas grid — a canonical PowerPlantsSupplied (direction-out) relationship, not captive power. No source describes any on-site power generation at the terminal itself.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "PetroVietnam's own release ('PV GAS signs contracts for Thi Vai LNG - Nhon Trach project chain', pvn.vn) states the pipeline connects Thi Vai LNG Terminal to PV Gas's existing gas grid, 'currently supplying gas to the power, fertilizer plants and industrial consumers' including Nhon Trach. Vietnam Investment Review ('Vietnam's first LNG-fueled power plant connects to national grid') independently corroborates that LNG regasified at Thi Vai fuels Nhon Trach 3 & 4. Neither source, nor any other found, describes an on-site generator at the terminal.",
+    "refs": [
+      "https://www.pvn.vn/sites/en/Pages/detail.aspx?NewsID=6a2f9e74-e590-490c-a6c8-f72fc2e55596",
+      "https://vir.com.vn/vietnams-first-lng-fueled-power-plant-connects-to-national-grid-122405.html"
+    ],
+    "verification_log": [
+      {"url": "https://www.pvn.vn/sites/en/Pages/detail.aspx?NewsID=6a2f9e74-e590-490c-a6c8-f72fc2e55596", "tokens": ["Thi Vai", "Nhon Trach"], "result": "PASS", "note": "PetroVietnam primary source: pipeline connects Thi Vai LNG Terminal to existing gas grid supplying Nhon Trach"},
+      {"url": "https://vir.com.vn/vietnams-first-lng-fueled-power-plant-connects-to-national-grid-122405.html", "tokens": ["Thi Vai", "Nhon Trach"], "result": "PASS", "note": "independent trade-press corroboration of the Thi Vai to Nhon Trach 3&4 gas supply relationship"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT plant was supplied in the dispatch record (gogpt_prior: no) for this terminal.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Not a gas power station at this site at all — the terminal is a pure regas/supply facility; Nhon Trach 3 & 4 (the actual generating asset) is a separate, already-known GOGPT plant elsewhere.",
+    "status_or_other_findings": "",
+    "notes": "Canonical direction-test case per dispatch instructions. power_plants_supplied = 'Nhon Trach power station' is correct and this batch does not touch it. No evidence found of any on-site backup/emergency gas genset at the terminal itself in the sources reviewed."
+  },
+  {
+    "terminal": "Tien Giang LNG Terminal",
+    "terminal_id": "T100000131074",
+    "country": "Vietnam",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "yellow",
+    "captive_summary": "This 4-6 mtpa LNG terminal was proposed to fuel EVN's Tan Phuoc power center (coal-to-LNG conversion study by consultant PECC2). The project never advanced past an early fuel-comparison feasibility study before both the power station and the terminal were shelved/cancelled (GEM: Tan Phuoc power station cancelled 2021; terminal presumed shelved likewise). No source describes terminal-level engineering, so no determination of on-site vs. grid-fed power supply for the terminal itself is possible.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "nangluongvietnam.vn ('Chuyển đổi nhiên liệu cho Trung tâm Điện lực Tân Phước và Long An') documents that PECC2 was tasked only with comparing coal vs. LNG fuel options for the Tan Phuoc Power Center — i.e. the project never reached a terminal-specific engineering/FEED stage. No subsequent source (post-2021) shows the project resuming.",
+    "refs": [
+      "https://nangluongvietnam.vn/chuyen-doi-nhien-lieu-cho-trung-tam-dien-luc-tan-phuoc-va-long-an-25450.html"
+    ],
+    "verification_log": [
+      {"url": "https://nangluongvietnam.vn/chuyen-doi-nhien-lieu-cho-trung-tam-dien-luc-tan-phuoc-va-long-an-25450.html", "tokens": ["Tân Phước", "LNG"], "result": "PASS", "note": "confirms fuel-comparison-study-only stage, EVN/PECC2 sponsor"},
+      {"url": "https://en.vietstock.vn/2020/09/mekong-delta-shuns-coal-fired-power-plants-761-800805.htm", "tokens": ["Tien Giang", "LNG"], "result": "FAIL", "note": "HTTP 500, guessed URL slug incorrect — dropped, not cited"}
+    ],
+    "gogpt_prior_assessment": "GOGPT prior names 'Tan Phuoc power station' (3,550 MW per gogpt_total_mw, tier C, 0.0 km) with gogpt_captive already False, consistent with it being a large, independently-cancelled EVN grid power station, not a small captive unit for the terminal.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Both the terminal and the associated power station are cancelled; no generation to add.",
+    "status_or_other_findings": "",
+    "notes": "power_plants_supplied is blank in this dispatch record but the project's own history (Tan Phuoc power center conversion study) is a clear direction-out relationship to a separate EVN grid asset, not evidence of captive power at the terminal. The project stalled too early for any terminal-level design (captive or otherwise) to exist in the public record — INSUFFICIENT rather than SCREENED because real (if thin) project history was found and researched per the 'deep' suggested_bucket."
+  },
+  {
+    "terminal": "Tien Lang FSRU",
+    "terminal_id": "T100000131076",
+    "country": "Vietnam",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "yellow",
+    "captive_summary": "This is the ExxonMobil / JERA (TEPCO + Chubu Electric) Hai Phong FSRU proposal (also known as Cat Hai FSRU / Hai Phong FSRU). It never progressed past an October 2020 memorandum of understanding to 'jointly study' LNG import options — no FEED, no vessel selection, no captive-power design was ever published. It was subsequently superseded by an unrelated Vingroup/VinEnergo Hai Phong LNG-to-power project at a different site.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "JERA's own press release (jera.co.jp, Oct 28 2020) confirms the MOU scope was strictly a joint study of 'LNG import facilities' and gas market development — never a committed, engineered project. No later source shows the study converting into a design; GEM records it as cancelled (inferred 4y).",
+    "refs": [
+      "https://www.jera.co.jp/en/news/information/20201028_545"
+    ],
+    "verification_log": [
+      {"url": "https://www.jera.co.jp/en/news/information/20201028_545", "tokens": ["Hai Phong", "ExxonMobil"], "result": "PASS", "note": "JERA's own primary press release confirming MOU/study-only scope"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT plant was supplied in the dispatch record (gogpt_prior: no) for this terminal.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No generation of any kind was ever designed at this site; nothing to add.",
+    "status_or_other_findings": "Vingroup/VinEnergo's separate ~4,800-5,000 MW Hai Phong LNG power project (Tan Trao Industrial Park, groundbreaking Sept 2025) is a distinct, unrelated project, not a revival of this record — flagging so a future Discovery batch does not conflate the two. Not acted on here.",
+    "notes": "SCREEN criterion: cancelled-and-never-designed — real, named major sponsors (ExxonMobil, JERA/TEPCO/Chubu) but confirmed to have stalled at MOU/joint-study stage with no design ever published."
+  },
+  {
+    "terminal": "Vung Ang LNG Terminal",
+    "terminal_id": "T100000131060",
+    "country": "Vietnam",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "Vung Ang LNG Terminal (PetroVietnam Gas) is proposed as an LNG storage/regas facility whose documented purpose is to pipe regasified gas to the Quang Trach II and III power plants under a framework supply agreement between EVN and PV Gas, and to Vung Ang power station — a PowerPlantsSupplied (direction-out) relationship. No source describes any on-site power generation at the terminal itself.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "EVN's own release ('EVN and PV GAS sign framework agreement for LNG fuel supply to Quang Trach II and III power plants', en.evn.com.vn) and Vietnam Investment Review's independent report ('EVN and PV GAS agree to supply LNG for Quang Trach power plants') both confirm PV Gas will supply LNG fuel from the Vung Ang storage terminal to the external Quang Trach II/III plants. Neither source, nor any other found, describes on-site generation at the terminal.",
+    "refs": [
+      "https://en.evn.com.vn/d/en-US/news/EVN-and-PV-GAS-sign-framework-agreement-for-LNG-fuel-supply-to-Quang-Trach-II-and-III-power-plants-60-163-501397",
+      "https://vir.com.vn/evn-and-pv-gas-agree-to-supply-lng-for-quang-trach-power-plants-150036.html"
+    ],
+    "verification_log": [
+      {"url": "https://en.evn.com.vn/d/en-US/news/EVN-and-PV-GAS-sign-framework-agreement-for-LNG-fuel-supply-to-Quang-Trach-II-and-III-power-plants-60-163-501397", "tokens": ["Quang Trach", "Vung Ang"], "result": "PASS", "note": "EVN primary source: PV Gas to supply LNG fuel to Quang Trach II/III from Vung Ang storage"},
+      {"url": "https://vir.com.vn/evn-and-pv-gas-agree-to-supply-lng-for-quang-trach-power-plants-150036.html", "tokens": ["Quang Trach", "Vung Ang"], "result": "PASS", "note": "independent trade-press corroboration"}
+    ],
+    "gogpt_prior_assessment": "GOGPT prior names 'Vung Ang power station' (1,500 MW per gogpt_total_mw, tier B, 0.0 km) with gogpt_captive already False, consistent with the confirmed supply-out relationship (a separate, existing grid power station receiving piped gas, not a fenceline captive unit for the terminal).",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "GOGPT record for Vung Ang power station already exists (gogpt_captive: False); confirmed supply-out (PowerPlantsSupplied) relationship, not captive.",
+    "status_or_other_findings": "",
+    "notes": "Canonical direction-test case per dispatch instructions. power_plants_supplied = 'Vung Ang power station, Quang Trach Power Center' is well corroborated and this batch does not touch it. No evidence found of any on-site backup/emergency gas genset at the terminal itself in the sources reviewed."
+  }
+]

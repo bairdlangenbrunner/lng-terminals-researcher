@@ -1,0 +1,490 @@
+[
+  {
+    "terminal_id": "T100000130546",
+    "unit_id": "G100002054600",
+    "terminal_name": "Guanabara Bay FSRU",
+    "unit_name": "--",
+    "country": "Brazil",
+    "field_name": "Capacity",
+    "old_value": "22.50",
+    "new_value": "6.04",
+    "confidence": "yellow",
+    "source_tier": "primary (sponsor project page)",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.spglobal.com/commodity-insights/en/news-research/latest-news/lng/120621-excelerate-takes-over-operations-of-brazil-lng-terminal-at-bahia-petrobras",
+      "https://excelerateenergy.com/projects/guanabara-bay-lng-import-terminal/",
+      "https://www.cnnbrasil.com.br/economia/macroeconomia/cmse-da-aval-para-ampliar-geracao-termeletrica-em-meio-a-crise-hidrica/"
+    ],
+    "source_notes": "The existing Capacity=22.50 with blank CapacityUnits appears to be a raw MMm3/d figure entered without conversion (Excelerate's own project page: 'Able to transfer up to 22.5 million cubic meters/day of natural gas to the Southeast gas pipeline network' — exact match to the stray 22.50). GEM's CapacityUnits enum only accepts mtpa/bcm/y (docs/reference/unit_conventions.md), not MMm3/d, which is consistent with why CapacityUnits was left blank and CapacityinMtpa/CapacityinBcm/y (computed, not touched here) were never populated. Conversion: 22.5 MMm3/d x 365 = 8.2125 bcm/y; /1.36 (mtpa<->bcm/y factor per unit_conventions.md) = 6.04 mtpa. cnnbrasil.com.br corroborates the MMm3/d unit convention and ballpark scale for this terminal ('ampliacao...de 20 milhoes para 30 milhoes de metros cubicos/dia') but cites a different phase (20->30) rather than the exact 22.5 figure, so this is rated yellow (one primary source for the precise value). Pair with the CapacityUnits update in this same file. [ref-restore 2026-08-11: restored existing live URL(s) https://www.spglobal.com/commodity-insights/en/news-research/latest-news/lng/120621-excelerate-takes-over-operations-of-brazil-lng-terminal-at-bahia-petrobras per merge-semantics rule (bot-block != dead; never drop a URL not proven dead)]",
+    "scope_note": "Value correction, not a units-only fill — flagged in qa for reviewer double-check given the magnitude of the change.",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130546",
+    "unit_id": "G100002054600",
+    "terminal_name": "Guanabara Bay FSRU",
+    "unit_name": "--",
+    "country": "Brazil",
+    "field_name": "CapacityUnits",
+    "old_value": "",
+    "new_value": "mtpa",
+    "confidence": "yellow",
+    "source_tier": "primary (sponsor project page)",
+    "ref_field": null,
+    "ref_urls": [
+      "https://excelerateenergy.com/projects/guanabara-bay-lng-import-terminal/"
+    ],
+    "source_notes": "Pairs with the Capacity=6.04 correction above; see that record's source_notes for the MMm3/d->mtpa conversion basis.",
+    "scope_note": "field_gap: missing_field CapacityUnits (medium severity)",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130938",
+    "unit_id": "G100002093800",
+    "terminal_name": "Terminal Gás Sul FSRU",
+    "unit_name": "--",
+    "country": "Brazil",
+    "field_name": "StopYear",
+    "old_value": "",
+    "new_value": "2025",
+    "confidence": "green",
+    "source_tier": "trade press (2 independent Portuguese-language outlets)",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.abegas.org.br/arquivos/96561",
+      "https://eixos.com.br/gas-natural/mercado-de-gas/sem-previsao-de-novo-lrcap-new-fortress-transfere-navio-do-terminal-de-gnl-de-santa-catarina-para-o-egito/"
+    ],
+    "source_notes": "TBG pipeline contract ended end-2024 (not renewed); NFE halted TGS operations in July 2025 amid uncertainty over Brazil's cancelled/unscheduled backup-capacity auction, and redeployed the Energos Winter FSRU to a firm 5-year EGAS charter at Damietta, Egypt (announced Aug 2025). Matches the existing read-only-Postgres timeline entry (idled/actual, 2025, July) fetched via fetch_timeline.py G100002093800. Both sources are independent Brazilian trade-press outlets (ABEGAS industry association vs. Eixos energy-news site), each explicitly naming Terminal Gás Sul and the Egypt relocation.",
+    "scope_note": "field_gap: missing_field StopYear (medium severity), idled unit",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130938",
+    "unit_id": "G100002093800",
+    "terminal_name": "Terminal Gás Sul FSRU",
+    "unit_name": "--",
+    "country": "Brazil",
+    "field_name": "StopYear [ref]",
+    "old_value": "",
+    "new_value": "https://www.abegas.org.br/arquivos/96561, https://eixos.com.br/gas-natural/mercado-de-gas/sem-previsao-de-novo-lrcap-new-fortress-transfere-navio-do-terminal-de-gnl-de-santa-catarina-para-o-egito/",
+    "confidence": "green",
+    "source_tier": "trade press (2 independent Portuguese-language outlets)",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.abegas.org.br/arquivos/96561",
+      "https://eixos.com.br/gas-natural/mercado-de-gas/sem-previsao-de-novo-lrcap-new-fortress-transfere-navio-do-terminal-de-gnl-de-santa-catarina-para-o-egito/"
+    ],
+    "source_notes": "Ref pair for the StopYear=2025 fill above.",
+    "scope_note": "no orphan ref — paired with StopYear data value",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130930",
+    "unit_id": "G100002093000",
+    "terminal_name": "Imetame LNG Terminal",
+    "unit_name": "--",
+    "country": "Brazil",
+    "field_name": "Status [ref]",
+    "old_value": "",
+    "new_value": "https://www.epe.gov.br/sites-pt/publicacoes-dados-abertos/publicacoes/PublicacoesArquivos/publicacao-620/PITER%202021_English_October2021.pdf",
+    "confidence": "green",
+    "source_tier": "primary/regulatory (EPE — Brazil's Energy Research Company)",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.epe.gov.br/sites-pt/publicacoes-dados-abertos/publicacoes/PublicacoesArquivos/publicacao-620/PITER%202021_English_October2021.pdf"
+    ],
+    "source_notes": "Per lifecycle_rules.md, an inferred dormancy entry's ref is the newest substantive dormancy evidence, not a source literally saying 'shelved/cancelled'. This EPE PITER 2021 (English, Oct 2021) report is the newest substantive mention of Imetame found by prior researcher (ResearcherNotesUnit) and by this pass; no further activity found since. Same source already used for FacilityType [ref] and Location [ref] on this row.",
+    "scope_note": "field_gap: blank_ref Status [ref] (medium severity)",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130930",
+    "unit_id": "G100002093000",
+    "terminal_name": "Imetame LNG Terminal",
+    "unit_name": "--",
+    "country": "Brazil",
+    "field_name": "ShelvedYear [ref]",
+    "old_value": "",
+    "new_value": "https://www.epe.gov.br/sites-pt/publicacoes-dados-abertos/publicacoes/PublicacoesArquivos/publicacao-620/PITER%202021_English_October2021.pdf",
+    "confidence": "green",
+    "source_tier": "primary/regulatory (EPE)",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.epe.gov.br/sites-pt/publicacoes-dados-abertos/publicacoes/PublicacoesArquivos/publicacao-620/PITER%202021_English_October2021.pdf"
+    ],
+    "source_notes": "Same dormancy-evidence citation as Status [ref] above.",
+    "scope_note": "field_gap: blank_ref ShelvedYear [ref] (low severity)",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130930",
+    "unit_id": "G100002093000",
+    "terminal_name": "Imetame LNG Terminal",
+    "unit_name": "--",
+    "country": "Brazil",
+    "field_name": "CancelledYear [ref]",
+    "old_value": "",
+    "new_value": "https://www.epe.gov.br/sites-pt/publicacoes-dados-abertos/publicacoes/PublicacoesArquivos/publicacao-620/PITER%202021_English_October2021.pdf",
+    "confidence": "green",
+    "source_tier": "primary/regulatory (EPE)",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.epe.gov.br/sites-pt/publicacoes-dados-abertos/publicacoes/PublicacoesArquivos/publicacao-620/PITER%202021_English_October2021.pdf"
+    ],
+    "source_notes": "Same dormancy-evidence citation as Status [ref] above.",
+    "scope_note": "field_gap: blank_ref CancelledYear [ref] (low severity)",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130930",
+    "unit_id": "G100002093000",
+    "terminal_name": "Imetame LNG Terminal",
+    "unit_name": "--",
+    "country": "Brazil",
+    "field_name": "StopYear [ref]",
+    "old_value": "",
+    "new_value": "https://www.epe.gov.br/sites-pt/publicacoes-dados-abertos/publicacoes/PublicacoesArquivos/publicacao-620/PITER%202021_English_October2021.pdf",
+    "confidence": "green",
+    "source_tier": "primary/regulatory (EPE)",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.epe.gov.br/sites-pt/publicacoes-dados-abertos/publicacoes/PublicacoesArquivos/publicacao-620/PITER%202021_English_October2021.pdf"
+    ],
+    "source_notes": "Same dormancy-evidence citation as Status [ref] above.",
+    "scope_note": "field_gap: blank_ref StopYear [ref] (low severity)",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130932",
+    "unit_id": "G100002093200",
+    "terminal_name": "Paraná FSRU",
+    "unit_name": "--",
+    "country": "Brazil",
+    "field_name": "Status [ref]",
+    "old_value": "",
+    "new_value": "https://www.epe.gov.br/sites-pt/publicacoes-dados-abertos/publicacoes/PublicacoesArquivos/publicacao-620/PITER%202021_English_October2021.pdf",
+    "confidence": "green",
+    "source_tier": "primary/regulatory (EPE)",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.epe.gov.br/sites-pt/publicacoes-dados-abertos/publicacoes/PublicacoesArquivos/publicacao-620/PITER%202021_English_October2021.pdf"
+    ],
+    "source_notes": "Same PITER 2021 dormancy-evidence pattern as Imetame — already cited on this row's Location [ref]; no news found since.",
+    "scope_note": "field_gap: blank_ref Status [ref] (medium severity)",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130932",
+    "unit_id": "G100002093200",
+    "terminal_name": "Paraná FSRU",
+    "unit_name": "--",
+    "country": "Brazil",
+    "field_name": "ShelvedYear [ref]",
+    "old_value": "",
+    "new_value": "https://www.epe.gov.br/sites-pt/publicacoes-dados-abertos/publicacoes/PublicacoesArquivos/publicacao-620/PITER%202021_English_October2021.pdf",
+    "confidence": "green",
+    "source_tier": "primary/regulatory (EPE)",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.epe.gov.br/sites-pt/publicacoes-dados-abertos/publicacoes/PublicacoesArquivos/publicacao-620/PITER%202021_English_October2021.pdf"
+    ],
+    "source_notes": "Same dormancy-evidence citation as Status [ref] above.",
+    "scope_note": "field_gap: blank_ref ShelvedYear [ref] (low severity)",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130932",
+    "unit_id": "G100002093200",
+    "terminal_name": "Paraná FSRU",
+    "unit_name": "--",
+    "country": "Brazil",
+    "field_name": "CancelledYear [ref]",
+    "old_value": "",
+    "new_value": "https://www.epe.gov.br/sites-pt/publicacoes-dados-abertos/publicacoes/PublicacoesArquivos/publicacao-620/PITER%202021_English_October2021.pdf",
+    "confidence": "green",
+    "source_tier": "primary/regulatory (EPE)",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.epe.gov.br/sites-pt/publicacoes-dados-abertos/publicacoes/PublicacoesArquivos/publicacao-620/PITER%202021_English_October2021.pdf"
+    ],
+    "source_notes": "Same dormancy-evidence citation as Status [ref] above.",
+    "scope_note": "field_gap: blank_ref CancelledYear [ref] (low severity)",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130932",
+    "unit_id": "G100002093200",
+    "terminal_name": "Paraná FSRU",
+    "unit_name": "--",
+    "country": "Brazil",
+    "field_name": "StopYear [ref]",
+    "old_value": "",
+    "new_value": "https://www.epe.gov.br/sites-pt/publicacoes-dados-abertos/publicacoes/PublicacoesArquivos/publicacao-620/PITER%202021_English_October2021.pdf",
+    "confidence": "green",
+    "source_tier": "primary/regulatory (EPE)",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.epe.gov.br/sites-pt/publicacoes-dados-abertos/publicacoes/PublicacoesArquivos/publicacao-620/PITER%202021_English_October2021.pdf"
+    ],
+    "source_notes": "Same dormancy-evidence citation as Status [ref] above.",
+    "scope_note": "field_gap: blank_ref StopYear [ref] (low severity)",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130934",
+    "unit_id": "G100002093400",
+    "terminal_name": "Presidente Kennedy FSRU",
+    "unit_name": "--",
+    "country": "Brazil",
+    "field_name": "Status [ref]",
+    "old_value": "",
+    "new_value": "https://www.portocentral.com.br/oportunidades-de-negocios/gas-natural/",
+    "confidence": "green",
+    "source_tier": "primary (project owner's own site)",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.portocentral.com.br/oportunidades-de-negocios/gas-natural/"
+    ],
+    "source_notes": "Re-fetched Aug 2026: the owner's own page still describes the LNG opportunity only in general/vague terms ('...pode se tornar uma das principais rotas de abastecimento de gás natural...') with no concrete timeline, contractor, or start date — consistent with GC's Sep 2025 note and confirming continued dormancy through the present. Also confirms the terminal's stated capacity ('up to 20 Mm3/d') matches GEM's existing Capacity=7.30 bcm/y (20 Mm3/d x 365 = 7.3 bcm/y) — no capacity change needed.",
+    "scope_note": "field_gap: blank_ref Status [ref] (medium severity)",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130934",
+    "unit_id": "G100002093400",
+    "terminal_name": "Presidente Kennedy FSRU",
+    "unit_name": "--",
+    "country": "Brazil",
+    "field_name": "ShelvedYear [ref]",
+    "old_value": "",
+    "new_value": "https://www.portocentral.com.br/oportunidades-de-negocios/gas-natural/",
+    "confidence": "green",
+    "source_tier": "primary (project owner's own site)",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.portocentral.com.br/oportunidades-de-negocios/gas-natural/"
+    ],
+    "source_notes": "Same dormancy-evidence citation as Status [ref] above.",
+    "scope_note": "field_gap: blank_ref ShelvedYear [ref] (low severity)",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130934",
+    "unit_id": "G100002093400",
+    "terminal_name": "Presidente Kennedy FSRU",
+    "unit_name": "--",
+    "country": "Brazil",
+    "field_name": "StopYear [ref]",
+    "old_value": "",
+    "new_value": "https://www.portocentral.com.br/oportunidades-de-negocios/gas-natural/",
+    "confidence": "green",
+    "source_tier": "primary (project owner's own site)",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.portocentral.com.br/oportunidades-de-negocios/gas-natural/"
+    ],
+    "source_notes": "Same dormancy-evidence citation as Status [ref] above.",
+    "scope_note": "field_gap: blank_ref StopYear [ref] (low severity)",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130688",
+    "unit_id": "G100002068800",
+    "terminal_name": "Porto do Açu FSRU",
+    "unit_name": "--",
+    "country": "Brazil",
+    "field_name": "Status [ref]",
+    "old_value": "https://petroleohoje.editorabrasilenergia.com.br/gna-recebe-primeira-carga-de-gnl-no-porto-do-acu/, https://giignl.org/wp-content/uploads/2023/07/GIIGNL_2023_Annual_Report_July13.pdf,HSN",
+    "new_value": "https://petroleohoje.editorabrasilenergia.com.br/gna-recebe-primeira-carga-de-gnl-no-porto-do-acu/, https://cdn.prod.website-files.com/67bdb9fc993751711c5f54fd/67d40f91fd8b5ad05589ef9e_GIIGNL-2023-Annual-Report.pdf",
+    "confidence": "green",
+    "source_tier": "trade press + GIIGNL 2023 edition",
+    "ref_field": null,
+    "ref_urls": [
+      "https://petroleohoje.editorabrasilenergia.com.br/gna-recebe-primeira-carga-de-gnl-no-porto-do-acu/",
+      "https://cdn.prod.website-files.com/67bdb9fc993751711c5f54fd/67d40f91fd8b5ad05589ef9e_GIIGNL-2023-Annual-Report.pdf"
+    ],
+    "source_notes": "Mechanical dead-domain repair: the old giignl.org deep link (with a malformed trailing ',HSN') is dead site-wide. Re-cited the SAME 2023 edition at its official mirror per data/README.md; verified PASS (token 'Açu').",
+    "scope_note": "giignl.org dead-domain sweep (exhaustive tier §7.2)",
+    "dropped_urls_dead": [
+      "https://giignl.org/wp-content/uploads/2023/07/GIIGNL_2023_Annual_Report_July13.pdf,HSN"
+    ],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130688",
+    "unit_id": "G100002068800",
+    "terminal_name": "Porto do Açu FSRU",
+    "unit_name": "--",
+    "country": "Brazil",
+    "field_name": "StartDate [ref]",
+    "old_value": "https://petroleohoje.editorabrasilenergia.com.br/gna-recebe-primeira-carga-de-gnl-no-porto-do-acu/, https://giignl.org/wp-content/uploads/2023/07/GIIGNL_2023_Annual_Report_July13.pdf,HSN",
+    "new_value": "https://petroleohoje.editorabrasilenergia.com.br/gna-recebe-primeira-carga-de-gnl-no-porto-do-acu/, https://cdn.prod.website-files.com/67bdb9fc993751711c5f54fd/67d40f91fd8b5ad05589ef9e_GIIGNL-2023-Annual-Report.pdf",
+    "confidence": "green",
+    "source_tier": "trade press + GIIGNL 2023 edition",
+    "ref_field": null,
+    "ref_urls": [
+      "https://petroleohoje.editorabrasilenergia.com.br/gna-recebe-primeira-carga-de-gnl-no-porto-do-acu/",
+      "https://cdn.prod.website-files.com/67bdb9fc993751711c5f54fd/67d40f91fd8b5ad05589ef9e_GIIGNL-2023-Annual-Report.pdf"
+    ],
+    "source_notes": "Same mechanical giignl.org repair as Status [ref] above.",
+    "scope_note": "giignl.org dead-domain sweep (exhaustive tier §7.2)",
+    "dropped_urls_dead": [
+      "https://giignl.org/wp-content/uploads/2023/07/GIIGNL_2023_Annual_Report_July13.pdf,HSN"
+    ],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130688",
+    "unit_id": "G100002068800",
+    "terminal_name": "Porto do Açu FSRU",
+    "unit_name": "--",
+    "country": "Brazil",
+    "field_name": "Operator [ref]",
+    "old_value": "https://www.kn.lt/en/our-activities/lng-terminals/au-lng-terminal/3289, https://giignl.org/wp-content/uploads/2023/07/GIIGNL_2023_Annual_Report_July13.pdf",
+    "new_value": "https://www.kn.lt/en/our-activities/lng-terminals/au-lng-terminal/3289, https://cdn.prod.website-files.com/67bdb9fc993751711c5f54fd/67d40f91fd8b5ad05589ef9e_GIIGNL-2023-Annual-Report.pdf",
+    "confidence": "green",
+    "source_tier": "sponsor site + GIIGNL 2023 edition",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.kn.lt/en/our-activities/lng-terminals/au-lng-terminal/3289",
+      "https://cdn.prod.website-files.com/67bdb9fc993751711c5f54fd/67d40f91fd8b5ad05589ef9e_GIIGNL-2023-Annual-Report.pdf"
+    ],
+    "source_notes": "Same mechanical giignl.org repair (2023 edition mirror), no ',HSN' malformation on this cell but same dead domain.",
+    "scope_note": "giignl.org dead-domain sweep (exhaustive tier §7.2)",
+    "dropped_urls_dead": [
+      "https://giignl.org/wp-content/uploads/2023/07/GIIGNL_2023_Annual_Report_July13.pdf"
+    ],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130688",
+    "unit_id": "G100002068800",
+    "terminal_name": "Porto do Açu FSRU",
+    "unit_name": "--",
+    "country": "Brazil",
+    "field_name": "FloatingVesselName [ref]",
+    "old_value": "https://prumologistica.com.br/en/?news=porto-do-acu-and-gna-announce-investments-of-brl-6-billion-in-infrastructure-and-energy-3, https://bw-group.com/our-businesses/bw-lng/projects/bw-magna-in-brazil/, https://giignl.org/wp-content/uploads/2023/07/GIIGNL_2023_Annual_Report_July13.pdf",
+    "new_value": "https://prumologistica.com.br/en/?news=porto-do-acu-and-gna-announce-investments-of-brl-6-billion-in-infrastructure-and-energy-3, https://bw-group.com/our-businesses/bw-lng/projects/bw-magna-in-brazil/, https://cdn.prod.website-files.com/67bdb9fc993751711c5f54fd/67d40f91fd8b5ad05589ef9e_GIIGNL-2023-Annual-Report.pdf",
+    "confidence": "green",
+    "source_tier": "sponsor sites + GIIGNL 2023 edition",
+    "ref_field": null,
+    "ref_urls": [
+      "https://prumologistica.com.br/en/?news=porto-do-acu-and-gna-announce-investments-of-brl-6-billion-in-infrastructure-and-energy-3",
+      "https://bw-group.com/our-businesses/bw-lng/projects/bw-magna-in-brazil/",
+      "https://cdn.prod.website-files.com/67bdb9fc993751711c5f54fd/67d40f91fd8b5ad05589ef9e_GIIGNL-2023-Annual-Report.pdf"
+    ],
+    "source_notes": "Same mechanical giignl.org repair (2023 edition mirror).",
+    "scope_note": "giignl.org dead-domain sweep (exhaustive tier §7.2)",
+    "dropped_urls_dead": [
+      "https://giignl.org/wp-content/uploads/2023/07/GIIGNL_2023_Annual_Report_July13.pdf"
+    ],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131119",
+    "unit_id": "G100002111900",
+    "terminal_name": "Sepetiba Bay FSRU",
+    "unit_name": "--",
+    "country": "Brazil",
+    "field_name": "FloatingVesselName [ref]",
+    "old_value": "https://giignl.org/wp-content/uploads/2024/06/GIIGNL-2024-Annual-Report-1.pdf",
+    "new_value": "https://cdn.prod.website-files.com/67bdb9fc993751711c5f54fd/6854051dda46281e5ec60285_GIIGNL%20Annual%20Report%202024.pdf",
+    "confidence": "green",
+    "source_tier": "GIIGNL 2024 edition",
+    "ref_field": null,
+    "ref_urls": [
+      "https://cdn.prod.website-files.com/67bdb9fc993751711c5f54fd/6854051dda46281e5ec60285_GIIGNL%20Annual%20Report%202024.pdf"
+    ],
+    "source_notes": "Mechanical dead-domain repair: old giignl.org deep link is dead site-wide. Re-cited the SAME 2024 edition at its official mirror per data/README.md; verified PASS (token 'Sepetiba').",
+    "scope_note": "giignl.org dead-domain sweep (exhaustive tier §7.2)",
+    "dropped_urls_dead": [
+      "https://giignl.org/wp-content/uploads/2024/06/GIIGNL-2024-Annual-Report-1.pdf"
+    ],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130550",
+    "unit_id": "G100002055001",
+    "terminal_name": "Santos Basin FLNG Terminal",
+    "unit_name": "--",
+    "country": "Brazil",
+    "field_name": "FacilityType [ref]",
+    "old_value": "http://abarrelfull.wikidot.com/santos-basin-floating-lng-terminal",
+    "new_value": "https://www.offshore-energy.biz/brazil-petrobras-delays-flng-plan-2/",
+    "confidence": "yellow",
+    "source_tier": "trade press",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.offshore-energy.biz/brazil-petrobras-delays-flng-plan-2/"
+    ],
+    "source_notes": "abarrelfull is a banned source (absolute ban, never a reference) — replaced with the offshore-energy.biz article already cited elsewhere on this row, which independently confirms the facility was a floating (export) LNG unit ('floating liquefied gas terminal'...'send-out capacity of 2.7mn t/yr of LNG'). This is a BANNED-source removal, not a dead-link claim (the abarrelfull page may still resolve).",
+    "scope_note": "abarrelfull banned-source repair",
+    "dropped_urls_dead": [],
+    "dropped_urls_banned": [
+      "http://abarrelfull.wikidot.com/santos-basin-floating-lng-terminal"
+    ],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130550",
+    "unit_id": "G100002055001",
+    "terminal_name": "Santos Basin FLNG Terminal",
+    "unit_name": "--",
+    "country": "Brazil",
+    "field_name": "Capacity [ref]",
+    "old_value": "https://www.offshore-energy.biz/brazil-petrobras-delays-flng-plan-2/, http://abarrelfull.wikidot.com/santos-basin-floating-lng-terminal",
+    "new_value": "https://www.offshore-energy.biz/brazil-petrobras-delays-flng-plan-2/",
+    "confidence": "yellow",
+    "source_tier": "trade press",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.offshore-energy.biz/brazil-petrobras-delays-flng-plan-2/"
+    ],
+    "source_notes": "abarrelfull banned-source removal — the surviving offshore-energy.biz URL already explicitly states the 2.7mn t/yr LNG send-out capacity, so no orphaned value. Confidence stays yellow (single non-primary source for the exact figure) — could not locate a second independent corroboration within this session's search budget; see qa note flagging this for follow-up.",
+    "scope_note": "abarrelfull banned-source repair",
+    "dropped_urls_dead": [],
+    "dropped_urls_banned": [
+      "http://abarrelfull.wikidot.com/santos-basin-floating-lng-terminal"
+    ],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130550",
+    "unit_id": "G100002055001",
+    "terminal_name": "Santos Basin FLNG Terminal",
+    "unit_name": "--",
+    "country": "Brazil",
+    "field_name": "Location [ref]",
+    "old_value": "https://www.offshore-energy.biz/brazil-petrobras-delays-flng-plan-2/, http://abarrelfull.wikidot.com/santos-basin-floating-lng-terminal",
+    "new_value": "https://www.offshore-energy.biz/brazil-petrobras-delays-flng-plan-2/",
+    "confidence": "yellow",
+    "source_tier": "trade press",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.offshore-energy.biz/brazil-petrobras-delays-flng-plan-2/"
+    ],
+    "source_notes": "abarrelfull banned-source removal — surviving offshore-energy.biz URL is the same already-cited article; location (Santos Basin) is corroborated by this source's Brazil/Santos Basin framing.",
+    "scope_note": "abarrelfull banned-source repair",
+    "dropped_urls_dead": [],
+    "dropped_urls_banned": [
+      "http://abarrelfull.wikidot.com/santos-basin-floating-lng-terminal"
+    ],
+    "researcher_initials": "AI-draft (sweep)"
+  }
+]

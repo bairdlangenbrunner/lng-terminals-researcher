@@ -1,0 +1,719 @@
+[
+ {
+  "terminal": "Arzew-Bethioua LNG Terminal",
+  "terminal_id": "T100000130243",
+  "mechanical": "True",
+  "confidence": "green",
+  "gogpt_captive_prior": "No - Kahrama (345 MW, gogpt_captive=True in the prior) is a separate government BOO (build-own-operate, awarded 1999, 25-year contract) seawater-desalination-plus-power IWPP feeding Oran-area municipal water/grid needs, not Sonatrach's own captive plant for the LNG complex; an unrelated merchant/public-service plant sited nearby. https://www.power-technology.com/data-insights/power-plant-profile-arzew-kahrama-iwpp-power-plant-algeria/",
+  "confirmed_how": "VERDICT: YES. The Arzew-Bethioua complex (GL1Z/GL2Z/GL3Z operating, GL4Z retired) runs on-site gas turbines at least at the GL3Z train, confirmed by Sonatrach's own procurement tender for gas-turbine air filters at that complex. This is issued by the Liquefaction (GNL/GPL) division, consistent with the turbines being mechanical-drive units for the propane/mixed-refrigerant refrigeration compressors rather than a separate generating station. EVIDENCE: Sonatrach's Activite Liquefaction et Separation, Division GNL/GPL, Complexe GL3Z issued Appel d'Offres National & International Ouvert N13/A/GL3Z/2023, titled 'ACQUISITION DES FILTRES A AIR DES TURBINES A GAZ POUR LE COMPLEXE GL3Z' - Sonatrach's own maintenance/procurement notice for air filters serving the complex's gas turbines, verified by direct PDF fetch (pdftotext) confirming the title and complex name.",
+  "confirmed_how [ref]": [
+   "https://file05.erui.com/group1/M00/00/BF/rBFIw2Rut5yAEweyAAPfogTObfs042.pdf"
+  ]
+ },
+ {
+  "terminal": "Skikda LNG Terminal",
+  "terminal_id": "T100000130244",
+  "mechanical": "True",
+  "confidence": "green",
+  "gogpt_captive_prior": "No - the Skikda Combined-Cycle plant (880 MW, 'SKS'/Shariket Kahraba Skikda) is an independent power producer commissioned 2005-2006 by SNC-Lavalin selling into the national grid, roughly 30 years after GL1K's 1972 startup; an unrelated merchant plant, not built to power the LNG complex. https://www.power-technology.com/data-insights/power-plant-profile-skikda-combined-cycle-power-plant-algeria/",
+  "confirmed_how": "VERDICT: YES. Skikda's GL1K complex runs on-site GE gas turbines (MS5002D and MS7001EA/DLN-1 models identified) procured/maintained by Sonatrach's own Liquefaction division - consistent with the classic gas-turbine-driven refrigeration-compressor design of this 1970s-era APCI LNG train. EVIDENCE: Two separate Sonatrach (Activite LRP, Division LQS) procurement tenders for the GL1K-Skikda complex: (1) 'Acquisition d'un rotor complet HP et BP pour turbine a gaz GE MS5002D' (tender 06/MNT/GL1K/2024, published 27 June 2024); (2) 'Acquisition d'un rotor complet pour la turbine a gaz de marque GE MS7001EA-DLN-1' at the GL1K-Skikda complex (published 17 Aug 2023). Both are Sonatrach's own rotor/overhaul procurement records naming specific GE gas-turbine models in service at the complex.",
+  "confirmed_how [ref]": [
+   "https://rhinotenders.com/tenders/tender/acquisition-d-un-rotor-complet-hp-bp-pour-turbine-a-gaz-ge-ms5002d-zasqr",
+   "https://rhinotenders.com/tenders/tender/acquisition-d-un-rotor-complet-pour-la-turbine-a-gaz-de-marque-ge-ms7001e-kyngk"
+  ]
+ },
+ {
+  "terminal": "Angola LNG Terminal",
+  "terminal_id": "T100000130245",
+  "mechanical": "True",
+  "confidence": "green",
+  "gogpt_captive_prior": "Unchanged: GOGPT prior is the Soyo power station (1470 MW, 7 km away, gogpt_captive=False). Wikipedia confirms Angola LNG 'is a major supplier to the Soyo combined-cycle power plant' — the PowerPlantsSupplied direction, not a captive relationship. GOGPT correctly marks Soyo power station as non-captive.",
+  "confirmed_how": "VERDICT: YES. Angola LNG's single liquefaction train at Soyo is compressed by two on-site GE gas-turbine-driven compression trains (mechanical drive, shaft power to the refrigeration/liquefaction compressors) under a long-term GE service agreement signed 2012. This is captive gas power under the SOP's mechanical-drive rule. Upgraded to green this recovery pass: GE's OWN newsroom press release (a primary/vendor-primary source, sufficient alone per SOP) independently states the same 'two GE gas turbine-driven compression trains' finding as the previously-cited offshore-energy.biz trade-press article, and the two are independently authored/hosted documents (GE's own release vs. an independent trade publication), satisfying ≥2-independent-source corroboration as well. No separate electricity-generation plant (MWe) was found disclosed for the site's own electrical/utility loads — that remains undisclosed, not a NO. EVIDENCE: GE's own newsroom press release (found this recovery pass via a DuckDuckGo-html result after WebSearch's session budget was exhausted), 'Angola LNG Plant Ensuring Gas Supply through GE Service Agreement', https://www.ge.com/news/press-releases/angola-lng-plant-ensuring-gas-supply-through-ge-service-agreement: 'Targets Operational Efficiency and Increased Availability... On-Site GE Team to Collaborate with the Customer... Plant Features Two GE Gas Turbine-Driven Compressor Trains'; body text states Angola LNG and GE Oil & Gas 'have signed a long-term contractual service agreement' whose scope 'will cover two GE gas turbine-driven compression trains — including additional plant equipment — ensuring continuous technical assistance' at the Soyo, Zaire Province facility, to increase 'overall plant efficiency and provide maximum availability for the key gas compression equipment.' Verified via url_verifier.py: PASS on tokens 'gas turbine-driven compression trains' and 'Soyo'. This independently corroborates (as GE's own primary announcement of its own equipment/contract) the previously-cited Offshore Energy (6 Jun 2012) 'Angola LNG Contract Goes to GE' trade-press article carrying the same substance, and both together satisfy the SOP's ≥2-independent-publisher rule (GE's own primary release is also sufficient alone).",
+  "confirmed_how [ref]": [
+   "https://www.ge.com/news/press-releases/angola-lng-plant-ensuring-gas-supply-through-ge-service-agreement",
+   "https://www.offshore-energy.biz/angola-lng-contract-goes-to-ge/"
+  ]
+ },
+ {
+  "terminal": "New Fortress Angola LNG Terminal",
+  "terminal_id": "T100000130823",
+  "mechanical": "",
+  "confidence": "yellow",
+  "gogpt_captive_prior": "No GOGPT prior given (gogpt_prior: no) — no nearby plant to assess.",
+  "confirmed_how": "VERDICT: SCREENED. Cancelled, never-sited project (GEM carries no coordinates, consistent with it never progressing past a non-binding planning stage). New Fortress Energy signed only a non-binding MOU with Angolan authorities in June 2019 to 'fund, build, and operate an LNG import and regasification terminal' explicitly to supply gas 'for power generation and industrial facilities across the country' — a national gas-to-power supply scheme, not a captive-power design. The project is absent from New Fortress Energy's current company website, and no follow-on news, FEED, or siting was found after the 2019 MOU. EVIDENCE: Offshore Energy (6 Jun 2019): New Fortress Energy 'signed a memorandum of understanding (MOU) with the Angolan authorities to develop a liquefied natural gas (LNG) terminal to supply natural gas to Angola for power generation'; explicitly non-binding ('actual terms of any definitive agreement may differ from the terms of the MOU'). No location, design, or subsequent progress found in any source searched; NFE's current website (checked directly) makes no mention of any Angola project.",
+  "confirmed_how [ref]": [
+   "https://www.offshore-energy.biz/new-fortress-to-develop-lng-to-power-infrastructure-in-angola/"
+  ]
+ },
+ {
+  "terminal": "Benin FSRU",
+  "terminal_id": "T100000130668",
+  "mechanical": "",
+  "confidence": "green",
+  "gogpt_captive_prior": "The prior (Maria Gleta power station I, 127.4 MW, gogpt_captive=False) is exactly the plant this project was designed to supply via offshore pipeline - confirms a PowerPlantsSupplied relationship (now moot, project cancelled), not a captive-power question. Same TotalEnergies press release as above.",
+  "confirmed_how": "VERDICT: NO. No captive power - TotalEnergies' own project announcement states the FSRU's purpose was to pipe regasified LNG onward to power stations, explicitly naming the 127 MW Maria Gleta plant, not to power itself with an on-site plant. The project reached only a 2019 pre-FEED conceptual study before being abandoned in 2021; no FSRU vessel was ever selected, so onboard generation (per the FSRU-onboard convention) cannot be separately evaluated either. EVIDENCE: TotalEnergies' 24 July 2019 press release ('Total will develop the LNG market in Benin') states: 'offshore pipeline connexion to the existing and planned power plants in Maria Gleta' and 'The gas import project will supply plants in Benin, such as the new 127 MW power station at Maria Gleta, with imported liquefied natural gas' - a direction-test negative (gas flows OUT to an external plant, matching GEM's own gogpt_total_mw of 127.4 for the same plant). Sofregaz's own project page confirms the work performed was only a 2019 pre-FEED conceptual study (evaluating 'three potential FSRU connection schemes') before TotalEnergies abandoned the project in 2021 (per the independent LNG2030 tracker); no specific FSRU vessel was ever named.",
+  "confirmed_how [ref]": [
+   "https://totalenergies.com/media/news/press-releases/total-will-develop-lng-market-benin",
+   "https://sofregaz.fr/news/projects/fsru-benin/"
+  ]
+ },
+ {
+  "terminal": "Cotonou FSRU",
+  "terminal_id": "T100000130246",
+  "mechanical": "",
+  "confidence": "green",
+  "gogpt_captive_prior": "Same nearby prior as the neighboring 'Benin FSRU' TotalEnergies record (Maria Gleta power station, 127.4 MW) - an existing/planned grid power plant in the area, not documented as this project's own captive plant; this project's own stated purpose was West African Gas Pipeline supply, not powering itself.",
+  "confirmed_how": "VERDICT: SCREENED. Screened: the Gasol/Socar Trading FSRU project (a distinct, earlier initiative from the neighboring TotalEnergies 'Benin FSRU' record despite similar coordinates) never progressed past a mid-2010s 'detailed feasibility study' authorization before going dormant/cancelled; no FEED, no vessel selection, no equipment-level design was ever published. Its stated commercial purpose was merchant gas supply piped onto the West African Gas Pipeline for power/industrial customers in Benin, Togo and Ghana - a gas-supply-outward scheme, not an on-site generation project. EVIDENCE: Offshore Magazine (business brief, reporting the Dec-2012 Gasol/Socar Trading Strategic Alliance Agreement) states the project involved 'the regasification of LNG and the supply of that gas to power and industrial customers in Benin, Togo and Ghana' with gas 'routed to the West African Gas Pipeline.' Per the GEM tracker's own project-history summary, Benin's presidency approved the project Feb 2014 and the energy ministry granted only feasibility-study authorization in June 2015 - no FEED or vessel-specific design followed before the project went dormant.",
+  "confirmed_how [ref]": [
+   "https://www.offshore-mag.com/business-briefs/company-news/article/16785313/socar-gasol-team-for-benin-fsru"
+  ]
+ },
+ {
+  "terminal": "Botswana LNG Terminal",
+  "terminal_id": "T100001048162",
+  "mechanical": "",
+  "confidence": "red",
+  "gogpt_captive_prior": "gogpt_prior = no; nothing to assess.",
+  "confirmed_how": "VERDICT: INSUFFICIENT. Insufficient: Botala Energy's phased Serowe coal-bed-methane-to-LNG project (Phase 1 = 5-well pilot flow test; Phase 2 = adds wells plus one 'Galileo mini-LNG unit') is still pre-FID (targeting 2H-2026 FID, first LNG 2027). Galileo Technologies' modular mini-LNG skids are typically deployed at remote/off-grid wellhead sites and commonly self-generate, but no Serowe-specific source discloses the power arrangement (grid tie vs on-site gensets, fuel, or MW) for either phase. EVIDENCE: Botala Energy's own project page and 2026 trade press (Energies Media, citing the Minerals Development Company Botswana's ~$3.6M/15%-stake investment) describe the phased CBM-to-LNG plan and name a 'Galileo mini-LNG unit' as the Phase 2 liquefaction technology, but neither discloses power-generation equipment for the wellsite/liquefaction skid.",
+  "confirmed_how [ref]": [
+   "https://energiesmedia.com/botswana-serowe-cbm-targets-2026-fid/",
+   "https://botalaenergy.com/serowe-cbm-project/"
+  ]
+ },
+ {
+  "terminal": "Cameroon FLNG Terminal",
+  "terminal_id": "T100000130247",
+  "mechanical": "True",
+  "confidence": "green",
+  "gogpt_captive_prior": "Kribi power station (216 MW, 13.1 km away) is Cameroon's onshore national-grid gas-fired plant (AES-Sonel/Globeleq/ENEO lineage) supplying the interconnected grid from onshore gas fields - not co-located with, nor built to serve, the offshore Hilli Episeyo FLNG facility (unchanged from the primary shard's assessment; no independently verifiable non-gem.wiki source on Kribi's ownership/fuel chain was located this pass either).",
+  "confirmed_how": "VERDICT: YES. Hilli Episeyo (Golar's converted Moss LNG carrier, moored ~10km offshore Kribi, 2.4 mtpa PRICO design) has TWO confirmed on-site gas-fired systems from its original 2014-2017 conversion: (1) GE PGT25+G4 DLE gas turbines mechanically driving GE 2BCL compressors across the four liquefaction trains (Black & Veatch/GE contract, announced May 2015), and (2) two dedicated Rolls-Royce Bergen B35:40V20AG all-gas reciprocating engines supplying the vessel's own power generation for the liquefaction process, vessel operation, and crew (Keppel/Rolls-Royce contract, announced March 2015). This resolves the prior shard's INSUFFICIENT finding, which searched startup/operations coverage but not the 2015 equipment-order press releases from the conversion program itself. EVIDENCE: Offshore-energy.biz, 'GE tech ordered for Hilli FLNG conversion' (6 May 2015): GE was 'chosen by Black & Veatch to deliver refrigeration compression equipment including GE PGT25+G4 DLE gas turbines and GE 2BCL compressors for Golar LNG Limited's FLNG vessel, the Hilli', supporting the four compression trains with GE Mark VIe controls and a 98.9% availability guarantee - this is the mechanical-drive system. Separately, gCaptain's 'Rolls-Royce to Power Golar's New Floating LNG Liquefaction Ship' (20 Mar 2015, reporting Rolls-Royce's own release) and offshore-energy.biz's 'Rolls-Royce engines for Golar FLNGV' (19 Mar 2015) both confirm: 'Two Bergen B35:40V20AG will be installed aboard the Hilli which will supply the on-board power generation for the vessel', 'fueled exclusively by LNG', with power 'mainly used for the liquefaction processes, and also for supporting vessel operation and the energy needs of the crew onboard' - this is the dedicated generator system. Both are vendor/EPC announcements of their own contracted equipment for this specific vessel (not the Gimi option language, which is separate and unconfirmed as-built) - two independent vendor sources (GE and Rolls-Royce) on two different equipment packages, both value-checked, support a green YES.",
+  "confirmed_how [ref]": [
+   "https://www.offshore-energy.biz/ge-tech-ordered-for-hilli-flng-conversion/",
+   "https://gcaptain.com/rolls-royce-power-golars-new-floating-lng-liquefaction-ship/",
+   "https://www.offshore-energy.biz/rolls-royce-engines-for-golar-flngv/"
+  ]
+ },
+ {
+  "terminal": "Cameroon LNG Terminal",
+  "terminal_id": "T100000130248",
+  "mechanical": "",
+  "confidence": "",
+  "gogpt_captive_prior": "No GOGPT prior plant was given for this terminal.",
+  "confirmed_how": "VERDICT: SCREENED. Onshore LNG export plant proposed by GDF Suez/ENGIE and SNH near Kribi; reached only pre-FEED (Foster Wheeler, 2010) before ENGIE put the whole project on hold in July 2016, and it has stayed dormant since (GEM records it cancelled). No equipment-level design - liquefaction train count, power plant, anything - was ever published. EVIDENCE: Offshore Energy: Foster Wheeler awarded a 'pre-front-end engineering design (pre-FEED) for the development of an onshore LNG plant and offshore gas gathering infrastructure' (2010); the same outlet: 'French utility and LNG player Engie has put on hold its plans on building a liquefied natural gas export plant on the coast of the Kribi region' (July 2016). No later article resumes the project or discloses further design detail.",
+  "confirmed_how [ref]": [
+   "https://www.offshore-energy.biz/foster-wheeler-awarded-contract-by-gdf-suez-for-cameroon-lng-project/",
+   "https://www.offshore-energy.biz/engie-puts-cameroon-lng-project-on-hold/"
+  ]
+ },
+ {
+  "terminal": "Etinde FLNG Terminal",
+  "terminal_id": "T100000130913",
+  "mechanical": "",
+  "confidence": "red",
+  "gogpt_captive_prior": "Limbe power station (350 MW, 24.45 km away) is a separate onshore national-grid gas plant, not co-located with the Etinde field or any of its studied development concepts (onshore or floating). Could not locate an independently verifiable non-gem.wiki source describing Limbe's ownership/fuel chain within available tools this session; distance alone rules out a captive relationship.",
+  "confirmed_how": "VERDICT: INSUFFICIENT. Etinde is a shallow-water gas-condensate field development (New Age/Bowleven/LUKOIL, later Perenco-operated) that reached a TechnipFMC FEED award, but the FEED-stage development concept found describes an ONSHORE gas processing, storage and export facility, not a floating unit - contradicting GEM's own floating=True/offshore=True tag on this terminal. No power-generation detail was found for either concept, and design work appears to have stalled ('long-stalled', per the most recent operatorship-transfer article) before any equipment-level disclosure. EVIDENCE: Offshore Energy, on the FEED award: 'The initial phase of the development concept proposed by the JV partners comprises an onshore gas processing, storage and export facility linked to an unmanned well head platform with associated pipeline infrastructure' (Mar 2020) - several 'development screening concept studies' were still underway at that point. A later article on Perenco taking over operatorship calls Etinde a 'long-stalled gas-condensate project' with no design update given.",
+  "confirmed_how [ref]": [
+   "https://www.offshore-energy.biz/new-age-hands-out-etinde-feed-award-to-technipfmc/",
+   "https://www.offshore-energy.biz/perenco-inks-deal-with-new-age-to-take-over-etinde-permit-operatorship/"
+  ]
+ },
+ {
+  "terminal": "Ivory Coast FSRU",
+  "terminal_id": "T100000130835",
+  "mechanical": "",
+  "confidence": "",
+  "gogpt_captive_prior": "Ciprel power station (366 MW per GOGPT / 556 MW per operator, 1.4 km, gogpt_captive=False) is Côte d'Ivoire's flagship national IPP, built 1994 under the Ivorian state and Eranove group, selling to the grid under Take-or-Pay — unrelated to the FSRU project. info_url: https://www.ciprel.ci/ (homepage; background only, not a formal citation).",
+  "confirmed_how": "VERDICT: INSUFFICIENT. No vessel has been named for this shelved FSRU project in any source reachable this session, so the vessel's own onboard generation (the captive question for FSRU terminals) cannot be assessed. The nearby Ciprel IPP (556 MW per operator, 366 MW per GOGPT, gas turbines, 1.4 km, gogpt_captive=False) is independently confirmed to be Côte d'Ivoire's national grid-serving IPP (founded 1994, Eranove group, sells to the state under Take-or-Pay) — an unrelated pre-existing merchant plant, not this project's captive supply. EVIDENCE: Fetched ciprel.ci directly (not a search result) and confirmed CIPREL is a 556 MW gas-turbine IPP founded 1994 by the Ivorian state, part of Eranove group, supplying the government under Take-or-Pay — clearly pre-existing and unrelated to the 2020s-era FSRU consortium (TotalEnergies/SOCAR/Shell/Petroci/Golar/CI-Energies/Endeavor Energy). No vessel name, charter, or design document for the FSRU itself was found. General web search tools (Bing/DuckDuckGo/Yandex/Brave/Startpage) were non-functional for most of this session (see notes), which limited the search for the vessel identity specifically.",
+  "confirmed_how [ref]": []
+ },
+ {
+  "terminal": "Djibouti FLNG Terminal",
+  "terminal_id": "T100000130667",
+  "mechanical": "",
+  "confidence": "",
+  "gogpt_captive_prior": "Damerjog Power Generation Station (50 MW, CHP, 10.9 km, gogpt_captive=False) is a separate project in the same industrial zone, not fenceline to the FLNG site, and GOGPT itself does not treat it as captive to anything. info_url: https://capitalethiopia.com/2025/10/19/chinese-firm-to-transform-horn-of-africa-into-natural-gas-hub-with-djibouti-facility/ (describes it as part of a broader regional power plan, separate from the FLNG barge).",
+  "confirmed_how": "VERDICT: INSUFFICIENT. No source found describing on-site/onboard generation for this cancelled 3-train FLNG barge project at Damerjog. The nearby Damerjog Power Generation Station (~50 MW CHP, 10.9 km away) is a separate project — GOGPT's own gogpt_captive=False flag already treats it as not captive to anything — and a 2025 news article describes a much larger (1,000 MW) regional power buildout as part of the broader POLY-GCL gas-hub plan, distinct from the FLNG barge's own undisclosed onboard power. EVIDENCE: Fetched project background (capitalethiopia.com Oct-2025 article, globalcorridor.eu project page, GCL-Power press releases) confirming the project is a floating storage barge (FSB/FLNG) developed by POLY-GCL (China POLY Group + GCL Group JV) at Damerjog Port, ~$3.8-4bn cost, described as under construction as of 2018 reporting and still being developed per 2025 reporting — but none of these sources describe the barge's own electricity generation. The capitalethiopia.com article explicitly describes a '1,000 MW' power generation component as part of a broader national/regional industrial integration plan, not the FLNG facility's own captive supply. General web search engines (Google/Bing/DuckDuckGo/Yandex/Brave/Startpage via WebFetch) were non-functional for most of this session — confirmed by a control query ('Freeport LNG Texas' on Bing returned unrelated Freeport, NY/Maine/Bahamas results) — and the WebSearch tool's session budget was already exhausted before this shard could use it, which capped how much could be found.",
+  "confirmed_how [ref]": []
+ },
+ {
+  "terminal": "Ain Sokhna FSRU",
+  "terminal_id": "T100000130685",
+  "mechanical": "False",
+  "confidence": "green",
+  "gogpt_captive_prior": "Ain Sokhna IWPP power station (457 MW, gogpt_captive=False, 2.4 km away) is a separate independent water and power project (IWPP) - a merchant/national-grid gas-fired plant built under a World Bank-supported IWPP structure, not sited at or owned by the FSRU terminal. Not this terminal's captive power. Independent info: World Bank project document, https://documents1.worldbank.org/curated/en/892801563296856758/pdf/Egypt-Ain-Sokhna-Power-Project.pdf (verified, token 'Ain Sokhna' PASS).",
+  "confirmed_how": "VERDICT: YES. Ain Sokhna FSRU's only currently-operating unit, Energos Power, is a moored FSRU whose onboard diesel-electric generating plant is tri-fuel (MAN TFDE) - gas-capable machinery providing the vessel's own power, per the FSRU-onboard convention this is captive gas power for the terminal. The two retired units (BW Singapore, Höegh Gallant) are no longer in service here. EVIDENCE: Energos Infrastructure's own vessel fact page for Energos Power (https://energosinfra.com/our_fleet/energos-power/) states verbatim: '...With advanced boil-off gas management and MAN TFDE propulsion, Energos Power supports reliable LNG imports...' and confirms current deployment 'at Ain Sukhna, Egypt.' This is the operator's own fleet disclosure for its own vessel (brief's fleet-level-evidence convention).",
+  "confirmed_how [ref]": [
+   "https://energosinfra.com/our_fleet/energos-power/"
+  ]
+ },
+ {
+  "terminal": "Damietta FSRU",
+  "terminal_id": "T100001083032",
+  "mechanical": "False",
+  "confidence": "yellow",
+  "gogpt_captive_prior": "New Damietta power plant (500 MW, gogpt_captive=True per GOGPT, 10.8 km away) is a separate national-grid gas-fired power station near Damietta port, unconnected to the FSRU terminal and 10+ km distant. Not this terminal's captive power. Independent info: power-technology.com plant profile, https://www.power-technology.com/data-insights/power-plant-profile-damietta-gas-turbine-power-plant-egypt/ (verified via Wayback fallback, bot-blocked live).",
+  "confirmed_how": "VERDICT: YES. Damietta FSRU's sole unit, Energos Winter, is a moored former LNG-carrier FSRU on steam-turbine machinery. Steam LNG carriers of this class run dual-fuel boilers burning boil-off gas (as well as fuel oil) to generate the steam that (via turbo-generators, standard on this ship type) supplies the vessel's own electrical/hotel load and regas-plant power while moored - this is captive gas power under the FSRU-onboard convention. Confidence is yellow because the gas-burning capability is established by vessel-class engineering convention plus the operator's own 'steam turbine propulsion' label, not by a vessel-specific statement of boiler fuel. EVIDENCE: Energos's own fleet page (https://energosinfra.com/our_fleet/energos-winter/): 'Powered by steam turbine propulsion, Energos Winter enhances reliability and flexibility within Egypt's energy network' and 'the second ever FSRU', built by DSME. Wikipedia's general LNG-carrier article (https://en.wikipedia.org/wiki/LNG_carrier): 'Normally, an LNG tanker is powered by steam turbines with dual fuel boilers that can run on methane... or bunker oil' and boil-off gas is 'traditionally diverted to the boilers and used as a fuel for the vessel' - general technical corroboration for the propulsion class, not vessel-specific.",
+  "confirmed_how [ref]": [
+   "https://energosinfra.com/our_fleet/energos-winter/",
+   "https://en.wikipedia.org/wiki/LNG_carrier"
+  ]
+ },
+ {
+  "terminal": "Damietta SEGAS LNG Terminal",
+  "terminal_id": "T100000130249",
+  "mechanical": "True",
+  "confidence": "green",
+  "gogpt_captive_prior": "New Damietta power plant (500 MW, gogpt_captive=True per GOGPT, 10.0 km away) is the same separate national-grid plant matched to the neighboring Damietta FSRU (see that terminal) - a distinct merchant plant, not SEGAS's own generation. Not this terminal's captive power. Independent info: https://www.power-technology.com/data-insights/power-plant-profile-damietta-gas-turbine-power-plant-egypt/ (verified).",
+  "confirmed_how": "VERDICT: YES. SEGAS's single LNG train (T1, operating) is driven by two GE Frame 7 gas turbines in the Split MRTM refrigerant-compressor configuration - classic mechanical-drive captive gas power, described in detail in the plant's own conference paper. This is a project-level finding and applies to the operating T1; T2 (shelved) was designed to the same configuration but never built. The paper separately references a distinct on-site 'power generation station'/'power generation units' as part of the plant's self-contained utilities, but does not state that unit's fuel - not needed for the verdict since the compressor-drive turbines alone already establish captive gas power via mechanical drive. EVIDENCE: GPA Europe conference paper 'Egypt's Premier LNG Project Establishes New Industry Benchmarks' (Fernández/SEGAS, Villanueva/Union Fenosa Gas, Mayer/M.W. Kellogg, Hill & Durr/KBR), https://www.gpaeurope.com/sites/default/files/download-file/documents/conference-papers/paper-6-MWK-LNG14-Segas.pdf: 'Split MRTM cycle with two Frame 7 gas turbine drivers, helper motors, and liquid expansion turbines' and '...using 2 GE Frame 7EA gas turbines as the primary drivers... One turbine drives the propane and high pressure MR compressors and the second drives the low and medium pressure MR compressors.' The same paper separately notes 'It is a totally self supporting facility with its own jetty, utilities, and power generation facilities' and 'The LNG facility is fully self contained with its own power generation units, emergency generation backup...' (existence of a separate electric power-generation utility, fuel unstated).",
+  "confirmed_how [ref]": [
+   "https://www.gpaeurope.com/sites/default/files/download-file/documents/conference-papers/paper-6-MWK-LNG14-Segas.pdf"
+  ]
+ },
+ {
+  "terminal": "Egyptian LNG Terminal",
+  "terminal_id": "T100000130250",
+  "mechanical": "True",
+  "confidence": "green",
+  "gogpt_captive_prior": "Mediterranean Sea Floating power station (125 MW, gogpt_captive=True per GOGPT, 12.3 km away) is a separate offshore floating power unit well outside the LNG plant's fenceline, not owned by/sited at Egyptian LNG. Not this terminal's captive power. Could not find a non-GEM-derived independent info_url for this specific plant despite multiple searches (only GEM-wiki-derived aggregator pages surfaced) - flagging the gap rather than citing a banned/derivative source.",
+  "confirmed_how": "VERDICT: YES. Egyptian LNG (Idku)'s two operating trains (T1, T2) are each driven by GE Frame 5-2D gas turbines - 12 units total across the plant, driving 20 barrel-type centrifugal refrigeration compressors in the Phillips LNG process - classic mechanical-drive captive gas power, corroborated by two independent trade-press sources plus a GE technology-upgrade article confirming the same turbine fleet. A separate shared 'power generation unit' utility (electric, serving both trains) is also documented but its fuel is not stated - not needed for the verdict since the compressor-drive turbines already establish captive gas power. EVIDENCE: Trade-press article on the plant's turbine/compressor maintenance agreement (https://www.oilandgasonline.com/doc/agreement-covers-12-gas-turbines-20-compresso-0001): '12 gas turbines are all GE Frame 5-2D machines' and '20 compressors [are] state-of-the-art, horizontally split and barrel-type centrifugal units used in the Phillips LNG refrigeration process.' Corroborated by a GE-technology article on the same fleet (https://egyptoil-gas.com/news/egyptian-lng-upgrade-project-to-mark-debut-of-ges-power-crystal-technology/): GE upgrading '12 GE MS5002D gas turbines plus four spare modules' at Idku. NS Energy Business's project profile (https://www.nsenergybusiness.com/projects/egyptian-lng-project-idku/) separately confirms 'Both the trains share common support utilities including a power generation unit, a fire water plant, and a control room' - existence of a separate electric power-gen utility, fuel unstated.",
+  "confirmed_how [ref]": [
+   "https://www.oilandgasonline.com/doc/agreement-covers-12-gas-turbines-20-compresso-0001",
+   "https://egyptoil-gas.com/news/egyptian-lng-upgrade-project-to-mark-debut-of-ges-power-crystal-technology/",
+   "https://www.nsenergybusiness.com/projects/egyptian-lng-project-idku/"
+  ]
+ },
+ {
+  "terminal": "Sumed FSRU",
+  "terminal_id": "T100000130686",
+  "mechanical": "False",
+  "confidence": "green",
+  "gogpt_captive_prior": "Ain Sokhna IWPP power station (457 MW, gogpt_captive=False, 2.4 km away) - same separate merchant IWPP matched to the neighboring Ain Sokhna FSRU (see that terminal); not Sumed's own generation. Not this terminal's captive power. Independent info: World Bank project document, https://documents1.worldbank.org/curated/en/892801563296856758/pdf/Egypt-Ain-Sokhna-Power-Project.pdf (verified).",
+  "confirmed_how": "VERDICT: YES. Sumed FSRU's GEM-listed operating units include Energos Eskimo, whose onboard Wärtsilä dual-fuel diesel-electric generating plant is gas-capable - captive gas power for the terminal under the FSRU-onboard convention. A second GEM-listed 'operating' unit, Höegh Galleon, appears to have already redeployed away from Egypt (see status findings) but a sister/replacement vessel, Höegh Gandria (GEM: proposed), is under conversion with Wärtsilä-supplied dual-fuel-capable regasification/power equipment for delivery in 2026 - reinforcing rather than displacing the YES verdict. EVIDENCE: Energos's own fleet page for Energos Eskimo (https://energosinfra.com/our_fleet/energos-eskimo/): '...With advanced boil-off gas management and Wärtsilä DFDE propulsion, Energos Eskimo plays a vital role in strengthening supply flexibility and security of energy for the region.' Corroborating context on the Höegh side: the Port Kembla (Australia) FSRU environmental-impact-statement air-quality appendix, prepared for the same vessel class chartered by AIE/Höegh (https://squadronenergy.com/wp-content/uploads/pdf/Port-Kembla-Energy-Terminal/PDF/Environmental-Impact-Statement/Appendix-M-Air-quality.pdf), states the FSRU 'is to be powered using four WARTSILA 8L50DF engines' and that 'AIE's intention [is] to primarily operate both the FSRU and LNG carrier using boil off gas (LNG) as a[n energy source]' with two engines running continuously during regas operations - direct regulatory-filing confirmation that this Höegh-chartered FSRU class runs dual-fuel Wärtsilä gensets on gas in normal service.",
+  "confirmed_how [ref]": [
+   "https://energosinfra.com/our_fleet/energos-eskimo/",
+   "https://squadronenergy.com/wp-content/uploads/pdf/Port-Kembla-Energy-Terminal/PDF/Environmental-Impact-Statement/Appendix-M-Air-quality.pdf"
+  ]
+ },
+ {
+  "terminal": "Akonikien LNG Terminal",
+  "terminal_id": "T100000130787",
+  "mechanical": "",
+  "confidence": "",
+  "gogpt_captive_prior": "gogpt_prior = no; no nearby GOGPT plant given for this terminal.",
+  "confirmed_how": "VERDICT: SCREENED. Cancelled, government-owned import-terminal proposal with no operator ever named and no design ever published. Zero trade-press or technical coverage found despite extensive searching (LNG Prime, gCaptain, Wikipedia, and the plant's own would-be sponsor pages). Screened as cancelled-and-never-designed. EVIDENCE: No public source of any kind mentions Akonikien LNG Terminal: site searches on LNG Prime ('Found 0 posts') and gCaptain ('Found 0 posts') both returned zero results, and no Wikipedia article or project-profile page exists. GEM's own status_by_unit shows the sole unit cancelled (inferred, ~4 years), consistent with a project that never advanced past a government proposal and attracted no independent coverage.",
+  "confirmed_how [ref]": []
+ },
+ {
+  "terminal": "Fortuna FLNG Terminal",
+  "terminal_id": "T100000130251",
+  "mechanical": "",
+  "confidence": "",
+  "gogpt_captive_prior": "gogpt_prior = no; no nearby GOGPT plant given.",
+  "confirmed_how": "VERDICT: INSUFFICIENT. Fortuna FLNG never reached FID and no detailed engineering description of its power-generation equipment was ever publicly disclosed. The project's history (Ophir Energy/GEPetrol Block R PSC; a 2016 Ophir-Golar-Schlumberger FLNG joint venture; Schlumberger's exit and Medco's 2018-19 acquisition of Ophir; a reported 2022 Golar-New Fortress revival attempt; renewed but unspecific Golar-government talks in 2023) is documented, but at no point does a source describe the vessel's power plant. Absence of a published spec is INSUFFICIENT, not a documented NO. EVIDENCE: LNG Prime's Sept 4, 2023 'Golar in FLNG talks with Equatorial Guinea' traces the project's ownership/partnership history in full (2016 Ophir-Golar-Schlumberger JV targeting Fortuna; Schlumberger's exit and Medco's acquisition of Ophir dissolving that structure in 2018-19; a reported 2022 Golar-New Fortress Energy attempt to revive Fortuna; fresh August 2023 Golar-government talks with no specific update on Fortuna) without ever mentioning a power plant, generator, or turbine for the vessel. An offshore-technology.com project profile with general FLSO design figures (length/storage/output) was found via WebFetch but FAILED url_verifier (403, no Wayback snapshot) and is therefore not used as a citation. No vendor/EPC/technical-paper source describing Fortuna's power system was located in gCaptain, LNG Prime, or direct site searches. GEM's own status (First Proposal cancelled/confirmed, Second Proposal shelved/inferred) is consistent with a project that never completed a public FEED.",
+  "confirmed_how [ref]": [
+   "https://lngprime.com/africa/golar-in-flng-talks-with-equatorial-guinea/90508/"
+  ]
+ },
+ {
+  "terminal": "Punta Europa LNG Terminal",
+  "terminal_id": "T100000130252",
+  "mechanical": "",
+  "confidence": "",
+  "gogpt_captive_prior": "Unchanged: gogpt_prior = yes; nearest plant Malabo Turbogas power plant (154 MW, gogpt_captive=False, ~2 km away), reading as Equatorial Guinea's public grid plant for Malabo city rather than a dedicated EG LNG asset. No independent non-gem.wiki source describing Malabo Turbogas specifically was found in this recovery pass either.",
+  "confirmed_how": "VERDICT: INSUFFICIENT. EG LNG's single-train liquefaction plant at Punta Europa, Bioko Island (ConocoPhillips Optimized Cascade process, operating since 2007) necessarily has significant compression/power demand, but no public source found in this recovery pass (or the original pass) discloses whether that demand is met by on-site gas turbines/generators or by grid/utility supply. Absence of a published spec is INSUFFICIENT, never a documented NO. EVIDENCE: Unchanged from the primary pass, plus this recovery pass's additional attempts: offshore-technology.com's Bioko/EG LNG project profile (via WebFetch, since a Google-News/Bing/DuckDuckGo/Mojeek engine mix was heavily degraded) describes the Optimized Cascade process, EPC contractor (Bechtel), storage tanks, and the 330m cryogenic pipe-bridge to the jetty, but explicitly states no gas-turbine or power-generation detail beyond generic 'refrigeration systems, compressors, condensers.' A duckduckgo/bing/mojeek/marginalia sweep for '\"Punta Europa\" gas turbine', '\"EG LNG\" Bechtel turbine driver', 'ConocoPhillips \"Optimized Cascade\" gas turbine driver Frame 5', and SEC EDGAR full-text search (blocked, 403) all failed to surface any equipment-level source (vendor press release, EPC retrospective, LNG-x/GASTECH conference paper, Marathon Oil technical material). eglng.com's own About/Technology pages remain corporate/CSR content only. The gogpt_prior candidate (Malabo Turbogas, 154 MW, ~2 km away) still reads as Equatorial Guinea's public-grid plant serving Malabo city, not a fenceline EG LNG asset — no new evidence either confirms or overturns that reading this pass.",
+  "confirmed_how [ref]": []
+ },
+ {
+  "terminal": "Boudji FLNG Terminal",
+  "terminal_id": "T100000130909",
+  "mechanical": "",
+  "confidence": "green",
+  "gogpt_captive_prior": "gogpt_prior = no (no GOGPT plant identified nearby) - nothing to assess.",
+  "confirmed_how": "VERDICT: SCREENED. Screened: Petronas only announced it was 'considering'/'examining' an FLNG option for the Boudji gas field (April 2019) to monetize associated gas from a deepwater discovery; no FLNG technical concept, vessel, or equipment-level design was ever published, and the project has been dormant since 2019 (presumed cancelled circa 2023). EVIDENCE: Upstream (upstreamonline.com, 10 April 2019): 'A floating liquefied natural gas solution could exploit associated gas from Petronas' deep-water Boudji discovery off Gabon' - an options-level statement following appraisal drilling, not a committed or designed project; no further public update found since 2019.",
+  "confirmed_how [ref]": [
+   "https://www.upstreamonline.com/focus/petronas-eyes-flng-as-option-for-boudji-off-gabon/2-1-579873"
+  ]
+ },
+ {
+  "terminal": "Cap Lopez FLNG Terminal",
+  "terminal_id": "T100000131107",
+  "mechanical": "",
+  "confidence": "red",
+  "gogpt_captive_prior": "No - Port Gentil power plant (105 MW) is SEEG/AKSA national-grid infrastructure established 1977 (decades before Cap Lopez FLNG), operated by Turkish IPP AKSA Enerji under a 10-year O&M contract with Gabon's state utility SEEG; an unrelated grid asset, not built to power this FLNG project. https://www.aksaenerji.com.tr/power-plants/gabon-libreville-and-port-gentil-natural-gas-power-plants",
+  "confirmed_how": "VERDICT: INSUFFICIENT. Insufficient: Cap Lopez FLNG (Perenco, under construction, targeting 2026 startup) is a remote offshore barge-based FLNG (FSU 'LNG Cap Lopez' + 'Bran6' liquefaction barge, Aragon/Seatrium ODEC nitrogen-expander-cycle liquefaction technology) processing associated/flared gas with no shore-grid connection identified - the profile strongly implies on-site power generation is required (nitrogen-expander compressor trains are typically electric-motor driven), but no source discloses the plant's actual generation equipment, fuel, or MW rating despite an extensive search of EPC (Technomak/Dixstone), vendor (Aragon/Seatrium), and trade-press coverage. EVIDENCE: Multiple 2025 trade-press articles (Offshore Energy, TradeWinds, Pan-African Visions, AEC Week, LNG Prime) describe the ~$2B Cap Lopez FLNG project (700,000 t/y LNG + 25,000 t/y LPG, 137,000 m3 storage, Aragon/Seatrium ODEC nitrogen-expander liquefaction technology, Dixstone/Technomak EPCCI, barge fabrication in Dubai/Sharjah) but none discloses the facility's power-generation equipment. One widely-syndicated Perenco press line quoting 'dual gas turbines linked to a 33-kV electrical hub' was checked in full surrounding context (panafricanvisions.com) and confirmed to describe a DIFFERENT Perenco asset - the Kombi 2 oil platform in Congo - not Cap Lopez; ruled out as a citation for this terminal.",
+  "confirmed_how [ref]": [
+   "https://www.offshore-energy.biz/african-flng-project-getting-its-ideal-choice-of-lng-liquefaction-technology/"
+  ]
+ },
+ {
+  "terminal": "Tema FSRU",
+  "terminal_id": "T100000130253",
+  "mechanical": "",
+  "confidence": "yellow",
+  "gogpt_captive_prior": "The nearby GOGPT plant, Tema Thermal Power Complex (190MW per the prior; ~236MW combined per Wikipedia, TTPS1 110MW 2008 + TTPS2 50MW 2012, both Caterpillar diesel-generator based, later dual-fuel-converted), is owned/operated by Ghana's Volta River Authority (VRA) — a different host entirely from the Tema LNG Terminal Co./Reganosa-operated FSU/FRU. It is not fed captively from this terminal; if anything it is a plausible recipient of the terminal's regasified gas (a PowerPlantsSupplied candidate, not a CaptiveGasPower one). gogpt_captive=False for this plant looks correct on the ownership/direction grounds alone. info_url: https://en.wikipedia.org/wiki/Tema_Thermal_Power_Station (verified token 'Volta River Authority' PASS).",
+  "confirmed_how": "VERDICT: INSUFFICIENT. This is an explicit, well-documented 'LNG-to-power' project: the FSU (Vasant) + FRU (Torman, a 28,000 cbm Jiangnan-built, BV-classed regasification barge delivered ~Nov 2020, operated by Reganosa) regasifies LNG and delivers it into Ghana's national grid / GNPC's industrial and power customers via an ~8km onshore pipeline — the direction test points to NOT captive (gas flows OUT to external power plants, e.g. the nearby VRA-owned Tema Thermal Power Complex). However, per the FSRU-onboard convention this direction-test finding does not by itself answer the question — no public source describes the FSU/FRU's own power supply (shore power vs onboard generation, and if onboard, its fuel), so the verdict stays INSUFFICIENT rather than NO pending that specific finding. EVIDENCE: LNG Prime (\"Tema LNG FRU heading towards Ghana\", 2020) and Bureau Veritas classification coverage (LNG Prime, 2021) identify the FRU as 'Torman FRU', 94.90m, 28,000 cbm, two TGE type-C tanks, five modular regas modules, built by Jiangnan Shipyard, ~1.7-2 mtpa capacity. LNG Prime's Reganosa contract article and Offshore Energy's 'Reganosa to run LNG-to-power project in Ghana' both frame the whole project as an LNG-to-power scheme delivering gas 'into the national grid' of Ghana. None of these, nor the NS Energy project profile, describe the FRU/FSU's own hotel-load power source.",
+  "confirmed_how [ref]": [
+   "https://lngprime.com/lng-terminals/tema-lng-fru-heading-towards-ghana/7826/",
+   "https://lngprime.com/africa/bv-wraps-up-ghana-fru-classification-work/15521/",
+   "https://lngprime.com/africa/reganosa-scores-contract-for-ghanas-tema-lng-terminal/9599/",
+   "https://www.offshore-energy.biz/reganosa-to-run-lng-to-power-project-in-ghana/"
+  ]
+ },
+ {
+  "terminal": "Guinea LNG Terminal",
+  "terminal_id": "T100000131050",
+  "mechanical": "",
+  "confidence": "yellow",
+  "gogpt_captive_prior": "West Africa Kamsar power station (1,800 MW, gogpt_captive=True, 1.62 km) is very likely the dedicated gas-fired power plant this proposed LNG terminal exists to fuel (per GEM's own PowerPlantsSupplied field) — captive to the industrial complex it serves, not to this LNG terminal. Could not retrieve an independent info_url this session due to search-tool failures (see notes).",
+  "confirmed_how": "VERDICT: NO. No on-site/fenceline gas generation found powering this proposed import/export terminal at Kamsar. GEM's own record already lists PowerPlantsSupplied = 'West Africa Kamsar power station' (1,800 MW, 1.62 km away) for this terminal, meaning gas is designed to flow OUT from this terminal to that plant — the reverse of a captive relationship. This is a direction-test NO, not an on-site-generation finding. EVIDENCE: Relied on the terminal's existing GEM PowerPlantsSupplied field (already populated with 'West Africa Kamsar power station') combined with the GOGPT prior showing that plant 1.62 km away with gogpt_captive=True (i.e., captive to the Kamsar industrial complex, not to this LNG terminal). Applied the SOP direction test: a terminal whose purpose is to fuel an adjacent power station is not itself captive-powered. Could not independently corroborate via web search this session — general web search engines (Bing, DuckDuckGo, Yandex, Brave, Startpage) all returned blocked/irrelevant/rate-limited results, and the WebSearch tool's session budget was exhausted before I could query this terminal specifically.",
+  "confirmed_how [ref]": []
+ },
+ {
+  "terminal": "Mombasa LNG Terminal",
+  "terminal_id": "T100000130254",
+  "mechanical": "",
+  "confidence": "",
+  "gogpt_captive_prior": "Kipevu I power station (74 MW, 2.7 km, gogpt_captive=False) is believed to be a pre-existing Mombasa thermal plant (diesel/HFO, KenGen/IPP) unrelated to this proposed LNG import terminal, but I could not independently confirm its fuel type or ownership this session — no info_url found/verified.",
+  "confirmed_how": "VERDICT: INSUFFICIENT. No source found describing on-site power generation for either the original (shelved) or current ('Second Proposal') Mombasa LNG import proposal. Kipevu I (74 MW, 2.7 km, gogpt_captive=False) is believed to be an existing KenGen/IPP thermal station that long predates this LNG proposal and is understood to run on diesel/HFO rather than gas, making it an unrelated legacy plant rather than this terminal's captive supply — but this fuel-type belief could not be independently re-confirmed this session, so it is a reasoned inference, not a documented finding. EVIDENCE: Attempted to find Kipevu I's fuel type and any Mombasa LNG project design documents (Kenya Ministry of Energy feasibility studies, KenGen filings). No dedicated Wikipedia page exists for Kipevu; KenGen's own thermal-generation page returned 404. General search engines were non-functional for most of this session (see notes), which prevented locating the current proposal's sponsor/design documentation.",
+  "confirmed_how [ref]": []
+ },
+ {
+  "terminal": "Marsa El Brega LNG Terminal",
+  "terminal_id": "T100000130255",
+  "mechanical": "False",
+  "confidence": "yellow",
+  "gogpt_captive_prior": "Unchanged: no GOGPT prior was supplied for this terminal (gogpt_prior: no in the dispatch data) — no nearby GOGPT plant to assess.",
+  "confirmed_how": "VERDICT: YES. A 62 MWe, 3-unit open-cycle gas turbine power plant at Marsa al Burayqah, commissioned 1977 and operated by Sirte Oil Co — the same 100% owner GEM records for the Marsa El Brega LNG terminal — sits at coordinates matching the terminal's own (30.40N/19.60E, within ~1 km). This reads as the terminal's own captive generation. Still single-source for the plant's specific existence/rating (Global Energy Observatory) despite a genuine recovery-pass effort; confidence remains yellow rather than green. However, the host-trap sanity check requested for this pass now has independent support: Wikipedia's 'Sirte Oil Company' article (not GEM-derived, not the GEO source) independently confirms SOC operates the WHOLE Marsa el Brega industrial complex as a single entity — both the LNG plant ('processed about 900 million cubic meters per year... as of 2005') and the adjoining refinery (10,000 bbl/d) — consistent with, though not itself proof of, a single Sirte Oil Co-owned generating plant serving the complex rather than belonging to a separate tenant. EVIDENCE: Unchanged core finding: Global Energy Observatory entry (geoid 41593), 'Mars Al Brega OCGT Power Plant Libya': 62 MWe design capacity, 3 units, natural gas OCGT, commissioned 1977, operator 'Sirte Oil Company', coordinates 30.4015/19.5969 — within ~1 km of the LNG terminal's own recorded coordinates and matching its 100%-owner field. Verified via url_verifier.py: PASS on tokens 'Sirte Oil' and '62' (re-confirmed this pass). This recovery pass added a genuine second, independent, non-GEO source addressing the host-trap question specifically: Wikipedia's 'Sirte Oil Company' article states SOC (a National Oil Corporation subsidiary 'based in Brega') operates both 'the LNG plant at Brega' and a 10,000 bbl/d refinery at the same site, i.e. SOC runs the whole industrial complex as one operator, not a shared site with an unrelated tenant. This is corroboration of the OWNERSHIP/HOST premise, not a second citation for the OCGT plant's own existence or 62 MWe rating — an extensive sweep (Wikipedia 'List of power stations in Libya' — no Brega entry as of its Jan-2014 coverage; worldpowerplants.com's 12-plant Libya list — no match, its list appears to cover only large national-grid plants ≳300 MW; openinframap.org's 43-plant Libya list — no coordinate match near 30.40N/19.60E; a Scribd 'Sketch-1 Site Survey' document — turned out to be for the unrelated Sarir Gas Turbine Plant, not Brega; industcards.com's Africa gas-turbine page — 404, no Wayback access available this session; GECOL/Libya-energy news searches — surfaced only large modern GECOL grid plants, none at Brega) did not find a second source for the OCGT plant itself.",
+  "confirmed_how [ref]": [
+   "http://globalenergyobservatory.org/geoid/41593"
+  ]
+ },
+ {
+  "terminal": "BirAllah LNG Hub",
+  "terminal_id": "T100000131091",
+  "mechanical": "",
+  "confidence": "",
+  "gogpt_captive_prior": "gogpt_prior = no; no nearby GOGPT plant given.",
+  "confirmed_how": "VERDICT: INSUFFICIENT. Very early-stage proposed project (BP/Kosmos Block C8; PSC signed Oct 11, 2022; a 30-month engineering-study timeline announced at signing; FID targeted for H1 2025 per that announcement). No facility design, let alone power-generation equipment, has been publicly disclosed. EVIDENCE: LNG Prime's Oct 13, 2022 'BP, Kosmos ink new deal for Mauritanian gas field' documents the PSC signing among BP, Kosmos Energy and Mauritania (Mauritania holding a 25% stake), a 30-month engineering-study timeline, resources at BirAllah/Orca (Block C8, >50 Tcf, larger than GTA) roughly 60 km north of GTA and 100 km offshore, and a phased ~10 mtpa LNG development plan targeting FID in H1 2025 — with no engineering/design detail beyond scale, location, and schedule.",
+  "confirmed_how [ref]": [
+   "https://lngprime.com/contracts-and-tenders/bp-kosmos-ink-new-deal-for-mauritanian-gas-field/63709/"
+  ]
+ },
+ {
+  "terminal": "Greater Tortue Ahmeyim FLNG Terminal",
+  "terminal_id": "T100000130661",
+  "mechanical": "False",
+  "confidence": "yellow",
+  "gogpt_captive_prior": "gogpt_prior = no; no nearby GOGPT plant given (moored offshore facility with no colocated land-based plant to compare against).",
+  "confirmed_how": "VERDICT: YES. Gimi FLNG (BP-chartered, moored offshore at the Tortue field, converted from a 1976-built Moss-type LNG carrier, operational 2025, 2.7 mtpa nameplate/2.45 mtpa output per Golar's own fleet page) is an off-grid moored FLNG facility that must generate all of its own electric power for liquefaction, utilities and crew - the brief's own grid-access prior for moored FLNG/FSRU vessels. Golar's FLNG conversion design uses gas-fired Bergen dual-fuel gensets for exactly this purpose, confirmed installed on sister vessel Hilli and contractually optioned for Gimi by name in the same 2015 contract. Verdict is YES at yellow confidence: the fuel/equipment class is documented and vessel-specific (not merely inferred), but the as-built Gimi confirmation is a 2015 option rather than a post-conversion disclosure, so it falls short of a second independent, vessel-specific, as-built source. EVIDENCE: gCaptain's Mar 20, 2015 'Rolls-Royce to Power Golar's New Floating LNG Liquefaction Ship' (reporting Rolls-Royce's own release) states two Bergen B35:40V20AG engines were installed on Hilli 'to supply the on-board power generation for the vessel,' fueled exclusively by LNG, powering 'the liquefaction processes, and also for supporting vessel operation and the energy needs of the crew onboard' - and that the same contract 'includes an option for additional two engines for a second Golar LNG carrier to be converted, Gimi.' LNG Prime's Aug 12, 2022 'Golar says Gimi FLNG 86 percent complete' confirms the Gimi conversion was underway at that yard/program. Golar's own fleet page (golarlng.com/fleet.aspx) confirms Gimi: 'Built 1976, Converted 2023,' operational from 2025, 2.7/2.45 mtpa, chartered to BP through 2045 - corroborating the vessel and deployment but not restating the power-plant equipment. The Gimi-specific power-system confirmation therefore rests on the 2015 option language plus the strong physical necessity of self-generation for a moored FLNG vessel, not a post-conversion as-built spec sheet - hence yellow, not green.",
+  "confirmed_how [ref]": [
+   "https://gcaptain.com/rolls-royce-power-golars-new-floating-lng-liquefaction-ship/",
+   "https://lngprime.com/africa/golar-says-gimi-flng-86-percent-complete/59169/",
+   "https://www.golarlng.com/fleet.aspx"
+  ]
+ },
+ {
+  "terminal": "New Fortress Banda LNG Terminal",
+  "terminal_id": "T100000131048",
+  "mechanical": "",
+  "confidence": "yellow",
+  "gogpt_captive_prior": "gogpt_prior = no; no nearby GOGPT plant given in this shard. The project's own target power plants (Somolec, 180 MW existing; a new NFE-funded 120 MW combined-cycle plant, referenced elsewhere as the Nouakchott Nord power plant) are the relevant GOGPT-side records, but matching/creating those is a GOGPT-side matter for the sibling gogpt-researcher repo, not this terminal's captive-power question.",
+  "confirmed_how": "VERDICT: NO. New Fortress Energy's Mauritania 'energy hub' (MoU announced Dec 2021) is explicitly a gas-to-power supply scheme: NFE was to supply gas to the existing 180 MW Somolec power plant and fund a new 120 MW combined-cycle plant, with its Fast LNG output serving 'local gas and power markets as well as international exports.' This is the direction-test case — the terminal's purpose is piping gas OUT to external power stations, not powering itself with captive on-site generation. No source found describes any on-site captive generation at the terminal itself, and GEM's own record already carries the matching `PowerPlantsSupplied` relationship. EVIDENCE: LNG Prime's Dec 22, 2021 'New Fortress plans FLNG project off Mauritania' states NFE signed an MoU 'to develop an energy hub, including natural gas, power, LNG and blue ammonia,' under which NFE will 'supply natural gas to the existing 180 MW Somolec power plant and fund a new 120 MW combined cycle power plant,' with Fast LNG output serving 'local gas and power markets as well as international exports.' GEM's own field for this terminal already records `power_plants_supplied: Banda Gas-to-Power Project, Nouakchott Nord power plant`, consistent with the sourced direction of gas flow (OUT to power plants, not captive power IN to the terminal).",
+  "confirmed_how [ref]": [
+   "https://lngprime.com/africa/new-fortress-plans-flng-project-off-mauritania/37476/"
+  ]
+ },
+ {
+  "terminal": "Mauritius FSRU",
+  "terminal_id": "T100000131079",
+  "mechanical": "",
+  "confidence": "",
+  "gogpt_captive_prior": "'Mauritius FSRU power plant' (100 MW, 6.6 km, gogpt_captive=False) is very likely a dedicated onshore power station the FSRU was proposed to supply — the reverse of captive power into the terminal — not a plant powering the FSRU itself. Could not retrieve an independent info_url this session due to search-tool failures.",
+  "confirmed_how": "VERDICT: INSUFFICIENT. No vessel identified (owner is 'unknown' in the GEM record) and no independent source found describing this shelved FSRU's design. GOGPT's nearby 'Mauritius FSRU power plant' (100 MW, 6.6 km, gogpt_captive=False) appears named for a downstream dedicated power plant this FSRU project would have fed — a plausible direction-test case — but per the FSRU-onboard convention a direction-test finding does not answer the vessel's own onboard generation question, which remains unresolved. EVIDENCE: No source found identifying the FSRU's charter vessel, sponsor, or technical design; GEM's own record lists owner as 'unknown'. The GOGPT prior's plant name ('Mauritius FSRU power plant') strongly implies it is the onshore power station this FSRU project would supply gas to, at 6.6 km distance (not fenceline) with gogpt_captive=False — consistent with a directional/PowerPlantsSupplied-type relationship rather than an on-site plant serving the terminal. General search engines were non-functional for most of this session (see notes), so the vessel identity and original feasibility documentation could not be located.",
+  "confirmed_how [ref]": []
+ },
+ {
+  "terminal": "Jorf Lasfar LNG Terminal",
+  "terminal_id": "T100000130256",
+  "mechanical": "",
+  "confidence": "yellow",
+  "gogpt_captive_prior": "GOGPT prior is the Jorf Lasfar CCGT power station (1200 MW, 3.84 km away, gogpt_captive=True in GOGPT's own data). This is almost certainly the same CCGT capacity the ONEE LNG-to-power scheme is meant to feed (or a unit within that complex) — GOGPT's 'True' flag likely reflects a different captive relationship internal to GOGPT's own ontology (e.g. captive to the Jorf Lasfar industrial/port complex or ONEE's own grid-balancing role), not to this LNG import terminal. The LNG terminal is the gas SOURCE, the CCGT is the power SINK — opposite of the captive-power direction this brief asks about.",
+  "confirmed_how": "VERDICT: NO. Proposed ONEE (national utility) LNG import terminal at the Jorf Lasfar marine jetty, explicitly designed as an 'LNG-to-power' scheme: regasified gas is piped via high-pressure pipeline to feed 'combined cycle power plants capable of producing 2,400 MW of electricity' at the existing Jorf Lasfar power complex, plus industrial/Maghreb-Europe pipeline interconnection. This is a gas-supply-OUT project, not a plant that would power the terminal itself. EVIDENCE: Offshore Energy (3 Jan 2017): ONEE selected HSBC Middle East (financial adviser, $7M) and Ashurst (legal, €1.9M) for the project; scope covers 'the marine jetty at Jorf Lasfar, as well as the LNG import terminal, including the LNG storage,' a high-pressure pipeline tied into the existing Maghreb-Europe pipeline, and gas pipelines feeding 'combined cycle power plants capable of producing 2,400 MW of electricity.' No mention anywhere of on-site generation for the import terminal itself.",
+  "confirmed_how [ref]": [
+   "https://www.offshore-energy.biz/morocco-onee-selects-advisers-for-lng-to-power-project/"
+  ]
+ },
+ {
+  "terminal": "Morocco FSRU",
+  "terminal_id": "T100000130824",
+  "mechanical": "",
+  "confidence": "yellow",
+  "gogpt_captive_prior": "GOGPT prior is the Mohammedia-Onee power plant (150 MW, 3.5 km away, gogpt_captive=False). This reads as an existing ONEE thermal unit at/near the port that could plausibly be one of the 'power plants' this future FSRU would eventually supply — again the opposite direction from a captive relationship, and GOGPT already correctly marks it non-captive.",
+  "confirmed_how": "VERDICT: NO. Proposed FSRU import terminal at Mohammedia Port (sponsored by Morocco's National Ports Agency, ANP), designed as a national gas-distribution hub: imported LNG is 'regasified for distribution to industrial customers and power plants' generally — a supply-OUT project, with no design or vessel yet in place (facility is at proposed stage, no vessel assigned). No indication of any dedicated on-site generation to power the terminal itself. EVIDENCE: Offshore Energy (5 Jan 2022): Mohammedia Port, near Casablanca, 'will host the country's first liquified natural gas (LNG) floating storage and regasification unit (FSRU),' according to ANP; imported gas will be 'regasified for distribution to industrial customers and power plants,' targeting 1.1 bcm/yr by 2025 rising to 3 bcm/yr by 2040. No specific power plant is named, and no generation equipment for the FSRU itself is described.",
+  "confirmed_how [ref]": [
+   "https://www.offshore-energy.biz/mohammedia-port-to-host-morocoos-1st-fsru-and-lng-terminal/"
+  ]
+ },
+ {
+  "terminal": "Nador FSRU",
+  "terminal_id": "T100000131161",
+  "mechanical": "",
+  "confidence": "red",
+  "gogpt_captive_prior": "GOGPT prior is the Nador West power plant (1200 MW, 1.7 km away, gogpt_captive=False). Given the Nador West Med port's own site describes a generic 'energy hub... hydrocarbon treatment and storage,' this plant may be a planned unit within that complex that a future FSRU could supply — but this is inference, not sourced fact. GOGPT already marks it non-captive.",
+  "confirmed_how": "VERDICT: INSUFFICIENT. Shelved FSRU import proposal near Nador, owner unknown. No project-specific news, design study, or technical description was found in any search performed — the only Nador-area energy/port coverage found concerns the unrelated Nador West Med container/hydrocarbon-storage port buildout, which does not name an FSRU or describe power-generation plans. EVIDENCE: No qualifying source found. Searches across Offshore Energy and LNG Prime for 'Nador FSRU', 'Nador LNG', 'Nador gas import terminal', and 'Morocco second FSRU' returned no article naming this project; the closest hits (Nador West Med port investment articles) discuss container-terminal financing only and reference a generic 'energy hub' for hydrocarbon storage with no LNG/FSRU/power-generation specifics.",
+  "confirmed_how [ref]": []
+ },
+ {
+  "terminal": "Coral North FLNG Terminal",
+  "terminal_id": "T100000131124",
+  "mechanical": "True",
+  "confidence": "yellow",
+  "gogpt_captive_prior": "No GOGPT prior plant given for this terminal (gogpt_prior: no). No standalone GOGPT power-station record found for Coral North.",
+  "confirmed_how": "VERDICT: YES. Coral North (vessel 'Coral Norte', launched Jan 2026 at Samsung Heavy's Geoje yard) is Eni's second Coral-field FLNG, EPCIC'd by the same Technip Energies/JGC/Samsung Heavy (TJS-style) consortium that built Coral Sul. TechnipFMC's own release says it will 'leverage our experience gained from the successful delivery of Coral South... by replicating our proven playbook.' Coral Sul's confirmed design carries both mechanical-drive refrigeration turbines and dedicated turbo-generation power units (see next entry), so the as-designed captive power finding on this proposed/pre-startup (targeted 2028) sister project is a YES on design, not yet independently confirmed equipment-by-equipment. EVIDENCE: TechnipFMC (EPCIC contractor) quoted in offshore-energy.biz (19 Dec 2025): 'We will leverage our experience gained from the successful delivery of Coral South — the world's first FLNG project in ultradeep water — by replicating our proven playbook with an enhanced approach.' Separately, offshore-energy.biz (16 Jan 2026) confirms the vessel 'Coral Norte FLNG' launch at Samsung Heavy's shipyard, Eni's second such unit after Coral Sul (delivered 2021), 432m x 66m, 123,000-tonne launch weight. Neither article gives Coral North's own turbine-vendor equipment list, so the captive-power finding here rests on documented design replication of an already-confirmed sister facility, not independent equipment confirmation for this hull.",
+  "confirmed_how [ref]": [
+   "https://www.offshore-energy.biz/mozambiques-second-flng-project-on-technipfmcs-to-do-list/",
+   "https://www.offshore-energy.biz/eni-cheers-launch-of-its-mozambique-bound-flng-at-samsung-heavy-industries-shipyard/"
+  ]
+ },
+ {
+  "terminal": "Coral South FLNG Terminal",
+  "terminal_id": "T100000130258",
+  "mechanical": "True",
+  "confidence": "yellow",
+  "gogpt_captive_prior": "No GOGPT prior plant given for this terminal (gogpt_prior: no). No standalone GOGPT power-station record found for Coral Sul FLNG.",
+  "confirmed_how": "VERDICT: YES. Coral Sul FLNG (operating, Eni-operated, 3.4 Mtpa) carries on-board captive power: Baker Hughes/GE supplied 4 turbo-compression trains (mechanical drive for mixed-refrigeration compressors) plus 4 separate turbo-generation units in which aeroderivative gas turbines drive GE Power Conversion electric generators. This is both a mechanical-drive finding (True) and a genuine on-site electricity-generation finding (power_generation), so category is the mixed case. EVIDENCE: offshore-energy.biz (31 Aug 2017, 'Baker Hughes in Another Coral South Win'): 'four turbo-compression trains for mix refrigeration services, using the company's aeroderivative gas turbine technology and driving its centrifugal compressors' and 'four turbo-generation units, also driven by aeroderivative gas turbines' with 'electric generators provided by the GE Power Conversion business.' Corroborated by a same-outlet companion article (30 Aug 2017, 'Baker Hughes secures another Coral South FLNG contract'): 'The order consists of four turbo-compression trains for mix refrigeration services and four turbo-generation units,' manufactured at 'BHGE Nuovo Pignone facility in Florence, Italy.' Both articles are the same publisher's coverage of the same underlying 2017 Baker Hughes contract announcement (treated as one effective source per the mirror rule), hence yellow rather than green; I could not find an independent second-publisher account or the original Baker Hughes/GE press release with a live/waybacked URL (Baker Hughes' own newsroom no longer lists 2017-era releases; nsenergybusiness.com and offshore-technology.com carry corroborating equipment detail including the PGT25+G4 turbine model, but both 403'd against url_verifier.py with no Wayback snapshot available, so neither is usable as a citation here).",
+  "confirmed_how [ref]": [
+   "https://www.offshore-energy.biz/baker-hughes-in-another-coral-south-win/",
+   "https://www.offshore-energy.biz/baker-hughes-secures-another-coral-south-flng-contract/"
+  ]
+ },
+ {
+  "terminal": "Matola FSRU",
+  "terminal_id": "T100000130825",
+  "mechanical": "",
+  "confidence": "red",
+  "gogpt_captive_prior": "GOGPT prior is 'Maputo power station' (121 MW, non-captive, 3.8 km away). I could not independently confirm what fuels or operates Maputo power station (gem.wiki 403'd and no other source was found), but nothing found connects it to this not-yet-built import project — it reads as a pre-existing, separately-owned merchant/grid plant rather than this terminal's own captive supply. Not confirmed either way.",
+  "confirmed_how": "VERDICT: INSUFFICIENT. Matola FSRU is a proposed small-scale LNG import terminal near Maputo (owner: Matola Gas Co / TotalEnergies SE; no vessel yet assigned, no operator named in the export). Despite searching trade press (offshore-energy.biz, lngprime.com) for the project by several names (Matola FSRU, Matola Gas Company, Maputo FSRU/LNG), I found no published engineering detail on the project's power arrangement — no confirmation of a captive generator, nor a documented grid-fed/regas-only design. This is genuinely undisclosed, not a documented negative. EVIDENCE: No usable source found describing on-site power generation (or its absence) for this specific project. A Nov 2025 LNG Prime headline ('Mozambique OKs two FSRU terminals,' Beira and Inhassoro) is a different pair of Mozambican FSRU sites, not Matola, and is paywalled beyond the headline in any case — not cited.",
+  "confirmed_how [ref]": []
+ },
+ {
+  "terminal": "Mozambique LNG Terminal",
+  "terminal_id": "T100000130257",
+  "mechanical": "False",
+  "confidence": "green",
+  "gogpt_captive_prior": "GOGPT prior 'Mozambique LNG power station' (324 MW, 6.9 km) matches the confirmed 6x54MW SGT-800 finding almost exactly and IS this terminal's own captive power plant.",
+  "confirmed_how": "VERDICT: YES. TotalEnergies' onshore Mozambique LNG (Area 1, Afungi, Cabo Delgado) plant has confirmed dedicated on-site electricity generation: six Siemens Energy SGT-800 gas turbines (54 MW each, ~324 MW aggregate) explicitly for 'low-emissions onsite power generation,' per both the original 2020 contract announcement and a 2026 restart-coverage article. This matches the GOGPT-side 'Mozambique LNG power station' record (324 MW, 6.9 km away) almost exactly. EVIDENCE: offshore-energy.biz (15 Oct 2020, 'Siemens gets Mozambique LNG turbines job'): 'Siemens Energy will supply six SGT-800 industrial gas turbines. The units will provide low-emissions onsite power generation,' 54 MW rating, 39% gross efficiency, dry low-emission combustion; plus four centrifugal compressors for boil-off gas service. Independently corroborated by gascompressionmagazine.com (31 Jan 2026, on the project's 2026 restart): 'Siemens Energy supplied four centrifugal compressors for boil-off gas (BOG) service and six SGT-800 industrial gas turbines for onsite power generation.' Two genuinely independent publishers, 6 years apart, same specific finding — green.",
+  "confirmed_how [ref]": [
+   "https://www.offshore-energy.biz/siemens-gets-mozambique-lng-turbines-job/",
+   "https://gascompressionmagazine.com/2026/01/31/totalenergies-restarts-mozambique-lng-project/"
+  ]
+ },
+ {
+  "terminal": "Nacala FSRU",
+  "terminal_id": "T100000130788",
+  "mechanical": "False",
+  "confidence": "green",
+  "gogpt_captive_prior": "GOGPT prior 'Karpowership (Mozambique) Mehmet Bey power station' (125 MW, 2.5 km) is precisely the Powership vessel this FSRU feeds — it is NOT this terminal's own captive plant, it is the external generation asset the FSRU exists to supply. GOGPT's own gogpt_captive:'False' flag on that plant is consistent with it being a merchant/grid-feeding station rather than anyone's captive supply.",
+  "confirmed_how": "VERDICT: NO. Nacala FSRU (KARMOL — a Mitsui O.S.K. Lines/Karpowership joint venture) is the LNG-supply half of Mozambique's first 'LNG-to-Powership' project: the FSRU regasifies LNG and delivers the gas to a separately-moored Karpowership Powership (previously running on heavy fuel oil), which burns it to generate ~120 MW for Mozambique's grid at Nacala. This is the textbook direction-test case: the terminal's whole purpose is supplying gas OUT to an external power station, not powering itself. Verdict is a documented NO for the terminal's own captive-power question; the relationship belongs in PowerPlantsSupplied for a different batch. EVIDENCE: offshore-energy.biz (2 Sep 2019, 'MOL, Karpowership Unveil 1st LNG-to-Powership Project in Africa'): 'the FSRU to deliver regasified LNG and the Powership to receive regasified LNG in order to produce electricity'; located at Nacala, Mozambique, where the Powership had been running on heavy fuel oil before the switch to LNG; combined capacity 120 MW, delivered under the co-brand 'Karmol' (MOL + Karpower International).",
+  "confirmed_how [ref]": [
+   "https://www.offshore-energy.biz/mol-karpowership-unveil-1st-lng-to-powership-project-in-africa/"
+  ]
+ },
+ {
+  "terminal": "Rovuma FLNG Terminal",
+  "terminal_id": "T100000131090",
+  "mechanical": "",
+  "confidence": "",
+  "gogpt_captive_prior": "No GOGPT prior given for this terminal (gogpt_prior: no).",
+  "confirmed_how": "VERDICT: SCREENED. ",
+  "confirmed_how [ref]": []
+ },
+ {
+  "terminal": "Rovuma LNG Terminal",
+  "terminal_id": "T100000130789",
+  "mechanical": "True",
+  "confidence": "yellow",
+  "gogpt_captive_prior": "GOGPT prior 'Mozambique LNG power station' (324 MW, 2.8 km) is the SGT-800 plant confirmed under the separate Mozambique LNG Terminal entry (T100000130257, this shard) — that plant belongs to the adjacent TotalEnergies-operated Area 1 project, a different industrial host, not to Rovuma LNG's own MRV-operated site. The captive-to-whom test says no: this is not Rovuma LNG's captive power.",
+  "confirmed_how": "VERDICT: YES. The onshore Rovuma LNG project (Mozambique Rovuma Venture — the successor entity to the original ExxonMobil-led Area 4 onshore development, adjacent to but distinct from TotalEnergies' Mozambique LNG/Area 1 site) has a confirmed 2019 equipment order for Mitsubishi Heavy Industries 120 MW H-100 dual-shaft gas turbines as mechanical drivers for its liquefaction compressors — mechanical-drive captive gas power, which counts under the current definition regardless of the fact no separate electricity-generation figure was found. EVIDENCE: offshore-energy.biz (1 Apr 2019, 'Mitsubishi Heavy to supply equipment for Rovuma LNG project'): 'Japan's Mitsubishi Heavy Industries (MHI) has reached an agreement with ExxonMobil to supply a gas turbine and compressor packages for the Rovuma LNG Phase 1 project in Mozambique' — specifically '120 megawatt dual-shaft H-100 gas turbines as the mechanical drivers,' with Mitsubishi Heavy Industries Compressor (MCO) supplying 'the main liquefaction compressors'; project scope described as two liquefaction trains, ≥7.6 Mtpa, using Air Products' AP-X process. Single-publisher source; I could not find a second, independently-published account of this specific 2019 MHI order in the time available.",
+  "confirmed_how [ref]": [
+   "https://www.offshore-energy.biz/mitsubishi-heavy-to-supply-equipment-for-rovuma-lng-project/"
+  ]
+ },
+ {
+  "terminal": "Walvis Bay LNG Terminal",
+  "terminal_id": "T100000130622",
+  "mechanical": "",
+  "confidence": "red",
+  "gogpt_captive_prior": "The nearby GOGPT plant, Anixas II power station (49.5MW per the prior; commissioned as a ~54MW NamPower diesel-fired emergency power station in Walvis Bay), is a separate NamPower asset with no ownership or fuel-supply link to the Excelerate LNG project — different host, and (per Namibian press) diesel/HFO-fired rather than gas-fired, so it is correctly not captive to this terminal. info_url: https://greenbuildingafrica.co.za/namibia-commissions-54-mw-anixas-ii-power-station/ (verified token 'Anixas' PASS).",
+  "confirmed_how": "VERDICT: INSUFFICIENT. Both the export and import units at this Excelerate Energy (100%) FSRU project are cancelled (inferred / confirmed). GEM's own power_plants_supplied field already names 'Nathaniel Maxuilili' [likely 'Nathaniel Mahuilili', a NamPower Walvis Bay peaking plant] as the intended offtake, consistent with this having been a direction-test LNG-to-power scheme rather than a captive-power site. However, the project appears to have been cancelled before it reached a public, vessel-specific engineering design, and no source found describes any captive/on-site generation plan (or explicitly rules one out) for the terminal itself. EVIDENCE: Extensive searching (Google News RSS sweeps across 'Walvis Bay LNG Namibia', 'Excelerate Walvis Bay Namibia FSRU', 'Nathaniel Mahuilili power station Walvis Bay LNG') surfaced general Namibian oil/gas and port-development coverage but no article describing this specific Excelerate FSRU project's design, cancellation rationale, or any power-generation component. No project profile page (power-technology.com pattern) exists for it (404).",
+  "confirmed_how [ref]": []
+ },
+ {
+  "terminal": "Ace Gas Nigeria FLNG Terminal",
+  "terminal_id": "T100000131168",
+  "mechanical": "",
+  "confidence": "red",
+  "gogpt_captive_prior": "Nearest GOGPT plant is Agura power station (720 MW, 14.4 km away), a grid-connected merchant IPP in the Lagos area. No ownership, siting, or technical link between Agura and this offshore floating proposal was found; distance and the fact Agura predates/serves the national grid independently make it very unlikely to be this terminal's captive power. Could not locate an independent (non-gem.wiki) info_url specifically describing Agura power station within available search tools this session.",
+  "confirmed_how": "VERDICT: INSUFFICIENT. No public source found describing this proposed offshore FLNG project's power/utility design at all. The project (owner: Ace Gas & FLNG Company Ltd) is still at 'proposed' status with essentially no indexed public footprint beyond the bare GEM record. EVIDENCE: Searched Bing, Google, DuckDuckGo (html/lite) and Marginalia for \"Ace Gas\" FLNG Nigeria and variants; no substantive project pages, EIA/permit filings, or trade-press coverage surfaced describing hardware of any kind, gas or otherwise.",
+  "confirmed_how [ref]": []
+ },
+ {
+  "terminal": "Brass LNG Terminal",
+  "terminal_id": "T100000130260",
+  "mechanical": "",
+  "confidence": "red",
+  "gogpt_captive_prior": "No GOGPT prior was provided for this terminal (gogpt_prior: no).",
+  "confirmed_how": "VERDICT: INSUFFICIENT. Brass LNG (2-train, ~10 mtpa, Bechtel EPC, Bayelsa State) never reached FID/construction and was shelved; no public FEED-stage or environmental-filing detail on its planned power/utility system (gas turbines vs. other) was found. EVIDENCE: Found only high-level project-scale sources (GEM's own project summary, an academic energy-audit/feasibility study modelling wind+solar penetration into a hypothetical Brass LNG power mix, and 2024 news of NNPCL discussing project revival). None describes the actual as-designed captive power plant; the renewable-mix study is a hypothetical academic exercise, not the EPC design, so it is not usable as a captive-power finding either way.",
+  "confirmed_how [ref]": []
+ },
+ {
+  "terminal": "Golar Lagos FSRU",
+  "terminal_id": "T100000130967",
+  "mechanical": "",
+  "confidence": "red",
+  "gogpt_captive_prior": "Nearest GOGPT plant is Lafarge power station (270 MW, 7.8 km away). This reads as Lafarge Africa's own captive power plant built for its cement operations (Lafarge/WAPCO is documented as building its own power plants to fire its Nigerian cement kilns), i.e. a different industrial host's captive plant, not a Golar FSRU asset - classic industrial-host case.",
+  "confirmed_how": "VERDICT: INSUFFICIENT. Cancelled Golar-sponsored FSRU/import proposal near Lagos; no public source describing the specific vessel that would have been assigned or any onboard/onshore power arrangement was found - the project appears to have been cancelled at an early stage with minimal public documentation. EVIDENCE: Searched Bing, DuckDuckGo, and Marginalia for \"Golar Lagos\" FSRU Nigeria and variants; no project-specific pages, vessel assignment, or technical filings found.",
+  "confirmed_how [ref]": []
+ },
+ {
+  "terminal": "Golar Nigeria FLNG Terminal",
+  "terminal_id": "T100000131125",
+  "mechanical": "",
+  "confidence": "red",
+  "gogpt_captive_prior": "No GOGPT prior plant was given for this terminal (gogpt_prior: no).",
+  "confirmed_how": "VERDICT: INSUFFICIENT. Shelved Golar-sponsored floating LNG proposal offshore Nigeria; no public source describing this specific project's design (vessel, capacity breakdown, or power system) was found. EVIDENCE: Searched Bing, DuckDuckGo, and Marginalia for Golar Nigeria FLNG / floating liquefaction Nigeria; found only Golar LNG's general corporate/FLNG history (e.g. Golar Spirit, later sold to New Fortress) with no reference to a distinct Nigeria FLNG project by name.",
+  "confirmed_how [ref]": []
+ },
+ {
+  "terminal": "Nigeria LNG Terminal",
+  "terminal_id": "T100000130259",
+  "mechanical": "True",
+  "confidence": "green",
+  "gogpt_captive_prior": "GOGPT already carries this exact plant: 'Bonny Island LNG power plant', captive=True, 180 MW, 0.0 km (i.e. co-located / same site). Our independently sourced figure (ten gas turbine generators, >320 MW combined) is larger than GOGPT's recorded 180 MW — likely GOGPT is tracking an earlier/partial figure (fewer trains) or a subset of units. This is a status/data finding only; not acted on here.",
+  "confirmed_how": "VERDICT: YES. Nigeria LNG's Bonny Island plant runs its own on-site gas-turbine power generation (ten gas turbine generators, combined >320 MW per NS Energy Business/GlobalData) in addition to four heavy-duty gas turbines driving the refrigeration compressors (Baker Hughes long-term service agreement announcement). This is a mixed mechanical-drive-plus-generation site: a documented YES with mechanical flagged True. EVIDENCE: (1) Baker Hughes press release on its 13-year lifecycle services agreement extension for Nigeria LNG states the scope covers \"four heavy duty gas turbines and associated centrifugal compressors, along with two additional gas turbines for power generation\" at the Bonny Island complex. (2) NS Energy Business / GlobalData's project page on the Nigeria LNG plant expansion (Train 7) states the existing facility runs \"ten gas turbine generators with a combined capacity of more than 320MW\" and that the Train 7 expansion adds \"three gas turbine generators.\" Together these are two independent primary/trade sources (equipment vendor + trade/project database) corroborating both the existence and rough scale of dedicated on-site generation, distinct from the compressor-drive turbines.",
+  "confirmed_how [ref]": [
+   "https://www.bakerhughes.com/company/news/baker-hughes-extends-longterm-service-agreement-nigeria-lng-support-critical-expansion",
+   "https://www.nsenergybusiness.com/projects/nigeria-lng-plant-expansion-bonny-island/"
+  ]
+ },
+ {
+  "terminal": "Olokola LNG Terminal",
+  "terminal_id": "T100000130262",
+  "mechanical": "",
+  "confidence": "red",
+  "gogpt_captive_prior": "Nearest GOGPT plant is Calabar power station (1,383 MW per GOGPT figure, 19.4 km away), part of Nigeria's federal National Integrated Power Project (NIPP) program — confirmed via Wikipedia's NIPP article, which lists \"Calabar Power Station, Cross River State with the capacity of 5 x 112.5 MW (ISO 126 MW)\" (a different, smaller MW figure than GOGPT's, likely reflecting a different build phase). This is a government-sponsored grid IPP under a wholly separate ownership/program from the private Olokola LNG JV, ~19 km distant — an unrelated merchant/grid plant, not this terminal's captive power.",
+  "confirmed_how": "VERDICT: INSUFFICIENT. Olokola (OK)LNG (Shell/Chevron/NNPC-era JV) never reached FID and has two trains proposed / two cancelled; no public source describing its planned power/utility system (gas turbines or otherwise) was found. EVIDENCE: Marginalia search surfaced general project-background coverage (NNPCL reportedly in 2024 discussions with investors to revive both Brass and Olokola (OK)LNG; Nigeria's ~210.5 Tcf gas reserves context; Dangote's separate 1,100 km gas pipeline and deep-sea port development at Olokola) but nothing describing the LNG plant's own power-generation design.",
+  "confirmed_how [ref]": []
+ },
+ {
+  "terminal": "Riverside LNG Terminal",
+  "terminal_id": "T100000131170",
+  "mechanical": "",
+  "confidence": "red",
+  "gogpt_captive_prior": "Nearest GOGPT plant is Afam (FIPL) power station (360 MW, 16.9 km away) — a long-established grid-connected thermal power complex near Port Harcourt, Rivers State (historically NNPC/Shell-era, later privatized to First Independent Power Ltd). This is a pre-existing, unrelated national-grid IPP with no ownership/siting connection to the much smaller, later-proposed Riverside LNG terminal. Could not locate an independent (non-gem.wiki) info_url specifically for Afam/FIPL within available search tools this session.",
+  "confirmed_how": "VERDICT: INSUFFICIENT. Shelved small-scale onshore LNG proposal in Rivers State; no public source describing this project's design or power/utility system was found. EVIDENCE: Searched Bing, DuckDuckGo, and Marginalia for \"Riverside LNG\" Nigeria / Rivers State; no project-specific pages, filings, or trade-press coverage surfaced.",
+  "confirmed_how [ref]": []
+ },
+ {
+  "terminal": "Transoceanic Nigeria FLNG Terminal",
+  "terminal_id": "T100000131169",
+  "mechanical": "",
+  "confidence": "red",
+  "gogpt_captive_prior": "No GOGPT prior was provided for this terminal (gogpt_prior: no).",
+  "confirmed_how": "VERDICT: INSUFFICIENT. Shelved offshore floating LNG proposal (owner: Transoceanic Gas & Power); no public source describing this project's design or power/utility system was found. EVIDENCE: Searched Bing, DuckDuckGo, and Marginalia for \"Transoceanic Gas & Power\" / Transoceanic Nigeria FLNG; no project-specific pages, filings, or trade-press coverage surfaced.",
+  "confirmed_how [ref]": []
+ },
+ {
+  "terminal": "UTM Offshore FLNG Terminal",
+  "terminal_id": "T100000131052",
+  "mechanical": "",
+  "confidence": "yellow",
+  "gogpt_captive_prior": "No GOGPT plant was supplied for this terminal (gogpt_prior: no) — there is no nearby GOGPT-tracked power station to assess for this offshore FLNG site.",
+  "confirmed_how": "VERDICT: INSUFFICIENT. UTM Offshore's own project description (NNPC 20%-stake announcement, 25 Jul 2023) lists \"self-contained power generation\" as one of the FLNG facility's design components, alongside a turret mooring system, gas pretreatment modules, LNG production modules, living quarters, and utilities/storage/offloading. No MW figure, turbine/generator model, or explicit fuel type is disclosed in any public source found. The project is pre-FID (FEED substantially complete since 2023; 15-year gas supply agreement signed ~7 Jul 2026; FID reportedly targeted later in 2026), so detailed engineering specifications for the power system are not yet public. EVIDENCE: UTM Offshore Limited's own press release (utmoffshore.com, 25 Jul 2023, 'NNPC Takes 20% Stake in UTM FLNG Project') states the FLNG facility 'comprises a turret mooring system, gas pretreatment modules, LNG production modules, living quarters, self-contained power generation, and utilities alongside storage and offloading.' This confirms the DESIGN includes on-site power generation, but no other public source checked — UTM Offshore's own FLNG service page (utmoffshore.com/flng/), its full press archive, the JGC/Technip Energies/KBR FEED-award coverage (aecweek.com, JGC's own 18 Nov 2022 press release), or business/trade press on the July 2026 gas supply agreement (Reuters, BusinessDay, InvestorsKing, energychamber.org, infradialogue.com) — names a fuel type, MW rating, or equipment model for that power generation. No environmental/regulatory filing was found publicly describing the power system; the only Nigerian regulatory milestone found is NMDPRA's Sept 2024 'License to Construct,' which is a construction authorization, not a technical EIA/permit with equipment detail. Multiple search engines were used to attempt corroboration (Bing, DuckDuckGo, Marginalia); most returned bot-challenge pages or irrelevant results for this query, so a second independent source could not be obtained despite a genuine search.",
+  "confirmed_how [ref]": [
+   "https://utmoffshore.com/2023/07/25/nnpc-takes-20-stake-in-utm-flng-project/"
+  ]
+ },
+ {
+  "terminal": "Congo FLNG Terminal",
+  "terminal_id": "T100000131003",
+  "mechanical": "",
+  "confidence": "red",
+  "gogpt_captive_prior": "Centrale Electrique du Congo (CEC), 1000 MW, 3.8 km away, is Congo's major national-grid CCGT plant at Pointe-Noire, built years before Tango FLNG arrived (2023) and fed by upstream associated gas (historically from the M'Boundi/Nenè-area fields) to supply the domestic grid, not the FLNG vessel. Could not locate an independently verifiable non-gem.wiki source on CEC's ownership/fuel chain within available tools this session. It is not this terminal's captive plant - if anything the relationship (upstream associated gas from the same license area feeding CEC) is a PowerPlantsSupplied-shaped question for the FIELD/upstream side, not this marine LNG terminal, which does not itself pipe gas to CEC.",
+  "confirmed_how": "VERDICT: INSUFFICIENT. Tango FLNG (EXMAR-built barge, ex-Caribbean FLNG, now Eni/Vitol-owned, moored 3km offshore Pointe-Noire alongside the Excalibur FSU) runs a Black & Veatch PRICO liquefaction process at ~0.5-0.6 mtpa, but no source found - across construction, commissioning, topsides-installation, or startup coverage going back to the vessel's original 2013-2017 build - describes its power generation system. The GEM record's existing ref (marinelink) does not contain the word 'generator' or the phrase 'power generation' and cannot support the current True value. EVIDENCE: Checked topsides-installation, commissioning, and startup articles from the vessel's original construction (as Caribbean FLNG) through its Congo redeployment; all describe the PRICO process and capacity but none itemize power-generation equipment. The vessel is moored off-grid (supports the brief's structural 'no grid -> self-generation' prior), and its sister unit in the same Eni Congo program (Nguya FLNG, this shard's other Congo terminal) IS confirmed to run dual-fuel essential generators - but that is evidence about a different vessel, not a documented finding for Tango itself, so per the brief's own Hadera-overturn convention the verdict here is INSUFFICIENT, not YES or NO.",
+  "confirmed_how [ref]": []
+ },
+ {
+  "terminal": "Eni Congo FLNG II Terminal",
+  "terminal_id": "T100000131123",
+  "mechanical": "False",
+  "confidence": "green",
+  "gogpt_captive_prior": "No GOGPT prior plant was given for this terminal.",
+  "confirmed_how": "VERDICT: YES. Nguya FLNG (Wison-built, 2.4 mtpa, Eni Congo 100%-owned, moored offshore Pointe-Noire as the second unit of Eni's Congo LNG project) is confirmed by TWO independent publishers to run on-site gas-fired power generation for its own load, not grid-drawn power (the vessel is moored offshore with no shore grid connection): Offshore Energy describes 'dual-fuel essential generators and waste heat recovery units (WHRU)' as part of its emissions-reduction design, and Baird Maritime's vessel-review piece independently states 'a dual-fuel main generator and a waste heat recovery system.' This upgrades the primary shard's yellow (single-source) finding to green. EVIDENCE: Offshore Energy, 'New unit ready to complete FLNG pair at Eni's Congolese project' (26 Aug 2025): describes FLNG Nguya's 'reduced carbon footprint due to its design, technology, and zero-flaring approach' delivered via 'dual-fuel essential generators and waste heat recovery units (WHRU)', attributed to statements by builder Wison. Independently, Baird Maritime's vessel-review article 'Nguya - Liquefaction unit to support Eni's LNG projects off Congo' states as one of 'the unit's other notable features... a dual-fuel main generator and a waste heat recovery system' - a second, differently-sourced trade publication (not a mirror or republication of the offshore-energy.biz piece; Baird Maritime is an independent Australian-based maritime trade outlet) confirming the same onboard-generation fact. Two independent publishers reporting the same underlying design fact = green per the brief's citation rules.",
+  "confirmed_how [ref]": [
+   "https://www.offshore-energy.biz/new-unit-ready-to-complete-flng-pair-at-enis-congolese-project/",
+   "https://www.bairdmaritime.com/offshore/vessels-rigs-fposfpsos/vessel-review-nguya-floating-liquefaction-unit-to-support-enis-lng-project-off-congo"
+  ]
+ },
+ {
+  "terminal": "Nkossa FLNG Terminal",
+  "terminal_id": "T100001083728",
+  "mechanical": "",
+  "confidence": "red",
+  "gogpt_captive_prior": "No GOGPT prior plant was given for this terminal.",
+  "confirmed_how": "VERDICT: INSUFFICIENT. Trident Energy (85%)/SNPC (15%) proposed FLNG at the Nkossa field is very early-stage - no engineering, FEED, or vessel-selection announcement was found. The only Nkossa-related coverage located is an unrelated 2010 SBM Offshore article about the pre-existing Nkossa II LPG FSO (a Total/Chevron/SNPC asset, not this proposed FLNG project). EVIDENCE: No public source describing the Nkossa FLNG project's design, contractor, or equipment was found. Trident Energy took over Congo assets circa 2022-2023 (per GEM's own operator field) but no FEED/design-stage announcement for a captive FLNG project at Nkossa surfaced in this search.",
+  "confirmed_how [ref]": []
+ },
+ {
+  "terminal": "Dakar LNG Terminal",
+  "terminal_id": "T100001083714",
+  "mechanical": "",
+  "confidence": "yellow",
+  "gogpt_captive_prior": "GOGPT prior is Karpowership (Senegal) Ayşegül Sultan power station (235 MW, 1.2 km away, gogpt_captive=False). That plant is the actual downstream recipient of this terminal's gas — a merchant/grid powership, not a plant that powers the Dakar LNG Terminal itself. GOGPT correctly marks it non-captive. Independent info: https://www.offshore-energy.biz/four-years-in-the-making-africas-first-lng-to-power-project-up-and-running-off-senegal/ (Karpowership vessel producing power for Senegal's grid from LNG).",
+  "confirmed_how": "VERDICT: NO. Proposed onshore/near-shore import terminal (ELTON Logistics and Services) explicitly designed to pipe regasified gas OUT to Senegalese power stations via 'two 15-kilometre submarine gas pipelines to supply gas to several power stations' — a pure gas-supply scheme, not a plant powering the terminal itself. No on-site/fenceline generation for the terminal's own operations is documented anywhere found. EVIDENCE: Offshore Energy (23 Mar 2026), reporting Reganosa's contract to supervise construction: 'ELTON Logistics and Services' is the Senegalese developer; the terminal comprises a floating storage unit (137,000 m3), onshore regas facilities, truck loading, and 'two 15-kilometre submarine gas pipelines to supply gas to several power stations' — confirming the direction-test: gas flows OUT to power stations, this is not a captive-power site.",
+  "confirmed_how [ref]": [
+   "https://www.offshore-energy.biz/fresh-lng-gig-in-africa-lands-on-spanish-players-worksheet/"
+  ]
+ },
+ {
+  "terminal": "Karmol Dakar FSRU",
+  "terminal_id": "T100000131049",
+  "mechanical": "",
+  "confidence": "yellow",
+  "gogpt_captive_prior": "GOGPT prior is the same Ayşegül Sultan powership (235 MW, 5 m away — essentially co-located, gogpt_captive=False). Confirmed as the actual power-generating vessel that this FSRU supplies; it is a separate hull/entity from the FSRU and is correctly marked non-captive to the FSRU by GOGPT (it's Karpowership's own merchant asset feeding the national grid, not powering the FSRU). Independent info: https://www.offshore-energy.biz/four-years-in-the-making-africas-first-lng-to-power-project-up-and-running-off-senegal/.",
+  "confirmed_how": "VERDICT: INSUFFICIENT. Operating FSRU (a converted 125,000 m3 LNGC, 'Karmol LNGT Africa', an 84 mmscfd modular FSRU) that regasifies LNG and transfers the gas to Karpowership's separate powership KPS 10 (Karadeniz Powership Ayşegül Sultan, 235 MW), which generates the electricity for Senegal's grid. This is a well-documented direction-test relationship (gas OUT to a different vessel), not captive power. However, per the FSRU-onboard convention, the direction-test NO does not answer whether the FSRU vessel's OWN machinery (regas pumps, BOG handling, hotel load) runs on gas/BOG or diesel — that fuel/generation question is undisclosed in every source found. EVIDENCE: Offshore Energy (9 May 2022): GAS Entec converted a '125,000 cbm LNG carrier into an 84 mmscfd M-FSRU' delivering regasified LNG to 'Karpowership's floating power barge' (Ayşegül Sultan). Offshore Energy (16 Jul 2025): 'The FSRU Karmol LNGT Africa receives LNG via ship-to-ship transfer... regasifies it into natural gas. This gas is subsequently transferred to Karpowership's powership KPS 10, which generates electricity' delivered to 'Senegal's grid' — confirming the FSRU itself does not generate power for the grid or for itself in any disclosed way. No source found describing the FSRU's own auxiliary/hotel power source.",
+  "confirmed_how [ref]": [
+   "https://www.offshore-energy.biz/lngc-conversion-completed-for-worlds-first-m-fsru/",
+   "https://www.offshore-energy.biz/four-years-in-the-making-africas-first-lng-to-power-project-up-and-running-off-senegal/"
+  ]
+ },
+ {
+  "terminal": "Yakaar-Teranga LNG Hub",
+  "terminal_id": "T100000131092",
+  "mechanical": "",
+  "confidence": "yellow",
+  "gogpt_captive_prior": "GOGPT prior is again the Ayşegül Sultan powership (235 MW, 0.6 km away, gogpt_captive=False) — a pure coordinate-proximity artifact (Dakar-area terminals cluster tightly) with no operational relationship to this cancelled, unrelated export/appraisal project. Not the same business at all: one is an LNG-to-power import scheme, the other was a gas-export/LNG-hub concept.",
+  "confirmed_how": "VERDICT: SCREENED. Cancelled offshore export/LNG-hub concept (Kosmos Energy 90% / Petrosen 10%) built on the Yakaar (2017) and Teranga (2016) gas discoveries, part of the broader Cayar Offshore Profond gas fairway. As of the most recent coverage found (BP's Nov 2023 operatorship handover to Kosmos), the project was still at appraisal/pre-FID stage — no FEED or design study describing power supply was ever published before GEM's cancellation. EVIDENCE: No design-stage disclosure found for this specific project name in any industry-press or company source searched (Kosmos Energy's own current website does not mention 'Yakaar-Teranga' as a distinct project at all, only the separate GTA FLNG development). Offshore Energy (6 Nov 2023) confirms the discoveries were still under BP/Kosmos appraisal/operatorship discussions as late as 2023, consistent with never reaching a public design stage.",
+  "confirmed_how [ref]": [
+   "https://www.offshore-energy.biz/following-bps-exit-operatorship-of-giant-gas-discoveries-changes-hands-as-us-player-takes-the-reins/"
+  ]
+ },
+ {
+  "terminal": "Sierra Leone LNG Terminal",
+  "terminal_id": "T100001084290",
+  "mechanical": "",
+  "confidence": "yellow",
+  "gogpt_captive_prior": "Blackhall Road power station (17 MW, 114 m, gogpt_captive=False) is almost certainly the 'Nant Power Project'/associated plant this LNG terminal exists to fuel, given the extreme proximity and the owner's own name ('...Generation Ltd'). Could not retrieve an independent info_url this session due to search-tool failures.",
+  "confirmed_how": "VERDICT: NO. GEM's own record already lists PowerPlantsSupplied = 'Nant Power Project' for this terminal, and the owner is named 'CECA SL Generation Ltd' — both point to this being a gas-to-power project whose purpose is fueling an adjacent/associated power station, not an on-site plant powering the LNG terminal itself. The nearest GOGPT record, Blackhall Road power station (17 MW, 114 m away, gogpt_captive=False), is almost certainly that associated plant (or its site) given the extreme proximity. EVIDENCE: Relied on GEM's own already-populated PowerPlantsSupplied field ('Nant Power Project') plus the owner name 'CECA SL Generation Ltd' and the 114 m proximity of Blackhall Road power station (17 MW) — together these describe a classic small-market LNG-to-power project (gas import to fuel a dedicated generation asset), the reverse of a captive relationship. Could not independently corroborate via web search this session: general search engines returned blocked/irrelevant results throughout (see notes), so this determination rests on the existing GEM data plus SOP direction-test logic rather than a freshly verified source.",
+  "confirmed_how [ref]": []
+ },
+ {
+  "terminal": "Coega FSRU",
+  "terminal_id": "T100000130265",
+  "mechanical": "False",
+  "confidence": "yellow",
+  "gogpt_captive_prior": "'Karpowership Coega power station' (450 MW, 0.25 km) IS the Powership half of this exact two-vessel RMIPPPP project -- it is the grid generator this FSRU would have fed gas to, not a captive plant powering the FSRU. GOGPT's existing gogpt_captive=False is correct on the captive question (it's a merchant/grid asset), though note the whole project (both FSRU and Powership) is now delicensed/cancelled per the July 2025 court ruling. Independent info: https://www.energize.co.za/article/high-court-cancels-karpowership-power-licences-ending-emergency-energy-deal (non-gem.wiki).",
+  "confirmed_how": "VERDICT: NO. Design was 1 FSRU + 2 separate 'Powership' vessels (Karpowership's own site: Coega = 450 MW via 2 Powerships + 1 FSRU) generating electricity under a NERSA generation licence sold to the national grid under the RMIPPPP emergency-power programme -- not power flowing into the FSRU to run its own regas process. Project was never built: the Pretoria High Court set aside all three Karpowership generation licences (Coega, Richards Bay, Saldanha Bay) in July 2025 and Eskom had already withdrawn grid-access allocation; GEM correctly shows status=cancelled. EVIDENCE: Karpowership's own South Africa project page (fetched via proxy; direct fetch/url_verifier blocked by an expired TLS cert on karpowership.co.za, so NOT used as a citation) describes the Coega deployment as '2 Powerships + 1 FSRU', 450 MW. Independently, energize.co.za (verified) confirms Karpowership 'was named a preferred bidder in March 2021 to supply 1 220 MW from floating gas-to-power ships at Richards Bay, Coega and Saldanha Bay' under NERSA generation licences / the Risk Mitigation IPP Procurement Programme (RMIPPPP), and that the Pretoria High Court cancelled all three licences, ending the deal. RMIPPPP is explicitly a grid-supply emergency-power programme -- the direction is terminal-to-grid, not grid/plant-to-terminal.",
+  "confirmed_how [ref]": [
+   "https://www.energize.co.za/article/high-court-cancels-karpowership-power-licences-ending-emergency-energy-deal"
+  ]
+ },
+ {
+  "terminal": "Durban LNG Terminal",
+  "terminal_id": "T100001083665",
+  "mechanical": "False",
+  "confidence": "yellow",
+  "gogpt_captive_prior": "gogpt_prior is 'no' -- no GOGPT plant identified yet, consistent with the project being pre-FID (SIP status only, granted Sept 2025, timing undetermined).",
+  "confirmed_how": "VERDICT: NO. This is a bundled LNG-import + power project: the same Vitol/ACWA Power/Vivo Energy/VTTI consortium is developing an LNG import facility AND an adjacent 1,000-1,800 MW combined-cycle gas-fired power station (CCGT) at Durban port, plus gas distribution via the existing Lilly pipeline to Secunda, LNG trucking to off-grid industrial/mining users, and LNG bunkering. The CCGT is a grid-scale merchant plant (up to 1,800 MW, ~$3bn) intended to help replace ageing coal capacity -- direction of gas flow is terminal-to-power-plant (and terminal-to-pipeline/truck/bunker), not a captive generator powering the terminal's own regas operations, which need a trivial fraction of that capacity. EVIDENCE: CNBC Africa (verified) and Zawya (verified) both report: 'a 1,000 (to) 1,800 MW CCGT power generation plant with associated LNG importation infrastructure,' consortium of Vitol, ACWA Power, Vivo Energy (Vitol's post-2024-Engen-merger unit) and terminal operator VTTI, ~$3 billion cost, Strategic Integrated Project status granted September 2025, timing 'to be determined.' CNBC Africa's headline matches a Reuters wire piece verbatim ('Vitol backs proposed $3 billion LNG power plant for South Africa's Durban port'), and Zawya carries the same facts in similar wording -- both are very likely republishing the same underlying Reuters wire text, so treated as ONE source for confidence purposes (yellow, not green) despite listing both URLs. A distinct Bloomberg piece on the same deal (2026-02-16) was found via search but is CAPTCHA/paywall-blocked and could not be independently value-verified; Engineering News' fuller writeup (which independently gives 'up to 1 800 MW' and describes the Lilly-pipeline/trucking/bunkering multi-offtake model) is 403-blocked with no Wayback snapshot, so also not citable.",
+  "confirmed_how [ref]": [
+   "https://www.cnbcafrica.com/2026/vitol-backs-proposed-3-billion-lng-power-plant-for-south-africas-durban-port",
+   "https://www.zawya.com/en/economy/africa/south-africa-vitol-joins-consortium-planning-3bln-gas-fired-power-station-at-durban-port-hds00g16"
+  ]
+ },
+ {
+  "terminal": "Mossel Bay FSRU",
+  "terminal_id": "T100000130264",
+  "mechanical": "False",
+  "confidence": "yellow",
+  "gogpt_captive_prior": "'Gourikwa power station' (740 MW, 17.2 km away -- not close) is an existing, separate power station near Mossel Bay unrelated to this defunct FSRU project, which was never built and was designed to feed the GTL refinery, not a power plant. Could not independently verify Gourikwa's own fuel/ownership details in the time available (searches for 'Gourikwa power station' returned no usable results); flagging as unconfirmed rather than asserting a fuel type.",
+  "confirmed_how": "VERDICT: NO. PetroSA's Mossel Bay FSRU was proposed purely as a feedstock/fuel-gas import route for PetroSA's own nearby Gas-to-Liquids (GTL) refinery -- not to generate electricity. PetroSA cancelled the plan after feasibility studies found 'higher than expected costs due to the harsh weather conditions' at the site; no captive-generation design was ever published, and the project never advanced past the concept/FEED stage before being shelved (matches GEM's cancelled status). EVIDENCE: Upstream Online (verified): 'PetroSA cancels its plan for FSRU at Mossel Bay ... [the FSRU] would have fed much-needed gas to the company's nearby gas-to-liquids plant,' cancelled due to 'higher than expected costs due to the harsh weather conditions at this location.' No power-generation purpose or captive-power design is mentioned anywhere in the sourcing found.",
+  "confirmed_how [ref]": [
+   "https://www.upstreamonline.com/weekly/petrosa-cancels-its-plan-for-fsru-at-mossel-bay/1-1-999169"
+  ]
+ },
+ {
+  "terminal": "Ngqura LNG Terminal",
+  "terminal_id": "T100001048121",
+  "mechanical": "False",
+  "confidence": "green",
+  "gogpt_captive_prior": "'Karpowership Coega power station' (450 MW, 0.95 km) is the unrelated, now-delicensed/cancelled Karpowership RMIPPPP project (see Coega FSRU above), not connected to Transnet/Ukwanda's separate, much larger multi-offtaker gas-to-power hub. GOGPT's gogpt_captive=False for that plant is correct on its own terms but irrelevant to Ngqura/Ukwanda's captive question. Independent info on the Karpowership plant: https://www.energize.co.za/article/high-court-cancels-karpowership-power-licences-ending-emergency-energy-deal (non-gem.wiki).",
+  "confirmed_how": "VERDICT: NO. The Transnet/Ukwanda LNG project at the Port of Ngqura (Coega SEZ) is explicitly a multi-offtaker gas-import hub: designed to support 'up to about 3 500 MW' of gas-to-power capacity within and around the Coega Special Economic Zone (with a stated 3,000 MW gas-to-power allocation) plus industrial users, IPPs, and data centre operators -- not a captive generator for the terminal's own use. A temporary floating unit is planned ahead of full onshore commissioning, with full operations targeted for 2035. EVIDENCE: SAnews (South African Government News Agency, official government press service -- verified): quotes the project as supporting 'independent power producers' and enabling gas supply within the Coega SEZ. Green Building Africa (verified): 'up to about 3 500 MW of electricity generation capacity within the Coega Special Economic Zone,' serving 'multiple offtakers including industrial users, independent power producers, and data center operators -- not a single specific power plant.' A dedicated LNG berth (R2bn, TNPA) plus onshore regasification will serve these multiple, not-yet-built downstream users -- the direction of gas flow is terminal-outward to future IPPs/industry, never into the terminal itself.",
+  "confirmed_how [ref]": [
+   "https://www.sanews.gov.za/south-africa/transnet-signs-deal-r22-billion-gas-facility-project",
+   "https://www.greenbuildingafrica.co.za/transnet-national-ports-authority-and-ukwanda-lng-sign-r22-billion-port-of-ngqura-gas-terminal-agreement/"
+  ]
+ },
+ {
+  "terminal": "Richards Bay FSRU",
+  "terminal_id": "T100000130266",
+  "mechanical": "False",
+  "confidence": "yellow",
+  "gogpt_captive_prior": "'Nseleni Independent Floating power station' (2800 MW, 1.74 km) is far larger than Karpowership's own 450 MW Richards Bay allocation -- almost certainly a different/aggregate floating-power project at the same port (Richards Bay hosted more RMIPPPP-linked floating capacity than just Karpowership's award), not this specific FSRU's captive plant. Could not independently confirm the Nseleni project's identity/ownership within the search budget available; gogpt_captive=False is plausible either way (RMIPPPP capacity is grid-directed by design) but I could not verify the specific plant.",
+  "confirmed_how": "VERDICT: NO. Same Karpowership RMIPPPP design as Coega and Saldanha Bay: 1 FSRU + 2 separate 'Powership' vessels, 450 MW, with the Powerships (not the FSRU) generating electricity under a NERSA licence for sale to the national grid under the emergency Risk Mitigation IPP Procurement Programme. Not captive -- direction is terminal-to-grid. Project never built: Pretoria High Court set aside all three Karpowership generation licences in July 2025; matches GEM's cancelled status. EVIDENCE: Same evidence chain as Coega FSRU: energize.co.za (verified) -- Karpowership was 'named a preferred bidder in March 2021 to supply 1 220 MW from floating gas-to-power ships at Richards Bay, Coega and Saldanha Bay' under NERSA generation licences / RMIPPPP; all three licences cancelled by the Pretoria High Court, July 2025. Karpowership's own site (proxy-read only, not directly url_verifier-citable due to an expired TLS certificate on karpowership.co.za) separately describes Richards Bay specifically as 450 MW via 2 Powerships + 1 FSRU.",
+  "confirmed_how [ref]": [
+   "https://www.energize.co.za/article/high-court-cancels-karpowership-power-licences-ending-emergency-energy-deal"
+  ]
+ },
+ {
+  "terminal": "Richards Bay Transnet FSRU",
+  "terminal_id": "T100000131126",
+  "mechanical": "False",
+  "confidence": "",
+  "gogpt_captive_prior": "'Richards Bay (Mhlathuze Energy) power station' (3300 MW, 1.86 km) is almost certainly Eskom's own 3,000 MW Richards Bay gas-to-power CCGT project referenced in the sourcing above (Mhlathuze is the local municipal name for the Richards Bay area) -- i.e. this GOGPT plant IS the power station this terminal is built to supply, which is exactly why the direction test says NO on captive. GOGPT's gogpt_captive=False for it is consistent with that read. Independent info: https://allafrica.com/stories/202606050416.html (non-gem.wiki).",
+  "confirmed_how": "VERDICT: INSUFFICIENT. This is the Zululand Energy Terminal (ZET) project -- a Vopak/Reatile/Transnet Pipelines joint venture holding a 25-year Transnet concession for an open-access LNG import/storage/regas terminal. Eskom signed a Heads of Agreement (June 2026) to be 'foundation customer,' explicitly to fuel Eskom's own separate 3,000 MW Richards Bay gas-to-power CCGT plant: 'The Eskom Richards Bay Project envisages the importation and consumption of regasified LNG as the primary fuel source of the power plant.' The terminal itself does not generate power -- it supplies gas to Eskom's plant, matching the GEM export's own pre-populated power_plants_supplied field ('Richards Bay (Eskom) power station'). EVIDENCE: AllAfrica (verified): 'Eskom and Zululand Energy Terminal (ZET) have signed a Heads of Agreement establishing the framework for a long-term strategic partnership,' ZET is a JV of Royal Vopak, Reatile Group and Transnet Pipelines, targeting Eskom's 3,000 MW gas-to-power project; national strategy is 6,000 MW of gas by 2030 (3,000 MW IPP program + Eskom's own 3,000 MW). Bizcommunity (verified): 'ZET ... will provide open access to liquefied natural gas (LNG) import, storage and regasification infrastructure, underpinning Eskom's planned 3 000MW gas-to-power programme' and explicitly: 'The Eskom Richards Bay Project envisages the importation and consumption of regasified LNG as the primary fuel source of the power plant.' Rigzone corroborates the same project (ZET, Phase 1 floating storage unit 170,000 m3, ~400 MMcf/d / 3 mtpa onshore regas, 25-year licence granted 2024, FID targeted 2028, ExxonMobil preliminary supply deal) but could not be url_verifier-passed (HTTP 202, likely bot-challenge) so is not included in refs.",
+  "confirmed_how [ref]": [
+   "https://allafrica.com/stories/202606050416.html",
+   "https://www.bizcommunity.com/article/sa-first-lng-import-terminal-gassed-up-in-new-eskom-zululand-agreement-512750a"
+  ]
+ },
+ {
+  "terminal": "Saldanha Bay FSRU",
+  "terminal_id": "T100000130267",
+  "mechanical": "False",
+  "confidence": "yellow",
+  "gogpt_captive_prior": "'Karpowership Saldanha power station' (320 MW, 4.2 km) is the Powership half of this exact Karpowership two-vessel project -- the grid generator the FSRU would have fed, not a captive plant for the FSRU. gogpt_captive=False is correct on the captive question; the whole award is now cancelled. Independent info: https://www.energize.co.za/article/high-court-cancels-karpowership-power-licences-ending-emergency-energy-deal (non-gem.wiki).",
+  "confirmed_how": "VERDICT: NO. Same Karpowership RMIPPPP design as Coega and Richards Bay: 1 FSRU + 2 separate 'Powership' vessels, 320 MW at Saldanha Bay, with the Powerships (not the FSRU) generating electricity under a NERSA licence for grid sale under RMIPPPP. Not captive -- direction is terminal-to-grid. Project never built: Pretoria High Court set aside all three Karpowership generation licences in July 2025; matches GEM's cancelled status. EVIDENCE: Same evidence chain as Coega/Richards Bay: energize.co.za (verified) -- Karpowership 'named a preferred bidder in March 2021 to supply 1 220 MW from floating gas-to-power ships at Richards Bay, Coega and Saldanha Bay' under NERSA generation licences / RMIPPPP; all three cancelled by the Pretoria High Court, July 2025. Karpowership's own site (proxy-read only, not url_verifier-citable due to an expired TLS certificate) separately gives Saldanha Bay specifically as 320 MW via 2 Powerships + 1 FSRU -- the smallest of the three sites.",
+  "confirmed_how [ref]": [
+   "https://www.energize.co.za/article/high-court-cancels-karpowership-power-licences-ending-emergency-energy-deal"
+  ]
+ },
+ {
+  "terminal": "Sudan Red Sea LNG Terminal",
+  "terminal_id": "T100000130691",
+  "mechanical": "",
+  "confidence": "",
+  "gogpt_captive_prior": "Karadeniz Powership (150 MW, 3.5 km, gogpt_captive=True) is a Karpowership-class floating power vessel; these are typically chartered to national utilities under standalone commercial power-supply agreements and are not known to be tied to specific LNG import schemes — most likely unrelated to the cancelled Sunagas project, though I could not independently confirm this via search this session.",
+  "confirmed_how": "VERDICT: INSUFFICIENT. No source describing any power arrangement — on-site or otherwise — was found for this cancelled project beyond the bare project name ('Sunagas', Red Sea State). Genuinely not in any public source reachable this session. EVIDENCE: No independent source about 'Sunagas' or a 'Sudan Red Sea LNG Terminal' was found in any source reachable this session. General search engines (Bing/DuckDuckGo/Yandex/Brave/Startpage via WebFetch) were non-functional for most of this session (see notes).",
+  "confirmed_how [ref]": []
+ },
+ {
+  "terminal": "Tanzania LNG Terminal",
+  "terminal_id": "T100000130263",
+  "mechanical": "",
+  "confidence": "red",
+  "gogpt_captive_prior": "gogpt_prior for this terminal is \"no\" — no nearby GOGPT plant was surfaced by the matcher, consistent with this being an undeveloped greenfield site (Likong'o village, Lindi) with no existing power infrastructure nearby.",
+  "confirmed_how": "VERDICT: INSUFFICIENT. No public source describes a power-generation design for this project. The Likong'o/Mchinga two-train (10 mtpa) liquefaction plant is still pre-FID: the Host Government Agreement was only being finalised through 2023-2026 and FEED had not concluded as of the most recent coverage found, so no engineering-level description of the utilities/power island (which would normally carry the captive-power answer for a liquefaction train) has been published. EVIDENCE: Construction Review's project explainer (citing project partners Equinor/Shell/TPDC/ExxonMobil/Ophir/Pavilion/Medco, 2 trains x 5 mtpa, HGA drafted March 2023, FEED expected to start 2023 and run 2 years, FID then targeted 2028) contains no mention of power generation, gas turbines, or a captive power plant. Multiple 2023-2026 news items (Reuters, TanzaniaInvest, African Energy, allAfrica) confirm the project is still at the negotiation/HGA stage, not at a published-design stage, which is consistent with no power-system details being public yet.",
+  "confirmed_how [ref]": []
+ },
+ {
+  "terminal": "Dakhla LNG Terminal",
+  "terminal_id": "T100000131162",
+  "mechanical": "",
+  "confidence": "red",
+  "gogpt_captive_prior": "gogpt_prior = no; nothing to assess.",
+  "confirmed_how": "VERDICT: INSUFFICIENT. Insufficient: 'Dakhla LNG Terminal' is one of several parallel LNG-terminal concepts inside Morocco's roughly $6B port/gas-infrastructure push (alongside a Nador West Med FSRU + pipeline, and older Jorf Lasfar/Mohammedia plans); no developer, FSRU vessel, capacity, or design has been published specifically for a Dakhla-sited facility - owner is listed as unknown in GEM's own record, consistent with this being a highly preliminary/aggregate plan. EVIDENCE: 2025-2026 trade press (Port Technology, Energies Media, Gas Processing & LNG, Hespress, Atalayar, Devdiscourse, Angolan Mining O&G) describes Morocco's Nador West Med FSRU plus a pipeline running south toward Dakhla, and separately a large deepwater port under construction at Dakhla itself (2028 target), but is ambiguous about whether a physical import terminal/FSRU is sited AT Dakhla versus gas merely being piped there from Nador. No source names a developer, vessel, or capacity for a Dakhla-specific import facility.",
+  "confirmed_how [ref]": [
+   "https://www.porttechnology.org/morocco-builds-nador-2026-and-dakhla-2028-deepwater-ports/"
+  ]
+ }
+]

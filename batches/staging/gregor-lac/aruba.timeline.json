@@ -1,0 +1,17 @@
+[
+  {
+    "terminal_id": "T100000131116",
+    "unit_id": "G100002111600",
+    "terminal_name": "Aruba LNG Terminal",
+    "operation": "append",
+    "status": "cancelled",
+    "sub_status": "confirmed",
+    "year": 2025,
+    "part_of_year": "",
+    "notes": "Existing Postgres timeline (fetch_timeline.py G100002111600): [1] proposed, 2021; [7] operating/planned, 2024. This append is proposed(2021) -> cancelled(2025) -- a legal transition (a proposed project can be cancelled outright without ever reaching construction/operating; the stray operating/planned/2024 entry reflects GEM's LatestPlannedStartYear anchor, not an actual construction milestone, and is superseded by the cancellation). Utilities Aruba NV (WEB), the intended offtaker/co-owner/operator, terminated its LNG supply/terminal agreement with Eagle LNG after Eagle LNG failed to secure required permits (3rd extension since 2022) and WEB is pivoting to wind/solar/storage. Resolves the region's sole stale flag (planned_start_slipped, LatestPlannedStartYear=2024).",
+    "source_url": "https://diario.aw/categories/noticia/general/web-ta-descontinua-contract-y-ta-sigui-enfoca-riba-biento-solo-y-almacena-energia",
+    "confidence": "green",
+    "legal_transition_check": "proposed -> cancelled is a legal transition per lifecycle_rules.md; flagging for reviewer sign-off only because the pre-existing timeline carried an operating/planned/2024 entry that this cancellation supersedes rather than follows chronologically as a monotonic proposed->construction->operating chain.",
+    "researcher_initials": "AI-draft (sweep)"
+  }
+]

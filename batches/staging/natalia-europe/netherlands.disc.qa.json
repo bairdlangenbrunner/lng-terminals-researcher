@@ -1,0 +1,62 @@
+[
+  {
+    "category": "dormant_revival_check",
+    "terminal_id": "T100000131100",
+    "unit_id": "",
+    "terminal_name": "Terneuzen FSRU",
+    "issue": "Discovery SOP 4.0a revival check: web-searched the Terneuzen/Braakmanhaven site (cancelled by Gasunie Feb 2023, confirmed technically/commercially unfeasible) for new activity. No new sponsor or project has emerged specifically at this site. The only Zeeland-area FSRU activity since (VTTI + Hoegh Evi's Zeeland Energy Terminal, which did briefly consider Braakmanhaven in Terneuzen port as an alternate site alongside Sloehaven/Vlissingen-Oost per a May 2025 Notification of Intent) ultimately proceeded at Vlissingen-Oost -- which is already GEM's existing 'Zeeland Energy FSRU' record (T100000131099, proposed, VTTI/Hoegh Evi, 7.50 MTPA, matches published ZET specs). No distinct new project has risen at the dead Terneuzen record itself.",
+    "severity": "low",
+    "suggested_action": "No action -- leave Terneuzen FSRU as cancelled. No revival, same-fundamentals or different-fundamentals. If VTTI/Hoegh Evi's site selection for Zeeland Energy Terminal (T100000131099) is later confirmed to shift to Braakmanhaven/Terneuzen instead of Vlissingen-Oost, update that record's Location, not Terneuzen FSRU.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "gemwiki_coverage_crosscheck",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "",
+    "issue": "Discovery SOP 4.0b: enumerated gem.wiki Netherlands LNG-terminal pages via site search (gem.wiki category page itself 403'd, so used site: search plus targeted queries as a proxy). Found exactly 4 gem.wiki LNG-terminal pages: Terneuzen FSRU, Zeeland Energy FSRU, Gate LNG Terminal, Eemshaven FSRU -- all four already match an existing export-CSV TerminalID. A 5th gem.wiki hit, 'Nederland LPG Terminal', is an LPG (not LNG) facility, out of scope for this tracker. No orphan gem.wiki LNG page (a page with no CSV row) was found for the Netherlands.",
+    "severity": "low",
+    "suggested_action": "None -- coverage clean, no candidate generated from this check.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "scope_gate_rejection",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "ACE Terminal / Air Products-Gunvor ammonia terminal (Rotterdam, Maasvlakte/Europoort)",
+    "issue": "Ring A/B/C sweep surfaced two Rotterdam green-ammonia import terminal projects (Gasunie/HES International/Vopak 'ACE Terminal', and Air Products/Gunvor's renewable ammonia terminal at Gunvor's Europoort site). Both import ammonia (NH3) as a hydrogen carrier, not LNG. Per CLAUDE.md, NH3/LH2/SyntheticLNG are out-of-scope fields not tracked as new LNG terminal rows in 2026.",
+    "severity": "low",
+    "suggested_action": "Do not stage as new_terminal or new_unit. Correctly out of scope for the LNG terminals tracker.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "scope_gate_rejection",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Port of Rotterdam bio-LNG bunkering growth",
+    "issue": "Ring B sweep surfaced continued growth in Rotterdam ship-to-ship LNG/bio-LNG bunkering volumes (marine fuel supply, not cargo import/export across a border). Bunkering is explicitly out of scope per the Discovery SOP scope note ('all scales except bunkering'). No dedicated new bunkering terminal facility was identified beyond existing bunker-vessel operations already served by Gate LNG Terminal (already in GEM).",
+    "severity": "low",
+    "suggested_action": "Do not stage. Out of scope (bunkering).",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "already_in_gem",
+    "terminal_id": "T100000131099",
+    "unit_id": "",
+    "terminal_name": "Zeeland Energy FSRU",
+    "issue": "Ring A/B sweep on the 'Netherlands third LNG terminal' (VTTI + Hoegh Evi Zeeland Energy Terminal / ZET, Vlissingen-Oost, open season launched Feb 2026, FID expected Q3 2027, ~7.5 bcm send-out) confirmed this is already fully captured by the existing GEM record T100000131099 (owner, location, and capacity all match). Not a discovery candidate.",
+    "severity": "low",
+    "suggested_action": "No new record. If ZET's open-season/FID timeline has moved since GEM's current data, route a fill/refresh to the concurrent Update batch rather than Discovery.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "already_in_gem",
+    "terminal_id": "T100000130997",
+    "unit_id": "Expansion",
+    "terminal_name": "Eemshaven FSRU",
+    "issue": "Ring B sweep on Exmar's FSRU-conversion work (2nd FSRU chartered to EemsEnergyTerminal, conditional FID expected H1 2026, combined ~190,000 m3 storage) confirmed this is the existing 'Expansion' unit row already staged under Eemshaven FSRU (T100000130997). Not a discovery candidate.",
+    "severity": "low",
+    "suggested_action": "No new record. Route any updated Exmar/FID detail to the concurrent Update batch.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  }
+]

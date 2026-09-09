@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lng-terminals-researcher"
+version = "0.1.0"
+description = "Auditable research and review-package workflows for GEM LNG terminals"
+requires-python = ">=3.11"
+dependencies = [
+  "openpyxl>=3.1",
+  "jieba>=0.42",
+  "pypinyin>=0.55",
+  "SQLAlchemy>=2.0",
+  "psycopg2-binary>=2.9",
+]
+
+[project.optional-dependencies]
+geo = ["geopandas>=1.0", "shapely>=2.0", "cartopy>=0.23"]
+figures = ["numpy>=2.0", "Pillow>=10", "scipy>=1.13"]
+dev = ["pytest>=8", "ruff>=0.9"]
+
+[project.scripts]
+lng-research = "lng:main"
+
+[tool.setuptools]
+py-modules = ["lng", "atomic_io", "batch_contract", "paths"]
+package-dir = {"" = "scripts"}
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.ruff]
+target-version = "py311"
+line-length = 110
+exclude = ["batches/staging", "scripts/work"]
+
+[tool.ruff.lint]
+# Establish a reliable baseline without pretending the legacy scripts have
+# already undergone a wholesale style migration.
+select = ["E9", "F63", "F7", "F82"]

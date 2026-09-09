@@ -1,0 +1,70 @@
+[
+  {
+    "terminal_id": "T100000130682",
+    "unit_id": "G100002068200",
+    "terminal_name": "Gibraltar LNG Terminal",
+    "unit_name": "--",
+    "country": "Gibraltar",
+    "field_name": "Operator [ref]",
+    "old_value": "https://www.pxlimited.com/news/px-group-takes-over-operation-of-gibraltar-lng-terminal/16-gpU8",
+    "new_value": "https://www.lngindustry.com/liquid-natural-gas/09102025/px-group-to-operate-gibraltar-lng-terminal/, https://www.infogibraltar.com/storage/press-releases/251008-C734-Cambio-de-entidad-operadora-de-la-terminal-de-GNL-de-Gibraltar.pdf",
+    "confidence": "green",
+    "source_tier": "trade_press + official_government",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.lngindustry.com/liquid-natural-gas/09102025/px-group-to-operate-gibraltar-lng-terminal/",
+      "https://www.infogibraltar.com/storage/press-releases/251008-C734-Cambio-de-entidad-operadora-de-la-terminal-de-GNL-de-Gibraltar.pdf"
+    ],
+    "source_notes": "QC's pxlimited.com URL is confirmed dead (HTTP 404). The Operator value itself (PX Group) was already updated by Natalia and is CORRECT -- confirmed with a genuinely independent, higher-quality pair: lngindustry.com trade press report (9 Oct 2025) and the official Government of Gibraltar communique (infogibraltar.com PDF, 8 Oct 2025, quoting Minister Gemma Arias-Vasquez and PX Group CEO Geoff Holmes on the Molgas-to-PX Group operator transition -- extracted via direct pdftotext since WebFetch's own PDF summarizer failed on the binary). Both verified PASS via url_verifier.py.",
+    "scope_note": null,
+    "dropped_urls_dead": [
+      "https://www.pxlimited.com/news/px-group-takes-over-operation-of-gibraltar-lng-terminal/16-gpU8"
+    ],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130682",
+    "unit_id": "G100002068200",
+    "terminal_name": "Gibraltar LNG Terminal",
+    "unit_name": "--",
+    "country": "Gibraltar",
+    "field_name": "Location [ref]",
+    "old_value": "https://wikimapia.org/39001201/LNG-Terminal-for-power-plamt, https://www.google.com/maps/place/36%C2%B008, https://www.man-es.com/discover/gibraltar-builds-a-modern-lng-power-plant",
+    "new_value": "https://www.google.com/maps/place/36%C2%B008",
+    "confidence": "blue",
+    "source_tier": "mapping_service",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.google.com/maps/place/36%C2%B008"
+    ],
+    "source_notes": "QC's automated pass marked BOTH wikimapia.org and man-es.com as 'ok' -- both are false positives I caught on independent re-check, exactly the scenario the brief warned about ('don't inherit a QC pass'). man-es.com: url_verifier.py FAILED on token 'Gibraltar'; raw fetch showed the page title is now 'Discover stories' with no Gibraltar content, and curl -sIL confirmed a 301 redirect chain to https://www.everllence.com/discover-stories/ (a generic hub page -- MAN Energy Solutions rebranded to 'Everllence' and the specific article is gone; genuine content-drift link rot, not a bot-block). wikimapia.org: raw fetch returned only a 158-byte JS meta-refresh redirect stub (document.cookie set + client-side redirect, no server-rendered map content), and no Wayback snapshot exists to fall back on. Both dropped. The remaining google maps pin alone is judged sufficient for a coordinate citation, consistent with the georeference workflow's single-mapping-service convention. Location value (coordinates) itself unchanged.",
+    "scope_note": null,
+    "dropped_urls_dead": [
+      "https://wikimapia.org/39001201/LNG-Terminal-for-power-plamt",
+      "https://www.man-es.com/discover/gibraltar-builds-a-modern-lng-power-plant"
+    ],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130682",
+    "unit_id": "G100002068200",
+    "terminal_name": "Gibraltar LNG Terminal",
+    "unit_name": "--",
+    "country": "Gibraltar",
+    "field_name": "PowerPlantsSupplied [ref]",
+    "old_value": "https://www.man-es.com/discover/gibraltar-builds-a-modern-lng-power-plant",
+    "new_value": "https://www.gibraltar.gov.gi/press-releases/new-lng-terminal-provides-cleaner-energy-for-gibraltar-3342019-4904",
+    "confidence": "green",
+    "source_tier": "official_government",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.gibraltar.gov.gi/press-releases/new-lng-terminal-provides-cleaner-energy-for-gibraltar-3342019-4904"
+    ],
+    "source_notes": "man-es.com was this field's SOLE citation and is confirmed dead (see Location [ref] entry above for the corporate-rebrand-redirect evidence -- same URL, same dead verdict). Replaced with the official Government of Gibraltar press release, which explicitly names the Rock power station as the terminal's offtake and describes the LNG-to-power supply arrangement -- verified PASS via url_verifier.py on both 'LNG' and 'power'+'plant' tokens (the correct URL was initially mistyped in an early attempt, causing a false 404; corrected against the exact URL stored in citqc_Gibraltar.json's construction_date_ref row). PowerPlantsSupplied value ('Gibraltar's Rock power station') unchanged.",
+    "scope_note": null,
+    "dropped_urls_dead": [
+      "https://www.man-es.com/discover/gibraltar-builds-a-modern-lng-power-plant"
+    ],
+    "researcher_initials": "AI-draft (sweep)"
+  }
+]

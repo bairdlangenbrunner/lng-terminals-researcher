@@ -1,0 +1,42 @@
+[
+  {
+    "category": "methodology_disagreement",
+    "terminal_id": "T100000131010",
+    "unit_id": "G100002101000",
+    "terminal_name": "Thessaloniki FSRU",
+    "issue": "QC's worklist proposed Capacity 7.74 -> 7.30 bcm/y (Natalia's 7.74 was deliberately switched to the MAXIMUM design rating on 2026-07-24, per her own ResearcherNotesUnit: 'Updated capacity to maximum capacity as per the most recent source'; QC's suggested 7.30 assumes the methodology wants NOMINAL, derived from the sponsor's 20 Mm3/day figure). I independently pulled the underlying source (energymag.gr/116159) and it explicitly separates the two ratings: 6,378 MWh/h (nominal) vs 9,567 MWh/h (maximum) -- the SAME article cited for the live 7.74 value. Converting the nominal 6,378 MWh/h proportionally against the live 7.74-from-9,567 basis gives ~5.16-5.17 bcm/y for nominal, NOT the 7.30 figure QC's worklist cites -- I could not independently reproduce 7.30 from any source I read (LNG Prime's '20 Mm3/day' framing is ambiguous as to nominal-vs-max and I could not confirm it corresponds to 7.30 bcm/y on GEM's own unit basis). I am NOT staging a Capacity edit in either direction (neither the worklist's 7.30 nor my own computed ~5.17): unlike liquefaction trains (nameplate vs peak is well-defined per unit_conventions.md), regasification/FSRU import capacity may be industry-conventionally quoted as MAXIMUM design send-out rate rather than nominal -- I have no confirmation of which convention GEM's own Capacity field intends for FSRU/regas terminals specifically, so overriding Natalia's deliberate, sourced 7.74-as-maximum entry risks being just as wrong as her switch may have been. This also trips the Update SOP's >20% capacity-swing pause-and-ask trigger (7.74 -> 5.17 or 7.30 is a 33% / 6% swing depending which comparison, and 7.74 vs the worklist's 7.30 alone is a 6% swing, but 7.74 vs my computed nominal ~5.17 is 33%).",
+    "severity": "high",
+    "suggested_action": "Reviewer must resolve the underlying question -- does GEM's Capacity field for FSRU/regas terminals intend nominal (contract/guaranteed) send-out or maximum (design peak) send-out -- before any edit is made, ideally by checking the methodology doc's regasification-capacity convention section and/or how other GEM FSRU rows (e.g. Alexandroupolis, which lists 5.50 bcm/y alongside a noted TYNDP figure of 8.3) were resolved. Until that convention is settled, leave Thessaloniki Capacity at the live value (7.74, sourced, deliberate) rather than reverting to an unreproduced 7.30 or overriding with an independently-computed 5.17 nominal figure.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "status_verification",
+    "terminal_id": "T100000130992",
+    "unit_id": "G100002099200",
+    "terminal_name": "Dioriga FSRU",
+    "issue": "Handover item from a concurrent discovery agent: a DESFA 2026-2035 Ten-Year Development Plan signal appeared to EXCLUDE the Dioriga FSRU grid-connection works, raising the question of whether Status should move from proposed toward shelved/cancelled. I investigated fully: the exclusion is a temporary administrative/contractual dispute over a metering-and-regulating station and a pipeline-doubling requirement, attributed in Greek trade press to Motor Oil/Dioriga Gas not meeting a contractual schedule obligation -- NOT evidence the project itself was abandoned. A directly on-point tovima.com article ('Motor Oil: FSRU back on track after DESFA deal') confirms the dispute was resolved, paving the way for reinclusion in DESFA's plan. This is also a RECURRING pattern: an essentially identical exclusion/resolution cycle occurred in 2021, also resolved via RAE approval. Independently, a fresh May-2026 Mercuria-Motor Oil MOU signals active new commercial momentum (consistent with the FIDYear/LatestPlannedStartYear updates staged separately this batch). Conclusion: Status stays 'proposed' -- this does NOT rise to a status change. Resolving one way or the other per the explicit instruction not to hedge.",
+    "severity": "medium",
+    "suggested_action": "No status edit needed. If a future DESFA plan edition (2027+) again excludes Dioriga AND no resolution article follows within a normal review cycle, re-open this as a shelved candidate -- but as of this batch (Jul 2026) the evidence affirmatively supports continuation, not dormancy.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "field_confirmation",
+    "terminal_id": null,
+    "unit_id": null,
+    "terminal_name": "Argo FSRU / Dioriga FSRU / Thrace FSRU",
+    "issue": "Worklist flagged several Greek FSRUs as 'likely legitimately missing FloatingVesselName' -- confirmed rather than invented for all three: Argo (G100002100700, shelved -- no FSRU vessel was ever contracted/named before the EIA rejection), Dioriga (G100002099200, proposed, Pre-FID -- no vessel tender has opened), Thrace (G100002100600, proposed, Pre-FID -- no vessel tender has opened). No corroborating source names a vessel for any of the three at this project stage; blank is correct and nothing was staged.",
+    "severity": "low",
+    "suggested_action": "No action. Revisit FloatingVesselName for Dioriga and Thrace once each reaches FID / a vessel charter is announced (Dioriga's own FID timeline is now targeted end-2026 per the FIDYear update staged this batch).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "citation_sweep_scope",
+    "terminal_id": null,
+    "unit_id": null,
+    "terminal_name": "Greece (all terminals)",
+    "issue": "Greece's citation base showed 0% dead in the QC sweep (citqc_Greece.json / _QC_WORKLIST.md dead-citation counts: Greece 0), with the brief's explicit instruction not to manufacture extra corroboration on refs that already verify. I still spot-re-verified refs directly touched by this batch's own findings (Thessaloniki's energymag.gr/116159 Capacity ref, Dioriga's cited status/FID sources) via url_verifier.py and confirmed all PASS (several via Wayback bot-block fallback). I did not re-run a mechanical full-country re-verification pass beyond that, per the explicit 'don't have to add more if they [already] work' instruction.",
+    "severity": "low",
+    "suggested_action": "No action -- Greece's ref base is confirmed healthy for all fields touched this batch; no further sweep needed unless a future QC pass finds new rot.",
+    "researcher_initials": "AI-draft"
+  }
+]

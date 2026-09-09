@@ -1,0 +1,308 @@
+[
+ {
+  "terminal": "Manzanillo (Dominican Republic) LNG Terminal",
+  "terminal_id": "T100000131094",
+  "country": "Dominican Republic",
+  "verdict": "YES",
+  "mechanical": "False",
+  "captive_category": "power_generation",
+  "hardware_summary": "Energos Freeze (125,856 m3) is confirmed on Energos Infrastructure's own fleet page at Manzanillo, Dominican Republic, with propulsion listed as 'Steam turbine; 580 mmscf/d; dedicated high-pressure boil-off gas compressors' -- a steam-boiler-on-BOG design (boilers fired on boil-off gas via dedicated high-pressure compressors).",
+  "fuel_basis": "gas (steam turbine generation with dedicated high-pressure boil-off gas compressors feeding the boilers -- steam-boiler-on-BOG design)",
+  "confidence": "green",
+  "captive_summary": "The Energos Freeze FSRU (125,000 cbm) chartered to Energia 2000 exists to supply gas to two on-shore combined-cycle power plants (2x430 MW under the IDB Invest-financed 'Manzanillo Gas & Power' project, plus Energia 2000's own 414 MW SGT6-8000H combined-cycle plant) and to the national grid/other industrial users -- a documented fuel-supply-OUT relationship, not captive power. Separately, Energos Infrastructure's own fleet page names this exact vessel at Manzanillo, Dominican Republic and documents its onboard power plant as steam turbine generation with dedicated high-pressure boil-off gas compressors -- an operator-primary, vessel- and site-specific disclosure that the FSRU's own house-load generation is gas-fired, satisfying the FSRU-onboard convention.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "IDB Invest/bankinformationcenter.org project page: 'Two gas combined-cycle power plants with a net installed capacity of 430 megawatt each, totaling 860 megawatt' plus 'The FSRU serves dual purposes: supplying natural gas specifically to the two Manzanillo power plants while simultaneously providing gas to other national power plants, industrial users, and the broader gas distribution network.' Separately, Energia 2000's own newsfilecorp release describes its 414 MW (269.1 MW gas turbine SGT6-8000H + 144.1 MW steam) combined-cycle plant 'supported by' the same FSRU. LNGPrime confirms the vessel is Energos Freeze (125,000 cbm), chartered by NFE to Energia 2000, Sept 2025 start. QC adjudication follow-up (2026-08-02): fetched energosinfra.com/fleet directly (energosinfrastructure.com redirects here) -- the operator's own fleet table lists 'Energos Freeze | 125,856 m3 | Manzanillo, Dominican Republic | Steam turbine; 580 mmscf/d; dedicated high-pressure boil-off gas compressors', explicitly naming this vessel at this exact terminal with a boil-off-gas-fired steam plant. url_verifier PASS on tokens 'Energos Freeze'/'boil-off'.",
+  "refs": [
+   "https://bankinformationcenter.org/project/manzanillo-gas-power-s-a/",
+   "https://www.newsfilecorp.com/release/292153/Energia-2000-Commissions-414-MW-Manzanillo-Power-Plant-in-Dominican-Republic",
+   "https://lngprime.com/americas/nfe-seals-dominican-fsru-charter-deal/150997/",
+   "https://energosinfra.com/fleet"
+  ],
+  "verification_log": [
+   {
+    "url": "https://bankinformationcenter.org/project/manzanillo-gas-power-s-a/",
+    "tokens": [
+     "430 megawatt"
+    ],
+    "result": "PASS",
+    "note": "OK"
+   },
+   {
+    "url": "https://www.newsfilecorp.com/release/292153/Energia-2000-Commissions-414-MW-Manzanillo-Power-Plant-in-Dominican-Republic",
+    "tokens": [
+     "414 MW"
+    ],
+    "result": "PASS",
+    "note": "OK"
+   },
+   {
+    "url": "https://lngprime.com/americas/nfe-seals-dominican-fsru-charter-deal/150997/",
+    "tokens": [
+     "Energos Freeze"
+    ],
+    "result": "PASS",
+    "note": "OK"
+   },
+   {
+    "url": "https://energosinfra.com/fleet",
+    "tokens": [
+     "Energos Freeze",
+     "boil-off"
+    ],
+    "result": "PASS",
+    "note": "QC pass 2026-08-02: operator's own fleet table names Energos Freeze at Manzanillo, Dominican Republic, propulsion 'Steam turbine; 580 mmscf/d; dedicated high-pressure boil-off gas compressors'"
+   }
+  ],
+  "gogpt_prior_assessment": "Neighbor plants 'Manzanillo Gas & Power power station' (0.0 km) and 'Manzanillo Energy power station' (0.452 km) ARE the downstream CUSTOMER plants fed by this FSRU (the whole project bundle is IDB Invest-financed as one 'Manzanillo Gas & Power' scheme) -- textbook PowerPlantsSupplied direction, not captive. Both GOGPT records already correctly show gogpt_captive=False. See bankinformationcenter.org project page and newsfilecorp Energia 2000 release.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "The neighboring GOGPT plants are the customer power stations this terminal supplies (already tracked, correctly non-captive); no separate captive generating plant on the terminal side is documented.",
+  "status_or_other_findings": "Confirms GEM's construction status: 128 km of new 345 kV transmission (Pepillo Salcedo to El Naranjo) commissioned March 2026; Energia 2000's 414 MW plant already described as commissioned in the newsfilecorp release. Not acted on -- for the Update workflow.",
+  "notes": "PowerPlantsSupplied direction case: this FSRU's entire commercial purpose is fuel supply to Manzanillo Gas & Power's 2x430 MW plants, Energia 2000's 414 MW plant, and the national grid -- flag for the PowerPlantsSupplied field in a future Update batch (currently blank in GEM). WebSearch tool exhausted for the session; research relied on WebFetch + curl/Marginalia fallback, which limited depth on vessel-specific engineering specs. QC adjudication 2026-08-02 (FSRU harmonization pass): INSUFFICIENT upgraded to YES -- Energos Infrastructure's own fleet page names Energos Freeze at this exact terminal with a boil-off-gas-fired steam-turbine power plant. Fleet/class-level evidence accepted per applied asia/ME precedent (Aqaba, Khor Al-Zubair, Mina Al-Ahmadi)."
+ },
+ {
+  "terminal": "San Pedro de Macoris LNG Terminal",
+  "terminal_id": "T100000130567",
+  "country": "Dominican Republic",
+  "verdict": "SCREENED",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "",
+  "captive_summary": "Cancelled project (GEM: inferred ~4 years dormant); an extensive search (Marginalia full-text, targeted web queries in English and Spanish for the named sponsors BW Group / InterEnergy Holdings / Promigas / Ipson / Coastal) found no project-specific engineering, EIA, or design document -- only the generic GEM/gem.wiki record and unrelated hits. No evidence the project ever reached a published-design stage.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Screened on absence of any findable design/permit material for this cancelled multi-sponsor project after repeated targeted searches; no primary or trade-press source describing site layout, vessel, or any power component was located.",
+  "refs": [],
+  "verification_log": [],
+  "gogpt_prior_assessment": "Neighbor plants Sultana del Este power station (153.9 MW, 1.43 km) and Los Origenes power station (60.7 MW, 2.8 km) are both listed operating and gogpt_captive=False; no source found tying either to this cancelled LNG project specifically -- they read as pre-existing independent merchant generation in the San Pedro de Macoris industrial zone, not a captive plant built for this terminal.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "No sourced generating plant belongs to this cancelled terminal; the two neighbor GOGPT plants are already independently tracked, unrelated merchant generation.",
+  "status_or_other_findings": "None found beyond GEM's own cancelled/inferred status.",
+  "notes": "This session's WebSearch tool was exhausted (shared budget); research relied on WebFetch + curl-based Marginalia/Bing-News fallback per the brief's degraded-tooling guidance. If a future pass has full WebSearch available, worth one more look at Spanish-language Dominican energy trade press (Diario Libre, Acento) before finalizing SCREENED."
+ },
+ {
+  "terminal": "Montego Bay LNG Terminal",
+  "terminal_id": "T100000130670",
+  "country": "Jamaica",
+  "verdict": "NO",
+  "mechanical": "False",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "green",
+  "captive_summary": "Onshore, non-floating LNG import terminal. New Fortress Energy's own operations page (and confirmed by the Excelerate acquisition press coverage) describes the site as landed storage, truck-loading facilities, a regasification plant, and pipelines only -- no on-site generation. The 145 MW Bogue power plant it feeds is an external customer plant (now Excelerate-owned, formerly NFE), the classic PowerPlantsSupplied-direction case.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "New Fortress Energy's own Montego Bay operations page: the facility 'features landed storage, truck loading facilities, a regasification plant, and natural gas pipelines' and 'the country's 145-megawatt Bogue power plant and local industrial customers are drawing LNG from our... facility.' Corroborated by trade coverage of Excelerate's 2025 $1.055bn purchase of NFE's Jamaica assets, which itemizes Montego Bay LNG Terminal (commissioned 2016: landed storage/truck-loading/regas/pipeline) as separate from the Bogue Power Plant (145 MW) it supplies.",
+  "refs": [
+   "https://www.newfortressenergy.com/operations/Montego-Bay-Jamaica-LNG-terminal",
+   "https://www.rivieramm.com/news-content-hub/nfe-sells-lng-import-terminal-to-excelerate-as-losses-continue-84932"
+  ],
+  "verification_log": [
+   {
+    "url": "https://www.newfortressenergy.com/operations/Montego-Bay-Jamaica-LNG-terminal",
+    "tokens": [
+     "145-megawatt Bogue power plant"
+    ],
+    "result": "PASS",
+    "note": "OK"
+   },
+   {
+    "url": "https://www.newfortressenergy.com/operations/Montego-Bay-Jamaica-LNG-terminal",
+    "tokens": [
+     "landed storage"
+    ],
+    "result": "PASS",
+    "note": "OK"
+   },
+   {
+    "url": "https://www.rivieramm.com/news-content-hub/nfe-sells-lng-import-terminal-to-excelerate-as-losses-continue-84932",
+    "tokens": [
+     "combined heat and power"
+    ],
+    "result": "PASS",
+    "note": "OK; direct token '150-megawatt' FAILed (page phrases it differently) so re-verified on a phrase that does appear"
+   }
+  ],
+  "gogpt_prior_assessment": "Neighbor plant Bogue power station (120 MW per GOGPT vs 145 MW per NFE/press -- a capacity discrepancy worth flagging separately, not acted on here) is the CUSTOMER plant this terminal supplies via pipeline, gogpt_captive already correctly False.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "Terminal has no generation of its own; Bogue is an independent, already-tracked customer plant, not a captive addition candidate.",
+  "status_or_other_findings": "Ownership changed 2025: Excelerate Energy acquired all New Fortress Energy Jamaica assets (Montego Bay LNG Terminal + Old Harbour FSRU + Bogue/Old Harbour/Jamaica Co-gen/Jamalco power plants) for $1.055bn, closing Q2 2025 -- GEM's owner field for this terminal ('Excelerate Energy Inc [100%]') already reflects this; flagging only the Bogue MW discrepancy (120 vs 145) for a future Update pass.",
+  "notes": "PowerPlantsSupplied direction case, same pattern as Aguirre/Old Harbour in this shard -- terminal exists purely to feed Bogue power station + local industrial gas customers."
+ },
+ {
+  "terminal": "Old Harbour FSRU",
+  "terminal_id": "T100000130684",
+  "country": "Jamaica",
+  "verdict": "YES",
+  "mechanical": "False",
+  "captive_category": "power_generation",
+  "hardware_summary": "Hoegh Gallant is confirmed on Hoegh Evi's own fleet page (170,000 cbm, built 2014, at Portland Bight Jamaica for NFE); the operator's own sustainability page states fleet-wide that 'all vessels can run on natural gas, which has the lowest CO2 emissions of all commercially available marine fuels.'",
+  "fuel_basis": "gas (capable of running on natural gas per the vessel owner's fleet-wide disclosure)",
+  "confidence": "yellow",
+  "captive_summary": "The Hoegh Gallant FSRU (170,000 cbm, built 2014, replaced the Golar Freeze in this role Nov 2021) exists to feed regasified gas to three downstream customer plants: JPS's 190 MW Old Harbour gas-fired plant, NFE's 150 MW Jamaica co-generation plant, and Jamalco's CHP -- a clearly documented fuel-supply-OUT relationship, not captive power. Hoegh Evi's own fleet page confirms this exact vessel is a current fleet asset, and the operator's sustainability page discloses fleet-wide that all vessels can run on natural gas -- the same class of operator fleet-wide disclosure already accepted for Hoegh Giant in this corpus, so the FSRU-onboard convention is satisfied, at yellow confidence (fleet-wide claim, not an engine-type-specific spec sheet).",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Excelerate's 2025 acquisition of NFE's Jamaica assets (trade coverage) itemizes: 'Old Harbour LNG Terminal (commissioned 2018): Includes a floating storage and regasification unit with associated pipelines' feeding 'Old Harbour Power Plant: 190-MW gas-fired facility', 'Jamaica Co-generation Plant: 150-MW facility', and the Jamalco CHP. LNGPrime confirms the vessel as Hoegh Gallant (170,000 cbm, built 2014), chartered by NFE from Q4 2021, replacing the Golar Freeze (125,000 cbm). No source located specifying the Hoegh Gallant's own generator/engine fuel type. QC adjudication follow-up (2026-08-02): re-fetched hoeghevi.com/about/fleet/ directly -- confirms Hoegh Gallant (built 2014, Portland Bight Jamaica, customer NFE) as a current Hoegh Evi fleet vessel (still no engine-type field on this page); paired with hoeghevi.com/sustainability/environment/, which states fleet-wide 'All vessels can run on natural gas, which has the lowest CO2 emissions of all commercially available marine fuels' -- the identical source class already accepted in this corpus for Hoegh Giant (Cosan FSRU, yellow YES). url_verifier PASS on both URLs.",
+  "refs": [
+   "https://lngprime.com/americas/hoegh-gallant-fsru-ready-to-start-jamaica-job/34879/",
+   "https://jpt.spe.org/excelerate-buys-new-fortress-jamaican-assets-for-1-billion",
+   "https://hoeghevi.com/sustainability/environment/",
+   "https://hoeghevi.com/about/fleet/"
+  ],
+  "verification_log": [
+   {
+    "url": "https://lngprime.com/americas/hoegh-gallant-fsru-ready-to-start-jamaica-job/34879/",
+    "tokens": [
+     "Hoegh Gallant"
+    ],
+    "result": "PASS",
+    "note": "OK"
+   },
+   {
+    "url": "https://jpt.spe.org/excelerate-buys-new-fortress-jamaican-assets-for-1-billion",
+    "tokens": [
+     "Old Harbour"
+    ],
+    "result": "PASS",
+    "note": "OK"
+   },
+   {
+    "url": "https://hoeghevi.com/about/fleet/",
+    "tokens": [
+     "Gallant"
+    ],
+    "result": "PASS",
+    "note": "QC pass 2026-08-02: corrected/live URL for the fleet index (superseding the malformed URL logged previously); confirms Hoegh Gallant built 2014, Portland Bight Jamaica, customer NFE -- no engine/generator field on this page"
+   },
+   {
+    "url": "https://hoeghevi.com/sustainability/environment/",
+    "tokens": [
+     "natural gas"
+    ],
+    "result": "PASS",
+    "note": "QC pass 2026-08-02: fleet-wide disclosure 'All vessels can run on natural gas, which has the lowest CO2 emissions of all commercially available marine fuels'"
+   },
+   {
+    "url": "https://hoeghevi.com/sustainability/environment/",
+    "tokens": [
+     "lowest CO2"
+    ],
+    "result": "PASS",
+    "note": "QC pass 2026-08-02: confirms exact phrasing"
+   }
+  ],
+  "gogpt_prior_assessment": "Neighbor plants Doctor Bird I (74.4 MW) and Doctor Bird II (50.1 MW), both ~5.9 km away and operating, are JPS peaking plants unrelated to this terminal's own supply chain (which instead names Old Harbour Power Plant/Jamaica Co-gen/Jamalco as customers, none of which surfaced as the nearest-2 GOGPT neighbors in this dataset) -- read as independent merchant/peaking generation, not a captive relationship to this FSRU.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "No sourced generation belongs to the FSRU itself; the nearby Doctor Bird plants and the actual customer plants (Old Harbour/Jamaica Co-gen/Jamalco) are all independent, already-trackable merchant/customer generation, not a captive addition.",
+  "status_or_other_findings": "Ownership: Excelerate Energy acquired this terminal (plus Montego Bay + 4 Jamaica power plants) from New Fortress Energy in 2025 for $1.055bn -- GEM's owner field already reflects Excelerate. Vessel history: Golar Freeze (125,000 cbm) served this role until Nov 2021, then replaced by Hoegh Gallant (170,000 cbm) on a 10-year NFE charter.",
+  "notes": "PowerPlantsSupplied direction case (Old Harbour Power Plant 190 MW, Jamaica Co-gen 150 MW, Jamalco CHP -- consistent with GEM's existing PowerPlantsSupplied entry for this terminal). QC adjudication 2026-08-02 (FSRU harmonization pass): INSUFFICIENT upgraded to YES -- Hoegh Evi's own fleet page confirms Hoegh Gallant as a current fleet vessel and its sustainability page discloses fleet-wide natural-gas-capable operation. Fleet/class-level evidence accepted per applied asia/ME precedent (Aqaba, Khor Al-Zubair, Mina Al-Ahmadi)."
+ },
+ {
+  "terminal": "Sinolam LNG Terminal",
+  "terminal_id": "T100000131082",
+  "country": "Panama",
+  "verdict": "YES",
+  "mechanical": "False",
+  "captive_category": "power_generation",
+  "hardware_summary": "GasLog Singapore, a 155,000 cbm tri-fuel diesel-electric (TFDE) LNG carrier (built 2010), contracted for conversion to an FSU for this project -- TFDE gensets are dual/tri-fuel diesel-electric generator sets that can burn boil-off gas to produce the vessel's own electrical power (cargo pumps, cooling, hotel load) while in service; no separate onshore captive plant is documented.",
+  "fuel_basis": "TFDE (tri-fuel diesel electric) propulsion/generation plant -- one of its fuel modes is boil-off natural gas, per the vessel's documented TFDE classification (industry-standard for this technology).",
+  "confidence": "yellow",
+  "captive_summary": "Sinolam LNG Terminal is an FSU-only project (GasLog Singapore, converted from a TFDE LNG carrier) that will 'receive, store, and send out LNG' to Sinolam Smarter Energy's (SSE) planned gas-fired power plant near Colon -- so the downstream plant itself is a customer relationship (PowerPlantsSupplied direction), but the FSU vessel's own onboard TFDE generator sets are a documented dual-fuel (gas-capable) electrical generation plant powering the vessel's own operations while moored, matching the FSRU/FSU-onboard convention (cf. Krk's BOG-fuelled DFDE module).",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Baird Maritime (2019): 'The time charter is expected to be fulfilled through the conversion of GasLog Singapore, a 155,000-cubic-metre, tri-fuel diesel electric (TFDE) LNG carrier built in 2010... The FSU will receive, store, and send out LNG to a gas-fired power plant currently being developed by Sinolam Smarter Energy LNG Power Company (SSE) near Colon, Panama.' TFDE is a generator-and-electric-propulsion configuration standard on modern LNG carriers that burns boil-off gas as one of its three fuel modes; the article documents the vessel type but does not separately confirm continued TFDE generator operation post-conversion to FSU duty, hence yellow confidence (single non-primary trade source) rather than green.",
+  "refs": [
+   "https://www.bairdmaritime.com/shipping/tankers/gas/gaslog-wins-10-year-charter-in-panama-for-lng-fsu"
+  ],
+  "verification_log": [
+   {
+    "url": "https://www.bairdmaritime.com/shipping/tankers/gas/gaslog-wins-10-year-charter-in-panama-for-lng-fsu",
+    "tokens": [
+     "tri-fuel diesel electric"
+    ],
+    "result": "PASS",
+    "note": "OK"
+   },
+   {
+    "url": "https://lngprime.com/americas/sinolam-sues-aes-interenergy-over-panamas-lng-to-power-market/173767/",
+    "tokens": [
+     "Sinolam"
+    ],
+    "result": "PASS",
+    "note": "OK; used for status/context, not the captive-power finding itself"
+   }
+  ],
+  "gogpt_prior_assessment": "Neighbor plants AES Colon power station (381 MW, 6.0 km) and Termocolon power station (150 MW, 6.7 km) are established, independent operating merchant plants unrelated to Sinolam's own project -- in fact Sinolam is in active litigation against AES/InterEnergy alleging they 'coordinated an unlawful scheme to monopolize Panama's growing LNG-to-power market,' underscoring these are rival, not captive, assets.",
+  "gogpt_candidate": "REVIEWER CALL",
+  "gogpt_candidate_basis": "The generation found (TFDE gensets) is vessel-mounted with no citable nameplate MW specific to house-load duty, and it is unclear whether GOGPT's ontology would track FSU auxiliary generation as a standalone power station -- same class of case as FSRU onboard gensets elsewhere in this workflow.",
+  "status_or_other_findings": "GEM lists this terminal as 'shelved' (confirmed); LNGPrime 2026 coverage shows Sinolam is in active arbitration/litigation against AES and InterEnergy Holdings over the Panama LNG-to-power market, consistent with a stalled/contested project rather than a technically-abandoned design. Not acted on here.",
+  "notes": "As-designed rule applies: even though shelved, this project reached a real design/contracting stage (signed 10-year GasLog charter, vessel conversion contracted for Q3 2020), which is why it gets a real verdict rather than SCREENED, unlike the Telfers and San Pedro de Macoris terminals in this same shard that never reached a documented design. WebSearch tool was exhausted this session; a follow-up with full search access could try to corroborate the TFDE-in-FSU-service claim (e.g. GasLog's own technical papers) to move this to green."
+ },
+ {
+  "terminal": "Telfers FSRU",
+  "terminal_id": "T100000130854",
+  "country": "Panama",
+  "verdict": "SCREENED",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "",
+  "captive_summary": "Cancelled project (GEM: inferred ~4 years dormant), owner 'LNG Group Panama SA'. An extensive search (Marginalia full-text plus targeted queries) found no project-specific engineering, EIA, vessel-charter, or design document -- only the generic GEM record and unrelated hits on the nearby operating merchant plants (AES Colon, Gatun) it was never actually connected to. No evidence the project reached a published-design stage.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Screened on absence of any findable design/permit/vessel material for this cancelled project after repeated targeted searches under the sponsor name 'LNG Group Panama SA' and the terminal/vessel name 'Telfers'.",
+  "refs": [],
+  "verification_log": [],
+  "gogpt_prior_assessment": "Neighbor plants AES Colon power station (381 MW, 2.5 km, operating) and Gatun power station (670 MW, 3.4 km, operating -- GIP-financed gas-fired plant per lavca.org/global-infra.com coverage) are both established, independent merchant plants with no documented connection to the cancelled Telfers project.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "No generation is sourced to this cancelled, undesigned project; the neighboring GOGPT plants are unrelated, already-tracked independent generation.",
+  "status_or_other_findings": "None found beyond GEM's own cancelled/inferred status.",
+  "notes": "This session's WebSearch tool was exhausted (shared budget); research relied on WebFetch + curl-based Marginalia fallback per the brief's degraded-tooling guidance. GEM's power_plants_supplied field already lists 'Telfers power station, Gatun power station' for this record, which appears to be an inference from proximity/name rather than a documented supply relationship -- worth a second look in a future Update/QC pass since no source ties Telfers FSRU to an actual delivered project."
+ },
+ {
+  "terminal": "Aguirre GasPort FSRU",
+  "terminal_id": "T100000130577",
+  "country": "Puerto Rico",
+  "verdict": "INSUFFICIENT",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "",
+  "captive_summary": "Proposed offshore GasPort (Excelerate Energy, in partnership with PREPA) whose FERC-approved design consists solely of an FSRU, a fixed jetty/mooring, and a 4-mile subsea pipeline delivering regasified gas to PREPA's onshore Central Aguirre Power Plant -- no captive generation is part of the design; the whole facility exists to feed the external Aguirre plant, converting it to dual-fuel (gas + diesel/fuel-oil) operation.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Offshore Technology's detailed project profile: 'The Aguirre Offshore GasPort project will consist of a floating storage regasification unit (FSRU), a fixed jetty and a subsea pipeline...With a baseload capacity of 500MMscf/d, the facility will provide regasification services and deliver gas to PREPA's Central Aguirre Power Plant under a long-term agreement...The project will enable PREPA to convert its power plant into a dual-fuel generation facility.' No generation component of any kind appears anywhere in this comprehensive design description. Duane Morris's FERC-approval alert corroborates the same design and the July 2015 Section 3 Natural Gas Act authorization.",
+  "refs": [
+   "https://www.offshore-technology.com/projects/aguirre-offshore-gasport/",
+   "https://www.duanemorris.com/alerts/FERC_green-lights_puerto_rico_offshore_lng_import_terminal_0715.html"
+  ],
+  "verification_log": [
+   {
+    "url": "https://www.offshore-technology.com/projects/aguirre-offshore-gasport/",
+    "tokens": [
+     "Central Aguirre Power Plant"
+    ],
+    "result": "PASS",
+    "note": "bot-blocked live (HTTP 403); value verified via Wayback snapshot 20260513130819"
+   },
+   {
+    "url": "https://www.duanemorris.com/alerts/FERC_green-lights_puerto_rico_offshore_lng_import_terminal_0715.html",
+    "tokens": [
+     "Aguirre"
+    ],
+    "result": "PASS",
+    "note": "OK"
+   }
+  ],
+  "gogpt_prior_assessment": "Neighbor plant 'Aguirre power station' (1,492 MW, 4 units, 5.0 km, operating) is literally PREPA's Central Aguirre Power Plant -- the CUSTOMER this GasPort is designed to supply, not a captive relationship. Already correctly tracked as an independent GOGPT record with gogpt_captive=False.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "The Aguirre power station is an already-tracked, independent customer plant fed by (not captive to) this proposed terminal; no separate generation exists on the GasPort side.",
+  "status_or_other_findings": "GEM shows this project as 'proposed' with no vessel yet assigned; sources describe a 2015 FERC approval targeting 2016-2017 construction/completion that evidently did not proceed on that schedule (still proposed a decade later) -- worth flagging to a future Update/Triage pass to check current status, not acted on here.",
+  "notes": "Textbook PowerPlantsSupplied direction case: entire facility purpose is delivering gas to PREPA's Aguirre Power Complex, explicitly enabling its conversion to dual-fuel generation. No vessel has been named yet in GEM's record (proposed stage), so there is no specific FSRU hull to check for onboard house-load generation under the FSRU-onboard convention; the FERC-approved design itself contains no generation component of any kind.\n\nQC adjudication 2026-08-02 (orchestrator): NO overturned to INSUFFICIENT under the FSRU-onboard convention (Hadera precedent): the FERC design description (FSRU + jetty + subsea pipeline to PREPA Aguirre) documents the supply-out direction but never addresses the FSRU's own onboard generation, and no vessel was ever named. 'No captive generation in the design' rested on the shoreside scope only; the vessel's machinery is undocumented."
+ }
+]

@@ -1,0 +1,202 @@
+[
+  {
+    "terminal": "Tobata LNG Terminal",
+    "terminal_id": "T100000130529",
+    "country": "Japan",
+    "verdict": "NO",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "Direction-test negative: the terminal (Kitakyushu LNG, 100% Kyushu Electric-affiliated) exists to pipe regasified gas OUT to Kyushu Electric's Shin Kokura power station and Kyushu Kyodo Hatsuden's Tobata joint power station (plus Nippon Steel and city-gas customers), a relationship documented since pipeline supply began October 1977. No on-site captive generator for the terminal's own operations was found in any public source.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Kitakyushu LNG's own business page (k-lng.co.jp/business) names 九州電力(株)新小倉発電所, 日本製鉄(株)九州製鉄所, and 九州共同発電(株)戸畑共同発電所 as the terminal's pipeline-supplied customers since Oct 1977. The Japanese Wikipedia 'List of LNG terminals in Japan' corroborates the same 戸畑共同火力発電所/新小倉発電所 supply relationship. Neither source, nor the terminal's own equipment page (ORV/SMV vaporizers, BOG compressors), mentions any on-site power generation.",
+    "refs": [
+      "https://www.k-lng.co.jp/business/",
+      "https://ja.wikipedia.org/wiki/%E6%97%A5%E6%9C%AC%E3%81%AELNG%E5%9F%BA%E5%9C%B0%E4%B8%80%E8%A6%A7"
+    ],
+    "verification_log": [
+      {"url": "https://www.k-lng.co.jp/business/", "tokens": ["新小倉発電所", "戸畑共同発電所"], "result": "PASS", "note": "Kitakyushu LNG's own page naming its power-station fuel customers"},
+      {"url": "https://ja.wikipedia.org/wiki/%E6%97%A5%E6%9C%AC%E3%81%AELNG%E5%9F%BA%E5%9C%B0%E4%B8%80%E8%A6%A7", "tokens": ["戸畑", "北九州"], "result": "PASS", "note": "List of Japan LNG terminals, Tobata entry"},
+      {"url": "https://www.k-lng.co.jp/terminal/", "tokens": [], "result": "N/A", "note": "Fetched (not verifier-checked, informational only) — equipment list has no generation equipment; ORV/SMV vaporizers, BOG compressors only"}
+    ],
+    "gogpt_prior_assessment": "GOGPT match 'Tobata power station' (3,040 MW total, 1.95 km) is Kyushu Kyodo Hatsuden's Tobata joint thermal power station, one of the terminal's own gas customers per the direction test above — a merchant/industrial-cogen plant fed by the terminal, not a plant powering the terminal. Not this terminal's captive power.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "GOGPT plant already exists as a separate record and is correctly the terminal's customer, not its captive supply — direction test negative, not a gas-power-station omission.",
+    "status_or_other_findings": "",
+    "notes": "Direction-test case: PowerPlantsSupplied relationship (Shin Kokura + Tobata power stations) already recorded in GEM; this is the correct field for that relationship, not CaptiveGasPower."
+  },
+  {
+    "terminal": "Toyama Shinko LNG Terminal",
+    "terminal_id": "T100000130876",
+    "country": "Japan",
+    "verdict": "NO",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "Direction-test negative: this is Hokuriku Electric's own dedicated LNG receiving terminal for its Toyama Shinko Thermal Power Station's LNG Unit 1 (424,700 kW CCGT, commercial operation from Nov 21 2018) and the planned ~600,000 kW LNG Unit 2. The terminal's entire purpose is fueling the adjacent power station; no separate on-site captive generator for the terminal itself was found.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Hokuriku Electric's own page (rikuden.co.jp/combinedcycle/lng.html) states LNG received here fuels Toyama Shinko Thermal Power Station's combined-cycle units. The Japanese Wikipedia 'List of LNG terminals in Japan' corroborates Hokuriku Electric ownership and the power-station supply relationship.",
+    "electric_mw_note": "",
+    "refs": [
+      "https://www.rikuden.co.jp/combinedcycle/lng.html",
+      "https://ja.wikipedia.org/wiki/%E6%97%A5%E6%9C%AC%E3%81%AELNG%E5%9F%BA%E5%9C%B0%E4%B8%80%E8%A6%A7"
+    ],
+    "verification_log": [
+      {"url": "https://www.rikuden.co.jp/combinedcycle/lng.html", "tokens": ["富山新港", "北陸電力"], "result": "PASS", "note": "Hokuriku Electric's own LNG/CCGT page"},
+      {"url": "https://ja.wikipedia.org/wiki/%E6%97%A5%E6%9C%AC%E3%81%AELNG%E5%9F%BA%E5%9C%B0%E4%B8%80%E8%A6%A7", "tokens": ["富山新港", "北陸電力"], "result": "PASS", "note": "List of Japan LNG terminals, Toyama Shinko entry"}
+    ],
+    "gogpt_prior_assessment": "GOGPT match 'Toyama Shinko power station' (1,764.7 MW total, 0.07 km) is Hokuriku Electric's own CCGT thermal power station fueled by this terminal — the terminal's customer under the direction test, not a plant powering the terminal.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "GOGPT plant already exists and correctly represents the terminal's fuel customer, not its captive supply.",
+    "status_or_other_findings": "Hokuriku Electric is in pre-construction survey/design for a second LNG-fired unit (LNG Unit 2, ~600 MW, targeting FY2033 start) at this same site per an April 2025 press release (rikuden.co.jp/press/attach/25042810.pdf) — status/capacity note only, not acted on.",
+    "notes": "Direction-test case: PowerPlantsSupplied relationship (Toyama Shinko power station) already recorded in GEM."
+  },
+  {
+    "terminal": "Wakayama LNG Terminal",
+    "terminal_id": "T100000130850",
+    "country": "Japan",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "Screened: cancelled-and-never-built. Kansai Electric formally cancelled its planned Wakayama LNG thermal power station (3.7 million kW planned) on Dec 19 2023, citing falling power demand and high transmission-line construction costs; the company is instead redeveloping ~150,000 sqm of the site as a business-attraction zone by FY2026. No LNG terminal or generation equipment was ever built at this site.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Kansai Electric's own Dec 19 2023 press release (kepco.co.jp) announces cancellation of the Wakayama thermal power plant construction plan; Nikkei's Feb 2023/Dec 2023 coverage corroborates the cancellation and cites decarbonization/nuclear-restart reasoning.",
+    "refs": [
+      "https://www.kepco.co.jp/corporate/pr/2023/pdf/20231219_1j.pdf",
+      "https://www.nikkei.com/article/DGXZQOUF13D4G0T11C23A2000000/"
+    ],
+    "verification_log": [
+      {"url": "https://www.kepco.co.jp/corporate/pr/2023/pdf/20231219_1j.pdf", "tokens": ["和歌山発電所"], "result": "PASS", "note": "Kansai Electric's own cancellation announcement"},
+      {"url": "https://www.nikkei.com/article/DGXZQOUF13D4G0T11C23A2000000/", "tokens": ["和歌山"], "result": "PASS", "note": "Nikkei corroboration"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT prior given for this terminal (gogpt_prior: no) — consistent with it never having been built.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Cancelled and never built; no generation equipment ever existed at this site.",
+    "status_or_other_findings": "GEM status (cancelled/confirmed) matches the sourced Dec 2023 cancellation.",
+    "notes": "SCREEN criterion: cancelled-and-never-built, per CLAUDE.md/brief §4 screening rule."
+  },
+  {
+    "terminal": "Yanai LNG Terminal",
+    "terminal_id": "T100000130531",
+    "country": "Japan",
+    "verdict": "NO",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "Direction-test negative: Chugoku Electric's Yanai LNG base (6 tanks, unloading pier) receives LNG imported from Australia/Qatar/Oman and supplies it to the co-located Yanai Power Station (1.539 million kW CCGT) and to Yamaguchi Gōdō Gas. The terminal's whole purpose is fueling the power station; no separate on-site captive generator for the terminal itself was found in any source.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "A 2014 Instrumentation Society (計装士会) technical-tour report on Yanai Power Station describes the 6 LNG tanks and unloading pier feeding the plant's gas/steam turbines; it makes no mention of any separate emergency/backup generator. The Japanese Wikipedia 'List of LNG terminals in Japan' independently corroborates Chugoku Electric ownership and supply to Yanai Power Station + Yamaguchi Gōdō Gas.",
+    "refs": [
+      "https://www.keisoshikai.gr.jp/%E5%A0%B1%E5%91%8A_%E4%B8%AD%E5%9B%BD%E5%9C%B0%E5%8C%BA%E8%A6%8B%E5%AD%A6%E4%BC%9A%E5%A0%B1%E5%91%8A_2014%E5%B9%B412%E6%9C%889%E6%97%A5/",
+      "https://ja.wikipedia.org/wiki/%E6%97%A5%E6%9C%AC%E3%81%AELNG%E5%9F%BA%E5%9C%B0%E4%B8%80%E8%A6%A7"
+    ],
+    "verification_log": [
+      {"url": "https://www.keisoshikai.gr.jp/%E5%A0%B1%E5%91%8A_%E4%B8%AD%E5%9B%BD%E5%9C%B0%E5%8C%BA%E8%A6%8B%E5%AD%A6%E4%BC%9A%E5%A0%B1%E5%91%8A_2014%E5%B9%B412%E6%9C%889%E6%97%A5/", "tokens": ["柳井発電所"], "result": "PASS", "note": "2014 technical-tour report describing the LNG base + power station"},
+      {"url": "https://ja.wikipedia.org/wiki/%E6%97%A5%E6%9C%AC%E3%81%AELNG%E5%9F%BA%E5%9C%B0%E4%B8%80%E8%A6%A7", "tokens": ["柳井", "山口合同ガス"], "result": "PASS", "note": "List of Japan LNG terminals, Yanai entry"},
+      {"url": "https://www.energia.co.jp/area/yamaguchi/entry/242.html", "tokens": ["柳井発電所"], "result": "PASS", "note": "Chugoku Electric's own Yanai Power Station overview page (background, not itself explicit on the supply direction)"}
+    ],
+    "gogpt_prior_assessment": "GOGPT match 'Yanai power station' (2,042 MW total, 0.32 km) is Chugoku Electric's own CCGT thermal station fed by this terminal — the terminal's customer under the direction test, not a plant powering the terminal.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "GOGPT plant already exists and correctly represents the terminal's fuel customer, not its captive supply.",
+    "status_or_other_findings": "Chugoku Electric is reportedly considering a new ~500 MW Unit 2 at Yanai, targeting 2030 operation, with a possible hydrogen co-firing component (chugoku-np.co.jp) — status/capacity note only, not acted on.",
+    "notes": "Direction-test case: PowerPlantsSupplied relationship (Yanai Power Station) already recorded in GEM."
+  },
+  {
+    "terminal": "Yokkaichi LNG Center",
+    "terminal_id": "T100000130804",
+    "country": "Japan",
+    "verdict": "NO",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "yellow",
+    "captive_summary": "Direction-test negative: JERA's (formerly Chubu Electric) Yokkaichi LNG Center (480,000 kL storage, 260 t/h vaporization) supplies the main fuel LNG for the No.4 unit series of the adjacent Yokkaichi Thermal Power Station and Kawagoe Thermal Power Station, per the Japanese Wikipedia LNG-terminal list. No separate on-site captive generator dedicated to the terminal's own operations was found in any source.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Japanese Wikipedia's 'List of LNG terminals in Japan' states the Yokkaichi LNG Center supplies 四日市火力発電所・川越火力発電所 (Yokkaichi and Kawagoe thermal power stations). JERA's own facility page confirms the center's existence/location (Kasumi, Yokkaichi) and 1988 commissioning, listed among JERA's thermal-power assets, but does not itself spell out the supply direction in the excerpt fetched.",
+    "refs": [
+      "https://ja.wikipedia.org/wiki/%E6%97%A5%E6%9C%AC%E3%81%AELNG%E5%9F%BA%E5%9C%B0%E4%B8%80%E8%A6%A7",
+      "https://www.jera.co.jp/en/corporate/business/thermal-power/list/yokkaichi_lng"
+    ],
+    "verification_log": [
+      {"url": "https://ja.wikipedia.org/wiki/%E6%97%A5%E6%9C%AC%E3%81%AELNG%E5%9F%BA%E5%9C%B0%E4%B8%80%E8%A6%A7", "tokens": ["四日市", "川越火力発電所"], "result": "PASS", "note": "List of Japan LNG terminals, Yokkaichi LNG Center entry"},
+      {"url": "https://www.jera.co.jp/en/corporate/business/thermal-power/list/yokkaichi_lng", "tokens": ["Yokkaichi"], "result": "PASS", "note": "JERA's own facility page (basic facts only)"}
+    ],
+    "gogpt_prior_assessment": "GOGPT match 'Yokkaichi Kasumi power station' (233 MW total, 0.41 km) is most likely JERA's own Yokkaichi Thermal Power Station (the No.4 unit-series remainder after Units 1-3 were retired 2017-2018) — fed by this terminal under the direction test, not a plant powering the terminal.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "GOGPT plant already exists and represents the terminal's fuel customer, not its captive supply.",
+    "status_or_other_findings": "",
+    "notes": "Direction-test case: PowerPlantsSupplied relationship (Yokkaichi thermal power station) already recorded in GEM. Confidence yellow: the direct supply-direction statement rests on the Wikipedia list page corroborated only by JERA's basic facility page, not a JERA statement spelling out the direction explicitly — a genuinely primary JERA document describing this specific link was not found despite searching."
+  },
+  {
+    "terminal": "Yokkaichi Works LNG Terminal",
+    "terminal_id": "T100000130533",
+    "country": "Japan",
+    "verdict": "YES",
+    "mechanical": "False",
+    "captive_category": "power_generation",
+    "hardware_summary": "3x 5,500 kW gas-engine cogeneration units (16,500 kW total), commissioned Oct 2 2017, at Toho Gas's Yokkaichi Works (四日市工場)",
+    "fuel_basis": "Toho Gas's own press release states the units are a natural-gas-fired gas-engine cogeneration system (\"高効率なガスエンジンコージェネレーション\"), fuel = natural gas, generation efficiency 49.5%.",
+    "confidence": "green",
+    "captive_summary": "Toho Gas built a 16,500 kW (3x5,500 kW) natural-gas engine cogeneration plant at its own Yokkaichi Works, commissioned Oct 2 2017, explicitly for internal use: balancing the plant's own power demand fluctuations (\"需給調整用の電源\") while waste heat feeds the on-site city-gas manufacturing process. This is on-site generation whose stated purpose is powering/heating Toho Gas's own works, not grid sale.",
+    "electric_mw": "16.5",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Toho Gas's own press release (\"四日市工場における発電設備の営業運転開始について\") states the 16,500 kW (5,500 kW x3) gas-engine cogeneration system began commercial operation Oct 2 2017, used as a demand-supply-adjustment power source for the works with waste heat feeding the factory's gas-manufacturing equipment — i.e., internal consumption, no mention of grid sale. Nikkan Kogyo Shimbun (independent trade press) corroborates the facility's commissioning at Yokkaichi Works.",
+    "refs": [
+      "https://www.tohogas.co.jp/corporate-n/press/1205024_1342.html",
+      "https://www.nikkan.co.jp/articles/view/444977"
+    ],
+    "verification_log": [
+      {"url": "https://www.tohogas.co.jp/corporate-n/press/1205024_1342.html", "tokens": ["16,500", "四日市工場"], "result": "PASS", "note": "Toho Gas's own press release on the cogen commissioning"},
+      {"url": "https://www.nikkan.co.jp/articles/view/444977", "tokens": ["四日市工場"], "result": "PASS", "note": "Nikkan Kogyo Shimbun independent corroboration"}
+    ],
+    "gogpt_prior_assessment": "GOGPT match 'Yokkaichi Kasumi power station' (233 MW total, 0.49 km) is almost certainly JERA's separate Yokkaichi Thermal Power Station nearby (a different owner/site across the waterway per the Wikipedia Yokkaichi Thermal Power Station article), not Toho Gas's own 16.5 MW cogeneration plant at the Works — the two are different facilities under different owners. Info URL: https://ja.wikipedia.org/wiki/%E5%9B%9B%E6%97%A5%E5%B8%82%E7%81%AB%E5%8A%9B%E7%99%BA%E9%9B%BB%E6%89%80",
+    "gogpt_candidate": "ADD",
+    "gogpt_candidate_basis": "A genuine, sourced, gas-fired generating plant with a citable nameplate (16,500 kW / 3x5,500 kW gas engines), commissioned 2017, distinct from the GOGPT-matched 'Yokkaichi Kasumi power station' record — appears to be a separate, currently unrecorded captive generation asset at Toho Gas's own Yokkaichi Works.",
+    "status_or_other_findings": "",
+    "notes": "This is Toho Gas's OWN industrial-host plant (Yokkaichi Works), distinct in owner and location from JERA's Yokkaichi LNG Center / Yokkaichi Thermal Power Station a short distance away — do not conflate the two Yokkaichi entries."
+  },
+  {
+    "terminal": "Yoshinoura LNG Terminal",
+    "terminal_id": "T100000130837",
+    "country": "Japan",
+    "verdict": "YES",
+    "mechanical": "False",
+    "captive_category": "power_generation",
+    "hardware_summary": "Yoshinoura Multi-Gas-Turbine plant, 35,000 kW, multi-fuel (LNG primary, kerosene, bioethanol), commissioned Mar 20 2015, at Okinawa Electric's Yoshinoura site",
+    "fuel_basis": "Okinawa Electric's 2015 commissioning press release and Japanese Wikipedia both state the plant's primary fuel is LNG (with kerosene and bioethanol as alternates).",
+    "confidence": "green",
+    "captive_summary": "Okinawa Electric's 35,000 kW Yoshinoura Multi-Gas-Turbine plant (commissioned Mar 20 2015, LNG-primary multi-fuel) has FOUR documented duties: (1) island-wide blackstart power if all of Okinawa loses power, (2) explicit security/backup power (\"保安電源\") for the LNG fuel tank at Yoshinoura thermal power station when that station loses power, (3) peak-demand response power in normal operation, and (4) BOG processing. Duty (3) means it carries real load in normal service, and duty (2) directly powers/secures the LNG terminal's own tank systems, so this is captive power under the SOP — category power_generation per the 'carries load in service' rule (not standby_backup) given its normal peak-power duty.",
+    "electric_mw": "35",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Japanese Wikipedia's article on Yoshinoura Thermal Power Station states the Multi-Gas-Turbine plant serves as \"系統立上げ電源\" (grid blackstart), as \"吉の浦火力発電所LNG燃料タンクの保安電源\" (security power for the Yoshinoura power station's LNG fuel tank), and as \"通常時の電力ピーク対応電源\" (normal-time peak-demand power). Okinawa Electric's own Mar 20 2015 commissioning press release (via itmedia/SmartJapan) independently confirms the same four purposes verbatim, including the LNG-tank security-power role and BOG処理機能 (BOG processing capability).",
+    "refs": [
+      "https://ja.wikipedia.org/wiki/%E5%90%89%E3%81%AE%E6%B5%A6%E7%81%AB%E5%8A%9B%E7%99%BA%E9%9B%BB%E6%89%80",
+      "https://release.itmedia.co.jp/release/sj/2015/03/20/3d55355e70e6ae850423a801da9c05e6.html"
+    ],
+    "verification_log": [
+      {"url": "https://ja.wikipedia.org/wiki/%E5%90%89%E3%81%AE%E6%B5%A6%E7%81%AB%E5%8A%9B%E7%99%BA%E9%9B%BB%E6%89%80", "tokens": ["保安電源"], "result": "PASS", "note": "Confirms LNG tank security-power role"},
+      {"url": "https://ja.wikipedia.org/wiki/%E5%90%89%E3%81%AE%E6%B5%A6%E7%81%AB%E5%8A%9B%E7%99%BA%E9%9B%BB%E6%89%80", "tokens": ["保安電源", "35,000"], "result": "FAIL", "note": "35,000 with comma not present in that exact form on page; capacity confirmed via itmedia release instead"},
+      {"url": "https://release.itmedia.co.jp/release/sj/2015/03/20/3d55355e70e6ae850423a801da9c05e6.html", "tokens": ["保安電源", "吉の浦"], "result": "PASS", "note": "Okinawa Electric's own 2015 commissioning release, independent corroboration of LNG-tank security-power purpose"}
+    ],
+    "gogpt_prior_assessment": "GOGPT match 'Yoshinoura thermal power plant' (502 MW total, 0.21 km) is the main 4x251 MW Yoshinoura Thermal Power Station — Okinawa Electric's merchant baseload plant fed by this terminal under the direction test, NOT the captive asset. The captive finding above is a DIFFERENT, smaller, distinct facility (the 35 MW Multi-Gas-Turbine plant) that does not appear to be the same record as the 502 MW GOGPT match. Info URL for the main (non-captive) plant: https://www.meti.go.jp/policy/safety_security/industrial_safety/sangyo/electric/detail/yoshinoura.html",
+    "gogpt_candidate": "ADD",
+    "gogpt_candidate_basis": "The 35,000 kW Multi-Gas-Turbine plant is a genuine, sourced, gas-fired generating plant with a citable nameplate and commissioning date, distinct from the 502 MW GOGPT-matched main thermal station — appears to be a separate, currently unrecorded generation asset.",
+    "status_or_other_findings": "In Nov 2023 the Multi-Gas-Turbine plant Unit 1 was brought online to help recover from an emergency shutdown of Yoshinoura Thermal Power Station Unit 2 — status/reliability note only, not acted on. As of Mar 2024 the plant is doing hydrogen co-firing demonstration (30% vol.) — not acted on.",
+    "notes": "The main Yoshinoura Thermal Power Station (502 MW, GOGPT-matched) is the PowerPlantsSupplied-direction customer, already correctly recorded as non-captive; the captive finding here is specifically the separate, smaller Multi-Gas-Turbine facility with its documented LNG-tank-security role."
+  }
+]

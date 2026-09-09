@@ -1,0 +1,102 @@
+[
+  {
+    "category": "unverifiable_citation_excluded",
+    "terminal_id": "T100000130528",
+    "unit_id": "G100002052800",
+    "terminal_name": "El Musel LNG Terminal",
+    "issue": "offshore-energy.biz/el-musel-lng-terminal-welcomes-first-commercial-ship/ (cited in both StartDate [ref] and Status [ref]) returns HTTP 502 on 3 separate retries and has no Wayback Machine snapshot at all (checked via the availability API). Per the bot-block-vs-dead rule, since it fails even the Wayback fallback it was excluded from both ref cells rather than declared dead (not proven dead — the site may simply be down) or silently dropped.",
+    "severity": "low",
+    "suggested_action": "Retry this URL in a later batch (offshore-energy.biz has had transient outages before); if it remains 502, treat as effectively dead and drop for real. Both fields already retain 2 other independent working sources, so no functional gap.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unverifiable_citation_excluded",
+    "terminal_id": "T100000130528",
+    "unit_id": "G100002052800",
+    "terminal_name": "El Musel LNG Terminal",
+    "issue": "reuters.com StartDate source returns HTTP 401 (Reuters' paywall/bot-gate) and has no Wayback snapshot available. Excluded from StartDate [ref], not declared dead.",
+    "severity": "low",
+    "suggested_action": "No action needed — StartDate [ref] retains 3 other verified sources (bit.ly/2epF6b9, Enagás brochure, GIIGNL-2026). Revisit only if those degrade.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unresolved_value",
+    "terminal_id": "T100000130534",
+    "unit_id": "G100002053401",
+    "terminal_name": "Mugardos LNG Terminal (Expansion unit)",
+    "issue": "The staged historical Owner breakdown ('Endesa SA [21%]; Tojeiro Group [18%]; NovaCaixaGalicia [15%]; Region of Galicia [10%]; Sonatrach SpA [10%]; Santander Bank [5%]; Naturgy Energy Group SA [21%]') cannot be corroborated by any source found this session. Of the 3 previously-cited URLs: giignl.org/2021 is dead; reganosa.com/en/shareholders is live but is a generic current-shareholders page that never mentions 'Mugardos' and shows TODAY's owner (Grupo Gadisa etc.), not this historical structure; rivieramm.com is about a narrow 2017 Sojitz 15%-stake deal, not the full cap table. The GIIGNL-2021 edition itself (checked directly) gives a THIRD, different breakdown for Mugardos ('Xunta Galicia 24%, Sojitz 15%, Sonatrach 10%...') that also does not match GEM's value. Three non-matching cap tables across sources is a real discrepancy, not just a citation gap. I did not rewrite the value — that is a bigger research call than a mechanical ref-repair pass should make unilaterally, especially on a cancelled/historical project. Note also 'Endesa SA' and 'Naturgy Energy Group SA' both listed at 21% each in the current value, which may itself reflect a rebrand-duplication (Naturgy is Endesa's former corporate-group-mate/successor branding in some contexts) worth checking.",
+    "severity": "medium",
+    "suggested_action": "Route to a follow-up Update pass: pull Reganosa's original 2007-08 project-financing documentation or a contemporaneous (2008-2012) news/GIIGNL edition to establish the correct historical cap table at project inception, and confirm whether Endesa/Naturgy is a duplicate entry. Until then, Owner [ref] carries only 1 weak source (staged this batch, confidence red).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_ref_unresolved",
+    "terminal_id": "T100000130534",
+    "unit_id": "G100002053401",
+    "terminal_name": "Mugardos LNG Terminal (Expansion unit)",
+    "issue": "4 blank_ref gaps from the QC comp_Spain.json worklist (Status [ref], ShelvedYear [ref] (2022), CancelledYear [ref] (2024), StopYear [ref] (2024)) could not be filled this session. The only Mugardos-adjacent article found (LNG Prime, Dec 2022, 'Spain's Reganosa upgrades Mugardos LNG jetty') is about an unrelated jetty/compression upgrade to the OPERATING base terminal, not the cancelled additional-storage-tank Expansion project this unit-row tracks — citing it would violate cluster coherence (wrong project). GIIGNL-2024/2021 editions list only the base Mugardos plant (2.6 bcm/y, no separate expansion line), which is consistent with cancellation but does not itself carry the specific 2022/2024 anchor years. WebSearch budget was exhausted this session before a targeted search for Reganosa's original expansion-project cancellation could be run.",
+    "severity": "low",
+    "suggested_action": "Follow-up pass: search specifically for Reganosa/Xunta de Galicia coverage of the SECOND STORAGE TANK project's 2022 shelving and 2024 formal cancellation (the ENTSOG TYNDP project list, already cited for Cost, is a plausible place to check whether this project dropped out of a later TYNDP edition — that absence would itself be citable dormancy evidence). Left all 4 fields blank rather than force a mismatched citation.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "unverifiable_citation_not_touched",
+    "terminal_id": "T100000130530",
+    "unit_id": "G100002053000",
+    "terminal_name": "Gran Canaria LNG Terminal",
+    "issue": "cabildo.grancanaria.com (cited in Status [ref], CancelledYear [ref], StopYear [ref]) is a genuine Incapsula/Imperva bot-block (confirmed via direct curl with a full desktop-browser User-Agent — still blocked). It is also unverifiable via Wayback: a CDX snapshot exists (timestamp 20250905024750) but that snapshot itself captured a 403 error page, not real content. Since I found no independent replacement source this session (WebSearch budget exhausted; one candidate eleconomista.es URL I attempted was a guess that also 403'd and could not be confirmed as a real article), I left these 3 ref cells UNCHANGED rather than remove the only citation they have with nothing to replace it.",
+    "severity": "medium",
+    "suggested_action": "Follow-up pass with search budget available: find an independent Canary Islands press article (2024-2025) confirming the Cabildo de Gran Canaria's anti-gas political stance and the plant's cancellation, to either corroborate alongside cabildo.grancanaria.com or replace it outright.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "blank_ref_unresolved",
+    "terminal_id": "T100000130530",
+    "unit_id": "G100002053000",
+    "terminal_name": "Gran Canaria LNG Terminal",
+    "issue": "ShelvedYear [ref] (value 2022) is blank per the QC comp_Spain.json worklist; no dormancy-evidence source was located this session for the specific 2022 shelving date (as distinct from the 2025 cancellation, which is cited elsewhere).",
+    "severity": "low",
+    "suggested_action": "Same follow-up search as the cabildo.grancanaria.com item above should also aim to pin the 2022 shelving milestone specifically.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "reduced_corroboration",
+    "terminal_id": "T100000130526",
+    "unit_id": "G100002052600",
+    "terminal_name": "Cartagena LNG Terminal (Spain)",
+    "issue": "Owner [ref] dropped from 2 sources to 1 (GIIGNL-2026 alone, yellow) after the dead enagas.es plant-specific page. Enagás restructured its corporate website since this cell was last populated; several plausible URL patterns for a live equivalent (e.g. /en/what-we-do/our-network/regasification-plants/, /en/our-facilities/regasification-plants/) all 404, and WebSearch budget was exhausted before a fuller site-map search could be run.",
+    "severity": "low",
+    "suggested_action": "Follow-up: locate Enagás's current corporate infrastructure/asset page (likely under a reorganized URL path) and add it back as a second, primary-source corroboration for Cartagena AND Huelva Owner (same underlying issue, same fix).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "reduced_corroboration",
+    "terminal_id": "T100000130532",
+    "unit_id": "G100002053200",
+    "terminal_name": "Huelva LNG Terminal",
+    "issue": "Owner [ref] dropped from 2 sources to 1 (GIIGNL-2026 alone, yellow) for the same reason as Cartagena above (dead enagas.es plant-specific page, no live replacement located this session).",
+    "severity": "low",
+    "suggested_action": "Same as the Cartagena qa entry — one follow-up search fixes both.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "reduced_corroboration",
+    "terminal_id": "T100000130522",
+    "unit_id": "G100002052200",
+    "terminal_name": "Barcelona LNG Terminal",
+    "issue": "Owner [ref] dropped from 2 sources to 1 (GIIGNL-2026 alone, yellow) after ieefa.org/european-lng-tracker was excluded as unverifiable (bot-blocked live, and the Wayback snapshot of the page does not contain static 'Barcelona'/'Enagás' text — it is an interactive JS map/tracker, not a citable static page).",
+    "severity": "low",
+    "suggested_action": "Follow-up: find an Enagás or CNMC primary source explicitly naming Barcelona's 100% Enagás ownership, or accept GIIGNL-2026 alone as sufficient (single Tier-1-but-not-primary source is yellow per SOP, not blocking).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "tooling_gap",
+    "terminal_id": "T100000130856",
+    "unit_id": "G100002085600",
+    "terminal_name": "Puerto de la Luz LNG Terminal",
+    "issue": "url_verifier.py's Wayback fallback reported 'no snapshot to verify against' for espiral21.com's article, but a direct query of the Wayback CDX API (as opposed to the archive.org 'available' API the tool appears to use) found multiple genuine HTTP-200 snapshots. This looks like a tool gap (the availability API can return empty even when CDX has real snapshots, e.g. on scheme/trailing-slash mismatches) rather than a truly missing archive.",
+    "severity": "low",
+    "suggested_action": "Consider having url_verifier.py fall back to a direct CDX query (web.archive.org/cdx/search/cdx?url=...&output=json) when the availability API returns an empty result, before concluding 'no snapshot'.",
+    "researcher_initials": "AI-draft"
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "terminal_id": "T100000131083",
+    "unit_id": "G100002108300",
+    "terminal_name": "Antigua Power LNG Terminal",
+    "unit_name": "--",
+    "operation": "append",
+    "status": "operating",
+    "sub_status": "planned",
+    "year": 2026,
+    "part_of_year": "",
+    "notes": "Existing Postgres timeline (fetch_timeline.py G100002108300): [0] proposed 2021; [1] operating/planned 2023; [2] construction/actual 2023; [3] operating/planned 2024; [4] FID/actual 2021. This appends a REVISED operating/planned entry at 2026, superseding the 2024 planned-start estimate (now 2 years past with no confirmed commissioning) -- a planned-startup slip, not a status change. Government confirms (antiguanherald.com, antiguanewsroom.com, both Jul 3 2026) first LNG shipment still expected 'within 30 days' following resolution of a dredging-cost/energy-charge dispute. Status remains construction/actual pending confirmed commissioning -- no status-value change staged.",
+    "source_url": "https://antiguanherald.com/articles/2026/07/03/antiguas-first-lng-shipment-on-track-within-30-days-government-confirms.html",
+    "confidence": "green",
+    "legal_transition_check": "operating/planned -> operating/planned (revised year) is a same-status year revision, not a state transition; flagging only because it supersedes rather than follows the existing 2024 planned entry chronologically. No monotonicity concern.",
+    "researcher_initials": "AI-draft (sweep)"
+  }
+]

@@ -1,0 +1,249 @@
+[
+ {
+  "terminal_id": "T100000130524",
+  "unit_id": "G100002052400",
+  "terminal_name": "Bilbao LNG Terminal",
+  "unit_name": "--",
+  "country": "Spain",
+  "field_name": "Operator [ref]",
+  "old_value": "https://giignl.org/wp-content/uploads/2025/06/GIIGNL-Annual-Report-2025.pdf",
+  "new_value": "https://cdn.prod.website-files.com/67bdb9fc993751711c5f54fd/685278fda1e68e3b4324e2cf_0432365c1c5b8fb129ae8055cca8cb9b_%23GIIGNL%20-%20Livre%202025-20250610-Simple.pdf, https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf",
+  "confidence": "green",
+  "source_tier": "GIIGNL x2 editions",
+  "ref_field": "Operator [ref]",
+  "ref_urls": [
+   "https://cdn.prod.website-files.com/67bdb9fc993751711c5f54fd/685278fda1e68e3b4324e2cf_0432365c1c5b8fb129ae8055cca8cb9b_%23GIIGNL%20-%20Livre%202025-20250610-Simple.pdf",
+   "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf"
+  ],
+  "source_notes": "Legacy giignl.org deep link is dead site-wide (404). Re-cited the SAME 2025 edition at its official mirror (data/README.md table), plus the 2026 edition (genuinely different edition, counts as a second independent source). GIIGNL-2026's terminal table (p. ~fleet listing) reads 'Bilbao ... Bahia de Bizkaia Gas, SL (BBG)' as operator, matching GEM's Operator value exactly. Both URLs verified via url_verifier.py.",
+  "scope_note": "Mechanical giignl.org dead-domain sweep (Update SOP §7.2 / QC worklist §C).",
+  "dropped_urls_dead": [
+   "https://giignl.org/wp-content/uploads/2025/06/GIIGNL-Annual-Report-2025.pdf"
+  ],
+  "researcher_initials": "AI-draft (sweep)"
+ },
+ {
+  "terminal_id": "T100000130524",
+  "unit_id": "G100002052400",
+  "terminal_name": "Bilbao LNG Terminal",
+  "unit_name": "--",
+  "country": "Spain",
+  "field_name": "Owner [ref]",
+  "old_value": "https://www.igu.org/publications-page, https://www.igu.org/publications-page",
+  "new_value": "https://cdn.prod.website-files.com/67bdb9fc993751711c5f54fd/685278fda1e68e3b4324e2cf_0432365c1c5b8fb129ae8055cca8cb9b_%23GIIGNL%20-%20Livre%202025-20250610-Simple.pdf, https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf",
+  "confidence": "green",
+  "source_tier": "GIIGNL x2 editions",
+  "ref_field": "Owner [ref]",
+  "ref_urls": [
+   "https://cdn.prod.website-files.com/67bdb9fc993751711c5f54fd/685278fda1e68e3b4324e2cf_0432365c1c5b8fb129ae8055cca8cb9b_%23GIIGNL%20-%20Livre%202025-20250610-Simple.pdf",
+   "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf"
+  ],
+  "source_notes": "igu.org/publications-page is a dead generic landing page (404), duplicated twice in the raw cell. GIIGNL-2026's terminal fleet table gives the exact ownership row: 'Bilbao ... Enagás (50%), EVE (50%)' — matches GEM's Owner value ('Basque Energy Board (EVE) [50%]; Enagás SA [50%]') exactly, confirmed by direct read of the extracted PDF text, not just token co-occurrence. 2025 edition independently corroborates (different edition = second source).",
+  "scope_note": "Citation repair, dead igu.org ref (QC citqc_Spain.json dead entry).",
+  "dropped_urls_dead": [
+   "https://www.igu.org/publications-page"
+  ],
+  "researcher_initials": "AI-draft (sweep)"
+ },
+ {
+  "terminal_id": "T100000130526",
+  "unit_id": "G100002052600",
+  "terminal_name": "Cartagena LNG Terminal (Spain)",
+  "unit_name": "--",
+  "country": "Spain",
+  "field_name": "Owner [ref]",
+  "old_value": "https://www.enagas.es/enagas/en/Transporte_de_gas/PlantasRegasificacion/PlantaCartagena, https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf",
+  "new_value": "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf",
+  "confidence": "yellow",
+  "source_tier": "GIIGNL 2026 (sole surviving source)",
+  "ref_field": "Owner [ref]",
+  "ref_urls": [
+   "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf"
+  ],
+  "source_notes": "Enagás's old PlantasRegasificacion/PlantaCartagena page is dead (404) — Enagás restructured its corporate site and I could not relocate an equivalent live plant-specific page this session (WebSearch budget was exhausted; several guessed enagas.es URL patterns for a current plant page all 404'd). GIIGNL-2026's fleet table lists 'Cartagena ... Enagás / Enagás' as sole owner/operator, matching GEM's 'Enagás SA [100%]' exactly, confirmed by direct read of the extracted PDF text. Per instruction not to manufacture extra corroboration, left as single-source yellow rather than padding; see qa entry recommending an Enagás corporate-site re-search.",
+  "scope_note": "Citation repair, dead enagas.es ref (QC citqc_Spain.json dead entry).",
+  "dropped_urls_dead": [
+   "https://www.enagas.es/enagas/en/Transporte_de_gas/PlantasRegasificacion/PlantaCartagena"
+  ],
+  "researcher_initials": "AI-draft (sweep)"
+ },
+ {
+  "terminal_id": "T100000130532",
+  "unit_id": "G100002053200",
+  "terminal_name": "Huelva LNG Terminal",
+  "unit_name": "--",
+  "country": "Spain",
+  "field_name": "Owner [ref]",
+  "old_value": "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf, https://www.enagas.es/enagas/en/Transporte_de_gas/PlantasRegasificacion/PlantaHuelva",
+  "new_value": "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf",
+  "confidence": "yellow",
+  "source_tier": "GIIGNL 2026 (sole surviving source)",
+  "ref_field": "Owner [ref]",
+  "ref_urls": [
+   "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf"
+  ],
+  "source_notes": "Same Enagás corporate-site restructure as Cartagena — the PlantasRegasificacion/PlantaHuelva page is dead (404), no live replacement located this session. GIIGNL-2026 lists Huelva under Enagás's fleet as sole owner/operator, matching GEM's 'Enagás SA [100%]'. Left as single-source yellow per the no-extra-corroboration instruction; see paired qa entry.",
+  "scope_note": "Citation repair, dead enagas.es ref (QC citqc_Spain.json dead entry).",
+  "dropped_urls_dead": [
+   "https://www.enagas.es/enagas/en/Transporte_de_gas/PlantasRegasificacion/PlantaHuelva"
+  ],
+  "researcher_initials": "AI-draft (sweep)"
+ },
+ {
+  "terminal_id": "T100000130528",
+  "unit_id": "G100002052800",
+  "terminal_name": "El Musel LNG Terminal",
+  "unit_name": "--",
+  "country": "Spain",
+  "field_name": "StartDate [ref]",
+  "old_value": "http://bit.ly/2epF6b9, https://www.reuters.com/business/energy/spain-open-idle-liquid-gas-facility-european-storage-base-2022-04-08/, https://giignl.org/el-musel-terminal-to-start-in-early-2023/, https://www.enagas.es/content/dam/enagas/en/files/enagas-communication-room/publications/otras-publicaciones/lng-services-capabilities-brochure.pdf, https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf, https://www.offshore-energy.biz/el-musel-lng-terminal-welcomes-first-commercial-ship/",
+  "new_value": "https://www.reuters.com/business/energy/spain-open-idle-liquid-gas-facility-european-storage-base-2022-04-08/, https://www.offshore-energy.biz/el-musel-lng-terminal-welcomes-first-commercial-ship/, http://bit.ly/2epF6b9, https://www.enagas.es/content/dam/enagas/en/files/enagas-communication-room/publications/otras-publicaciones/lng-services-capabilities-brochure.pdf, https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf",
+  "confidence": "green",
+  "source_tier": "3 surviving sources (bit.ly redirect + Enagás brochure + GIIGNL-2026)",
+  "ref_field": "StartDate [ref]",
+  "ref_urls": [
+   "https://www.reuters.com/business/energy/spain-open-idle-liquid-gas-facility-european-storage-base-2022-04-08/",
+   "https://www.offshore-energy.biz/el-musel-lng-terminal-welcomes-first-commercial-ship/",
+   "http://bit.ly/2epF6b9",
+   "https://www.enagas.es/content/dam/enagas/en/files/enagas-communication-room/publications/otras-publicaciones/lng-services-capabilities-brochure.pdf",
+   "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf"
+  ],
+  "source_notes": "Dropped the giignl.org blog post (dead, 404, site-wide rot — this was a standalone article, not the annual-report PDF, so there is no mirror equivalent; its content is already covered by the 3 surviving sources). Excluded (not declared dead) two bot-blocked URLs that fail even via Wayback: reuters.com (401, no snapshot found) and offshore-energy.biz (502, no snapshot found on 3 retries) — both flagged in qa rather than silently dropped. The 3 remaining URLs each independently verified via url_verifier.py against 'Musel'. [ref-restore 2026-07-29: restored existing live URL(s) https://www.reuters.com/business/energy/spain-open-idle-liquid-gas-facility-european-storage-base-2022-04-08/, https://www.offshore-energy.biz/el-musel-lng-terminal-welcomes-first-commercial-ship/ per merge-semantics rule (bot-block != dead; never drop a URL not proven dead)]",
+  "scope_note": "Citation repair, dead + unverifiable-blocked refs (QC citqc_Spain.json).",
+  "dropped_urls_dead": [
+   "https://giignl.org/el-musel-terminal-to-start-in-early-2023/"
+  ],
+  "researcher_initials": "AI-draft (sweep)"
+ },
+ {
+  "terminal_id": "T100000130528",
+  "unit_id": "G100002052800",
+  "terminal_name": "El Musel LNG Terminal",
+  "unit_name": "--",
+  "country": "Spain",
+  "field_name": "Status [ref]",
+  "old_value": "https://www.enagas.es/content/dam/enagas/en/files/enagas-communication-room/publications/otras-publicaciones/lng-services-capabilities-brochure.pdf, https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf, https://www.offshore-energy.biz/el-musel-lng-terminal-welcomes-first-commercial-ship/",
+  "new_value": "https://www.offshore-energy.biz/el-musel-lng-terminal-welcomes-first-commercial-ship/, https://www.enagas.es/content/dam/enagas/en/files/enagas-communication-room/publications/otras-publicaciones/lng-services-capabilities-brochure.pdf, https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf",
+  "confidence": "green",
+  "source_tier": "Enagás brochure + GIIGNL-2026",
+  "ref_field": "Status [ref]",
+  "ref_urls": [
+   "https://www.offshore-energy.biz/el-musel-lng-terminal-welcomes-first-commercial-ship/",
+   "https://www.enagas.es/content/dam/enagas/en/files/enagas-communication-room/publications/otras-publicaciones/lng-services-capabilities-brochure.pdf",
+   "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf"
+  ],
+  "source_notes": "Same offshore-energy.biz exclusion as StartDate above (502, no Wayback snapshot found on 3 retries) — excluded, not declared dead, flagged once in qa (covers both fields). Two remaining sources both re-verified via url_verifier.py against 'Musel' and already independently confirm operating status. [ref-restore 2026-07-29: restored existing live URL(s) https://www.offshore-energy.biz/el-musel-lng-terminal-welcomes-first-commercial-ship/ per merge-semantics rule (bot-block != dead; never drop a URL not proven dead)]",
+  "scope_note": "Citation repair, blocked-and-unverifiable ref (QC citqc_Spain.json).",
+  "dropped_urls_dead": [],
+  "researcher_initials": "AI-draft (sweep)"
+ },
+ {
+  "terminal_id": "T100000130528",
+  "unit_id": "G100002052800",
+  "terminal_name": "El Musel LNG Terminal",
+  "unit_name": "--",
+  "country": "Spain",
+  "field_name": "StopYear [ref]",
+  "old_value": "https://giignl.org/wp-content/uploads/2022/05/GIIGNL2022_Annual_Report_May24.pdf, http://bit.ly/2epIdQn, http://bit.ly/2epRcRu",
+  "new_value": "https://cdn.prod.website-files.com/67bdb9fc993751711c5f54fd/67d40f9112efb57309cae007_GIIGNL-2022-Annual-Report.pdf, http://bit.ly/2epRcRu",
+  "confidence": "green",
+  "source_tier": "GIIGNL-2022 (re-cited at mirror) + surviving bit.ly redirect",
+  "ref_field": "StopYear [ref]",
+  "ref_urls": [
+   "https://cdn.prod.website-files.com/67bdb9fc993751711c5f54fd/67d40f9112efb57309cae007_GIIGNL-2022-Annual-Report.pdf",
+   "http://bit.ly/2epRcRu"
+  ],
+  "source_notes": "Re-cited the SAME 2022 edition at its official mirror (data/README.md table) — this is a straight swap of the dead giignl.org deep link for the live mirror of the identical document, not a drop. bit.ly/2epIdQn is genuinely dead (404, no live redirect target) and is dropped; the sibling bit.ly/2epRcRu shortlink still resolves and passes. Both surviving URLs verified via url_verifier.py against 'Musel'. StopYear=2012 is consistent with El Musel's known history (construction-complete c.2012, idle for a decade pre-pipeline-connection, restarted August 2023).",
+  "scope_note": "Mechanical giignl.org dead-domain sweep + dead shortlink repair (QC citqc_Spain.json).",
+  "dropped_urls_dead": [
+   "http://bit.ly/2epIdQn",
+   "https://giignl.org/wp-content/uploads/2022/05/GIIGNL2022_Annual_Report_May24.pdf"
+  ],
+  "researcher_initials": "AI-draft (sweep)"
+ },
+ {
+  "terminal_id": "T100000130534",
+  "unit_id": "G100002053401",
+  "terminal_name": "Mugardos LNG Terminal",
+  "unit_name": "Expansion",
+  "country": "Spain",
+  "field_name": "Owner [ref]",
+  "old_value": "https://www.rivieramm.com/news-content-hub/news-content-hub/sojitz-buys-spanish-lng-terminal-owner-26724, https://www.reganosa.com/en/shareholders, https://giignl.org/wp-content/uploads/2021/11/GIIGNL_Annual_Report_November2021.pdf (each repeated 6x verbatim in the raw cell)",
+  "new_value": "https://www.rivieramm.com/news-content-hub/news-content-hub/sojitz-buys-spanish-lng-terminal-owner-26724, https://www.reganosa.com/en/shareholders",
+  "confidence": "yellow",
+  "source_tier": "primary (owner's own shareholder disclosure) + trade press, but not verified to reproduce GEM's exact 7-way split",
+  "ref_field": "Owner [ref]",
+  "ref_urls": [
+   "https://www.rivieramm.com/news-content-hub/news-content-hub/sojitz-buys-spanish-lng-terminal-owner-26724",
+   "https://www.reganosa.com/en/shareholders"
+  ],
+  "source_notes": "Mechanical fix first: the raw cell had the same 3-URL block duplicated 6 times verbatim (pre-existing data defect, not introduced this batch) — deduped. Of the 3 unique URLs, ONLY giignl.org/2021 is dropped (404 — declared in dropped_urls_dead; see the tracker-wide giignl.org rot pattern). ORCHESTRATOR CORRECTION 2026-07-29: the sweep agent had ALSO dropped reganosa.com/en/shareholders on the grounds that the page does not contain the token 'Mugardos'. That drop was improper and is reversed — the URL is LIVE (verified PASS on 'Reganosa', 'Shareholders', 'Xunta'), and it is Reganosa's OWN shareholder disclosure, i.e. the primary source for the very cap table this cell cites. Name-absence is advisory (QC SOP §3.2: GEM names are routinely suffixed/translated relative to how sources write them), never grounds for a drop, and 'ref edits MERGE, never replace' permits dropping only genuinely dead or wrong URLs. Declaring a live page in dropped_urls_dead would also have been a false declaration. rivieramm.com passes for 'Mugardos' but is about a 2017 Sojitz 15%-stake transaction, not the full historical cap table. Net: 2 retained independent sources, one of them primary — graded yellow rather than green because neither has been verified to reproduce GEM's exact 7-way percentage breakdown. The Owner VALUE itself is untouched and stays flagged for review in qa (a substantive research call, outside a mechanical ref-repair pass).",
+  "scope_note": "Citation repair, dead + non-specific + duplicated refs (QC citqc_Spain.json dead entries, 6x).",
+  "dropped_urls_dead": [
+   "https://giignl.org/wp-content/uploads/2021/11/GIIGNL_Annual_Report_November2021.pdf"
+  ],
+  "researcher_initials": "AI-draft (sweep)"
+ },
+ {
+  "terminal_id": "T100000130856",
+  "unit_id": "G100002085600",
+  "terminal_name": "Puerto de la Luz LNG Terminal",
+  "unit_name": "--",
+  "country": "Spain",
+  "field_name": "Cost",
+  "old_value": "90000000.00",
+  "new_value": "90000000.00",
+  "confidence": "blue",
+  "source_tier": "re-verified unchanged",
+  "ref_field": "Cost [ref]",
+  "ref_urls": [
+   "https://espiral21.com/morales-e-hidalgo-votan-a-favor-de-la-primera-regasificadora-de-gran-canaria/"
+  ],
+  "source_notes": "url_verifier.py's automated Wayback fallback reported 'no snapshot' (the archive.org availability API returned empty for this URL), but a direct Wayback CDX API query found multiple genuine HTTP-200 snapshots (e.g. timestamp 20220405101528); manually fetched that snapshot and confirmed it contains 'Totisa', '90 mill[ones]' and 'Puerto de La Luz' — matching GEM's Cost value and terminal identity exactly. Live URL is bot-blocked (403) but content-verified; keeping the live citation, not the archive.org URL, per project rule. This is a tooling gap (available-API vs CDX-API mismatch) worth noting for url_verifier.py, not a dead citation.",
+  "scope_note": "Re-verification, blocked citation (QC citqc_Spain.json blocked entry) — confirmed valid via manual Wayback check.",
+  "dropped_urls_dead": [],
+  "researcher_initials": "AI-draft (sweep)"
+ },
+ {
+  "terminal_id": "T100000130856",
+  "unit_id": "G100002085600",
+  "terminal_name": "Puerto de la Luz LNG Terminal",
+  "unit_name": "--",
+  "country": "Spain",
+  "field_name": "FacilityType",
+  "old_value": "import",
+  "new_value": "import",
+  "confidence": "blue",
+  "source_tier": "re-verified unchanged",
+  "ref_field": "FacilityType [ref]",
+  "ref_urls": [
+   "https://espiral21.com/morales-e-hidalgo-votan-a-favor-de-la-primera-regasificadora-de-gran-canaria/"
+  ],
+  "source_notes": "Same espiral21.com citation and manual Wayback re-verification as the Cost field above (paired ref cell).",
+  "scope_note": "Re-verification, blocked citation (QC citqc_Spain.json blocked entry).",
+  "dropped_urls_dead": [],
+  "researcher_initials": "AI-draft (sweep)"
+ },
+ {
+  "terminal_id": "T100000130522",
+  "unit_id": "G100002052200",
+  "terminal_name": "Barcelona LNG Terminal",
+  "unit_name": "--",
+  "country": "Spain",
+  "field_name": "Owner [ref]",
+  "old_value": "https://ieefa.org/european-lng-tracker, https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf",
+  "new_value": "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf",
+  "confidence": "yellow",
+  "source_tier": "GIIGNL 2026 (sole surviving source)",
+  "ref_field": "Owner [ref]",
+  "ref_urls": [
+   "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf"
+  ],
+  "source_notes": "ieefa.org/european-lng-tracker is an interactive JS-rendered tracker page (bare-tracker-page pattern), HTTP 403 live, and fails even via the Wayback fallback (snapshot 20260724230449 does not contain 'Barcelona' or 'Enagás' as static text). Excluded rather than declared dead (bot-blocked, unproven). GIIGNL-2026's fleet table lists 'Barcelona ... Enagás / Enagás' confirming GEM's 'Enagás SA [100%]', re-verified via url_verifier.py. Left as single-source yellow per the no-extra-corroboration instruction; see qa entry. ORCHESTRATOR NOTE (merge gate): the dropped ieefa.org/european-lng-tracker URL fails on three independent grounds, so its removal is not a judgement call. (1) It is a bare tracker landing page, never a citation in any lane. (2) It is 403 live and the newest Wayback snapshot (20260724230449) does not contain 'Barcelona', so the asserted value cannot be verified there either. (3) IEEFA's European LNG Tracker is built on GEM's own data, so citing it as evidence for a GEM value is circular and it is not independent corroboration regardless of liveness.",
+  "scope_note": "Citation repair, blocked-and-unverifiable ref (QC citqc_Spain.json blocked entry).",
+  "dropped_urls_dead": [
+   "https://ieefa.org/european-lng-tracker"
+  ],
+  "researcher_initials": "AI-draft (sweep)"
+ }
+]

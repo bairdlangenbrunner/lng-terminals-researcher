@@ -1,0 +1,52 @@
+[
+  {
+    "category": "citation_gap",
+    "terminal_id": "T100000130426",
+    "unit_id": "G100002042600",
+    "terminal_name": "Zeebrugge LNG Terminal",
+    "issue": "ConstructionYear=1982 has no live citation (sole prior source, gti.energy paper, confirmed dead 404). Two independent replacement sources found for this unit's other historical dates (silo.tips conference paper; Fluxys's own 2017 30th-anniversary article) BOTH give construction starting 1978 or 1979, not 1982 -- neither corroborates the stored year, and both mildly disagree with each other on the exact year too. Left ConstructionYear/ConstructionDate [ref] UNCHANGED (not overwritten on shaky secondary sources for a 40+-year-old fact) rather than staging a value change.",
+    "severity": "medium",
+    "suggested_action": "Either find a primary source confirming 1982, or revisit changing the value to 1978/1979 based on the two independent (but mutually approximate) sources found this session.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "value_ambiguity",
+    "terminal_id": "T100000130426",
+    "unit_id": "G100002042600",
+    "terminal_name": "Zeebrugge LNG Terminal",
+    "issue": "ActualStartMonth is blank for the main unit. The two replacement sources for 1987 give different milestones: silo.tips says first LNG unloading June 1987; Fluxys's own anniversary article says commissioned 12 October 1987. Not filling ActualStartMonth given this ambiguity (could be either 'first cargo' or 'formal commissioning').",
+    "severity": "low",
+    "suggested_action": "Leave blank unless a source distinguishes which milestone GEM wants for ActualStartMonth.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "value_confirmation",
+    "terminal_id": "T100000130426",
+    "unit_id": "G100002042602",
+    "terminal_name": "Zeebrugge LNG Terminal",
+    "issue": "Investigated a possible discrepancy: Fluxys's original 2021 FID press release and subsequent trade press (LNGPrime) describe the FULL second expansion step as 1.3 mtpa ('the full 6 mtpa' terminal total) targeted for 'early 2026'. GEM currently stores this unit ('2025 Expansion') at 1.00 mtpa with ActualStartYear=2025 -- and the freshly-extracted GIIGNL 2026 Annual Report table (downloaded and read directly via pdftotext) independently confirms exactly 1.0 MTPA additional, started 2025, rolling the terminal to 12.3 MTPA total. Resolution: these are consistent, not conflicting -- GEM's own OriginalPlannedStartYear=2026 vs ActualStartYear=2025 already documents that this 1.0 mtpa increment arrived AHEAD of the originally forecast schedule. The remaining ~0.3 mtpa (to reach the full 1.3 mtpa / 6 mtpa terminal step originally forecast for early 2026) does NOT yet appear in the GIIGNL 2026 edition (2025 data year) as delivered -- it may still be pending as of the report's data year. No value change staged; flagging so next year's batch checks whether a further ~0.3 mtpa increment shows up as its own unit or a revision to this one.",
+    "severity": "low",
+    "suggested_action": "Watch for a further Zeebrugge capacity increment (~0.3 mtpa) in the next GIIGNL edition or Fluxys reporting.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "commercial_vs_physical_capacity",
+    "terminal_id": "T100000130426",
+    "unit_id": "",
+    "terminal_name": "Zeebrugge LNG Terminal",
+    "issue": "The concurrent discovery pass (belgium.disc.qa.json) flagged Fluxys' CREG-approved long-term contracting change (June 2024) raising nameplate LONG-TERM SLOT bookings from 110 to 134 slots/year effective April 2027 -- a commercial contracting metric, not a physical mtpa/bcm capacity change, and there is no GEM field for slot bookings. Not staged as a Capacity edit.",
+    "severity": "low",
+    "suggested_action": "No GEM field applies; informational only.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "confirmed_correct",
+    "terminal_id": "T100000130426",
+    "unit_id": "G100002042603",
+    "terminal_name": "Zeebrugge LNG Terminal -- Zeebrugge Multi-molecule Hub",
+    "issue": "dev_pipeline=0 for Belgium is not a bug: this proposed unit has Fuel='LH2', an out-of-scope read-only field per CLAUDE.md -- correctly excluded from the standard-tier worklist and left untouched (no field on this row was read or written this session).",
+    "severity": "low",
+    "suggested_action": "None.",
+    "researcher_initials": "AI-draft"
+  }
+]

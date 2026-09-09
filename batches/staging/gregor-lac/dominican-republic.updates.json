@@ -1,0 +1,84 @@
+[
+  {
+    "terminal_id": "T100000130566",
+    "unit_id": "G100002056600",
+    "terminal_name": "Andrés LNG Terminal",
+    "unit_name": "--",
+    "country": "Dominican Republic",
+    "field_name": "Status",
+    "old_value": "operating",
+    "new_value": "operating",
+    "confidence": "blue",
+    "source_tier": "trade press (IGU World LNG Report 2026)",
+    "ref_field": "Status [ref]",
+    "ref_urls": [
+      "https://www.aesdominicana.com/sites/default/files/2021-03/AES_Dominicana_-_Final_Offering_Memorandum.pdf",
+      "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf",
+      "https://www.datocms-assets.com/146580/1783403747-igu-world-lng-report-2026.pdf"
+    ],
+    "source_notes": "Exhaustive-tier re-verify. LastUpdated 2026-08-05 (6 days before this pass) so a fast-confirm was applied per Update SOP §2.1 item 2 rather than a full re-search of every field. IGU World LNG Report 2026 re-verified PASS (token 'Andres') and continues to list the terminal operating. No news found (Aug 2026 web search, English + Spanish) contradicting current operating status, capacity (1.9 mtpa), or ownership (AES 65% / AFI Popular / Grupo Estrella / Grupo Linda). GIIGNL-2026-Annual-Report-0521.pdf existing citation failed a plain 'Andres' token check (likely an accent-folding false negative — PDF text likely retains 'Andrés' with the accent) — not evidence of a dead/wrong citation, left in place; flagged for awareness only. [ref-restore 2026-08-11: restored existing live URL(s) https://www.aesdominicana.com/sites/default/files/2021-03/AES_Dominicana_-_Final_Offering_Memorandum.pdf, https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf per merge-semantics rule (bot-block != dead; never drop a URL not proven dead)]",
+    "scope_note": "Representative blue re-verify for the terminal per SOP §6.2 (not every populated field re-stamped, given the near-current LastUpdated).",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131094",
+    "unit_id": "G100002109401",
+    "terminal_name": "Energía 2000 Manzanillo FSRU",
+    "unit_name": "--",
+    "country": "Dominican Republic",
+    "field_name": "Status",
+    "old_value": "operating",
+    "new_value": "operating",
+    "confidence": "blue",
+    "source_tier": "national press + presidency press office",
+    "ref_field": "Status [ref]",
+    "ref_urls": [
+      "https://www.diariolibre.com/economia/energia/2026/01/08/energia-2000-recibe-cargamento-de-gas-natural-para-su-central/3398529",
+      "https://presidencia.gob.do/noticias/presidente-abinader-inaugura-termoelectrica-manzanillo-power-land-que-incorpora-414-mw-al"
+    ],
+    "source_notes": "Exhaustive-tier re-verify. LastUpdated 2026-08-06 (5 days before this pass); fast-confirm applied per Update SOP §2.1 item 2. Both existing Status [ref] URLs re-verified PASS. Web search (Aug 2026) found a subsequent 'second LNG cargo' report (El Caribe, undated) confirming continued commercial operation of Manzanillo Power Land on Energos Freeze FSRU supply — consistent with, not contradicting, current GEM status/vessel/capacity fields. No ownership, capacity, or vessel change found.",
+    "scope_note": "Representative blue re-verify for the terminal.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100001084797",
+    "unit_id": "G100001096346",
+    "terminal_name": "Manzanillo Gas & Power LNG Terminal",
+    "unit_name": "--",
+    "country": "Dominican Republic",
+    "field_name": "Status",
+    "old_value": "construction",
+    "new_value": "construction",
+    "confidence": "blue",
+    "source_tier": "presidency press office",
+    "ref_field": "Status [ref]",
+    "ref_urls": [
+      "https://www.presidencia.gob.do/noticias/con-una-inversion-superior-los-usd-1750-millones-presidente-abinader-da-inicio-0"
+    ],
+    "source_notes": "Exhaustive-tier re-verify; unit is also flagged in dev_pipeline_units with recently_updated=true (LastUpdated 2026-08-06), so a fast-confirm was applied per Update SOP §2.1 item 2. Existing Status [ref] re-verified PASS. Web search (Aug 2026) confirms construction remains ongoing: financing closed Jan 2026 (US$1.067bn, 12 lenders) and progress was ~40-45% as of Jan-Mar 2026 (see paired wiki entry) — consistent with LatestPlannedStartYear=2028, no change staged.",
+    "scope_note": "Representative blue re-verify for the terminal.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130567",
+    "unit_id": "G100002056700",
+    "terminal_name": "San Pedro de Macoris LNG Terminal",
+    "unit_name": "--",
+    "country": "Dominican Republic",
+    "field_name": "Capacity [ref]",
+    "old_value": "http://abarrelfull.wikidot.com/san-pedro-de-macoris-lng-terminal",
+    "new_value": "https://eldinero.com.do/4430/nueva-terminal-de-gas-natural-le-pondra-fin-a-un-monopolio/",
+    "confidence": "yellow",
+    "source_tier": "national business press",
+    "ref_field": "Capacity [ref]",
+    "ref_urls": [
+      "https://eldinero.com.do/4430/nueva-terminal-de-gas-natural-le-pondra-fin-a-un-monopolio/"
+    ],
+    "source_notes": "abarrelfull.wikidot.com is a banned source (CLAUDE.md hard requirement) and must be removed regardless of link status. Replacement: El Dinero (2014) states the planned terminal 'tendrá capacidad para recibir un millón de toneladas métricas por año' (capacity to receive one million metric tons per year) — matches GEM's existing 1.0 mtpa value. Verified PASS via url_verifier.py (token 'millón de toneladas'). Only one independent source was found stating the mtpa figure explicitly (Trinidad Guardian instead cites a 240 MMscf/d send-out design figure — a different unit/estimate from an earlier project phase, not used here to avoid conflating design estimates); staged yellow (single non-primary source) rather than left blank, since the project is dead/cancelled and a defensible non-banned citation is preferable to none. No revival evidence found — see qa note.  ||  Orchestrator QC gate: this drop was re-declared from dropped_urls_dead to dropped_urls_banned — it is a banned-source removal, and the banned page may well still be live, so calling it dead would be a false declaration (Update SOP §7.2).",
+    "scope_note": "Project-level [ref] fill/repair; single unit row.",
+    "researcher_initials": "AI-draft (sweep)",
+    "dropped_urls_banned": [
+      "http://abarrelfull.wikidot.com/san-pedro-de-macoris-lng-terminal"
+    ]
+  }
+]

@@ -1,0 +1,315 @@
+[
+  {
+    "terminal": "Jupiter Offshore Loading Terminal (JOLT)",
+    "terminal_id": "T100000131013",
+    "country": "United States",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "JOLT is a crude-oil-only Very Large Crude Carrier (VLCC) offshore loading terminal in Brownsville, Texas -- two 30-inch crude oil pipelines plus one 12-inch products line running to an offshore single-point mooring (SPM). No LNG/gas handling of any kind is part of the design; this record is a scope error (crude-oil deepwater port miscategorized as an LNG terminal).",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Jupiter MLP's own CEO conference presentation (lbcg.com) describes the project as \"Two 30-inch Crude Oil Pipelines, one 12-inch Products line, 10 to 20 miles onshore in Brownsville, Texas to a SPM about 6 miles offshore\" -- an exclusively crude-oil/products export scheme. Bulk Transporter trade press independently confirms it as an \"offshore Very Large Crude Carrier loading facility six miles off the coast of Texas\" with no LNG component.",
+    "refs": [
+      "https://www.lbcg.com/media/downloads/events/715/day-1-thomas-ramsey-ceo-jupitermlp.13427.pdf",
+      "https://www.bulktransporter.com/fleet-management/storage-terminals/article/21657227/jupitermlp-reaches-major-permitting-milestone-for-new-vlcc-terminal-in-brownsville-tx"
+    ],
+    "verification_log": [
+      {
+        "url": "https://www.lbcg.com/media/downloads/events/715/day-1-thomas-ramsey-ceo-jupitermlp.13427.pdf",
+        "tokens": [
+          "Crude Oil"
+        ],
+        "result": "PASS",
+        "note": ""
+      },
+      {
+        "url": "https://www.bulktransporter.com/fleet-management/storage-terminals/article/21657227/jupitermlp-reaches-major-permitting-milestone-for-new-vlcc-terminal-in-brownsville-tx",
+        "tokens": [
+          "crude oil"
+        ],
+        "result": "PASS",
+        "note": ""
+      }
+    ],
+    "gogpt_prior_assessment": "Nearest GOGPT neighbor is SpaceX power station (250 MW, cancelled, non-captive, 13.98 km away) -- an unrelated cancelled power project for the SpaceX Starbase launch site, far outside any plausible terminal fenceline and with no connection to JOLT. Not this terminal's captive power under any reading. Info: https://en.wikipedia.org/wiki/SpaceX_Starbase (verified PASS, token 'Boca Chica').",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Terminal itself is out of scope (crude oil, not LNG/gas) -- no captive gas power question applies. The neighboring SpaceX power station is unrelated to this site and already exists as its own GOGPT record.",
+    "status_or_other_findings": "Jupiter MLP is reportedly pursuing revival of the crude-oil JOLT project per a 2026 industry newsletter (jerrymcdonald.substack.com, 'Resurrecting JOLT') -- not actioned, informational only, and irrelevant to LNG scope.",
+    "notes": "Scope-error screen: this GEM LNG-terminal record describes a pure crude-oil VLCC deepwater loading terminal with no gas/LNG handling. Flag for the orchestrator as a possible mis-tagged/out-of-scope record in the LNG tracker, independent of the captive-power question."
+  },
+  {
+    "terminal": "Keyspan LNG Terminal",
+    "terminal_id": "T100000130839",
+    "country": "United States",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "red",
+    "captive_summary": "Keyspan LNG (Fields Point, Providence, RI) was a cancelled (2006-era, confirmed) proposal to expand/reactivate an existing import/peak-shaving LNG facility. Its FERC final EIS and the KeySpan LNG, L.P. v. FERC (1st Cir. 2006) opinion, which would document the terminal's power/vaporizer design, could not be reached through any available channel (ferc.gov pages 403-blocked; no accessible mirror PDF found). No independent secondary source describing on-site generation, vaporizer type, or grid-vs-onsite power supply was found.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Not established. Multiple targeted searches (FERC docket pages, court-opinion text, Federal Register notice) either 403-blocked or failed to surface the underlying engineering/power-supply narrative. No citable primary or secondary source found describing this terminal's on-site power arrangement.",
+    "refs": [],
+    "verification_log": [
+      {
+        "url": "https://www.ferc.gov/enforcement-legal/legal/court-cases/keyspan-lng-lp-v-ferc-0",
+        "tokens": [],
+        "result": "FAIL",
+        "note": "403 Forbidden, no accessible mirror found"
+      },
+      {
+        "url": "https://lite.duckduckgo.com/lite/?q=%22KeySpan+LNG%22+v.+FERC+446+F.3d+OR+opinion+court+of+appeals+Providence",
+        "tokens": [],
+        "result": "FAIL",
+        "note": "search engine CAPTCHA-blocked, no usable results returned"
+      }
+    ],
+    "gogpt_prior_assessment": "Nearest GOGPT neighbor is Manchester Street power station (515 MW gas-fired combined-cycle, non-captive, 0.05 km away -- essentially adjacent in the Providence Jewelry District). This is a long-standing independent merchant generator (recently part of a Lotus Infrastructure Partners-to-Vistra Corp $1.9B multi-plant sale, 2025) with no documented ownership or fuel-supply tie to the Keyspan LNG terminal; its proximity reflects shared industrial waterfront siting, not a captive relationship. Info: https://en.wikipedia.org/wiki/Manchester_Street_Generating_Station (verified PASS, tokens 'Providence'/'gas').",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "GOGPT record for Manchester Street power station already exists and is correctly identified as a separate, non-captive merchant plant, not a match to this terminal.",
+    "status_or_other_findings": "Project status (cancelled, confirmed) not contradicted by anything found; no schedule/ownership updates surfaced.",
+    "notes": "Grid-access prior (post-2015 regas terminals are usually grid-fed) applies here only as an expectation, not a documented finding -- the decisive FERC EIS/court-opinion text was unreachable across every channel tried (direct ferc.gov, Federal Register, multiple search-engine fallbacks all blocked or unproductive). Recommend a follow-up attempt via PACER/CourtListener or a Providence-area library/archive source if this terminal needs a firmer verdict."
+  },
+  {
+    "terminal": "Lake Charles LNG Terminal",
+    "terminal_id": "T100000130232",
+    "country": "United States",
+    "verdict": "YES",
+    "mechanical": "True",
+    "captive_category": "mechanical_drive",
+    "hardware_summary": "On-site gas turbine drivers mechanically driving the refrigerant compressors of the (shelved) Lake Charles Liquefaction export trains; no on-site electricity generation -- facility electrical load is grid-fed via a new Entergy 230-kV line, with diesel-only standby gensets for emergency backup (fuel gate fails for the backup units, not the mechanical-drive turbines).",
+    "fuel_basis": "FERC/DOE Final EIS (EIS-0491, Aug 2015) describes a \"fuel gas system to provide high-pressure gas to the refrigerant gas turbine drivers\" -- confirms the compressor-driving turbines are gas-fired.",
+    "confidence": "green",
+    "captive_summary": "The Lake Charles Liquefaction export-train design (shelved) uses on-site gas turbines to mechanically drive the mixed-refrigerant compressors directly (shaft power, no generator) -- a mechanical-drive captive gas power arrangement. The project's own alternatives analysis explicitly considered and rejected both (a) electric-motor-driven compressors (would require >800 MW of grid electric supply) and (b) a dedicated on-site power-generation plant (single- or combined-cycle) to supply that electric-motor option, confirming the as-designed configuration is direct gas-turbine mechanical drive, not electric generation. Facility electrical (non-compression) load is supplied by a new ~19-mile 230-kV Entergy transmission line; four 4,000-kW diesel-only standby generators provide emergency backup (diesel fails the fuel gate and does not count).",
+    "electric_mw": "",
+    "mechanical_drive_note": "Gas turbine drivers powering the refrigerant compressors of the liquefaction trains (FEIS section on fuel gas / turbine drivers); exact turbine count/model/aggregate MW rating not stated in the passages reviewed, though the rejected electric-motor alternative was quantified at over 800 MW of equivalent electric load, indicating large aggregate shaft power.",
+    "confirmed_how": "FERC/DOE Final Environmental Impact Statement for the Lake Charles Liquefaction Project (EIS-0491, Aug 2015, prepared for Trunkline LNG Company / Lake Charles LNG Export Company, an Energy Transfer affiliate): (1) states the fuel gas system supplies \"the refrigerant gas turbine drivers\"; (2) describes the Entergy 230-kV line and four 4,000-kW diesel stand-by generators for facility electrical needs / backup; (3) section 3.7 'Alternative Power Sources' states electric-motor-driven compressors were \"ruled out at the time due to the excessive amount of electrical power required (above 800 megawatts)\" and that \"on-site power generation by both single- and combined-cycle plants was ruled out in the design of the Lake Charles Liquefaction Project\" -- confirming the built/approved design relies on direct gas-turbine mechanical drive, not electric generation.",
+    "refs": [
+      "https://www.energy.gov/sites/prod/files/2015/08/f26/EIS-0491-FEIS-2015.pdf"
+    ],
+    "verification_log": [
+      {
+        "url": "https://www.energy.gov/sites/prod/files/2015/08/f26/EIS-0491-FEIS-2015.pdf",
+        "tokens": [
+          "4,000-kilowatt"
+        ],
+        "result": "PASS",
+        "note": ""
+      },
+      {
+        "url": "https://www.energy.gov/sites/prod/files/2015/08/f26/EIS-0491-FEIS-2015.pdf",
+        "tokens": [
+          "ruled out"
+        ],
+        "result": "PASS",
+        "note": ""
+      }
+    ],
+    "gogpt_prior_assessment": "no GOGPT neighbor was supplied for this terminal in the dispatch shard (gogpt_prior: no).",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "The captive power here is mechanical-drive-only (gas turbines shaft-driving compressors) -- no on-site electricity generation exists, so there is no generating plant with a nameplate MW for GOGPT to track. The nearby 'Woodside Louisiana LNG Terminal power station' GOGPT record (430.4 MW, captive, construction, 5.23 km away per neighbors_raw.json) belongs to Woodside's separate, physically distinct Louisiana LNG (ex-Driftwood) project -- confirmed via upstreamonline.com ('Woodside Energy has renamed the under-construction Driftwood LNG project ... as Woodside Louisiana LNG') -- not to Lake Charles LNG Terminal.",
+    "status_or_other_findings": "Export Terminal (T1-T3) status shelved / Import Terminal mothballed, consistent with shard data; nothing found to contradict.",
+    "notes": "Direction-test / neighbor-attribution note: Woodside Louisiana LNG Terminal power station (GOGPT id in neighbors_raw.json) is NOT Lake Charles LNG Terminal's captive power -- it is the captive plant for a separate, nearby Woodside project (formerly Driftwood LNG) under a different owner. Do not conflate the two sites when reviewing this shard's GOGPT priors."
+  },
+  {
+    "terminal": "Liberty FSRU",
+    "terminal_id": "T100000130658",
+    "country": "United States",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "red",
+    "captive_summary": "Liberty FSRU (also known as Port Ambrose LNG Facility) was a cancelled offshore deepwater-port proposal off New York/New Jersey -- a submerged buoy/subsea-pipeline system (not a permanently moored FSRU hull) that would connect to Transco's existing Lower New York Bay lateral. Project developer was Liberty Natural Gas LLC (originally proposed by Sonde Resources Corp / Canadian Superior, which sold its interest in 2011; the project was later re-proposed at a different location as 'Port Ambrose' under the same Liberty Natural Gas name). No accessible source describes an onboard/on-site gas-fired power-generation or genset arrangement for this specific project's regasification vessel(s) or buoy system.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Project identity resolved via multiple secondary sources (gem.wiki cross-reference only, per policy, used to detect the alias, never cited; offshore-energy.biz and lnglawblog.com confirming the Sonde Resources sale history; cleanoceanaction.org fact sheets and federalregister.gov confirming the Port Ambrose re-proposal by Liberty Natural Gas LLC). The FERC/Coast Guard Final EIS (downloads.regulations.gov/USCG-2013-0363-2154/content.pdf), which would document the project's power/regasification equipment, returned a persistent 403/CloudFront block on every fetch attempt and was not reachable via Wayback either.",
+    "refs": [],
+    "verification_log": [
+      {
+        "url": "https://downloads.regulations.gov/USCG-2013-0363-2154/content.pdf",
+        "tokens": [],
+        "result": "FAIL",
+        "note": "403 CloudFront block on direct curl fetch; abandoned per instruction, not retried further"
+      }
+    ],
+    "gogpt_prior_assessment": "no GOGPT neighbor was supplied for this terminal in the dispatch shard (gogpt_prior: no).",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No captive-power finding was established (INSUFFICIENT), and the project (a buoy/subsea-pipeline deepwater port, not a permanently moored vessel) was cancelled without a reachable engineering source describing any on-site generation equipment.",
+    "status_or_other_findings": "Project identity: this GEM record appears to correspond to the original 'Liberty Natural Gas' / Sonde Resources deepwater-port proposal, which was later re-filed under the same developer name as 'Port Ambrose' at a different offshore location (per federalregister.gov, 2015-25727) after New York's governor vetoed an earlier iteration. Not actioned -- flagging for the orchestrator in case the GEM record's project-identity/history needs reconciliation with the Port Ambrose lineage.",
+    "notes": "The FSRU-onboard convention (onboard dual-fuel/gas gensets = captive YES) could not be applied here because no source documenting this project's specific regasification-vessel or buoy-system power equipment was reachable. This is a submerged-buoy/subsea-pipeline design (per downloads.regulations.gov snippet seen in search results, unverified beyond the snippet), which may differ mechanically from a moored FSRU hull -- genuinely underdetermined, not assumed either way."
+  },
+  {
+    "terminal": "Long Beach LNG Terminal",
+    "terminal_id": "T100000130648",
+    "country": "United States",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "red",
+    "captive_summary": "Long Beach LNG Terminal (Sound Energy Solutions / ConocoPhillips + Mitsubishi Corp) was a cancelled (confirmed) proposed import terminal at the Port of Long Beach, CA. The decisive FERC Final EIS, which would document its vaporizer type and power supply, was not reachable through any available channel (ferc.gov pages 403-blocked; no accessible energy.gov or other mirror PDF located).",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Not established. No primary filing or independent secondary source describing this terminal's on-site power/vaporizer arrangement was found despite multiple search attempts.",
+    "refs": [],
+    "verification_log": [
+      {
+        "url": "https://www.ferc.gov/draft-environmental-impact-statements-long-beach-lng",
+        "tokens": [],
+        "result": "FAIL",
+        "note": "403 Forbidden, no accessible mirror found"
+      }
+    ],
+    "gogpt_prior_assessment": "Two GOGPT neighbors in the harbor area, both unrelated merchant/industrial plants: (1) Long Beach Generation power station (252 MW gas-fired, non-captive, 1.35 km) -- an NRG/AES-lineage merchant plant on the harbor, no ownership/fuel-supply tie to the LNG project (confirmed via en.wikipedia.org/wiki/Alamitos_Energy_Center, PASS on 'Long Beach'); (2) THUMS power station (57 MW, non-captive, 1.6 km) -- generation serving the THUMS consortium's offshore oil-island operations (Long Beach oil field), also unrelated to the LNG terminal. Neither is this terminal's captive power.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No captive-power finding was established for this terminal, and both neighboring GOGPT plants are documented as belonging to other industrial hosts (a merchant generator and the THUMS oil-field power supply), not to the cancelled LNG project.",
+    "status_or_other_findings": "Project status (cancelled, confirmed) not contradicted by anything found.",
+    "notes": "Grid-access prior (urban-harbor import terminal, post-2000s proposal in a heavily grid-connected area) suggests NO is likely, but the decisive FERC EIS text was unreachable (403-blocked on every ferc.gov URL tried, no mirror found) -- recording INSUFFICIENT rather than an undocumented NO, per brief rules."
+  },
+  {
+    "terminal": "Louisiana LNG Terminal",
+    "terminal_id": "T100000130233",
+    "country": "United States",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "red",
+    "captive_summary": "Louisiana LNG Terminal (owner: Louisiana LNG Energy LLC; T1-T2, cancelled, inferred ~4 years dormant) is an early-stage export proposal for which no independent press, FERC filing, or trade-press coverage could be found under this exact project name and owner. No FEED-level or design detail of any kind was located, so a captive-power design was never publicly documented.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Extensive searches for 'Louisiana LNG Energy LLC' and 'Louisiana LNG Terminal' at the given coordinates (Plaquemines Parish area, ~29.39N/-89.48W) returned no project-specific engineering, permitting, or news coverage distinct from the much larger, differently-owned 'Woodside Louisiana LNG' (ex-Driftwood) or other Louisiana LNG projects. No design documentation of any kind was found.",
+    "refs": [],
+    "verification_log": [],
+    "gogpt_prior_assessment": "no GOGPT neighbor was supplied for this terminal in the dispatch shard (gogpt_prior: no); none found independently either.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Project is cancelled with no FEED/design detail ever published -- no generating plant of any kind (captive or otherwise) is documented to exist or have been proposed at this site.",
+    "status_or_other_findings": "Owner name 'Louisiana LNG Energy LLC' did not resolve to a corroborated, distinct project separate from the shard's other Louisiana projects (Lake Charles LNG Terminal, Magnolia LNG Terminal) or from Woodside's much larger Louisiana LNG (ex-Driftwood) project -- worth flagging to the orchestrator in case this is a stale/duplicate/mis-attributed GEM record rather than a genuinely distinct cancelled proposal.",
+    "notes": "SCREENED per brief rule (b): a cancelled proposal with genuinely no FEED detail. Distinguish from Lake Charles/Magnolia (same state, but well-documented via FERC FEIS) -- this one has no public design record at all."
+  },
+  {
+    "terminal": "Louisiana Offshore Oil Port",
+    "terminal_id": "T100000130744",
+    "country": "United States",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "LOOP (Louisiana Offshore Oil Port) is an operating crude-oil deepwater port ~29 km off the Louisiana coast for offloading/loading crude oil from deep-draft tankers and VLCCs -- it has no LNG/gas-handling function of any kind. This GEM record is a scope error (crude-oil deepwater port miscategorized as an LNG terminal).",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Wikipedia confirms LOOP as \"a deepwater port ... designed for loading and unloading crude oil cargoes from deep-draft tankers.\" Mansfield Energy trade-press independently corroborates: \"Port Fourchon is the land base for LOOP and supports over 95% of the Gulf's deep-water crude oil production\" -- both sources describe a pure crude-oil transshipment facility with no LNG component.",
+    "refs": [
+      "https://en.wikipedia.org/wiki/Louisiana_Offshore_Oil_Port",
+      "https://mansfield.energy/2024/08/14/whats-that-louisiana-offshore-oil-port-loop/"
+    ],
+    "verification_log": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Louisiana_Offshore_Oil_Port",
+        "tokens": [
+          "crude oil"
+        ],
+        "result": "PASS",
+        "note": ""
+      },
+      {
+        "url": "https://mansfield.energy/2024/08/14/whats-that-louisiana-offshore-oil-port-loop/",
+        "tokens": [
+          "crude oil"
+        ],
+        "result": "PASS",
+        "note": ""
+      },
+      {
+        "url": "https://www.loopllc.com/resources/port-information",
+        "tokens": [
+          "deepwater port"
+        ],
+        "result": "FAIL",
+        "note": "page content not text-matchable (likely JS-rendered); not used as citation"
+      },
+      {
+        "url": "https://www.loopllc.com/resources/port-information",
+        "tokens": [
+          "crude oil"
+        ],
+        "result": "FAIL",
+        "note": "same page, different token, same JS-rendering issue"
+      },
+      {
+        "url": "https://www.loopllc.com/customers/services/tanker-offloading",
+        "tokens": [
+          "crude oil"
+        ],
+        "result": "FAIL",
+        "note": "same JS-rendering issue"
+      },
+      {
+        "url": "https://rbnenergy.com/daily-posts/blog/loop-retains-its-niche-amid-proposed-offshore-crude-export-terminals",
+        "tokens": [
+          "crude oil"
+        ],
+        "result": "FAIL",
+        "note": "HTTP 403, no Wayback snapshot available"
+      }
+    ],
+    "gogpt_prior_assessment": "no GOGPT neighbor was supplied for this terminal in the dispatch shard (gogpt_prior: no).",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Terminal itself is out of scope (crude oil, not LNG/gas) -- no captive gas power question applies to a crude-oil-only deepwater port.",
+    "status_or_other_findings": "Operating (actual), consistent with shard data.",
+    "notes": "Scope-error screen, same class as JOLT (T100000131013) in this shard: a crude-oil deepwater port record in the LNG tracker. Flag for the orchestrator as a possible mis-tagged/out-of-scope record, independent of the captive-power question."
+  },
+  {
+    "terminal": "Magnolia LNG Terminal",
+    "terminal_id": "T100000130234",
+    "country": "United States",
+    "verdict": "YES",
+    "mechanical": "True",
+    "captive_category": "mechanical_drive",
+    "hardware_summary": "2x 33 MW gas turbines per liquefaction train, directly driving the mixed-refrigerant compressors (66 MW aggregate shaft power/train); no on-site electricity generation -- the remaining 6.5 MW/train electrical load is supplied by a new switching station and 1.3-mile 230-kV Entergy transmission line.",
+    "fuel_basis": "FERC/DOE Final EIS (EIS-0498, Nov 2015) section 2.1.1.7 'Power Supply': \"66 MW would be generated from the two 33 MW gas turbines driving the mixed refrigerant compressors\" -- confirms the compressor-driving turbines are gas-fired.",
+    "confidence": "green",
+    "captive_summary": "The proposed (as-designed) Magnolia LNG export project uses on-site gas turbines to directly, mechanically drive the mixed-refrigerant compressors of each liquefaction train (66 MW aggregate shaft power/train from two 33 MW turbines) -- a mechanical-drive captive gas power arrangement. A combined-heat-and-power configuration recovering turbine waste heat to run a steam-turbine generator was studied as an alternative and explicitly ruled out (\"on-site electrical power generation was ruled out in the design of the Magnolia LNG Project\"); the small remaining 6.5 MW/train electrical (non-compression) load is instead supplied by a new switching station and a new 1.3-mile 230-kV transmission line to Entergy's Graywood Substation.",
+    "electric_mw": "",
+    "mechanical_drive_note": "2x 33 MW gas turbines per liquefaction train (66 MW aggregate shaft power/train) directly driving the mixed-refrigerant compressors, per FERC/DOE FEIS EIS-0498 section 2.1.1.7.",
+    "confirmed_how": "FERC/DOE Final Environmental Impact Statement for the Magnolia LNG and Lake Charles Expansion Projects (EIS-0498, Nov 2015): section 2.1.1.7 'Power Supply' states \"The total power requirement for each liquefaction train is 72.5 megawatts (MW), of which 66 MW would be generated from the two 33 MW gas turbines driving the mixed refrigerant compressors ... The remaining 6.5 MW required for each liquefaction train would be supplied by construction of a new switching station within the LNG terminal site and a new 1.3-mile-long 230-kV transmission line ... to Entergy's existing Graywood Substation.\" Section 3.5.1 'No Electrical Power from Entergy' confirms the CHP/steam-turbine-generator alternative was studied and explicitly rejected: \"on-site electrical power generation was ruled out in the design of the Magnolia LNG Project.\"",
+    "refs": [
+      "https://www.energy.gov/sites/default/files/2015/11/f27/EIS-0498_Magnolia_LNG_FEIS_%28Nov_2015%29.pdf"
+    ],
+    "verification_log": [
+      {
+        "url": "https://www.energy.gov/sites/default/files/2015/11/f27/EIS-0498_Magnolia_LNG_FEIS_%28Nov_2015%29.pdf",
+        "tokens": [
+          "66 MW"
+        ],
+        "result": "PASS",
+        "note": ""
+      },
+      {
+        "url": "https://www.energy.gov/sites/default/files/2015/11/f27/EIS-0498_Magnolia_LNG_FEIS_%28Nov_2015%29.pdf",
+        "tokens": [
+          "ruled out"
+        ],
+        "result": "PASS",
+        "note": ""
+      }
+    ],
+    "gogpt_prior_assessment": "no GOGPT neighbor was supplied for this terminal in the dispatch shard (gogpt_prior: no).",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "The captive power here is mechanical-drive-only (gas turbines shaft-driving compressors) -- no on-site electricity generation exists, so there is no generating plant with a nameplate MW for GOGPT to track. The nearby 'Woodside Louisiana LNG Terminal power station' GOGPT record (430.4 MW, captive, construction, 3.275 km away per neighbors_raw.json) belongs to Woodside's separate, physically distinct Louisiana LNG (ex-Driftwood) project -- confirmed via upstreamonline.com -- not to Magnolia LNG Terminal.",
+    "status_or_other_findings": "Proposed status (T1-T4), consistent with shard data.",
+    "notes": "Direction-test / neighbor-attribution note: same as Lake Charles LNG Terminal in this shard -- the neighboring Woodside Louisiana LNG Terminal power station GOGPT record is NOT Magnolia's captive power; it belongs to a separate, nearby Woodside project. Do not conflate the two when reviewing this shard's GOGPT priors."
+  }
+]

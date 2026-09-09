@@ -1,0 +1,250 @@
+[
+ {
+  "terminal": "Itaqui FSRU",
+  "terminal_id": "T100000131081",
+  "country": "Brazil",
+  "verdict": "INSUFFICIENT",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "",
+  "captive_summary": "Shelved (inferred 2y) FSRU import proposal at Itaqui port, Maranhão; no vessel has been named/chartered and no engineering or FEED-level design describing the terminal's own power arrangement was found in any public source checked.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Checked the GIIGNL 2026 Annual Report (no mention of Itaqui, Eneva/Servtec at this site); ran English- and Portuguese-language news searches ('Itaqui FSRU Eneva Servtec', 'Eneva Itaqui GNL Maranhão terminal flutuante', etc. via Bing News) — no project-specific engineering coverage returned. Shared WebSearch pool was exhausted this session; fell back to curl-based Bing News RSS, Marginalia, SEC EDGAR full-text search, and Wayback CDX per the fallback instructions, none of which surfaced design detail for this specific project.",
+  "refs": [],
+  "verification_log": [],
+  "gogpt_prior_assessment": "Nearest GOGPT plant is Santa Clara power station (297.3 MW, status 'announced', gogpt_captive=False, 1.15 km away). GEM's own power_plants_supplied field for this terminal names a different project (Geramar III), so Santa Clara appears to be an unrelated nearby merchant/regional generation project rather than this terminal's downstream customer or its own captive plant. No independent (non-gem.wiki) source on Santa Clara power station was found in the time available.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "No terminal-side generation of any kind has been documented (project shelved, no design published) — nothing to add to GOGPT from this record.",
+  "status_or_other_findings": "Terminal status: shelved (inferred 2y). Owners Eneva SA (51%) and Servtec Energia (49%). No vessel assigned/named. GEM lists power_plants_supplied as Geramar III, distinct from the nearby GOGPT-listed Santa Clara power station.",
+  "notes": "Direction-test case: if built, this import terminal's purpose would be to supply gas onward to Geramar III, not to power itself from a fenceline plant — consistent with no captive-power finding on the terminal's own question. Do not act on the status/vessel findings above; this is a captive-power research record only."
+ },
+ {
+  "terminal": "New Fortress Barcarena FSRU",
+  "terminal_id": "T100000130926",
+  "country": "Brazil",
+  "verdict": "YES",
+  "mechanical": "False",
+  "captive_category": "power_generation",
+  "hardware_summary": "Energos Celsius (ex Golar Celsius, 160,607 m3) runs Wärtsilä TFDE (tri-fuel diesel-electric) generator sets with a boil-off gas recondenser, per Energos Infrastructure's own fleet page, which names this exact vessel at Barcarena, Brazil.",
+  "fuel_basis": "gas (tri-fuel diesel-electric generators, Wärtsilä TFDE, able to burn boil-off gas)",
+  "confidence": "green",
+  "captive_summary": "Operating FSRU Energos Celsius (ex Golar Celsius; 160,000 cbm membrane LNG carrier built 2013 by Samsung Heavy Industries, converted to FSRU by Seatrium and delivered to New Fortress Energy in Dec 2023, nominal regas capacity 750 mmscfd/max 1,000 mmscfd) is moored offshore at Barcarena, Pará. Energos Infrastructure's own fleet page confirms this vessel at Barcarena runs Wärtsilä TFDE generator sets with a boil-off gas recondenser — the vessel's own onboard power plant is gas-capable, confirming captive power under the FSRU-onboard convention.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Checked Marine Link's delivery announcement (regas capacity, conversion by Seatrium, no power-plant detail); New Fortress Energy's FY2023 10-K fleet table (SEC EDGAR — lists 'Energos Celsius FSRU 161,000 cbm, Energos lease, Brazil' with no engine/generator data); GIIGNL 2026 Annual Report FSRU fleet table (tonnage/regas capacity/builder only); attempted Energos Infrastructure and BW/Golar company fleet pages (404s), SEC full-text search for 'Energos Celsius', and Wayback CDX for company fleet-spec pages — none describe the vessel's power plant. Shared WebSearch pool was exhausted this session; used Bing News RSS, SEC EDGAR full-text search, and Wayback CDX as fallbacks per instructions. QC adjudication follow-up (2026-08-02): found the operator's fleet page at energosinfra.com/fleet (energosinfrastructure.com redirects here), which lists Energos Celsius at Barcarena, Brazil with propulsion 'Wärtsilä TFDE; 1,000 mmscf/d; boil-off gas recondenser' — url_verifier PASS on tokens 'Energos Celsius'/'TFDE' and 'Wärtsilä TFDE'.",
+  "refs": [
+   "https://www.marinelink.com/news/new-fortress-energy-takes-delivery-510361",
+   "https://www.sec.gov/Archives/edgar/data/1749723/000174972324000011/nfe-20231231.htm",
+   "https://energosinfra.com/fleet"
+  ],
+  "verification_log": [
+   {
+    "url": "https://www.marinelink.com/news/new-fortress-energy-takes-delivery-510361",
+    "tokens": [
+     "Energos Celsius",
+     "Barcarena"
+    ],
+    "result": "PASS",
+    "note": "conversion/delivery facts only, no power-plant spec"
+   },
+   {
+    "url": "https://www.sec.gov/Archives/edgar/data/1749723/000174972324000011/nfe-20231231.htm",
+    "tokens": [
+     "Energos Celsius"
+    ],
+    "result": "PASS",
+    "note": "bot-blocked live (403), verified via Wayback; fleet table lists tonnage/lease only"
+   },
+   {
+    "url": "https://energosinfra.com/fleet",
+    "tokens": [
+     "Energos Celsius",
+     "TFDE"
+    ],
+    "result": "PASS",
+    "note": "QC pass 2026-08-02: operator's own fleet table names Energos Celsius at Barcarena, Brazil, propulsion 'Wärtsilä TFDE; 1,000 mmscf/d; boil-off gas recondenser'"
+   },
+   {
+    "url": "https://energosinfra.com/fleet",
+    "tokens": [
+     "Wärtsilä TFDE"
+    ],
+    "result": "PASS",
+    "note": "QC pass 2026-08-02: confirms exact engine designation"
+   }
+  ],
+  "gogpt_prior_assessment": "Nearest GOGPT plants are Novo Tempo Barcarena III (421.4 MW, 'cancelled - inferred 4y', 1.36 km) and Novo Tempo Barcarena power station (2,354.3 MW, construction/pre-construction, 1.42 km). GEM's own power_plants_supplied field for this terminal names 'Novo Tempo Barcarena power station' — i.e. this FSRU's purpose is to feed gas OUT to that downstream power project, the opposite of a captive relationship (direction test). No independent (non-gem.wiki) source on the Novo Tempo Barcarena projects was found in the time available.",
+  "gogpt_candidate": "REVIEWER CALL",
+  "gogpt_candidate_basis": "The FSRU-onboard structural prior (off-grid moored vessel) suggests some onboard generation almost certainly exists, but no citable nameplate or generator description was found, and any such generation would be vessel-mounted — unclear whether GOGPT's ontology would capture it as a standalone plant. Leaving as a reviewer call rather than ADD or DO NOT ADD.",
+  "status_or_other_findings": "Operating status confirmed (actual). Owner/operator: New Fortress Energy Inc / Celba. Vessel Energos Celsius (ex Golar Celsius) delivered Dec 2023 per Marine Link; NFE's own 2023 10-K fleet table lists it at 161,000 cbm on an Energos lease. power_plants_supplied is Novo Tempo Barcarena power station.",
+  "notes": "This is a downstream-supply (PowerPlantsSupplied) relationship to Novo Tempo Barcarena, not a captive-power finding — do not confuse the two. Do not act on the vessel/status findings above; this is a captive-power research record only. QC adjudication 2026-08-02 (FSRU harmonization pass): INSUFFICIENT upgraded to YES — Energos Infrastructure's own fleet page confirms Energos Celsius runs Wärtsilä TFDE generators (boil-off-gas-capable) at this exact terminal. Fleet/class-level evidence accepted per applied asia/ME precedent (Aqaba, Khor Al-Zubair, Mina Al-Ahmadi)."
+ },
+ {
+  "terminal": "Nimofast Antonina LNG Terminal",
+  "terminal_id": "T100000131121",
+  "country": "Brazil",
+  "verdict": "SCREENED",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "",
+  "captive_summary": "Shelved (inferred 2y), non-floating, minority-stake (Nimofast 35%; 65% unnamed) proposal at Antonina, Paraná, with no independent public coverage of an LNG project at this site found at all — screened as a dormant proposal with no published engineering/design detail to assess for captive power.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Searched 'Nimofast Antonina LNG terminal', 'Nimofast Antonina GNL', 'Nimofast Antonina Paraná GNL projeto licenciamento' via Bing News RSS (English and Portuguese) — zero project-specific hits; the only 'Nimofast' news coverage found relates to an unrelated commodity-tokenization platform launch, not the LNG terminal. Checked the GIIGNL 2026 Annual Report — no mention of Antonina or Nimofast.",
+  "refs": [],
+  "verification_log": [],
+  "gogpt_prior_assessment": "No GOGPT neighbor plant is listed for this terminal (zero matches within 30 km in the neighbor file; GEM's own gogpt_prior flag is 'no').",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "No generation of any kind documented at this site; nothing to add to GOGPT.",
+  "status_or_other_findings": "Terminal status: shelved (inferred 2y). Owner: unknown entity (65%) + Nimofast (35%); operator Nimofast. Not floating/offshore per GEM's own record (fixed onshore concept, unlike the FSRU-type projects elsewhere in this shard).",
+  "notes": "Do not act on the status findings above; this is a captive-power research record only."
+ },
+ {
+  "terminal": "Paraná FSRU",
+  "terminal_id": "T100000130932",
+  "country": "Brazil",
+  "verdict": "SCREENED",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "",
+  "captive_summary": "Cancelled (inferred 4y) FSRU proposal on the Paraná coast backed by Companhia Paranaense de Energia (Copel) and Shell PLC; despite the credibility of the sponsors, no engineering/FEED-level design describing an onboard or fenceline power arrangement was found in any public source — screened per the SOP's cancelled-proposal-with-no-published-design clause.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Searched 'Paraná FSRU Copel Shell terminal GNL cancelado' and '\"Paraná FSRU\"' via Bing News RSS — zero hits. Checked the GIIGNL 2026 Annual Report — no mention of a Paraná-state FSRU project distinct from the existing Araucária-serving arrangement.",
+  "refs": [],
+  "verification_log": [],
+  "gogpt_prior_assessment": "No GOGPT neighbor plant is listed for this terminal (zero matches within 30 km in the neighbor file; GEM's own gogpt_prior flag is 'no').",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "No generation of any kind documented; project cancelled before reaching a published design.",
+  "status_or_other_findings": "Terminal status: cancelled (inferred 4y). Owners: Companhia Paranaense de Energia (Copel) and Shell PLC. GEM lists power_plants_supplied as Araucária power station (the intended downstream customer, i.e. a direction-test case, not a captive relationship).",
+  "notes": "Do not act on the status findings above; this is a captive-power research record only."
+ },
+ {
+  "terminal": "Pecém FSRU",
+  "terminal_id": "T100000130548",
+  "country": "Brazil",
+  "verdict": "INSUFFICIENT",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "",
+  "captive_summary": "This GEM record carries two unit-rows: a 'Petrobras Terminal' unit now retired, and a proposed 'Eneva/Ceiba Terminal' unit with no vessel assigned. The retired Petrobras-chartered unit historically used the FSRUs Golar Spirit and Golar Winter (per Golar LNG's SEC 20-F filings) — Golar Winter was later renamed Energos Winter, but GIIGNL's 2026 Annual Report places Energos Winter at a different Brazilian terminal (TGS Santa Catarina) as of 2025 before its 2025 redeployment to Damietta, Egypt, so GEM's 'vessel: Energos Winter' field on this record likely reflects a stale/historical assignment rather than current equipment. No public source documents onboard generator/engine specs for any vessel actually tied to this site, and the proposed Eneva/Ceiba unit has no published design.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "GIIGNL 2026 Annual Report: FSRU fleet table places Energos Winter (ex Golar Winter, 138,000 cbm, built 2004/converted 2009) at Damietta, Egypt; the narrative text states 'TGS Santa Catarina...previously operated with the FSRU Energos Winter before its redeployment to Egypt's Damietta terminal in 2025' — a different Brazilian site than Pecém. Golar LNG's FY2015 20-F (SEC EDGAR) confirms 'Golar Spirit and Golar Winter are FSRUs currently under long-term charters with Petrobras' historically. Bing News RSS searches for 'Pecém FSRU Eneva gerador MW', 'Pecém FSRU Eneva navio' returned no engineering detail for either unit. Shared WebSearch pool exhausted this session; used SEC EDGAR full-text search, GIIGNL PDF text extraction, and Bing News RSS as fallbacks.",
+  "refs": [
+   "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf"
+  ],
+  "verification_log": [
+   {
+    "url": "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf",
+    "tokens": [
+     "Energos Winter",
+     "Damietta"
+    ],
+    "result": "PASS",
+    "note": "confirms Energos Winter's 2025 redeployment to Damietta via TGS Santa Catarina, not Pecém"
+   },
+   {
+    "url": "https://www.sec.gov/Archives/edgar/data/1207179/000120717916000034/glng-12312015x20f.htm",
+    "tokens": [
+     "Golar Winter",
+     "Petrobras"
+    ],
+    "result": "FAIL",
+    "note": "HTTP 403, no Wayback snapshot available to verify against — dropped from refs"
+   }
+  ],
+  "gogpt_prior_assessment": "Nearest GOGPT plants are Termopecém power station (2,240 MW, 'cancelled - inferred 4y', 3.4 km) and CSP power station (200 MW, operating, 8.5 km). GEM's own power_plants_supplied field names 'Termoceará power station, Fortaleza power station' — different names from both GOGPT neighbors found, suggesting these are separate regional merchant-generation projects rather than this terminal's own captive plant. No independent (non-gem.wiki) source on Termopecém or CSP was found in the time available.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "No terminal-side (as opposed to downstream merchant) generation has been documented for either unit-row.",
+  "status_or_other_findings": "Two unit-rows: 'Eneva/Ceiba Terminal' (proposed, no substatus) and 'Petrobras Terminal' (retired, actual). Owner: Eneva SA (100%). power_plants_supplied: Termoceará power station, Fortaleza power station. Vessel-identity finding: GEM's 'vessel: Energos Winter' field appears to describe the now-retired Petrobras-era deployment, and per GIIGNL 2026 that vessel had since moved on to TGS Santa Catarina and then Damietta, Egypt (2025) — worth a fresh vessel-assignment check in a future FSRU-sync pass, but not acted on here.",
+  "notes": "Do not act on the vessel-reassignment finding above; flagging only. This is a captive-power research record only."
+ },
+ {
+  "terminal": "Porto Norte Fluminense FSRU",
+  "terminal_id": "T100000130933",
+  "country": "Brazil",
+  "verdict": "INSUFFICIENT",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "",
+  "captive_summary": "Proposed FSRU at Porto Norte Fluminense, Rio de Janeiro state, with no vessel yet assigned and no engineering or FEED-level design describing an onboard/fenceline power arrangement found in any public source checked.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Searched 'Porto Norte Fluminense FSRU terminal GNL', '\"Porto Norte Fluminense\"' via Bing News RSS (English and Portuguese) — zero project-specific hits. Checked the GIIGNL 2026 Annual Report — no mention of Porto Norte Fluminense as a distinct project.",
+  "refs": [],
+  "verification_log": [],
+  "gogpt_prior_assessment": "Single GOGPT neighbor: Porto Norte Fluminense power station (3,992.2 MW, 'announced/pre-construction/shelved - inferred 2y', 10.1 km). GEM's own power_plants_supplied field names 'Porto Norte Fluminense I & II power stations', matching this GOGPT record's name-containment pattern — i.e. the terminal (if built) exists to feed this downstream power project, the opposite of a captive relationship (direction test), not a captive finding for the terminal itself.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "The named GOGPT plant is the terminal's downstream customer (PowerPlantsSupplied direction), not its captive supply; already tracked separately in GOGPT.",
+  "status_or_other_findings": "Terminal status: proposed. Owner: Porto Norte Fluminense SA (100%). power_plants_supplied: Porto Norte Fluminense I & II power stations.",
+  "notes": "Do not act on the status findings above; this is a captive-power research record only."
+ },
+ {
+  "terminal": "Porto do Açu FSRU",
+  "terminal_id": "T100000130688",
+  "country": "Brazil",
+  "verdict": "INSUFFICIENT",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "",
+  "captive_summary": "Operating FSRU BW Magna (173,400 cbm membrane LNG carrier, built 2019 by DSME, owned by BW LNG) is moored offshore at Porto do Açu, Rio de Janeiro, arrived/berthed June 2020. As a moored, off-grid FSRU it must generate its own power for regasification and hotel loads by construction (the FSRU-onboard convention), but no public source found names the vessel's specific onboard generator/engine configuration, fuel-burn mode, or MW rating.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Checked Upstream Online's June 2020 arrival article (paywalled beyond the search snippet — confirms arrival/berthing only); GIIGNL 2026 Annual Report FSRU fleet table (173,400 cbm, DSME-built 2019, BW-owned, regas 5.6 mtpa — tonnage/capacity only, no power-plant detail); attempted BW Group / BW LNG fleet pages (404) and Wayback CDX for bw-group.com and bwlng.com (no fleet/vessel-spec snapshots found). Shared WebSearch pool exhausted this session; used Bing News RSS, GIIGNL PDF text, and Wayback CDX as fallbacks.",
+  "refs": [
+   "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf"
+  ],
+  "verification_log": [
+   {
+    "url": "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf",
+    "tokens": [
+     "BW Magna",
+     "Port Açu"
+    ],
+    "result": "PASS",
+    "note": "tonnage/builder/regas-capacity only, no power-plant spec"
+   }
+  ],
+  "gogpt_prior_assessment": "Nearest GOGPT plants are GNA II power station (1,672 MW, operating, 2.29 km) and GNA I power station (1,338 MW, operating, 2.57 km). These are the well-documented Gás Natural Açu (GNA) LNG-to-power complex (BP/Prumo/Siemens JV, commercial operations began Sept 2021 per Upstream Online) fed by regasified gas piped from this FSRU — GEM's own power_plants_supplied field confirms 'GNA I, GNA II, GNA III and IV power stations' as this terminal's downstream customers, the opposite of a captive relationship (direction test), not a captive finding for the terminal itself.",
+  "gogpt_candidate": "REVIEWER CALL",
+  "gogpt_candidate_basis": "GNA I/II are already-tracked downstream merchant plants, correctly DO NOT ADD as this terminal's captive supply. Separately, the FSRU-onboard structural prior suggests the vessel itself likely self-generates, but no citable nameplate was found and any such generation would be vessel-mounted — leaving the terminal's own generation as a reviewer call rather than a GOGPT ADD.",
+  "status_or_other_findings": "Operating status confirmed (actual). Owners: Prumo Logistica (46.9%), Siemens (33%), BP PLC (20.1%); operator KN Energies. Vessel BW Magna, 173,400 cbm, built 2019 by DSME, arrived/berthed at Açu Port June 2020 per Upstream Online.",
+  "notes": "GNA operations-start source: https://www.upstreamonline.com/lng/operations-begin-at-lng-to-power-plant-at-brazil-s-acu-port/2-1-1069056 (found via Bing News RSS snippet only; full article is behind Upstream's login/paywall redirect and was not independently value-verified, so it is NOT included in refs — cited here for context only, not as a staged citation). Do not act on the status findings above; this is a captive-power research record only. QC adjudication 2026-08-02 (FSRU harmonization pass): remains INSUFFICIENT — a genuine follow-up effort found no citable vessel- or class-specific documentation of BW Magna's onboard generator/engine type. Tried and exhausted: bw-group.com's own BW Magna project page (specs storage/regas/reliquefaction only, no engine data), bw-group.com/about-us/our-fleet/ (fleet overview by vessel-type counts only, no per-vessel detail), bw-group.com's newbuilding-programme page (describes ME-GI/XDF propulsion but only for its NEW 2024+ Hanwha Ocean/HD Hyundai orders, not the 2019 DSME-built BW Magna — not applicable), bw-group.com sustainability page (no fleet engine detail); offshore-energy.biz's four BW Magna articles (naming, Sembawang/Sembcorp Marine Admiralty modification, arrival, first cargo — capacity/builder/hull-number only, no engine/generator spec); lngprime.com's BW Magna arrival article (same); marinetraffic.com and vesselfinder.com vessel-database lookups (403/no engine field returned); en.wikipedia.org/wiki/BW_Magna (404, no page); archive.org full-text search for 'BW Magna' + DFDE (zero hits). No class-level DSME-173,400cbm-newbuild engine designation was found either. Leaving INSUFFICIENT per instructions rather than inferring an unconfirmed engine type."
+ },
+ {
+  "terminal": "Presidente Kennedy FSRU",
+  "terminal_id": "T100000130934",
+  "country": "Brazil",
+  "verdict": "INSUFFICIENT",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "",
+  "captive_summary": "Shelved (inferred 2y) FSRU proposal at Presidente Kennedy, Espírito Santo, backed by Porto Central Complexo Industrial Portuário SA; no vessel assigned and no engineering/FEED-level design describing an onboard/fenceline power arrangement found in any public source checked.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Searched '\"Presidente Kennedy\" GNL terminal', 'Presidente Kennedy FSRU Porto Central terminal GNL' via Bing News RSS (English and Portuguese) — zero project-specific hits. Checked the GIIGNL 2026 Annual Report — no mention of Presidente Kennedy or Porto Central as a distinct FSRU project.",
+  "refs": [],
+  "verification_log": [],
+  "gogpt_prior_assessment": "Nearest GOGPT plants are Presidente Kennedy power station (883.2 MW, 'pre-construction', 7.2 km) and Porto Norte Fluminense power station (3,992.2 MW, 'announced/pre-construction/shelved - inferred 2y', 24.5 km). GEM's own power_plants_supplied field names 'Presidente Kennedy power station', matching the closer GOGPT record's name-containment pattern — i.e. the terminal (if built) exists to feed this downstream power project, the opposite of a captive relationship (direction test), not a captive finding for the terminal itself.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "The named GOGPT plant is the terminal's downstream customer (PowerPlantsSupplied direction), not its captive supply; already tracked separately in GOGPT.",
+  "status_or_other_findings": "Terminal status: shelved (inferred 2y). Owner: Porto Central Complexo Industrial Portuário SA (100%). power_plants_supplied: Presidente Kennedy power station.",
+  "notes": "Do not act on the status findings above; this is a captive-power research record only."
+ }
+]

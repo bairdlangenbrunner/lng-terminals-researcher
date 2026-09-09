@@ -1,0 +1,62 @@
+[
+  {
+    "category": "dormant_revival_check",
+    "terminal_id": "T100000130454",
+    "unit_id": "",
+    "terminal_name": "Le Havre-Antifer LNG Terminal",
+    "issue": "Web-searched for revival at the Antifer site (cancelled 2013, prior sponsor Gaz de Normandie SAS / Poweo-CIM). No revival by the original sponsor: the 2011-era Gaz de Normandie coverage confirming the project 'maintained pending the next GPMH call for proposals' predates the 2013 cancellation and is not evidence of any 2025-2026 activity -- no subsequent Gaz de Normandie announcement was found. However, found a DIFFERENT, much earlier-stage signal: GRTgaz's March 2023 ten-year transmission development plan discloses 'opportunity studies' for three possible new Le Havre-area import projects (two onshore terminals + one floating unit), with the floating option potentially moored at the port of Antifer in Saint-Jouin-Bruneval -- the same physical site as the cancelled GEM record. This is a network-operator capacity study, not a sponsored project: no developer/operator identified, no site confirmed (the mayor of Saint-Jouin-Bruneval said he had never been informed), no permit or regulatory filing. Well below the sponsor+location+concrete-step threshold, so NOT staged as new_terminal; staged as monitor_list (see france.monitor.json) given it names the same historically-dormant site and could mature into a real dead-and-revived case in a future batch.",
+    "severity": "low",
+    "suggested_action": "No edit to T100000130454 (stays cancelled). Track the GRTgaz opportunity-study signal via the monitor_list entry.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "dormant_revival_check",
+    "terminal_id": "T100000130450",
+    "unit_id": "",
+    "terminal_name": "Fos Lavera Marseille LNG Terminal",
+    "issue": "Web-searched for revival at the Fos-sur-Mer / Fos Faster site (cancelled 2014-2015, sponsor Fos Faster LNG Terminal SAS). No revival evidence found for 2025-2026: the project owner formally told the CNDP (national public-debate commission) in Dec 2015 the LNG terminal project was abandoned, and no subsequent LNG-specific announcement at this site was found. The only current Fos-sur-Mer LNG-adjacent activity is Elengy's separate 'Medhyterra' project -- a LOW-CARBON AMMONIA import terminal (30,000 m3 tank replacing a decommissioned LNG tank, FID expected 2026, commissioning 2029) sited at the existing, still-operating Fos Tonkin LNG Terminal (T100000130452), which already carries a 'proposed / Ammonia Import Terminal' unit row in the current GEM export -- i.e. this is already captured, not a gap, and ammonia (NH3) is an out-of-scope/read-only field per methodology regardless.",
+    "severity": "low",
+    "suggested_action": "No action needed. Terminal stays cancelled; the Medhyterra ammonia unit is already represented on Fos Tonkin and NH3 fields are read-only.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "gemwiki_coverage_crosscheck",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "",
+    "issue": "Discovery SOP §4.0b: enumerated gem.wiki France LNG-terminal pages (Dunkirk, Fos Cavaou, Fos Tonkin, Montoir, Le Havre FSRU, Le Havre-Antifer) -- all match existing export-CSV TerminalIDs 1:1 (7 rows / 6 TerminalIDs, one of which -- Fos Lavera Marseille -- also has a wiki page under a related name). No orphan gem.wiki-only page found for France.",
+    "severity": "low",
+    "suggested_action": "No action needed -- clean cross-check.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "scope",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Corsica FSRU proposal (Bastia/Lucciana)",
+    "issue": "Long-standing (2014-2015 era) proposal for a 40,000 m3 FSRU anchored off Bastia to supply EDF's Lucciana and Grand Ajaccio power plants via an onshore 'Cyrenee' pipeline, discussed in French Senate questions and a vie-publique.fr policy report. No current sponsor took a concrete step in the last decade; most recent 2025-era coverage found indicates EDF is instead converting the Lucciana plant to liquid biomass, not gas, suggesting this FSRU concept has not advanced and may be superseded. Well below the sufficient-information threshold (no sponsor, no site permit, no capacity contract) -- not staged as new_terminal or monitor_list.",
+    "severity": "low",
+    "suggested_action": "No action needed under current information; re-check only if a concrete sponsor/permit step is later reported.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "scope",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "GazoTech bioGNL project (Guadeloupe)",
+    "issue": "GazoTech (Nantes-based, founder with Guadeloupe roots) is developing pyrogazification-based bioLNG PRODUCTION from waste wood for truck/port bunkering/decarbonization use in Guadeloupe, with reported plans for truck-loading bays and a port dock. This is a domestic production + bunkering/trucking scheme, not a marine LNG import/export terminal -- fails the marine-cargo-crossing-a-border scope gate on two independent grounds (production facility, not import; bunkering/trucking end-use). Resolved before staging per the never-stage-with-doubt rule; not staged.",
+    "severity": "low",
+    "suggested_action": "No action needed under current scope rules.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "other",
+    "terminal_id": "T100000131008",
+    "unit_id": "",
+    "terminal_name": "Le Havre FSRU",
+    "issue": "Confirmed via TotalEnergies press release (Nov 2025) and press coverage that the Cape Ann FSRU was demobilized and departed Le Havre; the current GEM export already carries Status=retired for this terminal, consistent with the known 2026-01 departure -- no discrepancy found, no edit needed. Noted for completeness since this was flagged as known context in the batch brief.",
+    "severity": "low",
+    "suggested_action": "No action needed -- GEM status already correct.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "category": "citation_rot_partially_recovered",
+    "terminal_id": "T100000130424",
+    "unit_id": "G100002042400",
+    "terminal_name": "Eagle FSRU",
+    "issue": "REVISED (coordinator caught a url_verifier.py CDX-fallback bug that made eagle-lng.com look unrecoverable): 6 of 7 fields originally flagged for deletion are RESTORED via a recovered Wayback capture of eagle-lng.com (20191230031208) -- FacilityType, Owner, Pipelines, Cost, ProposalYear, ProposalMonth all verify against the archived page content (Cost and the date specifically needed a second sponsor-domain capture, energiafalcione.com, since the eagle-lng.com page itself has no date). Only Capacity (8.10 mtpa) genuinely stays a staged deletion: the recovered sources describe two DIFFERENT, mutually-inconsistent capacity figures from two different design eras of the project (2008/9 onshore: 8, expandable to 12, bcm/yr; later FSRU concept: 4-8 bcma terminal + 10 bcma pipeline) -- neither cleanly matches the stored 8.10 mtpa under the standard 1.36 bcm/y-per-mtpa conversion. This is a genuine conflicting-data case, not an absence of sourcing. Status/Substatus/ShelvedYear/CancelledYear/StopYear [ref] remain unresolved blank_ref gaps (out of scope for this deletion analysis --  GEM-inferred lifecycle metadata, never deleted). FloatingVesselName missing_field is likely N/A (project never reached vessel-chartering stage before its ~2008-2009 dormancy).",
+    "severity": "medium",
+    "suggested_action": "Reviewer should confirm the Capacity call: either accept the deletion pending someone picking a design-era to trust, or independently research which of the two historical figures (or a later, undiscovered third figure) the project should be credited with. SourceWatch's 'Eagle_LNG_Terminal' page was checked (now returns HTTP 200 after re-test) but turned out to be an unrelated Florida, US project of the same generic name, AND is GEM/CoalSwarm-affiliated content regardless -- not used, not usable even if on-topic (anti-circularity rule).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dormant_revival_note",
+    "terminal_id": "T100001084613",
+    "unit_id": "G100001096073",
+    "terminal_name": "Port of Vlora FSRU 2",
+    "issue": "For context only, not an edit: this record (added to the live DB 2026-07-28) already IS the dormant-revival project at the Port of Vlora site -- the 2026 Aktor Energy USA / Venture Global / Atlantic SEE LNG Trade integrated energy hub -- correctly linked via AssociatedTerminals to the cancelled Port of Vlora FSRU (G100002092400). No further Discovery-side action needed; confirmed per orchestrator note. Owner 'Aktor LNG USA' matches existing entity 100002025152 -- left as-is, no entity change staged.",
+    "severity": "low",
+    "suggested_action": "None -- informational.",
+    "researcher_initials": "AI-draft"
+  }
+]

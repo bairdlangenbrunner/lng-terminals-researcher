@@ -89,6 +89,9 @@ manual:
   never a reason to withhold a `CaptiveGasPower = True`, and (b) **size is never a reason to return
   `gogpt_candidate: DO NOT ADD`** — a sub-50 MW captive plant is a legitimate GOGPT candidate.
   Reserve DO NOT ADD for "a record already exists" or "not a gas power station at all."
+  (GOGPT *reviewer practice* for NEW additions does apply plant-level thresholds and drops
+  cancelled projects — see the 2026-07-31 note in §4a — but that screen runs on the GOGPT side;
+  it never gates our verdicts, which annotate size/tech/status instead.)
 - **GOGPT naming convention:** a captive plant with no standalone name is called "*<Host> power
   station*" — e.g. "XYZ LNG Terminal power station." This is the name-containment signal the matcher
   keys on, and the reason a real captive relationship can hide behind a generic plant name.
@@ -262,6 +265,28 @@ rating is never a reason to withhold the `True`.
 
 ## 3. Phases
 
+0. **Scope from the coordinate-anchored terminal universe — NEVER from a country list (user
+   directive 2026-08-01).** The universe for any increment is every unique `TerminalID` in the
+   fresh export, anchored by its `Latitude`/`Longitude` point; terminals with **missing/invalid
+   coordinates are a first-class bucket that must be explicitly incorporated**, not silently
+   dropped by any geographic filter. Hand-curated country lists defined the americas increments'
+   scope and produced two coverage failures found by the 2026-08-01 audits: the 8-country
+   americas-residue, and then **156 more americas terminals** (incl. Cameron LNG and Lake
+   Charles) that "americas-complete" never crawled because the early increments recorded only
+   their confirmed subset and the hemisphere pass crawled 45 hand-picked terminals.
+   Consequences, all mandatory:
+   - **Every terminal researched or screened lands in `captive_terminal_first.json` with a
+     recorded verdict** (SCREENED included — a screen that isn't recorded is invisible to every
+     audit and re-enters the queue forever). A verdict that lives only in a memo does not count
+     as coverage.
+   - **Run `python scripts/captive_coverage_audit.py --pending <planned-increments>` at every
+     kickoff and before claiming any region complete.** It diffs the full export universe
+     against the union of live increments' terminal_first files, reports missing-coordinate
+     terminals and country-tag-vs-coordinate mismatches, and exits non-zero if anything is
+     uncrawled outside the declared planned increments.
+   - New GEM records appear between increments (Port of Vlora FSRU 2 postdates the europe pass)
+     — the audit on a fresh pull is what catches them; a region being "done" is a statement
+     about a past export, not a permanent fact.
 1. **Match (deterministic)** — `scripts/captive_power_colocation.py` reads the LNG all-fields CSV,
    pulls GOGPT from Postgres, and pairs them on three signals (geospatial haversine, name
    containment, existing captive flags), resolving each GOGPT plant to ONE primary terminal so
@@ -342,7 +367,12 @@ rating is never a reason to withhold the `True`.
    GOGPT plant's `gogpt_plant_id` / `gogpt_plant` / `gogpt_wiki_url` (from the matcher deliverable) —
    the build renders these as the three left-most, **review-only** columns of the paste sheet
    (`updates_in_database_format`), italicized "do NOT paste"; the gem.wiki URL is a navigation
-   pointer to the GOGPT record, never a citation. **When no GOGPT captive record exists for a
+   pointer to the GOGPT record, never a citation. **The three travel together: any record that
+   names a plant in `gogpt_plant` MUST also carry its `gogpt_plant_id`** — the id comes from the
+   GOGPT Postgres record and GOGPT's own `captive` flag is irrelevant to filling it (the id
+   identifies the plant, it does not endorse a captive match; the Asia batch shipped 35
+   named-but-id-blank rows because the id was only wired for captive-matched records — user-caught,
+   2026-08-01). If a neighbors/priors computation keeps the plant name, it keeps `plant_id` too. **When no GOGPT captive record exists for a
    confirmed terminal** (the terminal-first case — GOGPT doesn't track its captive/mechanical-drive
    power, e.g. all of Texas): either leave the annotation cols empty (the build emits them on key
    *presence* now, with an explanatory header note) OR, if useful, stamp the **nearest GOGPT plant by
@@ -414,6 +444,22 @@ record). Governing principle, proven in Texas:
   `gogpt-researcher` repo's Discovery workflow — its seed backlog
   (`notes/backlog_captive_power_candidates.md` there) points back at this SOP's
   `captive_gogpt_candidates.json` files. Nothing GOGPT-side is ever staged from this repo.
+- **GOGPT reviewer practice (Natalia, 2026-07-31): Europe + Americas captive plants from this
+  workflow's workbooks are now IN GOGPT.** She applied them after running her own screen over the
+  spreadsheet: **cancelled projects are never added GOGPT-side**, and **sub-20 MW units
+  (aeroderivative GTs / gensets) are added only when the plant's total capacity is ≥20 MW (EU),
+  with the threshold raised to 50 MW for Russia** (her wording; exact per-unit vs per-plant scope of
+  the aeroderivative rule unconfirmed). **Technology gate confirmed (2026-08-03): steam
+  turbogenerators do NOT qualify** — she moved Toscana FSRU (26.7 MW of BOG-fired steam TGs, our
+  EU qualifying row) to Excluded because steam turbines are not aeroderivative gas turbines;
+  LNG-side `CaptiveGasPower=True` for Toscana is unaffected (gas-fired on-site generation, no
+  technology gate on our lane). These are GOGPT-side inclusion calls only — they change
+  NOTHING on the LNG lane (`CaptiveGasPower` keeps its no-floor, cancelled-included rules) and
+  verdicts here still never size-gate (§2a). But make her screen runnable without re-research: the
+  `gogpt_candidates` tab / memo should carry per-unit technology (aeroderivative vs frame GT vs
+  genset), per-unit MW, plant-total MW, and project status. Fresh GOGPT pulls after 2026-07-31
+  contain her Europe/Americas additions — a candidate whose record now exists is "already exists"
+  (DO NOT ADD), not a matcher bug.
 
 ## 4. Recurring findings to expect (from the Louisiana test case)
 

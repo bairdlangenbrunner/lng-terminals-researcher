@@ -1,0 +1,182 @@
+[
+  {
+    "terminal": "Digha FSRU",
+    "terminal_id": "T100000130437",
+    "country": "India",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "yellow",
+    "captive_summary": "Never built. H-Energy (74%) / K Line (26%) proposed an offshore FSRU/FSU off Digha, West Bengal (JV signed Dec 2017) to regasify LNG for West Bengal and Bangladesh customers; project never progressed past proposal and GEM records it cancelled (inferred ~4y). No EPC, construction, or design-stage captive-power documentation exists because the project never reached a detailed-design stage.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Offshore Energy / World Maritime News / Financial Express (Dec 2017) report the H-Energy/K Line JV agreement for a proposed FSRU/FSU off Digha; no later source shows construction, FID, or a published design. GEM status: cancelled.",
+    "refs": [
+      "https://www.offshore-energy.biz/h-energy-k-line-join-forces-on-indian-lng-import-project/"
+    ],
+    "verification_log": [
+      {"url": "https://www.offshore-energy.biz/h-energy-k-line-join-forces-on-indian-lng-import-project/", "tokens": ["K Line", "74%", "Digha"], "result": "PASS", "note": "confirms proposal-stage JV only"}
+    ],
+    "gogpt_prior_assessment": "",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No plant was ever built or designed in detail; nothing to add.",
+    "status_or_other_findings": "",
+    "notes": "SCREEN criterion: cancelled-and-never-built proposal (SOP screen class). No construction, no published engineering design ever found — a captive-power finding is not possible because no design-stage document exists."
+  },
+  {
+    "terminal": "Ennore LNG Terminal",
+    "terminal_id": "T100000130662",
+    "country": "India",
+    "verdict": "YES",
+    "mechanical": "False",
+    "captive_category": "power_generation",
+    "hardware_summary": "On-site captive combined-heat-and-power plant using gas turbine generators; rated 27 MW per EPC contractor (Black & Veatch), and 26 MW per IndianOil LNG's own post-expansion power-balance filing (existing 14 MW + 12 MW for the 5→10 MMTPA expansion).",
+    "fuel_basis": "IndianOil LNG's environmental-clearance filing states terminal power is 'sourced from internal captive power plant through Gas Turbine Generators' — gas turbines, gas-fired.",
+    "confidence": "green",
+    "captive_summary": "Ennore (IndianOil LNG, Kamarajar/Ennore Port) has an on-site captive combined heat and power plant built by Black & Veatch specifically to power the regasification process, run on gas turbine generators. IndianOil LNG's own EC/CRZ filing states total post-expansion terminal power demand of 26 MW (14 MW existing + 12 MW for the 5→10 MMTPA expansion) is 'sourced from internal captive power plant through Gas Turbine Generators.'",
+    "electric_mw": "26",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Black & Veatch's own project page (bv.com) states its EPC scope for Ennore included 'designing and building the 27-megawatt captive combined heat and power plant required for the regasification process' (also republished verbatim by Indian Chemical News and The Blue Book — same underlying BV statement, counted as one source). Independently, IndianOil LNG's own expansion EC/CRZ clearance filing (indianoillng.com PDF, File No. 11-30/2011-IA) states: 'Total power requirement of LNG terminal post expansion will be 26 MW (Existing 14 MW + 12 MW for proposed expansion) which will be sourced from internal captive power plant through Gas Turbine Generators.' This is a primary regulatory filing by the terminal owner, independent of the BV press material, and both are verified.",
+    "refs": [
+      "http://indianoillng.com/wp-content/uploads/2026/07/IOLPL-Expansion-EC-CRZ-Clearance.pdf",
+      "https://www.bv.com/projects/ennore-lng-terminal-black-and-veatch-completes-design-to-commissioning-of"
+    ],
+    "verification_log": [
+      {"url": "http://indianoillng.com/wp-content/uploads/2026/07/IOLPL-Expansion-EC-CRZ-Clearance.pdf", "tokens": ["Gas Turbine Generators", "captive power plant", "26 MW"], "result": "PASS", "note": "primary owner filing; https version failed TLS cert check, http:// version passed"},
+      {"url": "https://www.bv.com/projects/ennore-lng-terminal-black-and-veatch-completes-design-to-commissioning-of", "tokens": ["27-megawatt captive combined heat and power plant"], "result": "PASS", "note": "EPC contractor's own project page"}
+    ],
+    "gogpt_prior_assessment": "The GOGPT prior (Kattupalli power station, 900 MW, 0.37 km, captive=False) is correctly marked non-captive: it is Chennai Power Generation Ltd's (a General Mediterranean Holding subsidiary) separate proposed 900 MW RLNG combined-cycle merchant/IPP plant at Kattupalli, unrelated in ownership and scale (900 MW vs the terminal's own 26-27 MW CHP) to Ennore's on-site captive plant.",
+    "gogpt_candidate": "ADD",
+    "gogpt_candidate_basis": "The terminal's own ~26-27 MW gas-turbine-generator captive CHP plant (built by Black & Veatch, cited in IndianOil LNG's own EC filing) has no existing GOGPT record (the only nearby GOGPT entity, Kattupalli, is a distinct 900 MW third-party merchant plant) — a citable nameplate exists, so this is a genuine small captive gas generating plant GOGPT is missing.",
+    "status_or_other_findings": "The Hindu (per search snippet, not independently fetched due to site block) reported a TANGEDCO feasibility study for an 18-20 MW gas power plant 'leveraging natural gas pipeline infrastructure at Ennore' — this reads as a downstream user of Ennore's regasified gas (PowerPlantsSupplied direction: gas piped OUT to an external plant), not captive power INTO the terminal. Not verified/actioned here; flagging for the PowerPlantsSupplied lane if pursued in a future batch.",
+    "notes": "Direction test applied: the 26-27 MW CHP plant powers the terminal's OWN regasification (captive, correct direction). The TANGEDCO/Kattupalli-adjacent power interest is the opposite (supplied-to) relationship and is out of scope for this verdict."
+  },
+  {
+    "terminal": "GAIL Kakinada FSRU",
+    "terminal_id": "T100000130445",
+    "country": "India",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "yellow",
+    "captive_summary": "Never built. Shell, Engie (GDF Suez) and Andhra Pradesh Gas Distribution Corp (APGDC) signed a Jan 2015 agreement for a 3.5-5 MMTPA FSRU at Kakinada, but Shell and Engie exited in 2017-18 over the state's refusal to guarantee minimum gas offtake volumes; the project never reached FID or construction and GEM records it cancelled (inferred ~4y).",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Riviera Maritime News: 'Shell and Engie wanted the Indian partner to guarantee a minimum volume on which to base their final investment decision' — guarantee never came, both partners quit the Kakinada FLNG import project.",
+    "refs": [
+      "https://www.rivieramm.com/news-content-hub/shell-and-engie-quit-indias-kakinada-lng-project-28534"
+    ],
+    "verification_log": [
+      {"url": "https://www.rivieramm.com/news-content-hub/shell-and-engie-quit-indias-kakinada-lng-project-28534", "tokens": ["minimum volume", "Kakinada"], "result": "PASS", "note": "confirms exit before FID/construction"}
+    ],
+    "gogpt_prior_assessment": "",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No plant was ever built or designed in detail; nothing to add.",
+    "status_or_other_findings": "",
+    "notes": "SCREEN criterion: cancelled-and-never-built proposal — major partners exited before FID, no construction or published detailed design ever existed."
+  },
+  {
+    "terminal": "Gangavaram LNG Terminal",
+    "terminal_id": "T100000130433",
+    "country": "India",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "yellow",
+    "captive_summary": "Never built. Petronet signed an agreement with Gangavaram Port in 2012 for a 5 MMTPA, ~Rs 4,500 crore LNG terminal; multiple later re-announcements over the following decade never converted to FID or construction, and GEM records the project shelved (inferred ~2y).",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Economic Times (2012): 'Petronet LNG today signed an agreement to build a 5 million tons a year import facility at Gangavaram port on the Andhra coast' (Rs 4,500 crore). No subsequent source shows construction start, EPC award, or commissioning in the 14 years since; GEM status is shelved.",
+    "refs": [
+      "https://economictimes.indiatimes.com/industry/energy/oil-gas/petronet-signs-pact-for-rs-4500-crore-gangavaram-lng-terminal/articleshow/12965450.cms"
+    ],
+    "verification_log": [
+      {"url": "https://economictimes.indiatimes.com/industry/energy/oil-gas/petronet-signs-pact-for-rs-4500-crore-gangavaram-lng-terminal/articleshow/12965450.cms", "tokens": ["Gangavaram", "Petronet"], "result": "PASS", "note": "confirms 2012 agreement only, no construction ever reported"}
+    ],
+    "gogpt_prior_assessment": "",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No plant was ever built or designed in detail; nothing to add.",
+    "status_or_other_findings": "",
+    "notes": "SCREEN criterion: shelved-and-never-built — a 2012 agreement produced no construction, no EPC contract, and no detailed captive-power design in 14 years."
+  },
+  {
+    "terminal": "Gopalpur LNG Terminal",
+    "terminal_id": "T100000131145",
+    "country": "India",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "red",
+    "captive_summary": "Real, active Petronet proposal (proposed status; the design itself has shifted from a 4 MMTPA FSRU to a 5 MMTPA land-based terminal per a July 2025 approval, target commissioning 2027), but no public source found states the power-supply arrangement (grid vs. captive) for either design iteration.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Reviewed: GIIGNL/gasprocessingnews.com report on the FSRU-to-land-based design shift and 2027 target; MoEFCC parivesh.nic.in ToR/EC filings for the project (File Nos. 10/21/2023-IA and 10/21/2023-IA.III) were located but one is a scanned/image PDF with no extractable text on power systems, and no EIA/EMP chapter excerpt discussing power supply was found in the time available. No source — primary or secondary — states whether the terminal will be grid-fed or have on-site generation.",
+    "refs": [],
+    "verification_log": [
+      {"url": "https://parivesh.nic.in/certificates/PETRONET_LNG_LIMITED_(PLL)/5/4312635/specific_tor_IA_OR_INFRA1_424189_2023_4312636_-signed.pdf", "tokens": ["power", "captive", "gas turbine"], "result": "FAIL", "note": "scanned/image PDF, no extractable text; not cited"}
+    ],
+    "gogpt_prior_assessment": "",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No generating plant has been documented; nothing to add absent a finding.",
+    "status_or_other_findings": "Design has shifted from a 4 MMTPA FSRU-based terminal to a 5 MMTPA land-based terminal (approved ~July 2025 per businessworld.in/gasprocessingnews.com), cost increased to over Rs 4,000 crore additional, target start-up 2027. Not actioned here — flagging for the Update workflow's normal facility-type/design review.",
+    "notes": "As-designed captive power on a proposed facility still counts per SOP, but no design document disclosing the power source was found for either the original FSRU or the current land-based design within the research budget. Genuinely INSUFFICIENT, not a documented NO — do not treat the land-based shift or grid-connection prior as a substitute for a source."
+  },
+  {
+    "terminal": "H-Energy Kakinada LNG Terminal",
+    "terminal_id": "T100000130801",
+    "country": "India",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "yellow",
+    "captive_summary": "Never built. H-Energy (via subsidiary East Coast Concessions) signed a Port Service Agreement with Kakinada Seaports in Sept 2019 for an FSU-based regasification facility; H-Energy formally withdrew on 28 June 2024, before construction. GEM records the project shelved (inferred ~2y).",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "PETROWATCH: 'Just like its Jaigarh proposal, H-Energy has decided to scrap its proposal to set up an LNG terminal at Kakinada. On June 28 [2024], privately-owned port operating company Kakinada Seaports applied [to note the withdrawal].'",
+    "refs": [
+      "https://www.petrowatch.com/synopsis.php?artId=21777&w=1"
+    ],
+    "verification_log": [
+      {"url": "https://www.petrowatch.com/synopsis.php?artId=21777&w=1", "tokens": ["scrap", "Kakinada"], "result": "PASS", "note": "confirms withdrawal before construction"}
+    ],
+    "gogpt_prior_assessment": "",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No plant was ever built or designed in detail; nothing to add.",
+    "status_or_other_findings": "",
+    "notes": "SCREEN criterion: shelved/withdrawn-and-never-built — H-Energy formally scrapped the proposal in 2024, no construction or published detailed design ever existed. Distinct from the separate, also-cancelled GAIL/APGDC Kakinada FSRU record."
+  },
+  {
+    "terminal": "Haldia FSRU",
+    "terminal_id": "T100001061415",
+    "country": "India",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "red",
+    "captive_summary": "Real, active proposal: Syama Prasad Mookerjee Port (Kolkata) awarded a 30-year concession (Sept 2025) to a JV of Invenire Petrodyne and Excelerate Energy to develop India's first large floating LNG import terminal at Haldia Dock, initial capacity ~1.5 MMTPA, first-phase commissioning targeted H2 2027. Excelerate as FSRU operator/co-developer, and the terminal's offshore/floating nature, are a strong prior for on-site dual-fuel gas generation — but no source ties a specific vessel or its power-generation design to this project yet.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Confirmed via GEM/GIIGNL/Port News/THEIA Global coverage that Excelerate Energy and Invenire Petrodyne formed a JV (announced India Energy Week 2026) and hold a 30-year concession for a floating LNG terminal at Haldia. Excelerate's press release on its newest newbuild FSRU (delivery 2026, 170,000 m3, 1,000 MMscf/d) states it will be 'equipped with HHI's proprietary LNG regasification system, dual fuel engines, selective catalytic reduction system, best-in-class boil-off gas management' — but that specific hull was elsewhere described as destined for an Iraq LNG terminal, not confirmed as the Haldia vessel. No source assigns a specific vessel, or states its power-generation design, to the Haldia project itself.",
+    "refs": [],
+    "verification_log": [
+      {"url": "https://excelerateenergy.com/news/excelerate-energy-finalizes-agreement-with-hhi-for-newbuild-fsru/", "tokens": ["dual fuel engines", "boil-off gas"], "result": "PASS", "note": "confirms dual-fuel/BOG as Excelerate's newbuild standard, but NOT confirmed as the Haldia-assigned vessel — not cited as a Haldia-specific finding"}
+    ],
+    "gogpt_prior_assessment": "",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No vessel or generating-plant design has been documented specifically for this project; nothing citable to add.",
+    "status_or_other_findings": "GAIL gas pipeline to support the terminal targeted operational by March 2026; first phase commissioning targeted H2 2027 (per search-summarized Excelerate/GIIGNL coverage, not independently re-verified beyond the JV/concession facts above).",
+    "notes": "Strong candidate for a future YES once a specific vessel is assigned: Excelerate's operating model and current newbuild FSRUs run dual-fuel engines on boil-off gas (the brief's own settled-YES class for offshore/off-grid FSRUs), and Haldia is offshore/floating with no grid access by construction. But per the brief's rule that a documented positive requires the actual design/vessel, not company-general practice, this is marked INSUFFICIENT rather than an inferred YES — revisit once Excelerate names the Haldia hull."
+  }
+]

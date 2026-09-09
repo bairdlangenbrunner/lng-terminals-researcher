@@ -57,9 +57,15 @@ The memo reports counts, concentrations (e.g. "orphan refs cluster in pre-2023 B
 `python citation_qc.py [--country "<C>"] [--status <status>] [--max-urls N]` — batch re-verification of EXISTING `[ref]` URLs from the export via `url_verifier.py`. This is the scope-wide, read-side complement to Update SOP §7.2 (which re-verifies only rows a batch touches).
 
 Verdict grading (see the script docstring):
-- **dead** — hard link-rot (404/410/5xx, DNS failure, soft-404, scanned-PDF-no-text). These count toward the §6 escalation threshold.
-- **blocked** — bot-wall/paywall (HTTP 401/403/429, Cloudflare interstitials, members-only). Probably fine for a human; the memo lists them as "verify manually", NOT as rot.
+- **dead** — hard link-rot (404/410, DNS failure, malformed URL, soft-404). These count toward the §6 escalation threshold.
+- **blocked** — bot-wall/paywall (HTTP 401/403/429, Cloudflare interstitials, members-only) **and any 5xx**. Probably fine for a human; the memo lists them as "verify manually", NOT as rot.
+- **unverifiable** — the document loads and a human can read it, but there is no text layer to machine-check (image-only/scanned PDFs: EU PCI fiches, older ministry scans). NOT rot, so it does not count toward §6 — but report it, because a value resting only on such a citation has never been machine-verified.
+- **content-gone** — HTTP 200, but the served page contains neither the terminal name nor any word from the URL's own path slug: a lapsed/repurposed domain, a parking page, or a soft-404 redirect to a section landing page. **Real rot — counts toward §6** alongside `dead`, and the §6 percentage is computed on `dead + content_gone`.
 - **name-miss** — page is live but doesn't contain the terminal name. Advisory only (names are often suffixed or translated).
+
+**HTTP 200 is not evidence a citation lives** (added 2026-07-29). Two Croatian citations graded `ok` for years on status alone: `croenergo.eu/Download.ashx?FileID=…`, whose host now serves an unrelated "European Environment" blog, and `lngworldshipping.com/news/view,croatia-considers-fsru…`, now a domain-parking page. The `content_gone` check catches this class by testing the page against its own slug words — a live article almost always contains the words its URL was cut from. Two caveats when reading its verdicts: it only fires when the terminal name is ALSO absent (a page that names the terminal is never second-guessed), and it **abstains** on URLs whose path is purely opaque (GUID/hex/ID paths yield no word-like tokens, so no verdict is possible — the croenergo case above was in fact confirmed dead by hand, not by the tool). Treat an abstention as unchecked, not clean.
+
+**A 5xx is never rot** (corrected 2026-07-29): an origin/edge error means the server refused or failed, not that the path is gone. CDN bot-walls routinely answer a scripted UA with 502/503 while serving a browser 200 — offshore-energy.biz did exactly that on 26 citations in the natalia-europe pass, which alone had inflated Montenegro to a bogus 63% "rot" (true value: 0%). Same caution for the `unverifiable` split: those two misclassifications together had put two countries over the §6 threshold that do not belong there. **Before reporting any country as over-threshold, check what the "dead" verdicts actually are** — and re-test a sample with a browser User-Agent.
 
 Whole-DB runs are thousands of URLs: shard by country or status band across QC cycles rather than forcing one giant run, and say in the memo which shard ran (`--max-urls` truncation is recorded in the JSON — never report a truncated run as full coverage).
 
@@ -107,7 +113,7 @@ QC doesn't run any other batch's workflow. After the user picks, the Update (or 
 ## §6 Escalation thresholds / pause-and-ask
 
 - **>10% of sampled spot-check cells come back unsupported** → systemic flag. That error rate suggests a methodology or process problem (cluster-coherence drift, transcription pattern), not isolated mistakes. Stop and discuss before recommending routine follow-ups.
-- **>25% dead link-rot in a single country** (dead only — blocked doesn't count) → recommend an **exhaustive** Update for that country; its citation base has decayed past patch-level.
+- **>25% link-rot in a single country** (`dead + content_gone` — blocked and unverifiable don't count) → recommend an **exhaustive** Update for that country; its citation base has decayed past patch-level.
 - **apply_check returns multiple `diverged` edits from one batch** → flag a possible apply-process error (e.g. wrong column pasted); list every diverged cell and ask before assuming later-edit explanations.
 - **`dedup_index.py` shows new project-key collisions** since the last QC pass → possible duplicate terminal created; surface to the user (entities and terminals are shared across GEM trackers).
 - **The export shows obvious schema drift** (colmap derivation fails, enum catalogs full of new values) → stop; data-source issue precedes any QC verdict.
@@ -116,7 +122,10 @@ QC doesn't run any other batch's workflow. After the user picks, the Update (or 
 
 - **Pull a fresh GEM CSV at the start of every QC run** — every pass compares against current data.
 - **Every URL re-check goes through `url_verifier.py`** (directly or via `citation_qc.py`) — no bare curl checks; the soft-error and PDF handling are the point.
-- **QC never writes** — not the live DB, not an xlsx, not staged JSON. Memo only.
+- **QC never edits** — not the live DB, not an xlsx, not a staged edit. The memo is the
+  deliverable. It *does* commit its detection evidence as structured findings JSON under
+  `batches/staging/qc-<stamp>/` (§2.1) — that is an audit trail, not an edit, and the
+  follow-on Update batch reads it instead of re-deriving the worklist from prose.
 - **Always present the memo and stop** — follow-up batches start only on the user's pick.
 - **Never report partial coverage as full** — a truncated or sharded citation sweep says so in the memo.
 

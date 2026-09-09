@@ -1,0 +1,236 @@
+[
+ {
+  "terminal": "Altamira LNG Terminal",
+  "terminal_id": "T100000130570",
+  "country": "Mexico",
+  "verdict": "NO",
+  "mechanical": "False",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "green",
+  "captive_summary": "Altamira is an onshore import/regas terminal using open-rack (seawater) vaporizers with no on-site gas combustion equipment; its documented purpose is piping regasified gas to the adjacent CFE-area combined-cycle plants (CCC Altamira II, III&IV, and V), the opposite of captive power.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "hydrocarbons-technology.com project page: terminal uses 'open rack vaporisers' and CFE 'agreed to buy 5.2bcmpa of regasified LNG for 15 years from Altamira... used for power generation to support existing and future industry.' The 2004 SEMARNAT environmental impact statement (MIA) for the connecting pipeline states the line's purpose is to supply 'turbinas para la generación eléctrica' at the CCC Altamira V power plant, and describes the Puerto Industrial de Altamira as already hosting CCC Altamira II and CCC Altamira III & IV — i.e. the terminal feeds these external CFE-area plants, it does not self-generate.",
+  "refs": [
+   "http://www.hydrocarbons-technology.com/projects/altamiralngmexico/",
+   "http://sinat.semarnat.gob.mx/dgiraDocs/documentos/tamp/estudios/2004/28TM2004G0001.pdf"
+  ],
+  "verification_log": [
+   {
+    "url": "http://www.hydrocarbons-technology.com/projects/altamiralngmexico/",
+    "tokens": [
+     "open rack vaporisers",
+     "Comision Federal de Electricidad"
+    ],
+    "result": "PASS",
+    "note": "bot-blocked live (403); verified via Wayback snapshot 20240529060604"
+   },
+   {
+    "url": "http://sinat.semarnat.gob.mx/dgiraDocs/documentos/tamp/estudios/2004/28TM2004G0001.pdf",
+    "tokens": [
+     "turbinas para la generación eléctrica",
+     "CCC Altamira V"
+    ],
+    "result": "PASS",
+    "note": "OK, primary SEMARNAT MIA filing"
+   }
+  ],
+  "gogpt_prior_assessment": "Both neighbor plants (Altamira III and IV power station, 1096 MW; Altamira II power station, 495 MW) are the CFE-area merchant/utility combined-cycle plants this terminal supplies gas TO via the interconnecting pipeline (direction test) — they are downstream offtakers, not captive power for the LNG terminal. Both already correctly carry gogpt_captive=False. Background: https://www.hydrocarbons-technology.com/projects/altamiralngmexico/ (project page describing the CFE offtake arrangement).",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "Not a gas power station at all from this terminal's perspective — this is the PowerPlantsSupplied direction, already represented by two existing (non-captive) GOGPT records for the neighboring CCC Altamira plants.",
+  "status_or_other_findings": "None tripped.",
+  "notes": "Direction-test case: GEM's own PowerPlantsSupplied field already lists 'Altamira V power station' for this terminal, consistent with the sources found here — gas flows OUT from the terminal to CFE-area power plants, not captive generation at the terminal."
+ },
+ {
+  "terminal": "Lazaro Cardenas LNG Terminal",
+  "terminal_id": "T100000130572",
+  "country": "Mexico",
+  "verdict": "SCREENED",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "yellow",
+  "captive_summary": "Never built. Repsol YPF won the port-land tender in Feb 2004 for a regasification plant at Lázaro Cárdenas (announced capex ~$350M, planned 2008 start), but the project never reached FID (GEM shows no FID year) and was ultimately cancelled with no published engineering design, equipment list, or power-supply arrangement ever surfacing.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Cinco Días (19 Feb 2004): Mexican port authority awarded Repsol YPF the land for a regasification plant at Lázaro Cárdenas, initial investment ~$350M, planned capacity >4 bcm/y (potential 10 bcm/y), start-up estimated 2008 — a land-award/investment announcement with no engineering detail. No subsequent FEED/EPC contract or vendor announcement was found; GEM's own timeline records no FID year for this project.",
+  "refs": [
+   "https://cincodias.elpais.com/cincodias/2004/02/19/empresas/1077201595_850215.html"
+  ],
+  "verification_log": [
+   {
+    "url": "https://cincodias.elpais.com/cincodias/2004/02/19/empresas/1077201595_850215.html",
+    "tokens": [
+     "Repsol",
+     "Lázaro Cárdenas"
+    ],
+    "result": "PASS",
+    "note": "OK"
+   }
+  ],
+  "gogpt_prior_assessment": "No GOGPT plant within 30 km recorded in the neighbor file for this terminal_id — no nearby candidate to assess.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "Project never built and never reached an engineering/design stage; there is no facility to add.",
+  "status_or_other_findings": "Confirms early proposal-stage-only history consistent with GEM's cancelled/inferred-4y status and no FID year.",
+  "notes": "Screen criterion: cancelled-and-never-designed — only a 2004 land-award/investment announcement was ever found, no FEED, no equipment, no power-supply arrangement documented at any stage."
+ },
+ {
+  "terminal": "Manzanillo (Mexico) LNG Terminal",
+  "terminal_id": "T100000130573",
+  "country": "Mexico",
+  "verdict": "INSUFFICIENT",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "",
+  "captive_summary": "Manzanillo is an onshore import/regas terminal whose regasified gas is imported for CFE (Mexico's state power utility, the documented importer of record) and fed into the pipeline network serving Mexico's Central region; no source describes on-site gas-fired generation equipment at the terminal itself, and the terminal is co-located with (not itself) the large CFE Manzanillo (Manuel Álvarez Moreno) combined-cycle complex it is GEM-linked to supplying.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "EIA (US Energy Information Administration) Natural Gas Weekly Update, 8 Dec 2016: 'Manzanillo is the most utilized of Mexico's three regasification terminals... allows imported natural gas to reach customers' in the Central region — describes a pure regasification/pipeline-feed function. Reuters (via Yahoo Finance, 23 Sep [year]): 'Mexican state power utility CFE said on Monday it had declared force majeure...on imports into the Manzanillo liquefied natural gas terminal' — establishes CFE as the offtaker/importer of record, consistent with the gas being piped onward to CFE generation rather than the terminal self-generating.",
+  "refs": [
+   "https://www.eia.gov/naturalgas/weekly/archivenew_ngwu/2016/12_08/",
+   "https://finance.yahoo.com/news/mexico-declares-force-majeure-hurricane-005611313.html"
+  ],
+  "verification_log": [
+   {
+    "url": "https://www.eia.gov/naturalgas/weekly/archivenew_ngwu/2016/12_08/",
+    "tokens": [
+     "Manzanillo",
+     "regasification"
+    ],
+    "result": "PASS",
+    "note": "OK"
+   },
+   {
+    "url": "https://finance.yahoo.com/news/mexico-declares-force-majeure-hurricane-005611313.html",
+    "tokens": [
+     "CFE",
+     "Manzanillo"
+    ],
+    "result": "PASS",
+    "note": "OK (meta/description text; JS-rendered body not fetched, but the claimed text is present in page source)"
+   }
+  ],
+  "gogpt_prior_assessment": "Neighbor plant is Manzanillo (Manuel Álvarez Moreno) power station, 3273 MW / 8 units, construction/operating, 6.3 km away — this is the large CFE thermal complex the terminal is GEM-linked to supplying (PowerPlantsSupplied = 'Manzanillo power station'), i.e. a downstream offtaker, not this LNG terminal's own captive generation. Already correctly gogpt_captive=False.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "This is the PowerPlantsSupplied direction (terminal feeds the plant), not a captive generator at the terminal; the neighbor plant already exists in GOGPT as a separate, correctly non-captive record.",
+  "status_or_other_findings": "None beyond the confirmed CFE-offtaker/regas role.",
+  "notes": "Could not access the terminal's own environmental permit/MIA (Colima-state SEMARNAT filing) directly — searches for a specific Manzanillo-terminal EIA describing its electrical supply were unsuccessful in this session (search-engine access was heavily degraded — see below). Confidence held at yellow rather than green because neither source explicitly states the terminal's OWN power source (only the downstream CFE-offtake relationship), though no positive evidence of on-site captive generation was found anywhere searched, including the GEM-wiki reference list, Whessoe (tank EPC) project page, and TC Energía's connecting-pipeline page.\n\nQC adjudication 2026-08-02 (orchestrator): NO overturned to INSUFFICIENT: both cited sources establish only the CFE offtake direction; neither states the terminal's own power source nor enumerates its vaporizer/utility equipment (the researcher's own yellow-confidence caveat). Absence of a spec is INSUFFICIENT, never a documented NO. Contrast Altamira (ORV enumeration in the SEMARNAT EIA), whose NO stands."
+ },
+ {
+  "terminal": "PEMEX LNG Terminal",
+  "terminal_id": "T100000130674",
+  "country": "Mexico",
+  "verdict": "SCREENED",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "yellow",
+  "captive_summary": "Never built. Pemex's proposed $6-billion liquefaction plant at Salina Cruz, Oaxaca was announced at an investor conference in November 2014 (targeted 2020 start), was met with analyst skepticism (no track record, insufficient domestic gas), and Pemex was still seeking strategic partners — it never reached FID (GEM shows no FID year) or a published engineering design.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "University of Texas LACP / Platts (Ronald Buchanan), 10 Nov 2014: Pemex Gas director Alejandro Martinez presented the Salina Cruz liquefaction plan to potential investors in Houston; analysts George Baker and David Shields publicly doubted feasibility ('Pemex lacks a track record'; 'there simply isn't enough gas in Mexico'); the project sought a consortium of 'strategic partners' — i.e. still at the pre-FID investor-courting stage, no equipment/design published.",
+  "refs": [
+   "https://web.archive.org/web/20210917223501/https://www.jsg.utexas.edu/lacp/2014/11/pemex-plan-for-a-6-billion-lng-export-terminal-faces-skepticism/"
+  ],
+  "verification_log": [
+   {
+    "url": "https://web.archive.org/web/20210917223501/https://www.jsg.utexas.edu/lacp/2014/11/pemex-plan-for-a-6-billion-lng-export-terminal-faces-skepticism/",
+    "tokens": [
+     "Salina Cruz",
+     "skepticism"
+    ],
+    "result": "PASS",
+    "note": "OK"
+   }
+  ],
+  "gogpt_prior_assessment": "The two nearby GOGPT-captive plants (Refinería Antonio Dovalí Jaime power station, 115 MW, captive, operating; Cogeneración Salina Cruz power station, 728 MW, captive, announced) are the Pemex Salina Cruz REFINERY's own captive plants — a different industrial host (the refinery, not the never-built LNG export terminal). This is the industrial-host trap: proximity to captive generation at Salina Cruz reflects the refinery complex, not this cancelled LNG project.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "Project never built; the captive plants nearby already belong to and are correctly attributed to the Salina Cruz refinery, not this LNG terminal.",
+  "status_or_other_findings": "None beyond confirming the proposal-only history.",
+  "notes": "Screen criterion: cancelled-and-never-designed — the project stalled at the investor-pitch stage in 2014 amid analyst skepticism and never secured partners, FID, or a published FEED."
+ },
+ {
+  "terminal": "Pichilingue LNG Terminal",
+  "terminal_id": "T100000130690",
+  "country": "Mexico",
+  "verdict": "INSUFFICIENT",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "",
+  "captive_summary": "Pichilingue is an onshore (non-floating) New Fortress Energy import/regas terminal purpose-built to pipe gas to three downstream customers — CFE's CTG La Paz and CTG Baja California Sur plants, and NFE's own Amaunet power plant — a documented supply-OUT arrangement, not captive generation at the terminal.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Oil & Gas Journal (Christopher E. Smith), on NFE's 2020 FID/regas progress: 'The onshore Mexico terminal will supply a power plant at Port of Pichilingue, Baja California Sur' (explicit supply-out framing). NFE's own investor-relations press release (14 Jul 2021, 'New Fortress Energy Commences Operations in Baja California Sur') describes 'the supply of natural gas to the CTG La Paz and CTG Baja California Sur power plants through the terminal' and separately references the 'estimated time to complete, and begin operations of our power plant in Baja California Sur' (NFE's own Amaunet plant) as a distinct downstream asset — i.e. three separate offtake plants, none of which is the terminal generating power for itself.",
+  "refs": [
+   "https://www.ogj.com/pipelines-transportation/lng/article/14199515/new-fortress-takes-fid-on-modular-liquefaction-advances-regas-projects",
+   "https://web.archive.org/web/20240125102736/https://ir.newfortressenergy.com/news-releases/news-release-details/new-fortress-energy-commences-operations-baja-california-sur"
+  ],
+  "verification_log": [
+   {
+    "url": "https://www.ogj.com/pipelines-transportation/lng/article/14199515/new-fortress-takes-fid-on-modular-liquefaction-advances-regas-projects",
+    "tokens": [
+     "Pichilingue",
+     "power plant"
+    ],
+    "result": "PASS",
+    "note": "OK"
+   },
+   {
+    "url": "https://web.archive.org/web/20240125102736/https://ir.newfortressenergy.com/news-releases/news-release-details/new-fortress-energy-commences-operations-baja-california-sur",
+    "tokens": [
+     "CTG La Paz",
+     "CTG Baja California Sur"
+    ],
+    "result": "PASS",
+    "note": "OK, primary NFE IR press release via Wayback"
+   }
+  ],
+  "gogpt_prior_assessment": "Neighbor plants — Punta Prieta II power station (113 MW, not captive, operating, 5.9 km) and CCI Baja California Sur power station (278.5 MW / 7 units, not captive, mixed cancelled/operating, 11.0 km) — read as the CFE 'CTG La Paz' / 'CTG Baja California Sur' offtake plants this terminal is documented to supply gas to (direction test), not captive power for the terminal; both already correctly gogpt_captive=False. Background: https://www.ogj.com/pipelines-transportation/lng/article/14199515/new-fortress-takes-fid-on-modular-liquefaction-advances-regas-projects.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "This is the PowerPlantsSupplied direction, not captive generation at the LNG terminal; the downstream plants already exist in GOGPT as separate, correctly non-captive records.",
+  "status_or_other_findings": "NFE's own 'Amaunet' power plant (one of the terminal's PowerPlantsSupplied entries) was still under construction/ramping as of the 2021 press releases ('estimated time to complete... our power plant in Baja California Sur') — a status/completion detail for a different (downstream, non-terminal) asset; not acted on here.",
+  "notes": "Confirmed non-floating (GEM's floating/offshore/vessel fields are all blank for this terminal, consistent with the sources describing it as 'onshore'). Direction-test case: PowerPlantsSupplied already lists Amaunet power station, CTG La Paz, and CTG Baja California Sur — all three are downstream offtakers of the terminal's regasified gas.\n\nQC adjudication 2026-08-02 (orchestrator): NO overturned to INSUFFICIENT: the evidence documents the supply-OUT arrangement (CTG La Paz, CTG BCS, Amaunet) but contains no equipment enumeration and no explicit statement of the terminal's own power supply, which the brief requires for a NO. Direction findings retained; they are PowerPlantsSupplied territory."
+ },
+ {
+  "terminal": "Progreso LNG Terminal",
+  "terminal_id": "T100000130574",
+  "country": "Mexico",
+  "verdict": "SCREENED",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "yellow",
+  "captive_summary": "Never built. Korea Gas Corp (Kogas) announced plans (~2007) for an LNG import terminal and connecting pipelines at Progreso, Yucatán; the project drew local opposition ('en Progreso no cabe terminal gasera') and never progressed to FID (GEM shows no FID year) or a published engineering design.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "LNG World News (archived): Kogas plans an LNG import terminal at Progreso, Yucatán, with connecting pipelines — an early-stage development announcement with no equipment/engineering detail; hydrocarbons-technology.com carried the same announcement. Milenio opinion piece documents local political opposition to siting a gas terminal at Progreso. No subsequent FEED, EPC award, or vendor announcement was found, and GEM's own timeline records no FID year.",
+  "refs": [
+   "https://web.archive.org/web/20160813134016/http://www.lngworldnews.com/kogas-plans-mexico-lng-import-terminal/"
+  ],
+  "verification_log": [
+   {
+    "url": "https://web.archive.org/web/20160813134016/http://www.lngworldnews.com/kogas-plans-mexico-lng-import-terminal/",
+    "tokens": [
+     "Kogas",
+     "Progreso"
+    ],
+    "result": "PASS",
+    "note": "OK"
+   }
+  ],
+  "gogpt_prior_assessment": "No GOGPT plant within 30 km recorded in the neighbor file for this terminal_id — no nearby candidate to assess.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "Project never built and never reached an engineering/design stage; there is no facility to add.",
+  "status_or_other_findings": "Local opposition (Milenio opinion piece) appears to be part of why the project stalled — noted for context only, not acted on.",
+  "notes": "Screen criterion: cancelled-and-never-designed — only an early-stage developer announcement (~2007) and local opposition coverage were found; no FEED, no equipment, no power-supply arrangement ever documented."
+ }
+]

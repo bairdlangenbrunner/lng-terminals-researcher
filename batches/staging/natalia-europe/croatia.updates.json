@@ -1,0 +1,139 @@
+[
+  {
+    "terminal_id": "T100000130430",
+    "unit_id": "G100002043000",
+    "terminal_name": "Krk FSRU",
+    "unit_name": "Unit 1",
+    "country": "Croatia",
+    "field_name": "ProposalDate [ref]",
+    "old_value": "http://www.croenergo.eu/Download.ashx?FileID=45fde8cc-40c1-4c0b-82de-ccd9e6af16ba, http://www.lngworldshipping.com/news/view,croatia-considers-fsru-for-krk-lng-imports_42088.htm",
+    "new_value": "https://narodne-novine.nn.hr/clanci/sluzbeni/full/2015_07_78_1513.html, https://balkaninsight.com/2015/07/17/croatia-sets-gas-terminal-as-strategic-investment-project/, https://web.archive.org/web/20170720154254/http://www.croenergo.eu/Download.ashx?FileID=45fde8cc-40c1-4c0b-82de-ccd9e6af16ba",
+    "confidence": "green",
+    "source_tier": "primary_regulatory",
+    "ref_field": null,
+    "ref_urls": [
+      "https://narodne-novine.nn.hr/clanci/sluzbeni/full/2015_07_78_1513.html",
+      "https://balkaninsight.com/2015/07/17/croatia-sets-gas-terminal-as-strategic-investment-project/",
+      "https://web.archive.org/web/20170720154254/http://www.croenergo.eu/Download.ashx?FileID=45fde8cc-40c1-4c0b-82de-ccd9e6af16ba"
+    ],
+    "dropped_urls_dead": [
+      "http://www.lngworldshipping.com/news/view,croatia-considers-fsru-for-krk-lng-imports_42088.htm",
+      "http://www.croenergo.eu/Download.ashx?FileID=45fde8cc-40c1-4c0b-82de-ccd9e6af16ba"
+    ],
+    "source_notes": "ORCHESTRATOR REVISION (2026-07-29): the drop list is narrowed from two URLs to one. lngworldshipping.com/news/view,... stays dropped -- the domain has lapsed entirely (it now serves a Hover parking page) and the article, a 3 Mar 2016 piece on Croatia's FSRU pivot, does not evidence a 2015 proposal in any case. But croenergo.eu/Download.ashx is NOT gone: although the live URL 301-redirects to the bare homepage (a soft-404, never citable), the Wayback CDX index holds a real 200-status capture of the PDF itself (20170720154254, 1.24 MB, 11 pp). Retrieved and read this session: it is LNG Croatia LLC's own 'LNG Regasification Terminal in Krk, Croatia -- Project teaser July 2015', i.e. the sponsor's July 2015 proposal document and directly on point for ProposalYear=2015. Per the never-drop-a-source-that-isn't-proven-gone rule, it is repaired to its archived copy rather than dropped. Replacements verified live this session: Narodne novine NN 78/2015 is the Government's decision of 16 July 2015 declaring the Krk LNG terminal a strategic investment project (primary/regulatory, in Croatian: 'na sjednici odrzanoj 16. srpnja 2015.'), and Balkan Insight (17 July 2015) reports the same decision independently. Three genuinely independent sources on the value. NOTE on the tooling: QC's citqc_Croatia.json had passed the lngworldshipping URL as 'ok' only because the checker split URLs on the literal comma in its path; scripts/citation_qc.py was fixed this session.",
+    "researcher_initials": "AI-draft (sweep, orchestrator-revised)"
+  },
+  {
+    "terminal_id": "T100000130428",
+    "unit_id": "G100002042800",
+    "terminal_name": "Adria LNG Terminal",
+    "unit_name": "--",
+    "country": "Croatia",
+    "field_name": "Status [ref]",
+    "old_value": "",
+    "new_value": "http://www.reuters.com/article/croatia-energy-lng-idUSL8N14O1E020160104",
+    "confidence": "yellow",
+    "source_tier": "secondary",
+    "ref_field": null,
+    "ref_urls": [
+      "http://www.reuters.com/article/croatia-energy-lng-idUSL8N14O1E020160104"
+    ],
+    "source_notes": "blank_ref fill flagged by QC (comp_Croatia.json). The unit's own ResearcherNotesUnit already referenced this Reuters article (HEP's 2016 exit from the consortium, effectively ending the project) without ever citing it -- verified live via Wayback (bot-blocked HTTP 401 direct, snapshot confirms 'HEP'). Single source -- staged yellow; WebSearch budget was exhausted this session before a second independent corroborator could be found. Recommend a follow-up pass to add a second source if one turns up.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130428",
+    "unit_id": "G100002042800",
+    "terminal_name": "Adria LNG Terminal",
+    "unit_name": "--",
+    "country": "Croatia",
+    "field_name": "ShelvedYear [ref]",
+    "old_value": "",
+    "new_value": "http://www.reuters.com/article/croatia-energy-lng-idUSL8N14O1E020160104",
+    "confidence": "yellow",
+    "source_tier": "secondary",
+    "ref_field": null,
+    "ref_urls": [
+      "http://www.reuters.com/article/croatia-energy-lng-idUSL8N14O1E020160104"
+    ],
+    "source_notes": "blank_ref fill flagged by QC (comp_Croatia.json). The unit's own ResearcherNotesUnit already referenced this Reuters article (HEP's 2016 exit from the consortium, effectively ending the project) without ever citing it -- verified live via Wayback (bot-blocked HTTP 401 direct, snapshot confirms 'HEP'). Single source -- staged yellow; WebSearch budget was exhausted this session before a second independent corroborator could be found. Recommend a follow-up pass to add a second source if one turns up.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130428",
+    "unit_id": "G100002042800",
+    "terminal_name": "Adria LNG Terminal",
+    "unit_name": "--",
+    "country": "Croatia",
+    "field_name": "CancelledYear [ref]",
+    "old_value": "",
+    "new_value": "http://www.reuters.com/article/croatia-energy-lng-idUSL8N14O1E020160104",
+    "confidence": "yellow",
+    "source_tier": "secondary",
+    "ref_field": null,
+    "ref_urls": [
+      "http://www.reuters.com/article/croatia-energy-lng-idUSL8N14O1E020160104"
+    ],
+    "source_notes": "blank_ref fill flagged by QC (comp_Croatia.json). The unit's own ResearcherNotesUnit already referenced this Reuters article (HEP's 2016 exit from the consortium, effectively ending the project) without ever citing it -- verified live via Wayback (bot-blocked HTTP 401 direct, snapshot confirms 'HEP'). Single source -- staged yellow; WebSearch budget was exhausted this session before a second independent corroborator could be found. Recommend a follow-up pass to add a second source if one turns up.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130428",
+    "unit_id": "G100002042800",
+    "terminal_name": "Adria LNG Terminal",
+    "unit_name": "--",
+    "country": "Croatia",
+    "field_name": "StopYear [ref]",
+    "old_value": "",
+    "new_value": "http://www.reuters.com/article/croatia-energy-lng-idUSL8N14O1E020160104",
+    "confidence": "yellow",
+    "source_tier": "secondary",
+    "ref_field": null,
+    "ref_urls": [
+      "http://www.reuters.com/article/croatia-energy-lng-idUSL8N14O1E020160104"
+    ],
+    "source_notes": "blank_ref fill flagged by QC (comp_Croatia.json). The unit's own ResearcherNotesUnit already referenced this Reuters article (HEP's 2016 exit from the consortium, effectively ending the project) without ever citing it -- verified live via Wayback (bot-blocked HTTP 401 direct, snapshot confirms 'HEP'). Single source -- staged yellow; WebSearch budget was exhausted this session before a second independent corroborator could be found. Recommend a follow-up pass to add a second source if one turns up.",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130430",
+    "unit_id": "G100002043000",
+    "terminal_name": "Krk FSRU",
+    "unit_name": "Unit 1",
+    "country": "Croatia",
+    "field_name": "ProposalMonth",
+    "old_value": "",
+    "new_value": "July",
+    "confidence": "green",
+    "source_tier": "primary_regulatory",
+    "ref_field": "ProposalDate [ref]",
+    "ref_urls": [
+      "https://narodne-novine.nn.hr/clanci/sluzbeni/full/2015_07_78_1513.html",
+      "https://balkaninsight.com/2015/07/17/croatia-sets-gas-terminal-as-strategic-investment-project/"
+    ],
+    "source_notes": "Blank-field fill found during the orchestrator's citation repair of ProposalDate [ref] (exhaustive tier). GEM already carries ProposalYear=2015 with ProposalMonth empty. Both replacement citations state the event month explicitly in their BODY, not merely in a publication date or URL slug (the anchor-year rule): Narodne novine NN 78/2015 records that the Government adopted the decision 'na sjednici odrzanoj 16. srpnja 2015. godine' (at its session held 16 July 2015), and Balkan Insight, 17 July 2015, reports 'Croatia on Thursday declared the planned gas terminal on Krk' strategic. The sponsor's own project teaser (archived, cited on the same ref cell) is likewise dated July 2015. Consistent with the existing ProposalYear=2015; no year change implied.",
+    "researcher_initials": "AI-draft (sweep, orchestrator)",
+    "dropped_urls_dead": [
+      "http://www.croenergo.eu/Download.ashx?FileID=45fde8cc-40c1-4c0b-82de-ccd9e6af16ba",
+      "http://www.lngworldshipping.com/news/view,croatia-considers-fsru-for-krk-lng-imports_42088.htm"
+    ]
+  },
+  {
+    "terminal_id": "T100000130428",
+    "unit_id": "G100002042800",
+    "terminal_name": "Adria LNG Terminal",
+    "unit_name": "--",
+    "country": "Croatia",
+    "field_name": "FIDYear",
+    "old_value": "2013",
+    "new_value": "2013",
+    "confidence": "blue",
+    "source_tier": "secondary",
+    "ref_field": null,
+    "ref_urls": [
+      "http://www.reuters.com/article/croatia-lng-project-idUSL6E8I36O620120703"
+    ],
+    "source_notes": "RE-VERIFIED UNCHANGED (no edit). Resolves the batch's open bot_blocked_no_wayback qa flag. The cited Reuters URL returns HTTP 401 to automated clients, which is a bot-block, not link-rot, so the live URL is KEPT and nothing is dropped. The earlier pass reported 'no Wayback snapshot found'; that was the availability-API-only lookup in url_verifier.py, fixed this session with a CDX fallback. Re-checked now: snapshot 20210516030403 returns HTTP 200 with the full article, which states that the Adria LNG consortium 'postponed a final investment decision until 2013 because of falling gas demand on European markets amid the economic crisis' -- the stored FIDYear=2013 appears explicitly and is correct. Caveat for the reviewer: the article documents an FID *deferred to* 2013, not an FID *taken* in 2013, so the value is right but FIDStatus should read as a postponement target rather than a completed decision.",
+    "researcher_initials": "AI-draft (sweep, orchestrator)"
+  }
+]

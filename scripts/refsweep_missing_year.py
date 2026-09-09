@@ -45,10 +45,13 @@ removes that whole failure class.
 import argparse
 import glob
 import json
-import os
 import sys
+from pathlib import Path
 
-ENV_VAR = "GEM_READONLY_DB_URL"
+sys.path.insert(0, str(Path(__file__).parent))
+import paths  # noqa: E402  — GEM DB engine + sibling-repo resolution
+
+ENV_VAR = paths.DB_ENV_VAR
 LNG_PROJECT_TYPE = 8
 
 # Statuses whose timeline entry carries a datable milestone year.
@@ -191,18 +194,11 @@ aggregators.
 
 
 def get_engine():
-    """SQLAlchemy engine from GEM_READONLY_DB_URL (matches the gem-db-ops engine)."""
-    url = os.environ.get(ENV_VAR)
-    if not url:
-        sys.exit(f"error: set {ENV_VAR} (e.g. export {ENV_VAR}='postgres://...').")
-    try:
-        from sqlalchemy import create_engine
-    except ImportError:
-        sys.exit("error: pip install 'sqlalchemy>=2.0' psycopg2-binary")
-    # normalize bare postgres:// to the psycopg2 dialect
-    if url.startswith("postgres://"):
-        url = "postgresql+psycopg2://" + url[len("postgres://"):]
-    return create_engine(url)
+    """Read-only SQLAlchemy engine, built by ../gem-db-ops (via paths.py).
+
+    Not "matches the gem-db-ops engine" any more — it IS that engine, so the
+    read-only session guard and statement timeout come with it."""
+    return paths.get_engine()
 
 
 def fetch_points():

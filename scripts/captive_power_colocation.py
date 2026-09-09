@@ -41,30 +41,24 @@ import argparse
 import csv
 import json
 import math
-import os
 import sys
 from collections import defaultdict
 from dataclasses import dataclass, field
+from pathlib import Path
 
 from sqlalchemy import text
 
+sys.path.insert(0, str(Path(__file__).parent))
+import paths  # noqa: E402  — GEM DB engine + sibling-repo resolution
+
 
 def _get_engine(statement_timeout_ms=60_000):
-    """Read-only engine from GEM_READONLY_DB_URL (same env var as every other
-    DB-backed script here; the shared pull engine lives in ../gem-db-ops)."""
-    url = os.environ.get("GEM_READONLY_DB_URL")
-    if not url:
-        sys.exit("error: set GEM_READONLY_DB_URL (postgres://readonly:...@host/db).")
-    if url.startswith("postgres://"):
-        url = url.replace("postgres://", "postgresql://", 1)
-    from sqlalchemy import create_engine
-    return create_engine(
-        url,
-        connect_args={"options": (
-            f"-c default_transaction_read_only=on "
-            f"-c statement_timeout={statement_timeout_ms}")},
-        pool_pre_ping=True,
-    )
+    """Read-only engine from GEM_READONLY_DB_URL, built by ../gem-db-ops.
+
+    The engine (read-only session guard, statement timeout, URL normalisation)
+    is defined once in gem-db-ops/gem_query.py and reached through paths.py —
+    don't re-add a local create_engine here."""
+    return paths.get_engine(statement_timeout_ms)
 
 # ---------------------------------------------------------------------------
 # Status normalisation -- the two trackers use different vocabularies. Collapse

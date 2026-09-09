@@ -1,0 +1,42 @@
+[
+  {
+    "category": "dormant_revival_check",
+    "terminal_id": "T100000131098",
+    "unit_id": "",
+    "terminal_name": "Lubmin RWE FSRU",
+    "issue": "Revival-checked per this batch's dormant_revival_watch (shelved 2025, revival_priority normal). No new LNG activity, sponsor, or FSRU charter found at this site. The only fresh 2026 activity at Lubmin is a DIFFERENT, unrelated project: Deutsche ReGas and Hoegh LNG's proposed 'H2-Import-Terminal Lubmin' (green ammonia-to-hydrogen conversion, ~200 MW electrolyser), which is a hydrogen import project, not LNG -- out of this tracker's substance scope even if it proceeds. Terminal correctly stays shelved/dead; no revival.",
+    "severity": "low",
+    "suggested_action": "No action needed. If a future batch tracks hydrogen infrastructure, the Deutsche ReGas/Hoegh Lubmin H2 project is a separate lead for that tracker, not this one.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "dormant_revival_check",
+    "terminal_id": "T100000131000",
+    "unit_id": "",
+    "terminal_name": "Wilhelmshaven NWO FSRU",
+    "issue": "Revival-checked per this batch's dormant_revival_watch (cancelled 2026, revival_priority normal -- freshly cancelled, 0 years dead). No new sponsor, FSRU charter, or permit activity found at the NWO/Nord West Oelleitung site since cancellation. Other Wilhelmshaven-port LNG projects (Wilhelmshaven FSRU T100000130458, Wilhelmshaven TES FSRU T100000131097, both operating) are separate, already-GEM-tracked projects, not a revival of this specific record.",
+    "severity": "low",
+    "suggested_action": "No action needed. Re-check in a future pass given how recently this record died.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "gemwiki_coverage_crosscheck",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "",
+    "issue": "Discovery SOP 4.0b: enumerated gem.wiki German LNG-terminal pages (Wilhelmshaven FSRU, Wilhelmshaven TES FSRU/'Wilhelmshaven TES LNG Terminal', Wilhelmshaven NWO FSRU, Brunsbuettel FSRU, Brunsbuettel LNG Terminal, Stade FSRU, Stade LNG Terminal, Lubmin FSRU, Lubmin RWE FSRU, Mukran FSRU, Rostock LNG Terminal). One page initially looked like an orphan: gem.wiki's 'Wilhelmshaven TES LNG Terminal' (also titled 'TES_Wilhelmshaven_LNG_Terminal') describes TES's large-scale ONSHORE Wilhelmshaven import terminal (Voslapper Groden Nord site, ~15 bcm/y initial capacity expandable >20 bcm/y, ~145 hectares) as the long-term replacement for the interim floating Wilhelmshaven FSRU/Wilhelmshaven TES FSRU units -- this is NOT the same project as either operating FSRU record and had no obvious matching export-CSV row by that name. Independent-source research (tes-h2.com, energate-messenger.com, mnimarkets.com) resolved the apparent gap: on 2026-04-30, TES/Fortescue publicly RENAMED this project 'Jade Energy' and confirmed its operating legal entity is Deutsche Gruengas- und Energieversorgung GmbH (DGGEV) -- which is exactly the Owner already on GEM's existing 'Jade Energy LNG Terminal' record (T100000131001, proposed). So this is a NAME MATCH to an existing GEM terminal, not a discovery gap: gem.wiki's page is simply filed under the project's pre-rebrand name. NOT staged as new_terminal; routed to Update (see next qa entry).",
+    "severity": "medium",
+    "suggested_action": "No new discovery candidate. Route the rebrand/refresh findings below to the Update workflow for Jade Energy LNG Terminal (T100000131001).",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "update_routing",
+    "terminal_id": "T100000131001",
+    "unit_id": "",
+    "terminal_name": "Jade Energy LNG Terminal",
+    "issue": "UPDATE FINDING (not staged here -- routing note only, per CLAUDE.md discovery-vs-update boundary). Independent sources (tes-h2.com 'Jade Energy Launch: TES & Fortescue Develop Wilhelmshaven eLNG & Green Energy Hub', 2026-04-30; energate-messenger.com 'Wilhelmshaven import terminal is now called Jade Energy'; mnimarkets.com 'Three German Onshore LNG Terminals Aiming for FID') confirm: (1) this project was formerly called 'Wilhelmshaven Green Energy Hub' / 'TES Wilhelmshaven Import Terminal', renamed 'Jade Energy' 2026-04-30 -- useful OtherNames fill. (2) Sponsors now explicitly TES (Tree Energy Solutions) AND Fortescue jointly, via operating entity Deutsche Gruengas- und Energieversorgung GmbH (DGGEV) -- current GEM Owner only lists DGGEV; Fortescue may warrant addition as co-owner/partner (verify Fortescue's exact legal stake before adding -- press materials name it as co-developer but the entity holding Owner may still be DGGEV alone). (3) Capacity: multiple 2023-2024 sources cite a 15 bcm/y initial onshore terminal (expandable >20 bcm/y); confirm against GEM's current Capacity value and update/corroborate if blank or stale. (4) POSSIBLE PLANNED-START SLIP (flag per the 'never bury a slip in qa' rule, but this batch is Discovery scope so it is being surfaced, not staged): 2023-2024 sources (mnimarkets, mid-2024 TES/H2-View coverage) reported TES targeting FID in 2024 and first gas deliveries via the terminal from 2025-2026; the 2026-04-30 Jade Energy launch material instead states commercial operations begin in 2030. This is a multi-year slip from the terminal's own earlier public timeline and should be reviewed against GEM's current LatestPlannedStartYear/OriginalPlannedStartYear for this terminal -- if GEM still shows an earlier year, this is a corroborated slip that the Update workflow should stage as a year edit + timeline entry (per the NFE gulf-turkiye planned-start-slip precedent), not left unaddressed. (5) The existing update-pass qa question about whether the 'eLNG Import Terminal' unit-row should remain separate: this research indicates 'eLNG' is literally the project's own current branding ('eLNG & Green Energy Hub'), i.e. it likely IS the main/current phase of the project post-rebrand, which may help the reviewer disentangle it from the 'Expansion' unit-row (likely a later hydrogen/e-NG scale-up phase) -- passing this along as context, not resolving it myself.",
+    "severity": "medium",
+    "suggested_action": "Route to next Update batch for Jade Energy LNG Terminal (T100000131001): add OtherNames (Wilhelmshaven Green Energy Hub; TES Wilhelmshaven Import Terminal), verify/add Fortescue as co-sponsor, verify Capacity (~15 bcm/y expandable >20 bcm/y) with a fresh [ref], and specifically check LatestPlannedStartYear/OriginalPlannedStartYear against the 2030 operations-start date reported in the 2026-04-30 Jade Energy launch coverage for a possible planned-start-slip edit.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  }
+]

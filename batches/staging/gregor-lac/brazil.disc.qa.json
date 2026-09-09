@@ -1,0 +1,32 @@
+[
+  {
+    "category": "discovery_dedup",
+    "terminal_id": "T100000130938",
+    "unit_id": "",
+    "terminal_name": "Terminal Gás Sul FSRU",
+    "issue": "Trade press (NS Energy Business project page) reports a new FSRU arriving at Terminal Gás Sul (Santa Catarina) in July 2026 with commercial operation the following month, and New Fortress Energy entering a long-term lease commencing August 2026 to supply the 'Lins II' thermal power plant following a March 2026 capacity-reserve-auction (LRCAP) win. This is an update to the EXISTING GEM terminal (currently 'idled'), not a new site -- no new terminal warranted. Source URL (nsenergybusiness.com/projects/terminal-gas-sul-lng-project-brazil/) returned HTTP 403 on url_verifier.py with no Wayback snapshot yet, so treat as an unverified lead pending re-check, not a citable ref.",
+    "severity": "medium",
+    "suggested_action": "UPDATE agent: investigate Terminal Gás Sul's status (idled -> construction/operating?), incoming FSRU vessel identity, and PowerPlantsSupplied addition for the Lins II power plant / LRCAP March-2026 auction win. Re-verify the nsenergybusiness.com source (bot-blocked at time of this sweep) and find an independent corroborating source before staging.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "discovery_dedup",
+    "terminal_id": "T100000130934",
+    "unit_id": "",
+    "terminal_name": "Presidente Kennedy FSRU",
+    "issue": "Trade press (Revista Essence, DataMarNews, Dec 2024) reports Phase 1 construction began at Porto Central (Presidente Kennedy, ES) after ~10 years of delay, with full IBAMA licensing and ~R$2.6bn initial investment. However Phase 1 is petroleum-transfer infrastructure -- the LNG terminal is a later phase with no LNG-specific progress confirmed. This does not on its own justify moving the GEM record off 'shelved'.",
+    "severity": "low",
+    "suggested_action": "UPDATE agent: note the Dec-2024 Porto Central Phase-1 port construction start in ResearcherNotesUnit as context; do not change Status from shelved without independent confirmation that the LNG/GNL component specifically has resumed.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "discovery_dedup",
+    "terminal_id": "T100000130550",
+    "unit_id": "",
+    "terminal_name": "Santos Basin FLNG Terminal",
+    "issue": "Industry analysis (offshoreindustry.co.uk, 2025-2026) reports Petrobras has conducted CONCEPTUAL studies for a Santos Basin FLNG (3-5 mtpa class) to monetize pre-salt associated gas, explicitly 'not yet sanctioned', with a pathway decision (FLNG vs. onshore terminal vs. Route 4 pipeline expansion) expected 'before the end of the decade'. Same site and same sponsor (Petrobras) as the existing GEM record, which is currently 'cancelled'. This is a dormant-revival signal for the EXISTING record, not a new terminal -- and it fails the discovery threshold anyway (no concrete step beyond a conceptual study, no FID, no timeline firmer than end-of-decade). Source URL returned HTTP 403 on url_verifier.py with no Wayback snapshot, unverified pending re-check.",
+    "severity": "low",
+    "suggested_action": "UPDATE agent / dormant_revival_watch: log the Petrobras Santos Basin FLNG conceptual-study signal in ResearcherNotesUnit for future monitoring; do NOT move off 'cancelled' and do NOT stage as a new terminal -- re-check in the next annual sweep for a sanctioned/FID milestone.",
+    "researcher_initials": "AI-draft"
+  }
+]

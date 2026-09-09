@@ -1,0 +1,175 @@
+[
+  {
+    "terminal": "Pluto LNG Terminal",
+    "terminal_id": "T100000130338",
+    "country": "Australia",
+    "verdict": "YES",
+    "mechanical": "False",
+    "captive_category": "power_generation",
+    "hardware_summary": "A dedicated \"gas-fired power generation facility\" is listed among Pluto LNG's on-site infrastructure (alongside its BOG compressor, acid gas recovery and fractionation units); separately, Woodside's own Q2 2026 quarterly report (as quoted by Energy Aspects' satellite-commissioning analysis) states that during Train 2 commissioning \"the gas turbine generator completed synchronisation with the Pluto power grid\" — confirming a generator supplying an on-site electrical grid at Pluto, not merely a design-stage claim. Turbine model/count/individual MW not itemized in either source.",
+    "fuel_basis": "Both sources independently describe on-site GAS-fired/gas-turbine generation (not diesel): the infrastructure list specifies \"a gas-fired power generation facility,\" and the Train 2 item is explicitly a \"gas turbine generator.\"",
+    "confidence": "green",
+    "captive_summary": "Pluto LNG (Woodside-operated, Karratha, Burrup Peninsula) has on-site gas-fired power generation: a \"gas-fired power generation facility\" is documented as part of the plant's infrastructure, and Woodside's own Q2 2026 report (quoted independently by Energy Aspects) confirms a \"gas turbine generator\" synchronised to the on-site \"Pluto power grid\" during Train 2 commissioning. Two independent sources (a GlobalData/nsenergybusiness project profile and Energy Aspects, an independent energy research firm citing Woodside's own report) confirm the finding — upgraded from the primary pass's INSUFFICIENT (which was blocked purely by a citation-tooling gap, not doubt about the underlying fact).",
+    "electric_mw": "",
+    "mechanical_drive_note": "No sourced evidence of gas-turbine mechanical-drive (vs. electric generation) was found for this site; not asserted.",
+    "confirmed_how": "(1) GlobalData's nsenergybusiness.com project profile for Pluto LNG: \"The other infrastructure facilities for the Pluto LNG Project include a fractionation unit, an acid gas recovery unit, gas purification units, a boil-off gas compressor, a gas-fired power generation facility, marine loading berths, and a shipping channel.\" The exact URL cited in the primary pass (.../projects/pluto-lng/) 403s live with NO Wayback snapshot; a Wayback save-page-now request during this recovery pass captured the site's actual redirect target (.../projects/pluto-lng-expansion-burrup-australia/, same GlobalData profile, same wording) at snapshot 20260802182431, which verifies. (2) Energy Aspects' satellite-thermal-imagery commissioning analysis of Pluto Train 2 quotes Woodside's own Q2 2026 report: \"the gas turbine generator completed synchronisation with the Pluto power grid,\" reported alongside mechanical testing of the liquefaction compressors — i.e. a distinct electricity-generation milestone, not the compressor trains. This is an independent publisher (energy research firm) directly confirming Woodside's own report language, not a copy of the nsenergybusiness profile.",
+    "refs": [
+      "https://www.nsenergybusiness.com/projects/pluto-lng-expansion-burrup-australia/",
+      "https://www.energyaspects.com/resources/insights/pluto-lng-train-2-satellite-commissioning"
+    ],
+    "verification_log": [
+      {
+        "url": "https://www.nsenergybusiness.com/projects/pluto-lng/",
+        "tokens": ["gas-fired power generation", "power generation facility"],
+        "result": "FAIL",
+        "note": "HTTP 403 live, no Wayback snapshot existed for this exact URL as of this pass"
+      },
+      {
+        "url": "https://web.archive.org/save/https://www.nsenergybusiness.com/projects/pluto-lng/",
+        "tokens": [],
+        "result": "PASS",
+        "note": "Wayback save-page-now request (curl, HTTP 200) redirected to and captured the live site's actual URL, .../projects/pluto-lng-expansion-burrup-australia/, at snapshot 20260802182431 (the original /pluto-lng/ slug 301s server-side to this slug; per CLAUDE.md a redirect is cited at its target)"
+      },
+      {
+        "url": "https://www.nsenergybusiness.com/projects/pluto-lng-expansion-burrup-australia/",
+        "tokens": ["gas-fired power generation", "power generation facility"],
+        "result": "PASS",
+        "note": "bot-blocked live (HTTP 403); value verified via the freshly-created Wayback snapshot 20260802182431"
+      },
+      {
+        "url": "https://www.energyaspects.com/resources/insights/pluto-lng-train-2-satellite-commissioning",
+        "tokens": ["gas turbine generator", "Pluto power grid"],
+        "result": "PASS",
+        "note": "direct live PASS, no Wayback needed"
+      }
+    ],
+    "gogpt_prior_assessment": "GOGPT's nearest match is Yurralyi Maya power station (200 MW, 16.9 km away, already flagged gogpt_captive=True in GOGPT's own data). I attempted again this pass to independently source what Yurralyi Maya is and who it supplies (Wikipedia page does not exist / 404; Google News RSS search for \"Yurralyi Maya power station Woodside\" returned zero relevant hits — only unrelated Rio Tinto Pilbara solar articles; DuckDuckGo HTML search hit a CAPTCHA wall). Could not confirm or rule out a dedicated-supply relationship to Pluto within this pass's tooling; this remains an open, unverified lead for a future pass. It does not affect this verdict, which now rests on independently-confirmed on-site generation at Pluto itself.",
+    "gogpt_candidate": "REVIEWER CALL",
+    "gogpt_candidate_basis": "Unchanged from primary: GOGPT already carries Yurralyi Maya as captive=True with a citable 200 MW nameplate; whether it is the plant behind Pluto's on-site \"gas-fired power generation facility\"/\"gas turbine generator,\" a separate smaller on-site genset, or both, is unresolved — still needs a source connecting the named plant to Pluto's fenceline before a GOGPT-linkage call can be made.",
+    "status_or_other_findings": "Train 2 commissioning is in progress in 2026 (mechanical testing completed on three of six liquefaction compressors per the Energy Aspects piece, satellite-tracked ahead of Woodside's official announcement) — flagged for whichever batch tracks Pluto Train 2 status/FID, not acted on here.",
+    "notes": "RECOVERY PASS: this record supersedes the primary shard's INSUFFICIENT verdict, which was correct on its own terms — the underlying claim (gas-fired power generation facility at Pluto) was real but blocked purely by a citation-tooling gap (403 + no existing Wayback snapshot). This pass (1) triggered a fresh Wayback save-page-now capture of the live page, which now passes url_verifier via the Wayback fallback, and (2) found a second, genuinely independent corroborating source (Energy Aspects quoting Woodside's own Q2 2026 report) that was not in the primary pass at all, so this verdict is green rather than merely resolving to the primary's implied yellow.",
+    "recovery_outcome": "improved"
+  },
+  {
+    "terminal": "North West Shelf LNG Terminal",
+    "terminal_id": "T100000130337",
+    "country": "Australia",
+    "verdict": "YES",
+    "mechanical": "False",
+    "captive_category": "power_generation",
+    "hardware_summary": "Aero-derivative gas turbine generators supply on-site electricity at the Karratha Gas Plant (North West Shelf Venture, Woodside-operated); the Train 4 expansion (online 2004) added further \"high-efficiency gas turbine (aero-derivative) generators to augment existing power generation\" (confirming on-site generation predates Train 4 too), and an independent trade-news report of a 2026 cyclone shutdown confirms the plant's \"gas turbine power generators\" as an operating asset class distinct from the LNG trains and domestic gas plant (\"the North West Shelf (NWS) project's four liquefied natural gas (LNG) trains, gas turbine power generators and the domestic gas plant are all down\"). Turbine model/count/individual MW not itemized in either source.",
+    "fuel_basis": "Both sources explicitly call the units \"gas turbine\" generators; Karratha Gas Plant is a gas processing/liquefaction site so the turbines run on plant fuel gas.",
+    "confidence": "green",
+    "captive_summary": "The Karratha Gas Plant (North West Shelf Venture, Woodside-operated) generates its own electricity on-site via aero-derivative gas turbine generators. Upgraded from the primary pass's single-source yellow: a second, genuinely independent Australian trade-energy outlet (Boiling Cold, reporting a 2026 cyclone shutdown) separately confirms \"gas turbine power generators\" as a distinct, named operating asset at the site — not a mirror of the GlobalData/offshore-technology.com profile used in the primary pass.",
+    "electric_mw": "",
+    "mechanical_drive_note": "No sourced evidence of gas-turbine mechanical drive (vs. electric generation) was found for this site in verifiable sources, though conventional 1980s-90s LNG trains of this vintage commonly use direct gas-turbine shaft drive for refrigeration compressors — this was NOT independently confirmed here, so mechanical is left False rather than assumed.",
+    "confirmed_how": "(1, carried forward) GlobalData's offshore-technology.com project profile for \"North West Shelf Venture\": \"The new train is fully air-cooled and features high-efficiency gas turbine (aero-derivative) generators to augment existing power generation.\" Bot-blocked live (403), verified via Wayback snapshot 20260118005835. (2, NEW this pass) Boiling Cold (independent WA energy-news outlet, boilingcold.com.au), reporting on a cyclone-driven shutdown: \"the North West Shelf (NWS) project's four liquefied natural gas (LNG) trains, gas turbine power generators and the domestic gas plant are all down\" — lists \"gas turbine power generators\" as a named, distinct operating system at the site, independently corroborating on-site generation from a different publisher.",
+    "refs": [
+      "https://www.offshore-technology.com/projects/northwestshelf/",
+      "https://www.boilingcold.com.au/cyclone-closes-woodsides-north-west-shelf-australias-largest-gas-plant/"
+    ],
+    "verification_log": [
+      {
+        "url": "https://www.offshore-technology.com/projects/northwestshelf/",
+        "tokens": ["aero-derivative", "gas turbine"],
+        "result": "PASS",
+        "note": "bot-blocked live (HTTP 403); verified via Wayback snapshot 20260118005835 (carried forward from primary pass, re-verified this pass)"
+      },
+      {
+        "url": "https://www.boilingcold.com.au/cyclone-closes-woodsides-north-west-shelf-australias-largest-gas-plant/",
+        "tokens": ["gas turbine power generators"],
+        "result": "PASS",
+        "note": "direct live PASS, no Wayback needed; found via a DuckDuckGo HTML site-search fallback after WebSearch budget exhaustion"
+      }
+    ],
+    "gogpt_prior_assessment": "GOGPT's nearest match is Karratha power station (86 MW, 18.7 km away), already flagged gogpt_captive=False in the prior. I concur this is an unrelated grid/utility asset (Horizon Power regional supply for the town of Karratha, not the Burrup Peninsula LNG plants) rather than NWS's own captive plant. I again tried and failed to independently source the \"Yurralyi Maya Power Station\" lead this pass (see Pluto's record for the specific attempts and their results) — still unconfirmed, still a follow-up lead rather than an assertion.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "The confirmed on-site aero-derivative gas turbine generators are plant-internal utility equipment described only in general project/news coverage, with no citable nameplate MW or turbine count — nothing resembling a separately identifiable GOGPT-style generating station distinct from ordinary in-plant utilities. Unchanged from primary.",
+    "status_or_other_findings": "None tripped.",
+    "notes": "RECOVERY PASS: supersedes the primary shard's single-source YES/yellow. WebSearch was budget-exhausted this session too; found the corroborating Boiling Cold article via a DuckDuckGo HTML (html.duckduckgo.com/html/) site-search fallback per the recovery brief's tooling-constraint guidance.",
+    "recovery_outcome": "improved"
+  },
+  {
+    "terminal": "Prelude FLNG Terminal",
+    "terminal_id": "T100000130339",
+    "country": "Australia",
+    "verdict": "YES",
+    "mechanical": "True",
+    "captive_category": "mechanical_drive+power_generation",
+    "hardware_summary": "Mitsubishi Heavy Industries supplied \"three compressor trains along with power generation system\" for the facility (Jan 2011 contract award); General Electric independently confirms (its own press release) it supplied \"two steam turbine-driven compressors\" for Prelude, describing its scope as covering \"the steam turbines and compressors\" with minimized casings to reduce weight/footprint; Kawasaki Heavy Industries supplied seven boiler units that raise the steam for GE's turbines. Turbine models and MW ratings for the MHI power-generation system are not itemized in either source.",
+    "fuel_basis": "Prelude is a moored, off-grid FLNG facility (offshore Browse Basin, no shore power connection) — per the SOP's off-grid prior, self-generation is a near-certainty by physical necessity. The cited sources confirm a dedicated on-site \"power generation system\" (MHI) plus steam-turbine-driven process compressors (GE, confirmed in GE's own release) fed by steam from seven Kawasaki boiler units; exact fuel for the boilers/generation is not itemized, but FLNG facilities of this type universally run their utilities on produced/boil-off gas since no other fuel source exists at the site.",
+    "confidence": "green",
+    "captive_summary": "Prelude FLNG (Shell-operated, moored offshore, world's largest FLNG) has a dedicated on-site power generation system (Mitsubishi Heavy Industries-supplied, alongside its three compressor trains) plus General Electric steam-turbine-driven compressors fed by steam from seven Kawasaki-supplied boiler units. Upgraded from the primary pass's single-source yellow: GE's own press release (vendor-primary, confirming its steam-turbine/compressor scope of supply for Prelude in its own words) independently corroborates the nsenergybusiness trade profile.",
+    "electric_mw": "",
+    "mechanical_drive_note": "GE-supplied steam-turbine-driven compressors (count and individual rating not stated in either source); steam raised by 7 Kawasaki Heavy Industries boiler units. This is mechanical shaft-drive compression, kept separate from electric_mw.",
+    "confirmed_how": "(1, carried forward) GlobalData's nsenergybusiness.com project profile for \"Prelude FLNG Project\": \"Mitsubishi Heavy Industries was awarded a contract to supply three compressor trains along with power generation system for the FLNG facility, in January 2011,\" and separately, \"General Electric provided two steam turbine-driven compressors\" and \"Kawasaki Heavy Industries provided seven boiler units for the FLNG facility.\" Bot-blocked live (403), verified via Wayback snapshot 20260314031641. (2, NEW this pass) GE's own press release, \"GE Technology Selected for World's Largest Floating LNG Platform\" (ge.com/news/press-releases): \"[GE was awarded] two steam turbine-driven compressors for the Shell Prelude Floating Liquefied Natural Gas (FLNG) project\" and \"GE is minimizing the casings of the steam turbines and centrifugal compressors to reduce weight and footprint\" — GE's own account of its Prelude scope of supply, independently confirming the compressor-drive half of the nsenergybusiness claim from the vendor itself (vendor primary = green per SOP §2).",
+    "refs": [
+      "https://www.nsenergybusiness.com/projects/prelude-flng-project/",
+      "https://www.ge.com/news/press-releases/ge-technology-selected-worlds-largest-floating-lng-platform"
+    ],
+    "verification_log": [
+      {
+        "url": "https://www.nsenergybusiness.com/projects/prelude-flng-project/",
+        "tokens": ["Mitsubishi Heavy Industries", "power generation system"],
+        "result": "PASS",
+        "note": "bot-blocked live (HTTP 403); verified via Wayback snapshot 20260314031641 (carried forward from primary pass, re-verified this pass; primary pass's own log used different tokens against the same URL, also PASS)"
+      },
+      {
+        "url": "https://www.ge.com/news/press-releases/ge-technology-selected-worlds-largest-floating-lng-platform",
+        "tokens": ["steam turbine", "Prelude"],
+        "result": "PASS",
+        "note": "direct live PASS, no Wayback needed; found via a DuckDuckGo HTML site-search fallback after WebSearch budget exhaustion"
+      }
+    ],
+    "gogpt_prior_assessment": "No GOGPT prior was provided for this terminal (gogpt_prior: no). Unchanged from primary.",
+    "gogpt_candidate": "REVIEWER CALL",
+    "gogpt_candidate_basis": "Generation exists (MHI power generation system) but no citable nameplate MW was found, and the equipment is vessel-mounted (moored FLNG) — matches the REVIEWER CALL criterion for vessel-mounted generation of unclear GOGPT-ontology fit, same class as FSRU onboard gensets. Unchanged from primary.",
+    "status_or_other_findings": "None tripped.",
+    "notes": "RECOVERY PASS: supersedes the primary shard's single-source YES/yellow. Also found (but did not need to cite, since the GE release already sufficed): an Informa Connect FLNG-FEED conference brochure PDF and a DuckDuckGo snippet quoting it as \"The system design is a global first and has redefined ship based power generation\" — the PDF itself did not yield readable text via WebFetch (binary/metadata-only extraction) so it was not independently confirmed and is not cited; flagging as a lead for a future pass seeking a third source or an MW figure. Several OnePetro/Scribd technical-paper leads on Prelude's turbomachinery were also surfaced but not fetched (paywalled/not needed for this verdict).",
+    "recovery_outcome": "improved"
+  },
+  {
+    "terminal": "Port Kembla FSRU",
+    "terminal_id": "T100000130606",
+    "country": "Australia",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "red",
+    "captive_summary": "Per the FSRU-onboard convention, the captive-power question here is the Höegh Galleon vessel's own onboard generation. Confirmed (again) the vessel-terminal match and vessel identity (Höegh Galleon, IMO 9820013, built 2019 at Samsung Heavy Industries, 170,000 cbm GTT Mark III, 750 MMscf/d regas capacity, Höegh Evi's FSRU deployed at Port Kembla for Australian Industrial Energy/Squadron Energy since 2025). Despite a substantially wider search this pass (vessel databases, class-society-style records, Höegh Evi's own site/press archive, trade press, a 2017 Wärtsilä newbuild deal), no source was found that states the Höegh Galleon's own engine/generator make, model, or fuel mode in service. Per the SOP this remains INSUFFICIENT, not NO — a direction-test NO (the terminal feeds the east-coast gas grid generally) does not answer the vessel-machinery question.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Höegh Evi's own fleet page (carried forward) confirms only: \"Höegh Galleon — Port Kembla, Australia,\" \"Customer: Australian Industrial Energy Pty. Ltd,\" \"Ship Type: FSRU,\" \"Year of build: 2019\" — no engine/generator specification content. A trade-press article on the Port Kembla charter deal (offshore-energy.biz) adds storage (170,000 cbm, GTT Mark III), dimensions (297m x 43m), regas capacity (750 MMscf/d), and confirms the Samsung Heavy Industries build/delivery in 2019, but explicitly does not cover engine type or propulsion. VesselFinder's technical-particulars record for IMO 9820013 has empty/dash fields for Engine Builder, Engine Type, Engine Power, and Fuel Type. A STRONG BUT UNCONFIRMED LEAD: a Wärtsilä press release (via offshore-energy.biz, 4 Apr 2017, \"Wartsila scores Hoegh LNG deal\") states \"Two new 170,000-cbm LNG vessels being built for Höegh LNG at the Samsung Heavy Industries (SHI) and Hyundai Heavy Industries (HHI) shipyards in Korea will each be powered by four Wärtsilä 50DF dual-fuel engines\" — this matches Höegh Galleon's exact specs (170,000 cbm, SHI-built, delivered 2019) and timeline (an April-2017 order fits a ~2-year build), and a sister vessel from apparently the same order/class, Höegh Esperanza (HHI-built, delivered April 2018), is independently confirmed by Wikipedia to run \"four dual-fuel Wärtsilä-Italia W8L50DF engines\" at 7,800 kW each. However, NO source found explicitly names Höegh Galleon in connection with this 2017 Wärtsilä contract or with any specific engine model — the match is circumstantial (same class/size/yard/timeline), not a documented fact about this specific hull, so it is reported here as a lead rather than staged as a citable finding.",
+    "refs": [
+      "https://www.hoeghevi.com/fleet"
+    ],
+    "verification_log": [
+      {
+        "url": "https://www.hoeghevi.com/fleet",
+        "tokens": ["Höegh Galleon", "Port Kembla"],
+        "result": "PASS",
+        "note": "confirms vessel-terminal match only, NOT onboard generation/fuel specifications (carried forward from primary pass, re-verified this pass)"
+      },
+      {
+        "url": "https://www.vesselfinder.com/vessels/details/9820013",
+        "tokens": ["engine", "fuel type"],
+        "result": "FAIL",
+        "note": "page loads but engine/fuel-type fields are blank/dash for this vessel record — not attempted against url_verifier since there is no value to check"
+      },
+      {
+        "url": "https://www.offshore-energy.biz/wartsila-scores-hoegh-lng-deal/",
+        "tokens": ["Wärtsilä 50DF", "Samsung Heavy Industries"],
+        "result": "not run",
+        "note": "content found and readable (confirms the 2-vessel/50DF deal) but NOT cited as a Port Kembla / Höegh Galleon finding because the article does not name the vessel — would be an uncited inference if staged; not run through url_verifier since it is not being used as a citation for this record"
+      }
+    ],
+    "gogpt_prior_assessment": "GOGPT's nearest match is Port Kembla power station (660 MW, 0.089 km away — essentially the same site, gogpt_captive=False). Unchanged from primary: this is almost certainly the direction-test case (PowerPlantsSupplied, not CaptiveGasPower) — the FSRU feeds the east-coast gas network generally, of which the nearby power station is presumably one customer among others. Ownership/fuel-sourcing of Port Kembla power station was not independently verified in this pass either (out of scope for the vessel-machinery question).",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Port Kembla power station already exists in GOGPT; the relationship (if any) to this FSRU is supply-out (PowerPlantsSupplied), not captive-power-in, so it is not a captive-power GOGPT candidate regardless of the vessel-machinery outcome. Unchanged from primary.",
+    "status_or_other_findings": "None tripped.",
+    "notes": "RECOVERY PASS: outcome UNCHANGED (still INSUFFICIENT) despite a substantially wider search than the primary pass — this is a genuine research gap, not a tooling gap. Attempts made this pass beyond the primary: (1) vessel IMO/database lookups (VesselFinder, MarineTraffic, etc. — IMO 9820013 confirmed but technical-particulars fields empty); (2) Höegh Evi's own delivery/naming/charter press archive (multiple 2018-2019 and 2022-2024 articles found, none with engine specs); (3) Höegh Evi's technology/sustainability pages (no vessel-level engine/fuel detail, only fleet-wide CO2-reduction framing); (4) SEC EDGAR company/filing search for Höegh LNG Partners 20-F (blocked, HTTP 403 — likely requires a browser User-Agent the fetch tool doesn't send); (5) the 2020 Höegh Evi annual report PDF (exceeded WebFetch's content-size limit, could not be read); (6) the Wärtsilä/SHI/HHI 2017 two-vessel 50DF newbuild deal, which circumstantially matches Galleon's specs and almost certainly is the source of its engines, but does not name the vessel and so is reported as a lead, not staged as a citation. A future pass with SEC EDGAR access (proper User-Agent) or the ability to read the full Höegh Evi annual report/20-F, or a maritime technical database subscription (Sea-web/IHS/DNV Vessel Register), is the likeliest path to resolving this specific hull's engine type and fuel mode.",
+    "recovery_outcome": "unchanged"
+  }
+]

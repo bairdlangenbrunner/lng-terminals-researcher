@@ -1,0 +1,65 @@
+[
+ {
+  "terminal": "Terminal Gás Sul FSRU",
+  "terminal_id": "T100000130938",
+  "country": "Brazil",
+  "verdict": "INSUFFICIENT",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "Confirmed steam-turbine propulsion (Energos Infrastructure fleet page) but no source found naming actual electrical generation equipment (turbo-generators vs diesel gensets) aboard this specific vessel.",
+  "fuel_basis": "Energos Infrastructure's own fleet page states Energos Winter is \"powered by steam turbine propulsion\"; generic LNG-carrier engineering references confirm boil-off gas is diverted to dual-fuel boilers as fuel, but no vessel-specific source ties this to the ship's electrical generation plant.",
+  "confidence": "yellow",
+  "captive_summary": "Terminal Gás Sul is served by the FSRU Energos Winter (138,250 m³, DSME-built, steam-turbine propulsion, GTT No.96-2 containment), moored offshore Santa Catarina and therefore off-grid by construction. No public source was found documenting the vessel's onboard electrical generation equipment or its fuel, so existence of gas-fired captive power cannot be confirmed or denied. The terminal's stated purpose is to supply regasified gas to regional power infrastructure (including the GOGPT-listed, cancelled/shelved Norte Catarinense power station) — the PowerPlantsSupplied direction, not a captive-power finding.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Offshore Energy (6 Nov 2023): NFE chartered the FSRU Energos Winter from Petrobras for deployment to Terminal Gas Sul (TGS), Santa Catarina. Offshore Energy (1 Mar 2024): TGS began operations March 2024 with Energos Winter (138,250 m³) on site; ~6 mtpa capacity, 500 mmscf/d send-out, connects to >3.5 GW of regional power infrastructure lacking firm gas-supply agreements. Energos Infrastructure's own fleet page (accessed Aug 2026) lists Energos Winter: 138,250 m³, built by DSME, GTT No.96-2 membrane containment, \"powered by steam turbine propulsion,\" peak send-out 650 mmscf/d, and — notably — now shows the vessel's location as Damietta, Egypt, not Brazil (consistent with this shard's terminal status of \"idled\"; the vessel appears to have been redeployed since GEM's data was captured — a status finding only, not acted on here). No source located (Portuguese ANP/IBAMA filings, trade press, shipbuilder release) specifically describes the vessel's own electrical generation plant (turbo-generator vs diesel auxiliary generator) or confirms it burns gas/BOG for electricity while moored. Search tooling was degraded this session (WebSearch budget exhausted; Bing/DuckDuckGo HTML scraping via WebFetch returned unrelated/garbage content); a future pass with full search access should retry this specific question before it is treated as settled INSUFFICIENT.",
+  "refs": [
+   "https://energosinfra.com/fleet/",
+   "https://www.offshore-energy.biz/new-fortress-energy-inks-fsru-charter-agreement-with-petrobras/",
+   "https://www.offshore-energy.biz/with-fsru-on-site-brazilian-lng-terminal-put-into-operation/"
+  ],
+  "verification_log": [
+   {
+    "url": "https://energosinfra.com/fleet/",
+    "tokens": [
+     "Energos Winter",
+     "steam turbine"
+    ],
+    "result": "PASS",
+    "note": "confirms vessel + propulsion type"
+   },
+   {
+    "url": "https://energosinfra.com/fleet/",
+    "tokens": [
+     "Energos Winter",
+     "Damietta"
+    ],
+    "result": "PASS",
+    "note": "confirms current (redeployed) location, status finding only"
+   },
+   {
+    "url": "https://www.offshore-energy.biz/new-fortress-energy-inks-fsru-charter-agreement-with-petrobras/",
+    "tokens": [
+     "Energos Winter",
+     "Terminal Gas Sul"
+    ],
+    "result": "PASS",
+    "note": "confirms charter/deployment"
+   },
+   {
+    "url": "https://www.offshore-energy.biz/with-fsru-on-site-brazilian-lng-terminal-put-into-operation/",
+    "tokens": [
+     "138,250",
+     "Energos Winter"
+    ],
+    "result": "PASS",
+    "note": "confirms vessel capacity + terminal start-up"
+   }
+  ],
+  "gogpt_prior_assessment": "Nearest GOGPT plant (rank 1, 29.05 km) is Norte Catarinense power station (1,050 MW, 2 units, gogpt_captive: false, status cancelled-inferred/shelved-inferred). This is the RECIPIENT of gas piped from Terminal Gás Sul (the terminal's own shard field power_plants_supplied names it), i.e. the PowerPlantsSupplied direction — not this terminal's captive power. No independent (non-gem.wiki) info_url for Norte Catarinense power station was found this session (searches for the Portuguese/English plant name returned nothing on offshore-energy.biz or Bing News); its GOGPT status is taken from the neighbors_raw.json data supplied for this batch.",
+  "gogpt_candidate": "REVIEWER CALL",
+  "gogpt_candidate_basis": "Verdict is INSUFFICIENT — no confirmed on-site gas generation equipment for the terminal/vessel itself, so there is nothing yet to add as a GOGPT record. Flagging REVIEWER CALL rather than DO NOT ADD because the underlying question (does Energos Winter carry gas-fired turbo-generators, standard for many steam-turbine LNG vessels) was not resolved due to degraded search tooling this session, not because a negative was documented.",
+  "status_or_other_findings": "Shard lists terminal status as idled/actual. Energos Infrastructure's current fleet page (Aug 2026) shows Energos Winter now deployed at Damietta, Egypt, not Santa Catarina — the vessel appears to have been redeployed away from Terminal Gás Sul since GEM's data snapshot. This is an FSRU vessel-reassignment finding for a separate batch (fsru_sync_check.py), not acted on here.",
+  "notes": "Direction-test case: Terminal Gás Sul's purpose per its own start-up coverage is to supply gas into a region with >3.5 GW of power infrastructure lacking firm gas-supply deals (including, per shard data, Norte Catarinense power station) — this is PowerPlantsSupplied, the opposite of a captive-power finding, and should not be confused with one."
+ }
+]

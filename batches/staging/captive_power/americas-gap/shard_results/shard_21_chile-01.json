@@ -1,0 +1,291 @@
+[
+ {
+  "terminal": "Colbun FLNG Terminal",
+  "terminal_id": "T100000130552",
+  "country": "Chile",
+  "verdict": "SCREENED",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "green",
+  "captive_summary": "Project was cancelled (~2013-2014) before reaching a finalized vessel/design stage, so no captive-power facility was ever built or engineered. Its stated purpose was the opposite of captive power: Colbun (with AES Gener) proposed the FSRU to import gas to fuel Colbun's OWN existing >1 GW gas-fired generation fleet elsewhere in the SIC grid, i.e. gas flowing OUT of the terminal to Colbun's power plants, not power flowing IN to the terminal.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Nuevamineria (2014): 'Colbun and Gener canceled deal to build LNG tanker' confirms the Colbun/AES Gener FSRU deal (Hoegh LNG preferred bidder, Quintero Bay) was called off. ICIS (2014-11-13, 'Chile's ENAP offloads excess 2015 LNG cargoes to Colbun'): confirms Colbun abandoned its own terminal-development plans first announced in 2012 and instead buys LNG through existing Quintero-terminal offtakers/spot cargoes, noting 'Colbun uses LNG to fuel its gas-fired generation capacity, which exceeds 1 GW' -- i.e. the sought import capacity was feedstock for Colbun's own power stations, the reverse of a captive-power relationship at the terminal itself.",
+  "refs": [
+   "http://www.nuevamineria.com/revista/colbun-and-gener-canceled-deal-to-build-lng-tanker/",
+   "https://www.icis.com/explore/resources/news/2014/11/13/9838389/chile-s-enap-offloads-excess-2015-lng-cargoes-to-colbun/"
+  ],
+  "verification_log": [
+   {
+    "url": "http://www.nuevamineria.com/revista/colbun-and-gener-canceled-deal-to-build-lng-tanker/",
+    "tokens": [
+     "Colbun",
+     "canceled"
+    ],
+    "result": "PASS",
+    "note": "OK"
+   },
+   {
+    "url": "https://www.icis.com/explore/resources/news/2014/11/13/9838389/chile-s-enap-offloads-excess-2015-lng-cargoes-to-colbun/",
+    "tokens": [
+     "Colbun",
+     "gas-fired"
+    ],
+    "result": "PASS",
+    "note": "bot-blocked live (Incapsula interstitial); verified via Wayback snapshot 20260416004520"
+   },
+   {
+    "url": "https://www.icis.com/resources/news/2013/04/25/9662659/chile-s-colbun-fsru-project-hits-delays-as-supply-talks-begin/",
+    "tokens": [
+     "Colbun",
+     "Hoegh"
+    ],
+    "result": "FAIL",
+    "note": "bot-challenge interstitial; Wayback snapshot missing 'Hoegh' token (likely accent variant 'Höegh') -- dropped, not cited"
+   }
+  ],
+  "gogpt_prior_assessment": "Neighbors are Quintero power station (248.4 MW, rank1, 4.47km, gogpt_captive=False) and Cogeneradora Aconcagua power station (77 MW, rank2, 16.5km, gogpt_captive=False). Neither is this terminal's captive power: the Colbun FLNG project never reached construction (cancelled ~2014), so there is no built facility to be fed by either plant, and both are pre-existing merchant/grid-connected thermal plants unrelated in ownership to the cancelled Colbun/AES Gener FSRU proposal. Could not source an independent non-gem.wiki info_url for either plant this session (web-search tools exhausted/blocked); GOGPT's own gogpt_captive=False flags on both already agree with DO NOT ADD.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "No facility was ever built -- there is nothing to add. This is a clean negative: project cancelled pre-construction, not a sizing or documentation gap.",
+  "status_or_other_findings": "GEM already carries this as cancelled (inferred ~4y). Corroborated: Nuevamineria confirms the Colbun/AES Gener LNG-tanker (FSRU) deal was formally canceled; ICIS (2014) confirms Colbun abandoned terminal plans first announced in 2012 and pursued third-party supply instead.",
+  "notes": "Direction-test case: the project's whole rationale was to feed Colbun's own >1GW gas-fired power fleet (PowerPlantsSupplied direction), never captive power INTO the terminal. Not relevant to flag further since the project never proceeded.\n\nQC adjudication 2026-08-02 (orchestrator): NO reclassified SCREENED (cancelled-never-designed class, matching the corpus's 37 such records): cancelled ~2013-14 before any vessel/design was finalized, so there is no facility design to assess for captive power; cancellation evidence cited. The supply-out purpose (Colbun's own >1 GW fleet) is retained as context."
+ },
+ {
+  "terminal": "Gas Atacama FLNG Terminal",
+  "terminal_id": "T100000130554",
+  "country": "Chile",
+  "verdict": "SCREENED",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "yellow",
+  "captive_summary": "Never built (cancelled, GEM: inferred ~4y). The 2011 tender for this Mejillones-area FSRU was launched by GasAtacama itself, described in trade press as 'the power generator [that] currently supplies regasified LNG to four mining projects from the existing Mejillones terminal' -- i.e. the proposed facility was meant to extend GasAtacama's existing gas-out-to-power/mining-customers business model, the opposite of captive power flowing into the terminal. No FEED-level equipment list or vessel was ever finalized before the project stalled.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "ICIS (2011-06-28, 'Chile's GasAtacama launches Mejillones FSRU plan', via Wayback since live page is bot-blocked): 'Chilean electricity company GasAtacama has issued a tender to develop a floating regasification and storage unit (FSRU)... The power generator currently supplies regasified LNG to four mining projects from the existing Mejillones terminal.' This establishes GasAtacama as the vertically-integrated power company behind the project and the gas-out direction of its existing/planned business, matching the terminal's GOGPT neighbors Illapa (cancelled, same sponsor lineage) and Atacama power station (716 MW, operating) which GasAtacama's fleet historically fed.",
+  "refs": [
+   "https://www.icis.com/explore/resources/news/2011/06/28/9473000/chile-s-gasatacama-launches-mejillones-fsru-plan"
+  ],
+  "verification_log": [
+   {
+    "url": "https://www.icis.com/explore/resources/news/2011/06/28/9473000/chile-s-gasatacama-launches-mejillones-fsru-plan",
+    "tokens": [
+     "GasAtacama",
+     "FSRU"
+    ],
+    "result": "PASS",
+    "note": "bot-blocked live (Incapsula interstitial); verified via Wayback snapshot 20211017115600"
+   },
+   {
+    "url": "https://www.icis.com/explore/resources/news/2014/04/02/9768979/endesa-acquisition-revives-interest-in-chilean-gasatacama-lng-project/",
+    "tokens": [
+     "GasAtacama",
+     "Endesa"
+    ],
+    "result": "FAIL",
+    "note": "bot-challenge interstitial; no Wayback snapshot available -- dropped, not cited"
+   }
+  ],
+  "gogpt_prior_assessment": "Neighbors are Illapa power station (255 MW, rank1, 0.7km, status cancelled - inferred 4y, gogpt_captive=False) and Atacama power station (716 MW, rank2, 3.58km, operating, gogpt_captive=False). Neither is captive to this terminal: the FLNG project itself never advanced past a 2011 tender/2014 revived-interest stage and was never built, so there is no terminal to be fed. Illapa's cancellation appears contemporaneous with the FLNG terminal's own cancellation (both under the same GasAtacama-era planning wave); Atacama power station is an existing operating merchant/GasAtacama-legacy plant unrelated to the never-built FLNG import facility. Could not source an independent non-gem.wiki info_url for either plant this session (search tools exhausted/blocked).",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "No facility was ever built -- nothing to add. Clean negative on non-construction grounds.",
+  "status_or_other_findings": "GEM already carries this as cancelled (inferred ~4y), consistent with the project stalling after the 2011 tender and a brief 2014 revival of interest (Endesa acquisition) that evidently did not proceed to construction.",
+  "notes": "Direction-test case, same pattern as Colbun FLNG: GasAtacama's proposed FSRU existed to extend gas supply OUT to its own power/mining customers (PowerPlantsSupplied direction), not to power the terminal itself.\n\nQC adjudication 2026-08-02 (orchestrator): NO reclassified SCREENED (cancelled-never-designed class): the 2011 GasAtacama FSRU tender never selected a vessel or reached design; cancelled per GEM. No design exists to assess; single-source cancellation evidence keeps this yellow."
+ },
+ {
+  "terminal": "Mejillones LNG Terminal",
+  "terminal_id": "T100000130556",
+  "country": "Chile",
+  "verdict": "INSUFFICIENT",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "",
+  "captive_summary": "GNL Mejillones (operating onshore regasification terminal, single train, 5.5 million m3/day) exists to supply regasified gas to Engie's own Mejillones and Tocopilla thermal complexes and to mining offtakers -- gas flows OUT of the terminal to those plants (already reflected in GEM's PowerPlantsSupplied field), which is the opposite of captive power. No source found describes any on-site gas-fired generation dedicated to powering the terminal's own regasification operations; Engie's own current asset description of the Mejillones/Tocopilla complexes (BESS batteries, a 377 MW gas-converted IEM unit, a synchronous condenser) covers ENGIE's regional generation fleet but does not describe the LNG terminal as having its own captive plant.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Offshore-Technology.com project profile ('Mejillones Liquefied Natural Gas (LNG) Terminal'): single train, 5.5 million m3/day, owner GNL Mejillones, partners Suez Energy International/Codelco -- output framed entirely as gas supply ('equates to the production of 1,100MW of electricity' at the OFFTAKE plants, and mining-project contracts), never as on-site generation at the terminal. Engie Chile's Flexible Generation & Retail page confirms Mejillones (Infraestructura Energetica Mejillones / IEM, 377 MW gross after 2025 gas reconversion) and Tocopilla (Complejo Termico de Tocopilla, Unit 16 on gas + new BESS Tocopilla) are ENGIE's own separate generating assets in the same industrial cluster -- corroborating that the terminal's role is the gas-to-plant direction, not plant-to-terminal.",
+  "refs": [
+   "https://www.offshore-technology.com/projects/cnlmejillones/",
+   "https://www.engie.cl/flexible-generation-retail/"
+  ],
+  "verification_log": [
+   {
+    "url": "https://www.offshore-technology.com/projects/cnlmejillones/",
+    "tokens": [
+     "5.5 million cubic metres",
+     "GNL Mejillones"
+    ],
+    "result": "PASS",
+    "note": "bot-blocked live (HTTP 403); verified via Wayback snapshot 20260612072041"
+   },
+   {
+    "url": "https://www.engie.cl/flexible-generation-retail/",
+    "tokens": [
+     "377 MW",
+     "BESS Tocopilla"
+    ],
+    "result": "PASS",
+    "note": "OK"
+   }
+  ],
+  "gogpt_prior_assessment": "Neighbors are Kelar power station (517.4 MW, rank1, 3.76km, operating, gogpt_captive=True per GOGPT) and Andina-Hornitos power station (355 MW, rank2, 5.3km, announced, gogpt_captive=False). Kelar is a combined-cycle gas plant built by Kelar SpA (GDF Suez/Samsung/Marubeni JV, later sold) that draws pipeline gas in the same industrial zone but is a separate merchant IPP, not owned by or physically integrated with GNL Mejillones terminal -- GOGPT's own captive=True flag on Kelar most likely reflects Kelar's relationship to a DIFFERENT industrial host or its own internal characterization, not a link to this LNG terminal; not independently re-verified this session (search tools exhausted/blocked). Andina-Hornitos is an announced, not-yet-built plant, also unrelated to the terminal.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "No on-site generation found at the LNG terminal itself; the terminal's documented function is gas-out supply to Engie's own Mejillones/Tocopilla thermal complex and Kelar/mining offtakers, which is the PowerPlantsSupplied relationship, not a captive power station belonging to the terminal.",
+  "status_or_other_findings": "No status/FID findings tripped. Note ENGIE's 2024-2025 asset transition in the same industrial cluster: IEM (Mejillones) converting units 1-2 off coal to gas (377 MW retained) by end-2025, CTT (Tocopilla) fully off coal since Sept 2022 with Unit 16 on gas, and new BESS Tocopilla (116 MW/660 MWh) and BESS Tamaya batteries replacing old diesel/coal sites -- background only, not acted on.",
+  "notes": "Classic direction-test terminal: GEM's own power_plants_supplied field already lists Mejillones power station and Tocopilla power station, consistent with everything found. No evidence of a captive plant feeding the terminal's own regasification/send-out operations.\n\nQC adjudication 2026-08-02 (orchestrator): NO overturned to INSUFFICIENT: sources establish the gas-out direction to Engie's Mejillones/Tocopilla complexes but never enumerate the terminal's own vaporizer/utility equipment or state its power supply. Absence-based; contrast Quintero, whose NO stands on GNL Quintero's own vaporizer enumeration (the backup SCV burns gas for regas heat, not power/mechanical drive)."
+ },
+ {
+  "terminal": "Penco Lirquén FSRU",
+  "terminal_id": "T100000130558",
+  "country": "Chile",
+  "verdict": "INSUFFICIENT",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "",
+  "captive_summary": "Still proposed / not built (RCA repeatedly litigated and ultimately invalidated by Chile's environmental courts through 2023-2025). The project's own sponsor documentation establishes it exists to deliver LNG to the Central El Campesino power plant: Cheniere Marketing's 20-year SPA with Central El Campesino states the LNG 'would be delivered, stored and regasified at the proposed floating storage regasification unit (FSRU), Penco Lirquen LNG Terminal' to underpin El Campesino's ~480 MW sale to distribution companies -- gas flows OUT of the terminal to that plant, not power flowing IN. No FSRU vessel has been named publicly and no on-site generation design for the terminal itself was found in any source reviewed.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "PR Newswire (2015, Cheniere Marketing/Central El Campesino SPA release) and LNG Industry (2015-07-31, 'Cheniere enters LNG SPA with Central El Campesino') both confirm the FSRU (Penco Lirquen / Octopus LNG) was purposed to feed Central El Campesino's power-auction-winning 480 MW capacity. Later Chilean press (2023-2025, RCA approval-then-annulment saga) broadens the terminal's intended customer base to regional industrial/residential gas users via new pipeline infrastructure, but none of the sources found describe any captive on-site generation for the terminal's own operations, and no specific FSRU vessel (which would trigger the FSRU-onboard convention) has been identified in any source found.",
+  "refs": [
+   "http://www.prnewswire.com/news-releases/cheniere-marketing-and-central-el-campesino-sign-20-year-lng-sale-and-purchase-agreement-300121610.html",
+   "https://www.lngindustry.com/liquefaction/31072015/Cheniere-enters-LNG-SPA-with-Central-El-Campesino-1087/"
+  ],
+  "verification_log": [
+   {
+    "url": "http://www.prnewswire.com/news-releases/cheniere-marketing-and-central-el-campesino-sign-20-year-lng-sale-and-purchase-agreement-300121610.html",
+    "tokens": [
+     "Penco Lirquén",
+     "Central El Campesino"
+    ],
+    "result": "PASS",
+    "note": "OK"
+   },
+   {
+    "url": "https://www.lngindustry.com/liquefaction/31072015/Cheniere-enters-LNG-SPA-with-Central-El-Campesino-1087/",
+    "tokens": [
+     "Penco Lirquén",
+     "Central El Campesino"
+    ],
+    "result": "PASS",
+    "note": "OK"
+   },
+   {
+    "url": "https://www.biobiochile.cl/noticias/nacional/region-del-bio-bio/2023/10/25/tras-9-anos-comite-de-ministros-aprueba-cuestionado-proyecto-terminal-maritimo-gnl-penco-lirquen.shtml",
+    "tokens": [
+     "GNL Penco",
+     "US$165 millones"
+    ],
+    "result": "FAIL",
+    "note": "'US$165 millones' token not found verbatim on page (paraphrase mismatch) -- dropped, not cited"
+   }
+  ],
+  "gogpt_prior_assessment": "gogpt_prior=no in the worklist -- no GOGPT neighbor plant was surfaced within 30km for this terminal in neighbors_raw.json.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "Never built; no on-site generation of any kind documented or designed for the terminal itself.",
+  "status_or_other_findings": "Project has a long, contested regulatory history: RCA unanimously approved 2017 (per revistaei.cl reporting on the original permit, not independently re-cited here), Comite de Ministros re-approved a contested version October 2023 after ~9 years, then Chile's Environmental Tribunal (3ta.cl, Valdivia) and eventually the Corte Suprema annulled the environmental qualification (diarioconstitucional.cl, 2023-01-13, upheld the invalidation) over indigenous-consultation defects -- the project remains legally paralyzed as of the most recent 2025 coverage found (hora12.cl, municipality of Penco filing as third party against it). None of this bears on the captive-power question directly but is worth noting for anyone tracking this terminal's status.",
+  "notes": "Direction-test case: sponsor's own SPA press materials establish the terminal's core purpose as feeding Central El Campesino (PowerPlantsSupplied direction). Flag for the record: if the project is eventually built with a named FSRU vessel, the FSRU-onboard convention should be re-checked against that vessel's actual onboard power spec.\n\nQC adjudication 2026-08-02 (orchestrator): NO overturned to INSUFFICIENT under the FSRU-onboard convention: still a live proposal (RCA litigation, not cancelled), no FSRU vessel named, and the SPA/direction evidence (Central El Campesino offtake) never addresses the future vessel's onboard machinery — the researcher's own note anticipated exactly this."
+ },
+ {
+  "terminal": "Quintero LNG Terminal",
+  "terminal_id": "T100000130560",
+  "country": "Chile",
+  "verdict": "NO",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "green",
+  "captive_summary": "GNL Quintero's own technical description of its four vaporizers shows the only gas-combustion equipment on site is the backup Submerged Combustion Vaporizer (SCV) -- a heat exchanger that burns natural gas to heat a demineralized-water bath for LNG regasification, used only as backup to the three primary seawater Open Rack Vaporizers (ORV). This is process heat, not electric power generation (same ground as Swinoujscie/Zeebrugge SCV settled NOs) -- there is no captive gas power plant at this terminal.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "GNL Quintero's own website (gnlquintero.com/terminal/vaporizadores/): 'El Terminal tiene cuatro Vaporizadores... Tres de ellos son de panel abierto (Open Rack Vaporizers, ORV)... En tanto, el Vaporizador de Combustion Sumergida (Submerged Combustion Vaporizer, SCV), opera como respaldo del sistema... Esta compuesto por intercambiadores de calor por los que circula GNL, los que estan sumergidos en una piscina con agua desmineralizada que es calentada mediante la combustion de gas natural.' (Translation: the SCV is a standby heat exchanger that heats a demineralized-water bath via natural-gas combustion to vaporize LNG -- explicitly a thermal/vaporization process, not electricity generation.) No other on-site gas-fired equipment (generators, turbines) is described anywhere on the operator's own site or in any secondary source reviewed (offshore-technology.com project profile, McDermott EPC profile).",
+  "refs": [
+   "https://www.gnlquintero.com/terminal/vaporizadores/"
+  ],
+  "verification_log": [
+   {
+    "url": "https://www.gnlquintero.com/terminal/vaporizadores/",
+    "tokens": [
+     "Combustión Sumergida",
+     "combustión de gas natural"
+    ],
+    "result": "PASS",
+    "note": "OK"
+   }
+  ],
+  "gogpt_prior_assessment": "Neighbors are Quintero power station (248.4 MW, rank1, 4.47km, operating, gogpt_captive=False) and Cogeneradora Aconcagua power station (77 MW, rank2, 16.5km, operating, gogpt_captive=False). Neither is captive to this terminal: both are pre-existing merchant/grid-connected thermal plants in the same Quintero-Puchuncavi-Ventanas industrial zone (which also hosts ENAP, AES Gener, Oxiquim, Codelco, Copec and other unrelated industrial tenants per Wikipedia's description of the area), not physically or corporately integrated with GNL Quintero's regasification operations. GOGPT's own gogpt_captive=False flag on both agrees with DO NOT ADD. Could not source an independent non-gem.wiki info_url for either plant this session (search tools exhausted/blocked).",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "The only gas-combustion equipment documented at the terminal (the SCV) is a heat-only backup vaporizer, not a generator -- there is no gas power station here to add.",
+  "status_or_other_findings": "None tripped beyond the operating status GEM already carries. GNL Quintero is Chile's oldest and largest LNG import terminal (operating since 2009), currently owned EIG Global Energy Partners [40%] / Fluxys [40%] / ENAP [20%] per GEM's existing owner field (matches 2022 Reuters/Fluxys reporting on the Enagas-to-EIG/Fluxys sale, background only, not independently re-cited here).",
+  "notes": "This terminal's own neighboring 'Quintero power station' merchant plant (in GOGPT) is a different asset from GNL Quintero the import terminal -- same town, unrelated ownership/purpose; do not confuse the two in any downstream matching."
+ },
+ {
+  "terminal": "Talcahuano FSRU",
+  "terminal_id": "T100000130716",
+  "country": "Chile",
+  "verdict": "INSUFFICIENT",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "red",
+  "captive_summary": "Never built (GEM: shelved, confirmed). This is not a cancelled-and-never-designed screen: an EIS/environmental impact study WAS submitted (LNG Industry, 2016) and the RCA was unanimously approved in 2017, meaning an engineering-level design almost certainly exists describing the FSRU/onshore facility's equipment -- it is simply not accessible via the search tools available this session (Chile's SEA project database (seia.sea.gob.cl) renders its project table via client-side JS/AJAX that returned an empty result set to a plain HTTP fetch; no cached copy or news reproduction of the EIS's equipment content was found). No FSRU vessel was ever named in any source found (Wison Offshore & Marine held only an 'exclusive period' to propose one, per LNG Industry 2016 and Offshore Magazine). No source found makes any statement, positive or negative, about on-site power generation for this facility.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "LNG Industry (2016-06-03, 'EIS submitted for Chilean FSRU'): confirms Moffat & Nichol as Owner's Engineer and Wison Offshore & Marine holding exclusive rights to propose the FSRU, ramping to 5 MTPA over 8 years -- no power-generation detail given. Offshore Magazine ('Wison in line to build Chilean offshore FSRU'): describes the project's ambition to be the 'world's first zero net emission LNG import terminal' -- suggestive that the design leaned away from on-site fossil combustion, but this is a marketing/design-intent framing, not an equipment enumeration, so it does not meet the bar for a documented NO. RevistaEI (2017-07-25, via Wayback): confirms unanimous RCA approval in 2017. Diario Constitucional (2023-01-13, via Wayback): confirms the Corte Suprema upheld the Valdivia Environmental Tribunal's invalidation of that same environmental qualification (procedural/indigenous-consultation grounds, not an engineering rejection) -- the project remains legally paralyzed with the underlying EIS/RCA content never surfaced in any source reviewed.",
+  "refs": [
+   "https://www.lngindustry.com/regasification/03062016/eis-submitted-for-chilean-fsru-2542/",
+   "https://www.offshore-mag.com/regional-reports/article/16769449/wison-in-line-to-build-chilean-offshore-fsru"
+  ],
+  "verification_log": [
+   {
+    "url": "https://www.lngindustry.com/regasification/03062016/eis-submitted-for-chilean-fsru-2542/",
+    "tokens": [
+     "FSRU",
+     "Talcahuano"
+    ],
+    "result": "PASS",
+    "note": "OK"
+   },
+   {
+    "url": "https://www.offshore-mag.com/regional-reports/article/16769449/wison-in-line-to-build-chilean-offshore-fsru",
+    "tokens": [
+     "Wison",
+     "zero net emission"
+    ],
+    "result": "PASS",
+    "note": "OK"
+   },
+   {
+    "url": "https://web.archive.org/web/20210920085158/https://www.revistaei.cl/2017/07/25/aprueban-proyecto-gnl-talcahuano-votacion-unanime/",
+    "tokens": [
+     "Talcahuano",
+     "unánime"
+    ],
+    "result": "PASS",
+    "note": "OK (background/status only, not a captive-power citation)"
+   },
+   {
+    "url": "https://www.diarioconstitucional.cl/2023/01/13/corte-suprema-confirma-resolucion-que-invalido-calificacion-ambiental-de-proyecto-de-gas-natural-licuado-en-el-puerto-de-talcahuano/",
+    "tokens": [
+     "Talcahuano",
+     "Corte Suprema"
+    ],
+    "result": "PASS",
+    "note": "bot-blocked live (HTTP 403); verified via Wayback snapshot 20251013062829 (background/status only, not a captive-power citation)"
+   }
+  ],
+  "gogpt_prior_assessment": "gogpt_prior=no in the worklist -- no GOGPT neighbor plant was surfaced within 30km for this terminal in neighbors_raw.json.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "Never built; nothing exists to add regardless of the captive-power verdict.",
+  "status_or_other_findings": "Long-running legal saga, useful for anyone tracking this terminal's status: RCA unanimously approved 2017 -> construction reportedly slated to start March 2021 (terram.cl/noticiaslogisticaytransporte.com, not independently re-cited here) -> Valdivia Environmental Tribunal annulled the RCA -> Corte Suprema upheld the annulment (2023-01-13) on indigenous-consultation grounds -> as of a 2025-07 hora12.cl article (not independently re-cited here) the municipality of Penco was still fighting the (evidently separate/adjacent) Penco Lirquen project in the same tribunal, suggesting the whole Bio-Bio LNG corridor remains contested. Also faced a separate commercial dispute over pipeline interconnection with Gasoducto del Pacifico/Innergy (2017-2019) over a contested feasibility certificate.",
+  "notes": "Recommend a follow-up attempt to pull the actual EIS/RCA document from seia.sea.gob.cl with a tool that can execute the site's JS-driven project search (this session's plain-HTTP fetches returned an empty AJAX table) if a future batch needs a firmer verdict here."
+ }
+]

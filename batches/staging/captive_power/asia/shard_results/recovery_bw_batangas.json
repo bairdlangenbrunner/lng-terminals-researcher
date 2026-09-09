@@ -1,0 +1,24 @@
+[
+ {
+  "terminal": "FGEN Batangas FSRU",
+  "terminal_id": "T100000131012",
+  "country": "Philippines",
+  "verdict": "INSUFFICIENT",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "red",
+  "captive_summary": "Direction test already settled: the BW Batangas FSRU (moored at First Gen's Clean Energy Complex, Batangas) feeds gas to First Gen's 2,017 MW of gas-fired power plants via pipeline — that is NOT captive (opposite relationship; PowerPlantsSupplied territory, not CaptiveGasPower). The only open question researched here is whether the FSRU vessel itself burns gas/dual-fuel for its own house/regas load. No source found stating the vessel's engine/generator type (steam turbine burning boil-off gas vs. DFDE dual-fuel vs. diesel-only). Multiple vessel-data sources (VesselFinder, Baltic Shipping, MarinePublic, MyShipTracking, ShipsIO, MaritimeOptima, FleetMon) list only hull particulars (IMO 9368302, built 2009 DSME, 294-295m LOA, ~89,556 DWT, ~162,000-172,000 cbm) with engine/propulsion fields either blank or not returned by the fetchable page content. BW Group's own project page (bw-group.com) and the offshore-energy.biz conversion-milestone article describe the Keppel FSRU conversion scope (regasification module installation, cargo-system upgrade, life-extension repair) but do not mention generators, engine type, or power-plant equipment added or retained. DNV vessel register was located but its detail page for this IMO could not be fetched (requires interactive search, not a static URL). No class-society record, technical press release, or POM/DOE filing enumerating the vessel's power generation was found.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Real search effort across ~13 fetches: WebSearch was unavailable (session quota exhausted before this shard started), so all research used the WebFetch fallback chain (DuckDuckGo html/lite, Bing RSS) plus direct fetches of vessel-database and BW Group/press pages. Checked: offshore-energy.biz conversion article, bw-group.com project page, VesselFinder, Baltic Shipping, MarinePublic (403), ShipsIO (403), MyShipTracking, MaritimeOptima, FleetMon (DNS failure), DNV vessel register (listing found, no fetchable detail page), and targeted queries combining the IMO number / vessel names with steam turbine / DFDE / TFDE / generator / engine builder terms — all returned no matching results or no engine-specific content. No document was found describing whether BW Paris/BW Batangas is a steam-turbine (BOG-burning) or dual-fuel/diesel-electric vessel.",
+  "refs": [],
+  "verification_log": [],
+  "gogpt_prior_assessment": "Not applicable to this recovery pass — direction test (FSRU feeds First Gen's plants, not the reverse) was already established prior to this research and is not a captive-power finding for the FSRU itself.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "No sourced positive finding of onboard gas-fired generation; verdict is INSUFFICIENT, not a documented YES. Per SOP, absence of a spec is INSUFFICIENT, never treated as a NO or as grounds to add/exclude a GOGPT candidate.",
+  "status_or_other_findings": "Minor cross-source inconsistencies noted but not acted on: reported storage capacity ranges 162,400-171,793 cbm and reported flag state varies (Singapore vs Panama) across vessel-tracking sites — likely stale/inconsistent third-party database entries, not something this narrow fuel-gate question needed to resolve.",
+  "notes": "Fuel/equipment for BW Batangas's own house power remains unstated after real search; verdict stays INSUFFICIENT per the fuel-gate rule (2009-build-year/class-generation alone is not a valid basis to infer steam-turbine BOG-burning propulsion — that would need to be sourced, not inferred). [RECOVERY PASS 2026-07-31: vessel-genset focus]"
+ }
+]

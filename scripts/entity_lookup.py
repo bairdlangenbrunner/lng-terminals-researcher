@@ -5,19 +5,31 @@ Per Update SOP §8 and Discovery SOP §9: the GEM entity system is shared
 across all trackers. Creating a duplicate entity is real cleanup work for
 the Ownership Team. Always run this before staging a new entity.
 
-Two lookup modes:
+Three lookup modes:
   - Local: scan the current GEM export for the entity in existing rows
            (catches entities that already appear as Owner/Operator/Parent
            in some existing terminal)
-  - Remote: query the GEM web UI entity search endpoint (catches entities
-            that exist in the entity system but aren't currently linked
-            to any terminal in our local data)
+  - Postgres (--pg): scan `entity_history` in the read-only Postgres for the
+           entity by name/abbreviation. This is the AUTHORITATIVE check — it
+           sees the whole entity system, including entities not linked to any
+           terminal in the local export, and entities belonging to other GEM
+           trackers entirely. Prefer it over --remote.
+  - Remote: query the GEM web UI entity search endpoint (same coverage as
+            --pg in principle, but see the caveat below)
 
 The remote lookup uses the same session cookies as pull_gem_db.py.
 
-CAVEAT: The remote endpoint URL pattern is heuristic — the exact GEM entity
-search URL is not documented in this codebase. The local search is reliable
-and should be the primary check; remote is a useful supplement when local misses.
+CAVEATS. The remote endpoint URL pattern is heuristic (the exact GEM entity
+search URL is not documented in this codebase), it needs GEM_PROJECT_DB_BASE_URL
+which is often unset — in which case it returns `skipped_no_base_url`, an
+ENVIRONMENTAL SKIP and NOT a negative result — and it has twice returned a
+false no-match for an entity that demonstrably exists (Mitsubishi 2026-07-14,
+Vietnam 2026-07-02). So `--pg` is the check to trust when the local scan misses;
+`skipped_no_base_url` or `no_remote_match` is never sufficient grounds to stage
+a new entity. Both were the proximate cause of two near-duplicates caught at the
+merge-time QC gate of the 2026-08-11 gregor-lac sweep (XRG, which already existed
+as 100002018879; and Barbados National Energy Company, which already existed
+under its former name BNOCL as 100002005362).
 
 WHY --country DOES NOT FILTER MATCHES (lesson from a real duplicate, 2026-06-24):
 GEM entities are SHARED across all trackers and across countries — the developer
@@ -32,6 +44,7 @@ Before staging any new entity, run this BARE (no --country) and with --remote.
 
 Usage:
     python entity_lookup.py "TotalEnergies"                 # the check to trust
+    python entity_lookup.py "TotalEnergies" --pg            # authoritative: read-only Postgres
     python entity_lookup.py "TotalEnergies" --remote        # also query the entity system
     python entity_lookup.py "TotalEnergies" --country "France"  # annotate only, never filters
 """
@@ -47,6 +60,7 @@ from collections import Counter
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
+import paths  # GEM DB engine + sibling-repo resolution
 from normalize import normalize_entity, normalize_country
 from colmap import load_colmap as _load_colmap
 
@@ -172,6 +186,88 @@ def lookup_local(name, country=None, csv_path=DEFAULT_CSV):
     return out
 
 
+def lookup_pg(name, db_url=None):
+    """Authoritative entity check against `entity_history` in the read-only Postgres.
+
+    Matches on the latest revision of each entity (max(id) per entity_id) and
+    looks for `name` as a case-insensitive substring anywhere in the entityJSON,
+    so an abbreviation-only or former-name hit still surfaces. Returns every hit
+    with its entity_id — a match ANYWHERE means reuse, never create.
+
+    Entities are frequently RENAMED (BNOCL -> Barbados National Energy Company),
+    so a no-match on the current name is not proof of absence: try the former
+    name, the abbreviation, and the parent's name too before staging as new.
+    """
+    db_url = db_url or os.environ.get(paths.DB_ENV_VAR, "")
+    if not db_url:
+        return {"result": "skipped_no_db_url",
+                "_warning": f"Set {paths.DB_ENV_VAR} for the Postgres entity check"}
+    # The engine comes from ../gem-db-ops via paths.py (read-only session guard +
+    # statement timeout) rather than a bare psycopg2.connect. paths.get_engine()
+    # exits if that repo or sqlalchemy is missing, but a missing dependency is a
+    # SKIP here, never a not-found — so it's caught and reported, per the
+    # module contract above.
+    try:
+        from sqlalchemy import text
+        engine = paths.get_engine()
+    except SystemExit as e:
+        return {"result": "skipped_no_db_engine", "_warning": str(e)}
+    except ImportError as e:
+        return {"result": "skipped_no_sqlalchemy", "_warning": str(e)}
+    try:
+        with engine.connect() as conn:
+            rows = conn.execute(
+                text("""
+                select eh.entity_id, eh."entityJSON"
+                from entity_history eh
+                join (select entity_id, max(id) as mx
+                      from entity_history group by entity_id) m on m.mx = eh.id
+                where eh."entityJSON"::text ilike :pattern
+                """),
+                {"pattern": f"%{name}%"},
+            ).fetchall()
+    except Exception as e:  # unreachable DB is an escalation, not a not-found
+        return {"result": "pg_lookup_failed", "_warning": str(e)}
+
+    matches = []
+    for eid, blob in rows:
+        d = blob if isinstance(blob, dict) else json.loads(blob)
+        nm = str(d.get("name") or "")
+        matches.append({
+            "entity_id": eid,
+            "name": nm,
+            "abbreviation": d.get("abbreviation"),
+            # GEM soft-deletes by renaming; such a hit is NOT a reusable entity
+            "to_be_deleted": "TO BE DELETED" in nm.upper(),
+        })
+    live = [m for m in matches if not m["to_be_deleted"]]
+    # An ilike on the whole entityJSON also hits incidental substrings elsewhere in
+    # the blob (a short query like "XRG" matches unrelated entities), so split out
+    # the name/abbreviation hits — those are the ones that decide reuse-vs-create.
+    q = name.strip().lower()
+    for m in matches:
+        m["name_or_abbr_match"] = (q in str(m["name"]).lower()
+                                   or q in str(m["abbreviation"] or "").lower())
+    named_live = [m for m in live if m["name_or_abbr_match"]]
+    return {
+        "result": ("found_pg" if named_live else
+                   "found_pg_incidental_only" if live else
+                   "only_to_be_deleted" if matches else "no_pg_match"),
+        "query": name,
+        "match_count": len(matches),
+        "name_or_abbr_match_count": len(named_live),
+        "matches": sorted(matches, key=lambda m: (m["to_be_deleted"],
+                                                  not m["name_or_abbr_match"], m["name"])),
+        "_note": ("Reuse an existing entity_id above; do NOT create a new entity."
+                  if named_live else
+                  "Matches came from incidental substrings in the entity blob, NOT from any "
+                  "entity name or abbreviation — read them before concluding either way."
+                  if live else
+                  "No live entity matched. Entities get RENAMED — before staging as new, "
+                  "re-run on the abbreviation, any former name, and the parent company."),
+    }
+
+
 def lookup_remote(name, base_url=DEFAULT_BASE_URL, timeout=30):
     """Query the GEM web UI entity search.
     
@@ -233,6 +329,9 @@ def main():
                    help="ANNOTATE matches by in-/out-of-country only; NEVER filters them "
                         "out (entities are shared across countries). Run BARE before staging.")
     p.add_argument("--csv", default=DEFAULT_CSV, help="GEM export CSV path")
+    p.add_argument("--pg", action="store_true",
+                   help="Also query entity_history in the read-only Postgres (GEM_READONLY_DB_URL). "
+                        "AUTHORITATIVE — prefer this over --remote.")
     p.add_argument("--remote", action="store_true",
                    help="Also query the GEM entity system remotely (requires auth env vars)")
     args = p.parse_args()
@@ -249,12 +348,31 @@ def main():
                   f"appears in {local_result['distinct_terminal_count']} terminals "
                   f"({', '.join(local_result['matched_countries']) or 'unknown country'}). "
                   f"Reuse existing entity ID; do NOT create a new one.", file=sys.stderr)
-    elif args.remote:
-        print(f"\n  Local lookup found nothing; trying remote...", file=sys.stderr)
-        remote_result = lookup_remote(args.name)
-        print(json.dumps(remote_result, indent=2))
+    elif args.pg or args.remote:
+        if args.pg:
+            print("\n  Local lookup found nothing; querying the read-only Postgres...",
+                  file=sys.stderr)
+            pg_result = lookup_pg(args.name)
+            print(json.dumps(pg_result, indent=2))
+            if pg_result["result"] == "found_pg":
+                print(f"\n  → Entity '{args.name}' EXISTS in the entity system "
+                      f"({pg_result['match_count']} match(es)). Reuse the entity_id; "
+                      f"do NOT stage it as new.", file=sys.stderr)
+            elif pg_result["result"] in ("skipped_no_db_url", "skipped_no_db_engine",
+                                        "skipped_no_sqlalchemy", "pg_lookup_failed"):
+                print(f"\n  ⚠ The Postgres check did not RUN ({pg_result['result']}) — that is "
+                      f"not a not-found. Do not stage a new entity on this basis; escalate.",
+                      file=sys.stderr)
+        if args.remote:
+            print("\n  Trying the remote entity endpoint (supplement, not authority)...",
+                  file=sys.stderr)
+            remote_result = lookup_remote(args.name)
+            print(json.dumps(remote_result, indent=2))
+            if remote_result.get("result", "").startswith("skipped"):
+                print(f"\n  ⚠ Remote check SKIPPED ({remote_result['result']}), not negative. "
+                      f"Run --pg instead.", file=sys.stderr)
     else:
-        print(f"\n  Local lookup found nothing. Before staging as new, RE-RUN WITH --remote "
+        print(f"\n  Local lookup found nothing. Before staging as new, RE-RUN WITH --pg "
               f"to query the entity system (and confirm you ran this BARE, without --country, "
               f"which would not have hidden a match but is the check to trust). Only then add "
               f"as a new entity (entity_additions sheet in batch xlsx).",

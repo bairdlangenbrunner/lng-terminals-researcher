@@ -1,0 +1,242 @@
+[
+  {
+    "terminal": "Oxnard LNG Terminal",
+    "terminal_id": "T100000130847",
+    "country": "United States",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "",
+    "captive_summary": "Cancelled offshore/onshore LNG import proposal (California). No FERC docket, EIS, or sponsor technical filing describing an on-site power-generation facility was located despite multiple targeted searches; nearby GOGPT plants (E F Oxnard Energy Facility, Oxnard power station) are independent grid assets, not part of this terminal.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "web_search",
+    "refs": [],
+    "verification_log": [],
+    "gogpt_prior_assessment": "Two nearby GOGPT plants (E F Oxnard Energy Facility 48.5MW id 100001048040; Oxnard power station 50MW id 100000407402) within ~5km are independent public-grid facilities, unconnected to this cancelled terminal per available sourcing.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No terminal-specific captive plant found; project cancelled at early/feasibility stage.",
+    "status_or_other_findings": "",
+    "notes": "Genuine multi-source search effort found no facility-level detail; project appears to have been cancelled at a pre-engineering stage."
+  },
+  {
+    "terminal": "Plaquemines Oil Terminal",
+    "terminal_id": "T100000130741",
+    "country": "United States",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "Scope error: this is Tallgrass Energy's Plaquemines Liquids Terminal (PLT), a $2.5B crude-oil bulk storage and deepwater export facility in Plaquemines Parish, LA, developed with Drexel Hamilton Infrastructure Partners and the Plaquemines Port & Harbor Terminal District. It is a crude-oil loading/storage terminal with no LNG component; project was cancelled/reappraised and shelved.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "web_search",
+    "refs": [
+      "https://www.opportunitylouisiana.gov/news/plaquemines-port-pursues-crude-oil-export-terminal",
+      "https://tallgrass.com/newsroom/press-releases/tallgrass-updates-development-plan-for-terminal-in-plaquemines-parish-louisiana"
+    ],
+    "verification_log": [
+      {
+        "url": "https://www.opportunitylouisiana.gov/news/plaquemines-port-pursues-crude-oil-export-terminal",
+        "tokens": [
+          "crude oil"
+        ],
+        "result": "PASS",
+        "note": "confirms crude-oil export terminal, not LNG"
+      },
+      {
+        "url": "https://tallgrass.com/newsroom/press-releases/tallgrass-updates-development-plan-for-terminal-in-plaquemines-parish-louisiana",
+        "tokens": [
+          "Plaquemines Liquids Terminal"
+        ],
+        "result": "PASS",
+        "note": "sponsor press release confirming project identity/status"
+      }
+    ],
+    "gogpt_prior_assessment": "Neighbor list includes a 'Plaquemines LNG Terminal power station' (2860MW, captive=true, id 100001063717) but this belongs to Venture Global's separate, unrelated, operating Plaquemines LNG export project of similar name -- NOT this cancelled crude-oil record. Do not conflate.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Not an LNG facility; out of scope for this tracker's captive-power question.",
+    "status_or_other_findings": "Confirms this GEM record is a crude-oil facility misfiled in LNG scope; flag for scope review separate from captive-power finding.",
+    "notes": "Scope-error screen per dispatch instructions (crude-oil deepwater port carrying an LNG record in error)."
+  },
+  {
+    "terminal": "Point Comfort LNG Terminal",
+    "terminal_id": "T100000130236",
+    "country": "United States",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "",
+    "captive_summary": "Cancelled export proposal (Lloyd's Energy / Port Comfort area, Texas). Searches found no FERC pre-filing or docket, no EIS, and no sponsor engineering/FEED document of any kind -- project did not progress beyond early conceptual/permitting-inquiry stage.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "web_search",
+    "refs": [],
+    "verification_log": [],
+    "gogpt_prior_assessment": "Nearby GOGPT plants (Formosa Utility Venture power station 933MW id 100000402472; Port Comfort power station 122MW id 100000402197) are independent industrial/grid facilities unrelated to this cancelled terminal.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No terminal-specific facility ever designed or filed.",
+    "status_or_other_findings": "",
+    "notes": "Cancelled-and-never-designed screen: no docket, no EIS, no engineering detail found across multiple targeted searches."
+  },
+  {
+    "terminal": "Pointe LNG Terminal",
+    "terminal_id": "T100000130641",
+    "country": "United States",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "unstated",
+    "confidence": "yellow",
+    "captive_summary": "FERC NOI-to-prepare-EIS (Docket PF18-8-000, Federal Register 2019-02000) lists 'electric power generation' as one of the Pointe LNG Project's own on-site facilities, alongside pre-treatment, liquefaction, BOG recovery, propane refrigeration compressor, and marine loading terminal -- so an on-site power-generation facility was as-designed for this cancelled export project. However, no source found (FERC filing, sponsor page, press release) states the fuel type of that generation. Per the fuel gate, existence without a stated fuel is INSUFFICIENT, not YES.",
+    "electric_mw": "",
+    "mechanical_drive_note": "Liquefaction project also has a mixed-refrigerant/propane-refrigeration compressor train; whether this is electric-motor or gas-turbine mechanical drive is not stated in the source found.",
+    "confirmed_how": "web_search",
+    "refs": [
+      "https://www.govinfo.gov/content/pkg/FR-2019-02-12/pdf/2019-02000.pdf"
+    ],
+    "verification_log": [
+      {
+        "url": "https://www.govinfo.gov/content/pkg/FR-2019-02-12/pdf/2019-02000.pdf",
+        "tokens": [
+          "electric power generation"
+        ],
+        "result": "PASS",
+        "note": "FERC NOI facility list names 'electric power generation' as a project component; fuel type not stated"
+      }
+    ],
+    "gogpt_prior_assessment": "Nearest GOGPT neighbors (New Orleans power station 129.5MW id 100000402420; Nine Mile Point power station 2440MW id 100000401915) are ~17km away, independent grid facilities, not related to this project's own on-site generation.",
+    "gogpt_candidate": "REVIEWER CALL",
+    "gogpt_candidate_basis": "As-designed on-site power generation is documented, but fuel type is unconfirmed; a reviewer with FERC eLibrary access (JS-blocked to this research pass) could check Resource Report 1 for equipment specifics.",
+    "status_or_other_findings": "Cancelled export project at FERC pre-filing stage (PF18-8-000); no further docket progress found.",
+    "notes": "Existence of on-site power generation is confirmed via a primary regulatory source, but fuel is unstated anywhere found -- fuel gate forces INSUFFICIENT rather than YES."
+  },
+  {
+    "terminal": "Port Esperanza FSRU",
+    "terminal_id": "T100000130848",
+    "country": "United States",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "",
+    "captive_summary": "Cancelled offshore California FSRU import concept (associated with TORP HiLoad-type technology studies circa 2006-2007). No MARAD/USCG Deepwater Port Act license application was ever filed for this project (searches for a formal filing returned no results), so it never reached a stage with any published facility or equipment detail.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "web_search",
+    "refs": [],
+    "verification_log": [],
+    "gogpt_prior_assessment": "Nearby GOGPT plants (Long Beach Generation power station 252MW id 100000401590; THUMS power station 57MW id 100000402326) are independent onshore grid/oilfield facilities, unrelated to this offshore FSRU concept.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No formal application or design ever filed.",
+    "status_or_other_findings": "",
+    "notes": "Cancelled-and-never-designed screen: feasibility-study-only project, no formal deepwater port license application found."
+  },
+  {
+    "terminal": "Port Lavaca FLNG Terminal",
+    "terminal_id": "T100000130851",
+    "country": "United States",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "unstated",
+    "confidence": "yellow",
+    "captive_summary": "FERC NOI-to-prepare-EIS (Excelerate Liquefaction Solutions I / Lavaca Bay LNG Project, Federal Register 2013-05620) lists 'a power generation system' among the shoreside facilities of this cancelled floating-liquefaction (FLSO) export project, alongside feed-gas metering/compression/pre-treatment and a cooling water system. This confirms an as-designed on-site power-generation facility, but no source found states its fuel type (a separate sponsor FEED document, Technica Ltd's project sheet, was inaccessible -- no Wayback snapshot exists and the live host blocks extraction).",
+    "electric_mw": "",
+    "mechanical_drive_note": "Two FLSOs each carry four 1-MTPA PRICO liquefaction trains with centrifugal refrigerant compressors; drive type (gas-turbine mechanical drive vs. electric motor) not stated in the source found.",
+    "confirmed_how": "web_search",
+    "refs": [
+      "https://www.govinfo.gov/content/pkg/FR-2013-03-12/pdf/2013-05620.pdf"
+    ],
+    "verification_log": [
+      {
+        "url": "https://www.govinfo.gov/content/pkg/FR-2013-03-12/pdf/2013-05620.pdf",
+        "tokens": [
+          "power generation system"
+        ],
+        "result": "PASS",
+        "note": "FERC NOI facility list names 'a power generation system' as a shoreside component; fuel type not stated"
+      }
+    ],
+    "gogpt_prior_assessment": "Nearest GOGPT neighbors (Port Comfort power station 122MW id 100000402197; CFB power plant 310MW id 100000401959) are independent grid facilities several km away, unrelated to this project's own on-site generation.",
+    "gogpt_candidate": "REVIEWER CALL",
+    "gogpt_candidate_basis": "As-designed on-site power generation is documented but fuel type unconfirmed; the sponsor's Technica FEED document (inaccessible this pass) may specify equipment.",
+    "status_or_other_findings": "Cancelled FLNG export project; FERC docket did not progress past pre-filing/NOI stage.",
+    "notes": "Existence of on-site power generation confirmed via a primary regulatory source, but fuel is unstated anywhere found -- fuel gate forces INSUFFICIENT rather than YES. Sponsor FEED PDF (technicaltd.com) is dead with no Wayback snapshot."
+  },
+  {
+    "terminal": "Port Pelican LNG Terminal",
+    "terminal_id": "T100000130647",
+    "country": "United States",
+    "verdict": "YES",
+    "mechanical": "False",
+    "captive_category": "power_generation",
+    "hardware_summary": "Three LM2000 gas-turbine-driven generators (95% utilization, one as backup at 5%) supply main electrical power at 13.8 kV, fueled by LNG boil-off gas recovered from storage tanks and carrier offloading via the terminal's Fuel Gas System; two diesel-engine-driven generators provide 480 VAC emergency-only backup power (diesel day tanks, tested at 5% utilization).",
+    "fuel_basis": "LNG boil-off gas (pipeline-quality), explicitly stated as fuel for the turbine generators",
+    "confidence": "green",
+    "captive_summary": "Deepwater Port License Application (MARAD/USCG Docket USCG-2002-14134) for this cancelled offshore Gulf of Mexico import terminal explicitly specifies main power generation: three LM2000 gas-turbine-driven generators fueled by LNG boil-off gas, supplying electricity to operate the facility (13.8 kV). Emergency-only backup is two diesel generators. This is a primary regulatory source describing an as-designed captive power facility on an unbuilt (cancelled) terminal, satisfying the as-designed rule.",
+    "electric_mw": "",
+    "mechanical_drive_note": "No mechanical-drive compressors identified; fuel gas compressor, boil-off gas compressor, pumps, heaters, scrubbers, and utility equipment are electric-powered per the same application.",
+    "confirmed_how": "web_search + primary regulatory document (MARAD/USCG deepwater port application)",
+    "refs": [
+      "https://downloads.regulations.gov/USCG-2002-14134-0002/attachment_1.pdf"
+    ],
+    "verification_log": [
+      {
+        "url": "https://downloads.regulations.gov/USCG-2002-14134-0002/attachment_1.pdf",
+        "tokens": [
+          "LM2000"
+        ],
+        "result": "PASS",
+        "note": "confirms three LM2000 gas turbine generators fueled by LNG boil-off gas supplying facility electricity"
+      }
+    ],
+    "gogpt_prior_assessment": "No GOGPT neighbor rows exist for this offshore terminal (ZERO neighbor entries in neighbors_raw.json) -- expected, as it is a standalone offshore deepwater port with no nearby onshore power plants.",
+    "gogpt_candidate": "ADD",
+    "gogpt_candidate_basis": "Confirmed on-site gas-turbine power generation (three LM2000 units) meeting GOGPT's captive-plant criteria; no existing GOGPT record for this site (zero neighbors found).",
+    "status_or_other_findings": "Cancelled offshore import terminal (Chevron Texaco / Dynegy-associated proposal), ~32 NM offshore Louisiana/Texas Gulf coast; deepwater port license was filed but project did not proceed to construction.",
+    "notes": "As-designed captive power confirmed on this cancelled/unbuilt terminal per brief's explicit rule that engineering-stage documentation still counts."
+  },
+  {
+    "terminal": "Quoddy Bay LNG Terminal",
+    "terminal_id": "T100000130649",
+    "country": "United States",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "",
+    "captive_summary": "Cancelled Passamaquoddy Bay, Maine import proposal. FERC Notice of Application confirms Quoddy Bay Pipeline LLC / Quoddy Bay LNG LLC filed formal NGA Section 3/7 applications (Dockets CP07-35/36/37/38) in December 2006 following PF06-11 pre-filing, but this notice type does not include a facility-level equipment list. No FERC NOI-to-prepare-EIS, sponsor engineering document, or other source describing on-site power generation was found (FERC eLibrary itself is JS-blocked to this research pass and no alternative full-text source was located).",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "web_search",
+    "refs": [
+      "https://www.govinfo.gov/content/pkg/FR-2007-01-04/pdf/E6-22526.pdf"
+    ],
+    "verification_log": [
+      {
+        "url": "https://www.govinfo.gov/content/pkg/FR-2007-01-04/pdf/E6-22526.pdf",
+        "tokens": [
+          "Quoddy Bay"
+        ],
+        "result": "PASS",
+        "note": "confirms formal FERC application filing; does not itself describe facility equipment"
+      }
+    ],
+    "gogpt_prior_assessment": "No GOGPT neighbor rows exist for this terminal (ZERO neighbor entries in neighbors_raw.json).",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No facility-level power detail found to support any GOGPT record.",
+    "status_or_other_findings": "Project reached formal FERC docket stage (CP07-35 et seq.) before being cancelled; opposed locally and never built.",
+    "notes": "Genuine research effort across FERC document types found no facility-level power-generation description; FERC eLibrary (which likely holds the Resource Report 1 facility list) is JS-blocked and no cached/alternative copy was found."
+  }
+]

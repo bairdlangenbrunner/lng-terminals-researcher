@@ -1,0 +1,191 @@
+[
+  {
+    "terminal": "Haldia LNG Terminal",
+    "terminal_id": "T100000130435",
+    "country": "India",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "",
+    "captive_summary": "Screened: cancelled and never built. Essar Ports won a 2017 bid to build a 1 mtpa land-based LNG regasification terminal at Haldia (Kolkata Port Trust jurisdiction), but the project never progressed to construction; the same undeveloped site was subsequently the subject of wholly separate, later proposals by unrelated developers (Excelerate Energy/Invenire Petrodyne joint FSRU development agreement; East Horizon Pvt Ltd's separate ~Rs 260 crore FSRU proposal) -- confirming the original Essar project never materialized.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "India Today (PTI wire, 13 Apr 2017): 'Essar wins bid for LNG terminal at Haldia port.' No subsequent construction news found; site was later re-proposed to different developers (ConstructionWorld.in, 2024, referencing H-Energy's separate/earlier Haldia FSRU plan and AG&P's 2024 negotiations), consistent with the original project never being built. GEM's own tracking independently carries this unit as cancelled (inferred, 4y dormant).",
+    "refs": [
+      "https://www.indiatoday.in/pti-feed/story/essar-wins-bid-for-lng-terminal-at-haldia-port-907625-2017-04-13",
+      "https://www.constructionworld.in/energy-infrastructure/oil-and-gas/agp-singapore-in-negotiations-to-acquire-h-energys-lng-terminal/62548"
+    ],
+    "verification_log": [
+      {"url": "https://www.indiatoday.in/pti-feed/story/essar-wins-bid-for-lng-terminal-at-haldia-port-907625-2017-04-13", "tokens": ["Essar", "Haldia"], "result": "PASS", "note": "confirms original 2017 bid win"},
+      {"url": "https://www.constructionworld.in/energy-infrastructure/oil-and-gas/agp-singapore-in-negotiations-to-acquire-h-energys-lng-terminal/62548", "tokens": ["Haldia", "floating"], "result": "PASS", "note": "confirms site later re-proposed to unrelated developers"},
+      {"url": "https://www.business-standard.com/article/pti-stories/essar-wins-bid-for-lng-terminal-at-haldia-port-117041300571_1.html", "tokens": ["Essar", "Haldia"], "result": "FAIL", "note": "HTTP 403, no Wayback snapshot; dropped in favor of India Today mirror of same PTI wire story"}
+    ],
+    "gogpt_prior_assessment": "gogpt_prior: no. No colocated GOGPT plant given.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Project never built; no generating asset exists.",
+    "status_or_other_findings": "GEM's own status is cancelled (inferred, 4y). No independent evidence found of any construction activity under Essar Ports; site has since drawn separate, unrelated FSRU proposals (Excelerate/Invenire; East Horizon).",
+    "notes": "Screen criterion: cancelled-and-never-built proposal (SOP screening class)."
+  },
+  {
+    "terminal": "Hazira FSRU",
+    "terminal_id": "T100000130441",
+    "country": "India",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "Design specified only an 'Electrical/Diesel generator set for emergency backup at shore' for both Phase-I and Phase-II FSRU/FSU terminal units -- diesel, not gas.",
+    "fuel_basis": "Diesel generator set (explicitly named as diesel in the source); no gas turbine/generator specified anywhere in the design.",
+    "confidence": "green",
+    "captive_summary": "As-designed, Essar Energy Services Ltd's proposed Hazira FSRU (Phase-I 6 MTPA + Phase-II 6 MTPA) had no on-site gas-fired captive power: the only power-generation equipment named in the Prefeasibility Report is a diesel emergency backup genset at shore. The project's whole purpose was to deliver RLNG OUT to Essar Steel, Essar Power's own idle 1,015 MW gas-fired plants, and the grid -- the classic PowerPlantsSupplied direction, not a captive-to-terminal relationship. Project is cancelled/dormant since ~2016 with no updates.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Essar Energy Services Limited, 'Prefeasibility Report of LNG Terminal at Essar Bulk Terminal, Hazira' filed with MoEFCC (environmentclearance.nic.in, ToR filing dated 15 Jun 2016), p.16-17: project facilities list for both Phase-I and Phase-II includes 'Electrical/ Diesel generator set for emergency backup at shore' -- no turbine or gas-fired generator is named anywhere in the equipment list. Same document (p.14-16): RLNG is piped to 'offtakers such as Essar Steel and Essar Power and other third party customers connected to the grid' -- confirming the supply-out direction, not captive generation.",
+    "refs": [
+      "https://environmentclearance.nic.in/writereaddata/Online/TOR/15_Jun_2016_125329953WM6LSUGTAnnexure-PrefeasibilityReport.pdf"
+    ],
+    "verification_log": [
+      {"url": "https://environmentclearance.nic.in/writereaddata/Online/TOR/15_Jun_2016_125329953WM6LSUGTAnnexure-PrefeasibilityReport.pdf", "tokens": ["Diesel generator set for emergency backup"], "result": "PASS", "note": "primary MoEFCC prefeasibility filing; verified exact design-document wording"}
+    ],
+    "gogpt_prior_assessment": "gogpt_prior: yes (tier A), gogpt_plant 'Hazira (Essar) power station', 515 MW, 3.45 km. This is Essar Steel/Essar Power's own gas-fired combined-cycle IPP (commissioned 1997; 215 MW captive to Essar Steel's own steel plant, 300 MW sold to the Gujarat grid) -- an industrial-host plant that PREDATES this proposal by ~20 years and is the intended RECEIVER of this terminal's RLNG, not its power source. Independent source: Nippon Steel Corporation press release (2022) confirming AM/NS's acquisition of 'Essar Power Ltd. (Hazira, Gujarat...)' 515 MW asset as part of the Essar Steel/Power complex.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "The 515 MW plant is a pre-existing, already-tracked (presumably) third-party industrial asset (Essar Steel/Power, now AM/NS) unrelated to this cancelled LNG project -- not this terminal's captive power, and not a new plant to add.",
+    "status_or_other_findings": "Project cancelled/dormant since ~2016 (last activity found: MoEFCC ToR filing June 2016); no further design or construction news found.",
+    "notes": "Direction-test case: this terminal's purpose (as designed) was to feed Essar Steel/Essar Power's existing gas-fired plants and the grid -- PowerPlantsSupplied relation, flagged for a different batch/field, not captive."
+  },
+  {
+    "terminal": "Hazira LNG Terminal",
+    "terminal_id": "T100000130439",
+    "country": "India",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "Documented power arrangement is a 30 MW wind-solar hybrid group-captive supply (CleanMax Enviro Energy Solutions) -- renewable, not gas-fired.",
+    "fuel_basis": "Wind + solar (renewable); no gas turbine or gas-fired generator found in any source describing the terminal's power supply.",
+    "confidence": "yellow",
+    "captive_summary": "Shell Energy India's operating Hazira LNG import terminal sources captive power via a 30 MW hybrid wind-solar arrangement with CleanMax under a group-captive model, covering the Hazira LNG terminal and a Shell tech hub in Bengaluru. No gas-fired generation was found documented for this terminal in any source searched; renewable on-site/group-captive generation is an out-of-scope ground per SOP (same class as Barcelona/Dragon wind, Huelva ORC), so the verdict is NO on the gas-power question specifically.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Multiple independent trade-press reports (2025) on the CleanMax-Shell India deal: 'Shell's Hazira LNG Terminal and Bengaluru Tech Hub to Run on CleanMax Hybrid Power' (TradeBrains) and 'CleanMax to Supply 30 MW Hybrid Power to Shell Sites in Gujarat and Karnataka' (SaurEnergy) both confirm the 30 MW wind-solar hybrid group-captive supply naming the Hazira LNG terminal specifically. No independent source found describing an on-site gas turbine or DG set at this terminal.",
+    "refs": [
+      "https://tradebrains.in/shells-hazira-lng-terminal-and-bengaluru-tech-hub-to-run-on-cleanmax-hybrid-power/",
+      "https://www.saurenergy.com/solar-energy-news/cleanmax-to-supply-30-mw-hybrid-power-to-shell-sites-in-gujarat-and-karnataka-11748518"
+    ],
+    "verification_log": [
+      {"url": "https://tradebrains.in/shells-hazira-lng-terminal-and-bengaluru-tech-hub-to-run-on-cleanmax-hybrid-power/", "tokens": ["Hazira", "CleanMax", "hybrid"], "result": "PASS", "note": ""},
+      {"url": "https://www.saurenergy.com/solar-energy-news/cleanmax-to-supply-30-mw-hybrid-power-to-shell-sites-in-gujarat-and-karnataka-11748518", "tokens": ["Hazira", "30 MW"], "result": "PASS", "note": ""},
+      {"url": "https://www.energy-xprt.com/articles/hazira-power-plant-india-s-first-independent-power-plant-in-gujarat-case-study-1135100", "tokens": ["515 MW", "Essar", "1997"], "result": "FAIL", "note": "HTTP 403, no Wayback snapshot -- dropped, used Nippon Steel press release instead for the gogpt-prior background"},
+      {"url": "https://en.wikipedia.org/wiki/Essar_Hazira_Power_Plant", "tokens": ["515", "Essar", "Hazira"], "result": "FAIL", "note": "article text doesn't state the 515 MW figure -- not used as a citation"},
+      {"url": "https://www.nipponsteel.com/en/news/20220928_200.html", "tokens": ["515", "Hazira"], "result": "PASS", "note": "used only for gogpt_prior_assessment background, confirms Essar Power Hazira asset is a steel-complex plant"}
+    ],
+    "gogpt_prior_assessment": "gogpt_prior: yes (tier C), gogpt_plant 'Hazira (Essar) power station', 515 MW, 3.45 km. This is the same Essar Steel/Essar Power combined-cycle IPP referenced under the Hazira FSRU entry above (commissioned 1997; 215 MW captive to Essar Steel's steel plant, 300 MW to the Gujarat grid; asset since divested to ArcelorMittal Nippon Steel per Nippon Steel Corp's 2022 press release) -- a different industrial host's plant, unrelated to Shell's LNG import terminal (different owner, different site history, different purpose).",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Classic industrial-host trap: the nearby 515 MW plant belongs to Essar Steel/Power (now AM/NS), not to Shell's LNG terminal, and is presumably already tracked in GOGPT under its own record.",
+    "status_or_other_findings": "Terminal operating since 2005; Shell received environmental clearance to expand capacity from 6.28 MMTPA to 26.2 MMTPA (₹21,600 crore investment) per EAC MoEFCC meeting minutes found in search -- flagged for a different batch, not acted on here.",
+    "notes": "Renewable captive supply (wind-solar) is a documented, real captive-power arrangement for this site but is out of scope per the gas-only definition -- do not conflate with a gas finding."
+  },
+  {
+    "terminal": "Jafrabad FSRU",
+    "terminal_id": "T100000130457",
+    "country": "India",
+    "verdict": "YES",
+    "mechanical": "False",
+    "captive_category": "power_generation",
+    "hardware_summary": "4x Wartsila-Hyundai W9L50DF dual-fuel generator sets, 8,775 kW each (35,100 kW / 35.1 MW total), diesel-electric configuration driving ABB electric propulsion motors -- classic FSRU DFDE arrangement.",
+    "fuel_basis": "Wartsila-Hyundai W9L50DF -- a dual-fuel (DF) engine model designed to burn boil-off gas/natural gas in normal service (with diesel as backup fuel), per Indian Register of Shipping (IRClass) vessel registry.",
+    "confidence": "green",
+    "captive_summary": "The FSRU vessel assigned to this project, Vasant 1 (IMO 9837066, built by Hyundai Heavy Industries, delivered 2020), carries 4 Wartsila-Hyundai W9L50DF dual-fuel diesel-electric generator sets rated 8,775 kW each (35.1 MW total) driving ABB electric propulsion/auxiliary motors. This onboard generation supplies the vessel's own hotel load, propulsion, and the regasification process load while moored as an FSRU -- a captive gas-power generating plant by the brief's definition (DFDE gensets burning gas/BOG), independent of any grid connection.",
+    "electric_mw": "35.1",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Indian Register of Shipping (IRClass) e-plan vessel registry, IMO 9837066: vessel name VASANT 1; 'Four diesel generators... Builder: Wartsila Hyundai Engine Co. Ltd., Model: W9L50DF, Power: 8,775 kW each 6600V, 60Hz'; main propulsion via ABB Oy electric motors (6,600 kW, diesel-electric drive). The W9L50DF model designation is Wartsila's dual-fuel 50DF engine family (the same family confirmed dual-fuel/gas-burning for Hoegh LNG's fleet). Vessel confirmed as the Jafrabad FSRU's assigned unit per a Jan 2025 Swan Energy/AG&P Terminals & Logistics partnership report (project ~92.3% complete as of Dec 2025, revised completion Sep 2026).",
+    "refs": [
+      "https://eplan.irclass.org:8090/IRS_Ship_Info.aspx?Imo_no=9837066"
+    ],
+    "verification_log": [
+      {"url": "https://eplan.irclass.org:8090/IRS_Ship_Info.aspx?Imo_no=9837066", "tokens": ["VASANT 1", "W9L50DF"], "result": "PASS", "note": "classification-society vessel registry; confirms vessel name and dual-fuel generator model"}
+    ],
+    "gogpt_prior_assessment": "gogpt_prior: no. No colocated GOGPT plant given.",
+    "gogpt_candidate": "REVIEWER CALL",
+    "gogpt_candidate_basis": "Generation exists (35.1 MW, citable nameplate) but is vessel-mounted (FSRU onboard DFDE gensets) -- unclear whether GOGPT's ontology captures floating/vessel-mounted generation as a power-station record.",
+    "status_or_other_findings": "One search result suggested a same-era Hyundai-built FSRU hull was redeployed to Turkey as 'Gulf of Saros FSRU' -- this appeared to be an unrelated/different vessel or a search-indexing artifact; the more recent and specific Jan 2025 source confirms Vasant 1 is still the vessel assigned to Jafrabad at ~92% construction completion. Flagging the ambiguity for FSRU-sync awareness, not acting on it.",
+    "notes": ""
+  },
+  {
+    "terminal": "Jaigarh LNG Terminal",
+    "terminal_id": "T100000130443",
+    "country": "India",
+    "verdict": "YES",
+    "mechanical": "False",
+    "captive_category": "power_generation",
+    "hardware_summary": "4x Wartsila-Hyundai dual-fuel generator sets (1x 6L50DF + 3x 8L50DF), combined 28,500 kW (28.5 MW) -- DFDE configuration.",
+    "fuel_basis": "Wartsila/Hyundai 50DF family dual-fuel engines (6L50DF/8L50DF), per a ship technical registry entry for the vessel.",
+    "confidence": "yellow",
+    "captive_summary": "The FSRU used for Jaigarh Phase-I (Hoegh Giant, 170,032 cbm, delivered by Hyundai Heavy Industries April 2017) carries 4 Wartsila-Hyundai dual-fuel diesel-electric generator sets (1x6L50DF, 3x8L50DF) totaling 28,500 kW. This onboard DFDE generation is the vessel's captive gas power, supplying propulsion, hotel load and the regasification train while moored -- a YES on the terminal's as-designed/as-deployed captive power. Regasification capacity 750 MMscf/day.",
+    "electric_mw": "28.5",
+    "mechanical_drive_note": "",
+    "confirmed_how": "ship-db.de vessel technical registry entry for Hoegh Giant: '4 Diesel engine \"Wartsila/Hyundai\", 1 x 6 Cyl. (6L50DF), 3 x 8 Cyl. (8L50DF)... Power: 28.500 KW'. Delivery confirmed by VesselFinder/Offshore Energy/World Maritime News (April 2017, 170,032 cbm, 750 MMscf/day regas capacity, built by Hyundai Heavy Industries). Höegh Giant's arrival at H-Energy's Jaigarh terminal (Maharashtra) as India's first FSRU is independently reported by multiple 2021 trade outlets (ConstructionWeek Online, TankNews International, Offshore Energy).",
+    "refs": [
+      "https://www.ship-db.de/nawbn.php?wbn_nr=HYHU2552010E"
+    ],
+    "verification_log": [
+      {"url": "https://www.ship-db.de/nawbn.php?wbn_nr=HYHU2552010E", "tokens": ["8L50DF", "28.500"], "result": "PASS", "note": "single non-primary technical registry source -- confidence set to yellow accordingly"}
+    ],
+    "gogpt_prior_assessment": "gogpt_prior: no. No colocated GOGPT plant given.",
+    "gogpt_candidate": "REVIEWER CALL",
+    "gogpt_candidate_basis": "Generation exists (28.5 MW, citable nameplate) but is vessel-mounted (FSRU onboard DFDE gensets, and the specific vessel deployed may change over the project's life -- Hoegh Giant was originally built for a Ghana deployment before this one); unclear whether GOGPT tracks floating/vessel-mounted generation as a power-station record.",
+    "status_or_other_findings": "Hoegh Giant was originally delivered in 2017 for a 20-year Tema LNG terminal charter in Ghana; it appears to have been redeployed to Jaigarh, India (first arrived ~2021) after the original Ghana deployment did not proceed as planned. AG&P Singapore was reported (2024) to be in talks to acquire H-Energy's Jaigarh terminal outright. Neither finding acted on here -- flagged for a different batch.",
+    "notes": "Phase II (proposed) is planned as a land-based 8 MMTPA facility per Wood Mackenzie reporting; no design details on its power supply were found -- this verdict covers the FSRU-based Phase I only, which is what is currently under construction."
+  },
+  {
+    "terminal": "Karaikal FSRU",
+    "terminal_id": "T100000130803",
+    "country": "India",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "",
+    "captive_summary": "Genuinely undisclosed in public sources found. Sources conflict on where regasification even occurs (one describes a 125 MMcfd re-gas train mounted ON the FSU itself; another describes regasification developed onshore separately from the moored FSU), and no source found describes the FSU vessel's onboard power/generator configuration or fuel type.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "No source found. nsenergybusiness.com (Karaikal LNG Import Terminal project page) states the FSU (there named Al Khaznah, chartered from ADNOC Logistics & Services in Feb 2020, IMO 9038440, built 1994) 'will initially be equipped with a single 125 million cubic feet per day (Mcfd) re-gasification train' onboard. A separate GEM-internal naming ('FSU Ghasha') and a different source describing onshore regasification could not be reconciled from independent sources within the search budget available. No source addressed the vessel's power/generator fuel type.",
+    "refs": [],
+    "verification_log": [
+      {"url": "https://www.nsenergybusiness.com/projects/karaikal-lng-import-terminal/", "tokens": ["FSU", "125"], "result": "not run -- background source only, not cited as a captive-power finding", "note": "used for scoping context, not as a verdict citation"}
+    ],
+    "gogpt_prior_assessment": "gogpt_prior: no. No colocated GOGPT plant given.",
+    "gogpt_candidate": "MAYBE",
+    "gogpt_candidate_basis": "If the FSU does carry meaningful onboard generation this could eventually qualify, but MW and fuel basis are both undisclosed.",
+    "status_or_other_findings": "Vessel-naming ambiguity: assignment data names the vessel 'FSU Ghasha,' but independent sources (nsenergybusiness.com) name the chartered ADNOC vessel 'Al Khaznah' (IMO 9038440, chartered Feb 2020, 15-year term). Both a 'Karaikal FSRU' and a separately-titled 'AG&P India FSRU' project appear to reference an ADNOC-chartered FSU named Ghasha in other search hits. Could not resolve which name/IMO is authoritative within budget -- flagging for reconciliation, not acted on.",
+    "notes": "Both unit rows are still proposed (not yet built), so absence of a public power-design document is plausible; if a Puducherry DSTE or MoEFCC EIA filing exists (a 20.4 MB draft EIA was located at dste.py.gov.in but could not be downloaded/parsed within budget), it likely contains the power-supply design and should be checked in a follow-up pass."
+  },
+  {
+    "terminal": "Karwar FSRU",
+    "terminal_id": "T100000130453",
+    "country": "India",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "",
+    "captive_summary": "Screened: cancelled and never built past the EPC-contract-award stage. Fox Petroleum signed an EPC contract with Hyundai Heavy Industries in January 2017 (~US$560-563 million) for a large FSRU (365 bcf/yr regas, 0.3 mtpa storage), but no independent evidence of any subsequent construction activity was found, and no design/EIA document describing on-site power systems could be located.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Upstream Online (2017): 'Hyundai Heavy Industries has beaten its two main domestic rivals to land a $560 million contract' for the Karwar FSRU. TheEnergyYear.com: 'Fox Petroleum has signed a deal with Hyundai Heavy Industries for construction of a floating storage and regasification unit' -- 'Asia's largest FSRU planned for Karnataka.' No news of construction progress, commissioning, or design details found after the 2017 contract announcement; offshore-technology.com's project listing (accessed via Wayback, Nov 2025 snapshot) still shows a stale 2023 target completion date with no update, consistent with dormancy. GEM's own tracking independently carries this unit as cancelled (inferred, 4y dormant).",
+    "refs": [
+      "https://www.upstreamonline.com/weekly/hyundai-wins-karnataka-fsru-contract/1-1-1203915"
+    ],
+    "verification_log": [
+      {"url": "https://www.upstreamonline.com/weekly/hyundai-wins-karnataka-fsru-contract/1-1-1203915", "tokens": ["Hyundai", "560"], "result": "PASS", "note": "confirms 2017 EPC contract award"},
+      {"url": "https://www.offshore-technology.com/marketdata/karwar-floating-lng-regasification-terminal-india/", "tokens": ["Fox Petroleum", "Karwar"], "result": "PASS", "note": "bot-blocked live (403), verified via Wayback snapshot 20251111071159; stale 2023-target listing, no evidence of progress"}
+    ],
+    "gogpt_prior_assessment": "gogpt_prior: no. No colocated GOGPT plant given.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Project never built; no generating asset exists.",
+    "status_or_other_findings": "No independent evidence of construction found since the January 2017 EPC contract announcement.",
+    "notes": "Screen criterion: cancelled-and-never-built proposal (SOP screening class) -- an EPC contract was signed but no subsequent progress or design detail was found in the time available."
+  }
+]

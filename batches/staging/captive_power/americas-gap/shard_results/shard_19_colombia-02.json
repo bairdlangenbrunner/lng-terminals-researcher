@@ -1,0 +1,157 @@
+[
+ {
+  "terminal": "El Viajano Altenesol LNG Terminal",
+  "terminal_id": "T100000130564",
+  "country": "Colombia",
+  "verdict": "SCREENED",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "",
+  "captive_summary": "No captive power finding possible: the project is cancelled (GEM inferred ~4y) and no public record of it was found anywhere — not under \"El Viajano,\" \"Altenesol,\" or owner \"IAHL Corp\" — across Google News, Bing News, or general web search in Spanish or English.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Exhaustive search (Google News RSS in es-419/CO and en-US, Bing News search) for \"El Viajano\", \"Altenesol\", and \"IAHL Corp\" + Colombia/Cordoba/LNG/GNL turned up zero indexed articles or documents of any kind. No environmental filing, press release, or trade-press mention exists in any searchable index. This is consistent with a paper-stage proposal that never reached a FEED/engineering study before being cancelled.",
+  "refs": [],
+  "verification_log": [],
+  "gogpt_prior_assessment": "No GOGPT neighbor plant is listed for this terminal in neighbors_raw.json (none within 30 km) — consistent with a remote/undeveloped Cordoba coastal site.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "Cancelled project with no published design of any kind; nothing to add on either the LNG or GOGPT side.",
+  "status_or_other_findings": "Cancelled status (GEM: inferred ~4y) appears correct and uncontested — no revival signal found in any search.",
+  "notes": "Screened per SOP: cancelled proposal with no engineering/FEED detail ever published, found via multi-source exhaustive search (not just a single missed query)."
+ },
+ {
+  "terminal": "Puerto Bahía LNG Terminal",
+  "terminal_id": "T100001083296",
+  "country": "Colombia",
+  "verdict": "INSUFFICIENT",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "yellow",
+  "captive_summary": "Puerto Bahía (Ecopetrol / Sociedad Portuaria Puerto Bahía, Cartagena) is a proposed FSRU import terminal targeting a December 2026 start (300 GBTUD capacity), but as of the most recent reporting (May 2026) the FSRU vessel itself has not yet been contracted or named — \"la plataforma aún no cuenta con la unidad flotante de regasificación (FSRU)\" (valoraanalitik) and El Espectador independently describes the FSRU \"contractual closing\" as a still-future milestone. With no vessel identified, there is no published spec (onboard generation or otherwise) to assess.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "valoraanalitik.com (25-May-2026, ANI/ANLA licensing update): “La plataforma aún no cuenta con la unidad flotante de regasificación (FSRU), pero esta podría llegar a finales de 2026 o durante 2027.” El Espectador (25-May-2026), independently, on the FSRU: “uno de los puntos centrales será el cierre contractual del FSRU” (future milestone) and describes the imported gas as feeding “generación térmica, industria y consumo residencial” nationally — general market supply, not a dedicated colocated plant. Neither source, nor Mundo Marítimo's coverage of the same execution announcement, describes any on-site power generation equipment for the terminal itself.",
+  "refs": [
+   "https://www.valoraanalitik.com/ecopetrol-y-frontera-energy-obtuvieron-una-licencia-de-la-ani-para-avanzar-con-la-regasificadora-de-puerto-bahia-en-cartagena/",
+   "https://elespectador.com/economia/ecopetrol-y-puerto-bahia-destraban-proyecto-de-regasificacion-en-cartagena/"
+  ],
+  "verification_log": [
+   {
+    "url": "https://www.valoraanalitik.com/ecopetrol-y-frontera-energy-obtuvieron-una-licencia-de-la-ani-para-avanzar-con-la-regasificadora-de-puerto-bahia-en-cartagena/",
+    "tokens": [
+     "FSRU"
+    ],
+    "result": "PASS",
+    "note": ""
+   },
+   {
+    "url": "https://www.valoraanalitik.com/regasificadora-de-puerto-bahia-cartagena-entraria-operacion-diciembre-2026/",
+    "tokens": [
+     "diciembre de 2026"
+    ],
+    "result": "PASS",
+    "note": "corroborating timeline only, not cited as primary basis"
+   },
+   {
+    "url": "https://elespectador.com/economia/ecopetrol-y-puerto-bahia-destraban-proyecto-de-regasificacion-en-cartagena/",
+    "tokens": [
+     "FSRU"
+    ],
+    "result": "PASS",
+    "note": ""
+   }
+  ],
+  "gogpt_prior_assessment": "Nearest GOGPT plants are Cartagena power station (203 MW, 3 units, operating, 8.36 km) and Mamonal power station (100 MW, 2 units, operating, 8.95 km) — both pre-existing merchant/industrial plants in Cartagena's Mamonal industrial corridor, well outside fenceline distance and with no documented supply linkage to the not-yet-built FSRU. Not this terminal's captive power. info_url: https://en.wikipedia.org/wiki/Cartagena,_Colombia (Mamonal industrial zone context; GOGPT-side plant identity itself is out of scope here).",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "No generation exists at the terminal at all yet — the FSRU (the only place captive power could live) has not even been procured.",
+  "status_or_other_findings": "Multiple 2026 sources confirm: ANI port-concession modification + ANLA environmental approval both completed by May 2026; capacity target raised from 126 to 300 MPCD (Guía del Gas, Mar-2026); operational target December 2026, full ramp in 2027. Also serves crude/refined products/LPG per one valoraanalitik piece, i.e. a multi-product port, not LNG-only.",
+  "notes": "Genuine active proposal (licensed, funded, under execution) — not a screen. Revisit once the FSRU vessel is contracted/named, since a named vessel usually has a citable onboard-generation spec (FSRU-onboard convention)."
+ },
+ {
+  "terminal": "Puerto Brisa LNG Terminal",
+  "terminal_id": "T100001049377",
+  "country": "Colombia",
+  "verdict": "INSUFFICIENT",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "yellow",
+  "captive_summary": "Proposed LNG terminal at Zona Franca Brisa, La Guajira (TransEnergy LNG / Energy Developments, with Korea Gas Technology Corporation contracted for detailed engineering since late 2024). Two independent sources describe the imported gas's purpose as regional “generación de energía y uso industrial” (power generation and industrial use in the region) — general market/regional supply, not a single dedicated colocated plant — but neither names an FSRU vessel nor describes any on-site power generation equipment for the terminal itself.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "El Tiempo (26-Nov-2024): the terminal “suministrará combustible para generación de energía y uso industrial en la región”; names Korea Gas Technology Corporation as lead technical partner, Woori Bank/Persimmon Co. as financial partners, plus a co-located data center to use residual cold — no FSRU vessel and no on-site generator/turbine mentioned. valoraanalitik (26-Nov-2024) independently confirms Kogas Tech's detailed-engineering contract for the storage/regasification units and TransEnergy LNG's multi-year lead role, again with no power-generation-equipment detail.",
+  "refs": [
+   "https://www.eltiempo.com/colombia/otras-ciudades/colombia-firma-acuerdo-comercial-con-empresas-coreanas-para-construir-terminal-de-gnl-en-la-guajira-3403096",
+   "https://www.valoraanalitik.com/mas-detalles-sobre-proyecto-de-terminal-de-gnl-en-zona-franca-brisa/"
+  ],
+  "verification_log": [
+   {
+    "url": "https://www.eltiempo.com/colombia/otras-ciudades/colombia-firma-acuerdo-comercial-con-empresas-coreanas-para-construir-terminal-de-gnl-en-la-guajira-3403096",
+    "tokens": [
+     "Korea Gas Technology"
+    ],
+    "result": "PASS",
+    "note": ""
+   },
+   {
+    "url": "https://www.valoraanalitik.com/mas-detalles-sobre-proyecto-de-terminal-de-gnl-en-zona-franca-brisa/",
+    "tokens": [
+     "Kogas"
+    ],
+    "result": "PASS",
+    "note": ""
+   },
+   {
+    "url": "https://www.valoraanalitik.com/firman-acuerdo-para-construir-terminal-de-gnl-en-zona-franca-brisa/",
+    "tokens": [
+     "Korea Gas Technology"
+    ],
+    "result": "PASS",
+    "note": "corroborating, not additionally cited"
+   }
+  ],
+  "gogpt_prior_assessment": "No GOGPT neighbor plant is listed for this terminal in neighbors_raw.json (none within 30 km) — consistent with a remote La Guajira coastal free-trade-zone site with no nearby existing power station.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "No generation equipment documented anywhere for this pre-FID proposal; nothing citable to add.",
+  "status_or_other_findings": "Project has run since at least 2022 (El Universal, May-2022, framed as La Guajira's 'energy transition port'); Nov-2024 Korean EPC/financing agreement is the most recent concrete milestone found; no 2025-2026 construction-start news found in this search, suggesting the project may still be pre-FID.",
+  "notes": "The stated purpose — fuel for regional power generation and industrial use — is a general-market framing, not a single named colocated power plant, so this does not cleanly trip the PowerPlantsSupplied direction test either; flag for a future Update-workflow pass once a specific offtake plant (if any) is named."
+ },
+ {
+  "terminal": "Regasificadora del Pacífico LNG Terminal",
+  "terminal_id": "T100000130679",
+  "country": "Colombia",
+  "verdict": "INSUFFICIENT",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "yellow",
+  "captive_summary": "Under construction at Buenaventura/Buga, Valle del Cauca. The offshore/floating element is an Exmar (Belgian) floating storage and discharge UNIT (FSU) moored in Buenaventura bay — explicitly NOT an FSRU: it receives LNG from carriers and discharges into ISO tanks, with no onboard regasification. The ISO tanks are trucked ~130 km inland to an onshore plant in Buga where regasification (vaporizers) actually occurs. No source found describes the power source (grid vs. on-site generation) for either the FSU or the Buga plant, so the existence of captive gas generation cannot be confirmed or ruled out.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "valoraanalitik.com (19-Sep-2025, ‘Planta regasificadora del Pacífico tiene socio belga’): Exmar signed a five-year charter to deploy a “unidad flotante de almacenamiento y descarga de gas natural licuado” (floating storage and discharge unit) at Buenaventura bay; LNG is discharged into isotanks, barged to the port, trucked to Buga, and “allí el gas volverá a su estado gaseoso” (regasification happens at the Buga plant, not aboard the vessel). Capacity 60 GBTUD. No mention anywhere in this or subsequent 2026 construction-update coverage (Yahoo Noticias, Portafolio, El Tiempo, Caracol Radio — all reporting 80%+ completion as of Jul-2026) of vaporizer power source, on-site generators, or grid connection for the Buga plant.",
+  "refs": [
+   "https://www.valoraanalitik.com/planta-regasificadora-pacifico-socio-belga/"
+  ],
+  "verification_log": [
+   {
+    "url": "https://www.valoraanalitik.com/planta-regasificadora-pacifico-socio-belga/",
+    "tokens": [
+     "Exmar"
+    ],
+    "result": "PASS",
+    "note": ""
+   }
+  ],
+  "gogpt_prior_assessment": "Andes Energy power station (400 MW, 2 units, gogpt_captive=False, status shelved-inferred ~2y) sits only 0.44 km away — unusually close. No source found in this search establishes a direct pipeline/contractual link between Andes Energy and this LNG terminal; Andes Energy appears to be a separate (currently shelved) merchant thermal project. Given the extreme proximity and shared Buenaventura-area gas theme, this pairing is worth a dedicated look in a future batch to confirm whether Andes Energy was originally conceived as this terminal's offtake (a PowerPlantsSupplied candidate) rather than assuming coincidence. info_url: https://www.gem.wiki/Andes_Energy_power_station (GOGPT record, not a citation for GEM — nav only).",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "No generating equipment is documented at either the FSU or the Buga plant; nothing citable to add.",
+  "status_or_other_findings": "GEM's 'vessel' field for this terminal reads 'Tura/El Viche' — could not corroborate either as the Exmar vessel's actual name in any source found (searches for ‘Tura’ + Exmar returned nothing on-topic); flag for a follow-on Update batch to pin down the actual FSU vessel identity/IMO. Multiple mid-2026 sources agree the plant is >80% complete with a target of operations by Nov-2026 (regasification start) / late 2026.",
+  "notes": "Construction status and 2026 startup timeline are well corroborated across many outlets; the captive-power question specifically is the gap — recommend a targeted follow-up citing an ANLA/CVC environmental permit or the Buga plant's electrical interconnection filing if one becomes available."
+ }
+]

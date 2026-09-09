@@ -1,0 +1,221 @@
+[
+  {
+    "terminal": "Bac Lieu LNG Terminal",
+    "terminal_id": "T100000130826",
+    "country": "Vietnam",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "No on-site captive generation found. The colocated 3,200 MW gas-fired plant is a merchant power station that exports via a dedicated 130 km double-circuit 500 kV transmission line to Thot Not station under a principal grid connection agreement with EVNNPT (Vietnam's national transmission utility) signed March 10, 2026.",
+    "fuel_basis": "N/A — no on-site gas generation identified serving the terminal itself; the site's gas-fired capacity is the external merchant power plant.",
+    "confidence": "green",
+    "captive_summary": "Bac Lieu LNG Terminal is the fuel-supply half of an integrated LNG-to-power bundle whose whole purpose is feeding the adjacent 3,200 MW 'Bac Lieu Project' power station, which sells electricity to the national grid via a purpose-built 500 kV line — the classic direction-test NO (regas gas flows OUT to an external/colocated power plant, not power flowing IN to the terminal). No source describes any separate on-site generation dedicated to running the terminal's own regas/pump operations.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Delta Offshore Energy's own news post (2026-03-17) and LNG Prime (2026) both report that EVNNPT and Bac Lieu LNG Power Company Ltd signed the Principal Grid Connection Agreement for the 3,200 MW Bac Lieu LNG-to-Power plant on 2026-03-10, with power evacuated via a 130 km double-circuit 500 kV transmission line to Thot Not station — confirming the plant is a grid-export merchant station, not a captive supply to the terminal.",
+    "refs": [
+      "https://deltaoffshoreenergy.com/2026/03/17/evnnpt-and-bac-lieu-gas-power-sign-principal-grid/",
+      "https://lngprime.com/contracts-and-tenders/deltas-bac-lieu-lng-inks-grid-connection-deal/180775/"
+    ],
+    "verification_log": [
+      {"url": "https://deltaoffshoreenergy.com/2026/03/17/evnnpt-and-bac-lieu-gas-power-sign-principal-grid/", "tokens": ["500 kV", "EVNNPT"], "result": "PASS", "note": "OK"},
+      {"url": "https://lngprime.com/contracts-and-tenders/deltas-bac-lieu-lng-inks-grid-connection-deal/180775/", "tokens": ["EVNNPT", "3,200 MW"], "result": "PASS", "note": "OK"}
+    ],
+    "gogpt_prior_assessment": "GOGPT plant 'Bac Lieu Project power station' (3,200 MW, gogpt_captive already False) is NOT this terminal's captive power — it is the opposite relationship: the terminal supplies LNG/regas TO this merchant plant, which exports to the national grid via a dedicated 500 kV line. Independent info: https://lngprime.com/contracts-and-tenders/deltas-bac-lieu-lng-inks-grid-connection-deal/180775/",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No on-site captive generation exists at the terminal to add; the large plant is already a correctly-tracked separate GOGPT merchant record (gogpt_captive already False), not a captive relationship to this terminal.",
+    "status_or_other_findings": "None beyond the confirmed grid-connection agreement and 2030 phased commercial operation target — not acted on.",
+    "notes": "Textbook direction-test case: PowerPlantsSupplied = 'Bac Lieu Project Power Station' correctly captures the real relationship (terminal feeds the plant); this is not a captive finding for this batch."
+  },
+  {
+    "terminal": "Ben Tre FSRU",
+    "terminal_id": "T100000131075",
+    "country": "Vietnam",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "N/A — screen criterion: cancelled and never reached a published technical design.",
+    "fuel_basis": "",
+    "confidence": "",
+    "captive_summary": "Screened: GEM already carries this record as cancelled (inferred, ~4 years dormant). Despite a real-name search effort (English and Vietnamese), no developer, consortium, capacity figure, or technical filing specific to a 'Ben Tre' LNG/FSRU project could be found anywhere independent of GEM's own wiki — only a generic association with a 3-4.8 GW slot in Vietnam's Power Development Plan 8 that is itself listed as behind-schedule/non-implementable. No design-stage details (terminal layout, power arrangement, FSRU spec) were ever published, so there is nothing to research for a captive-power finding.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "No independent (non-gem.wiki) source with project-specific technical detail was found despite multiple English and Vietnamese-language search attempts; GEM's own status field already records the terminal as cancelled/inferred.",
+    "refs": [],
+    "verification_log": [],
+    "gogpt_prior_assessment": "No GOGPT plant was given for this terminal (gogpt_prior: no).",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No sourced on-site generation of any kind exists to add — project never reached a design stage with any publishable equipment detail.",
+    "status_or_other_findings": "None.",
+    "notes": "Screen criterion: cancelled-and-never-designed (SOP screen class) — no independent source names a developer or technical scope for this project."
+  },
+  {
+    "terminal": "Ca Mau LNG Terminal",
+    "terminal_id": "T100001057487",
+    "country": "Vietnam",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "No on-site captive generation found. The colocated Ca Mau power station (Ca Mau 3 & 4 CCGT expansion, 1,500 MW per unit / ~3,000 MW combined) is a grid-connected merchant plant under Vietnam's Power Development Plan 8, sponsored by the same group (PetroVietnam Power) that owns the LNG terminal, but structured as fuel-supply-in / power-export-out.",
+    "fuel_basis": "N/A — no on-site gas generation identified serving the terminal itself.",
+    "confidence": "green",
+    "captive_summary": "Ca Mau LNG Terminal is the LNG-supply half of an LNG-to-power bundle at Khanh An, Ca Mau, feeding the Ca Mau 3 (and planned Ca Mau 4) combined-cycle gas turbine units (1,500 MW each) being added at the existing Ca Mau power station site. The power is generated for grid supply, not to power the terminal — direction-test NO, no evidence of any separate captive generator serving the terminal's own regas operations.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Power Technology's plant profile ('Ca Mau 3 Combined Cycle Power Plant... 1,500MW gas fired power project') and Vietnam Energy ('2 combined cycle gas turbine (CCGT) units with a total capacity of 1500 MW... used [for] important LNG') both independently confirm the Ca Mau 3 unit is a grid-supplying CCGT project fed by the LNG terminal, not the reverse.",
+    "refs": [
+      "https://www.power-technology.com/data-insights/power-plant-profile-ca-mau-3-combined-cycle-power-plant-vietnam/",
+      "https://vietnamenergy.vn/starting-ca-mau-3-power-project-26419.html"
+    ],
+    "verification_log": [
+      {"url": "https://www.power-technology.com/data-insights/power-plant-profile-ca-mau-3-combined-cycle-power-plant-vietnam/", "tokens": ["1,500MW"], "result": "PASS", "note": "bot-blocked live (HTTP 403); value verified via Wayback snapshot 20260312173940"},
+      {"url": "https://vietnamenergy.vn/starting-ca-mau-3-power-project-26419.html", "tokens": ["1500 MW"], "result": "PASS", "note": "OK"}
+    ],
+    "gogpt_prior_assessment": "GOGPT plant 'Ca Mau power station' (~3,000 MW total, gogpt_captive already False) is NOT this terminal's captive power — it is the opposite relationship: the terminal (sponsored by PetroVietnam Power, same group) supplies LNG to fuel the Ca Mau 3/4 CCGT expansion, which sells power to the grid. Independent info: https://vietnamenergy.vn/starting-ca-mau-3-power-project-26419.html",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No on-site captive generation exists at the terminal; the CCGT units are already a separate, correctly-tracked GOGPT merchant record.",
+    "status_or_other_findings": "Ca Mau 3 construction 'likely to commence 2025' per Power Technology; not acted on here.",
+    "notes": "Direction-test case; PowerPlantsSupplied ('Ca Mau power station') correctly captures the real relationship."
+  },
+  {
+    "terminal": "Ca Na LNG Terminal",
+    "terminal_id": "T100000130901",
+    "country": "Vietnam",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "No on-site captive generation found. The Ca Na power project is a grid-selling LNG-fired plant developed alongside the terminal, with a PPA bid price of VNĐ3,294.2/kWh confirming it sells to the national grid.",
+    "fuel_basis": "N/A — no on-site gas generation identified serving the terminal itself.",
+    "confidence": "green",
+    "captive_summary": "Ca Na LNG Terminal is bundled with the Ca Na LNG-fired power plant (Ninh Thuan province), part of Vietnam's Power Development Plan VIII pipeline. Vietnam News reports the plant's investor bid an electricity selling price of VNĐ3,294.2/kWh — direct evidence it generates for grid sale, not for the terminal's own use. Direction-test NO; no evidence of a separate captive generator serving terminal operations.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Vietnam News ('Cà Ná gas power project sees just one bid') reports the LNG-fired power plant at Ca Na is included in national PDP8 with a competitive-bid electricity selling price, confirming grid-export purpose; Gulf Energy's own release confirms a separate/expanded feasibility study for up to 6,000 MW of gas-fired capacity at the same site, also framed as grid supply for southeastern Vietnam.",
+    "refs": [
+      "https://vietnamnews.vn/economy/1721834/ca-na-gas-power-project-sees-just-one-bid.html",
+      "https://www.gulf.co.th/en/newsroom/news-and-activities/391/gulf-signs-deal-with-vietnam-to-develop-6000-mw-natural-gas-power-project"
+    ],
+    "verification_log": [
+      {"url": "https://vietnamnews.vn/economy/1721834/ca-na-gas-power-project-sees-just-one-bid.html", "tokens": ["1,500MW"], "result": "PASS", "note": "OK"},
+      {"url": "https://www.gulf.co.th/en/newsroom/news-and-activities/391/gulf-signs-deal-with-vietnam-to-develop-6000-mw-natural-gas-power-project", "tokens": ["6,000 MW"], "result": "PASS", "note": "OK"}
+    ],
+    "gogpt_prior_assessment": "GOGPT plant 'Ca Na power station' (6,000 MW per shard data, gogpt_captive already False) is NOT this terminal's captive power — opposite relationship, terminal feeds the grid-selling plant. Independent info: https://vietnamnews.vn/economy/1721834/ca-na-gas-power-project-sees-just-one-bid.html",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No on-site captive generation exists at the terminal; the power plant is already a separate GOGPT merchant record.",
+    "status_or_other_findings": "Capacity figures are inconsistent across sources: an investor-approved 1,500 MW first-phase project (Vietnam News, vneconomy) vs. a separate Gulf Energy feasibility study for a 6,000 MW facility at the same commune (matches shard's gogpt_total_mw 6000.0) — appears to be either a scaled-up revision or a distinct competing proposal at the same site. Not acted on; flagging for a future Update pass.",
+    "notes": "Direction-test case."
+  },
+  {
+    "terminal": "Cai Mep LNG Terminal",
+    "terminal_id": "T100000130324",
+    "country": "Vietnam",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "No on-site captive generation found. Operating terminal delivers regasified gas by pipeline to the existing Phu My industrial zone gas-fired power complex (3.9-4 GW aggregate, incl. Phu My 2.1/2.1E) and Hiep Phuoc power station; no equipment list mentions on-site electricity generation.",
+    "fuel_basis": "N/A — no on-site gas generation identified.",
+    "confidence": "green",
+    "captive_summary": "Cai Mep LNG Terminal (aka Hai Linh LNG Terminal; operator AG&P LNG/Hai Linh) is a merchant import/regas/break-bulk terminal (220,000 m3 storage, 3-6 mtpa) with pipeline connectivity delivering gas OUT to the pre-existing Phu My power complex and Hiep Phuoc power station — the reverse of a captive relationship. Both the operator's own commissioning release and independent trade press (MarineLink) describe only pipeline gas send-out and truck-loading infrastructure; neither mentions any on-site power generation or backup gas generators.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "AG&P LNG/Hai Linh's own press release (PR Newswire, 2026): 'pipeline connectivity to Vietnam's largest power generation complex, Phu My, which has gas-fired capacity of 3.9 GW' and 'connected to nearby Phu My industrial zone.' MarineLink (independent, 2026): first gas send-out 'marks completion of the commissioning of the Cai Mep-Phu My pipeline and gas distribution stations, connecting the terminal with the 4 gigawatt Phu My Hub' and gas delivered to 'Phu My 2.1 and 2.1E power plants.' No source names any on-site generation.",
+    "refs": [
+      "https://www.prnewswire.com/apac/news-releases/agp-lng-and-hai-linh-announce-the-start-of-the-commissioning-of-their-cai-mep-lng-terminal-in-vietnam-302139904.html",
+      "https://www.marinelink.com/blogs/blog/vietnams-cai-mep-terminal-begins-gas-delivery-to-phu-my-power-105097"
+    ],
+    "verification_log": [
+      {"url": "https://www.prnewswire.com/apac/news-releases/agp-lng-and-hai-linh-announce-the-start-of-the-commissioning-of-their-cai-mep-lng-terminal-in-vietnam-302139904.html", "tokens": ["Phu My", "3.9 GW"], "result": "PASS", "note": "OK"},
+      {"url": "https://www.marinelink.com/blogs/blog/vietnams-cai-mep-terminal-begins-gas-delivery-to-phu-my-power-105097", "tokens": ["Phu My", "4 gigawatt"], "result": "PASS", "note": "OK"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT plant was given for this terminal (gogpt_prior: no) — the Phu My/Hiep Phuoc power complex it feeds comprises multiple pre-existing plants outside the matcher's proximity/prior logic, but the direction test (gas flows OUT via pipeline to existing external plants) independently rules out captive power regardless.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No on-site captive generation exists at the terminal to add.",
+    "status_or_other_findings": "Terminal is operating (mechanically completed/commissioned 2025, first gas send-out to Phu My reported 2026); AG&P LNG increased its stake toward 100% per an April 2026 press release. Not acted on.",
+    "notes": "Direction-test case; PowerPlantsSupplied ('Hiep Phuoc power station' per shard data) is consistent with the real relationship — gas flows out to external, pre-existing power plants (Phu My complex, Hiep Phuoc), not in."
+  },
+  {
+    "terminal": "Cat Hai FSRU",
+    "terminal_id": "T100000130980",
+    "country": "Vietnam",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "N/A — screen criterion: cancelled/superseded, never went beyond a preliminary study MOU.",
+    "fuel_basis": "",
+    "confidence": "",
+    "captive_summary": "Screened: the original Cat Hai FSRU proposal (ExxonMobil Hai Phong Energy, Hai Phong People's Committee, JERA) was launched by a 2020-10-28 MOU that JERA's own press release describes only as promoting 'preliminary market development discussions' to 'jointly study natural gas market development opportunities, including LNG import facilities and gas-fired power plants' — no capacity, terminal design, FSRU spec, or power arrangement was ever published under this proposal. GEM already carries the record as cancelled/inferred, and the site's LNG-to-power ambitions were subsequently pursued via separate, differently-sited projects (ExxonMobil's own onshore Hai Phong LNG project and Vingroup/VinEnergo's Tan Trao project), not as a build-out of the original Cat Hai design.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "JERA press release (2020-10-28, jera.co.jp/en/news/information/20201028_545): MOU explicitly framed as preliminary study-stage, no technical figures given.",
+    "refs": [
+      "https://www.jera.co.jp/en/news/information/20201028_545"
+    ],
+    "verification_log": [
+      {"url": "https://www.jera.co.jp/en/news/information/20201028_545", "tokens": ["Memorandum of Understanding", "Hai Phong"], "result": "PASS", "note": "OK"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT plant was given for this terminal (gogpt_prior: no).",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No sourced on-site generation of any kind — project never progressed past a preliminary study MOU.",
+    "status_or_other_findings": "Distinct, later Hai Phong LNG projects exist at different sites/with different sponsors (ExxonMobil's own approved $5.09bn, 6 mtpa project; Vingroup/VinEnergo's Tan Trao project) — not the same record, not acted on here.",
+    "notes": "Screen criterion: cancelled/superseded, never reached design stage beyond a preliminary study MOU (primary source: JERA's own 2020 release)."
+  },
+  {
+    "terminal": "Chan May LNG Terminal",
+    "terminal_id": "T100000130902",
+    "country": "Vietnam",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "No on-site captive generation found. As-designed, the bundled 4,000 MW (4 GW) gas-fired power plant was explicitly built to supply Thua Thien-Hue's industrial and economic zones, not to power the terminal.",
+    "fuel_basis": "N/A — no on-site gas generation identified serving the terminal itself.",
+    "confidence": "green",
+    "captive_summary": "Chan May LNG Terminal (aka Stavian Chan May LNG Terminal) was designed as the fuel-supply half of a $6-6.2bn, 4,000 MW LNG-to-power bundle (US-Vietnamese JV, 60/40 stake) in Thua Thien-Hue. Despite GEM's cancelled/inferred status, the project reached a detailed design stage (JV structure, MOUs, capacity, investment figures) — as-designed captive power still counts per SOP, but the design itself is a direction-test NO: two independent sources state the plant 'would supply power to Thua Thien-Hue's industrial and economic zones,' i.e. an external grid/merchant-supply arrangement, not a captive plant serving the terminal.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "World-Energy ('Chan May LNG Invests in 4GW Gas-Fired Plant'): '4GW gas-fired power plant that would supply power to Thua Thien-Hue's industrial and economic zones.' Enerdata (independent, 'US-Vietnam JV plans US$6bn investment in LNG and power project Vietnam'): identical framing, '4,000 MW gas-fired power plant that would supply power to the Thua Thien-Hue's industrial and economic zones.' Both confirm the design's power flows outward to the region, not into the terminal.",
+    "refs": [
+      "https://www.world-energy.org/article/10998.html",
+      "https://www.enerdata.net/publications/daily-energy-news/us-vietnam-jv-plans-us6bn-investment-lng-and-power-project-vietnam.html"
+    ],
+    "verification_log": [
+      {"url": "https://www.power-technology.com/marketdata/power-plant-profile-chan-may-lng-power-project-vietnam/", "tokens": ["4,000MW"], "result": "FAIL", "note": "HTTP 403, no Wayback snapshot to verify against — dropped, replaced with world-energy.org and enerdata.net"},
+      {"url": "https://www.world-energy.org/article/10998.html", "tokens": ["4GW"], "result": "PASS", "note": "OK"},
+      {"url": "https://www.world-energy.org/article/10998.html", "tokens": ["industrial and economic zones"], "result": "PASS", "note": "OK"},
+      {"url": "https://www.enerdata.net/publications/daily-energy-news/us-vietnam-jv-plans-us6bn-investment-lng-and-power-project-vietnam.html", "tokens": ["4,000 MW"], "result": "PASS", "note": "OK"},
+      {"url": "https://www.enerdata.net/publications/daily-energy-news/us-vietnam-jv-plans-us6bn-investment-lng-and-power-project-vietnam.html", "tokens": ["industrial and economic zones"], "result": "PASS", "note": "OK"}
+    ],
+    "gogpt_prior_assessment": "GOGPT plant 'Chan May power station' (gogpt_total_mw 1500.0 per shard data, gogpt_captive already False) is NOT this terminal's captive power — as-designed, this is a grid/industrial-zone-supplying merchant plant fed by the terminal, opposite direction. Independent info: https://www.enerdata.net/publications/daily-energy-news/us-vietnam-jv-plans-us6bn-investment-lng-and-power-project-vietnam.html",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No on-site captive generation exists at the terminal design; the power plant is already a separate GOGPT record.",
+    "status_or_other_findings": "Capacity discrepancy: independent sources consistently cite the bundled power plant at 4,000 MW / 4 GW, but the shard's gogpt_total_mw for the matched GOGPT plant is 1,500 MW — GOGPT's tracked record may reflect only a phase or an earlier/lower design estimate. Not acted on; flag for a future Update/GOGPT reconciliation pass.",
+    "notes": "As-designed captive assessment on a cancelled project per SOP (design reached JV/MOU/capacity-figure stage); still a direction-test NO."
+  },
+  {
+    "terminal": "Cong Thanh LNG Terminal",
+    "terminal_id": "T100001084023",
+    "country": "Vietnam",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "No on-site captive generation found. The bundled 4,500 MW Cong Thanh power plant (Phase 1: 1,500 MW; Phase 2: 3,000 MW), EPC'd via a Doosan Enerbility/PECC2 consortium, is explicitly designed to supply Thanh Hoa province and Vietnam's Northern load centre — a grid-export merchant plant.",
+    "fuel_basis": "N/A — no on-site gas generation identified serving the terminal itself.",
+    "confidence": "green",
+    "captive_summary": "Cong Thanh LNG Terminal is the fuel-supply half of a proposed LNG-to-power bundle in Thanh Hoa province, developed by Cong Thanh Thermal Power JSC with Doosan Enerbility (turbine EPC) and PECC2 (Vietnamese engineering consultant) under an August 2025 Agreement in Principle. LNG Industry quotes the project explicitly: 'the operation of the project not only ensures the supply of electricity to Thanh Hoa province, but the project also supplies electricity to the Northern load centre area' — direct, primary-adjacent evidence this is a grid-selling plant, not a captive supply to the terminal.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "LNG Industry ('PECC2 signs AiP for Cong Thanh LNG project'): '4500 MW Cong Thanh power plant project (Phase 1: 1500 MW; Phase 2: 3000 MW)... the operation of the project not only ensures the supply of electricity to Thanh Hoa province, but the project also supplies electricity to the Northern load centre area.' Global Flow Control (independent) corroborates the 4,500 MW figure and Doosan/PECC2 consortium role.",
+    "refs": [
+      "https://www.lngindustry.com/liquid-natural-gas/21082025/pecc2-signs-aip-for-cong-thanh-lng-project/",
+      "https://globalflowcontrol.com/newsroom/vietnams-cong-thanh-lng-power-plant-secures-key-deal/"
+    ],
+    "verification_log": [
+      {"url": "https://www.lngindustry.com/liquid-natural-gas/21082025/pecc2-signs-aip-for-cong-thanh-lng-project/", "tokens": ["4500 MW"], "result": "PASS", "note": "OK"},
+      {"url": "https://globalflowcontrol.com/newsroom/vietnams-cong-thanh-lng-power-plant-secures-key-deal/", "tokens": ["4,500", "Doosan"], "result": "PASS", "note": "OK"}
+    ],
+    "gogpt_prior_assessment": "GOGPT plant 'Cong Thanh power station' (4,500 MW, gogpt_captive already False) is NOT this terminal's captive power — grid-export merchant plant fed by the terminal, opposite direction. Independent info: https://globalflowcontrol.com/newsroom/vietnams-cong-thanh-lng-power-plant-secures-key-deal/",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No on-site captive generation exists at the terminal; the power plant is already a separate GOGPT merchant record.",
+    "status_or_other_findings": "Doosan Enerbility supplies EPC/turbines for the merchant plant (not a captive-terminal generator) — relevant to a future gogpt-researcher Discovery lead only insofar as the merchant plant itself is tracked, which it already is. Not acted on.",
+    "notes": "Direction-test case."
+  }
+]

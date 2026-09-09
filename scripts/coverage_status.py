@@ -33,7 +33,7 @@ Usage:
     python coverage_status.py --json work/coverage_status.json
     # Write JSON instead of markdown.
 
-Always exits 0 — this is a reporting tool, not a validator.
+Exits non-zero when metadata violates the canonical batch contract.
 """
 import argparse
 import csv
@@ -42,6 +42,8 @@ import sys
 from collections import defaultdict
 from datetime import date, datetime
 from pathlib import Path
+
+from batch_contract import RETIRED_STATUSES, validate_meta
 
 REPO_ROOT = Path(__file__).parent.parent
 STAGING_ROOT = REPO_ROOT / "batches" / "staging"
@@ -100,7 +102,6 @@ def build_ledger(meta_records):
     per_country: {country: {lane: (date, scope_slug, tier)}} — latest per lane.
     cross_cutting / in_flight: lists of (path, meta)."""
     per_country = defaultdict(dict)
-    ranks = {}  # (country, lane) -> live/retired rank of the record currently held
     cross_cutting, in_flight = [], []
 
     for path, meta in meta_records:
@@ -111,24 +112,23 @@ def build_ledger(meta_records):
             cross_cutting.append((path, meta))
             continue
 
+        # Only completed, live records establish freshness. An abandoned or
+        # superseded attempt is history, not evidence that a country was covered.
+        if meta.get("status") in RETIRED_STATUSES or meta.get("status") == "in_progress":
+            continue
+
         when_d = _parse_date(meta.get("applied") or meta.get("built") or meta.get("started"))
         if when_d is None:
             continue
         touch = (when_d, meta.get("scope_slug", path.parent.name), meta.get("tier"))
-        # Consolidation leaves several same-day dirs covering one region, all but the
-        # last superseded. Date alone can't separate them and the glob is alphabetical,
-        # so a plain `>` hands the ledger whichever sorts first — which is how
-        # "captive_power/americas" (superseded) outranked "americas-complete" and
-        # pointed a reader at a dead staging dir. Rank live records above retired ones
-        # on a tie; date still wins across different dates.
-        rank = 0 if meta.get("status") in ("superseded", "abandoned") else 1
-
         for lane in LANES.get(meta.get("workflow"), []):
+            excluded = set(meta.get(f"{lane}_gap_countries") or [])
             for country in countries:
+                if country in excluded:
+                    continue
                 existing = per_country[country].get(lane)
-                if existing is None or (when_d, rank) > (existing[0], ranks[(country, lane)]):
+                if existing is None or when_d > existing[0]:
                     per_country[country][lane] = touch
-                    ranks[(country, lane)] = rank
 
     return per_country, cross_cutting, in_flight
 
@@ -228,7 +228,10 @@ def main():
     args = ap.parse_args()
 
     today = date.today()
-    per_country, cross_cutting, in_flight = build_ledger(load_meta_files())
+    meta_records = load_meta_files()
+    contract_errors = [error for path, meta in meta_records
+                       for error in validate_meta(meta, source=str(path.relative_to(REPO_ROOT)))]
+    per_country, cross_cutting, in_flight = build_ledger(meta_records)
     universe = load_country_universe(args.gem_csv)
 
     if args.json:
@@ -236,7 +239,11 @@ def main():
         print(f"Wrote {args.json}")
     else:
         print(render_markdown(per_country, cross_cutting, in_flight, universe, today, args.stale_than))
-    return 0
+    if contract_errors:
+        print("\nMetadata contract violations:", file=sys.stderr)
+        for error in contract_errors:
+            print(f"  - {error}", file=sys.stderr)
+    return 1 if contract_errors else 0
 
 
 if __name__ == "__main__":

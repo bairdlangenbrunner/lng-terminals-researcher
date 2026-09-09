@@ -1,0 +1,409 @@
+[
+ {
+  "terminal": "Bahrain Hidd FLNG Terminal",
+  "terminal_id": "T100000130581",
+  "mechanical": "False",
+  "confidence": "green",
+  "gogpt_captive_prior": "gogpt_prior = no; no GOGPT plant given for this terminal to assess.",
+  "confirmed_how": "VERDICT: NO. Bahrain LNG's offshore terminal (Seapeak Bahrain / ex-Bahrain Spirit FSU + regasification platform) is powered by a dedicated shore-power connection from Bahrain's onshore grid, engineered by Schneider Electric with an igus flexible cable-chain system bridging the ~30 m jetty-to-FSU gap — described as the world's first shore-power supply system for a floating storage unit. No on-site/onboard gas-fired generation for the terminal's own power needs is documented; the nearby 963 MW Hidd Power and Water Station is a separate, pre-existing utility plant, not built for or dedicated to the LNG terminal. EVIDENCE: igus.eu project page and offshore-technology.com project profile both describe the FSU as connected to the Bahrain grid via a dedicated shore-power cable system (Schneider Electric electrical infrastructure, igus energy-chain cable management) installed for the terminal's June 2019 startup — this is the terminal's documented power source, distinct from on-site generation.",
+  "confirmed_how [ref]": [
+   "https://www.igus.eu/industry/shore-power/applications/shore-power-cable-management-for-offshore-lng-terminal",
+   "https://www.offshore-technology.com/projects/bahrain-lng-terminal/"
+  ]
+ },
+ {
+  "terminal": "Iran FLNG Terminal",
+  "terminal_id": "T100000130587",
+  "mechanical": "",
+  "confidence": "red",
+  "gogpt_captive_prior": "GOGPT prior names 'Kharg NGL power plant' (125 MW, captive=True, 0.99 km from these coordinates on/near Kharg Island). This is the utility power plant for IOOC's (an NIOC subsidiary) Kharg Island Gas Gathering and NGL Recovery project — an existing, unrelated petroleum-complex facility (Farab was a utilities contractor on it) that predates and has no connection to the never-installed Exmar FLNG barge, which never reached the site-construction stage in Iran. Not this terminal's captive power.",
+  "confirmed_how": "VERDICT: INSUFFICIENT. No public source discloses on-site power generation for this project. Iran FLNG was a small (500,000 tpy) floating LNG scheme using Exmar's 'Caribbean FLNG' barge, chartered to a NIOC/Iranian-partner joint venture (IFLNG) and planned to dock at Pars Service port to receive ~2.3 MMcm/d of feed gas from the 7th South Pars Gas Refinery. The deal was put on hold by Iran's parliament energy committee in Dec 2017. No installation or Iran-specific site engineering appears to have followed, and the vessel's own published technical profile is silent on power/engine equipment. EVIDENCE: Searched the Exmar/Caribbean FLNG vessel's published specs (offshore-technology.com: hull dimensions, 16,100 m3 storage, Black & Veatch PRICO liquefaction, mooring system) and Iran deal reporting (rivieramm.com, gasstrategies.com); neither discloses onboard power generation equipment (engines/turbines/generators). gasstrategies.com's own deal-status piece returned HTTP 403 with no Wayback snapshot, so it is not cited. Reporting confirms the Iran charter deal stalled at the negotiation/hold stage in Dec 2017, consistent with no Iran-specific power engineering ever being published for this vessel's Iranian deployment.",
+  "confirmed_how [ref]": [
+   "https://www.rivieramm.com/news-content-hub/news-content-hub/has-icaribbean-flngi-found-a-home-in-iran-26737",
+   "https://www.offshore-technology.com/projects/caribbean-flng-project/"
+  ]
+ },
+ {
+  "terminal": "Iran NIOC LNG Terminal",
+  "terminal_id": "T100000130583",
+  "mechanical": "False",
+  "confidence": "green",
+  "gogpt_captive_prior": "GOGPT prior 'Tonbak LNG power station' (1,130 MW, captive=True, 0.69 km) IS this terminal's captive power — it is the exact same plant profiled independently at power-technology.com and by MAPNA as the 'Iran LNG Combined Cycle Power Plant.' Independent info: https://www.power-technology.com/data-insights/power-plant-profile-iran-lng-combined-cycle-power-plant-iran/",
+  "confirmed_how": "VERDICT: YES. This is the Iran LNG project at Tombak (owner match: IGEC 49% / Oil Industry Investment Co ~50% / Oil Industry Pension Fund 1%, matching GEM's listed owners almost exactly). The project's own design package included a dedicated on-site 1,130 MW CCGT power station (5 gas + 2 steam turbines) purpose-built to power the LNG plant, engineered/constructed by MAPNA-group companies from 2007. Because the LNG trains themselves have never started up (project suspended by the client since mid-2013 under sanctions), the completed power-plant units have instead been connected to Iran's national grid unit-by-unit since ~2022 to help meet national demand — but the plant was designed, sited, and built as this project's captive power block, which is a documented YES on design per SOP (as-designed captive power counts; partial/full grid export does not defeat a purpose-built captive finding). EVIDENCE: OGJ ('Iran details LNG liquefaction plans'): NIOC's Iran LNG project package breakdown includes Package I ('processing and condensation units, utility, offsite equipment...') and states 'Six gas turbine electrical drivers will supply the plant's power.' power-technology.com power-plant-profile page independently profiles the 'Iran LNG Combined Cycle Power Plant:' 1,130 MW, 5x162 MW + 2x160 MW turbines, Bushehr, 100%-owned by Iran LNG Co. MAPNA Group's own project page (mapnagroup.com/1232) confirms: 'Iran LNG Combined Cycle Power Plant... five gas and two steam units with a total capacity of 1130 Megawatts,' built for the Iran LNG program via Nirpars from 2007, with its fifth gas unit connected to the national grid July 2022. A separate MAPNA release (mapnagroup.com/31279) confirms four dedicated 3.3 MVA diesel gensets were also installed 'to provide backup power to the LNG site in case of emergencies' — diesel, so not itself a captive-gas source, but corroborates the site's ongoing dedicated electrical infrastructure.",
+  "confirmed_how [ref]": [
+   "https://www.ogj.com/exploration-development/reserves/article/17228246/iran-details-lng-liquefaction-plans",
+   "https://www.power-technology.com/data-insights/power-plant-profile-iran-lng-combined-cycle-power-plant-iran/",
+   "https://mapnagroup.com/1232/%D8%A7%D8%AA%D8%B5%D8%A7%D9%84-%D9%88%D8%A7%D8%AD%D8%AF-%D9%BE%D9%86%D8%AC%D9%85-%DA%AF%D8%A7%D8%B2%DB%8C-%D9%86%DB%8C%D8%B1%D9%88%DA%AF%D8%A7%D9%87-%D8%A7%DB%8C%D8%B1%D8%A7%D9%86-%D8%A7%D9%84-%D8%A7/"
+  ]
+ },
+ {
+  "terminal": "Kangan LNG Terminal",
+  "terminal_id": "T100000130585",
+  "mechanical": "",
+  "confidence": "",
+  "gogpt_captive_prior": "GOGPT prior 'Kangan power plant' (164 MW, captive=True, distance not recorded) is NOT this terminal's captive power. It is a pre-existing Iranian gas-fired grid power station in Jam, Bushehr, commissioned in 1995 (per Wikidata) — built more than two decades before Mahtaab's Kangan LNG was even proposed (2017), and belongs to Iran's national grid/gas-industry infrastructure, not to this never-built private LNG project. Independent info: https://www.wikidata.org/wiki/Q5816608",
+  "confirmed_how": "VERDICT: SCREENED. Kangan LNG was a small (2 MMTPA, two-train) private LNG project 100%-owned by Iran's Mahtaab Group at a 25-hectare site at the Port of Tombak. It never progressed past an early WorleyParsons 'Concept Screening Study' (awarded Oct 2017, ~4-month scope); no FEED, EPC, or utilities/power-block design was ever published, and there have been no development updates since (the project's own website is no longer reachable). Screened: never reached a design stage that would document any power plant. EVIDENCE: AIJAC (Australia/Israel Review) and other trade coverage confirm WorleyParsons was awarded only a Concept Screening Study for Kangan LNG in Oct 2017 (100%-owned by Mahtaab Group, 2 MMTPA, Port of Tombak); no subsequent contract award or design publication found. kanganlng.com (the project's own site) no longer resolves (DNS failure), consistent with the project having stalled.",
+  "confirmed_how [ref]": [
+   "https://aijac.org.au/australia-israel-review/how-exposed-are-australian-businesses-in-iran/"
+  ]
+ },
+ {
+  "terminal": "North Pars LNG Terminal",
+  "terminal_id": "T100000130584",
+  "mechanical": "",
+  "confidence": "red",
+  "gogpt_captive_prior": "No GOGPT prior was supplied for this terminal (gogpt_prior: no).",
+  "confirmed_how": "VERDICT: INSUFFICIENT. North Pars LNG was a CNOOC-developed, four-train (20 MMTPA) LNG project at Tombak fed by the North Pars gas field (MoU with NIOC 2006). WorleyParsons, in partnership with Linde, completed FEED-level engineering work for the project by 2010. Despite this substantial design stage, no public source found describes a power-generation/utilities package or MW figure for the project — CNOOC's slow progress led NIOC to suspend the deal before the project reached construction. EVIDENCE: OGJ's 2010 project-by-project summary (verified) covers North Pars' feed-gas volume, train count/capacity, and commercial terms in detail but contains no power-plant sentence (checked against the raw article text directly, paragraph-by-paragraph). Trade reporting on WorleyParsons/Linde's FEED work (industrialinfo.com; gasstrategies.com — both failed url_verifier / no Wayback) confirms the FEED occurred but none accessible describes its utilities/power scope. No EPC or vendor press release for a North Pars power block was found.",
+  "confirmed_how [ref]": [
+   "https://www.ogj.com/pipelines-transportation/lng/article/17209101/ogj-focus-iranian-lng-natural-gas-export-plans-outlined"
+  ]
+ },
+ {
+  "terminal": "Persian NIOC LNG Terminal",
+  "terminal_id": "T100000130586",
+  "mechanical": "",
+  "confidence": "red",
+  "gogpt_captive_prior": "No GOGPT prior was supplied for this terminal (gogpt_prior: no).",
+  "confirmed_how": "VERDICT: INSUFFICIENT. This is the Persian LNG project (owner match confirms: NIGEC/NIOC 50%, Shell 25%, Repsol 25%, matching GEM's listed owners exactly), a two-phase, two-train (16.2 MMTPA) project at Tombak fed by South Pars Phases 13-14, reported to be in FEED stage as of ~2010 with detailed published design tables. Unlike its Tombak neighbor 'Pars LNG' (NIOC/Total/Petronas, a separate project which does have a documented 1,000 MW power plant — see the South Pars LNG Terminal record), no source found describes any power-generation component for Persian LNG specifically. EVIDENCE: OGJ's 2010 project summary (verified) devotes a full paragraph to Persian LNG's trains, feed gas, byproduct yields and shareholders, with 'Table 5' referenced for its 'main characteristics' — but contains no power-plant sentence for this project (the power-plant sentence in the same article is explicitly attached to the preceding 'Pars LNG' paragraph, confirmed by reading the raw article text with section order intact). Wikipedia's own Persian LNG article (not cited as evidence, background only) likewise contains no power-generation content.",
+  "confirmed_how [ref]": [
+   "https://www.ogj.com/pipelines-transportation/lng/article/17209101/ogj-focus-iranian-lng-natural-gas-export-plans-outlined"
+  ]
+ },
+ {
+  "terminal": "Qeshm LNG Terminal",
+  "terminal_id": "T100000130627",
+  "mechanical": "",
+  "confidence": "",
+  "gogpt_captive_prior": "No GOGPT prior was supplied for this terminal (gogpt_prior: no).",
+  "confirmed_how": "VERDICT: SCREENED. Qeshm LNG was a small, three-train (3x1.15 MMTPA) LNG proposal for Qeshm Free Zone, Hormozgan (owner listed as 'Tak-Iranian Gas Company'). It never progressed beyond a 2017 free-zone investment announcement; no engineering study, FEED, or design of any kind was found to have ever been published. Screened: never-designed. EVIDENCE: Multiple searches (English) for the project, its named owner, and its promoter's public 2017 remarks returned no independent (non-GEM) source with technical/engineering content — only the free-zone investment announcement is corroborated elsewhere (Financial Tribune, Tehran Times cover Qeshm Free Zone investment generally but not this specific LNG project's figures), and no source at all discusses a power block.",
+  "confirmed_how [ref]": []
+ },
+ {
+  "terminal": "South Pars LNG Terminal",
+  "terminal_id": "T100000130916",
+  "mechanical": "False",
+  "confidence": "yellow",
+  "gogpt_captive_prior": "GOGPT prior 'South Pars Field power plant' (180 MW, captive=True, 2.31 km) was not independently confirmed as the same asset as the 1,000 MW Pars LNG design plant (different MW figures, and this field hosts many separate phase-specific facilities); could not verify identity within available time/sources, so treated as a distinct, unconfirmed candidate rather than the same plant as this YES finding.",
+  "confirmed_how": "VERDICT: YES. This is the 'Pars LNG' project (owner match confirms: NIOC 50%, Total 30%, Petronas 20% — matching GEM's listed owners), a two-train (10 MMTPA) LNG project at Tombak fed by South Pars Phase 11. Oil & Gas Journal's 2010 project-by-project design summary states: 'It is noteworthy that a 1,000-Mw power plant utilizing combined-cycle gas turbines will provide power for the project' — an on-site captive power plant as part of the published project design. Total withdrew in 2008 over political risk; the project was later reassigned (CNPC, then PetroPars) and is presumed cancelled, but the design was published while the project was live, which is a YES on design per SOP. EVIDENCE: OGJ 'OGJ Focus: Iranian LNG, natural gas export plans outlined' (2010), read from the raw article text to confirm paragraph attribution: the sentence 'It is noteworthy that a 1,000-Mw power plant utilizing combined-cycle gas turbines will provide power for the project' sits directly in the Pars LNG paragraph, immediately followed by 'Current shareholders are NIGEC (50%), Total (40%), and Petronas (10%)' (an earlier ownership split for the same three-party JV; later sources give 50/30/20). No second independent source describing the power plant was found despite searching MEED, oedigital, nsenergybusiness and Rigzone project write-ups on Pars LNG — those all cover ownership/capacity/timeline but not the power block, so this remains a single-source (yellow) finding.",
+  "confirmed_how [ref]": [
+   "https://www.ogj.com/pipelines-transportation/lng/article/17209101/ogj-focus-iranian-lng-natural-gas-export-plans-outlined"
+  ]
+ },
+ {
+  "terminal": "Al-Faw FSRU Terminal",
+  "terminal_id": "T100000131158",
+  "mechanical": "",
+  "confidence": "",
+  "gogpt_captive_prior": "Al Faw Oil Depot power station (150 MW GOGPT prior, ~8.4km away) is a separate Ministry of Oil gas-fired station (3x50MW Siemens units, inaugurated Feb 2026 per Iraq Business News) built to power the Fao oil-export depot/Grand Al-Faw port infrastructure generally — it is not documented as serving this proposed LNG regas platform specifically, and predates/parallels rather than depends on it. Independent source: iraq-businessnews.com.",
+  "confirmed_how": "VERDICT: INSUFFICIENT. This is a separate, earlier-stage Iraqi project (South Gas Company-led) for a 'fixed regasification platform' at Grand Al-Faw Port, still in tender/design stage (tender launched March 2025). No public source describes any onsite/captive power design for this facility. Genuinely undisclosed, not a documented negative. EVIDENCE: Iraq Business News (4 Dec 2024) reports Iraq's Cabinet appointed South Gas Company (SGC) to oversee a 'fixed platform for importing liquefied gas' at Grand Al-Faw port, coordinating with the Iraqi Ports Authority on siting/specs; follow-on reporting (Feb-March 2025) describes a tender for a fixed regasification platform, still pre-award. No generator, engine, or captive-power design details found in any public source searched.",
+  "confirmed_how [ref]": [
+   "https://www.iraq-businessnews.com/2024/12/04/south-gas-company-to-lead-lng-platform-project/"
+  ]
+ },
+ {
+  "terminal": "Khor Al-Zubair FSRU",
+  "terminal_id": "T100001048168",
+  "mechanical": "False",
+  "confidence": "yellow",
+  "gogpt_captive_prior": "Khor Al Zubayr power station (877 MW GOGPT prior, gas-fired, ~6.6km away) is an existing Iraqi grid power plant near the port - it is the terminal's presumed downstream gas OFFTAKE once operational (regasified gas piped out to feed Iraqi power plants per the Ministry of Electricity's own framing), not a captive plant powering the FSRU. Independent source: power-technology.com power plant profile.",
+  "confirmed_how": "VERDICT: YES. Excelerate Acadia (Hull 3407), the FSRU assigned to this terminal, is built with dual-fuel diesel-electric (DFDE) engines generating the vessel's own onboard electric power - a documented on-site gas-capable generation plant. This is independent of the separate fact that the terminal's regasified gas output is intended to be piped onward to feed Iraqi power plants (that relationship is NOT captive - see notes). EVIDENCE: LNG Industry (8 Jul 2025, 'Excelerate Energy launches FSRU in South Korea') and BunkerIndex ('Bureau Veritas classifies Excelerate Energy's new 170,000-cbm FSRU Excelerate Acadia') both independently state the vessel is fitted with dual-fuel diesel-electric engines. TradeWindsNews and Excelerate Energy's own press release ('Excelerate Energy Signs Definitive Agreement for Fully Integrated Floating LNG Import Terminal in Iraq') confirm Hull 3407/Excelerate Acadia is the vessel assigned to the Khor Al-Zubair (Ministry of Electricity subsidiary) project, $450m total investment, 250-500 MMscf/d contracted.",
+  "confirmed_how [ref]": [
+   "https://www.lngindustry.com/floating-lng/08072025/excelerate-energy-launches-fsru-in-south-korea/",
+   "https://bunkerindex.com/articles/article.php?a=22645&h=bureau-veritas-classifies-excelerate-energys-new-170000-cbm-fsru-excelerate-acadia",
+   "https://www.tradewindsnews.com/gas/excelerate-energy-allocates-its-lone-fsru-newbuilding-to-iraq/2-1-1892466",
+   "https://excelerateenergy.com/news/excelerate-energy-signs-definitive-agreement-for-fully-integrated-floating-lng-import-terminal-in-iraq/"
+  ]
+ },
+ {
+  "terminal": "Eilat FLNG Terminal",
+  "terminal_id": "T100000130588",
+  "mechanical": "",
+  "confidence": "yellow",
+  "gogpt_captive_prior": "GOGPT's 'Eilat power plant' (50 MW, 2.77 km away) is an existing, independently-operating Israel Electric Corp / municipal grid station serving the city of Eilat generally — it predates and is unconnected to the cancelled FLNG concept, which never broke ground. It is a coincidental nearby facility, not this (never-built) terminal's captive plant.",
+  "confirmed_how": "VERDICT: SCREENED. Cancelled at the preliminary-proposal stage (a ~$6bn concept submitted to the Finance Ministry in 2012 for an LNG export/bunkering hub at EAPC's Eilat oil terminal); killed by coral-reef and tanker-maneuvering opposition in the narrow Gulf of Aqaba before any FEED or engineering design was commissioned. No source (independent or gem.wiki) describes a published design of any kind, let alone a power-generation package, unlike Tamar FLNG which did reach a real FEED. EVIDENCE: Times of Israel (2021, in the context of the later EAPC/UAE pipeline controversy) recaps that the Eilat LNG-hub concept was 'apparently dismissed' after public opposition over coral reefs and tanker safety in the Gulf of Aqaba; no source found describes a FEED study, vessel selection, or any generation-system design ever being commissioned for this project, so there is no design for a captive-power finding to attach to.",
+  "confirmed_how [ref]": [
+   "https://www.timesofisrael.com/protesters-rally-against-plans-to-transform-eilat-into-oil-and-gas-hub/"
+  ]
+ },
+ {
+  "terminal": "Hadera FSRU Terminal",
+  "terminal_id": "T100000130589",
+  "mechanical": "",
+  "confidence": "yellow",
+  "gogpt_captive_prior": "GOGPT's 'Hadera OPC power station' (998 MW total incl. planned Hadera 2 expansion, 0.43 km away) is a private cogeneration plant owned by OPC Energy (currently ~144 MW operating + an ~850 MW Hadera 2 expansion in permitting) — a distinct commercial entity from both the terminal and from IEC's Orot Rabin. It draws pipeline (common-carrier) gas from the same INGL grid the Hadera terminal fed, but is a merchant plant sited near the terminal by coincidence of the industrial coastline, not a dedicated/captive plant built to power the FSRU. See Galil Group project page for background.",
+  "confirmed_how": "VERDICT: INSUFFICIENT. SPLIT FINDING — shore side is a documented direction-test NO, but the vessel side is undocumented, and per the fuel gate (unstated fuel = INSUFFICIENT, never NO) the terminal verdict is INSUFFICIENT. Shore side (green): the Hadera FSRU (Excelsior, 2013-2022; a submerged-buoy deepwater mooring, Israel's first LNG import point) fed regasified gas into Israel Natural Gas Lines' (INGL) national transmission grid, which in turn supplies gas to essentially all of Israel's major power stations (~70% of national generation), not a single dedicated on-site plant. IEC's own Orot Rabin station (Hadera) is one of the grid's largest offtakers and converted from coal to GE 9HA gas turbines on this same gas supply. Regasification heat itself is met by boiler steam (closed loop) or seawater (open loop) — thermal, not electric, per the heat-is-not-power rule, so it would not count as captive power even setting the direction test aside. EVIDENCE: Georgetown Journal of International Affairs (2020): INGL's ~700 km transmission system 'supply[ies] high-pressure natural gas to major consumers such as electric power generators,' with gas from Hadera entering this shared grid in 2013; Global Energy Observatory's Hadera Deepwater LNG Terminal entry corroborates the buoy/grid-injection design; GE Vernova's Israel Electric Orot Rabin case study confirms IEC's Hadera-area Orot Rabin plant runs on this national gas supply via its own GE 9HA conversion, i.e. Orot Rabin is a grid offtaker of common-carrier gas, not a captive plant built to serve the terminal. VESSEL SIDE (the open half): Riviera documents the Energy Bridge class design as carrying 'an oversize boiler to provide the steam and power necessary to sustain vessel operations and the shipboard regasification process' — the Excelsior self-powers via its steam plant — but no source found states what fuel that plant burns (BOG/dual-fuel vs. fuel oil), so the fuel gate blocks both YES and NO on the vessel half.",
+  "confirmed_how [ref]": [
+   "https://gjia.georgetown.edu/2020/05/25/natural-gas-discoveries-and-israels-energy-security/",
+   "https://globalenergyobservatory.org/geoid/46464",
+   "https://www.gevernova.com/gas-power/resources/case-studies/israel-electric-orot-rabin",
+   "https://www.rivieramm.com/news-content-hub/news-content-hub/shipyards-build-fsru-familiarity-37593"
+  ]
+ },
+ {
+  "terminal": "NewMed FLNG Terminal",
+  "terminal_id": "T100000130829",
+  "mechanical": "",
+  "confidence": "red",
+  "gogpt_captive_prior": "No GOGPT prior supplied for this terminal.",
+  "confirmed_how": "VERDICT: INSUFFICIENT. Proposed FLNG project (Leviathan Phase 1B) for the offshore, moored-vessel Leviathan field, ~130 km off Haifa. NewMed/Chevron 'confirmed the design concept' and funded pre-FEED work in 2023 (targeting a Golar-chartered vessel, described only as a 'generic mark III newbuild solution up to 5mtpa'), but the project remains pre-FID as of this research (August 2026) with no publicly disclosed generation-system specifics. A January 2026 Chevron/NewMed FID was for expanding Leviathan's platform production capacity to serve the Israel-Egypt pipeline gas deal, NOT for the FLNG facility itself — the standalone FLNG project appears to still be in limbo. EVIDENCE: LNG Prime (2023) and Energy Voice (2023, Wayback-verified) both report the design-concept confirmation and pre-FEED budget approval without generation-system detail; MEES (Jan 2026) confirms the subsequent FID covered platform production expansion for pipeline export via the Israel-Egypt deal, not the FLNG facility. No source found (independent or otherwise) describes power-generation equipment for this specific project; as a moored offshore FLNG vessel with no grid access it would, by class norm, require self-generation (all built Golar FLNG units — Hilli Episeyo, Gimi, Fuji — use Baker Hughes LM2500-family gas turbines), but that is a class-level prior, not a documented finding tied to this specific, still-undesigned vessel.",
+  "confirmed_how [ref]": [
+   "https://lngprime.com/europe/israels-newmed-energy-keen-to-develop-leviathan-flng-project/67243/",
+   "https://www.energyvoice.com/oilandgas/middle-east/lng-middle-east/484687/leviathan-newmed-feed-lng/",
+   "https://www.mees.com/2026/1/16/oil-gas/leviathan-expansion-fid-approved/15a124d0-f2e3-11f0-8683-8751df214f6d"
+  ]
+ },
+ {
+  "terminal": "Tamar FLNG Terminal",
+  "terminal_id": "T100000130590",
+  "mechanical": "",
+  "confidence": "red",
+  "gogpt_captive_prior": "No GOGPT prior supplied for this terminal.",
+  "confirmed_how": "VERDICT: INSUFFICIENT. Proposed (now presumed-cancelled) self-contained, permanently-moored FLNG export vessel ~90 km/60 miles offshore, sized ~3-3.4 mtpa, based on a 'Daewoo home-made FLNG design.' Noble/Isramco/Delek/Dor Gas awarded a genuine FEED contract to Pangea LNG (a Daewoo/Next Decade/D&H Solutions JV) in December 2012, targeting FEED completion and FID by mid/second-half 2013 — but no FID was ever announced, there have been no project updates in years, and the project is presumed dead. No source found discloses the vessel's power-generation system. EVIDENCE: Offshore Magazine ('Tamar FLNG project enters FEED phase') and 2B1st Consulting ('Noble awards Tamar FLNG FEED contract to Pangea LNG') both confirm the December 2012 FEED award to Pangea LNG for a permanently-moored, self-contained liquefaction and storage vessel; neither, nor any other source found, describes the generation package (turbine make/model, MW, or fuel handling) for the design. As a moored, off-grid facility it would necessarily have been designed with on-site power generation, but that generic engineering necessity is not the same as a documented finding for this specific vessel's design.",
+  "confirmed_how [ref]": [
+   "https://www.offshore-mag.com/field-development/article/16784740/tamar-flng-project-enters-feed-phase",
+   "https://2b1stconsulting.com/noble-awards-tamar-flng-feed-contract-to-pangea-lng/"
+  ]
+ },
+ {
+  "terminal": "Aqaba Jordan FSRU",
+  "terminal_id": "T100000130591",
+  "mechanical": "False",
+  "confidence": "green",
+  "gogpt_captive_prior": "Aqaba power plant / Aqaba Thermal Power Station (GOGPT prior 390 MW, ~0.9km away) is Jordan's largest existing gas/oil-fired power station (656 MW per power-technology.com: 5x130MW steam + 2x3MW hydro, operated by CEGCO/ACWA Power), predating the FSRU (built 1986, converted to gas after the Arab Gas Pipeline) and serving as the terminal's downstream gas offtaker via that pipeline, not a captive plant serving the FSRU. Independent source: power-technology.com power plant profile.",
+  "confirmed_how": "VERDICT: YES. The Energos Eskimo (ex-Golar Eskimo) FSRU self-generates all of its own onboard power (Golar's fleet discloses zero purchased external electricity for any vessel) and burns predominantly non-HFO fuel (97% across the FSRU sub-fleet) - i.e. documented on-site gas-fired generation for the vessel's own operations. This is independent of the separate finding that the terminal's regasified send-out gas is piped to feed Jordan's Aqaba power plant/NEPCO grid (NOT a captive relationship - see notes). EVIDENCE: Energos Infrastructure (current owner, vessel-specific): 'With advanced boil-off gas management and Wärtsilä DFDE propulsion, Energos Eskimo plays a vital role...' Golar LNG 'Key facts and figures - Golar fleet' 2019 report (former owner, fleet-level): 'we do not purchase any electricity, steam, heat or cooling for use by any of our fleet (LNGC, FSRUs or FLNGs)', FSRU % of energy from heavy fuel oil: 3%. QC orchestrator strengthened this record 2026-08-01: the original single fleet-level source was not vessel-itemized; the Energos page adds the vessel-specific gas-capable (DFDE) hardware statement, so green now rests on two distinct publishers, one vessel-specific.",
+  "confirmed_how [ref]": [
+   "https://www.golarlng.com/~/media/Files/G/Golar-Lng/sustainability/Golar%20fleet%20-%202019%20Key%20facts%20and%20figures%20150720.pdf",
+   "https://energosinfra.com/fleet-assets/"
+  ]
+ },
+ {
+  "terminal": "Sheikh Sabah LNG Terminal",
+  "terminal_id": "T100001048176",
+  "mechanical": "",
+  "confidence": "",
+  "gogpt_captive_prior": "Aqaba power plant / Aqaba Thermal Power Station (GOGPT prior 390 MW, ~0.89km away) is the same existing NEPCO/CEGCO grid plant assessed for the co-located Aqaba Jordan FSRU record (T100000130591) - explicitly the terminal's downstream gas offtaker once this new facility is operational, not a captive plant. Independent source: power-technology.com power plant profile.",
+  "confirmed_how": "VERDICT: INSUFFICIENT. This is the new permanent Aqaba facility under construction: an onshore regasification unit (ORU, up to 700 MMcfd) plus a new floating storage unit (FSU, storage only, no onboard regasification) replacing the original FSRU. No public source documents the ORU's own operating power supply (grid vs. on-site generation) or the incoming FSU's onboard generation - the FSU vessel is unnamed and still undergoing conversion. EVIDENCE: Oil & Gas Journal and Jordan Times/petra.gov.jo describe the $125m ORU+FSU project (GAS Entec/AG&P/Issa Haddadin consortium, financed via Kuwait Fund and Arab Fund loans) as designed to 'ensure a sustainable fuel supply for electricity generation and industrial use' for NEPCO - i.e. gas is piped OUT to Jordan's grid/industrial users. LNG Prime reports BW LNG will supply the replacement FSU (pure storage, no onboard regasification) under a 10-year charter with an unnamed LNG carrier undergoing conversion, operations expected Q3-Q4 2026. No source found addressing the ORU's own operational power source or the FSU's onboard generator/fuel type once named.",
+  "confirmed_how [ref]": [
+   "https://www.ogj.com/pipelines-transportation/lng/article/55134517/aqaba-development-lets-contract-to-build-lng-terminal-in-the-kingdom-of-jordan",
+   "https://petra.gov.jo/en/news/pm-inaugurates-aqaba-gas-projects-to-reduce-industrial-energy-costs-by-35-60",
+   "https://lngprime.com/contracts-and-tenders/bw-lng-seals-jordan-fsu-charter-deal/124017/"
+  ]
+ },
+ {
+  "terminal": "Al Zour LNG Terminal",
+  "terminal_id": "T100000130671",
+  "mechanical": "False",
+  "confidence": "yellow",
+  "gogpt_captive_prior": "GOGPT's prior 'Az Zour North power plant' (4,332 MW, tagged captive=True, 1.72km away) is Kuwait's giant Az-Zour North IWPP (five 225.8 MW GE 9F-3 gas turbines + two 251 MW steam turbines, per power-technology.com), operated by a separate utility JV under MEW. Its currently-operating Phase I burns pipeline natural gas delivered by KOC via a dedicated 40in pipeline, NOT regasified LNG from this terminal — only the planned Phase II/III expansion (construction from 2026) is designed to use LNG as its primary fuel, with gas oil as backup. So today this GOGPT plant is neither fed by, nor captive to, this LNG terminal; if Phase II/III LNG-firing goes ahead the relationship would still run terminal-to-plant (a PowerPlantsSupplied case for a future batch), not plant-to-terminal. This terminal itself is grid-fed with no captive generation of its own.",
+  "confirmed_how": "VERDICT: NO. Al Zour LNG import terminal (KNPC/formerly KIPIC) is powered by Kuwait's national grid via 132kV feeds from the Al-Khiran and Al-Zhour substations to its own main intake substation; no on-site gas turbine/engine generation is documented anywhere found. This is a documented grid-connection, not an assumption. EVIDENCE: Offshore Technology's project profile of the Al-Zour LNG Import Terminal states: 'The project completed power energising in August 2019... involving supplying 132 kilovolts (kV) of power from Al-Khiran and Al-Zhour power substations to the main intake substation (MIS) of the Al-Zour LNG site and then supplying 33kV power from the MIS to the manufacturing execution systems (MES).' The same page contains no mention of any on-site power-generation equipment. url_verifier PASSED the '132 kilovolts' claim's page via its Wayback snapshot after the live page 403'd (bot-block, not dead); a follow-up token check on 'power substations' also PASSED via the same Wayback snapshot, confirming the page content independent of the exact hyphenation of 'Al-Khiran'/'Al-Zhour' (those exact hyphenated tokens FAILED the verifier's strict match, but 'power substations' — present in the same sentence — PASSED, so the underlying claim is verified).",
+  "confirmed_how [ref]": [
+   "https://www.offshore-technology.com/projects/al-zour-lng-import-terminal-project/"
+  ]
+ },
+ {
+  "terminal": "Mina Al-Ahmadi LNG Terminal",
+  "terminal_id": "T100000130592",
+  "mechanical": "False",
+  "confidence": "yellow",
+  "gogpt_captive_prior": "No GOGPT prior plant was given for this terminal. The captive power found here is vessel-mounted (onboard FSRU gensets), not a shore-based standalone facility.",
+  "confirmed_how": "VERDICT: YES. Both FSRUs assigned to Mina Al-Ahmadi (Explorer, now idled; Golar Igloo, now mothballed) are self-powered vessels: their onboard DFDE gensets supply the electricity for regasification pumps and hotel load rather than drawing from Kuwait's shore grid. No vessel-specific nameplate MW figure was found for either. EVIDENCE: Offshore Energy's coverage of the Explorer's 2015-16 upgrade states a 'dual-fuel diesel generator power module ... has been installed on the FSRU' (alongside new HP vaporizers/pumps that lifted send-out capacity) — vessel-specific for one of the terminal's two FSRUs. For the Golar Igloo, two independent publishers document the Golar-managed fleet's engines exhaustively: gCaptain states 'fourteen of the vessels are equipped with Wärtsilä 50DF dual-fuel engines,' and Offshore Magazine's coverage of the same Wärtsilä maintenance agreement adds 'the other two have Wärtsilä 34DF dual-fuel and Wärtsilä 20DF dual-fuel engines' — i.e., all 16 vessels in the enumerated fleet (which includes Golar Igloo, delivered by Samsung Heavy Industries Feb 2014 and chartered to KNPC for this terminal) run gas-capable dual-fuel engines, whichever bucket the Igloo falls in. No source gives a vessel-specific nameplate MW, so electric_mw stays blank and confidence stays yellow.",
+  "confirmed_how [ref]": [
+   "https://www.offshore-energy.biz/spotted-upgraded-explorer-ups-the-ante/",
+   "https://gcaptain.com/wartsila-reaches-major-milestone/",
+   "https://www.offshore-mag.com/vessels/article/14196056/golar-prolongs-wartsila-fsru-maintenance-arrangement"
+  ]
+ },
+ {
+  "terminal": "Beddawi FSRU",
+  "terminal_id": "T100000130963",
+  "mechanical": "False",
+  "confidence": "green",
+  "gogpt_captive_prior": "No GOGPT prior supplied for this terminal in the worklist (power_plants_supplied field is blank in the export, but multiple independent sources confirm Beddawi's design purpose was feeding the adjacent Beddawi/Deir Ammar power complex).",
+  "confirmed_how": "VERDICT: NO. Direction-test NO: Beddawi was one of Lebanon's Ministry of Energy and Water's planned FSRUs (2013 World Bank concept: located 1.7 km off Beddawi, ~3.5 mtpa), explicitly designed as import/regasification/storage infrastructure that pipes gas ~2.5 km to a gas terminal feeding the existing Beddawi/Deir Ammar power complex (465 MW at the time, plus planned expansions), and via the wider coastal 'Gasyle 2' pipeline to other Lebanese power stations. The FSRU itself carries no generation package in any source found — its whole function is fuel supply to power plants it does not own or co-locate with as a captive asset. EVIDENCE: The Edge Malaysia (Petronas shortlist article): describes all three original Ministry FSRUs (Beddawi, Selaata, Zahrani) as vessels where LNG 'is re-converted into gas and piped to power plants and other users' — explicitly a fuel-supply, not generation, function; MEES (2019, 'Lebanon Power Overhaul Gathers Pace'): confirms the Energy Ministry's FSRUs were built 'to supply gas to the grid' via a shared coastal pipeline network feeding multiple CCGT plants, 'rather than each FSRU having dedicated generation capacity.'",
+  "confirmed_how [ref]": [
+   "https://theedgemalaysia.com/article/petronas-shortlisted-us12-bil-lebanon-fsru-job",
+   "https://www.mees.com/2019/3/15/geopolitical-risk/lebanon-power-overhaul-gathers-pace/dd9af210-473b-11e9-a45f-894e22a438ed"
+  ]
+ },
+ {
+  "terminal": "Deir Ammar FSRU",
+  "terminal_id": "T100001048245",
+  "mechanical": "False",
+  "confidence": "green",
+  "gogpt_captive_prior": "GOGPT's 'Deir Ammar power plant' (955 MW, 0.32 km away) is the existing/planned Deir Ammar I+II generating complex the FSRU is explicitly designed to supply (per AGBI/IFC), i.e. a real gas power station but the SUPPLIED plant, not this terminal's captive plant — a textbook PowerPlantsSupplied relationship, correctly already flagged in the worklist's power_plants_supplied field.",
+  "confirmed_how": "VERDICT: NO. Direction-test NO: the currently-active Lebanon Gas-to-Power project (World Bank/IFC-backed, EOI tenders published from June 2025) pairs a new Deir Ammar FSRU with the modernisation of the existing 465 MW Deir Ammar I power plant and a new 825 MW Deir Ammar II combined-cycle plant. The FSRU's stated role is only to 'import, store and convert liquefied natural gas into fuel' for these two separate, land-based generating assets — no on-site generation is part of the FSRU's own design in any source found. EVIDENCE: AGBI (Nov 2025, 'World Bank to advise Lebanon on power generation'): 'The agreement supports the development of a FSRU to import, store and convert liquefied natural gas into fuel... the project also includes the modernisation of the 465 megawatt Deir Ammar I power plant... [and] Deir Ammar II' (825 MW new CCGT) — explicitly separates the FSRU (fuel supply) from the generating assets it feeds; MEES (2019) corroborates the general Ministry design pattern of FSRUs feeding a shared coastal pipeline network 'rather than each FSRU having dedicated generation capacity.'",
+  "confirmed_how [ref]": [
+   "https://www.agbi.com/energy/2025/11/world-bank-to-advise-lebanon-on-power-generation/",
+   "https://www.mees.com/2019/3/15/geopolitical-risk/lebanon-power-overhaul-gathers-pace/dd9af210-473b-11e9-a45f-894e22a438ed"
+  ]
+ },
+ {
+  "terminal": "Selaata FSRU",
+  "terminal_id": "T100000130964",
+  "mechanical": "False",
+  "confidence": "green",
+  "gogpt_captive_prior": "GOGPT's 'Salaata IPP power plant' (825 MW per GOGPT vs. ~750-550 MW per other sources — figures vary by planning phase, but consistently describing the same shelved land-based CCGT IPP project) is the SUPPLIED plant the Selaata FSRU was designed to feed, not this terminal's captive plant, matching the worklist's power_plants_supplied field.",
+  "confirmed_how": "VERDICT: NO. Direction-test NO: Selaata was planned as an import/regas FSRU designed to feed the separate, proposed Selaata IPP (Independent Power Producer) plant — a 750 MW CCGT project developed under Lebanon's IPP scheme, now shelved on land-appropriation grounds. The two are distinct projects (fuel-supply vessel vs. land-based generator); no source describes on-site generation as part of the FSRU's own design. EVIDENCE: The Edge Malaysia: names Selaata among the three Ministry FSRUs whose LNG 'is re-converted into gas and piped to power plants' (existing plants plus 1,000-1,200 MW of planned generation cited for the Selaata/Beddawi area); DMS Projects (Ministry of Energy and Water project database): confirms the Selaata Power Plant is tracked as a separate 'Combined Cycle Gas Turbine (CCGT) power plant with a capacity of 750 megawatts' developed 'under the Independent Power Production (IPP) scheme' — i.e. a distinct generating asset from the FSRU.",
+  "confirmed_how [ref]": [
+   "https://theedgemalaysia.com/article/petronas-shortlisted-us12-bil-lebanon-fsru-job",
+   "https://www.dmsprojects.net/lebanon/projects/ministry-of-energy-and-water-selaata-750-mw-power-plant/PRJ00026419"
+  ]
+ },
+ {
+  "terminal": "Zahrani FSRU",
+  "terminal_id": "T100000130965",
+  "mechanical": "False",
+  "confidence": "green",
+  "gogpt_captive_prior": "GOGPT's 'Zahrani power plant' (1415 MW total incl. planned expansions, 1.38 km away) is the existing/planned EDL generating station the FSRU was designed to supply, not this terminal's captive plant, matching the worklist's power_plants_supplied field.",
+  "confirmed_how": "VERDICT: NO. Direction-test NO: Zahrani was planned as an import/regas FSRU designed to feed the existing Zahrani power plant (EDL-owned, dual-fuel diesel/gas CCGT, ~465-470 MW, commissioned 1998-2001), switching it from diesel to gas. No source describes on-site generation as part of the FSRU's own design; the project is presumed shelved, with Lebanon's current gas-to-power effort now centered on Deir Ammar instead. EVIDENCE: The Edge Malaysia: names Zahrani among the three Ministry FSRUs (\"near Tyre\") whose regasified LNG is 'piped to power plants,' with Zahrani's existing 465 MW plant cited as the offtake target for expansion; WorldPowerPlants.com confirms the Zahrani plant is an existing '470 MW Natural Gas Power Plant' (dual-fuel, diesel-primary) at Zahrani, i.e. a real, separately-owned (EDL) generating station distinct from any FSRU.",
+  "confirmed_how [ref]": [
+   "https://theedgemalaysia.com/article/petronas-shortlisted-us12-bil-lebanon-fsru-job",
+   "https://worldpowerplants.com/en-us/countries/lebanon/zahrani"
+  ]
+ },
+ {
+  "terminal": "Marsa LNG Terminal",
+  "terminal_id": "T100001083794",
+  "mechanical": "False",
+  "confidence": "green",
+  "gogpt_captive_prior": "GOGPT's prior 'Sohar III power plant' (1,741 MW, tagged captive=True, 1.57km away) is a large grid power station in the Sohar Port/Freezone industrial area serving multiple tenants and Oman's national grid — not captive to Marsa LNG. Marsa LNG's own power design draws from a dedicated solar plant plus OETC grid import, not from an on-site (or adjacent) gas-fired plant of its own.",
+  "confirmed_how": "VERDICT: NO. Marsa LNG (TotalEnergies 80% / OQ 20%, under construction, first LNG targeted Q1 2028) is explicitly designed as an all-electric plant: electric motors replace gas turbines for compression, powered by a dedicated 300 MWp solar farm plus OETC grid backup at night. This is a documented negative, not an assumption — the whole point of the project's low-carbon design is the absence of on-site gas combustion for power. EVIDENCE: TotalEnergies' own project page states: 'The gas combustion process will be replaced with electric motors' and 'A solar power plant with a capacity of 300 megawatts-peak (MWp) will supply the equivalent of the plant's annual needs.' World Oil's coverage of Technip Energies' EPC award independently confirms: the plant 'will use electric-driven motors instead of conventional gas turbines' and will be 'powered by renewable electricity from a planned nearby solar farm which will cover 100% of the annual power consumption of the LNG plant.' TotalEnergies is the project's own majority developer, so this alone would be primary/green; World Oil corroborates independently.",
+  "confirmed_how [ref]": [
+   "https://worldoil.com/news/2024/4/24/technip-energies-wins-1-billion-contract-for-totalenergies-100-electrified-marsa-lng-project-in-oman/",
+   "https://totalenergies.com/news/news/marsa-lng-lng-production-plant-low-carbon-design"
+  ]
+ },
+ {
+  "terminal": "Oman Qalhat LNG Terminal",
+  "terminal_id": "T100000130593",
+  "mechanical": "True",
+  "confidence": "green",
+  "gogpt_captive_prior": "GOGPT's prior 'New Qalhat LNG power station' (119.7 MW, tagged captive=True, 0.23km away) matches almost exactly the confirmed on-site 120 MW MAN 51/60 gas-engine power plant found here — very likely the same facility.",
+  "confirmed_how": "VERDICT: YES. Oman LNG's Qalhat site carries BOTH captive power forms: a dedicated 120 MW on-site gas-fired power plant (now MAN 51/60 gas engines, replacing the original Frame 6 turbine-generator plant) that supplies the facility's electricity, and separate GE Frame 6/Frame 7 gas turbines that mechanically drive the refrigeration compressor trains. EVIDENCE: GE's press release on its US$94m Oman LNG contract states GE would supply 'a Frame R5/D gas turbine' driving the centrifugal compressor train (mechanical drive via speed-increasing gearbox) plus additional Frame 6/7 units for compression and 'two additional Frame 6 gas turbine-generators ... incorporated into the plant's power-generating unit' — i.e., separate compression-drive and power-generation turbines. LNG Industry's report on MAN Energy Solutions' order states MAN 'will equip a new power plant with nine MAN 51/60 gas engines' delivering '120 MW of power to the existing LNG facility of Oman LNG,' replacing 'an existing gas-turbine plant,' engineered to handle Oman LNG's own varying gas composition.",
+  "confirmed_how [ref]": [
+   "https://www.ge.com/news/press-releases/ge-oil-and-gas-signs-us94-million-contract-oman-lng-project-ge-supply-gas-turbines",
+   "https://www.lngindustry.com/liquid-natural-gas/13072018/man-to-power-gas-engine-power-plant-in-oman/"
+  ]
+ },
+ {
+  "terminal": "Qatar North Field LNG Terminal",
+  "terminal_id": "T100000130817",
+  "mechanical": "False",
+  "confidence": "green",
+  "gogpt_captive_prior": "GOGPT's prior 'Ras Laffan A power plant' (756 MW, tagged captive=True, 1.81km away) is a separate merchant IWPP — a JV of AES Corp (55%), Qatar Electricity & Water Co (25%), Qatar Petroleum (10%) and Gulf Investment Corp (10%), selling power to Kahramaa under a 25-year PPA and buying its gas from Qatar Petroleum under a separate long-term contract. It is not captive to this terminal; if anything the direction is reversed — NFE/NFS draw electricity FROM Qatar's national grid, of which Ras Laffan-area IWPPs (including Ras Laffan A) are suppliers, not the other way round.",
+  "confirmed_how": "VERDICT: NO. North Field East, South and (proposed) West are documented as electric-drive, grid-connected liquefaction trains — a deliberate design choice tied to Qatar's decarbonisation push and the 800 MW Al Kharsaah solar plant, in which TotalEnergies is a partner. No captive on-site gas generation is described anywhere found; this is a documented negative, not an absence of evidence. EVIDENCE: Offshore Technology's North Field Expansion project profile states: 'Qatargas will meet most of the electricity needs of the project from the national power grid of Qatar. Electricity is planned to be procured from the 800MW solar power plant being built in Al-Kharsaah.' TotalEnergies' own press release on joining North Field East states: 'The facilities will be connected to the country's electrical grid, which will supply a growing portion of renewable electricity ... thanks to the giant Al Kharsaah solar power plant ... in which TotalEnergies is a partner.' TotalEnergies is a project partner, so this is itself a primary source; Offshore Technology corroborates independently.",
+  "confirmed_how [ref]": [
+   "https://www.offshore-technology.com/projects/north-field-expansion-project/",
+   "https://totalenergies.com/news/qatar-totalenergies-first-company-selected-partner-qatarenergy-giant-north-field-east-lng"
+  ]
+ },
+ {
+  "terminal": "QatarEnergy LNG (N)",
+  "terminal_id": "T100000130594",
+  "mechanical": "True",
+  "confidence": "green",
+  "gogpt_captive_prior": "No GOGPT prior plant was given for this terminal entity.",
+  "confirmed_how": "VERDICT: YES. This QatarEnergy LNG entity's Ras Laffan trains are the textbook mechanical-drive LNG case: heavy-frame gas turbines (Frame 5C/5D on the older trains, Frame 9E — ~132 MW ISO — on the mega-trains) directly shaft-drive the refrigeration compressors, with the Frame 9E units' motor-generator system also able to export surplus power to the site's internal grid. EVIDENCE: OGJ's 'World's largest LNG compressors designed, tested for Qatargas II' states the GE Frame 9E was 'the ideal mechanical driver for the refrigeration strings' on the Qatargas II mega-trains, customized for variable-speed operation, with a Siemens VFD/Ansaldo motor-generator system that 'allows the turbine to export surplus electrical power to the plant grid.' OGJ's separate 'Qatargas upgrades, debottlenecks Ras Laffan LNG plant' describes the earlier trains: mixed-refrigerant and propane compressors each 'driven by a General Electric FR5C gas turbine,' upgraded to FR5D. A GASTECH/IGU-style technical paper ('Start-Up and Operation of GE Frame 9E,' hosted at pdfcoffee.com) states 'Qatargas and RasGas have successfully completed commissioning, start-up and operation of multiple Frame 9E gas turbine refrigeration strings' across 'twelve of the largest refrigeration compressor strings' at Ras Laffan, which 'provide energy for the propane, mixed refrigerant and nitrogen cooling loops as well as electrical power' to the mega-trains — corroborating both the mechanical-drive and power-export functions industry-wide across the Qatargas/RasGas Ras Laffan complex.",
+  "confirmed_how [ref]": [
+   "https://www.ogj.com/general-interest/companies/article/17228343/worlds-largest-lng-compressors-designed-tested-for-qatargas-ii",
+   "https://www.ogj.com/general-interest/companies/article/17231479/qatargas-upgrades-debottlenecks-ras-laffan-lng-plant",
+   "https://www.bakerhughes.com/sites/bakerhughes/files/2021-02/BakerHughes_Frame91E_Overview-012921.pdf",
+   "https://pdfcoffee.com/start-up-and-operation-of-ge-frame-9e--pdf-free.html"
+  ]
+ },
+ {
+  "terminal": "QatarEnergy LNG (S)",
+  "terminal_id": "T100000130598",
+  "mechanical": "True",
+  "confidence": "green",
+  "gogpt_captive_prior": "No GOGPT prior plant was given for this terminal entity.",
+  "confirmed_how": "VERDICT: YES. This QatarEnergy LNG entity's (RasGas-heritage) Ras Laffan trains mechanically drive their refrigeration compressors with heavy-frame gas turbines: two Frame 7EA units (DLN-retrofitted 2011) on the earlier trains, and Frame 9E units on the Train 6-7 mega-trains — described by the turbine vendor itself as 'the world's largest mechanical-drive application.' EVIDENCE: Baker Hughes' own Frame 9/1E gas-turbine product overview states directly: 'The Qatargas and Rasgas LNG facilities in Ras Laffan are the world's largest mechanical-drive application, with Frame 9/1E drives for large centrifugal compressors' — vendor-primary confirmation naming RasGas explicitly. A GASTECH/IGU-style technical paper on Frame 9E start-up (hosted at pdfcoffee.com) independently states 'Qatargas and RasGas have successfully completed commissioning, start-up and operation of multiple Frame 9E gas turbine refrigeration strings,' with these strings providing '100+ megawatt' shaft power across the 7.8 Mtpa trains. A retrofit case document on the two Frame 7 gas turbines at 'RasGas LNG Company-Qatar' additionally confirms the earlier trains: 'Two retrofitted units are driving Mixed refrigerant and propane in the LNG refrigeration cycle,' completed in 2011 (this document's own page failed url_verifier's live-text check via Scribd's rendering, so it is not cited as a ref, but its claim is independently corroborated by the two sources that are cited).",
+  "confirmed_how [ref]": [
+   "https://www.bakerhughes.com/sites/bakerhughes/files/2021-02/BakerHughes_Frame91E_Overview-012921.pdf",
+   "https://pdfcoffee.com/start-up-and-operation-of-ge-frame-9e--pdf-free.html"
+  ]
+ },
+ {
+  "terminal": "Das Island LNG Terminal",
+  "terminal_id": "T100000130601",
+  "mechanical": "True",
+  "confidence": "green",
+  "gogpt_captive_prior": "gogpt_prior = no; no GOGPT plant given for this terminal to assess.",
+  "confirmed_how": "VERDICT: YES. Das Island (ADGAS/ADNOC LNG liquefaction complex) hosts on-site gas turbine power generation: a legacy plant of 5x GE Frame 5 gas turbines and a newer 36 MW gas-fired (GE Frame 6, sweet+sour gas) power station commissioned circa 2015, plus separate gas-turbine-driven (GE Frame 5D) turbocompressor trains for mechanical compression duty. This is captive generation and mechanical drive at the same site — a mixed installation. EVIDENCE: (1) GE Oil & Gas press release (via oilandgasonline.com, mirrored at ge.com) on the turbocompressor contract states ADGAS's Das Island site 'already includes a power plant based on five GE Frame 5 gas turbines' and that the new compression trains use 'GE Frame 5D gas turbines'. (2) Setec's own project case study (EPC design contractor) describes a distinct '36 MW power station' at Das Island 'based on a GE Frame 6 turbine for both sweet and sour gas', built Dec 2013-Mar 2015 for ACTEMIUM OIL & GAS. Two independent sources (equipment vendor + EPC design contractor) corroborate on-site gas turbine generation.",
+  "confirmed_how [ref]": [
+   "https://www.oilandgasonline.com/doc/ge-oil-gas-to-supply-turbocompressors-to-adga-0001",
+   "https://www.ge.com/news/press-releases/ge-oil-gas-supply-turbocompressors-adgas-das-island-lng-complex-0",
+   "https://www.setec.fr/en/blog/projets/das-island-thermal-power-station/"
+  ]
+ },
+ {
+  "terminal": "Fujairah LNG Terminal",
+  "terminal_id": "T100000130602",
+  "mechanical": "False",
+  "confidence": "green",
+  "gogpt_captive_prior": "gogpt_prior = yes (tier A); given plant 'Fujairah F1 Integrated Water and power plant', 882 MW (per dispatch data; other sources cite ~893 MW nameplate / 760 MW installed), 0.61 km away, owned/operated by Emirates SembCorp Water and Power Company. This is NOT this terminal's captive power — it is (or was intended to be) a CUSTOMER of the terminal: Emirates LNG's stated main customers were the Fujairah F1 and F2 IWPPs (per MEED reporting on the original commercial-bid stage), the classic direction-test case (regas gas piped OUT to an external power plant, not captive generation flowing IN). Independent non-gem.wiki source: https://accgroup.com/our_projects/fujairah-f1-independent-water-and-power-plant-uae/",
+  "confirmed_how": "VERDICT: NO. This cancelled 9.6 Mtpa export project (ADNOC/EmiratesLNG, FEED by McDermott 2022) was explicitly designed with electric drives for the liquefaction compressors rather than conventional gas turbines, intended to run on grid power (later stated, after the project's 2023 relocation to Ruwais, to be nuclear/renewable grid power) — a documented as-designed negative, not an absence of information. EVIDENCE: McDermott's own press release (PR Newswire) on its May 2022 FEED contract award states: 'The plant will be designed with electric drives for the liquefaction compressors and will incorporate several features that significantly reduce greenhouse gas emissions.' Corroborated independently by LNG Industry's trade-press coverage of the same contract award, which repeats the electric-drive design detail.",
+  "confirmed_how [ref]": [
+   "https://www.prnewswire.com/news-releases/mcdermott-awarded-adnocs-fujairah-lng-feed-contract-301550071.html",
+   "https://www.lngindustry.com/liquid-natural-gas/19052022/adnoc-awards-mcdermott-feed-contract-for-fujairah-lng/"
+  ]
+ },
+ {
+  "terminal": "Jebel Ali FLNG Terminal",
+  "terminal_id": "T100000130603",
+  "mechanical": "",
+  "confidence": "yellow",
+  "gogpt_captive_prior": "gogpt_prior = yes (tier A); given plant 'Jebel Ali M Power and Desalination Station', 2884.6 MW, 4.27 km away. This is DEWA's M-Station, the largest power/desalination complex in the UAE (~2,885 MW per DEWA/internationalfinance.com reporting) — a large, independently-owned (DEWA) grid utility plant unrelated to and far larger than anything a single moored FSRU would need; classic industrial-host trap, not captive to this terminal. Independent non-gem.wiki source: https://internationalfinance.com/insurance/dewa-m-station-largest-power-desalination-plant-uae/",
+  "confirmed_how": "VERDICT: INSUFFICIENT. The FSRU Explorer (moored at Jebel Ali, operated by Excelerate for DUSUP) received a dual-fuel diesel generator power module in a Dec 2015 retrofit, per Excelerate's own press release, but no public source establishes whether the module is fired on gas/boil-off gas or diesel in normal service. Per SOP, fuel-unstated is INSUFFICIENT, not NO or YES. EVIDENCE: Excelerate Energy's PR Newswire release (15 Mar 2016) on the FSRU Explorer's efficiency upgrade states: 'A dual-fuel diesel generator power module was added to the FSRU. The module provides more fuel-efficient power generation for FSRU services.' Corroborated by Hydrocarbon Engineering's trade-press coverage of the same upgrade (also uses 'dual-fuel'). Neither source names a manufacturer, MW rating, or confirms the operating fuel mode.",
+  "confirmed_how [ref]": [
+   "https://www.prnewswire.com/news-releases/excelerate-energys-fsru-achieves-unprecedented-milestone-in-lng-industry-300236193.html",
+   "https://www.hydrocarbonengineering.com/gas-processing/16032016/excelerate-energy-fsru-excels-in-performance-test-2780/"
+  ]
+ },
+ {
+  "terminal": "Ruwais FSRU",
+  "terminal_id": "T100000130604",
+  "mechanical": "",
+  "confidence": "red",
+  "gogpt_captive_prior": "gogpt_prior = yes (tier C for its sister row, tier A here); given plant 'Ruwais General Utilities Plant', 922.8 MW, 1.65 km away. This is ADNOC Refining's own cogeneration/utility plant for the entire Al Ruwais industrial complex (refinery + petrochemicals + LNG) — 'Ruwais (Takreer) Cogeneration Power Plant' per power-technology.com/thenationalnews.com, expanded 2023 to reduce the complex's dependence on the national grid. It is a shared industrial utility built for the whole industrial city, not documented as built for or dedicated to this specific FSRU — industrial-host trap. Independent non-gem.wiki source: https://www.thenationalnews.com/business/energy/2022/09/14/adnoc-refining-to-complete-first-phase-of-600m-waste-heat-recovery-project-by-end-of-year/",
+  "confirmed_how": "VERDICT: INSUFFICIENT. The FSRU Express (Excelerate-operated, chartered by ADNOC, replaced the earlier FSRU Excelerate in 2019) is a 150,900 m3 converted vessel of the same Excelerate class as the Jebel Ali FSRU Explorer, but no public source found (press releases, class records, vessel registries) documents its onboard generator fuel type, or whether — like Bahrain's FSU — it is shore-power connected to ADNOC's grid instead of self-generating. Genuinely undocumented in any source found. EVIDENCE: Searched Excelerate Energy's own project/fleet pages, trade press (LNG Industry, Riviera, Offshore Energy, MEED), Wood Mackenzie summary, and vessel-tracking sources for 'FSRU Express' engine/power specifications; none were found. Excelerate's fleet page confirms the Express's storage (150,900 m3) and send-out capacity (690 MMscf/d) but no power-generation detail.",
+  "confirmed_how [ref]": []
+ },
+ {
+  "terminal": "Ruwais LNG Terminal",
+  "terminal_id": "T100000131105",
+  "mechanical": "False",
+  "confidence": "green",
+  "gogpt_captive_prior": "gogpt_prior = yes (tier C); given plant 'Ruwais General Utilities Plant', 922.8 MW, 8.07 km away — same ADNOC Refining industrial cogen plant discussed for the Ruwais FSRU row. Given the terminal is documented as drawing power from the national grid (nuclear/renewable) rather than this specific industrial cogen plant, and the distance (8 km, further than the FSRU) and shared-utility framing, this is not captive to the LNG terminal. Independent non-gem.wiki source: https://www.thenationalnews.com/business/energy/2022/09/14/adnoc-refining-to-complete-first-phase-of-600m-waste-heat-recovery-project-by-end-of-year/",
+  "confirmed_how": "VERDICT: NO. Ruwais LNG (2x 4.8 Mtpa trains, FID June 2024, under construction) is explicitly designed as an all-electric plant: electric-driven motors run the liquefaction compressors instead of gas turbines, and the plant draws power from the UAE national grid's nuclear and renewable generation — a documented, deliberate negative on captive gas power, not an information gap. EVIDENCE: ADNOC's own press release (2023, 'Low-Carbon LNG Growth Project to Proceed in Al Ruwais Industrial City') describes the plant as electric-powered, running on renewable and nuclear grid power. ABB's press release on its Ruwais LNG contract explicitly titles it 'ADNOC's all-electric Ruwais LNG facility'. LNG Industry's independent trade-press coverage of the same ABB contract repeats 'all-electric'. Multiple independent corroborations (operator + equipment vendor + trade press) of the same documented design fact.",
+  "confirmed_how [ref]": [
+   "https://www.adnoc.ae/en/news-and-media/press-releases/2023/low-carbon-lng-growth-project-to--proceed-in-al-ruwais-industrial-city",
+   "https://new.abb.com/news/detail/130262/abb-integrated-solutions-to-support-adnocs-all-electric-ruwais-lng-facility",
+   "https://www.lngindustry.com/liquid-natural-gas/05112025/abb-to-support-adnocs-all-electric-ruwais-lng-facility/"
+  ]
+ },
+ {
+  "terminal": "Sharjah FSRU",
+  "terminal_id": "T100000130972",
+  "mechanical": "",
+  "confidence": "",
+  "gogpt_captive_prior": "gogpt_prior = no; no GOGPT plant given for this terminal to assess.",
+  "confirmed_how": "VERDICT: SCREENED. Screened: the project (SNOC, originally a JV with Uniper, launched 2017) was shelved in 2020 before any FSRU vessel was selected or chartered and before any captive-power design was published — it never progressed past the commercial/JV stage. Its only documented power-sector relationship is the opposite direction: SNOC had signed an agreement to supply gas to three Sharjah Electricity and Water Authority (SEWA) power stations, i.e. this terminal was designed to FEED external power plants, not host captive generation. EVIDENCE: Riviera Maritime Media ('Sharjah pushes back FSRU start date') and Gulf News (SNOC gas-storage project coverage) corroborate the project's shelved status and the SEWA gas-supply agreement; no source at any stage names an FSRU vessel or describes on-site power generation for this project.",
+  "confirmed_how [ref]": [
+   "https://www.rivieramm.com/news-content-hub/news-content-hub/sharjah-pushes-back-fsru-start-date-26440",
+   "https://gulfnews.com/business/energy/sharjah-national-oil-corporation-completes-second-phase-of-gas-storage-project-1.1730713526807"
+  ]
+ },
+ {
+  "terminal": "Yemen LNG Terminal",
+  "terminal_id": "T100000130605",
+  "mechanical": "True",
+  "confidence": "green",
+  "gogpt_captive_prior": "No GOGPT prior plant was given for this terminal.",
+  "confirmed_how": "VERDICT: YES. Yemen LNG's two liquefaction trains at Balhaf are compressor-driven by heavy-duty gas turbines in a 1×100% shaftline configuration (industry-standard mechanical drive), with GE-supplied induction motors serving only as starter/helper — not power generation for the site. Mothballed since 2015 (Total-led JV, force majeure/civil conflict), but the captive-power finding is about as-built design, which persists regardless of current idle status. EVIDENCE: Gas Processing & LNG's 'Turbomachinery configuration for LNG project concept selection' states: 'Historically, heavy-duty gas turbine drivers have been selected to drive LNG compressors considering their robustness ... a 1 × 100% shaftline arrangement was considered (for example, in the Yemen LNG project).' GE Vernova's own Yemen LNG case study page (live-verified for both 'induction motors' and 'gas turbine') describes the starter/helper induction-motor system built specifically around gas-turbine-driven compressors, consistent with search-aggregated detail that the two 2-pole, 11 MW/3,600rpm induction motors 'accelerate the shaft until combustion starts the gas turbine' and 'provide additional power to the gas turbine when required.'",
+  "confirmed_how [ref]": [
+   "https://www.gasprocessingnews.com/articles/2021/10/turbomachinery-configuration-for-lng-project-concept-selection/",
+   "https://www.gevernova.com/power-conversion/case-study/electrical-solution-with-induction-motors-for-lng-yemen"
+  ]
+ }
+]

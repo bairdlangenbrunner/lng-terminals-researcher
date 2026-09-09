@@ -1,0 +1,240 @@
+{
+ "qualifying": [
+  {
+   "terminal": "Brunei LNG Terminal",
+   "terminal_id": "T100000130273",
+   "country": "Brunei",
+   "status": "operating",
+   "hardware_type": "On-site fuel-gas-fired energy system at the Lumut plant (nine steam boilers, described by the operator as 'equivalent to a 300 MW power station') driving both mechanical-drive turbine-compressors and generator turbines; co-located 246 MWe Lumut Cogen Power Station, gas-fired, commissioned 1987, operated by Brunei LNG Sdn Bhd itself, supplies electricity and steam to the site.",
+   "individual_mw": "246 MWe (Lumut Cogen Power Station, single gas-fired cogen plant, operator-owned)",
+   "aggregate_mw": "~300 MW-equivalent for the boiler-driven energy system per the operator's own description, plus the separate 246 MWe cogen plant",
+   "basis": "Individual >=50 MW - the co-located 246 MWe Lumut Cogen Power Station, gas-fired and operated by Brunei LNG itself, individually clears the threshold many times over; the boiler-driven mechanical-drive/generator-turbine system (operator-described as 'equivalent to a 300 MW power station') also qualifies."
+  },
+  {
+   "terminal": "Tianjin LNG Terminal (PipeChina)",
+   "terminal_id": "T100000130410",
+   "country": "China",
+   "status": "operating (current chartered FSRU service); retired and construction also recorded among unit-level statuses in the GEM export",
+   "hardware_type": "FSRU onboard generator fleet: 3x11,400 kW + 1x5,700 kW dual-fuel gensets, plus 2x13,200 kW turbo/electric generators fed by dual-fuel main boilers (mainly natural gas, secondary low-sulfur diesel); a separate 500 kW emergency diesel genset is non-gas and excluded from the total.",
+   "individual_mw": "13.2 MW max individual unit (turbo/electric generator); largest genset is 11.4 MW - no single unit reaches 50 MW",
+   "aggregate_mw": "66.3 MW aggregate across gas-fired units (3x11.4+1x5.7 MW gensets = 39.9 MW, plus 2x13.2 MW turbo-generators = 26.4 MW; the 500 kW emergency diesel is excluded)",
+   "basis": "Aggregate >=50 MW (genset rule) - dual-fuel gensets and boiler-fed turbo/electric generators aboard the FSRU total 66.3 MW gas-fired capacity, well above the 50 MW aggregate threshold; individual units are all well under 50 MW."
+  },
+  {
+   "terminal": "Karaikal FSRU",
+   "terminal_id": "T100000130803",
+   "country": "India",
+   "status": "proposed",
+   "hardware_type": "3x22 MW gas turbine generators (66 MW aggregate) with SCR NOx control and waste heat recovery units, described as coming 'as part of the FSU' - the floating storage unit's own onboard power plant, for the proposed Karaikal LNG terminal.",
+   "individual_mw": "22 MW each - below the 50 MW individual threshold",
+   "aggregate_mw": "66 MW aggregate (3x22 MW gas turbine generators)",
+   "basis": "Aggregate >=50 MW (aeroderivative/genset-style rule applied by analogy to 3 parallel mid-size gas turbine generator units) - JUDGMENT CALL: the source does not state whether these are heavy-duty single-train turbines (individual-unit rule) or aeroderivative/genset-style redundant units (aggregate rule); flagged for review."
+  },
+  {
+   "terminal": "West Papua FLNG Terminal",
+   "terminal_id": "T100000131148",
+   "country": "Indonesia",
+   "status": "construction",
+   "hardware_type": "Wison New Energies standard FLNG design: 2xLM6000PF+ aeroderivative gas turbines (with waste-heat recovery) mechanically drive the refrigerant compressors; 1xLM2500 aeroderivative turbine mechanically drives NGL-recovery booster compression; Solar Titan 130 aeroderivative gas turbine generators (with WHR) provide site power generation.",
+   "individual_mw": "~45-50 MW each for the 2xLM6000PF+ mechanical-drive units (LM6000 aeroderivative class rating per convention; no site-specific figure published); LM2500 booster-compression unit ~25-34 MW class; Solar Titan 130 power-generation units' rating not specified in source.",
+   "aggregate_mw": "~90-100 MW aggregate across the 2xLM6000PF+ mechanical-drive turbines (aeroderivative rule)",
+   "basis": "Aggregate >=50 MW (aeroderivative rule, mechanical drive) - 2xLM6000PF+ aeroderivative gas turbines mechanically driving refrigerant compressors aggregate to an estimated 90-100 MW at the standard LM6000 class rating; class inferred from the named turbine model, no site-specific figure published (JUDGMENT CALL - class-rating inference)."
+  },
+  {
+   "terminal": "Dua FLNG Terminal",
+   "terminal_id": "T100000130289",
+   "country": "Malaysia",
+   "status": "operating",
+   "hardware_type": "PFLNG DUA (moored offshore FLNG vessel): 4xGE PGT25+G4 aeroderivative gas turbine generator systems supply the facility's electric power; 2xLM6000-PF+ 2BCL907 aeroderivative gas turbines mechanically drive the nitrogen-liquefaction-train compressors. Both installed under GE Oil & Gas's November 2014 turbomachinery contract.",
+   "individual_mw": "~45-50 MW each for the 2xLM6000-PF+ mechanical-drive units (LM6000 aeroderivative class rating per convention; no site-specific figure published); PGT25+G4 power-generation units' individual rating not specified in source.",
+   "aggregate_mw": "~90-100 MW aggregate across the 2xLM6000-PF+ mechanical-drive turbines (aeroderivative rule); 4xPGT25+G4 power-generation turbines aggregate separately, MW not stated in source.",
+   "basis": "Aggregate >=50 MW (aeroderivative rule, mechanical drive) - 2xLM6000-PF+ aeroderivative turbines drive the nitrogen-train compressors at an estimated 90-100 MW aggregate (LM6000 class rating, JUDGMENT CALL - class-rating inference); separately confirms 4xPGT25+G4 aeroderivative generators for site power generation (MW not stated)."
+  },
+  {
+   "terminal": "MLNG T9 LNG Terminal",
+   "terminal_id": "T100000130293",
+   "country": "Malaysia",
+   "status": "operating",
+   "hardware_type": "2xGE Frame 7EA heavy-duty gas turbines (mechanical drive), each paired with a 13 MW induction motor (VSI/VSD, 3,600 rpm) as a helper/assist unit, drive Train 9's LP/MP mixed-refrigerant and propane/HP mixed-refrigerant compression trains. The wider Bintulu Petronas LNG Complex also self-generates a portion of its electricity via on-site gas turbines.",
+   "individual_mw": "~85-90 MW shaft each (GE Frame 7EA class rating; no site-specific figure published) for the mechanical-drive turbines; the paired 13 MW motor is a helper/assist unit driving alongside, not a separate qualifying generator.",
+   "aggregate_mw": "n/a (mechanical drive, heavy-duty individual-unit rule, not summed - combined class rating would be roughly 170-180 MW across both units)",
+   "basis": "Individual >=50 MW (mechanical drive; Frame 7EA class-rating inference, JUDGMENT CALL - class rating inferred from the named turbine model, no site-specific figure published)."
+  },
+  {
+   "terminal": "Tiga FLNG Terminal",
+   "terminal_id": "T100000131063",
+   "country": "Malaysia",
+   "status": "construction",
+   "hardware_type": "Purpose-built onshore gas-fired power plant at Sipitang (Sabah), adjacent to PFLNG Tiga's nearshore mooring: 7xMAN Energy Solutions 20V35/44G gas engines, described by both the equipment vendor and independent trade press as becoming the sole electricity supply to the terminal.",
+   "individual_mw": "10 MW each (70 MW / 7 engines) - below the 50 MW individual threshold",
+   "aggregate_mw": "70 MW aggregate (7xMAN 20V35/44G gas engines)",
+   "basis": "Aggregate >=50 MW (genset rule) - 7 gas engines totaling 70 MW, explicitly the sole electricity supply to the terminal; well above the 50 MW aggregate threshold."
+  },
+  {
+   "terminal": "Satu FLNG Terminal",
+   "terminal_id": "T100000130288",
+   "country": "Malaysia",
+   "status": "operating",
+   "hardware_type": "PFLNG SATU (moored at the Kanowit field, off-grid by construction): 4x GE PGT25+G4 gas turbine generator sets supply on-site electricity, plus 2x PGT25+G4 gas turbines in mechanical-drive service on the liquefaction compression trains (alongside 2 electric-motor-driven compressor modules).",
+   "individual_mw": "~30-34 MW each (PGT25+G4 = industrial LM2500+G4; class rating, no site-specific figure published)",
+   "aggregate_mw": "~120-136 MW generator fleet (4 units); ~200 MW including the 2 mechanical-drive units (class-rating aggregate)",
+   "basis": "Aggregate >=50 MW (aeroderivative rule; PGT25+G4 is the industrial LM2500+G4 aeroderivative -- same class-inference basis as the Cameroon FLNG and Corpus Christi qualifiers). Individual units (~30-34 MW) are below threshold; the aggregate is the qualifying basis."
+  }
+ ],
+ "excluded": [
+  {
+   "terminal": "Moheshkhali Floating LNG Terminal",
+   "terminal_id": "T100000130270",
+   "country": "Bangladesh",
+   "reason": "No MW figure disclosed. Two boil-off-gas-fired boilers aboard FSRU Excellence supply the vessel's own electrical power for regasification pumps and other loads (confirmed by a July 2026 fire that damaged the boiler power/control cabling and forced a nationwide gas-supply cut); general FSRU-conversion literature suggests a 15-25 MW class range but no site-specific rating was found.",
+   "mw_figure": "None disclosed (general FSRU literature suggests 15-25 MW class, not site-specific)"
+  },
+  {
+   "terminal": "Summit FSRU",
+   "terminal_id": "T100000130272",
+   "country": "Bangladesh",
+   "reason": "Below the 50 MW threshold. 2x10 MW-class gas turbine generators (1 operating + 1 standby) supply the FSRU's captive power per the project EIA, which labels it a 'captive power generation facility'; only one unit runs at a time (10 MW), and even the full 2-unit nameplate (20 MW) does not clear the threshold.",
+   "mw_figure": "20 MW aggregate nameplate (2x10 MW-class gas turbine generators, 1 operating + 1 standby)"
+  },
+  {
+   "terminal": "Hong Kong FSRU",
+   "terminal_id": "T100000130388",
+   "country": "Hong Kong",
+   "reason": "Aggregate reported only as a floor value, not confirmed to clear 50 MW. 4xMAN 9L51/60 dual-fuel generators aboard the Bauhinia Spirit FSRU are each rated '>9 MW,' stated as '>36 MW aggregate' - a lower bound, not a precise figure, so it cannot be confirmed to reach the 50 MW threshold.",
+   "mw_figure": ">36 MW aggregate (4xMAN 9L51/60 dual-fuel generators, each >9 MW; precise total not disclosed) - JUDGMENT CALL, treated as below threshold absent a confirmed figure"
+  },
+  {
+   "terminal": "Chhara LNG Terminal",
+   "terminal_id": "T100000130800",
+   "country": "India",
+   "reason": "Below the 50 MW threshold. An 18 MW gas-turbine-based captive power plant (CPP) is the terminal's primary power source per its Risk Assessment/EIA, with the Gujarat State grid as standby and an emergency diesel generator as further backup.",
+   "mw_figure": "18 MW (gas-turbine-based captive power plant)"
+  },
+  {
+   "terminal": "Dahej LNG Terminal",
+   "terminal_id": "T100000130427",
+   "country": "India",
+   "reason": "Below the 50 MW threshold based on the only figure available. Three GTG packages form Petronet's on-site captive power plant per an EPC technical specification (no MW stated there); media reporting (not independently verified this pass) puts existing capacity at roughly 25 MW aggregate - well under the threshold either way.",
+   "mw_figure": "~25 MW aggregate (media estimate, not independently verified this pass; the primary EPC technical spec does not itself state an MW figure)"
+  },
+  {
+   "terminal": "Dhamra LNG Terminal",
+   "terminal_id": "T100000130431",
+   "country": "India",
+   "reason": "Below the 50 MW threshold. Three 9.6 MW gensets (29 MW total) based on 20-cylinder Rolls-Royce Bergen B35:40 gas engines, delivered as a full EPC gas power plant to meet the terminal's baseload power requirement.",
+   "mw_figure": "29 MW aggregate (3x9.6 MW gensets)"
+  },
+  {
+   "terminal": "Ennore LNG Terminal",
+   "terminal_id": "T100000130662",
+   "country": "India",
+   "reason": "Below the 50 MW threshold. On-site captive combined-heat-and-power plant using gas turbine generators, rated 27 MW by the EPC contractor (Black & Veatch) or 26 MW per IndianOil LNG's own post-expansion power-balance filing (14 MW existing + 12 MW for the 5->10 MMTPA expansion).",
+   "mw_figure": "26-27 MW (captive CHP gas turbine plant; EPC contractor figure vs. operator filing)"
+  },
+  {
+   "terminal": "Gopalpur LNG Terminal",
+   "terminal_id": "T100000131145",
+   "country": "India",
+   "reason": "No MW figure disclosed. GTGs for captive power are named as a Phase-II land-based-terminal design element (item 25 of 26) in Petronet's MoEFCC Terms of Reference for the proposed terminal; model, count, and MW rating are not stated. Current Phase-I power needs are grid-fed from the Chhatrapur substation, separate from this Phase-II design element.",
+   "mw_figure": "None disclosed"
+  },
+  {
+   "terminal": "Jafrabad FSRU",
+   "terminal_id": "T100000130457",
+   "country": "India",
+   "reason": "Below the 50 MW threshold. 4xWartsila-Hyundai W9L50DF dual-fuel DFDE generator sets, 8,775 kW each (35.1 MW total), aboard the assigned FSRU vessel (Vasant 1) supply the vessel's hotel load, propulsion, and the regasification process.",
+   "mw_figure": "35.1 MW aggregate (4x8,775 kW dual-fuel DFDE gensets)"
+  },
+  {
+   "terminal": "Jaigarh LNG Terminal",
+   "terminal_id": "T100000130443",
+   "country": "India",
+   "reason": "Below the 50 MW threshold. 4xWartsila-Hyundai dual-fuel DFDE generator sets (1x6L50DF + 3x8L50DF) totaling 28,500 kW aboard the Phase-I FSRU (Hoegh Giant), supplying propulsion, hotel load and the regasification train while moored.",
+   "mw_figure": "28.5 MW aggregate (4 dual-fuel DFDE gensets)"
+  },
+  {
+   "terminal": "Kochi LNG Terminal",
+   "terminal_id": "T100000130447",
+   "country": "India",
+   "reason": "Below the 50 MW threshold. A 13 MW on-site captive gas turbine generator (GTG) plant supplies part of the terminal's power, topped up by Kerala State Electricity Board grid import; a separate 1.6 MVA diesel emergency DG set is backup-only and non-gas.",
+   "mw_figure": "13 MW (captive gas turbine generator plant; partial supply alongside grid)"
+  },
+  {
+   "terminal": "Bontang LNG Terminal",
+   "terminal_id": "T100000130278",
+   "country": "Indonesia",
+   "reason": "No MW figure disclosed for the primary on-site mechanical-drive system (gas-fired boilers driving a steam turbine that runs the refrigerant compressor); a separately documented 13.4 MW gas turbine at the plant (per its own 1998 equipment data book) falls below the 50 MW threshold on its own. Terminal-level status is mixed (retired/idled/cancelled recorded among unit-level statuses in GEM data, but the mechanical-drive system remains operating/active, so this is not a status-gate exclusion).",
+   "mw_figure": "13.4 MW documented gas turbine (below threshold on its own); no MW figure disclosed for the primary boiler/steam-turbine mechanical-drive system"
+  },
+  {
+   "terminal": "Lampung FSRU",
+   "terminal_id": "T100000130283",
+   "country": "Indonesia",
+   "reason": "No vessel-specific MW figure disclosed. PGN FSRU Lampung is managed by Hoegh LNG Fleet Management and described only via a fleet-wide company statement that Hoegh's FSRUs use dual-fuel diesel-electric (DFDE) generator sets; a sister vessel's rating (Hoegh Esperanza, 4x7,800 kW = 31.2 MW) is explicitly NOT attributed to this hull in the source.",
+   "mw_figure": "None disclosed for this vessel (sister-vessel reference of 31.2 MW aggregate explicitly not attributed to Lampung)"
+  },
+  {
+   "terminal": "Tangguh LNG Terminal",
+   "terminal_id": "T100000130286",
+   "country": "Indonesia",
+   "reason": "No MW figure disclosed for the on-site captive system. Heavy-duty gas turbines mechanically drive the LNG-train refrigeration compressors, and their waste heat is recovered via HRSG to generate electricity used internally, with a small surplus (4 MW) historically sold to PLN; exact turbine model/count and total generating MW are not disclosed in sources found.",
+   "mw_figure": "None disclosed (only ancillary figure found is 4 MW historically sold to PLN, not the total on-site captive capacity)"
+  },
+  {
+   "terminal": "Tanjung Benoa FSRU",
+   "terminal_id": "T100000130276",
+   "country": "Indonesia",
+   "reason": "No MW figure disclosed. The FSRU Karunia Dewata carries a dual-fuel (DFDE-type) auxiliary generator set with a SOGAV gas-admission fuel system, confirmed gas-fired by a 2025 maritime-academy thesis documenting a 2022 fault incident, but no nameplate rating is published.",
+   "mw_figure": "None disclosed"
+  },
+  {
+   "terminal": "Hatsukaichi LNG Terminal",
+   "terminal_id": "T100000130473",
+   "country": "Japan",
+   "reason": "Below the 50 MW threshold. 2xMHIET KU30GA natural gas engines, 5,500 kW each (11 MW total), gas-engine cogeneration installed 2004 (retrofitted 2018) to power the terminal's own refrigeration/vaporization load, with surplus power wheeled to the grid.",
+   "mw_figure": "11 MW aggregate (2x5,500 kW gas-engine cogeneration units)"
+  },
+  {
+   "terminal": "Naoetsu LNG Terminal",
+   "terminal_id": "T100000130505",
+   "country": "Japan",
+   "reason": "No MW figure disclosed. On-site gas turbine generator is one of two non-normal/emergency power sources (the other diesel) backing up the dual utility grid feed at INPEX's Naoetsu terminal (standby_backup category); count, model and MW are not published.",
+   "mw_figure": "None disclosed (standby/emergency-duty gas turbine generator; count and model undisclosed)"
+  },
+  {
+   "terminal": "Yokkaichi Works LNG Terminal",
+   "terminal_id": "T100000130533",
+   "country": "Japan",
+   "reason": "Below the 50 MW threshold. 3x5,500 kW gas-engine cogeneration units (16.5 MW total) at Toho Gas's own Yokkaichi Works, commissioned Oct 2017 explicitly for internal power-demand balancing, with waste heat feeding on-site city-gas manufacturing.",
+   "mw_figure": "16.5 MW aggregate (3x5,500 kW gas-engine cogeneration units)"
+  },
+  {
+   "terminal": "Yoshinoura LNG Terminal",
+   "terminal_id": "T100000130837",
+   "country": "Japan",
+   "reason": "Below the 50 MW threshold. The 35,000 kW (35 MW) Yoshinoura Multi-Gas-Turbine plant (LNG-primary multi-fuel) provides island blackstart, LNG-tank security backup, peak-demand response, and BOG-processing duty for the terminal, but total plant capacity is 35 MW.",
+   "mw_figure": "35 MW (Yoshinoura Multi-Gas-Turbine plant total)"
+  },
+  {
+   "terminal": "MLNG Dua LNG Terminal",
+   "terminal_id": "T100000130292",
+   "country": "Malaysia",
+   "reason": "No MW figure disclosed at the individual-terminal/train level. Complex-wide, Petronas states the Bintulu complex relied 'solely on gas-powered turbines' before a 2024 grid tie-in (Project GLORY) substituted 40%/90 MW of total demand with Sarawak hydro, leaving the majority still gas-turbine-generated jointly across MLNG, MLNG Dua and MLNG Tiga - not apportioned to this terminal specifically. JUDGMENT CALL: complex-level context is suggestive but not documented per train.",
+   "mw_figure": "None disclosed at the individual-terminal level (complex-wide majority of >~135 MW implied gas-turbine demand shared across 3 terminals, per the Project GLORY 90 MW/40% substitution figure)"
+  },
+  {
+   "terminal": "MLNG Satu LNG Terminal",
+   "terminal_id": "T100000130294",
+   "country": "Malaysia",
+   "reason": "No MW figure disclosed at the individual-terminal/train level. Complex-wide, Petronas states the Bintulu complex relied 'solely on gas-powered turbines' before a 2024 grid tie-in (Project GLORY) substituted 40%/90 MW of total demand with Sarawak hydro, leaving the majority still gas-turbine-generated jointly across MLNG, MLNG Dua and MLNG Tiga - not apportioned to this terminal specifically. JUDGMENT CALL: complex-level context is suggestive but not documented per train.",
+   "mw_figure": "None disclosed at the individual-terminal level (complex-wide majority of >~135 MW implied gas-turbine demand shared across 3 terminals, per the Project GLORY 90 MW/40% substitution figure)"
+  },
+  {
+   "terminal": "MLNG Tiga LNG Terminal",
+   "terminal_id": "T100000130295",
+   "country": "Malaysia",
+   "reason": "No MW figure disclosed at the individual-terminal/train level. A GE long-term service agreement names MLNG, MLNG Dua and MLNG Tiga jointly as covering 'the power generation units and liquefaction trains' for the complex; Petronas' own electrification account confirms the wider complex traditionally self-generated its power via on-site gas turbines (now ~40%/90 MW substituted by Sarawak grid hydro), but no MW figure is apportioned to this terminal specifically. JUDGMENT CALL: complex-level context is suggestive but not documented per train.",
+   "mw_figure": "None disclosed at the individual-terminal level (complex-wide majority of >~135 MW implied gas-turbine demand shared across 3 terminals, per the Project GLORY 90 MW/40% substitution figure)"
+  }
+ ]
+}

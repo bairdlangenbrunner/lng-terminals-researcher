@@ -1,0 +1,141 @@
+[
+  {
+    "terminal": "GasPort FSRU 2",
+    "terminal_id": "T100000130886",
+    "country": "Pakistan",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "No vessel has been named/chartered and no engineering design has been published in any source found across 2017-2024 reporting -- nothing exists yet to describe hardware for.",
+    "fuel_basis": "",
+    "confidence": "",
+    "captive_summary": "Pakistan GasPort Consortium's proposed second FSRU at Port Qasim (partnered with Trafigura) has been publicly announced since at least November 2017 (new jetty/berth/second FSRU, ~90 MMCFD) but remains at the site-selection stage -- a May 2024 SIFC site visit still described it as 'under development.' No FSRU vessel has been selected, no EIA/design study was found, and no source discusses on-site power generation. As-designed captive power would count per SOP, but there is no design yet to assess.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "World Maritime News (21 Nov 2017): Trafigura announced plans for 'a new jetty, berth and a second FSRU' at Port Qasim alongside PGPL, to supply '90 million cubic feet of gas per day.' No subsequent source (searched through 2024-2025 coverage) documents a chosen vessel, an EIA/ESIA, or any power-generation detail for this second FSRU -- the project has not progressed to a design stage that could be assessed for captive power.",
+    "refs": [
+      "https://worldmaritimenews.com/archives/235714/trafigura-confirms-plans-for-pakistans-second-lng-terminal/"
+    ],
+    "verification_log": [
+      {"url": "https://worldmaritimenews.com/archives/235714/trafigura-confirms-plans-for-pakistans-second-lng-terminal/", "tokens": ["second FSRU"], "result": "PASS", "note": "bot-blocked live (403), verified via Wayback snapshot 20191119232925"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT prior given (gogpt_prior: no). No power station exists at this site to assess -- the project has never progressed past a site/announcement stage.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Nothing has been designed, chartered, or built at this site to add as a power station.",
+    "status_or_other_findings": "Still 'proposed' per GEM; consistent with the near-decade-long lack of visible progress found in research (2017 announcement, still only 'under development' as of a May 2024 site visit report).",
+    "notes": "Terminal-first research found no design documentation whatsoever for this second FSRU; revisit if/when a vessel is chartered or an EIA is filed."
+  },
+  {
+    "terminal": "LNG Easy Floating LNG Terminal",
+    "terminal_id": "T100000131104",
+    "country": "Pakistan",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "No power-generation hardware documented. The receiving infrastructure is LNG Easy's own 'Mobile Filling Platform (MFP)' used as a floating jetty for ship-to-shore LNG receipt; downstream distribution is by ISO tank container via rail, with re-gasification performed at customer sites, not at the platform.",
+    "fuel_basis": "",
+    "confidence": "",
+    "captive_summary": "This is a genuine marine-import facility, not an out-of-scope domestic-only scheme: LNG Easy (Singapore) and Punjab Group's JV berths its Mobile Filling Platform at Karachi Port as 'the floating jetty to import LNG' (designed capacity ~1 mtpa, licensed and targeting first imports in 2023), then moves LNG onward by ISO container via Pakistan Railways -- the marine-import leg satisfies scope even though onward distribution is a virtual pipeline. No source describes any power-generation or genset equipment at the platform itself; regasification happens later, at customer sites, not at this floating unit.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Offshore Energy (offshore-energy.biz): the scheme uses LNG Easy's Mobile Filling Platform as 'the floating jetty to import LNG' at Karachi Port, with LNG then 'transported to the end users using ISO containers' via Pakistan Railways, with re-gasification handled at customer sites. Energy Intelligence / LNG Easy PDF (lngeasy.com): the JV 'was granted a government license' and targeted importing 500,000 tonnes in 2023, half of its ~1 mtpa designed capacity. Neither source, nor any other found, discusses power generation, gensets, or fuel type aboard the MFP.",
+    "refs": [
+      "https://www.offshore-energy.biz/lng-easy-eyeing-virtual-pipeline-development-in-pakistan/",
+      "https://lngeasy.com/wp-content/uploads/2022/06/New-JV-Plans-Pakistans-Third-LNG-Import-Terminal-Energy-Intelligence.pdf"
+    ],
+    "verification_log": [
+      {"url": "https://www.offshore-energy.biz/lng-easy-eyeing-virtual-pipeline-development-in-pakistan/", "tokens": ["ISO containers"], "result": "PASS", "note": "confirms MFP as floating jetty + ISO-container onward distribution"},
+      {"url": "https://lngeasy.com/wp-content/uploads/2022/06/New-JV-Plans-Pakistans-Third-LNG-Import-Terminal-Energy-Intelligence.pdf", "tokens": ["license"], "result": "PASS", "note": "confirms government license and 2023 import target"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT prior given (gogpt_prior: no). No generation of any kind is documented at this small-scale floating jetty/distribution scheme.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No power-generation plant of any kind is described for this project -- it is an LNG import-and-distribution scheme (MFP + ISO containers + rail), not a power generator.",
+    "status_or_other_findings": "GEM's 'shelved' status is consistent with no visible activity found beyond the 2022 announcement and 2023 import target.",
+    "notes": "Confirmed in-scope as marine import (ship-delivered LNG at Karachi Port via the MFP) despite the downstream virtual-pipeline/ISO-container distribution model -- distinct from the Dar es Salaam domestic-only miss class since the import leg itself is by ship."
+  },
+  {
+    "terminal": "Mashal LNG Terminal",
+    "terminal_id": "T100000130297",
+    "country": "Pakistan",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "No engineering/design documentation of any kind found -- project was in the contract-award/legal-dispute stage only before termination.",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "Cancelled-and-never-built screen. This was Pakistan's first attempted LNG import project (proposed ~2007), awarded to Dutch developer 4Gas with GDF Suez as supply partner, but it became mired in a Supreme Court transparency challenge over the award process and was ultimately terminated by the government (formally scrapped by the ECC in Jan 2011 per multiple contemporary accounts; GEM records it as cancelled/confirmed). 4Gas subsequently threatened to sue the government for re-tendering the project independently -- confirming the original award/consortium never reached construction. No design study, EIA, or captive-power documentation was ever published.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Express Tribune ('Left out: 4Gas may sue govt for starting new LNG project'): confirms 4Gas was cut out after the Mashal LNG award collapsed and the government moved to re-tender/restart the LNG import process independently -- i.e. the original 4Gas/GDF Suez Mashal contract never converted into a built project. Corroborating background (Dawn.com court coverage, Gas Strategies/Upstream on the original 2007-08 4Gas award) establishes the project never advanced past contract-award and litigation stages before collapsing circa 2011.",
+    "refs": [
+      "https://tribune.com.pk/story/418329/left-out-4gas-may-sue-govt-for-starting-new-lng-project"
+    ],
+    "verification_log": [
+      {"url": "https://tribune.com.pk/story/418329/left-out-4gas-may-sue-govt-for-starting-new-lng-project", "tokens": ["Mashal"], "result": "PASS", "note": "bot-blocked live (403), verified via Wayback snapshot 20251216212533"},
+      {"url": "https://www.dawn.com/news/683554", "tokens": ["Mashal"], "result": "FAIL", "note": "HTTP 403, Wayback lookup rate-limited (429) at query time -- not used as a citation; content was read via fetch (confirms Dec 2011 termination) but not tool-verified"},
+      {"url": "https://www.gasstrategies.com/information-services/gas-matters-today/4gas-mashal-lng-contract-confirmed-pakistans-prime-minister", "tokens": ["Mashal"], "result": "FAIL", "note": "HTTP 403, no Wayback snapshot -- dropped"},
+      {"url": "https://www.upstreamonline.com/lngunlimited/4gas-gets-the-nod-to-build-mashal-lng-project-in-pakistan/1-1-984596", "tokens": ["Mashal"], "result": "FAIL", "note": "HTTP 502 -- dropped"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT prior given (gogpt_prior: no). No power generation of any kind was ever built at this site.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Nothing was ever built -- project collapsed at the contract-award/litigation stage circa 2011.",
+    "status_or_other_findings": "",
+    "notes": "Cancelled-and-never-built screen per SOP; GEM's own status (cancelled/confirmed) matches the research finding."
+  },
+  {
+    "terminal": "Pakistan State Oil LNG Terminal",
+    "terminal_id": "T100000131103",
+    "country": "Pakistan",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "No engineering/design documentation of any kind found -- project never progressed past a September 2022 announcement of intent.",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "Cancelled-and-never-built screen. Pakistan State Oil (PSO) announced in September 2022 a plan to build a ~$500 million LNG import terminal near Karachi as part of a diversification strategy, but no site, developer partner, vessel type, EIA, or construction activity was ever reported afterward in any source found. PSO's own FY2025 annual report lists its terminal/depot infrastructure without any LNG import terminal among them, consistent with GEM's own inferred-cancelled status (no activity in ~4 years).",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Geo News (Sept 2022) and World Oil (19 Sept 2022, citing Bloomberg): PSO, 'the nation's largest fuel importer and retailer,' is 'planning to build a $500 million LNG terminal' as a diversification move. No later source (searched through 2024-2025) reports any follow-through -- no site selection, EIA, financing close, or construction.",
+    "refs": [
+      "https://www.geo.tv/latest/441316-pso-plans-to-build-500m-lng-terminal-report",
+      "https://www.worldoil.com/news/2022/9/19/pakistan-state-oil-co-planning-to-build-500-million-lng-terminal/"
+    ],
+    "verification_log": [
+      {"url": "https://www.geo.tv/latest/441316-pso-plans-to-build-500m-lng-terminal-report", "tokens": ["500m"], "result": "PASS", "note": "direct fetch OK"},
+      {"url": "https://www.worldoil.com/news/2022/9/19/pakistan-state-oil-co-planning-to-build-500-million-lng-terminal/", "tokens": ["500 million"], "result": "PASS", "note": "direct fetch OK"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT prior given (gogpt_prior: no). No power generation of any kind was ever built or designed at this site.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Nothing beyond a stated intent to build was ever reported -- no design exists to assess or add.",
+    "status_or_other_findings": "PSO's FY2025 annual report (psopk.com) lists its current terminal/depot portfolio with no LNG facility included, consistent with the project having stalled.",
+    "notes": "Cancelled-and-never-built screen per SOP; GEM's inferred-cancelled status (4y) matches the research finding of a stalled/unrealized announcement."
+  },
+  {
+    "terminal": "Tabeer LNG Terminal",
+    "terminal_id": "T100000130887",
+    "country": "Pakistan",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "No FSRU vessel has ever been named/chartered; the project's own design has evolved and is not consistently described across sources (original FSRU-based scheme vs. a later onshore VLNG-terminal-plus-ISO-truck-fleet scheme), and no source of either era documents power-generation equipment.",
+    "fuel_basis": "",
+    "confidence": "",
+    "captive_summary": "Tabeer Energy's Port Qasim project (originally Mitsubishi/Diamond Gas International, approved by Pakistan in Sept 2019; acquired by UAE's Bison Energy FZCO in Sept 2023) was designed around a 7.7 mtpa FSRU with ~100 ship-to-ship cargo transfers/year per its own 2023 Sindh EPA ESIA hearing and a civil-society critique report of that filing, but no FSRU vessel was ever named. Later reporting describes a revised Phase 1 built around onshore LNG storage and an ISO-truck fleet rather than an FSRU. No source of either design phase discusses power generation, gensets, or fuel type -- there is genuinely no public captive-power finding to make for this project, whichever design track is current.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Indus Consortium's 2023 report on the Tabeer ESIA (citing the Sindh EPA public hearing) describes the original design as offloading 'approximately 100 cargo parcels per year from LNG Cargo Vessels onto a Floating Storage and Regasification Unit (FSRU)' which 'will store and re-gasify the LNG and deliver regasified [gas]' -- confirming an FSRU-based design existed and went through Sindh EPA review, but naming no specific vessel or power equipment. LNG2030 tracker corroborates the 7.7 mtpa/two-phase capacity figures. No power-generation detail was found in either the ESIA-era FSRU design or subsequent VLNG/onshore-storage-and-ISO-truck reporting.",
+    "refs": [
+      "https://indusconsortium.pk/wp-content/uploads/2023/02/Final-report-Tabeer-LNG.pdf",
+      "https://enggpost.com/tabeer-energys-lng-terminal-project-convinced-esia/"
+    ],
+    "verification_log": [
+      {"url": "https://indusconsortium.pk/wp-content/uploads/2023/02/Final-report-Tabeer-LNG.pdf", "tokens": ["Floating Storage and Regasi"], "result": "PASS", "note": "direct fetch/pdftotext OK, confirms FSRU-based design + Sindh EPA ESIA review"},
+      {"url": "https://enggpost.com/tabeer-energys-lng-terminal-project-convinced-esia/", "tokens": ["Sindh"], "result": "PASS", "note": "confirms Sindh EPA public hearing on the ESIA"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT prior given (gogpt_prior: no). No power-generation plant is documented at this site under either design track.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No generation of any kind is documented; nothing exists to add.",
+    "status_or_other_findings": "Ownership changed from Mitsubishi/Diamond Gas International to Bison Energy FZCO (UAE) in Sept 2023; OGRA granted an RLNG-terminal construction license in Sept 2024 and CCP granted conditional approval for RLNG procurement in Dec 2024, suggesting renewed activity post-shelving -- not acted on here, GEM's shelved status left as-is pending a dedicated Update pass.",
+    "notes": "Project design ambiguity (FSRU vs. onshore VLNG/ISO-truck scheme) means neither track has a documented captive-power finding; revisit once a current design/vessel is confirmed by a primary source."
+  }
+]

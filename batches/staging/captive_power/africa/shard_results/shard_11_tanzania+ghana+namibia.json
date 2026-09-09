@@ -1,0 +1,85 @@
+[
+  {
+    "terminal": "Tanzania LNG Terminal",
+    "terminal_id": "T100000130263",
+    "country": "Tanzania",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "red",
+    "captive_summary": "No public source describes a power-generation design for this project. The Likong'o/Mchinga two-train (10 mtpa) liquefaction plant is still pre-FID: the Host Government Agreement was only being finalised through 2023-2026 and FEED had not concluded as of the most recent coverage found, so no engineering-level description of the utilities/power island (which would normally carry the captive-power answer for a liquefaction train) has been published.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Construction Review's project explainer (citing project partners Equinor/Shell/TPDC/ExxonMobil/Ophir/Pavilion/Medco, 2 trains x 5 mtpa, HGA drafted March 2023, FEED expected to start 2023 and run 2 years, FID then targeted 2028) contains no mention of power generation, gas turbines, or a captive power plant. Multiple 2023-2026 news items (Reuters, TanzaniaInvest, African Energy, allAfrica) confirm the project is still at the negotiation/HGA stage, not at a published-design stage, which is consistent with no power-system details being public yet.",
+    "refs": [],
+    "verification_log": [
+      {"url": "https://constructionreviewonline.com/us-30bn-tanzania-lng-project-timeline-and-all-you-need-to-know/", "tokens": ["Likong"], "result": "PASS", "note": "Project overview; confirms 2-train/10 mtpa design and pre-FID status; no power-generation content, so not used as a captive-power ref, only as status background."}
+    ],
+    "gogpt_prior_assessment": "gogpt_prior for this terminal is \"no\" — no nearby GOGPT plant was surfaced by the matcher, consistent with this being an undeveloped greenfield site (Likong'o village, Lindi) with no existing power infrastructure nearby.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Nothing to add: the project is pre-FID with no published generation design, and there is no operating or under-construction plant of any kind at the site yet.",
+    "status_or_other_findings": "Project remains proposed/pre-FID. HGA reportedly concluded per some 2026 Tanzanian-government statements (TanzaniaInvest, \"Tanzania LNG Project Negotiations with Shell and Equinor Concluded, Minister Says\") but FID still pending; do not act on this in this workflow — it is a status lead for the Update workflow to verify independently.",
+    "notes": "Revisit this terminal once FEED/ESIA documentation is public — large-scale liquefaction trains of this size virtually always include a dedicated on-site power-generation/utilities island and gas-turbine-driven refrigeration compressors, so a future pass should specifically pull the ESIA (NEMC Tanzania) or FEED contractor announcements once available rather than re-searching general news."
+  },
+  {
+    "terminal": "Tema FSRU",
+    "terminal_id": "T100000130253",
+    "country": "Ghana",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "yellow",
+    "captive_summary": "This is an explicit, well-documented 'LNG-to-power' project: the FSU (Vasant) + FRU (Torman, a 28,000 cbm Jiangnan-built, BV-classed regasification barge delivered ~Nov 2020, operated by Reganosa) regasifies LNG and delivers it into Ghana's national grid / GNPC's industrial and power customers via an ~8km onshore pipeline — the direction test points to NOT captive (gas flows OUT to external power plants, e.g. the nearby VRA-owned Tema Thermal Power Complex). However, per the FSRU-onboard convention this direction-test finding does not by itself answer the question — no public source describes the FSU/FRU's own power supply (shore power vs onboard generation, and if onboard, its fuel), so the verdict stays INSUFFICIENT rather than NO pending that specific finding.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "LNG Prime (\"Tema LNG FRU heading towards Ghana\", 2020) and Bureau Veritas classification coverage (LNG Prime, 2021) identify the FRU as 'Torman FRU', 94.90m, 28,000 cbm, two TGE type-C tanks, five modular regas modules, built by Jiangnan Shipyard, ~1.7-2 mtpa capacity. LNG Prime's Reganosa contract article and Offshore Energy's 'Reganosa to run LNG-to-power project in Ghana' both frame the whole project as an LNG-to-power scheme delivering gas 'into the national grid' of Ghana. None of these, nor the NS Energy project profile, describe the FRU/FSU's own hotel-load power source.",
+    "refs": [
+      "https://lngprime.com/lng-terminals/tema-lng-fru-heading-towards-ghana/7826/",
+      "https://lngprime.com/africa/bv-wraps-up-ghana-fru-classification-work/15521/",
+      "https://lngprime.com/africa/reganosa-scores-contract-for-ghanas-tema-lng-terminal/9599/",
+      "https://www.offshore-energy.biz/reganosa-to-run-lng-to-power-project-in-ghana/"
+    ],
+    "verification_log": [
+      {"url": "https://lngprime.com/lng-terminals/tema-lng-fru-heading-towards-ghana/7826/", "tokens": ["Torman"], "result": "PASS", "note": "Names the FRU 'Torman', Jiangnan-built."},
+      {"url": "https://lngprime.com/africa/bv-wraps-up-ghana-fru-classification-work/15521/", "tokens": ["Torman"], "result": "PASS", "note": "BV classification of Torman FRU, specs (94.90m, 28,000 cbm)."},
+      {"url": "https://lngprime.com/africa/reganosa-scores-contract-for-ghanas-tema-lng-terminal/9599/", "tokens": ["national grid"], "result": "PASS", "note": "Confirms gas delivered into Ghana's national grid."},
+      {"url": "https://www.offshore-energy.biz/reganosa-to-run-lng-to-power-project-in-ghana/", "tokens": ["LNG-to-power"], "result": "PASS", "note": "Headline + body frame it explicitly as an LNG-to-power project run by Reganosa."},
+      {"url": "https://www.offshore-technology.com/projects/tema-liquefied-natural-gas-lng-terminal/", "tokens": ["domestic power generation"], "result": "FAIL", "note": "403 on verifier re-check; also this profile names a different, earlier-proposal vessel (Golar Tundra FSRU) than the GEM record's Vasant/Torman pairing, so not used regardless."},
+      {"url": "https://www.modernghana.com/news/406089/1/vra-signs-agreement-for-dual-fuel-conversion-work.html", "tokens": ["Tema"], "result": "FAIL", "note": "Guessed URL for a real headline seen in Google News RSS ('VRA signs agreement for dual fuel conversion works at Tema Thermal Power', Modern Ghana 2012) could not be resolved to a working direct link; dropped, not cited."}
+    ],
+    "gogpt_prior_assessment": "The nearby GOGPT plant, Tema Thermal Power Complex (190MW per the prior; ~236MW combined per Wikipedia, TTPS1 110MW 2008 + TTPS2 50MW 2012, both Caterpillar diesel-generator based, later dual-fuel-converted), is owned/operated by Ghana's Volta River Authority (VRA) — a different host entirely from the Tema LNG Terminal Co./Reganosa-operated FSU/FRU. It is not fed captively from this terminal; if anything it is a plausible recipient of the terminal's regasified gas (a PowerPlantsSupplied candidate, not a CaptiveGasPower one). gogpt_captive=False for this plant looks correct on the ownership/direction grounds alone. info_url: https://en.wikipedia.org/wiki/Tema_Thermal_Power_Station (verified token 'Volta River Authority' PASS).",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "This terminal is a regasification import facility supplying gas to external power plants/industry, not itself a generating asset; GOGPT already tracks the actual generator (Tema Thermal Power Complex) as a separate record.",
+    "status_or_other_findings": "GEM's power_plants_supplied field for this terminal is currently blank, but every source found frames this as an explicit 'LNG-to-power' project feeding Ghana's national grid/Tema-area thermal plants — worth flagging to the Update workflow as a likely PowerPlantsSupplied fill (candidate: Tema Thermal Power Complex / VRA's Tema-area fleet), pending that batch's own sourcing. Not acted on here per this SOP's LNG-side-only, CaptiveGasPower-only scope.",
+    "notes": "FSU vessel is named 'Vasant' per the GEM record; no independent source for that specific name was found in this pass (only the FRU 'Torman' turned up in press coverage) — a future pass chasing 'Vasant' + LNG carrier registries may resolve the FSU's own identity/specs, which would also be the route to finding its onboard generation fuel."
+  },
+  {
+    "terminal": "Walvis Bay LNG Terminal",
+    "terminal_id": "T100000130622",
+    "country": "Namibia",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "red",
+    "captive_summary": "Both the export and import units at this Excelerate Energy (100%) FSRU project are cancelled (inferred / confirmed). GEM's own power_plants_supplied field already names 'Nathaniel Maxuilili' [likely 'Nathaniel Mahuilili', a NamPower Walvis Bay peaking plant] as the intended offtake, consistent with this having been a direction-test LNG-to-power scheme rather than a captive-power site. However, the project appears to have been cancelled before it reached a public, vessel-specific engineering design, and no source found describes any captive/on-site generation plan (or explicitly rules one out) for the terminal itself.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Extensive searching (Google News RSS sweeps across 'Walvis Bay LNG Namibia', 'Excelerate Walvis Bay Namibia FSRU', 'Nathaniel Mahuilili power station Walvis Bay LNG') surfaced general Namibian oil/gas and port-development coverage but no article describing this specific Excelerate FSRU project's design, cancellation rationale, or any power-generation component. No project profile page (power-technology.com pattern) exists for it (404).",
+    "refs": [],
+    "verification_log": [
+      {"url": "https://www.power-technology.com/projects/walvis-bay-lng-to-power-project-namibia/", "tokens": [], "result": "FAIL", "note": "404 — guessed URL pattern, no such profile page exists."},
+      {"url": "https://www.thenamibian.com.na/gas-powered-electricity-plant-for-walvis-bay/", "tokens": [], "result": "FAIL", "note": "DNS failure on guessed URL for a real headline seen only as a title in search leads; could not resolve the live article, so not cited. That headline may in any case refer to a separate, later NamPower/Xaris gas-to-power initiative distinct from the cancelled Excelerate FSRU project — unconfirmed."}
+    ],
+    "gogpt_prior_assessment": "The nearby GOGPT plant, Anixas II power station (49.5MW per the prior; commissioned as a ~54MW NamPower diesel-fired emergency power station in Walvis Bay), is a separate NamPower asset with no ownership or fuel-supply link to the Excelerate LNG project — different host, and (per Namibian press) diesel/HFO-fired rather than gas-fired, so it is correctly not captive to this terminal. info_url: https://greenbuildingafrica.co.za/namibia-commissions-54-mw-anixas-ii-power-station/ (verified token 'Anixas' PASS).",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "The cancelled LNG project never became a generating asset itself; Anixas II is already a distinct, unrelated GOGPT-trackable plant.",
+    "status_or_other_findings": "Both project units carry cancelled status in the GEM export (export unit inferred ~4y, import unit confirmed). No new-activity signal was found in this pass to suggest a revival worth flagging to Discovery's dormant-revival watch.",
+    "notes": "This is a genuinely thin public record (small, long-cancelled FSRU-to-power proposal); a future pass with working web-search access (this session's WebSearch budget was exhausted account-wide and most search engines block automated fetches) would be worth one more attempt before concluding definitively — flagging that this shard's negative findings here reflect real tool constraints, not just absence of a source."
+  }
+]

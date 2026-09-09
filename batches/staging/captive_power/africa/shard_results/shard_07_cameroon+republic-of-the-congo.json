@@ -1,0 +1,164 @@
+[
+  {
+    "terminal": "Cameroon FLNG Terminal",
+    "terminal_id": "T100000130247",
+    "country": "Cameroon",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "red",
+    "captive_summary": "Hilli Episeyo (Golar's converted Moss LNG carrier, moored ~10km offshore Kribi) runs four Black & Veatch PRICO single-mixed-refrigerant liquefaction trains (2.4 mtpa design capacity) but no public source found describes what powers the trains or the vessel's hotel load - no gas turbine, generator, or engine make/model/rating is disclosed anywhere located.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Offshore Energy's conversion-naming article confirms the process design ('four PRICO single mixed refrigerant liquefaction trains', '2.4 million tons of LNG per annum', converted from a '1975 built Moss LNG carrier'), and multiple startup/operations articles (Perenco/SNH contract start, full commercial operation) were checked for equipment detail - none mention power generation. The vessel is moored offshore with no shore grid link (supporting the brief's 'no grid -> self-generation' structural prior), but that prior is explicitly not a substitute for a documented finding, and none was found.",
+    "refs": [
+      "https://www.offshore-energy.biz/keppel-names-hilli-episeyo-flng-conversion/"
+    ],
+    "verification_log": [
+      {"url": "https://www.offshore-energy.biz/keppel-names-hilli-episeyo-flng-conversion/", "tokens": ["PRICO"], "result": "PASS", "note": "Confirms four PRICO single mixed refrigerant liquefaction trains."},
+      {"url": "https://www.offshore-energy.biz/keppel-names-hilli-episeyo-flng-conversion/", "tokens": ["2.4 million tons"], "result": "PASS", "note": "Confirms 2.4 mtpa design capacity."},
+      {"url": "https://www.offshore-energy.biz/flng-hilli-episeyo-starts-contract-with-perenco-snh/", "tokens": ["Perenco"], "result": "PASS", "note": "Checked for equipment detail - none found; startup/contract news only."}
+    ],
+    "gogpt_prior_assessment": "Kribi power station (216 MW, 13.1 km away) is Cameroon's onshore national-grid gas-fired plant (AES-Sonel/Globeleq-lineage, ENEO era) supplying the interconnected grid from onshore gas fields - it is not co-located with, nor built to serve, the offshore Hilli Episeyo FLNG facility. Could not locate an independently verifiable non-gem.wiki article specifically describing Kribi's ownership/fuel chain within available tools this session; the distance and grid-facing purpose (vs. an export FLNG with no domestic offtake) are sufficient to rule out a captive relationship on their own.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No captive generation was confirmed for this terminal, and the nearby GOGPT plant (Kribi) is an unrelated, independently-sited national-grid asset, not a candidate match either way.",
+    "status_or_other_findings": "GEM's operating status (all 4 trains, actual substatus) is consistent with all sources found - no status/FID/capacity/owner discrepancy surfaced.",
+    "notes": "Web search was unavailable for this entire shard (session budget exhausted before this agent's dispatch); research relied on WebFetch against a single trade-press site's internal search (offshore-energy.biz) plus direct URL guesses, most of which 404'd. This is a real gap worth a follow-up pass with search access - Golar's own 20-F filings or investor fact sheets are the likeliest place a power-plant description would live."
+  },
+  {
+    "terminal": "Cameroon LNG Terminal",
+    "terminal_id": "T100000130248",
+    "country": "Cameroon",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "",
+    "captive_summary": "Onshore LNG export plant proposed by GDF Suez/ENGIE and SNH near Kribi; reached only pre-FEED (Foster Wheeler, 2010) before ENGIE put the whole project on hold in July 2016, and it has stayed dormant since (GEM records it cancelled). No equipment-level design - liquefaction train count, power plant, anything - was ever published.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Offshore Energy: Foster Wheeler awarded a 'pre-front-end engineering design (pre-FEED) for the development of an onshore LNG plant and offshore gas gathering infrastructure' (2010); the same outlet: 'French utility and LNG player Engie has put on hold its plans on building a liquefied natural gas export plant on the coast of the Kribi region' (July 2016). No later article resumes the project or discloses further design detail.",
+    "refs": [
+      "https://www.offshore-energy.biz/foster-wheeler-awarded-contract-by-gdf-suez-for-cameroon-lng-project/",
+      "https://www.offshore-energy.biz/engie-puts-cameroon-lng-project-on-hold/"
+    ],
+    "verification_log": [
+      {"url": "https://www.offshore-energy.biz/foster-wheeler-awarded-contract-by-gdf-suez-for-cameroon-lng-project/", "tokens": ["pre-FEED"], "result": "PASS", "note": "Confirms pre-FEED-only stage in 2010."},
+      {"url": "https://www.offshore-energy.biz/engie-puts-cameroon-lng-project-on-hold/", "tokens": ["on hold"], "result": "PASS", "note": "Confirms 2016 hold, consistent with GEM's cancelled status."}
+    ],
+    "gogpt_prior_assessment": "No GOGPT prior plant was given for this terminal.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Never built, never reached detailed design; there is no plant of any kind to add.",
+    "status_or_other_findings": "GEM's cancelled status (inferred ~4y) is consistent with the 2016 on-hold announcement and the absence of any subsequent activity found.",
+    "notes": "Screen criterion: cancelled at pre-FEED (conceptual) stage only, no equipment-level design ever published - not a captive-power candidate of any kind."
+  },
+  {
+    "terminal": "Etinde FLNG Terminal",
+    "terminal_id": "T100000130913",
+    "country": "Cameroon",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "red",
+    "captive_summary": "Etinde is a shallow-water gas-condensate field development (New Age/Bowleven/LUKOIL, later Perenco-operated) that reached a TechnipFMC FEED award, but the FEED-stage development concept found describes an ONSHORE gas processing, storage and export facility, not a floating unit - contradicting GEM's own floating=True/offshore=True tag on this terminal. No power-generation detail was found for either concept, and design work appears to have stalled ('long-stalled', per the most recent operatorship-transfer article) before any equipment-level disclosure.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Offshore Energy, on the FEED award: 'The initial phase of the development concept proposed by the JV partners comprises an onshore gas processing, storage and export facility linked to an unmanned well head platform with associated pipeline infrastructure' (Mar 2020) - several 'development screening concept studies' were still underway at that point. A later article on Perenco taking over operatorship calls Etinde a 'long-stalled gas-condensate project' with no design update given.",
+    "refs": [
+      "https://www.offshore-energy.biz/new-age-hands-out-etinde-feed-award-to-technipfmc/",
+      "https://www.offshore-energy.biz/perenco-inks-deal-with-new-age-to-take-over-etinde-permit-operatorship/"
+    ],
+    "verification_log": [
+      {"url": "https://www.offshore-energy.biz/new-age-hands-out-etinde-feed-award-to-technipfmc/", "tokens": ["onshore gas processing"], "result": "PASS", "note": "Confirms the FEED-stage concept was an onshore facility, not FLNG."},
+      {"url": "https://www.offshore-energy.biz/perenco-inks-deal-with-new-age-to-take-over-etinde-permit-operatorship/", "tokens": ["long-stalled"], "result": "PASS", "note": "Confirms the project remains stalled with no fresher design news."}
+    ],
+    "gogpt_prior_assessment": "Limbe power station (350 MW, 24.45 km away) is a separate onshore national-grid gas plant, not co-located with the Etinde field or any of its studied development concepts (onshore or floating). Could not locate an independently verifiable non-gem.wiki source describing Limbe's ownership/fuel chain within available tools this session; distance alone rules out a captive relationship.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No generation of any kind confirmed at Etinde itself; the nearby GOGPT plant is unrelated.",
+    "status_or_other_findings": "Design-concept conflict worth flagging to a future Update/QC pass: the 2020 FEED-stage concept found is explicitly an ONSHORE facility, while GEM's terminal record for 'Etinde FLNG Terminal' carries floating=True/offshore=True. Either an earlier/alternate floating concept existed that this search didn't surface, or the GEM record's floating/offshore flags should be reconsidered against the onshore FEED concept - this is outside this agent's scope to resolve.",
+    "notes": "See status_or_other_findings for the onshore-vs-floating design conflict, which should route to Update/QC rather than be silently resolved here."
+  },
+  {
+    "terminal": "Congo FLNG Terminal",
+    "terminal_id": "T100000131003",
+    "country": "Republic of the Congo",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "red",
+    "captive_summary": "Tango FLNG (EXMAR-built barge, ex-Caribbean FLNG, now Eni/Vitol-owned, moored 3km offshore Pointe-Noire alongside the Excalibur FSU) runs a Black & Veatch PRICO liquefaction process at ~0.5-0.6 mtpa, but no source found - across construction, commissioning, topsides-installation, or startup coverage going back to the vessel's original 2013-2017 build - describes its power generation system. The GEM record's existing ref (marinelink) does not contain the word 'generator' or the phrase 'power generation' and cannot support the current True value.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Checked topsides-installation, commissioning, and startup articles from the vessel's original construction (as Caribbean FLNG) through its Congo redeployment; all describe the PRICO process and capacity but none itemize power-generation equipment. The vessel is moored off-grid (supports the brief's structural 'no grid -> self-generation' prior), and its sister unit in the same Eni Congo program (Nguya FLNG, this shard's other Congo terminal) IS confirmed to run dual-fuel essential generators - but that is evidence about a different vessel, not a documented finding for Tango itself, so per the brief's own Hadera-overturn convention the verdict here is INSUFFICIENT, not YES or NO.",
+    "refs": [],
+    "verification_log": [
+      {"url": "https://www.marinelink.com/news/tango-flng-excalibur-fsu-set-begin-508936", "tokens": ["power generation"], "result": "FAIL", "note": "GEM's existing ref for this cell - confirmed it does not mention power generation at all."},
+      {"url": "https://www.marinelink.com/news/tango-flng-excalibur-fsu-set-begin-508936", "tokens": ["generator"], "result": "FAIL", "note": "Same URL, second token check - also fails; the article only covers capacity and mooring logistics."},
+      {"url": "https://www.offshore-energy.biz/black-veatch-completes-tech-test-on-tango-flng/", "tokens": ["PRICO"], "result": "PASS", "note": "Confirms PRICO process and ~0.5 mtpa capacity; no power-generation detail present."}
+    ],
+    "gogpt_prior_assessment": "Centrale Electrique du Congo (CEC), 1000 MW, 3.8 km away, is Congo's major national-grid CCGT plant at Pointe-Noire, built years before Tango FLNG arrived (2023) and fed by upstream associated gas (historically from the M'Boundi/Nenè-area fields) to supply the domestic grid, not the FLNG vessel. Could not locate an independently verifiable non-gem.wiki source on CEC's ownership/fuel chain within available tools this session. It is not this terminal's captive plant - if anything the relationship (upstream associated gas from the same license area feeding CEC) is a PowerPlantsSupplied-shaped question for the FIELD/upstream side, not this marine LNG terminal, which does not itself pipe gas to CEC.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No captive generation confirmed at this terminal; CEC is an unrelated, pre-existing national grid asset.",
+    "status_or_other_findings": "GEM's operating status is consistent with all sources (first LNG cargo Feb 2024 per nsenergybusiness.com's Congo LNG project profile). No status/capacity/owner discrepancy surfaced.",
+    "notes": "Existing GEM CaptiveGasPower=True rests on a ref (marinelink) that does not support the claim (verified FAIL above) - flagging for QC. The sister vessel Nguya FLNG (Eni Congo FLNG II Terminal, this same shard) IS confirmed to run dual-fuel essential generators via a different source; a future pass with working search access should check whether that same finding (or a program-wide equipment standard) extends to Tango specifically before this cell is finalized."
+  },
+  {
+    "terminal": "Eni Congo FLNG II Terminal",
+    "terminal_id": "T100000131123",
+    "country": "Republic of the Congo",
+    "verdict": "YES",
+    "mechanical": "False",
+    "captive_category": "power_generation",
+    "hardware_summary": "Dual-fuel essential generators plus waste heat recovery units (WHRU) supplying the FLNG's own power and hotel load; no model/count/MW rating disclosed in the source found.",
+    "fuel_basis": "Source states 'dual-fuel essential generators' powering the unit - dual-fuel by definition burns gas (with liquid backup); no specific engine/turbine model named.",
+    "confidence": "yellow",
+    "captive_summary": "Nguya FLNG (Wison-built, 2.4 mtpa, Eni Congo 100%-owned, moored offshore Pointe-Noire as the second unit of Eni's Congo LNG project) is described by Offshore Energy as running 'dual-fuel essential generators and waste heat recovery units (WHRU)' as part of its emissions-reduction design - i.e. on-site gas-fired power generation for the FLNG's own load, not grid-drawn power (the vessel is moored offshore with no shore grid connection).",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Offshore Energy, 'New unit ready to complete FLNG pair at Eni's Congolese project' (26 Aug 2025): describes FLNG Nguya's 'reduced carbon footprint due to its design, technology, and zero-flaring approach' delivered via 'dual-fuel essential generators and waste heat recovery units (WHRU)'. This is the only publisher found stating the fact (single non-primary source - confidence yellow, per brief rules); no second independent corroboration was found despite searching the same outlet, Eni's own site, Wison's site, and several trade-press sites, most of which 404'd or had no matching coverage.",
+    "refs": [
+      "https://www.offshore-energy.biz/new-unit-ready-to-complete-flng-pair-at-enis-congolese-project/"
+    ],
+    "verification_log": [
+      {"url": "https://www.offshore-energy.biz/new-unit-ready-to-complete-flng-pair-at-enis-congolese-project/", "tokens": ["dual-fuel essential generators"], "result": "PASS", "note": "Confirms the onboard power generation claim verbatim."},
+      {"url": "https://www.offshore-energy.biz/new-unit-ready-to-complete-flng-pair-at-enis-congolese-project/", "tokens": ["waste heat recovery"], "result": "PASS", "note": "Confirms the WHRU detail on the same page."},
+      {"url": "https://www.youtube.com/shorts/lGBy3NoLdUQ", "tokens": ["generator"], "result": "FAIL", "note": "GEM's existing ref for this cell - does not contain 'generator' or support the claim; replaced by the offshore-energy.biz source above."}
+    ],
+    "gogpt_prior_assessment": "No GOGPT prior plant was given for this terminal.",
+    "gogpt_candidate": "REVIEWER CALL",
+    "gogpt_candidate_basis": "Real onboard generation is confirmed, but it is vessel-mounted (FSRU/FLNG-style onboard gensets) with no citable standalone nameplate MW, and it's unclear whether GOGPT's ontology captures FLNG onboard generation as a separate power-station record.",
+    "status_or_other_findings": "GEM's operating status and the Nguya vessel identification match the sourced 2.4 mtpa second-phase FLNG described in trade press (Wison EPCIC, sailaway/tow to Congo Aug-Sep 2025). No status/capacity/owner discrepancy surfaced.",
+    "notes": "Replace the current CaptiveGasPower [ref] (a YouTube Shorts URL that does not support the claim) with the offshore-energy.biz citation above - same True value, better-sourced ref."
+  },
+  {
+    "terminal": "Nkossa FLNG Terminal",
+    "terminal_id": "T100001083728",
+    "country": "Republic of the Congo",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "red",
+    "captive_summary": "Trident Energy (85%)/SNPC (15%) proposed FLNG at the Nkossa field is very early-stage - no engineering, FEED, or vessel-selection announcement was found. The only Nkossa-related coverage located is an unrelated 2010 SBM Offshore article about the pre-existing Nkossa II LPG FSO (a Total/Chevron/SNPC asset, not this proposed FLNG project).",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "No public source describing the Nkossa FLNG project's design, contractor, or equipment was found. Trident Energy took over Congo assets circa 2022-2023 (per GEM's own operator field) but no FEED/design-stage announcement for a captive FLNG project at Nkossa surfaced in this search.",
+    "refs": [],
+    "verification_log": [
+      {"url": "https://www.offshore-energy.biz/sbm-offshore-receives-contracts-extensions-from-total-for-operations-in-africa/", "tokens": ["Nkossa"], "result": "PASS", "note": "Confirmed as the only Nkossa-adjacent hit, but it describes the unrelated pre-existing Nkossa II LPG FSO (Total/Chevron/SNPC), not Trident's proposed FLNG - not used as a captive-power source."}
+    ],
+    "gogpt_prior_assessment": "No GOGPT prior plant was given for this terminal.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Nothing built or designed yet; no plant exists to add.",
+    "status_or_other_findings": "GEM's proposed status is consistent with the complete absence of design-stage news found for this project.",
+    "notes": "Pre-design-disclosure proposed project; a future pass should check Trident Energy's own investor materials/website directly (not reachable via the search tools available this session) for any FID-track updates."
+  }
+]

@@ -1,0 +1,34 @@
+[
+  {
+    "terminal_id": "T100000130810",
+    "unit_id": "G100002081001",
+    "terminal_name": "Costa Azul LNG Terminal",
+    "unit_name": "Export Terminal Phase 1",
+    "operation": "append",
+    "status": "operating",
+    "sub_status": "actual",
+    "year": 2026,
+    "part_of_year": "July",
+    "notes": "Existing Postgres timeline (fetch_timeline.py) had entries reflecting proposal (2015, Phase-2 context)/construction-NTP (2020-11)/planned-startup (2026) stages. First LNG export cargo shipped 2026-07-08 per EIA.gov (Today in Energy) and Natural Gas Intel. This append is a legal construction→operating transition (lifecycle_rules.md transition graph allows it directly); no non-monotonic concern.",
+    "source_url": "https://www.eia.gov/todayinenergy/detail.php?id=67884",
+    "confidence": "green",
+    "legal_transition_check": "construction -> operating: LEGAL (direct transition permitted by lifecycle_rules.md's transition graph; standard 'startup achieved' path).",
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130984",
+    "unit_id": "G100002098401",
+    "terminal_name": "Vista Pacifico LNG Terminal",
+    "unit_name": "--",
+    "operation": "append",
+    "status": "cancelled",
+    "sub_status": "confirmed",
+    "year": 2025,
+    "part_of_year": "December",
+    "notes": "Existing Postgres timeline (fetch_timeline.py) had 2 entries: proposed (2020-11) and a planned-startup marker at 2025 (now obsolete/superseded by this cancellation, not a conflicting entry). Sempra's non-binding CFE development agreement (extended through Dec 2025 per the prior researcher's Sep-2025 note) was not renegotiated; the project was ended in December 2025 per Mexico Business News and Natural Gas Intel (both independently token-verified for '2025' and 'December'). This append is a legal proposed→cancelled transition per lifecycle_rules.md (direct transition, no intervening shelved phase, is permitted).",
+    "source_url": "https://mexicobusiness.news/energy/news/sempra-infrastructure-cancels-vista-pacifico-lng-project",
+    "confidence": "green",
+    "legal_transition_check": "proposed -> cancelled: LEGAL (direct transition permitted by lifecycle_rules.md's transition graph).",
+    "researcher_initials": "AI-draft (sweep)"
+  }
+]

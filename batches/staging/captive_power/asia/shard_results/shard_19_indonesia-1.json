@@ -1,0 +1,194 @@
+[
+  {
+    "terminal": "Abadi LNG Terminal",
+    "terminal_id": "T100000130274",
+    "country": "Indonesia",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "red",
+    "captive_summary": "Abadi (Masela Block) is a proposed 9.5 mtpa ONSHORE LNG plant (design converted from FLNG to onshore by 2015 government mandate; Shell withdrew 2020). FEED work only commenced August 2025 (dual-FEED consortiums, KBR among contractors) and the environmental permit (izin lingkungan/AMDAL) was only issued February 2026; site preparation/groundbreaking is only now getting underway. No power-generation/utilities design (gas turbines vs. grid feed, fuel-gas system) has been published yet.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "INPEX's own project announcements (inpex.com) and trade press (OGJ, NS Energy, Indonesia Business Post, Fugo-Tech) confirm the project is only at FEED-commencement stage as of Aug 2025 for the onshore plant, with AMDAL/environmental permit issued Feb 2026 (Indonesian press: CNBC Indonesia, dunia-energi.com, Kontan, Liputan6). None of these, nor INPEX's project page, describe the plant's power/utility system design. A dedicated search for topside/utility gas-turbine or power-generation specifications returned nothing published.",
+    "refs": [],
+    "verification_log": [],
+    "gogpt_prior_assessment": "No GOGPT plant supplied in the shard for this terminal; none identified independently either — project is pre-construction.",
+    "gogpt_candidate": "MAYBE",
+    "gogpt_candidate_basis": "As a 9.5 mtpa onshore liquefaction train, an on-site gas-fired power/utility system is near-certain once FEED completes (this is universal for plants of this class, e.g. Bontang in this same shard), but nothing is filed or published yet to cite a nameplate or even confirm the design choice — revisit once FEED/AMDAL technical annexes are public.",
+    "status_or_other_findings": "Confirms current status matches GEM (proposed/FEED): AMDAL issued Feb 2026 per Indonesian press (CNBC Indonesia, dunia-energi.com); FEED (onshore plant) commenced Aug 4, 2025 per INPEX corporate release (inpex.com/english/news/upload/20250804.pdf); design converted from floating to onshore in 2015 (matches GEM's blank 'floating' field). Not staged — informational only.",
+    "notes": "Project history note (not a captive-power finding): originally envisioned as FLNG; Indonesia's government mandated an onshore design in 2015, which is why GEM's floating/offshore fields are blank for this terminal. Re-check this terminal once FEED technical documentation becomes public."
+  },
+  {
+    "terminal": "Amurang FSRU",
+    "terminal_id": "T100000130869",
+    "country": "Indonesia",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "Amurang (Hua Xiang 8m FSRU, 14,000/13,720 cbm, built 2016, operated by PT Sulawesi Regas Satu, a JV of PLN GG and PT Humpuss) is a small-scale, single-purpose LNG-to-power project: its entire function is supplying regasified LNG to the separate, adjacent Karadeniz Powership 'Zeynep Sultan' (a 125 MW Karpowership floating power barge with its own dual-fuel engines). No source describes the Hua Xiang FSRU itself carrying any on-site power generation of its own beyond standard ship-service equipment; the power generation belongs entirely to the Zeynep Sultan powership, a separate vessel/host. This is the direction-test case: gas flows OUT of the FSRU to the powership, not into a captive plant serving the FSRU.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "LNG Journal and Offshore Energy (2019 launch coverage) both state the Hua Xiang 8/8m FSRU is 'operated by PT Sulawesi Regas Satu, a joint venture of PLN GG and PT Humpuss' and exists to feed the Karpowership; LNG Prime confirms 'the 125MW powership Zeynep Sultan started producing power using LNG' via 'the successful conversion of its first two dual-fuel engines' — i.e. the generation asset is the powership's own engines, a different vessel/owner from the FSRU. GEM's own gogpt fields already record gogpt_captive=False and PowerPlantsSupplied='Powership Zeynep Sultan', consistent with this finding.",
+    "refs": [
+      "https://www.offshore-energy.biz/karpowership-kicks-off-first-floating-lng-to-power-project-in-indonesia/",
+      "https://lngprime.com/lng-terminals/karpowership-in-lng-to-power-milestone/4898/"
+    ],
+    "verification_log": [
+      {"url": "https://www.offshore-energy.biz/karpowership-kicks-off-first-floating-lng-to-power-project-in-indonesia/", "tokens": ["Sulawesi Regas Satu", "Humpuss"], "result": "PASS", "note": "confirms FSRU operator/JV, separate from the powership"},
+      {"url": "https://lngprime.com/lng-terminals/karpowership-in-lng-to-power-milestone/4898/", "tokens": ["dual-fuel", "125"], "result": "PASS", "note": "confirms Zeynep Sultan powership's own dual-fuel engines generate the 125 MW, not the FSRU"}
+    ],
+    "gogpt_prior_assessment": "Confirmed NOT this terminal's captive power. Karpowership (Indonesia) Zeynep Sultan power station is a separate floating power plant (its own vessel, its own dual-fuel engines) that the Amurang FSRU exists solely to supply with regasified LNG — classic PowerPlantsSupplied direction, not captive. Independent non-gem.wiki source: https://lngprime.com/lng-terminals/karpowership-in-lng-to-power-milestone/4898/ (\"the 125MW powership Zeynep Sultan started producing power using LNG\").",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "GOGPT record already exists (Karpowership (Indonesia) Zeynep Sultan power station, per the shard's gogpt_plant field) and it is correctly the SUPPLY-side relationship, not this terminal's captive plant.",
+    "status_or_other_findings": "None beyond confirming retired status is consistent with public reporting (project was a short-lived early Karpowership LNG-to-power pilot).",
+    "notes": "Textbook PowerPlantsSupplied direction-test case: GEM's power_plants_supplied field ('Powership Zeynep Sultan') already correctly captures this relationship; do not also flag it as captive."
+  },
+  {
+    "terminal": "Arun LNG Terminal",
+    "terminal_id": "T100000130275",
+    "country": "Indonesia",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "The Arun site (PT Perta Arun Gas, converted from LNG liquefaction/export to regasification in 2015, 400 MMSCFD nominal regas capacity) supplies regasified gas to at least two separate, PLN-affiliated merchant/grid power plants located in the adjacent KEK Arun economic zone — a Wartsila-equipped ~184 MW peaking plant and the PLN-built, PT Sewatama-operated 250 MW 'PLTMG Arun II' (13 gas engines) — both explicitly built to supply the regional Aceh/North Sumatra grid, not to power the terminal itself. No source describes PT Perta Arun Gas operating its own dedicated on-site generation; the terminal's role is gas supplier to these external plants (direction-test NO).",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Wartsila's own project reference page states its Arun plant runs '19 x Wartsila 20V34SG' engines on LNG, 184 MW, and 'will be used purely for peaking as a grid stabilising plant.' Separately, Antara Foto and Medcom.id report the co-located 'PLTMG Arun II': 'PLTMG berkapasitas 250 Megawatt yang dibangun PT PLN (Persero) dan dioperasikan penuh oleh PT Sewatama untuk memenuhi kebutuhan listrik di Aceh dan sebagian Sumatera Utara' (a 250 MW gas-engine plant built by PT PLN and operated by PT Sewatama to meet Aceh/North Sumatra electricity demand). Both plants are PLN-directed grid assets, not PT Perta Arun Gas's own captive plant; no independent source found describing the terminal itself running on-site generation.",
+    "refs": [
+      "https://www.wartsila.com/energy/learn-more/references/utilities/arun-sumatra-indonesia",
+      "https://www.antarafoto.com/view/1550381/pltmg-arun-ii-aceh",
+      "https://www.medcom.id/ekonomi/bisnis/GbmqyVLb-pltmg-ii-arun-mampu-penuhi-pasokan-listrik-aceh"
+    ],
+    "verification_log": [
+      {"url": "https://www.wartsila.com/energy/learn-more/references/utilities/arun-sumatra-indonesia", "tokens": ["184 MW", "peaking"], "result": "PASS", "note": "confirms 184 MW Wartsila plant is a PLN-market peaking plant, not a terminal utility"},
+      {"url": "https://www.antarafoto.com/view/1550381/pltmg-arun-ii-aceh", "tokens": ["Sewatama", "PLN"], "result": "PASS", "note": "confirms PLTMG Arun II built by PLN, operated by Sewatama"},
+      {"url": "https://www.medcom.id/ekonomi/bisnis/GbmqyVLb-pltmg-ii-arun-mampu-penuhi-pasokan-listrik-aceh", "tokens": ["PLN", "Aceh"], "result": "PASS", "note": "confirms grid-supply purpose (Aceh/North Sumatra demand)"},
+      {"url": "https://manado.antaranews.com/berita/124526/pltmg-ii-arun-250-mw-penuhi-kebutuhan-listrik-aceh", "tokens": ["PLN", "Sewatama"], "result": "FAIL", "note": "page loaded but 'Sewatama' token not found in fetched text; superseded by the antarafoto.com citation which passed"}
+    ],
+    "gogpt_prior_assessment": "Confirmed NOT this terminal's captive power. 'Arun II power station' (240.5 MW per the shard) matches the PLN-built, Sewatama-operated 'PLTMG Arun II' (250 MW, 13 gas engines) documented above — a PLN grid asset in the KEK Arun economic zone fed by the terminal's regasified gas, i.e. the PowerPlantsSupplied direction, not captive. Independent non-gem.wiki source: https://www.antarafoto.com/view/1550381/pltmg-arun-ii-aceh.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "GOGPT record already exists (Arun II power station) and correctly represents the supply-side relationship (terminal feeds this external PLN plant), not a captive plant belonging to the terminal.",
+    "status_or_other_findings": "None beyond the plant identifications above; no capacity/status conflicts noticed.",
+    "notes": "Recommend flagging in GEM's PowerPlantsSupplied field if not already present: the Arun terminal supplies at least two external PLN/grid gas power plants (the Wartsila 184 MW plant and PLTMG Arun II, 250 MW) in the KEK Arun zone — a different batch's task, not staged here."
+  },
+  {
+    "terminal": "Australasia Probolinggo FSRU",
+    "terminal_id": "T100000130870",
+    "country": "Indonesia",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "yellow",
+    "captive_summary": "Cancelled-and-never-built floating LNG import hub proposal (also known as 'East Java FSRU Terminal' / AALNG LNG Hub at Probolinggo Port). Progressed only to a pre-FEED study before going cold; GEM already carries it as cancelled (inferred 4y).",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Trade press confirms 'KBR has been awarded a pre-front end engineering and design (FEED) study for Australasia LNG Indonesia's (AALNG) proposed LNG Hub terminal' at Probolinggo — i.e. the project never advanced past a pre-FEED study. No construction, EPC award, or FID news found after that; the same Probolinggo port site has since been re-offered to other developers (PT Petrogas Jatim Utama / Woodside partnership, a distinct later proposal), confirming the original Australasia project did not proceed.",
+    "electric_mw_note": "",
+    "refs": [
+      "https://www.constructionboxscore.com/project-news/kbr-awarded-pre-feed-study-for-indonesian-lng-regas-project.aspx"
+    ],
+    "verification_log": [
+      {"url": "https://www.constructionboxscore.com/project-news/kbr-awarded-pre-feed-study-for-indonesian-lng-regas-project.aspx", "tokens": ["pre-FEED", "AALNG"], "result": "PASS", "note": "confirms project stalled at pre-FEED study stage"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT plant supplied or identified; screened before deep research.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Project never progressed past a pre-FEED study; nothing was ever built.",
+    "status_or_other_findings": "Confirms cancelled/dormant status is consistent with GEM's inferred-cancelled flag; a later, separate Probolinggo LNG hub proposal (PT Petrogas Jatim Utama with Woodside) has since surfaced at the same port — that is a DIFFERENT sponsor/project, not a revival of this GEM record, per the dormant-revival-watch rule. Worth flagging to Discovery to confirm whether the PJU/Woodside proposal needs its own GEM record.",
+    "notes": "Screen criterion: cancelled, progressed only to pre-FEED study, no design ever published to evaluate captive power against."
+  },
+  {
+    "terminal": "Batam LNG Terminal",
+    "terminal_id": "T100000130865",
+    "country": "Indonesia",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "yellow",
+    "captive_summary": "Cancelled-and-never-built onshore LNG import terminal proposal at Batam (JFE Engineering + PT Medco Energi Internasional, agreement reported c. 2012). No further construction/FID news found; GEM already carries it as cancelled (inferred 4y).",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Construction Boxscore reported 'JFE has signed a deal with Indonesian power firm Medco Energi to build an onshore LNG terminal on Batam' — an early-stage agreement with no subsequent construction/completion coverage found. (Note: Medco separately built its own gas-fired PLTG power plant at Tanjung Uncang, Batam, completed ~2014 — but that is Medco's own merchant power project, unrelated to this LNG import terminal proposal, and is not evidence of the terminal's own captive power.)",
+    "refs": [
+      "https://www.constructionboxscore.com/project-news/jfe-joins-indonesia-lng-import-project.aspx"
+    ],
+    "verification_log": [
+      {"url": "https://www.constructionboxscore.com/project-news/jfe-joins-indonesia-lng-import-project.aspx", "tokens": ["JFE", "Medco"], "result": "PASS", "note": "confirms the JFE/Medco LNG-import agreement, no build-out found afterward"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT plant supplied or identified; screened before deep research.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Never built; no facility exists to hold a captive plant.",
+    "status_or_other_findings": "Distinguish from Medco's separate Tanjung Uncang PLTG (gas power plant) in Batam — that is an unrelated Medco Power merchant project, not fed by or part of this LNG terminal proposal; do not conflate the two in future batches.",
+    "notes": "Screen criterion: cancelled/never built — only an early commercial agreement was ever reported, no EPC/construction news."
+  },
+  {
+    "terminal": "Bojonegara LNG Terminal",
+    "terminal_id": "T100000130277",
+    "country": "Indonesia",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "Officially and confirmedly cancelled: Pertamina formally terminated its cooperation with Kalla Group's PT Bumi Sarana Migas on the Bojonegara LNG regasification terminal (Banten) in July 2018, citing insufficient gas-purchase commitment from PLN. Never built.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Medcom.id (2018): 'PT Pertamina decided to halt the LNG regasification terminal project in Bojonegara, Serang, Banten initiated by Kalla Group subsidiary,' corroborated by Kontan.co.id, Bisnis.com and JawaPos.com contemporaneous 2018 coverage of the official termination, citing inadequate demand commitment from PLN.",
+    "refs": [
+      "https://www.medcom.id/ekonomi/energi/Rb1VLRxk-pertamina-hengkang-dari-proyek-lng-kalla-group-di-bojonegara"
+    ],
+    "verification_log": [
+      {"url": "https://www.medcom.id/ekonomi/energi/Rb1VLRxk-pertamina-hengkang-dari-proyek-lng-kalla-group-di-bojonegara", "tokens": ["Bojonegara"], "result": "PASS", "note": "confirms Pertamina's official 2018 termination of the project"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT plant supplied or identified; screened before deep research.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Officially and confirmedly cancelled before construction; nothing was ever built.",
+    "status_or_other_findings": "Matches GEM's 'cancelled (confirmed)' status — this is a genuine confirmed (not merely inferred) cancellation, well-documented in contemporaneous Indonesian business press.",
+    "notes": "Screen criterion: confirmed-cancelled, officially terminated by Pertamina in 2018, well before any construction."
+  },
+  {
+    "terminal": "Bontang LNG Terminal",
+    "terminal_id": "T100000130278",
+    "country": "Indonesia",
+    "verdict": "YES",
+    "mechanical": "True",
+    "captive_category": "mechanical_drive+power_generation",
+    "hardware_summary": "Gas-fired boilers raise steam for a steam turbine that drives the LNG train refrigerant compressor (mechanical drive, currently being studied for replacement by a PLN-grid-fed 160 MVA electric motor drive — conversion not yet complete). Separately, a 13.4 MW gas turbine at the Badak LNG plant is documented in the plant's own 'Equipment Technical Data Book' (1998), cited in a 2021 peer-reviewed power-augmentation case study by a PT Badak NGL engineer — a paper topic (inlet-air-cooling power augmentation) applied to generation-duty gas turbines, consistent with an on-site gas turbine generator.",
+    "fuel_basis": "PT Badak NGL's own 2023 statement (via the PLN MOU signing) explicitly attributes the compressor-drive steam turbine's energy to 'steam obtained from combustion in boilers that use fuel gas' — i.e. natural/fuel gas combustion, not another fuel. The 13.4 MW unit is termed a 'gas turbine' in the equipment data book reference.",
+    "confidence": "green",
+    "captive_summary": "PT Badak NGL (Bontang LNG) currently runs its refrigerant-compressor steam turbine on steam raised by fuel-gas-fired boilers — an on-site gas-fired mechanical drive system — and separately maintains at least one 13.4 MW gas turbine per its own 1998 equipment data book (cited in a 2021 power-augmentation study). PT Badak is in early-stage discussions (MOU signed Sept 2023 with PLN, feasibility study only) to replace the steam-turbine compressor drive with a 160 MVA PLN-grid-fed electric motor — i.e. a partial migration toward grid supply that had not been completed as of the source date, so the gas-fired drive remains the documented current arrangement.",
+    "electric_mw": "13.4",
+    "mechanical_drive_note": "Steam turbine (capacity undisclosed) driving the LNG train's refrigerant compressor, fed by steam from fuel-gas-fired boilers; slated for possible future replacement by a 160 MVA electric motor drive per the Sept 2023 Badak LNG–PLN MOU (study/feasibility stage only, not yet implemented).",
+    "confirmed_how": "(1) Dunia-Energi (23 Sept 2023), reporting the Badak LNG–PLN MOU signing at IOG 2023: President Director Gema Iriandus Pahalawan describes 'reducing energy use for the steam turbine which functions as a driver for the refrigerant compressor,' achieved historically 'from steam obtained from combustion in boilers that use fuel gas,' with the MOU studying replacement by 'a variable speed motor to drive the refrigerant compressor using electrical energy supplied from PLN with a total power of 160 MVA' (i.e. a future/proposed change, not yet in effect). (2) Crossref metadata for Permana, D., 'Gas turbine power augmentation, Badak LNG case study,' AIP Conf. Proc. 2403, 080001 (2021) [DOI 10.1063/5.0073900], lists as reference c4: '\"Equipment Technical Data Book\", (13.4MW gas turbine in Badak LNG, 1998)' — confirming a specific on-site gas turbine at Badak LNG documented in the plant's own equipment records; the paper's subject (power augmentation via inlet-air cooling) is a technique applied to generation-duty turbines.",
+    "refs": [
+      "https://www.dunia-energi.com/collaborating-with-pln-badak-lng-encourages-innovation-to-increases-efficiency/",
+      "https://api.crossref.org/works/10.1063/5.0073900"
+    ],
+    "verification_log": [
+      {"url": "https://www.dunia-energi.com/collaborating-with-pln-badak-lng-encourages-innovation-to-increases-efficiency/", "tokens": ["fuel gas", "boilers"], "result": "PASS", "note": "confirms gas-fired boilers raise the steam driving the compressor turbine"},
+      {"url": "https://api.crossref.org/works/10.1063/5.0073900", "tokens": ["13.4MW"], "result": "PASS", "note": "Crossref reference metadata for the 2021 AIP power-augmentation paper confirms the '13.4MW gas turbine in Badak LNG, 1998' citation"},
+      {"url": "https://ui.adsabs.harvard.edu/abs/2021AIPC.2403h0001P/abstract", "tokens": ["Black Out Start Up Unit", "gas turbine driven generator"], "result": "FAIL", "note": "ADS abstract page returns HTTP 202 (client-rendered, no server-side text); search-snippet had quoted 'several steam turbine driven generators and two units of Black Out Start Up Unit (BOSU)...one gas turbine driven generator (GTG)' but this could not be independently verified via direct fetch or Wayback (no snapshot available) — NOT relied upon for the verdict, included here only per the log-all-FAILs instruction"},
+      {"url": "https://iopscience.iop.org/article/10.1088/1742-6596/2943/1/012005", "tokens": ["112.5 MW"], "result": "FAIL", "note": "page loads (title/author metadata for a genuine 2025 J. Phys. Conf. Ser. paper by a PT Badak NGL author confirmed) but abstract text with the '112.5 MW internal power generation capacity' quote is not present in the fetched HTML; PDF endpoint is blocked by a Radware bot-manager challenge with no Wayback snapshot available — the 112.5 MW figure is therefore NOT cited/staged"},
+      {"url": "https://www.researchgate.net/publication/356733076_Gas_turbine_power_augmentation_Badak_LNG_case_study", "tokens": ["Badak LNG", "gas turbine"], "result": "FAIL", "note": "HTTP 403, no Wayback snapshot available; not used"},
+      {"url": "https://www.porttechnology.org/wp-content/uploads/2019/05/PT46-35.pdf", "tokens": ["GE Frame 9"], "result": "FAIL", "note": "PDF read directly: article is about Qatargas/Gorgon/Adriatic LNG GE turbomachinery; does not mention Bontang/Badak at all — discarded, not used"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT plant supplied in the shard for this terminal.",
+    "gogpt_candidate": "MAYBE",
+    "gogpt_candidate_basis": "A citable nameplate exists for one unit (13.4 MW gas turbine, per the 1998 equipment data book reference) but its exact generation-vs-mechanical duty and current operating status are not independently confirmed by a descriptive (non-bibliographic) source, and the plant's often-cited '112.5 MW internal power generation capacity' figure could not be verified against any accessible page. Revisit with a source that directly describes the generation fleet (unit count, duty, capacity) rather than a bibliographic reference.",
+    "status_or_other_findings": "PT Badak NGL and PLN signed an MOU (Sept 2023) to study converting the refrigerant-compressor drive from steam turbine to a 160 MVA PLN-grid-fed electric motor — feasibility-study stage only as of the source date, not yet implemented. Also note declining feed gas has the plant running at reduced trains (2 of originally more), per corroborating IOP abstract-page metadata (title only, not relied on for captive-power content).",
+    "notes": "This is a partially-captive, currently-transitioning site: as of the best-verified evidence, the LNG train compressor is still gas-fired (steam turbine via fuel-gas boilers), with a documented on-site 13.4 MW gas turbine also present; a grid-electrification study (PLN, 160 MVA) is underway but not completed. Re-verify in a future batch once the PLN conversion's status is clearer, and if a working, non-bot-blocked source can confirm the total internal generation capacity and the 13.4 MW turbine's duty."
+  }
+]

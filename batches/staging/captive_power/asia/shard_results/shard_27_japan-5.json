@@ -1,0 +1,201 @@
+[
+  {
+    "terminal": "Senboku 1 LNG Terminal",
+    "terminal_id": "T100000130515",
+    "country": "Japan",
+    "verdict": "NO",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "Senboku terminal (Osaka Gas's Senboku Seisakusho) sits adjacent to the Senboku Natural Gas Power Plant (泉北天然ガス発電所), a 1,109 MW gas-turbine-combined-cycle plant, but that plant is operated by Senboku Natural Gas Power Co., Ltd. (泉北天然ガス発電株式会社), a separate joint-venture/PPS merchant-power company (Osaka Gas + Cosmo Oil), not the terminal itself. This is the direction-OUT case: the terminal supplies feed gas to the power plant, which is documented in GEM's own power_plants_supplied field. No evidence of any separate on-site captive gas generator serving the terminal's own regas/send-out load was found.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Osaka Prefecture's own environmental assessment page for the 泉北天然ガス発電所 project (pref.osaka.lg.jp) documents the plant as a distinct gas-turbine-combined-cycle power station subject to its own environmental review, separate from Osaka Gas's Senboku manufacturing/LNG plant. Daigas G&P Solution's own thermal-power-business page lists Senboku Natural Gas Power Plant under its independent power-generation business line (Daigas Gas & Power Solution), not as terminal infrastructure. Japanese Wikipedia corroborates: the plant is run by 泉北天然ガス発電株式会社, a joint venture, generating 110.9万kW (1,109 MW) for wholesale/PPS sale.",
+    "refs": [
+      "https://www.pref.osaka.lg.jp/o120070/kankyohozen/assess/senboku.html",
+      "https://www.daigasgps.co.jp/service/powergeneration/thermal/",
+      "https://ja.wikipedia.org/wiki/%E6%B3%89%E5%8C%97%E5%A4%A9%E7%84%B6%E3%82%AC%E3%82%B9%E7%99%BA%E9%9B%BB%E6%89%80"
+    ],
+    "verification_log": [
+      {"url": "https://www.pref.osaka.lg.jp/o120070/kankyohozen/assess/senboku.html", "tokens": ["泉北天然ガス発電所"], "result": "PASS", "note": "prefecture EIA registry page for the plant"},
+      {"url": "https://www.daigasgps.co.jp/service/powergeneration/thermal/", "tokens": ["泉北"], "result": "PASS", "note": "Daigas Group thermal power business page"},
+      {"url": "https://ja.wikipedia.org/wiki/%E6%B3%89%E5%8C%97%E5%A4%A9%E7%84%B6%E3%82%AC%E3%82%B9%E7%99%BA%E9%9B%BB%E6%89%80", "tokens": ["泉北天然ガス発電株式会社"], "result": "PASS", "note": "corroboration"},
+      {"url": "https://www.gas-enenews.co.jp/tokushu/10854/", "tokens": ["泉北"], "result": "PASS", "note": "trade-press profile of Senboku LNG terminal (background reading, not relied on for verdict)"},
+      {"url": "https://www.osakagas.co.jp/company/tsushin/1218678_15288.html", "tokens": ["冷熱発電"], "result": "FAIL", "note": "HTTP 000 timeout — site unreachable from this environment on repeated tries (curl, url_verifier, WebFetch all timed out); this page reportedly also describes non-combustion cold-energy (冷熱発電) generation supplying ~30% of Plant 2's power (SOP-excluded, non-combustion), but I could not verify it live so I am NOT citing or relying on it — mentioned here only as an unverified aside, not part of the verdict basis."}
+    ],
+    "gogpt_prior_assessment": "No GOGPT prior given for this terminal_id.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Not captive — direction test fails. The co-located Senboku Natural Gas Power Plant is a merchant JV plant already distinct from the terminal; not this sweep's candidate.",
+    "status_or_other_findings": "",
+    "notes": "PowerPlantsSupplied direction case: terminal feeds the Senboku Natural Gas Power Plant (already reflected in GEM's power_plants_supplied field). See paired terminal Senboku 2 (same site cluster, same power plant)."
+  },
+  {
+    "terminal": "Senboku 2 LNG Terminal",
+    "terminal_id": "T100000130517",
+    "country": "Japan",
+    "verdict": "NO",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "Same site cluster as Senboku 1. The adjacent 1,109 MW Senboku Natural Gas Power Plant is operated by a separate joint-venture merchant-power company (泉北天然ガス発電株式会社, Osaka Gas + Cosmo Oil), not by the terminal for its own use — direction-OUT, consistent with GOGPT's existing captive=False determination for this plant.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Same evidence chain as Senboku 1: Osaka Prefecture EIA registry page treats the power plant as a separately-assessed generating facility; Daigas G&P Solution's thermal-power-business page and Japanese Wikipedia both confirm the plant is run by the JV company 泉北天然ガス発電株式会社 as a merchant/PPS asset, not terminal infrastructure.",
+    "refs": [
+      "https://www.pref.osaka.lg.jp/o120070/kankyohozen/assess/senboku.html",
+      "https://www.daigasgps.co.jp/service/powergeneration/thermal/",
+      "https://ja.wikipedia.org/wiki/%E6%B3%89%E5%8C%97%E5%A4%A9%E7%84%B6%E3%82%AC%E3%82%B9%E7%99%BA%E9%9B%BB%E6%89%80"
+    ],
+    "verification_log": [
+      {"url": "https://www.pref.osaka.lg.jp/o120070/kankyohozen/assess/senboku.html", "tokens": ["泉北天然ガス発電所"], "result": "PASS", "note": "prefecture EIA registry page for the plant"},
+      {"url": "https://www.daigasgps.co.jp/service/powergeneration/thermal/", "tokens": ["泉北"], "result": "PASS", "note": "Daigas Group thermal power business page"},
+      {"url": "https://ja.wikipedia.org/wiki/%E6%B3%89%E5%8C%97%E5%A4%A9%E7%84%B6%E3%82%AC%E3%82%B9%E7%99%BA%E9%9B%BB%E6%89%80", "tokens": ["泉北天然ガス発電株式会社"], "result": "PASS", "note": "corroboration"}
+    ],
+    "gogpt_prior_assessment": "GOGPT prior = Senboku Natural Gas power plant, 1,109 MW, 0.59 km, already flagged captive=False. Confirmed correct: it is a merchant JV/PPS plant (泉北天然ガス発電株式会社, Osaka Gas + Cosmo Oil joint venture) selling generated power, fed BY the terminal rather than powering it — direction-OUT, not captive. See https://ja.wikipedia.org/wiki/%E6%B3%89%E5%8C%97%E5%A4%A9%E7%84%B6%E3%82%AC%E3%82%B9%E7%99%BA%E9%9B%BB%E6%89%80 for the ownership/JV structure (independent, non-gem.wiki source).",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "GOGPT prior already correctly shows this plant with captive=False and it presumably already exists as a GOGPT record; not a captive-power candidate from this terminal's side.",
+    "status_or_other_findings": "",
+    "notes": "PowerPlantsSupplied direction case, already reflected in GEM's power_plants_supplied field for this terminal."
+  },
+  {
+    "terminal": "Sendai LNG Terminal",
+    "terminal_id": "T100000130875",
+    "country": "Japan",
+    "verdict": "NO",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "Sendai LNG Terminal is the City of Sendai Gas Bureau's Minato Plant (港工場), a municipal city-gas manufacturing facility. The Bureau's own official equipment page enumerates the plant's full technical inventory — LNG berth, 80,000 kl underground tank, ORV/SMV vaporizers (30 t/h), a 5,000 m³/h BOG compressor, LPG tanks, and a 100,000 m³ gas holder — with no generation equipment of any kind listed. No captive gas power found.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Sendai City Gas Bureau's own \"主要設備\" (main equipment) page comprehensively lists the Minato Plant's LNG-handling and gas-manufacturing equipment (berth, tank, vaporizers, BOG compressor, LPG tanks, gas holder) with no mention of any on-site electricity generation equipment — a primary/regulatory-adjacent municipal-utility source enumerating equipment in full.",
+    "refs": [
+      "https://www.gas.city.sendai.jp/top/about_us/equipment/index.php"
+    ],
+    "verification_log": [
+      {"url": "https://www.gas.city.sendai.jp/top/about_us/equipment/index.php", "tokens": ["BOG圧縮機"], "result": "PASS", "note": "Sendai Gas Bureau official equipment enumeration page"}
+    ],
+    "gogpt_prior_assessment": "GOGPT prior = Shin Sendai thermal power station, 1,046 MW, 1.53 km, captive=False. This match is almost certainly a proximity false-positive: Shin Sendai Thermal Power Station is documented (Tohoku Electric / IHI press releases) as fed by an LNG base Tohoku Electric built INSIDE its own power-station premises (0.14 km — see the separate Shin-Sendai LNG Terminal record, terminal_id T100000130521), not by the City of Sendai Gas Bureau's Minato Plant 1.5 km away, which is a differently-owned municipal city-gas facility with no documented pipeline link to that power station in the sources found. GOGPT's captive=False is still the right conclusion, but the associated plant is likely the wrong nearest-terminal match.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No on-site gas generation found at this terminal; the matched GOGPT plant is not this terminal's captive power (and is probably actually associated with the neighboring Tohoku Electric terminal).",
+    "status_or_other_findings": "",
+    "notes": "Flagging for a future batch: GOGPT's Shin Sendai thermal power station match/distance data may need re-checking against Shin-Sendai LNG Terminal (T100000130521) rather than this terminal — do not act on this in this pass, captive-power lane only."
+  },
+  {
+    "terminal": "Shin-Sendai LNG Terminal",
+    "terminal_id": "T100000130521",
+    "country": "Japan",
+    "verdict": "NO",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "This LNG receiving/storage facility was purpose-built by Tohoku Electric Power INSIDE the grounds of its own Shin-Sendai Thermal Power Station specifically to supply fuel gas to the station's Unit 3 combined-cycle train (operational since July 2016) — the textbook direction-OUT case: the terminal exists to fuel the power plant, not the reverse. No separate captive generator serving the terminal's own send-out/BOG load was found; GOGPT's existing captive=False is correct.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Tohoku Electric's own 2008 press release announced construction of an LNG base within the Shin-Sendai Thermal Power Station premises (Sendai, Miyagino-ku, Minato 5-chome) to diversify fuel-receiving risk. IHI's 2011 press release confirms it won the order for \"Tohoku Electric Power Shin-Sendai Thermal Power Station Unit 3 LNG fuel facility\" (東北電力新仙台火力発電所3号系列ＬＮＧ燃料設備), i.e. the LNG base is built and named as the power station's own fuel facility. Japanese Wikipedia corroborates the LNG base location and purpose.",
+    "refs": [
+      "https://www.ihi.co.jp/all_news/2011/resources_energy_environment/1188539_1721.html",
+      "https://ja.wikipedia.org/wiki/%E6%96%B0%E4%BB%99%E5%8F%B0%E7%81%AB%E5%8A%9B%E7%99%BA%E9%9B%BB%E6%89%80"
+    ],
+    "verification_log": [
+      {"url": "https://www.ihi.co.jp/all_news/2011/resources_energy_environment/1188539_1721.html", "tokens": ["新仙台"], "result": "PASS", "note": "IHI order-win press release naming the LNG facility as the power station's own fuel facility"},
+      {"url": "https://ja.wikipedia.org/wiki/%E6%96%B0%E4%BB%99%E5%8F%B0%E7%81%AB%E5%8A%9B%E7%99%BA%E9%9B%BB%E6%89%80", "tokens": ["LNG基地"], "result": "PASS", "note": "corroboration on LNG base location/purpose"},
+      {"url": "https://www.tohoku-epco.co.jp/pastnews/normal/1177453_1049.html", "tokens": ["新仙台"], "result": "FAIL", "note": "verifier reported missing expected content (possible encoding mismatch on the Japanese token against the served page); dropped in favor of the IHI + Wikipedia sources above, which both passed"}
+    ],
+    "gogpt_prior_assessment": "GOGPT prior = Shin Sendai thermal power station, 1,046 MW, 0.14 km, captive=False. Confirmed correct — this is the genuine PowerPlantsSupplied relationship (terminal built to fuel the plant, same site), already reflected in GEM's power_plants_supplied field for this terminal. Not captive.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Confirmed non-captive, correct existing GOGPT match; this is a fuel-supply relationship, not on-site generation for the terminal.",
+    "status_or_other_findings": "",
+    "notes": "PowerPlantsSupplied direction case, already reflected in GEM's power_plants_supplied field."
+  },
+  {
+    "terminal": "Sodegaura LNG Terminal",
+    "terminal_id": "T100000130523",
+    "country": "Japan",
+    "verdict": "NO",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "Two gas-fired power facilities sit at/near the Sodegaura LNG terminal, and neither is captive to it. (1) JERA's large legacy Sodegaura Thermal Power Station (Unit 1 from 1974, being replaced 2032-2041 with GTCC units) is a major grid-supply utility station fed by the terminal — direction-OUT, already reflected in GEM's power_plants_supplied field. (2) Tokyo Gas completed its own \"Sodegaura Power Plant\" (10 gas engines, 97,800 kW total) on the LNG terminal grounds in March 2025, but Tokyo Gas's own press release states its purpose is explicitly commercial grid-balancing/ancillary services for renewable-energy integration, not powering the terminal's own operations.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Tokyo Gas's own March 2025 completion press release states the plant will be used \"as one of the adjustment capabilities to respond to market volatility caused by fluctuations in renewable energy output and electric power demand, thereby contributing to system stabilization\" — a commercial grid-support function, not terminal self-supply. Japanese Wikipedia on Sodegaura Thermal Power Station corroborates that the large adjacent station is JERA's own utility-scale generating asset (legacy since 1974, undergoing GTCC replacement), i.e. an outbound fuel-supply relationship, not captive.",
+    "refs": [
+      "https://www.tokyo-gas.co.jp/news/press/20250327-03.html",
+      "https://ja.wikipedia.org/wiki/%E8%A2%96%E3%82%B1%E6%B5%A6%E7%81%AB%E5%8A%9B%E7%99%BA%E9%9B%BB%E6%89%80"
+    ],
+    "verification_log": [
+      {"url": "https://www.tokyo-gas.co.jp/news/press/20250327-03.html", "tokens": ["系統安定化"], "result": "PASS", "note": "Tokyo Gas completion press release stating grid-stabilization purpose"},
+      {"url": "https://ja.wikipedia.org/wiki/%E8%A2%96%E3%82%B1%E6%B5%A6%E7%81%AB%E5%8A%9B%E7%99%BA%E9%9B%BB%E6%89%80", "tokens": ["JERA"], "result": "PASS", "note": "corroboration on Sodegaura Thermal Power Station ownership/scale"}
+    ],
+    "gogpt_prior_assessment": "GOGPT prior = Sodegaura power plant, 98 MW, 0.0 km, captive=False. Confirmed correct: this is Tokyo Gas's own 10-gas-engine (97.8 MW) merchant/ancillary-services plant, built on the terminal grounds but stated (Tokyo Gas's own press release) to serve grid-balancing/renewables-integration purposes, not the terminal's own load. See https://ja.wikipedia.org/wiki/%E8%A2%96%E3%82%B1%E6%B5%A6%E7%81%AB%E5%8A%9B%E7%99%BA%E9%9B%BB%E6%89%80 (independent, non-gem.wiki background on the separate JERA Sodegaura Thermal Power Station also at this site).",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Already a GOGPT record with captive=False; confirmed non-captive (commercial grid-balancing plant, stated purpose is ancillary services not terminal self-supply).",
+    "status_or_other_findings": "",
+    "notes": "PowerPlantsSupplied direction case for the larger JERA Sodegaura Thermal Power Station, already reflected in GEM's power_plants_supplied field. The co-located Tokyo Gas 98 MW gas-engine plant is a separate, non-captive merchant ancillary-services asset."
+  },
+  {
+    "terminal": "Sodeshi Shimizu LNG Terminal",
+    "terminal_id": "T100000130525",
+    "country": "Japan",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "",
+    "captive_summary": "Shimizu LNG Co., Ltd. (a Shizuoka Gas subsidiary) operates the Sodeshi/袖師 terminal in Shimizu Ward, Shizuoka. Sources found (Shizuoka Gas's own educational page, company-overview pages, construction-industry project pages) describe the tanks and seawater-based (open-rack) vaporization process but do not enumerate the terminal's electrical/power infrastructure at all — no equipment list equivalent to Sendai Gas Bureau's was found, and no statement of grid connection or on-site generation either way.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Searched Shizuoka Gas's own public-facing terminal description page, Shimizu LNG company-overview pages, Shimizu Corporation's construction-record page for the No.2 underground LNG tank, and general Japanese-language searches combining the terminal name with 非常用発電機/自家発電/受電. None discussed the facility's power supply arrangement in either direction.",
+    "refs": [],
+    "verification_log": [
+      {"url": "https://www.shizuokagas.co.jp/page.jsp?id=40301", "tokens": ["自家発電"], "result": "not attempted — WebFetch review of the page found no relevant content to cite; page is an educational/general-audience description with no power-infrastructure detail"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT prior given for this terminal_id.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No generation found or documented; nothing to add pending further research.",
+    "status_or_other_findings": "",
+    "notes": "Genuinely under-documented in public sources searched (Japanese-language web search + WebFetch on Shizuoka Gas/Shimizu LNG official pages). A deeper pass might try Shizuoka Gas's investor-relations/yuka-shoken hokokusho filings or a prefecture-level EIA/air-permit registry search, which were not exhausted here due to shard scope."
+  },
+  {
+    "terminal": "Soma Port LNG Terminal",
+    "terminal_id": "T100000130527",
+    "country": "Japan",
+    "verdict": "NO",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "Japex's Soma LNG base (two 230,000 kl above-ground tanks, operating since March 2018) sits next to the roughly 1.2 GW Fukushima Natural Gas Power Plant, but that plant is built, owned and operated by Fukushima Gas Power Generation Co., Ltd. (福島ガス発電株式会社) — a separate company, not Japex — using vaporized gas supplied FROM the Japex terminal. This is documented direction-OUT (already reflected in GEM's power_plants_supplied field). Shimizu Construction's own project-record page for the LNG base's No. 2 tank/vaporization-equipment scope makes no mention of any on-site generation equipment for the terminal itself, explicitly distinguishing the LNG-base construction scope from the separate power-station project.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "METI's own regulatory environmental-impact-assessment review document (審査書, October 2015) for \"福島ガス発電株式会社 相馬港天然ガス発電所（仮称）設置計画\" establishes Fukushima Gas Power Generation Co. as the separate project proponent for the power station, using gasified LNG from the Japex-operated Soma base — a primary/regulatory source. Nikkei's article on Japex's Soma LNG base commencing operations corroborates the base's role as a domestic gas-supply-network hub. Shimizu Corporation's construction-record page for the LNG base corroborates the terminal-side equipment scope (tank, vaporization equipment, BOG building) with no generation equipment.",
+    "refs": [
+      "https://www.meti.go.jp/policy/safety_security/industrial_safety/sangyo/electric/files/fukushima/hohosyo_shinsasyo.pdf",
+      "https://www.nikkei.com/article/DGXLRSP475567_Y8A320C1000000/",
+      "https://www.shimz.co.jp/works/jp_ene_202008_soumalng.html"
+    ],
+    "verification_log": [
+      {"url": "https://www.meti.go.jp/policy/safety_security/industrial_safety/sangyo/electric/files/fukushima/hohosyo_shinsasyo.pdf", "tokens": ["福島ガス発電"], "result": "PASS", "note": "METI regulatory EIA review document naming the separate power-plant proponent company"},
+      {"url": "https://www.nikkei.com/article/DGXLRSP475567_Y8A320C1000000/", "tokens": ["相馬LNG"], "result": "PASS", "note": "Nikkei article on Japex Soma LNG base"},
+      {"url": "https://www.shimz.co.jp/works/jp_ene_202008_soumalng.html", "tokens": ["相馬"], "result": "PASS", "note": "Shimizu Corporation construction-record page distinguishing LNG-base scope (no generation equipment) from the separate power-station project"}
+    ],
+    "gogpt_prior_assessment": "GOGPT prior = Soma Port Gas power station, 1,180 MW, 0.3 km, captive=False. Confirmed correct: it is Fukushima Gas Power Generation Co., Ltd.'s own ~590 MW x 2 turbine (approx. 1.18 GW) merchant plant, a company separate from Japex, fed by vaporized gas piped from the Japex Soma LNG base — direction-OUT, not captive. See METI's regulatory EIA review document above (independent, non-gem.wiki primary source) for the ownership/relationship detail.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Already a GOGPT record with captive=False; confirmed non-captive (separately-owned merchant power plant fed by piped regas, not on-site generation for the terminal).",
+    "status_or_other_findings": "",
+    "notes": "PowerPlantsSupplied direction case, already reflected in GEM's power_plants_supplied field (Soma Port Gas power station)."
+  }
+]

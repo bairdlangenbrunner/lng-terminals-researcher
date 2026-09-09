@@ -1,0 +1,26 @@
+[
+  {
+    "country": "Mexico",
+    "candidate_name": "Guaymas LNG Import/Regasification Terminal",
+    "sponsor_or_proposer": "Unnamed private capital (per SENER); no developer identified",
+    "first_observed_batch": "2026-08 discovery",
+    "last_observed_batch": "2026-08 discovery",
+    "current_state": "SENER (Mexican energy ministry) announced in Feb 2026 that a new LNG import/regasification terminal is under consideration for Guaymas, Sonora, framed as an 'energy anchor' for the northwest grid. No named sponsor/developer, no permit filing, no site/berth specifics found.",
+    "missing_threshold_elements": "Fails sponsor-identified test (only 'private capital' referenced, no company named); no concrete step (no CRE/ASEA-SEMARNAT permit filing, no FID, no site plan) found in any source.",
+    "watch_for": "A named developer, a CRE permit application, or a specific port/site designation at Guaymas; also watch for this resolving into (or being absorbed by) an existing regional gas-supply project.",
+    "best_lead_url": "https://energymagazine.mx/guaymas-nueva-terminal-de-gnl-y-ancla-energetica-del-noroeste/",
+    "notes": "Verified via url_verifier.py (PASS) against tokens 'Guaymas'/'GNL'. Single-source lead; no corroborating second outlet found. Not a dead-site revival (no prior GEM record at Guaymas) -- a fresh, pre-sponsor proposal. Distinct from the existing Puerto Libertad/Topolobampo GEM terminals (different site)."
+  },
+  {
+    "country": "Mexico",
+    "candidate_name": "Karpowership Floating Power Plant, Quintana Roo / Yucatan Peninsula",
+    "sponsor_or_proposer": "Karpowership (Karadeniz Holding, Turkey)",
+    "first_observed_batch": "2026-08 discovery",
+    "last_observed_batch": "2026-08 discovery",
+    "current_state": "Karpowership proposes deploying a 250 MW floating power plant (Powership) to the Yucatan Peninsula/Quintana Roo to address grid supply shortfalls; multiple Mexican outlets (El Economista, Energia a Debate, El Heraldo de Mexico, El Sol de Mexico/OEM) reported in May 2026 that the package includes 'un buque de gas natural licuado' (an LNG vessel) alongside the powership, suggesting a marine LNG supply component rather than a purely diesel/HFO-fired unit. However, Quintana Roo Governor Mara Lezama stated on 2026-05-25 that the project is still 'under analysis,' not contracted/approved, and CEMDA (environmental NGO) has raised objections. No specific port/berth location within Quintana Roo/Yucatan has been reported.",
+    "missing_threshold_elements": "Fails concrete-step test (governor confirms 'under analysis', no signed contract/permit found); fails precise-location test (only region-level 'Quintana Roo'/'Yucatan Peninsula' given, no port/site named); scope classification unresolved -- unclear whether the LNG vessel functions as an FSRU/marine-import supply (which would put this in-scope as an LNG terminal co-located with a power plant) or as an ancillary fuel-supply arrangement fed by an onshore/pipeline source (which would keep this purely a GOGPT-side power-plant record, out of scope here). Per SOP, scope doubt is resolved via monitor, not staged.",
+    "watch_for": "A signed contract/permit; a named port or municipality (e.g., Puerto Morelos, Progreso, Punta Venado); confirmation that the 'buque de gas natural licuado' is a dedicated FSRU/regasification vessel performing ship-to-shore or ship-to-ship LNG transfer (which would trigger the marine-import scope gate and could make this a genuine new LNG terminal candidate on a future pass) versus a diesel/HFO/pipeline-fed powership (out of scope, GOGPT-side only).",
+    "best_lead_url": "https://www.energiaadebate.com/energia-electrica/inyectara-karpowership-250-mw-de-energia-firme-a-yucatan/",
+    "notes": "Verified via url_verifier.py (PASS) against tokens 'Karpowership'/'250'. Multiple corroborating outlets exist (El Heraldo de Mexico, OEM/El Sol de Mexico, El Economista) reporting the same 250 MW figure and LNG-vessel detail, but direct-fetch attempts to those specific URLs 404'd/403'd in this session (only the energiaadebate.com URL and the Google News RSS redirect links were reachable) -- treat as corroborated by multiple named outlets even though only one URL passed automated verification this pass. No GEM record exists at any Quintana Roo/Yucatan coastal site to check for a dead-and-revived match."
+  }
+]

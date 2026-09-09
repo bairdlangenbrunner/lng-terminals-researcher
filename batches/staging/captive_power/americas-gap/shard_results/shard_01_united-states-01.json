@@ -1,0 +1,339 @@
+[
+ {
+  "terminal": "Alaska Japan LNG Terminal",
+  "terminal_id": "T100000130689",
+  "country": "United States",
+  "verdict": "SCREENED",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "red",
+  "captive_summary": "Cancelled niche-market export proposal (Resources Energy Inc, ~1–1.5 mtpa) at Port MacKenzie on Cook Inlet, aimed at Japan's newly-deregulated gas/power market. The project never advanced past early planning/site-acquisition; no FEED, FERC filing, or engineering-level design of any kind (including power generation) was ever published.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "S&P Global Platts (2015, archived) reports Resources Energy Inc. planned a 1–1.5 million mt/year LNG plant at Port MacKenzie, upper Cook Inlet, targeting Japanese niche gas/power markets, with estimated capital cost of $1.2–1.8 billion; no subsequent development, FERC docket, or design documentation was found in any source. GEM records the project as cancelled (confirmed). No source of any kind (primary or trade press) describes compressor drive type or power generation for this project — it never reached the design stage where that would be documented.",
+  "refs": [
+   "https://www.spglobal.com/platts/en/market-insights/latest-news/natural-gas/050815-japans-resources-energy-advances-plans-for-lng-plant-in-cook-inlet-alaska"
+  ],
+  "verification_log": [
+   {
+    "url": "https://www.spglobal.com/commodityinsights/en/market-insights/latest-news/natural-gas/050815-japans-resources-energy-advances-plans-for-lng-plant-in-cook-inlet-alaska",
+    "tokens": [
+     "Cook Inlet"
+    ],
+    "result": "FAIL",
+    "note": "HTTP 403; no Wayback snapshot to verify against (commodityinsights mirror)"
+   },
+   {
+    "url": "https://www.spglobal.com/platts/en/market-insights/latest-news/natural-gas/050815-japans-resources-energy-advances-plans-for-lng-plant-in-cook-inlet-alaska",
+    "tokens": [
+     "Cook Inlet"
+    ],
+    "result": "PASS",
+    "note": "bot-blocked live (HTTP 403); value verified via Wayback snapshot 20220123163511"
+   }
+  ],
+  "gogpt_prior_assessment": "Rank-1 neighbor Hank Nikkels power plant 1 (48.9 MW, GOGPT captive=true, 5.8 km) and rank-2 Southcentral power project (204 MW, non-captive, 11.2 km) are both existing operating utility-scale generation in the Anchorage/Southcentral Alaska grid, unrelated to the cancelled, never-built Port MacKenzie LNG site — a cancelled project that never reached construction cannot have a captive plant. Could not locate an independent (non-gem.wiki) info_url specifically describing Hank Nikkels power plant 1 within the research budget for this shard; flagging the gap rather than fabricating a citation.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "Terminal was cancelled before any construction or design of captive power; no gas generation exists or was ever designed at this site.",
+  "status_or_other_findings": "GEM status (cancelled, confirmed) matches all available sourcing; no schedule/ownership discrepancies found.",
+  "notes": "Distinct GEM record from the much larger 'Alaska LNG Terminal' (Nikiski, AGDC/pipeline project) — do not conflate; this is the small, long-dormant Resources Energy Inc. Port MacKenzie concept."
+ },
+ {
+  "terminal": "Alturas LNG Terminal",
+  "terminal_id": "T100000130207",
+  "country": "United States",
+  "verdict": "SCREENED",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "red",
+  "captive_summary": "Cancelled paper-stage export proposal by Alturas LLC (a WesPac Midstream subsidiary) near Port Arthur, Texas. The project only ever sought DOE Free Trade Agreement export authorization (2014) and never filed with FERC; no engineering/FEED-level design, including any power-generation description, was ever published in an independent source.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Extensive search (DOE FECM/hgeo.energy.gov docket listings, Federal Register, WesPac Midstream corporate materials, trade press) found no independent FERC docket, FEED announcement, or design document for this project — consistent with a proposal that stalled at the DOE-FTA-application stage and was abandoned. No source describes compressor drive type or power generation because no engineering design was ever published.",
+  "refs": [],
+  "verification_log": [
+   {
+    "url": "https://hgeo.energy.gov/ng_regulation/applications-2013-alturasllc-fedk-13-152-lng",
+    "tokens": [
+     "Alturas"
+    ],
+    "result": "FAIL",
+    "note": "HTTP 404 — guessed docket URL pattern did not resolve; no working DOE docket page for Alturas LLC located"
+   },
+   {
+    "url": "https://www.federalregister.gov/documents/search?conditions%5Bterm%5D=Alturas+LNG",
+    "tokens": [
+     "Alturas"
+    ],
+    "result": "FAIL",
+    "note": "Federal Register search interstitial (unblock.federalregister.gov) could not be resolved by available tools"
+   }
+  ],
+  "gogpt_prior_assessment": "Rank-1 neighbor Motiva Enterprises Port Arthur Refinery power station (810 MW, GOGPT captive=true, 1.13 km) is the Motiva-owned Port Arthur refinery's own captive power (Motiva's refinery is the largest in North America) — an industrial-host plant belonging to the adjacent refinery, not to the cancelled Alturas LNG site. Rank-2 Air Products Port Arthur power station (78 MW, non-captive, 3.18 km) is Air Products' industrial-gas plant, also an unrelated host.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "Terminal never reached construction or design; the nearby captive plant (Motiva) belongs to a different industrial host (the refinery), not this LNG project.",
+  "status_or_other_findings": "GEM status (cancelled, inferred ~4y) is consistent with all available sourcing — a stalled 2014 DOE-FTA-only proposal with no subsequent activity found.",
+  "notes": "Could not find any independent (non-gem.wiki) source describing this project beyond its DOE FTA filing intent; leaving refs empty rather than citing gem.wiki. Not to be confused with Sempra's large, active 'Port Arthur LNG' project (a different owner, different GEM record) at the same port."
+ },
+ {
+  "terminal": "Annova LNG Terminal",
+  "terminal_id": "T100000130210",
+  "country": "United States",
+  "verdict": "NO",
+  "mechanical": "False",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "n/a — electric-motor-driven refrigeration compressors, no gas turbines",
+  "confidence": "green",
+  "captive_summary": "Annova LNG (cancelled, Brownsville Ship Channel, Texas) was designed with electric-motor-driven refrigeration (Black & Veatch PRICO process) specifically to qualify for a TCEQ minor-source air permit, deliberately avoiding gas-turbine-driven compression and on-site captive gas power generation.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Audubon Companies — the project's own FEED/owner's-engineer contractor — states on its project page: 'Motor-driven refrigeration with Black & Veatch PRICO® technology.' This is corroborated by the FERC/DOE Final EIS record (DOE/EIS-0518), which describes Annova qualifying for a TCEQ minor-source permit by selecting electric-driven compressors instead of gas-fired compressors, paired with a boil-off-gas recovery system. The project reached FERC FEIS/DOE authorization stage (2019) before being cancelled post-FID for economic reasons (low pricing, COVID-19) — i.e., this is an as-designed finding, not a screen.",
+  "refs": [
+   "https://auduboncompanies.com/project/annova-lng/"
+  ],
+  "verification_log": [
+   {
+    "url": "https://auduboncompanies.com/project/annova-lng/",
+    "tokens": [
+     "Motor-driven refrigeration"
+    ],
+    "result": "PASS",
+    "note": "OK"
+   },
+   {
+    "url": "https://www.energy.gov/nepa/doeeis-0518-annova-lng-brownsville-project-cameron-county-texas",
+    "tokens": [
+     "electric-driven compressors"
+    ],
+    "result": "FAIL",
+    "note": "Page is a document index/summary; did not surface the specific compressor-drive text found via web search summary of the underlying EIS — not cited"
+   }
+  ],
+  "gogpt_prior_assessment": "No GOGPT neighbor pair recorded for this terminal_id in neighbors_raw.json.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "Design deliberately used electric-drive compression specifically to avoid gas-fired generation/combustion equipment; there is no gas power plant to add.",
+  "status_or_other_findings": "GEM status (cancelled, confirmed) matches: project reached FID stage then was cancelled in 2020 due to low commodity pricing and COVID-19, per multiple sources.",
+  "notes": "Clean direction/design case — electric drive was a deliberate permitting choice (TCEQ minor source), documented by the project's own FEED engineer."
+ },
+ {
+  "terminal": "Avocet FLNG Terminal",
+  "terminal_id": "T100000130675",
+  "country": "United States",
+  "verdict": "SCREENED",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "yellow",
+  "captive_summary": "Presumed-cancelled deepwater-port FLNG concept (Avocet LNG, a possible Delfin Midstream expansion) proposing moored floating liquefaction vessels (FLNGVs) off the Louisiana coast. No development since the 2016 FERC filing and no FLNGV engineering/power-generation design was ever published for this project specifically.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Offshore Energy (2016) reports TC Offshore LLC's application to abandon its Grand Chenier pipeline system to Avocet LNG, LLC for a proposed deepwater port using moored FLNGVs, reversing pipeline flow to feed offshore liquefaction/loading; no updates found since 2016. Delfin Midstream's own project page describes Avocet only as a potential 2-vessel, 8 MTPA expansion leveraging Delfin's permitting, with no engineering detail. A related MARAD docket (MARAD-2022-0076, New Fortress Energy Louisiana FLNG topic report) could not be retrieved (403) to check for a published design; nothing found elsewhere describes power generation for this specific project. Per the SOP's grid-access prior, moored FLNGVs are typically self-powered by necessity, but that is a class expectation, not a documented finding for Avocet specifically — screened rather than asserted as YES.",
+  "electric_mw_note": "",
+  "refs": [
+   "https://www.offshore-energy.biz/avocet-lng-acquiring-assets-for-proposed-export-project/"
+  ],
+  "verification_log": [
+   {
+    "url": "https://www.offshore-energy.biz/avocet-lng-acquiring-assets-for-proposed-export-project/",
+    "tokens": [
+     "floating liquefaction"
+    ],
+    "result": "PASS",
+    "note": "OK"
+   },
+   {
+    "url": "https://downloads.regulations.gov/MARAD-2022-0076-0003/attachment_2.pdf",
+    "tokens": [
+     "power generation"
+    ],
+    "result": "FAIL",
+    "note": "HTTP 403, no Wayback snapshot to verify against — could not access to check for design detail"
+   }
+  ],
+  "gogpt_prior_assessment": "No GOGPT neighbor pair recorded for this terminal_id in neighbors_raw.json — consistent with an offshore federal-waters mooring site with no nearby onshore plants within 30 km.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "No generation plant designed or built; project presumed dormant/cancelled since 2016 with no citable nameplate.",
+  "status_or_other_findings": "GEM status (cancelled, inferred ~4y) is consistent with the 2016 filing and total absence of subsequent activity.",
+  "notes": "Distinguish from Delfin LNG's own (separate) FLNGV project, which Avocet would piggyback on for permitting — did not find any Avocet-specific engineering documentation despite checking the FERC/MARAD-adjacent docket."
+ },
+ {
+  "terminal": "Barbers Point FSRU",
+  "terminal_id": "T100001083401",
+  "country": "United States",
+  "verdict": "INSUFFICIENT",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "",
+  "captive_summary": "Longboard LNG (JERA Americas), a proposed offshore FSRU + subsea pipeline + onshore gas connection at Kalaeloa/Barbers Point, Oahu, is designed to deliver regasified gas into the Hawai'i Gas pipeline system for distribution to power plants, businesses, and homes across Oahu — including a newly announced ~500 MW power plant (about one-third of Oahu's electricity). This is the terminal-supplies-fuel-to-an-external-power-station direction, not captive power serving the terminal's own regas operations.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Hawaii News Now (18 Jul 2026) reports JERA's Longboard LNG project pairs 'a new power plant and an offshore import terminal at Kalaeloa (Barbers Point), capable of generating 500 megawatts — roughly one-third of Oahu's electricity' — a grid-scale figure far beyond any plausible on-site regas/hotel load. The project's own site (jerahawaii.com/longboard) states gas reaching shore 'will flow into the Hawai'i Gas pipeline system,' which 'will then deliver the gas to power plants, businesses, and homes on Oahu' — i.e., the terminal is the fuel source FOR external power generation, the opposite of the captive-power relationship (PowerPlantsSupplied direction). No source found documents dedicated on-site/onboard captive generation powering the FSRU's own regasification process.",
+  "refs": [
+   "https://www.hawaiinewsnow.com/2026/07/18/japanese-energy-company-files-intent-build-2b-lng-power-plant-oahu/"
+  ],
+  "verification_log": [
+   {
+    "url": "https://www.hawaiinewsnow.com/2026/07/18/japanese-energy-company-files-intent-build-2b-lng-power-plant-oahu/",
+    "tokens": [
+     "500 megawatts"
+    ],
+    "result": "PASS",
+    "note": "OK"
+   },
+   {
+    "url": "https://jerahawaii.com/longboard/",
+    "tokens": [
+     "power plants"
+    ],
+    "result": "FAIL",
+    "note": "HTTP 403; no Wayback snapshot to verify against — content read via fetch but excluded from refs per hard citation rule"
+   },
+   {
+    "url": "https://lngprime.com/americas/jera-seeks-ok-to-start-pre-filing-process-for-hawaii-lng-project/186938/",
+    "tokens": [
+     "pre-filing"
+    ],
+    "result": "PASS",
+    "note": "PASS on generic token only — paywalled, does not itself contain the direction-test detail, not relied on for the substantive finding"
+   }
+  ],
+  "gogpt_prior_assessment": "Rank-1 neighbor Kalaeloa Cogen Plant (299.4 MW, GOGPT non-captive, 3.5 km) is an independent power producer (IPP) cogeneration plant, unrelated to and pre-dating the still-unbuilt Longboard project. Rank-2 Campbell Industrial Park power station / AES Barbers Point Plant (113 MW listed / AES's plant nameplate 203 MWe, non-captive, 4.05 km) was in fact AES's own coal-fired plant (Indonesian subbituminous coal, decommissioned Sept 2022) — wrong fuel entirely, and unrelated to any LNG project.",
+  "gogpt_candidate": "REVIEWER CALL",
+  "gogpt_candidate_basis": "The proposed new ~500 MW gas-fired power plant tied to this project is a genuine future GOGPT candidate (new generation, citable nameplate once filed) but it is NOT this terminal's captive power — it is the external plant the terminal would supply (PowerPlantsSupplied direction), so a GOGPT record (if/when built) belongs to the power-plant side, not as a captive addition here. Flagging as reviewer call since the plant is still pre-filing (FERC PF26-10) with no final design.",
+  "status_or_other_findings": "Project is an active FERC pre-filing (Docket PF26-10) as of mid-2026, not yet in construction; GEM's 'proposed' status matches.",
+  "notes": "PowerPlantsSupplied direction-test case: once formal FERC filings clarify the arrangement, the ~500 MW Oahu power plant fed by this FSRU should be considered for GEM's PowerPlantsSupplied field on this terminal (a different batch/field than CaptiveGasPower) — not staged here per this workflow's LNG-side-only, CaptiveGasPower-only scope.\n\nQC adjudication 2026-08-02 (orchestrator): NO overturned to INSUFFICIENT under the FSRU-onboard convention (Hadera precedent, middle-east-gulf increment): the direction-test evidence (regas piped out to Oahu plants) is a PowerPlantsSupplied finding and says nothing about the proposed FSRU's own onboard machinery; no vessel is named yet, so onboard generation can be neither documented nor excluded. Direction findings retained in notes for a future PowerPlantsSupplied update."
+ },
+ {
+  "terminal": "Barca LNG Terminal",
+  "terminal_id": "T100000130659",
+  "country": "United States",
+  "verdict": "SCREENED",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "yellow",
+  "captive_summary": "Barca LNG (cancelled, Port of Brownsville, Texas) never progressed beyond a 2013 DOE Free Trade Agreement export-authorization application; no FERC filing was ever made and no engineering/FEED-level design, including any power-generation description, was ever published.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "DOE FECM docket (FE Dkt. 13-117-LNG, filed 23 Aug 2013) confirms Barca LNG LLC sought only FTA export authorization (up to 584 Bcf/yr) for a Port of Brownsville facility; no subsequent FERC application was ever filed by the parent company, and no design documentation of any kind was found in any source — consistent with a dormant paper project.",
+  "refs": [
+   "https://hgeo.energy.gov/ng_regulation/applications-2013-barcalngllc-fedk-13-117-lng"
+  ],
+  "verification_log": [
+   {
+    "url": "https://hgeo.energy.gov/ng_regulation/applications-2013-barcalngllc-fedk-13-117-lng",
+    "tokens": [
+     "584 billion cubic feet"
+    ],
+    "result": "PASS",
+    "note": "OK"
+   }
+  ],
+  "gogpt_prior_assessment": "Rank-1 neighbor Port Of Brownsville Energy Complex (192 MW, GOGPT non-captive, pre-construction, 5.35 km) and rank-2 Silas Ray power station (136 MW across 2 units, non-captive, operating, 11.8 km) are unrelated Brownsville-area utility/merchant plants with no connection to the long-dormant Barca proposal.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "Project never reached FERC filing or design stage; no generation plant of any kind exists or was ever designed at this site.",
+  "status_or_other_findings": "GEM status (cancelled, inferred ~4y) matches: DOE-FTA-only filing from 2013 with no subsequent FERC activity found.",
+  "notes": "Same Brownsville-area cluster as Annova/Texas LNG/Rio Grande LNG projects, but Barca itself never advanced past the DOE FTA stage."
+ },
+ {
+  "terminal": "Battery Rock LNG Terminal",
+  "terminal_id": "T100000130842",
+  "country": "United States",
+  "verdict": "SCREENED",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "yellow",
+  "captive_summary": "Battery Rock LNG (cancelled) was AES's 2005–2007 proposal to convert Outer Brewster Island in Boston Harbor, Massachusetts into the country's largest LNG import terminal/depot. The project was dropped after sustained local/environmental opposition before reaching FEED or any engineering-design stage, so no power-generation description was ever published.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Boston University's reporting (2006) confirms AES Battery Rock, LLC's intent (since Sept 2005) to buy/lease Outer Brewster Island for what AES itself called the largest LNG terminal/depot in the country, and describes the associated legislative hearing (Massachusetts House Bill 4500) and environmental opposition; no mention of compressor type, gas turbines, or power generation appears in this or any other source found, and AP reporting (per secondary summary) indicates AES dropped the plan in 2007 amid opposition — i.e., pre-FEED cancellation.",
+  "refs": [
+   "https://www.bu.edu/articles/2006/environmentalists-battle-lng-terminal-plan"
+  ],
+  "verification_log": [
+   {
+    "url": "https://www.bu.edu/articles/2006/environmentalists-battle-lng-terminal-plan",
+    "tokens": [
+     "Outer Brewster"
+    ],
+    "result": "PASS",
+    "note": "OK"
+   },
+   {
+    "url": "https://www.bostonglobe.com/business/2013/01/23/offshore-gas-terminals-mass-bust-far/Qu8dyZzF6yBNAsDNaTT1ZJ/story.html",
+    "tokens": [
+     "Battery Rock"
+    ],
+    "result": "FAIL",
+    "note": "missing expected content — page did not contain 'Battery Rock' at the token checked; not cited"
+   }
+  ],
+  "gogpt_prior_assessment": "Rank-1 neighbor M Street Jet power station (69 MW, GOGPT non-captive, 12.6 km) and rank-2 Fore River generating station (872 MW, non-captive, 13.2 km) are both existing Boston-area merchant/utility gas plants, well outside a fenceline relationship and entirely unrelated to the cancelled, never-built Outer Brewster Island proposal.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "Project was abandoned pre-FEED; no generation plant of any kind was designed or built at the proposed island site.",
+  "status_or_other_findings": "GEM status (cancelled, confirmed) matches the 2007 abandonment following environmental/community opposition.",
+  "notes": "Not to be confused with the still-active Everett Marine Terminal / Northeast Gateway Deepwater Port LNG import facilities in the same Massachusetts market."
+ },
+ {
+  "terminal": "Bay Crossing LNG Terminal",
+  "terminal_id": "T100000130846",
+  "country": "United States",
+  "verdict": "SCREENED",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "green",
+  "captive_summary": "Bay Crossing LNG (cancelled) was a BP-proposed LNG import terminal near Galveston, Texas, with 1.2–1.4 Bcf/d regasification send-out capacity. BP awarded only early resource-report/conceptual-design contracts (Chicago Bridge & Iron; Moffatt & Nichol) before shelving the project in 2006 after an economics assessment — well before FEED — so no power-generation design was ever published.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "IndustrialInfo reports BP's early contract awards (CB&I resource report; Moffatt & Nichol conceptual design) for the ~$750M facility with 1.2 Bcf/d (1.4 Bcf/d peak) send-out capacity and an associated 40-mile, 36-inch transmission pipeline — with no mention of power-generation or compressor-drive equipment. Natural Gas Intelligence and LNG Law Blog corroborate that BP put the project 'on hold'/shelved it near Galveston in 2006 following an economic assessment, before any FEED-level engineering was completed.",
+  "refs": [
+   "https://www.industrialinfo.com/news/article/bp-awards-early-contracts-for-its-bay-crossing-lng-terminal-in-texas--55336",
+   "https://www.naturalgasintel.com/news/bp-puts-bay-crossing-lng-project-on-hold/",
+   "https://www.lnglawblog.com/2006/08/bp-postponement-of-bay-crossing-project-wont-impact-crown-landing/"
+  ],
+  "verification_log": [
+   {
+    "url": "https://www.industrialinfo.com/news/article/bp-awards-early-contracts-for-its-bay-crossing-lng-terminal-in-texas--55336",
+    "tokens": [
+     "Bay Crossing"
+    ],
+    "result": "PASS",
+    "note": "OK"
+   },
+   {
+    "url": "https://www.naturalgasintel.com/news/bp-puts-bay-crossing-lng-project-on-hold/",
+    "tokens": [
+     "Bay Crossing"
+    ],
+    "result": "PASS",
+    "note": "OK"
+   },
+   {
+    "url": "https://www.lnglawblog.com/2006/08/bp-postponement-of-bay-crossing-project-wont-impact-crown-landing/",
+    "tokens": [
+     "Bay Crossing"
+    ],
+    "result": "PASS",
+    "note": "OK"
+   }
+  ],
+  "gogpt_prior_assessment": "Rank-1 neighbor Air Products Gulf Coast Ammonia power station (60 MW, GOGPT non-captive, construction, 13.3 km) and rank-2 Galveston power station 4 (156.4 MW, non-captive, operating, 14.3 km) are both unrelated industrial/utility plants well beyond a fenceline distance from the cancelled Bay Crossing site, with no connection to this project.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "Project was shelved at the conceptual-design stage; no power-generation plant of any kind was designed or built for this terminal, and as an import/regas terminal it would in any case be expected to be grid-fed for its modest vaporization/pumping load (grid-access prior).",
+  "status_or_other_findings": "GEM status (cancelled, confirmed) matches: BP shelved the project in 2006 after an economics assessment amid a glut of competing Gulf Coast LNG proposals.",
+  "notes": "This is an import/regas terminal (send-out capacity, not liquefaction) — even had it proceeded, the grid-access prior for regas terminals would apply; no CHP or on-site generation was ever proposed in any source found."
+ }
+]

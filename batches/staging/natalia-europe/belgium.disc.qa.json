@@ -1,0 +1,62 @@
+[
+  {
+    "category": "dormant_revival_check",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "",
+    "issue": "Discovery SOP 4.0a: completeness_sweep.py --country Belgium returns 0 wholly cancelled/shelved Belgian LNG sites (Zeebrugge is Belgium's only LNG terminal, continuously operating since 1987, and has never been cancelled). Ran a confirmatory general web search for any historical cancelled/shelved Belgian LNG project not reflected in GEM's records regardless -- found none. No dead site exists in Belgium to revival-check.",
+    "severity": "low",
+    "suggested_action": "No action. Confirms the brief's premise; no dormant-revival candidate for Belgium.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "gemwiki_coverage_crosscheck",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Antwerp LNG Terminal (gem.wiki page, no CSV row)",
+    "issue": "Discovery SOP 4.0b: enumerated gem.wiki Belgium LNG-terminal pages (site search + category listing). Found exactly one gem.wiki page not matched to a CSV row: 'Antwerp LNG Terminal' (gem.wiki/Antwerp_LNG_Terminal, categorized 'Proposed LNG terminals in Belgium', Owner: Fluxys, Location: Lilo/Lillo, Port of Antwerp, coordinates 51.301380, 4.333896, Status: Proposed, Type: Import, capacity/start-year blank). The page's own Background text and cross-checked independent sources (Port Technology International 2020 'New LNG facility to be built at Port of Antwerp'; offshore-energy.biz and ship-technology.com coverage of Fluxys' Quay 526/528 installation; Fluxys' own LNG-bunkering pages) all describe the SAME thing: Fluxys' permanent LNG bunkering facility at Lillo/Quay 526-528 (truck-to-ship + the FlexFueler002 bunkering pontoon, commissioned ~2020-2021) that supplies alternative marine/inland-waterway fuel -- not a marine cargo import terminal. Applied the scope gate (CLAUDE.md: 'Antwerp and the broader Belgian port complex have heavy small-scale/bunkering LNG activity... out of scope'; SOP 3: bunkering is out of scope regardless of concreteness): this fails the scope gate (bunkering-only, no cross-border marine LNG cargo import) and was NOT staged as a new_terminal, resolving scope before staging per the hard rule.",
+    "severity": "medium",
+    "suggested_action": "No database action from this batch (gem.wiki is detector-only, never a citation, and this candidate correctly fails the scope gate). Worth flagging to GEM staff separately that the gem.wiki page itself mis-frames a bunkering facility as a 'Proposed LNG import terminal' -- that is a wiki-content question, not a tracker-data gap, and is outside this batch's edit authority.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "scope_gate_rejection",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Fluxys/Advario ammonia (NH3) terminal, Port of Antwerp-Bruges",
+    "issue": "Ring C/B sweep surfaced Fluxys and Advario's Joint Development Agreement for a green-ammonia import terminal on the Advario Gas Terminal site in Antwerp (feasibility complete, now in FEED, EU PCI-recognized, targeting 2027/2028 start). This is a standalone ammonia (NH3) facility at a different site from Zeebrugge/Antwerp-Lillo, not an LNG terminal -- a different commodity entirely, not merely an NH3-import-service bolt-on to an existing LNG record. NH3 is an out-of-scope, read-only field per CLAUDE.md (no longer updated as of 2026) and this is not co-located with any existing GEM LNG terminal record.",
+    "severity": "low",
+    "suggested_action": "Do not stage as new_terminal, new_unit, or as an NH3-field edit on any existing terminal. Fully out of scope for the LNG terminals tracker.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "already_in_gem",
+    "terminal_id": "T100000130426",
+    "unit_id": "",
+    "terminal_name": "Zeebrugge LNG Terminal",
+    "issue": "Ring A/C sweep on Fluxys' 2024-2026 'long-term additional regasification capacity 2027-2044' conversion (CREG-approved June 2024; converts the short-term slot offering built via the Feb-2021 FID / open-rack-vaporizer additions into long-term contracts, raising nameplate long-term slots from 110 to 134/year as of April 2027) confirmed this uses the SAME physical infrastructure already captured in GEM's existing '2024 Expansion' and '2025 Expansion' unit-rows -- it is a commercial capacity-booking change, not a new physical unit or terminal.",
+    "severity": "low",
+    "suggested_action": "No new record. If the commercial long-term-capacity milestone (134 slots/yr from April 2027) isn't yet reflected on the existing expansion unit-rows, route a fill/refresh to the concurrent Update batch rather than Discovery.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "already_in_gem",
+    "terminal_id": "T100000130426",
+    "unit_id": "G100002042603",
+    "terminal_name": "Zeebrugge LNG Terminal -- Zeebrugge Multi-molecule Hub",
+    "issue": "Ring C sweep on Fluxys' 'Zeebrugge Multi-molecule Hub' strategy (Nov 2023 call for market interest; reshaping the terminal into a multi-directional hub for LNG, bio-LNG/synthetic LNG, hydrogen and hydrogen derivatives, CNG) confirmed this is already fully captured as the existing 'Zeebrugge Multi-molecule Hub' proposed unit-row (G100002042603) under Zeebrugge LNG Terminal, with LH2/NH3/SyntheticLNG already flagged True on the parent terminal's rows. Not a discovery candidate.",
+    "severity": "low",
+    "suggested_action": "No new record. Any LH2/NH3/SyntheticLNG-specific detail is out-of-scope/read-only per CLAUDE.md; route any genuinely new LNG-scope detail (capacity, status, year) to the concurrent Update batch.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "scope_gate_rejection",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Belgian LNG bunkering activity generally (Antwerp quay 526/528, Zeebrugge truck loading)",
+    "issue": "Ring A/B/C sweep confirmed extensive Belgian small-scale/bunkering LNG activity: Fluxys' Antwerp bunkering installation (see gemwiki_coverage_crosscheck entry above) plus Zeebrugge's own truck-loading services (16,000 slots/yr in 2026, automated bays from 2025) and bio-LNG/recondenser liquefaction sales. All of this is domestic/marine-fuel-supply activity at or downstream of the existing Zeebrugge terminal or the Antwerp bunkering site, not a distinct cross-border cargo import/export facility.",
+    "severity": "low",
+    "suggested_action": "Do not stage. Confirms CLAUDE.md's explicit note that Antwerp/Belgian bunkering activity is out of scope regardless of scale.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  }
+]

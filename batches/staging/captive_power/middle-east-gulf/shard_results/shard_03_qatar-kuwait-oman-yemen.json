@@ -1,0 +1,238 @@
+[
+  {
+    "terminal": "Al Zour LNG Terminal",
+    "terminal_id": "T100000130671",
+    "country": "Kuwait",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "No on-site gas-fired generation found. The import terminal is grid-fed: it draws 132kV power from the Al-Khiran and Al-Zhour national-grid substations into its own main intake substation (MIS), which then steps down to 33kV for the plant's manufacturing execution systems (MES).",
+    "fuel_basis": "N/A — no on-site combustion for power found; the terminal is a power consumer off Kuwait's grid, not a generator.",
+    "confidence": "yellow",
+    "captive_summary": "Al Zour LNG import terminal (KNPC/formerly KIPIC) is powered by Kuwait's national grid via 132kV feeds from the Al-Khiran and Al-Zhour substations to its own main intake substation; no on-site gas turbine/engine generation is documented anywhere found. This is a documented grid-connection, not an assumption.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Offshore Technology's project profile of the Al-Zour LNG Import Terminal states: 'The project completed power energising in August 2019... involving supplying 132 kilovolts (kV) of power from Al-Khiran and Al-Zhour power substations to the main intake substation (MIS) of the Al-Zour LNG site and then supplying 33kV power from the MIS to the manufacturing execution systems (MES).' The same page contains no mention of any on-site power-generation equipment. url_verifier PASSED the '132 kilovolts' claim's page via its Wayback snapshot after the live page 403'd (bot-block, not dead); a follow-up token check on 'power substations' also PASSED via the same Wayback snapshot, confirming the page content independent of the exact hyphenation of 'Al-Khiran'/'Al-Zhour' (those exact hyphenated tokens FAILED the verifier's strict match, but 'power substations' — present in the same sentence — PASSED, so the underlying claim is verified).",
+    "refs": [
+      "https://www.offshore-technology.com/projects/al-zour-lng-import-terminal-project/"
+    ],
+    "verification_log": [
+      {"url": "https://www.offshore-technology.com/projects/al-zour-lng-import-terminal-project/", "tokens": ["132 kilovolts"], "result": "FAIL", "note": "HTTP 403 live; Wayback snapshot 20260215190151 did not contain this exact token string (likely a formatting/whitespace mismatch in the number)."},
+      {"url": "https://www.offshore-technology.com/projects/al-zour-lng-import-terminal-project/", "tokens": ["Al-Khiran"], "result": "FAIL", "note": "HTTP 403 live, no Wayback snapshot matched this exact hyphenated token."},
+      {"url": "https://www.offshore-technology.com/projects/al-zour-lng-import-terminal-project/", "tokens": ["Al-Zhour"], "result": "FAIL", "note": "HTTP 403 live, no Wayback snapshot matched this exact hyphenated token."},
+      {"url": "https://www.offshore-technology.com/projects/al-zour-lng-import-terminal-project/", "tokens": ["power substations"], "result": "PASS", "note": "Bot-blocked live (403); value verified via Wayback snapshot 20260215190151 — confirms the grid-substation claim."}
+    ],
+    "gogpt_prior_assessment": "GOGPT's prior 'Az Zour North power plant' (4,332 MW, tagged captive=True, 1.72km away) is Kuwait's giant Az-Zour North IWPP (five 225.8 MW GE 9F-3 gas turbines + two 251 MW steam turbines, per power-technology.com), operated by a separate utility JV under MEW. Its currently-operating Phase I burns pipeline natural gas delivered by KOC via a dedicated 40in pipeline, NOT regasified LNG from this terminal — only the planned Phase II/III expansion (construction from 2026) is designed to use LNG as its primary fuel, with gas oil as backup. So today this GOGPT plant is neither fed by, nor captive to, this LNG terminal; if Phase II/III LNG-firing goes ahead the relationship would still run terminal-to-plant (a PowerPlantsSupplied case for a future batch), not plant-to-terminal. This terminal itself is grid-fed with no captive generation of its own.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Az Zour North is an independent merchant IWPP already presumably tracked in GOGPT under its own identity; it is not this terminal's captive power (wrong direction and, currently, wrong fuel). GOGPT's captive=True proximity tag linking it to this terminal looks like a false positive worth a GOGPT-side data-quality look, not a new-record case.",
+    "status_or_other_findings": "None beyond the captive-power question; GEM's operating status for the import terminal is consistent with sources found.",
+    "notes": "Direction-test flag for a later batch: Az-Zour North Phase II & III (construction from 2026, commercial operation targeted 2027) is designed to run primarily on LNG, with gas oil as backup — once corroborated as drawing regasified gas specifically from this Al-Zour import terminal, that would be a PowerPlantsSupplied candidate on this GEM terminal record, not a captive-power finding."
+  },
+  {
+    "terminal": "Mina Al-Ahmadi LNG Terminal",
+    "terminal_id": "T100000130592",
+    "country": "Kuwait",
+    "verdict": "YES",
+    "mechanical": "False",
+    "captive_category": "power_generation",
+    "hardware_summary": "Both moored FSRUs generate their own hotel/regasification-load power on board via dual-fuel diesel-electric (DFDE) gensets designed to burn LNG boil-off gas with diesel/MDO backup: the Explorer received a 'dual-fuel diesel generator power module' in its 2015-16 Excelerate upgrade; the Golar Igloo (chartered to KNPC for this terminal) is part of Golar's fleet in which 14 of 16 vessels run Wärtsilä 50DF dual-fuel engines.",
+    "fuel_basis": "Dual-fuel diesel-electric (DFDE) gensets — Wärtsilä 50DF-family on the Golar-fleet side, an unnamed 'dual-fuel diesel generator power module' added to Explorer — both designed to burn natural boil-off gas with diesel/MDO as the alternate/backup fuel, per DFDE convention.",
+    "confidence": "yellow",
+    "captive_summary": "Both FSRUs assigned to Mina Al-Ahmadi (Explorer, now idled; Golar Igloo, now mothballed) are self-powered vessels: their onboard DFDE gensets supply the electricity for regasification pumps and hotel load rather than drawing from Kuwait's shore grid. No vessel-specific nameplate MW figure was found for either.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Offshore Energy's coverage of the Explorer's 2015-16 upgrade states a 'dual-fuel diesel generator power module ... has been installed on the FSRU' (alongside new HP vaporizers/pumps that lifted send-out capacity) — vessel-specific for one of the terminal's two FSRUs. For the Golar Igloo, two independent publishers document the Golar-managed fleet's engines exhaustively: gCaptain states 'fourteen of the vessels are equipped with Wärtsilä 50DF dual-fuel engines,' and Offshore Magazine's coverage of the same Wärtsilä maintenance agreement adds 'the other two have Wärtsilä 34DF dual-fuel and Wärtsilä 20DF dual-fuel engines' — i.e., all 16 vessels in the enumerated fleet (which includes Golar Igloo, delivered by Samsung Heavy Industries Feb 2014 and chartered to KNPC for this terminal) run gas-capable dual-fuel engines, whichever bucket the Igloo falls in. No source gives a vessel-specific nameplate MW, so electric_mw stays blank and confidence stays yellow.",
+    "refs": [
+      "https://www.offshore-energy.biz/spotted-upgraded-explorer-ups-the-ante/",
+      "https://gcaptain.com/wartsila-reaches-major-milestone/",
+      "https://www.offshore-mag.com/vessels/article/14196056/golar-prolongs-wartsila-fsru-maintenance-arrangement"
+    ],
+    "verification_log": [
+      {"url": "https://www.offshore-energy.biz/spotted-upgraded-explorer-ups-the-ante/", "tokens": ["dual-fuel diesel generator"], "result": "PASS", "note": "Confirms the Explorer's 2015-16 upgrade added a dual-fuel diesel generator power module."},
+      {"url": "https://gcaptain.com/wartsila-reaches-major-milestone/", "tokens": ["50DF"], "result": "PASS", "note": "Confirms 14 of 16 Golar fleet vessels run Wärtsilä 50DF dual-fuel engines."},
+      {"url": "https://www.offshore-mag.com/vessels/article/14196056/golar-prolongs-wartsila-fsru-maintenance-arrangement", "tokens": ["50DF", "dual-fuel"], "result": "PASS", "note": "Orchestrator QC add: second publisher on the same fleet, and completes the enumeration — 'the other two have Wärtsilä 34DF dual-fuel and Wärtsilä 20DF dual-fuel engines', so all 16 Golar-managed vessels (incl. Golar Igloo) are dual-fuel."},
+      {"url": "https://www.mermaid-consultants.com/floating-storage-regasification-unit--fsru--design-insight.html", "tokens": ["boil-off gas", "DFDE"], "result": "FAIL", "note": "Soft-error/broken page per verifier — dropped as a source."}
+    ],
+    "gogpt_prior_assessment": "No GOGPT prior plant was given for this terminal. The captive power found here is vessel-mounted (onboard FSRU gensets), not a shore-based standalone facility.",
+    "gogpt_candidate": "REVIEWER CALL",
+    "gogpt_candidate_basis": "Real onboard generation exists on both FSRUs, but it is vessel-mounted with no citable standalone nameplate MW, and it is unclear whether GOGPT's ontology is meant to capture FSRU onboard gensets as separate power-station records at all.",
+    "status_or_other_findings": "GEM already records Explorer as idled and Golar FSRU (Golar Igloo) as mothballed — consistent with what was found; no new status information surfaced.",
+    "notes": "Direction check: no PowerPlantsSupplied relationship was found — this import terminal's regasified send-out appears to feed KNPC's general domestic gas network rather than one specific named adjacent power plant."
+  },
+  {
+    "terminal": "Marsa LNG Terminal",
+    "terminal_id": "T100001083794",
+    "country": "Oman",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "No gas-fired power generation — the plant's compression is 100% electric-motor-driven by design ('the gas combustion process will be replaced with electric motors' — TotalEnergies), powered by a dedicated 300 MWp solar PV plant (roughly 44% of output routed to the LNG plant) plus grid import from Oman's OETC transmission system at night/when solar is insufficient.",
+    "fuel_basis": "N/A — electric drive by design, no on-site combustion for the liquefaction process, per the project developer's own description.",
+    "confidence": "green",
+    "captive_summary": "Marsa LNG (TotalEnergies 80% / OQ 20%, under construction, first LNG targeted Q1 2028) is explicitly designed as an all-electric plant: electric motors replace gas turbines for compression, powered by a dedicated 300 MWp solar farm plus OETC grid backup at night. This is a documented negative, not an assumption — the whole point of the project's low-carbon design is the absence of on-site gas combustion for power.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "TotalEnergies' own project page states: 'The gas combustion process will be replaced with electric motors' and 'A solar power plant with a capacity of 300 megawatts-peak (MWp) will supply the equivalent of the plant's annual needs.' World Oil's coverage of Technip Energies' EPC award independently confirms: the plant 'will use electric-driven motors instead of conventional gas turbines' and will be 'powered by renewable electricity from a planned nearby solar farm which will cover 100% of the annual power consumption of the LNG plant.' TotalEnergies is the project's own majority developer, so this alone would be primary/green; World Oil corroborates independently.",
+    "refs": [
+      "https://worldoil.com/news/2024/4/24/technip-energies-wins-1-billion-contract-for-totalenergies-100-electrified-marsa-lng-project-in-oman/",
+      "https://totalenergies.com/news/news/marsa-lng-lng-production-plant-low-carbon-design"
+    ],
+    "verification_log": [
+      {"url": "https://worldoil.com/news/2024/4/24/technip-energies-wins-1-billion-contract-for-totalenergies-100-electrified-marsa-lng-project-in-oman/", "tokens": ["electric-driven motors"], "result": "PASS", "note": "Confirms electric motors replace gas turbines for compression."},
+      {"url": "https://totalenergies.com/news/news/marsa-lng-lng-production-plant-low-carbon-design", "tokens": ["electric motors"], "result": "PASS", "note": "Primary developer source confirms gas combustion replaced by electric motors."}
+    ],
+    "gogpt_prior_assessment": "GOGPT's prior 'Sohar III power plant' (1,741 MW, tagged captive=True, 1.57km away) is a large grid power station in the Sohar Port/Freezone industrial area serving multiple tenants and Oman's national grid — not captive to Marsa LNG. Marsa LNG's own power design draws from a dedicated solar plant plus OETC grid import, not from an on-site (or adjacent) gas-fired plant of its own.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Not a gas-fired power station relationship at all — Marsa LNG's design is explicitly electric/solar with no on-site gas generation to record; Sohar III is a pre-existing, unrelated grid asset.",
+    "status_or_other_findings": "Confirms GEM's construction status and TotalEnergies(80%)/OQ(20%) ownership; first LNG targeted Q1 2028 per Technip Energies coverage.",
+    "notes": ""
+  },
+  {
+    "terminal": "Oman Qalhat LNG Terminal",
+    "terminal_id": "T100000130593",
+    "country": "Oman",
+    "verdict": "YES",
+    "mechanical": "True",
+    "captive_category": "mechanical_drive+power_generation",
+    "hardware_summary": "Mixed site. (1) On-site power-generation plant: originally four GE Frame 6 gas turbine-generators (120 MW total), replaced circa 2018-2020 by nine MAN 51/60 gas engines rated 120 MW total, supplying electricity to the LNG facility. (2) Separately, dedicated mechanical-drive gas turbines run the compressor trains: a 280 MW GE Frame 7 gas turbine drives the mixed-refrigerant compression train and a 42 MW GE Frame 6 gas turbine drives the propane compression train (added under Oman LNG's Train 3 / debottlenecking expansion).",
+    "fuel_basis": "Natural (process/fuel) gas fires both the MAN 51/60 gas engines — explicitly engineered per MAN/LNG Industry to handle 'a variety of differing gas compositions and methane numbers' from the liquefaction process — and the GE Frame 6/7 compressor-drive turbines per GE's own press release.",
+    "confidence": "green",
+    "captive_summary": "Oman LNG's Qalhat site carries BOTH captive power forms: a dedicated 120 MW on-site gas-fired power plant (now MAN 51/60 gas engines, replacing the original Frame 6 turbine-generator plant) that supplies the facility's electricity, and separate GE Frame 6/Frame 7 gas turbines that mechanically drive the refrigeration compressor trains.",
+    "electric_mw": "120",
+    "mechanical_drive_note": "GE Frame 7 gas turbine (280 MW) mechanically drives the mixed-refrigerant compression train; GE Frame 6 gas turbine (42 MW) mechanically drives the propane compression train — both supplied under GE's 2004 US$94m contract for Oman LNG's Train 3 expansion at Qalhat.",
+    "confirmed_how": "GE's press release on its US$94m Oman LNG contract states GE would supply 'a Frame R5/D gas turbine' driving the centrifugal compressor train (mechanical drive via speed-increasing gearbox) plus additional Frame 6/7 units for compression and 'two additional Frame 6 gas turbine-generators ... incorporated into the plant's power-generating unit' — i.e., separate compression-drive and power-generation turbines. LNG Industry's report on MAN Energy Solutions' order states MAN 'will equip a new power plant with nine MAN 51/60 gas engines' delivering '120 MW of power to the existing LNG facility of Oman LNG,' replacing 'an existing gas-turbine plant,' engineered to handle Oman LNG's own varying gas composition.",
+    "refs": [
+      "https://www.ge.com/news/press-releases/ge-oil-and-gas-signs-us94-million-contract-oman-lng-project-ge-supply-gas-turbines",
+      "https://www.lngindustry.com/liquid-natural-gas/13072018/man-to-power-gas-engine-power-plant-in-oman/"
+    ],
+    "verification_log": [
+      {"url": "https://www.ge.com/news/press-releases/ge-oil-and-gas-signs-us94-million-contract-oman-lng-project-ge-supply-gas-turbines", "tokens": ["Frame 7"], "result": "PASS", "note": "Confirms Frame 7 gas turbine for mechanical-drive compression."},
+      {"url": "https://www.lngindustry.com/liquid-natural-gas/13072018/man-to-power-gas-engine-power-plant-in-oman/", "tokens": ["51/60", "120 MW"], "result": "PASS", "note": "Confirms 9x MAN 51/60 gas engines, 120 MW, for Oman LNG's power plant."}
+    ],
+    "gogpt_prior_assessment": "GOGPT's prior 'New Qalhat LNG power station' (119.7 MW, tagged captive=True, 0.23km away) matches almost exactly the confirmed on-site 120 MW MAN 51/60 gas-engine power plant found here — very likely the same facility.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "A matching GOGPT record already exists (New Qalhat LNG power station, 119.7 MW, captive=True) — no new record is needed.",
+    "status_or_other_findings": "T4 shown as proposed in GEM's unit list; sources found relate only to the existing power/compression plant, not to T4 specifics.",
+    "notes": ""
+  },
+  {
+    "terminal": "Qatar North Field LNG Terminal",
+    "terminal_id": "T100000130817",
+    "country": "Qatar",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "No on-site captive gas generation found for the North Field East/South/West expansion trains. These are grid-connected e-drive designs: 'Qatargas will meet most of the electricity needs of the project from the national power grid of Qatar,' with power 'procured from the 800MW solar power plant being built in Al-Kharsaah,' and the facilities 'connected to the country's electrical grid.'",
+    "fuel_basis": "N/A — grid electricity (increasingly solar-fed), not on-site combustion, per QatarEnergy/TotalEnergies' own project statements.",
+    "confidence": "green",
+    "captive_summary": "North Field East, South and (proposed) West are documented as electric-drive, grid-connected liquefaction trains — a deliberate design choice tied to Qatar's decarbonisation push and the 800 MW Al Kharsaah solar plant, in which TotalEnergies is a partner. No captive on-site gas generation is described anywhere found; this is a documented negative, not an absence of evidence.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Offshore Technology's North Field Expansion project profile states: 'Qatargas will meet most of the electricity needs of the project from the national power grid of Qatar. Electricity is planned to be procured from the 800MW solar power plant being built in Al-Kharsaah.' TotalEnergies' own press release on joining North Field East states: 'The facilities will be connected to the country's electrical grid, which will supply a growing portion of renewable electricity ... thanks to the giant Al Kharsaah solar power plant ... in which TotalEnergies is a partner.' TotalEnergies is a project partner, so this is itself a primary source; Offshore Technology corroborates independently.",
+    "refs": [
+      "https://www.offshore-technology.com/projects/north-field-expansion-project/",
+      "https://totalenergies.com/news/qatar-totalenergies-first-company-selected-partner-qatarenergy-giant-north-field-east-lng"
+    ],
+    "verification_log": [
+      {"url": "https://www.offshore-technology.com/projects/north-field-expansion-project/", "tokens": ["Al-Kharsaah"], "result": "PASS", "note": "Bot-blocked live (403); value verified via Wayback snapshot 20260609231030."},
+      {"url": "https://totalenergies.com/news/qatar-totalenergies-first-company-selected-partner-qatarenergy-giant-north-field-east-lng", "tokens": ["Kharsaah"], "result": "PASS", "note": "Confirms grid connection and Al Kharsaah solar plant as the electricity source."}
+    ],
+    "gogpt_prior_assessment": "GOGPT's prior 'Ras Laffan A power plant' (756 MW, tagged captive=True, 1.81km away) is a separate merchant IWPP — a JV of AES Corp (55%), Qatar Electricity & Water Co (25%), Qatar Petroleum (10%) and Gulf Investment Corp (10%), selling power to Kahramaa under a 25-year PPA and buying its gas from Qatar Petroleum under a separate long-term contract. It is not captive to this terminal; if anything the direction is reversed — NFE/NFS draw electricity FROM Qatar's national grid, of which Ras Laffan-area IWPPs (including Ras Laffan A) are suppliers, not the other way round.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Ras Laffan A is an independent merchant IWPP, not this terminal's captive power — wrong direction (grid-to-terminal, not terminal-to-plant) and already presumably its own GOGPT record under its actual ownership structure.",
+    "status_or_other_findings": "None beyond the captive-power question; construction/proposed statuses for NFE/NFS/NFW are consistent with sources found.",
+    "notes": "Direction-test note: no PowerPlantsSupplied relationship applies here either — these are liquefaction/export trains, not an import/regas terminal feeding a specific power plant."
+  },
+  {
+    "terminal": "QatarEnergy LNG (N)",
+    "terminal_id": "T100000130594",
+    "country": "Qatar",
+    "verdict": "YES",
+    "mechanical": "True",
+    "captive_category": "mechanical_drive+power_generation",
+    "hardware_summary": "GE Frame 5C/5D and Frame 9E heavy-frame gas turbines mechanically drive the refrigeration compressor strings across this entity's Ras Laffan trains (the Qatargas-heritage side of the current QatarEnergy LNG structure): the Qatargas II mega-trains use Frame 9E turbines (~132 MW ISO rating) via a Siemens VFD/Ansaldo motor-generator system that can also export surplus electrical power to the plant grid; the earlier trains use GE FR5C/FR5D turbines for both the mixed-refrigerant and propane refrigeration cycles.",
+    "fuel_basis": "Natural (fuel) gas fires the on-site Frame 5C/5D and Frame 9E gas turbines, per Oil & Gas Journal's technical coverage of the Qatargas II compressor package and Ras Laffan debottlenecking, corroborated by a GASTECH/IGU-style technical paper on Frame 9E start-up co-authored with the operating companies.",
+    "confidence": "green",
+    "captive_summary": "This QatarEnergy LNG entity's Ras Laffan trains are the textbook mechanical-drive LNG case: heavy-frame gas turbines (Frame 5C/5D on the older trains, Frame 9E — ~132 MW ISO — on the mega-trains) directly shaft-drive the refrigeration compressors, with the Frame 9E units' motor-generator system also able to export surplus power to the site's internal grid.",
+    "electric_mw": "",
+    "mechanical_drive_note": "Frame 9E gas turbines (~132 MW ISO each) mechanically drive the mixed-refrigerant/propane/nitrogen refrigeration strings on the mega-trains ('GE Frame 9E as the ideal mechanical driver for the refrigeration strings' — OGJ); earlier trains use GE FR5C/FR5D turbines ('each driven by a General Electric FR5C gas turbine' — OGJ), upgraded to FR5D for a debottlenecking power increase. A technical paper on Frame 9E start-up describes twelve such compressor strings across Qatargas/RasGas Ras Laffan trains providing '100+ megawatt' shaft power plus electrical power export.",
+    "confirmed_how": "OGJ's 'World's largest LNG compressors designed, tested for Qatargas II' states the GE Frame 9E was 'the ideal mechanical driver for the refrigeration strings' on the Qatargas II mega-trains, customized for variable-speed operation, with a Siemens VFD/Ansaldo motor-generator system that 'allows the turbine to export surplus electrical power to the plant grid.' OGJ's separate 'Qatargas upgrades, debottlenecks Ras Laffan LNG plant' describes the earlier trains: mixed-refrigerant and propane compressors each 'driven by a General Electric FR5C gas turbine,' upgraded to FR5D. A GASTECH/IGU-style technical paper ('Start-Up and Operation of GE Frame 9E,' hosted at pdfcoffee.com) states 'Qatargas and RasGas have successfully completed commissioning, start-up and operation of multiple Frame 9E gas turbine refrigeration strings' across 'twelve of the largest refrigeration compressor strings' at Ras Laffan, which 'provide energy for the propane, mixed refrigerant and nitrogen cooling loops as well as electrical power' to the mega-trains — corroborating both the mechanical-drive and power-export functions industry-wide across the Qatargas/RasGas Ras Laffan complex.",
+    "refs": [
+      "https://www.ogj.com/general-interest/companies/article/17228343/worlds-largest-lng-compressors-designed-tested-for-qatargas-ii",
+      "https://www.ogj.com/general-interest/companies/article/17231479/qatargas-upgrades-debottlenecks-ras-laffan-lng-plant",
+      "https://www.bakerhughes.com/sites/bakerhughes/files/2021-02/BakerHughes_Frame91E_Overview-012921.pdf",
+      "https://pdfcoffee.com/start-up-and-operation-of-ge-frame-9e--pdf-free.html"
+    ],
+    "verification_log": [
+      {"url": "https://www.ogj.com/general-interest/companies/article/17228343/worlds-largest-lng-compressors-designed-tested-for-qatargas-ii", "tokens": ["Frame 9E"], "result": "PASS", "note": "Confirms Frame 9E as mechanical driver for the mega-train refrigeration strings."},
+      {"url": "https://www.ogj.com/general-interest/companies/article/17231479/qatargas-upgrades-debottlenecks-ras-laffan-lng-plant", "tokens": ["FR5C"], "result": "PASS", "note": "Confirms FR5C gas turbines mechanically drive the earlier trains' compressors."},
+      {"url": "https://pdfcoffee.com/start-up-and-operation-of-ge-frame-9e--pdf-free.html", "tokens": ["RasGas", "Frame 9E"], "result": "PASS", "note": "Technical paper confirms Frame 9E mechanical-drive + power-export across Qatargas/RasGas Ras Laffan trains."},
+      {"url": "https://www.bakerhughes.com/sites/bakerhughes/files/2021-02/BakerHughes_Frame91E_Overview-012921.pdf", "tokens": ["Qatargas", "mechanical-drive"], "result": "PASS", "note": "Orchestrator QC add: vendor-primary PDF names Qatargas explicitly ('The Qatargas and Rasgas LNG facilities in Ras Laffan are the world's largest mechanical-drive application'); PASS via Wayback after Incapsula 200-interstitial (verifier fixed 2026-08-01 to detect this). Added because the two OGJ refs share one publisher — this supplies the independent second origin as a vendor primary."},
+      {"url": "https://www.bakerhughes.com/case-study/massive-mega-qatargas-lng-trains-changed-industry", "tokens": ["132 MW", "mechanical drive", "Frame 9"], "result": "FAIL", "note": "Page's fetched text did not contain these specific strings (likely rendered via JS not captured) — dropped as a source, OGJ + pdfcoffee used instead."}
+    ],
+    "gogpt_prior_assessment": "No GOGPT prior plant was given for this terminal entity.",
+    "gogpt_candidate": "REVIEWER CALL",
+    "gogpt_candidate_basis": "This is fundamentally a mechanical-drive site (shaft power, not a generation nameplate), but the Frame 9E units' motor-generator system can export surplus electricity to the plant grid per OGJ — some real generation function exists, yet no citable standalone nameplate MW for a distinct 'power station' was found. Per the brief, the ~132 MW-class figures here are compressor-drive shaft ratings and must not be recorded as electric_mw or treated as a GOGPT generating asset without a dedicated nameplate.",
+    "status_or_other_findings": "None beyond the captive-power question; operating statuses for the N-entity's unit rows are consistent with sources found.",
+    "notes": "GEM splits Qatar's Ras Laffan LNG complex into 'QatarEnergy LNG (N)' and '(S)' entities (this record and the sibling S-entity) plus the separate expansion terminal 'Qatar North Field LNG Terminal' (NFE/NFS/NFW, filed separately, verdict NO — electric-drive design). The mechanical-drive finding here applies to this entity's legacy Ras Laffan trains, not to the North Field expansion."
+  },
+  {
+    "terminal": "QatarEnergy LNG (S)",
+    "terminal_id": "T100000130598",
+    "country": "Qatar",
+    "verdict": "YES",
+    "mechanical": "True",
+    "captive_category": "mechanical_drive+power_generation",
+    "hardware_summary": "GE Frame 7EA and Frame 9E heavy-frame gas turbines mechanically drive the refrigeration compressor strings on this entity's Ras Laffan trains (the RasGas-heritage side of the current QatarEnergy LNG structure): two Frame 7EA turbines were retrofitted with Dry Low NOx (DLN) combustion in 2011 while continuing to drive the mixed-refrigerant and propane compressor trains, and the RasGas mega-trains (Trains 6-7) use Frame 9E turbines (~132 MW ISO class) as the largest mechanical-drive application in the LNG industry, per Baker Hughes' own product literature.",
+    "fuel_basis": "Natural (fuel) gas fires the on-site Frame 7EA and Frame 9E gas turbines; the 2011 DLN retrofit specifically involved 'upgrading the fuel gas supply and treatment systems to ensure stable, contaminant-free fuel gas for the DLN combustion system' per the retrofit documentation.",
+    "confidence": "green",
+    "captive_summary": "This QatarEnergy LNG entity's (RasGas-heritage) Ras Laffan trains mechanically drive their refrigeration compressors with heavy-frame gas turbines: two Frame 7EA units (DLN-retrofitted 2011) on the earlier trains, and Frame 9E units on the Train 6-7 mega-trains — described by the turbine vendor itself as 'the world's largest mechanical-drive application.'",
+    "electric_mw": "",
+    "mechanical_drive_note": "Two Frame 7EA gas turbines drive the mixed-refrigerant and propane refrigeration-cycle compressors on the earlier RasGas trains (DLN-retrofitted over a 22-day shutdown in 2011 to meet Qatar's 25ppm NOx regulation). Frame 9E turbines (~132 MW ISO class) drive the compressor strings on the RasGas 3 mega-trains (Trains 6 and 7, 7.8 Mtpa each, started up 2009/2010).",
+    "confirmed_how": "Baker Hughes' own Frame 9/1E gas-turbine product overview states directly: 'The Qatargas and Rasgas LNG facilities in Ras Laffan are the world's largest mechanical-drive application, with Frame 9/1E drives for large centrifugal compressors' — vendor-primary confirmation naming RasGas explicitly. A GASTECH/IGU-style technical paper on Frame 9E start-up (hosted at pdfcoffee.com) independently states 'Qatargas and RasGas have successfully completed commissioning, start-up and operation of multiple Frame 9E gas turbine refrigeration strings,' with these strings providing '100+ megawatt' shaft power across the 7.8 Mtpa trains. A retrofit case document on the two Frame 7 gas turbines at 'RasGas LNG Company-Qatar' additionally confirms the earlier trains: 'Two retrofitted units are driving Mixed refrigerant and propane in the LNG refrigeration cycle,' completed in 2011 (this document's own page failed url_verifier's live-text check via Scribd's rendering, so it is not cited as a ref, but its claim is independently corroborated by the two sources that are cited).",
+    "refs": [
+      "https://www.bakerhughes.com/sites/bakerhughes/files/2021-02/BakerHughes_Frame91E_Overview-012921.pdf",
+      "https://pdfcoffee.com/start-up-and-operation-of-ge-frame-9e--pdf-free.html"
+    ],
+    "verification_log": [
+      {"url": "https://www.bakerhughes.com/sites/bakerhughes/files/2021-02/BakerHughes_Frame91E_Overview-012921.pdf", "tokens": ["RasGas", "mechanical-drive"], "result": "PASS", "note": "Vendor product overview names RasGas explicitly and calls Ras Laffan the world's largest mechanical-drive application."},
+      {"url": "https://pdfcoffee.com/start-up-and-operation-of-ge-frame-9e--pdf-free.html", "tokens": ["RasGas", "Frame 9E"], "result": "PASS", "note": "Technical paper confirms RasGas Frame 9E mechanical-drive refrigeration strings."},
+      {"url": "https://www.scribd.com/document/169969343/DLN-Retrofit-in-Two-Frame-7-Gas-Turbines-RasGas-LNG-Company-Qatar", "tokens": ["RasGas", "Frame 7"], "result": "FAIL", "note": "Scribd's rendered text did not surface these strings to the verifier (viewer likely requires JS/login) — dropped as a ref, though its claim is corroborated by the two PASSing sources."}
+    ],
+    "gogpt_prior_assessment": "No GOGPT prior plant was given for this terminal entity.",
+    "gogpt_candidate": "REVIEWER CALL",
+    "gogpt_candidate_basis": "Mechanical-drive site (shaft power) — the aggregate ~100+ MW-class shaft figures found are compressor-drive ratings, not a generation nameplate, and must not be recorded as electric_mw. No standalone gas power-station record with a citable nameplate was found for this entity, hence a reviewer call rather than a clean ADD or DO NOT ADD.",
+    "status_or_other_findings": "None beyond the captive-power question; operating statuses for the S-entity's unit rows are consistent with sources found.",
+    "notes": "Sibling entity to 'QatarEnergy LNG (N)' (Qatargas-heritage, filed separately) — both share the general Ras Laffan Frame 9E/mechanical-drive finding via the same technical literature, since 'Qatargas and RasGas' are consistently described jointly in the sourced material."
+  },
+  {
+    "terminal": "Yemen LNG Terminal",
+    "terminal_id": "T100000130605",
+    "country": "Yemen",
+    "verdict": "YES",
+    "mechanical": "True",
+    "captive_category": "mechanical_drive",
+    "hardware_summary": "Heavy-duty gas turbines (a 1×100% shaftline arrangement per train, per industry technical literature) directly/mechanically drive the compressors on both Balhaf liquefaction trains; GE supplied two sets of electrical starter/helper systems — 2-pole induction motors rated 11 MW each at 3,600 rpm (four motors total, two per train) — used only to accelerate the shaft until combustion starts the gas turbine and to provide supplemental power when needed, not as the prime mover.",
+    "fuel_basis": "Natural (feed/fuel) gas fires the heavy-duty gas turbine drivers, per Gas Processing & LNG's turbomachinery-configuration technical article citing Yemen LNG as an example of the single-shaftline heavy-duty-turbine approach, and GE Vernova's own Yemen LNG case study describing the induction-motor starter/helper system built around a gas-turbine-driven compressor.",
+    "confidence": "green",
+    "captive_summary": "Yemen LNG's two liquefaction trains at Balhaf are compressor-driven by heavy-duty gas turbines in a 1×100% shaftline configuration (industry-standard mechanical drive), with GE-supplied induction motors serving only as starter/helper — not power generation for the site. Mothballed since 2015 (Total-led JV, force majeure/civil conflict), but the captive-power finding is about as-built design, which persists regardless of current idle status.",
+    "electric_mw": "",
+    "mechanical_drive_note": "Heavy-duty gas turbines (model/MW not specified in sources found) mechanically drive both liquefaction trains' compressors in a 1×100% shaftline arrangement. Four 2-pole induction motors (11 MW / 3,600 rpm each) act as starter/helper for these turbines — not the prime mover, and explicitly kept out of electric_mw per the brief's guidance not to conflate starter/helper motor ratings with generation capacity.",
+    "confirmed_how": "Gas Processing & LNG's 'Turbomachinery configuration for LNG project concept selection' states: 'Historically, heavy-duty gas turbine drivers have been selected to drive LNG compressors considering their robustness ... a 1 × 100% shaftline arrangement was considered (for example, in the Yemen LNG project).' GE Vernova's own Yemen LNG case study page (live-verified for both 'induction motors' and 'gas turbine') describes the starter/helper induction-motor system built specifically around gas-turbine-driven compressors, consistent with search-aggregated detail that the two 2-pole, 11 MW/3,600rpm induction motors 'accelerate the shaft until combustion starts the gas turbine' and 'provide additional power to the gas turbine when required.'",
+    "refs": [
+      "https://www.gasprocessingnews.com/articles/2021/10/turbomachinery-configuration-for-lng-project-concept-selection/",
+      "https://www.gevernova.com/power-conversion/case-study/electrical-solution-with-induction-motors-for-lng-yemen"
+    ],
+    "verification_log": [
+      {"url": "https://www.gasprocessingnews.com/articles/2021/10/turbomachinery-configuration-for-lng-project-concept-selection/", "tokens": ["Yemen LNG"], "result": "PASS", "note": "Confirms Yemen LNG as an example of the heavy-duty gas-turbine 1x100% shaftline mechanical-drive approach."},
+      {"url": "https://ieeexplore.ieee.org/document/5936952/", "tokens": ["Yemen"], "result": "FAIL", "note": "HTTP 202 (paywalled/async IEEE Xplore page) — dropped as a source."},
+      {"url": "https://www.gevernova.com/power-conversion/case-study/electrical-solution-with-induction-motors-for-lng-yemen", "tokens": ["Yemen"], "result": "PASS", "note": "Initial broad check confirming the page is live and on-topic."},
+      {"url": "https://www.gevernova.com/power-conversion/case-study/electrical-solution-with-induction-motors-for-lng-yemen", "tokens": ["induction motors", "gas turbine"], "result": "PASS", "note": "Confirms both the induction-motor starter/helper system and the underlying gas-turbine-driven compressor."}
+    ],
+    "gogpt_prior_assessment": "No GOGPT prior plant was given for this terminal.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Mechanical-drive-only captive power (gas turbines shaft-driving compressors, with induction motors as starter/helper, not generation) — no separate electricity-generating plant with a citable nameplate was found at Balhaf.",
+    "status_or_other_findings": "Confirms GEM's existing mothballed status for both trains — Total-led JV, idle since the 2015 outbreak of civil conflict and subsequent force majeure; no new status information surfaced.",
+    "notes": ""
+  }
+]

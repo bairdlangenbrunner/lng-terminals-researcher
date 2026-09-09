@@ -1,0 +1,112 @@
+[
+  {
+    "category": "missing_field",
+    "terminal_id": "T100000130552",
+    "unit_id": "G100002055200",
+    "terminal_name": "Colbun FLNG Terminal",
+    "issue": "FloatingVesselName is blank. Researched: no FSRU hull was ever contracted/named before AES Andes/Colbun called off the deal in 2013, well before a vessel-selection stage would have been reached. This is a legitimately-blank field, not a research gap.",
+    "severity": "low",
+    "suggested_action": "No action needed — confirm-and-close the field_gaps flag; do not attempt to fill.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dormant_revival_watch",
+    "terminal_id": "T100000130552",
+    "unit_id": "G100002055200",
+    "terminal_name": "Colbun FLNG Terminal",
+    "issue": "Dormant-revival check performed this batch (web search): no signs of revival found. Colbun did not revive its own FSRU project; instead it became a capacity-reservation offtaker at the separate, already-operating Quintero LNG terminal.",
+    "severity": "low",
+    "suggested_action": "No action — revival-watch item can be marked checked for this cycle; keep on the watch list given 'high' revival_priority in the packet.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "source_verification",
+    "terminal_id": "T100000130554",
+    "unit_id": "G100002055400",
+    "terminal_name": "Gas Atacama FLNG Terminal",
+    "issue": "Owner [ref] (icis.com, 2011 article) could not be positively re-verified this batch: it consistently serves an Incapsula bot-challenge interstitial, and no Wayback snapshot could be retrieved (archive.org's availability API returned HTTP 429 rate-limit responses repeatedly during this session, distinct from 'no snapshot exists'). Left untouched per the bot-block-is-not-dead rule — not proven dead, just unverifiable this run.",
+    "severity": "low",
+    "suggested_action": "Re-check this URL (and the Location [ref] icis.com 2011 duplicate) in a future batch when the Wayback API is not rate-limited, or via a fresh WebFetch of the live page.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "missing_field",
+    "terminal_id": "T100000130554",
+    "unit_id": "G100002055400",
+    "terminal_name": "Gas Atacama FLNG Terminal",
+    "issue": "FloatingVesselName is blank. Researched: no hull/vessel was ever assigned to this Golar-sponsored FSRU before the project stalled pre-2015 delivery target and was inferred cancelled. Legitimately blank.",
+    "severity": "low",
+    "suggested_action": "No action needed.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dormant_revival_watch",
+    "terminal_id": "T100000130554",
+    "unit_id": "G100002055400",
+    "terminal_name": "Gas Atacama FLNG Terminal",
+    "issue": "Dormant-revival check performed this batch (web search): no signs of revival found for this site or sponsor (GasAtacama/Endesa).",
+    "severity": "low",
+    "suggested_action": "No action — revival-watch item checked for this cycle; keep on watch list ('high' priority).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "missing_field",
+    "terminal_id": "T100000130556",
+    "unit_id": "G100002055600",
+    "terminal_name": "Mejillones LNG Terminal",
+    "issue": "PowerPlantsSupplied [ref] both existing URLs are confirmed dead this batch (engie-energia.cl domain no longer resolves; engie.cl anniversary page is a hard 404). No qualifying replacement was found before this session's WebSearch budget was exhausted — candidates checked (gnlm.cl/proyectos, gnlm.cl/somos-gnlm) load fine but don't explicitly name the Mejillones/Tocopilla power stations as supplied clients. The underlying data value is a well-known SING-grid arrangement and is not itself in doubt; only the citation needs re-sourcing.",
+    "severity": "medium",
+    "suggested_action": "Fresh source search next batch (with WebSearch budget available) for a citable page explicitly naming Mejillones/Tocopilla power stations as GNL Mejillones offtake clients — try ENGIE Chile's current corporate site, CDEC-SING/Coordinador Eléctrico Nacional filings, or SNIFA/CNE registries.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "missing_field",
+    "terminal_id": "T100000130558",
+    "unit_id": "G100002055800",
+    "terminal_name": "Penco Lirquén FSRU",
+    "issue": "FloatingVesselName is blank. Project is still pre-construction/pre-FID (litigation-stalled since RCA approval in 2023, reaffirmed Feb 2026) and no FSRU contractor or vessel has been named in any source checked. Legitimately blank at this stage.",
+    "severity": "low",
+    "suggested_action": "No action needed; revisit once/if the project reaches FID or a charter announcement.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "source_verification",
+    "terminal_id": "T100000130716",
+    "unit_id": "G100002071600",
+    "terminal_name": "Talcahuano FSRU",
+    "issue": "gnlt.cl (project sponsor's own site, the sole remaining FacilityType/Capacity/Location citation after dropping the dead igu.org URL) returned HTTP 403 on every attempt this batch, and the Wayback-fallback check could not complete because archive.org's availability API was itself rate-limiting this session (HTTP 429, not 'no snapshot found'). Treated as inconclusive rather than dead — kept in the staged refs at yellow confidence pending a clean re-check.",
+    "severity": "medium",
+    "suggested_action": "Re-run url_verifier.py against http://gnlt.cl/maritime-terminal.php in a fresh session (or check web.archive.org/web/*/gnlt.cl/maritime-terminal.php manually) to confirm it is genuinely live via Wayback and upgrade confidence, or find an independent second source for FacilityType/Capacity if it turns out to be truly dead.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "missing_field",
+    "terminal_id": "T100000130716",
+    "unit_id": "G100002071600",
+    "terminal_name": "Talcahuano FSRU",
+    "issue": "FloatingVesselName is blank. Project never progressed past the proposal/environmental-permitting stage before its 2023 license revocation and 2026 inferred-cancelled call — no FSRU vessel was ever contracted. Legitimately blank.",
+    "severity": "low",
+    "suggested_action": "No action needed.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dormant_revival_watch",
+    "terminal_id": "T100000130716",
+    "unit_id": "G100002071600",
+    "terminal_name": "Talcahuano FSRU",
+    "issue": "Dormant-revival check performed this batch (web search): no signs of revival found; consistent with the 2026-08-04 move to inferred-cancelled.",
+    "severity": "low",
+    "suggested_action": "No action — revival-watch item checked for this cycle ('normal' priority, only just moved to cancelled).",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "source_verification",
+    "terminal_id": "T100000130556",
+    "unit_id": "G100002055600",
+    "terminal_name": "Mejillones LNG Terminal",
+    "issue": "Cost [ref] (hydrocarbons-technology.com/projects/cnlmejillones/) and Quintero LNG Terminal's ProposalDate/ConstructionDate/Cost [ref] (hydrocarbons-technology.com/projects/quniterobay/) both returned HTTP 403 with no Wayback snapshot available this batch, on both the legacy hydrocarbons-technology.com domain and its known successor offshore-technology.com. Could not confirm the 301-rehost migration pattern documented elsewhere in the repo (giignl.org-style) actually applies here. Inconclusive, not proven dead — left untouched.",
+    "severity": "low",
+    "suggested_action": "Re-check both URLs (and their offshore-technology.com equivalents) in a future batch; migrate the citation if offshore-technology.com is confirmed to carry the same content.",
+    "researcher_initials": "AI-draft"
+  }
+]

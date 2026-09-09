@@ -1,0 +1,1017 @@
+[
+  {
+    "terminal_id": "T100000131099",
+    "unit_id": "G100002109900",
+    "terminal_name": "Zeeland Energy FSRU",
+    "unit_name": "--",
+    "country": "Netherlands",
+    "field_name": "Operator",
+    "old_value": "VTTI",
+    "new_value": "VTTI; Höegh Evi",
+    "confidence": "green",
+    "source_tier": "primary (project site) + independent corroboration",
+    "ref_field": "Operator [ref]",
+    "ref_urls": [
+      "https://zeelandenergyterminal.com/about-zeeland-energy-terminal/",
+      "https://www.vtti.com/vtti-and-hoegh-lng-sign-agreement-to-jointly-develop-energy-terminal-in-zeeland-netherlands/"
+    ],
+    "source_notes": "GEM's own cited source (zeelandenergyterminal.com/about) states VTTI and Höegh Evi have \"equal ownership and operatorship\" of the terminal -- this directly contradicts the live sole-operator value 'VTTI'. Re-verified the project page (PASS on 'operatorship') and added an independent corroborator, VTTI's own press release announcing the joint development agreement (PASS on 'VTTI' and '50-50'). Both entities already exist in GEM's entity system (entity_lookup.py run bare, no --country: VTTI found on this same terminal; Höegh Evi found on 4 terminals across Cyprus/Lithuania/Netherlands/US) -- reused, no new entity staged. Owner field ('VTTI BV [50%]; Hoegh Evi [50%]') is already correct and NOT restaged per instruction; the Höegh Evi spelling-variance across GEM (>=3 spellings) is a known cosmetic issue, logged in qa only, not fixed here.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130997",
+    "unit_id": "G100001096022",
+    "terminal_name": "Eemshaven FSRU",
+    "unit_name": "Expansion",
+    "country": "Netherlands",
+    "field_name": "CapacityUnits",
+    "old_value": "MMcf/d",
+    "new_value": "bcm/y",
+    "confidence": "yellow",
+    "source_tier": "arithmetic reconciliation across 2 independent trade/project sources",
+    "ref_field": "Capacity [ref]",
+    "ref_urls": [
+      "https://exmar.com/en/news-center/eemsenergyterminal-extension-making-steady-progress/",
+      "https://www.eemsenergyterminal.com/nl/laatste-nieuws/eemsenergyterminal-neemt-conditionele-investeringsbeslissing-voor-verlenging"
+    ],
+    "source_notes": "'CapacityUnits'='MMcf/d' is not in the schema catalog (bcm/y, mtpa). Ran capacity_normalize.py on 0.60 MMcf/d -> 0.0046 mtpa / 0.0062 bcm/y, an implausibly tiny figure for an FSRU expansion -- confirms the VALUE '0.60' is correct but the UNIT LABEL is wrong. Both cited sources (Exmar's own project-update page and EemsEnergyTerminal's own FID news article) independently state the extension 'will enable importing 8.6 bcm of gas per year' against the terminal's current stated capacity of 8 bcm/y (both explicit in the articles) -- i.e. this unit's own incremental addition is 8.6-8.0=0.6 bcm/y, matching the stored value '0.60' exactly. This also matches GEM's own convention on this very terminal family (Zeebrugge's unit-rows record each expansion's OWN incremental mtpa, not a cumulative total). Recommend CapacityUnits -> 'bcm/y', Capacity value unchanged at 0.60. Yellow because neither source states the 0.6 increment as a single explicit figure -- it is derived by subtraction from two consistent 8/8.6 statements, not read off the page directly.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130492",
+    "unit_id": "G100002049200",
+    "terminal_name": "Gate LNG Terminal",
+    "unit_name": "--",
+    "country": "Netherlands",
+    "field_name": "Owner [ref]",
+    "old_value": "https://www.datocms-assets.com/146580/1749457104-igu-world-lng-report-2025-hr_dp.pdf, https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf",
+    "new_value": "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf, https://www.gateterminal.com/en/gate-terminal/profiel/",
+    "confidence": "green",
+    "source_tier": "GIIGNL 2026 report + terminal's own site",
+    "ref_field": "Owner [ref]",
+    "ref_urls": [
+      "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf",
+      "https://www.gateterminal.com/en/gate-terminal/profiel/"
+    ],
+    "source_notes": "The datocms-assets.com IGU World LNG Report 2025 URL now 404s (confirmed dead this session). Owner value 'Gate Terminal BV [100%]' is unchanged and correct -- only the ref list is repaired. Kept the still-live 2026 GIIGNL mirror (PASS on 'Gate Terminal') and added gateterminal.com's own profile page (PASS on 'Vopak', confirms the JV structure feeding the Parent field too). Project-level field, applied to both unit-rows.",
+    "scope_note": "project-level field, applies to all unit-rows",
+    "dropped_urls_dead": [
+      "https://www.datocms-assets.com/146580/1749457104-igu-world-lng-report-2025-hr_dp.pdf"
+    ],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130492",
+    "unit_id": "G100002049201",
+    "terminal_name": "Gate LNG Terminal",
+    "unit_name": "Expansion",
+    "country": "Netherlands",
+    "field_name": "Owner [ref]",
+    "old_value": "https://www.datocms-assets.com/146580/1749457104-igu-world-lng-report-2025-hr_dp.pdf, https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf",
+    "new_value": "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf, https://www.gateterminal.com/en/gate-terminal/profiel/",
+    "confidence": "green",
+    "source_tier": "GIIGNL 2026 report + terminal's own site",
+    "ref_field": "Owner [ref]",
+    "ref_urls": [
+      "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf",
+      "https://www.gateterminal.com/en/gate-terminal/profiel/"
+    ],
+    "source_notes": "The datocms-assets.com IGU World LNG Report 2025 URL now 404s (confirmed dead this session). Owner value 'Gate Terminal BV [100%]' is unchanged and correct -- only the ref list is repaired. Kept the still-live 2026 GIIGNL mirror (PASS on 'Gate Terminal') and added gateterminal.com's own profile page (PASS on 'Vopak', confirms the JV structure feeding the Parent field too). Project-level field, applied to both unit-rows.",
+    "scope_note": "project-level field, applies to all unit-rows",
+    "dropped_urls_dead": [
+      "https://www.datocms-assets.com/146580/1749457104-igu-world-lng-report-2025-hr_dp.pdf"
+    ],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130997",
+    "unit_id": "G100002099700",
+    "terminal_name": "Eemshaven FSRU",
+    "unit_name": "--",
+    "country": "Netherlands",
+    "field_name": "FacilityType",
+    "old_value": "import",
+    "new_value": "import",
+    "confidence": "blue",
+    "source_tier": "re-verified, unchanged",
+    "ref_field": "FacilityType [ref]",
+    "ref_urls": [
+      "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf",
+      "https://www.reuters.com/article/ukraine-crisis-netherlands-gasunie-idUSL2N2VL0LU"
+    ],
+    "source_notes": "Reuters URL is bot-blocked (401) but passes via automatic Wayback fallback -- live citation retained.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130997",
+    "unit_id": "G100002099700",
+    "terminal_name": "Eemshaven FSRU",
+    "unit_name": "--",
+    "country": "Netherlands",
+    "field_name": "Status",
+    "old_value": "operating",
+    "new_value": "operating",
+    "confidence": "blue",
+    "source_tier": "re-verified, unchanged",
+    "ref_field": "Status [ref]",
+    "ref_urls": [
+      "https://www.eemsenergyterminal.com/nl/laatste-nieuws/eemsenergyterminal-neemt-conditionele-investeringsbeslissing-voor-verlenging",
+      "https://www.gasunie.nl/en/news/eemsenergyterminal-for-lng-out-of-the-starting-blocks"
+    ],
+    "source_notes": "Re-verified this batch; existing value and citation(s) confirmed current, no change.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130997",
+    "unit_id": "G100002099700",
+    "terminal_name": "Eemshaven FSRU",
+    "unit_name": "--",
+    "country": "Netherlands",
+    "field_name": "Owner",
+    "old_value": "EemsEnergyTerminal BV",
+    "new_value": "EemsEnergyTerminal BV",
+    "confidence": "blue",
+    "source_tier": "re-verified, unchanged",
+    "ref_field": "Owner [ref]",
+    "ref_urls": [
+      "https://www.gasunie.nl/en/projects/eemsenergyterminal",
+      "https://www.gasunie.nl/en/news/important-new-phase-for-the-future-of-eemsenergyterminal-at-the-port-of-eemshaven"
+    ],
+    "source_notes": "Re-verified this batch; existing value and citation(s) confirmed current, no change.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130997",
+    "unit_id": "G100002099700",
+    "terminal_name": "Eemshaven FSRU",
+    "unit_name": "--",
+    "country": "Netherlands",
+    "field_name": "Operator",
+    "old_value": "EemsEnergyTerminal; Nederlandse Gasunie",
+    "new_value": "EemsEnergyTerminal; Nederlandse Gasunie",
+    "confidence": "blue",
+    "source_tier": "re-verified, unchanged",
+    "ref_field": "Operator [ref]",
+    "ref_urls": [
+      "https://www.gasunie.nl/en/projects/eemsenergyterminal",
+      "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf"
+    ],
+    "source_notes": "Re-verified this batch; existing value and citation(s) confirmed current, no change.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130997",
+    "unit_id": "G100002099700",
+    "terminal_name": "Eemshaven FSRU",
+    "unit_name": "--",
+    "country": "Netherlands",
+    "field_name": "Capacity",
+    "old_value": "8.00",
+    "new_value": "8.00",
+    "confidence": "blue",
+    "source_tier": "re-verified, unchanged",
+    "ref_field": "Capacity [ref]",
+    "ref_urls": [
+      "https://www.eemsenergyterminal.com/nl/laatste-nieuws/eemsenergyterminal-neemt-conditionele-investeringsbeslissing-voor-verlenging",
+      "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf",
+      "https://www.gasunie.nl/en/news/eemsenergyterminal-for-lng-out-of-the-starting-blocks"
+    ],
+    "source_notes": "EemsEnergyTerminal's own article states the current terminal 'has a capacity of 8 bcm' -- confirms.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130997",
+    "unit_id": "G100002099700",
+    "terminal_name": "Eemshaven FSRU",
+    "unit_name": "--",
+    "country": "Netherlands",
+    "field_name": "ProposalYear",
+    "old_value": "2022",
+    "new_value": "2022",
+    "confidence": "blue",
+    "source_tier": "re-verified, unchanged",
+    "ref_field": "ProposalDate [ref]",
+    "ref_urls": [
+      "https://splash247.com/exmar-seals-five-year-frsu-charter-with-gasunie/"
+    ],
+    "source_notes": "splash247 bot-blocked (403) but passes via Wayback fallback.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130997",
+    "unit_id": "G100002099700",
+    "terminal_name": "Eemshaven FSRU",
+    "unit_name": "--",
+    "country": "Netherlands",
+    "field_name": "ConstructionYear",
+    "old_value": "2022",
+    "new_value": "2022",
+    "confidence": "blue",
+    "source_tier": "re-verified, unchanged",
+    "ref_field": "ConstructionDate [ref]",
+    "ref_urls": [
+      "https://www.lngindustry.com/floating-lng/12092022/eemsenergyterminal-starts-construction-phase/"
+    ],
+    "source_notes": "Re-verified this batch; existing value and citation(s) confirmed current, no change.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130997",
+    "unit_id": "G100002099700",
+    "terminal_name": "Eemshaven FSRU",
+    "unit_name": "--",
+    "country": "Netherlands",
+    "field_name": "ActualStartYear",
+    "old_value": "2022",
+    "new_value": "2022",
+    "confidence": "blue",
+    "source_tier": "re-verified, unchanged",
+    "ref_field": "StartDate [ref]",
+    "ref_urls": [
+      "https://www.eemsenergyterminal.com/nl/laatste-nieuws/eemsenergyterminal-neemt-conditionele-investeringsbeslissing-voor-verlenging",
+      "https://www.gasunie.nl/en/news/eemsenergyterminal-for-lng-out-of-the-starting-blocks"
+    ],
+    "source_notes": "Re-verified this batch; existing value and citation(s) confirmed current, no change.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130997",
+    "unit_id": "G100002099700",
+    "terminal_name": "Eemshaven FSRU",
+    "unit_name": "--",
+    "country": "Netherlands",
+    "field_name": "Cost",
+    "old_value": "500000000.00",
+    "new_value": "500000000.00",
+    "confidence": "blue",
+    "source_tier": "re-verified, unchanged",
+    "ref_field": "Cost [ref]",
+    "ref_urls": [
+      "https://www.gasunie.nl/en/news/eemsenergyterminal-for-lng-out-of-the-starting-blocks"
+    ],
+    "source_notes": "Re-verified this batch; existing value and citation(s) confirmed current, no change.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130997",
+    "unit_id": "G100002099700",
+    "terminal_name": "Eemshaven FSRU",
+    "unit_name": "--",
+    "country": "Netherlands",
+    "field_name": "FloatingVesselName",
+    "old_value": "Eemshaven LNG, Energos Igloo",
+    "new_value": "Eemshaven LNG, Energos Igloo",
+    "confidence": "blue",
+    "source_tier": "re-verified, unchanged",
+    "ref_field": "FloatingVesselName [ref]",
+    "ref_urls": [
+      "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf"
+    ],
+    "source_notes": "Re-verified this batch; existing value and citation(s) confirmed current, no change.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130997",
+    "unit_id": "G100001096022",
+    "terminal_name": "Eemshaven FSRU",
+    "unit_name": "Expansion",
+    "country": "Netherlands",
+    "field_name": "FacilityType",
+    "old_value": "import",
+    "new_value": "import",
+    "confidence": "blue",
+    "source_tier": "re-verified, unchanged",
+    "ref_field": "FacilityType [ref]",
+    "ref_urls": [
+      "https://www.eemsenergyterminal.com/nl/laatste-nieuws/eemsenergyterminal-neemt-conditionele-investeringsbeslissing-voor-verlenging",
+      "https://www.eemsenergyterminal.com/nl/laatste-nieuws/200e-lng-tanker-arriveert-bij-eemsenergyterminal"
+    ],
+    "source_notes": "Re-verified this batch; existing value and citation(s) confirmed current, no change.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130997",
+    "unit_id": "G100001096022",
+    "terminal_name": "Eemshaven FSRU",
+    "unit_name": "Expansion",
+    "country": "Netherlands",
+    "field_name": "Status",
+    "old_value": "proposed",
+    "new_value": "proposed",
+    "confidence": "blue",
+    "source_tier": "re-verified, unchanged",
+    "ref_field": "Status [ref]",
+    "ref_urls": [
+      "https://www.eemsenergyterminal.com/latest-news/eemsenergyterminal-partners-with-exmar-for-terminal-extension",
+      "https://www.eemsenergyterminal.com/nl/laatste-nieuws/200e-lng-tanker-arriveert-bij-eemsenergyterminal"
+    ],
+    "source_notes": "Re-verified this batch; existing value and citation(s) confirmed current, no change.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130997",
+    "unit_id": "G100001096022",
+    "terminal_name": "Eemshaven FSRU",
+    "unit_name": "Expansion",
+    "country": "Netherlands",
+    "field_name": "Owner",
+    "old_value": "EemsEnergyTerminal BV",
+    "new_value": "EemsEnergyTerminal BV",
+    "confidence": "blue",
+    "source_tier": "re-verified, unchanged",
+    "ref_field": "Owner [ref]",
+    "ref_urls": [
+      "https://www.gasunie.nl/en/projects/eemsenergyterminal",
+      "https://www.gasunie.nl/en/news/important-new-phase-for-the-future-of-eemsenergyterminal-at-the-port-of-eemshaven"
+    ],
+    "source_notes": "Re-verified this batch; existing value and citation(s) confirmed current, no change.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130997",
+    "unit_id": "G100001096022",
+    "terminal_name": "Eemshaven FSRU",
+    "unit_name": "Expansion",
+    "country": "Netherlands",
+    "field_name": "Operator",
+    "old_value": "EemsEnergyTerminal; Nederlandse Gasunie",
+    "new_value": "EemsEnergyTerminal; Nederlandse Gasunie",
+    "confidence": "blue",
+    "source_tier": "re-verified, unchanged",
+    "ref_field": "Operator [ref]",
+    "ref_urls": [
+      "https://www.gasunie.nl/en/projects/eemsenergyterminal",
+      "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf"
+    ],
+    "source_notes": "Re-verified this batch; existing value and citation(s) confirmed current, no change.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130997",
+    "unit_id": "G100001096022",
+    "terminal_name": "Eemshaven FSRU",
+    "unit_name": "Expansion",
+    "country": "Netherlands",
+    "field_name": "ProposalYear",
+    "old_value": "2025",
+    "new_value": "2025",
+    "confidence": "blue",
+    "source_tier": "re-verified, unchanged",
+    "ref_field": "ProposalDate [ref]",
+    "ref_urls": [
+      "https://www.eemsenergyterminal.com/latest-news/eemsenergyterminal-partners-with-exmar-for-terminal-extension",
+      "https://www.eemsenergyterminal.com/nl/laatste-nieuws/200e-lng-tanker-arriveert-bij-eemsenergyterminal"
+    ],
+    "source_notes": "Re-verified this batch; existing value and citation(s) confirmed current, no change.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130997",
+    "unit_id": "G100001096022",
+    "terminal_name": "Eemshaven FSRU",
+    "unit_name": "Expansion",
+    "country": "Netherlands",
+    "field_name": "LatestPlannedStartYear",
+    "old_value": "2028",
+    "new_value": "2028",
+    "confidence": "blue",
+    "source_tier": "re-verified, unchanged",
+    "ref_field": "StartDate [ref]",
+    "ref_urls": [
+      "https://www.eemsenergyterminal.com/nl/laatste-nieuws/eemsenergyterminal-neemt-conditionele-investeringsbeslissing-voor-verlenging",
+      "https://www.eemsenergyterminal.com/nl/laatste-nieuws/200e-lng-tanker-arriveert-bij-eemsenergyterminal"
+    ],
+    "source_notes": "Re-verified this batch; existing value and citation(s) confirmed current, no change.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130997",
+    "unit_id": "G100001096022",
+    "terminal_name": "Eemshaven FSRU",
+    "unit_name": "Expansion",
+    "country": "Netherlands",
+    "field_name": "FIDYear",
+    "old_value": "2026",
+    "new_value": "2026",
+    "confidence": "blue",
+    "source_tier": "re-verified, unchanged",
+    "ref_field": "FIDYear [ref]",
+    "ref_urls": [
+      "https://en.portnews.ru/news/390344/"
+    ],
+    "source_notes": "Re-verified this batch; existing value and citation(s) confirmed current, no change.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130492",
+    "unit_id": "G100002049200",
+    "terminal_name": "Gate LNG Terminal",
+    "unit_name": "--",
+    "country": "Netherlands",
+    "field_name": "FacilityType",
+    "old_value": "import",
+    "new_value": "import",
+    "confidence": "blue",
+    "source_tier": "re-verified, unchanged",
+    "ref_field": "FacilityType [ref]",
+    "ref_urls": [
+      "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf"
+    ],
+    "source_notes": "Re-verified this batch; existing value and citation(s) confirmed current, no change.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130492",
+    "unit_id": "G100002049200",
+    "terminal_name": "Gate LNG Terminal",
+    "unit_name": "--",
+    "country": "Netherlands",
+    "field_name": "Status",
+    "old_value": "operating",
+    "new_value": "operating",
+    "confidence": "blue",
+    "source_tier": "re-verified, unchanged",
+    "ref_field": "Status [ref]",
+    "ref_urls": [
+      "https://www.gateterminal.com/en/gate-terminal/profiel/milestones/",
+      "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf"
+    ],
+    "source_notes": "Re-verified this batch; existing value and citation(s) confirmed current, no change.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130492",
+    "unit_id": "G100002049200",
+    "terminal_name": "Gate LNG Terminal",
+    "unit_name": "--",
+    "country": "Netherlands",
+    "field_name": "Capacity",
+    "old_value": "16.00",
+    "new_value": "16.00",
+    "confidence": "blue",
+    "source_tier": "re-verified, unchanged",
+    "ref_field": "Capacity [ref]",
+    "ref_urls": [
+      "https://www.gateterminal.com/en/commercial/capaciteit/",
+      "https://lngprime.com/lng-terminals/gasunie-reveals-more-details-on-dutch-lng-capacity-expansion-plans/68530/"
+    ],
+    "source_notes": "Re-verified this batch; existing value and citation(s) confirmed current, no change.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130492",
+    "unit_id": "G100002049200",
+    "terminal_name": "Gate LNG Terminal",
+    "unit_name": "--",
+    "country": "Netherlands",
+    "field_name": "ProposalYear",
+    "old_value": "2005",
+    "new_value": "2005",
+    "confidence": "blue",
+    "source_tier": "re-verified, unchanged",
+    "ref_field": "ProposalDate [ref]",
+    "ref_urls": [
+      "https://www.gateterminal.com/en/gate-terminal/profiel/milestones/"
+    ],
+    "source_notes": "Re-verified this batch; existing value and citation(s) confirmed current, no change.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130492",
+    "unit_id": "G100002049200",
+    "terminal_name": "Gate LNG Terminal",
+    "unit_name": "--",
+    "country": "Netherlands",
+    "field_name": "ConstructionYear",
+    "old_value": "2008",
+    "new_value": "2008",
+    "confidence": "blue",
+    "source_tier": "re-verified, unchanged",
+    "ref_field": "ConstructionDate [ref]",
+    "ref_urls": [
+      "https://www.gateterminal.com/en/gate-terminal/profiel/milestones/"
+    ],
+    "source_notes": "Re-verified this batch; existing value and citation(s) confirmed current, no change.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130492",
+    "unit_id": "G100002049200",
+    "terminal_name": "Gate LNG Terminal",
+    "unit_name": "--",
+    "country": "Netherlands",
+    "field_name": "ActualStartYear",
+    "old_value": "2011",
+    "new_value": "2011",
+    "confidence": "blue",
+    "source_tier": "re-verified, unchanged",
+    "ref_field": "StartDate [ref]",
+    "ref_urls": [
+      "https://www.gateterminal.com/en/gate-terminal/profiel/milestones/",
+      "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf"
+    ],
+    "source_notes": "Re-verified this batch; existing value and citation(s) confirmed current, no change.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130492",
+    "unit_id": "G100002049200",
+    "terminal_name": "Gate LNG Terminal",
+    "unit_name": "--",
+    "country": "Netherlands",
+    "field_name": "Cost",
+    "old_value": "800000000.00",
+    "new_value": "800000000.00",
+    "confidence": "blue",
+    "source_tier": "re-verified, unchanged",
+    "ref_field": "Cost [ref]",
+    "ref_urls": [
+      "http://bit.ly/2lBn0ZJ"
+    ],
+    "source_notes": "Re-verified this batch; existing value and citation(s) confirmed current, no change.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130492",
+    "unit_id": "G100002049200",
+    "terminal_name": "Gate LNG Terminal",
+    "unit_name": "--",
+    "country": "Netherlands",
+    "field_name": "FIDYear",
+    "old_value": "2007",
+    "new_value": "2007",
+    "confidence": "blue",
+    "source_tier": "re-verified, unchanged",
+    "ref_field": "FIDYear [ref]",
+    "ref_urls": [
+      "https://www.gateterminal.com/en/gate-terminal/profiel/milestones/"
+    ],
+    "source_notes": "Re-verified this batch; existing value and citation(s) confirmed current, no change.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130492",
+    "unit_id": "G100002049201",
+    "terminal_name": "Gate LNG Terminal",
+    "unit_name": "Expansion",
+    "country": "Netherlands",
+    "field_name": "FacilityType",
+    "old_value": "import",
+    "new_value": "import",
+    "confidence": "blue",
+    "source_tier": "re-verified, unchanged",
+    "ref_field": "FacilityType [ref]",
+    "ref_urls": [
+      "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf"
+    ],
+    "source_notes": "Re-verified this batch; existing value and citation(s) confirmed current, no change.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130492",
+    "unit_id": "G100002049201",
+    "terminal_name": "Gate LNG Terminal",
+    "unit_name": "Expansion",
+    "country": "Netherlands",
+    "field_name": "Status",
+    "old_value": "construction",
+    "new_value": "construction",
+    "confidence": "blue",
+    "source_tier": "re-verified, unchanged",
+    "ref_field": "Status [ref]",
+    "ref_urls": [
+      "https://www.gasunie.nl/en/news/gate-terminal-starts-construction-of-4th-lng-tank-at-the-port-of-rotterdam",
+      "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf"
+    ],
+    "source_notes": "Re-verified this batch; existing value and citation(s) confirmed current, no change.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130492",
+    "unit_id": "G100002049201",
+    "terminal_name": "Gate LNG Terminal",
+    "unit_name": "Expansion",
+    "country": "Netherlands",
+    "field_name": "Capacity",
+    "old_value": "4.00",
+    "new_value": "4.00",
+    "confidence": "blue",
+    "source_tier": "re-verified, unchanged",
+    "ref_field": "Capacity [ref]",
+    "ref_urls": [
+      "https://www.gateterminal.com/en/nieuwsberichten-archive/gate-terminal-selected-contractors-to-design-and-build-4th-lng-storage-tank/",
+      "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf"
+    ],
+    "source_notes": "Re-verified this batch; existing value and citation(s) confirmed current, no change.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130492",
+    "unit_id": "G100002049201",
+    "terminal_name": "Gate LNG Terminal",
+    "unit_name": "Expansion",
+    "country": "Netherlands",
+    "field_name": "ProposalYear",
+    "old_value": "2019",
+    "new_value": "2019",
+    "confidence": "blue",
+    "source_tier": "re-verified, unchanged",
+    "ref_field": "ProposalDate [ref]",
+    "ref_urls": [
+      "https://www.icis.com/explore/resources/news/2019/03/07/10329847/dutch-gate-launches-open-season-to-test-regional-lng-demand/",
+      "https://lngprime.com/europe/gasunie-plans-second-dutch-lng-import-terminal-gate-expansion/45790/"
+    ],
+    "source_notes": "icis.com loads (HTTP 200) but renders no visible article text this session (JS-gated/soft-block, not a hard 404) -- flagged in qa; kept per merge semantics (not proven dead). lngprime companion URL independently confirms.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130492",
+    "unit_id": "G100002049201",
+    "terminal_name": "Gate LNG Terminal",
+    "unit_name": "Expansion",
+    "country": "Netherlands",
+    "field_name": "ConstructionYear",
+    "old_value": "2023",
+    "new_value": "2023",
+    "confidence": "blue",
+    "source_tier": "re-verified, unchanged",
+    "ref_field": "ConstructionDate [ref]",
+    "ref_urls": [
+      "https://www.gasunie.nl/en/news/gate-terminal-starts-construction-of-4th-lng-tank-at-the-port-of-rotterdam",
+      "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf"
+    ],
+    "source_notes": "Re-verified this batch; existing value and citation(s) confirmed current, no change.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130492",
+    "unit_id": "G100002049201",
+    "terminal_name": "Gate LNG Terminal",
+    "unit_name": "Expansion",
+    "country": "Netherlands",
+    "field_name": "LatestPlannedStartYear",
+    "old_value": "2026",
+    "new_value": "2026",
+    "confidence": "blue",
+    "source_tier": "re-verified, unchanged",
+    "ref_field": "StartDate [ref]",
+    "ref_urls": [
+      "https://www.offshore-energy.biz/gate-terminal-expanding-capacity-with-4th-lng-tank-at-rotterdam-port/",
+      "https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/ee1bebf9-7dfc-4c6a-8134-b8214c8302a0/GIIGNL-2026-Annual-Report-0521.pdf"
+    ],
+    "source_notes": "offshore-energy.biz returned a transient 502 (Retry-After header present) on repeat checks this session -- domain-wide outage, not link-rot; not dropped. 2026 GIIGNL mirror independently confirms.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130492",
+    "unit_id": "G100002049201",
+    "terminal_name": "Gate LNG Terminal",
+    "unit_name": "Expansion",
+    "country": "Netherlands",
+    "field_name": "Cost",
+    "old_value": "350000000.00",
+    "new_value": "350000000.00",
+    "confidence": "blue",
+    "source_tier": "re-verified, unchanged",
+    "ref_field": "Cost [ref]",
+    "ref_urls": [
+      "https://www.gateterminal.com/en/nieuwsberichten-archive/gate-terminal-starts-construction-of-4th-lng-tank-at-the-port-of-rotterdam/"
+    ],
+    "source_notes": "Re-verified this batch; existing value and citation(s) confirmed current, no change.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130492",
+    "unit_id": "G100002049201",
+    "terminal_name": "Gate LNG Terminal",
+    "unit_name": "Expansion",
+    "country": "Netherlands",
+    "field_name": "FIDYear",
+    "old_value": "2023",
+    "new_value": "2023",
+    "confidence": "blue",
+    "source_tier": "re-verified, unchanged",
+    "ref_field": "FIDYear [ref]",
+    "ref_urls": [
+      "https://www.offshore-energy.biz/gate-terminal-expanding-capacity-with-4th-lng-tank-at-rotterdam-port/"
+    ],
+    "source_notes": "Same transient-502 domain as StartDate ref above; not dropped.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131100",
+    "unit_id": "G100002110000",
+    "terminal_name": "Terneuzen FSRU",
+    "unit_name": "--",
+    "country": "Netherlands",
+    "field_name": "Status",
+    "old_value": "cancelled",
+    "new_value": "cancelled",
+    "confidence": "blue",
+    "source_tier": "re-verified, unchanged",
+    "ref_field": "Status [ref]",
+    "ref_urls": [
+      "https://lngprime.com/europe/gasunie-drops-plans-for-terneuzen-lng-import-terminal-continues-to-study-expansion/73477/"
+    ],
+    "source_notes": "Re-verified this batch; existing value and citation(s) confirmed current, no change.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131100",
+    "unit_id": "G100002110000",
+    "terminal_name": "Terneuzen FSRU",
+    "unit_name": "--",
+    "country": "Netherlands",
+    "field_name": "CancelledYear",
+    "old_value": "2023",
+    "new_value": "2023",
+    "confidence": "blue",
+    "source_tier": "re-verified, unchanged",
+    "ref_field": "CancelledYear [ref]",
+    "ref_urls": [
+      "https://lngprime.com/europe/gasunie-drops-plans-for-terneuzen-lng-import-terminal-continues-to-study-expansion/73477/"
+    ],
+    "source_notes": "Re-verified this batch; existing value and citation(s) confirmed current, no change.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131100",
+    "unit_id": "G100002110000",
+    "terminal_name": "Terneuzen FSRU",
+    "unit_name": "--",
+    "country": "Netherlands",
+    "field_name": "StopYear",
+    "old_value": "2023",
+    "new_value": "2023",
+    "confidence": "blue",
+    "source_tier": "re-verified, unchanged",
+    "ref_field": "StopYear [ref]",
+    "ref_urls": [
+      "https://lngprime.com/europe/gasunie-drops-plans-for-terneuzen-lng-import-terminal-continues-to-study-expansion/73477/"
+    ],
+    "source_notes": "Re-verified this batch; existing value and citation(s) confirmed current, no change.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131100",
+    "unit_id": "G100002110000",
+    "terminal_name": "Terneuzen FSRU",
+    "unit_name": "--",
+    "country": "Netherlands",
+    "field_name": "ProposalYear",
+    "old_value": "2022",
+    "new_value": "2022",
+    "confidence": "blue",
+    "source_tier": "re-verified, unchanged",
+    "ref_field": "ProposalDate [ref]",
+    "ref_urls": [
+      "https://www.naturalgasintel.com/news/netherlands-continues-quest-to-boost-lng-import-capacity/"
+    ],
+    "source_notes": "Re-verified this batch; existing value and citation(s) confirmed current, no change.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131100",
+    "unit_id": "G100002110000",
+    "terminal_name": "Terneuzen FSRU",
+    "unit_name": "--",
+    "country": "Netherlands",
+    "field_name": "Owner",
+    "old_value": "Nederlandse Gasunie NV [100%]",
+    "new_value": "Nederlandse Gasunie NV [100%]",
+    "confidence": "blue",
+    "source_tier": "re-verified, unchanged",
+    "ref_field": "Owner [ref]",
+    "ref_urls": [
+      "https://www.naturalgasintel.com/news/netherlands-continues-quest-to-boost-lng-import-capacity/"
+    ],
+    "source_notes": "Re-verified this batch; existing value and citation(s) confirmed current, no change.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131099",
+    "unit_id": "G100002109900",
+    "terminal_name": "Zeeland Energy FSRU",
+    "unit_name": "--",
+    "country": "Netherlands",
+    "field_name": "FacilityType",
+    "old_value": "import",
+    "new_value": "import",
+    "confidence": "blue",
+    "source_tier": "re-verified, unchanged",
+    "ref_field": "FacilityType [ref]",
+    "ref_urls": [
+      "https://www.marinelink.com/news/vtti-plans-new-bcm-floating-lng-platform-501541?utm_source=substack&utm_medium=email"
+    ],
+    "source_notes": "Re-verified this batch; existing value and citation(s) confirmed current, no change.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131099",
+    "unit_id": "G100002109900",
+    "terminal_name": "Zeeland Energy FSRU",
+    "unit_name": "--",
+    "country": "Netherlands",
+    "field_name": "Status",
+    "old_value": "proposed",
+    "new_value": "proposed",
+    "confidence": "blue",
+    "source_tier": "re-verified, unchanged",
+    "ref_field": "Status [ref]",
+    "ref_urls": [
+      "https://www.marinelink.com/news/vtti-plans-new-bcm-floating-lng-platform-501541?utm_source=substack&utm_medium=email"
+    ],
+    "source_notes": "Re-verified this batch; existing value and citation(s) confirmed current, no change.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131099",
+    "unit_id": "G100002109900",
+    "terminal_name": "Zeeland Energy FSRU",
+    "unit_name": "--",
+    "country": "Netherlands",
+    "field_name": "Owner",
+    "old_value": "VTTI BV [50%]; Hoegh Evi [50%]",
+    "new_value": "VTTI BV [50%]; Hoegh Evi [50%]",
+    "confidence": "blue",
+    "source_tier": "re-verified, unchanged",
+    "ref_field": "Owner [ref]",
+    "ref_urls": [
+      "https://www.marinelink.com/news/vtti-plans-new-bcm-floating-lng-platform-501541?utm_source=substack&utm_medium=email",
+      "https://zeelandenergyterminal.com/about-zeeland-energy-terminal/"
+    ],
+    "source_notes": "Confirmed correct -- NOT restaged per instruction. Naming variance (Hoegh vs Höegh) is cosmetic, logged in qa only.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131099",
+    "unit_id": "G100002109900",
+    "terminal_name": "Zeeland Energy FSRU",
+    "unit_name": "--",
+    "country": "Netherlands",
+    "field_name": "Capacity",
+    "old_value": "7.50",
+    "new_value": "7.50",
+    "confidence": "blue",
+    "source_tier": "re-verified, unchanged",
+    "ref_field": "Capacity [ref]",
+    "ref_urls": [
+      "https://zeelandenergyterminal.com/about-zeeland-energy-terminal/",
+      "https://lngprime.com/contracts-and-tenders/vtti-and-hoegh-lng-join-forces-on-dutch-fsru-terminal/99584/"
+    ],
+    "source_notes": "Re-verified this batch; existing value and citation(s) confirmed current, no change.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131099",
+    "unit_id": "G100002109900",
+    "terminal_name": "Zeeland Energy FSRU",
+    "unit_name": "--",
+    "country": "Netherlands",
+    "field_name": "ProposalYear",
+    "old_value": "2022",
+    "new_value": "2022",
+    "confidence": "blue",
+    "source_tier": "re-verified, unchanged",
+    "ref_field": "ProposalDate [ref]",
+    "ref_urls": [
+      "https://www.marinelink.com/news/vtti-plans-new-bcm-floating-lng-platform-501541?utm_source=substack&utm_medium=email"
+    ],
+    "source_notes": "Re-verified this batch; existing value and citation(s) confirmed current, no change.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131099",
+    "unit_id": "G100002109900",
+    "terminal_name": "Zeeland Energy FSRU",
+    "unit_name": "--",
+    "country": "Netherlands",
+    "field_name": "LatestPlannedStartYear",
+    "old_value": "2029",
+    "new_value": "2029",
+    "confidence": "blue",
+    "source_tier": "re-verified, unchanged",
+    "ref_field": "StartDate [ref]",
+    "ref_urls": [
+      "https://www.marinelink.com/news/vtti-plans-new-bcm-floating-lng-platform-501541?utm_source=substack&utm_medium=email",
+      "https://lngprime.com/contracts-and-tenders/vtti-and-hoegh-lng-join-forces-on-dutch-fsru-terminal/99584/",
+      "https://www.offshore-energy.biz/permitting-starts-for-netherlands-third-lng-terminal/",
+      "https://zeelandenergyterminal.com/about-zeeland-energy-terminal/",
+      "https://zeelandenergyterminal.com/open-season-launch-for-zeeland-energy-terminal/"
+    ],
+    "source_notes": "offshore-energy.biz URL in this cluster also hit the same transient 502 seen on the Gate row; not dropped.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131099",
+    "unit_id": "G100002109900",
+    "terminal_name": "Zeeland Energy FSRU",
+    "unit_name": "--",
+    "country": "Netherlands",
+    "field_name": "FIDYear",
+    "old_value": "2027",
+    "new_value": "2027",
+    "confidence": "blue",
+    "source_tier": "re-verified, unchanged",
+    "ref_field": "FIDYear [ref]",
+    "ref_urls": [
+      "https://zeelandenergyterminal.com/open-season-launch-for-zeeland-energy-terminal/"
+    ],
+    "source_notes": "Re-verified this batch; existing value and citation(s) confirmed current, no change.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  }
+]

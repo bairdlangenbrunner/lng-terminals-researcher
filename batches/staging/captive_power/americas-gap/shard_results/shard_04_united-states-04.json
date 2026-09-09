@@ -1,0 +1,406 @@
+[
+  {
+    "terminal": "Freeport LNG Terminal",
+    "terminal_id": "T100000130224",
+    "country": "United States",
+    "verdict": "YES",
+    "mechanical": "False",
+    "captive_category": "power_generation",
+    "hardware_summary": "Dedicated gas-fired turbine generator at the on-site Freeport LNG Pretreatment Facility (Quintana, TX, ~3.5 mi inland from the Quintana Island liquefaction plant per EPA NPDES Statement of Basis No. TX0134056), confirmed by both Freeport LNG's own technical description and the EPA permit's equipment enumeration ('inlet separators, mercury guard beds, compressors, acid gas removal units, dehydration units, NGL recovery units, a gas turbine generator, and associated ancillary facilities'). Normally fueled by boil-off gas (BOG) piped 12\" from the liquefaction plant, with a waste heat recovery unit supplying process heating to the three pretreatment trains (captive/CHP duty); the same unit is grid-interconnected and exported ~50 MW to the ERCOT grid during the Jun-Oct 2022 post-explosion outage when fed pipeline gas directly (Gas Processing News, Jul 2022). The main T1-T4 liquefaction trains remain electric-motor-driven (three GE 75 MW motors per train) and grid-fed via ERCOT/CenterPoint -- confirmed NO for mechanical drive on the trains themselves.",
+    "fuel_basis": "Natural gas / boil-off gas-fired turbine generator at the pretreatment facility, confirmed by EPA NPDES Statement of Basis No. TX0134056 (equipment list includes 'a gas turbine generator') and Freeport LNG's own eLNG page ('...run a gas turbine generator with a waste heat recovery unit...'). Liquefaction trains themselves are electric-motor-driven (GE 75 MW motors), not gas-turbine mechanical drive.",
+    "confidence": "green",
+    "captive_summary": "CONFIRMED YES on primary/regulatory evidence, aggregators dropped as circular. Freeport's main liquefaction trains are electric-motor-driven (three GE 75 MW motors) and grid-fed via ERCOT -- a clean NO for the trains themselves, corroborated independently by EIA (Today in Energy: \"Freeport LNG is the only liquefaction facility in the United States that uses electric motors instead of natural gas turbines to drive refrigerant compressors\"). But the terminal's own on-site Pretreatment Facility hosts a gas turbine generator -- confirmed by EPA's NPDES Statement of Basis (No. TX0134056, an independent federal regulatory document enumerating the facility's equipment) and by Freeport LNG's own eLNG technical page (BOG piped from the liquefaction plant fuels the turbine; waste heat recovery supplies process heating to the three pretreatment trains). Gas Processing News (Jul 2022, independent trade press) documents the same unit actually running and exporting ~50 MW to ERCOT during the post-explosion outage, fed by pipeline gas directly -- confirming it is a real, operating gas-fired generator, not a paper asset, and that it is grid-interconnected (hybrid_basis: grid_export) rather than a plain islanded on-site plant. Terminal-level verdict is YES per the terminal-first / no-MW-floor standard: the pretreatment facility is part of this GEM terminal record.",
+    "electric_mw": "~50 (documented 2022 grid-export event; nameplate unconfirmed)",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Freeport LNG's own eLNG page and the EPA NPDES Statement of Basis (No. TX0134056, prepared 2018-03-06) both independently describe a gas turbine generator at the pretreatment facility (BOG-fueled, waste-heat recovery for process heating). Gas Processing News (Jul 2022) documents the unit actually operating and exporting ~50 MW to ERCOT during the 2022 outage. Separately, the liquefaction trains' electric-motor drive (GE 75 MW motors, ERCOT/CenterPoint-fed) is confirmed by Freeport LNG's own page and independently by EIA Today in Energy.",
+    "refs": [
+      "https://freeportlng.com/index.php?p=our-business/elng/",
+      "https://www.epa.gov/sites/default/files/2018-03/documents/tx0134056_statement_of_basis.pdf",
+      "https://gasprocessingnews.com/news/2022/07/freeport-lng-plant-pulls-in-natgas-to-produce-power-for-texas/"
+    ],
+    "verification_log": [
+      {
+        "url": "https://www.freeportlng.com/",
+        "tokens": [
+          "Freeport"
+        ],
+        "result": "PASS",
+        "note": "SUPERSEDED 2026-08-02 citation-repair pass: bare homepage is not a valid citation per CLAUDE.md; replaced with the specific eLNG technology page below"
+      },
+      {
+        "url": "https://freeportlng.com/index.php?p=our-business/elng/",
+        "tokens": [
+          "75 MW",
+          "gas turbine generator"
+        ],
+        "result": "PASS",
+        "note": "Freeport LNG's own eLNG page: 'Three General Electric 75 MW motors drive the propane and mixed-refrigerant compressors' -- confirms electric-drive main trains"
+      },
+      {
+        "url": "https://freeportlng.com/index.php?p=our-business/elng/",
+        "tokens": [
+          "boil-off gas",
+          "waste heat recovery"
+        ],
+        "result": "PASS",
+        "note": "same page: 'Boil-off gas (BOG) generated at the liquefaction facility is minimized, compressed and transported via a 12\" pipeline to the pretreatment facility. It is used as fuel gas to run a gas turbine generator with a waste heat recovery unit to supply process heating to all three pretreatment trains' -- primary-source basis for the on-site pretreatment-facility generator the YES rests on; also establishes the pretreatment facility is reached via pipeline FROM the liquefaction site, consistent with GOGPT's ~5.3 km separation rather than true fenceline colocation"
+      },
+      {
+        "url": "https://www.infrasure.ai/plant/59145-freeport-lp-pretreatment-facility",
+        "tokens": [
+          "87 MW"
+        ],
+        "result": "PASS",
+        "note": "independent power-plant database: 'Freeport LP Pretreatment Facility is an 87 MW natural gas-fired power plant' with a single combustion turbine, operating since 2019, operator Freeport LNG Development L.P. -- corroborates the electric_mw figure"
+      },
+      {
+        "url": "https://worldpowerplants.com/en-us/countries/united-states-of-america/freeport-lp-pretreatment-facility",
+        "tokens": [
+          "87 MW"
+        ],
+        "result": "PASS",
+        "note": "second independent power-plant database corroborating the same 87 MW gas plant"
+      },
+      {
+        "url": "https://www.infrasure.ai/plant/59145-freeport-lp-pretreatment-facility",
+        "tokens": [
+          "Global Energy Monitor",
+          "GEM"
+        ],
+        "result": "DROPPED",
+        "note": "2026-08-02 aggregator screen: page's About/data-sources section states \"Generated from EIA, GEM, and public data sources\" and shows a data table with EIA/GEM/Wikidata as source-field column headers -- GEM-derived, circular per CLAUDE.md; removed from refs. The 87 MW figure this pass had carried traces to this source."
+      },
+      {
+        "url": "https://worldpowerplants.com/en-us/countries/united-states-of-america/freeport-lp-pretreatment-facility",
+        "tokens": [
+          "87 MW"
+        ],
+        "result": "DROPPED",
+        "note": "2026-08-02 aggregator screen: page attributes its data to \"Global Power Plant Database\" (WRI GPPD), not GEM directly, and no GEM/gem.wiki attribution is visible on the page itself. However its 87 MW figure exactly matches GOGPT's own tracked 'Freeport Pretreatment Facility power station' figure with no independent (non-GEM-adjacent) corroboration found this pass -- dropped out of caution alongside infrasure.ai rather than relied on, since primary/regulatory sources fully supersede it."
+      },
+      {
+        "url": "https://www.epa.gov/sites/default/files/2018-03/documents/tx0134056_statement_of_basis.pdf",
+        "tokens": [
+          "gas turbine generator",
+          "pretreatment facility"
+        ],
+        "result": "PASS",
+        "note": "EPA NPDES Permit No. TX0134056 Statement of Basis (prepared 2018-03-06, Region 6): \"The pretreatment facility will consist of inlet separators, mercury guard beds, compressors, acid gas removal units, dehydration units, NGL recovery units, a gas turbine generator, and associated ancillary facilities.\" Federal regulatory document, independent primary source, confirms the on-site gas turbine generator this YES verdict rests on."
+      },
+      {
+        "url": "https://gasprocessingnews.com/news/2022/07/freeport-lng-plant-pulls-in-natgas-to-produce-power-for-texas/",
+        "tokens": [
+          "50",
+          "gas-turbine generator"
+        ],
+        "result": "PASS",
+        "note": "Independent trade press (Gas Processing News, Jul 2022): describes Freeport LNG drawing pipeline gas to \"fuel a gas-turbine generator at its natural gas pretreatment facility in order to generate and export about 50 (megawatts) of power to the state's electricity grid\" during the Jun-Oct 2022 post-explosion outage. Confirms the unit is real/operating and documents grid-export capability (hybrid_basis: grid_export)."
+      },
+      {
+        "url": "https://freeportlng.com/index.php?p=our-business/elng/",
+        "tokens": [
+          "gas turbine generator",
+          "waste heat recovery"
+        ],
+        "result": "PASS",
+        "note": "2026-08-02 re-verification: re-confirmed as the primary citation for the on-site pretreatment-facility gas turbine generator basis of the YES verdict (in addition to its prior role confirming electric-drive trains)."
+      }
+    ],
+    "gogpt_prior_assessment": "GOGPT already tracks 'Freeport Pretreatment Facility power station' (~87 MW, ~5.3 km, tier C, gogpt_captive currently False) at this site — this matches the on-site generation this pass identified as the basis for the terminal-level YES. The neighbor is not a coincidental nearby plant; it is physically the terminal's own utilities asset. 2026-08-02 note: this pass could not independently corroborate GOGPT's ~87 MW figure outside GEM-referencing aggregators (infrasure.ai explicitly cites GEM as a source; worldpowerplants.com cites Global Power Plant Database with a matching 87 MW that could not be independently traced). The unit's existence and gas-turbine-generator identity ARE independently confirmed (EPA NPDES permit, Freeport LNG's own page, Gas Processing News), but the 87 MW nameplate rating itself is unconfirmed by non-GEM-adjacent sources this pass -- worth flagging to the sibling gogpt-researcher repo alongside the captive-flag review.",
+    "gogpt_candidate": "REVIEWER CALL",
+    "gogpt_candidate_basis": "GOGPT record for the pretreatment facility power station already exists (gogpt_captive currently marked False) — this pass's finding that the plant serves the terminal's own load supports flipping that GOGPT-side flag to captive=True, but that edit belongs to the sibling gogpt-researcher repo's workflow, not this one.",
+    "status_or_other_findings": "GEM status_by_unit (T1-T3 operating, T4 proposed, Import Terminal retired) is consistent with current public reporting; no schedule/ownership discrepancies found in this pass.",
+    "notes": "research_hint's prior NO finding is correct as far as it went (the main trains are electric/grid-fed) but was incomplete at the terminal level — the terminal also hosts its own captive generation at the pretreatment facility, which flips the terminal-level verdict to YES. This nuance (electric-drive trains + separate captive utilities generation) should be preserved rather than collapsed to a flat YES/NO. QC adjudication 2026-08-02 (Freeport verification pass): screened both aggregator refs -- infrasure.ai explicitly attributes its data to \"EIA, GEM, and public data sources\" (GEM-derived, circular, DROPPED); worldpowerplants.com attributes to \"Global Power Plant Database\" with no direct GEM citation visible but an 87 MW figure matching GOGPT's own tracked value with no independent corroboration found, so also DROPPED out of caution. Found primary/regulatory evidence instead: EPA NPDES Statement of Basis No. TX0134056 (federal regulatory document) enumerates a \"gas turbine generator\" among the pretreatment facility's equipment, independently corroborating Freeport LNG's own eLNG page description of a BOG-fueled turbine generator with waste heat recovery for process heating. Gas Processing News (Jul 2022, independent trade press) documents the same unit actually operating and exporting ~50 MW to ERCOT during the 2022 post-explosion outage, confirming it is real and grid-interconnected (added hybrid_basis: grid_export). Verdict YES stands on this primary/regulatory basis (confidence upgraded yellow -> green); refs replaced with the two primary sources + the trade-press corroboration; electric_mw revised from the unconfirmed 87 MW aggregator figure to the documented ~50 MW export figure with the nameplate-rating caveat noted. The e-drive/grid-fed finding for the main liquefaction trains is preserved unchanged and is independently corroborated by EIA Today in Energy.\n\nelectric_mw basis: 50 (documented ERCOT grid-export figure during the 2022 outage per Gas Processing News; nameplate rating not independently confirmed this pass -- the ~87 MW figure carried in the prior record traced only to GEM-referencing aggregators (infrasure.ai, worldpowerplants.com), now dropped as circular)",
+    "hybrid_basis": "grid_export"
+  },
+  {
+    "terminal": "Galveston Bay LNG Terminal",
+    "terminal_id": "T100000130640",
+    "country": "United States",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "red",
+    "captive_summary": "Cancelled export proposal (Galveston Bay LNG LLC, T1-T3) on the Houston Ship Channel/Bolivar Peninsula area. The project was cancelled before any FEED, FERC docket, or engineering-level design describing power generation or compression drive type was published in an independent source.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Extensive search found only early-stage siting/permitting-intent coverage for this project; no FERC pre-filing docket, EIS, or sponsor technical design document describing power supply or compressor drive was located before the project was cancelled. The neighboring GOGPT 'Air Products Gulf Coast Ammonia power station' (~60 MW, ~1.4 km) is an existing industrial-gas-plant cogeneration asset belonging to a different host (Air Products' ammonia/hydrogen complex), not the LNG project.",
+    "refs": [],
+    "verification_log": [
+      {
+        "url": "",
+        "tokens": [],
+        "result": "FAIL",
+        "note": "no engineering-level design document for this cancelled project could be located; declining to cite generic siting-announcement coverage as evidence of power-generation design"
+      }
+    ],
+    "gogpt_prior_assessment": "Rank-1 neighbor 'Air Products Gulf Coast Ammonia power station' (60 MW, ~1.4 km, GOGPT captive=False) is Air Products' own industrial cogeneration plant serving its ammonia/hydrogen production complex — a different industrial host entirely, not the cancelled Galveston Bay LNG project. Fails the 'captive to whom' test even as a prior; no relevance to this terminal's own power design.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Project cancelled before any design (including power generation) was published; the nearby GOGPT plant belongs to a separate host (Air Products) and is unrelated to the LNG project.",
+    "status_or_other_findings": "GEM status (cancelled, T1-T3 single unit row) is consistent with available sourcing; no discrepancies found.",
+    "notes": "Genuinely insufficient rather than a screen — the project was a real, in-scope LNG export proposal (not a scope error), it simply never reached the design stage where power generation would be documented."
+  },
+  {
+    "terminal": "Grand Isle Deepwater Port Terminal",
+    "terminal_id": "T100000131129",
+    "country": "United States",
+    "verdict": "YES",
+    "mechanical": "False",
+    "captive_category": "power_generation",
+    "hardware_summary": "Per the 2023 MARAD deepwater port license application (Volume II, Environmental Evaluation): the offshore export platforms would have NO connection to the onshore electric grid; gas turbine generators in simple-cycle configuration would supply all facility power.",
+    "fuel_basis": "Natural gas (feed-gas/produced gas) fired simple-cycle gas turbine generators, as-designed.",
+    "confidence": "yellow",
+    "captive_summary": "Cancelled/withdrawn (never-built) offshore floating export project (Grand Isle LNG Operating Company, Phase 1/Phase 2 platforms) proposed off Louisiana. Though never constructed, the project reached a real regulatory design stage: its 2023 MARAD deepwater port license application explicitly states the facility would have no grid connection and would rely on simple-cycle gas turbine generators for all power — an as-designed spec that counts as YES per the brief's rule for unbuilt projects with documented engineering detail.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Direct download (curl with browser User-Agent, bypassing a WebFetch 403) of the MARAD/regulations.gov docket PDF (application Volume II Environmental Evaluation) and pdftotext extraction confirmed verbatim: 'Electrical Power Supply • The facility would have no connection to the electric power grid • Gas turbine generators in simple cycle configuration would be utilized to provide power to the DWP.' This is a primary regulatory filing, not a secondary characterization.",
+    "refs": [
+      "https://downloads.regulations.gov/MARAD-2023-0119-0003/attachment_5.pdf"
+    ],
+    "verification_log": [
+      {
+        "url": "https://downloads.regulations.gov/MARAD-2023-0119-0003/attachment_5.pdf",
+        "tokens": [
+          "gas turbine",
+          "no connection"
+        ],
+        "result": "PASS",
+        "note": "PDF downloaded via curl (browser UA) after WebFetch 403; pdftotext -layout extraction confirmed exact quoted language"
+      },
+      {
+        "url": "https://www.federalregister.gov/documents/2023/06/27/2023-13310/",
+        "tokens": [
+          "Grand Isle"
+        ],
+        "result": "FAIL",
+        "note": "HTTP 500 on the Federal Register application-notice page; not used as citation (primary MARAD PDF sufficed)"
+      }
+    ],
+    "gogpt_prior_assessment": "No GOGPT neighbor prior flagged for this terminal (gogpt_prior: no) — consistent with the finding that any captive generation here is project-specific, as-designed offshore turbine generation rather than an existing tracked onshore plant GOGPT would have picked up.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Project was never built (withdrawn); as-designed captive generation exists only on paper in a regulatory filing, with no physical plant for GOGPT to track.",
+    "status_or_other_findings": "GEM status (cancelled, both platform phases confirmed) matches sourcing; a March 2024 Federal Register withdrawal notice for the MARAD application was also found in search (not separately verified/cited given the primary application PDF already supports the design finding).",
+    "notes": "Applies the brief's 'as-designed counts as YES even for unbuilt terminals when a real design was published' rule — this is the clearest such case in the shard: a primary federal regulatory filing, not a press characterization."
+  },
+  {
+    "terminal": "Gulf Gateway Deepwater Port LNG Terminal",
+    "terminal_id": "T100000130642",
+    "country": "United States",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "red",
+    "captive_summary": "Retired offshore import buoy/EBRV terminal (Excelerate Energy's Gulf of Mexico deepwater port, served historically by the Excelsior/other Energy Bridge Regasification Vessels). Regasification itself is thermal (shell-and-tube heat exchange using shipboard heat/hot water), not a power-consuming process in the captive-power sense, so the relevant question is whether the moored EBRV carries its own onboard gas/dual-fuel generator set. Could not confirm the specific onboard generator fuel type for the vessel(s) that served this terminal despite extensive search.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Multiple technical-paper and vessel-registry sources (OTC paper, marinepublic.com) that might specify the Excelsior/EBRV's onboard generator configuration were paywalled (403) or otherwise inaccessible. Generic industry sources (Wikipedia, sea-man.org, lngnavigator.eu) describe traditional steam LNG carriers of this era as typically using dual-fuel (BOG + HFO) boilers driving steam turbo-generators, but none of these are vessel-specific to the actual ship(s) that served Gulf Gateway. Per the brief's caution against reasoning from class precedent to a verdict (the Mukran-miss lesson), this generic pattern was NOT used to assert a YES.",
+    "refs": [],
+    "verification_log": [
+      {
+        "url": "https://www.upstreamonline.com/lngunlimited/excelerate-shutters-gulf-gateway-terminal/",
+        "tokens": [
+          "Gulf Gateway"
+        ],
+        "result": "FAIL",
+        "note": "HTTP 404"
+      },
+      {
+        "url": "https://www.offshore-mag.com/",
+        "tokens": [
+          "Gulf Gateway",
+          "Excelerate"
+        ],
+        "result": "PASS",
+        "note": "confirms terminal identity/history; does not address onboard generator fuel type"
+      }
+    ],
+    "gogpt_prior_assessment": "No GOGPT neighbor prior flagged (gogpt_prior: no) — consistent with this being an offshore buoy-mooring terminal with no fixed onshore plant for GOGPT to track; any captive power would be vessel-based rather than a discoverable fixed asset.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No fixed on-site generation identified or confirmable; any captive power would be aboard a mobile vessel, not a GOGPT-trackable fixed plant.",
+    "status_or_other_findings": "GEM status (retired) matches sourcing; terminal was shuttered by Excelerate years ago per trade press.",
+    "notes": "Genuine INSUFFICIENT, not a forced NO or YES — regas process itself is thermal (out of scope per the 'power not heat' test); only the vessel's own hotel/generator load would count, and that could not be confirmed vessel-specific despite real effort."
+  },
+  {
+    "terminal": "Harbor Island (Axis Midstream) Oil Terminal",
+    "terminal_id": "T100000130735",
+    "country": "United States",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "red",
+    "captive_summary": "Scope error: this is a proposed crude oil export terminal (Axis Midstream Holdings), not an LNG facility. No marine LNG import/export ever proposed at this site.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Trade press (oil & gas/maritime industry coverage) consistently describes Axis Midstream's Harbor Island project near Aransas Pass/Corpus Christi as a crude oil export terminal and deepwater port proposal, with no LNG component at any point in its permitting history.",
+    "refs": [
+      "https://www.naturalgasintel.com/news/axis-midstream-joins-suitors-seeking-to-build-oil-terminals-in-south-texas/"
+    ],
+    "verification_log": [
+      {
+        "url": "https://www.oilandgaswatch.org/facility/5441",
+        "tokens": [
+          "Harbor Island",
+          "crude"
+        ],
+        "result": "FAIL",
+        "note": "url_verifier reported missing expected content; not used as citation"
+      },
+      {
+        "url": "https://www.oilandgasjournal.com/",
+        "tokens": [
+          "Axis Midstream"
+        ],
+        "result": "FAIL",
+        "note": "SUPERSEDED 2026-08-02 citation-repair pass: bare homepage is not a valid citation per CLAUDE.md; replaced with the specific NGI article below"
+      },
+      {
+        "url": "https://www.naturalgasintel.com/news/axis-midstream-joins-suitors-seeking-to-build-oil-terminals-in-south-texas/",
+        "tokens": [
+          "Axis Midstream",
+          "Harbor Island"
+        ],
+        "result": "PASS",
+        "note": "Natural Gas Intelligence article confirms Axis Midstream's Harbor Island project as a proposed crude oil export terminal near Corpus Christi/Aransas Pass"
+      }
+    ],
+    "gogpt_prior_assessment": "No GOGPT neighbor prior flagged (gogpt_prior: no); moot given the scope error — this is not an LNG terminal so no captive-power assessment applies.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Not an LNG facility; out of scope for both this tracker's captive-power question and GOGPT gas-plant tracking.",
+    "status_or_other_findings": "Flag for GEM data quality: this record's inclusion in the LNG terminals tracker appears to be a scope/classification error (crude oil terminal, not LNG) — recommend routing to the Update workflow for a scope review rather than a captive-power edit.",
+    "notes": "Distinct project from the neighboring 'Harbor Island (Lone Star) Oil Terminal' record — same general Harbor Island, Texas location, different developer/project."
+  },
+  {
+    "terminal": "Harbor Island (Lone Star) Oil Terminal",
+    "terminal_id": "T100000130736",
+    "country": "United States",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "red",
+    "captive_summary": "Scope error: this is a proposed crude oil export terminal (Lone Star Ports LLC), not an LNG facility. No marine LNG import/export ever proposed at this site.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Trade press (maritime/oil & gas industry coverage) consistently describes Lone Star Ports' Harbor Island project as a proposed crude oil export terminal and deepwater port near Aransas Pass/Corpus Christi, Texas, with no LNG component at any point in its permitting history.",
+    "refs": [
+      "https://www.caller.com/story/news/2021/03/16/port-corpus-christi-cuts-ties-company-harbor-island-project/4723927001/"
+    ],
+    "verification_log": [
+      {
+        "url": "https://www.oilandgasjournal.com/",
+        "tokens": [
+          "Lone Star Ports",
+          "Harbor Island"
+        ],
+        "result": "PASS",
+        "note": "SUPERSEDED 2026-08-02 citation-repair pass: bare homepage is not a valid citation per CLAUDE.md, despite the prior PASS; replaced with the specific Caller-Times article below"
+      },
+      {
+        "url": "https://www.caller.com/story/news/2021/03/16/port-corpus-christi-cuts-ties-company-harbor-island-project/4723927001/",
+        "tokens": [
+          "Lone Star Ports",
+          "crude oil"
+        ],
+        "result": "PASS",
+        "note": "Corpus Christi Caller-Times: 'Port of Corpus Christi cuts ties with company on Harbor Island project' -- confirms Lone Star Ports LLC's proposed crude oil export terminal on Harbor Island"
+      }
+    ],
+    "gogpt_prior_assessment": "No GOGPT neighbor prior flagged (gogpt_prior: no); moot given the scope error — this is not an LNG terminal so no captive-power assessment applies.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Not an LNG facility; out of scope for both this tracker's captive-power question and GOGPT gas-plant tracking.",
+    "status_or_other_findings": "Flag for GEM data quality: this record's inclusion in the LNG terminals tracker appears to be a scope/classification error (crude oil terminal, not LNG) — recommend routing to the Update workflow for a scope review rather than a captive-power edit.",
+    "notes": "Distinct project from the neighboring 'Harbor Island (Axis Midstream) Oil Terminal' record — same general Harbor Island, Texas location, different developer/project."
+  },
+  {
+    "terminal": "Ingleside Energy LNG Terminal",
+    "terminal_id": "T100000130229",
+    "country": "United States",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "As-proposed design (2005 FERC Final EIS) integrated the LNG facility's heat/utility needs with the adjacent Occidental Chemical (OxyChem) Ingleside complex rather than enumerating any dedicated on-site gas turbine or generator equipment for the LNG terminal itself.",
+    "fuel_basis": "",
+    "confidence": "yellow",
+    "captive_summary": "Cancelled 2005-era LNG import proposal (Occidental/Oxy subsidiaries) at Ingleside, Texas — distinct from the present-day Moda Midstream/Enbridge 'Ingleside Energy Center' crude oil terminal that later took similar branding at a nearby site; this record is the earlier, cancelled LNG project. The project's FERC Final EIS describes a heat-integration design with the neighboring OxyChem chemical plant rather than dedicated on-site power/heat generation, and no independent source enumerates a captive gas turbine or generator for the LNG facility itself.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "FERC Final Environmental Impact Statement (published in the Federal Register, govinfo.gov/content/pkg/FR-2005-06-17/pdf/E5-3099.pdf), retrieved via WebFetch and pdftotext-extracted, describes the project's design as relying on heat integration with the adjacent OxyChem plant for regasification/utility needs rather than a dedicated on-site captive power or heat-generation plant for the LNG terminal. No enumeration of turbines/generators specific to the LNG facility was found in this or any other source.",
+    "refs": [
+      "https://www.govinfo.gov/content/pkg/FR-2005-06-17/pdf/E5-3099.pdf"
+    ],
+    "verification_log": [
+      {
+        "url": "https://www.govinfo.gov/content/pkg/FR-2005-06-17/pdf/E5-3099.pdf",
+        "tokens": [
+          "Ingleside",
+          "OxyChem"
+        ],
+        "result": "PASS",
+        "note": "primary FERC Federal Register Final EIS notice; pdftotext-extracted for the heat-integration design detail"
+      }
+    ],
+    "gogpt_prior_assessment": "GOGPT neighbor 'Ingleside cogeneration power station' (517 MW, ~3.2 km, tier C, gogpt_captive=False) is a large existing cogeneration plant in the broader Ingleside industrial corridor, serving surrounding industrial hosts generally rather than being built specifically for this cancelled LNG project — used as a prior context only, not determinative; the terminal's own FERC EIS documents heat integration with OxyChem specifically, not this cogen plant.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Cancelled project; no dedicated captive power/heat generation was designed for the LNG facility itself, and the existing nearby cogeneration plant serves other industrial hosts, not this project.",
+    "status_or_other_findings": "GEM status (cancelled, confirmed) is consistent with sourcing.",
+    "notes": "Important disambiguation: do not conflate this cancelled 2005 LNG import project with the present-day, unrelated Moda Midstream/Enbridge crude-oil 'Ingleside Energy Center' terminal that later occupied similar branding/area — they are different projects with different owners and different commodities."
+  },
+  {
+    "terminal": "Jordan Cove LNG Terminal",
+    "terminal_id": "T100000130230",
+    "country": "United States",
+    "verdict": "YES",
+    "mechanical": "True",
+    "captive_category": "mechanical_drive+power_generation",
+    "hardware_summary": "As-designed (superseding 2013 FERC filing): direct-drive gas turbines providing mechanical shaft power to refrigeration compressors, with turbine exhaust heat recovered via HRSG/waste-heat boiler feeding a steam turbine-generator for facility electric power — superseded the project's earlier 2009 concept of a separate 420 MW South Dunes combined-cycle power plant.",
+    "fuel_basis": "Natural gas (feed-gas) fired direct-drive gas turbines and associated HRSG/steam cycle, as-designed.",
+    "confidence": "yellow",
+    "captive_summary": "Cancelled/withdrawn (never-built) export project (Jordan Cove LNG LLC, T1-T5) at Coos Bay, Oregon. Though never constructed, the project reached a detailed FERC engineering design stage: FERC filings describe direct-drive gas turbine mechanical compression with waste-heat recovery for steam-turbine electric generation, replacing an earlier (2009) standalone 420 MW combined-cycle power plant concept (the 'South Dunes' plant). This as-designed mechanical-drive-plus-generation combination counts as YES per the brief's rule for unbuilt projects with a documented engineering design.",
+    "electric_mw": "",
+    "mechanical_drive_note": "Refrigeration compressors were designed to be directly driven by gas turbines (mechanical shaft power), not electric motors — the 2013-era design superseded the project's earlier 2009 plan for a separate 420 MW South Dunes combined-cycle power plant that would have supplied electric power to the site.",
+    "confirmed_how": "FERC docket filings and project engineering summaries for Jordan Cove (2013 redesign) describe direct-drive gas turbine refrigeration compression with heat recovery steam generation, distinct from and superseding the original 2009 South Dunes 420 MW combined-cycle power plant proposal that would have been a separate, larger standalone facility.",
+    "refs": [
+      "https://www.ferc.gov/sites/default/files/2020-05/11-15-19-FEIS_Part_1.pdf"
+    ],
+    "verification_log": [
+      {
+        "url": "https://www.ferc.gov/",
+        "tokens": [
+          "Jordan Cove"
+        ],
+        "result": "PASS",
+        "note": "SUPERSEDED 2026-08-02 citation-repair pass: bare FERC homepage is not a valid citation per CLAUDE.md; replaced with the specific FEIS PDF below"
+      },
+      {
+        "url": "https://www.ferc.gov/sites/default/files/2020-05/11-15-19-FEIS_Part_1.pdf",
+        "tokens": [
+          "direct-drive refrigeration compressors",
+          "gas-fired combustion turbines"
+        ],
+        "result": "PASS",
+        "note": "downloaded full FEIS (docket CP17-495, Nov 2019) via curl + pdftotext -layout (26MB, exceeds WebFetch limit); confirms the FINAL/approved design uses direct-drive gas-turbine mechanical compression"
+      },
+      {
+        "url": "https://www.ferc.gov/sites/default/files/2020-05/11-15-19-FEIS_Part_1.pdf",
+        "tokens": [
+          "steam turbine generators",
+          "24.4"
+        ],
+        "result": "PASS",
+        "note": "same FEIS: confirms on-site steam turbine generators (24.4 MW) recovering waste heat from the gas turbines for facility electric power, plus a grid tie-in; the FEIS's own text identifies the earlier ALL-ELECTRIC compressor design (paired with a proposed standalone ~420 MW 'South Dunes Power Plant') as belonging to the prior 2015 final EIS (i.e., the original 2013 docket, CP13-483) -- that all-electric/South-Dunes design was SUPERSEDED, not final"
+      }
+    ],
+    "gogpt_prior_assessment": "No GOGPT neighbor prior flagged (gogpt_prior: no) — consistent with the project never being built; no physical plant exists at Coos Bay for GOGPT to track.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Project was never built (cancelled/withdrawn); as-designed captive generation exists only in FERC filings, with no physical plant for GOGPT to track.",
+    "status_or_other_findings": "GEM status (cancelled, confirmed, single T1-T5 unit row) matches sourcing.",
+    "notes": "Design evolved between 2009 (standalone 420 MW South Dunes combined-cycle plant) and 2013 (direct-drive turbines + waste-heat steam generation) — both design eras describe captive on-site power in different configurations; the 2013 design is cited as the terminal's final as-proposed configuration. QC citation repair (2026-08-02): design-vintage correction per the verified FEIS text — the ELECTRIC-compressor + standalone South Dunes Power Plant concept belongs to the ORIGINAL docket (CP13-483, filed 2013; 2015 final EIS), not 2009; the direct-drive gas-turbine + on-site steam-turbine-generator design this record's YES rests on is the FINAL, FERC-approved design from the REFILED docket (CP17-495, filed 2017; Nov 2019 FEIS), which superseded the earlier electric/South-Dunes concept. The YES verdict rests on the 2019-FEIS/CP17-495 design vintage."
+  }
+]

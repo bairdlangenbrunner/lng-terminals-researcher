@@ -1,0 +1,195 @@
+[
+  {
+    "terminal": "Central Java FSRU",
+    "terminal_id": "T100000130279",
+    "country": "Indonesia",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "Screened: cancelled-and-never-built proposed FSRU. Indonesia's State-Owned Enterprises Ministry ordered Pertamina to halt the proposed ~3 Mt/y Central Java FSRU project (April 2012); no construction or vessel ever occurred, consistent with GEM's cancelled status.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Offshore Energy (offshore-energy.biz) reports the Indonesian SOE Ministry directed Pertamina to halt/suspend the Central Java FSRU project to streamline the country's FSRU projects; no later source shows the project resuming, being built, or reaching FID. Screen criterion: cancelled-and-never-built proposal, no design-stage power detail exists to research.",
+    "refs": [
+      "https://www.offshore-energy.biz/pertamina-suspends-central-java-fsru-project-indonesia/"
+    ],
+    "verification_log": [
+      {"url": "https://www.offshore-energy.biz/pertamina-suspends-central-java-fsru-project-indonesia/", "tokens": ["Central Java", "FSRU"], "result": "PASS", "note": "confirms Ministry-ordered halt of the project"},
+      {"url": "https://www.spglobal.com/commodityinsights/zh/market-insights/latest-news/natural-gas/042012-indonesian-ministry-orders-pertamina-to-cancel-central-java-fsru-project", "tokens": ["Central Java", "cancel"], "result": "FAIL", "note": "HTTP 403, no Wayback snapshot available; dropped, not used as a citation"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT prior given (gogpt_prior: no) — consistent with a never-built site having no associated power station.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Project never reached construction; no facility of any kind, let alone a power plant, was ever built.",
+    "status_or_other_findings": "Cancellation is government-ordered (SOE Ministry), not merely commercial abandonment — reinforces GEM's cancelled status.",
+    "notes": ""
+  },
+  {
+    "terminal": "Donggi-Senoro LNG Terminal",
+    "terminal_id": "T100000130281",
+    "country": "Indonesia",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "",
+    "captive_summary": "No public source found that describes the PT Donggi-Senoro LNG liquefaction plant's own power/utility system with enough specificity to confirm or refute captive gas power. The operator's own site (dslng.com) says the plant comprises the liquefaction train, storage/condensate tanks, jetty, and 'supporting utilities' — too vague to establish generation equipment, count, or fuel.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Searched English and Indonesian terms (turbin gas, pembangkit listrik, PLTG, GTG, AMDAL) for the DSLNG plant itself (operator/owner PT Donggi-Senoro LNG, EPC Chiyoda/JGC/Rekayasa, APCI liquefaction technology, 2.0 Mt/y single train, Banggai, Central Sulawesi). Found only a generic 'supporting utilities' mention on dslng.com and export-market framing on jgc-indonesia.com — neither names a power plant, turbine, or MW figure. IMPORTANT CAVEAT: a separate 2024 ISO 50001 case study (cleanenergyministerial.org) describes gas turbine generators (GTGs) as 'private generator' at Pertamina EP Donggi Matindok Field's Central Processing Plants (CPP Donggi/CPP Matindok) in Banggai — but this is the UPSTREAM gas-producing field operated by a different company (PT Pertamina EP), which the document itself says SELLS processed gas to 'PT Donggi Senoro LNG as buyer.' That GTG finding describes a different site/company and must NOT be used as evidence for this terminal's own captive power — flagging this explicitly so a future pass doesn't conflate the two facilities.",
+    "refs": [],
+    "verification_log": [
+      {"url": "https://dslng.com/dslgn-project/development-plan", "tokens": ["supporting utilities", "Air Products"], "result": "PASS", "note": "confirms plant description but 'supporting utilities' is too vague to assert captive power"},
+      {"url": "https://www.jgc-indonesia.com/en/projects/219/donggi-senoro-lng-plant", "tokens": ["Donggi-Senoro", "utilit"], "result": "FAIL", "note": "page does not contain a utility/power-plant description"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT prior given (gogpt_prior: no).",
+    "gogpt_candidate": "MAYBE",
+    "gogpt_candidate_basis": "A liquefaction train of this scale (2.0 Mt/y, APCI process) almost certainly has an in-plant utility power system, but no source discloses its existence, size, or fuel with a citable nameplate — 'MAYBE' per SOP (generation plausible but undisclosed/pre-filing from a public-source standpoint).",
+    "status_or_other_findings": "",
+    "notes": "Do not confuse with Pertamina EP Donggi Matindok Field (upstream gas field CPPs) — a separate company and site that sells feedgas to this terminal; its own GTGs are out of scope for this terminal's captive-power question."
+  },
+  {
+    "terminal": "Gorontalo FSRU",
+    "terminal_id": "T100000130699",
+    "country": "Indonesia",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "Gorontalo FSRU (vessel Hua Xiang 8 / EDN 1, a small ~14,000 m3 'mini-scale' FSRU operated by PT GTS Internasional for PT Sulawesi Satu / PT PLN Energi Gas) exists to regasify LNG and send out gas to PT PLN's onshore Maleo gas-fired power plant (4x25 MW = 100 MW), located ~0.32 km away — matching the GOGPT prior exactly. This is the direction-test case: gas flows OUT of the terminal to an external power plant. No source found describes any on-site/onboard gas-fired generation belonging to the FSRU itself.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "listrikindonesia.com: 'PT Sulawesi Regas Satu' FSRU (14,000 m3, described as the world's only mini-scale FSRU) supplies gas to the Maleo gas-fired power plant, cited at 4x25 MW. antaranews.com corroborates PLN's gasification/gas-to-power project at Gorontalo built around this FSRU's send-out. Neither source, nor any other found (English or Bahasa Indonesia search), describes a captive/on-site generator for the vessel's own operations.",
+    "refs": [
+      "https://listrikindonesia.com/detail/12661/pt-sulawesi-regas-satu-menjawab-tantangan-negara-kepulauan-dengan-fsru",
+      "https://www.antaranews.com/berita/4604898/pln-energi-gas-lanjutkan-proyek-gasifikasi-di-samarinda-dan-dan-gorontalo"
+    ],
+    "verification_log": [
+      {"url": "https://listrikindonesia.com/detail/12661/pt-sulawesi-regas-satu-menjawab-tantangan-negara-kepulauan-dengan-fsru", "tokens": ["Maleo", "25"], "result": "PASS", "note": "confirms 4x25 MW Maleo plant fed by this FSRU"},
+      {"url": "https://www.antaranews.com/berita/4604898/pln-energi-gas-lanjutkan-proyek-gasifikasi-di-samarinda-dan-dan-gorontalo", "tokens": ["Gorontalo", "gasifikasi"], "result": "PASS", "note": "corroborates PLN's Gorontalo gas-to-power arrangement"}
+    ],
+    "gogpt_prior_assessment": "The GOGPT 'Gorontalo power station' (100 MW, 0.32 km) is PT PLN's own onshore Maleo gas-fired plant, fed by (not captive to) this FSRU — confirmed via listrikindonesia.com and antaranews.com. It is a separate, pre-existing GOGPT-tracked asset, not this terminal's captive plant.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "The referenced plant already exists as a distinct GOGPT record (PLN Maleo/Gorontalo power station) and is not this terminal's captive generation; direction test fails for a captive finding.",
+    "status_or_other_findings": "",
+    "notes": "Direction-test / PowerPlantsSupplied case: this FSRU's whole purpose is feeding the Maleo/PLN plant. The FSRU's OWN onboard power source (diesel vs. gas) was not established in any source found despite Bahasa Indonesia + English searches — flagging for a future pass if a vessel-specific technical source surfaces, but current evidence supports NO per the documented send-out relationship."
+  },
+  {
+    "terminal": "Gresik LNG Terminal",
+    "terminal_id": "T100000131164",
+    "country": "Indonesia",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "",
+    "captive_summary": "Project is pre-FID and has been reformulated twice: originally a BP Gas & Power Investments / PT AKR Corporindo regasification JV (announced Dec 2023) at the JIIPE industrial estate, Gresik, East Java; more recently AKR Corporindo formed a new JV ('PT Andalanesa Energi Primer') with BW Group to develop an FSRU, targeting operations in 2029. No design-stage document describing the facility's own power source (captive gas generation vs. grid supply) was found in either iteration.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "offshore-energy.biz and lngprime.com confirm the original BP/AKR JIIPE regas JV announcement (Dec 2023). idnfinancials.com and rivieramm.com confirm the later pivot: AKR Corporindo + BW Group 49/49% JV 'PT Andalanesa Energi Primer' targeting FSRU operations by 2029. None of these sources, nor any AMDAL/design filing found, discuss a power-generation package for the facility.",
+    "refs": [
+      "https://www.offshore-energy.biz/bp-joins-hands-with-indonesian-company-for-lng-import-project-in-east-java/",
+      "https://lngprime.com/asia/bp-to-develop-indonesian-regas-terminal/99550/",
+      "https://www.rivieramm.com/news-content-hub/bw-group-forms-joint-venture-for-indonesian-fsru-project-89253"
+    ],
+    "verification_log": [
+      {"url": "https://www.offshore-energy.biz/bp-joins-hands-with-indonesian-company-for-lng-import-project-in-east-java/", "tokens": ["AKR Corporindo", "BP"], "result": "PASS", "note": "confirms original BP/AKR JV announcement"},
+      {"url": "https://lngprime.com/asia/bp-to-develop-indonesian-regas-terminal/99550/", "tokens": ["AKR Corporindo", "BP"], "result": "PASS", "note": "corroborates BP/AKR JV"},
+      {"url": "https://www.rivieramm.com/news-content-hub/bw-group-forms-joint-venture-for-indonesian-fsru-project-89253", "tokens": ["AKR Corporindo", "BW Group"], "result": "PASS", "note": "confirms later BW Group/AKR FSRU pivot, 2029 target"},
+      {"url": "https://www.idnfinancials.com/news/65463/akra-partners-with-bw-group-for-fsru-venture-operation-set-for-2029", "tokens": ["AKRA", "BW Group"], "result": "FAIL", "note": "HTTP 403, no Wayback snapshot; dropped, not used as a citation"}
+    ],
+    "gogpt_prior_assessment": "The GOGPT 'Gresik AKR Estate power station' (500 MW, 0.57 km) is an existing gas-fired plant inside the same JIIPE industrial estate — plausibly a future gas offtaker of this LNG project once built, but no source confirms a supply linkage, and the LNG project itself is still pre-FID/pre-construction. Not established as this terminal's captive plant.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No captive generation confirmed for this pre-FID project; the referenced 500 MW plant is a separate, already-existing estate asset with no confirmed link to this project.",
+    "status_or_other_findings": "Ownership appears to have shifted from the original BP Gas & Power Investments / AKR Corporindo JV (per current GEM owner field) to a newer AKR Corporindo / BW Group JV ('PT Andalanesa Energi Primer') targeting 2029 operations — worth flagging to the Update workflow for an owner/status re-check, not acted on here.",
+    "notes": ""
+  },
+  {
+    "terminal": "Jawa Satu FSRU",
+    "terminal_id": "T100000130280",
+    "country": "Indonesia",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "",
+    "captive_summary": "No citable public source confirms whether the Jawa Satu FSRU's own regas/pump loads run on onboard gas-fired generation. A LinkedIn crew profile tags an engineer's role as 'DFDE' aboard this specific vessel, but that is an informal, non-technical source and does not meet the citation bar alone. No class-society filing, shipbuilder spec sheet, or press release naming the vessel's engine type/fuel was found despite multiple searches.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "jawasatupower.com (operator's official site) and MOL's press release (mol.co.jp) confirm the vessel (IMO 9854935, built 2020 by Samsung Heavy Industries, 170,000 m3, 300 MMscfd regas capacity) was purpose-built as part of the integrated Jawa-1 Power Plant Project (1,760 MW CCGT) — this is the already-existing GEM PowerPlantsSupplied relationship, not new information. Searches for the vessel's own propulsion/generation engine type turned up only one informal LinkedIn tag ('DFDE') for a crew member aboard 'LNG FSRU JAWA SATU'; no primary/technical source corroborates it.",
+    "refs": [],
+    "verification_log": [
+      {"url": "https://jawasatupower.com/en/jawa-satu-regas/", "tokens": ["1,760 MW", "FSRU"], "result": "PASS", "note": "confirms vessel built for the Jawa-1 (1,760 MW) power project — background only, not a captive-power citation"},
+      {"url": "https://www.mol.co.jp/en/pr/2024/24049.html", "tokens": ["Jawa Satu", "MOL"], "result": "PASS", "note": "confirms vessel specs and March 2024 commercial operation start — background only"},
+      {"url": "https://www.offshore-energy.biz/fsru-for-asias-gas-to-power-project-comes-into-operation/", "tokens": ["Jawa-1", "1,760"], "result": "FAIL", "note": "missing 'Jawa-1' token on the fetched page; dropped"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT prior given for this terminal (gogpt_prior: no).",
+    "gogpt_candidate": "MAYBE",
+    "gogpt_candidate_basis": "Modern FSRU newbuilds of this vintage commonly carry dual-fuel diesel-electric generation, and an informal source suggests DFDE aboard this hull, but no citable nameplate or confirmed fuel-in-service exists — MAYBE per SOP.",
+    "status_or_other_findings": "Confirms GEM's existing PowerPlantsSupplied entry (PLTGU Jawa-1 power station): owner PT Jawa Satu Regas (JV of Pertamina/Marubeni/Sojitz/MOL), operator PT Jawa Satu Power / MOL, commercial operation from March 2024.",
+    "notes": "Direction-test relationship already reflected in GEM's power_plants_supplied field; not a new finding. Recommend a follow-up check of MOL/Samsung technical papers or class-society records for confirmed engine type if this terminal is revisited."
+  },
+  {
+    "terminal": "Karimun Island LNG Terminal",
+    "terminal_id": "T100000130904",
+    "country": "Indonesia",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "yellow",
+    "captive_summary": "Screened: cancelled-and-never-built proposal. Panbil Group announced a plan (~2013) to build a $600-800M LNG import terminal on Karimun Island (Pulau Asam), Riau Islands, storing up to 170,000 m3 of gas. No subsequent progress, FID, or construction was ever reported; consistent with GEM's cancelled status.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "southeastasiainfra.com reports Panbil Group's plan for a Karimun Island LNG import terminal near Singapore's Jurong hub, ~170,000 m3 capacity, $600-800M cost estimate. No later coverage of construction, FID, or operation found in any search. Screen criterion: cancelled proposal that never progressed past the conceptual/announcement stage.",
+    "refs": [
+      "https://southeastasiainfra.com/33717-2/"
+    ],
+    "verification_log": [
+      {"url": "https://southeastasiainfra.com/33717-2/", "tokens": ["Karimun", "Panbil"], "result": "PASS", "note": "confirms Panbil Group's proposal for a Karimun Island LNG terminal"},
+      {"url": "https://www.nsenergybusiness.com/news/panbil-group-lng-terminal-karimun-island/", "tokens": ["Karimun", "Panbil"], "result": "FAIL", "note": "HTTP 403, no Wayback snapshot; dropped, not used as a citation"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT prior given (gogpt_prior: no) — consistent with a never-built site.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Project never progressed past a conceptual proposal; no facility or power equipment of any kind was ever built.",
+    "status_or_other_findings": "",
+    "notes": ""
+  },
+  {
+    "terminal": "Lampung FSRU",
+    "terminal_id": "T100000130283",
+    "country": "Indonesia",
+    "verdict": "YES",
+    "mechanical": "False",
+    "captive_category": "power_generation",
+    "hardware_summary": "Dual-fuel diesel-electric (DFDE) generator sets aboard the FSRU, burning gas/BOG and/or diesel with recondensers handling boil-off gas — this is the stated design standard across the Höegh-managed FSRU fleet that PGN FSRU Lampung is part of. Vessel-specific engine model/rating for this hull was not disclosed in sources found (a sister vessel, Hoegh Esperanza, carries 4x Wartsila 8L50DF gensets at 7,800 kW each, cited for reference only — NOT attributed to Lampung).",
+    "fuel_basis": "Dual-fuel diesel-electric (DFDE) engines per Hoegh fleet-wide design statement (Riviera); confirms the vessel burns gas (BOG) and/or diesel for its own generation, though the in-service fuel split for this specific hull is not confirmed.",
+    "confidence": "yellow",
+    "captive_summary": "PGN FSRU Lampung (IMO 9629524, built 2014 by Hyundai Heavy Industries) is managed by Hoegh LNG Fleet Management AS. Riviera trade press quotes Hoegh describing its FSRU fleet's design as dual-fuel diesel-electric (DFDE) with BOG-handling recondensers. This is a fleet-wide company statement rather than a Lampung-specific spec sheet, hence yellow confidence rather than green.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "marinelink.com (directory.marinelink.com) lists PGN FSRU Lampung's manager as Hoegh LNG Fleet Management AS, shipyard Hyundai Heavy Industries. rivieramm.com quotes Hoegh LNG on its FSRU fleet: 'As well as the dual-fuel diesel-electric engine, they are installed with recondensers in each of the regasification trains for handling gas boil-off' — describing the design standard applied across Hoegh's managed FSRUs. No Lampung-specific engine spec sheet was found to confirm the exact model/rating for this hull.",
+    "refs": [
+      "https://www.rivieramm.com/news-content-hub/hoegh-lng-takes-delivery-of-its-ninth-fsru-22463",
+      "https://directory.marinelink.com/ships/ship/pgn-fsru-lampung-5559"
+    ],
+    "verification_log": [
+      {"url": "https://www.rivieramm.com/news-content-hub/hoegh-lng-takes-delivery-of-its-ninth-fsru-22463", "tokens": ["dual-fuel diesel-electric", "boil-off"], "result": "PASS", "note": "confirms Hoegh's FSRU fleet DFDE design + BOG recondensing"},
+      {"url": "https://directory.marinelink.com/ships/ship/pgn-fsru-lampung-5559", "tokens": ["Hoegh LNG Fleet Management", "PGN FSRU LAMPUNG"], "result": "FAIL", "note": "exact string 'Hoegh LNG Fleet Management' not matched (accent/formatting); retried with looser tokens"},
+      {"url": "https://directory.marinelink.com/ships/ship/pgn-fsru-lampung-5559", "tokens": ["Fleet Management", "Hyundai"], "result": "PASS", "note": "confirms vessel is managed under Hoegh LNG Fleet Management AS, built by Hyundai Heavy Industries"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT prior given for this terminal.",
+    "gogpt_candidate": "REVIEWER CALL",
+    "gogpt_candidate_basis": "Generation exists (DFDE gensets) but is vessel-mounted with no citable nameplate for this specific hull, and it is unclear whether GOGPT's ontology captures FSRU onboard gensets as a discrete power-station record — per SOP, this is a REVIEWER CALL rather than ADD/DO NOT ADD.",
+    "status_or_other_findings": "",
+    "notes": ""
+  }
+]

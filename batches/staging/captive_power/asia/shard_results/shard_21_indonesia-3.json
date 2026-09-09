@@ -1,0 +1,184 @@
+[
+  {
+    "terminal": "Madura FLNG Terminal",
+    "terminal_id": "T100000131147",
+    "country": "Indonesia",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "Never advanced past a September 2023 non-binding agreement between Bumi Armada, PT Pertamina International Shipping, and gas trader Davenergy Mulia Perkasa to jointly develop and commercialize a floating LNG production/storage facility using Madura-field gas. Under the deal terms, first LNG shipment was projected for three years AFTER a final investment decision that was never taken; no FLNG unit was ever designed in enough detail to be built, ordered, or installed, and the project is now shelved. No facility exists, so there is no captive-power question to answer.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "LNG Prime (2023-09-13), 'Bumi Armada, Pertamina join forces on Madura FLNG project': 'Bumi Armada, Pertamina International Shipping, and Davenergy have signed a non-binding agreement... to develop and commercialize [LNG] from Indonesia's Madura field... The first shipment of LNG is anticipated to take place three years after making final investment decision.' No FID, construction, or vessel order was ever reported in any subsequent search.",
+    "refs": [
+      "https://lngprime.com/asia/bumi-armada-pertamina-join-forces-on-madura-flng-project/"
+    ],
+    "verification_log": [
+      {"url": "https://lngprime.com/asia/bumi-armada-pertamina-join-forces-on-madura-flng-project/", "tokens": ["non-binding agreement", "final investment decision"], "result": "PASS", "note": "confirms project never reached FID"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT plant was given for this terminal (gogpt_prior: no).",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No facility was ever built or designed in enough detail to identify a power train; project screened as cancelled-and-never-built.",
+    "status_or_other_findings": "GEM's 'shelved' status is consistent with all found reporting; the project never progressed past a 2023 non-binding MOU.",
+    "notes": "Screen criterion: cancelled/never-built proposal with no design ever published beyond a non-binding development agreement."
+  },
+  {
+    "terminal": "Nusantara Regas Satu Terminal",
+    "terminal_id": "T100000130284",
+    "country": "Indonesia",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "red",
+    "captive_summary": "No public source found documents this specific vessel's onboard power-generation equipment. The FSRU is a 1977-built Moss-type LNG carrier (ex-Khannur) converted by Keppel/Jurong Shipyard in 2011-2012; Moss-type steam-turbine carriers of this era generically retain steam turbo-generators fed by dual-fuel (boil-off-gas/fuel-oil) boilers after FSRU conversion, but no source found ties that generic industry practice to THIS vessel specifically, so it cannot be asserted as a documented positive. Its regasification output instead feeds PLN's Jakarta-West Java grid (direction-test finding, see notes) -- the reverse of a captive-power relationship.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Wartsila reference page and Riviera Maritime Media ('Oldest FSRU delivers decade-long uninterrupted regasification service') describe the Khannur-to-FSRU conversion (500 MMcf/d send-out, 0.25% boil-off rate) but neither discloses onboard generator/engine specifications. Multiple searches (DuckDuckGo, shipping-data.com, Wikipedia-style registries) turned up no vessel-specific engine/generator documentation.",
+    "refs": [],
+    "verification_log": [
+      {"url": "https://www.rivieramm.com/lead-stories-brand/oldest-fsru-delivers-decade-long-uninterrupted-regasification-service-86285", "tokens": ["60%", "PLN"], "result": "FAIL", "note": "does not contain the PLN-demand figure; not cited"},
+      {"url": "https://www.mncsekuritas.id/assetweb/files/PGAS_IJ_-_MNC_Sekuritas_Equity_Report__190925.pdf", "tokens": ["60%", "PLN"], "result": "PASS", "note": "verified for the direction-test note only, not a captive-power claim"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT plant was given for this terminal (gogpt_prior: no).",
+    "gogpt_candidate": "REVIEWER CALL",
+    "gogpt_candidate_basis": "Whether this vessel carries its own generation is genuinely undetermined from public sources; even if it does, FSRU onboard gensets sit in GOGPT's ontology gray zone per brief §5.",
+    "status_or_other_findings": "None beyond the direction-test finding below.",
+    "notes": "DIRECTION-TEST finding (not captive): per an equity-research report (MNC Sekuritas, PGAS review, 19-09-2025), 'the facility has supplied ~60% of PLN's electricity demand in Jakarta and West Java' since starting operations in 2012 -- this is gas OUT to PLN power stations (PowerPlantsSupplied candidate for a future batch), the opposite of captive generation for the FSRU's own use, and should not be conflated with a captive finding."
+  },
+  {
+    "terminal": "Palu LNG Terminal",
+    "terminal_id": "T100000131070",
+    "country": "Indonesia",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "RE-VERIFY of GEM's existing CaptiveGasPower=True: the cited PR Newswire release does NOT describe captive generation for the LNG terminal itself. It describes the Palu Green Energy Hub's 2 MTPA onshore LNG import terminal as existing to 'supply carbon neutral LNG for the captive 1.2 GW combined cycle powerplant' serving 'the region's nickel smelter industries,' with additional gas delivered to mining/smelter customers via virtual pipeline (ISO containers/trucking). The word 'captive' in the source describes the powerplant's relationship to the smelter/mining industrial host, not the LNG terminal's relationship to its own operations -- this is the direction-test case (terminal supplies gas OUT to an external power plant), not a captive-power finding for the terminal. The existing GEM ref should be corrected to NO.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "PR Newswire (2022-08-09), Aslan Energy Capital/PT Agri Maritim Sulteng 'Green Energy Hub' release: 'The onshore LNG import terminal at Palu will have an import capacity of 2 MTPA, which will supply carbon neutral LNG for the captive 1.2 GW combined cycle powerplant... This LNG terminal will ensure sufficient power generation for the region's nickel smelter industries and provide LNG via virtual pipelines (ISO LNG containers and trucking) to reduce the carbon footprint of the mining industry.'",
+    "refs": [
+      "https://www.prnewswire.com/news-releases/aslan-energy-capital-aec-singapore-along-with-pt-agri-maritim-sulteng-ams-a-provincial-government-company-of-central-sulawesi-indonesia-unveil-the-green-energy-hub-development-plan-to-serve-the-industrial-and-mining-sector--301580127.html"
+    ],
+    "verification_log": [
+      {"url": "https://www.prnewswire.com/news-releases/aslan-energy-capital-aec-singapore-along-with-pt-agri-maritim-sulteng-ams-a-provincial-government-company-of-central-sulawesi-indonesia-unveil-the-green-energy-hub-development-plan-to-serve-the-industrial-and-mining-sector--301580127.html", "tokens": ["captive 1.2 GW combined cycle powerplant", "nickel smelter"], "result": "PASS", "note": "same URL already carried in GEM's existing ref cell; re-read in full and it describes the opposite relationship"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT plant was given for this terminal (gogpt_prior: no).",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "The '1.2 GW combined cycle powerplant' referenced in the source is captive to the nickel-smelter/mining industrial cluster, not to this LNG terminal -- it is a PowerPlantsSupplied relationship, not this terminal's own captive generation.",
+    "status_or_other_findings": "Project is cancelled per GEM (inferred 4y); no update found beyond the original 2022 announcement.",
+    "notes": "MISS-CLASS CORRECTION: existing GEM CaptiveGasPower=True appears to be a misreading of the source's use of the word 'captive' (captive to the smelter industry, not to the terminal). Flag PowerPlantsSupplied (1.2 GW combined-cycle plant for nickel smelters) as a candidate field for a future Update batch on the SAME source. Also note the source describes partial virtual-pipeline/trucking delivery to mining customers, which may raise a separate domestic-scope question for whoever reviews this record next."
+  },
+  {
+    "terminal": "Sengkang LNG Terminal",
+    "terminal_id": "T100000130285",
+    "country": "Indonesia",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "red",
+    "captive_summary": "Energy World Corporation (EWC)'s Sengkang LNG Plant is designed for 2 MTPA across four modular 500,000 tpa trains, but no train has ever reached completion/operation: Upstream Online reported EWC had 'slowed to a modest pace construction of its already delayed Sengkang [LNG] project,' and as of EWC's own 2026 investor materials the company still states only its 'intention to complete construction of 500,000 tonnes of capacity initially' -- present tense, decades after the project began. The supply gas field (Wasambo) is reported as not yet in production. No source found (EPC releases, vendor press, environmental filings) discloses the plant's utility/power system design, so it is genuinely undetermined whether captive gas-fired generation is part of the design.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "EWC company site (energyworldcorp.com/projects.php, 2026): 'The Sengkang LNG Plant has a design capacity of 2 mtpa, consisting of 4 modular 500,000 tpa trains... It is our intention to complete construction of 500,000 tonnes of capacity initially, and then roll out additional modules until all 4 modules are in commercial operation.' Corroborated by Upstream Online reporting on slowed/delayed construction and a 2026 LinkedIn post describing a 'balance sheet reset' enabling EWC to advance the 'long-stalled' project. No document found describes the liquefaction train's power/utility system.",
+    "refs": [
+      "https://www.energyworldcorp.com/projects.php"
+    ],
+    "verification_log": [
+      {"url": "https://www.energyworldcorp.com/projects.php", "tokens": ["Sengkang LNG Plant", "4 modular", "500,000"], "result": "not run (fetched directly via curl, content confirmed by direct read, not a staged claim requiring a data value)", "note": "used for background/design-status context only, not a captive-power citation"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT plant was given for this terminal (gogpt_prior: no).",
+    "gogpt_candidate": "REVIEWER CALL",
+    "gogpt_candidate_basis": "Undetermined whether the LNG plant design includes any on-site generation; no citable nameplate either way.",
+    "status_or_other_findings": "Confirms GEM's shelved status: construction has proceeded only at a slowed/delayed pace across multiple ownership/restructuring cycles; no train has shipped LNG cargo per any source found.",
+    "notes": "INDUSTRIAL-HOST-TRAP WARNING for future batches: searches for 'Sengkang power plant' surface a 315 MW combined-cycle plant (commissioned 1997, operated by PT Energi Sengkang, formerly Origin Energy/Energy Equity Epic) and a separate 180 MW PLTGU Sengkang (PLN, commissioned 2016) -- BOTH are fed by the Kampung Baru gas field and sell to the PLN grid, and BOTH predate and are unrelated to EWC's Sengkang LNG export project on the coast. A future pass must not attribute these merchant IPP plants to the LNG terminal as captive power; they belong to a different operator/field entirely."
+  },
+  {
+    "terminal": "Sorong FSRU",
+    "terminal_id": "T100000130871",
+    "country": "Indonesia",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "red",
+    "captive_summary": "A cancelled, never-built proposal: an FSRU off Sorong, West Papua was floated around 2016 (a Head of Agreement between Nusantara Regas and PT Pertamina Gas was reportedly signed August 2016) with no development activity reported since, and Indonesia's 2014-2030 Natural Gas Policy Roadmap target start date (2020) was never met. No independent, citable source beyond aggregator-level reporting could be located this session confirming further design detail; no facility of any kind was ever constructed.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Fragmentary secondary reporting (not independently re-verified to a citable primary document this session) describes a circa-2014-2016 proposal that never proceeded past a preliminary agreement stage; no equipment, vendor, or construction record was found in any search performed.",
+    "refs": [],
+    "verification_log": [
+      {"url": "https://inzonex.co.uk/poweratlas/plant/sorong-power-station.html", "tokens": ["gas power plant", "West Papua", "PLN"], "result": "PASS", "note": "independent source for the gogpt_prior_assessment (not a captive-power claim for this terminal)"}
+    ],
+    "gogpt_prior_assessment": "gogpt_plant 'Sorong power station' (~50-100 MW gas-fired, PLN-operated) is an independently documented, operating PLN merchant grid plant near the proposed FSRU site, per PowerAtlas: 'a 50 MW gas power plant in West Papua, Indonesia. It is operated by PT PLN (Persero).' It is unrelated to the cancelled FSRU (which was never built) and is not this terminal's captive power.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "GOGPT's existing 'Sorong power station' record is confirmed as a separate PLN grid asset, and GEM's own gogpt_captive flag for it is already False; the FSRU itself was never built so there is no plant to add on its behalf.",
+    "status_or_other_findings": "None beyond confirming the cancelled/dormant status already reflected in GEM.",
+    "notes": "SCREEN basis: cancelled-and-never-built proposal, no development activity since ~2016, no design ever published in enough detail to assess a power system. Flagging honestly that search tools available this session (WebSearch quota exhausted; DuckDuckGo/Mojeek/Ecosia/Brave all intermittently or fully bot-blocked) could not surface an independent primary source for this specific project beyond aggregator-level text -- treat this SCREENED verdict as lower-confidence than the others in this shard and worth a second look if a future batch has better search access."
+  },
+  {
+    "terminal": "Sulawesi-Maluku LNG Cluster",
+    "terminal_id": "T100000131165",
+    "country": "Indonesia",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "A documented direction-test NO: this proposed floating LNG import cluster (FSRU + LNG carrier + onshore regas sites across seven Sulawesi-Maluku locations) is explicitly designed to supply gas OUT to seven external PLN power plants totaling 1,510 MW, not to power itself. The consortium's own press release states the infrastructure's purpose is 'to supply LNG and natural gas to seven power plants with a cumulative capacity of 1,510 MW.' No captive generation for the terminal's own regasification/storage operations is described anywhere in the release.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "PR Newswire (2024-03, AG&P LNG): 'AG&P Indonesia, along with its Consortium members, will establish a joint venture (JV) with PLN EPI to collaborate on the design, financing, construction, ownership, and operations of all offshore and onshore infrastructure within the Sulawesi-Maluku cluster LNG terminals. This infrastructure includes the LNG Carrier (LNGC), Floating Storage and Regasification Unit (FSRU), and multiple onshore regasification sites. The aim is to supply LNG and natural gas to seven power plants with a cumulative capacity of 1,510 MW.'",
+    "refs": [
+      "https://www.prnewswire.com/news-releases/agp-lng-awarded-20-year-contract-by-pln-epi-indonesia-for-co-development-ownership-and-operations-of-lng-import-terminals-in-sulawesi-maluku-power-cluster-302099569.html"
+    ],
+    "verification_log": [
+      {"url": "https://www.prnewswire.com/news-releases/agp-lng-awarded-20-year-contract-by-pln-epi-indonesia-for-co-development-ownership-and-operations-of-lng-import-terminals-in-sulawesi-maluku-power-cluster-302099569.html", "tokens": ["seven power plants", "1,510 MW"], "result": "PASS", "note": "confirms the PowerPlantsSupplied direction, not a captive finding"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT plant was given for this terminal (gogpt_prior: no).",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "This cluster's whole purpose is to supply gas to seven named external PLN power plants (PowerPlantsSupplied relationship) -- it is not itself a gas-power-generation asset and there is no captive generation to add.",
+    "status_or_other_findings": "PLN EPI (PT PLN Energi Primer Indonesia) is confirmed co-shareholder/customer; contract awarded March 2024 for a 20-year term; project still at proposed stage per GEM.",
+    "notes": "Textbook PowerPlantsSupplied direction-test case flagged in CLAUDE.md: the whole project exists to feed PLN power plants, not to power itself. Should this project reach an Update batch, the seven named power plants (1,510 MW total) are candidates for the PowerPlantsSupplied field, not CaptiveGasPower."
+  },
+  {
+    "terminal": "Tangguh LNG Terminal",
+    "terminal_id": "T100000130286",
+    "country": "Indonesia",
+    "verdict": "YES",
+    "mechanical": "True",
+    "captive_category": "mechanical_drive+power_generation",
+    "hardware_summary": "Mixed-refrigerant and propane-cycle gas turbines drive the refrigeration compressors across the LNG trains (mechanical drive; described as 'heavy-duty gas turbines' in Baker Hughes' long-term service scope); exhaust heat from these gas turbines is recovered via Heat Recovery Steam Generators (HRSG) driving steam turbines that generate electricity, used on-site and with surplus historically sold to PLN (4 MW cited for a village-electrification program). Exact turbine model/count and total generating MW not disclosed in sources found.",
+    "fuel_basis": "Gas-fired: the ADB ESIA explicitly attributes the HRSG's energy input to 'the off-gas from the gas turbines,' and those same gas turbines are separately identified in the ESIA as 'Mixed Refrigerant and Propane Gas Turbines' (i.e. fed by plant process/feed gas, not diesel).",
+    "confidence": "green",
+    "captive_summary": "Confirmed on-site power generation via waste-heat recovery: the Tangguh Expansion Project (Train 3) ESIA states IFC Performance Standard 3 (resource/energy efficiency) 'is met with the installed heat recovery system using the off-gas from the gas turbines as energy input. Produced electricity is used internally and sold to Indonesia's state electricity company PLN.' This is a partially-captive, mixed mechanical-drive + power-generation site: mechanical-drive gas turbines run the refrigeration compressors, and their waste heat generates electricity used on-site (captive) with the surplus exported to PLN.",
+    "electric_mw": "",
+    "mechanical_drive_note": "'Mixed Refrigerant and Propane Gas Turbines' drive the refrigeration compressors across Trains 1-3 (ADB ESIA, listed among the TEP's main gaseous-emission sources); Baker Hughes' 90-month service agreement (2025) separately confirms 'heavy-duty gas turbines, steam turbines, and compressors for three LNG trains.' Aggregate shaft MW not disclosed in any source found.",
+    "confirmed_how": "ADB project document 49222-001-esia-03.pdf ('Tangguh Expansion Project Environmental and Social Impact Assessment Executive Summary,' prepared by PT Greencap Indonesia), para 5.31: 'IFC PS 3 requires resource conservation and energy efficiency measures to be incorporated into projects. In the case of the TEP this requirement is met with the installed heat recovery system using the off-gas from the gas turbines as energy input. Produced electricity is used internally and sold to Indonesia's state electricity company PLN to serve the local electricity grid providing electricity to the nearby host villages.' Same document, para 1.2: TEP supports 'local electricity demand by allocating gas produced under the TEP as fuel for electric generators... Support the improvement of local livelihoods... by selling excess power produced by TEP to the State Electricity Company (PLN).' Section 5.58 separately notes 'Tangguh provides 4MW of power to the national electricity company PLN for electrification of local villages' under the original T1/T2 program. Corroborated independently by Turbomachinery International/Baker Hughes reporting on the plant's heavy-duty gas turbine and steam turbine fleet.",
+    "refs": [
+      "https://www.adb.org/sites/default/files/project-documents//49222-001-esia-03.pdf",
+      "https://turbomachinerymag.com/view/baker-hughes-signs-parts-repair-engineering-contract-for-tangguh-lng"
+    ],
+    "verification_log": [
+      {"url": "https://www.adb.org/sites/default/files/project-documents//49222-001-esia-03.pdf", "tokens": ["heat recovery system", "off-gas from the gas turbines", "PLN"], "result": "PASS", "note": "primary/regulatory-adjacent ESIA document; sufficient alone for green"},
+      {"url": "https://turbomachinerymag.com/view/baker-hughes-signs-parts-repair-engineering-contract-for-tangguh-lng", "tokens": ["heavy-duty gas turbines", "steam turbines"], "result": "PASS", "note": "bot-blocked live (HTTP 403), verified via Wayback snapshot 20260116131445; independent trade-press corroboration of the gas-turbine/steam-turbine fleet"},
+      {"url": "https://investors.bakerhughes.com/news/press-releases/news-details/2025/Baker-Hughes-Awarded-Long-Term-Service-Agreement-by-bp-for-Tangguh-LNG-Operations-Supporting-Indonesias-Energy-Future-08-26-2025/default.aspx", "tokens": ["steam turbines", "heavy-duty gas turbines"], "result": "FAIL", "note": "HTTP 403, no Wayback snapshot available; not cited (superseded by the Wayback-verified turbomachinerymag.com mirror of the same facts)"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT plant was given for this terminal (gogpt_prior: no).",
+    "gogpt_candidate": "MAYBE",
+    "gogpt_candidate_basis": "Genuine on-site cogeneration confirmed (HRSG + steam turbines producing electricity, partially exported to PLN), but no citable total nameplate MW was found -- only the 4 MW village-electrification allocation, which is an export slice, not the plant's full generating capacity.",
+    "status_or_other_findings": "None beyond the captive-power finding; project remains operating (3 trains) per GEM, consistent with all sources found.",
+    "notes": "Mixed site: mechanical-drive gas turbines (refrigeration compressors) plus waste-heat-recovery power generation (HRSG/steam turbines) sold partly to PLN -- partially captive per SOP §2, still a YES."
+  }
+]

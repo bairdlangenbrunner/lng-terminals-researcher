@@ -1,0 +1,188 @@
+[
+  {
+    "terminal": "Naoetsu LNG Terminal",
+    "terminal_id": "T100000130505",
+    "country": "Japan",
+    "verdict": "YES",
+    "mechanical": "False",
+    "captive_category": "standby_backup",
+    "hardware_summary": "On-site gas turbine generator plus a diesel generator, both installed as non-normal-time (emergency) electrical power sources in addition to the two-line utility grid feed. No count/model/MW disclosed.",
+    "fuel_basis": "TMEIC (the electrical-systems vendor for the INPEX Naoetsu facility) states the plant's non-normal power supply comprises two sources, a gas turbine and a diesel unit; the gas turbine establishes a gas-fired generator distinct from the diesel unit.",
+    "confidence": "yellow",
+    "captive_summary": "INPEX's Naoetsu LNG terminal carries an on-site gas-turbine generator as one of two emergency/non-normal power sources (the other is diesel), backing up the dual utility grid feed. No MW figure or model is publicly disclosed, but the existence of on-site gas-fired generation is documented by the equipment vendor.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "TMEIC's own case-study column on the Naoetsu LNG facility's electrical system (which TMEIC supplied) states: \"基本となる電力会社からの受電に加え、非常時用として設けられたガスタービンとディーゼルという2種の電力供給源があり\" (in addition to the base utility-grid feed, there are two types of non-normal-time power supply sources: a gas turbine and a diesel [generator]). This is a vendor technical account of equipment actually installed, not a press release about winning a contract. No second independent source with the same detail was found in the time available (INPEX's own brochure PDF and the ene-fro.com feature article on the facility describe process equipment only and do not mention the backup power scheme).",
+    "refs": [
+      "https://www.tmeic.co.jp/column/p2_vol03/"
+    ],
+    "verification_log": [
+      {"url": "https://www.tmeic.co.jp/column/p2_vol03/", "tokens": ["ガスタービン", "ディーゼル"], "result": "PASS", "note": "confirms gas turbine + diesel dual non-normal power supply"},
+      {"url": "https://www.inpex.com/assets/documents/business/project/naoetsu/naoetsu_LNG.pdf", "tokens": [], "result": "FAIL", "note": "not verified as a citation - fetch returned corrupted/binary PDF text via WebFetch, no readable generator mention extracted; not used as a ref"},
+      {"url": "https://ene-fro.com/article/ef37_a1/", "tokens": [], "result": "FAIL", "note": "not verified as a citation - reviewed via WebFetch, article covers receiving/storage/vaporization only, no mention of backup power; not used as a ref"}
+    ],
+    "gogpt_prior_assessment": "The GOGPT prior 'Joetsu thermal power station' (2,380 MW, 0.15 km) is NOT this terminal's captive power. It is a large JERA/Tohoku Electric Power grid combined-cycle station built on adjacent reclaimed land at Naoetsu/Joetsu port, wholly unrelated in ownership to INPEX's Naoetsu LNG terminal - the proximity is coincidental co-location on the same industrial waterfront, not a fenceline captive relationship, and there is no gas-flow-in-or-out link between the two facilities in any source found. Info: https://ja.wikipedia.org/wiki/%E4%B8%8A%E8%B6%8A%E7%81%AB%E5%8A%9B%E7%99%BA%E9%9B%BB%E6%89%80",
+    "gogpt_candidate": "REVIEWER CALL",
+    "gogpt_candidate_basis": "The confirmed captive item (the gas turbine backup generator) is real, gas-fired, on-site generation, but no nameplate MW is publicly disclosed and it is explicitly a non-normal/emergency-only unit sized only to cover a grid outage at a receiving terminal - GOGPT's ontology may or may not want a sub-facility standby unit of unknown size logged as its own power station entry. Joetsu thermal power station itself is unrelated to the LNG terminal (different owner, no fenceline gas link) and is presumably already tracked in GOGPT on its own merits - DO NOT ADD it as this terminal's captive plant.",
+    "status_or_other_findings": "None tripped over beyond the power-system finding.",
+    "notes": "No PowerPlantsSupplied direction relationship found for this terminal (it feeds the general pipeline network, not a specific power station)."
+  },
+  {
+    "terminal": "Negishi LNG Terminal",
+    "terminal_id": "T100000130503",
+    "country": "Japan",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "yellow",
+    "captive_summary": "Negishi is Japan's original LNG import base, run jointly by Tokyo Gas and TEPCO/JERA specifically as a shared site (\"共同基地\") feeding the co-located Minami-Yokohama Thermal Power Station - the direction is the terminal supplying regasified gas OUT to that utility plant, not the plant powering the terminal. No description of the LNG terminal's own facilities (loading, storage tanks, cold-heat utilization by third-party tenants) mentions any on-site generator, and extensive Japanese-language searching for a Negishi-specific emergency/backup generator turned up nothing.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "A Doboku Watching engineering-heritage page on the Tokyo Gas Negishi plant states it is a \"共同基地\" (joint facility) with TEPCO's Minami-Yokohama thermal power station, i.e. the terminal's purpose includes feeding that adjacent plant, not being powered by it. No source found describes any on-site backup/captive generator at the LNG terminal itself.",
+    "refs": [
+      "https://www.doboku-watching.com/index.php?kijiId=45"
+    ],
+    "verification_log": [
+      {"url": "https://www.doboku-watching.com/index.php?kijiId=45", "tokens": ["南横浜火力発電所", "共同基地"], "result": "PASS", "note": "confirms Negishi is a joint facility with TEPCO's Minami-Yokohama thermal plant"}
+    ],
+    "gogpt_prior_assessment": "The GOGPT prior 'Negishi Refinery power station' (342 MW, 1.47 km) is NOT this terminal's captive power on two independent grounds: (1) it belongs to a different host - it is ENEOS's (ex-JXTG) own IGCC power plant at the adjacent Negishi oil refinery, not Tokyo Gas/JERA's LNG terminal; and (2) it fails the fuel gate entirely - ENEOS's own Wikipedia-sourced technical description states the plant's fuel is 残渣油（アスファルト）(residual oil/asphalt), generated via ガス化複合発電方式 (gasification combined cycle), not natural gas. Info: https://ja.wikipedia.org/wiki/ENEOS%E6%A0%B9%E5%B2%B8%E8%A3%BD%E6%B2%B9%E6%89%80",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No captive gas generation confirmed at this terminal; the GOGPT prior is a different host's refinery power plant burning residual oil, not gas, so it is correctly excluded from any Negishi LNG Terminal captive record.",
+    "status_or_other_findings": "None.",
+    "notes": "PowerPlantsSupplied direction case: Negishi LNG Terminal feeds Minami-Yokohama Thermal Power Station (already reflected in the assignment's power_plants_supplied field) - this is the established direction, terminal-to-plant, not captive-power-into-terminal."
+  },
+  {
+    "terminal": "Niihama LNG Terminal",
+    "terminal_id": "T100000130701",
+    "country": "Japan",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "yellow",
+    "captive_summary": "Niihama LNG Terminal (operating since March 2022, inside the Sumitomo Chemical Ehime plant) was built specifically to supply gas to Sumitomo Chemical's plant and to a newly built natural-gas combined-cycle cogeneration plant, Niihama Kita Power Station, constructed and operated by a separate company, Sumitomo Joint Electric Power (住友共同電力). The direction is gas OUT from the terminal to that power station, not power IN. No source describes any on-site generator at the LNG terminal itself despite Sumitomo Kyodo Electric being one of Niihama LNG's five co-investors.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Sumitomo Chemical's press release on the start of Niihama LNG supply names Sumitomo Joint Electric Power's Niihama Kita Power Station as the new gas-fired combined-cycle cogeneration plant fed by the terminal's output, alongside supply to Sumitomo Chemical's own plant. No mention of any generation equipment belonging to Niihama LNG Co (the terminal operator) itself.",
+    "refs": [
+      "https://www.sumitomo-chem.co.jp/news/detail/20220302.html"
+    ],
+    "verification_log": [
+      {"url": "https://www.sumitomo-chem.co.jp/news/detail/20220302.html", "tokens": ["新居浜LNG", "住友共同電力"], "result": "PASS", "note": "confirms Niihama Kita Power Station is Sumitomo Joint Electric Power's separate plant fed by the terminal"}
+    ],
+    "gogpt_prior_assessment": "The GOGPT prior 'Niihama Kita thermal power station' (150 MW, 6.09 km) is NOT this terminal's captive power - it belongs to a different corporate operator (Sumitomo Joint Electric Power, one of five co-owners of Niihama LNG Co but a legally and physically distinct combined-cycle power plant), and the relationship is the terminal supplying it gas as fuel, the opposite of a captive-power-into-the-terminal relationship. Info: https://www.sumikyo.co.jp/challenge/next/development.html",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No captive generation found at the LNG terminal; the GOGPT prior is a separate merchant/cogeneration plant fed by the terminal (PowerPlantsSupplied direction), correctly excluded from a Niihama LNG Terminal captive record.",
+    "status_or_other_findings": "None.",
+    "notes": "PowerPlantsSupplied direction case, consistent with the assignment's power_plants_supplied field ('Niihama Kita thermal power station')."
+  },
+  {
+    "terminal": "Ohgishima LNG Terminal",
+    "terminal_id": "T100000130507",
+    "country": "Japan",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "yellow",
+    "captive_summary": "Tokyo Gas's Ohgishima LNG Terminal (operating since 1998, Yokohama) sits beside Ogishima Power Station, a gas-turbine-combined-cycle plant (roughly 3x 410 MW units) built and operated by Ogishima Power Co., a separate joint venture between Tokyo Gas and Idemitsu (formerly Showa Shell). The relationship is the terminal supplying gas to that adjacent but separately-constituted power company, not the power station feeding the terminal. No source found describes any generator belonging to the LNG terminal itself.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "The Japanese Wikipedia entry for Ogishima Power (扇島パワー) confirms it is a joint venture of Tokyo Gas and Idemitsu, a legally distinct company from Tokyo Gas's 100%-owned Ohgishima LNG base, operating GTCC units built starting 2010/2016.",
+    "refs": [
+      "https://ja.wikipedia.org/wiki/%E6%89%87%E5%B3%B6%E3%83%91%E3%83%AF%E3%83%BC"
+    ],
+    "verification_log": [
+      {"url": "https://ja.wikipedia.org/wiki/%E6%89%87%E5%B3%B6%E3%83%91%E3%83%AF%E3%83%BC", "tokens": ["扇島パワー", "東京ガス"], "result": "PASS", "note": "confirms Ogishima Power is a separate Tokyo Gas/Idemitsu JV company"}
+    ],
+    "gogpt_prior_assessment": "The GOGPT prior 'Higashi-Ohgishima thermal power station' (2,000 MW, 0.56 km) is NOT this terminal's captive power - the large adjacent generation at Ohgishima island belongs to the separately incorporated Ogishima Power Co (Tokyo Gas/Idemitsu JV), fed by gas piped from the LNG terminal, i.e. the PowerPlantsSupplied direction, the reverse of captive. Info: https://ja.wikipedia.org/wiki/%E6%89%87%E5%B3%B6%E3%83%91%E3%83%AF%E3%83%BC",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No captive generation found at the LNG terminal; the GOGPT prior is the separate power-station JV the terminal supplies, the opposite relation from captive - correctly excluded.",
+    "status_or_other_findings": "None.",
+    "notes": "PowerPlantsSupplied direction case, consistent with the assignment's power_plants_supplied field ('Kawasaki Natural Gas power station' - likely an alternate/older name for the same Ogishima Power complex; not independently reconciled here since this is out of scope for the captive-power question)."
+  },
+  {
+    "terminal": "Oita LNG Terminal",
+    "terminal_id": "T100000130509",
+    "country": "Japan",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "yellow",
+    "captive_summary": "Oita LNG Terminal (operating since 1990, Oita coastal industrial zone) receives, stores (5 tanks) and vaporizes LNG (7 vaporizers) then pipes the gas to Kyushu Electric Power's adjacent Shin-Oita combined-cycle power station (14 gas-turbine/steam-turbine/generator units across 3 series) and to Oita Gas's town-gas plant. Kyushu Electric's plant is a separately owned utility asset fed by the terminal, not a source of power into the terminal. No captive generation equipment is described for the LNG terminal itself in any source found.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "An IEEJ feature on Kyushu Electric's Shin-Oita power station confirms Oita LNG (a separate company) procures and stores the LNG on-site and that Shin-Oita's own generation equipment is 14 gas-turbine/steam-turbine/generator trains, i.e. the generation belongs to Kyushu Electric, downstream of the terminal's gas supply.",
+    "refs": [
+      "https://ieei.or.jp/2019/04/special201310_01_065/"
+    ],
+    "verification_log": [
+      {"url": "https://ieei.or.jp/2019/04/special201310_01_065/", "tokens": ["大分エル・エヌ・ジー", "新大分"], "result": "PASS", "note": "confirms Oita LNG stores/supplies gas to Kyushu Electric's separately-owned Shin-Oita generation trains"}
+    ],
+    "gogpt_prior_assessment": "The GOGPT prior 'Oita Co-operative power plant' (657 MW, 0.35 km) is NOT this terminal's captive power - Kyushu Electric's Shin-Oita generation complex (which this GOGPT entry likely maps to, given the shared industrial zone and proximity) is a separately owned utility plant fed by the terminal's gas output, the PowerPlantsSupplied direction rather than captive. Info: https://www.kyuden.co.jp/effort_thirmal_k_hatsuden_k_shinoita.html",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No captive generation found at the LNG terminal; the GOGPT prior is Kyushu Electric's separately owned downstream generation, correctly excluded from an Oita LNG Terminal captive record.",
+    "status_or_other_findings": "None.",
+    "notes": "PowerPlantsSupplied direction case, consistent with the assignment's power_plants_supplied field ('Shin Oita power station')."
+  },
+  {
+    "terminal": "Sakai LNG Terminal",
+    "terminal_id": "T100000130511",
+    "country": "Japan",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "yellow",
+    "captive_summary": "Kansai Electric Power's own Sakai LNG Center (operating since 2006) receives, stores, vaporizes and sends out LNG, supplying natural gas to Kansai Electric's own thermal power plants (including the adjacent Sakai Port Power Station) and to nearby factories, plus gas/cold-heat feedstock to the Hydro Edge liquid-hydrogen plant. The relationship documented is the terminal supplying gas OUT to the power plants, not the reverse; the company's own process description (receiving-storage-vaporization-shipment) lists no generation equipment at the LNG center itself.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Kansai Electric's own LNG-terminal page states the Sakai LNG Center's role is receiving/storing/vaporizing/sending out LNG, supplying gas to its thermal power plants and nearby factories and to the Hydro Edge liquid-hydrogen facility - a downstream-supply description with no mention of any generator at the LNG center.",
+    "refs": [
+      "https://www.kepco.co.jp/energy_supply/energy/thermal_power/lng/index.html"
+    ],
+    "verification_log": [
+      {"url": "https://www.kepco.co.jp/energy_supply/energy/thermal_power/lng/index.html", "tokens": ["堺", "気化"], "result": "PASS", "note": "confirms Sakai LNG Center's role is receipt/storage/vaporization/supply, no generation equipment described"}
+    ],
+    "gogpt_prior_assessment": "The GOGPT prior 'Sakai Port power station' (2,000 MW, 2.55 km) is NOT this terminal's captive power - it is Kansai Electric's own large GTCC generating station (5x400 MW units) fed by gas piped from the Sakai LNG Center; even though both are Kansai Electric assets, the power flows FROM the terminal's gas TO the power station, the PowerPlantsSupplied direction, not power into the terminal. Info: https://www.kepco.co.jp/energy_supply/energy/thermal_power/plant/sakaiko.html",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No captive generation found at the LNG terminal; the GOGPT prior is the downstream power station the terminal supplies (same parent company, opposite relation), correctly excluded from a Sakai LNG Terminal captive record.",
+    "status_or_other_findings": "None.",
+    "notes": "No power_plants_supplied value was pre-filled in the assignment data for this terminal, but the direction relationship to Sakai Port Power Station is documented above and should probably populate that field in a future Update batch (not staged here, out of scope for this captive-power pass)."
+  },
+  {
+    "terminal": "Sakaide LNG Terminal",
+    "terminal_id": "T100000130513",
+    "country": "Japan",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "Sakaide LNG Co (a Shikoku Electric Power group subsidiary, operating since March 2010) states directly on its own facility page that the gas it produces is supplied primarily as power-generation fuel to Shikoku Electric's Sakaide Power Station via pipeline. Its own equipment overview page enumerates the full equipment inventory - loading arms, LNG storage tanks, open-rack vaporizers, BOG compressor, truck-loading facilities - with no generator of any kind listed.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Sakaide LNG's own service-overview page states: \"製造した天然ガスは、主に四国電力(株)坂出発電所の発電用燃料としてガス導管で供給しています\" (the natural gas produced is supplied mainly as power-generation fuel to Shikoku Electric Power's Sakaide Power Station via gas pipeline). Its own facility-overview page (設備概要) lists the complete process equipment (loading arms with emergency release systems, double-shell 9%-nickel-steel LNG tanks, seawater open-rack vaporizers, BOG compressor, tank-truck loading) and contains no generator of any kind.",
+    "refs": [
+      "https://www.sakaide-lng.co.jp/service/",
+      "https://www.sakaide-lng.co.jp/facility/"
+    ],
+    "verification_log": [
+      {"url": "https://www.sakaide-lng.co.jp/service/", "tokens": ["四国電力", "坂出発電所"], "result": "PASS", "note": "confirms gas is supplied as fuel to Shikoku Electric's Sakaide Power Station"},
+      {"url": "https://www.sakaide-lng.co.jp/facility/", "tokens": ["気化器"], "result": "PASS", "note": "confirms the site's own equipment list (vaporizers etc.) with no generator"}
+    ],
+    "gogpt_prior_assessment": "The GOGPT prior 'Sakaide power station' (1,985 MW, 1.65 km) is NOT this terminal's captive power - it is Shikoku Electric Power's own thermal power station, a separate facility from Sakaide LNG Co, fed by gas piped from the terminal as documented above (PowerPlantsSupplied direction, not captive). Info: https://www.meti.go.jp/policy/safety_security/industrial_safety/sangyo/electric/detail/sakaide2.html",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No captive generation at the LNG terminal, confirmed both by an explicit downstream-fuel-supply statement and a full equipment-list page with no generator; the GOGPT prior is the downstream power station the terminal supplies, correctly excluded.",
+    "status_or_other_findings": "Sakaide LNG is undergoing an EIA process (方法書 published Sep-Oct 2025 per Kagawa prefecture; environmental assessment procedure ongoing per the operator's Aug 2025 press release) for a tank and vaporizer expansion - a capacity/expansion finding, not acted on here.",
+    "notes": "PowerPlantsSupplied direction case, consistent with the assignment's power_plants_supplied field ('Sakaide power station')."
+  }
+]

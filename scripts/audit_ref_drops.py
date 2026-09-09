@@ -29,8 +29,14 @@ Classifications:
                       a failed citation per the verification rule; drop stands.
   dropped_unverifiable  bot-blocked AND no usable Wayback snapshot — cannot be
                       machine-verified; left dropped, listed for manual review.
+  dropped_banned_domain  banned/circular source (abarrelfull, gem.wiki) — classified
+                      BEFORE any probe and never restored even when live; declared
+                      in dropped_urls_banned.
+  dropped_bare_domain  a scheme+host homepage — also pre-probe, also never restored:
+                      a homepage can never contain a specific claimed value, so the
+                      drop is correct and only needs declaring.
 
-URLs already declared in the record's `dropped_urls_dead` are skipped — they
+URLs already declared in `dropped_urls_dead` or `dropped_urls_banned` are skipped — they
 carry an explicit disposition and the build GUARD already accepts them.
 
 Redirects are followed; a restored URL is recorded in its FINAL live form (e.g.
@@ -40,6 +46,8 @@ Report-only by default (writes work/ref_drop_audit_<slug>.json + prints a
 summary). With --apply it patches the per-country updates JSONs in place:
   - new_value / ref_urls  := restored URLs (existing-first) + agent's URLs
   - source_notes          += a dated ref-restore note
+  - dropped_urls_banned   := banned/circular-source drops (abarrelfull, gem.wiki);
+                             never restored even when the page is live
   - dropped_urls_dead     := the legitimately-dropped URLs (satisfies the
                              build_review_package ref-drop GUARD)
 Re-run _assemble.py + build_review_package.py afterwards to rebuild the xlsx.
@@ -147,8 +155,70 @@ def is_same_doc_rehosted(dropped_url, kept_urls):
     return False
 
 
+# Domains that can never be a citation, so a dropped one is never restored even
+# when the page is live: abarrelfull (banned outright) and GEM's own publications
+# (circular). Mirrors BANNED_CITATION_DOMAINS in build_review_package.py.
+BANNED_DOMAINS = ("abarrelfull.wikidot.com", "abarrelfull.co.uk",
+                  "gem.wiki", "globalenergymonitor.org")
+
+
+def is_banned_domain(url):
+    return any(d in str(url).lower() for d in BANNED_DOMAINS)
+
+
+def is_bare_domain(url):
+    """True for a scheme+host URL with no path — a homepage, never a citation."""
+    return bool(re.match(r"^https?://[^/\s]+/?$", str(url).strip().rstrip(",;")))
+
+
+# Query parameters a host appends to its OWN url on redirect (SSO/paywall session
+# tokens, analytics). A restored citation must never carry one: the token is
+# per-request, so the stored URL rots immediately and leaks a session identifier.
+_JUNK_QUERY_PARAMS = ("zephr_sso_ott", "utm_source", "utm_medium", "utm_campaign",
+                      "utm_term", "utm_content", "gclid", "fbclid", "cf-view")
+
+
+def canonical_restore_url(original, final_url):
+    """Which form of a live URL to store. A redirect that only ADDS query params to
+    the same path is a session/tracking artifact, not a real relocation — keep the
+    ORIGINAL. A genuine relocation (different host or path) is stored at its target."""
+    def _hostpath(u):
+        u = re.sub(r"^https?://(www\.)?", "", str(u).strip())
+        return u.split("?", 1)[0].split("#", 1)[0].rstrip("/").lower()
+
+    if not final_url or final_url == original:
+        return original
+    if _hostpath(final_url) == _hostpath(original):
+        return original
+    if any(p in str(final_url).lower() for p in _JUNK_QUERY_PARAMS):
+        # relocated AND token-stamped: keep the target, minus the junk params
+        base, _, query = str(final_url).partition("?")
+        keep = [kv for kv in query.split("&")
+                if kv and not any(kv.lower().startswith(p) for p in _JUNK_QUERY_PARAMS)]
+        return base + ("?" + "&".join(keep) if keep else "")
+    return final_url
+
+
 def classify_dropped_url(url, kept_urls, terminal_name):
     """-> dict(url, classification, detail, restore_url|None). Network-active."""
+    if is_banned_domain(url):
+        # Checked BEFORE any liveness probe: restoring a live banned URL would
+        # reintroduce a forbidden citation, which is worse than the drop.
+        return {"url": url, "classification": "dropped_banned_domain",
+                "detail": "banned/circular source — drop is correct, never restore; "
+                          "declare in dropped_urls_banned",
+                "restore_url": None}
+    if is_bare_domain(url):
+        # Also pre-probe: a homepage is never a citation in any lane (it cannot
+        # durably contain a specific claimed value), so restoring one because it
+        # returns 200 would re-introduce exactly what the build's bare-domain guard
+        # exists to stop. The agent that dropped it was right — the drop just needs
+        # declaring. Caught 2026-08-11: an --apply run restored `https://ualng.com/`
+        # into a Coatzacoalcos II Capacity ref.
+        return {"url": url, "classification": "dropped_bare_domain",
+                "detail": "bare domain/homepage — never a citation; drop is correct, "
+                          "never restore (declared with the dead/failed citations)",
+                "restore_url": None}
     if is_same_doc_rehosted(url, kept_urls):
         return {"url": url, "classification": "rehosted_same_doc",
                 "detail": "same document present in new_value at a new host",
@@ -161,7 +231,8 @@ def classify_dropped_url(url, kept_urls, terminal_name):
         ok, reason = verify_url(final_url, tokens, require_all=False)
         if ok:
             return {"url": url, "classification": "restore_live",
-                    "detail": reason, "restore_url": final_url}
+                    "detail": reason,
+                    "restore_url": canonical_restore_url(url, final_url)}
         # 200 but soft-error/bot-wall reasons already went through the wayback
         # fallback inside verify_url; a residual failure here means the page is
         # live but no longer supports the citation.
@@ -175,7 +246,8 @@ def classify_dropped_url(url, kept_urls, terminal_name):
         ok, reason = verify_url(final_url, tokens, require_all=False)
         if ok:
             return {"url": url, "classification": "restore_botblocked_wayback",
-                    "detail": reason, "restore_url": final_url}
+                    "detail": reason,
+                    "restore_url": canonical_restore_url(url, final_url)}
         return {"url": url, "classification": "dropped_unverifiable",
                 "detail": reason, "restore_url": None}
 
@@ -212,7 +284,8 @@ def audit_file(fp, delay=0.5, csv_refs=None):
             continue
         kept_norm = {norm_url(u) for u in kept}
         declared_norm = {norm_url(str(u))
-                         for u in (rec.get("dropped_urls_dead") or [])}
+                         for u in ((rec.get("dropped_urls_dead") or [])
+                                   + (rec.get("dropped_urls_banned") or []))}
         dropped = [u for u in old_urls
                    if norm_url(u) not in kept_norm
                    and norm_url(u) not in declared_norm]
@@ -253,8 +326,16 @@ def apply_restores(findings, stamp):
                 continue
             restores = [d["restore_url"] for d in it["dropped"]
                         if d["classification"] in RESTORE_CLASSES]
+            banned = [d["url"] for d in it["dropped"]
+                      if d["classification"] == "dropped_banned_domain"]
+            if banned:
+                existing_banned = list(rec.get("dropped_urls_banned") or [])
+                rec["dropped_urls_banned"] = existing_banned + [
+                    u for u in banned if u not in existing_banned]
+                touched = True
             dead = [d["url"] for d in it["dropped"]
-                    if d["classification"] not in RESTORE_CLASSES]
+                    if d["classification"] not in RESTORE_CLASSES
+                    and d["classification"] != "dropped_banned_domain"]
             if dead:
                 # explicit disposition for the build GUARD: these old URLs were
                 # verified dead/superseded, their drop is deliberate
@@ -318,7 +399,10 @@ def main():
         d = Path(d)
         slug = d.name
         findings = []
-        for fp in sorted(d.glob("*.updates.json")):
+        # per-country update batches use <slug>.updates.json; captive-power (and
+        # other canonical-layout) staging dirs use staged_updates.json
+        update_files = sorted(d.glob("*.updates.json")) + sorted(d.glob("staged_updates.json"))
+        for fp in update_files:
             findings.extend(audit_file(fp, delay=args.delay, csv_refs=csv_refs))
 
         counts = {}
@@ -331,7 +415,9 @@ def main():
         for f in findings:
             for res in f["dropped"]:
                 if res["classification"] in RESTORE_CLASSES or \
-                        res["classification"] == "dropped_unverifiable":
+                        res["classification"] in ("dropped_unverifiable",
+                                                  "dropped_banned_domain",
+                                                  "dropped_bare_domain"):
                     print(f"  {res['classification']:28s} {f['terminal_name']} | "
                           f"{f['field_name']} | {res['url']}"
                           + (f" -> {res['restore_url']}"

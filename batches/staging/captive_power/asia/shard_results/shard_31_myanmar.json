@@ -1,0 +1,304 @@
+[
+ {
+  "terminal": "Ahlone LNG Terminal",
+  "terminal_id": "T100000130878",
+  "country": "Myanmar",
+  "verdict": "NO",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "No on-site generation at the terminal; the LNG receiving terminal (Dala Township, west bank of the Yangon River) is a stand-alone regas facility linked by a 24.9 km underground gas pipeline to the separate 388 MW Ahlone combined-cycle power plant (2x128.5 MW gas turbines + 1x131 MW steam turbine) on the east bank, whose output is sold to the grid via a 28 km 230kV line.",
+  "fuel_basis": "n/a - direction test, not a fuel-gate case",
+  "confidence": "green",
+  "captive_summary": "This is a classic LNG-to-power direction-test case: the terminal exists solely to pipe regasified gas to the separate Ahlone CCPP, which sells power to EPGE/the grid. No source describes any on-site generation serving the terminal's own regas/pumping load. Design confirmed by TTCL's own ESIA filing and independent trade press.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "TTCL Power Myanmar's ESIA (hosted on Open Development Myanmar) states: \"The Natural Gas Pipeline (24.9 km), which will transfer natural gas (NG) from the LNG Receiving Terminal to the Power Plant, will run through Dala, Seikgyikanaungto, and Ahlone Townships\" -- confirming the terminal and power plant are separate sites linked by pipeline, gas flowing OUT of the terminal. NaturalGasWorld corroborates: the 388 MW facility \"will be attached to a 28-km power line, a 25-km gas pipeline and LNG receiving terminal.\"",
+  "refs": [
+   "https://data.opendevelopmentmyanmar.net/en/agreement/ttcl-power-myanmar-company-limited-tpmc-_esia-for-lng-power-plant-ahlone-in-yangon",
+   "https://www.naturalgasworld.com/thai-ttcl-signs-myanmar-ppa-84984"
+  ],
+  "verification_log": [
+   {
+    "url": "https://data.opendevelopmentmyanmar.net/en/agreement/ttcl-power-myanmar-company-limited-tpmc-_esia-for-lng-power-plant-ahlone-in-yangon",
+    "tokens": [
+     "LNG Receiving Terminal to the Power Plant"
+    ],
+    "result": "PASS",
+    "note": "primary ESIA filing hosted on Open Development Myanmar"
+   },
+   {
+    "url": "https://www.naturalgasworld.com/thai-ttcl-signs-myanmar-ppa-84984",
+    "tokens": [
+     "gas pipeline and LNG receiving terminal"
+    ],
+    "result": "PASS",
+    "note": "independent trade press corroboration"
+   }
+  ],
+  "gogpt_prior_assessment": "GOGPT prior 'Ahlone (Toyo Thai) power station' (509 MW, 1.63 km, gogpt_captive=False) IS the correct downstream CCPP this terminal feeds via the 24.9 km pipeline (matches GEM's own power_plants_supplied='Ahlone CCPP'; TTCL was formerly named Toyo-Thai Corporation). It is a real, already-tracked GOGPT plant -- but it is the terminal's PowerPlantsSupplied relationship, not the terminal's own captive generation.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "Already exists in GOGPT as the correct destination plant, and is not this terminal's captive power (opposite direction relationship).",
+  "status_or_other_findings": "TTCL reported (July 2023, Frontier Myanmar) investor/financing concerns tied to political unrest, consistent with GEM's cancelled status; not acted on here.",
+  "notes": "PowerPlantsSupplied direction-test case: terminal feeds Ahlone CCPP, an already-existing external GOGPT power station. No captive-power finding to stage."
+ },
+ {
+  "terminal": "Kanbauk FSRU",
+  "terminal_id": "T100000130907",
+  "country": "Myanmar",
+  "verdict": "SCREENED",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "No FSRU was ever contracted -- the project never progressed past preliminary engineering/tender.",
+  "fuel_basis": "",
+  "confidence": "green",
+  "captive_summary": "Cancelled-and-never-built screen: as of June 2019 the Total/Siemens consortium had only initiated the FSRU tender and received initial EPC bids, and had not even signed a PPA; as of Feb 2018 only preliminary engineering agreements existed. No FSRU vessel was ever selected, procured, or moored, and no construction occurred before the project stalled. (As-designed, the project would also have failed the direction test regardless -- the FSRU was to supply gas via pipeline to the separate onshore Kanbauk CCPP, which sold power to the grid via new transmission lines -- so even a completed project would likely have been NO, not YES.)",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Thailand Construction News (17/20 June 2019): consortium \"initiating the tender process for the FSRU and receiving initial bids\" from EPC contractors, and \"is yet to even sign a power purchase agreement\" -- 18 months after the January 2018 Notice to Proceed. Enerdata (5 Feb 2018): the 1,230 MW Kanbauk project \"will be built by Total and Siemens\" after having \"signed preliminary engineering works agreements\" only.",
+  "refs": [
+   "https://thailand-construction.com/total-siemens-propose-scaled-back-myanmar-1230-megawatt-kanbauk-lng-to-power-project/",
+   "https://www.enerdata.net/publications/daily-energy-news/myanmar-plans-add-3-gw-new-gas-fired-capacity-2021.html"
+  ],
+  "verification_log": [
+   {
+    "url": "https://thailand-construction.com/total-siemens-propose-scaled-back-myanmar-1230-megawatt-kanbauk-lng-to-power-project/",
+    "tokens": [
+     "tender process"
+    ],
+    "result": "PASS",
+    "note": "confirms FSRU tender/bidding stage only, no PPA signed as of June 2019"
+   },
+   {
+    "url": "https://www.enerdata.net/publications/daily-energy-news/myanmar-plans-add-3-gw-new-gas-fired-capacity-2021.html",
+    "tokens": [
+     "preliminary engineering"
+    ],
+    "result": "PASS",
+    "note": "confirms preliminary-engineering-agreement stage only, Feb 2018"
+   }
+  ],
+  "gogpt_prior_assessment": "No GOGPT prior given. Kanbauk power station (the intended downstream CCPP) is itself a shelved/cancelled GEM power-station record with no generation ever built.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "No generation of any kind was ever built at this site (FSRU or onshore plant); nothing to add.",
+  "status_or_other_findings": "TotalEnergies is widely reported to have withdrawn from Myanmar operations following the 2021 coup, consistent with the project's presumed abandonment (not independently re-verified here beyond the pre-coup tender-stage evidence above).",
+  "notes": "Cancelled-and-never-built screen per SOP; also would have been a PowerPlantsSupplied/direction-test NO even if completed."
+ },
+ {
+  "terminal": "MCV LNG Terminal",
+  "terminal_id": "T100000130882",
+  "country": "Myanmar",
+  "verdict": "INSUFFICIENT",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "No on-site generation confirmed. The CNTIC VPower Energy FSU (converted 1992-built ~126,000-127,452 cbm LNG carrier, ex-Northwest Seaeagle, 272 m, moored at Thilawa Port) is storage-and-transfer only -- it offloads LNG to a separate onshore regasification plant at up to 350 m3/hr; regasification does not occur aboard the vessel.",
+  "fuel_basis": "Not established -- no source documents the FSU's own house-load generator fuel type (gas/BOG vs diesel); this is a separate, undocumented question from the direction-test finding below.",
+  "confidence": "yellow",
+  "captive_summary": "Direction test fails: the terminal's entire purpose is storing and transferring LNG to an onshore regas plant that supplies gas to the external Thanlyin (350 MW) and Thaketa (475 MW) power stations, which sell to the grid via EPGE-style PPAs -- this is the CNTIC/VPower Thilawa-Thaketa LNG-to-power trap flagged in the country brief. No source documents any generation serving the terminal's own load (its house-load generator fuel type is unconfirmed, but the clear, well-sourced direction-test finding is sufficient to answer NO regardless).",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "LNG Prime: the FSU \"will be used to receive and store LNG imports for delivery on demand to an onshore regasification plant\" that offloads \"at rates of up to 350 cubic metres per hour.\" Oil & Gas Journal: \"CNTIC VPower's plants near Yangon include Thaketa (475 Mw), Thanlyin (350 Mw), and Thilawa (1,250 Mw)\" as the destination power stations for the JV's Yangon-area LNG supply chain, matching GEM's own power_plants_supplied field (Thanlyin, Thaketa).",
+  "refs": [
+   "https://lngprime.com/vessels/cntic-vpower-takes-delivery-of-myanmar-lng-fsu/7279/",
+   "https://www.ogj.com/pipelines-transportation/article/14187211/myanmar-lng-to-power-project-takes-fsu-delivery"
+  ],
+  "verification_log": [
+   {
+    "url": "https://lngprime.com/vessels/cntic-vpower-takes-delivery-of-myanmar-lng-fsu/7279/",
+    "tokens": [
+     "regasification plant"
+    ],
+    "result": "PASS",
+    "note": "confirms onshore, not onboard, regasification"
+   },
+   {
+    "url": "https://www.ogj.com/pipelines-transportation/article/14187211/myanmar-lng-to-power-project-takes-fsu-delivery",
+    "tokens": [
+     "Thaketa"
+    ],
+    "result": "PASS",
+    "note": "confirms Thanlyin/Thaketa as destination plants"
+   }
+  ],
+  "gogpt_prior_assessment": "GOGPT prior 'Thilawa (Sumitomo) power station' (1,250 MW, 0.69 km) is a geographic-proximity match only -- MCV Terminal physically sits at Thilawa Port, but it actually feeds Thanlyin and Thaketa (per GEM's own power_plants_supplied field), NOT the Sumitomo-led Thilawa plant. The Sumitomo Thilawa plant is the target of a separate, different consortium's project (see Thilawa LNG Terminal, T100000131065, this same shard). Not this terminal's plant.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "Mismatched GOGPT prior (wrong plant by ownership/consortium, proximity-only match); and regardless, not this terminal's captive power (direction fails).",
+  "status_or_other_findings": "MCV Terminal is GEM's only operating unit in this shard; it took first LNG delivery ~May-June 2020, described as the first use of LNG for power generation in Myanmar.",
+  "notes": "PowerPlantsSupplied direction-test case (Thanlyin, Thaketa); the FSU's own house-load generation type remains undocumented in any source found and is flagged here only as an open question, not as grounds for a different verdict. [ORCHESTRATOR QC 2026-07-31: re-graded NO->INSUFFICIENT. The direction test correctly rules out the external Thanlyin/Thaketa plants, but the FSU's own house-load generation fuel is undocumented in every source found; per the fuel gate (fuel unstated = INSUFFICIENT) and because FSU onboard dual-fuel gensets are the largest YES class, an undocumented FSU cannot carry a documented NO.]"
+ },
+ {
+  "terminal": "Mee Laung Gyaing FSRU",
+  "terminal_id": "T100000130880",
+  "country": "Myanmar",
+  "verdict": "SCREENED",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "No FSRU vessel was ever named or contracted; project stalled at the feasibility-study stage.",
+  "fuel_basis": "",
+  "confidence": "green",
+  "captive_summary": "Cancelled-and-never-built screen: as of January 2020 the $2.57bn Mee Lin Gyaing Electric Power consortium (Supreme Trading, Zhefu Holding, Yunnan Provincial Energy Investment, Union Resources and Engineering) was still at the feasibility-study/ESIA stage, with the initial-phase PPA only \"nearly completed\" and a targeted 500 MW first-power date of end-2022 that never materialized. No FSRU was ever selected or delivered, and no construction started before the project stalled (consistent with GEM's cancelled/4-year-inferred status).",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Thailand Construction News (9 Jan 2020): \"the entire project is expected to take four years to complete\" and \"start-up a 500 MW gas-fired power unit by the end of 2022.\" World-Energy.org (6 Jan 2020): \"Feasibility studies are currently taking place at Mee Laung Gyaing, including the necessary environment and social impact assessments, while soil and water conditions are being tested\" for jetty construction, with the PPA \"nearly completed\" but not yet signed.",
+  "refs": [
+   "https://thailand-construction.com/myanmars-mee-laung-gyaing-lng-project-to-commence-construction-soon/",
+   "https://www.world-energy.org/article/5950.html"
+  ],
+  "verification_log": [
+   {
+    "url": "https://thailand-construction.com/myanmars-mee-laung-gyaing-lng-project-to-commence-construction-soon/",
+    "tokens": [
+     "four years"
+    ],
+    "result": "PASS",
+    "note": "construction timeline never realized"
+   },
+   {
+    "url": "https://www.world-energy.org/article/5950.html",
+    "tokens": [
+     "Mee Laung Gyaing"
+    ],
+    "result": "PASS",
+    "note": "feasibility-stage confirmation, Jan 2020"
+   },
+   {
+    "url": "https://www.power-technology.com/marketdata/power-plant-profile-mee-laung-gyaing-combined-cycle-power-plant-myanmar/",
+    "tokens": [
+     "permitting"
+    ],
+    "result": "FAIL",
+    "note": "HTTP 403, no Wayback snapshot available -- dropped, not used as a citation"
+   }
+  ],
+  "gogpt_prior_assessment": "No GOGPT prior given; no generation of any kind was ever built at this site.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "Project never advanced past feasibility studies; nothing exists to add.",
+  "status_or_other_findings": "",
+  "notes": "Cancelled-and-never-built screen per SOP."
+ },
+ {
+  "terminal": "Rakhine LNG Terminal",
+  "terminal_id": "T100000130905",
+  "country": "Myanmar",
+  "verdict": "NO",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "No on-site generation found. The terminal (FSU/ISO-tank based LNG import and storage on Myanmar's northern Rakhine coastline) exists to supply the separate 150 MW Kyaukphyu (VPower/CNTIC) gas-fired power plant.",
+  "fuel_basis": "n/a - direction test, not a fuel-gate case",
+  "confidence": "green",
+  "captive_summary": "Direction test fails: the JV's own reporting frames the Rakhine LNG import terminal as existing specifically \"to supply the 150-Mw Kyaukpyu natural gas-fired power plant\" -- an external, separate power station. A later (2020) report indicates LNG for Kyaukphyu was actually delivered via ISO tank containers rather than a permanently moored FSU as originally envisioned, but either way the terminal's function is fuel delivery to the external plant, not on-site generation for itself. No source documents any captive generation at the terminal.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Oil & Gas Journal: \"The JV is also building the Rakhine LNG import terminal on Myanmar's northern coastline. It will supply the 150-Mw Kyaukpyu natural gas-fired power plant.\" Thailand Construction News (12 June 2020): describes \"ISO tanks\" (LNG storage containers) being manufactured for delivery to Kyaukphyu, with the project \"likely to be delayed until at least September\" -- confirming the fuel-delivery-only relationship and the absence of any on-site generation.",
+  "refs": [
+   "https://www.ogj.com/pipelines-transportation/article/14187211/myanmar-lng-to-power-project-takes-fsu-delivery",
+   "https://thailand-construction.com/myanmars-delayed-lng-projects-set-to-deliver-first-power-as-government-approves-contract/"
+  ],
+  "verification_log": [
+   {
+    "url": "https://www.ogj.com/pipelines-transportation/article/14187211/myanmar-lng-to-power-project-takes-fsu-delivery",
+    "tokens": [
+     "Rakhine"
+    ],
+    "result": "PASS",
+    "note": "confirms terminal exists to supply Kyaukphyu plant"
+   },
+   {
+    "url": "https://thailand-construction.com/myanmars-delayed-lng-projects-set-to-deliver-first-power-as-government-approves-contract/",
+    "tokens": [
+     "Kyaukphyu"
+    ],
+    "result": "PASS",
+    "note": "confirms ISO-tank delivery model, no on-site generation"
+   }
+  ],
+  "gogpt_prior_assessment": "No GOGPT prior given for this terminal. The intended destination plant (VPower/CNTIC's 150 MW Kyaukphyu plant, US$140m, JV of VPower and CNTIC) reportedly reached partial operation before being wound down/removed amid the Arakan Army conflict in Rakhine State (per Irrawaddy reporting, not independently re-verified here -- page was bot-blocked and not re-checked). Note: GEM also separately tracks an unrelated 'Kyaukphu (PowerChina) power station' record, which appears to be a different project by a different sponsor -- not connected to this LNG terminal.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "Not this terminal's captive power (direction fails); any GOGPT-side record for the Kyaukphyu VPower/CNTIC plant is a separate matter for the downstream power-station tracker, not this terminal.",
+  "status_or_other_findings": "Kyaukphyu plant capacity/status may be volatile post-2021 and amid the ongoing Rakhine conflict; not acted on here.",
+  "notes": "PowerPlantsSupplied direction-test case (Kyaukphyu power station)."
+ },
+ {
+  "terminal": "Sittwe LNG Terminal",
+  "terminal_id": "T100000130702",
+  "country": "Myanmar",
+  "verdict": "SCREENED",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "No design or infrastructure of any kind -- only a stated government-to-government expression of interest.",
+  "fuel_basis": "",
+  "confidence": "green",
+  "captive_summary": "Cancelled-and-never-built screen: in August 2018, India's then-Oil Minister stated interest in Petronet LNG establishing an LNG import terminal at Sittwe, Rakhine State, as part of a broader Hydrocarbon Vision 2030 gas-pipeline concept. No subsequent design study, contract award, EIA, or construction was found in any source -- the project never progressed beyond a stated interest.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Business Standard (Aug 2018): India's Oil Minister stated interest in establishing an LNG import terminal at Sittwe. Offshore Technology: corroborates India's plan to establish an LNG import terminal in Myanmar at Sittwe. No later coverage of any design, contracting, or construction activity was found.",
+  "refs": [
+   "https://www.business-standard.com/article/economy-policy/india-looking-to-set-up-lng-import-terminal-in-myanmar-dharmendra-pradhan-118080300345_1.html",
+   "https://www.offshore-technology.com/news/india-plans-establish-lng-import-terminal-myanmar/"
+  ],
+  "verification_log": [
+   {
+    "url": "https://www.business-standard.com/article/economy-policy/india-looking-to-set-up-lng-import-terminal-in-myanmar-dharmendra-pradhan-118080300345_1.html",
+    "tokens": [
+     "Sittwe"
+    ],
+    "result": "PASS",
+    "note": "bot-blocked live (403), verified via Wayback"
+   },
+   {
+    "url": "https://www.offshore-technology.com/news/india-plans-establish-lng-import-terminal-myanmar/",
+    "tokens": [
+     "Sittwe"
+    ],
+    "result": "PASS",
+    "note": "bot-blocked live (403), verified via Wayback"
+   }
+  ],
+  "gogpt_prior_assessment": "No GOGPT prior given; no downstream power plant or generation of any kind associated with this stated-interest-only project.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "Nothing was ever designed or built.",
+  "status_or_other_findings": "",
+  "notes": "Cancelled-and-never-built screen per SOP -- weakest-developed project in this shard."
+ },
+ {
+  "terminal": "Thilawa LNG Terminal",
+  "terminal_id": "T100000131065",
+  "country": "Myanmar",
+  "verdict": "NO",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "No on-site captive generation. The project's own scope is an integrated \"LNG fuelled thermal power plant and onshore LNG storage/regasification facilities\" -- i.e. the LNG facility supplies regasified gas as primary fuel to the co-located 1,250 MW power plant, whose output is sold to the grid (EPGE) under a 25-year PPA.",
+  "fuel_basis": "n/a - direction test, not a fuel-gate case",
+  "confidence": "green",
+  "captive_summary": "Direction test fails even though the LNG facility and power plant are part of one integrated project: the regasification facility's gas is the \"primary fuel\" feeding a 1,250 MW power plant that sells its output to Myanmar's state offtaker EPGE via a 25-year PPA -- this is generation for sale to the grid, not captive power serving the LNG terminal's own operations. Marubeni/Sumitomo/Mitsui/Eden Group received Notice to Proceed in 2020 targeting first power in 2026, but there have been no updates since ~2021 and the project is presumed cancelled (consistent with GEM's cancelled/4-year-inferred status).",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Sumitomo Corporation press release (2020): scope is to \"build, own and operate a 1,250MW gas-fired thermal power plant... as well as onshore LNG storage/regasification facilities,\" with LNG as \"primary fuel,\" and \"generated power will be sold to the Electric Power Generation Enterprise (EPGE)... over a period of 25 years.\" NS Energy Business corroborates the same EPGE PPA arrangement and integrated LNG-to-power scope.",
+  "refs": [
+   "https://www.sumitomocorp.com/en/jp/news/release/2020/group/13600",
+   "https://www.nsenergybusiness.com/news/marubeni-lng-power-plant-myanmar/"
+  ],
+  "verification_log": [
+   {
+    "url": "https://www.sumitomocorp.com/en/jp/news/release/2020/group/13600",
+    "tokens": [
+     "EPGE"
+    ],
+    "result": "PASS",
+    "note": "primary consortium-member press release"
+   },
+   {
+    "url": "https://www.nsenergybusiness.com/news/marubeni-lng-power-plant-myanmar/",
+    "tokens": [
+     "EPGE"
+    ],
+    "result": "PASS",
+    "note": "bot-blocked live (403), verified via Wayback"
+   }
+  ],
+  "gogpt_prior_assessment": "GOGPT prior 'Thilawa (Sumitomo) power station' (1,250 MW, 4.51 km, gogpt_captive=False) matches exactly on capacity, sponsor (Sumitomo), and location -- this IS the correct downstream power plant this terminal was designed to feed, already correctly tracked in GOGPT as non-captive.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "Already exists in GOGPT as the correct destination plant; not this terminal's captive power (direction fails, and project is presumed cancelled/never built regardless).",
+  "status_or_other_findings": "Notice to Proceed issued 2020, targeted first power 2026, but no public project updates found since ~2021 -- consistent with GEM's cancelled status.",
+  "notes": "PowerPlantsSupplied direction-test case (Thilawa/Sumitomo power station). Same GOGPT plant is also the (mismatched, proximity-only) prior offered for MCV LNG Terminal in this shard -- see that entry's gogpt_prior_assessment."
+ }
+]

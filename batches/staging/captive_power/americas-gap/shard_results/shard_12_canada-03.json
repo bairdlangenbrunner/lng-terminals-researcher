@@ -1,0 +1,269 @@
+[
+  {
+    "terminal": "Prince Rupert LNG Terminal",
+    "terminal_id": "T100000130364",
+    "country": "Canada",
+    "verdict": "YES",
+    "mechanical": "True",
+    "captive_category": "mechanical_drive+power_generation",
+    "hardware_summary": "Gas turbine mechanical-drive compressor trains (aggregate ~540 MW shaft power class) plus on-site gas turbine power generation for facility electrical load, per the federal environmental-assessment project description.",
+    "fuel_basis": "Project description specifies natural gas turbines (feed gas self-consumption) for both compression drive and site power generation; no diesel-only alternative stated.",
+    "confidence": "green",
+    "captive_summary": "Prince Rupert LNG's IAAC \"Summary of Project Description\" documents on-site gas turbine mechanical-drive refrigeration compression (~540 MW class) and separate on-site gas turbine power generation for the plant's own electrical demand \u2014 a fully islanded, self-supplied design typical of large BC LNG export projects with no nearby grid interconnection of adequate capacity.",
+    "electric_mw": "",
+    "mechanical_drive_note": "Gas turbine driven refrigeration compressor trains, aggregate class ~540 MW shaft power, per IAAC project description (exact unit count/model not stated in the document).",
+    "confirmed_how": "IAAC (Impact Assessment Agency of Canada) document p80042/88546E.pdf, \"Summary of Project Description\" for Prince Rupert LNG, explicitly describes gas turbine mechanical-drive compression and on-site power generation; document text contains '540 MW' and 'Mechanical Drive'.",
+    "refs": [
+      "https://www.iaac-aeic.gc.ca/050/documents/p80042/88546E.pdf"
+    ],
+    "verification_log": [
+      {
+        "url": "https://www.iaac-aeic.gc.ca/050/documents/p80042/88546E.pdf",
+        "tokens": [
+          "540 MW",
+          "Mechanical Drive"
+        ],
+        "result": "PASS",
+        "note": "IAAC project description document"
+      }
+    ],
+    "gogpt_prior_assessment": "No GOGPT neighbor prior supplied for this terminal_id in neighbors_raw.json \u2014 none to assess.",
+    "gogpt_candidate": "MAYBE",
+    "gogpt_candidate_basis": "Documented on-site gas turbine generation of plant-scale capacity would ordinarily warrant a GOGPT record, but the project was cancelled pre-construction and no plant was ever built \u2014 defer to reviewer on whether a cancelled-project record is wanted.",
+    "status_or_other_findings": "GEM already shows this unit as cancelled (confirmed substatus) \u2014 consistent with IAAC filing history; no contradicting status information found.",
+    "notes": "Primary-source regulatory filing (federal impact assessment) satisfies the as-designed-captive-power-on-unbuilt-facility rule; this is one of the strongest-documented Canadian cases in the shard."
+  },
+  {
+    "terminal": "Rabaska LNG Terminal",
+    "terminal_id": "T100000130365",
+    "country": "Canada",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "Rabaska's BAPE (Quebec environmental review) filing DC45.pdf lays out the full plant component list \u2014 jetty, tanks, vaporizers, send-out pipeline \u2014 and the electrical-supply rationale, which is a new Hydro-Qu\u00e9bec transmission line/interconnection to the site, not an on-site generating plant. No gas turbines or gensets appear anywhere in the design.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "BAPE dossier document DC45.pdf explicitly discusses Hydro-Qu\u00e9bec ('Hydro-Qu[\u00e9]bec') transmission-line siting to supply the terminal's vaporizers and site load, with no power-generation equipment in the component list.",
+    "refs": [
+      "https://archives.bape.gouv.qc.ca/sections/mandats/Rabaska/documents/DC45.pdf"
+    ],
+    "verification_log": [
+      {
+        "url": "https://archives.bape.gouv.qc.ca/sections/mandats/Rabaska/documents/DC45.pdf",
+        "tokens": [
+          "Hydro-Qu",
+          "vaporisateurs"
+        ],
+        "result": "PASS",
+        "note": "BAPE (Quebec environmental review) filing"
+      }
+    ],
+    "gogpt_prior_assessment": "No GOGPT neighbor prior supplied for this terminal_id in neighbors_raw.json \u2014 none to assess.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No on-site generation exists or was designed; grid-fed via Hydro-Qu\u00e9bec.",
+    "status_or_other_findings": "GEM already shows this as cancelled; consistent with the BAPE-era project having never proceeded to construction.",
+    "notes": "Grid-access-prior confirmed by primary regulatory-hearing document \u2014 a documented negative, not an absence of evidence."
+  },
+  {
+    "terminal": "Skeena LNG Terminal",
+    "terminal_id": "T100000130939",
+    "country": "Canada",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "Skeena LNG (Top Speed Energy) was designed as a grid-connected facility drawing electricity from BC Hydro, per both the developer's own project page and independent reporting \u2014 no on-site gas generation was ever proposed.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Developer site (skeenalng.com/the-project) states power supplied by BC Hydro; corroborated independently by thenarwhal.ca reporting stating electricity supplied by BC Hydro.",
+    "refs": [
+      "https://www.skeenalng.com/the-project",
+      "https://thenarwhal.ca/top-speed-energy-skeena-lng-bc/"
+    ],
+    "verification_log": [
+      {
+        "url": "https://www.skeenalng.com/the-project",
+        "tokens": [
+          "BC Hydro"
+        ],
+        "result": "PASS",
+        "note": "developer project page"
+      },
+      {
+        "url": "https://thenarwhal.ca/top-speed-energy-skeena-lng-bc/",
+        "tokens": [
+          "electricity supplied by BC Hydro"
+        ],
+        "result": "PASS",
+        "note": "independent journalism, corroborating"
+      }
+    ],
+    "gogpt_prior_assessment": "No GOGPT neighbor prior supplied for this terminal_id in neighbors_raw.json \u2014 none to assess.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Grid-fed design; no on-site generation.",
+    "status_or_other_findings": "GEM already shows this as cancelled (inferred, 4y); consistent with findings \u2014 no reactivation signal found.",
+    "notes": "Grid-access prior confirmed with 2 independent sources (developer + press), satisfying green confidence without needing a regulatory filing."
+  },
+  {
+    "terminal": "Stewart Energy LNG Terminal",
+    "terminal_id": "T100000130367",
+    "country": "Canada",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "yellow",
+    "captive_summary": "Stewart Energy's own NEB/CER export-licence application (2014) states the power-supply design was explicitly undecided at time of filing: '250 megawatts... electric drives... gas turbine power generation, or a combination thereof' \u2014 i.e. the applicant was still weighing electric-drive-from-grid vs on-site gas turbines vs a hybrid, and no later document resolving that choice was found before the project was cancelled.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "CER (formerly NEB) REGDOCS filing #2432016, the March 5, 2014 export licence application, contains the operative undecided-design quote naming 250 MW and offering electric drives, gas turbine generation, or a combination as live alternatives.",
+    "refs": [
+      "https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2432016"
+    ],
+    "verification_log": [
+      {
+        "url": "https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2432016",
+        "tokens": [
+          "250 megawatts",
+          "gas turbine"
+        ],
+        "result": "PASS",
+        "note": "CER/NEB export licence application"
+      }
+    ],
+    "gogpt_prior_assessment": "No GOGPT neighbor prior supplied for this terminal_id in neighbors_raw.json \u2014 none to assess.",
+    "gogpt_candidate": "REVIEWER CALL",
+    "gogpt_candidate_basis": "Design was never finalized before cancellation; not enough specificity to say a plant of any given size would have existed.",
+    "status_or_other_findings": "GEM already shows both units (FLNG + onshore T1-T5) as cancelled (inferred, 4y); consistent with the project never progressing past the licence-application stage.",
+    "notes": "Correctly distinguished from a YES: the filing shows the choice was open, not that gas turbines were the selected design \u2014 per brief, an explicitly undecided design study is INSUFFICIENT, not YES or NO."
+  },
+  {
+    "terminal": "Stolt LNGaz Terminal",
+    "terminal_id": "T100000130368",
+    "country": "Canada",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "red",
+    "captive_summary": "research interrupted; needs recovery pass. Earlier work found candidate power-supply sourcing (grid-connection via a new transmission line) but the citation could not be re-verified live (offshore-technology.com 403; no working Wayback snapshot; BAPE documents.htm page 404) before the task deadline.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Not established to citation-passing standard in this pass.",
+    "refs": [],
+    "verification_log": [
+      {
+        "url": "https://www.offshore-technology.com/marketdata/stolt-lngaz-quebec-lng-import-terminal-canada/",
+        "tokens": [
+          "120 kV"
+        ],
+        "result": "FAIL",
+        "note": "HTTP 403, no Wayback snapshot"
+      },
+      {
+        "url": "https://www.bape.gouv.qc.ca/sections/mandats/gaz_naturel_becancour/documents.htm",
+        "tokens": [
+          "120 kV"
+        ],
+        "result": "FAIL",
+        "note": "HTTP 404"
+      }
+    ],
+    "gogpt_prior_assessment": "neighbors_raw.json lists two B\u00e9cancour GOGPT plants near this terminal_id: (1) B\u00e9cancour power station, 412 MW, gogpt_captive=false, gogpt_plant_id 100000405205; (2) B\u00e9cancour cogeneration plant, 550 MW, gogpt_captive=true, gogpt_plant_id 100000405204. Both are third-party regional/industrial-park plants at the B\u00e9cancour industrial complex, not fenceline to the Stolt LNGaz terminal itself \u2014 an industrial-host-trap case, not this terminal's captive power. Recovery pass should find one independent non-gem.wiki info_url for at least one of these two plants to close out this field properly; not completed in this pass.",
+    "gogpt_candidate": "REVIEWER CALL",
+    "gogpt_candidate_basis": "Verdict undetermined pending recovery pass; cannot assess candidacy until captive status is resolved.",
+    "status_or_other_findings": "GEM already shows this as cancelled (inferred, 4y); no contradicting information found.",
+    "notes": "research interrupted; needs recovery pass \u2014 citation verification failed for the grid-connection claim under time pressure; do not treat as a documented NO without a passing source."
+  },
+  {
+    "terminal": "Texada LNG Terminal",
+    "terminal_id": "T100000130369",
+    "country": "Canada",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "red",
+    "captive_summary": "research interrupted; needs recovery pass. Earlier work found the proposal bundled ~300-600 MW of thermal generation with the import terminal, tentatively read as merchant/grid-export power rather than captive load for the terminal's own modest needs, but the citation could not be re-verified live before the task deadline (georgiastrait.org PDF 404).",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Not established to citation-passing standard in this pass.",
+    "refs": [],
+    "verification_log": [
+      {
+        "url": "https://georgiastrait.org/wp-content/uploads/2015/03/2015_03_11_TexadaLNG_ProjectDescription.pdf",
+        "tokens": [
+          "megawatt"
+        ],
+        "result": "FAIL",
+        "note": "HTTP 404"
+      }
+    ],
+    "gogpt_prior_assessment": "No GOGPT neighbor prior supplied for this terminal_id in neighbors_raw.json \u2014 none to assess.",
+    "gogpt_candidate": "REVIEWER CALL",
+    "gogpt_candidate_basis": "Verdict undetermined pending recovery pass; the bundled thermal-plant proposal is a plausible GOGPT candidate in its own right if a working source is recovered, but direction (captive vs merchant export) must be resolved first.",
+    "status_or_other_findings": "GEM already shows this as cancelled (inferred, 4y). Proposal reportedly combined LNG import with a large thermal power component for BC Hydro grid supply/export \u2014 a potential PowerPlantsSupplied-direction case rather than captive \u2014 needs recovery-pass confirmation.",
+    "notes": "research interrupted; needs recovery pass \u2014 do not treat the tentative merchant-power reading as final without a passing citation."
+  },
+  {
+    "terminal": "Triton LNG Export Terminal",
+    "terminal_id": "T100000130370",
+    "country": "Canada",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "",
+    "captive_summary": "Cancelled proposal, site never finalized; no engineering/FEED-level detail of any power-supply design was found in CER/NEB, BC EAO, or IAAC records or in general search.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "",
+    "refs": [],
+    "verification_log": [],
+    "gogpt_prior_assessment": "No GOGPT neighbor prior supplied for this terminal_id in neighbors_raw.json \u2014 none to assess.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No design detail exists to support any power-station record.",
+    "status_or_other_findings": "GEM already shows this as cancelled (confirmed); no other findings.",
+    "notes": "Screen criterion: cancelled-and-never-designed \u2014 no regulatory filing with engineering detail located despite checking CER REGDOCS, BC EAO, and IAAC."
+  },
+  {
+    "terminal": "WCC LNG Terminal",
+    "terminal_id": "T100000130372",
+    "country": "Canada",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "red",
+    "captive_summary": "research interrupted; needs recovery pass. A BC EAO Public Consultation Report was located and read in full, containing the quote 'current base case is on-site electrical generation', which would support a YES \u2014 but the live document URL could not be re-confirmed/re-verified before the task deadline, so this is not being staged as a final verdict.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Not established to citation-passing standard in this pass \u2014 a BC EAO Public Consultation Report PDF was fetched and read (36 pages) and contained the operative quote, but the current live URL for that document was not successfully re-verified via url_verifier.py.",
+    "refs": [],
+    "verification_log": [
+      {
+        "url": "https://projects.eao.gov.bc.ca/api/document/58c5343aaaecd9001b8b46b3/fetch",
+        "tokens": [
+          "on-site electrical generation"
+        ],
+        "result": "FAIL",
+        "note": "HTTP 404 \u2014 URL likely incorrect/stale; correct EAO document URL needs to be re-located"
+      }
+    ],
+    "gogpt_prior_assessment": "No GOGPT neighbor prior supplied for this terminal_id in neighbors_raw.json \u2014 none to assess.",
+    "gogpt_candidate": "REVIEWER CALL",
+    "gogpt_candidate_basis": "Strong preliminary evidence of on-site generation, but not yet citation-confirmed; recovery pass should locate the correct BC EAO project page (search projects.eao.gov.bc.ca for 'WCC LNG') and re-verify.",
+    "status_or_other_findings": "GEM already shows this as cancelled (confirmed); no contradicting information found.",
+    "notes": "research interrupted; needs recovery pass \u2014 the strongest lead in the shard for a YES, but do not stage as YES without a passing citation. Recovery pass should re-fetch the WCC LNG BC EAO project page directly (projects.eao.gov.bc.ca) rather than reusing a locally-cached document-API URL."
+  }
+]

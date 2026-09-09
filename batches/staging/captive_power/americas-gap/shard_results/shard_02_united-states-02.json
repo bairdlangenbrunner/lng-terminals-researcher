@@ -1,0 +1,233 @@
+[
+  {
+    "terminal": "Beacon Port LNG Terminal",
+    "terminal_id": "T100000130844",
+    "country": "United States",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "red",
+    "captive_summary": "Beacon Port was a proposed offshore deepwater-port LNG import terminal (concrete gravity-based storage tanks) roughly 45-56 miles off the Louisiana/Texas coast (Gulf of Mexico lease blocks High Island Area 27 / West Cameron 167). A Coast Guard/MARAD draft EIS described the platform-level concept design, but ConocoPhillips told USCG/MARAD in November 2006 it no longer had a business need and withdrew before a Final EIS/Record of Decision. No source found specifies how the isolated platform would have generated its own electric power.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Oil & Gas Journal (2005) describes the proposed design: two concrete gravity-based LNG storage tanks, regasification equipment, docking platforms, a separate crew/equipment platform, and ~46 miles of new gas transmission pipeline, sized for 1.5 Bcf/d. MARAD's list of withdrawn/cancelled deepwater-port applications (Wayback-verified) confirms Beacon Port was withdrawn before a Record of Decision. Neither source, nor any other found, documents the platform's own power-generation arrangement (fuel type, turbine/genset spec, or grid tie of any kind, which is moot 45+ miles offshore).",
+    "refs": [
+      "https://www.ogj.com/general-interest/companies/article/17243045/conocophillips-plans-gulf-lng-terminal",
+      "https://www.maritime.dot.gov/ports/deepwater-ports-and-licensing/withdrawn-cancelled-and-disapproved-applications"
+    ],
+    "verification_log": [
+      {"url": "https://www.ogj.com/general-interest/companies/article/17243045/conocophillips-plans-gulf-lng-terminal", "tokens": ["Beacon Port"], "result": "PASS", "note": "OK"},
+      {"url": "https://www.maritime.dot.gov/ports/deepwater-ports-and-licensing/withdrawn-cancelled-and-disapproved-applications", "tokens": ["Beacon"], "result": "PASS", "note": "bot-blocked live (HTTP 403); value verified via Wayback snapshot 20260421133143"}
+    ],
+    "gogpt_prior_assessment": "Two GOGPT plants sit within 30km of the site coordinates but neither is related to this cancelled terminal: Sabine Pass LNG Terminal power station (gogpt_plant_id 100001063737, 16.97km, 1665.6 MW, captive=true) is captive to the real, separate, operating Sabine Pass LNG terminal; Motiva Enterprises Port Arthur Refinery power station (gogpt_plant_id 100000402497, 28.06km, 810 MW, captive=true) is captive to Motiva's refinery. Info: https://www.ogj.com/general-interest/companies/article/17243045/conocophillips-plans-gulf-lng-terminal (background on the actual, unrelated Sabine Pass LNG project in the same lease area).",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No generating plant was ever built at this site (project cancelled 2006, pre-construction); the two nearby GOGPT records belong to other, unrelated facilities.",
+    "status_or_other_findings": "Confirms GEM's cancelled/confirmed status: ConocoPhillips cited no business need and withdrew the deepwater-port license application in November 2006.",
+    "notes": "Isolated ~45-56-mile offshore GBS platform with no possible grid connection -- if built, on-site generation would have been a practical necessity, but no source documents the fuel type or existence of specific generating equipment, so this is not elevated beyond INSUFFICIENT (no assumed-positive, matching the no-assumed-negative rule in reverse)."
+  },
+  {
+    "terminal": "Blue Marlin Offshore Port",
+    "terminal_id": "T100000130993",
+    "country": "United States",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "Blue Marlin Offshore Port is a proposed crude-oil deepwater export port (Energy Transfer) roughly 100 miles off Johnson Bayou, Cameron Parish, Louisiana, built around two single-point-mooring buoys to load VLCCs with crude oil sourced from Energy Transfer's existing storage at Nederland, Texas. It is not an LNG facility of any kind -- this GEM record is a scope error.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "RBN Energy: describes Blue Marlin (BMOP) as an Energy Transfer deepwater crude-oil export project competing with other Gulf Coast crude VLCC terminals, fed from Nederland, TX storage. East Daley Analytics: groups Blue Marlin Offshore Port among the Gulf Coast's proposed 'offshore crude oil export' terminals and discusses its permitting status alongside the other crude projects. No source found describes any LNG, natural gas liquefaction, or regasification function at this site.",
+    "refs": [
+      "https://rbnenergy.com/blue-marlin-offshore-port-stays-in-the-export-race-with-a-little-help-from-totalenergies",
+      "https://eastdaley.com/crude-oil-edge/fate-of-offshore-terminals-to-be-determined"
+    ],
+    "verification_log": [
+      {"url": "https://rbnenergy.com/blue-marlin-offshore-port-stays-in-the-export-race-with-a-little-help-from-totalenergies", "tokens": ["crude oil"], "result": "PASS", "note": "bot-blocked live (HTTP 403); value verified via Wayback snapshot 20250910043930"},
+      {"url": "https://eastdaley.com/crude-oil-edge/fate-of-offshore-terminals-to-be-determined", "tokens": ["crude oil", "Blue Marlin"], "result": "PASS", "note": "OK"},
+      {"url": "https://bluemarlinport.com/the-project/", "tokens": ["crude oil"], "result": "FAIL", "note": "HTTP 000 -- site unreachable via verifier (SSL/DNS), not cited"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT plants within 30km per the neighbor file (no entries for this terminal_id).",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Crude-oil loading facility, not a gas power station and not an LNG terminal at all -- scope error, not a captive-power finding.",
+    "status_or_other_findings": "",
+    "notes": "SCREENED on scope error: this is a crude-oil VLCC export deepwater port (Energy Transfer / TotalEnergies), not an LNG terminal. Flag for the orchestrator/dataset maintainers -- this record likely should not be carried as an LNG terminal at all; no captive-power question applies to it."
+  },
+  {
+    "terminal": "Bluewater Texas (BWTX) Terminal",
+    "terminal_id": "T100000130739",
+    "country": "United States",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "Bluewater Texas (BWTX) Terminal is a proposed crude-oil deepwater export port -- a 50/50 Phillips 66 / Trafigura joint venture -- roughly 39 km east of the Port of Corpus Christi entrance, built around two offshore single-point-mooring buoys and an operations facility on Harbor Island. It is not an LNG facility -- this GEM record is a scope error.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Ship Technology (offshore-technology.com stable, Wayback-verified): 'Bluewater Texas Terminals (BWTX) is a proposed offshore deepwater port in Texas, US, for exporting crude oil to global markets... capable of loading rates of up to approximately 80,000 barrels per hour (bph)... VLCC.' Port of Corpus Christi: 'provide safe and environmentally friendly infrastructure for the increasing exports of responsibly produced U.S. crude oil.' No source found describes any LNG function.",
+    "refs": [
+      "https://www.ship-technology.com/projects/bluewater-texas-terminals-deepwater-port-texas/",
+      "https://portofcc.com/tag/bluewater-texas-terminals/"
+    ],
+    "verification_log": [
+      {"url": "https://www.ship-technology.com/projects/bluewater-texas-terminals-deepwater-port-texas/", "tokens": ["crude oil", "VLCC"], "result": "PASS", "note": "bot-blocked live (HTTP 403); value verified via Wayback snapshot 20260512032102"},
+      {"url": "https://portofcc.com/tag/bluewater-texas-terminals/", "tokens": ["crude", "Bluewater"], "result": "PASS", "note": "OK"},
+      {"url": "https://oilandgaswatch.org/pipeline/4012", "tokens": ["crude", "Bluewater"], "result": "FAIL", "note": "missing expected content, not cited"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT plants within 30km per the neighbor file (no entries for this terminal_id).",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Crude-oil loading facility, not a gas power station and not an LNG terminal at all -- scope error, not a captive-power finding.",
+    "status_or_other_findings": "",
+    "notes": "SCREENED on scope error: this is a crude-oil VLCC export deepwater port (Phillips 66 / Trafigura), not an LNG terminal. Same scope-error class as Blue Marlin Offshore Port in this shard -- flag both for the orchestrator/dataset maintainers."
+  },
+  {
+    "terminal": "Bradwood Landing LNG Terminal",
+    "terminal_id": "T100000130635",
+    "country": "United States",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "red",
+    "captive_summary": "Bradwood Landing was a fully FERC-reviewed onshore LNG import terminal on the Columbia River, Clatsop County, Oregon (single marine berth, two 9%-nickel-steel/reinforced-concrete storage tanks, 1.3 Bcf/d sendout, 36.3-mile pipeline to Kelso, WA). FERC issued a Final EIS (Aug 2007) and approved the project (Sept 2008) after a 3.5-year review with 109 mitigation conditions. The project was suspended for financing/permitting-delay reasons in May 2010 (developer NorthernStar Natural Gas filed for bankruptcy the next day), not for lack of a completed design. No source found documents the terminal's own electric-power supply arrangement (grid interconnection vs on-site generation, fuel type).",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Oil & Gas Journal: FERC approved the Pacific Northwest's first LNG terminal after a 3.5-year review, with 109 required mitigation measures. Offshore-technology.com (Wayback-verified) and The World Link (Astoria-area paper) corroborate the design (marine berth, two tanks, sendout pipeline) and the May 2010 suspension / bankruptcy filing. FERC's own FEIS docket landing page (bot-blocked live, Wayback-verified) is where the underlying engineering description -- including any power-supply section -- would live, but I could not access or search its full text within this pass's tool budget.",
+    "refs": [
+      "https://www.ferc.gov/final-environmental-impact-statements-bradwood-landing-lng-project",
+      "https://www.ogj.com/pipelines-transportation/lng/article/17268336/ferc-approves-lng-project-on-columbia-river-after-35-year-review",
+      "https://theworldlink.com/news/local/feds-ok-bradwood-landing-lng-on-columbia/article_54fa3318-2e6b-5ccd-918b-6426168cfe62.html"
+    ],
+    "verification_log": [
+      {"url": "https://www.ferc.gov/final-environmental-impact-statements-bradwood-landing-lng-project", "tokens": ["Bradwood"], "result": "PASS", "note": "bot-blocked live (HTTP 403); value verified via Wayback snapshot 20250422002802"},
+      {"url": "https://www.ogj.com/pipelines-transportation/lng/article/17268336/ferc-approves-lng-project-on-columbia-river-after-35-year-review", "tokens": ["Bradwood"], "result": "PASS", "note": "OK"},
+      {"url": "https://theworldlink.com/news/local/feds-ok-bradwood-landing-lng-on-columbia/article_54fa3318-2e6b-5ccd-918b-6426168cfe62.html", "tokens": ["Bradwood"], "result": "PASS", "note": "OK"},
+      {"url": "https://www.offshore-technology.com/projects/bradwood-lng/", "tokens": ["Bradwood"], "result": "PASS", "note": "bot-blocked live (HTTP 403); value verified via Wayback snapshot 20260121222707; not cited above, redundant with theworldlink/ogj"}
+    ],
+    "gogpt_prior_assessment": "Two unrelated GOGPT merchant plants sit ~20.6km away: Beaver power station (gogpt_plant_id 100000402205, 586 MW, captive=false) and Port Westward power station (gogpt_plant_id 100000402208, 483 MW, captive=false). Both are pre-existing Pacific Northwest utility gas plants with no connection to the never-built LNG terminal. Info: https://www.ogj.com/pipelines-transportation/lng/article/17268336/ferc-approves-lng-project-on-columbia-river-after-35-year-review (confirms these are independent regional generation, unrelated to Bradwood Landing's own design).",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Terminal was never built; the nearby GOGPT plants are unrelated, pre-existing, non-captive utility generation serving the regional grid.",
+    "status_or_other_findings": "Confirms GEM's cancelled status: FERC certificate obtained 2008 (3.5-year review, 109 mitigation conditions), but the project was suspended in May 2010 for financing/permitting-delay reasons and the developer (NorthernStar Natural Gas) filed for bankruptcy the following day.",
+    "notes": "The site sits in a Pacific NW corridor with existing grid infrastructure (two merchant gas plants within ~21km), making conventional grid-fed electric supply plausible for an onshore import terminal of this era -- but that is inference from the grid-access prior, not a documented finding, so this stays INSUFFICIENT rather than being elevated to a documented NO."
+  },
+  {
+    "terminal": "Broadwater FSRU",
+    "terminal_id": "T100000130646",
+    "country": "United States",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "red",
+    "captive_summary": "Broadwater was a proposed newbuild FSRU (1,215 ft x 200 ft, ~350,000 m3 storage) moored via a yoke mooring system roughly 9 miles off Long Island in New York State waters of Long Island Sound, with a FERC Final EIS (Jan 2008) and a Coast Guard Waterways Suitability Report. The U.S. Commerce Department rejected the project in April 2009 on Coastal Zone Management Act / scenic-value grounds before construction or vessel selection. No source found specifies the FSRU's onboard power-generation equipment or fuel (diesel vs gas/dual-fuel).",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "FERC's Federal Register notice of the Final EIS (govinfo.gov, verified) describes the design in detail -- 350,000 m3 storage, berthing for carriers up to 250,000 m3, the yoke mooring system, ~21.7 miles of 30-inch pipeline, onshore facilities at Greenport/Port Jefferson -- but contains no power-plant description. Professional Mariner's rejection coverage gives vessel dimensions (1,215 ft x 200 ft, 80 ft freeboard, 90 ft operating depth) and notes seawater intake used partly 'for ballast, power generation and other uses,' but names no prime mover or fuel type. No turbine-vendor release or technical paper was found, consistent with the vessel never being selected/built before the 2009 rejection.",
+    "refs": [
+      "https://cms.ferc.gov/final-environmental-impact-statements-broadwater-lng-project",
+      "https://www.govinfo.gov/content/pkg/FR-2008-01-18/pdf/E8-865.pdf",
+      "https://professionalmariner.com/new-york-rejects-proposal-for-floating-lng-terminal-on-long-island-sound/"
+    ],
+    "verification_log": [
+      {"url": "https://cms.ferc.gov/final-environmental-impact-statements-broadwater-lng-project", "tokens": ["Broadwater"], "result": "PASS", "note": "bot-blocked live (HTTP 403); value verified via Wayback snapshot 20250707004645"},
+      {"url": "https://www.govinfo.gov/content/pkg/FR-2008-01-18/pdf/E8-865.pdf", "tokens": ["350,000 cubic meters"], "result": "PASS", "note": "OK; earlier attempt with token 'yoke mooring' FAILed (pdftotext layout uses 'YMS' near that point), retried with a phrase that is verbatim in the text"},
+      {"url": "https://professionalmariner.com/new-york-rejects-proposal-for-floating-lng-terminal-on-long-island-sound/", "tokens": ["Broadwater"], "result": "PASS", "note": "OK"}
+    ],
+    "gogpt_prior_assessment": "Two unrelated GOGPT plants sit ~15km away: Shoreham power plant (gogpt_plant_id 100000409237, 52.9 MW, captive=false) and Wading River power station (gogpt_plant_id 100000409276, 238.5 MW, captive=false). Both are pre-existing onshore Long Island utility plants with no connection to the rejected offshore FSRU. Info: https://professionalmariner.com/new-york-rejects-proposal-for-floating-lng-terminal-on-long-island-sound/ (confirms the project's location and rejection, independent of these onshore plants).",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "FSRU never built or selected; nearby GOGPT plants are unrelated onshore Long Island utility generation, not part of the rejected offshore project.",
+    "status_or_other_findings": "Confirms GEM's cancelled status: FERC Final EIS issued Jan 2008, but the U.S. Department of Commerce rejected the project in April 2009 under the Coastal Zone Management Act following New York State's objection on scenic/coastal grounds.",
+    "notes": "The FSRU-onboard convention (a documented onboard genset = YES) would apply here if a specific vessel's power-generation fuel had been published, but no such spec exists in the public record because Broadwater never reached vessel selection/construction before its 2009 rejection -- genuine INSUFFICIENT, not an assumed NO."
+  },
+  {
+    "terminal": "CE FLNG Terminal",
+    "terminal_id": "T100000130213",
+    "country": "United States",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "CE FLNG was a proposed small self-propelled FLNG export vessel to be moored on the river near Baptiste Collette Bayou, Plaquemines Parish, Louisiana. As of the last public status update found (September 2014), the project remained in FERC pre-filing (Docket PF13-11), awaiting a US Customs and Border Protection Jones Act ruling and restructuring to align with DOE export-authorization processes, with a formal FERC application still not filed (targeted for May 2015). No subsequent design/FEED-level publication was found -- treated as a cancelled proposal that never reached a published engineering design.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "LNG Industry's September 2014 update on FERC docket PF13-11 is the most detailed public status found: still in pre-filing, a formal application was targeted for May 2015, and startup was projected for Q1 2019 -- none of which materialized in any later reporting found. No equipment or power-generation specification was ever published for the vessel.",
+    "refs": [
+      "https://www.lngindustry.com/floating-lng/02092014/ce-flng-updates-ferc-on-floating-lng-project-1318/"
+    ],
+    "verification_log": [
+      {"url": "https://www.lngindustry.com/floating-lng/02092014/ce-flng-updates-ferc-on-floating-lng-project-1318/", "tokens": ["CE FLNG"], "result": "PASS", "note": "OK"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT plants within 30km per the neighbor file (no entries for this terminal_id).",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Project never reached a built or fully designed state with any generating plant; still in FERC pre-filing when public reporting on it stops.",
+    "status_or_other_findings": "Confirms GEM's cancelled status: stalled in FERC pre-filing (PF13-11) with no formal application found to have ever been filed.",
+    "notes": ""
+  },
+  {
+    "terminal": "Calais LNG Terminal",
+    "terminal_id": "T100000130836",
+    "country": "United States",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "Calais LNG was a proposed onshore LNG import terminal (three storage tanks, ~1 Bcf/d sendout) and 20-mile pipeline on the St. Croix River in Calais, Washington County, Maine. It never advanced past FERC's Notice of Intent to prepare an EIS (Nov 2008 / supplemental June 2009) -- no draft or final EIS was ever completed. Financing partner GS Power Holdings withdrew in 2010 and FERC dismissed the application without prejudice in 2012. No engineering-level design, let alone a power-supply spec, was ever published.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Bangor Daily News (2016): FERC's Calais LNG application 'was dismissed without prejudice by FERC in 2012,' grouped with Downeast LNG as having made 'essentially no progress' toward completing an application over a multi-year span -- i.e. the project never reached the EIS stage where an engineering design would be documented. Natural Gas Intel and the Federal Register NOI filings (Nov 2008, June 2009) confirm the project stalled at the pre-EIS scoping stage.",
+    "refs": [
+      "https://www.bangordailynews.com/2016/09/08/business/last-of-lng-import-terminals-proposed-in-maine-dismissed-by-feds/",
+      "https://naturalgasintel.com/news/coast-guard-maine-waters-suitable-for-calais-lng/"
+    ],
+    "verification_log": [
+      {"url": "https://www.bangordailynews.com/2016/09/08/business/last-of-lng-import-terminals-proposed-in-maine-dismissed-by-feds/", "tokens": ["Calais", "dismissed"], "result": "PASS", "note": "OK"},
+      {"url": "https://naturalgasintel.com/news/coast-guard-maine-waters-suitable-for-calais-lng/", "tokens": ["Calais"], "result": "PASS", "note": "OK"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT plants within 30km per the neighbor file (no entries for this terminal_id).",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Never built; no engineering design was ever published for this site.",
+    "status_or_other_findings": "Confirms GEM's cancelled status: financing partner withdrew in 2010, FERC formally dismissed the application in 2012 without an EIS ever being completed.",
+    "notes": ""
+  },
+  {
+    "terminal": "Calhoun LNG Terminal",
+    "terminal_id": "T100000130637",
+    "country": "United States",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "red",
+    "captive_summary": "Calhoun LNG was a FERC-certificated (Final EIS Aug 2007, approval Sept 2007) onshore LNG import terminal at Port Lavaca/Point Comfort, Texas, on the Matagorda Ship Channel -- two full-containment storage tanks (5.7 MMcf each), ~1 Bcf/d regasification, and a 27-mile, 36-inch Point Comfort pipeline. The developer (Gulf Coast LNG Partners / KOGAS Canada / LG International / Port Lavaca LNG Services) filed with FERC in 2012 to abandon the project. No source found documents the terminal's own electric-power arrangement (grid tie vs on-site generation, fuel type).",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Oil & Gas Journal: FERC gave final approval for the Calhoun LNG project in September 2007, requiring commencement of service within 5 years. Offshore-technology.com (Wayback-verified) corroborates the storage/pipeline design (two 5.7 MMcf tanks, 1 Bcf/d capacity, 120 vessel calls/yr). Neither source, nor FERC's own FEIS docket landing page (bot-blocked live, Wayback-verified), addresses power supply in the sections I could access; the 2012 abandonment filing is confirmed but its text was not accessible to check for a power-supply mention.",
+    "refs": [
+      "https://www.ferc.gov/final-environmental-impact-statements-calhoun-lng-terminal-and-pipeline-project",
+      "https://www.ogj.com/pipelines-transportation/article/17285886/ferc-gives-final-approval-for-calhoun-lng-project",
+      "https://www.offshore-technology.com/projects/calhounlng/"
+    ],
+    "verification_log": [
+      {"url": "https://www.ferc.gov/final-environmental-impact-statements-calhoun-lng-terminal-and-pipeline-project", "tokens": ["Calhoun"], "result": "PASS", "note": "bot-blocked live (HTTP 403); value verified via Wayback snapshot 20250422002749"},
+      {"url": "https://www.ogj.com/pipelines-transportation/article/17285886/ferc-gives-final-approval-for-calhoun-lng-project", "tokens": ["Calhoun"], "result": "PASS", "note": "OK"},
+      {"url": "https://www.offshore-technology.com/projects/calhounlng/", "tokens": ["Calhoun"], "result": "PASS", "note": "bot-blocked live (HTTP 403); value verified via Wayback snapshot 20260210064320"}
+    ],
+    "gogpt_prior_assessment": "Two unrelated GOGPT merchant plants sit within 10km: Port Comfort power station (gogpt_plant_id 100000402197, 8.92km, 122 MW, 2 units, captive=false) and CFB power plant (gogpt_plant_id 100000401959, 9.60km, 310 MW, 2 units, captive=false). Point Comfort/Port Lavaca is a dense petrochemical/aluminum-smelter industrial corridor (Alcoa, Formosa Plastics) -- these plants are pre-existing industrial-corridor generation, not connected to the never-built LNG terminal. Info: https://www.ogj.com/pipelines-transportation/article/17285886/ferc-gives-final-approval-for-calhoun-lng-project (confirms Calhoun LNG's own approval and design, independent of the corridor's existing power stations).",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Terminal never built (abandoned 2012); nearby GOGPT plants belong to the existing Point Comfort/Port Lavaca industrial corridor, not the LNG project.",
+    "status_or_other_findings": "Confirms GEM's cancelled status: FERC certificate obtained September 2007 (5-year service-commencement requirement), terminal abandoned via a 2012 FERC filing.",
+    "notes": "Point Comfort/Port Lavaca is a dense, grid-connected industrial corridor (two merchant gas plants within 10km serving the area's aluminum/petrochemical plants), making conventional grid-fed electric supply plausible for this onshore import terminal -- but that is inference from the grid-access prior, not a documented finding, so this stays INSUFFICIENT rather than a documented NO."
+  }
+]

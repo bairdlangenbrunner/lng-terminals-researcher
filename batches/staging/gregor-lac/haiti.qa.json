@@ -1,0 +1,22 @@
+[
+  {
+    "category": "citation_health",
+    "terminal_id": "T100000130665",
+    "unit_id": "G100002066500",
+    "terminal_name": "Maurice Bonnefil LNG Terminal",
+    "issue": "Exhaustive-tier re-verify: the five existing gasener.com URLs on this row (FacilityType [ref], Owner [ref], ConstructionDate [ref], Location [ref], Cost [ref]) could not be re-verified — the domain resolves and completes a TLS handshake but presents an EXPIRED certificate, which both curl and url_verifier.py's fetch reject, and both the smalllngimportterminal.html page and the Project_Summary PDF returned connection failures (HTTP 000) rather than a clean 404/DNS failure. This is a bot-block/technical-fault pattern (site is live), not proven-dead, so none of these URLs were dropped or flagged as dead-drops.",
+    "severity": "low",
+    "suggested_action": "Re-attempt verification once gasener.com's certificate is renewed, or manually browser-check; do not drop these citations on the strength of this pass alone.",
+    "researcher_initials": "AI-draft"
+  },
+  {
+    "category": "dormant_revival_watch",
+    "terminal_id": "T100000130665",
+    "unit_id": "G100002066500",
+    "terminal_name": "Maurice Bonnefil LNG Terminal",
+    "issue": "Revival check (dormant_revival_watch, cancelled 2018, 8 years dead) found no evidence of any new sponsor or project at this site or elsewhere in Haiti. Web search (English + French, Aug 2026) confirms Haiti still has no operating LNG import infrastructure; IEA's Haiti natural-gas page states no natural gas was imported as of 2023 (page itself could not be cited — HTTP 403, no Wayback fallback). No genuinely different sponsor/design proposal found.",
+    "severity": "low",
+    "suggested_action": "No action — status remains correctly cancelled. Re-check on next sweep per standard dormancy cadence.",
+    "researcher_initials": "AI-draft"
+  }
+]

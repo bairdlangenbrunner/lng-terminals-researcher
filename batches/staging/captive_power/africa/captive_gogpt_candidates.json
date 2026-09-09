@@ -1,0 +1,786 @@
+[
+ {
+  "terminal": "Arzew-Bethioua LNG Terminal",
+  "terminal_id": "T100000130243",
+  "gogpt_candidate": "DO NOT ADD",
+  "electric_mw": "",
+  "confidence": "green",
+  "basis": "Our own finding is mechanical-drive shaft power only (no generator/nameplate MWe identified) - GOGPT tracks electricity-generating plants, and mechanical drive has no MWe to record.",
+  "basis [ref]": [
+   "https://file05.erui.com/group1/M00/00/BF/rBFIw2Rut5yAEweyAAPfogTObfs042.pdf"
+  ],
+  "mechanical_drive_note": "Sourced tender does not disclose turbine model or MW. GL3Z (single-train APCI/Chiyoda-Saipem design, commissioned 2013) is industry-standard gas-turbine-driven refrigeration-compressor design for this plant class, but no shaft-power figure is documented in the cited tender itself."
+ },
+ {
+  "terminal": "Skikda LNG Terminal",
+  "terminal_id": "T100000130244",
+  "gogpt_candidate": "DO NOT ADD",
+  "electric_mw": "",
+  "confidence": "green",
+  "basis": "Mechanical-drive shaft power only (no generator/nameplate MWe identified) - not a GOGPT-trackable generating plant.",
+  "basis [ref]": [
+   "https://rhinotenders.com/tenders/tender/acquisition-d-un-rotor-complet-hp-bp-pour-turbine-a-gaz-ge-ms5002d-zasqr",
+   "https://rhinotenders.com/tenders/tender/acquisition-d-un-rotor-complet-pour-la-turbine-a-gaz-de-marque-ge-ms7001e-kyngk"
+  ],
+  "mechanical_drive_note": "MS5002D (GE Frame 5-class) and MS7001EA/DLN-1 (GE Frame 7EA-class) turbines identified by model in Sonatrach's own rotor-overhaul tenders for the GL1K complex; no MW/shaft-power figure disclosed in the tenders themselves. These frame sizes are standard mechanical-drive turbines for LNG refrigeration-compressor trains of this vintage."
+ },
+ {
+  "terminal": "Angola LNG Terminal",
+  "terminal_id": "T100000130245",
+  "gogpt_candidate": "DO NOT ADD",
+  "electric_mw": "",
+  "confidence": "green",
+  "basis": "Unchanged: the compression-train gas turbines are shaft-power (mechanical drive) only — zero MWe generated — so there is no citable generating nameplate to add to GOGPT for the terminal's own captive equipment; the nearby Soyo power station is a separate, already-tracked generating asset.",
+  "basis [ref]": [
+   "https://www.ge.com/news/press-releases/angola-lng-plant-ensuring-gas-supply-through-ge-service-agreement",
+   "https://www.offshore-energy.biz/angola-lng-contract-goes-to-ge/"
+  ],
+  "mechanical_drive_note": "Two GE gas turbine-driven compression trains (plus 'additional plant equipment' per the 2012 CSA) — model, individual MW/hp rating not disclosed in either source found."
+ },
+ {
+  "terminal": "New Fortress Angola LNG Terminal",
+  "terminal_id": "T100000130823",
+  "gogpt_candidate": "DO NOT ADD",
+  "electric_mw": "",
+  "confidence": "yellow",
+  "basis": "Project never reached a siting or design stage; no generating asset was ever proposed at this site specifically (the MOU's own stated purpose was gas-to-power supply to existing/future Angolan generation, not captive generation for the terminal).",
+  "basis [ref]": [
+   "https://www.offshore-energy.biz/new-fortress-to-develop-lng-to-power-infrastructure-in-angola/"
+  ],
+  "mechanical_drive_note": ""
+ },
+ {
+  "terminal": "Benin FSRU",
+  "terminal_id": "T100000130668",
+  "gogpt_candidate": "DO NOT ADD",
+  "electric_mw": "",
+  "confidence": "green",
+  "basis": "Not a gas power station at this site at all - the terminal's role was gas supply outward to Maria Gleta, not on-site generation.",
+  "basis [ref]": [
+   "https://totalenergies.com/media/news/press-releases/total-will-develop-lng-market-benin",
+   "https://sofregaz.fr/news/projects/fsru-benin/"
+  ],
+  "mechanical_drive_note": ""
+ },
+ {
+  "terminal": "Cotonou FSRU",
+  "terminal_id": "T100000130246",
+  "gogpt_candidate": "DO NOT ADD",
+  "electric_mw": "",
+  "confidence": "green",
+  "basis": "Never designed to generation-equipment level; screened at feasibility-only stage.",
+  "basis [ref]": [
+   "https://www.offshore-mag.com/business-briefs/company-news/article/16785313/socar-gasol-team-for-benin-fsru"
+  ],
+  "mechanical_drive_note": ""
+ },
+ {
+  "terminal": "Botswana LNG Terminal",
+  "terminal_id": "T100001048162",
+  "gogpt_candidate": "MAYBE",
+  "electric_mw": "",
+  "confidence": "red",
+  "basis": "Cogeneration/on-site generation is plausible given the remote wellhead siting and modular mini-LNG technology, but the project is pre-FID with no disclosed MW or equipment - matches 'cogeneration exists but MW undisclosed or pre-filing.'",
+  "basis [ref]": [
+   "https://energiesmedia.com/botswana-serowe-cbm-targets-2026-fid/",
+   "https://botalaenergy.com/serowe-cbm-project/"
+  ],
+  "mechanical_drive_note": ""
+ },
+ {
+  "terminal": "Cameroon FLNG Terminal",
+  "terminal_id": "T100000130247",
+  "gogpt_candidate": "REVIEWER CALL",
+  "electric_mw": "",
+  "confidence": "green",
+  "basis": "Both confirmed systems (GE mechanical-drive turbines and Rolls-Royce Bergen generator sets) are vessel-mounted with no citable nameplate MW for the generator set specifically, so per SOP §5 this is a REVIEWER CALL rather than ADD/DO NOT ADD - it's unclear whether GOGPT's ontology would capture FLNG onboard generation as a separate power-station record, and the Kribi GOGPT plant remains an unrelated onshore national-grid asset (DO NOT ADD basis for that specific plant is unchanged).",
+  "basis [ref]": [
+   "https://www.offshore-energy.biz/ge-tech-ordered-for-hilli-flng-conversion/",
+   "https://gcaptain.com/rolls-royce-power-golars-new-floating-lng-liquefaction-ship/",
+   "https://www.offshore-energy.biz/rolls-royce-engines-for-golar-flngv/"
+  ],
+  "mechanical_drive_note": "GE PGT25+G4 DLE aeroderivative gas turbines mechanically drive GE 2BCL centrifugal refrigeration compressors across Hilli's four PRICO trains; per-train turbine count and aggregate shaft power/MW are not disclosed in the source found (only 'four compression trains', GE Mark VIe control system, 8 anti-surge valves, 98.9% availability guarantee)."
+ },
+ {
+  "terminal": "Cameroon LNG Terminal",
+  "terminal_id": "T100000130248",
+  "gogpt_candidate": "DO NOT ADD",
+  "electric_mw": "",
+  "confidence": "",
+  "basis": "Never built, never reached detailed design; there is no plant of any kind to add.",
+  "basis [ref]": [
+   "https://www.offshore-energy.biz/foster-wheeler-awarded-contract-by-gdf-suez-for-cameroon-lng-project/",
+   "https://www.offshore-energy.biz/engie-puts-cameroon-lng-project-on-hold/"
+  ],
+  "mechanical_drive_note": ""
+ },
+ {
+  "terminal": "Etinde FLNG Terminal",
+  "terminal_id": "T100000130913",
+  "gogpt_candidate": "DO NOT ADD",
+  "electric_mw": "",
+  "confidence": "red",
+  "basis": "No generation of any kind confirmed at Etinde itself; the nearby GOGPT plant is unrelated.",
+  "basis [ref]": [
+   "https://www.offshore-energy.biz/new-age-hands-out-etinde-feed-award-to-technipfmc/",
+   "https://www.offshore-energy.biz/perenco-inks-deal-with-new-age-to-take-over-etinde-permit-operatorship/"
+  ],
+  "mechanical_drive_note": ""
+ },
+ {
+  "terminal": "Ivory Coast FSRU",
+  "terminal_id": "T100000130835",
+  "gogpt_candidate": "DO NOT ADD",
+  "electric_mw": "",
+  "confidence": "",
+  "basis": "Record already exists (Ciprel) and it is confirmed to be a pre-existing, unrelated national IPP, not this project's captive plant.",
+  "basis [ref]": [],
+  "mechanical_drive_note": ""
+ },
+ {
+  "terminal": "Djibouti FLNG Terminal",
+  "terminal_id": "T100000130667",
+  "gogpt_candidate": "DO NOT ADD",
+  "electric_mw": "",
+  "confidence": "",
+  "basis": "Record already exists (Damerjog Power Generation Station) and it reads as an unrelated, non-fenceline regional project, not this terminal's captive plant.",
+  "basis [ref]": [],
+  "mechanical_drive_note": ""
+ },
+ {
+  "terminal": "Ain Sokhna FSRU",
+  "terminal_id": "T100000130685",
+  "gogpt_candidate": "REVIEWER CALL",
+  "electric_mw": "",
+  "confidence": "green",
+  "basis": "Energos Power's onboard TFDE generation is real captive gas power but is vessel-mounted (moored FSRU machinery), not a fixed shore power station with a citable nameplate MW - unclear whether GOGPT's ontology captures vessel-mounted generation as a distinct power-station record (per brief §5 FSRU guidance).",
+  "basis [ref]": [
+   "https://energosinfra.com/our_fleet/energos-power/"
+  ],
+  "mechanical_drive_note": ""
+ },
+ {
+  "terminal": "Damietta FSRU",
+  "terminal_id": "T100001083032",
+  "gogpt_candidate": "REVIEWER CALL",
+  "electric_mw": "",
+  "confidence": "yellow",
+  "basis": "Vessel-mounted generation (moored FSRU steam/turbo-generator plant), no citable nameplate MW found; unclear whether GOGPT's ontology captures this as a distinct power-station record.",
+  "basis [ref]": [
+   "https://energosinfra.com/our_fleet/energos-winter/",
+   "https://en.wikipedia.org/wiki/LNG_carrier"
+  ],
+  "mechanical_drive_note": ""
+ },
+ {
+  "terminal": "Damietta SEGAS LNG Terminal",
+  "terminal_id": "T100000130249",
+  "gogpt_candidate": "REVIEWER CALL",
+  "electric_mw": "",
+  "confidence": "green",
+  "basis": "The confirmed captive hardware (2x Frame 7 gas turbines) is pure mechanical drive - no electricity generated, so not GOGPT-relevant on its own (GOGPT tracks generating capacity). The plant's separate on-site 'power generation station/units' (per the same paper) IS an electric generation candidate, but neither its fuel nor its MW rating is disclosed in any source found - a follow-up search (SEGAS environmental permit / EPC contractor releases for the utilities package) could resolve this.",
+  "basis [ref]": [
+   "https://www.gpaeurope.com/sites/default/files/download-file/documents/conference-papers/paper-6-MWK-LNG14-Segas.pdf"
+  ],
+  "mechanical_drive_note": "2x GE Frame 7 (7EA) gas turbine drivers for the Split MRTM refrigerant compressors (one drives propane + HP MR compressors, the second drives LP/MP MR compressors), plus gas-turbine starter/helper motors; no MW/shaft-power rating stated in the source."
+ },
+ {
+  "terminal": "Egyptian LNG Terminal",
+  "terminal_id": "T100000130250",
+  "gogpt_candidate": "REVIEWER CALL",
+  "electric_mw": "",
+  "confidence": "green",
+  "basis": "The confirmed captive hardware (12x Frame 5-2D gas turbines) is pure mechanical drive - not GOGPT-relevant on its own. The plant's separate shared 'power generation unit' (per NS Energy Business) is an electric-generation candidate but neither fuel nor MW rating is disclosed in sources found.",
+  "basis [ref]": [
+   "https://www.oilandgasonline.com/doc/agreement-covers-12-gas-turbines-20-compresso-0001",
+   "https://egyptoil-gas.com/news/egyptian-lng-upgrade-project-to-mark-debut-of-ges-power-crystal-technology/",
+   "https://www.nsenergybusiness.com/projects/egyptian-lng-project-idku/"
+  ],
+  "mechanical_drive_note": "12x GE Frame 5-2D (MS5002D) gas turbines driving 20 horizontally-split barrel-type centrifugal refrigeration compressors (Phillips Optimized Cascade LNG process) across both trains; no MW/shaft-power rating stated in sources found."
+ },
+ {
+  "terminal": "Sumed FSRU",
+  "terminal_id": "T100000130686",
+  "gogpt_candidate": "REVIEWER CALL",
+  "electric_mw": "",
+  "confidence": "green",
+  "basis": "Vessel-mounted generation (moored FSRU DFDE plant), no citable nameplate MW found; unclear whether GOGPT's ontology captures this as a distinct power-station record.",
+  "basis [ref]": [
+   "https://energosinfra.com/our_fleet/energos-eskimo/",
+   "https://squadronenergy.com/wp-content/uploads/pdf/Port-Kembla-Energy-Terminal/PDF/Environmental-Impact-Statement/Appendix-M-Air-quality.pdf"
+  ],
+  "mechanical_drive_note": ""
+ },
+ {
+  "terminal": "Akonikien LNG Terminal",
+  "terminal_id": "T100000130787",
+  "gogpt_candidate": "DO NOT ADD",
+  "electric_mw": "",
+  "confidence": "",
+  "basis": "Cancelled project with no design ever published; not a gas power station of any kind, and no facility exists to add.",
+  "basis [ref]": [],
+  "mechanical_drive_note": ""
+ },
+ {
+  "terminal": "Fortuna FLNG Terminal",
+  "terminal_id": "T100000130251",
+  "gogpt_candidate": "DO NOT ADD",
+  "electric_mw": "",
+  "confidence": "",
+  "basis": "Never built; no generating equipment exists or was ever specified for this vessel.",
+  "basis [ref]": [
+   "https://lngprime.com/africa/golar-in-flng-talks-with-equatorial-guinea/90508/"
+  ],
+  "mechanical_drive_note": ""
+ },
+ {
+  "terminal": "Punta Europa LNG Terminal",
+  "terminal_id": "T100000130252",
+  "gogpt_candidate": "REVIEWER CALL",
+  "electric_mw": "",
+  "confidence": "",
+  "basis": "Unchanged: the existence of any dedicated on-site generation at Punta Europa/EG LNG itself remains unconfirmed (verdict INSUFFICIENT) — nothing to ADD or a firm basis for DO NOT ADD until the underlying captive-power question is resolved with a source.",
+  "basis [ref]": [],
+  "mechanical_drive_note": ""
+ },
+ {
+  "terminal": "Boudji FLNG Terminal",
+  "terminal_id": "T100000130909",
+  "gogpt_candidate": "DO NOT ADD",
+  "electric_mw": "",
+  "confidence": "green",
+  "basis": "Never reached a design stage; nothing to add.",
+  "basis [ref]": [
+   "https://www.upstreamonline.com/focus/petronas-eyes-flng-as-option-for-boudji-off-gabon/2-1-579873"
+  ],
+  "mechanical_drive_note": ""
+ },
+ {
+  "terminal": "Cap Lopez FLNG Terminal",
+  "terminal_id": "T100000131107",
+  "gogpt_candidate": "REVIEWER CALL",
+  "electric_mw": "",
+  "confidence": "red",
+  "basis": "Generation almost certainly exists (off-grid barge running an electric-driven liquefaction process) but no citable nameplate or equipment source was found - matches 'generation exists but no citable nameplate,' not a clean ADD or DO NOT ADD.",
+  "basis [ref]": [
+   "https://www.offshore-energy.biz/african-flng-project-getting-its-ideal-choice-of-lng-liquefaction-technology/"
+  ],
+  "mechanical_drive_note": ""
+ },
+ {
+  "terminal": "Tema FSRU",
+  "terminal_id": "T100000130253",
+  "gogpt_candidate": "DO NOT ADD",
+  "electric_mw": "",
+  "confidence": "yellow",
+  "basis": "This terminal is a regasification import facility supplying gas to external power plants/industry, not itself a generating asset; GOGPT already tracks the actual generator (Tema Thermal Power Complex) as a separate record.",
+  "basis [ref]": [
+   "https://lngprime.com/lng-terminals/tema-lng-fru-heading-towards-ghana/7826/",
+   "https://lngprime.com/africa/bv-wraps-up-ghana-fru-classification-work/15521/",
+   "https://lngprime.com/africa/reganosa-scores-contract-for-ghanas-tema-lng-terminal/9599/",
+   "https://www.offshore-energy.biz/reganosa-to-run-lng-to-power-project-in-ghana/"
+  ],
+  "mechanical_drive_note": ""
+ },
+ {
+  "terminal": "Guinea LNG Terminal",
+  "terminal_id": "T100000131050",
+  "gogpt_candidate": "DO NOT ADD",
+  "electric_mw": "",
+  "confidence": "yellow",
+  "basis": "GOGPT record already exists (West Africa Kamsar power station).",
+  "basis [ref]": [],
+  "mechanical_drive_note": ""
+ },
+ {
+  "terminal": "Mombasa LNG Terminal",
+  "terminal_id": "T100000130254",
+  "gogpt_candidate": "DO NOT ADD",
+  "electric_mw": "",
+  "confidence": "",
+  "basis": "Record already exists (Kipevu I); believed to be an unrelated pre-existing thermal plant, though not independently re-confirmed this session.",
+  "basis [ref]": [],
+  "mechanical_drive_note": ""
+ },
+ {
+  "terminal": "Marsa El Brega LNG Terminal",
+  "terminal_id": "T100000130255",
+  "gogpt_candidate": "ADD",
+  "electric_mw": "62",
+  "confidence": "yellow",
+  "basis": "Unchanged: a citable 62 MWe gas-fired generating plant at the same site/operator, with no existing GOGPT record flagged in the dispatch data — worth a GOGPT Discovery follow-up. Evidence is still single-source/yellow for the plant itself; a GOGPT researcher should keep trying to corroborate (industcards.com Africa gas-turbine archive via Wayback, or an Arab Union of Electricity / AUPTDE statistical yearbook, were not reachable this session) before adding.",
+  "basis [ref]": [
+   "http://globalenergyobservatory.org/geoid/41593"
+  ],
+  "mechanical_drive_note": ""
+ },
+ {
+  "terminal": "BirAllah LNG Hub",
+  "terminal_id": "T100000131091",
+  "gogpt_candidate": "DO NOT ADD",
+  "electric_mw": "",
+  "confidence": "",
+  "basis": "No facility exists yet at any stage of design; nothing to add.",
+  "basis [ref]": [
+   "https://lngprime.com/contracts-and-tenders/bp-kosmos-ink-new-deal-for-mauritanian-gas-field/63709/"
+  ],
+  "mechanical_drive_note": ""
+ },
+ {
+  "terminal": "Greater Tortue Ahmeyim FLNG Terminal",
+  "terminal_id": "T100000130661",
+  "gogpt_candidate": "REVIEWER CALL",
+  "electric_mw": "",
+  "confidence": "yellow",
+  "basis": "Vessel-mounted generation (FLNG-onboard, analogous to an FSRU) with no citable nameplate MW found for the as-installed Gimi gensets - per SOP §5, vessel-mounted generation with an undisclosed nameplate and unclear GOGPT-ontology fit is a REVIEWER CALL, not ADD or DO NOT ADD.",
+  "basis [ref]": [
+   "https://gcaptain.com/rolls-royce-power-golars-new-floating-lng-liquefaction-ship/",
+   "https://lngprime.com/africa/golar-says-gimi-flng-86-percent-complete/59169/",
+   "https://www.golarlng.com/fleet.aspx"
+  ],
+  "mechanical_drive_note": ""
+ },
+ {
+  "terminal": "New Fortress Banda LNG Terminal",
+  "terminal_id": "T100000131048",
+  "gogpt_candidate": "DO NOT ADD",
+  "electric_mw": "",
+  "confidence": "yellow",
+  "basis": "Not a captive/on-site gas power station at the terminal itself; it is a gas-to-power supply project feeding external plants (a PowerPlantsSupplied relationship), which is out of scope for this terminal's CaptiveGasPower question.",
+  "basis [ref]": [
+   "https://lngprime.com/africa/new-fortress-plans-flng-project-off-mauritania/37476/"
+  ],
+  "mechanical_drive_note": ""
+ },
+ {
+  "terminal": "Mauritius FSRU",
+  "terminal_id": "T100000131079",
+  "gogpt_candidate": "DO NOT ADD",
+  "electric_mw": "",
+  "confidence": "",
+  "basis": "Record already exists ('Mauritius FSRU power plant'); it reads as the downstream plant this project would supply, not this terminal's captive generation.",
+  "basis [ref]": [],
+  "mechanical_drive_note": ""
+ },
+ {
+  "terminal": "Jorf Lasfar LNG Terminal",
+  "terminal_id": "T100000130256",
+  "gogpt_candidate": "DO NOT ADD",
+  "electric_mw": "",
+  "confidence": "yellow",
+  "basis": "Jorf Lasfar CCGT power station already exists as a GOGPT record; nothing at the LNG import terminal itself is a generating asset.",
+  "basis [ref]": [
+   "https://www.offshore-energy.biz/morocco-onee-selects-advisers-for-lng-to-power-project/"
+  ],
+  "mechanical_drive_note": ""
+ },
+ {
+  "terminal": "Morocco FSRU",
+  "terminal_id": "T100000130824",
+  "gogpt_candidate": "DO NOT ADD",
+  "electric_mw": "",
+  "confidence": "yellow",
+  "basis": "Mohammedia-Onee power plant already exists as a GOGPT record; the proposed FSRU is a gas source, not a generator, and no vessel/design has been selected yet.",
+  "basis [ref]": [
+   "https://www.offshore-energy.biz/mohammedia-port-to-host-morocoos-1st-fsru-and-lng-terminal/"
+  ],
+  "mechanical_drive_note": ""
+ },
+ {
+  "terminal": "Nador FSRU",
+  "terminal_id": "T100000131161",
+  "gogpt_candidate": "DO NOT ADD",
+  "electric_mw": "",
+  "confidence": "red",
+  "basis": "Nador West power plant already exists as a GOGPT record; nothing about the FSRU proposal itself (owner unknown, shelved, no vessel) supports adding a new generating asset.",
+  "basis [ref]": [],
+  "mechanical_drive_note": ""
+ },
+ {
+  "terminal": "Coral North FLNG Terminal",
+  "terminal_id": "T100000131124",
+  "gogpt_candidate": "REVIEWER CALL",
+  "electric_mw": "",
+  "confidence": "yellow",
+  "basis": "Generation (if confirmed) is vessel-mounted FSRU/FLNG-style turbo-generation with no independently confirmed nameplate MW for this specific hull; unclear whether GOGPT's ontology captures floating vessel-based generation as a power station, same open question as Coral Sul.",
+  "basis [ref]": [
+   "https://www.offshore-energy.biz/mozambiques-second-flng-project-on-technipfmcs-to-do-list/",
+   "https://www.offshore-energy.biz/eni-cheers-launch-of-its-mozambique-bound-flng-at-samsung-heavy-industries-shipyard/"
+  ],
+  "mechanical_drive_note": "Not separately confirmed for this hull; inferred to mirror Coral Sul's 4x turbo-compression trains (see Coral South FLNG Terminal entry)."
+ },
+ {
+  "terminal": "Coral South FLNG Terminal",
+  "terminal_id": "T100000130258",
+  "gogpt_candidate": "REVIEWER CALL",
+  "electric_mw": "",
+  "confidence": "yellow",
+  "basis": "Genuine on-site electricity generation exists (4x turbo-generation units) but no citable nameplate MW was found in the sources reviewed, and the generation is vessel-mounted (FLNG hull) rather than a conventional shore-sited power station — same open ontology question as other FSRU/FLNG captive findings.",
+  "basis [ref]": [
+   "https://www.offshore-energy.biz/baker-hughes-in-another-coral-south-win/",
+   "https://www.offshore-energy.biz/baker-hughes-secures-another-coral-south-flng-contract/"
+  ],
+  "mechanical_drive_note": "4x aeroderivative-gas-turbine-driven turbo-compression trains for mix-refrigeration service (Baker Hughes/BHGE Nuovo Pignone, per 2017 contract announcements); no aggregate shaft-power/MW figure disclosed in the sources found."
+ },
+ {
+  "terminal": "Matola FSRU",
+  "terminal_id": "T100000130825",
+  "gogpt_candidate": "DO NOT ADD",
+  "electric_mw": "",
+  "confidence": "red",
+  "basis": "No project design has been published; there is nothing to add. Revisit once the project reaches FEED/FID and a power arrangement is disclosed.",
+  "basis [ref]": [],
+  "mechanical_drive_note": ""
+ },
+ {
+  "terminal": "Mozambique LNG Terminal",
+  "terminal_id": "T100000130257",
+  "gogpt_candidate": "DO NOT ADD",
+  "electric_mw": "6 x 54 MW = 324 MW aggregate (nameplate per turbine per source; not GEM-confirmed independently)",
+  "confidence": "green",
+  "basis": "GOGPT record already exists (Mozambique LNG power station, 324 MW) and the MW figure matches the sourced 6x54MW SGT-800 finding.",
+  "basis [ref]": [
+   "https://www.offshore-energy.biz/siemens-gets-mozambique-lng-turbines-job/",
+   "https://gascompressionmagazine.com/2026/01/31/totalenergies-restarts-mozambique-lng-project/"
+  ],
+  "mechanical_drive_note": "Not confirmed for this project — the sources found describe only the SGT-800 generator trains and BOG compressors, not the main-refrigeration mechanical-drive turbines (which almost certainly also exist on a project this size but were not named in the sources reviewed)."
+ },
+ {
+  "terminal": "Nacala FSRU",
+  "terminal_id": "T100000130788",
+  "gogpt_candidate": "DO NOT ADD",
+  "electric_mw": "",
+  "confidence": "green",
+  "basis": "GOGPT record already exists for the Karpowership Powership itself (the actual generating asset); nothing new to add on the FSRU side, which has no generation of its own.",
+  "basis [ref]": [
+   "https://www.offshore-energy.biz/mol-karpowership-unveil-1st-lng-to-powership-project-in-africa/"
+  ],
+  "mechanical_drive_note": ""
+ },
+ {
+  "terminal": "Rovuma FLNG Terminal",
+  "terminal_id": "T100000131090",
+  "gogpt_candidate": "DO NOT ADD",
+  "electric_mw": "",
+  "confidence": "",
+  "basis": "Cancelled with no generation of any kind ever built or designed.",
+  "basis [ref]": [],
+  "mechanical_drive_note": ""
+ },
+ {
+  "terminal": "Rovuma LNG Terminal",
+  "terminal_id": "T100000130789",
+  "gogpt_candidate": "DO NOT ADD",
+  "electric_mw": "",
+  "confidence": "yellow",
+  "basis": "The confirmed captive finding here is mechanical-drive shaft power (MHI H-100 turbines driving compressors directly), not an electricity-generating plant with a nameplate MW — GOGPT tracks electricity generation, so mechanical-drive-only equipment is not a GOGPT candidate on its own. No separate on-site generator finding was made for this project.",
+  "basis [ref]": [
+   "https://www.offshore-energy.biz/mitsubishi-heavy-to-supply-equipment-for-rovuma-lng-project/"
+  ],
+  "mechanical_drive_note": "MHI 120 MW dual-shaft H-100 gas turbines as mechanical drivers (2 trains per the Phase 1 scope described in the source); aggregate/per-train shaft-power breakdown beyond the 120 MW-class rating was not further specified."
+ },
+ {
+  "terminal": "Walvis Bay LNG Terminal",
+  "terminal_id": "T100000130622",
+  "gogpt_candidate": "DO NOT ADD",
+  "electric_mw": "",
+  "confidence": "red",
+  "basis": "The cancelled LNG project never became a generating asset itself; Anixas II is already a distinct, unrelated GOGPT-trackable plant.",
+  "basis [ref]": [],
+  "mechanical_drive_note": ""
+ },
+ {
+  "terminal": "Ace Gas Nigeria FLNG Terminal",
+  "terminal_id": "T100000131168",
+  "gogpt_candidate": "DO NOT ADD",
+  "electric_mw": "",
+  "confidence": "red",
+  "basis": "No sourced generation of any kind confirmed at this terminal; the nearby GOGPT plant (Agura) is an unrelated grid-connected merchant IPP, not this terminal's captive power.",
+  "basis [ref]": [],
+  "mechanical_drive_note": ""
+ },
+ {
+  "terminal": "Brass LNG Terminal",
+  "terminal_id": "T100000130260",
+  "gogpt_candidate": "DO NOT ADD",
+  "electric_mw": "",
+  "confidence": "red",
+  "basis": "No sourced on-site generation found; no GOGPT prior plant given.",
+  "basis [ref]": [],
+  "mechanical_drive_note": ""
+ },
+ {
+  "terminal": "Golar Lagos FSRU",
+  "terminal_id": "T100000130967",
+  "gogpt_candidate": "DO NOT ADD",
+  "electric_mw": "",
+  "confidence": "red",
+  "basis": "The nearby GOGPT plant belongs to a different industrial host (Lafarge's cement operations), not this (cancelled) FSRU project; no independent generation confirmed at the terminal itself.",
+  "basis [ref]": [],
+  "mechanical_drive_note": ""
+ },
+ {
+  "terminal": "Golar Nigeria FLNG Terminal",
+  "terminal_id": "T100000131125",
+  "gogpt_candidate": "DO NOT ADD",
+  "electric_mw": "",
+  "confidence": "red",
+  "basis": "No sourced on-site generation found; no GOGPT prior plant given.",
+  "basis [ref]": [],
+  "mechanical_drive_note": ""
+ },
+ {
+  "terminal": "Nigeria LNG Terminal",
+  "terminal_id": "T100000130259",
+  "gogpt_candidate": "DO NOT ADD",
+  "electric_mw": "320",
+  "confidence": "green",
+  "basis": "A GOGPT record for this exact plant already exists (Bonny Island LNG power plant, captive=True, 0 km) — no new record needed. (Possible MW-figure update flag for GOGPT-side follow-up: our sources suggest >320 MW combined vs. GOGPT's 180 MW.)",
+  "basis [ref]": [
+   "https://www.bakerhughes.com/company/news/baker-hughes-extends-longterm-service-agreement-nigeria-lng-support-critical-expansion",
+   "https://www.nsenergybusiness.com/projects/nigeria-lng-plant-expansion-bonny-island/"
+  ],
+  "mechanical_drive_note": "Four heavy-duty gas turbines with associated centrifugal compressors (refrigeration/liquefaction mechanical drive) per Baker Hughes; individual turbine model/rating not disclosed in the source."
+ },
+ {
+  "terminal": "Olokola LNG Terminal",
+  "terminal_id": "T100000130262",
+  "gogpt_candidate": "DO NOT ADD",
+  "electric_mw": "",
+  "confidence": "red",
+  "basis": "The nearby GOGPT plant (Calabar, NIPP) is a separate government grid-power program with no ownership or siting link to the Olokola LNG project; no on-site generation confirmed at the terminal itself.",
+  "basis [ref]": [],
+  "mechanical_drive_note": ""
+ },
+ {
+  "terminal": "Riverside LNG Terminal",
+  "terminal_id": "T100000131170",
+  "gogpt_candidate": "DO NOT ADD",
+  "electric_mw": "",
+  "confidence": "red",
+  "basis": "No sourced on-site generation confirmed at this terminal; the nearby GOGPT plant (Afam/FIPL) is a long-established, unrelated grid IPP.",
+  "basis [ref]": [],
+  "mechanical_drive_note": ""
+ },
+ {
+  "terminal": "Transoceanic Nigeria FLNG Terminal",
+  "terminal_id": "T100000131169",
+  "gogpt_candidate": "DO NOT ADD",
+  "electric_mw": "",
+  "confidence": "red",
+  "basis": "No sourced on-site generation found; no GOGPT prior plant given.",
+  "basis [ref]": [],
+  "mechanical_drive_note": ""
+ },
+ {
+  "terminal": "UTM Offshore FLNG Terminal",
+  "terminal_id": "T100000131052",
+  "gogpt_candidate": "MAYBE",
+  "electric_mw": "",
+  "confidence": "yellow",
+  "basis": "The facility's design includes on-site power generation per the operator's own description, but the project is pre-FID with no MW rating, equipment, or fuel type disclosed anywhere public — this matches the MAYBE case (cogeneration/self-generation exists but is undisclosed or pre-filing). Revisit once FID/EPC technical documentation is published (FID reportedly targeted for later 2026 per InvestorsKing's coverage of the July 2026 gas supply agreement).",
+  "basis [ref]": [
+   "https://utmoffshore.com/2023/07/25/nnpc-takes-20-stake-in-utm-flng-project/"
+  ],
+  "mechanical_drive_note": ""
+ },
+ {
+  "terminal": "Congo FLNG Terminal",
+  "terminal_id": "T100000131003",
+  "gogpt_candidate": "DO NOT ADD",
+  "electric_mw": "",
+  "confidence": "red",
+  "basis": "No captive generation confirmed at this terminal; CEC is an unrelated, pre-existing national grid asset.",
+  "basis [ref]": [],
+  "mechanical_drive_note": ""
+ },
+ {
+  "terminal": "Eni Congo FLNG II Terminal",
+  "terminal_id": "T100000131123",
+  "gogpt_candidate": "REVIEWER CALL",
+  "electric_mw": "",
+  "confidence": "green",
+  "basis": "Real onboard generation is confirmed by two independent sources, but it is vessel-mounted (FSRU/FLNG-style onboard gensets) with no citable standalone nameplate MW, and it's unclear whether GOGPT's ontology captures FLNG onboard generation as a separate power-station record.",
+  "basis [ref]": [
+   "https://www.offshore-energy.biz/new-unit-ready-to-complete-flng-pair-at-enis-congolese-project/",
+   "https://www.bairdmaritime.com/offshore/vessels-rigs-fposfpsos/vessel-review-nguya-floating-liquefaction-unit-to-support-enis-lng-project-off-congo"
+  ],
+  "mechanical_drive_note": ""
+ },
+ {
+  "terminal": "Nkossa FLNG Terminal",
+  "terminal_id": "T100001083728",
+  "gogpt_candidate": "DO NOT ADD",
+  "electric_mw": "",
+  "confidence": "red",
+  "basis": "Nothing built or designed yet; no plant exists to add.",
+  "basis [ref]": [],
+  "mechanical_drive_note": ""
+ },
+ {
+  "terminal": "Dakar LNG Terminal",
+  "terminal_id": "T100001083714",
+  "gogpt_candidate": "DO NOT ADD",
+  "electric_mw": "",
+  "confidence": "yellow",
+  "basis": "Nearest GOGPT plant (Ayşegül Sultan powership) already exists as a GOGPT record and is not this terminal's captive plant — it's the external offtaker. No separate generating asset exists at the Dakar LNG Terminal itself to add.",
+  "basis [ref]": [
+   "https://www.offshore-energy.biz/fresh-lng-gig-in-africa-lands-on-spanish-players-worksheet/"
+  ],
+  "mechanical_drive_note": ""
+ },
+ {
+  "terminal": "Karmol Dakar FSRU",
+  "terminal_id": "T100000131049",
+  "gogpt_candidate": "DO NOT ADD",
+  "electric_mw": "",
+  "confidence": "yellow",
+  "basis": "The only generating asset in this pairing (Ayşegül Sultan) already exists as a GOGPT record; the FSRU itself has no disclosed generating equipment of its own to add.",
+  "basis [ref]": [
+   "https://www.offshore-energy.biz/lngc-conversion-completed-for-worlds-first-m-fsru/",
+   "https://www.offshore-energy.biz/four-years-in-the-making-africas-first-lng-to-power-project-up-and-running-off-senegal/"
+  ],
+  "mechanical_drive_note": ""
+ },
+ {
+  "terminal": "Yakaar-Teranga LNG Hub",
+  "terminal_id": "T100000131092",
+  "gogpt_candidate": "DO NOT ADD",
+  "electric_mw": "",
+  "confidence": "yellow",
+  "basis": "No generating asset was ever designed or built at this site; the project never left the appraisal stage before cancellation.",
+  "basis [ref]": [
+   "https://www.offshore-energy.biz/following-bps-exit-operatorship-of-giant-gas-discoveries-changes-hands-as-us-player-takes-the-reins/"
+  ],
+  "mechanical_drive_note": ""
+ },
+ {
+  "terminal": "Sierra Leone LNG Terminal",
+  "terminal_id": "T100001084290",
+  "gogpt_candidate": "DO NOT ADD",
+  "electric_mw": "",
+  "confidence": "yellow",
+  "basis": "GOGPT record already exists (Blackhall Road power station).",
+  "basis [ref]": [],
+  "mechanical_drive_note": ""
+ },
+ {
+  "terminal": "Coega FSRU",
+  "terminal_id": "T100000130265",
+  "gogpt_candidate": "DO NOT ADD",
+  "electric_mw": "",
+  "confidence": "yellow",
+  "basis": "Plant already exists in GOGPT (named in the prior) and is correctly marked non-captive; the underlying RMIPPPP award is also now cancelled/delicensed, so there is nothing new to add.",
+  "basis [ref]": [
+   "https://www.energize.co.za/article/high-court-cancels-karpowership-power-licences-ending-emergency-energy-deal"
+  ],
+  "mechanical_drive_note": ""
+ },
+ {
+  "terminal": "Durban LNG Terminal",
+  "terminal_id": "T100001083665",
+  "gogpt_candidate": "MAYBE",
+  "electric_mw": "",
+  "confidence": "yellow",
+  "basis": "A genuine gas-fired generating plant is proposed (1,000-1,800 MW CCGT) with a stated MW range, but it is a range not a fixed nameplate, pre-FID, and 'not possible to say' on timeline per the consortium -- matches the MAYBE criterion (cogeneration/generation plant exists but undisclosed-precise/pre-filing). It is NOT captive to the LNG terminal regardless of GOGPT treatment (see captive_summary).",
+  "basis [ref]": [
+   "https://www.cnbcafrica.com/2026/vitol-backs-proposed-3-billion-lng-power-plant-for-south-africas-durban-port",
+   "https://www.zawya.com/en/economy/africa/south-africa-vitol-joins-consortium-planning-3bln-gas-fired-power-station-at-durban-port-hds00g16"
+  ],
+  "mechanical_drive_note": ""
+ },
+ {
+  "terminal": "Mossel Bay FSRU",
+  "terminal_id": "T100000130264",
+  "gogpt_candidate": "DO NOT ADD",
+  "electric_mw": "",
+  "confidence": "yellow",
+  "basis": "No generation plant of any kind was ever part of this FSRU's design -- it was a refinery-feedstock project, cancelled at feasibility stage. Nothing to add to GOGPT from this terminal.",
+  "basis [ref]": [
+   "https://www.upstreamonline.com/weekly/petrosa-cancels-its-plan-for-fsru-at-mossel-bay/1-1-999169"
+  ],
+  "mechanical_drive_note": ""
+ },
+ {
+  "terminal": "Ngqura LNG Terminal",
+  "terminal_id": "T100001048121",
+  "gogpt_candidate": "DO NOT ADD",
+  "electric_mw": "",
+  "confidence": "green",
+  "basis": "The named prior plant (Karpowership Coega) is unrelated and already in GOGPT/cancelled. The genuinely relevant downstream capacity (3,000-3,500 MW of future gas-to-power at Coega SEZ) has no named developer/plant yet -- it is an allocation, not a citable project -- so there is nothing concrete to add from this terminal today.",
+  "basis [ref]": [
+   "https://www.sanews.gov.za/south-africa/transnet-signs-deal-r22-billion-gas-facility-project",
+   "https://www.greenbuildingafrica.co.za/transnet-national-ports-authority-and-ukwanda-lng-sign-r22-billion-port-of-ngqura-gas-terminal-agreement/"
+  ],
+  "mechanical_drive_note": ""
+ },
+ {
+  "terminal": "Richards Bay FSRU",
+  "terminal_id": "T100000130266",
+  "gogpt_candidate": "DO NOT ADD",
+  "electric_mw": "",
+  "confidence": "yellow",
+  "basis": "Whatever the Nseleni plant is, this FSRU is not its captive supplier in the sense the SOP asks about (the FSRU/Powership pairing described above is Karpowership's own, separate 450 MW award, now cancelled). No new captive relationship to add.",
+  "basis [ref]": [
+   "https://www.energize.co.za/article/high-court-cancels-karpowership-power-licences-ending-emergency-energy-deal"
+  ],
+  "mechanical_drive_note": ""
+ },
+ {
+  "terminal": "Richards Bay Transnet FSRU",
+  "terminal_id": "T100000131126",
+  "gogpt_candidate": "DO NOT ADD",
+  "electric_mw": "",
+  "confidence": "",
+  "basis": "The relevant power plant (Eskom's 3,000 MW Richards Bay CCGT) already appears to exist in GOGPT as 'Richards Bay (Mhlathuze Energy) power station,' correctly marked non-captive since it is a grid-scale Eskom plant fed by this terminal, not a captive generator for it.",
+  "basis [ref]": [
+   "https://allafrica.com/stories/202606050416.html",
+   "https://www.bizcommunity.com/article/sa-first-lng-import-terminal-gassed-up-in-new-eskom-zululand-agreement-512750a"
+  ],
+  "mechanical_drive_note": ""
+ },
+ {
+  "terminal": "Saldanha Bay FSRU",
+  "terminal_id": "T100000130267",
+  "gogpt_candidate": "DO NOT ADD",
+  "electric_mw": "",
+  "confidence": "yellow",
+  "basis": "Plant already exists in GOGPT and is correctly marked non-captive; the underlying RMIPPPP award is cancelled, so there is nothing new to add.",
+  "basis [ref]": [
+   "https://www.energize.co.za/article/high-court-cancels-karpowership-power-licences-ending-emergency-energy-deal"
+  ],
+  "mechanical_drive_note": ""
+ },
+ {
+  "terminal": "Sudan Red Sea LNG Terminal",
+  "terminal_id": "T100000130691",
+  "gogpt_candidate": "DO NOT ADD",
+  "electric_mw": "",
+  "confidence": "",
+  "basis": "Record already exists (Karadeniz Powership) and it is very likely unrelated (a national-grid-contracted powership, not tied to this cancelled private LNG scheme).",
+  "basis [ref]": [],
+  "mechanical_drive_note": ""
+ },
+ {
+  "terminal": "Tanzania LNG Terminal",
+  "terminal_id": "T100000130263",
+  "gogpt_candidate": "DO NOT ADD",
+  "electric_mw": "",
+  "confidence": "red",
+  "basis": "Nothing to add: the project is pre-FID with no published generation design, and there is no operating or under-construction plant of any kind at the site yet.",
+  "basis [ref]": [],
+  "mechanical_drive_note": ""
+ },
+ {
+  "terminal": "Dakhla LNG Terminal",
+  "terminal_id": "T100000131162",
+  "gogpt_candidate": "DO NOT ADD",
+  "electric_mw": "",
+  "confidence": "red",
+  "basis": "No generation, no design, nothing to add at this stage.",
+  "basis [ref]": [
+   "https://www.porttechnology.org/morocco-builds-nador-2026-and-dakhla-2028-deepwater-ports/"
+  ],
+  "mechanical_drive_note": ""
+ }
+]

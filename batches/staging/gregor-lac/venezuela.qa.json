@@ -1,0 +1,102 @@
+[
+ {
+  "category": "banned_source",
+  "terminal_id": "T100000130626",
+  "unit_id": "G100002062601 / G100002062602",
+  "terminal_name": "Delta Caribe Oriental Terminal",
+  "issue": "Pre-existing citations on FacilityType [ref], Owner [ref], Capacity [ref], and Location [ref] cite http://abarrelfull.wikidot.com/deltana-caribe-lng-terminal -- a BANNED source (never usable anywhere, even corroborated). FacilityType [ref] also carries a killajoules.wikidot.com citation of unclear reliability.",
+  "severity": "high",
+  "suggested_action": "Route to the known follow-on abarrelfull-cleanup batch referenced in project memory (tracker-wide ~60 cells / 27 terminals). Found one candidate independent replacement for Capacity specifically: a 2009-era Oil & Gas Journal piece corroborating 4.7 mtpa, but did not finalize/stage it in this pass (time-boxed exhaustive sweep; leave to the dedicated cleanup batch to avoid a rushed cluster-coherence mistake on a tangled multi-name project).",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "citation_gap",
+  "terminal_id": "T100000130624",
+  "unit_id": "G100002062401",
+  "terminal_name": "Project Venezuela LNG Terminal",
+  "issue": "Status [ref] / ShelvedYear [ref] / CancelledYear [ref] / StopYear [ref] remain blank. This project's history is genuinely tangled across overlapping/successor names (Cristobal Colon 1990s -> Project Venezuela LNG / PVLNG 2000 MOU with ExxonMobil -> Exxon exit + North Paria selection 2002 -> Shell/Mitsubishi/PDVSA 'Mariscal Sucre LNG' (MSLNG) framework agreement 2002, expired May 2004 per a directly-verified quote from Shell's SEC 20-F). Two leads were run down and REJECTED: (1) a BHP Billiton SEC 6-K that a WebSearch summary claimed described this Venezuela project with ExxonMobil/Shell/Mitsubishi/PDVSA -- direct curl+read of the actual filing showed it is entirely about an UNRELATED Australian North West Shelf LNG deal; the WebSearch summary hallucinated the Venezuela content. (2) the Shell 20-F MSLNG quote is real and verified, but MSLNG's 2002-2004 timeline does not match this GEM record's own ShelvedYear=2002/CancelledYear=2004 anchors well enough to rule out that MSLNG is actually the SAME underlying project GEM already tracks separately as 'Delta Caribe Oriental Terminal' (which carries 'Mariscal Sucre LNG' as an alias) -- staging either lead risked a cluster-coherence miscitation (citing the wrong project's SEC filing to support this record's specific anchor years).",
+  "severity": "medium",
+  "suggested_action": "Leave Status/ShelvedYear/CancelledYear/StopYear [ref] blank for now rather than force an uncertain citation. A future pass should first resolve whether 'Project Venezuela LNG Terminal' (Cristobal Colon/PVLNG/North Paria lineage, Exxon-led) and 'Delta Caribe Oriental Terminal' (Mariscal Sucre LNG/CIGMA lineage, PDVSA-led) are in fact the SAME historical project split across two GEM records, or genuinely distinct successor projects at the same or a nearby site -- that determination should come before any ref-fill attempt on either record's dormancy anchors.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "orphan_ref / dead_mirror",
+  "terminal_id": "T100000130624",
+  "unit_id": "G100002062401",
+  "terminal_name": "Project Venezuela LNG Terminal",
+  "issue": "Location [ref] is populated (citing the same OGJ article + a now-unreachable web.archive.org mirror, see updates.json ref-cleanup on the sibling FacilityType/Owner/Capacity cells) but Location itself is blank -- a pre-existing Rule F orphan-ref violation. Could not confirm a specific site/location detail in the cited OGJ article itself. An independent 1991-era OGJ piece mentions 'Mapire Bay' in connection with an early-1990s Venezuelan LNG export concept, but this could NOT be confirmed to be the SAME location asserted by the currently-cited (different, later) OGJ article -- staging 'Mapire Bay' here on that basis alone would risk a cluster-coherence error.",
+  "severity": "medium",
+  "suggested_action": "Left unedited this pass (did not drop the ref or add a value). A future pass should either (a) confirm 'Mapire Bay' or another specific site against the CURRENTLY cited OGJ source directly, and fill Location, or (b) blank the orphan Location [ref] entirely if no location claim can be substantiated.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "orphan_ref",
+  "terminal_id": "T100001084768",
+  "unit_id": "G100001096312",
+  "terminal_name": "Eni/Repsol Perla FLNG",
+  "issue": "Location [ref] cites https://www.aapg.org/news-and-media/explorer/from-geology-opportunity-venezuela/ but Location is blank (pre-existing Rule F orphan-ref violation). This citation ALSO now fails re-verification (HTTP 403, no Wayback snapshot available) during this exhaustive re-check.",
+  "severity": "medium",
+  "suggested_action": "Recommend dropping this Location [ref] citation entirely (both orphan AND now-unreachable) unless a future pass can confirm a specific location value in it and independently re-verify the URL.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "unverifiable_bot_block",
+  "terminal_id": "T100001084768",
+  "unit_id": "G100001096312",
+  "terminal_name": "Eni/Repsol Perla FLNG",
+  "issue": "The Reuters citation on FacilityType [ref] / Owner [ref] (eni-repsol-reach-deal-start-exporting-venezuelan-gas-2031-bloomberg-news-reports-2026-04-20) fails live re-verification (HTTP 401, no Wayback snapshot available yet -- article is recent, April 2026).",
+  "severity": "low",
+  "suggested_action": "No action needed this pass -- NOT proven dead (bot-block convention), and the co-cited worldoil.com URL on the same cells still PASSES independently, so the cell remains supported. Re-check in a future pass once a Wayback snapshot exists.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "data_hygiene",
+  "terminal_id": "T100001084768",
+  "unit_id": "G100001096312",
+  "terminal_name": "Eni/Repsol Perla FLNG",
+  "issue": "Owner [ref] repeats the same worldoil.com + reuters.com URL pair verbatim (duplicate, not additional corroboration).",
+  "severity": "low",
+  "suggested_action": "Minor cosmetic cleanup for a future ref-touch on this row; not worth a standalone edit this pass.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "unverifiable_bot_block",
+  "terminal_id": "T100000131115",
+  "unit_id": "G100002111500",
+  "terminal_name": "Sycar Venezuela FLNG Terminal",
+  "issue": "The existing iamericas.org PDF citation (used elsewhere on this row, e.g. ProposalDate [ref] / StartDate [ref] context) fails re-verification (HTTP 403, no Wayback snapshot available).",
+  "severity": "low",
+  "suggested_action": "No action needed this pass -- co-citations (gnlglobal.com) still support the affected cells. Re-check / find a replacement in a future pass.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "unfillable_gap",
+  "terminal_id": "T100000131115",
+  "unit_id": "G100002111500",
+  "terminal_name": "Sycar Venezuela FLNG Terminal",
+  "issue": "FloatingVesselName is blank and required for a cancelled FLNG unit per the field_gaps flag. Every source found (Nov 2022 MoU announcements) describes this project at the MoU/permitting stage only -- it never reached vessel selection or procurement, so no vessel name exists in any available source.",
+  "severity": "low",
+  "suggested_action": "Leave blank; genuinely unfillable without fabrication. Not a research miss.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "discovery_watch / dormant_revival",
+  "terminal_id": "",
+  "unit_id": "",
+  "terminal_name": "Delta Caribe Oriental Terminal / Project Venezuela LNG Terminal / Sycar Venezuela FLNG Terminal / Venezuela Offshore LNG Terminal",
+  "issue": "All 4 dormant Venezuela terminals (dormant_revival_watch, 6-22 years dead) sit against a genuine 2026 political inflection point: Maduro was removed from power on 3 Jan 2026, and US Treasury OFAC issued General License 50 on 13 Feb 2026 authorizing resumption of oil/gas operations in Venezuela. This is exactly the kind of context the dispatch brief instructed to 'track' (OFAC licence status changes). No terminal-specific evidence of a revived or new project at any of the 4 dead sites was found in this pass, but the WebSearch tool budget for this session was fully exhausted (200/200 calls) before an exhaustive country-wide revival sweep in the wake of GL50 could be completed.",
+  "severity": "medium",
+  "suggested_action": "Flag for the Discovery workflow / a future targeted revival sweep once search budget resets -- specifically check for any post-Feb-2026 PDVSA, Shell, Chevron, ExxonMobil, or Eni/Repsol statements referencing Venezuelan gas-export/LNG plans (distinct from oil-sector GL50 activity). Per dormant_revival_watch rules, a genuinely new project at any of these sites is a NEW terminal record, not an edit to the dead one.",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "scope_clarification",
+  "terminal_id": "",
+  "unit_id": "",
+  "terminal_name": "(country-level note — Venezuela)",
+  "issue": "Per the brief, tracked but confirmed OUT OF SCOPE: US OFAC licence changes affecting Shell's Dragon gas field (Venezuela) feed Trinidad's Atlantic LNG terminal BY PIPELINE, not a Venezuelan LNG terminal. No Venezuelan record was touched or created for this.",
+  "severity": "low",
+  "suggested_action": "No action -- correctly out of scope, noted for completeness only.",
+  "researcher_initials": "AI-draft"
+ }
+]

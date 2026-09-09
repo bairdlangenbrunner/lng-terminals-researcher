@@ -1,0 +1,47 @@
+[
+ {
+  "terminal_id": "T100000130580",
+  "unit_id": "G100002058000",
+  "terminal_name": "GNL Del Plata FSRU",
+  "unit_name": "--",
+  "country": "Uruguay",
+  "ref_field": null,
+  "scope_note": "",
+  "researcher_initials": "AI-draft (sweep, orchestrator-corrected)",
+  "field_name": "Capacity [ref]",
+  "old_value": "http://abarrelfull.wikidot.com/punta-sayago-floating-lng-terminal",
+  "new_value": "",
+  "delete": true,
+  "confidence": "green",
+  "source_tier": "deliberate blanking",
+  "ref_urls": [],
+  "dropped_urls_dead": [],
+  "dropped_urls_banned": [
+   "http://abarrelfull.wikidot.com/punta-sayago-floating-lng-terminal"
+  ],
+  "source_notes": "ORCHESTRATOR QC-GATE REWRITE (2026-08-11): the shard staged this record against terminal_id T100000058656 / 'Gas Sayago LNG Terminal (Montevideo)' — neither exists in the fresh export (the terminal is T100000130580 / 'GNL Del Plata FSRU'; only the unit_id matched) — and its old_value did not match the live cell: it listed abarrelfull slugs and a 2b1stconsulting URL (…/gas-sayago-lng-terminal-in-uruguay/) that returns HTTP 404 and is not in the database. Identity and old_value re-read from the fresh export and the merge recomputed from the ACTUAL cell contents. The live Capacity [ref] cell holds ONE URL and it is banned (abarrelfull, user directive 2026-07-17) — so removing it empties the cell. Staged as a deliberate blanking (green + empty + delete:true), not an orphan: nothing survives to merge and no replacement citation for GEM's 0.10 mtpa could be found. The Capacity VALUE is left unchanged and the conflict is escalated in qa — the one verified source for this project (2b1stConsulting, PASS for 'Montevideo'/'2007') states a phase-1 regasification capacity of 10 million m3/d, i.e. ~2.68 mtpa, which contradicts GEM's 0.10 mtpa by ~27x. A single non-primary source and a derived unit conversion are not enough to overwrite a stored value, so this is a reviewer decision, not a staged edit."
+ },
+ {
+  "terminal_id": "T100000130580",
+  "unit_id": "G100002058000",
+  "terminal_name": "GNL Del Plata FSRU",
+  "unit_name": "--",
+  "country": "Uruguay",
+  "ref_field": null,
+  "scope_note": "",
+  "researcher_initials": "AI-draft (sweep, orchestrator-corrected)",
+  "field_name": "ProposalDate [ref]",
+  "old_value": "http://abarrelfull.wikidot.com/montevideo-lng-terminal, https://www.2b1stconsulting.com/uruguay-to-go-on-his-own-with-montevideo-lng-regas-terminal/",
+  "new_value": "https://www.2b1stconsulting.com/uruguay-to-go-on-his-own-with-montevideo-lng-regas-terminal/",
+  "confidence": "yellow",
+  "source_tier": "single non-primary (post-ban-removal)",
+  "ref_urls": [
+   "https://www.2b1stconsulting.com/uruguay-to-go-on-his-own-with-montevideo-lng-regas-terminal/"
+  ],
+  "dropped_urls_dead": [],
+  "dropped_urls_banned": [
+   "http://abarrelfull.wikidot.com/montevideo-lng-terminal"
+  ],
+  "source_notes": "ORCHESTRATOR QC-GATE REWRITE (2026-08-11): the shard staged this record against terminal_id T100000058656 / 'Gas Sayago LNG Terminal (Montevideo)' — neither exists in the fresh export (the terminal is T100000130580 / 'GNL Del Plata FSRU'; only the unit_id matched) — and its old_value did not match the live cell: it listed abarrelfull slugs and a 2b1stconsulting URL (…/gas-sayago-lng-terminal-in-uruguay/) that returns HTTP 404 and is not in the database. Identity and old_value re-read from the fresh export and the merge recomputed from the ACTUAL cell contents. Merge: banned abarrelfull URL dropped and declared; the existing 2b1stConsulting citation is LIVE and carried forward (verified PASS for 'Montevideo' + '2007'). It corroborates the stored ProposalYear 2007 — the July 2007 Uruguay-Argentina Energy Cooperation Agreement for a regasification plant near Montevideo is the dated proposal event — so no value edit is needed and the cell is not an orphan (ProposalYear = 2007 is populated). The page's 'in the years 2000' line is background context, not a dated proposal, so the shard's ~2000-vs-2007 ambiguity resolves to 2007 per the anchor-year rule (event date from the source body)."
+ }
+]

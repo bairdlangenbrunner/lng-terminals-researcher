@@ -1,0 +1,62 @@
+[
+  {
+    "category": "coverage_verdict_search_limited",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Peru (country-level)",
+    "issue": "UNVERIFIED — SEARCH-LIMITED, RE-SWEEP NEEDED. This is NOT a checked-and-empty verdict: the session's WebSearch budget (200 calls, shared across all subagents) was exhausted before/during this sweep, so the agent worked from WebFetch + CAPTCHA-blocked DuckDuckGo/Bing HTML only. Do NOT treat this country as cleared — a future discovery sweep must re-search it with a raised CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION. Original agent verdict follows. || Checked. Existing GEM roster: Peru LNG Terminal (Pampa Melchorita, operating export) and Ilo LNG Terminal (cancelled export, bi-national Peru-Bolivia pipeline concept, dormant since ~2019). Revival-checked the Ilo dead site specifically -- no new distinct project found there. Sponsor-IR/associated-gas sweep (Camisea consortium, Perupetro) surfaced no new marine LNG concept. Did find one genuine new lead: a 16 Mar 2026 MINEM/Proinversion announcement of an upcoming national LNG regasification-plant tender (no site or sponsor yet) -- routed to monitor_list, see andean-guianas.monitor.json, not staged as new_terminal (fails sponsor + location threshold elements). gem.wiki LNG-page enumeration for Peru could NOT be completed this session -- WebSearch quota was exhausted for this agent run and the gem.wiki category-page URL pattern guessed (Category:LNG_terminals_in_Peru) 404'd; this is a genuine coverage-cross-check gap, not a checked-and-empty result for §4.0b specifically.",
+    "severity": "medium",
+    "suggested_action": "No new_terminal to stage. A future sweep (or one with WebSearch budget available) should redo the §4.0b gem.wiki cross-check for Peru specifically, and re-check the Proinversion regas-plant tender for a named site/sponsor.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "coverage_verdict_search_limited",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Ecuador (country-level)",
+    "issue": "UNVERIFIED — SEARCH-LIMITED, RE-SWEEP NEEDED. This is NOT a checked-and-empty verdict: the session's WebSearch budget (200 calls, shared across all subagents) was exhausted before/during this sweep, so the agent worked from WebFetch + CAPTCHA-blocked DuckDuckGo/Bing HTML only. Do NOT treat this country as cleared — a future discovery sweep must re-search it with a raised CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION. Original agent verdict follows. || Checked. Existing GEM roster: Monteverde Pacific LNG Terminal (Guayaquil/Santa Elena, proposed import, Pacific Terminal/ARCH-authorized) and Jambeli FSRU (Bajo Alto, El Oro, shelved-inferred import, Sycar). Confirmed via direct source re-fetch that these two records already cover exactly the recurring import concepts named in the brief (Monteverde = the Pacific Terminal/ARCH project at Santa Elena; Bajo Alto = the Sycar/Jambeli site in El Oro). No third, distinct LNG import terminal or emergency-generation LNG-import project found beyond these two. Ecuador's 2023-2026 emergency-generation crisis response (power barges, hydro-drought load-shedding) that the brief flagged did not surface a separate marine-LNG import facility distinct from Monteverde/Jambeli in the sources checked. gem.wiki cross-check not completed for the same WebSearch-quota reason noted under Peru.",
+    "severity": "medium",
+    "suggested_action": "No new_terminal to stage. Redo the gem.wiki cross-check for Ecuador when search budget allows.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "coverage_verdict_search_limited",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Venezuela (country-level)",
+    "issue": "UNVERIFIED — SEARCH-LIMITED, RE-SWEEP NEEDED. This is NOT a checked-and-empty verdict: the session's WebSearch budget (200 calls, shared across all subagents) was exhausted before/during this sweep, so the agent worked from WebFetch + CAPTCHA-blocked DuckDuckGo/Bing HTML only. Do NOT treat this country as cleared — a future discovery sweep must re-search it with a raised CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION. Original agent verdict follows. || Checked. Existing GEM roster is five records: Delta Caribe Oriental Terminal, Project Venezuela LNG Terminal, Sycar Venezuela FLNG Terminal, and Venezuela Offshore LNG Terminal (all cancelled, dead sites) plus Eni/Repsol Perla FLNG (proposed, active). Revival-checked all four dead sites for a different sponsor/design -- no new activity found at any of them. Confirmed the Dragon field (Shell/NGC) supplies Trinidad's Atlantic LNG by PIPELINE and correctly stays out of scope (not a Venezuelan terminal). No new genuinely-distinct Venezuelan FLNG/import concept found. One unconfirmed secondary-source signal surfaced during the sweep -- an AI-summarized search result referenced 'Venezuela's first LNG export contract signed in January 2026' in connection with the Perla project -- but this was NOT independently verified against a primary source this session (WebSearch quota exhausted, no direct article located/fetched). Flagging for the Update agent to verify directly rather than asserting it here.",
+    "severity": "medium",
+    "suggested_action": "No new_terminal to stage (this is existing-record territory, not discovery). Update agent for Venezuela should independently verify whether Eni/Repsol Perla FLNG has a reported Jan 2026 export contract / commercial milestone and refresh the existing record's status/substatus if confirmed.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "coverage_verdict_search_limited",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Guyana (country-level)",
+    "issue": "UNVERIFIED — SEARCH-LIMITED, RE-SWEEP NEEDED. This is NOT a checked-and-empty verdict: the session's WebSearch budget (200 calls, shared across all subagents) was exhausted before/during this sweep, so the agent worked from WebFetch + CAPTCHA-blocked DuckDuckGo/Bing HTML only. Do NOT treat this country as cleared — a future discovery sweep must re-search it with a raised CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION. Original agent verdict follows. || Checked. Existing GEM roster: Guyana LNG Terminal (proposed export, Owner Fulcrum LNG Inc, vicinity of Stabroek Block). Confirmed via OilNOW (21/25 Jun 2024, 15 Jun 2025 -- all url_verifier PASS) that Fulcrum LNG is the real, distinct entity Guyana selected from 17 proposals in Jun 2024 to partner with the government and ExxonMobil on gas monetization, and that as of Jun 2025 no gas deal/agreement had yet been signed -- consistent with the existing record's 'proposed', low-detail status; this is a status-refresh signal for the Update agent, not a new discovery. Separately investigated two other Guyana gas-monetization threads named in the brief and confirmed BOTH are correctly OUT OF SCOPE: (1) the Wales Gas-to-Energy project (NGL plant + power station fed by a subsea pipeline from Stabroek, no marine LNG movement) -- out of scope per the brief; (2) ExxonMobil's 'Longtail' development (8th Stabroek project, combining Longtail/Tripletail/Turbot non-associated-gas discoveries, SBM Offshore awarded the FPSO FEED contract Mar 2026, FID targeted 2026) -- a 5 Feb 2026 EnergyGuyana article (url_verifier PASS) explicitly states Longtail has NO LNG-export component and is designed to 'tie into the Gas-to-Energy pipeline network' for domestic power/fertiliser/industrial supply, i.e. it is a second domestic piped-gas project, not a marine LNG terminal. No EPA permit docket or Ministry of Natural Resources filing for a distinct FLNG/LNG-export concept beyond Fulcrum LNG was found (WebSearch quota exhausted mid-sweep limited the depth of this check). gem.wiki cross-check for Guyana not completed for the same reason.",
+    "severity": "medium",
+    "suggested_action": "No new_terminal to stage. Update agent for Guyana should refresh Fulcrum LNG record status per the Jun 2025 'no deal signed' signal if not already reflected. Re-run the EPA/MNR regulator check and the gem.wiki cross-check when search budget allows.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "coverage_verdict_search_limited",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Suriname (country-level)",
+    "issue": "UNVERIFIED — SEARCH-LIMITED, RE-SWEEP NEEDED. This is NOT a checked-and-empty verdict: the session's WebSearch budget (200 calls, shared across all subagents) was exhausted before/during this sweep, so the agent worked from WebFetch + CAPTCHA-blocked DuckDuckGo/Bing HTML only. Do NOT treat this country as cleared — a future discovery sweep must re-search it with a raised CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION. Original agent verdict follows. || Checked. Existing GEM roster: Firebird LNG Terminal (Nickerie, shelved-confirmed export, Phoenix/Firebird LLC -- stalled, equipment reportedly sold to Fermi LLC per the existing record's own Oct 2025 Fortune/SEC citations) and Petronas FLNG Terminal (proposed export, Petronas 80% / Paradise Oil Company NV 20%). Confirmed via url_verifier (PASS) that Block 58/GranMorgu (TotalEnergies/APA) is an OIL development (220,000 bpd FPSO, FID Oct 2024, first oil targeted 2028) with no sanctioned gas-export/FLNG component; a deepwaterinsight.com commentary piece frames Suriname's gas future as an open 'crude, FLNG, or both' question but names no sponsor, site, or concrete step for any Block-58-tied FLNG distinct from the already-tracked Petronas FLNG Terminal. Treated as ambient industry speculation, below even monitor-list threshold (no sponsor/location/step) -- not staged. Searched in Dutch as well as English (Staatsolie coverage); no distinct new candidate surfaced.",
+    "severity": "medium",
+    "suggested_action": "No candidate to stage. Re-check if Block 58 gas-monetization plans firm up with a named sponsor/site distinct from the existing Petronas FLNG Terminal record.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "tooling_limitation",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "Andean + Guianas cluster (all 5 countries)",
+    "issue": "This session's WebSearch tool budget was exhausted (0 successful WebSearch calls available) before this sweep began, forcing reliance on WebFetch against DuckDuckGo HTML/lite endpoints (intermittently CAPTCHA-blocked) and direct guesses at gem.wiki category-page URLs (which 404'd -- the correct gem.wiki category naming convention for these countries was not established). As a result the §4.0b gem.wiki-vs-CSV cross-check was NOT completed for any of the five countries, and Ring A (national regulator dockets: Guyana EPA, Guyana MNR, Peru MINEM/Perupetro/SENACE beyond the one MINEM item found, Ecuador ARCERNNR/MAATE, Suriname Staatsolie annual/quarterly reports, Venezuela beyond general press) was covered only shallowly relative to the brief's ask.",
+    "severity": "medium",
+    "suggested_action": "A follow-up discovery pass for this cluster (with WebSearch budget available) should prioritize: (1) the gem.wiki cross-check for all five countries, (2) direct Staatsolie report review for Suriname, (3) direct Guyana EPA/MNR docket review, before this cluster can be marked fully swept per the SOP's Ring A/B/C standard.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  }
+]

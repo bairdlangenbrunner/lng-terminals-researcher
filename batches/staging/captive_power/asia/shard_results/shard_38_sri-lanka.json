@@ -1,0 +1,196 @@
+[
+  {
+    "terminal": "Hambantota LNG Terminal",
+    "terminal_id": "T100000130970",
+    "country": "Sri Lanka",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "Screened: the only design ever published for this project is a bare floating storage unit (FSU) for regional LNG trading/transshipment (small carriers re-distributing LNG to South India and the Maldives) — no regasification plant, no onshore or vessel power-generation equipment, no vessel ever selected. The project stalled after the 2020-21 investment/partner announcements and GEM already carries it as cancelled (inferred, ~4 years dormant).",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Sri Lanka's Board of Investment signed a $97.2m agreement with Pearl Energy (Pvt) Ltd in Aug 2020 for \"a floating storage unit (FSU) with an initial capacity of one million tons per annum\" (Daily FT). The same article states the purpose explicitly: \"The venture will bring LNG to the doorstep of Sri Lanka, with a primary aim of trading LNG in the region... The company will deploy small LNG Carriers to re-distribute LNG to South India and the Maldives.\" This is transshipment/storage only — not a regasification/import terminal, and no power-generation, FSRU conversion, or captive-power equipment was ever announced. SOCAR Trading joined as a partner in March 2021 (widely reported, e.g. LNG Journal/EconomyNext) but no further technical development followed before the project went dormant.",
+    "refs": [
+      "https://www.ft.lk/front-page/BOI-signs-deal-with-Pearl-Energy-for-97-2-m-LNG-plant-in-Hambantota/44-705065"
+    ],
+    "verification_log": [
+      {
+        "url": "https://www.ft.lk/front-page/BOI-signs-deal-with-Pearl-Energy-for-97-2-m-LNG-plant-in-Hambantota/44-705065",
+        "tokens": [
+          "Pearl Energy",
+          "floating storage"
+        ],
+        "result": "PASS",
+        "note": "Daily FT primary news coverage of the BOI-Pearl Energy investment agreement"
+      }
+    ],
+    "gogpt_prior_assessment": "GOGPT prior is 'Hambantota power station' (400 MW, 2.29 km away, gogpt_captive already False). Not this terminal's captive power: Hambantota power station is a separate, independently cancelled generation project with no documented ownership, contractual, or fuel-supply link to the Pearl Energy/SOCAR LNG hub — the LNG hub's own design was storage/transshipment only, never a domestic power-supply project, so there is no plausible fenceline relationship regardless of the 2.29 km distance. Could not find an independent (non-gem.wiki) public source with further technical detail on this specific power station to cite; GOGPT's own captive=False flag is consistent with no relationship.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No generating plant exists at this LNG project at all — the design was bare LNG storage/transshipment (FSU), never regasification, and it never proceeded past a 2020-21 investment-agreement stage.",
+    "status_or_other_findings": "GEM already carries this terminal as cancelled (inferred). Contemporary coverage (Daily FT, Hiru News, Sunday Times, EconomyNext, LNG Journal, Aug 2020) confirms the deal was only ever a floating storage/trading concept aimed at South India and the Maldives, not a domestic import/regas terminal.",
+    "notes": "Not a PowerPlantsSupplied case either — the FSU's design purpose was regional trading via small-carrier re-distribution, not piping gas ashore to any Sri Lankan power plant."
+  },
+  {
+    "terminal": "Kerawalapitiya LNG Terminal",
+    "terminal_id": "T100000130316",
+    "country": "Sri Lanka",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "Direction test: this offshore FSRU (awarded to China Harbour Engineering Co, 375 MMscfd regas capacity, 156,000 m³ LNG storage, still pre-construction/in take-or-pay negotiation as of 2026) exists to pipe regasified gas ashore to Kerawalapitiya-area power generation, not to power itself. The specific GOGPT-linked 'Kerawalapitiya LNG power station' (up to ~700 MW, the CEB-tendered Sahasdhanavi/Lakdhanavi/LTL Holdings BOOT project) is a separate, independently developed and PPA-contracted power plant with no ownership tie to CHEC's FSRU. No source at any stage of this project's development describes on-site/onboard power generation for the FSRU itself.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "The Morning (2026) reports the FSRU's \"regasification capacity of 375 million standard cubic feet per day and minimum LNG storage of 156,000 cubic metres,\" and that Kerawalapitiya was selected \"due to its suitability for natural gas-fired power generation\" — i.e. the terminal's purpose is to supply an area power-generation cluster, not to self-power. TELO (Dec 2024) confirms Cabinet approved awarding the project to China Harbour Engineering Co (CHEC), with FSRU development under a 10-year Build-Own-Operate arrangement. Separately, the Ceylon Electricity Board's own project page (ceb.lk) documents that the 300 MW 'Multi Fuel Combined Cycle Power Plant at Kerawalapitiya' (the GOGPT-linked plant) was tendered by CEB on a 20-year BOOT basis to a private developer (built to run initially on diesel, later on RLNG \"when available at the site boundary\") — a wholly separate corporate entity (Sahasdhanavi Ltd / Lakdhanavi / LTL Holdings, per Lakdhanavi's own site) from the FSRU terminal owner. No captive on-site generation for the FSRU/terminal itself is documented anywhere in this chain.",
+    "refs": [
+      "https://www.themorning.lk/articles/zRlgMJzmO4TUgKLDhP8i",
+      "https://telo.org/sl-awards-kerawalapitiya-lng-project-to-china/",
+      "https://www.ceb.lk/project-detail/30/en"
+    ],
+    "verification_log": [
+      {
+        "url": "https://www.themorning.lk/articles/zRlgMJzmO4TUgKLDhP8i",
+        "tokens": [
+          "375 million",
+          "Kerawalapitiya"
+        ],
+        "result": "PASS",
+        "note": "Regas capacity + power-generation-suitability framing"
+      },
+      {
+        "url": "https://telo.org/sl-awards-kerawalapitiya-lng-project-to-china/",
+        "tokens": [
+          "China Harbour Engineering",
+          "Kerawalapitiya"
+        ],
+        "result": "PASS",
+        "note": "Cabinet award confirmation to CHEC"
+      },
+      {
+        "url": "https://www.ceb.lk/project-detail/30/en",
+        "tokens": [
+          "Multi Fuel Combined Cycle",
+          "Kerawalapitiya"
+        ],
+        "result": "PASS",
+        "note": "CEB primary/regulatory project page for the GOGPT-linked plant, confirms separate BOOT developer"
+      },
+      {
+        "url": "https://www.lakdhanavi.lk",
+        "tokens": [
+          "Sahasdhanavi",
+          "PPA"
+        ],
+        "result": "PASS",
+        "note": "Confirms Sahasdhanavi/LTL Holdings as the separate corporate owner of the GOGPT plant"
+      },
+      {
+        "url": "https://www.lakdhanavi.lk",
+        "tokens": [
+          "Sahasdhanavi",
+          "PPA"
+        ],
+        "result": "REMOVED",
+        "note": "Citation-fixer pass (2026-07-31): removed from refs -- bare homepage (no specific page found supporting the Sahasdhanavi/LTL Holdings ownership claim), and a bare domain/homepage is never a citation per CLAUDE.md hard requirements. Three remaining refs (themorning.lk, telo.org, ceb.lk) already independently support the direction-test finding; confidence remains green."
+      }
+    ],
+    "gogpt_prior_assessment": "GOGPT prior is 'Kerawalapitiya LNG power station' (700 MW, 1.42 km away, gogpt_captive already False). Not this terminal's captive power — it is the classic direction-test/captive-to-whom case: this is the merchant CCGT complex the FSRU is being built to supply gas to (via pipeline), developed and owned independently by Sahasdhanavi Ltd (Lakdhanavi/LTL Holdings) under a CEB PPA/BOOT arrangement, not by CHEC (the FSRU terminal owner). Independent info_url: https://www.ceb.lk/project-detail/30/en (CEB's own project page).",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "GOGPT record already exists for the associated power plant, and in any case it is not this terminal's own generation — it belongs to a separate developer (Sahasdhanavi/LTL Holdings) under a CEB PPA, the opposite (PowerPlantsSupplied) relationship.",
+    "status_or_other_findings": "As of 2026 the project remains pre-construction: Cabinet approved the CHEC award in Dec 2024, but The Morning (2026) reports the government is reconsidering the deal's take-or-pay clause given limited current LNG demand. Not acted on — flagged for a status/update batch, not staged here.",
+    "notes": "PowerPlantsSupplied direction case: this FSRU's whole purpose is to supply gas to the Kerawalapitiya-area power-generation cluster (the GOGPT 'Kerawalapitiya LNG power station' plant and/or Sobadhanavi), which is the correct field for this relationship — not CaptiveGasPower. No vessel has been named/chartered yet (still pre-construction), so there is no FSRU-specific onboard-genset detail to check. Citation-fixer pass (2026-07-31): dropped the bare-homepage ref https://www.lakdhanavi.lk from refs; the three remaining refs are sufficient corroboration and confidence stays green."
+  },
+  {
+    "terminal": "New Fortress Colombo LNG Terminal",
+    "terminal_id": "T100000131055",
+    "country": "Sri Lanka",
+    "verdict": "NO",
+    "mechanical": "False",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "Direction test: New Fortress Energy's proposed offshore FSRU off Colombo was designed to secure \"gas supply rights to the Kerawalapitiya Power Complex,\" delivering ~1.2 million gallons/day of LNG to power the existing Yugadanavi plant (310 MW) and the planned Sobadanavi plant (350 MW) — gas flows OUT of the terminal to those external power stations, which is the PowerPlantsSupplied relationship, not captive power. No source describes any on-site/onboard power generation for the FSRU or terminal itself. Project is now cancelled (confirmed) per GEM.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Colombo Gazette (Mar 2022) quotes the agreement directly: \"NFE will have gas supply rights to the Kerawalapitya Power Complex and will initially provide GOSL an estimated 1.2 million gallons per day of LNG,\" serving the operational Yugadanavi Power Plant (310 MW) and the planned Sobadanavi facility (350 MW). Lanka News Web (2024/2025 revival coverage) corroborates the same Kerawalapitiya Power Complex / Yugadanavi (310 MW) / Sobadanavi (350 MW) supply relationship and confirms development of \"an LNG terminal infrastructure off Colombo's coast.\" Neither source, nor any other found in this search, mentions onboard/on-site power generation on the proposed FSRU — the entire published design is a gas-supply (regas + pipeline) arrangement to feed the named external power plants. New Fortress Energy separately holds a 40% stake in West Coast Power (owner of Yugadanavi), which is the offtake relationship, not a captive-generation one.",
+    "refs": [
+      "https://colombogazette.com/2022/03/09/new-fortress-to-provide-sri-lanka-estimated-1-2-million-gallons-of-lng-per-day",
+      "https://lankanewsweb.net/archives/68309/new-government-revives-us-lng-deal-amid-india-and-china-partnerships/"
+    ],
+    "verification_log": [
+      {
+        "url": "https://colombogazette.com/2022/03/09/new-fortress-to-provide-sri-lanka-estimated-1-2-million-gallons-of-lng-per-day",
+        "tokens": [
+          "Kerawalapitya Power Complex",
+          "1.2 million gallons"
+        ],
+        "result": "PASS",
+        "note": "Primary quote of the gas-supply agreement and named offtake plants"
+      },
+      {
+        "url": "https://lankanewsweb.net/archives/68309/new-government-revives-us-lng-deal-amid-india-and-china-partnerships/",
+        "tokens": [
+          "Kerawalapitiya",
+          "Yugadanavi"
+        ],
+        "result": "PASS",
+        "note": "Independent corroboration of the same supply relationship"
+      }
+    ],
+    "gogpt_prior_assessment": "No GOGPT prior was provided for this terminal (gogpt_prior: no).",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No on-site generating plant exists or was ever designed for this terminal — its entire published purpose is gas supply to external power stations (Yugadanavi/Sobadanavi), owned by a different corporate structure (West Coast Power, in which NFE holds a minority 40% stake as an offtake/investment relationship, not a captive fenceline plant).",
+    "status_or_other_findings": "GEM already carries this as cancelled (confirmed). Coverage through 2022-2026 (court challenges, CIABOC complaint, government revival attempts under the new administration) all concern the commercial/legal fate of the gas-supply agreement, not any change to the terminal's design.",
+    "notes": "Textbook PowerPlantsSupplied direction case — flag Yugadanavi Power Plant (310 MW) and Sobadanavi Power Plant (350 MW) as the correct field for this relationship in a future Update batch; do not stage as CaptiveGasPower. No FSRU vessel was ever publicly named for this project."
+  },
+  {
+    "terminal": "SK Group Sri Lanka LNG Terminal",
+    "terminal_id": "T100000130971",
+    "country": "Sri Lanka",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "green",
+    "captive_summary": "Screened: SK E&S's unsolicited FSRU proposal (submitted Dec 2017, evaluated under the Swiss Challenge procurement method through 2018) never advanced past the bid-submission stage — no FEED, no vessel, no technical design was ever published, and it was never chartered/built. Sri Lanka's eventual FSRU tender/award (2021 tender, Dec 2024 Cabinet approval) went to a different bidder (China Harbour Engineering Co), confirming SK's proposal was superseded and abandoned. GEM already carries this as cancelled (inferred, ~4 years dormant).",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Offshore Energy (2018) reports SK E&S offered to provide the FSRU \"free-of-charge, while the government would have to fund the pipeline,\" tied to \"an order for 1 million tons of liquefied natural gas per year for over 20 years\" (start H2 2020 – March 2040), \"put forward for approval by the Ceylon Electricity Board\" under the Swiss Challenge method — i.e. a commercial-terms bid, not an engineering design. TELO's coverage of the eventual Kerawalapitiya award confirms the government instead selected China Harbour Engineering Co (with Petronet Pakistan/Engro Corp as the other formally tendered bidder) through the 2021 tender process finalized in 2024/2025 — SK's 2017-18 proposal is absent from that process, consistent with it having lapsed. No captive-power or any other technical design detail was ever published for the SK proposal.",
+    "refs": [
+      "https://www.offshore-energy.biz/sk-es-company-to-build-lng-import-terminal-in-sri-lanka/",
+      "https://telo.org/sl-awards-kerawalapitiya-lng-project-to-china/"
+    ],
+    "verification_log": [
+      {
+        "url": "https://www.offshore-energy.biz/sk-es-company-to-build-lng-import-terminal-in-sri-lanka/",
+        "tokens": [
+          "Swiss Challenge",
+          "1 million tons"
+        ],
+        "result": "PASS",
+        "note": "Primary/contemporary trade-press coverage of the SK E&S bid terms"
+      },
+      {
+        "url": "https://telo.org/sl-awards-kerawalapitiya-lng-project-to-china/",
+        "tokens": [
+          "China Harbour Engineering",
+          "Kerawalapitiya"
+        ],
+        "result": "PASS",
+        "note": "Confirms the eventual award went to a different bidder, corroborating SK's proposal lapsed"
+      }
+    ],
+    "gogpt_prior_assessment": "No GOGPT prior was provided for this terminal (gogpt_prior: no).",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No generating plant was ever designed — the proposal never reached FEED/design stage before being superseded by a competing bidder.",
+    "status_or_other_findings": "GEM already carries this as cancelled (inferred). No SK Group/SK E&S involvement appears anywhere in 2021-2026 coverage of the Kerawalapitiya FSRU award or tender, consistent with the project being dormant/abandoned since ~2018.",
+    "notes": "Same underlying Kerawalapitiya power-supply target as the CHEC FSRU (SK's bid was also \"tied to\" gas-fired power generation), but the proposal never reached a stage where a direction-test or captive-power finding could even be assessed — screened on lack of any published design, not on the direction test."
+  }
+]

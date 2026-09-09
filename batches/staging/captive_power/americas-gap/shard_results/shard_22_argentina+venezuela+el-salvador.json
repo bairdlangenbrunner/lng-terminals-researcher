@@ -1,0 +1,255 @@
+[
+ {
+  "terminal": "Bahia Blanca GasPort FSRU",
+  "terminal_id": "T100000130538",
+  "country": "Argentina",
+  "verdict": "YES",
+  "mechanical": "False",
+  "captive_category": "power_generation",
+  "hardware_summary": "Excelerate Excelsior is confirmed on Excelerate Energy's own fleet roster (138,000 m3, 690 MMscf/d peak send-out); Excelerate's fleet-wide sustainability disclosure states its FSRU/carrier fleet runs on dual-fuel engines burning predominantly LNG (95.9% of fleet fuel mix) with MGO as backup fuel.",
+  "fuel_basis": "gas (dual-fuel engines, predominantly LNG/boil-off gas with MGO backup, per Excelerate's fleet-wide 95.9%-LNG fuel-mix disclosure)",
+  "confidence": "green",
+  "captive_summary": "Bahia Blanca GasPort is served by the moored FSRU Excelerate Excelsior (idled). Excelerate Energy's own fleet page confirms Excelsior as part of its FSRU fleet (138,000 cbm, 690 MMscf/d), and Excelerate's 2024 Sustainability Report discloses that its fleet runs dual-fuel engines burning predominantly LNG/boil-off gas (95.9% of fuel mix) with MGO as backup — an operator-primary disclosure of the vessel's own onboard power generation, satisfying the FSRU-onboard convention. As a permanently moored offshore unit it has no grid connection of its own; this operator disclosure now documents that self-generation as gas-capable.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Checked Excelerate Energy Inc.'s FY2022 and FY2023 Form 10-K (SEC EDGAR CIK 0001888447, full-text search via efts.sec.gov) - both mention Bahia Blanca/Excelsior only in market-context passages, no vessel power-plant description. ENARGAS audiencia-publica filing for Bahia Blanca (enargas.gob.ar, retrieved via Wayback) is a one-page scanned notice/image with no extractable technical text. No dedicated Wikipedia or trade-press page surfaced with vessel generator specs despite repeated queries (Marginalia Search, Wayback-guessed URLs); DuckDuckGo/Bing/Google web search endpoints returned CAPTCHA walls or empty/blocked results all session, and the WebSearch tool's session budget was already exhausted before this shard began. QC adjudication follow-up (2026-08-02): fetched excelerateenergy.com/our-operations/floating-lng-terminals/ directly, whose 'Meet our fleet' table names Excelerate Excelsior (138,000 m3 / 690 MMscf/d) as a current fleet vessel; paired with the company's own 2024 Sustainability Report (excelerateenergy.com/wp-content/uploads/2025/08/Excelerate-Energy-2024-SR-080125.pdf), which discloses the fleet's dual-fuel engines and 95.9% LNG fuel mix — the same source pairing already accepted in this corpus for Excelerate Sequoia and Excelerate Experience. url_verifier PASS on both URLs.",
+  "refs": [
+   "https://excelerateenergy.com/wp-content/uploads/2025/08/Excelerate-Energy-2024-SR-080125.pdf",
+   "https://excelerateenergy.com/our-operations/floating-lng-terminals/"
+  ],
+  "verification_log": [
+   {
+    "url": "https://excelerateenergy.com/our-operations/floating-lng-terminals/",
+    "tokens": [
+     "Excelsior"
+    ],
+    "result": "PASS",
+    "note": "QC pass 2026-08-02: fleet table lists Excelerate Excelsior at 138,000 m3 / 690 MMscf/d"
+   },
+   {
+    "url": "https://excelerateenergy.com/wp-content/uploads/2025/08/Excelerate-Energy-2024-SR-080125.pdf",
+    "tokens": [
+     "95.9"
+    ],
+    "result": "PASS",
+    "note": "QC pass 2026-08-02: fleet-wide 95.9% LNG fuel-mix disclosure"
+   },
+   {
+    "url": "https://excelerateenergy.com/wp-content/uploads/2025/08/Excelerate-Energy-2024-SR-080125.pdf",
+    "tokens": [
+     "dual-fuel"
+    ],
+    "result": "PASS",
+    "note": "QC pass 2026-08-02: confirms dual-fuel engine language"
+   }
+  ],
+  "gogpt_prior_assessment": "Nearest GOGPT plant is Solalban Energía power station (120 MW, 2 units, 1.55 km, gogpt_captive=False). Owner of the terminal is YPF SA / Energia Argentina SA; no ownership link to Solalban was found or is implied by GEM's own gogpt_captive=False flag. Treated as an independent merchant IPP unrelated to the FSRU, not the terminal's own equipment - could not source an independent (non-gem.wiki) info_url about Solalban this session.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "No sourced, distinct on-site generating plant belonging to this terminal was identified to add; the neighboring Solalban Energía plant is an unrelated third-party merchant station, not this terminal's captive power.",
+  "status_or_other_findings": "",
+  "notes": "Facility is floating/offshore; vessel = Excelerate Excelsior; current GEM status = idled. Search tooling this session was unusually degraded (WebSearch budget exhausted, DDG/Bing/Google blocked) which limited depth of this INSUFFICIENT finding; a future pass with working search should re-check ENARGAS's full Estudio de Impacto Ambiental for GasPort Bahia Blanca, which was not locatable via Wayback CDX this session. QC adjudication 2026-08-02 (FSRU harmonization pass): INSUFFICIENT upgraded to YES — Excelerate's own fleet page confirms Excelsior in its fleet, and its 2024 Sustainability Report discloses fleet-wide dual-fuel, predominantly-LNG-fuelled generation. Fleet/class-level evidence accepted per applied asia/ME precedent (Aqaba, Khor Al-Zubair, Mina Al-Ahmadi)."
+ },
+ {
+  "terminal": "Dock Sud LNG Terminal",
+  "terminal_id": "T100000130540",
+  "country": "Argentina",
+  "verdict": "INSUFFICIENT",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "red",
+  "captive_summary": "Proposed land-based import terminal (Corporación America International / YPF) at Dock Sud, cancelled (inferred ~4y). No engineering-level design documentation surfaced this session describing any power arrangement (captive or grid-fed).",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "No project-specific environmental/permitting filing or trade-press engineering description was located this session (Marginalia Search returned zero hits for multiple phrasings; Wikipedia has no dedicated page; DDG/Bing/Google web search blocked). Could not confirm whether the project reached FEED or a comparable design stage at which power source would be specified.",
+  "refs": [],
+  "verification_log": [],
+  "gogpt_prior_assessment": "Nearest GOGPT plant is Dock Sud power station (926 MW, 2 units, 1.36 km, gogpt_captive=False) - a large existing merchant/utility thermal station in the dense Buenos Aires metro grid (Costanera 2,819 MW is the rank-2 neighbor at 1.97 km). The terminal's owners (Corporación America International, YPF) are not documented as owners of Dock Sud power station; treated as an unrelated pre-existing grid asset, not this proposed terminal's captive plant. Could not source an independent non-gem.wiki info_url this session.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "No sourced captive generating plant tied to this cancelled proposal was found; the neighboring Dock Sud and Costanera stations are large pre-existing merchant plants in the metro Buenos Aires grid, unrelated to this terminal.",
+  "status_or_other_findings": "",
+  "notes": "Site sits inside a very well-developed grid area (adjacent to two of Argentina's largest thermal stations), which weighs against an off-grid/self-generation design if the project had proceeded, but this is a contextual prior, not a documented finding for THIS project."
+ },
+ {
+  "terminal": "Escobar FSRU",
+  "terminal_id": "T100000130542",
+  "country": "Argentina",
+  "verdict": "YES",
+  "mechanical": "False",
+  "captive_category": "power_generation",
+  "hardware_summary": "Excelerate Expedient is confirmed on Excelerate Energy's own fleet roster (150,900 m3, 690 MMscf/d peak send-out); Excelerate's fleet-wide sustainability disclosure states its FSRU/carrier fleet runs on dual-fuel engines burning predominantly LNG (95.9% of fleet fuel mix) with MGO as backup fuel.",
+  "fuel_basis": "gas (dual-fuel engines, predominantly LNG/boil-off gas with MGO backup, per Excelerate's fleet-wide 95.9%-LNG fuel-mix disclosure)",
+  "confidence": "green",
+  "captive_summary": "Escobar FSRU (GNL Escobar), operating, served by the Excelerate Expedient. Excelerate Energy's own fleet page confirms Expedient as part of its FSRU fleet (150,900 cbm, 690 MMscf/d), and Excelerate's 2024 Sustainability Report discloses that its fleet runs dual-fuel engines burning predominantly LNG/boil-off gas (95.9% of fuel mix) with MGO as backup — an operator-primary disclosure of the vessel's own onboard power generation, satisfying the FSRU-onboard convention.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Same search set as Bahia Blanca GasPort FSRU: Excelerate Energy 10-Ks (SEC EDGAR, CIK 0001888447) mention Escobar only in passing market context, not vessel technical detail; no dedicated Wikipedia page (es.wikipedia.org/wiki/GNL_Escobar returned 404); Marginalia Search and Wayback-guessed URLs for ENARGAS/YPF technical filings turned up nothing vessel-specific; general web search engines blocked/CAPTCHA'd all session. QC adjudication follow-up (2026-08-02): fetched excelerateenergy.com/our-operations/floating-lng-terminals/ directly, whose 'Meet our fleet' table names Excelerate Expedient (150,900 m3 / 690 MMscf/d) as a current fleet vessel; paired with the company's own 2024 Sustainability Report (excelerateenergy.com/wp-content/uploads/2025/08/Excelerate-Energy-2024-SR-080125.pdf), which discloses the fleet's dual-fuel engines and 95.9% LNG fuel mix — the same source pairing already accepted in this corpus for Excelerate Sequoia and Excelerate Experience. url_verifier PASS on both URLs.",
+  "refs": [
+   "https://excelerateenergy.com/wp-content/uploads/2025/08/Excelerate-Energy-2024-SR-080125.pdf",
+   "https://excelerateenergy.com/our-operations/floating-lng-terminals/"
+  ],
+  "verification_log": [
+   {
+    "url": "https://excelerateenergy.com/our-operations/floating-lng-terminals/",
+    "tokens": [
+     "Expedient"
+    ],
+    "result": "PASS",
+    "note": "QC pass 2026-08-02: fleet table lists Excelerate Expedient at 150,900 m3 / 690 MMscf/d"
+   },
+   {
+    "url": "https://excelerateenergy.com/wp-content/uploads/2025/08/Excelerate-Energy-2024-SR-080125.pdf",
+    "tokens": [
+     "95.9"
+    ],
+    "result": "PASS",
+    "note": "QC pass 2026-08-02: fleet-wide 95.9% LNG fuel-mix disclosure"
+   },
+   {
+    "url": "https://excelerateenergy.com/wp-content/uploads/2025/08/Excelerate-Energy-2024-SR-080125.pdf",
+    "tokens": [
+     "dual-fuel"
+    ],
+    "result": "PASS",
+    "note": "QC pass 2026-08-02: confirms dual-fuel engine language"
+   }
+  ],
+  "gogpt_prior_assessment": "No gogpt_prior match recorded for this terminal in the shard dispatch (gogpt_prior: no). neighbors_raw.json lists Matheu III power station (254 MW, retired, 18.6 km) and Manuel Belgrano I (868 MW, 23.2 km) as the two nearest GOGPT plants - both well outside a plausible colocation radius and Matheu III is retired. Neither is this terminal's captive power.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "No sourced captive generating plant belonging to this terminal was found; nearest GOGPT plants are 18+ km away and unrelated.",
+  "status_or_other_findings": "",
+  "notes": "Facility is floating/offshore; vessel = Excelerate Expedient; GEM status = operating. QC adjudication 2026-08-02 (FSRU harmonization pass): INSUFFICIENT upgraded to YES — Excelerate's own fleet page confirms Expedient in its fleet, and its 2024 Sustainability Report discloses fleet-wide dual-fuel, predominantly-LNG-fuelled generation. Fleet/class-level evidence accepted per applied asia/ME precedent (Aqaba, Khor Al-Zubair, Mina Al-Ahmadi)."
+ },
+ {
+  "terminal": "Delta Caribe Oriental Terminal",
+  "terminal_id": "T100000130626",
+  "country": "Venezuela",
+  "verdict": "INSUFFICIENT",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "red",
+  "captive_summary": "Two-train (T1/T2) PDVSA LNG export proposal on the Sucre coast, cancelled (inferred ~4y); this is the project historically associated with the Mariscal Sucre gas fields (Cristóbal Colón / Josefa Camejo trains, at various points partnered with Chevron/Statoil/Mitsubishi before reverting to PDVSA-only). The project is known to have reached real engineering work, but no source found this session documents the liquefaction trains' specific power arrangement (gas-turbine mechanical drive is near-universal industry design for LNG trains at FEED stage, but that is a general industry prior, not a project-specific citation).",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Searched offshore-technology.com/hydrocarbons-technology.com project-profile pages (the usual home for this kind of engineering summary) - the expected /projects/marisc/ slug 404s live and has no Wayback snapshot; Wayback CDX domain sweep of offshore-technology.com for Sucre/Venezuela-LNG slugs found nothing on point. Wikipedia (en/es) has no dedicated project page. Marginalia Search returned no results for several phrasings (Mariscal Sucre gas turbine liquefaction; Cristobal Colon LNG compressor). Trade-press archives (naturalgasintel, LNG Journal, Reuters) were not reachable this session (web search engines blocked/CAPTCHA'd, WebSearch tool budget already exhausted).",
+  "refs": [],
+  "verification_log": [],
+  "gogpt_prior_assessment": "Nearest GOGPT plant is Juan Manuel Valdez power station (700 MW, 4 units, 4.19 km, gogpt_captive=False, status mixed cancelled/mothballed/operating across units). This is a PDVSA-affiliated domestic power station in Sucre state but is not documented as part of the LNG export project's own design; treated as a separate pre-existing/independent asset pending sourcing.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "No sourced project-specific power design was found to add as a distinct captive plant; Juan Manuel Valdez already exists as its own GOGPT record and is not documented as this LNG project's equipment.",
+  "status_or_other_findings": "",
+  "notes": "This and the following two Venezuela terminals are long-dead proposals; per dispatch guidance these reached real FEED-level engineering historically (unlike a pure paper concept), so SCREENED (which implies never-designed) was not used - INSUFFICIENT better reflects that a design existed but its power details are not recoverable from sources reachable this session."
+ },
+ {
+  "terminal": "Project Venezuela LNG Terminal",
+  "terminal_id": "T100000130624",
+  "country": "Venezuela",
+  "verdict": "INSUFFICIENT",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "red",
+  "captive_summary": "This is the original 'Venezuela LNG' (VLNG) export project on the Paria Peninsula (owners ExxonMobil, Mitsubishi, PDVSA, Shell match the historical VLNG sponsor group), which reached FEED (reportedly with Bechtel) in the early 2000s before being shelved. No source found this session documents the liquefaction trains' power design specifically.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Same search set as Delta Caribe Oriental: offshore/hydrocarbons-technology.com project-profile lookups (404, no Wayback snapshot for a matching slug), Wikipedia (no dedicated page), Marginalia Search (no results for 'Venezuela LNG project Bechtel FEED ExxonMobil Shell Mitsubishi turbine' - only unrelated hits returned), general web search blocked. No SEC/EDGAR filings apply since none of the sponsors are Venezuela-specific single-purpose filers.",
+  "refs": [],
+  "verification_log": [],
+  "gogpt_prior_assessment": "No GOGPT neighbor was recorded for this terminal_id in neighbors_raw.json (grep returned no block for T100000130624) and the shard dispatch itself carries gogpt_prior: no.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "No sourced power design and no nearby GOGPT plant identified.",
+  "status_or_other_findings": "",
+  "notes": "Long-dead (shelved ~2004) sponsor consortium project; see Delta Caribe Oriental record for the shared reasoning on why SCREENED vs INSUFFICIENT was chosen."
+ },
+ {
+  "terminal": "Venezuela Offshore LNG Terminal",
+  "terminal_id": "T100000130625",
+  "country": "Venezuela",
+  "verdict": "INSUFFICIENT",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "red",
+  "captive_summary": "PDVSA/Rosneft 50-50 offshore LNG proposal (Rosneft as operator), cancelled/confirmed dead. This is a considerably more obscure project than the other two Venezuela entries in this shard - no engineering or design-stage documentation of any kind was located this session, so it is not possible to determine whether it ever reached a stage at which a power design would exist.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Marginalia Search, Wikipedia (en/es) and offshore-technology.com project-profile lookups returned nothing on a Rosneft/PDVSA offshore LNG project; general web search engines were blocked/CAPTCHA'd all session and the WebSearch tool's session budget was already exhausted before this shard began, which is the main limiter here - a fresh search-tool budget would likely be needed to responsibly resolve this one either to INSUFFICIENT-confirmed or SCREENED.",
+  "refs": [],
+  "verification_log": [],
+  "gogpt_prior_assessment": "No GOGPT neighbor was recorded for this terminal_id in neighbors_raw.json and the shard dispatch carries gogpt_prior: no.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "No sourced power design and no nearby GOGPT plant identified.",
+  "status_or_other_findings": "",
+  "notes": "Flagging for a possible follow-up pass with working search tools given how little could be confirmed about this specific project this session (distinct from the better-known Delta Caribe/VLNG projects)."
+ },
+ {
+  "terminal": "Acajutla FSRU",
+  "terminal_id": "T100000130680",
+  "country": "El Salvador",
+  "verdict": "INSUFFICIENT",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "yellow",
+  "captive_summary": "The BW Tatiana FSRU at Acajutla regasifies LNG and sends the gas 1.8 km by subsea pipeline to the ONSHORE Energia del Pacifico (EDP) power plant - a well-documented PowerPlantsSupplied relationship, not captive power for the terminal itself. EDP's own 380 MW of generation (19x Wartsila 18V50SG gas engines + 1 steam turbine) belongs to the power plant, not to the FSRU/terminal. No source found this session describes the BW Tatiana vessel's OWN onboard hotel/regasification power plant (fuel or hardware), which is the actual captive-power question for this terminal.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "POWER Magazine, 'Feat of Engineering Provides Floating Power Solution' (quoting Invenergy VP Jose Sarmiento): 'Energia del Pacifico, or EDP...is a 380-MW power plant fueled by natural gas, with the fuel supplied via pipeline from an LNG floating storage and regasification unit (FSRU)'; and caption: 'Permanently moored at El Salvador's Port of Acajutla, the BW Tatiana is the first floating storage and regasification unit (FSRU) on the Pacific Coast of the Americas. [LNG] delivered to the FSRU is converted to natural gas that is transported via a 1.8-kilometer subsea pipeline to the onshore power plant.' Same article: 'The EDP combined cycle power plant features 19 Wartsila 18V50SG natural gas-powered reciprocating engines, each rated at 18.9 MW, and one 28-MW steam turbine generator.' This confirms the direction test (gas flows FROM the terminal TO the plant) but does not address the FSRU's own onboard power generation, which was not found in any source reachable this session (BW Group fleet pages 404; SEC EDGAR has no BW-specific filing; Marginalia/Wayback/general web search all unproductive or blocked for 'BW Tatiana' + generator/engine terms).",
+  "refs": [
+   "https://www.powermag.com/feat-of-engineering-provides-floating-power-solution/"
+  ],
+  "verification_log": [
+   {
+    "url": "https://www.powermag.com/feat-of-engineering-provides-floating-power-solution/",
+    "tokens": [
+     "BW Tatiana",
+     "380-MW"
+    ],
+    "result": "PASS",
+    "note": "live URL passed directly"
+   },
+   {
+    "url": "https://web.archive.org/web/20241001144336/https://www.powermag.com/feat-of-engineering-provides-floating-power-solution/",
+    "tokens": [
+     "BW Tatiana",
+     "380-MW"
+    ],
+    "result": "PASS",
+    "note": "Wayback snapshot also passes as backup"
+   }
+  ],
+  "gogpt_prior_assessment": "GOGPT prior plant is Pacifico Acajutla power station (378 MW, 1 unit, 2.16 km, gogpt_captive=False) = Energia del Pacifico (EDP) above, already GEM's power_plants_supplied value for this terminal (confirmed correct by the POWER Magazine source). This is NOT this terminal's captive power - it is the customer the terminal supplies gas to (direction test), which is precisely why gogpt_captive=False is correct on the GOGPT side. Rank-2 neighbor Orazul Acajutla (232 MW, 2.5 km) appears to be a separate, older thermal/diesel plant at the same port with no documented LNG linkage found this session.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "Pacifico Acajutla/EDP already exists as its own GOGPT record and is correctly flagged non-captive - it is the terminal's PowerPlantsSupplied customer, not its captive generator. No distinct onboard generating plant for the FSRU itself was sourced to add.",
+  "status_or_other_findings": "EDP construction began early 2020, entered commercial operation May 2022; ~$1.15B investment, largest FDI in El Salvador's history; 44 km 230kV transmission line to Ahuachapan connecting to the SIEPAC Central American grid. Not acted on (informational only per this workflow's scope).",
+  "notes": "PowerPlantsSupplied direction-test case: GEM's power_plants_supplied field for this terminal already correctly names 'Pacifico Acajutla power station' - the source above corroborates that value if it needs a citation. The open question for a future pass is strictly the FSRU's OWN onboard generation (hotel load, cargo pumps, regas vaporizer power) - not found this session."
+ },
+ {
+  "terminal": "El Salvador FSRU",
+  "terminal_id": "T100000130568",
+  "country": "El Salvador",
+  "verdict": "INSUFFICIENT",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "red",
+  "captive_summary": "Competing/earlier proposed FSRU import project at La Union (Fonseca Energy / Cutuco Energy), cancelled (confirmed), superseded in practice by the Acajutla FSRU/EDP project which was built instead. No design-stage documentation of any power arrangement was located this session.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "Marginalia Search returned zero results for 'El Salvador FSRU Fonseca Energy Cutuco La Union cancelled'; no Wikipedia page found; general web search engines blocked/CAPTCHA'd all session. Could not establish whether this project reached a design stage that would specify a power source.",
+  "refs": [],
+  "verification_log": [],
+  "gogpt_prior_assessment": "No GOGPT neighbor was recorded for this terminal_id in neighbors_raw.json and the shard dispatch carries gogpt_prior: no.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "No sourced power design and no nearby GOGPT plant identified.",
+  "status_or_other_findings": "",
+  "notes": "Distinguish from Acajutla FSRU (T100000130680, BW Tatiana) in this same shard, which is the built/operating project in the Gulf of Fonseca area and is much better documented."
+ }
+]

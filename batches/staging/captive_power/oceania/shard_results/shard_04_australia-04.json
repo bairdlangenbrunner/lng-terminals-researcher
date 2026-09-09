@@ -1,0 +1,111 @@
+[
+  {
+    "terminal": "Queensland Curtis LNG Terminal",
+    "terminal_id": "T100000130340",
+    "country": "Australia",
+    "verdict": "YES",
+    "mechanical": "True",
+    "captive_category": "mechanical_drive+power_generation",
+    "hardware_summary": "15 GE aeroderivative gas turbines driving 28 centrifugal compressors via gearboxes, plus generators, installed as part of QCLNG's Curtis Island LNG facility (GE's supply/service scope, per GE's own press release) — models/individual ratings not broken out in the source.",
+    "fuel_basis": "Natural gas (CSG feedstock) fired in GE aeroderivative gas turbines integral to the QCLNG facility, per GE's own press release describing its equipment/service scope.",
+    "confidence": "green",
+    "captive_summary": "QCLNG's Curtis Island facility runs 15 GE aeroderivative gas turbines driving 28 centrifugal compressors via gearboxes plus on-site generators, per GE's own press release stating its gas turbines, compressors and generators 'are integral parts of the QCLNG facility.' This confirms both mechanical-drive compression and on-site electricity generation. The current GEM ref (a Bechtel construction-progress YouTube video) does not itself document captive power and is not a useful citation for this value.",
+    "electric_mw": "",
+    "mechanical_drive_note": "15 aeroderivative gas turbines (GE) driving 28 centrifugal compressors via gearboxes; individual/aggregate shaft power and turbine model not disclosed in the source.",
+    "confirmed_how": "GE's official press release ('GE Oil & Gas Technology Used in First-Ever Large-Scale Production of LNG from Coal Seam Gas...') states the service agreement covers '15 aeroderivative gas turbines, 28 centrifugal compressors, gearboxes, generators and all auxiliaries,' and that 'GE technology of gas turbines, centrifugal compressors and generators are integral parts of the QCLNG facility.' Verified PASS for tokens 'aeroderivative', 'generators', 'Queensland Curtis'.",
+    "refs": [
+      "https://www.ge.com/news/press-releases/ge-oil-gas-technology-used-first-ever-large-scale-production-lng-coal-seam-gas-0"
+    ],
+    "verification_log": [
+      {"url": "https://www.ge.com/news/press-releases/ge-oil-gas-technology-used-first-ever-large-scale-production-lng-coal-seam-gas-0", "tokens": ["aeroderivative", "generators", "Queensland Curtis"], "result": "PASS", "note": "GE's own press release on its QCLNG equipment/service scope"},
+      {"url": "https://www.youtube.com/watch?v=mFB3arwpSKY", "tokens": ["captive power", "gas turbine"], "result": "FAIL", "note": "Current GEM ref. YouTube oembed confirms this is 'Bechtel's Curtis Island LNG construction powers on' — a generic construction-progress video from Bechtel Australia's channel, not a source documenting captive power specifically."}
+    ],
+    "gogpt_prior_assessment": "The nearest GOGPT prior, Yarwun power station (~8.5 km, listed ~180 MW), is NOT QCLNG's plant — it is Rio Tinto's own gas-fired cogeneration facility (~154-160 MW per third-party sources) serving its Yarwun alumina refinery, a different industrial host ~10 km NW of Gladstone across the harbour from Curtis Island. Confirmed via Rio Tinto's own operations page (https://www.riotinto.com/en/operations/anz/gladstone/yarwun, verified PASS for 'Yarwun'/'alumina').",
+    "gogpt_candidate": "REVIEWER CALL",
+    "gogpt_candidate_basis": "QCLNG's own on-site generation is confirmed (GE press release: gas turbines + generators integral to the facility) but no citable nameplate MW is disclosed for the generator-drive portion specifically — the release aggregates 15 gas turbines across both compressor mechanical-drive and generator duty without a breakdown, so a reviewer should judge whether a GOGPT entry is warranted pending a citable MW figure.",
+    "status_or_other_findings": "",
+    "notes": "Current GEM CaptiveGasPower ref (YouTube 'Bechtel's Curtis Island LNG construction powers on') is a generic construction video with no captive-power content per its own metadata; recommend replacing with the GE press release above. Yarwun power station is a documented industrial-host-trap case (different tenant's captive plant, not QCLNG's) — flagged for the record, not for staging."
+  },
+  {
+    "terminal": "Scarborough FLNG Terminal",
+    "terminal_id": "T100000130341",
+    "country": "Australia",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "red",
+    "captive_summary": "Scarborough FLNG was a proposed ExxonMobil/BHP floating LNG vessel (FEED-stage concept, reportedly ~495m x 75m, 6-7 Mtpa, comparable in scale to Shell's Prelude FLNG) studied roughly 2012-2016 before being shelved/cancelled in favor of Woodside's later, differently-designed Scarborough development (feeding Pluto Train 2 onshore). No public source found documents this vessel's onboard power-generation system design specifically, despite a thorough search.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Hart Energy (Nov 2013, 'Scarborough FLNG Project Clears First Hurdle') and Upstream (2012-2013 news items) report the ExxonMobil/BHP FLNG concept reaching FEED consideration, citing vessel dimensions ~495m x 75m and 6-7 Mtpa capacity. Neither these nor any other source located (GE/turbine vendor releases, EPC contractor releases, trade press) describes the onboard power plant/turbine arrangement for this specific vessel design. GEM's own record shows the project as cancelled (confirmed) under the pre-Woodside ExxonMobil (75%)/BHP (25%) ownership structure reflected in this shard.",
+    "refs": [],
+    "verification_log": [
+      {"url": "https://www.hartenergy.com/exclusives/scarborough-flng-project-clears-first-hurdle-19818", "tokens": ["495m", "6-7mt/a"], "result": "not run", "note": "Background-only finding (vessel size/capacity), not a captive-power claim, so not put through url_verifier; content read via proxy fetch confirms wording but no independent PASS logged since it isn't being staged as a citation"},
+      {"url": "https://www.upstreamonline.com/lngunlimited/giant-scarborough-flng-game-afoot/1-1-990430", "tokens": ["floating liquefaction"], "result": "not run", "note": "2012 announcement only ('ExxonMobil has started the search for a contractor to build a massive floating liquefaction unit'); no power-generation content found"},
+      {"url": "https://www.naturalgasintel.com/news/exxonmobil-bhp-plan-worlds-largest-floating-lng-plant/", "tokens": [], "result": "FAIL", "note": "403 Forbidden / bot-blocked on both direct fetch and proxy; not usable"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT prior was supplied for this terminal (gogpt_prior: no); not applicable.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No confirmed generating plant — the power-system design for this cancelled FLNG concept was never publicly disclosed in any source found; nothing to add.",
+    "status_or_other_findings": "FEED-stage vessel dimensions (~495m x 75m) and capacity (6-7 Mtpa) reported by Hart Energy (2013) and Upstream (2012-2013); GEM's cancelled/confirmed status and ExxonMobil(75%)/BHP(25%) ownership reflect this earlier FLNG concept, since superseded by Woodside's alternative development. Informational only — do not act on this.",
+    "notes": "Moored FLNG hulls of Prelude's class typically carry onboard gas-turbine generators (well documented for Prelude itself), which would suggest a design-basis YES by analogy — but per the brief's own caution against reasoning from class precedent to a finding, no source specifically documents Scarborough FLNG's own power system, so the verdict is INSUFFICIENT rather than an inferred YES. Revisit if a FEED contractor's or shipyard's technical disclosure for this specific vessel design ever surfaces."
+  },
+  {
+    "terminal": "Tassie Shoal LNG Terminal",
+    "terminal_id": "T100000130343",
+    "country": "Australia",
+    "verdict": "YES",
+    "mechanical": "True",
+    "captive_category": "mechanical_drive+power_generation",
+    "hardware_summary": "LM6000 aero-derivative gas turbine drivers (mechanical-drive, for refrigeration compression) plus a dedicated on-site 'Power Generation' process module supplying electric-driven compressors, per the completed Pre-FEED design (WorleyParsons/Arup, with APCI liquefaction-technology input) — turbine count/MW rating not disclosed.",
+    "fuel_basis": "Natural gas (regional Timor Sea/Bonaparte Basin feed gas, <3% CO2 per design basis) fired in LM6000 aero-derivative gas turbines.",
+    "confidence": "green",
+    "captive_summary": "The Tassie Shoal LNG Project (TSLNG) design — a fixed, sea-floor-mounted 3.0 MTA LNG plant (expandable to 4.0 MTA) proposed for stranded Bonaparte Basin/Timor Sea gas — specifies 'LM6000 Aero-derivative gas turbine drivers' as a Key Project Metric alongside 'Electric drives,' with the process-flow diagram in the developer's own flyer labeling a dedicated 'Power Generation' block among the plant's process modules. As an as-designed Pre-FEED feature on a shelved, never-built project, this counts as captive gas power under the design-basis rule (both mechanical-drive turbines and a dedicated power-generation module feeding the electric drives).",
+    "electric_mw": "",
+    "mechanical_drive_note": "LM6000 aero-derivative gas turbine drivers for mechanical-drive compression; unit count and aggregate rating not disclosed in either source.",
+    "confirmed_how": "Melbana Energy's own project flyer (2021, melbana.com, current 100% owner) lists as 'Key Project Metrics': 'LM6000 Aero-derivative gas turbine drivers' and 'Electric drives,' and its process-flow diagram (viewed directly) labels a 'Power Generation' block among the plant's process modules (feed gas treating, compression, main cryogenic heat exchangers, power generation, etc.), alongside noting the design was 'costed by the world's leading designers WorleyParsons, Arup with input from APCI.' MEO Australia's own 2012 technology/cost-estimate update (via ABN Newswire) restates the identical design-basis bullet points ('LM6000 Aero-derivative gas turbine drivers', 'Electric drives') for the same underlying Pre-FEED design MEO originally commissioned, which Melbana later inherited as current 100% owner. Verified PASS on both documents for tokens 'LM6000'/'Electric drives'.",
+    "refs": [
+      "https://www.melbana.com/site/cpfile/67397a6e-800f-4849-918f-a6856b91ee87/20210602TassieShoalLNGProjectFlyerMelbana.pdf",
+      "https://media.abnnewswire.net/media/en/docs/ASX-MEO-382230.pdf"
+    ],
+    "verification_log": [
+      {"url": "https://www.melbana.com/site/cpfile/67397a6e-800f-4849-918f-a6856b91ee87/20210602TassieShoalLNGProjectFlyerMelbana.pdf", "tokens": ["LM6000", "Power Generation"], "result": "FAIL", "note": "'Power Generation' is a text label rendered inside a raster diagram image, not in the PDF's extractable text layer — pdftotext-based check fails even though the label is visibly present (confirmed via direct visual read of the rendered page)"},
+      {"url": "https://www.melbana.com/site/cpfile/67397a6e-800f-4849-918f-a6856b91ee87/20210602TassieShoalLNGProjectFlyerMelbana.pdf", "tokens": ["LM6000", "Electric drives"], "result": "PASS", "note": "Both terms present in the extractable bullet-list text"},
+      {"url": "https://media.abnnewswire.net/media/en/docs/ASX-MEO-382230.pdf", "tokens": ["LM6000", "Electric drives"], "result": "PASS", "note": "MEO Australia's 2012 update restates the same design-basis bullets"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT prior was supplied for this terminal (gogpt_prior: no); not applicable.",
+    "gogpt_candidate": "MAYBE",
+    "gogpt_candidate_basis": "A dedicated power-generation module exists in the Pre-FEED design but MW is undisclosed and the project was never built (shelved, no FID); revisit if a full FEED with power-system specs is ever published.",
+    "status_or_other_findings": "Federal EPBC Act environmental approval was granted in 2004 and is valid until 2052 (per Melbana's flyer). Ownership passed from MEO Australia (developer since ~2004, still 100% owner as of a 2012 update) to Melbana Energy (100%, current per this shard). Proposed capacity evolved from an originally-floated 2.5 Mtpa (2012 MEO figures also cite ~2 Mtpa at A$1.93bn, expandable to 4 Mtpa for +A$220m) to the current 3.0 MTA design (expandable to 4.0 MTA). Design also lists several undeveloped regional gas fields (Petrel/Tern/Frigate, Evans Shoal, Barossa, Caldita) as potential feedstock, none of which are currently connected. Informational only — do not act on this.",
+    "notes": "Status is shelved/Pre-FEED only per GEM; project never reached FID or construction. Design choice was explicitly a fixed sea-floor platform (not FLNG) specifically to avoid 'FLNG motion and mooring complexities,' per the same flyer."
+  },
+  {
+    "terminal": "Wheatstone LNG Terminal",
+    "terminal_id": "T100000130344",
+    "country": "Australia",
+    "verdict": "YES",
+    "mechanical": "True",
+    "captive_category": "mechanical_drive",
+    "hardware_summary": "12x GE LM6000PF aero-derivative gas turbines (6 per LNG train, 2 trains) in mechanical-drive service, driving the ConocoPhillips Optimized Cascade refrigeration compressors — the first industrial application of the LM6000PF for mechanical drive; Train 2 later upgraded to LM6000PF+.",
+    "fuel_basis": "Natural gas — LM6000PF aero-derivative gas turbines burning variable-composition fuel gas (nitrogen content 6-15 mol% per the source), per Chevron's own technical paper.",
+    "confidence": "green",
+    "captive_summary": "Wheatstone's two-train LNG facility (Ashburton North Strategic Industrial Area, WA) uses 12 GE LM6000PF aero-derivative gas turbines (6 per train) purely in mechanical-drive service to drive the refrigeration compressor strings directly — no electricity is generated by these units. This is documented directly by Chevron's own engineers in a 2019 IGU/LNG2019 conference technical paper, which is sufficient alone (operator technical paper) for a green verdict.",
+    "electric_mw": "",
+    "mechanical_drive_note": "12x GE LM6000PF (Train 2 later upgraded to LM6000PF+) aero-derivative gas turbines, 6 per train x 2 trains, mechanical-drive refrigeration compressor service; normal operating speed range 3350-3780 rpm (minimum 3060 rpm); individual/aggregate shaft MW rating not stated numerically in the source (shown only as a % capability chart).",
+    "confirmed_how": "Chevron Energy Technology Company (Mark Weatherwax, Pankaj Shah), 'Operational experience with LM6000 PF aero-derivative gas turbine in mechanical drive service at Wheatstone LNG Facility,' presented at LNG2019 (19th International Conference & Exhibition on LNG, Shanghai, hosted by IGU/GTI/IIR). The paper states: 'The layout of the facility has six gas turbines per LNG train and all six units are fed from a common fuel system,' and describes this as 'the first installation of the LM6000PF gas turbines for mechanical drive application in the industry.' Verified PASS for tokens 'LM6000PF', 'mechanical drive', 'Wheatstone'.",
+    "refs": [
+      "https://www.bakerhughes.com/sites/bakerhughes/files/2020-04/20190130-TEC-WST-LNG19%20LM6000%20Techinical%20Paper.pdf"
+    ],
+    "verification_log": [
+      {"url": "https://www.bakerhughes.com/sites/bakerhughes/files/2020-04/20190130-TEC-WST-LNG19%20LM6000%20Techinical%20Paper.pdf", "tokens": ["LM6000PF", "mechanical drive", "Wheatstone"], "result": "PASS", "note": "Chevron's own technical paper (hosted on Baker Hughes' site as conference archival), read in full — confirms mechanical-drive-only configuration"},
+      {"url": "https://www.reuters.com/business/energy/chevron-australia-starts-repair-work-wheatstone-platform-says-spokesperson-2024-06-13/", "tokens": [], "result": "FAIL", "note": "Current GEM ref (part of it). WebFetch could not access reuters.com (tool-blocked domain) so content could not be confirmed either way; the headline concerns the offshore Wheatstone production platform's repair, not the onshore LNG train's captive power, and is very likely irrelevant to this claim — dropped from refs pending the orchestrator's own check"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT prior was supplied for this terminal (gogpt_prior: no); not applicable.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Confirmed hardware is mechanical-drive-only aero-derivative gas turbines (compressor drivers, no generators); not a GOGPT-style electricity-generating station per the documented source.",
+    "status_or_other_findings": "",
+    "notes": "The current GEM CaptiveGasPower ref includes a Reuters URL about 'Chevron Australia starts repair work Wheatstone platform' (2024) which appears to concern the offshore production platform, not the onshore LNG train's captive power — this agent's tools could not fetch reuters.com to confirm either way (domain blocked); recommend the orchestrator verify or drop it. The Baker Hughes/Chevron technical paper above is a solid, independently-sufficient replacement/supplement."
+  }
+]

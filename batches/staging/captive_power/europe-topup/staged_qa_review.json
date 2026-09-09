@@ -1,0 +1,24 @@
+[
+ {
+  "category": "captive_power_insufficient",
+  "terminal_id": "T100001084613",
+  "unit_id": "",
+  "terminal_name": "Port of Vlora FSRU 2",
+  "issue": "No FSRU vessel is currently named for this project and no design/engineering document describing onboard or on-site generation has been published. The project is at MOU/feasibility stage (Aktor LNG USA / Atlantic SEE LNG Trade deal with Albania's Albgaz, signed and updated April-June 2026, gas deliveries not targeted to start until 2030); the original 2021 Excelerate/ExxonMobil FSRU proposal (vessel Excelsior) was shelved after the vessel was reassigned to Germany in Oct 2022, with no replacement vessel ever announced.",
+  "severity": "low",
+  "suggested_action": "CaptiveGasPower left blank — fuel/equipment for on-site generation undocumented after research (fuel gate: unstated = INSUFFICIENT). Revisit if an equipment spec, EIA chapter, or class record surfaces. Direction test applied: the 380 MW gas-fired plant referenced in the 2026 Aktor/Atlantic SEE LNG Trade MOU is the CONVERSION of the existing external oil-fired Vlora power station (Tiger 1/Tiger 3, currently owned by Excelerate Energy and leased to KESH) -- this is the PowerPlantsSupplied direction (matches this record's existing power_plants_supplied='Vlora power station' field), not a captive-po",
+  "gem_field": "CaptiveGasPower",
+  "paste_value": ""
+ },
+ {
+  "category": "update_batch_flag",
+  "terminal_id": "T100001084613",
+  "unit_id": "",
+  "terminal_name": "Port of Vlora FSRU 2",
+  "issue": "Ownership/project churn: the original Port of Vlora FSRU proposal (Excelerate Energy + ExxonMobil, MOU signed 2021) is presumed shelved -- FSRU vessel Excelsior, once slated for Vlora, was redeployed to Germany in Oct 2022 and no replacement vessel has been named since. A new, distinct effort has emerged in 2026 under Aktor LNG USA / Atlantic SEE LNG Trade (Aktor Group 60% + DEPA Commercial), which matches this record's current owner field ('Aktor LNG USA'). This new effort signed a 20-year, $6B gas supply deal with Albgaz (deliveries from 2030) and an earlier 2026 MOU envisaging a 380 MW gas-fired power plant (converting the existing oil-fired Vlora/Tiger 1-3 plant), a new LNG terminal, and a pipeline link to TAP via Fier -- all still at study/MOU stage, no FID, no vessel, no EPC contract found. Flagging for the record-owning batch/orchestrator, not acting on it.",
+  "severity": "medium",
+  "suggested_action": "FOLLOW-ON UPDATE BATCH, not this one: this captive batch's edit lane is CaptiveGasPower only. Flagged here with the researcher's sources so it is not lost.",
+  "gem_field": "",
+  "paste_value": ""
+ }
+]

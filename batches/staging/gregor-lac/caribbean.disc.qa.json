@@ -1,0 +1,72 @@
+[
+  {
+    "category": "scope_gate_correction_ack",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "",
+    "issue": "Orchestrator correction received mid-run: LNG bunkering terminals are OUT OF SCOPE for discovery (docs/sops/discovery.md line 5/23 excludes bunkering), reversing an error in this agent's dispatch brief. Applied: (1) Grand Bahama/Freeport LNG bunkering (Elnet Lightering + Eagle LNG Partners ship-to-ship bunkering, operating since 2024) was researched but correctly NOT staged — it is a pure bunkering operation, no on-site import/regas for grid supply found. (2) Trinidad's Sept-2024 'Caribbean's first low-carbon bunkering hub' MOU (three T&T state agencies) was researched but correctly NOT staged for the same reason. Neither had been staged as a new_terminal before the correction arrived, so no record needed reversal.",
+    "severity": "low",
+    "suggested_action": "No action — informational, confirms the correction was applied before any bunkering candidate was staged.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "coverage_confirmation",
+    "terminal_id": "T100000130579",
+    "unit_id": "",
+    "terminal_name": "Atlantic LNG Terminal",
+    "issue": "Discovery sweep found the Dragon field (Venezuela, Shell/BP cross-border license, OFAC general licenses through 2026) and the Loran-Manatee field (Shell FID 2024, first gas targeted 2027) are BACKFILL GAS supply developments for the existing Atlantic LNG Terminal, delivered by pipeline — not new marine LNG terminals. No new_terminal candidate. This may be useful Update-workflow context (Source/feedstock field, or wiki Background on gas-supply outlook) if not already captured; not staged here since this agent does not edit existing records.",
+    "severity": "low",
+    "suggested_action": "Update agent: consider a Source/ResearcherNotes note on Atlantic LNG re: Dragon/Loran-Manatee backfill gas outlook, citing Reuters (2026-04-09) and Shell newsroom (2024 Manatee FID) if not already reflected.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "status_timeline",
+    "terminal_id": "T100000131117",
+    "unit_id": "",
+    "terminal_name": "Clifton Pier LNG Terminal",
+    "issue": "Discovery sweep (not itself an edit) surfaced trade-press reporting that Shell and FOCOL/Sun Oil (New Providence Gas) reached FID on this terminal in 2026, with a US$379.2 million financing agreement signed by FOCOL, per Upstream Online, PGJ Online, Gas World, LNG Industry, and Nassau Guardian coverage. GEM currently shows this terminal at Status=construction with no FIDStatus populated in the packet reviewed. Not independently re-verified by this discovery agent (paywalled/blocked on first attempt: Nassau Guardian 429, Gas World 403) — flagging for the Update agent to confirm and stage.",
+    "severity": "medium",
+    "suggested_action": "Update agent: verify FID date/financing amount from an accessible source and stage FIDStatus + any relevant [ref], if not already captured in this batch's DR/Bahamas update packets.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "dormant_revival_watch",
+    "terminal_id": "T100000130544",
+    "unit_id": "",
+    "terminal_name": "Ocean Cay LNG Terminal",
+    "issue": "Revival check (cancelled 2009, 17 years dead, revival_priority=high) found NO evidence of any new LNG/gas sponsor or project at Ocean Cay, Bimini. All recent activity at the site is MSC Cruises' private-island cruise destination redevelopment (phase-2 heads of agreement, unrelated to gas/LNG). No revival.",
+    "severity": "low",
+    "suggested_action": "No action — status remains correctly cancelled. Re-check on next sweep per standard dormancy cadence.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "false_lead_rejected",
+    "terminal_id": "T100000130684",
+    "unit_id": "",
+    "terminal_name": "Old Harbour FSRU",
+    "issue": "Investigated a claimed 'Jamaica LNG Terminal' / 'Port Esquivel LNG Hub' promoted on Hanover Holdings Corporation's own website (Godfrey Comrie), citing a 2008 PM Golding-era proposal and a 2015 US-Jamaica MOI, and framing the 2025 NFE→Excelerate $1.055B sale as 'validating' its regional-hub thesis. Port Esquivel is the historical name for the Old Harbour Bay industrial port — the same site as GEM's existing, operating Old Harbour FSRU (3.6 mtpa, Excelerate/Höegh Gallant). No independent trade-press, regulator, or news corroboration of Hanover Holdings' claimed active role was found (only its own site, a LinkedIn profile, and a bare Bloomberg company-profile stub). Treated as a self-promotional, uncorroborated claim, not a genuine distinct project. Also confirms via the Excelerate $1.055B transaction scope (Montego Bay + Old Harbour + Clarendon CHP only) that Jamaica has no third NFE-linked marine receiving site.",
+    "severity": "low",
+    "suggested_action": "No action — not a discovery candidate. Retained here so a future sweep doesn't re-chase the same uncorroborated Hanover Holdings claim.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "coverage_confirmation",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "",
+    "issue": "gem.wiki LNG-terminal-page cross-check (site-restricted search across all 7 assigned countries) returned only Andrés LNG Terminal and Energía 2000 Manzanillo FSRU (Dominican Republic) — both already have matching export-CSV rows. No wiki-only page (page with no CSV row) was found for Trinidad and Tobago, Jamaica, Haiti, Bahamas, Antigua and Barbuda, or Aruba. Caveat: coverage relies on a DuckDuckGo site: search rather than a full gem.wiki category crawl, so treat as a good-faith check, not exhaustive.",
+    "severity": "low",
+    "suggested_action": "No action needed unless a future batch has direct gem.wiki category-listing access to re-verify exhaustively.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "dormant_revival_watch",
+    "terminal_id": "",
+    "unit_id": "",
+    "terminal_name": "",
+    "issue": "Haiti (Maurice Bonnefil LNG Terminal, T100000130665) and Dominican Republic (San Pedro de Macoris LNG Terminal, T100000130567) dormant-revival checks were independently run by this discovery agent and both returned NO new activity — consistent with the concurrent Update-agent findings already recorded in haiti.qa.json and dominican-republic.qa.json (same conclusion, not duplicated here to avoid redundant entries).",
+    "severity": "low",
+    "suggested_action": "No action — cross-confirmation only.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  }
+]

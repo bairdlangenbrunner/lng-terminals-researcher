@@ -7,8 +7,16 @@ repo `CLAUDE.md`: one research subagent per country, fanned out, then merged per
 reconciliation tree, the captive-power per-area tree, ad-hoc single-scope batch dirs, and QC run dirs.
 **Nothing batch-related lives loose in the repo root or `scripts/`.** Every one of these dirs carries a
 `meta.json` coverage-ledger file (`{scope_slug, workflow, tier, countries, started, built, applied, status,
-run_record, notes}`) written at dispatch time — `coverage_status.py` and Triage read it before choosing
+run_record, notes}` + at closeout `deliverables`, `completed_update_shards`, `completed_discovery_clusters`) written at dispatch time — `coverage_status.py` and Triage read it before choosing
 the next scope, so it's the fast way to answer "has this already been done."
+
+> **The `applied` field is not maintained, so it cannot answer "did my edits land."** As of the
+> 2026-08-26 QC pass exactly 1 of 29 `meta.json` files carries an `applied` date
+> (`ref-sweep-missing-year-20260701_1724_ET`), while `apply_check.py` shows ~980 staged edits
+> actually live in the database across 18 batches. Treat `applied`/`status` as "was this scope
+> researched", and use **`apply_check.py` against the fresh export as the authority on what landed**.
+> Setting `applied` when a batch is pasted in is still the intent — it's just currently unreliable
+> evidence, so don't infer "never applied" from a blank.
 
 > Formerly `chatgpt_audit_batch/sweep/` — renamed to a workflow-neutral name. The original ChatGPT-audit
 > import was just the first batch run through this machinery; the structure is reused every cycle.
@@ -66,9 +74,15 @@ batches/staging/
 
 **Done-marker lifecycle:** `<slug>.done.json` / `<slug>.disc.done.json` / `<slug>.reverify.done.json`
 are resume checkpoints only — the dispatch tooling (`_build_region.py`) treats marker-present as
-"country done" while a sweep is in flight. Once a sweep is confirmed complete
-(`SWEEP_PROGRESS.md` is the durable record), delete its markers — don't let them accumulate. The
-substantive `<slug>.<type>.json` research files are the audit trail and stay committed.
+"country done" while a sweep is in flight. Once a sweep is confirmed complete (the durable record is
+its run record under `batches/run_records/`; `SWEEP_PROGRESS.md` is scratch and gets stubbed out),
+delete its markers — don't let them accumulate. **Before deleting them, copy the completed set into
+`meta.json` as `completed_update_shards` / `completed_discovery_clusters`** — that's where the "which
+shards actually reported" fact lives after closeout, and it's why `staging_qc.py` skips its
+done-marker check once `meta.json` says `status: built`/`applied` (otherwise a finished batch can
+never re-run its own gate). Note the shard lists are NOT the same as `packets/`: discovery clusters
+dispatched after the initial wave often have no packet file. The substantive `<slug>.<type>.json`
+research files are the audit trail and stay committed.
 
 Principle: **commit what can't be re-derived (agent-authored research), gitignore what can (derived
 extracts/diffs/assemblies).** The `.gitignore` re-include rules encode exactly this split.

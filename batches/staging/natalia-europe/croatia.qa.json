@@ -1,0 +1,42 @@
+[
+ {
+  "category": "citation_quality",
+  "terminal_id": "T100000130431",
+  "unit_id": "G100002043103",
+  "terminal_name": "Krk FSRU",
+  "issue": "Krk Phase 2 Expansion unit-row's Capacity/Status/StartDate/Owner/Operator [ref] cells (5 fields) all cite a single bare TYNDP portal landing page (entsog.eu/tyndp) rather than a specific report/PDF -- fails url_verifier.py's content-token check ('Krk' not found on the page as rendered). Separately, recent (2026-07) press (Bloomberg, Croatia Week, ceenergynews) describes a further Krk capacity expansion arriving Q2 2027 with ~250km of new Plinacro pipeline and roughly 1 additional bcm/y -- these figures don't cleanly reconcile against the existing 4.10 bcm/y / 2030-planned Phase 2 entry (could be an accelerated timeline for the same project, or a distinct further tranche).",
+  "severity": "medium",
+  "suggested_action": "Two follow-ups: (1) locate the specific ENTSOG TYNDP project-sheet PDF for Krk (not the portal homepage) to re-cite the 5 fields properly; (2) dedicated research pass to determine whether the 2026-07 Q2-2027 expansion news is the same Phase 2 project (→ LatestPlannedStartYear acceleration) or a new capacity tranche (→ possible new unit-row).",
+  "researcher_initials": "AI-draft"
+ },
+ {
+  "category": "resolved_this_batch",
+  "terminal_id": "T100000130428",
+  "unit_id": "G100002042800",
+  "terminal_name": "Adria LNG Terminal",
+  "issue": "RESOLVED -- supersedes this batch's earlier 'bot_blocked_no_wayback' flag on FIDYear [ref] (reuters.com/article/croatia-lng-project-idUSL6E8I36O620120703). The 'no Wayback snapshot' result came from url_verifier.py querying only the Wayback availability API, which answers 'no snapshot' for URLs the CDX index does hold; a CDX fallback was added to scripts/url_verifier.py this session. Re-checked: snapshot 20210516030403 is HTTP 200 with the full article and confirms FIDYear=2013 explicitly ('postponed a final investment decision until 2013'). Live URL kept (401 = bot-block, not rot); nothing dropped. Staged as a blue re-verified-unchanged record in the updates sheet.",
+  "severity": "none",
+  "suggested_action": "No action on the citation. One judgement call left for the reviewer: the source documents an FID *deferred to* 2013, not an FID *taken* in 2013, so confirm FIDStatus reflects a postponement target.",
+  "researcher_initials": "AI-draft (orchestrator)"
+ },
+ {
+  "category": "citation_quality",
+  "terminal_id": "T100000130430",
+  "unit_id": "G100002043001",
+  "terminal_name": "Krk FSRU",
+  "issue": "Partly RESOLVED, partly a new finding, on the euractiv.com 'request-for-allocation-of-new-capacity' citation. RESOLVED: it is not link-rot -- HTTP 403 is a bot-block and the CDX fallback added this session found snapshot 20250726062705 (HTTP 200, full article, Euractiv 12 Apr 2022). Live URL kept, nothing dropped. NEW FINDING: the article's only capacity figure is a regasification throughput of '338.000 m3/hour', which is NOT either value the cells assert. 338,000 m3/h annualises to roughly 2.96 bcm/y, whereas this one URL is cited for Capacity=2.60 bcm/y on Unit 1 AND Capacity=0.30 bcm/y on the '2022 Capacity Expansion' unit-row -- i.e. GEM's 2.60 + 0.30 = 2.90 split is a derivation from the article's single hourly figure, not a value stated in it. Under the rule that a citation must explicitly contain the value it supports, both cells are currently implied-only. Separately, the same URL is cited on the expansion row's StartDate [ref] while both StartDate and StartYear are empty -- an orphan ref supporting no value (Unit 1's StartDate [ref] is likewise orphaned, citing the GIIGNL 2026 report with StartYear blank, and Krk has been operating since 2021).",
+  "severity": "medium",
+  "suggested_action": "Re-cite Capacity on both unit-rows from a source that states the bcm/y figures directly -- LNG Croatia's own capacity pages (lng.hr) or HERA/Plinacro regulatory filings -- and record the m3/h-to-bcm/y basis in ResearcherNotes so the 2.60/0.30 split is auditable. Then either fill StartYear (Krk started up in Jan 2021) or clear the orphaned StartDate [ref] cells. Deferred to a follow-on Update batch rather than guessed at here.",
+  "researcher_initials": "AI-draft (orchestrator)"
+ },
+ {
+  "category": "resolved_this_batch",
+  "terminal_id": "T100000130430",
+  "unit_id": "G100002043000",
+  "terminal_name": "Krk FSRU",
+  "issue": "RESOLVED -- the qc_tooling_bug flag raised earlier in this batch is fixed. citation_qc.py split ref cells on commas, but the comma is both the cell's list separator AND a legal URL character, so lngworldshipping.com/news/view,croatia-considers-fsru-for-krk-lng-imports_42088.htm was truncated to '.../news/view' and graded 'ok'. scripts/citation_qc.py now splits on each http(s):// boundary instead (_extract_urls / _URL_START_RE) and its 7 tests pass. Sweep-wide impact: 264 ref cells tracker-wide were mis-extracted, 20 of them in this batch's 13 countries. The bug produced false PASSES only, so the QC memo's dead-citation counts are a floor, never an overstatement. The Croatia URL it hid is genuinely gone (domain lapsed to a parking page) and its ProposalDate [ref] cell has been repaired in this batch.",
+  "severity": "none",
+  "suggested_action": "None -- fix is committed to the repo. Worth re-running citation_qc.py on countries QC reported as 0% dead, since that verdict was computed with the buggy extractor.",
+  "researcher_initials": "AI-draft (orchestrator)"
+ }
+]

@@ -1,0 +1,806 @@
+[
+  {
+    "terminal_id": "T100000130810",
+    "unit_id": "G100002081001",
+    "terminal_name": "Costa Azul LNG Terminal",
+    "unit_name": "Export Terminal Phase 1",
+    "country": "Mexico",
+    "field_name": "Status",
+    "old_value": "construction",
+    "new_value": "operating",
+    "confidence": "green",
+    "source_tier": "regulatory(EIA)+trade_press",
+    "ref_field": "Status [ref]",
+    "ref_urls": [
+      "https://naturalgasintel.com/news/sempra-ships-first-eca-lng-cargo-eyes-commercial-start-as-waha-natural-gas-firms/",
+      "https://www.eia.gov/todayinenergy/detail.php?id=67884"
+    ],
+    "source_notes": "First LNG export cargo departed Costa Azul Phase 1 on 2026-07-08 per EIA.gov (Today in Energy, primary/regulatory) and Natural Gas Intel (trade press). Prior researcher note (Sep 2025) had construction 94% complete with startup expected 2026 — now confirmed actual. Existing Postgres timeline (fetch_timeline.py) had 3 entries: proposed (2015 MOU context via sibling Phase 2 unit), construction/actual/2020-11 (NTP), and a planned-startup marker at 2026; this appends a 4th entry operating/actual/2026-07 — a legal construction→operating transition per lifecycle_rules.md.",
+    "scope_note": "",
+    "dropped_urls_dead": [
+      "https://www.technipfmc.com/en/investors/financial-news-releases/press-release/technipfmc-receives-notice-to-proceed-for-epc-contract-for-sempra-lng-s-and-ienova-s-energia-costa-azul-lng-facility/"
+    ],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130810",
+    "unit_id": "G100002081001",
+    "terminal_name": "Costa Azul LNG Terminal",
+    "unit_name": "Export Terminal Phase 1",
+    "country": "Mexico",
+    "field_name": "Status [ref]",
+    "old_value": "https://www.technipfmc.com/en/investors/financial-news-releases/press-release/technipfmc-receives-notice-to-proceed-for-epc-contract-for-sempra-lng-s-and-ienova-s-energia-costa-azul-lng-facility/",
+    "new_value": "https://naturalgasintel.com/news/sempra-ships-first-eca-lng-cargo-eyes-commercial-start-as-waha-natural-gas-firms/, https://www.eia.gov/todayinenergy/detail.php?id=67884",
+    "confidence": "green",
+    "source_tier": "regulatory(EIA)+trade_press",
+    "ref_field": "",
+    "ref_urls": [
+      "https://naturalgasintel.com/news/sempra-ships-first-eca-lng-cargo-eyes-commercial-start-as-waha-natural-gas-firms/",
+      "https://www.eia.gov/todayinenergy/detail.php?id=67884"
+    ],
+    "source_notes": "Dropping the TechnipFMC NTP release — it evidences the 2020 construction-NTP milestone (retained verbatim in ConstructionDate [ref], untouched), not the 2026 operating transition; live-but-value-gone for the 'operating' claim specifically. Replaced with the two cargo-confirmation citations.",
+    "scope_note": "",
+    "dropped_urls_dead": [
+      "https://www.technipfmc.com/en/investors/financial-news-releases/press-release/technipfmc-receives-notice-to-proceed-for-epc-contract-for-sempra-lng-s-and-ienova-s-energia-costa-azul-lng-facility/"
+    ],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130810",
+    "unit_id": "G100002081001",
+    "terminal_name": "Costa Azul LNG Terminal",
+    "unit_name": "Export Terminal Phase 1",
+    "country": "Mexico",
+    "field_name": "ActualStartYear",
+    "old_value": "",
+    "new_value": "2026",
+    "confidence": "green",
+    "source_tier": "regulatory(EIA)+trade_press",
+    "ref_field": "StartDate [ref]",
+    "ref_urls": [
+      "https://naturalgasintel.com/news/sempras-mexico-lng-project-nears-finish-line-as-pacific-coast-outlook-stays-bullish/",
+      "https://www.energy.gov/sites/default/files/2025-04/ECAMidScaleSemiAnnualDOEProjectStatusReportApril2025.pdf",
+      "https://naturalgasintel.com/news/sempra-ships-first-eca-lng-cargo-eyes-commercial-start-as-waha-natural-gas-firms/",
+      "https://www.eia.gov/todayinenergy/detail.php?id=67884"
+    ],
+    "source_notes": "First export cargo 2026-07-08 (EIA.gov Today in Energy + Natural Gas Intel). [ref-restore 2026-08-11: restored existing live URL(s) https://naturalgasintel.com/news/sempras-mexico-lng-project-nears-finish-line-as-pacific-coast-outlook-stays-bullish/, https://www.energy.gov/sites/default/files/2025-04/ECAMidScaleSemiAnnualDOEProjectStatusReportApril2025.pdf per merge-semantics rule (bot-block != dead; never drop a URL not proven dead)]",
+    "scope_note": "",
+    "dropped_urls_dead": [
+      "https://www.sempra.com/newsroom/press-releases/sempra-announces-continuation-capital-recycling-program"
+    ],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130810",
+    "unit_id": "G100002081001",
+    "terminal_name": "Costa Azul LNG Terminal",
+    "unit_name": "Export Terminal Phase 1",
+    "country": "Mexico",
+    "field_name": "ActualStartMonth",
+    "old_value": "",
+    "new_value": "July",
+    "confidence": "green",
+    "source_tier": "regulatory(EIA)+trade_press",
+    "ref_field": "StartDate [ref]",
+    "ref_urls": [
+      "https://naturalgasintel.com/news/sempras-mexico-lng-project-nears-finish-line-as-pacific-coast-outlook-stays-bullish/",
+      "https://www.energy.gov/sites/default/files/2025-04/ECAMidScaleSemiAnnualDOEProjectStatusReportApril2025.pdf",
+      "https://naturalgasintel.com/news/sempra-ships-first-eca-lng-cargo-eyes-commercial-start-as-waha-natural-gas-firms/",
+      "https://www.eia.gov/todayinenergy/detail.php?id=67884"
+    ],
+    "source_notes": "First export cargo dated 2026-07-08 in both citations. [ref-restore 2026-08-11: restored existing live URL(s) https://naturalgasintel.com/news/sempras-mexico-lng-project-nears-finish-line-as-pacific-coast-outlook-stays-bullish/, https://www.energy.gov/sites/default/files/2025-04/ECAMidScaleSemiAnnualDOEProjectStatusReportApril2025.pdf per merge-semantics rule (bot-block != dead; never drop a URL not proven dead)]",
+    "scope_note": "",
+    "dropped_urls_dead": [
+      "https://www.sempra.com/newsroom/press-releases/sempra-announces-continuation-capital-recycling-program"
+    ],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130810",
+    "unit_id": "G100002081001",
+    "terminal_name": "Costa Azul LNG Terminal",
+    "unit_name": "Export Terminal Phase 1",
+    "country": "Mexico",
+    "field_name": "StartDate [ref]",
+    "old_value": "https://naturalgasintel.com/news/sempras-mexico-lng-project-nears-finish-line-as-pacific-coast-outlook-stays-bullish/, https://www.sempra.com/newsroom/press-releases/sempra-announces-continuation-capital-recycling-program, https://www.energy.gov/sites/default/files/2025-04/ECAMidScaleSemiAnnualDOEProjectStatusReportApril2025.pdf",
+    "new_value": "https://naturalgasintel.com/news/sempras-mexico-lng-project-nears-finish-line-as-pacific-coast-outlook-stays-bullish/, https://www.sempra.com/newsroom/press-releases/sempra-announces-continuation-capital-recycling-program, https://www.energy.gov/sites/default/files/2025-04/ECAMidScaleSemiAnnualDOEProjectStatusReportApril2025.pdf, https://naturalgasintel.com/news/sempra-ships-first-eca-lng-cargo-eyes-commercial-start-as-waha-natural-gas-firms/, https://www.eia.gov/todayinenergy/detail.php?id=67884",
+    "confidence": "green",
+    "source_tier": "regulatory(EIA)+trade_press",
+    "ref_field": "",
+    "ref_urls": [
+      "https://naturalgasintel.com/news/sempras-mexico-lng-project-nears-finish-line-as-pacific-coast-outlook-stays-bullish/",
+      "https://www.sempra.com/newsroom/press-releases/sempra-announces-continuation-capital-recycling-program",
+      "https://www.energy.gov/sites/default/files/2025-04/ECAMidScaleSemiAnnualDOEProjectStatusReportApril2025.pdf",
+      "https://naturalgasintel.com/news/sempra-ships-first-eca-lng-cargo-eyes-commercial-start-as-waha-natural-gas-firms/",
+      "https://www.eia.gov/todayinenergy/detail.php?id=67884"
+    ],
+    "source_notes": "Merge-add: kept the 3 existing pre-cargo progress citations (finish-line article, capital-recycling PR, DOE April-2025 semiannual status report — none contradicted, still valid background) and added the 2 new cargo-confirmation citations that support the newly-filled ActualStartYear/Month.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130984",
+    "unit_id": "G100002098401",
+    "terminal_name": "Vista Pacifico LNG Terminal",
+    "unit_name": "--",
+    "country": "Mexico",
+    "field_name": "Status",
+    "old_value": "proposed",
+    "new_value": "cancelled",
+    "confidence": "green",
+    "source_tier": "trade_press(2 independent)",
+    "ref_field": "Status [ref]",
+    "ref_urls": [
+      "https://mexicobusiness.news/energy/news/sempra-infrastructure-cancels-vista-pacifico-lng-project",
+      "https://naturalgasintel.com/news/sempra-axes-vista-pacifico-lng-plan-cutting-mexicos-proposed-export-capacity/"
+    ],
+    "source_notes": "Sempra's non-binding CFE development agreement (extended through Dec 2025 per the prior researcher's Sep-2025 note) was not renewed/renegotiated; press reports (both independently verified with tokens '2025' and 'December') confirm the project was ended/terminated in December 2025. Existing Postgres timeline (fetch_timeline.py) had 2 entries: proposed/2020-11 and a planned-startup marker at 2025 (now obsolete). Appending a 3rd entry cancelled/confirmed/2025-12 — a legal proposed→cancelled transition per lifecycle_rules.md (no intervening shelved phase; direct transition is legal). Flag for reviewer: the obsolete 'operating/planned/2025' timeline marker should be understood as superseded by this cancellation, not a conflicting entry.",
+    "scope_note": "",
+    "dropped_urls_dead": [
+      "https://www.energy.gov/sites/prod/files/2020/11/f80/20-153-LNG%20Mid-Scale%20Project.pdf"
+    ],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130984",
+    "unit_id": "G100002098401",
+    "terminal_name": "Vista Pacifico LNG Terminal",
+    "unit_name": "--",
+    "country": "Mexico",
+    "field_name": "Substatus",
+    "old_value": "",
+    "new_value": "actual",
+    "confidence": "green",
+    "source_tier": "trade_press(2 independent)",
+    "ref_field": "Status [ref]",
+    "ref_urls": [
+      "https://www.energy.gov/sites/prod/files/2020/11/f80/20-153-LNG%20Mid-Scale%20Project.pdf",
+      "https://mexicobusiness.news/energy/news/sempra-infrastructure-cancels-vista-pacifico-lng-project",
+      "https://naturalgasintel.com/news/sempra-axes-vista-pacifico-lng-plan-cutting-mexicos-proposed-export-capacity/"
+    ],
+    "source_notes": "Confirmed cancellation (not dormancy-inferred) — Substatus set to 'actual' to match the confirmed-transition convention used elsewhere in this dataset (cf. Costa Azul Phase 1). [ref-restore 2026-08-11: restored existing live URL(s) https://www.energy.gov/sites/prod/files/2020/11/f80/20-153-LNG%20Mid-Scale%20Project.pdf per merge-semantics rule (bot-block != dead; never drop a URL not proven dead)]",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130984",
+    "unit_id": "G100002098401",
+    "terminal_name": "Vista Pacifico LNG Terminal",
+    "unit_name": "--",
+    "country": "Mexico",
+    "field_name": "Status [ref]",
+    "old_value": "https://www.energy.gov/sites/prod/files/2020/11/f80/20-153-LNG%20Mid-Scale%20Project.pdf",
+    "new_value": "https://mexicobusiness.news/energy/news/sempra-infrastructure-cancels-vista-pacifico-lng-project, https://naturalgasintel.com/news/sempra-axes-vista-pacifico-lng-plan-cutting-mexicos-proposed-export-capacity/",
+    "confidence": "green",
+    "source_tier": "trade_press(2 independent)",
+    "ref_field": "",
+    "ref_urls": [
+      "https://mexicobusiness.news/energy/news/sempra-infrastructure-cancels-vista-pacifico-lng-project",
+      "https://naturalgasintel.com/news/sempra-axes-vista-pacifico-lng-plan-cutting-mexicos-proposed-export-capacity/"
+    ],
+    "source_notes": "Dropping the 2020 DOE mid-scale-project order — it evidences the original 2020 proposal/DOE authorization (still valid and retained verbatim in ProposalDate [ref], untouched) but is live-but-value-gone for the 2025 cancellation claim. Replaced with the two cancellation-confirming citations.",
+    "scope_note": "",
+    "dropped_urls_dead": [
+      "https://www.energy.gov/sites/prod/files/2020/11/f80/20-153-LNG%20Mid-Scale%20Project.pdf"
+    ],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130984",
+    "unit_id": "G100002098401",
+    "terminal_name": "Vista Pacifico LNG Terminal",
+    "unit_name": "--",
+    "country": "Mexico",
+    "field_name": "CancelledYear",
+    "old_value": "",
+    "new_value": "2025",
+    "confidence": "green",
+    "source_tier": "trade_press(2 independent)",
+    "ref_field": "CancelledYear [ref]",
+    "ref_urls": [
+      "https://mexicobusiness.news/energy/news/sempra-infrastructure-cancels-vista-pacifico-lng-project",
+      "https://naturalgasintel.com/news/sempra-axes-vista-pacifico-lng-plan-cutting-mexicos-proposed-export-capacity/"
+    ],
+    "source_notes": "Event date is December 2025 (agreement ended), not the 2026 press-report date — anchor year set to the event year per lifecycle_rules.md's 'event date not publication date' rule.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130984",
+    "unit_id": "G100002098401",
+    "terminal_name": "Vista Pacifico LNG Terminal",
+    "unit_name": "--",
+    "country": "Mexico",
+    "field_name": "CancelledYear [ref]",
+    "old_value": "",
+    "new_value": "https://mexicobusiness.news/energy/news/sempra-infrastructure-cancels-vista-pacifico-lng-project, https://naturalgasintel.com/news/sempra-axes-vista-pacifico-lng-plan-cutting-mexicos-proposed-export-capacity/",
+    "confidence": "green",
+    "source_tier": "trade_press(2 independent)",
+    "ref_field": "",
+    "ref_urls": [
+      "https://mexicobusiness.news/energy/news/sempra-infrastructure-cancels-vista-pacifico-lng-project",
+      "https://naturalgasintel.com/news/sempra-axes-vista-pacifico-lng-plan-cutting-mexicos-proposed-export-capacity/"
+    ],
+    "source_notes": "Blank-ref fill paired with the CancelledYear edit above.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130984",
+    "unit_id": "G100002098401",
+    "terminal_name": "Vista Pacifico LNG Terminal",
+    "unit_name": "--",
+    "country": "Mexico",
+    "field_name": "StopYear",
+    "old_value": "",
+    "new_value": "2025",
+    "confidence": "green",
+    "source_tier": "trade_press(2 independent)",
+    "ref_field": "StopYear [ref]",
+    "ref_urls": [
+      "https://mexicobusiness.news/energy/news/sempra-infrastructure-cancels-vista-pacifico-lng-project",
+      "https://naturalgasintel.com/news/sempra-axes-vista-pacifico-lng-plan-cutting-mexicos-proposed-export-capacity/"
+    ],
+    "source_notes": "StopYear set equal to CancelledYear, matching the convention used on this dataset's other cancelled Mexican terminals (Lazaro Cardenas, PEMEX LNG Terminal).",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130984",
+    "unit_id": "G100002098401",
+    "terminal_name": "Vista Pacifico LNG Terminal",
+    "unit_name": "--",
+    "country": "Mexico",
+    "field_name": "StopYear [ref]",
+    "old_value": "",
+    "new_value": "https://mexicobusiness.news/energy/news/sempra-infrastructure-cancels-vista-pacifico-lng-project, https://naturalgasintel.com/news/sempra-axes-vista-pacifico-lng-plan-cutting-mexicos-proposed-export-capacity/",
+    "confidence": "green",
+    "source_tier": "trade_press(2 independent)",
+    "ref_field": "",
+    "ref_urls": [
+      "https://mexicobusiness.news/energy/news/sempra-infrastructure-cancels-vista-pacifico-lng-project",
+      "https://naturalgasintel.com/news/sempra-axes-vista-pacifico-lng-plan-cutting-mexicos-proposed-export-capacity/"
+    ],
+    "source_notes": "Blank-ref fill paired with the StopYear edit above.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131178",
+    "unit_id": "G100002117800",
+    "terminal_name": "Gato Negro Manzanillo LNG Terminal",
+    "unit_name": "--",
+    "country": "Mexico",
+    "field_name": "FIDYear",
+    "old_value": "2026",
+    "new_value": "2027",
+    "confidence": "green",
+    "source_tier": "trade_press(2 independent)",
+    "ref_field": "FIDYear [ref]",
+    "ref_urls": [
+      "https://www.bnamericas.com/en/news/mexico-lng-project-in-manzanillo-faces-one-year-fid-delay",
+      "https://lngprime.com/americas/gato-negro-eyes-fid-on-mexico-lng-plant-in-late-2026/165718/"
+    ],
+    "source_notes": "FID target slipped one year (late 2026 -> late 2027) per BNamericas and a second, distinct LNGPrime article (article ID 165718, not the existing GEM ref 165906 which supports only the old value).",
+    "scope_note": "",
+    "dropped_urls_dead": [
+      "https://lngprime.com/americas/gato-negro-eyes-fid-on-mexico-lng-plant-in-late-2026/165906/"
+    ],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131178",
+    "unit_id": "G100002117800",
+    "terminal_name": "Gato Negro Manzanillo LNG Terminal",
+    "unit_name": "--",
+    "country": "Mexico",
+    "field_name": "FIDYear [ref]",
+    "old_value": "https://lngprime.com/americas/gato-negro-eyes-fid-on-mexico-lng-plant-in-late-2026/165906/",
+    "new_value": "https://www.bnamericas.com/en/news/mexico-lng-project-in-manzanillo-faces-one-year-fid-delay, https://lngprime.com/americas/gato-negro-eyes-fid-on-mexico-lng-plant-in-late-2026/165718/",
+    "confidence": "green",
+    "source_tier": "trade_press(2 independent)",
+    "ref_field": "",
+    "ref_urls": [
+      "https://www.bnamericas.com/en/news/mexico-lng-project-in-manzanillo-faces-one-year-fid-delay",
+      "https://lngprime.com/americas/gato-negro-eyes-fid-on-mexico-lng-plant-in-late-2026/165718/"
+    ],
+    "source_notes": "Dropping the old LNGPrime article — it supports only the superseded late-2026 FID target (live-but-value-gone for the 2027 claim). Replaced with BNamericas + a distinct newer LNGPrime article.",
+    "scope_note": "",
+    "dropped_urls_dead": [
+      "https://lngprime.com/americas/gato-negro-eyes-fid-on-mexico-lng-plant-in-late-2026/165906/"
+    ],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130917",
+    "unit_id": "G100002091701",
+    "terminal_name": "AMIGO FLNG Terminal",
+    "unit_name": "T1",
+    "country": "Mexico",
+    "field_name": "FIDYear",
+    "old_value": "2025",
+    "new_value": "2026",
+    "confidence": "green",
+    "source_tier": "trade_press(2 independent)",
+    "ref_field": "FIDYear [ref]",
+    "ref_urls": [
+      "https://www.energyintel.com/00000199-1035-df64-addd-be7fea670000",
+      "https://lngprime.com/americas/amigo-lng-expects-fid-in-q1-2026/172203/",
+      "https://naturalgasintel.com/news/amigo-lng-advances-toward-buildout-eyes-permian-natural-gas-exports/"
+    ],
+    "source_notes": "Company (Sep 2025 researcher note) said FID was expected 'within two months,' but corroborated trade press now points to Q1 2026 for FID / continued buildout progress. Kept the existing EnergyIntel citation (not proven dead or wrong, per merge rule) and added two new independent sources.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130917",
+    "unit_id": "G100002091701",
+    "terminal_name": "AMIGO FLNG Terminal",
+    "unit_name": "T1",
+    "country": "Mexico",
+    "field_name": "FIDYear [ref]",
+    "old_value": "https://www.energyintel.com/00000199-1035-df64-addd-be7fea670000",
+    "new_value": "https://www.energyintel.com/00000199-1035-df64-addd-be7fea670000, https://lngprime.com/americas/amigo-lng-expects-fid-in-q1-2026/172203/, https://naturalgasintel.com/news/amigo-lng-advances-toward-buildout-eyes-permian-natural-gas-exports/",
+    "confidence": "green",
+    "source_tier": "trade_press(2 independent)",
+    "ref_field": "",
+    "ref_urls": [
+      "https://www.energyintel.com/00000199-1035-df64-addd-be7fea670000",
+      "https://lngprime.com/americas/amigo-lng-expects-fid-in-q1-2026/172203/",
+      "https://naturalgasintel.com/news/amigo-lng-advances-toward-buildout-eyes-permian-natural-gas-exports/"
+    ],
+    "source_notes": "Merge-add: existing EnergyIntel URL kept (unproven dead/wrong), two new corroborating sources added.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131173",
+    "unit_id": "G100002117300",
+    "terminal_name": "Salina Cruz LNG Terminal (Pilot/GFI)",
+    "unit_name": "--",
+    "country": "Mexico",
+    "field_name": "FacilityType [ref]",
+    "old_value": "https://www.salinacruzlng.com/",
+    "new_value": "https://www.offshore-energy.biz/us-duo-joins-forces-to-develop-new-lng-terminal-on-mexicos-pacific-coast/",
+    "confidence": "yellow",
+    "source_tier": "trade_press(single)",
+    "ref_field": "",
+    "ref_urls": [
+      "https://www.offshore-energy.biz/us-duo-joins-forces-to-develop-new-lng-terminal-on-mexicos-pacific-coast/"
+    ],
+    "source_notes": "salinacruzlng.com confirmed DNS NXDOMAIN as of 2026-08 (nslookup/curl both fail to resolve the host) — the owners' primary site is dead. No value change; this is a pure citation repair. Replacement (offshore-energy.biz) explicitly confirms export-terminal facility type; a single non-primary source, hence yellow (the Wayback capture of the dead site does not itself state facility type, so it is not cited here).",
+    "scope_note": "",
+    "dropped_urls_dead": [
+      "https://www.salinacruzlng.com/"
+    ],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131173",
+    "unit_id": "G100002117300",
+    "terminal_name": "Salina Cruz LNG Terminal (Pilot/GFI)",
+    "unit_name": "--",
+    "country": "Mexico",
+    "field_name": "Capacity [ref]",
+    "old_value": "https://www.salinacruzlng.com/",
+    "new_value": "https://www.offshore-energy.biz/us-duo-joins-forces-to-develop-new-lng-terminal-on-mexicos-pacific-coast/",
+    "confidence": "yellow",
+    "source_tier": "trade_press(single)",
+    "ref_field": "",
+    "ref_urls": [
+      "https://www.offshore-energy.biz/us-duo-joins-forces-to-develop-new-lng-terminal-on-mexicos-pacific-coast/"
+    ],
+    "source_notes": "salinacruzlng.com confirmed DNS NXDOMAIN as of 2026-08 (nslookup/curl both fail to resolve the host) — the owners' primary site is dead. No value change; this is a pure citation repair. Replacement explicitly states 0.34 mtpa capacity; single non-primary source, hence yellow.",
+    "scope_note": "",
+    "dropped_urls_dead": [
+      "https://www.salinacruzlng.com/"
+    ],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131173",
+    "unit_id": "G100002117300",
+    "terminal_name": "Salina Cruz LNG Terminal (Pilot/GFI)",
+    "unit_name": "--",
+    "country": "Mexico",
+    "field_name": "StartDate [ref]",
+    "old_value": "https://www.salinacruzlng.com/, https://www.offshore-energy.biz/us-duo-joins-forces-to-develop-new-lng-terminal-on-mexicos-pacific-coast/",
+    "new_value": "https://www.offshore-energy.biz/us-duo-joins-forces-to-develop-new-lng-terminal-on-mexicos-pacific-coast/",
+    "confidence": "yellow",
+    "source_tier": "trade_press(single)",
+    "ref_field": "",
+    "ref_urls": [
+      "https://www.offshore-energy.biz/us-duo-joins-forces-to-develop-new-lng-terminal-on-mexicos-pacific-coast/"
+    ],
+    "source_notes": "salinacruzlng.com confirmed DNS NXDOMAIN as of 2026-08 (nslookup/curl both fail to resolve the host) — the owners' primary site is dead. No value change; this is a pure citation repair. Only the offshore-energy.biz half of the existing pair still resolves; it explicitly states the 2027 target consistent with the unchanged OriginalPlannedStartYear/LatestPlannedStartYear values.",
+    "scope_note": "",
+    "dropped_urls_dead": [
+      "https://www.salinacruzlng.com/"
+    ],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131173",
+    "unit_id": "G100002117300",
+    "terminal_name": "Salina Cruz LNG Terminal (Pilot/GFI)",
+    "unit_name": "--",
+    "country": "Mexico",
+    "field_name": "FIDYear [ref]",
+    "old_value": "https://www.salinacruzlng.com/",
+    "new_value": "https://www.offshore-energy.biz/us-duo-joins-forces-to-develop-new-lng-terminal-on-mexicos-pacific-coast/, http://web.archive.org/web/20260606230822/https://www.salinacruzlng.com/",
+    "confidence": "green",
+    "source_tier": "trade_press+archival_primary",
+    "ref_field": "",
+    "ref_urls": [
+      "https://www.offshore-energy.biz/us-duo-joins-forces-to-develop-new-lng-terminal-on-mexicos-pacific-coast/",
+      "http://web.archive.org/web/20260606230822/https://www.salinacruzlng.com/"
+    ],
+    "source_notes": "salinacruzlng.com confirmed DNS NXDOMAIN as of 2026-08 (nslookup/curl both fail to resolve the host) — the owners' primary site is dead. No value change; this is a pure citation repair. Two sources both explicitly confirm the 2025 FID target: offshore-energy.biz (trade press) and a 2026-06-06 Wayback capture of the owners' own site (archival primary), taken before the domain died.",
+    "scope_note": "",
+    "dropped_urls_dead": [
+      "https://www.salinacruzlng.com/"
+    ],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131173",
+    "unit_id": "G100002117300",
+    "terminal_name": "Salina Cruz LNG Terminal (Pilot/GFI)",
+    "unit_name": "--",
+    "country": "Mexico",
+    "field_name": "Owner [ref]",
+    "old_value": "https://www.salinacruzlng.com/, https://www.offshore-energy.biz/us-duo-joins-forces-to-develop-new-lng-terminal-on-mexicos-pacific-coast/, https://www.salinacruzlng.com/, https://www.offshore-energy.biz/us-duo-joins-forces-to-develop-new-lng-terminal-on-mexicos-pacific-coast/",
+    "new_value": "https://www.offshore-energy.biz/us-duo-joins-forces-to-develop-new-lng-terminal-on-mexicos-pacific-coast/, http://web.archive.org/web/20260606230822/https://www.salinacruzlng.com/",
+    "confidence": "green",
+    "source_tier": "trade_press+archival_primary",
+    "ref_field": "",
+    "ref_urls": [
+      "https://www.offshore-energy.biz/us-duo-joins-forces-to-develop-new-lng-terminal-on-mexicos-pacific-coast/",
+      "http://web.archive.org/web/20260606230822/https://www.salinacruzlng.com/"
+    ],
+    "source_notes": "salinacruzlng.com confirmed DNS NXDOMAIN as of 2026-08 (nslookup/curl both fail to resolve the host) — the owners' primary site is dead. No value change; this is a pure citation repair. Deduplicated the repeated pair and replaced the dead URL; both surviving citations explicitly name GFI (Gomez Family International) and Pilot LNG as co-owners.",
+    "scope_note": "",
+    "dropped_urls_dead": [
+      "https://www.salinacruzlng.com/"
+    ],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130572",
+    "unit_id": "G100002057200",
+    "terminal_name": "Lazaro Cardenas LNG Terminal",
+    "unit_name": "--",
+    "country": "Mexico",
+    "field_name": "Status [ref]",
+    "old_value": "",
+    "new_value": "https://cincodias.elpais.com/cincodias/2004/02/19/empresas/1077201595_850215.html",
+    "confidence": "yellow",
+    "source_tier": "dormancy_anchor(single)",
+    "ref_field": "",
+    "ref_urls": [
+      "https://cincodias.elpais.com/cincodias/2004/02/19/empresas/1077201595_850215.html"
+    ],
+    "source_notes": "No dormancy-specific source (i.e. a source explicitly discussing the 2007 shelving / 2009 cancellation) could be located this batch — WebSearch budget was exhausted before a thorough targeted search could be completed (flagged in qa for follow-up). Per lifecycle_rules.md's inferred-entry convention, an INFERRED shelved/cancelled classification is cited to its dormancy anchor (the newest available source, establishing the point after which no further activity was observed), not to a source that declares the shelving/cancellation outright — none exists for an inferred call. This 2004 Cinco Dias article is the only/newest source on file for this terminal (already the basis for its Owner/Capacity/FacilityType/Location citations); it is used here as that anchor, not as evidence for the specific years. Confidence yellow — single source, anchor-only.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130572",
+    "unit_id": "G100002057200",
+    "terminal_name": "Lazaro Cardenas LNG Terminal",
+    "unit_name": "--",
+    "country": "Mexico",
+    "field_name": "ShelvedYear [ref]",
+    "old_value": "",
+    "new_value": "https://cincodias.elpais.com/cincodias/2004/02/19/empresas/1077201595_850215.html",
+    "confidence": "yellow",
+    "source_tier": "dormancy_anchor(single)",
+    "ref_field": "",
+    "ref_urls": [
+      "https://cincodias.elpais.com/cincodias/2004/02/19/empresas/1077201595_850215.html"
+    ],
+    "source_notes": "No dormancy-specific source (i.e. a source explicitly discussing the 2007 shelving / 2009 cancellation) could be located this batch — WebSearch budget was exhausted before a thorough targeted search could be completed (flagged in qa for follow-up). Per lifecycle_rules.md's inferred-entry convention, an INFERRED shelved/cancelled classification is cited to its dormancy anchor (the newest available source, establishing the point after which no further activity was observed), not to a source that declares the shelving/cancellation outright — none exists for an inferred call. This 2004 Cinco Dias article is the only/newest source on file for this terminal (already the basis for its Owner/Capacity/FacilityType/Location citations); it is used here as that anchor, not as evidence for the specific years. Confidence yellow — single source, anchor-only.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130572",
+    "unit_id": "G100002057200",
+    "terminal_name": "Lazaro Cardenas LNG Terminal",
+    "unit_name": "--",
+    "country": "Mexico",
+    "field_name": "CancelledYear [ref]",
+    "old_value": "",
+    "new_value": "https://cincodias.elpais.com/cincodias/2004/02/19/empresas/1077201595_850215.html",
+    "confidence": "yellow",
+    "source_tier": "dormancy_anchor(single)",
+    "ref_field": "",
+    "ref_urls": [
+      "https://cincodias.elpais.com/cincodias/2004/02/19/empresas/1077201595_850215.html"
+    ],
+    "source_notes": "No dormancy-specific source (i.e. a source explicitly discussing the 2007 shelving / 2009 cancellation) could be located this batch — WebSearch budget was exhausted before a thorough targeted search could be completed (flagged in qa for follow-up). Per lifecycle_rules.md's inferred-entry convention, an INFERRED shelved/cancelled classification is cited to its dormancy anchor (the newest available source, establishing the point after which no further activity was observed), not to a source that declares the shelving/cancellation outright — none exists for an inferred call. This 2004 Cinco Dias article is the only/newest source on file for this terminal (already the basis for its Owner/Capacity/FacilityType/Location citations); it is used here as that anchor, not as evidence for the specific years. Confidence yellow — single source, anchor-only.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130572",
+    "unit_id": "G100002057200",
+    "terminal_name": "Lazaro Cardenas LNG Terminal",
+    "unit_name": "--",
+    "country": "Mexico",
+    "field_name": "StopYear [ref]",
+    "old_value": "",
+    "new_value": "https://cincodias.elpais.com/cincodias/2004/02/19/empresas/1077201595_850215.html",
+    "confidence": "yellow",
+    "source_tier": "dormancy_anchor(single)",
+    "ref_field": "",
+    "ref_urls": [
+      "https://cincodias.elpais.com/cincodias/2004/02/19/empresas/1077201595_850215.html"
+    ],
+    "source_notes": "No dormancy-specific source (i.e. a source explicitly discussing the 2007 shelving / 2009 cancellation) could be located this batch — WebSearch budget was exhausted before a thorough targeted search could be completed (flagged in qa for follow-up). Per lifecycle_rules.md's inferred-entry convention, an INFERRED shelved/cancelled classification is cited to its dormancy anchor (the newest available source, establishing the point after which no further activity was observed), not to a source that declares the shelving/cancellation outright — none exists for an inferred call. This 2004 Cinco Dias article is the only/newest source on file for this terminal (already the basis for its Owner/Capacity/FacilityType/Location citations); it is used here as that anchor, not as evidence for the specific years. Confidence yellow — single source, anchor-only.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130674",
+    "unit_id": "G100002067401",
+    "terminal_name": "PEMEX LNG Terminal",
+    "unit_name": "--",
+    "country": "Mexico",
+    "field_name": "Status [ref]",
+    "old_value": "",
+    "new_value": "https://web.archive.org/web/20210917223501/https://www.jsg.utexas.edu/lacp/2014/11/pemex-plan-for-a-6-billion-lng-export-terminal-faces-skepticism/",
+    "confidence": "yellow",
+    "source_tier": "dormancy_anchor(single)",
+    "ref_field": "",
+    "ref_urls": [
+      "https://web.archive.org/web/20210917223501/https://www.jsg.utexas.edu/lacp/2014/11/pemex-plan-for-a-6-billion-lng-export-terminal-faces-skepticism/"
+    ],
+    "source_notes": "No dormancy-specific source (explicitly discussing the 2016 shelving / 2018 cancellation) could be located this batch — WebSearch budget was exhausted before a thorough targeted search could be completed (flagged in qa for follow-up). Per lifecycle_rules.md's inferred-entry convention, cited to the dormancy anchor (newest source on file, already the basis for this terminal's FacilityType/Owner/Capacity/StartDate/Location citations) rather than to a source declaring the shelving/cancellation outright. Confidence yellow — single source, anchor-only.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130674",
+    "unit_id": "G100002067401",
+    "terminal_name": "PEMEX LNG Terminal",
+    "unit_name": "--",
+    "country": "Mexico",
+    "field_name": "ShelvedYear [ref]",
+    "old_value": "",
+    "new_value": "https://web.archive.org/web/20210917223501/https://www.jsg.utexas.edu/lacp/2014/11/pemex-plan-for-a-6-billion-lng-export-terminal-faces-skepticism/",
+    "confidence": "yellow",
+    "source_tier": "dormancy_anchor(single)",
+    "ref_field": "",
+    "ref_urls": [
+      "https://web.archive.org/web/20210917223501/https://www.jsg.utexas.edu/lacp/2014/11/pemex-plan-for-a-6-billion-lng-export-terminal-faces-skepticism/"
+    ],
+    "source_notes": "No dormancy-specific source (explicitly discussing the 2016 shelving / 2018 cancellation) could be located this batch — WebSearch budget was exhausted before a thorough targeted search could be completed (flagged in qa for follow-up). Per lifecycle_rules.md's inferred-entry convention, cited to the dormancy anchor (newest source on file, already the basis for this terminal's FacilityType/Owner/Capacity/StartDate/Location citations) rather than to a source declaring the shelving/cancellation outright. Confidence yellow — single source, anchor-only.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130674",
+    "unit_id": "G100002067401",
+    "terminal_name": "PEMEX LNG Terminal",
+    "unit_name": "--",
+    "country": "Mexico",
+    "field_name": "CancelledYear [ref]",
+    "old_value": "",
+    "new_value": "https://web.archive.org/web/20210917223501/https://www.jsg.utexas.edu/lacp/2014/11/pemex-plan-for-a-6-billion-lng-export-terminal-faces-skepticism/",
+    "confidence": "yellow",
+    "source_tier": "dormancy_anchor(single)",
+    "ref_field": "",
+    "ref_urls": [
+      "https://web.archive.org/web/20210917223501/https://www.jsg.utexas.edu/lacp/2014/11/pemex-plan-for-a-6-billion-lng-export-terminal-faces-skepticism/"
+    ],
+    "source_notes": "No dormancy-specific source (explicitly discussing the 2016 shelving / 2018 cancellation) could be located this batch — WebSearch budget was exhausted before a thorough targeted search could be completed (flagged in qa for follow-up). Per lifecycle_rules.md's inferred-entry convention, cited to the dormancy anchor (newest source on file, already the basis for this terminal's FacilityType/Owner/Capacity/StartDate/Location citations) rather than to a source declaring the shelving/cancellation outright. Confidence yellow — single source, anchor-only.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130674",
+    "unit_id": "G100002067401",
+    "terminal_name": "PEMEX LNG Terminal",
+    "unit_name": "--",
+    "country": "Mexico",
+    "field_name": "StopYear [ref]",
+    "old_value": "",
+    "new_value": "https://web.archive.org/web/20210917223501/https://www.jsg.utexas.edu/lacp/2014/11/pemex-plan-for-a-6-billion-lng-export-terminal-faces-skepticism/",
+    "confidence": "yellow",
+    "source_tier": "dormancy_anchor(single)",
+    "ref_field": "",
+    "ref_urls": [
+      "https://web.archive.org/web/20210917223501/https://www.jsg.utexas.edu/lacp/2014/11/pemex-plan-for-a-6-billion-lng-export-terminal-faces-skepticism/"
+    ],
+    "source_notes": "No dormancy-specific source (explicitly discussing the 2016 shelving / 2018 cancellation) could be located this batch — WebSearch budget was exhausted before a thorough targeted search could be completed (flagged in qa for follow-up). Per lifecycle_rules.md's inferred-entry convention, cited to the dormancy anchor (newest source on file, already the basis for this terminal's FacilityType/Owner/Capacity/StartDate/Location citations) rather than to a source declaring the shelving/cancellation outright. Confidence yellow — single source, anchor-only.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130917",
+    "unit_id": "G100002091702",
+    "terminal_name": "AMIGO FLNG Terminal",
+    "unit_name": "T2",
+    "country": "Mexico",
+    "field_name": "Status",
+    "old_value": "proposed",
+    "new_value": "proposed",
+    "confidence": "blue",
+    "source_tier": "re-verified",
+    "ref_field": "",
+    "ref_urls": [
+      "https://www.energy.gov/sites/prod/files/2020/04/f73/20-31-LNG.pdf",
+      "https://www.lngalliance.com/projects-7"
+    ],
+    "source_notes": "Re-verified: T2 startup remains speculative pending T1 progress (per prior researcher note); no confirmed movement found in this sweep. LNG Alliance project page still lists T2 as proposed. [ref-restore 2026-08-11: restored existing live URL(s) https://www.energy.gov/sites/prod/files/2020/04/f73/20-31-LNG.pdf per merge-semantics rule (bot-block != dead; never drop a URL not proven dead)]",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130810",
+    "unit_id": "G100002081002",
+    "terminal_name": "Costa Azul LNG Terminal",
+    "unit_name": "Export Terminal Phase 2",
+    "country": "Mexico",
+    "field_name": "Status",
+    "old_value": "proposed",
+    "new_value": "proposed",
+    "confidence": "blue",
+    "source_tier": "re-verified",
+    "ref_field": "",
+    "ref_urls": [
+      "https://www.bloomberg.com/news/articles/2015-02-19/pemex-ienova-sign-mou-on-mexico-lng-liquification-plant"
+    ],
+    "source_notes": "Re-verified: Sempra's FY2025 quarterly filings continue to omit Phase 2 detail (per prior researcher note); no confirmed FID/construction movement found this sweep. Existing Bloomberg citation re-confirmed live via Wayback fallback (bot-blocked).",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130573",
+    "unit_id": "G100002057300",
+    "terminal_name": "Manzanillo (Mexico) LNG Terminal",
+    "unit_name": "--",
+    "country": "Mexico",
+    "field_name": "Status",
+    "old_value": "operating",
+    "new_value": "operating",
+    "confidence": "blue",
+    "source_tier": "re-verified",
+    "ref_field": "",
+    "ref_urls": [
+      "https://cdn.prod.website-files.com/67bdb9fc993751711c5f54fd/685278fda1e68e3b4324e2cf_0432365c1c5b8fb129ae8055cca8cb9b_%23GIIGNL%20-%20Livre%202025-20250610-Simple.pdf"
+    ],
+    "source_notes": "Re-verified operating status and 3.8 mtpa capacity against the GIIGNL 2025 report mirror; no change found this sweep.",
+    "scope_note": "",
+    "dropped_urls_dead": [
+      "https://www.igu.org/igu-reports/2025-world-lng-report?gad_source=1&gad_campaignid=22570706637&gbraid=0AAAAA9kOlQjyt6hUkZGX_RurEkcHXmNXD&gclid=CjwKCAjwi-DBBhA5EiwAXOHsGaWVYYsRaJy3-JGSjWw0q0CXTzrVa1-hCgvxwPR541313mP7dAIk5RoCum0QAvD_BwE"
+    ],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130690",
+    "unit_id": "G100002069000",
+    "terminal_name": "Pichilingue LNG Terminal",
+    "unit_name": "--",
+    "country": "Mexico",
+    "field_name": "Status",
+    "old_value": "operating",
+    "new_value": "operating",
+    "confidence": "blue",
+    "source_tier": "re-verified",
+    "ref_field": "",
+    "ref_urls": [
+      "https://cdn.prod.website-files.com/67bdb9fc993751711c5f54fd/685278fda1e68e3b4324e2cf_0432365c1c5b8fb129ae8055cca8cb9b_%23GIIGNL%20-%20Livre%202025-20250610-Simple.pdf",
+      "https://ir.newfortressenergy.com/news-releases/news-release-details/new-fortress-energy-commences-operations-baja-california-sur"
+    ],
+    "source_notes": "Re-verified operating status against New Fortress Energy's IR release; no change found this sweep. [ref-restore 2026-08-11: restored existing live URL(s) https://cdn.prod.website-files.com/67bdb9fc993751711c5f54fd/685278fda1e68e3b4324e2cf_0432365c1c5b8fb129ae8055cca8cb9b_%23GIIGNL%20-%20Livre%202025-20250610-Simple.pdf per merge-semantics rule (bot-block != dead; never drop a URL not proven dead)]",
+    "scope_note": "",
+    "dropped_urls_dead": [
+      "https://www.igu.org/igu-reports/2025-world-lng-report?gad_source=1&gad_campaignid=22570706637&gbraid=0AAAAA9kOlQjyt6hUkZGX_RurEkcHXmNXD&gclid=CjwKCAjwi-DBBhA5EiwAXOHsGaWVYYsRaJy3-JGSjWw0q0CXTzrVa1-hCgvxwPR541313mP7dAIk5RoCum0QAvD_BwE"
+    ],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130809",
+    "unit_id": "G100002080901",
+    "terminal_name": "Saguaro Energía LNG Terminal",
+    "unit_name": "Phase 1 (Trains 1-3)",
+    "country": "Mexico",
+    "field_name": "Status",
+    "old_value": "proposed",
+    "new_value": "proposed",
+    "confidence": "blue",
+    "source_tier": "re-verified",
+    "ref_field": "",
+    "ref_urls": [
+      "https://mexicopacific.com/saguaro-energia/"
+    ],
+    "source_notes": "Re-verified pre-FID/proposed status against the owner's project page; see qa entry on the outstanding DOE permit-extension question. No status change found this sweep.",
+    "scope_note": "",
+    "dropped_urls_dead": [
+      "https://www.energy.gov/sites/prod/files/2018/07/f53/18-70-LNGapp.pdf"
+    ],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130809",
+    "unit_id": "G100002080902",
+    "terminal_name": "Saguaro Energía LNG Terminal",
+    "unit_name": "Phase 2 (Trains 4-6)",
+    "country": "Mexico",
+    "field_name": "Status",
+    "old_value": "proposed",
+    "new_value": "proposed",
+    "confidence": "blue",
+    "source_tier": "re-verified",
+    "ref_field": "",
+    "ref_urls": [
+      "https://mexicopacific.com/saguaro-energia/"
+    ],
+    "source_notes": "Re-verified pre-FID/proposed status against the owner's project page; no change found this sweep.",
+    "scope_note": "",
+    "dropped_urls_dead": [
+      "https://www.energy.gov/sites/prod/files/2018/07/f53/18-70-LNGapp.pdf"
+    ],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130717",
+    "unit_id": "G100002071701",
+    "terminal_name": "Salina Cruz LNG Terminal (CFE)",
+    "unit_name": "--",
+    "country": "Mexico",
+    "field_name": "Status",
+    "old_value": "shelved",
+    "new_value": "shelved",
+    "confidence": "blue",
+    "source_tier": "re-verified",
+    "ref_field": "",
+    "ref_urls": [
+      "https://www.eleconomista.com.mx/empresas/Mexico-comenzara-exportacion-de-gas-natural-licuado-en-el-2025-20230725-0117.html"
+    ],
+    "source_notes": "Re-verified shelved-inferred status; no new developments found this sweep beyond the prior researcher's Sep-2025 assessment.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000131173",
+    "unit_id": "G100002117300",
+    "terminal_name": "Salina Cruz LNG Terminal (Pilot/GFI)",
+    "unit_name": "--",
+    "country": "Mexico",
+    "field_name": "Status",
+    "old_value": "proposed",
+    "new_value": "proposed",
+    "confidence": "blue",
+    "source_tier": "re-verified",
+    "ref_field": "",
+    "ref_urls": [
+      "https://naturalgasintel.com/news/pilot-launching-mexico-lng-terminal-with-sights-on-bunkering-opportunities-in-north-and-central-america/"
+    ],
+    "source_notes": "Re-verified proposed status; owners' own site (the terminal's primary source) has gone dark (DNS dead, see the ref-repair records above) with no other project news found — see qa entry flagging this as a possible early dormancy signal to watch next batch.",
+    "scope_note": "",
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  }
+]

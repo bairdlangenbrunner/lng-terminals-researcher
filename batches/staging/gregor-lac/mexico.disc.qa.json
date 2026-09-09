@@ -1,0 +1,72 @@
+[
+  {
+    "category": "status_change_lead",
+    "terminal_id": null,
+    "unit_id": null,
+    "terminal_name": "AMIGO GNL",
+    "issue": "Trade press (June 2026) reports a legal/environmental halt on the AMIGO GNL project (injunction or permit suspension). Discovery agent did not verify the specific legal instrument or current status -- this is a lead for the Update agent to confirm and stage a status/timeline change if warranted.",
+    "severity": "medium",
+    "suggested_action": "Update agent should verify the legal/environmental halt via primary source (ASEA/SEMARNAT/court filing or verified press) and, if confirmed, stage a Status/StatusRef or timeline update.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "status_change_lead",
+    "terminal_id": null,
+    "unit_id": null,
+    "terminal_name": "Saguaro Energia LNG Terminal",
+    "issue": "Trade press (April 2026) reports a court injunction affecting LNG tanker entry at Saguaro Energia (Mexico Pacific project). Not independently verified by this discovery agent beyond the initial lead.",
+    "severity": "medium",
+    "suggested_action": "Update agent should verify the injunction (Mexican court filing or verified press) and, if confirmed, stage a qa/status note or operational-constraint annotation.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "data_update_lead",
+    "terminal_id": null,
+    "unit_id": null,
+    "terminal_name": "Coatzacoalcos II / Ursus Energy (branded PODEBIS)",
+    "issue": "June 2026 press reports a major financing update involving Samsung E&A and rebranding to 'PODEBIS' for the Coatzacoalcos II project sponsored by Ursus Energy. This is an update to an EXISTING GEM record/project already tracked per the Gulf packet's own researcher notes (identified during the dormant-revival check on the dead Coatzacoalcos CFE site) -- not a new discovery.",
+    "severity": "low",
+    "suggested_action": "Update agent should verify the Samsung E&A financing/EPC role and PODEBIS branding and stage as an update to the existing Coatzacoalcos II / Ursus Energy record (owner/EPC/financing fields), not a new terminal.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "data_update_lead",
+    "terminal_id": null,
+    "unit_id": null,
+    "terminal_name": "Gato Negro Manzanillo LNG Terminal",
+    "issue": "Press reports a capacity figure of ~9 mtpa and a US DOE non-FTA export authorization application filed August 2025 for the Gato Negro Manzanillo project. Existing GEM record's current capacity/DOE-filing status not independently reconciled by this discovery agent (out of scope for a discovery pass, which does not edit existing rows).",
+    "severity": "low",
+    "suggested_action": "Update agent should check the DOE FE docket for the non-FTA application and reconcile Capacity/ExportAuthorization-type fields against the current GEM record.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "coverage_check",
+    "terminal_id": null,
+    "unit_id": null,
+    "terminal_name": "all 17 Mexico GEM terminals",
+    "issue": "gem.wiki-vs-CSV coverage cross-check (SOP section 4.0b) completed clean: all 17 GEM Mexico terminal wiki pages have a matching export-CSV row. One apparent gap (Gato Negro Manzanillo LNG Terminal, missing from a gem.wiki search-endpoint result list) was confirmed a search-indexing artifact -- the wiki page exists and matches the CSV row. No orphan gem.wiki pages found for Mexico.",
+    "severity": "low",
+    "suggested_action": "No action needed; recorded for audit trail.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "stale_lead",
+    "terminal_id": null,
+    "unit_id": null,
+    "terminal_name": "n/a (Shell Sonora lead)",
+    "issue": "A 2022 Shell-linked LNG import-terminal lead for Sonora surfaced during the search but shows no activity since 2022 and no current sponsor confirmation -- appears dead/superseded by the newer, separately-tracked Guaymas SENER lead (see monitor list). Not staged.",
+    "severity": "low",
+    "suggested_action": "No action; noted to prevent re-discovery churn in future passes.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  },
+  {
+    "category": "out_of_scope",
+    "terminal_id": null,
+    "unit_id": null,
+    "terminal_name": "n/a (Salina Cruz bunkering study)",
+    "issue": "A Salina Cruz LNG bunkering feasibility study surfaced during the search. LNG bunkering is explicitly out of scope for the LNG Terminals tracker per project methodology/CLAUDE.md.",
+    "severity": "low",
+    "suggested_action": "No action; correctly excluded from staging.",
+    "researcher_initials": "AI-draft (discovery sweep)"
+  }
+]

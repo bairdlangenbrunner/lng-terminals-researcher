@@ -1,0 +1,296 @@
+[
+ {
+  "terminal": "Chana LNG Terminal",
+  "terminal_id": "T100000130893",
+  "country": "Thailand",
+  "verdict": "NO",
+  "mechanical": "False",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "green",
+  "captive_summary": "RE-VERIFY, OVERTURNS PRE-EXISTING TRUE. Chana LNG Terminal is an onshore LNG import/storage facility with pipelines built specifically to feed the adjacent Songkhla Chana 1.7 GW gas-fired combined-cycle power plant (KOWEPO/TPIPP/KOGAS JV, signed March 2021), whose electricity output is sold entirely to EGAT (the national grid), not consumed on-site by the terminal. This is the classic direction-test case: the terminal supplies gas OUT to an external power plant (already correctly captured in GEM's PowerPlantsSupplied = 'Songkhla Chana power station'); it is not powered BY a captive plant. No source anywhere describes on-site captive generation for the LNG terminal itself.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "southeastasiainfra.com (2021, on the KOWEPO/TPIPP/KOGAS agreement) states the project is 'a 1.7 GW gas turbine combined cycle plant project and a liquefied natural gas (LNG) infrastructure facility' with storage tanks and pipelines to supply the power station, and that electricity produced 'will be sold to the Electricity Generating Authority of Thailand (EGAT).' ajupress.com (March 2021) independently corroborates: 'KOGAS is responsible for LNG procurement and terminal operation, while its Thai partner is in charge of licensing. The power plant will be run for 25 years after construction and sell electricity to the Electricity Generating Authority of Thailand' -- i.e. the LNG terminal operation is organizationally and physically separate from the power-generation operation, with output exported to the grid, not consumed captively by the terminal. Existing GEM CaptiveGasPower [ref] field was empty (no citation was ever attached to the pre-existing True), and no independent source found in this pass supports on-site captive generation at the terminal -- the pre-existing True appears to be a direction-test data error conflating 'terminal supplies an adjacent power plant' with 'terminal has captive power'.",
+  "refs": [
+   "http://southeastasiainfra.com/new-1-7-gw-gas-power-plant-and-lng-supply-infrastructure-in-thailand/",
+   "https://www.ajupress.com/view/20210305100018217"
+  ],
+  "verification_log": [
+   {
+    "url": "http://southeastasiainfra.com/new-1-7-gw-gas-power-plant-and-lng-supply-infrastructure-in-thailand/",
+    "tokens": [
+     "1.7 GW",
+     "LNG"
+    ],
+    "result": "PASS",
+    "note": "project overview"
+   },
+   {
+    "url": "http://southeastasiainfra.com/new-1-7-gw-gas-power-plant-and-lng-supply-infrastructure-in-thailand/",
+    "tokens": [
+     "EGAT"
+    ],
+    "result": "PASS",
+    "note": "confirms electricity sold to EGAT/grid, not consumed on-site"
+   },
+   {
+    "url": "https://www.ajupress.com/view/20210305100018217",
+    "tokens": [
+     "Electricity Generating Authority of Thailand"
+    ],
+    "result": "PASS",
+    "note": "corroborates grid-sale, separate LNG-terminal-vs-power-plant operating roles"
+   }
+  ],
+  "gogpt_prior_assessment": "GEM's gogpt_prior for this terminal is 'no' (no GOGPT match given in the dispatch). Consistent with findings: the associated power asset (Songkhla Chana power station / Chana Combined Cycle Power Plant expansion) is a separate merchant IPP selling to EGAT, not a captive plant of the LNG terminal.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "Not a captive plant of this terminal -- it is the terminal's PowerPlantsSupplied customer, already tracked as its own GOGPT-side asset (Songkhla Chana / Chana power station) via the supply relationship, not this terminal's on-site generation.",
+  "status_or_other_findings": "No new status findings; existing GEM record (cancelled 2025, shelved 2023, proposed 2021) is consistent with all sources reviewed.",
+  "notes": "OVERTURNS PRE-EXISTING CaptiveGasPower=True. This is a textbook direction-test case explicitly called out in the brief: PowerPlantsSupplied='Songkhla Chana power station' already correctly documents the real relationship (terminal feeds an external merchant power plant that sells to EGAT/grid). Recommend the orchestrator stage a deletion of CaptiveGasPower (clear to blank/False) with these two refs as the evidentiary basis for the change."
+ },
+ {
+  "terminal": "Gulf of Thailand FSRU",
+  "terminal_id": "T100000130896",
+  "country": "Thailand",
+  "verdict": "SCREENED",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "yellow",
+  "captive_summary": "SCREEN: cancelled-and-never-built. This EGAT-led ~5 mtpa FSRU concept in the upper Gulf of Thailand (near Rayong/Bang Pakong) never advanced past the feasibility/MOU stage -- no vessel was ever selected and no engineering design was ever published. The National Energy Policy Committee scrapped it in favor of the downstream Surat Thani alternative before any FID.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "thaioilgas.com (June 30, 2021) reports the original upper-Gulf FSRU (intended to supply gas to Bang Pakong Power Plant and South Bangkok Power Plant) was scrapped: decision-makers 'decided to scrap the FSRU project because it is less commercially viable' than the alternative lower-Gulf FSRU. No source found describes a chosen vessel, EPC contract, or captive-power design for this project at any point in its life -- it never reached the design stage the brief's 'as-designed still counts' rule requires.",
+  "refs": [
+   "https://thaioilgas.com/egat-allocates-b20bn-for-lng-terminal/"
+  ],
+  "verification_log": [
+   {
+    "url": "https://thaioilgas.com/egat-allocates-b20bn-for-lng-terminal/",
+    "tokens": [
+     "Bang Pakong",
+     "scrap"
+    ],
+    "result": "PASS",
+    "note": "confirms cancellation and original direction-test purpose (feeding external power plants)"
+   }
+  ],
+  "gogpt_prior_assessment": "No GOGPT prior given (gogpt_prior: no).",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "Cancelled before any design/vessel was ever published; nothing to add.",
+  "status_or_other_findings": "Confirms GEM's existing 'cancelled (confirmed)' status. Also confirms this project's purpose was itself a direction-test case (feeding external Bang Pakong/South Bangkok power plants) even had it proceeded, reinforcing the screen.",
+  "notes": "This project's purpose (and its replacement, Surat Thani FSRU, below) was always to feed a specific external EGAT power plant -- another instance of the direction-test trap this country's terminals repeatedly hit, on top of never having been built."
+ },
+ {
+  "terminal": "Map Ta Phut LNG Terminal 1",
+  "terminal_id": "T100000130321",
+  "country": "Thailand",
+  "verdict": "NO",
+  "mechanical": "False",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "yellow",
+  "captive_summary": "Documented industrial-host trap: the nearby gas-fired plant GOGPT flags as a candidate ('Map Ta Phut BKK power station' / Bangkok Cogeneration, 112 MW, 6.14 km away) belongs to a completely separate company, Bangkok Cogeneration Co Ltd, which sells its output to EGAT and to industrial clients in the estate -- it has no ownership or operational link to PTT LNG or this terminal. No source describes on-site captive gas generation at PTT LNG's own Map Ta Phut LNG Terminal 1 (LMPT1); the only on-site LNG-cold-energy projects found (BIG-PTT air separation unit, GC/PE LNG cold-energy partnership) are non-combustion cryogenic cold-recovery for industrial gas production -- not gas power, per the SOP's cold-energy trap warning. (Citation-fixer note, 2026-07-31: the bkkcogen.com homepage was replaced with an independent AFRY trade-press source; see notes.)",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "bkkcogen.com (Bangkok Cogeneration Co Ltd's own site, primary/regulatory-equivalent source): describes two combined-cycle cogeneration plants at Map Ta Phut (112 MW installed, and a second unit at 162+89 MW) burning natural gas as fuel and selling power to 'การไฟฟ้าฝ่ายผลิตแห่งประเทศไทย' (EGAT) and to industrial clients in the estate -- with no mention whatsoever of PTT LNG or the LNG terminal, confirming it is an independent, differently-owned generating asset rather than this terminal's captive plant. Separately, bigth.com's BIG-PTT and thechemicaldata.com's GC/PE LNG cold-energy items confirm the only LNG-adjacent 'energy' projects at the site are cryogenic cold-recovery for air-separation/olefins production, not combustion power generation.",
+  "refs": [
+   "https://afry.com/en/newsroom/press-releases/afry-awarded-owners-engineer-services-assignment-cogeneration-power-plant-0"
+  ],
+  "verification_log": [
+   {
+    "url": "https://afry.com/en/newsroom/press-releases/afry-awarded-owners-engineer-services-assignment-cogeneration-power-plant-0",
+    "tokens": [
+     "Bangkok Cogeneration",
+     "Electricity Generating Authority of Thailand"
+    ],
+    "result": "PASS",
+    "note": "OK -- AFRY (independent engineering firm) press release re its owner's-engineer assignment for BCC's newer 146MW BCC2 cogeneration plant at Map Ta Phut Industrial Estate; confirms BCC sells grid power to EGAT under a PPA and process steam/power to industrial users in the estate, with no PTT LNG involvement -- corroborates independent ownership, though for BCC's second (146MW) unit rather than the 112MW unit cited in captive_summary. Replaces the previously-cited bare homepage http://www.bkkcogen.com/ (bkkcogen.com is a single-page WordPress site with no dedicated about/company-profile URL; its content lives only at the root, so no better bkkcogen.com-hosted specific page exists). Confidence downgraded green -> yellow: single non-primary (trade-press) source, and it documents BCC's second plant rather than the specific 112MW unit."
+   }
+  ],
+  "gogpt_prior_assessment": "GOGPT prior is 'Map Ta Phut BKK power station' (112 MW, gogpt_captive=False, 6.14 km). Confirmed NOT this terminal's captive plant: it is owned/operated by the unrelated Bangkok Cogeneration Co Ltd, which sells to EGAT and Map Ta Phut estate industrial clients generally, not exclusively (or at all, per public sourcing) to PTT LNG's terminal. Independent-ownership finding corroborated by AFRY owner’s-engineer press release for Bangkok Cogeneration (EGAT PPA + industrial sales): https://afry.com/en/newsroom/press-releases/afry-awarded-owners-engineer-services-assignment-cogeneration-power-plant-0 [ORCHESTRATOR QC 2026-07-31: bare-homepage bkkcogen.com URL removed here too, matching the citation-fix in refs.]",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "GOGPT record already exists for this plant (Map Ta Phut BKK power station) and it is not this terminal's captive asset -- another host's merchant cogeneration plant.",
+  "status_or_other_findings": "None.",
+  "notes": "Country-hint trap confirmed exactly as flagged: PTT LNG's cold-energy demonstration/ASU projects at Map Ta Phut are non-combustion and correctly excluded. This terminal is grid-connected for its own operations; the nearby gas-fired IPP belongs to a different host. Citation-fixer pass (2026-07-31): bkkcogen.com's only content is a single-page WordPress front page (no dedicated about/company-profile URL exists to cite instead), so the bare-homepage ref was replaced with an independent AFRY (owner's-engineer) press release confirming Bangkok Cogeneration Co Ltd's independent ownership and its PPA with EGAT plus industrial-user sales at Map Ta Phut Industrial Estate. That release covers BCC's second (146MW BCC2) plant, not the specific 112MW unit GOGPT flags, so confidence is downgraded from green to yellow pending a source that names the 112MW unit directly."
+ },
+ {
+  "terminal": "Map Ta Phut LNG Terminal 2",
+  "terminal_id": "T100000130322",
+  "country": "Thailand",
+  "verdict": "NO",
+  "mechanical": "False",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "green",
+  "captive_summary": "Direction test: this terminal (LMPT2 / Nong Fab, now operated by PE LNG Co Ltd -- transferred from PTTLNG in April 2024, with EGAT taking a 50% stake the same month) exists to regasify imported LNG that is then piped onward to EGAT's Bang Pakong Power Plant to meet Bangkok-area demand. The terminal supplies gas OUT to an external EGAT plant; it does not receive captive power IN from one. No source describes on-site gas-fired generation at the terminal itself.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "egat.co.th (EGAT's own site, primary/regulatory source, Oct 3 2023): 'The LNG will be used at EGAT's Bang Pakong Power Plant to support electricity demand in the main economic area, namely Bangkok Metropolitan Area. The first LNG cargo docked at LNG Map Ta Phut Terminal 2 in Rayong Province on October 1, 2023.' This directly documents the supply-out relationship. Ownership/operational context from pe-lng.com and thaipr.net: PE LNG Co Ltd operates LMPT2 (7.5 mtpa regasification capacity) at Ban Nong Fab, Rayong, following PTTLNG's April 2024 asset transfer and EGAT's concurrent 50% stake acquisition.",
+  "electric_mw_unused": "",
+  "refs": [
+   "https://www.egat.co.th/home/en/20231003e/"
+  ],
+  "verification_log": [
+   {
+    "url": "https://www.egat.co.th/home/en/20231003e/",
+    "tokens": [
+     "Bang Pakong"
+    ],
+    "result": "PASS",
+    "note": "primary source confirming direction: terminal supplies Bang Pakong Power Plant"
+   }
+  ],
+  "gogpt_prior_assessment": "GOGPT prior is 'Glow Energy Phase 5 power station' (328 MW, gogpt_captive=False, 1.93 km). Not confirmed as related to this terminal's actual gas customer (documented customer is EGAT's Bang Pakong plant, further away) -- Glow Energy Phase 5 is a separate IPP in the same industrial estate on the shared regional gas grid, not a captive plant of LMPT2.",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "GOGPT record already exists for Glow Energy Phase 5, and it is not this terminal's captive plant -- an unrelated IPP on the shared estate gas network, while this terminal's documented dedicated customer is EGAT's Bang Pakong Power Plant, tracked separately.",
+  "status_or_other_findings": "Ownership/operator update found but NOT staged (per instructions, report only): PTTLNG transferred LMPT2 assets/licenses to PE LNG Co Ltd in April 2024; EGAT acquired a 50% stake in PE LNG effective April 30 2024. Sources: pe-lng.com/company, thaipr.net/en/energy_en/3647397. GEM's current Owner field for this terminal ('PE LNG Co Ltd [100%]') may need reconciliation with the EGAT 50% stake -- flagging for a follow-on Update batch, not acted on here.",
+  "notes": "Direction-test case, same pattern as Chana and Map Ta Phut Terminal 3 in this shard: terminal supplies an external EGAT/IPP plant, is not captively powered by one."
+ },
+ {
+  "terminal": "Map Ta Phut LNG Terminal 3",
+  "terminal_id": "T100000130894",
+  "country": "Thailand",
+  "verdict": "NO",
+  "mechanical": "False",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "green",
+  "captive_summary": "Direction test: Gulf MTP LNG Terminal (GMTP, a JV of Gulf Energy Development 70% / PTT Tank 30%; Phase I under construction targeting Q4 2025 start / commercial ops ~2029, Phase II proposed) is being built specifically to provide 'a direct LNG supply line' to Gulf's own power-generation subsidiaries GLNG and HKH -- i.e. gas-fired IPPs Gulf PD, Gulf SRC and Hin Kong. The terminal supplies gas OUT to these external plants; it is not captively powered by them. No source describes on-site gas-fired generation at the terminal itself.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "offshore-energy.biz ('EPCC deal inked for next stage of Thailand's third LNG terminal'): 'The LNG is set to be used to power their gas-fired power plants Gulf PD, Gulf SRC, and Hin Kong.' logizall.com (June 25 2025, independent second publisher) corroborates: the terminal will 'support GLNG and HKH, GULF's subsidiaries involved in electricity generation, by providing a direct LNG supply line.' Both describe a pure gas-supply relationship to Gulf's separate power-generation business, with no mention of on-site generation for the terminal itself. gulf.co.th's own newsroom item (473) confirms terminal specs (8.0 mtpa initial phase, 200 rai reclaimed land, GMTP = Gulf 70% / PTT Tank 30%) without describing any captive power arrangement.",
+  "refs": [
+   "https://www.offshore-energy.biz/epcc-deal-inked-for-next-stage-of-thailands-third-lng-terminal/",
+   "https://www.logizall.com/2025/06/25/gulf-map-ta-phut-lng-terminal-q4-2025/",
+   "https://www.gulf.co.th/en/newsroom/news-and-activities/473/"
+  ],
+  "verification_log": [
+   {
+    "url": "https://www.offshore-energy.biz/epcc-deal-inked-for-next-stage-of-thailands-third-lng-terminal/",
+    "tokens": [
+     "Gulf PD",
+     "Hin Kong"
+    ],
+    "result": "PASS",
+    "note": "confirms supply-out direction to Gulf's own IPPs"
+   },
+   {
+    "url": "https://www.logizall.com/2025/06/25/gulf-map-ta-phut-lng-terminal-q4-2025/",
+    "tokens": [
+     "GLNG",
+     "HKH"
+    ],
+    "result": "PASS",
+    "note": "independent second source, same direction-test finding"
+   },
+   {
+    "url": "https://www.gulf.co.th/en/newsroom/news-and-activities/473/",
+    "tokens": [
+     "8.0 million tons"
+    ],
+    "result": "PASS",
+    "note": "primary source, terminal specs, no captive-power mention"
+   }
+  ],
+  "gogpt_prior_assessment": "GOGPT prior is 'Glow Energy Phase 5 power station' (328 MW, gogpt_captive=False, 1.89 km). Not this terminal's captive plant: the documented dedicated customers are Gulf's own subsidiaries (Gulf PD, Gulf SRC, Hin Kong), not Glow Energy (a GPSC/Gulf-group asset from a separate prior acquisition, on the shared estate gas grid, not fenceline-captive to GMTP).",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "GOGPT record already exists for Glow Energy Phase 5, and it is not this terminal's captive plant -- a separate IPP on the shared regional gas network. Gulf PD/Gulf SRC/Hin Kong are the terminal's actual documented gas customers via PowerPlantsSupplied, tracked on the GOGPT side as their own independent plants, not as this terminal's captive generation.",
+  "status_or_other_findings": "Under construction / proposed status and Q4 2025 construction start / ~2029 commercial ops timeline corroborated by logizall.com and gulf.co.th -- consistent with GEM's current construction/proposed phase split.",
+  "notes": "Third instance of the same direction-test pattern in this shard. Recommend flagging Gulf PD / Gulf SRC / Hin Kong as PowerPlantsSupplied candidates for this terminal in a follow-on Update batch (not staged here, per this workflow's LNG-side-only scope)."
+ },
+ {
+  "terminal": "Songkhla FSRU",
+  "terminal_id": "T100000130898",
+  "country": "Thailand",
+  "verdict": "SCREENED",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "yellow",
+  "captive_summary": "SCREEN: cancelled-and-never-built. PTT's 2015-era proposal for a ~3 mtpa FSRU off Chana district, Songkhla province (paired with a second unit proposed for Dawei, Myanmar/Thailand), intended for general national gas-supply stability rather than dedicated captive power. No vessel was ever selected, no EPC contract signed, and no engineering design published before the project was cancelled.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "offshore-energy.biz (June 5 2015): 'FSRUs will be built in Chana district in Songkhla province and the other one will be built either at the Dawei District in Thailand or the Pilok town in Myanmar,' 3 mtpa each, purpose stated as providing 'stability to the country's natural gas system' (general national supply, not a dedicated power-plant feed). upstreamonline.com (June 12 2015) independently corroborates the Chana/Songkhla location and project scope. Neither source, nor any other found, describes a selected vessel or published design -- consistent with GEM's 'cancelled (confirmed)' status and no project progression beyond the initial 2015 announcement.",
+  "refs": [
+   "https://www.offshore-energy.biz/ptt-to-set-up-fsru-duo/",
+   "https://www.upstreamonline.com/weekly/thailand-s-ptt-has-firm-plans-for-a-pair-of-fsrus/1-1-1007628"
+  ],
+  "verification_log": [
+   {
+    "url": "https://www.offshore-energy.biz/ptt-to-set-up-fsru-duo/",
+    "tokens": [
+     "Chana",
+     "3 mtpa"
+    ],
+    "result": "PASS",
+    "note": "primary project description, no vessel/design ever named"
+   },
+   {
+    "url": "https://www.upstreamonline.com/weekly/thailand-s-ptt-has-firm-plans-for-a-pair-of-fsrus/1-1-1007628",
+    "tokens": [
+     "Chana",
+     "Songkhla"
+    ],
+    "result": "PASS",
+    "note": "independent second source"
+   }
+  ],
+  "gogpt_prior_assessment": "No GOGPT prior given (gogpt_prior: no).",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "Cancelled before any design/vessel was ever published; nothing to add.",
+  "status_or_other_findings": "This 2015 PTT proposal is a distinct project from the separately-tracked GEM record 'Chana LNG Terminal' (T100000130893, the 2021 KOGAS/KOWEPO/TPIPP onshore terminal + power plant JV) despite the shared Chana/Songkhla location -- worth noting for anyone reconciling the two records, though no action taken here.",
+  "notes": "Cancelled at the conceptual/announcement stage; no engineering detail ever reached the public record."
+ },
+ {
+  "terminal": "Surat Thani FSRU",
+  "terminal_id": "T100000131071",
+  "country": "Thailand",
+  "verdict": "SCREENED",
+  "mechanical": "",
+  "captive_category": "",
+  "hardware_summary": "",
+  "fuel_basis": "",
+  "confidence": "yellow",
+  "captive_summary": "SCREEN: shelved and never built. This EGAT/PTT ~5 mtpa FSRU proposal for the lower Gulf of Thailand (replacement for the cancelled Gulf of Thailand FSRU, above) was studied under an MOU to feed a proposed 1,400 MW EGAT power plant in Phunphin district, Surat Thani. It never advanced past the joint feasibility-study stage -- no vessel was ever selected and no engineering design published, consistent with GEM's 'shelved (inferred)' status.",
+  "electric_mw": "",
+  "mechanical_drive_note": "",
+  "confirmed_how": "thaioilgas.com (June 30 2021): the lower-Gulf FSRU is designed to 'feed gas to a new Egat-run power plant in Surat Thani's Phunphin district' -- a direction-test purpose (supplying an external plant) even had it been built. seetao.com (independent second publisher) corroborates: '\"supply gas to a new Egat-operated power plant in the Phunphin district of Surat Thani.\"' Both describe the project as remaining at the MOU/feasibility-study stage (EGAT considering a 50% investment stake), with no vessel or detailed design ever named.",
+  "refs": [
+   "https://thaioilgas.com/egat-allocates-b20bn-for-lng-terminal/",
+   "https://www.seetao.com/details/94247.html"
+  ],
+  "verification_log": [
+   {
+    "url": "https://thaioilgas.com/egat-allocates-b20bn-for-lng-terminal/",
+    "tokens": [
+     "Surat Thani",
+     "Phunphin"
+    ],
+    "result": "PASS",
+    "note": "confirms project purpose and stage"
+   },
+   {
+    "url": "https://www.seetao.com/details/94247.html",
+    "tokens": [
+     "Phunphin",
+     "Surat Thani"
+    ],
+    "result": "PASS",
+    "note": "second publisher, same underlying facts -- treated as corroboration though likely both trace to one original Bangkok Post story, hence yellow not green"
+   }
+  ],
+  "gogpt_prior_assessment": "No GOGPT prior given (gogpt_prior: no).",
+  "gogpt_candidate": "DO NOT ADD",
+  "gogpt_candidate_basis": "Never built beyond feasibility study; nothing to add. Even if built, its documented purpose (feed the external Phunphin power plant) would be a direction-test NO, not a captive-power YES.",
+  "status_or_other_findings": "Both sources found appear to derive from the same original Bangkok Post reporting (June 2021) rather than being fully independent -- flagged for confidence, not treated as a green double-corroboration.",
+  "notes": "Sister project to Gulf of Thailand FSRU in this same shard: both are national-supply-chain FSRUs designed to feed a specific external EGAT power plant, never built, and would have been direction-test NOs even if completed."
+ }
+]

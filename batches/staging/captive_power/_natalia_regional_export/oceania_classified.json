@@ -1,0 +1,119 @@
+{
+ "qualifying": [
+  {
+   "terminal": "Australia Pacific LNG Terminal",
+   "terminal_id": "T100000130327",
+   "country": "Australia",
+   "status": "operating",
+   "hardware_type": "Seven Bechtel-installed gas turbine generators (~15 MW each) supplying the electrical power for the two Curtis Island LNG processing trains; unit sizing (~15 MW each) is consistent with a small/genset-class turbine rather than a heavy-duty industrial frame unit.",
+   "individual_mw": "~15 MW per unit (below 50 MW threshold individually)",
+   "aggregate_mw": "~105 MW combined (7 x ~15 MW)",
+   "basis": "Aggregate >=50 MW (genset/small-turbine rule) -- JUDGMENT CALL: turbine model is not named in the source; aggregate treatment is inferred from unit size (~15 MW, below any heavy-duty frame class) rather than a documented aeroderivative label. Flag for review."
+  },
+  {
+   "terminal": "Gladstone LNG Terminal",
+   "terminal_id": "T100000130333",
+   "country": "Australia",
+   "status": "operating",
+   "hardware_type": "Six gas turbine generators on Curtis Island (~12 MW each) providing the plant's permanent electrical power supply, running compressors, pumps, and other heavy electrical equipment; unit sizing (~12 MW each) is consistent with a small/genset-class turbine rather than a heavy-duty industrial frame unit.",
+   "individual_mw": "~12 MW per unit (below 50 MW threshold individually)",
+   "aggregate_mw": "~72 MW combined (6 x ~12 MW)",
+   "basis": "Aggregate >=50 MW (genset/small-turbine rule) -- JUDGMENT CALL: same reasoning as Australia Pacific LNG (model not named, aggregate inferred from small unit size). Flag for review."
+  },
+  {
+   "terminal": "Gorgon LNG Terminal",
+   "terminal_id": "T100000130334",
+   "country": "Australia",
+   "status": "operating; cancelled (unspecified expansion/component only -- the terminal-level facility remains active and operating, so it is not excluded on status)",
+   "hardware_type": "Five on-site gas turbine generators on Barrow Island generating up to 584 MW combined at full output, powering the Gorgon LNG/domestic-gas processing complex -- Chevron Australia's managing director described the output as comparable in scale to the Kwinana power station supplying greater Perth, consistent with heavy-duty industrial frame-class turbines.",
+   "individual_mw": "~117 MW per unit (computed: 584 MW / 5 units), consistent with heavy-duty frame-class turbine territory",
+   "aggregate_mw": "584 MW combined at full output",
+   "basis": "Qualifies both ways: individual >=50 MW (heavy-duty single units, ~117 MW each) and aggregate >=50 MW (584 MW total). No material judgment call -- both figures clear the threshold comfortably."
+  },
+  {
+   "terminal": "Wheatstone LNG Terminal",
+   "terminal_id": "T100000130344",
+   "country": "Australia",
+   "status": "operating",
+   "hardware_type": "12x GE LM6000PF aero-derivative gas turbines (6 per LNG train, 2 trains) in pure mechanical-drive service, directly shaft-driving the ConocoPhillips Optimized Cascade refrigeration compressors with no electricity generated -- the first industrial application of the LM6000PF; Train 2 was later upgraded to the higher-output LM6000PF+.",
+   "individual_mw": "~45-50 MW shaft each (LM6000PF class rating; Train 2 upgraded to the higher-output LM6000PF+; no site-specific figure published)",
+   "aggregate_mw": "~540-600 MW shaft across 12 units (class-rating aggregate)",
+   "basis": "Aggregate >=50 MW (aeroderivative rule; mechanical drive) -- 12 LM6000PF aeroderivative units aggregate far past the threshold regardless of where the individual unit falls in the ~45-50 MW class range. (Individually the PF/PF+ variant sits at/near 50 MW -- borderline, so the aggregate is the qualifying basis.)"
+  },
+  {
+   "terminal": "Papua New Guinea LNG Terminal",
+   "terminal_id": "T100000130304",
+   "country": "Papua New Guinea",
+   "status": "operating; cancelled (unspecified expansion/component only -- the terminal-level facility remains active and operating, so it is not excluded on status)",
+   "hardware_type": "Multiple aero-derivative gas turbine generators (one held in standby) provide the plant's primary electrical power per PNG LNG's Environmental Impact Statement (Chapter 4, a primary regulatory filing), sized for a base load of 44,267 kW (LNG trains + storage + utilities + offsites + camps) with a design capacity up to 59,760 kW (20% growth + 15% contingency margin). Separately, aero-derivative gas turbines shaft-drive the refrigerant/liquefaction compressors (mechanical drive, no electricity generated). Diesel-engine generators are separate/non-gas, essential/black-start only, and out of scope.",
+   "individual_mw": "Not itemized per unit",
+   "aggregate_mw": "44.267 MW current base load; design-sized generation capacity up to 59.76 MW",
+   "basis": "Aggregate >=50 MW (aeroderivative/genset rule) -- JUDGMENT CALL: qualification uses the EIS's design-sized generation capacity (~59.8 MW, built in to accommodate 20% growth + 15% contingency) rather than the 44.267 MW current base load, which alone would fall short of the 50 MW threshold. Flag for review. Separately-documented mechanical-drive turbines shaft-driving the compressors are not MW-quantified and are not needed to reach the qualifying call."
+  }
+ ],
+ "excluded": [
+  {
+   "terminal": "Crib Point FSRU Terminal",
+   "terminal_id": "T100000130330",
+   "country": "Australia",
+   "reason": "Cancelled - excluded per instruction. FSRU-mounted dual-fuel engines plus three gas-fired boilers were designed to run the vessel 'electrically isolated from Jetty,' generating its own power as the normal operating arrangement (per AGL/APA's own EES risk assessment), not shore-powered or contingency-only. No turbine/engine model or MW figure is disclosed, so no 'would qualify if active' determination can be made.",
+   "mw_figure": "None disclosed"
+  },
+  {
+   "terminal": "Darwin LNG Terminal",
+   "terminal_id": "T100000130331",
+   "country": "Australia",
+   "reason": "Idled (with a proposed restart/expansion component) -- status stated prominently per the mothballed/idle handling rule, not excluded outright on status. On-site gas turbine power-generation units are documented via a primary operator source (Santos, referenced in connection with a 2019 battery-integration project layered onto the 'existing power generation turbines'), but no individual or aggregate MW figure, unit count, or turbine model is disclosed.",
+   "mw_figure": "None disclosed"
+  },
+  {
+   "terminal": "Ichthys FLNG Terminal",
+   "terminal_id": "T100000130335",
+   "country": "Australia",
+   "reason": "No MW figure disclosed. INPEX's own project page states the Bladin Point onshore processing facility includes 'a combined cycle power plant' supplying electricity to the two LNG trains, LPG/condensate plants, and site utilities, but turbine count, model, and MW capacity are not published in this source.",
+   "mw_figure": "None disclosed"
+  },
+  {
+   "terminal": "North West Shelf LNG Terminal",
+   "terminal_id": "T100000130337",
+   "country": "Australia",
+   "reason": "No MW figure disclosed. Aero-derivative gas turbine generators supply on-site electricity at the Karratha Gas Plant, confirmed as a distinct operating asset class by two independent sources (an offshore-technology.com project profile and a 2026 Boiling Cold cyclone-shutdown report), but turbine model, unit count, and individual/aggregate MW are not itemized in either.",
+   "mw_figure": "None disclosed"
+  },
+  {
+   "terminal": "Pluto LNG Terminal",
+   "terminal_id": "T100000130338",
+   "country": "Australia",
+   "reason": "No MW figure disclosed. A dedicated gas-fired power generation facility is listed among Pluto LNG's on-site infrastructure, and Woodside's own Q2 2026 report (independently quoted by Energy Aspects) confirms a gas turbine generator synchronised to the on-site 'Pluto power grid' during Train 2 commissioning, but turbine model, count, and MW rating are not itemized in either source.",
+   "mw_figure": "None disclosed"
+  },
+  {
+   "terminal": "Prelude FLNG Terminal",
+   "terminal_id": "T100000130339",
+   "country": "Australia",
+   "reason": "No MW figure disclosed. Mitsubishi Heavy Industries supplied a dedicated power generation system alongside three compressor trains, and General Electric independently confirms it supplied two steam-turbine-driven compressors (mechanical drive, fed by steam from seven Kawasaki-supplied boilers), but turbine models and MW ratings for both the power-generation system and the mechanical-drive steam turbines are unitemized in either source.",
+   "mw_figure": "None disclosed"
+  },
+  {
+   "terminal": "Queensland Curtis LNG Terminal",
+   "terminal_id": "T100000130340",
+   "country": "Australia",
+   "reason": "No MW figure disclosed. GE's own press release documents 15 aero-derivative gas turbines driving 28 centrifugal compressors via gearboxes, plus generators, as integral parts of the QCLNG facility -- confirming both mechanical-drive compression and on-site electricity generation -- but individual/aggregate turbine models and MW ratings are not broken out, so the aggregate rule cannot be applied despite the named 'aero-derivative' fleet type.",
+   "mw_figure": "None disclosed (aero-derivative gas turbines named, but no MW figure available to apply the aggregate rule)"
+  },
+  {
+   "terminal": "Tassie Shoal LNG Terminal",
+   "terminal_id": "T100000130343",
+   "country": "Australia",
+   "reason": "Shelved - excluded per instruction. The completed Pre-FEED design (WorleyParsons/Arup, with APCI liquefaction-technology input) specifies LM6000 aero-derivative gas turbine drivers for mechanical-drive refrigeration compression, plus a dedicated on-site 'Power Generation' process module feeding electric-driven compressors; turbine count and MW rating are not disclosed. JUDGMENT CALL: the named LM6000 model carries a general aero-derivative class rating of ~45-50 MW -- borderline at the 50 MW threshold and, unlike Wheatstone's higher-output LM6000PF/PF+ variant, not confidently at or above it -- so a 'would qualify if active' call is NOT made here. Flag for review.",
+   "mw_figure": "None disclosed (LM6000 class rating ~45-50 MW, borderline against the 50 MW threshold; turbine count unknown)"
+  },
+  {
+   "terminal": "Papua LNG Terminal",
+   "terminal_id": "T100000130303",
+   "country": "Papua New Guinea",
+   "reason": "Shelved - excluded per instruction (recorded statuses are proposed and shelved with no operating status, so the project as a whole is treated as shelved at the terminal level). The developer's own site states the project is designed for zero Scope 2 emissions via on-site combined-cycle gas-fired power plant(s) generating all of the facility's electricity (the liquefaction trains use electric-drive compressors, not gas-turbine mechanical drive), but no generator count or MW figure is disclosed.",
+   "mw_figure": "None disclosed"
+  }
+ ]
+}

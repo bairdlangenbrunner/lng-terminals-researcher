@@ -107,7 +107,8 @@ docs/
 
 scripts/                     Python tools called by the workflows
   README.md                  The index: per-script purpose, run order, deep-dives on the tricky ones
-  pull_gem_db.py             Write the column-index map (.colmap.json); the pull ENGINE lives in ../gem-db-ops (sibling repo)
+  pull_gem_db.py             Write the column-index map (.colmap.json); the pull ENGINE and the expected-column list both live in ../gem-db-ops (sibling repo)
+  paths.py                   Sibling-repo resolution + the ONE read-only GEM DB engine (borrowed from ../gem-db-ops); every DB-backed script here goes through it
   add_effective_status.py    Stamp effective_status onto the export + prune old CSV snapshots
   fetch_timeline.py          Pull a unit's full status history (the CSV export only has current status)
   giignl_extract.py          Turn the GIIGNL PDF's terminal tables into a flat CSV

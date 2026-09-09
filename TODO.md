@@ -46,7 +46,8 @@ keep their options.
 in the live DB edit UI. Need to:
 
 1. Confirm presence in the live UI
-2. Decide whether to add it to EXPECTED_COLUMNS in `scripts/pull_gem_db.py`
+2. Decide whether to add it to `LNG_EXPECTED_COLUMNS` in `../gem-db-ops/gem_colmap.py`
+   (the canonical map; `scripts/pull_gem_db.py` just aliases it)
 3. Decide if it's in-scope (probably yes — it's notes, not values)
 
 **Action:** check on the next live-DB visit.
@@ -109,3 +110,26 @@ genuinely should have included a terminal and didn't.
 - (C) Threshold-based: GEM-only with capacity >X mtpa gets hard flag
 
 **Recommendation:** (A) until first reconciliation reveals failure modes.
+
+---
+
+## OPEN: repo-level overhaul decisions (2026-09-09)
+
+A Codex/ChatGPT audit on 2026-09-09 reviewed the repo as a system (enforcement,
+reproducibility, state model, packaging, public/private boundary), began
+implementing its own recommendations, and died mid-step-1 of 6 on a credit limit.
+Its full findings, a claim-by-claim verification, a critical evaluation, and a
+re-planned roadmap are in **`docs/improvement_plan.md`**.
+
+Four decisions are blocking Phase 0 there:
+
+- (1) Should this repo stay **public**? Going private retires the personal-names,
+  internal-links, and artifact-classification findings in one command.
+- (2) If public: fix-forward or rewrite history for the one committed colleague name?
+- (3) Codex's half-landed uncommitted changes — keep (recommended), revert, or
+  cherry-pick? Note they are interleaved with prior uncommitted work in six files.
+- (4) Is the captive-power workflow finished? Decides whether its 23 one-off staging
+  scripts get parameterized or simply frozen.
+
+**Recommendation:** (1) private, (3) keep + commit as a separate train, which makes
+(2) moot.

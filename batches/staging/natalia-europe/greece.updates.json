@@ -1,0 +1,68 @@
+[
+  {
+    "terminal_id": "T100000130681",
+    "unit_id": "G100002068100",
+    "terminal_name": "Alexandroupolis FSRU",
+    "unit_name": "--",
+    "country": "Greece",
+    "field_name": "VesselOwner",
+    "old_value": "",
+    "new_value": "Gastrade AE",
+    "confidence": "yellow",
+    "source_tier": "trade_press + project_database",
+    "ref_field": null,
+    "ref_urls": [
+      "https://lngprime.com/europe/greeces-first-fsru-arrives-in-alexandroupolis/100296/",
+      "https://www.blackridgeresearch.com/project-profiles/latest-details-fsru-alexandroupolis-project-gastrade-greece"
+    ],
+    "source_notes": "Moderate, not ironclad, per the brief's own framing -- no single dated primary statement says 'Gastrade owns the vessel' post-closing. Chain of evidence: an offshore-energy.biz piece (27 Nov 2023, covering the vessel's Seatrium-shipyard departure) states the vessel was THEN owned by GasLog ('the Alexandroupolis, former GasLog Chelsea, is owned by GasLog, a partner in the Gastrade consortium'), consistent with GasLog owning it during the conversion phase. LNG Prime (17 Dec 2023) reports the planned sale explicitly: 'GasLog will sell this unit to Gastrade for about $265 million.' Blackridge Research's current project-profile table lists the FSRU as 'Designed, Built, Owned, and Operated | Gastrade', crediting GasLog only for the conversion/operation role. Together these two independent, current sources support a completed ownership transfer to Gastrade AE post-delivery, but neither is a single ironclad dated 'ownership closed' primary announcement -- hence yellow, not green. If a firmer post-closing primary source (SEC/bond-prospectus filing, Gastrade press release) surfaces later, upgrade to green.",
+    "scope_note": null,
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130992",
+    "unit_id": "G100002099200",
+    "terminal_name": "Dioriga FSRU",
+    "unit_name": "--",
+    "country": "Greece",
+    "field_name": "FIDYear",
+    "old_value": "2022",
+    "new_value": "2026",
+    "confidence": "green",
+    "source_tier": "trade_press (3 independent Greek outlets, all July 2026)",
+    "ref_field": null,
+    "ref_urls": [
+      "https://lngprime.com/europe/greece-backs-motor-oils-fsru-project/72189/",
+      "https://www.energymag.gr/energeia/fysiko-aerio/121497_dioryga-gas-2027-i-ekkinisi-ton-ergon-stin-korintho-pos-diamorfonetai",
+      "https://ypodomes.com/to-2027-i-enarxi-kataskeyis-toy-toy-fsru-dioryga-gas-poia-ta-orosima-mechri-tin-enarxi-tis-ylopoiisis/",
+      "https://www.worldenergynews.gr/energeia/articles/586467/orimazei-to-fsru-dioryga-ti-deixnei-i-symfonia-tis-moi-me-tin-mercuria"
+    ],
+    "source_notes": "FIDYear=2022 with FIDStatus=Pre-FID is the ORIGINAL target year, now four years stale -- FID has not occurred. Three independent, current (2026) Greek trade-press sources -- energymag.gr, ypodomes.com, worldenergynews.gr -- all state Motor Oil now targets the final investment decision (FID) by the end of 2026, alongside a construction-start target of 2027. This is a genuine, well-corroborated schedule update to the TARGET year (FIDStatus stays Pre-FID; only the expected-FID-year anchor moves), analogous to a LatestPlannedStartYear slip. Companion finding: construction-start (2027) and the DESFA development-plan status question are covered in the Dioriga qa entries and the LatestPlannedStartYear update below. [ref-restore 2026-07-29: restored existing live URL(s) https://lngprime.com/europe/greece-backs-motor-oils-fsru-project/72189/ per merge-semantics rule (bot-block != dead; never drop a URL not proven dead)]",
+    "scope_note": null,
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  },
+  {
+    "terminal_id": "T100000130992",
+    "unit_id": "G100002099200",
+    "terminal_name": "Dioriga FSRU",
+    "unit_name": "--",
+    "country": "Greece",
+    "field_name": "LatestPlannedStartYear",
+    "old_value": "2023",
+    "new_value": "2029",
+    "confidence": "yellow",
+    "source_tier": "trade_press",
+    "ref_field": null,
+    "ref_urls": [
+      "https://www.powergame.gr/epichirisis/1388003/montel-h-aktor-apektise-to-50-tou-fsru-dioryga-pos-voitha-stin-apomakrynsi-apo-to-fysiko-aerio/",
+      "https://www.energymag.gr/energeia/fysiko-aerio/121497_dioryga-gas-2027-i-ekkinisi-ton-ergon-stin-korintho-pos-diamorfonetai",
+      "https://ypodomes.com/to-2027-i-enarxi-kataskeyis-toy-toy-fsru-dioryga-gas-poia-ta-orosima-mechri-tin-enarxi-tis-ylopoiisis/"
+    ],
+    "source_notes": "The 2023 target has unambiguously slipped (FID not yet taken, construction not started as of July 2026) -- per the planned-startup-slip elevation rule this must be staged, not left in a qa note. Powergame.gr (29 Jul 2026, Montel-sourced) is the only source giving a specific forward estimate: 'traders estimate commercial operation of the FSRU Dioriga Gas will likely start in 2028 or 2029.' I take the later/more conservative bound (2029), consistent with GEM's own already-updated LatestPlannedStartYear=2029 for the comparable/nearby Thessaloniki FSRU and with this class of Greek FSRU project historically slipping later rather than earlier. This specific 2028-2029 estimate is corroborated by only ONE source (below the usual 2-source bar) -- yellow, not green -- but it rests on strong contextual corroboration: THREE independent sources (energymag.gr, ypodomes.com, worldenergynews.gr) agree construction itself won't start until 2027 and FID is not expected before end-2026, which makes any operations date before 2028 implausible and supports the direction and rough scale of the powergame.gr estimate. Recommend the reviewer confirm with a second source if one surfaces.",
+    "scope_note": null,
+    "dropped_urls_dead": [],
+    "researcher_initials": "AI-draft (sweep)"
+  }
+]

@@ -1,0 +1,61 @@
+[
+  {
+    "terminal": "Sunrise LNG Terminal",
+    "terminal_id": "T100000130342",
+    "country": "Timor-Leste",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "red",
+    "captive_summary": "No captive-power design exists to research: the onshore LNG plant component of Greater Sunrise/Tasi Mane has not reached FID, is still being relocated between candidate sites (Beaçu → Natarbora, 2023), and Woodside/Timor-Leste have not even settled onshore-vs-FLNG development mode as of the November 2024 Wood Australia concept study, which only found the onshore option 'technically feasible' without confirming it. No public document describes plant utilities/power configuration.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "La'o Hamutuk (independent Timor-Leste research institute tracking Greater Sunrise/Tasi Mane since project inception) — Sunrise page: government 'reconfigured their concept for the Tasi Mane project' moving the proposed onshore plant to Natarbora, Manatuto/Manufahi, in 2023; the Nov 2024 Wood Australia concept study 'simply found that the TL option was technically feasible' without resolving FLNG-vs-onshore or economics. Beaçu page (the prior candidate site, Viqueque district) confirms only a 2015 Pre-FEED design contract (Amec Foster Wheeler) was reached before the site moved — no plant utilities/power design was ever published for either candidate site. Woodside's own Sunrise JV shows current equity Timor Gap 56.56% / Woodside 33.44% / Osaka Gas 10%, consistent with GEM's owner field, but Woodside's public project pages returned 403 and no independent source discloses power-generation plans for either site option.",
+    "refs": [
+      "https://www.laohamutuk.org/Oil/Sunrise/25Sunrise.htm",
+      "https://www.laohamutuk.org/Oil/TasiMane/Beacu/15Beacu.htm"
+    ],
+    "verification_log": [
+      {"url": "https://www.laohamutuk.org/Oil/Sunrise/25Sunrise.htm", "tokens": ["Natarbora"], "result": "PASS", "note": "confirms 2023 site relocation, project still pre-FID"},
+      {"url": "https://www.laohamutuk.org/Oil/Sunrise/25Sunrise.htm", "tokens": ["Final Investment Decision"], "result": "FAIL", "note": "phrase not present verbatim; not used as cited token"},
+      {"url": "https://www.laohamutuk.org/Oil/TasiMane/Beacu/15Beacu.htm", "tokens": ["Bea", "Viqueque"], "result": "PASS", "note": "confirms prior candidate site and Pre-FEED-only design stage"}
+    ],
+    "gogpt_prior_assessment": "gogpt_prior is 'no' — no GOGPT plant was surfaced near this terminal, consistent with the project having no built or even finally-sited facility yet.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No generating plant exists to add — the project has no settled site, no FID, no FEED-stage design; nothing to stage as a GOGPT record.",
+    "status_or_other_findings": "GEM lists this record as 'proposed'/status Australia-and-East-Timor state_province, which matches reality: as of the source checked, the plant location itself is still unsettled (moved from Beaçu, Viqueque to Natarbora, 2023) and FLNG-vs-onshore development mode is undecided. Not a captive-power finding, but worth flagging to Update/Discovery review that the 'proposed' record's location/site fields may need revisiting given the 2023 site move — the GEM coordinates given (-8.947, 126.450) may reflect an older or approximate site pin.",
+    "notes": "Textbook INSUFFICIENT: a real, actively-negotiated (Nov 2024 Cooperation Agreement) but pre-FID, pre-site-final project. Do not confuse with a screen — this is not cancelled or abandoned, it is simply too early for any utilities/power design to be public. Revisit in a future batch once Woodside/TL government reach FID."
+  },
+  {
+    "terminal": "Taranaki LNG Terminal",
+    "terminal_id": "T100001083374",
+    "country": "New Zealand",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "red",
+    "captive_summary": "This is a New Zealand government (MBIE)-led LNG import project, still in commercial procurement as of the sources checked: two shortlisted proposals both involve 'a ship being moored alongside the Main Breakwater' at Port Taranaki to store and regasify LNG into existing gas transmission pipelines, as backup fuel for the electricity sector in dry (low-hydro) years. No preferred provider/vessel has been contracted yet (target contract mid-2026, operations 2027/28), so the specific FSRU vessel and its onboard generation machinery are not yet identified in any public source — the FSRU-onboard convention (SOP) cannot be applied without a named vessel.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "RNZ (2 articles) and Port Taranaki's own CE (quoted in RNZ) confirm the project is a moored ship at Port Taranaki's Main Breakwater, MBIE-run procurement, no contracted provider yet. Oilprice.com (citing the government's own procurement timeline) confirms target contract signing mid-2026 and operations 2027-2028, purpose 'as a backup fuel source for the electricity sector during drought periods when hydroelectric capacity diminishes' — i.e. the terminal's purpose is to feed gas OUT to the existing pipeline network/power generators, the opposite of a captive-power relationship (direction test). No source names the vessel, its builder, or its machinery, so the onboard-generation question this SOP asks cannot yet be answered.",
+    "refs": [
+      "https://www.rnz.co.nz/news/regions_taranaki/788995/battle-lines-drawn-over-proposed-lng-facility",
+      "https://www.rnz.co.nz/national/programmes/checkpoint/audio/2019044769/proposed-lng-import-terminal-unlikely-to-cause-disruption",
+      "https://oilprice.com/Latest-Energy-News/World-News/New-Zealand-Eyes-First-LNG-Terminal-to-Guard-Against-Power-Shortages.html"
+    ],
+    "verification_log": [
+      {"url": "https://www.rnz.co.nz/news/regions_taranaki/788995/battle-lines-drawn-over-proposed-lng-facility", "tokens": ["Main Breakwater"], "result": "PASS", "note": "confirms Port Taranaki Main Breakwater siting"},
+      {"url": "https://www.rnz.co.nz/national/programmes/checkpoint/audio/2019044769/proposed-lng-import-terminal-unlikely-to-cause-disruption", "tokens": ["Port Taranaki"], "result": "PASS", "note": "confirms Port Taranaki lead, moored-ship description"},
+      {"url": "https://oilprice.com/Latest-Energy-News/World-News/New-Zealand-Eyes-First-LNG-Terminal-to-Guard-Against-Power-Shortages.html", "tokens": ["Taranaki"], "result": "PASS", "note": "confirms government-led backup-fuel-for-power-sector framing and timeline"}
+    ],
+    "gogpt_prior_assessment": "The nearest GOGPT plant, 'Junction Road power station' (100 MW, 8.8 km away, gogpt_captive=False), is NOT this terminal's captive power. It is an independently-owned merchant/grid gas-fired peaking plant (Nova Energy, a Todd Corporation subsidiary) that predates and is unrelated to the still-uncontracted LNG import project — Wikipedia's Todd Corporation page: 'Nova Energy has been granted resource consents to construct a 100MW gas-fired peaking plant about 7 km south of New Plymouth' (https://en.wikipedia.org/wiki/Todd_Corporation, tokens 'Nova Energy'/'100MW' PASS). Different owner, different purpose (merchant grid peaker vs. a government gas-import/storage/regas facility with no on-site generation described), no site colocation claimed anywhere.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Junction Road already exists as an independent GOGPT record (per gogpt_prior data) and is unrelated to this terminal; the terminal itself has no generating plant of its own to add — it is a gas storage/regas/distribution facility, not a power station.",
+    "status_or_other_findings": "This is a live, actively-progressing New Zealand government energy-security project (MBIE procurement, target contract mid-2026, operations 2027/2028) — GEM's 'proposed' status is current and accurate per the sources checked. Worth flagging for a future Update pass: the terminal's stated purpose (regas feeding the existing NZ gas transmission network, ultimately for power generation during hydro-dry years) is a textbook 'PowerPlantsSupplied'-direction case once a specific supplied plant/utility is identifiable — not a captive-power finding for THIS batch.",
+    "notes": "Direction-test NO-shaped project (gas OUT to the grid/power sector, not captive power IN), but formally scored INSUFFICIENT rather than NO because the vessel/provider is not yet selected, so even the FSRU-onboard-generation question (which would otherwise need answering per the FSRU convention) has no vessel to research yet. Revisit once MBIE names the preferred provider/vessel."
+  }
+]

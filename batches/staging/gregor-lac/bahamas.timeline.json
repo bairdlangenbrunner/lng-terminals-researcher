@@ -1,0 +1,18 @@
+[
+  {
+    "terminal_id": "T100000131117",
+    "unit_id": "G100002111700",
+    "terminal_name": "Clifton Pier LNG Terminal",
+    "unit_name": "--",
+    "operation": "append",
+    "status": "FID",
+    "sub_status": "actual",
+    "year": 2026,
+    "part_of_year": "",
+    "notes": "Existing Postgres timeline (fetch_timeline.py G100002111700): [0] proposed 2018; [1] shelved/confirmed 2024; [2] proposed 2025-Mar; [3] operating/planned 2025-Nov; [4] operating/planned 2027-Q1; [5] construction/actual 2026 (no FID entry yet). Appends FID/actual/2026 alongside the existing construction/actual/2026 entry -- Shell Bahamas Power Company Inc. took FID on the terminal per 3 independent trade-press outlets (hydrocarbonengineering.com, ogj.com, pgjonline.com), all reporting mid-July 2026. Orchestrator handoff item from the Caribbean discovery agent's sweep, resolved here per the never-punt-a-confirmed-change rule.",
+    "source_url": "https://www.hydrocarbonengineering.com/gas-processing/17072026/shell-takes-fid-on-lng-regasification-terminal-in-the-bahamas/",
+    "confidence": "green",
+    "legal_transition_check": "FID is a parallel milestone flag, not a status-progression entry (see Antigua Power LNG Terminal's own timeline for the same pattern: FID/actual/2021 alongside proposed/construction/operating entries). No monotonicity concern.",
+    "researcher_initials": "AI-draft (sweep)"
+  }
+]

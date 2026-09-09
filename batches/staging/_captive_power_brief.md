@@ -65,6 +65,17 @@ primary function is powering the terminal / liquefaction.
   verdict — a genset that is standby-*capable* but also carries load in service is
   `power_generation` (Klaipeda), not `standby_backup`.
 
+- **FSRU/FLNG terminals: the vessel's ONBOARD generation IS the captive question** (batch
+  convention since the middle-east-gulf increment, 2026-08-01). A moored vessel's dual-fuel
+  gensets burning gas/BOG in service are captive gas power for that terminal. Two settled
+  corollaries: (a) a *direction-test* NO (the terminal feeds a shore plant / injects to grid)
+  does **not** answer the vessel-machinery question — if you can't establish the vessel's own
+  generation fuel, the verdict is INSUFFICIENT, not NO (the Hadera overturn); (b) **fleet/class-
+  level evidence is sufficient**: an operator's own fleet disclosure (e.g. Excelerate or Energos
+  fleet pages enumerating Wärtsilä DF engines across their vessels, a DFDE hull-class record) is
+  primary for its own vessels → green; a lone third-party source stays yellow (2026-08-02
+  harmonization ruling, applied from Golar/Excelerate/Energos precedents).
+
 ### The direction test — the single most common error
 
 Captive power flows **INTO** the terminal: the plant powers the liquefaction/regas.
@@ -155,7 +166,7 @@ assigned. Every terminal in your assignment gets an object — including the one
   "verdict": "YES" | "NO" | "INSUFFICIENT" | "SCREENED",
   "mechanical": "True" | "False" | "",
   "captive_category": "mechanical_drive" | "power_generation" | "mechanical_drive+power_generation" | "standby_backup" | "contingency_design",
-  "hardware_summary": "<ONE line naming the actual hardware: count, type, rating where a source states one — e.g. '2× 12 MW gas turbine generators (essential-power backup)'. Grounded in what your sources say; never a rating you inferred.>",
+  "hardware_summary": "<ONE line naming the actual hardware: count, type, rating where a source states one — e.g. '2× 12 MW gas turbine generators (essential-power backup)'. Name the model where sourced (LM2500, SGT-750, Wärtsilä 50DF…) and, for gas turbines, the family if the source states it — aeroderivative vs heavy-frame — the GOGPT side screens sub-20 MW units on exactly this (SOP §4a). Grounded in what your sources say; never a rating you inferred.>",
   "fuel_basis": "<how you established the fuel is gas — name the engine/turbine model if known>",
   "confidence": "green" | "yellow" | "red",
   "captive_summary": "<1-3 sentences: what the captive power IS (or why there is none), with the numbers>",

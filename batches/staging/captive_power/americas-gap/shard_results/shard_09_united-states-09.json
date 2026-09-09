@@ -1,0 +1,98 @@
+[
+  {
+    "terminal": "Vista Del Sol LNG Terminal",
+    "terminal_id": "T100000130843",
+    "country": "United States",
+    "verdict": "INSUFFICIENT",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "red",
+    "captive_summary": "Proposed onshore LNG import terminal near Ingleside/Corpus Christi Bay, TX; originally an ExxonMobil site, optioned and taken over by 4Gas BV (Vopak/Gasunie JV) in the mid-2000s. FERC granted an initial certificate but 4Gas never began construction; the authorization lapsed and FERC rescinded the permit (Upstream, 2010), after which 4Gas put the site up for sale. No engineering/FEED description of the plant's power supply (grid-tied vs. on-site generation) was found in any public source despite an extensive multi-engine search (Bing web/news, Marginalia, DuckDuckGo, archive.org full-text, CourtListener case law) — the underlying FERC docket/EIS content was not retrievable through the tools available this session.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "Reuters (2006, via Upstream secondary coverage) reports ExxonMobil sold 4Gas an option on the Vista del Sol site; Upstream (Aug 2010) reports 'US authorities have rescinded a permit for 4Gas's proposed Vista del Sol terminal in Texas' after the developer failed to request an extension; a later Upstream item ('4Gas hoists for sale sign over Vista del Sol site') confirms 4Gas then marketed the property for sale, i.e. the project never reached construction. Neither article, nor any other source found, describes the terminal's power-supply design.",
+    "refs": [
+      "https://www.upstreamonline.com/lngunlimited/vista-del-sol-permit-lapses-south-of-border/1-1-985925",
+      "https://www.upstreamonline.com/lngunlimited/4gas-hoists-for-sale-sign-over-vista-del-sol-site/1-1-983340"
+    ],
+    "verification_log": [
+      {"url": "https://www.upstreamonline.com/lngunlimited/vista-del-sol-permit-lapses-south-of-border/1-1-985925", "tokens": ["Vista del Sol"], "result": "PASS", "note": "confirms FERC permit rescinded, project not built"},
+      {"url": "https://www.upstreamonline.com/lngunlimited/4gas-hoists-for-sale-sign-over-vista-del-sol-site/1-1-983340", "tokens": ["Vista del Sol"], "result": "PASS", "note": "confirms site later marketed for sale, no construction"},
+      {"url": "https://www.reuters.com/article/markets/exxon-mobil-sells-4gas-option-on-texas-lng-site-idUSL1277704/", "tokens": ["Vista del Sol"], "result": "FAIL", "note": "HTTP 401 bot-block, no Wayback snapshot available; not cited"}
+    ],
+    "gogpt_prior_assessment": "Two GOGPT neighbors within 30 km: Ingleside cogeneration power station (517 MW, operating, gogpt_captive=false, 3.5 km) and Gregory power facility (639 MW, operating/pre-construction, gogpt_captive=false, 5.2 km). Both are pre-existing merchant/industrial-area plants in the Corpus Christi/Ingleside industrial corridor (Ingleside cogen serves the adjacent alumina refinery load; Gregory is an independent merchant plant) — neither was built for, or is connected to, Vista del Sol, which was never constructed. Not this terminal's captive power under any reading. No independent (non-gem.wiki) info_url for either plant was found within the search tools available this session.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Terminal was never built; no captive plant exists to add. The two GOGPT neighbors are unrelated pre-existing merchant/industrial plants, already presumably captured in GOGPT under their own industrial hosts.",
+    "status_or_other_findings": "GEM already records this as cancelled — corroborated independently: FERC rescinded 4Gas's permit for non-use (Upstream, Aug 2010) and 4Gas subsequently listed the site for sale (Upstream, undated follow-up). No new status information.",
+    "notes": "Search severely constrained this session: WebSearch quota was exhausted at the first call (shared session budget), and most general search engines (DuckDuckGo, Bing web search, Yandex, Mojeek, Startpage) returned CAPTCHA/403/irrelevant-cached results via WebFetch. Only Bing News search and Marginalia partially worked. A future pass with working WebSearch or direct FERC eLibrary access could locate the actual docket/EIS and resolve this to a firm verdict."
+  },
+  {
+    "terminal": "Weaver's Cove LNG Terminal",
+    "terminal_id": "T100000130643",
+    "country": "United States",
+    "verdict": "NO",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "yellow",
+    "captive_summary": "Proposed onshore LNG import terminal on the Taunton River in Fall River, MA (Hess LNG / Weaver's Cove Energy LLC), FERC docket underlying Docket Nos. 06-1203 et al. and 08-2440. Two First Circuit opinions describing the FERC-authorized project scope enumerate its facilities as 'a marine berth ..., an LNG storage tank, re-gasification facilities, and an LNG truck distribution facility' with no power-generation component named anywhere in either opinion (checked for 'generator', 'turbine', 'electric power', 'power plant', 'gas-fired', 'backup power', 'diesel generator' — all absent). Combined with the grid-access prior for a grid-connected New England (ISO-NE) onshore import terminal proposed in this era, this is a documented negative, not an inferred one. Hess withdrew the project entirely in 2015/2016 citing economics; it was never built.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "First Circuit, City of Fall River v. FERC, 507 F.3d 1 (2007): 'The facility, which would include a marine berth (requiring dredging of the harbor and waterways, including the Taunton River), an LNG storage tank, re-gasification facilities, and an LNG truck distribution facility...' — no generation facility listed. First Circuit, Weaver's Cove Energy, LLC v. Rhode Island CRMC (2009), describing the same FERC-authorized project, likewise contains no reference to on-site generation, turbines, or electric power anywhere in the opinion. Upstream/turnto10 news coverage (2015-16) confirms Hess abandoned the project before construction, citing unfavorable economics, i.e. it was never built beyond the FERC-authorized design these opinions describe.",
+    "refs": [
+      "https://storage.courtlistener.com/pdf/2007/10/26/City_of_Fall_River_v._FERC.pdf",
+      "https://storage.courtlistener.com/pdf/2009/10/26/Weavers_Cove_Energy_LLC_v._Rhode_Island_Coastal_Resources.pdf"
+    ],
+    "verification_log": [
+      {"url": "https://storage.courtlistener.com/pdf/2007/10/26/City_of_Fall_River_v._FERC.pdf", "tokens": ["Taunton River"], "result": "PASS", "note": ""},
+      {"url": "https://storage.courtlistener.com/pdf/2007/10/26/City_of_Fall_River_v._FERC.pdf", "tokens": ["marine berth"], "result": "PASS", "note": ""},
+      {"url": "https://storage.courtlistener.com/pdf/2007/10/26/City_of_Fall_River_v._FERC.pdf", "tokens": ["truck distribution facility"], "result": "PASS", "note": ""},
+      {"url": "https://storage.courtlistener.com/pdf/2007/10/26/City_of_Fall_River_v._FERC.pdf", "tokens": ["re-gasification"], "result": "FAIL", "note": "hyphenation/OCR variant mismatch, not a real absence - document does describe re-gasification facilities per the quoted sentence"},
+      {"url": "https://storage.courtlistener.com/pdf/2007/10/26/City_of_Fall_River_v._FERC.pdf", "tokens": ["generator"], "result": "FAIL", "note": "confirms absence of the term in the opinion"},
+      {"url": "https://storage.courtlistener.com/pdf/2007/10/26/City_of_Fall_River_v._FERC.pdf", "tokens": ["electric power"], "result": "FAIL", "note": "confirms absence"},
+      {"url": "https://storage.courtlistener.com/pdf/2007/10/26/City_of_Fall_River_v._FERC.pdf", "tokens": ["power plant"], "result": "FAIL", "note": "confirms absence"},
+      {"url": "https://storage.courtlistener.com/pdf/2007/10/26/City_of_Fall_River_v._FERC.pdf", "tokens": ["turbine"], "result": "FAIL", "note": "confirms absence"},
+      {"url": "https://storage.courtlistener.com/pdf/2007/10/26/City_of_Fall_River_v._FERC.pdf", "tokens": ["gas-fired"], "result": "FAIL", "note": "confirms absence"},
+      {"url": "https://storage.courtlistener.com/pdf/2007/10/26/City_of_Fall_River_v._FERC.pdf", "tokens": ["backup power"], "result": "FAIL", "note": "confirms absence"},
+      {"url": "https://storage.courtlistener.com/pdf/2007/10/26/City_of_Fall_River_v._FERC.pdf", "tokens": ["diesel generator"], "result": "FAIL", "note": "confirms absence"},
+      {"url": "https://storage.courtlistener.com/pdf/2009/10/26/Weavers_Cove_Energy_LLC_v._Rhode_Island_Coastal_Resources.pdf", "tokens": ["Taunton River"], "result": "PASS", "note": ""},
+      {"url": "https://storage.courtlistener.com/pdf/2009/10/26/Weavers_Cove_Energy_LLC_v._Rhode_Island_Coastal_Resources.pdf", "tokens": ["vaporizer"], "result": "FAIL", "note": "confirms absence of the term in this opinion"},
+      {"url": "https://storage.courtlistener.com/pdf/2009/10/26/Weavers_Cove_Energy_LLC_v._Rhode_Island_Coastal_Resources.pdf", "tokens": ["electric"], "result": "FAIL", "note": "confirms absence"},
+      {"url": "https://www.courtlistener.com/opinion/202990/city-of-fall-river-v-federal-energy-regulatory-commission/", "tokens": ["Taunton River"], "result": "FAIL", "note": "HTTP 202 - JS-rendered SPA shell, no static text; use the storage.courtlistener.com PDF mirror instead, which passes"}
+    ],
+    "gogpt_prior_assessment": "Two GOGPT neighbors within 30 km: Tiverton power plant (273 MW, operating, gogpt_captive=false, 6.7 km, Rhode Island) and Dartmouth Power Associates power station (74 MW, operating, gogpt_captive=false, 13.3 km, Massachusetts). Both are independent merchant gas-fired power plants unrelated to Weaver's Cove, which was never built and whose FERC-authorized design (per the court record above) had no generation component. Not this terminal's captive power. No independent (non-gem.wiki) info_url for either plant was found within the search tools available this session.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "Terminal never built; the FERC-authorized design contained no generation facility. The two GOGPT neighbors are unrelated pre-existing merchant plants with their own separate ownership/siting history.",
+    "status_or_other_findings": "GEM already records this as cancelled — corroborated independently (turnto10.com, Upstream: 'Hess abandons fight for Fall River LNG terminal', 2015) citing unfavorable economics after years of Rhode Island/Massachusetts opposition and litigation. No new status information.",
+    "notes": "Search severely constrained this session (WebSearch quota exhausted at first call; DuckDuckGo/Bing-web/Yandex/Mojeek/Startpage all blocked or non-functional via WebFetch). CourtListener's own web UI is a JS SPA that fails url_verifier directly (HTTP 202, no static text) — the citable, verifiable mirror is the same opinion's PDF at storage.courtlistener.com, used here instead."
+  },
+  {
+    "terminal": "West Delta LNG Deepwater Port Terminal",
+    "terminal_id": "T100000130987",
+    "country": "United States",
+    "verdict": "SCREENED",
+    "mechanical": "",
+    "captive_category": "",
+    "hardware_summary": "",
+    "fuel_basis": "",
+    "confidence": "red",
+    "captive_summary": "Screened: an extensive multi-engine search (Bing web search, Bing news search, Marginalia, DuckDuckGo, archive.org full-text search, CourtListener case law, Wikipedia) turned up zero results of any kind for 'West Delta LNG', 'West Delta LNG LLC', or 'West Delta LNG Deepwater Port' — not even a basic trade-press announcement, unlike the other two (much better documented) cancelled terminals in this shard. This is consistent with a proposal that never advanced past an early filing/site-reservation stage and never reached a published engineering design.",
+    "electric_mw": "",
+    "mechanical_drive_note": "",
+    "confirmed_how": "No corroborating source found. Basis for SCREENED is the negative result itself: repeated targeted searches (varying terms: LNG, deepwater port, LLC, Louisiana, Plaquemines/Venice, MARAD, Coast Guard license, crude oil) across six+ search backends returned no hits describing this project beyond GEM's own record.",
+    "refs": [],
+    "verification_log": [
+      {"url": "https://www.bing.com/news/search?q=%22West+Delta+LNG%22", "tokens": ["West Delta"], "result": "FAIL", "note": "zero search results returned by the engine itself, not a URL to cite"},
+      {"url": "https://archive.org/advancedsearch.php?q=%22West+Delta%22+LNG", "tokens": ["West Delta"], "result": "FAIL", "note": "numFound: 0"},
+      {"url": "https://www.courtlistener.com/api/rest/v4/search/?q=%22West+Delta+LNG%22&type=o", "tokens": ["West Delta"], "result": "FAIL", "note": "zero case-law hits"}
+    ],
+    "gogpt_prior_assessment": "No GOGPT neighbor plants within 30 km appear in neighbors_raw.json for this terminal_id (T100000130987) — grepped directly, no entries found, consistent with a remote/undeveloped Louisiana coastal site with no nearby generation.",
+    "gogpt_candidate": "DO NOT ADD",
+    "gogpt_candidate_basis": "No plant exists (project never built) and no GOGPT neighbor was even found to assess.",
+    "status_or_other_findings": "GEM already records this as shelved. No independent corroboration or additional detail found anywhere.",
+    "notes": "Given the total absence of any public trace, this is best treated as SCREENED on 'never reached a published design' grounds rather than INSUFFICIENT — but flagging for the orchestrator that this determination rests on negative search results only (no source affirmatively states the project was never designed), and search tools were unusually degraded this session (WebSearch quota exhausted; most general search engines blocked via WebFetch). If FERC/MARAD eLibrary access becomes available, worth a direct docket-number lookup rather than free-text search."
+  }
+]

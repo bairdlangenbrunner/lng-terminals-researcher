@@ -1,0 +1,18 @@
+[
+  {
+    "terminal_id": "T100000130966",
+    "unit_id": "G100002096600",
+    "terminal_name": "Puerto Sandino FSRU",
+    "unit_name": "--",
+    "operation": "append",
+    "status": "operating",
+    "sub_status": "planned",
+    "year": 2026,
+    "part_of_year": "Q4",
+    "notes": "Existing Postgres timeline (fetch_timeline.py G100002096600) had 4 entries: FID/actual/2021, construction/actual/2020, operating/planned/2024, operating/planned/2025. This append is a further slip in the same monotonic planned-startup sequence (2024 -> 2025 -> 2026), consistent with the established pattern of each entry representing the then-current plan; not a status transition (unit Status remains 'construction'). Source: TradeWinds (Aug 2026) — 'commissioning ... is expected to start in October 2026' (Q4).",
+    "source_url": "https://www.tradewindsnews.com/gas/new-look-new-fortress-plans-to-fire-up-nicaragua-lng-terminal-this-year/2-1-1962271",
+    "confidence": "yellow",
+    "legal_transition_check": "N/A — planned/future-year append, not a current status transition. Monotonic with existing operating/planned/2024 -> 2025 -> 2026 sequence; no non-monotonic (e.g. shelved->proposed) concern.",
+    "researcher_initials": "AI-draft (sweep)"
+  }
+]

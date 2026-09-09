@@ -1,0 +1,22 @@
+[
+ {
+  "category": "qc_tooling_bug",
+  "terminal_id": null,
+  "unit_id": null,
+  "terminal_name": "(cross-country -- tooling)",
+  "issue": "SCOPE-WIDE CAVEAT on this batch's QC citation sweep. citation_qc.py extracted URLs from [ref] cells with a regex that treated the comma as a list separator, but the comma is ALSO a legal URL character. Measured after fixing the extractor: 434 ref cells tracker-wide, and 40 distinct URLs inside this batch's 13 countries, were graded on a truncated stub rather than the real URL -- distributed as Germany 9, Italy 8, France 7, Spain 6, Croatia 3, and 1 each in Albania, Belgium, Gibraltar, Greece, Malta, Netherlands, Portugal. Because a truncated URL usually 404s while the real one is fine, the bug produced false PASSES and false ROT verdicts but never a false clean bill for a genuinely dead link; the QC memo's dead-citation counts are therefore a FLOOR, not an overstatement. Two follow-on defects were found in the extractor's own first fix and also corrected: splitting at every 'http(s)://' tore Wayback URLs in half (an archive URL embeds the original), and splitting on quotes truncated Google Maps place URLs at their degree/minute/second notation. Final rule: a comma separates only when a scheme marker follows it; whitespace is the only other terminator. 81/81 repo tests pass.",
+  "severity": "medium",
+  "suggested_action": "36 of the 40 in-scope URLs are Google Maps Location [ref] coordinate links whose '@lat,lon' and DMS punctuation caused the truncation -- they were never really checked, though the underlying links are very likely fine. The 4 non-Maps ones were all run down and resolved in this batch: Croatia/Krk and Germany/Brunsbüttel both cited the now-lapsed lngworldshipping.com domain (both repaired to pre-lapse Wayback captures, both verified to contain the values they support), and Germany/Wilhelmshaven TES FSRU had a stray ',TES' fragment fused onto two URLs (both de-mangled and re-verified). Recommended: re-run citation_qc.py across the tracker on the fixed extractor before the next QC memo, and treat any country previously reported at 0% dead (Croatia, Greece, Montenegro, Portugal in this batch) as unverified until then -- Croatia's 0% was itself wrong, which is how the bug was caught.",
+  "researcher_initials": "AI-draft (orchestrator)"
+ },
+ {
+  "category": "duplicate_entity_candidate",
+  "terminal_id": "T100000131001",
+  "unit_id": null,
+  "terminal_name": "Jade Energy LNG Terminal (and GEM entity system generally)",
+  "issue": "Reviewer-facing note from the merge-time entity gate, not a data error in this batch. The Parent value staged for Jade Energy ('Tree Energy Solutions BV [70.0%]; Netherlands Fortescue Future Industries Holdings BV [30.0%]') resolves to real GEM entities -- both were confirmed present in the read-only Postgres `company` table -- but 'Tree Energy Solutions' exists TWICE as a live, non-deleted entity: 100000188801 and 100002025093. Neither is marked '[TO BE DELETED]', so this is an unresolved near-duplicate in the shared entity system rather than the usual soft-deleted-predecessor pattern. The same shape appears on 'Vitol Holding' (100002025130, 100002025126, plus 'Vitol Holding II' 100000000694, all live) which the Italy/OLT Parent edit touches, and on 'JERA' (100000001533) vs 'JERA Co' (100002025198), relevant to the Montenegro / Bar LNG MOU research.",
+  "severity": "low",
+  "suggested_action": "When applying the Jade and OLT Parent edits, pick ONE of each duplicate pair deliberately and attach consistently -- don't let the two Tree Energy Solutions IDs both accumulate terminals. Worth raising with whoever owns entity hygiene, since these are cross-tracker records this project can only read. No LNG-side edit in this batch depends on which ID is chosen.",
+  "researcher_initials": "AI-draft (orchestrator)"
+ }
+]
