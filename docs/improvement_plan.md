@@ -448,13 +448,59 @@ Ordered by *risk retired per hour*, not by architectural tidiness.
   for every URL in a `[ref]` lane, a passing log record whose token matches the asserted
   value; fail the build otherwise. This converts the repo's most important rule from an
   honour system into a gate.
-- **1.2 Keep and test the fail-closed gates.** Add negative tests proving malformed
-  staging cannot produce a workbook and a dirty gate exits nonzero — otherwise the gates
-  will silently regress.
-- **1.3 Fix `sop_pointers.md` `--remote` → `--pg`** and sweep for other rule-lookup drift.
-  Cheap, and it is actively wrong right now.
-- **1.4 Reconcile the workflow count** (nine/five/eight/ten) across README, CLAUDE.md
-  frontmatter, and `docs/workflows.md`.
+- **1.2 Keep and test the fail-closed gates — DONE 2026-09-09.**
+  `tests/test_build_gates.py` (11 tests) drives `build_review_package.py` end to end as a
+  subprocess against a synthetic mini-CSV and asserts, for each gate, both the exit code
+  and that no workbook was written; `tests/test_staging_qc_gate.py` (6 tests) asserts
+  `staging_qc.main()`'s *return value*, since the exit code is the only part a caller can
+  act on. Suite: 81 → 98.
+
+  Writing them found two real defects, both now fixed:
+
+  1. **Malformed staging crashed instead of gating.** A `staged_*.json` holding an object
+     (or a list of non-objects) was counted as a finding and then handed to the sheet
+     builders anyway, which call `.get()` on each record — the build died with an
+     `AttributeError` traceback at exit 1, partway through, instead of stopping cleanly at
+     `BUILD BLOCKED`. `main()`'s `validate()` helper now returns a *sanitised* list, so a
+     malformed input is counted and neutralised; it also counts structural damage itself
+     for labels with no `STAGED_KEYS` entry, which `_validate_records` skips.
+  2. **`staging_qc.py`'s headline key-schema check was a silent no-op.** It called
+     `brp._validate_records(f"{label}({tag})", recs)` — decorating the label with the shard
+     name so the offender is attributable — but `_validate_records` resolves its spec by
+     `STAGED_KEYS.get(label)`, and a decorated label matches nothing, so it returned 0 for
+     **every shard of every region**. This is the 2026-08-11 `argentina.qa.json` failure
+     repeated one layer up: the gate that was added to catch a check that counted nothing
+     itself counted nothing. It now passes `spec=brp.STAGED_KEYS.get(label)` explicitly.
+
+  Turning that check back on surfaced previously invisible vocabulary drift in six regions
+  (africa, americas, europe, middleeast, oceania, vietnam). A sweep of the committed
+  staging tree confirmed it is **annotation-only, not data loss**: extra URL lists
+  (`corroborating_urls`, `source_urls`, `supporting_urls`) on 14 `monitor_list` records
+  that all still carry a `best_lead_url` — **zero monitor rows shipped without a lead URL**
+  — plus 15 `wiki_updates` records carrying `source_notes`/`confidence` prose no sheet
+  reads. Those are delivered historical batches and their staged JSON is the audit trail,
+  so **none of it was rewritten.** One open question left by the scan, deliberately not
+  changed here: `new_units` marks `terminal_id` **required**, but a new unit on a
+  *newly discovered* terminal has no terminal id yet (`middleeast/oman.disc.newunits.json`).
+  That spec will false-positive on every future discovery batch of that shape — decide
+  whether the linkage may fall back to `TerminalName` before the next discovery run.
+- **1.3 Fix `sop_pointers.md` `--remote` → `--pg` — DONE 2026-09-09**, and the sweep found
+  the drift was wider than the audit recorded. Also corrected: `docs/sops/update.md` step 3
+  (logged "both the local and `--remote` checks ran"), `scripts/entity_lookup.py`'s own
+  module docstring ("run this BARE and with `--remote`" — the script's usage block already
+  said `--pg` was authoritative, so it contradicted itself), and the reusable
+  `batches/staging/_discovery_brief.md`, which was still instructing every dispatched
+  discovery subagent to use `--remote`. Left alone deliberately: `README.md`'s env-var
+  table (those cookies really are for the remote endpoint), the per-batch briefs, and the
+  run records — frozen artifacts of what was actually run.
+- **1.4 Reconcile the workflow count — DONE 2026-09-09.** The drift was narrower than the
+  audit recorded: `README.md` ("Nine workflows") and the `CLAUDE.md` router table (nine
+  rows) already agreed. The single wrong count was the **`CLAUDE.md` skill frontmatter**,
+  which said "five workflows" and enumerated only five — omitting regional sweep,
+  ref-sweep, captive-power and georeference, so four of nine were invisible to skill
+  routing. Now nine, enumerated, with their trigger phrases. `docs/workflows.md` has ten
+  `##` sections but nine workflows — §7 is the cross-project FSRU sync *rule*; its "how the
+  workflows fit together" paragraph now says so, and places the three off-spine workflows.
 
 ### Phase 2 — State model
 

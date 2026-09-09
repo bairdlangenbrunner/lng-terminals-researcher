@@ -40,7 +40,7 @@ got wrongly staged as new — a duplicate. So `--country` NEVER hides a match: t
 local scan ALWAYS walks every row, reports the entity as `found` if it exists
 ANYWHERE, and uses --country only to ANNOTATE which matches are in-country vs.
 elsewhere (with a loud cross_country_warning when the only matches are elsewhere).
-Before staging any new entity, run this BARE (no --country) and with --remote.
+Before staging any new entity, run this BARE (no --country) and with --pg.
 
 Usage:
     python entity_lookup.py "TotalEnergies"                 # the check to trust

@@ -98,7 +98,13 @@ def check_records(base, csv_path):
         tag = f"{slug}.{suffix}"
         print(f"  {tag}: {len(recs)} record(s)")
         if label:
-            findings += brp._validate_records(f"{label}({tag})", recs) or 0
+            # Pass the spec explicitly: the message label is decorated with the
+            # shard name so the offender is attributable, and a decorated label
+            # matches nothing in STAGED_KEYS — looking it up by name made this
+            # check a silent no-op that returned 0 for every shard, which is the
+            # 2026-08-11 failure over again one layer up.
+            findings += brp._validate_records(f"{label}({tag})", recs,
+                                              spec=brp.STAGED_KEYS.get(label)) or 0
         findings += len(brp.warn_banned_domain_urls(tag, recs))
         findings += len(brp.warn_bare_domain_urls(tag, recs))
         if suffix == "updates":
