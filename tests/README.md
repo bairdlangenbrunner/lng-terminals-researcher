@@ -1,7 +1,10 @@
 # tests/
 
 Minimal pytest suite pinning the edge-case-hardened parsers and the build-time
-guards. Run from the repo root:
+guards. The guard tests are deliberately **negative**: a gate that blocks is only
+worth having if something proves it still blocks, so they assert exit codes and
+the *absence* of an output file, not just that a warning was printed. Run from
+the repo root:
 
 ```bash
 pytest tests/
@@ -17,7 +20,12 @@ the scripts themselves use).
 | `test_report_diff.py` | Owner parsing (spaced-slash split, Owner:/Charterer: roles, shareholder expansion) + expansion-row name folds (Train E / GL1Z / Stage III, with the Senboku-II single-letter guard). |
 | `test_giignl_extract.py` | Integration snapshot against the committed `data/GIIGNL-2026-Annual-Report-0526b.pdf` — 348 rows, section totals, and the specific rows that regressed historically (Niigata/Niihama owner bleed, Sodegaura co-owner, Bontang mothballed hint, LNG Canada site tag). Skips if `pdftotext` is missing. Takes a few seconds. |
 | `test_build_guard.py` | `build_review_package.py`'s URL-routing guard: a URL aimed at a data/enum column is refused, URLs land only in `[ref]` columns, read-only columns are never written, and same-edition GIIGNL mirror URLs are flagged as one source. |
-| `test_validate_records.py` | `build_review_package.py`'s `_validate_records` GUARD pass: unknown staged-JSON keys warn (the silently-blank-cell class), missing required identity keys warn, clean records are silent, non-list input is a no-op. |
+| `test_validate_records.py` | `build_review_package.py`'s `_validate_records` GUARD pass: unknown staged-JSON keys (the silently-blank-cell class), missing required identity keys, and non-list input are each a **finding**; clean records are silent. Asserts the returned finding COUNT, not just the message — the check is gating now, and one that printed but returned 0 would not block a build. |
+| `test_build_gates.py` | The fail-closed build gates end to end: `build_review_package.py` run as a subprocess against a synthetic mini-CSV. Malformed staging, unknown/missing keys and a URL aimed at a data column all exit 2 **and write no workbook**; `--allow-warnings` is the escape hatch; an existing output or an orphaned manifest is never overwritten without `--force`; a mistyped `--inputs-dir` errors instead of building an empty book. |
+| `test_staging_qc_gate.py` | `staging_qc.py`'s merge-time gate **exit code** — key-schema drift, a banned source, a bare-domain citation and an unreadable shard each return 1; `--allow-warnings` returns 0. The 2026-08-11 miss was not the detection but the exit code, so these assert the return value. |
+| `test_banned_domain_guard.py` | The `warn_banned_domain_urls` guard: abarrelfull never reaches an output lane. |
+| `test_bare_domain_guard.py` | The `warn_bare_domain_urls` guard: a bare domain/homepage is never a citation, in any lane. |
+| `test_wiki_refs.py` | `wiki` lane reference handling (wiki-style source URL rendering). |
 | `test_monitor_store.py` | `monitor_store.py` round-trip: seed/merge/dedup of the cross-batch monitor list. |
 | `test_colmap.py` | Shared `colmap.load_colmap`: happy path, missing colmap → RuntimeError, BOM-safe header re-derivation when `_header_columns` is absent. |
 | `test_schema_constants.py` | `schema_constants.py` column sets: non-empty, computed/out-of-scope disjoint, READ_ONLY_COLUMNS is exactly their union. |

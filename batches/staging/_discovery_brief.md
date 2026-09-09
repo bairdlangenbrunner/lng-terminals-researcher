@@ -102,14 +102,16 @@ human reviews; never touch the live DB. Leads are not pre-trusted; verify.
   `build_new_units_sheet` ~L699 in `scripts/build_review_package.py`); fill only sourced fields; NEVER
   read-only cols (LH2/NH3/SyntheticLNG/RetrofitProposed/AltFuel*/PCI*/CCS/computed totals/Wiki/TerminalID/UnitID);
   capacity baseload/nameplate; optional `confidence_per_field` {Header:color}.
-- `entity_lookup.py "<name>" --remote` (run BARE — do NOT pass `--country`) before naming any new
+- `entity_lookup.py "<name>" --pg` (run BARE — do NOT pass `--country`) before naming any new
   owner/operator/parent. Entities are SHARED across countries: the developer of your country's project very
   often already exists on a GEM terminal in ANOTHER country, and a `--country` filter would hide that and make
   you stage a DUPLICATE (this exact bug staged "LNG Alliance" as new when it already existed on an India
   terminal). A match ANYWHERE = reuse the existing entity, do NOT add it to `entity`. `--country` only annotates;
   the script now emits a `cross_country_warning` rather than hiding a match, but run bare regardless.
-  `lookup_was_run` records that BOTH the bare-local and `--remote` checks ran. CAVEAT: the `--remote` endpoint
-  has intermittent FALSE NEGATIVES — treat `no_remote_match` as a lead, not proof of absence; record the exact
+  `lookup_was_run` records that BOTH the bare-local and `--pg` checks ran. `--pg` queries `entity_history` in the
+  read-only Postgres and is the AUTHORITATIVE check. CAVEAT: the optional `--remote` web endpoint has intermittent
+  FALSE NEGATIVES and returns `skipped_no_base_url` (an environmental skip) when `GEM_PROJECT_DB_BASE_URL` is
+  unset — treat neither `no_remote_match` nor a skip as proof of absence; record the exact
   lookup output in `lookup_result_summary` (the orchestrator re-checks every proposed new entity against the
   read-only Postgres `entity_history` before building and drops duplicates).
 - Conservative: a candidate you can't verify or confidently distinguish from an existing GEM record →

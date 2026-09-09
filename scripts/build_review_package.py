@@ -531,7 +531,8 @@ def _safe_load(path, default=None):
 # Known/required keys per staged-record type. A key outside `known` is never read by
 # any sheet builder, so a typo becomes a silently blank cell — the updates_summary
 # citation column shipped blank in every batch while records said `ref_urls` and the
-# sheet read `ref_url`. Warn-only: never fail a build over vocabulary drift, but say it.
+# sheet read `ref_url`. GATING as of 2026-09: a finding blocks the build unless
+# --allow-warnings is passed, so vocabulary drift cannot ship a quietly-empty column.
 # When a sheet builder gains a column, add its key here in the same change.
 STAGED_KEYS = {
     "updates": {
@@ -3631,8 +3632,34 @@ def main():
     gate_findings = 0
 
     def validate(label, records, spec=None):
+        """Count vocabulary/structure findings and hand back a SAFE list.
+
+        A staged file holding an object (or nothing) instead of a list is a
+        gating finding, but it must not also reach the sheet builders — they
+        iterate records and call `.get()`, so a dict input used to die with an
+        AttributeError traceback partway through the build instead of stopping
+        at the BUILD BLOCKED gate. Substituting [] keeps the build on the
+        fail-closed path: the finding is counted, nothing is written, and the
+        operator sees the guard message rather than a stack trace.
+        """
         nonlocal gate_findings
         gate_findings += _validate_records(label, records, spec=spec)
+        # _validate_records only reports on labels it has a spec for; count the
+        # structural damage itself for the rest, so nothing malformed slips by
+        # uncounted just because its record type has no vocabulary entry.
+        counted = bool(spec or STAGED_KEYS.get(label))
+        if not isinstance(records, list):
+            if not counted:
+                print(f"  GUARD: staged_{label}: expected a JSON list, "
+                      f"got {type(records).__name__}")
+                gate_findings += 1
+            return []
+        safe = [r for r in records if isinstance(r, dict)]
+        if len(safe) != len(records) and not counted:
+            print(f"  GUARD: staged_{label}: {len(records) - len(safe)} record(s) "
+                  "are not JSON objects")
+            gate_findings += 1
+        return safe
 
     def guard(fn, *values):
         nonlocal gate_findings
@@ -3661,20 +3688,20 @@ def main():
     country_breakdown = None
     if args.mode == "update":
         updates = _safe_load(inputs_dir / "staged_updates.json", default=[])
-        validate("updates", updates)
+        updates = validate("updates", updates)
         guard(warn_duplicate_giignl_refs, updates)
         guard(warn_ref_url_drops, updates, args.gem_csv)
         timeline = _safe_load(inputs_dir / "staged_status_timeline.json", default=[])
-        validate("status_timeline", timeline)
+        timeline = validate("status_timeline", timeline)
         entity_adds = _safe_load(inputs_dir / "staged_entity_additions.json", default=[])
-        validate("entity_additions", entity_adds)
+        entity_adds = validate("entity_additions", entity_adds)
         stale = _safe_load(inputs_dir / "stale_sweep.json", default={"flagged_units": []})
         country_notes = _safe_load(inputs_dir / "staged_country_notes.json", default=[])
-        validate("country_notes", country_notes)
+        country_notes = validate("country_notes", country_notes)
         qa = _safe_load(inputs_dir / "staged_qa_review.json", default=[])
-        validate("qa_review", qa)
+        qa = validate("qa_review", qa)
         wiki = _safe_load(inputs_dir / "staged_wiki_updates.json", default=[])
-        validate("wiki_updates", wiki)
+        wiki = validate("wiki_updates", wiki)
         guard(warn_bare_domain_urls, "updates", updates)
         guard(warn_banned_domain_urls, "updates", updates)
         guard(warn_bare_domain_urls, "wiki_updates", wiki)
@@ -3682,7 +3709,14 @@ def main():
         guard(warn_bare_domain_urls, "qa_review", qa)
         guard(warn_banned_domain_urls, "qa_review", qa)
         fsru = _safe_load(inputs_dir / "fsru_sync.json", default={"mode": "skipped", "_skip_reason": "not run"})
+        # fsru_sync.json is an OBJECT (fsru_sync_check.py's report); anything else
+        # is malformed. Coerce after counting it, so the `fsru.get(...)` calls
+        # below reach the BUILD BLOCKED gate instead of an AttributeError.
         validate("fsru_sync", fsru.get("matched_pairs", []) if isinstance(fsru, dict) else fsru)
+        if not isinstance(fsru, dict):
+            print(f"  GUARD: fsru_sync.json: expected a JSON object, got {type(fsru).__name__}")
+            gate_findings += 1
+            fsru = {}
         # Optional scope for the all_fields-CSV-shaped sheet: a list of terminal_ids
         # (or {"terminal_ids": [...]}) whose unit-rows should ALL appear even if a
         # given unit had no change this batch (e.g. a full-country pass).
@@ -3692,11 +3726,11 @@ def main():
         # Captive-power cross-tracker (§9) review-context sheets — each emitted only
         # when its JSON input exists, so normal Update batches never gain these tabs.
         captive_priors = _safe_load(inputs_dir / "captive_terminal_first.json", default=[])
-        validate("captive_terminal_first", captive_priors)
+        captive_priors = validate("captive_terminal_first", captive_priors)
         captive_neighbors = _safe_load(inputs_dir / "captive_neighboring_plants.json", default=[])
-        validate("captive_neighboring_plants", captive_neighbors)
+        captive_neighbors = validate("captive_neighboring_plants", captive_neighbors)
         captive_candidates = _safe_load(inputs_dir / "captive_gogpt_candidates.json", default=[])
-        validate("captive_gogpt_candidates", captive_candidates)
+        captive_candidates = validate("captive_gogpt_candidates", captive_candidates)
 
         inputs_summary = {
             "updates": len(updates),
@@ -3783,22 +3817,22 @@ def main():
         # what build_new_terminals_sheet itself reads) — built dynamically rather
         # than as a static STAGED_KEYS entry so a real CSV header never false-warns.
         _new_terminal_csv_cols = _csv_header(args.gem_csv) or NEW_TERMINALS_FALLBACK_HEADERS
-        validate("new_terminals", new_terms, spec={
+        new_terms = validate("new_terminals", new_terms, spec={
             "known": set(_new_terminal_csv_cols) | set(NEW_TERMINAL_META_COLS) | {"confidence_per_field"},
             "required": {"TerminalName"},
         })
         new_units = _safe_load(inputs_dir / "staged_new_units.json", default=[])
-        validate("new_units", new_units)
+        new_units = validate("new_units", new_units)
         monitor = _safe_load(inputs_dir / "staged_monitor_list.json", default=[])
-        validate("monitor_list", monitor)
+        monitor = validate("monitor_list", monitor)
         prior_monitor = _safe_load(inputs_dir / "prior_monitor_list.json", default=[])
         # Discovery shows its own pass's qa and entity additions (`*.disc.qa.json` /
         # `*.disc.entity.json` → these files); the update workbook shows the
         # update-pass equivalents. New-terminal sponsors ride with the discovery book.
         qa = _safe_load(inputs_dir / "staged_qa_review_discovery.json", default=[])
-        validate("qa_review", qa)
+        qa = validate("qa_review", qa)
         entity_adds = _safe_load(inputs_dir / "staged_entity_additions_discovery.json", default=[])
-        validate("entity_additions", entity_adds)
+        entity_adds = validate("entity_additions", entity_adds)
         guard(warn_bare_domain_urls, "new_terminals", new_terms)
         guard(warn_banned_domain_urls, "new_terminals", new_terms)
         guard(warn_bare_domain_urls, "new_units", new_units)
@@ -3852,7 +3886,7 @@ def main():
         # and (resolution == "edit") materialized as resolved rows in edits_to_gem.
         recon_verdicts = _safe_load(inputs_dir / "staged_recon_verdicts.json", default=[])
         qa = _safe_load(inputs_dir / "staged_qa_review.json", default=[])
-        validate("qa_review", qa)
+        qa = validate("qa_review", qa)
         narrative = _safe_load(inputs_dir / "giignl_narrative_findings.json", default={})
         narrative_findings = narrative.get("findings", []) if isinstance(narrative, dict) else []
         # entity_additions in reconciliation mode = any staged entities plus the
@@ -3860,7 +3894,7 @@ def main():
         # acquirer like Stonepeak goes through the dup-check path). name_changes
         # feed a separate name_reconciliation sheet.
         staged_entity_adds = _safe_load(inputs_dir / "staged_entity_additions.json", default=[])
-        validate("entity_additions", staged_entity_adds)
+        staged_entity_adds = validate("entity_additions", staged_entity_adds)
         narrative_entities = narrative_owner_entities(narrative_findings)
         entity_adds = staged_entity_adds + narrative_entities
         name_change_count = _count_narrative_name_changes(narrative_findings)

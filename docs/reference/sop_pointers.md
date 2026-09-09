@@ -45,7 +45,7 @@ Abbreviations:
 | URL verification gate on every URL | SKL "Hard requirements", UPD §7, DSC §8, REC §3.9 | HTTP 200 + content check + soft-error detection |
 | No orphan [ref] cells (Rule F) | UPD §3.1, §12 | Never fill a [ref] without paired data |
 | Status timeline edits require timeline pull | SKL "Hard requirements", UPD §3.2, LFC "Anchor years vs timeline" | Export doesn't contain timeline; use fetch_timeline.py |
-| No duplicate entities | UPD §8, DSC §9 | Run entity_lookup.py (bare + `--remote`) before staging new entity; `--country` annotates, never filters |
+| No duplicate entities | UPD §8, DSC §9 | Run entity_lookup.py (bare + `--pg`) before staging new entity; `--pg` is authoritative, `--remote` false-negatives; `--country` annotates, never filters |
 | Out-of-scope fields are read-only | UPD §10, SCH "Read-only column list" | LH2/NH3/SyntheticLNG/PCI/RetrofitProposed/AltFuel*, all computed totals |
 | Project-level field edits apply to all unit-rows | UPD §9, SCH "Field classification" | Mixed-class fields trigger read-before-write |
 | Cluster coherence on URLs (Rule E) | UPD §5 | URL must verifiably reference project AND contain value |
@@ -83,7 +83,7 @@ Abbreviations:
 | Apply naming conventions | UNT | Terminal / unit / phase / train naming per methodology |
 | Cluster coherence check | UPD §5 | URLs must reference correct project AND value |
 | URL verification | UPD §7, DSC §8, REC §3.9 | `url_verifier.py` |
-| Entity lookup | UPD §8, DSC §9 | `entity_lookup.py` — bare + `--remote`; `--country` annotates only |
+| Entity lookup | UPD §8, DSC §9 | `entity_lookup.py` — bare + `--pg` (authoritative); `--country` annotates only |
 | Country coverage gap | DSC §4.0, QCS §3.1 | `completeness_sweep.py` `coverage_gap` — countries with zero GEM terminals |
 | Dormant-revival watch | DSC §4.0a, QCS §3.1 | `completeness_sweep.py` `dormant_revival_watch` — cancelled/shelved sites to revival-check (→ Discovery) |
 | gem.wiki coverage cross-check | DSC §4.0b | Enumerate gem.wiki LNG pages, reconcile vs the export CSV — wiki page with no row = discovery candidate (gem.wiki never cited) |
