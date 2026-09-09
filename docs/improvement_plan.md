@@ -5,10 +5,13 @@ Living plan. Supersedes nothing; it sits alongside `docs/repo_audit_2026-07-16.m
 *system* — enforcement, reproducibility, state, packaging, and the public/private
 boundary.
 
-**Note on names:** this repo is **public** (`bairdlangenbrunner/lng-terminals-researcher`,
-`gh repo view --json visibility` → `PUBLIC`). Per the standing rule, colleague names
-are not written in this doc; affected paths are described by shape, not repeated.
-See Phase 0.1 — this is not a formality here, it is one of the live findings.
+**Note on names — decided 2026-09-09:** this repo is **public**
+(`bairdlangenbrunner/lng-terminals-researcher`), and colleague first names **are
+allowed here**, in paths, filenames, run records and docs. The user considered the
+exposure and accepted it deliberately; the general "no full names in public repos"
+default does not apply to this repo. Nothing is to be scrubbed, renamed, or
+history-rewritten, and no name scan belongs in CI. Part 3's finding 1 and the
+original Phase 0.1 are retained below as the record of what was weighed.
 
 ---
 
@@ -423,10 +426,10 @@ Ordered by *risk retired per hour*, not by architectural tidiness.
 
 ### Phase 0 — Stabilize (do before anything else)
 
-- **0.1 Resolve the public/private question first**, because it determines how much
-  scrubbing Phase 0.2 needs. Going private makes the names issue vanish; staying public
-  requires renaming eleven paths, scrubbing or ignoring the assignments file, and fixing
-  one committed line (fix-forward, or history rewrite — a decision, see Part 5).
+- **0.1 ~~Resolve the public/private question~~ — DECIDED 2026-09-09: stay public,
+  names allowed, nothing scrubbed.** No renames, no history rewrite, no CI name scan,
+  and `docs/reference/researcher_assignments.json` commits normally. This closes the
+  finding rather than fixing it.
 - **0.2 Land the backlog in reviewable commits**, separated into three trains:
   (a) research outputs/staging/deliverables, (b) pre-existing code+doc changes,
   (c) Codex's infrastructure work. Never mixed — (c) is the only one that can be
@@ -466,19 +469,20 @@ Ordered by *risk retired per hour*, not by architectural tidiness.
 - **3.1 Verify `lng doctor`** actually checks what it claims; add the sibling-repo and
   binary checks.
 - **3.2 GitHub Actions:** pytest, ruff, `lng validate`, markdown-link check, forbidden-path
-  scan (`/Users/`, `/home/claude`, Dropbox paths, retired Heroku host), secret scan, and —
-  if the repo stays public — **a personal-name scan that fails the build**. That last one
-  is the durable fix for finding 1; a rule that only lives in prose is exactly what this
-  whole audit is about.
+  scan (`/Users/`, `/home/claude`, Dropbox paths, retired Heroku host), and a secret scan.
+  **No personal-name scan** — names are allowed here by decision (see the header note);
+  adding one would fail the build on intended content.
 - **3.3 Settle `.env`:** either load it explicitly or change the README to say `source .env`.
 
 ### Phase 4 — Selective refactor, evidence-driven only
 
 Do these **only when a concrete failure points at them**:
 
-- Parameterize the captive-power one-off assemblers — *if* another captive region is planned.
-  If the workflow is finished (tracker 100% crawled), freeze them under a `legacy/` marker
-  instead and stop paying attention to them.
+- ~~Parameterize the captive-power one-off assemblers~~ — **DECIDED 2026-09-09: the
+  workflow is finished; the scripts are frozen, not parameterized.** The freeze marker is
+  `batches/staging/captive_power/README.md`, which declares all 23 files run artifacts
+  rather than tooling and names `batches/staging/_assemble.py` as the canonical assembler.
+  This retires Codex's "batch-specific code is proliferating" P1 by scope, not by refactor.
 - Split `build_review_package.py` by sheet — *if* a bug is ever traced to its size.
 - Move machine-checkable rules (enums, read-only columns, banned domains, confidence
   thresholds) into config the code reads. Leave the rationale prose in place.
@@ -495,7 +499,7 @@ Do these **only when a concrete failure points at them**:
 
 ---
 
-## Part 5 — Open decisions
+## Part 5 — Decisions (resolved 2026-09-09)
 
 1. **Public or private?** Going private retires the names finding, the internal-links
    finding, and most of the artifact-classification work in one command. Nothing here
