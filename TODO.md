@@ -34,6 +34,13 @@ keep their options.
   fixed (see the `giignl_extract.py` / `report_diff.py` deep-dives). RESIDUAL:
   dense-block owner-cell bleed surfaces as occasional lone-token owner deltas —
   tracked in the `_attribute_owner_fragments` deep-dive, not here.
+- **Repo-level overhaul decisions** (2026-09-09): stay **public** and allow
+  colleague names here (nothing scrubbed, no history rewrite, no CI name scan);
+  **keep** Codex's half-landed infrastructure changes, landed as their own commit
+  train; the **captive-power workflow is finished**, so its 23 one-off staging
+  scripts are frozen (`batches/staging/captive_power/README.md`), not
+  parameterized. Audit, verification, and the re-planned roadmap:
+  `docs/improvement_plan.md`.
 - **Qatar Ras Laffan project-level match** (2026-06): `_unit_designators`
   maps GIIGNL `N(*)`/`S(*)` codes to the GEM unit with the same code; the
   train-range pre-pass sums per-train rows into GEM range-units.
@@ -110,26 +117,3 @@ genuinely should have included a terminal and didn't.
 - (C) Threshold-based: GEM-only with capacity >X mtpa gets hard flag
 
 **Recommendation:** (A) until first reconciliation reveals failure modes.
-
----
-
-## OPEN: repo-level overhaul decisions (2026-09-09)
-
-A Codex/ChatGPT audit on 2026-09-09 reviewed the repo as a system (enforcement,
-reproducibility, state model, packaging, public/private boundary), began
-implementing its own recommendations, and died mid-step-1 of 6 on a credit limit.
-Its full findings, a claim-by-claim verification, a critical evaluation, and a
-re-planned roadmap are in **`docs/improvement_plan.md`**.
-
-Four decisions are blocking Phase 0 there:
-
-- (1) Should this repo stay **public**? Going private retires the personal-names,
-  internal-links, and artifact-classification findings in one command.
-- (2) If public: fix-forward or rewrite history for the one committed colleague name?
-- (3) Codex's half-landed uncommitted changes — keep (recommended), revert, or
-  cherry-pick? Note they are interleaved with prior uncommitted work in six files.
-- (4) Is the captive-power workflow finished? Decides whether its 23 one-off staging
-  scripts get parameterized or simply frozen.
-
-**Recommendation:** (1) private, (3) keep + commit as a separate train, which makes
-(2) moot.
