@@ -407,6 +407,9 @@ invalidates the coverage ledger and every path in the SOPs.
    deliverable xlsx — plus an untracked, non-ignored `docs/reference/researcher_assignments.json`.
    A single `git add -A` publishes all of it. Codex listed "researcher names and assignments"
    as one bullet in a P-unranked section. It is the most time-sensitive item in the audit.
+   *(Superseded 2026-09-09 — see the header note. The tree landed as-is in PR #32 with the
+   names intact, by decision; only the assignments cache was ignored, and for its sheet id
+   rather than its names. This paragraph is kept as the record of what was weighed.)*
 2. **The uncommitted backlog deserves P0, not P1.** ~664 files of research output spanning
    2026-07-29 → 2026-09-09 live only in a **Dropbox-synced working tree** — no git object,
    exposed to sync conflicts. Every other fix has to be applied on top of it, and Codex's

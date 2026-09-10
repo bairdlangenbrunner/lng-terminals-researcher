@@ -15,8 +15,14 @@ worklist filter. Many terminals run captive/mechanical-drive turbines that GOGPT
 separate "power station," so a plant-first sweep silently misses them (e.g. Corpus Christi / Rio
 Grande gas-turbine drives). **Which areas are done lives in the coverage ledger** — each area's
 `batches/staging/captive_power/<area>/meta.json` (`scripts/coverage_status.py` reads these), not in
-this prose; Louisiana (2026-07-09) and Texas (2026-07-10) are the completed-to-date areas as of this
-writing. Process order follows GEM's own cadence — finish a state/country before moving to the next.
+this prose. **As of 2026-08-02 the whole tracker is crawled** (843/843 terminals; africa and oceania
+closed last), and the full-region deliverable workbooks in `batches/deliverables/` supersede every
+earlier increment. The workflow is finished, so its per-area staging scripts are frozen run
+artifacts rather than maintained tooling — see `batches/staging/captive_power/README.md`. Re-run
+`python scripts/captive_coverage_audit.py` against a fresh export before making any new completeness
+claim; the 843/843 figure is measured against the 2026-08-02 export, not a standing guarantee.
+If the workflow reopens, process order follows GEM's own cadence — finish a state/country before
+moving to the next.
 
 ## 1. What this workflow answers
 

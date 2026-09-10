@@ -36,11 +36,14 @@ keep their options.
   tracked in the `_attribute_owner_fragments` deep-dive, not here.
 - **Repo-level overhaul decisions** (2026-09-09): stay **public** and allow
   colleague names here (nothing scrubbed, no history rewrite, no CI name scan);
-  **keep** Codex's half-landed infrastructure changes, landed as their own commit
-  train; the **captive-power workflow is finished**, so its 23 one-off staging
-  scripts are frozen (`batches/staging/captive_power/README.md`), not
-  parameterized. Audit, verification, and the re-planned roadmap:
-  `docs/improvement_plan.md`.
+  **keep** Codex's half-landed infrastructure changes; the **captive-power
+  workflow is finished**, so its 23 one-off staging scripts are frozen
+  (`batches/staging/captive_power/README.md`), not parameterized. Audit,
+  verification, and the re-planned roadmap: `docs/improvement_plan.md`.
+  NB: the backlog landed in PR #32 as a **single** commit (the freeze README
+  rode along as a second one), not the three separate trains Phase 0.2 called
+  for — research output, pre-existing code/doc changes, and Codex's
+  infrastructure work are interleaved in it.
 - **Qatar Ras Laffan project-level match** (2026-06): `_unit_designators`
   maps GIIGNL `N(*)`/`S(*)` codes to the GEM unit with the same code; the
   train-range pre-pass sums per-train rows into GEM range-units.
