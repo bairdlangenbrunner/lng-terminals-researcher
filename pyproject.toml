@@ -13,6 +13,8 @@ dependencies = [
   "pypinyin>=0.55",
   "SQLAlchemy>=2.0",
   "psycopg2-binary>=2.9",
+  "curl_cffi>=0.10",        # fetch.py: Chrome TLS fingerprint for bot-wall firewall pages
+  "websocket-client>=1.6",  # cf_clearance.py: drives Google Chrome over DevTools
 ]
 
 [project.optional-dependencies]

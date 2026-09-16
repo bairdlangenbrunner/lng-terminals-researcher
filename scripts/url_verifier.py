@@ -54,10 +54,16 @@ import json
 import re
 import os
 import subprocess
-import tempfile
 import sys
 import time
 import urllib.parse
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import fetch  # noqa: E402  — the shared fetch layer (curl ladder, PDF/zip text, bot walls)
+from fetch import CHROME_UA, fetch_page  # noqa: E402
+
+# Scanned permits are French/Italian/Spanish/German far more often than CJK.
+fetch.OCR_LANG = "fra+eng+ita+spa+deu"
 
 
 class CitationError(Exception):
@@ -101,11 +107,7 @@ def _log_check(url, expected, ok, reason):
     except OSError as e:
         print(f"  WARNING: url_verifier log write failed ({e}); continuing", file=sys.stderr)
 
-_DEFAULT_UA = (
-    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
-    "AppleWebKit/537.36 (KHTML, like Gecko) "
-    "Chrome/120.0.0.0 Safari/537.36"
-)
+_DEFAULT_UA = CHROME_UA
 
 # Soft-error signals: HTTP 200 but title indicates an error / paywall / SSO template
 _SOFT_ERROR_TITLES = (
@@ -125,202 +127,36 @@ _SOFT_ERROR_TITLES = (
 )
 
 
-def _run_pdftotext(path):
-    """Extract text from a saved PDF via poppler's pdftotext. '' on any failure
-    (missing binary, encrypted/scanned PDF with no text layer)."""
-    try:
-        r = subprocess.run(
-            ["pdftotext", "-layout", path, "-"],
-            capture_output=True, text=True, timeout=60,
-        )
-        if r.returncode == 0:
-            return r.stdout
-    except (FileNotFoundError, subprocess.SubprocessError):
-        pass
-    return ""
+# ---------------------------------------------------------------------------
+# The fetch is the shared layer in scripts/fetch.py (identical in the carriers
+# and pipelines repos — keep it that way): --compressed, charset-aware decode,
+# PDF -> text (pdftotext / pypdf / OCR) and ZIP bundles -> members' text,
+# -k retry after a TLS failure, no-UA retry after a 000 (the French prefecture
+# hosts), one re-fetch of a PDF that extracted to nothing (truncated large
+# PDFs), and the bot-wall ladder: curl -> curl_cffi TLS impersonation ->
+# real-Chrome clearance cookie (cf_clearance.py; LNGCT_NO_BROWSER=1 forbids
+# the Chrome launch). Only the per-process cache lives here.
+# ---------------------------------------------------------------------------
 
-
-def _run_pdf_ocr(path, lang="fra+eng+ita+spa+deu"):
-    """OCR a scanned/image-only PDF via poppler's pdftoppm + tesseract.
-
-    Regulator filings are routinely published as scans with no text layer --
-    French prefectural arretes especially (the Le Havre FSRU GHG permit that
-    enumerates the Cape Ann's 4 dual-fuel engines is one). Without this the
-    verifier FAILs them for want of any text at all, and a decisive primary
-    source becomes uncitable.
-
-    Only called when pdftotext returned (nearly) nothing, since OCR is slow.
-    Capped at _OCR_MAX_PAGES; '' on any failure (either binary missing, etc).
-
-    CAVEAT for token choice: OCR output is imperfect and its errors land
-    exactly where the substring check is strictest -- accents and digits get
-    mangled ("moteurs" -> "moteurs", "3x11,4" -> "8x114"). Prefer a long
-    unaccented alphabetic token ("bicombustibles") over anything with an
-    accent or a number in it.
-    """
-    try:
-        with tempfile.TemporaryDirectory(prefix="verify_ocr_") as tmpdir:
-            stem = os.path.join(tmpdir, "pg")
-            r = subprocess.run(
-                ["pdftoppm", "-r", "200", "-gray", "-png",
-                 "-l", str(_OCR_MAX_PAGES), path, stem],
-                capture_output=True, text=True, timeout=180,
-            )
-            if r.returncode != 0:
-                return ""
-            chunks = []
-            for name in sorted(os.listdir(tmpdir)):
-                if not name.endswith(".png"):
-                    continue
-                img = os.path.join(tmpdir, name)
-                t = subprocess.run(
-                    ["tesseract", img, "stdout", "-l", lang, "--psm", "6"],
-                    capture_output=True, text=True, timeout=120,
-                )
-                if t.returncode == 0 and t.stdout.strip():
-                    chunks.append(t.stdout)
-            return "\n".join(chunks)
-    except (FileNotFoundError, subprocess.SubprocessError, OSError):
-        return ""
-
-
-def _run_unzip_text(path):
-    """Some regulator portals (e.g. Italy's va.mite.gov.it AIA/VIA dossiers)
-    serve a whole filing as a single ZIP bundle of PDFs at what looks like a
-    single-document URL. Extract every member, pdftotext any PDFs (and decode
-    any plain-text members), and concatenate -- so a value buried in one PDF
-    inside the bundle is still verifiable against the bundle's own URL.
-    '' on any failure (not a real zip, unzip missing, nothing extractable)."""
-    try:
-        with tempfile.TemporaryDirectory(prefix="verify_zip_") as tmpdir:
-            r = subprocess.run(
-                ["unzip", "-o", "-qq", path, "-d", tmpdir],
-                capture_output=True, text=True, timeout=60,
-            )
-            if r.returncode not in (0, 1):  # 1 = some warnings, often still fine
-                return ""
-            chunks = []
-            for root, _dirs, files in os.walk(tmpdir):
-                for name in files:
-                    fpath = os.path.join(root, name)
-                    try:
-                        with open(fpath, "rb") as f:
-                            head = f.read(5)
-                    except OSError:
-                        continue
-                    if head == b"%PDF-":
-                        text = _run_pdftotext(fpath)
-                    elif name.lower().endswith((".txt", ".csv", ".xml", ".html", ".htm")):
-                        try:
-                            with open(fpath, "rb") as f:
-                                text = f.read().decode("utf-8", errors="replace")
-                        except OSError:
-                            text = ""
-                    else:
-                        continue
-                    if text.strip():
-                        chunks.append(text)
-            return "\n".join(chunks)
-    except (FileNotFoundError, subprocess.SubprocessError, OSError):
-        return ""
+# Page.notes per fetched URL ("cf_clearance", "insecure_tls", "pdf_ocr", ...)
+# for callers that want to know the route; _fetch's tuple shape is unchanged.
+_NOTES = {}
 
 
 def _fetch(url, timeout=30, ua=_DEFAULT_UA):
     """Fetch URL, return (status_code, body_text, is_pdf). Cached per URL per
-    process. PDF bodies are run through pdftotext so the content check sees text,
-    not raw binary; is_pdf lets verify_url skip the HTML-only title check."""
+    process. PDF (and ZIP) bodies come back as extracted text so the content
+    check sees text, not raw binary; is_pdf lets verify_url skip the HTML-only
+    title check."""
     if url in _CACHE:
         return _CACHE[url]
-
-    # Unique per invocation: a fixed filename lets concurrent verifier runs
-    # (parallel subagents in one batch) overwrite each other's download, which
-    # silently produces false FAILs -- or worse, a PASS against another URL's
-    # content. Never reuse a shared path here.
-    fd, tmp = tempfile.mkstemp(prefix="verify_page_", suffix=".bin")
-    os.close(fd)
-    try:
-        # --compressed: some CDNs return a gzip/br body regardless of the request
-        # headers. Without this, the body decodes to binary garbage and the content
-        # check FAILs on a page that plainly contains the value (atlanticlng.com).
-        # Two attempts: large PDFs on slow hosts (iaac-aeic.gc.ca) truncate often
-        # enough that a single empty extraction is not evidence of missing content.
-        # Attempt 3 retries WITHOUT the browser User-Agent. This is the inverse of
-        # the usual bot-block: a few government hosts abort the connection outright
-        # when sent a Chrome UA ("HTTP2 framing layer" / "empty reply from server",
-        # curl status 000) and serve the file perfectly to curl's own default UA.
-        # The French prefecture sites do this -- seine-maritime.gouv.fr and
-        # bouches-du-rhone.gouv.fr, which between them hold the Le Havre FSRU and
-        # Fos Cavaou permits. Without this retry both read as dead and a decisive
-        # primary source gets dropped as a failed citation.
-        for attempt in (1, 2, 3):
-            cmd = ["curl", "-sL", "--compressed", "-o", tmp,
-                   "-w", "%{http_code} %{content_type}", "--max-time", str(timeout)]
-            if attempt < 3:
-                cmd += ["-A", ua]
-            result = subprocess.run(
-                cmd + [url],
-                capture_output=True, text=True, timeout=timeout + 5,
-            )
-            parts = result.stdout.strip().split()
-            status = parts[0] if parts else "000"
-            content_type = " ".join(parts[1:]).lower()
-
-            try:
-                with open(tmp, "rb") as f:
-                    raw = f.read()
-            except Exception:
-                raw = b""
-
-            is_zip = (
-                "zip" in content_type
-                or url.split("?")[0].lower().endswith(".zip")
-                or raw[:4] == b"PK\x03\x04"
-            )
-            is_pdf = (
-                not is_zip
-                and (
-                    "pdf" in content_type
-                    or url.split("?")[0].lower().endswith(".pdf")
-                    or raw[:5] == b"%PDF-"
-                )
-            )
-            if is_zip:
-                text = _run_unzip_text(tmp)
-                # Reuse the PDF path downstream: no HTML <title> to soft-error
-                # check, and an empty result means "no extractable text" same
-                # as a scanned/image-only PDF.
-                is_pdf = True
-            elif is_pdf:
-                if raw[:5] != b"%PDF-" and raw.lstrip()[:1] == b"<":
-                    # A .pdf URL (or pdf content-type) that returned an HTML body
-                    # is not a PDF at all — it's an interstitial (bot challenge,
-                    # login wall). Hand the HTML downstream so the soft-error and
-                    # bot-wall body-marker checks can see it, instead of running
-                    # pdftotext on HTML and mis-reporting "no extractable text".
-                    is_pdf = False
-                    text = raw.decode("utf-8", errors="replace")
-                else:
-                    text = _run_pdftotext(tmp)
-                    # No text layer -> scanned image. OCR rather than call it empty.
-                    if len(text.strip()) < _PDF_TEXT_MIN and raw[:5] == b"%PDF-":
-                        text = _run_pdf_ocr(tmp) or text
-            else:
-                text = raw.decode("utf-8", errors="replace")
-
-            if text.strip() or attempt == 3:
-                break
-            # A real 4xx/5xx is an answer, not a transport failure -- only the
-            # 000-class (connection aborted) is worth the HTTP/1.0 downgrade.
-            if attempt == 2 and status != "000":
-                break
-    finally:
-        try:
-            os.unlink(tmp)
-        except OSError:
-            pass
-
-    _CACHE[url] = (status, text, is_pdf)
-    return status, text, is_pdf
+    page = fetch_page(url, timeout=timeout, ua=ua)
+    _NOTES[url] = page.notes
+    routed = [n for n in page.notes if n.startswith("cf_") or n == "insecure_tls"]
+    if routed:
+        print(f"  [url_verifier] {url}: {', '.join(routed)}", file=sys.stderr)
+    _CACHE[url] = (page.status, page.text, page.is_pdf)
+    return _CACHE[url]
 
 
 # Live-fetch outcomes that mean "bot-blocked, page presumptively live" — these
@@ -537,6 +373,7 @@ def verify_and_format(url, expected):
 def clear_cache():
     """Clear the in-memory cache. Call between builds."""
     _CACHE.clear()
+    _NOTES.clear()
 
 
 def main():

@@ -21,38 +21,21 @@ Usage:
     python imo_tracker.py "Höegh Gallant"
 """
 import argparse
-import re
 import os
-import subprocess
-import tempfile
+import re
 import sys
 import time
 import urllib.parse
 
-
-_DEFAULT_UA = (
-    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
-    "AppleWebKit/537.36 (KHTML, like Gecko) "
-    "Chrome/120.0.0.0 Safari/537.36"
-)
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from fetch import fetch_text  # noqa: E402
 
 
 def _fetch(url, timeout=30):
-    tmp = os.path.join(tempfile.gettempdir(), "imo_lookup.html")
-    result = subprocess.run(
-        ["curl", "-sL", "-A", _DEFAULT_UA,
-         "-o", tmp,
-         "-w", "%{http_code}",
-         "--max-time", str(timeout),
-         url],
-        capture_output=True, text=True, timeout=timeout + 5,
-    )
-    status = result.stdout.strip() or "000"
-    try:
-        with open(tmp, encoding="utf-8", errors="replace") as f:
-            return status, f.read()
-    except Exception:
-        return status, ""
+    """(status, html) through the shared fetch ladder — marinetraffic.org sits
+    behind Cloudflare's JS challenge, which scripts/fetch.py clears with a
+    real-Chrome cf_clearance cookie (see scripts/cf_clearance.py)."""
+    return fetch_text(url, timeout=timeout)
 
 
 def lookup_imo(vessel_name, delay_seconds=2):

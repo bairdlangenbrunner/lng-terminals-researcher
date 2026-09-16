@@ -27,6 +27,7 @@ the scripts themselves use).
 | `test_bare_domain_guard.py` | The `warn_bare_domain_urls` guard: a bare domain/homepage is never a citation, in any lane. |
 | `test_wiki_refs.py` | `wiki` lane reference handling (wiki-style source URL rendering). |
 | `test_monitor_store.py` | `monitor_store.py` round-trip: seed/merge/dedup of the cross-batch monitor list. |
+| `test_fetch.py` | `fetch.py` + `cf_clearance.py` (copied verbatim from the carriers repo): wall detection (Cloudflare, AWS WAF, Imperva), the curl → `curl_cffi` → clearance-cookie ladder with a scripted curl stub, cookie store round-trip/expiry/domain join, ZIP bundles, the empty-PDF re-fetch. No network, no Chrome. |
 | `test_colmap.py` | Shared `colmap.load_colmap`: happy path, missing colmap → RuntimeError, BOM-safe header re-derivation when `_header_columns` is absent. |
 | `test_schema_constants.py` | `schema_constants.py` column sets: non-empty, computed/out-of-scope disjoint, READ_ONLY_COLUMNS is exactly their union. |
 
