@@ -69,6 +69,8 @@ Verdict grading (see the script docstring):
 
 Whole-DB runs are thousands of URLs: shard by country or status band across QC cycles rather than forcing one giant run, and say in the memo which shard ran (`--max-urls` truncation is recorded in the JSON — never report a truncated run as full coverage).
 
+**Never hand-tally the memo numbers from the raw JSON** (added 2026-09-10). The raw `dead` bucket is broader than the rot definition above (it holds 301/302 redirects and bot-challenge interstitials that are live), and the memo needs a per-CELL view the scan does not emit. Run `python citation_rot_summary.py --scan <citation_qc output> --csv gem_export.csv --out <qc-dir>/citation_rot_summary.json` and quote from it: it applies the corrections in this section mechanically, drops citations already repaired since the scan (a whole-tracker scan takes hours and the memo may be issued days later), lists the countries over the §6 threshold, and sizes the follow-on repair as cells whose every citation is rotten, split into mirror-swappable (giignl.org/igu.org → official mirror, `data/README.md`) versus needing real re-sourcing. The 2026-08-26 whole-tracker pass was quoted three different ways (16.3%, 19.9%, 19.3%) before this script existed.
+
 ### §3.3 Accuracy spot-check (agent-driven)
 
 A stratified sample of ~20–30 units per QC pass, weighted toward where errors matter or accumulate:
@@ -88,13 +90,15 @@ Verdict per checked cell: **supported** (citation backs the value), **unsupporte
 
 Run this against any batch the user reports having applied since the last QC pass. Caveats: the fresh pull must postdate the user's application; formatting the DB re-renders server-side (dates, rounding) can read as benign diverged — equal-float values are auto-normalized, anything else is reviewer judgment.
 
+For a whole-tracker pass, run it once per current workbook (newest rebuild per scope+mode; pass `--out work/apply_check/<batch>.json` every time — the default output path overwrites itself) and then `python apply_check_aggregate.py work/apply_check/ --out <qc-dir>/apply_check_divergence.json` for the totals, the per-batch table and a triaged `review_queue` of every diverged edit (added 2026-09-10; the memo's §4 is written from that file).
+
 ## §4 Workflow (linear)
 
 1. Fresh pull: `python ../../gem-db-ops/gem_query.py --all-fields lng -o gem_export.csv && python pull_gem_db.py --map-only` (from `scripts/`) — QC against a stale export is meaningless, and §3.4 specifically needs a pull that postdates the user's apply
 2. `python completeness_sweep.py`, `python stale_sweep.py`, `python dedup_index.py` (§3.1)
-3. `python citation_qc.py` with the cycle's scope shard (§3.2)
+3. `python citation_qc.py` with the cycle's scope shard, then `python citation_rot_summary.py --scan … --csv gem_export.csv` for the memo numbers (§3.2)
 4. Accuracy spot-check (§3.3) — draw the sample, verify cells, record verdicts
-5. `python apply_check.py --batch …` for each batch applied since the last QC pass (§3.4); skip if none
+5. `python apply_check.py --batch … --out work/apply_check/<batch>.json` for each batch applied since the last QC pass, then `python apply_check_aggregate.py work/apply_check/` (§3.4); skip if none
 6. Draft the QC memo with sections per §2
 7. Save to `../batches/qc_<YYYYMMDD>_<HHMM>_ET.md`
 8. `present_files` the memo

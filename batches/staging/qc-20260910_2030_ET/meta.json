@@ -1,0 +1,28 @@
+{
+  "scope": "whole-tracker",
+  "scope_slug": "qc-20260910_2030_ET",
+  "workflow": "qc",
+  "tier": "n/a",
+  "countries": ["*"],
+  "status": "built",
+  "created": "2026-09-10",
+  "started": "2026-09-10",
+  "built": "2026-09-10",
+  "memo": "batches/qc_20260910_2030_ET.md",
+  "supersedes": "batches/qc_20260826_0958_ET.md (re-issue: section 2 filled from the completed citation scan, section 4 re-run against the 2026-09-10 export)",
+  "note": "QC never edits. Evidence for the re-issued memo. Section 1 (mechanical integrity) evidence stays in batches/staging/qc-20260826_0914_ET/ except the two CSV-only sweeps re-run here (completeness_sweep.json, stale_sweep.json). The citation scan itself (citation_qc_full.json, 2026-08-26) also stays there; citation_rot_summary.json here is its re-adjudication against the 2026-09-10 export.",
+  "export_snapshot": "scripts/gem_export.csv pulled 2026-09-10; 1281 rows / 1258 LNG-scope / 836 terminals / 114 countries (identical shape to 2026-08-26)",
+  "passes": {
+    "mechanical_integrity_3.1": "complete on the 2026-08-26 export (see qc-20260826_0914_ET); completeness_sweep and stale_sweep re-run on the 2026-09-10 export here",
+    "citation_link_rot_3.2": "complete -- citation_qc_full.json (2026-08-26, 15810 instances / 4878 unique URLs) re-adjudicated by scripts/citation_rot_summary.py against the 2026-09-10 export; 0 scanned citations have been repaired or removed since the scan",
+    "accuracy_spot_check_3.3": "NOT RUN -- still needs a web-search budget (CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION ~600 at launch); the one pass not yet done",
+    "post_apply_check_3.4": "complete, re-run 2026-09-10 against the fresh export for all 18 current non-discovery workbooks (newest rebuild per scope+mode); aggregated by scripts/apply_check_aggregate.py"
+  },
+  "findings": {
+    "citation_rot_summary.json": "rot = dead + content_gone after re-adjudication (301/302/307/308/202/bot-interstitial -> live; 401/403/429/5xx -> blocked; image PDFs -> unverifiable): 3057 of 15810 instances (19.3%); 1793 [ref] cells with EVERY citation rotten on 404 terminals, 1231 of them on live-status rows (874 operating); 679 cells mirror-swappable (giignl.org/igu.org only) on 136 terminals, 1114 cells need real re-sourcing on 322 terminals; 26 countries over the SOP 6 25% threshold (China 33.0% on 1639 instances the largest)",
+    "apply_check/": "18 per-batch apply_check.py outputs vs the 2026-09-10 export (filenames lost their leading '2' -- harmless)",
+    "apply_check_divergence.json": "2101 landable / 983 applied / 799 not_applied / 319 diverged (15.2%) / 12 not_found. vs 2026-08-26: +3 applied, -11 not_applied, +8 diverged. Divergence still confined to the 8 exhaustive_update batches; all 10 captive-power update batches 0.0%. 138 ref_no_overlap unchanged",
+    "completeness_sweep.json": "1279 gaps (was 1207 on 2026-08-26); severity high 28 unchanged",
+    "stale_sweep.json": "14 flagged units, dev_pipeline 460 -- unchanged"
+  }
+}
