@@ -52,6 +52,18 @@ the terminals/pipelines verifiers' fetch layers):
     (`cf_clearance.py`) and retries with them. Notes
     `cf_impersonate` / `cf_clearance` record the route. See the block above
     `_curl`.
+  - Any 401/403/429 escalates (2026-10-02), not only pages carrying Cloudflare
+    markers: Akamai "Access Denied" (conedison.gcs-web.com, spglobal.com) and
+    bare nginx 403s (GlobalData's power-technology / nsenergybusiness /
+    offshore-technology) key on the TLS fingerprint too and pass under
+    `curl_cffi`, trying Chrome then Firefox fingerprints (some hosts reject one).
+  - sec.gov (2026-10-02) is NOT a bot wall: SEC's fair-access policy serves
+    automated clients that declare who they are in the User-Agent ("Name
+    email") and caps them at 10 requests/second. A browser UA or fingerprint
+    gets "Your Request Originates from an Undeclared Automated Tool" (403).
+    sec.gov requests therefore send `SEC_USER_AGENT` (env `GEM_SEC_UA`
+    overrides it), skip impersonation, and are throttled per process. Note
+    `sec_declared_ua`.
 """
 import codecs
 import os
@@ -60,6 +72,7 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import time
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -71,6 +84,15 @@ CHROME_UA = (
     "AppleWebKit/537.36 (KHTML, like Gecko) "
     "Chrome/120.0.0.0 Safari/537.36"
 )
+
+# SEC EDGAR fair-access policy: automated clients must declare a name and contact
+# email in the User-Agent, at most 10 requests/second. See the module docstring.
+SEC_USER_AGENT = os.environ.get(
+    "GEM_SEC_UA",
+    "Global Energy Monitor research baird.langenbrunner@globalenergymonitor.org")
+_SEC_HOSTS = ("sec.gov",)
+_SEC_MIN_INTERVAL = 0.15      # seconds between sec.gov requests in one process
+_sec_last = 0.0
 
 _CURL_INSTALL_HINT = (
     "curl not found on PATH. Install it and re-run:\n"
@@ -378,6 +400,10 @@ def _curl(url: str, tmp: str, timeout: int, ua: str | None, insecure: bool,
 # reason shows which route was used ("cf_impersonate" / "cf_clearance").
 
 _CF_WALL_STATUSES = {"403", "503", "429"}
+# Refusals that earn a TLS-impersonation retry even without wall markers
+# (Akamai "Access Denied", bare nginx 403). One retry per fingerprint is cheap.
+_BLOCK_STATUSES = {"401", "403", "429"}
+_IMPERSONATE_AS = ("chrome", "firefox")
 _CF_WALL_MARKERS = (b"just a moment", b"attention required", b"cf-mitigated",
                     b"challenge-platform", b"cf_chl_", b"cf-chl", b"cloudflare",
                     b"enable javascript and cookies to continue")
@@ -412,8 +438,30 @@ def _host(url: str) -> str:
         return ""
 
 
+def _is_sec(host: str) -> bool:
+    return any(host == h or host.endswith("." + h) for h in _SEC_HOSTS)
+
+
+def _sec_throttle() -> None:
+    global _sec_last
+    wait = _SEC_MIN_INTERVAL - (time.monotonic() - _sec_last)
+    if wait > 0:
+        time.sleep(wait)
+    _sec_last = time.monotonic()
+
+
+def _impersonate(url: str, timeout: int, ua: str | None, headers: dict | None,
+                 cookie: str | None):
+    """First curl_cffi fingerprint that gets past the wall, or None."""
+    for imp in _IMPERSONATE_AS:
+        got = _cffi_get(url, timeout, ua, headers, cookie, impersonate=imp)
+        if got and got[0] not in _BLOCK_STATUSES and not _is_cf_wall(got[0], got[3]):
+            return got
+    return None
+
+
 def _cffi_get(url: str, timeout: int, ua: str | None, headers: dict | None,
-              cookie: str | None):
+              cookie: str | None, impersonate: str = "chrome"):
     """(status, content_type, final_url, raw) via curl_cffi, or None if unavailable."""
     global _CFFI_HINTED
     try:
@@ -424,16 +472,17 @@ def _cffi_get(url: str, timeout: int, ua: str | None, headers: dict | None,
             print("  [fetch] curl_cffi not installed — Cloudflare firewall pages cannot be "
                   "passed (pip install curl_cffi)", file=sys.stderr)
         return None
-    hdrs = dict(headers or {})
-    if ua:
-        hdrs["User-Agent"] = ua
+    hdrs = {"Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+            "Accept-Language": "en-US,en;q=0.9", **(headers or {})}
+    if ua and impersonate == "chrome":
+        hdrs["User-Agent"] = ua       # other fingerprints keep their own matching UA
     cookies = {}
     for part in (cookie or "").split(";"):
         if "=" in part:
             k, v = part.strip().split("=", 1)
             cookies[k] = v
     try:
-        r = cffi_requests.get(url, impersonate="chrome", headers=hdrs, cookies=cookies,
+        r = cffi_requests.get(url, impersonate=impersonate, headers=hdrs, cookies=cookies,
                               timeout=timeout, allow_redirects=True)
     except Exception as e:  # transport / TLS / timeout
         print(f"  [fetch] curl_cffi error for {url}: {e}", file=sys.stderr)
@@ -500,28 +549,33 @@ def fetch_page(url: str, *, timeout: int = 30, ua: str = CHROME_UA,
     notes: list[str] = []
     status, content_type, final_url, raw = "000", "", "", b""
     host = _host(url)
-    cookie, cookie_ua = _clearance_cookie(url)
+    sec = _is_sec(host)
+    cookie, cookie_ua = (None, None) if sec else _clearance_cookie(url)
     if cookie:
         ua = cookie_ua or ua          # the cookie is only honoured with its own UA
+    if sec:
+        ua = SEC_USER_AGENT           # declared identity, never a browser disguise
+        notes.append("sec_declared_ua")
+        _sec_throttle()
     try:
         if host in _IMPERSONATE_HOSTS:
-            got = _cffi_get(url, timeout, ua, headers, cookie)
-            if got and not _is_cf_wall(got[0], got[3]):
+            got = _impersonate(url, timeout, ua, headers, cookie)
+            if got:
                 status, content_type, final_url, raw = got
                 notes.append("cf_impersonate")
             else:
                 _IMPERSONATE_HOSTS.discard(host)     # the wall changed; run the full ladder
-        if not notes:
+        if "cf_impersonate" not in notes:
             status, content_type, final_url, raw = _curl_attempts(
                 url, tmp, timeout, ua, headers, cookie, notes)
-            if _is_cf_wall(status, raw):
+            if not sec and (_is_cf_wall(status, raw) or status in _BLOCK_STATUSES):
                 # 1. TLS-fingerprint impersonation (no window, no cookie).
-                got = _cffi_get(url, timeout, ua, headers, cookie)
-                if got and not _is_cf_wall(got[0], got[3]):
+                got = _impersonate(url, timeout, ua, headers, cookie)
+                if got:
                     status, content_type, final_url, raw = got
                     notes.append("cf_impersonate")
                     _IMPERSONATE_HOSTS.add(host)
-                else:
+                elif _is_cf_wall(status, raw):
                     # 2. JS challenge (Cloudflare or Imperva): earn its cookies with real Chrome.
                     cookie, cookie_ua = _earn_clearance(url)
                     if cookie:

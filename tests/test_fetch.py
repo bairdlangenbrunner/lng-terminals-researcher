@@ -115,7 +115,7 @@ class TestLadder:
         curl = FakeCurl(plain=("403", FIREWALL))
         monkeypatch.setattr(fetch, "_curl", curl)
         monkeypatch.setattr(fetch, "_cffi_get",
-                            lambda url, t, ua, h, c: ("200", "text/html", url, REAL))
+                            lambda url, t, ua, h, c, impersonate="chrome": ("200", "text/html", url, REAL))
         p = fetch.fetch_page("https://www.shipvault.com/ships/1")
         assert p.status == "200" and "HANWHA" in p.text
         assert p.notes == ["cf_impersonate"]
@@ -128,7 +128,7 @@ class TestLadder:
         monkeypatch.setattr(fetch, "_curl", curl)
         fetch._IMPERSONATE_HOSTS.add("www.shipvault.com")
         monkeypatch.setattr(fetch, "_cffi_get",
-                            lambda url, t, ua, h, c: ("403", "text/html", url, WALL_403))
+                            lambda url, t, ua, h, c, impersonate="chrome": ("403", "text/html", url, WALL_403))
         monkeypatch.setattr(fetch, "_earn_clearance",
                             lambda url: ("cf_clearance=abc", "UA-153"))
         p = fetch.fetch_page("https://www.shipvault.com/ships/1")
@@ -140,7 +140,7 @@ class TestLadder:
         monkeypatch.setattr(fetch, "_curl", curl)
         # impersonation alone does not pass the JS challenge
         monkeypatch.setattr(fetch, "_cffi_get",
-                            lambda url, t, ua, h, c: ("403", "text/html", url, WALL_403))
+                            lambda url, t, ua, h, c, impersonate="chrome": ("403", "text/html", url, WALL_403))
         monkeypatch.setattr(fetch, "_earn_clearance",
                             lambda url: ("cf_clearance=abc", "Mozilla/5.0 Chrome/153"))
         p = fetch.fetch_page("https://www.marinetraffic.org/v/1")
@@ -165,7 +165,7 @@ class TestLadder:
         curl = FakeCurl(plain=("202", b""), with_cookie=("404", NOT_FOUND))
         monkeypatch.setattr(fetch, "_curl", curl)
         monkeypatch.setattr(fetch, "_cffi_get",
-                            lambda url, t, ua, h, c: ("202", "text/html", url, AWS_WAF))
+                            lambda url, t, ua, h, c, impersonate="chrome": ("202", "text/html", url, AWS_WAF))
         monkeypatch.setattr(fetch, "_earn_clearance",
                             lambda url: ("aws-waf-token=t; visid_incap_1=b", "UA-153"))
         p = fetch.fetch_page("https://investors.seatrium.com/x")
@@ -182,6 +182,37 @@ class TestLadder:
         monkeypatch.setattr(fetch, "_curl", curl)
         fetch.fetch_page("https://api.example.com/units/1", headers={"tx": "abc"})
         assert curl.calls[0]["headers"] == {"tx": "abc"}
+
+    def test_plain_403_without_wall_markers_still_escalates(self, monkeypatch):
+        # Akamai "Access Denied" and bare nginx 403s carry no challenge markers
+        curl = FakeCurl(plain=("403", b"<html>Access Denied</html>"))
+        monkeypatch.setattr(fetch, "_curl", curl)
+        monkeypatch.setattr(fetch, "_cffi_get",
+                            lambda url, t, ua, h, c, impersonate="chrome": ("200", "text/html", url, REAL))
+        p = fetch.fetch_page("https://conedison.gcs-web.com/news")
+        assert p.status == "200" and p.notes == ["cf_impersonate"]
+
+    def test_firefox_fingerprint_is_tried_when_chrome_is_refused(self, monkeypatch):
+        tried = []
+
+        def cffi(url, t, ua, h, c, impersonate="chrome"):
+            tried.append(impersonate)
+            if impersonate == "chrome":
+                return ("403", "text/html", url, b"<html>Access Denied</html>")
+            return ("200", "text/html", url, REAL)
+        monkeypatch.setattr(fetch, "_curl", FakeCurl(plain=("403", b"<html>Access Denied</html>")))
+        monkeypatch.setattr(fetch, "_cffi_get", cffi)
+        p = fetch.fetch_page("https://conedison.gcs-web.com/news")
+        assert p.status == "200" and tried == ["chrome", "firefox"]
+
+    def test_sec_gets_the_declared_user_agent_and_no_disguise(self, monkeypatch):
+        curl = FakeCurl(plain=("403", b"<html>Undeclared Automated Tool</html>"))
+        monkeypatch.setattr(fetch, "_curl", curl)
+        monkeypatch.setattr(fetch, "_cffi_get",
+                            lambda *a, **k: pytest.fail("sec.gov must not be impersonated"))
+        p = fetch.fetch_page("https://www.sec.gov/cgi-bin/browse-edgar?CIK=1")
+        assert curl.calls[0]["ua"] == fetch.SEC_USER_AGENT
+        assert p.status == "403" and p.notes == ["sec_declared_ua"]
 
 
 class TestEarnClearance:
