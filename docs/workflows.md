@@ -129,7 +129,7 @@ FSRUs are tracked in both the GEM terminals tracker and (if the user is also run
 
 1. When a terminals batch adds or updates an FSRU terminal, the FloatingVesselName + (IMO if known) go in the staging xlsx with a sync-touchpoint flag.
 2. When a carriers batch updates an FSRU vessel that's deployed, the terminal name + country go in the carrier xlsx with the same flag.
-3. `fsru_sync_check.py` diffs both backends on (IMO ↔ terminal name) pairs and surfaces mismatches. Mismatches go in a `fsru_sync` sheet of whichever xlsx is the current deliverable.
+3. `fsru_sync_check.py` diffs both backends and surfaces mismatches (owner, operator, deployment terminal). Mismatches go in a `fsru_sync` sheet of whichever xlsx is the current deliverable. The join is **vessel name** — the GEM export carries no vessel IMO column, so IMO travels with the match for traceability but cannot key it. GEM side: `Floating=True` **and** `facility_type=import`; the flag is set on FLNG export units too, and those are not FSRUs. Carrier side: the header row is found by looking for its vessel-name column (`Name` in the live backend, under the sheet's preamble row) — an export with none raises rather than reading zero records.
 4. **Vessel reassignment** (FSRU moves from terminal A to terminal B) is a real and observed pattern — at least one terminal in the export has three FSRUs in sequence. The script handles it by modeling: terminal A's prior FSRU gets an "Idled" or "Retired" status timeline entry on the unit-row; terminal B (or a new unit on terminal A) gets the new FSRU. The carrier record's deployment field updates correspondingly.
 
 Edge cases:

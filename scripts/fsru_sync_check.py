@@ -8,10 +8,10 @@ linked carrier-project record is consistent.
 WHAT GETS CHECKED:
   - For each FSRU unit in the GEM terminals export (Floating=True with
     import facility type), find the corresponding vessel record in the
-    carrier project backend.
-  - Link key: IMO number + vessel name (when IMO not available, vessel name only).
-  - Report mismatches in: vessel status, vessel current location/terminal,
-    owner/operator, vessel age/build.
+    carrier project backend. An FSRU is an IMPORT unit: the export's Floating
+    flag is set on FLNG export units too, so facility_type is filtered.
+  - Link key: vessel name (the GEM export carries no vessel IMO column).
+  - Report mismatches in: owner/operator and deployment terminal.
 
 GRACEFUL DEGRADATION:
   - If the carrier project backend is not accessible (no path provided OR
@@ -41,10 +41,50 @@ from colmap import load_colmap as _load_colmap
 
 DEFAULT_GEM_CSV = "./gem_export.csv"
 
+# An FSRU is an import unit. The GEM export sets Floating=True on FLNG export
+# units as well (95 of the 350 floating LNG units in the 2026-09 export), so
+# without this filter the "FSRU fleet" handed to the carrier side is more than
+# a quarter export vessels.
+IMPORT_FACILITY_TYPES = ("import",)
 
-def gather_gem_fsrus(gem_csv):
-    """Walk the GEM CSV and return all units that look like FSRU deployments.
-    
+# Headers the carrier project's backend has used for the fields compared here.
+# First in each tuple is the live backend (lng-carriers-researcher
+# work/backend.csv); the rest are older/alternative spellings. Reading only the
+# later spellings is how this check came to pass silently on zero records.
+CARRIER_NAME_HEADERS = ("Name", "VesselName", "Vessel Name", "vessel_name")
+CARRIER_IMO_HEADERS = ("IMO number", "IMO", "imo")
+CARRIER_OWNER_HEADERS = ("Shipowner", "Owner", "VesselOwner", "owner")
+CARRIER_OPERATOR_HEADERS = ("Operator/charterer", "Operator", "VesselOperator",
+                            "operator")
+CARRIER_TYPE_HEADERS = ("Vessel type", "VesselType", "Type", "type")
+# No deployment column in the carrier backend today; kept so the comparison
+# lights up by itself if one is added.
+CARRIER_DEPLOYMENT_HEADERS = ("CurrentDeployment", "Deployment")
+
+# The carrier backend's header is not the first line -- the sheet carries a
+# spreadsheet-column preamble row above it. Scan this far down for it.
+CARRIER_HEADER_SCAN_ROWS = 20
+
+
+def _first(record, headers):
+    """First non-empty value in `record` under any of `headers`."""
+    for h in headers:
+        v = record.get(h)
+        if v is not None and str(v).strip():
+            return str(v).strip()
+    return ""
+
+
+def gather_gem_fsrus(gem_csv, facility_types=IMPORT_FACILITY_TYPES, excluded=None):
+    """Walk the GEM CSV and return the units that are FSRU deployments.
+
+    Floating=True is not enough on its own: the flag is set on FLNG export
+    units too, and those are not FSRUs and have no carrier-side counterpart to
+    reconcile. `facility_types` is the whitelist applied to facility_type
+    (None keeps every floating unit); floating units it rejects are appended to
+    `excluded` when a list is passed, so the drop is countable rather than
+    invisible.
+
     Returns list of dicts with vessel-relevant fields.
     """
     colmap = _load_colmap(gem_csv)
@@ -55,6 +95,7 @@ def gather_gem_fsrus(gem_csv):
         "vessel_parent", "vessel_operator", "import_export_only",
         "temp_facility",
     ]}
+    keep = tuple(t.lower() for t in facility_types) if facility_types else None
 
     fsrus = []
     with open(gem_csv, encoding="utf-8") as f:
@@ -71,15 +112,16 @@ def gather_gem_fsrus(gem_csv):
                 continue
             vessel_name = row[ci["floating_vessel_name"]] if ci["floating_vessel_name"] is not None else ""
             ie_only = row[ci["import_export_only"]] if ci["import_export_only"] is not None else ""
+            ftype = row[ci["facility_type"]] if ci["facility_type"] is not None else ""
 
-            fsrus.append({
+            unit = {
                 "terminal_id": row[ci["terminal_id"]],
                 "unit_id": row[ci["unit_id"]],
                 "terminal_name": row[ci["terminal_name"]],
                 "unit_name": row[ci["unit_name"]],
                 "country": row[ci["country"]],
                 "status": row[ci["status"]],
-                "facility_type": row[ci["facility_type"]],
+                "facility_type": ftype,
                 "import_export_only": ie_only,
                 "vessel_name": vessel_name,
                 "vessel_name_norm": vessel_name.lower().strip(),
@@ -89,27 +131,57 @@ def gather_gem_fsrus(gem_csv):
                 "vessel_operator": row[ci["vessel_operator"]] if ci["vessel_operator"] is not None else "",
                 "vessel_operator_norm": normalize_entity(row[ci["vessel_operator"]] if ci["vessel_operator"] is not None else ""),
                 "temp_facility": row[ci["temp_facility"]] if ci["temp_facility"] is not None else "",
-            })
+            }
+
+            if keep is not None and ftype.strip().lower() not in keep:
+                if excluded is not None:
+                    excluded.append(unit)
+                continue
+            fsrus.append(unit)
     return fsrus
 
 
 def load_carrier_vessels(carrier_csv):
-    """Load the carrier project's vessel records.
-    
-    Carrier CSV schema is documented in the carrier project and includes:
-      VesselName, IMO, Status, Owner, Operator, CurrentDeployment, ...
-    
-    Returns dict: vessel_name_norm -> vessel_record
+    """Load the carrier project's vessel records, keyed by normalized name.
+
+    Two things about the real file (lng-carriers-researcher work/backend.csv)
+    that a plain DictReader gets wrong, and both fail silently -- an empty
+    result reads as "nothing to reconcile" rather than as a broken read:
+      - the header is NOT the first line. The sheet's first row is a
+        spreadsheet-column preamble ("1","2","3",...), which DictReader would
+        take as the field names.
+      - the vessel-name column is `Name`, not `VesselName`.
+
+    So: locate the header row by looking for a recognized name column, and read
+    from there. No such row in the first CARRIER_HEADER_SCAN_ROWS raises -- an
+    unreadable carrier export has to be loud, not an empty dict.
+
+    Returns dict: vessel_name_norm -> vessel_record (the raw row, by header).
     """
+    with open(carrier_csv, encoding="utf-8-sig", newline="") as f:
+        rows = list(csv.reader(f))
+
+    header_idx = None
+    for i, row in enumerate(rows[:CARRIER_HEADER_SCAN_ROWS]):
+        if any(c.strip() in CARRIER_NAME_HEADERS for c in row):
+            header_idx = i
+            break
+    if header_idx is None:
+        raise ValueError(
+            f"{carrier_csv}: no vessel-name column found in the first "
+            f"{CARRIER_HEADER_SCAN_ROWS} rows (looked for "
+            f"{', '.join(CARRIER_NAME_HEADERS)}). Is this the carrier backend CSV?"
+        )
+
+    header = [c.strip() for c in rows[header_idx]]
     records = {}
-    with open(carrier_csv, encoding="utf-8") as f:
-        reader = csv.DictReader(f)
-        for row in reader:
-            # The carrier project may use various column names; try a few
-            vname = row.get("VesselName") or row.get("Vessel Name") or row.get("vessel_name") or ""
-            if not vname:
-                continue
-            records[vname.lower().strip()] = row
+    for row in rows[header_idx + 1:]:
+        rec = {h: (row[i] if i < len(row) else "")
+               for i, h in enumerate(header) if h}
+        vname = _first(rec, CARRIER_NAME_HEADERS)
+        if not vname:
+            continue
+        records[vname.lower().strip()] = rec
     return records
 
 
@@ -153,8 +225,8 @@ def cross_check(fsrus, carrier_records):
 
         # Compare owner / operator
         disagreements = []
-        carrier_owner = carrier.get("Owner") or carrier.get("VesselOwner") or carrier.get("owner") or ""
-        carrier_operator = carrier.get("Operator") or carrier.get("VesselOperator") or carrier.get("operator") or ""
+        carrier_owner = _first(carrier, CARRIER_OWNER_HEADERS)
+        carrier_operator = _first(carrier, CARRIER_OPERATOR_HEADERS)
         carrier_owner_norm = normalize_entity(carrier_owner)
         carrier_operator_norm = normalize_entity(carrier_operator)
 
@@ -178,7 +250,7 @@ def cross_check(fsrus, carrier_records):
             })
 
         # Compare status / deployment
-        carrier_deploy = carrier.get("CurrentDeployment") or carrier.get("Deployment") or ""
+        carrier_deploy = _first(carrier, CARRIER_DEPLOYMENT_HEADERS)
         # The carrier deployment field should reference the same terminal
         if carrier_deploy and fsru["terminal_name"]:
             if (fsru["terminal_name"].lower() not in carrier_deploy.lower()
@@ -196,6 +268,7 @@ def cross_check(fsrus, carrier_records):
             "gem_terminal_name": fsru["terminal_name"],
             "gem_status": fsru["status"],
             "vessel_name": fsru["vessel_name"],
+            "carrier_imo": _first(carrier, CARRIER_IMO_HEADERS),
             "carrier_record_keys": list(carrier.keys())[:5],  # just for traceability
             "disagreements": disagreements,
             "in_sync": not disagreements,
@@ -206,10 +279,10 @@ def cross_check(fsrus, carrier_records):
         if vn in matched_carrier_keys:
             continue
         # Only report carrier vessels tagged as FSRU/regas/import
-        vessel_type = (rec.get("VesselType") or rec.get("Type") or rec.get("type") or "").lower()
+        vessel_type = _first(rec, CARRIER_TYPE_HEADERS).lower()
         if "fsru" in vessel_type or "regas" in vessel_type or "import" in vessel_type:
             carrier_only.append({
-                "vessel_name": rec.get("VesselName") or rec.get("Vessel Name") or "",
+                "vessel_name": _first(rec, CARRIER_NAME_HEADERS),
                 "vessel_type": vessel_type,
                 "carrier_record_excerpt": {k: rec[k] for k in list(rec.keys())[:8]},
                 "_note": "Vessel tagged FSRU/regas in carrier project but has no matching GEM terminal unit",
@@ -240,7 +313,8 @@ def main():
     p.add_argument("--output", default="./fsru_sync.json")
     args = p.parse_args()
 
-    fsrus = gather_gem_fsrus(args.gem_csv)
+    excluded = []
+    fsrus = gather_gem_fsrus(args.gem_csv, excluded=excluded)
 
     if args.gem_only or not args.carrier_export:
         result = {
@@ -263,8 +337,23 @@ def main():
             }
         else:
             carrier_records = load_carrier_vessels(args.carrier_export)
-            cross_result = cross_check(fsrus, carrier_records)
-            result = {"mode": "cross_check", **cross_result}
+            if not carrier_records:
+                # Readable, and empty. Say so -- a zero-record cross-check
+                # "passes" without having compared anything.
+                result = {
+                    "mode": "skipped",
+                    "_skip_reason": (
+                        f"carrier_export has a vessel-name column but no vessel "
+                        f"rows: {args.carrier_export}"
+                    ),
+                    "gem_fsrus": fsrus,
+                    "stats": {"gem_fsru_count": len(fsrus)},
+                }
+            else:
+                cross_result = cross_check(fsrus, carrier_records)
+                result = {"mode": "cross_check", **cross_result}
+
+    result.setdefault("stats", {})["gem_non_import_floating_excluded"] = len(excluded)
 
     Path(args.output).write_text(json.dumps(result, indent=2, default=str))
 
